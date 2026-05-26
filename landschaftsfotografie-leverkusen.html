@@ -1,0 +1,877 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Landschaftsfotografie Leverkusen — Matthias Ramahi</title>
+  <meta name="description" content="Landschaftsfotografie Leverkusen: Fine-Art-Prints, Wandbilder, Editionen und großformatige Arbeiten für private Räume, Praxen, Hotels und Sammlungen." />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#0a0c11" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Landschaftsfotografie Leverkusen — Matthias Ramahi" />
+  <meta property="og:description" content="Landschaftsfotografie Leverkusen: Fine-Art-Prints, Wandbilder, Editionen und großformatige Arbeiten für private Räume, Praxen, Hotels und Sammlungen." />
+  <meta property="og:image" content="assets/portfolio/Wettberwerb_Foto5_Wunder_der_Natur2.webp" />
+  <meta property="og:locale" content="de_DE" />
+  <meta property="og:site_name" content="Matthias Ramahi" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Landschaftsfotografie Leverkusen — Matthias Ramahi" />
+  <meta name="twitter:image" content="assets/portfolio/Wettberwerb_Foto5_Wunder_der_Natur2.webp" />
+  <link rel="preload" as="image" href="assets/portfolio/Wettberwerb_Foto5_Wunder_der_Natur2.webp" fetchpriority="high" />
+  <link rel="stylesheet" href="assets/site-chrome.css" />
+  <style>
+    :root{
+      --bg:#0a0c11;--fg:#f5f5f1;--muted:rgba(245,245,241,.62);--paper:#f3f1ec;
+      --ink:#0a0c11;--muted-l:rgba(10,12,17,.6);--accent:#c8ccc6;--accent-2:#8a9aa0;
+      --hair:rgba(245,245,241,.12);--hair-l:rgba(10,12,17,.14);
+      --font-display:"Inter Tight","SF Pro Display",-apple-system,BlinkMacSystemFont,"Inter","Segoe UI",system-ui,sans-serif;
+      --font-body:-apple-system,BlinkMacSystemFont,"SF Pro Text","Inter",system-ui,sans-serif;
+      --font-mono:ui-monospace,"JetBrains Mono","IBM Plex Mono",Menlo,monospace;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    img{display:block;max-width:100%;height:auto}
+    a{color:inherit;text-decoration:none}
+    em{font-style:normal;font-weight:300;color:var(--fg)}
+    h1,h2,h3{font-family:var(--font-display);font-weight:700;line-height:.92;letter-spacing:-.052em}
+    ::selection{background:var(--accent);color:#0a0c11}
+    img[loading=lazy]{opacity:0;transform:scale(1.018);transition:opacity .9s ease,transform 1.6s ease}
+    img[loading=lazy].is-loaded{opacity:1;transform:scale(1)}
+    @media (prefers-reduced-motion:reduce){img[loading=lazy]{transition:opacity .3s ease;transform:none}}
+    .section-inner{max-width:1480px;margin:0 auto;padding:clamp(56px,7vw,128px) clamp(24px,4vw,72px)}
+
+    /* HERO — Liquid Reveal (Tinte → mehrere Landschaften, automatischer Zyklus) */
+    .hero-ls{position:relative;height:100svh;max-height:100svh;overflow:hidden;background:#ece7dd;color:#0a0c11;isolation:isolate;--hero-sans:"Inter Tight","SF Pro Display",-apple-system,BlinkMacSystemFont,"Inter","Segoe UI",system-ui,sans-serif}
+    /* Papier-Textur als Ausgangszustand */
+    .hero-ls__paper{position:absolute;inset:0;background:
+      radial-gradient(ellipse at 30% 18%, #f3eee3 0%, #ece7dd 38%, #e3dccd 100%),
+      #ece7dd;
+      z-index:1}
+    .hero-ls__paper::before{content:"";position:absolute;inset:0;
+      background-image:
+        radial-gradient(rgba(10,12,17,.045) 1px, transparent 1px),
+        radial-gradient(rgba(10,12,17,.03) 1px, transparent 1px);
+      background-size:3px 3px, 7px 7px; background-position:0 0, 1.5px 1.5px;
+      mix-blend-mode:multiply;opacity:.55}
+    .hero-ls__paper::after{content:"";position:absolute;inset:0;
+      background:radial-gradient(ellipse at 50% 50%, transparent 50%, rgba(10,12,17,.12) 100%);
+      mix-blend-mode:multiply;pointer-events:none}
+    /* SVG-Stage mit Tintenmasken */
+    .hero-ls__stage{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none;
+      transform:translateZ(0);will-change:transform;transition:transform 1.6s cubic-bezier(.2,.78,.22,1)}
+    .hero-ls__stage image{filter:contrast(1.04) saturate(.94)}
+    /* Ripple-Ring der bei jedem Reveal aus dem Tinten-Ursprung expandiert */
+    .hero-ls__ripple{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none}
+    .hero-ls__ripple circle{fill:none;stroke:rgba(245,245,241,.0);stroke-width:1.4}
+    /* Filmkorn-Layer — cinematisch sichtbar, dauerhaft, sehr günstig */
+    .hero-ls__grain{position:absolute;inset:-12%;z-index:4;pointer-events:none;opacity:0;
+      background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.62' numOctaves='2' stitchTiles='stitch' seed='4'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.25 -.32'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+      background-size:300px 300px;mix-blend-mode:soft-light;
+      transition:opacity 1.6s ease 1.2s;will-change:transform;
+      animation:grainShift 1.8s steps(6) infinite}
+    .hero-ls.is-revealed .hero-ls__grain{opacity:.7}
+    @keyframes grainShift{
+      0%{transform:translate(0,0)}
+      17%{transform:translate(-6%,4%)}
+      34%{transform:translate(7%,-3%)}
+      51%{transform:translate(-4%,-6%)}
+      68%{transform:translate(5%,5%)}
+      85%{transform:translate(-7%,2%)}
+      100%{transform:translate(0,0)}
+    }
+    /* Sicherheits-Wash damit Header-Chrome (dark) gegen helle Stellen lesbar bleibt */
+    .hero-ls__chrome-wash{position:absolute;left:0;right:0;top:0;height:200px;
+      background:linear-gradient(180deg, rgba(8,10,14,.72) 0%, rgba(8,10,14,.32) 55%, transparent 100%);
+      z-index:6;pointer-events:none;opacity:0;transition:opacity 1.4s ease 1.2s}
+    .hero-ls.is-revealed .hero-ls__chrome-wash{opacity:1}
+    /* Vignette/Untergrund nach Reveal — kräftiger für Textlesbarkeit */
+    .hero-ls__bottom-wash{position:absolute;left:0;right:0;bottom:0;height:72%;
+      background:linear-gradient(180deg, transparent 0%, rgba(4,6,10,.05) 22%, rgba(4,6,10,.45) 58%, rgba(4,6,10,.82) 88%, rgba(4,6,10,.94) 100%);
+      z-index:5;pointer-events:none;opacity:0;transition:opacity 1.6s ease 1.6s}
+    .hero-ls.is-revealed .hero-ls__bottom-wash{opacity:1}
+    /* Lokales Scrim direkt hinter dem Titel — sorgt für garantierte Lesbarkeit auch über hellen Bildstellen */
+    .hero-ls__text-scrim{position:absolute;left:0;right:0;bottom:0;height:60%;z-index:5;pointer-events:none;opacity:0;
+      background:radial-gradient(ellipse 70% 90% at 18% 88%, rgba(4,6,10,.55) 0%, rgba(4,6,10,.32) 38%, transparent 72%);
+      transition:opacity 1.6s ease 1.6s;mix-blend-mode:multiply}
+    .hero-ls.is-revealed .hero-ls__text-scrim{opacity:1}
+    /* Bildzähler unten links — dezenter Indikator für den Zyklus */
+    .hero-ls__counter{position:absolute;left:clamp(24px,4vw,72px);bottom:clamp(28px,3.5vh,52px);z-index:7;
+      display:flex;gap:10px;align-items:center;opacity:0;transition:opacity .8s ease 2.2s}
+    .hero-ls.is-revealed .hero-ls__counter{opacity:1}
+    .hero-ls__counter i{display:block;width:22px;height:1.5px;background:rgba(245,245,241,.22);transition:background .6s ease,width .6s ease}
+    .hero-ls__counter i.on{background:#f6f5f0;width:34px}
+    /* Inner content */
+    .hero-ls__inner{position:relative;height:100%;max-width:1480px;margin:0 auto;padding:0 clamp(24px,4vw,72px);display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:clamp(78px,10vh,150px);z-index:7}
+    .hero-ls__title{font-family:var(--hero-sans);font-weight:800;font-size:clamp(60px,10.8vw,176px);line-height:.88;letter-spacing:-.052em;color:#f6f5f0;max-width:1200px;text-transform:uppercase;
+      opacity:0;transition:opacity .5s ease .8s;
+      text-shadow:0 2px 24px rgba(4,6,10,.45), 0 0 60px rgba(4,6,10,.25)}
+    .hero-ls.is-revealed .hero-ls__title{opacity:1}
+    .hero-ls__title .l{display:block;overflow:hidden;padding:.06em 0;clip-path:inset(0 0 100% 0);transition:clip-path 1.2s cubic-bezier(.2,.78,.22,1)}
+    .hero-ls__title .w{display:inline-block;transform:translateY(105%);transition:transform 1.2s cubic-bezier(.2,.78,.22,1);will-change:transform;filter:blur(6px);transition:transform 1.2s cubic-bezier(.2,.78,.22,1),filter .9s ease}
+    .hero-ls.is-revealed .hero-ls__title .l{clip-path:inset(-0.1em 0 0 0)}
+    .hero-ls.is-revealed .hero-ls__title .w{transform:translateY(0);filter:blur(0)}
+    .hero-ls__title .l:nth-child(1){transition-delay:1.2s}
+    .hero-ls__title .l:nth-child(1) .w{transition-delay:1.2s,1.2s}
+    .hero-ls__title .l:nth-child(2){transition-delay:1.45s}
+    .hero-ls__title .l:nth-child(2) .w{transition-delay:1.45s,1.45s;font-weight:300;letter-spacing:-.045em;color:rgba(245,245,241,.92)}
+    .hero-ls__sub{margin-top:clamp(22px,2.4vw,36px);max-width:540px;color:rgba(245,245,241,.92);font-size:clamp(15px,1.2vw,18px);line-height:1.6;font-family:var(--hero-sans);font-weight:400;opacity:0;transform:translateY(8px);transition:opacity .9s ease 2s, transform .9s ease 2s;
+      text-shadow:0 1px 14px rgba(4,6,10,.55)}
+    .hero-ls.is-revealed .hero-ls__sub{opacity:1;transform:translateY(0)}
+    .hero-ls__actions{margin-top:clamp(22px,2.4vw,36px);display:flex;gap:14px;flex-wrap:wrap;opacity:0;transform:translateY(8px);transition:opacity .9s ease 2.25s, transform .9s ease 2.25s}
+    .hero-ls.is-revealed .hero-ls__actions{opacity:1;transform:translateY(0)}
+    /* Hero-Buttons — bordered Mono-Caps, geteilt mit Portrait/Sportwagen/Automobil. */
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;
+      border:1px solid rgba(243,245,239,.32);color:rgba(245,245,241,.7);
+      font-family:var(--font-mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+      transition:background .35s ease,color .35s ease,border-color .35s ease;border-radius:0}
+    .btn:hover{border-color:#f6f5f0;color:#f6f5f0;background:transparent}
+    .btn.primary{border-color:var(--accent);color:#f6f5f0}
+    .btn.primary:hover{background:var(--accent);color:#0a0c11;border-color:var(--accent)}
+
+    /* STATEMENT */
+    .st-ls{position:relative;background:var(--paper);color:var(--ink);min-height:60svh;display:flex;align-items:center;padding:clamp(56px,7vw,108px) clamp(24px,4vw,72px)}
+    .st-ls__inner{max-width:1480px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,5vw,96px);align-items:start}
+    .st-ls__title{font-family:var(--font-display);font-weight:700;font-size:clamp(38px,5.8vw,108px);line-height:.86;letter-spacing:-.058em;text-transform:uppercase}
+    .st-ls__title em{font-style:normal;font-weight:200;color:var(--ink);opacity:.78;letter-spacing:-.038em}
+    .st-ls__body p{color:var(--muted-l);font-size:clamp(15px,1.1vw,17px);line-height:1.65;max-width:48ch}
+    .st-ls__body p+p{margin-top:14px}
+    .st-ls__cta{margin-top:24px;display:inline-flex;align-items:center;gap:9px;font-family:var(--font-mono);text-transform:uppercase;font-size:11px;letter-spacing:.18em;color:var(--ink);border-bottom:1px solid var(--ink);padding-bottom:4px;transition:letter-spacing .35s ease,color .25s ease}
+    .st-ls__cta:hover{letter-spacing:.24em;color:var(--accent-2)}
+
+    /* MODULES — Wie eine Landschaftsserie entsteht (4 cards mit echten Bildern) */
+    .mod-ls{position:relative;background:var(--bg);color:var(--fg);padding:clamp(80px,9vw,140px) clamp(24px,4vw,72px)}
+    .mod-ls__head{max-width:1480px;margin:0 auto;display:flex;justify-content:space-between;align-items:end;gap:32px;flex-wrap:wrap;margin-bottom:clamp(48px,5vw,84px)}
+    .mod-ls__title{font-family:var(--font-display);font-weight:700;font-size:clamp(40px,6.4vw,112px);line-height:.86;letter-spacing:-.058em;max-width:880px;text-transform:uppercase}
+    .mod-ls__title em{font-style:normal;font-weight:200;color:#f6f5f0;opacity:.7;letter-spacing:-.04em}
+    .mod-ls__lead{max-width:380px;color:var(--muted);font-size:14.5px;line-height:1.65}
+    .mod-ls__grid{max-width:1480px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,2vw,32px)}
+    .mod-ls__card{position:relative;overflow:hidden;background:#101218;border:1px solid var(--hair);transition:transform .5s ease,border-color .5s ease}
+    .mod-ls__card:hover{transform:translateY(-4px);border-color:rgba(245,245,241,.28)}
+    .mod-ls__img{aspect-ratio:4/5;background-size:cover;background-position:center;filter:grayscale(.18) brightness(.92);transition:filter .6s ease,transform .8s ease}
+    .mod-ls__card:hover .mod-ls__img{filter:none;transform:scale(1.04)}
+    .mod-ls__body{padding:22px 22px 26px 22px;display:flex;align-items:baseline;gap:14px}
+    .mod-ls__num{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-2);min-width:24px}
+    .mod-ls__name{font-family:var(--font-display);font-weight:600;font-size:clamp(20px,1.7vw,26px);letter-spacing:-.025em}
+
+    /* MINI PORTFOLIO — Bento mit echten Landscape-Bildern + Lightbox */
+    .bg-ls{position:relative;height:150svh;background:#06070a;color:#f6f5f0;padding:clamp(60px,7vw,108px) clamp(24px,4vw,72px) clamp(40px,5vw,72px);display:flex;flex-direction:column}
+    .bg-ls__head{max-width:1480px;margin:0 auto;width:100%;display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-bottom:clamp(28px,3vw,48px)}
+    .bg-ls__title{font-family:var(--font-display);font-weight:700;font-size:clamp(40px,6.2vw,108px);line-height:.86;letter-spacing:-.058em;max-width:760px;text-transform:uppercase}
+    .bg-ls__title em{font-style:normal;font-weight:200;color:#f6f5f0;opacity:.7;letter-spacing:-.04em}
+    .bg-ls__link{font-family:var(--font-mono);text-transform:uppercase;font-size:11px;letter-spacing:.18em;color:#f6f5f0;border-bottom:1px solid rgba(245,245,241,.4);padding-bottom:4px;transition:letter-spacing .35s ease}
+    .bg-ls__link:hover{letter-spacing:.24em}
+    .bg-ls__grid{flex:1;min-height:0;max-width:1480px;margin:0 auto;width:100%;display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:repeat(10,1fr);gap:14px}
+    .bg-ls__tile{position:relative;overflow:hidden;background:#101218;cursor:zoom-in;border:0;padding:0;transition:opacity .5s ease,transform .6s ease}
+    .bg-ls__tile img{width:100%;height:100%;object-fit:cover;transition:filter .6s ease,transform .8s ease;filter:grayscale(.1) brightness(.94)}
+    .bg-ls__grid:hover .bg-ls__tile:not(:hover){opacity:.62}
+    .bg-ls__tile:hover img{filter:none;transform:scale(1.04)}
+    .bg-ls__tile::before,.bg-ls__tile::after{content:"";position:absolute;width:14px;height:14px;border:1px solid rgba(245,245,241,.78);opacity:0;transition:opacity .5s ease,transform .5s ease}
+    .bg-ls__tile::before{top:10px;left:10px;border-right:0;border-bottom:0}
+    .bg-ls__tile::after{bottom:10px;right:10px;border-left:0;border-top:0}
+    .bg-ls__tile:hover::before{opacity:1;transform:translate(-4px,-4px)}
+    .bg-ls__tile:hover::after{opacity:1;transform:translate(4px,4px)}
+    .bg-ls__tile.t-hero{grid-column:1/9;grid-row:1/5}
+    .bg-ls__tile.t-a{grid-column:9/13;grid-row:1/3}
+    .bg-ls__tile.t-b{grid-column:9/13;grid-row:3/5}
+    .bg-ls__tile.t-c{grid-column:1/13;grid-row:5/7}
+    .bg-ls__tile.t-d{grid-column:1/5;grid-row:7/9}
+    .bg-ls__tile.t-e{grid-column:5/9;grid-row:7/9}
+    .bg-ls__tile.t-f{grid-column:9/13;grid-row:7/9}
+    .bg-ls__tile.t-g{grid-column:1/8;grid-row:9/11}
+    .bg-ls__tile.t-h{grid-column:8/13;grid-row:9/11}
+
+    /* BESTELLPROZESS — minimal */
+    .fw-ls{position:relative;background:var(--paper);color:var(--ink);padding:clamp(72px,9vw,140px) clamp(24px,4vw,72px)}
+    .fw-ls__inner{max-width:1280px;margin:0 auto;width:100%}
+    .fw-ls__head{margin-bottom:clamp(56px,7vw,96px)}
+    .fw-ls__title{font-family:var(--font-display);font-weight:700;font-size:clamp(32px,4.4vw,64px);line-height:.96;letter-spacing:-.035em;text-transform:uppercase;max-width:20ch}
+    .fw-ls__title em{font-style:normal;font-weight:200;color:var(--ink);opacity:.55}
+    .fw-ls__lead{display:none}
+    .fw-ls__flow{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(24px,3vw,48px);padding-top:clamp(24px,3vw,40px);border-top:1px solid var(--hair-l)}
+    .fw-ls__step{display:flex;flex-direction:column;gap:14px}
+    .fw-ls__step-num{font-family:var(--font-mono);font-size:11px;letter-spacing:.22em;color:var(--muted-l)}
+    .fw-ls__step h3{font-family:var(--font-display);font-weight:400;font-size:clamp(20px,1.9vw,28px);letter-spacing:-.02em;line-height:1.1}
+    .fw-ls__cta{margin-top:clamp(48px,6vw,80px)}
+    .fw-ls__cta a{font-family:var(--font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;border-bottom:1px solid var(--ink);padding-bottom:4px;transition:letter-spacing .35s ease,color .25s ease}
+    .fw-ls__cta a:hover{letter-spacing:.24em;color:var(--accent-2)}
+
+    /* VERWANDTE — dark */
+    .rl-ls{position:relative;background:var(--bg);color:var(--fg);padding:clamp(60px,7vw,110px) clamp(24px,4vw,72px)}
+    .rl-ls__inner{max-width:1480px;margin:0 auto}
+    .rl-ls__title{font-family:var(--font-display);font-weight:700;font-size:clamp(36px,5vw,80px);letter-spacing:-.05em;line-height:.92;margin-bottom:clamp(28px,3vw,52px);text-transform:uppercase}
+    .rl-ls__title em{font-style:normal;font-weight:200;color:#f6f5f0;opacity:.65}
+    .rl-ls__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .rl-ls__card{position:relative;overflow:hidden;aspect-ratio:4/5;background:#101218;border:1px solid var(--hair);text-decoration:none;color:#f6f5f0;transition:transform .5s ease,border-color .5s ease}
+    .rl-ls__card:hover{transform:translateY(-4px);border-color:rgba(245,245,241,.32)}
+    .rl-ls__card-img{position:absolute;inset:0;background-size:cover;background-position:center;filter:grayscale(.32) brightness(.78);transition:filter .6s ease,transform .8s ease}
+    .rl-ls__card:hover .rl-ls__card-img{filter:none;transform:scale(1.06)}
+    .rl-ls__card-body{position:absolute;left:18px;right:18px;bottom:18px;display:flex;justify-content:space-between;align-items:flex-end;color:#f6f5f0}
+    .rl-ls__card-body strong{font-family:var(--font-display);font-weight:700;font-size:22px;letter-spacing:-.025em}
+    .rl-ls__card-body span{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;opacity:.7}
+
+    /* LIGHTBOX (geteilt) */
+    .lb{position:fixed;inset:0;background:rgba(6,7,10,.94);backdrop-filter:blur(20px);display:none;z-index:200;align-items:center;justify-content:center;padding:40px}
+    .lb.is-open{display:flex}
+    .lb-stage{position:relative;max-width:1280px;max-height:88vh}
+    .lb-img{max-width:100%;max-height:88vh;object-fit:contain}
+    .lb-prev,.lb-next,.lb-close{position:absolute;background:transparent;border:1px solid rgba(245,245,241,.36);width:48px;height:48px;cursor:pointer;color:#f6f5f0;font-family:var(--font-mono);font-size:16px;border-radius:50%;transition:background .25s ease,color .25s ease}
+    .lb-prev:hover,.lb-next:hover,.lb-close:hover{background:#f6f5f0;color:#0a0c11}
+    .lb-prev{left:-72px;top:50%;transform:translateY(-50%)}
+    .lb-next{right:-72px;top:50%;transform:translateY(-50%)}
+    .lb-close{right:-72px;top:0}
+    .lb-counter{position:absolute;left:0;bottom:-32px;font-family:var(--font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(245,245,241,.62)}
+
+    @media (max-width:1080px){
+      .mod-ls__grid{grid-template-columns:repeat(2,1fr)}
+      .fw-ls__flow{grid-template-columns:repeat(2,1fr);gap:36px 28px}
+      .bg-ls{height:auto}
+      .bg-ls__grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:none;gap:12px}
+      .bg-ls__tile{grid-column:auto !important;grid-row:auto !important;aspect-ratio:4/3}
+      .bg-ls__tile.t-hero,.bg-ls__tile.t-c,.bg-ls__tile.t-g{grid-column:span 2 !important}
+      .rl-ls__grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:780px){
+      .st-ls__inner{grid-template-columns:1fr}
+      .hero-ls__counter{left:18px;bottom:18px}
+      .hero-ls__title{font-size:clamp(54px,13vw,84px);letter-spacing:-.045em}
+      .mod-ls__grid{grid-template-columns:1fr}
+      .fw-ls__flow{grid-template-columns:1fr;gap:28px}
+      .lb{padding:16px}
+      .lb-prev,.lb-next{width:42px;height:42px}
+      .lb-prev{left:6px}.lb-next{right:6px}.lb-close{right:6px;top:6px}
+    }
+    @media (prefers-reduced-motion:reduce){
+      .mod-ls__card,.bg-ls__tile,.rl-ls__card,.rl-ls__card-img,.mod-ls__img{animation:none !important;transition:none !important;transform:none !important}
+      .hero-ls__chrome-wash,.hero-ls__bottom-wash,.hero-ls__text-scrim,.hero-ls__grain{transition:none !important;opacity:1}
+      .hero-ls__grain{opacity:.55 !important;animation:none !important}
+      .hero-ls__stage{transform:none !important;transition:none !important}
+      .hero-ls__title{opacity:1 !important}
+      .hero-ls__title .l{clip-path:none !important;transition:none !important}
+      .hero-ls__title .w{transition:none !important;transform:none !important;filter:none !important}
+      .hero-ls__sub,.hero-ls__actions,.hero-ls__counter{transition:none !important;opacity:1;transform:none}
+    }
+  </style>
+</head>
+<body data-section="landschaft">
+
+<header class="topbar" id="topbar">
+  <a class="brand" href="index.html">Matthias<br>Ramahi</a>
+  <nav class="topbar__nav" aria-label="Hauptnavigation">
+    <a href="index.html" data-nav="home">Home</a>
+    <div class="topbar__group" data-nav="fotografie">
+      <a href="fotografie-duesseldorf.html" class="topbar__group-toggle" aria-haspopup="true">Fotografie</a>
+      <div class="topbar__submenu" role="menu">
+        <a href="automobil-fotografie-duesseldorf.html">Automobil</a>
+        <a href="sportwagen-fotografie-duesseldorf.html">Sportwagen</a>
+        <a href="oldtimer-fotografie-duesseldorf.html">Oldtimer</a>
+        <a href="motorrad-fotografie-duesseldorf.html">Motorrad</a>
+        <a href="portraitfotografie-duesseldorf.html">Portrait</a>
+        <a href="landschaftsfotografie-duesseldorf.html">Landschaft</a>
+      </div>
+    </div>
+    <a href="portfolio.html" data-nav="portfolio">Portfolio</a>
+    <a href="ueber-mich.html" data-nav="ueber-mich">Über mich</a>
+    <a href="blog.html" data-nav="blog">Blog</a>
+    <a href="leistungen.html" data-nav="leistungen">Weitere Dienstleistungen</a>
+    <a href="contact.html" data-nav="kontakt">Kontakt</a>
+  </nav>
+  <a class="topbar__cta" href="mailto:info@matthiasramahi.de?subject=Landschaftsfotografie%20Leverkusen%20Anfrage">Anfrage</a>
+  <button class="topbar__menu" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu">
+    <span aria-hidden="true"></span><span aria-hidden="true"></span>
+  </button>
+</header>
+
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <div class="mobile-menu__inner">
+    <a class="mobile-menu__brand" href="index.html">Matthias Ramahi</a>
+    <nav class="mobile-menu__nav" aria-label="Hauptnavigation mobil">
+      <a href="index.html" data-nav="home">Home</a>
+      <div class="mobile-menu__group">
+        <a class="mobile-menu__label" href="fotografie-duesseldorf.html">Fotografie</a>
+        <a href="automobil-fotografie-duesseldorf.html">Automobil</a>
+        <a href="sportwagen-fotografie-duesseldorf.html">Sportwagen</a>
+        <a href="oldtimer-fotografie-duesseldorf.html">Oldtimer</a>
+        <a href="motorrad-fotografie-duesseldorf.html">Motorrad</a>
+        <a href="portraitfotografie-duesseldorf.html">Portrait</a>
+        <a href="landschaftsfotografie-duesseldorf.html">Landschaft</a>
+      </div>
+      <a href="portfolio.html" data-nav="portfolio">Portfolio</a>
+      <a href="ueber-mich.html" data-nav="ueber-mich">Über mich</a>
+      <a href="blog.html" data-nav="blog">Blog</a>
+      <a href="leistungen.html" data-nav="leistungen">Weitere Dienstleistungen</a>
+      <a href="contact.html" data-nav="kontakt">Kontakt</a>
+    </nav>
+    <a class="mobile-menu__cta" href="mailto:info@matthiasramahi.de?subject=Landschaftsfotografie%20Leverkusen%20Anfrage">Anfrage senden</a>
+  </div>
+</div>
+
+<main>
+
+  <!-- HERO — Liquid Reveal: Papier → Tinte → Landschaften (Multi-Zyklus, zufällige Triggerpunkte) -->
+  <section class="hero-ls" data-header-theme="dark" aria-label="Landschaftsfotografie"
+           data-images="assets/portfolio/Wettberwerb_Foto5_Wunder_der_Natur2.webp,assets/portfolio/20250605-DSC04020.webp,assets/portfolio/Wettberwerb_Foto10_Wunder_der_natur.webp,assets/portfolio/_DSC8032.webp,assets/portfolio/20250605-DSC03978.webp">
+    <div class="hero-ls__paper" aria-hidden="true"></div>
+
+    <svg class="hero-ls__stage" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <!-- Organischer Tintenrand: statische Turbulence + Displacement + leichter Blur für gefederten Rand -->
+        <filter id="liquidEdge" x="-20%" y="-20%" width="140%" height="140%" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse">
+          <feTurbulence type="fractalNoise" baseFrequency="0.0055 0.0042" numOctaves="3" seed="11" result="noise"/>
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="180" xChannelSelector="R" yChannelSelector="G" result="displaced"/>
+          <feGaussianBlur in="displaced" stdDeviation="6"/>
+        </filter>
+        <!-- Bottom-Layer Maske (ständig vollständig sichtbar nach jedem Cycle-Tausch) -->
+        <mask id="maskA" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
+          <rect width="1920" height="1080" fill="black"/>
+          <g id="blobsA" filter="url(#liquidEdge)"></g>
+        </mask>
+        <!-- Top-Layer Maske — hier passiert die aktive Tinten-Ausbreitung -->
+        <mask id="maskB" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
+          <rect width="1920" height="1080" fill="black"/>
+          <g id="blobsB" filter="url(#liquidEdge)"></g>
+        </mask>
+      </defs>
+
+      <!-- Bottom: vorheriges Bild (statisch nach Übernahme) -->
+      <image id="lsImgBottom" width="1920" height="1080" x="0" y="0"
+             preserveAspectRatio="xMidYMid slice" mask="url(#maskA)" href=""/>
+
+      <!-- Top: aktuell hereinwachsendes Bild via maskB -->
+      <image id="lsImgTop" width="1920" height="1080" x="0" y="0"
+             preserveAspectRatio="xMidYMid slice" mask="url(#maskB)" href=""/>
+    </svg>
+
+    <!-- Ripple-Ring der bei jedem Tinten-Reveal vom Ursprungspunkt expandiert -->
+    <svg class="hero-ls__ripple" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <circle id="lsRipple" cx="960" cy="540" r="0"/>
+    </svg>
+
+    <div class="hero-ls__grain" aria-hidden="true"></div>
+    <div class="hero-ls__chrome-wash" aria-hidden="true"></div>
+    <div class="hero-ls__bottom-wash" aria-hidden="true"></div>
+    <div class="hero-ls__text-scrim" aria-hidden="true"></div>
+
+    <div class="hero-ls__inner">
+      <h1 class="hero-ls__title">
+        <span class="l"><span class="w">Landschaft</span></span>
+        <span class="l"><span class="w">Leverkusen.</span></span>
+      </h1>
+      <p class="hero-ls__sub">Landschaftsfotografie für Leverkusen: Bildräume aus Geduld, Licht und Atmosphäre — als Fine-Art-Print, Wandbild, Edition oder Großformat für Räume, die Ruhe statt Spektakel brauchen. Leverkusen liegt zwischen Köln und Düsseldorf und eignet sich für kompakte Produktionen mit kurzen Wegen und klarer Planung.</p>
+      <div class="hero-ls__actions">
+        <a class="btn primary" href="#anfrage">Landschafts-Serie anfragen →</a>
+        <a class="btn" href="portfolio.html">Portfolio</a>
+      </div>
+    </div>
+
+    <div class="hero-ls__counter" id="lsCounter" aria-hidden="true"></div>
+  </section>
+
+  <!-- STATEMENT -->
+  <section class="st-ls" data-header-theme="light">
+    <div class="st-ls__inner">
+      <h2 class="st-ls__title">Bilder, die einen <em>Raum verändern.</em></h2>
+      <div class="st-ls__body">
+        <p>Landschaft entsteht aus Geduld — aus der Entscheidung, was im Bild bleiben darf und was nicht. Aus Wetter, das man nicht herstellen kann, und aus dem richtigen Moment, in dem alles zusammenkommt.</p>
+        <p>Jede Aufnahme ist als großformatiger Print gedacht — für Wand, Wohnraum, Praxis, Hotel oder Sammlung. Alle Motive werden farbecht auf Fine-Art-Papier, Aluminium-Dibond oder hinter Acrylglas gefertigt und in Deutschland gedruckt.</p>
+        <a class="st-ls__cta" href="#anfrage">Jetzt Anfrage stellen →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULES — Print-Ausführungen -->
+  <section class="mod-ls" data-header-theme="dark">
+    <div class="mod-ls__head">
+      <h2 class="mod-ls__title">Vier Ausführungen.</h2>
+      <p class="mod-ls__lead">Jedes Motiv ist als Print erhältlich.</p>
+    </div>
+    <div class="mod-ls__grid">
+      <article class="mod-ls__card">
+        <div class="mod-ls__img" style="background-image:url('assets/portfolio/Wettberwerb_Foto6_Wunder_der_Natur.webp')"></div>
+        <div class="mod-ls__body">
+          <span class="mod-ls__num">01</span>
+          <h3 class="mod-ls__name">Fine-Art</h3>
+        </div>
+      </article>
+      <article class="mod-ls__card">
+        <div class="mod-ls__img" style="background-image:url('assets/portfolio/Wettberwerb_Foto10_Wunder_der_natur.webp')"></div>
+        <div class="mod-ls__body">
+          <span class="mod-ls__num">02</span>
+          <h3 class="mod-ls__name">Aluminium</h3>
+        </div>
+      </article>
+      <article class="mod-ls__card">
+        <div class="mod-ls__img" style="background-image:url('assets/portfolio/20250414-DSC00341.webp')"></div>
+        <div class="mod-ls__body">
+          <span class="mod-ls__num">03</span>
+          <h3 class="mod-ls__name">Acryl­glas</h3>
+        </div>
+      </article>
+      <article class="mod-ls__card">
+        <div class="mod-ls__img" style="background-image:url('assets/portfolio/20250327-DSC01550.webp')"></div>
+        <div class="mod-ls__body">
+          <span class="mod-ls__num">04</span>
+          <h3 class="mod-ls__name">Edition</h3>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- MINI PORTFOLIO — Bento mit Lightbox -->
+  <section class="bg-ls" data-header-theme="dark" aria-label="Ausgewählte Landschaftsarbeiten">
+    <div class="bg-ls__head">
+      <h2 class="bg-ls__title">Ausgewählte <em>Landschaften.</em></h2>
+      <a class="bg-ls__link" href="portfolio.html">Zum Portfolio →</a>
+    </div>
+    <div class="bg-ls__grid">
+      <button class="bg-ls__tile t-hero" data-full="assets/portfolio/Wettberwerb_Foto5_Wunder_der_Natur2.webp"><img loading="lazy" src="assets/portfolio/thumbs/Wettberwerb_Foto5_Wunder_der_Natur2.webp" alt="Landschaft Hauptmotiv"></button>
+      <button class="bg-ls__tile t-a" data-full="assets/portfolio/Wettberwerb_Foto6_Wunder_der_Natur.webp"><img loading="lazy" src="assets/portfolio/thumbs/Wettberwerb_Foto6_Wunder_der_Natur.webp" alt="Landschaft"></button>
+      <button class="bg-ls__tile t-b" data-full="assets/portfolio/Wettberwerb_Foto10_Wunder_der_natur.webp"><img loading="lazy" src="assets/portfolio/thumbs/Wettberwerb_Foto10_Wunder_der_natur.webp" alt="Landschaft Atmosphäre"></button>
+      <button class="bg-ls__tile t-c" data-full="assets/portfolio/20250605-DSC04020.webp"><img loading="lazy" src="assets/portfolio/thumbs/20250605-DSC04020.webp" alt="Landschaft Cinema"></button>
+      <button class="bg-ls__tile t-d" data-full="assets/portfolio/20250605-DSC03978.webp"><img loading="lazy" src="assets/portfolio/thumbs/20250605-DSC03978.webp" alt="Landschaft"></button>
+      <button class="bg-ls__tile t-e" data-full="assets/portfolio/20250605-DSC03816.webp"><img loading="lazy" src="assets/portfolio/thumbs/20250605-DSC03816.webp" alt="Landschaft"></button>
+      <button class="bg-ls__tile t-f" data-full="assets/portfolio/20250605-DSC03793.webp"><img loading="lazy" src="assets/portfolio/thumbs/20250605-DSC03793.webp" alt="Landschaft"></button>
+      <button class="bg-ls__tile t-g" data-full="assets/portfolio/20250605-DSC03756.webp"><img loading="lazy" src="assets/portfolio/thumbs/20250605-DSC03756.webp" alt="Landschaft"></button>
+      <button class="bg-ls__tile t-h" data-full="assets/portfolio/20250414-DSC00341.webp"><img loading="lazy" src="assets/portfolio/thumbs/20250414-DSC00341.webp" alt="Landschaft Detail"></button>
+    </div>
+  </section>
+
+  <!-- FÜR WEN -->
+  <section class="fw-ls" data-header-theme="light">
+    <div class="fw-ls__inner">
+      <div class="fw-ls__head">
+        <h2 class="fw-ls__title">So entsteht <em>Ihr Druck.</em></h2>
+        <p class="fw-ls__lead">Jedes Bild aus dem Portfolio, in jedem Format, mit oder ohne Rahmen — auf Anfrage gefertigt und zu Ihnen geliefert.</p>
+      </div>
+
+      <div class="fw-ls__flow">
+        <div class="fw-ls__step">
+          <span class="fw-ls__step-num">01</span>
+          <h3>Anfrage</h3>
+        </div>
+        <div class="fw-ls__step">
+          <span class="fw-ls__step-num">02</span>
+          <h3>Beratung</h3>
+        </div>
+        <div class="fw-ls__step">
+          <span class="fw-ls__step-num">03</span>
+          <h3>Produktion</h3>
+        </div>
+        <div class="fw-ls__step">
+          <span class="fw-ls__step-num">04</span>
+          <h3>Lieferung</h3>
+        </div>
+      </div>
+
+      <div class="fw-ls__cta">
+        <a href="contact.html">Jetzt Anfrage stellen →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- VERWANDTE BEREICHE -->
+  <section class="rl-ls" data-header-theme="dark" aria-label="Landschaftsfotografie Leverkusen">
+    <div class="rl-ls__inner">
+      <h2 class="rl-ls__title">Verwandte <em>Bereiche.</em></h2>
+      <div class="rl-ls__grid">
+        <a class="rl-ls__card" href="portraitfotografie-duesseldorf.html"><div class="rl-ls__card-img" style="background-image:url('assets/photos/portrait-blue.webp')"></div><div class="rl-ls__card-body"><strong>Portrait</strong><span>→</span></div></a>
+        <a class="rl-ls__card" href="oldtimer-fotografie-duesseldorf.html"><div class="rl-ls__card-img" style="background-image:url('assets/photos/oldtimer-stage.webp')"></div><div class="rl-ls__card-body"><strong>Oldtimer</strong><span>→</span></div></a>
+        <a class="rl-ls__card" href="drucke-sonderanfertigungen-duesseldorf.html"><div class="rl-ls__card-img" style="background-image:url('assets/portfolio/20250605-DSC03978.webp')"></div><div class="rl-ls__card-body"><strong>Drucke</strong><span>→</span></div></a>
+        <a class="rl-ls__card" href="portfolio.html"><div class="rl-ls__card-img" style="background-image:url('assets/portfolio/Wettberwerb_Foto10_Wunder_der_natur.webp')"></div><div class="rl-ls__card-body"><strong>Portfolio</strong><span>→</span></div></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CITIES (geteilt) -->
+  <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Landschaftsfotografie in NRW">
+    <div class="mr-cities__inner">
+      <div class="mr-cities__head">
+        <h2 class="mr-cities__title">Landschaftsfotografie <em>vor Ort.</em></h2>
+      </div>
+      <nav class="mr-cities__grid" aria-label="Städte">
+        <a class="mr-cities__cell" href="landschaftsfotografie-duesseldorf.html">Düsseldorf</a>
+        <a class="mr-cities__cell" href="landschaftsfotografie-koeln.html">Köln</a>
+        <a class="mr-cities__cell" href="landschaftsfotografie-essen.html">Essen</a>
+        <a class="mr-cities__cell" href="landschaftsfotografie-dortmund.html">Dortmund</a>
+        <a class="mr-cities__cell" href="landschaftsfotografie-duisburg.html">Duisburg</a>
+        <a class="mr-cities__cell" href="landschaftsfotografie-bochum.html">Bochum</a>
+        <a class="mr-cities__cell" href="landschaftsfotografie-wuppertal.html">Wuppertal</a>
+        <a class="mr-cities__cell" href="landschaftsfotografie-leverkusen.html">Leverkusen</a>
+        <a class="mr-cities__cell" href="landschaftsfotografie-oberhausen.html">Oberhausen</a>
+        <a class="mr-cities__cell" href="landschaftsfotografie-krefeld.html">Krefeld</a>
+        <a class="mr-cities__cell" href="landschaftsfotografie-moenchengladbach.html">Mönchengladbach</a>
+        <a class="mr-cities__cell" href="landschaftsfotografie-moers.html">Moers</a>
+        <a class="mr-cities__cell" href="landschaftsfotografie-gelsenkirchen.html">Gelsenkirchen</a>
+        <a class="mr-cities__cell" href="landschaftsfotografie-bergisch-gladbach.html">Bergisch Gladbach</a>
+        <a class="mr-cities__cell" href="landschaftsfotografie-solingen.html">Solingen</a>
+        <a class="mr-cities__cell" href="landschaftsfotografie-remscheid.html">Remscheid</a>
+        <a class="mr-cities__cell" href="landschaftsfotografie-mettmann.html">Mettmann</a>
+        <a class="mr-cities__cell" href="landschaftsfotografie-hilden.html">Hilden</a>
+        <a class="mr-cities__cell" href="landschaftsfotografie-dormagen.html">Dormagen</a>
+        <a class="mr-cities__cell" href="landschaftsfotografie-neuss.html">Neuss</a>
+        <a class="mr-cities__cell" href="landschaftsfotografie-nrw.html">NRW</a>
+        <a class="mr-cities__cell" href="landschaftsfotografie-deutschland.html">Deutschland</a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ANFRAGE (geteilt) -->
+
+  <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Landschaftsfotografie Suchbegriffe">
+    <div class="mr-cities__inner">
+      <div class="mr-cities__head">
+        <h2>Landschaftsfotografie <em>Suchbegriffe.</em></h2>
+      </div>
+      <nav class="mr-cities__grid" aria-label="Suchvarianten">
+        <a class="mr-cities__cell" href="landschaftsbilder-kaufen.html">Landschaftsbilder kaufen</a>
+        <a class="mr-cities__cell" href="fine-art-prints-landschaft.html">Fine Art Prints Landschaft</a>
+        <a class="mr-cities__cell" href="wandbilder-landschaftsfotografie.html">Wandbilder Landschaftsfotografie</a>
+        <a class="mr-cities__cell" href="naturfotografie-prints.html">Naturfotografie Prints</a>
+        <a class="mr-cities__cell" href="landschaftsfotografie-print-deutschland.html">Landschaftsfotografie Print Deutschland</a>
+      </nav>
+    </div>
+  </section>
+  <section
+    id="anfrage"
+    data-contact-section
+    data-header-theme="light"
+    data-contact-subject="Landschaftsfotografie Leverkusen Anfrage"
+    data-contact-headline="Landschaft Leverkusen &lt;em&gt;anfragen.&lt;/em&gt;"
+    data-contact-lead="Schreibe kurz, wofür die Landschaftsbilder in Leverkusen eingesetzt werden — Fine-Art-Print, Innenraum, Editorial, Website oder Markenbild. Wichtig sind gewünschte Atmosphäre, Format, Material und Zeitraum."
+  ></section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="mr-footer" data-header-theme="dark" aria-label="Website Footer">
+  <div class="mr-footer__hairline" aria-hidden="true"></div>
+  <div class="mr-footer__inner">
+
+    <section class="mr-footer__top" aria-label="Studio">
+      <a class="mr-footer__mark" href="index.html" aria-label="Zurück zur Startseite">
+        Matthias<span>Ramahi</span>
+      </a>
+      <div class="mr-footer__claim">
+        <p>Fotografie aus Düsseldorf — kuratiert für <em>Marke, Sammlung und Druck</em>. Editorial geführt, technisch ruhig, bereit für die nächste Ausgabe.</p>
+        <div class="mr-footer__meta" aria-label="Studio">
+          <a href="ueber-mich.html">Studio &nbsp;→</a>
+        </div>
+      </div>
+    </section>
+
+    <nav class="mr-footer__cols" aria-label="Footer Sitemap">
+
+      <div class="mr-footer__col" aria-labelledby="ftr-foto">
+        <span class="mr-footer__col-label" id="ftr-foto">Fotografie</span>
+        <div class="mr-footer__col-list">
+          <a href="fotografie-duesseldorf.html">Übersicht</a>
+          <a href="automobil-fotografie-duesseldorf.html">Automobil</a>
+          <a href="sportwagen-fotografie-duesseldorf.html">Sportwagen</a>
+          <a href="oldtimer-fotografie-duesseldorf.html">Oldtimer</a>
+          <a href="motorrad-fotografie-duesseldorf.html">Motorrad</a>
+          <a href="portraitfotografie-duesseldorf.html">Portrait</a>
+          <a href="landschaftsfotografie-duesseldorf.html">Landschaft</a>
+        </div>
+      </div>
+
+      <div class="mr-footer__col" aria-labelledby="ftr-studio">
+        <span class="mr-footer__col-label" id="ftr-studio">Studio</span>
+        <div class="mr-footer__col-list">
+          <a href="index.html">Home</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="ueber-mich.html">Über mich</a>
+          <a href="blog.html">Journal</a>
+          <a href="contact.html">Kontakt</a>
+        </div>
+      </div>
+
+      <div class="mr-footer__col" aria-labelledby="ftr-services">
+        <span class="mr-footer__col-label" id="ftr-services">Weitere Dienstleistungen</span>
+        <div class="mr-footer__col-list">
+          <a href="leistungen.html">Übersicht</a>
+          <a href="fotolabor-druck-duesseldorf.html">Fotolabor &amp; Druck</a>
+          <a href="webdesign-seo-duesseldorf.html">Webdesign &amp; SEO</a>
+          <a href="videografie-duesseldorf.html">Videografie</a>
+          <a href="drucke-sonderanfertigungen-duesseldorf.html">Drucke &amp; Sonderanfertigungen</a>
+        </div>
+      </div>
+
+      <div class="mr-footer__col" aria-labelledby="ftr-kontakt">
+        <span class="mr-footer__col-label" id="ftr-kontakt">Direkt</span>
+        <div class="mr-footer__contact">
+          <div class="mr-footer__contact-line">
+            <span>E-Mail</span>
+            <a href="mailto:info@matthiasramahi.de">info@matthiasramahi.de</a>
+          </div>
+          <div class="mr-footer__contact-line">
+            <span>Telefon</span>
+            <a href="tel:+4917642449858">+49 176 42 44 98 58</a>
+          </div>
+          <div class="mr-footer__contact-line">
+            <span>Studio</span>
+            <strong>Düsseldorf · NRW</strong>
+          </div>
+        </div>
+      </div>
+
+    </nav>
+
+    <div class="mr-footer__base">
+      <span class="mr-footer__base-left">© 2026 Matthias Ramahi</span>
+      <span class="mr-footer__base-center">
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">Instagram ↗</a>
+      </span>
+      <span class="mr-footer__base-right">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+      </span>
+    </div>
+
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb" aria-hidden="true">
+  <div class="lb-stage">
+    <img class="lb-img" id="lb-img" alt="">
+    <button class="lb-prev" id="lb-prev" aria-label="Vorheriges">←</button>
+    <button class="lb-next" id="lb-next" aria-label="Nächstes">→</button>
+    <button class="lb-close" id="lb-close" aria-label="Schliessen">×</button>
+    <div class="lb-counter" id="lb-counter">01 / 09</div>
+  </div>
+</div>
+
+<script src="assets/site-chrome.js" defer></script>
+<script>
+  // Hero — Multi-Image Liquid Reveal (cinematic, ruhig, slow)
+  document.addEventListener('DOMContentLoaded',()=>{
+    const hero=document.querySelector('.hero-ls');
+    if(!hero) return;
+    const SVGNS='http://www.w3.org/2000/svg';
+    const imgBottom=document.getElementById('lsImgBottom');
+    const imgTop=document.getElementById('lsImgTop');
+    const blobsA=document.getElementById('blobsA');
+    const blobsB=document.getElementById('blobsB');
+    const counterEl=document.getElementById('lsCounter');
+    if(!imgBottom||!imgTop) return;
+
+    const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const images=(hero.dataset.images||'').split(',').map(s=>s.trim()).filter(Boolean);
+    if(!images.length) return;
+
+    // Counter-Bars
+    counterEl.innerHTML='';
+    images.forEach(()=>{const i=document.createElement('i');counterEl.appendChild(i);});
+    const bars=Array.from(counterEl.children);
+    const setActive=(idx)=>bars.forEach((b,i)=>b.classList.toggle('on',i===idx));
+
+    // Bilder vorladen, damit der Wechsel nicht ruckelt
+    images.forEach(src=>{const im=new Image();im.decoding='async';im.src=src;});
+
+    // easeInOutCubic — sanftes Beschleunigen + Abklingen, fühlt sich premium an
+    const easeInOutCubic=t=>t<.5 ? 4*t*t*t : 1-Math.pow(-2*t+2,3)/2;
+
+    const CANVAS_W=1920, CANVAS_H=1080;
+    const DIAG=Math.hypot(CANVAS_W, CANVAS_H); // ~2203
+    const FULL_R=DIAG*1.25;  // sicher die ganze Fläche abdecken auch off-center
+    const HOLD_MS=5600;      // ruhig, aber nicht ewig — fühlt sich wie ein Atemzug an
+    const REVEAL_MS=3400;    // sanft cinematisch, gleitet weich aus
+    const SAT_DELAY=480;
+    const SAT_DUR=2900;
+    const ripple=document.getElementById('lsRipple');
+    const stage=hero.querySelector('.hero-ls__stage');
+
+    function rand(min,max){return min+Math.random()*(max-min);}
+    function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
+    function clearChildren(el){while(el.firstChild)el.removeChild(el.firstChild);}
+
+    // Wählt einen Triggerpunkt mit gutem Abstand zum vorherigen, sodass der Wechsel sich nicht wiederholt anfühlt
+    let lastPt={cx:CANVAS_W*0.78, cy:CANVAS_H*0.25};
+    function pickPoint(){
+      // Versuche bis zu 6× einen Punkt zu finden, der ≥ 35% der Diagonale vom letzten entfernt ist
+      const minDist=DIAG*0.34;
+      let best=null, bestD=-1;
+      for(let i=0;i<6;i++){
+        const p={cx:rand(CANVAS_W*0.15, CANVAS_W*0.85), cy:rand(CANVAS_H*0.18, CANVAS_H*0.82)};
+        const d=Math.hypot(p.cx-lastPt.cx, p.cy-lastPt.cy);
+        if(d>=minDist){ best=p; bestD=d; break; }
+        if(d>bestD){ best=p; bestD=d; }
+      }
+      lastPt=best;
+      return best;
+    }
+
+    // Synchroner Ripple-Ring der vom Tinten-Ursprung expandiert
+    function fireRipple(cx, cy){
+      if(!ripple) return;
+      ripple.setAttribute('cx', cx.toFixed(0));
+      ripple.setAttribute('cy', cy.toFixed(0));
+      ripple.setAttribute('r','0');
+      ripple.style.strokeOpacity='0';
+      const t0=performance.now();
+      const DUR=1700, MAX_R=DIAG*0.62;
+      const ease=t=>1-Math.pow(1-t,3);
+      function tick(now){
+        const t=clamp((now-t0)/DUR,0,1);
+        ripple.setAttribute('r',(MAX_R*ease(t)).toFixed(0));
+        // sanfter Fade — peak bei ~12%, dann ausklingen
+        const op = t<0.12 ? (t/0.12)*0.32 : (1-((t-0.12)/0.88))*0.32;
+        ripple.style.strokeOpacity = Math.max(0,op).toFixed(3);
+        ripple.style.strokeWidth = (1.6 + 0.8*(1-t)).toFixed(2);
+        if(t<1) requestAnimationFrame(tick);
+        else ripple.style.strokeOpacity='0';
+      }
+      requestAnimationFrame(tick);
+    }
+
+    // Erzeugt 1 Haupt-Blob + 1 sanften Satelliten — keine Splatter, keine Drips
+    function buildInkOnMask(blobGroup){
+      clearChildren(blobGroup);
+      const seed=pickPoint();
+      // Ripple gleichzeitig mit dem Reveal feuern
+      fireRipple(seed.cx, seed.cy);
+      const main=document.createElementNS(SVGNS,'circle');
+      main.setAttribute('cx', seed.cx.toFixed(0));
+      main.setAttribute('cy', seed.cy.toFixed(0));
+      main.setAttribute('r','0');
+      main.setAttribute('fill','white');
+      blobGroup.appendChild(main);
+
+      // Satellite: ein zweiter, kleinerer Blob im Gegenquadranten, leicht versetzt → bricht die Kreissymmetrie
+      const offAng=rand(0, Math.PI*2);
+      const offDist=rand(CANVAS_W*0.22, CANVAS_W*0.38);
+      const sat={cx:clamp(seed.cx+Math.cos(offAng)*offDist, 160, CANVAS_W-160),
+                 cy:clamp(seed.cy+Math.sin(offAng)*offDist, 140, CANVAS_H-140)};
+      const sec=document.createElementNS(SVGNS,'circle');
+      sec.setAttribute('cx', sat.cx.toFixed(0));
+      sec.setAttribute('cy', sat.cy.toFixed(0));
+      sec.setAttribute('r','0');
+      sec.setAttribute('fill','white');
+      blobGroup.appendChild(sec);
+
+      return new Promise(resolve=>{
+        const t0=performance.now();
+        const totalDur=REVEAL_MS+260;
+        function tick(now){
+          const t=now-t0;
+          const lm=clamp((t-0)/REVEAL_MS,0,1);
+          main.setAttribute('r', (FULL_R*easeInOutCubic(lm)).toFixed(0));
+          const ls=clamp((t-SAT_DELAY)/SAT_DUR,0,1);
+          // Satellite muss nicht ganz so groß werden; er sorgt nur für asymmetrischen Anfang
+          sec.setAttribute('r', (FULL_R*0.7*easeInOutCubic(ls)).toFixed(0));
+          if(t<totalDur){
+            requestAnimationFrame(tick);
+          } else {
+            // Am Ende sicherstellen, dass die Maske wirklich voll ist
+            main.setAttribute('r', FULL_R.toFixed(0));
+            sec.setAttribute('r', FULL_R.toFixed(0));
+            resolve();
+          }
+        }
+        requestAnimationFrame(tick);
+      });
+    }
+
+    function setFullMask(group){
+      clearChildren(group);
+      const c=document.createElementNS(SVGNS,'circle');
+      c.setAttribute('cx', CANVAS_W/2);
+      c.setAttribute('cy', CANVAS_H/2);
+      c.setAttribute('r', FULL_R);
+      c.setAttribute('fill','white');
+      group.appendChild(c);
+    }
+
+    async function runCycle(){
+      // PHASE 0: erstes Bild
+      imgBottom.setAttributeNS('http://www.w3.org/1999/xlink','href', images[0]);
+      imgBottom.setAttribute('href', images[0]);
+      imgTop.setAttribute('href', '');
+      clearChildren(blobsB);
+      setActive(0);
+
+      if(reduced){
+        setFullMask(blobsA);
+        hero.classList.add('is-revealed');
+        return;
+      }
+
+      hero.classList.add('is-revealed');
+      await buildInkOnMask(blobsA);
+
+      // PHASE LOOP
+      let nextIdx=1;
+      while(true){
+        await sleep(HOLD_MS);
+        const next=images[nextIdx % images.length];
+        imgTop.setAttribute('href', next);
+        setActive(nextIdx % images.length);
+
+        await buildInkOnMask(blobsB);
+
+        // Übernehmen
+        imgBottom.setAttribute('href', next);
+        setFullMask(blobsA);
+        clearChildren(blobsB);
+
+        nextIdx++;
+      }
+    }
+
+    function sleep(ms){return new Promise(r=>setTimeout(r,ms));}
+
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{
+      setTimeout(()=>{runCycle().catch(()=>{});}, 320);
+    }));
+
+    // Sanftes Mouse-Parallax auf der Bildbühne — sehr dezent, fühlt sich „lebendig" an
+    if(!reduced && stage){
+      let targetX=0,targetY=0,curX=0,curY=0,rafId=null;
+      const RANGE=10; // px in jede Richtung
+      hero.addEventListener('mousemove',(e)=>{
+        const r=hero.getBoundingClientRect();
+        const nx=((e.clientX-r.left)/r.width-0.5)*2;
+        const ny=((e.clientY-r.top)/r.height-0.5)*2;
+        targetX=-nx*RANGE; targetY=-ny*RANGE;
+        if(!rafId) rafId=requestAnimationFrame(loop);
+      },{passive:true});
+      hero.addEventListener('mouseleave',()=>{targetX=0;targetY=0;if(!rafId) rafId=requestAnimationFrame(loop);});
+      function loop(){
+        curX+=(targetX-curX)*0.08;
+        curY+=(targetY-curY)*0.08;
+        stage.style.transform=`translate3d(${curX.toFixed(2)}px,${curY.toFixed(2)}px,0) scale(1.025)`;
+        if(Math.abs(targetX-curX)>0.05 || Math.abs(targetY-curY)>0.05){
+          rafId=requestAnimationFrame(loop);
+        } else { rafId=null; }
+      }
+      // initial slight zoom-out so parallax-shift never reveals empty edge
+      stage.style.transform='translate3d(0,0,0) scale(1.025)';
+    }
+  });
+
+  // Lazy image fade
+  document.addEventListener('DOMContentLoaded',()=>{
+    document.querySelectorAll('img[loading="lazy"]').forEach(img=>{
+      if(img.complete) img.classList.add('is-loaded');
+      else img.addEventListener('load',()=>img.classList.add('is-loaded'),{once:true});
+    });
+  });
+
+  // Lightbox
+  (function(){
+    const lb=document.getElementById('lb'),lbImg=document.getElementById('lb-img'),lbCount=document.getElementById('lb-counter');
+    const prev=document.getElementById('lb-prev'),next=document.getElementById('lb-next'),close=document.getElementById('lb-close');
+    const tiles=Array.from(document.querySelectorAll('.bg-ls__tile'));
+    let idx=0;
+    function open(i){idx=i;show();lb.classList.add('is-open');lb.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'}
+    function show(){const src=tiles[idx].getAttribute('data-full');const im=new Image();im.onload=()=>{lbImg.src=src;lbCount.textContent=String(idx+1).padStart(2,'0')+' / '+String(tiles.length).padStart(2,'0')};im.src=src}
+    function shut(){lb.classList.remove('is-open');lb.setAttribute('aria-hidden','true');document.body.style.overflow=''}
+    tiles.forEach((t,i)=>t.addEventListener('click',()=>open(i)));
+    prev.addEventListener('click',()=>{idx=(idx-1+tiles.length)%tiles.length;show()});
+    next.addEventListener('click',()=>{idx=(idx+1)%tiles.length;show()});
+    close.addEventListener('click',shut);
+    lb.addEventListener('click',e=>{if(e.target===lb)shut()});
+    document.addEventListener('keydown',e=>{if(!lb.classList.contains('is-open'))return;if(e.key==='Escape')shut();if(e.key==='ArrowLeft')prev.click();if(e.key==='ArrowRight')next.click()});
+  })();
+</script>
+</body>
+</html>

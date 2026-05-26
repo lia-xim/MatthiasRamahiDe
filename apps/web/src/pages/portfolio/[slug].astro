@@ -1,0 +1,58 @@
+---
+import ContentBlocks from '../../components/ContentBlocks.astro'
+import ContactCta from '../../components/ContactCta.astro'
+import ResponsiveImage from '../../components/ResponsiveImage.astro'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import { getBySlug, imageAlt, imageUrl, listDocuments, routeForDoc } from '../../lib/payload'
+
+export const prerender = true
+
+export async function getStaticPaths() {
+  const docs = await listDocuments('portfolio-projects', { limit: 300, sort: 'sortOrder,-updatedAt' })
+  return docs.map((doc) => ({ params: { slug: doc.slug }, props: { doc } }))
+}
+
+const { slug } = Astro.params
+const doc = Astro.props.doc ?? (slug ? await getBySlug('portfolio-projects', slug) : null)
+
+if (!doc) {
+  return Astro.redirect('/portfolio')
+}
+
+const hero = imageUrl(doc.coverImage, 'wide')
+const gallery = doc.gallery ?? []
+---
+<BaseLayout
+  title={doc.seo?.title || `${doc.title} — Matthias Ramahi`}
+  description={doc.seo?.description || doc.excerpt || ''}
+  canonicalUrl={doc.seo?.canonicalUrl || routeForDoc('portfolio-projects', doc)}
+  noIndex={doc.seo?.noIndex}
+  ogImage={doc.seo?.ogImage || doc.coverImage}
+>
+  <section class="hero-stage" style={hero ? `background: linear-gradient(180deg, rgba(2,3,6,.35), rgba(2,3,6,.88)), url('${hero}') center / cover;` : ''}>
+    <div class="hero-stage__grid container">
+      <div>
+        <p class="eyebrow">Portfolio / {doc.presentationMode || 'Serie'}</p>
+        <h1 class="display">{doc.title}</h1>
+      </div>
+      <p class="copy">{doc.excerpt}</p>
+    </div>
+  </section>
+
+  {gallery.length > 0 && (
+    <section class="container section-pad">
+      <p class="eyebrow">Bildstrecke</p>
+      <div class="card-grid" style="margin-top: 24px;">
+        {gallery.map((item) => (
+          <article class="card" style="padding: 0; min-height: 0;">
+            <ResponsiveImage media={item.image} size="card" fallback={imageAlt(item.image, 'Portfolio-Bild')} />
+            {item.caption && <p class="copy" style="padding: 18px;">{item.caption}</p>}
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <ContentBlocks blocks={doc.blocks} />
+  <ContactCta cta={doc.cta} />
+</BaseLayout>

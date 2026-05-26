@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import ContactCta from '../../components/ContactCta.astro'
+import ResponsiveImage from '../../components/ResponsiveImage.astro'
+import { listDocuments, routeForDoc } from '../../lib/payload'
+
+const posts = await listDocuments('journal-posts', { limit: 60, sort: '-publishedAt' })
+const featured = posts.find((post) => post.featured) || posts[0]
+const rest = featured ? posts.filter((post) => post.id !== featured.id) : posts
+---
+<BaseLayout title="Journal — Matthias Ramahi Fotografie" description="Beiträge, Bildstrecken und Prozessnotizen von Matthias Ramahi.">
+  <section class="hero-stage">
+    <div class="hero-stage__grid container">
+      <div>
+        <p class="eyebrow">Journal</p>
+        <h1 class="display">Notizen, Serien, Prozesse.</h1>
+      </div>
+      <p class="copy">Gedanken zu Fotografie, Bildwirkung, Fahrzeugen, Portraits, Print und visueller Präsentation.</p>
+    </div>
+  </section>
+
+  {featured && (
+    <section class="container section-pad">
+      <a class="feature-row" href={routeForDoc('journal-posts', featured)}>
+        <ResponsiveImage media={featured.coverImage} size="hero" fallback="Journal-Bild" sizes="(max-width: 920px) 100vw, 58vw" />
+        <div>
+          <p class="eyebrow">Featured</p>
+          <h2 class="display">{featured.title}</h2>
+          <p class="copy">{featured.excerpt}</p>
+        </div>
+      </a>
+    </section>
+  )}
+
+  <section class="container section-pad">
+    {posts.length > 0 ? (
+      <div class="card-grid">
+        {rest.map((post) => (
+          <a class="card" href={routeForDoc('journal-posts', post)}>
+            <ResponsiveImage media={post.coverImage} size="card" fallback="Journal-Bild" />
+            <h3 style="margin-top: 22px;">{post.title}</h3>
+            <p class="copy">{post.excerpt}</p>
+          </a>
+        ))}
+      </div>
+    ) : (
+      <div class="empty-state">
+        <p class="eyebrow">Noch keine veröffentlichten Beiträge</p>
+        <p class="copy">Journal-Beiträge erscheinen hier, sobald sie in Payload veröffentlicht sind.</p>
+      </div>
+    )}
+  </section>
+
+  <ContactCta />
+</BaseLayout>

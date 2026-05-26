@@ -1,0 +1,874 @@
+# 202c8946-909c-4df0-a23a-30053e8cadf6 implementation handoff
+
+This archive is the source of truth for turning the design into production code. Start from `index.html`, then preserve the visual system, responsive behavior, and interactions found in the exported files.
+
+## Implementation target
+- Build production UI from the exported design, not a loose reinterpretation.
+- Preserve typography scale, spacing rhythm, color tokens, border radii, shadows, motion timing, and component states.
+- Replace static placeholders only when the target app has real data or functional equivalents.
+- Keep generated product UI free of Open Design chrome, preview labels, or design-process annotations.
+- Treat this handoff as a visual contract: if implementation choices conflict, match the exported pixels and behavior first, then refactor internals.
+
+## Source map
+- Primary entry: `index.html`
+- HTML screens detected: 191
+- Stylesheets detected: 5
+- Script/component files detected: 249
+- Supporting assets detected: 346
+
+## Responsive contract
+Validate the implementation across this 2025–2026 viewport matrix:
+- Mobile compact: 360×800
+- Mobile standard: 390×844
+- Mobile large: 430×932
+- Foldable / small tablet: 600×960
+- Tablet portrait: 820×1180
+- Tablet landscape: 1024×768
+- Laptop: 1366×768
+- Desktop: 1440×900
+- Wide desktop: 1920×1080
+
+For responsive web exports, treat these as a modern breakpoint system for one adaptive web experience, not three fixed screenshots. Do not split responsive web into unrelated native app screens unless the project explicitly includes native targets. Use semantic layout thresholds, fluid `clamp()` type/spacing, and container queries where component width matters more than viewport width. Preserve any CSS media queries, container queries, fluid `clamp()` scales, and layout changes already present in the exported files.
+
+## Design fidelity contract
+- Extract reusable tokens before writing components: background, surface, foreground, muted text, border, accent, radius, shadow, spacing, type scale, and motion duration/easing.
+- Map product screens, in-app modules/components, optional landing page, and optional OS widget surfaces before coding. Keep these surfaces separate in the target architecture.
+- Match layout geometry: max-widths, gutters, grid columns, card proportions, sticky/fixed elements, and viewport-specific navigation.
+- Preserve real copy, labels, and data shown in the export. Do not replace specific text with generic marketing filler.
+- Preserve interactive affordances: hover, focus, pressed, disabled, loading, validation, copy/share, tab/accordion, modal/sheet, and keyboard states where present.
+- Preserve accessibility semantics when converting: headings stay hierarchical, controls remain buttons/links/inputs, focus states stay visible.
+- Do not keep prototype-only annotations, frame labels, or Open Design chrome in the production UI.
+
+## CJX-ready UX contract
+- Use `DESIGN-MANIFEST.json` as the machine-readable map for screens, app modules, OS widgets, landing pages, tokens, interactions, and viewport checks.
+- Screen-file-first: when multiple user-facing surfaces exist, implement each HTML screen as its own route/file. Treat `index.html` as a launcher/overview when the manifest marks it that way, not as a combined final UI.
+- If `landing.html`, app screens, platform screens, or OS widget files exist, preserve those boundaries in the target app instead of merging them into one page.
+- A single self-contained `index.html` is acceptable only when the export truly contains one user-facing screen and its CSS/JS are structured enough to extract tokens, components, states, and behavior.
+- If separate `css/` or `js/` files exist, treat them as source of truth for token/component/interactions before porting to React, Vue, SwiftUI, Compose, or another target stack.
+- In-app modules/components are product UI blocks inside the app. OS widgets are home-screen/lock-screen/quick-access surfaces outside the app. Do not merge those concepts.
+
+## Color and brand contract
+- Use the exported design tokens and product/domain context as the color source of truth.
+- Do not introduce warm beige / cream / peach / pink / orange-brown background washes unless they are already explicit brand/reference colors in the export.
+- A stylesheet or design/token file was detected; inspect it for canonical color variables before choosing framework theme tokens.
+
+## Implementation sequence for AI coding tools
+1. Open `index.html` and `DESIGN-MANIFEST.json`; identify every screen file, launcher/overview file, app module, and interaction before coding.
+2. If multiple HTML screens exist, map them to separate routes/surfaces first; do not merge `landing.html`, product app screens, platform screens, or OS widgets into one route.
+3. Extract a token table from CSS/root styles and inline styles before building framework components.
+4. Build product screens and domain-specific in-app modules from largest layout regions down to controls; avoid starting with isolated atoms that lose spatial intent.
+5. Port responsive behavior across the modern viewport matrix and test each semantic breakpoint before cleanup.
+6. Port interactions and states, then replace static placeholders only with real app data or functional equivalents.
+7. Keep optional landing page and OS widget surfaces as separate surfaces if present.
+8. Compare final screenshots against the export at 360×800, 390×844, 430×932, 820×1180, 1024×768, 1366×768, 1440×900, and 1920×1080 before declaring done.
+
+## Entry points
+- `autofotografie-duesseldorf.html`
+- `autohaus-fotografie-duesseldorf.html`
+- `automobil-fotografie-bergisch-gladbach.html`
+- `automobil-fotografie-bochum.html`
+- `automobil-fotografie-deutschland.html`
+- `automobil-fotografie-dormagen.html`
+- `automobil-fotografie-dortmund.html`
+- `automobil-fotografie-duesseldorf.html`
+- `automobil-fotografie-duisburg.html`
+- `automobil-fotografie-essen.html`
+- `automobil-fotografie-gelsenkirchen.html`
+- `automobil-fotografie-hilden.html`
+- `automobil-fotografie-koeln.html`
+- `automobil-fotografie-krefeld.html`
+- `automobil-fotografie-leverkusen.html`
+- `automobil-fotografie-mettmann.html`
+- `automobil-fotografie-moenchengladbach.html`
+- `automobil-fotografie-moers.html`
+- `automobil-fotografie-neuss.html`
+- `automobil-fotografie-nrw.html`
+- `automobil-fotografie-oberhausen.html`
+- `automobil-fotografie-remscheid.html`
+- `automobil-fotografie-solingen.html`
+- `automobil-fotografie-wuppertal.html`
+- `automotive-fotografie-duesseldorf.html`
+- `autoverkauf-fotos-duesseldorf.html`
+- `bike-fotografie-duesseldorf.html`
+- `biker-portrait-duesseldorf.html`
+- `blog-automotive-fotografie-duesseldorf.html`
+- `blog-journal.html`
+- `blog.html`
+- `business-portrait-duesseldorf.html`
+- `classic-car-fotografie-duesseldorf.html`
+- `contact.html`
+- `custom-bike-fotografie-duesseldorf.html`
+- `datenschutz.html`
+- `drucke-sonderanfertigungen-duesseldorf.html`
+- `exotic-car-fotografie-duesseldorf.html`
+- `experimental-lens.html`
+- `fahrzeugfotografie-duesseldorf.html`
+- `fine-art-prints-landschaft.html`
+- `floating-archive.html`
+- `fotografie-deutschland.html`
+- `fotografie-duesseldorf.html`
+- `fotografie-landing-experience.html`
+- `fotografie-nrw.html`
+- `fotolabor-druck-duesseldorf.html`
+- `grossformatdruck-duesseldorf.html`
+- `headshot-fotograf-duesseldorf.html`
+- `impressum.html`
+- `index.html`
+- `landschaftsbilder-kaufen.html`
+- `landschaftsfotografie-bergisch-gladbach.html`
+- `landschaftsfotografie-bochum.html`
+- `landschaftsfotografie-deutschland.html`
+- `landschaftsfotografie-dormagen.html`
+- `landschaftsfotografie-dortmund.html`
+- `landschaftsfotografie-duesseldorf.html`
+- `landschaftsfotografie-duisburg.html`
+- `landschaftsfotografie-essen.html`
+- `landschaftsfotografie-gelsenkirchen.html`
+- `landschaftsfotografie-hilden.html`
+- `landschaftsfotografie-koeln.html`
+- `landschaftsfotografie-krefeld.html`
+- `landschaftsfotografie-leverkusen.html`
+- `landschaftsfotografie-mettmann.html`
+- `landschaftsfotografie-moenchengladbach.html`
+- `landschaftsfotografie-moers.html`
+- `landschaftsfotografie-neuss.html`
+- `landschaftsfotografie-nrw.html`
+- `landschaftsfotografie-oberhausen.html`
+- `landschaftsfotografie-print-deutschland.html`
+- `landschaftsfotografie-remscheid.html`
+- `landschaftsfotografie-solingen.html`
+- `landschaftsfotografie-wuppertal.html`
+- `leistungen.html`
+- `matthias-ramahi-portfolio.html`
+- `motorrad-fotografie-bergisch-gladbach.html`
+- `motorrad-fotografie-bochum.html`
+- `motorrad-fotografie-deutschland.html`
+- `motorrad-fotografie-dormagen.html`
+- `motorrad-fotografie-dortmund.html`
+- `motorrad-fotografie-duesseldorf.html`
+- `motorrad-fotografie-duisburg.html`
+- `motorrad-fotografie-essen.html`
+- `motorrad-fotografie-gelsenkirchen.html`
+- `motorrad-fotografie-hilden.html`
+- `motorrad-fotografie-koeln.html`
+- `motorrad-fotografie-krefeld.html`
+- `motorrad-fotografie-leverkusen.html`
+- `motorrad-fotografie-mettmann.html`
+- `motorrad-fotografie-moenchengladbach.html`
+- `motorrad-fotografie-moers.html`
+- `motorrad-fotografie-neuss.html`
+- `motorrad-fotografie-nrw.html`
+- `motorrad-fotografie-oberhausen.html`
+- `motorrad-fotografie-remscheid.html`
+- `motorrad-fotografie-solingen.html`
+- `motorrad-fotografie-wuppertal.html`
+- `motorrad-shooting-duesseldorf.html`
+- `motorrad-verkaufsfotos-duesseldorf.html`
+- `narrative-stage.html`
+- `naturfotografie-prints.html`
+- `oldtimer-fotografie-bergisch-gladbach.html`
+- `oldtimer-fotografie-bochum.html`
+- `oldtimer-fotografie-deutschland.html`
+- `oldtimer-fotografie-dormagen.html`
+- `oldtimer-fotografie-dortmund.html`
+- `oldtimer-fotografie-duesseldorf.html`
+- `oldtimer-fotografie-duisburg.html`
+- `oldtimer-fotografie-essen.html`
+- `oldtimer-fotografie-gelsenkirchen.html`
+- `oldtimer-fotografie-hilden.html`
+- `oldtimer-fotografie-koeln.html`
+- `oldtimer-fotografie-krefeld.html`
+- `oldtimer-fotografie-leverkusen.html`
+- `oldtimer-fotografie-mettmann.html`
+- `oldtimer-fotografie-moenchengladbach.html`
+- `oldtimer-fotografie-moers.html`
+- `oldtimer-fotografie-neuss.html`
+- `oldtimer-fotografie-nrw.html`
+- `oldtimer-fotografie-oberhausen.html`
+- `oldtimer-fotografie-remscheid.html`
+- `oldtimer-fotografie-solingen.html`
+- `oldtimer-fotografie-wuppertal.html`
+- `oldtimer-shooting-duesseldorf.html`
+- `oldtimer-verkaufsfotos-duesseldorf.html`
+- `performance-car-fotografie-duesseldorf.html`
+- `personal-branding-fotografie-duesseldorf.html`
+- `portfolio-1-tunnel.html`
+- `portfolio.html`
+- `portraitfotografie-bergisch-gladbach.html`
+- `portraitfotografie-bochum.html`
+- `portraitfotografie-deutschland.html`
+- `portraitfotografie-dormagen.html`
+- `portraitfotografie-dortmund.html`
+- `portraitfotografie-duesseldorf.html`
+- `portraitfotografie-duisburg.html`
+- `portraitfotografie-essen.html`
+- `portraitfotografie-experience.html`
+- `portraitfotografie-gelsenkirchen.html`
+- `portraitfotografie-hilden.html`
+- `portraitfotografie-koeln.html`
+- `portraitfotografie-krefeld.html`
+- `portraitfotografie-leverkusen.html`
+- `portraitfotografie-mettmann.html`
+- `portraitfotografie-moenchengladbach.html`
+- `portraitfotografie-moers.html`
+- `portraitfotografie-neuss.html`
+- `portraitfotografie-nrw.html`
+- `portraitfotografie-oberhausen.html`
+- `portraitfotografie-remscheid.html`
+- `portraitfotografie-solingen.html`
+- `portraitfotografie-wuppertal.html`
+- `pressefoto-duesseldorf.html`
+- `radikale-fotografie-portfolio-konzepte.html`
+- `sammlerfahrzeug-fotografie-duesseldorf.html`
+- `sportwagen-fotografie-bergisch-gladbach.html`
+- `sportwagen-fotografie-bochum.html`
+- `sportwagen-fotografie-deutschland.html`
+- `sportwagen-fotografie-dormagen.html`
+- `sportwagen-fotografie-dortmund.html`
+- `sportwagen-fotografie-duesseldorf.html`
+- `sportwagen-fotografie-duisburg.html`
+- `sportwagen-fotografie-essen.html`
+- `sportwagen-fotografie-gelsenkirchen.html`
+- `sportwagen-fotografie-hilden.html`
+- `sportwagen-fotografie-koeln.html`
+- `sportwagen-fotografie-krefeld.html`
+- `sportwagen-fotografie-leverkusen.html`
+- `sportwagen-fotografie-mettmann.html`
+- `sportwagen-fotografie-moenchengladbach.html`
+- `sportwagen-fotografie-moers.html`
+- `sportwagen-fotografie-neuss.html`
+- `sportwagen-fotografie-nrw.html`
+- `sportwagen-fotografie-oberhausen.html`
+- `sportwagen-fotografie-remscheid.html`
+- `sportwagen-fotografie-solingen.html`
+- `sportwagen-fotografie-wuppertal.html`
+- `sportwagen-fotoshooting-duesseldorf.html`
+- `sportwagen-shooting-duesseldorf.html`
+- `supersportwagen-fotografie-duesseldorf.html`
+- `ueber-mich.html`
+- `unternehmensportrait-duesseldorf.html`
+- `videografie-duesseldorf.html`
+- `viola-musik-duesseldorf.html`
+- `wandbilder-landschaftsfotografie.html`
+- `webdesign-seo-duesseldorf.html`
+- `weitere-dienstleistungen.html`
+- `werbetechnik-duesseldorf.html`
+- `youngtimer-fotografie-duesseldorf.html`
+
+## Styles
+- `apps/web/src/styles/tokens.css`
+- `assets/fotografie-overview.css`
+- `assets/local-seo.css`
+- `assets/photo-main-service.css`
+- `assets/site-chrome.css`
+
+## Scripts/components
+- `apps/cms/next-env.d.ts`
+- `apps/cms/next.config.mjs`
+- `apps/cms/src/access/publishedOrAuthenticated.ts`
+- `apps/cms/src/app/(payload)/admin/[[...segments]]/page.tsx`
+- `apps/cms/src/app/(payload)/api/[...slug]/route.ts`
+- `apps/cms/src/app/(payload)/api/graphql-playground/route.ts`
+- `apps/cms/src/app/(payload)/api/graphql/route.ts`
+- `apps/cms/src/app/layout.tsx`
+- `apps/cms/src/app/page.tsx`
+- `apps/cms/src/collections/JournalPosts.ts`
+- `apps/cms/src/collections/LocalSeoPages.ts`
+- `apps/cms/src/collections/Media.ts`
+- `apps/cms/src/collections/PortfolioCategories.ts`
+- `apps/cms/src/collections/PortfolioProjects.ts`
+- `apps/cms/src/collections/ServicePages.ts`
+- `apps/cms/src/collections/SitePages.ts`
+- `apps/cms/src/collections/Users.ts`
+- `apps/cms/src/fields/contentBlocks.ts`
+- `apps/cms/src/fields/seo.ts`
+- `apps/cms/src/fields/slug.ts`
+- `apps/cms/src/globals/Navigation.ts`
+- `apps/cms/src/globals/SiteSettings.ts`
+- `apps/cms/src/hooks/rebuild.ts`
+- `apps/cms/src/livePreview.ts`
+- `apps/cms/src/payload.config.ts`
+- `apps/web/astro.config.mjs`
+- `apps/web/src/env.d.ts`
+- `apps/web/src/lib/payload.ts`
+- `assets/fotografie-overview.js`
+- `assets/photo-main-service.js`
+- `assets/site-chrome.js`
+- `scripts/rollout-chrome.mjs`
+- `tools/add-chrome-link.mjs`
+- `tools/generate-local-seo-cluster.mjs`
+- `tools/generate-service-pages.mjs`
+- `tools/link-local-seo-clusters.mjs`
+- `tools/node_modules/@derhuerst/http-basic/lib/cache-control-utils.d.ts`
+- `tools/node_modules/@derhuerst/http-basic/lib/cache-control-utils.js`
+- `tools/node_modules/@derhuerst/http-basic/lib/cache-utils.d.ts`
+- `tools/node_modules/@derhuerst/http-basic/lib/cache-utils.js`
+- `tools/node_modules/@derhuerst/http-basic/lib/CachedResponse.d.ts`
+- `tools/node_modules/@derhuerst/http-basic/lib/CachedResponse.js`
+- `tools/node_modules/@derhuerst/http-basic/lib/Callback.d.ts`
+- `tools/node_modules/@derhuerst/http-basic/lib/Callback.js`
+- `tools/node_modules/@derhuerst/http-basic/lib/FileCache.d.ts`
+- `tools/node_modules/@derhuerst/http-basic/lib/FileCache.js`
+- `tools/node_modules/@derhuerst/http-basic/lib/Headers.d.ts`
+- `tools/node_modules/@derhuerst/http-basic/lib/Headers.js`
+- `tools/node_modules/@derhuerst/http-basic/lib/HttpVerb.d.ts`
+- `tools/node_modules/@derhuerst/http-basic/lib/HttpVerb.js`
+- `tools/node_modules/@derhuerst/http-basic/lib/ICache.d.ts`
+- `tools/node_modules/@derhuerst/http-basic/lib/ICache.js`
+- `tools/node_modules/@derhuerst/http-basic/lib/index.d.ts`
+- `tools/node_modules/@derhuerst/http-basic/lib/index.js`
+- `tools/node_modules/@derhuerst/http-basic/lib/MemoryCache.d.ts`
+- `tools/node_modules/@derhuerst/http-basic/lib/MemoryCache.js`
+- `tools/node_modules/@derhuerst/http-basic/lib/Options.d.ts`
+- `tools/node_modules/@derhuerst/http-basic/lib/Options.js`
+- `tools/node_modules/@img/colour/color.cjs`
+- `tools/node_modules/@img/colour/index.cjs`
+- `tools/node_modules/@img/colour/index.d.ts`
+- `tools/node_modules/@types/node/assert.d.ts`
+- `tools/node_modules/@types/node/async_hooks.d.ts`
+- `tools/node_modules/@types/node/base.d.ts`
+- `tools/node_modules/@types/node/buffer.d.ts`
+- `tools/node_modules/@types/node/child_process.d.ts`
+- `tools/node_modules/@types/node/cluster.d.ts`
+- `tools/node_modules/@types/node/console.d.ts`
+- `tools/node_modules/@types/node/constants.d.ts`
+- `tools/node_modules/@types/node/crypto.d.ts`
+- `tools/node_modules/@types/node/dgram.d.ts`
+- `tools/node_modules/@types/node/dns.d.ts`
+- `tools/node_modules/@types/node/domain.d.ts`
+- `tools/node_modules/@types/node/events.d.ts`
+- `tools/node_modules/@types/node/fs.d.ts`
+- `tools/node_modules/@types/node/globals.d.ts`
+- `tools/node_modules/@types/node/http.d.ts`
+- `tools/node_modules/@types/node/http2.d.ts`
+- `tools/node_modules/@types/node/https.d.ts`
+- `tools/node_modules/@types/node/index.d.ts`
+- `tools/node_modules/@types/node/inspector.d.ts`
+- `tools/node_modules/@types/node/module.d.ts`
+- `tools/node_modules/@types/node/net.d.ts`
+- `tools/node_modules/@types/node/os.d.ts`
+- `tools/node_modules/@types/node/path.d.ts`
+- `tools/node_modules/@types/node/perf_hooks.d.ts`
+- `tools/node_modules/@types/node/process.d.ts`
+- `tools/node_modules/@types/node/punycode.d.ts`
+- `tools/node_modules/@types/node/querystring.d.ts`
+- `tools/node_modules/@types/node/readline.d.ts`
+- `tools/node_modules/@types/node/repl.d.ts`
+- `tools/node_modules/@types/node/stream.d.ts`
+- `tools/node_modules/@types/node/string_decoder.d.ts`
+- `tools/node_modules/@types/node/timers.d.ts`
+- `tools/node_modules/@types/node/tls.d.ts`
+- `tools/node_modules/@types/node/trace_events.d.ts`
+- `tools/node_modules/@types/node/ts3.6/assert.d.ts`
+- `tools/node_modules/@types/node/ts3.6/base.d.ts`
+- `tools/node_modules/@types/node/ts3.6/index.d.ts`
+- `tools/node_modules/@types/node/tty.d.ts`
+- `tools/node_modules/@types/node/url.d.ts`
+- `tools/node_modules/@types/node/util.d.ts`
+- `tools/node_modules/@types/node/v8.d.ts`
+- `tools/node_modules/@types/node/vm.d.ts`
+- `tools/node_modules/@types/node/worker_threads.d.ts`
+- `tools/node_modules/@types/node/zlib.d.ts`
+- `tools/node_modules/agent-base/dist/src/index.d.ts`
+- `tools/node_modules/agent-base/dist/src/index.js`
+- `tools/node_modules/agent-base/dist/src/promisify.d.ts`
+- `tools/node_modules/agent-base/dist/src/promisify.js`
+- `tools/node_modules/agent-base/src/index.ts`
+- `tools/node_modules/agent-base/src/promisify.ts`
+- `tools/node_modules/buffer-from/index.js`
+- `tools/node_modules/caseless/index.js`
+- `tools/node_modules/caseless/test.js`
+- `tools/node_modules/concat-stream/index.js`
+- `tools/node_modules/debug/src/browser.js`
+- `tools/node_modules/debug/src/common.js`
+- `tools/node_modules/debug/src/index.js`
+- `tools/node_modules/debug/src/node.js`
+- `tools/node_modules/detect-libc/index.d.ts`
+- `tools/node_modules/detect-libc/lib/detect-libc.js`
+- `tools/node_modules/detect-libc/lib/elf.js`
+- `tools/node_modules/detect-libc/lib/filesystem.js`
+- `tools/node_modules/detect-libc/lib/process.js`
+- `tools/node_modules/env-paths/index.d.ts`
+- `tools/node_modules/env-paths/index.js`
+- `tools/node_modules/ffmpeg-static/example.js`
+- `tools/node_modules/ffmpeg-static/index.js`
+- `tools/node_modules/ffmpeg-static/install.js`
+- `tools/node_modules/ffmpeg-static/types/index.d.ts`
+- `tools/node_modules/http-response-object/lib/headers.d.ts`
+- `tools/node_modules/http-response-object/lib/headers.js`
+- `tools/node_modules/http-response-object/lib/index.d.ts`
+- `tools/node_modules/http-response-object/lib/index.js`
+- `tools/node_modules/https-proxy-agent/dist/agent.d.ts`
+- `tools/node_modules/https-proxy-agent/dist/agent.js`
+- `tools/node_modules/https-proxy-agent/dist/index.d.ts`
+- `tools/node_modules/https-proxy-agent/dist/index.js`
+- `tools/node_modules/https-proxy-agent/dist/parse-proxy-response.d.ts`
+- `tools/node_modules/https-proxy-agent/dist/parse-proxy-response.js`
+- `tools/node_modules/inherits/inherits_browser.js`
+- `tools/node_modules/inherits/inherits.js`
+- `tools/node_modules/ms/index.js`
+- `tools/node_modules/parse-cache-control/index.js`
+- `tools/node_modules/parse-cache-control/test.js`
+- `tools/node_modules/progress/index.js`
+- `tools/node_modules/progress/lib/node-progress.js`
+- `tools/node_modules/readable-stream/errors-browser.js`
+- `tools/node_modules/readable-stream/errors.js`
+- `tools/node_modules/readable-stream/experimentalWarning.js`
+- `tools/node_modules/readable-stream/lib/_stream_duplex.js`
+- `tools/node_modules/readable-stream/lib/_stream_passthrough.js`
+- `tools/node_modules/readable-stream/lib/_stream_readable.js`
+- `tools/node_modules/readable-stream/lib/_stream_transform.js`
+- `tools/node_modules/readable-stream/lib/_stream_writable.js`
+- `tools/node_modules/readable-stream/lib/internal/streams/async_iterator.js`
+- `tools/node_modules/readable-stream/lib/internal/streams/buffer_list.js`
+- `tools/node_modules/readable-stream/lib/internal/streams/destroy.js`
+- `tools/node_modules/readable-stream/lib/internal/streams/end-of-stream.js`
+- `tools/node_modules/readable-stream/lib/internal/streams/from-browser.js`
+- `tools/node_modules/readable-stream/lib/internal/streams/from.js`
+- `tools/node_modules/readable-stream/lib/internal/streams/pipeline.js`
+- `tools/node_modules/readable-stream/lib/internal/streams/state.js`
+- `tools/node_modules/readable-stream/lib/internal/streams/stream-browser.js`
+- `tools/node_modules/readable-stream/lib/internal/streams/stream.js`
+- `tools/node_modules/readable-stream/readable-browser.js`
+- `tools/node_modules/readable-stream/readable.js`
+- `tools/node_modules/safe-buffer/index.d.ts`
+- `tools/node_modules/safe-buffer/index.js`
+- `tools/node_modules/semver/bin/semver.js`
+- `tools/node_modules/semver/classes/comparator.js`
+- `tools/node_modules/semver/classes/index.js`
+- `tools/node_modules/semver/classes/range.js`
+- `tools/node_modules/semver/classes/semver.js`
+- `tools/node_modules/semver/functions/clean.js`
+- `tools/node_modules/semver/functions/cmp.js`
+- `tools/node_modules/semver/functions/coerce.js`
+- `tools/node_modules/semver/functions/compare-build.js`
+- `tools/node_modules/semver/functions/compare-loose.js`
+- `tools/node_modules/semver/functions/compare.js`
+- `tools/node_modules/semver/functions/diff.js`
+- `tools/node_modules/semver/functions/eq.js`
+- `tools/node_modules/semver/functions/gt.js`
+- `tools/node_modules/semver/functions/gte.js`
+- `tools/node_modules/semver/functions/inc.js`
+- `tools/node_modules/semver/functions/lt.js`
+- `tools/node_modules/semver/functions/lte.js`
+- `tools/node_modules/semver/functions/major.js`
+- `tools/node_modules/semver/functions/minor.js`
+- `tools/node_modules/semver/functions/neq.js`
+- `tools/node_modules/semver/functions/parse.js`
+- `tools/node_modules/semver/functions/patch.js`
+- `tools/node_modules/semver/functions/prerelease.js`
+- `tools/node_modules/semver/functions/rcompare.js`
+- `tools/node_modules/semver/functions/rsort.js`
+- `tools/node_modules/semver/functions/satisfies.js`
+- `tools/node_modules/semver/functions/sort.js`
+- `tools/node_modules/semver/functions/truncate.js`
+- `tools/node_modules/semver/functions/valid.js`
+- `tools/node_modules/semver/index.js`
+- `tools/node_modules/semver/internal/constants.js`
+- `tools/node_modules/semver/internal/debug.js`
+- `tools/node_modules/semver/internal/identifiers.js`
+- `tools/node_modules/semver/internal/lrucache.js`
+- `tools/node_modules/semver/internal/parse-options.js`
+- `tools/node_modules/semver/internal/re.js`
+- `tools/node_modules/semver/preload.js`
+- `tools/node_modules/semver/ranges/gtr.js`
+- `tools/node_modules/semver/ranges/intersects.js`
+- `tools/node_modules/semver/ranges/ltr.js`
+- `tools/node_modules/semver/ranges/max-satisfying.js`
+- `tools/node_modules/semver/ranges/min-satisfying.js`
+- `tools/node_modules/semver/ranges/min-version.js`
+- `tools/node_modules/semver/ranges/outside.js`
+- `tools/node_modules/semver/ranges/simplify.js`
+- `tools/node_modules/semver/ranges/subset.js`
+- `tools/node_modules/semver/ranges/to-comparators.js`
+- `tools/node_modules/semver/ranges/valid.js`
+- `tools/node_modules/sharp/install/build.js`
+- `tools/node_modules/sharp/install/check.js`
+- `tools/node_modules/sharp/lib/channel.js`
+- `tools/node_modules/sharp/lib/colour.js`
+- `tools/node_modules/sharp/lib/composite.js`
+- `tools/node_modules/sharp/lib/constructor.js`
+- `tools/node_modules/sharp/lib/index.d.ts`
+- `tools/node_modules/sharp/lib/index.js`
+- `tools/node_modules/sharp/lib/input.js`
+- `tools/node_modules/sharp/lib/is.js`
+- `tools/node_modules/sharp/lib/libvips.js`
+- `tools/node_modules/sharp/lib/operation.js`
+- `tools/node_modules/sharp/lib/output.js`
+- `tools/node_modules/sharp/lib/resize.js`
+- `tools/node_modules/sharp/lib/sharp.js`
+- `tools/node_modules/sharp/lib/utility.js`
+- `tools/node_modules/string_decoder/lib/string_decoder.js`
+- `tools/node_modules/typedarray/example/tarray.js`
+- `tools/node_modules/typedarray/index.js`
+- `tools/node_modules/typedarray/test/server/undef_globals.js`
+- `tools/node_modules/typedarray/test/tarray.js`
+- `tools/node_modules/util-deprecate/browser.js`
+- `tools/node_modules/util-deprecate/node.js`
+- `tools/regenerate-local-pages-from-category-templates.mjs`
+- `tools/render-fotografie-overviews.mjs`
+- `tools/strip-old-footer-css.mjs`
+- `tools/sweep-canonical-footer.mjs`
+- `tools/sweep-nav-fotografie-link.mjs`
+- `tools/sync-index-footer.mjs`
+- `tools/thumbs.mjs`
+
+## Assets and supporting files
+- `apps/cms/package.json`
+- `apps/cms/tsconfig.json`
+- `apps/web/package.json`
+- `apps/web/src/components/ContentBlocks.astro`
+- `apps/web/src/components/ResponsiveImage.astro`
+- `apps/web/src/components/SiteFooter.astro`
+- `apps/web/src/components/SiteHeader.astro`
+- `apps/web/src/layouts/BaseLayout.astro`
+- `apps/web/src/pages/[slug].astro`
+- `apps/web/src/pages/index.astro`
+- `apps/web/src/pages/journal/[slug].astro`
+- `apps/web/src/pages/journal/index.astro`
+- `apps/web/src/pages/portfolio/[slug].astro`
+- `apps/web/src/pages/portfolio/index.astro`
+- `apps/web/src/pages/preview/[collection]/[slug].astro`
+- `apps/web/src/pages/services/[slug].astro`
+- `apps/web/src/pages/services/index.astro`
+- `apps/web/tsconfig.json`
+- `assets/atmosphere/bokeh-amber.mp4`
+- `assets/atmosphere/bokeh.mp4`
+- `assets/atmosphere/smoke.mp4`
+- `assets/photos/automobil-neon.webp`
+- `assets/photos/automobil-sunset.webp`
+- `assets/photos/landschaft.webp`
+- `assets/photos/motorrad-duke.jpg`
+- `assets/photos/motorrad-ninja-road.jpg`
+- `assets/photos/motorrad-ninja-studio.jpg`
+- `assets/photos/motorrad.webp`
+- `assets/photos/oldtimer-stage.webp`
+- `assets/photos/portrait-blue.webp`
+- `assets/photos/portrait-warm.webp`
+- `assets/portfolio/_DSC0470-Enhanced-NR.webp`
+- `assets/portfolio/_DSC2310.webp`
+- `assets/portfolio/_DSC2316.webp`
+- `assets/portfolio/_DSC2329.webp`
+- `assets/portfolio/_DSC2345.webp`
+- `assets/portfolio/_DSC2358.webp`
+- `assets/portfolio/_DSC2744.webp`
+- `assets/portfolio/_DSC2762.webp`
+- `assets/portfolio/_DSC2788 (1).webp`
+- `assets/portfolio/_DSC2861 (1).webp`
+- `assets/portfolio/_DSC2876_genErase (1).webp`
+- `assets/portfolio/_DSC2986.webp`
+- `assets/portfolio/_DSC3032_genErase (1).webp`
+- `assets/portfolio/_DSC3032_genErase (2).webp`
+- `assets/portfolio/_DSC3878.webp`
+- `assets/portfolio/_DSC3879.webp`
+- `assets/portfolio/_DSC3892.webp`
+- `assets/portfolio/_DSC3908.webp`
+- `assets/portfolio/_DSC3982.webp`
+- `assets/portfolio/_DSC6982.webp`
+- `assets/portfolio/_DSC8032.webp`
+- `assets/portfolio/_DSC9301-Enhanced-NR.webp`
+- `assets/portfolio/_DSC9321-Enhanced-NR.webp`
+- `assets/portfolio/20250327-DSC01550.webp`
+- `assets/portfolio/20250414-DSC00341.webp`
+- `assets/portfolio/20250605-DSC03756.webp`
+- `assets/portfolio/20250605-DSC03793.webp`
+- `assets/portfolio/20250605-DSC03816.webp`
+- `assets/portfolio/20250605-DSC03978.webp`
+- `assets/portfolio/20250605-DSC04020.webp`
+- `assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp`
+- `assets/portfolio/thumbs/_DSC2310.webp`
+- `assets/portfolio/thumbs/_DSC2316.webp`
+- `assets/portfolio/thumbs/_DSC2329.webp`
+- `assets/portfolio/thumbs/_DSC2345.webp`
+- `assets/portfolio/thumbs/_DSC2358.webp`
+- `assets/portfolio/thumbs/_DSC2744.webp`
+- `assets/portfolio/thumbs/_DSC2762.webp`
+- `assets/portfolio/thumbs/_DSC2788 (1).webp`
+- `assets/portfolio/thumbs/_DSC2861 (1).webp`
+- `assets/portfolio/thumbs/_DSC2876_genErase (1).webp`
+- `assets/portfolio/thumbs/_DSC2986.webp`
+- `assets/portfolio/thumbs/_DSC3032_genErase (1).webp`
+- `assets/portfolio/thumbs/_DSC3032_genErase (2).webp`
+- `assets/portfolio/thumbs/_DSC3878.webp`
+- `assets/portfolio/thumbs/_DSC3879.webp`
+- `assets/portfolio/thumbs/_DSC3892.webp`
+- `assets/portfolio/thumbs/_DSC3908.webp`
+- `assets/portfolio/thumbs/_DSC3982.webp`
+- `assets/portfolio/thumbs/_DSC6982.webp`
+- `assets/portfolio/thumbs/_DSC8032.webp`
+- `assets/portfolio/thumbs/_DSC9301-Enhanced-NR.webp`
+- `assets/portfolio/thumbs/_DSC9321-Enhanced-NR.webp`
+- `assets/portfolio/thumbs/20250327-DSC01550.webp`
+- `assets/portfolio/thumbs/20250414-DSC00341.webp`
+- `assets/portfolio/thumbs/20250605-DSC03756.webp`
+- `assets/portfolio/thumbs/20250605-DSC03793.webp`
+- `assets/portfolio/thumbs/20250605-DSC03816.webp`
+- `assets/portfolio/thumbs/20250605-DSC03978.webp`
+- `assets/portfolio/thumbs/20250605-DSC04020.webp`
+- `assets/portfolio/thumbs/Wettberwerb_Foto10_Wunder_der_natur.webp`
+- `assets/portfolio/thumbs/Wettberwerb_Foto5_Wunder_der_Natur2.webp`
+- `assets/portfolio/thumbs/Wettberwerb_Foto6_Wunder_der_Natur.webp`
+- `assets/portfolio/Wettberwerb_Foto10_Wunder_der_natur.webp`
+- `assets/portfolio/Wettberwerb_Foto5_Wunder_der_Natur2.webp`
+- `assets/portfolio/Wettberwerb_Foto6_Wunder_der_Natur.webp`
+- `assets/portraits/_DSC0470-Enhanced-NR.webp`
+- `assets/portraits/_DSC2310.webp`
+- `assets/portraits/_DSC2329.webp`
+- `assets/portraits/_DSC2358.webp`
+- `assets/portraits/_DSC2744.webp`
+- `assets/portraits/_DSC2986.webp`
+- `assets/portraits/_DSC3032_genErase (1).webp`
+- `assets/portraits/_DSC3878.webp`
+- `assets/portraits/_DSC3908.webp`
+- `assets/portraits/_DSC9301-Enhanced-NR.webp`
+- `assets/portraits/_DSC9321-Enhanced-NR.webp`
+- `assets/portraits/20250327-DSC01550.webp`
+- `assets/portraits/20250605-DSC03756.webp`
+- `assets/portraits/20250605-DSC03978.webp`
+- `assets/portraits/20250605-DSC04020.webp`
+- `assets/services/Catoir_Ramahi-1-106-768x512-1.webp`
+- `assets/services/Catoir_Ramahi-1-25-768x512-1.webp`
+- `assets/services/Catoir_Ramahi-1-32-768x512-1.webp`
+- `assets/services/catoir_ramahiinuikiim21.jpg`
+- `assets/services/Catoir-Ramahi_R7B9155.jpg.webp`
+- `assets/services/fea8218e-7546-48ef-8581-2b99bb3cdefe_centered_reduced.webp`
+- `assets/services/portfolio_webp_full_001.webp`
+- `assets/services/portfolio_webp_full_004-2.webp`
+- `assets/services/portfolio_webp_full_005-2.webp`
+- `assets/services/portfolio_webp_full_006-1.webp`
+- `assets/services/portfolio_webp_full_057-1.webp`
+- `assets/services/portfolio_webp_full_058-1.webp`
+- `assets/services/portfolio_webp_full_254.webp`
+- `assets/services/screencapture-gr-knospe-de-2025-10-02-23_10_04-scaled.jpg`
+- `brand-spec.md`
+- `CMS_IMPLEMENTATION.md`
+- `compose.cms.yml`
+- `critique.json`
+- `local-seo-cluster-tracker.md`
+- `mpb0cvty-image.png`
+- `mpb0vzil-image.png`
+- `mpb16z6x-image.png`
+- `mpb1dqvp-image.png`
+- `mpb1m9jx-image.png`
+- `mpb29p4y-image.png`
+- `mpb2bpyr-image.png`
+- `mpbfrjxg-image.png`
+- `mpe63lze-image.png`
+- `mpe683fr-image.png`
+- `mpe6t8k0-screencapture-matthiasramahi-de-weitere-dienstleistungen-2026-05-20-16_58_23.png`
+- `mpe7m3rm-image.png`
+- `mpe7mfke-image.png`
+- `mpe9gof4-image.png`
+- `mpe9x435-screencapture-matthiasramahi-de-fotolabor-druck-duesseldorf-2026-05-20-18_25_29.png`
+- `mpedjhq3-image.png`
+- `mpegvn33-screencapture-matthiasramahi-de-grossformatdruck-duesseldorf-2026-05-20-21_40_23.png`
+- `mpeh5gto-image.png`
+- `mpeh633i-image.png`
+- `mpeh79x2-image.png`
+- `mpeh7q0y-image.png`
+- `mpehbd3e-image.png`
+- `mpejuwpb-image.png`
+- `mpejvcrs-image.png`
+- `mpejw9nl-image.png`
+- `mpenrwzm-image.png`
+- `mpenscax-image.png`
+- `mpf6ags0-image.png`
+- `mpf6b2qa-image.png`
+- `mpf76guf-image.png`
+- `mpf7w3fx-image.png`
+- `mpf7x1ff-image.png`
+- `mpf7ykqn-image.png`
+- `mpfa8zct-image.png`
+- `mpgvmu09-image.png`
+- `mpgvnra7-image.png`
+- `mpgw8zcz-image.png`
+- `mpgxd01c-image.png`
+- `mphb1x3v-image.png`
+- `mphb1xjc-image.png`
+- `mpig06lu-image.png`
+- `mpijd9d6-image.png`
+- `mpijf3zh-image.png`
+- `mpijflma-image.png`
+- `mpijfxz4-image.png`
+- `mpijgzf6-image.png`
+- `mpijtgs8-image.png`
+- `mpijuutz-image.png`
+- `mpik8b82-_DSC3879.webp`
+- `mpikmeuy-image.png`
+- `mpikmwr0-image.png`
+- `mpissxxj-portfolio_webp_full_063-1.webp`
+- `mpixhlgk-_DSC2986.webp`
+- `mpixi92f-_DSC3032_genErase-_1_.webp`
+- `mpixih9c-_DSC3982.webp`
+- `mpjkn5a2-image.png`
+- `mpjknoew-image.png`
+- `mpjnvzl3-_DSC3032_genErase-_1_.webp`
+- `mpjo5p1e-image.png`
+- `mpjolkv2-image.png`
+- `mpjpgo2b-_DSC3032_genErase-_1_.webp`
+- `mpjpgq5s-_DSC2316.webp`
+- `mpjpgsdt-_DSC2310.webp`
+- `mpjpgu5f-_DSC3892.webp`
+- `mpjpwgrg-image.png`
+- `mpk1jl73-image.png`
+- `mpk9i2b8-Wettberwerb_Foto5_Wunder_der_Natur2.webp`
+- `mpk9i49l-Wettberwerb_Foto10_Wunder_der_natur.webp`
+- `mpk9ia1t-_DSC8032.webp`
+- `mpk9ie4y-20250605-DSC03978.webp`
+- `mpkaequn-image.png`
+- `mpkde7hr-image.png`
+- `mpkdnoqv-image.png`
+- `mpkdw516-image.png`
+- `mpke1kyt-_DSC0470-Enhanced-NR.webp`
+- `mpke1q7v-_DSC9301-Enhanced-NR.webp`
+- `mpke1q82-_DSC9321-Enhanced-NR.webp`
+- `mpke1s0i-20250327-DSC01550.webp`
+- `mpkenpwq-image.png`
+- `mpl2pwhp-_DSC6982.jpg`
+- `mpl2q75b-_DSC7025.jpg`
+- `mpl2qpea-20250309-DSC00441.jpg`
+- `mpl2quoi-20250414-DSC00341.jpg`
+- `mpl2rm0b-image.png`
+- `mpl6hglk-image.png`
+- `mplebg1z-image.png`
+- `mplom6x0-image.png`
+- `mpmydujc-image.png`
+- `mpmye4cz-image.png`
+- `NUL`
+- `package.json`
+- `pnpm-lock.yaml`
+- `pnpm-workspace.yaml`
+- `sitemap-local-seo.xml`
+- `tools/node_modules/@derhuerst/http-basic/lib/cache-control-utils.js.flow`
+- `tools/node_modules/@derhuerst/http-basic/lib/cache-utils.js.flow`
+- `tools/node_modules/@derhuerst/http-basic/lib/CachedResponse.js.flow`
+- `tools/node_modules/@derhuerst/http-basic/lib/Callback.js.flow`
+- `tools/node_modules/@derhuerst/http-basic/lib/FileCache.js.flow`
+- `tools/node_modules/@derhuerst/http-basic/lib/Headers.js.flow`
+- `tools/node_modules/@derhuerst/http-basic/lib/HttpVerb.js.flow`
+- `tools/node_modules/@derhuerst/http-basic/lib/ICache.js.flow`
+- `tools/node_modules/@derhuerst/http-basic/lib/index.js.flow`
+- `tools/node_modules/@derhuerst/http-basic/lib/MemoryCache.js.flow`
+- `tools/node_modules/@derhuerst/http-basic/lib/Options.js.flow`
+- `tools/node_modules/@derhuerst/http-basic/LICENSE`
+- `tools/node_modules/@derhuerst/http-basic/package.json`
+- `tools/node_modules/@derhuerst/http-basic/README.md`
+- `tools/node_modules/@img/colour/LICENSE.md`
+- `tools/node_modules/@img/colour/package.json`
+- `tools/node_modules/@img/colour/README.md`
+- `tools/node_modules/@img/sharp-win32-x64/lib/libvips-42.dll`
+- `tools/node_modules/@img/sharp-win32-x64/lib/libvips-cpp-8.17.3.dll`
+- `tools/node_modules/@img/sharp-win32-x64/lib/sharp-win32-x64.node`
+- `tools/node_modules/@img/sharp-win32-x64/LICENSE`
+- `tools/node_modules/@img/sharp-win32-x64/package.json`
+- `tools/node_modules/@img/sharp-win32-x64/README.md`
+- `tools/node_modules/@img/sharp-win32-x64/versions.json`
+- `tools/node_modules/@types/node/LICENSE`
+- `tools/node_modules/@types/node/package.json`
+- `tools/node_modules/@types/node/README.md`
+- `tools/node_modules/agent-base/dist/src/index.js.map`
+- `tools/node_modules/agent-base/dist/src/promisify.js.map`
+- `tools/node_modules/agent-base/package.json`
+- `tools/node_modules/agent-base/README.md`
+- `tools/node_modules/buffer-from/LICENSE`
+- `tools/node_modules/buffer-from/package.json`
+- `tools/node_modules/buffer-from/readme.md`
+- `tools/node_modules/caseless/LICENSE`
+- `tools/node_modules/caseless/package.json`
+- `tools/node_modules/caseless/README.md`
+- `tools/node_modules/concat-stream/LICENSE`
+- `tools/node_modules/concat-stream/package.json`
+- `tools/node_modules/concat-stream/readme.md`
+- `tools/node_modules/debug/LICENSE`
+- `tools/node_modules/debug/package.json`
+- `tools/node_modules/debug/README.md`
+- `tools/node_modules/detect-libc/LICENSE`
+- `tools/node_modules/detect-libc/package.json`
+- `tools/node_modules/detect-libc/README.md`
+- `tools/node_modules/env-paths/license`
+- `tools/node_modules/env-paths/package.json`
+- `tools/node_modules/env-paths/readme.md`
+- `tools/node_modules/ffmpeg-static/ffmpeg.exe`
+- `tools/node_modules/ffmpeg-static/ffmpeg.exe.LICENSE`
+- `tools/node_modules/ffmpeg-static/ffmpeg.exe.README`
+- `tools/node_modules/ffmpeg-static/LICENSE`
+- `tools/node_modules/ffmpeg-static/package.json`
+- `tools/node_modules/ffmpeg-static/README.md`
+- `tools/node_modules/http-response-object/lib/headers.js.flow`
+- `tools/node_modules/http-response-object/lib/index.js.flow`
+- `tools/node_modules/http-response-object/LICENSE`
+- `tools/node_modules/http-response-object/package.json`
+- `tools/node_modules/http-response-object/README.md`
+- `tools/node_modules/https-proxy-agent/dist/agent.js.map`
+- `tools/node_modules/https-proxy-agent/dist/index.js.map`
+- `tools/node_modules/https-proxy-agent/dist/parse-proxy-response.js.map`
+- `tools/node_modules/https-proxy-agent/package.json`
+- `tools/node_modules/https-proxy-agent/README.md`
+- `tools/node_modules/inherits/LICENSE`
+- `tools/node_modules/inherits/package.json`
+- `tools/node_modules/inherits/README.md`
+- `tools/node_modules/ms/license.md`
+- `tools/node_modules/ms/package.json`
+- `tools/node_modules/ms/readme.md`
+- `tools/node_modules/parse-cache-control/LICENSE`
+- `tools/node_modules/parse-cache-control/package.json`
+- `tools/node_modules/parse-cache-control/README.md`
+- `tools/node_modules/progress/CHANGELOG.md`
+- `tools/node_modules/progress/LICENSE`
+- `tools/node_modules/progress/Makefile`
+- `tools/node_modules/progress/package.json`
+- `tools/node_modules/progress/Readme.md`
+- `tools/node_modules/readable-stream/CONTRIBUTING.md`
+- `tools/node_modules/readable-stream/GOVERNANCE.md`
+- `tools/node_modules/readable-stream/LICENSE`
+- `tools/node_modules/readable-stream/package.json`
+- `tools/node_modules/readable-stream/README.md`
+- `tools/node_modules/safe-buffer/LICENSE`
+- `tools/node_modules/safe-buffer/package.json`
+- `tools/node_modules/safe-buffer/README.md`
+- `tools/node_modules/semver/LICENSE`
+- `tools/node_modules/semver/package.json`
+- `tools/node_modules/semver/range.bnf`
+- `tools/node_modules/semver/README.md`
+- `tools/node_modules/sharp/LICENSE`
+- `tools/node_modules/sharp/package.json`
+- `tools/node_modules/sharp/README.md`
+- `tools/node_modules/sharp/src/binding.gyp`
+- `tools/node_modules/sharp/src/common.cc`
+- `tools/node_modules/sharp/src/common.h`
+- `tools/node_modules/sharp/src/metadata.cc`
+- `tools/node_modules/sharp/src/metadata.h`
+- `tools/node_modules/sharp/src/operations.cc`
+- `tools/node_modules/sharp/src/operations.h`
+- `tools/node_modules/sharp/src/pipeline.cc`
+- `tools/node_modules/sharp/src/pipeline.h`
+- `tools/node_modules/sharp/src/sharp.cc`
+- `tools/node_modules/sharp/src/stats.cc`
+- `tools/node_modules/sharp/src/stats.h`
+- `tools/node_modules/sharp/src/utilities.cc`
+- `tools/node_modules/sharp/src/utilities.h`
+- `tools/node_modules/string_decoder/LICENSE`
+- `tools/node_modules/string_decoder/package.json`
+- `tools/node_modules/string_decoder/README.md`
+- `tools/node_modules/typedarray/LICENSE`
+- `tools/node_modules/typedarray/package.json`
+- `tools/node_modules/typedarray/readme.markdown`
+- `tools/node_modules/util-deprecate/History.md`
+- `tools/node_modules/util-deprecate/LICENSE`
+- `tools/node_modules/util-deprecate/package.json`
+- `tools/node_modules/util-deprecate/README.md`
+- `tools/package-lock.json`
+- `tools/package.json`
+- `website-struktur-plan.md`
+
+## Coding checklist for AI tools
+1. Inspect `index.html` and `DESIGN-MANIFEST.json` first and identify reusable components before coding.
+2. Implement each user-facing screen file as its own route/surface; keep launcher, landing, app, platform, and OS widget files separate.
+3. Extract design tokens into the target stack: colors, type scale, spacing, radius, shadows, and motion.
+4. Implement layout with real 2025–2026 responsive breakpoints, fluid type/spacing, and container-query-aware component behavior; test with no horizontal overflow.
+5. Preserve interactive controls, hover/focus/pressed states, form behavior, validation, and copy actions where present.
+6. Implement domain-specific in-app modules with real states; do not flatten them into generic cards.
+7. Keep landing page, product screens, and OS widget/quick-access surfaces separate when present.
+8. Confirm the production result visually matches the exported design before refactoring internals.
+9. Reject implementation shortcuts that flatten the design into generic cards, generic gradients, placeholder stats, or framework-default typography.
+10. If a detail is ambiguous, keep the exported HTML/CSS/JS behavior rather than inventing a new pattern.

@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import ContactCta from '../../components/ContactCta.astro'
+import ResponsiveImage from '../../components/ResponsiveImage.astro'
+import { listDocuments, routeForDoc } from '../../lib/payload'
+
+const services = await listDocuments('service-pages', { limit: 80, sort: 'sortOrder,title' })
+---
+<BaseLayout title="Leistungen — Matthias Ramahi Fotografie" description="Fotografie, Druck, Videografie und visuelle Produktion als pflegbare CMS-Seiten.">
+  <section class="hero-stage">
+    <div class="hero-stage__grid container">
+      <div>
+        <p class="eyebrow">Leistungen</p>
+        <h1 class="display">Klare Angebote, editorial geführt.</h1>
+      </div>
+      <p class="copy">Fotografie, Bildproduktion, Print, Web und Video als zusammenhängendes System: nicht als austauschbare Leistungsliste, sondern als klare Wege vom Motiv zur Nutzung.</p>
+    </div>
+  </section>
+
+  <section class="container section-pad">
+    {services.length > 0 ? (
+      <div class="card-grid">
+        {services.map((service) => (
+          <a class="card" href={routeForDoc('service-pages', service)}>
+            <ResponsiveImage media={service.teaserImage || service.heroImage} size="card" fallback="Leistungsbild" />
+            <div style="margin-top: 22px;">
+              <h3>{service.title}</h3>
+              <p class="copy">{service.intro}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    ) : (
+      <div class="empty-state">
+        <p class="eyebrow">Noch keine veröffentlichten Service-Seiten</p>
+        <p class="copy">Service-Seiten erscheinen hier, sobald sie in Payload veröffentlicht sind.</p>
+      </div>
+    )}
+  </section>
+
+  <ContactCta />
+</BaseLayout>

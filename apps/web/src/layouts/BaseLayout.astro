@@ -1,0 +1,63 @@
+---
+import '../styles/tokens.css'
+import SiteFooter from '../components/SiteFooter.astro'
+import SiteHeader from '../components/SiteHeader.astro'
+import { getSiteSettings, imageUrl, toAbsoluteSiteUrl, type PayloadMedia } from '../lib/payload'
+
+type Props = {
+  title?: string
+  description?: string
+  canonicalUrl?: string
+  noIndex?: boolean
+  ogImage?: PayloadMedia | string
+  ogType?: string
+}
+
+const settings = await getSiteSettings()
+const {
+  title = settings?.defaultMetaTitle || 'Matthias Ramahi Fotografie',
+  description = settings?.defaultMetaDescription || 'Portfolio, Fotografie und visuelle Produktion in Düsseldorf / NRW.',
+  canonicalUrl,
+  noIndex = false,
+  ogImage,
+  ogType = 'website',
+} = Astro.props as Props
+
+const siteName = settings?.siteName || 'Matthias Ramahi Fotografie'
+const baseUrl = (settings?.siteUrl || toAbsoluteSiteUrl('/')).replace(/\/$/, '')
+const pathname = Astro.url.pathname === '/' ? '/' : Astro.url.pathname.replace(/\/$/, '')
+const canonical = canonicalUrl || `${baseUrl}${pathname}`
+const socialImage = typeof ogImage === 'string' ? ogImage : imageUrl(ogImage || settings?.defaultOgImage, 'hero')
+---
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noIndex ? <meta name="robots" content="noindex,nofollow" /> : <meta name="robots" content="index,follow,max-image-preview:large" />}
+    <meta name="theme-color" content="#020306" />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content={settings?.locale || 'de_DE'} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    {socialImage && <meta property="og:image" content={socialImage} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {socialImage && <meta name="twitter:image" content={socialImage} />}
+  </head>
+  <body>
+    <div class="site-shell">
+      <SiteHeader />
+      <main class="site-main">
+        <slot />
+      </main>
+      <SiteFooter />
+    </div>
+  </body>
+</html>

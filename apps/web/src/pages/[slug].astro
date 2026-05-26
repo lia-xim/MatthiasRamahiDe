@@ -1,0 +1,116 @@
+---
+import ContentBlocks from '../components/ContentBlocks.astro'
+import ContactCta from '../components/ContactCta.astro'
+import BaseLayout from '../layouts/BaseLayout.astro'
+import { getBySlug, imageUrl, listDocuments, routeForDoc, type PayloadDoc } from '../lib/payload'
+
+export const prerender = true
+
+type StaticPath = {
+  params: { slug?: string }
+  props: { doc: PayloadDoc; collection: string }
+}
+
+export async function getStaticPaths() {
+  const [sitePages, localSeoPages, servicePages] = await Promise.all([
+    listDocuments('site-pages', { limit: 200, sort: 'title' }),
+    listDocuments('local-seo-pages', { limit: 600, sort: 'priority,title' }),
+    listDocuments('service-pages', { limit: 300, sort: 'sortOrder,title' }),
+  ])
+
+  const paths: StaticPath[] = []
+
+  for (const doc of sitePages) {
+    if (doc.slug && doc.slug !== 'home') paths.push({ params: { slug: doc.slug }, props: { doc, collection: 'site-pages' } })
+  }
+  for (const doc of localSeoPages) {
+    if (doc.slug) paths.push({ params: { slug: doc.slug }, props: { doc, collection: 'local-seo-pages' } })
+  }
+  for (const doc of servicePages) {
+    if (doc.slug) paths.push({ params: { slug: doc.slug }, props: { doc, collection: 'service-pages' } })
+  }
+
+  return paths
+}
+
+const { slug } = Astro.params
+let doc = Astro.props.doc as PayloadDoc | undefined
+let collection = Astro.props.collection as string | undefined
+
+if (!doc && slug) {
+  doc =
+    (await getBySlug('site-pages', slug)) ??
+    (await getBySlug('local-seo-pages', slug)) ??
+    (await getBySlug('service-pages', slug)) ??
+    undefined
+  collection = doc?.serviceType ? 'service-pages' : doc?.city ? 'local-seo-pages' : 'site-pages'
+}
+
+if (!doc || !slug || !collection) {
+  return Astro.redirect('/')
+}
+
+const heroImage = doc.heroImage || doc.teaserImage
+const hero = imageUrl(heroImage, 'wide')
+const proofPoints = doc.proofPoints ?? []
+const faq = doc.faq ?? doc.localFaq ?? []
+const relatedPages = doc.relatedPages ?? []
+---
+<BaseLayout
+  title={doc.seo?.title || `${doc.title} — Matthias Ramahi`}
+  description={doc.seo?.description || doc.intro || doc.excerpt || ''}
+  canonicalUrl={doc.seo?.canonicalUrl || routeForDoc(collection, doc)}
+  noIndex={doc.seo?.noIndex}
+  ogImage={doc.seo?.ogImage || heroImage}
+>
+  <section class="hero-stage" style={hero ? `background: linear-gradient(180deg, rgba(2,3,6,.32), rgba(2,3,6,.9)), url('${hero}') center / cover;` : ''}>
+    <div class="hero-stage__grid container">
+      <div>
+        <p class="eyebrow">{doc.city ? `${doc.service} / ${doc.city}` : collection === 'service-pages' ? 'Leistung' : 'Website'}</p>
+        <h1 class="display">{doc.title}</h1>
+      </div>
+      <p class="copy">{doc.intro || doc.excerpt}</p>
+    </div>
+  </section>
+
+  {proofPoints.length > 0 && (
+    <section class="container section-pad">
+      <p class="eyebrow">Schwerpunkte</p>
+      <div class="card-grid" style="margin-top: 24px;">
+        {proofPoints.map((point) => (
+          <article class="card">
+            <h3>{point.label}</h3>
+            <p class="copy">{point.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <ContentBlocks blocks={doc.blocks} />
+
+  {faq.length > 0 && (
+    <section class="container section-pad">
+      <p class="eyebrow">FAQ</p>
+      <div class="stack-list">
+        {faq.map((item) => (
+          <article class="stack-item">
+            <h3>{item.question}</h3>
+            <p class="copy">{item.answer}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {relatedPages.length > 0 && (
+    <section class="container section-pad is-compact">
+      <p class="eyebrow">Verwandte Seiten</p>
+      <div class="filter-row">
+        {relatedPages.map((link) => link.href && <a href={link.href}>{link.label}</a>)}
+      </div>
+    </section>
+  )}
+
+  <ContactCta cta={doc.contactOverride || doc.cta} />
+</BaseLayout>

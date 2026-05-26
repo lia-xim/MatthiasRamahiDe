@@ -1,0 +1,93 @@
+---
+import ContentBlocks from '../../components/ContentBlocks.astro'
+import ContactCta from '../../components/ContactCta.astro'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import { getBySlug, imageUrl, listDocuments, routeForDoc } from '../../lib/payload'
+
+export const prerender = true
+
+export async function getStaticPaths() {
+  const docs = await listDocuments('service-pages', { limit: 300, sort: 'sortOrder,title' })
+  return docs.map((doc) => ({ params: { slug: doc.slug }, props: { doc } }))
+}
+
+const { slug } = Astro.params
+const doc = Astro.props.doc ?? (slug ? await getBySlug('service-pages', slug) : null)
+
+if (!doc) {
+  return Astro.redirect('/services')
+}
+
+const hero = imageUrl(doc.heroImage, 'wide')
+const proofPoints = doc.proofPoints ?? []
+const audience = doc.audience ?? []
+const faq = doc.faq ?? []
+const relatedPages = doc.relatedPages ?? []
+---
+<BaseLayout
+  title={doc.seo?.title || `${doc.title} — Matthias Ramahi`}
+  description={doc.seo?.description || doc.intro || ''}
+  canonicalUrl={doc.seo?.canonicalUrl || routeForDoc('service-pages', doc)}
+  noIndex={doc.seo?.noIndex}
+  ogImage={doc.seo?.ogImage || doc.heroImage}
+>
+  <section class="hero-stage" style={hero ? `background: linear-gradient(180deg, rgba(2,3,6,.32), rgba(2,3,6,.9)), url('${hero}') center / cover;` : ''}>
+    <div class="hero-stage__grid container">
+      <div>
+        <p class="eyebrow">Leistung</p>
+        <h1 class="display">{doc.title}</h1>
+      </div>
+      <p class="copy">{doc.intro}</p>
+    </div>
+  </section>
+
+  {proofPoints.length > 0 && (
+    <section class="container section-pad">
+      <p class="eyebrow">Warum diese Leistung</p>
+      <div class="card-grid" style="margin-top: 24px;">
+        {proofPoints.map((point) => (
+          <article class="card">
+            <h3>{point.label}</h3>
+            <p class="copy">{point.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {audience.length > 0 && (
+    <section class="container section-pad is-compact">
+      <p class="eyebrow">Geeignet für</p>
+      <div class="filter-row">
+        {audience.map((entry) => entry.item && <span>{entry.item}</span>)}
+      </div>
+    </section>
+  )}
+
+  <ContentBlocks blocks={doc.blocks} />
+
+  {faq.length > 0 && (
+    <section class="container section-pad">
+      <p class="eyebrow">FAQ</p>
+      <div class="stack-list">
+        {faq.map((item) => (
+          <article class="stack-item">
+            <h3>{item.question}</h3>
+            <p class="copy">{item.answer}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {relatedPages.length > 0 && (
+    <section class="container section-pad is-compact">
+      <p class="eyebrow">Verwandte Seiten</p>
+      <div class="filter-row">
+        {relatedPages.map((link) => link.href && <a href={link.href}>{link.label}</a>)}
+      </div>
+    </section>
+  )}
+
+  <ContactCta cta={doc.cta} />
+</BaseLayout>

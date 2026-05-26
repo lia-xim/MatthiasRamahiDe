@@ -1,0 +1,97 @@
+---
+import ContentBlocks from '../../../components/ContentBlocks.astro'
+import ContactCta from '../../../components/ContactCta.astro'
+import ResponsiveImage from '../../../components/ResponsiveImage.astro'
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+import { getBySlug, imageUrl } from '../../../lib/payload'
+
+export const prerender = false
+
+const allowedCollections = ['portfolio-projects', 'service-pages', 'local-seo-pages', 'journal-posts', 'site-pages']
+const { collection = '', slug = '' } = Astro.params
+const secret = Astro.url.searchParams.get('secret')
+const expectedSecret = import.meta.env.PREVIEW_SECRET
+const isAllowed = allowedCollections.includes(collection)
+
+if (!isAllowed || !expectedSecret || secret !== expectedSecret) {
+  return Astro.redirect('/')
+}
+
+const doc = await getBySlug(collection, slug, { draft: true, depth: 2 })
+
+if (!doc) {
+  return Astro.redirect('/')
+}
+
+const heroImage = doc.coverImage || doc.heroImage || doc.teaserImage
+const hero = imageUrl(heroImage, 'wide')
+const gallery = doc.gallery ?? []
+const proofPoints = doc.proofPoints ?? []
+const faq = doc.faq ?? doc.localFaq ?? []
+---
+<BaseLayout title={`Vorschau: ${doc.title || slug}`} description={doc.excerpt || doc.intro || 'Draft preview'} noIndex ogImage={heroImage}>
+  <aside class="preview-banner">
+    <strong>Vorschau</strong>
+    <span>{doc._status === 'published' ? 'Published-Version mit Draft-Zugriff' : 'Entwurf'}</span>
+    <span>{collection}</span>
+  </aside>
+
+  <section class="hero-stage" style={hero ? `background: linear-gradient(180deg, rgba(2,3,6,.34), rgba(2,3,6,.9)), url('${hero}') center / cover;` : ''}>
+    <div class="hero-stage__grid container">
+      <div>
+        <p class="eyebrow">Entwurf / {collection}</p>
+        <h1 class="display">{doc.title}</h1>
+      </div>
+      <div>
+        {!hero && <ResponsiveImage media={heroImage} size="card" fallback="Preview-Bild" />}
+        <p class="copy" style="margin-top: 22px;">{doc.excerpt || doc.intro}</p>
+      </div>
+    </div>
+  </section>
+
+  {gallery.length > 0 && (
+    <section class="container section-pad">
+      <p class="eyebrow">Bildstrecke</p>
+      <div class="card-grid" style="margin-top: 24px;">
+        {gallery.map((item) => (
+          <article class="card" style="padding: 0; min-height: 0;">
+            <ResponsiveImage media={item.image} size="card" fallback="Preview-Bild" />
+            {item.caption && <p class="copy" style="padding: 18px;">{item.caption}</p>}
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {proofPoints.length > 0 && (
+    <section class="container section-pad">
+      <p class="eyebrow">Proof Points</p>
+      <div class="card-grid" style="margin-top: 24px;">
+        {proofPoints.map((point) => (
+          <article class="card">
+            <h3>{point.label}</h3>
+            <p class="copy">{point.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <ContentBlocks blocks={doc.blocks} />
+
+  {faq.length > 0 && (
+    <section class="container section-pad">
+      <p class="eyebrow">FAQ</p>
+      <div class="stack-list">
+        {faq.map((item) => (
+          <article class="stack-item">
+            <h3>{item.question}</h3>
+            <p class="copy">{item.answer}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <ContactCta cta={doc.contactOverride || doc.cta} />
+</BaseLayout>

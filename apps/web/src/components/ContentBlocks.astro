@@ -1,0 +1,122 @@
+---
+import ResponsiveImage from './ResponsiveImage.astro'
+import type { PayloadMedia } from '../lib/payload'
+
+type RichText = {
+  root?: {
+    children?: Array<{
+      children?: Array<{ text?: string }>
+    }>
+  }
+}
+
+type ImageSequenceItem = {
+  image?: PayloadMedia | string
+  caption?: string
+  cropIntent?: string
+}
+
+type FaqItem = { question?: string; answer?: string }
+type LinkItem = { label?: string; href?: string; description?: string }
+
+type ContentBlock =
+  | { blockType: 'textBlock'; eyebrow?: string; headline?: string; body?: RichText }
+  | { blockType: 'imageSequence'; headline?: string; layout?: string; items?: ImageSequenceItem[] }
+  | { blockType: 'quoteBlock'; quote?: string; attribution?: string }
+  | { blockType: 'faqBlock'; headline?: string; items?: FaqItem[] }
+  | { blockType: 'linkList'; headline?: string; links?: LinkItem[] }
+  | { blockType: 'ctaBlock'; headline?: string; text?: string; buttonLabel?: string; emailSubject?: string }
+
+const { blocks = [] } = Astro.props as { blocks?: ContentBlock[] }
+
+const richTextToPlainText = (body?: RichText) =>
+  body?.root?.children
+    ?.map((node) => node.children?.map((child) => child.text).filter(Boolean).join(' ') || '')
+    .filter(Boolean)
+    .join('\n\n') || ''
+---
+{
+  blocks.map((block: ContentBlock) => {
+    if (block.blockType === 'textBlock') {
+      return (
+        <section class="container" style="padding: clamp(58px, 8vw, 120px) 0;">
+          {block.eyebrow && <p class="eyebrow">{block.eyebrow}</p>}
+          {block.headline && <h2 class="display" style="font-size: clamp(42px, 8vw, 124px); margin: 14px 0 24px;">{block.headline}</h2>}
+          <p class="copy" style="max-width: 62rem; font-size: clamp(18px, 1.8vw, 24px); white-space: pre-line;">{richTextToPlainText(block.body)}</p>
+        </section>
+      )
+    }
+
+    if (block.blockType === 'imageSequence') {
+      return (
+        <section class="container" style="padding: clamp(42px, 6vw, 96px) 0;">
+          {block.headline && <p class="eyebrow" style="margin-bottom: 18px;">{block.headline}</p>}
+          <div class="card-grid">
+            {(block.items ?? []).map((item: ImageSequenceItem) => (
+              <article class="card" style="padding: 0; min-height: 0;">
+                <ResponsiveImage media={item.image} size="card" fallback="Bild aus CMS" />
+                {item.caption && <p class="copy" style="padding: 18px;">{item.caption}</p>}
+              </article>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    if (block.blockType === 'quoteBlock') {
+      return (
+        <section class="container" style="padding: clamp(64px, 10vw, 150px) 0;">
+          <blockquote class="display" style="font-size: clamp(40px, 7vw, 112px); margin: 0;">„{block.quote}“</blockquote>
+          {block.attribution && <p class="eyebrow" style="margin-top: 20px;">{block.attribution}</p>}
+        </section>
+      )
+    }
+
+    if (block.blockType === 'faqBlock') {
+      return (
+        <section class="container" style="padding: clamp(54px, 8vw, 120px) 0;">
+          {block.headline && <h2 class="display" style="font-size: clamp(38px, 6vw, 96px); margin: 0 0 28px;">{block.headline}</h2>}
+          <div class="stack-list">
+            {(block.items ?? []).map((item: FaqItem) => (
+              <article class="stack-item">
+                <h3>{item.question}</h3>
+                <p class="copy">{item.answer}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    if (block.blockType === 'linkList') {
+      return (
+        <section class="container" style="padding: clamp(54px, 8vw, 120px) 0;">
+          {block.headline && <p class="eyebrow" style="margin-bottom: 18px;">{block.headline}</p>}
+          <div class="stack-list">
+            {(block.links ?? []).map((link: LinkItem) => (
+              <a class="stack-item" href={link.href || '#'}>
+                <h3>{link.label}</h3>
+                {link.description && <p class="copy">{link.description}</p>}
+              </a>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    if (block.blockType === 'ctaBlock') {
+      return (
+        <section class="container" style="padding: clamp(54px, 8vw, 120px) 0;">
+          <div class="card" style="background: var(--paper); color: var(--paper-ink); min-height: 320px;">
+            <p class="eyebrow" style="color: color-mix(in oklch, var(--paper-ink) 58%, transparent);">Anfrage</p>
+            <h2 class="display" style="font-size: clamp(42px, 7vw, 116px); margin: 12px 0 24px;">{block.headline}</h2>
+            {block.text && <p class="copy" style="color: color-mix(in oklch, var(--paper-ink) 64%, transparent); max-width: 48rem;">{block.text}</p>}
+            <a class="button is-accent" style="width: max-content; margin-top: 28px;" href={`mailto:info@matthiasramahi.de?subject=${encodeURIComponent(block.emailSubject || 'Projektanfrage')}`}>{block.buttonLabel || 'Anfrage senden'}</a>
+          </div>
+        </section>
+      )
+    }
+
+    return null
+  })
+}

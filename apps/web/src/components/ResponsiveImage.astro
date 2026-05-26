@@ -1,0 +1,38 @@
+---
+import { imageAlt, imageDimensions, imageUrl } from '../lib/payload'
+
+const {
+  media,
+  size = 'hero',
+  class: className = '',
+  fallback = 'Bild folgt',
+  sizes = '(max-width: 760px) 100vw, 50vw',
+  loading = 'lazy',
+} = Astro.props
+const src = imageUrl(media, size)
+const alt = imageAlt(media, fallback)
+const dimensions = imageDimensions(media, size)
+const srcset = ['mobile', 'card', 'hero', 'wide']
+  .map((imageSize) => {
+    const url = imageUrl(media, imageSize)
+    return url ? `${url} ${imageSize === 'mobile' ? '760' : imageSize === 'card' ? '1100' : imageSize === 'wide' ? '2560' : '1920'}w` : ''
+  })
+  .filter(Boolean)
+  .join(', ')
+---
+{src ? (
+  <img
+    class={className}
+    src={src}
+    srcset={srcset || undefined}
+    sizes={sizes}
+    alt={alt}
+    width={dimensions.width}
+    height={dimensions.height}
+    loading={loading}
+    decoding="async"
+    fetchpriority={loading === 'eager' ? 'high' : undefined}
+  />
+) : (
+  <div class={`image-placeholder ${className}`}>{fallback}</div>
+)}

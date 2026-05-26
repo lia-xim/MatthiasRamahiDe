@@ -1,0 +1,59 @@
+---
+import ContentBlocks from '../../components/ContentBlocks.astro'
+import ContactCta from '../../components/ContactCta.astro'
+import ResponsiveImage from '../../components/ResponsiveImage.astro'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import { getBySlug, listDocuments, routeForDoc } from '../../lib/payload'
+
+export const prerender = true
+
+export async function getStaticPaths() {
+  const docs = await listDocuments('journal-posts', { limit: 300, sort: '-publishedAt' })
+  return docs.map((doc) => ({ params: { slug: doc.slug }, props: { doc } }))
+}
+
+const { slug } = Astro.params
+const doc = Astro.props.doc ?? (slug ? await getBySlug('journal-posts', slug) : null)
+
+if (!doc) {
+  return Astro.redirect('/journal')
+}
+
+const relatedPages = doc.relatedPages ?? []
+---
+<BaseLayout
+  title={doc.seo?.title || `${doc.title} — Journal`}
+  description={doc.seo?.description || doc.excerpt || ''}
+  canonicalUrl={doc.seo?.canonicalUrl || routeForDoc('journal-posts', doc)}
+  noIndex={doc.seo?.noIndex}
+  ogImage={doc.seo?.ogImage || doc.coverImage}
+  ogType="article"
+>
+  <article>
+    <section class="hero-stage">
+      <div class="hero-stage__grid container">
+        <div>
+          <p class="eyebrow">Journal / {doc.category}</p>
+          <h1 class="display">{doc.title}</h1>
+        </div>
+        <div>
+          <ResponsiveImage media={doc.coverImage} size="card" fallback="Journal-Bild" sizes="(max-width: 920px) 100vw, 42vw" loading="eager" />
+          <p class="copy" style="margin-top: 22px;">{doc.excerpt}</p>
+        </div>
+      </div>
+    </section>
+
+    <ContentBlocks blocks={doc.blocks} />
+
+    {relatedPages.length > 0 && (
+      <section class="container section-pad is-compact">
+        <p class="eyebrow">Weiterlesen</p>
+        <div class="filter-row">
+          {relatedPages.map((link) => link.href && <a href={link.href}>{link.label}</a>)}
+        </div>
+      </section>
+    )}
+  </article>
+
+  <ContactCta />
+</BaseLayout>

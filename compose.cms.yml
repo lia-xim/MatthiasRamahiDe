@@ -1,0 +1,23 @@
+name: matthias-ramahi-cms
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: mr-payload-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-matthias_ramahi_cms}
+      POSTGRES_USER: ${POSTGRES_USER:-payload}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-payload-local-password}
+    ports:
+      - "5432:5432"
+    volumes:
+      - payload-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U payload -d matthias_ramahi_cms"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  payload-postgres-data:

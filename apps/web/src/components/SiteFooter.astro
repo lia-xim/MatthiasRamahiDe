@@ -1,0 +1,72 @@
+---
+import { getFooter, getNavigation } from '../lib/payload'
+
+const [footer, navigation] = await Promise.all([getFooter(), getNavigation()])
+const email = footer?.email || 'info@matthiasramahi.de'
+const location = footer?.locationLabel || 'Düsseldorf / NRW'
+const statement =
+  footer?.statement ||
+  'Fotografie, die Räume öffnet. Portfolio, Aufträge und visuelle Produktion in Düsseldorf / NRW - klar kuratiert, technisch sauber und bereit für Web, Print und Kampagne.'
+const primaryLinks = footer?.primaryLinks?.length
+  ? footer.primaryLinks
+  : [
+      { label: 'Home', href: '/' },
+      { label: 'Portfolio', href: '/portfolio' },
+      { label: 'Leistungen', href: '/services' },
+      { label: 'Journal', href: '/journal' },
+      { label: 'Kontakt', href: '/kontakt' },
+    ]
+const serviceLinks = footer?.serviceLinks?.length
+  ? footer.serviceLinks
+  : navigation?.photographyLinks?.length
+    ? navigation.photographyLinks
+    : [
+        { label: 'Automobil', href: '/automobil-fotografie-duesseldorf' },
+        { label: 'Sportwagen', href: '/sportwagen-fotografie-duesseldorf' },
+        { label: 'Oldtimer', href: '/oldtimer-fotografie-duesseldorf' },
+        { label: 'Motorrad', href: '/motorrad-fotografie-duesseldorf' },
+        { label: 'Portrait', href: '/portraitfotografie-duesseldorf' },
+        { label: 'Landschaft', href: '/landschaftsfotografie-duesseldorf' },
+      ]
+const legalLinks = footer?.legalLinks?.length
+  ? footer.legalLinks
+  : [
+      { label: 'Impressum', href: '/impressum' },
+      { label: 'Datenschutz', href: '/datenschutz' },
+    ]
+---
+<footer class="site-footer">
+  <div class="site-footer__grid container">
+    <section>
+      <p class="eyebrow">{location}</p>
+      <h2 class="display">Matthias Ramahi</h2>
+      <p class="copy" style="max-width: 46rem; margin-top: 20px;">{statement}</p>
+    </section>
+    <section>
+      <p class="eyebrow">Kontakt</p>
+      <ul>
+        <li><a href={`mailto:${email}`}>{email}</a></li>
+        {footer?.phone && <li><a href={`tel:${footer.phone.replaceAll(' ', '')}`}>{footer.phone}</a></li>}
+        <li>{location}</li>
+      </ul>
+    </section>
+    <section>
+      <p class="eyebrow">Navigation</p>
+      <ul>
+        {primaryLinks.map((link) => link.href && <li><a href={link.href}>{link.label}</a></li>)}
+      </ul>
+    </section>
+    <section>
+      <p class="eyebrow">Fotografie</p>
+      <ul>
+        {serviceLinks.map((link) => link.href && <li><a href={link.href}>{link.label}</a></li>)}
+      </ul>
+    </section>
+    <section>
+      <p class="eyebrow">Rechtliches</p>
+      <ul>
+        {legalLinks.map((link) => link.href && <li><a href={link.href}>{link.label}</a></li>)}
+      </ul>
+    </section>
+  </div>
+</footer>

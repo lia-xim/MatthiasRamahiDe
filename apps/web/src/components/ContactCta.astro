@@ -1,0 +1,27 @@
+---
+import { getFooter, getGlobalCtas, type PayloadCta } from '../lib/payload'
+
+const { cta } = Astro.props as { cta?: PayloadCta }
+const [globalCtas, footer] = await Promise.all([getGlobalCtas(), getFooter()])
+const module = globalCtas?.contactModule || {}
+const email = footer?.email || 'info@matthiasramahi.de'
+const headline = cta?.headline || module.headline || 'Projekt anfragen.'
+const text =
+  cta?.text ||
+  module.text ||
+  'Projektart, Ort, Zeitraum und gewünschte Nutzung reichen für den ersten Schritt.'
+const buttonLabel = cta?.buttonLabel || module.buttonLabel || 'Anfrage per E-Mail senden'
+const subject = cta?.emailSubject || module.emailSubject || 'Projektanfrage'
+---
+<section class="contact-cta">
+  <div class="container contact-cta__inner">
+    <div>
+      <p class="eyebrow">{module.eyebrow || 'Anfrage'}</p>
+      <h2 class="display">{headline}</h2>
+    </div>
+    <div>
+      <p class="copy">{text}</p>
+      <a class="button is-accent" href={`mailto:${email}?subject=${encodeURIComponent(subject)}`}>{buttonLabel}</a>
+    </div>
+  </div>
+</section>

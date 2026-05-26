@@ -1,0 +1,27 @@
+---
+import { getNavigation } from '../lib/payload'
+
+const navigation = await getNavigation()
+const links = navigation?.primary?.length
+  ? navigation.primary
+  : [
+      { label: 'Home', href: '/' },
+      { label: 'Fotografie', href: '/fotografie-duesseldorf' },
+      { label: 'Portfolio', href: '/portfolio' },
+      { label: 'Über mich', href: '/ueber-mich' },
+      { label: 'Journal', href: '/journal' },
+      { label: 'Kontakt', href: '/kontakt' },
+    ]
+const cta = navigation?.cta?.href
+  ? navigation.cta
+  : { label: 'Anfrage', href: 'mailto:info@matthiasramahi.de?subject=Projektanfrage' }
+---
+<header class="site-header">
+  <div class="site-header__inner container">
+    <a class="brand-mark" href="/" aria-label="Matthias Ramahi Startseite">Matthias<br />Ramahi</a>
+    <nav class="nav" aria-label="Hauptnavigation">
+      {links.map((link) => link.href && <a href={link.href}>{link.label}</a>)}
+    </nav>
+    <a class="button is-accent" href={cta.href}>{cta.label || 'Anfrage'}</a>
+  </div>
+</header>

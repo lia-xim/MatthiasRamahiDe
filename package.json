@@ -1,0 +1,20 @@
+{
+  "name": "matthias-ramahi-astro-payload-stack",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.33.2",
+  "scripts": {
+    "build": "corepack pnpm web:build && corepack pnpm cms:build",
+    "local:start": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/start-local.ps1",
+    "local:stop": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/stop-local.ps1",
+    "stack:dev": "corepack pnpm --parallel --filter @matthias-ramahi/cms --filter @matthias-ramahi/web dev",
+    "cms:dev": "corepack pnpm --filter @matthias-ramahi/cms dev",
+    "cms:build": "corepack pnpm --filter @matthias-ramahi/cms build",
+    "cms:start": "corepack pnpm --filter @matthias-ramahi/cms start",
+    "cms:types": "corepack pnpm --filter @matthias-ramahi/cms generate:types",
+    "cms:importmap": "corepack pnpm --filter @matthias-ramahi/cms generate:importmap",
+    "web:dev": "corepack pnpm --filter @matthias-ramahi/web dev",
+    "web:build": "corepack pnpm --filter @matthias-ramahi/web build",
+    "web:preview": "corepack pnpm --filter @matthias-ramahi/web preview"
+  }
+}
