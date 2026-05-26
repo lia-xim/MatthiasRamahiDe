@@ -3,8 +3,12 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "sync:legacy": "node ../../tools/sync-legacy-public.mjs",
+    "predev": "node ../../tools/sync-legacy-public.mjs",
     "dev": "astro dev --host 0.0.0.0 --port 4321",
+    "prebuild": "node ../../tools/sync-legacy-public.mjs",
     "build": "astro check && astro build",
+    "prepreview": "node ../../tools/sync-legacy-public.mjs",
     "preview": "astro preview --host 0.0.0.0 --port 4321"
   },
   "dependencies": {

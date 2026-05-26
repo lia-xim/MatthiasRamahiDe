@@ -5,6 +5,17 @@ apps/*/.env
 .env.local
 
 apps/web/dist/
+apps/web/public/assets/
+apps/web/public/*.avif
+apps/web/public/*.gif
+apps/web/public/*.ico
+apps/web/public/*.jpeg
+apps/web/public/*.jpg
+apps/web/public/*.mp4
+apps/web/public/*.png
+apps/web/public/*.svg
+apps/web/public/*.webm
+apps/web/public/*.webp
 apps/cms/.next/
 apps/cms/media/
 apps/cms/payload-dev.db*
