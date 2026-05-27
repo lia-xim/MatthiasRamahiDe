@@ -1,5 +1,5 @@
 ---
-import { getFooter, getNavigation } from '../lib/payload'
+import { getFooter, getNavigation, linkAttributes } from '../lib/payload'
 
 const [footer, navigation] = await Promise.all([getFooter(), getNavigation()])
 const email = footer?.email || 'info@matthiasramahi.de'
@@ -53,19 +53,19 @@ const legalLinks = footer?.legalLinks?.length
     <section>
       <p class="eyebrow">Navigation</p>
       <ul>
-        {primaryLinks.map((link) => link.href && <li><a href={link.href}>{link.label}</a></li>)}
+        {primaryLinks.map((link) => link.href && <li><a {...linkAttributes(link)}>{link.label}</a></li>)}
       </ul>
     </section>
     <section>
       <p class="eyebrow">Fotografie</p>
       <ul>
-        {serviceLinks.map((link) => link.href && <li><a href={link.href}>{link.label}</a></li>)}
+        {serviceLinks.map((link) => link.href && <li><a {...linkAttributes(link)}>{link.label}</a></li>)}
       </ul>
     </section>
     <section>
       <p class="eyebrow">Rechtliches</p>
       <ul>
-        {legalLinks.map((link) => link.href && <li><a href={link.href}>{link.label}</a></li>)}
+        {legalLinks.map((link) => link.href && <li><a {...linkAttributes(link)}>{link.label}</a></li>)}
       </ul>
     </section>
   </div>

@@ -1,19 +1,27 @@
 import type { CollectionConfig } from 'payload'
 
 import { authenticated, publishedOrAuthenticated } from '../access/publishedOrAuthenticated'
+import { advancedSettings } from '../fields/advancedSettings'
 import { contentBlocks } from '../fields/contentBlocks'
+import { mediaRelationshipField } from '../fields/editorialImages'
+import { legacyMigrationFields } from '../fields/legacyMigration'
+import { linkFields } from '../fields/links'
 import { seoFields } from '../fields/seo'
 import { slugField } from '../fields/slug'
+import { applyEditorialDefaults } from '../hooks/autoDefaults'
+import { normalizeLinksBeforeValidate } from '../hooks/normalizeLinks'
 import { triggerAstroRebuildAfterChange, triggerAstroRebuildAfterDelete } from '../hooks/rebuild'
+import { requireFieldsForPublish } from '../hooks/validatePublishedContent'
 import { buildPreviewUrl } from '../livePreview'
 
 export const JournalPosts: CollectionConfig = {
   slug: 'journal-posts',
-  labels: { singular: 'Journal-Beitrag', plural: 'Journal-Beiträge' },
+  labels: { singular: 'Journal-Beitrag', plural: 'Journal-Beitraege' },
   admin: {
     useAsTitle: 'title',
     group: 'Journal',
-    defaultColumns: ['title', 'category', 'featured', 'publishedAt', 'updatedAt'],
+    defaultColumns: ['coverImage', 'title', 'slug', 'category', '_status', 'publishedAt', 'updatedAt'],
+    description: 'Journal-Beitrag mit Cover, Excerpt, Artikel-SEO, internen Links und Vorschau.',
     preview: (data) => buildPreviewUrl({ collection: 'journal-posts', slug: data?.slug }),
   },
   versions: { drafts: { autosave: { interval: 3000 } }, maxPerDoc: 20 },
@@ -24,6 +32,24 @@ export const JournalPosts: CollectionConfig = {
     delete: authenticated,
   },
   hooks: {
+    beforeValidate: [
+      normalizeLinksBeforeValidate,
+      applyEditorialDefaults({
+        collection: 'journal-posts',
+        descriptionFields: ['excerpt', 'legacy.extractedText'],
+        imageFields: ['coverImage'],
+      }),
+      requireFieldsForPublish([
+        { path: 'title', label: 'Titel' },
+        { path: 'slug', label: 'Slug' },
+        { path: 'category', label: 'Kategorie' },
+        { path: 'publishedAt', label: 'Veroeffentlichungsdatum' },
+        { path: 'coverImage', label: 'Coverbild' },
+        { path: 'excerpt', label: 'Kurztext' },
+        { path: 'seo.title', label: 'SEO-Titel' },
+        { path: 'seo.description', label: 'Meta-Beschreibung' },
+      ]),
+    ],
     afterChange: [triggerAstroRebuildAfterChange],
     afterDelete: [triggerAstroRebuildAfterDelete],
   },
@@ -38,34 +64,82 @@ export const JournalPosts: CollectionConfig = {
       admin: { position: 'sidebar' },
     },
     {
-      name: 'category',
-      label: 'Kategorie',
-      type: 'select',
-      required: true,
-      options: [
-        { label: 'Behind the Scenes', value: 'behind-the-scenes' },
-        { label: 'Automotive', value: 'automotive' },
-        { label: 'Portrait', value: 'portrait' },
-        { label: 'Landschaft / Print', value: 'landscape-print' },
-        { label: 'Technik / Prozess', value: 'process' },
+      type: 'tabs',
+      tabs: [
+        {
+          label: 'Basis',
+          description: 'Kategorie, Datum und Kurztext. Datum und SEO werden bei Bedarf automatisch gesetzt.',
+          fields: [
+            {
+              name: 'category',
+              label: 'Kategorie',
+              type: 'select',
+              required: true,
+              options: [
+                { label: 'Behind the Scenes', value: 'behind-the-scenes' },
+                { label: 'Automotive', value: 'automotive' },
+                { label: 'Portrait', value: 'portrait' },
+                { label: 'Landschaft / Print', value: 'landscape-print' },
+                { label: 'Technik / Prozess', value: 'process' },
+              ],
+            },
+            {
+              name: 'publishedAt',
+              label: 'Veroeffentlichungsdatum',
+              type: 'date',
+              required: true,
+              admin: { date: { pickerAppearance: 'dayAndTime' } },
+            },
+            { name: 'excerpt', label: 'Kurztext', type: 'textarea', required: true },
+          ],
+        },
+        {
+          label: 'Bilder',
+          description: 'Coverbild fuer Artikel, Listing und Social Preview.',
+          fields: [
+            mediaRelationshipField({
+              name: 'coverImage',
+              label: 'Coverbild',
+              required: true,
+              description: 'Wird als Artikelbild und als Social-Bild genutzt, wenn kein OG-Bild gesetzt ist.',
+            }),
+          ],
+        },
+        {
+          label: 'Inhalt',
+          description: 'Tags, passende Links und Artikelmodule.',
+          fields: [
+            { name: 'tags', label: 'Tags', type: 'text', hasMany: true },
+            {
+              name: 'relatedPages',
+              label: 'Passende Links',
+              type: 'array',
+              maxRows: 6,
+              admin: { initCollapsed: true },
+              fields: linkFields(),
+            },
+            contentBlocks,
+          ],
+        },
+        {
+          label: 'Advanced',
+          description: 'Lesezeit, SEO und Legacy-Migration.',
+          fields: [
+            advancedSettings([
+              {
+                name: 'readingTime',
+                label: 'Lesezeit in Minuten',
+                type: 'number',
+                admin: {
+                  description: 'Wird aus Inhalt und Excerpt geschaetzt, wenn leer.',
+                },
+              },
+              seoFields,
+              legacyMigrationFields,
+            ]),
+          ],
+        },
       ],
     },
-    { name: 'publishedAt', label: 'Veröffentlichungsdatum', type: 'date', required: true, admin: { date: { pickerAppearance: 'dayAndTime' } } },
-    { name: 'coverImage', label: 'Coverbild', type: 'relationship', relationTo: 'media', required: true },
-    { name: 'excerpt', label: 'Kurztext', type: 'textarea', required: true },
-    { name: 'readingTime', label: 'Lesezeit in Minuten', type: 'number', admin: { position: 'sidebar' } },
-    { name: 'tags', label: 'Tags', type: 'text', hasMany: true },
-    {
-      name: 'relatedPages',
-      label: 'Passende Links',
-      type: 'array',
-      maxRows: 6,
-      fields: [
-        { name: 'label', label: 'Label', type: 'text', required: true },
-        { name: 'href', label: 'URL', type: 'text', required: true },
-      ],
-    },
-    contentBlocks,
-    seoFields,
   ],
 }

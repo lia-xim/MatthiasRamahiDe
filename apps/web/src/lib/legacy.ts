@@ -28,11 +28,13 @@ const htmlAliases: Record<string, string> = {
   services: 'leistungen.html',
   'ueber-mich': 'ueber-mich.html',
 }
-
 const htmlHeaders = {
   'content-type': 'text/html; charset=utf-8',
-  'cache-control': 'no-cache',
+  'cache-control': 'public, max-age=300, stale-while-revalidate=86400',
 }
+const useLegacyFileCache = import.meta.env.PROD && process.env.LEGACY_DISABLE_FILE_CACHE !== 'true'
+const legacyPageCache = new Map<string, Promise<string>>()
+let legacyHtmlFilesCache: Promise<string[]> | null = null
 
 function cleanPathname(pathname: string) {
   const clean = decodeURIComponent(pathname.split('?')[0] || '')
@@ -61,7 +63,24 @@ export async function readLegacyPage(fileName: string) {
   if (!resolved.startsWith(legacyRoot) || path.dirname(fileName) !== '.') {
     throw new Error(`Invalid legacy page path: ${fileName}`)
   }
-  return fsp.readFile(resolved, 'utf8')
+
+  if (useLegacyFileCache) {
+    const cached = legacyPageCache.get(resolved)
+    if (cached) return cached
+  }
+
+  const read = fsp.readFile(resolved, 'utf8')
+
+  if (useLegacyFileCache) {
+    legacyPageCache.set(resolved, read)
+  }
+
+  try {
+    return await read
+  } catch (error) {
+    if (useLegacyFileCache) legacyPageCache.delete(resolved)
+    throw error
+  }
 }
 
 export async function legacyResponse(fileName: string) {
@@ -69,24 +88,35 @@ export async function legacyResponse(fileName: string) {
 }
 
 export async function listLegacyHtmlFiles() {
-  const entries = await fsp.readdir(legacyRoot, { withFileTypes: true })
-  return entries
-    .filter((entry) => entry.isFile() && entry.name.endsWith('.html'))
-    .map((entry) => entry.name)
-    .sort((a, b) => a.localeCompare(b))
+  if (useLegacyFileCache && legacyHtmlFilesCache) return legacyHtmlFilesCache
+
+  const read = fsp
+    .readdir(legacyRoot, { withFileTypes: true })
+    .then((entries) =>
+      entries
+        .filter((entry) => entry.isFile() && entry.name.endsWith('.html'))
+        .map((entry) => entry.name)
+        .sort((a, b) => a.localeCompare(b)),
+    )
+
+  if (useLegacyFileCache) legacyHtmlFilesCache = read
+
+  try {
+    return await read
+  } catch (error) {
+    if (useLegacyFileCache) legacyHtmlFilesCache = null
+    throw error
+  }
+}
+
+export function clearLegacyFileCache() {
+  legacyPageCache.clear()
+  legacyHtmlFilesCache = null
 }
 
 export async function getLegacyStaticPaths() {
   const files = await listLegacyHtmlFiles()
-  const paths = files
+  return files
     .filter((file) => file !== 'index.html')
     .map((file) => ({ params: { slug: file }, props: { legacyFile: file } }))
-
-  for (const [slug, file] of Object.entries(htmlAliases)) {
-    if (fs.existsSync(path.join(legacyRoot, file))) {
-      paths.push({ params: { slug }, props: { legacyFile: file } })
-    }
-  }
-
-  return paths
 }

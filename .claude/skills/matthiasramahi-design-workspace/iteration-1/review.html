@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>matthiasramahi-design · Iteration 1 Review</title>
+<style>
+  :root{
+    --bg:#0d0f13; --surface:#15181f; --paper:#f4f3ee; --paper-ink:#11141a;
+    --fg:#eaeae3; --muted:#a3a8a0; --rule:rgba(234,234,227,.12);
+    --accent:#cf392e; --ok:#7ec699; --bad:#e26d6d; --warn:#d9b56a;
+    --mono:'JetBrains Mono','SFMono-Regular',Menlo,monospace;
+    --sans:'Söhne','Inter',Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);line-height:1.6;font-size:15px}
+  header{padding:48px clamp(24px,5vw,64px) 32px;border-bottom:1px solid var(--rule)}
+  header h1{font-size:clamp(28px,3.6vw,52px);margin:0 0 8px;letter-spacing:-.025em;font-weight:600}
+  header .sub{color:var(--muted);font:600 11px/1.4 var(--mono);letter-spacing:.18em;text-transform:uppercase}
+  main{padding:32px clamp(24px,5vw,64px) 96px;max-width:1300px;margin:0 auto}
+  h2{font-size:clamp(22px,2.4vw,32px);margin:48px 0 16px;letter-spacing:-.02em;font-weight:600}
+  h3{font-size:18px;margin:24px 0 8px;font-weight:600}
+  h4{font-size:14px;margin:14px 0 6px;font-weight:600;font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  p{margin:0 0 12px}
+  .summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:16px 0 32px}
+  .cell{background:var(--surface);padding:18px 22px}
+  .cell .label{font:700 10px/1.4 var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+  .cell .val{font-size:28px;font-weight:600;letter-spacing:-.02em}
+  .cell .delta{margin-top:4px;font:600 12px var(--mono);color:var(--accent)}
+  .cell.ok .val{color:var(--ok)}
+  table{width:100%;border-collapse:collapse;margin:12px 0 24px;font-size:14px}
+  th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--rule);vertical-align:top}
+  th{font:700 10px/1.4 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  td.mono{font-family:var(--mono);font-size:13px}
+  .pass{color:var(--ok)}
+  .fail{color:var(--bad)}
+  .partial{color:var(--warn)}
+  .eval{margin:48px 0;padding:32px;background:var(--surface);border:1px solid var(--rule)}
+  .eval__head{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;margin-bottom:8px;flex-wrap:wrap}
+  .eval__title{font-size:24px;font-weight:600;letter-spacing:-.02em;margin:0}
+  .eval__id{font:700 10px/1 var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--muted);padding:6px 10px;border:1px solid var(--rule)}
+  .prompt{background:#1c1f27;border:1px solid var(--rule);padding:16px 20px;font-size:13px;color:var(--muted);margin:16px 0 24px;white-space:pre-wrap}
+  .compare{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:16px 0}
+  .col{padding:20px;background:#1a1d24;border:1px solid var(--rule)}
+  .col h3{margin:0 0 8px;font-size:16px;display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+  .col h3 .pct{font:700 11px var(--mono);letter-spacing:.12em}
+  .col.with .pct{color:var(--ok)}
+  .col.without .pct{color:var(--warn)}
+  .col ul{margin:8px 0 0;padding-left:0;list-style:none}
+  .col li{font-size:13px;color:var(--muted);margin:6px 0;padding-left:22px;position:relative;line-height:1.5}
+  .col li:before{position:absolute;left:0;top:0;font-family:var(--mono);font-size:12px}
+  .col li.ok:before{content:"✓";color:var(--ok)}
+  .col li.bad:before{content:"✗";color:var(--bad)}
+  .col li.maybe:before{content:"~";color:var(--warn)}
+  .links{font-size:13px;margin:16px 0 0;color:var(--muted)}
+  .links a{color:var(--fg);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:1px}
+  .links a:hover{border-color:var(--accent);color:var(--accent)}
+  .notes{margin:20px 0 0;padding:16px 20px;background:#1c1f27;border-left:2px solid var(--accent);font-size:14px;color:var(--muted)}
+  .notes strong{color:var(--fg);font-weight:600}
+  .verdict{font-size:14px;margin:8px 0 0;font-weight:600}
+  .verdict.win{color:var(--ok)}
+  .verdict.tie{color:var(--warn)}
+  .verdict.loss{color:var(--bad)}
+  @media (max-width:880px){
+    .compare{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="sub">Skill Review · Iteration 1 · 2026-05-27</div>
+  <h1>matthiasramahi-design</h1>
+  <p style="color:var(--muted);max-width:62ch;margin-top:12px">
+    Design system &amp; build guide for matthiasramahi.de. Three test prompts; each
+    completed once with the skill and once without (baseline). Below: summary,
+    per-eval comparison, and links to the actual deliverables for inspection.
+  </p>
+</header>
+
+<main>
+
+<h2>Summary</h2>
+
+<div class="summary">
+  <div class="cell ok">
+    <div class="label">With skill — pass rate</div>
+    <div class="val">100.0%</div>
+    <div class="delta">+11.9 pp vs baseline</div>
+  </div>
+  <div class="cell">
+    <div class="label">Baseline — pass rate</div>
+    <div class="val" style="color:var(--warn)">88.1%</div>
+  </div>
+  <div class="cell">
+    <div class="label">Time delta (mean)</div>
+    <div class="val">+10.5 s</div>
+    <div class="delta">noise-level, single-run</div>
+  </div>
+  <div class="cell">
+    <div class="label">Token delta (mean)</div>
+    <div class="val">+11.7 k</div>
+    <div class="delta">cost of reading SKILL.md + refs</div>
+  </div>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Eval</th>
+      <th>With skill</th>
+      <th>Baseline</th>
+      <th>Verdict</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1 — New SEO subpage (Bottrop)</td>
+      <td class="mono pass">11/11 · 100%</td>
+      <td class="mono pass">11/11 · 100%</td>
+      <td><span class="verdict tie">Tie on assertions — with-skill caught 2 latent cluster bugs</span></td>
+    </tr>
+    <tr>
+      <td>2 — New content block (clientLogosStrip)</td>
+      <td class="mono pass">12/12 · 100%</td>
+      <td class="mono partial">11/12 · 91.7%</td>
+      <td><span class="verdict win">Skill catches “No trusted by” anti-pattern, reframes as colophon</span></td>
+    </tr>
+    <tr>
+      <td>3 — Portrait hero redesign advice</td>
+      <td class="mono pass">11/11 · 100%</td>
+      <td class="mono fail">8/11 · 72.7%</td>
+      <td><span class="verdict win">Baseline invents 6th hero pattern; skill enforces the canonical 5</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Per-eval comparison</h2>
+
+<!-- ════════════════════════════════════════════════════════════════ EVAL 1 -->
+<section class="eval">
+  <div class="eval__head">
+    <h3 class="eval__title">Eval 1 — New SEO subpage for Bottrop</h3>
+    <span class="eval__id">EVAL #1</span>
+  </div>
+
+  <h4>Prompt</h4>
+  <div class="prompt">Ich möchte das lokale SEO-Netz um Bottrop erweitern. Bau mir eine neue Seite motorrad-fotografie-bottrop.html im Projekt-Root, die nahtlos zu den bestehenden Motorrad-Stadt-Seiten passt. Hero, Statement, Module, Galerie, Audience, Related, Cities-Grid, Suchbegriffe und Kontakt-CTA müssen alle dabei sein. Die Seite muss visuell und strukturell identisch zu den Geschwistern sein und nur die Bottrop-spezifischen Slots ändern.</div>
+
+  <div class="compare">
+    <div class="col with">
+      <h3>With skill <span class="pct">11/11 · 100%</span></h3>
+      <ul>
+        <li class="ok">Title, canonical, H1, JSON-LD all swapped to Bottrop</li>
+        <li class="ok">Hero lede references real Bottrop landmarks (Tetraeder, Halde Haniel, Ruhrgebiet)</li>
+        <li class="ok">Cities grid: 23rd cell added, is-active on Bottrop, aria-current="page"</li>
+        <li class="ok">10 &lt;section&gt; tags — exact match to motorrad-fotografie-koeln.html</li>
+        <li class="ok">Statement headline preserved byte-for-byte ("Geschwindigkeit und Leidenschaft auf Bildern.")</li>
+        <li class="ok">Flagged 2 latent bugs in sibling pages: <strong>.is-active</strong> has no CSS rule; siblings ship stale <strong>areaServed=Düsseldorf</strong> in technical JSON-LD</li>
+        <li class="ok">Consciously broke parity to fix the JSON-LD bug while documenting the choice</li>
+      </ul>
+      <p class="links">
+        Output: <a href="eval-new-seo-subpage-bottrop/with_skill/outputs/motorrad-fotografie-bottrop.html">motorrad-fotografie-bottrop.html</a>
+      </p>
+    </div>
+    <div class="col without">
+      <h3>Baseline <span class="pct">11/11 · 100%</span></h3>
+      <ul>
+        <li class="ok">All Bottrop slots swapped correctly</li>
+        <li class="ok">Hero lede references real Bottrop landmarks</li>
+        <li class="ok">Cities grid updated with is-active on Bottrop</li>
+        <li class="ok">Section count matches sibling exactly</li>
+        <li class="ok">No marketing-tone / superlatives</li>
+        <li class="bad">Did NOT flag the sibling areaServed clone-bug — reproduced and overwrote without noticing</li>
+        <li class="bad">Did NOT note that .is-active has no CSS rule defined yet</li>
+      </ul>
+      <p class="links">
+        Output: <a href="eval-new-seo-subpage-bottrop/without_skill/outputs/motorrad-fotografie-bottrop.html">motorrad-fotografie-bottrop.html</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="notes">
+    <strong>Takeaway:</strong> The SEO cluster is mechanical enough that any agent following the
+    nearest sibling produces a working page. The skill's contribution here is meta-awareness:
+    catching latent inconsistencies and surfacing them as flags. The user gets the same HTML
+    output, but with a known-issues report.
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ EVAL 2 -->
+<section class="eval">
+  <div class="eval__head">
+    <h3 class="eval__title">Eval 2 — New content block (<code>clientLogosStrip</code>)</h3>
+    <span class="eval__id">EVAL #2</span>
+  </div>
+
+  <h4>Prompt</h4>
+  <div class="prompt">Ich möchte einen neuen Content-Block-Typ clientLogosStrip hinzufügen — eine ruhige horizontale Reihe von Kundenlogos. Es soll sowohl im CMS (apps/cms/src/fields/contentBlocks.ts) als auch im Astro-Renderer (apps/web/src/components/ContentBlocks.astro) verfügbar sein. Zeig beide Änderungen und erklär, wie es visuell ins System passt.</div>
+
+  <div class="compare">
+    <div class="col with">
+      <h3>With skill <span class="pct">12/12 · 100%</span></h3>
+      <ul>
+        <li class="ok">Recognized "No trusted by logo strip" as an explicit anti-pattern in 07-copy-voice-and-anti-patterns.md</li>
+        <li class="ok"><strong>Reframed the block as editorial colophon</strong> ("Auftraggeber" / "Veröffentlicht in") — preserves user intent, sidesteps the anti-pattern</li>
+        <li class="ok">Borrowed geometry from audience__grid + mr-cities__grid (connected matrix idiom)</li>
+        <li class="ok">Borrowed restraint from related__card (monochrome → barely unmute on hover)</li>
+        <li class="ok">Borrowed metadata typography from topic-spread .note</li>
+        <li class="ok">Full token usage (var(--border), color-mix(in oklch, ...) — no hardcoded colors)</li>
+        <li class="ok">Per-theme filter curves for dark vs paper sections</li>
+        <li class="ok">Explicit anti-pattern audit at end of explanation</li>
+      </ul>
+      <p class="links">
+        Outputs: <a href="eval-new-content-block-clientlogos/with_skill/outputs/contentBlocks.ts.after">contentBlocks.ts.after</a> ·
+        <a href="eval-new-content-block-clientlogos/with_skill/outputs/ContentBlocks.astro.after">ContentBlocks.astro.after</a> ·
+        <a href="eval-new-content-block-clientlogos/with_skill/outputs/EXPLANATION.md">EXPLANATION.md</a>
+      </p>
+    </div>
+    <div class="col without">
+      <h3>Baseline <span class="pct">11/12 · 91.7%</span></h3>
+      <ul>
+        <li class="ok">Arrived at nearly identical visual implementation independently (monochrome, hairlines, mono eyebrow)</li>
+        <li class="ok">Solid use of tokens (--border, --muted, --font-mono)</li>
+        <li class="ok">Per-theme filter handling described</li>
+        <li class="ok">No card shadows, no rounded corners, no scale animations</li>
+        <li class="bad"><strong>Did NOT catch the "trusted by logo strip" anti-pattern</strong> — default eyebrow "Kunden &amp; Magazine" still has a trust-badge framing</li>
+        <li class="maybe">Cited stack-list and topic-spread but less variety than with-skill</li>
+      </ul>
+      <p class="links">
+        Outputs: <a href="eval-new-content-block-clientlogos/without_skill/outputs/contentBlocks.ts.after">contentBlocks.ts.after</a> ·
+        <a href="eval-new-content-block-clientlogos/without_skill/outputs/ContentBlocks.astro.after">ContentBlocks.astro.after</a> ·
+        <a href="eval-new-content-block-clientlogos/without_skill/outputs/EXPLANATION.md">EXPLANATION.md</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="notes">
+    <strong>Takeaway:</strong> Visual choices converge — the design fingerprints in tokens.css
+    and the existing block CSS are strong enough that even an unguided agent reads them off. But
+    the <strong>conceptual</strong> move (recognizing that "client logos" is a trojan horse for
+    "trusted by", an explicit anti-pattern, and reframing as editorial colophon) only happens
+    with the skill. This is the kind of decision a less-experienced collaborator would miss.
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ EVAL 3 -->
+<section class="eval">
+  <div class="eval__head">
+    <h3 class="eval__title">Eval 3 — Portrait hero redesign advice</h3>
+    <span class="eval__id">EVAL #3</span>
+  </div>
+
+  <h4>Prompt</h4>
+  <div class="prompt">Ich überlege, das Portrait-Hero auf portraitfotografie-duesseldorf.html umzubauen. Aktuell ist da diese Iris-Reveal Animation. Sie ist langsam und mobile nicht so gut. Was sind meine Optionen? Welche passt am besten zur Site-Identität, welche sollte ich vermeiden, und warum? Konkrete Empfehlung mit Begründung, plus den Code für die Option die du empfiehlst.</div>
+
+  <div class="compare">
+    <div class="col with">
+      <h3>With skill <span class="pct">11/11 · 100%</span></h3>
+      <ul>
+        <li class="ok">Named all 5 canonical hero formulas with §A-E references</li>
+        <li class="ok"><strong>Recommendation: "Iris straffen, nicht ersetzen"</strong> — diagnoses real problem as accumulated complexity (6 concepts stacked), not the iris itself</li>
+        <li class="ok">Walked through every wrong option: lens shader (index.html only), filmstrip wipe (motorrad-specific), sequence stage (portfolio-specific), Ken-Burns static (loses identity), flat image (Failure Mode 1)</li>
+        <li class="ok">Code uses canonical tokens (--ease, --accent-2, --muted, clamp())</li>
+        <li class="ok">prefers-reduced-motion fallback to static end state</li>
+        <li class="ok">Mobile-specific shorter animation duration</li>
+        <li class="ok">data-theme + data-header-theme on the section for chrome retinting</li>
+      </ul>
+      <p class="links">
+        Output: <a href="eval-redesign-portrait-hero-feedback/with_skill/outputs/RESPONSE.md">RESPONSE.md</a>
+      </p>
+    </div>
+    <div class="col without">
+      <h3>Baseline <span class="pct">8/11 · 72.7%</span></h3>
+      <ul>
+        <li class="ok">Solid performance diagnosis (clip-path:circle() is expensive on mobile GPUs)</li>
+        <li class="ok">Lists 5 plausible options A-E</li>
+        <li class="ok">Mentions prefers-reduced-motion, brand-spec phrases, data-header-theme</li>
+        <li class="bad"><strong>Invents a 6th hero pattern ("Shutter-Wipe")</strong> — vertical clip-path:inset() animation that doesn't exist in the canonical set</li>
+        <li class="bad"><strong>Recommends removing the iris reveal entirely</strong> — strips the portrait section of its signature, exactly the "Failure Mode 1: watering down the metaphor" the skill warns about</li>
+        <li class="maybe">Shutter-Wipe is mechanically very close to motorrad's filmstrip wipe — accidental cross-section borrowing</li>
+        <li class="maybe">Code uses inline cubic-bezier(.22,.9,.22,1) instead of var(--ease)</li>
+      </ul>
+      <p class="links">
+        Output: <a href="eval-redesign-portrait-hero-feedback/without_skill/outputs/RESPONSE.md">RESPONSE.md</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="notes">
+    <strong>Takeaway:</strong> The clearest skill win. The baseline produces a technically
+    competent, performant alternative — but it violates the design system's central rule (each
+    section has its own hero formula) and removes a section signature without realizing it.
+    The skill's "Pick from this list — don't invent a sixth" rule plus the explicit Failure
+    Mode 1 warning are exactly what would have prevented this regression.
+  </div>
+</section>
+
+<h2>What this tells us about the skill</h2>
+
+<p>The skill's strongest contribution isn't producing different code — agents can read the
+existing files and converge on similar visual choices. Its contribution is <strong>preserving
+design-system invariants under pressure</strong>: catching that "client logos" smuggles in a
+forbidden anti-pattern, catching that "redesign the portrait hero" is an invitation to delete
+a section signature, catching that an SEO subpage shares 95% with its siblings rather than 60%.</p>
+
+<p>The cost (+12k tokens / +10s per task, one-shot sample) is real but small. The system-fidelity
+gain is hard to measure with assertions but visible in the per-eval narratives above.</p>
+
+<p style="margin-top:24px;color:var(--muted)"><em>Single-run sample. Multi-run variance not measured. Re-run before high-stakes deploys.</em></p>
+
+</main>
+</body>
+</html>

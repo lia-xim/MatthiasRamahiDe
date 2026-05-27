@@ -1,0 +1,51 @@
+{
+  "eval_id": 1,
+  "eval_name": "new-seo-subpage-bottrop",
+  "prompt": "Ich möchte das lokale SEO-Netz um Bottrop erweitern. Bau mir eine neue Seite motorrad-fotografie-bottrop.html im Projekt-Root, die nahtlos zu den bestehenden Motorrad-Stadt-Seiten passt. Hero, Statement, Module, Galerie, Audience, Related, Cities-Grid, Suchbegriffe und Kontakt-CTA müssen alle dabei sein. Die Seite muss visuell und strukturell identisch zu den Geschwistern sein und nur die Bottrop-spezifischen Slots ändern.",
+  "assertions": [
+    {
+      "text": "Page <title> contains 'Motorrad Fotografie Bottrop'",
+      "type": "string_contains"
+    },
+    {
+      "text": "<link rel=\"canonical\"> ends in motorrad-fotografie-bottrop.html",
+      "type": "regex"
+    },
+    {
+      "text": "H1 / hero title contains 'Bottrop'",
+      "type": "string_contains"
+    },
+    {
+      "text": "Hero lede references at least one real Bottrop-specific geography term (Gasometer, CentrO, Tetraeder, Halde Haniel, Ruhr or Bottrop-Boy)",
+      "type": "regex"
+    },
+    {
+      "text": "JSON-LD Service.areaServed contains 'Bottrop' (alongside NRW and Deutschland)",
+      "type": "string_contains"
+    },
+    {
+      "text": "Cities grid contains 22 link cells (20 cities + NRW + Deutschland), including a Bottrop cell with .is-active class",
+      "type": "structural"
+    },
+    {
+      "text": "Contact CTA section has data-contact-subject attribute containing 'Bottrop'",
+      "type": "string_contains"
+    },
+    {
+      "text": "Section count matches the closest sibling (motorrad-fotografie-koeln.html) within ±1",
+      "type": "structural"
+    },
+    {
+      "text": "Page includes a search-keywords grid (5 long-tail keyword links for motorrad)",
+      "type": "structural"
+    },
+    {
+      "text": "Statement section uses the exact topic-fixed motorrad headline ('Geschwindigkeit und Leidenschaft auf Bildern.')",
+      "type": "string_contains"
+    },
+    {
+      "text": "Page does NOT include marketing-tone copy like 'Jetzt unverbindlich anfragen!', exclamation marks outside FAQ, or superlatives ('beste', 'führend', 'exklusiv')",
+      "type": "negative"
+    }
+  ]
+}

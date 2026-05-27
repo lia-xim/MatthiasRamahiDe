@@ -1,0 +1,169 @@
+{
+  "metadata": {
+    "skill_name": "matthiasramahi-design",
+    "skill_path": "C:/Users/matth/Documents/MatthiasRamahiDe/.claude/skills/matthiasramahi-design",
+    "executor_model": "claude-opus-4-7[1m]",
+    "timestamp": "2026-05-27T02:30:00Z",
+    "evals_run": [
+      "new-seo-subpage-bottrop",
+      "new-content-block-clientlogos",
+      "redesign-portrait-hero-feedback"
+    ],
+    "runs_per_configuration": 1
+  },
+
+  "runs": [
+    {
+      "eval_id": 1,
+      "eval_name": "new-seo-subpage-bottrop",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 11,
+        "failed": 0,
+        "total": 11,
+        "time_seconds": 390.7,
+        "tokens": 111064,
+        "tool_calls": 16,
+        "errors": 0
+      },
+      "notes": [
+        "Cited references/05-seo-subpage-scaffold.md by name.",
+        "Flagged 2 latent bugs in sibling pages (.is-active has no CSS rule; siblings ship stale areaServed='Duesseldorf' in technical JSON-LD). Consciously broke parity to fix bug #2.",
+        "Inserted Bottrop as 23rd cell — canonical list is 22; flagged this for bulk-tool updates."
+      ]
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "new-seo-subpage-bottrop",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 11,
+        "failed": 0,
+        "total": 11,
+        "time_seconds": 342.9,
+        "tokens": 91229,
+        "tool_calls": 10,
+        "errors": 0
+      },
+      "notes": [
+        "Structurally equivalent output to with_skill version.",
+        "Did NOT flag the sibling areaServed clone-bug or the missing .is-active CSS rule — reproduced the working parts and the broken parts equally."
+      ]
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "new-content-block-clientlogos",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 12,
+        "failed": 0,
+        "total": 12,
+        "time_seconds": 179.7,
+        "tokens": 71139,
+        "tool_calls": 14,
+        "errors": 0
+      },
+      "notes": [
+        "Recognized 'No trusted by logo strip' as an explicit anti-pattern in 07-copy-voice-and-anti-patterns.md.",
+        "Reframed the block as 'editorial colophon / Auftraggeber' to sidestep the anti-pattern while still fulfilling user intent.",
+        "Cited multiple existing block patterns (audience__grid, mr-cities__grid, related__card, topic-spread, stack-list) as visual anchors."
+      ]
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "new-content-block-clientlogos",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.917,
+        "passed": 11,
+        "failed": 1,
+        "total": 12,
+        "time_seconds": 175.5,
+        "tokens": 62514,
+        "tool_calls": 15,
+        "errors": 0
+      },
+      "notes": [
+        "Visually arrived at a nearly identical implementation (monochrome, hairlines, mono eyebrow, no shadows).",
+        "Default eyebrow 'Kunden & Magazine' still has a 'trusted by' framing — did not catch the voice anti-pattern.",
+        "Cited stack-list and topic-spread patterns, but less broadly than with_skill."
+      ]
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "redesign-portrait-hero-feedback",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 11,
+        "failed": 0,
+        "total": 11,
+        "time_seconds": 97.9,
+        "tokens": 76122,
+        "tool_calls": 7,
+        "errors": 0
+      },
+      "notes": [
+        "Named all 5 canonical hero formulas with section references (§A-E).",
+        "Recommendation: tighten the iris, don't replace it — diagnosed actual problem as 6-concept stack, not the iris itself.",
+        "Explicitly walked through and rejected every wrong-direction option (lens shader = index.html exclusive; filmstrip wipe = motorrad; sequence stage = portfolio; ken-burns static = identity loss; flat image = Failure Mode 1)."
+      ]
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "redesign-portrait-hero-feedback",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.727,
+        "passed": 8,
+        "failed": 3,
+        "total": 11,
+        "time_seconds": 118.6,
+        "tokens": 69589,
+        "tool_calls": 10,
+        "errors": 0
+      },
+      "notes": [
+        "Invented a 6th hero pattern ('Shutter-Wipe', vertical clip-path inset). Violates posture rule #4 (don't invent a sixth).",
+        "Recommended removing the iris reveal entirely — Failure Mode 1 ('don't water down the metaphor').",
+        "Technically competent code with strong performance argument, but breaks design-system invariant that each section has its own hero formula."
+      ]
+    }
+  ],
+
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": { "mean": 1.0, "stddev": 0.0, "min": 1.0, "max": 1.0 },
+      "time_seconds": { "mean": 222.8, "stddev": 121.9, "min": 97.9, "max": 390.7 },
+      "tokens": { "mean": 86108, "stddev": 17570, "min": 71139, "max": 111064 }
+    },
+    "without_skill": {
+      "pass_rate": { "mean": 0.881, "stddev": 0.114, "min": 0.727, "max": 1.0 },
+      "time_seconds": { "mean": 212.3, "stddev": 92.4, "min": 118.6, "max": 342.9 },
+      "tokens": { "mean": 74444, "stddev": 12090, "min": 62514, "max": 91229 }
+    },
+    "delta": {
+      "pass_rate": "+0.119",
+      "time_seconds": "+10.5",
+      "tokens": "+11664"
+    }
+  },
+
+  "notes": [
+    "Eval 1 (Bottrop SEO page) is a tie on assertion pass rate (11/11 both). The cluster is templated enough that mechanical execution succeeds without the skill — the differentiator is meta-awareness (catching sibling bugs), which doesn't surface in assertions but matters for long-term consistency.",
+    "Eval 2 (Client Logos) reveals the skill's strongest contribution: the 'No trusted by logo strip' anti-pattern is explicit in 07-copy-voice-and-anti-patterns.md, and only the with-skill agent recognized it and reframed the block as editorial colophon.",
+    "Eval 3 (Portrait Hero) is the clearest skill win. Without the skill, the agent invented a 6th hero pattern and recommended removing the portrait section's signature. This is precisely the failure mode SKILL.md is designed to prevent.",
+    "Time delta: +10.5s with skill — within noise (single-run sample), not significant.",
+    "Token delta: +11.6k with skill — modest cost for reading SKILL.md + 1-2 references. Worth it given the design-system fidelity improvements.",
+    "All 6 runs are 1-shot. Multi-run variance not measured. Recommend re-running if confidence is needed for high-stakes deploys."
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "eval_id": 3,
+  "eval_name": "redesign-portrait-hero-feedback",
+  "config": "without_skill",
+  "expectations": [
+    { "text": "Response is in German", "passed": true, "evidence": "Entire response in German." },
+    { "text": "Response mentions at least 2 of the 5 hero formulas", "passed": false, "evidence": "MISS: Doesn't name the canonical hero family at all. Invents its own option labels (A Status quo, B Static Ken Burns, C Shutter-Wipe, D Crossfade-Slideshow, E Split-Hero). 'Shutter-Wipe' (option C) is NOT a canonical hero pattern — it is a 6th, invented pattern. This is exactly what SKILL.md posture rule #4 forbids: 'Pick from this list — don't invent a sixth.'" },
+    { "text": "Does NOT recommend lens shader hero", "passed": true, "evidence": "Not recommended (doesn't surface as an option at all)." },
+    { "text": "Does NOT recommend filmstrip wipe hero", "passed": "partial", "evidence": "PARTIAL: Recommends 'Shutter-Wipe' (clip-path:inset() top→bottom). This is mechanically very close to motorrad's filmstrip wipe (also a clip-path inset animation), just oriented vertically. The agent doesn't know it's reinventing the motorrad signature in a new direction." },
+    { "text": "Does NOT recommend replacing with static + plain gradient", "passed": true, "evidence": "Option B (static Ken Burns) is mentioned but not recommended." },
+    { "text": "Mentions prefers-reduced-motion", "passed": true, "evidence": "@media (prefers-reduced-motion:reduce) block included." },
+    { "text": "Mentions data-theme or data-header-theme attribute", "passed": true, "evidence": "data-header-theme=\"dark\" set on the section." },
+    { "text": "Includes code skeleton (HTML + CSS)", "passed": true, "evidence": "Detailed HTML + ~60 lines of CSS." },
+    { "text": "Recommendation justified with design-system anchors", "passed": "partial", "evidence": "Cites brand-spec phrase 'slow focus shifts, soft light sweeps, crop marks, aperture/glass/film-grain details' and mentions 'hero-pd', 'hero-pt', Aperture-Overlay, Lens-Streaks. Plausible-sounding but misidentifies which hero pattern belongs to portrait — recommends removing the iris and replacing with an invented variation. The justification is performance-led, not identity-led." },
+    { "text": "Code skeleton uses var(--ease), clamp(), dark section markers", "passed": "partial", "evidence": "Uses var(--font-display), var(--font-mono), var(--accent), clamp(). Missing var(--ease) — uses cubic-bezier(.22,.9,.22,1) inline. Has data-header-theme=\"dark\". Mostly OK." },
+    { "text": "Tone is advisory and direct", "passed": true, "evidence": "Direct, advisory, no superlatives." }
+  ],
+  "pass_count": 8,
+  "fail_count": 1,
+  "partial_count": 3,
+  "pass_rate": 0.727,
+  "notes": "The critical failure: recommends a hero pattern that doesn't exist in the canonical 5 (a vertical shutter-wipe) and tells the user to remove the iris reveal — which is the portrait section's signature. The code is technically competent and the performance argument is solid, but the recommendation breaks the design-system invariant that each section has its own hero formula. This is precisely the 'flatten the metaphor' failure SKILL.md warns about."
+}

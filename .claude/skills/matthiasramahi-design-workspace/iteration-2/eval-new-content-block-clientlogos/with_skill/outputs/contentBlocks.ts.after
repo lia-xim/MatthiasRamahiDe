@@ -1,0 +1,185 @@
+import type { Field } from 'payload'
+
+export const contentBlocks: Field = {
+  name: 'blocks',
+  label: 'Inhaltsblöcke',
+  type: 'blocks',
+  blocks: [
+    {
+      slug: 'textBlock',
+      labels: { singular: 'Textblock', plural: 'Textblöcke' },
+      fields: [
+        { name: 'eyebrow', label: 'Kicker', type: 'text' },
+        { name: 'headline', label: 'Headline', type: 'text' },
+        { name: 'body', label: 'Text', type: 'richText' },
+      ],
+    },
+    {
+      slug: 'imageSequence',
+      labels: { singular: 'Bildsequenz', plural: 'Bildsequenzen' },
+      fields: [
+        { name: 'headline', label: 'Interner Titel', type: 'text' },
+        {
+          name: 'layout',
+          label: 'Präsentation',
+          type: 'select',
+          defaultValue: 'editorial-strip',
+          options: [
+            { label: 'Editorialer Bildstreifen', value: 'editorial-strip' },
+            { label: 'Kontaktbogen', value: 'contact-sheet' },
+            { label: 'Bühnenmoment', value: 'stage' },
+            { label: 'Grosses ruhiges Motiv', value: 'single-large' },
+          ],
+        },
+        {
+          name: 'items',
+          label: 'Bilder',
+          type: 'array',
+          minRows: 1,
+          fields: [
+            { name: 'image', label: 'Bild', type: 'relationship', relationTo: 'media', required: true },
+            { name: 'caption', label: 'Bildunterschrift', type: 'text' },
+            {
+              name: 'cropIntent',
+              dbName: 'crop',
+              label: 'Crop-Hinweis',
+              type: 'select',
+              defaultValue: 'auto',
+              options: [
+                { label: 'Automatisch', value: 'auto' },
+                { label: 'Gesicht / Detail schützen', value: 'protect-detail' },
+                { label: 'Weite / Atmosphäre schützen', value: 'protect-space' },
+                { label: 'Dramatisch anschneiden', value: 'dramatic-crop' },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      slug: 'quoteBlock',
+      labels: { singular: 'Zitat / Statement', plural: 'Zitate / Statements' },
+      fields: [
+        { name: 'quote', label: 'Zitat', type: 'textarea', required: true },
+        { name: 'attribution', label: 'Quelle', type: 'text' },
+      ],
+    },
+    {
+      slug: 'faqBlock',
+      labels: { singular: 'FAQ-Block', plural: 'FAQ-Blöcke' },
+      fields: [
+        { name: 'headline', label: 'Headline', type: 'text' },
+        {
+          name: 'items',
+          label: 'Fragen',
+          type: 'array',
+          minRows: 1,
+          fields: [
+            { name: 'question', label: 'Frage', type: 'text', required: true },
+            { name: 'answer', label: 'Antwort', type: 'textarea', required: true },
+          ],
+        },
+      ],
+    },
+    {
+      slug: 'linkList',
+      labels: { singular: 'Linkliste', plural: 'Linklisten' },
+      fields: [
+        { name: 'headline', label: 'Headline', type: 'text' },
+        {
+          name: 'links',
+          label: 'Links',
+          type: 'array',
+          minRows: 1,
+          fields: [
+            { name: 'label', label: 'Label', type: 'text', required: true },
+            { name: 'href', label: 'URL', type: 'text', required: true },
+            { name: 'description', label: 'Beschreibung', type: 'textarea' },
+          ],
+        },
+      ],
+    },
+    {
+      slug: 'clientLogosStrip',
+      labels: { singular: 'Kundenlogo-Reihe', plural: 'Kundenlogo-Reihen' },
+      fields: [
+        { name: 'eyebrow', label: 'Kicker', type: 'text', defaultValue: 'Vertrauen' },
+        {
+          name: 'headline',
+          label: 'Headline',
+          type: 'text',
+          admin: {
+            description:
+              'Optional. Markiere ein einzelnes Wort mit *Sternchen* für die Steel-/Sage-Hervorhebung — z.B. „Marken, *mit denen ich arbeite.*“',
+          },
+        },
+        {
+          name: 'theme',
+          label: 'Sektions-Theme',
+          type: 'select',
+          defaultValue: 'dark',
+          options: [
+            { label: 'Dunkel (cinematic)', value: 'dark' },
+            { label: 'Hell (paper)', value: 'light' },
+          ],
+        },
+        {
+          name: 'treatment',
+          label: 'Logo-Behandlung',
+          type: 'select',
+          defaultValue: 'monochrome',
+          admin: {
+            description:
+              'Monochrom flacht bunte Marken-Logos zu einer ruhigen Zeile — passend zum Site-Look. „Original“ nur bei sehr zurückhaltenden Logos.',
+          },
+          options: [
+            { label: 'Monochrom (empfohlen)', value: 'monochrome' },
+            { label: 'Originalfarben', value: 'original' },
+          ],
+        },
+        {
+          name: 'logos',
+          label: 'Logos',
+          type: 'array',
+          minRows: 3,
+          maxRows: 12,
+          admin: {
+            description: '3–12 Logos. Mehr wirkt unruhig — lieber kuratiert als vollständig.',
+          },
+          fields: [
+            {
+              name: 'logo',
+              label: 'Logo (SVG / PNG mit Transparenz)',
+              type: 'relationship',
+              relationTo: 'media',
+              required: true,
+            },
+            {
+              name: 'name',
+              label: 'Marke / Kunde',
+              type: 'text',
+              required: true,
+              admin: { description: 'Wird als Bildtitel und Screenreader-Label genutzt.' },
+            },
+            {
+              name: 'href',
+              label: 'Externer Link (optional)',
+              type: 'text',
+              admin: { description: 'Wenn leer, wird das Logo nicht verlinkt.' },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      slug: 'ctaBlock',
+      labels: { singular: 'Kontakt-CTA', plural: 'Kontakt-CTAs' },
+      fields: [
+        { name: 'headline', label: 'Headline', type: 'text', required: true },
+        { name: 'text', label: 'Kurztext', type: 'textarea' },
+        { name: 'buttonLabel', label: 'Button-Text', type: 'text', defaultValue: 'Anfrage senden' },
+        { name: 'emailSubject', label: 'E-Mail-Betreff', type: 'text' },
+      ],
+    },
+  ],
+}

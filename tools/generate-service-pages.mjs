@@ -274,7 +274,7 @@ const topbar=(current)=>`<header class="topbar" id="topbar" data-current="${curr
     <a href="leistungen.html" data-nav="leistungen"${current==='leistungen'?' aria-current="page"':''}>Weitere Dienstleistungen</a>
     <a href="contact.html" data-nav="kontakt">Kontakt</a>
   </nav>
-  <a class="topbar__cta" href="mailto:info@matthiasramahi.de?subject=Anfrage%20%E2%80%94%20Matthias%20Ramahi%20Fotografie">Anfrage</a>
+  <a class="topbar__cta" href="#anfrage">Projekt anfragen</a>
   <button class="topbar__menu" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu"><span aria-hidden="true"></span><span aria-hidden="true"></span></button>
 </header>
 <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
@@ -285,7 +285,7 @@ const topbar=(current)=>`<header class="topbar" id="topbar" data-current="${curr
       <div class="mobile-menu__group"><a class="mobile-menu__label" href="fotografie-duesseldorf.html">Fotografie</a><a href="automobil-fotografie-duesseldorf.html">Automobil</a><a href="sportwagen-fotografie-duesseldorf.html">Sportwagen</a><a href="oldtimer-fotografie-duesseldorf.html">Oldtimer</a><a href="motorrad-fotografie-duesseldorf.html">Motorrad</a><a href="portraitfotografie-duesseldorf.html">Portrait</a><a href="landschaftsfotografie-duesseldorf.html">Landschaft</a></div>
       <a href="portfolio.html" data-nav="portfolio">Portfolio</a><a href="ueber-mich.html" data-nav="ueber-mich">Über mich</a><a href="blog.html" data-nav="blog">Blog</a><a href="leistungen.html" data-nav="leistungen">Weitere Dienstleistungen</a><a href="contact.html" data-nav="kontakt">Kontakt</a>
     </nav>
-    <a class="mobile-menu__cta" href="mailto:info@matthiasramahi.de?subject=Anfrage%20%E2%80%94%20Matthias%20Ramahi%20Fotografie">Anfrage senden</a>
+    <a class="mobile-menu__cta" href="#anfrage">Projekt anfragen</a>
   </div>
 </div>`;
 

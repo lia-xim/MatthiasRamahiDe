@@ -1,0 +1,56 @@
+import { defineMiddleware } from 'astro:middleware'
+
+import { getLegacyFileForPath } from './lib/legacy'
+
+const permanentRedirect = (location: string) =>
+  new Response(null, {
+    status: 308,
+    headers: {
+      location,
+    },
+  })
+
+const legacyRedirects: Record<string, string> = {
+  '/weitere-dienstleistungen.html': '/leistungen.html',
+}
+const enableComponentizedLegacyRewrite = import.meta.env.ASTRO_ENABLE_COMPONENTIZED_LEGACY === 'true'
+
+export const onRequest = defineMiddleware(async (context, next) => {
+  const pathname = context.url.pathname
+  const noindexPrefixes = ['/preview/', '/componentized/', '/componentized-home/', '/legacy-baseline/']
+
+  if (legacyRedirects[pathname]) {
+    return permanentRedirect(`${legacyRedirects[pathname]}${context.url.search}`)
+  }
+
+  if (pathname === '/index.html' || pathname === '/index' || pathname === '/index/') {
+    return permanentRedirect('/')
+  }
+
+  if (/^\/[^/.]+\/?$/i.test(pathname)) {
+    const legacyFile = getLegacyFileForPath(pathname)
+
+    if (legacyFile && legacyFile !== 'index.html') {
+      return permanentRedirect(`/${legacyFile}${context.url.search}`)
+    }
+  }
+
+  if (noindexPrefixes.some((prefix) => pathname.startsWith(prefix))) {
+    const response = await next()
+    response.headers.set('x-robots-tag', 'noindex, nofollow')
+    return response
+  }
+
+  if (enableComponentizedLegacyRewrite && /^\/[^/]+\.html$/i.test(pathname)) {
+    const legacyFile = getLegacyFileForPath(pathname)
+
+    if (legacyFile && legacyFile !== 'index.html') {
+      const slug = legacyFile.replace(/\.html$/i, '')
+      const response = await context.rewrite(`/componentized/${slug}${context.url.search}`)
+      response.headers.set('x-legacy-render', 'componentized')
+      return response
+    }
+  }
+
+  return next()
+})

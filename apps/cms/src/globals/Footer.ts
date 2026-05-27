@@ -1,12 +1,9 @@
-import type { Field, GlobalConfig } from 'payload'
+import type { GlobalConfig } from 'payload'
 
 import { authenticated } from '../access/publishedOrAuthenticated'
+import { linkFields } from '../fields/links'
+import { normalizeGlobalLinksBeforeValidate } from '../hooks/normalizeLinks'
 import { triggerAstroRebuildAfterGlobalChange } from '../hooks/rebuild'
-
-const linkFields = (): Field[] => [
-  { name: 'label', label: 'Label', type: 'text', required: true },
-  { name: 'href', label: 'URL', type: 'text', required: true },
-]
 
 export const Footer: GlobalConfig = {
   slug: 'footer',
@@ -19,6 +16,7 @@ export const Footer: GlobalConfig = {
     update: authenticated,
   },
   hooks: {
+    beforeValidate: [normalizeGlobalLinksBeforeValidate],
     afterChange: [triggerAstroRebuildAfterGlobalChange],
   },
   fields: [
@@ -43,6 +41,45 @@ export const Footer: GlobalConfig = {
       defaultValue: 'Düsseldorf / NRW',
     },
     {
+      name: 'statementHighlight',
+      label: 'Hervorgehobener Teil im Footer-Statement',
+      type: 'text',
+      defaultValue: 'Marke, Sammlung und Druck',
+      admin: {
+        description: 'Optionaler Text, der im Frontend innerhalb des Footer-Statements betont werden kann.',
+      },
+    },
+    {
+      name: 'studioLink',
+      label: 'Studio-Link im Footer',
+      type: 'group',
+      fields: linkFields(),
+    },
+    {
+      name: 'columns',
+      label: 'Footer-Spalten',
+      type: 'array',
+      admin: {
+        description: 'Canonical Footer-Struktur aus der Legacy-Seite. Jede Spalte bekommt eine Überschrift und Links.',
+      },
+      fields: [
+        { name: 'label', label: 'Spaltenüberschrift', type: 'text', required: true },
+        {
+          name: 'links',
+          label: 'Links',
+          type: 'array',
+          minRows: 1,
+          fields: linkFields(),
+        },
+      ],
+    },
+    {
+      name: 'copyright',
+      label: 'Copyright-Zeile',
+      type: 'text',
+      defaultValue: '© 2026 Matthias Ramahi',
+    },
+    {
       name: 'primaryLinks',
       label: 'Footer Hauptlinks',
       type: 'array',
@@ -51,7 +88,7 @@ export const Footer: GlobalConfig = {
         { label: 'Portfolio', href: '/portfolio' },
         { label: 'Leistungen', href: '/services' },
         { label: 'Journal', href: '/journal' },
-        { label: 'Kontakt', href: '/kontakt' },
+        { label: 'Kontakt', href: '/contact.html#anfrage' },
       ],
       fields: linkFields(),
     },
@@ -65,21 +102,7 @@ export const Footer: GlobalConfig = {
       name: 'socialLinks',
       label: 'Social Links',
       type: 'array',
-      fields: [
-        ...linkFields(),
-        {
-          name: 'platform',
-          label: 'Plattform',
-          type: 'select',
-          options: [
-            { label: 'Instagram', value: 'instagram' },
-            { label: 'LinkedIn', value: 'linkedin' },
-            { label: 'YouTube', value: 'youtube' },
-            { label: 'Behance', value: 'behance' },
-            { label: 'Sonstiges', value: 'other' },
-          ],
-        },
-      ],
+      fields: linkFields({ platform: true }),
     },
     {
       name: 'legalLinks',

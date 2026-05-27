@@ -95,42 +95,42 @@ const keywordPages = {
 const categories = {
   automobil: {
     label: 'Automobil Fotografie', short: 'Automobil', slug: 'automobil-fotografie', template: 'automobil-fotografie-duesseldorf.html',
-    intent: 'Automobil Fotografie',
-    desc: place => `Automobil Fotografie ${place}: Exterieur, Interieur, Details und cineastische Bildserien für Marke, Showroom, Verkauf und Kampagne — geplant aus Düsseldorf / NRW.`,
+    intent: 'Automobil Fotografie', seoTitle: 'Automobilfotografie',
+    desc: place => `Automobilfotografie ${place}: Exterieur, Interieur, Details und cineastische Bildserien für Marke, Showroom, Verkauf und Kampagne — geplant aus Düsseldorf / NRW.`,
     hero: place => `Automobil Fotografie in ${place}: Exterieur, Interieur, Details und Cinematic werden zu einer kuratierten Serie geführt — mit kontrollierter Lichtführung, ruhigen Reflexionen und Dateien für Web, Print, Verkauf oder Kampagne.`,
     lead: place => `Schreibe kurz, welches Fahrzeug in ${place} fotografiert werden soll, wo es steht, welche Wirkung die Bilder tragen sollen und ob die Serie privat, kommerziell oder als Kampagne genutzt wird. Wir klären Location, Licht und Ablauf gemeinsam vor dem ersten Klick.`
   },
   sportwagen: {
     label: 'Sportwagen Fotografie', short: 'Sportwagen', slug: 'sportwagen-fotografie', template: 'sportwagen-fotografie-duesseldorf.html',
-    intent: 'Sportwagen Fotografie',
-    desc: place => `Sportwagen Fotografie ${place}: hochwertige Serien für Performance Cars, Sammlerfahrzeuge, Händler und Marken — Exterieur, Interieur, Details und Druckqualität.`,
+    intent: 'Sportwagen Fotografie', seoTitle: 'Sportwagenfotografie',
+    desc: place => `Sportwagenfotografie ${place}: hochwertige Serien für Performance Cars, Sammlerfahrzeuge, Händler und Marken — Exterieur, Interieur, Details und Druckqualität.`,
     hero: place => `Sportwagen Fotografie in ${place}: kontrollierte Reflexe, klare Winkel, Interieur-Details und ein Bildsatz, der Druck hat, ohne in Showeffekte zu kippen.`,
     lead: place => `Schreibe kurz, welcher Sportwagen in ${place} fotografiert werden soll, ob die Bilder für Verkauf, Sammlung, Marke oder Social genutzt werden und welches Zeitfenster möglich ist. Wir planen Licht, Ort und Ablauf gemeinsam.`
   },
   oldtimer: {
     label: 'Oldtimer Fotografie', short: 'Oldtimer', slug: 'oldtimer-fotografie', template: 'oldtimer-fotografie-duesseldorf.html',
-    intent: 'Oldtimer Fotografie',
-    desc: place => `Oldtimer Fotografie ${place}: Bildserien für Sammlung, Verkauf, Auktion und Ausstellung — Karosserie, Lack, Chrom, Leder, Patina und Herkunft.`,
+    intent: 'Oldtimer Fotografie', seoTitle: 'Oldtimer-Fotografie',
+    desc: place => `Oldtimer-Fotografie ${place}: Bildserien für Sammlung, Verkauf, Auktion und Ausstellung — Karosserie, Lack, Chrom, Leder, Patina und Herkunft.`,
     hero: place => `Oldtimer Fotografie in ${place}: Form, Herkunft und Material werden ruhig geführt — für Sammlung, Verkauf, Auktion oder Ausstellung, mit Charakter und Nostalgie statt austauschbarer Fahrzeugbilder.`,
     lead: place => `Schreibe kurz, welcher Oldtimer in ${place} fotografiert werden soll — Modell, Baujahr, Standort und ob die Bilder für Sammlung, Auktion, Verkauf oder privat genutzt werden. Wir klären Raum, Licht und Ablauf gemeinsam.`
   },
   motorrad: {
     label: 'Motorrad Fotografie', short: 'Motorrad', slug: 'motorrad-fotografie', template: 'motorrad-fotografie-duesseldorf.html',
-    intent: 'Motorrad Fotografie',
-    desc: place => `Motorrad Fotografie ${place}: Bildserien für Custom Bikes, Werkstätten, Händler und private Maschinen — Silhouette, Mechanik, Haltung und Detail.`,
+    intent: 'Motorrad Fotografie', seoTitle: 'Motorradfotografie',
+    desc: place => `Motorradfotografie ${place}: Bildserien für Custom Bikes, Werkstätten, Händler und private Maschinen — Silhouette, Mechanik, Haltung und Detail.`,
     hero: place => `Motorrad Fotografie in ${place}: Schärfe auf Maschine und Haltung — Silhouette, Mechanik, Details und Fahrerbilder werden als kraftvolle Serie geplant, nicht als beliebiges Bike-Foto.`,
     lead: place => `Schreibe kurz, welches Bike in ${place} fotografiert werden soll — Modell, Standort, ob Fahrerbilder gewünscht sind und wofür die Bilder genutzt werden. Wir klären Licht, Location und Ablauf gemeinsam.`
   },
   portrait: {
     label: 'Portrait Fotografie', short: 'Portrait', slug: 'portraitfotografie', template: 'portraitfotografie-duesseldorf.html',
-    intent: 'Portrait Fotografie',
-    desc: place => `Portrait Fotografie ${place}: Personal Branding, Business Portraits, Editorial, Team und Presse — professionell, ruhig, nahbar und nicht glattgebügelt.`,
+    intent: 'Portrait Fotografie', seoTitle: 'Portraitfotografie',
+    desc: place => `Portraitfotografie ${place}: Personal Branding, Business Portraits, Editorial, Team und Presse — professionell, ruhig, nahbar und nicht glattgebügelt.`,
     hero: place => `Portrait Fotografie in ${place}: Blick, Distanz und Licht werden so geführt, dass ein Bild professionell wirkt, ohne den Menschen dahinter glattzubügeln — für Personal Branding, Presse, Team oder Editorial.`,
     lead: place => `Schreibe kurz, wofür die Portraits in ${place} gedacht sind — Personal Branding, Editorial, Team, Presse oder Bewerbung. Wichtig sind Person/Team, gewünschte Wirkung, Ort und Zeitraum. Stil und Licht klären wir vor dem ersten Klick.`
   },
   landschaft: {
     label: 'Landschaftsfotografie', short: 'Landschaft', slug: 'landschaftsfotografie', template: 'landschaftsfotografie-duesseldorf.html',
-    intent: 'Landschaftsfotografie',
+    intent: 'Landschaftsfotografie', seoTitle: 'Landschaftsfotografie',
     desc: place => `Landschaftsfotografie ${place}: Fine-Art-Prints, Wandbilder, Editionen und großformatige Arbeiten für private Räume, Praxen, Hotels und Sammlungen.`,
     hero: place => `Landschaftsfotografie für ${place}: Bildräume aus Geduld, Licht und Atmosphäre — als Fine-Art-Print, Wandbild, Edition oder Großformat für Räume, die Ruhe statt Spektakel brauchen.`,
     lead: place => `Schreibe kurz, wofür die Landschaftsbilder in ${place} eingesetzt werden — Fine-Art-Print, Innenraum, Editorial, Website oder Markenbild. Wichtig sind gewünschte Atmosphäre, Format, Material und Zeitraum.`
@@ -188,12 +188,12 @@ function placeDescriptor(place, slug, categoryKey) {
 function h1For(categoryKey, place) {
   const p = text(place);
   switch (categoryKey) {
-    case 'automobil': return `<h1 class="pd-title">\n          <span class="line"><span class="word">Automobil</span></span>\n          <span class="line"><span class="word">${p}.</span></span>\n        </h1>`;
-    case 'sportwagen': return `<h1 class="tri-title">\n        <span class="line"><span class="word">Sportwagen</span></span>\n        <span class="line"><span class="word">${p}.</span></span>\n      </h1>`;
-    case 'oldtimer': return `<h1 class="hero-mp__title"><span>Oldtimer</span><em>${p}.</em></h1>`;
-    case 'motorrad': return `<h1 class="hero-mr__title" id="heroMrTitle">\n        <span class="line"><span class="word">Motorrad</span></span>\n        <span class="line"><span class="word">${p}</span></span>\n      </h1>`;
-    case 'portrait': return `<h1 class="hero-pt__title">Portrait <em>${p}.</em></h1>`;
-    case 'landschaft': return `<h1 class="hero-ls__title">\n        <span class="l"><span class="w">Landschaft</span></span>\n        <span class="l"><span class="w">${p}.</span></span>\n      </h1>`;
+    case 'automobil': return `<h1 class="pd-title">\n          <span class="line"><span class="word">Automobil</span></span>\n          <span class="line"><span class="word">Fotografie ${p}.</span></span>\n        </h1>`;
+    case 'sportwagen': return `<h1 class="tri-title">\n        <span class="line"><span class="word">Sportwagen</span></span>\n        <span class="line"><span class="word">Fotografie ${p}.</span></span>\n      </h1>`;
+    case 'oldtimer': return `<h1 class="hero-mp__title"><span>Oldtimer-Fotografie</span><em>${p}.</em></h1>`;
+    case 'motorrad': return `<h1 class="hero-mr__title" id="heroMrTitle">\n        <span class="line"><span class="word">Motorrad</span></span>\n        <span class="line"><span class="word">Fotografie ${p}</span></span>\n      </h1>`;
+    case 'portrait': return `<h1 class="hero-pt__title">Portraitfotografie <em>${p}.</em></h1>`;
+    case 'landschaft': return `<h1 class="hero-ls__title">\n        <span class="l"><span class="w">Landschaft</span></span>\n        <span class="l"><span class="w">Fotografie ${p}.</span></span>\n      </h1>`;
     default: throw new Error(`No H1 for ${categoryKey}`);
   }
 }
@@ -260,9 +260,9 @@ function clonePage(categoryKey, c, place, slug) {
   const file = pageFile(c, slug);
   if (slug === 'duesseldorf') return null;
   let html = fs.readFileSync(c.template, 'utf8');
-  const title = `${c.label} ${place} — Matthias Ramahi`;
+  const title = `${c.seoTitle || c.label} ${place} — Matthias Ramahi`;
   const desc = c.desc(place);
-  html = replaceHead(html, {file, title, desc, schema: schema(file, `${c.label} ${place}`, desc, place)});
+  html = replaceHead(html, {file, title, desc, schema: schema(file, `${c.seoTitle || c.label} ${place}`, desc, place)});
   html = replaceHeroText(html, categoryKey, c, place, slug);
   html = replaceContacts(html, c, place);
   html = replaceLocalStructuredBits(html, c, place, slug);
@@ -292,7 +292,7 @@ function neutralHub(scope, place) {
   }).join('\n          ');
   const cityCloud = cities.map(([name, slug]) => `<a href="fotografie-${slug}.html">${text(name)}</a>`).join('\n          ');
   const body = `<!doctype html>
-<html lang="de"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" /><title>${text(title)}</title><meta name="description" content="${attr(desc)}" /><meta name="author" content="Matthias Ramahi" /><meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1" /><meta name="theme-color" content="#020306" /><link rel="canonical" href="${canonical(file)}" /><link rel="stylesheet" href="assets/site-chrome.css" /><link rel="stylesheet" href="assets/local-seo.css" /></head><body><header class="topbar" id="topbar"><a class="brand" href="index.html">Matthias<br>Ramahi</a><nav class="topbar__nav" aria-label="Hauptnavigation"><a href="index.html" data-nav="home">Home</a><a href="portfolio.html" data-nav="portfolio">Portfolio</a><a href="leistungen.html" data-nav="leistungen">Weitere Dienstleistungen</a><a href="contact.html" data-nav="kontakt">Kontakt</a></nav><a class="topbar__cta" href="#anfrage">Anfrage</a><button class="topbar__menu" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu"><span aria-hidden="true"></span><span aria-hidden="true"></span></button></header><main><section class="local-hero" data-theme="dark" style="--hero-image:url('assets/photos/automobil-neon.webp')"><div class="local-hero__grain" aria-hidden="true"></div><div class="local-hero__inner"><div><p class="kicker">Fotografie · ${text(place)}</p><h1 class="local-title">Fotografie <em>${text(place)}.</em></h1><p class="local-lead"><strong>Neutrale Übersicht für alle sechs Fotografie-Bereiche.</strong> Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft werden als getrennte Topical Cluster geführt, damit Suchmaschinen und Nutzer schnell in die richtige Abteilung finden.</p><div class="local-actions"><a class="btn" href="#bereiche">Bereiche ansehen →</a><a class="btn ghost" href="#anfrage">Anfragen</a></div></div><aside class="local-panel"><h2>Topical Cluster</h2><p>Düsseldorf bleibt Studio- und Markenanker; NRW und Deutschland bilden regionale beziehungsweise überregionale Nachfrage ab.</p><div class="fact-grid"><span>6 Kategorien</span><span>20 Städte</span><span>NRW + Deutschland</span><span>Keyword-Cluster</span></div></aside></div></section><section class="section" id="bereiche" data-theme="light"><div class="section__inner split"><div><p class="kicker dark">Übersicht</p><h2>Sechs Bereiche, <em>ein System.</em></h2></div><div class="copy"><p>Diese Seite ist bewusst neutral: sie verteilt die Suchintention auf passende Hauptseiten statt alles in eine generische Fotografie-Seite zu pressen.</p><p>Jede Kategorie besitzt eine eigenständige Art Direction und lokale Varianten, die die gleiche Hauptseite als Vorlage verwenden.</p></div></div><div class="section__inner link-cloud">${links}</div></section><section class="section dark" data-theme="dark"><div class="section__inner split"><div><p class="kicker">Region</p><h2>Lokale Suche <em>geordnet.</em></h2></div><div class="copy"><p>Stadtseiten, NRW-Hubs und Deutschland-Seiten werden miteinander verbunden, damit die Cluster nicht als isolierte Doorway Pages funktionieren.</p></div></div><div class="section__inner link-cloud">${cityCloud}</div></section><section id="anfrage" data-contact-section data-theme="light" data-contact-subject="Fotografie ${attr(place)} Anfrage" data-contact-headline="Fotografie ${attr(place)} <em>anfragen.</em>"></section></main><script src="assets/site-chrome.js" defer></script></body></html>\n`;
+<html lang="de"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" /><title>${text(title)}</title><meta name="description" content="${attr(desc)}" /><meta name="author" content="Matthias Ramahi" /><meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1" /><meta name="theme-color" content="#020306" /><link rel="canonical" href="${canonical(file)}" /><link rel="stylesheet" href="assets/site-chrome.css" /><link rel="stylesheet" href="assets/local-seo.css" /></head><body><header class="topbar" id="topbar"><a class="brand" href="index.html">Matthias<br>Ramahi</a><nav class="topbar__nav" aria-label="Hauptnavigation"><a href="index.html" data-nav="home">Home</a><a href="portfolio.html" data-nav="portfolio">Portfolio</a><a href="leistungen.html" data-nav="leistungen">Weitere Dienstleistungen</a><a href="contact.html" data-nav="kontakt">Kontakt</a></nav><a class="topbar__cta" href="#anfrage">Anfrage</a><button class="topbar__menu" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu"><span aria-hidden="true"></span><span aria-hidden="true"></span></button></header><main><section class="local-hero" data-theme="dark" style="--hero-image:url('assets/optimized/assets-photos-automobil-neon-1920.webp')"><div class="local-hero__grain" aria-hidden="true"></div><div class="local-hero__inner"><div><p class="kicker">Fotografie · ${text(place)}</p><h1 class="local-title">Fotografie <em>${text(place)}.</em></h1><p class="local-lead"><strong>Neutrale Übersicht für alle sechs Fotografie-Bereiche.</strong> Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft werden als getrennte Topical Cluster geführt, damit Suchmaschinen und Nutzer schnell in die richtige Abteilung finden.</p><div class="local-actions"><a class="btn" href="#bereiche">Bereiche ansehen →</a><a class="btn ghost" href="#anfrage">Anfragen</a></div></div><aside class="local-panel"><h2>Topical Cluster</h2><p>Düsseldorf bleibt Studio- und Markenanker; NRW und Deutschland bilden regionale beziehungsweise überregionale Nachfrage ab.</p><div class="fact-grid"><span>6 Kategorien</span><span>20 Städte</span><span>NRW + Deutschland</span><span>Keyword-Cluster</span></div></aside></div></section><section class="section" id="bereiche" data-theme="light"><div class="section__inner split"><div><p class="kicker dark">Übersicht</p><h2>Sechs Bereiche, <em>ein System.</em></h2></div><div class="copy"><p>Diese Seite ist bewusst neutral: sie verteilt die Suchintention auf passende Hauptseiten statt alles in eine generische Fotografie-Seite zu pressen.</p><p>Jede Kategorie besitzt eine eigenständige Art Direction und lokale Varianten, die die gleiche Hauptseite als Vorlage verwenden.</p></div></div><div class="section__inner link-cloud">${links}</div></section><section class="section dark" data-theme="dark"><div class="section__inner split"><div><p class="kicker">Region</p><h2>Lokale Suche <em>geordnet.</em></h2></div><div class="copy"><p>Stadtseiten, NRW-Hubs und Deutschland-Seiten werden miteinander verbunden, damit die Cluster nicht als isolierte Doorway Pages funktionieren.</p></div></div><div class="section__inner link-cloud">${cityCloud}</div></section><section id="anfrage" data-contact-section data-theme="light" data-contact-subject="Fotografie ${attr(place)} Anfrage" data-contact-headline="Fotografie ${attr(place)} <em>anfragen.</em>"></section></main><script src="assets/site-chrome.js" defer></script></body></html>\n`;
   fs.writeFileSync(file, body, 'utf8');
   return file;
 }

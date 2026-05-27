@@ -2,34 +2,63 @@
 import ContentBlocks from '../../components/ContentBlocks.astro'
 import ContactCta from '../../components/ContactCta.astro'
 import BaseLayout from '../../layouts/BaseLayout.astro'
-import { getBySlug, imageUrl, listDocuments, routeForDoc } from '../../lib/payload'
+import {
+  getBySlug,
+  imageDisplayUrl,
+  internalSitePath,
+  linkAttributes,
+  routeForDoc,
+  toAbsoluteSiteUrl,
+} from '../../lib/payload'
+import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd, type JsonLd } from '../../lib/seo'
 
-export const prerender = true
+export const prerender = false
 
-export async function getStaticPaths() {
-  const docs = await listDocuments('service-pages', { limit: 300, sort: 'sortOrder,title' })
-  return docs.map((doc) => ({ params: { slug: doc.slug }, props: { doc } }))
-}
+const cmsServiceRoutesEnabled = import.meta.env.ASTRO_ENABLE_CMS_SERVICE_ROUTES === 'true'
 
 const { slug } = Astro.params
+
+if (!cmsServiceRoutesEnabled) {
+  return Astro.redirect(slug ? `/${slug}.html` : '/leistungen.html', 308)
+}
+
 const doc = Astro.props.doc ?? (slug ? await getBySlug('service-pages', slug) : null)
 
 if (!doc) {
   return Astro.redirect('/services')
 }
 
-const hero = imageUrl(doc.heroImage, 'wide')
-const proofPoints = doc.proofPoints ?? []
-const audience = doc.audience ?? []
-const faq = doc.faq ?? []
-const relatedPages = doc.relatedPages ?? []
+const hero = imageDisplayUrl(doc.heroImage, 'wide')
+const proofPoints = (doc.proofPoints ?? []) as Array<{ label?: string; text?: string }>
+const audience = (doc.audience ?? []) as Array<{ item?: string }>
+const faq = (doc.faq ?? []) as Array<{ question?: string; answer?: string }>
+const relatedPages = (doc.relatedPages ?? []) as Array<{ label?: string; href?: string }>
+const canonicalUrl = toAbsoluteSiteUrl(doc.seo?.canonicalUrl || routeForDoc('service-pages', doc))
+const canonicalPath = internalSitePath(canonicalUrl)
+const routePath = internalSitePath(routeForDoc('service-pages', doc))
+
+if (canonicalPath && routePath && canonicalPath.replace(/\/$/, '') !== routePath.replace(/\/$/, '')) {
+  return Astro.redirect(canonicalPath, 308)
+}
+
+const faqSchema = faqJsonLd(faq)
+const jsonLdItems: JsonLd[] = [
+  serviceJsonLd(doc, canonicalUrl),
+  breadcrumbJsonLd([
+    { name: 'Startseite', url: '/' },
+    { name: 'Leistungen', url: '/leistungen' },
+    { name: doc.title || 'Leistung', url: canonicalUrl },
+  ]),
+]
+if (faqSchema) jsonLdItems.push(faqSchema)
 ---
 <BaseLayout
-  title={doc.seo?.title || `${doc.title} — Matthias Ramahi`}
+  title={doc.seo?.title || `${doc.title} | Matthias Ramahi`}
   description={doc.seo?.description || doc.intro || ''}
-  canonicalUrl={doc.seo?.canonicalUrl || routeForDoc('service-pages', doc)}
+  canonicalUrl={canonicalUrl}
   noIndex={doc.seo?.noIndex}
   ogImage={doc.seo?.ogImage || doc.heroImage}
+  jsonLd={jsonLdItems}
 >
   <section class="hero-stage" style={hero ? `background: linear-gradient(180deg, rgba(2,3,6,.32), rgba(2,3,6,.9)), url('${hero}') center / cover;` : ''}>
     <div class="hero-stage__grid container">
@@ -57,7 +86,7 @@ const relatedPages = doc.relatedPages ?? []
 
   {audience.length > 0 && (
     <section class="container section-pad is-compact">
-      <p class="eyebrow">Geeignet für</p>
+      <p class="eyebrow">Geeignet fuer</p>
       <div class="filter-row">
         {audience.map((entry) => entry.item && <span>{entry.item}</span>)}
       </div>
@@ -84,7 +113,7 @@ const relatedPages = doc.relatedPages ?? []
     <section class="container section-pad is-compact">
       <p class="eyebrow">Verwandte Seiten</p>
       <div class="filter-row">
-        {relatedPages.map((link) => link.href && <a href={link.href}>{link.label}</a>)}
+        {relatedPages.map((link) => link.href && <a {...linkAttributes(link)}>{link.label}</a>)}
       </div>
     </section>
   )}

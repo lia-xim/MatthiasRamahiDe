@@ -1,0 +1,11 @@
+node_modules
+apps/*/node_modules
+apps/*/.next
+apps/*/dist
+apps/web/public/assets
+apps/web/.visual-regression
+.git
+.env
+**/.env
+**/payload-dev.db
+**/media

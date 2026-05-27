@@ -1,0 +1,120 @@
+// apps/cms/src/fields/contentBlocks.ts — AFTER
+//
+// Adds a new block `clientLogosStrip`. Only the new block definition is shown
+// in full below (surrounded by the existing `ctaBlock` for placement context).
+// All other blocks are unchanged.
+
+import type { Field } from 'payload'
+
+export const contentBlocks: Field = {
+  name: 'blocks',
+  label: 'Inhaltsblöcke',
+  type: 'blocks',
+  blocks: [
+    // … textBlock, imageSequence, quoteBlock, faqBlock, linkList unchanged …
+
+    {
+      slug: 'ctaBlock',
+      labels: { singular: 'Kontakt-CTA', plural: 'Kontakt-CTAs' },
+      fields: [
+        { name: 'headline', label: 'Headline', type: 'text', required: true },
+        { name: 'text', label: 'Kurztext', type: 'textarea' },
+        { name: 'buttonLabel', label: 'Button-Text', type: 'text', defaultValue: 'Anfrage senden' },
+        { name: 'emailSubject', label: 'E-Mail-Betreff', type: 'text' },
+      ],
+    },
+
+    // ── NEW BLOCK ──────────────────────────────────────────────────────────
+    {
+      slug: 'clientLogosStrip',
+      labels: { singular: 'Kunden- / Magazin-Streifen', plural: 'Kunden- / Magazin-Streifen' },
+      fields: [
+        {
+          name: 'eyebrow',
+          label: 'Kicker',
+          type: 'text',
+          // Editorial framing, not "trusted by". Defaults nudge editors toward
+          // the colophon/credit register the site uses everywhere else.
+          defaultValue: 'Auftraggeber',
+          admin: {
+            description:
+              'Kurzer Kicker über dem Streifen — z. B. „Auftraggeber", „Veröffentlicht in", „Kunden". Kein „Trusted by".',
+          },
+        },
+        {
+          name: 'headline',
+          label: 'Optionale Headline',
+          type: 'text',
+          admin: {
+            description:
+              'Eine kurze, deklarative Zeile. Optional — viele Streifen kommen ohne Headline aus.',
+          },
+        },
+        {
+          name: 'theme',
+          label: 'Sektionsfarbe',
+          type: 'select',
+          defaultValue: 'dark',
+          options: [
+            { label: 'Dunkel (Kino-Canvas)', value: 'dark' },
+            { label: 'Hell (Editorial-Paper)', value: 'light' },
+          ],
+          admin: {
+            description:
+              'Bestimmt Hintergrund & Header-Tint. Folge der Sektionsrhythmik: vor/nach dunklen Sektionen → hell wählen, und umgekehrt.',
+          },
+        },
+        {
+          name: 'logos',
+          label: 'Logos',
+          type: 'array',
+          minRows: 2,
+          maxRows: 18,
+          labels: { singular: 'Logo', plural: 'Logos' },
+          fields: [
+            {
+              name: 'image',
+              label: 'Logo (SVG bevorzugt, transparent)',
+              type: 'relationship',
+              relationTo: 'media',
+              required: true,
+              admin: {
+                description:
+                  'Idealerweise SVG mit transparentem Hintergrund. Wird grafisch entsättigt dargestellt — bunte Logos werden bewusst monochrom geführt.',
+              },
+            },
+            {
+              name: 'name',
+              label: 'Kundenname / Marke',
+              type: 'text',
+              required: true,
+              admin: {
+                description:
+                  'Wird als alt-Text und als sichtbares Fallback verwendet, falls das Logo nicht lädt.',
+              },
+            },
+            {
+              name: 'note',
+              label: 'Mono-Zusatz (optional)',
+              type: 'text',
+              admin: {
+                description:
+                  'Kleine Mono-Metazeile unter dem Logo — z. B. „Cover 04/2024", „Kampagne 2023", „seit 2021". Sparsam einsetzen.',
+              },
+            },
+            {
+              name: 'href',
+              label: 'Link (optional)',
+              type: 'text',
+              admin: {
+                description:
+                  'Externe oder interne URL. Lass leer, wenn der Kunde nicht verlinkt werden soll.',
+              },
+            },
+          ],
+        },
+      ],
+    },
+    // ── /NEW BLOCK ─────────────────────────────────────────────────────────
+  ],
+}

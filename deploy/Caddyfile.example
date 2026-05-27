@@ -1,0 +1,54 @@
+www.matthiasramahi.de {
+  redir https://matthiasramahi.de{uri} permanent
+}
+
+matthiasramahi.de {
+  encode zstd gzip
+
+  redir /index https://matthiasramahi.de/ permanent
+  redir /index.html https://matthiasramahi.de/ permanent
+  redir /about https://matthiasramahi.de/ueber-mich.html permanent
+  redir /blog https://matthiasramahi.de/blog.html permanent
+  redir /blog-journal.html https://matthiasramahi.de/blog.html permanent
+  redir /kontakt https://matthiasramahi.de/contact.html permanent
+  redir /contact https://matthiasramahi.de/contact.html permanent
+  redir /journal https://matthiasramahi.de/blog.html permanent
+  redir /leistungen https://matthiasramahi.de/leistungen.html permanent
+  redir /portfolio https://matthiasramahi.de/portfolio.html permanent
+  redir /matthias-ramahi-portfolio.html https://matthiasramahi.de/portfolio.html permanent
+  redir /services https://matthiasramahi.de/leistungen.html permanent
+  redir /ueber-mich https://matthiasramahi.de/ueber-mich.html permanent
+  redir /fotografie https://matthiasramahi.de/fotografie-duesseldorf.html permanent
+  redir /weitere-dienstleistungen.html https://matthiasramahi.de/leistungen.html permanent
+
+  reverse_proxy 127.0.0.1:4321
+
+  @static {
+    path /assets/* /_astro/* /*.avif /*.webp /*.jpg /*.jpeg /*.png /*.gif /*.svg /*.css /*.js /*.mp4 /*.webm
+  }
+  header @static Cache-Control "public, max-age=31536000, immutable"
+
+  @html {
+    path / /*.html
+  }
+  header @html Cache-Control "public, max-age=300, stale-while-revalidate=86400"
+
+  header /sitemap*.xml Cache-Control "public, max-age=3600"
+  header /robots.txt Cache-Control "public, max-age=3600"
+
+  header {
+    X-Content-Type-Options nosniff
+    Referrer-Policy strict-origin-when-cross-origin
+    Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  }
+}
+
+cms.matthiasramahi.de {
+  encode zstd gzip
+  reverse_proxy 127.0.0.1:3000
+
+  header {
+    X-Content-Type-Options nosniff
+    Referrer-Policy strict-origin-when-cross-origin
+  }
+}

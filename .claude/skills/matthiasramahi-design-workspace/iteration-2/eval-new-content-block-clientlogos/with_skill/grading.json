@@ -1,0 +1,23 @@
+{
+  "eval_id": 2,
+  "eval_name": "new-content-block-clientlogos",
+  "config": "with_skill_iter2",
+  "expectations": [
+    { "text": "CMS block uses slug 'clientLogosStrip'", "passed": true, "evidence": "Confirmed." },
+    { "text": "CMS block has German labels + admin descriptions", "passed": true, "evidence": "Eyebrow default 'Vertrauen', admin copy nudges curation over completeness." },
+    { "text": "CMS block has logos[] with image (required), name (required), optional href", "passed": true, "evidence": "minRows:3, maxRows:12. Each item has logo (Media), name (alt+aria), optional href." },
+    { "text": "Astro renderer adds to discriminated union and has render branch", "passed": true, "evidence": "New clientLogosStrip branch added between linkList and ctaBlock." },
+    { "text": "Styling references design tokens (no hardcoded colors)", "passed": true, "evidence": "--bg, --fg, --paper, --paper-ink, --border, --muted, --ease, --accent-2 — all tokens." },
+    { "text": "Logos at uniform height with auto width", "passed": true, "evidence": "max-height: 44px, object-fit: contain." },
+    { "text": "Default state desaturates / mutes logos (treatment: monochrome)", "passed": true, "evidence": "grayscale+brightness+contrast filter, base opacity 0.78. Hover lifts to full opacity/color over 0.6s — same slow easing as chapter grid." },
+    { "text": "No card shadows or rounded corners > 4px", "passed": true, "evidence": "Confirmed — no shadows, no radii." },
+    { "text": "Explanation references existing block patterns by name", "passed": true, "evidence": "References audience__grid, mr-cities__grid, chapter grid — multiple anchors." },
+    { "text": "Headline em uses steel accent (var(--accent-2))", "passed": true, "evidence": "EXPLANATION explicitly states: 'Headline — <em> steel-grey, exactly like BILDER, DIE EINEN RAUM VERÄNDERN.' Directly cites the calibration anchor from SKILL.md." },
+    { "text": "Acknowledges 'No trusted by' anti-pattern", "passed": true, "evidence": "Opening line: 'Not a trusted by sponsor wall.' Eyebrow choice 'Vertrauen' is a bit closer to trust-badge than iter 1's 'Auftraggeber' but framing is editorial." },
+    { "text": "prefers-reduced-motion handled", "passed": true, "evidence": "'Single opacity/filter transition, killed under prefers-reduced-motion: reduce.'" }
+  ],
+  "pass_count": 12,
+  "fail_count": 0,
+  "pass_rate": 1.0,
+  "notes": "Iteration improvement: explicitly cites the new calibration anchor from updated SKILL.md ('BILDER, DIE EINEN RAUM VERÄNDERN.'). Uses var(--accent-2) for headline em — implementing the corrected accent system. Treatment select ('monochrome' default + 'original' opt-out) is a nice generalization over iter 1's mandatory monochrome."
+}

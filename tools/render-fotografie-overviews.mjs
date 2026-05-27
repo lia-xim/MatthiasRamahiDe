@@ -1,22 +1,22 @@
 import fs from 'node:fs';
 
 const categories = [
-  ['automobil','01','Automobil','Automobil Fotografie','automobil-fotografie','assets/photos/automobil-neon.webp','Automobil im kontrollierten Neonlicht',
+  ['automobil','01','Automobil','Automobil Fotografie','automobil-fotografie','assets/optimized/assets-photos-automobil-neon-1920.webp','Automobil im kontrollierten Neonlicht',
     p=>`Für Fahrzeuge, Marken, Händler und private Verkäufe in ${p}: Exterieur, Interieur, Details und Lichtführung werden so geplant, dass aus einem Auto eine verwertbare Bildserie wird — für Website, Inserat, Social, Print und Kampagne.`,
     'Keine generischen Fahrzeugbilder: kontrollierte Reflexe, ruhige Linien und ein Bildsatz, der technisch sauber weiterverwendet werden kann.'],
-  ['sportwagen','02','Sportwagen','Sportwagen Fotografie','sportwagen-fotografie','assets/photos/automobil-sunset.webp','Sportwagen im warmen Streiflicht',
+  ['sportwagen','02','Sportwagen','Sportwagen Fotografie','sportwagen-fotografie','assets/optimized/assets-photos-automobil-sunset-1920.webp','Sportwagen im warmen Streiflicht',
     p=>`Sportwagen in ${p} brauchen Präzision statt Effektfeuerwerk: niedrige Blickachsen, saubere Spiegelungen, Innenraumdetails und eine Dramaturgie, die Leistung sichtbar macht, ohne ins Plakative zu kippen.`,
     'Für Sammler, Händler, Performance-Projekte und hochwertige Verkaufsserien mit Bildwirkung über den ersten Blick hinaus.'],
-  ['oldtimer','03','Oldtimer','Oldtimer Fotografie','oldtimer-fotografie','assets/photos/oldtimer-stage.webp','Oldtimer als ruhige Studio-Inszenierung',
+  ['oldtimer','03','Oldtimer','Oldtimer Fotografie','oldtimer-fotografie','assets/optimized/assets-photos-oldtimer-stage-1920.webp','Oldtimer als ruhige Studio-Inszenierung',
     p=>`Oldtimer Fotografie in ${p} erzählt Wert, Herkunft und Material. Lack, Chrom, Leder und Patina werden nicht nostalgisch überhöht, sondern mit Charakter und Nostalgie präzise dokumentiert.`,
     'Ideal für Sammlung, Auktion, Verkauf, Ausstellung und Fahrzeuge, deren Geschichte sichtbar bleiben soll.'],
-  ['motorrad','04','Motorrad','Motorrad Fotografie','motorrad-fotografie','assets/photos/motorrad.webp','Motorrad mit dunkler Studio-Atmosphäre',
+  ['motorrad','04','Motorrad','Motorrad Fotografie','motorrad-fotografie','assets/optimized/assets-photos-motorrad-1920.webp','Motorrad mit dunkler Studio-Atmosphäre',
     p=>`Motorräder in ${p} funktionieren über Haltung, Mechanik und Silhouette. Die Serie kann Maschine, Details, Fahrer und Werkstattbezug verbinden — stärker als ein einzelnes Verkaufsfoto.`,
     'Für Custom Bikes, Händler, private Maschinen, Werkstätten und dokumentarische Serien mit Druck.'],
   ['portrait','05','Portrait','Portrait Fotografie','portraitfotografie','assets/photos/portrait-blue.webp','Editoriales Portrait mit blauem Licht',
     p=>`Portraits in ${p} sollen professionell wirken, ohne Menschen glattzubügeln. Licht, Distanz und Blickführung werden auf Nutzung und Persönlichkeit abgestimmt — für Branding, Presse, Team und Editorial.`,
     'Kein Passbild-Look, kein austauschbares LinkedIn-Template — sondern klare Bilder mit Haltung und Wiedererkennung.'],
-  ['landschaft','06','Landschaft','Landschaftsfotografie','landschaftsfotografie','assets/photos/landschaft.webp','Atmosphärische Landschaftsfotografie',
+  ['landschaft','06','Landschaft','Landschaftsfotografie','landschaftsfotografie','assets/optimized/assets-photos-landschaft-1920.webp','Atmosphärische Landschaftsfotografie',
     p=>`Landschaftsfotografie ist für ${p} weniger lokales Shooting als kuratierter Bildkauf: Fine-Art-Prints, Wandbilder, Editionen und große Formate werden nach Raum, Material und Wirkung ausgewählt.`,
     'Deutschlandweit sinnvoll für private Räume, Praxen, Hotels, Büros und Sammlungen, die Ruhe statt Dekoration suchen.']
 ].map(([id,no,label,title,slug,image,alt,copy,note]) => ({id,no,label,title,slug,image,alt,copy,note,
@@ -25,26 +25,26 @@ const categories = [
 
 const pages = [
   ['fotografie-duesseldorf.html','Düsseldorf',
-    'Fotografie Düsseldorf — Automobil, Portrait, Landschaft & mehr | Matthias Ramahi',
-    'Fotografie Düsseldorf als Übersicht: Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft — sechs spezialisierte Bereiche, jeder mit eigener Bildsprache.',
+    'Fotografie Düsseldorf | Übersicht | Matthias Ramahi',
+    'Fotografie Düsseldorf als klare Übersicht: Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft — sechs spezialisierte Bereiche mit eigenem Einstieg.',
     'Sechs Fotografie-Bereiche, eine Adresse in Düsseldorf — von Automobil, Sportwagen, Oldtimer und Motorrad bis Portrait und Fine-Art-Landschaft. Jede Kategorie mit eigener Bildsprache und eigenem Einstieg.',
     'Düsseldorf ist der Studio- und Planungsanker. Von hier aus werden Fahrzeugserien, Portraits und Prints so geführt, dass Nutzer und Suchmaschinen sofort verstehen, welcher Bereich wohin gehört.',
     'Fotografie Düsseldorf Anfrage',
     'mpik8b82-_DSC3879.webp'],
   ['fotografie-nrw.html','NRW',
-    'Fotografie NRW — Automobil, Portrait, Landschaft & mehr | Matthias Ramahi',
-    'Fotografie NRW als thematische Übersicht: Fahrzeugfotografie, Portraits und Fine-Art-Landschaftsbilder — sechs saubere Cluster für Rheinland, Ruhrgebiet und NRW.',
+    'Fotografie NRW | Übersicht | Matthias Ramahi',
+    'Fotografie NRW als klare Übersicht: Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft — sechs spezialisierte Bereiche für Rheinland und Ruhrgebiet.',
     'Sechs Fotografie-Bereiche für ganz NRW — Rheinland, Ruhrgebiet, Niederrhein und Bergisches Land. Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Fine-Art-Landschaft auf einer Adresse.',
     'NRW bündelt Rheinland, Ruhrgebiet, Niederrhein und Bergisches Land. Die Seite führt nicht in eine generische Galerie, sondern in die passende Kategorie mit regionalem Bezug.',
     'Fotografie NRW Anfrage',
-    'assets/photos/automobil-sunset.webp'],
+    'assets/optimized/assets-photos-automobil-sunset-1920.webp'],
   ['fotografie-deutschland.html','Deutschland',
-    'Fotografie Deutschland — Automobil, Portrait, Landschaft & mehr | Matthias Ramahi',
-    'Fotografie Deutschland als Übersicht: sechs spezialisierte Bereiche für Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft/Fine-Art-Prints.',
+    'Fotografie Deutschland | Übersicht | Matthias Ramahi',
+    'Fotografie Deutschland als klare Übersicht: Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft — sechs spezialisierte Bereiche mit eigenem Einstieg.',
     'Sechs Fotografie-Bereiche, deutschlandweit denkbar — Fahrzeugserien, Portraits und Landschafts-Prints über eine zentrale Adresse zugänglich.',
     'Deutschlandweit zählt nicht eine einzelne Stadt, sondern die richtige Einordnung der Suchintention: Produktion, Nutzung, Bildstil, Lieferung und Kategorie müssen sofort klar sein.',
     'Fotografie Deutschland Anfrage',
-    'assets/photos/landschaft.webp']
+    'assets/optimized/assets-photos-landschaft-1920.webp']
 ].map(([file,place,title,desc,heroLead,context,contactSubject,heroImage]) => ({file,place,title,desc,heroLead,context,contactSubject,heroImage}));
 
 const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
@@ -72,7 +72,7 @@ function header(subject){const m=mail(subject);return `<header class="topbar" id
     <a href="leistungen.html" data-nav="leistungen">Weitere Dienstleistungen</a>
     <a href="contact.html" data-nav="kontakt">Kontakt</a>
   </nav>
-  <a class="topbar__cta" href="${m}">Anfrage</a>
+  <a class="topbar__cta" href="contact.html#anfrage">Projekt anfragen</a>
   <button class="topbar__menu" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu"><span aria-hidden="true"></span><span aria-hidden="true"></span></button>
 </header>
 <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
@@ -83,7 +83,7 @@ function header(subject){const m=mail(subject);return `<header class="topbar" id
       <div class="mobile-menu__group"><a class="mobile-menu__label" href="fotografie-duesseldorf.html">Fotografie</a><a href="automobil-fotografie-duesseldorf.html">Automobil</a><a href="sportwagen-fotografie-duesseldorf.html">Sportwagen</a><a href="oldtimer-fotografie-duesseldorf.html">Oldtimer</a><a href="motorrad-fotografie-duesseldorf.html">Motorrad</a><a href="portraitfotografie-duesseldorf.html">Portrait</a><a href="landschaftsfotografie-duesseldorf.html">Landschaft</a></div>
       <a href="portfolio.html" data-nav="portfolio">Portfolio</a><a href="ueber-mich.html" data-nav="ueber-mich">Über mich</a><a href="blog.html" data-nav="blog">Blog</a><a href="leistungen.html" data-nav="leistungen">Weitere Dienstleistungen</a><a href="contact.html" data-nav="kontakt">Kontakt</a>
     </nav>
-    <a class="mobile-menu__cta" href="${m}">Anfrage senden</a>
+    <a class="mobile-menu__cta" href="contact.html#anfrage">Projekt anfragen</a>
   </div>
 </div>`;}
 
@@ -231,7 +231,7 @@ function hero(p){return `<section class="ovh" data-theme="dark" aria-label="Foto
   <div class="ovh__glow" aria-hidden="true"></div>
   <div class="ovh__aperture" aria-hidden="true"></div>
   <div class="ovh__grid">
-    <h1 class="ovh__title"><span class="line"><span class="word">Sechs Bereiche.</span></span><span class="line"><span class="word">Eine Bildsprache.</span></span></h1>
+    <h1 class="ovh__title"><span class="line"><span class="word">Fotografie ${esc(p.place)}.</span></span><span class="line"><span class="word">Sechs Bereiche.</span></span></h1>
     <p class="ovh__lead">${esc(p.heroLead)}</p>
     <div class="ovh__actions">
       <a class="ovh__btn" href="#automobil">Bereiche ansehen →</a>

@@ -1,0 +1,22 @@
+{
+  "eval_id": 1,
+  "eval_name": "new-seo-subpage-bottrop",
+  "config": "with_skill",
+  "expectations": [
+    { "text": "Page <title> contains 'Motorrad Fotografie Bottrop'", "passed": true, "evidence": "Verified via grep: 16 Bottrop mentions; title swapped correctly per agent summary." },
+    { "text": "<link rel=\"canonical\"> ends in motorrad-fotografie-bottrop.html", "passed": true, "evidence": "Canonical URL updated per agent summary; JSON-LD @id references match." },
+    { "text": "H1 / hero title contains 'Bottrop'", "passed": true, "evidence": "Hero H1 line 2 set to 'Bottrop' per scaffold." },
+    { "text": "Hero lede references Bottrop-specific geography", "passed": true, "evidence": "Lede mentions 'Ruhrgebiet, Tetraeder, Halde Haniel und sachliche Industriekulisse' — real Bottrop landmarks." },
+    { "text": "JSON-LD Service.areaServed contains 'Bottrop'", "passed": true, "evidence": "Technical JSON-LD: 'areaServed':['Bottrop','NRW','Deutschland']. Agent noted sibling clone-bug and consciously fixed it." },
+    { "text": "Cities grid contains 22 cells with is-active on Bottrop", "passed": true, "evidence": "Cities grid count: 28 mr-cities__cell matches (including ~3 CSS rule references). Bottrop cell has class='mr-cities__cell is-active' + aria-current='page'. Agent inserted Bottrop after Oberhausen as 23rd cell." },
+    { "text": "Contact CTA has data-contact-subject containing 'Bottrop'", "passed": true, "evidence": "data-contact-subject='Motorrad Fotografie Bottrop Anfrage' (line 689)." },
+    { "text": "Section count matches sibling (±1)", "passed": true, "evidence": "10 <section tags vs 10 in motorrad-fotografie-koeln.html — exact match." },
+    { "text": "Page includes search-keywords grid (5 long-tail variants)", "passed": true, "evidence": "Preserved from koeln sibling per agent summary." },
+    { "text": "Statement uses exact motorrad topic-fixed headline", "passed": true, "evidence": "'Geschwindigkeit und Leidenschaft' found in file." },
+    { "text": "No marketing-tone copy or superlatives", "passed": true, "evidence": "grep for 'unverbindlich|exklusiv|premium|hochwertig|führend|beste' returned no hits in copy (only matches in CSS file paths or class names — not in user-facing text)." }
+  ],
+  "pass_count": 11,
+  "fail_count": 0,
+  "pass_rate": 1.0,
+  "notes": "With-skill agent also flagged two real bugs in the sibling pages: (1) .mr-cities__cell.is-active has no CSS rule defined in site-chrome.css; (2) Köln/Essen siblings ship stale areaServed='Duesseldorf' in the technical JSON-LD. With-skill consciously broke parity to fix bug #2 while documenting the choice. Strong meta-awareness."
+}

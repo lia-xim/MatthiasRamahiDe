@@ -1,0 +1,26 @@
+{
+  "skill_name": "matthiasramahi-design",
+  "evals": [
+    {
+      "id": 1,
+      "name": "new-seo-subpage-bottrop",
+      "prompt": "Ich möchte das lokale SEO-Netz um Bottrop erweitern. Bau mir eine neue Seite `motorrad-fotografie-bottrop.html` im Projekt-Root (C:/Users/matth/Documents/MatthiasRamahiDe), die nahtlos zu den bestehenden Motorrad-Stadt-Seiten (z.B. `motorrad-fotografie-koeln.html`, `motorrad-fotografie-essen.html`) passt. Hero, Statement, Module, Galerie, Audience, Related, Cities-Grid, Suchbegriffe und Kontakt-CTA müssen alle dabei sein. Die Seite muss visuell und strukturell identisch zu den Geschwistern sein und nur die Bottrop-spezifischen Slots ändern (Titel, Meta, JSON-LD, H1 Zeile 2, Hero-Lede mit Bottrop-Geografie, Contact-Subject, Cities-Grid mit is-active auf Bottrop). Schreib die komplette HTML-Datei.",
+      "expected_output": "Complete valid HTML file that matches motorrad-fotografie-koeln.html structure byte-for-byte outside Bottrop-specific slots. JSON-LD valid. Cities grid contains 22 entries with is-active on Bottrop. References Bottrop's actual local geography (Gasometer, CentrO-Umgebung, Halde Haniel, etc.) in 1 sentence — uses the topic-fixed motorrad lede formula. Contact CTA has data-contact-subject='Motorrad Fotografie Bottrop Anfrage'. Canonical URL ends in motorrad-fotografie-bottrop.html.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "new-content-block-testimonial",
+      "prompt": "Ich möchte einen neuen Content-Block-Typ `clientLogosStrip` hinzufügen — eine ruhige horizontale Reihe von Kundenlogos (z.B. Autohäuser, Magazine, Marken für die ich gearbeitet habe). Bau das so, dass es zum Site-Look passt (also keine Pinterest-Karten, keine bunten Hover-Effekte). Es soll sowohl im CMS (apps/cms/src/fields/contentBlocks.ts) als auch im Astro-Renderer (apps/web/src/components/ContentBlocks.astro) verfügbar sein. Show me both edits and explain how it visually fits the system.",
+      "expected_output": "Two edits: (1) addition to contentBlocks.ts blocks array with slug 'clientLogosStrip', fields for headline + logos[] (image + altText + optional url + optional caption), labels in German. (2) addition to ContentBlocks.astro discriminated union AND a render branch that outputs a row of logos with consistent height, muted/desaturated default state, optional accent treatment on hover, mono kicker, generous spacing — NO card shadows, NO playful colors, fits dark or light section context. Explanation references the design system: uses var(--accent) only as a subtle hover state at most, never as a logo recoloring; logos kept at a single height with width auto; uses the existing kicker + headline pattern from textBlock; mentions that logos are treated as editorial marks not card grids. Should reference 04-content-blocks.md or its block-design conventions.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "name": "redesign-portrait-hero-feedback",
+      "prompt": "Ich überlege, das Portrait-Hero auf `portraitfotografie-duesseldorf.html` umzubauen. Aktuell ist da diese Iris-Reveal Animation. Ich finde sie cool, aber sie ist langsam und mobile nicht so gut. Was sind meine Optionen? Welche passt am besten zur Site-Identität, welche sollte ich vermeiden, und warum? Konkrete Empfehlung mit Begründung, plus den Code für die Option die du empfiehlst (du musst die Seite nicht umbauen, gib mir nur das Hero-Skelett).",
+      "expected_output": "Recommendation grounded in the design system's identity (cinematic dark, photographic motion, slow easing). Should reference the five hero formulas from 03-hero-formulas.md by name (lens shader, Ken-Burns static, iris reveal, filmstrip wipe, sequence stage). Should explicitly warn against degrading to a flat static image or generic CSS gradient hero — that's the 'failure mode 1' from SKILL.md. Should NOT recommend lens shader (that's index.html exclusive). Should NOT recommend filmstrip wipe (that's motorrad's signature). Most likely recommendation: keep iris reveal but optimize (shorter duration on mobile, reduced-motion fallback to Ken-Burns static), or alternately the Ken-Burns static as a graceful fallback. Code skeleton for the recommended option provided. Should mention prefers-reduced-motion handling. Should mention data-theme='dark' / data-header-theme='dark'. Voice is direct/advisory, not a sales pitch.",
+      "files": []
+    }
+  ]
+}

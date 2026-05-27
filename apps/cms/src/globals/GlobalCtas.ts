@@ -1,6 +1,8 @@
 import type { GlobalConfig } from 'payload'
 
 import { authenticated } from '../access/publishedOrAuthenticated'
+import { hrefField } from '../fields/links'
+import { normalizeGlobalLinksBeforeValidate } from '../hooks/normalizeLinks'
 import { triggerAstroRebuildAfterGlobalChange } from '../hooks/rebuild'
 
 export const GlobalCtas: GlobalConfig = {
@@ -14,6 +16,7 @@ export const GlobalCtas: GlobalConfig = {
     update: authenticated,
   },
   hooks: {
+    beforeValidate: [normalizeGlobalLinksBeforeValidate],
     afterChange: [triggerAstroRebuildAfterGlobalChange],
   },
   fields: [
@@ -22,8 +25,8 @@ export const GlobalCtas: GlobalConfig = {
       label: 'Standard CTA',
       type: 'group',
       fields: [
-        { name: 'label', label: 'Button-Text', type: 'text', defaultValue: 'Anfrage senden', required: true },
-        { name: 'href', label: 'Ziel-URL', type: 'text', defaultValue: 'mailto:info@matthiasramahi.de?subject=Projektanfrage', required: true },
+        { name: 'label', label: 'Button-Text', type: 'text', defaultValue: 'Projekt anfragen', required: true },
+        hrefField('Ziel-URL', '/contact.html#anfrage'),
       ],
     },
     {
@@ -40,7 +43,7 @@ export const GlobalCtas: GlobalConfig = {
           defaultValue:
             'Projektart, Ort, Zeitraum und gewünschte Nutzung reichen für den ersten Schritt. Ich melde mich mit Rückfragen oder einem nächsten Vorschlag per E-Mail.',
         },
-        { name: 'buttonLabel', label: 'Button-Text', type: 'text', defaultValue: 'Anfrage per E-Mail senden' },
+        { name: 'buttonLabel', label: 'Button-Text', type: 'text', defaultValue: 'Projekt anfragen' },
         { name: 'emailSubject', label: 'E-Mail-Betreff', type: 'text', defaultValue: 'Projektanfrage' },
       ],
     },

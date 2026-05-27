@@ -1,0 +1,22 @@
+{
+  "eval_id": 3,
+  "eval_name": "redesign-portrait-hero-feedback",
+  "config": "with_skill",
+  "expectations": [
+    { "text": "Response is in German", "passed": true, "evidence": "Entire response in German." },
+    { "text": "Response mentions at least 2 of the 5 hero formulas", "passed": true, "evidence": "Names all 5 explicitly with section references: Iris-Reveal (§ C), Topic-Hub/Ken-Burns Static (§ B), Filmstrip Wipe (§ D), Sequence Stage (§ E), Lens Shader (§ A)." },
+    { "text": "Does NOT recommend lens shader hero", "passed": true, "evidence": "Explicitly excluded as 'exklusiv zu index.html (§ A)'." },
+    { "text": "Does NOT recommend filmstrip wipe hero", "passed": true, "evidence": "Explicitly excluded as 'gehört zu Motorrad (§ D)'." },
+    { "text": "Does NOT recommend replacing with static + plain gradient", "passed": true, "evidence": "Option 5 explicitly named and rejected: 'Watert die Portrait-Identität auf Stock-Niveau runter. Genau das Failure-Pattern aus SKILL.md Punkt 9.'" },
+    { "text": "Mentions prefers-reduced-motion", "passed": true, "evidence": "@media (prefers-reduced-motion:reduce) block in CSS with explicit fallback states." },
+    { "text": "Mentions data-theme or data-header-theme attribute", "passed": true, "evidence": "data-theme=\"dark\" and data-header-theme=\"dark\" on the section." },
+    { "text": "Includes code skeleton (HTML + CSS)", "passed": true, "evidence": "Full HTML + scoped CSS block at end of response, ~50 lines of CSS plus markup." },
+    { "text": "Recommendation justified with design-system anchors", "passed": true, "evidence": "Three-point justification: (1) iris is the portrait section's signature per § C; (2) actual problem is stack of 6 concepts, not the iris; (3) canonical pattern is one __photo, not slide-stack — current is overgrown." },
+    { "text": "Code skeleton uses var(--ease), clamp(), dark section markers", "passed": true, "evidence": "var(--ease), var(--accent-2), var(--muted), var(--fg), clamp() throughout, data-theme/data-header-theme attributes set." },
+    { "text": "Tone is advisory and direct", "passed": true, "evidence": "Direct beratungston: 'Wir lösen also nicht Iris weg, sondern Iris schlank machen.' No 'amazing', 'perfect', 'cool' — uses 'Restoration', 'Identitätsentscheidung', 'kanonische Stand'." }
+  ],
+  "pass_count": 11,
+  "fail_count": 0,
+  "pass_rate": 1.0,
+  "notes": "Strong outcome. Recommendation 'tighten the iris, don't replace it' is exactly the design-system-aligned move. Reframes the user's performance complaint as accumulated complexity, not the iris concept. Explicitly walks through every wrong option (lens shader, filmstrip wipe, sequence stage, ken-burns static, flat image) and why each is wrong. Cites SKILL.md failure modes by name."
+}

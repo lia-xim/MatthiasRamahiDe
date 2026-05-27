@@ -304,6 +304,7 @@
     .map(item=>item.split('|').map(part=>part.trim()).filter(Boolean))
     .filter(Boolean);
   const titleEl=hero?.querySelector('.hero-title');
+  const leadEl=hero?.querySelector('#hero-lead');
   let swapToken=0;
   const wait=(ms)=>new Promise(r=>setTimeout(r,ms));
 
@@ -332,6 +333,7 @@
     renderTitle(lines);
     void titleEl.offsetWidth;            /* flush styles */
     titleEl.classList.remove('no-anim');
+    leadEl?.classList.toggle('is-hidden', idx%HERO_TEXTS.length !== 0);
     requestAnimationFrame(()=>titleEl.classList.add('is-in'));
   }
 

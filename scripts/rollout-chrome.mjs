@@ -51,7 +51,7 @@ const CANONICAL_HEADER = `<header class="topbar" id="topbar">
     <a href="leistungen.html" data-nav="leistungen">Weitere Dienstleistungen</a>
     <a href="contact.html" data-nav="kontakt">Kontakt</a>
   </nav>
-  <a class="topbar__cta" href="mailto:info@matthiasramahi.de?subject=Projektanfrage">Anfrage</a>
+  <a class="topbar__cta" href="contact.html#anfrage">Projekt anfragen</a>
   <button class="topbar__menu" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu">
     <span aria-hidden="true"></span><span aria-hidden="true"></span>
   </button>
@@ -77,7 +77,7 @@ const CANONICAL_HEADER = `<header class="topbar" id="topbar">
       <a href="leistungen.html" data-nav="leistungen">Weitere Dienstleistungen</a>
       <a href="contact.html" data-nav="kontakt">Kontakt</a>
     </nav>
-    <a class="mobile-menu__cta" href="mailto:info@matthiasramahi.de?subject=Projektanfrage">Anfrage senden</a>
+    <a class="mobile-menu__cta" href="contact.html#anfrage">Projekt anfragen</a>
   </div>
 </div>`;
 

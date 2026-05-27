@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>matthiasramahi-design · Iteration 2 Review</title>
+<style>
+  :root{
+    --bg:#0d0f13; --surface:#15181f; --paper:#f4f3ee; --paper-ink:#11141a;
+    --fg:#eaeae3; --muted:#a3a8a0; --rule:rgba(234,234,227,.12);
+    --accent-2:#7a8a86; --ok:#7ec699; --bad:#e26d6d; --warn:#d9b56a;
+    --mono:'JetBrains Mono','SFMono-Regular',Menlo,monospace;
+    --sans:'Söhne','Inter',Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);line-height:1.6;font-size:15px}
+  header{padding:48px clamp(24px,5vw,64px) 32px;border-bottom:1px solid var(--rule)}
+  header h1{font-size:clamp(28px,3.6vw,52px);margin:0 0 8px;letter-spacing:-.025em;font-weight:600}
+  header h1 em{font-style:normal;color:var(--accent-2);font-weight:500}
+  header .sub{color:var(--muted);font:600 11px/1.4 var(--mono);letter-spacing:.18em;text-transform:uppercase}
+  main{padding:32px clamp(24px,5vw,64px) 96px;max-width:1300px;margin:0 auto}
+  h2{font-size:clamp(22px,2.4vw,32px);margin:48px 0 16px;letter-spacing:-.02em;font-weight:600}
+  h2 em{font-style:normal;color:var(--accent-2);font-weight:500}
+  h3{font-size:18px;margin:24px 0 8px;font-weight:600}
+  h4{font-size:14px;margin:14px 0 6px;font-weight:600;font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  p{margin:0 0 12px}
+  .summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:16px 0 32px}
+  .cell{background:var(--surface);padding:18px 22px}
+  .cell .label{font:700 10px/1.4 var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+  .cell .val{font-size:28px;font-weight:600;letter-spacing:-.02em}
+  .cell .delta{margin-top:4px;font:600 12px var(--mono);color:var(--accent-2)}
+  .cell.ok .val{color:var(--ok)}
+  table{width:100%;border-collapse:collapse;margin:12px 0 24px;font-size:14px}
+  th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--rule);vertical-align:top}
+  th{font:700 10px/1.4 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  td.mono{font-family:var(--mono);font-size:13px}
+  .pass{color:var(--ok)}
+  .fail{color:var(--bad)}
+  .partial{color:var(--warn)}
+  .eval{margin:48px 0;padding:32px;background:var(--surface);border:1px solid var(--rule)}
+  .eval__head{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;margin-bottom:8px;flex-wrap:wrap}
+  .eval__title{font-size:24px;font-weight:600;letter-spacing:-.02em;margin:0}
+  .eval__id{font:700 10px/1 var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--muted);padding:6px 10px;border:1px solid var(--rule)}
+  .compare{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:16px 0}
+  .col{padding:20px;background:#1a1d24;border:1px solid var(--rule)}
+  .col h3{margin:0 0 8px;font-size:16px;display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+  .col h3 .pct{font:700 11px var(--mono);letter-spacing:.12em}
+  .col.iter1 .pct{color:var(--warn)}
+  .col.iter2 .pct{color:var(--ok)}
+  .col ul{margin:8px 0 0;padding-left:0;list-style:none}
+  .col li{font-size:13px;color:var(--muted);margin:6px 0;padding-left:22px;position:relative;line-height:1.5}
+  .col li:before{position:absolute;left:0;top:0;font-family:var(--mono);font-size:12px}
+  .col li.ok:before{content:"✓";color:var(--ok)}
+  .col li.bad:before{content:"✗";color:var(--bad)}
+  .col li.maybe:before{content:"~";color:var(--warn)}
+  .col li.new:before{content:"+";color:var(--accent-2)}
+  .links{font-size:13px;margin:16px 0 0;color:var(--muted)}
+  .links a{color:var(--fg);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:1px}
+  .links a:hover{border-color:var(--accent-2);color:var(--accent-2)}
+  .notes{margin:20px 0 0;padding:16px 20px;background:#1c1f27;border-left:2px solid var(--accent-2);font-size:14px;color:var(--muted)}
+  .notes strong{color:var(--fg);font-weight:600}
+  .change{margin:24px 0;padding:18px 22px;background:#1c1f27;border:1px solid var(--rule)}
+  .change h4{margin:0 0 8px;color:var(--accent-2)}
+  .change code{font-family:var(--mono);font-size:13px;background:#0d0f13;padding:1px 6px;border:1px solid var(--rule);color:var(--fg)}
+  @media (max-width:880px){.compare{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="sub">Skill Review · Iteration 2 · 2026-05-27</div>
+  <h1>matthiasramahi-design <em>· iter 2</em></h1>
+  <p style="color:var(--muted);max-width:62ch;margin-top:12px">
+    Same 3 prompts as iter 1, re-run with the corrected skill (steel/sage as primary accent;
+    red restricted to micro-punctuation; CTAs never red-filled; image grids OK if no card chrome).
+    Baselines unchanged from iter 1.
+  </p>
+</header>
+
+<main>
+
+<h2>Was sich von iter 1 zu iter 2 verbessert hat</h2>
+
+<div class="change">
+  <h4>Eval 3 (Portrait Hero) — der wichtigste Fix</h4>
+  <p style="color:var(--muted);font-size:14px;margin:0">
+    <strong style="color:var(--fg)">Iter 1:</strong> Code-Skelett benutzt <code>btn-accent</code> mit <code>background: var(--accent)</code> — also rot-gefüllter Button. Das war der Failure-Mode, den der Skill eigentlich vermeiden sollte, aber das Posture-Wording war zu schwammig.
+  </p>
+  <p style="color:var(--muted);font-size:14px;margin:8px 0 0">
+    <strong style="color:var(--ok)">Iter 2:</strong> Code benutzt <code>btn-ink</code> (<code>background: var(--fg); color: var(--bg)</code>) + <code>btn-ghost</code> (<code>border: 1px solid var(--fg)</code>). Die Antwort warnt sogar explizit: <em>„Roter Hover-Fill auf den CTAs … nicht zum Site-Rot wechseln. CTAs bleiben Ghost / Ink-Fill."</em>
+  </p>
+</div>
+
+<div class="change">
+  <h4>Eval 2 (Client Logos) — neuer Calibration-Anchor wird benutzt</h4>
+  <p style="color:var(--muted);font-size:14px;margin:0">
+    <strong style="color:var(--ok)">Iter 2:</strong> Die Erklärung zitiert direkt den neuen Calibration-Block aus SKILL.md: <em>„Headline — <code>&lt;em&gt;</code> steel-grey, exactly like BILDER, DIE EINEN RAUM <strong>VERÄNDERN.</strong>"</em> — d.h. der Skill-Inhalt wird als konkreter Anker aufgegriffen, nicht nur als abstrakte Regel. <code>var(--accent-2)</code> ist explizit als Em-Color drin.
+  </p>
+</div>
+
+<div class="change">
+  <h4>Eval 1 (Bottrop) — unverändert (war schon korrekt)</h4>
+  <p style="color:var(--muted);font-size:14px;margin:0">
+    Die SEO-Subpage ist ein mechanischer Klon von <code>motorrad-fotografie-koeln.html</code> — die Site verwendet dort schon <code>var(--accent-2)</code> für H2-em-Text, also war iter 1 hier nicht "falsch". Iter 2 hat lediglich Bottrop an einer anderen Position im Cities-Grid eingefügt (zwischen Bochum/Wuppertal statt nach Oberhausen). Beide Plätze sind valide.
+  </p>
+</div>
+
+<h2>Summary</h2>
+
+<div class="summary">
+  <div class="cell ok">
+    <div class="label">Iter 2 with skill</div>
+    <div class="val">100.0%</div>
+    <div class="delta">Same as iter 1</div>
+  </div>
+  <div class="cell">
+    <div class="label">Iter 1 baseline (kept)</div>
+    <div class="val" style="color:var(--warn)">88.1%</div>
+  </div>
+  <div class="cell">
+    <div class="label">Time mean</div>
+    <div class="val">217.2 s</div>
+    <div class="delta">-5.6 s vs iter 1</div>
+  </div>
+  <div class="cell">
+    <div class="label">Tokens mean</div>
+    <div class="val">82.0 k</div>
+    <div class="delta">-4.1 k vs iter 1</div>
+  </div>
+</div>
+
+<p style="color:var(--muted);font-size:14px">
+  The headline pass-rate number doesn't move (it was already 100% on assertions in iter 1), but the
+  <strong style="color:var(--fg)">content</strong> of with-skill output is now visibly closer to the
+  rendered site spec — especially the CTA pattern in eval 3 and the explicit calibration anchor in
+  eval 2. Token cost dropped slightly, suggesting the more concrete skill is easier to consume.
+</p>
+
+<table>
+  <thead><tr><th>Eval</th><th>Iter 1 with-skill</th><th>Iter 2 with-skill</th><th>Qualitative change</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>1 — Bottrop SEO subpage</td>
+      <td class="mono pass">11/11 · 100%</td>
+      <td class="mono pass">10/10 · 100%</td>
+      <td>Small: city placement in grid differs (both valid). Site already used --accent-2 — iter 1 inherited it correctly.</td>
+    </tr>
+    <tr>
+      <td>2 — Client Logos block</td>
+      <td class="mono pass">12/12 · 100%</td>
+      <td class="mono pass">12/12 · 100%</td>
+      <td>Iter 2 explicitly cites the new calibration anchor; uses var(--accent-2) directly in code.</td>
+    </tr>
+    <tr>
+      <td>3 — Portrait Hero</td>
+      <td class="mono pass">11/11 · 100%</td>
+      <td class="mono pass">12/12 · 100%</td>
+      <td><strong style="color:var(--ok)">BIG:</strong> btn-accent → btn-ink/btn-ghost. Explicit warning against red-CTA hover.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Per-eval detail</h2>
+
+<section class="eval">
+  <div class="eval__head"><h3 class="eval__title">Eval 3 — Portrait Hero advice (the big improvement)</h3><span class="eval__id">EVAL #3</span></div>
+
+  <div class="compare">
+    <div class="col iter1">
+      <h3>Iter 1 <span class="pct">11/11 · 100% (but wrong CTA)</span></h3>
+      <ul>
+        <li class="ok">Correct recommendation (Iris straffen)</li>
+        <li class="ok">Correct token usage (var(--ease), clamp())</li>
+        <li class="ok">Cited Failure Mode 1, "don't invent a sixth"</li>
+        <li class="bad">Code skeleton uses <strong>btn-accent</strong> with <strong>background: var(--accent)</strong> → red-filled CTA</li>
+        <li class="bad">No warning about NOT switching to red on hover</li>
+      </ul>
+      <p class="links">Output: <a href="../iteration-1/eval-redesign-portrait-hero-feedback/with_skill/outputs/RESPONSE.md">iter 1 RESPONSE.md</a></p>
+    </div>
+    <div class="col iter2">
+      <h3>Iter 2 <span class="pct">12/12 · 100%</span></h3>
+      <ul>
+        <li class="ok">Correct recommendation (still Iris straffen)</li>
+        <li class="ok">Cited Failure Mode 1, "don't invent a sixth", Hero Formula C signature</li>
+        <li class="new">Code uses <strong>btn-ink</strong> + <strong>btn-ghost</strong> — never btn-accent</li>
+        <li class="new">Explicit warning: "Roter Hover-Fill ... nicht zum Site-Rot wechseln. CTAs bleiben Ghost / Ink-Fill."</li>
+        <li class="new">Adds mobile-bypass (clip-path: none under 780px) — practical performance fix</li>
+      </ul>
+      <p class="links">Output: <a href="eval-redesign-portrait-hero-feedback/with_skill/outputs/RESPONSE.md">iter 2 RESPONSE.md</a></p>
+    </div>
+  </div>
+
+  <div class="notes">
+    <strong>Why it changed:</strong> The updated <code>SKILL.md</code> posture rule #3 now distinguishes the two-tier accent system and explicitly states "CTAs use ink-fill or ghost-outline, never red-fill." The updated <code>03-hero-formulas.md</code> CTA convention now spells out the same rule with examples. Both together turned a latent failure mode into an explicit anti-pattern the agent can avoid.
+  </div>
+</section>
+
+<section class="eval">
+  <div class="eval__head"><h3 class="eval__title">Eval 2 — Client Logos block</h3><span class="eval__id">EVAL #2</span></div>
+
+  <div class="compare">
+    <div class="col iter1">
+      <h3>Iter 1 <span class="pct">12/12 · 100%</span></h3>
+      <ul>
+        <li class="ok">Reframed as "editorial colophon / Auftraggeber" (anti-pattern sidestep)</li>
+        <li class="ok">Borrowed geometry from audience__grid, mr-cities__grid, related__card</li>
+        <li class="ok">No card chrome (shadows, radii, scale)</li>
+        <li class="ok">Per-theme filter handling</li>
+        <li class="maybe">Headline em color was implicit (relied on inherited styles)</li>
+      </ul>
+      <p class="links">Output: <a href="../iteration-1/eval-new-content-block-clientlogos/with_skill/outputs/EXPLANATION.md">iter 1 EXPLANATION.md</a></p>
+    </div>
+    <div class="col iter2">
+      <h3>Iter 2 <span class="pct">12/12 · 100%</span></h3>
+      <ul>
+        <li class="ok">"Not a trusted by sponsor wall" — anti-pattern still flagged</li>
+        <li class="ok">Same geometry anchors (audience__grid, mr-cities__grid, chapter grid)</li>
+        <li class="new">Explicit citation: "<code>&lt;em&gt;</code> steel-grey, exactly like BILDER, DIE EINEN RAUM <strong>VERÄNDERN.</strong>"</li>
+        <li class="new">Uses <code>var(--accent-2, #7a8a86)</code> directly in the headline CSS</li>
+        <li class="new">Added "treatment" select (monochrome default + original opt-out) — finer control</li>
+        <li class="new">3–12 logo bounds (minRows/maxRows) — explicit CMS guardrails</li>
+      </ul>
+      <p class="links">Output: <a href="eval-new-content-block-clientlogos/with_skill/outputs/EXPLANATION.md">iter 2 EXPLANATION.md</a></p>
+    </div>
+  </div>
+
+  <div class="notes">
+    <strong>Why it changed:</strong> The new <em>"Calibration: what the rendered site actually looks like"</em> section in <code>SKILL.md</code> gives the agent five concrete visual anchors with literal headline strings to refer to. The agent picked up the exact "BILDER, DIE EINEN RAUM VERÄNDERN." string and used it as a calibration reference for its own choices.
+  </div>
+</section>
+
+<section class="eval">
+  <div class="eval__head"><h3 class="eval__title">Eval 1 — Bottrop SEO subpage</h3><span class="eval__id">EVAL #1</span></div>
+
+  <div class="compare">
+    <div class="col iter1">
+      <h3>Iter 1 <span class="pct">11/11 · 100%</span></h3>
+      <ul>
+        <li class="ok">Cloned koeln sibling correctly</li>
+        <li class="ok">Bottrop in cities grid with is-active</li>
+        <li class="ok">Caught + fixed sibling areaServed='Duesseldorf' clone-bug</li>
+        <li class="ok">Inserted Bottrop after Oberhausen</li>
+      </ul>
+      <p class="links">Output: <a href="../iteration-1/eval-new-seo-subpage-bottrop/with_skill/outputs/motorrad-fotografie-bottrop.html">iter 1 motorrad-fotografie-bottrop.html</a></p>
+    </div>
+    <div class="col iter2">
+      <h3>Iter 2 <span class="pct">10/10 · 100%</span></h3>
+      <ul>
+        <li class="ok">Cloned koeln sibling correctly</li>
+        <li class="ok">Bottrop in cities grid with is-active + aria-current="page"</li>
+        <li class="ok">Caught + fixed sibling areaServed='Duesseldorf' clone-bug (consistent across iterations)</li>
+        <li class="new">Inserted Bottrop between Bochum and Wuppertal (Ruhrgebiet adjacency reasoning)</li>
+      </ul>
+      <p class="links">Output: <a href="eval-new-seo-subpage-bottrop/with_skill/outputs/motorrad-fotografie-bottrop.html">iter 2 motorrad-fotografie-bottrop.html</a></p>
+    </div>
+  </div>
+
+  <div class="notes">
+    <strong>Why little changed:</strong> The SEO subpage task is mechanical — clone a sibling, swap city-specific slots. The skill's scaffold reference (<code>05-seo-subpage-scaffold.md</code>) was not modified in iter 2. Output is essentially equivalent.
+  </div>
+</section>
+
+<h2>Verdict</h2>
+
+<p>The iteration delivered on the user's specific feedback: the failure mode that was visible in iter 1 (red-filled CTA in eval 3) is gone in iter 2. The new calibration anchor section in SKILL.md is being directly cited by agents (eval 2). Assertion pass rates were already 100% in iter 1 — the win in iter 2 is <em>what the with-skill content actually says</em>, not whether it passes mechanical checks.</p>
+
+<p style="color:var(--muted)">If you're happy with this direction, the next sensible step is packaging the skill (<code>package_skill.py</code> → <code>.skill</code> file) for sharing. If something still feels off, point at the specific output file and I'll iterate again.</p>
+
+</main>
+</body>
+</html>

@@ -1,5 +1,5 @@
 ---
-import { getNavigation } from '../lib/payload'
+import { getNavigation, linkAttributes } from '../lib/payload'
 
 const navigation = await getNavigation()
 const links = navigation?.primary?.length
@@ -14,14 +14,14 @@ const links = navigation?.primary?.length
     ]
 const cta = navigation?.cta?.href
   ? navigation.cta
-  : { label: 'Anfrage', href: 'mailto:info@matthiasramahi.de?subject=Projektanfrage' }
+  : { label: 'Projekt anfragen', href: '/contact.html#anfrage' }
 ---
 <header class="site-header">
   <div class="site-header__inner container">
     <a class="brand-mark" href="/" aria-label="Matthias Ramahi Startseite">Matthias<br />Ramahi</a>
     <nav class="nav" aria-label="Hauptnavigation">
-      {links.map((link) => link.href && <a href={link.href}>{link.label}</a>)}
+      {links.map((link) => link.href && <a {...linkAttributes(link)}>{link.label}</a>)}
     </nav>
-    <a class="button is-accent" href={cta.href}>{cta.label || 'Anfrage'}</a>
+    <a class="button is-accent" {...linkAttributes(cta)}>{cta.label || 'Projekt anfragen'}</a>
   </div>
 </header>

@@ -169,7 +169,7 @@ export interface User {
   collection: 'users';
 }
 /**
- * Zentrale Bildbibliothek mit SEO-Alttexten, Bildstimmung, Verwendungszweck und responsiven Derivaten.
+ * Zentrale Bildbibliothek mit Vorschau, Alt-Texten, Bildstimmung, Verwendungszweck, Focal Point und responsiven Derivaten.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "media".
@@ -181,18 +181,30 @@ export interface Media {
    */
   title: string;
   /**
-   * Beschreibt das Bild knapp für SEO und Barrierefreiheit.
+   * Pflichtfeld: beschreibt das Bild knapp fuer SEO und Barrierefreiheit.
    */
   alt: string;
-  caption?: string | null;
-  category?: ('portrait' | 'automotive' | 'oldtimer' | 'motorrad' | 'landschaft' | 'service' | 'atmosphere') | null;
   /**
-   * Freie Schlagworte, z. B. Düsseldorf, Nacht, Showroom, Detail, Kampagne.
+   * Optionaler sichtbarer Begleittext fuer Galerien, Journal oder Portfolio.
+   */
+  caption?: string | null;
+  /**
+   * Fuer besonders starke Motive, die als Hero oder Portfolio-Teaser in Frage kommen.
+   */
+  featured?: boolean | null;
+  category?:
+    | ('uncategorized' | 'portrait' | 'automotive' | 'oldtimer' | 'motorrad' | 'landschaft' | 'service' | 'atmosphere')
+    | null;
+  /**
+   * Freie Schlagworte, z. B. Duesseldorf, Nacht, Showroom, Detail, Kampagne.
    */
   tags?: string[] | null;
+  /**
+   * Wird beim Upload automatisch vorbelegt und kann manuell korrigiert werden.
+   */
   orientation?: ('portrait' | 'landscape' | 'square' | 'panorama') | null;
   /**
-   * Hilft später beim Filtern und Wiederfinden geeigneter Bilder.
+   * Hilft spaeter beim Filtern und Wiederfinden geeigneter Bilder.
    */
   imageType?:
     | (
@@ -211,13 +223,21 @@ export interface Media {
     | null;
   usagePurpose?: ('hero' | 'teaser' | 'gallery' | 'social' | 'local-seo' | 'print' | 'internal-only')[] | null;
   /**
-   * Für besonders starke Motive, die als Hero oder Portfolio-Teaser in Frage kommen.
-   */
-  featured?: boolean | null;
-  /**
-   * Zum Beispiel: gutes Hero-Motiv, nicht stark beschneiden, für Portfolio-Teaser geeignet.
+   * Zum Beispiel: gutes Hero-Motiv, nicht stark beschneiden, fuer Portfolio-Teaser geeignet.
    */
   usageNotes?: string | null;
+  /**
+   * Automatisch fuer Platzhalter-Hintergruende erzeugt.
+   */
+  dominantColor?: string | null;
+  /**
+   * Automatisch erzeugte Mini-WebP-Version als Data URL.
+   */
+  blurDataUrl?: string | null;
+  /**
+   * Pfad aus der alten HTML-/Assets-Struktur, damit Bildverwendung nachvollziehbar bleibt.
+   */
+  legacySourcePath?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -270,9 +290,51 @@ export interface Media {
       filesize?: number | null;
       filename?: string | null;
     };
+    thumbAvif?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    mobileAvif?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    cardAvif?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    heroAvif?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    wideAvif?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
   };
 }
 /**
+ * Portfolio-Kategorien fuer Filter, Uebersichten und spaetere Migrationssteuerung.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "portfolio-categories".
  */
@@ -285,25 +347,94 @@ export interface PortfolioCategory {
   slug: string;
   sortOrder?: number | null;
   intro?: string | null;
+  /**
+   * Bild aus dem Medienarchiv waehlen. Neue Bilder koennen direkt im Drawer hochgeladen und bearbeitet werden.
+   */
   coverImage?: (number | null) | Media;
   /**
-   * Suchsnippet und Social Preview. Leer lassen, wenn die Seite automatisch aus Titel/Intro ableiten soll.
+   * Wird beim Speichern automatisch aus Titel, Intro/Kurztext und Bildfeldern vorbereitet. Nur fuer bewusste Overrides oeffnen.
    */
   seo?: {
+    /**
+     * Optionaler Override. Wenn leer, wird der Titel automatisch aus dem Seitentitel erzeugt.
+     */
     title?: string | null;
+    /**
+     * Optionaler Override. Wenn leer, wird eine knappe Beschreibung aus Kurztext oder Intro erzeugt.
+     */
     description?: string | null;
+    /**
+     * Optionaler redaktioneller Fokus fuer Snippet, interne Links und spaetere LLM-Vorschlaege.
+     */
+    focusKeyword?: string | null;
+    /**
+     * Optional: verwandte Suchbegriffe oder Clusterbegriffe. Nicht stumpf im Text wiederholen.
+     */
+    secondaryKeywords?: string[] | null;
+    /**
+     * Hilft beim Schreiben von Title, Description, H1 und internen Links.
+     */
+    searchIntent?: ('informational' | 'commercial' | 'local' | 'transactional' | 'navigational') | null;
+    /**
+     * Gewuenschte Anchor-Texte fuer interne Links zu dieser Seite.
+     */
+    internalLinkAnchors?: string[] | null;
+    /**
+     * Optionaler Override. Legacy-URLs oder neue Routen werden automatisch vorgeschlagen.
+     */
     canonicalUrl?: string | null;
+    /**
+     * Interne Migrationsnotiz, z. B. portfolio.html oder /automobil-fotografie-duesseldorf.html.
+     */
+    legacyUrl?: string | null;
+    /**
+     * Fallback ist das Hero- oder Coverbild. Fuer Social Preview idealerweise 1200x630-nah.
+     */
     ogImage?: (number | null) | Media;
     /**
      * Nur für Entwürfe, Übergangsseiten oder bewusst private Inhalte aktivieren.
      */
     noIndex?: boolean | null;
   };
+  /**
+   * Technische Herkunft aus der alten HTML-Website. Hilft beim URL-Erhalt, Review und schrittweisen 1:1-Nachbau.
+   */
+  legacy?: {
+    sourceFile?: string | null;
+    sourceUrl?: string | null;
+    migrationStatus?: ('seeded' | 'reviewed' | 'componentized' | 'live') | null;
+    /**
+     * Technischer Status fuer Astro: legacy-file = Fallback aus alter Datei, payload-legacy-html = 1:1 Body kommt aus Payload, structured-blocks = vollstaendig aus strukturierten CMS-Komponenten.
+     */
+    renderSource?: ('legacy-file' | 'payload-legacy-html' | 'structured-blocks') | null;
+    /**
+     * Aus der alten Seite extrahierter Head fuer die 1:1-Vorschau und Parity-Routen.
+     */
+    renderedHeadHtml?: string | null;
+    /**
+     * Header und Footer sind entfernt. Astro rendert diesen Body aus Payload, solange der Seitentyp noch nicht komplett in strukturierte Komponenten zerlegt ist.
+     */
+    renderedBodyHtml?: string | null;
+    /**
+     * Legacy-Skripte und Lightbox-Markup, die nach dem Footer standen.
+     */
+    afterFooterHtml?: string | null;
+    bodyClass?: string | null;
+    headerCurrent?: string | null;
+    extractedHeadings?: string[] | null;
+    extractedImagePaths?: string[] | null;
+    /**
+     * Reiner Text aus der alten Seite als redaktionelle Kontrollbasis.
+     */
+    extractedText?: string | null;
+  };
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
 }
 /**
+ * Kuratiertes Projekt mit Cover, Galerie, Kontext, SEO und Vorschau.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "portfolio-projects".
  */
@@ -322,33 +453,42 @@ export interface PortfolioProject {
   publishedAt?: string | null;
   category: number | PortfolioCategory;
   /**
-   * Steuert die visuelle Logik im Astro-Template.
+   * Advanced Art Direction. Der Default funktioniert fuer die meisten Serien.
    */
   presentationMode?: ('floating-archive' | 'narrative-stage' | 'experimental-lens' | 'editorial') | null;
   excerpt: string;
   /**
-   * Kurz notieren, wofür die Serie gedacht ist: Verkauf, Kampagne, Print, Website, freie Arbeit.
+   * Kurz notieren, wofuer die Serie gedacht ist: Verkauf, Kampagne, Print, Website, freie Arbeit.
    */
   usageSummary?: string | null;
   year?: string | null;
   location?: string | null;
   client?: string | null;
+  /**
+   * Leitmotiv fuer Projektseite, Portfolio-Karte und Social Preview.
+   */
   coverImage: number | Media;
-  relatedServices?: (number | ServicePage)[] | null;
+  /**
+   * Die Reihenfolge ist die sichtbare Reihenfolge im Portfolio. Fuer einen schnellen Austausch reicht meistens: Bild oeffnen, anderes Medium waehlen, speichern.
+   */
   gallery?:
     | {
+        /**
+         * Dieses Motiv wird an dieser Position in der Bildstrecke angezeigt.
+         */
         image: number | Media;
         caption?: string | null;
+        /**
+         * Nur fuer die Bildregie. Die wichtigsten Rollen sind Hero, Sequenz, Detail und Abschluss.
+         */
         role?: ('hero' | 'sequence' | 'detail' | 'closing') | null;
         id?: string | null;
       }[]
     | null;
-  cta?: {
-    headline?: string | null;
-    text?: string | null;
-    buttonLabel?: string | null;
-    emailSubject?: string | null;
-  };
+  relatedServices?: (number | ServicePage)[] | null;
+  /**
+   * Optionale Inhaltsmodule. Fuer reine Bildwechsel sind die Bildfelder der jeweiligen Seite schneller.
+   */
   blocks?:
     | (
         | {
@@ -378,6 +518,9 @@ export interface PortfolioProject {
             layout?: ('editorial-strip' | 'contact-sheet' | 'stage' | 'single-large') | null;
             items?:
               | {
+                  /**
+                   * Bild fuer diese Position in der Sequenz.
+                   */
                   image: number | Media;
                   caption?: string | null;
                   cropIntent?: ('auto' | 'protect-detail' | 'protect-space' | 'dramatic-crop') | null;
@@ -413,8 +556,14 @@ export interface PortfolioProject {
             links?:
               | {
                   label: string;
+                  /**
+                   * Interne Links am besten root-relativ eintragen, z. B. /portfolio. Vollstaendige eigene URLs werden automatisch gekuerzt.
+                   */
                   href: string;
                   description?: string | null;
+                  seoPurpose?: ('contextual' | 'navigation' | 'conversion' | 'citation' | 'legal' | 'social') | null;
+                  rel?: ('follow' | 'nofollow' | 'sponsored' | 'ugc') | null;
+                  openInNewTab?: boolean | null;
                   id?: string | null;
                 }[]
               | null;
@@ -433,24 +582,96 @@ export interface PortfolioProject {
           }
       )[]
     | null;
+  cta?: {
+    headline?: string | null;
+    text?: string | null;
+    buttonLabel?: string | null;
+    emailSubject?: string | null;
+  };
   /**
-   * Suchsnippet und Social Preview. Leer lassen, wenn die Seite automatisch aus Titel/Intro ableiten soll.
+   * Wird beim Speichern automatisch aus Titel, Intro/Kurztext und Bildfeldern vorbereitet. Nur fuer bewusste Overrides oeffnen.
    */
   seo?: {
+    /**
+     * Optionaler Override. Wenn leer, wird der Titel automatisch aus dem Seitentitel erzeugt.
+     */
     title?: string | null;
+    /**
+     * Optionaler Override. Wenn leer, wird eine knappe Beschreibung aus Kurztext oder Intro erzeugt.
+     */
     description?: string | null;
+    /**
+     * Optionaler redaktioneller Fokus fuer Snippet, interne Links und spaetere LLM-Vorschlaege.
+     */
+    focusKeyword?: string | null;
+    /**
+     * Optional: verwandte Suchbegriffe oder Clusterbegriffe. Nicht stumpf im Text wiederholen.
+     */
+    secondaryKeywords?: string[] | null;
+    /**
+     * Hilft beim Schreiben von Title, Description, H1 und internen Links.
+     */
+    searchIntent?: ('informational' | 'commercial' | 'local' | 'transactional' | 'navigational') | null;
+    /**
+     * Gewuenschte Anchor-Texte fuer interne Links zu dieser Seite.
+     */
+    internalLinkAnchors?: string[] | null;
+    /**
+     * Optionaler Override. Legacy-URLs oder neue Routen werden automatisch vorgeschlagen.
+     */
     canonicalUrl?: string | null;
+    /**
+     * Interne Migrationsnotiz, z. B. portfolio.html oder /automobil-fotografie-duesseldorf.html.
+     */
+    legacyUrl?: string | null;
+    /**
+     * Fallback ist das Hero- oder Coverbild. Fuer Social Preview idealerweise 1200x630-nah.
+     */
     ogImage?: (number | null) | Media;
     /**
      * Nur für Entwürfe, Übergangsseiten oder bewusst private Inhalte aktivieren.
      */
     noIndex?: boolean | null;
   };
+  /**
+   * Technische Herkunft aus der alten HTML-Website. Hilft beim URL-Erhalt, Review und schrittweisen 1:1-Nachbau.
+   */
+  legacy?: {
+    sourceFile?: string | null;
+    sourceUrl?: string | null;
+    migrationStatus?: ('seeded' | 'reviewed' | 'componentized' | 'live') | null;
+    /**
+     * Technischer Status fuer Astro: legacy-file = Fallback aus alter Datei, payload-legacy-html = 1:1 Body kommt aus Payload, structured-blocks = vollstaendig aus strukturierten CMS-Komponenten.
+     */
+    renderSource?: ('legacy-file' | 'payload-legacy-html' | 'structured-blocks') | null;
+    /**
+     * Aus der alten Seite extrahierter Head fuer die 1:1-Vorschau und Parity-Routen.
+     */
+    renderedHeadHtml?: string | null;
+    /**
+     * Header und Footer sind entfernt. Astro rendert diesen Body aus Payload, solange der Seitentyp noch nicht komplett in strukturierte Komponenten zerlegt ist.
+     */
+    renderedBodyHtml?: string | null;
+    /**
+     * Legacy-Skripte und Lightbox-Markup, die nach dem Footer standen.
+     */
+    afterFooterHtml?: string | null;
+    bodyClass?: string | null;
+    headerCurrent?: string | null;
+    extractedHeadings?: string[] | null;
+    extractedImagePaths?: string[] | null;
+    /**
+     * Reiner Text aus der alten Seite als redaktionelle Kontrollbasis.
+     */
+    extractedText?: string | null;
+  };
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
 }
 /**
+ * Leistungsseite mit alter URL, Hero, Nutzenargumenten, FAQ, CTA und SEO.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "service-pages".
  */
@@ -463,6 +684,9 @@ export interface ServicePage {
   slug: string;
   featured?: boolean | null;
   sortOrder?: number | null;
+  /**
+   * Wird beim Speichern aus Titel oder Slug vorgeschlagen, falls leer.
+   */
   serviceType:
     | 'automotive'
     | 'sportwagen'
@@ -476,9 +700,15 @@ export interface ServicePage {
     | 'webdesign-seo'
     | 'videografie'
     | 'other';
-  heroImage: number | Media;
-  teaserImage?: (number | null) | Media;
   intro: string;
+  /**
+   * Grosses Leitmotiv der Seite. Wird auch als Social-Bild genutzt, wenn kein OG-Bild gesetzt ist.
+   */
+  heroImage: number | Media;
+  /**
+   * Optional. Wenn leer, nutzt das System automatisch das Hero-Bild.
+   */
+  teaserImage?: (number | null) | Media;
   audience?:
     | {
         item: string;
@@ -499,19 +729,9 @@ export interface ServicePage {
         id?: string | null;
       }[]
     | null;
-  relatedPages?:
-    | {
-        label: string;
-        href: string;
-        id?: string | null;
-      }[]
-    | null;
-  cta?: {
-    headline?: string | null;
-    text?: string | null;
-    buttonLabel?: string | null;
-    emailSubject?: string | null;
-  };
+  /**
+   * Optionale Inhaltsmodule. Fuer reine Bildwechsel sind die Bildfelder der jeweiligen Seite schneller.
+   */
   blocks?:
     | (
         | {
@@ -541,6 +761,9 @@ export interface ServicePage {
             layout?: ('editorial-strip' | 'contact-sheet' | 'stage' | 'single-large') | null;
             items?:
               | {
+                  /**
+                   * Bild fuer diese Position in der Sequenz.
+                   */
                   image: number | Media;
                   caption?: string | null;
                   cropIntent?: ('auto' | 'protect-detail' | 'protect-space' | 'dramatic-crop') | null;
@@ -576,8 +799,14 @@ export interface ServicePage {
             links?:
               | {
                   label: string;
+                  /**
+                   * Interne Links am besten root-relativ eintragen, z. B. /portfolio. Vollstaendige eigene URLs werden automatisch gekuerzt.
+                   */
                   href: string;
                   description?: string | null;
+                  seoPurpose?: ('contextual' | 'navigation' | 'conversion' | 'citation' | 'legal' | 'social') | null;
+                  rel?: ('follow' | 'nofollow' | 'sponsored' | 'ugc') | null;
+                  openInNewTab?: boolean | null;
                   id?: string | null;
                 }[]
               | null;
@@ -596,24 +825,109 @@ export interface ServicePage {
           }
       )[]
     | null;
+  relatedPages?:
+    | {
+        label: string;
+        /**
+         * Interne Links am besten root-relativ eintragen, z. B. /portfolio. Vollstaendige eigene URLs werden automatisch gekuerzt.
+         */
+        href: string;
+        seoPurpose?: ('contextual' | 'navigation' | 'conversion' | 'citation' | 'legal' | 'social') | null;
+        rel?: ('follow' | 'nofollow' | 'sponsored' | 'ugc') | null;
+        openInNewTab?: boolean | null;
+        id?: string | null;
+      }[]
+    | null;
+  cta?: {
+    headline?: string | null;
+    text?: string | null;
+    buttonLabel?: string | null;
+    emailSubject?: string | null;
+  };
   /**
-   * Suchsnippet und Social Preview. Leer lassen, wenn die Seite automatisch aus Titel/Intro ableiten soll.
+   * Wird beim Speichern automatisch aus Titel, Intro/Kurztext und Bildfeldern vorbereitet. Nur fuer bewusste Overrides oeffnen.
    */
   seo?: {
+    /**
+     * Optionaler Override. Wenn leer, wird der Titel automatisch aus dem Seitentitel erzeugt.
+     */
     title?: string | null;
+    /**
+     * Optionaler Override. Wenn leer, wird eine knappe Beschreibung aus Kurztext oder Intro erzeugt.
+     */
     description?: string | null;
+    /**
+     * Optionaler redaktioneller Fokus fuer Snippet, interne Links und spaetere LLM-Vorschlaege.
+     */
+    focusKeyword?: string | null;
+    /**
+     * Optional: verwandte Suchbegriffe oder Clusterbegriffe. Nicht stumpf im Text wiederholen.
+     */
+    secondaryKeywords?: string[] | null;
+    /**
+     * Hilft beim Schreiben von Title, Description, H1 und internen Links.
+     */
+    searchIntent?: ('informational' | 'commercial' | 'local' | 'transactional' | 'navigational') | null;
+    /**
+     * Gewuenschte Anchor-Texte fuer interne Links zu dieser Seite.
+     */
+    internalLinkAnchors?: string[] | null;
+    /**
+     * Optionaler Override. Legacy-URLs oder neue Routen werden automatisch vorgeschlagen.
+     */
     canonicalUrl?: string | null;
+    /**
+     * Interne Migrationsnotiz, z. B. portfolio.html oder /automobil-fotografie-duesseldorf.html.
+     */
+    legacyUrl?: string | null;
+    /**
+     * Fallback ist das Hero- oder Coverbild. Fuer Social Preview idealerweise 1200x630-nah.
+     */
     ogImage?: (number | null) | Media;
     /**
      * Nur für Entwürfe, Übergangsseiten oder bewusst private Inhalte aktivieren.
      */
     noIndex?: boolean | null;
   };
+  /**
+   * Technische Herkunft aus der alten HTML-Website. Hilft beim URL-Erhalt, Review und schrittweisen 1:1-Nachbau.
+   */
+  legacy?: {
+    sourceFile?: string | null;
+    sourceUrl?: string | null;
+    migrationStatus?: ('seeded' | 'reviewed' | 'componentized' | 'live') | null;
+    /**
+     * Technischer Status fuer Astro: legacy-file = Fallback aus alter Datei, payload-legacy-html = 1:1 Body kommt aus Payload, structured-blocks = vollstaendig aus strukturierten CMS-Komponenten.
+     */
+    renderSource?: ('legacy-file' | 'payload-legacy-html' | 'structured-blocks') | null;
+    /**
+     * Aus der alten Seite extrahierter Head fuer die 1:1-Vorschau und Parity-Routen.
+     */
+    renderedHeadHtml?: string | null;
+    /**
+     * Header und Footer sind entfernt. Astro rendert diesen Body aus Payload, solange der Seitentyp noch nicht komplett in strukturierte Komponenten zerlegt ist.
+     */
+    renderedBodyHtml?: string | null;
+    /**
+     * Legacy-Skripte und Lightbox-Markup, die nach dem Footer standen.
+     */
+    afterFooterHtml?: string | null;
+    bodyClass?: string | null;
+    headerCurrent?: string | null;
+    extractedHeadings?: string[] | null;
+    extractedImagePaths?: string[] | null;
+    /**
+     * Reiner Text aus der alten Seite als redaktionelle Kontrollbasis.
+     */
+    extractedText?: string | null;
+  };
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
 }
 /**
+ * Lokale SEO-Seiten fuer bestehende und neue Suchcluster, inklusive URL-Erhalt und Canonical-Strategie.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "local-seo-pages".
  */
@@ -627,16 +941,11 @@ export interface LocalSeoPage {
   priority?: ('high' | 'medium' | 'later') | null;
   city: string;
   service: string;
-  /**
-   * Zum Beispiel: Portraitfotografie Düsseldorf als Hauptseite für lokale Varianten.
-   */
-  canonicalServicePage?: (number | null) | ServicePage;
-  heroImage?: (number | null) | Media;
-  /**
-   * Nur zur redaktionellen Orientierung, nicht automatisch plump ausgeben.
-   */
-  targetKeyword?: string | null;
   intro: string;
+  /**
+   * Bild aus dem Medienarchiv waehlen. Neue Bilder koennen direkt im Drawer hochgeladen und bearbeitet werden.
+   */
+  heroImage?: (number | null) | Media;
   localProof?:
     | {
         label: string;
@@ -651,6 +960,9 @@ export interface LocalSeoPage {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Optionale Inhaltsmodule. Fuer reine Bildwechsel sind die Bildfelder der jeweiligen Seite schneller.
+   */
   blocks?:
     | (
         | {
@@ -680,6 +992,9 @@ export interface LocalSeoPage {
             layout?: ('editorial-strip' | 'contact-sheet' | 'stage' | 'single-large') | null;
             items?:
               | {
+                  /**
+                   * Bild fuer diese Position in der Sequenz.
+                   */
                   image: number | Media;
                   caption?: string | null;
                   cropIntent?: ('auto' | 'protect-detail' | 'protect-space' | 'dramatic-crop') | null;
@@ -715,8 +1030,14 @@ export interface LocalSeoPage {
             links?:
               | {
                   label: string;
+                  /**
+                   * Interne Links am besten root-relativ eintragen, z. B. /portfolio. Vollstaendige eigene URLs werden automatisch gekuerzt.
+                   */
                   href: string;
                   description?: string | null;
+                  seoPurpose?: ('contextual' | 'navigation' | 'conversion' | 'citation' | 'legal' | 'social') | null;
+                  rel?: ('follow' | 'nofollow' | 'sponsored' | 'ugc') | null;
+                  openInNewTab?: boolean | null;
                   id?: string | null;
                 }[]
               | null;
@@ -736,23 +1057,97 @@ export interface LocalSeoPage {
       )[]
     | null;
   /**
-   * Suchsnippet und Social Preview. Leer lassen, wenn die Seite automatisch aus Titel/Intro ableiten soll.
+   * Zum Beispiel: Portraitfotografie Duesseldorf als Hauptseite fuer lokale Varianten.
+   */
+  canonicalServicePage?: (number | null) | ServicePage;
+  /**
+   * Wird aus Leistung und Stadt vorgeschlagen, kann aber bewusst angepasst werden.
+   */
+  targetKeyword?: string | null;
+  /**
+   * Wird beim Speichern automatisch aus Titel, Intro/Kurztext und Bildfeldern vorbereitet. Nur fuer bewusste Overrides oeffnen.
    */
   seo?: {
+    /**
+     * Optionaler Override. Wenn leer, wird der Titel automatisch aus dem Seitentitel erzeugt.
+     */
     title?: string | null;
+    /**
+     * Optionaler Override. Wenn leer, wird eine knappe Beschreibung aus Kurztext oder Intro erzeugt.
+     */
     description?: string | null;
+    /**
+     * Optionaler redaktioneller Fokus fuer Snippet, interne Links und spaetere LLM-Vorschlaege.
+     */
+    focusKeyword?: string | null;
+    /**
+     * Optional: verwandte Suchbegriffe oder Clusterbegriffe. Nicht stumpf im Text wiederholen.
+     */
+    secondaryKeywords?: string[] | null;
+    /**
+     * Hilft beim Schreiben von Title, Description, H1 und internen Links.
+     */
+    searchIntent?: ('informational' | 'commercial' | 'local' | 'transactional' | 'navigational') | null;
+    /**
+     * Gewuenschte Anchor-Texte fuer interne Links zu dieser Seite.
+     */
+    internalLinkAnchors?: string[] | null;
+    /**
+     * Optionaler Override. Legacy-URLs oder neue Routen werden automatisch vorgeschlagen.
+     */
     canonicalUrl?: string | null;
+    /**
+     * Interne Migrationsnotiz, z. B. portfolio.html oder /automobil-fotografie-duesseldorf.html.
+     */
+    legacyUrl?: string | null;
+    /**
+     * Fallback ist das Hero- oder Coverbild. Fuer Social Preview idealerweise 1200x630-nah.
+     */
     ogImage?: (number | null) | Media;
     /**
      * Nur für Entwürfe, Übergangsseiten oder bewusst private Inhalte aktivieren.
      */
     noIndex?: boolean | null;
   };
+  /**
+   * Technische Herkunft aus der alten HTML-Website. Hilft beim URL-Erhalt, Review und schrittweisen 1:1-Nachbau.
+   */
+  legacy?: {
+    sourceFile?: string | null;
+    sourceUrl?: string | null;
+    migrationStatus?: ('seeded' | 'reviewed' | 'componentized' | 'live') | null;
+    /**
+     * Technischer Status fuer Astro: legacy-file = Fallback aus alter Datei, payload-legacy-html = 1:1 Body kommt aus Payload, structured-blocks = vollstaendig aus strukturierten CMS-Komponenten.
+     */
+    renderSource?: ('legacy-file' | 'payload-legacy-html' | 'structured-blocks') | null;
+    /**
+     * Aus der alten Seite extrahierter Head fuer die 1:1-Vorschau und Parity-Routen.
+     */
+    renderedHeadHtml?: string | null;
+    /**
+     * Header und Footer sind entfernt. Astro rendert diesen Body aus Payload, solange der Seitentyp noch nicht komplett in strukturierte Komponenten zerlegt ist.
+     */
+    renderedBodyHtml?: string | null;
+    /**
+     * Legacy-Skripte und Lightbox-Markup, die nach dem Footer standen.
+     */
+    afterFooterHtml?: string | null;
+    bodyClass?: string | null;
+    headerCurrent?: string | null;
+    extractedHeadings?: string[] | null;
+    extractedImagePaths?: string[] | null;
+    /**
+     * Reiner Text aus der alten Seite als redaktionelle Kontrollbasis.
+     */
+    extractedText?: string | null;
+  };
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
 }
 /**
+ * Journal-Beitrag mit Cover, Excerpt, Artikel-SEO, internen Links und Vorschau.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "journal-posts".
  */
@@ -766,17 +1161,28 @@ export interface JournalPost {
   featured?: boolean | null;
   category: 'behind-the-scenes' | 'automotive' | 'portrait' | 'landscape-print' | 'process';
   publishedAt: string;
-  coverImage: number | Media;
   excerpt: string;
-  readingTime?: number | null;
+  /**
+   * Wird als Artikelbild und als Social-Bild genutzt, wenn kein OG-Bild gesetzt ist.
+   */
+  coverImage: number | Media;
   tags?: string[] | null;
   relatedPages?:
     | {
         label: string;
+        /**
+         * Interne Links am besten root-relativ eintragen, z. B. /portfolio. Vollstaendige eigene URLs werden automatisch gekuerzt.
+         */
         href: string;
+        seoPurpose?: ('contextual' | 'navigation' | 'conversion' | 'citation' | 'legal' | 'social') | null;
+        rel?: ('follow' | 'nofollow' | 'sponsored' | 'ugc') | null;
+        openInNewTab?: boolean | null;
         id?: string | null;
       }[]
     | null;
+  /**
+   * Optionale Inhaltsmodule. Fuer reine Bildwechsel sind die Bildfelder der jeweiligen Seite schneller.
+   */
   blocks?:
     | (
         | {
@@ -806,6 +1212,9 @@ export interface JournalPost {
             layout?: ('editorial-strip' | 'contact-sheet' | 'stage' | 'single-large') | null;
             items?:
               | {
+                  /**
+                   * Bild fuer diese Position in der Sequenz.
+                   */
                   image: number | Media;
                   caption?: string | null;
                   cropIntent?: ('auto' | 'protect-detail' | 'protect-space' | 'dramatic-crop') | null;
@@ -841,8 +1250,14 @@ export interface JournalPost {
             links?:
               | {
                   label: string;
+                  /**
+                   * Interne Links am besten root-relativ eintragen, z. B. /portfolio. Vollstaendige eigene URLs werden automatisch gekuerzt.
+                   */
                   href: string;
                   description?: string | null;
+                  seoPurpose?: ('contextual' | 'navigation' | 'conversion' | 'citation' | 'legal' | 'social') | null;
+                  rel?: ('follow' | 'nofollow' | 'sponsored' | 'ugc') | null;
+                  openInNewTab?: boolean | null;
                   id?: string | null;
                 }[]
               | null;
@@ -862,23 +1277,93 @@ export interface JournalPost {
       )[]
     | null;
   /**
-   * Suchsnippet und Social Preview. Leer lassen, wenn die Seite automatisch aus Titel/Intro ableiten soll.
+   * Wird aus Inhalt und Excerpt geschaetzt, wenn leer.
+   */
+  readingTime?: number | null;
+  /**
+   * Wird beim Speichern automatisch aus Titel, Intro/Kurztext und Bildfeldern vorbereitet. Nur fuer bewusste Overrides oeffnen.
    */
   seo?: {
+    /**
+     * Optionaler Override. Wenn leer, wird der Titel automatisch aus dem Seitentitel erzeugt.
+     */
     title?: string | null;
+    /**
+     * Optionaler Override. Wenn leer, wird eine knappe Beschreibung aus Kurztext oder Intro erzeugt.
+     */
     description?: string | null;
+    /**
+     * Optionaler redaktioneller Fokus fuer Snippet, interne Links und spaetere LLM-Vorschlaege.
+     */
+    focusKeyword?: string | null;
+    /**
+     * Optional: verwandte Suchbegriffe oder Clusterbegriffe. Nicht stumpf im Text wiederholen.
+     */
+    secondaryKeywords?: string[] | null;
+    /**
+     * Hilft beim Schreiben von Title, Description, H1 und internen Links.
+     */
+    searchIntent?: ('informational' | 'commercial' | 'local' | 'transactional' | 'navigational') | null;
+    /**
+     * Gewuenschte Anchor-Texte fuer interne Links zu dieser Seite.
+     */
+    internalLinkAnchors?: string[] | null;
+    /**
+     * Optionaler Override. Legacy-URLs oder neue Routen werden automatisch vorgeschlagen.
+     */
     canonicalUrl?: string | null;
+    /**
+     * Interne Migrationsnotiz, z. B. portfolio.html oder /automobil-fotografie-duesseldorf.html.
+     */
+    legacyUrl?: string | null;
+    /**
+     * Fallback ist das Hero- oder Coverbild. Fuer Social Preview idealerweise 1200x630-nah.
+     */
     ogImage?: (number | null) | Media;
     /**
      * Nur für Entwürfe, Übergangsseiten oder bewusst private Inhalte aktivieren.
      */
     noIndex?: boolean | null;
   };
+  /**
+   * Technische Herkunft aus der alten HTML-Website. Hilft beim URL-Erhalt, Review und schrittweisen 1:1-Nachbau.
+   */
+  legacy?: {
+    sourceFile?: string | null;
+    sourceUrl?: string | null;
+    migrationStatus?: ('seeded' | 'reviewed' | 'componentized' | 'live') | null;
+    /**
+     * Technischer Status fuer Astro: legacy-file = Fallback aus alter Datei, payload-legacy-html = 1:1 Body kommt aus Payload, structured-blocks = vollstaendig aus strukturierten CMS-Komponenten.
+     */
+    renderSource?: ('legacy-file' | 'payload-legacy-html' | 'structured-blocks') | null;
+    /**
+     * Aus der alten Seite extrahierter Head fuer die 1:1-Vorschau und Parity-Routen.
+     */
+    renderedHeadHtml?: string | null;
+    /**
+     * Header und Footer sind entfernt. Astro rendert diesen Body aus Payload, solange der Seitentyp noch nicht komplett in strukturierte Komponenten zerlegt ist.
+     */
+    renderedBodyHtml?: string | null;
+    /**
+     * Legacy-Skripte und Lightbox-Markup, die nach dem Footer standen.
+     */
+    afterFooterHtml?: string | null;
+    bodyClass?: string | null;
+    headerCurrent?: string | null;
+    extractedHeadings?: string[] | null;
+    extractedImagePaths?: string[] | null;
+    /**
+     * Reiner Text aus der alten Seite als redaktionelle Kontrollbasis.
+     */
+    extractedText?: string | null;
+  };
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
 }
 /**
+ * Standardseiten wie Startseite, About, Kontakt, Uebersichten und Legal-Seiten.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "site-pages".
  */
@@ -890,14 +1375,18 @@ export interface SitePage {
    */
   slug: string;
   pageType: 'home' | 'about' | 'contact' | 'portfolio-index' | 'services-index' | 'journal-index' | 'legal';
-  heroImage?: (number | null) | Media;
-  teaserImage?: (number | null) | Media;
   intro?: string | null;
-  contactOverride?: {
-    headline?: string | null;
-    text?: string | null;
-    emailSubject?: string | null;
-  };
+  /**
+   * Bild aus dem Medienarchiv waehlen. Neue Bilder koennen direkt im Drawer hochgeladen und bearbeitet werden.
+   */
+  heroImage?: (number | null) | Media;
+  /**
+   * Optional. Wenn leer, nutzt das System automatisch das Hero-Bild.
+   */
+  teaserImage?: (number | null) | Media;
+  /**
+   * Optionale Inhaltsmodule. Fuer reine Bildwechsel sind die Bildfelder der jeweiligen Seite schneller.
+   */
   blocks?:
     | (
         | {
@@ -927,6 +1416,9 @@ export interface SitePage {
             layout?: ('editorial-strip' | 'contact-sheet' | 'stage' | 'single-large') | null;
             items?:
               | {
+                  /**
+                   * Bild fuer diese Position in der Sequenz.
+                   */
                   image: number | Media;
                   caption?: string | null;
                   cropIntent?: ('auto' | 'protect-detail' | 'protect-space' | 'dramatic-crop') | null;
@@ -962,8 +1454,14 @@ export interface SitePage {
             links?:
               | {
                   label: string;
+                  /**
+                   * Interne Links am besten root-relativ eintragen, z. B. /portfolio. Vollstaendige eigene URLs werden automatisch gekuerzt.
+                   */
                   href: string;
                   description?: string | null;
+                  seoPurpose?: ('contextual' | 'navigation' | 'conversion' | 'citation' | 'legal' | 'social') | null;
+                  rel?: ('follow' | 'nofollow' | 'sponsored' | 'ugc') | null;
+                  openInNewTab?: boolean | null;
                   id?: string | null;
                 }[]
               | null;
@@ -982,18 +1480,87 @@ export interface SitePage {
           }
       )[]
     | null;
+  contactOverride?: {
+    headline?: string | null;
+    text?: string | null;
+    emailSubject?: string | null;
+  };
   /**
-   * Suchsnippet und Social Preview. Leer lassen, wenn die Seite automatisch aus Titel/Intro ableiten soll.
+   * Wird beim Speichern automatisch aus Titel, Intro/Kurztext und Bildfeldern vorbereitet. Nur fuer bewusste Overrides oeffnen.
    */
   seo?: {
+    /**
+     * Optionaler Override. Wenn leer, wird der Titel automatisch aus dem Seitentitel erzeugt.
+     */
     title?: string | null;
+    /**
+     * Optionaler Override. Wenn leer, wird eine knappe Beschreibung aus Kurztext oder Intro erzeugt.
+     */
     description?: string | null;
+    /**
+     * Optionaler redaktioneller Fokus fuer Snippet, interne Links und spaetere LLM-Vorschlaege.
+     */
+    focusKeyword?: string | null;
+    /**
+     * Optional: verwandte Suchbegriffe oder Clusterbegriffe. Nicht stumpf im Text wiederholen.
+     */
+    secondaryKeywords?: string[] | null;
+    /**
+     * Hilft beim Schreiben von Title, Description, H1 und internen Links.
+     */
+    searchIntent?: ('informational' | 'commercial' | 'local' | 'transactional' | 'navigational') | null;
+    /**
+     * Gewuenschte Anchor-Texte fuer interne Links zu dieser Seite.
+     */
+    internalLinkAnchors?: string[] | null;
+    /**
+     * Optionaler Override. Legacy-URLs oder neue Routen werden automatisch vorgeschlagen.
+     */
     canonicalUrl?: string | null;
+    /**
+     * Interne Migrationsnotiz, z. B. portfolio.html oder /automobil-fotografie-duesseldorf.html.
+     */
+    legacyUrl?: string | null;
+    /**
+     * Fallback ist das Hero- oder Coverbild. Fuer Social Preview idealerweise 1200x630-nah.
+     */
     ogImage?: (number | null) | Media;
     /**
      * Nur für Entwürfe, Übergangsseiten oder bewusst private Inhalte aktivieren.
      */
     noIndex?: boolean | null;
+  };
+  /**
+   * Technische Herkunft aus der alten HTML-Website. Hilft beim URL-Erhalt, Review und schrittweisen 1:1-Nachbau.
+   */
+  legacy?: {
+    sourceFile?: string | null;
+    sourceUrl?: string | null;
+    migrationStatus?: ('seeded' | 'reviewed' | 'componentized' | 'live') | null;
+    /**
+     * Technischer Status fuer Astro: legacy-file = Fallback aus alter Datei, payload-legacy-html = 1:1 Body kommt aus Payload, structured-blocks = vollstaendig aus strukturierten CMS-Komponenten.
+     */
+    renderSource?: ('legacy-file' | 'payload-legacy-html' | 'structured-blocks') | null;
+    /**
+     * Aus der alten Seite extrahierter Head fuer die 1:1-Vorschau und Parity-Routen.
+     */
+    renderedHeadHtml?: string | null;
+    /**
+     * Header und Footer sind entfernt. Astro rendert diesen Body aus Payload, solange der Seitentyp noch nicht komplett in strukturierte Komponenten zerlegt ist.
+     */
+    renderedBodyHtml?: string | null;
+    /**
+     * Legacy-Skripte und Lightbox-Markup, die nach dem Footer standen.
+     */
+    afterFooterHtml?: string | null;
+    bodyClass?: string | null;
+    headerCurrent?: string | null;
+    extractedHeadings?: string[] | null;
+    extractedImagePaths?: string[] | null;
+    /**
+     * Reiner Text aus der alten Seite als redaktionelle Kontrollbasis.
+     */
+    extractedText?: string | null;
   };
   updatedAt: string;
   createdAt: string;
@@ -1131,14 +1698,17 @@ export interface MediaSelect<T extends boolean = true> {
   title?: T;
   alt?: T;
   caption?: T;
+  featured?: T;
   category?: T;
   tags?: T;
   orientation?: T;
   imageType?: T;
   visualTone?: T;
   usagePurpose?: T;
-  featured?: T;
   usageNotes?: T;
+  dominantColor?: T;
+  blurDataUrl?: T;
+  legacySourcePath?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;
@@ -1203,6 +1773,56 @@ export interface MediaSelect<T extends boolean = true> {
               filesize?: T;
               filename?: T;
             };
+        thumbAvif?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        mobileAvif?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        cardAvif?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        heroAvif?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        wideAvif?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
       };
 }
 /**
@@ -1220,9 +1840,30 @@ export interface PortfolioCategoriesSelect<T extends boolean = true> {
     | {
         title?: T;
         description?: T;
+        focusKeyword?: T;
+        secondaryKeywords?: T;
+        searchIntent?: T;
+        internalLinkAnchors?: T;
         canonicalUrl?: T;
+        legacyUrl?: T;
         ogImage?: T;
         noIndex?: T;
+      };
+  legacy?:
+    | T
+    | {
+        sourceFile?: T;
+        sourceUrl?: T;
+        migrationStatus?: T;
+        renderSource?: T;
+        renderedHeadHtml?: T;
+        renderedBodyHtml?: T;
+        afterFooterHtml?: T;
+        bodyClass?: T;
+        headerCurrent?: T;
+        extractedHeadings?: T;
+        extractedImagePaths?: T;
+        extractedText?: T;
       };
   updatedAt?: T;
   createdAt?: T;
@@ -1246,7 +1887,6 @@ export interface PortfolioProjectsSelect<T extends boolean = true> {
   location?: T;
   client?: T;
   coverImage?: T;
-  relatedServices?: T;
   gallery?:
     | T
     | {
@@ -1255,14 +1895,7 @@ export interface PortfolioProjectsSelect<T extends boolean = true> {
         role?: T;
         id?: T;
       };
-  cta?:
-    | T
-    | {
-        headline?: T;
-        text?: T;
-        buttonLabel?: T;
-        emailSubject?: T;
-      };
+  relatedServices?: T;
   blocks?:
     | T
     | {
@@ -1323,6 +1956,9 @@ export interface PortfolioProjectsSelect<T extends boolean = true> {
                     label?: T;
                     href?: T;
                     description?: T;
+                    seoPurpose?: T;
+                    rel?: T;
+                    openInNewTab?: T;
                     id?: T;
                   };
               id?: T;
@@ -1339,14 +1975,43 @@ export interface PortfolioProjectsSelect<T extends boolean = true> {
               blockName?: T;
             };
       };
+  cta?:
+    | T
+    | {
+        headline?: T;
+        text?: T;
+        buttonLabel?: T;
+        emailSubject?: T;
+      };
   seo?:
     | T
     | {
         title?: T;
         description?: T;
+        focusKeyword?: T;
+        secondaryKeywords?: T;
+        searchIntent?: T;
+        internalLinkAnchors?: T;
         canonicalUrl?: T;
+        legacyUrl?: T;
         ogImage?: T;
         noIndex?: T;
+      };
+  legacy?:
+    | T
+    | {
+        sourceFile?: T;
+        sourceUrl?: T;
+        migrationStatus?: T;
+        renderSource?: T;
+        renderedHeadHtml?: T;
+        renderedBodyHtml?: T;
+        afterFooterHtml?: T;
+        bodyClass?: T;
+        headerCurrent?: T;
+        extractedHeadings?: T;
+        extractedImagePaths?: T;
+        extractedText?: T;
       };
   updatedAt?: T;
   createdAt?: T;
@@ -1362,9 +2027,9 @@ export interface ServicePagesSelect<T extends boolean = true> {
   featured?: T;
   sortOrder?: T;
   serviceType?: T;
+  intro?: T;
   heroImage?: T;
   teaserImage?: T;
-  intro?: T;
   audience?:
     | T
     | {
@@ -1385,21 +2050,6 @@ export interface ServicePagesSelect<T extends boolean = true> {
         answer?: T;
         id?: T;
       };
-  relatedPages?:
-    | T
-    | {
-        label?: T;
-        href?: T;
-        id?: T;
-      };
-  cta?:
-    | T
-    | {
-        headline?: T;
-        text?: T;
-        buttonLabel?: T;
-        emailSubject?: T;
-      };
   blocks?:
     | T
     | {
@@ -1460,6 +2110,9 @@ export interface ServicePagesSelect<T extends boolean = true> {
                     label?: T;
                     href?: T;
                     description?: T;
+                    seoPurpose?: T;
+                    rel?: T;
+                    openInNewTab?: T;
                     id?: T;
                   };
               id?: T;
@@ -1476,14 +2129,53 @@ export interface ServicePagesSelect<T extends boolean = true> {
               blockName?: T;
             };
       };
+  relatedPages?:
+    | T
+    | {
+        label?: T;
+        href?: T;
+        seoPurpose?: T;
+        rel?: T;
+        openInNewTab?: T;
+        id?: T;
+      };
+  cta?:
+    | T
+    | {
+        headline?: T;
+        text?: T;
+        buttonLabel?: T;
+        emailSubject?: T;
+      };
   seo?:
     | T
     | {
         title?: T;
         description?: T;
+        focusKeyword?: T;
+        secondaryKeywords?: T;
+        searchIntent?: T;
+        internalLinkAnchors?: T;
         canonicalUrl?: T;
+        legacyUrl?: T;
         ogImage?: T;
         noIndex?: T;
+      };
+  legacy?:
+    | T
+    | {
+        sourceFile?: T;
+        sourceUrl?: T;
+        migrationStatus?: T;
+        renderSource?: T;
+        renderedHeadHtml?: T;
+        renderedBodyHtml?: T;
+        afterFooterHtml?: T;
+        bodyClass?: T;
+        headerCurrent?: T;
+        extractedHeadings?: T;
+        extractedImagePaths?: T;
+        extractedText?: T;
       };
   updatedAt?: T;
   createdAt?: T;
@@ -1499,10 +2191,8 @@ export interface LocalSeoPagesSelect<T extends boolean = true> {
   priority?: T;
   city?: T;
   service?: T;
-  canonicalServicePage?: T;
-  heroImage?: T;
-  targetKeyword?: T;
   intro?: T;
+  heroImage?: T;
   localProof?:
     | T
     | {
@@ -1577,6 +2267,9 @@ export interface LocalSeoPagesSelect<T extends boolean = true> {
                     label?: T;
                     href?: T;
                     description?: T;
+                    seoPurpose?: T;
+                    rel?: T;
+                    openInNewTab?: T;
                     id?: T;
                   };
               id?: T;
@@ -1593,14 +2286,37 @@ export interface LocalSeoPagesSelect<T extends boolean = true> {
               blockName?: T;
             };
       };
+  canonicalServicePage?: T;
+  targetKeyword?: T;
   seo?:
     | T
     | {
         title?: T;
         description?: T;
+        focusKeyword?: T;
+        secondaryKeywords?: T;
+        searchIntent?: T;
+        internalLinkAnchors?: T;
         canonicalUrl?: T;
+        legacyUrl?: T;
         ogImage?: T;
         noIndex?: T;
+      };
+  legacy?:
+    | T
+    | {
+        sourceFile?: T;
+        sourceUrl?: T;
+        migrationStatus?: T;
+        renderSource?: T;
+        renderedHeadHtml?: T;
+        renderedBodyHtml?: T;
+        afterFooterHtml?: T;
+        bodyClass?: T;
+        headerCurrent?: T;
+        extractedHeadings?: T;
+        extractedImagePaths?: T;
+        extractedText?: T;
       };
   updatedAt?: T;
   createdAt?: T;
@@ -1616,15 +2332,17 @@ export interface JournalPostsSelect<T extends boolean = true> {
   featured?: T;
   category?: T;
   publishedAt?: T;
-  coverImage?: T;
   excerpt?: T;
-  readingTime?: T;
+  coverImage?: T;
   tags?: T;
   relatedPages?:
     | T
     | {
         label?: T;
         href?: T;
+        seoPurpose?: T;
+        rel?: T;
+        openInNewTab?: T;
         id?: T;
       };
   blocks?:
@@ -1687,6 +2405,9 @@ export interface JournalPostsSelect<T extends boolean = true> {
                     label?: T;
                     href?: T;
                     description?: T;
+                    seoPurpose?: T;
+                    rel?: T;
+                    openInNewTab?: T;
                     id?: T;
                   };
               id?: T;
@@ -1703,14 +2424,36 @@ export interface JournalPostsSelect<T extends boolean = true> {
               blockName?: T;
             };
       };
+  readingTime?: T;
   seo?:
     | T
     | {
         title?: T;
         description?: T;
+        focusKeyword?: T;
+        secondaryKeywords?: T;
+        searchIntent?: T;
+        internalLinkAnchors?: T;
         canonicalUrl?: T;
+        legacyUrl?: T;
         ogImage?: T;
         noIndex?: T;
+      };
+  legacy?:
+    | T
+    | {
+        sourceFile?: T;
+        sourceUrl?: T;
+        migrationStatus?: T;
+        renderSource?: T;
+        renderedHeadHtml?: T;
+        renderedBodyHtml?: T;
+        afterFooterHtml?: T;
+        bodyClass?: T;
+        headerCurrent?: T;
+        extractedHeadings?: T;
+        extractedImagePaths?: T;
+        extractedText?: T;
       };
   updatedAt?: T;
   createdAt?: T;
@@ -1724,16 +2467,9 @@ export interface SitePagesSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
   pageType?: T;
+  intro?: T;
   heroImage?: T;
   teaserImage?: T;
-  intro?: T;
-  contactOverride?:
-    | T
-    | {
-        headline?: T;
-        text?: T;
-        emailSubject?: T;
-      };
   blocks?:
     | T
     | {
@@ -1794,6 +2530,9 @@ export interface SitePagesSelect<T extends boolean = true> {
                     label?: T;
                     href?: T;
                     description?: T;
+                    seoPurpose?: T;
+                    rel?: T;
+                    openInNewTab?: T;
                     id?: T;
                   };
               id?: T;
@@ -1810,14 +2549,42 @@ export interface SitePagesSelect<T extends boolean = true> {
               blockName?: T;
             };
       };
+  contactOverride?:
+    | T
+    | {
+        headline?: T;
+        text?: T;
+        emailSubject?: T;
+      };
   seo?:
     | T
     | {
         title?: T;
         description?: T;
+        focusKeyword?: T;
+        secondaryKeywords?: T;
+        searchIntent?: T;
+        internalLinkAnchors?: T;
         canonicalUrl?: T;
+        legacyUrl?: T;
         ogImage?: T;
         noIndex?: T;
+      };
+  legacy?:
+    | T
+    | {
+        sourceFile?: T;
+        sourceUrl?: T;
+        migrationStatus?: T;
+        renderSource?: T;
+        renderedHeadHtml?: T;
+        renderedBodyHtml?: T;
+        afterFooterHtml?: T;
+        bodyClass?: T;
+        headerCurrent?: T;
+        extractedHeadings?: T;
+        extractedImagePaths?: T;
+        extractedText?: T;
       };
   updatedAt?: T;
   createdAt?: T;
@@ -1872,34 +2639,61 @@ export interface Navigation {
   primary?:
     | {
         label: string;
+        /**
+         * Interne Links am besten root-relativ eintragen, z. B. /portfolio. Vollstaendige eigene URLs werden automatisch gekuerzt.
+         */
         href: string;
+        seoPurpose?: ('contextual' | 'navigation' | 'conversion' | 'citation' | 'legal' | 'social') | null;
+        rel?: ('follow' | 'nofollow' | 'sponsored' | 'ugc') | null;
+        openInNewTab?: boolean | null;
         id?: string | null;
       }[]
     | null;
   photographyLinks?:
     | {
         label: string;
+        /**
+         * Interne Links am besten root-relativ eintragen, z. B. /portfolio. Vollstaendige eigene URLs werden automatisch gekuerzt.
+         */
         href: string;
+        seoPurpose?: ('contextual' | 'navigation' | 'conversion' | 'citation' | 'legal' | 'social') | null;
+        rel?: ('follow' | 'nofollow' | 'sponsored' | 'ugc') | null;
+        openInNewTab?: boolean | null;
         id?: string | null;
       }[]
     | null;
   footerLinks?:
     | {
         label: string;
+        /**
+         * Interne Links am besten root-relativ eintragen, z. B. /portfolio. Vollstaendige eigene URLs werden automatisch gekuerzt.
+         */
         href: string;
+        seoPurpose?: ('contextual' | 'navigation' | 'conversion' | 'citation' | 'legal' | 'social') | null;
+        rel?: ('follow' | 'nofollow' | 'sponsored' | 'ugc') | null;
+        openInNewTab?: boolean | null;
         id?: string | null;
       }[]
     | null;
   legalLinks?:
     | {
         label: string;
+        /**
+         * Interne Links am besten root-relativ eintragen, z. B. /portfolio. Vollstaendige eigene URLs werden automatisch gekuerzt.
+         */
         href: string;
+        seoPurpose?: ('contextual' | 'navigation' | 'conversion' | 'citation' | 'legal' | 'social') | null;
+        rel?: ('follow' | 'nofollow' | 'sponsored' | 'ugc') | null;
+        openInNewTab?: boolean | null;
         id?: string | null;
       }[]
     | null;
-  cta?: {
+  cta: {
     label?: string | null;
-    href?: string | null;
+    /**
+     * Interne Links am besten root-relativ eintragen, z. B. /portfolio. Vollstaendige eigene URLs werden automatisch gekuerzt.
+     */
+    href: string;
   };
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -1934,24 +2728,79 @@ export interface Footer {
   email: string;
   phone?: string | null;
   locationLabel?: string | null;
+  /**
+   * Optionaler Text, der im Frontend innerhalb des Footer-Statements betont werden kann.
+   */
+  statementHighlight?: string | null;
+  studioLink: {
+    label: string;
+    /**
+     * Interne Links am besten root-relativ eintragen, z. B. /portfolio. Vollstaendige eigene URLs werden automatisch gekuerzt.
+     */
+    href: string;
+    seoPurpose?: ('contextual' | 'navigation' | 'conversion' | 'citation' | 'legal' | 'social') | null;
+    rel?: ('follow' | 'nofollow' | 'sponsored' | 'ugc') | null;
+    openInNewTab?: boolean | null;
+  };
+  /**
+   * Canonical Footer-Struktur aus der Legacy-Seite. Jede Spalte bekommt eine Überschrift und Links.
+   */
+  columns?:
+    | {
+        label: string;
+        links?:
+          | {
+              label: string;
+              /**
+               * Interne Links am besten root-relativ eintragen, z. B. /portfolio. Vollstaendige eigene URLs werden automatisch gekuerzt.
+               */
+              href: string;
+              seoPurpose?: ('contextual' | 'navigation' | 'conversion' | 'citation' | 'legal' | 'social') | null;
+              rel?: ('follow' | 'nofollow' | 'sponsored' | 'ugc') | null;
+              openInNewTab?: boolean | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  copyright?: string | null;
   primaryLinks?:
     | {
         label: string;
+        /**
+         * Interne Links am besten root-relativ eintragen, z. B. /portfolio. Vollstaendige eigene URLs werden automatisch gekuerzt.
+         */
         href: string;
+        seoPurpose?: ('contextual' | 'navigation' | 'conversion' | 'citation' | 'legal' | 'social') | null;
+        rel?: ('follow' | 'nofollow' | 'sponsored' | 'ugc') | null;
+        openInNewTab?: boolean | null;
         id?: string | null;
       }[]
     | null;
   serviceLinks?:
     | {
         label: string;
+        /**
+         * Interne Links am besten root-relativ eintragen, z. B. /portfolio. Vollstaendige eigene URLs werden automatisch gekuerzt.
+         */
         href: string;
+        seoPurpose?: ('contextual' | 'navigation' | 'conversion' | 'citation' | 'legal' | 'social') | null;
+        rel?: ('follow' | 'nofollow' | 'sponsored' | 'ugc') | null;
+        openInNewTab?: boolean | null;
         id?: string | null;
       }[]
     | null;
   socialLinks?:
     | {
         label: string;
+        /**
+         * Interne Links am besten root-relativ eintragen, z. B. /portfolio. Vollstaendige eigene URLs werden automatisch gekuerzt.
+         */
         href: string;
+        seoPurpose?: ('contextual' | 'navigation' | 'conversion' | 'citation' | 'legal' | 'social') | null;
+        rel?: ('follow' | 'nofollow' | 'sponsored' | 'ugc') | null;
+        openInNewTab?: boolean | null;
         platform?: ('instagram' | 'linkedin' | 'youtube' | 'behance' | 'other') | null;
         id?: string | null;
       }[]
@@ -1959,7 +2808,13 @@ export interface Footer {
   legalLinks?:
     | {
         label: string;
+        /**
+         * Interne Links am besten root-relativ eintragen, z. B. /portfolio. Vollstaendige eigene URLs werden automatisch gekuerzt.
+         */
         href: string;
+        seoPurpose?: ('contextual' | 'navigation' | 'conversion' | 'citation' | 'legal' | 'social') | null;
+        rel?: ('follow' | 'nofollow' | 'sponsored' | 'ugc') | null;
+        openInNewTab?: boolean | null;
         id?: string | null;
       }[]
     | null;
@@ -1974,6 +2829,9 @@ export interface GlobalCta {
   id: number;
   primary: {
     label: string;
+    /**
+     * Interne Links am besten root-relativ eintragen, z. B. /portfolio. Vollstaendige eigene URLs werden automatisch gekuerzt.
+     */
     href: string;
   };
   contactModule?: {
@@ -1996,6 +2854,9 @@ export interface NavigationSelect<T extends boolean = true> {
     | {
         label?: T;
         href?: T;
+        seoPurpose?: T;
+        rel?: T;
+        openInNewTab?: T;
         id?: T;
       };
   photographyLinks?:
@@ -2003,6 +2864,9 @@ export interface NavigationSelect<T extends boolean = true> {
     | {
         label?: T;
         href?: T;
+        seoPurpose?: T;
+        rel?: T;
+        openInNewTab?: T;
         id?: T;
       };
   footerLinks?:
@@ -2010,6 +2874,9 @@ export interface NavigationSelect<T extends boolean = true> {
     | {
         label?: T;
         href?: T;
+        seoPurpose?: T;
+        rel?: T;
+        openInNewTab?: T;
         id?: T;
       };
   legalLinks?:
@@ -2017,6 +2884,9 @@ export interface NavigationSelect<T extends boolean = true> {
     | {
         label?: T;
         href?: T;
+        seoPurpose?: T;
+        rel?: T;
+        openInNewTab?: T;
         id?: T;
       };
   cta?:
@@ -2058,11 +2928,41 @@ export interface FooterSelect<T extends boolean = true> {
   email?: T;
   phone?: T;
   locationLabel?: T;
+  statementHighlight?: T;
+  studioLink?:
+    | T
+    | {
+        label?: T;
+        href?: T;
+        seoPurpose?: T;
+        rel?: T;
+        openInNewTab?: T;
+      };
+  columns?:
+    | T
+    | {
+        label?: T;
+        links?:
+          | T
+          | {
+              label?: T;
+              href?: T;
+              seoPurpose?: T;
+              rel?: T;
+              openInNewTab?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  copyright?: T;
   primaryLinks?:
     | T
     | {
         label?: T;
         href?: T;
+        seoPurpose?: T;
+        rel?: T;
+        openInNewTab?: T;
         id?: T;
       };
   serviceLinks?:
@@ -2070,6 +2970,9 @@ export interface FooterSelect<T extends boolean = true> {
     | {
         label?: T;
         href?: T;
+        seoPurpose?: T;
+        rel?: T;
+        openInNewTab?: T;
         id?: T;
       };
   socialLinks?:
@@ -2077,6 +2980,9 @@ export interface FooterSelect<T extends boolean = true> {
     | {
         label?: T;
         href?: T;
+        seoPurpose?: T;
+        rel?: T;
+        openInNewTab?: T;
         platform?: T;
         id?: T;
       };
@@ -2085,6 +2991,9 @@ export interface FooterSelect<T extends boolean = true> {
     | {
         label?: T;
         href?: T;
+        seoPurpose?: T;
+        rel?: T;
+        openInNewTab?: T;
         id?: T;
       };
   updatedAt?: T;

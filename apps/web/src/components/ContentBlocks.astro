@@ -1,6 +1,6 @@
 ---
 import ResponsiveImage from './ResponsiveImage.astro'
-import type { PayloadMedia } from '../lib/payload'
+import { linkAttributes, type PayloadMedia } from '../lib/payload'
 
 type RichText = {
   root?: {
@@ -94,7 +94,7 @@ const richTextToPlainText = (body?: RichText) =>
           {block.headline && <p class="eyebrow" style="margin-bottom: 18px;">{block.headline}</p>}
           <div class="stack-list">
             {(block.links ?? []).map((link: LinkItem) => (
-              <a class="stack-item" href={link.href || '#'}>
+              <a class="stack-item" {...linkAttributes(link)}>
                 <h3>{link.label}</h3>
                 {link.description && <p class="copy">{link.description}</p>}
               </a>
@@ -111,7 +111,8 @@ const richTextToPlainText = (body?: RichText) =>
             <p class="eyebrow" style="color: color-mix(in oklch, var(--paper-ink) 58%, transparent);">Anfrage</p>
             <h2 class="display" style="font-size: clamp(42px, 7vw, 116px); margin: 12px 0 24px;">{block.headline}</h2>
             {block.text && <p class="copy" style="color: color-mix(in oklch, var(--paper-ink) 64%, transparent); max-width: 48rem;">{block.text}</p>}
-            <a class="button is-accent" style="width: max-content; margin-top: 28px;" href={`mailto:info@matthiasramahi.de?subject=${encodeURIComponent(block.emailSubject || 'Projektanfrage')}`}>{block.buttonLabel || 'Anfrage senden'}</a>
+            <a class="button is-accent" style="width: max-content; margin-top: 28px;" href="/contact.html#anfrage">{block.buttonLabel || 'Projekt anfragen'}</a>
+            <p class="copy" style="margin-top: 14px; color: color-mix(in oklch, var(--paper-ink) 58%, transparent);">Unverbindlich. Antwort meist innerhalb von 24 Stunden.</p>
           </div>
         </section>
       )

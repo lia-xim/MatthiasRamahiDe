@@ -19,8 +19,296 @@
   }
 
   ready(function () {
+    (function () {
+      const images = Array.from(document.querySelectorAll('img[data-src]'));
+      if (images.length === 0) return;
+
+      function load(image) {
+        if (image.dataset.src) {
+          image.src = image.dataset.src;
+          delete image.dataset.src;
+        }
+        if (image.dataset.srcset) {
+          image.srcset = image.dataset.srcset;
+          delete image.dataset.srcset;
+        }
+      }
+
+      if (!('IntersectionObserver' in window)) {
+        images.forEach(load);
+        return;
+      }
+
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          observer.unobserve(entry.target);
+          load(entry.target);
+        });
+      }, { rootMargin: '400px 0px' });
+
+      images.forEach(function (image) {
+        observer.observe(image);
+      });
+    })();
+
     const bar = document.getElementById('topbar');
     if (!bar) return;
+
+    const pagePath = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    const hasInlineInquiry = !!document.querySelector('section[data-contact-section], .contact-cta');
+
+    function pageIntent() {
+      const title = (document.querySelector('h1')?.textContent || document.title || '').replace(/\s+/g, ' ').trim();
+      const base = {
+        key: 'projekt',
+        label: 'Projekt',
+        title: 'Der naechste Schritt bleibt klein.',
+        lead: 'Ein kurzer Kontext reicht: Motiv, Ziel, Zeitraum und gewuenschte Nutzung. Daraus entsteht ein klares Rueckfrage- oder Angebotsfenster.',
+        cards: [
+          ['Passend fuer', 'Marke, Sammlung oder Privatprojekt', 'Wenn Bilder nicht nur dokumentieren, sondern Wert, Haltung oder Verkauf staerken sollen.'],
+          ['Ergebnis', 'Bildserie statt Zufallstreffer', 'Planung, Licht, Auswahl und Uebergabe werden auf die spaetere Nutzung abgestimmt.'],
+          ['Naechster Schritt', 'Kurze Anfrage, dann Klarheit', 'Du musst noch kein fertiges Konzept haben. Wir klaeren Umfang, Ort und Ablauf gemeinsam.']
+        ]
+      };
+
+      if (/sportwagen|performance-car|exotic-car|supersportwagen/.test(pagePath)) {
+        return Object.assign({}, base, {
+          key: 'sportwagen',
+          label: 'Sportwagen',
+          title: 'Fuer Verkauf, Sammlung und Markenwirkung.',
+          cards: [
+            ['Passend fuer', 'Sportwagen & Performance Cars', 'Hero-Motive, Detailserien und komplette Sets fuer Verkauf, Sammlung, Social oder Kampagne.'],
+            ['Wichtig', 'Linie, Licht und Material', 'Lack, Form und Innenraum brauchen kontrollierte Perspektiven statt schneller Schnappschuesse.'],
+            ['Naechster Schritt', 'Fahrzeug, Ort, Zeitfenster', 'Diese drei Angaben reichen fuer eine erste Einschaetzung und einen sinnvollen Ablauf.']
+          ]
+        });
+      }
+      if (/oldtimer|classic-car|youngtimer|sammlerfahrzeug/.test(pagePath)) {
+        return Object.assign({}, base, {
+          key: 'oldtimer',
+          label: 'Oldtimer',
+          title: 'Fuer Fahrzeuge mit Geschichte und Wert.',
+          cards: [
+            ['Passend fuer', 'Sammlung, Verkauf oder Dokumentation', 'Die Serie zeigt Zustand, Charakter und Details ohne Auktionskatalog-Kaelte.'],
+            ['Wichtig', 'Authentizitaet vor Effekt', 'Licht und Location sollen Herkunft und Material staerken, nicht ueberdecken.'],
+            ['Naechster Schritt', 'Fahrzeug, Standort, Ziel', 'Mehr braucht es fuer die erste Klaerung meist nicht.']
+          ]
+        });
+      }
+      if (/motorrad|bike|biker|custom-bike/.test(pagePath)) {
+        return Object.assign({}, base, {
+          key: 'motorrad',
+          label: 'Motorrad',
+          title: 'Fuer Haltung, Linie und Maschine.',
+          cards: [
+            ['Passend fuer', 'Bike, Custom Build oder Portrait', 'Motorrad, Fahrer und Material werden als zusammenhaengende Geschichte gedacht.'],
+            ['Wichtig', 'Form und Koerpersprache', 'Die Bildserie braucht Rhythmus: Totale, Details, Haltung, Bewegung.'],
+            ['Naechster Schritt', 'Bike, Stil, Zeitfenster', 'Kurze Eckdaten reichen fuer eine erste Richtung.']
+          ]
+        });
+      }
+      if (/portrait|business-portrait|headshot|personal-branding|unternehmensportrait|pressefoto/.test(pagePath)) {
+        return Object.assign({}, base, {
+          key: 'portrait',
+          label: 'Portrait',
+          title: 'Fuer Praesenz ohne generische Posen.',
+          cards: [
+            ['Passend fuer', 'Personal Branding, Presse, Team', 'Portraits werden auf Rolle, Kontext und spaetere Nutzung abgestimmt.'],
+            ['Wichtig', 'Fuehrung statt Pose', 'Licht, Hintergrund und Ablauf geben Sicherheit, ohne die Person zu glatt zu machen.'],
+            ['Naechster Schritt', 'Person, Ziel, Ort', 'Damit laesst sich der Rahmen schnell klaeren.']
+          ]
+        });
+      }
+      if (/landschaft|wandbilder|naturfotografie|fine-art-prints/.test(pagePath)) {
+        return Object.assign({}, base, {
+          key: 'landschaft',
+          label: 'Landschaft',
+          title: 'Fuer Prints, Raeume und ruhige Bildwirkung.',
+          cards: [
+            ['Passend fuer', 'Fine-Art, Wandbild, Serie', 'Motiv, Format und Material werden zusammen gedacht.'],
+            ['Wichtig', 'Raum, Format, Abstand', 'Ein gutes Wandbild entsteht nicht nur im Motiv, sondern im Zusammenspiel mit dem Ort.'],
+            ['Naechster Schritt', 'Raum oder Motividee', 'Ein Foto, Mass oder Raumkontext reicht fuer den Einstieg.']
+          ]
+        });
+      }
+      if (/webdesign|videografie|werbetechnik|druck|grossformat|fotolabor|viola|leistungen|weitere-dienstleistungen/.test(pagePath)) {
+        return Object.assign({}, base, {
+          key: 'zusatzleistung',
+          label: 'Zusatzleistung',
+          title: 'Wenn Bild, Print und Auftritt zusammenpassen sollen.',
+          cards: [
+            ['Passend fuer', 'Print, Web, Video oder Ausstattung', 'Sinnvoll, wenn die fotografische Sprache auch im Material oder digitalen Auftritt weitergehen soll.'],
+            ['Wichtig', 'Ein Ansprechpartner', 'Ablauf, Bildsprache und Partner werden gemeinsam koordiniert.'],
+            ['Naechster Schritt', 'Ziel, Medium, Timing', 'Damit laesst sich schnell klaeren, welche Leistung passt.']
+          ]
+        });
+      }
+      if (/blog|journal/.test(pagePath)) {
+        return Object.assign({}, base, {
+          key: 'journal',
+          label: 'Journal',
+          title: 'Aus dem Thema kann direkt ein Projekt werden.',
+          cards: [
+            ['Passend fuer', 'Aehnliche Bildsprache', 'Wenn der Artikel eine Richtung trifft, laesst sich daraus ein konkretes Shooting entwickeln.'],
+            ['Wichtig', 'Kontext statt fertiges Briefing', 'Ein paar Stichpunkte reichen, um Motiv, Nutzung und Aufwand einzuordnen.'],
+            ['Naechster Schritt', 'Kurz anfragen', 'Ich melde mich mit Rueckfragen oder einem sinnvollen naechsten Schritt.']
+          ]
+        });
+      }
+      if (/ueber-mich/.test(pagePath)) {
+        return Object.assign({}, base, {
+          key: 'about',
+          label: 'Haltung',
+          title: 'Wenn die Haltung passt, klaeren wir das Projekt.',
+          cards: [
+            ['Passend fuer', 'Menschen mit konkreter Bildabsicht', 'Nicht jedes Motiv braucht Laerm. Viele brauchen Ruhe, Praezision und Richtung.'],
+            ['Wichtig', 'Direkte Abstimmung', 'Du sprichst direkt mit Matthias, nicht mit einer anonymen Produktionsschicht.'],
+            ['Naechster Schritt', 'Idee kurz skizzieren', 'Ein Absatz reicht, um den Rahmen zu pruefen.']
+          ]
+        });
+      }
+      if (pagePath === 'index.html' || pagePath === '') {
+        return Object.assign({}, base, {
+          key: 'home',
+          label: 'Fotografie',
+          title: 'Schnell erkennen, ob der Stil passt.',
+          lead: 'Die Seite ist gross und visuell. Diese Kurzstrecke ordnet ein, wofuer die Arbeit am haeufigsten angefragt wird.',
+          cards: [
+            ['Automotive', 'Verkauf, Sammlung, Kampagne', 'Fahrzeuge als Wertobjekt, Marke oder Editorial-Motiv.'],
+            ['Portrait', 'Praesenz ohne generische Posen', 'Menschen, Teams und Rollen mit ruhiger Fuehrung.'],
+            ['Print & Raum', 'Fine-Art und Wandbilder', 'Bild, Format, Material und Raum zusammen gedacht.']
+          ]
+        });
+      }
+      return base;
+    }
+
+    function inquiryHref() {
+      return hasInlineInquiry ? '#anfrage' : 'contact.html#anfrage';
+    }
+
+    function trackConversionEvent(name, detail) {
+      const payload = Object.assign({
+        event: name,
+        page: pagePath,
+        path: location.pathname,
+        title: document.title,
+        intent: pageIntent().key
+      }, detail || {});
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push(payload);
+      document.dispatchEvent(new CustomEvent('mr:conversion', { detail: payload }));
+    }
+
+    /* ---------- Mobile quick CTA -----------------------------------------
+       The desktop header CTA is hidden on small screens to keep the menu
+       usable. Add a compact sticky action so mobile visitors can start an
+       inquiry without opening navigation first.
+       --------------------------------------------------------------------- */
+    (function () {
+      const source = bar.querySelector('.topbar__cta');
+      if (!source || document.querySelector('.mr-sticky-cta')) return;
+      const sticky = document.createElement('a');
+      sticky.className = 'mr-sticky-cta';
+      sticky.href = source.getAttribute('href') || 'contact.html#anfrage';
+      sticky.textContent = source.textContent || 'Projekt anfragen';
+      sticky.setAttribute('aria-label', sticky.textContent);
+      sticky.setAttribute('data-cta-role', 'mobile-sticky');
+      document.body.appendChild(sticky);
+    })();
+
+    /* ---------- Conversion intent tracking -------------------------------
+       The site currently has no analytics stack in the markup. This creates a
+       clean event surface for future GA4/Plausible/etc. without coupling the
+       UI to a vendor: clicks push into dataLayer and dispatch mr:conversion.
+       --------------------------------------------------------------------- */
+    (function () {
+      document.addEventListener('click', function (e) {
+        const el = e.target.closest && e.target.closest('a,button');
+        if (!el) return;
+        const text = (el.textContent || '').replace(/\s+/g, ' ').trim();
+        const href = el.getAttribute && (el.getAttribute('href') || '');
+        const isCta = /anfrag|kontakt|projekt|mailto:|tel:|portfolio|arbeiten ansehen/i.test(text + ' ' + href);
+        if (!isCta) return;
+        const role = el.getAttribute('data-cta-role') || (el.className || '').toString().replace(/\s+/g, '.').slice(0, 80) || el.tagName.toLowerCase();
+        try {
+          sessionStorage.setItem('mr:lastCta', JSON.stringify({
+            text: text,
+            href: href,
+            role: role,
+            page: pagePath,
+            at: Date.now()
+          }));
+        } catch (err) {}
+        trackConversionEvent('cta_click', { text: text, href: href, role: role });
+      }, { capture: true });
+    })();
+
+    /* ---------- Decision strip -------------------------------------------
+       Many local/service pages are strong visually but visitors still need a
+       quick "is this for me?" answer before they commit to the form. Insert a
+       compact decision-support strip after the first visual section on every
+       page with an inline inquiry.
+       --------------------------------------------------------------------- */
+    (function () {
+      if (!hasInlineInquiry || document.querySelector('.mr-decision-strip')) return;
+      if (pagePath === 'contact.html') return;
+      const main = document.querySelector('main') || document.body;
+      const firstSection = main.querySelector('section');
+      if (!firstSection || firstSection.matches('[data-contact-section]')) return;
+      const intent = pageIntent();
+      const strip = document.createElement('section');
+      strip.className = 'mr-decision-strip';
+      strip.setAttribute('data-header-theme', 'light');
+      strip.setAttribute('aria-label', 'Projekt Einordnung');
+      strip.innerHTML =
+        '<div class="mr-decision-strip__inner">' +
+          '<div class="mr-decision-strip__copy">' +
+            '<p class="mr-decision-strip__eyebrow">' + intent.label + '</p>' +
+            '<h2>' + intent.title + '</h2>' +
+            '<p>' + intent.lead + '</p>' +
+            '<div class="mr-decision-strip__actions">' +
+              '<a class="mr-decision-strip__primary" data-cta-role="decision-strip-primary" href="' + inquiryHref() + '">Projekt anfragen</a>' +
+              '<a class="mr-decision-strip__secondary" data-cta-role="decision-strip-secondary" href="portfolio.html">Arbeiten ansehen</a>' +
+            '</div>' +
+          '</div>' +
+          '<div class="mr-decision-strip__cards">' +
+            intent.cards.map(function (card) {
+              return '<article><span>' + card[0] + '</span><strong>' + card[1] + '</strong><p>' + card[2] + '</p></article>';
+            }).join('') +
+          '</div>' +
+        '</div>';
+      firstSection.insertAdjacentElement('afterend', strip);
+    })();
+
+    /* ---------- Exit CTA for non-form pages -------------------------------
+       Journal/About/Portfolio pages often educate or build trust but do not
+       carry the inline inquiry form. Give them a compact, page-specific exit
+       step before the footer. Legal pages stay untouched.
+       --------------------------------------------------------------------- */
+    (function () {
+      if (hasInlineInquiry || document.querySelector('.mr-exit-cta')) return;
+      if (/datenschutz|impressum/.test(pagePath)) return;
+      const footer = document.querySelector('.mr-footer, footer');
+      if (!footer) return;
+      const intent = pageIntent();
+      const section = document.createElement('section');
+      section.className = 'mr-exit-cta';
+      section.setAttribute('data-header-theme', 'light');
+      section.setAttribute('aria-label', 'Naechster Schritt');
+      section.innerHTML =
+        '<div class="mr-exit-cta__inner">' +
+          '<p class="mr-exit-cta__eyebrow">' + intent.label + '</p>' +
+          '<h2>' + intent.title + '</h2>' +
+          '<p>' + intent.lead + '</p>' +
+          '<div class="mr-exit-cta__actions">' +
+            '<a class="mr-exit-cta__primary" data-cta-role="exit-cta-primary" href="contact.html#anfrage">Projekt anfragen</a>' +
+            '<a class="mr-exit-cta__secondary" data-cta-role="exit-cta-secondary" href="portfolio.html">Arbeiten ansehen</a>' +
+          '</div>' +
+        '</div>';
+      footer.insertAdjacentElement('beforebegin', section);
+    })();
 
     /* ---------- Theme switch ---------------------------------------------
        Probe the element that is currently sitting directly under the header.
@@ -223,7 +511,7 @@
         const headline = slot.getAttribute('data-contact-headline') || 'Projekt <em>anfragen.</em>';
         const lead = slot.getAttribute('data-contact-lead') ||
           'Beschreibe kurz dein Projekt: worum es geht, wo es stattfindet, welche Wirkung die Bilder tragen sollen und in welchem Rahmen sie genutzt werden. Wir klären Location, Licht und Ablauf gemeinsam vor dem ersten Klick.';
-        const endpoint = slot.getAttribute('data-contact-endpoint') || '';
+        const endpoint = slot.getAttribute('data-contact-endpoint') || '/api/contact';
         const uid = 'mrc-' + (slotCounter++);
 
         if (!slot.id) slot.id = 'anfrage';
@@ -235,30 +523,50 @@
             '<div class="mr-contact__head">' +
               '<h2>' + headline + '</h2>' +
               '<p class="mr-contact__lead">' + lead + '</p>' +
+              '<ul class="mr-contact__proof" aria-label="Anfrage Vorteile">' +
+                '<li>Unverbindliche Erstklaerung</li>' +
+                '<li>Antwort meist innerhalb von 24 Stunden</li>' +
+                '<li>Direkt mit Matthias</li>' +
+              '</ul>' +
+              '<div class="mr-contact__brief" aria-label="Was fuer die Anfrage reicht">' +
+                '<article><span>Was reicht?</span><strong>Motiv, Ziel, Zeitraum</strong><p>Ein grober Rahmen ist besser als ein perfektes Briefing. Details klaeren wir danach.</p></article>' +
+                '<article><span>Was klaeren wir?</span><strong>Umfang, Nutzung, Ablauf</strong><p>Location, Bildmenge, Rechte und Timing werden vor dem ersten Termin sortiert.</p></article>' +
+                '<article><span>Naechster Schritt</span><strong>Rueckfrage oder Angebotsrahmen</strong><p>Du bekommst eine klare Einschaetzung statt einer anonymen Standardantwort.</p></article>' +
+              '</div>' +
               '<div class="mr-contact__mail">' +
                 '<a href="mailto:info@matthiasramahi.de?subject=' + encodeURIComponent(subject) + '">info@matthiasramahi.de</a>' +
               '</div>' +
             '</div>' +
-            '<form class="mr-contact__form" novalidate>' +
+            '<form class="mr-contact__form" novalidate data-started-at="' + Date.now() + '">' +
+              '<div class="mr-contact__trap" aria-hidden="true"><label for="' + uid + '-site">Website</label><input id="' + uid + '-site" name="website" tabindex="-1" autocomplete="off"></div>' +
               '<div class="mr-contact__row">' +
-                '<div class="mr-contact__field"><label for="' + uid + '-name">Name</label><input id="' + uid + '-name" name="name" autocomplete="name" required></div>' +
-                '<div class="mr-contact__field"><label for="' + uid + '-mail">E-Mail</label><input id="' + uid + '-mail" type="email" name="email" autocomplete="email" required></div>' +
+                '<div class="mr-contact__field"><label for="' + uid + '-name">Name <span>Pflicht</span></label><input id="' + uid + '-name" name="name" autocomplete="name" required></div>' +
+                '<div class="mr-contact__field"><label for="' + uid + '-contact">E-Mail oder Telefon <span>Pflicht</span></label><input id="' + uid + '-contact" name="contact" autocomplete="email" inputmode="email" required></div>' +
               '</div>' +
-              '<div class="mr-contact__row">' +
-                '<div class="mr-contact__field"><label for="' + uid + '-motiv">Motiv / Projekt</label><input id="' + uid + '-motiv" name="motiv"></div>' +
-                '<div class="mr-contact__field"><label for="' + uid + '-use">Nutzung</label>' +
-                  '<select id="' + uid + '-use" name="use">' +
-                    '<option>Privat</option>' +
-                    '<option>Kommerziell</option>' +
-                    '<option>Kampagne</option>' +
-                    '<option>Editorial</option>' +
-                    '<option>Sonstiges</option>' +
-                  '</select>' +
+              '<div class="mr-contact__field"><label for="' + uid + '-msg">Projekt kurz beschreiben <span>Pflicht</span></label><textarea id="' + uid + '-msg" name="message" required placeholder="Leistung, Ort, Zeitraum und gewuenschte Wirkung reichen fuer den ersten Schritt."></textarea></div>' +
+              '<details class="mr-contact__details">' +
+                '<summary>Projektangaben ergaenzen <span>Optional</span></summary>' +
+                '<div class="mr-contact__row">' +
+                  '<div class="mr-contact__field"><label for="' + uid + '-project">Projekt / Motiv <span>Optional</span></label><input id="' + uid + '-project" name="project" autocomplete="off"></div>' +
+                  '<div class="mr-contact__field"><label for="' + uid + '-date">Zeitraum <span>Optional</span></label><input id="' + uid + '-date" name="date" autocomplete="off" placeholder="z. B. KW 24, Juni, offen"></div>' +
                 '</div>' +
-              '</div>' +
-              '<div class="mr-contact__field"><label for="' + uid + '-msg">Nachricht</label><textarea id="' + uid + '-msg" name="message" required placeholder="Worum geht es, Standort, gewünschte Wirkung, Deadline …"></textarea></div>' +
+                '<div class="mr-contact__row">' +
+                  '<div class="mr-contact__field"><label for="' + uid + '-use">Nutzung <span>Optional</span></label>' +
+                    '<select id="' + uid + '-use" name="use">' +
+                      '<option value="">Noch offen</option>' +
+                      '<option>Privat</option>' +
+                      '<option>Kommerziell</option>' +
+                      '<option>Kampagne</option>' +
+                      '<option>Editorial</option>' +
+                      '<option>Sonstiges</option>' +
+                    '</select>' +
+                  '</div>' +
+                  '<div class="mr-contact__field"><label for="' + uid + '-phone">Telefon fuer Rueckfragen <span>Optional</span></label><input id="' + uid + '-phone" name="phone" autocomplete="tel"></div>' +
+                '</div>' +
+              '</details>' +
               '<div class="mr-contact__actions">' +
-                '<button class="mr-contact__submit" type="submit">Anfrage senden →</button>' +
+                '<button class="mr-contact__submit" type="submit">Projekt anfragen -></button>' +
+                '<p class="mr-contact__reassurance">Unverbindlich. Kein Paket-Zwang. Antwort meist innerhalb von 24 Stunden.</p>' +
                 '<p class="mr-contact__status" role="status" aria-live="polite"></p>' +
               '</div>' +
             '</form>' +
@@ -267,6 +575,7 @@
         const form = slot.querySelector('form.mr-contact__form');
         const submit = slot.querySelector('.mr-contact__submit');
         const status = slot.querySelector('.mr-contact__status');
+        let formStarted = false;
 
         function setStatus(text, mode) {
           if (!status) return;
@@ -275,55 +584,111 @@
           if (mode) status.classList.add('is-' + mode);
         }
 
+        form.addEventListener('focusin', function () {
+          if (formStarted) return;
+          formStarted = true;
+          trackConversionEvent('form_start', { form: 'mr-contact', subject: subject });
+        });
+
         form.addEventListener('submit', async function (e) {
           e.preventDefault();
           const data = {
             name: form.elements['name'].value.trim(),
-            email: form.elements['email'].value.trim(),
-            motiv: form.elements['motiv'].value.trim(),
+            contact: form.elements['contact'].value.trim(),
+            project: form.elements['project'].value.trim(),
+            date: form.elements['date'].value.trim(),
             use: form.elements['use'].value,
+            phone: form.elements['phone'].value.trim(),
             message: form.elements['message'].value.trim()
           };
-          if (!data.name || !data.email || !data.message) {
-            setStatus('Bitte Name, E-Mail und Nachricht ausfüllen.', 'error');
+          const intent = pageIntent();
+          let lastCta = '';
+          try {
+            const stored = JSON.parse(sessionStorage.getItem('mr:lastCta') || '{}');
+            lastCta = [stored.text, stored.role, stored.href].filter(Boolean).join(' / ');
+          } catch (err) {}
+          trackConversionEvent('form_submit_attempt', {
+            form: 'mr-contact',
+            subject: subject,
+            hasProject: !!data.project,
+            hasDate: !!data.date,
+            use: data.use || 'Noch offen'
+          });
+          if (form.elements['website'] && form.elements['website'].value) {
+            form.reset();
+            setStatus('Danke — deine Anfrage ist vorgemerkt.', 'ok');
+            trackConversionEvent('form_honeypot', { form: 'mr-contact' });
+            return;
+          }
+          if (!data.name || !data.contact || !data.message) {
+            setStatus('Bitte Name, Kontaktweg und Projektbeschreibung ausfuellen.', 'error');
+            trackConversionEvent('form_validation_error', { form: 'mr-contact' });
             form.reportValidity();
             return;
           }
           if (endpoint) {
             try {
               submit.disabled = true;
-              setStatus('Wird gesendet …', 'busy');
+              setStatus('Wird sicher uebertragen ...', 'busy');
               const res = await fetch(endpoint, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                body: JSON.stringify(Object.assign({ subject: subject, source: location.pathname }, data))
+                body: JSON.stringify(Object.assign({
+                  subject: subject,
+                  source: location.pathname,
+                  pageTitle: document.title,
+                  pageUrl: location.href,
+                  intent: intent.key,
+                  intentLabel: intent.label,
+                  lastCta: lastCta
+                }, data))
               });
-              if (!res.ok) throw new Error('HTTP ' + res.status);
-              setStatus('Danke — deine Nachricht ist angekommen. Antwort meist innerhalb von 24 Stunden.', 'ok');
+              const result = await res.json().catch(function () { return {}; });
+              if (!res.ok || !result.ok) throw new Error(result.error || ('HTTP ' + res.status));
+              setStatus(result.queued ? 'Danke. Die Anfrage ist gesichert und wird automatisch zugestellt.' : 'Danke. Die Anfrage wurde versendet. Antwort meist innerhalb von 24 Stunden.', 'ok');
+              trackConversionEvent('form_submit_success', {
+                form: 'mr-contact',
+                transport: result.queued ? 'resend-queue' : 'resend',
+                requestId: result.id || ''
+              });
               form.reset();
             } catch (err) {
-              setStatus('Senden fehlgeschlagen. Öffne deine Mail-App stattdessen.', 'error');
+              setStatus('Direktversand nicht moeglich. Mail-App wird als Fallback geoeffnet.', 'error');
               const body =
+                'Seite: ' + document.title + '\n' +
+                'URL: ' + location.href + '\n' +
+                'Kontext: ' + intent.label + '\n' +
+                'CTA: ' + (lastCta || 'Direkt / unbekannt') + '\n\n' +
                 'Name: ' + data.name + '\n' +
-                'E-Mail: ' + data.email + '\n' +
-                'Motiv: ' + (data.motiv || '—') + '\n' +
-                'Nutzung: ' + data.use + '\n\n' +
+                'Kontakt: ' + data.contact + '\n' +
+                'Projekt / Motiv: ' + (data.project || 'Noch offen') + '\n' +
+                'Zeitraum: ' + (data.date || 'Noch offen') + '\n' +
+                'Nutzung: ' + (data.use || 'Noch offen') + '\n' +
+                'Telefon: ' + (data.phone || 'Noch offen') + '\n\n' +
                 'Nachricht:\n' + data.message;
               window.location.href = 'mailto:info@matthiasramahi.de?subject=' +
                 encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+              trackConversionEvent('form_submit_fallback', { form: 'mr-contact', transport: 'mailto' });
             } finally {
               submit.disabled = false;
             }
           } else {
             const body =
+              'Seite: ' + document.title + '\n' +
+              'URL: ' + location.href + '\n' +
+              'Kontext: ' + intent.label + '\n' +
+              'CTA: ' + (lastCta || 'Direkt / unbekannt') + '\n\n' +
               'Name: ' + data.name + '\n' +
-              'E-Mail: ' + data.email + '\n' +
-              'Motiv: ' + (data.motiv || '—') + '\n' +
-              'Nutzung: ' + data.use + '\n\n' +
+              'Kontakt: ' + data.contact + '\n' +
+              'Projekt / Motiv: ' + (data.project || 'Noch offen') + '\n' +
+              'Zeitraum: ' + (data.date || 'Noch offen') + '\n' +
+              'Nutzung: ' + (data.use || 'Noch offen') + '\n' +
+              'Telefon: ' + (data.phone || 'Noch offen') + '\n\n' +
               'Nachricht:\n' + data.message;
             setStatus('Mail-App wird geöffnet …', 'ok');
             window.location.href = 'mailto:info@matthiasramahi.de?subject=' +
               encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+            trackConversionEvent('form_submit_success', { form: 'mr-contact', transport: 'mailto' });
           }
         });
       });

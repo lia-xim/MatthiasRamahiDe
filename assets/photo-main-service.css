@@ -4,7 +4,7 @@
   --red:#cf392e;--steel:#dce2df;--blue:#6d8da1;--ease:cubic-bezier(.23,1,.32,1);
   --font:'Neue Haas Grotesk Display','Söhne','Avenir Next','Helvetica Neue',Arial,system-ui,sans-serif;
   --mono:'JetBrains Mono','IBM Plex Mono','SFMono-Regular',ui-monospace,Menlo,monospace;
-  --hero-img:url('../assets/photos/automobil-neon.webp');--alt-img:url('../assets/photos/automobil-sunset.webp');--detail-img:url('../assets/photos/oldtimer-stage.webp');
+  --hero-img:url('../assets/optimized/assets-photos-automobil-neon-1920.webp');--alt-img:url('../assets/optimized/assets-photos-automobil-sunset-1920.webp');--detail-img:url('../assets/optimized/assets-photos-oldtimer-stage-1920.webp');
   --tone:#cf392e;--tone-2:#6d8da1;--title-max:9ch;
 }
 *{box-sizing:border-box}html{background:var(--black);scroll-behavior:smooth;overflow-x:hidden}body{margin:0;background:var(--black);color:var(--white);font-family:var(--font);overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision}img{display:block;width:100%;height:100%;object-fit:cover}a,button,input,textarea,select{font:inherit;color:inherit}a{text-decoration:none}button{border:0;background:transparent;cursor:pointer}::selection{background:var(--tone);color:#fff}

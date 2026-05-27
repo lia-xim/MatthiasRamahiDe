@@ -1,5 +1,5 @@
 ---
-import { imageAlt, imageDimensions, imageUrl } from '../lib/payload'
+import { imageAlt, imageDimensions, imageDisplayUrl, imageObjectPosition, imageSrcset } from '../lib/payload'
 
 const {
   media,
@@ -9,30 +9,40 @@ const {
   sizes = '(max-width: 760px) 100vw, 50vw',
   loading = 'lazy',
 } = Astro.props
-const src = imageUrl(media, size)
+const src = imageDisplayUrl(media, size)
 const alt = imageAlt(media, fallback)
 const dimensions = imageDimensions(media, size)
-const srcset = ['mobile', 'card', 'hero', 'wide']
-  .map((imageSize) => {
-    const url = imageUrl(media, imageSize)
-    return url ? `${url} ${imageSize === 'mobile' ? '760' : imageSize === 'card' ? '1100' : imageSize === 'wide' ? '2560' : '1920'}w` : ''
-  })
+const rasterSrcset = imageSrcset(media)
+const avifSrcset = imageSrcset(media, ['mobile', 'card', 'hero', 'wide'], 'avif')
+const blurDataUrl = typeof media === 'object' && media ? media.blurDataUrl : ''
+const dominantColor = typeof media === 'object' && media ? media.dominantColor : ''
+const objectPosition = imageObjectPosition(media)
+const imageStyle = [
+  blurDataUrl ? `background-image: url('${blurDataUrl}')` : '',
+  dominantColor ? `background-color: ${dominantColor}` : '',
+  objectPosition ? `object-position: ${objectPosition}` : '',
+]
   .filter(Boolean)
-  .join(', ')
+  .join('; ')
 ---
 {src ? (
-  <img
-    class={className}
-    src={src}
-    srcset={srcset || undefined}
-    sizes={sizes}
-    alt={alt}
-    width={dimensions.width}
-    height={dimensions.height}
-    loading={loading}
-    decoding="async"
-    fetchpriority={loading === 'eager' ? 'high' : undefined}
-  />
+  <picture>
+    {avifSrcset && <source type="image/avif" srcset={avifSrcset} sizes={sizes} />}
+    {rasterSrcset && <source type="image/webp" srcset={rasterSrcset} sizes={sizes} />}
+    <img
+      class={className}
+      src={src}
+      srcset={rasterSrcset || undefined}
+      sizes={sizes}
+      alt={alt}
+      width={dimensions.width}
+      height={dimensions.height}
+      loading={loading}
+      decoding="async"
+      fetchpriority={loading === 'eager' ? 'high' : undefined}
+      style={imageStyle || undefined}
+    />
+  </picture>
 ) : (
   <div class={`image-placeholder ${className}`}>{fallback}</div>
 )}

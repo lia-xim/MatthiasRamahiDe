@@ -1,18 +1,65 @@
 # Astro + Payload CMS Implementation
 
-Stand: 2026-05-26
+Stand: 2026-05-27
+
+Ergaenzung 2026-05-27: Editor-Hardening, Bildstrategie, Preview/SEO und Hetzner-Artefakte sind in `docs/CMS_EDITOR_HARDENING.md`, `docs/IMAGE_STRATEGY.md` und `docs/DEPLOYMENT_HETZNER.md` dokumentiert.
 
 Dieses Repository enthält jetzt eine kontrollierte Astro/Payload-Migration. Die bestehenden statischen HTML-Dateien im Root bleiben unangetastet und dienen weiter als Referenz, bis das CMS-Modell stabil befüllt ist.
 
 ## Architektur
 
-- Frontend: `apps/web` mit Astro 5 und `@astrojs/node`.
+- Frontend: `apps/web` mit Astro 5 und `@astrojs/node` im `output: "server"`-Modus.
 - CMS: `apps/cms` mit Payload 3, Next 15 und Postgres.
 - Lokaler Schnellstart: Payload kann mit `PAYLOAD_DB=sqlite` ohne Docker in `apps/cms/payload-dev.db` laufen; Produktion/Staging bleiben auf Postgres.
 - Datenbank lokal mit Postgres: `compose.cms.yml`.
 - Medien: Payload Uploads lokal, optional S3-kompatibel über Cloudflare R2 oder Hetzner Object Storage.
 - Preview: Payload erzeugt URLs auf Astro unter `/preview/<collection>/<slug>?secret=...`.
 - Rebuild: Payload kann nach Änderungen `ASTRO_REBUILD_WEBHOOK_URL` aufrufen.
+
+## Legacy-Parity in Astro
+
+Die alte statische Website bleibt die visuelle Wahrheit. Astro rendert die alten `.html`-URLs inzwischen ueber eine kontrollierte Legacy-Komponentenschicht, damit Header, Footer, SEO, Asset-Pfade und spaeter CMS-Daten zentral steuerbar sind, ohne die Root-HTML-Dateien zu ueberschreiben.
+
+- Die alten `.html`-Dateien im Projekt-Root werden nicht überschrieben.
+- `apps/web/src/lib/legacy.ts` ordnet alte HTML-Dateien und Alias-Routen Astro zu.
+- `apps/web/src/middleware.ts` rewritet alte Root-URLs wie `/leistungen.html` intern auf `/componentized/leistungen`; die sichtbare URL bleibt erhalten.
+- `apps/web/src/components/legacy/LegacyPageShell.astro` rendert Head, Header, Hero/Footer-Komponenten und den noch nicht extrahierten Legacy-Body.
+- `apps/web/src/components/legacy/LegacyPageShell.astro` fragt Payload standardmaessig nach `legacy.renderedBodyHtml`. Wenn ein CMS-Dokument vorhanden ist, ist Payload die aktive Content-Quelle; wenn Payload nicht erreichbar ist oder kein Dokument existiert, bleibt die Legacy-Datei der Fallback. Mit `ASTRO_DISABLE_LEGACY_CMS_LOOKUP=true` kann man den Datei-Fallback erzwingen.
+- `apps/web/src/pages/legacy-baseline/` und `/legacy-baseline/<slug>` liefern die rohe Legacy-Seite nur als Dev-/Test-Baseline aus und normalisieren dafuer Asset-Pfade.
+- `tools/sync-legacy-public.mjs` synchronisiert vorhandene Assets nach `apps/web/public`, damit Astro sie lokal und im Build ausliefern kann. Root-HTML-Dateien werden dabei nicht nach `apps/web/public` kopiert; alte generierte Public-HTML-Kopien werden entfernt, damit Astro-Middleware und componentized Rendering die alten URLs kontrollieren.
+- `predev`, `prebuild` und `prepreview` in `apps/web/package.json` führen den Asset-Sync automatisch aus.
+- Die synchronisierten Dateien in `apps/web/public/assets` und Root-Medien sind generierte lokale Kopien und werden nicht committed.
+- `weitere-dienstleistungen.html` ist als Dublette konsolidiert und leitet per `308` auf `/leistungen.html` weiter.
+
+Der nächste Migrationsschritt ist weiterhin nicht ein neues Design, sondern das schrittweise Nachbauen weiterer Body-Bereiche als echte Astro-Komponenten. Jede extrahierte Komponente wird gegen die Legacy-Baseline verglichen, bevor sie den jeweiligen Body-Abschnitt ersetzt.
+
+Aktueller Parity-Startpunkt:
+
+- `apps/web/src/data/legacyContent.ts` enthält echte Texte, Links, SEO-Snippets und Footer-/Navigation-Daten aus der bestehenden HTML-Seite.
+- `apps/web/src/components/legacy/LegacyHeader.astro`, `LegacyHero.astro` und `LegacyFooter.astro` bilden die ersten extrahierten Astro-Komponenten mit den originalen CSS-Klassen.
+- `apps/web/src/layouts/BaseLayout.astro` nutzt denselben Legacy-Header/Footer-Rahmen auch fuer CMS-native Astro-Seiten wie Journal, Portfolio, Services und Preview. Dadurch sehen CMS-Seiten nicht mehr wie ein zweites Designsystem aus.
+- `http://localhost:4321/componentized/<slug>` rendert Legacy-Seiten mit extrahiertem Astro-Header/Footer und originaler Body-Struktur, z. B. `/componentized/portfolio`, `/componentized/blog-automotive-fotografie-duesseldorf`.
+- `http://localhost:4321/componentized-home` leitet auf `/componentized/index` weiter.
+- Die öffentlichen Legacy-URLs nutzen jetzt dieselbe componentized Render-Schicht; die rohe Ausgabe bleibt nur Baseline.
+- `apps/web/scripts/visual-regression.mjs` vergleicht Startseite, Portfolio, Leistungen, About, Kontakt, Journal, einen Journal-Detailartikel, wichtige Service-Seiten und eine lokale SEO-Seite auf Desktop und Mobile. Diff-Bilder landen in `apps/web/.visual-regression`.
+- `apps/web/scripts/legacy-route-audit.mjs` prueft alle Root-HTML-URLs auf Status 200, Titel, Header/Footer und kaputte Bilder.
+
+Visual-Regression-Test:
+
+```powershell
+corepack pnpm --filter @matthias-ramahi/web exec playwright install chromium
+corepack pnpm --filter @matthias-ramahi/web test:legacy-routes
+corepack pnpm --filter @matthias-ramahi/web test:visual
+```
+
+Der Test nutzt aktuell eine 2%-Schwelle, weil Canvas, Lazy Images und Subpixel-Rendering minimale Abweichungen erzeugen. Neue Komponenten sollen diese Schwelle nicht erhöhen, sondern die Differenz weiter senken.
+
+Aktueller QA-Stand vom 2026-05-27:
+
+- `corepack pnpm web:test:legacy-routes`: 197/197 alte HTML-Routen geprueft.
+- `corepack pnpm web:test:visual`: alle Desktop- und Mobile-Vergleiche unter 2% Abweichung; Home Desktop liegt nach Baseline-Korrektur bei 1,947%.
+- `corepack pnpm cms:audit-readiness`: 0 fehlende Pflichtfelder. Importierte Inhalte bleiben als `seeded` markiert, bis sie redaktionell/visuell abgenommen sind.
+- `corepack pnpm cms:build` und `corepack pnpm web:build`: erfolgreich.
 
 ## Lokales Setup
 
@@ -25,6 +72,8 @@ corepack pnpm local:start
 ```
 
 Das Skript startet Payload auf `3000` und Astro auf `4321`. Falls `.env`-Dateien fehlen, werden lokale Dateien mit SQLite und zufälligen Secrets erzeugt. Bestehende `.env`-Dateien werden nicht überschrieben.
+
+`local:start` bereinigt vor dem Payload-Dev-Start den generierten Next-Ordner `apps/cms/.next`. Dadurch kann ein vorheriger `cms:build` den lokalen Admin nicht mit stale Vendor-Chunks blockieren. Fuer SQLite setzt das Skript `PAYLOAD_DB_PUSH=true` nur beim ersten Start ohne vorhandene `payload-dev.db`; danach wird `PAYLOAD_DB_PUSH=false` verwendet, damit Payload bestehende Indizes nicht erneut anlegt.
 
 Stoppen:
 
@@ -51,6 +100,30 @@ Danach öffnen:
 
 Beim ersten Admin-Aufruf legt Payload den ersten User an. Danach im User-Profil einen API-Key erzeugen und den reinen Key-Wert in `apps/web/.env` als `PAYLOAD_PREVIEW_API_KEY` eintragen.
 
+Legacy-Globals in Payload seeden:
+
+```powershell
+corepack pnpm --filter @matthias-ramahi/cms seed:legacy
+```
+
+Der Seed befüllt Navigation, Website-Einstellungen, Footer, globale CTAs und die wichtigsten Standardseiten mit echten Texten aus der bestehenden HTML-Seite. SEO-Beschreibungen werden beim Seed auf die im CMS erlaubte Länge gekürzt, die Quelle bleibt in `legacyContent.ts` nachvollziehbar.
+
+Legacy-HTML als kontrollierte Content-Basis in Payload importieren:
+
+```powershell
+corepack pnpm --filter @matthias-ramahi/cms import:legacy
+```
+
+Der Import liest die Root-HTML-Dateien, importiert referenzierte Bilder in `media` und befüllt Site Pages, Service Pages, Local SEO Pages, Portfolio-Kategorien/-Projekte und Journal-Beiträge. Journal-Detailseiten wie `blog-automotive-fotografie-duesseldorf.html` werden mit Coverbild, Tags, SEO, Related Links, Lesezeit und Content-Blöcken angelegt. Lokale SEO-Seiten bleiben standardmäßig Entwürfe, bis sie redaktionell geprüft sind.
+
+Redaktions- und Produktionsreife auditieren:
+
+```powershell
+corepack pnpm cms:audit-readiness
+```
+
+Das Audit schreibt nichts in die Datenbank. Es unterscheidet zwischen Feld-Vollstaendigkeit und echter Produktionsreife. Produktionsbereit bedeutet: Pflichtfelder sind vorhanden, der Inhalt ist veroeffentlicht, und `legacy.migrationStatus` steht nicht mehr auf `seeded`, sondern auf `reviewed`, `componentized` oder `live`. Damit bleibt klar sichtbar, welche Inhalte nur importiert und welche wirklich redaktionell/visuell abgenommen sind.
+
 ## ENV-Variablen
 
 `apps/cms/.env`
@@ -58,6 +131,7 @@ Beim ersten Admin-Aufruf legt Payload den ersten User an. Danach im User-Profil 
 - `PAYLOAD_SECRET`: langer zufälliger Secret-Wert.
 - `PAYLOAD_PUBLIC_SERVER_URL`: z. B. `http://localhost:3000`.
 - `PAYLOAD_DB`: `sqlite` für den lokalen No-Docker-Test, sonst `postgres`.
+- `PAYLOAD_DB_PUSH`: standardmaessig `false`. Nur fuer einen frischen lokalen Schema-Bootstrap kurz auf `true` setzen, danach wieder `false`.
 - `DATABASE_URI`: Postgres-Verbindung.
 - `DATABASE_URL`: SQLite-Datei, z. B. `file:./payload-dev.db`, wenn `PAYLOAD_DB=sqlite`.
 - `ASTRO_PREVIEW_URL`: z. B. `http://localhost:4321`.
@@ -88,11 +162,13 @@ corepack pnpm --filter @matthias-ramahi/cms build
 Behobene Setup-Probleme:
 
 - `@astrojs/check` ergänzt, weil `astro check` im Build-Skript verwendet wird.
-- Astro `output: "hybrid"` auf `output: "static"` geändert; Astro 5 entfernt `hybrid`, die Kombination mit Node-Adapter und `prerender = false` Preview bleibt serverfähig.
+- Astro `output: "hybrid"` auf `output: "server"` geändert; Astro 5 entfernt `hybrid`, Preview, Middleware-Rewrites und alte `.html`-URLs laufen damit sauber ueber den Node-Adapter.
 - Payload Admin `searchParams` für Next/Payload korrekt typisiert.
 - Payload `importMap` generiert und eingebunden.
 - Payload Admin Root-Layout mit Payload-Providern und Server Functions eingebunden.
 - Lokaler SQLite-Testmodus ergänzt, damit Payload ohne Docker/Postgres startbar ist.
+
+Payload-Schema-Push ist nicht mehr implizit aktiv. Das verhindert lokale SQLite-Duplicate-Index-Fehler und ist naeher am Produktionsbetrieb mit kontrollierten Schema-Aenderungen.
 
 ## CMS-Modell
 
@@ -162,7 +238,7 @@ Priorität:
 2. Home, Portfolio, Leistungen, About/Kontakt.
 3. Haupt-Service-Seiten.
 4. Portfolio-Projekte.
-5. Journal.
+5. Journal, inklusive echter Blog-Detailseiten.
 6. Lokale SEO-Cluster.
 7. Impressum/Datenschutz.
 
@@ -181,8 +257,8 @@ Kurzfassung:
 
 ## Offene TODOs
 
-- Echte Inhalte aus den bestehenden HTML-Seiten redaktionell in Payload übertragen.
-- Medienbestand kuratieren und Alt-Texte finalisieren.
-- Optional: automatisiertes Import-Script erst nach finaler Modellfreigabe.
-- Optional: echte Rebuild-Webhook-Receiver/CI-Pipeline für Hetzner ergänzen.
+- Importierte Inhalte redaktionell prüfen und den `legacy.migrationStatus` von `seeded` auf `reviewed`, `componentized` oder `live` setzen.
+- Medienbestand weiter kuratieren: Alt-Texte, Captions, Featured-Auswahl, Mood/Tags und Verwendungszweck finalisieren.
+- Weitere Legacy-Layouts aus dem Body in echte Astro-Komponenten zerlegen, sobald Visual Regression für den Seitentyp stabil grün ist.
+- Optional: Rebuild-Hook auf dem Hetzner-Server aktivieren und einmal mit echtem Secret testen.
 - Optional: strukturierte Daten pro Seitentyp weiter ausbauen.

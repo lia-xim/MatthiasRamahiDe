@@ -30,6 +30,7 @@ const webUrl = getWebUrl()
 const payloadUrl = process.env.PAYLOAD_PUBLIC_SERVER_URL || 'http://localhost:3000'
 const payloadSecret = process.env.PAYLOAD_SECRET || randomUUID()
 const useSQLite = process.env.PAYLOAD_DB === 'sqlite'
+const pushDevSchema = process.env.PAYLOAD_DB_PUSH === 'true'
 const hasS3 = Boolean(process.env.S3_BUCKET && process.env.S3_ENDPOINT && process.env.S3_ACCESS_KEY_ID && process.env.S3_SECRET_ACCESS_KEY)
 
 if (!process.env.PAYLOAD_SECRET) {
@@ -73,12 +74,14 @@ export default buildConfig({
         client: {
           url: process.env.DATABASE_URL || 'file:./payload-dev.db',
         },
+        push: pushDevSchema,
         wal: true,
       })
     : postgresAdapter({
         pool: {
           connectionString: process.env.DATABASE_URI,
         },
+        push: pushDevSchema,
       }),
   secret: payloadSecret,
   sharp,

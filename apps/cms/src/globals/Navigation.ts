@@ -1,12 +1,9 @@
-import type { Field, GlobalConfig } from 'payload'
+import type { GlobalConfig } from 'payload'
 
 import { authenticated } from '../access/publishedOrAuthenticated'
+import { hrefField, linkFields } from '../fields/links'
+import { normalizeGlobalLinksBeforeValidate } from '../hooks/normalizeLinks'
 import { triggerAstroRebuildAfterGlobalChange } from '../hooks/rebuild'
-
-const linkFields = (): Field[] => [
-  { name: 'label', label: 'Label', type: 'text', required: true },
-  { name: 'href', label: 'URL', type: 'text', required: true },
-]
 
 export const Navigation: GlobalConfig = {
   slug: 'navigation',
@@ -19,6 +16,7 @@ export const Navigation: GlobalConfig = {
     update: authenticated,
   },
   hooks: {
+    beforeValidate: [normalizeGlobalLinksBeforeValidate],
     afterChange: [triggerAstroRebuildAfterGlobalChange],
   },
   fields: [
@@ -28,11 +26,11 @@ export const Navigation: GlobalConfig = {
       type: 'array',
       defaultValue: [
         { label: 'Home', href: '/' },
-        { label: 'Fotografie', href: '/fotografie' },
+        { label: 'Fotografie', href: '/fotografie-duesseldorf' },
         { label: 'Portfolio', href: '/portfolio' },
         { label: 'Über mich', href: '/ueber-mich' },
         { label: 'Journal', href: '/journal' },
-        { label: 'Kontakt', href: '/kontakt' },
+        { label: 'Kontakt', href: '/contact.html#anfrage' },
       ],
       fields: linkFields(),
     },
@@ -72,7 +70,7 @@ export const Navigation: GlobalConfig = {
       type: 'group',
       fields: [
         { name: 'label', label: 'Label', type: 'text', defaultValue: 'Anfrage' },
-        { name: 'href', label: 'URL', type: 'text', defaultValue: 'mailto:info@matthiasramahi.de?subject=Projektanfrage' },
+        hrefField('URL', 'mailto:info@matthiasramahi.de?subject=Projektanfrage'),
       ],
     },
   ],

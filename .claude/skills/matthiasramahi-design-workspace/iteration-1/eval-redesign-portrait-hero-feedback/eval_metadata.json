@@ -1,0 +1,51 @@
+{
+  "eval_id": 3,
+  "eval_name": "redesign-portrait-hero-feedback",
+  "prompt": "Ich überlege, das Portrait-Hero auf portraitfotografie-duesseldorf.html umzubauen. Aktuell ist da diese Iris-Reveal Animation. Sie ist langsam und mobile nicht so gut. Was sind meine Optionen? Welche passt am besten zur Site-Identität, welche sollte ich vermeiden, und warum? Konkrete Empfehlung mit Begründung, plus den Code für die Option die du empfiehlst.",
+  "assertions": [
+    {
+      "text": "Response is in German",
+      "type": "language"
+    },
+    {
+      "text": "Response mentions at least 2 of the 5 hero formulas by name (lens shader, Ken-Burns static, iris reveal, filmstrip wipe, sequence stage)",
+      "type": "string_contains"
+    },
+    {
+      "text": "Response does NOT recommend the lens shader hero (index.html exclusive)",
+      "type": "negative"
+    },
+    {
+      "text": "Response does NOT recommend the filmstrip wipe hero (motorrad-specific)",
+      "type": "negative"
+    },
+    {
+      "text": "Response does NOT recommend replacing with a static hero image + plain CSS gradient (that's the 'failure mode 1' from SKILL.md)",
+      "type": "negative"
+    },
+    {
+      "text": "Response mentions prefers-reduced-motion as a real fallback strategy",
+      "type": "string_contains"
+    },
+    {
+      "text": "Response mentions data-theme or data-header-theme attribute",
+      "type": "string_contains"
+    },
+    {
+      "text": "Response includes a code skeleton (HTML + CSS) for the recommended option",
+      "type": "structural"
+    },
+    {
+      "text": "Recommendation justified with at least one design-system anchor (cinematic dark, photographic motion, slow ease, no flat replacements, etc.)",
+      "type": "qualitative"
+    },
+    {
+      "text": "Code skeleton uses var(--ease), clamp() type sizing, and dark section markers",
+      "type": "structural"
+    },
+    {
+      "text": "Tone is advisory and direct (not vendor-pitch tone, no superlatives, no 'amazing'/'cool'/'perfect')",
+      "type": "qualitative"
+    }
+  ]
+}

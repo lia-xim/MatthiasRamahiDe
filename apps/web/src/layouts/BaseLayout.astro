@@ -1,8 +1,9 @@
 ---
 import '../styles/tokens.css'
-import SiteFooter from '../components/SiteFooter.astro'
-import SiteHeader from '../components/SiteHeader.astro'
-import { getSiteSettings, imageUrl, toAbsoluteSiteUrl, type PayloadMedia } from '../lib/payload'
+import LegacyFooter from '../components/legacy/LegacyFooter.astro'
+import LegacyHeader from '../components/legacy/LegacyHeader.astro'
+import { getSiteSettings, imageDimensions, imageUrl, toAbsoluteSiteUrl, type PayloadMedia } from '../lib/payload'
+import { localBusinessJsonLd, personJsonLd, webSiteJsonLd, type JsonLd } from '../lib/seo'
 
 type Props = {
   title?: string
@@ -11,23 +12,50 @@ type Props = {
   noIndex?: boolean
   ogImage?: PayloadMedia | string
   ogType?: string
+  jsonLd?: JsonLd | JsonLd[]
+  currentNav?: string
 }
 
 const settings = await getSiteSettings()
 const {
   title = settings?.defaultMetaTitle || 'Matthias Ramahi Fotografie',
-  description = settings?.defaultMetaDescription || 'Portfolio, Fotografie und visuelle Produktion in Düsseldorf / NRW.',
+  description = settings?.defaultMetaDescription || 'Portfolio, Fotografie und visuelle Produktion in Duesseldorf / NRW.',
   canonicalUrl,
   noIndex = false,
   ogImage,
   ogType = 'website',
+  jsonLd,
+  currentNav,
 } = Astro.props as Props
 
 const siteName = settings?.siteName || 'Matthias Ramahi Fotografie'
-const baseUrl = (settings?.siteUrl || toAbsoluteSiteUrl('/')).replace(/\/$/, '')
 const pathname = Astro.url.pathname === '/' ? '/' : Astro.url.pathname.replace(/\/$/, '')
-const canonical = canonicalUrl || `${baseUrl}${pathname}`
+const canonical = toAbsoluteSiteUrl(canonicalUrl || pathname)
 const socialImage = typeof ogImage === 'string' ? ogImage : imageUrl(ogImage || settings?.defaultOgImage, 'hero')
+const socialImageDimensions = typeof ogImage === 'string' ? {} : imageDimensions(ogImage || settings?.defaultOgImage, 'hero')
+const jsonLdItems = [
+  personJsonLd(settings),
+  webSiteJsonLd(settings),
+  localBusinessJsonLd(settings),
+  ...(Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : []),
+].filter(Boolean)
+
+const inferredNav =
+  pathname === '/'
+    ? 'home'
+    : pathname.startsWith('/portfolio')
+      ? 'portfolio'
+      : pathname.startsWith('/journal') || pathname.startsWith('/blog')
+        ? 'blog'
+        : pathname.startsWith('/services') || pathname.startsWith('/leistungen')
+          ? 'leistungen'
+          : pathname.includes('ueber-mich')
+            ? 'ueber-mich'
+            : pathname.includes('kontakt') || pathname.includes('contact')
+              ? 'kontakt'
+              : undefined
+
+const activeNav = currentNav || inferredNav
 ---
 <!doctype html>
 <html lang="de">
@@ -36,6 +64,8 @@ const socialImage = typeof ogImage === 'string' ? ogImage : imageUrl(ogImage || 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="author" content={settings?.ownerName || 'Matthias Ramahi'} />
+    <meta name="format-detection" content="telephone=no" />
     <link rel="canonical" href={canonical} />
     {noIndex ? <meta name="robots" content="noindex,nofollow" /> : <meta name="robots" content="index,follow,max-image-preview:large" />}
     <meta name="theme-color" content="#020306" />
@@ -46,18 +76,26 @@ const socialImage = typeof ogImage === 'string' ? ogImage : imageUrl(ogImage || 
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     {socialImage && <meta property="og:image" content={socialImage} />}
+    {socialImage && <meta property="og:image:alt" content={title} />}
+    {socialImage && socialImageDimensions.width && <meta property="og:image:width" content={String(socialImageDimensions.width)} />}
+    {socialImage && socialImageDimensions.height && <meta property="og:image:height" content={String(socialImageDimensions.height)} />}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     {socialImage && <meta name="twitter:image" content={socialImage} />}
+    {socialImage && <meta name="twitter:image:alt" content={title} />}
+    <link rel="stylesheet" href="/assets/site-chrome.css" />
+    <link rel="stylesheet" href="/assets/load-more-gallery.css" />
+    {jsonLdItems.map((item) => <script is:inline type="application/ld+json" set:html={JSON.stringify(item)} />)}
   </head>
-  <body>
+  <body class="has-mr-footer cms-page">
     <div class="site-shell">
-      <SiteHeader />
+      <LegacyHeader current={activeNav} />
       <main class="site-main">
         <slot />
       </main>
-      <SiteFooter />
+      <LegacyFooter />
     </div>
+    <script is:inline src="/assets/site-chrome.js" defer></script>
   </body>
 </html>

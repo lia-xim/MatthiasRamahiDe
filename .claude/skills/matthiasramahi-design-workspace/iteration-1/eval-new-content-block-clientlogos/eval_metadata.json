@@ -1,0 +1,55 @@
+{
+  "eval_id": 2,
+  "eval_name": "new-content-block-clientlogos",
+  "prompt": "Ich möchte einen neuen Content-Block-Typ clientLogosStrip hinzufügen — eine ruhige horizontale Reihe von Kundenlogos. Es soll sowohl im CMS (apps/cms/src/fields/contentBlocks.ts) als auch im Astro-Renderer (apps/web/src/components/ContentBlocks.astro) verfügbar sein. Zeig beide Änderungen und erklär, wie es visuell ins System passt.",
+  "assertions": [
+    {
+      "text": "CMS block definition uses slug 'clientLogosStrip'",
+      "type": "string_contains"
+    },
+    {
+      "text": "CMS block has German labels (singular + plural)",
+      "type": "string_contains"
+    },
+    {
+      "text": "CMS block has at least a logos array field with image (relationship to media) and alt/caption",
+      "type": "structural"
+    },
+    {
+      "text": "Astro renderer adds the block to the discriminated union type",
+      "type": "structural"
+    },
+    {
+      "text": "Astro renderer has a render branch for blockType === 'clientLogosStrip'",
+      "type": "string_contains"
+    },
+    {
+      "text": "Styling references design tokens (var(--font-mono), var(--ease), var(--muted) or similar) rather than hardcoded colors",
+      "type": "structural"
+    },
+    {
+      "text": "Logos are displayed at uniform height with auto width (preserves aspect)",
+      "type": "structural"
+    },
+    {
+      "text": "Default state desaturates / mutes logos (e.g., filter: grayscale, opacity reduction, or color-mix tint) — not full color",
+      "type": "structural"
+    },
+    {
+      "text": "No card shadows (no box-shadow on cards), no border-radius > 4px",
+      "type": "negative"
+    },
+    {
+      "text": "Explanation references at least one existing content block by name (textBlock, imageSequence, faqBlock, linkList, ctaBlock, quoteBlock)",
+      "type": "string_contains"
+    },
+    {
+      "text": "Explanation addresses both dark and light section contexts",
+      "type": "string_contains"
+    },
+    {
+      "text": "Explanation acknowledges the site's anti-patterns (no playful hover, no rounded cards, etc.)",
+      "type": "qualitative"
+    }
+  ]
+}

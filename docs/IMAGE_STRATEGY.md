@@ -17,38 +17,47 @@ Pflichtpflege:
 - Verwendungszweck
 - Featured/Favorit bei starken Motiven
 
-## Größen
+## Responsive Derivate
 
-Payload erzeugt:
+Neue Uploads erzeugen in Payload:
 
-- `thumb`: Admin und schnelle Auswahl
-- `mobile`: kleine Viewports
-- `card`: Übersichten und Teaser
-- `hero`: große Bühnen
-- `wide`: breite Editorial- und Hero-Flächen
+- `thumb` / `thumbAvif`: Admin und schnelle Auswahl
+- `mobile` / `mobileAvif`: kleine Viewports
+- `card` / `cardAvif`: Uebersichten und Teaser
+- `hero` / `heroAvif`: grosse Buehnen
+- `wide` / `wideAvif`: breite Editorial- und Hero-Flaechen
 
-Astro nutzt `srcset` und `sizes`. Templates sollen nicht direkt Originale ausliefern, solange eine passende Größe existiert.
+Astro nutzt `ResponsiveImage` mit `<picture>`, AVIF/WebP, `srcset`, `sizes`, Lazy Loading und festen Dimensionen. Templates sollen nicht direkt Originale ausliefern, solange eine passende Groesse existiert.
+
+## Focal Point, Crop und Placeholder
+
+- Payload Media hat Crop und Focal Point aktiv.
+- Lokale Uploads bekommen automatisch eine Orientierung.
+- Lokale Uploads bekommen `dominantColor` und `blurDataUrl` als LQIP-Placeholder.
+- Im Frontend wird der Focal Point als `object-position` gesetzt, wenn Payload `focalX/focalY` liefert.
 
 ## Galerie-Regeln
 
 - Portfolio-Projekte kuratieren, nicht alles hochladen.
-- Große Serien in sinnvolle Sequenzen teilen.
-- Auf Übersichtsseiten nur Cover/Teaser laden.
-- Detailseiten dürfen mehr Bilder laden, aber nicht komplette Roharchive.
+- Grosse Serien in sinnvolle Sequenzen teilen.
+- Auf Uebersichtsseiten nur Cover/Teaser laden.
+- Detailseiten nutzen `LoadMoreGallery`, damit nicht sofort komplette Roharchive sichtbar geladen werden.
 
 ## Formate
 
-Viele bestehende Assets sind bereits WebP. Für neue Uploads:
+Viele bestehende Assets sind bereits WebP. Fuer neue Uploads:
 
-- WebP oder AVIF bevorzugen, wenn der Workflow es sauber erzeugt.
-- JPEG nur für Quell-/Originalqualität oder wenn nötig.
-- Keine 30-MB-Originale direkt als Seitenmotiv verwenden.
+- WebP ist der robuste Standard-Fallback.
+- AVIF wird parallel erzeugt, wo Browser es unterstuetzen.
+- JPEG bleibt Quell-/Originalformat, wird aber nicht direkt in CMS-Templates ausgeliefert.
+- Keine grossen Originale direkt als Seitenmotiv verwenden.
 
 ## Object Storage
 
-Für Produktion empfohlen:
+Fuer Produktion empfohlen:
 
 - Cloudflare R2 oder Hetzner Object Storage.
 - S3-ENV in `apps/cms/.env` setzen.
 - Medien-URLs per CDN ausliefern.
 - Datenbank und Bucket gemeinsam sichern.
+- Bei S3/R2 wird die lokale LQIP-Erzeugung uebersprungen; dann kann spaeter ein separater Worker oder Import-Job die Platzhalter ergaenzen.

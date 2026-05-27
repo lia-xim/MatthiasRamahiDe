@@ -60,6 +60,7 @@ PAYLOAD_SECRET=$(New-LocalSecret)
 PAYLOAD_PUBLIC_SERVER_URL=http://localhost:3000
 PAYLOAD_DB=sqlite
 DATABASE_URL=file:./payload-dev.db
+PAYLOAD_DB_PUSH=false
 ASTRO_PREVIEW_URL=http://localhost:4321
 ASTRO_PUBLIC_SITE_URL=http://localhost:4321
 PREVIEW_SECRET=$previewSecret
@@ -103,6 +104,14 @@ if ($SkipStop) {
 
 Remove-Item -LiteralPath $cmsOut, $cmsErr, $webOut, $webErr -ErrorAction SilentlyContinue
 
+$cmsNextDir = Join-Path $root 'apps/cms/.next'
+if (Test-Path -LiteralPath $cmsNextDir) {
+  Remove-Item -LiteralPath $cmsNextDir -Recurse -Force -ErrorAction SilentlyContinue
+}
+
+$cmsSqliteDb = Join-Path $root 'apps/cms/payload-dev.db'
+$cmsSchemaPush = if ($payloadDb -eq 'sqlite' -and -not (Test-Path -LiteralPath $cmsSqliteDb)) { 'true' } else { 'false' }
+
 Write-Line 'Starting local Payload CMS and Astro servers...'
 
 $cms = Start-Process -FilePath 'powershell' -ArgumentList @(
@@ -110,7 +119,7 @@ $cms = Start-Process -FilePath 'powershell' -ArgumentList @(
   '-ExecutionPolicy',
   'Bypass',
   '-Command',
-  'corepack pnpm cms:dev'
+  "`$env:PAYLOAD_DB_PUSH='$cmsSchemaPush'; corepack pnpm cms:dev"
 ) -WorkingDirectory $root -RedirectStandardOutput $cmsOut -RedirectStandardError $cmsErr -WindowStyle Hidden -PassThru
 
 Start-Sleep -Seconds 10

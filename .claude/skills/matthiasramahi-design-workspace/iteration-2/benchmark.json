@@ -1,0 +1,76 @@
+{
+  "metadata": {
+    "skill_name": "matthiasramahi-design",
+    "iteration": 2,
+    "executor_model": "claude-opus-4-7[1m]",
+    "timestamp": "2026-05-27T03:10:00Z",
+    "evals_run": ["new-seo-subpage-bottrop", "new-content-block-clientlogos", "redesign-portrait-hero-feedback"],
+    "notes_on_baseline": "Baselines not re-run in iteration 2 — reuse iteration 1 baselines as the comparison anchor since they are skill-independent."
+  },
+
+  "runs": [
+    {
+      "eval_id": 1, "eval_name": "new-seo-subpage-bottrop", "configuration": "with_skill", "iteration": 2,
+      "result": { "pass_rate": 1.0, "passed": 10, "failed": 0, "total": 10, "time_seconds": 396.2, "tokens": 106567, "tool_calls": 9, "errors": 0 },
+      "notes": [
+        "Cited references/05-seo-subpage-scaffold.md directly.",
+        "Again caught + fixed the sibling areaServed='Duesseldorf' clone-bug.",
+        "Placed Bottrop between Bochum and Wuppertal (logical Ruhrgebiet adjacency) vs iter 1's placement after Oberhausen — both valid.",
+        "Page inherits site's --accent-2 steel for h2 em-text (correct per updated tokens posture)."
+      ]
+    },
+    {
+      "eval_id": 2, "eval_name": "new-content-block-clientlogos", "configuration": "with_skill", "iteration": 2,
+      "result": { "pass_rate": 1.0, "passed": 12, "failed": 0, "total": 12, "time_seconds": 160.8, "tokens": 66911, "tool_calls": 10, "errors": 0 },
+      "notes": [
+        "Explicitly cites the new calibration anchor from updated SKILL.md: 'BILDER, DIE EINEN RAUM VERÄNDERN.'",
+        "Uses var(--accent-2) for the headline em — implementing the steel/sage accent system explicitly.",
+        "Adds a 'treatment' select (monochrome default + original opt-out) — a useful generalization over iter 1.",
+        "Anti-pattern audit preserved: 'Not a trusted by sponsor wall.'"
+      ]
+    },
+    {
+      "eval_id": 3, "eval_name": "redesign-portrait-hero-feedback", "configuration": "with_skill", "iteration": 2,
+      "result": { "pass_rate": 1.0, "passed": 12, "failed": 0, "total": 12, "time_seconds": 94.5, "tokens": 72529, "tool_calls": 6, "errors": 0 },
+      "notes": [
+        "CTAs now use btn-ink + btn-ghost — NO red-filled btn-accent (iter 1 had this wrong).",
+        "Explicit warning in response: 'Roter Hover-Fill auf den CTAs ... nicht zum Site-Rot wechseln.'",
+        "Same correct recommendation (Iris straffen statt ersetzen) as iter 1.",
+        "Adds mobile-bypass (clip-path:none under 780px) — practical performance fix that wasn't in iter 1."
+      ]
+    }
+  ],
+
+  "iter1_vs_iter2_summary": {
+    "with_skill_iter1": { "pass_rate": { "mean": 1.0 }, "time_seconds": { "mean": 222.8 }, "tokens": { "mean": 86108 } },
+    "with_skill_iter2": { "pass_rate": { "mean": 1.0 }, "time_seconds": { "mean": 217.2 }, "tokens": { "mean": 82002 } },
+    "without_skill_baseline_iter1": { "pass_rate": { "mean": 0.881 } },
+    "delta_vs_baseline": "+0.119 pp (unchanged from iter 1)"
+  },
+
+  "qualitative_changes_iter1_to_iter2": [
+    {
+      "eval": "redesign-portrait-hero-feedback",
+      "change": "BIG — CTA pattern corrected from btn-accent (red fill, anti-pattern) to btn-ink + btn-ghost (correct). Agent now explicitly warns against switching CTA hover to site-red.",
+      "trigger": "Updated SKILL.md posture rule #3 (two-tier accent) + 03-hero-formulas.md CTA convention."
+    },
+    {
+      "eval": "new-content-block-clientlogos",
+      "change": "MODERATE — Now explicitly invokes the 'BILDER, DIE EINEN RAUM VERÄNDERN' calibration anchor from the new SKILL.md section. Uses var(--accent-2) for em — explicit steel.",
+      "trigger": "New 'Calibration: what the rendered site actually looks like' section in SKILL.md."
+    },
+    {
+      "eval": "new-seo-subpage-bottrop",
+      "change": "SMALL — Different city placement in cities grid (Bochum/Wuppertal neighborhood vs after Oberhausen). Both correct. Output mostly unchanged because this task is mechanical.",
+      "trigger": "Scaffold reference unchanged between iterations."
+    }
+  ],
+
+  "notes": [
+    "Iter 2 confirms the user's feedback fixed the most visible failure mode: red-filled CTAs in eval 3 are gone, replaced with ink-fill/ghost.",
+    "The new calibration anchor section in SKILL.md is being consumed: eval 2 agent directly quoted 'BILDER, DIE EINEN RAUM VERÄNDERN.'",
+    "Mechanical tasks (SEO subpage) are unchanged because they were already correct.",
+    "Pass rate is still 100% across all three evals — same as iter 1 — but the *content* of with-skill output is now closer to the rendered site spec.",
+    "Tokens slightly down (~5%) — likely the updated SKILL.md being more direct/concrete about anti-patterns means less re-reading and verification."
+  ]
+}

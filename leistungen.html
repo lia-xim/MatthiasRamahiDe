@@ -3,169 +3,27 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="twitter:image" content="https://matthiasramahi.de/assets/services/portfolio_webp_full_057-1.webp" />
+  <meta name="twitter:description" content="Weitere Dienstleistungen von Matthias Ramahi: Fotografie, Druck, Webdesign, Videografie und visuelle Produktion in Düsseldorf, NRW und Deutschland." />
+  <meta name="twitter:title" content="Weitere Dienstleistungen — Matthias Ramahi" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="og:image:alt" content="Weitere Dienstleistungen — Matthias Ramahi" />
+  <meta property="og:image" content="https://matthiasramahi.de/assets/services/portfolio_webp_full_057-1.webp" />
+  <meta property="og:url" content="https://matthiasramahi.de/leistungen.html" />
+  <meta property="og:description" content="Weitere Dienstleistungen von Matthias Ramahi: Fotografie, Druck, Webdesign, Videografie und visuelle Produktion in Düsseldorf, NRW und Deutschland." />
+  <meta property="og:title" content="Weitere Dienstleistungen — Matthias Ramahi" />
+  <meta property="og:locale" content="de_DE" />
+  <meta property="og:site_name" content="Matthias Ramahi Fotografie" />
+  <meta property="og:type" content="website" />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1" />
+  <meta name="author" content="Matthias Ramahi" />
+  <meta name="description" content="Weitere Dienstleistungen von Matthias Ramahi: Fotografie, Druck, Webdesign, Videografie und visuelle Produktion in Düsseldorf, NRW und Deutschland." />
   <title>Weitere Dienstleistungen — Matthias Ramahi</title>
-  <style>
-    :root{
-      --ink:#0a0c11;--ink-2:#1a1d24;
-      --paper:#f3f1ea;--paper-2:#ebe7dc;--paper-3:#e2dccd;
-      --rule:rgba(10,12,17,.14);
-      --accent:#b08862;
-      --muted:rgba(10,12,17,.62);--quiet:rgba(10,12,17,.42);
-      --serif:'Iowan Old Style','Charter','Georgia',serif;
-      --sans:'Inter Tight','Söhne','Avenir Next','Helvetica Neue',Arial,system-ui,sans-serif;
-      --mono:'JetBrains Mono','IBM Plex Mono','SFMono-Regular',ui-monospace,Menlo,monospace;
-      --ease:cubic-bezier(.23,1,.32,1);
-    }
-    *{box-sizing:border-box}
-    html{background:var(--paper);scroll-behavior:smooth;overflow-x:hidden}
-    body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-    img{display:block;width:100%;height:100%;object-fit:cover}
-    a,button{font:inherit;color:inherit}a{text-decoration:none}button{border:0;background:transparent;cursor:pointer}::selection{background:var(--ink);color:var(--paper)}
-    main{position:relative;z-index:2}
-    .kicker{font:10px/1.6 var(--mono);letter-spacing:.26em;text-transform:uppercase;color:color-mix(in oklch,var(--accent) 78%,var(--ink) 22%);margin:0}
-
-    /* HERO — editorial */
-    .ld-hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;padding:clamp(132px,16vw,180px) clamp(28px,5vw,84px) clamp(64px,8vw,110px);background:#0d0c0a;overflow:hidden;isolation:isolate;color:var(--paper)}
-    .ld-hero__bg{position:absolute;inset:0;z-index:0;overflow:hidden}
-    .ld-hero__bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform-origin:54% 50%;animation:ldHeroKB 38s ease-in-out infinite alternate;will-change:transform}
-    .ld-hero__bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,12,10,.62) 0%,rgba(13,12,10,.18) 32%,rgba(13,12,10,.42) 70%,rgba(13,12,10,.94) 100%),radial-gradient(60% 70% at 8% 96%,color-mix(in oklch,var(--accent) 28%,transparent),transparent 62%),radial-gradient(55% 60% at 96% 4%,rgba(220,225,235,.10),transparent 68%);pointer-events:none}
-    .ld-hero__copy{position:relative;min-width:0;max-width:880px;z-index:1}
-    .ld-hero .kicker{color:color-mix(in oklch,var(--paper) 78%,var(--accent) 22%)}
-    .ld-hero h1{margin:18px 0 0;font-family:var(--serif);font-weight:600;font-size:clamp(54px,8.2vw,136px);line-height:.92;letter-spacing:-.028em;color:var(--paper);text-wrap:balance;max-width:16ch;hanging-punctuation:first last;text-shadow:0 1px 32px rgba(13,12,10,.35)}
-    .ld-hero h1 em{font-style:italic;font-weight:500;color:color-mix(in oklch,var(--accent) 78%,#fff 22%)}
-    .ld-hero__lead{margin:28px 0 0;color:color-mix(in oklch,var(--paper) 82%,transparent);font-family:var(--sans);font-size:clamp(16px,1.32vw,21px);line-height:1.55;max-width:60ch;text-wrap:pretty}
-    .ld-hero__actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:36px}
-    .ld-hero .ld-btn{border-color:rgba(243,241,234,.42);color:var(--paper)}
-    .ld-hero .ld-btn:hover{background:var(--paper);color:var(--ink);border-color:var(--paper)}
-    .ld-hero .ld-btn.is-primary{background:var(--paper);color:var(--ink);border-color:var(--paper)}
-    .ld-hero .ld-btn.is-primary:hover{background:color-mix(in oklch,var(--accent) 84%,#fff 16%);border-color:color-mix(in oklch,var(--accent) 84%,#fff 16%);color:var(--ink)}
-    .ld-btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;border:1px solid rgba(10,12,17,.32);padding:13px 22px;background:transparent;color:var(--ink);font:10px var(--mono);letter-spacing:.22em;text-transform:uppercase;transition:background .26s var(--ease),color .26s var(--ease),border-color .26s var(--ease),transform .26s var(--ease)}
-    .ld-btn.is-primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-    .ld-btn:hover{transform:translateY(-2px);background:var(--ink);color:var(--paper);border-color:var(--ink)}
-    .ld-btn.is-primary:hover{background:transparent;color:var(--ink)}
-    @keyframes ldHeroKB{from{transform:scale(1.06) translate(0,0)}to{transform:scale(1.14) translate(-1.6%,1.2%)}}
-    @media (prefers-reduced-motion: reduce){.ld-hero__bg img{animation:none}}
-
-    /* OVERVIEW — 6 tiles */
-    .overview{background:var(--paper-2);color:var(--ink);padding:clamp(80px,10vw,140px) clamp(28px,5vw,84px) clamp(56px,7vw,100px);border-top:1px solid var(--rule)}
-    .overview-inner{max-width:1520px;margin:0 auto}
-    .overview-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,520px);gap:6vw;align-items:end;margin-bottom:42px}
-    .overview h2{margin:0;font-family:var(--serif);font-weight:600;font-size:clamp(40px,5.2vw,86px);line-height:.98;letter-spacing:-.025em;color:var(--ink);max-width:16ch;text-wrap:balance}
-    .overview h2 em{font-style:italic;font-weight:500;color:color-mix(in oklch,var(--accent) 78%,var(--ink) 22%)}
-    .overview-head p{margin:0;color:var(--muted);font-size:clamp(16px,1.36vw,21px);line-height:1.5;max-width:48ch;text-wrap:pretty}
-    .overview-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;max-width:1320px;margin:0 auto}
-    .overview-tile{position:relative;aspect-ratio:1/1;overflow:hidden;background:#111;border:1px solid var(--rule);isolation:isolate;text-decoration:none}
-    .overview-tile img{filter:saturate(.94) contrast(.99) brightness(.9);transform:scale(1.02);transition:transform .7s var(--ease),filter .45s var(--ease)}
-    .overview-tile:hover img{transform:scale(1.075);filter:saturate(1) contrast(1) brightness(.98)}
-    .overview-tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 28%,rgba(0,0,0,.68));z-index:1;pointer-events:none}
-    .overview-tile .label{position:absolute;z-index:2;left:18px;right:18px;bottom:18px;display:flex;justify-content:space-between;gap:12px;align-items:end;color:#fff}
-    .overview-tile strong{font-family:var(--serif);font-weight:600;font-size:22px;line-height:1.05;letter-spacing:-.02em}
-    .overview-tile strong em{font-style:italic;font-weight:500}
-    .overview-tile span{font:9px var(--mono);letter-spacing:.2em;color:rgba(255,255,255,.7);text-transform:uppercase}
-
-    /* SERVICES — 7 alternating detail rows */
-    .services{background:var(--paper);color:var(--ink);padding:clamp(56px,7vw,100px) clamp(28px,5vw,84px) clamp(80px,10vw,140px);border-top:1px solid var(--rule)}
-    .services-list{max-width:1520px;margin:0 auto;display:grid;gap:18px}
-    .service{position:relative;display:grid;grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);gap:clamp(28px,5vw,78px);align-items:center;padding:clamp(36px,4.5vw,56px);border:1px solid var(--rule);background:var(--paper);overflow:hidden;color:inherit;text-decoration:none;transition:transform .42s var(--ease),box-shadow .42s var(--ease),border-color .35s var(--ease)}
-    .service:hover{transform:translateY(-3px);border-color:rgba(10,12,17,.28);box-shadow:0 32px 84px rgba(10,12,17,.12)}
-    .service:hover .image-card img{transform:scale(1.06)}
-    .service:hover .service-go{gap:14px;color:color-mix(in oklch,var(--accent) 90%,var(--ink) 10%)}
-    .service:hover .service-go::after{transform:translateX(4px)}
-    .service:nth-child(2n){background:var(--ink);color:#f3f1ea;border-color:rgba(243,241,234,.12)}
-    .service:nth-child(2n):hover{border-color:rgba(243,241,234,.32);box-shadow:0 32px 84px rgba(0,0,0,.42)}
-    .service:nth-child(even){grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr)}
-    .service:nth-child(even) .service-copy{order:2}
-    .service:nth-child(even) .image-set{order:1}
-    .service-copy{position:relative;z-index:2;max-width:640px;min-width:0}
-    .service-num{font:10px var(--mono);letter-spacing:.22em;color:color-mix(in oklch,var(--accent) 78%,var(--ink) 22%);text-transform:uppercase}
-    .service h3{margin:18px 0 0;font-family:var(--serif);font-weight:600;font-size:clamp(36px,4.4vw,74px);line-height:.96;letter-spacing:-.026em;color:inherit;text-wrap:balance;overflow-wrap:break-word;hyphens:auto}
-    .service h3 em{font-style:italic;font-weight:500;color:color-mix(in oklch,var(--accent) 82%,currentColor 18%)}
-    .service h3 .manual-break{display:inline}
-    .service p{margin:24px 0 0;color:var(--muted);font-size:16px;line-height:1.6;max-width:56ch}
-    .service:nth-child(2n) p{color:rgba(243,241,234,.74)}
-    .service:nth-child(2n) .service-num{color:color-mix(in oklch,var(--accent) 80%,#f3f1ea 20%)}
-    .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
-    .tag{border:1px solid rgba(10,12,17,.18);padding:8px 10px;font:9px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
-    .service:nth-child(2n) .tag{border-color:rgba(243,241,234,.22);color:rgba(243,241,234,.72)}
-    .service-go{display:inline-flex;align-items:center;gap:10px;margin-top:28px;font:10px var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--muted);transition:gap .24s var(--ease),color .24s var(--ease)}
-    .service-go::after{content:"→";display:inline-block;transition:transform .24s var(--ease)}
-    .service:nth-child(2n) .service-go{color:rgba(243,241,234,.7)}
-    .service:nth-child(2n):hover .service-go{color:#f3f1ea}
-    .image-set{position:relative;z-index:2;min-width:0;min-height:420px;display:grid;grid-template-columns:1.05fr .82fr;gap:14px;align-items:center}
-    .image-card{position:relative;overflow:hidden;background:#121418;border:1px solid var(--rule);height:390px;box-shadow:0 24px 72px rgba(10,12,17,.12)}
-    .service:nth-child(2n) .image-card{border-color:rgba(243,241,234,.1)}
-    .image-card.small{height:270px;align-self:end}
-    .image-card.tall{height:470px}
-    .image-card img{filter:saturate(.96) contrast(.99) brightness(.96);transform:scale(1.02);transition:transform .7s var(--ease),filter .4s var(--ease)}
-    .image-card.screen img{object-fit:cover;object-position:top center}
-    .image-card.viola img{object-position:center 46%}
-    .image-caption{position:absolute;left:14px;bottom:12px;font:9px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.78);z-index:2;text-shadow:0 1px 12px rgba(0,0,0,.72)}
-
-    /* WHY — dark editorial band */
-    .why{background:var(--ink);color:#f3f1ea;padding:clamp(64px,8vw,108px) clamp(28px,5vw,84px);border-top:1px solid rgba(243,241,234,.08);position:relative;overflow:hidden;isolation:isolate}
-    .why::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 70% at 12% 90%,color-mix(in oklch,var(--accent) 22%,transparent),transparent 65%),radial-gradient(50% 60% at 92% 8%,color-mix(in oklch,var(--accent) 14%,transparent),transparent 60%);pointer-events:none;z-index:-1}
-    .why-inner{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.15fr);gap:clamp(48px,6vw,96px);align-items:start}
-    .why-copy{min-width:0;max-width:520px}
-    .why-copy .kicker{color:rgba(243,241,234,.6)}
-    .why h2{margin:14px 0 0;font-family:var(--serif);font-weight:600;font-size:clamp(36px,4.4vw,68px);line-height:.98;letter-spacing:-.022em;color:#f7f4ec;max-width:14ch;text-wrap:balance}
-    .why h2 em{font-style:italic;font-weight:500;color:color-mix(in oklch,var(--accent) 86%,#fff 14%)}
-    .why-lead{margin:22px 0 0;color:rgba(243,241,234,.74);font-size:clamp(15px,1.1vw,18px);line-height:1.55;max-width:48ch;text-wrap:pretty}
-    .why-board{position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;min-width:0}
-    .why-card{position:relative;min-height:170px;padding:22px 24px;background:rgba(243,241,234,.04);border:1px solid rgba(243,241,234,.13);overflow:hidden;transition:background .35s var(--ease)}
-    .why-card:nth-child(2),.why-card:nth-child(3){margin-top:0}
-    .why-card span{font:10px var(--mono);letter-spacing:.22em;color:color-mix(in oklch,var(--accent) 80%,#f3f1ea 20%);text-transform:uppercase}
-    .why-card strong{display:block;margin-top:18px;font-family:var(--serif);font-weight:600;font-size:clamp(19px,1.8vw,26px);line-height:1.08;letter-spacing:-.02em;color:#f7f4ec}
-    .why-card strong em{font-style:italic;font-weight:500;color:color-mix(in oklch,var(--accent) 84%,#fff 16%)}
-    .why-card p{margin:10px 0 0;color:rgba(243,241,234,.66);font-size:14px;line-height:1.55;max-width:36ch}
-    .why-card:hover{background:rgba(243,241,234,.08)}
-
-    /* FINAL CTA */
-    .final{background:var(--paper);color:var(--ink);padding:clamp(80px,10vw,140px) clamp(28px,5vw,84px);text-align:center;border-top:1px solid var(--rule)}
-    .final .kicker{margin-bottom:12px;display:inline-block}
-    .final h2{margin:0 auto;font-family:var(--serif);font-weight:600;font-size:clamp(44px,6.4vw,108px);line-height:.94;letter-spacing:-.03em;color:var(--ink);max-width:14ch;text-wrap:balance}
-    .final h2 em{font-style:italic;font-weight:500;color:color-mix(in oklch,var(--accent) 80%,var(--ink) 20%)}
-    .final p{margin:24px auto 0;max-width:52ch;color:var(--muted);font-size:clamp(16px,1.36vw,21px);line-height:1.5}
-    .final .actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:36px}
-
-    @media(max-width:1120px){
-      .ld-hero{padding:clamp(116px,18vw,150px) 22px clamp(48px,8vw,72px);min-height:clamp(580px,86svh,820px)}
-      .ld-hero h1{max-width:none}
-      .overview,.services,.why,.final{padding-left:22px;padding-right:22px}
-      .overview-head,.why-inner{grid-template-columns:1fr}
-      .overview-grid{grid-template-columns:repeat(2,1fr)}
-      .service,.service:nth-child(even){grid-template-columns:1fr;gap:24px;padding:34px}
-      .service:nth-child(even) .service-copy,.service:nth-child(even) .image-set{order:initial}
-      .image-set{min-height:auto}
-      .why-board{grid-template-columns:1fr}
-      .why-card,.why-card:nth-child(2),.why-card:nth-child(3){min-height:auto;margin-top:0;padding:24px}
-    }
-    @media(max-width:760px){
-      .ld-hero{padding:clamp(108px,22vw,140px) 18px 42px;min-height:clamp(520px,82svh,720px)}
-      .ld-hero h1{font-size:clamp(46px,12vw,82px)}
-      .ld-hero__lead{font-size:16px;margin-top:22px}
-      .overview{padding:48px 18px 28px}
-      .overview-grid{grid-template-columns:1fr;max-width:380px}
-      .services{padding:14px 18px 60px}
-      .service{padding:26px 18px}
-      .service h3{font-size:clamp(34px,9.5vw,56px)}
-      .service p{font-size:14.5px}
-      .image-set{grid-template-columns:1fr 1fr;gap:10px}
-      .image-card,.image-card.small,.image-card.tall{height:230px}
-      .why{padding:54px 18px}
-      .why h2{font-size:clamp(32px,9vw,56px)}
-      .final{padding:64px 18px}
-    }
-    @media(max-width:480px){
-      .image-set{grid-template-columns:1fr}
-      .image-card,.image-card.small,.image-card.tall{height:230px}
-      .overview-tile strong{font-size:18px}
-    }
-    @media(prefers-reduced-motion:reduce){
-      *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
-      .image-card img{transform:none!important}
-    }
-  </style>
+  <link rel="stylesheet" href="assets/legacy-leistungen.css" />
   <link rel="stylesheet" href="assets/site-chrome.css" />
+  <link rel="stylesheet" href="assets/legacy-performance.css" />
+  <link rel="canonical" href="https://matthiasramahi.de/leistungen.html" />
+  <script type="application/ld+json" data-seo="technical">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://matthiasramahi.de/#website","url":"https://matthiasramahi.de/","name":"Matthias Ramahi Fotografie","inLanguage":"de-DE","publisher":{"@id":"https://matthiasramahi.de/#person"}},{"@type":"Person","@id":"https://matthiasramahi.de/#person","name":"Matthias Ramahi","url":"https://matthiasramahi.de/","email":"info@matthiasramahi.de","jobTitle":"Fotograf"},{"@type":"BreadcrumbList","@id":"https://matthiasramahi.de/leistungen.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Startseite","item":"https://matthiasramahi.de/"},{"@type":"ListItem","position":2,"name":"Weitere Dienstleistungen — Matthias Ramahi","item":"https://matthiasramahi.de/leistungen.html"}]},{"@type":"WebPage","@id":"https://matthiasramahi.de/leistungen.html#webpage","url":"https://matthiasramahi.de/leistungen.html","name":"Weitere Dienstleistungen — Matthias Ramahi","description":"Weitere Dienstleistungen von Matthias Ramahi: Fotografie, Druck, Webdesign, Videografie und visuelle Produktion in Düsseldorf, NRW und Deutschland.","inLanguage":"de-DE","isPartOf":{"@id":"https://matthiasramahi.de/#website"},"breadcrumb":{"@id":"https://matthiasramahi.de/leistungen.html#breadcrumb"},"primaryImageOfPage":{"@type":"ImageObject","url":"https://matthiasramahi.de/assets/services/portfolio_webp_full_057-1.webp"}}]}</script>
 </head>
 <body class="has-mr-footer">
   <header class="topbar" id="topbar" data-header-theme="light">
@@ -189,7 +47,7 @@
     <a href="leistungen.html" data-nav="leistungen">Weitere Dienstleistungen</a>
     <a href="contact.html" data-nav="kontakt">Kontakt</a>
   </nav>
-  <a class="topbar__cta" href="mailto:info@matthiasramahi.de?subject=Projektanfrage">Anfrage</a>
+  <a class="topbar__cta" href="#anfrage">Projekt anfragen</a>
   <button class="topbar__menu" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu">
     <span aria-hidden="true"></span><span aria-hidden="true"></span>
   </button>
@@ -215,23 +73,24 @@
       <a href="leistungen.html" data-nav="leistungen">Weitere Dienstleistungen</a>
       <a href="contact.html" data-nav="kontakt">Kontakt</a>
     </nav>
-    <a class="mobile-menu__cta" href="mailto:info@matthiasramahi.de?subject=Projektanfrage">Anfrage senden</a>
+    <a class="mobile-menu__cta" href="#anfrage">Projekt anfragen</a>
   </div>
 </div>
 
   <main>
     <section class="ld-hero" id="top" data-header-theme="dark" aria-label="Weitere Dienstleistungen">
       <div class="ld-hero__bg" aria-hidden="true">
-        <img src="assets/services/portfolio_webp_full_057-1.webp" alt="" loading="eager" decoding="async" fetchpriority="high">
+        <img src="assets/services/portfolio_webp_full_057-1.webp" alt="" loading="eager" decoding="async" fetchpriority="high" width="1280" height="1920">
       </div>
       <div class="ld-hero__copy">
         <p class="kicker">Partnernetzwerk · Düsseldorf · NRW</p>
         <h1>Alles aus <em>einer Hand.</em></h1>
         <p class="ld-hero__lead">Für Projekte, die über die Fotografie hinausgehen: hochwertige Drucke, Großformat, Werbetechnik, Webdesign, Video und musikalische Begleitung — seriös koordiniert, visuell abgestimmt und über erfahrene Partner in Düsseldorf und NRW umgesetzt.</p>
         <div class="ld-hero__actions">
-          <a class="ld-btn is-primary" href="contact.html">Projekt anfragen</a>
+          <a class="ld-btn is-primary" href="#anfrage">Projekt anfragen</a>
           <a class="ld-btn" href="#overview">Leistungen ansehen</a>
         </div>
+        <p class="ld-hero__lead" style="font-size:13px;max-width:560px;margin-top:14px">Unverbindliche Erstklaerung / Antwort meist innerhalb von 24 Stunden / ein Ansprechpartner fuer Ablauf und Partner.</p>
       </div>
     </section>
 
@@ -242,12 +101,12 @@
           <p>Vom einzelnen Fine-Art-Print bis zur kompletten Markenfläche, Website, Filmproduktion oder Eventbegleitung. Sechs ergänzende Bereiche, ein gemeinsamer visueller Anspruch.</p>
         </div>
         <div class="overview-grid">
-          <a class="overview-tile" href="fotolabor-druck-duesseldorf.html"><img src="assets/services/fea8218e-7546-48ef-8581-2b99bb3cdefe_centered_reduced.webp" alt="Fotobücher und hochwertige Druckprodukte" loading="lazy"><div class="label"><strong>Fotolabor &amp; <em>Druck</em></strong><span>Fine Art</span></div></a>
-          <a class="overview-tile" href="werbetechnik-duesseldorf.html"><img src="assets/services/Catoir_Ramahi-1-32-768x512-1.webp" alt="Präsentationsfläche und Werbetechnik" loading="lazy"><div class="label"><strong>Werbe<em>technik</em></strong><span>Displays</span></div></a>
-          <a class="overview-tile" href="webdesign-seo-duesseldorf.html"><img src="assets/services/portfolio_webp_full_001.webp" alt="Server-Racks als Symbol für Webdesign und SEO" loading="lazy"><div class="label"><strong>Webdesign &amp; <em>SEO</em></strong><span>Online</span></div></a>
-          <a class="overview-tile" href="videografie-duesseldorf.html"><img src="assets/services/portfolio_webp_full_058-1.webp" alt="Professionelle Videokamera bei einer Veranstaltung" loading="lazy"><div class="label"><strong>Video<em>grafie</em></strong><span>Motion</span></div></a>
-          <a class="overview-tile" href="viola-musik-duesseldorf.html"><img src="assets/services/portfolio_webp_full_004-2.webp" alt="Schwarzweiß-Nahaufnahme mehrerer Violinen" loading="lazy"><div class="label"><strong>Viola <em>Musik</em></strong><span>Live</span></div></a>
-          <a class="overview-tile" href="grossformatdruck-duesseldorf.html"><img src="assets/services/Catoir_Ramahi-1-106-768x512-1.webp" alt="Großformatige Schaufensterpräsentation in Düsseldorf" loading="lazy"><div class="label"><strong>Großformat<em>druck</em></strong><span>Präsentation</span></div></a>
+          <a class="overview-tile" href="fotolabor-druck-duesseldorf.html"><img src="assets/services/fea8218e-7546-48ef-8581-2b99bb3cdefe_centered_reduced.webp" alt="Fotobücher und hochwertige Druckprodukte" loading="lazy" width="860" height="603" decoding="async"><div class="label"><strong>Fotolabor &amp; <em>Druck</em></strong><span>Fine Art</span></div></a>
+          <a class="overview-tile" href="werbetechnik-duesseldorf.html"><img src="assets/services/Catoir_Ramahi-1-32-768x512-1.webp" alt="Präsentationsfläche und Werbetechnik" loading="lazy" width="768" height="512" decoding="async"><div class="label"><strong>Werbe<em>technik</em></strong><span>Displays</span></div></a>
+          <a class="overview-tile" href="webdesign-seo-duesseldorf.html"><img src="assets/services/portfolio_webp_full_001.webp" alt="Server-Racks als Symbol für Webdesign und SEO" loading="lazy" width="1280" height="800" decoding="async"><div class="label"><strong>Webdesign &amp; <em>SEO</em></strong><span>Online</span></div></a>
+          <a class="overview-tile" href="videografie-duesseldorf.html"><img src="assets/services/portfolio_webp_full_058-1.webp" alt="Professionelle Videokamera bei einer Veranstaltung" loading="lazy" width="1536" height="1920" decoding="async"><div class="label"><strong>Video<em>grafie</em></strong><span>Motion</span></div></a>
+          <a class="overview-tile" href="viola-musik-duesseldorf.html"><img src="assets/services/portfolio_webp_full_004-2.webp" alt="Schwarzweiß-Nahaufnahme mehrerer Violinen" loading="lazy" width="853" height="1280" decoding="async"><div class="label"><strong>Viola <em>Musik</em></strong><span>Live</span></div></a>
+          <a class="overview-tile" href="grossformatdruck-duesseldorf.html"><img src="assets/services/Catoir_Ramahi-1-106-768x512-1.webp" alt="Großformatige Schaufensterpräsentation in Düsseldorf" loading="lazy" width="768" height="512" decoding="async"><div class="label"><strong>Großformat<em>druck</em></strong><span>Präsentation</span></div></a>
         </div>
       </div>
     </section>
@@ -256,37 +115,37 @@
       <div class="services-list">
         <a class="service" id="fotolabor" href="fotolabor-druck-duesseldorf.html" data-header-theme="light">
           <div class="service-copy"><span class="service-num">01 · Fine Art</span><h3>Fotolabor &amp; <em>Druck.</em></h3><p>In Zusammenarbeit mit einem Druckpartner in Düsseldorf entstehen hochwertige Fotodrucke, Bücher, Leinwände und Spezialmaterialien — von der Motivprüfung über Papier und Oberfläche bis zur finalen Präsentation an Wand, Tisch oder Portfolio.</p><div class="tags"><span class="tag">Fine Art Prints</span><span class="tag">Fotobücher</span><span class="tag">Spezialmaterial</span></div><span class="service-go">Mehr Infos</span></div>
-          <div class="image-set"><figure class="image-card tall print"><img src="assets/services/fea8218e-7546-48ef-8581-2b99bb3cdefe_centered_reduced.webp" alt="Fotobücher und Druckprodukte" loading="lazy"><figcaption class="image-caption">Print · Buch</figcaption></figure><figure class="image-card small"><img src="assets/photos/landschaft.webp" alt="Landschaftsmotiv als möglicher Fine-Art-Druck" loading="lazy"><figcaption class="image-caption">Motiv · Fine Art</figcaption></figure></div>
+          <div class="image-set"><figure class="image-card tall print"><img data-src="assets/services/fea8218e-7546-48ef-8581-2b99bb3cdefe_centered_reduced.webp" alt="Fotobücher und Druckprodukte" loading="lazy" width="860" height="603" decoding="async"><figcaption class="image-caption">Print · Buch</figcaption></figure><figure class="image-card small"><img src="assets/optimized/assets-photos-landschaft-1920.webp" alt="Landschaftsmotiv als möglicher Fine-Art-Druck" loading="lazy" width="1707" height="2560" decoding="async"><figcaption class="image-caption">Motiv · Fine Art</figcaption></figure></div>
         </a>
 
         <a class="service" id="grossformat" href="grossformatdruck-duesseldorf.html" data-header-theme="dark">
           <div class="service-copy"><span class="service-num">02 · Präsentation</span><h3>Großformat<em>druck.</em></h3><p>Für große Auftritte: Poster, Banner, Acrylglasdrucke oder Messesysteme in hochwertiger Qualität — geeignet für Ausstellungen, Autohauspräsentationen, Schaufenster, Messewände und Interior-Lösungen mit klarer Fernwirkung.</p><div class="tags"><span class="tag">Poster</span><span class="tag">Banner</span><span class="tag">Acrylglas</span></div><span class="service-go">Mehr Infos</span></div>
-          <div class="image-set"><figure class="image-card"><img src="assets/services/Catoir_Ramahi-1-106-768x512-1.webp" alt="Großformatige Schaufensterfassade in Düsseldorf" loading="lazy"><figcaption class="image-caption">Fassade</figcaption></figure><figure class="image-card small"><img src="assets/services/catoir_ramahiinuikiim21.jpg" alt="Präsentationsfläche mit großem Display" loading="lazy"><figcaption class="image-caption">Display</figcaption></figure></div>
+          <div class="image-set"><figure class="image-card"><img data-src="assets/services/Catoir_Ramahi-1-106-768x512-1.webp" alt="Großformatige Schaufensterfassade in Düsseldorf" loading="lazy" width="768" height="512" decoding="async"><figcaption class="image-caption">Fassade</figcaption></figure><figure class="image-card small"><img src="assets/services/catoir_ramahiinuikiim21.webp" alt="Präsentationsfläche mit großem Display" loading="lazy" width="1667" height="2500" decoding="async"><figcaption class="image-caption">Display</figcaption></figure></div>
         </a>
 
         <a class="service" id="werbetechnik" href="werbetechnik-duesseldorf.html" data-header-theme="light">
           <div class="service-copy"><span class="service-num">03 · Beschriftung</span><h3>Werbe<em>technik.</em></h3><p>Schaufensterbeklebung, Firmenschilder, Displaylösungen und Raumgrafiken werden gemeinsam mit einem Werbetechnik-Partner geplant und sauber umgesetzt — inklusive Materialwahl, Visualisierung und Montage vor Ort.</p><div class="tags"><span class="tag">Schaufenster</span><span class="tag">Displays</span><span class="tag">Beschilderung</span></div><span class="service-go">Mehr Infos</span></div>
-          <div class="image-set"><figure class="image-card"><img src="assets/services/Catoir_Ramahi-1-32-768x512-1.webp" alt="Moderne Präsentationsfläche mit Produktdisplay" loading="lazy"><figcaption class="image-caption">Displaybau</figcaption></figure><figure class="image-card small"><img src="assets/services/portfolio_webp_full_006-1.webp" alt="Chanel-Schaufensterbeklebung bei Nacht" loading="lazy"><figcaption class="image-caption">Window</figcaption></figure></div>
+          <div class="image-set"><figure class="image-card"><img data-src="assets/services/Catoir_Ramahi-1-32-768x512-1.webp" alt="Moderne Präsentationsfläche mit Produktdisplay" loading="lazy" width="768" height="512" decoding="async"><figcaption class="image-caption">Displaybau</figcaption></figure><figure class="image-card small"><img src="assets/services/portfolio_webp_full_006-1.webp" alt="Chanel-Schaufensterbeklebung bei Nacht" loading="lazy" width="1920" height="1280" decoding="async"><figcaption class="image-caption">Window</figcaption></figure></div>
         </a>
 
         <a class="service" id="webdesign" href="webdesign-seo-duesseldorf.html" data-header-theme="dark">
           <div class="service-copy"><span class="service-num">04 · Online</span><h3>Webdesign &amp; <em>SEO.</em></h3><p>Gemeinsam mit einer Webagentur entstehen moderne Online-Auftritte, die Bildsprache, Performance und Sichtbarkeit verbinden — mit Struktur für Leistungen, lokale Suchanfragen, Referenzen, Blog und einfache Kontaktaufnahme.</p><div class="tags"><span class="tag">Website</span><span class="tag">SEO</span><span class="tag">Performance</span></div><span class="service-go">Mehr Infos</span></div>
-          <div class="image-set"><figure class="image-card screen"><img src="assets/services/screencapture-gr-knospe-de-2025-10-02-23_10_04-scaled.jpg" alt="Website-Design mit Reinigungsszene und Kontaktinformationen" loading="lazy"><figcaption class="image-caption">Website</figcaption></figure><figure class="image-card small"><img src="assets/services/portfolio_webp_full_001.webp" alt="Server-Racks als Symbol für technische Infrastruktur" loading="lazy"><figcaption class="image-caption">Technik</figcaption></figure></div>
+          <div class="image-set"><figure class="image-card screen"><img src="assets/services/screencapture-gr-knospe-de-2025-10-02-23_10_04-scaled.webp" alt="Website-Design mit Reinigungsszene und Kontaktinformationen" loading="lazy" width="1814" height="2560" decoding="async"><figcaption class="image-caption">Website</figcaption></figure><figure class="image-card small"><img data-src="assets/services/portfolio_webp_full_001.webp" alt="Server-Racks als Symbol für technische Infrastruktur" loading="lazy" width="1280" height="800" decoding="async"><figcaption class="image-caption">Technik</figcaption></figure></div>
         </a>
 
         <a class="service" id="viola" href="viola-musik-duesseldorf.html" data-header-theme="light">
           <div class="service-copy"><span class="service-num">05 · Event</span><h3>Viola <em>Musik.</em></h3><p>Musikalische Begleitung für besondere Momente — ob Hochzeit, Firmenfeier oder Event. Live-Musik schafft Atmosphäre, bleibt aber dezent planbar: passend zu Ablauf, Raum, Gästezahl und gewünschter Stimmung.</p><div class="tags"><span class="tag">Hochzeit</span><span class="tag">Event</span><span class="tag">Live-Musik</span></div><span class="service-go">Mehr Infos</span></div>
-          <div class="image-set"><figure class="image-card viola"><img src="assets/services/portfolio_webp_full_254.webp" alt="Violinistin in einem Kleid spielt im Freien" loading="lazy"><figcaption class="image-caption">Performance</figcaption></figure><figure class="image-card small"><img src="assets/services/portfolio_webp_full_004-2.webp" alt="Nahaufnahme von Violinen" loading="lazy"><figcaption class="image-caption">Instrument</figcaption></figure></div>
+          <div class="image-set"><figure class="image-card viola"><img src="assets/services/portfolio_webp_full_254.webp" alt="Violinistin in einem Kleid spielt im Freien" loading="lazy" width="1268" height="1920" decoding="async"><figcaption class="image-caption">Performance</figcaption></figure><figure class="image-card small"><img data-src="assets/services/portfolio_webp_full_004-2.webp" alt="Nahaufnahme von Violinen" loading="lazy" width="853" height="1280" decoding="async"><figcaption class="image-caption">Instrument</figcaption></figure></div>
         </a>
 
         <a class="service" id="videografie" href="videografie-duesseldorf.html" data-header-theme="dark">
           <div class="service-copy"><span class="service-num">06 · Motion</span><h3>Video<em>grafie.</em></h3><p>Professionelle Videos für Fahrzeuge, Events, Imagekampagnen und Social Media — konzipiert mit fotografischem Blick, klarer Dramaturgie und passenden Exportformaten für Website, Reels, Kampagnen oder Präsentationen.</p><div class="tags"><span class="tag">Imagefilm</span><span class="tag">Event</span><span class="tag">Social Media</span></div><span class="service-go">Mehr Infos</span></div>
-          <div class="image-set"><figure class="image-card"><img src="assets/services/portfolio_webp_full_058-1.webp" alt="Professionelle Videokamera bei einer Veranstaltung" loading="lazy"><figcaption class="image-caption">Kamera</figcaption></figure><figure class="image-card small"><img src="assets/services/portfolio_webp_full_057-1.webp" alt="Performance in rotem Licht" loading="lazy"><figcaption class="image-caption">Event</figcaption></figure></div>
+          <div class="image-set"><figure class="image-card"><img data-src="assets/services/portfolio_webp_full_058-1.webp" alt="Professionelle Videokamera bei einer Veranstaltung" loading="lazy" width="1536" height="1920" decoding="async"><figcaption class="image-caption">Kamera</figcaption></figure><figure class="image-card small"><img data-src="assets/services/portfolio_webp_full_057-1.webp" alt="Performance in rotem Licht" loading="lazy" width="1280" height="1920" decoding="async"><figcaption class="image-caption">Event</figcaption></figure></div>
         </a>
 
         <a class="service" id="sonder" href="drucke-sonderanfertigungen-duesseldorf.html" data-header-theme="light">
           <div class="service-copy"><span class="service-num">07 · Sonderformat</span><h3>Drucke &amp; <em>Sonderanfertigungen.</em></h3><p>Für Motive, die einen besonderen Ort bekommen sollen: Sonderformate, Materialtests, dekorative Drucklösungen und individuelle Präsentationen werden passend zu Raum, Anlass, Menge, Oberfläche und gewünschter Wirkung geplant.</p><div class="tags"><span class="tag">Sonderformate</span><span class="tag">Materialtest</span><span class="tag">Interior</span></div><span class="service-go">Mehr Infos</span></div>
-          <div class="image-set"><figure class="image-card"><img src="assets/photos/portrait-warm.webp" alt="Portraitmotiv als hochwertiger Druck" loading="lazy"><figcaption class="image-caption">Motiv</figcaption></figure><figure class="image-card small"><img src="assets/photos/automobil-sunset.webp" alt="Automobilmotiv als Präsentationsdruck" loading="lazy"><figcaption class="image-caption">Format</figcaption></figure></div>
+          <div class="image-set"><figure class="image-card"><img src="assets/photos/portrait-warm.webp" alt="Portraitmotiv als hochwertiger Druck" loading="lazy" width="1600" height="2560" decoding="async"><figcaption class="image-caption">Motiv</figcaption></figure><figure class="image-card small"><img src="assets/optimized/assets-photos-automobil-sunset-1920.webp" alt="Automobilmotiv als Präsentationsdruck" loading="lazy" width="1920" height="1280" decoding="async"><figcaption class="image-caption">Format</figcaption></figure></div>
         </a>
       </div>
     </section>
@@ -303,15 +162,14 @@
       </div>
     </section>
 
-    <section class="final" id="kontakt" data-header-theme="light" aria-label="Projekt anfragen">
-      <p class="kicker">Nächster Schritt</p>
-      <h2>Projekt <em>kurz anfragen.</em></h2>
-      <p>Schreiben Sie kurz, welche Leistung Sie interessiert, wo das Projekt stattfindet und welchen Zeitraum Sie planen.</p>
-      <div class="actions">
-        <a class="ld-btn is-primary" href="contact.html">Kontakt öffnen</a>
-        <a class="ld-btn" href="tel:+4917642449858">Anrufen</a>
-      </div>
-    </section>
+    <section
+      id="anfrage"
+      data-contact-section
+      data-header-theme="light"
+      data-contact-subject="Anfrage weitere Dienstleistungen"
+      data-contact-headline="Projekt <em>kurz anfragen.</em>"
+      data-contact-lead="Schreiben Sie kurz, welche Leistung Sie interessiert, wo das Projekt stattfindet und welchen Zeitraum Sie planen. Ein grober Rahmen reicht fuer den ersten Schritt."
+    ></section>
   </main>
 
   <footer class="mr-footer" data-header-theme="dark" aria-label="Website Footer">

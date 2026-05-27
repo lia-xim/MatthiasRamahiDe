@@ -1,0 +1,150 @@
+---
+import LegacyFooter from './LegacyFooter.astro'
+import LegacyHeader from './LegacyHeader.astro'
+import LegacyHero from './LegacyHero.astro'
+import PreviewToolbar from '../PreviewToolbar.astro'
+import { getComponentizedLegacyParts, getLegacyHomeParts } from '../../lib/legacyParts'
+import {
+  getLegacyBackedDoc,
+  imageUrl,
+  routeForDoc,
+  toAbsoluteSiteUrl,
+  type PayloadDoc,
+  type PayloadMedia,
+} from '../../lib/payload'
+
+type PreviewState = {
+  collection: string
+  publishedHref: string
+  slug: string
+  status?: string
+}
+
+const {
+  docOverride,
+  legacyFile: providedLegacyFile,
+  preview,
+} = Astro.props as { docOverride?: PayloadDoc; legacyFile?: string; preview?: PreviewState }
+
+const overrideLegacyFile = docOverride?.legacy?.sourceFile
+const legacyFile = providedLegacyFile || overrideLegacyFile || 'index.html'
+
+const shouldLookupCmsDoc = import.meta.env.ASTRO_DISABLE_LEGACY_CMS_LOOKUP !== 'true'
+const cmsDoc = docOverride || (shouldLookupCmsDoc ? await getLegacyBackedDoc(legacyFile, { depth: 2 }) : null)
+const cmsLegacy = cmsDoc?.legacy
+const hasPayloadRender = Boolean(cmsLegacy?.renderedBodyHtml)
+const isHome = legacyFile === 'index.html'
+const homeParts = !hasPayloadRender && isHome ? await getLegacyHomeParts() : null
+const legacyParts = !hasPayloadRender && !isHome ? await getComponentizedLegacyParts(legacyFile) : null
+let head = withCmsSeo(cmsLegacy?.renderedHeadHtml || homeParts?.head || legacyParts?.head || '', cmsDoc, legacyFile)
+if (preview) head = upsertMeta(head, 'name:robots', 'noindex,nofollow')
+const bodyClass = cmsLegacy?.bodyClass || legacyParts?.bodyClass || 'has-mr-footer'
+const afterFooter = cmsLegacy?.afterFooterHtml || homeParts?.afterFooter || legacyParts?.afterFooter || ''
+const pageContent = cmsLegacy?.renderedBodyHtml || legacyParts?.pageContent || ''
+const current = cmsLegacy?.headerCurrent || legacyParts?.current
+
+function escapeAttribute(value: string) {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+}
+
+function upsertTitle(headHtml: string, title?: string) {
+  if (!title) return headHtml
+  const tag = `<title>${escapeAttribute(title)}</title>`
+  return /<title[^>]*>[\s\S]*?<\/title>/i.test(headHtml)
+    ? headHtml.replace(/<title[^>]*>[\s\S]*?<\/title>/i, tag)
+    : `${headHtml}\n${tag}`
+}
+
+function upsertMeta(headHtml: string, selector: string, value?: string) {
+  if (!value) return headHtml
+  const escaped = escapeAttribute(value)
+  const [kind, name] = selector.split(':')
+  const attrName = kind === 'property' ? 'property' : 'name'
+  const pattern = new RegExp(`<meta\\s+${attrName}=["']${name}["'][^>]*>`, 'i')
+  const tag = `<meta ${attrName}="${name}" content="${escaped}" />`
+  return pattern.test(headHtml) ? headHtml.replace(pattern, tag) : `${headHtml}\n${tag}`
+}
+
+function upsertCanonical(headHtml: string, value?: string) {
+  if (!value) return headHtml
+  const tag = `<link rel="canonical" href="${escapeAttribute(value)}" />`
+  return /<link\s+rel=["']canonical["'][^>]*>/i.test(headHtml)
+    ? headHtml.replace(/<link\s+rel=["']canonical["'][^>]*>/i, tag)
+    : `${headHtml}\n${tag}`
+}
+
+function withCmsSeo(headHtml: string, doc: PayloadDoc | null, legacyFile: string) {
+  if (!doc?.seo) return headHtml
+
+  const seoTitle = doc.seo.title || doc.title
+  const description = doc.seo.description || doc.excerpt || doc.intro
+  const canonical = toAbsoluteSiteUrl(doc.seo.canonicalUrl || (doc.slug ? routeForDoc('site-pages', doc) : legacyFile))
+  const socialImage = imageUrl(
+    (doc.seo.ogImage || doc.coverImage || doc.heroImage || doc.teaserImage) as PayloadMedia | string | undefined,
+    'hero',
+  )
+
+  let nextHead = upsertTitle(headHtml, seoTitle)
+  nextHead = upsertMeta(nextHead, 'name:description', description)
+  nextHead = upsertCanonical(nextHead, canonical)
+  nextHead = upsertMeta(nextHead, 'property:og:title', seoTitle)
+  nextHead = upsertMeta(nextHead, 'property:og:description', description)
+  nextHead = upsertMeta(nextHead, 'property:og:url', canonical)
+  nextHead = upsertMeta(nextHead, 'name:twitter:title', seoTitle)
+  nextHead = upsertMeta(nextHead, 'name:twitter:description', description)
+  if (socialImage) {
+    nextHead = upsertMeta(nextHead, 'property:og:image', socialImage)
+    nextHead = upsertMeta(nextHead, 'name:twitter:image', socialImage)
+  }
+  if (doc.seo.noIndex) {
+    nextHead = upsertMeta(nextHead, 'name:robots', 'noindex,nofollow')
+  }
+
+  return nextHead
+}
+---
+<!doctype html>
+<html lang="de">
+  <head>
+    <Fragment set:html={head} />
+  </head>
+  <body class={bodyClass}>
+    {hasPayloadRender ? (
+      <>
+        <LegacyHeader current={current} />
+        {preview && (
+          <PreviewToolbar
+            collection={preview.collection}
+            slug={preview.slug}
+            status={preview.status}
+            publishedHref={preview.publishedHref}
+          />
+        )}
+        <Fragment set:html={pageContent} />
+        <LegacyFooter />
+        <Fragment set:html={afterFooter} />
+      </>
+    ) : homeParts ? (
+      <>
+        <LegacyHeader current="home" ctaHref="#anfrage" />
+        <main>
+          <LegacyHero />
+          <Fragment set:html={homeParts.mainAfterHero} />
+        </main>
+        <LegacyFooter />
+        <Fragment set:html={afterFooter} />
+      </>
+    ) : legacyParts ? (
+      <>
+        <LegacyHeader current={legacyParts.current} />
+        <Fragment set:html={legacyParts.pageContent} />
+        <LegacyFooter />
+        <Fragment set:html={afterFooter} />
+      </>
+    ) : null}
+  </body>
+</html>

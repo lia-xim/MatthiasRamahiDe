@@ -1,0 +1,313 @@
+/* =========================================================
+   ueber-mich.html — page-specific overrides
+   Canonical patterns (.ovh, .statement, .chapters, .chapter,
+   .services-sec, .service-row, .about, footer chrome) come
+   from site-chrome.css + legacy-inline-14e7cfb53e30.css +
+   legacy-index.css. This file ONLY defines the two patterns
+   unique to this page: WERTE (was nicht passiert) and SISTER
+   (Sophia Ramahi colophon). Plus a few light tweaks.
+   ========================================================= */
+
+/* -----------------------------------------------------------
+   OVH hero — small page-specific framing tweaks only.
+   The base .ovh comes from legacy-inline-14e7cfb53e30.css.
+   ----------------------------------------------------------- */
+.ovh--ueber .ovh__photo {
+  /* Center the studio portrait around the face area */
+  background-position: center 28%;
+}
+.ovh--ueber .ovh__title .line:nth-child(2) .word {
+  /* canonical em-color (steel/sage) for the accent word */
+  color: #c8ccc6;
+}
+
+/* =========================================================
+   WERTE — "Was hier nicht passiert" (signature voice block)
+   ========================================================= */
+.values {
+  background: var(--paper, #f3f5ef);
+  color: var(--ink, #0a0c11);
+  padding: clamp(86px, 12vw, 160px) clamp(28px, 5vw, 84px);
+  position: relative;
+}
+.values-grid {
+  max-width: 1540px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(40px, 6vw, 120px);
+  align-items: start;
+}
+.values-head {
+  position: sticky;
+  top: calc(72px + 24px);
+  display: grid;
+  gap: 18px;
+  align-content: start;
+}
+.values-head .kicker {
+  margin: 0;
+  font: 700 10px/1 var(--font-mono, 'JetBrains Mono', monospace);
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: color-mix(in oklch, var(--ink, #0a0c11) 56%, transparent);
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+.values-head .kicker::before {
+  content: "";
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background: currentColor;
+  opacity: .65;
+}
+.values-head h2 {
+  margin: 0;
+  font-family: var(--font-display, 'Neue Haas Grotesk Display'), 'Söhne', 'Avenir Next', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-size: clamp(44px, 6.4vw, 108px);
+  line-height: .92;
+  letter-spacing: -.045em;
+  text-transform: uppercase;
+  color: var(--ink, #0a0c11);
+  text-wrap: balance;
+}
+.values-head h2 em {
+  font-style: normal;
+  font-weight: 600;
+  color: #7a8a86; /* canonical steel/sage em-accent */
+  letter-spacing: -.045em;
+}
+.values-note {
+  margin: 6px 0 0;
+  max-width: 36ch;
+  color: color-mix(in oklch, var(--ink, #0a0c11) 62%, transparent);
+  font-size: clamp(14px, 1.05vw, 16.5px);
+  line-height: 1.6;
+}
+.values-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid rgba(10, 12, 17, .14);
+}
+.values-item {
+  display: grid;
+  grid-template-columns: minmax(72px, 96px) minmax(0, 1fr);
+  gap: clamp(20px, 3vw, 48px);
+  padding: clamp(24px, 4vw, 44px) 0;
+  border-bottom: 1px solid rgba(10, 12, 17, .14);
+  align-items: baseline;
+}
+.values-item__no {
+  font: 700 10px/1 var(--font-mono, 'JetBrains Mono', monospace);
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: color-mix(in oklch, var(--ink, #0a0c11) 50%, transparent);
+  padding-top: 6px;
+}
+.values-item__body { display: grid; gap: 6px; min-width: 0; }
+.values-item__claim {
+  margin: 0;
+  font-family: var(--font-display, 'Neue Haas Grotesk Display'), 'Söhne', Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  font-size: clamp(22px, 2.6vw, 38px);
+  line-height: 1.05;
+  letter-spacing: -.022em;
+  color: var(--ink, #0a0c11);
+}
+.values-item__note {
+  margin: 0;
+  font-size: clamp(14px, 1.05vw, 16.5px);
+  line-height: 1.6;
+  color: color-mix(in oklch, var(--ink, #0a0c11) 68%, transparent);
+  max-width: 58ch;
+  text-wrap: pretty;
+}
+
+@media (max-width: 880px) {
+  .values-grid { grid-template-columns: 1fr; gap: clamp(28px, 5vw, 56px); }
+  .values-head { position: static; }
+  .values-item { grid-template-columns: 60px minmax(0, 1fr); gap: 20px; }
+}
+
+/* =========================================================
+   SISTER — Sophia Ramahi colophon (editorial recommendation)
+   Two-column: copy left, typographic name-plate right.
+   No card chrome — sharp edges, hairline border only.
+   ========================================================= */
+.sister {
+  background: var(--paper, #f3f5ef);
+  color: var(--ink, #0a0c11);
+  padding: clamp(86px, 12vw, 160px) clamp(28px, 5vw, 84px);
+}
+.sister-grid {
+  max-width: 1540px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(40px, 7vw, 120px);
+  align-items: start;
+}
+.sister-copy {
+  display: grid;
+  gap: 22px;
+  min-width: 0;
+}
+.sister-copy .kicker {
+  margin: 0;
+  font: 700 10px/1 var(--font-mono, 'JetBrains Mono', monospace);
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: color-mix(in oklch, var(--ink, #0a0c11) 56%, transparent);
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+.sister-copy .kicker::before {
+  content: "";
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background: currentColor;
+  opacity: .65;
+}
+.sister-copy h2 {
+  margin: 0;
+  font-family: var(--font-display, 'Neue Haas Grotesk Display'), 'Söhne', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-size: clamp(42px, 6vw, 92px);
+  line-height: .94;
+  letter-spacing: -.04em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+.sister-copy h2 em {
+  font-style: normal;
+  font-weight: 600;
+  color: #7a8a86;
+  letter-spacing: -.04em;
+}
+.sister-copy .lead {
+  margin: 0;
+  font-size: clamp(16px, 1.3vw, 21px);
+  line-height: 1.55;
+  color: var(--ink, #0a0c11);
+  max-width: 60ch;
+  text-wrap: pretty;
+}
+.sister-copy p:not(.kicker):not(.lead) {
+  margin: 0;
+  font-size: clamp(15px, 1.1vw, 17.5px);
+  line-height: 1.65;
+  color: color-mix(in oklch, var(--ink, #0a0c11) 70%, transparent);
+  max-width: 58ch;
+}
+.sister-copy .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
+
+/* Sophia name-plate — editorial colophon, NOT a card */
+.sister-plate {
+  border-top: 1px solid rgba(10, 12, 17, .22);
+  border-bottom: 1px solid rgba(10, 12, 17, .22);
+  padding: clamp(28px, 4vw, 52px) clamp(20px, 3vw, 36px);
+  display: grid;
+  gap: 18px;
+  background: transparent; /* no fill, no shadow, no radius */
+}
+.sister-plate__tag {
+  margin: 0;
+  font: 700 10px/1 var(--font-mono, 'JetBrains Mono', monospace);
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: color-mix(in oklch, var(--ink, #0a0c11) 55%, transparent);
+}
+.sister-plate__name {
+  margin: 0;
+  font-family: var(--font-display, 'Neue Haas Grotesk Display'), 'Söhne', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-size: clamp(40px, 5.4vw, 84px);
+  line-height: .92;
+  letter-spacing: -.038em;
+  text-transform: uppercase;
+  color: var(--ink, #0a0c11);
+}
+.sister-plate__name em {
+  font-style: normal;
+  font-weight: 600;
+  color: #7a8a86;
+}
+.sister-plate__roles {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+.sister-plate__roles li {
+  font: 700 10px/1.3 var(--font-mono, 'JetBrains Mono', monospace);
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: color-mix(in oklch, var(--ink, #0a0c11) 65%, transparent);
+  padding-left: 20px;
+  position: relative;
+}
+.sister-plate__roles li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 12px;
+  height: 1px;
+  background: currentColor;
+  opacity: .55;
+}
+.sister-plate__loc {
+  margin: 0;
+  font: 700 10px/1.4 var(--font-mono, 'JetBrains Mono', monospace);
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: color-mix(in oklch, var(--ink, #0a0c11) 55%, transparent);
+}
+
+@media (max-width: 880px) {
+  .sister-grid { grid-template-columns: 1fr; gap: clamp(32px, 5vw, 56px); }
+}
+
+/* =========================================================
+   ABLAUF — small tweak: services-sec on dark theme
+   The .services-sec class in legacy-index.css is light-only.
+   Add a dark-theme variant for the Ablauf section.
+   ========================================================= */
+.services-sec.sec-dark {
+  background: #07090d;
+  color: #f3f5ef;
+  padding: clamp(86px, 12vw, 160px) clamp(28px, 5vw, 84px);
+}
+.services-sec.sec-dark .services-head h2 { color: #f3f5ef; }
+.services-sec.sec-dark .services-head h2 em { color: #c8ccc6; }
+.services-sec.sec-dark .services-head .lead { color: rgba(243, 245, 239, .72); }
+.services-sec.sec-dark .services-list { border-top: 1px solid rgba(243, 245, 239, .14); }
+.services-sec.sec-dark .service-row {
+  border-bottom: 1px solid rgba(243, 245, 239, .14);
+  color: #f3f5ef;
+  cursor: default; /* not a link on this page */
+}
+.services-sec.sec-dark .service-row:hover { padding-left: 0; background: transparent; }
+.services-sec.sec-dark .service-row .num {
+  color: rgba(243, 245, 239, .55);
+}
+.services-sec.sec-dark .service-row h3 { color: #f3f5ef; }
+.services-sec.sec-dark .service-row p { color: rgba(243, 245, 239, .72); }
+.services-sec.sec-dark .service-row .arr { color: rgba(243, 245, 239, .42); }
+
+/* Reduced motion: collapse hero entrance, hold final state */
+@media (prefers-reduced-motion: reduce) {
+  .ovh.is-in .ovh__lead,
+  .ovh.is-in .ovh__actions {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}

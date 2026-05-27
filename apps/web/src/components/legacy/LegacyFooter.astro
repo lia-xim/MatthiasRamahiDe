@@ -1,0 +1,85 @@
+---
+import legacyContent, { type LegacyFooterColumn } from '../../data/legacyContent'
+import { getFooter, linkAttributes, toRootRelativeHref } from '../../lib/payload'
+
+const { brand, footer: fallbackFooter } = legacyContent
+const cmsFooter = await getFooter()
+const columns = (cmsFooter?.columns?.length
+  ? cmsFooter.columns.map((column, index) => ({
+      id: column.label?.toLowerCase().replace(/[^a-z0-9]+/g, '-') || `col-${index}`,
+      label: column.label || '',
+      links: column.links || [],
+    }))
+  : fallbackFooter.columns) as LegacyFooterColumn[]
+const statement = cmsFooter?.statement || fallbackFooter.statement
+const statementHighlight = cmsFooter?.statementHighlight || fallbackFooter.statementHighlight
+const statementParts =
+  statementHighlight && statement.includes(statementHighlight)
+    ? statement.split(statementHighlight)
+    : [fallbackFooter.statementPrefix, fallbackFooter.statementSuffix]
+const studioLink = cmsFooter?.studioLink?.href ? cmsFooter.studioLink : fallbackFooter.studioLink
+const email = cmsFooter?.email || fallbackFooter.email
+const phone = cmsFooter?.phone || fallbackFooter.phone
+const phoneHref = `tel:${phone.replace(/[^\d+]/g, '')}`
+const locationLabel = cmsFooter?.locationLabel || fallbackFooter.locationLabel
+const copyright = cmsFooter?.copyright || fallbackFooter.copyright
+const socialLinks = cmsFooter?.socialLinks?.length ? cmsFooter.socialLinks : fallbackFooter.socialLinks
+const legalLinks = cmsFooter?.legalLinks?.length ? cmsFooter.legalLinks : fallbackFooter.legalLinks
+---
+<footer class="mr-footer" data-header-theme="dark" aria-label="Website Footer">
+  <div class="mr-footer__hairline" aria-hidden="true"></div>
+  <div class="mr-footer__inner">
+    <section class="mr-footer__top" aria-label="Studio">
+      <a class="mr-footer__mark" href={toRootRelativeHref(brand.href)} aria-label="Zurueck zur Startseite">
+        {brand.lines[0]}<span>{brand.lines[1]}</span>
+      </a>
+      <div class="mr-footer__claim">
+        <p>{statementParts[0]}<em>{statementHighlight}</em>{statementParts.slice(1).join(statementHighlight)}</p>
+        <div class="mr-footer__meta" aria-label="Studio">
+          <a href={toRootRelativeHref(studioLink.href)}>{studioLink.label} &nbsp;&rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <nav class="mr-footer__cols" aria-label="Footer Sitemap">
+      {columns.map((column) => (
+        <div class="mr-footer__col" aria-labelledby={`ftr-${column.id}`}>
+          <span class="mr-footer__col-label" id={`ftr-${column.id}`}>{column.label}</span>
+          <div class="mr-footer__col-list">
+            {column.links.map((link) => link.href && <a {...linkAttributes(link)}>{link.label}</a>)}
+          </div>
+        </div>
+      ))}
+
+      <div class="mr-footer__col" aria-labelledby="ftr-kontakt">
+        <span class="mr-footer__col-label" id="ftr-kontakt">Direkt</span>
+        <div class="mr-footer__contact">
+          <div class="mr-footer__contact-line">
+            <span>E-Mail</span>
+            <a href={`mailto:${email}`}>{email}</a>
+          </div>
+          <div class="mr-footer__contact-line">
+            <span>Telefon</span>
+            <a href={phoneHref}>{phone}</a>
+          </div>
+          <div class="mr-footer__contact-line">
+            <span>Studio</span>
+            <strong>{locationLabel}</strong>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="mr-footer__base">
+      <span class="mr-footer__base-left">{copyright}</span>
+      <span class="mr-footer__base-center">
+        {socialLinks.map((link) => (
+          <a {...linkAttributes({ ...link, openInNewTab: true })} aria-label={(link as { platform?: string }).platform}>{link.label}</a>
+        ))}
+      </span>
+      <span class="mr-footer__base-right">
+        {legalLinks.map((link) => link.href && <a {...linkAttributes(link)}>{link.label}</a>)}
+      </span>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,271 @@
+---
+import ResponsiveImage from './ResponsiveImage.astro'
+import { imageAlt, imageUrl, type PayloadMedia } from '../lib/payload'
+
+type RichText = {
+  root?: {
+    children?: Array<{
+      children?: Array<{ text?: string }>
+    }>
+  }
+}
+
+type ImageSequenceItem = {
+  image?: PayloadMedia | string
+  caption?: string
+  cropIntent?: string
+}
+
+type FaqItem = { question?: string; answer?: string }
+type LinkItem = { label?: string; href?: string; description?: string }
+type ClientLogoItem = {
+  logo?: PayloadMedia | string
+  name?: string
+  href?: string
+}
+
+type ContentBlock =
+  | { blockType: 'textBlock'; eyebrow?: string; headline?: string; body?: RichText }
+  | { blockType: 'imageSequence'; headline?: string; layout?: string; items?: ImageSequenceItem[] }
+  | { blockType: 'quoteBlock'; quote?: string; attribution?: string }
+  | { blockType: 'faqBlock'; headline?: string; items?: FaqItem[] }
+  | { blockType: 'linkList'; headline?: string; links?: LinkItem[] }
+  | { blockType: 'ctaBlock'; headline?: string; text?: string; buttonLabel?: string; emailSubject?: string }
+  | {
+      blockType: 'clientLogosStrip'
+      eyebrow?: string
+      note?: string
+      tone?: 'surface' | 'paper'
+      items?: ClientLogoItem[]
+    }
+
+const { blocks = [] } = Astro.props as { blocks?: ContentBlock[] }
+
+const richTextToPlainText = (body?: RichText) =>
+  body?.root?.children
+    ?.map((node) => node.children?.map((child) => child.text).filter(Boolean).join(' ') || '')
+    .filter(Boolean)
+    .join('\n\n') || ''
+---
+{
+  blocks.map((block: ContentBlock) => {
+    if (block.blockType === 'textBlock') {
+      return (
+        <section class="container" style="padding: clamp(58px, 8vw, 120px) 0;">
+          {block.eyebrow && <p class="eyebrow">{block.eyebrow}</p>}
+          {block.headline && <h2 class="display" style="font-size: clamp(42px, 8vw, 124px); margin: 14px 0 24px;">{block.headline}</h2>}
+          <p class="copy" style="max-width: 62rem; font-size: clamp(18px, 1.8vw, 24px); white-space: pre-line;">{richTextToPlainText(block.body)}</p>
+        </section>
+      )
+    }
+
+    if (block.blockType === 'imageSequence') {
+      return (
+        <section class="container" style="padding: clamp(42px, 6vw, 96px) 0;">
+          {block.headline && <p class="eyebrow" style="margin-bottom: 18px;">{block.headline}</p>}
+          <div class="card-grid">
+            {(block.items ?? []).map((item: ImageSequenceItem) => (
+              <article class="card" style="padding: 0; min-height: 0;">
+                <ResponsiveImage media={item.image} size="card" fallback="Bild aus CMS" />
+                {item.caption && <p class="copy" style="padding: 18px;">{item.caption}</p>}
+              </article>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    if (block.blockType === 'quoteBlock') {
+      return (
+        <section class="container" style="padding: clamp(64px, 10vw, 150px) 0;">
+          <blockquote class="display" style="font-size: clamp(40px, 7vw, 112px); margin: 0;">„{block.quote}“</blockquote>
+          {block.attribution && <p class="eyebrow" style="margin-top: 20px;">{block.attribution}</p>}
+        </section>
+      )
+    }
+
+    if (block.blockType === 'faqBlock') {
+      return (
+        <section class="container" style="padding: clamp(54px, 8vw, 120px) 0;">
+          {block.headline && <h2 class="display" style="font-size: clamp(38px, 6vw, 96px); margin: 0 0 28px;">{block.headline}</h2>}
+          <div class="stack-list">
+            {(block.items ?? []).map((item: FaqItem) => (
+              <article class="stack-item">
+                <h3>{item.question}</h3>
+                <p class="copy">{item.answer}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    if (block.blockType === 'linkList') {
+      return (
+        <section class="container" style="padding: clamp(54px, 8vw, 120px) 0;">
+          {block.headline && <p class="eyebrow" style="margin-bottom: 18px;">{block.headline}</p>}
+          <div class="stack-list">
+            {(block.links ?? []).map((link: LinkItem) => (
+              <a class="stack-item" href={link.href || '#'}>
+                <h3>{link.label}</h3>
+                {link.description && <p class="copy">{link.description}</p>}
+              </a>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    if (block.blockType === 'ctaBlock') {
+      return (
+        <section class="container" style="padding: clamp(54px, 8vw, 120px) 0;">
+          <div class="card" style="background: var(--paper); color: var(--paper-ink); min-height: 320px;">
+            <p class="eyebrow" style="color: color-mix(in oklch, var(--paper-ink) 58%, transparent);">Anfrage</p>
+            <h2 class="display" style="font-size: clamp(42px, 7vw, 116px); margin: 12px 0 24px;">{block.headline}</h2>
+            {block.text && <p class="copy" style="color: color-mix(in oklch, var(--paper-ink) 64%, transparent); max-width: 48rem;">{block.text}</p>}
+            <a class="button is-accent" style="width: max-content; margin-top: 28px;" href="/kontakt#anfrage">{block.buttonLabel || 'Projekt anfragen'}</a>
+            <p class="copy" style="margin-top: 14px; color: color-mix(in oklch, var(--paper-ink) 58%, transparent);">Unverbindlich. Antwort meist innerhalb von 24 Stunden.</p>
+          </div>
+        </section>
+      )
+    }
+
+    if (block.blockType === 'clientLogosStrip') {
+      const tone = block.tone === 'paper' ? 'paper' : 'surface'
+      const items = (block.items ?? []).filter((item) => item.logo)
+      if (items.length === 0) return null
+      return (
+        <section class={`client-logos client-logos--${tone}`} aria-label={block.eyebrow || 'Kunden & Magazine'}>
+          <div class="container client-logos__inner">
+            <header class="client-logos__head">
+              <span class="eyebrow client-logos__eyebrow">{block.eyebrow || 'Kunden & Magazine'}</span>
+              {block.note && <span class="eyebrow client-logos__note">{block.note}</span>}
+            </header>
+            <ul class="client-logos__row" role="list">
+              {items.map((item) => {
+                const src = imageUrl(item.logo, 'card')
+                const alt = imageAlt(item.logo, item.name || '')
+                const label = item.name || alt || ''
+                const inner = src ? (
+                  <img src={src} alt={label} loading="lazy" decoding="async" />
+                ) : (
+                  <span class="client-logos__name">{label || 'Logo folgt'}</span>
+                )
+                return (
+                  <li class="client-logos__item">
+                    {item.href ? (
+                      <a href={item.href} rel="noopener noreferrer" target="_blank" title={label} aria-label={label}>
+                        {inner}
+                      </a>
+                    ) : (
+                      <span title={label} aria-label={label}>{inner}</span>
+                    )}
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
+        </section>
+      )
+    }
+
+    return null
+  })
+}
+
+<style>
+  .client-logos {
+    padding: clamp(40px, 6vw, 88px) 0;
+  }
+  .client-logos--surface {
+    background: var(--bg);
+    color: var(--fg);
+  }
+  .client-logos--paper {
+    background: var(--paper);
+    color: var(--paper-ink);
+  }
+  .client-logos__inner {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding-top: clamp(28px, 4vw, 48px);
+    padding-bottom: clamp(28px, 4vw, 48px);
+  }
+  .client-logos--paper .client-logos__inner {
+    border-top-color: color-mix(in oklch, var(--paper-ink) 14%, transparent);
+    border-bottom-color: color-mix(in oklch, var(--paper-ink) 14%, transparent);
+  }
+  .client-logos__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 18px;
+    margin-bottom: clamp(22px, 3vw, 38px);
+  }
+  .client-logos__note {
+    color: color-mix(in oklch, var(--muted) 100%, transparent);
+  }
+  .client-logos--paper .client-logos__eyebrow,
+  .client-logos--paper .client-logos__note {
+    color: color-mix(in oklch, var(--paper-ink) 58%, transparent);
+  }
+  .client-logos__row {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: clamp(36px, 5vw, 72px);
+    row-gap: clamp(22px, 3vw, 40px);
+  }
+  .client-logos__item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+  }
+  .client-logos__item > a,
+  .client-logos__item > span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity .35s var(--ease, ease);
+  }
+  .client-logos__item img {
+    display: block;
+    height: clamp(22px, 2.4vw, 34px);
+    width: auto;
+    max-width: 180px;
+    object-fit: contain;
+    filter: grayscale(1) brightness(0) invert(1);
+    opacity: .72;
+    transition: opacity .35s var(--ease, ease);
+  }
+  .client-logos--paper .client-logos__item img {
+    filter: grayscale(1) brightness(0);
+    opacity: .58;
+  }
+  .client-logos__item:hover img,
+  .client-logos__item a:focus-visible img {
+    opacity: 1;
+  }
+  .client-logos__name {
+    font: 700 11px/1 var(--font-mono);
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .client-logos--paper .client-logos__name {
+    color: color-mix(in oklch, var(--paper-ink) 58%, transparent);
+  }
+  @media (max-width: 920px) {
+    .client-logos__row {
+      column-gap: 28px;
+      row-gap: 22px;
+    }
+    .client-logos__item img {
+      height: 20px;
+    }
+  }
+</style>

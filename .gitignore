@@ -5,6 +5,9 @@ apps/*/.env
 .env.local
 
 apps/web/dist/
+apps/web/.visual-regression/
+apps/web/.contact-queue/
+apps/web/public/*.html
 apps/web/public/assets/
 apps/web/public/*.avif
 apps/web/public/*.gif

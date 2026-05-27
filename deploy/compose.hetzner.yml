@@ -1,0 +1,57 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    env_file:
+      - ./production.env
+    environment:
+      POSTGRES_DB: payload
+      POSTGRES_USER: payload
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - internal
+
+  cms:
+    build:
+      context: ..
+      dockerfile: apps/cms/Dockerfile
+    restart: unless-stopped
+    env_file:
+      - ./production.env
+    depends_on:
+      - postgres
+    volumes:
+      - payload-media:/app/apps/cms/media
+    networks:
+      - internal
+      - proxy
+    ports:
+      - "127.0.0.1:3000:3000"
+
+  web:
+    build:
+      context: ..
+      dockerfile: apps/web/Dockerfile
+    restart: unless-stopped
+    env_file:
+      - ./production.env
+    depends_on:
+      - cms
+    volumes:
+      - contact-queue:/app/apps/web/.contact-queue
+    networks:
+      - internal
+      - proxy
+    ports:
+      - "127.0.0.1:4321:4321"
+
+volumes:
+  postgres-data:
+  payload-media:
+  contact-queue:
+
+networks:
+  internal:
+    internal: true
+  proxy:

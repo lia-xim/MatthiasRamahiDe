@@ -1,0 +1,59 @@
+---
+import legacyContent from '../../data/legacyContent'
+import { getNavigation, linkAttributes, toRootRelativeHref, type PayloadLink } from '../../lib/payload'
+
+type Props = {
+  current?: string
+  ctaHref?: string
+}
+
+const { current, ctaHref } = Astro.props as Props
+const cmsNavigation = await getNavigation()
+const { brand, navigation: fallbackNavigation } = legacyContent
+const primary = (cmsNavigation?.primary?.length ? cmsNavigation.primary : fallbackNavigation.primary) as PayloadLink[]
+const photographyLinks = (cmsNavigation?.photographyLinks?.length
+  ? cmsNavigation.photographyLinks
+  : fallbackNavigation.photographyLinks) as PayloadLink[]
+const photographyOverview =
+  primary.find((link) => link.label?.toLowerCase() === 'fotografie') || fallbackNavigation.photographyOverview
+const homeLink = primary.find((link) => link.label?.toLowerCase() === 'home') || fallbackNavigation.primary[0]
+const mainLinks = primary.filter((link) => {
+  const label = link.label?.toLowerCase()
+  return label && label !== 'home' && label !== 'fotografie'
+})
+const baseCta = cmsNavigation?.cta?.href ? cmsNavigation.cta : fallbackNavigation.cta
+const cta = ctaHref ? { ...baseCta, href: ctaHref } : baseCta
+const navAttrs = current ? { 'data-current': current } : {}
+---
+<header class="topbar" id="topbar" {...navAttrs}>
+  <a class="brand" href={toRootRelativeHref(brand.href)}>{brand.lines[0]}<br />{brand.lines[1]}</a>
+  <nav class="topbar__nav" aria-label="Hauptnavigation">
+    <a {...linkAttributes({ ...homeLink, href: homeLink.href || 'index.html' })} data-nav="home">{homeLink.label || 'Home'}</a>
+    <div class="topbar__group" data-nav="fotografie">
+      <a {...linkAttributes(photographyOverview)} class="topbar__group-toggle" aria-haspopup="true">{photographyOverview.label || 'Fotografie'}</a>
+      <div class="topbar__submenu" role="menu">
+        {photographyLinks.map((link) => link.href && <a {...linkAttributes(link)}>{link.label}</a>)}
+      </div>
+    </div>
+    {mainLinks.map((link) => link.href && <a {...linkAttributes(link)} data-nav={(link as { navKey?: string }).navKey}>{link.label}</a>)}
+  </nav>
+  <a class="topbar__cta" {...linkAttributes(cta)}>{cta.label}</a>
+  <button class="topbar__menu" type="button" aria-label="Menue oeffnen" aria-expanded="false" aria-controls="mobile-menu">
+    <span aria-hidden="true"></span><span aria-hidden="true"></span>
+  </button>
+</header>
+
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <div class="mobile-menu__inner">
+    <a class="mobile-menu__brand" href={toRootRelativeHref(brand.href)}>{brand.label}</a>
+    <nav class="mobile-menu__nav" aria-label="Hauptnavigation mobil">
+      <a {...linkAttributes({ ...homeLink, href: homeLink.href || 'index.html' })} data-nav="home">{homeLink.label || 'Home'}</a>
+      <div class="mobile-menu__group">
+        <a class="mobile-menu__label" {...linkAttributes(photographyOverview)}>{photographyOverview.label || 'Fotografie'}</a>
+        {photographyLinks.map((link) => link.href && <a {...linkAttributes(link)}>{link.label}</a>)}
+      </div>
+      {mainLinks.map((link) => link.href && <a {...linkAttributes(link)} data-nav={(link as { navKey?: string }).navKey}>{link.label}</a>)}
+    </nav>
+    <a class="mobile-menu__cta" {...linkAttributes(cta)}>{(cta as { mobileLabel?: string }).mobileLabel || cta.label}</a>
+  </div>
+</div>

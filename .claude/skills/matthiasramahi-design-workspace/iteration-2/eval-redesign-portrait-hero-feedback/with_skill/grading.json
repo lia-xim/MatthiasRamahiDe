@@ -1,0 +1,23 @@
+{
+  "eval_id": 3,
+  "eval_name": "redesign-portrait-hero-feedback",
+  "config": "with_skill_iter2",
+  "expectations": [
+    { "text": "Response is in German", "passed": true, "evidence": "German throughout." },
+    { "text": "Response references the 5 canonical hero formulas by name", "passed": true, "evidence": "Hero-Formel C (Iris), Hero-Formel B (Ken-Burns Workhorse). Explicitly excludes inventing a 6th." },
+    { "text": "Does NOT recommend lens shader hero", "passed": true, "evidence": "Not recommended." },
+    { "text": "Does NOT recommend filmstrip wipe hero", "passed": true, "evidence": "Not recommended." },
+    { "text": "Does NOT recommend replacing iris with static gradient", "passed": true, "evidence": "Option 4 explicitly flagged as 'Watering down' Failure Mode 1; Option 5 flagged as 'invent a sixth' violation." },
+    { "text": "Mentions prefers-reduced-motion", "passed": true, "evidence": "@media (prefers-reduced-motion:reduce) block with explicit fallback states." },
+    { "text": "Mentions data-theme or data-header-theme", "passed": true, "evidence": "data-theme='dark' data-header-theme='dark' on the section." },
+    { "text": "Includes code skeleton (HTML + CSS)", "passed": true, "evidence": "Full Option 1 skeleton with HTML + scoped CSS." },
+    { "text": "Recommendation justified with design-system anchors", "passed": true, "evidence": "Cites Hero-Formel C signature, Failure Mode 1, and 'don't invent a sixth' rule by name." },
+    { "text": "Code uses var(--ease), clamp(), correct accent for em-text", "passed": true, "evidence": "var(--ease), clamp() throughout. h1 em uses var(--accent-2) (steel) — not red. Container clamp() padding." },
+    { "text": "Code uses ink-fill or ghost CTAs — NO red-filled buttons", "passed": true, "evidence": "btn-ink uses 'background:var(--fg);color:var(--bg)'. btn-ghost uses '1px solid var(--fg)'. NO btn-accent in the skeleton. The response even explicitly warns: 'Roter Hover-Fill auf den CTAs ... nicht zum Site-Rot wechseln. CTAs bleiben Ghost / Ink-Fill.' This was the iter 1 failure mode — now fixed." },
+    { "text": "Tone is advisory and direct", "passed": true, "evidence": "Direct beratungston, no superlatives, no marketing language." }
+  ],
+  "pass_count": 12,
+  "fail_count": 0,
+  "pass_rate": 1.0,
+  "notes": "MAJOR improvement over iter 1. Iter 1 used 'btn-accent' with red background — that violated the just-clarified rule that CTAs are never red-filled. Iter 2 explicitly uses btn-ink/btn-ghost AND warns against switching to red as a hover fill. This is the corrected skill in action: not just better content, but explicit anti-pattern awareness on a specific failure mode the user pointed out."
+}

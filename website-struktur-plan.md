@@ -65,7 +65,7 @@ Der Header soll auf allen Seiten identisch sein. Aktuell sind einige Seiten unte
 7. **Kontakt** → `contact.html`
 
 **CTA rechts:**  
-`Anfrage senden` → `mailto:info@matthiasramahi.de?subject=Projektanfrage`
+`Projekt anfragen` → `contact.html#anfrage`
 
 ### 2.2 Mobile-Header
 
@@ -243,7 +243,7 @@ Die Home ist der klare Einstieg in die Welt von Matthias Ramahi. Sie soll sofort
 - Subline:  
   „Automotive, Portrait, Landschaft und visuelle Produktionen in Düsseldorf / NRW — ruhig kuratiert, technisch sauber und bereit für Web, Print und Kampagne.“
 - CTA 1: `Portfolio ansehen`
-- CTA 2: `Anfrage senden`
+- CTA 2: `Projekt anfragen`
 - Kleine Faktenzeile: `Automobil · Oldtimer · Motorrad · Portrait · Landschaft`
 
 **Look:** Dunkel, cineastisch, mit rotem Akzent und leichter Bildbewegung.

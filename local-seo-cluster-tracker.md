@@ -9,7 +9,7 @@ Stand: 2026-05-25
 - Nur SEO-kritische Inhalte werden lokalisiert: Title, Description, Canonical, Open Graph, JSON-LD, Hero-H1, Hero-Lead, Anfrage-Subject/Headline/Lead.
 - Düsseldorf bleibt die kanonische Hauptseite je Kategorie; Stadt-, NRW- und Deutschlandseiten sind regionale Varianten derselben Art Direction.
 - Keyword-/Synonym-Seiten verwenden ebenfalls die übergeordnete Kategorie als visuelle Vorlage.
-- Die neutralen Übersichtsseiten `fotografie-duesseldorf.html`, `fotografie-nrw.html` und `fotografie-deutschland.html` sind jetzt echte Fotografie-Landingpages: globaler Standard-Header, Portfolio-artiger Hero und sechs eigenständige Themen-Sektionen für Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft.
+- Die neutralen Übersichtsseiten `fotografie-duesseldorf.html`, `fotografie-nrw.html` und `fotografie-deutschland.html` sind echte Fotografie-Landingpages mit globalem Standard-Header, Portfolio-artigem Hero und sechs eigenständigen Themen-Sektionen.
 
 ## Kategorien
 

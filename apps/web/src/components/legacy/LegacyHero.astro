@@ -1,0 +1,27 @@
+---
+import legacyContent from '../../data/legacyContent'
+import { toRootRelativeHref } from '../../lib/payload'
+
+const { hero } = legacyContent.home
+---
+<section class="hero" data-theme="dark" aria-label={hero.ariaLabel} data-title-seq={hero.cycleTitles?.map((lines) => lines.join('|')).join(';')}>
+  <canvas id="hero-shader" aria-hidden="true" data-imgs={hero.images.join(',')}></canvas>
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-aperture" aria-hidden="true"></div>
+  <div class="hero-grid">
+    <div class="hero-stage">
+      <h1 class="hero-title" id="hero-title" data-text-idx="0">
+        {hero.titleLines.map((line) => <span class="line"><span class="word">{line}</span></span>)}
+      </h1>
+      {hero.lead && <p class="hero-lead" id="hero-lead">{hero.lead}</p>}
+      {hero.actions?.length ? (
+        <div class="hero-actions" aria-label="Direkte Aktionen">
+          {hero.actions.map((action) => (
+            <a class={`btn${action.variant === 'primary' ? ' dark' : ''}`} href={toRootRelativeHref(action.href)}>{action.label}</a>
+          ))}
+        </div>
+      ) : null}
+    </div>
+  </div>
+  <div class="hero-cursor" id="hero-cursor" aria-hidden="true"><span class="ring"></span></div>
+</section>

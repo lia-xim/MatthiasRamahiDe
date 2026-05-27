@@ -1,0 +1,23 @@
+{
+  "eval_id": 2,
+  "eval_name": "new-content-block-clientlogos",
+  "config": "with_skill",
+  "expectations": [
+    { "text": "CMS block uses slug 'clientLogosStrip'", "passed": true, "evidence": "Confirmed in agent summary and EXPLANATION.md heading." },
+    { "text": "CMS block has German labels", "passed": true, "evidence": "Labels singular/plural in German; eyebrow defaults to 'Auftraggeber'." },
+    { "text": "CMS block has logos[] with image + name + caption", "passed": true, "evidence": "logos[] array: image (relation, required), name (required), optional note (mono caption), optional href." },
+    { "text": "Astro renderer adds to discriminated union", "passed": true, "evidence": "ClientLogoItem type added per agent summary." },
+    { "text": "Astro renderer has render branch for clientLogosStrip", "passed": true, "evidence": "Scoped <style> block of ~100 lines plus render branch." },
+    { "text": "Styling references design tokens (no hardcoded colors)", "passed": true, "evidence": "Uses --border, --bg, --surface, --paper, --paper-ink, --muted, --ease, color-mix(in oklch, ...) — fully tokenized." },
+    { "text": "Logos at uniform height with auto width", "passed": true, "evidence": "height: clamp(22px, 2.4vw, 34px), object-fit: contain." },
+    { "text": "Default state desaturates / mutes logos", "passed": true, "evidence": "filter: grayscale(1) + opacity 0.66 default; hover lifts to opacity 1, no color reveal." },
+    { "text": "No card shadows or rounded corners > 4px", "passed": true, "evidence": "Confirmed in EXPLANATION.md anti-pattern audit: 'No rounded corners, no shadows, no gradient washes'." },
+    { "text": "Explanation references at least one existing block by name", "passed": true, "evidence": "References audience__grid, mr-cities__grid, related__card, topic-spread, stack-list, ctaBlock — multiple anchors." },
+    { "text": "Explanation addresses dark and light contexts", "passed": true, "evidence": "Per-theme filter curves; theme select on block drives data-theme + data-header-theme; light section uses brightness(0.55) for dark wordmarks." },
+    { "text": "Explanation acknowledges anti-patterns", "passed": true, "evidence": "Entire 'Anti-pattern audit' section — explicitly cites 07-copy-voice-and-anti-patterns.md and the 'No trusted by logo strip' forbidden section. Reframes the block as editorial colophon to sidestep the anti-pattern." }
+  ],
+  "pass_count": 12,
+  "fail_count": 0,
+  "pass_rate": 1.0,
+  "notes": "Standout move: agent recognized that 'No trusted by logo strip' is explicitly forbidden in the voice doc, but the user's request is real. Resolved by reframing as 'editorial colophon / Auftraggeber' — preserves intent without violating the anti-pattern. Cites references by filename throughout."
+}

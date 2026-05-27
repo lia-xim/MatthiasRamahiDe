@@ -3,11 +3,15 @@ import ContentBlocks from '../../components/ContentBlocks.astro'
 import ContactCta from '../../components/ContactCta.astro'
 import ResponsiveImage from '../../components/ResponsiveImage.astro'
 import BaseLayout from '../../layouts/BaseLayout.astro'
-import { getBySlug, listDocuments, routeForDoc } from '../../lib/payload'
+import { getBySlug, internalSitePath, linkAttributes, listDocuments, routeForDoc, toAbsoluteSiteUrl } from '../../lib/payload'
+import { articleJsonLd, breadcrumbJsonLd } from '../../lib/seo'
 
 export const prerender = true
 
 export async function getStaticPaths() {
+  const journalRoutesEnabled =
+    import.meta.env.ASTRO_ENABLE_CMS_JOURNAL_ROUTES === 'true' || import.meta.env.ASTRO_ENABLE_JOURNAL_ROUTES === 'true'
+  if (!import.meta.env.DEV && !journalRoutesEnabled) return []
   const docs = await listDocuments('journal-posts', { limit: 300, sort: '-publishedAt' })
   return docs.map((doc) => ({ params: { slug: doc.slug }, props: { doc } }))
 }
@@ -20,14 +24,29 @@ if (!doc) {
 }
 
 const relatedPages = doc.relatedPages ?? []
+const canonicalUrl = toAbsoluteSiteUrl(doc.seo?.canonicalUrl || routeForDoc('journal-posts', doc))
+const canonicalPath = internalSitePath(canonicalUrl)
+const routePath = internalSitePath(routeForDoc('journal-posts', doc))
+
+if (canonicalPath && routePath && canonicalPath.replace(/\/$/, '') !== routePath.replace(/\/$/, '')) {
+  return Astro.redirect(canonicalPath, 308)
+}
 ---
 <BaseLayout
-  title={doc.seo?.title || `${doc.title} — Journal`}
+  title={doc.seo?.title || `${doc.title} | Journal`}
   description={doc.seo?.description || doc.excerpt || ''}
-  canonicalUrl={doc.seo?.canonicalUrl || routeForDoc('journal-posts', doc)}
+  canonicalUrl={canonicalUrl}
   noIndex={doc.seo?.noIndex}
   ogImage={doc.seo?.ogImage || doc.coverImage}
   ogType="article"
+  jsonLd={[
+    articleJsonLd(doc, canonicalUrl),
+    breadcrumbJsonLd([
+      { name: 'Startseite', url: '/' },
+      { name: 'Journal', url: '/journal' },
+      { name: doc.title || 'Beitrag', url: canonicalUrl },
+    ]),
+  ]}
 >
   <article>
     <section class="hero-stage">
@@ -49,7 +68,7 @@ const relatedPages = doc.relatedPages ?? []
       <section class="container section-pad is-compact">
         <p class="eyebrow">Weiterlesen</p>
         <div class="filter-row">
-          {relatedPages.map((link) => link.href && <a href={link.href}>{link.label}</a>)}
+          {relatedPages.map((link) => link.href && <a {...linkAttributes(link)}>{link.label}</a>)}
         </div>
       </section>
     )}

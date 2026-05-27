@@ -1,0 +1,22 @@
+{
+  "eval_id": 1,
+  "eval_name": "new-seo-subpage-bottrop",
+  "config": "without_skill",
+  "expectations": [
+    { "text": "Page <title> contains 'Motorrad Fotografie Bottrop'", "passed": true, "evidence": "Title swapped per agent summary." },
+    { "text": "<link rel=\"canonical\"> ends in motorrad-fotografie-bottrop.html", "passed": true, "evidence": "Canonical updated per summary." },
+    { "text": "H1 / hero title contains 'Bottrop'", "passed": true, "evidence": "H1 line 2 = 'Bottrop' per summary." },
+    { "text": "Hero lede references Bottrop-specific geography", "passed": true, "evidence": "Lede mentions 'Ruhrgebiet, Innenstadt-Zentrum, Tetraeder, Halde Haniel und alte Zechenflächen' — real Bottrop terms; reuses sibling's full structural pattern." },
+    { "text": "JSON-LD Service.areaServed contains 'Bottrop'", "passed": true, "evidence": "Technical JSON-LD has areaServed=['Bottrop','NRW','Deutschland']. Agent did not flag the sibling bug." },
+    { "text": "Cities grid contains 22 cells with is-active on Bottrop", "passed": true, "evidence": "28 mr-cities__cell matches; Bottrop cell has is-active class and aria-current='page'. Inserted between Gelsenkirchen and Bergisch Gladbach." },
+    { "text": "Contact CTA has data-contact-subject containing 'Bottrop'", "passed": true, "evidence": "data-contact-subject='Motorrad Fotografie Bottrop Anfrage' (line 689 — identical position to with_skill)." },
+    { "text": "Section count matches sibling (±1)", "passed": true, "evidence": "10 <section tags, matches motorrad-fotografie-koeln.html exactly." },
+    { "text": "Page includes search-keywords grid", "passed": true, "evidence": "Preserved per summary." },
+    { "text": "Statement uses exact motorrad topic-fixed headline", "passed": true, "evidence": "'Geschwindigkeit und Leidenschaft' found in file." },
+    { "text": "No marketing-tone copy or superlatives", "passed": true, "evidence": "No matches for the forbidden phrase list." }
+  ],
+  "pass_count": 11,
+  "fail_count": 0,
+  "pass_rate": 1.0,
+  "notes": "Output is structurally and content-wise equivalent to with_skill. Did NOT flag the sibling areaServed bug or the missing .is-active CSS rule. Comparable mechanical execution, less design-system meta-awareness."
+}

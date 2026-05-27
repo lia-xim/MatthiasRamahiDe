@@ -1,0 +1,21 @@
+{
+  "eval_id": 1,
+  "eval_name": "new-seo-subpage-bottrop",
+  "config": "with_skill_iter2",
+  "expectations": [
+    { "text": "Page <title>, canonical, H1, JSON-LD all swapped to Bottrop", "passed": true, "evidence": "All slots updated per scaffold." },
+    { "text": "Hero lede references Bottrop-specific geography", "passed": true, "evidence": "Lede mentions 'Ruhrgebiet, Tetraeder, Halde Haniel und industrielle Hinterhöfe'." },
+    { "text": "JSON-LD Service.areaServed contains 'Bottrop' (and NRW + Deutschland in technical JSON-LD)", "passed": true, "evidence": "Inline JSON-LD: areaServed='Bottrop'. Technical JSON-LD: areaServed=['Bottrop','NRW','Deutschland']. Both consistent. Agent again flagged + fixed the Köln-sibling areaServed='Duesseldorf' clone-bug." },
+    { "text": "Cities grid contains 22+1 cells with is-active on Bottrop", "passed": true, "evidence": "Bottrop inserted between Bochum and Wuppertal (Ruhrgebiet placement). is-active + aria-current='page' on Bottrop cell. 22 canonical cells preserved." },
+    { "text": "Contact CTA has data-contact-subject containing 'Bottrop'", "passed": true, "evidence": "data-contact-subject='Motorrad Fotografie Bottrop Anfrage'." },
+    { "text": "Section count matches sibling", "passed": true, "evidence": "Same anatomy as motorrad-fotografie-koeln.html." },
+    { "text": "Statement uses exact motorrad topic-fixed headline", "passed": true, "evidence": "'Geschwindigkeit und Leidenschaft auf Bildern.' preserved." },
+    { "text": "No marketing-tone copy or superlatives", "passed": true, "evidence": "Clean." },
+    { "text": "Inherited site uses --accent-2 (steel) for H2 em-text", "passed": true, "evidence": "var(--accent-2) for h2 em across statement, modules, audience, related sections — matches the corrected skill posture." },
+    { "text": "No red-filled CTA buttons", "passed": true, "evidence": "Buttons are border-style ghosts or inline anchors with mono caps — no background:var(--accent)." }
+  ],
+  "pass_count": 10,
+  "fail_count": 0,
+  "pass_rate": 1.0,
+  "notes": "Same byte-for-byte parity as iter 1. Difference: agent placed Bottrop between Bochum and Wuppertal (logical Ruhrgebiet adjacency) vs iter 1 which placed it after Oberhausen. Both valid. Agent again caught and consciously fixed the sibling areaServed='Duesseldorf' clone-bug."
+}

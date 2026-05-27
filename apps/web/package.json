@@ -9,7 +9,9 @@
     "prebuild": "node ../../tools/sync-legacy-public.mjs",
     "build": "astro check && astro build",
     "prepreview": "node ../../tools/sync-legacy-public.mjs",
-    "preview": "astro preview --host 0.0.0.0 --port 4321"
+    "preview": "astro preview --host 0.0.0.0 --port 4321",
+    "test:legacy-routes": "node scripts/legacy-route-audit.mjs",
+    "test:visual": "node scripts/visual-regression.mjs"
   },
   "dependencies": {
     "@astrojs/node": "^9.0.0",
@@ -17,6 +19,9 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
+    "pixelmatch": "^7.2.0",
+    "playwright": "^1.60.0",
+    "pngjs": "^7.0.0",
     "typescript": "^5.8.0"
   }
 }

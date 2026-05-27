@@ -1,0 +1,15 @@
+---
+import LegacyPageShell from '../components/legacy/LegacyPageShell.astro'
+import { getLegacyFileForPath } from '../lib/legacy'
+
+export const prerender = false
+
+const legacyFile = Astro.props.legacyFile || getLegacyFileForPath(Astro.url.pathname)
+
+if (!legacyFile) {
+  return new Response('Not found', { status: 404 })
+}
+
+Astro.response.headers.set('cache-control', 'public, max-age=300, stale-while-revalidate=86400')
+---
+<LegacyPageShell legacyFile={legacyFile} />

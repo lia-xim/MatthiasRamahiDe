@@ -1,0 +1,23 @@
+{
+  "eval_id": 2,
+  "eval_name": "new-content-block-clientlogos",
+  "config": "without_skill",
+  "expectations": [
+    { "text": "CMS block uses slug 'clientLogosStrip'", "passed": true, "evidence": "Confirmed in agent summary." },
+    { "text": "CMS block has German labels", "passed": true, "evidence": "'Kundenlogos-Leiste' / 'Kundenlogos-Leisten'." },
+    { "text": "CMS block has logos[] with image + name + caption", "passed": true, "evidence": "items[] with logo (media), name (required, dient als alt), optional href." },
+    { "text": "Astro renderer adds to discriminated union", "passed": true, "evidence": "ContentBlock union variant added." },
+    { "text": "Astro renderer has render branch for clientLogosStrip", "passed": true, "evidence": "Scoped <style> block in EXPLANATION.md describes implementation." },
+    { "text": "Styling references design tokens (no hardcoded colors)", "passed": true, "evidence": "Uses --border, --muted, --font-mono, color-mix(... paper-ink ...). Tokenized." },
+    { "text": "Logos at uniform height with auto width", "passed": true, "evidence": "height: clamp(22px, 2.4vw, 34px), object-fit: contain." },
+    { "text": "Default state desaturates / mutes logos", "passed": true, "evidence": "filter: grayscale(1) brightness(0) invert(1) on dark; grayscale(1) brightness(0) on light; opacity 0.72/0.58 → 1 on hover." },
+    { "text": "No card shadows or rounded corners > 4px", "passed": true, "evidence": "Confirmed in EXPLANATION.md: 'Keine Karten, keine Schatten, keine Rundungen'." },
+    { "text": "Explanation references at least one existing block by name", "passed": true, "evidence": "References stack-list, topic-spread, .eyebrow, .button — pattern names but slightly less varied citation than with_skill." },
+    { "text": "Explanation addresses dark and light contexts", "passed": true, "evidence": "tone Select (surface | paper); per-theme filter curves described." },
+    { "text": "Explanation acknowledges anti-patterns", "passed": false, "evidence": "MISS: Did not flag the 'trusted by' anti-pattern in the voice doc. Default eyebrow is 'Kunden & Magazine' — neutral but still in the trust-badge family. Visually equivalent, but conceptually unchecked: the default copy frames the block as social proof rather than editorial credit." }
+  ],
+  "pass_count": 11,
+  "fail_count": 1,
+  "pass_rate": 0.917,
+  "notes": "Visually arrived at nearly the same solution (monochrome, hairlines, mono eyebrow, GDPR-friendly tones). The miss is conceptual: didn't notice that 'logo strip' is a forbidden section type per voice anti-patterns. The with-skill agent's reframing as 'editorial colophon / Auftraggeber' is the deeper move."
+}

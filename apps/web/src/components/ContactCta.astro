@@ -9,19 +9,98 @@ const headline = cta?.headline || module.headline || 'Projekt anfragen.'
 const text =
   cta?.text ||
   module.text ||
-  'Projektart, Ort, Zeitraum und gewünschte Nutzung reichen für den ersten Schritt.'
-const buttonLabel = cta?.buttonLabel || module.buttonLabel || 'Anfrage per E-Mail senden'
+  'Projektart, Ort und Zeitraum reichen fuer den ersten Schritt. Antwort meist innerhalb von 24 Stunden.'
+const buttonLabel = cta?.buttonLabel || module.buttonLabel || 'Projekt anfragen'
 const subject = cta?.emailSubject || module.emailSubject || 'Projektanfrage'
 ---
-<section class="contact-cta">
+<section class="contact-cta" id="anfrage">
   <div class="container contact-cta__inner">
     <div>
       <p class="eyebrow">{module.eyebrow || 'Anfrage'}</p>
       <h2 class="display">{headline}</h2>
-    </div>
-    <div>
       <p class="copy">{text}</p>
-      <a class="button is-accent" href={`mailto:${email}?subject=${encodeURIComponent(subject)}`}>{buttonLabel}</a>
+      <ul class="contact-cta__proof" aria-label="Anfrage Vorteile">
+        <li>Unverbindliche Erstklaerung</li>
+        <li>Kein Paket-Zwang</li>
+        <li>Direkt mit Matthias</li>
+      </ul>
+      <div class="contact-cta__brief" aria-label="Was fuer die Anfrage reicht">
+        <article>
+          <span>Was reicht?</span>
+          <strong>Motiv, Ziel, Zeitraum</strong>
+          <p>Ein grober Rahmen ist besser als ein perfektes Briefing. Details klaeren wir danach.</p>
+        </article>
+        <article>
+          <span>Was klaeren wir?</span>
+          <strong>Umfang, Nutzung, Ablauf</strong>
+          <p>Location, Bildmenge, Rechte und Timing werden vor dem ersten Termin sortiert.</p>
+        </article>
+        <article>
+          <span>Naechster Schritt</span>
+          <strong>Rueckfrage oder Angebotsrahmen</strong>
+          <p>Du bekommst eine klare Einschaetzung statt einer anonymen Standardantwort.</p>
+        </article>
+      </div>
+      <a class="contact-cta__mail" href={`mailto:${email}?subject=${encodeURIComponent(subject)}`}>{email}</a>
     </div>
+    <form class="contact-cta__form" data-mailto={email} data-subject={subject} data-endpoint="/api/contact" novalidate>
+      <div class="contact-cta__trap" aria-hidden="true">
+        <label>
+          Website
+          <input name="website" tabindex="-1" autocomplete="off" />
+        </label>
+      </div>
+      <div class="contact-cta__row">
+        <label>
+          <span>Name <em>Pflicht</em></span>
+          <input name="name" autocomplete="name" required />
+        </label>
+        <label>
+          <span>E-Mail oder Telefon <em>Pflicht</em></span>
+          <input name="contact" autocomplete="email" inputmode="email" required />
+        </label>
+      </div>
+      <label>
+        <span>Projekt kurz beschreiben <em>Pflicht</em></span>
+        <textarea name="message" required placeholder="Leistung, Ort, Zeitraum und gewuenschte Wirkung reichen fuer den ersten Schritt."></textarea>
+      </label>
+      <details class="contact-cta__details">
+        <summary>Projektangaben ergaenzen <span>Optional</span></summary>
+        <div class="contact-cta__row">
+          <label>
+            <span>Projekt / Motiv <em>Optional</em></span>
+            <input name="project" autocomplete="off" />
+          </label>
+          <label>
+            <span>Zeitraum <em>Optional</em></span>
+            <input name="date" autocomplete="off" placeholder="z. B. KW 24, Juni, offen" />
+          </label>
+        </div>
+        <div class="contact-cta__row">
+          <label>
+            <span>Nutzung <em>Optional</em></span>
+            <select name="use">
+              <option value="">Noch offen</option>
+              <option>Privat</option>
+              <option>Kommerziell</option>
+              <option>Kampagne</option>
+              <option>Editorial</option>
+              <option>Sonstiges</option>
+            </select>
+          </label>
+          <label>
+            <span>Telefon fuer Rueckfragen <em>Optional</em></span>
+            <input name="phone" autocomplete="tel" />
+          </label>
+        </div>
+      </details>
+      <div class="contact-cta__actions">
+        <button class="button is-accent" type="submit">{buttonLabel}</button>
+        <p class="contact-cta__reassurance">Unverbindlich. Antwort meist innerhalb von 24 Stunden.</p>
+        <p class="contact-cta__status" role="status" aria-live="polite"></p>
+      </div>
+    </form>
   </div>
 </section>
+
+<script is:inline src="/assets/contact-cta.js" defer></script>

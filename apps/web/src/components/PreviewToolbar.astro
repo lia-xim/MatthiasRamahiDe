@@ -1,0 +1,75 @@
+---
+const {
+  collection,
+  slug,
+  status,
+  publishedHref = '/',
+} = Astro.props
+
+const statusLabel = status === 'published' ? 'Published + Draft Overlay' : 'Draft'
+---
+<aside class="preview-toolbar" aria-label="CMS Preview Status">
+  <div>
+    <strong>Payload Preview</strong>
+    <span>{statusLabel}</span>
+    <span>{collection}/{slug}</span>
+  </div>
+  <nav>
+    <a href={publishedHref}>Live-URL</a>
+    <button type="button" onclick="window.location.reload()">Neu laden</button>
+  </nav>
+</aside>
+
+<style>
+  .preview-toolbar {
+    position: fixed;
+    z-index: 1000;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(calc(100vw - 24px), 980px);
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: center;
+    padding: 10px 12px;
+    border: 1px solid rgba(255, 255, 255, .22);
+    background: rgba(5, 6, 9, .86);
+    color: #f7f1e8;
+    box-shadow: 0 18px 70px rgba(0, 0, 0, .32);
+    backdrop-filter: blur(18px);
+    font-size: 13px;
+  }
+
+  .preview-toolbar div,
+  .preview-toolbar nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .preview-toolbar span {
+    color: rgba(247, 241, 232, .72);
+  }
+
+  .preview-toolbar a,
+  .preview-toolbar button {
+    border: 1px solid rgba(255, 255, 255, .22);
+    background: rgba(255, 255, 255, .08);
+    color: #f7f1e8;
+    min-height: 32px;
+    padding: 0 10px;
+    border-radius: 2px;
+    font: inherit;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  @media (max-width: 680px) {
+    .preview-toolbar {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+</style>

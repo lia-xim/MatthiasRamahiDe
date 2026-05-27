@@ -1,9 +1,13 @@
 ---
 import ContentBlocks from '../../../components/ContentBlocks.astro'
 import ContactCta from '../../../components/ContactCta.astro'
+import LoadMoreGallery from '../../../components/LoadMoreGallery.astro'
+import PreviewToolbar from '../../../components/PreviewToolbar.astro'
 import ResponsiveImage from '../../../components/ResponsiveImage.astro'
+import LegacyPageShell from '../../../components/legacy/LegacyPageShell.astro'
 import BaseLayout from '../../../layouts/BaseLayout.astro'
-import { getBySlug, imageUrl } from '../../../lib/payload'
+import { getBySlug, imageDisplayUrl, routeForDoc } from '../../../lib/payload'
+import { breadcrumbJsonLd } from '../../../lib/seo'
 
 export const prerender = false
 
@@ -24,74 +28,79 @@ if (!doc) {
 }
 
 const heroImage = doc.coverImage || doc.heroImage || doc.teaserImage
-const hero = imageUrl(heroImage, 'wide')
+const hero = imageDisplayUrl(heroImage, 'wide')
 const gallery = doc.gallery ?? []
 const proofPoints = doc.proofPoints ?? []
 const faq = doc.faq ?? doc.localFaq ?? []
+const publishedHref = routeForDoc(collection, doc)
+const hasLegacyPreview = Boolean(doc.legacy?.renderedBodyHtml && doc.legacy?.sourceFile)
 ---
-<BaseLayout title={`Vorschau: ${doc.title || slug}`} description={doc.excerpt || doc.intro || 'Draft preview'} noIndex ogImage={heroImage}>
-  <aside class="preview-banner">
-    <strong>Vorschau</strong>
-    <span>{doc._status === 'published' ? 'Published-Version mit Draft-Zugriff' : 'Entwurf'}</span>
-    <span>{collection}</span>
-  </aside>
+{hasLegacyPreview ? (
+  <LegacyPageShell
+    legacyFile={doc.legacy?.sourceFile}
+    docOverride={doc}
+    preview={{ collection, slug, status: doc._status, publishedHref }}
+  />
+) : (
+  <BaseLayout
+    title={`Vorschau: ${doc.title || slug}`}
+    description={doc.excerpt || doc.intro || 'Draft preview'}
+    canonicalUrl={publishedHref}
+    noIndex
+    ogImage={heroImage}
+    jsonLd={breadcrumbJsonLd([
+      { name: 'Startseite', url: '/' },
+      { name: 'Preview', url: Astro.url.pathname },
+      { name: doc.title || slug, url: publishedHref },
+    ])}
+  >
+    <PreviewToolbar collection={collection} slug={slug} status={doc._status} publishedHref={publishedHref} />
 
-  <section class="hero-stage" style={hero ? `background: linear-gradient(180deg, rgba(2,3,6,.34), rgba(2,3,6,.9)), url('${hero}') center / cover;` : ''}>
-    <div class="hero-stage__grid container">
-      <div>
-        <p class="eyebrow">Entwurf / {collection}</p>
-        <h1 class="display">{doc.title}</h1>
-      </div>
-      <div>
-        {!hero && <ResponsiveImage media={heroImage} size="card" fallback="Preview-Bild" />}
-        <p class="copy" style="margin-top: 22px;">{doc.excerpt || doc.intro}</p>
-      </div>
-    </div>
-  </section>
-
-  {gallery.length > 0 && (
-    <section class="container section-pad">
-      <p class="eyebrow">Bildstrecke</p>
-      <div class="card-grid" style="margin-top: 24px;">
-        {gallery.map((item) => (
-          <article class="card" style="padding: 0; min-height: 0;">
-            <ResponsiveImage media={item.image} size="card" fallback="Preview-Bild" />
-            {item.caption && <p class="copy" style="padding: 18px;">{item.caption}</p>}
-          </article>
-        ))}
-      </div>
-    </section>
-  )}
-
-  {proofPoints.length > 0 && (
-    <section class="container section-pad">
-      <p class="eyebrow">Proof Points</p>
-      <div class="card-grid" style="margin-top: 24px;">
-        {proofPoints.map((point) => (
-          <article class="card">
-            <h3>{point.label}</h3>
-            <p class="copy">{point.text}</p>
-          </article>
-        ))}
+    <section class="hero-stage" style={hero ? `background: linear-gradient(180deg, rgba(2,3,6,.34), rgba(2,3,6,.9)), url('${hero}') center / cover;` : ''}>
+      <div class="hero-stage__grid container">
+        <div>
+          <p class="eyebrow">Preview / {collection}</p>
+          <h1 class="display">{doc.title}</h1>
+        </div>
+        <div>
+          {!hero && <ResponsiveImage media={heroImage} size="card" fallback="Preview-Bild" />}
+          <p class="copy" style="margin-top: 22px;">{doc.excerpt || doc.intro}</p>
+        </div>
       </div>
     </section>
-  )}
 
-  <ContentBlocks blocks={doc.blocks} />
+    <LoadMoreGallery items={gallery} eyebrow="Bildstrecke" fallback="Preview-Bild" />
 
-  {faq.length > 0 && (
-    <section class="container section-pad">
-      <p class="eyebrow">FAQ</p>
-      <div class="stack-list">
-        {faq.map((item) => (
-          <article class="stack-item">
-            <h3>{item.question}</h3>
-            <p class="copy">{item.answer}</p>
-          </article>
-        ))}
-      </div>
-    </section>
-  )}
+    {proofPoints.length > 0 && (
+      <section class="container section-pad">
+        <p class="eyebrow">Proof Points</p>
+        <div class="card-grid" style="margin-top: 24px;">
+          {proofPoints.map((point) => (
+            <article class="card">
+              <h3>{point.label}</h3>
+              <p class="copy">{point.text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+    )}
 
-  <ContactCta cta={doc.contactOverride || doc.cta} />
-</BaseLayout>
+    <ContentBlocks blocks={doc.blocks} />
+
+    {faq.length > 0 && (
+      <section class="container section-pad">
+        <p class="eyebrow">FAQ</p>
+        <div class="stack-list">
+          {faq.map((item) => (
+            <article class="stack-item">
+              <h3>{item.question}</h3>
+              <p class="copy">{item.answer}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <ContactCta cta={doc.contactOverride || doc.cta} />
+  </BaseLayout>
+)}

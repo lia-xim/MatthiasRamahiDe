@@ -1,0 +1,44 @@
+---
+import ResponsiveImage from './ResponsiveImage.astro'
+import { imageAlt, type PayloadMedia } from '../lib/payload'
+
+type GalleryItem = {
+  image?: PayloadMedia | string
+  caption?: string
+}
+
+type Props = {
+  items?: GalleryItem[]
+  eyebrow?: string
+  batchSize?: number
+  fallback?: string
+}
+
+const {
+  items = [],
+  eyebrow = 'Bildstrecke',
+  batchSize = 12,
+  fallback = 'Galerie-Bild',
+} = Astro.props as Props
+
+const hasMore = items.length > batchSize
+---
+{items.length > 0 && (
+  <section class="container section-pad gallery-loadmore">
+    <p class="eyebrow">{eyebrow}</p>
+    <div class="card-grid" data-load-more-gallery data-batch-size={batchSize} style="margin-top: 24px;">
+      {items.map((item, index) => (
+        <article class="card" style="padding: 0; min-height: 0;" data-gallery-item hidden={index >= batchSize}>
+          <ResponsiveImage media={item.image} size="card" fallback={imageAlt(item.image, fallback)} />
+          {item.caption && <p class="copy" style="padding: 18px;">{item.caption}</p>}
+        </article>
+      ))}
+    </div>
+    {hasMore && (
+      <button class="gallery-loadmore__button" type="button" data-load-more-button>
+        Mehr Bilder laden
+      </button>
+    )}
+    <script is:inline src="/assets/load-more-gallery.js" defer></script>
+  </section>
+)}

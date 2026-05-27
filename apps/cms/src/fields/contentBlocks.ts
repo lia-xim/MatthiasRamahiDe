@@ -1,9 +1,16 @@
 import type { Field } from 'payload'
 
+import { mediaRelationshipField } from './editorialImages'
+import { linkFields } from './links'
+
 export const contentBlocks: Field = {
   name: 'blocks',
   label: 'Inhaltsblöcke',
   type: 'blocks',
+  admin: {
+    description:
+      'Optionale Inhaltsmodule. Fuer reine Bildwechsel sind die Bildfelder der jeweiligen Seite schneller.',
+  },
   blocks: [
     {
       slug: 'textBlock',
@@ -35,9 +42,17 @@ export const contentBlocks: Field = {
           name: 'items',
           label: 'Bilder',
           type: 'array',
+          admin: {
+            initCollapsed: true,
+          },
           minRows: 1,
           fields: [
-            { name: 'image', label: 'Bild', type: 'relationship', relationTo: 'media', required: true },
+            mediaRelationshipField({
+              name: 'image',
+              label: 'Bild',
+              required: true,
+              description: 'Bild fuer diese Position in der Sequenz.',
+            }),
             { name: 'caption', label: 'Bildunterschrift', type: 'text' },
             {
               name: 'cropIntent',
@@ -91,11 +106,8 @@ export const contentBlocks: Field = {
           label: 'Links',
           type: 'array',
           minRows: 1,
-          fields: [
-            { name: 'label', label: 'Label', type: 'text', required: true },
-            { name: 'href', label: 'URL', type: 'text', required: true },
-            { name: 'description', label: 'Beschreibung', type: 'textarea' },
-          ],
+          admin: { initCollapsed: true },
+          fields: linkFields({ description: true }),
         },
       ],
     },
@@ -105,7 +117,7 @@ export const contentBlocks: Field = {
       fields: [
         { name: 'headline', label: 'Headline', type: 'text', required: true },
         { name: 'text', label: 'Kurztext', type: 'textarea' },
-        { name: 'buttonLabel', label: 'Button-Text', type: 'text', defaultValue: 'Anfrage senden' },
+        { name: 'buttonLabel', label: 'Button-Text', type: 'text', defaultValue: 'Projekt anfragen' },
         { name: 'emailSubject', label: 'E-Mail-Betreff', type: 'text' },
       ],
     },

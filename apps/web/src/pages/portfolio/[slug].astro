@@ -1,9 +1,10 @@
 ---
 import ContentBlocks from '../../components/ContentBlocks.astro'
 import ContactCta from '../../components/ContactCta.astro'
-import ResponsiveImage from '../../components/ResponsiveImage.astro'
+import LoadMoreGallery from '../../components/LoadMoreGallery.astro'
 import BaseLayout from '../../layouts/BaseLayout.astro'
-import { getBySlug, imageAlt, imageUrl, listDocuments, routeForDoc } from '../../lib/payload'
+import { getBySlug, imageDisplayUrl, listDocuments, routeForDoc, toAbsoluteSiteUrl } from '../../lib/payload'
+import { breadcrumbJsonLd, imageGalleryJsonLd, type JsonLd } from '../../lib/seo'
 
 export const prerender = true
 
@@ -19,15 +20,36 @@ if (!doc) {
   return Astro.redirect('/portfolio')
 }
 
-const hero = imageUrl(doc.coverImage, 'wide')
+const hero = imageDisplayUrl(doc.coverImage, 'wide')
 const gallery = doc.gallery ?? []
+const portfolioFocus = doc.category || doc.presentationMode || doc.title || 'Portfolio-Serie'
+const rawDescription = doc.seo?.description || doc.excerpt || ''
+const description =
+  rawDescription.length >= 70
+    ? rawDescription
+    : `${doc.title || 'Portfolio-Serie'}: kuratierte Bildstrecke von Matthias Ramahi mit ausgewählten Motiven, Details und visueller Produktion aus Düsseldorf / NRW.`
+const seoCanonicalUrl = doc.seo?.canonicalUrl ? toAbsoluteSiteUrl(doc.seo.canonicalUrl) : ''
+const canonicalUrl =
+  seoCanonicalUrl && new URL(seoCanonicalUrl).pathname !== '/portfolio.html'
+    ? seoCanonicalUrl
+    : toAbsoluteSiteUrl(routeForDoc('portfolio-projects', doc))
+const gallerySchema = imageGalleryJsonLd(gallery, { name: doc.title || 'Portfolio', url: canonicalUrl })
+const jsonLdItems: JsonLd[] = [
+  breadcrumbJsonLd([
+    { name: 'Startseite', url: '/' },
+    { name: 'Portfolio', url: '/portfolio' },
+    { name: doc.title || 'Projekt', url: canonicalUrl },
+  ]),
+]
+if (gallerySchema) jsonLdItems.push(gallerySchema)
 ---
 <BaseLayout
-  title={doc.seo?.title || `${doc.title} — Matthias Ramahi`}
-  description={doc.seo?.description || doc.excerpt || ''}
-  canonicalUrl={doc.seo?.canonicalUrl || routeForDoc('portfolio-projects', doc)}
+  title={doc.seo?.title || `${doc.title} | Matthias Ramahi`}
+  description={description}
+  canonicalUrl={canonicalUrl}
   noIndex={doc.seo?.noIndex}
   ogImage={doc.seo?.ogImage || doc.coverImage}
+  jsonLd={jsonLdItems}
 >
   <section class="hero-stage" style={hero ? `background: linear-gradient(180deg, rgba(2,3,6,.35), rgba(2,3,6,.88)), url('${hero}') center / cover;` : ''}>
     <div class="hero-stage__grid container">
@@ -39,19 +61,28 @@ const gallery = doc.gallery ?? []
     </div>
   </section>
 
-  {gallery.length > 0 && (
-    <section class="container section-pad">
-      <p class="eyebrow">Bildstrecke</p>
-      <div class="card-grid" style="margin-top: 24px;">
-        {gallery.map((item) => (
-          <article class="card" style="padding: 0; min-height: 0;">
-            <ResponsiveImage media={item.image} size="card" fallback={imageAlt(item.image, 'Portfolio-Bild')} />
-            {item.caption && <p class="copy" style="padding: 18px;">{item.caption}</p>}
-          </article>
-        ))}
-      </div>
-    </section>
-  )}
+  <LoadMoreGallery items={gallery} eyebrow="Bildstrecke" fallback="Portfolio-Bild" />
+
+  <section class="container section-pad">
+    <p class="eyebrow">Einordnung</p>
+    <div class="stack-list">
+      <article class="stack-item">
+        <h2>Serie, Einsatz und Bildsprache</h2>
+        <p class="copy">
+          Diese Auswahl ist als kuratierter Einstieg in {portfolioFocus} gedacht: nicht als endlose Galerie,
+          sondern als verdichtete Serie mit Hauptmotiv, Varianten, Details und ruhigen Uebergaengen. Fuer SEO
+          und Nutzerfuehrung bleibt die Seite bewusst eigenstaendig, waehrend sie auf die passenden Leistungs-
+          und Standortseiten im Fotografie-Cluster verweist.
+        </p>
+        <p class="copy">
+          Entscheidend ist die Lesbarkeit der Bildstrecke. Farbe, Abstand, Perspektive und Reihenfolge sollen
+          schnell zeigen, ob eine aehnliche Produktion fuer Marke, Verkauf, Portfolio, Print oder digitale
+          Praesentation funktioniert. So bekommt jedes Portfolio-Motiv einen klaren Kontext statt nur einen
+          isolierten Galerieplatz.
+        </p>
+      </article>
+    </div>
+  </section>
 
   <ContentBlocks blocks={doc.blocks} />
   <ContactCta cta={doc.cta} />
