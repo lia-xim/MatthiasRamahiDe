@@ -1,0 +1,115 @@
+---
+import NativeLegacyLayout from '../../layouts/NativeLegacyLayout.astro'
+import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
+
+const legacyFile = 'contact.html'
+const providedDoc = Astro.props.doc as PayloadDoc | undefined
+const doc = providedDoc || (await getLegacyBackedDoc(legacyFile, { depth: 2 }))
+
+const directContacts = [
+  {
+    label: 'E-Mail',
+    href: 'mailto:info@matthiasramahi.de',
+    value: 'info@matthiasramahi.de',
+    sub: 'Für Anfragen, Briefings, Angebote',
+    copy: 'info@matthiasramahi.de',
+  },
+  {
+    label: 'Telefon',
+    href: 'tel:+4917642449858',
+    value: '+49 176 42449858',
+    sub: 'Mo – Sa · 10 – 19 Uhr',
+    copy: '+49 176 42449858',
+  },
+]
+---
+<NativeLegacyLayout legacyFile={legacyFile} current="kontakt" doc={doc}>
+  <main>
+    <h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Kontakt Matthias Ramahi Fotografie Düsseldorf</h1>
+    <section
+      id="anfrage"
+      data-contact-section
+      data-header-theme="light"
+      data-contact-subject="Projektanfrage"
+      data-contact-headline="Projekt <em>anfragen.</em>"
+      data-contact-lead="Name, Kontaktweg und ein paar Stichpunkte reichen fuer den ersten Schritt. Wenn du magst, ergaenze Leistung, Ort, Zeitraum und gewuenschte Wirkung."
+    />
+
+    <section class="kc-context" data-header-theme="light" aria-label="Anfrage richtig einordnen">
+      <div class="kc-context__inner">
+        <div>
+          <p class="kc-context__kicker">Briefing</p>
+          <h2>Ein paar klare Angaben reichen.</h2>
+        </div>
+        <div>
+          <p>Fuer eine erste Einschaetzung sind Projektart, Ort, Zeitraum und geplanter Einsatz am wichtigsten. Es macht einen Unterschied, ob Bilder fuer Verkauf, Website, Kampagne, Print, Portfolio oder eine interne Praesentation entstehen sollen.</p>
+          <p>Wenn noch nicht alles feststeht, ist das kein Problem. Aus wenigen Stichpunkten laesst sich klaeren, welche Bildsprache, welcher Umfang und welche Vorbereitung sinnvoll sind. So startet die Anfrage direkt mit einem brauchbaren Rahmen statt mit einem generischen Formular und die naechsten Schritte bleiben fuer beide Seiten klar.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="kc-direct" data-header-theme="dark" aria-label="Direkter Kontakt">
+      <div class="kc-direct__inner">
+        {directContacts.map((item) => (
+          <div class="kc-card">
+            <p class="kc-card__label">{item.label}</p>
+            <a class="kc-card__value" href={item.href}>{item.value}</a>
+            <span class="kc-card__sub">{item.sub}</span>
+            <button class="kc-copy" type="button" data-copy={item.copy}>Kopieren</button>
+          </div>
+        ))}
+        <div class="kc-card">
+          <p class="kc-card__label">Standort</p>
+          <span class="kc-card__value">Düsseldorf · NRW</span>
+          <span class="kc-card__sub">Termine nach Vereinbarung</span>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script is:inline>
+    document.addEventListener('click', async function (event) {
+      var target = event.target && event.target.closest ? event.target.closest('.kc-copy') : null
+      if (!target) return
+
+      event.preventDefault()
+      event.stopImmediatePropagation()
+
+      var value = target.dataset.copy || ''
+      var previous = target.textContent || 'Kopieren'
+
+      async function copyWithFallback(text) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          try {
+            await navigator.clipboard.writeText(text)
+            return true
+          } catch (err) {}
+        }
+
+        var helper = document.createElement('textarea')
+        helper.value = text
+        helper.setAttribute('readonly', '')
+        helper.style.position = 'fixed'
+        helper.style.left = '-9999px'
+        document.body.appendChild(helper)
+        helper.select()
+        try {
+          var legacyCopy = document['exec' + 'Command']
+          if (typeof legacyCopy === 'function') legacyCopy.call(document, 'copy')
+          return true
+        } catch (err) {
+          return false
+        } finally {
+          document.body.removeChild(helper)
+        }
+      }
+
+      await copyWithFallback(value)
+      target.textContent = 'Kopiert ✓'
+      target.classList.add('is-done')
+      window.setTimeout(function () {
+        target.textContent = previous
+        target.classList.remove('is-done')
+      }, 1600)
+    }, true)
+  </script>
+</NativeLegacyLayout>

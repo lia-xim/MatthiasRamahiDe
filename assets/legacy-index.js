@@ -489,29 +489,15 @@
   }
   requestAnimationFrame(frame);
   };
-  const scheduleHeroShader = () => {
-    let scheduled=false;
-    let timer=0;
-    const run=()=>{
-      if(scheduled) return;
-      scheduled=true;
-      cleanup();
-      if ('requestIdleCallback' in window) window.requestIdleCallback(startHeroShader, { timeout: 1200 });
-      else setTimeout(startHeroShader, 0);
-    };
-    const cleanup=()=>{
-      clearTimeout(timer);
-      window.removeEventListener('pointerdown', run);
-      window.removeEventListener('keydown', run);
-      window.removeEventListener('touchstart', run);
-    };
-    window.addEventListener('pointerdown', run, { once:true, passive:true });
-    window.addEventListener('keydown', run, { once:true });
-    window.addEventListener('touchstart', run, { once:true, passive:true });
-    timer=setTimeout(run, 5200);
+  const bootHeroShader = () => {
+    if ('requestAnimationFrame' in window) requestAnimationFrame(startHeroShader);
+    else setTimeout(startHeroShader, 0);
   };
-  if (document.readyState === 'complete') scheduleHeroShader();
-  else window.addEventListener('load', scheduleHeroShader, { once: true });
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bootHeroShader, { once: true });
+  } else {
+    bootHeroShader();
+  }
 })();
 
 /* ============ PORTFOLIO MARQUEE + LIGHTBOX ============ */

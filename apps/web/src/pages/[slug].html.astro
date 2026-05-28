@@ -1,7 +1,9 @@
 ---
 import LegacyPageShell from '../components/legacy/LegacyPageShell.astro'
 import NativeLocalSeoPage from '../components/cms/NativeLocalSeoPage.astro'
+import NativeAboutPage from '../components/native/NativeAboutPage.astro'
 import NativeAutomobilPhotographyPage from '../components/native/NativeAutomobilPhotographyPage.astro'
+import NativeContactPage from '../components/native/NativeContactPage.astro'
 import NativeJournalIndexPage from '../components/native/NativeJournalIndexPage.astro'
 import NativeLandschaftPhotographyPage from '../components/native/NativeLandschaftPhotographyPage.astro'
 import NativeMotorradPhotographyPage from '../components/native/NativeMotorradPhotographyPage.astro'
@@ -60,6 +62,8 @@ const shouldRenderNativePortfolioIndex = shouldRenderFromCms && legacyFile === '
 const shouldRenderNativePrintLab = shouldRenderFromCms && legacyFile === 'fotolabor-druck-duesseldorf.html'
 const shouldRenderNativeServiceDetail = shouldRenderFromCms && nativeServiceDetailFiles.includes(legacyFile)
 const shouldRenderNativeServicesIndex = shouldRenderFromCms && legacyFile === 'leistungen.html'
+const shouldRenderNativeContact = shouldRenderFromCms && legacyFile === 'contact.html'
+const shouldRenderNativeAbout = shouldRenderFromCms && legacyFile === 'ueber-mich.html'
 const shouldRenderNativeLocalSeo =
   shouldRenderFromCms && enableNativeLocalSeoHtmlRoutes && isLocalSeoAdoptionCandidate(legacyFile)
 const localSeoDoc = shouldRenderNativeLocalSeo
@@ -95,6 +99,10 @@ if (shouldRenderFromCms) Astro.response.headers.set('x-migration-render', 'adopt
     <NativeServiceDetailPage legacyFile={legacyFile} />
   ) : shouldRenderNativeServicesIndex ? (
     <NativeServicesIndexPage />
+  ) : shouldRenderNativeContact ? (
+    <NativeContactPage />
+  ) : shouldRenderNativeAbout ? (
+    <NativeAboutPage />
   ) : shouldRenderNativeLocalSeo && localSeoDoc ? (
     <NativeLocalSeoPage doc={localSeoDoc as PayloadDoc} />
   ) : shouldRenderFromCms ? (

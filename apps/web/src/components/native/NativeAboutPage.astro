@@ -1,0 +1,213 @@
+---
+import NativeLegacyLayout from '../../layouts/NativeLegacyLayout.astro'
+import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
+
+const legacyFile = 'ueber-mich.html'
+const providedDoc = Astro.props.doc as PayloadDoc | undefined
+const doc = providedDoc || (await getLegacyBackedDoc(legacyFile, { depth: 2 }))
+
+const processRows = [
+  ['N° 01', 'Briefing', 'Projekt, Ziel und Ausgabe klären. Wofür soll das Bild später arbeiten — Inserat, Pressekit, Sammlung, Wand?'],
+  ['N° 02', 'Konzept', 'Stil, Licht, Ort und Auswahl planen. Bilder werden geplant, nicht improvisiert. Referenzen, Moodboard, Locationcheck, wenn nötig.'],
+  ['N° 03', 'Shooting', 'Ruhig, präzise. Zwischen Aufnahme und Korrektur am Set entstehen die Bilder, die später noch arbeiten — nicht die mit dem lautesten Filter.'],
+  ['N° 04', 'Auswahl', 'Kuratierte Serie statt Roh-Lieferung. Bildauswahl mit Begründung, abgestimmt auf Nutzung, Format und Rhythmus der Strecke.'],
+  ['N° 05', 'Ausgabe', 'Datei für Web, Druck für die Wand. Was am Ende kommt, ist verwendungsfertig — einheitlich im Look, sauber im Format, bereit für Print oder Kampagne.'],
+] as const
+
+const values = [
+  ['N° 01', 'Keine generischen Fahrzeugbilder.', 'Kontrollierte Reflexe, ruhige Linien, ein Bildsatz, der technisch sauber weiterverwendet werden kann.'],
+  ['N° 02', 'Keine glattgebügelten Portraits.', 'Blick, Distanz und Licht so geführt, dass ein Bild professionell wirkt, ohne den Menschen dahinter zu verlieren.'],
+  ['N° 03', 'Keine Bildserie ohne Plan.', 'Vor dem Auslöser steht ein Konzept: Wofür ist das Bild, in welchem Rhythmus liest sich die Strecke, wo endet sie.'],
+  ['N° 04', 'Keine durchgereichten Calls.', 'Vom Briefing bis zum Druck ein Ansprechpartner. Keine Account-Manager, keine Reposting-Schleifen.'],
+] as const
+
+const chapters = [
+  {
+    href: 'automobil-fotografie-duesseldorf.html',
+    image: 'assets/optimized/assets-photos-automobil-sunset-1920.webp',
+    alt: 'Automobilfotografie',
+    width: 1920,
+    height: 1280,
+    title: 'Automobil',
+    number: 'N° 01',
+    meta: 'Location · Location · Detail',
+  },
+  {
+    href: 'sportwagen-fotografie-duesseldorf.html',
+    image: 'assets/optimized/assets-photos-automobil-neon-1920.webp',
+    alt: 'Sportwagenfotografie',
+    width: 1920,
+    height: 1280,
+    title: 'Sportwagen',
+    number: 'N° 02',
+    meta: 'Performance · Editorial',
+  },
+  {
+    href: 'oldtimer-fotografie-duesseldorf.html',
+    image: 'assets/optimized/assets-photos-oldtimer-stage-1920.webp',
+    alt: 'Oldtimerfotografie',
+    width: 1920,
+    height: 1280,
+    title: 'Oldtimer',
+    number: 'N° 03',
+    meta: 'Sammlung · Auktion',
+  },
+  {
+    href: 'motorrad-fotografie-duesseldorf.html',
+    image: 'assets/optimized/assets-photos-motorrad-1920.webp',
+    alt: 'Motorradfotografie',
+    width: 1920,
+    height: 1280,
+    title: 'Motorrad',
+    number: 'N° 04',
+    meta: 'Maschine · Haltung',
+  },
+  {
+    href: 'portraitfotografie-duesseldorf.html',
+    image: 'assets/photos/portrait-blue.webp',
+    alt: 'Portraitfotografie',
+    width: 2048,
+    height: 2560,
+    title: 'Portrait',
+    number: 'N° 05',
+    meta: 'Branding · Editorial',
+  },
+  {
+    href: 'landschaftsfotografie-duesseldorf.html',
+    image: 'assets/optimized/assets-photos-landschaft-1920.webp',
+    alt: 'Landschaftsfotografie',
+    width: 1707,
+    height: 2560,
+    title: 'Landschaft',
+    number: 'N° 06',
+    meta: 'Fine Art · Print',
+  },
+]
+---
+<NativeLegacyLayout legacyFile={legacyFile} current="ueber-mich" doc={doc}>
+  <main>
+    <section class="ovh ovh--ueber" data-theme="dark" data-header-theme="dark" aria-label="Matthias Ramahi — Fotograf aus Düsseldorf">
+      <div class="ovh__photo" style="background-image:url('mpissxxj-portfolio_webp_full_063-1.webp')" aria-hidden="true"></div>
+      <div class="ovh__glow" aria-hidden="true"></div>
+      <div class="ovh__aperture" aria-hidden="true"></div>
+      <div class="ovh__grid">
+        <p class="ovh__kicker">Über mich · Düsseldorf · NRW</p>
+        <h1 class="ovh__title">
+          <span class="line"><span class="word">Hinter der</span></span>
+          <span class="line"><span class="word">Kamera.</span></span>
+        </h1>
+        <p class="ovh__lead">Matthias Ramahi — Fotograf aus Düsseldorf. Editorial geführte Bildserien für Automobile, Oldtimer, Sportwagen, Motorräder, Portraits und Landschaften. Ausgebildet im Handwerk, denkend wie ein Editor.</p>
+        <div class="ovh__actions">
+          <a class="ovh__btn" href="portfolio.html">Portfolio ansehen →</a>
+          <a class="ovh__btn ovh__btn--ghost" href="#anfrage">Projekt anfragen</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="statement sec-light" data-theme="light" data-header-theme="light" aria-label="Haltung">
+      <div class="section-inner">
+        <div>
+          <h2>Bild vor Filter,<br />Motiv vor <em>Effekt</em>.</h2>
+        </div>
+        <div class="body">
+          <p class="lead">Was mich an Fotografie hält, ist nicht das eine spektakuläre Bild — es ist die ruhige Arbeit davor: das genaue Hinsehen, das Warten auf das richtige Licht, die kleine Verschiebung in der Komposition, die ein Motiv plötzlich tragen lässt.</p>
+          <p>Mein Anspruch ist editorial: klare Linien, ehrliche Farben, keine Effektkette. Ob Portrait, Automobil oder Landschaft — am Ende geht es darum, dass das Bild den Charakter seines Motivs zeigt und nicht den meiner Software. Aus dieser Geduld entstehen Aufnahmen, die nach dem Shooting noch arbeiten — auf dem Inserat, im Pressekit, an der Wand.</p>
+          <div class="actions">
+            <a class="btn dark" href="portfolio.html">Portfolio ansehen</a>
+            <a class="btn" href="#schwerpunkte" style="color:var(--ink);border-color:var(--ink)">Bereiche ansehen</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services-sec sec-dark um-ablauf" data-theme="dark" data-header-theme="dark" aria-label="Ablauf">
+      <div class="section-inner">
+        <div class="services-head">
+          <h2>Ablauf.<br />Vom Briefing zum <em>Druck</em>.</h2>
+          <p class="lead">Fünf Schritte. Kein Improvisationstheater, sondern ein ruhiger Prozess, der vom ersten Gespräch bis zum signierten Print eine Spur zieht.</p>
+        </div>
+        <div class="services-list">
+          {processRows.map(([number, title, text]) => (
+            <div class="service-row">
+              <span class="num">{number}</span><h3>{title}</h3><p>{text}</p><span class="arr">→</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="values sec-light" data-theme="light" data-header-theme="light" aria-label="Was hier nicht passiert">
+      <div class="section-inner values-grid">
+        <div class="values-head">
+          <p class="kicker dark">Haltung</p>
+          <h2>Was hier <em>nicht passiert</em>.</h2>
+          <p class="values-note">Die schnellste Definition von Qualität ist manchmal eine Liste der Dinge, die wir weglassen.</p>
+        </div>
+        <ol class="values-list">
+          {values.map(([number, claim, note]) => (
+            <li class="values-item">
+              <span class="values-item__no">{number}</span>
+              <div class="values-item__body">
+                <p class="values-item__claim">{claim}</p>
+                <p class="values-item__note">{note}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <section class="chapters sec-dark" id="schwerpunkte" data-theme="dark" data-header-theme="dark" aria-label="Schwerpunkte">
+      <div class="section-inner">
+        <div class="chapters-head">
+          <h2>Sechs Bereiche.<br />Eine <em>Hand</em>.</h2>
+          <p class="lead">Ich arbeite nicht in Genre-Schubladen — aber jede Disziplin braucht ihr eigenes Vorgehen. Licht, Distanz, Material und Rhythmus passen sich an, die Bildsprache bleibt verwandt.</p>
+        </div>
+        <div class="chapter-grid">
+          {chapters.map((chapter) => (
+            <a class="chapter" href={chapter.href}>
+              <div class="img"><img src={chapter.image} alt={chapter.alt} loading="lazy" width={chapter.width} height={chapter.height} decoding="async" /></div>
+              <div class="head"><h3>{chapter.title}</h3><span class="num">{chapter.number}</span></div>
+              <span class="meta"><span>{chapter.meta}</span><span class="arr">→</span></span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="sister sec-light" data-theme="light" data-header-theme="light" aria-label="Sophia Ramahi — Videografin">
+      <div class="section-inner sister-grid">
+        <div class="sister-copy">
+          <p class="kicker dark">Bewegte Bilder · Empfehlung</p>
+          <h2>Wenn es <em>bewegt</em> sein soll.</h2>
+          <p class="lead">Für bewegte Bilder empfehle ich meine Schwester Sophia Ramahi — Videografin aus dem Rheinland.</p>
+          <p>Sophia produziert Musikvideos, Imagefilme und redaktionelles Bewegtbild. Aus einer Familie, aus einer Bildsprache — wir arbeiten regelmäßig parallel auf Set, damit Foto und Video aus einem Guss kommen.</p>
+          <div class="actions">
+            <a class="btn dark" href="contact.html#anfrage">Anfrage Foto + Video →</a>
+          </div>
+        </div>
+        <aside class="sister-plate" aria-label="Visitentafel Sophia Ramahi">
+          <p class="sister-plate__tag">Schwester · Location</p>
+          <p class="sister-plate__name">Sophia<br /><em>Ramahi</em>.</p>
+          <ul class="sister-plate__roles">
+            <li>Videografin</li>
+            <li>Musikvideos</li>
+            <li>Imagefilm</li>
+            <li>Editorial · Set</li>
+          </ul>
+          <p class="sister-plate__loc">Düsseldorf · NRW</p>
+        </aside>
+      </div>
+    </section>
+
+    <section
+      id="anfrage"
+      data-contact-section
+      data-theme="light"
+      data-header-theme="light"
+      data-contact-subject="Projektanfrage"
+      data-contact-headline="Projekt <em>anfragen.</em>"
+      data-contact-lead="Schreiben Sie kurz, welche Leistung Sie interessiert, wo das Projekt stattfindet und welchen Zeitraum Sie planen. Ich melde mich mit Rückfragen oder einem nächsten Schritt per E-Mail."
+    />
+  </main>
+</NativeLegacyLayout>
