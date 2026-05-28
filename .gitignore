@@ -1,8 +1,27 @@
 node_modules/
 apps/*/node_modules/
-apps/*/.env
+
+# Environment and secret material
 .env
-.env.local
+.env.*
+!.env.example
+apps/*/.env
+apps/*/.env.*
+!apps/*/.env.example
+.envrc
+.npmrc
+.pypirc
+.netrc
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+id_rsa
+id_dsa
+id_ecdsa
+id_ed25519
 
 apps/web/dist/
 apps/web/.visual-regression/
