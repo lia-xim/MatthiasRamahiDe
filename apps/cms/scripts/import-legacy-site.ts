@@ -40,15 +40,16 @@ const sitePageMap: Record<string, { pageType: string; slug: string }> = {
   'blog.html': { slug: 'blog', pageType: 'journal-index' },
   'impressum.html': { slug: 'impressum', pageType: 'legal' },
   'datenschutz.html': { slug: 'datenschutz', pageType: 'legal' },
+  'fotografie.html': { slug: 'fotografie', pageType: 'photography-index' },
 }
 
 const canonicalServiceFiles = new Set([
-  'automobil-fotografie-duesseldorf.html',
-  'sportwagen-fotografie-duesseldorf.html',
-  'oldtimer-fotografie-duesseldorf.html',
-  'motorrad-fotografie-duesseldorf.html',
-  'portraitfotografie-duesseldorf.html',
-  'landschaftsfotografie-duesseldorf.html',
+  'automobil-fotografie.html',
+  'sportwagen-fotografie.html',
+  'oldtimer-fotografie.html',
+  'motorrad-fotografie.html',
+  'portraitfotografie.html',
+  'landschaftsfotografie.html',
   'fotolabor-druck-duesseldorf.html',
   'grossformatdruck-duesseldorf.html',
   'werbetechnik-duesseldorf.html',

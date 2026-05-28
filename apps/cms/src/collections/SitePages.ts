@@ -72,6 +72,7 @@ export const SitePages: CollectionConfig = {
                 { label: 'Startseite', value: 'home' },
                 { label: 'Ueber mich', value: 'about' },
                 { label: 'Kontakt', value: 'contact' },
+                { label: 'Fotografie-Uebersicht', value: 'photography-index' },
                 { label: 'Portfolio-Uebersicht', value: 'portfolio-index' },
                 { label: 'Leistungsuebersicht', value: 'services-index' },
                 { label: 'Journal-Uebersicht', value: 'journal-index' },

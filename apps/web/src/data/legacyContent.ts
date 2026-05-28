@@ -25,14 +25,14 @@ export const legacyContent = {
       { label: 'Weitere Dienstleistungen', href: 'leistungen.html', navKey: 'leistungen' },
       { label: 'Kontakt', href: 'contact.html', navKey: 'kontakt' },
     ] satisfies LegacyLink[],
-    photographyOverview: { label: 'Fotografie', href: 'fotografie-duesseldorf.html', navKey: 'fotografie' },
+    photographyOverview: { label: 'Fotografie', href: 'fotografie.html', navKey: 'fotografie' },
     photographyLinks: [
-      { label: 'Automobil', href: 'automobil-fotografie-duesseldorf.html' },
-      { label: 'Sportwagen', href: 'sportwagen-fotografie-duesseldorf.html' },
-      { label: 'Oldtimer', href: 'oldtimer-fotografie-duesseldorf.html' },
-      { label: 'Motorrad', href: 'motorrad-fotografie-duesseldorf.html' },
-      { label: 'Portrait', href: 'portraitfotografie-duesseldorf.html' },
-      { label: 'Landschaft', href: 'landschaftsfotografie-duesseldorf.html' },
+      { label: 'Automobil', href: 'automobil-fotografie.html' },
+      { label: 'Sportwagen', href: 'sportwagen-fotografie.html' },
+      { label: 'Oldtimer', href: 'oldtimer-fotografie.html' },
+      { label: 'Motorrad', href: 'motorrad-fotografie.html' },
+      { label: 'Portrait', href: 'portraitfotografie.html' },
+      { label: 'Landschaft', href: 'landschaftsfotografie.html' },
     ] satisfies LegacyLink[],
     cta: {
       label: 'Projekt anfragen',
@@ -107,13 +107,13 @@ export const legacyContent = {
         id: 'foto',
         label: 'Fotografie',
         links: [
-          { label: 'Übersicht', href: 'fotografie-duesseldorf.html' },
-          { label: 'Automobil', href: 'automobil-fotografie-duesseldorf.html' },
-          { label: 'Sportwagen', href: 'sportwagen-fotografie-duesseldorf.html' },
-          { label: 'Oldtimer', href: 'oldtimer-fotografie-duesseldorf.html' },
-          { label: 'Motorrad', href: 'motorrad-fotografie-duesseldorf.html' },
-          { label: 'Portrait', href: 'portraitfotografie-duesseldorf.html' },
-          { label: 'Landschaft', href: 'landschaftsfotografie-duesseldorf.html' },
+          { label: 'Übersicht', href: 'fotografie.html' },
+          { label: 'Automobil', href: 'automobil-fotografie.html' },
+          { label: 'Sportwagen', href: 'sportwagen-fotografie.html' },
+          { label: 'Oldtimer', href: 'oldtimer-fotografie.html' },
+          { label: 'Motorrad', href: 'motorrad-fotografie.html' },
+          { label: 'Portrait', href: 'portraitfotografie.html' },
+          { label: 'Landschaft', href: 'landschaftsfotografie.html' },
         ],
       },
       {
@@ -177,6 +177,19 @@ export const legacyContent = {
         description:
           'Fotolabor, Großformatdruck, Werbetechnik, Webdesign, Videografie und ergänzende Leistungen für visuelle Projekte in Düsseldorf und NRW.',
         canonicalUrl: 'https://matthiasramahi.de/leistungen.html',
+      },
+    },
+    {
+      title: 'Fotografie.',
+      slug: 'fotografie',
+      pageType: 'photography-index',
+      intro:
+        'Fotografie als klare Übersicht: Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft — sechs spezialisierte Bereiche mit eigenem Einstieg.',
+      seo: {
+        title: 'Fotografie | Übersicht der Bereiche | Matthias Ramahi',
+        description:
+          'Fotografie als klare Übersicht: Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft — sechs spezialisierte Bereiche mit eigenem Einstieg.',
+        canonicalUrl: 'https://matthiasramahi.de/fotografie.html',
       },
     },
     {

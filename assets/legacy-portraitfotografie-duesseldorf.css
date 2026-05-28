@@ -204,6 +204,7 @@
     .rl-pt__inner{max-width:1480px;margin:0 auto}
     .rl-pt__title{font-family:var(--font-display);font-weight:600;font-size:clamp(36px,5vw,80px);letter-spacing:-.06em;line-height:.92;margin-bottom:clamp(28px,3vw,52px)}
     .rl-pt__title em{color:var(--accent-2);font-style:italic}
+    .rl-pt__intro{color:rgba(245,245,241,.66);font-size:clamp(14px,1.05vw,16px);line-height:1.6;max-width:68ch;margin:calc(-1 * clamp(20px,2vw,38px)) 0 clamp(28px,3vw,52px)}
     .rl-pt__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
     .rl-pt__card{position:relative;overflow:hidden;aspect-ratio:4/5;background:#101218;border:1px solid var(--hair);text-decoration:none;color:#f6f5f0;transition:transform .5s ease,border-color .5s ease}
     .rl-pt__card:hover{transform:translateY(-4px);border-color:rgba(245,245,241,.32)}

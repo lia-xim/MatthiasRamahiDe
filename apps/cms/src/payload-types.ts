@@ -152,7 +152,15 @@ export interface SitePage {
    * Wird aus dem Titel erzeugt, kann aber bewusst angepasst werden.
    */
   slug: string;
-  pageType: 'home' | 'about' | 'contact' | 'portfolio-index' | 'services-index' | 'journal-index' | 'legal';
+  pageType:
+    | 'home'
+    | 'about'
+    | 'contact'
+    | 'photography-index'
+    | 'portfolio-index'
+    | 'services-index'
+    | 'journal-index'
+    | 'legal';
   intro?: string | null;
   /**
    * Bild aus dem Medienarchiv waehlen. Neue Bilder koennen direkt im Drawer hochgeladen und bearbeitet werden.

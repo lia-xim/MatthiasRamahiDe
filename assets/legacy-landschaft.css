@@ -178,6 +178,7 @@
     .rl-ls__inner{max-width:1480px;margin:0 auto}
     .rl-ls__title{font-family:var(--font-display);font-weight:700;font-size:clamp(36px,5vw,80px);letter-spacing:-.05em;line-height:.92;margin-bottom:clamp(28px,3vw,52px);text-transform:uppercase}
     .rl-ls__title em{font-style:normal;font-weight:200;color:#f6f5f0;opacity:.65}
+    .rl-ls__intro{color:rgba(245,245,241,.66);font-size:clamp(14px,1.05vw,16px);line-height:1.6;max-width:68ch;margin:calc(-1 * clamp(20px,2vw,38px)) 0 clamp(28px,3vw,52px)}
     .rl-ls__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
     .rl-ls__card{position:relative;overflow:hidden;aspect-ratio:4/5;background:#101218;border:1px solid var(--hair);text-decoration:none;color:#f6f5f0;transition:transform .5s ease,border-color .5s ease}
     .rl-ls__card:hover{transform:translateY(-4px);border-color:rgba(245,245,241,.32)}

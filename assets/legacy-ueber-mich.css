@@ -21,6 +21,117 @@
   color: #c8ccc6;
 }
 
+/* ---------------------------------------------------------
+   Split-Hero: image on the right (~50%), copy on the left.
+   The portrait source (1628×1920) was being over-stretched
+   when used as a full-bleed background. Splitting the canvas
+   keeps the cinematic motion (Ken-Burns, aperture, glow) but
+   only on the photo column.
+   --------------------------------------------------------- */
+@media (min-width: 881px) {
+  .ovh--ueber {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: 1fr;
+    padding: 0;
+    align-items: stretch;
+    overflow: hidden;
+    background: var(--bg, #020306);
+  }
+  .ovh--ueber > .ovh__photo,
+  .ovh--ueber > .ovh__glow,
+  .ovh--ueber > .ovh__aperture {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .ovh--ueber > .ovh__photo {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: 100%;
+    background-position: center 28%;
+  }
+  .ovh--ueber > .ovh__glow {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  .ovh--ueber > .ovh__aperture {
+    position: relative;
+    top: 42%;
+    left: -10%;
+    right: -10%;
+    width: 120%;
+    margin-top: -48px;
+    pointer-events: none;
+  }
+  .ovh--ueber > .ovh__grid {
+    grid-column: 1;
+    grid-row: 1;
+    position: relative;
+    z-index: 4;
+    max-width: none;
+    margin: 0;
+    padding: clamp(120px, 14vw, 180px) clamp(28px, 4vw, 72px) clamp(64px, 8vw, 112px);
+    justify-content: flex-end;
+    background: var(--bg, #020306);
+  }
+  /* Soft gradient transition so the copy column dissolves into the photo */
+  .ovh--ueber > .ovh__grid::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: clamp(40px, 5vw, 96px);
+    pointer-events: none;
+    background: linear-gradient(90deg, rgba(2,3,6,0) 0%, rgba(2,3,6,.5) 60%, rgba(2,3,6,.88) 100%);
+    z-index: 1;
+  }
+}
+
+/* Mobile/tablet: stack photo on top, copy below. Keeps the
+   portrait readable without stretching, and avoids a tiny
+   image trying to fill 100svh on a phone. */
+@media (max-width: 880px) {
+  .ovh--ueber {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    padding: 0;
+    min-height: 100svh;
+    background: var(--bg, #020306);
+  }
+  .ovh--ueber > .ovh__photo,
+  .ovh--ueber > .ovh__glow,
+  .ovh--ueber > .ovh__aperture {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .ovh--ueber > .ovh__photo {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    max-height: 56svh;
+  }
+  .ovh--ueber > .ovh__glow,
+  .ovh--ueber > .ovh__aperture {
+    pointer-events: none;
+  }
+  .ovh--ueber > .ovh__grid {
+    grid-column: 1;
+    grid-row: 2;
+    max-width: none;
+    margin: 0;
+    padding: clamp(40px, 8vw, 72px) 22px clamp(56px, 9vw, 96px);
+    justify-content: flex-start;
+  }
+}
+
 /* =========================================================
    WERTE — "Was hier nicht passiert" (signature voice block)
    ========================================================= */
