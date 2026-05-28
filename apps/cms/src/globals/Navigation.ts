@@ -36,7 +36,7 @@ export const Navigation: GlobalConfig = {
               type: 'array',
               defaultValue: [
                 { label: 'Home', href: '/' },
-                { label: 'Fotografie', href: '/fotografie-duesseldorf' },
+                { label: 'Fotografie', href: '/fotografie' },
                 { label: 'Portfolio', href: '/portfolio' },
                 { label: 'Ueber mich', href: '/ueber-mich' },
                 { label: 'Journal', href: '/journal' },
