@@ -3,8 +3,11 @@ import LegacyPageShell from '../components/legacy/LegacyPageShell.astro'
 import NativeLocalSeoPage from '../components/cms/NativeLocalSeoPage.astro'
 import NativeAutomobilPhotographyPage from '../components/native/NativeAutomobilPhotographyPage.astro'
 import NativeJournalIndexPage from '../components/native/NativeJournalIndexPage.astro'
+import NativeLandschaftPhotographyPage from '../components/native/NativeLandschaftPhotographyPage.astro'
+import NativeMotorradPhotographyPage from '../components/native/NativeMotorradPhotographyPage.astro'
 import NativeOldtimerPhotographyPage from '../components/native/NativeOldtimerPhotographyPage.astro'
 import NativePhotographyPage from '../components/native/NativePhotographyPage.astro'
+import NativePortraitPhotographyPage from '../components/native/NativePortraitPhotographyPage.astro'
 import NativePortfolioIndexPage from '../components/native/NativePortfolioIndexPage.astro'
 import NativePrintLabPage from '../components/native/NativePrintLabPage.astro'
 import NativeServiceDetailPage from '../components/native/NativeServiceDetailPage.astro'
@@ -49,6 +52,9 @@ const shouldRenderNativePhotography = shouldRenderFromCms && legacyFile === 'fot
 const shouldRenderNativeAutomobil = shouldRenderFromCms && legacyFile === 'automobil-fotografie.html'
 const shouldRenderNativeSportwagen = shouldRenderFromCms && legacyFile === 'sportwagen-fotografie.html'
 const shouldRenderNativeOldtimer = shouldRenderFromCms && legacyFile === 'oldtimer-fotografie.html'
+const shouldRenderNativeMotorrad = shouldRenderFromCms && legacyFile === 'motorrad-fotografie.html'
+const shouldRenderNativePortrait = shouldRenderFromCms && legacyFile === 'portraitfotografie.html'
+const shouldRenderNativeLandschaft = shouldRenderFromCms && legacyFile === 'landschaftsfotografie.html'
 const shouldRenderNativeJournalIndex = shouldRenderFromCms && legacyFile === 'blog.html'
 const shouldRenderNativePortfolioIndex = shouldRenderFromCms && legacyFile === 'portfolio.html'
 const shouldRenderNativePrintLab = shouldRenderFromCms && legacyFile === 'fotolabor-druck-duesseldorf.html'
@@ -73,6 +79,12 @@ if (shouldRenderFromCms) Astro.response.headers.set('x-migration-render', 'adopt
     <NativeSportwagenPhotographyPage />
   ) : shouldRenderNativeOldtimer ? (
     <NativeOldtimerPhotographyPage />
+  ) : shouldRenderNativeMotorrad ? (
+    <NativeMotorradPhotographyPage />
+  ) : shouldRenderNativePortrait ? (
+    <NativePortraitPhotographyPage />
+  ) : shouldRenderNativeLandschaft ? (
+    <NativeLandschaftPhotographyPage />
   ) : shouldRenderNativeJournalIndex ? (
     <NativeJournalIndexPage />
   ) : shouldRenderNativePortfolioIndex ? (
