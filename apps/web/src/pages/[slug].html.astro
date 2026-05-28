@@ -1,9 +1,17 @@
 ---
 import LegacyPageShell from '../components/legacy/LegacyPageShell.astro'
+import NativeLocalSeoPage from '../components/cms/NativeLocalSeoPage.astro'
+import NativeJournalIndexPage from '../components/native/NativeJournalIndexPage.astro'
 import NativePhotographyPage from '../components/native/NativePhotographyPage.astro'
-import { isCmsAdoptedLegacyFile } from '../lib/adoptedRoutes'
+import NativePortfolioIndexPage from '../components/native/NativePortfolioIndexPage.astro'
+import NativePrintLabPage from '../components/native/NativePrintLabPage.astro'
+import NativeServiceDetailPage from '../components/native/NativeServiceDetailPage.astro'
+import NativeServicesIndexPage from '../components/native/NativeServicesIndexPage.astro'
+import { isCmsAdoptedLegacyFile, isLocalSeoAdoptionCandidate } from '../lib/adoptedRoutes'
 import { envFlag, envFlagNotFalse } from '../lib/envFlags'
 import { listLegacyHtmlFiles, readLegacyPage } from '../lib/legacy'
+import { getByLegacyUrl, type PayloadDoc } from '../lib/payload'
+import { nativeServiceDetailFiles } from '../lib/serviceDetailContent'
 
 export const prerender = true
 
@@ -13,6 +21,7 @@ type Props = {
 
 const enableAdoptedRouteRewrite = envFlagNotFalse('ASTRO_ENABLE_ADOPTED_ROUTES')
 const enableLocalSeoAdoptedRouteRewrite = envFlag('ASTRO_ENABLE_LOCAL_SEO_ADOPTED_ROUTES')
+const enableNativeLocalSeoHtmlRoutes = envFlag('ASTRO_ENABLE_NATIVE_LOCAL_SEO_HTML_ROUTES')
 
 export async function getStaticPaths() {
   const files = await listLegacyHtmlFiles()
@@ -33,15 +42,37 @@ if (!legacyFile) {
 const shouldRenderFromCms =
   enableAdoptedRouteRewrite &&
   isCmsAdoptedLegacyFile(legacyFile, { includeLocalSeo: enableLocalSeoAdoptedRouteRewrite })
-const shouldRenderNative = shouldRenderFromCms && legacyFile === 'fotografie.html'
+const shouldRenderNativePhotography = shouldRenderFromCms && legacyFile === 'fotografie.html'
+const shouldRenderNativeJournalIndex = shouldRenderFromCms && legacyFile === 'blog.html'
+const shouldRenderNativePortfolioIndex = shouldRenderFromCms && legacyFile === 'portfolio.html'
+const shouldRenderNativePrintLab = shouldRenderFromCms && legacyFile === 'fotolabor-druck-duesseldorf.html'
+const shouldRenderNativeServiceDetail = shouldRenderFromCms && nativeServiceDetailFiles.includes(legacyFile)
+const shouldRenderNativeServicesIndex = shouldRenderFromCms && legacyFile === 'leistungen.html'
+const shouldRenderNativeLocalSeo =
+  shouldRenderFromCms && enableNativeLocalSeoHtmlRoutes && isLocalSeoAdoptionCandidate(legacyFile)
+const localSeoDoc = shouldRenderNativeLocalSeo
+  ? await getByLegacyUrl('local-seo-pages', legacyFile, { depth: 2 })
+  : null
 
 const legacyHtml = shouldRenderFromCms ? '' : await readLegacyPage(legacyFile)
 
 if (shouldRenderFromCms) Astro.response.headers.set('x-migration-render', 'adopted-astro-payload')
 ---
 {
-  shouldRenderNative ? (
+  shouldRenderNativePhotography ? (
     <NativePhotographyPage />
+  ) : shouldRenderNativeJournalIndex ? (
+    <NativeJournalIndexPage />
+  ) : shouldRenderNativePortfolioIndex ? (
+    <NativePortfolioIndexPage />
+  ) : shouldRenderNativePrintLab ? (
+    <NativePrintLabPage />
+  ) : shouldRenderNativeServiceDetail ? (
+    <NativeServiceDetailPage legacyFile={legacyFile} />
+  ) : shouldRenderNativeServicesIndex ? (
+    <NativeServicesIndexPage />
+  ) : shouldRenderNativeLocalSeo && localSeoDoc ? (
+    <NativeLocalSeoPage doc={localSeoDoc as PayloadDoc} />
   ) : shouldRenderFromCms ? (
     <LegacyPageShell legacyFile={legacyFile} />
   ) : (

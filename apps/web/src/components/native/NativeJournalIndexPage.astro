@@ -1,0 +1,160 @@
+---
+import NativeLegacyLayout from '../../layouts/NativeLegacyLayout.astro'
+import { type JournalPostCard, journalCards, journalFilters, journalHero, journalTicker } from '../../lib/journalIndexContent'
+import {
+  getSitePageByType,
+  imageAlt,
+  imageDimensions,
+  imageDisplayUrl,
+  listDocuments,
+  routeForDoc,
+  type PayloadDoc,
+} from '../../lib/payload'
+
+const providedDoc = Astro.props.doc as PayloadDoc | undefined
+const doc = providedDoc || (await getSitePageByType('journal-index', { depth: 2 }))
+const cmsPosts = await listDocuments('journal-posts', { limit: 12, sort: '-publishedAt', depth: 2 })
+const legacyPostBySlug = new Map(journalCards.map((post) => [post.href.replace(/^\//, '').replace(/\.html$/i, ''), post]))
+const categoryToFilter: Record<string, string> = {
+  automotive: 'automotive',
+  portrait: 'portrait',
+  process: 'prozess',
+  'behind-the-scenes': 'prozess',
+  'landscape-print': 'print',
+}
+const categoryLabels: Record<string, string> = {
+  automotive: 'Automotive',
+  portrait: 'Portrait',
+  prozess: 'Prozess',
+  print: 'Druck',
+}
+const cmsCards = cmsPosts
+  .map((post, index): JournalPostCard | null => {
+    const slug = post.slug || ''
+    if (!slug) return null
+
+    const fallback = legacyPostBySlug.get(slug) || journalCards[index]
+    const image = imageDisplayUrl(post.coverImage, 'card') || fallback?.image || journalHero.image
+    const dimensions = imageDimensions(post.coverImage, 'card')
+    const category = categoryToFilter[String(post.category || '')] || fallback?.category || 'prozess'
+    const legacyHref = typeof post.seo?.legacyUrl === 'string' && post.seo.legacyUrl ? `/${post.seo.legacyUrl}` : ''
+
+    return {
+      category,
+      dark: fallback?.dark ?? index % 3 === 0,
+      eager: index < 3,
+      height: dimensions.height || fallback?.height || 1280,
+      href: legacyHref || routeForDoc('journal-posts', post),
+      image,
+      imageAlt: imageAlt(post.coverImage, post.title || fallback?.imageAlt || 'Journal-Bild'),
+      readTime: typeof post.readingTime === 'number' ? `${post.readingTime} Min` : fallback?.readTime || '5 Min',
+      text: post.excerpt || fallback?.text || '',
+      title: post.title || fallback?.title || 'Journal-Beitrag',
+      width: dimensions.width || fallback?.width || 1920,
+    }
+  })
+  .filter(Boolean) as JournalPostCard[]
+const posts = cmsCards.length > 0 ? cmsCards : journalCards
+---
+<NativeLegacyLayout legacyFile="blog.html" current="blog" doc={doc}>
+  <div class="light" aria-hidden="true"></div>
+  <main>
+    <section class="hero" id="top" data-header-theme="dark" aria-label="Blog Intro">
+      <div class="hero__bg" aria-hidden="true">
+        <img src={journalHero.image} alt="" width="1920" height="1280" decoding="async" />
+      </div>
+      <div class="hero__veil" aria-hidden="true"></div>
+      <div class="hero__inner">
+        <div class="hero__copy">
+          <p class="hero__kicker">{journalHero.kicker}</p>
+          <h1 set:html={journalHero.title}></h1>
+          <p class="hero__lead">{doc?.intro || journalHero.lead}</p>
+          <div class="hero__actions">
+            <a class="hero__btn hero__btn--primary" href="#journal">Artikel ansehen</a>
+            <a class="hero__btn" href="/contact.html">Fotoauftrag anfragen</a>
+          </div>
+        </div>
+        <aside class="hero__meta" aria-label="Journal Daten">
+          <span>Aktualisiert</span><b>2026</b>
+          <span style="margin-top:14px">Beiträge</span><b>{posts.length.toString().padStart(2, '0')}</b>
+          <span style="margin-top:14px">Themen</span><b>Automotive · Portrait · Print</b>
+        </aside>
+      </div>
+    </section>
+
+    <section class="ticker" aria-label="Themenlaufband">
+      <div class="ticker-track">
+        {journalTicker.map((item) => <span set:html={item}></span>)}
+      </div>
+    </section>
+
+    <section class="featured" aria-label="Ausgewählter Artikel">
+      <div class="featured-inner">
+        <div class="feature-copy reveal">
+          <p class="kicker">Ausgewählter Beitrag</p>
+          <h2>Geplant, nicht zufällig.</h2>
+          <p>Ein starkes Foto entsteht nicht erst beim Auslösen — sondern in der Entscheidung für Ort, Tageszeit, Bildschnitt und Stimmung.</p>
+          <div class="hero-actions"><a class="btn dark" href="/blog-automotive-fotografie-duesseldorf.html">Beitrag lesen</a></div>
+        </div>
+        <figure class="feature-image reveal">
+          <img
+            data-src="/assets/optimized/assets-photos-automobil-sunset-1920.webp"
+            alt="Auto in dramatischem Licht als Beispiel für geplante Bildstimmung"
+            width="1920"
+            height="1280"
+            decoding="async"
+            loading="lazy"
+          />
+        </figure>
+      </div>
+    </section>
+
+    <section class="journal" id="journal" aria-label="Journal Artikel">
+      <div class="journal-head">
+        <h2>Journal Index.</h2>
+        <div class="filters" aria-label="Artikel filtern">
+          {journalFilters.map((filter, index) => (
+            <button class={`filter ${index === 0 ? 'active' : ''}`.trim()} type="button" data-filter={filter.value}>{filter.label}</button>
+          ))}
+        </div>
+      </div>
+      <div class="post-grid">
+        {posts.map((post) => (
+          <a class={`post ${post.dark ? 'dark' : ''}`.trim()} href={post.href} data-category={post.category}>
+            <div class="post-media">
+              <img
+                src={post.eager ? post.image : undefined}
+                data-src={post.eager ? undefined : post.image}
+                alt={post.imageAlt}
+                width={post.width}
+                height={post.height}
+                decoding="async"
+                loading="lazy"
+              />
+            </div>
+            <div class="post-body">
+              <div class="post-meta"><span>{categoryLabels[post.category] || (post.title.startsWith('Oldtimer') ? 'Oldtimer' : post.title.startsWith('Linien') ? 'Motorrad' : 'Automotive')}</span><span>{post.readTime}</span></div>
+              <h3>{post.title}</h3>
+              <p>{post.text}</p>
+              <span class="post-go">Beitrag lesen</span>
+            </div>
+          </a>
+        ))}
+      </div>
+      <div class="load-panel" id="loadPanel" aria-live="polite">
+        <span class="load-status" id="loadStatus">{Math.min(6, posts.length)} von {posts.length} Beiträgen sichtbar</span>
+        <button class="load-more" id="loadMore" type="button">Mehr Beiträge laden</button>
+      </div>
+    </section>
+
+    <section class="final" aria-label="Kontakt CTA">
+      <p class="kicker">Nächster Schritt</p>
+      <h2>Fotoauftrag planen.</h2>
+      <p>Wenn Sie Automotive-Aufnahmen, Portraits, eine Bildstrecke oder eine hochwertige visuelle Präsentation benötigen, schicken Sie kurz Ort, Zeitraum und Ziel des Projekts.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="/contact.html">Projekt anfragen</a>
+        <a class="btn" href="/portfolio.html">Portfolio ansehen</a>
+      </div>
+    </section>
+  </main>
+</NativeLegacyLayout>

@@ -1,5 +1,7 @@
 ---
 import CmsRoutedPage from '../../../components/cms/CmsRoutedPage.astro'
+import NativeJournalPostPage from '../../../components/cms/NativeJournalPostPage.astro'
+import NativeLocalSeoPage from '../../../components/cms/NativeLocalSeoPage.astro'
 import LegacyPageShell from '../../../components/legacy/LegacyPageShell.astro'
 import { getBySlug, routeForDoc } from '../../../lib/payload'
 
@@ -31,5 +33,11 @@ const hasLegacyPreview = Boolean(doc.legacy?.renderedBodyHtml && doc.legacy?.sou
     preview={{ collection, slug, status: doc._status, publishedHref }}
   />
 ) : (
-  <CmsRoutedPage collection={collection} doc={doc} preview={{ collection, slug, status: doc._status, publishedHref }} />
+  collection === 'local-seo-pages' ? (
+    <NativeLocalSeoPage doc={doc} preview={{ collection, slug, status: doc._status, publishedHref }} />
+  ) : collection === 'journal-posts' ? (
+    <NativeJournalPostPage doc={doc} preview={{ collection, slug, status: doc._status, publishedHref }} />
+  ) : (
+    <CmsRoutedPage collection={collection} doc={doc} preview={{ collection, slug, status: doc._status, publishedHref }} />
+  )
 )}

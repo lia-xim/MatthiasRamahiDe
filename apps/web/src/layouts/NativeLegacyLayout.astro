@@ -16,6 +16,7 @@ const isHome = legacyFile === 'index.html'
 const legacyParts = isHome ? null : await getComponentizedLegacyParts(legacyFile)
 const homeParts = isHome ? await getLegacyHomeParts() : null
 let head = withCmsSeo(homeParts?.head || legacyParts?.head || '', doc, legacyFile)
+head = withFavicons(head)
 const bodyClass = providedBodyClass || legacyParts?.bodyClass || 'has-mr-footer'
 const current = providedCurrent || legacyParts?.current
 const afterFooter = homeParts?.afterFooter || legacyParts?.afterFooter || ''
@@ -55,6 +56,21 @@ function upsertCanonical(headHtml: string, value?: string) {
   return /<link\s+rel=["']canonical["'][^>]*>/i.test(headHtml)
     ? headHtml.replace(/<link\s+rel=["']canonical["'][^>]*>/i, tag)
     : `${headHtml}\n${tag}`
+}
+
+function withFavicons(headHtml: string) {
+  const cleaned = headHtml.replace(
+    /<link\s+[^>]*rel=["'](?:icon|apple-touch-icon|manifest)["'][^>]*>\s*/gi,
+    '',
+  )
+
+  return `${cleaned}
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32" />
+<link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />`
 }
 
 function withCmsSeo(headHtml: string, pageDoc: PayloadDoc | null, pageLegacyFile: string) {
@@ -97,4 +113,3 @@ function withCmsSeo(headHtml: string, pageDoc: PayloadDoc | null, pageLegacyFile
     <Fragment set:html={afterFooter} />
   </body>
 </html>
-

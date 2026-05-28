@@ -1,0 +1,120 @@
+---
+import NativeLegacyLayout from '../../layouts/NativeLegacyLayout.astro'
+import {
+  portfolioArchivePhotos,
+  portfolioContext,
+  portfolioHero,
+  portfolioIndexLinks,
+  portfolioSpreads,
+} from '../../lib/portfolioIndexContent'
+import { getSitePageByType, type PayloadDoc } from '../../lib/payload'
+
+const providedDoc = Astro.props.doc as PayloadDoc | undefined
+const doc = providedDoc || (await getSitePageByType('portfolio-index', { depth: 2 }))
+---
+<NativeLegacyLayout legacyFile="portfolio.html" current="portfolio" doc={doc}>
+  <main>
+    <section class="pf-hero" data-header-theme="dark" aria-label="Portfolio">
+      <div class="pf-hero__photo" aria-hidden="true">
+        <img src={portfolioHero.image} alt="" loading="eager" decoding="async" fetchpriority="high" width="1920" height="1280" />
+      </div>
+      <div class="pf-hero__veil" aria-hidden="true"></div>
+      <div class="pf-hero__inner">
+        <div>
+          <div class="pf-hero__kicker">{portfolioHero.kicker}</div>
+          <h1>{portfolioHero.title}</h1>
+        </div>
+        <p class="pf-hero__sub">{portfolioHero.subtitle}</p>
+      </div>
+    </section>
+
+    <nav class="pf-index" id="pfIndex" aria-label="Kategorien">
+      <ol>
+        {portfolioIndexLinks.map((link) => (
+          <li><a href={link.href}><b>{link.number}</b>{link.label}</a></li>
+        ))}
+      </ol>
+    </nav>
+
+    <section class="pf-context" data-header-theme="light" aria-label="Portfolio einordnen">
+      <div class="pf-context__inner">
+        <div>
+          <div class="pf-context__kicker">Einordnung</div>
+          <h2>Serien statt Sammelmappe.</h2>
+        </div>
+        <div>
+          {portfolioContext.map((paragraph) => <p>{paragraph}</p>)}
+        </div>
+      </div>
+    </section>
+
+    {portfolioSpreads.map((spread) => (
+      <section
+        class={`pf-spread ${spread.theme === 'light' ? 'is-light' : ''}`.trim()}
+        id={spread.id}
+        data-header-theme={spread.theme}
+        aria-label={spread.label.replace(/^\d+\s*\/\s*/, '')}
+      >
+        <div class="pf-spread__head">
+          <div>
+            <div class="pf-spread__kicker">{spread.label}</div>
+            <h2>{spread.heading}</h2>
+          </div>
+          <a class="pf-spread__link" href={spread.href}>{spread.linkLabel}</a>
+        </div>
+        <div class="pf-spread__strip">
+          {spread.photos.map((photo) => (
+            <a class="pf-photo" data-caption={photo.caption} href={photo.href}>
+              <img src={photo.src} alt="" loading="lazy" decoding="async" width={photo.width} height={photo.height} />
+            </a>
+          ))}
+        </div>
+      </section>
+    ))}
+
+    <section class="pf-archive" id="archive" data-header-theme="light" aria-label="Archiv">
+      <div class="pf-archive__head">
+        <div class="pf-archive__kicker">∞ / Archiv</div>
+        <h2>Bildarchiv, vollständig.</h2>
+      </div>
+      <div class="pf-archive__grid" id="pfArchiveGrid">
+        {portfolioArchivePhotos.map((photo) => (
+          <a class="pf-photo" data-caption={photo.caption} href={photo.href}>
+            <img
+              src={photo.eager ? photo.src : undefined}
+              data-src={photo.eager ? undefined : photo.src}
+              alt=""
+              loading="lazy"
+              decoding="async"
+              width={photo.width}
+              height={photo.height}
+            />
+          </a>
+        ))}
+      </div>
+      <div class="pf-archive__foot">
+        <span>Aktualisierter Bestand · 2026</span>
+        <a href="/contact.html">Anfrage stellen ↗</a>
+      </div>
+    </section>
+
+    <section
+      id="anfrage"
+      data-contact-section
+      data-theme="light"
+      data-contact-subject="Portfolio Anfrage"
+      data-contact-headline="Portfolio <em>anfragen.</em>"
+      data-contact-lead="Schreiben Sie kurz, welche Bildsprache Sie interessiert, wofür die Aufnahmen genutzt werden und welchen Zeitraum Sie planen. Dann klären wir Motiv, Umfang, Rechte und Ausgabe sauber gemeinsam."
+    />
+
+    <div class="pf-viewer" id="pfViewer" aria-hidden="true" role="dialog" aria-label="Bildansicht">
+      <button class="pf-viewer__close" type="button" id="pfClose">Schließen</button>
+      <button class="pf-viewer__prev" type="button" id="pfPrev" aria-label="Vorheriges Bild">‹</button>
+      <button class="pf-viewer__next" type="button" id="pfNext" aria-label="Nächstes Bild">›</button>
+      <figure class="pf-viewer__figure">
+        <img id="pfViewerImg" alt="" decoding="async" loading="lazy" />
+      </figure>
+      <span class="pf-viewer__cap" id="pfViewerCap"></span>
+    </div>
+  </main>
+</NativeLegacyLayout>

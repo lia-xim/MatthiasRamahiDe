@@ -1,0 +1,238 @@
+---
+import ContentBlocks from '../ContentBlocks.astro'
+import ContactCta from '../ContactCta.astro'
+import PreviewToolbar from '../PreviewToolbar.astro'
+import ResponsiveImage from '../ResponsiveImage.astro'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import {
+  imageDisplayUrl,
+  internalSitePath,
+  linkAttributes,
+  routeForDoc,
+  toAbsoluteSiteUrl,
+  type PayloadDoc,
+  type PayloadLink,
+} from '../../lib/payload'
+import { articleJsonLd, breadcrumbJsonLd, type JsonLd } from '../../lib/seo'
+
+type PreviewState = {
+  collection: string
+  publishedHref: string
+  slug: string
+  status?: string
+}
+
+type Props = {
+  doc: PayloadDoc
+  preview?: PreviewState
+}
+
+const { doc, preview } = Astro.props as Props
+const canonicalUrl = toAbsoluteSiteUrl(doc.seo?.canonicalUrl || routeForDoc('journal-posts', doc))
+const canonicalPath = internalSitePath(canonicalUrl)
+const routePath = internalSitePath(routeForDoc('journal-posts', doc))
+
+if (!preview && canonicalPath && routePath && canonicalPath.replace(/\/$/, '') !== routePath.replace(/\/$/, '')) {
+  return Astro.redirect(canonicalPath, 308)
+}
+
+const title = doc.seo?.title || `${doc.title || 'Journal'} | Matthias Ramahi`
+const description = doc.seo?.description || doc.excerpt || ''
+const coverImage = doc.coverImage || doc.heroImage || doc.seo?.ogImage
+const hero = imageDisplayUrl(coverImage, 'wide')
+const categoryLabels: Record<string, string> = {
+  automotive: 'Automotive',
+  portrait: 'Portrait',
+  'landscape-print': 'Landschaft / Print',
+  process: 'Prozess',
+  'behind-the-scenes': 'Behind the Scenes',
+}
+const categoryLabel = categoryLabels[String(doc.category || '')] || String(doc.category || 'Journal')
+const readTime = typeof doc.readingTime === 'number' ? `${doc.readingTime} Min` : 'Journal'
+const formattedDate = doc.publishedAt
+  ? new Intl.DateTimeFormat('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' }).format(new Date(doc.publishedAt))
+  : ''
+const relatedPages = (doc.relatedPages ?? []) as PayloadLink[]
+const tags = (doc.tags ?? []) as string[]
+const jsonLdItems: JsonLd[] = [
+  articleJsonLd(doc, canonicalUrl),
+  breadcrumbJsonLd([
+    { name: 'Startseite', url: '/' },
+    { name: 'Journal', url: '/blog.html' },
+    { name: doc.title || 'Beitrag', url: canonicalUrl },
+  ]),
+]
+---
+<BaseLayout
+  title={preview ? `Vorschau: ${title}` : title}
+  description={description}
+  canonicalUrl={canonicalUrl}
+  noIndex={preview ? true : doc.seo?.noIndex}
+  ogImage={doc.seo?.ogImage || coverImage}
+  ogType="article"
+  jsonLd={jsonLdItems}
+  currentNav="blog"
+>
+  {preview && (
+    <PreviewToolbar
+      collection={preview.collection}
+      slug={preview.slug}
+      status={preview.status}
+      publishedHref={preview.publishedHref}
+    />
+  )}
+
+  <article class="journal-native">
+    <header class="journal-native__hero" style={hero ? `background-image: linear-gradient(180deg, rgba(2,3,6,.28), rgba(2,3,6,.9)), url('${hero}');` : undefined}>
+      <div class="journal-native__hero-inner container">
+        <nav class="journal-native__crumb eyebrow" aria-label="Breadcrumb">
+          <a href="/">Home</a><span>/</span><a href="/blog.html">Journal</a><span>/</span><span>{categoryLabel}</span>
+        </nav>
+        <div class="journal-native__hero-grid">
+          <div>
+            <p class="eyebrow">{preview ? 'Preview / ' : ''}{categoryLabel} / {readTime}</p>
+            <h1 class="display">{doc.title}</h1>
+          </div>
+          <div class="journal-native__intro">
+            {!hero && <ResponsiveImage media={coverImage} size="card" fallback={doc.title || 'Journal-Bild'} loading="eager" />}
+            <p class="copy">{doc.excerpt}</p>
+            <div class="journal-native__meta">
+              <span>Matthias Ramahi</span>
+              {formattedDate && <time datetime={doc.publishedAt}>{formattedDate}</time>}
+              <span>{categoryLabel}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    {(tags.length > 0 || relatedPages.length > 0) && (
+      <section class="journal-native__context container">
+        {tags.length > 0 && (
+          <div>
+            <p class="eyebrow">Themen</p>
+            <div class="filter-row">
+              {tags.map((tag) => <span>{tag}</span>)}
+            </div>
+          </div>
+        )}
+        {relatedPages.length > 0 && (
+          <div>
+            <p class="eyebrow">Verknuepfung</p>
+            <div class="filter-row">
+              {relatedPages.map((link) => link.href && <a {...linkAttributes(link)}>{link.label}</a>)}
+            </div>
+          </div>
+        )}
+      </section>
+    )}
+
+    <ContentBlocks blocks={doc.blocks} />
+
+    {relatedPages.length > 0 && (
+      <section class="container section-pad">
+        <p class="eyebrow">Weiter im Cluster</p>
+        <div class="stack-list">
+          {relatedPages.map((link) => link.href && (
+            <a class="stack-item" {...linkAttributes(link)}>
+              <h3>{link.label}</h3>
+              {link.description && <p class="copy">{link.description}</p>}
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+  </article>
+
+  <ContactCta cta={doc.cta} />
+</BaseLayout>
+
+<style>
+  .journal-native {
+    background: var(--bg);
+  }
+
+  .journal-native__hero {
+    min-height: calc(100svh - 72px);
+    display: grid;
+    align-items: end;
+    padding: clamp(92px, 11vw, 162px) 0 clamp(54px, 8vw, 112px);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+  }
+
+  .journal-native__hero-inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  .journal-native__crumb {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: clamp(26px, 5vw, 72px);
+  }
+
+  .journal-native__crumb a:hover {
+    color: var(--fg);
+  }
+
+  .journal-native__hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.04fr) minmax(300px, .52fr);
+    gap: clamp(34px, 7vw, 112px);
+    align-items: end;
+  }
+
+  .journal-native h1 {
+    max-width: 10.4ch;
+    margin: 16px 0 0;
+    font-size: clamp(58px, 11vw, 172px);
+  }
+
+  .journal-native__intro {
+    display: grid;
+    gap: 22px;
+  }
+
+  .journal-native__intro :global(img) {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .journal-native__intro .copy {
+    margin: 0;
+    font-size: clamp(18px, 1.7vw, 24px);
+    color: color-mix(in oklch, var(--fg) 78%, transparent);
+  }
+
+  .journal-native__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 18px;
+    color: var(--muted);
+    font: 700 10px/1.45 var(--font-mono);
+    text-transform: uppercase;
+  }
+
+  .journal-native__context {
+    padding: clamp(30px, 5vw, 68px) 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(26px, 5vw, 80px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  @media (max-width: 920px) {
+    .journal-native__hero-grid,
+    .journal-native__context {
+      grid-template-columns: 1fr;
+    }
+
+    .journal-native h1 {
+      font-size: clamp(48px, 15vw, 92px);
+    }
+  }
+</style>

@@ -88,6 +88,41 @@ const pages = [
     thresholdNote: 'Desktop enthaelt Legacy-Reveal- und Lazyload-Abschnitte.',
   },
   {
+    name: 'service-fotolabor',
+    legacyPath: '/legacy-baseline/fotolabor-druck-duesseldorf',
+    componentPath: '/fotolabor-druck-duesseldorf.html',
+  },
+  {
+    name: 'service-grossformat',
+    legacyPath: '/legacy-baseline/grossformatdruck-duesseldorf',
+    componentPath: '/grossformatdruck-duesseldorf.html',
+  },
+  {
+    name: 'service-werbetechnik',
+    legacyPath: '/legacy-baseline/werbetechnik-duesseldorf',
+    componentPath: '/werbetechnik-duesseldorf.html',
+  },
+  {
+    name: 'service-webdesign',
+    legacyPath: '/legacy-baseline/webdesign-seo-duesseldorf',
+    componentPath: '/webdesign-seo-duesseldorf.html',
+  },
+  {
+    name: 'service-videografie',
+    legacyPath: '/legacy-baseline/videografie-duesseldorf',
+    componentPath: '/videografie-duesseldorf.html',
+  },
+  {
+    name: 'service-viola',
+    legacyPath: '/legacy-baseline/viola-musik-duesseldorf',
+    componentPath: '/viola-musik-duesseldorf.html',
+  },
+  {
+    name: 'service-sonder',
+    legacyPath: '/legacy-baseline/drucke-sonderanfertigungen-duesseldorf',
+    componentPath: '/drucke-sonderanfertigungen-duesseldorf.html',
+  },
+  {
     name: 'about',
     legacyPath: '/legacy-baseline/ueber-mich',
     componentPath: '/ueber-mich.html',

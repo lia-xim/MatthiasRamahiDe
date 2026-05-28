@@ -43,6 +43,25 @@ Redirects werden nur gesetzt, wenn eine URL wirklich konsolidiert werden soll. S
 8. Journal-Detailseiten.
 9. Lokale SEO-Cluster.
 
+## Native-Komponenten-Status
+
+Stand 2026-05-28:
+
+| Seitentyp | Status | Naechster Schritt |
+|---|---|---|
+| Startseite | Native Astro-Komponente mit Payload-Textbasis und Legacy-Optik | Weiter schrittweise echte CMS-Felder fuer einzelne Teaser/Bildmodule verbinden. |
+| Fotografie-Uebersicht | Native Astro-Komponente | Sechs Detailseiten als naechste Body-Zerlegung. |
+| Portfolio-Uebersicht | Native Astro-Komponente | Portfolio-Projekte weiter aus Payload speisen, ohne die aktuelle Galerieoptik zu verlieren. |
+| Leistungen-Uebersicht | Native Astro-Komponente | Service-Index mittelfristig aus `service-pages` sortieren. |
+| Weitere Service-Seiten | Native Astro-Komponenten fuer sieben Seiten | Texte/Bilder koennen weiter ueber Payload-Dokumente gegen die statische Content-Basis ersetzt werden. |
+| Journal-Uebersicht | Native Astro-Komponente mit Payload-Listing-Fallback | Weiter Design-Parity halten, waehrend `journal-posts` redaktionell wachsen. |
+| Neue Journal-Routen `/journal/<slug>` | CMS-native Artikelkomponente | ENV `ASTRO_ENABLE_CMS_JOURNAL_ROUTES=true` setzen, wenn die Route live gebaut werden soll. |
+| Neue Local-SEO-Routen | CMS-native Local-SEO-Komponente | Alte `.html`-Local-SEO-Routen erst per Opt-in auf dieses Template umlegen. |
+| Alte Local-SEO-HTML-Seiten | Bewusste Legacy-Parity | Nach redaktioneller Pruefung optional `ASTRO_ENABLE_NATIVE_LOCAL_SEO_HTML_ROUTES=true`. |
+| Sechs Haupt-Fotografie-Detailseiten | Legacy-Parity ueber Astro-Shell | Als naechstes echtes natives Body-Template extrahieren. |
+| About, Kontakt, Legal | Legacy-Parity ueber Astro-Shell | Nach Fotografie-Detailseiten nativ zerlegen. |
+| Bestehende `blog-*.html` Detailseiten | Legacy-Parity ueber Astro-Shell | Nach stabiler Journal-Komponente Seite fuer Seite extrahieren. |
+
 ## Eingefrorene visuelle Referenz
 
 Die aktuellen Root-HTML-Dateien sind eingefrorene visuelle Wahrheit fuer die Migration. Sie enthalten die letzten Text-, CTA-, Hero-, SEO- und Bildperformance-Aenderungen und werden nicht geloescht oder ueberschrieben.
@@ -156,6 +175,7 @@ Qualitaetsregel: keine Seiten, bei denen nur der Stadtname getauscht wurde.
 Technischer Gate:
 
 - `ASTRO_ENABLE_LOCAL_SEO_ADOPTED_ROUTES=true` schaltet die lokale SEO-Familie fuer die Astro/Payload-Adoptionsschicht frei.
+- `ASTRO_ENABLE_NATIVE_LOCAL_SEO_HTML_ROUTES=true` ersetzt alte Local-SEO-`.html`-URLs mit dem neuen nativen Local-SEO-Template. Standard bleibt aus, damit die freigegebene Legacy-Parity nicht unbemerkt kippt.
 - `cms:approve-private-staging -- --collection=local-seo-pages --write` veroeffentlicht nur vollstaendige Local-SEO-Dokumente fuer privates Staging.
 - `cms:audit-production -- --strict` stellt sicher, dass veroeffentlichte lokale SEO-Seiten `reviewed`, SEO-vollstaendig und frei von blockierenden Sprach-/Medienproblemen sind.
 

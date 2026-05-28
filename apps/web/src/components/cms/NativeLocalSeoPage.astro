@@ -1,0 +1,156 @@
+---
+import ContentBlocks from '../ContentBlocks.astro'
+import ContactCta from '../ContactCta.astro'
+import LoadMoreGallery from '../LoadMoreGallery.astro'
+import PreviewToolbar from '../PreviewToolbar.astro'
+import ResponsiveImage from '../ResponsiveImage.astro'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import {
+  imageDisplayUrl,
+  internalSitePath,
+  linkAttributes,
+  routeForDoc,
+  toAbsoluteSiteUrl,
+  type PayloadDoc,
+} from '../../lib/payload'
+import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd, type JsonLd } from '../../lib/seo'
+
+type PreviewState = {
+  collection: string
+  publishedHref: string
+  slug: string
+  status?: string
+}
+
+type Props = {
+  doc: PayloadDoc
+  preview?: PreviewState
+}
+
+const { doc, preview } = Astro.props as Props
+const canonicalUrl = toAbsoluteSiteUrl(doc.seo?.canonicalUrl || routeForDoc('local-seo-pages', doc))
+const routePath = internalSitePath(routeForDoc('local-seo-pages', doc))
+const canonicalPath = internalSitePath(canonicalUrl)
+
+if (!preview && canonicalPath && routePath && canonicalPath.replace(/\/$/, '') !== routePath.replace(/\/$/, '')) {
+  return Astro.redirect(canonicalPath, 308)
+}
+
+const title = doc.seo?.title || doc.title || [doc.service, doc.city].filter(Boolean).join(' ')
+const description = doc.seo?.description || doc.intro || ''
+const heroImage = doc.heroImage || doc.coverImage || doc.teaserImage || doc.seo?.ogImage
+const hero = imageDisplayUrl(heroImage, 'wide')
+const gallery = doc.gallery ?? []
+const proofPoints = (doc.localProof ?? doc.proofPoints ?? []) as Array<{ label?: string; text?: string }>
+const faq = (doc.localFaq ?? doc.faq ?? []) as Array<{ question?: string; answer?: string }>
+const relatedPages = (doc.relatedPages ?? []) as Array<{ label?: string; href?: string }>
+const focusFacts = [
+  doc.city && { label: 'Ort', value: doc.city },
+  doc.service && { label: 'Leistung', value: doc.service },
+  doc.targetKeyword && { label: 'Keyword', value: doc.targetKeyword },
+].filter(Boolean) as Array<{ label: string; value: string }>
+const faqSchema = faqJsonLd(faq)
+const jsonLdItems: JsonLd[] = [
+  serviceJsonLd(doc, canonicalUrl),
+  breadcrumbJsonLd([
+    { name: 'Startseite', url: '/' },
+    { name: 'Fotografie', url: '/fotografie.html' },
+    { name: doc.title || 'Lokale Fotografie', url: canonicalUrl },
+  ]),
+]
+if (faqSchema) jsonLdItems.push(faqSchema)
+---
+<BaseLayout
+  title={preview ? `Vorschau: ${title}` : title}
+  description={description}
+  canonicalUrl={canonicalUrl}
+  noIndex={preview ? true : doc.seo?.noIndex}
+  ogImage={doc.seo?.ogImage || heroImage}
+  jsonLd={jsonLdItems}
+  currentNav="fotografie"
+>
+  {preview && (
+    <PreviewToolbar
+      collection={preview.collection}
+      slug={preview.slug}
+      status={preview.status}
+      publishedHref={preview.publishedHref}
+    />
+  )}
+
+  <section class="hero-stage" style={hero ? `background: linear-gradient(180deg, rgba(2,3,6,.28), rgba(2,3,6,.88)), url('${hero}') center / cover;` : ''}>
+    <div class="hero-stage__grid container">
+      <div>
+        <p class="eyebrow">{preview ? 'Preview / Lokale SEO-Seite' : [doc.service, doc.city].filter(Boolean).join(' / ')}</p>
+        <h1 class="display">{doc.title}</h1>
+      </div>
+      <div>
+        {!hero && <ResponsiveImage media={heroImage} size="card" fallback={doc.title || 'Lokales Hero-Bild'} loading="eager" />}
+        <p class="copy" style="margin-top: 22px;">{doc.intro}</p>
+        {focusFacts.length > 0 && (
+          <div class="filter-row" aria-label="Lokaler Kontext">
+            {focusFacts.map((fact) => <span>{fact.label}: {fact.value}</span>)}
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <section class="container section-pad is-compact">
+    <div class="feature-row">
+      <div>
+        <p class="eyebrow">Lokaler Rahmen</p>
+        <h2 class="display" style="font-size: clamp(38px, 6vw, 104px); margin: 12px 0 22px;">
+          Eine Seite fuer {doc.city || 'die Region'}.
+        </h2>
+      </div>
+      <p class="copy">
+        Planung, Lichtfenster, Bildnutzung und Ausgabe werden zusammen gedacht. So entsteht aus der lokalen Anfrage kein
+        einzelnes Bild, sondern eine verwertbare Serie fuer Website, Verkauf, Portfolio, Print oder Kampagne.
+      </p>
+    </div>
+  </section>
+
+  <LoadMoreGallery items={gallery} eyebrow="Lokale Bildstrecke" fallback={doc.title || 'Lokales Fotografie-Bild'} />
+
+  {proofPoints.length > 0 && (
+    <section class="container section-pad">
+      <p class="eyebrow">Lokale Orientierung</p>
+      <div class="card-grid" style="margin-top: 24px;">
+        {proofPoints.map((point) => (
+          <article class="card">
+            <h3>{point.label}</h3>
+            <p class="copy">{point.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <ContentBlocks blocks={doc.blocks} />
+
+  {faq.length > 0 && (
+    <section class="container section-pad">
+      <p class="eyebrow">FAQ</p>
+      <div class="stack-list">
+        {faq.map((item) => (
+          <article class="stack-item">
+            <h3>{item.question}</h3>
+            <p class="copy">{item.answer}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {relatedPages.length > 0 && (
+    <section class="container section-pad is-compact">
+      <p class="eyebrow">Weiterfuehren</p>
+      <div class="filter-row">
+        {relatedPages.map((link) => link.href && <a {...linkAttributes(link)}>{link.label}</a>)}
+      </div>
+    </section>
+  )}
+
+  <ContactCta cta={doc.contactOverride || doc.cta} />
+</BaseLayout>

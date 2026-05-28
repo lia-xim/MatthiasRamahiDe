@@ -1,0 +1,137 @@
+---
+import NativeLegacyLayout from '../../layouts/NativeLegacyLayout.astro'
+import { getBySlug, type PayloadDoc } from '../../lib/payload'
+
+const legacyFile = 'fotolabor-druck-duesseldorf.html'
+const providedDoc = Astro.props.doc as PayloadDoc | undefined
+const doc = providedDoc || (await getBySlug('service-pages', 'fotolabor-druck-duesseldorf', { depth: 2 }))
+
+const formatLabels = [
+  ['10 × 15 cm', 'Sammler · Geschenk'],
+  ['A4 / 21 × 30', 'Editorial · Schreibtisch'],
+  ['A3 / 30 × 42', 'Location · Sammlung'],
+  ['50 × 70 cm', 'Wohnraum · Büro'],
+  ['70 × 100 cm', 'Empfang · Galerie'],
+  ['100 × 150 cm', 'Statement · Großraum'],
+]
+
+const proofStages = [
+  {
+    number: 'Stage 01',
+    title: 'Datei-Vorbereitung.',
+    body: 'RAW-Datei wird auf den finalen Bildausschnitt gebracht, Schärfung folgt dem Druckmaterial. 16-bit TIFF in Adobe RGB oder ProPhoto.',
+  },
+  {
+    number: 'Stage 02',
+    title: 'Soft-Proof am Monitor.',
+    body: 'Mit dem ICC-Profil des Zielpapiers wird simuliert, wie der Druck wirkt — Farb-Korrekturen werden vor dem Druck eingesteuert.',
+  },
+  {
+    number: 'Stage 03',
+    title: 'Final &amp; Versand.',
+    body: 'Druck in Endgröße, säurefreie Verpackung. Versand als Rohr oder Flachpaket, deutschlandweit innerhalb 48 h.',
+  },
+]
+---
+<NativeLegacyLayout legacyFile={legacyFile} current="leistungen" doc={doc}>
+  <main>
+    <section class="sp-hero" data-header-theme="dark" aria-label="Fotolabor &amp; Druck">
+      <div class="sp-hero__bg" aria-hidden="true">
+        <img
+          src="/assets/services/portfolio_webp_full_057-1.webp"
+          alt="Fotodruck-Detail aus dem Fotolabor"
+          loading="eager"
+          fetchpriority="high"
+          width="1280"
+          height="1920"
+          decoding="async"
+        />
+      </div>
+      <div class="sp-hero__inner">
+        <div class="sp-hero__copy">
+          <p class="sp-hero__crumb"><a href="/leistungen.html">Weitere Dienstleistungen</a><span>/</span><span>Fotolabor &amp; Druck</span></p>
+          <p class="sp-eyebrow sp-hero__kicker">Print Lab · Düsseldorf</p>
+          <h1 class="sp-hero__h1">Fotolabor<br /><em>&amp; Druck.</em></h1>
+          <p class="sp-hero__lead">FineArt-Papiere, Acrylglas, Alu-Dibond und Leinwand — gedruckt aus Düsseldorf, geliefert deutschlandweit.</p>
+          <div class="sp-hero__actions">
+            <a class="sp-btn sp-btn--primary" href="#anfrage">Druck anfragen →</a>
+            <a class="sp-btn" href="#format">Formate ansehen</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="lab-scale" id="format" data-header-theme="dark" aria-label="Format-Skala">
+      <div class="lab-scale__inner">
+        <div class="lab-scale__head">
+          <div>
+            <p class="sp-eyebrow">Format-Skala</p>
+            <h2 class="lab-scale__title">Vom Postkartenmaß <em>zur Wandfläche.</em></h2>
+          </div>
+          <p class="lab-scale__lead">
+            Welches Format ein Motiv trägt, hängt nicht von der Wand allein ab — Betrachtungsabstand, Raumtiefe und Auflösung entscheiden mit. Die Skala unten zeigt
+            die Bandbreite vom kleinen Sammlerprint bis zum großen Statement-Bild.
+          </p>
+        </div>
+        <div class="lab-scale__ruler" role="img" aria-label="Visuelle Skala der angebotenen Druckformate von klein bis groß">
+          {[1, 2, 3, 4, 5, 6].map((number) => (
+            <div class={`lab-scale__plate lab-scale__plate--p${number}`}>
+              <span class="lab-scale__plate-num">{number === 1 ? '10 × 15' : number === 2 ? 'A4' : number === 3 ? 'A3' : number === 4 ? '50 × 70' : number === 5 ? '70 × 100' : '100 × 150'}</span>
+            </div>
+          ))}
+        </div>
+        <div class="lab-scale__labels">
+          {formatLabels.map(([label, note]) => (
+            <div class="lab-scale__label"><strong>{label}</strong><em>{note}</em></div>
+          ))}
+        </div>
+        <dl class="lab-scale__note">
+          <div class="lab-scale__note-item"><dt>Auflösung</dt><dd>240–300 dpi auf der finalen Druckgröße — bei Wandformaten über 70 × 100 cm reichen 180 dpi.</dd></div>
+          <div class="lab-scale__note-item"><dt>Sonderformat</dt><dd>Panoramen, Triptychen und Reihen jenseits dieser Stufen — auf Anfrage bis 300 × 150 cm.</dd></div>
+          <div class="lab-scale__note-item"><dt>Versand</dt><dd>Rohrlieferung bis 70 cm, Flachpaket darüber, Sperrgut auf Träger. Versandbereit innerhalb 5 Werktagen.</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="lab-proof" data-header-theme="light" aria-label="Soft-Proof Workflow">
+      <div class="lab-proof__inner">
+        <div class="lab-proof__head">
+          <div>
+            <p class="sp-eyebrow">Workflow</p>
+            <h2 class="lab-proof__title">Vom Bildschirm <em>auf das Papier.</em></h2>
+          </div>
+          <p class="lab-proof__lead">
+            Was am Monitor leuchtet, sieht auf Baumwoll-Bütten oft anders aus. Drei Stationen sorgen dafür, dass das Endprodukt der Bildidee folgt — nicht der
+            Druckmaschine.
+          </p>
+        </div>
+        <ol class="lab-proof__track" role="list">
+          {proofStages.map((stage) => (
+            <li class="lab-proof__stage">
+              <p class="lab-proof__stage-num">{stage.number}</p>
+              <h3 class="lab-proof__stage-title" set:html={stage.title}></h3>
+              <p class="lab-proof__stage-body">{stage.body}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <section class="sp-cta" data-header-theme="light" aria-label="Anfrage">
+      <div class="sp-cta__inner">
+        <h2 class="sp-cta__head">Bereit für ein <em>Druck-Briefing.</em></h2>
+        <a class="sp-cta__btn" href="#anfrage">Projekt anfragen →</a>
+      </div>
+    </section>
+
+    <section
+      id="anfrage"
+      data-contact-section
+      data-contact-subject="Druck-Anfrage — Matthias Ramahi"
+      data-contact-headline="Motiv drucken lassen."
+      data-contact-lead="Schreib kurz, welches Motiv gedruckt werden soll, wo der Print später hängt und welches Format ungefähr geplant ist. Wenn Material oder Größe offen sind, reicht eine grobe Idee."
+      data-header-theme="dark"
+      aria-label="Anfrage"
+    />
+  </main>
+</NativeLegacyLayout>

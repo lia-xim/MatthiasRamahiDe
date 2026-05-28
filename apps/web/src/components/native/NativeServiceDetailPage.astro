@@ -1,0 +1,111 @@
+---
+import NativeLegacyLayout from '../../layouts/NativeLegacyLayout.astro'
+import { nativeServiceDetailPages } from '../../lib/serviceDetailContent'
+import { getBySlug, type PayloadDoc } from '../../lib/payload'
+
+type Props = {
+  doc?: PayloadDoc
+  legacyFile: string
+}
+
+const { legacyFile } = Astro.props as Props
+const page = nativeServiceDetailPages[legacyFile]
+const slug = legacyFile.replace(/\.html$/i, '')
+const providedDoc = (Astro.props as Props).doc
+const doc = providedDoc || (await getBySlug('service-pages', slug, { depth: 2 }))
+---
+<NativeLegacyLayout legacyFile={legacyFile} current="leistungen" doc={doc}>
+  <main>
+    <section class="sp-hero" data-header-theme="dark" aria-label={page.hero.crumb.replace(/&amp;/g, '&')}>
+      <div class="sp-hero__bg" aria-hidden="true">
+        <img
+          src={page.hero.image}
+          alt={page.hero.alt}
+          loading="eager"
+          fetchpriority="high"
+          width={page.hero.width}
+          height={page.hero.height}
+          decoding="async"
+        />
+      </div>
+      <div class="sp-hero__inner">
+        <div class="sp-hero__copy">
+          <p class="sp-hero__crumb">
+            <a href="/leistungen.html">Weitere Dienstleistungen</a><span>/</span><span set:html={page.hero.crumb}></span>
+          </p>
+          <p class="sp-eyebrow sp-hero__kicker">{page.hero.eyebrow}</p>
+          <h1 class="sp-hero__h1" set:html={page.hero.h1}></h1>
+          <p class="sp-hero__lead">{page.hero.lead}</p>
+          <div class="sp-hero__actions">
+            <a class="sp-btn sp-btn--primary" href="#anfrage">{page.hero.primary}</a>
+            <a class="sp-btn" href="#leistungen">{page.hero.secondary}</a>
+          </div>
+        </div>
+        <dl class="sp-hero__side" aria-label="Eckdaten">
+          <div><dt>Standort</dt><dd>{page.hero.side[0]}</dd></div>
+          <div><dt>Bereich</dt><dd set:html={page.hero.side[1]}></dd></div>
+          <div><dt>Briefing</dt><dd>{page.hero.side[2]}</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="sp-over" id="leistungen" data-header-theme="light" aria-label={`${page.hero.crumb.replace(/&amp;/g, '&')} — Leistungen`}>
+      <div class="sp-over__head">
+        <div>
+          <p class="sp-eyebrow">{page.overview.eyebrow}</p>
+          <h2 class="sp-over__title" set:html={page.overview.title}></h2>
+        </div>
+        <p class="sp-over__lead">{page.overview.lead}</p>
+      </div>
+      <div class="sp-over__grid">
+        {page.overview.cards.map((card) => (
+          <a class="sp-card" href="#anfrage">
+            <div>
+              <p class="sp-card__kicker">{card.kicker}</p>
+              <h3 class="sp-card__title" set:html={card.title}></h3>
+              <p class="sp-card__body">{card.body}</p>
+            </div>
+            <ul class="sp-card__list">
+              {card.items.map((item) => <li set:html={item}></li>)}
+            </ul>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="sp-feature" data-header-theme="dark" aria-label={page.feature.aria}>
+      <div class="sp-feature__inner">
+        <div class="sp-feature__lead">
+          <p class="sp-eyebrow">{page.feature.eyebrow}</p>
+          <h2 set:html={page.feature.title}></h2>
+          <p>{page.feature.lead}</p>
+        </div>
+        <div class="sp-feature__list">
+          {page.feature.items.map((item) => (
+            <div class="sp-feature__item">
+              <p class="sp-feature__tag">{item.tag}</p>
+              <p class="sp-feature__line">{item.line}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="sp-cta" data-header-theme="light" aria-label="Anfrage">
+      <div class="sp-cta__inner">
+        <h2 class="sp-cta__head" set:html={page.ctaHead}></h2>
+        <a class="sp-cta__btn" href="#anfrage">Projekt anfragen →</a>
+      </div>
+    </section>
+
+    <section
+      id="anfrage"
+      data-contact-section
+      data-contact-subject={page.contact.subject}
+      data-contact-headline={page.contact.headline}
+      data-contact-lead={page.contact.lead}
+      data-header-theme="dark"
+      aria-label="Anfrage"
+    />
+  </main>
+</NativeLegacyLayout>

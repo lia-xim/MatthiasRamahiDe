@@ -154,7 +154,18 @@ const servicesParagraphs = blockParagraphs(doc, 'Weitere Leistungen', [
         <div class="blog-grid">
           {homeJournalCards.map((post) => (
             <a class="post" href={post.href}>
-              <div class="pimg"><img src={post.image} alt={post.alt} loading="lazy" width={post.width} height={post.height} decoding="async" /></div>
+              <div class="pimg">
+                <img
+                  src={post.image}
+                  srcset={post.dataSrcset}
+                  sizes={post.sizes}
+                  alt={post.alt}
+                  loading="lazy"
+                  width={post.width}
+                  height={post.height}
+                  decoding="async"
+                />
+              </div>
               <span class="meta"><span>{post.number}</span><span>{post.date}</span><span>{post.category}</span></span>
               <h3>{post.title}</h3>
               <p>{post.text}</p>
@@ -162,8 +173,9 @@ const servicesParagraphs = blockParagraphs(doc, 'Weitere Leistungen', [
             </a>
           ))}
         </div>
-        <div class="blog-foot">
-          <a class="btn primary" href="/blog.html">Alle Journal-Beiträge</a>
+        <div style="margin-top:36px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center">
+          <span style="font:10px var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--quiet)">03 aktuelle · Archiv im Journal</span>
+          <a class="btn" style="color:#f3f5ef;border-color:rgba(243,245,239,.4)" href="/blog.html">Alle Beiträge</a>
         </div>
       </div>
     </section>

@@ -360,7 +360,8 @@
     titleEl.classList.add('no-anim');
     titleEl.classList.remove('is-out');
     renderTitle(lines);
-    void titleEl.offsetWidth;            /* flush styles */
+    await new Promise(requestAnimationFrame);
+    if(t!==swapToken) return;
     titleEl.classList.remove('no-anim');
     leadEl?.classList.toggle('is-hidden', idx%HERO_TEXTS.length !== 0);
     requestAnimationFrame(()=>titleEl.classList.add('is-in'));
@@ -381,20 +382,23 @@
   let mx=0.62, my=0.45, tx=0.62, ty=0.45, act=0.0, lastMove=0;
   let lastX=mx, lastY=my, vel=0, velTarget=0;
 
-  function resize(){
+  let canvasRect={left:0,top:0,width:1,height:1};
+  function resize(entry){
     const dpr=Math.min(window.devicePixelRatio||1,1.5);
-    const w=canvas.clientWidth, h=canvas.clientHeight;
+    const box=entry?.contentBoxSize?.[0] || entry?.contentRect;
+    const w=Math.max(1,Math.floor(box?.inlineSize || box?.width || window.innerWidth || 1));
+    const h=Math.max(1,Math.floor(box?.blockSize || box?.height || window.innerHeight || 1));
     canvas.width=Math.max(1,Math.floor(w*dpr));
     canvas.height=Math.max(1,Math.floor(h*dpr));
     gl.viewport(0,0,canvas.width,canvas.height);
+    canvasRect={left:0,top:0,width:w,height:h};
   }
-  const ro=new ResizeObserver(resize); ro.observe(canvas);
+  const ro=new ResizeObserver(entries=>resize(entries[0])); ro.observe(canvas);
   resize();
 
   function move(ev){
-    const r=canvas.getBoundingClientRect();
-    const x=(ev.clientX-r.left)/r.width;
-    const y=1.0-(ev.clientY-r.top)/r.height;
+    const x=(ev.clientX-canvasRect.left)/canvasRect.width;
+    const y=1.0-(ev.clientY-canvasRect.top)/canvasRect.height;
     if(x>=0 && x<=1 && y>=0 && y<=1){
       tx=x; ty=y;
       lastMove=performance.now();
@@ -486,8 +490,25 @@
   requestAnimationFrame(frame);
   };
   const scheduleHeroShader = () => {
-    if ('requestIdleCallback' in window) window.requestIdleCallback(startHeroShader, { timeout: 1400 });
-    else setTimeout(startHeroShader, 0);
+    let scheduled=false;
+    let timer=0;
+    const run=()=>{
+      if(scheduled) return;
+      scheduled=true;
+      cleanup();
+      if ('requestIdleCallback' in window) window.requestIdleCallback(startHeroShader, { timeout: 1200 });
+      else setTimeout(startHeroShader, 0);
+    };
+    const cleanup=()=>{
+      clearTimeout(timer);
+      window.removeEventListener('pointerdown', run);
+      window.removeEventListener('keydown', run);
+      window.removeEventListener('touchstart', run);
+    };
+    window.addEventListener('pointerdown', run, { once:true, passive:true });
+    window.addEventListener('keydown', run, { once:true });
+    window.addEventListener('touchstart', run, { once:true, passive:true });
+    timer=setTimeout(run, 5200);
   };
   if (document.readyState === 'complete') scheduleHeroShader();
   else window.addEventListener('load', scheduleHeroShader, { once: true });

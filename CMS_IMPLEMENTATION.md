@@ -57,6 +57,22 @@ Aktuell adoptierte oeffentliche URLs:
 
 Diese Seiten beziehen ihre Content-Basis aus Payload, wenn ein passendes Dokument mit `legacy.renderedBodyHtml` existiert. Wenn Payload nicht erreichbar ist oder kein Dokument vorhanden ist, bleibt die Root-HTML-Datei als Fallback verfuegbar. Mit `ASTRO_DISABLE_LEGACY_CMS_LOOKUP=true` kann der Datei-Fallback erzwungen werden.
 
+### Native-Komponenten-Stand
+
+Die Migration ist inzwischen zweigleisig:
+
+- Native Astro-Komponenten mit Legacy-Optik: Startseite, `fotografie.html`, `portfolio.html`, `leistungen.html`, sieben weitere Service-Seiten inklusive Fotolabor sowie `blog.html`; der Journal-Index nutzt veroeffentlichte `journal-posts` aus Payload, wenn sie erreichbar sind, und faellt sonst auf die eingefrorene Referenzliste zurueck.
+- CMS-native strukturierte Templates: neue/dynamische Service-Seiten, Portfolio-Projekte, Journal-Beitraege unter `/journal/<slug>` und Local-SEO-Seiten ohne alte HTML-Datei.
+- Bewusste Parity-Schicht: sechs Haupt-Fotografie-Detailseiten, About, Kontakt, Legal, sieben bestehende `blog-*.html` Detailseiten und die alten Local-SEO-HTML-Seiten bleiben 1:1 ueber die Legacy-Schicht, bis ihr Body wirklich als natives Template abgenommen ist.
+
+Local-SEO kann kontrolliert auf das neue native Template umgelegt werden:
+
+```powershell
+ASTRO_ENABLE_NATIVE_LOCAL_SEO_HTML_ROUTES=true
+```
+
+Dieser Schalter ist absichtlich getrennt von `ASTRO_ENABLE_LOCAL_SEO_ADOPTED_ROUTES`, damit die aktuell visuell freigegebene Legacy-Parity fuer alte `.html`-URLs nicht versehentlich durch ein neues Template ersetzt wird.
+
 ## Lokales Setup
 
 Schnellstart ohne Docker/Postgres:
@@ -179,6 +195,7 @@ Der erste Befehl ist ein Dry-Run. Mit `--write` werden nur Dokumente veroeffentl
 - `PAYLOAD_PREVIEW_API_KEY`
 - `ASTRO_ENABLE_ADOPTED_ROUTES`: optional, Standard ist aktiv. Auf `false` setzen, wenn adoptierte `.html`-URLs temporaer wieder als statischer Legacy-Fallback gebaut werden sollen.
 - `ASTRO_ENABLE_LOCAL_SEO_ADOPTED_ROUTES`: Fuer private Staging-Deployments aktuell `true`. Auf `false` setzen, wenn lokale SEO-Seiten temporaer wieder als statischer Legacy-Fallback laufen sollen.
+- `ASTRO_ENABLE_NATIVE_LOCAL_SEO_HTML_ROUTES`: optionaler Opt-in-Schalter, um alte Local-SEO-`.html`-URLs direkt mit dem neuen strukturierten Local-SEO-Template zu rendern.
 - `ASTRO_ENABLE_CMS_DYNAMIC_ROUTES`: Standard aktiv. Erlaubt neuen Payload-Seiten ohne alte `.html`-Datei, strukturiert in Astro zu rendern.
 - `ASTRO_ENABLE_CMS_JOURNAL_ROUTES`: aktiviert native `/journal/<slug>`-Builds.
 - `ASTRO_ENABLE_CMS_SERVICE_ROUTES`: aktiviert native `/services/<slug>`-Routen; Canonical kann weiterhin auf die alte `.html`-URL zeigen.
@@ -255,6 +272,8 @@ Aktueller Stand vom 2026-05-28:
 - `cms:audit-seo -- --strict`: erfolgreich, 0 Errors und 0 Warnings.
 - `production:check`: erfolgreich, inklusive Web-Build, CMS-Build, eigener Astro-Preview, 204/204 Legacy-Routen und Visual Regression.
 - `cms:approve-private-staging -- --collection=local-seo-pages --write`: erfolgreich, 157 lokale SEO-Seiten fuer private Staging-Abnahme veroeffentlicht.
+- `web:build` nach nativer Journal-Artikelkomponente und Local-SEO-Template-Gate: erfolgreich, `astro check` mit 0 Errors / 0 Warnings.
+- Zielgerichtete Visual Regression nach der letzten Template-Aenderung: Portfolio, Leistungen, Journal-Index, Automotive-Journal-Detail und Local-SEO bleiben unter der harten 5%-Grenze; Local-SEO mobile bleibt wegen langer Legacy-Lazyload-Strecken eine dokumentierte Warnung.
 
 Weitere QA-Befehle:
 
@@ -295,5 +314,6 @@ Kurzfassung:
 - Weitere nicht aktive Importgruppen redaktionell pruefen und erst danach `legacy.migrationStatus` von `seeded` auf `reviewed`, `componentized` oder `live` setzen.
 - Medienbestand weiter kuratieren: Alt-Texte, Captions, Featured-Auswahl, Mood/Tags und Verwendungszweck finalisieren.
 - Weitere Legacy-Layouts aus dem Body in echte Astro-Komponenten zerlegen, sobald Visual Regression fuer den Seitentyp stabil gruen ist.
+- Naechste native Body-Zerlegung: sechs Haupt-Fotografie-Detailseiten, danach About/Kontakt/Legal, danach die sieben bestehenden Journal-Detail-HTML-Seiten.
 - Local-SEO-Seiten nach dem privaten Online-Test final redaktionell gegenlesen und bei Bedarf einzelne Seiten wieder auf Draft setzen.
 - Optional: Rebuild-Hook auf dem Hetzner-Server aktivieren und mit echtem Secret testen.

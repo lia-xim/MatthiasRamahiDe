@@ -1,5 +1,6 @@
 ---
 import CmsRoutedPage from '../components/cms/CmsRoutedPage.astro'
+import NativeLocalSeoPage from '../components/cms/NativeLocalSeoPage.astro'
 import LegacyPageShell from '../components/legacy/LegacyPageShell.astro'
 import { envFlagNotFalse } from '../lib/envFlags'
 import { getLegacyFileForPath } from '../lib/legacy'
@@ -31,4 +32,12 @@ if (!legacyFile && !cmsDoc) {
 Astro.response.headers.set('cache-control', 'public, max-age=300, stale-while-revalidate=86400')
 if (cmsDoc) Astro.response.headers.set('x-migration-render', 'cms-dynamic-structured')
 ---
-{legacyFile ? <LegacyPageShell legacyFile={legacyFile} /> : <CmsRoutedPage collection={cmsCollection} doc={cmsDoc as PayloadDoc} />}
+{
+  legacyFile ? (
+    <LegacyPageShell legacyFile={legacyFile} />
+  ) : cmsCollection === 'local-seo-pages' ? (
+    <NativeLocalSeoPage doc={cmsDoc as PayloadDoc} />
+  ) : (
+    <CmsRoutedPage collection={cmsCollection} doc={cmsDoc as PayloadDoc} />
+  )
+}
