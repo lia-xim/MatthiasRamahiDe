@@ -20,7 +20,7 @@ const htmlAliases: Record<string, string> = {
   about: 'ueber-mich.html',
   blog: 'blog.html',
   contact: 'contact.html',
-  fotografie: 'fotografie-duesseldorf.html',
+  fotografie: 'fotografie.html',
   journal: 'blog.html',
   kontakt: 'contact.html',
   leistungen: 'leistungen.html',

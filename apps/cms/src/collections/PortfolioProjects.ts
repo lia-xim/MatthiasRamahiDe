@@ -1,6 +1,7 @@
 import type { CollectionConfig } from 'payload'
 
 import { authenticated, publishedOrAuthenticated } from '../access/publishedOrAuthenticated'
+import { adminGroups, editorPagination } from '../admin/structure'
 import { advancedSettings } from '../fields/advancedSettings'
 import { contentBlocks } from '../fields/contentBlocks'
 import { mediaRelationshipField, portfolioGalleryField } from '../fields/editorialImages'
@@ -18,8 +19,11 @@ export const PortfolioProjects: CollectionConfig = {
   labels: { singular: 'Portfolio-Projekt', plural: 'Portfolio-Projekte' },
   admin: {
     useAsTitle: 'title',
-    group: 'Portfolio',
+    group: adminGroups.portfolio,
     defaultColumns: ['coverImage', 'title', 'slug', 'category', '_status', 'featured', 'updatedAt'],
+    listSearchableFields: ['title', 'slug', 'excerpt', 'usageSummary', 'location', 'client', 'seo.title', 'seo.description', 'legacy.sourceFile'],
+    pagination: editorPagination,
+    hideAPIURL: true,
     description: 'Kuratiertes Projekt mit Cover, Galerie, Kontext, SEO und Vorschau.',
     preview: (data) => buildPreviewUrl({ collection: 'portfolio-projects', slug: data?.slug }),
   },
@@ -100,21 +104,6 @@ export const PortfolioProjects: CollectionConfig = {
                 appearance: 'drawer',
               },
             },
-            {
-              name: 'presentationMode',
-              label: 'Art Direction',
-              type: 'select',
-              defaultValue: 'floating-archive',
-              options: [
-                { label: 'Floating Archive', value: 'floating-archive' },
-                { label: 'Narrative Stage', value: 'narrative-stage' },
-                { label: 'Experimental Lens', value: 'experimental-lens' },
-                { label: 'Ruhige Editorial-Seite', value: 'editorial' },
-              ],
-              admin: {
-                description: 'Advanced Art Direction. Der Default funktioniert fuer die meisten Serien.',
-              },
-            },
             { name: 'excerpt', label: 'Kurztext', type: 'textarea', required: true },
             {
               name: 'usageSummary',
@@ -171,6 +160,21 @@ export const PortfolioProjects: CollectionConfig = {
           description: 'CTA, SEO und Legacy-Migration.',
           fields: [
             advancedSettings([
+              {
+                name: 'presentationMode',
+                label: 'Art Direction',
+                type: 'select',
+                defaultValue: 'floating-archive',
+                options: [
+                  { label: 'Floating Archive', value: 'floating-archive' },
+                  { label: 'Narrative Stage', value: 'narrative-stage' },
+                  { label: 'Experimental Lens', value: 'experimental-lens' },
+                  { label: 'Ruhige Editorial-Seite', value: 'editorial' },
+                ],
+                admin: {
+                  description: 'Der Default funktioniert fuer die meisten Serien.',
+                },
+              },
               {
                 name: 'cta',
                 label: 'Seitenspezifischer CTA',

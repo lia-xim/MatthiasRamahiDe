@@ -48,11 +48,11 @@
         spot.style.setProperty('--cx','50%'); spot.style.setProperty('--cy','52%');
       }
 
-      /* -------- Lighting Studio -------- */
-      const subject = document.getElementById('studioSubject');
-      const marker = document.getElementById('studioMarker');
-      const stageBox = document.getElementById('studioStage');
-      const chips = document.querySelectorAll('.studio__chips button');
+      /* -------- Lighting Location -------- */
+      const subject = document.getElementById('locationSubject');
+      const marker = document.getElementById('locationMarker');
+      const stageBox = document.getElementById('locationStage');
+      const chips = document.querySelectorAll('.location__chips button');
 
       const setLight = (lx, ly)=>{
         if(subject){ subject.style.setProperty('--lx', lx); subject.style.setProperty('--ly', ly); }

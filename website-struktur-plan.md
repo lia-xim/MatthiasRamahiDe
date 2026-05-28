@@ -607,7 +607,7 @@ Portraits für Personal Branding, Künstler, Unternehmer, Teams, Bewerbungen, Pr
 
 #### 1. Hero: „Nähe ohne Beliebigkeit“
 
-- starkes Portraitbild, keine generische Studiooptik
+- starkes Portraitbild, keine generische Locationoptik
 - Headline: `Portraitfotografie Düsseldorf`
 - Subline: „Portraits mit Haltung, Licht und Präsenz — für Menschen, Marken, Websites, Presse und persönliche Positionierung.“
 - CTA: `Portrait-Shooting anfragen`

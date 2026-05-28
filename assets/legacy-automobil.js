@@ -201,7 +201,7 @@
     var DATA = [
       {label:'Exterieur', title:'Vollformat, ruhige Linien.',
        body:'Außenaufnahmen mit kontrolliertem Licht und ruhigen Reflexen. Lack, Proportionen und Linienführung wirken stimmig — Showroom, Industrie oder urbanes Setting.',
-       list:['Showroom & Studio','Architektur & Industrie','Tages- und Nachtlicht']},
+       list:['Showroom & Location','Architektur & Industrie','Tages- und Nachtlicht']},
       {label:'Interieur', title:'Cockpit, Sitz, Material.',
        body:'Innenraum mit mobilem Licht inszeniert. Leder, Carbon und Chrom behalten ihren Ton — der Innenraum spricht dieselbe Sprache wie das Exterieur.',
        list:['Cockpit & Lenkrad','Materialien & Naht','Lichtstimmung im Raum']},

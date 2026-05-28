@@ -44,12 +44,12 @@ export default buildConfig({
   admin: {
     user: Users.slug,
     meta: {
-      titleSuffix: '— Matthias Ramahi CMS',
+      titleSuffix: ' - Matthias Ramahi CMS',
     },
     livePreview: {
       url: ({ collectionConfig, data }) =>
         buildPreviewUrl({ collection: collectionConfig?.slug || '', slug: data?.slug }),
-      collections: ['portfolio-projects', 'service-pages', 'local-seo-pages', 'journal-posts', 'site-pages'],
+      collections: ['site-pages', 'service-pages', 'portfolio-projects', 'journal-posts', 'local-seo-pages'],
       breakpoints: [
         { label: 'Mobile', name: 'mobile', width: 390, height: 844 },
         { label: 'Tablet', name: 'tablet', width: 820, height: 1180 },
@@ -58,16 +58,16 @@ export default buildConfig({
     },
   },
   collections: [
-    Users,
-    Media,
-    PortfolioCategories,
-    PortfolioProjects,
-    ServicePages,
-    LocalSeoPages,
-    JournalPosts,
     SitePages,
+    ServicePages,
+    PortfolioProjects,
+    PortfolioCategories,
+    JournalPosts,
+    LocalSeoPages,
+    Media,
+    Users,
   ],
-  globals: [Navigation, SiteSettings, Footer, GlobalCtas],
+  globals: [Navigation, SiteSettings, GlobalCtas, Footer],
   editor: lexicalEditor({}),
   db: useSQLite
     ? sqliteAdapter({

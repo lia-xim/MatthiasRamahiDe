@@ -131,13 +131,13 @@ async function seedGlobals() {
       email: legacyContent.footer.email,
       phone: legacyContent.footer.phone,
       locationLabel: legacyContent.footer.locationLabel,
-      studioLink: link(legacyContent.footer.studioLink),
+      aboutLink: link(legacyContent.footer.aboutLink),
       copyright: legacyContent.footer.copyright,
       columns: legacyContent.footer.columns.map((column) => ({
         label: column.label,
         links: column.links.map(link),
       })),
-      primaryLinks: legacyContent.footer.columns.find((column) => column.id === 'studio')?.links.map(link),
+      primaryLinks: legacyContent.footer.columns.find((column) => column.id === 'about')?.links.map(link),
       serviceLinks: [
         ...legacyContent.footer.columns.find((column) => column.id === 'foto')!.links.map(link),
         ...legacyContent.footer.columns.find((column) => column.id === 'services')!.links.map(link),

@@ -105,10 +105,10 @@ Shared via `assets/site-chrome.css` / `assets/site-chrome.js` (legacy) and `apps
 - **Padding:** `clamp(54px, 8vw, 110px) 0`.
 - **Grid:** 4 columns on desktop (`1.35fr` for the brand/claim, then 4 narrow link columns). Collapses to 1 column on mobile.
 - **Brand:** large brand mark + short statement: "Fotografie aus Düsseldorf — kuratiert für Marke, Sammlung und Druck. Editorial geführt, technisch ruhig, bereit für die nächste Ausgabe."
-- **Link columns:** Fotografie (6 topics), Studio (about, journal, contact, leistungen, portfolio), Services (7 services), Direct (email, phone, location).
+- **Link columns:** Fotografie (6 topics), Location (about, journal, contact, leistungen, portfolio), Services (7 services), Direct (email, phone, location).
 - **Each column header:** mono uppercase 10px with bottom border, `letter-spacing: .26em`.
 - **Each link:** has a left-accent bar (`::before`) that grows from `width:0` to `width:24px` on hover (using `var(--accent)`).
-- **Contact card** (last column): labeled lines for email, phone, studio location.
+- **Contact card** (last column): labeled lines for email, phone, location location.
 - **Legal:** Impressum + Datenschutz as small mono links at the very bottom.
 
 ## Distinctive moments — the things that make this site itself

@@ -7,10 +7,10 @@ const categories = [
   ['sportwagen','02','Sportwagen','Sportwagen Fotografie','sportwagen-fotografie','assets/optimized/assets-photos-automobil-sunset-1920.webp','Sportwagen im warmen Streiflicht',
     p=>`Sportwagen in ${p} brauchen Präzision statt Effektfeuerwerk: niedrige Blickachsen, saubere Spiegelungen, Innenraumdetails und eine Dramaturgie, die Leistung sichtbar macht, ohne ins Plakative zu kippen.`,
     'Für Sammler, Händler, Performance-Projekte und hochwertige Verkaufsserien mit Bildwirkung über den ersten Blick hinaus.'],
-  ['oldtimer','03','Oldtimer','Oldtimer Fotografie','oldtimer-fotografie','assets/optimized/assets-photos-oldtimer-stage-1920.webp','Oldtimer als ruhige Studio-Inszenierung',
+  ['oldtimer','03','Oldtimer','Oldtimer Fotografie','oldtimer-fotografie','assets/optimized/assets-photos-oldtimer-stage-1920.webp','Oldtimer als ruhige ruhige Inszenierung',
     p=>`Oldtimer Fotografie in ${p} erzählt Wert, Herkunft und Material. Lack, Chrom, Leder und Patina werden nicht nostalgisch überhöht, sondern mit Charakter und Nostalgie präzise dokumentiert.`,
     'Ideal für Sammlung, Auktion, Verkauf, Ausstellung und Fahrzeuge, deren Geschichte sichtbar bleiben soll.'],
-  ['motorrad','04','Motorrad','Motorrad Fotografie','motorrad-fotografie','assets/optimized/assets-photos-motorrad-1920.webp','Motorrad mit dunkler Studio-Atmosphäre',
+  ['motorrad','04','Motorrad','Motorrad Fotografie','motorrad-fotografie','assets/optimized/assets-photos-motorrad-1920.webp','Motorrad mit dunkler Location-Atmosphäre',
     p=>`Motorräder in ${p} funktionieren über Haltung, Mechanik und Silhouette. Die Serie kann Maschine, Details, Fahrer und Werkstattbezug verbinden — stärker als ein einzelnes Verkaufsfoto.`,
     'Für Custom Bikes, Händler, private Maschinen, Werkstätten und dokumentarische Serien mit Druck.'],
   ['portrait','05','Portrait','Portrait Fotografie','portraitfotografie','assets/photos/portrait-blue.webp','Editoriales Portrait mit blauem Licht',
@@ -28,7 +28,7 @@ const pages = [
     'Fotografie Düsseldorf | Übersicht | Matthias Ramahi',
     'Fotografie Düsseldorf als klare Übersicht: Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft — sechs spezialisierte Bereiche mit eigenem Einstieg.',
     'Sechs Fotografie-Bereiche, eine Adresse in Düsseldorf — von Automobil, Sportwagen, Oldtimer und Motorrad bis Portrait und Fine-Art-Landschaft. Jede Kategorie mit eigener Bildsprache und eigenem Einstieg.',
-    'Düsseldorf ist der Studio- und Planungsanker. Von hier aus werden Fahrzeugserien, Portraits und Prints so geführt, dass Nutzer und Suchmaschinen sofort verstehen, welcher Bereich wohin gehört.',
+    'Düsseldorf ist der Standort- und Planungsanker. Von hier aus werden Fahrzeugserien, Portraits und Prints so geführt, dass Nutzer und Suchmaschinen sofort verstehen, welcher Bereich wohin gehört.',
     'Fotografie Düsseldorf Anfrage',
     'mpik8b82-_DSC3879.webp'],
   ['fotografie-nrw.html','NRW',
@@ -91,14 +91,14 @@ function footer(place){return `<footer class="mr-footer" data-header-theme="dark
   <div class="mr-footer__hairline" aria-hidden="true"></div>
   <div class="mr-footer__inner">
 
-    <section class="mr-footer__top" aria-label="Studio">
+    <section class="mr-footer__top" aria-label="Fotograf">
       <a class="mr-footer__mark" href="index.html" aria-label="Zurück zur Startseite">
         Matthias<span>Ramahi</span>
       </a>
       <div class="mr-footer__claim">
         <p>Fotografie aus Düsseldorf — kuratiert für <em>Marke, Sammlung und Druck</em>. Editorial geführt, technisch ruhig, bereit für die nächste Ausgabe.</p>
-        <div class="mr-footer__meta" aria-label="Studio">
-          <a href="ueber-mich.html">Studio &nbsp;→</a>
+        <div class="mr-footer__meta" aria-label="Fotograf">
+          <a href="ueber-mich.html">Über mich &nbsp;→</a>
         </div>
       </div>
     </section>
@@ -118,8 +118,8 @@ function footer(place){return `<footer class="mr-footer" data-header-theme="dark
         </div>
       </div>
 
-      <div class="mr-footer__col" aria-labelledby="ftr-studio">
-        <span class="mr-footer__col-label" id="ftr-studio">Studio</span>
+      <div class="mr-footer__col" aria-labelledby="ftr-about">
+        <span class="mr-footer__col-label" id="ftr-about">Fotograf</span>
         <div class="mr-footer__col-list">
           <a href="index.html">Home</a>
           <a href="portfolio.html">Portfolio</a>
@@ -152,7 +152,7 @@ function footer(place){return `<footer class="mr-footer" data-header-theme="dark
             <a href="tel:+4917642449858">+49 176 42 44 98 58</a>
           </div>
           <div class="mr-footer__contact-line">
-            <span>Studio</span>
+            <span>Fotograf</span>
             <strong>${esc(place)} · NRW</strong>
           </div>
         </div>

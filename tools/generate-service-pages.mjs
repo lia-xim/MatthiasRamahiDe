@@ -36,7 +36,7 @@ const SERVICES=[
     featureHead:'Das Material trägt',featureHeadEm:'das Bild.',
     featureLead:'Ein Portrait wirkt auf mattem FineArt-Papier anders als auf glänzendem Lustre. Ein Auto auf Acrylglas ist nicht dasselbe wie auf Leinwand. Die Wahl ist nicht Geschmack — sie ist Teil des Bildes.',
     featureItems:[
-      {tag:'Glanz',line:'Tiefe und Farbe — für Auto, Studio, dunkle Motive.'},
+      {tag:'Glanz',line:'Tiefe und Farbe — für Auto, Location, dunkle Motive.'},
       {tag:'Matt',line:'Ruhe und galerieartige Bildwirkung — für Portrait und Landschaft.'},
       {tag:'Struktur',line:'Bütten und Strukturen — wenn das Motiv ein haptisches Objekt werden soll.'},
       {tag:'Objekt',line:'Acryl, Dibond, Holz — wenn der Druck Raumwirkung übernehmen soll.'}
@@ -62,7 +62,7 @@ const SERVICES=[
     overviewLead:'Große Flächen brauchen mehr als hohe Auflösung. Material, Betrachtungsabstand, Lichtsituation und Montage entscheiden, ob ein Großformat ruhig oder unruhig wirkt.',
     cards:[
       {k:'01 / Wand',t:'Wandbilder XL',body:'Hochformatige oder querformatige Bilder ab 100 × 70 cm bis 400 × 250 cm — auf Acryl, Alu, Leinwand oder direkt geklebt.',list:['Acryl bis 250 × 150 cm','Alu-Dibond bis 300 × 150 cm','Direktklebung auf gestrichene Wand']},
-      {k:'02 / Marke',t:'Showroom & Empfang',body:'Markenwände für Empfangsbereiche, Autohäuser, Boutiquen und Studios — abgestimmt auf Corporate Look und Lichtsituation.',list:['Beleuchtungs-Check vor Druck','Material auf CI-Farben abgestimmt','Montage mit Schiene oder Distanzhalter']},
+      {k:'02 / Marke',t:'Showroom & Empfang',body:'Markenwände für Empfangsbereiche, Autohäuser, Boutiquen und Marken — abgestimmt auf Corporate Look und Lichtsituation.',list:['Beleuchtungs-Check vor Druck','Material auf CI-Farben abgestimmt','Montage mit Schiene oder Distanzhalter']},
       {k:'03 / Event',t:'Messebanner & Roll-Ups',body:'Vom mobilen Roll-Up bis zur 6 m Messewand — leichte Stoffsysteme, Backlit-Folien, Hardcase-Lieferung.',list:['Stoff- oder PVC-Banner','Roll-Up 85 × 200 cm und 120 × 200 cm','Backlit für hinterleuchtete Rahmen']},
       {k:'04 / Schaufenster',t:'Folien & Fenster',body:'Schaufensterfolien, Sichtschutzfolien, milchige Klebefolie und farbige Akzentfolien — mit Verlegung auf Wunsch.',list:['Frosted-Folien und Sandstrahleffekt','Vollflächige Bildmotive','Branding-Folien auf Glas und Türen']}
     ],
@@ -97,7 +97,7 @@ const SERVICES=[
     cards:[
       {k:'01 / Fahrzeug',t:'Fahrzeugbeschriftung',body:'Logo, Kontakt, Vollverklebung — auf PKW, Transporter, LKW oder Anhänger. Mit Vorab-Visualisierung am Fahrzeugfoto.',list:['Teilbeklebung mit Hochleistungsfolie','Vollfolierung in Farbe oder Carbon','Montage im rheinländischen Raum']},
       {k:'02 / Schaufenster',t:'Schaufenster & Glas',body:'Werbung an Ladenflächen — von der dezenten Logofolie bis zur vollflächigen Bildmotivfolie. Demontagefreundlich und sauber.',list:['Frosted für Sichtschutz','Bedruckte Folien mit Bildmotiv','Türaufkleber und Hinweistexte']},
-      {k:'03 / Fassade',t:'Schilder & Beschilderung',body:'Außenschilder, Hinweisschilder, Türschilder und Leitsysteme — aus Alu-Dibond, Acryl, Metall oder beleuchtet.',list:['Außenmontage mit Statik-Check','Acrylplatten mit Standoffs','Leitsysteme für Praxen und Studios']},
+      {k:'03 / Fassade',t:'Schilder & Beschilderung',body:'Außenschilder, Hinweisschilder, Türschilder und Leitsysteme — aus Alu-Dibond, Acryl, Metall oder beleuchtet.',list:['Außenmontage mit Statik-Check','Acrylplatten mit Standoffs','Leitsysteme für Praxen und Marken']},
       {k:'04 / Licht',t:'LED-Lichtwerbung',body:'Hinterleuchtete Logos, Profilbuchstaben und Lightboxes — energieeffizient mit LED und langer Lebensdauer.',list:['Profilbuchstaben aus Acryl mit LED','Backlit-Boxes für Schaufenster','Außenfertige Lichtkästen IP65']}
     ],
     featureKicker:'Ablauf',
@@ -121,7 +121,7 @@ const SERVICES=[
     crumbText:'Webdesign & SEO',
     heroKicker:'Web · Düsseldorf',
     h1:'Webdesign',h1Em:'& SEO.',
-    heroLead:'Moderne Websites mit klarer Struktur, schneller Performance und lokaler Suchmaschinensichtbarkeit — für Studios, Marken und Mittelstand im Rheinland.',
+    heroLead:'Moderne Websites mit klarer Struktur, schneller Performance und lokaler Suchmaschinensichtbarkeit — für Marken, Marken und Mittelstand im Rheinland.',
     heroBg:'assets/services/screencapture-gr-knospe-de-2025-10-02-23_10_04-scaled.jpg',
     heroAlt:'Website Screenshot — Webdesign Düsseldorf',
     heroCaption:'Launch · NRW',
@@ -166,7 +166,7 @@ const SERVICES=[
       {k:'01 / Hochzeit',t:'Trauung & Empfang',body:'Standesamt, kirchliche Trauung, freie Trauung und Sektempfang — mit klassischem Repertoire oder Pop-Arrangements.',list:['Solo Viola, Geige oder Duo','Repertoire abgestimmt vorab','Auf-/Abbau leise und unkompliziert']},
       {k:'02 / Trauer',t:'Trauerfeier',body:'Würdevolle musikalische Begleitung in Trauerhalle, Kirche oder am Grab — ruhig und einfühlsam.',list:['Ruhige Stückauswahl','Diskret im Hintergrund','Kurzfristig verfügbar']},
       {k:'03 / Privat',t:'Private Anlässe',body:'Geburtstag, Jubiläum, Firmenfeier, Galaempfang — klassische Musik als Atmosphäre, nicht als Hintergrundbeschallung.',list:['Sets von 30–90 Minuten','Mehrere Künstler verfügbar','Beleuchtung und Aufstellung beachtet']},
-      {k:'04 / Studio',t:'Aufnahmen',body:'Für Filme, Imagefilme oder eigene Kompositionen entstehen Studio- und Live-Aufnahmen über das Musiknetzwerk.',list:['Studio-Aufnahmen in Düsseldorf','Live-Mitschnitt mit Multi-Mikro','Lizenzierung für Imagefilme']}
+      {k:'04 / Location',t:'Aufnahmen',body:'Für Filme, Imagefilme oder eigene Kompositionen entstehen Location- und Live-Aufnahmen über das Musiknetzwerk.',list:['Live- und Location-Aufnahmen in Düsseldorf','Live-Mitschnitt mit Multi-Mikro','Lizenzierung für Imagefilme']}
     ],
     featureKicker:'Vermittlung',
     featureHead:'Musik aus dem',featureHeadEm:'Netzwerk.',
@@ -185,7 +185,7 @@ const SERVICES=[
     slug:'videografie-duesseldorf',
     nav:'leistungen',
     title:'Videografie Düsseldorf — Matthias Ramahi',
-    meta:'Videografie in Düsseldorf: Imagefilm, Musikvideo, Eventfilm und redaktionelles Bewegtbild — über Sophia Ramahi und das Studio-Netzwerk aus dem Rheinland.',
+    meta:'Videografie in Düsseldorf: Imagefilm, Musikvideo, Eventfilm und redaktionelles Bewegtbild — über Sophia Ramahi und das Kreativnetzwerk aus dem Rheinland.',
     crumbText:'Videografie',
     heroKicker:'Motion · Düsseldorf',
     h1:'Video',h1Em:'grafie.',
@@ -197,7 +197,7 @@ const SERVICES=[
     overviewHead:'Bewegtbild',overviewHeadEm:'leistungen.',
     overviewLead:'Bewegtbild verlangt eine andere Planung als Stand — aber dieselbe Bildsprache. Wir koordinieren beides parallel auf Set, damit nichts zweimal gefilmt werden muss.',
     cards:[
-      {k:'01 / Marke',t:'Imagefilm',body:'Kurze, ruhige Imagefilme für Marken, Studios, Praxen und Handwerk — mit echtem Bildmaterial statt Stock.',list:['60–120 Sekunden Schnittfassung','Voice-Over oder reine Bildsprache','Vertikal- und Horizontalvariante']},
+      {k:'01 / Marke',t:'Imagefilm',body:'Kurze, ruhige Imagefilme für Marken, Marken, Praxen und Handwerk — mit echtem Bildmaterial statt Stock.',list:['60–120 Sekunden Schnittfassung','Voice-Over oder reine Bildsprache','Vertikal- und Horizontalvariante']},
       {k:'02 / Musik',t:'Musikvideo',body:'Musikvideos für Soloartists, Bands und Klassiker — produziert von Sophia Ramahi in Düsseldorf.',list:['Konzeption mit Künstler:innen','Mehrtägige Drehs möglich','Color Grading editorial']},
       {k:'03 / Event',t:'Eventfilm',body:'Hochzeit, Konzert, Konferenz, Galaabend — diskrete Multi-Kamera-Aufzeichnung und cineastischer Schnitt.',list:['Multi-Kamera mit getrenntem Audio','Highlightfilm und Lang-Dokument','Lieferung in 14 Tagen']},
       {k:'04 / Redaktion',t:'Redaktionelles Bewegtbild',body:'Reportagen, Interviews, Behind-the-Scenes — für Pressekits, Social und Magazine.',list:['Interview-Setup mit Backdrop','Untertitel und Kapitelmarken','Vertikal-Version für Social']}
@@ -209,7 +209,7 @@ const SERVICES=[
       {tag:'Planung',line:'Ein Briefing für Foto und Video — abgestimmte Bildsprache und Shotlist.'},
       {tag:'Crew',line:'Sophia Ramahi (Video), Matthias Ramahi (Foto), Tonpartner aus NRW.'},
       {tag:'Lieferung',line:'Foto-Galerie + Schnittfassung Video parallel, 1–3 Wochen.'},
-      {tag:'Netzwerk',line:'Imagefilm, Musikvideo, Eventfilm und redaktionelles Bewegtbild aus einem Studio.'}
+      {tag:'Netzwerk',line:'Imagefilm, Musikvideo, Eventfilm und redaktionelles Bewegtbild aus einem eingespielten Netzwerk.'}
     ],
     formSubject:'Video-Anfrage — Matthias Ramahi',
     formHeadline:'Video anfragen.',
@@ -240,7 +240,7 @@ const SERVICES=[
     featureHead:'Material verändert',featureHeadEm:'das Bild.',
     featureLead:'Ein Auto auf Metallic-Papier wirkt anders als ein Portrait auf mattem FineArt. Eine Landschaft auf Acrylglas hat eine andere Tiefe als auf Leinwand. Material ist Teil der Bildwirkung.',
     featureItems:[
-      {tag:'Glanz',line:'Für Tiefe, Farbe und Reflexion — Auto, Studio, dunkle Motive.'},
+      {tag:'Glanz',line:'Für Tiefe, Farbe und Reflexion — Auto, Location, dunkle Motive.'},
       {tag:'Matt',line:'Für ruhige, galerieartige Bildwirkung — Portrait, Landschaft.'},
       {tag:'Objekt',line:'Für stabile, repräsentative Wandflächen — Acryl, Dibond.'},
       {tag:'Sonder',line:'Für haptische Editionen und Geschenke — Bütten, Holz, Metallpapier.'}
@@ -292,11 +292,11 @@ const topbar=(current)=>`<header class="topbar" id="topbar" data-current="${curr
 const footer=()=>`<footer class="mr-footer" data-header-theme="dark" aria-label="Website Footer">
   <div class="mr-footer__hairline" aria-hidden="true"></div>
   <div class="mr-footer__inner">
-    <section class="mr-footer__top" aria-label="Studio">
+    <section class="mr-footer__top" aria-label="Fotograf">
       <a class="mr-footer__mark" href="index.html" aria-label="Zurück zur Startseite">Matthias<span>Ramahi</span></a>
       <div class="mr-footer__claim">
         <p>Fotografie aus Düsseldorf — kuratiert für <em>Marke, Sammlung und Druck</em>. Editorial geführt, technisch ruhig, bereit für die nächste Ausgabe.</p>
-        <div class="mr-footer__meta" aria-label="Studio"><a href="ueber-mich.html">Studio &nbsp;→</a></div>
+        <div class="mr-footer__meta" aria-label="Fotograf"><a href="ueber-mich.html">Über mich &nbsp;→</a></div>
       </div>
     </section>
     <nav class="mr-footer__cols" aria-label="Footer Sitemap">
@@ -312,8 +312,8 @@ const footer=()=>`<footer class="mr-footer" data-header-theme="dark" aria-label=
           <a href="landschaftsfotografie-duesseldorf.html">Landschaft</a>
         </div>
       </div>
-      <div class="mr-footer__col" aria-labelledby="ftr-studio">
-        <span class="mr-footer__col-label" id="ftr-studio">Studio</span>
+      <div class="mr-footer__col" aria-labelledby="ftr-about">
+        <span class="mr-footer__col-label" id="ftr-about">Fotograf</span>
         <div class="mr-footer__col-list">
           <a href="index.html">Home</a>
           <a href="portfolio.html">Portfolio</a>
@@ -337,7 +337,7 @@ const footer=()=>`<footer class="mr-footer" data-header-theme="dark" aria-label=
         <div class="mr-footer__contact">
           <div class="mr-footer__contact-line"><span>E-Mail</span><a href="mailto:info@matthiasramahi.de">info@matthiasramahi.de</a></div>
           <div class="mr-footer__contact-line"><span>Telefon</span><a href="tel:+4917642449858">+49 176 42 44 98 58</a></div>
-          <div class="mr-footer__contact-line"><span>Studio</span><strong>Düsseldorf · NRW</strong></div>
+          <div class="mr-footer__contact-line"><span>Fotograf</span><strong>Düsseldorf · NRW</strong></div>
         </div>
       </div>
     </nav>

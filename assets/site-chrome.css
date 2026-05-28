@@ -465,6 +465,183 @@ body.menu-open{ overflow:hidden; }
   .mr-exit-cta__actions{flex-direction:column;align-items:stretch}
 }
 
+/* ============ Landing conversion packs ============ */
+.mr-conversion-pack{
+  --mrcp-paper:#f3f5ef;
+  --mrcp-ink:#0a0c11;
+  --mrcp-muted:rgba(10,12,17,.64);
+  --mrcp-line:rgba(10,12,17,.14);
+  --mrcp-soft:rgba(255,255,255,.46);
+  --mrcp-accent:#7a8a86;
+  --mrcp-mono:var(--mono,ui-monospace,Menlo,monospace);
+  --mrcp-font:var(--font,'Neue Haas Grotesk Display','Soehne','Avenir Next','Helvetica Neue',Arial,system-ui,sans-serif);
+  background:var(--mrcp-paper);
+  color:var(--mrcp-ink);
+  font-family:var(--mrcp-font);
+}
+.mr-conversion-pack__inner{
+  width:min(100% - clamp(44px,10vw,152px),1400px);
+  margin:0 auto;
+  padding:clamp(64px,8vw,112px) 0;
+  border-top:1px solid var(--mrcp-line);
+}
+.mr-conversion-pack__head{
+  display:grid;
+  grid-template-columns:minmax(240px,.72fr) minmax(0,1fr);
+  gap:clamp(28px,5vw,80px);
+  align-items:end;
+  margin-bottom:clamp(34px,5vw,64px);
+}
+.mr-conversion-pack__eyebrow{
+  margin:0 0 14px;
+  font:700 10px/1.35 var(--mrcp-mono);
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:rgba(10,12,17,.46);
+}
+.mr-conversion-pack h2{
+  margin:0;
+  max-width:12ch;
+  font-size:clamp(34px,4.8vw,72px);
+  line-height:.92;
+  letter-spacing:0;
+  font-weight:850;
+  text-wrap:balance;
+}
+.mr-conversion-pack__intro{
+  margin:0;
+  max-width:62ch;
+  color:var(--mrcp-muted);
+  font-size:clamp(15px,1.08vw,17px);
+  line-height:1.62;
+}
+.mr-conversion-pack__matrix{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:1px;
+  border:1px solid var(--mrcp-line);
+  background:var(--mrcp-line);
+}
+.mr-conversion-pack__tile{
+  min-height:178px;
+  padding:clamp(20px,2.4vw,30px);
+  background:var(--mrcp-soft);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  gap:18px;
+}
+.mr-conversion-pack__tile span,
+.mr-conversion-pack__deliverables span,
+.mr-conversion-pack__faq > span{
+  font:700 10px/1.35 var(--mrcp-mono);
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:rgba(10,12,17,.44);
+}
+.mr-conversion-pack__tile strong{
+  display:block;
+  font-size:clamp(19px,1.8vw,28px);
+  line-height:1.02;
+  letter-spacing:0;
+  font-weight:760;
+}
+.mr-conversion-pack__tile p{
+  margin:0;
+  color:var(--mrcp-muted);
+  font-size:14px;
+  line-height:1.5;
+}
+.mr-conversion-pack__deliverables{
+  margin-top:clamp(30px,4vw,48px);
+  display:grid;
+  grid-template-columns:minmax(220px,.45fr) minmax(0,1fr);
+  gap:clamp(24px,4vw,58px);
+  align-items:start;
+}
+.mr-conversion-pack__deliverables h3{
+  margin:8px 0 0;
+  font-size:clamp(24px,2.4vw,38px);
+  line-height:1;
+  letter-spacing:0;
+}
+.mr-conversion-pack__deliverables ul{
+  margin:0;
+  padding:0;
+  list-style:none;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:1px;
+  border:1px solid var(--mrcp-line);
+  background:var(--mrcp-line);
+}
+.mr-conversion-pack__deliverables li{
+  min-height:76px;
+  padding:18px 20px;
+  background:rgba(255,255,255,.36);
+  color:rgba(10,12,17,.72);
+  font-size:14px;
+  line-height:1.4;
+}
+.mr-conversion-pack__faq{
+  margin-top:clamp(34px,5vw,64px);
+  display:grid;
+  grid-template-columns:minmax(220px,.45fr) minmax(0,1fr);
+  gap:clamp(24px,4vw,58px);
+  align-items:start;
+}
+.mr-conversion-pack__faq h3{
+  margin:8px 0 0;
+  font-size:clamp(24px,2.4vw,38px);
+  line-height:1;
+  letter-spacing:0;
+}
+.mr-conversion-pack__faq-list{border-top:1px solid var(--mrcp-line)}
+.mr-conversion-pack__faq-list details{
+  border-bottom:1px solid var(--mrcp-line);
+  padding:0;
+}
+.mr-conversion-pack__faq-list summary{
+  cursor:pointer;
+  list-style:none;
+  padding:20px 0;
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  font-size:clamp(17px,1.55vw,24px);
+  line-height:1.15;
+  font-weight:720;
+}
+.mr-conversion-pack__faq-list summary::-webkit-details-marker{display:none}
+.mr-conversion-pack__faq-list summary::after{
+  content:"+";
+  flex:0 0 auto;
+  color:var(--mrcp-accent);
+  font-weight:700;
+}
+.mr-conversion-pack__faq-list details[open] summary::after{content:"-"}
+.mr-conversion-pack__faq-list p{
+  margin:0;
+  padding:0 0 22px;
+  color:var(--mrcp-muted);
+  font-size:15px;
+  line-height:1.6;
+  max-width:68ch;
+}
+@media(max-width:1120px){
+  .mr-conversion-pack__head,
+  .mr-conversion-pack__deliverables,
+  .mr-conversion-pack__faq{grid-template-columns:1fr}
+  .mr-conversion-pack__matrix{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:780px){
+  .mr-conversion-pack__inner{width:min(100% - 36px,1400px)}
+  .mr-conversion-pack__matrix,
+  .mr-conversion-pack__deliverables ul{grid-template-columns:1fr}
+  .mr-conversion-pack__tile,
+  .mr-conversion-pack__deliverables li{min-height:0}
+}
+
 /* ============ MR-FOOTER (canonical, shared across all pages) ============ */
 .mr-footer{position:relative;z-index:5;display:block;width:100%;padding:clamp(38px,4vw,60px) 5vw clamp(20px,2vw,28px);overflow:hidden;background:radial-gradient(120% 90% at 50% 100%,rgba(220,226,223,.045),transparent 58%),linear-gradient(180deg,#020306 0%,#04070c 60%,#010204 100%);color:#f3f5ef;border-top:1px solid rgba(243,245,239,.10);font-family:var(--font,'Neue Haas Grotesk Display','Söhne','Avenir Next','Helvetica Neue',Arial,system-ui,sans-serif);isolation:isolate}
 .mr-footer *{box-sizing:border-box}
@@ -543,10 +720,14 @@ body.menu-open{ overflow:hidden; }
   --mrc-ease:cubic-bezier(.23,1,.32,1);
   position:relative;background:var(--mrc-paper);color:var(--mrc-ink);
 }
+.mr-contact,
+.mr-contact *{box-sizing:border-box}
 .mr-contact__inner{
-  max-width:1240px;margin:0 auto;padding:clamp(96px,12vw,180px) clamp(22px,5vw,76px);
+  width:100%;max-width:1240px;margin:0 auto;padding:clamp(96px,12vw,180px) clamp(22px,5vw,76px);
   display:grid;grid-template-columns:1fr 1fr;gap:clamp(56px,8vw,140px);align-items:start;
 }
+.mr-contact__head,
+.mr-contact__form{min-width:0}
 .mr-contact h2{
   margin:0 0 28px;font-family:var(--mrc-font);font-weight:900;
   font-size:clamp(44px,6vw,108px);line-height:.88;letter-spacing:-.07em;color:var(--mrc-ink);

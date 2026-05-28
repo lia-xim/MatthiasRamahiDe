@@ -1,16 +1,20 @@
 # CMS Editor Hardening
 
-Stand: 2026-05-27
+Stand: 2026-05-28
 
 ## Editor-Erlebnis
 
 - Seiten, Portfolio, Journal und lokale SEO-Seiten sind in Basis, Bilder, Inhalt und Advanced organisiert.
+- Die Payload-Seitenleiste folgt der Website-Struktur: Website, Portfolio, Journal, SEO, Medien, globale Inhalte und System.
+- Technische API-URLs sind in den Edit-Views ausgeblendet; die Listen sind auf redaktionelle Suchfelder wie Titel, Slug, Kategorie, SEO-Daten, Tags und Legacy-Quelle erweitert.
+- Globale Inhalte sind in Tabs gegliedert: Navigation nach Header/Fotografie-Menue/Weitere Links, Site Settings nach Basis/Kontakt/SEO Defaults, CTAs nach Button/Kontaktmodul und Footer nach Basis/Linkspalten/Social & Rechtliches.
 - Bildwechsel liegen bewusst im Bilder-Tab; Media-Beziehungen erlauben Create/Edit im Drawer.
 - Medien sind in Basis, Advanced und Technik organisiert. Uploads setzen Titel, Alt-Text, Kategorie und Standard-Verwendungszweck automatisch vor.
 - Listenansichten zeigen relevantere Spalten wie Cover/Hero, Slug, Status, Kategorie und Update-Datum.
 - Preview-URLs werden pro relevanter Collection aus `PREVIEW_SECRET` gebaut.
 - Publish wird serverseitig blockiert, wenn Pflichtfelder fehlen.
 - SEO-Titel, Meta-Beschreibung, Canonical, Social-Bild, Journal-Datum, Lesezeit und einige redaktionelle Defaults werden beim Speichern automatisch ergaenzt, solange kein manueller Override gesetzt ist.
+- URL-Slugs normalisieren deutsche Umlaute redaktionell lesbar, z. B. `Ueber mich` zu `ueber-mich`.
 
 ## Publish-Regeln
 

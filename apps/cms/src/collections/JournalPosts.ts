@@ -1,6 +1,7 @@
 import type { CollectionConfig } from 'payload'
 
 import { authenticated, publishedOrAuthenticated } from '../access/publishedOrAuthenticated'
+import { adminGroups, editorPagination } from '../admin/structure'
 import { advancedSettings } from '../fields/advancedSettings'
 import { contentBlocks } from '../fields/contentBlocks'
 import { mediaRelationshipField } from '../fields/editorialImages'
@@ -19,8 +20,11 @@ export const JournalPosts: CollectionConfig = {
   labels: { singular: 'Journal-Beitrag', plural: 'Journal-Beitraege' },
   admin: {
     useAsTitle: 'title',
-    group: 'Journal',
+    group: adminGroups.journal,
     defaultColumns: ['coverImage', 'title', 'slug', 'category', '_status', 'publishedAt', 'updatedAt'],
+    listSearchableFields: ['title', 'slug', 'category', 'excerpt', 'tags', 'seo.title', 'seo.description', 'legacy.sourceFile'],
+    pagination: editorPagination,
+    hideAPIURL: true,
     description: 'Journal-Beitrag mit Cover, Excerpt, Artikel-SEO, internen Links und Vorschau.',
     preview: (data) => buildPreviewUrl({ collection: 'journal-posts', slug: data?.slug }),
   },

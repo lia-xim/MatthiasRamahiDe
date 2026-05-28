@@ -17,7 +17,7 @@ const statementParts =
   statementHighlight && statement.includes(statementHighlight)
     ? statement.split(statementHighlight)
     : [fallbackFooter.statementPrefix, fallbackFooter.statementSuffix]
-const studioLink = cmsFooter?.studioLink?.href ? cmsFooter.studioLink : fallbackFooter.studioLink
+const aboutLink = cmsFooter?.aboutLink?.href ? cmsFooter.aboutLink : fallbackFooter.aboutLink
 const email = cmsFooter?.email || fallbackFooter.email
 const phone = cmsFooter?.phone || fallbackFooter.phone
 const phoneHref = `tel:${phone.replace(/[^\d+]/g, '')}`
@@ -29,14 +29,14 @@ const legalLinks = cmsFooter?.legalLinks?.length ? cmsFooter.legalLinks : fallba
 <footer class="mr-footer" data-header-theme="dark" aria-label="Website Footer">
   <div class="mr-footer__hairline" aria-hidden="true"></div>
   <div class="mr-footer__inner">
-    <section class="mr-footer__top" aria-label="Studio">
+    <section class="mr-footer__top" aria-label="Fotograf">
       <a class="mr-footer__mark" href={toRootRelativeHref(brand.href)} aria-label="Zurueck zur Startseite">
         {brand.lines[0]}<span>{brand.lines[1]}</span>
       </a>
       <div class="mr-footer__claim">
         <p>{statementParts[0]}<em>{statementHighlight}</em>{statementParts.slice(1).join(statementHighlight)}</p>
-        <div class="mr-footer__meta" aria-label="Studio">
-          <a href={toRootRelativeHref(studioLink.href)}>{studioLink.label} &nbsp;&rarr;</a>
+        <div class="mr-footer__meta" aria-label="Fotograf">
+          <a href={toRootRelativeHref(aboutLink.href)}>{aboutLink.label} &nbsp;&rarr;</a>
         </div>
       </div>
     </section>
@@ -63,7 +63,7 @@ const legalLinks = cmsFooter?.legalLinks?.length ? cmsFooter.legalLinks : fallba
             <a href={phoneHref}>{phone}</a>
           </div>
           <div class="mr-footer__contact-line">
-            <span>Studio</span>
+            <span>Fotograf</span>
             <strong>{locationLabel}</strong>
           </div>
         </div>

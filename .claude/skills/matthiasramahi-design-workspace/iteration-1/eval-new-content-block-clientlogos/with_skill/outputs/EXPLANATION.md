@@ -12,7 +12,7 @@ A quiet horizontal matrix of client / magazine / brand logos rendered as an **ed
 
 - **Cell matrix** (`grid` joined by `1px` gap on a `--border` background) — taken directly from the `audience__grid` and `mr-cities__grid` patterns in `04-content-blocks.md`. Cells read as a connected matrix, not floating cards. No rounded corners, no shadows.
 - **Monochrome-by-default + slight unmute on hover** — same restraint posture as `related__card` in the related-topics grid, which darkens images by default and lifts them only barely on hover.
-- **Mono micro-metadata** (`logo-strip__note`) for an optional caption like *"Cover 04/2024"* — same typographic role as the `.note` line in topic spreads (`Studio · Location · Detail · Web/Print`).
+- **Mono micro-metadata** (`logo-strip__note`) for an optional caption like *"Cover 04/2024"* — same typographic role as the `.note` line in topic spreads (`Location · Location · Detail · Web/Print`).
 - **Container, `.eyebrow`, `.display`** classes reused from `tokens.css` so headline scale and kicker styling match every other section.
 
 ## Hover behavior

@@ -15,7 +15,7 @@ German, declarative, photographic, professional but unembellished — Matthias i
 - **Anti-superlative.** No "amazing", "best", "stunning", "world-class", "premium". Never. The work speaks; the copy under-claims.
 - **Anti-corporate.** No "Lösungen", "Innovationen", "Mehrwert", "synergetisch", "ganzheitlich". No buzzwords. No "passionate about".
 - **Anti-marketing.** No "Jetzt unverbindlich anfragen!", no "Sichern Sie sich…", no "schon ab €X". The contact CTA is *"Anfrage senden"* or *"Projekt anfragen"*. Period.
-- **Short sentences, sometimes elliptical.** "Studio · Location · Detail." is a complete utterance. "Sechs Bereiche. Eine Linse." is a complete H1. Fragments are fine and frequent in kickers and one-line statements.
+- **Short sentences, sometimes elliptical.** "Location · Location · Detail." is a complete utterance. "Sechs Bereiche. Eine Linse." is a complete H1. Fragments are fine and frequent in kickers and one-line statements.
 - **Numbered hierarchy.** Lists use `01`, `02`, `03` (zero-padded, mono kicker style) — not bullets. Implies sequence, intentionality, archive.
 
 ## Signature lines (use as voice anchors)
@@ -36,7 +36,7 @@ From real pages:
 - "Fotografie aus Düsseldorf — kuratiert für Marke, Sammlung und Druck. Editorial geführt, technisch ruhig, bereit für die nächste Ausgabe."
 - "Beschreibe kurz, welcher Bereich passt — Automobil, Sportwagen, Oldtimer, Motorrad, Portrait oder Landschaft — und wofür die Bilder genutzt werden sollen."
 - "Nicht aufgelistet? Trotzdem schreiben."
-- "Studio · Location · Detail · Web/Print"
+- "Location · Location · Detail · Web/Print"
 
 These aren't suggestions; they're the calibration. New copy that sounds like the same person wrote it is right. New copy that sounds like a different writer is wrong.
 

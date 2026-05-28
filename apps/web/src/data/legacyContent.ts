@@ -91,7 +91,7 @@ export const legacyContent = {
     statementSuffix: '. Editorial geführt, technisch ruhig, bereit für die nächste Ausgabe.',
     statement:
       'Fotografie aus Düsseldorf — kuratiert für Marke, Sammlung und Druck. Editorial geführt, technisch ruhig, bereit für die nächste Ausgabe.',
-    studioLink: { label: 'Studio', href: 'ueber-mich.html' },
+    aboutLink: { label: 'Über mich', href: 'ueber-mich.html' },
     email: 'info@matthiasramahi.de',
     phone: '+49 176 42 44 98 58',
     phoneHref: 'tel:+4917642449858',
@@ -117,8 +117,8 @@ export const legacyContent = {
         ],
       },
       {
-        id: 'studio',
-        label: 'Studio',
+        id: 'about',
+        label: 'Über mich',
         links: [
           { label: 'Home', href: 'index.html' },
           { label: 'Portfolio', href: 'portfolio.html' },

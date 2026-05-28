@@ -116,7 +116,7 @@ export type NavigationGlobal = {
 export type FooterGlobal = {
   statement?: string
   statementHighlight?: string
-  studioLink?: PayloadLink
+  aboutLink?: PayloadLink
   email?: string
   phone?: string
   locationLabel?: string

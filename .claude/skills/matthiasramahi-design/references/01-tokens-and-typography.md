@@ -157,7 +157,7 @@ h2 em {
 
 ### Mono is the editorial spice
 
-Monospace is used everywhere there's metadata: kickers, section numbers (01, 02…), file-style labels ("Studio · Location · Detail"), breadcrumbs, footer column headers, eyebrow tags, contact-form field labels, FAQ "Q:"/"A:" markers. It signals *editorial / curatorial / archive*, not "code." Never use mono for body copy or display.
+Monospace is used everywhere there's metadata: kickers, section numbers (01, 02…), file-style labels ("Location · Location · Detail"), breadcrumbs, footer column headers, eyebrow tags, contact-form field labels, FAQ "Q:"/"A:" markers. It signals *editorial / curatorial / archive*, not "code." Never use mono for body copy or display.
 
 The wide `letter-spacing: .26em` is non-negotiable for kickers — it's what makes them feel like photo credits or archive tags.
 

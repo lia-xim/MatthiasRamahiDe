@@ -5,7 +5,7 @@
 **CMS** (`apps/cms/src/fields/contentBlocks.ts`) — neuer Block `clientLogosStrip` mit:
 
 - `eyebrow` (Text, Default `"Kunden & Magazine"`) — Mono-Kicker, knapp.
-- `note` (Text, optional) — Mikro-Metadaten rechts, Stil wie `Studio · Location · Detail`.
+- `note` (Text, optional) — Mikro-Metadaten rechts, Stil wie `Location · Location · Detail`.
 - `tone` (Select: `surface` | `paper`) — passt sich an dunkle oder helle Sektionen an.
 - `items[]` (Logo-Relation `media`, `name` (alt/title, required), optional `href`).
 - Admin-Description erklärt: 4–12 Einträge, SVG/transparente PNGs, monochrome Darstellung.

@@ -228,3 +228,6 @@
       .hero-ls__title .w{transition:none !important;transform:none !important;filter:none !important}
       .hero-ls__sub,.hero-ls__actions,.hero-ls__counter{transition:none !important;opacity:1;transform:none}
     }
+
+.hero-ls__title{font-size:clamp(30px,6.8vw,112px);max-width:min(100%,1180px)}
+@media(max-width:720px){.hero-ls__title{font-size:clamp(24px,6.5vw,54px);letter-spacing:-.015em}}

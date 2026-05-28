@@ -1,6 +1,7 @@
 import type { CollectionConfig } from 'payload'
 
 import { authenticated, publishedOrAuthenticated } from '../access/publishedOrAuthenticated'
+import { adminGroups, editorPagination } from '../admin/structure'
 import { advancedSettings } from '../fields/advancedSettings'
 import { contentBlocks } from '../fields/contentBlocks'
 import { mediaRelationshipField } from '../fields/editorialImages'
@@ -18,8 +19,11 @@ export const SitePages: CollectionConfig = {
   labels: { singular: 'Standardseite', plural: 'Standardseiten' },
   admin: {
     useAsTitle: 'title',
-    group: 'Website-Seiten',
+    group: adminGroups.website,
     defaultColumns: ['teaserImage', 'title', 'pageType', 'slug', '_status', 'updatedAt'],
+    listSearchableFields: ['title', 'slug', 'pageType', 'intro', 'seo.title', 'seo.description', 'legacy.sourceFile'],
+    pagination: editorPagination,
+    hideAPIURL: true,
     description: 'Standardseiten wie Startseite, About, Kontakt, Uebersichten und Legal-Seiten.',
     preview: (data) => buildPreviewUrl({ collection: 'site-pages', slug: data?.slug }),
   },

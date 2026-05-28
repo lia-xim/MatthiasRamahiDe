@@ -1,6 +1,7 @@
 import type { CollectionConfig } from 'payload'
 
 import { authenticated, publishedOrAuthenticated } from '../access/publishedOrAuthenticated'
+import { adminGroups, editorPagination } from '../admin/structure'
 import { advancedSettings } from '../fields/advancedSettings'
 import { mediaRelationshipField } from '../fields/editorialImages'
 import { legacyMigrationFields } from '../fields/legacyMigration'
@@ -16,8 +17,11 @@ export const PortfolioCategories: CollectionConfig = {
   labels: { singular: 'Portfolio-Kategorie', plural: 'Portfolio-Kategorien' },
   admin: {
     useAsTitle: 'title',
-    group: 'Portfolio',
+    group: adminGroups.portfolio,
     defaultColumns: ['coverImage', 'title', 'slug', '_status', 'sortOrder', 'updatedAt'],
+    listSearchableFields: ['title', 'slug', 'intro', 'seo.title', 'seo.description', 'legacy.sourceFile'],
+    pagination: editorPagination,
+    hideAPIURL: true,
     description: 'Portfolio-Kategorien fuer Filter, Uebersichten und spaetere Migrationssteuerung.',
   },
   versions: { drafts: true },

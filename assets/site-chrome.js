@@ -72,6 +72,18 @@
         ]
       };
 
+      if (/automobil|automotive|autofotografie|fahrzeugfotografie|autohaus|autoverkauf/.test(pagePath)) {
+        return Object.assign({}, base, {
+          key: 'automobil',
+          label: 'Automobil',
+          title: 'Fuer Verkauf, Showroom und Kampagne.',
+          cards: [
+            ['Passend fuer', 'Fahrzeugverkauf, Showroom, Marke', 'Exterieur, Interieur und Details werden als verwertbare Bildserie geplant.'],
+            ['Wichtig', 'Wert sichtbar machen', 'Lack, Linien, Zustand und Nutzung brauchen klare Motive statt beliebiger Fahrzeugbilder.'],
+            ['Naechster Schritt', 'Fahrzeug, Ziel, Zeitfenster', 'Diese drei Angaben reichen fuer eine erste Einschaetzung und den passenden Ablauf.']
+          ]
+        });
+      }
       if (/sportwagen|performance-car|exotic-car|supersportwagen/.test(pagePath)) {
         return Object.assign({}, base, {
           key: 'sportwagen',
@@ -245,42 +257,13 @@
       }, { capture: true });
     })();
 
-    /* ---------- Decision strip -------------------------------------------
-       Many local/service pages are strong visually but visitors still need a
-       quick "is this for me?" answer before they commit to the form. Insert a
-       compact decision-support strip after the first visual section on every
-       page with an inline inquiry.
+    /* ---------- Decision strip — REMOVED 2026-05-27
+       The "Schnell erkennen, ob der Stil passt." / "Fuer X..." / "Der naechste
+       Schritt bleibt klein." block has been retired on request — the page
+       compositions (hero → topic chapters → portfolio → contact) carry the
+       qualification work on their own. pageIntent() is still used by exit-CTA
+       and the conversion-event tracker, so the function stays in place.
        --------------------------------------------------------------------- */
-    (function () {
-      if (!hasInlineInquiry || document.querySelector('.mr-decision-strip')) return;
-      if (pagePath === 'contact.html') return;
-      const main = document.querySelector('main') || document.body;
-      const firstSection = main.querySelector('section');
-      if (!firstSection || firstSection.matches('[data-contact-section]')) return;
-      const intent = pageIntent();
-      const strip = document.createElement('section');
-      strip.className = 'mr-decision-strip';
-      strip.setAttribute('data-header-theme', 'light');
-      strip.setAttribute('aria-label', 'Projekt Einordnung');
-      strip.innerHTML =
-        '<div class="mr-decision-strip__inner">' +
-          '<div class="mr-decision-strip__copy">' +
-            '<p class="mr-decision-strip__eyebrow">' + intent.label + '</p>' +
-            '<h2>' + intent.title + '</h2>' +
-            '<p>' + intent.lead + '</p>' +
-            '<div class="mr-decision-strip__actions">' +
-              '<a class="mr-decision-strip__primary" data-cta-role="decision-strip-primary" href="' + inquiryHref() + '">Projekt anfragen</a>' +
-              '<a class="mr-decision-strip__secondary" data-cta-role="decision-strip-secondary" href="portfolio.html">Arbeiten ansehen</a>' +
-            '</div>' +
-          '</div>' +
-          '<div class="mr-decision-strip__cards">' +
-            intent.cards.map(function (card) {
-              return '<article><span>' + card[0] + '</span><strong>' + card[1] + '</strong><p>' + card[2] + '</p></article>';
-            }).join('') +
-          '</div>' +
-        '</div>';
-      firstSection.insertAdjacentElement('afterend', strip);
-    })();
 
     /* ---------- Exit CTA for non-form pages -------------------------------
        Journal/About/Portfolio pages often educate or build trust but do not
@@ -528,11 +511,7 @@
                 '<li>Antwort meist innerhalb von 24 Stunden</li>' +
                 '<li>Direkt mit Matthias</li>' +
               '</ul>' +
-              '<div class="mr-contact__brief" aria-label="Was fuer die Anfrage reicht">' +
-                '<article><span>Was reicht?</span><strong>Motiv, Ziel, Zeitraum</strong><p>Ein grober Rahmen ist besser als ein perfektes Briefing. Details klaeren wir danach.</p></article>' +
-                '<article><span>Was klaeren wir?</span><strong>Umfang, Nutzung, Ablauf</strong><p>Location, Bildmenge, Rechte und Timing werden vor dem ersten Termin sortiert.</p></article>' +
-                '<article><span>Naechster Schritt</span><strong>Rueckfrage oder Angebotsrahmen</strong><p>Du bekommst eine klare Einschaetzung statt einer anonymen Standardantwort.</p></article>' +
-              '</div>' +
+              /* Briefing cards (Was reicht / Was klaeren wir / Naechster Schritt) removed 2026-05-27 */
               '<div class="mr-contact__mail">' +
                 '<a href="mailto:info@matthiasramahi.de?subject=' + encodeURIComponent(subject) + '">info@matthiasramahi.de</a>' +
               '</div>' +

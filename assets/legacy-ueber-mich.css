@@ -13,7 +13,7 @@
    The base .ovh comes from legacy-inline-14e7cfb53e30.css.
    ----------------------------------------------------------- */
 .ovh--ueber .ovh__photo {
-  /* Center the studio portrait around the face area */
+  /* Center the location portrait around the face area */
   background-position: center 28%;
 }
 .ovh--ueber .ovh__title .line:nth-child(2) .word {

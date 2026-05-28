@@ -540,7 +540,7 @@ For responsive web exports, treat these as a modern breakpoint system for one ad
 - `assets/photos/landschaft.webp`
 - `assets/photos/motorrad-duke.jpg`
 - `assets/photos/motorrad-ninja-road.jpg`
-- `assets/photos/motorrad-ninja-studio.jpg`
+- `assets/photos/motorrad-ninja-road.jpg`
 - `assets/photos/motorrad.webp`
 - `assets/photos/oldtimer-stage.webp`
 - `assets/photos/portrait-blue.webp`

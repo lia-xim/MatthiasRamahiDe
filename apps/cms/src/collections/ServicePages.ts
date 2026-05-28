@@ -1,6 +1,7 @@
 import type { CollectionConfig } from 'payload'
 
 import { authenticated, publishedOrAuthenticated } from '../access/publishedOrAuthenticated'
+import { adminGroups, editorPagination } from '../admin/structure'
 import { advancedSettings } from '../fields/advancedSettings'
 import { contentBlocks } from '../fields/contentBlocks'
 import { mediaRelationshipField } from '../fields/editorialImages'
@@ -19,8 +20,11 @@ export const ServicePages: CollectionConfig = {
   labels: { singular: 'Service-Seite', plural: 'Service-Seiten' },
   admin: {
     useAsTitle: 'title',
-    group: 'Website-Seiten',
+    group: adminGroups.website,
     defaultColumns: ['heroImage', 'title', 'slug', 'serviceType', '_status', 'featured', 'updatedAt'],
+    listSearchableFields: ['title', 'slug', 'serviceType', 'intro', 'seo.title', 'seo.description', 'legacy.sourceFile'],
+    pagination: editorPagination,
+    hideAPIURL: true,
     description: 'Leistungsseite mit alter URL, Hero, Nutzenargumenten, FAQ, CTA und SEO.',
     preview: (data) => buildPreviewUrl({ collection: 'service-pages', slug: data?.slug }),
   },

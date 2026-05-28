@@ -77,7 +77,7 @@ export const fallbackPortfolioProjects = [
       image('/assets/optimized/assets-photos-motorrad-1920.webp', 'Motorrad'),
       image('/assets/optimized/assets-photos-motorrad-duke-1920.webp', 'Motorrad'),
       image('/assets/optimized/assets-photos-motorrad-ninja-road-1920.webp', 'Motorrad'),
-      image('/assets/optimized/assets-photos-motorrad-ninja-studio-1920.webp', 'Motorrad'),
+      image('/assets/optimized/assets-photos-motorrad-ninja-road-1920.webp', 'Motorrad'),
     ],
     seo: {
       title: 'Portfolio-Auswahl Motorrad',

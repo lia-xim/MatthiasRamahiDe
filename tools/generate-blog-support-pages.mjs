@@ -29,7 +29,7 @@ const articles = [
     ],
     faq: [
       ['Wie viele Portraits braucht man wirklich?', 'Fuer die meisten Anwendungen reichen wenige starke Motive mit klarer Variation. Wichtiger als Menge ist, dass jedes Bild eine eigene Funktion erfuellt.'],
-      ['Ist ein Studio notwendig?', 'Nicht zwingend. Ein ruhiger Raum, gutes Fensterlicht oder ein passender Arbeitskontext koennen oft glaubwuerdiger wirken als ein neutraler Studiohintergrund.'],
+      ['Ist eine bestimmte Location notwendig?', 'Nicht zwingend. Ein ruhiger Raum, gutes Fensterlicht oder ein passender Arbeitskontext koennen oft glaubwuerdiger wirken als ein neutraler Hintergrund.'],
     ],
   },
   {

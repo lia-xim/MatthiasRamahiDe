@@ -183,7 +183,7 @@
         <a class="chapter" href="automobil-fotografie-duesseldorf.html">
           <div class="img"><img src="assets/optimized/assets-photos-automobil-sunset-1920.webp" alt="Automobilfotografie" loading="lazy" width="1920" height="1280" decoding="async"></div>
           <div class="head"><h3>Automobil</h3><span class="num">N° 01</span></div>
-          <span class="meta"><span>Studio · Location · Detail</span><span class="arr">→</span></span>
+          <span class="meta"><span>Location · Location · Detail</span><span class="arr">→</span></span>
         </a>
         <a class="chapter" href="sportwagen-fotografie-duesseldorf.html">
           <div class="img"><img src="assets/optimized/assets-photos-automobil-neon-1920.webp" alt="Sportwagenfotografie" loading="lazy" width="1920" height="1280" decoding="async"></div>
@@ -220,14 +220,14 @@
       <div class="sister-copy">
         <p class="kicker dark">Bewegte Bilder · Empfehlung</p>
         <h2>Wenn es <em>bewegt</em> sein soll.</h2>
-        <p class="lead">Für bewegte Bilder empfehle ich meine Schwester Sophia Ramahi — Videografin mit eigenem Studio.</p>
+        <p class="lead">Für bewegte Bilder empfehle ich meine Schwester Sophia Ramahi — Videografin aus dem Rheinland.</p>
         <p>Sophia produziert Musikvideos, Imagefilme und redaktionelles Bewegtbild. Aus einer Familie, aus einer Bildsprache — wir arbeiten regelmäßig parallel auf Set, damit Foto und Video aus einem Guss kommen.</p>
         <div class="actions">
           <a class="btn dark" href="contact.html#anfrage">Anfrage Foto + Video →</a>
         </div>
       </div>
       <aside class="sister-plate" aria-label="Visitentafel Sophia Ramahi">
-        <p class="sister-plate__tag">Schwester · Studio</p>
+        <p class="sister-plate__tag">Schwester · Location</p>
         <p class="sister-plate__name">Sophia<br><em>Ramahi</em>.</p>
         <ul class="sister-plate__roles">
           <li>Videografin</li>
@@ -257,14 +257,14 @@
   <div class="mr-footer__hairline" aria-hidden="true"></div>
   <div class="mr-footer__inner">
 
-    <section class="mr-footer__top" aria-label="Studio">
+    <section class="mr-footer__top" aria-label="Fotograf">
       <a class="mr-footer__mark" href="index.html" aria-label="Zurück zur Startseite">
         Matthias<span>Ramahi</span>
       </a>
       <div class="mr-footer__claim">
         <p>Fotografie aus Düsseldorf — kuratiert für <em>Marke, Sammlung und Druck</em>. Editorial geführt, technisch ruhig, bereit für die nächste Ausgabe.</p>
-        <div class="mr-footer__meta" aria-label="Studio">
-          <a href="ueber-mich.html">Studio &nbsp;→</a>
+        <div class="mr-footer__meta" aria-label="Fotograf">
+          <a href="ueber-mich.html">Ueber mich &nbsp;&rarr;→</a>
         </div>
       </div>
     </section>
@@ -284,8 +284,8 @@
         </div>
       </div>
 
-      <div class="mr-footer__col" aria-labelledby="ftr-studio">
-        <span class="mr-footer__col-label" id="ftr-studio">Studio</span>
+      <div class="mr-footer__col" aria-labelledby="ftr-about">
+        <span class="mr-footer__col-label" id="ftr-about">Fotograf</span>
         <div class="mr-footer__col-list">
           <a href="index.html">Home</a>
           <a href="portfolio.html">Portfolio</a>
@@ -318,7 +318,7 @@
             <a href="tel:+4917642449858">+49 176 42 44 98 58</a>
           </div>
           <div class="mr-footer__contact-line">
-            <span>Studio</span>
+            <span>Fotograf</span>
             <strong>Düsseldorf · NRW</strong>
           </div>
         </div>
@@ -349,6 +349,22 @@
   function start(){h.classList.add('is-in');if(t)t.classList.add('is-in')}
   if(matchMedia('(prefers-reduced-motion:reduce)').matches){start();return}
   requestAnimationFrame(function(){requestAnimationFrame(start)});
+})();
+</script>
+
+<!-- Lazy image fade-in (canonical pattern from legacy-index.js)
+     Every <img loading="lazy"> starts at opacity:0; we add .is-loaded
+     once the browser has the pixels so it fades in cleanly. -->
+<script>
+(function(){
+  function mark(img){ if(!img.classList.contains('is-loaded')) img.classList.add('is-loaded'); }
+  function watch(img){
+    if(img.dataset.lf==='1') return; img.dataset.lf='1';
+    if(img.complete && img.naturalWidth>0){ mark(img); return; }
+    img.addEventListener('load', function(){ mark(img); }, {once:true});
+    img.addEventListener('error', function(){ mark(img); }, {once:true});
+  }
+  document.querySelectorAll('img[loading="lazy"]').forEach(watch);
 })();
 </script>
 

@@ -1,6 +1,7 @@
 import type { CollectionConfig } from 'payload'
 
 import { authenticated, publishedOrAuthenticated } from '../access/publishedOrAuthenticated'
+import { adminGroups, editorPagination } from '../admin/structure'
 import { advancedSettings } from '../fields/advancedSettings'
 import { contentBlocks } from '../fields/contentBlocks'
 import { mediaRelationshipField } from '../fields/editorialImages'
@@ -18,8 +19,11 @@ export const LocalSeoPages: CollectionConfig = {
   labels: { singular: 'Lokale SEO-Seite', plural: 'Lokale SEO-Seiten' },
   admin: {
     useAsTitle: 'title',
-    group: 'SEO-Cluster',
+    group: adminGroups.seo,
     defaultColumns: ['heroImage', 'title', 'slug', 'city', 'service', '_status', 'priority', 'updatedAt'],
+    listSearchableFields: ['title', 'slug', 'city', 'service', 'intro', 'targetKeyword', 'seo.title', 'seo.description', 'legacy.sourceFile'],
+    pagination: editorPagination,
+    hideAPIURL: true,
     description: 'Lokale SEO-Seiten fuer bestehende und neue Suchcluster, inklusive URL-Erhalt und Canonical-Strategie.',
     preview: (data) => buildPreviewUrl({ collection: 'local-seo-pages', slug: data?.slug }),
   },

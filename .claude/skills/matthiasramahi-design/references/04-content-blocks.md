@@ -27,7 +27,7 @@ This is the most-misread block in the system: at a glance it looks like a card g
         <div class="chapter__label">
           <strong class="chapter__title">Automobil</strong>
           <span class="chapter__no">N° 01</span>
-          <span class="chapter__tags">Studio · Location · Detail</span>
+          <span class="chapter__tags">Location · Location · Detail</span>
         </div>
       </a>
       <a class="chapter" href="sportwagen-fotografie-duesseldorf.html">…</a>
@@ -174,7 +174,7 @@ This is the most-misread block in the system: at a glance it looks like a card g
       <span class="kicker">01 / Bereich</span>
       <h2>Automobil <em>als Bildsystem.</em></h2>
       <p class="lead">Fahrzeuge, Reflexe, Linien und Details als präzise Bildserie für Verkauf, Marke, Sammlung oder Kampagne.</p>
-      <p class="note">Studio · Location · Detail · Web/Print</p>
+      <p class="note">Location · Location · Detail · Web/Print</p>
       <a href="automobil-fotografie-duesseldorf.html" class="topic-spread__link">Zum Bereich →</a>
     </div>
     <figure class="topic-spread__frame">

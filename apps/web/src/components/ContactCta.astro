@@ -24,23 +24,7 @@ const subject = cta?.emailSubject || module.emailSubject || 'Projektanfrage'
         <li>Kein Paket-Zwang</li>
         <li>Direkt mit Matthias</li>
       </ul>
-      <div class="contact-cta__brief" aria-label="Was fuer die Anfrage reicht">
-        <article>
-          <span>Was reicht?</span>
-          <strong>Motiv, Ziel, Zeitraum</strong>
-          <p>Ein grober Rahmen ist besser als ein perfektes Briefing. Details klaeren wir danach.</p>
-        </article>
-        <article>
-          <span>Was klaeren wir?</span>
-          <strong>Umfang, Nutzung, Ablauf</strong>
-          <p>Location, Bildmenge, Rechte und Timing werden vor dem ersten Termin sortiert.</p>
-        </article>
-        <article>
-          <span>Naechster Schritt</span>
-          <strong>Rueckfrage oder Angebotsrahmen</strong>
-          <p>Du bekommst eine klare Einschaetzung statt einer anonymen Standardantwort.</p>
-        </article>
-      </div>
+      {/* Briefing cards (Was reicht / Was klaeren wir / Naechster Schritt) removed 2026-05-27 */}
       <a class="contact-cta__mail" href={`mailto:${email}?subject=${encodeURIComponent(subject)}`}>{email}</a>
     </div>
     <form class="contact-cta__form" data-mailto={email} data-subject={subject} data-endpoint="/api/contact" novalidate>

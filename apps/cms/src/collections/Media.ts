@@ -1,6 +1,7 @@
 import type { CollectionConfig } from 'payload'
 
 import { authenticated } from '../access/publishedOrAuthenticated'
+import { adminGroups, editorPagination } from '../admin/structure'
 import { enrichMediaAfterChange } from '../hooks/enrichMedia'
 import { prepareMediaBeforeValidate } from '../hooks/prepareMedia'
 
@@ -12,8 +13,11 @@ export const Media: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'title',
-    group: 'Bildarchiv',
+    group: adminGroups.media,
     defaultColumns: ['filename', 'title', 'alt', 'category', 'orientation', 'featured', 'updatedAt'],
+    listSearchableFields: ['filename', 'title', 'alt', 'caption', 'category', 'tags', 'imageType', 'usagePurpose', 'legacySourcePath'],
+    pagination: editorPagination,
+    hideAPIURL: true,
     description:
       'Zentrale Bildbibliothek mit Vorschau, Alt-Texten, Bildstimmung, Verwendungszweck, Focal Point und responsiven Derivaten.',
   },
