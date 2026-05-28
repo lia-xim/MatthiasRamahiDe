@@ -127,7 +127,7 @@
   .pd-title{font-size:clamp(46px,9.4vw,164px);line-height:.82;letter-spacing:-.07em;text-transform:uppercase;color:var(--fg);font-weight:900;max-width:1500px;text-shadow:0 2px 30px rgba(0,0,0,.55)}
   .pd-title .line{display:block;overflow:hidden;padding-bottom:.04em}
   .pd-title .word{display:inline-block;transform:translateY(110%);opacity:0;animation:pdUp 1.1s cubic-bezier(.18,.78,.24,1) forwards}
-  .pd-title .line:nth-child(2) .word{animation-delay:.14s;color:var(--accent-2);font-weight:300;font-style:italic;letter-spacing:-.05em}
+  .pd-title .line:nth-child(2) .word{animation-delay:.14s;color:rgba(243,245,239,.86)}
   @keyframes pdUp{from{transform:translateY(110%);opacity:0}to{transform:translateY(0);opacity:1}}
   @keyframes pdFadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 
