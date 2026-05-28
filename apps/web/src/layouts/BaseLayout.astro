@@ -69,6 +69,12 @@ const activeNav = currentNav || inferredNav
     <link rel="canonical" href={canonical} />
     {noIndex ? <meta name="robots" content="noindex,nofollow" /> : <meta name="robots" content="index,follow,max-image-preview:large" />}
     <meta name="theme-color" content="#020306" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32" />
+    <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content={siteName} />
     <meta property="og:locale" content={settings?.locale || 'de_DE'} />

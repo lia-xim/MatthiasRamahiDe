@@ -1,0 +1,180 @@
+---
+import NativeLegacyLayout from '../../layouts/NativeLegacyLayout.astro'
+import {
+  blockParagraphs,
+  homeChapters,
+  homeHeroImages,
+  homeJournalCards,
+  homeServices,
+} from '../../lib/nativeContent'
+import { getSitePageByType, type PayloadDoc } from '../../lib/payload'
+
+const providedDoc = Astro.props.doc as PayloadDoc | undefined
+const doc = providedDoc || (await getSitePageByType('home', { depth: 2 }))
+const statementParagraphs = blockParagraphs(doc, 'Bilder', [
+  'Seit über zehn Jahren entstehen meine Serien im Spannungsfeld von Präzision und Atmosphäre — Automobile, Oldtimer, Sportwagen, Motorräder, Portraits und Landschaften. Jede Arbeit folgt einer ruhigen redaktionellen Logik: Licht, Komposition, Material, Zeit.',
+  'Auftraggeber sind Marken, Sammler, Manufakturen und private Eigentümer aus Düsseldorf, Köln, Essen, Dortmund und dem gesamten Rheinland — überall dort, wo Bilder über Auflage, Sammlung oder Markenwert mitentscheiden.',
+])
+const chaptersParagraphs = blockParagraphs(doc, 'Sechs Bereiche', [
+  'Jeder Bereich hat eine eigene visuelle Logik — Bewegung, Material, Mensch, Raum. Auswählen, weiterlesen, eine Serie sehen.',
+])
+const portfolioParagraphs = blockParagraphs(doc, 'Ausgewählte', [
+  'Ein Strom aus aktuellen Serien — kontinuierlich in Bewegung. Klick auf ein Bild öffnet die Vorschau.',
+])
+const aboutParagraphs = blockParagraphs(doc, 'Hinter der Kamera', [
+  'Ausgebildet im Handwerk, denkend wie ein Editor — ich arbeite ruhig, präzise und in engem Dialog mit dem Auftraggeber. Vom ersten Briefing bis zum finalen Druck.',
+  'Meine Location steht in Düsseldorf, mein Netzwerk im gesamten Rheinland. Ich begleite Marken, Manufakturen, Sammler und private Eigentümer dort, wo ein Bild über Auflage, Sammlung oder Markenwert mitentscheidet.',
+])
+const servicesParagraphs = blockParagraphs(doc, 'Weitere Leistungen', [
+  'Für Projekte, die über die Fotografie hinausgehen — Druck, Großformat, Werbetechnik, Webdesign, Video, Sonderanfertigungen und Musik. Kuratiert, koordiniert, ein Ansprechpartner.',
+])
+---
+<NativeLegacyLayout legacyFile="index.html" current="home" doc={doc}>
+  <main>
+    <section class="hero" data-theme="dark" aria-label="Intro">
+      <canvas id="hero-shader" aria-hidden="true" data-imgs={homeHeroImages.join(',')}></canvas>
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-aperture" aria-hidden="true"></div>
+      <div class="hero-grid">
+        <div class="hero-stage">
+          <h1 class="hero-title" id="hero-title" data-text-idx="0">
+            <span class="line"><span class="word">Fotografie</span></span>
+            <span class="line"><span class="word">Düsseldorf</span></span>
+          </h1>
+          <p class="hero-lead" id="hero-lead">{doc?.intro || 'Automobil-, Portrait- und Landschaftsfotografie aus Düsseldorf für Marken, Sammler und Menschen mit Anspruch.'}</p>
+          <div class="hero-actions" aria-label="Direkte Aktionen">
+            <a class="btn dark" href="#anfrage">Projekt anfragen</a>
+            <a class="btn" href="/portfolio.html">Arbeiten ansehen</a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-cursor" id="hero-cursor" aria-hidden="true"><span class="ring"></span></div>
+    </section>
+
+    <section class="statement sec-light" data-theme="light" aria-label="Haltung">
+      <div class="section-inner">
+        <div>
+          <h2>Bilder, die einen Raum<br /><em>verändern</em>.</h2>
+        </div>
+        <div class="body">
+          <p class="lead">{statementParagraphs[0]}</p>
+          {statementParagraphs[1] && <p>{statementParagraphs[1]}</p>}
+          <div class="actions">
+            <a class="btn dark" href="/ueber-mich.html">Mehr über mich</a>
+            <a class="btn" href="#chapters" style="color:var(--ink);border-color:var(--ink)">Bereiche ansehen</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapters sec-dark" id="chapters" data-theme="dark" aria-label="Fotografie">
+      <div class="section-inner">
+        <div class="chapters-head">
+          <h2>Sechs Bereiche.<br />Eine <em>Linse</em>.</h2>
+          <p class="lead">{chaptersParagraphs[0]}</p>
+        </div>
+        <div class="chapter-grid">
+          {homeChapters.map((chapter, index) => (
+            <a class="chapter" href={chapter.href}>
+              <div class="img">
+                <img src={chapter.image} srcset={chapter.srcset} sizes={chapter.sizes} alt={chapter.alt} loading="lazy" width={chapter.width} height={chapter.height} decoding="async" />
+              </div>
+              <div class="head"><h3>{chapter.title}</h3><span class="num">N° {String(index + 1).padStart(2, '0')}</span></div>
+              <span class="meta"><span>{chapter.meta}</span><span class="arr">→</span></span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="pf-teaser sec-light" data-theme="light" aria-label="Portfolio">
+      <div class="section-inner">
+        <div class="pf-head">
+          <h2>Ausgewählte<br /><em>Arbeiten</em>.</h2>
+          <p class="lead">{portfolioParagraphs[0]}</p>
+        </div>
+        <div class="pf-marquee" id="pfMarquee">
+          <div class="pf-row row-1">
+            <div class="pf-track" id="pfTrack1"></div>
+          </div>
+          <div class="pf-row row-2">
+            <div class="pf-track" id="pfTrack2"></div>
+          </div>
+        </div>
+        <div class="pf-foot">
+          <a class="btn dark" href="/portfolio.html">Vollständiges Portfolio →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="about sec-dark" data-theme="dark" aria-label="Über mich">
+      <div class="section-inner">
+        <div class="about-img">
+          <img src="/mpissxxj-portfolio_webp_full_063-1.webp" alt="Matthias Ramahi" loading="lazy" width="1628" height="1920" decoding="async" />
+        </div>
+        <div class="about-copy">
+          <p class="kicker">Über mich</p>
+          <h2>Hinter der<br /><em>Kamera</em>.</h2>
+          <p class="lead">{aboutParagraphs[0]}</p>
+          {aboutParagraphs[1] && <p>{aboutParagraphs[1]}</p>}
+          <div class="actions">
+            <a class="btn primary" href="/ueber-mich.html">Mehr über mich</a>
+            <a class="btn" href="#anfrage" style="color:#f3f5ef;border-color:rgba(243,245,239,.4)">Projekt anfragen</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services-sec sec-light" data-theme="light" aria-label="Weitere Dienstleistungen">
+      <div class="section-inner">
+        <div class="services-head">
+          <h2>Weitere Leistungen<br /><em>im&nbsp;Überblick</em>.</h2>
+          <p class="lead">{servicesParagraphs[0]}</p>
+        </div>
+        <div class="services-list">
+          {homeServices.map((service) => (
+            <a class="service-row" href={service.href}>
+              <span class="num">{service.number}</span><h3>{service.title}</h3><p>{service.text}</p><span class="arr">Detail →</span>
+            </a>
+          ))}
+        </div>
+        <div style="margin-top:32px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center">
+          <span style="font:10px var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--quiet-l)">07 Bereiche · ein Netzwerk</span>
+          <a class="btn dark" href="/leistungen.html">Alle Leistungen</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="blog-sec sec-dark" data-theme="dark" aria-label="Journal">
+      <div class="section-inner">
+        <div class="blog-head">
+          <h2>Journal.</h2>
+          <p class="lead">Notizen aus dem Netzwerk — Workflow, Material, Auftragsgeschichten. Lange Form, ruhig kuratiert.</p>
+        </div>
+        <div class="blog-grid">
+          {homeJournalCards.map((post) => (
+            <a class="post" href={post.href}>
+              <div class="pimg"><img src={post.image} alt={post.alt} loading="lazy" width={post.width} height={post.height} decoding="async" /></div>
+              <span class="meta"><span>{post.number}</span><span>{post.date}</span><span>{post.category}</span></span>
+              <h3>{post.title}</h3>
+              <p>{post.text}</p>
+              <span class="read">Lesen →</span>
+            </a>
+          ))}
+        </div>
+        <div class="blog-foot">
+          <a class="btn primary" href="/blog.html">Alle Journal-Beiträge</a>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="anfrage"
+      data-contact-section
+      data-theme="light"
+      data-contact-subject="Projektanfrage"
+      data-contact-headline="Projekt <em>anfragen.</em>"
+      data-contact-lead="Erzähl kurz, worum es geht: Motiv, Ort, Zeitrahmen, Nutzung. Ich antworte persönlich und sortiere mit dir den nächsten sinnvollen Schritt."
+    />
+  </main>
+</NativeLegacyLayout>

@@ -1,0 +1,70 @@
+---
+import NativeLegacyLayout from '../../layouts/NativeLegacyLayout.astro'
+import { blockParagraphs, photographyTopics } from '../../lib/nativeContent'
+import { getSitePageByType, type PayloadDoc } from '../../lib/payload'
+
+const providedDoc = Astro.props.doc as PayloadDoc | undefined
+const doc = providedDoc || (await getSitePageByType('photography-index', { depth: 2 }))
+const clusterParagraphs = blockParagraphs(doc, 'Ein Einstieg', [
+  'Die Übersicht ist der Einstiegspunkt. Von hier aus führen die sechs Bereiche auf eigene Hauptseiten — und von dort weiter in lokale Varianten, NRW- und Deutschland-Hubs sowie die jeweiligen Keyword-Seiten.',
+  'Nutzer wählen nicht aus einem generischen Portfolio, sondern steigen direkt in Automobil, Sportwagen, Oldtimer, Motorrad, Portrait oder Landschaft ein. Jede Kategorie zeigt auf ihrer Hauptseite die zugehörigen Städte und Regionen.',
+])
+---
+<NativeLegacyLayout legacyFile="fotografie.html" current="fotografie" doc={doc}>
+  <main>
+    <section class="ovh" data-theme="dark" aria-label="Fotografie Übersicht">
+      <div class="ovh__photo" style="background-image:url('/assets/optimized/mpik8b82-dsc3879-1920.webp')" aria-hidden="true"></div>
+      <div class="ovh__glow" aria-hidden="true"></div>
+      <div class="ovh__aperture" aria-hidden="true"></div>
+      <div class="ovh__grid">
+        <h1 class="ovh__title"><span class="line"><span class="word">Fotografie-</span></span><span class="line"><span class="word">Bereiche.</span></span></h1>
+        <p class="ovh__lead">{doc?.intro || 'Sechs Fotografie-Bereiche — Automobil, Sportwagen, Oldtimer und Motorrad, Portrait und Fine-Art-Landschaft. Jede Kategorie mit eigener Bildsprache und eigenem Einstieg.'}</p>
+        <div class="ovh__actions">
+          <a class="ovh__btn" href="#automobil">Bereiche ansehen →</a>
+          <a class="ovh__btn ovh__btn--ghost" href="#anfrage">Fotografie anfragen</a>
+        </div>
+      </div>
+    </section>
+
+    {photographyTopics.map((topic, index) => (
+      <section class={`topic ${topic.theme} ${topic.className}`} id={topic.id} data-theme={topic.theme} data-no={`${String(index + 1).padStart(2, '0')} / ${topic.id.toUpperCase()}`}>
+        <div class="topic-grid">
+          <div class="topic-copy">
+            <p class={`kicker ${topic.theme === 'light' ? 'dark' : ''}`}>{topic.kicker}</p>
+            <h2><span>{topic.title}</span><em>{topic.emphasis}</em></h2>
+            <p>{topic.text}</p>
+            <p class="topic-note">{topic.note}</p>
+            <a class="topic-link" href={topic.href}>{topic.linkLabel}</a>
+          </div>
+          <div class="topic-media" aria-hidden="true">
+            <figure class="topic-frame">
+              <img src={topic.image} alt={topic.alt} loading="lazy" width={topic.width} height={topic.height} decoding="async" />
+            </figure>
+          </div>
+        </div>
+      </section>
+    ))}
+
+    <section class="cluster" data-theme="light" aria-label="Fotografie-Bereiche">
+      <div class="section-inner cluster-grid">
+        <div><p class="kicker dark">Bereiche</p><h2>Ein Einstieg, <em>sechs Bereiche.</em></h2></div>
+        <div class="cluster-copy">
+          {clusterParagraphs.map((paragraph) => <p>{paragraph}</p>)}
+          <div class="cluster-links">
+            {photographyTopics.map((topic) => <a href={topic.href}>{topic.title.replace('.', '')} Fotografie</a>)}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="anfrage"
+      data-contact-section
+      data-theme="light"
+      data-contact-subject="Fotografie Anfrage"
+      data-contact-headline="Fotografie <em>anfragen.</em>"
+      data-contact-lead="Beschreibe kurz, welcher Bereich passt — Automobil, Sportwagen, Oldtimer, Motorrad, Portrait oder Landschaft — und wofür die Bilder genutzt werden sollen. Dann klären wir Stil, Umfang, Ort, Rechte und Ausgabeformat sauber vor der Produktion."
+    />
+  </main>
+</NativeLegacyLayout>
+

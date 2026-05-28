@@ -1,0 +1,100 @@
+---
+import LegacyFooter from '../components/legacy/LegacyFooter.astro'
+import LegacyHeader from '../components/legacy/LegacyHeader.astro'
+import { getComponentizedLegacyParts, getLegacyHomeParts } from '../lib/legacyParts'
+import { imageUrl, routeForDoc, toAbsoluteSiteUrl, type PayloadDoc, type PayloadMedia } from '../lib/payload'
+
+type Props = {
+  bodyClass?: string
+  current?: string
+  doc?: PayloadDoc | null
+  legacyFile: string
+}
+
+const { bodyClass: providedBodyClass, current: providedCurrent, doc = null, legacyFile } = Astro.props as Props
+const isHome = legacyFile === 'index.html'
+const legacyParts = isHome ? null : await getComponentizedLegacyParts(legacyFile)
+const homeParts = isHome ? await getLegacyHomeParts() : null
+let head = withCmsSeo(homeParts?.head || legacyParts?.head || '', doc, legacyFile)
+const bodyClass = providedBodyClass || legacyParts?.bodyClass || 'has-mr-footer'
+const current = providedCurrent || legacyParts?.current
+const afterFooter = homeParts?.afterFooter || legacyParts?.afterFooter || ''
+
+Astro.response.headers.set('x-cms-render-source', 'structured-astro')
+Astro.response.headers.set('x-cms-migration-status', 'native-component')
+
+function escapeAttribute(value: string) {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+}
+
+function upsertTitle(headHtml: string, title?: string) {
+  if (!title) return headHtml
+  const tag = `<title>${escapeAttribute(title)}</title>`
+  return /<title[^>]*>[\s\S]*?<\/title>/i.test(headHtml)
+    ? headHtml.replace(/<title[^>]*>[\s\S]*?<\/title>/i, tag)
+    : `${headHtml}\n${tag}`
+}
+
+function upsertMeta(headHtml: string, selector: string, value?: string) {
+  if (!value) return headHtml
+  const escaped = escapeAttribute(value)
+  const [kind, name] = selector.split(':')
+  const attrName = kind === 'property' ? 'property' : 'name'
+  const pattern = new RegExp(`<meta\\s+${attrName}=["']${name}["'][^>]*>`, 'i')
+  const tag = `<meta ${attrName}="${name}" content="${escaped}" />`
+  return pattern.test(headHtml) ? headHtml.replace(pattern, tag) : `${headHtml}\n${tag}`
+}
+
+function upsertCanonical(headHtml: string, value?: string) {
+  if (!value) return headHtml
+  const tag = `<link rel="canonical" href="${escapeAttribute(value)}" />`
+  return /<link\s+rel=["']canonical["'][^>]*>/i.test(headHtml)
+    ? headHtml.replace(/<link\s+rel=["']canonical["'][^>]*>/i, tag)
+    : `${headHtml}\n${tag}`
+}
+
+function withCmsSeo(headHtml: string, pageDoc: PayloadDoc | null, pageLegacyFile: string) {
+  if (!pageDoc?.seo) return headHtml
+
+  const seoTitle = pageDoc.seo.title || pageDoc.title
+  const description = pageDoc.seo.description || pageDoc.excerpt || pageDoc.intro
+  const canonical = toAbsoluteSiteUrl(pageDoc.seo.canonicalUrl || (pageDoc.slug ? routeForDoc('site-pages', pageDoc) : pageLegacyFile))
+  const socialImage = imageUrl(
+    (pageDoc.seo.ogImage || pageDoc.coverImage || pageDoc.heroImage || pageDoc.teaserImage) as PayloadMedia | string | undefined,
+    'hero',
+  )
+
+  let nextHead = upsertTitle(headHtml, seoTitle)
+  nextHead = upsertMeta(nextHead, 'name:description', description)
+  nextHead = upsertCanonical(nextHead, canonical)
+  nextHead = upsertMeta(nextHead, 'property:og:title', seoTitle)
+  nextHead = upsertMeta(nextHead, 'property:og:description', description)
+  nextHead = upsertMeta(nextHead, 'property:og:url', canonical)
+  nextHead = upsertMeta(nextHead, 'name:twitter:title', seoTitle)
+  nextHead = upsertMeta(nextHead, 'name:twitter:description', description)
+  if (socialImage) {
+    nextHead = upsertMeta(nextHead, 'property:og:image', socialImage)
+    nextHead = upsertMeta(nextHead, 'name:twitter:image', socialImage)
+  }
+  if (pageDoc.seo.noIndex) nextHead = upsertMeta(nextHead, 'name:robots', 'noindex,nofollow')
+
+  return nextHead
+}
+---
+<!doctype html>
+<html lang="de">
+  <head>
+    <Fragment set:html={head} />
+  </head>
+  <body class={bodyClass}>
+    <LegacyHeader current={current} ctaHref={isHome ? '#anfrage' : undefined} />
+    <slot />
+    <LegacyFooter />
+    <Fragment set:html={afterFooter} />
+  </body>
+</html>
+

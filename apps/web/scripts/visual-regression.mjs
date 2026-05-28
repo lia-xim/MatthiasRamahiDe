@@ -11,6 +11,18 @@ const maxMismatchRatio = Number(process.env.VISUAL_MAX_MISMATCH_RATIO || '0.02')
 const hardMaxMismatchRatio = Number(process.env.VISUAL_HARD_MAX_MISMATCH_RATIO || '0.05')
 const warmupDelayMs = Number(process.env.VISUAL_WARMUP_DELAY_MS || '1400')
 const screenshotDelayMs = Number(process.env.VISUAL_SCREENSHOT_DELAY_MS || '1000')
+const selectedPages = new Set(
+  (process.env.VISUAL_PAGES || '')
+    .split(',')
+    .map((entry) => entry.trim())
+    .filter(Boolean),
+)
+const selectedViewports = new Set(
+  (process.env.VISUAL_VIEWPORTS || '')
+    .split(',')
+    .map((entry) => entry.trim())
+    .filter(Boolean),
+)
 
 const pages = [
   {
@@ -112,6 +124,20 @@ const viewports = [
   { name: 'desktop', width: 1440, height: 1000 },
   { name: 'mobile', width: 390, height: 844 },
 ]
+
+const pagesToCheck = selectedPages.size > 0 ? pages.filter((page) => selectedPages.has(page.name)) : pages
+const viewportsToCheck =
+  selectedViewports.size > 0 ? viewports.filter((viewport) => selectedViewports.has(viewport.name)) : viewports
+
+if (pagesToCheck.length === 0) {
+  console.error(`No visual regression pages matched VISUAL_PAGES=${process.env.VISUAL_PAGES}`)
+  process.exit(1)
+}
+
+if (viewportsToCheck.length === 0) {
+  console.error(`No visual regression viewports matched VISUAL_VIEWPORTS=${process.env.VISUAL_VIEWPORTS}`)
+  process.exit(1)
+}
 
 const urlFor = (pathname) => `${baseUrl}${pathname}`
 
@@ -393,8 +419,8 @@ const page = await browser.newPage()
 const results = []
 
 try {
-  for (const pageConfig of pages) {
-    for (const viewport of viewports) {
+  for (const pageConfig of pagesToCheck) {
+    for (const viewport of viewportsToCheck) {
       results.push(await comparePair(page, pageConfig, viewport))
     }
   }

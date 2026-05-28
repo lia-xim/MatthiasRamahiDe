@@ -17,10 +17,11 @@ const mediaExtensions = new Set([
   '.png',
   '.svg',
   '.webm',
+  '.webmanifest',
   '.webp',
 ])
 const assetReferenceExtensions = new Set([...mediaExtensions, '.css', '.js', '.json', '.txt', '.xml'])
-const rootReferenceExtensions = new Set(['.html', '.css', '.js', '.xml', '.txt'])
+const rootReferenceExtensions = new Set(['.html', '.css', '.js', '.xml', '.txt', '.webmanifest'])
 const appSourceReferenceExtensions = new Set([
   '.astro',
   '.css',

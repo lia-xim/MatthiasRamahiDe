@@ -1,5 +1,6 @@
 ---
 import LegacyPageShell from '../components/legacy/LegacyPageShell.astro'
+import NativePhotographyPage from '../components/native/NativePhotographyPage.astro'
 import { isCmsAdoptedLegacyFile } from '../lib/adoptedRoutes'
 import { envFlag, envFlagNotFalse } from '../lib/envFlags'
 import { listLegacyHtmlFiles, readLegacyPage } from '../lib/legacy'
@@ -32,9 +33,18 @@ if (!legacyFile) {
 const shouldRenderFromCms =
   enableAdoptedRouteRewrite &&
   isCmsAdoptedLegacyFile(legacyFile, { includeLocalSeo: enableLocalSeoAdoptedRouteRewrite })
+const shouldRenderNative = shouldRenderFromCms && legacyFile === 'fotografie.html'
 
 const legacyHtml = shouldRenderFromCms ? '' : await readLegacyPage(legacyFile)
 
 if (shouldRenderFromCms) Astro.response.headers.set('x-migration-render', 'adopted-astro-payload')
 ---
-{shouldRenderFromCms ? <LegacyPageShell legacyFile={legacyFile} /> : <Fragment set:html={legacyHtml} />}
+{
+  shouldRenderNative ? (
+    <NativePhotographyPage />
+  ) : shouldRenderFromCms ? (
+    <LegacyPageShell legacyFile={legacyFile} />
+  ) : (
+    <Fragment set:html={legacyHtml} />
+  )
+}

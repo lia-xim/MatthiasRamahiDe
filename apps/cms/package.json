@@ -19,6 +19,7 @@
     "sanitize:studio-language": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts PAYLOAD_DB_PUSH=false tsx scripts/sanitize-studio-language.ts",
     "media:enrich-existing": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts PAYLOAD_DB_PUSH=false tsx scripts/enrich-existing-media.ts",
     "ensure:admin": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts PAYLOAD_DB_PUSH=false tsx scripts/ensure-admin.ts",
+    "reset:admin-password": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts PAYLOAD_DB_PUSH=false tsx scripts/reset-admin-password.ts",
     "suggest:seo": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts PAYLOAD_DB_PUSH=false tsx scripts/suggest-seo.ts",
     "migrate": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts PAYLOAD_DB_PUSH=false payload migrate",
     "migrate:create": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts PAYLOAD_DB_PUSH=false payload migrate:create",
