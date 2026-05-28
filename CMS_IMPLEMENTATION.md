@@ -282,6 +282,8 @@ Aktueller Stand vom 2026-05-28:
 - Visual Regression 2026-05-29 ueber acht Kernseiten: Automobil 0.016%/1.705%, Sportwagen 2.806%/0.253%, Oldtimer 0.003%/0.010%, Motorrad 2.516%/0.473%, Portrait 1.048%/0.010%, Landschaft 0.003%/0.012%, Ueber mich 0.003%/0.010%, Kontakt 0.017%/1.869% Desktop/Mobile.
 - Browser-Smoke 2026-05-29: Motorrad, Portrait und Landschaft oeffnen ihre Lightbox; Kontaktformular und Kopierbutton funktionieren; Ueber-mich-Kapitel und Kontaktmodul sind vorhanden; keine relevanten Console Errors/Warnings.
 - Zielgerichtete Visual Regression nach der letzten Template-Aenderung: Portfolio, Leistungen, Journal-Index, Automotive-Journal-Detail und Local-SEO bleiben unter der harten 5%-Grenze; Local-SEO mobile bleibt wegen langer Legacy-Lazyload-Strecken eine dokumentierte Warnung.
+- Local-SEO-Family-Smoke 2026-05-29: je eine Koeln-Seite pro Familie (`automobil`, `sportwagen`, `oldtimer`, `motorrad`, `portrait`, `landschaft`) rendert mit richtigem Family-Marker und Parent; Browser-Smoke fuer Motorrad Koeln ohne Console Errors und ohne Error-Overlay.
+- `web:build` nach Aktivierung des Local-SEO-Family-Renderers: erfolgreich, `astro check` mit 0 Errors / 0 Warnings.
 
 Weitere QA-Befehle:
 
