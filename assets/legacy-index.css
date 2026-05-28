@@ -300,10 +300,10 @@
   .mr-footer__base{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:14px;padding-top:clamp(16px,1.8vw,24px);border-top:1px solid rgba(243,245,239,.10);font:9.5px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:rgba(243,245,239,.68)}
   .mr-footer__base-left{justify-self:start}
   .mr-footer__base-center{justify-self:center;display:flex;gap:18px;align-items:center}
-  .mr-footer__base-center a{color:rgba(243,245,239,.7);transition:color .2s var(--ease)}
+  .mr-footer__base-center a{display:inline-flex;align-items:center;min-height:44px;padding:0 4px;color:rgba(243,245,239,.7);transition:color .2s var(--ease)}
   .mr-footer__base-center a:hover{color:#fff}
   .mr-footer__base-right{justify-self:end;display:flex;gap:18px;flex-wrap:wrap}
-  .mr-footer__base-right a{color:rgba(243,245,239,.7);transition:color .2s var(--ease)}
+  .mr-footer__base-right a{display:inline-flex;align-items:center;min-height:44px;padding:0 4px;color:rgba(243,245,239,.7);transition:color .2s var(--ease)}
   .mr-footer__base-right a:hover{color:#fff}
 
   /* Decorative hairline accent over the mark */

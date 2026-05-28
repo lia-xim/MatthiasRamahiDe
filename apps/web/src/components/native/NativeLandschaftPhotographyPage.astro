@@ -6,67 +6,6 @@ const legacyFile = 'landschaftsfotografie.html'
 const providedDoc = Astro.props.doc as PayloadDoc | undefined
 const doc = providedDoc || (await getLegacyBackedDoc(legacyFile, { depth: 2 }))
 
-const heroImages = [
-  'assets/optimized/assets-portfolio-wettberwerb-foto5-wunder-der-natur2-1920.webp',
-  'assets/optimized/assets-portfolio-20250605-dsc04020-1920.webp',
-  'assets/optimized/assets-portfolio-wettberwerb-foto10-wunder-der-natur-1920.webp',
-  'assets/optimized/assets-portfolio-dsc8032-1920.webp',
-  'assets/optimized/assets-portfolio-20250605-dsc03978-1920.webp',
-]
-
-const modules = [
-  {
-    image: 'assets/optimized/assets-portfolio-wettberwerb-foto6-wunder-der-natur-1920.webp',
-    label: '01 · Fine-Art',
-    title: 'Licht & Weite',
-    text: 'Ruhige Landschaftsmotive mit natürlicher Tiefe — für Räume, in denen ein Bild nicht schreien muss.',
-  },
-  {
-    image: 'assets/optimized/assets-portfolio-wettberwerb-foto10-wunder-der-natur-1920.webp',
-    label: '02 · Aluminium',
-    title: 'Material & Präsenz',
-    text: 'Drucke auf Alu-Dibond, Acrylglas oder Fine-Art-Papier werden auf Raum, Grösse und Wirkung abgestimmt.',
-  },
-  {
-    image: 'assets/optimized/assets-portfolio-20250414-dsc00341-1920.webp',
-    label: '03 · Acrylglas',
-    title: 'Tiefe & Glanz',
-    text: 'Für Motive mit Lichtkante, Reflexion und klarer Farbe. Besonders stark, wenn das Bild im Raum als Objekt wirken soll.',
-  },
-  {
-    image: 'assets/optimized/assets-portfolio-20250327-dsc01550-1920.webp',
-    label: '04 · Edition',
-    title: 'Serien & Auswahl',
-    text: 'Motiv, Format, Material und Hängung werden gemeinsam entschieden — von Einzelbild bis kleiner Serie.',
-  },
-]
-
-const galleryTiles = [
-  ['assets/optimized/assets-portfolio-wettberwerb-foto5-wunder-der-natur2-1920.webp', 'assets/portfolio/thumbs/Wettberwerb_Foto5_Wunder_der_Natur2.webp', 'Landschaft Hauptmotiv', 720, 471],
-  ['assets/optimized/assets-portfolio-wettberwerb-foto6-wunder-der-natur-1920.webp', 'assets/portfolio/thumbs/Wettberwerb_Foto6_Wunder_der_Natur.webp', 'Landschaft Wasser und Stein', 720, 520],
-  ['assets/optimized/assets-portfolio-wettberwerb-foto10-wunder-der-natur-1920.webp', 'assets/portfolio/thumbs/Wettberwerb_Foto10_Wunder_der_natur.webp', 'Landschaft Lichtkante', 720, 448],
-  ['assets/optimized/assets-portfolio-20250605-dsc04020-1920.webp', 'assets/portfolio/thumbs/20250605-DSC04020.webp', 'Landschaft Hochformat', 720, 1080],
-  ['assets/optimized/assets-portfolio-20250605-dsc03978-1920.webp', 'assets/portfolio/thumbs/20250605-DSC03978.webp', 'Landschaft Detail', 720, 960],
-  ['assets/optimized/assets-portfolio-20250605-dsc03816-1920.webp', 'assets/portfolio/thumbs/20250605-DSC03816.webp', 'Landschaft Stimmung', 720, 960],
-  ['assets/optimized/assets-portfolio-20250605-dsc03793-1920.webp', 'assets/portfolio/thumbs/20250605-DSC03793.webp', 'Landschaft Serie', 720, 960],
-  ['assets/optimized/assets-portfolio-20250605-dsc03756-1920.webp', 'assets/portfolio/thumbs/20250605-DSC03756.webp', 'Landschaft Printmotiv', 720, 1080],
-  ['assets/optimized/assets-portfolio-20250414-dsc00341-1920.webp', 'assets/portfolio/thumbs/20250414-DSC00341.webp', 'Landschaft Fels und Licht', 720, 1080],
-] as const
-
-const processSteps = [
-  ['01', 'Anfrage', 'Sie schicken Raum, gewünschte Wirkung, Grössenidee und erste Motivauswahl. Wenn noch nichts feststeht, starten wir mit der Bildwirkung.'],
-  ['02', 'Beratung', 'Wir klären Material, Format, Oberfläche, Budget und ob ein Einzelbild oder eine kleine Serie besser passt.'],
-  ['03', 'Produktion', 'Druckdaten, Proof, Material und Fertigung werden vorbereitet. Ziel: keine Zufallswirkung, sondern kontrolliertes Ergebnis.'],
-  ['04', 'Lieferung', 'Je nach Format wird Versand, Abholung oder Hängung abgestimmt. Die Ausgabe bleibt nachvollziehbar dokumentiert.'],
-] as const
-
-const relatedAreas = [
-  ['portraitfotografie.html', 'assets/portraits/_DSC0470-Enhanced-NR.webp', 'Portraitfotografie', '01 / Mensch', 'Portrait'],
-  ['oldtimer-fotografie.html', 'assets/optimized/assets-photos-oldtimer-stage-1920.webp', 'Oldtimerfotografie', '02 / Objekt', 'Oldtimer'],
-  ['drucke-sonderanfertigungen-duesseldorf.html', 'assets/optimized/assets-portfolio-dsc8032-1920.webp', 'Drucke und Sonderanfertigungen', '03 / Ausgabe', 'Drucke'],
-  ['portfolio.html', 'assets/optimized/assets-portfolio-wettberwerb-foto5-wunder-der-natur2-1920.webp', 'Vollständiges Portfolio', '04 / Übersicht', 'Portfolio'],
-] as const
-
 const cityLinks = [
   ['landschaftsfotografie.html', 'Düsseldorf'],
   ['landschaftsfotografie-koeln.html', 'Köln'],
@@ -106,7 +45,7 @@ const searchLinks = [
       class="hero-ls"
       data-header-theme="dark"
       aria-label="Landschaftsfotografie"
-      data-images={heroImages.join(',')}
+      data-images="assets/optimized/assets-portfolio-wettberwerb-foto5-wunder-der-natur2-1920.webp,assets/optimized/assets-portfolio-20250605-dsc04020-1920.webp,assets/optimized/assets-portfolio-wettberwerb-foto10-wunder-der-natur-1920.webp,assets/optimized/assets-portfolio-dsc8032-1920.webp,assets/optimized/assets-portfolio-20250605-dsc03978-1920.webp"
     >
       <div class="hero-ls__paper" aria-hidden="true"></div>
 
@@ -156,84 +95,112 @@ const searchLinks = [
     </section>
 
     <section class="st-ls" data-header-theme="light">
-      <div class="section-inner">
-        <h2>Räume brauchen <em>Bilder mit Ruhe.</em></h2>
+      <div class="st-ls__inner">
+        <h2 class="st-ls__title">Bilder, die einen <em>Raum verändern.</em></h2>
         <div class="st-ls__body">
-          <p>Landschaftsbilder funktionieren erst dann wirklich, wenn Motiv, Material, Grösse und Raum zusammenpassen. Ich denke Motive deshalb nicht nur als Datei, sondern als fertiges Objekt an der Wand.</p>
-          <p>Ob Fine-Art-Print, Alu-Dibond, Acrylglas oder Sonderformat: Entscheidend ist eine Bildwirkung, die lange trägt — ruhig, präzise und hochwertig produziert.</p>
+          <p>Landschaft entsteht aus Geduld — aus der Entscheidung, was im Bild bleiben darf und was nicht. Aus Wetter, das man nicht herstellen kann, und aus dem richtigen Moment, in dem alles zusammenkommt.</p>
+          <p>Jede Aufnahme ist als großformatiger Print gedacht — für Wand, Wohnraum, Praxis, Hotel oder Sammlung. Alle Motive werden farbecht auf Fine-Art-Papier, Aluminium-Dibond oder hinter Acrylglas gefertigt und gedruckt.</p>
+          <a class="st-ls__cta" href="#anfrage">Projekt anfragen →</a>
         </div>
       </div>
     </section>
 
     <section class="mod-ls" data-header-theme="dark">
-      <div class="section-inner">
-        <div class="mod-ls__head">
-          <h2>Von Motiv zu <em>Objekt.</em></h2>
-          <p>Jedes Landschaftsbild wird über Wirkung, Format und Material geplant. So entsteht aus einem Motiv ein ruhiges, belastbares Raumobjekt.</p>
-        </div>
-        <div class="mod-ls__grid">
-          {modules.map((item) => (
-            <article class="mod-ls__card" style={`background-image:url('${item.image}')`}>
-              <div>
-                <span>{item.label}</span>
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
-              </div>
-            </article>
-          ))}
-        </div>
+      <div class="mod-ls__head">
+        <h2 class="mod-ls__title">Vier Ausführungen.</h2>
+        <p class="mod-ls__lead">Jedes Motiv ist als Print erhältlich.</p>
+      </div>
+      <div class="mod-ls__grid">
+        <article class="mod-ls__card">
+          <div class="mod-ls__img" style="background-image:url('assets/optimized/assets-portfolio-wettberwerb-foto6-wunder-der-natur-1920.webp')"></div>
+          <div class="mod-ls__body">
+            <span class="mod-ls__num">01</span>
+            <h3 class="mod-ls__name">Fine-Art</h3>
+          </div>
+        </article>
+        <article class="mod-ls__card">
+          <div class="mod-ls__img" style="background-image:url('assets/optimized/assets-portfolio-wettberwerb-foto10-wunder-der-natur-1920.webp')"></div>
+          <div class="mod-ls__body">
+            <span class="mod-ls__num">02</span>
+            <h3 class="mod-ls__name">Aluminium</h3>
+          </div>
+        </article>
+        <article class="mod-ls__card">
+          <div class="mod-ls__img" style="background-image:url('assets/optimized/assets-portfolio-20250414-dsc00341-1920.webp')"></div>
+          <div class="mod-ls__body">
+            <span class="mod-ls__num">03</span>
+            <h3 class="mod-ls__name">Acryl­glas</h3>
+          </div>
+        </article>
+        <article class="mod-ls__card">
+          <div class="mod-ls__img" style="background-image:url('assets/optimized/assets-portfolio-20250327-dsc01550-1920.webp')"></div>
+          <div class="mod-ls__body">
+            <span class="mod-ls__num">04</span>
+            <h3 class="mod-ls__name">Edition</h3>
+          </div>
+        </article>
       </div>
     </section>
 
-    <section class="bg-ls" data-header-theme="dark" aria-label="Landschaft Galerie">
-      <div class="bg-ls__inner">
-        <div class="bg-ls__head">
-          <h2>Ausgewählte <em>Landschaften.</em></h2>
-          <p>Eine kuratierte Auswahl aus Landschafts- und Naturmotiven, gedacht für Druck, Edition und Raumwirkung.</p>
-        </div>
-        <div class="bg-ls__grid">
-          {galleryTiles.map(([full, image, alt, width, height]) => (
-            <button class="bg-ls__tile" type="button" data-full={full}>
-              <img src={image} loading="lazy" alt={alt} width={width} height={height} decoding="async" />
-            </button>
-          ))}
-        </div>
+    <section class="bg-ls" data-header-theme="dark" aria-label="Ausgewählte Landschaftsarbeiten">
+      <div class="bg-ls__head">
+        <h2 class="bg-ls__title">Ausgewählte <em>Landschaften.</em></h2>
+        <a class="bg-ls__link" href="portfolio.html">Zum Portfolio →</a>
+      </div>
+      <div class="bg-ls__grid">
+        <button class="bg-ls__tile t-hero" data-full="assets/optimized/assets-portfolio-wettberwerb-foto5-wunder-der-natur2-1920.webp"><img loading="lazy" src="assets/portfolio/thumbs/Wettberwerb_Foto5_Wunder_der_Natur2.webp" alt="Landschaft Hauptmotiv" width="720" height="471" decoding="async" /></button>
+        <button class="bg-ls__tile t-a" data-full="assets/optimized/assets-portfolio-wettberwerb-foto6-wunder-der-natur-1920.webp"><img loading="lazy" src="assets/portfolio/thumbs/Wettberwerb_Foto6_Wunder_der_Natur.webp" alt="Landschaft" width="720" height="520" decoding="async" /></button>
+        <button class="bg-ls__tile t-b" data-full="assets/optimized/assets-portfolio-wettberwerb-foto10-wunder-der-natur-1920.webp"><img loading="lazy" src="assets/portfolio/thumbs/Wettberwerb_Foto10_Wunder_der_natur.webp" alt="Landschaft Atmosphäre" width="720" height="448" decoding="async" /></button>
+        <button class="bg-ls__tile t-c" data-full="assets/optimized/assets-portfolio-20250605-dsc04020-1920.webp"><img loading="lazy" src="assets/portfolio/thumbs/20250605-DSC04020.webp" alt="Landschaft Cinema" width="720" height="1080" decoding="async" /></button>
+        <button class="bg-ls__tile t-d" data-full="assets/optimized/assets-portfolio-20250605-dsc03978-1920.webp"><img loading="lazy" src="assets/portfolio/thumbs/20250605-DSC03978.webp" alt="Landschaft" width="720" height="960" decoding="async" /></button>
+        <button class="bg-ls__tile t-e" data-full="assets/optimized/assets-portfolio-20250605-dsc03816-1920.webp"><img loading="lazy" src="assets/portfolio/thumbs/20250605-DSC03816.webp" alt="Landschaft" width="720" height="960" decoding="async" /></button>
+        <button class="bg-ls__tile t-f" data-full="assets/optimized/assets-portfolio-20250605-dsc03793-1920.webp"><img loading="lazy" src="assets/portfolio/thumbs/20250605-DSC03793.webp" alt="Landschaft" width="720" height="960" decoding="async" /></button>
+        <button class="bg-ls__tile t-g" data-full="assets/optimized/assets-portfolio-20250605-dsc03756-1920.webp"><img loading="lazy" src="assets/portfolio/thumbs/20250605-DSC03756.webp" alt="Landschaft" width="720" height="1080" decoding="async" /></button>
+        <button class="bg-ls__tile t-h" data-full="assets/optimized/assets-portfolio-20250414-dsc00341-1920.webp"><img loading="lazy" src="assets/portfolio/thumbs/20250414-DSC00341.webp" alt="Landschaft Detail" width="720" height="1080" decoding="async" /></button>
       </div>
     </section>
 
     <section class="fw-ls" data-header-theme="light">
-      <div class="section-inner">
+      <div class="fw-ls__inner">
         <div class="fw-ls__head">
-          <h2>So entsteht <em>Ihr Druck.</em></h2>
-          <p>Von der Motivwahl bis zur Ausgabe bleibt der Prozess nachvollziehbar. Ziel ist ein Bild, das im Raum funktioniert — nicht nur am Bildschirm.</p>
+          <h2 class="fw-ls__title">So entsteht <em>Ihr Druck.</em></h2>
+          <p class="fw-ls__lead">Jedes Bild aus dem Portfolio, in jedem Format, mit oder ohne Rahmen — auf Anfrage gefertigt und zu Ihnen geliefert.</p>
         </div>
-        <div class="fw-ls__grid">
-          {processSteps.map(([number, title, text]) => (
-            <article class="fw-ls__card">
-              <span>{number}</span>
-              <h3>{title}</h3>
-              <p>{text}</p>
-            </article>
-          ))}
+
+        <div class="fw-ls__flow">
+          <div class="fw-ls__step">
+            <span class="fw-ls__step-num">01</span>
+            <h3>Anfrage</h3>
+          </div>
+          <div class="fw-ls__step">
+            <span class="fw-ls__step-num">02</span>
+            <h3>Beratung</h3>
+          </div>
+          <div class="fw-ls__step">
+            <span class="fw-ls__step-num">03</span>
+            <h3>Produktion</h3>
+          </div>
+          <div class="fw-ls__step">
+            <span class="fw-ls__step-num">04</span>
+            <h3>Lieferung</h3>
+          </div>
         </div>
-        <a class="fw-ls__cta" href="contact.html">Projekt anfragen →</a>
+
+        <div class="fw-ls__cta">
+          <a href="contact.html">Projekt anfragen →</a>
+        </div>
       </div>
     </section>
 
-    <section class="rl-ls" data-header-theme="dark">
-      <div class="section-inner">
-        <div class="rl-ls__head">
-          <h2>Verwandte <em>Bereiche</em>.</h2>
-          <p>Landschaft hängt oft mit Raum, Objekt und Druck zusammen. Diese Bereiche passen häufig dazu — je nachdem, ob Bildsprache, Ausgabe oder Portfolio im Vordergrund stehen.</p>
-        </div>
+    <section class="rl-ls" data-header-theme="dark" aria-label="Landschaftsfotografie">
+      <div class="rl-ls__inner">
+        <h2 class="rl-ls__title">Verwandte <em>Bereiche.</em></h2>
+        <p class="rl-ls__intro">Diese Kategorie ist Teil eines bewusst getrennten Fotografie-Clusters: Fahrzeug, Mensch und Raum bleiben eigenständige Suchintentionen, sind aber intern so verbunden, dass Nutzer schnell in den passenden Bildbereich wechseln können.</p>
         <div class="rl-ls__grid">
-          {relatedAreas.map(([href, image, alt, meta, title]) => (
-            <a class="rl-ls__card" href={href} style={`background-image:url('${image}')`}>
-              <span>{meta}</span>
-              <strong>{title}</strong>
-              <em>{alt}</em>
-            </a>
-          ))}
+          <a class="rl-ls__card" href="portraitfotografie.html"><div class="rl-ls__card-img" style="background-image:url('assets/photos/portrait-blue.webp')"></div><div class="rl-ls__card-body"><strong>Portrait</strong><span>→</span></div></a>
+          <a class="rl-ls__card" href="oldtimer-fotografie.html"><div class="rl-ls__card-img" style="background-image:url('assets/optimized/assets-photos-oldtimer-stage-1920.webp')"></div><div class="rl-ls__card-body"><strong>Oldtimer</strong><span>→</span></div></a>
+          <a class="rl-ls__card" href="drucke-sonderanfertigungen-duesseldorf.html"><div class="rl-ls__card-img" style="background-image:url('assets/optimized/assets-portfolio-20250605-dsc03978-1920.webp')"></div><div class="rl-ls__card-body"><strong>Drucke</strong><span>→</span></div></a>
+          <a class="rl-ls__card" href="portfolio.html"><div class="rl-ls__card-img" style="background-image:url('assets/optimized/assets-portfolio-wettberwerb-foto10-wunder-der-natur-1920.webp')"></div><div class="rl-ls__card-body"><strong>Portfolio</strong><span>→</span></div></a>
         </div>
       </div>
     </section>
@@ -241,7 +208,7 @@ const searchLinks = [
     <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Landschaftsfotografie in NRW">
       <div class="mr-cities__inner">
         <div class="mr-cities__head">
-          <h2>Landschaftsfotografie <em>vor Ort.</em></h2>
+          <h2 class="mr-cities__title">Landschaftsfotografie <em>vor Ort.</em></h2>
         </div>
         <nav class="mr-cities__grid" aria-label="Städte">
           {cityLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
@@ -266,7 +233,7 @@ const searchLinks = [
       data-header-theme="light"
       data-contact-subject="Landschaftsfotografie Anfrage"
       data-contact-headline="Landschaft &lt;em&gt;anfragen.&lt;/em&gt;"
-      data-contact-lead="Schreibe kurz, welches Motiv oder welche Raumwirkung gesucht ist — Fine-Art-Print, Wandbild, Edition oder Sonderformat. Wenn Raum, Format oder Material noch offen sind, klären wir das gemeinsam."
-    />
+      data-contact-lead="Schreibe kurz, wofür die Landschaftsbilder eingesetzt werden — Fine-Art-Print, Innenraum, Editorial, Website oder Markenbild. Wichtig sind gewünschte Atmosphäre, Format, Material und Zeitraum."
+    ></section>
   </main>
 </NativeLegacyLayout>

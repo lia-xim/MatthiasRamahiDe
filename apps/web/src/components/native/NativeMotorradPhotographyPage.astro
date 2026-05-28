@@ -6,145 +6,6 @@ const legacyFile = 'motorrad-fotografie.html'
 const providedDoc = Astro.props.doc as PayloadDoc | undefined
 const doc = providedDoc || (await getLegacyBackedDoc(legacyFile, { depth: 2 }))
 
-const heroSlides = [
-  {
-    image: 'assets/optimized/assets-photos-motorrad-ninja-road-1920.webp',
-    alt: 'Motorrad Fotografie Düsseldorf - Kawasaki auf Landstrasse',
-    width: 1920,
-    height: 2880,
-  },
-  {
-    image: 'assets/optimized/assets-photos-motorrad-duke-1920.webp',
-    alt: 'Motorrad Fotografie Düsseldorf - KTM Duke',
-    width: 1920,
-    height: 3413,
-  },
-  {
-    image: 'assets/optimized/assets-photos-motorrad-ninja-road-1920.webp',
-    alt: 'Motorrad Fotografie Düsseldorf - Ninja Road',
-    width: 1920,
-    height: 2880,
-  },
-]
-
-const modules = [
-  {
-    className: 'c1',
-    image: 'assets/optimized/assets-photos-motorrad-ninja-road-1920.webp',
-    alt: 'Motorrad Stand & Silhouette',
-    width: 1920,
-    height: 2880,
-    number: '01 · Stand & Silhouette',
-    title: 'Die ruhige Bildbühne',
-    text: 'Klare Silhouette, kontrollierte Umgebung, präzise Linien. Das Bike wird als Objekt gelesen — stark für Website, Verkauf, Social und Druck.',
-  },
-  {
-    className: 'c2',
-    image: 'assets/optimized/assets-portfolio-dsc3892-1920.webp',
-    alt: 'Motorrad Detail',
-    width: 1920,
-    height: 1280,
-    number: '02 · Detail',
-    title: 'Tank, Motor, Felge, Lenker',
-    text: 'Material, Textur und Mechanik bekommen eigene Motive. So entsteht eine Serie, die nicht nur ein Motorrad zeigt, sondern seine Sprache.',
-  },
-  {
-    className: 'c3',
-    image: 'assets/optimized/assets-photos-motorrad-duke-1920.webp',
-    alt: 'Motorrad mit Fahrer',
-    width: 1920,
-    height: 3413,
-    number: '03 · Mit Fahrer',
-    title: 'Mensch + Maschine, Haltung',
-    text: 'Portraits und Fahraufnahmen verbinden den Fahrer mit dem Bike. Für Personal Brand, Werkstatt, Händler und Magazine.',
-  },
-  {
-    className: 'c4',
-    image: 'assets/optimized/assets-photos-motorrad-ninja-road-1920.webp',
-    alt: 'Motorrad Schräglage und Kurve',
-    width: 1920,
-    height: 2880,
-    number: '04 · Schräglage & Kurve',
-    title: 'On-the-go, Pan-Shots',
-    text: 'Bewegung wird planbar: Route, Lichtfenster, Sicherheitsabstand und Wiederholbarkeit. Dynamisch, aber kontrolliert.',
-  },
-  {
-    className: 'c5',
-    image: 'assets/optimized/assets-portfolio-dsc2986-1920.webp',
-    alt: 'Motorrad Cinematic',
-    width: 1707,
-    height: 2560,
-    number: '05 · Cinematic',
-    title: 'Atmosphäre, Licht, Editorial',
-    text: 'Stimmige Bildstrecken für Kampagnen, Lookbooks oder Magazin-Storys. Licht und Umgebung tragen die Maschine.',
-  },
-  {
-    className: 'c6',
-    image: 'assets/portfolio/_DSC9301-Enhanced-NR.webp',
-    alt: 'Motorrad Social & Vertical',
-    width: 2048,
-    height: 2560,
-    number: '06 · Social & Vertical',
-    title: 'Reels, Story, 9:16-Cuts',
-    text: 'Motive werden direkt für Kanäle gedacht: Querformat, Hochformat, Teaser, Detail und Hero. Ohne späteren Qualitätsverlust.',
-  },
-]
-
-const portfolioTiles = [
-  ['t1', 'assets/optimized/assets-photos-motorrad-1920.webp', 'Motorrad Hero-Motiv', 1707, 2560],
-  ['t2', 'assets/optimized/assets-portfolio-dsc3892-1920.webp', 'Motorrad Detail', 1920, 1280],
-  ['t3', 'assets/optimized/assets-portfolio-dsc2986-1920.webp', 'Motorrad in Werkstatt', 1707, 2560],
-  ['t4', 'assets/portfolio/_DSC9301-Enhanced-NR.webp', 'Motorrad Vertical', 2048, 2560],
-  ['t5', 'assets/portfolio/_DSC9321-Enhanced-NR.webp', 'Motorrad Profil', 1707, 2560],
-  ['t6', 'assets/optimized/assets-portfolio-dsc3878-1920.webp', 'Motorrad Cinematic', 1920, 1280],
-] as const
-
-const audiences = [
-  ['01', 'Motorradfahrer', 'Eigenes Bike · Erinnerung'],
-  ['02', 'Custom Builder', 'Umbau · Werkstatt · Manufaktur'],
-  ['03', 'Händler', 'Verkauf · Website · Portale'],
-  ['04', 'Marke & Magazin', 'Kampagne · Editorial · Social'],
-] as const
-
-const relatedAreas = [
-  {
-    href: 'automobil-fotografie.html',
-    image: 'assets/optimized/assets-photos-automobil-neon-1920.webp',
-    alt: 'Automobilfotografie',
-    width: 1920,
-    height: 1280,
-    meta: '01 / Verwandt',
-    title: 'Automobil',
-  },
-  {
-    href: 'sportwagen-fotografie.html',
-    image: 'assets/optimized/assets-portfolio-dsc3032-generase-1-1920.webp',
-    alt: 'Sportwagenfotografie',
-    width: 1920,
-    height: 1280,
-    meta: '02 / Verwandt',
-    title: 'Sportwagen',
-  },
-  {
-    href: 'videografie-duesseldorf.html',
-    image: 'assets/optimized/assets-portfolio-dsc2986-1920.webp',
-    alt: 'Videografie Düsseldorf',
-    width: 1707,
-    height: 2560,
-    meta: '03 / Bewegtbild',
-    title: 'Videografie',
-  },
-  {
-    href: 'portfolio.html',
-    image: 'assets/optimized/assets-photos-motorrad-1920.webp',
-    alt: 'Vollständiges Portfolio',
-    width: 1707,
-    height: 2560,
-    meta: '04 / Übersicht',
-    title: 'Portfolio',
-  },
-]
-
 const cityLinks = [
   ['motorrad-fotografie.html', 'Düsseldorf'],
   ['motorrad-fotografie-koeln.html', 'Köln'],
@@ -181,39 +42,49 @@ const searchLinks = [
 <NativeLegacyLayout legacyFile={legacyFile} current="fotografie" doc={doc}>
   <main>
     <section class="hero-mr" id="top" data-header-theme="dark" aria-label="Motorradfotografie">
-      <div class="hero-mr__slides" aria-hidden="true">
-        {heroSlides.map((slide, index) => (
-          <div class={`hero-mr__slide${index === 0 ? ' is-active' : ''}`} data-slide={index}>
-            <img
-              class="hero-mr__image"
-              src={slide.image}
-              alt={slide.alt}
-              width={slide.width}
-              height={slide.height}
-              decoding="async"
-              fetchpriority={index === 0 ? 'high' : 'auto'}
-            />
+      <div class="hero-mr__stage" aria-hidden="true">
+        <div class="hero-mr__slides">
+          <div class="hero-mr__slide is-active" data-slide="0" style="--pos:50% 52%">
+            <div class="hero-mr__zoom">
+              <img class="hero-mr__image" src="assets/optimized/assets-photos-motorrad-ninja-road-1920.webp" alt="" fetchpriority="high" decoding="async" width="1920" height="2880" />
+            </div>
           </div>
-        ))}
+          <div class="hero-mr__slide" data-slide="1" style="--pos:50% 48%">
+            <div class="hero-mr__zoom">
+              <img class="hero-mr__image" src="assets/optimized/assets-photos-motorrad-duke-1920.webp" alt="" decoding="async" loading="lazy" width="1920" height="3413" />
+            </div>
+          </div>
+          <div class="hero-mr__slide" data-slide="2" style="--pos:50% 50%">
+            <div class="hero-mr__zoom">
+              <img class="hero-mr__image" src="assets/optimized/assets-photos-motorrad-ninja-road-1920.webp" alt="" decoding="async" loading="lazy" width="1920" height="2880" />
+            </div>
+          </div>
+        </div>
+        <span class="hero-mr__edge" id="heroMrEdge"></span>
+        <span class="hero-mr__vignette"></span>
       </div>
-      <div class="hero-mr__edge" id="heroMrEdge" aria-hidden="true"></div>
-      <div class="hero-mr__shade" aria-hidden="true"></div>
 
-      <div class="hero-mr__copy">
-        <p class="eyebrow">Motorradfotografie Düsseldorf</p>
-        <h1 id="heroMrTitle"><span>Motorrad</span><em>Fotografie.</em></h1>
-        <p class="hero-mr__lead">Motorradfotografie: Silhouette, Mechanik, Haltung, Detail und Fahrerbezug werden als kraftvolle Serie geplant — für Custom Bikes, Händler, Werkstätten und private Maschinen. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.</p>
-        <div class="hero-mr__actions">
-          <a href="#anfrage">Shooting buchen →</a>
-          <a class="ghost" href="portfolio.html">Portfolio</a>
+      <div class="hero-mr__grid">
+        <h1 class="hero-mr__title" id="heroMrTitle">
+          <span class="line"><span class="word">Motorrad</span></span>
+          <span class="line"><span class="word">Fotografie.</span></span>
+        </h1>
+        <div class="hero-mr__lede-block">
+          <p class="hero-mr__lede">Motorradfotografie: Silhouette, Mechanik, Haltung, Detail und Fahrerbezug werden als kraftvolle Serie geplant — für Custom Bikes, Händler, Werkstätten und private Maschinen. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.</p>
+          <div class="hero-mr__actions">
+            <a href="#anfrage">Shooting buchen →</a>
+            <a class="ghost" href="portfolio.html">Portfolio</a>
+          </div>
         </div>
       </div>
 
-      <div class="hero-mr__dots" id="heroMrDots" aria-label="Hero Bilder wählen">
-        {heroSlides.map((_, index) => (
-          <button type="button" data-slide={index} aria-current={index === 0 ? 'true' : 'false'}>{String(index + 1).padStart(2, '0')}</button>
-        ))}
-      </div>
+      <aside class="hero-mr__rail" aria-label="Bildauswahl">
+        <nav class="hero-mr__rail-dots" id="heroMrDots" aria-label="Bildauswahl">
+          <button type="button" data-slide="0" aria-current="true" aria-label="Bild 1"><span></span></button>
+          <button type="button" data-slide="1" aria-label="Bild 2"><span></span></button>
+          <button type="button" data-slide="2" aria-label="Bild 3"><span></span></button>
+        </nav>
+      </aside>
     </section>
 
     <section class="st" data-header-theme="light">
@@ -222,8 +93,8 @@ const searchLinks = [
           <h2>Geschwindigkeit und Leidenschaft <em>auf Bildern.</em></h2>
         </div>
         <div class="st-body">
-          <p>Motorräder leben von <strong>Linie, Haltung und Energie</strong>. Ich fotografiere Bikes nicht beliebig vor der nächsten Wand, sondern entwickle eine Serie aus Hero, Detail, Bewegung und Portrait.</p>
-          <p>Der Look bleibt hochwertig und klar: genug Kraft, aber ohne visuelle Überladung. Für private Erinnerungen, Händler, Custom Builder, Social-Kampagnen und Print.</p>
+          <p>Ein Motorrad muss <strong>auch im Stand Spannung tragen</strong>. Ich arbeite mit gesetzten Winkeln, kontrolliertem Licht und einer ruhigen Bildsprache — Mechanik, Material und Haltung wirken sofort, ohne Effektpose.</p>
+          <p>Einsatz: <strong>Social, Website, Verkauf, Werkstatt, Kampagne</strong>. Sie erhalten Dateien für Web und Druck — bereit für Reels, Story, Magazin und Print, im einheitlichen Bild-Look.</p>
           <a class="st-cta" href="#anfrage">Shooting anfragen →</a>
         </div>
       </div>
@@ -232,21 +103,58 @@ const searchLinks = [
     <section class="mk" data-header-theme="dark">
       <div class="section-inner">
         <div class="mk-head">
-          <h2>Was eine Motorradserie <em>braucht.</em></h2>
-          <p>Ein starkes Bike braucht nicht ein einzelnes Bild, sondern eine Dramaturgie. Diese Bausteine plane ich pro Produktion mit.</p>
+          <h2>Vom Detail <em>bis zur Kurve.</em></h2>
+          <p>Sechs Bildtypen, die ich anbiete — vom ruhigen Standschuss bis zum Pan-Shot in der Schräglage. Jede Serie wird aus diesen Modulen zusammengestellt, je nach Bike, Anlass und Verwendung.</p>
         </div>
-
         <div class="mk-grid">
-          {modules.map((item) => (
-            <article class={`mk-card ${item.className}`}>
-              <img data-src={item.image} src={item.image} loading="lazy" alt={item.alt} width={item.width} height={item.height} decoding="async" />
-              <div class="mk-card__copy">
-                <span>{item.number}</span>
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
-              </div>
-            </article>
-          ))}
+          <article class="mk-card">
+            <figure class="mk-img"><img data-src="assets/optimized/assets-photos-motorrad-ninja-road-1920.webp" loading="lazy" alt="Motorrad Stand & Silhouette" width="1920" height="2880" decoding="async" /></figure>
+            <div class="mk-text">
+              <span class="no">01 · Stand & Silhouette</span>
+              <h3>Die ruhige Bildbühne</h3>
+              <p>Bike pur — Proportionen, Linienführung, Haltung. Gesetztes Licht, klare Winkel. Bereit für Header, Print und Werkstatt-Wand.</p>
+            </div>
+          </article>
+          <article class="mk-card">
+            <figure class="mk-img"><img loading="lazy" src="assets/optimized/assets-portfolio-dsc3892-1920.webp" alt="Motorrad Detail" width="1920" height="1280" decoding="async" /></figure>
+            <div class="mk-text">
+              <span class="no">02 · Detail</span>
+              <h3>Tank, Motor, Felge, Lenker</h3>
+              <p>Nahaufnahmen, die Material, Verarbeitung und Charakter ehrlich zeigen — für Custom-Doku, Händlerseiten und redaktionelle Strecken.</p>
+            </div>
+          </article>
+          <article class="mk-card">
+            <figure class="mk-img"><img data-src="assets/optimized/assets-photos-motorrad-duke-1920.webp" loading="lazy" alt="Motorrad mit Fahrer" width="1920" height="3413" decoding="async" /></figure>
+            <div class="mk-text">
+              <span class="no">03 · Mit Fahrer</span>
+              <h3>Mensch + Maschine, Haltung</h3>
+              <p>Fahrer und Bike zusammen — Haltung, Helm, Hände am Lenker. Porträt-Logik trifft Maschine, gerne vor Ort oder am Werkstatttor.</p>
+            </div>
+          </article>
+          <article class="mk-card">
+            <figure class="mk-img"><img data-src="assets/optimized/assets-photos-motorrad-ninja-road-1920.webp" loading="lazy" alt="Motorrad Schräglage und Kurve" width="1920" height="2880" decoding="async" /></figure>
+            <div class="mk-text">
+              <span class="no">04 · Schräglage & Kurve</span>
+              <h3>On-the-go, Pan-Shots</h3>
+              <p>Mitziehaufnahmen aus der Kurve, sauber gezogene Pan-Shots — Geschwindigkeit als Bild, nicht als Behauptung. Strecke nach Absprache.</p>
+            </div>
+          </article>
+          <article class="mk-card">
+            <figure class="mk-img"><img loading="lazy" src="assets/optimized/assets-portfolio-dsc2986-1920.webp" alt="Motorrad Cinematic" width="1707" height="2560" decoding="async" /></figure>
+            <div class="mk-text">
+              <span class="no">05 · Cinematic</span>
+              <h3>Atmosphäre, Licht, Editorial</h3>
+              <p>Bildserien mit Stimmung — Gegenlicht, Dämmerung, Werkhalle, Asphalt nach Regen. Editorial-Look für Magazin und Marken-Kampagne.</p>
+            </div>
+          </article>
+          <article class="mk-card">
+            <figure class="mk-img"><img loading="lazy" src="assets/portfolio/_DSC9301-Enhanced-NR.webp" alt="Motorrad Social & Vertical" width="2048" height="2560" decoding="async" /></figure>
+            <div class="mk-text">
+              <span class="no">06 · Social & Vertical</span>
+              <h3>Reels, Story, 9:16-Cuts</h3>
+              <p>Hochformat wird von Anfang an mitgeplant — eine Aufnahme, zwei Formate. Reels-, Story- und 9:16-Cuts direkt aus dem Set.</p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -257,12 +165,30 @@ const searchLinks = [
           <h2>Aktuelle <em>Arbeiten.</em></h2>
           <p>Sechs kuratierte Motorrad-Bilder aus jüngeren Serien. Klicken zum Vergrössern.</p>
         </header>
-        {portfolioTiles.map(([className, image, alt, width, height], index) => (
-          <button type="button" class={`po-tile ${className}`} data-i={index} aria-label={`Bild ${index + 1} vergrößern`}>
-            <img data-src={image} src={image} loading="lazy" alt={alt} width={width} height={height} decoding="async" />
-            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-          </button>
-        ))}
+        <button type="button" class="po-tile t1" data-i="0" aria-label="Bild 1 vergrößern">
+          <img loading="lazy" src="assets/optimized/assets-photos-motorrad-1920.webp" alt="Motorrad Hero-Motiv" width="1707" height="2560" decoding="async" />
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        </button>
+        <button type="button" class="po-tile t2" data-i="1" aria-label="Bild 2 vergrößern">
+          <img data-src="assets/optimized/assets-portfolio-dsc3892-1920.webp" loading="lazy" alt="Motorrad Detail" width="1920" height="1280" decoding="async" />
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        </button>
+        <button type="button" class="po-tile t3" data-i="2" aria-label="Bild 3 vergrößern">
+          <img data-src="assets/optimized/assets-portfolio-dsc2986-1920.webp" loading="lazy" alt="Motorrad in Werkstatt" width="1707" height="2560" decoding="async" />
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        </button>
+        <button type="button" class="po-tile t4" data-i="3" aria-label="Bild 4 vergrößern">
+          <img data-src="assets/portfolio/_DSC9301-Enhanced-NR.webp" loading="lazy" alt="Motorrad Vertical" width="2048" height="2560" decoding="async" />
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        </button>
+        <button type="button" class="po-tile t5" data-i="4" aria-label="Bild 5 vergrößern">
+          <img loading="lazy" src="assets/portfolio/_DSC9321-Enhanced-NR.webp" alt="Motorrad Profil" width="1707" height="2560" decoding="async" />
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        </button>
+        <button type="button" class="po-tile t6" data-i="5" aria-label="Bild 6 vergrößern">
+          <img loading="lazy" src="assets/optimized/assets-portfolio-dsc3878-1920.webp" alt="Motorrad Cinematic" width="1920" height="1280" decoding="async" />
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        </button>
       </div>
     </section>
 
@@ -273,9 +199,10 @@ const searchLinks = [
           <p class="lead">Vom ersten eigenen Bike bis zur Kampagne — jede Serie wird auf Maschine, Marke und Nutzung zugeschnitten.</p>
         </div>
         <div class="fw-grid">
-          {audiences.map(([number, title, label]) => (
-            <article class="fw-card"><span class="no">{number}</span><strong>{title}</strong><span class="lbl">{label}</span></article>
-          ))}
+          <article class="fw-card"><span class="no">01</span><strong>Motorradfahrer mit eigener Maschine</strong></article>
+          <article class="fw-card"><span class="no">02</span><strong>Custom Builder &amp; Manufakturen</strong></article>
+          <article class="fw-card"><span class="no">03</span><strong>Werkstätten &amp; Händler</strong></article>
+          <article class="fw-card"><span class="no">04</span><strong>Marken, Magazin &amp; Kampagne</strong></article>
         </div>
         <div class="fw-foot">
           <p>Du erkennst dein Setting wieder? <em>Lass uns sprechen.</em></p>
@@ -288,16 +215,29 @@ const searchLinks = [
       <div class="section-inner">
         <div class="rl-head">
           <h2>Verwandte <em>Bereiche</em>.</h2>
-          <p>Motorrad gehört zur grösseren Automotive-Welt, braucht aber eine eigene Haltung. Schau dir verwandte Disziplinen an — gleicher Anspruch, anderer Rhythmus. Diese Kategorie ist Teil eines bewusst getrennten Fotografie-Clusters: Fahrzeug, Mensch und Raum bleiben eigenständige Suchintentionen, sind aber intern so verbunden, dass Nutzer schnell in den passenden Bildbereich wechseln können.</p>
+          <p>Motorrad steht selten allein. Schau dir die anderen Disziplinen an — gleicher Anspruch, anderer Bildfokus. Diese Kategorie ist Teil eines bewusst getrennten Fotografie-Clusters: Fahrzeug, Mensch und Raum bleiben eigenständige Suchintentionen, sind aber intern so verbunden, dass Nutzer schnell in den passenden Bildbereich wechseln können.</p>
         </div>
         <div class="rl-grid">
-          {relatedAreas.map((area) => (
-            <a class="rl-card" href={area.href}>
-              <img data-src={area.image} src={area.image} loading="lazy" alt={area.alt} width={area.width} height={area.height} decoding="async" />
-              <div class="overlay"></div>
-              <div class="content"><div><span>{area.meta}</span><strong>{area.title}</strong></div><span class="arrow">→</span></div>
-            </a>
-          ))}
+          <a class="rl-card" href="automobil-fotografie.html">
+            <img loading="lazy" src="assets/optimized/assets-photos-automobil-neon-1920.webp" alt="Automobilfotografie" width="1920" height="1280" decoding="async" />
+            <div class="overlay"></div>
+            <div class="content"><div><span>01 / Verwandt</span><strong>Automobil</strong></div><span class="arrow">→</span></div>
+          </a>
+          <a class="rl-card" href="sportwagen-fotografie.html">
+            <img loading="lazy" src="assets/optimized/assets-portfolio-dsc3032-generase-1-1920.webp" alt="Sportwagenfotografie" width="1920" height="1280" decoding="async" />
+            <div class="overlay"></div>
+            <div class="content"><div><span>02 / Verwandt</span><strong>Sportwagen</strong></div><span class="arrow">→</span></div>
+          </a>
+          <a class="rl-card" href="videografie-duesseldorf.html">
+            <img loading="lazy" src="assets/optimized/assets-portfolio-dsc8032-1920.webp" alt="Videografie" width="1920" height="2400" decoding="async" />
+            <div class="overlay"></div>
+            <div class="content"><div><span>03 / Service</span><strong>Videografie</strong></div><span class="arrow">→</span></div>
+          </a>
+          <a class="rl-card" href="portfolio.html">
+            <img loading="lazy" src="assets/optimized/assets-portfolio-dsc3879-1920.webp" alt="Vollständiges Portfolio" width="1920" height="1280" decoding="async" />
+            <div class="overlay"></div>
+            <div class="content"><div><span>04 / Übersicht</span><strong>Portfolio</strong></div><span class="arrow">→</span></div>
+          </a>
         </div>
       </div>
     </section>
@@ -331,6 +271,6 @@ const searchLinks = [
       data-contact-subject="Motorrad Fotografie Anfrage"
       data-contact-headline="Motorrad &lt;em&gt;anfragen.&lt;/em&gt;"
       data-contact-lead="Schreibe kurz, welches Bike fotografiert werden soll — Modell, Standort, ob Fahrerbilder gewünscht sind und wofür die Bilder genutzt werden. Wir klären Licht, Location und Ablauf gemeinsam."
-    />
+    ></section>
   </main>
 </NativeLegacyLayout>

@@ -6,113 +6,6 @@ const legacyFile = 'portraitfotografie.html'
 const providedDoc = Astro.props.doc as PayloadDoc | undefined
 const doc = providedDoc || (await getLegacyBackedDoc(legacyFile, { depth: 2 }))
 
-const heroSlides = [
-  ['assets/portraits/_DSC0470-Enhanced-NR.webp', 'Portraitfotografie Düsseldorf', 1600, 2560],
-  ['assets/portraits/_DSC9301-Enhanced-NR.webp', 'Portrait mit Licht und Haltung', 2048, 2560],
-  ['assets/portraits/_DSC9321-Enhanced-NR.webp', 'Editorial Portrait', 1707, 2560],
-  ['assets/optimized/assets-portraits-20250327-dsc01550-1920.webp', 'Portrait Serie Düsseldorf', 1691, 2560],
-] as const
-
-const modules = [
-  {
-    image: 'assets/portraits/_DSC0470-Enhanced-NR.webp',
-    label: '01 · Personal Brand',
-    title: 'Founder & Speaker',
-    text: 'Portraits, die Persönlichkeit und Positionierung tragen — für Website, LinkedIn, Presse und Keynotes.',
-  },
-  {
-    image: 'assets/optimized/assets-portraits-dsc3908-1920.webp',
-    label: '02 · Team',
-    title: 'Agentur & Kanzlei',
-    text: 'Einheitliche Bildsprache für mehrere Personen, ohne dass jede Aufnahme gleich aussieht.',
-  },
-  {
-    image: 'assets/optimized/assets-portraits-20250605-dsc04020-1920.webp',
-    label: '03 · Editorial',
-    title: 'Magazin & Strecke',
-    text: 'Ruhige Serien mit Atmosphäre, Umgebung und natürlicher Führung — mehr Geschichte als Headshot.',
-  },
-  {
-    image: 'assets/portraits/_DSC9321-Enhanced-NR.webp',
-    label: '04 · Presse',
-    title: 'Headshot & Profil',
-    text: 'Schnell nutzbare Portraits für Pressemappe, Speaker-Profil, Autorenbild und Veröffentlichung.',
-  },
-  {
-    image: 'assets/optimized/assets-portraits-dsc2986-1920.webp',
-    label: '05 · Kampagne',
-    title: 'Cover & Konzept',
-    text: 'Bildwelten, die stärker geführt werden: Konzept, Set, Licht, Styling und Ausgabeformate.',
-  },
-]
-
-const galleryTiles = [
-  ['assets/portraits/_DSC0470-Enhanced-NR.webp', 'assets/portraits/_DSC0470-Enhanced-NR.webp', 'Portrait Hauptmotiv', 1600, 2560],
-  ['assets/portraits/_DSC9321-Enhanced-NR.webp', 'assets/portraits/_DSC9321-Enhanced-NR.webp', 'Portrait Editorial', 1707, 2560],
-  ['assets/optimized/assets-portraits-dsc3908-1920.webp', 'assets/optimized/assets-portraits-dsc3908-1920.webp', 'Business Portrait', 1920, 1280],
-  ['assets/optimized/assets-portraits-dsc3878-1920.webp', 'assets/optimized/assets-portraits-dsc3878-1920.webp', 'Portrait Team', 1920, 1280],
-  ['assets/optimized/assets-portraits-dsc2986-1920.webp', 'assets/optimized/assets-portraits-dsc2986-1920.webp', 'Portrait Licht', 1707, 2560],
-  ['assets/optimized/assets-portraits-dsc2744-1920.webp', 'assets/optimized/assets-portraits-dsc2744-1920.webp', 'Portrait Profil', 1707, 2560],
-  ['assets/optimized/assets-portraits-20250605-dsc04020-1920.webp', 'assets/optimized/assets-portraits-20250605-dsc04020-1920.webp', 'Editorial Portrait Serie', 1707, 2560],
-  ['assets/optimized/assets-portraits-dsc2358-1920.webp', 'assets/optimized/assets-portraits-dsc2358-1920.webp', 'Portrait im Raum', 1707, 2560],
-  ['assets/optimized/assets-portraits-dsc2310-1920.webp', 'assets/optimized/assets-portraits-dsc2310-1920.webp', 'Portrait Detail', 1920, 1280],
-] as const
-
-const workflow = [
-  {
-    image: 'assets/portraits/_DSC9301-Enhanced-NR.webp',
-    alt: 'Portrait Anfrage',
-    width: 2048,
-    height: 2560,
-    number: '01',
-    title: 'Anfrage',
-    text: 'Wofür werden die Portraits gebraucht? Website, LinkedIn, Presse, Teamseite, Magazin oder Bewerbung — die Nutzung bestimmt Stil und Formate.',
-  },
-  {
-    image: 'assets/optimized/assets-portfolio-dsc3032-generase-1-1920.webp',
-    alt: 'Portrait Kennenlernen',
-    width: 1920,
-    height: 1280,
-    number: '02',
-    title: 'Kennenlernen',
-    text: 'Wir klären Wirkung, Tonalität, Outfit, Location und ob die Bilder eher ruhig, nahbar, editorial oder sehr klar wirken sollen.',
-  },
-  {
-    image: 'assets/optimized/assets-portfolio-20250605-dsc03756-1920.webp',
-    alt: 'Portrait Konzept',
-    width: 1707,
-    height: 2560,
-    number: '03',
-    title: 'Konzept & Briefing',
-    text: 'Vor dem Shooting steht ein kurzer Plan: Motive, Licht, Hintergrund, Wechsel, Ausgabeformate und Prioritäten.',
-  },
-  {
-    image: 'assets/optimized/assets-portraits-dsc2310-1920.webp',
-    alt: 'Portrait Shooting',
-    width: 1920,
-    height: 1280,
-    number: '04',
-    title: 'Shooting',
-    text: 'Ruhige Führung statt starrem Posieren. Ich gebe klare Impulse, achte auf Haltung, Blick, Hände, Kleidung und Licht.',
-  },
-  {
-    image: 'assets/portraits/_DSC0470-Enhanced-NR.webp',
-    alt: 'Portrait Auswahl und Lieferung',
-    width: 1600,
-    height: 2560,
-    number: '05',
-    title: 'Auswahl & Lieferung',
-    text: 'Sie erhalten eine kuratierte Auswahl und finale Dateien für Web, Social, Presse und Druck — passend zugeschnitten.',
-  },
-]
-
-const relatedAreas = [
-  ['landschaftsfotografie.html', 'assets/optimized/assets-portfolio-wettberwerb-foto5-wunder-der-natur2-1920.webp', 'Landschaftsfotografie', '01 / Ruhig', 'Landschaft'],
-  ['automobil-fotografie.html', 'assets/optimized/assets-photos-automobil-neon-1920.webp', 'Automobilfotografie', '02 / Marke', 'Automobil'],
-  ['videografie-duesseldorf.html', 'assets/optimized/assets-portfolio-dsc3032-generase-1-1920.webp', 'Videografie Düsseldorf', '03 / Bewegtbild', 'Videografie'],
-  ['portfolio.html', 'assets/portraits/_DSC9321-Enhanced-NR.webp', 'Vollständiges Portfolio', '04 / Übersicht', 'Portfolio'],
-] as const
-
 const cityLinks = [
   ['portraitfotografie.html', 'Düsseldorf'],
   ['portraitfotografie-koeln.html', 'Köln'],
@@ -149,27 +42,37 @@ const searchLinks = [
 <NativeLegacyLayout legacyFile={legacyFile} current="fotografie" doc={doc}>
   <main>
     <section class="hero-pt" id="heroPt" data-header-theme="dark" aria-label="Portraitfotografie">
-      <div class="hero-pt__catch" aria-hidden="true"></div>
-      <div class="hero-pt__slides" aria-hidden="true">
-        {heroSlides.map(([image, alt, width, height], index) => (
-          <div class={`hero-pt__slide${index === 0 ? ' is-active' : ''}`}>
-            <img
-              class="hero-pt__image"
-              src={image}
-              alt={alt}
-              width={width}
-              height={height}
-              decoding="async"
-              fetchpriority={index === 0 ? 'high' : 'auto'}
-            />
+      <div class="hero-pt__stage" aria-hidden="true">
+        <div class="hero-pt__slides">
+          <div class="hero-pt__slide" data-i="0">
+            <div class="hero-pt__zoom">
+              <img class="hero-pt__image" src="assets/portraits/_DSC0470-Enhanced-NR.webp" alt="" fetchpriority="high" decoding="async" width="1600" height="2560" />
+            </div>
           </div>
-        ))}
+          <div class="hero-pt__slide" data-i="1">
+            <div class="hero-pt__zoom">
+              <img class="hero-pt__image" src="assets/portraits/_DSC9301-Enhanced-NR.webp" alt="" loading="lazy" decoding="async" width="2048" height="2560" />
+            </div>
+          </div>
+          <div class="hero-pt__slide" data-i="2">
+            <div class="hero-pt__zoom">
+              <img class="hero-pt__image" src="assets/portraits/_DSC9321-Enhanced-NR.webp" alt="" loading="lazy" decoding="async" width="1707" height="2560" />
+            </div>
+          </div>
+          <div class="hero-pt__slide" data-i="3">
+            <div class="hero-pt__zoom">
+              <img class="hero-pt__image" src="assets/optimized/assets-portraits-20250327-dsc01550-1920.webp" alt="" loading="lazy" decoding="async" width="1691" height="2560" />
+            </div>
+          </div>
+        </div>
+        <span class="hero-pt__vignette"></span>
+        <span class="hero-pt__catchlight"></span>
       </div>
-      <div class="hero-pt__scrim" aria-hidden="true"></div>
-      <div class="hero-pt__copy">
-        <p class="eyebrow">Portraitfotografie Düsseldorf</p>
-        <h1>Portrait <em>Fotografie.</em></h1>
-        <p>Portraitfotografie: Blick, Licht, Distanz und Haltung werden auf Nutzung und Persönlichkeit abgestimmt — für Personal Branding, Business Portraits, Team, Presse und Editorial. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.</p>
+
+      <h1 class="hero-pt__title">Portrait <em>Fotografie.</em></h1>
+
+      <div class="hero-pt__sub-block">
+        <p class="hero-pt__sub">Portraitfotografie: Blick, Licht, Distanz und Haltung werden auf Nutzung und Persönlichkeit abgestimmt — für Personal Branding, Business Portraits, Team, Presse und Editorial. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.</p>
         <div class="hero-pt__actions">
           <a href="#anfrage">Portraitshooting anfragen →</a>
           <a class="ghost" href="portfolio.html">Portfolio</a>
@@ -178,94 +81,150 @@ const searchLinks = [
     </section>
 
     <section class="st-pt" data-header-theme="light">
-      <div class="section-inner">
-        <h2>Ein Portrait muss <em>führen.</em></h2>
+      <div class="st-pt__inner">
+        <h2 class="st-pt__title">Nähe ohne <em>Beliebigkeit.</em></h2>
         <div class="st-pt__body">
-          <p>Gute Portraits entstehen nicht durch Zufall. Entscheidend sind Abstand, Licht, Gespräch, Haltung, Kleidung, Hintergrund und die Frage, wofür das Bild später stehen soll.</p>
-          <p>Ich arbeite ruhig und klar geführt — damit Bilder entstehen, die professionell wirken, ohne künstlich zu sein. Für Einzelpersonen, Teams, Unternehmen, Magazine und persönliche Marken.</p>
+          <p>Ein gutes Portrait entsteht nicht durch Requisiten, sondern durch Haltung, Timing und ein Licht, das zur Person passt. Die Bilder sollen eindeutig wirken — nicht inszeniert.</p>
+          <p>Für Personal Branding, Founder, Teams, Editorials und Kampagnen, die mehr Persönlichkeit tragen sollen als ein Standard-Headshot.</p>
+          <a class="st-pt__cta" href="#anfrage">Jetzt anfragen →</a>
         </div>
       </div>
     </section>
 
     <section class="mod-pt" data-header-theme="dark">
-      <div class="section-inner">
-        <div class="mod-pt__head">
-          <h2>Portraits für <em>Kontext.</em></h2>
-          <p>Nicht jedes Portrait hat dieselbe Aufgabe. Deshalb werden Licht, Distanz, Ausschnitt und Tonalität pro Nutzung geplant.</p>
-        </div>
-        <div class="mod-pt__grid">
-          {modules.map((item) => (
-            <article class="mod-pt__card" style={`background-image:url('${item.image}')`}>
-              <div>
-                <span>{item.label}</span>
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
-              </div>
-            </article>
-          ))}
-        </div>
+      <div class="mod-pt__head">
+        <h2 class="mod-pt__title">Verschiedene <em>Perspektiven.</em></h2>
+        <p class="mod-pt__lead">Fünf Felder, in denen ein Portrait konkret etwas verschiebt — vom Personal Brand bis zur redaktionellen Strecke.</p>
+      </div>
+      <div class="mod-pt__grid">
+        <article class="mod-pt__card">
+          <div class="mod-pt__img" style="background-image:url('assets/portraits/_DSC0470-Enhanced-NR.webp')"></div>
+          <div class="mod-pt__body">
+            <span class="mod-pt__num">01 · Personal Brand</span>
+            <h3 class="mod-pt__name">Founder & Speaker</h3>
+            <p class="mod-pt__desc">Selbstständige, Coaches, Speaker, Founder — ein Bild, das wirkt, ohne sich aufzudrängen.</p>
+          </div>
+        </article>
+        <article class="mod-pt__card">
+          <div class="mod-pt__img" style="background-image:url('assets/optimized/assets-portraits-dsc3908-1920.webp')"></div>
+          <div class="mod-pt__body">
+            <span class="mod-pt__num">02 · Team</span>
+            <h3 class="mod-pt__name">Agentur & Kanzlei</h3>
+            <p class="mod-pt__desc">Agenturen, Kanzleien, Praxen, Marken — eine konsistente Bildsprache, ohne jeden Charakter zu glätten.</p>
+          </div>
+        </article>
+        <article class="mod-pt__card">
+          <div class="mod-pt__img" style="background-image:url('assets/optimized/assets-portraits-20250605-dsc04020-1920.webp')"></div>
+          <div class="mod-pt__body">
+            <span class="mod-pt__num">03 · Editorial</span>
+            <h3 class="mod-pt__name">Magazin & Strecke</h3>
+            <p class="mod-pt__desc">Magazine, Bildstrecken, Künstler-Features — Portraits mit Haltung und Erzählung statt Pose.</p>
+          </div>
+        </article>
+        <article class="mod-pt__card">
+          <div class="mod-pt__img" style="background-image:url('assets/portraits/_DSC9321-Enhanced-NR.webp')"></div>
+          <div class="mod-pt__body">
+            <span class="mod-pt__num">04 · Presse</span>
+            <h3 class="mod-pt__name">Headshot & Profil</h3>
+            <p class="mod-pt__desc">Pressefotos, Headshots, Bewerbung, Profil — klare, ruhige Bilder für den professionellen Auftritt.</p>
+          </div>
+        </article>
+        <article class="mod-pt__card">
+          <div class="mod-pt__img" style="background-image:url('assets/optimized/assets-portraits-dsc2986-1920.webp')"></div>
+          <div class="mod-pt__body">
+            <span class="mod-pt__num">05 · Kampagne</span>
+            <h3 class="mod-pt__name">Cover & Konzept</h3>
+            <p class="mod-pt__desc">Marken-Portraits, Cover, Konzept-Strecken — inszenierte Bilder mit einem klaren Standpunkt.</p>
+          </div>
+        </article>
       </div>
     </section>
 
-    <section class="bg-pt" data-header-theme="dark" aria-label="Portrait Galerie">
-      <div class="bg-pt__inner">
-        <div class="bg-pt__head">
-          <h2>Ausgewählte <em>Portraits.</em></h2>
-          <p>Eine kuratierte Auswahl aus ruhigen, editorial geführten und professionellen Portraitstrecken.</p>
-        </div>
-        <div class="bg-pt__grid">
-          {galleryTiles.map(([full, image, alt, width, height]) => (
-            <button class="bg-pt__tile" type="button" data-full={full}>
-              <img data-src={image} src={image} loading="lazy" alt={alt} width={width} height={height} decoding="async" />
-            </button>
-          ))}
-        </div>
+    <section class="bg-pt" data-header-theme="dark" aria-label="Aus dem Portfolio">
+      <div class="bg-pt__head">
+        <h2 class="bg-pt__title">Aus dem <em>Portfolio.</em></h2>
+        <a class="bg-pt__link" href="portfolio.html">Komplettes Portfolio ansehen →</a>
+      </div>
+      <div class="bg-pt__grid">
+        <button class="bg-pt__tile t-hero" data-full="assets/portraits/_DSC0470-Enhanced-NR.webp"><img data-src="assets/portraits/_DSC0470-Enhanced-NR.webp" alt="Portrait" width="1600" height="2560" decoding="async" loading="lazy" /></button>
+        <button class="bg-pt__tile t-a" data-full="assets/portraits/_DSC9321-Enhanced-NR.webp"><img data-src="assets/portraits/_DSC9321-Enhanced-NR.webp" loading="lazy" alt="Portrait" width="1707" height="2560" decoding="async" /></button>
+        <button class="bg-pt__tile t-b" data-full="assets/optimized/assets-portraits-dsc3908-1920.webp"><img loading="lazy" src="assets/optimized/assets-portraits-dsc3908-1920.webp" alt="Portrait" width="1920" height="1280" decoding="async" /></button>
+        <button class="bg-pt__tile t-c" data-full="assets/optimized/assets-portraits-dsc3878-1920.webp"><img loading="lazy" src="assets/optimized/assets-portraits-dsc3878-1920.webp" alt="Portrait" width="1920" height="1280" decoding="async" /></button>
+        <button class="bg-pt__tile t-d" data-full="assets/optimized/assets-portraits-dsc2986-1920.webp"><img loading="lazy" src="assets/optimized/assets-portraits-dsc2986-1920.webp" alt="Portrait" width="1707" height="2560" decoding="async" /></button>
+        <button class="bg-pt__tile t-e" data-full="assets/optimized/assets-portraits-dsc2744-1920.webp"><img loading="lazy" src="assets/optimized/assets-portraits-dsc2744-1920.webp" alt="Portrait" width="1707" height="2560" decoding="async" /></button>
+        <button class="bg-pt__tile t-f" data-full="assets/optimized/assets-portraits-20250605-dsc04020-1920.webp"><img loading="lazy" src="assets/optimized/assets-portraits-20250605-dsc04020-1920.webp" alt="Portrait" width="1707" height="2560" decoding="async" /></button>
+        <button class="bg-pt__tile t-g" data-full="assets/optimized/assets-portraits-dsc2358-1920.webp"><img loading="lazy" src="assets/optimized/assets-portraits-dsc2358-1920.webp" alt="Portrait" width="1707" height="2560" decoding="async" /></button>
+        <button class="bg-pt__tile t-h" data-full="assets/optimized/assets-portraits-dsc2310-1920.webp"><img loading="lazy" src="assets/optimized/assets-portraits-dsc2310-1920.webp" alt="Portrait" width="1920" height="1280" decoding="async" /></button>
       </div>
     </section>
 
     <section class="fw-pt" data-header-theme="light">
-      <div class="section-inner">
+      <div class="fw-pt__inner">
         <div class="fw-pt__head">
-          <h2>Ablauf <em>ohne Druck.</em></h2>
-          <p>Portraitshootings funktionieren besser, wenn vorher klar ist, was gebraucht wird und was nicht. So bleibt der Termin ruhig.</p>
+          <h2 class="fw-pt__title"><em>Ablauf.</em></h2>
+          <p class="fw-pt__lead">Vom ersten Kontakt bis zur Bildabgabe — fünf ruhige Schritte, damit du vor dem Shooting weißt, was passiert und nach dem Shooting weißt, was kommt.</p>
         </div>
-        <div class="fw-pt__list">
-          {workflow.map((item) => (
-            <article class="fw-pt__row">
-              <img loading="lazy" src={item.image} alt={item.alt} width={item.width} height={item.height} decoding="async" />
-              <div>
-                <span>{item.number}</span>
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
-              </div>
-            </article>
-          ))}
+        <ul class="fw-pt__list">
+          <li class="fw-pt__row">
+            <span class="fw-pt__num">01</span>
+            <div class="fw-pt__thumb" style="background-image:url('assets/portraits/_DSC9301-Enhanced-NR.webp')" role="img" aria-label="Anfrage"></div>
+            <h3 class="fw-pt__name">Anfrage</h3>
+            <p class="fw-pt__copy">Kurze Nachricht reicht — Anlass, Person oder Team, gewünschte Wirkung, Zeitraum. Antwort innerhalb von 24 Stunden mit erster Einordnung und nächsten Schritten.</p>
+            <span class="fw-pt__arrow" aria-hidden="true">→</span>
+          </li>
+          <li class="fw-pt__row">
+            <span class="fw-pt__num">02</span>
+            <div class="fw-pt__thumb" style="background-image:url('assets/optimized/assets-portfolio-dsc3032-generase-1-1920.webp')" role="img" aria-label="Kennenlernen"></div>
+            <h3 class="fw-pt__name">Kennenlernen</h3>
+            <p class="fw-pt__copy">Ein lockeres Gespräch — telefonisch oder vor Ort. Wir klären den Kontext, wer die Bilder sehen wird und welche Tonalität dazu passt. Ohne Verkaufsdruck.</p>
+            <span class="fw-pt__arrow" aria-hidden="true">→</span>
+          </li>
+          <li class="fw-pt__row">
+            <span class="fw-pt__num">03</span>
+            <div class="fw-pt__thumb" style="background-image:url('assets/optimized/assets-portfolio-20250605-dsc03756-1920.webp')" role="img" aria-label="Konzept"></div>
+            <h3 class="fw-pt__name">Konzept &amp; Briefing</h3>
+            <p class="fw-pt__copy">Wir sammeln Referenzen, definieren Licht, Hintergrund, Outfit und ein paar Schlüsselbilder. Du bekommst ein klares Mini-Briefing — keine 30-Seiten-Decks.</p>
+            <span class="fw-pt__arrow" aria-hidden="true">→</span>
+          </li>
+          <li class="fw-pt__row">
+            <span class="fw-pt__num">04</span>
+            <div class="fw-pt__thumb" style="background-image:url('assets/optimized/assets-portraits-dsc2310-1920.webp')" role="img" aria-label="Shooting"></div>
+            <h3 class="fw-pt__name">Shooting</h3>
+            <p class="fw-pt__copy">Location in Düsseldorf oder vor Ort. Ruhiges Setup, viel Raum zum Ankommen, klare Regie ohne Pose-Drill. Zwischendurch ein gemeinsamer Blick auf den Monitor.</p>
+            <span class="fw-pt__arrow" aria-hidden="true">→</span>
+          </li>
+          <li class="fw-pt__row">
+            <span class="fw-pt__num">05</span>
+            <div class="fw-pt__thumb" style="background-image:url('assets/portraits/_DSC0470-Enhanced-NR.webp')" role="img" aria-label="Auswahl und Lieferung"></div>
+            <h3 class="fw-pt__name">Auswahl &amp; Lieferung</h3>
+            <p class="fw-pt__copy">Eine kuratierte Vorauswahl als Web-Galerie. Du wählst die finalen Bilder, ich retuschiere zurückhaltend und liefere in den Formaten, die du brauchst — Web, Print, Social.</p>
+            <span class="fw-pt__arrow" aria-hidden="true">→</span>
+          </li>
+        </ul>
+        <div class="fw-pt__cta">
+          <p>Klingt nach dem richtigen Rahmen? <em>Lass uns sprechen.</em></p>
+          <a href="#anfrage">Projekt anfragen →</a>
         </div>
       </div>
     </section>
 
-    <section class="rl-pt" data-header-theme="dark">
-      <div class="section-inner">
-        <div class="rl-pt__head">
-          <h2>Verwandte <em>Bereiche</em>.</h2>
-          <p>Portraits verbinden Person, Marke und Umgebung. Diese Bereiche passen häufig dazu — je nachdem, ob Bildsprache, Bewegung oder Portfolio im Vordergrund stehen.</p>
-        </div>
+    <section class="rl-pt" data-header-theme="dark" aria-label="Portrait Fotografie">
+      <div class="rl-pt__inner">
+        <h2 class="rl-pt__title">Verwandte <em>Bereiche.</em></h2>
+        <p class="rl-pt__intro">Diese Kategorie ist Teil eines bewusst getrennten Fotografie-Clusters: Fahrzeug, Mensch und Raum bleiben eigenständige Suchintentionen, sind aber intern so verbunden, dass Nutzer schnell in den passenden Bildbereich wechseln können.</p>
         <div class="rl-pt__grid">
-          {relatedAreas.map(([href, image, alt, meta, title]) => (
-            <a class="rl-pt__card" href={href} style={`background-image:url('${image}')`}>
-              <span>{meta}</span>
-              <strong>{title}</strong>
-              <em>{alt}</em>
-            </a>
-          ))}
+          <a class="rl-pt__card" href="landschaftsfotografie.html"><div class="rl-pt__card-img" style="background-image:url('assets/optimized/assets-portfolio-wettberwerb-foto5-wunder-der-natur2-1920.webp')"></div><div class="rl-pt__card-body"><strong>Landschaft</strong><span>→</span></div></a>
+          <a class="rl-pt__card" href="automobil-fotografie.html"><div class="rl-pt__card-img" style="background-image:url('assets/optimized/assets-photos-automobil-neon-1920.webp')"></div><div class="rl-pt__card-body"><strong>Automobil</strong><span>→</span></div></a>
+          <a class="rl-pt__card" href="videografie-duesseldorf.html"><div class="rl-pt__card-img" style="background-image:url('assets/optimized/assets-portfolio-dsc3032-generase-1-1920.webp')"></div><div class="rl-pt__card-body"><strong>Videografie</strong><span>→</span></div></a>
+          <a class="rl-pt__card" href="portfolio.html"><div class="rl-pt__card-img" style="background-image:url('assets/portraits/_DSC9321-Enhanced-NR.webp')"></div><div class="rl-pt__card-body"><strong>Portfolio</strong><span>→</span></div></a>
         </div>
       </div>
     </section>
 
-    <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Portraitfotografie in NRW">
+    <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Portrait Fotografie in NRW">
       <div class="mr-cities__inner">
         <div class="mr-cities__head">
-          <h2>Portraitfotografie <em>vor Ort.</em></h2>
+          <h2 class="mr-cities__title">Portrait Fotografie <em>vor Ort.</em></h2>
         </div>
         <nav class="mr-cities__grid" aria-label="Städte">
           {cityLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
@@ -273,10 +232,10 @@ const searchLinks = [
       </div>
     </section>
 
-    <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Portraitfotografie Suchbegriffe">
+    <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Portrait Fotografie Suchbegriffe">
       <div class="mr-cities__inner">
         <div class="mr-cities__head">
-          <h2>Portraitfotografie <em>Suchbegriffe.</em></h2>
+          <h2>Portrait Fotografie <em>Suchbegriffe.</em></h2>
         </div>
         <nav class="mr-cities__grid" aria-label="Suchvarianten">
           {searchLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
@@ -291,6 +250,6 @@ const searchLinks = [
       data-contact-subject="Portrait Fotografie Anfrage"
       data-contact-headline="Portrait &lt;em&gt;anfragen.&lt;/em&gt;"
       data-contact-lead="Schreibe kurz, wofür die Portraits gedacht sind — Personal Branding, Editorial, Team, Presse oder Bewerbung. Wichtig sind Person/Team, gewünschte Wirkung, Ort und Zeitraum. Stil und Licht klären wir vor dem ersten Klick."
-    />
+    ></section>
   </main>
 </NativeLegacyLayout>

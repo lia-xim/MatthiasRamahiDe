@@ -5,9 +5,10 @@ import { getNavigation, linkAttributes, toRootRelativeHref, type PayloadLink } f
 type Props = {
   current?: string
   ctaHref?: string
+  headerTheme?: string
 }
 
-const { current, ctaHref } = Astro.props as Props
+const { current, ctaHref, headerTheme } = Astro.props as Props
 const cmsNavigation = await getNavigation()
 const { brand, navigation: fallbackNavigation } = legacyContent
 const primary = (cmsNavigation?.primary?.length ? cmsNavigation.primary : fallbackNavigation.primary) as PayloadLink[]
@@ -23,7 +24,10 @@ const mainLinks = primary.filter((link) => {
 })
 const baseCta = cmsNavigation?.cta?.href ? cmsNavigation.cta : fallbackNavigation.cta
 const cta = ctaHref ? { ...baseCta, href: ctaHref } : baseCta
-const navAttrs = current ? { 'data-current': current } : {}
+const navAttrs = {
+  ...(current ? { 'data-current': current } : {}),
+  ...(headerTheme ? { 'data-header-theme': headerTheme } : {}),
+}
 ---
 <header class="topbar" id="topbar" {...navAttrs}>
   <a class="brand" href={toRootRelativeHref(brand.href)}>{brand.lines[0]}<br />{brand.lines[1]}</a>

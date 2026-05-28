@@ -17,6 +17,7 @@ type ComponentizedLegacyParts = {
   bodyClass: string
   current?: string
   fileName: string
+  headerTheme?: string
   head: string
   pageContent: string
 }
@@ -103,6 +104,11 @@ const headerCurrentFrom = (html: string) => {
   return header.match(/\bdata-current=["']([^"']+)["']/i)?.[1] || undefined
 }
 
+const headerThemeFrom = (html: string) => {
+  const header = html.match(/<header\b[^>]*class=["'][^"']*\btopbar\b[^"']*["'][^>]*>/i)?.[0] || ''
+  return header.match(/\bdata-header-theme=["']([^"']+)["']/i)?.[1] || undefined
+}
+
 const contentStartAfterHeader = (html: string, headerEnd: number) => {
   const mainStart = html.indexOf('<main', headerEnd)
   if (mainStart !== -1) return mainStart
@@ -157,6 +163,7 @@ async function buildComponentizedLegacyParts(fileName: string): Promise<Componen
     bodyClass: bodyClassFrom(html),
     current: headerCurrentFrom(html),
     fileName,
+    headerTheme: headerThemeFrom(html),
     head,
     pageContent: cleanLegacyFragment(normalizeLegacyUrls(html.slice(contentStart, contentEnd))),
   }

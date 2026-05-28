@@ -1,6 +1,5 @@
 ---
 import LegacyPageShell from '../../components/legacy/LegacyPageShell.astro'
-import NativeLocalSeoPage from '../../components/cms/NativeLocalSeoPage.astro'
 import NativeAboutPage from '../../components/native/NativeAboutPage.astro'
 import NativeAutomobilPhotographyPage from '../../components/native/NativeAutomobilPhotographyPage.astro'
 import NativeContactPage from '../../components/native/NativeContactPage.astro'
@@ -52,6 +51,10 @@ const shouldRenderNativeLocalSeo =
 const localSeoDoc = shouldRenderNativeLocalSeo
   ? await getByLegacyUrl('local-seo-pages', activeLegacyFile, { depth: 2 })
   : null
+const NativeLocalSeoPage =
+  shouldRenderNativeLocalSeo && localSeoDoc
+    ? (await import('../../components/cms/NativeLocalSeoPage.astro')).default
+    : null
 
 Astro.response.headers.set('cache-control', 'public, max-age=300, stale-while-revalidate=86400')
 Astro.response.headers.set('x-migration-render', 'adopted-astro-payload')
@@ -85,7 +88,7 @@ Astro.response.headers.set('x-migration-render', 'adopted-astro-payload')
     <NativeContactPage />
   ) : shouldRenderNativeAbout ? (
     <NativeAboutPage />
-  ) : shouldRenderNativeLocalSeo && localSeoDoc ? (
+  ) : NativeLocalSeoPage && localSeoDoc ? (
     <NativeLocalSeoPage doc={localSeoDoc as PayloadDoc} />
   ) : (
     <LegacyPageShell legacyFile={activeLegacyFile} />

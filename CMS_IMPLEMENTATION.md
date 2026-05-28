@@ -61,9 +61,9 @@ Diese Seiten beziehen ihre Content-Basis aus Payload, wenn ein passendes Dokumen
 
 Die Migration ist inzwischen zweigleisig:
 
-- Native Astro-Komponenten mit Legacy-Optik: Startseite, `fotografie.html`, `automobil-fotografie.html`, `sportwagen-fotografie.html`, `oldtimer-fotografie.html`, `portfolio.html`, `leistungen.html`, sieben weitere Service-Seiten inklusive Fotolabor sowie `blog.html`; der Journal-Index nutzt veroeffentlichte `journal-posts` aus Payload, wenn sie erreichbar sind, und faellt sonst auf die eingefrorene Referenzliste zurueck.
+- Native Astro-Komponenten mit Legacy-Optik: Startseite, `fotografie.html`, alle sechs Haupt-Fotografie-Seiten (`automobil-fotografie.html`, `sportwagen-fotografie.html`, `oldtimer-fotografie.html`, `motorrad-fotografie.html`, `portraitfotografie.html`, `landschaftsfotografie.html`), `portfolio.html`, `leistungen.html`, sieben weitere Service-Seiten inklusive Fotolabor, `contact.html`, `ueber-mich.html` sowie `blog.html`; der Journal-Index nutzt veroeffentlichte `journal-posts` aus Payload, wenn sie erreichbar sind, und faellt sonst auf die eingefrorene Referenzliste zurueck.
 - CMS-native strukturierte Templates: neue/dynamische Service-Seiten, Portfolio-Projekte, Journal-Beitraege unter `/journal/<slug>` und Local-SEO-Seiten ohne alte HTML-Datei.
-- Bewusste Parity-Schicht: Motorrad, Portrait und Landschaft als verbleibende Haupt-Fotografie-Detailseiten, About, Kontakt, Legal, sieben bestehende `blog-*.html` Detailseiten und die alten Local-SEO-HTML-Seiten bleiben 1:1 ueber die Legacy-Schicht, bis ihr Body wirklich als natives Template abgenommen ist.
+- Bewusste Parity-Schicht: Legal, sieben bestehende `blog-*.html` Detailseiten und die alten Local-SEO-HTML-Seiten bleiben 1:1 ueber die Legacy-Schicht, bis ihr Body wirklich als natives Template abgenommen ist.
 
 Local-SEO kann kontrolliert auf das neue native Template umgelegt werden:
 
@@ -276,6 +276,9 @@ Aktueller Stand vom 2026-05-28:
 - `web:build` nach nativer Automobil-, Sportwagen- und Oldtimer-Body-Komponente: erfolgreich, `astro check` mit 0 Errors / 0 Warnings.
 - Visual Regression 2026-05-29: `automotive-main` Desktop 1.985%, Mobile 1.705%; `sportscar-main` Desktop 1.779%, Mobile 0.008%; `oldtimer-main` Desktop 0.003%, Mobile 0.010%.
 - Browser-Smoke 2026-05-29: `automobil-fotografie.html`, `sportwagen-fotografie.html` und `oldtimer-fotografie.html` laden sinnvollen Inhalt, Lightbox-Interaktion funktioniert, keine Console Errors/Warnings.
+- `web:build` nach nativer Motorrad-, Portrait-, Landschaft-, Kontakt- und Ueber-mich-Zerlegung: erfolgreich, `astro check` mit 0 Errors / 0 Warnings.
+- Visual Regression 2026-05-29 ueber acht Kernseiten: Automobil 0.016%/1.705%, Sportwagen 2.806%/0.253%, Oldtimer 0.003%/0.010%, Motorrad 2.516%/0.473%, Portrait 1.048%/0.010%, Landschaft 0.003%/0.012%, Ueber mich 0.003%/0.010%, Kontakt 0.017%/1.869% Desktop/Mobile.
+- Browser-Smoke 2026-05-29: Motorrad, Portrait und Landschaft oeffnen ihre Lightbox; Kontaktformular und Kopierbutton funktionieren; Ueber-mich-Kapitel und Kontaktmodul sind vorhanden; keine relevanten Console Errors/Warnings.
 - Zielgerichtete Visual Regression nach der letzten Template-Aenderung: Portfolio, Leistungen, Journal-Index, Automotive-Journal-Detail und Local-SEO bleiben unter der harten 5%-Grenze; Local-SEO mobile bleibt wegen langer Legacy-Lazyload-Strecken eine dokumentierte Warnung.
 
 Weitere QA-Befehle:
@@ -316,7 +319,6 @@ Kurzfassung:
 
 - Weitere nicht aktive Importgruppen redaktionell pruefen und erst danach `legacy.migrationStatus` von `seeded` auf `reviewed`, `componentized` oder `live` setzen.
 - Medienbestand weiter kuratieren: Alt-Texte, Captions, Featured-Auswahl, Mood/Tags und Verwendungszweck finalisieren.
-- Weitere Legacy-Layouts aus dem Body in echte Astro-Komponenten zerlegen, sobald Visual Regression fuer den Seitentyp stabil gruen ist.
-- Naechste native Body-Zerlegung: Motorrad, Portrait und Landschaft; danach About/Kontakt/Legal, danach die sieben bestehenden Journal-Detail-HTML-Seiten.
+- Weitere Legacy-Layouts aus dem Body in echte Astro-Komponenten zerlegen, sobald Visual Regression fuer den Seitentyp stabil gruen ist: als naechstes Legal-Seiten, danach die sieben bestehenden Journal-Detail-HTML-Seiten und spaeter alte Local-SEO-HTML-Seiten per Opt-in.
 - Local-SEO-Seiten nach dem privaten Online-Test final redaktionell gegenlesen und bei Bedarf einzelne Seiten wieder auf Draft setzen.
 - Optional: Rebuild-Hook auf dem Hetzner-Server aktivieren und mit echtem Secret testen.
