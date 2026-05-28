@@ -1,0 +1,377 @@
+---
+import NativeLegacyLayout from '../../layouts/NativeLegacyLayout.astro'
+import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
+
+const legacyFile = 'automobil-fotografie.html'
+const providedDoc = Astro.props.doc as PayloadDoc | undefined
+const doc = providedDoc || (await getLegacyBackedDoc(legacyFile, { depth: 2 }))
+
+const switchFrames = [
+  {
+    image: 'assets/optimized/assets-portfolio-dsc3879-1920.webp',
+    label: 'Exterieur',
+  },
+  {
+    image: 'assets/optimized/assets-portfolio-dsc2986-1920.webp',
+    label: 'Interieur',
+  },
+  {
+    image: 'assets/optimized/assets-portfolio-dsc3892-1920.webp',
+    label: 'Details',
+  },
+  {
+    image: 'assets/optimized/assets-portfolio-dsc3032-generase-1-1920.webp',
+    label: 'Cinematic',
+  },
+]
+
+const galleryTiles = [
+  {
+    className: 'bg-t-hero',
+    src: 'assets/optimized/assets-portfolio-dsc3879-1920.webp',
+    alt: 'Ferrari F12 Berlinetta in Düsseldorfer Ausstellungsraum — Automobilfotografie',
+    width: 1920,
+    height: 1280,
+    left: '01 · Showroom',
+    right: 'Düsseldorf · 2025',
+  },
+  {
+    className: 'bg-t-a',
+    src: 'assets/portfolio/_DSC9301-Enhanced-NR.webp',
+    alt: 'Sportwagen-Cockpit mit Leder und Carbon — Interieur',
+    width: 2048,
+    height: 2560,
+    left: '02 · Cockpit',
+    right: 'Fotograf',
+  },
+  {
+    className: 'bg-t-b',
+    src: 'assets/optimized/assets-portfolio-dsc3892-1920.webp',
+    alt: 'Detail von Lack und Sicke an einem Automobil',
+    width: 1920,
+    height: 1280,
+    left: '03 · Detail',
+    right: 'NRW',
+  },
+  {
+    className: 'bg-t-c',
+    src: 'assets/optimized/assets-portfolio-dsc3982-1920.webp',
+    alt: 'Cineastische Automobilaufnahme bei Nacht',
+    width: 1920,
+    height: 1280,
+    left: '04 · Night',
+    right: 'Editorial',
+  },
+  {
+    className: 'bg-t-d',
+    src: 'assets/optimized/assets-portfolio-dsc2316-1920.webp',
+    alt: 'Automobil-Detail in Architektur',
+    width: 1920,
+    height: 1200,
+    left: '05 · Lines',
+    right: 'Architektur',
+  },
+  {
+    className: 'bg-t-e',
+    src: 'assets/optimized/assets-portfolio-dsc2310-1920.webp',
+    alt: 'Automobil — Showroom-Tiefschwarz',
+    width: 1920,
+    height: 1280,
+    left: '06 · Black',
+    right: 'Hall',
+  },
+  {
+    className: 'bg-t-f',
+    src: 'assets/optimized/assets-portfolio-dsc3032-generase-1-1920.webp',
+    alt: 'Cineastische Aufnahme — Automobil in Bewegung',
+    width: 1920,
+    height: 1280,
+    left: '07 · Motion',
+    right: 'Rheinland',
+  },
+  {
+    className: 'bg-t-g',
+    src: 'assets/optimized/assets-portfolio-dsc6982-1920.webp',
+    alt: 'Automobil — Editorial-Frame im Tageslicht',
+    width: 1707,
+    height: 2560,
+    left: '08 · Daylight',
+    right: 'Editorial',
+  },
+  {
+    className: 'bg-t-h',
+    src: 'assets/optimized/assets-portfolio-dsc8032-1920.webp',
+    alt: 'Automobil — Detail-Komposition',
+    width: 1920,
+    height: 2400,
+    left: '09 · Frame',
+    right: 'Fotograf',
+  },
+]
+
+const audiences = [
+  ['01', 'Privatkund·innen', 'Privat · Geschenk'],
+  ['02', 'Hersteller & Marken', 'Kampagne · CI'],
+  ['03', 'Autohäuser & Händler', 'Showroom · Serie'],
+  ['04', 'Clubs & Redaktionen', 'Magazin · Editorial'],
+  ['05', 'Sammler & Besitzer', 'Edition · Archiv'],
+]
+
+const relatedAreas = [
+  {
+    href: 'sportwagen-fotografie.html',
+    image: 'assets/portfolio/thumbs/_DSC3982.webp',
+    alt: 'Sportwagenfotografie',
+    width: 720,
+    height: 480,
+    meta: '01 / Verwandt',
+    title: 'Sportwagen',
+  },
+  {
+    href: 'oldtimer-fotografie.html',
+    image: 'assets/optimized/assets-photos-oldtimer-stage-1920.webp',
+    alt: 'Oldtimerfotografie',
+    width: 1920,
+    height: 1280,
+    meta: '02 / Verwandt',
+    title: 'Oldtimer',
+  },
+  {
+    href: 'motorrad-fotografie.html',
+    image: 'assets/optimized/assets-photos-motorrad-1920.webp',
+    alt: 'Motorradfotografie',
+    width: 1707,
+    height: 2560,
+    meta: '03 / Verwandt',
+    title: 'Motorrad',
+  },
+  {
+    href: 'portfolio.html',
+    image: 'assets/portfolio/thumbs/_DSC3879.webp',
+    alt: 'Vollständiges Portfolio',
+    width: 720,
+    height: 480,
+    meta: '04 / Übersicht',
+    title: 'Portfolio',
+  },
+]
+
+const cityLinks = [
+  ['automobil-fotografie.html', 'Düsseldorf'],
+  ['automobil-fotografie-koeln.html', 'Köln'],
+  ['automobil-fotografie-essen.html', 'Essen'],
+  ['automobil-fotografie-dortmund.html', 'Dortmund'],
+  ['automobil-fotografie-duisburg.html', 'Duisburg'],
+  ['automobil-fotografie-bochum.html', 'Bochum'],
+  ['automobil-fotografie-wuppertal.html', 'Wuppertal'],
+  ['automobil-fotografie-leverkusen.html', 'Leverkusen'],
+  ['automobil-fotografie-oberhausen.html', 'Oberhausen'],
+  ['automobil-fotografie-krefeld.html', 'Krefeld'],
+  ['automobil-fotografie-moenchengladbach.html', 'Mönchengladbach'],
+  ['automobil-fotografie-moers.html', 'Moers'],
+  ['automobil-fotografie-gelsenkirchen.html', 'Gelsenkirchen'],
+  ['automobil-fotografie-bergisch-gladbach.html', 'Bergisch Gladbach'],
+  ['automobil-fotografie-solingen.html', 'Solingen'],
+  ['automobil-fotografie-remscheid.html', 'Remscheid'],
+  ['automobil-fotografie-mettmann.html', 'Mettmann'],
+  ['automobil-fotografie-hilden.html', 'Hilden'],
+  ['automobil-fotografie-dormagen.html', 'Dormagen'],
+  ['automobil-fotografie-neuss.html', 'Neuss'],
+  ['automobil-fotografie-nrw.html', 'NRW'],
+  ['automobil-fotografie-deutschland.html', 'Deutschland'],
+]
+
+const searchLinks = [
+  ['automotive-fotografie.html', 'Automotive Fotografie'],
+  ['autofotografie.html', 'Autofotografie'],
+  ['fahrzeugfotografie.html', 'Fahrzeugfotografie'],
+  ['autohaus-fotografie.html', 'Autohaus Fotografie'],
+  ['autoverkauf-fotos-duesseldorf.html', 'Autoverkauf Fotos'],
+]
+---
+<NativeLegacyLayout legacyFile={legacyFile} current="fotografie" doc={doc}>
+  <main>
+    <section class="hero-pd" id="top" data-header-theme="dark" aria-label="Automobilfotografie">
+      <div class="pd-stage" aria-hidden="true">
+        <div class="pd-frame" id="pdFrameA"><div class="pd-frame-inner"></div></div>
+        <div class="pd-frame" id="pdFrameB"><div class="pd-frame-inner"></div></div>
+      </div>
+      <div class="pd-paper" aria-hidden="true"></div>
+      <div class="pd-glow" aria-hidden="true"></div>
+      <div class="pd-streak" aria-hidden="true"></div>
+      <div class="pd-flare pd-flare-2" aria-hidden="true"></div>
+      <div class="pd-vignette" aria-hidden="true"></div>
+      <div class="pd-grain" aria-hidden="true"></div>
+      <div class="pd-overlay">
+        <div class="pd-bottom">
+          <h1 class="pd-title">
+            <span class="line"><span class="word">Automobil</span></span>
+            <span class="line"><span class="word">Fotografie.</span></span>
+          </h1>
+          <p class="pd-sub">Automobilfotografie: Exterieur, Interieur, Details und Cinematic werden als kuratierte Bildserie geplant — für Marke, Showroom, Verkauf, Kampagne und hochwertige private Fahrzeuge. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.</p>
+          <div class="pd-actions">
+            <a href="#anfrage">Shooting buchen →</a>
+            <a class="ghost" href="portfolio.html">Portfolio</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="st-pull" data-header-theme="light">
+      <div class="st-pull-inner">
+        <blockquote class="st-pull-quote">
+          <strong>Vom Inserat bis zur <span class="accent">Kampagne.</span></strong>
+        </blockquote>
+        <div class="st-pull-foot">
+          <div class="col">
+            <span>01 · Verkauf</span>
+            <p>Klare, nachvollziehbare Ansichten. Lack, Innenraum und Zustand ehrlich und repräsentativ — web-fertige Dateien für Inserate und Portale.</p>
+          </div>
+          <div class="col">
+            <span>02 · Editorial</span>
+            <p>Bildsprache mit Charakter. Lack, Linien und Proportionen werden inszeniert statt nur dokumentiert — für Magazin, Print und Marken-Stories.</p>
+          </div>
+          <div class="col">
+            <span>03 · Kampagne</span>
+            <p>Hochformate, Teaser, Banner. Konsistente Licht-Atmosphäre über die ganze Serie — direkt einsatzbereit für Social und Web-Ads.</p>
+          </div>
+        </div>
+        <div class="st-pull-cta">
+          <a href="#anfrage">Shooting buchen <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="sw" id="sichten" data-header-theme="dark">
+      <header class="sw-head">
+        <div class="ttl">
+          <h2>Ein Bildsatz, <em>vier Blickwinkel.</em></h2>
+        </div>
+      </header>
+
+      <div class="sw-body">
+        <nav class="sw-tabs" role="tablist" aria-label="Bildkategorien">
+          {switchFrames.map((frame, index) => (
+            <button class="sw-tab" role="tab" aria-selected={index === 0 ? 'true' : 'false'} data-cat={index}>
+              <span class="lbl">{frame.label}</span>
+            </button>
+          ))}
+        </nav>
+
+        <div class="sw-stage" id="swStage" role="region" aria-live="polite">
+          {switchFrames.map((frame, index) => (
+            <div
+              class={`frame${index === 0 ? ' is-active' : ''}`}
+              data-frame={index}
+              style={`background-image:url('${frame.image}')`}
+            />
+          ))}
+          <div class="vignette"></div>
+          <div class="grain"></div>
+        </div>
+
+        <aside class="sw-desc" id="swDesc">
+          <div class="group g2 is-in"><h3 class="d-title" id="swTitle">Vollformat, ruhige Linien.</h3></div>
+          <div class="group g3 is-in"><p class="d-body" id="swBody">Außenaufnahmen mit kontrolliertem Licht und ruhigen Reflexen. Lack, Proportionen und Linienführung wirken stimmig — Showroom, Industrie oder urbanes Setting.</p></div>
+          <div class="group g4 is-in"><ul class="d-list" id="swList"><li>Showroom &amp; Location</li><li>Architektur &amp; Industrie</li><li>Tages- und Nachtlicht</li></ul></div>
+          <div class="group g4 is-in"><a class="d-cta" href="#anfrage">Bildsatz anfragen</a></div>
+        </aside>
+      </div>
+
+      <div class="sw-progress" id="swProgress"><div class="rail"><div class="fill" id="swFill"></div></div></div>
+    </section>
+
+    <section class="bg" data-header-theme="dark" aria-label="Ausgewählte Automobil-Arbeiten" id="bgSec">
+      <div class="bg-head">
+        <div class="ttl">
+          <span class="kicker">Auswahl · Bildsatz</span>
+          <h2>Aktuelle <em>Arbeiten.</em></h2>
+        </div>
+        <div class="meta">
+          <span>09 Frames</span>
+          <a href="portfolio.html">Mehr als 240 Arbeiten im Portfolio →</a>
+        </div>
+      </div>
+
+      <div class="bg-grid" id="bgGrid">
+        {galleryTiles.map((tile, index) => (
+          <button type="button" class={`bg-tile ${tile.className}`} data-i={index} aria-label={`Frame ${index + 1} vergrößern`}>
+            <img loading="lazy" src={tile.src} alt={tile.alt} width={tile.width} height={tile.height} decoding="async" />
+            <div class="bg-cap"><span class="l">{tile.left}</span><span class="r">{tile.right}</span></div>
+          </button>
+        ))}
+      </div>
+    </section>
+
+    <section class="ki" data-header-theme="light" aria-label="Für wen ich arbeite">
+      <div class="section-inner">
+        <div class="ki-head">
+          <h2>Für <em>wen</em> ich arbeite.</h2>
+        </div>
+
+        <div class="ki-grid">
+          {audiences.map(([number, title, label]) => (
+            <a href="#anfrage" class="ki-card">
+              <span class="no">{number}</span>
+              <h3>{title}</h3>
+              <span class="lbl">{label}</span>
+              <span class="arrow">→</span>
+            </a>
+          ))}
+        </div>
+        <div class="ki-cta">
+          <p>Du erkennst dich wieder? <a href="#anfrage">Lass uns sprechen <span aria-hidden="true">→</span></a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="rl" data-header-theme="dark">
+      <div class="section-inner">
+        <div class="rl-head">
+          <h2>Verwandte <em>Bereiche</em>.</h2>
+          <p>Automobil ist die Klammer. Schau dir die spezialisierten Disziplinen an — gleicher Anspruch, anderer Bildfokus. Diese Kategorie ist Teil eines bewusst getrennten Fotografie-Clusters: Fahrzeug, Mensch und Raum bleiben eigenständige Suchintentionen, sind aber intern so verbunden, dass Nutzer schnell in den passenden Bildbereich wechseln können.</p>
+        </div>
+        <div class="rl-grid">
+          {relatedAreas.map((area) => (
+            <a class="rl-card" href={area.href}>
+              <img loading="lazy" src={area.image} alt={area.alt} width={area.width} height={area.height} decoding="async" />
+              <div class="overlay"></div>
+              <div class="content"><div><span>{area.meta}</span><strong>{area.title}</strong></div><span class="arrow">→</span></div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Automobil Fotografie in NRW">
+      <div class="mr-cities__inner">
+        <div class="mr-cities__head">
+          <h2>Automobil Fotografie <em>vor Ort.</em></h2>
+        </div>
+        <nav class="mr-cities__grid" aria-label="Städte">
+          {cityLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
+        </nav>
+      </div>
+    </section>
+
+    <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Automobil Fotografie Suchbegriffe">
+      <div class="mr-cities__inner">
+        <div class="mr-cities__head">
+          <h2>Automobil Fotografie <em>Suchbegriffe.</em></h2>
+        </div>
+        <nav class="mr-cities__grid" aria-label="Suchvarianten">
+          {searchLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
+        </nav>
+      </div>
+    </section>
+
+    <section
+      id="anfrage"
+      data-contact-section
+      data-header-theme="light"
+      data-contact-subject="Automobil Fotografie Anfrage"
+      data-contact-headline="Automobil &lt;em&gt;anfragen.&lt;/em&gt;"
+      data-contact-lead="Schreibe kurz, welches Fahrzeug fotografiert werden soll, wo es steht, welche Wirkung die Bilder tragen sollen und ob die Serie privat, kommerziell oder als Kampagne genutzt wird. Wir klären Location, Licht und Ablauf gemeinsam vor dem ersten Klick."
+    />
+  </main>
+</NativeLegacyLayout>
