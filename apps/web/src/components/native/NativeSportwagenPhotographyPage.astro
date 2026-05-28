@@ -289,7 +289,7 @@ const searchLinks = [
         {portfolioTiles.map((tile, index) => (
           <button type="button" class={`po-tile ${tile.className}`} data-i={index} aria-label={`Bild ${index + 1} vergrößern`}>
             <img
-              src={tile.src}
+              src={tile.src || tile.dataSrc}
               data-src={tile.dataSrc}
               loading="lazy"
               alt={tile.alt}
@@ -339,7 +339,7 @@ const searchLinks = [
         <div class="rl-grid">
           {relatedAreas.map((area) => (
             <a class="rl-card" href={area.href}>
-              <img data-src={area.dataSrc} src={area.src} loading="lazy" alt={area.alt} width={area.width} height={area.height} decoding="async" />
+              <img data-src={area.dataSrc} src={area.src || area.dataSrc} loading="lazy" alt={area.alt} width={area.width} height={area.height} decoding="async" />
               <div class="overlay"></div>
               <div class="content"><div><span>{area.meta}</span><strong>{area.title}</strong></div><span class="arrow">→</span></div>
             </a>

@@ -222,6 +222,7 @@ const headersFor = (draft?: boolean): HeadersInit => {
 const payloadCache = new Map<string, { expires: number; value?: unknown; promise?: Promise<unknown | null> }>()
 const payloadCacheTtlMs = Number(import.meta.env.PAYLOAD_FETCH_CACHE_MS ?? (import.meta.env.DEV ? 0 : 300_000))
 const payloadTimeoutMs = Number(import.meta.env.PAYLOAD_FETCH_TIMEOUT_MS || 1_500)
+const disablePayloadFetch = import.meta.env.ASTRO_DISABLE_PAYLOAD_FETCH === 'true' || process.env.ASTRO_DISABLE_PAYLOAD_FETCH === 'true'
 
 function cacheKeyFor(url: string, draft: boolean) {
   return `${draft ? 'draft' : 'published'}:${url}`
@@ -237,6 +238,8 @@ const apiGet = async <T>(
   params: Record<string, string | number | boolean | undefined> = {},
   draft = false,
 ): Promise<T | null> => {
+  if (disablePayloadFetch && !draft) return null
+
   const search = new URLSearchParams()
 
   for (const [key, value] of Object.entries(params)) {

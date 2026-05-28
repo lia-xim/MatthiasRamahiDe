@@ -1,0 +1,282 @@
+---
+import NativeLegacyLayout from '../../layouts/NativeLegacyLayout.astro'
+import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
+
+const legacyFile = 'oldtimer-fotografie.html'
+const providedDoc = Astro.props.doc as PayloadDoc | undefined
+const doc = providedDoc || (await getLegacyBackedDoc(legacyFile, { depth: 2 }))
+
+const heroSlides = [
+  'assets/optimized/assets-photos-oldtimer-stage-1920.webp',
+  'assets/portfolio/_DSC0470-Enhanced-NR.webp',
+  'assets/optimized/assets-portfolio-dsc3892-1920.webp',
+]
+
+const storyCards = [
+  {
+    image: 'assets/portfolio/_DSC0470-Enhanced-NR.webp',
+    alt: 'Oldtimer Exponat — Hauptmotiv',
+    width: 1600,
+    height: 2560,
+    title: 'Exponat',
+    text: 'Hauptmotiv wie eine Ausstellung — ruhige Proportionen, gesetztes Licht, sauberer Hintergrund. Bereit für Katalog, Sammlungsdokumentation oder Wandbild.',
+  },
+  {
+    image: 'assets/optimized/assets-portfolio-dsc3892-1920.webp',
+    alt: 'Oldtimer Patina und Material',
+    width: 1920,
+    height: 1280,
+    title: 'Patina',
+    text: 'Material, Chrom, Leder, Lackalterung. Detailaufnahmen, die Zustand und Geschichte ehrlich erzählen — ohne Glättung, ohne falsche Politur.',
+  },
+  {
+    image: 'assets/optimized/assets-portfolio-dsc2986-1920.webp',
+    alt: 'Oldtimer Innenraum und Cockpit',
+    width: 1707,
+    height: 2560,
+    title: 'Innenraum',
+    text: 'Cockpit, Sitze, Armaturen, Holzfurnier. Mit mobilem Licht inszeniert, damit Materialcharakter und Bedienelemente die gleiche Sprache sprechen wie die Außenansicht.',
+  },
+  {
+    image: 'assets/portfolio/_DSC9321-Enhanced-NR.webp',
+    alt: 'Oldtimer Sammlungs- und Auktionsbild',
+    width: 1707,
+    height: 2560,
+    title: 'Provenance',
+    text: 'Embleme, Schriftzüge, Schlüssel, Dokumente. Belege, die einen Oldtimer für Auktion, Versicherung oder seriösen Verkauf nachvollziehbar machen.',
+  },
+]
+
+const portfolioTiles = [
+  ['t1', 'assets/portfolio/_DSC0470-Enhanced-NR.webp', 'Oldtimer Exponat', 1600, 2560],
+  ['t2', 'assets/portfolio/_DSC9321-Enhanced-NR.webp', 'Oldtimer Cockpit', 1707, 2560],
+  ['t3', 'assets/optimized/assets-portfolio-dsc3892-1920.webp', 'Oldtimer Material', 1920, 1280],
+  ['t4', 'assets/optimized/assets-portfolio-dsc2986-1920.webp', 'Oldtimer Innenraum', 1707, 2560],
+  ['t5', 'assets/portfolio/_DSC9301-Enhanced-NR.webp', 'Oldtimer Profil', 2048, 2560],
+  ['t6', 'assets/optimized/assets-photos-oldtimer-stage-1920.webp', 'Oldtimer Bühne', 1920, 1280],
+] as const
+
+const audiences = [
+  ['01', 'Sammler', 'Liebhaber · Garage'],
+  ['02', 'Auktionshäuser', 'Katalog · Bestandsdoku'],
+  ['03', 'Verkäufer', 'Inserat · Portale'],
+  ['04', 'Redaktion', 'Magazin · Strecke'],
+  ['05', 'Privat', 'Geschenk · Wandbild'],
+]
+
+const relatedAreas = [
+  {
+    href: 'automobil-fotografie.html',
+    image: 'assets/optimized/assets-photos-automobil-neon-1920.webp',
+    alt: 'Automobilfotografie',
+    width: 1920,
+    height: 1280,
+    meta: '01 / Verwandt',
+    title: 'Automobil',
+  },
+  {
+    href: 'sportwagen-fotografie.html',
+    image: 'assets/optimized/assets-portfolio-dsc3032-generase-1-1920.webp',
+    alt: 'Sportwagenfotografie',
+    width: 1920,
+    height: 1280,
+    meta: '02 / Verwandt',
+    title: 'Sportwagen',
+  },
+  {
+    href: 'drucke-sonderanfertigungen-duesseldorf.html',
+    image: 'assets/optimized/assets-portfolio-dsc8032-1920.webp',
+    alt: 'Drucke und Sonderanfertigungen',
+    width: 1920,
+    height: 2400,
+    meta: '03 / Service',
+    title: 'Drucke',
+  },
+  {
+    href: 'portfolio.html',
+    image: 'assets/portfolio/_DSC0470-Enhanced-NR.webp',
+    alt: 'Vollständiges Portfolio',
+    width: 1600,
+    height: 2560,
+    meta: '04 / Übersicht',
+    title: 'Portfolio',
+  },
+]
+
+const cityLinks = [
+  ['oldtimer-fotografie.html', 'Düsseldorf'],
+  ['oldtimer-fotografie-koeln.html', 'Köln'],
+  ['oldtimer-fotografie-essen.html', 'Essen'],
+  ['oldtimer-fotografie-dortmund.html', 'Dortmund'],
+  ['oldtimer-fotografie-duisburg.html', 'Duisburg'],
+  ['oldtimer-fotografie-bochum.html', 'Bochum'],
+  ['oldtimer-fotografie-wuppertal.html', 'Wuppertal'],
+  ['oldtimer-fotografie-leverkusen.html', 'Leverkusen'],
+  ['oldtimer-fotografie-oberhausen.html', 'Oberhausen'],
+  ['oldtimer-fotografie-krefeld.html', 'Krefeld'],
+  ['oldtimer-fotografie-moenchengladbach.html', 'Mönchengladbach'],
+  ['oldtimer-fotografie-moers.html', 'Moers'],
+  ['oldtimer-fotografie-gelsenkirchen.html', 'Gelsenkirchen'],
+  ['oldtimer-fotografie-bergisch-gladbach.html', 'Bergisch Gladbach'],
+  ['oldtimer-fotografie-solingen.html', 'Solingen'],
+  ['oldtimer-fotografie-remscheid.html', 'Remscheid'],
+  ['oldtimer-fotografie-mettmann.html', 'Mettmann'],
+  ['oldtimer-fotografie-hilden.html', 'Hilden'],
+  ['oldtimer-fotografie-dormagen.html', 'Dormagen'],
+  ['oldtimer-fotografie-neuss.html', 'Neuss'],
+  ['oldtimer-fotografie-nrw.html', 'NRW'],
+  ['oldtimer-fotografie-deutschland.html', 'Deutschland'],
+]
+
+const searchLinks = [
+  ['classic-car-fotografie.html', 'Classic Car Fotografie'],
+  ['oldtimer-shooting-duesseldorf.html', 'Oldtimer Shooting'],
+  ['youngtimer-fotografie.html', 'Youngtimer Fotografie'],
+  ['sammlerfahrzeug-fotografie.html', 'Sammlerfahrzeug Fotografie'],
+  ['oldtimer-verkaufsfotos-duesseldorf.html', 'Oldtimer Verkaufsfotos'],
+]
+---
+<NativeLegacyLayout legacyFile={legacyFile} current="fotografie" doc={doc}>
+  <main>
+    <section class="hero-mp" id="top" data-header-theme="dark" aria-label="Oldtimer-Fotografie">
+      <div class="hero-mp__stage" aria-hidden="true">
+        <div class="hero-mp__slides" id="oldtimerSlides">
+          {heroSlides.map((slide, index) => (
+            <div
+              class={`hero-mp__slide${index === 0 ? ' is-active' : ''}`}
+              data-kb={index + 1}
+              style={`background-image:url('${slide}')`}
+            />
+          ))}
+        </div>
+        <video class="hero-mp__bokeh" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+          <source src="assets/atmosphere/bokeh.mp4" type="video/mp4" />
+        </video>
+        <div class="hero-mp__vignette" aria-hidden="true"></div>
+        <div class="hero-mp__grain" aria-hidden="true"></div>
+      </div>
+
+      <div class="hero-mp__overlay">
+        <h1 class="hero-mp__title"><span>Oldtimer</span><em>Fotografie.</em></h1>
+        <p class="hero-mp__sub">Oldtimer-Fotografie: Herkunft, Material, Lack, Chrom, Leder und Patina werden ruhig dokumentiert — für Sammlung, Verkauf, Auktion, Ausstellung und Fahrzeuge mit Geschichte. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.</p>
+        <div class="hero-mp__actions">
+          <a href="#anfrage">Shooting buchen →</a>
+          <a class="ghost" href="portfolio.html">Portfolio</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="st" data-header-theme="light">
+      <div class="section-inner">
+        <div>
+          <h2>Charakter <em>mit Nostalgie.</em></h2>
+        </div>
+        <div class="st-body">
+          <p>Oldtimer brauchen <strong>Ruhe und Abstand</strong>. Ich arbeite mit mobilem Licht, sauberer Komposition und einem klaren Plan — Chrom, Leder, Lack und Patina werden bewusst geführt, ohne Effekt-Pose.</p>
+          <p>Ziel ist nicht Nostalgie-Kitsch, sondern eine Bildserie, die <strong>Sammlung, Auktion oder Verkaufsinserat</strong> trägt. Sie erhalten Dateien für Web, Katalog und Print — bereit für die nächste Ausgabe.</p>
+          <a class="st-cta" href="#anfrage">Shooting buchen →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="pv" data-header-theme="dark">
+      <div class="section-inner">
+        <div class="pv-head">
+          <h2>Vier Spuren <em>einer Geschichte.</em></h2>
+          <p>Jeder Oldtimer trägt seine Provenienz in den Details. Material, Patina, Embleme und Innenraum greifen ineinander — ein Bildsatz, der Herkunft und Zustand vollständig dokumentiert.</p>
+        </div>
+        <div class="pv-grid">
+          {storyCards.map((card) => (
+            <article class="pv-card">
+              <figure class="pv-img"><img loading="lazy" src={card.image} alt={card.alt} width={card.width} height={card.height} decoding="async" /></figure>
+              <h3>{card.title}</h3>
+              <p>{card.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="po" data-header-theme="dark" aria-label="Ausgewählte Oldtimer-Arbeiten">
+      <div class="po-grid" id="poGrid">
+        <header class="po-head">
+          <h2>Aktuelle <em>Arbeiten.</em></h2>
+          <p>Sechs kuratierte Oldtimer-Bilder aus jüngeren Serien. Klicken zum Vergrößern.</p>
+        </header>
+        {portfolioTiles.map(([className, image, alt, width, height], index) => (
+          <button type="button" class={`po-tile ${className}`} data-i={index} aria-label={`Bild ${index + 1} vergrößern`}>
+            <img data-src={image} src={image} loading="lazy" alt={alt} width={width} height={height} decoding="async" />
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+          </button>
+        ))}
+      </div>
+    </section>
+
+    <section class="fw" data-header-theme="light">
+      <div class="section-inner">
+        <div class="fw-head">
+          <h2>Für <em>wen</em> ich arbeite.</h2>
+          <p class="lead">Vom privaten Liebhaberstück bis zum Auktionskatalog — jede Serie wird auf Nutzung und Zielpublikum zugeschnitten.</p>
+        </div>
+        <div class="fw-grid">
+          {audiences.map(([number, title, label]) => (
+            <article class="fw-card"><span class="no">{number}</span><strong>{title}</strong><span class="lbl">{label}</span></article>
+          ))}
+        </div>
+        <div class="fw-foot">
+          <p>Du erkennst dein Anliegen wieder? <em>Lass uns sprechen.</em></p>
+          <a href="#anfrage">Projekt anfragen →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="rl" data-header-theme="dark">
+      <div class="section-inner">
+        <div class="rl-head">
+          <h2>Verwandte <em>Bereiche</em>.</h2>
+          <p>Oldtimer ist Teil einer grösseren automotive Welt. Schau dir die anderen Disziplinen an — gleicher Anspruch, anderer Bildfokus. Diese Kategorie ist Teil eines bewusst getrennten Fotografie-Clusters: Fahrzeug, Mensch und Raum bleiben eigenständige Suchintentionen, sind aber intern so verbunden, dass Nutzer schnell in den passenden Bildbereich wechseln können.</p>
+        </div>
+        <div class="rl-grid">
+          {relatedAreas.map((area) => (
+            <a class="rl-card" href={area.href}>
+              <img data-src={area.image} src={area.image} loading="lazy" alt={area.alt} width={area.width} height={area.height} decoding="async" />
+              <div class="overlay"></div>
+              <div class="content"><div><span>{area.meta}</span><strong>{area.title}</strong></div><span class="arrow">→</span></div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Oldtimer Fotografie in NRW">
+      <div class="mr-cities__inner">
+        <div class="mr-cities__head">
+          <h2>Oldtimer Fotografie <em>vor Ort.</em></h2>
+        </div>
+        <nav class="mr-cities__grid" aria-label="Städte">
+          {cityLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
+        </nav>
+      </div>
+    </section>
+
+    <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Oldtimer Fotografie Suchbegriffe">
+      <div class="mr-cities__inner">
+        <div class="mr-cities__head">
+          <h2>Oldtimer Fotografie <em>Suchbegriffe.</em></h2>
+        </div>
+        <nav class="mr-cities__grid" aria-label="Suchvarianten">
+          {searchLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
+        </nav>
+      </div>
+    </section>
+
+    <section
+      id="anfrage"
+      data-contact-section
+      data-header-theme="light"
+      data-contact-subject="Oldtimer Fotografie Anfrage"
+      data-contact-headline="Oldtimer &lt;em&gt;anfragen.&lt;/em&gt;"
+      data-contact-lead="Schreibe kurz, welcher Oldtimer fotografiert werden soll — Modell, Baujahr, Standort und ob die Bilder für Sammlung, Auktion, Verkauf oder privat genutzt werden. Wir klären Raum, Licht und Ablauf gemeinsam."
+    />
+  </main>
+</NativeLegacyLayout>

@@ -3,6 +3,7 @@ import LegacyPageShell from '../components/legacy/LegacyPageShell.astro'
 import NativeLocalSeoPage from '../components/cms/NativeLocalSeoPage.astro'
 import NativeAutomobilPhotographyPage from '../components/native/NativeAutomobilPhotographyPage.astro'
 import NativeJournalIndexPage from '../components/native/NativeJournalIndexPage.astro'
+import NativeOldtimerPhotographyPage from '../components/native/NativeOldtimerPhotographyPage.astro'
 import NativePhotographyPage from '../components/native/NativePhotographyPage.astro'
 import NativePortfolioIndexPage from '../components/native/NativePortfolioIndexPage.astro'
 import NativePrintLabPage from '../components/native/NativePrintLabPage.astro'
@@ -47,6 +48,7 @@ const shouldRenderFromCms =
 const shouldRenderNativePhotography = shouldRenderFromCms && legacyFile === 'fotografie.html'
 const shouldRenderNativeAutomobil = shouldRenderFromCms && legacyFile === 'automobil-fotografie.html'
 const shouldRenderNativeSportwagen = shouldRenderFromCms && legacyFile === 'sportwagen-fotografie.html'
+const shouldRenderNativeOldtimer = shouldRenderFromCms && legacyFile === 'oldtimer-fotografie.html'
 const shouldRenderNativeJournalIndex = shouldRenderFromCms && legacyFile === 'blog.html'
 const shouldRenderNativePortfolioIndex = shouldRenderFromCms && legacyFile === 'portfolio.html'
 const shouldRenderNativePrintLab = shouldRenderFromCms && legacyFile === 'fotolabor-druck-duesseldorf.html'
@@ -69,6 +71,8 @@ if (shouldRenderFromCms) Astro.response.headers.set('x-migration-render', 'adopt
     <NativeAutomobilPhotographyPage />
   ) : shouldRenderNativeSportwagen ? (
     <NativeSportwagenPhotographyPage />
+  ) : shouldRenderNativeOldtimer ? (
+    <NativeOldtimerPhotographyPage />
   ) : shouldRenderNativeJournalIndex ? (
     <NativeJournalIndexPage />
   ) : shouldRenderNativePortfolioIndex ? (

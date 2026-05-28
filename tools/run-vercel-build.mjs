@@ -18,6 +18,14 @@ function run(command, args, options = {}) {
 const env = {
   ...process.env,
   ASTRO_ADAPTER: 'vercel',
+  ASTRO_DISABLE_LEGACY_CMS_LOOKUP: process.env.ASTRO_DISABLE_LEGACY_CMS_LOOKUP ?? 'true',
+  ASTRO_DISABLE_PAYLOAD_FETCH: process.env.ASTRO_DISABLE_PAYLOAD_FETCH ?? 'true',
+  ASTRO_ENABLE_CMS_DYNAMIC_ROUTES: process.env.ASTRO_ENABLE_CMS_DYNAMIC_ROUTES ?? 'false',
+  ASTRO_ENABLE_CMS_JOURNAL_ROUTES: process.env.ASTRO_ENABLE_CMS_JOURNAL_ROUTES ?? 'false',
+  ASTRO_ENABLE_CMS_SERVICE_ROUTES: process.env.ASTRO_ENABLE_CMS_SERVICE_ROUTES ?? 'false',
+  ASTRO_ENABLE_LOCAL_SEO_ADOPTED_ROUTES: process.env.ASTRO_ENABLE_LOCAL_SEO_ADOPTED_ROUTES ?? 'false',
+  ASTRO_ENABLE_NATIVE_LOCAL_SEO_HTML_ROUTES: process.env.ASTRO_ENABLE_NATIVE_LOCAL_SEO_HTML_ROUTES ?? 'false',
+  PAYLOAD_FETCH_TIMEOUT_MS: process.env.PAYLOAD_FETCH_TIMEOUT_MS ?? '350',
 }
 
 await run('corepack', ['pnpm', '--filter', '@matthias-ramahi/web', 'build'], { env })

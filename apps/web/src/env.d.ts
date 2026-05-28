@@ -10,6 +10,9 @@ interface ImportMetaEnv {
   readonly ASTRO_ENABLE_JOURNAL_ROUTES?: string
   readonly ASTRO_ENABLE_CMS_JOURNAL_ROUTES?: string
   readonly ASTRO_ENABLE_CMS_SERVICE_ROUTES?: string
+  readonly ASTRO_ENABLE_NATIVE_LOCAL_SEO_HTML_ROUTES?: string
+  readonly ASTRO_DISABLE_LEGACY_CMS_LOOKUP?: string
+  readonly ASTRO_DISABLE_PAYLOAD_FETCH?: string
   readonly PREVIEW_SECRET?: string
   readonly PAYLOAD_PREVIEW_API_KEY?: string
   readonly PAYLOAD_FETCH_CACHE_MS?: string

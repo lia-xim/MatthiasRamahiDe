@@ -45,12 +45,12 @@ Redirects werden nur gesetzt, wenn eine URL wirklich konsolidiert werden soll. S
 
 ## Native-Komponenten-Status
 
-Stand 2026-05-28:
+Stand 2026-05-29:
 
 | Seitentyp | Status | Naechster Schritt |
 |---|---|---|
 | Startseite | Native Astro-Komponente mit Payload-Textbasis und Legacy-Optik | Weiter schrittweise echte CMS-Felder fuer einzelne Teaser/Bildmodule verbinden. |
-| Fotografie-Uebersicht | Native Astro-Komponente | Sechs Detailseiten als naechste Body-Zerlegung. |
+| Fotografie-Uebersicht | Native Astro-Komponente | Verbleibende drei Detailseiten als naechste Body-Zerlegung. |
 | Portfolio-Uebersicht | Native Astro-Komponente | Portfolio-Projekte weiter aus Payload speisen, ohne die aktuelle Galerieoptik zu verlieren. |
 | Leistungen-Uebersicht | Native Astro-Komponente | Service-Index mittelfristig aus `service-pages` sortieren. |
 | Weitere Service-Seiten | Native Astro-Komponenten fuer sieben Seiten | Texte/Bilder koennen weiter ueber Payload-Dokumente gegen die statische Content-Basis ersetzt werden. |
@@ -58,7 +58,7 @@ Stand 2026-05-28:
 | Neue Journal-Routen `/journal/<slug>` | CMS-native Artikelkomponente | ENV `ASTRO_ENABLE_CMS_JOURNAL_ROUTES=true` setzen, wenn die Route live gebaut werden soll. |
 | Neue Local-SEO-Routen | CMS-native Local-SEO-Komponente | Alte `.html`-Local-SEO-Routen erst per Opt-in auf dieses Template umlegen. |
 | Alte Local-SEO-HTML-Seiten | Bewusste Legacy-Parity | Nach redaktioneller Pruefung optional `ASTRO_ENABLE_NATIVE_LOCAL_SEO_HTML_ROUTES=true`. |
-| Sechs Haupt-Fotografie-Detailseiten | Legacy-Parity ueber Astro-Shell | Als naechstes echtes natives Body-Template extrahieren. |
+| Sechs Haupt-Fotografie-Detailseiten | `automobil-fotografie.html`, `sportwagen-fotografie.html` und `oldtimer-fotografie.html` sind native Astro-Body-Templates mit Legacy-CSS/JS-Parity; Motorrad, Portrait und Landschaft bleiben noch Legacy-Parity. | Motorrad, Portrait und Landschaft nacheinander nativ extrahieren und per Visual Regression freigeben. |
 | About, Kontakt, Legal | Legacy-Parity ueber Astro-Shell | Nach Fotografie-Detailseiten nativ zerlegen. |
 | Bestehende `blog-*.html` Detailseiten | Legacy-Parity ueber Astro-Shell | Nach stabiler Journal-Komponente Seite fuer Seite extrahieren. |
 
@@ -204,3 +204,4 @@ Aktueller Pruefstand:
 - Bekannte Soll-Ausnahmen bleiben die vom Nutzer gewuenschten Aenderungen: SEO-Anpassungen, Bildperformance/optimierte Bilder, groessere CTAs und zentralisiertes Formularsystem.
 - Stand 2026-05-28: Web- und CMS-Build laufen. Die adoptierten Kernseiten werden nicht mehr als statische Legacy-Kopien prerendered, sondern sind fuer den Astro/Payload-Renderpfad reserviert.
 - Stand 2026-05-28: Die aktive Produktionsgruppe ist reviewed, 157 lokale SEO-Seiten sind fuer privates Staging published/reviewed, der Production-Audit ist fehlerfrei, und `production:check` ist der zentrale Release-Befehl fuer die naechste Abnahme.
+- Stand 2026-05-29: `automobil-fotografie.html`, `sportwagen-fotografie.html` und `oldtimer-fotografie.html` rendern als native Astro-Komponenten. Visual Regression gegen `/legacy-baseline/*`: Automobil Desktop 1.985%, Mobile 1.705%; Sportwagen Desktop 1.779%, Mobile 0.008%; Oldtimer Desktop 0.003%, Mobile 0.010%. Browser-Smoke: Lightbox und Konsole fehlerfrei; Sportwagen- und Oldtimer-Lightbox wurden durch gesetzte `src`-Attribute fuer `data-src`-Tiles gehaertet.
