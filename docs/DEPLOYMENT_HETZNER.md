@@ -6,7 +6,7 @@ Diese Notiz beschreibt den aktuellen Zielstand: Payload/Postgres laufen auf dem 
 
 ## Aktueller Teststand
 
-- Payload CMS: Hetzner, Docker Compose, Port `3300`, aktuell erreichbar unter `http://176.9.46.29:3300/admin/login`.
+- Payload CMS: Hetzner, Docker Compose, intern Port `3300`, aktuell technisch erreichbar unter `http://176.9.46.29:3300/admin/login`, Zieladresse `https://cms.matthiasramahi.de/admin/login`.
 - Postgres: Docker-Volume im Payload-Compose-Stack, nicht nach aussen publiziert.
 - Astro Web: Vercel-Projekt `matthias-ramahi`, aktueller Alias `https://matthias-ramahi.vercel.app`.
 - Live-Domain: `matthiasramahi.de` bleibt als Canonical gesetzt, DNS wird spaeter umgestellt.
@@ -16,7 +16,8 @@ Diese Notiz beschreibt den aktuellen Zielstand: Payload/Postgres laufen auf dem 
 
 - `deploy/compose.hetzner.yml`: Payload + Postgres fuer Hetzner.
 - `deploy/production.env.example`: Vorlage fuer Server-Secrets.
-- `deploy/Caddyfile.example`: spaeterer Reverse-Proxy fuer `cms.matthiasramahi.de`.
+- `deploy/Caddyfile.example`: alternative Caddy-Variante fuer `cms.matthiasramahi.de`.
+- `deploy/nginx-payload-cms.conf`: Nginx-Reverse-Proxy fuer `cms.matthiasramahi.de` auf Payload.
 - `deploy/backup-postgres-media.sh`: Datenbank- und Medienbackup.
 - `vercel.json`: Vercel-Projektkonfiguration fuer Astro.
 - `tools/run-vercel-build.mjs`: lokaler Vercel-Build mit Astro/Vercel-Adapter.
@@ -36,7 +37,8 @@ Wichtige Werte:
 - `PREVIEW_SECRET`: identisch mit Vercel/Astro.
 - `PAYLOAD_ADMIN_EMAIL`, `PAYLOAD_ADMIN_PASSWORD`, optional `PAYLOAD_ADMIN_API_KEY`.
 - `DATABASE_URI`: Postgres-URI aus dem Compose-Stack.
-- `PAYLOAD_PUBLIC_SERVER_URL`: bis zum DNS-Umzug `http://176.9.46.29:3300`, spaeter `https://cms.matthiasramahi.de`.
+- `PAYLOAD_PUBLIC_SERVER_URL`: `https://cms.matthiasramahi.de`.
+- `PAYLOAD_BIND_ADDRESS`: nach aktivem Reverse Proxy `127.0.0.1`, fuer kurzfristige Porttests optional `0.0.0.0`.
 - `RESEND_API_KEY`, `PAYLOAD_EMAIL_FROM_ADDRESS`, `PAYLOAD_EMAIL_FROM_NAME`.
 
 Start/Aktualisierung:
@@ -65,7 +67,7 @@ docker compose -f deploy/compose.hetzner.yml --env-file deploy/production.env ru
 Projekt ist mit Vercel verlinkt. Produktions-ENV muss im Vercel-Projekt gesetzt sein:
 
 - `ASTRO_PUBLIC_SITE_URL=https://matthiasramahi.de`
-- `PAYLOAD_PUBLIC_SERVER_URL=http://176.9.46.29:3300` bis zur CMS-Domainumstellung.
+- `PAYLOAD_PUBLIC_SERVER_URL=https://cms.matthiasramahi.de`.
 - `PREVIEW_SECRET`
 - `PAYLOAD_PREVIEW_API_KEY`
 - `ASTRO_ENABLE_ADOPTED_ROUTES=true`
@@ -100,17 +102,41 @@ Hinweis: Der lokale Node-24-Hinweis beim Build ist nicht kritisch; Vercel fuehrt
 - Native neue Routen wie `/portfolio/<slug>` existieren fuer Portfolio-Projekte.
 - Service- und Journal-Nativrouten duerfen auf die erhaltene `.html`-Canonical zurueckfuehren, damit keine Duplicate-Content-Struktur entsteht.
 
-## Reverse Proxy spaeter
+## CMS-Reverse-Proxy mit Nginx
 
-Solange die Domain nicht auf Hetzner zeigt, bleibt Payload ueber IP/Port erreichbar. Nach DNS-Umzug:
+DNS fuer `cms.matthiasramahi.de` zeigt bei Vercel DNS auf den Hetzner-Server:
 
-```caddyfile
-cms.matthiasramahi.de {
-  reverse_proxy 127.0.0.1:3300
-}
+```txt
+cms  A  176.9.46.29
 ```
 
-Der bestehende Nginx/Caddy auf dem Server darf erst angepasst werden, wenn klar ist, welche anderen Dienste dort bereits laufen.
+Auf dem Server laeuft bereits Nginx. Deshalb wird keine neue Proxy-Software installiert, sondern nur eine neue Site ergaenzt. Die vorbereitete Datei liegt unter `deploy/nginx-payload-cms.conf`.
+
+Aktivierung auf dem Server:
+
+```bash
+cd /home/contextter/matthias-ramahi
+bash deploy/activate-payload-nginx.sh
+```
+
+Das Skript fuehrt intern diese Schritte aus:
+
+```bash
+sudo cp deploy/nginx-payload-cms.conf /etc/nginx/sites-available/matthias-ramahi-cms.conf
+sudo ln -s /etc/nginx/sites-available/matthias-ramahi-cms.conf /etc/nginx/sites-enabled/matthias-ramahi-cms.conf
+sudo nginx -t
+sudo systemctl reload nginx
+sudo certbot --nginx -d cms.matthiasramahi.de
+PAYLOAD_BIND_ADDRESS=127.0.0.1
+PAYLOAD_PUBLIC_SERVER_URL=https://cms.matthiasramahi.de
+```
+
+Pruefung:
+
+```bash
+curl -I https://cms.matthiasramahi.de/admin/login
+curl -I http://127.0.0.1:3300/admin/login
+```
 
 ## Rebuild bei CMS-Aenderungen
 
@@ -146,7 +172,7 @@ Medien:
 - [x] CMS-Readiness-, Production- und SEO-Audits laufen ohne Fehler/Warnungen.
 - [x] Legacy-HTML-Routen antworten auf Vercel.
 - [x] Preview-Route antwortet mit `noindex`.
-- [ ] DNS fuer `cms.matthiasramahi.de` auf Hetzner zeigen lassen.
+- [x] DNS fuer `cms.matthiasramahi.de` auf Hetzner zeigen lassen.
 - [ ] Reverse Proxy fuer CMS-Domain aktivieren, ohne bestehende Serverdienste zu stoeren.
 - [ ] Vercel-Domain `matthiasramahi.de` final verbinden.
 - [ ] Deploy Hook fuer automatische Rebuilds nach CMS-Aenderungen einrichten.
