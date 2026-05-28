@@ -298,7 +298,7 @@ async function getFirstByLegacyUrlSequential(collections: string[], legacyFile: 
 }
 
 export async function getLegacyBackedDoc(legacyFile: string, options: ListOptions = {}): Promise<PayloadDoc | null> {
-  const collections = ['site-pages', 'service-pages', 'local-seo-pages', 'journal-posts', 'portfolio-projects']
+  const collections = ['site-pages', 'service-pages', 'journal-posts', 'local-seo-pages', 'portfolio-projects']
 
   if (options.draft) {
     return getFirstByLegacyUrlSequential(collections, legacyFile, options)

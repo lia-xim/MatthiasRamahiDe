@@ -1,146 +1,153 @@
-# Deployment auf Hetzner
+# Deployment: Payload auf Hetzner, Astro auf Vercel
 
-Diese Notiz beschreibt ein robustes Zielbild ohne Secrets im Repository.
+Stand: 2026-05-28
 
-## Zielbild
+Diese Notiz beschreibt den aktuellen Zielstand: Payload/Postgres laufen auf dem eigenen Hetzner-Server, das Astro-Frontend wird ueber Vercel ausgeliefert. Secrets bleiben ausserhalb des Repositories.
 
-- Hetzner VPS oder Dedicated Server.
-- Caddy oder Nginx als Reverse Proxy mit TLS.
-- Postgres fuer Payload.
-- Payload CMS als Next/Payload Container oder Prozess.
-- Astro als Web-Prozess. Preview-Routen bleiben serverfaehig.
-- Medien langfristig in S3-kompatiblem Object Storage, z. B. Cloudflare R2 oder Hetzner Object Storage.
+## Aktueller Teststand
+
+- Payload CMS: Hetzner, Docker Compose, Port `3300`, aktuell erreichbar unter `http://176.9.46.29:3300/admin/login`.
+- Postgres: Docker-Volume im Payload-Compose-Stack, nicht nach aussen publiziert.
+- Astro Web: Vercel-Projekt `matthias-ramahi`, aktueller Alias `https://matthias-ramahi.vercel.app`.
+- Live-Domain: `matthiasramahi.de` bleibt als Canonical gesetzt, DNS wird spaeter umgestellt.
+- Bestehende Serverdienste auf Hetzner bleiben unberuehrt. Der Payload-Stack nutzt nur den Projektordner `/home/contextter/matthias-ramahi` und den eigenen Docker-Compose-Namespace.
 
 ## Artefakte
 
-- `deploy/production.env.example`: Vorlage fuer Produktionsvariablen.
-- `deploy/compose.hetzner.yml`: Compose-Skizze fuer Postgres, CMS und Web.
-- `deploy/Caddyfile.example`: Reverse-Proxy- und TLS-Beispiel.
+- `deploy/compose.hetzner.yml`: Payload + Postgres fuer Hetzner.
+- `deploy/production.env.example`: Vorlage fuer Server-Secrets.
+- `deploy/Caddyfile.example`: spaeterer Reverse-Proxy fuer `cms.matthiasramahi.de`.
 - `deploy/backup-postgres-media.sh`: Datenbank- und Medienbackup.
-- `deploy/rebuild-astro.sh`: Pull, Install, Build, Restart.
-- `deploy/rebuild-webhook.mjs`: kleiner lokaler Webhook-Receiver fuer Payload-Rebuilds.
-- `apps/cms/Dockerfile` und `apps/web/Dockerfile`: Container-Builds.
+- `vercel.json`: Vercel-Projektkonfiguration fuer Astro.
+- `tools/run-vercel-build.mjs`: lokaler Vercel-Build mit Astro/Vercel-Adapter.
+- `tools/copy-vercel-output.mjs`: kopiert `apps/web/.vercel/output` nach `.vercel/output`.
 
-## Ports
+## Payload auf Hetzner
 
-Intern:
-
-- Payload: `3000`
-- Astro: `4321`
-- Postgres: `5432` nur intern
-- Rebuild Webhook: `8787` nur `127.0.0.1`
-
-Extern:
-
-- `cms.matthiasramahi.de` -> Payload `3000`
-- `matthiasramahi.de` -> Astro `4321`
-
-## Reverse Proxy mit Caddy
-
-Siehe `deploy/Caddyfile.example`.
-
-Grundidee:
-
-```caddyfile
-matthiasramahi.de {
-  reverse_proxy 127.0.0.1:4321
-}
-
-cms.matthiasramahi.de {
-  reverse_proxy 127.0.0.1:3000
-}
-```
-
-Caddy kuemmert sich automatisch um TLS, wenn DNS korrekt auf den Server zeigt.
-
-## ENV
-
-Produktionswerte aus `deploy/production.env.example` nach `deploy/production.env` kopieren und echte Secrets nur auf dem Server eintragen.
-
-Wichtig:
-
-- `PAYLOAD_SECRET` stark und dauerhaft.
-- `PREVIEW_SECRET` identisch in CMS und Web.
-- `PAYLOAD_PREVIEW_API_KEY` im Payload-Admin erzeugen und nur im Web-Env verwenden.
-- `DATABASE_URI` auf Postgres zeigen lassen.
-- `PAYLOAD_PUBLIC_SERVER_URL` auf die CMS-Domain.
-- `ASTRO_PUBLIC_SITE_URL` auf die Live-Domain.
-- `ASTRO_REBUILD_WEBHOOK_SECRET` stark und nur serverseitig.
-- `RESEND_API_KEY` erst auf dem Server setzen; der Key darf nie ins Frontend.
-- `CONTACT_FROM_EMAIL` muss zu einer in Resend verifizierten Domain passen.
-- `CONTACT_QUEUE_DIR` zeigt auf das persistente Docker-Volume `contact-queue`.
-- `CONTACT_RETRY_SECRET` stark setzen, wenn ein externer Uptime-Monitor oder Cron die Queue erneut zustellen soll.
-
-Kontaktformular-Retry manuell:
+Server-ENV aus Vorlage kopieren und echte Werte nur auf dem Server setzen:
 
 ```bash
-curl -X POST https://matthiasramahi.de/api/contact-retry \
-  -H "Authorization: Bearer $CONTACT_RETRY_SECRET"
+cp deploy/production.env.example deploy/production.env
 ```
 
-## Postgres Backup
+Wichtige Werte:
 
-`deploy/backup-postgres-media.sh` nutzt:
+- `PAYLOAD_SECRET`: stark und dauerhaft.
+- `PREVIEW_SECRET`: identisch mit Vercel/Astro.
+- `PAYLOAD_ADMIN_EMAIL`, `PAYLOAD_ADMIN_PASSWORD`, optional `PAYLOAD_ADMIN_API_KEY`.
+- `DATABASE_URI`: Postgres-URI aus dem Compose-Stack.
+- `PAYLOAD_PUBLIC_SERVER_URL`: bis zum DNS-Umzug `http://176.9.46.29:3300`, spaeter `https://cms.matthiasramahi.de`.
+- `RESEND_API_KEY`, `PAYLOAD_EMAIL_FROM_ADDRESS`, `PAYLOAD_EMAIL_FROM_NAME`.
+
+Start/Aktualisierung:
+
+```bash
+docker compose -f deploy/compose.hetzner.yml --env-file deploy/production.env up -d postgres cms
+```
+
+Migrationen und Admin:
+
+```bash
+docker compose -f deploy/compose.hetzner.yml --env-file deploy/production.env run --rm cms pnpm --filter @matthias-ramahi/cms migrate
+docker compose -f deploy/compose.hetzner.yml --env-file deploy/production.env run --rm cms pnpm --filter @matthias-ramahi/cms ensure:admin
+```
+
+Audits:
+
+```bash
+docker compose -f deploy/compose.hetzner.yml --env-file deploy/production.env run --rm cms pnpm --filter @matthias-ramahi/cms audit:readiness -- --strict
+docker compose -f deploy/compose.hetzner.yml --env-file deploy/production.env run --rm cms pnpm --filter @matthias-ramahi/cms audit:production -- --strict
+docker compose -f deploy/compose.hetzner.yml --env-file deploy/production.env run --rm cms pnpm --filter @matthias-ramahi/cms audit:seo -- --strict
+```
+
+## Astro auf Vercel
+
+Projekt ist mit Vercel verlinkt. Produktions-ENV muss im Vercel-Projekt gesetzt sein:
+
+- `ASTRO_PUBLIC_SITE_URL=https://matthiasramahi.de`
+- `PAYLOAD_PUBLIC_SERVER_URL=http://176.9.46.29:3300` bis zur CMS-Domainumstellung.
+- `PREVIEW_SECRET`
+- `PAYLOAD_PREVIEW_API_KEY`
+- `ASTRO_ENABLE_ADOPTED_ROUTES=true`
+- `ASTRO_ENABLE_LOCAL_SEO_ADOPTED_ROUTES=true`
+- `ASTRO_ENABLE_CMS_DYNAMIC_ROUTES=true`
+- `ASTRO_ENABLE_CMS_JOURNAL_ROUTES=true`
+- `ASTRO_ENABLE_CMS_SERVICE_ROUTES=true`
+- `RESEND_API_KEY`
+- `CONTACT_FROM_EMAIL`
+- `CONTACT_TO_EMAIL`
+- `CONTACT_ALERT_EMAIL`
+- `CONTACT_QUEUE_DIR=/tmp/matthias-contact-queue`
+- `CONTACT_RETRY_SECRET`
+- `CONTACT_IP_HASH_SALT`
+- `PAYLOAD_FETCH_TIMEOUT_MS=3500`
+- `PAYLOAD_FETCH_CACHE_MS=300000`
+
+Build und Deploy:
+
+```powershell
+corepack pnpm vercel:build
+npx vercel@latest deploy --prebuilt --prod --yes --archive=tgz --scope lia-xims-projects
+```
+
+Hinweis: Der lokale Node-24-Hinweis beim Build ist nicht kritisch; Vercel fuehrt Serverless Functions mit Node 22 aus.
+
+## URL-Strategie
+
+- Alte `.html`-URLs bleiben erreichbar und sind fuer SEO die primaere sichtbare URL.
+- Adoptierte `.html`-Routen werden als echte Astro-Routen gebaut. Wenn ein Payload-Dokument existiert, rendert `LegacyPageShell` die CMS-basierte 1:1-Legacy-Ausgabe.
+- Nicht adoptierte `.html`-Routen bleiben rohe Legacy-Fallbacks.
+- Native neue Routen wie `/portfolio/<slug>` existieren fuer Portfolio-Projekte.
+- Service- und Journal-Nativrouten duerfen auf die erhaltene `.html`-Canonical zurueckfuehren, damit keine Duplicate-Content-Struktur entsteht.
+
+## Reverse Proxy spaeter
+
+Solange die Domain nicht auf Hetzner zeigt, bleibt Payload ueber IP/Port erreichbar. Nach DNS-Umzug:
+
+```caddyfile
+cms.matthiasramahi.de {
+  reverse_proxy 127.0.0.1:3300
+}
+```
+
+Der bestehende Nginx/Caddy auf dem Server darf erst angepasst werden, wenn klar ist, welche anderen Dienste dort bereits laufen.
+
+## Rebuild bei CMS-Aenderungen
+
+Payload kann `ASTRO_REBUILD_WEBHOOK_URL` aufrufen. Fuer Vercel ist langfristig ein Vercel Deploy Hook sinnvoll. Sobald Git/Vercel sauber verbunden ist:
+
+1. Deploy Hook fuer den Produktionsbranch in Vercel erzeugen.
+2. Hook-URL als `ASTRO_REBUILD_WEBHOOK_URL` im Payload-Server setzen.
+3. Optional `ASTRO_REBUILD_WEBHOOK_SECRET` nutzen, falls ein eigener Proxy/Receiver davor sitzt.
+
+Bis dahin gilt: Nach groesseren CMS-Aenderungen manuell `corepack pnpm vercel:build` und `vercel deploy --prebuilt --prod` ausfuehren.
+
+## Backup
+
+Datenbank:
 
 ```bash
 DATABASE_URI="postgres://..." BACKUP_ROOT="/srv/backups/matthias-ramahi" ./deploy/backup-postgres-media.sh
 ```
 
-Empfehlung:
+Medien:
 
-- taeglich per cron oder systemd timer.
-- Backups extern spiegeln.
-- Restore testweise pruefen.
-
-Restore:
-
-```bash
-gunzip -c payload.sql.gz | psql "$DATABASE_URI"
-```
-
-## Medien Backup
-
-Wenn lokale Uploads verwendet werden:
-
-- `PAYLOAD_MEDIA_DIR` auf den Payload-Medienordner setzen.
-- Backup zusammen mit Datenbankzeitpunkt ablegen.
-
-Wenn S3/R2/Hetzner Object Storage verwendet wird:
-
-- Bucket-Versionierung pruefen.
-- Lifecycle-Regeln bewusst setzen.
-- Zugangsschluessel getrennt rotieren.
-- Bucket-Backup oder Replikation separat einrichten.
-
-## Rebuild Webhook
-
-Payload ruft bei relevanten Aenderungen `ASTRO_REBUILD_WEBHOOK_URL` auf. Der Receiver:
-
-1. prueft `Authorization: Bearer <ASTRO_REBUILD_WEBHOOK_SECRET>`.
-2. startet `deploy/rebuild-astro.sh`.
-3. verhindert parallele Builds.
-
-Beispiel:
-
-```bash
-ASTRO_REBUILD_WEBHOOK_SECRET="..." node deploy/rebuild-webhook.mjs
-```
-
-Der Webhook sollte nur lokal erreichbar sein und per Reverse Proxy nicht oeffentlich exponiert werden.
+- Aktuell liegen Medien lokal im Payload-Volume.
+- Dieses Volume muss zusammen mit Postgres gesichert werden.
+- Vor R2/Hetzner Object Storage erst die Media-URL-Strategie und Backups festziehen.
 
 ## Production Checklist
 
-- [ ] DNS auf Hetzner gesetzt.
-- [ ] Caddy/Nginx aktiv und TLS gruen.
-- [ ] `PAYLOAD_SECRET` stark und dauerhaft.
-- [ ] `PREVIEW_SECRET` stark und in CMS/Web identisch.
-- [ ] `PAYLOAD_PREVIEW_API_KEY` erzeugt.
-- [ ] Postgres nicht oeffentlich erreichbar.
-- [ ] `PAYLOAD_PUBLIC_SERVER_URL` korrekt.
-- [ ] `ASTRO_PUBLIC_SITE_URL` korrekt.
-- [ ] S3/R2 getestet oder lokaler Medienordner im Backup.
-- [ ] Rebuild-Hook mit Secret getestet.
-- [ ] Datenbank-Backup und Restore getestet.
-- [ ] Medien-Backup getestet.
-- [ ] `robots.txt` und `sitemap.xml` live pruefen.
-- [ ] Preview-URL im Payload Admin pruefen.
+- [x] Payload-Compose auf Hetzner laeuft.
+- [x] Postgres-Migrationen sind angewendet.
+- [x] Admin-User/API-Key ist erzeugt.
+- [x] Resend ist in Payload und Vercel als ENV gesetzt.
+- [x] Vercel Production Deploy ist erstellt.
+- [x] CMS-Readiness-, Production- und SEO-Audits laufen ohne Fehler/Warnungen.
+- [x] Legacy-HTML-Routen antworten auf Vercel.
+- [x] Preview-Route antwortet mit `noindex`.
+- [ ] DNS fuer `cms.matthiasramahi.de` auf Hetzner zeigen lassen.
+- [ ] Reverse Proxy fuer CMS-Domain aktivieren, ohne bestehende Serverdienste zu stoeren.
+- [ ] Vercel-Domain `matthiasramahi.de` final verbinden.
+- [ ] Deploy Hook fuer automatische Rebuilds nach CMS-Aenderungen einrichten.
+- [ ] Backup/Restore mindestens einmal praktisch testen.

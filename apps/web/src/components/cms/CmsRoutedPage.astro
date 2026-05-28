@@ -1,0 +1,156 @@
+---
+import ContentBlocks from '../ContentBlocks.astro'
+import ContactCta from '../ContactCta.astro'
+import LoadMoreGallery from '../LoadMoreGallery.astro'
+import PreviewToolbar from '../PreviewToolbar.astro'
+import ResponsiveImage from '../ResponsiveImage.astro'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import {
+  imageDisplayUrl,
+  internalSitePath,
+  linkAttributes,
+  routeForDoc,
+  toAbsoluteSiteUrl,
+  type PayloadDoc,
+} from '../../lib/payload'
+import { articleJsonLd, breadcrumbJsonLd, faqJsonLd, serviceJsonLd, type JsonLd } from '../../lib/seo'
+
+type PreviewState = {
+  collection: string
+  publishedHref: string
+  slug: string
+  status?: string
+}
+
+type Props = {
+  collection: string
+  doc: PayloadDoc
+  preview?: PreviewState
+}
+
+const { collection, doc, preview } = Astro.props as Props
+
+const title = doc.seo?.title || doc.title || 'Matthias Ramahi Fotografie'
+const description = doc.seo?.description || doc.excerpt || doc.intro || ''
+const canonicalUrl = toAbsoluteSiteUrl(doc.seo?.canonicalUrl || routeForDoc(collection, doc))
+const routePath = internalSitePath(routeForDoc(collection, doc))
+const canonicalPath = internalSitePath(canonicalUrl)
+const heroImage = doc.heroImage || doc.coverImage || doc.teaserImage || doc.seo?.ogImage
+const hero = imageDisplayUrl(heroImage, 'wide')
+const gallery = doc.gallery ?? []
+const proofPoints = (doc.proofPoints ?? doc.localProof ?? []) as Array<{ label?: string; text?: string }>
+const audience = (doc.audience ?? []) as Array<{ item?: string }>
+const faq = (doc.faq ?? doc.localFaq ?? []) as Array<{ question?: string; answer?: string }>
+const relatedPages = (doc.relatedPages ?? []) as Array<{ label?: string; href?: string }>
+const eyebrow =
+  collection === 'journal-posts'
+    ? `Journal${doc.category ? ` / ${doc.category}` : ''}`
+    : collection === 'service-pages'
+      ? 'Leistung'
+      : collection === 'local-seo-pages'
+        ? [doc.service, doc.city].filter(Boolean).join(' / ') || 'Lokale Fotografie'
+        : doc.pageType === 'contact'
+          ? 'Kontakt'
+          : doc.pageType === 'about'
+            ? 'Profil'
+            : 'Fotografie'
+
+if (!preview && canonicalPath && routePath && canonicalPath.replace(/\/$/, '') !== routePath.replace(/\/$/, '')) {
+  return Astro.redirect(canonicalPath, 308)
+}
+
+const faqSchema = faqJsonLd(faq)
+const jsonLdItems: JsonLd[] = [
+  breadcrumbJsonLd([
+    { name: 'Startseite', url: '/' },
+    { name: doc.title || 'Seite', url: canonicalUrl },
+  ]),
+]
+
+if (collection === 'journal-posts') jsonLdItems.push(articleJsonLd(doc, canonicalUrl))
+if (collection === 'service-pages' || collection === 'local-seo-pages') jsonLdItems.push(serviceJsonLd(doc, canonicalUrl))
+if (faqSchema) jsonLdItems.push(faqSchema)
+---
+<BaseLayout
+  title={preview ? `Vorschau: ${title}` : title}
+  description={description}
+  canonicalUrl={canonicalUrl}
+  noIndex={preview ? true : doc.seo?.noIndex}
+  ogImage={doc.seo?.ogImage || heroImage}
+  ogType={collection === 'journal-posts' ? 'article' : 'website'}
+  jsonLd={jsonLdItems}
+>
+  {preview && (
+    <PreviewToolbar
+      collection={preview.collection}
+      slug={preview.slug}
+      status={preview.status}
+      publishedHref={preview.publishedHref}
+    />
+  )}
+
+  <section class="hero-stage" style={hero ? `background: linear-gradient(180deg, rgba(2,3,6,.34), rgba(2,3,6,.9)), url('${hero}') center / cover;` : ''}>
+    <div class="hero-stage__grid container">
+      <div>
+        <p class="eyebrow">{preview ? `Preview / ${eyebrow}` : eyebrow}</p>
+        <h1 class="display">{doc.title}</h1>
+      </div>
+      <div>
+        {!hero && <ResponsiveImage media={heroImage} size="card" fallback={doc.title || 'CMS-Bild'} loading="eager" />}
+        <p class="copy" style="margin-top: 22px;">{doc.excerpt || doc.intro}</p>
+      </div>
+    </div>
+  </section>
+
+  <LoadMoreGallery items={gallery} eyebrow="Bildstrecke" fallback={doc.title || 'Galerie-Bild'} />
+
+  {proofPoints.length > 0 && (
+    <section class="container section-pad">
+      <p class="eyebrow">{collection === 'local-seo-pages' ? 'Lokale Orientierung' : 'Beweispunkte'}</p>
+      <div class="card-grid" style="margin-top: 24px;">
+        {proofPoints.map((point) => (
+          <article class="card">
+            <h3>{point.label}</h3>
+            <p class="copy">{point.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {audience.length > 0 && (
+    <section class="container section-pad is-compact">
+      <p class="eyebrow">Geeignet fuer</p>
+      <div class="filter-row">
+        {audience.map((entry) => entry.item && <span>{entry.item}</span>)}
+      </div>
+    </section>
+  )}
+
+  <ContentBlocks blocks={doc.blocks} />
+
+  {faq.length > 0 && (
+    <section class="container section-pad">
+      <p class="eyebrow">FAQ</p>
+      <div class="stack-list">
+        {faq.map((item) => (
+          <article class="stack-item">
+            <h3>{item.question}</h3>
+            <p class="copy">{item.answer}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {relatedPages.length > 0 && (
+    <section class="container section-pad is-compact">
+      <p class="eyebrow">Weiterfuehren</p>
+      <div class="filter-row">
+        {relatedPages.map((link) => link.href && <a {...linkAttributes(link)}>{link.label}</a>)}
+      </div>
+    </section>
+  )}
+
+  <ContactCta cta={doc.contactOverride || doc.cta} />
+</BaseLayout>

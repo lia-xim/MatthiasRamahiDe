@@ -25,33 +25,12 @@ services:
       - payload-media:/app/apps/cms/media
     networks:
       - internal
-      - proxy
     ports:
-      - "127.0.0.1:3000:3000"
-
-  web:
-    build:
-      context: ..
-      dockerfile: apps/web/Dockerfile
-    restart: unless-stopped
-    env_file:
-      - ./production.env
-    depends_on:
-      - cms
-    volumes:
-      - contact-queue:/app/apps/web/.contact-queue
-    networks:
-      - internal
-      - proxy
-    ports:
-      - "127.0.0.1:4321:4321"
+      - "${PAYLOAD_PORT:-3300}:3000"
 
 volumes:
   postgres-data:
   payload-media:
-  contact-queue:
 
 networks:
   internal:
-    internal: true
-  proxy:

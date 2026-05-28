@@ -10,7 +10,7 @@ import { slugField } from '../fields/slug'
 import { applyEditorialDefaults } from '../hooks/autoDefaults'
 import { normalizeLinksBeforeValidate } from '../hooks/normalizeLinks'
 import { triggerAstroRebuildAfterChange, triggerAstroRebuildAfterDelete } from '../hooks/rebuild'
-import { requireFieldsForPublish } from '../hooks/validatePublishedContent'
+import { requireFieldsForPublish, requireMediaAltForPublish } from '../hooks/validatePublishedContent'
 
 export const PortfolioCategories: CollectionConfig = {
   slug: 'portfolio-categories',
@@ -44,6 +44,10 @@ export const PortfolioCategories: CollectionConfig = {
         { path: 'slug', label: 'Slug' },
         { path: 'seo.title', label: 'SEO-Titel' },
         { path: 'seo.description', label: 'Meta-Beschreibung' },
+      ]),
+      requireMediaAltForPublish([
+        { path: 'coverImage', label: 'Coverbild' },
+        { path: 'seo.ogImage', label: 'Social-Bild' },
       ]),
     ],
     afterChange: [triggerAstroRebuildAfterChange],

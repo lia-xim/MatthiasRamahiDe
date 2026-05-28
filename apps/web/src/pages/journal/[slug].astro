@@ -3,14 +3,14 @@ import ContentBlocks from '../../components/ContentBlocks.astro'
 import ContactCta from '../../components/ContactCta.astro'
 import ResponsiveImage from '../../components/ResponsiveImage.astro'
 import BaseLayout from '../../layouts/BaseLayout.astro'
+import { envFlag } from '../../lib/envFlags'
 import { getBySlug, internalSitePath, linkAttributes, listDocuments, routeForDoc, toAbsoluteSiteUrl } from '../../lib/payload'
 import { articleJsonLd, breadcrumbJsonLd } from '../../lib/seo'
 
 export const prerender = true
 
 export async function getStaticPaths() {
-  const journalRoutesEnabled =
-    import.meta.env.ASTRO_ENABLE_CMS_JOURNAL_ROUTES === 'true' || import.meta.env.ASTRO_ENABLE_JOURNAL_ROUTES === 'true'
+  const journalRoutesEnabled = envFlag('ASTRO_ENABLE_CMS_JOURNAL_ROUTES') || envFlag('ASTRO_ENABLE_JOURNAL_ROUTES')
   if (!import.meta.env.DEV && !journalRoutesEnabled) return []
   const docs = await listDocuments('journal-posts', { limit: 300, sort: '-publishedAt' })
   return docs.map((doc) => ({ params: { slug: doc.slug }, props: { doc } }))

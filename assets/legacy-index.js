@@ -42,6 +42,7 @@
    Shader, keine externen Libs.
 */
 (()=>{
+  const startHeroShader = () => {
   const canvas=document.getElementById('hero-shader');
   if(!canvas) return;
   const hero=canvas.closest('.hero');
@@ -483,6 +484,13 @@
     requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);
+  };
+  const scheduleHeroShader = () => {
+    if ('requestIdleCallback' in window) window.requestIdleCallback(startHeroShader, { timeout: 1400 });
+    else setTimeout(startHeroShader, 0);
+  };
+  if (document.readyState === 'complete') scheduleHeroShader();
+  else window.addEventListener('load', scheduleHeroShader, { once: true });
 })();
 
 /* ============ PORTFOLIO MARQUEE + LIGHTBOX ============ */

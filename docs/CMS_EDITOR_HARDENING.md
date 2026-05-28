@@ -13,6 +13,7 @@ Stand: 2026-05-28
 - Listenansichten zeigen relevantere Spalten wie Cover/Hero, Slug, Status, Kategorie und Update-Datum.
 - Preview-URLs werden pro relevanter Collection aus `PREVIEW_SECRET` gebaut.
 - Publish wird serverseitig blockiert, wenn Pflichtfelder fehlen.
+- Publish wird zusaetzlich blockiert, wenn verknuepfte Hero-, Cover-, OG-, Galerie- oder Bildsequenz-Medien keinen Alt-Text haben.
 - SEO-Titel, Meta-Beschreibung, Canonical, Social-Bild, Journal-Datum, Lesezeit und einige redaktionelle Defaults werden beim Speichern automatisch ergaenzt, solange kein manueller Override gesetzt ist.
 - URL-Slugs normalisieren deutsche Umlaute redaktionell lesbar, z. B. `Ueber mich` zu `ueber-mich`.
 
@@ -55,7 +56,16 @@ Entwuerfe duerfen unvollstaendig bleiben. Die harte Pruefung greift erst bei `_s
 ## Audits und SEO-Harness
 
 - `corepack pnpm cms:audit-readiness` prueft redaktionelle Pflichtfelder.
+- `corepack pnpm cms:audit-production -- --strict` prueft die aktive Produktionsgruppe und alle veroeffentlichten Release-Dokumente: published, reviewed, Legacy-Quelle, Render-Quelle, Canonical/SEO, Medienpflichtfelder und Studio-Sprachreste.
 - `corepack pnpm cms:audit-seo` prueft SEO-Laengen, Canonicals, interne/externe Links und Bild-Metadaten.
+- `corepack pnpm cms:review-adopted -- --write` markiert nur die aktiv adoptierten, feldvollstaendigen Kernseiten als `reviewed`.
+- `corepack pnpm cms:review-portfolio` markiert die strukturierten Portfolio-Basisprojekte und Kategorien als `reviewed` / `structured-blocks`.
+- `corepack pnpm cms:harden-seo` staerkt kurze SEO-Basistexte fuer Portfolio, Kategorien und zentrale Uebersichts-/Legal-Seiten.
+- `corepack pnpm cms:sanitize-studio-language` bereinigt alte Studio-Sprache in Globals und importierten Dokumenten.
+- `corepack pnpm cms:approve-private-staging -- --collection=local-seo-pages` prueft Draft-Gruppen als Dry-Run; mit `--write` werden nur vollstaendige, auditierbare Dokumente fuer privates Staging veroeffentlicht.
+- `corepack pnpm cms:schema-push-local` repariert bekannte lokale SQLite-Schema-Drifts. Nicht fuer Postgres/Produktion verwenden.
+- `corepack pnpm production:check` fuehrt den kombinierten Release-Check fuer CMS-Audit, SEO-Audit, Web/CMS-Build, eigene Astro-Preview, Legacy-Routen und Visual Regression aus.
+- `cms:build` blockiert, wenn lokal noch ein Payload/Next-Server auf Port 3000 laeuft. Das verhindert stale `.next`-Assets und den typischen Admin-ohne-CSS-Zustand nach einem Build im laufenden Dev-Server.
 - `corepack pnpm cms:suggest-seo -- --collection=service-pages --slug=...` erzeugt SEO-Vorschlaege als Dry-Run. Mit `--write` wird gespeichert, mit `--overwrite` werden bestehende Felder ersetzt.
 - Der Harness laeuft ohne LLM deterministisch. Optional kann ein OpenAI-kompatibler Endpoint (`SEO_LLM_BASE_URL`, `SEO_LLM_API_KEY`, `SEO_LLM_MODEL`) oder ein lokales CLI (`SEO_LLM_COMMAND`, `SEO_LLM_ARGS`) JSON-Vorschlaege liefern.
 - Die Audit-Scripts schreiben nicht in die DB. Wenn Code und Datenbankschema auseinanderlaufen, melden sie einen klaren Schema-Hinweis statt eines langen Stacktraces.
@@ -76,6 +86,8 @@ Entwuerfe duerfen unvollstaendig bleiben. Die harte Pruefung greift erst bei `_s
 - Importierte Dokumente bleiben fachlich zu pruefen; der Import ersetzt keine visuelle Freigabe.
 - Oeffentliche Legacy-URLs werden in Astro ueber die componentized Legacy-Schicht gerendert; die rohe Ausgabe dient nur noch als Visual-Regression-Baseline.
 - Der Route-Audit `test:legacy-routes` prueft alle alten `.html`-URLs auf Status, Head, Header/Footer und defekte Bilder.
+- Neue Payload-Seiten ohne Legacy-Datei koennen ueber `ASTRO_ENABLE_CMS_DYNAMIC_ROUTES` bereits nativ aus strukturierten Feldern rendern.
+- Lokale SEO-Seiten koennen mit `ASTRO_ENABLE_LOCAL_SEO_ADOPTED_ROUTES=true` kontrolliert in die Astro/Payload-Adoptionsschicht wechseln. Fuer das aktuelle private Staging ist dieser Schalter aktiv; fuer oeffentliche Launches kann er wieder auf `false` gesetzt werden, bis einzelne Seiten final gegenlesen sind.
 
 ## Deployment-Dateien
 

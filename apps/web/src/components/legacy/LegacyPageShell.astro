@@ -43,6 +43,9 @@ const afterFooter = cmsLegacy?.afterFooterHtml || homeParts?.afterFooter || lega
 const pageContent = cmsLegacy?.renderedBodyHtml || legacyParts?.pageContent || ''
 const current = cmsLegacy?.headerCurrent || legacyParts?.current
 
+Astro.response.headers.set('x-cms-migration-status', cmsLegacy?.migrationStatus || 'legacy-file')
+Astro.response.headers.set('x-cms-render-source', cmsLegacy?.renderSource || 'legacy-file')
+
 function escapeAttribute(value: string) {
   return value
     .replace(/&/g, '&amp;')

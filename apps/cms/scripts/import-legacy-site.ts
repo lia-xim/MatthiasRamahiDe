@@ -28,6 +28,7 @@ const payload = await getPayload({ config })
 const legacyRoot = path.resolve(process.cwd(), '../..')
 const siteUrl = process.env.ASTRO_PUBLIC_SITE_URL || 'https://matthiasramahi.de'
 const importLimit = Number(process.env.LEGACY_IMPORT_LIMIT || '0')
+const adoptedOnly = process.env.LEGACY_IMPORT_ADOPTED_ONLY === 'true'
 
 type PayloadRelationId = string | number
 
@@ -42,6 +43,38 @@ const sitePageMap: Record<string, { pageType: string; slug: string }> = {
   'datenschutz.html': { slug: 'datenschutz', pageType: 'legal' },
   'fotografie.html': { slug: 'fotografie', pageType: 'photography-index' },
 }
+
+const adoptedFiles = new Set([
+  'index.html',
+  'fotografie.html',
+  'automobil-fotografie.html',
+  'sportwagen-fotografie.html',
+  'oldtimer-fotografie.html',
+  'motorrad-fotografie.html',
+  'portraitfotografie.html',
+  'landschaftsfotografie.html',
+  'portfolio.html',
+  'leistungen.html',
+  'ueber-mich.html',
+  'contact.html',
+  'blog.html',
+  'impressum.html',
+  'datenschutz.html',
+  'fotolabor-druck-duesseldorf.html',
+  'grossformatdruck-duesseldorf.html',
+  'werbetechnik-duesseldorf.html',
+  'webdesign-seo-duesseldorf.html',
+  'videografie-duesseldorf.html',
+  'viola-musik-duesseldorf.html',
+  'drucke-sonderanfertigungen-duesseldorf.html',
+  'blog-automotive-fotografie-duesseldorf.html',
+  'blog-fine-art-druck.html',
+  'blog-location-scouting-duesseldorf.html',
+  'blog-motorradfotografie-linien.html',
+  'blog-oldtimer-wertobjekt.html',
+  'blog-portraits-ohne-generische-posen.html',
+  'blog-serie-kuratieren.html',
+])
 
 const canonicalServiceFiles = new Set([
   'automobil-fotografie.html',
@@ -177,6 +210,10 @@ const normalizeLegacyUrls = (html: string) => {
     .replace(
       /((?:src|href|poster|content|data-full)=["'])(?!\/|https?:|data:|mailto:|tel:|#)([^"']+\.(?:avif|gif|jpe?g|mp4|png|svg|webm|webp|css|js|json|txt|xml))/gi,
       '$1/$2',
+    )
+    .replace(
+      /url\((["']?)(?!\/|https?:|data:|#)([^"')]+\.(?:avif|gif|jpe?g|mp4|png|svg|webm|webp))\1\)/gi,
+      'url($1/$2$1)',
     )
 }
 
@@ -336,6 +373,71 @@ const richTextFromParagraphs = (paragraphs: string[]) => ({
     version: 1,
   },
 })
+
+const isUsefulParagraph = (text: string) =>
+  text.length > 28 &&
+  !/^weiterlesen:/i.test(text) &&
+  !/^navigation$/i.test(text) &&
+  !/Fotografie aus Duesseldorf - kuratiert fuer/i.test(text)
+
+async function extractStructuredBlocks(page: ReturnType<typeof extractPage>, html: string) {
+  const source = page.renderParts.renderedBodyHtml || stripChrome(html)
+  const tokens = Array.from(source.matchAll(/<(h1|h2|h3|p|figure)\b[^>]*>[\s\S]*?<\/\1>/gi)).map((match) => match[0])
+  const blocks: Array<Record<string, unknown>> = []
+  let currentHeadline = ''
+  let currentParagraphs: string[] = []
+
+  const flushTextBlock = () => {
+    if (currentParagraphs.length === 0) return
+
+    blocks.push({
+      blockType: 'textBlock',
+      headline: currentHeadline || undefined,
+      body: richTextFromParagraphs(currentParagraphs),
+    })
+    currentHeadline = ''
+    currentParagraphs = []
+  }
+
+  for (const token of tokens) {
+    if (/^<h[1-3]\b/i.test(token)) {
+      const headline = cleanText(token)
+      if (!headline || headline === currentHeadline) continue
+
+      flushTextBlock()
+      currentHeadline = headline
+      continue
+    }
+
+    if (/^<p\b/i.test(token)) {
+      const text = cleanText(token)
+      if (isUsefulParagraph(text)) currentParagraphs.push(text)
+      continue
+    }
+
+    if (/^<figure\b/i.test(token)) {
+      flushTextBlock()
+      const imageTag = token.match(/<img\b[^>]*>/i)?.[0] || ''
+      const caption = cleanText(firstMatch(token, /<figcaption[^>]*>([\s\S]*?)<\/figcaption>/i))
+      const src = attr(imageTag, 'src')
+      const alt = cleanText(attr(imageTag, 'alt')) || caption || page.h1
+      const media = src ? await importMedia(src, alt, page.file, caption || page.h1) : null
+
+      if (media?.id) {
+        blocks.push({
+          blockType: 'imageSequence',
+          headline: caption || undefined,
+          layout: 'single-large',
+          items: [{ image: media.id, caption: caption || alt, cropIntent: 'auto' }],
+        })
+      }
+    }
+  }
+
+  flushTextBlock()
+
+  return blocks.slice(0, 24)
+}
 
 function extractPage(file: string, html: string) {
   const content = stripChrome(html)
@@ -520,6 +622,10 @@ async function importMedia(src: string, alt: string, sourceFile: string, caption
     legacySourcePath: cleanSrc,
   }
 
+  if (existing?.id && process.env.LEGACY_IMPORT_REFRESH_MEDIA !== 'true') {
+    return existing
+  }
+
   if (existing?.id) {
     return payload.update({
       collection: 'media',
@@ -537,9 +643,12 @@ async function importMedia(src: string, alt: string, sourceFile: string, caption
   })
 }
 
-async function importSitePage(page: ReturnType<typeof extractPage>) {
+async function importSitePage(page: ReturnType<typeof extractPage>, html: string) {
   const mapped = sitePageMap[page.file]
   if (!mapped) return
+
+  const hero = page.images[0] ? await importMedia(page.images[0].src, page.images[0].alt, page.file, page.images[0].caption) : null
+  const blocks = await extractStructuredBlocks(page, html)
 
   await upsertBySlug(
     'site-pages',
@@ -549,11 +658,15 @@ async function importSitePage(page: ReturnType<typeof extractPage>) {
       slug: mapped.slug,
       pageType: mapped.pageType,
       intro: page.intro,
+      heroImage: hero?.id,
+      teaserImage: hero?.id,
+      blocks,
       seo: {
         title: page.title.slice(0, 70),
         description: page.description.slice(0, 170),
         canonicalUrl: page.canonicalUrl,
         legacyUrl: page.file,
+        ogImage: hero?.id,
       },
       legacy: legacyForPage(page),
     },
@@ -561,11 +674,13 @@ async function importSitePage(page: ReturnType<typeof extractPage>) {
   )
 }
 
-async function importServicePage(page: ReturnType<typeof extractPage>) {
+async function importServicePage(page: ReturnType<typeof extractPage>, html: string) {
   const slug = page.file.replace(/\.html$/, '')
   if (!canonicalServiceFiles.has(page.file)) return
 
   const hero = page.images[0] ? await importMedia(page.images[0].src, page.images[0].alt, page.file, page.images[0].caption) : null
+  const blocks = await extractStructuredBlocks(page, html)
+
   await upsertBySlug(
     'service-pages',
     slug,
@@ -577,11 +692,13 @@ async function importServicePage(page: ReturnType<typeof extractPage>) {
       teaserImage: hero?.id,
       intro: page.intro,
       proofPoints: page.headings.slice(1, 5).map((heading) => ({ label: heading, text: page.intro })),
+      blocks,
       seo: {
         title: page.title.slice(0, 70),
         description: page.description.slice(0, 170),
         canonicalUrl: page.canonicalUrl,
         legacyUrl: page.file,
+        ogImage: hero?.id,
       },
       legacy: legacyForPage(page),
     },
@@ -591,10 +708,13 @@ async function importServicePage(page: ReturnType<typeof extractPage>) {
 
 const cityFromSlug = (slug: string) => cityTokens.find((city) => slug.endsWith(`-${city}`) || slug.includes(`-${city}-`))
 
-async function importLocalSeoPage(page: ReturnType<typeof extractPage>) {
+async function importLocalSeoPage(page: ReturnType<typeof extractPage>, html: string) {
   const slug = page.file.replace(/\.html$/, '')
   const city = cityFromSlug(slug)
-  if (!city || canonicalServiceFiles.has(page.file) || sitePageMap[page.file]) return
+  if (!city || page.file.startsWith('blog-') || canonicalServiceFiles.has(page.file) || sitePageMap[page.file]) return
+
+  const hero = page.images[0] ? await importMedia(page.images[0].src, page.images[0].alt, page.file, page.images[0].caption) : null
+  const blocks = await extractStructuredBlocks(page, html)
 
   await upsertBySlug(
     'local-seo-pages',
@@ -606,12 +726,15 @@ async function importLocalSeoPage(page: ReturnType<typeof extractPage>) {
       service: serviceLabelFor(slug),
       targetKeyword: page.h1,
       intro: page.intro,
+      heroImage: hero?.id,
       localProof: page.headings.slice(1, 4).map((heading) => ({ label: heading, text: page.intro })),
+      blocks,
       seo: {
         title: page.title.slice(0, 70),
         description: page.description.slice(0, 170),
         canonicalUrl: page.canonicalUrl,
         legacyUrl: page.file,
+        ogImage: hero?.id,
       },
       legacy: legacyForPage(page),
     },
@@ -832,6 +955,7 @@ async function importJournalFromPage(page: ReturnType<typeof extractPage>, html:
 try {
   const files = (await fsp.readdir(legacyRoot))
     .filter((file) => file.endsWith('.html'))
+    .filter((file) => !adoptedOnly || adoptedFiles.has(file))
     .sort((a, b) => a.localeCompare(b))
   const selectedFiles = importLimit > 0 ? files.slice(0, importLimit) : files
   const pages = []
@@ -846,10 +970,10 @@ try {
     }
   }
 
-  for (const { page } of pages) {
-    await importSitePage(page)
-    await importServicePage(page)
-    await importLocalSeoPage(page)
+  for (const { html, page } of pages) {
+    await importSitePage(page, html)
+    await importServicePage(page, html)
+    await importLocalSeoPage(page, html)
   }
 
   for (const { html, page } of pages) {
@@ -859,7 +983,9 @@ try {
 
   await deleteObsoleteSeededServicePages()
 
-  payload.logger.info(`Legacy import complete: ${selectedFiles.length} HTML files scanned.`)
+  payload.logger.info(
+    `Legacy import complete: ${selectedFiles.length} HTML files scanned${adoptedOnly ? ' (adopted-only)' : ''}.`,
+  )
   process.exit(0)
 } catch (error) {
   payload.logger.error(error)

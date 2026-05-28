@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url'
 
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { sqliteAdapter } from '@payloadcms/db-sqlite'
+import { resendAdapter } from '@payloadcms/email-resend'
 import { s3Storage } from '@payloadcms/storage-s3'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { buildConfig } from 'payload'
@@ -32,6 +33,7 @@ const payloadSecret = process.env.PAYLOAD_SECRET || randomUUID()
 const useSQLite = process.env.PAYLOAD_DB === 'sqlite'
 const pushDevSchema = process.env.PAYLOAD_DB_PUSH === 'true'
 const hasS3 = Boolean(process.env.S3_BUCKET && process.env.S3_ENDPOINT && process.env.S3_ACCESS_KEY_ID && process.env.S3_SECRET_ACCESS_KEY)
+const hasResend = Boolean(process.env.RESEND_API_KEY)
 
 if (!process.env.PAYLOAD_SECRET) {
   console.warn('PAYLOAD_SECRET is not set. Using an ephemeral local secret; set PAYLOAD_SECRET in every persistent environment.')
@@ -57,6 +59,15 @@ export default buildConfig({
       ],
     },
   },
+  ...(hasResend
+    ? {
+        email: resendAdapter({
+          apiKey: process.env.RESEND_API_KEY || '',
+          defaultFromAddress: process.env.PAYLOAD_EMAIL_FROM_ADDRESS || 'anfrage@matthiasramahi.de',
+          defaultFromName: process.env.PAYLOAD_EMAIL_FROM_NAME || 'Matthias Ramahi CMS',
+        }),
+      }
+    : {}),
   collections: [
     SitePages,
     ServicePages,

@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@astrojs/node": "^9.0.0",
+    "@astrojs/vercel": "9.0.0",
     "astro": "^5.0.0"
   },
   "devDependencies": {

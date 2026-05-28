@@ -1,0 +1,20 @@
+---
+import LegacyPageShell from '../../components/legacy/LegacyPageShell.astro'
+import { isCmsAdoptedLegacyFile } from '../../lib/adoptedRoutes'
+import { envFlag } from '../../lib/envFlags'
+import { getLegacyFileForPath } from '../../lib/legacy'
+
+export const prerender = false
+
+const slug = Astro.params.slug || ''
+const legacyFile = getLegacyFileForPath(`/${slug}.html`) || getLegacyFileForPath(`/${slug}`)
+const enableLocalSeoAdoptedRouteRewrite = envFlag('ASTRO_ENABLE_LOCAL_SEO_ADOPTED_ROUTES')
+
+if (!isCmsAdoptedLegacyFile(legacyFile, { includeLocalSeo: enableLocalSeoAdoptedRouteRewrite })) {
+  return Astro.redirect('/')
+}
+
+Astro.response.headers.set('cache-control', 'public, max-age=300, stale-while-revalidate=86400')
+Astro.response.headers.set('x-migration-render', 'adopted-astro-payload')
+---
+<LegacyPageShell legacyFile={legacyFile} />

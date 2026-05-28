@@ -37,7 +37,7 @@ export const Navigation: GlobalConfig = {
               defaultValue: [
                 { label: 'Home', href: '/' },
                 { label: 'Fotografie', href: '/fotografie' },
-                { label: 'Portfolio', href: '/portfolio' },
+                { label: 'Portfolio', href: '/portfolio.html' },
                 { label: 'Ueber mich', href: '/ueber-mich' },
                 { label: 'Journal', href: '/journal' },
                 { label: 'Kontakt', href: '/contact.html#anfrage' },

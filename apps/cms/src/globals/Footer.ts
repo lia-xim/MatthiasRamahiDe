@@ -73,7 +73,7 @@ export const Footer: GlobalConfig = {
           fields: [
             {
               name: 'aboutLink',
-              label: '?ber-mich-Link im Footer',
+              label: 'Ueber-mich-Link im Footer',
               type: 'group',
               fields: linkFields(),
             },
@@ -103,7 +103,7 @@ export const Footer: GlobalConfig = {
               type: 'array',
               defaultValue: [
                 { label: 'Home', href: '/' },
-                { label: 'Portfolio', href: '/portfolio' },
+                { label: 'Portfolio', href: '/portfolio.html' },
                 { label: 'Leistungen', href: '/services' },
                 { label: 'Journal', href: '/journal' },
                 { label: 'Kontakt', href: '/contact.html#anfrage' },

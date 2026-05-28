@@ -1,5 +1,7 @@
 import { defineMiddleware } from 'astro:middleware'
 
+import { isCmsAdoptedLegacyFile } from './lib/adoptedRoutes'
+import { envFlag, envFlagNotFalse } from './lib/envFlags'
 import { getLegacyFileForPath } from './lib/legacy'
 
 const permanentRedirect = (location: string) =>
@@ -13,7 +15,9 @@ const permanentRedirect = (location: string) =>
 const legacyRedirects: Record<string, string> = {
   '/weitere-dienstleistungen.html': '/leistungen.html',
 }
-const enableComponentizedLegacyRewrite = import.meta.env.ASTRO_ENABLE_COMPONENTIZED_LEGACY === 'true'
+const enableComponentizedLegacyRewrite = envFlag('ASTRO_ENABLE_COMPONENTIZED_LEGACY')
+const enableAdoptedRouteRewrite = envFlagNotFalse('ASTRO_ENABLE_ADOPTED_ROUTES')
+const enableLocalSeoAdoptedRouteRewrite = envFlag('ASTRO_ENABLE_LOCAL_SEO_ADOPTED_ROUTES')
 
 export const onRequest = defineMiddleware(async (context, next) => {
   const pathname = context.url.pathname
@@ -39,6 +43,17 @@ export const onRequest = defineMiddleware(async (context, next) => {
     const response = await next()
     response.headers.set('x-robots-tag', 'noindex, nofollow')
     return response
+  }
+
+  if (enableAdoptedRouteRewrite && /^\/[^/]+\.html$/i.test(pathname)) {
+    const legacyFile = getLegacyFileForPath(pathname)
+
+    if (legacyFile && isCmsAdoptedLegacyFile(legacyFile, { includeLocalSeo: enableLocalSeoAdoptedRouteRewrite })) {
+      const slug = legacyFile.replace(/\.html$/i, '')
+      const response = await context.rewrite(`/native/${slug}${context.url.search}`)
+      response.headers.set('x-migration-render', 'adopted-astro-payload')
+      return response
+    }
   }
 
   if (enableComponentizedLegacyRewrite && /^\/[^/]+\.html$/i.test(pathname)) {

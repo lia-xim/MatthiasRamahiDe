@@ -12,7 +12,7 @@ import { slugField } from '../fields/slug'
 import { applyEditorialDefaults } from '../hooks/autoDefaults'
 import { normalizeLinksBeforeValidate } from '../hooks/normalizeLinks'
 import { triggerAstroRebuildAfterChange, triggerAstroRebuildAfterDelete } from '../hooks/rebuild'
-import { requireFieldsForPublish } from '../hooks/validatePublishedContent'
+import { requireFieldsForPublish, requireMediaAltForPublish } from '../hooks/validatePublishedContent'
 import { buildPreviewUrl } from '../livePreview'
 
 export const JournalPosts: CollectionConfig = {
@@ -52,6 +52,11 @@ export const JournalPosts: CollectionConfig = {
         { path: 'excerpt', label: 'Kurztext' },
         { path: 'seo.title', label: 'SEO-Titel' },
         { path: 'seo.description', label: 'Meta-Beschreibung' },
+      ]),
+      requireMediaAltForPublish([
+        { path: 'coverImage', label: 'Coverbild' },
+        { path: 'seo.ogImage', label: 'Social-Bild' },
+        { path: 'blocks.items.image', label: 'Bildsequenz' },
       ]),
     ],
     afterChange: [triggerAstroRebuildAfterChange],

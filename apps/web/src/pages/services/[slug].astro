@@ -2,6 +2,7 @@
 import ContentBlocks from '../../components/ContentBlocks.astro'
 import ContactCta from '../../components/ContactCta.astro'
 import BaseLayout from '../../layouts/BaseLayout.astro'
+import { envFlag } from '../../lib/envFlags'
 import {
   getBySlug,
   imageDisplayUrl,
@@ -14,7 +15,7 @@ import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd, type JsonLd } from '../../l
 
 export const prerender = false
 
-const cmsServiceRoutesEnabled = import.meta.env.ASTRO_ENABLE_CMS_SERVICE_ROUTES === 'true'
+const cmsServiceRoutesEnabled = envFlag('ASTRO_ENABLE_CMS_SERVICE_ROUTES')
 
 const { slug } = Astro.params
 

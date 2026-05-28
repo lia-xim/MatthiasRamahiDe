@@ -5,6 +5,22 @@ import { adminGroups, editorPagination } from '../admin/structure'
 import { enrichMediaAfterChange } from '../hooks/enrichMedia'
 import { prepareMediaBeforeValidate } from '../hooks/prepareMedia'
 
+const fastImportImageSizes = process.env.PAYLOAD_FAST_MEDIA_IMPORT === 'true'
+const imageSizes = fastImportImageSizes
+  ? [{ name: 'thumb', width: 360, height: 360, position: 'centre' as const, formatOptions: { format: 'webp' as const, options: { quality: 82 } } }]
+  : [
+      { name: 'thumb', width: 360, height: 360, position: 'centre' as const, formatOptions: { format: 'webp' as const, options: { quality: 82 } } },
+      { name: 'mobile', width: 760, withoutEnlargement: true, formatOptions: { format: 'webp' as const, options: { quality: 82 } } },
+      { name: 'card', width: 1100, withoutEnlargement: true, formatOptions: { format: 'webp' as const, options: { quality: 84 } } },
+      { name: 'hero', width: 1920, withoutEnlargement: true, formatOptions: { format: 'webp' as const, options: { quality: 84 } } },
+      { name: 'wide', width: 2560, withoutEnlargement: true, formatOptions: { format: 'webp' as const, options: { quality: 84 } } },
+      { name: 'thumbAvif', width: 360, height: 360, position: 'centre' as const, formatOptions: { format: 'avif' as const, options: { quality: 58 } } },
+      { name: 'mobileAvif', width: 760, withoutEnlargement: true, formatOptions: { format: 'avif' as const, options: { quality: 58 } } },
+      { name: 'cardAvif', width: 1100, withoutEnlargement: true, formatOptions: { format: 'avif' as const, options: { quality: 60 } } },
+      { name: 'heroAvif', width: 1920, withoutEnlargement: true, formatOptions: { format: 'avif' as const, options: { quality: 60 } } },
+      { name: 'wideAvif', width: 2560, withoutEnlargement: true, formatOptions: { format: 'avif' as const, options: { quality: 60 } } },
+    ]
+
 export const Media: CollectionConfig = {
   slug: 'media',
   labels: {
@@ -34,18 +50,7 @@ export const Media: CollectionConfig = {
     displayPreview: true,
     crop: true,
     focalPoint: true,
-    imageSizes: [
-      { name: 'thumb', width: 360, height: 360, position: 'centre', formatOptions: { format: 'webp', options: { quality: 82 } } },
-      { name: 'mobile', width: 760, withoutEnlargement: true, formatOptions: { format: 'webp', options: { quality: 82 } } },
-      { name: 'card', width: 1100, withoutEnlargement: true, formatOptions: { format: 'webp', options: { quality: 84 } } },
-      { name: 'hero', width: 1920, withoutEnlargement: true, formatOptions: { format: 'webp', options: { quality: 84 } } },
-      { name: 'wide', width: 2560, withoutEnlargement: true, formatOptions: { format: 'webp', options: { quality: 84 } } },
-      { name: 'thumbAvif', width: 360, height: 360, position: 'centre', formatOptions: { format: 'avif', options: { quality: 58 } } },
-      { name: 'mobileAvif', width: 760, withoutEnlargement: true, formatOptions: { format: 'avif', options: { quality: 58 } } },
-      { name: 'cardAvif', width: 1100, withoutEnlargement: true, formatOptions: { format: 'avif', options: { quality: 60 } } },
-      { name: 'heroAvif', width: 1920, withoutEnlargement: true, formatOptions: { format: 'avif', options: { quality: 60 } } },
-      { name: 'wideAvif', width: 2560, withoutEnlargement: true, formatOptions: { format: 'avif', options: { quality: 60 } } },
-    ],
+    imageSizes,
   },
   hooks: {
     beforeValidate: [prepareMediaBeforeValidate],

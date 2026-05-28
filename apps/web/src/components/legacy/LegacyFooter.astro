@@ -4,12 +4,26 @@ import { getFooter, linkAttributes, toRootRelativeHref } from '../../lib/payload
 
 const { brand, footer: fallbackFooter } = legacyContent
 const cmsFooter = await getFooter()
+const replaceStudioLanguage = (value: unknown) => {
+  const text = typeof value === 'string' ? value : ''
+  return text
+    .replace(/\bStudio\b/g, 'Fotograf')
+    .replace(/\bstudio\b/g, 'Fotograf')
+    .replace(/^\s*Fotograf\s*$/i, 'Ueber mich')
+}
+const sanitizeLink = <T extends Record<string, unknown>>(link: T) => ({
+  ...link,
+  label: replaceStudioLanguage(link.label),
+})
 const columns = (cmsFooter?.columns?.length
-  ? cmsFooter.columns.map((column, index) => ({
-      id: column.label?.toLowerCase().replace(/[^a-z0-9]+/g, '-') || `col-${index}`,
-      label: column.label || '',
-      links: column.links || [],
-    }))
+  ? cmsFooter.columns.map((column, index) => {
+      const label = replaceStudioLanguage(column.label)
+      return {
+        id: label.toLowerCase().replace(/[^a-z0-9]+/g, '-') || `col-${index}`,
+        label,
+        links: (column.links || []).map((link) => sanitizeLink(link)),
+      }
+    })
   : fallbackFooter.columns) as LegacyFooterColumn[]
 const statement = cmsFooter?.statement || fallbackFooter.statement
 const statementHighlight = cmsFooter?.statementHighlight || fallbackFooter.statementHighlight
@@ -17,7 +31,7 @@ const statementParts =
   statementHighlight && statement.includes(statementHighlight)
     ? statement.split(statementHighlight)
     : [fallbackFooter.statementPrefix, fallbackFooter.statementSuffix]
-const aboutLink = cmsFooter?.aboutLink?.href ? cmsFooter.aboutLink : fallbackFooter.aboutLink
+const aboutLink = sanitizeLink(cmsFooter?.aboutLink?.href ? cmsFooter.aboutLink : fallbackFooter.aboutLink)
 const email = cmsFooter?.email || fallbackFooter.email
 const phone = cmsFooter?.phone || fallbackFooter.phone
 const phoneHref = `tel:${phone.replace(/[^\d+]/g, '')}`
