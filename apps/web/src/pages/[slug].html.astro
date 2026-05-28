@@ -8,6 +8,7 @@ import NativePortfolioIndexPage from '../components/native/NativePortfolioIndexP
 import NativePrintLabPage from '../components/native/NativePrintLabPage.astro'
 import NativeServiceDetailPage from '../components/native/NativeServiceDetailPage.astro'
 import NativeServicesIndexPage from '../components/native/NativeServicesIndexPage.astro'
+import NativeSportwagenPhotographyPage from '../components/native/NativeSportwagenPhotographyPage.astro'
 import { isCmsAdoptedLegacyFile, isLocalSeoAdoptionCandidate } from '../lib/adoptedRoutes'
 import { envFlag, envFlagNotFalse } from '../lib/envFlags'
 import { listLegacyHtmlFiles, readLegacyPage } from '../lib/legacy'
@@ -45,6 +46,7 @@ const shouldRenderFromCms =
   isCmsAdoptedLegacyFile(legacyFile, { includeLocalSeo: enableLocalSeoAdoptedRouteRewrite })
 const shouldRenderNativePhotography = shouldRenderFromCms && legacyFile === 'fotografie.html'
 const shouldRenderNativeAutomobil = shouldRenderFromCms && legacyFile === 'automobil-fotografie.html'
+const shouldRenderNativeSportwagen = shouldRenderFromCms && legacyFile === 'sportwagen-fotografie.html'
 const shouldRenderNativeJournalIndex = shouldRenderFromCms && legacyFile === 'blog.html'
 const shouldRenderNativePortfolioIndex = shouldRenderFromCms && legacyFile === 'portfolio.html'
 const shouldRenderNativePrintLab = shouldRenderFromCms && legacyFile === 'fotolabor-druck-duesseldorf.html'
@@ -65,6 +67,8 @@ if (shouldRenderFromCms) Astro.response.headers.set('x-migration-render', 'adopt
     <NativePhotographyPage />
   ) : shouldRenderNativeAutomobil ? (
     <NativeAutomobilPhotographyPage />
+  ) : shouldRenderNativeSportwagen ? (
+    <NativeSportwagenPhotographyPage />
   ) : shouldRenderNativeJournalIndex ? (
     <NativeJournalIndexPage />
   ) : shouldRenderNativePortfolioIndex ? (

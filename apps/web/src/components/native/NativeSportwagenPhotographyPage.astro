@@ -1,0 +1,382 @@
+---
+import NativeLegacyLayout from '../../layouts/NativeLegacyLayout.astro'
+import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
+
+const legacyFile = 'sportwagen-fotografie.html'
+const providedDoc = Astro.props.doc as PayloadDoc | undefined
+const doc = providedDoc || (await getLegacyBackedDoc(legacyFile, { depth: 2 }))
+
+const heroPanels = [
+  ['detail', 'assets/optimized/mpixih9c-dsc3982-1920.webp'],
+  ['full', 'assets/optimized/mpixi92f-dsc3032-generase-1-1920.webp'],
+  ['interior', 'assets/optimized/mpixhlgk-dsc2986-1920.webp'],
+]
+
+const shootingStyles = [
+  {
+    image: 'assets/optimized/assets-portfolio-dsc3982-1920.webp',
+    alt: 'Sportwagen Exterieur-Aufnahme mit ruhiger Linienführung',
+    width: 1920,
+    height: 1280,
+    title: 'Exterieur',
+    text: 'Vollformatige Außenaufnahmen mit kontrolliertem Licht, ruhigen Reflexen und sauberer Linienführung. Lack, Proportionen und Charakter wirken stimmig — egal ob Showroom, Industrie oder urbanes Setting.',
+  },
+  {
+    image: 'assets/portfolio/_DSC9321-Enhanced-NR.webp',
+    alt: 'Sportwagen Interieur — Cockpit und Material',
+    width: 1707,
+    height: 2560,
+    title: 'Interieur',
+    text: 'Cockpit, Sitze, Materialien, Atmosphäre. Mit mobilem Licht inszeniert, damit Leder, Carbon und Chrom ihren Ton behalten und der Innenraum die gleiche Sprache spricht wie das Exterieur.',
+  },
+  {
+    image: 'assets/portfolio/_DSC9301-Enhanced-NR.webp',
+    alt: 'Sportwagen Detail — Emblem und Felge',
+    width: 2048,
+    height: 2560,
+    title: 'Details',
+    text: 'Emblem, Sicken, Felgen, Bremse, Naht, Schalter. Detailaufnahmen erzählen die Geschichte eines Fahrzeugs im Kleinen — perfekt für Händlerseiten, Landingpages und redaktionelle Strecken.',
+  },
+  {
+    image: 'assets/optimized/assets-photos-automobil-neon-1920.webp',
+    alt: 'Sportwagen cinematic — Nacht und Architektur',
+    width: 1920,
+    height: 1280,
+    title: 'Cinematic',
+    text: 'Inszenierte Perspektiven mit gesetztem Licht, gewählter Architektur und dramaturgischer Komposition. Bilder mit Filmcharakter — für Kampagne, Magazin und Bildstrecken, die Stimmung tragen.',
+  },
+]
+
+const portfolioTiles = [
+  {
+    className: 't1',
+    dataSrc: 'assets/optimized/assets-portfolio-dsc3879-1920.webp',
+    alt: 'Sportwagen Exterieur — Hauptmotiv',
+    width: 1920,
+    height: 1280,
+    label: '01 · Exterieur',
+  },
+  {
+    className: 't2',
+    dataSrc: 'assets/portfolio/_DSC9321-Enhanced-NR.webp',
+    alt: 'Sportwagen Interieur — Cockpit',
+    width: 1707,
+    height: 2560,
+    label: '02 · Interieur',
+  },
+  {
+    className: 't3',
+    dataSrc: 'assets/optimized/assets-portfolio-dsc3982-1920.webp',
+    alt: 'Sportwagen Detail — Emblem',
+    width: 1920,
+    height: 1280,
+    label: '03 · Detail',
+  },
+  {
+    className: 't4',
+    dataSrc: 'assets/portfolio/_DSC9301-Enhanced-NR.webp',
+    alt: 'Sportwagen Detail — Felge',
+    width: 2048,
+    height: 2560,
+    label: '04 · Felge',
+  },
+  {
+    className: 't5',
+    src: 'assets/optimized/assets-portfolio-dsc3908-1920.webp',
+    alt: 'Sportwagen Profil — Linienführung',
+    width: 1920,
+    height: 1280,
+    label: '05 · Profil',
+  },
+  {
+    className: 't6',
+    dataSrc: 'assets/optimized/assets-photos-automobil-neon-1920.webp',
+    alt: 'Sportwagen Cinematic — Nacht und Architektur',
+    width: 1920,
+    height: 1280,
+    label: '06 · Cinematic',
+  },
+]
+
+const audiences = [
+  {
+    image: 'assets/portfolio/thumbs/_DSC3879.webp',
+    alt: 'Privatkunde mit Sportwagen',
+    width: 720,
+    height: 480,
+    number: '01 / Privat',
+    title: 'Privatkunden',
+    text: 'Ein persönliches Auto-Fotoshooting als Geschenk oder Erinnerung.',
+  },
+  {
+    image: 'assets/portfolio/thumbs/_DSC3908.webp',
+    alt: 'Hersteller- und Markenshooting',
+    width: 720,
+    height: 480,
+    number: '02 / Marke',
+    title: 'Hersteller & Agenturen',
+    text: 'Kampagnenmotive im einheitlichen Stil — von Planung bis Dateiübergabe.',
+  },
+  {
+    image: 'assets/portfolio/thumbs/_DSC3982.webp',
+    alt: 'Autohaus-Fotografie Düsseldorf',
+    width: 720,
+    height: 480,
+    number: '03 / Händler',
+    title: 'Autohäuser',
+    text: 'Konsistente Serien für Website und Portale — Außen, Innen, Details.',
+  },
+  {
+    image: 'assets/portfolio/thumbs/_DSC6982.webp',
+    alt: 'Club-Shooting und Redaktion',
+    width: 720,
+    height: 1080,
+    number: '04 / Editorial',
+    title: 'Clubs & Redaktionen',
+    text: 'Automotive Fotografie mit Fokus auf Design, Historie und Atmosphäre.',
+  },
+  {
+    image: 'assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp',
+    alt: 'Oldtimer-Besitzer Fotoshooting',
+    width: 720,
+    height: 1152,
+    number: '05 / Sammlung',
+    title: 'Sammler & Besitzer',
+    text: 'Ruhige Kulissen mit Charakter — für die persönliche Sammlung oder den Verkauf.',
+  },
+]
+
+const relatedAreas = [
+  {
+    href: 'automobil-fotografie.html',
+    dataSrc: 'assets/optimized/assets-photos-automobil-neon-1920.webp',
+    alt: 'Automobilfotografie',
+    width: 1920,
+    height: 1280,
+    meta: '01 / Verwandt',
+    title: 'Automobil',
+  },
+  {
+    href: 'oldtimer-fotografie.html',
+    src: 'assets/optimized/assets-photos-oldtimer-stage-1920.webp',
+    alt: 'Oldtimerfotografie',
+    width: 1920,
+    height: 1280,
+    meta: '02 / Verwandt',
+    title: 'Oldtimer',
+  },
+  {
+    href: 'motorrad-fotografie.html',
+    src: 'assets/optimized/assets-photos-motorrad-1920.webp',
+    alt: 'Motorradfotografie',
+    width: 1707,
+    height: 2560,
+    meta: '03 / Verwandt',
+    title: 'Motorrad',
+  },
+  {
+    href: 'portfolio.html',
+    dataSrc: 'assets/portfolio/thumbs/_DSC3879.webp',
+    alt: 'Vollständiges Portfolio',
+    width: 720,
+    height: 480,
+    meta: '04 / Übersicht',
+    title: 'Portfolio',
+  },
+]
+
+const cityLinks = [
+  ['sportwagen-fotografie.html', 'Düsseldorf'],
+  ['sportwagen-fotografie-koeln.html', 'Köln'],
+  ['sportwagen-fotografie-essen.html', 'Essen'],
+  ['sportwagen-fotografie-dortmund.html', 'Dortmund'],
+  ['sportwagen-fotografie-duisburg.html', 'Duisburg'],
+  ['sportwagen-fotografie-bochum.html', 'Bochum'],
+  ['sportwagen-fotografie-wuppertal.html', 'Wuppertal'],
+  ['sportwagen-fotografie-leverkusen.html', 'Leverkusen'],
+  ['sportwagen-fotografie-oberhausen.html', 'Oberhausen'],
+  ['sportwagen-fotografie-krefeld.html', 'Krefeld'],
+  ['sportwagen-fotografie-moenchengladbach.html', 'Mönchengladbach'],
+  ['sportwagen-fotografie-moers.html', 'Moers'],
+  ['sportwagen-fotografie-gelsenkirchen.html', 'Gelsenkirchen'],
+  ['sportwagen-fotografie-bergisch-gladbach.html', 'Bergisch Gladbach'],
+  ['sportwagen-fotografie-solingen.html', 'Solingen'],
+  ['sportwagen-fotografie-remscheid.html', 'Remscheid'],
+  ['sportwagen-fotografie-mettmann.html', 'Mettmann'],
+  ['sportwagen-fotografie-hilden.html', 'Hilden'],
+  ['sportwagen-fotografie-dormagen.html', 'Dormagen'],
+  ['sportwagen-fotografie-neuss.html', 'Neuss'],
+  ['sportwagen-fotografie-nrw.html', 'NRW'],
+  ['sportwagen-fotografie-deutschland.html', 'Deutschland'],
+]
+
+const searchLinks = [
+  ['sportwagen-shooting-duesseldorf.html', 'Sportwagen Shooting'],
+  ['sportwagen-fotoshooting-duesseldorf.html', 'Sportwagen Fotoshooting'],
+  ['performance-car-fotografie.html', 'Performance Car Fotografie'],
+  ['exotic-car-fotografie.html', 'Exotic Car Fotografie'],
+  ['supersportwagen-fotografie.html', 'Supersportwagen Fotografie'],
+]
+---
+<NativeLegacyLayout legacyFile={legacyFile} current="fotografie" doc={doc}>
+  <main>
+    <section class="hero-tri" id="top" data-header-theme="dark" aria-label="Sportwagenfotografie">
+      <div class="tri-stage" aria-hidden="true">
+        {heroPanels.map(([name, image]) => (
+          <div class="tri-col" data-tri={name}>
+            <div class="tri-img" style={`background-image:url('${image}')`}></div>
+          </div>
+        ))}
+      </div>
+
+      <div class="tri-overlay">
+        <h1 class="tri-title">
+          <span class="line"><span class="word">Sportwagen</span></span>
+          <span class="line"><span class="word">Fotografie.</span></span>
+        </h1>
+        <p class="tri-sub">Sportwagenfotografie: Performance, Form, Innenraum und Details werden mit kontrollierten Reflexen und ruhiger Dramaturgie sichtbar — für Sammler, Händler, Marke, Verkauf und Druck. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.</p>
+        <div class="tri-actions">
+          <a href="#anfrage">Shooting buchen →</a>
+          <a class="ghost" href="portfolio.html">Portfolio</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="st" data-header-theme="light">
+      <div class="section-inner">
+        <div class="st-copy">
+          <h2>Bilder mit <em>Druckqualität.</em></h2>
+          <div class="st-body">
+            <p>Sportwagen verlangen Präzision. Ich arbeite mit <strong>mobilem Licht, Reflektoren und einem klaren Plan</strong> — kontrollierte Reflexe, ruhige Hintergründe, echte Farben. Lack, Linien und Proportionen wirken stimmig, nicht überzeichnet.</p>
+            <p>Ob Verkauf, Branding, Redaktion oder persönliches Geschenk: ich kombiniere klares Licht, saubere Komposition und einen Blick für Details. Sie erhalten Dateien für Web, Social Media und Druck — aufbereitet und sofort einsatzbereit.</p>
+          </div>
+        </div>
+        <figure class="st-image">
+          <img loading="lazy" src="assets/optimized/assets-portfolio-dsc3879-1920.webp" alt="Sportwagen-Detailaufnahme — Matthias Ramahi" width="1920" height="1280" decoding="async" />
+        </figure>
+      </div>
+    </section>
+
+    <section class="sh" data-header-theme="dark">
+      <div class="section-inner">
+        <div class="sh-head">
+          <h2>Das Auto, <em>aus jedem Winkel.</em></h2>
+          <p>Exterieur, Interieur, Details und cineastische Perspektiven greifen ineinander — ein Bildsatz, der Fahrzeug, Atmosphäre und Material gleichermaßen zeigt.</p>
+        </div>
+        <div class="sh-grid">
+          {shootingStyles.map((style) => (
+            <article class="sh-card">
+              <figure class="sh-img"><img loading="lazy" src={style.image} alt={style.alt} width={style.width} height={style.height} decoding="async" /></figure>
+              <div class="sh-text">
+                <h3>{style.title}</h3>
+                <p>{style.text}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="po" data-header-theme="dark" aria-label="Ausgewählte Sportwagen-Arbeiten">
+      <div class="po-grid" id="poGrid">
+        <header class="po-head">
+          <h2>Aktuelle <em>Arbeiten.</em></h2>
+          <div class="head-foot">
+            <p>Sechs kuratierte Sportwagen-Bilder aus jüngeren Serien. Klicken zum Vergrößern.</p>
+          </div>
+        </header>
+
+        {portfolioTiles.map((tile, index) => (
+          <button type="button" class={`po-tile ${tile.className}`} data-i={index} aria-label={`Bild ${index + 1} vergrößern`}>
+            <img
+              src={tile.src}
+              data-src={tile.dataSrc}
+              loading="lazy"
+              alt={tile.alt}
+              width={tile.width}
+              height={tile.height}
+              decoding="async"
+            />
+            <span class="corner tl" aria-hidden="true"></span>
+            <span class="corner tr" aria-hidden="true"></span>
+            <span class="corner bl" aria-hidden="true"></span>
+            <span class="corner br" aria-hidden="true"></span>
+            <span class="zoom">Zoom</span>
+            <span class="lbl">{tile.label}</span>
+          </button>
+        ))}
+      </div>
+    </section>
+
+    <section class="fw" data-header-theme="light">
+      <div class="section-inner">
+        <div class="fw-head">
+          <h2>Für <em>wen</em> ich arbeite.</h2>
+          <p>Vom privaten Fahrzeug bis zur internationalen Kampagne. Jede Serie wird auf Nutzung, Marke und Zielgruppe zugeschnitten — ein Hero-Motiv oder ein vollständiges Launch-Asset-Paket.</p>
+        </div>
+        <div class="fw-grid">
+          {audiences.map((audience) => (
+            <article class="fw-card">
+              <img loading="lazy" src={audience.image} alt={audience.alt} width={audience.width} height={audience.height} decoding="async" />
+              <div class="overlay"></div>
+              <div class="content">
+                <span class="num">{audience.number}</span>
+                <strong>{audience.title}</strong>
+                <p>{audience.text}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="rl" data-header-theme="dark">
+      <div class="section-inner">
+        <div class="rl-head">
+          <h2>Verwandte <em>Bereiche</em>.</h2>
+          <p>Sportwagen ist ein Teil der Automobil-Welt. Schau dir die anderen Disziplinen an — gleicher Anspruch, anderer Bildfokus. Diese Kategorie ist Teil eines bewusst getrennten Fotografie-Clusters: Fahrzeug, Mensch und Raum bleiben eigenständige Suchintentionen, sind aber intern so verbunden, dass Nutzer schnell in den passenden Bildbereich wechseln können.</p>
+        </div>
+        <div class="rl-grid">
+          {relatedAreas.map((area) => (
+            <a class="rl-card" href={area.href}>
+              <img data-src={area.dataSrc} src={area.src} loading="lazy" alt={area.alt} width={area.width} height={area.height} decoding="async" />
+              <div class="overlay"></div>
+              <div class="content"><div><span>{area.meta}</span><strong>{area.title}</strong></div><span class="arrow">→</span></div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Sportwagen Fotografie in NRW">
+      <div class="mr-cities__inner">
+        <div class="mr-cities__head">
+          <h2>Sportwagen Fotografie <em>vor Ort.</em></h2>
+        </div>
+        <nav class="mr-cities__grid" aria-label="Städte">
+          {cityLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
+        </nav>
+      </div>
+    </section>
+
+    <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Sportwagen Fotografie Suchbegriffe">
+      <div class="mr-cities__inner">
+        <div class="mr-cities__head">
+          <h2>Sportwagen Fotografie <em>Suchbegriffe.</em></h2>
+        </div>
+        <nav class="mr-cities__grid" aria-label="Suchvarianten">
+          {searchLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
+        </nav>
+      </div>
+    </section>
+
+    <section
+      id="anfrage"
+      data-contact-section
+      data-header-theme="light"
+      data-contact-subject="Sportwagen Fotografie Anfrage"
+      data-contact-headline="Sportwagen &lt;em&gt;anfragen.&lt;/em&gt;"
+      data-contact-lead="Schreibe kurz, welcher Sportwagen fotografiert werden soll, ob die Bilder für Verkauf, Sammlung, Marke oder Social genutzt werden und welches Zeitfenster möglich ist. Wir planen Licht, Ort und Ablauf gemeinsam."
+    />
+  </main>
+</NativeLegacyLayout>
