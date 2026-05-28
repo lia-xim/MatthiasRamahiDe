@@ -13,6 +13,7 @@ type Props = {
   doc?: PayloadDoc | null
   headerTheme?: string
   legacyFile: string
+  noIndex?: boolean
 }
 
 const {
@@ -21,6 +22,7 @@ const {
   doc = null,
   headerTheme: providedHeaderTheme,
   legacyFile,
+  noIndex = false,
 } = Astro.props as Props
 const isHome = legacyFile === 'index.html'
 const legacyParts = isHome ? null : await getComponentizedLegacyParts(legacyFile)
@@ -28,6 +30,7 @@ const homeParts = isHome ? await getLegacyHomeParts() : null
 let head = withCmsSeo(homeParts?.head || legacyParts?.head || '', doc, legacyFile)
 head = withFavicons(head)
 head = isHome ? await withHomeCriticalCss(head) : stripHomeCriticalCss(head)
+if (noIndex) head = upsertMeta(head, 'name:robots', 'noindex,nofollow')
 const bodyClass = providedBodyClass || legacyParts?.bodyClass || 'has-mr-footer'
 const current = providedCurrent || legacyParts?.current
 const headerTheme = providedHeaderTheme || legacyParts?.headerTheme

@@ -270,11 +270,18 @@
     gl.activeTexture(gl.TEXTURE0); uploadInto(texA, entry);
     targetReady=1;
   });
-  loadImage(1%slides.length).then(entry=>{
-    if(!entry) return;
-    irB={w:entry.w,h:entry.h};
-    gl.activeTexture(gl.TEXTURE1); uploadInto(texB, entry);
-  });
+  const loadNextSlot = () => {
+    loadImage(1%slides.length).then(entry=>{
+      if(!entry) return;
+      irB={w:entry.w,h:entry.h};
+      gl.activeTexture(gl.TEXTURE1); uploadInto(texB, entry);
+    });
+  };
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(loadNextSlot, { timeout: 2800 });
+  } else {
+    setTimeout(loadNextSlot, 1400);
+  }
 
   const CYCLE_MS=6800;
   const TRANSITION_MS=1500;
@@ -432,9 +439,17 @@
 
   const start=performance.now();
   const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const coarsePointer=window.matchMedia&&window.matchMedia('(hover:none), (pointer:coarse)').matches;
+  const targetFrameMs=coarsePointer ? 1000/24 : 0;
+  let lastDraw=0;
 
   function frame(){
     const now=performance.now();
+    if(targetFrameMs && now-lastDraw<targetFrameMs){
+      requestAnimationFrame(frame);
+      return;
+    }
+    lastDraw=now;
     const t=(now-start)/1000.0;
     const k=reduce?0.06:0.12;
     mx+=(tx-mx)*k; my+=(ty-my)*k;

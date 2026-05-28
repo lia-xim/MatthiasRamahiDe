@@ -15,7 +15,7 @@ import NativeServiceDetailPage from '../components/native/NativeServiceDetailPag
 import NativeServicesIndexPage from '../components/native/NativeServicesIndexPage.astro'
 import NativeSportwagenPhotographyPage from '../components/native/NativeSportwagenPhotographyPage.astro'
 import { isCmsAdoptedLegacyFile, isLocalSeoAdoptionCandidate } from '../lib/adoptedRoutes'
-import { envFlag, envFlagNotFalse } from '../lib/envFlags'
+import { envFlagNotFalse } from '../lib/envFlags'
 import { listLegacyHtmlFiles, readLegacyPage } from '../lib/legacy'
 import { getByLegacyUrl, type PayloadDoc } from '../lib/payload'
 import { nativeServiceDetailFiles } from '../lib/serviceDetailContent'
@@ -27,8 +27,8 @@ type Props = {
 }
 
 const enableAdoptedRouteRewrite = envFlagNotFalse('ASTRO_ENABLE_ADOPTED_ROUTES')
-const enableLocalSeoAdoptedRouteRewrite = envFlag('ASTRO_ENABLE_LOCAL_SEO_ADOPTED_ROUTES')
-const enableNativeLocalSeoHtmlRoutes = envFlag('ASTRO_ENABLE_NATIVE_LOCAL_SEO_HTML_ROUTES')
+const enableLocalSeoAdoptedRouteRewrite = envFlagNotFalse('ASTRO_ENABLE_LOCAL_SEO_ADOPTED_ROUTES')
+const enableNativeLocalSeoHtmlRoutes = envFlagNotFalse('ASTRO_ENABLE_NATIVE_LOCAL_SEO_HTML_ROUTES')
 
 export async function getStaticPaths() {
   const files = await listLegacyHtmlFiles()
@@ -68,9 +68,9 @@ const shouldRenderNativeLocalSeo =
 const localSeoDoc = shouldRenderNativeLocalSeo
   ? await getByLegacyUrl('local-seo-pages', legacyFile, { depth: 2 })
   : null
-const NativeLocalSeoPage =
-  shouldRenderNativeLocalSeo && localSeoDoc
-    ? (await import('../components/cms/NativeLocalSeoPage.astro')).default
+const NativeLocalSeoFamilyPage =
+  shouldRenderNativeLocalSeo
+    ? (await import('../components/cms/NativeLocalSeoFamilyPage.astro')).default
     : null
 
 const legacyHtml = shouldRenderFromCms ? '' : await readLegacyPage(legacyFile)
@@ -106,8 +106,8 @@ if (shouldRenderFromCms) Astro.response.headers.set('x-migration-render', 'adopt
     <NativeContactPage />
   ) : shouldRenderNativeAbout ? (
     <NativeAboutPage />
-  ) : NativeLocalSeoPage && localSeoDoc ? (
-    <NativeLocalSeoPage doc={localSeoDoc as PayloadDoc} />
+  ) : NativeLocalSeoFamilyPage ? (
+    <NativeLocalSeoFamilyPage doc={localSeoDoc as PayloadDoc | null} legacyFile={legacyFile} />
   ) : shouldRenderFromCms ? (
     <LegacyPageShell legacyFile={legacyFile} />
   ) : (

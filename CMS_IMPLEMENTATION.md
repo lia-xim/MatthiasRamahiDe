@@ -1,6 +1,6 @@
 # Astro + Payload CMS Implementation
 
-Stand: 2026-05-28
+Stand: 2026-05-29
 
 Dieses Repository enthaelt eine kontrollierte Astro/Payload-Migration fuer die bestehende Fotografie-Website. Die Root-HTML-Dateien bleiben unangetastet und dienen als visuelle Referenz, bis die jeweilige Seite in Astro/Payload abgenommen ist.
 
@@ -30,8 +30,8 @@ Die aktuelle HTML-Website ist die visuelle Wahrheit. Ziel ist nicht, alle HTML-D
 - `apps/web/src/lib/legacy.ts` ordnet alte HTML-Dateien und Alias-Routen Astro zu.
 - `apps/web/src/lib/adoptedRoutes.ts` definiert, welche Legacy-URLs bereits vom Astro/Payload-Pfad uebernommen sind.
 - `apps/web/src/middleware.ts` rewritet adoptierte `.html`-URLs im lokalen/serverseitigen Betrieb intern auf `/native/<slug>`, ohne die sichtbare URL zu aendern.
-- `apps/web/src/pages/native/[slug].astro` rendert adoptierte URLs mit `LegacyPageShell`.
-- `apps/web/src/pages/[slug].html.astro` baut jede alte `.html`-URL als echte Astro-Route. Adoptierte Seiten rendern mit `LegacyPageShell` aus Payload, nicht adoptierte Seiten bleiben rohe Legacy-Fallbacks. Das ist wichtig fuer Vercel, weil dort Middleware-Rewrites fuer nicht existierende statische `.html`-Dateien nicht ausreichen.
+- `apps/web/src/pages/native/[slug].astro` rendert adoptierte URLs mit der jeweiligen nativen Astro-Komponente, der Legacy-Parity-Shell oder dem Local-SEO-Family-Renderer.
+- `apps/web/src/pages/[slug].html.astro` baut jede alte `.html`-URL als echte Astro-Route. Adoptierte Seiten rendern mit Astro/Payload-Logik, nicht adoptierte Seiten bleiben rohe Legacy-Fallbacks. Das ist wichtig fuer Vercel, weil dort Middleware-Rewrites fuer nicht existierende statische `.html`-Dateien nicht ausreichen.
 - Nicht adoptierte `.html`-Seiten bleiben als statischer Legacy-Fallback erreichbar.
 - `/legacy-baseline/<slug>` liefert die rohe Legacy-Ausgabe nur als Test-Baseline.
 - Root-HTML-Dateien werden nicht nach `apps/web/public` kopiert.
@@ -63,15 +63,17 @@ Die Migration ist inzwischen zweigleisig:
 
 - Native Astro-Komponenten mit Legacy-Optik: Startseite, `fotografie.html`, alle sechs Haupt-Fotografie-Seiten (`automobil-fotografie.html`, `sportwagen-fotografie.html`, `oldtimer-fotografie.html`, `motorrad-fotografie.html`, `portraitfotografie.html`, `landschaftsfotografie.html`), `portfolio.html`, `leistungen.html`, sieben weitere Service-Seiten inklusive Fotolabor, `contact.html`, `ueber-mich.html` sowie `blog.html`; der Journal-Index nutzt veroeffentlichte `journal-posts` aus Payload, wenn sie erreichbar sind, und faellt sonst auf die eingefrorene Referenzliste zurueck.
 - CMS-native strukturierte Templates: neue/dynamische Service-Seiten, Portfolio-Projekte, Journal-Beitraege unter `/journal/<slug>` und Local-SEO-Seiten ohne alte HTML-Datei.
-- Bewusste Parity-Schicht: Legal, sieben bestehende `blog-*.html` Detailseiten und die alten Local-SEO-HTML-Seiten bleiben 1:1 ueber die Legacy-Schicht, bis ihr Body wirklich als natives Template abgenommen ist.
+- Bewusste Parity-Schicht: Legal und sieben bestehende `blog-*.html` Detailseiten bleiben 1:1 ueber die Legacy-Schicht, bis ihr Body wirklich als natives Template abgenommen ist.
+- Local-SEO-Family-Schicht: alte lokale Kategorie-HTML-Seiten laufen ueber `NativeLocalSeoFamilyPage`. Der Renderer erkennt sechs Layout-Familien (`automobil`, `sportwagen`, `oldtimer`, `motorrad`, `portrait`, `landschaft`) anhand von Slug/Legacy-URL und nutzt die jeweilige Kategorie-Hauptseite als Parent-Konzept. Die lokale Legacy-Datei bleibt die visuelle Wahrheit; Payload kann SEO/Content ueberlagern, wenn ein Dokument vorhanden ist. Ohne Payload bleibt die lokale Seite trotzdem korrekt renderbar.
 
-Local-SEO kann kontrolliert auf das neue native Template umgelegt werden:
+Local-SEO-Family-Routing ist standardmaessig aktiv und kann nur bewusst abgeschaltet werden:
 
 ```powershell
-ASTRO_ENABLE_NATIVE_LOCAL_SEO_HTML_ROUTES=true
+ASTRO_ENABLE_LOCAL_SEO_ADOPTED_ROUTES=false
+ASTRO_ENABLE_NATIVE_LOCAL_SEO_HTML_ROUTES=false
 ```
 
-Dieser Schalter ist absichtlich getrennt von `ASTRO_ENABLE_LOCAL_SEO_ADOPTED_ROUTES`, damit die aktuell visuell freigegebene Legacy-Parity fuer alte `.html`-URLs nicht versehentlich durch ein neues Template ersetzt wird.
+Die neutralen Uebersichtsseiten `fotografie-duesseldorf.html`, `fotografie-nrw.html` und `fotografie-deutschland.html` bleiben separat: Sie sind kein Kategorie-Clone, sondern neutrale Fotografie-Landingpages mit eigener Struktur.
 
 ## Lokales Setup
 
@@ -194,8 +196,8 @@ Der erste Befehl ist ein Dry-Run. Mit `--write` werden nur Dokumente veroeffentl
 - `PREVIEW_SECRET`
 - `PAYLOAD_PREVIEW_API_KEY`
 - `ASTRO_ENABLE_ADOPTED_ROUTES`: optional, Standard ist aktiv. Auf `false` setzen, wenn adoptierte `.html`-URLs temporaer wieder als statischer Legacy-Fallback gebaut werden sollen.
-- `ASTRO_ENABLE_LOCAL_SEO_ADOPTED_ROUTES`: Fuer private Staging-Deployments aktuell `true`. Auf `false` setzen, wenn lokale SEO-Seiten temporaer wieder als statischer Legacy-Fallback laufen sollen.
-- `ASTRO_ENABLE_NATIVE_LOCAL_SEO_HTML_ROUTES`: optionaler Opt-in-Schalter, um alte Local-SEO-`.html`-URLs direkt mit dem neuen strukturierten Local-SEO-Template zu rendern.
+- `ASTRO_ENABLE_LOCAL_SEO_ADOPTED_ROUTES`: optional, Standard ist aktiv. Auf `false` setzen, wenn lokale SEO-Seiten temporaer wieder als statischer Legacy-Fallback laufen sollen.
+- `ASTRO_ENABLE_NATIVE_LOCAL_SEO_HTML_ROUTES`: optional, Standard ist aktiv. Auf `false` setzen, wenn alte Local-SEO-`.html`-URLs nicht ueber den Family-Renderer laufen sollen.
 - `ASTRO_ENABLE_CMS_DYNAMIC_ROUTES`: Standard aktiv. Erlaubt neuen Payload-Seiten ohne alte `.html`-Datei, strukturiert in Astro zu rendern.
 - `ASTRO_ENABLE_CMS_JOURNAL_ROUTES`: aktiviert native `/journal/<slug>`-Builds.
 - `ASTRO_ENABLE_CMS_SERVICE_ROUTES`: aktiviert native `/services/<slug>`-Routen; Canonical kann weiterhin auf die alte `.html`-URL zeigen.
@@ -319,6 +321,6 @@ Kurzfassung:
 
 - Weitere nicht aktive Importgruppen redaktionell pruefen und erst danach `legacy.migrationStatus` von `seeded` auf `reviewed`, `componentized` oder `live` setzen.
 - Medienbestand weiter kuratieren: Alt-Texte, Captions, Featured-Auswahl, Mood/Tags und Verwendungszweck finalisieren.
-- Weitere Legacy-Layouts aus dem Body in echte Astro-Komponenten zerlegen, sobald Visual Regression fuer den Seitentyp stabil gruen ist: als naechstes Legal-Seiten, danach die sieben bestehenden Journal-Detail-HTML-Seiten und spaeter alte Local-SEO-HTML-Seiten per Opt-in.
+- Weitere Legacy-Layouts aus dem Body in echte Astro-Komponenten zerlegen, sobald Visual Regression fuer den Seitentyp stabil gruen ist: als naechstes Legal-Seiten, danach die sieben bestehenden Journal-Detail-HTML-Seiten und spaeter die Local-SEO-Family-Bodies Schritt fuer Schritt aus strukturierten Blocks statt Legacy-Body-HTML ausgeben.
 - Local-SEO-Seiten nach dem privaten Online-Test final redaktionell gegenlesen und bei Bedarf einzelne Seiten wieder auf Draft setzen.
 - Optional: Rebuild-Hook auf dem Hetzner-Server aktivieren und mit echtem Secret testen.

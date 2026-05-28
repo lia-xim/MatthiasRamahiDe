@@ -15,7 +15,7 @@ import NativeServiceDetailPage from '../../components/native/NativeServiceDetail
 import NativeServicesIndexPage from '../../components/native/NativeServicesIndexPage.astro'
 import NativeSportwagenPhotographyPage from '../../components/native/NativeSportwagenPhotographyPage.astro'
 import { isCmsAdoptedLegacyFile, isLocalSeoAdoptionCandidate } from '../../lib/adoptedRoutes'
-import { envFlag } from '../../lib/envFlags'
+import { envFlagNotFalse } from '../../lib/envFlags'
 import { getLegacyFileForPath } from '../../lib/legacy'
 import { getByLegacyUrl, type PayloadDoc } from '../../lib/payload'
 import { nativeServiceDetailFiles } from '../../lib/serviceDetailContent'
@@ -24,8 +24,8 @@ export const prerender = false
 
 const slug = Astro.params.slug || ''
 const legacyFile = getLegacyFileForPath(`/${slug}.html`) || getLegacyFileForPath(`/${slug}`)
-const enableLocalSeoAdoptedRouteRewrite = envFlag('ASTRO_ENABLE_LOCAL_SEO_ADOPTED_ROUTES')
-const enableNativeLocalSeoHtmlRoutes = envFlag('ASTRO_ENABLE_NATIVE_LOCAL_SEO_HTML_ROUTES')
+const enableLocalSeoAdoptedRouteRewrite = envFlagNotFalse('ASTRO_ENABLE_LOCAL_SEO_ADOPTED_ROUTES')
+const enableNativeLocalSeoHtmlRoutes = envFlagNotFalse('ASTRO_ENABLE_NATIVE_LOCAL_SEO_HTML_ROUTES')
 
 if (!legacyFile || !isCmsAdoptedLegacyFile(legacyFile, { includeLocalSeo: enableLocalSeoAdoptedRouteRewrite })) {
   return Astro.redirect('/')
@@ -51,9 +51,9 @@ const shouldRenderNativeLocalSeo =
 const localSeoDoc = shouldRenderNativeLocalSeo
   ? await getByLegacyUrl('local-seo-pages', activeLegacyFile, { depth: 2 })
   : null
-const NativeLocalSeoPage =
-  shouldRenderNativeLocalSeo && localSeoDoc
-    ? (await import('../../components/cms/NativeLocalSeoPage.astro')).default
+const NativeLocalSeoFamilyPage =
+  shouldRenderNativeLocalSeo
+    ? (await import('../../components/cms/NativeLocalSeoFamilyPage.astro')).default
     : null
 
 Astro.response.headers.set('cache-control', 'public, max-age=300, stale-while-revalidate=86400')
@@ -88,8 +88,8 @@ Astro.response.headers.set('x-migration-render', 'adopted-astro-payload')
     <NativeContactPage />
   ) : shouldRenderNativeAbout ? (
     <NativeAboutPage />
-  ) : NativeLocalSeoPage && localSeoDoc ? (
-    <NativeLocalSeoPage doc={localSeoDoc as PayloadDoc} />
+  ) : NativeLocalSeoFamilyPage ? (
+    <NativeLocalSeoFamilyPage doc={localSeoDoc as PayloadDoc | null} legacyFile={activeLegacyFile} />
   ) : (
     <LegacyPageShell legacyFile={activeLegacyFile} />
   )

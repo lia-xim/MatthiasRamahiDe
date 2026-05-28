@@ -28,7 +28,7 @@ Redirects werden nur gesetzt, wenn eine URL wirklich konsolidiert werden soll. S
 | `blog-*.html` Detailseiten | `journal-posts` | Artikel werden importiert; Titel, Excerpt, Tags, Related Links und Content-Bloecke redaktionell pruefen. |
 | `leistungen.html`, `weitere-dienstleistungen.html` | Services-Index / `site-pages` | Eine kanonische Uebersicht definieren. |
 | Hauptleistungen, z. B. `automobil-fotografie-duesseldorf.html` | `service-pages` | Als kanonische Service-Seiten pflegen und alte URL als Canonical setzen. |
-| Stadt-/Keyword-Seiten, z. B. `automobil-fotografie-koeln.html` | `local-seo-pages` | Erst nach stabilen Hauptseiten migrieren. |
+| Stadt-/Keyword-Seiten, z. B. `automobil-fotografie-koeln.html` | `local-seo-pages` | Ueber sechs Kategorie-Familien migrieren: Automobil, Sportwagen, Oldtimer, Motorrad, Portrait, Landschaft. |
 | Bilddateien im Root und `assets/**` | `media` | Kuratieren, nicht blind massenhaft hochladen. |
 
 ## Priorisierte Migrationsliste
@@ -56,8 +56,8 @@ Stand 2026-05-29:
 | Weitere Service-Seiten | Native Astro-Komponenten fuer sieben Seiten | Texte/Bilder koennen weiter ueber Payload-Dokumente gegen die statische Content-Basis ersetzt werden. |
 | Journal-Uebersicht | Native Astro-Komponente mit Payload-Listing-Fallback | Weiter Design-Parity halten, waehrend `journal-posts` redaktionell wachsen. |
 | Neue Journal-Routen `/journal/<slug>` | CMS-native Artikelkomponente | ENV `ASTRO_ENABLE_CMS_JOURNAL_ROUTES=true` setzen, wenn die Route live gebaut werden soll. |
-| Neue Local-SEO-Routen | CMS-native Local-SEO-Komponente | Alte `.html`-Local-SEO-Routen erst per Opt-in auf dieses Template umlegen. |
-| Alte Local-SEO-HTML-Seiten | Bewusste Legacy-Parity | Nach redaktioneller Pruefung optional `ASTRO_ENABLE_NATIVE_LOCAL_SEO_HTML_ROUTES=true`. |
+| Neue Local-SEO-Routen | CMS-native Local-SEO-Komponente | Fuer neue Seiten ohne Legacy-Datei weiter als strukturierter CMS-Pfad nutzen. |
+| Alte Local-SEO-HTML-Seiten | Local-SEO-Family-Renderer mit Legacy-Parity | Standardmaessig aktiv: lokale Varianten erben eine der sechs Kategorie-Familien und bleiben visuell an ihrer Legacy-Datei ausgerichtet. |
 | Sechs Haupt-Fotografie-Detailseiten | Alle sechs Seiten sind native Astro-Body-Templates mit Legacy-CSS/JS-Parity und visueller Freigabe. | Inhalte weiter behutsam aus Payload-Feldern speisen, ohne Layout-HTML als CMS-Hack zu speichern. |
 | About, Kontakt, Legal | `ueber-mich.html` und `contact.html` sind native Astro-Body-Templates; Legal bleibt Legacy-Parity ueber Astro-Shell. | Legal-Seiten nativ zerlegen, danach Journal-Detailseiten. |
 | Bestehende `blog-*.html` Detailseiten | Legacy-Parity ueber Astro-Shell | Nach stabiler Journal-Komponente Seite fuer Seite extrahieren. |
@@ -172,10 +172,21 @@ Lokale/keywordbasierte Seiten werden nicht blind als finale oeffentliche Inhalte
 
 Qualitaetsregel: keine Seiten, bei denen nur der Stadtname getauscht wurde.
 
+Architekturregel: Lokale Seiten benutzen kein einheitliches generisches Landingpage-Template. Jede lokale Kategorie-Seite gehoert zu genau einer der sechs visuellen Familien:
+
+- Automobil: `automobil-fotografie-*`, `automotive-fotografie-*`, `autofotografie-*`, `autohaus-fotografie-*`, `autoverkauf-fotos-*`, `fahrzeugfotografie-*`.
+- Sportwagen: `sportwagen-fotografie-*`, `sportwagen-shooting-*`, `sportwagen-fotoshooting-*`, `performance-car-fotografie-*`, `exotic-car-fotografie-*`, `supersportwagen-fotografie-*`.
+- Oldtimer: `oldtimer-fotografie-*`, `oldtimer-shooting-*`, `oldtimer-verkaufsfotos-*`, `classic-car-fotografie-*`, `youngtimer-fotografie-*`, `sammlerfahrzeug-fotografie-*`.
+- Motorrad: `motorrad-fotografie-*`, `motorrad-shooting-*`, `motorrad-verkaufsfotos-*`, `bike-fotografie-*`, `custom-bike-fotografie-*`, `biker-portrait-*`.
+- Portrait: `portraitfotografie-*`, `business-portrait-*`, `headshot-fotograf-*`, `personal-branding-fotografie-*`, `unternehmensportrait-*`, `pressefoto-*`.
+- Landschaft: `landschaftsfotografie-*`, `landschaftsbilder-*`, `fine-art-prints-*`, `wandbilder-landschaftsfotografie-*`, `naturfotografie-prints-*`.
+
+Die neutralen Seiten `fotografie-duesseldorf.html`, `fotografie-nrw.html` und `fotografie-deutschland.html` bleiben separat und erben nicht von einer Kategorie-Familie.
+
 Technischer Gate:
 
-- `ASTRO_ENABLE_LOCAL_SEO_ADOPTED_ROUTES=true` schaltet die lokale SEO-Familie fuer die Astro/Payload-Adoptionsschicht frei.
-- `ASTRO_ENABLE_NATIVE_LOCAL_SEO_HTML_ROUTES=true` ersetzt alte Local-SEO-`.html`-URLs mit dem neuen nativen Local-SEO-Template. Standard bleibt aus, damit die freigegebene Legacy-Parity nicht unbemerkt kippt.
+- `ASTRO_ENABLE_LOCAL_SEO_ADOPTED_ROUTES=false` schaltet die lokale SEO-Familie temporaer ab und nutzt wieder den statischen Legacy-Fallback.
+- `ASTRO_ENABLE_NATIVE_LOCAL_SEO_HTML_ROUTES=false` verhindert temporaer, dass alte Local-SEO-`.html`-URLs ueber den Family-Renderer laufen.
 - `cms:approve-private-staging -- --collection=local-seo-pages --write` veroeffentlicht nur vollstaendige Local-SEO-Dokumente fuer privates Staging.
 - `cms:audit-production -- --strict` stellt sicher, dass veroeffentlichte lokale SEO-Seiten `reviewed`, SEO-vollstaendig und frei von blockierenden Sprach-/Medienproblemen sind.
 
