@@ -121,6 +121,27 @@ async function assertRouteAuditRequiresNativeLayoutMarker() {
   }
 }
 
+async function assertNativeDispatchFailsClosed() {
+  const adoptedPageRel = 'apps/web/src/components/native/NativeAdoptedPage.astro'
+  const localSeoPageRel = 'apps/web/src/components/cms/NativeLocalSeoFamilyPage.astro'
+  const nativeRegistryRel = 'apps/web/src/lib/nativeAdoptedRouteRegistry.ts'
+  const adoptedPage = await fs.readFile(path.join(repoRoot, adoptedPageRel), 'utf8')
+  const localSeoPage = await fs.readFile(path.join(repoRoot, localSeoPageRel), 'utf8')
+  const nativeRegistry = await fs.readFile(path.join(repoRoot, nativeRegistryRel), 'utf8')
+
+  if (!adoptedPage.includes('nativeAdoptedRouteKindForFile') || !adoptedPage.includes('No native Astro renderer is registered')) {
+    failures.push(`${adoptedPageRel} must resolve adopted routes through the native route registry and fail closed when a renderer is missing.`)
+  }
+
+  if (!nativeRegistry.includes('nativeAdoptedRouteKindForFile') || !nativeRegistry.includes('hasNativeAdoptedRenderer')) {
+    failures.push(`${nativeRegistryRel} must expose the native adopted route registry used by the dispatcher and audits.`)
+  }
+
+  if (!localSeoPage.includes('No native local SEO renderer could be resolved')) {
+    failures.push(`${localSeoPageRel} must fail closed when a local SEO route cannot resolve a native renderer.`)
+  }
+}
+
 await assertNoPublicHtml()
 await assertNoPublicLegacyAssets()
 await assertNoProductionLegacyRenderMarkers()
@@ -128,6 +149,7 @@ await assertNoUnexpectedWebRuntimeFsAccess()
 await assertAdoptedLayoutCannotInlineHtml()
 await assertAssetSyncIsNativeByDefault()
 await assertRouteAuditRequiresNativeLayoutMarker()
+await assertNativeDispatchFailsClosed()
 
 if (failures.length > 0) {
   console.error('Native production guard failed:')
@@ -136,5 +158,5 @@ if (failures.length > 0) {
 }
 
 console.log(
-  'Native production guard passed: no public HTML shadows, no public legacy assets, no raw legacy web render path, no unexpected runtime fs access, and layout-marker route audit enforced.',
+  'Native production guard passed: no public HTML shadows, no public legacy assets, no raw legacy web render path, no unexpected runtime fs access, layout-marker route audit enforced, and native route dispatch fails closed.',
 )

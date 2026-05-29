@@ -48,6 +48,12 @@ if (shouldRenderFamilyLayout) {
   Astro.response.headers.set('x-cms-layout-family', familyContent!.family)
   Astro.response.headers.set('x-cms-layout-parent', familyContent!.parentLegacyFile)
 }
+
+if (!shouldRenderFamilyLayout && !FallbackLocalSeoPage) {
+  throw new Error(
+    `No native local SEO renderer could be resolved for "${providedLegacyFile || doc?.slug || doc?.seo?.legacyUrl || 'unknown'}".`,
+  )
+}
 ---
 {shouldRenderFamilyLayout && familyContent ? (
   <NativeLocalSeoFamilyStructuredPage

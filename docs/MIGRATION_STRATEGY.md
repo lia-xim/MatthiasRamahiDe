@@ -76,6 +76,14 @@ corepack pnpm legacy:freeze
 
 Das schreibt `docs/legacy-reference-manifest.json` mit Checksumme, Titel, Description, H1, Canonical, Dateigroesse und Seitentyp fuer alle Root-HTML-Dateien. Der Freeze ersetzt keine visuelle Abnahme, macht aber unbeabsichtigte Legacy-Aenderungen nachvollziehbar.
 
+Der Manifest-Stand wird in Release-Laeufen mit folgendem Befehl geprueft:
+
+```powershell
+corepack pnpm legacy:freeze:check
+```
+
+Dieser Check ist Teil von `production:check` und verhindert, dass neue oder geaenderte Root-HTML-Dateien unbemerkt an der eingefrorenen visuellen Referenz vorbeilaufen. Ein neuer Freeze ist deshalb eine bewusste Abnahmehandlung, kein automatischer Nebeneffekt.
+
 ## Kontrollierter Import-Stand
 
 `corepack pnpm --filter @matthias-ramahi/cms import:legacy` ist der vollstaendige Staging-Import fuer die bestehende Website. Er ueberschreibt keine alten HTML-Dateien, sondern erzeugt oder aktualisiert Payload-Dokumente anhand von Slugs.
@@ -124,6 +132,7 @@ Aktuell bleiben alle alten Root-HTML-URLs 1:1 erreichbar. Die Migration ist aber
 
 - Alle 217 bisherigen Root-HTML-URLs werden im Vercel-/Static-Build aus `apps/web/src/pages/[slug].html.astro` und `apps/web/src/lib/adoptedRoutes.ts` erzeugt. Die Root-HTML-Dateien sind Referenz, aber nicht mehr Produktionsquelle.
 - Adoptierte Kernseiten und alle Local-SEO-Seiten werden ueber native Astro-Komponenten, den Local-SEO-Family-Renderer oder den Journal-/Legal-Renderer ausgegeben. Die sichtbare URL bleibt z. B. `/fotografie.html`, `/portfolio.html`, `/automobil-fotografie-koeln.html` oder `/blog-serie-kuratieren.html`.
+- Die Zuordnung von alter URL zu nativem Renderer-Typ liegt in `apps/web/src/lib/nativeAdoptedRouteRegistry.ts`. Dadurch bleibt `NativeAdoptedPage.astro` ein Dispatcher und neue Migrationen muessen explizit registriert werden.
 - Echte Dubletten redirecten mit 308 auf die kanonische Zielseite.
 - Neue Payload-Seiten ohne passende Root-HTML-Datei koennen ueber den generischen strukturierten Astro-Renderpfad laufen. Dieser Pfad ist fuer neue Seiten gedacht, nicht fuer ungepruefte 1:1-Ersetzungen.
 
@@ -235,7 +244,8 @@ Aktueller Pruefstand:
 - Stand 2026-05-29: Route-Audit erfolgreich, 217/217 bisherige HTML-Routen werden nativ aus Astro erzeugt.
 - Stand 2026-05-29: Produktionsassets sind im Astro-Code auf `native-*` umgestellt; der Prebuild heisst `sync-public-assets` und kopiert keine Root-HTML-Dateien nach `apps/web/public`.
 - Stand 2026-05-29: `native:guard` ist Teil von `production:check` und verhindert Rueckfaelle durch Public-HTML-Schatten, Public-`legacy-*` Assets oder rohe Legacy-Render-Marker im Astro-Runtime-Code.
-- Stand 2026-05-29: `native:guard` prueft zusaetzlich, dass Astro-Runtime-Code keine unerwarteten `node:fs`-Zugriffe bekommt, der Adopted-Critical-Inliner nur CSS-Assets lesen darf und der Route-Audit den nativen Astro-Layout-Marker erzwingt.
+- Stand 2026-05-29: `native:guard` prueft zusaetzlich, dass Astro-Runtime-Code keine unerwarteten `node:fs`-Zugriffe bekommt, der Adopted-Critical-Inliner nur CSS-Assets lesen darf, der Route-Audit den nativen Astro-Layout-Marker erzwingt und adoptierte Route-Dispatcher ueber die native Renderer-Registry fail-closed sind.
 - Stand 2026-05-29: Visual Regression wird fuer stabile lokale Laeufe in drei Gruppen ausgefuehrt: Kern-/Fotografieseiten, Service/About/Contact/Journal und Local-SEO-Familien. Alle Gruppen bleiben unter der harten 5%-Grenze; Warnungen ueber dem 2%-Zielwert sind dokumentierte Bild-/Lazyload-Differenzen.
 - Stand 2026-05-29: `production:check` fuehrt diese drei Gruppen automatisch aus, streamt die einzelnen Vergleichsergebnisse und beendet die temporaere Astro-Preview nach dem Lauf wieder. Der letzte Komplettlauf war erfolgreich.
+- Stand 2026-05-29: `legacy:freeze:check` ist Teil von `production:check` und prueft das Manifest gegen 217 eingefrorene Root-HTML-Dateien. Das Manifest enthaelt keine instabilen mtimes mehr, sodass nur echte Referenzdrifts den Release-Gate blockieren.
 - Stand 2026-05-29: Site-Quality-Audit ueber 226 Routen und 452 Desktop-/Mobile-Checks ist ohne Failures. Uebrig sind nur Long-Task-Warnungen fuer bild-/animationsreiche Seiten; Payload-Medien von `cms.matthiasramahi.de` werden als First-Party behandelt.
