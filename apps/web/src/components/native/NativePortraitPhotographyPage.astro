@@ -79,6 +79,15 @@ const visualSlots = familyVisualSlots(visualDoc, [
   { alt: 'Portrait', full: 'assets/optimized/assets-portraits-20250605-dsc04020-1920.webp', src: 'assets/portfolio/thumbs/20250605-DSC04020.webp', width: 720, height: 1080 },
   { alt: 'Portrait', full: 'assets/optimized/assets-portraits-dsc2358-1920.webp', src: 'assets/portfolio/thumbs/_DSC2358.webp', width: 720, height: 1080 },
   { alt: 'Portrait', full: 'assets/optimized/assets-portraits-dsc2310-1920.webp', src: 'assets/portfolio/thumbs/_DSC2310.webp', width: 720, height: 480 },
+  { alt: 'Anfrage', full: 'assets/portraits/_DSC9301-Enhanced-NR.webp', src: 'assets/portfolio/thumbs/_DSC9301-Enhanced-NR.webp', width: 720, height: 900 },
+  { alt: 'Kennenlernen', full: 'assets/optimized/assets-portfolio-dsc3032-generase-1-1920.webp', src: 'assets/portfolio/thumbs/_DSC3032_genErase (1).webp', width: 720, height: 480 },
+  { alt: 'Konzept', full: 'assets/optimized/assets-portfolio-20250605-dsc03756-1920.webp', src: 'assets/portfolio/thumbs/20250605-DSC03756.webp', width: 720, height: 1080 },
+  { alt: 'Shooting', full: 'assets/optimized/assets-portraits-dsc2310-1920.webp', src: 'assets/portfolio/thumbs/_DSC2310.webp', width: 720, height: 480 },
+  { alt: 'Auswahl und Lieferung', full: 'assets/portraits/_DSC0470-Enhanced-NR.webp', src: 'assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp', width: 720, height: 1152 },
+  { alt: 'Landschaft', full: 'assets/optimized/assets-portfolio-wettberwerb-foto5-wunder-der-natur2-1920.webp', src: 'assets/portfolio/thumbs/Wettberwerb_Foto5_Wunder_der_Natur2.webp', width: 720, height: 471 },
+  { alt: 'Automobil', full: 'assets/optimized/assets-photos-automobil-neon-1920.webp', src: 'assets/optimized/assets-photos-automobil-neon-960.webp', width: 960, height: 640 },
+  { alt: 'Videografie', full: 'assets/optimized/assets-portfolio-dsc3032-generase-1-1920.webp', src: 'assets/portfolio/thumbs/_DSC3032_genErase (1).webp', width: 720, height: 480 },
+  { alt: 'Portfolio', full: 'assets/portraits/_DSC9321-Enhanced-NR.webp', src: 'assets/portfolio/thumbs/_DSC9321-Enhanced-NR.webp', width: 720, height: 1080 },
 ])
 
 const cityLinks = [
@@ -258,35 +267,35 @@ const searchLinks = [
         <ul class="fw-pt__list">
           <li class="fw-pt__row">
             <span class="fw-pt__num">01</span>
-            <div class="fw-pt__thumb" style="background-image:url('assets/portfolio/thumbs/_DSC9301-Enhanced-NR.webp')" role="img" aria-label="Anfrage"></div>
+            <div class="fw-pt__thumb" style={`background-image:url('${visualSlots[18].cssSrc}')`} role="img" aria-label="Anfrage"></div>
             <h3 class="fw-pt__name">Anfrage</h3>
             <p class="fw-pt__copy">Kurze Nachricht reicht — Anlass, Person oder Team, gewünschte Wirkung, Zeitraum. Antwort innerhalb von 24 Stunden mit erster Einordnung und nächsten Schritten.</p>
             <span class="fw-pt__arrow" aria-hidden="true">→</span>
           </li>
           <li class="fw-pt__row">
             <span class="fw-pt__num">02</span>
-            <div class="fw-pt__thumb" style="background-image:url('assets/portfolio/thumbs/_DSC3032_genErase (1).webp')" role="img" aria-label="Kennenlernen"></div>
+            <div class="fw-pt__thumb" style={`background-image:url('${visualSlots[19].cssSrc}')`} role="img" aria-label="Kennenlernen"></div>
             <h3 class="fw-pt__name">Kennenlernen</h3>
             <p class="fw-pt__copy">Ein lockeres Gespräch — telefonisch oder vor Ort. Wir klären den Kontext, wer die Bilder sehen wird und welche Tonalität dazu passt. Ohne Verkaufsdruck.</p>
             <span class="fw-pt__arrow" aria-hidden="true">→</span>
           </li>
           <li class="fw-pt__row">
             <span class="fw-pt__num">03</span>
-            <div class="fw-pt__thumb" style="background-image:url('assets/portfolio/thumbs/20250605-DSC03756.webp')" role="img" aria-label="Konzept"></div>
+            <div class="fw-pt__thumb" style={`background-image:url('${visualSlots[20].cssSrc}')`} role="img" aria-label="Konzept"></div>
             <h3 class="fw-pt__name">Konzept &amp; Briefing</h3>
             <p class="fw-pt__copy">Wir sammeln Referenzen, definieren Licht, Hintergrund, Outfit und ein paar Schlüsselbilder. Du bekommst ein klares Mini-Briefing — keine 30-Seiten-Decks.</p>
             <span class="fw-pt__arrow" aria-hidden="true">→</span>
           </li>
           <li class="fw-pt__row">
             <span class="fw-pt__num">04</span>
-            <div class="fw-pt__thumb" style="background-image:url('assets/portfolio/thumbs/_DSC2310.webp')" role="img" aria-label="Shooting"></div>
+            <div class="fw-pt__thumb" style={`background-image:url('${visualSlots[21].cssSrc}')`} role="img" aria-label="Shooting"></div>
             <h3 class="fw-pt__name">Shooting</h3>
             <p class="fw-pt__copy">Location in Düsseldorf oder vor Ort. Ruhiges Setup, viel Raum zum Ankommen, klare Regie ohne Pose-Drill. Zwischendurch ein gemeinsamer Blick auf den Monitor.</p>
             <span class="fw-pt__arrow" aria-hidden="true">→</span>
           </li>
           <li class="fw-pt__row">
             <span class="fw-pt__num">05</span>
-            <div class="fw-pt__thumb" style="background-image:url('assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp')" role="img" aria-label="Auswahl und Lieferung"></div>
+            <div class="fw-pt__thumb" style={`background-image:url('${visualSlots[22].cssSrc}')`} role="img" aria-label="Auswahl und Lieferung"></div>
             <h3 class="fw-pt__name">Auswahl &amp; Lieferung</h3>
             <p class="fw-pt__copy">Eine kuratierte Vorauswahl als Web-Galerie. Du wählst die finalen Bilder, ich retuschiere zurückhaltend und liefere in den Formaten, die du brauchst — Web, Print, Social.</p>
             <span class="fw-pt__arrow" aria-hidden="true">→</span>
@@ -304,10 +313,10 @@ const searchLinks = [
         <h2 class="rl-pt__title">Verwandte <em>Bereiche.</em></h2>
         <p class="rl-pt__intro">Diese Kategorie ist Teil eines bewusst getrennten Fotografie-Clusters: Fahrzeug, Mensch und Raum bleiben eigenständige Suchintentionen, sind aber intern so verbunden, dass Nutzer schnell in den passenden Bildbereich wechseln können.</p>
         <div class="rl-pt__grid">
-          <a class="rl-pt__card" href="landschaftsfotografie.html"><div class="rl-pt__card-img" style="background-image:url('assets/portfolio/thumbs/Wettberwerb_Foto5_Wunder_der_Natur2.webp')"></div><div class="rl-pt__card-body"><strong>Landschaft</strong><span>→</span></div></a>
-          <a class="rl-pt__card" href="automobil-fotografie.html"><div class="rl-pt__card-img" style="background-image:url('assets/optimized/assets-photos-automobil-neon-960.webp')"></div><div class="rl-pt__card-body"><strong>Automobil</strong><span>→</span></div></a>
-          <a class="rl-pt__card" href="videografie-duesseldorf.html"><div class="rl-pt__card-img" style="background-image:url('assets/portfolio/thumbs/_DSC3032_genErase (1).webp')"></div><div class="rl-pt__card-body"><strong>Videografie</strong><span>→</span></div></a>
-          <a class="rl-pt__card" href="portfolio.html"><div class="rl-pt__card-img" style="background-image:url('assets/portfolio/thumbs/_DSC9321-Enhanced-NR.webp')"></div><div class="rl-pt__card-body"><strong>Portfolio</strong><span>→</span></div></a>
+          <a class="rl-pt__card" href="landschaftsfotografie.html"><div class="rl-pt__card-img" style={`background-image:url('${visualSlots[23].cssSrc}')`}></div><div class="rl-pt__card-body"><strong>Landschaft</strong><span>→</span></div></a>
+          <a class="rl-pt__card" href="automobil-fotografie.html"><div class="rl-pt__card-img" style={`background-image:url('${visualSlots[24].cssSrc}')`}></div><div class="rl-pt__card-body"><strong>Automobil</strong><span>→</span></div></a>
+          <a class="rl-pt__card" href="videografie-duesseldorf.html"><div class="rl-pt__card-img" style={`background-image:url('${visualSlots[25].cssSrc}')`}></div><div class="rl-pt__card-body"><strong>Videografie</strong><span>→</span></div></a>
+          <a class="rl-pt__card" href="portfolio.html"><div class="rl-pt__card-img" style={`background-image:url('${visualSlots[26].cssSrc}')`}></div><div class="rl-pt__card-body"><strong>Portfolio</strong><span>→</span></div></a>
         </div>
       </div>
     </section>

@@ -78,6 +78,10 @@ const visualSlots = familyVisualSlots(visualDoc, [
   { alt: 'Landschaft', full: 'assets/optimized/assets-portfolio-20250605-dsc03793-1920.webp', src: 'assets/portfolio/thumbs/20250605-DSC03793.webp', width: 720, height: 960 },
   { alt: 'Landschaft', full: 'assets/optimized/assets-portfolio-20250605-dsc03756-1920.webp', src: 'assets/portfolio/thumbs/20250605-DSC03756.webp', width: 720, height: 1080 },
   { alt: 'Landschaft Detail', full: 'assets/optimized/assets-portfolio-20250414-dsc00341-1920.webp', src: 'assets/portfolio/thumbs/20250414-DSC00341.webp', width: 720, height: 1080 },
+  { alt: 'Portrait', full: 'assets/photos/portrait-blue.webp', src: 'assets/photos/portrait-blue.webp', width: 2048, height: 2560 },
+  { alt: 'Oldtimer', full: 'assets/optimized/assets-photos-oldtimer-stage-1920.webp', src: 'assets/optimized/assets-photos-oldtimer-stage-1920.webp', width: 1920, height: 1280 },
+  { alt: 'Drucke', full: 'assets/optimized/assets-portfolio-20250605-dsc03978-1920.webp', src: 'assets/optimized/assets-portfolio-20250605-dsc03978-1920.webp', width: 1707, height: 2560 },
+  { alt: 'Portfolio', full: 'assets/optimized/assets-portfolio-wettberwerb-foto10-wunder-der-natur-1920.webp', src: 'assets/optimized/assets-portfolio-wettberwerb-foto10-wunder-der-natur-1920.webp', width: 1920, height: 1194 },
 ])
 const heroImages = visualSlots.slice(0, 5).map((slot) => slot.full).join(',')
 
@@ -288,10 +292,10 @@ const searchLinks = [
         <h2 class="rl-ls__title">Verwandte <em>Bereiche.</em></h2>
         <p class="rl-ls__intro">Diese Kategorie ist Teil eines bewusst getrennten Fotografie-Clusters: Fahrzeug, Mensch und Raum bleiben eigenständige Suchintentionen, sind aber intern so verbunden, dass Nutzer schnell in den passenden Bildbereich wechseln können.</p>
         <div class="rl-ls__grid">
-          <a class="rl-ls__card" href="portraitfotografie.html"><div class="rl-ls__card-img" style="background-image:url('assets/photos/portrait-blue.webp')"></div><div class="rl-ls__card-body"><strong>Portrait</strong><span>→</span></div></a>
-          <a class="rl-ls__card" href="oldtimer-fotografie.html"><div class="rl-ls__card-img" style="background-image:url('assets/optimized/assets-photos-oldtimer-stage-1920.webp')"></div><div class="rl-ls__card-body"><strong>Oldtimer</strong><span>→</span></div></a>
-          <a class="rl-ls__card" href="drucke-sonderanfertigungen-duesseldorf.html"><div class="rl-ls__card-img" style="background-image:url('assets/optimized/assets-portfolio-20250605-dsc03978-1920.webp')"></div><div class="rl-ls__card-body"><strong>Drucke</strong><span>→</span></div></a>
-          <a class="rl-ls__card" href="portfolio.html"><div class="rl-ls__card-img" style="background-image:url('assets/optimized/assets-portfolio-wettberwerb-foto10-wunder-der-natur-1920.webp')"></div><div class="rl-ls__card-body"><strong>Portfolio</strong><span>→</span></div></a>
+          <a class="rl-ls__card" href="portraitfotografie.html"><div class="rl-ls__card-img" style={`background-image:url('${visualSlots[18].cssSrc}')`}></div><div class="rl-ls__card-body"><strong>Portrait</strong><span>→</span></div></a>
+          <a class="rl-ls__card" href="oldtimer-fotografie.html"><div class="rl-ls__card-img" style={`background-image:url('${visualSlots[19].cssSrc}')`}></div><div class="rl-ls__card-body"><strong>Oldtimer</strong><span>→</span></div></a>
+          <a class="rl-ls__card" href="drucke-sonderanfertigungen-duesseldorf.html"><div class="rl-ls__card-img" style={`background-image:url('${visualSlots[20].cssSrc}')`}></div><div class="rl-ls__card-body"><strong>Drucke</strong><span>→</span></div></a>
+          <a class="rl-ls__card" href="portfolio.html"><div class="rl-ls__card-img" style={`background-image:url('${visualSlots[21].cssSrc}')`}></div><div class="rl-ls__card-body"><strong>Portfolio</strong><span>→</span></div></a>
         </div>
       </div>
     </section>
