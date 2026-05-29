@@ -649,6 +649,9 @@ if (!providedBaseUrl && !fsSync.existsSync(targetRoot)) {
 
 let routes = await collectRoutes()
 if (routeFilter.size > 0) routes = routes.filter((route) => routeFilter.has(route))
+const skippedDynamicRoutes =
+  !providedBaseUrl && routeFilter.size === 0 ? routes.filter((route) => !findStaticFile(route)) : []
+if (skippedDynamicRoutes.length > 0) routes = routes.filter((route) => findStaticFile(route))
 if (limit > 0) routes = routes.slice(0, limit)
 
 const viewportNames = selectedViewportNames.filter((name) => viewports[name])
@@ -720,6 +723,7 @@ try {
     outputPath,
     routes: routes.length,
     routeSource,
+    skippedDynamicRoutes,
     target: toPosix(path.relative(repoRoot, targetRoot)),
     topFailures: failures.slice(0, 40),
     topWarnings: warnings.slice(0, 40),

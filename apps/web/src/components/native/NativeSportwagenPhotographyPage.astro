@@ -22,9 +22,12 @@ const props = Astro.props as Props
 const { doc: providedDoc = undefined, legacyFile: providedLegacyFile, preview, visualDoc: providedVisualDoc = undefined } = props
 const legacyFile = providedLegacyFile || defaultLegacyFile
 const doc = providedDoc || (await getLegacyBackedDoc(legacyFile, { depth: 2 }))
+const shouldUseCmsVisualDoc = Boolean(preview) || import.meta.env.ASTRO_ENABLE_CMS_VISUAL_OVERRIDES === 'true'
 const visualDoc = Object.hasOwn(props, 'visualDoc')
   ? providedVisualDoc
-  : await getFamilyVisualSourceDoc('sportwagen', doc, legacyFile, defaultLegacyFile)
+  : shouldUseCmsVisualDoc
+    ? await getFamilyVisualSourceDoc('sportwagen', doc, legacyFile, defaultLegacyFile)
+    : null
 const pageContext = nativeFamilyPageContext({
   defaultLegacyFile,
   doc,
