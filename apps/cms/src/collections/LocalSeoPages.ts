@@ -94,7 +94,8 @@ export const LocalSeoPages: CollectionConfig = {
         },
         {
           label: 'Bilder',
-          description: 'Optionales lokales Hero-Motiv. Sonst greifen Fallbacks aus SEO/Site Settings.',
+          description:
+            'Lokale Familienseiten erben die sichtbaren Bilder aus der passenden Hauptseite. Dieses Feld ist nur ein Ausnahme-/Fallback-Motiv fuer Sonderseiten.',
           fields: [mediaRelationshipField({ name: 'heroImage', label: 'Hero-Bild' })],
         },
         {

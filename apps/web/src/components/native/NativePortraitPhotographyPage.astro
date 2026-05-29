@@ -7,18 +7,21 @@ import {
   nativeFamilyPageContext,
   type NativeFamilyPreviewState,
 } from '../../lib/nativeFamilyPageContext'
+import { familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
 import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
 
 type Props = {
   doc?: PayloadDoc | null
   legacyFile?: string
   preview?: NativeFamilyPreviewState
+  visualDoc?: PayloadDoc | null
 }
 
 const defaultLegacyFile = 'portraitfotografie.html'
-const { doc: providedDoc = undefined, legacyFile: providedLegacyFile, preview } = Astro.props as Props
+const { doc: providedDoc = undefined, legacyFile: providedLegacyFile, preview, visualDoc: providedVisualDoc = undefined } = Astro.props as Props
 const legacyFile = providedLegacyFile || defaultLegacyFile
 const doc = providedDoc || (await getLegacyBackedDoc(legacyFile, { depth: 2 }))
+const visualDoc = providedVisualDoc ?? (await getFamilyVisualSourceDoc('portrait', doc, legacyFile, defaultLegacyFile))
 const pageContext = nativeFamilyPageContext({
   defaultLegacyFile,
   doc,
@@ -56,6 +59,27 @@ const contactLead = isParentPage
   : isKeywordPage
     ? `Schreibe kurz, wofür ${serviceLabel} gebraucht wird, welche Person oder welches Team im Mittelpunkt steht und welche Nutzung geplant ist. Wir klären Stil, Ort, Umfang und Ausgabe gemeinsam.`
     : `Schreibe kurz, wofür die Portraits in ${scope.label} gedacht sind - Personal Branding, Editorial, Team, Presse oder Bewerbung. Wichtig sind Person oder Team, gewünschte Wirkung, Ort und Zeitraum. Stil und Licht klären wir vor dem ersten Klick.`
+
+const visualSlots = familyVisualSlots(visualDoc, [
+  { alt: 'Portrait warm', full: 'assets/portraits/_DSC0470-Enhanced-NR.webp', src: 'assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp', width: 1600, height: 2560 },
+  { alt: 'Portrait Profil', full: 'assets/portraits/_DSC9301-Enhanced-NR.webp', src: 'assets/portfolio/thumbs/_DSC9301-Enhanced-NR.webp', width: 2048, height: 2560 },
+  { alt: 'Portrait Editorial', full: 'assets/portraits/_DSC9321-Enhanced-NR.webp', src: 'assets/portfolio/thumbs/_DSC9321-Enhanced-NR.webp', width: 1707, height: 2560 },
+  { alt: 'Portrait Konzept', full: 'assets/optimized/assets-portraits-20250327-dsc01550-1920.webp', src: 'assets/portfolio/thumbs/20250327-DSC01550.webp', width: 1691, height: 2560 },
+  { alt: 'Portrait Modul', full: 'assets/portraits/_DSC0470-Enhanced-NR.webp', src: 'assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp', width: 720, height: 1152 },
+  { alt: 'Portrait Team', full: 'assets/optimized/assets-portraits-dsc3908-1920.webp', src: 'assets/portfolio/thumbs/_DSC3908.webp', width: 720, height: 480 },
+  { alt: 'Portrait Konzept', full: 'assets/optimized/assets-portraits-20250605-dsc04020-1920.webp', src: 'assets/portfolio/thumbs/20250605-DSC04020.webp', width: 720, height: 1080 },
+  { alt: 'Portrait Headshot', full: 'assets/portraits/_DSC9321-Enhanced-NR.webp', src: 'assets/portfolio/thumbs/_DSC9321-Enhanced-NR.webp', width: 720, height: 1080 },
+  { alt: 'Portrait Stimmung', full: 'assets/optimized/assets-portraits-dsc2986-1920.webp', src: 'assets/portfolio/thumbs/_DSC2986.webp', width: 720, height: 1080 },
+  { alt: 'Portrait', full: 'assets/portraits/_DSC0470-Enhanced-NR.webp', src: 'assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp', width: 720, height: 1152 },
+  { alt: 'Portrait', full: 'assets/portraits/_DSC9321-Enhanced-NR.webp', src: 'assets/portfolio/thumbs/_DSC9321-Enhanced-NR.webp', width: 720, height: 1080 },
+  { alt: 'Portrait', full: 'assets/optimized/assets-portraits-dsc3908-1920.webp', src: 'assets/portfolio/thumbs/_DSC3908.webp', width: 720, height: 480 },
+  { alt: 'Portrait', full: 'assets/optimized/assets-portraits-dsc3878-1920.webp', src: 'assets/portfolio/thumbs/_DSC3878.webp', width: 720, height: 480 },
+  { alt: 'Portrait', full: 'assets/optimized/assets-portraits-dsc2986-1920.webp', src: 'assets/portfolio/thumbs/_DSC2986.webp', width: 720, height: 1080 },
+  { alt: 'Portrait', full: 'assets/optimized/assets-portraits-dsc2744-1920.webp', src: 'assets/portfolio/thumbs/_DSC2744.webp', width: 720, height: 1080 },
+  { alt: 'Portrait', full: 'assets/optimized/assets-portraits-20250605-dsc04020-1920.webp', src: 'assets/portfolio/thumbs/20250605-DSC04020.webp', width: 720, height: 1080 },
+  { alt: 'Portrait', full: 'assets/optimized/assets-portraits-dsc2358-1920.webp', src: 'assets/portfolio/thumbs/_DSC2358.webp', width: 720, height: 1080 },
+  { alt: 'Portrait', full: 'assets/optimized/assets-portraits-dsc2310-1920.webp', src: 'assets/portfolio/thumbs/_DSC2310.webp', width: 720, height: 480 },
+])
 
 const cityLinks = [
   ['portraitfotografie.html', 'Düsseldorf'],
@@ -97,7 +121,7 @@ const searchLinks = [
   noIndex={Boolean(preview)}
   title={metaTitle}
   description={metaDescription}
-  ogImage="/assets/portraits/_DSC0470-Enhanced-NR.webp"
+  ogImage={visualSlots[0].full}
 >
   {preview && (
     <PreviewToolbar
@@ -113,22 +137,22 @@ const searchLinks = [
         <div class="hero-pt__slides">
           <div class="hero-pt__slide" data-i="0">
             <div class="hero-pt__zoom">
-              <img class="hero-pt__image" src="assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp" srcset="assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp 720w, assets/portraits/_DSC0470-Enhanced-NR.webp 1600w" sizes="100vw" alt="" fetchpriority="high" decoding="async" width="1600" height="2560" />
+              <img class="hero-pt__image" src={visualSlots[0].src} srcset={visualSlots[0].srcset} sizes="100vw" alt="" fetchpriority="high" decoding="async" width={visualSlots[0].width} height={visualSlots[0].height} />
             </div>
           </div>
           <div class="hero-pt__slide" data-i="1">
             <div class="hero-pt__zoom">
-              <img class="hero-pt__image" src="assets/portfolio/thumbs/_DSC9301-Enhanced-NR.webp" srcset="assets/portfolio/thumbs/_DSC9301-Enhanced-NR.webp 720w, assets/portraits/_DSC9301-Enhanced-NR.webp 2048w" sizes="100vw" alt="" loading="lazy" decoding="async" width="2048" height="2560" />
+              <img class="hero-pt__image" src={visualSlots[1].src} srcset={visualSlots[1].srcset} sizes="100vw" alt="" loading="lazy" decoding="async" width={visualSlots[1].width} height={visualSlots[1].height} />
             </div>
           </div>
           <div class="hero-pt__slide" data-i="2">
             <div class="hero-pt__zoom">
-              <img class="hero-pt__image" src="assets/portfolio/thumbs/_DSC9321-Enhanced-NR.webp" srcset="assets/portfolio/thumbs/_DSC9321-Enhanced-NR.webp 720w, assets/portraits/_DSC9321-Enhanced-NR.webp 1707w" sizes="100vw" alt="" loading="lazy" decoding="async" width="1707" height="2560" />
+              <img class="hero-pt__image" src={visualSlots[2].src} srcset={visualSlots[2].srcset} sizes="100vw" alt="" loading="lazy" decoding="async" width={visualSlots[2].width} height={visualSlots[2].height} />
             </div>
           </div>
           <div class="hero-pt__slide" data-i="3">
             <div class="hero-pt__zoom">
-              <img class="hero-pt__image" src="assets/portfolio/thumbs/20250327-DSC01550.webp" srcset="assets/portfolio/thumbs/20250327-DSC01550.webp 720w, assets/optimized/assets-portraits-20250327-dsc01550-1920.webp 1691w" sizes="100vw" alt="" loading="lazy" decoding="async" width="1691" height="2560" />
+              <img class="hero-pt__image" src={visualSlots[3].src} srcset={visualSlots[3].srcset} sizes="100vw" alt="" loading="lazy" decoding="async" width={visualSlots[3].width} height={visualSlots[3].height} />
             </div>
           </div>
         </div>
@@ -165,7 +189,7 @@ const searchLinks = [
       </div>
       <div class="mod-pt__grid">
         <article class="mod-pt__card">
-          <div class="mod-pt__img" style="background-image:url('assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp')"></div>
+          <div class="mod-pt__img" style={`background-image:url('${visualSlots[4].cssSrc}')`}></div>
           <div class="mod-pt__body">
             <span class="mod-pt__num">01 · Personal Brand</span>
             <h3 class="mod-pt__name">Founder & Speaker</h3>
@@ -173,7 +197,7 @@ const searchLinks = [
           </div>
         </article>
         <article class="mod-pt__card">
-          <div class="mod-pt__img" style="background-image:url('assets/portfolio/thumbs/_DSC3908.webp')"></div>
+          <div class="mod-pt__img" style={`background-image:url('${visualSlots[5].cssSrc}')`}></div>
           <div class="mod-pt__body">
             <span class="mod-pt__num">02 · Team</span>
             <h3 class="mod-pt__name">Agentur & Kanzlei</h3>
@@ -181,7 +205,7 @@ const searchLinks = [
           </div>
         </article>
         <article class="mod-pt__card">
-          <div class="mod-pt__img" style="background-image:url('assets/portfolio/thumbs/20250605-DSC04020.webp')"></div>
+          <div class="mod-pt__img" style={`background-image:url('${visualSlots[6].cssSrc}')`}></div>
           <div class="mod-pt__body">
             <span class="mod-pt__num">03 · Editorial</span>
             <h3 class="mod-pt__name">Magazin & Strecke</h3>
@@ -189,7 +213,7 @@ const searchLinks = [
           </div>
         </article>
         <article class="mod-pt__card">
-          <div class="mod-pt__img" style="background-image:url('assets/portfolio/thumbs/_DSC9321-Enhanced-NR.webp')"></div>
+          <div class="mod-pt__img" style={`background-image:url('${visualSlots[7].cssSrc}')`}></div>
           <div class="mod-pt__body">
             <span class="mod-pt__num">04 · Presse</span>
             <h3 class="mod-pt__name">Headshot & Profil</h3>
@@ -197,7 +221,7 @@ const searchLinks = [
           </div>
         </article>
         <article class="mod-pt__card">
-          <div class="mod-pt__img" style="background-image:url('assets/portfolio/thumbs/_DSC2986.webp')"></div>
+          <div class="mod-pt__img" style={`background-image:url('${visualSlots[8].cssSrc}')`}></div>
           <div class="mod-pt__body">
             <span class="mod-pt__num">05 · Kampagne</span>
             <h3 class="mod-pt__name">Cover & Konzept</h3>
@@ -213,15 +237,15 @@ const searchLinks = [
         <a class="bg-pt__link" href="portfolio.html">Komplettes Portfolio ansehen →</a>
       </div>
       <div class="bg-pt__grid">
-        <button class="bg-pt__tile t-hero" data-full="assets/portraits/_DSC0470-Enhanced-NR.webp"><img src="assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp" data-full="assets/portraits/_DSC0470-Enhanced-NR.webp" alt="Portrait" width="720" height="1152" decoding="async" loading="lazy" /></button>
-        <button class="bg-pt__tile t-a" data-full="assets/portraits/_DSC9321-Enhanced-NR.webp"><img src="assets/portfolio/thumbs/_DSC9321-Enhanced-NR.webp" data-full="assets/portraits/_DSC9321-Enhanced-NR.webp" loading="lazy" alt="Portrait" width="720" height="1080" decoding="async" /></button>
-        <button class="bg-pt__tile t-b" data-full="assets/optimized/assets-portraits-dsc3908-1920.webp"><img loading="lazy" src="assets/portfolio/thumbs/_DSC3908.webp" data-full="assets/optimized/assets-portraits-dsc3908-1920.webp" alt="Portrait" width="720" height="480" decoding="async" /></button>
-        <button class="bg-pt__tile t-c" data-full="assets/optimized/assets-portraits-dsc3878-1920.webp"><img loading="lazy" src="assets/portfolio/thumbs/_DSC3878.webp" data-full="assets/optimized/assets-portraits-dsc3878-1920.webp" alt="Portrait" width="720" height="480" decoding="async" /></button>
-        <button class="bg-pt__tile t-d" data-full="assets/optimized/assets-portraits-dsc2986-1920.webp"><img loading="lazy" src="assets/portfolio/thumbs/_DSC2986.webp" data-full="assets/optimized/assets-portraits-dsc2986-1920.webp" alt="Portrait" width="720" height="1080" decoding="async" /></button>
-        <button class="bg-pt__tile t-e" data-full="assets/optimized/assets-portraits-dsc2744-1920.webp"><img loading="lazy" src="assets/portfolio/thumbs/_DSC2744.webp" data-full="assets/optimized/assets-portraits-dsc2744-1920.webp" alt="Portrait" width="720" height="1080" decoding="async" /></button>
-        <button class="bg-pt__tile t-f" data-full="assets/optimized/assets-portraits-20250605-dsc04020-1920.webp"><img loading="lazy" src="assets/portfolio/thumbs/20250605-DSC04020.webp" data-full="assets/optimized/assets-portraits-20250605-dsc04020-1920.webp" alt="Portrait" width="720" height="1080" decoding="async" /></button>
-        <button class="bg-pt__tile t-g" data-full="assets/optimized/assets-portraits-dsc2358-1920.webp"><img loading="lazy" src="assets/portfolio/thumbs/_DSC2358.webp" data-full="assets/optimized/assets-portraits-dsc2358-1920.webp" alt="Portrait" width="720" height="1080" decoding="async" /></button>
-        <button class="bg-pt__tile t-h" data-full="assets/optimized/assets-portraits-dsc2310-1920.webp"><img loading="lazy" src="assets/portfolio/thumbs/_DSC2310.webp" data-full="assets/optimized/assets-portraits-dsc2310-1920.webp" alt="Portrait" width="720" height="480" decoding="async" /></button>
+        <button class="bg-pt__tile t-hero" data-full={visualSlots[9].full}><img src={visualSlots[9].src} data-full={visualSlots[9].full} alt={visualSlots[9].alt} width={visualSlots[9].width} height={visualSlots[9].height} decoding="async" loading="lazy" /></button>
+        <button class="bg-pt__tile t-a" data-full={visualSlots[10].full}><img src={visualSlots[10].src} data-full={visualSlots[10].full} loading="lazy" alt={visualSlots[10].alt} width={visualSlots[10].width} height={visualSlots[10].height} decoding="async" /></button>
+        <button class="bg-pt__tile t-b" data-full={visualSlots[11].full}><img loading="lazy" src={visualSlots[11].src} data-full={visualSlots[11].full} alt={visualSlots[11].alt} width={visualSlots[11].width} height={visualSlots[11].height} decoding="async" /></button>
+        <button class="bg-pt__tile t-c" data-full={visualSlots[12].full}><img loading="lazy" src={visualSlots[12].src} data-full={visualSlots[12].full} alt={visualSlots[12].alt} width={visualSlots[12].width} height={visualSlots[12].height} decoding="async" /></button>
+        <button class="bg-pt__tile t-d" data-full={visualSlots[13].full}><img loading="lazy" src={visualSlots[13].src} data-full={visualSlots[13].full} alt={visualSlots[13].alt} width={visualSlots[13].width} height={visualSlots[13].height} decoding="async" /></button>
+        <button class="bg-pt__tile t-e" data-full={visualSlots[14].full}><img loading="lazy" src={visualSlots[14].src} data-full={visualSlots[14].full} alt={visualSlots[14].alt} width={visualSlots[14].width} height={visualSlots[14].height} decoding="async" /></button>
+        <button class="bg-pt__tile t-f" data-full={visualSlots[15].full}><img loading="lazy" src={visualSlots[15].src} data-full={visualSlots[15].full} alt={visualSlots[15].alt} width={visualSlots[15].width} height={visualSlots[15].height} decoding="async" /></button>
+        <button class="bg-pt__tile t-g" data-full={visualSlots[16].full}><img loading="lazy" src={visualSlots[16].src} data-full={visualSlots[16].full} alt={visualSlots[16].alt} width={visualSlots[16].width} height={visualSlots[16].height} decoding="async" /></button>
+        <button class="bg-pt__tile t-h" data-full={visualSlots[17].full}><img loading="lazy" src={visualSlots[17].src} data-full={visualSlots[17].full} alt={visualSlots[17].alt} width={visualSlots[17].width} height={visualSlots[17].height} decoding="async" /></button>
       </div>
     </section>
 
