@@ -8,6 +8,10 @@ const publicRoot = path.join(repoRoot, 'apps', 'web', 'public')
 const publicAssetRoot = path.join(publicRoot, 'assets')
 const assetSyncScript = path.join(repoRoot, 'tools', 'sync-public-assets.mjs')
 const routeAuditScript = path.join(repoRoot, 'apps', 'web', 'scripts', 'legacy-route-audit.mjs')
+const removedRouteDirs = [
+  'apps/web/src/pages/componentized',
+  'apps/web/src/pages/legacy-baseline',
+]
 const textExtensions = new Set(['.astro', '.css', '.html', '.js', '.jsx', '.json', '.mjs', '.ts', '.tsx'])
 const failures = []
 const allowedWebRuntimeFsImports = new Map([
@@ -50,6 +54,14 @@ async function assertNoPublicHtml() {
   const files = await collectFiles(publicRoot, (file) => path.extname(file).toLowerCase() === '.html')
   if (files.length === 0) return
   failures.push(`apps/web/public contains HTML files that can shadow Astro routes: ${files.slice(0, 10).map(relative).join(', ')}`)
+}
+
+async function assertNoRemovedRouteDirs() {
+  for (const rel of removedRouteDirs) {
+    if (await exists(path.join(repoRoot, rel))) {
+      failures.push(`${rel} must stay removed; legacy/componentized baselines are served only by QA tooling, not Astro page routes.`)
+    }
+  }
 }
 
 async function assertNoPublicLegacyAssets() {
@@ -143,6 +155,7 @@ async function assertNativeDispatchFailsClosed() {
 }
 
 await assertNoPublicHtml()
+await assertNoRemovedRouteDirs()
 await assertNoPublicLegacyAssets()
 await assertNoProductionLegacyRenderMarkers()
 await assertNoUnexpectedWebRuntimeFsAccess()
@@ -158,5 +171,5 @@ if (failures.length > 0) {
 }
 
 console.log(
-  'Native production guard passed: no public HTML shadows, no public legacy assets, no raw legacy web render path, no unexpected runtime fs access, layout-marker route audit enforced, and native route dispatch fails closed.',
+  'Native production guard passed: no public HTML shadows, no legacy/componentized route dirs, no public legacy assets, no raw legacy web render path, no unexpected runtime fs access, layout-marker route audit enforced, and native route dispatch fails closed.',
 )
