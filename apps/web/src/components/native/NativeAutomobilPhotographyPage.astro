@@ -1,10 +1,58 @@
 ---
-import NativeLegacyLayout from '../../layouts/NativeLegacyLayout.astro'
-import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
+import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
+import PreviewToolbar from '../PreviewToolbar.astro'
+import {
+  localSeoFamilyContent,
+  scopeFromSlug,
+  serviceLabelFromSlug,
+  siblingFamilyLinks,
+} from '../../lib/localSeoFamilyContent'
+import { getLegacyBackedDoc, routeForDoc, type PayloadDoc } from '../../lib/payload'
 
-const legacyFile = 'automobil-fotografie.html'
-const providedDoc = Astro.props.doc as PayloadDoc | undefined
+type PreviewState = {
+  collection: string
+  publishedHref: string
+  slug: string
+  status?: string
+}
+
+type Props = {
+  doc?: PayloadDoc | null
+  legacyFile?: string
+  preview?: PreviewState
+}
+
+const defaultLegacyFile = 'automobil-fotografie.html'
+const { doc: providedDoc = undefined, legacyFile: providedLegacyFile, preview } = Astro.props as Props
+const legacyFile = providedLegacyFile || defaultLegacyFile
 const doc = providedDoc || (await getLegacyBackedDoc(legacyFile, { depth: 2 }))
+const familyContent = localSeoFamilyContent.automobil
+const scope = scopeFromSlug(legacyFile)
+const isParentPage = legacyFile === defaultLegacyFile
+const isKeywordPage = scope.generic
+const serviceLabel = serviceLabelFromSlug(legacyFile, familyContent)
+const localSuffix = !isParentPage && !isKeywordPage ? ` ${scope.label}` : ''
+const heroSecondLine = `Fotografie${localSuffix}.`
+const heroLabel = isParentPage ? 'Automobilfotografie' : `Automobilfotografie${localSuffix}`
+const heroLead = isParentPage
+  ? 'Automobilfotografie: Exterieur, Interieur, Details und Cinematic werden als kuratierte Bildserie geplant â€” fÃ¼r Marke, Showroom, Verkauf, Kampagne und hochwertige private Fahrzeuge. Produktionen werden Ã¼ber Motiv, Nutzung, Reise, Lichtfenster und Output geplant; DÃ¼sseldorf bleibt der organisatorische Ausgangspunkt.'
+  : isKeywordPage
+    ? `${serviceLabel}: eigenstÃ¤ndiger Einstieg in den Automobil Fotografie-Cluster. Exterieur, Interieur, Details und Cinematic werden als kuratierte Serie geplant â€” fÃ¼r Marke, Showroom, Verkauf, Kampagne und hochwertige private Fahrzeuge. Die Seite bleibt bewusst im Layout der Ã¼bergeordneten Kategorie, setzt den Text aber auf diese konkrete Suchintention.`
+    : `Automobilfotografie in ${scope.label}: Exterieur, Interieur, Details und Cinematic werden als kuratierte Bildserie geplant â€” fÃ¼r Marke, Showroom, Verkauf, Kampagne und hochwertige private Fahrzeuge. ${scope.label} wird als lokaler Suchraum mit klarer Planung, passendem Lichtfenster und sauberer Nutzung der Bildserie gefÃ¼hrt.`
+const contactSubject = isParentPage ? 'Automobil Fotografie Anfrage' : `${serviceLabel}${isKeywordPage ? '' : ` ${scope.label}`} Anfrage`
+const contactHeadline = isParentPage
+  ? 'Automobil &lt;em&gt;anfragen.&lt;/em&gt;'
+  : isKeywordPage
+    ? `${serviceLabel} &lt;em&gt;anfragen.&lt;/em&gt;`
+    : `Automobil ${scope.label} &lt;em&gt;anfragen.&lt;/em&gt;`
+const contactLead = isParentPage
+  ? 'Schreibe kurz, welches Fahrzeug fotografiert werden soll, wo es steht, welche Wirkung die Bilder tragen sollen und ob die Serie privat, kommerziell oder als Kampagne genutzt wird. Wir klÃ¤ren Location, Licht und Ablauf gemeinsam vor dem ersten Klick.'
+  : isKeywordPage
+    ? `Schreibe kurz, wofÃ¼r ${serviceLabel} gebraucht wird, welches Motiv im Mittelpunkt steht und welche Nutzung geplant ist. Wir klÃ¤ren Stil, Ort, Umfang und Ausgabe gemeinsam.`
+    : `Schreibe kurz, welches Fahrzeug in ${scope.label} fotografiert werden soll, wo es steht, welche Wirkung die Bilder tragen sollen und ob die Serie privat, kommerziell oder als Kampagne genutzt wird. Wir klÃ¤ren Location, Licht und Ablauf gemeinsam vor dem ersten Klick.`
+const cityHeading = isParentPage ? 'Automobil Fotografie <em>vor Ort.</em>' : `Automobilfotografie <em>vor Ort in ${scope.label}.</em>`
+const clusterLinks = siblingFamilyLinks(scope, 'automobil')
+const publishedHref = preview?.publishedHref || (doc ? routeForDoc('local-seo-pages', doc) : `/${legacyFile}`)
 
 const switchFrames = [
   {
@@ -28,82 +76,91 @@ const switchFrames = [
 const galleryTiles = [
   {
     className: 'bg-t-hero',
-    src: 'assets/optimized/assets-portfolio-dsc3879-1920.webp',
+    src: 'assets/portfolio/thumbs/_DSC3879.webp',
+    full: 'assets/optimized/assets-portfolio-dsc3879-1920.webp',
     alt: 'Ferrari F12 Berlinetta in Düsseldorfer Ausstellungsraum — Automobilfotografie',
-    width: 1920,
-    height: 1280,
+    width: 720,
+    height: 480,
     left: '01 · Showroom',
     right: 'Düsseldorf · 2025',
   },
   {
     className: 'bg-t-a',
-    src: 'assets/portfolio/_DSC9301-Enhanced-NR.webp',
+    src: 'assets/portfolio/thumbs/_DSC9301-Enhanced-NR.webp',
+    full: 'assets/portfolio/_DSC9301-Enhanced-NR.webp',
     alt: 'Sportwagen-Cockpit mit Leder und Carbon — Interieur',
-    width: 2048,
-    height: 2560,
+    width: 720,
+    height: 900,
     left: '02 · Cockpit',
     right: 'Fotograf',
   },
   {
     className: 'bg-t-b',
-    src: 'assets/optimized/assets-portfolio-dsc3892-1920.webp',
+    src: 'assets/portfolio/thumbs/_DSC3892.webp',
+    full: 'assets/optimized/assets-portfolio-dsc3892-1920.webp',
     alt: 'Detail von Lack und Sicke an einem Automobil',
-    width: 1920,
-    height: 1280,
+    width: 720,
+    height: 480,
     left: '03 · Detail',
     right: 'NRW',
   },
   {
     className: 'bg-t-c',
-    src: 'assets/optimized/assets-portfolio-dsc3982-1920.webp',
+    src: 'assets/portfolio/thumbs/_DSC3982.webp',
+    full: 'assets/optimized/assets-portfolio-dsc3982-1920.webp',
     alt: 'Cineastische Automobilaufnahme bei Nacht',
-    width: 1920,
-    height: 1280,
+    width: 720,
+    height: 480,
     left: '04 · Night',
     right: 'Editorial',
   },
   {
     className: 'bg-t-d',
-    src: 'assets/optimized/assets-portfolio-dsc2316-1920.webp',
+    src: 'assets/portfolio/thumbs/_DSC2316.webp',
+    full: 'assets/optimized/assets-portfolio-dsc2316-1920.webp',
     alt: 'Automobil-Detail in Architektur',
-    width: 1920,
-    height: 1200,
+    width: 720,
+    height: 450,
     left: '05 · Lines',
     right: 'Architektur',
   },
   {
     className: 'bg-t-e',
-    src: 'assets/optimized/assets-portfolio-dsc2310-1920.webp',
+    src: 'assets/portfolio/thumbs/_DSC2310.webp',
+    full: 'assets/optimized/assets-portfolio-dsc2310-1920.webp',
     alt: 'Automobil — Showroom-Tiefschwarz',
-    width: 1920,
-    height: 1280,
+    width: 720,
+    height: 480,
     left: '06 · Black',
     right: 'Hall',
   },
   {
     className: 'bg-t-f',
-    src: 'assets/optimized/assets-portfolio-dsc3032-generase-1-1920.webp',
+    src: 'assets/portfolio/thumbs/_DSC3032_genErase (1).webp',
+    full: 'assets/optimized/assets-portfolio-dsc3032-generase-1-1920.webp',
     alt: 'Cineastische Aufnahme — Automobil in Bewegung',
-    width: 1920,
-    height: 1280,
+    width: 720,
+    height: 480,
     left: '07 · Motion',
     right: 'Rheinland',
   },
   {
     className: 'bg-t-g',
-    src: 'assets/optimized/assets-portfolio-dsc6982-1920.webp',
+    src: 'assets/portfolio/thumbs/_DSC6982.webp',
+    full: 'assets/optimized/assets-portfolio-dsc6982-1920.webp',
     alt: 'Automobil — Editorial-Frame im Tageslicht',
-    width: 1707,
-    height: 2560,
+    width: 720,
+    height: 1080,
     left: '08 · Daylight',
     right: 'Editorial',
   },
   {
     className: 'bg-t-h',
-    src: 'assets/optimized/assets-portfolio-dsc8032-1920.webp',
+    src: 'assets/portfolio/thumbs/_DSC8032.webp',
+    full: 'assets/optimized/assets-portfolio-dsc8032-1920.webp',
     alt: 'Automobil — Detail-Komposition',
-    width: 1920,
-    height: 2400,
+    width: 720,
+    height: 900,
     left: '09 · Frame',
     right: 'Fotograf',
   },
@@ -189,9 +246,17 @@ const searchLinks = [
   ['autoverkauf-fotos-duesseldorf.html', 'Autoverkauf Fotos'],
 ]
 ---
-<NativeLegacyLayout legacyFile={legacyFile} current="fotografie" doc={doc}>
+<AdoptedPageLayout legacyFile={legacyFile} current="fotografie" doc={doc} noIndex={Boolean(preview)}>
+  {preview && (
+    <PreviewToolbar
+      collection={preview.collection}
+      slug={preview.slug}
+      status={preview.status}
+      publishedHref={publishedHref}
+    />
+  )}
   <main>
-    <section class="hero-pd" id="top" data-header-theme="dark" aria-label="Automobilfotografie">
+    <section class="hero-pd" id="top" data-header-theme="dark" aria-label={heroLabel}>
       <div class="pd-stage" aria-hidden="true">
         <div class="pd-frame" id="pdFrameA"><div class="pd-frame-inner"></div></div>
         <div class="pd-frame" id="pdFrameB"><div class="pd-frame-inner"></div></div>
@@ -206,9 +271,9 @@ const searchLinks = [
         <div class="pd-bottom">
           <h1 class="pd-title">
             <span class="line"><span class="word">Automobil</span></span>
-            <span class="line"><span class="word">Fotografie.</span></span>
+            <span class="line"><span class="word">{heroSecondLine}</span></span>
           </h1>
-          <p class="pd-sub">Automobilfotografie: Exterieur, Interieur, Details und Cinematic werden als kuratierte Bildserie geplant — für Marke, Showroom, Verkauf, Kampagne und hochwertige private Fahrzeuge. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.</p>
+          <p class="pd-sub">{doc?.intro || heroLead}</p>
           <div class="pd-actions">
             <a href="#anfrage">Shooting buchen →</a>
             <a class="ghost" href="portfolio.html">Portfolio</a>
@@ -295,7 +360,7 @@ const searchLinks = [
 
       <div class="bg-grid" id="bgGrid">
         {galleryTiles.map((tile, index) => (
-          <button type="button" class={`bg-tile ${tile.className}`} data-i={index} aria-label={`Frame ${index + 1} vergrößern`}>
+          <button type="button" class={`bg-tile ${tile.className}`} data-i={index} data-full={tile.full} aria-label={`Frame ${index + 1} vergrößern`}>
             <img loading="lazy" src={tile.src} alt={tile.alt} width={tile.width} height={tile.height} decoding="async" />
             <div class="bg-cap"><span class="l">{tile.left}</span><span class="r">{tile.right}</span></div>
           </button>
@@ -374,4 +439,4 @@ const searchLinks = [
       data-contact-lead="Schreibe kurz, welches Fahrzeug fotografiert werden soll, wo es steht, welche Wirkung die Bilder tragen sollen und ob die Serie privat, kommerziell oder als Kampagne genutzt wird. Wir klären Location, Licht und Ablauf gemeinsam vor dem ersten Klick."
     />
   </main>
-</NativeLegacyLayout>
+</AdoptedPageLayout>

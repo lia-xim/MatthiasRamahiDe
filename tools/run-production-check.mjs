@@ -5,8 +5,6 @@ const webPort = Number(process.env.WEB_PREVIEW_PORT || 4321);
 const webHost = process.env.WEB_PREVIEW_HOST || '127.0.0.1';
 const root = process.cwd();
 
-process.env.ASTRO_ENABLE_LEGACY_BASELINE ||= 'true';
-
 function isPortOpen(port, host = '127.0.0.1') {
   return new Promise((resolve) => {
     const socket = net.createConnection({ host, port });

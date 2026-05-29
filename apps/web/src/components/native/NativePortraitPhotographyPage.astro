@@ -1,5 +1,5 @@
 ---
-import NativeLegacyLayout from '../../layouts/NativeLegacyLayout.astro'
+import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
 
 const legacyFile = 'portraitfotografie.html'
@@ -39,29 +39,29 @@ const searchLinks = [
   ['pressefoto-duesseldorf.html', 'Pressefoto'],
 ] as const
 ---
-<NativeLegacyLayout legacyFile={legacyFile} current="fotografie" doc={doc}>
+<AdoptedPageLayout legacyFile={legacyFile} current="fotografie" doc={doc}>
   <main>
     <section class="hero-pt" id="heroPt" data-header-theme="dark" aria-label="Portraitfotografie">
       <div class="hero-pt__stage" aria-hidden="true">
         <div class="hero-pt__slides">
           <div class="hero-pt__slide" data-i="0">
             <div class="hero-pt__zoom">
-              <img class="hero-pt__image" src="assets/portraits/_DSC0470-Enhanced-NR.webp" alt="" fetchpriority="high" decoding="async" width="1600" height="2560" />
+              <img class="hero-pt__image" src="assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp" srcset="assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp 720w, assets/portraits/_DSC0470-Enhanced-NR.webp 1600w" sizes="100vw" alt="" fetchpriority="high" decoding="async" width="1600" height="2560" />
             </div>
           </div>
           <div class="hero-pt__slide" data-i="1">
             <div class="hero-pt__zoom">
-              <img class="hero-pt__image" src="assets/portraits/_DSC9301-Enhanced-NR.webp" alt="" loading="lazy" decoding="async" width="2048" height="2560" />
+              <img class="hero-pt__image" src="assets/portfolio/thumbs/_DSC9301-Enhanced-NR.webp" srcset="assets/portfolio/thumbs/_DSC9301-Enhanced-NR.webp 720w, assets/portraits/_DSC9301-Enhanced-NR.webp 2048w" sizes="100vw" alt="" loading="lazy" decoding="async" width="2048" height="2560" />
             </div>
           </div>
           <div class="hero-pt__slide" data-i="2">
             <div class="hero-pt__zoom">
-              <img class="hero-pt__image" src="assets/portraits/_DSC9321-Enhanced-NR.webp" alt="" loading="lazy" decoding="async" width="1707" height="2560" />
+              <img class="hero-pt__image" src="assets/portfolio/thumbs/_DSC9321-Enhanced-NR.webp" srcset="assets/portfolio/thumbs/_DSC9321-Enhanced-NR.webp 720w, assets/portraits/_DSC9321-Enhanced-NR.webp 1707w" sizes="100vw" alt="" loading="lazy" decoding="async" width="1707" height="2560" />
             </div>
           </div>
           <div class="hero-pt__slide" data-i="3">
             <div class="hero-pt__zoom">
-              <img class="hero-pt__image" src="assets/optimized/assets-portraits-20250327-dsc01550-1920.webp" alt="" loading="lazy" decoding="async" width="1691" height="2560" />
+              <img class="hero-pt__image" src="assets/portfolio/thumbs/20250327-DSC01550.webp" srcset="assets/portfolio/thumbs/20250327-DSC01550.webp 720w, assets/optimized/assets-portraits-20250327-dsc01550-1920.webp 1691w" sizes="100vw" alt="" loading="lazy" decoding="async" width="1691" height="2560" />
             </div>
           </div>
         </div>
@@ -98,7 +98,7 @@ const searchLinks = [
       </div>
       <div class="mod-pt__grid">
         <article class="mod-pt__card">
-          <div class="mod-pt__img" style="background-image:url('assets/portraits/_DSC0470-Enhanced-NR.webp')"></div>
+          <div class="mod-pt__img" style="background-image:url('assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp')"></div>
           <div class="mod-pt__body">
             <span class="mod-pt__num">01 · Personal Brand</span>
             <h3 class="mod-pt__name">Founder & Speaker</h3>
@@ -106,7 +106,7 @@ const searchLinks = [
           </div>
         </article>
         <article class="mod-pt__card">
-          <div class="mod-pt__img" style="background-image:url('assets/optimized/assets-portraits-dsc3908-1920.webp')"></div>
+          <div class="mod-pt__img" style="background-image:url('assets/portfolio/thumbs/_DSC3908.webp')"></div>
           <div class="mod-pt__body">
             <span class="mod-pt__num">02 · Team</span>
             <h3 class="mod-pt__name">Agentur & Kanzlei</h3>
@@ -114,7 +114,7 @@ const searchLinks = [
           </div>
         </article>
         <article class="mod-pt__card">
-          <div class="mod-pt__img" style="background-image:url('assets/optimized/assets-portraits-20250605-dsc04020-1920.webp')"></div>
+          <div class="mod-pt__img" style="background-image:url('assets/portfolio/thumbs/20250605-DSC04020.webp')"></div>
           <div class="mod-pt__body">
             <span class="mod-pt__num">03 · Editorial</span>
             <h3 class="mod-pt__name">Magazin & Strecke</h3>
@@ -122,7 +122,7 @@ const searchLinks = [
           </div>
         </article>
         <article class="mod-pt__card">
-          <div class="mod-pt__img" style="background-image:url('assets/portraits/_DSC9321-Enhanced-NR.webp')"></div>
+          <div class="mod-pt__img" style="background-image:url('assets/portfolio/thumbs/_DSC9321-Enhanced-NR.webp')"></div>
           <div class="mod-pt__body">
             <span class="mod-pt__num">04 · Presse</span>
             <h3 class="mod-pt__name">Headshot & Profil</h3>
@@ -130,7 +130,7 @@ const searchLinks = [
           </div>
         </article>
         <article class="mod-pt__card">
-          <div class="mod-pt__img" style="background-image:url('assets/optimized/assets-portraits-dsc2986-1920.webp')"></div>
+          <div class="mod-pt__img" style="background-image:url('assets/portfolio/thumbs/_DSC2986.webp')"></div>
           <div class="mod-pt__body">
             <span class="mod-pt__num">05 · Kampagne</span>
             <h3 class="mod-pt__name">Cover & Konzept</h3>
@@ -146,15 +146,15 @@ const searchLinks = [
         <a class="bg-pt__link" href="portfolio.html">Komplettes Portfolio ansehen →</a>
       </div>
       <div class="bg-pt__grid">
-        <button class="bg-pt__tile t-hero" data-full="assets/portraits/_DSC0470-Enhanced-NR.webp"><img data-src="assets/portraits/_DSC0470-Enhanced-NR.webp" alt="Portrait" width="1600" height="2560" decoding="async" loading="lazy" /></button>
-        <button class="bg-pt__tile t-a" data-full="assets/portraits/_DSC9321-Enhanced-NR.webp"><img data-src="assets/portraits/_DSC9321-Enhanced-NR.webp" loading="lazy" alt="Portrait" width="1707" height="2560" decoding="async" /></button>
-        <button class="bg-pt__tile t-b" data-full="assets/optimized/assets-portraits-dsc3908-1920.webp"><img loading="lazy" src="assets/optimized/assets-portraits-dsc3908-1920.webp" alt="Portrait" width="1920" height="1280" decoding="async" /></button>
-        <button class="bg-pt__tile t-c" data-full="assets/optimized/assets-portraits-dsc3878-1920.webp"><img loading="lazy" src="assets/optimized/assets-portraits-dsc3878-1920.webp" alt="Portrait" width="1920" height="1280" decoding="async" /></button>
-        <button class="bg-pt__tile t-d" data-full="assets/optimized/assets-portraits-dsc2986-1920.webp"><img loading="lazy" src="assets/optimized/assets-portraits-dsc2986-1920.webp" alt="Portrait" width="1707" height="2560" decoding="async" /></button>
-        <button class="bg-pt__tile t-e" data-full="assets/optimized/assets-portraits-dsc2744-1920.webp"><img loading="lazy" src="assets/optimized/assets-portraits-dsc2744-1920.webp" alt="Portrait" width="1707" height="2560" decoding="async" /></button>
-        <button class="bg-pt__tile t-f" data-full="assets/optimized/assets-portraits-20250605-dsc04020-1920.webp"><img loading="lazy" src="assets/optimized/assets-portraits-20250605-dsc04020-1920.webp" alt="Portrait" width="1707" height="2560" decoding="async" /></button>
-        <button class="bg-pt__tile t-g" data-full="assets/optimized/assets-portraits-dsc2358-1920.webp"><img loading="lazy" src="assets/optimized/assets-portraits-dsc2358-1920.webp" alt="Portrait" width="1707" height="2560" decoding="async" /></button>
-        <button class="bg-pt__tile t-h" data-full="assets/optimized/assets-portraits-dsc2310-1920.webp"><img loading="lazy" src="assets/optimized/assets-portraits-dsc2310-1920.webp" alt="Portrait" width="1920" height="1280" decoding="async" /></button>
+        <button class="bg-pt__tile t-hero" data-full="assets/portraits/_DSC0470-Enhanced-NR.webp"><img src="assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp" data-full="assets/portraits/_DSC0470-Enhanced-NR.webp" alt="Portrait" width="720" height="1152" decoding="async" loading="lazy" /></button>
+        <button class="bg-pt__tile t-a" data-full="assets/portraits/_DSC9321-Enhanced-NR.webp"><img src="assets/portfolio/thumbs/_DSC9321-Enhanced-NR.webp" data-full="assets/portraits/_DSC9321-Enhanced-NR.webp" loading="lazy" alt="Portrait" width="720" height="1080" decoding="async" /></button>
+        <button class="bg-pt__tile t-b" data-full="assets/optimized/assets-portraits-dsc3908-1920.webp"><img loading="lazy" src="assets/portfolio/thumbs/_DSC3908.webp" data-full="assets/optimized/assets-portraits-dsc3908-1920.webp" alt="Portrait" width="720" height="480" decoding="async" /></button>
+        <button class="bg-pt__tile t-c" data-full="assets/optimized/assets-portraits-dsc3878-1920.webp"><img loading="lazy" src="assets/portfolio/thumbs/_DSC3878.webp" data-full="assets/optimized/assets-portraits-dsc3878-1920.webp" alt="Portrait" width="720" height="480" decoding="async" /></button>
+        <button class="bg-pt__tile t-d" data-full="assets/optimized/assets-portraits-dsc2986-1920.webp"><img loading="lazy" src="assets/portfolio/thumbs/_DSC2986.webp" data-full="assets/optimized/assets-portraits-dsc2986-1920.webp" alt="Portrait" width="720" height="1080" decoding="async" /></button>
+        <button class="bg-pt__tile t-e" data-full="assets/optimized/assets-portraits-dsc2744-1920.webp"><img loading="lazy" src="assets/portfolio/thumbs/_DSC2744.webp" data-full="assets/optimized/assets-portraits-dsc2744-1920.webp" alt="Portrait" width="720" height="1080" decoding="async" /></button>
+        <button class="bg-pt__tile t-f" data-full="assets/optimized/assets-portraits-20250605-dsc04020-1920.webp"><img loading="lazy" src="assets/portfolio/thumbs/20250605-DSC04020.webp" data-full="assets/optimized/assets-portraits-20250605-dsc04020-1920.webp" alt="Portrait" width="720" height="1080" decoding="async" /></button>
+        <button class="bg-pt__tile t-g" data-full="assets/optimized/assets-portraits-dsc2358-1920.webp"><img loading="lazy" src="assets/portfolio/thumbs/_DSC2358.webp" data-full="assets/optimized/assets-portraits-dsc2358-1920.webp" alt="Portrait" width="720" height="1080" decoding="async" /></button>
+        <button class="bg-pt__tile t-h" data-full="assets/optimized/assets-portraits-dsc2310-1920.webp"><img loading="lazy" src="assets/portfolio/thumbs/_DSC2310.webp" data-full="assets/optimized/assets-portraits-dsc2310-1920.webp" alt="Portrait" width="720" height="480" decoding="async" /></button>
       </div>
     </section>
 
@@ -167,35 +167,35 @@ const searchLinks = [
         <ul class="fw-pt__list">
           <li class="fw-pt__row">
             <span class="fw-pt__num">01</span>
-            <div class="fw-pt__thumb" style="background-image:url('assets/portraits/_DSC9301-Enhanced-NR.webp')" role="img" aria-label="Anfrage"></div>
+            <div class="fw-pt__thumb" style="background-image:url('assets/portfolio/thumbs/_DSC9301-Enhanced-NR.webp')" role="img" aria-label="Anfrage"></div>
             <h3 class="fw-pt__name">Anfrage</h3>
             <p class="fw-pt__copy">Kurze Nachricht reicht — Anlass, Person oder Team, gewünschte Wirkung, Zeitraum. Antwort innerhalb von 24 Stunden mit erster Einordnung und nächsten Schritten.</p>
             <span class="fw-pt__arrow" aria-hidden="true">→</span>
           </li>
           <li class="fw-pt__row">
             <span class="fw-pt__num">02</span>
-            <div class="fw-pt__thumb" style="background-image:url('assets/optimized/assets-portfolio-dsc3032-generase-1-1920.webp')" role="img" aria-label="Kennenlernen"></div>
+            <div class="fw-pt__thumb" style="background-image:url('assets/portfolio/thumbs/_DSC3032_genErase (1).webp')" role="img" aria-label="Kennenlernen"></div>
             <h3 class="fw-pt__name">Kennenlernen</h3>
             <p class="fw-pt__copy">Ein lockeres Gespräch — telefonisch oder vor Ort. Wir klären den Kontext, wer die Bilder sehen wird und welche Tonalität dazu passt. Ohne Verkaufsdruck.</p>
             <span class="fw-pt__arrow" aria-hidden="true">→</span>
           </li>
           <li class="fw-pt__row">
             <span class="fw-pt__num">03</span>
-            <div class="fw-pt__thumb" style="background-image:url('assets/optimized/assets-portfolio-20250605-dsc03756-1920.webp')" role="img" aria-label="Konzept"></div>
+            <div class="fw-pt__thumb" style="background-image:url('assets/portfolio/thumbs/20250605-DSC03756.webp')" role="img" aria-label="Konzept"></div>
             <h3 class="fw-pt__name">Konzept &amp; Briefing</h3>
             <p class="fw-pt__copy">Wir sammeln Referenzen, definieren Licht, Hintergrund, Outfit und ein paar Schlüsselbilder. Du bekommst ein klares Mini-Briefing — keine 30-Seiten-Decks.</p>
             <span class="fw-pt__arrow" aria-hidden="true">→</span>
           </li>
           <li class="fw-pt__row">
             <span class="fw-pt__num">04</span>
-            <div class="fw-pt__thumb" style="background-image:url('assets/optimized/assets-portraits-dsc2310-1920.webp')" role="img" aria-label="Shooting"></div>
+            <div class="fw-pt__thumb" style="background-image:url('assets/portfolio/thumbs/_DSC2310.webp')" role="img" aria-label="Shooting"></div>
             <h3 class="fw-pt__name">Shooting</h3>
             <p class="fw-pt__copy">Location in Düsseldorf oder vor Ort. Ruhiges Setup, viel Raum zum Ankommen, klare Regie ohne Pose-Drill. Zwischendurch ein gemeinsamer Blick auf den Monitor.</p>
             <span class="fw-pt__arrow" aria-hidden="true">→</span>
           </li>
           <li class="fw-pt__row">
             <span class="fw-pt__num">05</span>
-            <div class="fw-pt__thumb" style="background-image:url('assets/portraits/_DSC0470-Enhanced-NR.webp')" role="img" aria-label="Auswahl und Lieferung"></div>
+            <div class="fw-pt__thumb" style="background-image:url('assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp')" role="img" aria-label="Auswahl und Lieferung"></div>
             <h3 class="fw-pt__name">Auswahl &amp; Lieferung</h3>
             <p class="fw-pt__copy">Eine kuratierte Vorauswahl als Web-Galerie. Du wählst die finalen Bilder, ich retuschiere zurückhaltend und liefere in den Formaten, die du brauchst — Web, Print, Social.</p>
             <span class="fw-pt__arrow" aria-hidden="true">→</span>
@@ -213,10 +213,10 @@ const searchLinks = [
         <h2 class="rl-pt__title">Verwandte <em>Bereiche.</em></h2>
         <p class="rl-pt__intro">Diese Kategorie ist Teil eines bewusst getrennten Fotografie-Clusters: Fahrzeug, Mensch und Raum bleiben eigenständige Suchintentionen, sind aber intern so verbunden, dass Nutzer schnell in den passenden Bildbereich wechseln können.</p>
         <div class="rl-pt__grid">
-          <a class="rl-pt__card" href="landschaftsfotografie.html"><div class="rl-pt__card-img" style="background-image:url('assets/optimized/assets-portfolio-wettberwerb-foto5-wunder-der-natur2-1920.webp')"></div><div class="rl-pt__card-body"><strong>Landschaft</strong><span>→</span></div></a>
-          <a class="rl-pt__card" href="automobil-fotografie.html"><div class="rl-pt__card-img" style="background-image:url('assets/optimized/assets-photos-automobil-neon-1920.webp')"></div><div class="rl-pt__card-body"><strong>Automobil</strong><span>→</span></div></a>
-          <a class="rl-pt__card" href="videografie-duesseldorf.html"><div class="rl-pt__card-img" style="background-image:url('assets/optimized/assets-portfolio-dsc3032-generase-1-1920.webp')"></div><div class="rl-pt__card-body"><strong>Videografie</strong><span>→</span></div></a>
-          <a class="rl-pt__card" href="portfolio.html"><div class="rl-pt__card-img" style="background-image:url('assets/portraits/_DSC9321-Enhanced-NR.webp')"></div><div class="rl-pt__card-body"><strong>Portfolio</strong><span>→</span></div></a>
+          <a class="rl-pt__card" href="landschaftsfotografie.html"><div class="rl-pt__card-img" style="background-image:url('assets/portfolio/thumbs/Wettberwerb_Foto5_Wunder_der_Natur2.webp')"></div><div class="rl-pt__card-body"><strong>Landschaft</strong><span>→</span></div></a>
+          <a class="rl-pt__card" href="automobil-fotografie.html"><div class="rl-pt__card-img" style="background-image:url('assets/optimized/assets-photos-automobil-neon-960.webp')"></div><div class="rl-pt__card-body"><strong>Automobil</strong><span>→</span></div></a>
+          <a class="rl-pt__card" href="videografie-duesseldorf.html"><div class="rl-pt__card-img" style="background-image:url('assets/portfolio/thumbs/_DSC3032_genErase (1).webp')"></div><div class="rl-pt__card-body"><strong>Videografie</strong><span>→</span></div></a>
+          <a class="rl-pt__card" href="portfolio.html"><div class="rl-pt__card-img" style="background-image:url('assets/portfolio/thumbs/_DSC9321-Enhanced-NR.webp')"></div><div class="rl-pt__card-body"><strong>Portfolio</strong><span>→</span></div></a>
         </div>
       </div>
     </section>
@@ -252,4 +252,4 @@ const searchLinks = [
       data-contact-lead="Schreibe kurz, wofür die Portraits gedacht sind — Personal Branding, Editorial, Team, Presse oder Bewerbung. Wichtig sind Person/Team, gewünschte Wirkung, Ort und Zeitraum. Stil und Licht klären wir vor dem ersten Klick."
     ></section>
   </main>
-</NativeLegacyLayout>
+</AdoptedPageLayout>

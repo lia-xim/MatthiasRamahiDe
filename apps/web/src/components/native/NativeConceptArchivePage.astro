@@ -1,0 +1,502 @@
+---
+import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
+import { getConceptArchivePage } from '../../lib/conceptArchiveContent'
+
+type Props = {
+  legacyFile: string
+}
+
+const { legacyFile } = Astro.props as Props
+const page = getConceptArchivePage(legacyFile)
+
+if (!page) {
+  return new Response('Not found', { status: 404 })
+}
+
+Astro.response.headers.set('x-cms-page-kind', 'concept-archive-native')
+---
+<AdoptedPageLayout
+  legacyFile={legacyFile}
+  current="portfolio"
+  title={page.metaTitle}
+  description={page.description}
+  ogImage={page.ogImage}
+  noIndex={true}
+  headerTheme="dark"
+>
+  <main class={`concept-archive concept-archive--${page.kind}`} data-concept-kind={page.kind}>
+    <section class="concept-hero" data-header-theme="dark">
+      <div class="concept-hero__copy">
+        {page.backHref && <a class="concept-back" href={page.backHref}>Zurueck zu {page.backLabel || 'Konzepte'}</a>}
+        <p class="concept-eyebrow">{page.eyebrow}</p>
+        <h1>{page.heroTitle}</h1>
+        <p>{page.heroBody}</p>
+      </div>
+
+      {page.kind === 'archive' && (
+        <div class="archive-field" aria-hidden="true">
+          <span class="archive-field__plate archive-field__plate--one">SERIE / COASTAL MEMORY</span>
+          <span class="archive-field__plate archive-field__plate--two">CONTACT / 07-12</span>
+          <span class="archive-field__plate archive-field__plate--three">DETAIL / HANDS</span>
+        </div>
+      )}
+
+      {page.kind === 'stage' && page.scenes && (
+        <div class="stage-panel" data-stage-panel>
+          <div class="stage-tabs" aria-label="Szenen">
+            {page.scenes.map((scene, index) => (
+              <button class={index === 0 ? 'is-active' : ''} type="button" data-scene-index={String(index)}>
+                {scene.label}
+              </button>
+            ))}
+          </div>
+          <div class="stage-scenes">
+            {page.scenes.map((scene, index) => (
+              <article class={index === 0 ? 'is-active' : ''} data-scene>
+                <p>{scene.label}</p>
+                <h2>{scene.title}</h2>
+                <span>{scene.body}</span>
+              </article>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {page.kind === 'lens' && (
+        <div class="lens-panel">
+          <div class="lens-panel__optic" id="concept-optic" aria-hidden="true">
+            <i></i><i></i><i></i>
+            <span id="concept-readout">FOCAL 46 / EXPOSURE 62</span>
+          </div>
+          <div class="lens-panel__controls" aria-label="Optische Demo">
+            <label for="concept-focus">Fokuswechsel</label>
+            <input id="concept-focus" type="range" min="0" max="100" value="46" />
+            <label for="concept-exposure">Belichtungsaufbau</label>
+            <input id="concept-exposure" type="range" min="0" max="100" value="62" />
+          </div>
+        </div>
+      )}
+    </section>
+
+    {page.cards && (
+      <section class="concept-cards" data-header-theme="dark" aria-label="Konzeptvarianten">
+        {page.cards.map((card) => (
+          <a class={`concept-card concept-card--${card.variant}`} href={card.href}>
+            <span>{card.label}</span>
+            <h2>{card.title}</h2>
+            <p>{card.body}</p>
+            <strong>Experience oeffnen</strong>
+          </a>
+        ))}
+      </section>
+    )}
+
+    {page.panels && (
+      <section class="concept-panels" data-header-theme="light" aria-label="Konzeptdetails">
+        {page.panels.map((panel) => (
+          <article>
+            <p>{panel.label}</p>
+            <h2>{panel.title}</h2>
+            <span>{panel.body}</span>
+          </article>
+        ))}
+      </section>
+    )}
+  </main>
+</AdoptedPageLayout>
+
+<style>
+  .concept-archive {
+    --concept-bg: #050506;
+    --concept-paper: #f1eee7;
+    --concept-line: rgba(255, 255, 255, .16);
+    background: var(--concept-bg);
+    color: var(--concept-paper);
+    min-height: 100vh;
+  }
+
+  .concept-hero {
+    min-height: min(860px, 92vh);
+    display: grid;
+    grid-template-columns: minmax(0, .9fr) minmax(320px, 1.1fr);
+    gap: clamp(28px, 5vw, 88px);
+    align-items: center;
+    padding: clamp(132px, 15vw, 210px) clamp(22px, 6vw, 92px) clamp(72px, 9vw, 130px);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .concept-hero::before {
+    content: "";
+    position: absolute;
+    inset: -20%;
+    background:
+      radial-gradient(circle at 70% 28%, rgba(174, 35, 35, .24), transparent 28%),
+      radial-gradient(circle at 22% 72%, rgba(218, 177, 108, .18), transparent 34%);
+    opacity: .78;
+    pointer-events: none;
+  }
+
+  .concept-hero__copy,
+  .archive-field,
+  .stage-panel,
+  .lens-panel {
+    position: relative;
+    z-index: 1;
+  }
+
+  .concept-hero__copy {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .concept-back,
+  .concept-eyebrow,
+  .concept-card span,
+  .concept-panels article > p,
+  .stage-tabs button,
+  .stage-scenes p {
+    font: 11px var(--mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+    text-transform: uppercase;
+    letter-spacing: 0;
+  }
+
+  .concept-back {
+    color: rgba(241, 238, 231, .72);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    min-width: 44px;
+    min-height: 44px;
+    margin-bottom: 38px;
+    border-bottom: 1px solid currentColor;
+  }
+
+  .concept-eyebrow {
+    color: #d94038;
+    margin: 0 0 18px;
+  }
+
+  .concept-hero h1 {
+    max-width: 12ch;
+    margin: 0;
+    font-family: var(--serif, Georgia, serif);
+    font-size: clamp(54px, 9vw, 148px);
+    font-weight: 600;
+    line-height: .9;
+  }
+
+  .concept-hero__copy > p:last-child {
+    max-width: 42rem;
+    margin: 30px 0 0;
+    color: rgba(241, 238, 231, .76);
+    font-size: clamp(17px, 1.45vw, 22px);
+    line-height: 1.55;
+  }
+
+  .concept-cards,
+  .concept-panels {
+    position: relative;
+    z-index: 1;
+    padding: clamp(56px, 8vw, 110px) clamp(22px, 6vw, 92px);
+  }
+
+  .concept-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
+    background: #141313;
+  }
+
+  .concept-card {
+    min-height: clamp(300px, 32vw, 460px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 18px;
+    padding: clamp(28px, 4vw, 54px);
+    color: #f6f1e8;
+    text-decoration: none;
+    background:
+      linear-gradient(160deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .02)),
+      #080808;
+    border: 1px solid rgba(255, 255, 255, .08);
+    transition: transform .28s ease, background .28s ease;
+  }
+
+  .concept-card:hover {
+    transform: translateY(-6px);
+    background:
+      linear-gradient(160deg, rgba(217, 64, 56, .24), rgba(255, 255, 255, .03)),
+      #080808;
+  }
+
+  .concept-card h2,
+  .concept-panels h2,
+  .stage-scenes h2 {
+    margin: 0;
+    font-family: var(--serif, Georgia, serif);
+    font-size: clamp(28px, 3vw, 48px);
+    line-height: 1;
+  }
+
+  .concept-card p,
+  .concept-panels span,
+  .stage-scenes span {
+    color: rgba(246, 241, 232, .72);
+    line-height: 1.6;
+  }
+
+  .concept-card strong {
+    font-size: 14px;
+    color: #f6f1e8;
+  }
+
+  .concept-panels {
+    background: var(--concept-paper);
+    color: #15130f;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1px;
+  }
+
+  .concept-panels article {
+    background: rgba(255, 255, 255, .56);
+    border: 1px solid rgba(12, 11, 9, .12);
+    padding: clamp(28px, 5vw, 70px);
+  }
+
+  .concept-panels article > p {
+    color: #b52c28;
+  }
+
+  .concept-panels span {
+    color: rgba(21, 19, 15, .68);
+    display: block;
+    margin-top: 18px;
+  }
+
+  .archive-field {
+    min-height: clamp(420px, 54vw, 700px);
+  }
+
+  .archive-field__plate {
+    position: absolute;
+    display: grid;
+    place-items: end start;
+    padding: 18px;
+    color: rgba(255, 255, 255, .72);
+    border: 1px solid rgba(255, 255, 255, .16);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .02)),
+      url('/assets/optimized/assets-photos-automobil-sunset-960.webp') center/cover;
+    box-shadow: 0 40px 80px rgba(0, 0, 0, .42);
+  }
+
+  .archive-field__plate--one {
+    width: 46%;
+    height: 60%;
+    left: 4%;
+    top: 10%;
+  }
+
+  .archive-field__plate--two {
+    width: 34%;
+    height: 48%;
+    right: 8%;
+    top: 2%;
+    background-image:
+      linear-gradient(180deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .02)),
+      url('/assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp');
+  }
+
+  .archive-field__plate--three {
+    width: 42%;
+    height: 42%;
+    right: 2%;
+    bottom: 8%;
+    background-image:
+      linear-gradient(180deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .02)),
+      url('/assets/optimized/assets-photos-oldtimer-stage-960.webp');
+  }
+
+  .stage-panel,
+  .lens-panel {
+    border: 1px solid var(--concept-line);
+    background: rgba(255, 255, 255, .04);
+    padding: clamp(22px, 3vw, 42px);
+  }
+
+  .stage-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 32px;
+  }
+
+  .stage-tabs button {
+    min-width: 44px;
+    min-height: 44px;
+    border: 1px solid rgba(255, 255, 255, .16);
+    color: rgba(255, 255, 255, .72);
+    background: transparent;
+    padding: 0 16px;
+    cursor: pointer;
+  }
+
+  .stage-tabs button.is-active {
+    color: #fff;
+    background: #b52c28;
+    border-color: #b52c28;
+  }
+
+  .stage-scenes article {
+    display: none;
+    min-height: 360px;
+    align-content: end;
+    background:
+      linear-gradient(180deg, transparent, rgba(0, 0, 0, .62)),
+      url('/assets/optimized/assets-photos-automobil-neon-960.webp') center/cover;
+    padding: clamp(24px, 4vw, 54px);
+  }
+
+  .stage-scenes article.is-active {
+    display: grid;
+  }
+
+  .stage-scenes p {
+    color: #d94038;
+  }
+
+  .lens-panel {
+    display: grid;
+    gap: 28px;
+  }
+
+  .lens-panel__optic {
+    min-height: clamp(300px, 40vw, 520px);
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, .18);
+    background:
+      radial-gradient(circle, transparent 0 32%, rgba(0, 0, 0, .68) 33% 34%, transparent 35%),
+      url('/assets/optimized/assets-photos-automobil-sunset-960.webp') center/cover;
+    transition: filter .2s ease, transform .2s ease;
+  }
+
+  .lens-panel__optic i {
+    position: absolute;
+    inset: 14%;
+    border: 1px solid rgba(255, 255, 255, .16);
+    border-radius: 50%;
+  }
+
+  .lens-panel__optic i:nth-child(2) {
+    inset: 28%;
+  }
+
+  .lens-panel__optic i:nth-child(3) {
+    inset: 42%;
+  }
+
+  .lens-panel__optic span {
+    position: absolute;
+    left: 26px;
+    bottom: 26px;
+    font: 12px var(--mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+    color: rgba(255, 255, 255, .78);
+  }
+
+  .lens-panel__controls {
+    display: grid;
+    grid-template-columns: max-content minmax(160px, 1fr);
+    gap: 14px 18px;
+    align-items: center;
+  }
+
+  .lens-panel__controls label {
+    font-size: 14px;
+    color: rgba(255, 255, 255, .72);
+  }
+
+  .lens-panel__controls input[type="range"] {
+    min-height: 44px;
+  }
+
+  @media (max-width: 900px) {
+    .concept-hero,
+    .concept-cards,
+    .concept-panels {
+      grid-template-columns: 1fr;
+    }
+
+    .concept-hero {
+      min-height: auto;
+      padding-top: 126px;
+    }
+
+    .archive-field {
+      min-height: 520px;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .concept-archive {
+      padding-bottom: 112px;
+    }
+
+    .concept-hero {
+      padding-inline: 18px;
+    }
+
+    .concept-hero h1 {
+      max-width: 100%;
+      font-size: clamp(42px, 12.4vw, 58px);
+      line-height: .96;
+      overflow-wrap: anywhere;
+    }
+
+    .concept-card {
+      min-height: 260px;
+      padding-bottom: 112px;
+    }
+
+    .lens-panel__controls {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+{page.kind === 'stage' && (
+  <script is:inline>
+    document.querySelectorAll('[data-stage-panel]').forEach((panel) => {
+      const buttons = Array.from(panel.querySelectorAll('[data-scene-index]'))
+      const scenes = Array.from(panel.querySelectorAll('[data-scene]'))
+      buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const activeIndex = Number(button.getAttribute('data-scene-index') || '0')
+          buttons.forEach((item, index) => item.classList.toggle('is-active', index === activeIndex))
+          scenes.forEach((item, index) => item.classList.toggle('is-active', index === activeIndex))
+        })
+      })
+    })
+  </script>
+)}
+
+{page.kind === 'lens' && (
+  <script is:inline>
+    const conceptOptic = document.getElementById('concept-optic')
+    const conceptFocus = document.getElementById('concept-focus')
+    const conceptExposure = document.getElementById('concept-exposure')
+    const conceptReadout = document.getElementById('concept-readout')
+    function paintConceptLens() {
+      if (!conceptOptic || !conceptFocus || !conceptExposure || !conceptReadout) return
+      conceptOptic.style.filter = `blur(${(100 - Number(conceptFocus.value)) / 80}px) contrast(${1 + Number(conceptExposure.value) / 180})`
+      conceptOptic.style.transform = `rotate(${(Number(conceptFocus.value) - 50) / 18}deg)`
+      conceptReadout.textContent = `FOCAL ${conceptFocus.value} / EXPOSURE ${conceptExposure.value}`
+    }
+    ;[conceptFocus, conceptExposure].forEach((control) => control?.addEventListener('input', paintConceptLens))
+    paintConceptLens()
+  </script>
+)}

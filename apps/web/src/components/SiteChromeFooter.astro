@@ -1,6 +1,6 @@
 ---
-import legacyContent, { type LegacyFooterColumn } from '../../data/legacyContent'
-import { getFooter, linkAttributes, toRootRelativeHref } from '../../lib/payload'
+import legacyContent, { type LegacyFooterColumn } from '../data/legacyContent'
+import { getFooter, linkAttributes, toRootRelativeHref } from '../lib/payload'
 
 const { brand, footer: fallbackFooter } = legacyContent
 const cmsFooter = await getFooter()

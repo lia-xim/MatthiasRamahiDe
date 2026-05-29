@@ -1,10 +1,9 @@
 ---
-import PreviewToolbar from '../PreviewToolbar.astro'
-import NativeLegacyLayout from '../../layouts/NativeLegacyLayout.astro'
-import { getLegacyFileForPath } from '../../lib/legacy'
-import { getComponentizedLegacyParts } from '../../lib/legacyParts'
-import { localSeoLayoutFamilyForDoc, localSeoLayoutFamilyForSlug, localSeoParentLegacyFiles } from '../../lib/localSeoLayoutFamilies'
-import { routeForDoc, type PayloadDoc } from '../../lib/payload'
+import NativeLocalSeoFamilyStructuredPage from './NativeLocalSeoFamilyStructuredPage.astro'
+import { getNativeHtmlFileForPath } from '../../lib/adoptedRoutes'
+import { localSeoFamilyContent } from '../../lib/localSeoFamilyContent'
+import { localSeoLayoutFamilyForDoc, localSeoLayoutFamilyForSlug } from '../../lib/localSeoLayoutFamilies'
+import type { PayloadDoc } from '../../lib/payload'
 
 type PreviewState = {
   collection: string
@@ -25,7 +24,7 @@ function legacyCandidate(value?: string | null) {
   if (!value) return null
   const pathname = value.replace(/^https?:\/\/[^/]+/i, '')
   const clean = pathname.startsWith('/') ? pathname : `/${pathname}`
-  return getLegacyFileForPath(clean)
+  return getNativeHtmlFileForPath(clean)
 }
 
 const localLegacyFile =
@@ -39,32 +38,24 @@ const family =
   localSeoLayoutFamilyForSlug(localLegacyFile) ||
   localSeoLayoutFamilyForDoc(doc)
 
-const parentLegacyFile = family ? localSeoParentLegacyFiles[family] : null
-const shouldRenderFamilyLayout = Boolean(localLegacyFile && family && parentLegacyFile)
-const legacyParts = shouldRenderFamilyLayout ? await getComponentizedLegacyParts(localLegacyFile as string) : null
+const familyContent = family ? localSeoFamilyContent[family] : null
+const shouldRenderFamilyLayout = Boolean(localLegacyFile && familyContent)
 const fallbackDoc = !shouldRenderFamilyLayout && doc ? doc : null
 const FallbackLocalSeoPage = fallbackDoc ? (await import('./NativeLocalSeoPage.astro')).default : null
-const publishedHref = preview?.publishedHref || (doc ? routeForDoc('local-seo-pages', doc) : localLegacyFile ? `/${localLegacyFile}` : '/')
 
 if (shouldRenderFamilyLayout) {
-  Astro.response.headers.set('x-cms-render-source', 'local-seo-family-layout')
-  Astro.response.headers.set('x-cms-layout-family', family as string)
-  Astro.response.headers.set('x-cms-layout-parent', parentLegacyFile as string)
+  Astro.response.headers.set('x-cms-render-source', 'structured-local-seo-family')
+  Astro.response.headers.set('x-cms-layout-family', familyContent!.family)
+  Astro.response.headers.set('x-cms-layout-parent', familyContent!.parentLegacyFile)
 }
 ---
-{shouldRenderFamilyLayout && legacyParts ? (
-  <NativeLegacyLayout legacyFile={localLegacyFile as string} current="fotografie" doc={doc} noIndex={Boolean(preview)}>
-    <Fragment set:html={`<!-- cms-local-seo-family:${family}; parent:${parentLegacyFile}; source:${localLegacyFile} -->`} />
-    {preview && (
-      <PreviewToolbar
-        collection={preview.collection}
-        slug={preview.slug}
-        status={preview.status}
-        publishedHref={publishedHref}
-      />
-    )}
-    <Fragment set:html={legacyParts.pageContent} />
-  </NativeLegacyLayout>
+{shouldRenderFamilyLayout && familyContent ? (
+  <NativeLocalSeoFamilyStructuredPage
+    doc={doc}
+    familyContent={familyContent}
+    legacyFile={localLegacyFile as string}
+    preview={preview}
+  />
 ) : FallbackLocalSeoPage && fallbackDoc ? (
   <FallbackLocalSeoPage doc={fallbackDoc} preview={preview} />
 ) : null}

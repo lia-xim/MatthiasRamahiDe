@@ -616,6 +616,7 @@
   const lbClose = document.getElementById('lbClose');
   const lbPrev = document.getElementById('lbPrev');
   const lbNext = document.getElementById('lbNext');
+  if (!lb || !lbImg || !lbCounter || !lbClose || !lbPrev || !lbNext || !marquee) return;
   let cur = 0;
 
   function setImg(i){
@@ -642,7 +643,7 @@
     lbImg.classList.remove('show');
   }
 
-  document.querySelector('.pf-marquee').addEventListener('click', (e) => {
+  marquee.addEventListener('click', (e) => {
     const tile = e.target.closest('.pf-tile');
     if(!tile) return;
     e.preventDefault();

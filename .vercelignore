@@ -19,6 +19,7 @@ apps/cms/payload-dev.db*
 apps/web/dist/
 apps/web/.vercel/
 apps/web/.visual-regression/
+apps/web/.site-quality/
 apps/web/.contact-queue/
 
 *.log

@@ -30,3 +30,21 @@
     transition-duration: 0.001ms !important;
   }
 }
+
+/* Accessibility floor for archived concept pages that keep their own tiny controls. */
+.back,
+.contact,
+.contactstrip a {
+  align-items: center;
+  display: inline-flex;
+  min-height: 44px;
+}
+
+.controls input[type="range"] {
+  min-height: 44px;
+}
+
+.acts button {
+  min-width: 44px;
+  min-height: 44px;
+}

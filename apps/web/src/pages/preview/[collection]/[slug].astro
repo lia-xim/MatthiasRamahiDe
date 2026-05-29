@@ -2,7 +2,6 @@
 import CmsRoutedPage from '../../../components/cms/CmsRoutedPage.astro'
 import NativeJournalPostPage from '../../../components/cms/NativeJournalPostPage.astro'
 import NativeLocalSeoFamilyPage from '../../../components/cms/NativeLocalSeoFamilyPage.astro'
-import LegacyPageShell from '../../../components/legacy/LegacyPageShell.astro'
 import { getBySlug, routeForDoc } from '../../../lib/payload'
 
 export const prerender = false
@@ -24,16 +23,9 @@ if (!doc) {
 }
 
 const publishedHref = routeForDoc(collection, doc)
-const hasLegacyPreview = Boolean(doc.legacy?.renderedBodyHtml && doc.legacy?.sourceFile)
 ---
 {collection === 'local-seo-pages' ? (
   <NativeLocalSeoFamilyPage doc={doc} preview={{ collection, slug, status: doc._status, publishedHref }} />
-) : hasLegacyPreview ? (
-  <LegacyPageShell
-    legacyFile={doc.legacy?.sourceFile}
-    docOverride={doc}
-    preview={{ collection, slug, status: doc._status, publishedHref }}
-  />
 ) : (
   collection === 'journal-posts' ? (
     <NativeJournalPostPage doc={doc} preview={{ collection, slug, status: doc._status, publishedHref }} />

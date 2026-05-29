@@ -1,12 +1,34 @@
 import fs from 'node:fs/promises'
+import fsSync from 'node:fs'
+import http from 'node:http'
 import path from 'node:path'
 
 import { chromium } from 'playwright'
 
 const repoRoot = path.resolve(process.cwd(), '../..')
-const baseUrl = (process.env.LEGACY_AUDIT_BASE_URL || 'http://localhost:4321').replace(/\/$/, '')
+const targetRoot = path.resolve(repoRoot, process.env.LEGACY_AUDIT_TARGET || 'apps/web/dist/client')
+const providedBaseUrl = process.env.LEGACY_AUDIT_BASE_URL?.replace(/\/$/, '')
 const limit = Number(process.env.LEGACY_AUDIT_LIMIT || '0')
 const outputPath = path.resolve(process.cwd(), '.visual-regression', 'legacy-route-audit.json')
+const contentTypes = new Map([
+  ['.avif', 'image/avif'],
+  ['.css', 'text/css; charset=utf-8'],
+  ['.gif', 'image/gif'],
+  ['.html', 'text/html; charset=utf-8'],
+  ['.ico', 'image/x-icon'],
+  ['.jpeg', 'image/jpeg'],
+  ['.jpg', 'image/jpeg'],
+  ['.js', 'text/javascript; charset=utf-8'],
+  ['.json', 'application/json; charset=utf-8'],
+  ['.mp4', 'video/mp4'],
+  ['.png', 'image/png'],
+  ['.svg', 'image/svg+xml; charset=utf-8'],
+  ['.txt', 'text/plain; charset=utf-8'],
+  ['.webmanifest', 'application/manifest+json; charset=utf-8'],
+  ['.webm', 'video/webm'],
+  ['.webp', 'image/webp'],
+  ['.xml', 'application/xml; charset=utf-8'],
+])
 
 const files = (await fs.readdir(repoRoot))
   .filter((file) => file.endsWith('.html'))
@@ -16,6 +38,84 @@ const selectedFiles = limit > 0 ? files.slice(0, limit) : files
 const browser = await chromium.launch()
 const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } })
 const results = []
+
+function safeDecode(value) {
+  try {
+    return decodeURIComponent(value)
+  } catch {
+    return value
+  }
+}
+
+function candidateInsideTarget(candidate) {
+  const resolved = path.resolve(targetRoot, candidate)
+  if (resolved === targetRoot || resolved.startsWith(`${targetRoot}${path.sep}`)) return resolved
+  return ''
+}
+
+function staticFileCandidates(pathname) {
+  const decoded = safeDecode(pathname.split('?')[0].split('#')[0])
+  if (decoded.includes('\0')) return []
+  const clean = decoded.replace(/^\/+/, '')
+  if (clean.split(/[\\/]+/).includes('..')) return []
+  if (!clean) return [path.join(targetRoot, 'index.html')]
+
+  const candidates = []
+  const add = (candidate) => {
+    const resolved = candidateInsideTarget(candidate)
+    if (resolved) candidates.push(resolved)
+  }
+
+  add(clean)
+  if (path.extname(clean) === '.html') add(path.join(clean, 'index.html'))
+  if (!path.extname(clean)) {
+    add(path.join(clean, 'index.html'))
+    add(`${clean}.html`)
+    add(path.join(`${clean}.html`, 'index.html'))
+  }
+  if (clean.endsWith('/')) add(path.join(clean, 'index.html'))
+  return candidates
+}
+
+function findStaticFile(pathname) {
+  return staticFileCandidates(pathname).find((candidate) => fsSync.existsSync(candidate) && fsSync.statSync(candidate).isFile()) || ''
+}
+
+function startStaticServer() {
+  const server = http.createServer(async (request, response) => {
+    const requestUrl = new URL(request.url || '/', 'http://127.0.0.1')
+    const file = findStaticFile(requestUrl.pathname)
+
+    if (!file) {
+      response.writeHead(404, { 'content-type': 'text/plain; charset=utf-8' })
+      response.end('Not found')
+      return
+    }
+
+    try {
+      const body = await fs.readFile(file)
+      response.writeHead(200, {
+        'cache-control': 'no-store',
+        'content-length': String(body.length),
+        'content-type': contentTypes.get(path.extname(file).toLowerCase()) || 'application/octet-stream',
+      })
+      response.end(body)
+    } catch (error) {
+      response.writeHead(500, { 'content-type': 'text/plain; charset=utf-8' })
+      response.end(error instanceof Error ? error.message : 'Server error')
+    }
+  })
+
+  return new Promise((resolve) => {
+    server.listen(0, '127.0.0.1', () => {
+      const address = server.address()
+      resolve({
+        baseUrl: `http://127.0.0.1:${address.port}`,
+        close: () => new Promise((done) => server.close(done)),
+      })
+    })
+  })
+}
 
 function isNavigationRace(error) {
   const message = error instanceof Error ? error.message : String(error)
@@ -75,10 +175,14 @@ async function evaluateWithNavigationRetry(fn) {
   }
 }
 
+const server = providedBaseUrl
+  ? { baseUrl: providedBaseUrl, close: async () => undefined }
+  : await startStaticServer()
+
 try {
   for (const file of selectedFiles) {
     const pathname = file === 'index.html' ? '/' : `/${file}`
-    const url = `${baseUrl}${pathname}`
+    const url = `${server.baseUrl}${pathname}`
     const response = await page.goto(url, { waitUntil: 'load', timeout: 30000 })
     await settleImages()
 
@@ -114,6 +218,7 @@ try {
   }
 } finally {
   await browser.close()
+  await server.close()
 }
 
 await fs.mkdir(path.dirname(outputPath), { recursive: true })

@@ -1,0 +1,157 @@
+---
+import fs from 'node:fs/promises'
+import path from 'node:path'
+
+import SiteChromeFooter from '../components/SiteChromeFooter.astro'
+import SiteChromeHeader from '../components/SiteChromeHeader.astro'
+import { getAdoptedPageChrome, mergeAssetLists } from '../lib/adoptedPageChrome'
+import { imageDimensions, imageUrl, getSiteSettings, toAbsoluteSiteUrl, type PayloadDoc, type PayloadMedia } from '../lib/payload'
+import { localBusinessJsonLd, personJsonLd, webSiteJsonLd, type JsonLd } from '../lib/seo'
+
+type Props = {
+  bodyClass?: string
+  canonicalUrl?: string
+  ctaHref?: string
+  current?: string
+  description?: string
+  doc?: PayloadDoc | null
+  headerTheme?: string
+  jsonLd?: JsonLd | JsonLd[]
+  legacyFile: string
+  noIndex?: boolean
+  ogImage?: PayloadMedia | string
+  ogType?: string
+  preloadImages?: string[]
+  scripts?: string[]
+  stylesheets?: string[]
+  title?: string
+}
+
+const {
+  bodyClass: providedBodyClass,
+  canonicalUrl,
+  ctaHref,
+  current: providedCurrent,
+  description: providedDescription,
+  doc = null,
+  headerTheme: providedHeaderTheme,
+  jsonLd,
+  legacyFile,
+  noIndex = false,
+  ogImage,
+  ogType = 'website',
+  preloadImages = [],
+  scripts = [],
+  stylesheets = [],
+  title: providedTitle,
+} = Astro.props as Props
+
+const settings = await getSiteSettings()
+const chrome = getAdoptedPageChrome(legacyFile)
+const fallbackPath = legacyFile === 'index.html' ? '/' : `/${legacyFile.replace(/^\/+/, '')}`
+const docCanonical = doc?.seo?.canonicalUrl || doc?.seo?.legacyUrl || doc?.legacy?.sourceUrl
+const title = providedTitle || doc?.seo?.title || doc?.title || chrome.title || settings?.defaultMetaTitle || 'Matthias Ramahi Fotografie'
+const description =
+  providedDescription ||
+  doc?.seo?.description ||
+  doc?.excerpt ||
+  doc?.intro ||
+  chrome.description ||
+  settings?.defaultMetaDescription ||
+  'Portfolio, Fotografie und visuelle Produktion in Düsseldorf / NRW.'
+const canonical = toAbsoluteSiteUrl(canonicalUrl || docCanonical || fallbackPath)
+const socialImageSource = ogImage || doc?.seo?.ogImage || doc?.coverImage || doc?.heroImage || doc?.teaserImage || chrome.ogImage || settings?.defaultOgImage
+const socialImage = typeof socialImageSource === 'string'
+  ? toAbsoluteSiteUrl(socialImageSource)
+  : imageUrl(socialImageSource as PayloadMedia | undefined, 'hero')
+const socialImageDimensions = typeof socialImageSource === 'string' ? {} : imageDimensions(socialImageSource as PayloadMedia | undefined, 'hero')
+const robots = noIndex || doc?.seo?.noIndex ? 'noindex,nofollow' : 'index,follow,max-image-preview:large,max-snippet:-1'
+const bodyClass = providedBodyClass || doc?.legacy?.bodyClass || chrome.bodyClass || 'has-mr-footer'
+const current = providedCurrent || doc?.legacy?.headerCurrent || chrome.current
+const headerTheme = providedHeaderTheme || chrome.headerTheme
+const allStylesheets = mergeAssetLists(chrome.stylesheets, stylesheets)
+const allPreloadImages = mergeAssetLists(chrome.preloadImages, preloadImages)
+const allScripts = mergeAssetLists(chrome.scripts, scripts)
+const siteName = settings?.siteName || 'Matthias Ramahi Fotografie'
+const jsonLdItems = [
+  personJsonLd(settings),
+  webSiteJsonLd(settings),
+  localBusinessJsonLd(settings),
+  ...(Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : []),
+].filter(Boolean)
+const criticalCss = chrome.inlineCriticalCss ? minifyCriticalCss(await readPublicAsset(chrome.inlineCriticalCss)) : ''
+
+Astro.response.headers.set('x-cms-render-source', 'structured-astro')
+Astro.response.headers.set('x-cms-migration-status', 'native-component')
+Astro.response.headers.set('x-cms-layout-source', 'native-adopted-chrome')
+
+function minifyCriticalCss(css: string) {
+  return css
+    .replace(/\/\*[\s\S]*?\*\//g, '')
+    .replace(/\s+/g, ' ')
+    .replace(/\s*([{}:;,>])\s*/g, '$1')
+    .replace(/;}/g, '}')
+    .trim()
+}
+
+async function readPublicAsset(href: string) {
+  const cleanHref = href.replace(/^\/+/, '').split('?')[0]
+  if (!cleanHref.startsWith('assets/') || !cleanHref.endsWith('.css')) return ''
+
+  const publicPath = path.join(process.cwd(), 'public', cleanHref)
+  const workspacePath = path.resolve(process.cwd(), '..', '..', cleanHref)
+  try {
+    return await fs.readFile(publicPath, 'utf8')
+  } catch {
+    try {
+      return await fs.readFile(workspacePath, 'utf8')
+    } catch {
+      return ''
+    }
+  }
+}
+---
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={settings?.ownerName || 'Matthias Ramahi'} />
+    <meta name="robots" content={robots} />
+    <meta name="theme-color" content="#020306" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32" />
+    <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content={settings?.locale || 'de_DE'} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    {socialImage && <meta property="og:image" content={socialImage} />}
+    {socialImage && <meta property="og:image:alt" content={title} />}
+    {socialImage && socialImageDimensions.width && <meta property="og:image:width" content={String(socialImageDimensions.width)} />}
+    {socialImage && socialImageDimensions.height && <meta property="og:image:height" content={String(socialImageDimensions.height)} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {socialImage && <meta name="twitter:image" content={socialImage} />}
+    {criticalCss && <style data-critical="home" set:html={criticalCss} />}
+    {allPreloadImages.map((href) => <link rel="preload" as="image" href={href} fetchpriority="high" />)}
+    {allStylesheets.map((href) => <link rel="stylesheet" href={href} />)}
+    {jsonLdItems.map((item) => <script is:inline type="application/ld+json" set:html={JSON.stringify(item)} />)}
+  </head>
+  <body class={bodyClass} data-cms-layout-source="native-adopted-chrome">
+    <SiteChromeHeader current={current} ctaHref={ctaHref} headerTheme={headerTheme} />
+    <slot />
+    <SiteChromeFooter />
+    {allScripts.map((src) => <script is:inline src={src}></script>)}
+  </body>
+</html>

@@ -1,4 +1,4 @@
-:root {
+body[data-cms-layout-source="base-layout"] {
   --bg: oklch(14% 0.012 255);
   --surface: oklch(18% 0.014 255);
   --fg: oklch(96% 0.012 110);
@@ -18,13 +18,17 @@
   --ease: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-* { box-sizing: border-box; }
-html { background: var(--bg); color: var(--fg); font-family: var(--font-body); scroll-behavior: smooth; }
-body { margin: 0; min-height: 100svh; background: var(--bg); color: var(--fg); -webkit-font-smoothing: antialiased; }
-a { color: inherit; text-decoration: none; }
-img { display: block; max-width: 100%; height: auto; }
-button, input, textarea, select { font: inherit; }
-::selection { background: var(--accent); color: var(--fg); }
+body[data-cms-layout-source="base-layout"],
+body[data-cms-layout-source="base-layout"] * { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body[data-cms-layout-source="base-layout"] { margin: 0; min-height: 100svh; background: var(--bg); color: var(--fg); font-family: var(--font-body); -webkit-font-smoothing: antialiased; }
+body[data-cms-layout-source="base-layout"] a { color: inherit; text-decoration: none; }
+body[data-cms-layout-source="base-layout"] img { display: block; max-width: 100%; height: auto; }
+body[data-cms-layout-source="base-layout"] button,
+body[data-cms-layout-source="base-layout"] input,
+body[data-cms-layout-source="base-layout"] textarea,
+body[data-cms-layout-source="base-layout"] select { font: inherit; }
+body[data-cms-layout-source="base-layout"] ::selection { background: var(--accent); color: var(--fg); }
 
 .site-shell { min-height: 100svh; display: flex; flex-direction: column; }
 .site-main { flex: 1; }
@@ -93,7 +97,7 @@ button, input, textarea, select { font: inherit; }
 .contact-cta__brief span { font: 700 10px/1 var(--font-mono); letter-spacing: 0; text-transform: uppercase; color: color-mix(in oklch, var(--paper-ink) 42%, transparent); }
 .contact-cta__brief strong { display: block; font-size: 18px; line-height: 1.05; letter-spacing: 0; color: var(--paper-ink); }
 .contact-cta__brief p { margin: 0; color: color-mix(in oklch, var(--paper-ink) 62%, transparent); font-size: 13.5px; line-height: 1.45; }
-.contact-cta__mail { display: inline-block; margin-top: 18px; padding-bottom: 8px; border-bottom: 1px solid color-mix(in oklch, var(--paper-ink) 34%, transparent); font-size: clamp(20px, 2vw, 30px); letter-spacing: 0; }
+.contact-cta__mail { display: inline-flex; align-items: center; min-height: 44px; margin-top: 18px; padding-bottom: 8px; border-bottom: 1px solid color-mix(in oklch, var(--paper-ink) 34%, transparent); font-size: clamp(20px, 2vw, 30px); letter-spacing: 0; }
 .contact-cta__mail:hover { border-color: var(--accent); color: var(--accent); }
 .contact-cta__form { display: grid; gap: 20px; }
 .contact-cta__row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }

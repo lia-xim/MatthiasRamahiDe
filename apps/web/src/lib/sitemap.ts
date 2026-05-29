@@ -1,7 +1,10 @@
-import fs from 'node:fs/promises'
-import path from 'node:path'
-
-import { getLegacyRoot, listLegacyHtmlFiles, readLegacyPage } from './legacy'
+import {
+  getLegacyRedirectTarget,
+  isLegacyRedirectFile,
+  listNativeHtmlRouteFiles,
+} from './adoptedRoutes'
+import { getAdoptedPageChrome } from './adoptedPageChrome'
+import { getConceptArchivePage } from './conceptArchiveContent'
 import {
   configuredSiteUrl,
   imageAlt,
@@ -105,44 +108,6 @@ const dateOnly = (value?: string | number | Date) => {
 
 const legacyUrlForFile = (file: string) => (file === 'index.html' ? '/' : `/${file}`)
 
-const hasNoIndex = (html: string) => {
-  const robots = html.match(/<meta\b(?=[^>]*\bname=["']robots["'])[^>]*\bcontent=["']([^"']*)["'][^>]*>/i)?.[1]
-  return Boolean(robots && /noindex/i.test(robots))
-}
-
-const canonicalFromHtml = (html: string) =>
-  html.match(/<link\b(?=[^>]*\brel=["']canonical["'])[^>]*\bhref=["']([^"']*)["'][^>]*>/i)?.[1]
-
-const titleFromHtml = (html: string) =>
-  decodeEntities(
-    html
-      .match(/<title\b[^>]*>([\s\S]*?)<\/title>/i)?.[1]
-      ?.replace(/<[^>]*>/g, ' ')
-      .replace(/\s+/g, ' ')
-      .trim(),
-  )
-
-const imageRefsFromHtml = (html: string) => {
-  const images = new Map<string, string | undefined>()
-
-  for (const match of html.matchAll(/<meta\b(?=[^>]*\bproperty=["']og:image["'])[^>]*\bcontent=["']([^"']*)["'][^>]*>/gi)) {
-    images.set(match[1], titleFromHtml(html))
-  }
-
-  for (const match of html.matchAll(/<img\b[^>]*\bsrc=["']([^"']+)["'][^>]*>/gi)) {
-    const tag = match[0]
-    const alt = decodeEntities(tag.match(/\balt=["']([^"']*)["']/i)?.[1])
-    images.set(match[1], alt || titleFromHtml(html))
-  }
-
-  return [...images.entries()]
-    .filter(([src]) => !/^(data:|mailto:|tel:|#)/i.test(src))
-    .map(([src, title]) => ({
-      loc: /^https?:\/\//i.test(src) ? src : toAbsoluteSiteUrl(src),
-      title,
-    }))
-}
-
 const sectionForLegacyFile = (file: string): SitemapSection => {
   const slug = file.replace(/\.html$/, '')
   if (file.startsWith('blog')) return 'journal'
@@ -199,23 +164,26 @@ const collectCmsImages = (doc: PayloadDoc) => {
     .filter((item): item is { loc: string; title?: string } => Boolean(item))
 }
 
-export async function legacySitemapEntries(section?: SitemapSection): Promise<SitemapEntry[]> {
+export async function nativeRouteSitemapEntries(section?: SitemapSection): Promise<SitemapEntry[]> {
   const entries: SitemapEntry[] = []
-  const root = getLegacyRoot()
-  const files = await listLegacyHtmlFiles()
+  const files = listNativeHtmlRouteFiles()
 
   for (const file of files) {
+    if (isLegacyRedirectFile(file) || getLegacyRedirectTarget(file) || getConceptArchivePage(file)) continue
     if (section && sectionForLegacyFile(file) !== section) continue
 
-    const html = await readLegacyPage(file)
-    if (hasNoIndex(html)) continue
+    const chrome = getAdoptedPageChrome(file)
+    const images = [...(chrome.ogImage ? [chrome.ogImage] : []), ...(chrome.preloadImages || [])]
+      .filter(Boolean)
+      .slice(0, 12)
+      .map((image) => ({
+        loc: toAbsoluteSiteUrl(image),
+        title: decodeEntities(chrome.title || 'Matthias Ramahi Fotografie'),
+      }))
 
-    const stat = await fs.stat(path.join(root, file))
-    const canonical = canonicalFromHtml(html)
     entries.push({
-      loc: toAbsoluteSiteUrl(canonical || legacyUrlForFile(file)),
-      lastmod: dateOnly(stat.mtime),
-      images: imageRefsFromHtml(html).slice(0, 12),
+      loc: toAbsoluteSiteUrl(legacyUrlForFile(file)),
+      images,
     })
   }
 
@@ -246,7 +214,7 @@ export async function cmsSitemapEntries(section?: SitemapSection): Promise<Sitem
 }
 
 export async function sitemapEntries(section?: SitemapSection): Promise<SitemapEntry[]> {
-  const entries = [...(await legacySitemapEntries(section)), ...(await cmsSitemapEntries(section))]
+  const entries = [...(await nativeRouteSitemapEntries(section)), ...(await cmsSitemapEntries(section))]
   const byUrl = new Map<string, SitemapEntry>()
 
   for (const entry of entries) {

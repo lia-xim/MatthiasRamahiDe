@@ -133,7 +133,10 @@
 
     var IMAGES = tiles.map(function(t){
       var img = t.querySelector('img');
-      return { src: img.getAttribute('src'), alt: img.getAttribute('alt') || '' };
+      return {
+        src: t.getAttribute('data-full') || img.getAttribute('data-full') || img.getAttribute('data-src') || img.getAttribute('src'),
+        alt: img.getAttribute('alt') || ''
+      };
     });
 
     var lb       = document.getElementById('lightbox');

@@ -1,12 +1,28 @@
 ---
-import NativeLegacyLayout from '../../layouts/NativeLegacyLayout.astro'
+import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import { servicesIndexItems } from '../../lib/nativeContent'
 import { getSitePageByType, type PayloadDoc } from '../../lib/payload'
 
 const providedDoc = Astro.props.doc as PayloadDoc | undefined
 const doc = providedDoc || (await getSitePageByType('services-index', { depth: 2 }))
+const overviewOrder = ['fotolabor', 'werbetechnik', 'webdesign', 'videografie', 'viola', 'grossformat']
+const overviewLabels: Record<string, string> = {
+  fotolabor: 'Fine Art',
+  grossformat: 'Präsentation',
+  werbetechnik: 'Displays',
+  webdesign: 'Online',
+  videografie: 'Motion',
+  viola: 'Live',
+}
+const overviewImageIndex: Record<string, number> = {
+  viola: 1,
+  webdesign: 1,
+}
+const overviewItems = overviewOrder
+  .map((id) => servicesIndexItems.find((service) => service.id === id))
+  .filter((service): service is (typeof servicesIndexItems)[number] => Boolean(service))
 ---
-<NativeLegacyLayout legacyFile="leistungen.html" current="leistungen" doc={doc}>
+<AdoptedPageLayout legacyFile="leistungen.html" current="leistungen" doc={doc}>
   <main>
     <section class="ld-hero" id="top" data-header-theme="dark" aria-label="Weitere Dienstleistungen">
       <div class="ld-hero__bg" aria-hidden="true">
@@ -31,12 +47,15 @@ const doc = providedDoc || (await getSitePageByType('services-index', { depth: 2
           <p>Vom einzelnen Fine-Art-Print bis zur kompletten Markenfläche, Website, Filmproduktion oder Eventbegleitung. Sechs ergänzende Bereiche, ein gemeinsamer visueller Anspruch.</p>
         </div>
         <div class="overview-grid">
-          {servicesIndexItems.slice(0, 6).map((service) => (
-            <a class="overview-tile" href={service.href}>
-              <img src={service.images[0].src} alt={service.images[0].alt} loading="lazy" width={service.images[0].width} height={service.images[0].height} decoding="async" />
-              <div class="label"><strong set:html={service.headline.replace(/\.$/, '')}></strong><span>{service.number.split('·')[1]?.trim() || 'Leistung'}</span></div>
-            </a>
-          ))}
+          {overviewItems.map((service) => {
+            const image = service.images[overviewImageIndex[service.id] || 0] || service.images[0]
+            return (
+              <a class="overview-tile" href={service.href}>
+                <img src={image.src} alt={image.alt} loading="lazy" width={image.width} height={image.height} decoding="async" />
+                <div class="label"><strong set:html={service.headline.replace(/\.$/, '')}></strong><span>{overviewLabels[service.id] || 'Leistung'}</span></div>
+              </a>
+            )
+          })}
         </div>
       </div>
     </section>
@@ -87,4 +106,4 @@ const doc = providedDoc || (await getSitePageByType('services-index', { depth: 2
       data-contact-lead="Beschreibe kurz, welche Leistung du brauchst — Druck, Webdesign, Video, Werbetechnik, Musik oder eine Kombination. Ich sortiere den Ablauf und die passenden Partner."
     />
   </main>
-</NativeLegacyLayout>
+</AdoptedPageLayout>

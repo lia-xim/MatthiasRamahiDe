@@ -1,5 +1,5 @@
 ---
-import NativeLegacyLayout from '../../layouts/NativeLegacyLayout.astro'
+import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
 
 const legacyFile = 'sportwagen-fotografie.html'
@@ -14,34 +14,34 @@ const heroPanels = [
 
 const shootingStyles = [
   {
-    image: 'assets/optimized/assets-portfolio-dsc3982-1920.webp',
+    image: 'assets/portfolio/thumbs/_DSC3982.webp',
     alt: 'Sportwagen Exterieur-Aufnahme mit ruhiger Linienführung',
-    width: 1920,
-    height: 1280,
+    width: 720,
+    height: 480,
     title: 'Exterieur',
     text: 'Vollformatige Außenaufnahmen mit kontrolliertem Licht, ruhigen Reflexen und sauberer Linienführung. Lack, Proportionen und Charakter wirken stimmig — egal ob Showroom, Industrie oder urbanes Setting.',
   },
   {
-    image: 'assets/portfolio/_DSC9321-Enhanced-NR.webp',
+    image: 'assets/portfolio/thumbs/_DSC9321-Enhanced-NR.webp',
     alt: 'Sportwagen Interieur — Cockpit und Material',
-    width: 1707,
-    height: 2560,
+    width: 720,
+    height: 1080,
     title: 'Interieur',
     text: 'Cockpit, Sitze, Materialien, Atmosphäre. Mit mobilem Licht inszeniert, damit Leder, Carbon und Chrom ihren Ton behalten und der Innenraum die gleiche Sprache spricht wie das Exterieur.',
   },
   {
-    image: 'assets/portfolio/_DSC9301-Enhanced-NR.webp',
+    image: 'assets/portfolio/thumbs/_DSC9301-Enhanced-NR.webp',
     alt: 'Sportwagen Detail — Emblem und Felge',
-    width: 2048,
-    height: 2560,
+    width: 720,
+    height: 900,
     title: 'Details',
     text: 'Emblem, Sicken, Felgen, Bremse, Naht, Schalter. Detailaufnahmen erzählen die Geschichte eines Fahrzeugs im Kleinen — perfekt für Händlerseiten, Landingpages und redaktionelle Strecken.',
   },
   {
-    image: 'assets/optimized/assets-photos-automobil-neon-1920.webp',
+    image: 'assets/optimized/assets-photos-automobil-neon-960.webp',
     alt: 'Sportwagen cinematic — Nacht und Architektur',
-    width: 1920,
-    height: 1280,
+    width: 960,
+    height: 640,
     title: 'Cinematic',
     text: 'Inszenierte Perspektiven mit gesetztem Licht, gewählter Architektur und dramaturgischer Komposition. Bilder mit Filmcharakter — für Kampagne, Magazin und Bildstrecken, die Stimmung tragen.',
   },
@@ -50,50 +50,56 @@ const shootingStyles = [
 const portfolioTiles = [
   {
     className: 't1',
-    dataSrc: 'assets/optimized/assets-portfolio-dsc3879-1920.webp',
+    src: 'assets/portfolio/thumbs/_DSC3879.webp',
+    full: 'assets/optimized/assets-portfolio-dsc3879-1920.webp',
     alt: 'Sportwagen Exterieur — Hauptmotiv',
-    width: 1920,
-    height: 1280,
+    width: 720,
+    height: 480,
     label: '01 · Exterieur',
   },
   {
     className: 't2',
-    dataSrc: 'assets/portfolio/_DSC9321-Enhanced-NR.webp',
+    src: 'assets/portfolio/thumbs/_DSC9321-Enhanced-NR.webp',
+    full: 'assets/portfolio/_DSC9321-Enhanced-NR.webp',
     alt: 'Sportwagen Interieur — Cockpit',
-    width: 1707,
-    height: 2560,
+    width: 720,
+    height: 1080,
     label: '02 · Interieur',
   },
   {
     className: 't3',
-    dataSrc: 'assets/optimized/assets-portfolio-dsc3982-1920.webp',
+    src: 'assets/portfolio/thumbs/_DSC3982.webp',
+    full: 'assets/optimized/assets-portfolio-dsc3982-1920.webp',
     alt: 'Sportwagen Detail — Emblem',
-    width: 1920,
-    height: 1280,
+    width: 720,
+    height: 480,
     label: '03 · Detail',
   },
   {
     className: 't4',
-    dataSrc: 'assets/portfolio/_DSC9301-Enhanced-NR.webp',
+    src: 'assets/portfolio/thumbs/_DSC9301-Enhanced-NR.webp',
+    full: 'assets/portfolio/_DSC9301-Enhanced-NR.webp',
     alt: 'Sportwagen Detail — Felge',
-    width: 2048,
-    height: 2560,
+    width: 720,
+    height: 900,
     label: '04 · Felge',
   },
   {
     className: 't5',
-    src: 'assets/optimized/assets-portfolio-dsc3908-1920.webp',
+    src: 'assets/portfolio/thumbs/_DSC3908.webp',
+    full: 'assets/optimized/assets-portfolio-dsc3908-1920.webp',
     alt: 'Sportwagen Profil — Linienführung',
-    width: 1920,
-    height: 1280,
+    width: 720,
+    height: 480,
     label: '05 · Profil',
   },
   {
     className: 't6',
-    dataSrc: 'assets/optimized/assets-photos-automobil-neon-1920.webp',
+    src: 'assets/optimized/assets-photos-automobil-neon-960.webp',
+    full: 'assets/optimized/assets-photos-automobil-neon-1920.webp',
     alt: 'Sportwagen Cinematic — Nacht und Architektur',
-    width: 1920,
-    height: 1280,
+    width: 960,
+    height: 640,
     label: '06 · Cinematic',
   },
 ]
@@ -149,28 +155,28 @@ const audiences = [
 const relatedAreas = [
   {
     href: 'automobil-fotografie.html',
-    dataSrc: 'assets/optimized/assets-photos-automobil-neon-1920.webp',
+    src: 'assets/optimized/assets-photos-automobil-neon-960.webp',
     alt: 'Automobilfotografie',
-    width: 1920,
-    height: 1280,
+    width: 960,
+    height: 640,
     meta: '01 / Verwandt',
     title: 'Automobil',
   },
   {
     href: 'oldtimer-fotografie.html',
-    src: 'assets/optimized/assets-photos-oldtimer-stage-1920.webp',
+    src: 'assets/optimized/assets-photos-oldtimer-stage-960.webp',
     alt: 'Oldtimerfotografie',
-    width: 1920,
-    height: 1280,
+    width: 960,
+    height: 640,
     meta: '02 / Verwandt',
     title: 'Oldtimer',
   },
   {
     href: 'motorrad-fotografie.html',
-    src: 'assets/optimized/assets-photos-motorrad-1920.webp',
+    src: 'assets/optimized/assets-photos-motorrad-720.webp',
     alt: 'Motorradfotografie',
-    width: 1707,
-    height: 2560,
+    width: 720,
+    height: 1080,
     meta: '03 / Verwandt',
     title: 'Motorrad',
   },
@@ -218,7 +224,7 @@ const searchLinks = [
   ['supersportwagen-fotografie.html', 'Supersportwagen Fotografie'],
 ]
 ---
-<NativeLegacyLayout legacyFile={legacyFile} current="fotografie" doc={doc}>
+<AdoptedPageLayout legacyFile={legacyFile} current="fotografie" doc={doc}>
   <main>
     <section class="hero-tri" id="top" data-header-theme="dark" aria-label="Sportwagenfotografie">
       <div class="tri-stage" aria-hidden="true">
@@ -252,7 +258,7 @@ const searchLinks = [
           </div>
         </div>
         <figure class="st-image">
-          <img loading="lazy" src="assets/optimized/assets-portfolio-dsc3879-1920.webp" alt="Sportwagen-Detailaufnahme — Matthias Ramahi" width="1920" height="1280" decoding="async" />
+          <img loading="lazy" src="assets/portfolio/thumbs/_DSC3879.webp" alt="Sportwagen-Detailaufnahme — Matthias Ramahi" width="720" height="480" decoding="async" />
         </figure>
       </div>
     </section>
@@ -287,10 +293,10 @@ const searchLinks = [
         </header>
 
         {portfolioTiles.map((tile, index) => (
-          <button type="button" class={`po-tile ${tile.className}`} data-i={index} aria-label={`Bild ${index + 1} vergrößern`}>
+          <button type="button" class={`po-tile ${tile.className}`} data-i={index} data-full={tile.full} aria-label={`Bild ${index + 1} vergrößern`}>
             <img
-              src={tile.src || tile.dataSrc}
-              data-src={tile.dataSrc}
+              src={tile.src}
+              data-full={tile.full}
               loading="lazy"
               alt={tile.alt}
               width={tile.width}
@@ -379,4 +385,4 @@ const searchLinks = [
       data-contact-lead="Schreibe kurz, welcher Sportwagen fotografiert werden soll, ob die Bilder für Verkauf, Sammlung, Marke oder Social genutzt werden und welches Zeitfenster möglich ist. Wir planen Licht, Ort und Ablauf gemeinsam."
     />
   </main>
-</NativeLegacyLayout>
+</AdoptedPageLayout>

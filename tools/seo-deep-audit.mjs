@@ -89,6 +89,7 @@ function title(html) {
 
 function ownUrlForRel(rel) {
   if (rel === 'index.html') return `${SITE}/`
+  if (rel.endsWith('.html/index.html')) return `${SITE}/${rel.replace(/\/index\.html$/, '')}`
   if (rel.endsWith('/index.html')) return `${SITE}/${rel.replace(/\/index\.html$/, '/')}`
   return `${SITE}/${rel}`
 }
@@ -120,6 +121,7 @@ function localFileCandidatesForUrl(value) {
   if (!cleanPath) return [path.join(target, 'index.html')]
 
   const candidates = [path.join(target, cleanPath)]
+  if (path.extname(cleanPath) === '.html') candidates.push(path.join(target, cleanPath, 'index.html'))
   if (!path.extname(cleanPath)) {
     candidates.push(path.join(target, cleanPath, 'index.html'))
     candidates.push(path.join(target, `${cleanPath}.html`))

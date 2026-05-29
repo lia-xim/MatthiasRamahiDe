@@ -1,6 +1,6 @@
 # Deployment: Payload auf Hetzner, Astro auf Vercel
 
-Stand: 2026-05-28
+Stand: 2026-05-29
 
 Diese Notiz beschreibt den aktuellen Zielstand: Payload/Postgres laufen auf dem eigenen Hetzner-Server, das Astro-Frontend wird ueber Vercel ausgeliefert. Secrets bleiben ausserhalb des Repositories.
 
@@ -97,8 +97,10 @@ Hinweis: Der lokale Node-24-Hinweis beim Build ist nicht kritisch; Vercel fuehrt
 ## URL-Strategie
 
 - Alte `.html`-URLs bleiben erreichbar und sind fuer SEO die primaere sichtbare URL.
-- Adoptierte `.html`-Routen werden als echte Astro-Routen gebaut. Wenn ein Payload-Dokument existiert, rendert `LegacyPageShell` die CMS-basierte 1:1-Legacy-Ausgabe.
-- Nicht adoptierte `.html`-Routen bleiben rohe Legacy-Fallbacks.
+- Alle 217 bisherigen Root-HTML-URLs werden als Astro-Routen gebaut; die Root-HTML-Dateien sind nur noch visuelle Referenz/Baseline, nicht Produktionsquelle.
+- Adoptierte Kernseiten laufen ueber native Astro-Komponenten, Local-SEO-Seiten ueber den Family-Renderer, Journal-/Legal-Seiten ueber eigene strukturierte Renderer.
+- Echte Dubletten redirecten kanonisch mit 308, z. B. `blog-journal.html` zu `/blog.html` oder `weitere-dienstleistungen.html` zu `/leistungen.html`.
+- Konzeptseiten bleiben noindex Astro-Archivseiten, damit alte Links nicht brechen, aber keine SEO-Dubletten entstehen.
 - Native neue Routen wie `/portfolio/<slug>` existieren fuer Portfolio-Projekte.
 - Service- und Journal-Nativrouten duerfen auf die erhaltene `.html`-Canonical zurueckfuehren, damit keine Duplicate-Content-Struktur entsteht.
 

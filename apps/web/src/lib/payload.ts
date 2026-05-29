@@ -220,6 +220,7 @@ const headersFor = (draft?: boolean): HeadersInit => {
 }
 
 const payloadCache = new Map<string, { expires: number; value?: unknown; promise?: Promise<unknown | null> }>()
+const legacyUrlIndexCache = new Map<string, Promise<Map<string, PayloadDoc>>>()
 const payloadCacheTtlMs = Number(import.meta.env.PAYLOAD_FETCH_CACHE_MS ?? (import.meta.env.DEV ? 0 : 300_000))
 const payloadTimeoutMs = Number(import.meta.env.PAYLOAD_FETCH_TIMEOUT_MS || 1_500)
 const disablePayloadFetch = import.meta.env.ASTRO_DISABLE_PAYLOAD_FETCH === 'true' || process.env.ASTRO_DISABLE_PAYLOAD_FETCH === 'true'
@@ -285,6 +286,7 @@ const apiGet = async <T>(
 
 export function clearPayloadRuntimeCache() {
   payloadCache.clear()
+  legacyUrlIndexCache.clear()
 }
 
 async function getFirstByLegacyUrl(collections: string[], legacyFile: string, options: ListOptions) {
@@ -587,6 +589,65 @@ export async function getByLegacyUrl(collection: string, legacyUrl: string, opti
   )
 
   return data?.docs?.[0] ?? null
+}
+
+const normalizeLegacyKey = (value?: string) => {
+  if (!value) return ''
+
+  try {
+    const parsed = new URL(value)
+    return parsed.pathname.replace(/^\/+/, '')
+  } catch {
+    return value.replace(/^\/+/, '')
+  }
+}
+
+function indexLegacyDoc(map: Map<string, PayloadDoc>, doc: PayloadDoc) {
+  const candidates = [
+    doc.seo?.legacyUrl,
+    doc.legacy?.sourceFile,
+    doc.legacy?.sourceUrl,
+    doc.slug ? `${doc.slug}.html` : '',
+  ]
+
+  for (const candidate of candidates) {
+    const key = normalizeLegacyKey(candidate)
+    if (key && !map.has(key)) map.set(key, doc)
+  }
+}
+
+export async function getLegacyUrlIndex(collection: string, options: ListOptions = {}): Promise<Map<string, PayloadDoc>> {
+  const cacheKey = `${collection}:${options.depth ?? 2}:${options.limit ?? 500}:${options.draft ? 'draft' : 'published'}`
+  const cached = legacyUrlIndexCache.get(cacheKey)
+  if (cached) return cached
+
+  const request = (async () => {
+    const data = await payloadFetch<{ docs?: PayloadDoc[] }>(
+      collection,
+      {
+        limit: options.limit ?? 500,
+        depth: options.depth ?? 2,
+        sort: options.sort,
+      },
+      options.draft,
+    )
+
+    const map = new Map<string, PayloadDoc>()
+    for (const doc of data?.docs ?? []) indexLegacyDoc(map, doc)
+    return map
+  })()
+
+  legacyUrlIndexCache.set(cacheKey, request)
+  return request
+}
+
+export async function getByLegacyUrlFromIndex(
+  collection: string,
+  legacyUrl: string,
+  options: ListOptions = {},
+): Promise<PayloadDoc | null> {
+  const index = await getLegacyUrlIndex(collection, options)
+  return index.get(normalizeLegacyKey(legacyUrl)) ?? null
 }
 
 export async function getSitePageByType(pageType: string, options: ListOptions = {}): Promise<PayloadDoc | null> {

@@ -1,5 +1,5 @@
 ---
-import NativeLegacyLayout from '../../layouts/NativeLegacyLayout.astro'
+import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import {
   portfolioArchivePhotos,
   portfolioContext,
@@ -11,8 +11,10 @@ import { getSitePageByType, type PayloadDoc } from '../../lib/payload'
 
 const providedDoc = Astro.props.doc as PayloadDoc | undefined
 const doc = providedDoc || (await getSitePageByType('portfolio-index', { depth: 2 }))
+const emptyImage =
+  'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%221%22 height=%221%22 viewBox=%220 0 1 1%22%3E%3C/svg%3E'
 ---
-<NativeLegacyLayout legacyFile="portfolio.html" current="portfolio" doc={doc}>
+<AdoptedPageLayout legacyFile="portfolio.html" current="portfolio" doc={doc}>
   <main>
     <section class="pf-hero" data-header-theme="dark" aria-label="Portfolio">
       <div class="pf-hero__photo" aria-hidden="true">
@@ -81,8 +83,8 @@ const doc = providedDoc || (await getSitePageByType('portfolio-index', { depth: 
         {portfolioArchivePhotos.map((photo) => (
           <a class="pf-photo" data-caption={photo.caption} href={photo.href}>
             <img
-              src={photo.eager ? photo.src : undefined}
-              data-src={photo.eager ? undefined : photo.src}
+              src={photo.src}
+              data-src={photo.src}
               alt=""
               loading="lazy"
               decoding="async"
@@ -112,9 +114,9 @@ const doc = providedDoc || (await getSitePageByType('portfolio-index', { depth: 
       <button class="pf-viewer__prev" type="button" id="pfPrev" aria-label="Vorheriges Bild">‹</button>
       <button class="pf-viewer__next" type="button" id="pfNext" aria-label="Nächstes Bild">›</button>
       <figure class="pf-viewer__figure">
-        <img id="pfViewerImg" alt="" decoding="async" loading="lazy" />
+        <img id="pfViewerImg" src={emptyImage} alt="" decoding="async" loading="lazy" width="1" height="1" />
       </figure>
       <span class="pf-viewer__cap" id="pfViewerCap"></span>
     </div>
   </main>
-</NativeLegacyLayout>
+</AdoptedPageLayout>

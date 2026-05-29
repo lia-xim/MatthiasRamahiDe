@@ -1,5 +1,5 @@
 ---
-import NativeLegacyLayout from '../../layouts/NativeLegacyLayout.astro'
+import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import { getBySlug, type PayloadDoc } from '../../lib/payload'
 
 const legacyFile = 'fotolabor-druck-duesseldorf.html'
@@ -33,7 +33,7 @@ const proofStages = [
   },
 ]
 ---
-<NativeLegacyLayout legacyFile={legacyFile} current="leistungen" doc={doc}>
+<AdoptedPageLayout legacyFile={legacyFile} current="leistungen" doc={doc}>
   <main>
     <section class="sp-hero" data-header-theme="dark" aria-label="Fotolabor &amp; Druck">
       <div class="sp-hero__bg" aria-hidden="true">
@@ -134,4 +134,4 @@ const proofStages = [
       aria-label="Anfrage"
     />
   </main>
-</NativeLegacyLayout>
+</AdoptedPageLayout>

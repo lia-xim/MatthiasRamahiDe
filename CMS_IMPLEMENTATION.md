@@ -27,13 +27,15 @@ Ergaenzende Detaildokumente:
 Die aktuelle HTML-Website ist die visuelle Wahrheit. Ziel ist nicht, alle HTML-Dateien direkt zu loeschen, sondern Seite fuer Seite die sichtbare Ausgabe in Astro/Payload zu uebernehmen.
 
 - `corepack pnpm legacy:freeze` schreibt `docs/legacy-reference-manifest.json` mit Checksummen, Titel, Description, H1, Canonical, Dateigroesse und Seitentyp der Root-HTML-Dateien.
-- `apps/web/src/lib/legacy.ts` ordnet alte HTML-Dateien und Alias-Routen Astro zu.
-- `apps/web/src/lib/adoptedRoutes.ts` definiert, welche Legacy-URLs bereits vom Astro/Payload-Pfad uebernommen sind.
+- `apps/web/src/lib/adoptedRoutes.ts` ist die kanonische Routenquelle fuer alte `.html`-URLs: native Seiten, Local-SEO-Varianten und echte Redirect-Dubletten werden dort modelliert.
+- Die alte App-interne Legacy-/Componentized-Bruecke ist entfernt. Legacy-HTML wird nicht mehr aus `apps/web/src` gerendert.
+- Visual Regression startet bei Bedarf einen separaten, kurzlebigen Referenzserver aus den Root-HTML-Dateien. Damit bleibt die alte Website vergleichbar, ohne Teil des produktiven Astro-App-Codes zu sein.
 - `apps/web/src/middleware.ts` rewritet adoptierte `.html`-URLs im lokalen/serverseitigen Betrieb intern auf `/native/<slug>`, ohne die sichtbare URL zu aendern.
-- `apps/web/src/pages/native/[slug].astro` rendert adoptierte URLs mit der jeweiligen nativen Astro-Komponente, der Legacy-Parity-Shell oder dem Local-SEO-Family-Renderer.
-- `apps/web/src/pages/[slug].html.astro` baut jede alte `.html`-URL als echte Astro-Route. Adoptierte Seiten rendern mit Astro/Payload-Logik, nicht adoptierte Seiten bleiben rohe Legacy-Fallbacks. Das ist wichtig fuer Vercel, weil dort Middleware-Rewrites fuer nicht existierende statische `.html`-Dateien nicht ausreichen.
-- Nicht adoptierte `.html`-Seiten bleiben als statischer Legacy-Fallback erreichbar.
-- `/legacy-baseline/<slug>` liefert die rohe Legacy-Ausgabe nur als Test-Baseline.
+- `apps/web/src/pages/native/[slug].astro` rendert adoptierte URLs mit der zentralen nativen Astro-Komponente `NativeAdoptedPage`.
+- `apps/web/src/pages/[slug].html.astro` baut alle 217 bisherigen Root-HTML-URLs als echte Astro-Routen aus dem Routenmodell. Es liest keine Root-HTML-Dateien mehr als Produktionsquelle.
+- Echte Dubletten wie `blog-journal.html`, `weitere-dienstleistungen.html`, `matthias-ramahi-portfolio.html`, `portfolio-1-tunnel.html`, `fotografie-landing-experience.html` und `portraitfotografie-experience.html` sind 308-Redirects auf die kanonischen Seiten.
+- Experimentelle Konzeptseiten (`radikale-fotografie-portfolio-konzepte.html`, `floating-archive.html`, `narrative-stage.html`, `experimental-lens.html`) rendern als native, noindex gesetzte Astro-Archivseiten.
+- Es gibt keine oeffentliche oder interne Astro-Route mehr, die rohe Legacy-HTML-Seiten ausliefert. Die Root-HTML-Dateien bleiben nur Projektarchiv und QA-Referenz.
 - Root-HTML-Dateien werden nicht nach `apps/web/public` kopiert.
 
 Aktuell adoptierte oeffentliche URLs:
@@ -52,25 +54,29 @@ Aktuell adoptierte oeffentliche URLs:
 - `blog.html`
 - `impressum.html`
 - `datenschutz.html`
+- `fotografie-duesseldorf.html`, `fotografie-nrw.html`, `fotografie-deutschland.html`
 - sieben weitere Service-Seiten: `fotolabor-druck-duesseldorf.html`, `grossformatdruck-duesseldorf.html`, `werbetechnik-duesseldorf.html`, `webdesign-seo-duesseldorf.html`, `videografie-duesseldorf.html`, `viola-musik-duesseldorf.html`, `drucke-sonderanfertigungen-duesseldorf.html`
 - die sieben aktuellen `blog-*.html` Journal-Detailseiten
+- alle bestehenden Local-SEO- und Keyword-HTML-Seiten ueber den sechs Familienrenderer
+- vier noindex Konzeptarchiv-Seiten als native Astro-Archivseiten
 
-Diese Seiten beziehen ihre Content-Basis aus Payload, wenn ein passendes Dokument mit `legacy.renderedBodyHtml` existiert. Wenn Payload nicht erreichbar ist oder kein Dokument vorhanden ist, bleibt die Root-HTML-Datei als Fallback verfuegbar. Mit `ASTRO_DISABLE_LEGACY_CMS_LOOKUP=true` kann der Datei-Fallback erzwungen werden.
+Diese Seiten beziehen ihre Content-Basis aus Payload, wenn ein passendes Dokument vorhanden ist. Wo Payload nicht erreichbar ist oder noch kein Dokument vorhanden ist, rendert Astro aus typisierten Content-Basen und Familienmodellen im Code. Die Root-HTML-Dateien sind Referenz/Baseline, aber kein oeffentlicher Produktions-Fallback mehr.
 
 ### Native-Komponenten-Stand
 
 Die Migration ist inzwischen zweigleisig:
 
 - Native Astro-Komponenten mit Legacy-Optik: Startseite, `fotografie.html`, alle sechs Haupt-Fotografie-Seiten (`automobil-fotografie.html`, `sportwagen-fotografie.html`, `oldtimer-fotografie.html`, `motorrad-fotografie.html`, `portraitfotografie.html`, `landschaftsfotografie.html`), `portfolio.html`, `leistungen.html`, sieben weitere Service-Seiten inklusive Fotolabor, `contact.html`, `ueber-mich.html` sowie `blog.html`; der Journal-Index nutzt veroeffentlichte `journal-posts` aus Payload, wenn sie erreichbar sind, und faellt sonst auf die eingefrorene Referenzliste zurueck.
+- Native Journal-Legacy-URLs: die sieben bestehenden `blog-*.html` Detailseiten laufen auf ihren alten URLs ueber einen strukturierten Astro-Artikelrenderer mit `BaseLayout`, Article-/FAQ-/Breadcrumb-JSON-LD, `noindex`-faehigem Preview-Pfad und typisierter Content-Basis. Sie verwenden kein rohes Legacy-Body-HTML mehr; Support-Artikel teilen sich `assets/journal-support.css`, Feature-Artikel die Automotive-Artikel-CSS.
 - CMS-native strukturierte Templates: neue/dynamische Service-Seiten, Portfolio-Projekte, Journal-Beitraege unter `/journal/<slug>` und Local-SEO-Seiten ohne alte HTML-Datei.
-- Bewusste Parity-Schicht: Legal und sieben bestehende `blog-*.html` Detailseiten bleiben 1:1 ueber die Legacy-Schicht, bis ihr Body wirklich als natives Template abgenommen ist.
-- Local-SEO-Family-Schicht: alte lokale Kategorie-HTML-Seiten laufen ueber `NativeLocalSeoFamilyPage`. Der Renderer erkennt sechs Layout-Familien (`automobil`, `sportwagen`, `oldtimer`, `motorrad`, `portrait`, `landschaft`) anhand von Slug/Legacy-URL und nutzt die jeweilige Kategorie-Hauptseite als Parent-Konzept. Die lokale Legacy-Datei bleibt die visuelle Wahrheit; Payload kann SEO/Content ueberlagern, wenn ein Dokument vorhanden ist. Ohne Payload bleibt die lokale Seite trotzdem korrekt renderbar.
+- Native Legal-Seiten: `impressum.html` und `datenschutz.html` nutzen eine typisierte lokale Content-Basis in `apps/web/src/lib/legalContent.ts`, rendern ueber `BaseLayout` und geben WebPage-/Breadcrumb-JSON-LD aus.
+- Local-SEO-Family-Schicht: alle alten lokalen Kategorie- und Keyword-HTML-Seiten laufen ueber `NativeLocalSeoFamilyPage`. Der Renderer erkennt sechs Layout-Familien (`automobil`, `sportwagen`, `oldtimer`, `motorrad`, `portrait`, `landschaft`) anhand von Slug/Legacy-URL und nutzt die jeweilige Kategorie-Hauptseite als Parent-Konzept. Payload kann SEO/Content ueberlagern, wenn ein Dokument vorhanden ist. Ohne Payload bleibt die lokale Seite trotzdem aus dem Familienmodell korrekt renderbar.
+- Konzeptarchiv: alte experimentelle Konzeptseiten sind als noindex Astro-Seiten erhalten, aber nicht mehr als rohe Legacy-Ausgabe.
 
 Local-SEO-Family-Routing ist standardmaessig aktiv und kann nur bewusst abgeschaltet werden:
 
 ```powershell
 ASTRO_ENABLE_LOCAL_SEO_ADOPTED_ROUTES=false
-ASTRO_ENABLE_NATIVE_LOCAL_SEO_HTML_ROUTES=false
 ```
 
 Die neutralen Uebersichtsseiten `fotografie-duesseldorf.html`, `fotografie-nrw.html` und `fotografie-deutschland.html` bleiben separat: Sie sind kein Kategorie-Clone, sondern neutrale Fotografie-Landingpages mit eigener Struktur.
@@ -141,7 +147,7 @@ corepack pnpm --filter @matthias-ramahi/cms import:legacy
 
 Der Vollimport liest die Root-HTML-Dateien, importiert referenzierte Bilder in `media` und befuellt Site Pages, Service Pages, Local SEO Pages, Portfolio-Kategorien/-Projekte und Journal-Beitraege. Lokale SEO-Seiten bleiben standardmaessig Entwuerfe, bis sie redaktionell geprueft sind.
 
-Der Import speichert fuer adoptierte Standardseiten, Service-Seiten und lokale SEO-Seiten zusaetzlich strukturierte `blocks` aus Ueberschriften, Textabschnitten und Figuren. Die 1:1-Ausgabe nutzt weiterhin `legacy.renderedBodyHtml`, bis die jeweilige Seite visuell freigegeben ist; die strukturierten Felder sind die vorbereitete Grundlage fuer native Astro-Komponenten.
+Der Import speichert fuer adoptierte Standardseiten, Service-Seiten und lokale SEO-Seiten zusaetzlich strukturierte `blocks` aus Ueberschriften, Textabschnitten und Figuren. Die produktive 1:1-Ausgabe laeuft inzwischen ueber native Astro-Komponenten und typisierte Content-Basen; importierte Legacy-Felder bleiben Kontroll- und Migrationsmetadaten, aber kein Produktions-Renderpfad.
 
 Redaktions- und Produktionsreife auditieren:
 
@@ -195,9 +201,8 @@ Der erste Befehl ist ein Dry-Run. Mit `--write` werden nur Dokumente veroeffentl
 - `PAYLOAD_PUBLIC_SERVER_URL`
 - `PREVIEW_SECRET`
 - `PAYLOAD_PREVIEW_API_KEY`
-- `ASTRO_ENABLE_ADOPTED_ROUTES`: optional, Standard ist aktiv. Auf `false` setzen, wenn adoptierte `.html`-URLs temporaer wieder als statischer Legacy-Fallback gebaut werden sollen.
-- `ASTRO_ENABLE_LOCAL_SEO_ADOPTED_ROUTES`: optional, Standard ist aktiv. Auf `false` setzen, wenn lokale SEO-Seiten temporaer wieder als statischer Legacy-Fallback laufen sollen.
-- `ASTRO_ENABLE_NATIVE_LOCAL_SEO_HTML_ROUTES`: optional, Standard ist aktiv. Auf `false` setzen, wenn alte Local-SEO-`.html`-URLs nicht ueber den Family-Renderer laufen sollen.
+- `ASTRO_ENABLE_ADOPTED_ROUTES`: optional, Standard ist aktiv. Auf `false` setzen nur fuer technische Tests; im Produktionsbuild fuehrt das fuer adoptierte `.html`-Routen zu 404 statt zu rohem Legacy-Fallback.
+- `ASTRO_ENABLE_LOCAL_SEO_ADOPTED_ROUTES`: optional, Standard ist aktiv. Auf `false` setzen, wenn lokale SEO-Seiten im Middleware-SSR-Pfad nicht intern auf `/native/<slug>` rewritten werden sollen. Der statische Vercel-Build bleibt bewusst nativ.
 - `ASTRO_ENABLE_CMS_DYNAMIC_ROUTES`: Standard aktiv. Erlaubt neuen Payload-Seiten ohne alte `.html`-Datei, strukturiert in Astro zu rendern.
 - `ASTRO_ENABLE_CMS_JOURNAL_ROUTES`: aktiviert native `/journal/<slug>`-Builds.
 - `ASTRO_ENABLE_CMS_SERVICE_ROUTES`: aktiviert native `/services/<slug>`-Routen; Canonical kann weiterhin auf die alte `.html`-URL zeigen.
@@ -240,7 +245,7 @@ Beispiel:
 http://localhost:4321/preview/portfolio-projects/mein-projekt?secret=...
 ```
 
-Astro laedt Draft-Daten mit `draft=true` und API-Key. Preview-Seiten sind immer `noindex`. Neue CMS-Seiten ohne Legacy-Datei laufen ueber den generischen strukturierten Astro-Renderpfad; adoptierte Kernseiten bleiben visuell 1:1 ueber `LegacyPageShell`, solange ihre native Zerlegung noch nicht final abgenommen ist.
+Astro laedt Draft-Daten mit `draft=true` und API-Key. Preview-Seiten sind immer `noindex`. Neue CMS-Seiten ohne Legacy-Datei laufen ueber den generischen strukturierten Astro-Renderpfad. Local-SEO-Previews nutzen den Family-Renderer, Journal-Previews die native Journal-Komponente, alle anderen Collections den strukturierten CMS-Renderer. Rohe Legacy-Preview-Ausgabe ist nicht mehr der Default.
 
 ## Bildstrategie
 
@@ -263,7 +268,9 @@ corepack pnpm cms:build
 corepack pnpm cms:import-adopted
 ```
 
-Aktueller Stand vom 2026-05-28:
+`web:build` ruft `tools/run-web-build.mjs` auf. Das Script setzt fuer Astro-Check/Build standardmaessig `NODE_OPTIONS=--max-old-space-size=4096`, damit der grosse statische Legacy-/CMS-Routenbestand reproduzierbar baut. Bei Bedarf kann der Wert lokal mit `WEB_BUILD_MAX_OLD_SPACE_SIZE` ueberschrieben werden.
+
+Aktueller Stand vom 2026-05-29:
 
 - `web:build`: erfolgreich, inklusive `astro check` mit 0 Fehlern und 0 Warnungen.
 - `cms:build`: erfolgreich.
@@ -272,7 +279,7 @@ Aktueller Stand vom 2026-05-28:
 - `cms:review-portfolio`: erfolgreich, 6 Portfolio-Projekte und 6 Portfolio-Kategorien stehen auf `reviewed` / `structured-blocks`.
 - `cms:audit-production -- --strict`: erfolgreich, 0 Errors und 0 Warnings.
 - `cms:audit-seo -- --strict`: erfolgreich, 0 Errors und 0 Warnings.
-- `production:check`: erfolgreich, inklusive Web-Build, CMS-Build, eigener Astro-Preview, 204/204 Legacy-Routen und Visual Regression.
+- `production:check`: erfolgreich, inklusive Web-Build, CMS-Build, eigener Astro-Preview, Routen-Audit und Visual Regression.
 - `cms:approve-private-staging -- --collection=local-seo-pages --write`: erfolgreich, 157 lokale SEO-Seiten fuer private Staging-Abnahme veroeffentlicht.
 - `web:build` nach nativer Journal-Artikelkomponente und Local-SEO-Template-Gate: erfolgreich, `astro check` mit 0 Errors / 0 Warnings.
 - `web:build` nach nativer Automobil-, Sportwagen- und Oldtimer-Body-Komponente: erfolgreich, `astro check` mit 0 Errors / 0 Warnings.
@@ -284,6 +291,15 @@ Aktueller Stand vom 2026-05-28:
 - Zielgerichtete Visual Regression nach der letzten Template-Aenderung: Portfolio, Leistungen, Journal-Index, Automotive-Journal-Detail und Local-SEO bleiben unter der harten 5%-Grenze; Local-SEO mobile bleibt wegen langer Legacy-Lazyload-Strecken eine dokumentierte Warnung.
 - Local-SEO-Family-Smoke 2026-05-29: je eine Koeln-Seite pro Familie (`automobil`, `sportwagen`, `oldtimer`, `motorrad`, `portrait`, `landschaft`) rendert mit richtigem Family-Marker und Parent; Browser-Smoke fuer Motorrad Koeln ohne Console Errors und ohne Error-Overlay.
 - `web:build` nach Aktivierung des Local-SEO-Family-Renderers: erfolgreich, `astro check` mit 0 Errors / 0 Warnings.
+- `web:build` nach Entkopplung der sieben bestehenden Journal-Detailseiten: erfolgreich, `astro check` mit 0 Errors / 0 Warnings; die alten `blog-*.html` URLs senden `x-cms-render-source: structured-astro` und `x-cms-page-kind: journal-native-legacy-url`.
+- Browser-Smoke 2026-05-29: `blog-automotive-fotografie-duesseldorf.html` und `blog-fine-art-druck.html` rendern mit `BaseLayout`, Article-Markup und BlogPosting-JSON-LD, ohne Vite-Overlay, ohne relevante Console Errors/Warnings und ohne kaputte Kernbilder.
+- `web:build` nach typisierten Legal-Seiten und gecachtem Local-SEO-Legacy-URL-Index: erfolgreich, `astro check` mit 0 Errors / 0 Warnings. Der Build fragt Local-SEO-Dokumente nicht mehr seitenweise ab, sondern indexiert sie gesammelt nach Legacy-URL.
+- Browser-Smoke 2026-05-29: `impressum.html` und `datenschutz.html` rendern mit `BaseLayout`, typisierten Legal-Bloecken, Header/Footer und WebPage-JSON-LD; `blog-fine-art-druck.html` rendert wieder alle vier Support-Artikelabschnitte. Keine kaputten Bilder, kein Error-Overlay, keine Console Errors/Warnings.
+- `web:build` nach vollstaendiger `.html`-Routenentkopplung: erfolgreich. Alle 217 bisherigen Root-HTML-URLs werden aus dem nativen Astro-Routenmodell gebaut; 6 Dubletten redirecten kanonisch, 4 Konzeptseiten sind noindex Astro-Archivseiten, alle Local-SEO-Varianten laufen ueber den Family-Renderer.
+- `web:build` nach Entfernung der App-internen Legacy-/Componentized-Bruecke: erfolgreich erwartet; die Visual-Regression-Baseline wird nun als separater Referenzserver aus den Root-HTML-Dateien gestartet und ist nicht mehr Teil der Astro-Produktionsrouten.
+- Route-Audit 2026-05-29: 217/217 Root-HTML-URLs im Build vorhanden, keine fehlenden nativen HTML-Routen und keine rohen Legacy-Render-Marker.
+- Site-Quality-Audit 2026-05-29: 466 Checks ueber 233 Routen in Desktop und Mobile, 0 Failures. Uebrig sind nur Long-Task-Warnungen auf bild-/animationsreichen Seiten.
+- Bild-/Asset-Haertung 2026-05-29: Lazyload-Bilder haben echte `src`-Fallbacks, die mobile Sticky-CTA erscheint erst nach Scrolltiefe, und `tools/prune-unused-dist-assets.mjs` behandelt Root-Assets wie `assets/...` und `_astro/...` korrekt.
 
 Weitere QA-Befehle:
 
@@ -304,7 +320,7 @@ Aktueller Release-Audit nach der letzten Haertung:
 - Published Release-Dokumente gesamt: 198.
 - Production-Audit: 0 Errors, 0 Warnings.
 
-`web:test:visual` nutzt ein zweistufiges Modell: 2% ist das Ziel und erzeugt Warnungen, 5% ist die harte Fail-Grenze. Das ist noetig, weil einige Legacy-Seiten dynamische JS-/Lazyload-Bildstrecken enthalten, deren Screenshot-Pixel trotz gleicher Route und gleicher Bildquellen leicht schwanken. Die Test-Baseline normalisiert Root-relative Assets, CSS/JS und dynamisch erzeugte Bildpfade ueber `<base href="/">`.
+`web:test:visual` nutzt ein zweistufiges Modell: 2% ist das Ziel und erzeugt Warnungen, 5% ist die harte Fail-Grenze. Das ist noetig, weil einige Referenzseiten dynamische JS-/Lazyload-Bildstrecken enthalten, deren Screenshot-Pixel trotz gleicher Route und gleicher Bildquellen leicht schwanken. Die Test-Baseline wird ausserhalb der Astro-App aus den Root-HTML-Dateien serviert und normalisiert Root-relative Assets, CSS/JS und dynamisch erzeugte Bildpfade ueber `<base href="/">`.
 
 ## Deployment
 
@@ -323,6 +339,6 @@ Kurzfassung:
 
 - Weitere nicht aktive Importgruppen redaktionell pruefen und erst danach `legacy.migrationStatus` von `seeded` auf `reviewed`, `componentized` oder `live` setzen.
 - Medienbestand weiter kuratieren: Alt-Texte, Captions, Featured-Auswahl, Mood/Tags und Verwendungszweck finalisieren.
-- Weitere Legacy-Layouts aus dem Body in echte Astro-Komponenten zerlegen, sobald Visual Regression fuer den Seitentyp stabil gruen ist: als naechstes Legal-Seiten, danach die sieben bestehenden Journal-Detail-HTML-Seiten und spaeter die Local-SEO-Family-Bodies Schritt fuer Schritt aus strukturierten Blocks statt Legacy-Body-HTML ausgeben.
+- Local-SEO-Family-Content weiter redaktionell verbessern: die technische Ausgabe ist nativ, aber einzelne Stadt-/Keyword-Texte sollten nach privatem Online-Test weiter gegen Copy/Prioritaet/Interlinking geprueft werden.
 - Local-SEO-Seiten nach dem privaten Online-Test final redaktionell gegenlesen und bei Bedarf einzelne Seiten wieder auf Draft setzen.
 - Optional: Rebuild-Hook auf dem Hetzner-Server aktivieren und mit echtem Secret testen.

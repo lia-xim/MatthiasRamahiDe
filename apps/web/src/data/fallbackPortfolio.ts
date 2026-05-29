@@ -14,10 +14,10 @@ export const fallbackPortfolioProjects = [
     excerpt: 'Kuratierte Automobilserie mit Licht, Linien, Details und ruhiger Materialwirkung.',
     coverImage: '/assets/optimized/assets-photos-automobil-neon-1920.webp',
     gallery: [
-      image('/assets/optimized/assets-photos-automobil-neon-1920.webp', 'Automobil'),
-      image('/assets/optimized/assets-photos-automobil-sunset-1920.webp', 'Automobil'),
-      image('/assets/optimized/assets-portfolio-dsc3032-generase-1-1920.webp', 'Automobil'),
-      image('/assets/optimized/assets-portfolio-dsc3892-1920.webp', 'Automobil'),
+      image('/assets/optimized/assets-photos-automobil-neon-960.webp', 'Automobil'),
+      image('/assets/optimized/assets-photos-automobil-sunset-960.webp', 'Automobil'),
+      image('/assets/portfolio/thumbs/_DSC3032_genErase (1).webp', 'Automobil'),
+      image('/assets/portfolio/thumbs/_DSC3892.webp', 'Automobil'),
     ],
     seo: {
       title: 'Portfolio-Auswahl Automobil',
@@ -34,10 +34,10 @@ export const fallbackPortfolioProjects = [
     excerpt: 'Sportwagenbilder mit praeziser Silhouette, Reflexkontrolle und klarer Dramaturgie.',
     coverImage: '/assets/optimized/assets-photos-automobil-sunset-1920.webp',
     gallery: [
-      image('/assets/optimized/assets-photos-automobil-sunset-1920.webp', 'Sportwagen'),
-      image('/assets/optimized/assets-portfolio-dsc3032-generase-2-1920.webp', 'Sportwagen'),
-      image('/assets/optimized/assets-portfolio-dsc3982-1920.webp', 'Sportwagen'),
-      image('/assets/optimized/assets-portfolio-dsc3879-1920.webp', 'Sportwagen'),
+      image('/assets/optimized/assets-photos-automobil-sunset-960.webp', 'Sportwagen'),
+      image('/assets/portfolio/thumbs/_DSC3032_genErase (2).webp', 'Sportwagen'),
+      image('/assets/portfolio/thumbs/_DSC3982.webp', 'Sportwagen'),
+      image('/assets/portfolio/thumbs/_DSC3879.webp', 'Sportwagen'),
     ],
     seo: {
       title: 'Portfolio-Auswahl Sportwagen',
@@ -54,10 +54,10 @@ export const fallbackPortfolioProjects = [
     excerpt: 'Oldtimer und Sammlerfahrzeuge als ruhige Serie aus Material, Patina und Form.',
     coverImage: '/assets/optimized/assets-photos-oldtimer-stage-1920.webp',
     gallery: [
-      image('/assets/optimized/assets-photos-oldtimer-stage-1920.webp', 'Oldtimer'),
-      image('/assets/optimized/assets-portfolio-dsc3892-1920.webp', 'Oldtimer'),
-      image('/assets/optimized/assets-portfolio-dsc2986-1920.webp', 'Oldtimer'),
-      image('/assets/optimized/assets-portfolio-dsc3032-generase-1-1920.webp', 'Oldtimer'),
+      image('/assets/optimized/assets-photos-oldtimer-stage-960.webp', 'Oldtimer'),
+      image('/assets/portfolio/thumbs/_DSC3892.webp', 'Oldtimer'),
+      image('/assets/portfolio/thumbs/_DSC2986.webp', 'Oldtimer'),
+      image('/assets/portfolio/thumbs/_DSC3032_genErase (1).webp', 'Oldtimer'),
     ],
     seo: {
       title: 'Portfolio-Auswahl Oldtimer',
@@ -74,10 +74,10 @@ export const fallbackPortfolioProjects = [
     excerpt: 'Motorradserie mit Linien, Metall, Haltung und reduzierter Standortwirkung.',
     coverImage: '/assets/optimized/assets-photos-motorrad-1920.webp',
     gallery: [
-      image('/assets/optimized/assets-photos-motorrad-1920.webp', 'Motorrad'),
-      image('/assets/optimized/assets-photos-motorrad-duke-1920.webp', 'Motorrad'),
-      image('/assets/optimized/assets-photos-motorrad-ninja-road-1920.webp', 'Motorrad'),
-      image('/assets/optimized/assets-photos-motorrad-ninja-road-1920.webp', 'Motorrad'),
+      image('/assets/optimized/assets-photos-motorrad-720.webp', 'Motorrad'),
+      image('/assets/optimized/assets-photos-motorrad-duke-720.webp', 'Motorrad'),
+      image('/assets/optimized/assets-photos-motorrad-ninja-road-720.webp', 'Motorrad'),
+      image('/assets/optimized/assets-photos-motorrad-ninja-road-720.webp', 'Motorrad'),
     ],
     seo: {
       title: 'Portfolio-Auswahl Motorrad',
@@ -94,10 +94,10 @@ export const fallbackPortfolioProjects = [
     excerpt: 'Portraitserie mit ruhiger Fuehrung, Licht, Naehe und professioneller Praesenz.',
     coverImage: '/assets/optimized/assets-portraits-20250327-dsc01550-1920.webp',
     gallery: [
-      image('/assets/optimized/assets-portraits-20250327-dsc01550-1920.webp', 'Portrait'),
-      image('/assets/optimized/assets-portraits-dsc2310-1920.webp', 'Portrait'),
-      image('/assets/optimized/assets-portraits-dsc2744-1920.webp', 'Portrait'),
-      image('/assets/optimized/assets-portraits-dsc3908-1920.webp', 'Portrait'),
+      image('/assets/portfolio/thumbs/20250327-DSC01550.webp', 'Portrait'),
+      image('/assets/portfolio/thumbs/_DSC2310.webp', 'Portrait'),
+      image('/assets/portfolio/thumbs/_DSC2744.webp', 'Portrait'),
+      image('/assets/portfolio/thumbs/_DSC3908.webp', 'Portrait'),
     ],
     seo: {
       title: 'Portfolio-Auswahl Portrait',
@@ -114,10 +114,10 @@ export const fallbackPortfolioProjects = [
     excerpt: 'Landschaftsmotive als kuratierte Serie aus Ruhe, Raum, Licht und Print-Potential.',
     coverImage: '/assets/optimized/assets-photos-landschaft-1920.webp',
     gallery: [
-      image('/assets/optimized/assets-photos-landschaft-1920.webp', 'Landschaft'),
-      image('/assets/optimized/assets-portfolio-20250605-dsc03756-1920.webp', 'Landschaft'),
-      image('/assets/optimized/assets-portfolio-20250605-dsc03978-1920.webp', 'Landschaft'),
-      image('/assets/optimized/assets-portfolio-wettberwerb-foto5-wunder-der-natur2-1920.webp', 'Landschaft'),
+      image('/assets/optimized/assets-photos-landschaft-720.webp', 'Landschaft'),
+      image('/assets/portfolio/thumbs/20250605-DSC03756.webp', 'Landschaft'),
+      image('/assets/portfolio/thumbs/20250605-DSC03978.webp', 'Landschaft'),
+      image('/assets/portfolio/thumbs/Wettberwerb_Foto5_Wunder_der_Natur2.webp', 'Landschaft'),
     ],
     seo: {
       title: 'Portfolio-Auswahl Landschaft',

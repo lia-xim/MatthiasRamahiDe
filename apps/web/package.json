@@ -7,10 +7,11 @@
     "predev": "node ../../tools/sync-legacy-public.mjs",
     "dev": "astro dev --host 0.0.0.0 --port 4321",
     "prebuild": "node ../../tools/sync-legacy-public.mjs",
-    "build": "astro check && astro build",
+    "build": "node ../../tools/run-web-build.mjs",
     "prepreview": "node ../../tools/sync-legacy-public.mjs",
     "preview": "astro preview --host 0.0.0.0 --port 4321",
     "test:legacy-routes": "node scripts/legacy-route-audit.mjs",
+    "test:site-quality": "node scripts/site-quality-audit.mjs",
     "test:visual": "node scripts/visual-regression.mjs"
   },
   "dependencies": {

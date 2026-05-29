@@ -1,5 +1,5 @@
 ---
-import NativeLegacyLayout from '../../layouts/NativeLegacyLayout.astro'
+import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
 
 const legacyFile = 'contact.html'
@@ -23,9 +23,9 @@ const directContacts = [
   },
 ]
 ---
-<NativeLegacyLayout legacyFile={legacyFile} current="kontakt" doc={doc}>
+<AdoptedPageLayout legacyFile={legacyFile} current="kontakt" doc={doc} bodyClass="has-mr-footer contact-page">
   <main>
-    <h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Kontakt Matthias Ramahi Fotografie Düsseldorf</h1>
+    <h1 class="sr-only">Kontakt Matthias Ramahi Fotografie Düsseldorf</h1>
     <section
       id="anfrage"
       data-contact-section
@@ -66,50 +66,4 @@ const directContacts = [
       </div>
     </section>
   </main>
-  <script is:inline>
-    document.addEventListener('click', async function (event) {
-      var target = event.target && event.target.closest ? event.target.closest('.kc-copy') : null
-      if (!target) return
-
-      event.preventDefault()
-      event.stopImmediatePropagation()
-
-      var value = target.dataset.copy || ''
-      var previous = target.textContent || 'Kopieren'
-
-      async function copyWithFallback(text) {
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          try {
-            await navigator.clipboard.writeText(text)
-            return true
-          } catch (err) {}
-        }
-
-        var helper = document.createElement('textarea')
-        helper.value = text
-        helper.setAttribute('readonly', '')
-        helper.style.position = 'fixed'
-        helper.style.left = '-9999px'
-        document.body.appendChild(helper)
-        helper.select()
-        try {
-          var legacyCopy = document['exec' + 'Command']
-          if (typeof legacyCopy === 'function') legacyCopy.call(document, 'copy')
-          return true
-        } catch (err) {
-          return false
-        } finally {
-          document.body.removeChild(helper)
-        }
-      }
-
-      await copyWithFallback(value)
-      target.textContent = 'Kopiert ✓'
-      target.classList.add('is-done')
-      window.setTimeout(function () {
-        target.textContent = previous
-        target.classList.remove('is-done')
-      }, 1600)
-    }, true)
-  </script>
-</NativeLegacyLayout>
+</AdoptedPageLayout>

@@ -1,5 +1,5 @@
 ---
-import NativeLegacyLayout from '../../layouts/NativeLegacyLayout.astro'
+import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
 
 const legacyFile = 'motorrad-fotografie.html'
@@ -39,24 +39,24 @@ const searchLinks = [
   ['biker-portrait-duesseldorf.html', 'Biker Portrait'],
 ] as const
 ---
-<NativeLegacyLayout legacyFile={legacyFile} current="fotografie" doc={doc}>
+<AdoptedPageLayout legacyFile={legacyFile} current="fotografie" doc={doc}>
   <main>
     <section class="hero-mr" id="top" data-header-theme="dark" aria-label="Motorradfotografie">
       <div class="hero-mr__stage" aria-hidden="true">
         <div class="hero-mr__slides">
           <div class="hero-mr__slide is-active" data-slide="0" style="--pos:50% 52%">
             <div class="hero-mr__zoom">
-              <img class="hero-mr__image" src="assets/optimized/assets-photos-motorrad-ninja-road-1920.webp" alt="" fetchpriority="high" decoding="async" width="1920" height="2880" />
+              <img class="hero-mr__image" src="assets/optimized/assets-photos-motorrad-ninja-road-960.webp" srcset="assets/optimized/assets-photos-motorrad-ninja-road-720.webp 720w, assets/optimized/assets-photos-motorrad-ninja-road-960.webp 960w, assets/optimized/assets-photos-motorrad-ninja-road-1920.webp 1920w" sizes="100vw" alt="" fetchpriority="high" decoding="async" width="960" height="1440" />
             </div>
           </div>
           <div class="hero-mr__slide" data-slide="1" style="--pos:50% 48%">
             <div class="hero-mr__zoom">
-              <img class="hero-mr__image" src="assets/optimized/assets-photos-motorrad-duke-1920.webp" alt="" decoding="async" loading="lazy" width="1920" height="3413" />
+              <img class="hero-mr__image" src="assets/optimized/assets-photos-motorrad-duke-960.webp" srcset="assets/optimized/assets-photos-motorrad-duke-720.webp 720w, assets/optimized/assets-photos-motorrad-duke-960.webp 960w, assets/optimized/assets-photos-motorrad-duke-1920.webp 1920w" sizes="100vw" alt="" decoding="async" loading="lazy" width="960" height="1706" />
             </div>
           </div>
           <div class="hero-mr__slide" data-slide="2" style="--pos:50% 50%">
             <div class="hero-mr__zoom">
-              <img class="hero-mr__image" src="assets/optimized/assets-photos-motorrad-ninja-road-1920.webp" alt="" decoding="async" loading="lazy" width="1920" height="2880" />
+              <img class="hero-mr__image" src="assets/optimized/assets-photos-motorrad-ninja-road-960.webp" srcset="assets/optimized/assets-photos-motorrad-ninja-road-720.webp 720w, assets/optimized/assets-photos-motorrad-ninja-road-960.webp 960w, assets/optimized/assets-photos-motorrad-ninja-road-1920.webp 1920w" sizes="100vw" alt="" decoding="async" loading="lazy" width="960" height="1440" />
             </div>
           </div>
         </div>
@@ -108,7 +108,7 @@ const searchLinks = [
         </div>
         <div class="mk-grid">
           <article class="mk-card">
-            <figure class="mk-img"><img data-src="assets/optimized/assets-photos-motorrad-ninja-road-1920.webp" loading="lazy" alt="Motorrad Stand & Silhouette" width="1920" height="2880" decoding="async" /></figure>
+            <figure class="mk-img"><img src="assets/optimized/assets-photos-motorrad-ninja-road-720.webp" data-src="assets/optimized/assets-photos-motorrad-ninja-road-720.webp" loading="lazy" alt="Motorrad Stand & Silhouette" width="720" height="1080" decoding="async" /></figure>
             <div class="mk-text">
               <span class="no">01 · Stand & Silhouette</span>
               <h3>Die ruhige Bildbühne</h3>
@@ -116,7 +116,7 @@ const searchLinks = [
             </div>
           </article>
           <article class="mk-card">
-            <figure class="mk-img"><img loading="lazy" src="assets/optimized/assets-portfolio-dsc3892-1920.webp" alt="Motorrad Detail" width="1920" height="1280" decoding="async" /></figure>
+            <figure class="mk-img"><img loading="lazy" src="assets/portfolio/thumbs/_DSC3892.webp" alt="Motorrad Detail" width="720" height="480" decoding="async" /></figure>
             <div class="mk-text">
               <span class="no">02 · Detail</span>
               <h3>Tank, Motor, Felge, Lenker</h3>
@@ -124,7 +124,7 @@ const searchLinks = [
             </div>
           </article>
           <article class="mk-card">
-            <figure class="mk-img"><img data-src="assets/optimized/assets-photos-motorrad-duke-1920.webp" loading="lazy" alt="Motorrad mit Fahrer" width="1920" height="3413" decoding="async" /></figure>
+            <figure class="mk-img"><img src="assets/optimized/assets-photos-motorrad-duke-720.webp" data-src="assets/optimized/assets-photos-motorrad-duke-720.webp" loading="lazy" alt="Motorrad mit Fahrer" width="720" height="1280" decoding="async" /></figure>
             <div class="mk-text">
               <span class="no">03 · Mit Fahrer</span>
               <h3>Mensch + Maschine, Haltung</h3>
@@ -132,7 +132,7 @@ const searchLinks = [
             </div>
           </article>
           <article class="mk-card">
-            <figure class="mk-img"><img data-src="assets/optimized/assets-photos-motorrad-ninja-road-1920.webp" loading="lazy" alt="Motorrad Schräglage und Kurve" width="1920" height="2880" decoding="async" /></figure>
+            <figure class="mk-img"><img src="assets/optimized/assets-photos-motorrad-ninja-road-720.webp" data-src="assets/optimized/assets-photos-motorrad-ninja-road-720.webp" loading="lazy" alt="Motorrad Schräglage und Kurve" width="720" height="1080" decoding="async" /></figure>
             <div class="mk-text">
               <span class="no">04 · Schräglage & Kurve</span>
               <h3>On-the-go, Pan-Shots</h3>
@@ -140,7 +140,7 @@ const searchLinks = [
             </div>
           </article>
           <article class="mk-card">
-            <figure class="mk-img"><img loading="lazy" src="assets/optimized/assets-portfolio-dsc2986-1920.webp" alt="Motorrad Cinematic" width="1707" height="2560" decoding="async" /></figure>
+            <figure class="mk-img"><img loading="lazy" src="assets/portfolio/thumbs/_DSC2986.webp" alt="Motorrad Cinematic" width="720" height="1080" decoding="async" /></figure>
             <div class="mk-text">
               <span class="no">05 · Cinematic</span>
               <h3>Atmosphäre, Licht, Editorial</h3>
@@ -148,7 +148,7 @@ const searchLinks = [
             </div>
           </article>
           <article class="mk-card">
-            <figure class="mk-img"><img loading="lazy" src="assets/portfolio/_DSC9301-Enhanced-NR.webp" alt="Motorrad Social & Vertical" width="2048" height="2560" decoding="async" /></figure>
+            <figure class="mk-img"><img loading="lazy" src="assets/portfolio/thumbs/_DSC9301-Enhanced-NR.webp" alt="Motorrad Social & Vertical" width="720" height="900" decoding="async" /></figure>
             <div class="mk-text">
               <span class="no">06 · Social & Vertical</span>
               <h3>Reels, Story, 9:16-Cuts</h3>
@@ -165,28 +165,28 @@ const searchLinks = [
           <h2>Aktuelle <em>Arbeiten.</em></h2>
           <p>Sechs kuratierte Motorrad-Bilder aus jüngeren Serien. Klicken zum Vergrössern.</p>
         </header>
-        <button type="button" class="po-tile t1" data-i="0" aria-label="Bild 1 vergrößern">
-          <img loading="lazy" src="assets/optimized/assets-photos-motorrad-1920.webp" alt="Motorrad Hero-Motiv" width="1707" height="2560" decoding="async" />
+        <button type="button" class="po-tile t1" data-i="0" data-full="assets/optimized/assets-photos-motorrad-1920.webp" aria-label="Bild 1 vergrößern">
+          <img loading="lazy" src="assets/optimized/assets-photos-motorrad-720.webp" data-full="assets/optimized/assets-photos-motorrad-1920.webp" alt="Motorrad Hero-Motiv" width="720" height="1080" decoding="async" />
           <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
         </button>
-        <button type="button" class="po-tile t2" data-i="1" aria-label="Bild 2 vergrößern">
-          <img data-src="assets/optimized/assets-portfolio-dsc3892-1920.webp" loading="lazy" alt="Motorrad Detail" width="1920" height="1280" decoding="async" />
+        <button type="button" class="po-tile t2" data-i="1" data-full="assets/optimized/assets-portfolio-dsc3892-1920.webp" aria-label="Bild 2 vergrößern">
+          <img src="assets/portfolio/thumbs/_DSC3892.webp" data-full="assets/optimized/assets-portfolio-dsc3892-1920.webp" loading="lazy" alt="Motorrad Detail" width="720" height="480" decoding="async" />
           <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
         </button>
-        <button type="button" class="po-tile t3" data-i="2" aria-label="Bild 3 vergrößern">
-          <img data-src="assets/optimized/assets-portfolio-dsc2986-1920.webp" loading="lazy" alt="Motorrad in Werkstatt" width="1707" height="2560" decoding="async" />
+        <button type="button" class="po-tile t3" data-i="2" data-full="assets/optimized/assets-portfolio-dsc2986-1920.webp" aria-label="Bild 3 vergrößern">
+          <img src="assets/portfolio/thumbs/_DSC2986.webp" data-full="assets/optimized/assets-portfolio-dsc2986-1920.webp" loading="lazy" alt="Motorrad in Werkstatt" width="720" height="1080" decoding="async" />
           <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
         </button>
-        <button type="button" class="po-tile t4" data-i="3" aria-label="Bild 4 vergrößern">
-          <img data-src="assets/portfolio/_DSC9301-Enhanced-NR.webp" loading="lazy" alt="Motorrad Vertical" width="2048" height="2560" decoding="async" />
+        <button type="button" class="po-tile t4" data-i="3" data-full="assets/portfolio/_DSC9301-Enhanced-NR.webp" aria-label="Bild 4 vergrößern">
+          <img src="assets/portfolio/thumbs/_DSC9301-Enhanced-NR.webp" data-full="assets/portfolio/_DSC9301-Enhanced-NR.webp" loading="lazy" alt="Motorrad Vertical" width="720" height="900" decoding="async" />
           <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
         </button>
-        <button type="button" class="po-tile t5" data-i="4" aria-label="Bild 5 vergrößern">
-          <img loading="lazy" src="assets/portfolio/_DSC9321-Enhanced-NR.webp" alt="Motorrad Profil" width="1707" height="2560" decoding="async" />
+        <button type="button" class="po-tile t5" data-i="4" data-full="assets/portfolio/_DSC9321-Enhanced-NR.webp" aria-label="Bild 5 vergrößern">
+          <img loading="lazy" src="assets/portfolio/thumbs/_DSC9321-Enhanced-NR.webp" data-full="assets/portfolio/_DSC9321-Enhanced-NR.webp" alt="Motorrad Profil" width="720" height="1080" decoding="async" />
           <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
         </button>
-        <button type="button" class="po-tile t6" data-i="5" aria-label="Bild 6 vergrößern">
-          <img loading="lazy" src="assets/optimized/assets-portfolio-dsc3878-1920.webp" alt="Motorrad Cinematic" width="1920" height="1280" decoding="async" />
+        <button type="button" class="po-tile t6" data-i="5" data-full="assets/optimized/assets-portfolio-dsc3878-1920.webp" aria-label="Bild 6 vergrößern">
+          <img loading="lazy" src="assets/portfolio/thumbs/_DSC3878.webp" data-full="assets/optimized/assets-portfolio-dsc3878-1920.webp" alt="Motorrad Cinematic" width="720" height="480" decoding="async" />
           <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
         </button>
       </div>
@@ -219,22 +219,22 @@ const searchLinks = [
         </div>
         <div class="rl-grid">
           <a class="rl-card" href="automobil-fotografie.html">
-            <img loading="lazy" src="assets/optimized/assets-photos-automobil-neon-1920.webp" alt="Automobilfotografie" width="1920" height="1280" decoding="async" />
+            <img loading="lazy" src="assets/optimized/assets-photos-automobil-neon-960.webp" alt="Automobilfotografie" width="960" height="640" decoding="async" />
             <div class="overlay"></div>
             <div class="content"><div><span>01 / Verwandt</span><strong>Automobil</strong></div><span class="arrow">→</span></div>
           </a>
           <a class="rl-card" href="sportwagen-fotografie.html">
-            <img loading="lazy" src="assets/optimized/assets-portfolio-dsc3032-generase-1-1920.webp" alt="Sportwagenfotografie" width="1920" height="1280" decoding="async" />
+            <img loading="lazy" src="assets/portfolio/thumbs/_DSC3032_genErase (1).webp" alt="Sportwagenfotografie" width="720" height="480" decoding="async" />
             <div class="overlay"></div>
             <div class="content"><div><span>02 / Verwandt</span><strong>Sportwagen</strong></div><span class="arrow">→</span></div>
           </a>
           <a class="rl-card" href="videografie-duesseldorf.html">
-            <img loading="lazy" src="assets/optimized/assets-portfolio-dsc8032-1920.webp" alt="Videografie" width="1920" height="2400" decoding="async" />
+            <img loading="lazy" src="assets/portfolio/thumbs/_DSC8032.webp" alt="Videografie" width="720" height="900" decoding="async" />
             <div class="overlay"></div>
             <div class="content"><div><span>03 / Service</span><strong>Videografie</strong></div><span class="arrow">→</span></div>
           </a>
           <a class="rl-card" href="portfolio.html">
-            <img loading="lazy" src="assets/optimized/assets-portfolio-dsc3879-1920.webp" alt="Vollständiges Portfolio" width="1920" height="1280" decoding="async" />
+            <img loading="lazy" src="assets/portfolio/thumbs/_DSC3879.webp" alt="Vollständiges Portfolio" width="720" height="480" decoding="async" />
             <div class="overlay"></div>
             <div class="content"><div><span>04 / Übersicht</span><strong>Portfolio</strong></div><span class="arrow">→</span></div>
           </a>
@@ -273,4 +273,4 @@ const searchLinks = [
       data-contact-lead="Schreibe kurz, welches Bike fotografiert werden soll — Modell, Standort, ob Fahrerbilder gewünscht sind und wofür die Bilder genutzt werden. Wir klären Licht, Location und Ablauf gemeinsam."
     ></section>
   </main>
-</NativeLegacyLayout>
+</AdoptedPageLayout>

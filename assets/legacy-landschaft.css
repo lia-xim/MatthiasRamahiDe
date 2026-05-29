@@ -98,7 +98,7 @@
     .hero-ls__actions{margin-top:clamp(22px,2.4vw,36px);display:flex;gap:14px;flex-wrap:wrap;opacity:0;transform:translateY(8px);transition:opacity .9s ease 2.25s, transform .9s ease 2.25s}
     .hero-ls.is-revealed .hero-ls__actions{opacity:1;transform:translateY(0)}
     /* Hero-Buttons — bordered Mono-Caps, geteilt mit Portrait/Sportwagen/Automobil. */
-    .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;
+    .btn{min-height:44px;display:inline-flex;align-items:center;gap:10px;padding:14px 22px;
       border:1px solid rgba(243,245,239,.32);color:rgba(245,245,241,.7);
       font-family:var(--font-mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;
       transition:background .35s ease,color .35s ease,border-color .35s ease;border-radius:0}
@@ -113,7 +113,7 @@
     .st-ls__title em{font-style:normal;font-weight:200;color:var(--ink);opacity:.78;letter-spacing:-.038em}
     .st-ls__body p{color:var(--muted-l);font-size:clamp(15px,1.1vw,17px);line-height:1.65;max-width:48ch}
     .st-ls__body p+p{margin-top:14px}
-    .st-ls__cta{margin-top:24px;display:inline-flex;align-items:center;gap:9px;font-family:var(--font-mono);text-transform:uppercase;font-size:11px;letter-spacing:.18em;color:var(--ink);border-bottom:1px solid var(--ink);padding-bottom:4px;transition:letter-spacing .35s ease,color .25s ease}
+    .st-ls__cta{min-height:44px;margin-top:24px;display:inline-flex;align-items:center;gap:9px;font-family:var(--font-mono);text-transform:uppercase;font-size:11px;letter-spacing:.18em;color:var(--ink);border-bottom:1px solid var(--ink);padding-bottom:4px;transition:letter-spacing .35s ease,color .25s ease}
     .st-ls__cta:hover{letter-spacing:.24em;color:var(--accent-2)}
 
     /* MODULES — Wie eine Landschaftsserie entsteht (4 cards mit echten Bildern) */
@@ -136,7 +136,7 @@
     .bg-ls__head{max-width:1480px;margin:0 auto;width:100%;display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-bottom:clamp(28px,3vw,48px)}
     .bg-ls__title{font-family:var(--font-display);font-weight:700;font-size:clamp(40px,6.2vw,108px);line-height:.86;letter-spacing:-.058em;max-width:760px;text-transform:uppercase}
     .bg-ls__title em{font-style:normal;font-weight:200;color:#f6f5f0;opacity:.7;letter-spacing:-.04em}
-    .bg-ls__link{font-family:var(--font-mono);text-transform:uppercase;font-size:11px;letter-spacing:.18em;color:#f6f5f0;border-bottom:1px solid rgba(245,245,241,.4);padding-bottom:4px;transition:letter-spacing .35s ease}
+    .bg-ls__link{min-height:44px;display:inline-flex;align-items:center;font-family:var(--font-mono);text-transform:uppercase;font-size:11px;letter-spacing:.18em;color:#f6f5f0;border-bottom:1px solid rgba(245,245,241,.4);padding-bottom:4px;transition:letter-spacing .35s ease}
     .bg-ls__link:hover{letter-spacing:.24em}
     .bg-ls__grid{flex:1;min-height:0;max-width:1480px;margin:0 auto;width:100%;display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:repeat(10,1fr);gap:14px}
     .bg-ls__tile{position:relative;overflow:hidden;background:#101218;cursor:zoom-in;border:0;padding:0;transition:opacity .5s ease,transform .6s ease}
@@ -170,7 +170,7 @@
     .fw-ls__step-num{font-family:var(--font-mono);font-size:11px;letter-spacing:.22em;color:var(--muted-l)}
     .fw-ls__step h3{font-family:var(--font-display);font-weight:400;font-size:clamp(20px,1.9vw,28px);letter-spacing:-.02em;line-height:1.1}
     .fw-ls__cta{margin-top:clamp(48px,6vw,80px)}
-    .fw-ls__cta a{font-family:var(--font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;border-bottom:1px solid var(--ink);padding-bottom:4px;transition:letter-spacing .35s ease,color .25s ease}
+    .fw-ls__cta a{min-height:44px;display:inline-flex;align-items:center;font-family:var(--font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;border-bottom:1px solid var(--ink);padding-bottom:4px;transition:letter-spacing .35s ease,color .25s ease}
     .fw-ls__cta a:hover{letter-spacing:.24em;color:var(--accent-2)}
 
     /* VERWANDTE — dark */
@@ -180,7 +180,7 @@
     .rl-ls__title em{font-style:normal;font-weight:200;color:#f6f5f0;opacity:.65}
     .rl-ls__intro{color:rgba(245,245,241,.66);font-size:clamp(14px,1.05vw,16px);line-height:1.6;max-width:68ch;margin:calc(-1 * clamp(20px,2vw,38px)) 0 clamp(28px,3vw,52px)}
     .rl-ls__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-    .rl-ls__card{position:relative;overflow:hidden;aspect-ratio:4/5;background:#101218;border:1px solid var(--hair);text-decoration:none;color:#f6f5f0;transition:transform .5s ease,border-color .5s ease}
+    .rl-ls__card{position:relative;overflow:hidden;min-height:44px;aspect-ratio:4/5;background:#101218;border:1px solid var(--hair);text-decoration:none;color:#f6f5f0;transition:transform .5s ease,border-color .5s ease}
     .rl-ls__card:hover{transform:translateY(-4px);border-color:rgba(245,245,241,.32)}
     .rl-ls__card-img{position:absolute;inset:0;background-size:cover;background-position:center;filter:grayscale(.32) brightness(.78);transition:filter .6s ease,transform .8s ease}
     .rl-ls__card:hover .rl-ls__card-img{filter:none;transform:scale(1.06)}

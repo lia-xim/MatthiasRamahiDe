@@ -1,5 +1,5 @@
 ---
-import NativeLegacyLayout from '../../layouts/NativeLegacyLayout.astro'
+import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import { type JournalPostCard, journalCards, journalFilters, journalHero, journalTicker } from '../../lib/journalIndexContent'
 import {
   getSitePageByType,
@@ -55,13 +55,14 @@ const cmsCards = cmsPosts
   })
   .filter(Boolean) as JournalPostCard[]
 const posts = cmsCards.length > 0 ? cmsCards : journalCards
+const initialVisiblePostCount = 6
 ---
-<NativeLegacyLayout legacyFile="blog.html" current="blog" doc={doc}>
+<AdoptedPageLayout legacyFile="blog.html" current="blog" doc={doc}>
   <div class="light" aria-hidden="true"></div>
   <main>
     <section class="hero" id="top" data-header-theme="dark" aria-label="Blog Intro">
       <div class="hero__bg" aria-hidden="true">
-        <img src={journalHero.image} alt="" width="1920" height="1280" decoding="async" />
+        <img src={journalHero.image} alt="" width="960" height="640" decoding="async" />
       </div>
       <div class="hero__veil" aria-hidden="true"></div>
       <div class="hero__inner">
@@ -98,10 +99,11 @@ const posts = cmsCards.length > 0 ? cmsCards : journalCards
         </div>
         <figure class="feature-image reveal">
           <img
-            data-src="/assets/optimized/assets-photos-automobil-sunset-1920.webp"
+            src="/assets/optimized/assets-photos-automobil-sunset-960.webp"
+            data-src="/assets/optimized/assets-photos-automobil-sunset-960.webp"
             alt="Auto in dramatischem Licht als Beispiel für geplante Bildstimmung"
-            width="1920"
-            height="1280"
+            width="960"
+            height="640"
             decoding="async"
             loading="lazy"
           />
@@ -119,12 +121,17 @@ const posts = cmsCards.length > 0 ? cmsCards : journalCards
         </div>
       </div>
       <div class="post-grid">
-        {posts.map((post) => (
-          <a class={`post ${post.dark ? 'dark' : ''}`.trim()} href={post.href} data-category={post.category}>
+        {posts.map((post, index) => (
+          <a
+            class={`post ${post.dark ? 'dark' : ''} ${index >= initialVisiblePostCount ? 'not-loaded' : ''}`.trim()}
+            href={post.href}
+            data-category={post.category}
+            style={index < initialVisiblePostCount ? 'grid-column:span 4' : undefined}
+          >
             <div class="post-media">
               <img
-                src={post.eager ? post.image : undefined}
-                data-src={post.eager ? undefined : post.image}
+                src={post.image}
+                data-src={post.image}
                 alt={post.imageAlt}
                 width={post.width}
                 height={post.height}
@@ -142,7 +149,7 @@ const posts = cmsCards.length > 0 ? cmsCards : journalCards
         ))}
       </div>
       <div class="load-panel" id="loadPanel" aria-live="polite">
-        <span class="load-status" id="loadStatus">{Math.min(6, posts.length)} von {posts.length} Beiträgen sichtbar</span>
+        <span class="load-status" id="loadStatus">{Math.min(initialVisiblePostCount, posts.length)} von {posts.length} Beiträgen sichtbar</span>
         <button class="load-more" id="loadMore" type="button">Mehr Beiträge laden</button>
       </div>
     </section>
@@ -157,4 +164,4 @@ const posts = cmsCards.length > 0 ? cmsCards : journalCards
       </div>
     </section>
   </main>
-</NativeLegacyLayout>
+</AdoptedPageLayout>

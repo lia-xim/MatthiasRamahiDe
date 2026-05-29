@@ -1,0 +1,112 @@
+---
+import NativeLocalSeoFamilyPage from '../cms/NativeLocalSeoFamilyPage.astro'
+import NativeAboutPage from './NativeAboutPage.astro'
+import NativeAutomobilPhotographyPage from './NativeAutomobilPhotographyPage.astro'
+import NativeConceptArchivePage from './NativeConceptArchivePage.astro'
+import NativeContactPage from './NativeContactPage.astro'
+import NativeHomePage from './NativeHomePage.astro'
+import NativeJournalIndexPage from './NativeJournalIndexPage.astro'
+import NativeJournalArticleLegacyUrlPage from './NativeJournalArticleLegacyUrlPage.astro'
+import NativeLandschaftPhotographyPage from './NativeLandschaftPhotographyPage.astro'
+import NativeLegalPage from './NativeLegalPage.astro'
+import NativeMotorradPhotographyPage from './NativeMotorradPhotographyPage.astro'
+import NativeOldtimerPhotographyPage from './NativeOldtimerPhotographyPage.astro'
+import NativePhotographyPage from './NativePhotographyPage.astro'
+import NativePortfolioIndexPage from './NativePortfolioIndexPage.astro'
+import NativePortraitPhotographyPage from './NativePortraitPhotographyPage.astro'
+import NativePrintLabPage from './NativePrintLabPage.astro'
+import NativeServiceDetailPage from './NativeServiceDetailPage.astro'
+import NativeServicesIndexPage from './NativeServicesIndexPage.astro'
+import NativeSportwagenPhotographyPage from './NativeSportwagenPhotographyPage.astro'
+import { isLocalSeoAdoptionCandidate } from '../../lib/adoptedRoutes'
+import { getConceptArchivePage } from '../../lib/conceptArchiveContent'
+import { journalArticleByLegacyFile } from '../../lib/journalArticleContent'
+import { getByLegacyUrlFromIndex, type PayloadDoc } from '../../lib/payload'
+import { nativeServiceDetailFiles } from '../../lib/serviceDetailContent'
+
+type Props = {
+  legacyFile: string
+  localSeoDoc?: PayloadDoc | null
+}
+
+const { legacyFile, localSeoDoc: providedLocalSeoDoc = undefined } = Astro.props as Props
+
+const photographyOverviewFiles = ['fotografie-duesseldorf.html', 'fotografie-nrw.html', 'fotografie-deutschland.html']
+const shouldRenderNativeHome = legacyFile === 'index.html'
+const shouldRenderNativePhotography = legacyFile === 'fotografie.html'
+const shouldRenderNativePhotographyOverview = photographyOverviewFiles.includes(legacyFile)
+const shouldRenderNativeAutomobil = legacyFile === 'automobil-fotografie.html'
+const shouldRenderNativeSportwagen = legacyFile === 'sportwagen-fotografie.html'
+const shouldRenderNativeOldtimer = legacyFile === 'oldtimer-fotografie.html'
+const shouldRenderNativeMotorrad = legacyFile === 'motorrad-fotografie.html'
+const shouldRenderNativePortrait = legacyFile === 'portraitfotografie.html'
+const shouldRenderNativeLandschaft = legacyFile === 'landschaftsfotografie.html'
+const shouldRenderNativeJournalIndex = legacyFile === 'blog.html'
+const shouldRenderNativeJournalDetail = Boolean(journalArticleByLegacyFile[legacyFile])
+const shouldRenderNativePortfolioIndex = legacyFile === 'portfolio.html'
+const shouldRenderNativePrintLab = legacyFile === 'fotolabor-druck-duesseldorf.html'
+const shouldRenderNativeServiceDetail = nativeServiceDetailFiles.includes(legacyFile)
+const shouldRenderNativeServicesIndex = legacyFile === 'leistungen.html'
+const shouldRenderNativeContact = legacyFile === 'contact.html'
+const shouldRenderNativeAbout = legacyFile === 'ueber-mich.html'
+const shouldRenderNativeLegal = legacyFile === 'impressum.html' || legacyFile === 'datenschutz.html'
+const shouldRenderNativeConcept = Boolean(getConceptArchivePage(legacyFile))
+const shouldRenderNativeLocalSeo = isLocalSeoAdoptionCandidate(legacyFile)
+const localSeoDoc =
+  shouldRenderNativeLocalSeo && providedLocalSeoDoc === undefined
+    ? await getByLegacyUrlFromIndex('local-seo-pages', legacyFile, { depth: 2, limit: 500 })
+    : providedLocalSeoDoc
+
+if (shouldRenderNativeLegal) {
+  Astro.response.headers.set('x-cms-render-source', 'structured-astro')
+  Astro.response.headers.set('x-cms-page-kind', 'legal-native')
+}
+
+if (shouldRenderNativeJournalDetail) {
+  Astro.response.headers.set('x-cms-render-source', 'structured-astro')
+  Astro.response.headers.set('x-cms-page-kind', 'journal-native-legacy-url')
+}
+---
+{
+  shouldRenderNativeHome ? (
+    <NativeHomePage />
+  ) : shouldRenderNativePhotography ? (
+    <NativePhotographyPage />
+  ) : shouldRenderNativePhotographyOverview ? (
+    <NativePhotographyPage legacyFile={legacyFile} />
+  ) : shouldRenderNativeAutomobil ? (
+    <NativeAutomobilPhotographyPage />
+  ) : shouldRenderNativeSportwagen ? (
+    <NativeSportwagenPhotographyPage />
+  ) : shouldRenderNativeOldtimer ? (
+    <NativeOldtimerPhotographyPage />
+  ) : shouldRenderNativeMotorrad ? (
+    <NativeMotorradPhotographyPage />
+  ) : shouldRenderNativePortrait ? (
+    <NativePortraitPhotographyPage />
+  ) : shouldRenderNativeLandschaft ? (
+    <NativeLandschaftPhotographyPage />
+  ) : shouldRenderNativeJournalIndex ? (
+    <NativeJournalIndexPage />
+  ) : shouldRenderNativeJournalDetail ? (
+    <NativeJournalArticleLegacyUrlPage legacyFile={legacyFile} />
+  ) : shouldRenderNativePortfolioIndex ? (
+    <NativePortfolioIndexPage />
+  ) : shouldRenderNativePrintLab ? (
+    <NativePrintLabPage />
+  ) : shouldRenderNativeServiceDetail ? (
+    <NativeServiceDetailPage legacyFile={legacyFile} />
+  ) : shouldRenderNativeServicesIndex ? (
+    <NativeServicesIndexPage />
+  ) : shouldRenderNativeContact ? (
+    <NativeContactPage />
+  ) : shouldRenderNativeAbout ? (
+    <NativeAboutPage />
+  ) : shouldRenderNativeLegal ? (
+    <NativeLegalPage legacyFile={legacyFile as 'impressum.html' | 'datenschutz.html'} />
+  ) : shouldRenderNativeConcept ? (
+    <NativeConceptArchivePage legacyFile={legacyFile} />
+  ) : shouldRenderNativeLocalSeo ? (
+    <NativeLocalSeoFamilyPage doc={localSeoDoc as PayloadDoc | null} legacyFile={legacyFile} />
+  ) : null
+}

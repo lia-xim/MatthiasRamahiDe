@@ -144,7 +144,7 @@
   .hero-mr.is-on .hero-mr__lede-block{opacity:1;transform:translateY(0)}
   .hero-mr__lede{color:rgba(243,245,239,.82);font-size:clamp(14px,1.05vw,16.5px);line-height:1.6;margin:0;text-shadow:0 1px 18px rgba(0,0,0,.7)}
   .hero-mr__actions{display:flex;gap:10px;flex-wrap:wrap}
-  .hero-mr__actions a{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border:1px solid rgba(243,245,239,.9);color:#f6f7f2;font:11px var(--mono);letter-spacing:.22em;text-transform:uppercase;transition:background .35s var(--ease),color .35s var(--ease),border-color .35s var(--ease);background:transparent}
+  .hero-mr__actions a{min-height:44px;display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border:1px solid rgba(243,245,239,.9);color:#f6f7f2;font:11px var(--mono);letter-spacing:.22em;text-transform:uppercase;transition:background .35s var(--ease),color .35s var(--ease),border-color .35s var(--ease);background:transparent}
   .hero-mr__actions a:hover{background:#f6f7f2;color:#0a0c10;border-color:#f6f7f2}
   .hero-mr__actions a.ghost{border-color:rgba(243,245,239,.34);color:rgba(243,245,239,.72)}
   .hero-mr__actions a.ghost:hover{border-color:#f6f7f2;color:#f6f7f2;background:transparent}
@@ -160,7 +160,7 @@
   .hero-mr.is-on .hero-mr__rail{opacity:1;transform:translateY(0)}
 
   .hero-mr__rail-dots{display:flex;gap:10px;justify-content:flex-end;align-items:center;padding-top:6px}
-  .hero-mr__rail-dots button{appearance:none;background:transparent;border:0;padding:6px;cursor:pointer;display:flex;align-items:center}
+  .hero-mr__rail-dots button{min-width:44px;min-height:44px;appearance:none;background:transparent;border:0;padding:6px;cursor:pointer;display:flex;align-items:center;justify-content:center}
   .hero-mr__rail-dots button span{display:block;width:22px;height:1px;background:rgba(255,255,255,.32);transition:background .3s ease,width .35s ease}
   .hero-mr__rail-dots button[aria-current="true"] span{background:#c63b31;width:46px}
   .hero-mr__rail-dots button:hover span{background:rgba(255,255,255,.85)}
@@ -173,7 +173,7 @@
   .st-body{display:grid;gap:18px;max-width:520px;justify-self:end}
   .st-body p{color:var(--muted-l);font-size:clamp(15px,1.1vw,17px);line-height:1.66;margin:0}
   .st-body p strong{color:var(--ink);font-weight:600}
-  .st-cta{margin-top:14px;font:11px var(--mono);letter-spacing:.24em;text-transform:uppercase;color:var(--ink);display:inline-flex;align-items:center;gap:10px;border-bottom:1px solid var(--ink);padding-bottom:6px;transition:letter-spacing .4s var(--ease);width:fit-content}
+  .st-cta{min-height:44px;margin-top:14px;font:11px var(--mono);letter-spacing:.24em;text-transform:uppercase;color:var(--ink);display:inline-flex;align-items:center;gap:10px;border-bottom:1px solid var(--ink);padding-bottom:6px;transition:letter-spacing .4s var(--ease);width:fit-content}
   .st-cta:hover{letter-spacing:.3em}
 
   /* ============ MECHANIK — module 2x2 grid with image left + text right per card ============ */
@@ -254,7 +254,7 @@
   .fw-foot{margin-top:clamp(24px,3vw,40px);padding-top:clamp(24px,3vw,40px);border-top:1px solid rgba(10,12,16,.12);display:flex;align-items:baseline;justify-content:space-between;gap:32px;flex-wrap:wrap}
   .fw-foot p{color:var(--muted-l);font-size:14.5px;line-height:1.5}
   .fw-foot p em{font-style:italic;color:var(--accent-2)}
-  .fw-foot a{font:11px var(--mono);letter-spacing:.24em;text-transform:uppercase;color:var(--ink);display:inline-flex;align-items:center;gap:10px;border-bottom:1px solid var(--ink);padding-bottom:6px;transition:letter-spacing .4s var(--ease)}
+  .fw-foot a{min-height:44px;font:11px var(--mono);letter-spacing:.24em;text-transform:uppercase;color:var(--ink);display:inline-flex;align-items:center;gap:10px;border-bottom:1px solid var(--ink);padding-bottom:6px;transition:letter-spacing .4s var(--ease)}
   .fw-foot a:hover{letter-spacing:.3em}
 
   /* ============ RELATED ============ */

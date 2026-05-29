@@ -40,9 +40,13 @@ const categories = [
       `Automobilfotografie in ${place}: Exterieur, Interieur, Details und Cinematic werden als kuratierte Bildserie geplant — für Marke, Showroom, Verkauf, Kampagne und hochwertige private Fahrzeuge.`,
     keywords: [
       ['automotive-fotografie-duesseldorf.html', 'Automotive Fotografie'],
+      ['automotive-fotografie.html', 'Automotive Fotografie'],
       ['autofotografie-duesseldorf.html', 'Autofotografie'],
+      ['autofotografie.html', 'Autofotografie'],
       ['fahrzeugfotografie-duesseldorf.html', 'Fahrzeugfotografie'],
+      ['fahrzeugfotografie.html', 'Fahrzeugfotografie'],
       ['autohaus-fotografie-duesseldorf.html', 'Autohaus Fotografie'],
+      ['autohaus-fotografie.html', 'Autohaus Fotografie'],
       ['autoverkauf-fotos-duesseldorf.html', 'Autoverkauf Fotos'],
     ],
   },
@@ -59,8 +63,11 @@ const categories = [
       ['sportwagen-shooting-duesseldorf.html', 'Sportwagen Shooting'],
       ['sportwagen-fotoshooting-duesseldorf.html', 'Sportwagen Fotoshooting'],
       ['performance-car-fotografie-duesseldorf.html', 'Performance Car Fotografie'],
+      ['performance-car-fotografie.html', 'Performance Car Fotografie'],
       ['exotic-car-fotografie-duesseldorf.html', 'Exotic Car Fotografie'],
+      ['exotic-car-fotografie.html', 'Exotic Car Fotografie'],
       ['supersportwagen-fotografie-duesseldorf.html', 'Supersportwagen Fotografie'],
+      ['supersportwagen-fotografie.html', 'Supersportwagen Fotografie'],
     ],
   },
   {
@@ -74,9 +81,12 @@ const categories = [
       `Oldtimer-Fotografie in ${place}: Herkunft, Material, Lack, Chrom, Leder und Patina werden ruhig dokumentiert — für Sammlung, Verkauf, Auktion, Ausstellung und Fahrzeuge mit Geschichte.`,
     keywords: [
       ['classic-car-fotografie-duesseldorf.html', 'Classic Car Fotografie'],
+      ['classic-car-fotografie.html', 'Classic Car Fotografie'],
       ['oldtimer-shooting-duesseldorf.html', 'Oldtimer Shooting'],
       ['youngtimer-fotografie-duesseldorf.html', 'Youngtimer Fotografie'],
+      ['youngtimer-fotografie.html', 'Youngtimer Fotografie'],
       ['sammlerfahrzeug-fotografie-duesseldorf.html', 'Sammlerfahrzeug Fotografie'],
+      ['sammlerfahrzeug-fotografie.html', 'Sammlerfahrzeug Fotografie'],
       ['oldtimer-verkaufsfotos-duesseldorf.html', 'Oldtimer Verkaufsfotos'],
     ],
   },
@@ -92,7 +102,9 @@ const categories = [
     keywords: [
       ['motorrad-shooting-duesseldorf.html', 'Motorrad Shooting'],
       ['bike-fotografie-duesseldorf.html', 'Bike Fotografie'],
+      ['bike-fotografie.html', 'Bike Fotografie'],
       ['custom-bike-fotografie-duesseldorf.html', 'Custom Bike Fotografie'],
+      ['custom-bike-fotografie.html', 'Custom Bike Fotografie'],
       ['motorrad-verkaufsfotos-duesseldorf.html', 'Motorrad Verkaufsfotos'],
       ['biker-portrait-duesseldorf.html', 'Biker Portrait'],
     ],
@@ -110,6 +122,7 @@ const categories = [
       ['business-portrait-duesseldorf.html', 'Business Portrait'],
       ['headshot-fotograf-duesseldorf.html', 'Headshot Fotograf'],
       ['personal-branding-fotografie-duesseldorf.html', 'Personal Branding Fotografie'],
+      ['personal-branding-fotografie.html', 'Personal Branding Fotografie'],
       ['unternehmensportrait-duesseldorf.html', 'Unternehmensportrait'],
       ['pressefoto-duesseldorf.html', 'Pressefoto'],
     ],
@@ -165,7 +178,7 @@ function categoryFromFile(file) {
     }
 
     if (category.keywords.some(([keywordFile]) => keywordFile === file)) {
-      return { category, scope: dusseldorf, keyword: true }
+      return { category, scope: file.includes('-duesseldorf.html') ? dusseldorf : scopeBySlug.get('deutschland'), keyword: true }
     }
   }
 

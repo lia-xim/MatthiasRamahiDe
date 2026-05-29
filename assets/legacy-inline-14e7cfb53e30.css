@@ -19,7 +19,7 @@
   .ovh.is-in .ovh__lead{opacity:1;transform:translateY(0)}
   .ovh__actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px;opacity:0;transform:translateY(14px);transition:opacity .9s cubic-bezier(.23,1,.32,1) .55s,transform .9s cubic-bezier(.23,1,.32,1) .55s}
   .ovh.is-in .ovh__actions{opacity:1;transform:translateY(0)}
-  .ovh__btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border:1px solid rgba(243,245,239,.42);font:11px 'JetBrains Mono','IBM Plex Mono',ui-monospace,Menlo,monospace;letter-spacing:.24em;text-transform:uppercase;color:#f3f5ef;background:transparent;transition:background .25s cubic-bezier(.23,1,.32,1),border-color .25s cubic-bezier(.23,1,.32,1),color .25s cubic-bezier(.23,1,.32,1)}
+  .ovh__btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:14px 22px;border:1px solid rgba(243,245,239,.42);font:11px 'JetBrains Mono','IBM Plex Mono',ui-monospace,Menlo,monospace;letter-spacing:.24em;text-transform:uppercase;color:#f3f5ef;background:transparent;transition:background .25s cubic-bezier(.23,1,.32,1),border-color .25s cubic-bezier(.23,1,.32,1),color .25s cubic-bezier(.23,1,.32,1)}
   .ovh__btn:hover{background:rgba(243,245,239,.96);color:#0a0c11;border-color:rgba(243,245,239,.96)}
   .ovh__btn--ghost{border-color:rgba(243,245,239,.22);color:rgba(243,245,239,.78)}
   .ovh__btn--ghost:hover{background:transparent;color:#fff;border-color:rgba(243,245,239,.62)}

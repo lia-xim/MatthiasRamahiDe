@@ -45,6 +45,11 @@ Stand: 2026-05-25
   - [Fahrzeugfotografie](fahrzeugfotografie-duesseldorf.html)
   - [Autohaus Fotografie](autohaus-fotografie-duesseldorf.html)
   - [Autoverkauf Fotos](autoverkauf-fotos-duesseldorf.html)
+- Allgemeine Suchvarianten ohne Ort:
+  - [Automotive Fotografie](automotive-fotografie.html)
+  - [Autofotografie](autofotografie.html)
+  - [Fahrzeugfotografie](fahrzeugfotografie.html)
+  - [Autohaus Fotografie](autohaus-fotografie.html)
 
 ### Sportwagen Fotografie
 
@@ -78,6 +83,10 @@ Stand: 2026-05-25
   - [Performance Car Fotografie](performance-car-fotografie-duesseldorf.html)
   - [Exotic Car Fotografie](exotic-car-fotografie-duesseldorf.html)
   - [Supersportwagen Fotografie](supersportwagen-fotografie-duesseldorf.html)
+- Allgemeine Suchvarianten ohne Ort:
+  - [Performance Car Fotografie](performance-car-fotografie.html)
+  - [Exotic Car Fotografie](exotic-car-fotografie.html)
+  - [Supersportwagen Fotografie](supersportwagen-fotografie.html)
 
 ### Oldtimer Fotografie
 
@@ -111,6 +120,10 @@ Stand: 2026-05-25
   - [Youngtimer Fotografie](youngtimer-fotografie-duesseldorf.html)
   - [Sammlerfahrzeug Fotografie](sammlerfahrzeug-fotografie-duesseldorf.html)
   - [Oldtimer Verkaufsfotos](oldtimer-verkaufsfotos-duesseldorf.html)
+- Allgemeine Suchvarianten ohne Ort:
+  - [Classic Car Fotografie](classic-car-fotografie.html)
+  - [Youngtimer Fotografie](youngtimer-fotografie.html)
+  - [Sammlerfahrzeug Fotografie](sammlerfahrzeug-fotografie.html)
 
 ### Motorrad Fotografie
 
@@ -144,6 +157,9 @@ Stand: 2026-05-25
   - [Custom Bike Fotografie](custom-bike-fotografie-duesseldorf.html)
   - [Motorrad Verkaufsfotos](motorrad-verkaufsfotos-duesseldorf.html)
   - [Biker Portrait](biker-portrait-duesseldorf.html)
+- Allgemeine Suchvarianten ohne Ort:
+  - [Bike Fotografie](bike-fotografie.html)
+  - [Custom Bike Fotografie](custom-bike-fotografie.html)
 
 ### Portrait Fotografie
 
@@ -177,6 +193,8 @@ Stand: 2026-05-25
   - [Personal Branding Fotografie](personal-branding-fotografie-duesseldorf.html)
   - [Unternehmensportrait](unternehmensportrait-duesseldorf.html)
   - [Pressefoto](pressefoto-duesseldorf.html)
+- Allgemeine Suchvarianten ohne Ort:
+  - [Personal Branding Fotografie](personal-branding-fotografie.html)
 
 ### Landschaftsfotografie
 
@@ -214,8 +232,8 @@ Stand: 2026-05-25
 ## Generierungslogik
 
 - Script: `tools/regenerate-local-pages-from-category-templates.mjs`
-- Geschriebene Dateien in diesem Lauf: 159
-- Dateien im Cluster: 165
+- Geschriebene Dateien in diesem Lauf: 172
+- Dateien im Cluster: 178
 
 ## Qualitätsregel
 

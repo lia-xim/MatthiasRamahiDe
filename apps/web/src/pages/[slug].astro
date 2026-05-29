@@ -1,20 +1,23 @@
 ---
 import CmsRoutedPage from '../components/cms/CmsRoutedPage.astro'
 import NativeLocalSeoFamilyPage from '../components/cms/NativeLocalSeoFamilyPage.astro'
-import LegacyPageShell from '../components/legacy/LegacyPageShell.astro'
+import { getNativeHtmlFileForPath } from '../lib/adoptedRoutes'
 import { envFlagNotFalse } from '../lib/envFlags'
-import { getLegacyFileForPath } from '../lib/legacy'
 import { getBySlug, type PayloadDoc } from '../lib/payload'
 
 export const prerender = false
 
 const slug = Astro.params.slug || ''
-const legacyFile = Astro.props.legacyFile || getLegacyFileForPath(Astro.url.pathname)
+const legacyFile = Astro.props.legacyFile || getNativeHtmlFileForPath(Astro.url.pathname)
 const enableCmsDynamicRoutes = envFlagNotFalse('ASTRO_ENABLE_CMS_DYNAMIC_ROUTES')
 let cmsDoc: PayloadDoc | null = null
 let cmsCollection = ''
 
-if (!legacyFile && enableCmsDynamicRoutes && slug) {
+if (legacyFile) {
+  return Astro.redirect(`/${legacyFile}`, 308)
+}
+
+if (enableCmsDynamicRoutes && slug) {
   for (const collection of ['site-pages', 'service-pages', 'local-seo-pages'] as const) {
     const doc = await getBySlug(collection, slug, { depth: 2 })
     if (doc) {
@@ -25,7 +28,7 @@ if (!legacyFile && enableCmsDynamicRoutes && slug) {
   }
 }
 
-if (!legacyFile && !cmsDoc) {
+if (!cmsDoc) {
   return new Response('Not found', { status: 404 })
 }
 
@@ -33,9 +36,7 @@ Astro.response.headers.set('cache-control', 'public, max-age=300, stale-while-re
 if (cmsDoc) Astro.response.headers.set('x-migration-render', 'cms-dynamic-structured')
 ---
 {
-  legacyFile ? (
-    <LegacyPageShell legacyFile={legacyFile} />
-  ) : cmsCollection === 'local-seo-pages' ? (
+  cmsCollection === 'local-seo-pages' ? (
     <NativeLocalSeoFamilyPage doc={cmsDoc as PayloadDoc} />
   ) : (
     <CmsRoutedPage collection={cmsCollection} doc={cmsDoc as PayloadDoc} />

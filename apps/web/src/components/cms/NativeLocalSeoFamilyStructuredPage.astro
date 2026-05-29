@@ -1,0 +1,476 @@
+---
+import PreviewToolbar from '../PreviewToolbar.astro'
+import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
+import {
+  cityLinksForFamily,
+  heroCopyForLocalSeoPage,
+  localSeoPreviewVisual,
+  scopeFromSlug,
+  serviceLabelFromSlug,
+  siblingFamilyLinks,
+  titleForLocalSeoPage,
+  type LocalSeoFamilyContent,
+} from '../../lib/localSeoFamilyContent'
+import { routeForDoc, type PayloadDoc } from '../../lib/payload'
+
+type PreviewState = {
+  collection: string
+  publishedHref: string
+  slug: string
+  status?: string
+}
+
+type Props = {
+  doc?: PayloadDoc | null
+  familyContent: LocalSeoFamilyContent
+  legacyFile: string
+  preview?: PreviewState
+}
+
+const { doc = null, familyContent, legacyFile, preview } = Astro.props as Props
+const scope = scopeFromSlug(legacyFile || doc?.slug || doc?.seo?.legacyUrl)
+const serviceLabel = doc?.service || serviceLabelFromSlug(legacyFile || doc?.slug, familyContent)
+const pageTitle = titleForLocalSeoPage(doc, serviceLabel, scope)
+const heroCopy = heroCopyForLocalSeoPage(doc, familyContent, serviceLabel, scope)
+const heroImage = familyContent.heroImages[0]
+const moduleItems = familyContent.modules.map(localSeoPreviewVisual)
+const galleryItems = familyContent.gallery.map(localSeoPreviewVisual)
+const relatedItems = familyContent.related.map(localSeoPreviewVisual)
+const cityLinks = cityLinksForFamily(familyContent)
+const siblingLinks = siblingFamilyLinks(scope, familyContent.family)
+const publishedHref = preview?.publishedHref || (doc ? routeForDoc('local-seo-pages', doc) : `/${legacyFile}`)
+const contactHeadline = scope.generic ? `${serviceLabel} <em>anfragen.</em>` : `${familyContent.contactNoun} ${scope.label} <em>anfragen.</em>`
+const contactLead = scope.generic
+  ? `Schreibe kurz, welche Bildserie fuer ${serviceLabel} geplant ist, wo das Projekt stattfindet, welche Wirkung die Bilder tragen sollen und ob die Nutzung privat, kommerziell, redaktionell oder fuer Verkauf und Kampagne gedacht ist.`
+  : familyContent.contactLead(scope, serviceLabel)
+const contactSubject = scope.generic ? `${serviceLabel} Anfrage` : `${serviceLabel} ${scope.label} Anfrage`
+const overviewHref = scope.generic ? '/fotografie.html' : scope.slug === 'duesseldorf' ? '/fotografie-duesseldorf.html' : `/fotografie-${scope.slug}.html`
+
+const familyTone: Record<string, string> = {
+  automobil: 'Exterieur, Interieur, Details und Kampagne',
+  sportwagen: 'Performance, Form, Innenraum und Druckqualität',
+  oldtimer: 'Herkunft, Material, Patina und Sammlung',
+  motorrad: 'Silhouette, Mechanik, Haltung und Bewegung',
+  portrait: 'Blick, Distanz, Persönlichkeit und Nutzung',
+  landschaft: 'Licht, Raumwirkung, Material und Edition',
+}
+
+Astro.response.headers.set('x-cms-render-source', 'structured-local-seo-family')
+Astro.response.headers.set('x-cms-migration-status', 'native-component')
+Astro.response.headers.set('x-cms-page-kind', 'local-seo-family-native')
+Astro.response.headers.set('x-cms-layout-family', familyContent.family)
+Astro.response.headers.set('x-cms-layout-parent', familyContent.parentLegacyFile)
+---
+<AdoptedPageLayout
+  legacyFile={legacyFile}
+  current="fotografie"
+  doc={doc}
+  noIndex={Boolean(preview)}
+  title={pageTitle}
+  description={heroCopy}
+  ogImage={heroImage.image}
+>
+  {preview && (
+    <PreviewToolbar
+      collection={preview.collection}
+      slug={preview.slug}
+      status={preview.status}
+      publishedHref={publishedHref}
+    />
+  )}
+
+  <main class={`local-native local-native--${familyContent.family}`} data-cms-native-local-seo="true">
+    <section
+      class="local-native__hero"
+      data-header-theme="dark"
+      aria-label={pageTitle}
+      style={`--hero-image:url('${heroImage.image}')`}
+    >
+      <div class="local-native__hero-bg" aria-hidden="true"></div>
+      <div class="local-native__hero-shade" aria-hidden="true"></div>
+      <div class="local-native__hero-inner">
+        <p class="local-native__eyebrow">{familyContent.seoTitle} / {scope.generic ? 'Überregional' : scope.label}</p>
+        <h1>{serviceLabel}{!scope.generic && <> <em>{scope.label}.</em></>}</h1>
+        <p>{heroCopy}</p>
+        <div class="local-native__actions">
+          <a href="#anfrage">Projekt anfragen</a>
+          <a href="/portfolio.html">Portfolio</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="local-native__intro" data-header-theme="light">
+      <div class="local-native__inner local-native__split">
+        <div>
+          <p class="local-native__eyebrow">{familyTone[familyContent.family]}</p>
+          <h2>{familyContent.introHeadline}</h2>
+        </div>
+        <div class="local-native__copy">
+          {familyContent.introParagraphs.map((paragraph) => <p>{paragraph}</p>)}
+          <p>{heroCopy}</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="local-native__modules" data-header-theme="dark">
+      <div class="local-native__inner">
+        <div class="local-native__section-head">
+          <h2>{familyContent.moduleHeadline}</h2>
+          <p>{familyContent.moduleLead}</p>
+        </div>
+        <div class="local-native__module-grid">
+          {moduleItems.map((item, index) => (
+            <article class="local-native__module-card">
+              <figure>
+                <img loading="lazy" src={item.image} alt={item.alt} width={item.width} height={item.height} decoding="async" />
+              </figure>
+              <div>
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="local-native__gallery" data-header-theme="dark" aria-label={`${familyContent.seoTitle} Bildstrecke`}>
+      <div class="local-native__inner">
+        <div class="local-native__section-head">
+          <h2>Aktuelle <em>Arbeiten.</em></h2>
+          <p>Eine reduzierte Auswahl aus der passenden Bildwelt. Die Seite bleibt schnell, lokal relevant und ohne Originaldateien als Standardausgabe.</p>
+        </div>
+        <div class="local-native__gallery-grid">
+          {galleryItems.map((item, index) => (
+            <figure class="local-native__tile">
+              <img loading="lazy" src={item.image} alt={item.alt} width={item.width} height={item.height} decoding="async" />
+              <figcaption>{item.label || `${String(index + 1).padStart(2, '0')} / ${familyContent.label}`}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="local-native__related" data-header-theme="dark">
+      <div class="local-native__inner">
+        <div class="local-native__section-head">
+          <h2>Verwandte <em>Bereiche.</em></h2>
+          <p>Die lokalen Seiten erben die Art Direction der passenden Hauptkategorie und verlinken die übrigen Fotografie-Cluster bewusst weiter.</p>
+        </div>
+        <div class="local-native__related-grid">
+          {relatedItems.map((item) => (
+            <a class="local-native__related-card" href={item.label}>
+              <img loading="lazy" src={item.image} alt={item.alt} width={item.width} height={item.height} decoding="async" />
+              <span>{item.title}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="mr-cities mr-photo-cluster" data-header-theme="light" data-theme="light" aria-label={scope.generic ? 'Fotografie-Cluster' : `Fotografie-Cluster ${scope.label}`}>
+      <div class="mr-cities__inner">
+        <div class="mr-cities__head">
+          <h2>Weitere Fotografie-Bereiche{!scope.generic && <> <em>{scope.label}.</em></>}</h2>
+          <p class="mr-cities__copy">Jede lokale Seite nutzt eine der sechs Hauptfamilien als Layout-Basis. So bleiben Suchintention, Gestaltung und redaktionelle Pflege sauber getrennt.</p>
+        </div>
+        <nav class="mr-cities__grid" aria-label="Verwandte Fotografie-Bereiche">
+          <a class="mr-cities__cell" href={overviewHref}>Fotografie Übersicht</a>
+          {siblingLinks.map((link) => <a class="mr-cities__cell" href={link.href}>{link.label}</a>)}
+        </nav>
+      </div>
+    </section>
+
+    <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label={`${familyContent.seoTitle} vor Ort`}>
+      <div class="mr-cities__inner">
+        <div class="mr-cities__head">
+          <h2>{familyContent.seoTitle} <em>{scope.generic ? 'vor Ort.' : `vor Ort in ${scope.label}.`}</em></h2>
+        </div>
+        <nav class="mr-cities__grid" aria-label="Städte">
+          {cityLinks.map((link) => <a class="mr-cities__cell" href={link.href}>{link.label}</a>)}
+        </nav>
+      </div>
+    </section>
+
+    <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label={`${familyContent.seoTitle} Suchbegriffe`}>
+      <div class="mr-cities__inner">
+        <div class="mr-cities__head">
+          <h2>{familyContent.seoTitle} <em>Suchbegriffe.</em></h2>
+        </div>
+        <nav class="mr-cities__grid" aria-label="Suchvarianten">
+          {familyContent.searchLinks.map((link) => <a class="mr-cities__cell" href={link.href}>{link.label}</a>)}
+        </nav>
+      </div>
+    </section>
+
+    <section
+      id="anfrage"
+      data-contact-section
+      data-header-theme="light"
+      data-contact-subject={contactSubject}
+      data-contact-headline={contactHeadline}
+      data-contact-lead={contactLead}
+    ></section>
+  </main>
+</AdoptedPageLayout>
+
+<style>
+  .local-native {
+    background: #080807;
+    color: #f5efe4;
+    overflow: clip;
+  }
+
+  .local-native__inner {
+    width: min(1500px, calc(100% - clamp(32px, 7vw, 112px)));
+    margin: 0 auto;
+  }
+
+  .local-native__hero {
+    position: relative;
+    min-height: 100svh;
+    display: grid;
+    align-items: end;
+    isolation: isolate;
+    overflow: hidden;
+  }
+
+  .local-native__hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background: var(--hero-image) center / cover no-repeat;
+    transform: scale(1.04);
+  }
+
+  .local-native__hero-shade {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.82)),
+      radial-gradient(circle at 20% 25%, rgba(255, 255, 255, 0.12), transparent 28%);
+  }
+
+  .local-native__hero-inner {
+    width: min(1500px, calc(100% - clamp(32px, 7vw, 112px)));
+    margin: 0 auto;
+    padding: 0 0 clamp(52px, 8vw, 110px);
+  }
+
+  .local-native__eyebrow {
+    margin: 0 0 16px;
+    font: 700 0.72rem/1.2 ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+
+  .local-native__hero h1,
+  .local-native__intro h2,
+  .local-native__section-head h2 {
+    margin: 0;
+    font-family: var(--font-display, ui-serif, Georgia, serif);
+    font-size: clamp(48px, 10vw, 168px);
+    line-height: 0.9;
+    letter-spacing: 0;
+  }
+
+  .local-native__hero h1 {
+    max-width: 13ch;
+  }
+
+  .local-native__hero h1 em,
+  .local-native__section-head h2 em {
+    font-style: italic;
+  }
+
+  .local-native__hero p:not(.local-native__eyebrow) {
+    max-width: 760px;
+    margin: clamp(20px, 3vw, 34px) 0 0;
+    font-size: clamp(1.06rem, 1.6vw, 1.48rem);
+    line-height: 1.55;
+    opacity: 0.82;
+  }
+
+  .local-native__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
+  }
+
+  .local-native__actions a {
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    border: 1px solid rgba(255, 255, 255, 0.32);
+    border-radius: 999px;
+    color: inherit;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(14px);
+  }
+
+  .local-native__intro {
+    background: #ede6da;
+    color: #11100e;
+    padding: clamp(76px, 10vw, 150px) 0;
+  }
+
+  .local-native__split,
+  .local-native__section-head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.48fr);
+    gap: clamp(32px, 7vw, 110px);
+  }
+
+  .local-native__copy,
+  .local-native__section-head {
+    align-items: end;
+  }
+
+  .local-native__copy p,
+  .local-native__section-head p,
+  .local-native__module-card p {
+    margin: 0;
+    font-size: clamp(1rem, 1.35vw, 1.24rem);
+    line-height: 1.62;
+    opacity: 0.74;
+  }
+
+  .local-native__copy {
+    display: grid;
+    gap: 18px;
+  }
+
+  .local-native__modules,
+  .local-native__gallery,
+  .local-native__related {
+    padding: clamp(82px, 12vw, 180px) 0;
+  }
+
+  .local-native__section-head {
+    margin-bottom: clamp(34px, 6vw, 74px);
+  }
+
+  .local-native__module-grid,
+  .local-native__related-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(14px, 2vw, 24px);
+  }
+
+  .local-native__module-card figure,
+  .local-native__tile,
+  .local-native__related-card {
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+    background: #161411;
+  }
+
+  .local-native__module-card figure {
+    aspect-ratio: 4 / 5;
+  }
+
+  .local-native__module-card img,
+  .local-native__tile img,
+  .local-native__related-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .local-native__module-card > div {
+    padding-top: 22px;
+  }
+
+  .local-native__module-card span {
+    display: block;
+    margin-bottom: 10px;
+    font: 700 0.72rem/1.2 ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.6;
+  }
+
+  .local-native__module-card h3 {
+    margin: 0 0 10px;
+    font: 700 clamp(1.22rem, 2vw, 2rem)/1.08 ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: 0;
+  }
+
+  .local-native__gallery {
+    padding-top: 0;
+  }
+
+  .local-native__gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: minmax(150px, 12vw);
+    gap: clamp(10px, 1.2vw, 18px);
+  }
+
+  .local-native__tile {
+    grid-column: span 3;
+    grid-row: span 2;
+  }
+
+  .local-native__tile:first-child {
+    grid-column: span 6;
+    grid-row: span 3;
+  }
+
+  .local-native__tile figcaption,
+  .local-native__related-card span {
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    z-index: 2;
+    color: #fffaf0;
+    font: 700 0.78rem/1.2 ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .local-native__tile::after,
+  .local-native__related-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 48%, rgba(0, 0, 0, 0.7));
+  }
+
+  .local-native__related-card {
+    min-height: 320px;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  @media (max-width: 900px) {
+    .local-native__split,
+    .local-native__section-head,
+    .local-native__module-grid,
+    .local-native__related-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .local-native__gallery-grid {
+      grid-template-columns: 1fr;
+      grid-auto-rows: auto;
+    }
+
+    .local-native__tile,
+    .local-native__tile:first-child {
+      grid-column: auto;
+      grid-row: auto;
+      aspect-ratio: 4 / 5;
+    }
+  }
+</style>

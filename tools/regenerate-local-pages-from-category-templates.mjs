@@ -92,49 +92,85 @@ const keywordPages = {
   ]
 };
 
+const baseKeywordPages = {
+  automobil: [
+    ['automotive-fotografie.html','Automotive Fotografie'],
+    ['autofotografie.html','Autofotografie'],
+    ['fahrzeugfotografie.html','Fahrzeugfotografie'],
+    ['autohaus-fotografie.html','Autohaus Fotografie']
+  ],
+  sportwagen: [
+    ['performance-car-fotografie.html','Performance Car Fotografie'],
+    ['exotic-car-fotografie.html','Exotic Car Fotografie'],
+    ['supersportwagen-fotografie.html','Supersportwagen Fotografie']
+  ],
+  oldtimer: [
+    ['classic-car-fotografie.html','Classic Car Fotografie'],
+    ['youngtimer-fotografie.html','Youngtimer Fotografie'],
+    ['sammlerfahrzeug-fotografie.html','Sammlerfahrzeug Fotografie']
+  ],
+  motorrad: [
+    ['bike-fotografie.html','Bike Fotografie'],
+    ['custom-bike-fotografie.html','Custom Bike Fotografie']
+  ],
+  portrait: [
+    ['personal-branding-fotografie.html','Personal Branding Fotografie']
+  ],
+  landschaft: []
+};
+
 const categories = {
   automobil: {
-    label: 'Automobil Fotografie', short: 'Automobil', slug: 'automobil-fotografie', template: 'automobil-fotografie-duesseldorf.html',
+    label: 'Automobil Fotografie', short: 'Automobil', slug: 'automobil-fotografie', template: 'automobil-fotografie-duesseldorf.html', baseTemplate: 'automobil-fotografie.html',
     intent: 'Automobil Fotografie', seoTitle: 'Automobilfotografie',
     desc: place => `Automobilfotografie ${place}: Exterieur, Interieur, Details und cineastische Bildserien für Marke, Showroom, Verkauf und Kampagne — geplant aus Düsseldorf / NRW.`,
     hero: place => `Automobil Fotografie in ${place}: Exterieur, Interieur, Details und Cinematic werden zu einer kuratierten Serie geführt — mit kontrollierter Lichtführung, ruhigen Reflexionen und Dateien für Web, Print, Verkauf oder Kampagne.`,
     lead: place => `Schreibe kurz, welches Fahrzeug in ${place} fotografiert werden soll, wo es steht, welche Wirkung die Bilder tragen sollen und ob die Serie privat, kommerziell oder als Kampagne genutzt wird. Wir klären Location, Licht und Ablauf gemeinsam vor dem ersten Klick.`
   },
   sportwagen: {
-    label: 'Sportwagen Fotografie', short: 'Sportwagen', slug: 'sportwagen-fotografie', template: 'sportwagen-fotografie-duesseldorf.html',
+    label: 'Sportwagen Fotografie', short: 'Sportwagen', slug: 'sportwagen-fotografie', template: 'sportwagen-fotografie-duesseldorf.html', baseTemplate: 'sportwagen-fotografie.html',
     intent: 'Sportwagen Fotografie', seoTitle: 'Sportwagenfotografie',
     desc: place => `Sportwagenfotografie ${place}: hochwertige Serien für Performance Cars, Sammlerfahrzeuge, Händler und Marken — Exterieur, Interieur, Details und Druckqualität.`,
     hero: place => `Sportwagen Fotografie in ${place}: kontrollierte Reflexe, klare Winkel, Interieur-Details und ein Bildsatz, der Druck hat, ohne in Showeffekte zu kippen.`,
     lead: place => `Schreibe kurz, welcher Sportwagen in ${place} fotografiert werden soll, ob die Bilder für Verkauf, Sammlung, Marke oder Social genutzt werden und welches Zeitfenster möglich ist. Wir planen Licht, Ort und Ablauf gemeinsam.`
   },
   oldtimer: {
-    label: 'Oldtimer Fotografie', short: 'Oldtimer', slug: 'oldtimer-fotografie', template: 'oldtimer-fotografie-duesseldorf.html',
+    label: 'Oldtimer Fotografie', short: 'Oldtimer', slug: 'oldtimer-fotografie', template: 'oldtimer-fotografie-duesseldorf.html', baseTemplate: 'oldtimer-fotografie.html',
     intent: 'Oldtimer Fotografie', seoTitle: 'Oldtimer-Fotografie',
     desc: place => `Oldtimer-Fotografie ${place}: Bildserien für Sammlung, Verkauf, Auktion und Ausstellung — Karosserie, Lack, Chrom, Leder, Patina und Herkunft.`,
     hero: place => `Oldtimer Fotografie in ${place}: Form, Herkunft und Material werden ruhig geführt — für Sammlung, Verkauf, Auktion oder Ausstellung, mit Charakter und Nostalgie statt austauschbarer Fahrzeugbilder.`,
     lead: place => `Schreibe kurz, welcher Oldtimer in ${place} fotografiert werden soll — Modell, Baujahr, Standort und ob die Bilder für Sammlung, Auktion, Verkauf oder privat genutzt werden. Wir klären Raum, Licht und Ablauf gemeinsam.`
   },
   motorrad: {
-    label: 'Motorrad Fotografie', short: 'Motorrad', slug: 'motorrad-fotografie', template: 'motorrad-fotografie-duesseldorf.html',
+    label: 'Motorrad Fotografie', short: 'Motorrad', slug: 'motorrad-fotografie', template: 'motorrad-fotografie-duesseldorf.html', baseTemplate: 'motorrad-fotografie.html',
     intent: 'Motorrad Fotografie', seoTitle: 'Motorradfotografie',
     desc: place => `Motorradfotografie ${place}: Bildserien für Custom Bikes, Werkstätten, Händler und private Maschinen — Silhouette, Mechanik, Haltung und Detail.`,
     hero: place => `Motorrad Fotografie in ${place}: Schärfe auf Maschine und Haltung — Silhouette, Mechanik, Details und Fahrerbilder werden als kraftvolle Serie geplant, nicht als beliebiges Bike-Foto.`,
     lead: place => `Schreibe kurz, welches Bike in ${place} fotografiert werden soll — Modell, Standort, ob Fahrerbilder gewünscht sind und wofür die Bilder genutzt werden. Wir klären Licht, Location und Ablauf gemeinsam.`
   },
   portrait: {
-    label: 'Portrait Fotografie', short: 'Portrait', slug: 'portraitfotografie', template: 'portraitfotografie-duesseldorf.html',
+    label: 'Portrait Fotografie', short: 'Portrait', slug: 'portraitfotografie', template: 'portraitfotografie-duesseldorf.html', baseTemplate: 'portraitfotografie.html',
     intent: 'Portrait Fotografie', seoTitle: 'Portraitfotografie',
     desc: place => `Portraitfotografie ${place}: Personal Branding, Business Portraits, Editorial, Team und Presse — professionell, ruhig, nahbar und nicht glattgebügelt.`,
     hero: place => `Portrait Fotografie in ${place}: Blick, Distanz und Licht werden so geführt, dass ein Bild professionell wirkt, ohne den Menschen dahinter glattzubügeln — für Personal Branding, Presse, Team oder Editorial.`,
     lead: place => `Schreibe kurz, wofür die Portraits in ${place} gedacht sind — Personal Branding, Editorial, Team, Presse oder Bewerbung. Wichtig sind Person/Team, gewünschte Wirkung, Ort und Zeitraum. Stil und Licht klären wir vor dem ersten Klick.`
   },
   landschaft: {
-    label: 'Landschaftsfotografie', short: 'Landschaft', slug: 'landschaftsfotografie', template: 'landschaftsfotografie-duesseldorf.html',
+    label: 'Landschaftsfotografie', short: 'Landschaft', slug: 'landschaftsfotografie', template: 'landschaftsfotografie-duesseldorf.html', baseTemplate: 'landschaftsfotografie.html',
     intent: 'Landschaftsfotografie', seoTitle: 'Landschaftsfotografie',
     desc: place => `Landschaftsfotografie ${place}: Fine-Art-Prints, Wandbilder, Editionen und großformatige Arbeiten für private Räume, Praxen, Hotels und Sammlungen.`,
     hero: place => `Landschaftsfotografie für ${place}: Bildräume aus Geduld, Licht und Atmosphäre — als Fine-Art-Print, Wandbild, Edition oder Großformat für Räume, die Ruhe statt Spektakel brauchen.`,
     lead: place => `Schreibe kurz, wofür die Landschaftsbilder in ${place} eingesetzt werden — Fine-Art-Print, Innenraum, Editorial, Website oder Markenbild. Wichtig sind gewünschte Atmosphäre, Format, Material und Zeitraum.`
   }
+};
+
+const baseKeywordLead = {
+  automobil: 'Exterieur, Interieur, Details und Cinematic werden als kuratierte Serie geplant — für Marke, Showroom, Verkauf, Kampagne und hochwertige private Fahrzeuge.',
+  sportwagen: 'Performance, Form, Innenraum und Details werden mit kontrollierten Reflexen und ruhiger Dramaturgie sichtbar — für Sammler, Händler, Marke, Verkauf und Druck.',
+  oldtimer: 'Herkunft, Material, Lack, Chrom, Leder und Patina werden ruhig dokumentiert — für Sammlung, Verkauf, Auktion, Ausstellung und Fahrzeuge mit Geschichte.',
+  motorrad: 'Silhouette, Mechanik, Haltung, Detail und Fahrerbezug werden als kraftvolle Serie geplant — für Custom Bikes, Händler, Werkstätten und private Maschinen.',
+  portrait: 'Blick, Licht, Distanz und Haltung werden auf Nutzung und Persönlichkeit abgestimmt — für Personal Branding, Business Portraits, Team, Presse und Editorial.',
+  landschaft: 'Licht, Weite, Material und Raumwirkung werden kuratiert — als Fine-Art-Print, Wandbild, Edition oder großformatige Arbeit.'
 };
 
 const attr = s => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -158,7 +194,7 @@ function replaceHead(html, {file, title, desc, schema}) {
   html = html.replace(/<meta property="og:image:alt" content="[^"]*" \/>/, `<meta property="og:image:alt" content="${attr(title)}" />`);
   html = html.replace(/<meta name="twitter:title" content="[^"]*" \/>/, `<meta name="twitter:title" content="${attr(title)}" />`);
   html = html.replace(/<meta name="twitter:description" content="[^"]*" \/>/, `<meta name="twitter:description" content="${attr(desc)}" />`);
-  html = html.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, `<script type="application/ld+json">${JSON.stringify(schema)}</script>`);
+  html = html.replace(/<script\b(?=[^>]*type=["']application\/ld\+json["'])[^>]*>[\s\S]*?<\/script>/i, `<script type="application/ld+json">${JSON.stringify(schema)}</script>`);
   return html;
 }
 
@@ -231,14 +267,39 @@ function replaceHeroText(html, categoryKey, c, place, slug) {
   return html;
 }
 
-function replaceContacts(html, c, place) {
-  const subject = `${c.label} ${place} Anfrage`;
-  const headline = `${c.short} ${place} <em>anfragen.</em>`;
+function replaceContactFields(html, {subject, headline, lead}) {
   html = html.replace(/mailto:info@matthiasramahi\.de\?subject=[^"]*"/g, `mailto:info@matthiasramahi.de?subject=${encodeURIComponent(subject)}"`);
   html = html.replace(/data-contact-subject="[^"]*"/, `data-contact-subject="${attr(subject)}"`);
   html = html.replace(/data-contact-headline="[^"]*"/, `data-contact-headline="${attr(headline)}"`);
-  html = html.replace(/data-contact-lead="[^"]*"/, `data-contact-lead="${attr(c.lead(place))}"`);
+  html = html.replace(/data-contact-lead="[^"]*"/, `data-contact-lead="${attr(lead)}"`);
   return html;
+}
+
+function replaceContacts(html, c, place) {
+  const subject = `${c.label} ${place} Anfrage`;
+  const headline = `${c.short} ${place} <em>anfragen.</em>`;
+  html = replaceContactFields(html, {subject, headline, lead: c.lead(place)});
+  return html;
+}
+
+function replaceHeroLead(html, categoryKey, copy) {
+  const safe = text(copy);
+  switch (categoryKey) {
+    case 'automobil':
+      return html.replace(/<p class="pd-sub">[\s\S]*?<\/p>/, `<p class="pd-sub">${safe}</p>`);
+    case 'sportwagen':
+      return html.replace(/<p class="tri-sub">[\s\S]*?<\/p>/, `<p class="tri-sub">${safe}</p>`);
+    case 'oldtimer':
+      return html.replace(/<p class="hero-mp__sub">[\s\S]*?<\/p>/, `<p class="hero-mp__sub">${safe}</p>`);
+    case 'motorrad':
+      return html.replace(/<p class="hero-mr__lede">[\s\S]*?<\/p>/, `<p class="hero-mr__lede">${safe}</p>`);
+    case 'portrait':
+      return html.replace(/<p class="hero-pt__sub">[\s\S]*?<\/p>/, `<p class="hero-pt__sub">${safe}</p>`);
+    case 'landschaft':
+      return html.replace(/<p class="hero-ls__sub">[\s\S]*?<\/p>/, `<p class="hero-ls__sub">${safe}</p>`);
+    default:
+      return html;
+  }
 }
 
 function replaceLocalStructuredBits(html, c, place, slug) {
@@ -282,6 +343,22 @@ function cloneKeywordPage(categoryKey, c, file, keyword) {
   return file;
 }
 
+function cloneBaseKeywordPage(categoryKey, c, file, keyword) {
+  let html = fs.readFileSync(c.baseTemplate, 'utf8');
+  const title = `${keyword} — Matthias Ramahi`;
+  const desc = `${keyword}: eigenständiger Einstieg in den ${c.label}-Cluster — gleiche Art Direction, gleiche Bildsprache, gezielt auf diese Suchintention formuliert.`;
+  const lead = `${keyword}: eigenständiger Einstieg in den ${c.label}-Cluster. ${baseKeywordLead[categoryKey]} Die Seite bleibt bewusst im Layout der übergeordneten Kategorie, setzt den Text aber auf diese konkrete Suchintention.`;
+  html = replaceHead(html, {file, title, desc, schema: schema(file, keyword, desc, 'Deutschland')});
+  html = replaceHeroLead(html, categoryKey, lead);
+  html = replaceContactFields(html, {
+    subject: `${keyword} Anfrage`,
+    headline: `${keyword} <em>anfragen.</em>`,
+    lead: `Schreibe kurz, wofür ${keyword} gebraucht wird, welches Motiv im Mittelpunkt steht und welche Nutzung geplant ist. Wir klären Stil, Ort, Umfang und Ausgabe gemeinsam.`
+  });
+  fs.writeFileSync(file, html, 'utf8');
+  return file;
+}
+
 function neutralHub(scope, place) {
   const file = `fotografie-${scope}.html`;
   const title = `Fotografie ${place} — Matthias Ramahi`;
@@ -309,6 +386,9 @@ for (const [categoryKey, c] of Object.entries(categories)) {
   for (const [file, keyword] of keywordPages[categoryKey]) {
     written.push(cloneKeywordPage(categoryKey, c, file, keyword));
   }
+  for (const [file, keyword] of baseKeywordPages[categoryKey]) {
+    written.push(cloneBaseKeywordPage(categoryKey, c, file, keyword));
+  }
 }
 for (const [scope, place] of [['duesseldorf','Düsseldorf'], ['nrw','NRW'], ['deutschland','Deutschland']]) {
   written.push(neutralHub(scope, place));
@@ -321,6 +401,7 @@ for (const c of Object.values(categories)) {
   allClusterFiles.push(`${c.slug}-nrw.html`, `${c.slug}-deutschland.html`);
 }
 for (const pages of Object.values(keywordPages)) for (const [file] of pages) allClusterFiles.push(file);
+for (const pages of Object.values(baseKeywordPages)) for (const [file] of pages) allClusterFiles.push(file);
 allClusterFiles.push('fotografie-duesseldorf.html', 'fotografie-nrw.html', 'fotografie-deutschland.html');
 
 const tracker = [];
@@ -330,6 +411,10 @@ for (const [key, c] of Object.entries(categories)) {
   for (const [place, slug] of cities) tracker.push(`  - [${place}](${slug === 'duesseldorf' ? c.template : `${c.slug}-${slug}.html`})`);
   tracker.push('- Suchvarianten:');
   for (const [file, keyword] of keywordPages[key]) tracker.push(`  - [${keyword}](${file})`);
+  if (baseKeywordPages[key]?.length) {
+    tracker.push('- Allgemeine Suchvarianten ohne Ort:');
+    for (const [file, keyword] of baseKeywordPages[key]) tracker.push(`  - [${keyword}](${file})`);
+  }
 }
 tracker.push('', '## Generierungslogik', '', '- Script: `tools/regenerate-local-pages-from-category-templates.mjs`', `- Geschriebene Dateien in diesem Lauf: ${written.length}`, `- Dateien im Cluster: ${allClusterFiles.length}`, '', '## Qualitätsregel', '', '- Wenn eine Hauptseite visuell verbessert wird, danach dieses Script erneut ausführen, damit alle lokalen Varianten dieselbe Art Direction behalten.', '- Lokale Seiten dürfen nicht zurück auf generische Karten-/Local-SEO-Templates fallen.');
 fs.writeFileSync('local-seo-cluster-tracker.md', tracker.join('\n') + '\n', 'utf8');

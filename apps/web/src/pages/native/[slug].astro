@@ -1,96 +1,30 @@
 ---
-import LegacyPageShell from '../../components/legacy/LegacyPageShell.astro'
-import NativeAboutPage from '../../components/native/NativeAboutPage.astro'
-import NativeAutomobilPhotographyPage from '../../components/native/NativeAutomobilPhotographyPage.astro'
-import NativeContactPage from '../../components/native/NativeContactPage.astro'
-import NativeJournalIndexPage from '../../components/native/NativeJournalIndexPage.astro'
-import NativeLandschaftPhotographyPage from '../../components/native/NativeLandschaftPhotographyPage.astro'
-import NativeMotorradPhotographyPage from '../../components/native/NativeMotorradPhotographyPage.astro'
-import NativeOldtimerPhotographyPage from '../../components/native/NativeOldtimerPhotographyPage.astro'
-import NativePhotographyPage from '../../components/native/NativePhotographyPage.astro'
-import NativePortfolioIndexPage from '../../components/native/NativePortfolioIndexPage.astro'
-import NativePortraitPhotographyPage from '../../components/native/NativePortraitPhotographyPage.astro'
-import NativePrintLabPage from '../../components/native/NativePrintLabPage.astro'
-import NativeServiceDetailPage from '../../components/native/NativeServiceDetailPage.astro'
-import NativeServicesIndexPage from '../../components/native/NativeServicesIndexPage.astro'
-import NativeSportwagenPhotographyPage from '../../components/native/NativeSportwagenPhotographyPage.astro'
-import { isCmsAdoptedLegacyFile, isLocalSeoAdoptionCandidate } from '../../lib/adoptedRoutes'
-import { envFlagNotFalse } from '../../lib/envFlags'
-import { getLegacyFileForPath } from '../../lib/legacy'
-import { getByLegacyUrl, type PayloadDoc } from '../../lib/payload'
-import { nativeServiceDetailFiles } from '../../lib/serviceDetailContent'
+import NativeAdoptedPage from '../../components/native/NativeAdoptedPage.astro'
+import {
+  getLegacyRedirectTarget,
+  getNativeHtmlFileForPath,
+  isCmsAdoptedLegacyFile,
+} from '../../lib/adoptedRoutes'
 
 export const prerender = false
 
 const slug = Astro.params.slug || ''
-const legacyFile = getLegacyFileForPath(`/${slug}.html`) || getLegacyFileForPath(`/${slug}`)
-const enableLocalSeoAdoptedRouteRewrite = envFlagNotFalse('ASTRO_ENABLE_LOCAL_SEO_ADOPTED_ROUTES')
-const enableNativeLocalSeoHtmlRoutes = envFlagNotFalse('ASTRO_ENABLE_NATIVE_LOCAL_SEO_HTML_ROUTES')
+const legacyFile = getNativeHtmlFileForPath(`/${slug}.html`) || getNativeHtmlFileForPath(`/${slug}`)
 
-if (!legacyFile || !isCmsAdoptedLegacyFile(legacyFile, { includeLocalSeo: enableLocalSeoAdoptedRouteRewrite })) {
+if (!legacyFile || !isCmsAdoptedLegacyFile(legacyFile, { includeLocalSeo: true })) {
   return Astro.redirect('/')
 }
 
-const activeLegacyFile = legacyFile
-const shouldRenderNativePhotography = activeLegacyFile === 'fotografie.html'
-const shouldRenderNativeAutomobil = activeLegacyFile === 'automobil-fotografie.html'
-const shouldRenderNativeSportwagen = activeLegacyFile === 'sportwagen-fotografie.html'
-const shouldRenderNativeOldtimer = activeLegacyFile === 'oldtimer-fotografie.html'
-const shouldRenderNativeMotorrad = activeLegacyFile === 'motorrad-fotografie.html'
-const shouldRenderNativePortrait = activeLegacyFile === 'portraitfotografie.html'
-const shouldRenderNativeLandschaft = activeLegacyFile === 'landschaftsfotografie.html'
-const shouldRenderNativeJournalIndex = activeLegacyFile === 'blog.html'
-const shouldRenderNativePortfolioIndex = activeLegacyFile === 'portfolio.html'
-const shouldRenderNativePrintLab = activeLegacyFile === 'fotolabor-druck-duesseldorf.html'
-const shouldRenderNativeServiceDetail = nativeServiceDetailFiles.includes(activeLegacyFile)
-const shouldRenderNativeServicesIndex = activeLegacyFile === 'leistungen.html'
-const shouldRenderNativeContact = activeLegacyFile === 'contact.html'
-const shouldRenderNativeAbout = activeLegacyFile === 'ueber-mich.html'
-const shouldRenderNativeLocalSeo =
-  enableNativeLocalSeoHtmlRoutes && isLocalSeoAdoptionCandidate(activeLegacyFile)
-const localSeoDoc = shouldRenderNativeLocalSeo
-  ? await getByLegacyUrl('local-seo-pages', activeLegacyFile, { depth: 2 })
-  : null
-const NativeLocalSeoFamilyPage =
-  shouldRenderNativeLocalSeo
-    ? (await import('../../components/cms/NativeLocalSeoFamilyPage.astro')).default
-    : null
+const redirectTarget = getLegacyRedirectTarget(legacyFile)
 
-Astro.response.headers.set('cache-control', 'public, max-age=300, stale-while-revalidate=86400')
+if (redirectTarget) {
+  return Astro.redirect(`/${redirectTarget}`, 308)
+}
+
+Astro.response.headers.set(
+  'cache-control',
+  import.meta.env.DEV ? 'no-store' : 'public, max-age=300, stale-while-revalidate=86400',
+)
 Astro.response.headers.set('x-migration-render', 'adopted-astro-payload')
 ---
-{
-  shouldRenderNativePhotography ? (
-    <NativePhotographyPage />
-  ) : shouldRenderNativeAutomobil ? (
-    <NativeAutomobilPhotographyPage />
-  ) : shouldRenderNativeSportwagen ? (
-    <NativeSportwagenPhotographyPage />
-  ) : shouldRenderNativeOldtimer ? (
-    <NativeOldtimerPhotographyPage />
-  ) : shouldRenderNativeMotorrad ? (
-    <NativeMotorradPhotographyPage />
-  ) : shouldRenderNativePortrait ? (
-    <NativePortraitPhotographyPage />
-  ) : shouldRenderNativeLandschaft ? (
-    <NativeLandschaftPhotographyPage />
-  ) : shouldRenderNativeJournalIndex ? (
-    <NativeJournalIndexPage />
-  ) : shouldRenderNativePortfolioIndex ? (
-    <NativePortfolioIndexPage />
-  ) : shouldRenderNativePrintLab ? (
-    <NativePrintLabPage />
-  ) : shouldRenderNativeServiceDetail ? (
-    <NativeServiceDetailPage legacyFile={activeLegacyFile} />
-  ) : shouldRenderNativeServicesIndex ? (
-    <NativeServicesIndexPage />
-  ) : shouldRenderNativeContact ? (
-    <NativeContactPage />
-  ) : shouldRenderNativeAbout ? (
-    <NativeAboutPage />
-  ) : NativeLocalSeoFamilyPage ? (
-    <NativeLocalSeoFamilyPage doc={localSeoDoc as PayloadDoc | null} legacyFile={activeLegacyFile} />
-  ) : (
-    <LegacyPageShell legacyFile={activeLegacyFile} />
-  )
-}
+<NativeAdoptedPage legacyFile={legacyFile} />

@@ -1,5 +1,5 @@
 ---
-import NativeLegacyLayout from '../../layouts/NativeLegacyLayout.astro'
+import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
 
 const legacyFile = 'landschaftsfotografie.html'
@@ -39,7 +39,7 @@ const searchLinks = [
   ['landschaftsfotografie-print-deutschland.html', 'Landschaftsfotografie Print Deutschland'],
 ] as const
 ---
-<NativeLegacyLayout legacyFile={legacyFile} current="fotografie" doc={doc}>
+<AdoptedPageLayout legacyFile={legacyFile} current="fotografie" doc={doc}>
   <main>
     <section
       class="hero-ls"
@@ -236,4 +236,4 @@ const searchLinks = [
       data-contact-lead="Schreibe kurz, wofür die Landschaftsbilder eingesetzt werden — Fine-Art-Print, Innenraum, Editorial, Website oder Markenbild. Wichtig sind gewünschte Atmosphäre, Format, Material und Zeitraum."
     ></section>
   </main>
-</NativeLegacyLayout>
+</AdoptedPageLayout>

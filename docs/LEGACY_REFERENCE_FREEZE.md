@@ -8,7 +8,7 @@ The current root `.html` files are the visual reference for the Astro + Payload 
 - Do not use Payload as a permanent store for raw layout HTML.
 - Keep `.html` URLs stable while migration happens.
 - Adopt one page or page family at a time.
-- After adoption, compare the adopted Astro route against `/legacy-baseline/<slug>`.
+- After adoption, compare the adopted Astro route against the separate reference server started by `corepack pnpm web:test:visual`.
 
 ## Current Priority
 
@@ -19,9 +19,11 @@ The current root `.html` files are the visual reference for the Astro + Payload 
 
 ## Adopted Route Rule
 
-Adopted `.html` URLs stay public, but they are no longer prerendered by the generic legacy endpoint. The middleware rewrites them internally to `/native/<slug>`, where Astro renders the Payload-backed shell. Non-adopted `.html` URLs remain static fallback pages until their page family is ready.
+Adopted `.html` URLs stay public, but they are no longer prerendered by a generic legacy endpoint. The middleware rewrites them internally to `/native/<slug>`, where Astro renders the Payload-backed native shell. The current production model builds all previous root `.html` URLs through the native route registry.
 
 The adopted list lives in `apps/web/src/lib/adoptedRoutes.ts`.
+
+There is no `/legacy-baseline/*` route in the Astro app anymore. Visual Regression reads the frozen root HTML files through a short-lived QA server, so production source code does not depend on raw legacy rendering.
 
 ## Refreshing The Freeze Manifest
 

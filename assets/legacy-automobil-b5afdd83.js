@@ -90,7 +90,7 @@
       io.observe(grid);
     } else { tiles.forEach(function(t){ t.classList.add('is-in'); }); }
 
-    var IMAGES = tiles.map(function(t){ var img=t.querySelector('img'); return { src:img.getAttribute('src'), alt:img.getAttribute('alt')||'' }; });
+    var IMAGES = tiles.map(function(t){ var img=t.querySelector('img'); return { src:t.getAttribute('data-full')||img.getAttribute('data-full')||img.getAttribute('data-src')||img.getAttribute('src'), alt:img.getAttribute('alt')||'' }; });
     var lb=document.getElementById('lightbox'), lbImg=document.getElementById('lbImg'),
         lbCount=document.getElementById('lbCounter'), lbClose=document.getElementById('lbClose'),
         lbPrev=document.getElementById('lbPrev'), lbNext=document.getElementById('lbNext');

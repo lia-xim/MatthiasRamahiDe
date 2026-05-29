@@ -133,7 +133,7 @@
 
   .pd-sub{max-width:580px;font-size:clamp(14px,1.05vw,16.5px);line-height:1.6;color:rgba(243,245,239,.82);opacity:0;animation:pdFadeUp 1.05s var(--ease) .9s forwards}
   .pd-actions{display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:pdFadeUp 1.05s var(--ease) 1.1s forwards;margin-top:clamp(10px,1.2vw,16px)}
-  .pd-actions a{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border:1px solid var(--accent);color:var(--fg);font:11px var(--mono);letter-spacing:.22em;text-transform:uppercase;transition:background .35s var(--ease),color .35s var(--ease)}
+  .pd-actions a{min-height:44px;display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border:1px solid var(--accent);color:var(--fg);font:11px var(--mono);letter-spacing:.22em;text-transform:uppercase;transition:background .35s var(--ease),color .35s var(--ease)}
   .pd-actions a:hover{background:var(--accent);color:var(--ink)}
   .pd-actions a.ghost{border-color:rgba(243,245,239,.32);color:rgba(243,245,239,.82)}
   .pd-actions a.ghost:hover{border-color:var(--fg);color:var(--fg);background:transparent}
@@ -160,7 +160,7 @@
   .st-pull-foot .col{display:grid;gap:8px}
   .st-pull-foot .col span{font:10px var(--mono);letter-spacing:.28em;text-transform:uppercase;color:var(--quiet-l)}
   .st-pull-cta{max-width:1080px;margin:clamp(28px,3.4vw,48px) auto 0;text-align:left}
-  .st-pull-cta a{display:inline-block;font:11px var(--mono);letter-spacing:.28em;text-transform:uppercase;color:var(--ink);text-decoration:none;padding:14px 0;border-bottom:1px solid var(--ink);transition:letter-spacing .3s var(--ease),padding .3s var(--ease)}
+  .st-pull-cta a{min-height:44px;display:inline-flex;align-items:center;font:11px var(--mono);letter-spacing:.28em;text-transform:uppercase;color:var(--ink);text-decoration:none;padding:14px 0;border-bottom:1px solid var(--ink);transition:letter-spacing .3s var(--ease),padding .3s var(--ease)}
   .st-pull-cta a:hover{letter-spacing:.34em;padding-right:8px}
   .st-pull-foot .col p{font-size:13.5px;line-height:1.6;color:var(--muted-l)}
 
@@ -222,7 +222,7 @@
   .bg-head h2{font-size:clamp(36px,4.8vw,84px);line-height:.86;letter-spacing:-.07em;font-weight:900;color:#f3f1ea}
   .bg-head h2 em{font-style:italic;color:var(--accent-2);font-weight:300;letter-spacing:-.04em}
   .bg-head .meta{display:flex;align-items:center;gap:18px;font:10.5px var(--mono);letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.5);padding-bottom:8px}
-  .bg-head .meta a{color:rgba(255,255,255,.86);border-bottom:1px solid rgba(255,255,255,.32);padding-bottom:3px;transition:letter-spacing .35s var(--ease),border-color .35s var(--ease)}
+  .bg-head .meta a{min-height:44px;display:inline-flex;align-items:center;color:rgba(255,255,255,.86);border-bottom:1px solid rgba(255,255,255,.32);padding-bottom:3px;transition:letter-spacing .35s var(--ease),border-color .35s var(--ease)}
   .bg-head .meta a:hover{letter-spacing:.34em;border-color:var(--accent-2)}
 
   .bg-grid{flex:1;display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:repeat(10,1fr);gap:clamp(6px,.7vw,12px);margin-top:clamp(14px,1.6vw,24px);min-height:0}
@@ -298,7 +298,7 @@
   .ki-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(8px,.9vw,16px)}
   .ki-cta{margin-top:clamp(20px,2.4vw,36px);padding-top:clamp(14px,1.6vw,22px);border-top:1px solid var(--line-l);text-align:center}
   .ki-cta p{margin:0;font-size:clamp(13px,1.05vw,16px);color:var(--muted-l)}
-  .ki-cta a{color:var(--ink);font-weight:600;text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:2px;transition:letter-spacing .3s var(--ease)}
+  .ki-cta a{min-height:44px;display:inline-flex;align-items:center;color:var(--ink);font-weight:600;text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:2px;transition:letter-spacing .3s var(--ease)}
   .ki-cta a:hover{letter-spacing:.02em}
   .ki-card{position:relative;background:rgba(255,255,255,.62);padding:clamp(18px,1.6vw,26px) clamp(16px,1.4vw,22px);display:flex;flex-direction:column;gap:clamp(10px,.9vw,14px);text-decoration:none;color:var(--ink);overflow:hidden;min-height:clamp(160px,16vw,210px);transition:background .35s var(--ease),transform .45s var(--ease),box-shadow .45s var(--ease)}
   .ki-card:before{content:"";position:absolute;left:0;top:18%;bottom:18%;width:1px;background:var(--ink);opacity:.18;transition:opacity .35s var(--ease),width .35s var(--ease),top .45s var(--ease),bottom .45s var(--ease)}

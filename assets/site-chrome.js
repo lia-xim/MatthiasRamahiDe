@@ -228,6 +228,14 @@
       sticky.setAttribute('aria-label', sticky.textContent);
       sticky.setAttribute('data-cta-role', 'mobile-sticky');
       document.body.appendChild(sticky);
+
+      function syncStickyVisibility() {
+        sticky.classList.toggle('is-visible', window.scrollY > window.innerHeight * 0.62);
+      }
+
+      syncStickyVisibility();
+      window.addEventListener('scroll', syncStickyVisibility, { passive: true });
+      window.addEventListener('resize', syncStickyVisibility);
     })();
 
     /* ---------- Conversion intent tracking -------------------------------

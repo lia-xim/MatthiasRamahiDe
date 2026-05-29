@@ -226,7 +226,7 @@
   .hero-mp__actions{margin-top:clamp(28px,3vw,40px);display:flex;gap:14px;flex-wrap:wrap;
     transition:opacity 1.2s var(--ease) .75s, transform 1.2s var(--ease) .75s;
   }
-  .hero-mp__actions a{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border:1px solid var(--accent);color:var(--fg);font:11px var(--mono);letter-spacing:.22em;text-transform:uppercase;transition:background .35s var(--ease),color .35s var(--ease);font-variant-numeric:tabular-nums}
+  .hero-mp__actions a{min-height:44px;display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border:1px solid var(--accent);color:var(--fg);font:11px var(--mono);letter-spacing:.22em;text-transform:uppercase;transition:background .35s var(--ease),color .35s var(--ease);font-variant-numeric:tabular-nums}
   .hero-mp__actions a:hover{background:var(--accent);color:var(--ink)}
   .hero-mp__actions a.ghost{border-color:rgba(244,241,234,.28);color:var(--muted)}
   .hero-mp__actions a.ghost:hover{border-color:var(--fg);color:var(--fg)}
@@ -239,7 +239,7 @@
   .st-body{display:grid;gap:18px;max-width:520px;justify-self:end}
   .st-body p{color:var(--muted-l);font-size:clamp(15px,1.1vw,17px);line-height:1.66;margin:0}
   .st-body p strong{color:var(--ink);font-weight:600}
-  .st-cta{margin-top:14px;font:11px var(--mono);letter-spacing:.24em;text-transform:uppercase;color:var(--ink);display:inline-flex;align-items:center;gap:10px;border-bottom:1px solid var(--ink);padding-bottom:6px;align-self:flex-start;transition:letter-spacing .4s var(--ease);width:fit-content}
+  .st-cta{min-height:44px;margin-top:14px;font:11px var(--mono);letter-spacing:.24em;text-transform:uppercase;color:var(--ink);display:inline-flex;align-items:center;gap:10px;border-bottom:1px solid var(--ink);padding-bottom:6px;align-self:flex-start;transition:letter-spacing .4s var(--ease);width:fit-content}
   .st-cta:hover{letter-spacing:.3em}
 
   /* ============ PROVENANCE ============ */
@@ -317,7 +317,7 @@
   .fw-foot{margin-top:clamp(24px,3vw,40px);padding-top:clamp(24px,3vw,40px);border-top:1px solid rgba(22,20,15,.12);display:flex;align-items:baseline;justify-content:space-between;gap:32px;flex-wrap:wrap}
   .fw-foot p{color:var(--muted-l);font-size:14.5px;line-height:1.5}
   .fw-foot p em{font-style:italic;color:var(--accent-2)}
-  .fw-foot a{font:11px var(--mono);letter-spacing:.24em;text-transform:uppercase;color:var(--ink);display:inline-flex;align-items:center;gap:10px;border-bottom:1px solid var(--ink);padding-bottom:6px;transition:letter-spacing .4s var(--ease)}
+  .fw-foot a{min-height:44px;font:11px var(--mono);letter-spacing:.24em;text-transform:uppercase;color:var(--ink);display:inline-flex;align-items:center;gap:10px;border-bottom:1px solid var(--ink);padding-bottom:6px;transition:letter-spacing .4s var(--ease)}
   .fw-foot a:hover{letter-spacing:.3em}
 
   /* ============ RELATED ============ */

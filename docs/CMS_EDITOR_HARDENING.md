@@ -84,7 +84,7 @@ Entwuerfe duerfen unvollstaendig bleiben. Die harte Pruefung greift erst bei `_s
 - Journal-Detailseiten werden als `journal-posts` mit Cover, Excerpt, Tags, Related Links, Lesezeit, SEO und Content-Bloecken angelegt.
 - Der Legacy-Tab speichert Quelle, alte URL, extrahierte Ueberschriften, Bildpfade und Text als Kontrollbasis.
 - Importierte Dokumente bleiben fachlich zu pruefen; der Import ersetzt keine visuelle Freigabe.
-- Oeffentliche Legacy-URLs werden in Astro ueber die componentized Legacy-Schicht gerendert; die rohe Ausgabe dient nur noch als Visual-Regression-Baseline.
+- Oeffentliche alte `.html`-URLs werden in Astro ueber native Komponenten, den Local-SEO-Family-Renderer oder strukturierte CMS-Renderer ausgegeben. Die rohe Ausgabe dient nur noch als externe Visual-Regression-Referenz aus den Root-HTML-Dateien und ist kein App-Renderpfad mehr.
 - Der Route-Audit `test:legacy-routes` prueft alle alten `.html`-URLs auf Status, Head, Header/Footer und defekte Bilder.
 - Neue Payload-Seiten ohne Legacy-Datei koennen ueber `ASTRO_ENABLE_CMS_DYNAMIC_ROUTES` bereits nativ aus strukturierten Feldern rendern.
 - Lokale SEO-Seiten koennen mit `ASTRO_ENABLE_LOCAL_SEO_ADOPTED_ROUTES=true` kontrolliert in die Astro/Payload-Adoptionsschicht wechseln. Fuer das aktuelle private Staging ist dieser Schalter aktiv; fuer oeffentliche Launches kann er wieder auf `false` gesetzt werden, bis einzelne Seiten final gegenlesen sind.

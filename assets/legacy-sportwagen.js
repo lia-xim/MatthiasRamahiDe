@@ -55,10 +55,13 @@
       tiles.forEach(function(t){ t.classList.add('is-in'); });
     }
 
-    // Build full-image list for lightbox (data-src from each tile's <img decoding="async" loading="lazy">)
+    // Build full-image list for lightbox while allowing lightweight grid previews.
     var IMAGES = tiles.map(function(t){
       var img = t.querySelector('img');
-      return { src: img.getAttribute('src'), alt: img.getAttribute('alt') || '' };
+      return {
+        src: t.getAttribute('data-full') || img.getAttribute('data-full') || img.getAttribute('data-src') || img.getAttribute('src'),
+        alt: img.getAttribute('alt') || ''
+      };
     });
 
     // Lightbox wiring

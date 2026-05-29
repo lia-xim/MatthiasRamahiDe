@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import { legalContentByFile, legalJsonLd, type LegalContentItem, type LegalLegacyFile } from '../../lib/legalContent'
+import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
+
+type Props = {
+  doc?: PayloadDoc | null
+  legacyFile: LegalLegacyFile
+}
+
+const { legacyFile, doc: providedDoc } = Astro.props as Props
+const doc = providedDoc || (await getLegacyBackedDoc(legacyFile, { depth: 2 }))
+const content = legalContentByFile[legacyFile]
+
+const title = doc?.seo?.title || content.seoTitle
+const description = doc?.seo?.description || content.description
+const canonicalUrl = doc?.seo?.canonicalUrl || content.canonicalPath
+const noIndex = Boolean(doc?.seo?.noIndex)
+
+Astro.response.headers.set('x-cms-render-source', 'structured-astro')
+Astro.response.headers.set('x-cms-migration-status', 'native-component')
+Astro.response.headers.set('x-cms-page-kind', 'legal-native-typed')
+---
+<BaseLayout
+  bodyClass="has-mr-footer legal-page cms-page"
+  canonicalUrl={canonicalUrl}
+  currentNav={undefined}
+  description={description}
+  noIndex={noIndex}
+  ogImage="/assets/optimized/assets-photos-automobil-sunset-1920.webp"
+  stylesheets={['/assets/legacy-inline-84252c323262.css', '/assets/legacy-performance.css', '/assets/legal-touch-targets.css']}
+  title={title}
+  jsonLd={legalJsonLd(content)}
+>
+  <section class="legal-hero" data-header-theme="dark">
+    <div>
+      <p class="kicker">{content.hero.kicker}</p>
+      <h1>{content.hero.title}</h1>
+      <p>{content.hero.lead}</p>
+    </div>
+  </section>
+
+  <section class="legal-doc" data-header-theme="light">
+    <div class="legal-shell">
+      <nav class="toc" aria-label="Inhaltsübersicht">
+        {content.toc.map((item) => <a href={item.href}>{item.label}</a>)}
+      </nav>
+
+      <div class="legal-content">
+        {content.sections.map((section) => (
+          <section class="legal-block" id={section.id}>
+            <h2>{section.title}</h2>
+            {section.items.map((item: LegalContentItem) => (
+              item.type === 'heading' ? (
+                <h3>{item.text}</h3>
+              ) : item.type === 'paragraph' ? (
+                <p class:list={[{ small: item.small }]} set:html={item.html} />
+              ) : item.type === 'list' ? (
+                <ul>
+                  {item.items.map((entry) => <li set:html={entry} />)}
+                </ul>
+              ) : item.type === 'card' ? (
+                <div class="legal-card">
+                  <strong>{item.title}</strong>
+                  {item.paragraphs.map((paragraph) => <p set:html={paragraph} />)}
+                </div>
+              ) : (
+                <div class="meta-row">
+                  {item.items.map((mini) => (
+                    <div class="mini">
+                      <span>{mini.label}</span>
+                      <b>{mini.value}</b>
+                      {mini.note && <p class="small">{mini.note}</p>}
+                    </div>
+                  ))}
+                </div>
+              )
+            ))}
+          </section>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

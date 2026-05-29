@@ -1,24 +1,67 @@
 ---
-import NativeLegacyLayout from '../../layouts/NativeLegacyLayout.astro'
+import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import { blockParagraphs, photographyTopics } from '../../lib/nativeContent'
 import { getSitePageByType, type PayloadDoc } from '../../lib/payload'
 
-const providedDoc = Astro.props.doc as PayloadDoc | undefined
+type Props = {
+  doc?: PayloadDoc
+  legacyFile?: string
+}
+
+const overviewMeta: Record<string, { description: string; heroLines: [string, string]; intro: string; title: string }> = {
+  'fotografie.html': {
+    description:
+      'Fotografie als klare Übersicht: Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft - sechs spezialisierte Bereiche mit eigenem Einstieg.',
+    heroLines: ['Fotografie-', 'Bereiche.'],
+    intro:
+      'Sechs Fotografie-Bereiche - Automobil, Sportwagen, Oldtimer und Motorrad, Portrait und Fine-Art-Landschaft. Jede Kategorie mit eigener Bildsprache und eigenem Einstieg.',
+    title: 'Fotografie | Übersicht der Bereiche | Matthias Ramahi',
+  },
+  'fotografie-duesseldorf.html': {
+    description:
+      'Fotografie Düsseldorf als klare Übersicht: Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft - sechs spezialisierte Bereiche mit eigenem Einstieg.',
+    heroLines: ['Fotografie', 'Düsseldorf.'],
+    intro:
+      'Fotografie in Düsseldorf als strukturierter Einstieg: Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft führen in sechs spezialisierte Bereiche.',
+    title: 'Fotografie Düsseldorf | Übersicht | Matthias Ramahi',
+  },
+  'fotografie-nrw.html': {
+    description:
+      'Fotografie NRW als klare Übersicht: Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft - sechs spezialisierte Bereiche für Rheinland, Ruhrgebiet und Deutschland.',
+    heroLines: ['Fotografie', 'NRW.'],
+    intro:
+      'Fotografie in NRW als klare Übersicht für Rheinland, Ruhrgebiet und angrenzende Regionen - mit sechs Bereichen und direkten Einstiegen in lokale Seiten.',
+    title: 'Fotografie NRW | Übersicht | Matthias Ramahi',
+  },
+  'fotografie-deutschland.html': {
+    description:
+      'Fotografie Deutschland als klare Übersicht: Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft - sechs spezialisierte Bereiche für hochwertige Bildserien.',
+    heroLines: ['Fotografie', 'Deutschland.'],
+    intro:
+      'Fotografie deutschlandweit gedacht, aber in klaren Bereichen geführt: Fahrzeuge, Menschen und Landschaften bleiben eigenständige Bild- und Suchintentionen.',
+    title: 'Fotografie Deutschland | Übersicht | Matthias Ramahi',
+  },
+}
+
+const { legacyFile = 'fotografie.html' } = Astro.props as Props
+const meta = overviewMeta[legacyFile] || overviewMeta['fotografie.html']
+const providedDoc = (Astro.props as Props).doc
 const doc = providedDoc || (await getSitePageByType('photography-index', { depth: 2 }))
+const heroIntro = legacyFile === 'fotografie.html' ? doc?.intro || meta.intro : meta.intro
 const clusterParagraphs = blockParagraphs(doc, 'Ein Einstieg', [
   'Die Übersicht ist der Einstiegspunkt. Von hier aus führen die sechs Bereiche auf eigene Hauptseiten — und von dort weiter in lokale Varianten, NRW- und Deutschland-Hubs sowie die jeweiligen Keyword-Seiten.',
   'Nutzer wählen nicht aus einem generischen Portfolio, sondern steigen direkt in Automobil, Sportwagen, Oldtimer, Motorrad, Portrait oder Landschaft ein. Jede Kategorie zeigt auf ihrer Hauptseite die zugehörigen Städte und Regionen.',
 ])
 ---
-<NativeLegacyLayout legacyFile="fotografie.html" current="fotografie" doc={doc}>
+<AdoptedPageLayout legacyFile={legacyFile} current="fotografie" doc={doc} title={meta.title} description={meta.description}>
   <main>
     <section class="ovh" data-theme="dark" aria-label="Fotografie Übersicht">
-      <div class="ovh__photo" style="background-image:url('/assets/optimized/mpik8b82-dsc3879-1920.webp')" aria-hidden="true"></div>
+      <img class="ovh__photo" src="/assets/optimized/mpik8b82-dsc3879-1920.webp" alt="" width="1920" height="1280" fetchpriority="high" decoding="async" aria-hidden="true" />
       <div class="ovh__glow" aria-hidden="true"></div>
       <div class="ovh__aperture" aria-hidden="true"></div>
       <div class="ovh__grid">
-        <h1 class="ovh__title"><span class="line"><span class="word">Fotografie-</span></span><span class="line"><span class="word">Bereiche.</span></span></h1>
-        <p class="ovh__lead">{doc?.intro || 'Sechs Fotografie-Bereiche — Automobil, Sportwagen, Oldtimer und Motorrad, Portrait und Fine-Art-Landschaft. Jede Kategorie mit eigener Bildsprache und eigenem Einstieg.'}</p>
+        <h1 class="ovh__title"><span class="line"><span class="word">{meta.heroLines[0]}</span></span><span class="line"><span class="word">{meta.heroLines[1]}</span></span></h1>
+        <p class="ovh__lead">{heroIntro}</p>
         <div class="ovh__actions">
           <a class="ovh__btn" href="#automobil">Bereiche ansehen →</a>
           <a class="ovh__btn ovh__btn--ghost" href="#anfrage">Fotografie anfragen</a>
@@ -66,5 +109,4 @@ const clusterParagraphs = blockParagraphs(doc, 'Ein Einstieg', [
       data-contact-lead="Beschreibe kurz, welcher Bereich passt — Automobil, Sportwagen, Oldtimer, Motorrad, Portrait oder Landschaft — und wofür die Bilder genutzt werden sollen. Dann klären wir Stil, Umfang, Ort, Rechte und Ausgabeformat sauber vor der Produktion."
     />
   </main>
-</NativeLegacyLayout>
-
+</AdoptedPageLayout>

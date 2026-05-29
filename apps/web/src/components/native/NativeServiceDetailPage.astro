@@ -1,5 +1,5 @@
 ---
-import NativeLegacyLayout from '../../layouts/NativeLegacyLayout.astro'
+import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import { nativeServiceDetailPages } from '../../lib/serviceDetailContent'
 import { getBySlug, type PayloadDoc } from '../../lib/payload'
 
@@ -14,7 +14,7 @@ const slug = legacyFile.replace(/\.html$/i, '')
 const providedDoc = (Astro.props as Props).doc
 const doc = providedDoc || (await getBySlug('service-pages', slug, { depth: 2 }))
 ---
-<NativeLegacyLayout legacyFile={legacyFile} current="leistungen" doc={doc}>
+<AdoptedPageLayout legacyFile={legacyFile} current="leistungen" doc={doc}>
   <main>
     <section class="sp-hero" data-header-theme="dark" aria-label={page.hero.crumb.replace(/&amp;/g, '&')}>
       <div class="sp-hero__bg" aria-hidden="true">
@@ -108,4 +108,4 @@ const doc = providedDoc || (await getBySlug('service-pages', slug, { depth: 2 })
       aria-label="Anfrage"
     />
   </main>
-</NativeLegacyLayout>
+</AdoptedPageLayout>

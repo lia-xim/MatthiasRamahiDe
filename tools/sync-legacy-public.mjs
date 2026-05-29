@@ -251,7 +251,8 @@ function extractAssetReferences(text, filePath) {
     }
   }
 
-  const directAssetPattern = /(?:["'(`=]|^)(assets\/[^"'`\s,)>?#]+\.(?:avif|gif|jpe?g|mp4|png|svg|webm|webp|css|js|json|txt|xml))/gi
+  const directAssetPattern =
+    /(?:["'(`=]|^)(\/?assets\/[^"'`\s,)>?#]+\.(?:avif|gif|jpe?g|mp4|png|svg|webm|webp|css|js|json|txt|xml))/gi
   while ((match = directAssetPattern.exec(text))) {
     addAssetReference(matches, match[1])
   }
@@ -281,7 +282,7 @@ function addAssetReference(matches, reference) {
 }
 
 function normalizeAssetReference(reference) {
-  const clean = reference.split('#')[0].split('?')[0]
+  const clean = reference.split('#')[0].split('?')[0].replace(/^\/+/, '')
   let decoded = clean
   try {
     decoded = decodeURIComponent(clean)

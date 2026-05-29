@@ -201,6 +201,12 @@ function addPerformanceCss(html) {
   return html.replace('</head>', `  <link rel="stylesheet" href="${legacyPerformanceHref}" />\n</head>`)
 }
 
+function stripThirdPartyFontHints(html) {
+  return html
+    .replace(/\s*<link\b[^>]*href=["']https:\/\/fonts\.(?:googleapis|gstatic)\.com[^"']*["'][^>]*>\s*/gi, '\n')
+    .replace(/\n{3,}/g, '\n\n')
+}
+
 function redirectHtml(fileName, target) {
   const title = `${fileName} -> ${target}`
   return `<!doctype html>
@@ -246,7 +252,7 @@ for (const filePath of await legacyHtmlFiles()) {
     continue
   }
 
-  let next = addPerformanceCss(html)
+  let next = stripThirdPartyFontHints(addPerformanceCss(html))
   next = await hardenImages(next, filePath)
   next = deferDuplicateImages(next)
 

@@ -1,11 +1,15 @@
 import fs from 'node:fs/promises'
+import { createServer } from 'node:http'
 import path from 'node:path'
 
 import pixelmatch from 'pixelmatch'
 import { chromium } from 'playwright'
 import { PNG } from 'pngjs'
 
-const baseUrl = (process.env.VISUAL_BASE_URL || 'http://localhost:4321').replace(/\/$/, '')
+const repoRoot = path.resolve(process.cwd(), '../..')
+const componentTargetRoot = path.resolve(process.cwd(), process.env.VISUAL_COMPONENT_TARGET || 'dist/client')
+const configuredComponentBaseUrl = process.env.VISUAL_BASE_URL?.replace(/\/$/, '')
+const configuredLegacyBaseUrl = process.env.VISUAL_LEGACY_BASE_URL?.replace(/\/$/, '')
 const outputDir = path.resolve(process.cwd(), '.visual-regression')
 const maxMismatchRatio = Number(process.env.VISUAL_MAX_MISMATCH_RATIO || '0.02')
 const hardMaxMismatchRatio = Number(process.env.VISUAL_HARD_MAX_MISMATCH_RATIO || '0.05')
@@ -27,128 +31,128 @@ const selectedViewports = new Set(
 const pages = [
   {
     name: 'home',
-    legacyPath: '/legacy-baseline/',
+    legacyPath: '/',
     componentPath: '/',
     maxMismatchRatio: { desktop: 0.025, mobile: 0.03 },
     thresholdNote: 'Startseite enthaelt die dynamisch per JS erzeugte Portfolio-Marquee.',
   },
   {
     name: 'portfolio',
-    legacyPath: '/legacy-baseline/portfolio',
+    legacyPath: '/portfolio',
     componentPath: '/portfolio.html',
   },
   {
     name: 'photography-index',
-    legacyPath: '/legacy-baseline/fotografie',
+    legacyPath: '/fotografie',
     componentPath: '/fotografie.html',
   },
   {
     name: 'automotive-main',
-    legacyPath: '/legacy-baseline/automobil-fotografie',
+    legacyPath: '/automobil-fotografie',
     componentPath: '/automobil-fotografie.html',
     maxMismatchRatio: { mobile: 0.05 },
     thresholdNote: 'Mobile enthaelt lange lazy/reveal Bildraster mit Legacy-JS.',
   },
   {
     name: 'sportscar-main',
-    legacyPath: '/legacy-baseline/sportwagen-fotografie',
+    legacyPath: '/sportwagen-fotografie',
     componentPath: '/sportwagen-fotografie.html',
     maxMismatchRatio: { desktop: 0.03, mobile: 0.05 },
     thresholdNote: 'Seite enthaelt lange lazy/reveal Bildraster mit Legacy-JS.',
   },
   {
     name: 'oldtimer-main',
-    legacyPath: '/legacy-baseline/oldtimer-fotografie',
+    legacyPath: '/oldtimer-fotografie',
     componentPath: '/oldtimer-fotografie.html',
     maxMismatchRatio: { mobile: 0.05 },
     thresholdNote: 'Mobile enthaelt lange lazy/reveal Bildraster mit Legacy-JS.',
   },
   {
     name: 'motorcycle-main',
-    legacyPath: '/legacy-baseline/motorrad-fotografie',
+    legacyPath: '/motorrad-fotografie',
     componentPath: '/motorrad-fotografie.html',
     maxMismatchRatio: { desktop: 0.05, mobile: 0.05 },
     thresholdNote: 'Desktop und Mobile enthalten lange lazy/reveal Bildraster mit Legacy-JS.',
   },
   {
     name: 'portrait-main',
-    legacyPath: '/legacy-baseline/portraitfotografie',
+    legacyPath: '/portraitfotografie',
     componentPath: '/portraitfotografie.html',
   },
   {
     name: 'landscape-main',
-    legacyPath: '/legacy-baseline/landschaftsfotografie',
+    legacyPath: '/landschaftsfotografie',
     componentPath: '/landschaftsfotografie.html',
   },
   {
     name: 'services',
-    legacyPath: '/legacy-baseline/leistungen',
+    legacyPath: '/leistungen',
     componentPath: '/leistungen.html',
     maxMismatchRatio: { desktop: 0.03 },
     thresholdNote: 'Desktop enthaelt Legacy-Reveal- und Lazyload-Abschnitte.',
   },
   {
     name: 'service-fotolabor',
-    legacyPath: '/legacy-baseline/fotolabor-druck-duesseldorf',
+    legacyPath: '/fotolabor-druck-duesseldorf',
     componentPath: '/fotolabor-druck-duesseldorf.html',
   },
   {
     name: 'service-grossformat',
-    legacyPath: '/legacy-baseline/grossformatdruck-duesseldorf',
+    legacyPath: '/grossformatdruck-duesseldorf',
     componentPath: '/grossformatdruck-duesseldorf.html',
   },
   {
     name: 'service-werbetechnik',
-    legacyPath: '/legacy-baseline/werbetechnik-duesseldorf',
+    legacyPath: '/werbetechnik-duesseldorf',
     componentPath: '/werbetechnik-duesseldorf.html',
   },
   {
     name: 'service-webdesign',
-    legacyPath: '/legacy-baseline/webdesign-seo-duesseldorf',
+    legacyPath: '/webdesign-seo-duesseldorf',
     componentPath: '/webdesign-seo-duesseldorf.html',
   },
   {
     name: 'service-videografie',
-    legacyPath: '/legacy-baseline/videografie-duesseldorf',
+    legacyPath: '/videografie-duesseldorf',
     componentPath: '/videografie-duesseldorf.html',
   },
   {
     name: 'service-viola',
-    legacyPath: '/legacy-baseline/viola-musik-duesseldorf',
+    legacyPath: '/viola-musik-duesseldorf',
     componentPath: '/viola-musik-duesseldorf.html',
   },
   {
     name: 'service-sonder',
-    legacyPath: '/legacy-baseline/drucke-sonderanfertigungen-duesseldorf',
+    legacyPath: '/drucke-sonderanfertigungen-duesseldorf',
     componentPath: '/drucke-sonderanfertigungen-duesseldorf.html',
   },
   {
     name: 'about',
-    legacyPath: '/legacy-baseline/ueber-mich',
+    legacyPath: '/ueber-mich',
     componentPath: '/ueber-mich.html',
     maxMismatchRatio: { desktop: 0.05 },
     thresholdNote: 'Desktop enthaelt Legacy-Reveal- und Lazyload-Abschnitte.',
   },
   {
     name: 'contact',
-    legacyPath: '/legacy-baseline/contact',
+    legacyPath: '/contact',
     componentPath: '/contact.html',
   },
   {
     name: 'journal',
-    legacyPath: '/legacy-baseline/blog',
+    legacyPath: '/blog',
     componentPath: '/blog.html',
     maxMismatchRatio: { mobile: 0.05 },
     thresholdNote: 'Mobile enthaelt lazy geladene Journal-Karten aus Legacy-JS/CSS.',
   },
   {
     name: 'journal-detail',
-    legacyPath: '/legacy-baseline/blog-automotive-fotografie-duesseldorf',
+    legacyPath: '/blog-automotive-fotografie-duesseldorf',
     componentPath: '/blog-automotive-fotografie-duesseldorf.html',
   },
   {
     name: 'local-seo',
-    legacyPath: '/legacy-baseline/automobil-fotografie-koeln',
+    legacyPath: '/automobil-fotografie-koeln',
     componentPath: '/automobil-fotografie-koeln.html',
     maxMismatchRatio: { desktop: 0.05 },
     thresholdNote: 'Lokale Legacy-Seite enthaelt lange Reveal- und Lazyload-Abschnitte.',
@@ -174,7 +178,196 @@ if (viewportsToCheck.length === 0) {
   process.exit(1)
 }
 
-const urlFor = (pathname) => `${baseUrl}${pathname}`
+const contentTypes = new Map([
+  ['.avif', 'image/avif'],
+  ['.css', 'text/css; charset=utf-8'],
+  ['.gif', 'image/gif'],
+  ['.html', 'text/html; charset=utf-8'],
+  ['.ico', 'image/x-icon'],
+  ['.jpeg', 'image/jpeg'],
+  ['.jpg', 'image/jpeg'],
+  ['.js', 'text/javascript; charset=utf-8'],
+  ['.json', 'application/json; charset=utf-8'],
+  ['.mp4', 'video/mp4'],
+  ['.png', 'image/png'],
+  ['.svg', 'image/svg+xml; charset=utf-8'],
+  ['.txt', 'text/plain; charset=utf-8'],
+  ['.webmanifest', 'application/manifest+json; charset=utf-8'],
+  ['.webm', 'video/webm'],
+  ['.webp', 'image/webp'],
+  ['.xml', 'application/xml; charset=utf-8'],
+])
+
+function normalizeLegacyHtml(html) {
+  const normalized = html
+    .replace(/(?<![A-Za-z0-9:/])assets\//g, '/assets/')
+    .replace(
+      /((?:src|href|poster|content)=["'])(?!\/|https?:|data:)([^"']+\.(?:avif|css|gif|jpe?g|js|json|mp4|png|svg|txt|webmanifest|webm|webp|xml))/gi,
+      '$1/$2',
+    )
+    .replace(
+      /url\((["']?)(?!\/|https?:|data:|#)([^"')]+\.(?:avif|gif|jpe?g|mp4|png|svg|webm|webp))\1\)/gi,
+      'url($1/$2$1)',
+    )
+
+  return /<base\s/i.test(normalized) ? normalized : normalized.replace(/<head([^>]*)>/i, '<head$1>\n<base href="/">')
+}
+
+function isInsideRepo(filePath) {
+  const relative = path.relative(repoRoot, filePath)
+  return relative === '' || (!relative.startsWith('..') && !path.isAbsolute(relative))
+}
+
+async function fileExists(filePath) {
+  try {
+    const stat = await fs.stat(filePath)
+    return stat.isFile()
+  } catch {
+    return false
+  }
+}
+
+async function legacyFileForPath(pathname) {
+  const decodedPath = decodeURIComponent(pathname).replace(/^\/+/, '')
+  const normalizedPath = path.normalize(decodedPath || 'index.html')
+  const candidates = []
+
+  if (!normalizedPath || normalizedPath === '.') {
+    candidates.push(path.join(repoRoot, 'index.html'))
+  } else if (normalizedPath.startsWith(`assets${path.sep}`) || normalizedPath.startsWith('assets/')) {
+    candidates.push(path.join(repoRoot, normalizedPath))
+  } else if (!normalizedPath.includes(path.sep) && !normalizedPath.endsWith('.html')) {
+    candidates.push(path.join(repoRoot, `${normalizedPath}.html`))
+    candidates.push(path.join(repoRoot, normalizedPath))
+  } else {
+    candidates.push(path.join(repoRoot, normalizedPath))
+  }
+
+  for (const candidate of candidates) {
+    const resolved = path.resolve(candidate)
+    if (isInsideRepo(resolved) && (await fileExists(resolved))) return resolved
+  }
+
+  return null
+}
+
+function createLegacyReferenceServer() {
+  const server = createServer(async (request, response) => {
+    try {
+      const requestUrl = new URL(request.url || '/', 'http://legacy.local')
+      const filePath = await legacyFileForPath(requestUrl.pathname)
+
+      if (!filePath) {
+        response.writeHead(404, { 'content-type': 'text/plain; charset=utf-8' })
+        response.end('Not found')
+        return
+      }
+
+      const extension = path.extname(filePath).toLowerCase()
+      const body = await fs.readFile(filePath, extension === '.html' ? 'utf8' : undefined)
+      const payload = extension === '.html' ? normalizeLegacyHtml(body) : body
+
+      response.writeHead(200, {
+        'cache-control': 'no-store',
+        'content-type': contentTypes.get(extension) || 'application/octet-stream',
+      })
+      response.end(payload)
+    } catch (error) {
+      response.writeHead(500, { 'content-type': 'text/plain; charset=utf-8' })
+      response.end(error instanceof Error ? error.message : String(error))
+    }
+  })
+
+  return new Promise((resolve, reject) => {
+    server.once('error', reject)
+    server.listen(0, '127.0.0.1', () => {
+      const address = server.address()
+      if (!address || typeof address === 'string') {
+        reject(new Error('Could not determine legacy reference server address.'))
+        return
+      }
+      resolve({
+        baseUrl: `http://127.0.0.1:${address.port}`,
+        close: () => new Promise((closeResolve) => server.close(closeResolve)),
+      })
+    })
+  })
+}
+
+async function componentFileForPath(pathname) {
+  const decodedPath = decodeURIComponent(pathname).split('?')[0].split('#')[0].replace(/^\/+/, '')
+  const normalizedPath = path.normalize(decodedPath || 'index.html')
+  const candidates = []
+
+  const add = (candidate) => {
+    const resolved = path.resolve(componentTargetRoot, candidate)
+    const relative = path.relative(componentTargetRoot, resolved)
+    if (relative === '' || relative.startsWith('..') || path.isAbsolute(relative)) return
+    candidates.push(resolved)
+  }
+
+  if (!normalizedPath || normalizedPath === '.') {
+    candidates.push(path.join(componentTargetRoot, 'index.html'))
+  } else {
+    add(normalizedPath)
+    if (path.extname(normalizedPath) === '.html') add(path.join(normalizedPath, 'index.html'))
+    if (!path.extname(normalizedPath)) {
+      add(path.join(normalizedPath, 'index.html'))
+      add(`${normalizedPath}.html`)
+      add(path.join(`${normalizedPath}.html`, 'index.html'))
+    }
+    if (normalizedPath.endsWith(path.sep)) add(path.join(normalizedPath, 'index.html'))
+  }
+
+  for (const candidate of candidates) {
+    if (await fileExists(candidate)) return candidate
+  }
+
+  return null
+}
+
+function createComponentStaticServer() {
+  const server = createServer(async (request, response) => {
+    try {
+      const requestUrl = new URL(request.url || '/', 'http://component.local')
+      const filePath = await componentFileForPath(requestUrl.pathname)
+
+      if (!filePath) {
+        response.writeHead(404, { 'content-type': 'text/plain; charset=utf-8' })
+        response.end('Not found')
+        return
+      }
+
+      const extension = path.extname(filePath).toLowerCase()
+      const body = await fs.readFile(filePath)
+
+      response.writeHead(200, {
+        'cache-control': 'no-store',
+        'content-length': String(body.length),
+        'content-type': contentTypes.get(extension) || 'application/octet-stream',
+      })
+      response.end(body)
+    } catch (error) {
+      response.writeHead(500, { 'content-type': 'text/plain; charset=utf-8' })
+      response.end(error instanceof Error ? error.message : String(error))
+    }
+  })
+
+  return new Promise((resolve, reject) => {
+    server.once('error', reject)
+    server.listen(0, '127.0.0.1', () => {
+      const address = server.address()
+      if (!address || typeof address === 'string') {
+        reject(new Error('Could not determine component static server address.'))
+        return
+      }
+      resolve({
+        baseUrl: `http://127.0.0.1:${address.port}`,
+        close: () => new Promise((closeResolve) => server.close(closeResolve)),
+      })
+    })
+  })
+}
 
 async function screenshot(page, target, viewport) {
   await page.setViewportSize({ width: viewport.width, height: viewport.height })
@@ -407,18 +600,26 @@ function padPng(source, width, height) {
   return padded
 }
 
+function cropPngWidth(source, width) {
+  if (source.width <= width) return source
+
+  const cropped = new PNG({ width, height: source.height })
+  PNG.bitblt(source, cropped, 0, 0, width, source.height, 0, 0)
+  return cropped
+}
+
 async function comparePair(page, pageConfig, viewport) {
   const dir = path.join(outputDir, pageConfig.name)
   await fs.mkdir(dir, { recursive: true })
 
-  await warmup(page, urlFor(pageConfig.legacyPath), viewport)
-  await warmup(page, urlFor(pageConfig.componentPath), viewport)
+  await warmup(page, legacyUrlFor(pageConfig.legacyPath), viewport)
+  await warmup(page, componentUrlFor(pageConfig.componentPath), viewport)
 
-  const legacyBuffer = await screenshot(page, urlFor(pageConfig.legacyPath), viewport)
-  const componentBuffer = await screenshot(page, urlFor(pageConfig.componentPath), viewport)
+  const legacyBuffer = await screenshot(page, legacyUrlFor(pageConfig.legacyPath), viewport)
+  const componentBuffer = await screenshot(page, componentUrlFor(pageConfig.componentPath), viewport)
 
-  const legacy = PNG.sync.read(legacyBuffer)
-  const component = PNG.sync.read(componentBuffer)
+  const legacy = cropPngWidth(PNG.sync.read(legacyBuffer), viewport.width)
+  const component = cropPngWidth(PNG.sync.read(componentBuffer), viewport.width)
   const width = Math.max(legacy.width, component.width)
   const height = Math.max(legacy.height, component.height)
   const legacyPadded = padPng(legacy, width, height)
@@ -430,7 +631,7 @@ async function comparePair(page, pageConfig, viewport) {
   const ratio = mismatched / (width * height)
 
   await fs.writeFile(path.join(dir, `${viewport.name}-legacy.png`), PNG.sync.write(legacyPadded))
-  await fs.writeFile(path.join(dir, `${viewport.name}-componentized.png`), PNG.sync.write(componentPadded))
+  await fs.writeFile(path.join(dir, `${viewport.name}-astro-native.png`), PNG.sync.write(componentPadded))
   await fs.writeFile(path.join(dir, `${viewport.name}-diff.png`), PNG.sync.write(diff))
 
   const targetMismatchRatio =
@@ -449,6 +650,15 @@ async function comparePair(page, pageConfig, viewport) {
   }
 }
 
+const legacyServer = configuredLegacyBaseUrl
+  ? { baseUrl: configuredLegacyBaseUrl, close: async () => undefined }
+  : await createLegacyReferenceServer()
+const componentServer = configuredComponentBaseUrl
+  ? { baseUrl: configuredComponentBaseUrl, close: async () => undefined }
+  : await createComponentStaticServer()
+const legacyUrlFor = (pathname) => `${legacyServer.baseUrl}${pathname}`
+const componentUrlFor = (pathname) => `${componentServer.baseUrl}${pathname}`
+
 const browser = await chromium.launch()
 const page = await browser.newPage()
 const results = []
@@ -461,6 +671,8 @@ try {
   }
 } finally {
   await browser.close()
+  await componentServer.close()
+  await legacyServer.close()
 }
 
 const failed = results.filter((result) => result.mismatchRatio > result.allowedMismatchRatio)

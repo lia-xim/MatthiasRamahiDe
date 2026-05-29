@@ -76,7 +76,7 @@
 
   .tri-sub{margin-top:clamp(20px,2.2vw,28px);max-width:580px;font-size:clamp(14px,1.05vw,16.5px);line-height:1.6;color:var(--muted);opacity:0;animation:fadeUp 1.05s var(--ease) .8s forwards}
   .tri-actions{margin-top:clamp(28px,3vw,38px);display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:fadeUp 1.05s var(--ease) 1s forwards}
-  .tri-actions a{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border:1px solid var(--accent);color:var(--fg);font:11px var(--mono);letter-spacing:.22em;text-transform:uppercase;transition:background .35s var(--ease),color .35s var(--ease)}
+  .tri-actions a{min-height:44px;display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border:1px solid var(--accent);color:var(--fg);font:11px var(--mono);letter-spacing:.22em;text-transform:uppercase;transition:background .35s var(--ease),color .35s var(--ease)}
   .tri-actions a:hover{background:var(--accent);color:var(--ink)}
   .tri-actions a.ghost{border-color:rgba(243,245,239,.32);color:var(--muted)}
   .tri-actions a.ghost:hover{border-color:var(--fg);color:var(--fg);background:transparent}

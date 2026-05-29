@@ -60,6 +60,7 @@ export const localSeoFamilyPrefixMap: Array<{ family: LocalSeoLayoutFamily; pref
     family: 'landschaft',
     prefixes: [
       'landschaftsfotografie',
+      'landschaftsfotografie-print',
       'landschaftsbilder',
       'fine-art-prints',
       'wandbilder-landschaftsfotografie',

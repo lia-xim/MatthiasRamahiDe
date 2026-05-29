@@ -1,5 +1,5 @@
 ---
-import NativeLegacyLayout from '../../layouts/NativeLegacyLayout.astro'
+import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
 
 const legacyFile = 'oldtimer-fotografie.html'
@@ -14,46 +14,46 @@ const heroSlides = [
 
 const storyCards = [
   {
-    image: 'assets/portfolio/_DSC0470-Enhanced-NR.webp',
+    image: 'assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp',
     alt: 'Oldtimer Exponat — Hauptmotiv',
-    width: 1600,
-    height: 2560,
+    width: 720,
+    height: 1152,
     title: 'Exponat',
     text: 'Hauptmotiv wie eine Ausstellung — ruhige Proportionen, gesetztes Licht, sauberer Hintergrund. Bereit für Katalog, Sammlungsdokumentation oder Wandbild.',
   },
   {
-    image: 'assets/optimized/assets-portfolio-dsc3892-1920.webp',
+    image: 'assets/portfolio/thumbs/_DSC3892.webp',
     alt: 'Oldtimer Patina und Material',
-    width: 1920,
-    height: 1280,
+    width: 720,
+    height: 480,
     title: 'Patina',
     text: 'Material, Chrom, Leder, Lackalterung. Detailaufnahmen, die Zustand und Geschichte ehrlich erzählen — ohne Glättung, ohne falsche Politur.',
   },
   {
-    image: 'assets/optimized/assets-portfolio-dsc2986-1920.webp',
+    image: 'assets/portfolio/thumbs/_DSC2986.webp',
     alt: 'Oldtimer Innenraum und Cockpit',
-    width: 1707,
-    height: 2560,
+    width: 720,
+    height: 1080,
     title: 'Innenraum',
     text: 'Cockpit, Sitze, Armaturen, Holzfurnier. Mit mobilem Licht inszeniert, damit Materialcharakter und Bedienelemente die gleiche Sprache sprechen wie die Außenansicht.',
   },
   {
-    image: 'assets/portfolio/_DSC9321-Enhanced-NR.webp',
+    image: 'assets/portfolio/thumbs/_DSC9321-Enhanced-NR.webp',
     alt: 'Oldtimer Sammlungs- und Auktionsbild',
-    width: 1707,
-    height: 2560,
+    width: 720,
+    height: 1080,
     title: 'Provenance',
     text: 'Embleme, Schriftzüge, Schlüssel, Dokumente. Belege, die einen Oldtimer für Auktion, Versicherung oder seriösen Verkauf nachvollziehbar machen.',
   },
 ]
 
 const portfolioTiles = [
-  ['t1', 'assets/portfolio/_DSC0470-Enhanced-NR.webp', 'Oldtimer Exponat', 1600, 2560],
-  ['t2', 'assets/portfolio/_DSC9321-Enhanced-NR.webp', 'Oldtimer Cockpit', 1707, 2560],
-  ['t3', 'assets/optimized/assets-portfolio-dsc3892-1920.webp', 'Oldtimer Material', 1920, 1280],
-  ['t4', 'assets/optimized/assets-portfolio-dsc2986-1920.webp', 'Oldtimer Innenraum', 1707, 2560],
-  ['t5', 'assets/portfolio/_DSC9301-Enhanced-NR.webp', 'Oldtimer Profil', 2048, 2560],
-  ['t6', 'assets/optimized/assets-photos-oldtimer-stage-1920.webp', 'Oldtimer Bühne', 1920, 1280],
+  ['t1', 'assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp', 'Oldtimer Exponat', 720, 1152, 'assets/portfolio/_DSC0470-Enhanced-NR.webp'],
+  ['t2', 'assets/portfolio/thumbs/_DSC9321-Enhanced-NR.webp', 'Oldtimer Cockpit', 720, 1080, 'assets/portfolio/_DSC9321-Enhanced-NR.webp'],
+  ['t3', 'assets/portfolio/thumbs/_DSC3892.webp', 'Oldtimer Material', 720, 480, 'assets/optimized/assets-portfolio-dsc3892-1920.webp'],
+  ['t4', 'assets/portfolio/thumbs/_DSC2986.webp', 'Oldtimer Innenraum', 720, 1080, 'assets/optimized/assets-portfolio-dsc2986-1920.webp'],
+  ['t5', 'assets/portfolio/thumbs/_DSC9301-Enhanced-NR.webp', 'Oldtimer Profil', 720, 900, 'assets/portfolio/_DSC9301-Enhanced-NR.webp'],
+  ['t6', 'assets/optimized/assets-photos-oldtimer-stage-960.webp', 'Oldtimer Bühne', 960, 640, 'assets/optimized/assets-photos-oldtimer-stage-1920.webp'],
 ] as const
 
 const audiences = [
@@ -67,37 +67,37 @@ const audiences = [
 const relatedAreas = [
   {
     href: 'automobil-fotografie.html',
-    image: 'assets/optimized/assets-photos-automobil-neon-1920.webp',
+    image: 'assets/optimized/assets-photos-automobil-neon-960.webp',
     alt: 'Automobilfotografie',
-    width: 1920,
-    height: 1280,
+    width: 960,
+    height: 640,
     meta: '01 / Verwandt',
     title: 'Automobil',
   },
   {
     href: 'sportwagen-fotografie.html',
-    image: 'assets/optimized/assets-portfolio-dsc3032-generase-1-1920.webp',
+    image: 'assets/portfolio/thumbs/_DSC3032_genErase (1).webp',
     alt: 'Sportwagenfotografie',
-    width: 1920,
-    height: 1280,
+    width: 720,
+    height: 480,
     meta: '02 / Verwandt',
     title: 'Sportwagen',
   },
   {
     href: 'drucke-sonderanfertigungen-duesseldorf.html',
-    image: 'assets/optimized/assets-portfolio-dsc8032-1920.webp',
+    image: 'assets/portfolio/thumbs/_DSC8032.webp',
     alt: 'Drucke und Sonderanfertigungen',
-    width: 1920,
-    height: 2400,
+    width: 720,
+    height: 900,
     meta: '03 / Service',
     title: 'Drucke',
   },
   {
     href: 'portfolio.html',
-    image: 'assets/portfolio/_DSC0470-Enhanced-NR.webp',
+    image: 'assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp',
     alt: 'Vollständiges Portfolio',
-    width: 1600,
-    height: 2560,
+    width: 720,
+    height: 1152,
     meta: '04 / Übersicht',
     title: 'Portfolio',
   },
@@ -136,7 +136,7 @@ const searchLinks = [
   ['oldtimer-verkaufsfotos-duesseldorf.html', 'Oldtimer Verkaufsfotos'],
 ]
 ---
-<NativeLegacyLayout legacyFile={legacyFile} current="fotografie" doc={doc}>
+<AdoptedPageLayout legacyFile={legacyFile} current="fotografie" doc={doc}>
   <main>
     <section class="hero-mp" id="top" data-header-theme="dark" aria-label="Oldtimer-Fotografie">
       <div class="hero-mp__stage" aria-hidden="true">
@@ -203,9 +203,9 @@ const searchLinks = [
           <h2>Aktuelle <em>Arbeiten.</em></h2>
           <p>Sechs kuratierte Oldtimer-Bilder aus jüngeren Serien. Klicken zum Vergrößern.</p>
         </header>
-        {portfolioTiles.map(([className, image, alt, width, height], index) => (
-          <button type="button" class={`po-tile ${className}`} data-i={index} aria-label={`Bild ${index + 1} vergrößern`}>
-            <img data-src={image} src={image} loading="lazy" alt={alt} width={width} height={height} decoding="async" />
+        {portfolioTiles.map(([className, image, alt, width, height, full], index) => (
+          <button type="button" class={`po-tile ${className}`} data-i={index} data-full={full} aria-label={`Bild ${index + 1} vergrößern`}>
+            <img data-src={image} src={image} data-full={full} loading="lazy" alt={alt} width={width} height={height} decoding="async" />
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
           </button>
         ))}
@@ -279,4 +279,4 @@ const searchLinks = [
       data-contact-lead="Schreibe kurz, welcher Oldtimer fotografiert werden soll — Modell, Baujahr, Standort und ob die Bilder für Sammlung, Auktion, Verkauf oder privat genutzt werden. Wir klären Raum, Licht und Ablauf gemeinsam."
     />
   </main>
-</NativeLegacyLayout>
+</AdoptedPageLayout>

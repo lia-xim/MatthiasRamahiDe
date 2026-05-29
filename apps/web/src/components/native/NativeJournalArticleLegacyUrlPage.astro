@@ -1,0 +1,379 @@
+---
+import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
+import { type JournalArticle, journalArticleByLegacyFile } from '../../lib/journalArticleContent'
+import { toAbsoluteSiteUrl } from '../../lib/payload'
+import { breadcrumbJsonLd, faqJsonLd, type JsonLd } from '../../lib/seo'
+
+type Props = {
+  legacyFile: string
+}
+
+const { legacyFile } = Astro.props as Props
+const article = journalArticleByLegacyFile[legacyFile]
+
+if (!article) {
+  return new Response('Not found', { status: 404 })
+}
+
+const articleVariant = article.variant || 'support'
+const leadParagraph = articleVariant === 'feature' ? article.sections[0]?.paragraphs?.[0] : article.description
+const secondaryParagraphs = articleVariant === 'feature' ? article.sections[0]?.paragraphs?.slice(1) || [] : []
+const supportSections = articleVariant === 'support' ? article.sections : []
+const featureSections = articleVariant === 'feature' ? article.sections : []
+const primaryRelatedLink = article.links[0]
+const plainTitle = article.title.replace(/<[^>]+>/g, '')
+const seoTitle = article.seoTitle || `${plainTitle} | Matthias Ramahi`
+const canonicalUrl = `/${article.legacyFile}`
+const jsonLd = [
+  breadcrumbJsonLd([
+    { name: 'Home', url: '/' },
+    { name: 'Journal', url: '/blog.html' },
+    { name: plainTitle, url: canonicalUrl },
+  ]),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    '@id': `${toAbsoluteSiteUrl(canonicalUrl)}#article`,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': toAbsoluteSiteUrl(canonicalUrl),
+    },
+    headline: plainTitle,
+    description: article.description,
+    image: [toAbsoluteSiteUrl(article.heroImage)],
+    datePublished: `${article.dateTime}T09:00:00+02:00`,
+    dateModified: `${article.dateTime}T09:00:00+02:00`,
+    inLanguage: 'de-DE',
+    articleSection: article.category,
+    author: {
+      '@id': `${toAbsoluteSiteUrl('/')}#person`,
+    },
+    publisher: {
+      '@id': `${toAbsoluteSiteUrl('/')}#local-business`,
+    },
+  },
+  faqJsonLd(article.faq),
+].filter(Boolean) as JsonLd[]
+const stylesheets =
+  articleVariant === 'feature' ? ['/assets/legacy-blog-automotive-fotografie-duesseldorf.css'] : ['/assets/journal-support.css']
+
+Astro.response.headers.set('x-cms-page-kind', 'journal-native-legacy-url')
+
+const journalPreviewImages: Record<string, { height: number; image: string; width: number }> = {
+  'assets/optimized/assets-photos-automobil-neon-1920.webp': { image: 'assets/optimized/assets-photos-automobil-neon-960.webp', width: 960, height: 640 },
+  'assets/optimized/assets-photos-automobil-sunset-1920.webp': { image: 'assets/optimized/assets-photos-automobil-sunset-960.webp', width: 960, height: 640 },
+  'assets/optimized/assets-photos-landschaft-1920.webp': { image: 'assets/optimized/assets-photos-landschaft-720.webp', width: 720, height: 1080 },
+  'assets/optimized/assets-photos-motorrad-1920.webp': { image: 'assets/optimized/assets-photos-motorrad-720.webp', width: 720, height: 1080 },
+  'assets/optimized/assets-photos-oldtimer-stage-1920.webp': { image: 'assets/optimized/assets-photos-oldtimer-stage-960.webp', width: 960, height: 640 },
+  'assets/photos/portrait-warm.webp': { image: 'assets/optimized/assets-photos-portrait-warm-720.webp', width: 720, height: 1152 },
+  'assets/portraits/_DSC9301-Enhanced-NR.webp': { image: 'assets/portfolio/thumbs/_DSC9301-Enhanced-NR.webp', width: 720, height: 900 },
+}
+
+function imageDimensions(image: string) {
+  const preview = journalPreviewImages[image]
+  if (preview) return { width: preview.width, height: preview.height }
+  if (image.includes('portrait')) return { width: 2048, height: 2560 }
+  if (image.includes('landschaft')) return { width: 1707, height: 2560 }
+  return { width: 1920, height: 1280 }
+}
+
+function imagePreview(image: string) {
+  const preview = journalPreviewImages[image]
+  return preview || { image, ...imageDimensions(image) }
+}
+
+function supportHeroStyle(heroImage: string) {
+  return `background:linear-gradient(180deg,rgba(2,3,6,.42),rgba(2,3,6,.92)),url('${heroImage}') center/cover`
+}
+
+function sectionText(section: JournalArticle['sections'][number]) {
+  return section.paragraphs || []
+}
+
+const displayHero = imagePreview(article.heroImage)
+
+function sectionHtml(section: JournalArticle['sections'][number]) {
+  return section.paragraphsHtml || []
+}
+---
+<AdoptedPageLayout
+  legacyFile={legacyFile}
+  title={seoTitle}
+  description={article.description}
+  canonicalUrl={canonicalUrl}
+  current="blog"
+  ogImage={article.heroImage}
+  ogType="article"
+  preloadImages={[displayHero.image]}
+  stylesheets={stylesheets}
+  jsonLd={jsonLd}
+  bodyClass="has-mr-footer"
+>
+    {articleVariant === 'feature' ? (
+      <article class="journal-feature">
+        <header class="art-hero" data-header-theme="dark">
+          <div class="art-hero__bg" aria-hidden="true">
+            <img
+              src={displayHero.image}
+              alt=""
+              width={displayHero.width}
+              height={displayHero.height}
+              decoding="async"
+              fetchpriority="high"
+            />
+          </div>
+          <div class="art-hero__inner">
+            <nav class="breadcrumb" aria-label="Brotkrumen">
+              <a href="index.html">Home</a><span class="sep">/</span>
+              <a href="blog.html">Blog</a><span class="sep">/</span>
+              <span aria-current="page">{article.title.replace(/<[^>]+>/g, '')}</span>
+            </nav>
+            <p class="kicker">{article.category} · Werkstattbericht</p>
+            <h1>
+              {article.titleHtml ? <Fragment set:html={article.titleHtml} /> : article.title}
+            </h1>
+            <div class="art-meta" aria-label="Beitragsdaten">
+              <dl>
+                <dd><strong>Veröffentlicht</strong><time datetime={article.dateTime}>{article.dateLabel}</time></dd>
+                <dd><strong>Lesedauer</strong>{article.minutes}</dd>
+                <dd>
+                  <strong>Kategorie</strong>
+                  <a href={article.categoryHref || 'blog.html'} style="color:inherit;border-bottom:1px solid currentColor">
+                    {article.category}
+                  </a>
+                </dd>
+                <dd>
+                  <strong>Autor</strong>
+                  <a href="ueber-mich.html" style="color:inherit;border-bottom:1px solid currentColor">Matthias Ramahi</a>
+                </dd>
+              </dl>
+            </div>
+          </div>
+        </header>
+
+        <section class="art-body" data-header-theme="light">
+          <div class="art-body__grid">
+            <aside class="art-body__toc" aria-label="Inhaltsverzeichnis">
+              <h2>Im Beitrag</h2>
+              <ol>
+                {featureSections.map((section) => (
+                  <li><a href={`#${section.id}`}>{section.title}</a></li>
+                ))}
+              </ol>
+            </aside>
+
+            <div class="prose">
+              {leadParagraph && <p class="lead">{leadParagraph}</p>}
+              {secondaryParagraphs.map((paragraph) => <p>{paragraph}</p>)}
+
+              {featureSections.map((section, sectionIndex) => (
+                <>
+                  {sectionIndex > 0 && (
+                    <>
+                      <h2 id={section.id} data-num={section.kicker}>{section.title}</h2>
+                      {sectionText(section).map((paragraph) => <p>{paragraph}</p>)}
+                      {sectionHtml(section).map((paragraph) => <p set:html={paragraph} />)}
+                    </>
+                  )}
+
+                  {section.list && (
+                    <ul>
+                      {section.list.map((item) => (
+                        <li>
+                          {item.label ? <strong>{item.label}</strong> : null}
+                          {item.label ? ' — ' : ''}
+                          {item.text}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
+                  {section.figure && (
+                    <figure class="inline">
+                      <img
+                        src={imagePreview(section.figure.image).image}
+                        alt={section.figure.alt}
+                        width={imagePreview(section.figure.image).width}
+                        height={imagePreview(section.figure.image).height}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <figcaption>{section.figure.caption}</figcaption>
+                    </figure>
+                  )}
+
+                  {section.quote && (
+                    <blockquote>
+                      {section.quote.text}
+                      {section.quote.cite && <cite>— {section.quote.cite}</cite>}
+                    </blockquote>
+                  )}
+
+                  {section.inlineCta && (
+                    <div class="inline-cta">
+                      <div class="inline-cta__text">
+                        <strong>{section.inlineCta.title}</strong>
+                        <p>{section.inlineCta.text}</p>
+                      </div>
+                      <a class="inline-cta__btn" href={section.inlineCta.href}>{section.inlineCta.label}</a>
+                    </div>
+                  )}
+                </>
+              ))}
+
+              {article.links.length > 0 && (
+                <>
+                  <hr />
+                  <p style="font-size:14.5px;color:var(--quiet-l)">
+                    <em>Weiterlesen:</em>{' '}
+                    {article.links.map((link, index) => (
+                      <>
+                        <a href={link.href}>{link.label}</a>{index < article.links.length - 1 ? ' · ' : ''}
+                      </>
+                    ))}
+                  </p>
+                </>
+              )}
+            </div>
+          </div>
+        </section>
+
+        <aside class="pull" data-header-theme="dark" aria-label="Hervorhebung">
+          <blockquote>Reihenfolge schlägt Ausrüstung. Immer.</blockquote>
+          <cite>Werkstatt-Prinzip</cite>
+        </aside>
+
+        {article.author && (
+          <section class="art-author" data-header-theme="light" aria-label="Autorinfo">
+            <div class="art-author__inner">
+              <div class="art-author__avatar" aria-hidden="true">
+                <img
+                  src={imagePreview(article.author.image).image}
+                  alt=""
+                  loading="lazy"
+                  width={imagePreview(article.author.image).width}
+                  height={imagePreview(article.author.image).height}
+                  decoding="async"
+                />
+              </div>
+              <div class="art-author__body">
+                <h3>Über den Autor</h3>
+                <h4>Matthias Ramahi</h4>
+                <p>{article.author.text}</p>
+                <div class="art-author__links">
+                  <a href="ueber-mich.html">Über mich →</a>
+                  <a href="portfolio.html">Portfolio →</a>
+                  <a href="contact.html">Projekt anfragen →</a>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {article.relatedCards && (
+          <section class="related" data-header-theme="dark" aria-label="Verwandte Beiträge">
+            <div class="related__inner">
+              <div class="related__head">
+                <div>
+                  <p class="kicker" style="color:var(--red)">Weiterlesen</p>
+                  <h2>Verwandte Beiträge.</h2>
+                </div>
+                <a href="blog.html">Alle Artikel →</a>
+              </div>
+              <div class="related__grid">
+                {article.relatedCards.map((card) => (
+                  <a class="related__card" href={card.href}>
+                    <div class="related__media">
+                      <img
+                        src={imagePreview(card.image).image}
+                        alt={card.imageAlt}
+                        loading="lazy"
+                        width={imagePreview(card.image).width}
+                        height={imagePreview(card.image).height}
+                        decoding="async"
+                      />
+                    </div>
+                    <div class="related__body">
+                      <div class="related__meta"><b>{card.category}</b><span>{card.minutes}</span></div>
+                      <h3>{card.title}</h3>
+                      <p>{card.text}</p>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {article.cta && (
+          <section class="art-final" data-header-theme="light" aria-label="Kontakt CTA">
+            <p class="kicker" style="color:var(--red)">Nächster Schritt</p>
+            <h2>{article.cta.title}</h2>
+            <p>{article.cta.text}</p>
+            <div class="art-final__btns">
+              <a class="primary" href={article.cta.primaryHref}>{article.cta.primaryLabel}</a>
+              {article.cta.secondaryHref && article.cta.secondaryLabel && (
+                <a class="secondary" href={article.cta.secondaryHref}>{article.cta.secondaryLabel}</a>
+              )}
+            </div>
+          </section>
+        )}
+      </article>
+    ) : (
+      <article class="journal-support">
+        <header class="article-hero" style={supportHeroStyle(displayHero.image)} data-header-theme="dark">
+          <div class="article-hero__inner">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+              <a href="index.html">Home</a><span>/</span><a href="blog.html">Journal</a><span>/</span><span>{article.category}</span>
+            </nav>
+            <p class="kicker">{article.category} · {article.minutes}</p>
+            <h1>{article.title}</h1>
+            <p class="lead">{article.description}</p>
+            <div class="meta"><span>Matthias Ramahi</span><span>{article.dateLabel}</span></div>
+          </div>
+        </header>
+
+        <div class="article-body" data-header-theme="light">
+          <div class="article-grid">
+            <aside>
+              <p>Dieser Beitrag stützt die SEO-Cluster der Fotografie-Seiten und führt zu passenden Leistungs- und Standortseiten weiter.</p>
+              {article.links.map((link) => <a href={link.href}>{link.label}</a>)}
+            </aside>
+            <div>
+              {supportSections.map((section) => (
+                <section id={section.id}>
+                  {section.kicker && <p class="kicker">{section.kicker}</p>}
+                  <h2>{section.title}</h2>
+                  {sectionText(section).map((paragraph) => <p>{paragraph}</p>)}
+                  {sectionHtml(section).map((paragraph) => <p set:html={paragraph} />)}
+                </section>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {article.faq && (
+          <section class="faq" aria-label="FAQ" data-header-theme="light">
+            <h2>Kurze Fragen.</h2>
+            <div class="faq-grid">
+              {article.faq.map((item) => (
+                <article>
+                  <h3>{item.question}</h3>
+                  <p>{item.answer}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {primaryRelatedLink && (
+          <section class="related" aria-label="Verwandte Seiten" data-header-theme="light">
+            <h2>Weiter im Cluster.</h2>
+            <nav>
+              {article.links.map((link) => <a href={link.href}>{link.label}</a>)}
+            </nav>
+          </section>
+        )}
+      </article>
+    )}
+</AdoptedPageLayout>

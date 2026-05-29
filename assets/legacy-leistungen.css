@@ -48,7 +48,7 @@
     .overview-head p{margin:0;color:var(--muted);font-size:clamp(16px,1.36vw,21px);line-height:1.5;max-width:48ch;text-wrap:pretty}
     .overview-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;max-width:1320px;margin:0 auto}
     .overview-tile{position:relative;aspect-ratio:1/1;overflow:hidden;background:#111;border:1px solid var(--rule);isolation:isolate;text-decoration:none}
-    .overview-tile img{filter:saturate(.94) contrast(.99) brightness(.9);transform:scale(1.02);transition:transform .7s var(--ease),filter .45s var(--ease)}
+    .overview-tile img{display:block;width:100%;height:100%;object-fit:cover;filter:saturate(.94) contrast(.99) brightness(.9);transform:scale(1.02);transition:transform .7s var(--ease),filter .45s var(--ease)}
     .overview-tile:hover img{transform:scale(1.075);filter:saturate(1) contrast(1) brightness(.98)}
     .overview-tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 28%,rgba(0,0,0,.68));z-index:1;pointer-events:none}
     .overview-tile .label{position:absolute;z-index:2;left:18px;right:18px;bottom:18px;display:flex;justify-content:space-between;gap:12px;align-items:end;color:#fff}
@@ -89,7 +89,7 @@
     .service:nth-child(2n) .image-card{border-color:rgba(243,241,234,.1)}
     .image-card.small{height:270px;align-self:end}
     .image-card.tall{height:470px}
-    .image-card img{filter:saturate(.96) contrast(.99) brightness(.96);transform:scale(1.02);transition:transform .7s var(--ease),filter .4s var(--ease)}
+    .image-card img{display:block;width:100%;height:100%;object-fit:cover;filter:saturate(.96) contrast(.99) brightness(.96);transform:scale(1.02);transition:transform .7s var(--ease),filter .4s var(--ease)}
     .image-card.screen img{object-fit:cover;object-position:top center}
     .image-card.viola img{object-position:center 46%}
     .image-caption{position:absolute;left:14px;bottom:12px;font:9px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.78);z-index:2;text-shadow:0 1px 12px rgba(0,0,0,.72)}

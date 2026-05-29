@@ -58,6 +58,7 @@ function canonical(html) {
 function absoluteUrlForRel(rel) {
   const clean = rel.replace(/\\/g, '/')
   if (clean === 'index.html') return `${SITE}/`
+  if (clean.endsWith('.html/index.html')) return `${SITE}/${clean.replace(/\/index\.html$/, '')}`
   if (clean.endsWith('/index.html')) return `${SITE}/${clean.replace(/\/index\.html$/, '/')}`
   return `${SITE}/${clean}`
 }
