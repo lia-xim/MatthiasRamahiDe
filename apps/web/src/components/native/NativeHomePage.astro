@@ -7,10 +7,10 @@ import {
   homeJournalCards,
   homeServices,
 } from '../../lib/nativeContent'
-import { getSitePageByType, type PayloadDoc } from '../../lib/payload'
+import { getSitePageByType, liveCmsFetchOptions, type PayloadDoc } from '../../lib/payload'
 
 const providedDoc = Astro.props.doc as PayloadDoc | undefined
-const doc = providedDoc || (await getSitePageByType('home', { depth: 2 }))
+const doc = providedDoc || (await getSitePageByType('home', liveCmsFetchOptions({ depth: 2 })))
 const heroImages = homeHeroImagesFor(doc)
 const statementParagraphs = blockParagraphs(doc, 'Bilder', [
   'Seit über zehn Jahren entstehen meine Serien im Spannungsfeld von Präzision und Atmosphäre — Automobile, Oldtimer, Sportwagen, Motorräder, Portraits und Landschaften. Jede Arbeit folgt einer ruhigen redaktionellen Logik: Licht, Komposition, Material, Zeit.',
@@ -30,7 +30,7 @@ const servicesParagraphs = blockParagraphs(doc, 'Weitere Leistungen', [
   'Für Projekte, die über die Fotografie hinausgehen — Druck, Großformat, Werbetechnik, Webdesign, Video, Sonderanfertigungen und Musik. Kuratiert, koordiniert, ein Ansprechpartner.',
 ])
 ---
-<AdoptedPageLayout legacyFile="index.html" current="home" doc={doc} ctaHref="#anfrage">
+<AdoptedPageLayout legacyFile="index.html" current="home" doc={doc} ctaHref="#anfrage" liveCms>
   <main>
     <section class="hero" data-theme="dark" aria-label="Intro">
       <canvas id="hero-shader" aria-hidden="true" data-imgs={heroImages.join(',')}></canvas>

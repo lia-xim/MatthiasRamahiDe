@@ -17,6 +17,8 @@ Pflichtpflege:
 - Verwendungszweck
 - Featured/Favorit bei starken Motiven
 
+Beim Upload setzt Payload bereits technische und redaktionelle Defaults: Titel und Alt-Text fallen auf den lesbar gemachten Dateinamen zurueck, Kategorie und Verwendungszweck werden grob aus Dateiname/Titel abgeleitet. Das ist als kostenloser Sicherheitsgurt gedacht, ersetzt aber keine finale redaktionelle Kontrolle bei wichtigen Hero-, Portfolio- und SEO-Bildern.
+
 ## Responsive Derivate
 
 Neue Uploads erzeugen in Payload:
@@ -35,6 +37,8 @@ Astro nutzt `ResponsiveImage` mit `<picture>`, AVIF/WebP, `srcset`, `sizes`, Laz
 - Lokale Uploads bekommen automatisch eine Orientierung.
 - Lokale Uploads bekommen `dominantColor` und `blurDataUrl` als LQIP-Placeholder.
 - Im Frontend wird der Focal Point als `object-position` gesetzt, wenn Payload `focalX/focalY` liefert.
+
+Die Startseiten-Hero-Slideshow kann ueber eine `Bildsequenz` im Startseiten-Dokument gepflegt werden. Ein interner Titel mit `hero`, `intro` oder `start` wird als Hero-Sequenz erkannt; die Reihenfolge der Bilder im CMS ist die sichtbare Reihenfolge im Hero.
 
 ## Galerie-Regeln
 

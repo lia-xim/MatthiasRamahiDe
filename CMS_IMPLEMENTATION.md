@@ -34,7 +34,8 @@ Die aktuelle HTML-Website ist die visuelle Wahrheit. Ziel ist nicht, alle HTML-D
 - `apps/web/src/pages/native/[slug].astro` rendert adoptierte URLs mit der zentralen nativen Astro-Komponente `NativeAdoptedPage`.
 - `apps/web/src/pages/[slug].html.astro` baut alle 217 bisherigen Root-HTML-URLs als echte Astro-Routen aus dem Routenmodell. Es liest keine Root-HTML-Dateien mehr als Produktionsquelle.
 - Produktionsassets fuer die adoptierten Seiten werden ueber neutrale `native-*` CSS/JS-Dateien geladen. Alte `legacy-*` Assets bleiben nur fuer die eingefrorene Referenz/Baseline erhalten.
-- Der Web-Prebuild nutzt `tools/sync-public-assets.mjs`; Root-HTML-Dateien werden nicht in `apps/web/public` veroeffentlicht.
+- Der Web-Prebuild nutzt `tools/sync-public-assets.mjs`; Root-HTML-Dateien werden nicht in `apps/web/public` veroeffentlicht und standardmaessig auch nicht mehr als Asset-Quelle gescannt. Nur QA-Sonderlaeufe duerfen Root-HTML explizit mit `SYNC_INCLUDE_ROOT_REFERENCE_HTML=true` einbeziehen.
+- `corepack pnpm native:guard` prueft den gebauten Produktionspfad auf Public-HTML-Schatten, Public-`legacy-*` Assets und rohe Legacy-Render-Marker im Astro-Runtime-Code. `production:check` fuehrt diesen Guard nach dem Web-Build aus.
 - Echte Dubletten wie `blog-journal.html`, `weitere-dienstleistungen.html`, `matthias-ramahi-portfolio.html`, `portfolio-1-tunnel.html`, `fotografie-landing-experience.html` und `portraitfotografie-experience.html` sind 308-Redirects auf die kanonischen Seiten.
 - Experimentelle Konzeptseiten (`radikale-fotografie-portfolio-konzepte.html`, `floating-archive.html`, `narrative-stage.html`, `experimental-lens.html`) rendern als native, noindex gesetzte Astro-Archivseiten.
 - Es gibt keine oeffentliche oder interne Astro-Route mehr, die rohe Legacy-HTML-Seiten ausliefert. Die Root-HTML-Dateien bleiben nur Projektarchiv und QA-Referenz.
@@ -302,10 +303,11 @@ Aktueller Stand vom 2026-05-29:
 - `web:build` nach vollstaendiger `.html`-Routenentkopplung: erfolgreich. Alle 217 bisherigen Root-HTML-URLs werden aus dem nativen Astro-Routenmodell gebaut; 6 Dubletten redirecten kanonisch, 4 Konzeptseiten sind noindex Astro-Archivseiten, alle Local-SEO-Varianten laufen ueber den Family-Renderer.
 - `web:build` nach Entfernung der App-internen Legacy-/Componentized-Bruecke: erfolgreich; die Visual-Regression-Baseline wird nun als separater Referenzserver aus den Root-HTML-Dateien gestartet und ist nicht mehr Teil der Astro-Produktionsrouten.
 - Route-Audit 2026-05-29: 217/217 Root-HTML-URLs im Build vorhanden, keine fehlenden nativen HTML-Routen und keine rohen Legacy-Render-Marker.
+- Native-Production-Guard 2026-05-29: erfolgreich. `apps/web/public` enthaelt keine HTML-Schatten, keine `legacy-*` Public-Assets und der Astro-Runtime-Code enthaelt keinen rohen Legacy-Renderpfad.
 - Finaler Native-Family-Lauf 2026-05-29: alle sechs Haupt-Fotografie-Seiten und repraesentative Local-SEO-Varianten pro Familie laufen ueber native Astro-Komponenten. Visual Regression bleibt fuer Desktop und Mobile unter der harten 5%-Grenze; dokumentierte Warnungen liegen nur ueber dem 2%-Zielwert und stammen aus bekannten Lazyload-/Bildstrecken.
 - Finaler Web-Build 2026-05-29: `corepack pnpm --filter @matthias-ramahi/web build` erfolgreich, `astro check` ueber 80 Dateien mit 0 Errors / 0 Warnings / 0 Hints.
 - Finaler Route-Audit 2026-05-29: `corepack pnpm --filter @matthias-ramahi/web test:legacy-routes` erfolgreich, 217/217 HTML-Routen geprueft.
-- Finaler Asset-Entkopplungslauf 2026-05-29: `corepack pnpm --filter @matthias-ramahi/web build` laeuft mit `sync-public-assets`, kopiert 197/197 referenzierte Assets und nutzt im Astro-Produktionscode keine `legacy-*` Assetpfade mehr.
+- Finaler Asset-Entkopplungslauf 2026-05-29: `corepack pnpm --filter @matthias-ramahi/web build` laeuft mit `sync-public-assets`, kopiert 174/174 referenzierte native Assets ohne Root-HTML-Scan und nutzt im Astro-Produktionscode keine `legacy-*` Assetpfade mehr.
 - Finaler Site-Quality-Audit 2026-05-29: `corepack pnpm --filter @matthias-ramahi/web test:site-quality -- --route-source=all --strict --timeout-ms=45000` erfolgreich, 452 Checks ueber 226 Routen, 0 Failures. Payload-Medien von `cms.matthiasramahi.de` gelten als First-Party; uebrig sind nur Long-Task-Warnungen auf bild-/animationsreichen Seiten.
 - Bild-/Asset-Haertung 2026-05-29: Lazyload-Bilder haben echte `src`-Fallbacks, die mobile Sticky-CTA erscheint erst nach Scrolltiefe, und `tools/prune-unused-dist-assets.mjs` behandelt Root-Assets wie `assets/...` und `_astro/...` korrekt.
 
@@ -314,6 +316,7 @@ Weitere QA-Befehle:
 ```powershell
 corepack pnpm --filter @matthias-ramahi/web exec playwright install chromium
 corepack pnpm production:check
+corepack pnpm native:guard
 corepack pnpm web:test:legacy-routes
 corepack pnpm web:test:visual
 corepack pnpm cms:audit-readiness

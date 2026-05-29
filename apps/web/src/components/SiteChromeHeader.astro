@@ -1,15 +1,16 @@
 ---
 import siteChromeContent from '../data/siteChromeContent'
-import { getNavigation, linkAttributes, toRootRelativeHref, type PayloadLink } from '../lib/payload'
+import { getNavigation, linkAttributes, liveCmsFetchOptions, toRootRelativeHref, type PayloadLink } from '../lib/payload'
 
 type Props = {
   current?: string
   ctaHref?: string
   headerTheme?: string
+  liveCms?: boolean
 }
 
-const { current, ctaHref, headerTheme } = Astro.props as Props
-const cmsNavigation = await getNavigation()
+const { current, ctaHref, headerTheme, liveCms = false } = Astro.props as Props
+const cmsNavigation = await getNavigation(liveCms ? liveCmsFetchOptions() : {})
 const { brand, navigation: fallbackNavigation } = siteChromeContent
 const primary = (cmsNavigation?.primary?.length ? cmsNavigation.primary : fallbackNavigation.primary) as PayloadLink[]
 const photographyLinks = (cmsNavigation?.photographyLinks?.length

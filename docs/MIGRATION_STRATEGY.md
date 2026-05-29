@@ -62,7 +62,7 @@ Stand 2026-05-29:
 | About, Kontakt, Legal | `ueber-mich.html` und `contact.html` sind native Astro-Body-Templates; `impressum.html` und `datenschutz.html` sind typisierte Legal-Templates mit `BaseLayout`. | Juristische Inhalte bei echten Rechtsaenderungen manuell pflegen; keine Legacy-Body-Abhaengigkeit mehr fuer Legal. |
 | Bestehende `blog-*.html` Detailseiten | Native Astro-Artikelrenderer auf alter URL mit `BaseLayout`, BlogPosting-/FAQ-/Breadcrumb-JSON-LD und typisierter Content-Basis. | Final Payload-Journalfelder angleichen und visuelle Regression fuer alle sieben Artikel dauerhaft im Release-Gate halten. |
 
-Die alte `payload-legacy-html`-/Componentized-Schicht ist nicht mehr Teil des Astro-Produktionspfads. Auch die produktiven CSS-/JS-Referenzen der adoptierten Seiten zeigen auf neutrale `native-*` Assets. Root-HTML-Dateien und alte `legacy-*` Assets bleiben als Freeze, Screenshot-Baseline und menschliche Referenz im Projekt, koennen aber nach expliziter Archiv- oder Loeschfreigabe aus dem Arbeitsbaum entfernt werden.
+Die alte `payload-legacy-html`-/Componentized-Schicht ist nicht mehr Teil des Astro-Produktionspfads. Auch die produktiven CSS-/JS-Referenzen der adoptierten Seiten zeigen auf neutrale `native-*` Assets. Root-HTML-Dateien und alte `legacy-*` Assets bleiben als Freeze, Screenshot-Baseline und menschliche Referenz im Projekt, koennen aber nach expliziter Archiv- oder Loeschfreigabe aus dem Arbeitsbaum entfernt werden. Der Produktions-Asset-Sync scannt Root-HTML standardmaessig nicht mehr; die Referenz kann nur fuer QA-Sonderlaeufe mit `SYNC_INCLUDE_ROOT_REFERENCE_HTML=true` als Asset-Quelle einbezogen werden.
 
 ## Eingefrorene visuelle Referenz
 
@@ -129,7 +129,7 @@ Aktuell bleiben alle alten Root-HTML-URLs 1:1 erreichbar. Die Migration ist aber
 
 Die rohe Legacy-Ausgabe ist kein Astro-App-Renderpfad mehr. Fuer Visual Regression startet `apps/web/scripts/visual-regression.mjs` einen separaten lokalen Referenzserver aus den Root-HTML-Dateien; produktive Routen bleiben dadurch vollstaendig Astro-nativ.
 
-Wichtig: Der Public-Asset-Sync kopiert keine Root-HTML-Dateien mehr nach `apps/web/public`. Die alten HTML-Dateien bleiben im Projekt-Root unangetastet, aber sie blockieren die Astro-Routen nicht als statische Public-Dateien. Der alte `src/pages/[slug].html.ts`-Fallback ist entfernt; `.html`-Routen kommen aus dem nativen Routenmodell.
+Wichtig: Der Public-Asset-Sync kopiert keine Root-HTML-Dateien mehr nach `apps/web/public` und scannt sie nicht mehr fuer Produktionsassets. Die alten HTML-Dateien bleiben im Projekt-Root unangetastet, aber sie blockieren die Astro-Routen nicht als statische Public-Dateien und beeinflussen den normalen Astro-Build nicht mehr. Der alte `src/pages/[slug].html.ts`-Fallback ist entfernt; `.html`-Routen kommen aus dem nativen Routenmodell.
 
 Aktuell adoptierte oeffentliche URLs:
 
@@ -233,5 +233,6 @@ Aktueller Pruefstand:
 - Stand 2026-05-29: finaler Web-Build erfolgreich, `astro check` ueber 80 Dateien mit 0 Errors / 0 Warnings / 0 Hints.
 - Stand 2026-05-29: Route-Audit erfolgreich, 217/217 bisherige HTML-Routen werden nativ aus Astro erzeugt.
 - Stand 2026-05-29: Produktionsassets sind im Astro-Code auf `native-*` umgestellt; der Prebuild heisst `sync-public-assets` und kopiert keine Root-HTML-Dateien nach `apps/web/public`.
+- Stand 2026-05-29: `native:guard` ist Teil von `production:check` und verhindert Rueckfaelle durch Public-HTML-Schatten, Public-`legacy-*` Assets oder rohe Legacy-Render-Marker im Astro-Runtime-Code.
 - Stand 2026-05-29: Visual Regression wird fuer stabile lokale Laeufe in drei Gruppen ausgefuehrt: Kern-/Fotografieseiten, Service/About/Contact/Journal und Local-SEO-Familien. Alle Gruppen bleiben unter der harten 5%-Grenze; Warnungen ueber dem 2%-Zielwert sind dokumentierte Bild-/Lazyload-Differenzen.
 - Stand 2026-05-29: Site-Quality-Audit ueber 226 Routen und 452 Desktop-/Mobile-Checks ist ohne Failures. Uebrig sind nur Long-Task-Warnungen fuer bild-/animationsreiche Seiten; Payload-Medien von `cms.matthiasramahi.de` werden als First-Party behandelt.

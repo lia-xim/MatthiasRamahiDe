@@ -108,6 +108,7 @@ try {
   await run('corepack', ['pnpm', 'cms:audit-production', '--', '--strict']);
   await run('corepack', ['pnpm', 'cms:audit-seo', '--', '--strict']);
   await run('corepack', ['pnpm', 'web:build']);
+  await run('corepack', ['pnpm', 'native:guard']);
   await run('corepack', ['pnpm', 'cms:build']);
 
   preview = start('corepack', ['pnpm', '--filter', '@matthias-ramahi/web', 'preview']);

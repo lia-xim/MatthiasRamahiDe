@@ -94,6 +94,24 @@ npx vercel@latest deploy --prebuilt --prod --yes --archive=tgz --scope lia-xims-
 
 Hinweis: Der lokale Node-24-Hinweis beim Build ist nicht kritisch; Vercel fuehrt Serverless Functions mit Node 22 aus.
 
+### Live-CMS-Seiten
+
+Die Startseite wird als Server-Route auf Vercel gerendert und liest die Payload-Daten live vom Hetzner-CMS. Dadurch brauchen reine Inhalts- und Bildwechsel im CMS keinen neuen Vercel-Deploy mehr. Code-, Layout- und Template-Aenderungen bleiben weiterhin Vercel-Deployments.
+
+Relevante Vercel-ENV:
+
+```bash
+ASTRO_LIVE_CMS_CACHE_MS=30000
+ASTRO_LIVE_PAGE_CACHE_SECONDS=60
+ASTRO_LIVE_PAGE_STALE_SECONDS=300
+```
+
+- `ASTRO_LIVE_CMS_CACHE_MS`: kurzer Runtime-Cache fuer Payload-API-Antworten innerhalb der Vercel Function.
+- `ASTRO_LIVE_PAGE_CACHE_SECONDS`: Edge-/CDN-Zeit, nach der die HTML-Seite erneut aus Payload gerendert werden darf.
+- `ASTRO_LIVE_PAGE_STALE_SECONDS`: alte HTML-Version darf kurz weiter ausgeliefert werden, waehrend Vercel im Hintergrund aktualisiert.
+
+Fuer sofortiges Testen kann `ASTRO_LIVE_PAGE_CACHE_SECONDS=0` gesetzt werden. Fuer Produktion ist ein kurzer Cache sinnvoller, weil er Payload schuetzt und die Seite schnell haelt.
+
 ## URL-Strategie
 
 - Alte `.html`-URLs bleiben erreichbar und sind fuer SEO die primaere sichtbare URL.

@@ -1,8 +1,9 @@
 ---
-import { getFooter, getGlobalCtas, type PayloadCta } from '../lib/payload'
+import { getFooter, getGlobalCtas, liveCmsFetchOptions, type PayloadCta } from '../lib/payload'
 
-const { cta } = Astro.props as { cta?: PayloadCta }
-const [globalCtas, footer] = await Promise.all([getGlobalCtas(), getFooter()])
+const { cta, liveCms = false } = Astro.props as { cta?: PayloadCta; liveCms?: boolean }
+const fetchOptions = liveCms ? liveCmsFetchOptions() : {}
+const [globalCtas, footer] = await Promise.all([getGlobalCtas(fetchOptions), getFooter(fetchOptions)])
 const module = globalCtas?.contactModule || {}
 const email = footer?.email || 'info@matthiasramahi.de'
 const headline = cta?.headline || module.headline || 'Projekt anfragen.'

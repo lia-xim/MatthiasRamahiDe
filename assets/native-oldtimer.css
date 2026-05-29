@@ -74,6 +74,7 @@
      mehr "hackelt". Drei minimale Varianten für leichte Wiederholungsvermeidung. */
   .hero-mp__slides{position:absolute;inset:0;z-index:1}
   .hero-mp__slide{position:absolute;inset:0;
+    background-image:var(--hero-bg-desktop,none);
     background-size:cover;background-position:center 54%;
     filter:contrast(1.07) saturate(.92) brightness(.94);
     clip-path:polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
@@ -349,6 +350,7 @@
     .rl-grid{grid-template-columns:repeat(2,1fr)}
   }
   @media (max-width:900px){
+    .hero-mp__slide{background-image:var(--hero-bg-mobile,var(--hero-bg-desktop,none))}
     .hero-mp{height:auto;max-height:none;min-height:88svh}
     .hero-mp__title{font-size:clamp(48px,13.5vw,92px);line-height:.88}
     .st{height:auto;max-height:none;min-height:auto}

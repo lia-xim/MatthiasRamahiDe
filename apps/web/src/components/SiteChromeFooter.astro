@@ -1,9 +1,14 @@
 ---
 import siteChromeContent, { type SiteChromeFooterColumn } from '../data/siteChromeContent'
-import { getFooter, linkAttributes, toRootRelativeHref } from '../lib/payload'
+import { getFooter, linkAttributes, liveCmsFetchOptions, toRootRelativeHref } from '../lib/payload'
 
+type Props = {
+  liveCms?: boolean
+}
+
+const { liveCms = false } = Astro.props as Props
 const { brand, footer: fallbackFooter } = siteChromeContent
-const cmsFooter = await getFooter()
+const cmsFooter = await getFooter(liveCms ? liveCmsFetchOptions() : {})
 const replaceStudioLanguage = (value: unknown) => {
   const text = typeof value === 'string' ? value : ''
   return text

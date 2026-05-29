@@ -2,7 +2,14 @@
 import '../styles/tokens.css'
 import SiteChromeFooter from '../components/SiteChromeFooter.astro'
 import SiteChromeHeader from '../components/SiteChromeHeader.astro'
-import { getSiteSettings, imageDimensions, imageUrl, toAbsoluteSiteUrl, type PayloadMedia } from '../lib/payload'
+import {
+  getSiteSettings,
+  imageDimensions,
+  imageUrl,
+  liveCmsFetchOptions,
+  toAbsoluteSiteUrl,
+  type PayloadMedia,
+} from '../lib/payload'
 import { localBusinessJsonLd, personJsonLd, webSiteJsonLd, type JsonLd } from '../lib/seo'
 
 type Props = {
@@ -17,23 +24,29 @@ type Props = {
   title?: string
   jsonLd?: JsonLd | JsonLd[]
   currentNav?: string
+  liveCms?: boolean
 }
 
-const settings = await getSiteSettings()
 const {
   canonicalUrl,
-  description = settings?.defaultMetaDescription || 'Portfolio, Fotografie und visuelle Produktion in Duesseldorf / NRW.',
+  description: providedDescription,
   bodyClass = 'has-mr-footer cms-page',
   noIndex = false,
   ogImage,
   ogType = 'website',
   preloadImages = [],
   stylesheets = [],
-  title = settings?.defaultMetaTitle || 'Matthias Ramahi Fotografie',
+  title: providedTitle,
   jsonLd,
   currentNav,
+  liveCms = false,
 } = Astro.props as Props
 
+const liveCmsOptions = liveCms ? liveCmsFetchOptions() : {}
+const settings = await getSiteSettings(liveCmsOptions)
+const description =
+  providedDescription || settings?.defaultMetaDescription || 'Portfolio, Fotografie und visuelle Produktion in Duesseldorf / NRW.'
+const title = providedTitle || settings?.defaultMetaTitle || 'Matthias Ramahi Fotografie'
 const siteName = settings?.siteName || 'Matthias Ramahi Fotografie'
 const pathname = Astro.url.pathname === '/' ? '/' : Astro.url.pathname.replace(/\/$/, '')
 const canonical = toAbsoluteSiteUrl(canonicalUrl || pathname)
@@ -104,11 +117,11 @@ const activeNav = currentNav || inferredNav
   </head>
   <body class={bodyClass} data-cms-layout-source="base-layout">
     <div class="site-shell">
-      <SiteChromeHeader current={activeNav} />
+      <SiteChromeHeader current={activeNav} liveCms={liveCms} />
       <main class="site-main">
         <slot />
       </main>
-      <SiteChromeFooter />
+      <SiteChromeFooter liveCms={liveCms} />
     </div>
     <script is:inline src="/assets/site-chrome.js" defer></script>
   </body>

@@ -5,7 +5,15 @@ import path from 'node:path'
 import SiteChromeFooter from '../components/SiteChromeFooter.astro'
 import SiteChromeHeader from '../components/SiteChromeHeader.astro'
 import { getAdoptedPageChrome, mergeAssetLists } from '../lib/adoptedPageChrome'
-import { imageDimensions, imageUrl, getSiteSettings, toAbsoluteSiteUrl, type PayloadDoc, type PayloadMedia } from '../lib/payload'
+import {
+  imageDimensions,
+  imageUrl,
+  getSiteSettings,
+  liveCmsFetchOptions,
+  toAbsoluteSiteUrl,
+  type PayloadDoc,
+  type PayloadMedia,
+} from '../lib/payload'
 import { localBusinessJsonLd, personJsonLd, webSiteJsonLd, type JsonLd } from '../lib/seo'
 
 type Props = {
@@ -18,6 +26,7 @@ type Props = {
   headerTheme?: string
   jsonLd?: JsonLd | JsonLd[]
   legacyFile: string
+  liveCms?: boolean
   noIndex?: boolean
   ogImage?: PayloadMedia | string
   ogType?: string
@@ -37,6 +46,7 @@ const {
   headerTheme: providedHeaderTheme,
   jsonLd,
   legacyFile,
+  liveCms = false,
   noIndex = false,
   ogImage,
   ogType = 'website',
@@ -46,7 +56,8 @@ const {
   title: providedTitle,
 } = Astro.props as Props
 
-const settings = await getSiteSettings()
+const liveCmsOptions = liveCms ? liveCmsFetchOptions() : {}
+const settings = await getSiteSettings(liveCmsOptions)
 const chrome = getAdoptedPageChrome(legacyFile)
 const fallbackPath = legacyFile === 'index.html' ? '/' : `/${legacyFile.replace(/^\/+/, '')}`
 const docCanonical = doc?.seo?.canonicalUrl || doc?.seo?.legacyUrl || doc?.legacy?.sourceUrl
@@ -149,9 +160,9 @@ async function readPublicAsset(href: string) {
     {jsonLdItems.map((item) => <script is:inline type="application/ld+json" set:html={JSON.stringify(item)} />)}
   </head>
   <body class={bodyClass} data-cms-layout-source="native-adopted-chrome">
-    <SiteChromeHeader current={current} ctaHref={ctaHref} headerTheme={headerTheme} />
+    <SiteChromeHeader current={current} ctaHref={ctaHref} headerTheme={headerTheme} liveCms={liveCms} />
     <slot />
-    <SiteChromeFooter />
+    <SiteChromeFooter liveCms={liveCms} />
     {allScripts.map((src) => <script is:inline src={src} defer></script>)}
   </body>
 </html>

@@ -47,6 +47,11 @@
   if(!canvas) return;
   const hero=canvas.closest('.hero');
   const cursor=document.getElementById('hero-cursor');
+  const useStaticHero = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce), (hover: none), (pointer: coarse), (max-width: 900px)').matches;
+  if(useStaticHero){
+    canvas.setAttribute('hidden', '');
+    return;
+  }
 
   /* parse "url,url,..." */
   const raw=(canvas.dataset.imgs||'').split(',').map(s=>s.trim()).filter(Boolean);

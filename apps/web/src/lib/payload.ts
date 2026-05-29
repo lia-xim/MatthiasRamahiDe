@@ -137,6 +137,8 @@ export type GlobalCtas = {
 }
 
 type ListOptions = {
+  cacheMs?: number
+  force?: boolean
   limit?: number
   depth?: number
   draft?: boolean
@@ -144,8 +146,15 @@ type ListOptions = {
 }
 
 type GlobalOptions = {
+  cacheMs?: number
   depth?: number
   draft?: boolean
+  force?: boolean
+}
+
+type FetchOptions = {
+  cacheMs?: number
+  force?: boolean
 }
 
 const productionSiteUrl = 'https://matthiasramahi.de'
@@ -225,8 +234,22 @@ const payloadCacheTtlMs = Number(import.meta.env.PAYLOAD_FETCH_CACHE_MS ?? (impo
 const payloadTimeoutMs = Number(import.meta.env.PAYLOAD_FETCH_TIMEOUT_MS || 1_500)
 const disablePayloadFetch = import.meta.env.ASTRO_DISABLE_PAYLOAD_FETCH === 'true' || process.env.ASTRO_DISABLE_PAYLOAD_FETCH === 'true'
 
-function cacheKeyFor(url: string, draft: boolean) {
-  return `${draft ? 'draft' : 'published'}:${url}`
+const numberFromEnv = (value: unknown, fallback: number) => {
+  const parsed = Number(value)
+  return Number.isFinite(parsed) && parsed >= 0 ? parsed : fallback
+}
+
+export const liveCmsCacheMs = () =>
+  numberFromEnv(import.meta.env.ASTRO_LIVE_CMS_CACHE_MS ?? process.env.ASTRO_LIVE_CMS_CACHE_MS, 30_000)
+
+export const liveCmsFetchOptions = <T extends object>(options: T = {} as T): T & { cacheMs: number; force: true } => ({
+  ...options,
+  cacheMs: (options as FetchOptions).cacheMs ?? liveCmsCacheMs(),
+  force: true,
+})
+
+function cacheKeyFor(url: string, draft: boolean, cacheMs: number) {
+  return `${draft ? 'draft' : 'published'}:${cacheMs}:${url}`
 }
 
 function timeoutSignal() {
@@ -238,8 +261,9 @@ const apiGet = async <T>(
   path: string,
   params: Record<string, string | number | boolean | undefined> = {},
   draft = false,
+  options: FetchOptions = {},
 ): Promise<T | null> => {
-  if (disablePayloadFetch && !draft) return null
+  if (disablePayloadFetch && !draft && !options.force) return null
 
   const search = new URLSearchParams()
 
@@ -251,8 +275,9 @@ const apiGet = async <T>(
 
   const query = search.toString()
   const url = `${apiBase()}${path}${query ? `?${query}` : ''}`
-  const cacheable = !draft && payloadCacheTtlMs > 0
-  const cacheKey = cacheable ? cacheKeyFor(url, draft) : ''
+  const cacheMs = options.cacheMs ?? payloadCacheTtlMs
+  const cacheable = !draft && cacheMs > 0
+  const cacheKey = cacheable ? cacheKeyFor(url, draft, cacheMs) : ''
 
   if (cacheable) {
     const cached = payloadCache.get(cacheKey)
@@ -273,12 +298,12 @@ const apiGet = async <T>(
   })().catch(() => null)
 
   if (cacheable) {
-    payloadCache.set(cacheKey, { expires: Date.now() + payloadCacheTtlMs, promise: request })
+    payloadCache.set(cacheKey, { expires: Date.now() + cacheMs, promise: request })
   }
 
   const value = await request
   if (cacheable) {
-    payloadCache.set(cacheKey, { expires: Date.now() + payloadCacheTtlMs, value })
+    payloadCache.set(cacheKey, { expires: Date.now() + cacheMs, value })
   }
 
   return value
@@ -516,8 +541,9 @@ export async function payloadFetch<T>(
   collection: string,
   params: Record<string, string | number | boolean | undefined> = {},
   draft = false,
+  options: FetchOptions = {},
 ): Promise<T | null> {
-  return apiGet<T>(`/api/${collection}`, params, draft)
+  return apiGet<T>(`/api/${collection}`, params, draft, options)
 }
 
 export async function getGlobal<T>(slug: string, options: GlobalOptions = {}): Promise<T | null> {
@@ -527,13 +553,14 @@ export async function getGlobal<T>(slug: string, options: GlobalOptions = {}): P
       depth: options.depth ?? 2,
     },
     options.draft,
+    options,
   )
 }
 
-export const getSiteSettings = () => getGlobal<SiteSettings>('site-settings')
-export const getNavigation = () => getGlobal<NavigationGlobal>('navigation')
-export const getFooter = () => getGlobal<FooterGlobal>('footer')
-export const getGlobalCtas = () => getGlobal<GlobalCtas>('global-ctas')
+export const getSiteSettings = (options: GlobalOptions = {}) => getGlobal<SiteSettings>('site-settings', options)
+export const getNavigation = (options: GlobalOptions = {}) => getGlobal<NavigationGlobal>('navigation', options)
+export const getFooter = (options: GlobalOptions = {}) => getGlobal<FooterGlobal>('footer', options)
+export const getGlobalCtas = (options: GlobalOptions = {}) => getGlobal<GlobalCtas>('global-ctas', options)
 
 export async function listDocuments(collection: string, options: ListOptions = {}): Promise<PayloadDoc[]> {
   const data = await payloadFetch<{ docs?: PayloadDoc[] }>(
@@ -544,6 +571,7 @@ export async function listDocuments(collection: string, options: ListOptions = {
       sort: options.sort,
     },
     options.draft,
+    options,
   )
 
   const docs = data?.docs ?? []
@@ -565,6 +593,7 @@ export async function getBySlug(collection: string, slug: string, options: ListO
       depth: options.depth ?? 2,
     },
     options.draft,
+    options,
   )
 
   const doc = data?.docs?.[0]
@@ -586,6 +615,7 @@ export async function getByLegacyUrl(collection: string, legacyUrl: string, opti
       depth: options.depth ?? 2,
     },
     options.draft,
+    options,
   )
 
   return data?.docs?.[0] ?? null
@@ -617,7 +647,7 @@ function indexLegacyDoc(map: Map<string, PayloadDoc>, doc: PayloadDoc) {
 }
 
 export async function getLegacyUrlIndex(collection: string, options: ListOptions = {}): Promise<Map<string, PayloadDoc>> {
-  const cacheKey = `${collection}:${options.depth ?? 2}:${options.limit ?? 500}:${options.draft ? 'draft' : 'published'}`
+  const cacheKey = `${collection}:${options.depth ?? 2}:${options.limit ?? 500}:${options.draft ? 'draft' : 'published'}:${options.force ? 'force' : 'default'}:${options.cacheMs ?? payloadCacheTtlMs}`
   const cached = legacyUrlIndexCache.get(cacheKey)
   if (cached) return cached
 
@@ -630,6 +660,7 @@ export async function getLegacyUrlIndex(collection: string, options: ListOptions
         sort: options.sort,
       },
       options.draft,
+      options,
     )
 
     const map = new Map<string, PayloadDoc>()
@@ -659,6 +690,7 @@ export async function getSitePageByType(pageType: string, options: ListOptions =
       depth: options.depth ?? 2,
     },
     options.draft,
+    options,
   )
 
   return data?.docs?.[0] ?? null

@@ -35,8 +35,8 @@ const sportwagenChrome: AdoptedPageChrome = {
   current: 'fotografie',
   ogImage: '/assets/optimized/mpixi92f-dsc3032-generase-1-1920.webp',
   preloadImages: [
-    '/assets/optimized/mpixih9c-dsc3982-960.webp',
-    '/assets/optimized/mpixi92f-dsc3032-generase-1-960.webp',
+    '/assets/optimized/mpixih9c-dsc3982-720.webp',
+    '/assets/optimized/mpixi92f-dsc3032-generase-1-720.webp',
   ],
   scripts: [...siteChromeScript, '/assets/native-sportwagen.js'],
   stylesheets: [...sharedStyles, '/assets/native-sportwagen.css'],
