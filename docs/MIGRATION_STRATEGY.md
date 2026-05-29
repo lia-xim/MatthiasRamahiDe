@@ -141,6 +141,8 @@ Die rohe Legacy-Ausgabe ist kein Astro-App-Renderpfad mehr. Fuer Visual Regressi
 
 Wichtig: Der Public-Asset-Sync kopiert keine Root-HTML-Dateien mehr nach `apps/web/public` und scannt sie nicht mehr fuer Produktionsassets. Die alten HTML-Dateien bleiben im Projekt-Root unangetastet, aber sie blockieren die Astro-Routen nicht als statische Public-Dateien und beeinflussen den normalen Astro-Build nicht mehr. Der alte `src/pages/[slug].html.ts`-Fallback ist entfernt; `.html`-Routen kommen aus dem nativen Routenmodell.
 
+Alte Root-HTML-Mutationsskripte sind bewusst aus dem normalen Wartungspfad herausgenommen. `corepack pnpm seo:fix` schreibt keine Root-HTML-Dateien mehr, sondern verweist auf Native-/CMS-Audits. Die historische Pipeline kann nur noch explizit als `legacy:seo:fix` mit `ALLOW_LEGACY_REFERENCE_WRITE=true` gestartet werden.
+
 Aktuell adoptierte oeffentliche URLs:
 
 - `fotografie.html`

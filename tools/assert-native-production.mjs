@@ -10,9 +10,20 @@ const publicRoot = path.join(repoRoot, 'apps', 'web', 'public')
 const publicAssetRoot = path.join(publicRoot, 'assets')
 const assetSyncScript = path.join(repoRoot, 'tools', 'sync-public-assets.mjs')
 const routeAuditScript = path.join(repoRoot, 'apps', 'web', 'scripts', 'legacy-route-audit.mjs')
+const rootPackageJson = path.join(repoRoot, 'package.json')
 const removedRouteDirs = [
   'apps/web/src/pages/componentized',
   'apps/web/src/pages/legacy-baseline',
+]
+const legacyReferenceMutationScripts = [
+  'tools/regenerate-local-pages-from-category-templates.mjs',
+  'tools/strengthen-photography-clusters.mjs',
+  'tools/generate-blog-support-pages.mjs',
+  'tools/optimize-legacy-media.mjs',
+  'tools/harden-legacy-seo.mjs',
+  'tools/harden-legacy-performance.mjs',
+  'tools/replace-heavy-legacy-image-references.mjs',
+  'tools/extract-repeated-inline-assets.mjs',
 ]
 const textExtensions = new Set(['.astro', '.css', '.html', '.js', '.jsx', '.json', '.mjs', '.ts', '.tsx'])
 const failures = []
@@ -183,6 +194,26 @@ async function assertNativeRouteCoverage() {
   )
 }
 
+async function assertLegacyReferenceWritesRequireOptIn() {
+  const packageJson = JSON.parse(await fs.readFile(rootPackageJson, 'utf8'))
+  const scripts = packageJson.scripts || {}
+
+  if (!String(scripts['seo:fix'] || '').includes('print-native-seo-fix-guidance.mjs')) {
+    failures.push('package.json script seo:fix must not run legacy root HTML mutation tools.')
+  }
+
+  if (!String(scripts['legacy:seo:fix'] || '').includes('regenerate-local-pages-from-category-templates.mjs')) {
+    failures.push('package.json must keep the archived root HTML SEO pipeline behind the explicit legacy:seo:fix script.')
+  }
+
+  for (const rel of legacyReferenceMutationScripts) {
+    const text = await fs.readFile(path.join(repoRoot, rel), 'utf8')
+    if (!text.includes("assert-legacy-reference-write-allowed.mjs")) {
+      failures.push(`${rel} must import assert-legacy-reference-write-allowed.mjs before mutating frozen root HTML references.`)
+    }
+  }
+}
+
 await assertNoPublicHtml()
 await assertNoRemovedRouteDirs()
 await assertNoPublicLegacyAssets()
@@ -194,6 +225,7 @@ await assertAssetSyncIsNativeByDefault()
 await assertRouteAuditRequiresNativeLayoutMarker()
 await assertNativeDispatchFailsClosed()
 await assertNativeRouteCoverage()
+await assertLegacyReferenceWritesRequireOptIn()
 
 if (failures.length > 0) {
   console.error('Native production guard failed:')
@@ -202,5 +234,5 @@ if (failures.length > 0) {
 }
 
 console.log(
-  'Native production guard passed: no public HTML shadows, no legacy/componentized route dirs, no public legacy assets, no raw legacy web render path, no mojibake in production sources, no unexpected runtime fs access, layout-marker route audit enforced, native route dispatch fails closed, and frozen route coverage is complete.',
+  'Native production guard passed: no public HTML shadows, no legacy/componentized route dirs, no public legacy assets, no raw legacy web render path, no mojibake in production sources, no unexpected runtime fs access, layout-marker route audit enforced, native route dispatch fails closed, frozen route coverage is complete, and root HTML mutation tools require explicit opt-in.',
 )

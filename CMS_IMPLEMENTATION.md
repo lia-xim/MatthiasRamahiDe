@@ -44,6 +44,7 @@ Die aktuelle HTML-Website ist die visuelle Wahrheit. Ziel ist nicht, alle HTML-D
 - Experimentelle Konzeptseiten (`radikale-fotografie-portfolio-konzepte.html`, `floating-archive.html`, `narrative-stage.html`, `experimental-lens.html`) rendern als native, noindex gesetzte Astro-Archivseiten.
 - Es gibt keine oeffentliche oder interne Astro-Route mehr, die rohe Legacy-HTML-Seiten ausliefert. Die Root-HTML-Dateien bleiben nur Projektarchiv und QA-Referenz.
 - Root-HTML-Dateien werden nicht nach `apps/web/public` kopiert.
+- Alte Root-HTML-Mutationsskripte sind nicht mehr hinter dem generischen `seo:fix` versteckt. `seo:fix` gibt nur noch Native-/CMS-Hinweise aus; die historische Pipeline liegt unter `legacy:seo:fix` und laeuft nur mit `ALLOW_LEGACY_REFERENCE_WRITE=true`.
 
 Aktuell adoptierte oeffentliche URLs:
 
