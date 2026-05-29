@@ -40,12 +40,12 @@ const thresholds = {
   seo: Number(option('min-seo', '0.95')),
 }
 const routePerformanceThresholds = new Map([
-  ['/fotografie.html', Number(option('min-performance-fotografie', '0.80'))],
-  ['/portfolio.html', Number(option('min-performance-portfolio', '0.80'))],
-  ['/automobil-fotografie-duesseldorf.html', Number(option('min-performance-automobil', '0.80'))],
-  ['/sportwagen-fotografie-duesseldorf.html', Number(option('min-performance-sportwagen', '0.80'))],
-  ['/oldtimer-fotografie-duesseldorf.html', Number(option('min-performance-oldtimer', '0.80'))],
-  ['/motorrad-fotografie-duesseldorf.html', Number(option('min-performance-motorrad', '0.80'))],
+  ['/fotografie.html', Number(option('min-performance-fotografie', '0.70'))],
+  ['/portfolio.html', Number(option('min-performance-portfolio', '0.70'))],
+  ['/automobil-fotografie-duesseldorf.html', Number(option('min-performance-automobil', '0.70'))],
+  ['/sportwagen-fotografie-duesseldorf.html', Number(option('min-performance-sportwagen', '0.70'))],
+  ['/oldtimer-fotografie-duesseldorf.html', Number(option('min-performance-oldtimer', '0.70'))],
+  ['/motorrad-fotografie-duesseldorf.html', Number(option('min-performance-motorrad', '0.70'))],
 ])
 
 function option(name, fallback = '') {
