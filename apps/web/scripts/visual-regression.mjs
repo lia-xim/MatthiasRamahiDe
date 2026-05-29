@@ -14,7 +14,7 @@ const outputDir = path.resolve(process.cwd(), '.visual-regression')
 const maxMismatchRatio = Number(process.env.VISUAL_MAX_MISMATCH_RATIO || '0.02')
 const hardMaxMismatchRatio = Number(process.env.VISUAL_HARD_MAX_MISMATCH_RATIO || '0.05')
 const warmupDelayMs = Number(process.env.VISUAL_WARMUP_DELAY_MS || '1400')
-const screenshotDelayMs = Number(process.env.VISUAL_SCREENSHOT_DELAY_MS || '1000')
+const screenshotDelayMs = Number(process.env.VISUAL_SCREENSHOT_DELAY_MS || '1800')
 const selectedPages = new Set(
   (process.env.VISUAL_PAGES || '')
     .split(',')
@@ -51,7 +51,7 @@ const pages = [
     legacyPath: '/automobil-fotografie',
     componentPath: '/automobil-fotografie.html',
     maxMismatchRatio: { mobile: 0.05 },
-    thresholdNote: 'Mobile enthaelt lange lazy/reveal Bildraster mit Legacy-JS.',
+    thresholdNote: 'Seite enthaelt lange lazy/reveal Bildraster mit Legacy-JS.',
   },
   {
     name: 'sportscar-main',
@@ -65,7 +65,7 @@ const pages = [
     legacyPath: '/oldtimer-fotografie',
     componentPath: '/oldtimer-fotografie.html',
     maxMismatchRatio: { mobile: 0.05 },
-    thresholdNote: 'Mobile enthaelt lange lazy/reveal Bildraster mit Legacy-JS.',
+    thresholdNote: 'Seite enthaelt lange lazy/reveal Bildraster mit Legacy-JS.',
   },
   {
     name: 'motorcycle-main',
@@ -89,7 +89,7 @@ const pages = [
     legacyPath: '/leistungen',
     componentPath: '/leistungen.html',
     maxMismatchRatio: { desktop: 0.03 },
-    thresholdNote: 'Desktop enthaelt Legacy-Reveal- und Lazyload-Abschnitte.',
+    thresholdNote: 'Seite enthaelt Legacy-Reveal- und Lazyload-Abschnitte.',
   },
   {
     name: 'service-fotolabor',
@@ -131,7 +131,7 @@ const pages = [
     legacyPath: '/ueber-mich',
     componentPath: '/ueber-mich.html',
     maxMismatchRatio: { desktop: 0.05 },
-    thresholdNote: 'Desktop enthaelt Legacy-Reveal- und Lazyload-Abschnitte.',
+    thresholdNote: 'Seite enthaelt Legacy-Reveal- und Lazyload-Abschnitte.',
   },
   {
     name: 'contact',

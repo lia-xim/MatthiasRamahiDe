@@ -12,18 +12,21 @@ The current root `.html` files are the visual reference for the Astro + Payload 
 
 ## Current Priority
 
-1. Header and footer stay Payload-driven through the Astro shell.
-2. The neutral photography pages are the canonical main pages.
-3. Local SEO pages are enabled for private staging through the Astro/Payload adoption layer; the root `.html` files remain the visual baseline for review.
-4. Blog and journal pages should move to structured blocks after the hero and article model are stable.
+1. Header, footer, SEO metadata, canonicals and structured data are rendered through the Astro shell.
+2. All previous public `.html` URLs are generated from the native Astro route registry.
+3. Local SEO pages inherit one of the six native photography family layouts; Payload can override content and SEO fields without storing raw page HTML.
+4. Blog and journal legacy URLs use native article renderers; new `/journal/<slug>` pages stay CMS-native.
+5. The remaining root `.html` files are an archive and QA baseline only. Remove or move them only after explicit archive/delete sign-off.
 
 ## Adopted Route Rule
 
-Adopted `.html` URLs stay public, but they are no longer prerendered by a generic legacy endpoint. The middleware rewrites them internally to `/native/<slug>`, where Astro renders the Payload-backed native shell. The current production model builds all previous root `.html` URLs through the native route registry.
+Adopted `.html` URLs stay public, but they are no longer prerendered by a generic legacy endpoint. The middleware rewrites them internally to `/native/<slug>`, where Astro renders the Payload-backed native shell in local/server mode. The current static production model builds all previous root `.html` URLs through the native route registry.
 
 The adopted list lives in `apps/web/src/lib/adoptedRoutes.ts`.
 
 There is no `/legacy-baseline/*` route in the Astro app anymore. Visual Regression reads the frozen root HTML files through a short-lived QA server, so production source code does not depend on raw legacy rendering.
+
+Current QA status: the native web build, 217/217 legacy-route audit, grouped visual regression and strict site-quality audit pass as of 2026-05-29. Remaining warnings are performance long-task warnings on media-heavy pages, not legacy-render dependencies.
 
 ## Refreshing The Freeze Manifest
 

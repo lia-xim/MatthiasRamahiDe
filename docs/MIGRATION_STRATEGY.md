@@ -57,10 +57,12 @@ Stand 2026-05-29:
 | Journal-Uebersicht | Native Astro-Komponente mit Payload-Listing-Fallback | Weiter Design-Parity halten, waehrend `journal-posts` redaktionell wachsen. |
 | Neue Journal-Routen `/journal/<slug>` | CMS-native Artikelkomponente | ENV `ASTRO_ENABLE_CMS_JOURNAL_ROUTES=true` setzen, wenn die Route live gebaut werden soll. |
 | Neue Local-SEO-Routen | CMS-native Local-SEO-Komponente | Fuer neue Seiten ohne Legacy-Datei weiter als strukturierter CMS-Pfad nutzen. |
-| Alte Local-SEO-HTML-Seiten | Native Local-SEO-Family-Renderer | Standardmaessig aktiv: lokale Varianten erben eine der sechs Kategorie-Familien, werden aus typisierten Familieninhalten/Payload-Feldern gerendert und brauchen kein rohes Legacy-Body-HTML mehr. |
+| Alte Local-SEO-HTML-Seiten | Native Local-SEO-Family-Renderer | Standardmaessig aktiv: lokale Varianten erben eine der sechs Kategorie-Familien, werden aus typisierten Familieninhalten/Payload-Feldern gerendert und brauchen kein rohes Legacy-Body-HTML mehr. Technisch final; danach nur noch redaktionelle Kuratierung einzelner Stadt-/Keyword-Texte. |
 | Sechs Haupt-Fotografie-Detailseiten | Alle sechs Seiten sind native Astro-Body-Templates mit Legacy-CSS/JS-Parity und visueller Freigabe. | Inhalte weiter behutsam aus Payload-Feldern speisen, ohne Layout-HTML als CMS-Hack zu speichern. |
 | About, Kontakt, Legal | `ueber-mich.html` und `contact.html` sind native Astro-Body-Templates; `impressum.html` und `datenschutz.html` sind typisierte Legal-Templates mit `BaseLayout`. | Juristische Inhalte bei echten Rechtsaenderungen manuell pflegen; keine Legacy-Body-Abhaengigkeit mehr fuer Legal. |
 | Bestehende `blog-*.html` Detailseiten | Native Astro-Artikelrenderer auf alter URL mit `BaseLayout`, BlogPosting-/FAQ-/Breadcrumb-JSON-LD und typisierter Content-Basis. | Final Payload-Journalfelder angleichen und visuelle Regression fuer alle sieben Artikel dauerhaft im Release-Gate halten. |
+
+Die alte `payload-legacy-html`-/Componentized-Schicht ist nicht mehr Teil des Astro-Produktionspfads. Root-HTML-Dateien bleiben als Freeze, Screenshot-Baseline und menschliche Referenz im Projekt, koennen aber nach expliziter Archiv- oder Loeschfreigabe aus dem Arbeitsbaum entfernt werden.
 
 ## Eingefrorene visuelle Referenz
 
@@ -228,4 +230,7 @@ Aktueller Pruefstand:
 - Stand 2026-05-29: `impressum.html` und `datenschutz.html` sind nicht mehr aus Legacy-HTML-Sections zusammengesetzt, sondern rendern aus `legalContent.ts` als native Astro-Seiten. Local-SEO-Payload-Dokumente werden fuer den Build ueber einen gecachten Legacy-URL-Index geladen, nicht mehr pro Route einzeln.
 - Stand 2026-05-29: alle 217 Root-HTML-URLs werden im Astro-Build nativ erzeugt. Es gibt keine rohe Produktionsausgabe ueber `set:html={legacyHtml}` mehr; Root-HTML bleibt nur Referenz/Baseline. Alias-Dubletten redirecten, Konzeptseiten sind noindex Astro-Archivseiten.
 - Stand 2026-05-29: die alte App-interne Legacy-/Componentized-Bruecke ist entfernt. `apps/web/src` enthaelt keine Route und keine Komponente mehr, die Root-HTML als Produktions- oder Preview-Body rendert. Visual Regression liest alte HTML-Dateien nur noch ueber einen separaten QA-Referenzserver.
-- Stand 2026-05-29: Site-Quality-Audit ueber 233 Routen und 466 Desktop-/Mobile-Checks ist ohne Failures. Uebrig sind nur Long-Task-Warnungen fuer bild- und animationsreiche Seiten.
+- Stand 2026-05-29: finaler Web-Build erfolgreich, `astro check` ueber 80 Dateien mit 0 Errors / 0 Warnings / 0 Hints.
+- Stand 2026-05-29: Route-Audit erfolgreich, 217/217 bisherige HTML-Routen werden nativ aus Astro erzeugt.
+- Stand 2026-05-29: Visual Regression wird fuer stabile lokale Laeufe in drei Gruppen ausgefuehrt: Kern-/Fotografieseiten, Service/About/Contact/Journal und Local-SEO-Familien. Alle Gruppen bleiben unter der harten 5%-Grenze; Warnungen ueber dem 2%-Zielwert sind dokumentierte Bild-/Lazyload-Differenzen.
+- Stand 2026-05-29: Site-Quality-Audit ueber 226 Routen und 452 Desktop-/Mobile-Checks ist ohne Failures. Uebrig sind nur Long-Task-Warnungen fuer bild-/animationsreiche Seiten; Payload-Medien von `cms.matthiasramahi.de` werden als First-Party behandelt.

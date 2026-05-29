@@ -1,5 +1,6 @@
 ---
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
+import NativeFamilyClusterLinks from './NativeFamilyClusterLinks.astro'
 import PreviewToolbar from '../PreviewToolbar.astro'
 import {
   localScopePhrase,
@@ -37,12 +38,12 @@ const metaTitle = isParentPage
   ? 'Landschaftsfotografie - Matthias Ramahi'
   : isKeywordPage
     ? `${serviceLabel} | Matthias Ramahi`
-    : `Landschaftsfotografie ${scope.label} | Matthias Ramahi`
+    : `${serviceLabel} ${scope.label} | Matthias Ramahi`
 const metaDescription = isParentPage
   ? 'Landschaftsfotografie: Fine-Art-Prints, Wandbilder, Editionen und großformatige Arbeiten für private Räume, Praxen, Hotels und Sammlungen.'
   : isKeywordPage
     ? `${serviceLabel}: Fine-Art-Prints, Wandbilder, Editionen und großformatige Arbeiten.`
-    : `Landschaftsfotografie ${scope.label}: Fine-Art-Prints, Wandbilder, Editionen und großformatige Arbeiten.`
+    : `${serviceLabel} ${scope.label}: Fine-Art-Prints, Wandbilder, Editionen und großformatige Arbeiten.`
 const contactSubject = isParentPage ? 'Landschaftsfotografie Anfrage' : `${serviceLabel}${isKeywordPage ? ' Düsseldorf' : ` ${scope.label}`} Anfrage`
 const contactHeadline = isParentPage
   ? 'Landschaft &lt;em&gt;anfragen.&lt;/em&gt;'
@@ -270,6 +271,15 @@ const searchLinks = [
       </div>
     </section>
 
+    {!isParentPage && (
+      <NativeFamilyClusterLinks
+        clusterHeading={clusterHeading}
+        clusterLinks={clusterLinks}
+        overviewHref={overviewHref}
+        scopeLabel={scope.label}
+      />
+    )}
+
     <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Landschaftsfotografie in NRW">
       <div class="mr-cities__inner">
         <div class="mr-cities__head">
@@ -280,21 +290,6 @@ const searchLinks = [
         </nav>
       </div>
     </section>
-
-    {!isParentPage && (
-      <section class="mr-cities mr-photo-cluster" data-header-theme="light" data-theme="light" aria-label={`Fotografie-Cluster ${scope.label}`}>
-        <div class="mr-cities__inner">
-          <div class="mr-cities__head">
-            <h2 set:html={clusterHeading}></h2>
-            <p class="mr-cities__copy">Diese Kategorie ist Teil eines bewusst getrennten Fotografie-Clusters: Fahrzeug, Mensch und Raum bleiben eigenständige Suchintentionen, sind aber intern so verbunden, dass Nutzer schnell in den passenden Bildbereich wechseln können.</p>
-          </div>
-          <nav class="mr-cities__grid" aria-label="Verwandte Fotografie-Bereiche">
-            <a class="mr-cities__cell" href={overviewHref}>Fotografie Übersicht</a>
-            {clusterLinks.map((link) => <a class="mr-cities__cell" href={link.href}>{link.label}</a>)}
-          </nav>
-        </div>
-      </section>
-    )}
 
     <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Landschaftsfotografie Suchbegriffe">
       <div class="mr-cities__inner">

@@ -71,6 +71,7 @@ Die Migration ist inzwischen zweigleisig:
 - CMS-native strukturierte Templates: neue/dynamische Service-Seiten, Portfolio-Projekte, Journal-Beitraege unter `/journal/<slug>` und Local-SEO-Seiten ohne alte HTML-Datei.
 - Native Legal-Seiten: `impressum.html` und `datenschutz.html` nutzen eine typisierte lokale Content-Basis in `apps/web/src/lib/legalContent.ts`, rendern ueber `BaseLayout` und geben WebPage-/Breadcrumb-JSON-LD aus.
 - Local-SEO-Family-Schicht: alle alten lokalen Kategorie- und Keyword-HTML-Seiten laufen ueber `NativeLocalSeoFamilyPage`. Der Renderer erkennt sechs Layout-Familien (`automobil`, `sportwagen`, `oldtimer`, `motorrad`, `portrait`, `landschaft`) anhand von Slug/Legacy-URL und nutzt die jeweilige Kategorie-Hauptseite als Parent-Konzept. Payload kann SEO/Content ueberlagern, wenn ein Dokument vorhanden ist. Ohne Payload bleibt die lokale Seite trotzdem aus dem Familienmodell korrekt renderbar.
+- Native Familienlogik: die sechs Familienrenderer teilen sich `nativeFamilyPageContext` fuer Scope, Preview, Parent-/Cluster-Links und lokale SEO-Varianten. `NativeFamilyClusterLinks` rendert die verwandten Fotografie-Bereiche konsistent in allen Familienseiten.
 - Konzeptarchiv: alte experimentelle Konzeptseiten sind als noindex Astro-Seiten erhalten, aber nicht mehr als rohe Legacy-Ausgabe.
 
 Local-SEO-Family-Routing ist standardmaessig aktiv und kann nur bewusst abgeschaltet werden:
@@ -296,9 +297,12 @@ Aktueller Stand vom 2026-05-29:
 - `web:build` nach typisierten Legal-Seiten und gecachtem Local-SEO-Legacy-URL-Index: erfolgreich, `astro check` mit 0 Errors / 0 Warnings. Der Build fragt Local-SEO-Dokumente nicht mehr seitenweise ab, sondern indexiert sie gesammelt nach Legacy-URL.
 - Browser-Smoke 2026-05-29: `impressum.html` und `datenschutz.html` rendern mit `BaseLayout`, typisierten Legal-Bloecken, Header/Footer und WebPage-JSON-LD; `blog-fine-art-druck.html` rendert wieder alle vier Support-Artikelabschnitte. Keine kaputten Bilder, kein Error-Overlay, keine Console Errors/Warnings.
 - `web:build` nach vollstaendiger `.html`-Routenentkopplung: erfolgreich. Alle 217 bisherigen Root-HTML-URLs werden aus dem nativen Astro-Routenmodell gebaut; 6 Dubletten redirecten kanonisch, 4 Konzeptseiten sind noindex Astro-Archivseiten, alle Local-SEO-Varianten laufen ueber den Family-Renderer.
-- `web:build` nach Entfernung der App-internen Legacy-/Componentized-Bruecke: erfolgreich erwartet; die Visual-Regression-Baseline wird nun als separater Referenzserver aus den Root-HTML-Dateien gestartet und ist nicht mehr Teil der Astro-Produktionsrouten.
+- `web:build` nach Entfernung der App-internen Legacy-/Componentized-Bruecke: erfolgreich; die Visual-Regression-Baseline wird nun als separater Referenzserver aus den Root-HTML-Dateien gestartet und ist nicht mehr Teil der Astro-Produktionsrouten.
 - Route-Audit 2026-05-29: 217/217 Root-HTML-URLs im Build vorhanden, keine fehlenden nativen HTML-Routen und keine rohen Legacy-Render-Marker.
-- Site-Quality-Audit 2026-05-29: 466 Checks ueber 233 Routen in Desktop und Mobile, 0 Failures. Uebrig sind nur Long-Task-Warnungen auf bild-/animationsreichen Seiten.
+- Finaler Native-Family-Lauf 2026-05-29: alle sechs Haupt-Fotografie-Seiten und repraesentative Local-SEO-Varianten pro Familie laufen ueber native Astro-Komponenten. Visual Regression bleibt fuer Desktop und Mobile unter der harten 5%-Grenze; dokumentierte Warnungen liegen nur ueber dem 2%-Zielwert und stammen aus bekannten Lazyload-/Bildstrecken.
+- Finaler Web-Build 2026-05-29: `corepack pnpm --filter @matthias-ramahi/web build` erfolgreich, `astro check` ueber 80 Dateien mit 0 Errors / 0 Warnings / 0 Hints.
+- Finaler Route-Audit 2026-05-29: `corepack pnpm --filter @matthias-ramahi/web test:legacy-routes` erfolgreich, 217/217 HTML-Routen geprueft.
+- Finaler Site-Quality-Audit 2026-05-29: `corepack pnpm --filter @matthias-ramahi/web test:site-quality -- --route-source=all --strict --timeout-ms=45000` erfolgreich, 452 Checks ueber 226 Routen, 0 Failures. Payload-Medien von `cms.matthiasramahi.de` gelten als First-Party; uebrig sind nur Long-Task-Warnungen auf bild-/animationsreichen Seiten.
 - Bild-/Asset-Haertung 2026-05-29: Lazyload-Bilder haben echte `src`-Fallbacks, die mobile Sticky-CTA erscheint erst nach Scrolltiefe, und `tools/prune-unused-dist-assets.mjs` behandelt Root-Assets wie `assets/...` und `_astro/...` korrekt.
 
 Weitere QA-Befehle:
@@ -310,6 +314,14 @@ corepack pnpm web:test:legacy-routes
 corepack pnpm web:test:visual
 corepack pnpm cms:audit-readiness
 corepack pnpm cms:audit-production -- --strict
+```
+
+Wenn der komplette Visual-Lauf lokal laenger als das Terminal-Timeout braucht, wird er in Gruppen ausgefuehrt:
+
+```powershell
+$env:VISUAL_PAGES='home,portfolio,photography-index,automotive-main,sportscar-main,oldtimer-main,motorcycle-main,portrait-main,landscape-main'; corepack pnpm --filter @matthias-ramahi/web test:visual; Remove-Item Env:VISUAL_PAGES
+$env:VISUAL_PAGES='services,service-fotolabor,service-grossformat,service-werbetechnik,service-webdesign,service-videografie,service-viola,service-sonder,about,contact,journal,journal-detail'; corepack pnpm --filter @matthias-ramahi/web test:visual; Remove-Item Env:VISUAL_PAGES
+$env:VISUAL_PAGES='local-seo,local-seo-sportscar,local-seo-oldtimer,local-seo-motorcycle,local-seo-portrait,local-seo-landscape'; corepack pnpm --filter @matthias-ramahi/web test:visual; Remove-Item Env:VISUAL_PAGES
 ```
 
 Aktueller Release-Audit nach der letzten Haertung:
@@ -337,8 +349,11 @@ Kurzfassung:
 
 ## Offene TODOs
 
+- Bewusste Restentscheidung: die Root-HTML-Dateien koennen nach expliziter Archiv-/Loeschfreigabe aus dem Arbeitsbaum entfernt oder in ein separates Archiv verschoben werden. Sie sind aktuell keine Runtime-Abhaengigkeit mehr, sondern nur noch QA-Referenz.
+- Lokale Entwicklung und Produktion sollten auf Node 22.x standardisiert werden. Node 24 baut aktuell, erzeugt aber Engine-Warnungen.
 - Weitere nicht aktive Importgruppen redaktionell pruefen und erst danach `legacy.migrationStatus` von `seeded` auf `reviewed`, `componentized` oder `live` setzen.
 - Medienbestand weiter kuratieren: Alt-Texte, Captions, Featured-Auswahl, Mood/Tags und Verwendungszweck finalisieren.
 - Local-SEO-Family-Content weiter redaktionell verbessern: die technische Ausgabe ist nativ, aber einzelne Stadt-/Keyword-Texte sollten nach privatem Online-Test weiter gegen Copy/Prioritaet/Interlinking geprueft werden.
 - Local-SEO-Seiten nach dem privaten Online-Test final redaktionell gegenlesen und bei Bedarf einzelne Seiten wieder auf Draft setzen.
+- Optional: Performance-Feinschliff fuer Long-Task-Warnungen auf sehr bildreichen Seiten, ohne die visuelle Parity zu riskieren.
 - Optional: Rebuild-Hook auf dem Hetzner-Server aktivieren und mit echtem Secret testen.

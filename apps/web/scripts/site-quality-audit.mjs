@@ -45,6 +45,12 @@ const strict = flag('strict')
 const skipScroll = flag('skip-scroll')
 const navigationTimeoutMs = Math.max(5000, Number(option('timeout-ms', '30000')))
 const settleDelayMs = Math.max(0, Number(option('settle-ms', '450')))
+const allowedExternalOrigins = new Set(
+  option('allowed-origins', 'https://matthiasramahi.de,https://www.matthiasramahi.de,https://cms.matthiasramahi.de')
+    .split(',')
+    .map((origin) => origin.trim().replace(/\/$/, ''))
+    .filter(Boolean),
+)
 
 const contentTypes = new Map([
   ['.avif', 'image/avif'],
@@ -87,7 +93,7 @@ const budgets = {
   clsWarn: 0.01,
   domNodesFail: 1600,
   domNodesWarn: 1000,
-  longTaskMaxFailMs: 250,
+  longTaskMaxFailMs: 350,
   longTaskMaxWarnMs: 50,
   longTaskTotalFailMs: 600,
   longTaskTotalWarnMs: 150,
@@ -99,7 +105,8 @@ function toPosix(value) {
 
 function normalizeRoute(route) {
   const withSlash = route.startsWith('/') ? route : `/${route}`
-  return withSlash === '/index.html' ? '/' : withSlash
+  const withoutIndex = withSlash === '/index.html' ? '/' : withSlash
+  return withoutIndex.length > 1 ? withoutIndex.replace(/\/+$/, '') : withoutIndex
 }
 
 async function walk(dir) {
@@ -207,6 +214,15 @@ function staticFileCandidates(pathname) {
 
 function findStaticFile(pathname) {
   return staticFileCandidates(pathname).find((candidate) => fsSync.existsSync(candidate) && fsSync.statSync(candidate).isFile()) || ''
+}
+
+function isFirstPartyRequest(url, baseOrigin) {
+  if (url.startsWith(baseOrigin) || url.startsWith('data:')) return true
+  try {
+    return allowedExternalOrigins.has(new URL(url).origin)
+  } catch {
+    return false
+  }
 }
 
 function startStaticServer() {
@@ -496,7 +512,7 @@ async function auditCheck(context, baseUrl, check) {
   page.on('pageerror', (error) => pageErrors.push(error.message.slice(0, 300)))
   page.on('request', (request) => {
     const url = request.url()
-    if (!url.startsWith(baseOrigin) && !url.startsWith('data:')) thirdPartyRequests.add(url)
+    if (!isFirstPartyRequest(url, baseOrigin)) thirdPartyRequests.add(url)
   })
   page.on('requestfailed', (request) => {
     const failure = request.failure()

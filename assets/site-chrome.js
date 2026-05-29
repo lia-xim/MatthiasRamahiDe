@@ -229,13 +229,25 @@
       sticky.setAttribute('data-cta-role', 'mobile-sticky');
       document.body.appendChild(sticky);
 
+      let stickyThreshold = window.innerHeight * 0.62;
+      let stickyRaf = 0;
+
       function syncStickyVisibility() {
-        sticky.classList.toggle('is-visible', window.scrollY > window.innerHeight * 0.62);
+        stickyRaf = 0;
+        sticky.classList.toggle('is-visible', window.scrollY > stickyThreshold);
       }
 
-      syncStickyVisibility();
-      window.addEventListener('scroll', syncStickyVisibility, { passive: true });
-      window.addEventListener('resize', syncStickyVisibility);
+      function queueStickyVisibility() {
+        if (stickyRaf) return;
+        stickyRaf = requestAnimationFrame(syncStickyVisibility);
+      }
+
+      queueStickyVisibility();
+      window.addEventListener('scroll', queueStickyVisibility, { passive: true });
+      window.addEventListener('resize', function () {
+        stickyThreshold = window.innerHeight * 0.62;
+        queueStickyVisibility();
+      }, { passive: true });
     })();
 
     /* ---------- Conversion intent tracking -------------------------------
@@ -495,12 +507,6 @@
       const slots = document.querySelectorAll('section[data-contact-section]');
       if (!slots.length) return;
 
-      const shouldHydrateContactNow =
-        location.hash === '#anfrage' ||
-        Array.prototype.some.call(slots, function (slot) {
-          return slot.getBoundingClientRect().top < window.innerHeight * 1.35;
-        });
-
       function hydrateContactSlots() {
         let slotCounter = 0;
 
@@ -688,9 +694,33 @@
       });
       }
 
-      if (shouldHydrateContactNow) hydrateContactSlots();
-      else if ('requestIdleCallback' in window) window.requestIdleCallback(hydrateContactSlots, { timeout: 700 });
-      else window.setTimeout(hydrateContactSlots, 700);
+      let hydratedContactSlots = false;
+
+      function hydrateContactSlotsOnce() {
+        if (hydratedContactSlots) return;
+        hydratedContactSlots = true;
+        hydrateContactSlots();
+      }
+
+      if (location.hash === '#anfrage') {
+        hydrateContactSlotsOnce();
+      } else if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(function (entries) {
+          if (!entries.some(function (entry) { return entry.isIntersecting; })) return;
+          observer.disconnect();
+          hydrateContactSlotsOnce();
+        }, { rootMargin: '35% 0px' });
+        slots.forEach(function (slot) { observer.observe(slot); });
+        if ('requestIdleCallback' in window) {
+          window.requestIdleCallback(hydrateContactSlotsOnce, { timeout: 4200 });
+        } else {
+          window.setTimeout(hydrateContactSlotsOnce, 4200);
+        }
+      } else if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(hydrateContactSlotsOnce, { timeout: 1200 });
+      } else {
+        window.setTimeout(hydrateContactSlotsOnce, 1200);
+      }
     })();
   });
 })();

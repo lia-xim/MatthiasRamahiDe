@@ -152,6 +152,6 @@ async function readPublicAsset(href: string) {
     <SiteChromeHeader current={current} ctaHref={ctaHref} headerTheme={headerTheme} />
     <slot />
     <SiteChromeFooter />
-    {allScripts.map((src) => <script is:inline src={src}></script>)}
+    {allScripts.map((src) => <script is:inline src={src} defer></script>)}
   </body>
 </html>
