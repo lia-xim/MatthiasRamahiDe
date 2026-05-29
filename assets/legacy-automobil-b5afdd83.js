@@ -22,10 +22,19 @@
     var reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
     var bokeh = document.querySelector('.hero-mp__bokeh');
 
-    slides.forEach(function(s){
-      var m = (s.style.backgroundImage||'').match(/url\(['"]?([^'")]+)['"]?\)/);
-      if(m && m[1]){ var pre = new Image(); pre.src = m[1]; }
-    });
+    function applyBackground(slide){
+      if(!slide || slide.style.backgroundImage) return;
+      var bg = slide.getAttribute('data-bg');
+      if(bg) slide.style.backgroundImage = "url('" + bg + "')";
+    }
+    function hydrateInactiveSlides(){
+      slides.forEach(function(s, i){ if(i !== idx) applyBackground(s); });
+    }
+    if('requestIdleCallback' in window){
+      requestIdleCallback(hydrateInactiveSlides, { timeout: 1600 });
+    } else {
+      setTimeout(hydrateInactiveSlides, 900);
+    }
 
     if(reduce){
       if(bokeh){ try{ bokeh.pause(); }catch(_){} }
@@ -37,6 +46,7 @@
       var next = (idx + 1) % total;
       var prevEl = slides[idx];
       var nextEl = slides[next];
+      applyBackground(nextEl);
       // Ken-Burns-Endframe einfrieren: der aktuelle computed transform
       // wird inline gepinnt, damit der Slide nach Verlust von .is-active
       // (Animation-Regel fällt weg) NICHT auf scale(1) zurückspringt.

@@ -495,9 +495,16 @@
       const slots = document.querySelectorAll('section[data-contact-section]');
       if (!slots.length) return;
 
-      let slotCounter = 0;
+      const shouldHydrateContactNow =
+        location.hash === '#anfrage' ||
+        Array.prototype.some.call(slots, function (slot) {
+          return slot.getBoundingClientRect().top < window.innerHeight * 1.35;
+        });
 
-      slots.forEach(function (slot) {
+      function hydrateContactSlots() {
+        let slotCounter = 0;
+
+        slots.forEach(function (slot) {
         const subject = slot.getAttribute('data-contact-subject') || 'Projekt-Anfrage';
         const headline = slot.getAttribute('data-contact-headline') || 'Projekt <em>anfragen.</em>';
         const lead = slot.getAttribute('data-contact-lead') ||
@@ -679,6 +686,11 @@
           }
         });
       });
+      }
+
+      if (shouldHydrateContactNow) hydrateContactSlots();
+      else if ('requestIdleCallback' in window) window.requestIdleCallback(hydrateContactSlots, { timeout: 700 });
+      else window.setTimeout(hydrateContactSlots, 700);
     })();
   });
 })();

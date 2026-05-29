@@ -15,6 +15,7 @@ export type JournalArticleCard = JournalArticleLink & {
 export type JournalArticleSection = {
   id: string
   kicker?: string
+  subheading?: string
   title: string
   paragraphs?: string[]
   paragraphsHtml?: string[]
@@ -428,7 +429,7 @@ const featureArticle: JournalArticle = {
   heroImageAlt: 'Automobil in neonartigem Licht',
   variant: 'feature',
   links: [
-    { label: 'Automobil-Fotografie Düsseldorf', href: 'automobil-fotografie-duesseldorf.html' },
+    { label: 'Automobil-Fotografie Düsseldorf — Leistungen und Pakete', href: 'automobil-fotografie-duesseldorf.html' },
     { label: 'Wie eine Bildserie kuratiert wird', href: 'blog-serie-kuratieren.html' },
     { label: 'Location Scouting für starke Motive', href: 'blog-location-scouting-duesseldorf.html' },
   ],
@@ -437,15 +438,16 @@ const featureArticle: JournalArticle = {
       id: 'standort',
       kicker: '01',
       title: 'Der Standort kommt zuerst',
+      subheading: 'Drei Düsseldorfer Standortkategorien',
       paragraphs: [
-        'Ein gutes Automobil-Bild entsteht nicht beim Auslösen. Es entsteht in vier Entscheidungen, die zwei Tage vorher getroffen werden müssen: Standort, Lichtquelle, Perspektive zur Karosserie, Tageszeit. Wer diese vier richtig setzt, hat ein Bild. Wer sie offen lässt, hat ein Produktfoto.',
-        'Düsseldorf hat als Stadt eine eigene Lichtsignatur. Die Wasserflächen am Hafen, die Glasflächen in Derendorf, der dunkle Asphalt am Rheinufer und die Tunnel- und Brückenkanten am Medienhafen liefern alle eine andere Art von Licht. Das ist kein Zufall, das ist Material.',
-        'Der häufigste Fehler in der Automobil-Fotografie ist die Reihenfolge: erst Auto, dann Location suchen. Richtig ist umgekehrt. Der Charakter des Fahrzeugs entscheidet, welche Stadtarchitektur ihn trägt.',
+        'Ein gutes Automobil-Bild entsteht nicht beim Auslösen. Es entsteht in vier Entscheidungen, die zwei Tage vorher getroffen werden müssen — Standort, Lichtquelle, Perspektive zur Karosserie, Tageszeit. Wer diese vier richtig setzt, hat ein Bild. Wer sie offen lässt, hat ein Produktfoto.',
+        'Düsseldorf hat als Stadt eine eigene Lichtsignatur. Die Wasserflächen am Hafen, die Glasflächen in Derendorf, der dunkle Asphalt am Rheinufer und die Tunnel- und Brückenkanten am Medienhafen liefern alle eine andere Art von Licht. Das ist kein Zufall, das ist Material — und der erste Teil jeder Bildplanung ist die Frage, welches dieser Materialien das Fahrzeug am besten trägt.',
+        'Der häufigste Fehler in der Automobil-Fotografie ist die Reihenfolge: erst Auto, dann Location suchen. Richtig ist umgekehrt — der Charakter des Fahrzeugs entscheidet, welche Stadtarchitektur ihn trägt. Ein 911er der 80er Jahre will warmes Schmiedeisen, Backstein und urbane Schmalheit. Ein moderner GT will Glasfront, gerade Linien und kühle Beton-Tiefe. Ein Oldtimer-Cabrio braucht ein offenes Bild — Wasserkante, Allee, kein Hintergrundlärm.',
       ],
       list: [
         { label: 'Industriekante', text: 'Hafenbecken, Werften, Lagergebäude. Liefert raue Texturen und gerichtetes Reflexlicht von Wasserflächen.' },
         { label: 'Glas und Beton', text: 'Medienhafen, Kö-Bogen, Düsseldorfer Stadttor. Liefert kühle Reflexe und klare geometrische Hintergründe.' },
-        { label: 'Allee und Park', text: 'Hofgarten, Nordpark, Schlossufer Benrath. Liefert weiches Streulicht und einen ruhigen Hintergrund.' },
+        { label: 'Allee und Park', text: 'Hofgarten, Nordpark, Schlossufer Benrath. Liefert weiches Streulicht und einen ruhigen, unaufgeräumten Hintergrund.' },
       ],
     },
     {
@@ -453,8 +455,8 @@ const featureArticle: JournalArticle = {
       kicker: '02',
       title: 'Lichtkante schlägt Lichtwand',
       paragraphsHtml: [
-        'Karosserie ist eine Spiegelfläche. Was sie zeigt, ist nicht das Fahrzeug, sondern die Lichtquelle. Eine Lichtwand erzeugt ein technisch sauberes Bild, aber kein lebendiges. Eine <strong>Lichtkante</strong> erzeugt Volumen: Sie zeichnet die Sicke an der Tür, die Schulter über dem Radlauf, den Übergang von Dach zu Heck.',
-        'Bei Tageslicht heißt das: 60-80 Minuten vor Sonnenuntergang, Fahrzeug quer zum Sonnenstand, die Lichtkante läuft über die Karosserie. Bei Nacht: eine einzige starke Reflexquelle und eine Position, in der diese Quelle entlang der Schulter spiegelt.',
+        'Karosserie ist eine Spiegelfläche. Was sie zeigt, ist nicht das Fahrzeug, sondern die Lichtquelle. Eine Lichtwand — also flaches, gleichmäßiges Licht von vorne — erzeugt ein technisch sauberes Bild, aber kein lebendiges. Eine <strong>Lichtkante</strong> erzeugt Volumen: Sie zeichnet die Sicke an der Tür, die Schulter über dem Radlauf, den Übergang von Dach zu Heck.',
+        'Bei Tageslicht heißt das: 60–80 Minuten vor Sonnenuntergang, Fahrzeug quer zum Sonnenstand, die Lichtkante läuft von oben links nach unten rechts über die Karosserie. Bei Nacht: eine einzige starke Reflexquelle (Stadtlicht, Tankstelle, Glasfassade) und Position so wählen, dass diese Quelle sich nicht zentral, sondern entlang der Schulter spiegelt.',
       ],
       figure: {
         image: 'assets/optimized/assets-photos-automobil-sunset-1920.webp',
@@ -469,8 +471,8 @@ const featureArticle: JournalArticle = {
       kicker: '03',
       title: 'Karosserieform liest sich nur aus einer Richtung',
       paragraphsHtml: [
-        'Jede Karosserie hat eine Leserichtung. Bei manchen Fahrzeugen entsteht diese Leserichtung aus der Dreiviertel-Front, weil dort Motorhaube, Schweller und Radlauf gleichzeitig sichtbar sind. Bei anderen liest sich die Form besser aus der Dreiviertel-Heck.',
-        'Praktisch heißt das: Vor dem ersten Auslöser einmal um das Fahrzeug gehen, an drei Standardpositionen kurz ins Sucherbild schauen und entscheiden, welche dieser drei dem Fahrzeug die meiste Form gibt. Dann diese als <strong>Hero-Achse</strong> festhalten.',
+        'Jede Karosserie hat eine Leserichtung. Bei manchen Fahrzeugen — typischerweise Sportwagen mit starkem Sicken-Spiel — entsteht diese Leserichtung aus der Dreiviertel-Front, weil dort Motorhaube, Schweller und Radlauf gleichzeitig sichtbar sind. Bei anderen — etwa GT-Coupés mit langem Dachbogen — liest sich die Form besser aus der Dreiviertel-Heck. Bei Cabrios meistens nur aus tieferer Augenhöhe.',
+        'Praktisch heißt das: Vor dem ersten Auslöser einmal um das Fahrzeug gehen, an drei Standardpositionen (Front-DV, reine Seite, Heck-DV) jeweils kurz ins Sucherbild schauen — und sich entscheiden, welche dieser drei dem Fahrzeug die meiste Form gibt. Dann diese als <strong>Hero-Achse</strong> festhalten und nur Variationen davon fotografieren.',
       ],
       quote: {
         text: 'Ein Fahrzeug fotografisch zu verstehen heißt, seine Hero-Achse zu finden. Alles andere ist Variation.',
@@ -482,13 +484,13 @@ const featureArticle: JournalArticle = {
       kicker: '04',
       title: 'Tageszeit ist eine Entscheidung',
       paragraphs: [
-        'Es gibt für jedes Automobil-Bild ein 30-Minuten-Fenster, in dem Licht, Verkehr, Reflexionen und Stimmung zusammenpassen. Außerhalb dieses Fensters sind die Faktoren technisch ähnlich gut, das Bild wirkt aber nicht.',
+        'Es gibt für jedes Automobil-Bild ein 30-Minuten-Fenster, in dem das Licht, der Verkehr, die Reflexionen und die Stimmung zusammenpassen. Außerhalb dieses Fensters sind die einzelnen Faktoren technisch ähnlich gut, das Bild wirkt aber nicht. Das Fenster ist meistens:',
       ],
       list: [
-        { label: 'Goldene Stunde', text: '60 Minuten vor Sonnenuntergang, für warme Schulter-Streiflichter.' },
-        { label: 'Blaue Stunde', text: '15 Minuten nach Sonnenuntergang, für Wechselspiel aus Tageslicht und Stadtbeleuchtung.' },
-        { label: 'Tiefe Nacht', text: 'Wenn Verkehr weg ist und Reflexquellen sich isoliert auf der Karosserie zeichnen lassen.' },
-        { label: 'Bewölkter Vormittag', text: 'Wenn die Karosseriefarbe matt und gedämpft erscheinen soll.' },
+        { label: 'Goldene Stunde', text: '60 Minuten vor Sonnenuntergang, für warme Schulter-Streiflichter' },
+        { label: 'Blaue Stunde', text: '15 Minuten nach Sonnenuntergang, für Wechselspiel aus Tageslicht und Stadtbeleuchtung' },
+        { label: 'Tiefe Nacht', text: 'Wenn Verkehr weg ist und Reflexquellen sich isoliert auf der Karosserie zeichnen lassen' },
+        { label: 'Bewölkter Vormittag', text: 'Wenn die Karosseriefarbe matt und gedämpft erscheinen soll (Editorial-Look)' },
       ],
       inlineCta: {
         title: 'Automotive-Shooting planen',
@@ -502,7 +504,7 @@ const featureArticle: JournalArticle = {
       kicker: '05',
       title: 'Auswahl ist Teil des Bildes',
       paragraphs: [
-        'Nach dem Shooting liegen typischerweise 60-120 Frames vor. Davon werden 8-14 für die Auslieferung kuratiert: nicht die zehn technisch besten, sondern eine Sequenz, die einer Dramaturgie folgt. Der Unterschied zwischen einer Automobil-Bildstrecke und einem Produktfoto liegt zu 40 Prozent in dieser Reihenfolge.',
+        'Nach dem Shooting liegen typischerweise 60–120 Frames vor. Davon werden 8–14 für die Auslieferung kuratiert — nicht die zehn technisch besten, sondern eine Sequenz, die einer Dramaturgie folgt: Hero · Detail · Stimmung · Zeichnung der Linie · ein Bruch · Schluss. Das ist nicht Bildbearbeitung im engeren Sinn, sondern Kuration. Der Unterschied zwischen einer Automobil-Bildstrecke und einem Produktfoto liegt zu 40 % in dieser Reihenfolge.',
       ],
     },
     {
@@ -510,7 +512,7 @@ const featureArticle: JournalArticle = {
       kicker: '06',
       title: 'Fazit',
       paragraphs: [
-        'Automotive-Fotografie ist nicht eine Frage der Ausrüstung. Sie ist eine Frage von Reihenfolge: Standort, Lichtquelle, Hero-Achse, Tageszeitfenster, Kuration. Wer diese fünf Entscheidungen vor dem Auslöser trifft, kommt mit weniger Frames, aber stärkeren Bildern zurück.',
+        'Automotive-Fotografie ist nicht eine Frage der Ausrüstung. Sie ist eine Frage von Reihenfolge: Standort, Lichtquelle, Hero-Achse, Tageszeitfenster, Kuration. Wer diese fünf Entscheidungen vor dem Auslöser trifft, kommt mit weniger Frames, aber stärkeren Bildern zurück. In Düsseldorf hilft die Stadt selbst dabei — sie liefert pro Stadtteil ein anderes Material. Man muss nur entscheiden, welches dem Fahrzeug gehört.',
       ],
     },
   ],
@@ -552,7 +554,7 @@ const featureArticle: JournalArticle = {
   ],
   cta: {
     title: 'Automotive-Shooting planen.',
-    text: 'Briefing mit Fahrzeug, Wunschstandort und Zeitraum: Standort-Scouting und Tageszeitfenster werden vorab abgestimmt.',
+    text: 'Briefing mit Fahrzeug, Wunschstandort und Zeitraum — Standort-Scouting und Tageszeitfenster werden vorab abgestimmt.',
     primaryHref: 'contact.html',
     primaryLabel: 'Projekt anfragen',
     secondaryHref: 'automobil-fotografie-duesseldorf.html',

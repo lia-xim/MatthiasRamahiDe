@@ -39,6 +39,16 @@ const heroLead = isParentPage
   : isKeywordPage
     ? `${serviceLabel}: eigenstÃ¤ndiger Einstieg in den Automobil Fotografie-Cluster. Exterieur, Interieur, Details und Cinematic werden als kuratierte Serie geplant â€” fÃ¼r Marke, Showroom, Verkauf, Kampagne und hochwertige private Fahrzeuge. Die Seite bleibt bewusst im Layout der Ã¼bergeordneten Kategorie, setzt den Text aber auf diese konkrete Suchintention.`
     : `Automobilfotografie in ${scope.label}: Exterieur, Interieur, Details und Cinematic werden als kuratierte Bildserie geplant â€” fÃ¼r Marke, Showroom, Verkauf, Kampagne und hochwertige private Fahrzeuge. ${scope.label} wird als lokaler Suchraum mit klarer Planung, passendem Lichtfenster und sauberer Nutzung der Bildserie gefÃ¼hrt.`
+const metaTitle = isParentPage
+  ? 'Automobilfotografie | Matthias Ramahi'
+  : isKeywordPage
+    ? `${serviceLabel} | Matthias Ramahi`
+    : `${serviceLabel} ${scope.label} | Matthias Ramahi`
+const metaDescription = isParentPage
+  ? 'Automobilfotografie fuer Exterieur, Interieur, Details und Kampagne in Duesseldorf und NRW. Bildserien fuer Verkauf, Marke, Showroom und hochwertige private Fahrzeuge.'
+  : isKeywordPage
+    ? `${serviceLabel} fuer Fahrzeuge, Marken, Showrooms und Verkauf. Exterieur, Interieur, Details und Cinematic werden als nutzbare Bildserie geplant.`
+    : `${serviceLabel} in ${scope.label}: Exterieur, Interieur, Details und Cinematic als kuratierte Bildserie fuer Verkauf, Marke, Showroom und Kampagne.`
 const contactSubject = isParentPage ? 'Automobil Fotografie Anfrage' : `${serviceLabel}${isKeywordPage ? '' : ` ${scope.label}`} Anfrage`
 const contactHeadline = isParentPage
   ? 'Automobil &lt;em&gt;anfragen.&lt;/em&gt;'
@@ -246,7 +256,15 @@ const searchLinks = [
   ['autoverkauf-fotos-duesseldorf.html', 'Autoverkauf Fotos'],
 ]
 ---
-<AdoptedPageLayout legacyFile={legacyFile} current="fotografie" doc={doc} noIndex={Boolean(preview)}>
+<AdoptedPageLayout
+  legacyFile={legacyFile}
+  current="fotografie"
+  doc={doc}
+  noIndex={Boolean(preview)}
+  title={metaTitle}
+  description={metaDescription}
+  ogImage="/assets/optimized/assets-portfolio-dsc3879-1920.webp"
+>
   {preview && (
     <PreviewToolbar
       collection={preview.collection}
@@ -408,10 +426,25 @@ const searchLinks = [
       </div>
     </section>
 
+    {!isParentPage && (
+      <section class="mr-cities mr-photo-cluster" data-header-theme="light" data-theme="light" aria-label={`Fotografie-Cluster ${scope.label}`}>
+        <div class="mr-cities__inner">
+          <div class="mr-cities__head">
+            <h2>Weitere Fotografie-Bereiche <em>{scope.label}.</em></h2>
+            <p class="mr-cities__copy">Diese Kategorie ist Teil eines bewusst getrennten Fotografie-Clusters: Fahrzeug, Mensch und Raum bleiben eigenständige Suchintentionen, sind aber intern so verbunden, dass Nutzer schnell in den passenden Bildbereich wechseln können.</p>
+          </div>
+          <nav class="mr-cities__grid" aria-label="Verwandte Fotografie-Bereiche">
+            <a class="mr-cities__cell" href="fotografie-duesseldorf.html">Fotografie Übersicht</a>
+            {clusterLinks.map((link) => <a class="mr-cities__cell" href={link.href}>{link.label}</a>)}
+          </nav>
+        </div>
+      </section>
+    )}
+
     <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Automobil Fotografie in NRW">
       <div class="mr-cities__inner">
         <div class="mr-cities__head">
-          <h2>Automobil Fotografie <em>vor Ort.</em></h2>
+          <h2 set:html={cityHeading}></h2>
         </div>
         <nav class="mr-cities__grid" aria-label="Städte">
           {cityLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
@@ -434,9 +467,9 @@ const searchLinks = [
       id="anfrage"
       data-contact-section
       data-header-theme="light"
-      data-contact-subject="Automobil Fotografie Anfrage"
-      data-contact-headline="Automobil &lt;em&gt;anfragen.&lt;/em&gt;"
-      data-contact-lead="Schreibe kurz, welches Fahrzeug fotografiert werden soll, wo es steht, welche Wirkung die Bilder tragen sollen und ob die Serie privat, kommerziell oder als Kampagne genutzt wird. Wir klären Location, Licht und Ablauf gemeinsam vor dem ersten Klick."
+      data-contact-subject={contactSubject}
+      data-contact-headline={contactHeadline}
+      data-contact-lead={contactLead}
     />
   </main>
 </AdoptedPageLayout>

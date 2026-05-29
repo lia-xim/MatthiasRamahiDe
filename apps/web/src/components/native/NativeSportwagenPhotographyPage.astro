@@ -1,10 +1,59 @@
 ---
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
+import PreviewToolbar from '../PreviewToolbar.astro'
+import {
+  localScopePhrase,
+  nativeFamilyPageContext,
+  type NativeFamilyPreviewState,
+} from '../../lib/nativeFamilyPageContext'
 import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
 
-const legacyFile = 'sportwagen-fotografie.html'
-const providedDoc = Astro.props.doc as PayloadDoc | undefined
+type Props = {
+  doc?: PayloadDoc | null
+  legacyFile?: string
+  preview?: NativeFamilyPreviewState
+}
+
+const defaultLegacyFile = 'sportwagen-fotografie.html'
+const { doc: providedDoc = undefined, legacyFile: providedLegacyFile, preview } = Astro.props as Props
+const legacyFile = providedLegacyFile || defaultLegacyFile
 const doc = providedDoc || (await getLegacyBackedDoc(legacyFile, { depth: 2 }))
+const pageContext = nativeFamilyPageContext({
+  defaultLegacyFile,
+  doc,
+  family: 'sportwagen',
+  legacyFile,
+  preview,
+})
+const { clusterHeading, clusterLinks, isKeywordPage, isParentPage, overviewHref, publishedHref, scope, serviceLabel } = pageContext
+const heroSecondLine = isParentPage || isKeywordPage ? 'Fotografie.' : `Fotografie ${scope.label}.`
+const heroLabel = isParentPage || isKeywordPage ? 'Sportwagenfotografie' : `Sportwagenfotografie ${scope.label}`
+const heroLead = isParentPage
+  ? 'Sportwagenfotografie: Performance, Form, Innenraum und Details werden mit kontrollierten Reflexen und ruhiger Dramaturgie sichtbar — für Sammler, Händler, Marke, Verkauf und Druck. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.'
+  : isKeywordPage
+    ? `${serviceLabel}: eigenständiger Einstieg in den Sportwagen Fotografie-Cluster. Performance, Form, Innenraum und Details werden mit kontrollierten Reflexen und ruhiger Dramaturgie sichtbar - für Sammler, Händler, Marke, Verkauf und Druck. Die Seite bleibt bewusst im Layout der übergeordneten Kategorie, setzt den Text aber auf diese konkrete Suchintention.`
+    : `Sportwagenfotografie in ${scope.label}: Performance, Form, Innenraum und Details werden mit kontrollierten Reflexen und ruhiger Dramaturgie sichtbar - für Sammler, Händler, Marke, Verkauf und Druck. ${localScopePhrase(scope)}`
+const metaTitle = isParentPage
+  ? 'Sportwagenfotografie - Matthias Ramahi'
+  : isKeywordPage
+    ? `${serviceLabel} | Matthias Ramahi`
+    : `Sportwagenfotografie ${scope.label} | Matthias Ramahi`
+const metaDescription = isParentPage
+  ? 'Sportwagenfotografie: hochwertige Serien für Performance Cars, Sammlerfahrzeuge, Händler und Marken - Exterieur, Interieur, Details und Druckqualität.'
+  : isKeywordPage
+    ? `${serviceLabel}: hochwertige Serien für Performance Cars, Sammlerfahrzeuge, Händler und Marken.`
+    : `Sportwagenfotografie ${scope.label}: hochwertige Serien für Performance Cars, Sammlerfahrzeuge, Händler und Marken.`
+const contactSubject = isParentPage ? 'Sportwagen Fotografie Anfrage' : `${serviceLabel}${isKeywordPage ? '' : ` ${scope.label}`} Anfrage`
+const contactHeadline = isParentPage
+  ? 'Sportwagen &lt;em&gt;anfragen.&lt;/em&gt;'
+  : isKeywordPage
+    ? `${serviceLabel} &lt;em&gt;anfragen.&lt;/em&gt;`
+    : `Sportwagen ${scope.label} &lt;em&gt;anfragen.&lt;/em&gt;`
+const contactLead = isParentPage
+  ? 'Schreibe kurz, welcher Sportwagen fotografiert werden soll, ob die Bilder für Verkauf, Sammlung, Marke oder Social genutzt werden und welches Zeitfenster möglich ist. Wir planen Licht, Ort und Ablauf gemeinsam.'
+  : isKeywordPage
+    ? `Schreibe kurz, wofür ${serviceLabel} gebraucht wird, welches Motiv im Mittelpunkt steht und welche Nutzung geplant ist. Wir klären Stil, Ort, Umfang und Ausgabe gemeinsam.`
+    : `Schreibe kurz, welcher Sportwagen in ${scope.label} fotografiert werden soll, ob die Bilder für Verkauf, Sammlung, Marke oder Social genutzt werden und welches Zeitfenster möglich ist. Wir planen Licht, Ort und Ablauf gemeinsam.`
 
 const heroPanels = [
   ['detail', 'assets/optimized/mpixih9c-dsc3982-1920.webp'],
@@ -224,9 +273,25 @@ const searchLinks = [
   ['supersportwagen-fotografie.html', 'Supersportwagen Fotografie'],
 ]
 ---
-<AdoptedPageLayout legacyFile={legacyFile} current="fotografie" doc={doc}>
+<AdoptedPageLayout
+  legacyFile={legacyFile}
+  current="fotografie"
+  doc={doc}
+  noIndex={Boolean(preview)}
+  title={metaTitle}
+  description={metaDescription}
+  ogImage="/assets/optimized/mpixi92f-dsc3032-generase-1-1920.webp"
+>
+  {preview && (
+    <PreviewToolbar
+      collection={preview.collection}
+      slug={preview.slug}
+      status={preview.status}
+      publishedHref={publishedHref}
+    />
+  )}
   <main>
-    <section class="hero-tri" id="top" data-header-theme="dark" aria-label="Sportwagenfotografie">
+    <section class="hero-tri" id="top" data-header-theme="dark" aria-label={heroLabel}>
       <div class="tri-stage" aria-hidden="true">
         {heroPanels.map(([name, image]) => (
           <div class="tri-col" data-tri={name}>
@@ -238,9 +303,9 @@ const searchLinks = [
       <div class="tri-overlay">
         <h1 class="tri-title">
           <span class="line"><span class="word">Sportwagen</span></span>
-          <span class="line"><span class="word">Fotografie.</span></span>
+          <span class="line"><span class="word">{heroSecondLine}</span></span>
         </h1>
-        <p class="tri-sub">Sportwagenfotografie: Performance, Form, Innenraum und Details werden mit kontrollierten Reflexen und ruhiger Dramaturgie sichtbar — für Sammler, Händler, Marke, Verkauf und Druck. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.</p>
+        <p class="tri-sub">{doc?.intro || heroLead}</p>
         <div class="tri-actions">
           <a href="#anfrage">Shooting buchen →</a>
           <a class="ghost" href="portfolio.html">Portfolio</a>
@@ -365,6 +430,21 @@ const searchLinks = [
       </div>
     </section>
 
+    {!isParentPage && (
+      <section class="mr-cities mr-photo-cluster" data-header-theme="light" data-theme="light" aria-label={`Fotografie-Cluster ${scope.label}`}>
+        <div class="mr-cities__inner">
+          <div class="mr-cities__head">
+            <h2 set:html={clusterHeading}></h2>
+            <p class="mr-cities__copy">Diese Kategorie ist Teil eines bewusst getrennten Fotografie-Clusters: Fahrzeug, Mensch und Raum bleiben eigenständige Suchintentionen, sind aber intern so verbunden, dass Nutzer schnell in den passenden Bildbereich wechseln können.</p>
+          </div>
+          <nav class="mr-cities__grid" aria-label="Verwandte Fotografie-Bereiche">
+            <a class="mr-cities__cell" href={overviewHref}>Fotografie Übersicht</a>
+            {clusterLinks.map((link) => <a class="mr-cities__cell" href={link.href}>{link.label}</a>)}
+          </nav>
+        </div>
+      </section>
+    )}
+
     <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Sportwagen Fotografie Suchbegriffe">
       <div class="mr-cities__inner">
         <div class="mr-cities__head">
@@ -380,9 +460,9 @@ const searchLinks = [
       id="anfrage"
       data-contact-section
       data-header-theme="light"
-      data-contact-subject="Sportwagen Fotografie Anfrage"
-      data-contact-headline="Sportwagen &lt;em&gt;anfragen.&lt;/em&gt;"
-      data-contact-lead="Schreibe kurz, welcher Sportwagen fotografiert werden soll, ob die Bilder für Verkauf, Sammlung, Marke oder Social genutzt werden und welches Zeitfenster möglich ist. Wir planen Licht, Ort und Ablauf gemeinsam."
+      data-contact-subject={contactSubject}
+      data-contact-headline={contactHeadline}
+      data-contact-lead={contactLead}
     />
   </main>
 </AdoptedPageLayout>

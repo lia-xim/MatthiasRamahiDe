@@ -1,10 +1,59 @@
 ---
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
+import PreviewToolbar from '../PreviewToolbar.astro'
+import {
+  localScopePhrase,
+  nativeFamilyPageContext,
+  type NativeFamilyPreviewState,
+} from '../../lib/nativeFamilyPageContext'
 import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
 
-const legacyFile = 'motorrad-fotografie.html'
-const providedDoc = Astro.props.doc as PayloadDoc | undefined
+type Props = {
+  doc?: PayloadDoc | null
+  legacyFile?: string
+  preview?: NativeFamilyPreviewState
+}
+
+const defaultLegacyFile = 'motorrad-fotografie.html'
+const { doc: providedDoc = undefined, legacyFile: providedLegacyFile, preview } = Astro.props as Props
+const legacyFile = providedLegacyFile || defaultLegacyFile
 const doc = providedDoc || (await getLegacyBackedDoc(legacyFile, { depth: 2 }))
+const pageContext = nativeFamilyPageContext({
+  defaultLegacyFile,
+  doc,
+  family: 'motorrad',
+  legacyFile,
+  preview,
+})
+const { clusterHeading, clusterLinks, isKeywordPage, isParentPage, overviewHref, publishedHref, scope, serviceLabel } = pageContext
+const heroSecondLine = isParentPage || isKeywordPage ? 'Fotografie.' : `Fotografie ${scope.label}`
+const heroLabel = isParentPage || isKeywordPage ? 'Motorradfotografie' : `Motorradfotografie ${scope.label}`
+const heroLead = isParentPage
+  ? 'Motorradfotografie: Silhouette, Mechanik, Haltung, Detail und Fahrerbezug werden als kraftvolle Serie geplant — für Custom Bikes, Händler, Werkstätten und private Maschinen. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.'
+  : isKeywordPage
+    ? `${serviceLabel}: eigenständiger Einstieg in den Motorrad Fotografie-Cluster. Silhouette, Mechanik, Haltung, Detail und Fahrerbezug werden als kraftvolle Serie geplant - für Custom Bikes, Händler, Werkstätten und private Maschinen. Die Seite bleibt bewusst im Layout der übergeordneten Kategorie, setzt den Text aber auf diese konkrete Suchintention.`
+    : `Motorradfotografie in ${scope.label}: Silhouette, Mechanik, Haltung, Detail und Fahrerbezug werden als kraftvolle Serie geplant - für Custom Bikes, Händler, Werkstätten und private Maschinen. ${localScopePhrase(scope)}`
+const metaTitle = isParentPage
+  ? 'Motorradfotografie - Matthias Ramahi'
+  : isKeywordPage
+    ? `${serviceLabel} | Matthias Ramahi`
+    : `Motorradfotografie ${scope.label} | Matthias Ramahi`
+const metaDescription = isParentPage
+  ? 'Motorradfotografie: Bildserien für Custom Bikes, Werkstätten, Händler und private Maschinen - Silhouette, Mechanik, Haltung und Detail.'
+  : isKeywordPage
+    ? `${serviceLabel}: Bildserien für Custom Bikes, Werkstätten, Händler und private Maschinen.`
+    : `Motorradfotografie ${scope.label}: Bildserien für Custom Bikes, Werkstätten, Händler und private Maschinen.`
+const contactSubject = isParentPage ? 'Motorrad Fotografie Anfrage' : `${serviceLabel}${isKeywordPage ? '' : ` ${scope.label}`} Anfrage`
+const contactHeadline = isParentPage
+  ? 'Motorrad &lt;em&gt;anfragen.&lt;/em&gt;'
+  : isKeywordPage
+    ? `${serviceLabel} &lt;em&gt;anfragen.&lt;/em&gt;`
+    : `Motorrad ${scope.label} &lt;em&gt;anfragen.&lt;/em&gt;`
+const contactLead = isParentPage
+  ? 'Schreibe kurz, welches Bike fotografiert werden soll — Modell, Standort, ob Fahrerbilder gewünscht sind und wofür die Bilder genutzt werden. Wir klären Licht, Location und Ablauf gemeinsam.'
+  : isKeywordPage
+    ? `Schreibe kurz, wofür ${serviceLabel} gebraucht wird, welches Motiv im Mittelpunkt steht und welche Nutzung geplant ist. Wir klären Stil, Ort, Umfang und Ausgabe gemeinsam.`
+    : `Schreibe kurz, welches Bike in ${scope.label} fotografiert werden soll - Modell, Standort, ob Fahrerbilder gewünscht sind und wofür die Bilder genutzt werden. Wir klären Licht, Location und Ablauf gemeinsam.`
 
 const cityLinks = [
   ['motorrad-fotografie.html', 'Düsseldorf'],
@@ -39,9 +88,25 @@ const searchLinks = [
   ['biker-portrait-duesseldorf.html', 'Biker Portrait'],
 ] as const
 ---
-<AdoptedPageLayout legacyFile={legacyFile} current="fotografie" doc={doc}>
+<AdoptedPageLayout
+  legacyFile={legacyFile}
+  current="fotografie"
+  doc={doc}
+  noIndex={Boolean(preview)}
+  title={metaTitle}
+  description={metaDescription}
+  ogImage="/assets/optimized/assets-photos-motorrad-1920.webp"
+>
+  {preview && (
+    <PreviewToolbar
+      collection={preview.collection}
+      slug={preview.slug}
+      status={preview.status}
+      publishedHref={publishedHref}
+    />
+  )}
   <main>
-    <section class="hero-mr" id="top" data-header-theme="dark" aria-label="Motorradfotografie">
+    <section class="hero-mr" id="top" data-header-theme="dark" aria-label={heroLabel}>
       <div class="hero-mr__stage" aria-hidden="true">
         <div class="hero-mr__slides">
           <div class="hero-mr__slide is-active" data-slide="0" style="--pos:50% 52%">
@@ -67,10 +132,10 @@ const searchLinks = [
       <div class="hero-mr__grid">
         <h1 class="hero-mr__title" id="heroMrTitle">
           <span class="line"><span class="word">Motorrad</span></span>
-          <span class="line"><span class="word">Fotografie.</span></span>
+          <span class="line"><span class="word">{heroSecondLine}</span></span>
         </h1>
         <div class="hero-mr__lede-block">
-          <p class="hero-mr__lede">Motorradfotografie: Silhouette, Mechanik, Haltung, Detail und Fahrerbezug werden als kraftvolle Serie geplant — für Custom Bikes, Händler, Werkstätten und private Maschinen. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.</p>
+          <p class="hero-mr__lede">{doc?.intro || heroLead}</p>
           <div class="hero-mr__actions">
             <a href="#anfrage">Shooting buchen →</a>
             <a class="ghost" href="portfolio.html">Portfolio</a>
@@ -253,6 +318,21 @@ const searchLinks = [
       </div>
     </section>
 
+    {!isParentPage && (
+      <section class="mr-cities mr-photo-cluster" data-header-theme="light" data-theme="light" aria-label={`Fotografie-Cluster ${scope.label}`}>
+        <div class="mr-cities__inner">
+          <div class="mr-cities__head">
+            <h2 set:html={clusterHeading}></h2>
+            <p class="mr-cities__copy">Diese Kategorie ist Teil eines bewusst getrennten Fotografie-Clusters: Fahrzeug, Mensch und Raum bleiben eigenständige Suchintentionen, sind aber intern so verbunden, dass Nutzer schnell in den passenden Bildbereich wechseln können.</p>
+          </div>
+          <nav class="mr-cities__grid" aria-label="Verwandte Fotografie-Bereiche">
+            <a class="mr-cities__cell" href={overviewHref}>Fotografie Übersicht</a>
+            {clusterLinks.map((link) => <a class="mr-cities__cell" href={link.href}>{link.label}</a>)}
+          </nav>
+        </div>
+      </section>
+    )}
+
     <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Motorrad Fotografie Suchbegriffe">
       <div class="mr-cities__inner">
         <div class="mr-cities__head">
@@ -268,9 +348,9 @@ const searchLinks = [
       id="anfrage"
       data-contact-section
       data-header-theme="light"
-      data-contact-subject="Motorrad Fotografie Anfrage"
-      data-contact-headline="Motorrad &lt;em&gt;anfragen.&lt;/em&gt;"
-      data-contact-lead="Schreibe kurz, welches Bike fotografiert werden soll — Modell, Standort, ob Fahrerbilder gewünscht sind und wofür die Bilder genutzt werden. Wir klären Licht, Location und Ablauf gemeinsam."
+      data-contact-subject={contactSubject}
+      data-contact-headline={contactHeadline}
+      data-contact-lead={contactLead}
     ></section>
   </main>
 </AdoptedPageLayout>

@@ -1,6 +1,12 @@
 ---
 import PreviewToolbar from '../PreviewToolbar.astro'
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
+import NativeAutomobilPhotographyPage from '../native/NativeAutomobilPhotographyPage.astro'
+import NativeLandschaftPhotographyPage from '../native/NativeLandschaftPhotographyPage.astro'
+import NativeMotorradPhotographyPage from '../native/NativeMotorradPhotographyPage.astro'
+import NativeOldtimerPhotographyPage from '../native/NativeOldtimerPhotographyPage.astro'
+import NativePortraitPhotographyPage from '../native/NativePortraitPhotographyPage.astro'
+import NativeSportwagenPhotographyPage from '../native/NativeSportwagenPhotographyPage.astro'
 import {
   cityLinksForFamily,
   heroCopyForLocalSeoPage,
@@ -44,7 +50,12 @@ const contactLead = scope.generic
   ? `Schreibe kurz, welche Bildserie fuer ${serviceLabel} geplant ist, wo das Projekt stattfindet, welche Wirkung die Bilder tragen sollen und ob die Nutzung privat, kommerziell, redaktionell oder fuer Verkauf und Kampagne gedacht ist.`
   : familyContent.contactLead(scope, serviceLabel)
 const contactSubject = scope.generic ? `${serviceLabel} Anfrage` : `${serviceLabel} ${scope.label} Anfrage`
-const overviewHref = scope.generic ? '/fotografie.html' : scope.slug === 'duesseldorf' ? '/fotografie-duesseldorf.html' : `/fotografie-${scope.slug}.html`
+const overviewHref =
+  scope.generic || !['deutschland', 'duesseldorf', 'nrw'].includes(scope.slug)
+    ? '/fotografie.html'
+    : scope.slug === 'duesseldorf'
+      ? '/fotografie-duesseldorf.html'
+      : `/fotografie-${scope.slug}.html`
 
 const familyTone: Record<string, string> = {
   automobil: 'Exterieur, Interieur, Details und Kampagne',
@@ -61,6 +72,20 @@ Astro.response.headers.set('x-cms-page-kind', 'local-seo-family-native')
 Astro.response.headers.set('x-cms-layout-family', familyContent.family)
 Astro.response.headers.set('x-cms-layout-parent', familyContent.parentLegacyFile)
 ---
+{
+  familyContent.family === 'automobil' ? (
+    <NativeAutomobilPhotographyPage doc={doc} legacyFile={legacyFile} preview={preview} />
+  ) : familyContent.family === 'sportwagen' ? (
+    <NativeSportwagenPhotographyPage doc={doc} legacyFile={legacyFile} preview={preview} />
+  ) : familyContent.family === 'oldtimer' ? (
+    <NativeOldtimerPhotographyPage doc={doc} legacyFile={legacyFile} preview={preview} />
+  ) : familyContent.family === 'motorrad' ? (
+    <NativeMotorradPhotographyPage doc={doc} legacyFile={legacyFile} preview={preview} />
+  ) : familyContent.family === 'portrait' ? (
+    <NativePortraitPhotographyPage doc={doc} legacyFile={legacyFile} preview={preview} />
+  ) : familyContent.family === 'landschaft' ? (
+    <NativeLandschaftPhotographyPage doc={doc} legacyFile={legacyFile} preview={preview} />
+  ) : (
 <AdoptedPageLayout
   legacyFile={legacyFile}
   current="fotografie"
@@ -214,6 +239,7 @@ Astro.response.headers.set('x-cms-layout-parent', familyContent.parentLegacyFile
     ></section>
   </main>
 </AdoptedPageLayout>
+)}
 
 <style>
   .local-native {

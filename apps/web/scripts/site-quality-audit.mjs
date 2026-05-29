@@ -36,7 +36,10 @@ const selectedViewportNames = option('viewports', 'mobile,desktop')
   .split(',')
   .map((viewport) => viewport.trim())
   .filter(Boolean)
-const concurrency = Math.max(1, Number(option('concurrency', '4')))
+// Performance budgets are only meaningful when each page is measured in isolation.
+// Parallel browser tabs introduce CPU contention and turn harmless image/gallery work
+// into false long-task failures, especially on media-heavy local SEO pages.
+const concurrency = Math.max(1, Number(option('concurrency', '1')))
 const limit = Math.max(0, Number(option('limit', '0')))
 const strict = flag('strict')
 const skipScroll = flag('skip-scroll')

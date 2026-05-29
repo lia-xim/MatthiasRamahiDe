@@ -17,7 +17,7 @@ if (!article) {
 
 const articleVariant = article.variant || 'support'
 const leadParagraph = articleVariant === 'feature' ? article.sections[0]?.paragraphs?.[0] : article.description
-const secondaryParagraphs = articleVariant === 'feature' ? article.sections[0]?.paragraphs?.slice(1) || [] : []
+const secondaryParagraphs = articleVariant === 'feature' ? article.sections[0]?.paragraphs?.slice(1, 2) || [] : []
 const supportSections = articleVariant === 'support' ? article.sections : []
 const featureSections = articleVariant === 'feature' ? article.sections : []
 const primaryRelatedLink = article.links[0]
@@ -90,6 +90,11 @@ function sectionText(section: JournalArticle['sections'][number]) {
   return section.paragraphs || []
 }
 
+function featureSectionText(section: JournalArticle['sections'][number], sectionIndex: number) {
+  if (sectionIndex === 0) return sectionText(section).slice(2)
+  return sectionText(section)
+}
+
 const displayHero = imagePreview(article.heroImage)
 
 function sectionHtml(section: JournalArticle['sections'][number]) {
@@ -109,6 +114,7 @@ function sectionHtml(section: JournalArticle['sections'][number]) {
   jsonLd={jsonLd}
   bodyClass="has-mr-footer"
 >
+  <main>
     {articleVariant === 'feature' ? (
       <article class="journal-feature">
         <header class="art-hero" data-header-theme="dark">
@@ -168,13 +174,10 @@ function sectionHtml(section: JournalArticle['sections'][number]) {
 
               {featureSections.map((section, sectionIndex) => (
                 <>
-                  {sectionIndex > 0 && (
-                    <>
-                      <h2 id={section.id} data-num={section.kicker}>{section.title}</h2>
-                      {sectionText(section).map((paragraph) => <p>{paragraph}</p>)}
-                      {sectionHtml(section).map((paragraph) => <p set:html={paragraph} />)}
-                    </>
-                  )}
+                  <h2 id={section.id} data-num={section.kicker}>{section.title}</h2>
+                  {featureSectionText(section, sectionIndex).map((paragraph) => <p>{paragraph}</p>)}
+                  {sectionHtml(section).map((paragraph) => <p set:html={paragraph} />)}
+                  {section.subheading && <h3>{section.subheading}</h3>}
 
                   {section.list && (
                     <ul>
@@ -376,4 +379,5 @@ function sectionHtml(section: JournalArticle['sections'][number]) {
         )}
       </article>
     )}
+  </main>
 </AdoptedPageLayout>

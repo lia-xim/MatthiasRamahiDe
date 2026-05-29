@@ -1,10 +1,60 @@
 ---
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
+import PreviewToolbar from '../PreviewToolbar.astro'
+import {
+  localScopePhrase,
+  nativeFamilyPageContext,
+  type NativeFamilyPreviewState,
+} from '../../lib/nativeFamilyPageContext'
 import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
 
-const legacyFile = 'oldtimer-fotografie.html'
-const providedDoc = Astro.props.doc as PayloadDoc | undefined
+type Props = {
+  doc?: PayloadDoc | null
+  legacyFile?: string
+  preview?: NativeFamilyPreviewState
+}
+
+const defaultLegacyFile = 'oldtimer-fotografie.html'
+const { doc: providedDoc = undefined, legacyFile: providedLegacyFile, preview } = Astro.props as Props
+const legacyFile = providedLegacyFile || defaultLegacyFile
 const doc = providedDoc || (await getLegacyBackedDoc(legacyFile, { depth: 2 }))
+const pageContext = nativeFamilyPageContext({
+  defaultLegacyFile,
+  doc,
+  family: 'oldtimer',
+  legacyFile,
+  preview,
+})
+const { clusterHeading, clusterLinks, isKeywordPage, isParentPage, overviewHref, publishedHref, scope, serviceLabel } = pageContext
+const heroLabel = isParentPage || isKeywordPage ? 'Oldtimer-Fotografie' : `Oldtimer-Fotografie ${scope.label}`
+const heroTitlePrefix = isParentPage || isKeywordPage ? 'Oldtimer' : 'Oldtimer-Fotografie'
+const heroTitleSuffix = isParentPage || isKeywordPage ? 'Fotografie.' : `${scope.label}.`
+const heroLead = isParentPage
+  ? 'Oldtimer-Fotografie: Herkunft, Material, Lack, Chrom, Leder und Patina werden ruhig dokumentiert — für Sammlung, Verkauf, Auktion, Ausstellung und Fahrzeuge mit Geschichte. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.'
+  : isKeywordPage
+    ? `${serviceLabel}: eigenständiger Einstieg in den Oldtimer Fotografie-Cluster. Herkunft, Material, Lack, Chrom, Leder und Patina werden ruhig dokumentiert - für Sammlung, Verkauf, Auktion, Ausstellung und Fahrzeuge mit Geschichte. Die Seite bleibt bewusst im Layout der übergeordneten Kategorie, setzt den Text aber auf diese konkrete Suchintention.`
+    : `Oldtimer-Fotografie in ${scope.label}: Herkunft, Material, Lack, Chrom, Leder und Patina werden ruhig dokumentiert - für Sammlung, Verkauf, Auktion, Ausstellung und Fahrzeuge mit Geschichte. ${localScopePhrase(scope)}`
+const metaTitle = isParentPage
+  ? 'Oldtimer-Fotografie - Matthias Ramahi'
+  : isKeywordPage
+    ? `${serviceLabel} | Matthias Ramahi`
+    : `Oldtimer-Fotografie ${scope.label} | Matthias Ramahi`
+const metaDescription = isParentPage
+  ? 'Oldtimer-Fotografie: Bildserien für Sammlung, Verkauf, Auktion und Ausstellung - Karosserie, Lack, Chrom, Leder, Patina und Herkunft.'
+  : isKeywordPage
+    ? `${serviceLabel}: Bildserien für Sammlung, Verkauf, Auktion und Ausstellung.`
+    : `Oldtimer-Fotografie ${scope.label}: Bildserien für Sammlung, Verkauf, Auktion und Ausstellung.`
+const contactSubject = isParentPage ? 'Oldtimer Fotografie Anfrage' : `${serviceLabel}${isKeywordPage ? '' : ` ${scope.label}`} Anfrage`
+const contactHeadline = isParentPage
+  ? 'Oldtimer &lt;em&gt;anfragen.&lt;/em&gt;'
+  : isKeywordPage
+    ? `${serviceLabel} &lt;em&gt;anfragen.&lt;/em&gt;`
+    : `Oldtimer ${scope.label} &lt;em&gt;anfragen.&lt;/em&gt;`
+const contactLead = isParentPage
+  ? 'Schreibe kurz, welcher Oldtimer fotografiert werden soll — Modell, Baujahr, Standort und ob die Bilder für Sammlung, Auktion, Verkauf oder privat genutzt werden. Wir klären Raum, Licht und Ablauf gemeinsam.'
+  : isKeywordPage
+    ? `Schreibe kurz, wofür ${serviceLabel} gebraucht wird, welches Motiv im Mittelpunkt steht und welche Nutzung geplant ist. Wir klären Stil, Ort, Umfang und Ausgabe gemeinsam.`
+    : `Schreibe kurz, welcher Oldtimer in ${scope.label} fotografiert werden soll - Modell, Baujahr, Standort und ob die Bilder für Sammlung, Auktion, Verkauf oder privat genutzt werden. Wir klären Raum, Licht und Ablauf gemeinsam.`
 
 const heroSlides = [
   'assets/optimized/assets-photos-oldtimer-stage-1920.webp',
@@ -136,16 +186,33 @@ const searchLinks = [
   ['oldtimer-verkaufsfotos-duesseldorf.html', 'Oldtimer Verkaufsfotos'],
 ]
 ---
-<AdoptedPageLayout legacyFile={legacyFile} current="fotografie" doc={doc}>
+<AdoptedPageLayout
+  legacyFile={legacyFile}
+  current="fotografie"
+  doc={doc}
+  noIndex={Boolean(preview)}
+  title={metaTitle}
+  description={metaDescription}
+  ogImage="/assets/optimized/assets-photos-oldtimer-stage-1920.webp"
+>
+  {preview && (
+    <PreviewToolbar
+      collection={preview.collection}
+      slug={preview.slug}
+      status={preview.status}
+      publishedHref={publishedHref}
+    />
+  )}
   <main>
-    <section class="hero-mp" id="top" data-header-theme="dark" aria-label="Oldtimer-Fotografie">
+    <section class="hero-mp" id="top" data-header-theme="dark" aria-label={heroLabel}>
       <div class="hero-mp__stage" aria-hidden="true">
         <div class="hero-mp__slides" id="oldtimerSlides">
           {heroSlides.map((slide, index) => (
             <div
               class={`hero-mp__slide${index === 0 ? ' is-active' : ''}`}
               data-kb={index + 1}
-              style={`background-image:url('${slide}')`}
+              data-bg={slide}
+              style={index === 0 ? `background-image:url('${slide}')` : undefined}
             />
           ))}
         </div>
@@ -157,8 +224,8 @@ const searchLinks = [
       </div>
 
       <div class="hero-mp__overlay">
-        <h1 class="hero-mp__title"><span>Oldtimer</span><em>Fotografie.</em></h1>
-        <p class="hero-mp__sub">Oldtimer-Fotografie: Herkunft, Material, Lack, Chrom, Leder und Patina werden ruhig dokumentiert — für Sammlung, Verkauf, Auktion, Ausstellung und Fahrzeuge mit Geschichte. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.</p>
+        <h1 class="hero-mp__title"><span>{heroTitlePrefix}</span><em>{heroTitleSuffix}</em></h1>
+        <p class="hero-mp__sub">{doc?.intro || heroLead}</p>
         <div class="hero-mp__actions">
           <a href="#anfrage">Shooting buchen →</a>
           <a class="ghost" href="portfolio.html">Portfolio</a>
@@ -259,6 +326,21 @@ const searchLinks = [
       </div>
     </section>
 
+    {!isParentPage && (
+      <section class="mr-cities mr-photo-cluster" data-header-theme="light" data-theme="light" aria-label={`Fotografie-Cluster ${scope.label}`}>
+        <div class="mr-cities__inner">
+          <div class="mr-cities__head">
+            <h2 set:html={clusterHeading}></h2>
+            <p class="mr-cities__copy">Diese Kategorie ist Teil eines bewusst getrennten Fotografie-Clusters: Fahrzeug, Mensch und Raum bleiben eigenständige Suchintentionen, sind aber intern so verbunden, dass Nutzer schnell in den passenden Bildbereich wechseln können.</p>
+          </div>
+          <nav class="mr-cities__grid" aria-label="Verwandte Fotografie-Bereiche">
+            <a class="mr-cities__cell" href={overviewHref}>Fotografie Übersicht</a>
+            {clusterLinks.map((link) => <a class="mr-cities__cell" href={link.href}>{link.label}</a>)}
+          </nav>
+        </div>
+      </section>
+    )}
+
     <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Oldtimer Fotografie Suchbegriffe">
       <div class="mr-cities__inner">
         <div class="mr-cities__head">
@@ -274,9 +356,9 @@ const searchLinks = [
       id="anfrage"
       data-contact-section
       data-header-theme="light"
-      data-contact-subject="Oldtimer Fotografie Anfrage"
-      data-contact-headline="Oldtimer &lt;em&gt;anfragen.&lt;/em&gt;"
-      data-contact-lead="Schreibe kurz, welcher Oldtimer fotografiert werden soll — Modell, Baujahr, Standort und ob die Bilder für Sammlung, Auktion, Verkauf oder privat genutzt werden. Wir klären Raum, Licht und Ablauf gemeinsam."
+      data-contact-subject={contactSubject}
+      data-contact-headline={contactHeadline}
+      data-contact-lead={contactLead}
     />
   </main>
 </AdoptedPageLayout>

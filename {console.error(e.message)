@@ -1,2 +1,0 @@
-
-C:\Users\matth\Documents\MatthiasRamahiDe>  "C:\Program Files\nodejs\\node.exe"  "C:\Program Files\nodejs\\node_modules\corepack\dist\corepack.js" pnpm --filter @matthias-ramahi/web exec node -e import('playwright').then(()=;process.exit(1)})

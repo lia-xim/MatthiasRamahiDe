@@ -3,6 +3,9 @@
   "private": true,
   "type": "module",
   "packageManager": "pnpm@10.33.2",
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
     "build": "corepack pnpm web:build && corepack pnpm cms:build",
     "vercel:build": "node tools/run-vercel-build.mjs",

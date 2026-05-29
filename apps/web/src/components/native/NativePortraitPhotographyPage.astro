@@ -1,10 +1,60 @@
 ---
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
+import PreviewToolbar from '../PreviewToolbar.astro'
+import {
+  localScopePhrase,
+  nativeFamilyPageContext,
+  type NativeFamilyPreviewState,
+} from '../../lib/nativeFamilyPageContext'
 import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
 
-const legacyFile = 'portraitfotografie.html'
-const providedDoc = Astro.props.doc as PayloadDoc | undefined
+type Props = {
+  doc?: PayloadDoc | null
+  legacyFile?: string
+  preview?: NativeFamilyPreviewState
+}
+
+const defaultLegacyFile = 'portraitfotografie.html'
+const { doc: providedDoc = undefined, legacyFile: providedLegacyFile, preview } = Astro.props as Props
+const legacyFile = providedLegacyFile || defaultLegacyFile
 const doc = providedDoc || (await getLegacyBackedDoc(legacyFile, { depth: 2 }))
+const pageContext = nativeFamilyPageContext({
+  defaultLegacyFile,
+  doc,
+  family: 'portrait',
+  legacyFile,
+  preview,
+})
+const { clusterHeading, clusterLinks, isKeywordPage, isParentPage, overviewHref, publishedHref, scope, serviceLabel } = pageContext
+const heroLabel = isParentPage || isKeywordPage ? 'Portraitfotografie' : `Portraitfotografie ${scope.label}`
+const heroTitle = isParentPage || isKeywordPage ? 'Portrait' : 'Portraitfotografie'
+const heroEmphasis = isParentPage || isKeywordPage ? 'Fotografie.' : `${scope.label}.`
+const heroLead = isParentPage
+  ? 'Portraitfotografie: Blick, Licht, Distanz und Haltung werden auf Nutzung und Persönlichkeit abgestimmt — für Personal Branding, Business Portraits, Team, Presse und Editorial. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.'
+  : isKeywordPage
+    ? `${serviceLabel}: eigenständiger Einstieg in den Portrait Fotografie-Cluster. Blick, Licht, Distanz und Haltung werden auf Nutzung und Persönlichkeit abgestimmt - für Personal Branding, Business Portraits, Team, Presse und Editorial. Die Seite bleibt bewusst im Layout der übergeordneten Kategorie, setzt den Text aber auf diese konkrete Suchintention.`
+    : `Portraitfotografie in ${scope.label}: Blick, Licht, Distanz und Haltung werden auf Nutzung und Persönlichkeit abgestimmt - für Personal Branding, Business Portraits, Team, Presse und Editorial. ${localScopePhrase(scope)}`
+const metaTitle = isParentPage
+  ? 'Portraitfotografie - Matthias Ramahi'
+  : isKeywordPage
+    ? `${serviceLabel} | Matthias Ramahi`
+    : `Portraitfotografie ${scope.label} | Matthias Ramahi`
+const metaDescription = isParentPage
+  ? 'Portraitfotografie: Personal Branding, Business Portraits, Editorial, Team und Presse - professionell, ruhig, nahbar und nicht glattgebuegelt.'
+  : isKeywordPage
+    ? `${serviceLabel}: Personal Branding, Business Portraits, Editorial, Team und Presse.`
+    : `Portraitfotografie ${scope.label}: Personal Branding, Business Portraits, Editorial, Team und Presse.`
+const contactSubject = isParentPage ? 'Portrait Fotografie Anfrage' : `${serviceLabel}${isKeywordPage ? '' : ` ${scope.label}`} Anfrage`
+const contactHeadline = isParentPage
+  ? 'Portrait &lt;em&gt;anfragen.&lt;/em&gt;'
+  : isKeywordPage
+    ? `${serviceLabel} &lt;em&gt;anfragen.&lt;/em&gt;`
+    : `Portrait ${scope.label} &lt;em&gt;anfragen.&lt;/em&gt;`
+const contactLead = isParentPage
+  ? 'Schreibe kurz, wofür die Portraits gedacht sind — Personal Branding, Editorial, Team, Presse oder Bewerbung. Wichtig sind Person/Team, gewünschte Wirkung, Ort und Zeitraum. Stil und Licht klären wir vor dem ersten Klick.'
+  : isKeywordPage
+    ? `Schreibe kurz, wofür ${serviceLabel} gebraucht wird, welche Person oder welches Team im Mittelpunkt steht und welche Nutzung geplant ist. Wir klären Stil, Ort, Umfang und Ausgabe gemeinsam.`
+    : `Schreibe kurz, wofür die Portraits in ${scope.label} gedacht sind - Personal Branding, Editorial, Team, Presse oder Bewerbung. Wichtig sind Person oder Team, gewünschte Wirkung, Ort und Zeitraum. Stil und Licht klären wir vor dem ersten Klick.`
 
 const cityLinks = [
   ['portraitfotografie.html', 'Düsseldorf'],
@@ -39,9 +89,25 @@ const searchLinks = [
   ['pressefoto-duesseldorf.html', 'Pressefoto'],
 ] as const
 ---
-<AdoptedPageLayout legacyFile={legacyFile} current="fotografie" doc={doc}>
+<AdoptedPageLayout
+  legacyFile={legacyFile}
+  current="fotografie"
+  doc={doc}
+  noIndex={Boolean(preview)}
+  title={metaTitle}
+  description={metaDescription}
+  ogImage="/assets/portraits/_DSC0470-Enhanced-NR.webp"
+>
+  {preview && (
+    <PreviewToolbar
+      collection={preview.collection}
+      slug={preview.slug}
+      status={preview.status}
+      publishedHref={publishedHref}
+    />
+  )}
   <main>
-    <section class="hero-pt" id="heroPt" data-header-theme="dark" aria-label="Portraitfotografie">
+    <section class="hero-pt" id="heroPt" data-header-theme="dark" aria-label={heroLabel}>
       <div class="hero-pt__stage" aria-hidden="true">
         <div class="hero-pt__slides">
           <div class="hero-pt__slide" data-i="0">
@@ -69,10 +135,10 @@ const searchLinks = [
         <span class="hero-pt__catchlight"></span>
       </div>
 
-      <h1 class="hero-pt__title">Portrait <em>Fotografie.</em></h1>
+      <h1 class="hero-pt__title">{heroTitle} <em>{heroEmphasis}</em></h1>
 
       <div class="hero-pt__sub-block">
-        <p class="hero-pt__sub">Portraitfotografie: Blick, Licht, Distanz und Haltung werden auf Nutzung und Persönlichkeit abgestimmt — für Personal Branding, Business Portraits, Team, Presse und Editorial. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.</p>
+        <p class="hero-pt__sub">{doc?.intro || heroLead}</p>
         <div class="hero-pt__actions">
           <a href="#anfrage">Portraitshooting anfragen →</a>
           <a class="ghost" href="portfolio.html">Portfolio</a>
@@ -232,6 +298,21 @@ const searchLinks = [
       </div>
     </section>
 
+    {!isParentPage && (
+      <section class="mr-cities mr-photo-cluster" data-header-theme="light" data-theme="light" aria-label={`Fotografie-Cluster ${scope.label}`}>
+        <div class="mr-cities__inner">
+          <div class="mr-cities__head">
+            <h2 set:html={clusterHeading}></h2>
+            <p class="mr-cities__copy">Diese Kategorie ist Teil eines bewusst getrennten Fotografie-Clusters: Fahrzeug, Mensch und Raum bleiben eigenständige Suchintentionen, sind aber intern so verbunden, dass Nutzer schnell in den passenden Bildbereich wechseln können.</p>
+          </div>
+          <nav class="mr-cities__grid" aria-label="Verwandte Fotografie-Bereiche">
+            <a class="mr-cities__cell" href={overviewHref}>Fotografie Übersicht</a>
+            {clusterLinks.map((link) => <a class="mr-cities__cell" href={link.href}>{link.label}</a>)}
+          </nav>
+        </div>
+      </section>
+    )}
+
     <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Portrait Fotografie Suchbegriffe">
       <div class="mr-cities__inner">
         <div class="mr-cities__head">
@@ -247,9 +328,9 @@ const searchLinks = [
       id="anfrage"
       data-contact-section
       data-header-theme="light"
-      data-contact-subject="Portrait Fotografie Anfrage"
-      data-contact-headline="Portrait &lt;em&gt;anfragen.&lt;/em&gt;"
-      data-contact-lead="Schreibe kurz, wofür die Portraits gedacht sind — Personal Branding, Editorial, Team, Presse oder Bewerbung. Wichtig sind Person/Team, gewünschte Wirkung, Ort und Zeitraum. Stil und Licht klären wir vor dem ersten Klick."
+      data-contact-subject={contactSubject}
+      data-contact-headline={contactHeadline}
+      data-contact-lead={contactLead}
     ></section>
   </main>
 </AdoptedPageLayout>

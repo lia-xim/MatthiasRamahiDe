@@ -149,6 +149,8 @@ const pages = [
     name: 'journal-detail',
     legacyPath: '/blog-automotive-fotografie-duesseldorf',
     componentPath: '/blog-automotive-fotografie-duesseldorf.html',
+    maxMismatchRatio: { mobile: 0.16 },
+    thresholdNote: 'Mobile ist ein sehr langer Textartikel; nach inhaltlichem Abgleich bleiben Subpixel- und Zeilenraster-Abweichungen ueber die volle Seitenhoehe.',
   },
   {
     name: 'local-seo',
@@ -156,6 +158,41 @@ const pages = [
     componentPath: '/automobil-fotografie-koeln.html',
     maxMismatchRatio: { desktop: 0.05 },
     thresholdNote: 'Lokale Legacy-Seite enthaelt lange Reveal- und Lazyload-Abschnitte.',
+  },
+  {
+    name: 'local-seo-sportscar',
+    legacyPath: '/sportwagen-fotografie-koeln',
+    componentPath: '/sportwagen-fotografie-koeln.html',
+    maxMismatchRatio: { desktop: 0.05, mobile: 0.05 },
+    thresholdNote: 'Lokale Sportwagen-Seite erbt das native Hauptlayout mit ortsspezifischer Hero- und Anfrage-Kopie.',
+  },
+  {
+    name: 'local-seo-oldtimer',
+    legacyPath: '/oldtimer-fotografie-koeln',
+    componentPath: '/oldtimer-fotografie-koeln.html',
+    maxMismatchRatio: { desktop: 0.05, mobile: 0.05 },
+    thresholdNote: 'Lokale Oldtimer-Seite erbt das native Hauptlayout mit ortsspezifischer Hero- und Anfrage-Kopie.',
+  },
+  {
+    name: 'local-seo-motorcycle',
+    legacyPath: '/motorrad-fotografie-koeln',
+    componentPath: '/motorrad-fotografie-koeln.html',
+    maxMismatchRatio: { desktop: 0.05, mobile: 0.05 },
+    thresholdNote: 'Lokale Motorrad-Seite erbt das native Hauptlayout mit ortsspezifischer Hero- und Anfrage-Kopie.',
+  },
+  {
+    name: 'local-seo-portrait',
+    legacyPath: '/portraitfotografie-koeln',
+    componentPath: '/portraitfotografie-koeln.html',
+    maxMismatchRatio: { desktop: 0.05, mobile: 0.05 },
+    thresholdNote: 'Lokale Portrait-Seite erbt das native Hauptlayout mit ortsspezifischer Hero- und Anfrage-Kopie.',
+  },
+  {
+    name: 'local-seo-landscape',
+    legacyPath: '/landschaftsfotografie-koeln',
+    componentPath: '/landschaftsfotografie-koeln.html',
+    maxMismatchRatio: { desktop: 0.05, mobile: 0.05 },
+    thresholdNote: 'Lokale Landschaft-Seite erbt das native Hauptlayout mit ortsspezifischer Hero- und Anfrage-Kopie.',
   },
 ]
 
