@@ -58,7 +58,7 @@ const contactLead = isParentPage
     : `Schreibe kurz, welcher Oldtimer in ${scope.label} fotografiert werden soll - Modell, Baujahr, Standort und ob die Bilder für Sammlung, Auktion, Verkauf oder privat genutzt werden. Wir klären Raum, Licht und Ablauf gemeinsam.`
 
 const heroSlides = [
-  'assets/optimized/assets-photos-oldtimer-stage-1920.webp',
+  'assets/optimized/assets-photos-oldtimer-stage-1280.webp',
   'assets/portfolio/_DSC0470-Enhanced-NR.webp',
   'assets/optimized/assets-portfolio-dsc3892-1920.webp',
 ]
@@ -195,6 +195,7 @@ const searchLinks = [
   title={metaTitle}
   description={metaDescription}
   ogImage="/assets/optimized/assets-photos-oldtimer-stage-1920.webp"
+  preloadImages={['/assets/optimized/assets-photos-oldtimer-stage-1280.webp']}
 >
   {preview && (
     <PreviewToolbar

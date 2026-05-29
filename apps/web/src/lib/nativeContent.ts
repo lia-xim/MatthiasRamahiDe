@@ -1,10 +1,18 @@
-import type { PayloadDoc } from './payload'
+import { imageDisplayUrl, type PayloadDoc, type PayloadMedia } from './payload'
 import { richTextToParagraphs, type PlainRichText } from './richText'
 
 type TextBlock = {
   blockType?: string
   body?: PlainRichText
   headline?: string
+}
+
+type ImageSequenceBlock = {
+  blockType?: string
+  headline?: string
+  items?: Array<{
+    image?: PayloadMedia | string
+  }>
 }
 
 export type PhotographyTopic = {
@@ -100,6 +108,29 @@ export const homeHeroImages = [
   '/assets/optimized/assets-photos-automobil-sunset-1280.webp',
   '/assets/optimized/assets-photos-motorrad-960.webp',
 ]
+
+export const imageSequenceImages = (
+  doc: PayloadDoc | null | undefined,
+  labels: string[],
+  fallback: string[],
+) => {
+  const normalizedLabels = labels.map((label) => label.toLowerCase())
+  const block = ((doc?.blocks || []) as ImageSequenceBlock[]).find((candidate) => {
+    if (candidate.blockType !== 'imageSequence') return false
+    const headline = (candidate.headline || '').toLowerCase()
+    return normalizedLabels.some((label) => headline.includes(label))
+  })
+
+  const images =
+    block?.items
+      ?.map((item) => imageDisplayUrl(item.image, 'wide'))
+      .filter((url): url is string => Boolean(url)) || []
+
+  return images.length > 0 ? images : fallback
+}
+
+export const homeHeroImagesFor = (doc: PayloadDoc | null | undefined) =>
+  imageSequenceImages(doc, ['hero', 'intro', 'start'], homeHeroImages)
 
 export const homeChapters: HomeChapter[] = [
   {

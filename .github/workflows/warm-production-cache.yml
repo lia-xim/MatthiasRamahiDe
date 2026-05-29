@@ -1,0 +1,23 @@
+name: Warm Production Cache
+
+on:
+  deployment_status:
+  workflow_dispatch:
+
+jobs:
+  warm-cache:
+    if: github.event_name == 'workflow_dispatch' || github.event.deployment_status.state == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Warm cache
+        run: node tools/warmup-deployment-cache.mjs --origin=https://matthiasramahi.de --asset-mode=critical --concurrency=8

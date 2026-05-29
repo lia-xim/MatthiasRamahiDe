@@ -16,7 +16,8 @@ The current root `.html` files are the visual reference for the Astro + Payload 
 2. All previous public `.html` URLs are generated from the native Astro route registry.
 3. Local SEO pages inherit one of the six native photography family layouts; Payload can override content and SEO fields without storing raw page HTML.
 4. Blog and journal legacy URLs use native article renderers; new `/journal/<slug>` pages stay CMS-native.
-5. The remaining root `.html` files are an archive and QA baseline only. Remove or move them only after explicit archive/delete sign-off.
+5. Production CSS/JS references use neutral `native-*` assets. Older `legacy-*` assets stay with the frozen reference only.
+6. The remaining root `.html` files are an archive and QA baseline only. Remove or move them only after explicit archive/delete sign-off.
 
 ## Adopted Route Rule
 
@@ -26,7 +27,7 @@ The adopted list lives in `apps/web/src/lib/adoptedRoutes.ts`.
 
 There is no `/legacy-baseline/*` route in the Astro app anymore. Visual Regression reads the frozen root HTML files through a short-lived QA server, so production source code does not depend on raw legacy rendering.
 
-Current QA status: the native web build, 217/217 legacy-route audit, grouped visual regression and strict site-quality audit pass as of 2026-05-29. Remaining warnings are performance long-task warnings on media-heavy pages, not legacy-render dependencies.
+Current QA status: the native web build, 217/217 legacy-route audit, grouped visual regression, strict site-quality audit, strict CMS readiness audit and strict CMS production audit pass as of 2026-05-29. Published CMS content now uses release-capable render sources (`native-component` or `structured-blocks`); `payload-legacy-html` is treated as import/archive metadata only. Remaining warnings are performance long-task warnings on media-heavy pages, not legacy-render dependencies.
 
 ## Refreshing The Freeze Manifest
 

@@ -59,7 +59,6 @@ const collectionAudits: Record<CollectionSlug, CollectionAuditConfig> = {
       { path: 'seo.canonicalUrl', label: 'Canonical URL' },
       { path: 'legacy.sourceFile', label: 'Legacy-Datei' },
       { path: 'legacy.renderSource', label: 'Render-Quelle' },
-      { path: 'legacy.renderedBodyHtml', label: 'Payload Render-Body' },
       { path: 'legacy.migrationStatus', label: 'Migrationsstatus' },
     ],
   },
@@ -77,7 +76,6 @@ const collectionAudits: Record<CollectionSlug, CollectionAuditConfig> = {
       { path: 'seo.canonicalUrl', label: 'Canonical URL' },
       { path: 'legacy.sourceFile', label: 'Legacy-Datei' },
       { path: 'legacy.renderSource', label: 'Render-Quelle' },
-      { path: 'legacy.renderedBodyHtml', label: 'Payload Render-Body' },
       { path: 'legacy.migrationStatus', label: 'Migrationsstatus' },
     ],
   },
@@ -95,7 +93,6 @@ const collectionAudits: Record<CollectionSlug, CollectionAuditConfig> = {
       { path: 'seo.canonicalUrl', label: 'Canonical URL' },
       { path: 'legacy.sourceFile', label: 'Legacy-Datei' },
       { path: 'legacy.renderSource', label: 'Render-Quelle' },
-      { path: 'legacy.renderedBodyHtml', label: 'Payload Render-Body' },
       { path: 'legacy.migrationStatus', label: 'Migrationsstatus' },
     ],
   },
@@ -143,7 +140,6 @@ const collectionAudits: Record<CollectionSlug, CollectionAuditConfig> = {
       { path: 'seo.canonicalUrl', label: 'Canonical URL' },
       { path: 'legacy.sourceFile', label: 'Legacy-Datei' },
       { path: 'legacy.renderSource', label: 'Render-Quelle' },
-      { path: 'legacy.renderedBodyHtml', label: 'Payload Render-Body' },
       { path: 'legacy.migrationStatus', label: 'Migrationsstatus' },
     ],
   },
@@ -219,7 +215,9 @@ async function findAll(payload: Awaited<ReturnType<typeof getPayload>>, collecti
 }
 
 const strict = process.argv.includes('--strict')
+const releaseRenderSources = ['native-component', 'structured-blocks'] as const
 let totalMissing = 0
+let totalReleaseBlocked = 0
 let payload: Awaited<ReturnType<typeof getPayload>> | undefined
 
 try {
@@ -282,9 +280,11 @@ try {
       const isProductionReady =
         missing.length === 0 &&
         (collection === 'media' || status === 'published') &&
-        (!auditConfig.reviewGate || isReviewedMigrationStatus(migrationStatus))
+        (!auditConfig.reviewGate || isReviewedMigrationStatus(migrationStatus)) &&
+        (collection === 'media' || !renderSource || releaseRenderSources.includes(renderSource as never))
 
       if (isProductionReady) productionReady.push(auditItem)
+      else if (collection !== 'media' && renderSource && !releaseRenderSources.includes(renderSource as never)) totalReleaseBlocked += 1
     }
 
     const fieldCompleteDocs = docs.length - items.length
@@ -318,7 +318,8 @@ try {
 
   console.log('')
   console.log(`Gesamt fehlende Feldwerte: ${totalMissing}`)
-  if (strict && totalMissing > 0) process.exitCode = 1
+  console.log(`Nicht release-faehige Render-Quellen: ${totalReleaseBlocked}`)
+  if (strict && (totalMissing > 0 || totalReleaseBlocked > 0)) process.exitCode = 1
 } catch (error) {
   printPayloadScriptError(error, 'CMS Content Readiness Audit')
   process.exitCode = 1

@@ -62,7 +62,7 @@ Stand 2026-05-29:
 | About, Kontakt, Legal | `ueber-mich.html` und `contact.html` sind native Astro-Body-Templates; `impressum.html` und `datenschutz.html` sind typisierte Legal-Templates mit `BaseLayout`. | Juristische Inhalte bei echten Rechtsaenderungen manuell pflegen; keine Legacy-Body-Abhaengigkeit mehr fuer Legal. |
 | Bestehende `blog-*.html` Detailseiten | Native Astro-Artikelrenderer auf alter URL mit `BaseLayout`, BlogPosting-/FAQ-/Breadcrumb-JSON-LD und typisierter Content-Basis. | Final Payload-Journalfelder angleichen und visuelle Regression fuer alle sieben Artikel dauerhaft im Release-Gate halten. |
 
-Die alte `payload-legacy-html`-/Componentized-Schicht ist nicht mehr Teil des Astro-Produktionspfads. Root-HTML-Dateien bleiben als Freeze, Screenshot-Baseline und menschliche Referenz im Projekt, koennen aber nach expliziter Archiv- oder Loeschfreigabe aus dem Arbeitsbaum entfernt werden.
+Die alte `payload-legacy-html`-/Componentized-Schicht ist nicht mehr Teil des Astro-Produktionspfads. Auch die produktiven CSS-/JS-Referenzen der adoptierten Seiten zeigen auf neutrale `native-*` Assets. Root-HTML-Dateien und alte `legacy-*` Assets bleiben als Freeze, Screenshot-Baseline und menschliche Referenz im Projekt, koennen aber nach expliziter Archiv- oder Loeschfreigabe aus dem Arbeitsbaum entfernt werden.
 
 ## Eingefrorene visuelle Referenz
 
@@ -108,7 +108,7 @@ corepack pnpm cms:audit-readiness
 corepack pnpm cms:audit-production -- --strict
 ```
 
-Das Audit trennt Feld-Vollstaendigkeit von Produktionsreife. Ein Dokument ist erst produktionsbereit, wenn die Pflichtfelder vollstaendig sind, der Publish-Status passt und `legacy.migrationStatus` auf `reviewed`, `componentized` oder `live` steht.
+Das Audit trennt Feld-Vollstaendigkeit von Produktionsreife. Ein Dokument ist erst produktionsbereit, wenn die Pflichtfelder vollstaendig sind, der Publish-Status passt, `legacy.migrationStatus` auf `reviewed`, `componentized` oder `live` steht und `legacy.renderSource` release-faehig ist. Release-faehig sind `native-component` und `structured-blocks`; `payload-legacy-html` ist nur noch ein Import-/Archivstatus.
 
 Die aktive Produktionsgruppe kann mit einem bewusst engen Script freigegeben werden:
 
@@ -116,7 +116,7 @@ Die aktive Produktionsgruppe kann mit einem bewusst engen Script freigegeben wer
 corepack pnpm cms:review-adopted -- --write
 ```
 
-Dieses Script markiert nur die definierte Produktionsseitenliste als `reviewed` und blockiert bei fehlenden Dokumenten, falscher Legacy-Quelle, fehlenden Pflichtfeldern oder nicht veroeffentlichten Inhalten. Stand 2026-05-28 sind 29/29 aktive Produktionsseiten reviewed und der Production-Audit meldet 0 Errors / 0 Warnings.
+Dieses Script markiert nur die definierte Produktionsseitenliste als `reviewed` und `native-component` und blockiert bei fehlenden Dokumenten, falscher Legacy-Quelle, fehlenden Pflichtfeldern, nicht release-faehiger Render-Quelle oder nicht veroeffentlichten Inhalten. Stand 2026-05-29 sind 29/29 aktive Produktionsseiten reviewed/native, 157/157 lokale SEO-Seiten reviewed/native, Portfolio-Kategorien und -Projekte structured-blocks, und der Production-Audit meldet 0 Errors / 0 Warnings.
 
 ## URL-Erhalt
 
@@ -196,8 +196,8 @@ Die neutralen Seiten `fotografie-duesseldorf.html`, `fotografie-nrw.html` und `f
 Technischer Gate:
 
 - `ASTRO_ENABLE_LOCAL_SEO_ADOPTED_ROUTES=false` schaltet nur den Middleware-Rewrite fuer lokale SEO-Familien temporaer ab; der statische Vercel-Build bleibt bewusst nativ.
-- `cms:approve-private-staging -- --collection=local-seo-pages --write` veroeffentlicht nur vollstaendige Local-SEO-Dokumente fuer privates Staging.
-- `cms:audit-production -- --strict` stellt sicher, dass veroeffentlichte lokale SEO-Seiten `reviewed`, SEO-vollstaendig und frei von blockierenden Sprach-/Medienproblemen sind.
+- `cms:approve-private-staging -- --collection=local-seo-pages --write` veroeffentlicht nur vollstaendige Local-SEO-Dokumente fuer privates Staging und setzt sie auf `native-component`.
+- `cms:audit-production -- --strict` stellt sicher, dass veroeffentlichte lokale SEO-Seiten `reviewed`, `native-component`, SEO-vollstaendig und frei von blockierenden Sprach-/Medienproblemen sind.
 
 ## Bildmigration
 
@@ -232,5 +232,6 @@ Aktueller Pruefstand:
 - Stand 2026-05-29: die alte App-interne Legacy-/Componentized-Bruecke ist entfernt. `apps/web/src` enthaelt keine Route und keine Komponente mehr, die Root-HTML als Produktions- oder Preview-Body rendert. Visual Regression liest alte HTML-Dateien nur noch ueber einen separaten QA-Referenzserver.
 - Stand 2026-05-29: finaler Web-Build erfolgreich, `astro check` ueber 80 Dateien mit 0 Errors / 0 Warnings / 0 Hints.
 - Stand 2026-05-29: Route-Audit erfolgreich, 217/217 bisherige HTML-Routen werden nativ aus Astro erzeugt.
+- Stand 2026-05-29: Produktionsassets sind im Astro-Code auf `native-*` umgestellt; der Prebuild heisst `sync-public-assets` und kopiert keine Root-HTML-Dateien nach `apps/web/public`.
 - Stand 2026-05-29: Visual Regression wird fuer stabile lokale Laeufe in drei Gruppen ausgefuehrt: Kern-/Fotografieseiten, Service/About/Contact/Journal und Local-SEO-Familien. Alle Gruppen bleiben unter der harten 5%-Grenze; Warnungen ueber dem 2%-Zielwert sind dokumentierte Bild-/Lazyload-Differenzen.
 - Stand 2026-05-29: Site-Quality-Audit ueber 226 Routen und 452 Desktop-/Mobile-Checks ist ohne Failures. Uebrig sind nur Long-Task-Warnungen fuer bild-/animationsreiche Seiten; Payload-Medien von `cms.matthiasramahi.de` werden als First-Party behandelt.

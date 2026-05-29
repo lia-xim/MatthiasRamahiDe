@@ -41,11 +41,12 @@ export const legacyMigrationFields: Field = {
       admin: {
         readOnly: true,
         description:
-          'Technischer Status fuer Astro: legacy-file = Fallback aus alter Datei, payload-legacy-html = 1:1 Body kommt aus Payload, structured-blocks = vollstaendig aus strukturierten CMS-Komponenten.',
+          'Technischer Status fuer Astro: legacy-file und payload-legacy-html sind reine Migrations-/Archivzustaende. native-component und structured-blocks sind release-faehige Ausgabeformen ohne rohes Body-HTML.',
       },
       options: [
-        { label: 'Legacy-Datei Fallback', value: 'legacy-file' },
-        { label: 'Payload Legacy HTML', value: 'payload-legacy-html' },
+        { label: 'Alte HTML-Datei (nur Migration)', value: 'legacy-file' },
+        { label: 'Payload HTML-Archiv (nicht release-faehig)', value: 'payload-legacy-html' },
+        { label: 'Native Astro-Komponente', value: 'native-component' },
         { label: 'Strukturierte CMS-Bloecke', value: 'structured-blocks' },
       ],
     },

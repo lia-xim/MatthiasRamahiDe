@@ -57,9 +57,9 @@ const contactLead = isParentPage
     : `Schreibe kurz, welcher Sportwagen in ${scope.label} fotografiert werden soll, ob die Bilder für Verkauf, Sammlung, Marke oder Social genutzt werden und welches Zeitfenster möglich ist. Wir planen Licht, Ort und Ablauf gemeinsam.`
 
 const heroPanels = [
-  ['detail', 'assets/optimized/mpixih9c-dsc3982-1920.webp'],
-  ['full', 'assets/optimized/mpixi92f-dsc3032-generase-1-1920.webp'],
-  ['interior', 'assets/optimized/mpixhlgk-dsc2986-1920.webp'],
+  ['detail', 'assets/optimized/mpixih9c-dsc3982-1920.webp', 'assets/optimized/mpixih9c-dsc3982-960.webp'],
+  ['full', 'assets/optimized/mpixi92f-dsc3032-generase-1-1920.webp', 'assets/optimized/mpixi92f-dsc3032-generase-1-960.webp'],
+  ['interior', 'assets/optimized/mpixhlgk-dsc2986-1920.webp', 'assets/optimized/mpixhlgk-dsc2986-960.webp'],
 ]
 
 const shootingStyles = [
@@ -282,6 +282,7 @@ const searchLinks = [
   title={metaTitle}
   description={metaDescription}
   ogImage="/assets/optimized/mpixi92f-dsc3032-generase-1-1920.webp"
+  preloadImages={heroPanels.slice(0, 2).map(([, , mobileImage]) => `/${mobileImage}`)}
 >
   {preview && (
     <PreviewToolbar
@@ -294,9 +295,12 @@ const searchLinks = [
   <main>
     <section class="hero-tri" id="top" data-header-theme="dark" aria-label={heroLabel}>
       <div class="tri-stage" aria-hidden="true">
-        {heroPanels.map(([name, image]) => (
+        {heroPanels.map(([name, image, mobileImage]) => (
           <div class="tri-col" data-tri={name}>
-            <div class="tri-img" style={`background-image:url('${image}')`}></div>
+            <div
+              class="tri-img"
+              style={`--tri-bg-mobile:url('/${mobileImage}');--tri-bg-desktop:url('/${image}')`}
+            ></div>
           </div>
         ))}
       </div>

@@ -51,28 +51,28 @@ const pages = [
     legacyPath: '/automobil-fotografie',
     componentPath: '/automobil-fotografie.html',
     maxMismatchRatio: { mobile: 0.05 },
-    thresholdNote: 'Seite enthaelt lange lazy/reveal Bildraster mit Legacy-JS.',
+    thresholdNote: 'Seite enthaelt lange lazy/reveal Bildraster und bildreiche native Parity-Abschnitte.',
   },
   {
     name: 'sportscar-main',
     legacyPath: '/sportwagen-fotografie',
     componentPath: '/sportwagen-fotografie.html',
     maxMismatchRatio: { desktop: 0.03, mobile: 0.05 },
-    thresholdNote: 'Seite enthaelt lange lazy/reveal Bildraster mit Legacy-JS.',
+    thresholdNote: 'Seite enthaelt lange lazy/reveal Bildraster und bildreiche native Parity-Abschnitte.',
   },
   {
     name: 'oldtimer-main',
     legacyPath: '/oldtimer-fotografie',
     componentPath: '/oldtimer-fotografie.html',
     maxMismatchRatio: { mobile: 0.05 },
-    thresholdNote: 'Seite enthaelt lange lazy/reveal Bildraster mit Legacy-JS.',
+    thresholdNote: 'Seite enthaelt lange lazy/reveal Bildraster und bildreiche native Parity-Abschnitte.',
   },
   {
     name: 'motorcycle-main',
     legacyPath: '/motorrad-fotografie',
     componentPath: '/motorrad-fotografie.html',
     maxMismatchRatio: { desktop: 0.05, mobile: 0.05 },
-    thresholdNote: 'Desktop und Mobile enthalten lange lazy/reveal Bildraster mit Legacy-JS.',
+    thresholdNote: 'Desktop und Mobile enthalten lange lazy/reveal Bildraster und bildreiche native Parity-Abschnitte.',
   },
   {
     name: 'portrait-main',
@@ -89,7 +89,7 @@ const pages = [
     legacyPath: '/leistungen',
     componentPath: '/leistungen.html',
     maxMismatchRatio: { desktop: 0.03 },
-    thresholdNote: 'Seite enthaelt Legacy-Reveal- und Lazyload-Abschnitte.',
+    thresholdNote: 'Seite enthaelt lange Reveal- und Lazyload-Abschnitte aus der nativen Parity-Schicht.',
   },
   {
     name: 'service-fotolabor',
@@ -131,7 +131,7 @@ const pages = [
     legacyPath: '/ueber-mich',
     componentPath: '/ueber-mich.html',
     maxMismatchRatio: { desktop: 0.05 },
-    thresholdNote: 'Seite enthaelt Legacy-Reveal- und Lazyload-Abschnitte.',
+    thresholdNote: 'Seite enthaelt lange Reveal- und Lazyload-Abschnitte aus der nativen Parity-Schicht.',
   },
   {
     name: 'contact',
@@ -143,7 +143,7 @@ const pages = [
     legacyPath: '/blog',
     componentPath: '/blog.html',
     maxMismatchRatio: { mobile: 0.05 },
-    thresholdNote: 'Mobile enthaelt lazy geladene Journal-Karten aus Legacy-JS/CSS.',
+    thresholdNote: 'Mobile enthaelt lazy geladene Journal-Karten aus der nativen Journal-Parity-Schicht.',
   },
   {
     name: 'journal-detail',
@@ -157,7 +157,7 @@ const pages = [
     legacyPath: '/automobil-fotografie-koeln',
     componentPath: '/automobil-fotografie-koeln.html',
     maxMismatchRatio: { desktop: 0.05 },
-    thresholdNote: 'Lokale Legacy-Seite enthaelt lange Reveal- und Lazyload-Abschnitte.',
+    thresholdNote: 'Lokale Seite enthaelt lange Reveal- und Lazyload-Abschnitte aus der nativen Familien-Parity-Schicht.',
   },
   {
     name: 'local-seo-sportscar',

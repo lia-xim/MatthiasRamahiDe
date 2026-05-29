@@ -3,7 +3,7 @@ import path from 'node:path'
 
 import { getPayload } from 'payload'
 
-import legacyContent from '../../web/src/data/legacyContent'
+import siteChromeContent from '../../web/src/data/siteChromeContent'
 
 function loadEnvFile(filePath: string) {
   if (!fs.existsSync(filePath)) return
@@ -92,11 +92,11 @@ async function upsertSitePage(slug: string, data: Record<string, unknown>) {
 }
 
 async function seedGlobals() {
-  const photographyLinks = legacyContent.navigation.photographyLinks.map(link)
+  const photographyLinks = siteChromeContent.navigation.photographyLinks.map(link)
   const primary = [
-    link(legacyContent.navigation.primary[0]),
-    link(legacyContent.navigation.photographyOverview),
-    ...legacyContent.navigation.primary.slice(1).map(link),
+    link(siteChromeContent.navigation.primary[0]),
+    link(siteChromeContent.navigation.photographyOverview),
+    ...siteChromeContent.navigation.primary.slice(1).map(link),
   ]
 
   await payload.updateGlobal({
@@ -104,11 +104,11 @@ async function seedGlobals() {
     data: {
       primary,
       photographyLinks,
-      footerLinks: legacyContent.footer.columns.flatMap((column) => column.links.map(link)),
-      legalLinks: legacyContent.footer.legalLinks.map(link),
+      footerLinks: siteChromeContent.footer.columns.flatMap((column) => column.links.map(link)),
+      legalLinks: siteChromeContent.footer.legalLinks.map(link),
       cta: {
-        label: legacyContent.navigation.cta.label,
-        href: legacyContent.navigation.cta.href,
+        label: siteChromeContent.navigation.cta.label,
+        href: siteChromeContent.navigation.cta.href,
       },
     },
     overrideAccess: true,
@@ -117,8 +117,8 @@ async function seedGlobals() {
   await payload.updateGlobal({
     slug: 'site-settings',
     data: {
-      ...legacyContent.siteSettings,
-      footerStatement: legacyContent.footer.statement,
+      ...siteChromeContent.siteSettings,
+      footerStatement: siteChromeContent.footer.statement,
     },
     overrideAccess: true,
   })
@@ -126,28 +126,28 @@ async function seedGlobals() {
   await payload.updateGlobal({
     slug: 'footer',
     data: {
-      statement: legacyContent.footer.statement,
-      statementHighlight: legacyContent.footer.statementHighlight,
-      email: legacyContent.footer.email,
-      phone: legacyContent.footer.phone,
-      locationLabel: legacyContent.footer.locationLabel,
-      aboutLink: link(legacyContent.footer.aboutLink),
-      copyright: legacyContent.footer.copyright,
-      columns: legacyContent.footer.columns.map((column) => ({
+      statement: siteChromeContent.footer.statement,
+      statementHighlight: siteChromeContent.footer.statementHighlight,
+      email: siteChromeContent.footer.email,
+      phone: siteChromeContent.footer.phone,
+      locationLabel: siteChromeContent.footer.locationLabel,
+      aboutLink: link(siteChromeContent.footer.aboutLink),
+      copyright: siteChromeContent.footer.copyright,
+      columns: siteChromeContent.footer.columns.map((column) => ({
         label: column.label,
         links: column.links.map(link),
       })),
-      primaryLinks: legacyContent.footer.columns.find((column) => column.id === 'about')?.links.map(link),
+      primaryLinks: siteChromeContent.footer.columns.find((column) => column.id === 'about')?.links.map(link),
       serviceLinks: [
-        ...legacyContent.footer.columns.find((column) => column.id === 'foto')!.links.map(link),
-        ...legacyContent.footer.columns.find((column) => column.id === 'services')!.links.map(link),
+        ...siteChromeContent.footer.columns.find((column) => column.id === 'foto')!.links.map(link),
+        ...siteChromeContent.footer.columns.find((column) => column.id === 'services')!.links.map(link),
       ],
-      socialLinks: legacyContent.footer.socialLinks.map((social) => ({
+      socialLinks: siteChromeContent.footer.socialLinks.map((social) => ({
         label: social.label,
         href: social.href,
         platform: social.platform,
       })),
-      legalLinks: legacyContent.footer.legalLinks.map(link),
+      legalLinks: siteChromeContent.footer.legalLinks.map(link),
     },
     overrideAccess: true,
   })
@@ -156,15 +156,15 @@ async function seedGlobals() {
     slug: 'global-ctas',
     data: {
       primary: {
-        label: legacyContent.navigation.cta.label,
-        href: legacyContent.navigation.cta.href,
+        label: siteChromeContent.navigation.cta.label,
+        href: siteChromeContent.navigation.cta.href,
       },
       contactModule: {
         eyebrow: 'Anfrage',
         headline: 'Projekt anfragen.',
         text:
           'Projektart, Ort, Zeitraum und gewünschte Nutzung reichen für den ersten Schritt. Ich melde mich mit Rückfragen oder einem nächsten Vorschlag per E-Mail.',
-        buttonLabel: legacyContent.navigation.cta.mobileLabel,
+        buttonLabel: siteChromeContent.navigation.cta.mobileLabel,
         emailSubject: 'Projektanfrage',
       },
     },
@@ -173,7 +173,7 @@ async function seedGlobals() {
 }
 
 async function seedSitePages() {
-  for (const page of legacyContent.sitePages) {
+  for (const page of siteChromeContent.sitePages) {
     const result = await upsertSitePage(page.slug, normalizeSitePage(page))
     payload.logger.info(`${result} site-page: ${page.slug}`)
   }
@@ -182,7 +182,7 @@ async function seedSitePages() {
 try {
   await seedGlobals()
   await seedSitePages()
-  payload.logger.info('Legacy content seed complete.')
+  payload.logger.info('Site chrome content seed complete.')
   process.exit(0)
 } catch (error) {
   payload.logger.error(error)

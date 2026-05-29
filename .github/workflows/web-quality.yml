@@ -1,0 +1,51 @@
+name: Web Quality
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  web-quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: corepack pnpm install --frozen-lockfile
+
+      - name: Build Vercel output
+        run: corepack pnpm vercel:build
+
+      - name: SEO audit
+        run: corepack pnpm seo:audit:strict
+
+      - name: Asset performance audit
+        run: corepack pnpm perf:audit
+
+      - name: Site quality audit
+        run: node tools/run-site-quality-audit.mjs --viewports=mobile,desktop
+
+      - name: Lighthouse core pages
+        run: corepack pnpm lighthouse:audit
+
+      - name: Upload Lighthouse reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-reports
+          path: .lighthouse
+          if-no-files-found: ignore

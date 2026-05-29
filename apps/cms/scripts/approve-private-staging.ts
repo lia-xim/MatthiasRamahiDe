@@ -11,6 +11,7 @@ type DataRecord = Record<string, unknown>
 type CollectionConfig = {
   required: string[]
   reviewGate: boolean
+  renderSource?: 'native-component' | 'structured-blocks'
 }
 
 const collections: ProductionCollectionSlug[] = [
@@ -25,6 +26,7 @@ const collections: ProductionCollectionSlug[] = [
 const collectionConfig: Record<ProductionCollectionSlug, CollectionConfig> = {
   'site-pages': {
     reviewGate: true,
+    renderSource: 'native-component',
     required: [
       'title',
       'slug',
@@ -34,12 +36,12 @@ const collectionConfig: Record<ProductionCollectionSlug, CollectionConfig> = {
       'seo.canonicalUrl',
       'legacy.sourceFile',
       'legacy.renderSource',
-      'legacy.renderedBodyHtml',
       'legacy.migrationStatus',
     ],
   },
   'service-pages': {
     reviewGate: true,
+    renderSource: 'native-component',
     required: [
       'title',
       'slug',
@@ -51,12 +53,12 @@ const collectionConfig: Record<ProductionCollectionSlug, CollectionConfig> = {
       'seo.canonicalUrl',
       'legacy.sourceFile',
       'legacy.renderSource',
-      'legacy.renderedBodyHtml',
       'legacy.migrationStatus',
     ],
   },
   'local-seo-pages': {
     reviewGate: true,
+    renderSource: 'native-component',
     required: [
       'title',
       'slug',
@@ -68,12 +70,12 @@ const collectionConfig: Record<ProductionCollectionSlug, CollectionConfig> = {
       'seo.canonicalUrl',
       'legacy.sourceFile',
       'legacy.renderSource',
-      'legacy.renderedBodyHtml',
       'legacy.migrationStatus',
     ],
   },
   'portfolio-projects': {
     reviewGate: true,
+    renderSource: 'structured-blocks',
     required: [
       'title',
       'slug',
@@ -90,10 +92,12 @@ const collectionConfig: Record<ProductionCollectionSlug, CollectionConfig> = {
   },
   'portfolio-categories': {
     reviewGate: true,
+    renderSource: 'structured-blocks',
     required: ['title', 'slug', 'coverImage', 'intro', 'seo.title', 'seo.description'],
   },
   'journal-posts': {
     reviewGate: true,
+    renderSource: 'native-component',
     required: [
       'title',
       'slug',
@@ -106,7 +110,6 @@ const collectionConfig: Record<ProductionCollectionSlug, CollectionConfig> = {
       'seo.canonicalUrl',
       'legacy.sourceFile',
       'legacy.renderSource',
-      'legacy.renderedBodyHtml',
       'legacy.migrationStatus',
     ],
   },
@@ -199,7 +202,11 @@ try {
 
   console.log('Private Staging Approval')
   console.log('========================')
-  console.log(write ? `Schreibe _status=published und migrationStatus=${targetMigrationStatus}.` : 'Dry run. Mit --write wirklich speichern.')
+  console.log(
+    write
+      ? `Schreibe _status=published, migrationStatus=${targetMigrationStatus} und release-faehige Render-Quelle.`
+      : 'Dry run. Mit --write wirklich speichern.',
+  )
   console.log(`Collections: ${selectedCollections.join(', ')}`)
 
   let updated = 0
@@ -227,7 +234,7 @@ try {
         continue
       }
 
-      if (isPublished && isReviewed && seo.noIndex !== true) {
+      if (isPublished && isReviewed && seo.noIndex !== true && (!rules.renderSource || legacy.renderSource === rules.renderSource)) {
         skipped += 1
         continue
       }
@@ -242,6 +249,7 @@ try {
               ? {
                   ...legacy,
                   migrationStatus: targetMigrationStatus,
+                  ...(rules.renderSource ? { renderSource: rules.renderSource } : {}),
                 }
               : legacy,
             seo: {

@@ -66,6 +66,8 @@ const clusterHeading = `Weitere Fotografie-Bereiche <em>${scope.label}.</em>`
 const clusterLinks = siblingFamilyLinks(scope, 'automobil')
 const overviewHref = 'fotografie-duesseldorf.html'
 const publishedHref = preview?.publishedHref || (doc ? routeForDoc('local-seo-pages', doc) : `/${legacyFile}`)
+const heroDevelopInitial = 'assets/optimized/mpjpgo2b-dsc3032-generase-1-1920.webp'
+const heroDevelopInitialMobile = 'assets/optimized/mpjpgo2b-dsc3032-generase-1-1280.webp'
 
 const switchFrames = [
   {
@@ -279,7 +281,12 @@ const searchLinks = [
   <main>
     <section class="hero-pd" id="top" data-header-theme="dark" aria-label={heroLabel}>
       <div class="pd-stage" aria-hidden="true">
-        <div class="pd-frame" id="pdFrameA"><div class="pd-frame-inner"></div></div>
+        <div class="pd-frame is-in" id="pdFrameA" style="--cx:50%;--cy:50%">
+          <div
+            class="pd-frame-inner"
+            style={`--pd-bg-mobile:url('/${heroDevelopInitialMobile}');--pd-bg-desktop:url('/${heroDevelopInitial}')`}
+          ></div>
+        </div>
         <div class="pd-frame" id="pdFrameB"><div class="pd-frame-inner"></div></div>
       </div>
       <div class="pd-paper" aria-hidden="true"></div>

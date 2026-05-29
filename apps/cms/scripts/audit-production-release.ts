@@ -26,6 +26,7 @@ function loadEnvFile(filePath: string) {
 }
 
 const strict = process.argv.includes('--strict')
+const releaseRenderSources = ['native-component', 'structured-blocks'] as const
 
 const asRecord = (value: unknown): DataRecord =>
   value && typeof value === 'object' && !Array.isArray(value) ? (value as DataRecord) : {}
@@ -228,15 +229,15 @@ function assertActivePage(issues: Issue[], page: (typeof adoptedProductionPages)
     issues.push({ severity: 'error', label, message: `Migrationsstatus ist noch nicht abgenommen: ${migrationStatus || 'none'}.` })
   }
 
-  if (renderSource === 'payload-legacy-html' && !hasValue(legacy.renderedBodyHtml)) {
-    issues.push({ severity: 'error', label, message: 'Render-Quelle ist Payload Legacy HTML, aber renderedBodyHtml fehlt.' })
+  if (renderSource === 'payload-legacy-html') {
+    issues.push({ severity: 'error', label, message: 'Render-Quelle ist noch Payload Legacy HTML; aktive Seiten muessen native-component oder structured-blocks sein.' })
   }
 
   if (renderSource === 'structured-blocks' && !hasValue(doc.blocks)) {
     issues.push({ severity: 'error', label, message: 'Render-Quelle ist structured-blocks, aber blocks fehlen.' })
   }
 
-  if (!['payload-legacy-html', 'structured-blocks'].includes(renderSource)) {
+  if (!releaseRenderSources.includes(renderSource as never)) {
     issues.push({ severity: 'error', label, message: `Render-Quelle ist fuer aktive Seiten nicht release-faehig: ${renderSource || 'none'}.` })
   }
 
@@ -307,11 +308,11 @@ function assertPublishedDocs(
       issues.push({ severity: 'error', label, message: `Migrationsstatus ist published, aber nicht review-freigegeben: ${migrationStatus || 'none'}.` })
     }
 
-    if (renderSource === 'payload-legacy-html' && !hasValue(legacy.renderedBodyHtml)) {
-      issues.push({ severity: 'error', label, message: 'Render-Quelle ist Payload Legacy HTML, aber renderedBodyHtml fehlt.' })
+    if (renderSource === 'payload-legacy-html') {
+      issues.push({ severity: 'error', label, message: 'Render-Quelle ist noch Payload Legacy HTML; published Content muss native-component oder structured-blocks sein.' })
     }
 
-    if (renderSource && !['payload-legacy-html', 'structured-blocks'].includes(renderSource)) {
+    if (renderSource && !releaseRenderSources.includes(renderSource as never)) {
       issues.push({ severity: 'error', label, message: `Render-Quelle ist fuer published Content nicht release-faehig: ${renderSource}.` })
     }
 

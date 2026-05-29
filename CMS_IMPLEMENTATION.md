@@ -33,6 +33,8 @@ Die aktuelle HTML-Website ist die visuelle Wahrheit. Ziel ist nicht, alle HTML-D
 - `apps/web/src/middleware.ts` rewritet adoptierte `.html`-URLs im lokalen/serverseitigen Betrieb intern auf `/native/<slug>`, ohne die sichtbare URL zu aendern.
 - `apps/web/src/pages/native/[slug].astro` rendert adoptierte URLs mit der zentralen nativen Astro-Komponente `NativeAdoptedPage`.
 - `apps/web/src/pages/[slug].html.astro` baut alle 217 bisherigen Root-HTML-URLs als echte Astro-Routen aus dem Routenmodell. Es liest keine Root-HTML-Dateien mehr als Produktionsquelle.
+- Produktionsassets fuer die adoptierten Seiten werden ueber neutrale `native-*` CSS/JS-Dateien geladen. Alte `legacy-*` Assets bleiben nur fuer die eingefrorene Referenz/Baseline erhalten.
+- Der Web-Prebuild nutzt `tools/sync-public-assets.mjs`; Root-HTML-Dateien werden nicht in `apps/web/public` veroeffentlicht.
 - Echte Dubletten wie `blog-journal.html`, `weitere-dienstleistungen.html`, `matthias-ramahi-portfolio.html`, `portfolio-1-tunnel.html`, `fotografie-landing-experience.html` und `portraitfotografie-experience.html` sind 308-Redirects auf die kanonischen Seiten.
 - Experimentelle Konzeptseiten (`radikale-fotografie-portfolio-konzepte.html`, `floating-archive.html`, `narrative-stage.html`, `experimental-lens.html`) rendern als native, noindex gesetzte Astro-Archivseiten.
 - Es gibt keine oeffentliche oder interne Astro-Route mehr, die rohe Legacy-HTML-Seiten ausliefert. Die Root-HTML-Dateien bleiben nur Projektarchiv und QA-Referenz.
@@ -158,7 +160,7 @@ corepack pnpm cms:audit-production -- --strict
 corepack pnpm cms:audit-seo -- --strict
 ```
 
-Produktionsbereit bedeutet: Pflichtfelder sind vorhanden, der Inhalt ist veroeffentlicht, und `legacy.migrationStatus` steht nicht mehr auf `seeded`, sondern auf `reviewed`, `componentized` oder `live`.
+Produktionsbereit bedeutet: Pflichtfelder sind vorhanden, der Inhalt ist veroeffentlicht, `legacy.migrationStatus` steht nicht mehr auf `seeded`, sondern auf `reviewed`, `componentized` oder `live`, und `legacy.renderSource` ist release-faehig. Release-faehig sind aktuell `native-component` und `structured-blocks`; `payload-legacy-html` bleibt nur Import-/Archivstatus und faellt im strikten Production-Audit durch.
 
 Aktive Kernseiten bewusst als visuell/release-geprueft markieren:
 
@@ -168,7 +170,7 @@ corepack pnpm cms:harden-seo
 corepack pnpm cms:sanitize-studio-language
 ```
 
-`cms:review-adopted` setzt nur die definierte Produktionsgruppe aus Home, Fotografie-Uebersicht, sechs Haupt-Fotografie-Seiten, Portfolio, Leistungen, Kontakt, Ueber mich, Journal-Uebersicht, Legal-Seiten, weiteren Service-Seiten und sieben Journal-Detailseiten auf `reviewed`. Wenn ein Dokument, Pflichtfeld oder die alte Quelldatei nicht passt, wird blockiert statt stillschweigend freigegeben. `cms:harden-seo` staerkt gezielt kurze SEO-Basisdaten fuer Portfolio, Portfolio-Kategorien und zentrale Uebersichts-/Legal-Seiten. `cms:sanitize-studio-language` bereinigt alte Studio-Sprache in Globals und importierten Dokumenten; der Production-Audit prueft diese Inhalte ebenfalls.
+`cms:review-adopted` setzt nur die definierte Produktionsgruppe aus Home, Fotografie-Uebersicht, sechs Haupt-Fotografie-Seiten, Portfolio, Leistungen, Kontakt, Ueber mich, Journal-Uebersicht, Legal-Seiten, weiteren Service-Seiten und sieben Journal-Detailseiten auf `reviewed` und `native-component`. Wenn ein Dokument, Pflichtfeld oder die alte Quelldatei nicht passt, wird blockiert statt stillschweigend freigegeben. `cms:harden-seo` staerkt gezielt kurze SEO-Basisdaten fuer Portfolio, Portfolio-Kategorien und zentrale Uebersichts-/Legal-Seiten. `cms:sanitize-studio-language` bereinigt alte Studio-Sprache in Globals und importierten Dokumenten; der Production-Audit prueft diese Inhalte ebenfalls.
 
 Private-Staging-Freigabe fuer kuratierte Draft-Gruppen:
 
@@ -177,7 +179,7 @@ corepack pnpm cms:approve-private-staging -- --collection=local-seo-pages
 corepack pnpm cms:approve-private-staging -- --collection=local-seo-pages --write
 ```
 
-Der erste Befehl ist ein Dry-Run. Mit `--write` werden nur Dokumente veroeffentlicht, die alle Pflichtfelder, SEO-Basisdaten, Slug, Alt-Text-Pflichten und Legacy-/Render-Metadaten erfuellen. Fuer das aktuelle private Staging wurden die Local-SEO-Seiten bewusst massenhaft freigegeben, weil die Sichtbarkeit serverseitig eingeschraenkt ist und die Inhalte danach online redaktionell nachgeprueft werden koennen.
+Der erste Befehl ist ein Dry-Run. Mit `--write` werden nur Dokumente veroeffentlicht, die alle Pflichtfelder, SEO-Basisdaten, Slug, Alt-Text-Pflichten und Legacy-/Render-Metadaten erfuellen. Fuer das aktuelle private Staging wurden die Local-SEO-Seiten bewusst massenhaft freigegeben und auf `native-component` gesetzt, weil die Sichtbarkeit serverseitig eingeschraenkt ist und die Inhalte danach online redaktionell nachgeprueft werden koennen.
 
 ## ENV-Variablen
 
@@ -282,6 +284,7 @@ Aktueller Stand vom 2026-05-29:
 - `cms:audit-seo -- --strict`: erfolgreich, 0 Errors und 0 Warnings.
 - `production:check`: erfolgreich, inklusive Web-Build, CMS-Build, eigener Astro-Preview, Routen-Audit und Visual Regression.
 - `cms:approve-private-staging -- --collection=local-seo-pages --write`: erfolgreich, 157 lokale SEO-Seiten fuer private Staging-Abnahme veroeffentlicht.
+- `cms:audit-readiness -- --strict` nach Render-Source-Haertung: erfolgreich. Site Pages 9/9, Service Pages 13/13, Local SEO 157/157 und Journal 7/7 stehen auf `native-component`; Portfolio-Kategorien 6/6 und Portfolio-Projekte 6/6 stehen auf `structured-blocks`; nicht release-faehige Render-Quellen: 0.
 - `web:build` nach nativer Journal-Artikelkomponente und Local-SEO-Template-Gate: erfolgreich, `astro check` mit 0 Errors / 0 Warnings.
 - `web:build` nach nativer Automobil-, Sportwagen- und Oldtimer-Body-Komponente: erfolgreich, `astro check` mit 0 Errors / 0 Warnings.
 - Visual Regression 2026-05-29: `automotive-main` Desktop 1.985%, Mobile 1.705%; `sportscar-main` Desktop 1.779%, Mobile 0.008%; `oldtimer-main` Desktop 0.003%, Mobile 0.010%.
@@ -292,7 +295,7 @@ Aktueller Stand vom 2026-05-29:
 - Zielgerichtete Visual Regression nach der letzten Template-Aenderung: Portfolio, Leistungen, Journal-Index, Automotive-Journal-Detail und Local-SEO bleiben unter der harten 5%-Grenze; Local-SEO mobile bleibt wegen langer Legacy-Lazyload-Strecken eine dokumentierte Warnung.
 - Local-SEO-Family-Smoke 2026-05-29: je eine Koeln-Seite pro Familie (`automobil`, `sportwagen`, `oldtimer`, `motorrad`, `portrait`, `landschaft`) rendert mit richtigem Family-Marker und Parent; Browser-Smoke fuer Motorrad Koeln ohne Console Errors und ohne Error-Overlay.
 - `web:build` nach Aktivierung des Local-SEO-Family-Renderers: erfolgreich, `astro check` mit 0 Errors / 0 Warnings.
-- `web:build` nach Entkopplung der sieben bestehenden Journal-Detailseiten: erfolgreich, `astro check` mit 0 Errors / 0 Warnings; die alten `blog-*.html` URLs senden `x-cms-render-source: structured-astro` und `x-cms-page-kind: journal-native-legacy-url`.
+- `web:build` nach Entkopplung der sieben bestehenden Journal-Detailseiten: erfolgreich, `astro check` mit 0 Errors / 0 Warnings; die alten `blog-*.html` URLs senden `x-cms-render-source: structured-astro` und `x-cms-page-kind: journal-native-html-url`.
 - Browser-Smoke 2026-05-29: `blog-automotive-fotografie-duesseldorf.html` und `blog-fine-art-druck.html` rendern mit `BaseLayout`, Article-Markup und BlogPosting-JSON-LD, ohne Vite-Overlay, ohne relevante Console Errors/Warnings und ohne kaputte Kernbilder.
 - `web:build` nach typisierten Legal-Seiten und gecachtem Local-SEO-Legacy-URL-Index: erfolgreich, `astro check` mit 0 Errors / 0 Warnings. Der Build fragt Local-SEO-Dokumente nicht mehr seitenweise ab, sondern indexiert sie gesammelt nach Legacy-URL.
 - Browser-Smoke 2026-05-29: `impressum.html` und `datenschutz.html` rendern mit `BaseLayout`, typisierten Legal-Bloecken, Header/Footer und WebPage-JSON-LD; `blog-fine-art-druck.html` rendert wieder alle vier Support-Artikelabschnitte. Keine kaputten Bilder, kein Error-Overlay, keine Console Errors/Warnings.
@@ -302,6 +305,7 @@ Aktueller Stand vom 2026-05-29:
 - Finaler Native-Family-Lauf 2026-05-29: alle sechs Haupt-Fotografie-Seiten und repraesentative Local-SEO-Varianten pro Familie laufen ueber native Astro-Komponenten. Visual Regression bleibt fuer Desktop und Mobile unter der harten 5%-Grenze; dokumentierte Warnungen liegen nur ueber dem 2%-Zielwert und stammen aus bekannten Lazyload-/Bildstrecken.
 - Finaler Web-Build 2026-05-29: `corepack pnpm --filter @matthias-ramahi/web build` erfolgreich, `astro check` ueber 80 Dateien mit 0 Errors / 0 Warnings / 0 Hints.
 - Finaler Route-Audit 2026-05-29: `corepack pnpm --filter @matthias-ramahi/web test:legacy-routes` erfolgreich, 217/217 HTML-Routen geprueft.
+- Finaler Asset-Entkopplungslauf 2026-05-29: `corepack pnpm --filter @matthias-ramahi/web build` laeuft mit `sync-public-assets`, kopiert 197/197 referenzierte Assets und nutzt im Astro-Produktionscode keine `legacy-*` Assetpfade mehr.
 - Finaler Site-Quality-Audit 2026-05-29: `corepack pnpm --filter @matthias-ramahi/web test:site-quality -- --route-source=all --strict --timeout-ms=45000` erfolgreich, 452 Checks ueber 226 Routen, 0 Failures. Payload-Medien von `cms.matthiasramahi.de` gelten als First-Party; uebrig sind nur Long-Task-Warnungen auf bild-/animationsreichen Seiten.
 - Bild-/Asset-Haertung 2026-05-29: Lazyload-Bilder haben echte `src`-Fallbacks, die mobile Sticky-CTA erscheint erst nach Scrolltiefe, und `tools/prune-unused-dist-assets.mjs` behandelt Root-Assets wie `assets/...` und `_astro/...` korrekt.
 
@@ -328,7 +332,8 @@ Aktueller Release-Audit nach der letzten Haertung:
 
 - 29/29 aktive Produktionsseiten sind `published` und `reviewed`.
 - Medienbibliothek: 104/104 ohne Audit-Fehler.
-- Lokale SEO-Seiten: 157/157 `published` und `reviewed` fuer private Staging-Abnahme.
+- Lokale SEO-Seiten: 157/157 `published`, `reviewed` und `native-component` fuer private Staging-Abnahme.
+- Release-faehige Render-Quellen: `native-component` fuer Site-/Service-/Local-SEO-/Journal-Seiten, `structured-blocks` fuer Portfolio-Kategorien und Portfolio-Projekte.
 - Published Release-Dokumente gesamt: 198.
 - Production-Audit: 0 Errors, 0 Warnings.
 
@@ -351,7 +356,6 @@ Kurzfassung:
 
 - Bewusste Restentscheidung: die Root-HTML-Dateien koennen nach expliziter Archiv-/Loeschfreigabe aus dem Arbeitsbaum entfernt oder in ein separates Archiv verschoben werden. Sie sind aktuell keine Runtime-Abhaengigkeit mehr, sondern nur noch QA-Referenz.
 - Lokale Entwicklung und Produktion sollten auf Node 22.x standardisiert werden. Node 24 baut aktuell, erzeugt aber Engine-Warnungen.
-- Weitere nicht aktive Importgruppen redaktionell pruefen und erst danach `legacy.migrationStatus` von `seeded` auf `reviewed`, `componentized` oder `live` setzen.
 - Medienbestand weiter kuratieren: Alt-Texte, Captions, Featured-Auswahl, Mood/Tags und Verwendungszweck finalisieren.
 - Local-SEO-Family-Content weiter redaktionell verbessern: die technische Ausgabe ist nativ, aber einzelne Stadt-/Keyword-Texte sollten nach privatem Online-Test weiter gegen Copy/Prioritaet/Interlinking geprueft werden.
 - Local-SEO-Seiten nach dem privaten Online-Test final redaktionell gegenlesen und bei Bedarf einzelne Seiten wieder auf Draft setzen.

@@ -3,7 +3,7 @@ import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import {
   blockParagraphs,
   homeChapters,
-  homeHeroImages,
+  homeHeroImagesFor,
   homeJournalCards,
   homeServices,
 } from '../../lib/nativeContent'
@@ -11,6 +11,7 @@ import { getSitePageByType, type PayloadDoc } from '../../lib/payload'
 
 const providedDoc = Astro.props.doc as PayloadDoc | undefined
 const doc = providedDoc || (await getSitePageByType('home', { depth: 2 }))
+const heroImages = homeHeroImagesFor(doc)
 const statementParagraphs = blockParagraphs(doc, 'Bilder', [
   'Seit über zehn Jahren entstehen meine Serien im Spannungsfeld von Präzision und Atmosphäre — Automobile, Oldtimer, Sportwagen, Motorräder, Portraits und Landschaften. Jede Arbeit folgt einer ruhigen redaktionellen Logik: Licht, Komposition, Material, Zeit.',
   'Auftraggeber sind Marken, Sammler, Manufakturen und private Eigentümer aus Düsseldorf, Köln, Essen, Dortmund und dem gesamten Rheinland — überall dort, wo Bilder über Auflage, Sammlung oder Markenwert mitentscheiden.',
@@ -32,7 +33,7 @@ const servicesParagraphs = blockParagraphs(doc, 'Weitere Leistungen', [
 <AdoptedPageLayout legacyFile="index.html" current="home" doc={doc} ctaHref="#anfrage">
   <main>
     <section class="hero" data-theme="dark" aria-label="Intro">
-      <canvas id="hero-shader" aria-hidden="true" data-imgs={homeHeroImages.join(',')}></canvas>
+      <canvas id="hero-shader" aria-hidden="true" data-imgs={heroImages.join(',')}></canvas>
       <div class="hero-glow" aria-hidden="true"></div>
       <div class="hero-aperture" aria-hidden="true"></div>
       <div class="hero-grid">

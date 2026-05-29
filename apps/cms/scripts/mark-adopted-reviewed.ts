@@ -30,6 +30,7 @@ const requestedStatus = process.argv.find((entry) => entry.startsWith('--status=
 const targetStatus: (typeof reviewedMigrationStatuses)[number] = reviewedMigrationStatuses.includes(requestedStatus as never)
   ? (requestedStatus as (typeof reviewedMigrationStatuses)[number])
   : 'reviewed'
+const targetRenderSource = 'native-component'
 
 const asRecord = (value: unknown): DataRecord =>
   value && typeof value === 'object' && !Array.isArray(value) ? (value as DataRecord) : {}
@@ -99,7 +100,11 @@ try {
 
   console.log('Adopted Production Review Marker')
   console.log('================================')
-  console.log(write ? `Schreibe Status "${targetStatus}".` : 'Dry run. Mit --write wirklich speichern.')
+  console.log(
+    write
+      ? `Schreibe Status "${targetStatus}" und Render-Quelle "${targetRenderSource}".`
+      : 'Dry run. Mit --write wirklich speichern.',
+  )
 
   let updated = 0
   let skipped = 0
@@ -130,13 +135,13 @@ try {
     }
 
     const currentStatus = asString(legacy.migrationStatus)
-    if (reviewedMigrationStatuses.includes(currentStatus as never)) {
+    if (reviewedMigrationStatuses.includes(currentStatus as never) && renderSource === targetRenderSource) {
       skipped += 1
-      console.log(`- OK ${page.label}: bereits ${currentStatus}.`)
+      console.log(`- OK ${page.label}: bereits ${currentStatus}/${targetRenderSource}.`)
       continue
     }
 
-    if (currentStatus && currentStatus !== 'seeded') {
+    if (currentStatus && currentStatus !== 'seeded' && !reviewedMigrationStatuses.includes(currentStatus as never)) {
       skipped += 1
       console.log(`- SKIP ${page.label}: unbekannter bestehender Status "${currentStatus}" bleibt unangetastet.`)
       continue
@@ -150,6 +155,7 @@ try {
           legacy: {
             ...legacy,
             migrationStatus: targetStatus,
+            renderSource: targetRenderSource,
           },
         },
         overrideAccess: true,
@@ -157,7 +163,9 @@ try {
     }
 
     updated += 1
-    console.log(`- ${write ? 'UPDATED' : 'WOULD UPDATE'} ${page.label}: seeded -> ${targetStatus}.`)
+    console.log(
+      `- ${write ? 'UPDATED' : 'WOULD UPDATE'} ${page.label}: ${currentStatus || 'none'}/${renderSource || 'none'} -> ${targetStatus}/${targetRenderSource}.`,
+    )
   }
 
   console.log('')

@@ -324,9 +324,9 @@ export interface SitePage {
     sourceUrl?: string | null;
     migrationStatus?: ('seeded' | 'reviewed' | 'componentized' | 'live') | null;
     /**
-     * Technischer Status fuer Astro: legacy-file = Fallback aus alter Datei, payload-legacy-html = 1:1 Body kommt aus Payload, structured-blocks = vollstaendig aus strukturierten CMS-Komponenten.
+     * Technischer Status fuer Astro: legacy-file und payload-legacy-html sind reine Migrations-/Archivzustaende. native-component und structured-blocks sind release-faehige Ausgabeformen ohne rohes Body-HTML.
      */
-    renderSource?: ('legacy-file' | 'payload-legacy-html' | 'structured-blocks') | null;
+    renderSource?: ('legacy-file' | 'payload-legacy-html' | 'native-component' | 'structured-blocks') | null;
     /**
      * Aus der alten Seite extrahierter Head fuer die 1:1-Vorschau und Parity-Routen.
      */
@@ -744,9 +744,9 @@ export interface ServicePage {
     sourceUrl?: string | null;
     migrationStatus?: ('seeded' | 'reviewed' | 'componentized' | 'live') | null;
     /**
-     * Technischer Status fuer Astro: legacy-file = Fallback aus alter Datei, payload-legacy-html = 1:1 Body kommt aus Payload, structured-blocks = vollstaendig aus strukturierten CMS-Komponenten.
+     * Technischer Status fuer Astro: legacy-file und payload-legacy-html sind reine Migrations-/Archivzustaende. native-component und structured-blocks sind release-faehige Ausgabeformen ohne rohes Body-HTML.
      */
-    renderSource?: ('legacy-file' | 'payload-legacy-html' | 'structured-blocks') | null;
+    renderSource?: ('legacy-file' | 'payload-legacy-html' | 'native-component' | 'structured-blocks') | null;
     /**
      * Aus der alten Seite extrahierter Head fuer die 1:1-Vorschau und Parity-Routen.
      */
@@ -981,9 +981,9 @@ export interface PortfolioProject {
     sourceUrl?: string | null;
     migrationStatus?: ('seeded' | 'reviewed' | 'componentized' | 'live') | null;
     /**
-     * Technischer Status fuer Astro: legacy-file = Fallback aus alter Datei, payload-legacy-html = 1:1 Body kommt aus Payload, structured-blocks = vollstaendig aus strukturierten CMS-Komponenten.
+     * Technischer Status fuer Astro: legacy-file und payload-legacy-html sind reine Migrations-/Archivzustaende. native-component und structured-blocks sind release-faehige Ausgabeformen ohne rohes Body-HTML.
      */
-    renderSource?: ('legacy-file' | 'payload-legacy-html' | 'structured-blocks') | null;
+    renderSource?: ('legacy-file' | 'payload-legacy-html' | 'native-component' | 'structured-blocks') | null;
     /**
      * Aus der alten Seite extrahierter Head fuer die 1:1-Vorschau und Parity-Routen.
      */
@@ -1081,9 +1081,9 @@ export interface PortfolioCategory {
     sourceUrl?: string | null;
     migrationStatus?: ('seeded' | 'reviewed' | 'componentized' | 'live') | null;
     /**
-     * Technischer Status fuer Astro: legacy-file = Fallback aus alter Datei, payload-legacy-html = 1:1 Body kommt aus Payload, structured-blocks = vollstaendig aus strukturierten CMS-Komponenten.
+     * Technischer Status fuer Astro: legacy-file und payload-legacy-html sind reine Migrations-/Archivzustaende. native-component und structured-blocks sind release-faehige Ausgabeformen ohne rohes Body-HTML.
      */
-    renderSource?: ('legacy-file' | 'payload-legacy-html' | 'structured-blocks') | null;
+    renderSource?: ('legacy-file' | 'payload-legacy-html' | 'native-component' | 'structured-blocks') | null;
     /**
      * Aus der alten Seite extrahierter Head fuer die 1:1-Vorschau und Parity-Routen.
      */
@@ -1297,9 +1297,9 @@ export interface JournalPost {
     sourceUrl?: string | null;
     migrationStatus?: ('seeded' | 'reviewed' | 'componentized' | 'live') | null;
     /**
-     * Technischer Status fuer Astro: legacy-file = Fallback aus alter Datei, payload-legacy-html = 1:1 Body kommt aus Payload, structured-blocks = vollstaendig aus strukturierten CMS-Komponenten.
+     * Technischer Status fuer Astro: legacy-file und payload-legacy-html sind reine Migrations-/Archivzustaende. native-component und structured-blocks sind release-faehige Ausgabeformen ohne rohes Body-HTML.
      */
-    renderSource?: ('legacy-file' | 'payload-legacy-html' | 'structured-blocks') | null;
+    renderSource?: ('legacy-file' | 'payload-legacy-html' | 'native-component' | 'structured-blocks') | null;
     /**
      * Aus der alten Seite extrahierter Head fuer die 1:1-Vorschau und Parity-Routen.
      */
@@ -1517,9 +1517,9 @@ export interface LocalSeoPage {
     sourceUrl?: string | null;
     migrationStatus?: ('seeded' | 'reviewed' | 'componentized' | 'live') | null;
     /**
-     * Technischer Status fuer Astro: legacy-file = Fallback aus alter Datei, payload-legacy-html = 1:1 Body kommt aus Payload, structured-blocks = vollstaendig aus strukturierten CMS-Komponenten.
+     * Technischer Status fuer Astro: legacy-file und payload-legacy-html sind reine Migrations-/Archivzustaende. native-component und structured-blocks sind release-faehige Ausgabeformen ohne rohes Body-HTML.
      */
-    renderSource?: ('legacy-file' | 'payload-legacy-html' | 'structured-blocks') | null;
+    renderSource?: ('legacy-file' | 'payload-legacy-html' | 'native-component' | 'structured-blocks') | null;
     /**
      * Aus der alten Seite extrahierter Head fuer die 1:1-Vorschau und Parity-Routen.
      */

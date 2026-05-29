@@ -533,7 +533,9 @@ async function upsertBySlug(collection: string, slug: string, data: Record<strin
   }
 
   if (existing.docs[0]?.id) {
-    const currentMigrationStatus = (existing.docs[0] as any)?.legacy?.migrationStatus
+    const currentLegacy = (existing.docs[0] as any)?.legacy
+    const currentMigrationStatus = currentLegacy?.migrationStatus
+    const currentRenderSource = currentLegacy?.renderSource
     if (
       currentMigrationStatus &&
       currentMigrationStatus !== 'seeded' &&
@@ -543,6 +545,9 @@ async function upsertBySlug(collection: string, slug: string, data: Record<strin
       payloadData.legacy = {
         ...(payloadData.legacy as Record<string, unknown>),
         migrationStatus: currentMigrationStatus,
+        ...(currentRenderSource === 'native-component' || currentRenderSource === 'structured-blocks'
+          ? { renderSource: currentRenderSource }
+          : {}),
       }
     }
 

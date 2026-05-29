@@ -1,0 +1,32 @@
+{
+  "summary": {
+    "assetMode": "none",
+    "assets": 0,
+    "failures": 0,
+    "origin": "https://matthiasramahi.de",
+    "pages": 2,
+    "warmedAt": "2026-05-29T10:08:18.633Z"
+  },
+  "failures": [],
+  "pages": [
+    {
+      "bytes": 11390,
+      "cache": "HIT",
+      "contentType": "text/html; charset=utf-8",
+      "error": "",
+      "ok": true,
+      "status": 200,
+      "url": "https://matthiasramahi.de/contact.html"
+    },
+    {
+      "bytes": 16835,
+      "cache": "HIT",
+      "contentType": "text/html; charset=utf-8",
+      "error": "",
+      "ok": true,
+      "status": 200,
+      "url": "https://matthiasramahi.de/datenschutz.html"
+    }
+  ],
+  "assets": []
+}

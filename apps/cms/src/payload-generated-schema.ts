@@ -304,7 +304,7 @@ export const site_pages = sqliteTable(
       enum: ["seeded", "reviewed", "componentized", "live"],
     }).default("seeded"),
     legacy_renderSource: text("legacy_render_source", {
-      enum: ["legacy-file", "payload-legacy-html", "structured-blocks"],
+      enum: ["legacy-file", "payload-legacy-html", "native-component", "structured-blocks"],
     }).default("legacy-file"),
     legacy_renderedHeadHtml: text("legacy_rendered_head_html"),
     legacy_renderedBodyHtml: text("legacy_rendered_body_html"),
@@ -667,7 +667,7 @@ export const _site_pages_v = sqliteTable(
       enum: ["seeded", "reviewed", "componentized", "live"],
     }).default("seeded"),
     version_legacy_renderSource: text("version_legacy_render_source", {
-      enum: ["legacy-file", "payload-legacy-html", "structured-blocks"],
+      enum: ["legacy-file", "payload-legacy-html", "native-component", "structured-blocks"],
     }).default("legacy-file"),
     version_legacy_renderedHeadHtml: text("version_legacy_rendered_head_html"),
     version_legacy_renderedBodyHtml: text("version_legacy_rendered_body_html"),
@@ -1134,7 +1134,7 @@ export const service_pages = sqliteTable(
       enum: ["seeded", "reviewed", "componentized", "live"],
     }).default("seeded"),
     legacy_renderSource: text("legacy_render_source", {
-      enum: ["legacy-file", "payload-legacy-html", "structured-blocks"],
+      enum: ["legacy-file", "payload-legacy-html", "native-component", "structured-blocks"],
     }).default("legacy-file"),
     legacy_renderedHeadHtml: text("legacy_rendered_head_html"),
     legacy_renderedBodyHtml: text("legacy_rendered_body_html"),
@@ -1625,7 +1625,7 @@ export const _service_pages_v = sqliteTable(
       enum: ["seeded", "reviewed", "componentized", "live"],
     }).default("seeded"),
     version_legacy_renderSource: text("version_legacy_render_source", {
-      enum: ["legacy-file", "payload-legacy-html", "structured-blocks"],
+      enum: ["legacy-file", "payload-legacy-html", "native-component", "structured-blocks"],
     }).default("legacy-file"),
     version_legacy_renderedHeadHtml: text("version_legacy_rendered_head_html"),
     version_legacy_renderedBodyHtml: text("version_legacy_rendered_body_html"),
@@ -2039,7 +2039,7 @@ export const portfolio_projects = sqliteTable(
       enum: ["seeded", "reviewed", "componentized", "live"],
     }).default("seeded"),
     legacy_renderSource: text("legacy_render_source", {
-      enum: ["legacy-file", "payload-legacy-html", "structured-blocks"],
+      enum: ["legacy-file", "payload-legacy-html", "native-component", "structured-blocks"],
     }).default("legacy-file"),
     legacy_renderedHeadHtml: text("legacy_rendered_head_html"),
     legacy_renderedBodyHtml: text("legacy_rendered_body_html"),
@@ -2497,7 +2497,7 @@ export const _portfolio_projects_v = sqliteTable(
       enum: ["seeded", "reviewed", "componentized", "live"],
     }).default("seeded"),
     version_legacy_renderSource: text("version_legacy_render_source", {
-      enum: ["legacy-file", "payload-legacy-html", "structured-blocks"],
+      enum: ["legacy-file", "payload-legacy-html", "native-component", "structured-blocks"],
     }).default("legacy-file"),
     version_legacy_renderedHeadHtml: text("version_legacy_rendered_head_html"),
     version_legacy_renderedBodyHtml: text("version_legacy_rendered_body_html"),
@@ -2639,7 +2639,7 @@ export const portfolio_categories = sqliteTable(
       enum: ["seeded", "reviewed", "componentized", "live"],
     }).default("seeded"),
     legacy_renderSource: text("legacy_render_source", {
-      enum: ["legacy-file", "payload-legacy-html", "structured-blocks"],
+      enum: ["legacy-file", "payload-legacy-html", "native-component", "structured-blocks"],
     }).default("legacy-file"),
     legacy_renderedHeadHtml: text("legacy_rendered_head_html"),
     legacy_renderedBodyHtml: text("legacy_rendered_body_html"),
@@ -2735,7 +2735,7 @@ export const _portfolio_categories_v = sqliteTable(
       enum: ["seeded", "reviewed", "componentized", "live"],
     }).default("seeded"),
     version_legacy_renderSource: text("version_legacy_render_source", {
-      enum: ["legacy-file", "payload-legacy-html", "structured-blocks"],
+      enum: ["legacy-file", "payload-legacy-html", "native-component", "structured-blocks"],
     }).default("legacy-file"),
     version_legacy_renderedHeadHtml: text("version_legacy_rendered_head_html"),
     version_legacy_renderedBodyHtml: text("version_legacy_rendered_body_html"),
@@ -3132,7 +3132,7 @@ export const journal_posts = sqliteTable(
       enum: ["seeded", "reviewed", "componentized", "live"],
     }).default("seeded"),
     legacy_renderSource: text("legacy_render_source", {
-      enum: ["legacy-file", "payload-legacy-html", "structured-blocks"],
+      enum: ["legacy-file", "payload-legacy-html", "native-component", "structured-blocks"],
     }).default("legacy-file"),
     legacy_renderedHeadHtml: text("legacy_rendered_head_html"),
     legacy_renderedBodyHtml: text("legacy_rendered_body_html"),
@@ -3540,7 +3540,7 @@ export const _journal_posts_v = sqliteTable(
       enum: ["seeded", "reviewed", "componentized", "live"],
     }).default("seeded"),
     version_legacy_renderSource: text("version_legacy_render_source", {
-      enum: ["legacy-file", "payload-legacy-html", "structured-blocks"],
+      enum: ["legacy-file", "payload-legacy-html", "native-component", "structured-blocks"],
     }).default("legacy-file"),
     version_legacy_renderedHeadHtml: text("version_legacy_rendered_head_html"),
     version_legacy_renderedBodyHtml: text("version_legacy_rendered_body_html"),
@@ -3949,7 +3949,7 @@ export const local_seo_pages = sqliteTable(
       enum: ["seeded", "reviewed", "componentized", "live"],
     }).default("seeded"),
     legacy_renderSource: text("legacy_render_source", {
-      enum: ["legacy-file", "payload-legacy-html", "structured-blocks"],
+      enum: ["legacy-file", "payload-legacy-html", "native-component", "structured-blocks"],
     }).default("legacy-file"),
     legacy_renderedHeadHtml: text("legacy_rendered_head_html"),
     legacy_renderedBodyHtml: text("legacy_rendered_body_html"),
@@ -4367,7 +4367,7 @@ export const _local_seo_pages_v = sqliteTable(
       enum: ["seeded", "reviewed", "componentized", "live"],
     }).default("seeded"),
     version_legacy_renderSource: text("version_legacy_render_source", {
-      enum: ["legacy-file", "payload-legacy-html", "structured-blocks"],
+      enum: ["legacy-file", "payload-legacy-html", "native-component", "structured-blocks"],
     }).default("legacy-file"),
     version_legacy_renderedHeadHtml: text("version_legacy_rendered_head_html"),
     version_legacy_renderedBodyHtml: text("version_legacy_rendered_body_html"),

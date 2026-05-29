@@ -18,12 +18,19 @@
     var b = document.getElementById('pdFrameB');
     if(!a || !b) return;
 
-    var POOL = [
+    var desktopPool = [
       'assets/optimized/mpjpgo2b-dsc3032-generase-1-1920.webp',
       'assets/optimized/mpjpgq5s-dsc2316-1920.webp',
       'assets/optimized/mpjpgsdt-dsc2310-1920.webp',
       'assets/optimized/mpjpgu5f-dsc3892-1920.webp'
     ];
+    var mobilePool = [
+      'assets/optimized/mpjpgo2b-dsc3032-generase-1-1280.webp',
+      'assets/optimized/mpjpgq5s-dsc2316-1280.webp',
+      'assets/optimized/mpjpgsdt-dsc2310-1280.webp',
+      'assets/optimized/mpjpgu5f-dsc3892-1280.webp'
+    ];
+    var POOL = matchMedia('(max-width:900px)').matches ? mobilePool : desktopPool;
 
     // preload images quietly so each develop-in starts from cache
     POOL.forEach(function(src){ var i=new Image(); i.src=src; });
@@ -40,12 +47,13 @@
       frame.style.setProperty('--cy', cy + '%');
     }
 
-    // initial frame: A loads POOL[0] and develops in immediately
-    setFrameImage(a, POOL[0]);
-    setInkOrigin(a);
-    // force reflow then apply class so animation triggers on first paint
-    void a.offsetWidth;
-    a.classList.add('is-in');
+    // First frame is rendered in HTML so LCP does not wait for deferred JS.
+    if(!a.classList.contains('is-in')){
+      setFrameImage(a, POOL[0]);
+      setInkOrigin(a);
+      void a.offsetWidth;
+      a.classList.add('is-in');
+    }
 
     if(reduce){ return; } // single static frame is enough for reduced-motion
 

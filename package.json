@@ -16,7 +16,11 @@
     "seo:fix": "node tools/regenerate-local-pages-from-category-templates.mjs && node tools/strengthen-photography-clusters.mjs && node tools/generate-blog-support-pages.mjs && node tools/optimize-legacy-media.mjs && node tools/harden-legacy-seo.mjs && node tools/harden-legacy-performance.mjs && node tools/replace-heavy-legacy-image-references.mjs && node tools/extract-repeated-inline-assets.mjs",
     "legacy:freeze": "node tools/freeze-legacy-reference.mjs",
     "perf:audit": "node tools/performance-audit.mjs --target=apps/web/dist/client",
+    "lighthouse:audit": "node tools/lighthouse-audit.mjs",
+    "cache:warmup": "node tools/warmup-deployment-cache.mjs",
+    "cache:warmup:production": "node tools/warmup-deployment-cache.mjs --origin=https://matthiasramahi.de --asset-mode=critical --concurrency=8",
     "quality:audit": "corepack pnpm web:build && corepack pnpm seo:audit:strict && corepack pnpm perf:audit && node tools/run-site-quality-audit.mjs",
+    "quality:full": "corepack pnpm quality:audit && corepack pnpm lighthouse:audit",
     "production:check": "node tools/run-production-check.mjs",
     "local:start": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/start-local.ps1",
     "local:stop": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/stop-local.ps1",
@@ -49,5 +53,9 @@
     "web:test:legacy-routes": "corepack pnpm --filter @matthias-ramahi/web test:legacy-routes",
     "web:test:site-quality": "corepack pnpm --filter @matthias-ramahi/web test:site-quality",
     "web:test:visual": "corepack pnpm --filter @matthias-ramahi/web test:visual"
+  },
+  "devDependencies": {
+    "chrome-launcher": "^1.2.1",
+    "lighthouse": "^13.3.0"
   }
 }

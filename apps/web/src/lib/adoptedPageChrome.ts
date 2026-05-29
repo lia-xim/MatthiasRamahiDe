@@ -26,7 +26,7 @@ const sharedStyles = ['/assets/site-chrome.css', '/assets/native-performance.css
 const automotiveChrome: AdoptedPageChrome = {
   current: 'fotografie',
   ogImage: '/assets/optimized/mpjpgo2b-dsc3032-generase-1-1920.webp',
-  preloadImages: ['/assets/optimized/mpjpgo2b-dsc3032-generase-1-1920.webp'],
+  preloadImages: ['/assets/optimized/mpjpgo2b-dsc3032-generase-1-1280.webp'],
   scripts: [...siteChromeScript, '/assets/native-automobil.js'],
   stylesheets: [...sharedStyles, '/assets/native-automobil.css'],
 }
@@ -34,7 +34,10 @@ const automotiveChrome: AdoptedPageChrome = {
 const sportwagenChrome: AdoptedPageChrome = {
   current: 'fotografie',
   ogImage: '/assets/optimized/mpixi92f-dsc3032-generase-1-1920.webp',
-  preloadImages: ['/assets/optimized/mpixi92f-dsc3032-generase-1-1920.webp'],
+  preloadImages: [
+    '/assets/optimized/mpixih9c-dsc3982-960.webp',
+    '/assets/optimized/mpixi92f-dsc3032-generase-1-960.webp',
+  ],
   scripts: [...siteChromeScript, '/assets/native-sportwagen.js'],
   stylesheets: [...sharedStyles, '/assets/native-sportwagen.css'],
 }
@@ -42,7 +45,7 @@ const sportwagenChrome: AdoptedPageChrome = {
 const oldtimerChrome: AdoptedPageChrome = {
   current: 'fotografie',
   ogImage: '/assets/optimized/assets-photos-oldtimer-stage-1920.webp',
-  preloadImages: ['/assets/optimized/assets-photos-oldtimer-stage-1920.webp'],
+  preloadImages: ['/assets/optimized/assets-photos-oldtimer-stage-1280.webp'],
   scripts: [...siteChromeScript, '/assets/native-oldtimer.js'],
   stylesheets: [...sharedStyles, '/assets/native-oldtimer.css'],
 }
