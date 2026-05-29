@@ -235,5 +235,7 @@ Aktueller Pruefstand:
 - Stand 2026-05-29: Route-Audit erfolgreich, 217/217 bisherige HTML-Routen werden nativ aus Astro erzeugt.
 - Stand 2026-05-29: Produktionsassets sind im Astro-Code auf `native-*` umgestellt; der Prebuild heisst `sync-public-assets` und kopiert keine Root-HTML-Dateien nach `apps/web/public`.
 - Stand 2026-05-29: `native:guard` ist Teil von `production:check` und verhindert Rueckfaelle durch Public-HTML-Schatten, Public-`legacy-*` Assets oder rohe Legacy-Render-Marker im Astro-Runtime-Code.
+- Stand 2026-05-29: `native:guard` prueft zusaetzlich, dass Astro-Runtime-Code keine unerwarteten `node:fs`-Zugriffe bekommt, der Adopted-Critical-Inliner nur CSS-Assets lesen darf und der Route-Audit den nativen Astro-Layout-Marker erzwingt.
 - Stand 2026-05-29: Visual Regression wird fuer stabile lokale Laeufe in drei Gruppen ausgefuehrt: Kern-/Fotografieseiten, Service/About/Contact/Journal und Local-SEO-Familien. Alle Gruppen bleiben unter der harten 5%-Grenze; Warnungen ueber dem 2%-Zielwert sind dokumentierte Bild-/Lazyload-Differenzen.
+- Stand 2026-05-29: `production:check` fuehrt diese drei Gruppen automatisch aus, streamt die einzelnen Vergleichsergebnisse und beendet die temporaere Astro-Preview nach dem Lauf wieder. Der letzte Komplettlauf war erfolgreich.
 - Stand 2026-05-29: Site-Quality-Audit ueber 226 Routen und 452 Desktop-/Mobile-Checks ist ohne Failures. Uebrig sind nur Long-Task-Warnungen fuer bild-/animationsreiche Seiten; Payload-Medien von `cms.matthiasramahi.de` werden als First-Party behandelt.

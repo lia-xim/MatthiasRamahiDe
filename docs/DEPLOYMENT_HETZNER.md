@@ -25,6 +25,7 @@ Diese Notiz beschreibt den aktuellen Zielstand: Payload/Postgres laufen auf dem 
 - `vercel.json`: Vercel-Projektkonfiguration fuer Astro.
 - `tools/run-vercel-build.mjs`: lokaler Vercel-Build mit Astro/Vercel-Adapter.
 - `tools/copy-vercel-output.mjs`: kopiert `apps/web/.vercel/output` nach `.vercel/output`.
+- `.nvmrc` und `.node-version`: lokale Runtime-Pins auf Node 22 passend zu `package.json` und den Dockerfiles.
 
 ## Payload auf Hetzner
 
@@ -161,7 +162,7 @@ corepack pnpm vercel:build
 npx vercel@latest deploy --prebuilt --prod --yes --archive=tgz --scope lia-xims-projects
 ```
 
-Hinweis: Der lokale Node-24-Hinweis beim Build ist nicht kritisch; Vercel fuehrt Serverless Functions mit Node 22 aus.
+Hinweis: Das Repository ist auf Node 22 gepinnt (`package.json`, `.nvmrc`, `.node-version`, Dockerfiles). Falls lokal noch Node 24 aktiv ist, erzeugt `pnpm` Engine-Warnungen; fuer Release-Checks und manuelle Vercel-Builds sollte die Shell auf Node 22 wechseln. Vercel richtet sich nach der `engines.node`-Angabe.
 
 ### Live-CMS-Seiten
 

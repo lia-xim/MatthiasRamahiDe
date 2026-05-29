@@ -4,9 +4,7 @@ import path from 'node:path'
 
 const repoRoot = path.resolve(process.cwd())
 const outputPath = path.join(repoRoot, 'docs', 'legacy-reference-manifest.json')
-const htmlFiles = (await fs.readdir(repoRoot))
-  .filter((file) => file.endsWith('.html'))
-  .sort((a, b) => a.localeCompare(b))
+const checkMode = process.argv.includes('--check')
 
 const decodeEntities = (value = '') =>
   value
@@ -50,48 +48,92 @@ const contentTypeFor = (file) => {
   return 'supporting-page'
 }
 
-const entries = []
+async function buildManifest() {
+  const htmlFiles = (await fs.readdir(repoRoot))
+    .filter((file) => file.endsWith('.html'))
+    .sort((a, b) => a.localeCompare(b))
 
-for (const file of htmlFiles) {
-  const absolutePath = path.join(repoRoot, file)
-  const html = await fs.readFile(absolutePath, 'utf8')
-  const stat = await fs.stat(absolutePath)
-  const title = cleanText(html.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1])
-  const description = cleanText(attr(html.match(/<meta\s+name=["']description["'][^>]*>/i)?.[0] || '', 'content'))
-  const canonicalUrl = attr(html.match(/<link\b(?=[^>]*\brel=["']canonical["'])[^>]*>/i)?.[0] || '', 'href')
-  const h1 = cleanText(html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i)?.[1])
-  const hash = crypto.createHash('sha256').update(html).digest('hex')
+  const entries = []
 
-  entries.push({
-    file,
-    type: contentTypeFor(file),
-    sha256: hash,
-    bytes: stat.size,
-    mtime: stat.mtime.toISOString(),
-    title,
-    description,
-    h1,
-    canonicalUrl,
+  for (const file of htmlFiles) {
+    const absolutePath = path.join(repoRoot, file)
+    const html = await fs.readFile(absolutePath, 'utf8')
+    const stat = await fs.stat(absolutePath)
+    const title = cleanText(html.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1])
+    const description = cleanText(attr(html.match(/<meta\s+name=["']description["'][^>]*>/i)?.[0] || '', 'content'))
+    const canonicalUrl = attr(html.match(/<link\b(?=[^>]*\brel=["']canonical["'])[^>]*>/i)?.[0] || '', 'href')
+    const h1 = cleanText(html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i)?.[1])
+    const hash = crypto.createHash('sha256').update(html).digest('hex')
+
+    entries.push({
+      file,
+      type: contentTypeFor(file),
+      sha256: hash,
+      bytes: stat.size,
+      title,
+      description,
+      h1,
+      canonicalUrl,
+    })
+  }
+
+  return {
+    generatedAt: new Date().toISOString(),
+    description:
+      'Current root HTML files frozen as the visual reference for the Astro/Payload migration. Do not treat these files as deleted until their matching Astro/Payload route is adopted and verified.',
+    totals: {
+      htmlFiles: entries.length,
+      byType: entries.reduce((acc, entry) => {
+        acc[entry.type] = (acc[entry.type] || 0) + 1
+        return acc
+      }, {}),
+    },
+    entries,
+  }
+}
+
+function comparableManifest(manifest) {
+  return {
+    description: manifest.description,
+    totals: manifest.totals,
+    entries: (manifest.entries || []).map(({ mtime, ...entry }) => entry),
+  }
+}
+
+function explainDiff(expected, actual) {
+  const expectedEntries = new Map((expected.entries || []).map((entry) => [entry.file, entry]))
+  const actualEntries = new Map((actual.entries || []).map((entry) => [entry.file, entry]))
+  const missing = [...expectedEntries.keys()].filter((file) => !actualEntries.has(file))
+  const added = [...actualEntries.keys()].filter((file) => !expectedEntries.has(file))
+  const changed = [...actualEntries.keys()].filter((file) => {
+    if (!expectedEntries.has(file)) return false
+    return JSON.stringify(expectedEntries.get(file)) !== JSON.stringify(actualEntries.get(file))
   })
+
+  return { added, changed, missing }
 }
 
-const manifest = {
-  generatedAt: new Date().toISOString(),
-  description:
-    'Current root HTML files frozen as the visual reference for the Astro/Payload migration. Do not treat these files as deleted until their matching Astro/Payload route is adopted and verified.',
-  totals: {
-    htmlFiles: entries.length,
-    byType: entries.reduce((acc, entry) => {
-      acc[entry.type] = (acc[entry.type] || 0) + 1
-      return acc
-    }, {}),
-  },
-  entries,
+const manifest = await buildManifest()
+
+if (checkMode) {
+  const existing = JSON.parse(await fs.readFile(outputPath, 'utf8'))
+  const expected = comparableManifest(existing)
+  const actual = comparableManifest(manifest)
+
+  if (JSON.stringify(expected) !== JSON.stringify(actual)) {
+    const diff = explainDiff(expected, actual)
+    console.error('Legacy reference manifest is stale. Run `corepack pnpm legacy:freeze` after deliberately accepting the current root HTML baseline.')
+    if (diff.added.length > 0) console.error(`Added root HTML files: ${diff.added.slice(0, 20).join(', ')}`)
+    if (diff.missing.length > 0) console.error(`Missing root HTML files: ${diff.missing.slice(0, 20).join(', ')}`)
+    if (diff.changed.length > 0) console.error(`Changed root HTML files: ${diff.changed.slice(0, 20).join(', ')}`)
+    process.exit(1)
+  }
+
+  console.log(`Legacy reference manifest is current (${manifest.entries.length} HTML files).`)
+} else {
+  await fs.mkdir(path.dirname(outputPath), { recursive: true })
+  await fs.writeFile(outputPath, `${JSON.stringify(manifest, null, 2)}\n`)
+
+  console.log(`Legacy reference manifest written to ${outputPath}`)
+  console.log(`Frozen ${manifest.entries.length} HTML files.`)
 }
-
-await fs.mkdir(path.dirname(outputPath), { recursive: true })
-await fs.writeFile(outputPath, `${JSON.stringify(manifest, null, 2)}\n`)
-
-console.log(`Legacy reference manifest written to ${outputPath}`)
-console.log(`Frozen ${entries.length} HTML files.`)
-

@@ -87,6 +87,8 @@ Die neutralen Uebersichtsseiten `fotografie-duesseldorf.html`, `fotografie-nrw.h
 
 ## Lokales Setup
 
+Runtime: Das Repository ist auf Node `22.x` ausgelegt. `package.json`, `.nvmrc` und `.node-version` zeigen alle auf Node 22; Docker nutzt ebenfalls `node:22-alpine`. Wenn lokal Node 24 oder neuer aktiv ist, bauen die Apps aktuell zwar, aber `pnpm` zeigt Engine-Warnungen. Vor Release-Checks sollte lokal Node 22 aktiv sein.
+
 Schnellstart ohne Docker/Postgres:
 
 ```powershell
@@ -310,6 +312,7 @@ Aktueller Stand vom 2026-05-29:
 - Finaler Asset-Entkopplungslauf 2026-05-29: `corepack pnpm --filter @matthias-ramahi/web build` laeuft mit `sync-public-assets`, kopiert 174/174 referenzierte native Assets ohne Root-HTML-Scan und nutzt im Astro-Produktionscode keine `legacy-*` Assetpfade mehr.
 - Finaler Site-Quality-Audit 2026-05-29: `corepack pnpm --filter @matthias-ramahi/web test:site-quality -- --route-source=all --strict --timeout-ms=45000` erfolgreich, 452 Checks ueber 226 Routen, 0 Failures. Payload-Medien von `cms.matthiasramahi.de` gelten als First-Party; uebrig sind nur Long-Task-Warnungen auf bild-/animationsreichen Seiten.
 - Bild-/Asset-Haertung 2026-05-29: Lazyload-Bilder haben echte `src`-Fallbacks, die mobile Sticky-CTA erscheint erst nach Scrolltiefe, und `tools/prune-unused-dist-assets.mjs` behandelt Root-Assets wie `assets/...` und `_astro/...` korrekt.
+- Release-Check-Haertung 2026-05-29: `production:check` laeuft wieder vollstaendig durch. Der Runner teilt die Visual Regression in drei Gruppen, streamt Vergleichsergebnisse fortlaufend, startet bei belegtem Port automatisch eine temporaere Astro-Preview auf einem freien Port und raeumt sie danach auf. Letzter Lauf: CMS Production/SEO Audit 0 Errors / 0 Warnings, Web- und CMS-Build erfolgreich, `native:guard` erfolgreich, Route-Audit 217/217, alle drei Visual-Gruppen unter der harten Fail-Grenze.
 
 Weitere QA-Befehle:
 
@@ -342,6 +345,8 @@ Aktueller Release-Audit nach der letzten Haertung:
 
 `web:test:visual` nutzt ein zweistufiges Modell: 2% ist das Ziel und erzeugt Warnungen, 5% ist die harte Fail-Grenze. Das ist noetig, weil einige Referenzseiten dynamische JS-/Lazyload-Bildstrecken enthalten, deren Screenshot-Pixel trotz gleicher Route und gleicher Bildquellen leicht schwanken. Die Test-Baseline wird ausserhalb der Astro-App aus den Root-HTML-Dateien serviert und normalisiert Root-relative Assets, CSS/JS und dynamisch erzeugte Bildpfade ueber `<base href="/">`.
 
+`production:check` fuehrt die Visual Regression standardmaessig in drei Gruppen aus und setzt `VISUAL_SCREENSHOT_DELAY_MS=1000`, falls kein anderer Wert konfiguriert ist. Der Visual-Runner schreibt jedes Ergebnis direkt nach dem Vergleich, damit lange Laeufe nicht wie eingefroren wirken und temporaere Astro-Preview-Prozesse im Fehlerfall zuverlaessig aufgeraeumt werden koennen.
+
 ## Deployment
 
 Hetzner-Hinweise stehen in `docs/DEPLOYMENT_HETZNER.md`.
@@ -358,7 +363,7 @@ Kurzfassung:
 ## Offene TODOs
 
 - Bewusste Restentscheidung: die Root-HTML-Dateien koennen nach expliziter Archiv-/Loeschfreigabe aus dem Arbeitsbaum entfernt oder in ein separates Archiv verschoben werden. Sie sind aktuell keine Runtime-Abhaengigkeit mehr, sondern nur noch QA-Referenz.
-- Lokale Entwicklung und Produktion sollten auf Node 22.x standardisiert werden. Node 24 baut aktuell, erzeugt aber Engine-Warnungen.
+- Lokale Maschine auf Node 22.x umstellen, wenn noch Node 24 aktiv ist. Das Repository enthaelt jetzt `.nvmrc` und `.node-version`; die aktive Shell muss den Wechsel trotzdem ausfuehren.
 - Medienbestand weiter kuratieren: Alt-Texte, Captions, Featured-Auswahl, Mood/Tags und Verwendungszweck finalisieren.
 - Local-SEO-Family-Content weiter redaktionell verbessern: die technische Ausgabe ist nativ, aber einzelne Stadt-/Keyword-Texte sollten nach privatem Online-Test weiter gegen Copy/Prioritaet/Interlinking geprueft werden.
 - Local-SEO-Seiten nach dem privaten Online-Test final redaktionell gegenlesen und bei Bedarf einzelne Seiten wieder auf Draft setzen.

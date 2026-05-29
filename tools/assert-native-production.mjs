@@ -7,8 +7,13 @@ const webSourceRoot = path.join(repoRoot, 'apps', 'web', 'src')
 const publicRoot = path.join(repoRoot, 'apps', 'web', 'public')
 const publicAssetRoot = path.join(publicRoot, 'assets')
 const assetSyncScript = path.join(repoRoot, 'tools', 'sync-public-assets.mjs')
+const routeAuditScript = path.join(repoRoot, 'apps', 'web', 'scripts', 'legacy-route-audit.mjs')
 const textExtensions = new Set(['.astro', '.css', '.html', '.js', '.jsx', '.json', '.mjs', '.ts', '.tsx'])
 const failures = []
+const allowedWebRuntimeFsImports = new Map([
+  ['apps/web/src/layouts/AdoptedPageLayout.astro', 'CSS-only critical asset inlining for adopted native pages'],
+  ['apps/web/src/lib/contact/email.ts', 'contact retry queue persistence'],
+])
 
 async function exists(filePath) {
   try {
@@ -72,6 +77,30 @@ async function assertNoProductionLegacyRenderMarkers() {
   }
 }
 
+async function assertNoUnexpectedWebRuntimeFsAccess() {
+  const files = await collectFiles(webSourceRoot, (file) => textExtensions.has(path.extname(file).toLowerCase()))
+
+  for (const file of files) {
+    const text = await fs.readFile(file, 'utf8')
+    if (!/from\s+['"]node:fs(?:\/promises)?['"]/.test(text)) continue
+
+    const rel = relative(file)
+    if (!allowedWebRuntimeFsImports.has(rel)) {
+      failures.push(`${rel} imports node:fs in Astro runtime code without an allowlisted native-production reason.`)
+    }
+  }
+}
+
+async function assertAdoptedLayoutCannotInlineHtml() {
+  const rel = 'apps/web/src/layouts/AdoptedPageLayout.astro'
+  const file = path.join(repoRoot, rel)
+  const text = await fs.readFile(file, 'utf8')
+
+  if (!/cleanHref\.startsWith\('assets\/'\)\s*\|\|\s*!cleanHref\.endsWith\('\.css'\)/.test(text)) {
+    failures.push(`${rel} must keep critical inlining limited to CSS assets, not root HTML or arbitrary files.`)
+  }
+}
+
 async function assertAssetSyncIsNativeByDefault() {
   const text = await fs.readFile(assetSyncScript, 'utf8')
   if (!text.includes('SYNC_INCLUDE_ROOT_REFERENCE_HTML')) {
@@ -82,10 +111,23 @@ async function assertAssetSyncIsNativeByDefault() {
   }
 }
 
+async function assertRouteAuditRequiresNativeLayoutMarker() {
+  const text = await fs.readFile(routeAuditScript, 'utf8')
+  if (!text.includes("document.body?.dataset?.cmsLayoutSource")) {
+    failures.push('apps/web/scripts/legacy-route-audit.mjs must collect the native Astro layout marker.')
+  }
+  if (!text.includes("'native-adopted-chrome'") || !text.includes("'base-layout'")) {
+    failures.push('apps/web/scripts/legacy-route-audit.mjs must require native Astro layout sources for migrated HTML routes.')
+  }
+}
+
 await assertNoPublicHtml()
 await assertNoPublicLegacyAssets()
 await assertNoProductionLegacyRenderMarkers()
+await assertNoUnexpectedWebRuntimeFsAccess()
+await assertAdoptedLayoutCannotInlineHtml()
 await assertAssetSyncIsNativeByDefault()
+await assertRouteAuditRequiresNativeLayoutMarker()
 
 if (failures.length > 0) {
   console.error('Native production guard failed:')
@@ -93,4 +135,6 @@ if (failures.length > 0) {
   process.exit(1)
 }
 
-console.log('Native production guard passed: no public HTML shadows, no public legacy assets, no raw legacy web render path.')
+console.log(
+  'Native production guard passed: no public HTML shadows, no public legacy assets, no raw legacy web render path, no unexpected runtime fs access, and layout-marker route audit enforced.',
+)

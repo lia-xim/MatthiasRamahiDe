@@ -217,6 +217,12 @@ if (viewportsToCheck.length === 0) {
   process.exit(1)
 }
 
+console.log(
+  `Visual regression checking ${pagesToCheck.length} page(s) across ${viewportsToCheck.length} viewport(s): ${pagesToCheck
+    .map((page) => page.name)
+    .join(', ')}`,
+)
+
 const contentTypes = new Map([
   ['.avif', 'image/avif'],
   ['.css', 'text/css; charset=utf-8'],
@@ -693,6 +699,15 @@ async function comparePair(page, pageConfig, viewport) {
   }
 }
 
+function printResult(result) {
+  const percent = (result.mismatchRatio * 100).toFixed(3)
+  const allowed = (result.allowedMismatchRatio * 100).toFixed(3)
+  const target = (result.targetMismatchRatio * 100).toFixed(3)
+  console.log(
+    `${result.name}/${result.viewport}: ${percent}% mismatch (${result.mismatched} pixels, target ${target}%, hard limit ${allowed}%)`,
+  )
+}
+
 const legacyServer = configuredLegacyBaseUrl
   ? { baseUrl: configuredLegacyBaseUrl, close: async () => undefined }
   : await createLegacyReferenceServer()
@@ -710,7 +725,9 @@ try {
     for (const viewport of viewportsToCheck) {
       const page = await browser.newPage()
       try {
-        results.push(await comparePair(page, pageConfig, viewport))
+        const result = await comparePair(page, pageConfig, viewport)
+        results.push(result)
+        printResult(result)
       } finally {
         await page.close()
       }
@@ -726,13 +743,6 @@ const failed = results.filter((result) => result.mismatchRatio > result.allowedM
 const warnings = results.filter(
   (result) => result.mismatchRatio > result.targetMismatchRatio && result.mismatchRatio <= result.allowedMismatchRatio,
 )
-
-for (const result of results) {
-  const percent = (result.mismatchRatio * 100).toFixed(3)
-  const allowed = (result.allowedMismatchRatio * 100).toFixed(3)
-  const target = (result.targetMismatchRatio * 100).toFixed(3)
-  console.log(`${result.name}/${result.viewport}: ${percent}% mismatch (${result.mismatched} pixels, target ${target}%, hard limit ${allowed}%)`)
-}
 
 if (warnings.length > 0) {
   console.warn(

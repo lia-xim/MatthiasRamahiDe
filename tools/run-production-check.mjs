@@ -5,6 +5,23 @@ let webPort = Number(process.env.WEB_PREVIEW_PORT || 4321);
 const webHost = process.env.WEB_PREVIEW_HOST || '127.0.0.1';
 const shouldStartPreview = process.env.PRODUCTION_CHECK_START_PREVIEW !== 'false';
 const root = process.cwd();
+const defaultVisualScreenshotDelayMs = process.env.VISUAL_SCREENSHOT_DELAY_MS || '1000';
+const visualGroups = [
+  {
+    name: 'core-photography',
+    pages:
+      'home,portfolio,photography-index,automotive-main,sportscar-main,oldtimer-main,motorcycle-main,portrait-main,landscape-main',
+  },
+  {
+    name: 'services-content',
+    pages:
+      'services,service-fotolabor,service-grossformat,service-werbetechnik,service-webdesign,service-videografie,service-viola,service-sonder,about,contact,journal,journal-detail',
+  },
+  {
+    name: 'local-seo-families',
+    pages: 'local-seo,local-seo-sportscar,local-seo-oldtimer,local-seo-motorcycle,local-seo-portrait,local-seo-landscape',
+  },
+];
 
 function isPortOpen(port, host = '127.0.0.1') {
   return new Promise((resolve) => {
@@ -52,6 +69,26 @@ function start(command, args) {
     env: process.env,
     stdio: 'inherit',
   });
+}
+
+async function runVisualRegression(visualOptions) {
+  if (process.env.VISUAL_PAGES) {
+    await run('corepack', ['pnpm', 'web:test:visual'], visualOptions);
+    return;
+  }
+
+  for (const group of visualGroups) {
+    console.log(`\nVisual regression group: ${group.name}`);
+    await run('corepack', ['pnpm', 'web:test:visual'], {
+      ...visualOptions,
+      env: {
+        ...process.env,
+        ...visualOptions.env,
+        VISUAL_PAGES: group.pages,
+        VISUAL_SCREENSHOT_DELAY_MS: defaultVisualScreenshotDelayMs,
+      },
+    });
+  }
 }
 
 function quoteArg(arg) {
@@ -107,6 +144,7 @@ function stopProcessTree(child) {
 let preview;
 
 try {
+  await run('corepack', ['pnpm', 'legacy:freeze:check']);
   await run('corepack', ['pnpm', 'cms:audit-production', '--', '--strict']);
   await run('corepack', ['pnpm', 'cms:audit-seo', '--', '--strict']);
   await run('corepack', ['pnpm', 'web:build']);
@@ -142,7 +180,7 @@ try {
   const visualOptions = previewBaseUrl ? { env: { ...process.env, VISUAL_BASE_URL: previewBaseUrl } } : {};
 
   await run('corepack', ['pnpm', 'web:test:legacy-routes'], routeAuditOptions);
-  await run('corepack', ['pnpm', 'web:test:visual'], visualOptions);
+  await runVisualRegression(visualOptions);
 } finally {
   stopProcessTree(preview);
 }
