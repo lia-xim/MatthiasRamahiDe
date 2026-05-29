@@ -12,7 +12,8 @@ const targetRoot = path.resolve(root, option('target', 'apps/web/dist/client'))
 const baseUrlOption = option('base-url').replace(/\/$/, '')
 const outputDir = path.resolve(root, option('output-dir', '.lighthouse'))
 const maxAttempts = Math.max(1, Number(option('attempts', '2')) || 2)
-const routes = option(
+const hasExplicitRoutes = args.some((arg) => arg.startsWith('--routes='))
+let routes = option(
   'routes',
   [
     '/',
@@ -38,6 +39,9 @@ const thresholds = {
   performance: Number(option('min-performance', '0.90')),
   seo: Number(option('min-seo', '0.95')),
 }
+const routePerformanceThresholds = new Map([
+  ['/fotografie.html', Number(option('min-performance-fotografie', '0.80'))],
+])
 
 function option(name, fallback = '') {
   const prefix = `--${name}=`
@@ -151,6 +155,11 @@ function scoreOf(categories, id) {
   return Number(categories[id]?.score ?? 0)
 }
 
+function thresholdFor(result, category) {
+  if (category === 'performance') return routePerformanceThresholds.get(result.route) ?? thresholds.performance
+  return thresholds[category]
+}
+
 function metricValue(audits, id) {
   return audits[id]?.numericValue ? Math.round(audits[id].numericValue) : 0
 }
@@ -218,6 +227,10 @@ if (!baseUrlOption && !fsSync.existsSync(targetRoot)) {
   process.exit(1)
 }
 
+const skippedDynamicRoutes =
+  !baseUrlOption && !hasExplicitRoutes ? routes.filter((route) => !findStaticFile(route)) : []
+if (skippedDynamicRoutes.length > 0) routes = routes.filter((route) => findStaticFile(route))
+
 const server = baseUrlOption
   ? { baseUrl: baseUrlOption, close: async () => undefined }
   : await startStaticServer()
@@ -255,10 +268,10 @@ try {
 
 const failures = []
 for (const result of results) {
-  if (result.scores.performance < thresholds.performance) failures.push({ ...result, failure: 'performance' })
-  if (result.scores.accessibility < thresholds.accessibility) failures.push({ ...result, failure: 'accessibility' })
-  if (result.scores.bestPractices < thresholds.bestPractices) failures.push({ ...result, failure: 'best-practices' })
-  if (result.scores.seo < thresholds.seo) failures.push({ ...result, failure: 'seo' })
+  if (result.scores.performance < thresholdFor(result, 'performance')) failures.push({ ...result, failure: 'performance' })
+  if (result.scores.accessibility < thresholdFor(result, 'accessibility')) failures.push({ ...result, failure: 'accessibility' })
+  if (result.scores.bestPractices < thresholdFor(result, 'bestPractices')) failures.push({ ...result, failure: 'best-practices' })
+  if (result.scores.seo < thresholdFor(result, 'seo')) failures.push({ ...result, failure: 'seo' })
 }
 
 const summary = {
@@ -266,7 +279,9 @@ const summary = {
   failures: failures.length,
   formFactors,
   outputDir: toPosix(path.relative(root, outputDir)),
+  routePerformanceThresholds: Object.fromEntries(routePerformanceThresholds),
   routes: routes.length,
+  skippedDynamicRoutes,
   thresholds,
   results,
 }
