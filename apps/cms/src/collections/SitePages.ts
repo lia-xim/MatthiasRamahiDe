@@ -15,6 +15,9 @@ import { triggerAstroRebuildAfterChange, triggerAstroRebuildAfterDelete } from '
 import { requireFieldsForPublish, requireMediaAltForPublish } from '../hooks/validatePublishedContent'
 import { buildPreviewUrl } from '../livePreview'
 
+const homePageOnly = (data: Record<string, unknown> | undefined) => data?.pageType === 'home'
+const nonHomePageOnly = (data: Record<string, unknown> | undefined) => data?.pageType !== 'home'
+
 export const SitePages: CollectionConfig = {
   slug: 'site-pages',
   labels: { singular: 'Standardseite', plural: 'Standardseiten' },
@@ -92,18 +95,26 @@ export const SitePages: CollectionConfig = {
         },
         {
           label: 'Bilder',
-          description: 'Die zentralen Bildpositionen dieser Seite.',
+          admin: {
+            condition: nonHomePageOnly,
+          },
+          description:
+            'Die zentralen Einzelbildpositionen dieser Seite. Auf der Startseite wird stattdessen der Tab Hero verwendet.',
           fields: [
-            mediaRelationshipField({ name: 'heroImage', label: 'Hero-Bild' }),
+            mediaRelationshipField({ name: 'heroImage', label: 'Hero-Bild', adminCondition: nonHomePageOnly }),
             mediaRelationshipField({
               name: 'teaserImage',
               label: 'Teaser-Bild',
+              adminCondition: nonHomePageOnly,
               description: 'Optional. Wenn leer, nutzt das System automatisch das Hero-Bild.',
             }),
           ],
         },
         {
           label: 'Hero',
+          admin: {
+            condition: homePageOnly,
+          },
           description: 'Startseiten-Slider: Bild, Titel, Kurztext und Buttons pro Slide.',
           fields: [homeHeroSlides],
         },

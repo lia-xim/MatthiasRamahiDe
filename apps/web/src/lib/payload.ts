@@ -240,9 +240,11 @@ const headersFor = (draft?: boolean): HeadersInit => {
 
 const payloadCache = new Map<string, { expires: number; value?: unknown; promise?: Promise<unknown | null> }>()
 const legacyUrlIndexCache = new Map<string, Promise<Map<string, PayloadDoc>>>()
-const payloadCacheTtlMs = Number(import.meta.env.PAYLOAD_FETCH_CACHE_MS ?? (import.meta.env.DEV ? 0 : 300_000))
-const payloadTimeoutMs = Number(import.meta.env.PAYLOAD_FETCH_TIMEOUT_MS || 1_500)
-const disablePayloadFetch = import.meta.env.ASTRO_DISABLE_PAYLOAD_FETCH === 'true' || process.env.ASTRO_DISABLE_PAYLOAD_FETCH === 'true'
+const payloadCacheTtlMs = Number(
+  process.env.PAYLOAD_FETCH_CACHE_MS ?? import.meta.env.PAYLOAD_FETCH_CACHE_MS ?? (import.meta.env.DEV ? 0 : 300_000),
+)
+const payloadTimeoutMs = Number(process.env.PAYLOAD_FETCH_TIMEOUT_MS ?? import.meta.env.PAYLOAD_FETCH_TIMEOUT_MS ?? 1_500)
+const disablePayloadFetch = process.env.ASTRO_DISABLE_PAYLOAD_FETCH === 'true'
 
 const numberFromEnv = (value: unknown, fallback: number) => {
   const parsed = Number(value)

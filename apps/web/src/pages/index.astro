@@ -1,21 +1,6 @@
 ---
 import NativeHomePage from '../components/native/NativeHomePage.astro'
 
-export const prerender = true
-
-const numberFromEnv = (value: unknown, fallback: number) => {
-  const parsed = Number(value)
-  return Number.isFinite(parsed) && parsed >= 0 ? parsed : fallback
-}
-
-const cacheSeconds = numberFromEnv(import.meta.env.ASTRO_LIVE_PAGE_CACHE_SECONDS, 60)
-const staleSeconds = numberFromEnv(import.meta.env.ASTRO_LIVE_PAGE_STALE_SECONDS, 300)
-
-Astro.response.headers.set(
-  'cache-control',
-  import.meta.env.DEV || cacheSeconds <= 0
-    ? 'no-store'
-    : `public, max-age=0, s-maxage=${cacheSeconds}, stale-while-revalidate=${staleSeconds}`,
-)
+export const prerender = false
 ---
 <NativeHomePage />

@@ -8,6 +8,7 @@
   --line-dark:rgba(241,237,228,.16);
   --accent:oklch(54% 0.13 36);
   --sans:'Inter Tight','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --display:'Neue Haas Grotesk Display','Soehne','Avenir Next','Helvetica Neue',Arial,system-ui,sans-serif;
   --mono:'JetBrains Mono','IBM Plex Mono','SFMono-Regular',ui-monospace,Menlo,monospace;
   --ease:cubic-bezier(.23,1,.32,1);
 }
@@ -26,7 +27,7 @@ button{font:inherit;color:inherit;border:0;background:transparent;cursor:pointer
 .pf-hero__veil{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(13,12,10,.55) 0%,rgba(13,12,10,.08) 36%,rgba(13,12,10,.30) 60%,rgba(13,12,10,.88) 100%)}
 .pf-hero__inner{position:relative;z-index:2;max-width:1640px;width:100%;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,auto);gap:32px;align-items:end}
 .pf-hero__kicker{font:10px/1.7 var(--mono);letter-spacing:.28em;text-transform:uppercase;color:rgba(241,237,228,.62);margin-bottom:18px}
-.pf-hero h1{font-family:var(--sans);font-weight:500;font-size:clamp(56px,9.2vw,148px);line-height:.9;letter-spacing:-.038em;color:var(--paper)}
+.pf-hero h1{font-family:var(--display);font-weight:500;font-size:clamp(56px,9.2vw,148px);line-height:.9;letter-spacing:-.038em;color:var(--paper)}
 .pf-hero__sub{font:14px/1.4 var(--sans);color:rgba(241,237,228,.7);max-width:34ch;align-self:end;padding-bottom:8px}
 @keyframes pfHeroIn{from{opacity:0;transform:translateY(16px);filter:blur(4px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
 .pf-hero__inner > *{animation:pfHeroIn 1s var(--ease) both}

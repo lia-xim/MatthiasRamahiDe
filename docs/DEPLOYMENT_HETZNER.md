@@ -19,6 +19,8 @@ Diese Notiz beschreibt den aktuellen Zielstand: Payload/Postgres laufen auf dem 
 - `deploy/Caddyfile.example`: alternative Caddy-Variante fuer `cms.matthiasramahi.de`.
 - `deploy/nginx-payload-cms.conf`: Nginx-Reverse-Proxy fuer `cms.matthiasramahi.de` auf Payload.
 - `deploy/backup-postgres-media.sh`: Datenbank- und Medienbackup.
+- `deploy/deploy-cms-hetzner.sh`: sicherer Server-Deploy fuer GitHub Actions oder manuelle SSH-Ausfuehrung.
+- `.github/workflows/deploy-cms-hetzner.yml`: automatischer CMS-Deploy nach `main`-Push.
 - `vercel.json`: Vercel-Projektkonfiguration fuer Astro.
 - `tools/run-vercel-build.mjs`: lokaler Vercel-Build mit Astro/Vercel-Adapter.
 - `tools/copy-vercel-output.mjs`: kopiert `apps/web/.vercel/output` nach `.vercel/output`.
@@ -69,6 +71,55 @@ Audits:
 docker compose -f deploy/compose.hetzner.yml --env-file deploy/production.env run --rm cms pnpm --filter @matthias-ramahi/cms audit:readiness -- --strict
 docker compose -f deploy/compose.hetzner.yml --env-file deploy/production.env run --rm cms pnpm --filter @matthias-ramahi/cms audit:production -- --strict
 docker compose -f deploy/compose.hetzner.yml --env-file deploy/production.env run --rm cms pnpm --filter @matthias-ramahi/cms audit:seo -- --strict
+```
+
+## Automatischer CMS-Deploy via GitHub Actions
+
+Der Workflow `.github/workflows/deploy-cms-hetzner.yml` deployed Payload automatisch auf Hetzner, wenn relevante CMS-/Deploy-Dateien nach `main` gepusht werden. Vercel deployed das Astro-Frontend weiter ueber die Vercel-GitHub-Integration. Beide Deployments laufen damit vom gleichen GitHub-Push los, bleiben aber sauber getrennte Ziele.
+
+GitHub-Secrets fuer das Repository:
+
+- `HETZNER_HOST`: Server-IP oder Hostname, z. B. `176.9.46.29`.
+- `HETZNER_USER`: SSH-User auf dem Server, z. B. `contextter`.
+- `HETZNER_SSH_KEY`: privater Deploy-Key fuer diesen User.
+- `HETZNER_PORT`: optional, default `22`.
+- `HETZNER_DEPLOY_PATH`: optional, default `/home/contextter/matthias-ramahi`.
+- `CMS_HEALTH_URL`: optional, default `http://127.0.0.1:3300/admin/login`.
+
+Optional als GitHub Repository Variable:
+
+- `HETZNER_ENSURE_ADMIN=true`, wenn der Workflow nach dem Deploy den Admin-User aus `PAYLOAD_ADMIN_EMAIL` / `PAYLOAD_ADMIN_PASSWORD` sicherstellen soll. Default ist `false`.
+
+Empfohlener SSH-Key auf dem Server:
+
+```bash
+ssh-keygen -t ed25519 -C github-cms-deploy -f ~/.ssh/github-cms-deploy
+cat ~/.ssh/github-cms-deploy.pub >> ~/.ssh/authorized_keys
+cat ~/.ssh/github-cms-deploy
+```
+
+Nur der private Key aus dem letzten Befehl kommt als `HETZNER_SSH_KEY` in GitHub Secrets. `deploy/production.env` bleibt ausschliesslich auf dem Hetzner-Server und ist per `.gitignore` ausgeschlossen.
+
+Der Deploy-Ablauf auf dem Server ist bewusst konservativ:
+
+```bash
+cd /home/contextter/matthias-ramahi
+git fetch --prune origin main
+git pull --ff-only origin main
+docker compose -f deploy/compose.hetzner.yml --env-file deploy/production.env build cms
+docker compose -f deploy/compose.hetzner.yml --env-file deploy/production.env up -d postgres
+docker compose -f deploy/compose.hetzner.yml --env-file deploy/production.env run --rm cms pnpm --filter @matthias-ramahi/cms migrate
+docker compose -f deploy/compose.hetzner.yml --env-file deploy/production.env up -d cms
+curl -I http://127.0.0.1:3300/admin/login
+```
+
+Das Script bricht ab, wenn auf dem Server getrackte lokale Aenderungen liegen. Dadurch wird nie still etwas ueberschrieben. Ungetrackte Server-Dateien wie `deploy/production.env` bleiben erlaubt.
+
+Manueller Test auf dem Server:
+
+```bash
+cd /home/contextter/matthias-ramahi
+bash deploy/deploy-cms-hetzner.sh
 ```
 
 ## Astro auf Vercel
@@ -214,7 +265,10 @@ Medien:
 - [x] Legacy-HTML-Routen antworten auf Vercel.
 - [x] Preview-Route antwortet mit `noindex`.
 - [x] DNS fuer `cms.matthiasramahi.de` auf Hetzner zeigen lassen.
+- [x] GitHub-Actions-Workflow fuer automatischen CMS-Deploy ist vorbereitet.
 - [ ] Reverse Proxy fuer CMS-Domain aktivieren, ohne bestehende Serverdienste zu stoeren.
 - [ ] Vercel-Domain `matthiasramahi.de` final verbinden.
-- [ ] Deploy Hook fuer automatische Rebuilds nach CMS-Aenderungen einrichten.
+- [ ] GitHub-Secrets fuer Hetzner-Deploy im Repository eintragen.
+- [ ] Ersten GitHub-Actions-CMS-Deploy manuell via `workflow_dispatch` testen.
+- [ ] Deploy Hook fuer automatische Vercel-Rebuilds nach CMS-Aenderungen einrichten.
 - [ ] Backup/Restore mindestens einmal praktisch testen.

@@ -1,4 +1,6 @@
 import net from 'node:net';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 
 const port = Number(process.env.PAYLOAD_LOCAL_PORT || 3000);
 const host = process.env.PAYLOAD_LOCAL_HOST || '127.0.0.1';
@@ -28,3 +30,8 @@ if (!allow && (await isPortOpen())) {
   console.error('If you intentionally want to override this guard, set ALLOW_CMS_BUILD_WITH_RUNNING_SERVER=true.');
   process.exit(1);
 }
+
+const cmsNextDir = path.resolve(process.cwd(), 'apps/cms/.next');
+const cmsTsBuildInfo = path.resolve(process.cwd(), 'apps/cms/tsconfig.tsbuildinfo');
+await fs.rm(cmsNextDir, { recursive: true, force: true });
+await fs.rm(cmsTsBuildInfo, { force: true });

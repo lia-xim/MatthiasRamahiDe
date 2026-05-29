@@ -1,6 +1,6 @@
 import type { Field } from 'payload'
 
-import { mediaRelationshipField } from './editorialImages'
+import { mediaGalleryPickerComponent, mediaRelationshipField } from './editorialImages'
 import { linkFields } from './links'
 
 export const contentBlocks: Field = {
@@ -43,6 +43,18 @@ export const contentBlocks: Field = {
           label: 'Bilder',
           type: 'array',
           admin: {
+            components: {
+              beforeInput: [
+                mediaGalleryPickerComponent({
+                  buttonLabel: 'Bilder in Sequenz uebernehmen',
+                  rowDefaults: {
+                    caption: '',
+                    cropIntent: 'auto',
+                  },
+                  title: 'Bildsequenz visuell zusammenstellen',
+                }),
+              ],
+            },
             initCollapsed: true,
           },
           minRows: 1,

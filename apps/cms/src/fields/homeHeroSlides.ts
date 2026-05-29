@@ -1,8 +1,6 @@
 import type { Field } from 'payload'
 
-import { mediaRelationshipField } from './editorialImages'
-
-const homePageOnly = (data: Record<string, unknown> | undefined) => data?.pageType === 'home'
+import { mediaGalleryPickerComponent, mediaRelationshipField } from './editorialImages'
 
 export const homeHeroSlides: Field = {
   name: 'heroSlides',
@@ -15,7 +13,24 @@ export const homeHeroSlides: Field = {
     plural: 'Slides',
   },
   admin: {
-    condition: homePageOnly,
+    components: {
+      beforeInput: [
+        mediaGalleryPickerComponent({
+          buttonLabel: 'Bilder als Slides uebernehmen',
+          intro: 'Mehrere Hero-Bilder in grosser Vorschau auswaehlen. Die Slide-Texte kannst du danach pro Zeile feinziehen.',
+          rowDefaults: {
+            headlineLine1: 'Fotografie',
+            headlineLine2: '',
+            lead: '',
+            primaryHref: '#anfrage',
+            primaryLabel: 'Projekt anfragen',
+            secondaryHref: '/portfolio.html',
+            secondaryLabel: 'Arbeiten ansehen',
+          },
+          title: 'Hero-Slider visuell zusammenstellen',
+        }),
+      ],
+    },
     initCollapsed: true,
     description:
       'Startseiten-Slideshow: Pro Slide ein Bild, Titel, Kurztext und optionale Buttons. Die Reihenfolge hier ist die sichtbare Reihenfolge im Hero.',

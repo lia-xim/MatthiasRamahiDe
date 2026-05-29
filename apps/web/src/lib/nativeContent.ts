@@ -190,7 +190,7 @@ const homeHeroSlidesFromCms = (doc: PayloadDoc | null | undefined) => {
 
   return (doc?.heroSlides || [])
     .map((slide, index) => {
-      const image = imageDisplayUrl(slide.image, 'wide')
+      const image = imageDisplayUrl(slide.image, 'wide', { allowOriginal: true })
       if (!image) return undefined
 
       return {
@@ -220,7 +220,7 @@ export const imageSequenceImages = (
 
   const images =
     block?.items
-      ?.map((item) => imageDisplayUrl(item.image, 'wide'))
+      ?.map((item) => imageDisplayUrl(item.image, 'wide', { allowOriginal: true }))
       .filter((url): url is string => Boolean(url)) || []
 
   return images.length > 0 ? images : fallback

@@ -1,6 +1,7 @@
 import type { Field } from 'payload'
 
 type MediaFieldOptions = {
+  adminCondition?: NonNullable<Field['admin']>['condition']
   name: string
   label: string
   description?: string
@@ -8,7 +9,13 @@ type MediaFieldOptions = {
   width?: string
 }
 
+export const mediaGalleryPickerComponent = (clientProps: Record<string, unknown>) => ({
+  path: '/src/admin/components/MediaGalleryPicker#MediaGalleryPicker',
+  clientProps,
+})
+
 export const mediaRelationshipField = ({
+  adminCondition,
   name,
   label,
   description,
@@ -24,6 +31,7 @@ export const mediaRelationshipField = ({
     allowCreate: true,
     allowEdit: true,
     appearance: 'drawer',
+    condition: adminCondition,
     description:
       description ||
       'Bild aus dem Medienarchiv waehlen. Neue Bilder koennen direkt im Drawer hochgeladen und bearbeitet werden.',
@@ -54,6 +62,17 @@ export const portfolioGalleryField = (): Field => ({
   minRows: 1,
   admin: {
     initCollapsed: true,
+    components: {
+      beforeInput: [
+        mediaGalleryPickerComponent({
+          rowDefaults: {
+            caption: '',
+            role: 'sequence',
+          },
+          title: 'Bildstrecke visuell zusammenstellen',
+        }),
+      ],
+    },
     description:
       'Die Reihenfolge ist die sichtbare Reihenfolge im Portfolio. Fuer einen schnellen Austausch reicht meistens: Bild oeffnen, anderes Medium waehlen, speichern.',
   },

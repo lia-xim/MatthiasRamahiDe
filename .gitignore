@@ -8,6 +8,7 @@ apps/*/node_modules/
 apps/*/.env
 apps/*/.env.*
 !apps/*/.env.example
+deploy/production.env
 .envrc
 .npmrc
 .pypirc

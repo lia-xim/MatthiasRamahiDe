@@ -1,0 +1,101 @@
+name: Deploy CMS to Hetzner
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - apps/cms/**
+      - deploy/**
+      - .dockerignore
+      - package.json
+      - pnpm-lock.yaml
+      - pnpm-workspace.yaml
+      - tools/assert-cms-build-safe.mjs
+      - .github/workflows/deploy-cms-hetzner.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cms-hetzner-production
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    name: Validate CMS
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: |
+          corepack enable
+          corepack pnpm install --frozen-lockfile
+
+      - name: Audit CMS production readiness
+        run: corepack pnpm cms:audit-production -- --strict
+
+      - name: Audit CMS SEO data
+        run: corepack pnpm cms:audit-seo -- --strict
+
+      - name: Build CMS
+        run: corepack pnpm cms:build
+
+  deploy:
+    name: Deploy CMS
+    needs: validate
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    environment: production-cms
+
+    env:
+      HETZNER_HOST: ${{ secrets.HETZNER_HOST }}
+      HETZNER_PORT: ${{ secrets.HETZNER_PORT || '22' }}
+      HETZNER_USER: ${{ secrets.HETZNER_USER }}
+      HETZNER_SSH_KEY: ${{ secrets.HETZNER_SSH_KEY }}
+      HETZNER_DEPLOY_PATH: ${{ secrets.HETZNER_DEPLOY_PATH || '/home/contextter/matthias-ramahi' }}
+      CMS_HEALTH_URL: ${{ secrets.CMS_HEALTH_URL || 'http://127.0.0.1:3300/admin/login' }}
+      HETZNER_ENSURE_ADMIN: ${{ vars.HETZNER_ENSURE_ADMIN || 'false' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy over SSH
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          : "${HETZNER_HOST:?Missing HETZNER_HOST secret}"
+          : "${HETZNER_USER:?Missing HETZNER_USER secret}"
+          : "${HETZNER_SSH_KEY:?Missing HETZNER_SSH_KEY secret}"
+
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$HETZNER_SSH_KEY" > ~/.ssh/hetzner_cms_deploy
+          chmod 600 ~/.ssh/hetzner_cms_deploy
+          ssh-keyscan -p "$HETZNER_PORT" "$HETZNER_HOST" >> ~/.ssh/known_hosts
+
+          printf -v remote_env 'APP_DIR=%q GIT_BRANCH=%q HEALTH_URL=%q ENSURE_ADMIN=%q' \
+            "$HETZNER_DEPLOY_PATH" \
+            "$GITHUB_REF_NAME" \
+            "$CMS_HEALTH_URL" \
+            "$HETZNER_ENSURE_ADMIN"
+
+          ssh \
+            -i ~/.ssh/hetzner_cms_deploy \
+            -p "$HETZNER_PORT" \
+            -o IdentitiesOnly=yes \
+            -o StrictHostKeyChecking=yes \
+            "$HETZNER_USER@$HETZNER_HOST" \
+            "$remote_env bash -s" < deploy/deploy-cms-hetzner.sh
