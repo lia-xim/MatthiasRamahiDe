@@ -183,6 +183,23 @@
   margin-top: calc(var(--base) * 0.75);
 }
 
+.media-relationship-gallery-field__fallback {
+  border: 1px dashed var(--theme-elevation-150);
+  border-radius: 6px;
+  margin-top: calc(var(--base) * -0.5);
+  padding: 0.65rem 0.75rem;
+}
+
+.media-relationship-gallery-field__fallback summary {
+  color: var(--theme-elevation-650);
+  cursor: pointer;
+  font-size: 0.82rem;
+}
+
+.media-relationship-gallery-field__fallback-body {
+  padding-top: calc(var(--base) * 0.5);
+}
+
 @media (max-width: 900px) {
   .media-gallery-picker__topline,
   .media-gallery-picker__actions {

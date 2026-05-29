@@ -41,6 +41,10 @@ export const homeHeroSlides: Field = {
       label: 'Slide-Bild',
       required: true,
       description: 'Dieses Bild wird fuer den aktuellen Hero-Slide verwendet.',
+      galleryDefaultOpen: true,
+      galleryIntro:
+        'Hier direkt ein Slide-Bild als grosse Vorschau auswaehlen. Die Payload-Listenansicht ist nur noch der Fallback darunter.',
+      galleryTitle: 'Slide-Bild aus Galerie waehlen',
     }),
     {
       type: 'row',

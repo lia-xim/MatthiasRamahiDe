@@ -2,6 +2,9 @@ import type { Field } from 'payload'
 
 type MediaFieldOptions = {
   adminCondition?: NonNullable<Field['admin']>['condition']
+  galleryDefaultOpen?: boolean
+  galleryIntro?: string
+  galleryTitle?: string
   name: string
   label: string
   description?: string
@@ -14,12 +17,16 @@ export const mediaGalleryPickerComponent = (clientProps: Record<string, unknown>
   clientProps,
 })
 
-const mediaRelationshipGalleryFieldComponent = {
+const mediaRelationshipGalleryFieldComponent = (clientProps: Record<string, unknown> = {}) => ({
   path: '/src/admin/components/MediaRelationshipGalleryField#MediaRelationshipGalleryField',
-}
+  clientProps,
+})
 
 export const mediaRelationshipField = ({
   adminCondition,
+  galleryDefaultOpen,
+  galleryIntro,
+  galleryTitle,
   name,
   label,
   description,
@@ -36,7 +43,11 @@ export const mediaRelationshipField = ({
     allowEdit: true,
     appearance: 'drawer',
     components: {
-      Field: mediaRelationshipGalleryFieldComponent,
+      Field: mediaRelationshipGalleryFieldComponent({
+        defaultOpen: galleryDefaultOpen,
+        intro: galleryIntro,
+        title: galleryTitle,
+      }),
     },
     condition: adminCondition,
     description:

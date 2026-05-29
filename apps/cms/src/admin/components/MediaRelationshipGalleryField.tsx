@@ -17,6 +17,7 @@ import './MediaGalleryPicker.scss'
 
 type Props = RelationshipFieldClientProps & {
   defaultSort?: string
+  defaultOpen?: boolean
   intro?: string
   limit?: number
   title?: string
@@ -24,6 +25,7 @@ type Props = RelationshipFieldClientProps & {
 
 export function MediaRelationshipGalleryField({
   defaultSort = '-updatedAt',
+  defaultOpen = false,
   intro = 'Direkt aus der Bildbibliothek waehlen. Die klassische Payload-Liste bleibt darunter als Fallback.',
   limit = 36,
   path: pathFromProps,
@@ -31,7 +33,7 @@ export function MediaRelationshipGalleryField({
   title = 'Bild visuell auswaehlen',
   ...relationshipProps
 }: Props) {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(defaultOpen)
   const [query, setQuery] = useState('')
   const [category, setCategory] = useState('all')
   const [orientation, setOrientation] = useState('all')
@@ -110,7 +112,7 @@ export function MediaRelationshipGalleryField({
               <p>{intro}</p>
             </div>
             <Button buttonStyle="secondary" onClick={() => setIsOpen((value) => !value)} type="button">
-              {isOpen ? 'Galerie schliessen' : 'Galerie oeffnen'}
+              {isOpen ? 'Galerie ausblenden' : 'Galerie oeffnen'}
             </Button>
           </div>
 
@@ -226,7 +228,12 @@ export function MediaRelationshipGalleryField({
         </section>
       ) : null}
 
-      <RelationshipField {...fieldProps} path={path} />
+      <details className="media-relationship-gallery-field__fallback">
+        <summary>Payload-Listenansicht / Upload als Fallback</summary>
+        <div className="media-relationship-gallery-field__fallback-body">
+          <RelationshipField {...fieldProps} path={path} />
+        </div>
+      </details>
     </div>
   )
 }
