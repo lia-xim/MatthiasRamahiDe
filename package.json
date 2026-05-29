@@ -16,6 +16,7 @@
     "seo:fix": "node tools/regenerate-local-pages-from-category-templates.mjs && node tools/strengthen-photography-clusters.mjs && node tools/generate-blog-support-pages.mjs && node tools/optimize-legacy-media.mjs && node tools/harden-legacy-seo.mjs && node tools/harden-legacy-performance.mjs && node tools/replace-heavy-legacy-image-references.mjs && node tools/extract-repeated-inline-assets.mjs",
     "legacy:freeze": "node tools/freeze-legacy-reference.mjs",
     "legacy:freeze:check": "node tools/freeze-legacy-reference.mjs --check",
+    "native:coverage": "node tools/assert-native-route-coverage.mjs",
     "native:guard": "node tools/assert-native-production.mjs",
     "perf:audit": "node tools/performance-audit.mjs --target=apps/web/dist/client",
     "lighthouse:audit": "node tools/lighthouse-audit.mjs",

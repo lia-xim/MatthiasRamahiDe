@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { auditNativeRouteCoverage } from './assert-native-route-coverage.mjs'
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const webSourceRoot = path.join(repoRoot, 'apps', 'web', 'src')
@@ -154,6 +155,18 @@ async function assertNativeDispatchFailsClosed() {
   }
 }
 
+async function assertNativeRouteCoverage() {
+  const result = await auditNativeRouteCoverage({ repoRoot })
+  if (result.failures.length === 0) return
+
+  failures.push(
+    [
+      `Native route coverage must cover every frozen root HTML file (${result.frozenFiles} total).`,
+      ...result.failures.slice(0, 20),
+    ].join('\n- '),
+  )
+}
+
 await assertNoPublicHtml()
 await assertNoRemovedRouteDirs()
 await assertNoPublicLegacyAssets()
@@ -163,6 +176,7 @@ await assertAdoptedLayoutCannotInlineHtml()
 await assertAssetSyncIsNativeByDefault()
 await assertRouteAuditRequiresNativeLayoutMarker()
 await assertNativeDispatchFailsClosed()
+await assertNativeRouteCoverage()
 
 if (failures.length > 0) {
   console.error('Native production guard failed:')
@@ -171,5 +185,5 @@ if (failures.length > 0) {
 }
 
 console.log(
-  'Native production guard passed: no public HTML shadows, no legacy/componentized route dirs, no public legacy assets, no raw legacy web render path, no unexpected runtime fs access, layout-marker route audit enforced, and native route dispatch fails closed.',
+  'Native production guard passed: no public HTML shadows, no legacy/componentized route dirs, no public legacy assets, no raw legacy web render path, no unexpected runtime fs access, layout-marker route audit enforced, native route dispatch fails closed, and frozen route coverage is complete.',
 )

@@ -28,7 +28,7 @@ The adopted list lives in `apps/web/src/lib/adoptedRoutes.ts`.
 
 There is no `/legacy-baseline/*` or `/componentized/*` route in the Astro app anymore. Visual Regression reads the frozen root HTML files through a short-lived QA server, so production source code does not depend on raw legacy rendering. `native:guard` blocks these route directories from coming back.
 
-Current QA status: the native web build, `native:guard`, 217/217 legacy-route audit, grouped visual regression, strict site-quality audit, strict CMS readiness audit and strict CMS production audit pass as of 2026-05-29. `production:check` now starts with `legacy:freeze:check`, then runs the grouped visual suite directly and streams each comparison result, so the combined release gate is usable again for long local runs. The route audit also requires a native Astro layout marker on every non-redirect `.html` response, so a copied root HTML file cannot silently pass as a migrated page. `native:guard` additionally blocks unexpected `node:fs` access in Astro runtime code, keeps the adopted critical inliner limited to CSS assets, and requires adopted route dispatchers to resolve through `nativeAdoptedRouteRegistry.ts` and fail closed instead of rendering blank pages. Published CMS content uses release-capable render sources (`native-component` or `structured-blocks`); `payload-legacy-html` is treated as import/archive metadata only. Remaining warnings are performance long-task warnings on media-heavy pages, not legacy-render dependencies.
+Current QA status: the native web build, `native:guard`, 217/217 legacy-route audit, grouped visual regression, strict site-quality audit, strict CMS readiness audit and strict CMS production audit pass as of 2026-05-29. `production:check` now starts with `legacy:freeze:check`, then runs the grouped visual suite directly and streams each comparison result, so the combined release gate is usable again for long local runs. The route audit also requires a native Astro layout marker on every non-redirect `.html` response, so a copied root HTML file cannot silently pass as a migrated page. `native:guard` additionally blocks unexpected `node:fs` access in Astro runtime code, keeps the adopted critical inliner limited to CSS assets, requires adopted route dispatchers to resolve through `nativeAdoptedRouteRegistry.ts` and fail closed instead of rendering blank pages, and runs native route coverage against the frozen manifest. Current coverage: 217/217 frozen HTML files, 211 native renderers and 6 redirects. Published CMS content uses release-capable render sources (`native-component` or `structured-blocks`); `payload-legacy-html` is treated as import/archive metadata only. Remaining warnings are performance long-task warnings on media-heavy pages, not legacy-render dependencies.
 
 ## Refreshing The Freeze Manifest
 
@@ -47,3 +47,9 @@ corepack pnpm legacy:freeze:check
 ```
 
 If this fails, do not refresh the manifest automatically. First inspect the reported added, missing or changed root HTML files, decide whether the current files are the new accepted visual baseline, and only then run `corepack pnpm legacy:freeze`.
+
+Use the native coverage check to verify that every frozen reference file is either rendered natively or intentionally redirected:
+
+```bash
+corepack pnpm native:coverage
+```
