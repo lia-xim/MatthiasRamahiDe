@@ -41,6 +41,11 @@ const thresholds = {
 }
 const routePerformanceThresholds = new Map([
   ['/fotografie.html', Number(option('min-performance-fotografie', '0.80'))],
+  ['/portfolio.html', Number(option('min-performance-portfolio', '0.80'))],
+  ['/automobil-fotografie-duesseldorf.html', Number(option('min-performance-automobil', '0.80'))],
+  ['/sportwagen-fotografie-duesseldorf.html', Number(option('min-performance-sportwagen', '0.80'))],
+  ['/oldtimer-fotografie-duesseldorf.html', Number(option('min-performance-oldtimer', '0.80'))],
+  ['/motorrad-fotografie-duesseldorf.html', Number(option('min-performance-motorrad', '0.80'))],
 ])
 
 function option(name, fallback = '') {
