@@ -109,9 +109,10 @@ jobs:
           chmod 600 ~/.ssh/hetzner_cms_deploy
           ssh-keyscan -p "$HETZNER_PORT" "$HETZNER_HOST" >> ~/.ssh/known_hosts
 
-          printf -v remote_env 'APP_DIR=%q GIT_BRANCH=%q HEALTH_URL=%q' \
+          printf -v remote_env 'APP_DIR=%q GIT_BRANCH=%q GIT_REPOSITORY=%q HEALTH_URL=%q' \
             "$HETZNER_DEPLOY_PATH" \
             "$GITHUB_REF_NAME" \
+            "https://github.com/${GITHUB_REPOSITORY}.git" \
             "$CMS_HEALTH_URL"
 
           ssh \

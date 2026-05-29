@@ -8,6 +8,7 @@ import {
   serviceLabelFromSlug,
   siblingFamilyLinks,
 } from '../../lib/localSeoFamilyContent'
+import { familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
 import { getLegacyBackedDoc, routeForDoc, type PayloadDoc } from '../../lib/payload'
 
 type PreviewState = {
@@ -21,12 +22,14 @@ type Props = {
   doc?: PayloadDoc | null
   legacyFile?: string
   preview?: PreviewState
+  visualDoc?: PayloadDoc | null
 }
 
 const defaultLegacyFile = 'automobil-fotografie.html'
-const { doc: providedDoc = undefined, legacyFile: providedLegacyFile, preview } = Astro.props as Props
+const { doc: providedDoc = undefined, legacyFile: providedLegacyFile, preview, visualDoc: providedVisualDoc = undefined } = Astro.props as Props
 const legacyFile = providedLegacyFile || defaultLegacyFile
 const doc = providedDoc || (await getLegacyBackedDoc(legacyFile, { depth: 2 }))
+const visualDoc = providedVisualDoc ?? (await getFamilyVisualSourceDoc('automobil', doc, legacyFile, defaultLegacyFile))
 const familyContent = localSeoFamilyContent.automobil
 const scope = scopeFromSlug(legacyFile)
 const isParentPage = legacyFile === defaultLegacyFile
@@ -228,6 +231,27 @@ const relatedAreas = [
   },
 ]
 
+const visualSlots = familyVisualSlots(visualDoc, [
+  { alt: 'Automobil Hero', mobile: heroDevelopInitialMobile, src: heroDevelopInitial },
+  ...switchFrames.map(({ image, label }) => ({ alt: `Automobil ${label}`, src: image })),
+  ...galleryTiles.map(({ alt, full, height, src, width }) => ({ alt, full, height, src, width })),
+  ...relatedAreas.map(({ alt, height, image, width }) => ({ alt, height, src: image, width })),
+])
+const inheritedHeroDevelopInitial = visualSlots[0].cssFull
+const inheritedHeroDevelopInitialMobile = visualSlots[0].cssMobile
+const inheritedSwitchFrames = switchFrames.map((frame, index) => ({
+  ...frame,
+  image: visualSlots[index + 1].full,
+}))
+const inheritedGalleryTiles = galleryTiles.map((tile, index) => {
+  const visual = visualSlots[index + 1 + switchFrames.length]
+  return { ...tile, alt: visual.alt, full: visual.full, height: visual.height, src: visual.src, width: visual.width }
+})
+const inheritedRelatedAreas = relatedAreas.map((area, index) => {
+  const visual = visualSlots[index + 1 + switchFrames.length + galleryTiles.length]
+  return { ...area, alt: visual.alt, height: visual.height, image: visual.src, width: visual.width }
+})
+
 const cityLinks = [
   ['automobil-fotografie.html', 'Düsseldorf'],
   ['automobil-fotografie-koeln.html', 'Köln'],
@@ -268,7 +292,7 @@ const searchLinks = [
   noIndex={Boolean(preview)}
   title={metaTitle}
   description={metaDescription}
-  ogImage="/assets/optimized/assets-portfolio-dsc3879-1920.webp"
+  ogImage={visualSlots[0].full}
 >
   {preview && (
     <PreviewToolbar
@@ -284,7 +308,7 @@ const searchLinks = [
         <div class="pd-frame is-in" id="pdFrameA" style="--cx:50%;--cy:50%">
           <div
             class="pd-frame-inner"
-            style={`--pd-bg-mobile:url('/${heroDevelopInitialMobile}');--pd-bg-desktop:url('/${heroDevelopInitial}')`}
+            style={`--pd-bg-mobile:url('${inheritedHeroDevelopInitialMobile}');--pd-bg-desktop:url('${inheritedHeroDevelopInitial}')`}
           ></div>
         </div>
         <div class="pd-frame" id="pdFrameB"><div class="pd-frame-inner"></div></div>
@@ -344,7 +368,7 @@ const searchLinks = [
 
       <div class="sw-body">
         <nav class="sw-tabs" role="tablist" aria-label="Bildkategorien">
-          {switchFrames.map((frame, index) => (
+          {inheritedSwitchFrames.map((frame, index) => (
             <button class="sw-tab" role="tab" aria-selected={index === 0 ? 'true' : 'false'} data-cat={index}>
               <span class="lbl">{frame.label}</span>
             </button>
@@ -352,7 +376,7 @@ const searchLinks = [
         </nav>
 
         <div class="sw-stage" id="swStage" role="region" aria-live="polite">
-          {switchFrames.map((frame, index) => (
+          {inheritedSwitchFrames.map((frame, index) => (
             <div
               class={`frame${index === 0 ? ' is-active' : ''}`}
               data-frame={index}
@@ -387,7 +411,7 @@ const searchLinks = [
       </div>
 
       <div class="bg-grid" id="bgGrid">
-        {galleryTiles.map((tile, index) => (
+        {inheritedGalleryTiles.map((tile, index) => (
           <button type="button" class={`bg-tile ${tile.className}`} data-i={index} data-full={tile.full} aria-label={`Frame ${index + 1} vergrößern`}>
             <img loading="lazy" src={tile.src} alt={tile.alt} width={tile.width} height={tile.height} decoding="async" />
             <div class="bg-cap"><span class="l">{tile.left}</span><span class="r">{tile.right}</span></div>
@@ -425,7 +449,7 @@ const searchLinks = [
           <p>Automobil ist die Klammer. Schau dir die spezialisierten Disziplinen an — gleicher Anspruch, anderer Bildfokus. Diese Kategorie ist Teil eines bewusst getrennten Fotografie-Clusters: Fahrzeug, Mensch und Raum bleiben eigenständige Suchintentionen, sind aber intern so verbunden, dass Nutzer schnell in den passenden Bildbereich wechseln können.</p>
         </div>
         <div class="rl-grid">
-          {relatedAreas.map((area) => (
+          {inheritedRelatedAreas.map((area) => (
             <a class="rl-card" href={area.href}>
               <img loading="lazy" src={area.image} alt={area.alt} width={area.width} height={area.height} decoding="async" />
               <div class="overlay"></div>

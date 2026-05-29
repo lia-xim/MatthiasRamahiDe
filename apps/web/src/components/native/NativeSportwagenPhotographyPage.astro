@@ -7,18 +7,21 @@ import {
   nativeFamilyPageContext,
   type NativeFamilyPreviewState,
 } from '../../lib/nativeFamilyPageContext'
+import { familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
 import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
 
 type Props = {
   doc?: PayloadDoc | null
   legacyFile?: string
   preview?: NativeFamilyPreviewState
+  visualDoc?: PayloadDoc | null
 }
 
 const defaultLegacyFile = 'sportwagen-fotografie.html'
-const { doc: providedDoc = undefined, legacyFile: providedLegacyFile, preview } = Astro.props as Props
+const { doc: providedDoc = undefined, legacyFile: providedLegacyFile, preview, visualDoc: providedVisualDoc = undefined } = Astro.props as Props
 const legacyFile = providedLegacyFile || defaultLegacyFile
 const doc = providedDoc || (await getLegacyBackedDoc(legacyFile, { depth: 2 }))
+const visualDoc = providedVisualDoc ?? (await getFamilyVisualSourceDoc('sportwagen', doc, legacyFile, defaultLegacyFile))
 const pageContext = nativeFamilyPageContext({
   defaultLegacyFile,
   doc,
@@ -202,6 +205,30 @@ const audiences = [
   },
 ]
 
+const visualSlots = familyVisualSlots(visualDoc, [
+  ...heroPanels.map(([, src, mobile]) => ({ alt: 'Sportwagen Hero', src, mobile })),
+  ...shootingStyles.map(({ image, alt, width, height }) => ({ alt, height, src: image, width })),
+  ...portfolioTiles.map(({ alt, full, height, src, width }) => ({ alt, full, height, src, width })),
+  ...audiences.map(({ alt, height, image, width }) => ({ alt, height, src: image, width })),
+])
+const inheritedHeroPanels = heroPanels.map(([name], index) => [
+  name,
+  visualSlots[index].cssFull,
+  visualSlots[index].cssMobile,
+])
+const inheritedShootingStyles = shootingStyles.map((style, index) => {
+  const visual = visualSlots[index + heroPanels.length]
+  return { ...style, alt: visual.alt, height: visual.height, image: visual.src, width: visual.width }
+})
+const inheritedPortfolioTiles = portfolioTiles.map((tile, index) => {
+  const visual = visualSlots[index + heroPanels.length + shootingStyles.length]
+  return { ...tile, alt: visual.alt, full: visual.full, height: visual.height, src: visual.src, width: visual.width }
+})
+const inheritedAudiences = audiences.map((audience, index) => {
+  const visual = visualSlots[index + heroPanels.length + shootingStyles.length + portfolioTiles.length]
+  return { ...audience, alt: visual.alt, height: visual.height, image: visual.src, width: visual.width }
+})
+
 const relatedAreas = [
   {
     href: 'automobil-fotografie.html',
@@ -281,8 +308,8 @@ const searchLinks = [
   noIndex={Boolean(preview)}
   title={metaTitle}
   description={metaDescription}
-  ogImage="/assets/optimized/mpixi92f-dsc3032-generase-1-1920.webp"
-  preloadImages={heroPanels.slice(0, 2).map(([, , mobileImage]) => `/${mobileImage}`)}
+  ogImage={visualSlots[1].full}
+  preloadImages={inheritedHeroPanels.slice(0, 2).map(([, , mobileImage]) => mobileImage)}
 >
   {preview && (
     <PreviewToolbar
@@ -295,11 +322,11 @@ const searchLinks = [
   <main>
     <section class="hero-tri" id="top" data-header-theme="dark" aria-label={heroLabel}>
       <div class="tri-stage" aria-hidden="true">
-        {heroPanels.map(([name, image, mobileImage]) => (
+        {inheritedHeroPanels.map(([name, image, mobileImage]) => (
           <div class="tri-col" data-tri={name}>
             <div
               class="tri-img"
-              style={`--tri-bg-mobile:url('/${mobileImage}');--tri-bg-desktop:url('/${image}')`}
+              style={`--tri-bg-mobile:url('${mobileImage}');--tri-bg-desktop:url('${image}')`}
             ></div>
           </div>
         ))}
@@ -340,7 +367,7 @@ const searchLinks = [
           <p>Exterieur, Interieur, Details und cineastische Perspektiven greifen ineinander — ein Bildsatz, der Fahrzeug, Atmosphäre und Material gleichermaßen zeigt.</p>
         </div>
         <div class="sh-grid">
-          {shootingStyles.map((style) => (
+          {inheritedShootingStyles.map((style) => (
             <article class="sh-card">
               <figure class="sh-img"><img loading="lazy" src={style.image} alt={style.alt} width={style.width} height={style.height} decoding="async" /></figure>
               <div class="sh-text">
@@ -362,7 +389,7 @@ const searchLinks = [
           </div>
         </header>
 
-        {portfolioTiles.map((tile, index) => (
+        {inheritedPortfolioTiles.map((tile, index) => (
           <button type="button" class={`po-tile ${tile.className}`} data-i={index} data-full={tile.full} aria-label={`Bild ${index + 1} vergrößern`}>
             <img
               src={tile.src}
@@ -391,7 +418,7 @@ const searchLinks = [
           <p>Vom privaten Fahrzeug bis zur internationalen Kampagne. Jede Serie wird auf Nutzung, Marke und Zielgruppe zugeschnitten — ein Hero-Motiv oder ein vollständiges Launch-Asset-Paket.</p>
         </div>
         <div class="fw-grid">
-          {audiences.map((audience) => (
+          {inheritedAudiences.map((audience) => (
             <article class="fw-card">
               <img loading="lazy" src={audience.image} alt={audience.alt} width={audience.width} height={audience.height} decoding="async" />
               <div class="overlay"></div>

@@ -7,18 +7,21 @@ import {
   nativeFamilyPageContext,
   type NativeFamilyPreviewState,
 } from '../../lib/nativeFamilyPageContext'
+import { familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
 import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
 
 type Props = {
   doc?: PayloadDoc | null
   legacyFile?: string
   preview?: NativeFamilyPreviewState
+  visualDoc?: PayloadDoc | null
 }
 
 const defaultLegacyFile = 'oldtimer-fotografie.html'
-const { doc: providedDoc = undefined, legacyFile: providedLegacyFile, preview } = Astro.props as Props
+const { doc: providedDoc = undefined, legacyFile: providedLegacyFile, preview, visualDoc: providedVisualDoc = undefined } = Astro.props as Props
 const legacyFile = providedLegacyFile || defaultLegacyFile
 const doc = providedDoc || (await getLegacyBackedDoc(legacyFile, { depth: 2 }))
+const visualDoc = providedVisualDoc ?? (await getFamilyVisualSourceDoc('oldtimer', doc, legacyFile, defaultLegacyFile))
 const pageContext = nativeFamilyPageContext({
   defaultLegacyFile,
   doc,
@@ -154,6 +157,26 @@ const relatedAreas = [
   },
 ]
 
+const visualSlots = familyVisualSlots(visualDoc, [
+  ...heroSlides.map(([src, mobile]) => ({ alt: 'Oldtimer Hero', mobile, src })),
+  ...storyCards.map(({ alt, height, image, width }) => ({ alt, height, src: image, width })),
+  ...portfolioTiles.map(([, src, alt, width, height, full]) => ({ alt, full, height, src, width })),
+  ...relatedAreas.map(({ alt, height, image, width }) => ({ alt, height, src: image, width })),
+])
+const inheritedHeroSlides = heroSlides.map((_, index) => [visualSlots[index].cssFull, visualSlots[index].cssMobile])
+const inheritedStoryCards = storyCards.map((card, index) => {
+  const visual = visualSlots[index + heroSlides.length]
+  return { ...card, alt: visual.alt, height: visual.height, image: visual.src, width: visual.width }
+})
+const inheritedPortfolioTiles = portfolioTiles.map(([className], index) => {
+  const visual = visualSlots[index + heroSlides.length + storyCards.length]
+  return [className, visual.src, visual.alt, visual.width, visual.height, visual.full] as const
+})
+const inheritedRelatedAreas = relatedAreas.map((area, index) => {
+  const visual = visualSlots[index + heroSlides.length + storyCards.length + portfolioTiles.length]
+  return { ...area, alt: visual.alt, height: visual.height, image: visual.src, width: visual.width }
+})
+
 const cityLinks = [
   ['oldtimer-fotografie.html', 'Düsseldorf'],
   ['oldtimer-fotografie-koeln.html', 'Köln'],
@@ -194,8 +217,8 @@ const searchLinks = [
   noIndex={Boolean(preview)}
   title={metaTitle}
   description={metaDescription}
-  ogImage="/assets/optimized/assets-photos-oldtimer-stage-1920.webp"
-  preloadImages={['/assets/optimized/assets-photos-oldtimer-stage-960.webp']}
+  ogImage={visualSlots[0].full}
+  preloadImages={[visualSlots[0].mobile]}
 >
   {preview && (
     <PreviewToolbar
@@ -209,12 +232,12 @@ const searchLinks = [
     <section class="hero-mp" id="top" data-header-theme="dark" aria-label={heroLabel}>
       <div class="hero-mp__stage" aria-hidden="true">
         <div class="hero-mp__slides" id="oldtimerSlides">
-          {heroSlides.map(([slide, mobileSlide], index) => (
+          {inheritedHeroSlides.map(([slide, mobileSlide], index) => (
             <div
               class={`hero-mp__slide${index === 0 ? ' is-active' : ''}`}
               data-kb={index + 1}
               data-bg={slide}
-              style={index === 0 ? `--hero-bg-mobile:url('/${mobileSlide}');--hero-bg-desktop:url('/${slide}')` : undefined}
+              style={index === 0 ? `--hero-bg-mobile:url('${mobileSlide}');--hero-bg-desktop:url('${slide}')` : undefined}
             />
           ))}
         </div>
@@ -255,7 +278,7 @@ const searchLinks = [
           <p>Jeder Oldtimer trägt seine Provenienz in den Details. Material, Patina, Embleme und Innenraum greifen ineinander — ein Bildsatz, der Herkunft und Zustand vollständig dokumentiert.</p>
         </div>
         <div class="pv-grid">
-          {storyCards.map((card) => (
+          {inheritedStoryCards.map((card) => (
             <article class="pv-card">
               <figure class="pv-img"><img loading="lazy" src={card.image} alt={card.alt} width={card.width} height={card.height} decoding="async" /></figure>
               <h3>{card.title}</h3>
@@ -272,7 +295,7 @@ const searchLinks = [
           <h2>Aktuelle <em>Arbeiten.</em></h2>
           <p>Sechs kuratierte Oldtimer-Bilder aus jüngeren Serien. Klicken zum Vergrößern.</p>
         </header>
-        {portfolioTiles.map(([className, image, alt, width, height, full], index) => (
+        {inheritedPortfolioTiles.map(([className, image, alt, width, height, full], index) => (
           <button type="button" class={`po-tile ${className}`} data-i={index} data-full={full} aria-label={`Bild ${index + 1} vergrößern`}>
             <img data-src={image} src={image} data-full={full} loading="lazy" alt={alt} width={width} height={height} decoding="async" />
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
@@ -306,7 +329,7 @@ const searchLinks = [
           <p>Oldtimer ist Teil einer grösseren automotive Welt. Schau dir die anderen Disziplinen an — gleicher Anspruch, anderer Bildfokus. Diese Kategorie ist Teil eines bewusst getrennten Fotografie-Clusters: Fahrzeug, Mensch und Raum bleiben eigenständige Suchintentionen, sind aber intern so verbunden, dass Nutzer schnell in den passenden Bildbereich wechseln können.</p>
         </div>
         <div class="rl-grid">
-          {relatedAreas.map((area) => (
+          {inheritedRelatedAreas.map((area) => (
             <a class="rl-card" href={area.href}>
               <img data-src={area.image} src={area.image} loading="lazy" alt={area.alt} width={area.width} height={area.height} decoding="async" />
               <div class="overlay"></div>
