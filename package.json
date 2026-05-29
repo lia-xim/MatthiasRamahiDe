@@ -29,6 +29,7 @@
     "cms:dev": "corepack pnpm --filter @matthias-ramahi/cms dev",
     "cms:build": "node tools/assert-cms-build-safe.mjs && corepack pnpm --filter @matthias-ramahi/cms build",
     "cms:start": "corepack pnpm --filter @matthias-ramahi/cms start",
+    "cms:deploy-data-safe": "node tools/assert-cms-deploy-data-safe.mjs",
     "cms:audit-readiness": "corepack pnpm --filter @matthias-ramahi/cms audit:readiness",
     "cms:audit-production": "corepack pnpm --filter @matthias-ramahi/cms audit:production",
     "cms:audit-seo": "corepack pnpm --filter @matthias-ramahi/cms audit:seo",

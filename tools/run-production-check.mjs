@@ -3,7 +3,7 @@ import { spawn, spawnSync } from 'node:child_process';
 
 let webPort = Number(process.env.WEB_PREVIEW_PORT || 4321);
 const webHost = process.env.WEB_PREVIEW_HOST || '127.0.0.1';
-const shouldStartPreview = process.env.PRODUCTION_CHECK_START_PREVIEW === 'true';
+const shouldStartPreview = process.env.PRODUCTION_CHECK_START_PREVIEW !== 'false';
 const root = process.cwd();
 
 function isPortOpen(port, host = '127.0.0.1') {
@@ -135,8 +135,14 @@ try {
     await waitForPort(webPort, webHost, 45000);
   }
 
-  await run('corepack', ['pnpm', 'web:test:legacy-routes']);
-  await run('corepack', ['pnpm', 'web:test:visual']);
+  const previewBaseUrl = shouldStartPreview ? `http://${webHost}:${webPort}` : '';
+  const routeAuditOptions = previewBaseUrl
+    ? { env: { ...process.env, LEGACY_AUDIT_BASE_URL: previewBaseUrl } }
+    : {};
+  const visualOptions = previewBaseUrl ? { env: { ...process.env, VISUAL_BASE_URL: previewBaseUrl } } : {};
+
+  await run('corepack', ['pnpm', 'web:test:legacy-routes'], routeAuditOptions);
+  await run('corepack', ['pnpm', 'web:test:visual'], visualOptions);
 } finally {
   stopProcessTree(preview);
 }

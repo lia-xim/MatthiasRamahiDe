@@ -14,6 +14,10 @@ export const mediaGalleryPickerComponent = (clientProps: Record<string, unknown>
   clientProps,
 })
 
+const mediaRelationshipGalleryFieldComponent = {
+  path: '/src/admin/components/MediaRelationshipGalleryField#MediaRelationshipGalleryField',
+}
+
 export const mediaRelationshipField = ({
   adminCondition,
   name,
@@ -31,6 +35,9 @@ export const mediaRelationshipField = ({
     allowCreate: true,
     allowEdit: true,
     appearance: 'drawer',
+    components: {
+      Field: mediaRelationshipGalleryFieldComponent,
+    },
     condition: adminCondition,
     description:
       description ||

@@ -9,7 +9,9 @@ ENV_FILE="${ENV_FILE:-deploy/production.env}"
 HEALTH_URL="${HEALTH_URL:-http://127.0.0.1:3300/admin/login}"
 LOCK_DIR="${LOCK_DIR:-/tmp/matthias-ramahi-cms-deploy.lock}"
 SKIP_MIGRATIONS="${SKIP_MIGRATIONS:-false}"
-ENSURE_ADMIN="${ENSURE_ADMIN:-false}"
+BACKUP_BEFORE_MIGRATIONS="${BACKUP_BEFORE_MIGRATIONS:-true}"
+BACKUP_ROOT="${BACKUP_ROOT:-$APP_DIR/backups/cms}"
+BACKUP_RETENTION_DAYS="${BACKUP_RETENTION_DAYS:-21}"
 PRUNE_DOCKER_IMAGES="${PRUNE_DOCKER_IMAGES:-false}"
 
 log() {
@@ -52,6 +54,38 @@ compose() {
   docker compose -f "$COMPOSE_FILE" --env-file "$ENV_FILE" "$@"
 }
 
+backup_payload_data() {
+  local stamp backup_dir db_backup media_backup
+
+  stamp="$(date -u +%Y%m%d-%H%M%S)"
+  backup_dir="$BACKUP_ROOT/$stamp"
+  mkdir -p "$backup_dir"
+
+  if command -v gzip >/dev/null 2>&1; then
+    db_backup="$backup_dir/payload.sql.gz"
+    compose exec -T postgres pg_dump -U payload -d payload | gzip -c > "$db_backup"
+  else
+    db_backup="$backup_dir/payload.sql"
+    compose exec -T postgres pg_dump -U payload -d payload > "$db_backup"
+  fi
+
+  if [[ ! -s "$db_backup" ]]; then
+    fail "database backup is empty: $db_backup"
+  fi
+
+  media_backup="$backup_dir/media.tar.gz"
+  compose run --rm --no-deps -T cms sh -c \
+    'if [ -d /app/apps/cms/media ]; then tar -C /app/apps/cms -czf - media; fi' > "$media_backup"
+
+  if [[ ! -s "$media_backup" ]]; then
+    rm -f "$media_backup"
+    log "No local Payload media files found to back up"
+  fi
+
+  find "$BACKUP_ROOT" -mindepth 1 -maxdepth 1 -type d -mtime +"$BACKUP_RETENTION_DAYS" -exec rm -rf {} +
+  log "Backup written to $backup_dir"
+}
+
 log "Fetching $GIT_REMOTE/$GIT_BRANCH"
 git fetch --prune "$GIT_REMOTE" "$GIT_BRANCH"
 
@@ -83,15 +117,17 @@ for attempt in {1..30}; do
 done
 
 if [[ "$SKIP_MIGRATIONS" != "true" ]]; then
+  if [[ "$BACKUP_BEFORE_MIGRATIONS" == "true" ]]; then
+    log "Backing up Payload database and media before migrations"
+    backup_payload_data
+  else
+    log "Skipping pre-migration backup because BACKUP_BEFORE_MIGRATIONS=false"
+  fi
+
   log "Running Payload migrations"
   compose run --rm cms pnpm --filter @matthias-ramahi/cms migrate
 else
   log "Skipping Payload migrations"
-fi
-
-if [[ "$ENSURE_ADMIN" == "true" ]]; then
-  log "Ensuring Payload admin user"
-  compose run --rm cms pnpm --filter @matthias-ramahi/cms ensure:admin
 fi
 
 log "Starting Payload CMS"

@@ -4,12 +4,18 @@ import { fileURLToPath } from 'node:url'
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const assetExtensions = new Set(['.avif', '.gif', '.ico', '.jpeg', '.jpg', '.mp4', '.png', '.svg', '.webm', '.webp'])
-const textExtensions = new Set(['.css', '.html', '.js', '.json', '.txt', '.webmanifest', '.xml'])
+const textExtensions = new Set(['.cjs', '.css', '.html', '.js', '.json', '.mjs', '.txt', '.webmanifest', '.xml'])
 const defaultTargets = [
   path.join(repoRoot, 'apps', 'web', 'dist', 'client'),
   path.join(repoRoot, 'apps', 'web', '.vercel', 'output', 'static'),
   path.join(repoRoot, '.vercel', 'output', 'static'),
 ]
+const extraReferenceRoots = new Map([
+  [
+    path.join(repoRoot, 'apps', 'web', 'dist', 'client'),
+    [path.join(repoRoot, 'apps', 'web', 'dist', 'server')],
+  ],
+])
 
 function toPosix(value) {
   return value.replaceAll(path.sep, '/').replaceAll('\\', '/')
@@ -120,8 +126,12 @@ async function pruneTarget(targetRoot) {
   if (!(await exists(targetRoot))) return null
 
   const files = await walk(targetRoot)
+  const extraReferenceFiles = []
+  for (const referenceRoot of extraReferenceRoots.get(targetRoot) || []) {
+    extraReferenceFiles.push(...(await walk(referenceRoot)))
+  }
   const referenced = new Set()
-  for (const file of files) {
+  for (const file of [...files, ...extraReferenceFiles]) {
     if (!textExtensions.has(path.extname(file).toLowerCase())) continue
     const text = await fs.readFile(file, 'utf8')
     for (const ref of extractReferences(text, file, targetRoot)) referenced.add(ref)

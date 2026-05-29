@@ -21,6 +21,7 @@ Diese Notiz beschreibt den aktuellen Zielstand: Payload/Postgres laufen auf dem 
 - `deploy/backup-postgres-media.sh`: Datenbank- und Medienbackup.
 - `deploy/deploy-cms-hetzner.sh`: sicherer Server-Deploy fuer GitHub Actions oder manuelle SSH-Ausfuehrung.
 - `.github/workflows/deploy-cms-hetzner.yml`: automatischer CMS-Deploy nach `main`-Push.
+- `tools/assert-cms-deploy-data-safe.mjs`: Guard gegen Seeds, Imports und Content-schreibende Migrationen im Deploy-Pfad.
 - `vercel.json`: Vercel-Projektkonfiguration fuer Astro.
 - `tools/run-vercel-build.mjs`: lokaler Vercel-Build mit Astro/Vercel-Adapter.
 - `tools/copy-vercel-output.mjs`: kopiert `apps/web/.vercel/output` nach `.vercel/output`.
@@ -54,9 +55,14 @@ Bei CMS-Code- oder Schema-Aenderungen ist die sichere Reihenfolge:
 ```bash
 docker compose -f deploy/compose.hetzner.yml --env-file deploy/production.env build cms
 docker compose -f deploy/compose.hetzner.yml --env-file deploy/production.env up -d postgres
+BACKUP_DIR="backups/cms/manual-$(date -u +%Y%m%d-%H%M%S)"
+mkdir -p "$BACKUP_DIR"
+docker compose -f deploy/compose.hetzner.yml --env-file deploy/production.env exec -T postgres pg_dump -U payload -d payload | gzip -c > "$BACKUP_DIR/payload.sql.gz"
 docker compose -f deploy/compose.hetzner.yml --env-file deploy/production.env run --rm cms pnpm --filter @matthias-ramahi/cms migrate
 docker compose -f deploy/compose.hetzner.yml --env-file deploy/production.env up -d cms
 ```
+
+Fuer echte Deployments bevorzugt `bash deploy/deploy-cms-hetzner.sh`: Das Script erstellt vor jeder produktiven Migration automatisch ein Backup unter `backups/cms/<timestamp>`.
 
 Migrationen und Admin:
 
@@ -77,6 +83,8 @@ docker compose -f deploy/compose.hetzner.yml --env-file deploy/production.env ru
 
 Der Workflow `.github/workflows/deploy-cms-hetzner.yml` deployed Payload automatisch auf Hetzner, wenn relevante CMS-/Deploy-Dateien nach `main` gepusht werden. Vercel deployed das Astro-Frontend weiter ueber die Vercel-GitHub-Integration. Beide Deployments laufen damit vom gleichen GitHub-Push los, bleiben aber sauber getrennte Ziele.
 
+Content-Sicherheit: Der automatische Deploy fuehrt keine Seeds, keine Legacy-Imports, keinen lokalen Schema-Push und keine Admin-User-Synchronisation aus. Er baut den CMS-Code, startet Postgres, erstellt ein Backup und laesst nur Payload-Migrationen laufen. Migrationen duerfen im Deploy-Pfad nur technische Schema-Aenderungen enthalten; Content-schreibende `INSERT`, `UPDATE`, `DELETE`, `TRUNCATE`, `DROP TABLE` oder Payload-Write-Calls werden durch `corepack pnpm cms:deploy-data-safe` im Workflow blockiert.
+
 GitHub-Secrets fuer das Repository:
 
 - `HETZNER_HOST`: Server-IP oder Hostname, z. B. `176.9.46.29`.
@@ -85,10 +93,8 @@ GitHub-Secrets fuer das Repository:
 - `HETZNER_PORT`: optional, default `22`.
 - `HETZNER_DEPLOY_PATH`: optional, default `/home/contextter/matthias-ramahi`.
 - `CMS_HEALTH_URL`: optional, default `http://127.0.0.1:3300/admin/login`.
-
-Optional als GitHub Repository Variable:
-
-- `HETZNER_ENSURE_ADMIN=true`, wenn der Workflow nach dem Deploy den Admin-User aus `PAYLOAD_ADMIN_EMAIL` / `PAYLOAD_ADMIN_PASSWORD` sicherstellen soll. Default ist `false`.
+- `CMS_AUDIT_DATABASE_URI`: optional, nur wenn der GitHub-Runner die Audit-Datenbank direkt erreichen kann.
+- `CMS_AUDIT_PAYLOAD_SECRET`: optional, Secret fuer die direkten CMS-Daten-Audits in GitHub Actions.
 
 Empfohlener SSH-Key auf dem Server:
 
@@ -108,12 +114,15 @@ git fetch --prune origin main
 git pull --ff-only origin main
 docker compose -f deploy/compose.hetzner.yml --env-file deploy/production.env build cms
 docker compose -f deploy/compose.hetzner.yml --env-file deploy/production.env up -d postgres
+# deploy/deploy-cms-hetzner.sh schreibt hier automatisch ein Backup nach backups/cms/<timestamp>
 docker compose -f deploy/compose.hetzner.yml --env-file deploy/production.env run --rm cms pnpm --filter @matthias-ramahi/cms migrate
 docker compose -f deploy/compose.hetzner.yml --env-file deploy/production.env up -d cms
 curl -I http://127.0.0.1:3300/admin/login
 ```
 
 Das Script bricht ab, wenn auf dem Server getrackte lokale Aenderungen liegen. Dadurch wird nie still etwas ueberschrieben. Ungetrackte Server-Dateien wie `deploy/production.env` bleiben erlaubt.
+
+Wichtig: CMS-Inhalte sind Datenbankdaten, nicht Git-Dateien. Lokale oder produktive redaktionelle Aenderungen werden durch einen Code-Deploy nicht aus dem Repository ueberschrieben. Wenn neue technische Felder gebraucht werden, wird dafuer eine Schema-Migration geschrieben; Seed-/Import-/Admin-Scripts bleiben manuelle Einmalaktionen und duerfen nicht in den automatischen Deploy.
 
 Manueller Test auf dem Server:
 

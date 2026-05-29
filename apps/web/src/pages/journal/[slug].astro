@@ -1,18 +1,17 @@
 ---
 import NativeJournalPostPage from '../../components/cms/NativeJournalPostPage.astro'
 import { envFlag } from '../../lib/envFlags'
-import { getBySlug, listDocuments } from '../../lib/payload'
+import { getBySlug } from '../../lib/payload'
 
-export const prerender = true
-
-export async function getStaticPaths() {
-  const journalRoutesEnabled = envFlag('ASTRO_ENABLE_CMS_JOURNAL_ROUTES') || envFlag('ASTRO_ENABLE_JOURNAL_ROUTES')
-  if (!import.meta.env.DEV && !journalRoutesEnabled) return []
-  const docs = await listDocuments('journal-posts', { limit: 300, sort: '-publishedAt' })
-  return docs.map((doc) => ({ params: { slug: doc.slug }, props: { doc } }))
-}
+export const prerender = false
 
 const { slug } = Astro.params
+const journalRoutesEnabled = envFlag('ASTRO_ENABLE_CMS_JOURNAL_ROUTES') || envFlag('ASTRO_ENABLE_JOURNAL_ROUTES')
+
+if (!journalRoutesEnabled) {
+  return Astro.redirect('/blog.html', 308)
+}
+
 const doc = Astro.props.doc ?? (slug ? await getBySlug('journal-posts', slug) : null)
 
 if (!doc) {

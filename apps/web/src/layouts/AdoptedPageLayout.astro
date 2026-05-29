@@ -74,7 +74,7 @@ const canonical = toAbsoluteSiteUrl(canonicalUrl || docCanonical || fallbackPath
 const socialImageSource = ogImage || doc?.seo?.ogImage || doc?.coverImage || doc?.heroImage || doc?.teaserImage || chrome.ogImage || settings?.defaultOgImage
 const socialImage = typeof socialImageSource === 'string'
   ? toAbsoluteSiteUrl(socialImageSource)
-  : imageUrl(socialImageSource as PayloadMedia | undefined, 'hero')
+  : imageUrl(socialImageSource as PayloadMedia | undefined, 'hero', { allowOriginal: true })
 const socialImageDimensions = typeof socialImageSource === 'string' ? {} : imageDimensions(socialImageSource as PayloadMedia | undefined, 'hero')
 const robots = noIndex || doc?.seo?.noIndex ? 'noindex,nofollow' : 'index,follow,max-image-preview:large,max-snippet:-1'
 const bodyClass = providedBodyClass || doc?.legacy?.bodyClass || chrome.bodyClass || 'has-mr-footer'

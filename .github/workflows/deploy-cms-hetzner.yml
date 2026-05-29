@@ -12,6 +12,7 @@ on:
       - pnpm-lock.yaml
       - pnpm-workspace.yaml
       - tools/assert-cms-build-safe.mjs
+      - tools/assert-cms-deploy-data-safe.mjs
       - .github/workflows/deploy-cms-hetzner.yml
   workflow_dispatch:
 
@@ -43,10 +44,33 @@ jobs:
           corepack pnpm install --frozen-lockfile
 
       - name: Audit CMS production readiness
-        run: corepack pnpm cms:audit-production -- --strict
+        env:
+          DATABASE_URI: ${{ secrets.CMS_AUDIT_DATABASE_URI }}
+          PAYLOAD_SECRET: ${{ secrets.CMS_AUDIT_PAYLOAD_SECRET }}
+        run: |
+          if [ -z "${DATABASE_URI:-}" ]; then
+            echo "Skipping CMS production readiness audit because CMS_AUDIT_DATABASE_URI is not configured."
+            exit 0
+          fi
+
+          export PAYLOAD_SECRET="${PAYLOAD_SECRET:-ci-audit-secret}"
+          corepack pnpm cms:audit-production -- --strict
 
       - name: Audit CMS SEO data
-        run: corepack pnpm cms:audit-seo -- --strict
+        env:
+          DATABASE_URI: ${{ secrets.CMS_AUDIT_DATABASE_URI }}
+          PAYLOAD_SECRET: ${{ secrets.CMS_AUDIT_PAYLOAD_SECRET }}
+        run: |
+          if [ -z "${DATABASE_URI:-}" ]; then
+            echo "Skipping CMS SEO audit because CMS_AUDIT_DATABASE_URI is not configured."
+            exit 0
+          fi
+
+          export PAYLOAD_SECRET="${PAYLOAD_SECRET:-ci-audit-secret}"
+          corepack pnpm cms:audit-seo -- --strict
+
+      - name: Assert CMS deploy data safety
+        run: corepack pnpm cms:deploy-data-safe
 
       - name: Build CMS
         run: corepack pnpm cms:build
@@ -66,7 +90,6 @@ jobs:
       HETZNER_SSH_KEY: ${{ secrets.HETZNER_SSH_KEY }}
       HETZNER_DEPLOY_PATH: ${{ secrets.HETZNER_DEPLOY_PATH || '/home/contextter/matthias-ramahi' }}
       CMS_HEALTH_URL: ${{ secrets.CMS_HEALTH_URL || 'http://127.0.0.1:3300/admin/login' }}
-      HETZNER_ENSURE_ADMIN: ${{ vars.HETZNER_ENSURE_ADMIN || 'false' }}
 
     steps:
       - name: Checkout
@@ -86,11 +109,10 @@ jobs:
           chmod 600 ~/.ssh/hetzner_cms_deploy
           ssh-keyscan -p "$HETZNER_PORT" "$HETZNER_HOST" >> ~/.ssh/known_hosts
 
-          printf -v remote_env 'APP_DIR=%q GIT_BRANCH=%q HEALTH_URL=%q ENSURE_ADMIN=%q' \
+          printf -v remote_env 'APP_DIR=%q GIT_BRANCH=%q HEALTH_URL=%q' \
             "$HETZNER_DEPLOY_PATH" \
             "$GITHUB_REF_NAME" \
-            "$CMS_HEALTH_URL" \
-            "$HETZNER_ENSURE_ADMIN"
+            "$CMS_HEALTH_URL"
 
           ssh \
             -i ~/.ssh/hetzner_cms_deploy \

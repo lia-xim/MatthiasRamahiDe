@@ -479,6 +479,15 @@ const bestSize = (media: PayloadMedia, size: string, format: 'avif' | 'raster' =
   return candidates.find((candidate) => media.sizes?.[candidate]?.url)
 }
 
+const shouldPreferOriginal = (media: PayloadMedia, requestedSize: string, selectedSize?: string, allowOriginal = false) => {
+  if (!allowOriginal || !media.url || !selectedSize) return false
+  const requestedWidth = sizeWidths[requestedSize] || 0
+  const selectedWidth = media.sizes?.[selectedSize]?.width || sizeWidths[selectedSize] || 0
+  const originalWidth = media.width || 0
+
+  return requestedWidth > 0 && selectedWidth > 0 && selectedWidth < requestedWidth * 0.7 && originalWidth > selectedWidth
+}
+
 export const imageUrl = (
   media: PayloadMedia | string | undefined,
   size = 'hero',
@@ -492,6 +501,7 @@ export const imageUrl = (
   }
   const selected = bestSize(media, size, options.format || 'raster')
   const sized = selected ? media.sizes?.[selected]?.url : undefined
+  if (shouldPreferOriginal(media, size, selected, options.allowOriginal)) return toAbsolutePayloadUrl(media.url)
   return toAbsolutePayloadUrl(sized || (options.allowOriginal ? media.url : undefined))
 }
 
@@ -504,6 +514,7 @@ export const imageDisplayUrl = (
   if (typeof media === 'string') return toDisplayAssetUrl(media)
   const selected = bestSize(media, size, options.format || 'raster')
   const sized = selected ? media.sizes?.[selected]?.url : undefined
+  if (shouldPreferOriginal(media, size, selected, options.allowOriginal)) return toDisplayAssetUrl(media.url)
   return toDisplayAssetUrl(sized || (options.allowOriginal ? media.url : undefined))
 }
 

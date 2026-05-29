@@ -5,9 +5,9 @@ import { Button, toast, useField, useForm, useFormFields, usePayloadAPI } from '
 
 import './MediaGalleryPicker.scss'
 
-type MediaID = number | string
+export type MediaID = number | string
 
-type MediaDoc = {
+export type MediaDoc = {
   alt?: string
   category?: string
   featured?: boolean
@@ -33,7 +33,7 @@ type Props = {
   title?: string
 }
 
-const categoryOptions = [
+export const categoryOptions = [
   { label: 'Alle Kategorien', value: 'all' },
   { label: 'Portrait', value: 'portrait' },
   { label: 'Automotive', value: 'automotive' },
@@ -45,7 +45,7 @@ const categoryOptions = [
   { label: 'Noch nicht einsortiert', value: 'uncategorized' },
 ]
 
-const orientationOptions = [
+export const orientationOptions = [
   { label: 'Alle Formate', value: 'all' },
   { label: 'Querformat', value: 'landscape' },
   { label: 'Hochformat', value: 'portrait' },
@@ -53,7 +53,7 @@ const orientationOptions = [
   { label: 'Panorama', value: 'panorama' },
 ]
 
-const normalizeID = (value: unknown): string | undefined => {
+export const normalizeID = (value: unknown): string | undefined => {
   if (value === null || value === undefined) return undefined
   if (typeof value === 'object' && 'id' in value && (value as { id?: unknown }).id !== undefined) {
     return String((value as { id: unknown }).id)
@@ -61,10 +61,10 @@ const normalizeID = (value: unknown): string | undefined => {
   return String(value)
 }
 
-const getPreviewURL = (doc: MediaDoc): string | undefined =>
+export const getPreviewURL = (doc: MediaDoc): string | undefined =>
   doc.thumbnailURL || doc.sizes?.thumb?.url || doc.sizes?.card?.url || doc.url
 
-const getTitle = (doc: MediaDoc): string => doc.title || doc.alt || doc.filename || `Medium ${doc.id}`
+export const getTitle = (doc: MediaDoc): string => doc.title || doc.alt || doc.filename || `Medium ${doc.id}`
 
 const buildFieldState = (value: unknown) => ({
   initialValue: value,
