@@ -11,6 +11,7 @@ interface ImportMetaEnv {
   readonly ASTRO_ENABLE_CMS_JOURNAL_INDEX_CARDS?: string
   readonly ASTRO_ENABLE_CMS_SERVICE_ROUTES?: string
   readonly ASTRO_DISABLE_LEGACY_CMS_LOOKUP?: string
+  readonly ASTRO_DISABLE_CMS_VISUAL_OVERRIDES?: string
   readonly ASTRO_DISABLE_PAYLOAD_FETCH?: string
   readonly ASTRO_LIVE_CMS_CACHE_MS?: string
   readonly ASTRO_LIVE_PAGE_CACHE_SECONDS?: string

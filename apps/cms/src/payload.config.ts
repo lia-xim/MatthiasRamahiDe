@@ -34,6 +34,19 @@ const useSQLite = process.env.PAYLOAD_DB === 'sqlite'
 const pushDevSchema = process.env.PAYLOAD_DB_PUSH === 'true'
 const hasS3 = Boolean(process.env.S3_BUCKET && process.env.S3_ENDPOINT && process.env.S3_ACCESS_KEY_ID && process.env.S3_SECRET_ACCESS_KEY)
 const hasResend = Boolean(process.env.RESEND_API_KEY)
+const configuredCorsOrigins = (process.env.PAYLOAD_CORS_ORIGINS || '')
+  .split(',')
+  .map((origin) => origin.trim())
+  .filter(Boolean)
+const localPreviewOrigins = [
+  'http://localhost:4321',
+  'http://127.0.0.1:4321',
+  'http://localhost:4322',
+  'http://127.0.0.1:4322',
+  'http://localhost:4173',
+  'http://127.0.0.1:4173',
+]
+const allowedOrigins = Array.from(new Set([webUrl, payloadUrl, ...localPreviewOrigins, ...configuredCorsOrigins].filter(Boolean)))
 
 if (!process.env.PAYLOAD_SECRET) {
   console.warn('PAYLOAD_SECRET is not set. Using an ephemeral local secret; set PAYLOAD_SECRET in every persistent environment.')
@@ -41,8 +54,8 @@ if (!process.env.PAYLOAD_SECRET) {
 
 export default buildConfig({
   serverURL: payloadUrl,
-  cors: [webUrl, payloadUrl].filter(Boolean),
-  csrf: [webUrl, payloadUrl].filter(Boolean),
+  cors: allowedOrigins,
+  csrf: allowedOrigins,
   admin: {
     user: Users.slug,
     meta: {

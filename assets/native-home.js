@@ -592,34 +592,34 @@
 /* ============ PORTFOLIO MARQUEE + LIGHTBOX ============ */
 (function(){
   const PORTFOLIO_IMAGES = [
-    'assets/optimized/assets-portfolio-dsc3879-1920.webp',
-    'assets/optimized/assets-portfolio-dsc3878-1920.webp',
-    'assets/optimized/assets-portfolio-dsc3892-1920.webp',
-    'assets/optimized/assets-portfolio-dsc3908-1920.webp',
-    'assets/optimized/assets-portfolio-dsc3982-1920.webp',
-    'assets/optimized/assets-portfolio-20250605-dsc04020-1920.webp',
-    'assets/optimized/assets-portfolio-20250605-dsc03978-1920.webp',
-    'assets/optimized/assets-portfolio-20250605-dsc03816-1920.webp',
-    'assets/optimized/assets-portfolio-20250605-dsc03793-1920.webp',
-    'assets/optimized/assets-portfolio-20250605-dsc03756-1920.webp',
-    'assets/portfolio/_DSC0470-Enhanced-NR.webp',
-    'assets/portfolio/_DSC9321-Enhanced-NR.webp',
-    'assets/portfolio/_DSC9301-Enhanced-NR.webp',
-    'assets/optimized/assets-portfolio-dsc2310-1920.webp',
-    'assets/optimized/assets-portfolio-dsc2316-1920.webp',
-    'assets/optimized/assets-portfolio-dsc2329-1920.webp',
-    'assets/optimized/assets-portfolio-dsc2345-1920.webp',
-    'assets/optimized/assets-portfolio-dsc2358-1920.webp',
-    'assets/optimized/assets-portfolio-dsc2744-1920.webp',
-    'assets/optimized/assets-portfolio-dsc2762-1920.webp',
-    'assets/optimized/assets-portfolio-dsc2986-1920.webp',
-    'assets/optimized/assets-portfolio-dsc6982-1920.webp',
-    'assets/optimized/assets-portfolio-dsc8032-1920.webp',
-    'assets/optimized/assets-portfolio-wettberwerb-foto5-wunder-der-natur2-1920.webp',
-    'assets/optimized/assets-portfolio-wettberwerb-foto6-wunder-der-natur-1920.webp',
-    'assets/optimized/assets-portfolio-wettberwerb-foto10-wunder-der-natur-1920.webp',
-    'assets/optimized/assets-portfolio-20250327-dsc01550-1920.webp',
-    'assets/optimized/assets-portfolio-20250414-dsc00341-1920.webp'
+    { full: 'assets/optimized/assets-portfolio-dsc3879-1920.webp', teaser: 'assets/portfolio/marquee/_DSC3879.webp', thumb: 'assets/portfolio/thumbs/_DSC3879.webp', width: 720, height: 480 },
+    { full: 'assets/optimized/assets-portfolio-dsc3878-1920.webp', teaser: 'assets/portfolio/marquee/_DSC3878.webp', thumb: 'assets/portfolio/thumbs/_DSC3878.webp', width: 720, height: 480 },
+    { full: 'assets/optimized/assets-portfolio-dsc3892-1920.webp', teaser: 'assets/portfolio/marquee/_DSC3892.webp', thumb: 'assets/portfolio/thumbs/_DSC3892.webp', width: 720, height: 480 },
+    { full: 'assets/optimized/assets-portfolio-dsc3908-1920.webp', teaser: 'assets/portfolio/marquee/_DSC3908.webp', thumb: 'assets/portfolio/thumbs/_DSC3908.webp', width: 720, height: 480 },
+    { full: 'assets/optimized/assets-portfolio-dsc3982-1920.webp', teaser: 'assets/portfolio/marquee/_DSC3982.webp', thumb: 'assets/portfolio/thumbs/_DSC3982.webp', width: 720, height: 480 },
+    { full: 'assets/optimized/assets-portfolio-20250605-dsc04020-1920.webp', teaser: 'assets/portfolio/marquee/20250605-DSC04020.webp', thumb: 'assets/portfolio/thumbs/20250605-DSC04020.webp', width: 720, height: 1080 },
+    { full: 'assets/optimized/assets-portfolio-20250605-dsc03978-1920.webp', teaser: 'assets/portfolio/marquee/20250605-DSC03978.webp', thumb: 'assets/portfolio/thumbs/20250605-DSC03978.webp', width: 720, height: 1080 },
+    { full: 'assets/optimized/assets-portfolio-20250605-dsc03816-1920.webp', teaser: 'assets/portfolio/marquee/20250605-DSC03816.webp', thumb: 'assets/portfolio/thumbs/20250605-DSC03816.webp', width: 720, height: 1080 },
+    { full: 'assets/optimized/assets-portfolio-20250605-dsc03793-1920.webp', teaser: 'assets/portfolio/marquee/20250605-DSC03793.webp', thumb: 'assets/portfolio/thumbs/20250605-DSC03793.webp', width: 720, height: 960 },
+    { full: 'assets/optimized/assets-portfolio-20250605-dsc03756-1920.webp', teaser: 'assets/portfolio/marquee/20250605-DSC03756.webp', thumb: 'assets/portfolio/thumbs/20250605-DSC03756.webp', width: 720, height: 1080 },
+    { full: 'assets/portfolio/_DSC0470-Enhanced-NR.webp', teaser: 'assets/portfolio/marquee/_DSC0470-Enhanced-NR.webp', thumb: 'assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp', width: 720, height: 1152 },
+    { full: 'assets/portfolio/_DSC9321-Enhanced-NR.webp', teaser: 'assets/portfolio/marquee/_DSC9321-Enhanced-NR.webp', thumb: 'assets/portfolio/thumbs/_DSC9321-Enhanced-NR.webp', width: 720, height: 1080 },
+    { full: 'assets/portfolio/_DSC9301-Enhanced-NR.webp', teaser: 'assets/portfolio/marquee/_DSC9301-Enhanced-NR.webp', thumb: 'assets/portfolio/thumbs/_DSC9301-Enhanced-NR.webp', width: 720, height: 900 },
+    { full: 'assets/optimized/assets-portfolio-dsc2310-1920.webp', teaser: 'assets/portfolio/marquee/_DSC2310.webp', thumb: 'assets/portfolio/thumbs/_DSC2310.webp', width: 720, height: 480 },
+    { full: 'assets/optimized/assets-portfolio-dsc2316-1920.webp', teaser: 'assets/portfolio/marquee/_DSC2316.webp', thumb: 'assets/portfolio/thumbs/_DSC2316.webp', width: 720, height: 450 },
+    { full: 'assets/optimized/assets-portfolio-dsc2329-1920.webp', teaser: 'assets/portfolio/marquee/_DSC2329.webp', thumb: 'assets/portfolio/thumbs/_DSC2329.webp', width: 720, height: 1080 },
+    { full: 'assets/optimized/assets-portfolio-dsc2345-1920.webp', teaser: 'assets/portfolio/marquee/_DSC2345.webp', thumb: 'assets/portfolio/thumbs/_DSC2345.webp', width: 720, height: 1080 },
+    { full: 'assets/optimized/assets-portfolio-dsc2358-1920.webp', teaser: 'assets/portfolio/marquee/_DSC2358.webp', thumb: 'assets/portfolio/thumbs/_DSC2358.webp', width: 720, height: 1080 },
+    { full: 'assets/optimized/assets-portfolio-dsc2744-1920.webp', teaser: 'assets/portfolio/marquee/_DSC2744.webp', thumb: 'assets/portfolio/thumbs/_DSC2744.webp', width: 720, height: 1080 },
+    { full: 'assets/optimized/assets-portfolio-dsc2762-1920.webp', teaser: 'assets/portfolio/marquee/_DSC2762.webp', thumb: 'assets/portfolio/thumbs/_DSC2762.webp', width: 720, height: 1080 },
+    { full: 'assets/optimized/assets-portfolio-dsc2986-1920.webp', teaser: 'assets/portfolio/marquee/_DSC2986.webp', thumb: 'assets/portfolio/thumbs/_DSC2986.webp', width: 720, height: 1080 },
+    { full: 'assets/optimized/assets-portfolio-dsc6982-1920.webp', teaser: 'assets/portfolio/marquee/_DSC6982.webp', thumb: 'assets/portfolio/thumbs/_DSC6982.webp', width: 720, height: 1080 },
+    { full: 'assets/optimized/assets-portfolio-dsc8032-1920.webp', teaser: 'assets/portfolio/marquee/_DSC8032.webp', thumb: 'assets/portfolio/thumbs/_DSC8032.webp', width: 720, height: 900 },
+    { full: 'assets/optimized/assets-portfolio-wettberwerb-foto5-wunder-der-natur2-1920.webp', teaser: 'assets/portfolio/marquee/Wettberwerb_Foto5_Wunder_der_Natur2.webp', thumb: 'assets/portfolio/thumbs/Wettberwerb_Foto5_Wunder_der_Natur2.webp', width: 720, height: 471 },
+    { full: 'assets/optimized/assets-portfolio-wettberwerb-foto6-wunder-der-natur-1920.webp', teaser: 'assets/portfolio/marquee/Wettberwerb_Foto6_Wunder_der_Natur.webp', thumb: 'assets/portfolio/thumbs/Wettberwerb_Foto6_Wunder_der_Natur.webp', width: 720, height: 1080 },
+    { full: 'assets/optimized/assets-portfolio-wettberwerb-foto10-wunder-der-natur-1920.webp', teaser: 'assets/portfolio/marquee/Wettberwerb_Foto10_Wunder_der_natur.webp', thumb: 'assets/portfolio/thumbs/Wettberwerb_Foto10_Wunder_der_natur.webp', width: 720, height: 448 },
+    { full: 'assets/optimized/assets-portfolio-20250327-dsc01550-1920.webp', teaser: 'assets/portfolio/marquee/20250327-DSC01550.webp', thumb: 'assets/portfolio/thumbs/20250327-DSC01550.webp', width: 720, height: 1090 },
+    { full: 'assets/optimized/assets-portfolio-20250414-dsc00341-1920.webp', teaser: 'assets/portfolio/marquee/20250414-DSC00341.webp', thumb: 'assets/portfolio/thumbs/20250414-DSC00341.webp', width: 720, height: 1080 }
   ];
 
   const SIZES = ['--ww','--w','--t','--s','--w','--ww','--t','--s'];
@@ -627,27 +627,36 @@
   const t2 = document.getElementById('pfTrack2');
   if(!t1 || !t2) return;
 
-  const half = Math.ceil(PORTFOLIO_IMAGES.length / 2);
-  const list1 = PORTFOLIO_IMAGES.slice(0, half);
-  const list2 = PORTFOLIO_IMAGES.slice(half).concat(PORTFOLIO_IMAGES.slice(0, Math.max(0, half - PORTFOLIO_IMAGES.length + half)));
+  const portfolioItems = PORTFOLIO_IMAGES.map((item, index) => ({ ...item, index }));
+  const half = Math.ceil(portfolioItems.length / 2);
+  const list1 = portfolioItems.slice(0, half);
+  const list2 = portfolioItems.slice(half);
+  const tileSizes = {
+    '--ww': '(max-width: 780px) 78vw, 580px',
+    '--w': '(max-width: 780px) 64vw, 460px',
+    '--t': '(max-width: 780px) 48vw, 310px',
+    '--s': '(max-width: 780px) 54vw, 340px'
+  };
 
-  function thumbOf(src){
-    // assets/portfolio/foo.webp -> assets/portfolio/thumbs/foo.webp
-    return src.replace('assets/portfolio/', 'assets/portfolio/thumbs/');
-  }
-
-  function makeTile(src, sizeCls, fullIndex){
+  function makeTile(item, sizeCls){
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'pf-tile ' + sizeCls;
     btn.setAttribute('aria-label','Bild vergrÃ¶ÃŸern');
-    btn.dataset.idx = String(fullIndex);
+    btn.dataset.idx = String(item.index);
     const img = document.createElement('img');
-    img.src = thumbOf(src);
+    img.src = item.teaser || item.thumb;
+    img.srcset = item.thumb + ' 720w, ' + (item.teaser || item.thumb) + ' 960w';
+    img.sizes = tileSizes[sizeCls] || '420px';
     img.alt = '';
     img.loading = 'lazy';
     img.decoding = 'async';
-    img.width = 720;
+    img.fetchPriority = 'low';
+    img.width = item.width || 720;
+    img.height = item.height || 480;
+    img.draggable = false;
+    img.addEventListener('load', () => btn.classList.add('is-loaded'), { once: true });
+    img.addEventListener('error', () => btn.classList.add('is-loaded'), { once: true });
     btn.appendChild(img);
     return btn;
   }
@@ -656,28 +665,61 @@
     const frag = document.createDocumentFragment();
     // two consecutive copies for seamless loop
     for(let dup=0; dup<2; dup++){
-      list.forEach((src, i) => {
+      list.forEach((item, i) => {
         const sz = SIZES[(i + offset) % SIZES.length];
-        const fullIdx = PORTFOLIO_IMAGES.indexOf(src);
-        frag.appendChild(makeTile(src, sz, fullIdx));
+        frag.appendChild(makeTile(item, sz));
       });
     }
     track.appendChild(frag);
   }
-  // Defer building marquee tiles until the section is near the viewport.
+
   const marquee = document.querySelector('.pf-marquee');
+  const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  const saveData = Boolean(connection && connection.saveData);
+  const prewarmed = new Set();
   let built = false;
+
+  const scheduleIdle = (fn, timeout) => {
+    if ('requestIdleCallback' in window) requestIdleCallback(fn, { timeout });
+    else setTimeout(fn, Math.min(timeout, 1600));
+  };
+
+  const prewarmTeasers = (count = 10) => {
+    portfolioItems.slice(0, count).forEach((item) => {
+      const src = item.teaser || item.thumb;
+      if (!src || prewarmed.has(src)) return;
+      prewarmed.add(src);
+      const img = new Image();
+      img.decoding = 'async';
+      img.fetchPriority = 'low';
+      img.src = src;
+    });
+  };
+
   const buildTiles = () => {
     if (built) return; built = true;
     fillTrack(t1, list1, 0);
     fillTrack(t2, list2, 3);
   };
+
+  if (!saveData) {
+    scheduleIdle(() => {
+      prewarmTeasers(12);
+      buildTiles();
+    }, 2200);
+  }
+
   if ('IntersectionObserver' in window && marquee) {
     const io = new IntersectionObserver((entries) => {
       for (const e of entries) {
-        if (e.isIntersecting) { buildTiles(); io.disconnect(); break; }
+        if (e.isIntersecting) {
+          prewarmTeasers(18);
+          buildTiles();
+          io.disconnect();
+          break;
+        }
       }
-    }, { rootMargin: '600px 0px' });
+    }, { rootMargin: '1800px 0px' });
     io.observe(marquee);
   } else {
     buildTiles();
@@ -701,7 +743,7 @@
       lbImg.src = next.src;
       requestAnimationFrame(() => lbImg.classList.add('show'));
     };
-    next.src = PORTFOLIO_IMAGES[cur];
+    next.src = PORTFOLIO_IMAGES[cur].full;
     lbCounter.textContent = String(cur + 1).padStart(2,'0') + ' / ' + String(PORTFOLIO_IMAGES.length).padStart(2,'0');
   }
   function open(i){

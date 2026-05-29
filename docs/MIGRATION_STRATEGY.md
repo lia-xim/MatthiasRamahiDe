@@ -1,4 +1,4 @@
-# Migrationsstrategie
+﻿# Migrationsstrategie
 
 Ziel: die bestehende HTML-Website kontrolliert in Payload ueberfuehren, ohne alte Dateien zu ueberschreiben oder SEO-Strukturen unbedacht zu verlieren.
 
@@ -62,11 +62,11 @@ Stand 2026-05-29:
 | About, Kontakt, Legal | `ueber-mich.html` und `contact.html` sind native Astro-Body-Templates; `impressum.html` und `datenschutz.html` sind typisierte Legal-Templates mit `BaseLayout`. | Juristische Inhalte bei echten Rechtsaenderungen manuell pflegen; keine Legacy-Body-Abhaengigkeit mehr fuer Legal. |
 | Bestehende `blog-*.html` Detailseiten | Native Astro-Artikelrenderer auf alter URL mit `BaseLayout`, BlogPosting-/FAQ-/Breadcrumb-JSON-LD und typisierter Content-Basis. | Final Payload-Journalfelder angleichen und visuelle Regression fuer alle sieben Artikel dauerhaft im Release-Gate halten. |
 
-Die alte `payload-legacy-html`-/Componentized-Schicht ist nicht mehr Teil des Astro-Produktionspfads. Auch die produktiven CSS-/JS-Referenzen der adoptierten Seiten zeigen auf neutrale `native-*` Assets. Root-HTML-Dateien und alte `legacy-*` Assets bleiben als Freeze, Screenshot-Baseline und menschliche Referenz im Projekt, koennen aber nach expliziter Archiv- oder Loeschfreigabe aus dem Arbeitsbaum entfernt werden. Der Produktions-Asset-Sync scannt Root-HTML standardmaessig nicht mehr; die Referenz kann nur fuer QA-Sonderlaeufe mit `SYNC_INCLUDE_ROOT_REFERENCE_HTML=true` als Asset-Quelle einbezogen werden.
+Die alte `payload-legacy-html`-/Componentized-Schicht ist nicht mehr Teil des Astro-Produktionspfads. Auch die produktiven CSS-/JS-Referenzen der adoptierten Seiten zeigen auf neutrale `native-*` Assets. Alte HTML-Dateien und `legacy-*` Assets bleiben als Freeze, Screenshot-Baseline und menschliche Referenz im Projekt; die HTML-Referenz liegt gesammelt unter `legacy-reference/html` und nicht mehr im Repository-Root. Der Produktions-Asset-Sync scannt diese Referenz standardmaessig nicht; sie kann nur fuer QA-Sonderlaeufe mit `SYNC_INCLUDE_ROOT_REFERENCE_HTML=true` als Asset-Quelle einbezogen werden.
 
 ## Eingefrorene visuelle Referenz
 
-Die aktuellen Root-HTML-Dateien sind eingefrorene visuelle Wahrheit fuer die Migration. Sie enthalten die letzten Text-, CTA-, Hero-, SEO- und Bildperformance-Aenderungen und werden nicht geloescht oder ueberschrieben.
+Die aktuellen Legacy-HTML-Dateien unter `legacy-reference/html` sind eingefrorene visuelle Wahrheit fuer die Migration. Sie enthalten die letzten Text-, CTA-, Hero-, SEO- und Bildperformance-Aenderungen und werden nicht als aktive Projekt-Routen verwendet.
 
 Der Manifest-Stand wird mit folgendem Befehl aktualisiert:
 
@@ -74,7 +74,7 @@ Der Manifest-Stand wird mit folgendem Befehl aktualisiert:
 corepack pnpm legacy:freeze
 ```
 
-Das schreibt `docs/legacy-reference-manifest.json` mit Checksumme, Titel, Description, H1, Canonical, Dateigroesse und Seitentyp fuer alle Root-HTML-Dateien. Der Freeze ersetzt keine visuelle Abnahme, macht aber unbeabsichtigte Legacy-Aenderungen nachvollziehbar.
+Das schreibt `docs/legacy-reference-manifest.json` mit Checksumme, Titel, Description, H1, Canonical, Dateigroesse und Seitentyp fuer alle archivierten HTML-Dateien. Der Freeze ersetzt keine visuelle Abnahme, macht aber unbeabsichtigte Referenz-Aenderungen nachvollziehbar.
 
 Der Manifest-Stand wird in Release-Laeufen mit folgendem Befehl geprueft:
 
@@ -82,7 +82,7 @@ Der Manifest-Stand wird in Release-Laeufen mit folgendem Befehl geprueft:
 corepack pnpm legacy:freeze:check
 ```
 
-Dieser Check ist Teil von `production:check` und verhindert, dass neue oder geaenderte Root-HTML-Dateien unbemerkt an der eingefrorenen visuellen Referenz vorbeilaufen. Ein neuer Freeze ist deshalb eine bewusste Abnahmehandlung, kein automatischer Nebeneffekt.
+Dieser Check ist Teil von `production:check` und verhindert, dass neue oder geaenderte Archiv-HTML-Dateien unbemerkt an der eingefrorenen visuellen Referenz vorbeilaufen. Ein neuer Freeze ist deshalb eine bewusste Abnahmehandlung, kein automatischer Nebeneffekt.
 
 ## Kontrollierter Import-Stand
 
@@ -128,20 +128,20 @@ Dieses Script markiert nur die definierte Produktionsseitenliste als `reviewed` 
 
 ## URL-Erhalt
 
-Aktuell bleiben alle alten Root-HTML-URLs 1:1 erreichbar. Die Migration ist aber nicht mehr ein Big Bang, sondern in drei klare Gruppen geteilt:
+Aktuell bleiben alle alten `.html`-URLs 1:1 erreichbar. Die Migration ist aber nicht mehr ein Big Bang, sondern in drei klare Gruppen geteilt:
 
-- Alle 217 bisherigen Root-HTML-URLs werden im Vercel-/Static-Build aus `apps/web/src/pages/[slug].html.astro` und `apps/web/src/lib/adoptedRoutes.ts` erzeugt. Die Root-HTML-Dateien sind Referenz, aber nicht mehr Produktionsquelle.
+- Alle 217 bisherigen `.html`-URLs werden im Vercel-/Static-Build aus `apps/web/src/pages/[slug].html.astro` und `apps/web/src/lib/adoptedRoutes.ts` erzeugt. Die archivierten HTML-Dateien sind Referenz, aber nicht mehr Produktionsquelle.
 - Adoptierte Kernseiten und alle Local-SEO-Seiten werden ueber native Astro-Komponenten, den Local-SEO-Family-Renderer oder den Journal-/Legal-Renderer ausgegeben. Die sichtbare URL bleibt z. B. `/fotografie.html`, `/portfolio.html`, `/automobil-fotografie-koeln.html` oder `/blog-serie-kuratieren.html`.
 - Die Zuordnung von alter URL zu nativem Renderer-Typ liegt in `apps/web/src/lib/nativeAdoptedRouteRegistry.ts`. Dadurch bleibt `NativeAdoptedPage.astro` ein Dispatcher und neue Migrationen muessen explizit registriert werden.
-- `corepack pnpm native:coverage` gleicht das eingefrorene Root-HTML-Manifest mit Astro-Routenmodell, Registry und Redirect-Modell ab.
+- `corepack pnpm native:coverage` gleicht das eingefrorene Archiv-Manifest mit Astro-Routenmodell, Registry und Redirect-Modell ab.
 - Echte Dubletten redirecten mit 308 auf die kanonische Zielseite.
-- Neue Payload-Seiten ohne passende Root-HTML-Datei koennen ueber den generischen strukturierten Astro-Renderpfad laufen. Dieser Pfad ist fuer neue Seiten gedacht, nicht fuer ungepruefte 1:1-Ersetzungen.
+- Neue Payload-Seiten ohne passende archivierte HTML-Referenz koennen ueber den generischen strukturierten Astro-Renderpfad laufen. Dieser Pfad ist fuer neue Seiten gedacht, nicht fuer ungepruefte 1:1-Ersetzungen.
 
-Die rohe Legacy-Ausgabe ist kein Astro-App-Renderpfad mehr. Fuer Visual Regression startet `apps/web/scripts/visual-regression.mjs` einen separaten lokalen Referenzserver aus den Root-HTML-Dateien; produktive Routen bleiben dadurch vollstaendig Astro-nativ. Die frueheren `legacy-baseline`- und `componentized`-Routenverzeichnisse unter `apps/web/src/pages` sind entfernt und werden vom `native:guard` blockiert.
+Die rohe Legacy-Ausgabe ist kein Astro-App-Renderpfad mehr. Fuer Visual Regression startet `apps/web/scripts/visual-regression.mjs` einen separaten lokalen Referenzserver aus `legacy-reference/html`; produktive Routen bleiben dadurch vollstaendig Astro-nativ. Die frueheren `legacy-baseline`- und `componentized`-Routenverzeichnisse unter `apps/web/src/pages` sind entfernt und werden vom `native:guard` blockiert.
 
-Wichtig: Der Public-Asset-Sync kopiert keine Root-HTML-Dateien mehr nach `apps/web/public` und scannt sie nicht mehr fuer Produktionsassets. Die alten HTML-Dateien bleiben im Projekt-Root unangetastet, aber sie blockieren die Astro-Routen nicht als statische Public-Dateien und beeinflussen den normalen Astro-Build nicht mehr. Der alte `src/pages/[slug].html.ts`-Fallback ist entfernt; `.html`-Routen kommen aus dem nativen Routenmodell.
+Wichtig: Der Public-Asset-Sync kopiert keine archivierten HTML-Dateien nach `apps/web/public` und scannt sie nicht fuer Produktionsassets. Im Projekt-Root liegen keine alten `.html`-Routen mehr; das Archiv blockiert die Astro-Routen nicht als statische Public-Dateien und beeinflusst den normalen Astro-Build nicht. Der alte `src/pages/[slug].html.ts`-Fallback ist entfernt; `.html`-Routen kommen aus dem nativen Routenmodell.
 
-Alte Root-HTML-Mutationsskripte sind bewusst aus dem normalen Wartungspfad herausgenommen. `corepack pnpm seo:fix` schreibt keine Root-HTML-Dateien mehr, sondern verweist auf Native-/CMS-Audits. Die historische Pipeline kann nur noch explizit als `legacy:seo:fix` mit `ALLOW_LEGACY_REFERENCE_WRITE=true` gestartet werden.
+Alte HTML-Mutationsskripte sind bewusst aus dem normalen Wartungspfad herausgenommen. `corepack pnpm seo:fix` schreibt keine Archiv-HTML-Dateien mehr, sondern verweist auf Native-/CMS-Audits. `legacy:seo:fix` ist absichtlich blockiert und fuehrt keine Bulk-Mutation der Referenz mehr aus.
 
 Aktuell adoptierte oeffentliche URLs:
 
@@ -168,7 +168,7 @@ Fuer migrierte Seiten gilt:
 
 - `seo.canonicalUrl` im CMS auf die bestehende Live-URL setzen, z. B. `https://matthiasramahi.de/automobil-fotografie-duesseldorf.html`.
 - Sitemap soll die kanonische URL enthalten.
-- Alte `.html`-Datei nicht ueberschreiben.
+- Archivierte `.html`-Referenz nicht ueberschreiben.
 - Erst nach visueller Freigabe entscheidet man, ob Astro den Body-Abschnitt komplett aus CMS-Komponenten rendert oder ob die Legacy-Body-Struktur noch als Parity-Schicht erhalten bleibt.
 
 Redirects sind nur sinnvoll bei echten Dubletten, z. B. wenn `blog.html` und `blog-journal.html` inhaltlich dasselbe Ziel haben.
@@ -221,35 +221,35 @@ Technischer Gate:
 
 ## Visuelle Freigabe
 
-Die eingefrorenen Root-HTML-Dateien bleiben die visuelle Referenz fuer Regressionstests, aber nicht mehr die Produktionsquelle. Fuer jede kuenftige Ersetzung oder groessere Layout-Aenderung gilt:
+Die eingefrorenen HTML-Dateien unter `legacy-reference/html` bleiben die visuelle Referenz fuer Regressionstests, aber nicht mehr die Produktionsquelle. Fuer jede kuenftige Ersetzung oder groessere Layout-Aenderung gilt:
 
 1. Alte URL und adoptierte Astro-URL in `apps/web/scripts/visual-regression.mjs` aufnehmen.
 2. Desktop und Mobile vergleichen.
 3. Bekannte neue Soll-Abweichungen dokumentieren, aktuell: SEO-Anpassungen, Bildperformance/optimierte Bilder, groessere CTAs und zentralisiertes Formularsystem.
 4. Erst danach eine CMS-Route als Live-Ersatz aktivieren.
-5. Der Route-Audit muss bestaetigen, dass die oeffentliche Antwort aus einem Astro-Layout kommt (`data-cms-layout-source="native-adopted-chrome"` oder `base-layout`) und nicht aus einer alten Root-HTML-Datei.
+5. Der Route-Audit muss bestaetigen, dass die oeffentliche Antwort aus einem Astro-Layout kommt (`data-cms-layout-source="native-adopted-chrome"` oder `base-layout`) und nicht aus einer archivierten HTML-Datei.
 
 Aktueller Pruefstand:
 
-- `corepack pnpm --filter @matthias-ramahi/web test:legacy-routes` prueft alle statisch auditierbaren Root-HTML-URLs auf Status 200, Titel, Header/Footer, kaputte Bilder und den nativen Astro-Layout-Marker. Bekannte Alias-Redirects werden als Redirect-Dateien geprueft, bevor der Browser dem Meta-Refresh auf die Zielseite folgt. Server-gerenderte Routen wie `/` werden im vollstaendigen `production:check` ueber `LEGACY_AUDIT_BASE_URL` gegen die Astro-Preview geprueft.
+- `corepack pnpm --filter @matthias-ramahi/web test:legacy-routes` prueft alle statisch auditierbaren historischen `.html`-URLs aus dem Manifest auf Status 200, Titel, Header/Footer, kaputte Bilder und den nativen Astro-Layout-Marker. Bekannte Alias-Redirects werden als Redirect-Dateien geprueft, bevor der Browser dem Meta-Refresh auf die Zielseite folgt. Server-gerenderte Routen wie `/` werden im vollstaendigen `production:check` ueber `LEGACY_AUDIT_BASE_URL` gegen die Astro-Preview geprueft.
 - `corepack pnpm --filter @matthias-ramahi/web test:visual` vergleicht die wichtigsten Seiten gegen die rohe Legacy-Baseline auf Desktop und Mobile.
 - Visual Regression nutzt 2% als Zielwert und 5% als harte Fail-Grenze. Ueberschreitungen des Zielwerts werden als Warnung ausgegeben, weil mehrere Legacy-Seiten dynamische JS-/Lazyload-Bildstrecken enthalten.
 - Bekannte Soll-Ausnahmen bleiben die vom Nutzer gewuenschten Aenderungen: SEO-Anpassungen, Bildperformance/optimierte Bilder, groessere CTAs und zentralisiertes Formularsystem.
 - Stand 2026-05-28: Web- und CMS-Build laufen. Die adoptierten Kernseiten werden nicht mehr als statische Legacy-Kopien prerendered, sondern sind fuer den Astro/Payload-Renderpfad reserviert.
 - Stand 2026-05-28: Die aktive Produktionsgruppe ist reviewed, 157 lokale SEO-Seiten sind fuer privates Staging published/reviewed, der Production-Audit ist fehlerfrei, und `production:check` ist der zentrale Release-Befehl fuer die naechste Abnahme.
-- Stand 2026-05-29: `automobil-fotografie.html`, `sportwagen-fotografie.html` und `oldtimer-fotografie.html` rendern als native Astro-Komponenten. Visual Regression gegen den separaten Root-HTML-Referenzserver: Automobil Desktop 1.985%, Mobile 1.705%; Sportwagen Desktop 1.779%, Mobile 0.008%; Oldtimer Desktop 0.003%, Mobile 0.010%. Browser-Smoke: Lightbox und Konsole fehlerfrei; Sportwagen- und Oldtimer-Lightbox wurden durch gesetzte `src`-Attribute fuer `data-src`-Tiles gehaertet.
+- Stand 2026-05-29: `automobil-fotografie.html`, `sportwagen-fotografie.html` und `oldtimer-fotografie.html` rendern als native Astro-Komponenten. Visual Regression gegen den separaten Archiv-Referenzserver: Automobil Desktop 1.985%, Mobile 1.705%; Sportwagen Desktop 1.779%, Mobile 0.008%; Oldtimer Desktop 0.003%, Mobile 0.010%. Browser-Smoke: Lightbox und Konsole fehlerfrei; Sportwagen- und Oldtimer-Lightbox wurden durch gesetzte `src`-Attribute fuer `data-src`-Tiles gehaertet.
 - Stand 2026-05-29: `motorrad-fotografie.html`, `portraitfotografie.html`, `landschaftsfotografie.html`, `contact.html` und `ueber-mich.html` sind ebenfalls native Astro-Body-Templates. Die Dev-Middleware rendert dieselbe native Logik wie der statische Build; Legacy-CSS-Variablen werden nach Astro-CSS wiederhergestellt, damit `tokens.css` die eingefrorene Optik nicht ueberschreibt. Visual Regression ueber acht Kernseiten bleibt unter 5%; Kontakt, Landschaft, About und Oldtimer liegen praktisch pixelgleich.
 - Stand 2026-05-29: alle sieben bestehenden `blog-*.html` Journal-Detailseiten laufen auf den alten URLs ueber den nativen Artikelrenderer mit `BaseLayout`. HTTP-Smoke meldet `x-cms-render-source: structured-astro`, Browser-Smoke fuer Automotive- und Fine-Art-Artikel ist ohne Error-Overlay, ohne relevante Console Errors/Warnings und mit BlogPosting-JSON-LD bestanden.
 - Stand 2026-05-29: `impressum.html` und `datenschutz.html` sind nicht mehr aus Legacy-HTML-Sections zusammengesetzt, sondern rendern aus `legalContent.ts` als native Astro-Seiten. Local-SEO-Payload-Dokumente werden fuer den Build ueber einen gecachten Legacy-URL-Index geladen, nicht mehr pro Route einzeln.
-- Stand 2026-05-29: alle 217 Root-HTML-URLs werden im Astro-Build nativ erzeugt. Es gibt keine rohe Produktionsausgabe ueber `set:html={legacyHtml}` mehr; Root-HTML bleibt nur Referenz/Baseline. Alias-Dubletten redirecten, Konzeptseiten sind noindex Astro-Archivseiten.
-- Stand 2026-05-29: die alte App-interne Legacy-/Componentized-Bruecke ist entfernt. `apps/web/src` enthaelt keine Route und keine Komponente mehr, die Root-HTML als Produktions- oder Preview-Body rendert. Visual Regression liest alte HTML-Dateien nur noch ueber einen separaten QA-Referenzserver.
+- Stand 2026-05-29: alle 217 historischen `.html`-URLs werden im Astro-Build nativ erzeugt. Es gibt keine rohe Produktionsausgabe ueber `set:html={legacyHtml}` mehr; das Archiv unter `legacy-reference/html` bleibt nur Referenz/Baseline. Alias-Dubletten redirecten, Konzeptseiten sind noindex Astro-Archivseiten.
+- Stand 2026-05-29: die alte App-interne Legacy-/Componentized-Bruecke ist entfernt. `apps/web/src` enthaelt keine Route und keine Komponente mehr, die archiviertes HTML als Produktions- oder Preview-Body rendert. Visual Regression liest alte HTML-Dateien nur noch ueber einen separaten QA-Referenzserver.
 - Stand 2026-05-29: finaler Web-Build erfolgreich, `astro check` ueber 80 Dateien mit 0 Errors / 0 Warnings / 0 Hints.
 - Stand 2026-05-29: Route-Audit erfolgreich. 217/217 bisherige HTML-Routen werden nativ aus Astro erzeugt; der standalone statische Audit prueft davon 216/217 und der vollstaendige Production-Check deckt `/` ueber die laufende Astro-Preview ab.
-- Stand 2026-05-29: Produktionsassets sind im Astro-Code auf `native-*` umgestellt; der Prebuild heisst `sync-public-assets` und kopiert keine Root-HTML-Dateien nach `apps/web/public`.
+- Stand 2026-05-29: Produktionsassets sind im Astro-Code auf `native-*` umgestellt; der Prebuild heisst `sync-public-assets` und kopiert keine archivierten HTML-Dateien nach `apps/web/public`.
 - Stand 2026-05-29: `native:guard` ist Teil von `production:check` und verhindert Rueckfaelle durch Public-HTML-Schatten, Public-`legacy-*` Assets, Mojibake-Muster in Produktionsquellen oder rohe Legacy-Render-Marker im Astro-Runtime-Code.
 - Stand 2026-05-29: `native:guard` prueft zusaetzlich, dass Astro-Runtime-Code keine unerwarteten `node:fs`-Zugriffe bekommt, der Adopted-Critical-Inliner nur CSS-Assets lesen darf, der Route-Audit den nativen Astro-Layout-Marker erzwingt, entfernte Legacy-/Componentized-Routenverzeichnisse entfernt bleiben, adoptierte Route-Dispatcher ueber die native Renderer-Registry fail-closed sind und `native:coverage` fuer das eingefrorene Manifest erfolgreich ist.
-- Stand 2026-05-29: `native:coverage` bestaetigt 217/217 eingefrorene Root-HTML-Dateien und 217/217 Routenmodell-Dateien als deckungsgleich: 211 native Renderer und 6 Redirects.
+- Stand 2026-05-29: `native:coverage` bestaetigt 217/217 eingefrorene Archiv-HTML-Dateien und 217/217 Routenmodell-Dateien als deckungsgleich: 211 native Renderer und 6 Redirects.
 - Stand 2026-05-29: Visual Regression wird fuer stabile lokale Laeufe in drei Gruppen ausgefuehrt: Kern-/Fotografieseiten, Service/About/Contact/Journal und Local-SEO-Familien. Alle Gruppen bleiben unter der harten 5%-Grenze; Warnungen ueber dem 2%-Zielwert sind dokumentierte Bild-/Lazyload-Differenzen.
 - Stand 2026-05-29: `production:check` fuehrt diese drei Gruppen automatisch aus, streamt die einzelnen Vergleichsergebnisse und beendet die temporaere Astro-Preview nach dem Lauf wieder. Der letzte Komplettlauf war erfolgreich.
-- Stand 2026-05-29: `legacy:freeze:check` ist Teil von `production:check` und prueft das Manifest gegen 217 eingefrorene Root-HTML-Dateien. Das Manifest enthaelt keine instabilen mtimes mehr, sodass nur echte Referenzdrifts den Release-Gate blockieren.
+- Stand 2026-05-29: `legacy:freeze:check` ist Teil von `production:check` und prueft das Manifest gegen 217 eingefrorene Archiv-HTML-Dateien. Das Manifest enthaelt keine instabilen mtimes mehr, sodass nur echte Referenzdrifts den Release-Gate blockieren.
 - Stand 2026-05-29: Site-Quality-Audit ueber 226 Routen und 452 Desktop-/Mobile-Checks ist ohne Failures. Uebrig sind nur Long-Task-Warnungen fuer bild-/animationsreiche Seiten; Payload-Medien von `cms.matthiasramahi.de` werden als First-Party behandelt.

@@ -26,15 +26,15 @@ const imageSizes = fastImportImageSizes
   ? [{ name: 'thumb', width: 360, height: 360, position: 'centre' as const, formatOptions: webpFormat(84) }]
   : [
       { name: 'thumb', width: 360, height: 360, position: 'centre' as const, formatOptions: webpFormat(84) },
-      { name: 'mobile', width: 760, withoutEnlargement: true, formatOptions: webpFormat(86) },
-      { name: 'card', width: 1100, withoutEnlargement: true, formatOptions: webpFormat(88) },
-      { name: 'hero', width: 1920, withoutEnlargement: true, formatOptions: webpFormat(92) },
-      { name: 'wide', width: 2560, withoutEnlargement: true, formatOptions: webpFormat(92) },
+      { name: 'mobile', width: 760, withoutEnlargement: true, formatOptions: webpFormat(88) },
+      { name: 'card', width: 1100, withoutEnlargement: true, formatOptions: webpFormat(90) },
+      { name: 'hero', width: 1920, withoutEnlargement: true, formatOptions: webpFormat(94) },
+      { name: 'wide', width: 2560, withoutEnlargement: true, formatOptions: webpFormat(94) },
       { name: 'thumbAvif', width: 360, height: 360, position: 'centre' as const, formatOptions: avifFormat(62) },
-      { name: 'mobileAvif', width: 760, withoutEnlargement: true, formatOptions: avifFormat(66) },
-      { name: 'cardAvif', width: 1100, withoutEnlargement: true, formatOptions: avifFormat(70) },
-      { name: 'heroAvif', width: 1920, withoutEnlargement: true, formatOptions: avifFormat(74) },
-      { name: 'wideAvif', width: 2560, withoutEnlargement: true, formatOptions: avifFormat(74) },
+      { name: 'mobileAvif', width: 760, withoutEnlargement: true, formatOptions: avifFormat(70) },
+      { name: 'cardAvif', width: 1100, withoutEnlargement: true, formatOptions: avifFormat(74) },
+      { name: 'heroAvif', width: 1920, withoutEnlargement: true, formatOptions: avifFormat(80) },
+      { name: 'wideAvif', width: 2560, withoutEnlargement: true, formatOptions: avifFormat(80) },
     ]
 
 export const Media: CollectionConfig = {

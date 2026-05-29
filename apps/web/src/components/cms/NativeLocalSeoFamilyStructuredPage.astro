@@ -74,17 +74,17 @@ Astro.response.headers.set('x-cms-layout-parent', familyContent.parentLegacyFile
 ---
 {
   familyContent.family === 'automobil' ? (
-    <NativeAutomobilPhotographyPage doc={doc} legacyFile={legacyFile} preview={preview} visualDoc={null} />
+    <NativeAutomobilPhotographyPage doc={doc} legacyFile={legacyFile} preview={preview} />
   ) : familyContent.family === 'sportwagen' ? (
-    <NativeSportwagenPhotographyPage doc={doc} legacyFile={legacyFile} preview={preview} visualDoc={null} />
+    <NativeSportwagenPhotographyPage doc={doc} legacyFile={legacyFile} preview={preview} />
   ) : familyContent.family === 'oldtimer' ? (
-    <NativeOldtimerPhotographyPage doc={doc} legacyFile={legacyFile} preview={preview} visualDoc={null} />
+    <NativeOldtimerPhotographyPage doc={doc} legacyFile={legacyFile} preview={preview} />
   ) : familyContent.family === 'motorrad' ? (
-    <NativeMotorradPhotographyPage doc={doc} legacyFile={legacyFile} preview={preview} visualDoc={null} />
+    <NativeMotorradPhotographyPage doc={doc} legacyFile={legacyFile} preview={preview} />
   ) : familyContent.family === 'portrait' ? (
-    <NativePortraitPhotographyPage doc={doc} legacyFile={legacyFile} preview={preview} visualDoc={null} />
+    <NativePortraitPhotographyPage doc={doc} legacyFile={legacyFile} preview={preview} />
   ) : familyContent.family === 'landschaft' ? (
-    <NativeLandschaftPhotographyPage doc={doc} legacyFile={legacyFile} preview={preview} visualDoc={null} />
+    <NativeLandschaftPhotographyPage doc={doc} legacyFile={legacyFile} preview={preview} />
   ) : (
 <AdoptedPageLayout
   legacyFile={legacyFile}

@@ -45,7 +45,7 @@
           observer.unobserve(entry.target);
           load(entry.target);
         });
-      }, { rootMargin: '400px 0px' });
+      }, { rootMargin: '1000px 0px' });
 
       images.forEach(function (image) {
         observer.observe(image);

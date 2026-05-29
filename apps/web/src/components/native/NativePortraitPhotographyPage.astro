@@ -22,7 +22,7 @@ const props = Astro.props as Props
 const { doc: providedDoc = undefined, legacyFile: providedLegacyFile, preview, visualDoc: providedVisualDoc = undefined } = props
 const legacyFile = providedLegacyFile || defaultLegacyFile
 const doc = providedDoc || (await getLegacyBackedDoc(legacyFile, { depth: 2 }))
-const shouldUseCmsVisualDoc = Boolean(preview) || import.meta.env.ASTRO_ENABLE_CMS_VISUAL_OVERRIDES === 'true'
+const shouldUseCmsVisualDoc = import.meta.env.ASTRO_DISABLE_CMS_VISUAL_OVERRIDES !== 'true'
 const visualDoc = Object.hasOwn(props, 'visualDoc')
   ? providedVisualDoc
   : shouldUseCmsVisualDoc
@@ -137,6 +137,7 @@ const searchLinks = [
   title={metaTitle}
   description={metaDescription}
   ogImage={visualSlots[0].full}
+  preloadImages={[visualSlots[0].full]}
 >
   {preview && (
     <PreviewToolbar
@@ -152,7 +153,7 @@ const searchLinks = [
         <div class="hero-pt__slides">
           <div class="hero-pt__slide" data-i="0">
             <div class="hero-pt__zoom">
-              <img class="hero-pt__image" src={visualSlots[0].src} srcset={visualSlots[0].srcset} sizes="100vw" alt="" fetchpriority="high" decoding="async" width={visualSlots[0].width} height={visualSlots[0].height} />
+              <img class="hero-pt__image" src={visualSlots[0].src} srcset={visualSlots[0].srcset} sizes="100vw" alt="" loading="eager" fetchpriority="high" decoding="async" width={visualSlots[0].width} height={visualSlots[0].height} />
             </div>
           </div>
           <div class="hero-pt__slide" data-i="1">
