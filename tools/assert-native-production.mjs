@@ -5,6 +5,7 @@ import { auditNativeRouteCoverage } from './assert-native-route-coverage.mjs'
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const webSourceRoot = path.join(repoRoot, 'apps', 'web', 'src')
+const cmsSourceRoot = path.join(repoRoot, 'apps', 'cms', 'src')
 const publicRoot = path.join(repoRoot, 'apps', 'web', 'public')
 const publicAssetRoot = path.join(publicRoot, 'assets')
 const assetSyncScript = path.join(repoRoot, 'tools', 'sync-public-assets.mjs')
@@ -85,6 +86,21 @@ async function assertNoProductionLegacyRenderMarkers() {
     for (const check of checks) {
       if (check.pattern.test(text)) {
         failures.push(`${relative(file)} contains ${check.label}.`)
+      }
+    }
+  }
+}
+
+async function assertNoMojibakeInProductionSources() {
+  const sourceRoots = [webSourceRoot, cmsSourceRoot]
+  const mojibakePattern = /\u00c3|\u00c2|\u00e2[\u20ac\u2020]|\ufffd/u
+
+  for (const sourceRoot of sourceRoots) {
+    const files = await collectFiles(sourceRoot, (file) => textExtensions.has(path.extname(file).toLowerCase()))
+    for (const file of files) {
+      const text = await fs.readFile(file, 'utf8')
+      if (mojibakePattern.test(text)) {
+        failures.push(`${relative(file)} contains mojibake-like text. Fix the source encoding before release.`)
       }
     }
   }
@@ -171,6 +187,7 @@ await assertNoPublicHtml()
 await assertNoRemovedRouteDirs()
 await assertNoPublicLegacyAssets()
 await assertNoProductionLegacyRenderMarkers()
+await assertNoMojibakeInProductionSources()
 await assertNoUnexpectedWebRuntimeFsAccess()
 await assertAdoptedLayoutCannotInlineHtml()
 await assertAssetSyncIsNativeByDefault()
@@ -185,5 +202,5 @@ if (failures.length > 0) {
 }
 
 console.log(
-  'Native production guard passed: no public HTML shadows, no legacy/componentized route dirs, no public legacy assets, no raw legacy web render path, no unexpected runtime fs access, layout-marker route audit enforced, native route dispatch fails closed, and frozen route coverage is complete.',
+  'Native production guard passed: no public HTML shadows, no legacy/componentized route dirs, no public legacy assets, no raw legacy web render path, no mojibake in production sources, no unexpected runtime fs access, layout-marker route audit enforced, native route dispatch fails closed, and frozen route coverage is complete.',
 )
