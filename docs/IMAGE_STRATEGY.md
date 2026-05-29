@@ -38,7 +38,7 @@ Astro nutzt `ResponsiveImage` mit `<picture>`, AVIF/WebP, `srcset`, `sizes`, Laz
 - Lokale Uploads bekommen `dominantColor` und `blurDataUrl` als LQIP-Placeholder.
 - Im Frontend wird der Focal Point als `object-position` gesetzt, wenn Payload `focalX/focalY` liefert.
 
-Die Startseiten-Hero-Slideshow kann ueber eine `Bildsequenz` im Startseiten-Dokument gepflegt werden. Ein interner Titel mit `hero`, `intro` oder `start` wird als Hero-Sequenz erkannt; die Reihenfolge der Bilder im CMS ist die sichtbare Reihenfolge im Hero.
+Die Startseiten-Hero-Slideshow wird im Startseiten-Dokument ueber den Tab `Hero` gepflegt. Der `Hero-Slider` hat pro Slide ein Bild, zwei optionale Titelzeilen, Kurztext und zwei Button-Ziele. Die Reihenfolge im CMS ist die sichtbare Reihenfolge im Hero. Die alte `Bildsequenz` mit internem Titel `hero`, `intro` oder `start` bleibt nur als Rueckfalllogik erhalten.
 
 ## Galerie-Regeln
 

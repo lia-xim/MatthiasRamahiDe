@@ -54,6 +54,58 @@ const repairKnownLocalSQLiteDrift = () => {
     if (ensureColumn(db, 'footer', 'about_link_open_in_new_tab', 'integer DEFAULT 0')) {
       changes.push('footer.about_link_open_in_new_tab')
     }
+
+    const beforeHeroSlides = db
+      .prepare("SELECT name FROM sqlite_master WHERE type = 'table' AND name = 'site_pages_hero_slides'")
+      .get()
+    const beforeVersionHeroSlides = db
+      .prepare("SELECT name FROM sqlite_master WHERE type = 'table' AND name = '_site_pages_v_version_hero_slides'")
+      .get()
+
+    db.exec(`
+      CREATE TABLE IF NOT EXISTS "site_pages_hero_slides" (
+        "_order" integer NOT NULL,
+        "_parent_id" integer NOT NULL,
+        "id" text PRIMARY KEY NOT NULL,
+        "image_id" integer,
+        "headline_line1" text DEFAULT 'Fotografie',
+        "headline_line2" text,
+        "lead" text,
+        "primary_label" text DEFAULT 'Projekt anfragen',
+        "primary_href" text DEFAULT '#anfrage',
+        "secondary_label" text DEFAULT 'Arbeiten ansehen',
+        "secondary_href" text DEFAULT '/portfolio.html',
+        FOREIGN KEY ("image_id") REFERENCES "media"("id") ON DELETE set null,
+        FOREIGN KEY ("_parent_id") REFERENCES "site_pages"("id") ON DELETE cascade
+      );
+
+      CREATE TABLE IF NOT EXISTS "_site_pages_v_version_hero_slides" (
+        "_order" integer NOT NULL,
+        "_parent_id" integer NOT NULL,
+        "id" integer PRIMARY KEY NOT NULL,
+        "image_id" integer,
+        "headline_line1" text DEFAULT 'Fotografie',
+        "headline_line2" text,
+        "lead" text,
+        "primary_label" text DEFAULT 'Projekt anfragen',
+        "primary_href" text DEFAULT '#anfrage',
+        "secondary_label" text DEFAULT 'Arbeiten ansehen',
+        "secondary_href" text DEFAULT '/portfolio.html',
+        "_uuid" text,
+        FOREIGN KEY ("image_id") REFERENCES "media"("id") ON DELETE set null,
+        FOREIGN KEY ("_parent_id") REFERENCES "_site_pages_v"("id") ON DELETE cascade
+      );
+
+      CREATE INDEX IF NOT EXISTS "site_pages_hero_slides_order_idx" ON "site_pages_hero_slides" ("_order");
+      CREATE INDEX IF NOT EXISTS "site_pages_hero_slides_parent_id_idx" ON "site_pages_hero_slides" ("_parent_id");
+      CREATE INDEX IF NOT EXISTS "site_pages_hero_slides_image_idx" ON "site_pages_hero_slides" ("image_id");
+      CREATE INDEX IF NOT EXISTS "_site_pages_v_version_hero_slides_order_idx" ON "_site_pages_v_version_hero_slides" ("_order");
+      CREATE INDEX IF NOT EXISTS "_site_pages_v_version_hero_slides_parent_id_idx" ON "_site_pages_v_version_hero_slides" ("_parent_id");
+      CREATE INDEX IF NOT EXISTS "_site_pages_v_version_hero_slides_image_idx" ON "_site_pages_v_version_hero_slides" ("image_id");
+    `)
+
+    if (!beforeHeroSlides) changes.push('site_pages_hero_slides')
+    if (!beforeVersionHeroSlides) changes.push('_site_pages_v_version_hero_slides')
   } finally {
     db.close()
   }

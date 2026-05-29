@@ -13,7 +13,8 @@ import {
 
 const providedDoc = Astro.props.doc as PayloadDoc | undefined
 const doc = providedDoc || (await getSitePageByType('journal-index', { depth: 2 }))
-const cmsPosts = await listDocuments('journal-posts', { limit: 12, sort: '-publishedAt', depth: 2 })
+const useCmsJournalIndexCards = import.meta.env.ASTRO_ENABLE_CMS_JOURNAL_INDEX_CARDS === 'true'
+const cmsPosts = useCmsJournalIndexCards ? await listDocuments('journal-posts', { limit: 12, sort: '-publishedAt', depth: 2 }) : []
 const legacyPostBySlug = new Map(journalCards.map((post) => [post.href.replace(/^\//, '').replace(/\.html$/i, ''), post]))
 const categoryToFilter: Record<string, string> = {
   automotive: 'automotive',
@@ -54,7 +55,8 @@ const cmsCards = cmsPosts
     }
   })
   .filter(Boolean) as JournalPostCard[]
-const posts = cmsCards.length > 0 ? cmsCards : journalCards
+const posts = useCmsJournalIndexCards && cmsCards.length > 0 ? cmsCards : journalCards
+const heroLead = useCmsJournalIndexCards ? doc?.intro || journalHero.lead : journalHero.lead
 const initialVisiblePostCount = 6
 ---
 <AdoptedPageLayout legacyFile="blog.html" current="blog" doc={doc}>
@@ -69,7 +71,7 @@ const initialVisiblePostCount = 6
         <div class="hero__copy">
           <p class="hero__kicker">{journalHero.kicker}</p>
           <h1 set:html={journalHero.title}></h1>
-          <p class="hero__lead">{doc?.intro || journalHero.lead}</p>
+          <p class="hero__lead">{heroLead}</p>
           <div class="hero__actions">
             <a class="hero__btn hero__btn--primary" href="#journal">Artikel ansehen</a>
             <a class="hero__btn" href="/contact.html">Fotoauftrag anfragen</a>

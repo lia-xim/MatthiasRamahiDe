@@ -171,6 +171,31 @@ export interface SitePage {
    */
   teaserImage?: (number | null) | Media;
   /**
+   * Startseiten-Slideshow: Pro Slide ein Bild, Titel, Kurztext und optionale Buttons. Die Reihenfolge hier ist die sichtbare Reihenfolge im Hero.
+   */
+  heroSlides?:
+    | {
+        /**
+         * Dieses Bild wird fuer den aktuellen Hero-Slide verwendet.
+         */
+        image: number | Media;
+        headlineLine1: string;
+        /**
+         * Optional. Leer lassen, wenn der Slide nur eine Titelzeile braucht.
+         */
+        headlineLine2?: string | null;
+        /**
+         * Optionaler Text unter dem Titel. Kurz halten, damit der Hero ruhig bleibt.
+         */
+        lead?: string | null;
+        primaryLabel?: string | null;
+        primaryHref?: string | null;
+        secondaryLabel?: string | null;
+        secondaryHref?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
    * Optionale Inhaltsmodule. Fuer reine Bildwechsel sind die Bildfelder der jeweiligen Seite schneller.
    */
   blocks?:
@@ -1683,6 +1708,19 @@ export interface SitePagesSelect<T extends boolean = true> {
   intro?: T;
   heroImage?: T;
   teaserImage?: T;
+  heroSlides?:
+    | T
+    | {
+        image?: T;
+        headlineLine1?: T;
+        headlineLine2?: T;
+        lead?: T;
+        primaryLabel?: T;
+        primaryHref?: T;
+        secondaryLabel?: T;
+        secondaryHref?: T;
+        id?: T;
+      };
   blocks?:
     | T
     | {

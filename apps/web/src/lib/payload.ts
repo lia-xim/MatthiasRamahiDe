@@ -61,6 +61,16 @@ export type PayloadDoc = {
   heroImage?: PayloadMedia | string
   teaserImage?: PayloadMedia | string
   gallery?: Array<{ image?: PayloadMedia | string; caption?: string; role?: string }>
+  heroSlides?: Array<{
+    image?: PayloadMedia | string
+    headlineLine1?: string
+    headlineLine2?: string
+    lead?: string
+    primaryLabel?: string
+    primaryHref?: string
+    secondaryLabel?: string
+    secondaryHref?: string
+  }>
   proofPoints?: Array<{ label?: string; text?: string }>
   audience?: Array<{ item?: string }>
   faq?: Array<{ question?: string; answer?: string }>

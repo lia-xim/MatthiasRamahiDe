@@ -5,6 +5,7 @@ import { adminGroups, editorPagination } from '../admin/structure'
 import { advancedSettings } from '../fields/advancedSettings'
 import { contentBlocks } from '../fields/contentBlocks'
 import { mediaRelationshipField } from '../fields/editorialImages'
+import { homeHeroSlides } from '../fields/homeHeroSlides'
 import { legacyMigrationFields } from '../fields/legacyMigration'
 import { seoFields } from '../fields/seo'
 import { slugField } from '../fields/slug'
@@ -51,6 +52,7 @@ export const SitePages: CollectionConfig = {
       ]),
       requireMediaAltForPublish([
         { path: 'heroImage', label: 'Hero-Bild' },
+        { path: 'heroSlides.image', label: 'Hero-Slider' },
         { path: 'teaserImage', label: 'Teaser-Bild' },
         { path: 'seo.ogImage', label: 'Social-Bild' },
         { path: 'blocks.items.image', label: 'Bildsequenz' },
@@ -99,6 +101,11 @@ export const SitePages: CollectionConfig = {
               description: 'Optional. Wenn leer, nutzt das System automatisch das Hero-Bild.',
             }),
           ],
+        },
+        {
+          label: 'Hero',
+          description: 'Startseiten-Slider: Bild, Titel, Kurztext und Buttons pro Slide.',
+          fields: [homeHeroSlides],
         },
         {
           label: 'Inhalt',

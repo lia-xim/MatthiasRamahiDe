@@ -1,8 +1,9 @@
 import net from 'node:net';
 import { spawn, spawnSync } from 'node:child_process';
 
-const webPort = Number(process.env.WEB_PREVIEW_PORT || 4321);
+let webPort = Number(process.env.WEB_PREVIEW_PORT || 4321);
 const webHost = process.env.WEB_PREVIEW_HOST || '127.0.0.1';
+const shouldStartPreview = process.env.PRODUCTION_CHECK_START_PREVIEW === 'true';
 const root = process.cwd();
 
 function isPortOpen(port, host = '127.0.0.1') {
@@ -82,6 +83,16 @@ async function waitForPort(port, host, timeoutMs) {
   throw new Error(`Astro preview did not become reachable on ${host}:${port} within ${timeoutMs}ms.`);
 }
 
+async function findAvailablePort(preferredPort, host) {
+  if (!(await isPortOpen(preferredPort, host))) return preferredPort;
+
+  for (let port = preferredPort + 1; port <= preferredPort + 50; port += 1) {
+    if (!(await isPortOpen(port, host))) return port;
+  }
+
+  throw new Error(`No free Astro preview port found from ${preferredPort} to ${preferredPort + 50}.`);
+}
+
 function stopProcessTree(child) {
   if (!child?.pid || child.killed) return;
 
@@ -93,15 +104,6 @@ function stopProcessTree(child) {
   child.kill('SIGTERM');
 }
 
-if (await isPortOpen(webPort, webHost)) {
-  console.error(`Port ${webPort} is already in use.`);
-  console.error('Stop the local Astro server before running production:check:');
-  console.error('  corepack pnpm local:stop');
-  console.error('');
-  console.error('Reason: production:check starts its own Astro preview from the freshly built dist directory.');
-  process.exit(1);
-}
-
 let preview;
 
 try {
@@ -111,8 +113,27 @@ try {
   await run('corepack', ['pnpm', 'native:guard']);
   await run('corepack', ['pnpm', 'cms:build']);
 
-  preview = start('corepack', ['pnpm', '--filter', '@matthias-ramahi/web', 'preview']);
-  await waitForPort(webPort, webHost, 45000);
+  if (shouldStartPreview) {
+    const requestedWebPort = webPort;
+    webPort = await findAvailablePort(webPort, webHost);
+    if (webPort !== requestedWebPort) {
+      console.log(`Port ${requestedWebPort} is already in use; production:check will use ${webPort} for its temporary Astro preview.`);
+    }
+
+    preview = start('corepack', [
+      'pnpm',
+      '--filter',
+      '@matthias-ramahi/web',
+      'exec',
+      'astro',
+      'preview',
+      '--host',
+      '0.0.0.0',
+      '--port',
+      String(webPort),
+    ]);
+    await waitForPort(webPort, webHost, 45000);
+  }
 
   await run('corepack', ['pnpm', 'web:test:legacy-routes']);
   await run('corepack', ['pnpm', 'web:test:visual']);

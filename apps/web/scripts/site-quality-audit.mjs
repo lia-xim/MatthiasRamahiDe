@@ -40,6 +40,7 @@ const selectedViewportNames = option('viewports', 'mobile,desktop')
 // Parallel browser tabs introduce CPU contention and turn harmless image/gallery work
 // into false long-task failures, especially on media-heavy local SEO pages.
 const concurrency = Math.max(1, Number(option('concurrency', '1')))
+const auditAttempts = Math.max(1, Number(option('attempts', '2')) || 2)
 const limit = Math.max(0, Number(option('limit', '0')))
 const strict = flag('strict')
 const skipScroll = flag('skip-scroll')
@@ -193,7 +194,7 @@ function staticFileCandidates(pathname) {
   if (decoded.includes('\0')) return []
   const clean = decoded.replace(/^\/+/, '')
   if (clean.split(/[\\/]+/).includes('..')) return []
-  if (!clean) return [path.join(targetRoot, 'index.html')]
+  if (!clean) return [path.join(targetRoot, 'index.html'), path.join(targetRoot, 'index.html', 'index.html')]
 
   const candidates = []
   const add = (candidate) => {
@@ -210,6 +211,10 @@ function staticFileCandidates(pathname) {
   }
   if (clean.endsWith('/')) add(path.join(clean, 'index.html'))
   return candidates
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
 function findStaticFile(pathname) {
@@ -497,7 +502,29 @@ async function settleAllImages(page) {
   })
 }
 
+function shouldRetryAuditResult(result, check) {
+  const routeHasStaticFile = Boolean(findStaticFile(check.route))
+  if (!routeHasStaticFile) return false
+  if (result.error || result.status === 0 || result.status === 404) return true
+  return result.failedRequests.some(
+    (request) =>
+      request.resourceType === 'document' &&
+      (request.error.includes('HTTP 404') || request.error.includes('ERR_FAILED') || request.error.includes('ERR_ABORTED')),
+  )
+}
+
 async function auditCheck(context, baseUrl, check) {
+  let result
+  for (let attempt = 1; attempt <= auditAttempts; attempt += 1) {
+    result = await auditCheckOnce(context, baseUrl, check)
+    result.attempts = attempt
+    if (!shouldRetryAuditResult(result, check) || attempt === auditAttempts) return result
+    await sleep(450 * attempt)
+  }
+  return result
+}
+
+async function auditCheckOnce(context, baseUrl, check) {
   const page = await context.newPage()
   const baseOrigin = new URL(baseUrl).origin
   const consoleErrors = []

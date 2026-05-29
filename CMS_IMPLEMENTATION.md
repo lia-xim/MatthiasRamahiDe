@@ -103,7 +103,7 @@ Stoppen:
 corepack pnpm local:stop
 ```
 
-Wichtig fuer Builds: `cms:build` schreibt in `apps/cms/.next`. Wenn der Payload-Dev-Server parallel laeuft, kann der Admin danach ohne CSS/Assets erscheinen. Deshalb blockiert `cms:build` lokal, sobald auf Port 3000 ein Server laeuft. `production:check` startet ausserdem eine eigene Astro-Preview aus dem frisch gebauten `dist`-Ordner und erwartet deshalb freie Ports. Vor Release-Checks:
+Wichtig fuer Builds: `cms:build` schreibt in `apps/cms/.next`. Wenn der Payload-Dev-Server parallel laeuft, kann der Admin danach ohne CSS/Assets erscheinen. Deshalb blockiert `cms:build` lokal, sobald auf Port 3000 ein Server laeuft. `production:check` prueft standardmaessig den frisch gebauten statischen Astro-Output ohne den laufenden Dev-Server zu stoppen. Eine zusaetzliche Astro-Preview kann bewusst mit `PRODUCTION_CHECK_START_PREVIEW=true` aktiviert werden und sucht dann automatisch einen freien Port. Vor Release-Checks:
 
 ```powershell
 corepack pnpm local:stop

@@ -11,9 +11,12 @@ type ImageSequenceBlock = {
   blockType?: string
   headline?: string
   items?: Array<{
+    caption?: string
     image?: PayloadMedia | string
   }>
 }
+
+type CmsHeroSlide = NonNullable<PayloadDoc['heroSlides']>[number]
 
 export type PhotographyTopic = {
   id: string
@@ -67,6 +70,16 @@ export type HomeJournalCard = {
   text: string
 }
 
+export type HomeHeroSlide = {
+  image: string
+  lead: string
+  primaryHref: string
+  primaryLabel: string
+  secondaryHref: string
+  secondaryLabel: string
+  titleLines: string[]
+}
+
 export type ServicesIndexItem = {
   id: string
   href: string
@@ -109,6 +122,90 @@ export const homeHeroImages = [
   '/assets/optimized/assets-photos-motorrad-960.webp',
 ]
 
+const defaultHomeHeroLead =
+  'Automobil-, Portrait- und Landschaftsfotografie aus Duesseldorf fuer Marken, Sammler und Menschen mit Anspruch.'
+
+const defaultHeroCtas = {
+  primaryHref: '#anfrage',
+  primaryLabel: 'Projekt anfragen',
+  secondaryHref: '/portfolio.html',
+  secondaryLabel: 'Arbeiten ansehen',
+}
+
+const fallbackHeroText: Array<{ lead?: string; titleLines: string[] }> = [
+  {
+    titleLines: ['Fotografie', 'Duesseldorf'],
+    lead: defaultHomeHeroLead,
+  },
+  {
+    titleLines: ['Automobil'],
+    lead: 'Ruhige Linien, kontrolliertes Licht und Bildserien fuer Fahrzeuge mit Wert.',
+  },
+  {
+    titleLines: ['Landschaft'],
+    lead: 'Fine-Art-Motive, Wandbilder und Editionen mit Raumwirkung.',
+  },
+  {
+    titleLines: ['Oldtimer'],
+    lead: 'Material, Geschichte und Charakter in praezisen Serien.',
+  },
+  {
+    titleLines: ['Sportwagen'],
+    lead: 'Performance, Form und Details ohne austauschbaren Showroom-Look.',
+  },
+  {
+    titleLines: ['Motorrad'],
+    lead: 'Maschine, Haltung und Mechanik als konzentrierte Bildstrecke.',
+  },
+]
+
+export const homeHeroSlidesFallback = homeHeroImages.map((image, index) => ({
+  image,
+  lead: fallbackHeroText[index]?.lead || '',
+  titleLines: fallbackHeroText[index]?.titleLines || ['Fotografie'],
+  ...defaultHeroCtas,
+}))
+
+const titleLinesFor = (slide: Pick<CmsHeroSlide, 'headlineLine1' | 'headlineLine2'>, fallback: string[]) => {
+  const lines = [slide.headlineLine1, slide.headlineLine2]
+    .map((line) => (typeof line === 'string' ? line.trim() : ''))
+    .filter(Boolean)
+
+  return lines.length > 0 ? lines : fallback
+}
+
+const slideFromImage = (image: string, index: number, lead?: string): HomeHeroSlide => {
+  const fallback = fallbackHeroText[index % fallbackHeroText.length] || fallbackHeroText[0]
+
+  return {
+    image,
+    lead: lead || fallback.lead || '',
+    titleLines: fallback.titleLines,
+    ...defaultHeroCtas,
+  }
+}
+
+const homeHeroSlidesFromCms = (doc: PayloadDoc | null | undefined) => {
+  const fallback = fallbackHeroText[0]
+
+  return (doc?.heroSlides || [])
+    .map((slide, index) => {
+      const image = imageDisplayUrl(slide.image, 'wide')
+      if (!image) return undefined
+
+      return {
+        image,
+        lead: slide.lead || (index === 0 ? doc?.intro || defaultHomeHeroLead : ''),
+        primaryHref: slide.primaryHref || defaultHeroCtas.primaryHref,
+        primaryLabel: slide.primaryLabel || defaultHeroCtas.primaryLabel,
+        secondaryHref: slide.secondaryHref || defaultHeroCtas.secondaryHref,
+        secondaryLabel: slide.secondaryLabel || defaultHeroCtas.secondaryLabel,
+        titleLines: titleLinesFor(slide, index === 0 ? fallback.titleLines : fallbackHeroText[index]?.titleLines || ['Fotografie']),
+      } satisfies HomeHeroSlide
+    })
+    .filter((slide): slide is HomeHeroSlide => Boolean(slide))
+}
+
 export const imageSequenceImages = (
   doc: PayloadDoc | null | undefined,
   labels: string[],
@@ -129,8 +226,19 @@ export const imageSequenceImages = (
   return images.length > 0 ? images : fallback
 }
 
-export const homeHeroImagesFor = (doc: PayloadDoc | null | undefined) =>
-  imageSequenceImages(doc, ['hero', 'intro', 'start'], homeHeroImages)
+export const homeHeroSlidesFor = (doc: PayloadDoc | null | undefined) => {
+  const cmsSlides = homeHeroSlidesFromCms(doc)
+  if (cmsSlides.length > 0) return cmsSlides
+
+  const sequenceImages = imageSequenceImages(doc, ['hero', 'intro', 'start'], [])
+  if (sequenceImages.length > 0) {
+    return sequenceImages.map((image, index) => slideFromImage(image, index, index === 0 ? doc?.intro : undefined))
+  }
+
+  return homeHeroSlidesFallback
+}
+
+export const homeHeroImagesFor = (doc: PayloadDoc | null | undefined) => homeHeroSlidesFor(doc).map((slide) => slide.image)
 
 export const homeChapters: HomeChapter[] = [
   {

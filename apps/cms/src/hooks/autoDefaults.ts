@@ -204,7 +204,9 @@ export const applyEditorialDefaults =
 
     const imageFields = options.imageFields || ['coverImage', 'heroImage', 'teaserImage']
     const primaryImage =
-      imageFields.map((field) => relationCandidate(merged[field])).find(Boolean) || firstGalleryImage(merged.gallery)
+      imageFields.map((field) => relationCandidate(merged[field])).find(Boolean) ||
+      firstGalleryImage(merged.heroSlides) ||
+      firstGalleryImage(merged.gallery)
 
     if (!hasValue(seo.ogImage) && primaryImage) seo.ogImage = primaryImage
 

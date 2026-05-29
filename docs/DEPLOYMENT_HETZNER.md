@@ -44,7 +44,16 @@ Wichtige Werte:
 Start/Aktualisierung:
 
 ```bash
-docker compose -f deploy/compose.hetzner.yml --env-file deploy/production.env up -d postgres cms
+docker compose -f deploy/compose.hetzner.yml --env-file deploy/production.env up -d --build postgres cms
+```
+
+Bei CMS-Code- oder Schema-Aenderungen ist die sichere Reihenfolge:
+
+```bash
+docker compose -f deploy/compose.hetzner.yml --env-file deploy/production.env build cms
+docker compose -f deploy/compose.hetzner.yml --env-file deploy/production.env up -d postgres
+docker compose -f deploy/compose.hetzner.yml --env-file deploy/production.env run --rm cms pnpm --filter @matthias-ramahi/cms migrate
+docker compose -f deploy/compose.hetzner.yml --env-file deploy/production.env up -d cms
 ```
 
 Migrationen und Admin:
@@ -111,6 +120,18 @@ ASTRO_LIVE_PAGE_STALE_SECONDS=300
 - `ASTRO_LIVE_PAGE_STALE_SECONDS`: alte HTML-Version darf kurz weiter ausgeliefert werden, waehrend Vercel im Hintergrund aktualisiert.
 
 Fuer sofortiges Testen kann `ASTRO_LIVE_PAGE_CACHE_SECONDS=0` gesetzt werden. Fuer Produktion ist ein kurzer Cache sinnvoller, weil er Payload schuetzt und die Seite schnell haelt.
+
+Wichtig fuer neue CMS-Felder: Reine Inhalts- und Bildwechsel passieren danach live im Payload-Admin. Wenn aber das Datenmodell selbst erweitert wird, z. B. ein neuer Startseiten-`Hero-Slider`, muss zuerst Payload auf Hetzner mit der passenden Migration aktualisiert werden. Danach muss das Astro-Frontend auf Vercel deployed werden, damit es die neuen Felder ausliest.
+
+Startseiten-Hero pflegen:
+
+1. Payload oeffnen: `Standardseiten` -> `Startseite`.
+2. Tab `Hero` oeffnen.
+3. Im `Hero-Slider` Slides hinzufuegen, sortieren oder entfernen.
+4. Pro Slide `Slide-Bild`, `Titel Zeile 1`, optional `Titel Zeile 2`, `Kurztext` und Button-Ziele setzen.
+5. Speichern/veroeffentlichen. Die Startseite aktualisiert sich danach innerhalb der Live-Cache-Zeit.
+
+Das Feld `Bilder` -> `Hero-Bild` bleibt ein einzelnes Seitenbild fuer Fallbacks, Social/SEO-Defaults und klassische Seitentemplates. Die Startseiten-Slideshow wird nicht mehr dort gepflegt.
 
 ## URL-Strategie
 
