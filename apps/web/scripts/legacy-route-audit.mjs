@@ -81,6 +81,10 @@ function findStaticFile(pathname) {
   return staticFileCandidates(pathname).find((candidate) => fsSync.existsSync(candidate) && fsSync.statSync(candidate).isFile()) || ''
 }
 
+function pathnameForFile(file) {
+  return file === 'index.html' ? '/' : `/${file}`
+}
+
 function startStaticServer() {
   const server = http.createServer(async (request, response) => {
     const requestUrl = new URL(request.url || '/', 'http://127.0.0.1')
@@ -178,10 +182,14 @@ async function evaluateWithNavigationRetry(fn) {
 const server = providedBaseUrl
   ? { baseUrl: providedBaseUrl, close: async () => undefined }
   : await startStaticServer()
+const skippedDynamicFiles = providedBaseUrl ? [] : selectedFiles.filter((file) => !findStaticFile(pathnameForFile(file)))
+const auditableFiles = providedBaseUrl
+  ? selectedFiles
+  : selectedFiles.filter((file) => !skippedDynamicFiles.includes(file))
 
 try {
-  for (const file of selectedFiles) {
-    const pathname = file === 'index.html' ? '/' : `/${file}`
+  for (const file of auditableFiles) {
+    const pathname = pathnameForFile(file)
     const url = `${server.baseUrl}${pathname}`
     const response = await page.goto(url, { waitUntil: 'load', timeout: 30000 })
     await settleImages()
@@ -202,6 +210,7 @@ try {
         brokenImages,
         hasTopbar: Boolean(document.querySelector('.topbar')),
         hasFooter: Boolean(document.querySelector('.mr-footer')),
+        layoutSource: document.body?.dataset?.cmsLayoutSource || '',
         isMetaRefresh: Array.from(document.querySelectorAll('meta')).some(
           (meta) => meta.getAttribute('http-equiv')?.toLowerCase() === 'refresh',
         ),
@@ -227,22 +236,30 @@ await fs.writeFile(outputPath, `${JSON.stringify(results, null, 2)}\n`)
 const failed = results.filter(
   (result) => {
     const requiresSharedChrome = !result.isNoindex && !result.isMetaRefresh
+    const requiresNativeAstroLayout = !result.isMetaRefresh
+    const hasNativeAstroLayout = ['native-adopted-chrome', 'base-layout'].includes(result.layoutSource)
     return (
       result.status !== 200 ||
       !result.title ||
       result.brokenImages.length > 0 ||
+      (requiresNativeAstroLayout && !hasNativeAstroLayout) ||
       (requiresSharedChrome && (!result.hasTopbar || !result.hasFooter))
     )
   },
 )
 
 console.log(`Legacy route audit checked ${results.length}/${files.length} HTML routes.`)
+if (skippedDynamicFiles.length > 0) {
+  console.warn(
+    `Skipped ${skippedDynamicFiles.length} server-rendered route(s) without LEGACY_AUDIT_BASE_URL: ${skippedDynamicFiles.join(', ')}`,
+  )
+}
 console.log(`Report written to ${outputPath}`)
 
 if (failed.length > 0) {
   for (const result of failed.slice(0, 30)) {
     console.error(
-      `${result.file}: status=${result.status}, title=${Boolean(result.title)}, topbar=${result.hasTopbar}, footer=${result.hasFooter}, brokenImages=${result.brokenImages.length}`,
+      `${result.file}: status=${result.status}, title=${Boolean(result.title)}, layout=${result.layoutSource || 'none'}, topbar=${result.hasTopbar}, footer=${result.hasFooter}, brokenImages=${result.brokenImages.length}`,
     )
   }
   if (failed.length > 30) console.error(`...and ${failed.length - 30} more failing route(s).`)

@@ -28,7 +28,7 @@ The adopted list lives in `apps/web/src/lib/adoptedRoutes.ts`.
 
 There is no `/legacy-baseline/*` route in the Astro app anymore. Visual Regression reads the frozen root HTML files through a short-lived QA server, so production source code does not depend on raw legacy rendering.
 
-Current QA status: the native web build, `native:guard`, 217/217 legacy-route audit, grouped visual regression, strict site-quality audit, strict CMS readiness audit and strict CMS production audit pass as of 2026-05-29. Published CMS content now uses release-capable render sources (`native-component` or `structured-blocks`); `payload-legacy-html` is treated as import/archive metadata only. Remaining warnings are performance long-task warnings on media-heavy pages, not legacy-render dependencies.
+Current QA status: the native web build, `native:guard`, 217/217 legacy-route audit, grouped visual regression, strict site-quality audit, strict CMS readiness audit and strict CMS production audit pass as of 2026-05-29. The route audit now also requires a native Astro layout marker on every non-redirect `.html` response, so a copied root HTML file cannot silently pass as a migrated page. Published CMS content uses release-capable render sources (`native-component` or `structured-blocks`); `payload-legacy-html` is treated as import/archive metadata only. Remaining warnings are performance long-task warnings on media-heavy pages, not legacy-render dependencies.
 
 ## Refreshing The Freeze Manifest
 

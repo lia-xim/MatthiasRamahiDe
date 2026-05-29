@@ -209,16 +209,17 @@ Technischer Gate:
 
 ## Visuelle Freigabe
 
-Die Legacy-Ausgabe ist weiterhin die visuelle Wahrheit. Fuer jede Ersetzung gilt:
+Die eingefrorenen Root-HTML-Dateien bleiben die visuelle Referenz fuer Regressionstests, aber nicht mehr die Produktionsquelle. Fuer jede kuenftige Ersetzung oder groessere Layout-Aenderung gilt:
 
 1. Alte URL und adoptierte Astro-URL in `apps/web/scripts/visual-regression.mjs` aufnehmen.
 2. Desktop und Mobile vergleichen.
 3. Bekannte neue Soll-Abweichungen dokumentieren, aktuell: SEO-Anpassungen, Bildperformance/optimierte Bilder, groessere CTAs und zentralisiertes Formularsystem.
 4. Erst danach eine CMS-Route als Live-Ersatz aktivieren.
+5. Der Route-Audit muss bestaetigen, dass die oeffentliche Antwort aus einem Astro-Layout kommt (`data-cms-layout-source="native-adopted-chrome"` oder `base-layout`) und nicht aus einer alten Root-HTML-Datei.
 
 Aktueller Pruefstand:
 
-- `corepack pnpm --filter @matthias-ramahi/web test:legacy-routes` prueft alle Root-HTML-URLs auf Status 200, Titel, Header/Footer und kaputte Bilder.
+- `corepack pnpm --filter @matthias-ramahi/web test:legacy-routes` prueft alle statisch auditierbaren Root-HTML-URLs auf Status 200, Titel, Header/Footer, kaputte Bilder und den nativen Astro-Layout-Marker. Server-gerenderte Routen wie `/` werden im vollstaendigen `production:check` ueber `LEGACY_AUDIT_BASE_URL` gegen die Astro-Preview geprueft.
 - `corepack pnpm --filter @matthias-ramahi/web test:visual` vergleicht die wichtigsten Seiten gegen die rohe Legacy-Baseline auf Desktop und Mobile.
 - Visual Regression nutzt 2% als Zielwert und 5% als harte Fail-Grenze. Ueberschreitungen des Zielwerts werden als Warnung ausgegeben, weil mehrere Legacy-Seiten dynamische JS-/Lazyload-Bildstrecken enthalten.
 - Bekannte Soll-Ausnahmen bleiben die vom Nutzer gewuenschten Aenderungen: SEO-Anpassungen, Bildperformance/optimierte Bilder, groessere CTAs und zentralisiertes Formularsystem.
