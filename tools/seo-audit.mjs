@@ -92,6 +92,7 @@ function existsRef(fromFile, ref) {
   } catch {
     // Keep the original reference if it is not URI-encoded cleanly.
   }
+  if (clean === 'index.html' || clean === 'index' || clean === 'index/') return true
   const candidates = [
     path.resolve(base, clean),
     path.resolve(base, `${clean}.html`),

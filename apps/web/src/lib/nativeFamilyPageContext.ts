@@ -6,7 +6,7 @@ import {
   type LocalSeoScope,
 } from './localSeoFamilyContent'
 import type { LocalSeoLayoutFamily } from './localSeoLayoutFamilies'
-import { routeForDoc, type PayloadDoc } from './payload'
+import { routeForDoc, toRootRelativeHref, type PayloadDoc } from './payload'
 
 export type NativeFamilyPreviewState = {
   collection: string
@@ -53,7 +53,7 @@ export function nativeFamilyPageContext({
     isKeywordPage,
     isParentPage,
     localSuffix,
-    overviewHref,
+    overviewHref: toRootRelativeHref(overviewHref),
     publishedHref,
     scope,
     serviceLabel,

@@ -6,6 +6,7 @@ import {
   imageDisplayUrl,
   imageSrcset,
   liveCmsFetchOptions,
+  toDisplayAssetUrl,
   type PayloadDoc,
   type PayloadMedia,
 } from './payload'
@@ -114,8 +115,9 @@ function collectMedia(doc: PayloadDoc | null | undefined) {
 }
 
 const fallbackSlot = (fallback: FamilyVisualFallback): FamilyVisualSlot => {
-  const full = fallback.full || fallback.src
-  const mobile = fallback.mobile || fallback.src
+  const full = toDisplayAssetUrl(fallback.full || fallback.src)
+  const mobile = toDisplayAssetUrl(fallback.mobile || fallback.src)
+  const src = toDisplayAssetUrl(fallback.src)
   const width = fallback.width || 1600
   const height = fallback.height || 1067
 
@@ -123,11 +125,11 @@ const fallbackSlot = (fallback: FamilyVisualFallback): FamilyVisualSlot => {
     alt: fallback.alt,
     cssFull: cssUrl(full),
     cssMobile: cssUrl(mobile),
-    cssSrc: cssUrl(fallback.src),
+    cssSrc: cssUrl(src),
     full,
     height,
     mobile,
-    src: fallback.src,
+    src,
     srcset: '',
     width,
   }
@@ -147,14 +149,15 @@ export function familyVisualSlots(
     if (!media) return fallbackValue
 
     if (!isPayloadMedia(media)) {
+      const mediaUrl = toDisplayAssetUrl(media)
       return {
         ...fallbackValue,
-        cssFull: cssUrl(media),
-        cssMobile: cssUrl(media),
-        cssSrc: cssUrl(media),
-        full: media,
-        mobile: media,
-        src: media,
+        cssFull: cssUrl(mediaUrl),
+        cssMobile: cssUrl(mediaUrl),
+        cssSrc: cssUrl(mediaUrl),
+        full: mediaUrl,
+        mobile: mediaUrl,
+        src: mediaUrl,
       }
     }
 
