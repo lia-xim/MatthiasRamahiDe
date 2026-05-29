@@ -18,10 +18,13 @@ type Props = {
 }
 
 const defaultLegacyFile = 'oldtimer-fotografie.html'
-const { doc: providedDoc = undefined, legacyFile: providedLegacyFile, preview, visualDoc: providedVisualDoc = undefined } = Astro.props as Props
+const props = Astro.props as Props
+const { doc: providedDoc = undefined, legacyFile: providedLegacyFile, preview, visualDoc: providedVisualDoc = undefined } = props
 const legacyFile = providedLegacyFile || defaultLegacyFile
 const doc = providedDoc || (await getLegacyBackedDoc(legacyFile, { depth: 2 }))
-const visualDoc = providedVisualDoc ?? (await getFamilyVisualSourceDoc('oldtimer', doc, legacyFile, defaultLegacyFile))
+const visualDoc = Object.hasOwn(props, 'visualDoc')
+  ? providedVisualDoc
+  : await getFamilyVisualSourceDoc('oldtimer', doc, legacyFile, defaultLegacyFile)
 const pageContext = nativeFamilyPageContext({
   defaultLegacyFile,
   doc,
