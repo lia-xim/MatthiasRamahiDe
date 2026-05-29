@@ -2,14 +2,16 @@ import fs from 'node:fs/promises'
 import fsSync from 'node:fs'
 import http from 'node:http'
 import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 
 import { chromium } from 'playwright'
 
-const repoRoot = path.resolve(process.cwd(), '../..')
+const webRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
+const repoRoot = path.resolve(webRoot, '../..')
 const targetRoot = path.resolve(repoRoot, process.env.LEGACY_AUDIT_TARGET || 'apps/web/dist/client')
 const providedBaseUrl = process.env.LEGACY_AUDIT_BASE_URL?.replace(/\/$/, '')
 const limit = Number(process.env.LEGACY_AUDIT_LIMIT || '0')
-const outputPath = path.resolve(process.cwd(), '.visual-regression', 'legacy-route-audit.json')
+const outputPath = path.resolve(webRoot, '.visual-regression', 'legacy-route-audit.json')
 const contentTypes = new Map([
   ['.avif', 'image/avif'],
   ['.css', 'text/css; charset=utf-8'],
@@ -34,6 +36,7 @@ const files = (await fs.readdir(repoRoot))
   .filter((file) => file.endsWith('.html'))
   .sort((a, b) => a.localeCompare(b))
 const selectedFiles = limit > 0 ? files.slice(0, limit) : files
+const legacyRedirectTargets = await loadLegacyRedirectTargets()
 
 const browser = await chromium.launch()
 const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } })
@@ -83,6 +86,53 @@ function findStaticFile(pathname) {
 
 function pathnameForFile(file) {
   return file === 'index.html' ? '/' : `/${file}`
+}
+
+async function loadLegacyRedirectTargets() {
+  const source = await fs.readFile(path.join(repoRoot, 'apps/web/src/lib/adoptedRoutes.ts'), 'utf8')
+  const match = source.match(/(?:export\s+)?const\s+legacyRedirectTargets[\s\S]*?=\s*\{([\s\S]*?)\}\s*as\s+const/m)
+  const redirects = new Map()
+  if (!match) return redirects
+
+  for (const [, sourceFile, targetFile] of match[1].matchAll(/['"]([^'"]+)['"]\s*:\s*['"]([^'"]+)['"]/g)) {
+    redirects.set(sourceFile, targetFile)
+  }
+
+  return redirects
+}
+
+function htmlTagContent(html, tagName) {
+  const match = html.match(new RegExp(`<${tagName}[^>]*>([\\s\\S]*?)<\\/${tagName}>`, 'i'))
+  return match ? match[1].replace(/\s+/g, ' ').trim() : ''
+}
+
+function hasNoindex(html) {
+  return /<meta[^>]+name=["']robots["'][^>]+content=["'][^"']*noindex/i.test(html)
+}
+
+function hasMetaRefresh(html) {
+  return /<meta[^>]+http-equiv=["']refresh["']/i.test(html)
+}
+
+async function staticRedirectResult(file, pathname, baseUrl) {
+  const staticFile = findStaticFile(pathname)
+  const html = staticFile ? await fs.readFile(staticFile, 'utf8') : ''
+
+  return {
+    file,
+    pathname,
+    status: staticFile ? 200 : 404,
+    title: htmlTagContent(html, 'title'),
+    finalUrl: `${baseUrl}${pathname}`,
+    h1: '',
+    imageCount: 0,
+    brokenImages: [],
+    hasTopbar: false,
+    hasFooter: false,
+    layoutSource: '',
+    isMetaRefresh: hasMetaRefresh(html),
+    isNoindex: hasNoindex(html),
+  }
 }
 
 function startStaticServer() {
@@ -191,6 +241,12 @@ try {
   for (const file of auditableFiles) {
     const pathname = pathnameForFile(file)
     const url = `${server.baseUrl}${pathname}`
+
+    if (!providedBaseUrl && legacyRedirectTargets.has(file)) {
+      results.push(await staticRedirectResult(file, pathname, server.baseUrl))
+      continue
+    }
+
     const response = await page.goto(url, { waitUntil: 'load', timeout: 30000 })
     await settleImages()
 

@@ -229,7 +229,7 @@ Die eingefrorenen Root-HTML-Dateien bleiben die visuelle Referenz fuer Regressio
 
 Aktueller Pruefstand:
 
-- `corepack pnpm --filter @matthias-ramahi/web test:legacy-routes` prueft alle statisch auditierbaren Root-HTML-URLs auf Status 200, Titel, Header/Footer, kaputte Bilder und den nativen Astro-Layout-Marker. Server-gerenderte Routen wie `/` werden im vollstaendigen `production:check` ueber `LEGACY_AUDIT_BASE_URL` gegen die Astro-Preview geprueft.
+- `corepack pnpm --filter @matthias-ramahi/web test:legacy-routes` prueft alle statisch auditierbaren Root-HTML-URLs auf Status 200, Titel, Header/Footer, kaputte Bilder und den nativen Astro-Layout-Marker. Bekannte Alias-Redirects werden als Redirect-Dateien geprueft, bevor der Browser dem Meta-Refresh auf die Zielseite folgt. Server-gerenderte Routen wie `/` werden im vollstaendigen `production:check` ueber `LEGACY_AUDIT_BASE_URL` gegen die Astro-Preview geprueft.
 - `corepack pnpm --filter @matthias-ramahi/web test:visual` vergleicht die wichtigsten Seiten gegen die rohe Legacy-Baseline auf Desktop und Mobile.
 - Visual Regression nutzt 2% als Zielwert und 5% als harte Fail-Grenze. Ueberschreitungen des Zielwerts werden als Warnung ausgegeben, weil mehrere Legacy-Seiten dynamische JS-/Lazyload-Bildstrecken enthalten.
 - Bekannte Soll-Ausnahmen bleiben die vom Nutzer gewuenschten Aenderungen: SEO-Anpassungen, Bildperformance/optimierte Bilder, groessere CTAs und zentralisiertes Formularsystem.
@@ -242,9 +242,9 @@ Aktueller Pruefstand:
 - Stand 2026-05-29: alle 217 Root-HTML-URLs werden im Astro-Build nativ erzeugt. Es gibt keine rohe Produktionsausgabe ueber `set:html={legacyHtml}` mehr; Root-HTML bleibt nur Referenz/Baseline. Alias-Dubletten redirecten, Konzeptseiten sind noindex Astro-Archivseiten.
 - Stand 2026-05-29: die alte App-interne Legacy-/Componentized-Bruecke ist entfernt. `apps/web/src` enthaelt keine Route und keine Komponente mehr, die Root-HTML als Produktions- oder Preview-Body rendert. Visual Regression liest alte HTML-Dateien nur noch ueber einen separaten QA-Referenzserver.
 - Stand 2026-05-29: finaler Web-Build erfolgreich, `astro check` ueber 80 Dateien mit 0 Errors / 0 Warnings / 0 Hints.
-- Stand 2026-05-29: Route-Audit erfolgreich, 217/217 bisherige HTML-Routen werden nativ aus Astro erzeugt.
+- Stand 2026-05-29: Route-Audit erfolgreich. 217/217 bisherige HTML-Routen werden nativ aus Astro erzeugt; der standalone statische Audit prueft davon 216/217 und der vollstaendige Production-Check deckt `/` ueber die laufende Astro-Preview ab.
 - Stand 2026-05-29: Produktionsassets sind im Astro-Code auf `native-*` umgestellt; der Prebuild heisst `sync-public-assets` und kopiert keine Root-HTML-Dateien nach `apps/web/public`.
-- Stand 2026-05-29: `native:guard` ist Teil von `production:check` und verhindert Rueckfaelle durch Public-HTML-Schatten, Public-`legacy-*` Assets oder rohe Legacy-Render-Marker im Astro-Runtime-Code.
+- Stand 2026-05-29: `native:guard` ist Teil von `production:check` und verhindert Rueckfaelle durch Public-HTML-Schatten, Public-`legacy-*` Assets, Mojibake-Muster in Produktionsquellen oder rohe Legacy-Render-Marker im Astro-Runtime-Code.
 - Stand 2026-05-29: `native:guard` prueft zusaetzlich, dass Astro-Runtime-Code keine unerwarteten `node:fs`-Zugriffe bekommt, der Adopted-Critical-Inliner nur CSS-Assets lesen darf, der Route-Audit den nativen Astro-Layout-Marker erzwingt, entfernte Legacy-/Componentized-Routenverzeichnisse entfernt bleiben, adoptierte Route-Dispatcher ueber die native Renderer-Registry fail-closed sind und `native:coverage` fuer das eingefrorene Manifest erfolgreich ist.
 - Stand 2026-05-29: `native:coverage` bestaetigt 217/217 eingefrorene Root-HTML-Dateien und 217/217 Routenmodell-Dateien als deckungsgleich: 211 native Renderer und 6 Redirects.
 - Stand 2026-05-29: Visual Regression wird fuer stabile lokale Laeufe in drei Gruppen ausgefuehrt: Kern-/Fotografieseiten, Service/About/Contact/Journal und Local-SEO-Familien. Alle Gruppen bleiben unter der harten 5%-Grenze; Warnungen ueber dem 2%-Zielwert sind dokumentierte Bild-/Lazyload-Differenzen.
