@@ -21,54 +21,54 @@ const rootRelative = (href: string) => {
 const unique = (items: string[] = []) => [...new Set(items.filter(Boolean).map(rootRelative))]
 
 const siteChromeScript = ['/assets/site-chrome.js']
-const sharedStyles = ['/assets/site-chrome.css', '/assets/legacy-performance.css']
+const sharedStyles = ['/assets/site-chrome.css', '/assets/native-performance.css']
 
 const automotiveChrome: AdoptedPageChrome = {
   current: 'fotografie',
   ogImage: '/assets/optimized/mpjpgo2b-dsc3032-generase-1-1920.webp',
   preloadImages: ['/assets/optimized/mpjpgo2b-dsc3032-generase-1-1920.webp'],
-  scripts: [...siteChromeScript, '/assets/legacy-automobil.js'],
-  stylesheets: [...sharedStyles, '/assets/legacy-automobil.css'],
+  scripts: [...siteChromeScript, '/assets/native-automobil.js'],
+  stylesheets: [...sharedStyles, '/assets/native-automobil.css'],
 }
 
 const sportwagenChrome: AdoptedPageChrome = {
   current: 'fotografie',
   ogImage: '/assets/optimized/mpixi92f-dsc3032-generase-1-1920.webp',
   preloadImages: ['/assets/optimized/mpixi92f-dsc3032-generase-1-1920.webp'],
-  scripts: [...siteChromeScript, '/assets/legacy-sportwagen.js'],
-  stylesheets: [...sharedStyles, '/assets/legacy-sportwagen.css'],
+  scripts: [...siteChromeScript, '/assets/native-sportwagen.js'],
+  stylesheets: [...sharedStyles, '/assets/native-sportwagen.css'],
 }
 
 const oldtimerChrome: AdoptedPageChrome = {
   current: 'fotografie',
   ogImage: '/assets/optimized/assets-photos-oldtimer-stage-1920.webp',
   preloadImages: ['/assets/optimized/assets-photos-oldtimer-stage-1920.webp'],
-  scripts: [...siteChromeScript, '/assets/legacy-automobil-b5afdd83.js'],
-  stylesheets: [...sharedStyles, '/assets/legacy-automobil-e5719d2c.css'],
+  scripts: [...siteChromeScript, '/assets/native-oldtimer.js'],
+  stylesheets: [...sharedStyles, '/assets/native-oldtimer.css'],
 }
 
 const motorradChrome: AdoptedPageChrome = {
   current: 'fotografie',
   ogImage: '/assets/optimized/assets-photos-motorrad-1920.webp',
   preloadImages: ['/assets/optimized/assets-photos-motorrad-ninja-road-1920.webp'],
-  scripts: [...siteChromeScript, '/assets/legacy-motorrad-fotografie-duesseldorf.js'],
-  stylesheets: [...sharedStyles, '/assets/legacy-motorrad-fotografie-duesseldorf.css'],
+  scripts: [...siteChromeScript, '/assets/native-motorrad.js'],
+  stylesheets: [...sharedStyles, '/assets/native-motorrad.css'],
 }
 
 const portraitChrome: AdoptedPageChrome = {
   current: 'fotografie',
   ogImage: '/assets/portraits/_DSC0470-Enhanced-NR.webp',
   preloadImages: ['/assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp'],
-  scripts: [...siteChromeScript, '/assets/legacy-portraitfotografie-duesseldorf.js'],
-  stylesheets: [...sharedStyles, '/assets/legacy-portraitfotografie-duesseldorf.css'],
+  scripts: [...siteChromeScript, '/assets/native-portrait.js'],
+  stylesheets: [...sharedStyles, '/assets/native-portrait.css'],
 }
 
 const landscapeChrome: AdoptedPageChrome = {
   current: 'fotografie',
   ogImage: '/assets/optimized/assets-portfolio-wettberwerb-foto5-wunder-der-natur2-1920.webp',
   preloadImages: ['/assets/optimized/assets-portfolio-wettberwerb-foto5-wunder-der-natur2-1920.webp'],
-  scripts: [...siteChromeScript, '/assets/legacy-landschaft.js'],
-  stylesheets: [...sharedStyles, '/assets/legacy-landschaft.css'],
+  scripts: [...siteChromeScript, '/assets/native-landscape.js'],
+  stylesheets: [...sharedStyles, '/assets/native-landscape.css'],
 }
 
 const familyChrome: Record<LocalSeoLayoutFamily, AdoptedPageChrome> = {
@@ -85,7 +85,7 @@ const serviceMiniChrome = (ogImage: string): AdoptedPageChrome => ({
   ogImage,
   preloadImages: [ogImage],
   scripts: siteChromeScript,
-  stylesheets: [...sharedStyles, '/assets/legacy-service-mini.css'],
+  stylesheets: [...sharedStyles, '/assets/native-service-mini.css'],
 })
 
 const exactChrome: Record<string, AdoptedPageChrome> = {
@@ -97,8 +97,8 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
     inlineCriticalCss: 'assets/critical-home.css',
     ogImage: '/assets/optimized/mpik8b82-dsc3879-1920.webp',
     preloadImages: ['/assets/optimized/mpik8b82-dsc3879-1280.webp'],
-    scripts: ['/assets/legacy-index.js', ...siteChromeScript],
-    stylesheets: [...sharedStyles, '/assets/legacy-index.css'],
+    scripts: ['/assets/native-home.js', ...siteChromeScript],
+    stylesheets: [...sharedStyles, '/assets/native-home.css'],
     title: 'Matthias Ramahi - Fotografie Düsseldorf & NRW',
   },
   'fotografie.html': {
@@ -194,7 +194,7 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
       'Weitere Dienstleistungen von Matthias Ramahi: Fotografie, Druck, Webdesign, Videografie und visuelle Produktion in Düsseldorf, NRW und Deutschland.',
     ogImage: '/assets/services/portfolio_webp_full_057-1.webp',
     scripts: siteChromeScript,
-    stylesheets: ['/assets/legacy-leistungen.css', ...sharedStyles],
+    stylesheets: ['/assets/native-services.css', ...sharedStyles],
     title: 'Weitere Dienstleistungen - Matthias Ramahi',
   },
   'contact.html': {
@@ -217,9 +217,9 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
     scripts: siteChromeScript,
     stylesheets: [
       ...sharedStyles,
-      '/assets/legacy-inline-14e7cfb53e30.css',
-      '/assets/legacy-index.css',
-      '/assets/legacy-ueber-mich.css',
+      '/assets/native-about-inline.css',
+      '/assets/native-home.css',
+      '/assets/native-about.css',
     ],
     title: 'Über mich - Matthias Ramahi, Fotograf aus Düsseldorf',
   },
@@ -230,7 +230,7 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
       'Journal von Matthias Ramahi: Einblicke in Automotive-Fotografie, Portraits, Landschaft, Bildauswahl, Druck und visuelle Inszenierung in Düsseldorf.',
     ogImage: '/assets/optimized/assets-photos-automobil-sunset-1920.webp',
     scripts: siteChromeScript,
-    stylesheets: ['/assets/legacy-blog.css', ...sharedStyles],
+    stylesheets: ['/assets/native-journal.css', ...sharedStyles],
     title: 'Blog / Journal - Matthias Ramahi',
   },
   'radikale-fotografie-portfolio-konzepte.html': {
@@ -310,7 +310,7 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
     ogImage: '/assets/services/portfolio_webp_full_057-1.webp',
     preloadImages: ['/assets/services/portfolio_webp_full_057-1.webp'],
     scripts: siteChromeScript,
-    stylesheets: [...sharedStyles, '/assets/legacy-fotolabor-druck-duesseldorf.css'],
+    stylesheets: [...sharedStyles, '/assets/native-fotolabor.css'],
     title: 'Fotolabor & Druck Düsseldorf - Matthias Ramahi',
   },
   'viola-musik-duesseldorf.html': {

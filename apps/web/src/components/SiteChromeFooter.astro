@@ -1,8 +1,8 @@
 ---
-import legacyContent, { type LegacyFooterColumn } from '../data/legacyContent'
+import siteChromeContent, { type SiteChromeFooterColumn } from '../data/siteChromeContent'
 import { getFooter, linkAttributes, toRootRelativeHref } from '../lib/payload'
 
-const { brand, footer: fallbackFooter } = legacyContent
+const { brand, footer: fallbackFooter } = siteChromeContent
 const cmsFooter = await getFooter()
 const replaceStudioLanguage = (value: unknown) => {
   const text = typeof value === 'string' ? value : ''
@@ -24,7 +24,7 @@ const columns = (cmsFooter?.columns?.length
         links: (column.links || []).map((link) => sanitizeLink(link)),
       }
     })
-  : fallbackFooter.columns) as LegacyFooterColumn[]
+  : fallbackFooter.columns) as SiteChromeFooterColumn[]
 const statement = cmsFooter?.statement || fallbackFooter.statement
 const statementHighlight = cmsFooter?.statementHighlight || fallbackFooter.statementHighlight
 const statementParts =

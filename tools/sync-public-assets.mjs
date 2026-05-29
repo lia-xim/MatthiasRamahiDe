@@ -21,7 +21,7 @@ const mediaExtensions = new Set([
   '.webp',
 ])
 const assetReferenceExtensions = new Set([...mediaExtensions, '.css', '.js', '.json', '.txt', '.xml'])
-const rootReferenceExtensions = new Set(['.html', '.css', '.js', '.xml', '.txt', '.webmanifest'])
+const rootReferenceTextExtensions = new Set(['.html', '.css', '.js', '.xml', '.txt', '.webmanifest'])
 const appSourceReferenceExtensions = new Set([
   '.astro',
   '.css',
@@ -78,7 +78,7 @@ async function copyFile(source, target) {
   bytes += sourceStat.size
 }
 
-async function removePublicLegacyHtml() {
+async function removePublicRootHtml() {
   let publicEntries = []
   try {
     publicEntries = await fs.readdir(publicRoot, { withFileTypes: true })
@@ -140,7 +140,7 @@ async function rootMediaReferencedBySite(entries) {
   const searchFiles = []
   for (const entry of entries) {
     if (!entry.isFile()) continue
-    if (rootReferenceExtensions.has(path.extname(entry.name).toLowerCase())) {
+    if (rootReferenceTextExtensions.has(path.extname(entry.name).toLowerCase())) {
       searchFiles.push(path.join(repoRoot, entry.name))
     }
   }
@@ -183,7 +183,7 @@ async function assetsReferencedBySite(entries) {
   const searchFiles = []
   for (const entry of entries) {
     if (!entry.isFile()) continue
-    if (rootReferenceExtensions.has(path.extname(entry.name).toLowerCase())) {
+    if (rootReferenceTextExtensions.has(path.extname(entry.name).toLowerCase())) {
       searchFiles.push(path.join(repoRoot, entry.name))
     }
   }
@@ -348,7 +348,7 @@ async function removeUnreferencedPublicAssets(dir, referencedAssets) {
 }
 
 if (!(await exists(assetSource))) {
-  throw new Error(`Legacy assets folder not found: ${assetSource}`)
+  throw new Error(`Assets folder not found: ${assetSource}`)
 }
 
 await fs.mkdir(publicRoot, { recursive: true })
@@ -357,12 +357,12 @@ const referencedAssets = await assetsReferencedBySite(rootEntries)
 await copyDirectory(assetSource, assetTarget, referencedAssets)
 await removeUnreferencedPublicAssets(assetTarget, referencedAssets)
 await syncRootMedia()
-await removePublicLegacyHtml()
+await removePublicRootHtml()
 
 const copiedMb = (bytes / 1024 / 1024).toFixed(2)
 const missingAssets = [...referencedAssets].filter((assetPath) => !copiedAssetPaths.has(assetPath))
 console.log(
-  `Legacy public sync complete: ${copied} copied (${copiedMb} MB), ${skipped} unchanged, ${copiedAssetPaths.size}/${referencedAssets.size} referenced assets present, ${removedHtml} public HTML removed, ${removed} stale files removed.`,
+  `Public asset sync complete: ${copied} copied (${copiedMb} MB), ${skipped} unchanged, ${copiedAssetPaths.size}/${referencedAssets.size} referenced assets present, ${removedHtml} public HTML removed, ${removed} stale files removed.`,
 )
 if (missingAssets.length > 0) {
   console.warn(`Missing referenced assets: ${missingAssets.slice(0, 20).join(', ')}${missingAssets.length > 20 ? ', ...' : ''}`)

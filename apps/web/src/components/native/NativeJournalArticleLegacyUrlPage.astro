@@ -55,9 +55,9 @@ const jsonLd = [
   faqJsonLd(article.faq),
 ].filter(Boolean) as JsonLd[]
 const stylesheets =
-  articleVariant === 'feature' ? ['/assets/legacy-blog-automotive-fotografie-duesseldorf.css'] : ['/assets/journal-support.css']
+  articleVariant === 'feature' ? ['/assets/native-journal-feature.css'] : ['/assets/journal-support.css']
 
-Astro.response.headers.set('x-cms-page-kind', 'journal-native-legacy-url')
+Astro.response.headers.set('x-cms-page-kind', 'journal-native-html-url')
 
 const journalPreviewImages: Record<string, { height: number; image: string; width: number }> = {
   'assets/optimized/assets-photos-automobil-neon-1920.webp': { image: 'assets/optimized/assets-photos-automobil-neon-960.webp', width: 960, height: 640 },

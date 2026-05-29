@@ -1,5 +1,5 @@
 ---
-import legacyContent from '../data/legacyContent'
+import siteChromeContent from '../data/siteChromeContent'
 import { getNavigation, linkAttributes, toRootRelativeHref, type PayloadLink } from '../lib/payload'
 
 type Props = {
@@ -10,7 +10,7 @@ type Props = {
 
 const { current, ctaHref, headerTheme } = Astro.props as Props
 const cmsNavigation = await getNavigation()
-const { brand, navigation: fallbackNavigation } = legacyContent
+const { brand, navigation: fallbackNavigation } = siteChromeContent
 const primary = (cmsNavigation?.primary?.length ? cmsNavigation.primary : fallbackNavigation.primary) as PayloadLink[]
 const photographyLinks = (cmsNavigation?.photographyLinks?.length
   ? cmsNavigation.photographyLinks

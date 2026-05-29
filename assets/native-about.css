@@ -2,15 +2,15 @@
    ueber-mich.html — page-specific overrides
    Canonical patterns (.ovh, .statement, .chapters, .chapter,
    .services-sec, .service-row, .about, footer chrome) come
-   from site-chrome.css + legacy-inline-14e7cfb53e30.css +
-   legacy-index.css. This file ONLY defines the two patterns
+   from site-chrome.css + native-about-inline.css +
+   native-home.css. This file ONLY defines the two patterns
    unique to this page: WERTE (was nicht passiert) and SISTER
    (Sophia Ramahi colophon). Plus a few light tweaks.
    ========================================================= */
 
 /* -----------------------------------------------------------
    OVH hero — small page-specific framing tweaks only.
-   The base .ovh comes from legacy-inline-14e7cfb53e30.css.
+   The base .ovh comes from native-about-inline.css.
    ----------------------------------------------------------- */
 .ovh--ueber .ovh__photo {
   /* Center the location portrait around the face area */
@@ -389,7 +389,7 @@
 
 /* =========================================================
    ABLAUF — small tweak: services-sec on dark theme
-   The .services-sec class in legacy-index.css is light-only.
+   The .services-sec class in native-home.css is light-only.
    Add a dark-theme variant for the Ablauf section.
    ========================================================= */
 .services-sec.sec-dark {

@@ -1,16 +1,16 @@
-export type LegacyLink = {
+export type SiteChromeLink = {
   label: string
   href: string
   navKey?: string
 }
 
-export type LegacyFooterColumn = {
+export type SiteChromeFooterColumn = {
   id: string
   label: string
-  links: LegacyLink[]
+  links: SiteChromeLink[]
 }
 
-export const legacyContent = {
+export const siteChromeContent = {
   brand: {
     label: 'Matthias Ramahi',
     href: 'index.html',
@@ -24,7 +24,7 @@ export const legacyContent = {
       { label: 'Blog', href: 'blog.html', navKey: 'blog' },
       { label: 'Weitere Dienstleistungen', href: 'leistungen.html', navKey: 'leistungen' },
       { label: 'Kontakt', href: 'contact.html', navKey: 'kontakt' },
-    ] satisfies LegacyLink[],
+    ] satisfies SiteChromeLink[],
     photographyOverview: { label: 'Fotografie', href: 'fotografie.html', navKey: 'fotografie' },
     photographyLinks: [
       { label: 'Automobil', href: 'automobil-fotografie.html' },
@@ -33,7 +33,7 @@ export const legacyContent = {
       { label: 'Motorrad', href: 'motorrad-fotografie.html' },
       { label: 'Portrait', href: 'portraitfotografie.html' },
       { label: 'Landschaft', href: 'landschaftsfotografie.html' },
-    ] satisfies LegacyLink[],
+    ] satisfies SiteChromeLink[],
     cta: {
       label: 'Projekt anfragen',
       mobileLabel: 'Projekt anfragen',
@@ -101,7 +101,7 @@ export const legacyContent = {
     legalLinks: [
       { label: 'Impressum', href: 'impressum.html' },
       { label: 'Datenschutz', href: 'datenschutz.html' },
-    ] satisfies LegacyLink[],
+    ] satisfies SiteChromeLink[],
     columns: [
       {
         id: 'foto',
@@ -138,7 +138,7 @@ export const legacyContent = {
           { label: 'Drucke & Sonderanfertigungen', href: 'drucke-sonderanfertigungen-duesseldorf.html' },
         ],
       },
-    ] satisfies LegacyFooterColumn[],
+    ] satisfies SiteChromeFooterColumn[],
   },
   sitePages: [
     {
@@ -232,4 +232,4 @@ export const legacyContent = {
   ],
 } as const
 
-export default legacyContent
+export default siteChromeContent
