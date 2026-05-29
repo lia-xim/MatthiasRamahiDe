@@ -18,7 +18,7 @@ The current root `.html` files are the visual reference for the Astro + Payload 
 4. Blog and journal legacy URLs use native article renderers; new `/journal/<slug>` pages stay CMS-native.
 5. Production CSS/JS references use neutral `native-*` assets. Older `legacy-*` assets stay with the frozen reference only.
 6. The production asset sync does not scan root HTML by default. Set `SYNC_INCLUDE_ROOT_REFERENCE_HTML=true` only for explicit QA/reference workflows.
-6. The remaining root `.html` files are an archive and QA baseline only. Remove or move them only after explicit archive/delete sign-off.
+7. The remaining root `.html` files are an archive and QA baseline only. Remove or move them only after explicit archive/delete sign-off.
 
 ## Adopted Route Rule
 
