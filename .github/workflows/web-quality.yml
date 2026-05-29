@@ -27,6 +27,9 @@ jobs:
       - name: Install dependencies
         run: corepack pnpm install --frozen-lockfile
 
+      - name: Install Playwright browser
+        run: corepack pnpm --filter @matthias-ramahi/web exec playwright install --with-deps chromium
+
       - name: Build Vercel output
         run: corepack pnpm vercel:build
 
