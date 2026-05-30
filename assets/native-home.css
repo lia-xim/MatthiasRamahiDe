@@ -124,7 +124,11 @@
   .hero-cursor.is-pressed{transform:translate(-50%,-50%) scale(.68);border-color:#fff}
   .hero-cursor.is-pressed .ring{inset:-18px;border-color:rgba(243,245,239,.35)}
   .hero a,.hero button{cursor:pointer}
-  @media (hover:none), (pointer:coarse), (max-width:900px){.hero{cursor:auto}.hero canvas{display:none}.hero-cursor{display:none}}
+  /* Mobile/touch: shader is off, so give the static hero image a gentle, cheap
+     pan so it is not "deader" than desktop. Horizontal-only = no edge reveal on
+     portrait screens (landscape image overflows on the x-axis under cover). */
+  @media (hover:none), (pointer:coarse), (max-width:900px){.hero{cursor:auto;animation:heroPanMobile 34s var(--ease) infinite alternate}.hero canvas{display:none}.hero-cursor{display:none}}
+  @keyframes heroPanMobile{from{background-position:46% 50%}to{background-position:54% 50%}}
   @media(max-width:780px){.hero{padding:120px 20px 88px}.hero-title{font-size:clamp(46px,13vw,82px);letter-spacing:-.05em}.hero-lead{max-width:34rem;margin-top:18px;font-size:16px}.hero-actions{gap:10px;margin-top:22px}.hero-actions .btn{width:auto;min-height:46px;padding:12px 16px;letter-spacing:.14em}}
 
   /* ============ STATEMENT (light) — editorial pause ============ */
@@ -330,22 +334,59 @@
     .mr-footer__cols{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 24px}
   }
   @media(max-width:780px){
-    .chapters-head,.pf-head,.services-head,.blog-head{grid-template-columns:1fr;gap:14px}
+    .section-inner{padding:clamp(56px,14vw,88px) clamp(20px,6vw,26px)}
+    .chapters-head,.pf-head,.services-head,.blog-head{grid-template-columns:1fr;gap:12px;margin-bottom:clamp(28px,7vw,40px)}
     .chapters-head .lead,.pf-head .lead,.services-head .lead,.blog-head .lead{text-align:left;justify-self:start}
-    .chapter-grid{grid-template-columns:1fr;gap:40px}
+    /* Große Editorial-Headlines: Wucht behalten, aber 3-Zeilen-Umbrüche auf dem Handy vermeiden */
+    .statement h2,.chapters-head h2,.pf-head h2,.services-head h2{font-size:clamp(36px,10vw,56px)}
+    /* Chapters als kompaktes 2er-Raster — halbiert das Scrollen, bleibt scanbar */
+    .chapter-grid{grid-template-columns:repeat(2,1fr);gap:20px 12px}
+    .chapter{gap:10px}
+    .chapter .img{aspect-ratio:1/1}
+    .chapter .head{gap:8px}
+    .chapter h3{font-size:15px}
+    .chapter .num{font-size:8.5px;letter-spacing:.16em}
+    .chapter .meta{font-size:8px;letter-spacing:.1em;gap:8px}
+    .chapter .meta > span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    /* Portfolio-Strom: nur eine Reihe auf dem Handy (weniger Höhe, leichter für die CPU) */
+    .pf-row.row-2{display:none}
     .pf-tile.--ww{width:78vw}
     .pf-tile.--w{width:64vw}
     .pf-tile.--t{width:48vw}
     .pf-tile.--s{width:54vw}
     .pf-row{min-height:64vw}
     .pf-row.row-1 .pf-track{animation-duration:77s}
-    .pf-row.row-2 .pf-track{animation-duration:90s}
     .pf-head h2 .num{position:static;display:block;margin-top:14px}
-    .service-row{grid-template-columns:48px 1fr;align-items:start;gap:14px 16px}.service-row h3{grid-column:2 / 3;align-self:center}.service-row p{grid-column:2 / 3;margin-top:6px}.service-row .arr{grid-column:2 / 3;justify-self:start;margin-top:10px}
+    /* Leistungen: kompakte Liste — Beschreibungstext aus, nur Nr · Titel · Detail in einer Zeile */
+    .service-row{grid-template-columns:auto 1fr auto;align-items:center;gap:12px 14px;padding:16px 0}
+    .service-row .num{align-self:center}
+    .service-row h3{font-size:16px;letter-spacing:-.02em}
+    .service-row p{display:none}
+    .service-row .arr{justify-self:end;margin-top:0}
+    /* Journal: straffer — Excerpt aus, flacheres Vorschaubild */
+    .blog-grid{gap:24px}
+    .post{gap:10px}
+    .post .pimg{aspect-ratio:16/9}
+    .post p{display:none}
+    .post h3{font-size:18px}
     .anfrage .actions{flex-direction:column;gap:18px}
-    .mr-footer__cols{grid-template-columns:1fr;gap:22px}
-    .mr-footer__mark{font-size:clamp(28px,8vw,42px)}
-    .mr-footer__base{grid-template-columns:1fr;gap:10px;text-align:left}
-    .mr-footer__base-left,.mr-footer__base-center,.mr-footer__base-right{justify-self:start}
+    .mr-footer{padding:30px clamp(20px,6vw,28px) calc(24px + env(safe-area-inset-bottom))}
+    .mr-footer__inner{gap:20px}
+    .mr-footer__top{gap:14px;padding-bottom:18px}
+    .mr-footer__claim p{font-size:14px;line-height:1.45}
+    /* Sitemap als kompaktes 2er-Raster statt langer 1-Spalte → ~halbe Höhe. */
+    .mr-footer__cols{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 16px}
+    .mr-footer__col{gap:2px}
+    .mr-footer__col-label{padding-bottom:6px}
+    .mr-footer__col-list a{min-height:38px;font-size:13px}
+    .mr-footer__contact{gap:10px}
+    .mr-footer__contact-line a,.mr-footer__contact-line strong{min-height:26px;font-size:12px;overflow-wrap:anywhere}
+    /* Instagram als Kontaktmöglichkeit nach oben holen; unten ausblenden. */
+    .mr-footer__contact-line--social{display:grid}
+    .mr-footer__base-center{display:none}
+    .mr-footer__mark{font-size:clamp(26px,7.5vw,38px)}
+    .mr-footer__base{grid-template-columns:1fr;gap:12px;text-align:left;padding-top:16px}
+    .mr-footer__base-left,.mr-footer__base-right{justify-self:start}
+    .mr-footer__base-right{gap:6px 18px}
   }
-  @media(prefers-reduced-motion:reduce){body:before{animation:none}.chapter:hover{transform:none}.chapter:hover .img img{transform:none}.pf-row .pf-track{animation:none!important}.pf-tile:hover{transform:none}.pf-tile:hover img{transform:none}.post:hover .pimg img{transform:none}.mr-footer__col-list a:hover{transform:none}}
+  @media(prefers-reduced-motion:reduce){.hero{animation:none!important}body:before{animation:none}.chapter:hover{transform:none}.chapter:hover .img img{transform:none}.pf-row .pf-track{animation:none!important}.pf-tile:hover{transform:none}.pf-tile:hover img{transform:none}.post:hover .pimg img{transform:none}.mr-footer__col-list a:hover{transform:none}}

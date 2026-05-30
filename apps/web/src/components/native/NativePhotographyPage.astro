@@ -92,7 +92,7 @@ const clusterParagraphs = blockParagraphs(doc, 'Ein Einstieg', [
             <a class="topic-link" href={topic.href}>{topic.linkLabel}</a>
           </div>
           <div class="topic-media" aria-hidden="true">
-            <figure class="topic-frame">
+            <figure class="topic-frame" style={`--topic-ar:${topic.width}/${topic.height}`}>
               <img src={topic.image} alt={topic.alt} loading="lazy" width={topic.width} height={topic.height} decoding="async" />
             </figure>
           </div>

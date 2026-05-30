@@ -56,10 +56,10 @@ const metaDescription = isParentPage
     : `${serviceLabel} ${scope.label}: Bildserien für Sammlung, Verkauf, Auktion und Ausstellung.`
 const contactSubject = isParentPage ? 'Oldtimer Fotografie Anfrage' : `${serviceLabel}${isKeywordPage ? '' : ` ${scope.label}`} Anfrage`
 const contactHeadline = isParentPage
-  ? 'Oldtimer &lt;em&gt;anfragen.&lt;/em&gt;'
+  ? 'Oldtimer <em>anfragen.</em>'
   : isKeywordPage
-    ? `${serviceLabel} &lt;em&gt;anfragen.&lt;/em&gt;`
-    : `Oldtimer ${scope.label} &lt;em&gt;anfragen.&lt;/em&gt;`
+    ? `${serviceLabel} <em>anfragen.</em>`
+    : `Oldtimer ${scope.label} <em>anfragen.</em>`
 const contactLead = isParentPage
   ? 'Schreibe kurz, welcher Oldtimer fotografiert werden soll — Modell, Baujahr, Standort und ob die Bilder für Sammlung, Auktion, Verkauf oder privat genutzt werden. Wir klären Raum, Licht und Ablauf gemeinsam.'
   : isKeywordPage

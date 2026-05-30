@@ -50,7 +50,6 @@ const navAttrs = {
 
 <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
   <div class="mobile-menu__inner">
-    <a class="mobile-menu__brand" href={toRootRelativeHref(brand.href)}>{brand.label}</a>
     <nav class="mobile-menu__nav" aria-label="Hauptnavigation mobil">
       <a {...linkAttributes({ ...homeLink, href: homeLink.href || 'index.html' })} data-nav="home">{homeLink.label || 'Home'}</a>
       <div class="mobile-menu__group">

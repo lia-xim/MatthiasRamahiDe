@@ -6,21 +6,6 @@ const legacyFile = 'ueber-mich.html'
 const providedDoc = Astro.props.doc as PayloadDoc | undefined
 const doc = providedDoc || (await getLegacyBackedDoc(legacyFile, { depth: 2 }))
 
-const processRows = [
-  ['N° 01', 'Briefing', 'Projekt, Ziel und Ausgabe klären. Wofür soll das Bild später arbeiten — Inserat, Pressekit, Sammlung, Wand?'],
-  ['N° 02', 'Konzept', 'Stil, Licht, Ort und Auswahl planen. Bilder werden geplant, nicht improvisiert. Referenzen, Moodboard, Locationcheck, wenn nötig.'],
-  ['N° 03', 'Shooting', 'Ruhig, präzise. Zwischen Aufnahme und Korrektur am Set entstehen die Bilder, die später noch arbeiten — nicht die mit dem lautesten Filter.'],
-  ['N° 04', 'Auswahl', 'Kuratierte Serie statt Roh-Lieferung. Bildauswahl mit Begründung, abgestimmt auf Nutzung, Format und Rhythmus der Strecke.'],
-  ['N° 05', 'Ausgabe', 'Datei für Web, Druck für die Wand. Was am Ende kommt, ist verwendungsfertig — einheitlich im Look, sauber im Format, bereit für Print oder Kampagne.'],
-] as const
-
-const values = [
-  ['N° 01', 'Keine generischen Fahrzeugbilder.', 'Kontrollierte Reflexe, ruhige Linien, ein Bildsatz, der technisch sauber weiterverwendet werden kann.'],
-  ['N° 02', 'Keine glattgebügelten Portraits.', 'Blick, Distanz und Licht so geführt, dass ein Bild professionell wirkt, ohne den Menschen dahinter zu verlieren.'],
-  ['N° 03', 'Keine Bildserie ohne Plan.', 'Vor dem Auslöser steht ein Konzept: Wofür ist das Bild, in welchem Rhythmus liest sich die Strecke, wo endet sie.'],
-  ['N° 04', 'Keine durchgereichten Calls.', 'Vom Briefing bis zum Druck ein Ansprechpartner. Keine Account-Manager, keine Reposting-Schleifen.'],
-] as const
-
 const chapters = [
   {
     href: 'automobil-fotografie-duesseldorf.html',
@@ -91,6 +76,7 @@ const chapters = [
       <div class="ovh__glow" aria-hidden="true"></div>
       <div class="ovh__aperture" aria-hidden="true"></div>
       <div class="ovh__grid">
+        <div class="ovh__beam" aria-hidden="true"></div>
         <p class="ovh__kicker">Über mich · Düsseldorf · NRW</p>
         <h1 class="ovh__title">
           <span class="line"><span class="word">Hinter der</span></span>
@@ -117,43 +103,6 @@ const chapters = [
             <a class="btn" href="#schwerpunkte" style="color:var(--ink);border-color:var(--ink)">Bereiche ansehen</a>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section class="services-sec sec-dark um-ablauf" data-theme="dark" data-header-theme="dark" aria-label="Ablauf">
-      <div class="section-inner">
-        <div class="services-head">
-          <h2>Ablauf.<br />Vom Briefing zum <em>Druck</em>.</h2>
-          <p class="lead">Fünf Schritte. Kein Improvisationstheater, sondern ein ruhiger Prozess, der vom ersten Gespräch bis zum signierten Print eine Spur zieht.</p>
-        </div>
-        <div class="services-list">
-          {processRows.map(([number, title, text]) => (
-            <div class="service-row">
-              <span class="num">{number}</span><h3>{title}</h3><p>{text}</p><span class="arr">→</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <section class="values sec-light" data-theme="light" data-header-theme="light" aria-label="Was hier nicht passiert">
-      <div class="section-inner values-grid">
-        <div class="values-head">
-          <p class="kicker dark">Haltung</p>
-          <h2>Was hier <em>nicht passiert</em>.</h2>
-          <p class="values-note">Die schnellste Definition von Qualität ist manchmal eine Liste der Dinge, die wir weglassen.</p>
-        </div>
-        <ol class="values-list">
-          {values.map(([number, claim, note]) => (
-            <li class="values-item">
-              <span class="values-item__no">{number}</span>
-              <div class="values-item__body">
-                <p class="values-item__claim">{claim}</p>
-                <p class="values-item__note">{note}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
       </div>
     </section>
 

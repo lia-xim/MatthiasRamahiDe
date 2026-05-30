@@ -481,6 +481,7 @@
     (function () {
       let last = null;
       let raf = 0;
+      const themeColorMeta = document.querySelector('meta[name="theme-color"]');
 
       function probe() {
         raf = 0;
@@ -513,6 +514,8 @@
         if (!theme || theme === last) return;
         last = theme;
         bar.classList.toggle('theme-light', theme === 'light');
+        // Adressleisten-Tint (mobil) folgt der sichtbaren Sektion
+        if (themeColorMeta) themeColorMeta.setAttribute('content', theme === 'light' ? '#f3f5ef' : '#020306');
       }
       function schedule() {
         if (raf) return;
@@ -715,8 +718,10 @@
                 '<li>Direkt mit Matthias</li>' +
               '</ul>' +
               /* Briefing cards (Was reicht / Was klaeren wir / Naechster Schritt) removed 2026-05-27 */
-              '<div class="mr-contact__mail">' +
-                '<a href="mailto:info@matthiasramahi.de?subject=' + encodeURIComponent(subject) + '">info@matthiasramahi.de</a>' +
+              '<div class="mr-contact__direct" aria-label="Direkter Kontakt">' +
+                '<a class="mr-contact__direct-link" href="tel:+4917642449858" data-cta-role="contact-direct-phone"><span>Anrufen</span><strong>+49 176 42 44 98 58</strong></a>' +
+                '<a class="mr-contact__direct-link" href="mailto:info@matthiasramahi.de?subject=' + encodeURIComponent(subject) + '" data-cta-role="contact-direct-mail"><span>E-Mail</span><strong>info@matthiasramahi.de</strong></a>' +
+                '<a class="mr-contact__direct-link" href="https://www.instagram.com/" target="_blank" rel="noopener" data-cta-role="contact-direct-instagram"><span>Instagram</span><strong>Profil ansehen &#8599;</strong></a>' +
               '</div>' +
             '</div>' +
             '<form class="mr-contact__form" novalidate data-started-at="' + Date.now() + '">' +

@@ -52,10 +52,15 @@ body[data-cms-layout-source="base-layout"] ::selection { background: var(--accen
 .site-footer h2 { font-size: clamp(42px, 9vw, 132px); margin: 0; }
 .site-footer ul { list-style: none; padding: 0; margin: 12px 0 0; display: grid; gap: 10px; color: var(--muted); }
 
-.hero-stage { min-height: calc(100svh - 72px); display: grid; align-items: end; padding: clamp(76px, 10vw, 140px) 0; position: relative; overflow: hidden; }
+/* Scoped to the legacy grid hero (always wraps content in .hero-stage__grid).
+   The home-style hero (NativeHome/Photography/Portfolio) reuses the .hero-stage
+   class name but has NO __grid child — without this scoping these rules leaked
+   onto it, adding ~280px stage padding + a bigger title + a 16px margin, which
+   pushed the heading up and spread the block out (≠ Home). */
+.hero-stage:has(> .hero-stage__grid) { min-height: calc(100svh - 72px); display: grid; align-items: end; padding: clamp(76px, 10vw, 140px) 0; position: relative; overflow: hidden; }
 .hero-stage__grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(280px, .58fr); gap: clamp(36px, 8vw, 120px); align-items: end; position: relative; }
-.hero-stage h1 { font-size: clamp(62px, 12vw, 184px); margin: 16px 0 0; }
-.hero-stage p { max-width: 42rem; font-size: clamp(18px, 2vw, 28px); }
+.hero-stage__grid h1 { font-size: clamp(62px, 12vw, 184px); margin: 16px 0 0; }
+.hero-stage__grid p { max-width: 42rem; font-size: clamp(18px, 2vw, 28px); }
 
 .card-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
 .card { background: var(--surface); padding: clamp(24px, 4vw, 46px); min-height: 260px; display: flex; flex-direction: column; justify-content: space-between; }

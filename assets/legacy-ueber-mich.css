@@ -82,15 +82,18 @@
     grid-row: 1;
     position: relative;
     z-index: 4;
+    overflow: hidden;
     max-width: none;
     margin: 0;
-    padding: clamp(120px, 14vw, 180px) clamp(28px, 4vw, 72px) clamp(64px, 8vw, 112px);
-    justify-content: flex-end;
+    padding: clamp(104px, 12vw, 150px) clamp(28px, 4vw, 72px) clamp(96px, 11vw, 140px);
+    /* Vertically centred — the copy sits beside the portrait's mass instead of
+       clinging to the bottom, so there is no empty void above it. */
+    justify-content: center;
     /* Layered cinematic ground — a veil + steel lift instead of flat black,
        so the copy column reads as the same frame as the photo. */
     background:
       linear-gradient(180deg, rgba(2,3,6,0) 0%, rgba(2,3,6,.5) 76%, rgba(2,3,6,.92) 100%),
-      radial-gradient(120% 85% at 16% 22%, rgba(220,226,223,.05), transparent 50%),
+      radial-gradient(120% 85% at 16% 22%, rgba(220,226,223,.09), transparent 52%),
       linear-gradient(180deg, #0a0e15 0%, #06090e 50%, #03050a 100%);
   }
   /* Soft gradient transition so the copy column dissolves into the photo */
@@ -118,16 +121,45 @@
   z-index: -1;
   pointer-events: none;
   background:
-    radial-gradient(115% 80% at 14% 14%, rgba(220,226,223,.12), transparent 48%),
-    radial-gradient(150% 130% at 0% 100%, rgba(42,78,118,.30), transparent 58%);
-  animation: ovhUeberAtmos 22s cubic-bezier(.23,1,.32,1) infinite alternate;
+    radial-gradient(72% 56% at 16% 18%, rgba(220,226,223,.22), transparent 52%),
+    radial-gradient(140% 120% at -8% 106%, rgba(48,86,130,.55), transparent 60%),
+    radial-gradient(82% 62% at 84% 56%, rgba(122,138,134,.20), transparent 58%),
+    radial-gradient(120% 100% at 32% 52%, rgba(60,80,110,.12), transparent 72%);
+  animation: ovhUeberAtmos 20s cubic-bezier(.23,1,.32,1) infinite alternate;
 }
 @keyframes ovhUeberAtmos {
-  0%   { transform: translate3d(-1.5%, 1.2%, 0) scale(1);    opacity: .78; }
-  100% { transform: translate3d(2.2%, -1.4%, 0) scale(1.05); opacity: 1; }
+  0%   { transform: translate3d(-2.4%, 1.8%, 0) scale(1);    opacity: .72; }
+  100% { transform: translate3d(3.2%, -2.2%, 0) scale(1.08); opacity: 1; }
+}
+
+/* Aperture light-beam on the copy side — the landing hero's signature steel
+   sweep, scoped to the text column. Sits above the ground but below the copy
+   (z-index:-1, like the atmosphere). Same look/timing as .ovh__aperture. */
+.ovh--ueber .ovh__beam {
+  position: absolute;
+  z-index: -1;
+  left: -10%;
+  right: -10%;
+  top: 46%;
+  height: 88px;
+  pointer-events: none;
+  opacity: .28;
+  transform: rotate(-4deg) translateX(-46%);
+  background: linear-gradient(90deg, transparent 0%, rgba(243,245,239,.06) 34%, rgba(220,226,223,.40) 49%, rgba(220,226,223,.14) 56%, rgba(42,78,118,.14) 64%, transparent 84%);
+  filter: blur(.3px);
+  -webkit-mask-image: linear-gradient(180deg, transparent, #000 44%, #000 56%, transparent);
+  mask-image: linear-gradient(180deg, transparent, #000 44%, #000 56%, transparent);
+  animation: ovhUeberBeam 11s cubic-bezier(.23,1,.32,1) infinite;
+}
+@keyframes ovhUeberBeam {
+  0%, 10% { transform: rotate(-4deg) translateX(-46%); opacity: 0; }
+  30%     { opacity: .30; }
+  60%     { transform: rotate(-4deg) translateX(30%);  opacity: .16; }
+  100%    { transform: rotate(-4deg) translateX(46%);  opacity: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   .ovh--ueber > .ovh__grid::before { animation: none; }
+  .ovh--ueber .ovh__beam { animation: none; opacity: .12; }
 }
 
 /* Mobile/tablet: stack photo on top, copy below. Keeps the
@@ -462,3 +494,39 @@
     transform: none;
   }
 }
+
+/* =========================================================
+   Über-mich — Typografie & Rhythmus angleichen
+   Scoped: native-about.css lädt nur auf dieser Seite, also
+   ändern diese Regeln nur die Über-mich-Seite, nicht Home.
+   Ziel: EINE einheitliche H2-Größe (an den Themenseiten wie
+   Automobil orientiert) + halbierte Sektions-Höhen, damit die
+   Seite kompakter liest statt künstlich lang zu wirken.
+   ========================================================= */
+
+/* Eine einheitliche, kompakte Sektions-Höhe. Vorher: .section-inner
+   bis 160px oben UND unten, bei .sister zusätzlich verdoppelt durch
+   das Section-Padding → bis ~320px Leerraum. Jetzt ein einziges Maß. */
+.statement .section-inner,
+.chapters .section-inner,
+.sister .section-inner {
+  padding-top: clamp(48px, 6vw, 84px);
+  padding-bottom: clamp(48px, 6vw, 84px);
+}
+.sister { padding-top: 0; padding-bottom: 0; }
+.statement .section-inner { gap: clamp(28px, 4vw, 64px); }
+
+/* Eine einheitliche H2-Größe über alle Sektionen — gleiche Display-
+   Schrift wie der Hero, Größe an der Automobil-Seite orientiert
+   (vorher sprang es zwischen 92px und 148px). */
+.statement h2,
+.chapters-head h2,
+.sister-copy h2 {
+  font-family: var(--font-display, 'Neue Haas Grotesk Display'), 'Söhne', 'Avenir Next', Helvetica, Arial, sans-serif;
+  font-size: clamp(38px, 5.2vw, 92px);
+  line-height: .94;
+  letter-spacing: -.045em;
+}
+
+/* Kopfzeilen-Abstände straffen. */
+.chapters-head { margin-bottom: clamp(26px, 3.4vw, 48px); }

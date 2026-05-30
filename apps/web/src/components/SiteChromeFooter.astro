@@ -44,6 +44,11 @@ const locationLabel = cmsFooter?.locationLabel || fallbackFooter.locationLabel
 const copyright = cmsFooter?.copyright || fallbackFooter.copyright
 const socialLinks = cmsFooter?.socialLinks?.length ? cmsFooter.socialLinks : fallbackFooter.socialLinks
 const legalLinks = cmsFooter?.legalLinks?.length ? cmsFooter.legalLinks : fallbackFooter.legalLinks
+// Instagram wird auf dem Handy als zusätzliche Kontaktzeile gezeigt (Kontaktmöglichkeit),
+// auf dem Desktop bleibt es in der Fußzeile (CSS blendet die Kontaktzeile dort aus).
+const socialContactLink =
+  socialLinks.find((link) => ((link as { platform?: string }).platform || link.label || '').toLowerCase().includes('insta')) ||
+  socialLinks[0]
 ---
 <footer class="mr-footer" data-header-theme="dark" aria-label="Website Footer">
   <div class="mr-footer__hairline" aria-hidden="true"></div>
@@ -85,6 +90,12 @@ const legalLinks = cmsFooter?.legalLinks?.length ? cmsFooter.legalLinks : fallba
             <span>Fotograf</span>
             <strong>{locationLabel}</strong>
           </div>
+          {socialContactLink?.href && (
+            <div class="mr-footer__contact-line mr-footer__contact-line--social">
+              <span>Instagram</span>
+              <a {...linkAttributes({ ...socialContactLink, openInNewTab: true })}>{socialContactLink.label}</a>
+            </div>
+          )}
         </div>
       </div>
     </nav>
