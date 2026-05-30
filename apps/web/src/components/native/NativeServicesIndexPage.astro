@@ -63,7 +63,6 @@ const overviewItems = overviewOrder
         {servicesIndexItems.map((service) => (
           <a class="service" id={service.id} href={service.href} data-header-theme={service.theme}>
             <div class="service-copy">
-              <span class="service-num">{service.number}</span>
               <h3 set:html={service.headline}></h3>
               <p>{service.text}</p>
               <div class="tags">{service.tags.map((tag) => <span class="tag">{tag}</span>)}</div>

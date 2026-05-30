@@ -32,33 +32,45 @@ const proofStages = [
     body: 'Druck in Endgröße, säurefreie Verpackung. Versand als Rohr oder Flachpaket, deutschlandweit innerhalb 48 h.',
   },
 ]
+
+// Hero = der Landing-Page-Hero (WebGL-Shader/Ken-Burns/Lens-Cursor), aber mit
+// Fotolabor-Bild, -Texten und der rost/orangen Fotolabor-Akzentfarbe. Die Optik
+// kommt aus assets/native-fotolabor.css (Hero-Block), die Bewegung aus
+// assets/native-home.js (gated nur auf #hero-shader).
+const heroImage = '/assets/services/portfolio_webp_full_057-1.webp'
+const heroSlides = [
+  {
+    image: heroImage,
+    titleLines: ['Fotolabor', '& Druck'],
+    lead: 'FineArt-Papiere, Acrylglas, Alu-Dibond und Leinwand — gedruckt aus Düsseldorf, geliefert deutschlandweit.',
+    primaryHref: '#anfrage',
+    primaryLabel: 'Druck anfragen',
+    secondaryHref: '#format',
+    secondaryLabel: 'Formate ansehen',
+  },
+]
+const heroSlidesJson = JSON.stringify(heroSlides)
 ---
 <AdoptedPageLayout legacyFile={legacyFile} current="leistungen" doc={doc}>
   <main>
-    <section class="sp-hero" data-header-theme="dark" aria-label="Fotolabor &amp; Druck">
-      <div class="sp-hero__bg" aria-hidden="true">
-        <img
-          src="/assets/services/portfolio_webp_full_057-1.webp"
-          alt="Fotodruck-Detail aus dem Fotolabor"
-          loading="eager"
-          fetchpriority="high"
-          width="1280"
-          height="1920"
-          decoding="async"
-        />
-      </div>
-      <div class="sp-hero__inner">
-        <div class="sp-hero__copy">
-          <p class="sp-hero__crumb"><a href="/leistungen.html">Weitere Dienstleistungen</a><span>/</span><span>Fotolabor &amp; Druck</span></p>
-          <p class="sp-eyebrow sp-hero__kicker">Print Lab · Düsseldorf</p>
-          <h1 class="sp-hero__h1">Fotolabor<br /><em>&amp; Druck.</em></h1>
-          <p class="sp-hero__lead">FineArt-Papiere, Acrylglas, Alu-Dibond und Leinwand — gedruckt aus Düsseldorf, geliefert deutschlandweit.</p>
-          <div class="sp-hero__actions">
-            <a class="sp-btn sp-btn--primary" href="#anfrage">Druck anfragen →</a>
-            <a class="sp-btn" href="#format">Formate ansehen</a>
+    <section class="hero" data-theme="dark" data-header-theme="dark" aria-label="Fotolabor &amp; Druck" style={`background-image:url('${heroImage}')`}>
+      <canvas id="hero-shader" aria-hidden="true" data-imgs={heroImage} data-slides={heroSlidesJson}></canvas>
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-aperture" aria-hidden="true"></div>
+      <div class="hero-grid">
+        <div class="hero-stage">
+          <h1 class="hero-title" id="hero-title" data-text-idx="0">
+            <span class="line"><span class="word">Fotolabor</span></span>
+            <span class="line"><span class="word">&amp; Druck</span></span>
+          </h1>
+          <p class="hero-lead" id="hero-lead">FineArt-Papiere, Acrylglas, Alu-Dibond und Leinwand — gedruckt aus Düsseldorf, geliefert deutschlandweit.</p>
+          <div class="hero-actions" aria-label="Direkte Aktionen">
+            <a class="btn dark" href="#anfrage" data-hero-primary>Druck anfragen</a>
+            <a class="btn" href="#format" data-hero-secondary>Formate ansehen</a>
           </div>
         </div>
       </div>
+      <div class="hero-cursor" id="hero-cursor" aria-hidden="true"><span class="ring"></span></div>
     </section>
 
     <section class="lab-scale" id="format" data-header-theme="dark" aria-label="Format-Skala">

@@ -232,7 +232,7 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
     description:
       'Journal von Matthias Ramahi: Einblicke in Automotive-Fotografie, Portraits, Landschaft, Bildauswahl, Druck und visuelle Inszenierung in Düsseldorf.',
     ogImage: '/assets/optimized/assets-photos-automobil-sunset-1920.webp',
-    scripts: siteChromeScript,
+    scripts: [...siteChromeScript, '/assets/native-journal.js'],
     stylesheets: ['/assets/native-journal.css', ...sharedStyles],
     title: 'Blog / Journal - Matthias Ramahi',
   },
@@ -312,7 +312,7 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
       'Fotolabor und Druck in Düsseldorf - FineArt-Prints auf Hahnemühle, Canson und Ilford, Acrylglas, Alu-Dibond, Leinwand.',
     ogImage: '/assets/services/portfolio_webp_full_057-1.webp',
     preloadImages: ['/assets/services/portfolio_webp_full_057-1.webp'],
-    scripts: siteChromeScript,
+    scripts: ['/assets/native-home.js', ...siteChromeScript],
     stylesheets: [...sharedStyles, '/assets/native-fotolabor.css'],
     title: 'Fotolabor & Druck Düsseldorf - Matthias Ramahi',
   },
