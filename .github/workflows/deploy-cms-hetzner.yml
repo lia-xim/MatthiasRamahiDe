@@ -37,6 +37,9 @@ jobs:
         uses: actions/setup-node@v5
         with:
           node-version: 22
+          # corepack/pnpm is enabled in a later step; v5 would otherwise try
+          # to use pnpm for caching before it exists and fail.
+          package-manager-cache: false
 
       - name: Install dependencies
         run: |

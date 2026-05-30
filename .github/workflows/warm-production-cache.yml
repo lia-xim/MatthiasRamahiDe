@@ -18,6 +18,7 @@ jobs:
         uses: actions/setup-node@v5
         with:
           node-version: 22
+          package-manager-cache: false
 
       - name: Warm cache
         run: node tools/warmup-deployment-cache.mjs --origin=https://matthiasramahi.de --asset-mode=critical --concurrency=8
