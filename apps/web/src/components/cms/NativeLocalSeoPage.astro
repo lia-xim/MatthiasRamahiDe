@@ -130,14 +130,17 @@ if (faqSchema) jsonLdItems.push(faqSchema)
   <ContentBlocks blocks={doc.blocks} />
 
   {faq.length > 0 && (
-    <section class="container section-pad">
+    <section class="container section-pad" aria-label="Haeufige Fragen">
       <p class="eyebrow">FAQ</p>
-      <div class="stack-list">
-        {faq.map((item) => (
-          <article class="stack-item">
-            <h3>{item.question}</h3>
-            <p class="copy">{item.answer}</p>
-          </article>
+      <div class="faq-accordion">
+        {faq.map((item, index) => (
+          <details class="faq-item" open={index === 0}>
+            <summary class="faq-q">
+              <span>{item.question}</span>
+              <span class="faq-ic" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-a"><p>{item.answer}</p></div>
+          </details>
         ))}
       </div>
     </section>
@@ -154,3 +157,31 @@ if (faqSchema) jsonLdItems.push(faqSchema)
 
   <ContactCta cta={doc.contactOverride || doc.cta} />
 </BaseLayout>
+
+<style>
+  .faq-accordion { display: flex; flex-direction: column; border-top: 1px solid color-mix(in oklab, currentColor 16%, transparent); margin-top: 18px; }
+  .faq-item { border-bottom: 1px solid color-mix(in oklab, currentColor 16%, transparent); }
+  .faq-q {
+    list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    min-height: 64px; padding: 20px 4px; cursor: pointer;
+    font-size: clamp(17px, 1.5vw, 21px); line-height: 1.35; font-weight: 600; letter-spacing: -0.01em;
+  }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-q:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+  .faq-ic { position: relative; flex: 0 0 auto; width: 16px; height: 16px; }
+  .faq-ic::before, .faq-ic::after {
+    content: ""; position: absolute; top: 50%; left: 50%; width: 14px; height: 2px; background: currentColor;
+    transform: translate(-50%, -50%); transition: transform 0.28s cubic-bezier(0.23, 1, 0.32, 1); opacity: 0.85;
+  }
+  .faq-ic::after { transform: translate(-50%, -50%) rotate(90deg); }
+  .faq-item[open] .faq-ic::after { transform: translate(-50%, -50%) rotate(0); }
+  .faq-a { padding: 0 4px 24px; max-width: 70ch; }
+  .faq-a p { margin: 0; font-size: clamp(15px, 1.1vw, 17px); line-height: 1.6; opacity: 0.8; }
+  @media (max-width: 600px) {
+    .faq-q { font-size: 17px; padding: 18px 2px; gap: 14px; }
+    .faq-a { padding-bottom: 20px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .faq-ic::before, .faq-ic::after { transition: none; }
+  }
+</style>
