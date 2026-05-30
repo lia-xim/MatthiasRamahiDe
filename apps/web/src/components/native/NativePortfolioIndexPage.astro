@@ -84,7 +84,7 @@ const emptyImage =
         </div>
         <div class="pf-spread__strip">
           {spread.photos.map((photo) => (
-            <a class="pf-photo" data-caption={photo.caption} href={photo.href}>
+            <a class="pf-photo" data-caption={photo.caption} href={photo.href} aria-label={photo.caption || 'Bild im Großformat ansehen'}>
               <img src={photo.src} alt="" loading="lazy" decoding="async" width={photo.width} height={photo.height} />
             </a>
           ))}
@@ -99,7 +99,7 @@ const emptyImage =
       </div>
       <div class="pf-archive__grid" id="pfArchiveGrid">
         {portfolioArchivePhotos.map((photo) => (
-          <a class="pf-photo" data-caption={photo.caption} href={photo.href}>
+          <a class="pf-photo" data-caption={photo.caption} href={photo.href} aria-label={photo.caption || 'Bild im Großformat ansehen'}>
             <img
               src={photo.src}
               data-src={photo.src}
