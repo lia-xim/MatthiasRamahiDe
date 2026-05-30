@@ -90,8 +90,7 @@ function alertRecipients() {
 
 function subjectFor(request: ContactRequest) {
   const rawSubject = clean(request.subject || 'Projektanfrage', 120)
-  const suffix = request.project ? ` · ${request.project.slice(0, 64)}` : ''
-  return `[Website] ${rawSubject}${suffix}`
+  return `[Website] ${rawSubject}`
 }
 
 function formatDate(date: string) {
@@ -110,10 +109,6 @@ function detailRows(request: ContactRequest) {
   return [
     ['Name', request.name],
     ['Kontakt', request.contact],
-    ['Telefon', request.phone || 'Noch offen'],
-    ['Projekt / Motiv', request.project || 'Noch offen'],
-    ['Zeitraum', request.date || 'Noch offen'],
-    ['Nutzung', request.use || 'Noch offen'],
     ['Quelle', request.source || 'Unbekannt'],
     ['URL', request.pageUrl || 'Unbekannt'],
     ['Kontext', request.intentLabel || 'Unbekannt'],

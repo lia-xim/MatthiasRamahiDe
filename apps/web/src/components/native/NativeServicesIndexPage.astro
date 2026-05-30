@@ -29,14 +29,12 @@ const overviewItems = overviewOrder
         <img src="/assets/services/portfolio_webp_full_057-1.webp" alt="" loading="eager" decoding="async" fetchpriority="high" width="1280" height="1920" />
       </div>
       <div class="ld-hero__copy">
-        <p class="kicker">Partnernetzwerk · Düsseldorf · NRW</p>
         <h1>Alles aus <em>einer Hand.</em></h1>
         <p class="ld-hero__lead">{doc?.intro || 'Für Projekte, die über die Fotografie hinausgehen: hochwertige Drucke, Großformat, Werbetechnik, Webdesign, Video und musikalische Begleitung — seriös koordiniert, visuell abgestimmt und über erfahrene Partner in Düsseldorf und NRW umgesetzt.'}</p>
         <div class="ld-hero__actions">
           <a class="ld-btn is-primary" href="#anfrage">Projekt anfragen</a>
           <a class="ld-btn" href="#overview">Leistungen ansehen</a>
         </div>
-        <p class="ld-hero__lead" style="font-size:13px;max-width:560px;margin-top:14px">Unverbindliche Erstklaerung / Antwort meist innerhalb von 24 Stunden / ein Ansprechpartner fuer Ablauf und Partner.</p>
       </div>
     </section>
 
@@ -69,7 +67,6 @@ const overviewItems = overviewOrder
               <h3 set:html={service.headline}></h3>
               <p>{service.text}</p>
               <div class="tags">{service.tags.map((tag) => <span class="tag">{tag}</span>)}</div>
-              <span class="service-go">Mehr Infos</span>
             </div>
             <div class="image-set">
               {service.images.map((image) => (

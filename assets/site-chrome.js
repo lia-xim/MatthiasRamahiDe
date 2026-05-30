@@ -712,15 +712,9 @@
             '<div class="mr-contact__head">' +
               '<h2>' + headline + '</h2>' +
               '<p class="mr-contact__lead">' + lead + '</p>' +
-              '<ul class="mr-contact__proof" aria-label="Anfrage Vorteile">' +
-                '<li>Unverbindliche Erstklaerung</li>' +
-                '<li>Antwort meist innerhalb von 24 Stunden</li>' +
-                '<li>Direkt mit Matthias</li>' +
-              '</ul>' +
-              /* Briefing cards (Was reicht / Was klaeren wir / Naechster Schritt) removed 2026-05-27 */
               '<div class="mr-contact__direct" aria-label="Direkter Kontakt">' +
-                '<a class="mr-contact__direct-link" href="tel:+4917642449858" data-cta-role="contact-direct-phone"><span>Anrufen</span><strong>+49 176 42 44 98 58</strong></a>' +
                 '<a class="mr-contact__direct-link" href="mailto:info@matthiasramahi.de?subject=' + encodeURIComponent(subject) + '" data-cta-role="contact-direct-mail"><span>E-Mail</span><strong>info@matthiasramahi.de</strong></a>' +
+                '<a class="mr-contact__direct-link" href="tel:+4917642449858" data-cta-role="contact-direct-phone"><span>Telefon</span><strong>+49 176 42 44 98 58</strong></a>' +
                 '<a class="mr-contact__direct-link" href="https://www.instagram.com/" target="_blank" rel="noopener" data-cta-role="contact-direct-instagram"><span>Instagram</span><strong>Profil ansehen &#8599;</strong></a>' +
               '</div>' +
             '</div>' +
@@ -728,36 +722,15 @@
               '<div class="mr-contact__trap" aria-hidden="true"><label for="' + uid + '-site">Website</label><input id="' + uid + '-site" name="website" tabindex="-1" autocomplete="off"></div>' +
               '<div class="mr-contact__row">' +
                 '<div class="mr-contact__field"><label for="' + uid + '-name">Name <span>Pflicht</span></label><input id="' + uid + '-name" name="name" autocomplete="name" required></div>' +
-                '<div class="mr-contact__field"><label for="' + uid + '-contact">E-Mail oder Telefon <span>Pflicht</span></label><input id="' + uid + '-contact" name="contact" autocomplete="email" inputmode="email" required></div>' +
+                '<div class="mr-contact__field"><label for="' + uid + '-contact">E-Mail <span>Pflicht</span></label><input id="' + uid + '-contact" name="contact" type="email" autocomplete="email" inputmode="email" required></div>' +
               '</div>' +
-              '<div class="mr-contact__field"><label for="' + uid + '-msg">Projekt kurz beschreiben <span>Pflicht</span></label><textarea id="' + uid + '-msg" name="message" required placeholder="Leistung, Ort, Zeitraum und gewuenschte Wirkung reichen fuer den ersten Schritt."></textarea></div>' +
-              '<details class="mr-contact__details">' +
-                '<summary>Projektangaben ergaenzen <span>Optional</span></summary>' +
-                '<div class="mr-contact__row">' +
-                  '<div class="mr-contact__field"><label for="' + uid + '-project">Projekt / Motiv <span>Optional</span></label><input id="' + uid + '-project" name="project" autocomplete="off"></div>' +
-                  '<div class="mr-contact__field"><label for="' + uid + '-date">Zeitraum <span>Optional</span></label><input id="' + uid + '-date" name="date" autocomplete="off" placeholder="z. B. KW 24, Juni, offen"></div>' +
-                '</div>' +
-                '<div class="mr-contact__row">' +
-                  '<div class="mr-contact__field"><label for="' + uid + '-use">Nutzung <span>Optional</span></label>' +
-                    '<select id="' + uid + '-use" name="use">' +
-                      '<option value="">Noch offen</option>' +
-                      '<option>Privat</option>' +
-                      '<option>Kommerziell</option>' +
-                      '<option>Kampagne</option>' +
-                      '<option>Editorial</option>' +
-                      '<option>Sonstiges</option>' +
-                    '</select>' +
-                  '</div>' +
-                  '<div class="mr-contact__field"><label for="' + uid + '-phone">Telefon fuer Rueckfragen <span>Optional</span></label><input id="' + uid + '-phone" name="phone" autocomplete="tel"></div>' +
-                '</div>' +
-              '</details>' +
+              '<div class="mr-contact__field"><label for="' + uid + '-msg">Projekt kurz beschreiben <span>Pflicht</span></label><textarea id="' + uid + '-msg" name="message" required placeholder="Worum geht es? Ein paar Stichpunkte reichen."></textarea></div>' +
               '<label class="mr-contact__consent">' +
                 '<input type="checkbox" name="consent" value="1" required>' +
                 '<span>Ich willige ein, dass meine angegebenen Daten zur Bearbeitung der Anfrage verarbeitet werden. Hinweise dazu in der <a href="/datenschutz.html" target="_blank" rel="noopener noreferrer">Datenschutzerklaerung</a>. <em>Pflicht</em></span>' +
               '</label>' +
               '<div class="mr-contact__actions">' +
                 '<button class="mr-contact__submit" type="submit">Projekt anfragen -></button>' +
-                '<p class="mr-contact__reassurance">Unverbindlich. Kein Paket-Zwang. Antwort meist innerhalb von 24 Stunden.</p>' +
                 '<p class="mr-contact__status" role="status" aria-live="polite"></p>' +
               '</div>' +
             '</form>' +
@@ -786,10 +759,6 @@
           const data = {
             name: form.elements['name'].value.trim(),
             contact: form.elements['contact'].value.trim(),
-            project: form.elements['project'].value.trim(),
-            date: form.elements['date'].value.trim(),
-            use: form.elements['use'].value,
-            phone: form.elements['phone'].value.trim(),
             message: form.elements['message'].value.trim(),
             consent: !!(form.elements['consent'] && form.elements['consent'].checked)
           };
@@ -801,10 +770,7 @@
           } catch (err) {}
           trackConversionEvent('form_submit_attempt', {
             form: 'mr-contact',
-            subject: subject,
-            hasProject: !!data.project,
-            hasDate: !!data.date,
-            use: data.use || 'Noch offen'
+            subject: subject
           });
           if (form.elements['website'] && form.elements['website'].value) {
             form.reset();
@@ -858,11 +824,7 @@
                 'Kontext: ' + intent.label + '\n' +
                 'CTA: ' + (lastCta || 'Direkt / unbekannt') + '\n\n' +
                 'Name: ' + data.name + '\n' +
-                'Kontakt: ' + data.contact + '\n' +
-                'Projekt / Motiv: ' + (data.project || 'Noch offen') + '\n' +
-                'Zeitraum: ' + (data.date || 'Noch offen') + '\n' +
-                'Nutzung: ' + (data.use || 'Noch offen') + '\n' +
-                'Telefon: ' + (data.phone || 'Noch offen') + '\n\n' +
+                'Kontakt: ' + data.contact + '\n\n' +
                 'Nachricht:\n' + data.message;
               window.location.href = 'mailto:info@matthiasramahi.de?subject=' +
                 encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
@@ -877,11 +839,7 @@
               'Kontext: ' + intent.label + '\n' +
               'CTA: ' + (lastCta || 'Direkt / unbekannt') + '\n\n' +
               'Name: ' + data.name + '\n' +
-              'Kontakt: ' + data.contact + '\n' +
-              'Projekt / Motiv: ' + (data.project || 'Noch offen') + '\n' +
-              'Zeitraum: ' + (data.date || 'Noch offen') + '\n' +
-              'Nutzung: ' + (data.use || 'Noch offen') + '\n' +
-              'Telefon: ' + (data.phone || 'Noch offen') + '\n\n' +
+              'Kontakt: ' + data.contact + '\n\n' +
               'Nachricht:\n' + data.message;
             setStatus('Mail-App wird geöffnet …', 'ok');
             window.location.href = 'mailto:info@matthiasramahi.de?subject=' +

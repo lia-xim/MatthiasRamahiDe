@@ -85,10 +85,8 @@ const clusterParagraphs = blockParagraphs(doc, 'Ein Einstieg', [
       <section class={`topic ${topic.theme} ${topic.className}`} id={topic.id} data-theme={topic.theme} data-no={`${String(index + 1).padStart(2, '0')} / ${topic.id.toUpperCase()}`}>
         <div class="topic-grid">
           <div class="topic-copy">
-            <p class={`kicker ${topic.theme === 'light' ? 'dark' : ''}`}>{topic.kicker}</p>
             <h2><span>{topic.title}</span><em>{topic.emphasis}</em></h2>
             <p>{topic.text}</p>
-            <p class="topic-note">{topic.note}</p>
             <a class="topic-link" href={topic.href}>{topic.linkLabel}</a>
           </div>
           <div class="topic-media" aria-hidden="true">
@@ -106,7 +104,7 @@ const clusterParagraphs = blockParagraphs(doc, 'Ein Einstieg', [
         <div class="cluster-copy">
           {clusterParagraphs.map((paragraph) => <p>{paragraph}</p>)}
           <div class="cluster-links">
-            {photographyTopics.map((topic) => <a href={topic.href}>{topic.title.replace('.', '')} Fotografie</a>)}
+            {photographyTopics.map((topic) => <a href={topic.href}>{topic.title.replace('.', '')}</a>)}
           </div>
         </div>
       </div>

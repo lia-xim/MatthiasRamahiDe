@@ -66,7 +66,7 @@
 
     /* Direct contact strip (dark) */
     .kc-direct{background:#0a0c11;color:var(--paper);position:relative}
-    .kc-direct__inner{max-width:1240px;margin:0 auto;padding:clamp(64px,7vw,112px) clamp(22px,5vw,76px);display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+    .kc-direct__inner{max-width:1240px;margin:0 auto;padding:clamp(48px,6vw,84px) clamp(22px,5vw,72px);display:grid;grid-template-columns:repeat(3,1fr);gap:0}
     .kc-card{position:relative;padding:0 clamp(14px,2vw,32px);border-left:1px solid rgba(243,245,239,.16)}
     .kc-card:first-child{padding-left:0;border-left:none}
     .kc-card:last-child{padding-right:0}
@@ -81,18 +81,11 @@
     /* Override the canonical contact-form paper tone to match the
        über-mich intro background (#f3f1ea), per request. */
     .mr-contact{--mrc-paper:#f3f1ea}
-    .kc-context{background:#f3f1ea;color:#11131a;border-top:1px solid rgba(17,19,26,.08)}
-    .kc-context__inner{max-width:1120px;margin:0 auto;padding:clamp(54px,7vw,96px) clamp(22px,5vw,76px);display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,5vw,72px);align-items:start}
-    .kc-context__kicker{margin:0 0 14px;font:10px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:rgba(17,19,26,.48)}
-    .kc-context h2{margin:0;font-size:clamp(34px,5vw,78px);line-height:.92;letter-spacing:-.045em}
-    .kc-context p{margin:0;color:rgba(17,19,26,.68);font-size:clamp(16px,1.1vw,19px);line-height:1.62}
-    .kc-context p + p{margin-top:16px}
 
     @media(max-width:1080px){
       .kc-direct__inner{grid-template-columns:1fr;gap:0}
       .kc-card{padding:28px 0;border-left:none;border-top:1px solid rgba(243,245,239,.16)}
       .kc-card:first-child{padding-top:0;border-top:none}
-      .kc-context__inner{grid-template-columns:1fr}
     }
     @media(max-width:720px){
       .kc-card__value{font-size:24px}
@@ -165,21 +158,8 @@
       data-header-theme="light"
       data-contact-subject="Projektanfrage"
       data-contact-headline="Projekt <em>anfragen.</em>"
-      data-contact-lead="Name, Kontaktweg und ein paar Stichpunkte reichen fuer den ersten Schritt. Wenn du magst, ergaenze Leistung, Ort, Zeitraum und gewuenschte Wirkung."
+      data-contact-lead="Name, E-Mail und ein paar Stichpunkte zu deinem Projekt reichen fuer den ersten Schritt."
     ></section>
-
-    <section class="kc-context" data-header-theme="light" aria-label="Anfrage richtig einordnen">
-      <div class="kc-context__inner">
-        <div>
-          <p class="kc-context__kicker">Briefing</p>
-          <h2>Ein paar klare Angaben reichen.</h2>
-        </div>
-        <div>
-          <p>Fuer eine erste Einschaetzung sind Projektart, Ort, Zeitraum und geplanter Einsatz am wichtigsten. Es macht einen Unterschied, ob Bilder fuer Verkauf, Website, Kampagne, Print, Portfolio oder eine interne Praesentation entstehen sollen.</p>
-          <p>Wenn noch nicht alles feststeht, ist das kein Problem. Aus wenigen Stichpunkten laesst sich klaeren, welche Bildsprache, welcher Umfang und welche Vorbereitung sinnvoll sind. So startet die Anfrage direkt mit einem brauchbaren Rahmen statt mit einem generischen Formular und die naechsten Schritte bleiben fuer beide Seiten klar.</p>
-        </div>
-      </div>
-    </section>
 
     <section class="kc-direct" data-header-theme="dark" aria-label="Direkter Kontakt">
       <div class="kc-direct__inner">

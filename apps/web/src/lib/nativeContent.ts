@@ -20,12 +20,10 @@ type CmsHeroSlide = NonNullable<PayloadDoc['heroSlides']>[number]
 
 export type PhotographyTopic = {
   id: string
-  kicker: string
   theme: 'dark' | 'light'
   title: string
   emphasis: string
   text: string
-  note: string
   href: string
   linkLabel: string
   image: string
@@ -598,12 +596,10 @@ export const servicesIndexItems: ServicesIndexItem[] = [
 export const photographyTopics: PhotographyTopic[] = [
   {
     id: 'automobil',
-    kicker: '01 · Automobil',
     theme: 'dark',
     title: 'Automobil.',
     emphasis: 'Fotografie.',
     text: 'Für Fahrzeuge, Marken, Händler und private Verkäufe: Exterieur, Interieur, Details und Lichtführung werden so geplant, dass aus einem Auto eine verwertbare Bildserie wird — für Website, Inserat, Social, Print und Kampagne.',
-    note: 'Keine generischen Fahrzeugbilder: kontrollierte Reflexe, ruhige Linien und ein Bildsatz, der technisch sauber weiterverwendet werden kann.',
     href: '/automobil-fotografie.html',
     linkLabel: 'Zur Automobil Fotografie →',
     image: '/assets/optimized/assets-photos-automobil-neon-960.webp',
@@ -614,12 +610,10 @@ export const photographyTopics: PhotographyTopic[] = [
   },
   {
     id: 'sportwagen',
-    kicker: '02 · Sportwagen',
     theme: 'light',
     title: 'Sportwagen.',
     emphasis: 'Fotografie.',
     text: 'Sportwagen brauchen Präzision statt Effektfeuerwerk: niedrige Blickachsen, saubere Spiegelungen, Innenraumdetails und eine Dramaturgie, die Leistung sichtbar macht, ohne ins Plakative zu kippen.',
-    note: 'Für Sammler, Händler, Performance-Projekte und hochwertige Verkaufsserien mit Bildwirkung über den ersten Blick hinaus.',
     href: '/sportwagen-fotografie.html',
     linkLabel: 'Zur Sportwagen Fotografie →',
     image: '/assets/optimized/assets-photos-automobil-sunset-960.webp',
@@ -630,12 +624,10 @@ export const photographyTopics: PhotographyTopic[] = [
   },
   {
     id: 'oldtimer',
-    kicker: '03 · Oldtimer',
     theme: 'dark',
     title: 'Oldtimer.',
     emphasis: 'Fotografie.',
     text: 'Oldtimer Fotografie erzählt Wert, Herkunft und Material. Lack, Chrom, Leder und Patina werden nicht nostalgisch überhöht, sondern mit Charakter und Ruhe präzise dokumentiert.',
-    note: 'Ideal für Sammlung, Auktion, Verkauf, Ausstellung und Fahrzeuge, deren Geschichte sichtbar bleiben soll.',
     href: '/oldtimer-fotografie.html',
     linkLabel: 'Zur Oldtimer Fotografie →',
     image: '/assets/optimized/assets-photos-oldtimer-stage-960.webp',
@@ -646,12 +638,10 @@ export const photographyTopics: PhotographyTopic[] = [
   },
   {
     id: 'motorrad',
-    kicker: '04 · Motorrad',
     theme: 'light',
     title: 'Motorrad.',
     emphasis: 'Fotografie.',
     text: 'Motorräder funktionieren über Haltung, Mechanik und Silhouette. Die Serie kann Maschine, Details, Fahrer und Werkstattbezug verbinden — stärker als ein einzelnes Verkaufsfoto.',
-    note: 'Für Custom Bikes, Händler, private Maschinen, Werkstätten und dokumentarische Serien mit Druck.',
     href: '/motorrad-fotografie.html',
     linkLabel: 'Zur Motorrad Fotografie →',
     image: '/assets/optimized/assets-photos-motorrad-720.webp',
@@ -662,12 +652,10 @@ export const photographyTopics: PhotographyTopic[] = [
   },
   {
     id: 'portrait',
-    kicker: '05 · Portrait',
     theme: 'dark',
     title: 'Portrait.',
     emphasis: 'Fotografie.',
     text: 'Portraits sollen professionell wirken, ohne Menschen glattzubügeln. Licht, Distanz und Blickführung werden auf Nutzung und Persönlichkeit abgestimmt — für Branding, Presse, Team und Editorial.',
-    note: 'Kein Passbild-Look, kein austauschbares LinkedIn-Template — sondern klare Bilder mit Haltung und Wiedererkennung.',
     href: '/portraitfotografie.html',
     linkLabel: 'Zur Portrait Fotografie →',
     image: '/assets/optimized/assets-photos-portrait-blue-720.webp',
@@ -678,12 +666,10 @@ export const photographyTopics: PhotographyTopic[] = [
   },
   {
     id: 'landschaft',
-    kicker: '06 · Landschaft',
     theme: 'light',
     title: 'Landschaft.',
     emphasis: 'Fotografie.',
     text: 'Landschaftsfotografie steht weniger für lokales Shooting als für kuratierten Bildkauf: Fine-Art-Prints, Wandbilder, Editionen und große Formate werden nach Raum, Material und Wirkung ausgewählt.',
-    note: 'Sinnvoll für private Räume, Praxen, Hotels, Büros und Sammlungen, die Ruhe statt Dekoration suchen.',
     href: '/landschaftsfotografie.html',
     linkLabel: 'Zur Landschaftsfotografie →',
     image: '/assets/optimized/assets-photos-landschaft-720.webp',
@@ -693,3 +679,4 @@ export const photographyTopics: PhotographyTopic[] = [
     className: 'topic--landschaft',
   },
 ]
+

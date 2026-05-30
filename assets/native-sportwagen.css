@@ -53,6 +53,9 @@
   @keyframes kbA{0%{transform:scale(1.08) translate(-1.2%,1.4%)}100%{transform:scale(1.14) translate(1.4%,-1.6%)}}
   @keyframes kbB{0%{transform:scale(1.06) translate(1.2%,-1.2%)}100%{transform:scale(1.12) translate(-1.6%,1.6%)}}
   @keyframes kbC{0%{transform:scale(1.07) translate(-1.5%,-1.2%)}100%{transform:scale(1.13) translate(1.2%,1.8%)}}
+  /* Mobile-Hero: Fokus-Pull-Einstieg (Kamera zieht scharf) + sehr langsamer Ken-Burns */
+  @keyframes swFocusPull{0%{filter:blur(16px) saturate(.6) brightness(.42);transform:scale(1.12)}100%{filter:blur(0) saturate(1.03) brightness(.95) contrast(1.05);transform:scale(1.06)}}
+  @keyframes swKB{0%{transform:scale(1.06) translateY(0)}100%{transform:scale(1.12) translateY(-1.8%)}}
 
   /* Per-column vignette */
   .tri-col:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,0) 26%, rgba(0,0,0,0) 56%, rgba(0,0,0,.88) 100%);pointer-events:none;z-index:2}
@@ -235,10 +238,22 @@
     .rl-grid{grid-template-columns:repeat(2,1fr)}
   }
   @media (max-width:900px){
-    .hero-tri{height:auto;max-height:none}
-    .tri-stage{position:relative;grid-template-columns:1fr;grid-auto-rows:46vh;gap:1px;min-height:auto}
-    .tri-overlay{position:relative;padding:clamp(56px,9vw,80px) 22px clamp(40px,7vw,56px);background:#000}
-    .tri-title{font-size:clamp(42px,11vw,76px)}
+    /* ===== Mobile-Hero: EIN starkes Bild mit Fokus-Pull-Einstieg (Kamera-Signatur) ===== */
+    .hero-tri{height:100svh;max-height:100svh}
+    .tri-stage{position:absolute;inset:0;grid-template-columns:1fr;grid-template-rows:1fr;gap:0}
+    .tri-col:nth-child(1),.tri-col:nth-child(3){display:none}
+    .tri-col:nth-child(2){grid-row:1;grid-column:1}
+    /* Bottom-gewichtetes Veil: Auto oben sichtbar, unten dunkel für den Titel */
+    .tri-col:nth-child(2):after{background:linear-gradient(180deg,rgba(2,3,6,.42) 0%,rgba(2,3,6,0) 24%,rgba(2,3,6,0) 46%,rgba(2,3,6,.72) 78%,rgba(2,3,6,.96) 100%)}
+    /* Desktop-Ken-Burns aus; Fokus-Pull-Einstieg + sehr langsamer Zoom */
+    .hero-tri.is-animated .tri-col .tri-img{animation:none}
+    .tri-img{filter:blur(16px) saturate(.6) brightness(.42);transform:scale(1.12);animation:swFocusPull 1.8s var(--ease) forwards, swKB 32s ease-in-out 1.8s infinite alternate}
+    .tri-overlay{position:absolute;inset:0;background:none;padding:clamp(56px,9vw,80px) 22px clamp(34px,7vw,52px)}
+    .tri-title{position:relative;font-size:clamp(34px,9.4vw,62px);padding-left:14px}
+    .tri-title::before{content:"";position:absolute;left:0;top:.1em;bottom:.2em;width:3px;background:#cf392e;box-shadow:0 0 14px rgba(207,57,46,.5)}
+    .tri-sub{max-width:none;font-size:14px;line-height:1.55;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .tri-actions{flex-direction:column;gap:10px;margin-top:20px}
+    .tri-actions a{width:100%;justify-content:center;white-space:nowrap;padding:15px 18px}
     .st{height:auto;max-height:none}
     .st .section-inner{grid-template-columns:1fr;gap:36px;padding:clamp(90px,14vw,130px) 22px clamp(60px,9vw,90px)}
     .st-image{height:54vh;max-height:none}
@@ -259,7 +274,8 @@
     .rl-grid{grid-template-columns:1fr}
   }
   @media (prefers-reduced-motion:reduce){
-    .tri-img{animation:none !important;transform:scale(1.08) !important}
+    .tri-img{animation:none !important;transform:scale(1.08) !important;filter:saturate(.92) brightness(.82) contrast(1.05) !important}
+    .tri-col::before{display:none !important}
     .tri-title .word{animation:none;transform:none;opacity:1}
     .tri-meta,.tri-sub,.tri-actions{animation:none;opacity:1;transform:none}
     .po-tile{opacity:1;transform:none;transition:none}

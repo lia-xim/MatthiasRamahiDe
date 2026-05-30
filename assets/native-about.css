@@ -13,8 +13,13 @@
    The base .ovh comes from native-about-inline.css.
    ----------------------------------------------------------- */
 .ovh--ueber .ovh__photo {
-  /* Center the location portrait around the face area */
+  /* Center the location portrait around the face area. object-fit:cover is
+     required because this is an <img> (the base .ovh__photo rule targets a
+     background-div); without it the portrait stretches when the column box
+     ratio changes (e.g. tablet widths). */
   background-position: center 28%;
+  object-fit: cover;
+  object-position: center 28%;
 }
 .ovh--ueber .ovh__title .line:nth-child(2) .word {
   /* canonical em-color (steel/sage) for the accent word */
