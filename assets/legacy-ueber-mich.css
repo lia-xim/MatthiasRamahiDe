@@ -36,8 +36,17 @@
     padding: 0;
     align-items: stretch;
     overflow: hidden;
-    background: var(--bg, #020306);
+    background:
+      radial-gradient(130% 120% at 6% 94%, rgba(42,78,118,.14), transparent 55%),
+      linear-gradient(180deg, #090d13 0%, #05070b 52%, #020306 100%);
   }
+  /* Title scaled for the narrower 50% copy column so the display
+     lockup never overflows the seam into the photo. */
+  .ovh--ueber .ovh__title {
+    font-size: clamp(52px, 7.4vw, 112px);
+    letter-spacing: -.05em;
+  }
+  .ovh--ueber .ovh__lead { max-width: 46ch; }
   .ovh--ueber > .ovh__photo,
   .ovh--ueber > .ovh__glow,
   .ovh--ueber > .ovh__aperture {
@@ -77,7 +86,12 @@
     margin: 0;
     padding: clamp(120px, 14vw, 180px) clamp(28px, 4vw, 72px) clamp(64px, 8vw, 112px);
     justify-content: flex-end;
-    background: var(--bg, #020306);
+    /* Layered cinematic ground — a veil + steel lift instead of flat black,
+       so the copy column reads as the same frame as the photo. */
+    background:
+      linear-gradient(180deg, rgba(2,3,6,0) 0%, rgba(2,3,6,.5) 76%, rgba(2,3,6,.92) 100%),
+      radial-gradient(120% 85% at 16% 22%, rgba(220,226,223,.05), transparent 50%),
+      linear-gradient(180deg, #0a0e15 0%, #06090e 50%, #03050a 100%);
   }
   /* Soft gradient transition so the copy column dissolves into the photo */
   .ovh--ueber > .ovh__grid::after {
@@ -93,6 +107,29 @@
   }
 }
 
+/* Drifting atmosphere on the copy column — steel + cool-blue glow that slowly
+   breathes, mirroring the landing hero's .ovh__glow. Sits above the column
+   background (z-index:-1) but below the text, so it textures the dark ground
+   without washing out the copy. Applies on both desktop and stacked mobile. */
+.ovh--ueber > .ovh__grid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(115% 80% at 14% 14%, rgba(220,226,223,.12), transparent 48%),
+    radial-gradient(150% 130% at 0% 100%, rgba(42,78,118,.30), transparent 58%);
+  animation: ovhUeberAtmos 22s cubic-bezier(.23,1,.32,1) infinite alternate;
+}
+@keyframes ovhUeberAtmos {
+  0%   { transform: translate3d(-1.5%, 1.2%, 0) scale(1);    opacity: .78; }
+  100% { transform: translate3d(2.2%, -1.4%, 0) scale(1.05); opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ovh--ueber > .ovh__grid::before { animation: none; }
+}
+
 /* Mobile/tablet: stack photo on top, copy below. Keeps the
    portrait readable without stretching, and avoids a tiny
    image trying to fill 100svh on a phone. */
@@ -103,7 +140,9 @@
     grid-template-rows: auto 1fr;
     padding: 0;
     min-height: 100svh;
-    background: var(--bg, #020306);
+    background:
+      radial-gradient(120% 80% at 10% 96%, rgba(42,78,118,.14), transparent 60%),
+      linear-gradient(180deg, #090d13 0%, #05070b 55%, #020306 100%);
   }
   .ovh--ueber > .ovh__photo,
   .ovh--ueber > .ovh__glow,

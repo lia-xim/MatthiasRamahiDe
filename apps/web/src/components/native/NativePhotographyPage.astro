@@ -1,7 +1,7 @@
 ---
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
-import { blockParagraphs, photographyTopics } from '../../lib/nativeContent'
-import { getSitePageByType, type PayloadDoc } from '../../lib/payload'
+import { blockParagraphs, homeHeroSlidesFor, photographyTopics } from '../../lib/nativeContent'
+import { getSitePageByType, liveCmsFetchOptions, type PayloadDoc } from '../../lib/payload'
 
 type Props = {
   doc?: PayloadDoc
@@ -46,27 +46,39 @@ const overviewMeta: Record<string, { description: string; heroLines: [string, st
 const { legacyFile = 'fotografie.html' } = Astro.props as Props
 const meta = overviewMeta[legacyFile] || overviewMeta['fotografie.html']
 const providedDoc = (Astro.props as Props).doc
-const doc = providedDoc || (await getSitePageByType('photography-index', { depth: 2 }))
-const heroIntro = legacyFile === 'fotografie.html' ? doc?.intro || meta.intro : meta.intro
+const doc = providedDoc || (await getSitePageByType('photography-index', liveCmsFetchOptions({ depth: 2 })))
+// Hero = identischer Startseiten-Hero (Shader/Slides), aber eigenständig ueber das
+// CMS-Feld `heroSlides` der Fotografie-Uebersicht pflegbar — nicht mehr vom Home-Doc.
+const heroSlides = homeHeroSlidesFor(doc)
+const firstHeroSlide = heroSlides[0]
+const heroImages = heroSlides.map((slide) => slide.image)
+const heroSlidesJson = JSON.stringify(heroSlides)
 const clusterParagraphs = blockParagraphs(doc, 'Ein Einstieg', [
   'Die Übersicht ist der Einstiegspunkt. Von hier aus führen die sechs Bereiche auf eigene Hauptseiten — und von dort weiter in lokale Varianten, NRW- und Deutschland-Hubs sowie die jeweiligen Keyword-Seiten.',
   'Nutzer wählen nicht aus einem generischen Portfolio, sondern steigen direkt in Automobil, Sportwagen, Oldtimer, Motorrad, Portrait oder Landschaft ein. Jede Kategorie zeigt auf ihrer Hauptseite die zugehörigen Städte und Regionen.',
 ])
 ---
-<AdoptedPageLayout legacyFile={legacyFile} current="fotografie" doc={doc} title={meta.title} description={meta.description}>
+<AdoptedPageLayout legacyFile={legacyFile} current="fotografie" doc={doc} title={meta.title} description={meta.description} ctaHref="#anfrage" preloadImages={[firstHeroSlide.image]} liveCms>
   <main>
-    <section class="ovh" data-theme="dark" aria-label="Fotografie Übersicht">
-      <img class="ovh__photo" src="/assets/optimized/mpik8b82-dsc3879-1920.webp" alt="" width="1920" height="1280" fetchpriority="high" decoding="async" aria-hidden="true" />
-      <div class="ovh__glow" aria-hidden="true"></div>
-      <div class="ovh__aperture" aria-hidden="true"></div>
-      <div class="ovh__grid">
-        <h1 class="ovh__title"><span class="line"><span class="word">{meta.heroLines[0]}</span></span><span class="line"><span class="word">{meta.heroLines[1]}</span></span></h1>
-        <p class="ovh__lead">{heroIntro}</p>
-        <div class="ovh__actions">
-          <a class="ovh__btn" href="#automobil">Bereiche ansehen →</a>
-          <a class="ovh__btn ovh__btn--ghost" href="#anfrage">Fotografie anfragen</a>
+    <section class="hero" data-theme="dark" aria-label="Intro" style={`background-image:url("${firstHeroSlide.image}")`}>
+      <canvas id="hero-shader" aria-hidden="true" data-imgs={heroImages.join(',')} data-slides={heroSlidesJson}></canvas>
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-aperture" aria-hidden="true"></div>
+      <div class="hero-grid">
+        <div class="hero-stage">
+          <h1 class="hero-title" id="hero-title" data-text-idx="0">
+            {firstHeroSlide.titleLines.map((line) => (
+              <span class="line"><span class="word">{line}</span></span>
+            ))}
+          </h1>
+          <p class="hero-lead" id="hero-lead">{firstHeroSlide.lead}</p>
+          <div class="hero-actions" aria-label="Direkte Aktionen">
+            <a class="btn dark" href={firstHeroSlide.primaryHref} data-hero-primary hidden={!firstHeroSlide.primaryHref || !firstHeroSlide.primaryLabel}>{firstHeroSlide.primaryLabel}</a>
+            <a class="btn" href={firstHeroSlide.secondaryHref} data-hero-secondary hidden={!firstHeroSlide.secondaryHref || !firstHeroSlide.secondaryLabel}>{firstHeroSlide.secondaryLabel}</a>
+          </div>
         </div>
       </div>
+      <div class="hero-cursor" id="hero-cursor" aria-hidden="true"><span class="ring"></span></div>
     </section>
 
     {photographyTopics.map((topic, index) => (

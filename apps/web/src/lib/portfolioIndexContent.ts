@@ -17,12 +17,9 @@ export type PortfolioSpread = {
   photos: PortfolioPhoto[]
 }
 
-export const portfolioHero = {
-  image: '/assets/optimized/assets-portfolio-dsc3879-1920.webp',
-  kicker: 'Portfolio · 2026',
-  title: 'Portfolio Bildarchiv.',
-  subtitle: 'Sechs Genres — kuratiert, nicht gefiltert.',
-}
+// Der Portfolio-Hero nutzt jetzt den geteilten Startseiten-Hero (homeHeroSlidesFor),
+// gespeist aus dem CMS-Feld `heroSlides` der Portfolio-Uebersicht. Das alte
+// statische portfolioHero-Objekt entfaellt dadurch.
 
 export const portfolioContext = [
   'Das Portfolio ist nach Bildfunktionen und Themenclustern aufgebaut: Portrait, Automobil, Sportwagen, Oldtimer, Motorrad und Landschaft. Jede Strecke zeigt nicht nur ein einzelnes Motiv, sondern die visuelle Logik dahinter: Einstieg, Detail, Material, Atmosphaere und ein ruhiges Schlussbild.',

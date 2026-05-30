@@ -15,8 +15,12 @@ import { triggerAstroRebuildAfterChange, triggerAstroRebuildAfterDelete } from '
 import { requireFieldsForPublish, requireMediaAltForPublish } from '../hooks/validatePublishedContent'
 import { buildPreviewUrl } from '../livePreview'
 
-const homePageOnly = (data: Record<string, unknown> | undefined) => data?.pageType === 'home'
-const nonHomePageOnly = (data: Record<string, unknown> | undefined) => data?.pageType !== 'home'
+// Seiten, die den Hero-Slider (mehrere Slides) nutzen statt eines Einzelbildes.
+// Jede dieser Seiten pflegt ihre Slides voellig eigenstaendig (eigene Bilder + Texte).
+const heroSliderPageTypes = ['home', 'portfolio-index', 'photography-index']
+const heroSliderPages = (data: Record<string, unknown> | undefined) =>
+  heroSliderPageTypes.includes((data?.pageType as string) ?? '')
+const singleImagePages = (data: Record<string, unknown> | undefined) => !heroSliderPages(data)
 
 export const SitePages: CollectionConfig = {
   slug: 'site-pages',
@@ -96,16 +100,16 @@ export const SitePages: CollectionConfig = {
         {
           label: 'Bilder',
           admin: {
-            condition: nonHomePageOnly,
+            condition: singleImagePages,
           },
           description:
-            'Die zentralen Einzelbildpositionen dieser Seite. Auf der Startseite wird stattdessen der Tab Hero verwendet.',
+            'Die zentralen Einzelbildpositionen dieser Seite. Auf Startseite, Portfolio-Uebersicht und Fotografie-Uebersicht wird stattdessen der Tab Hero verwendet.',
           fields: [
-            mediaRelationshipField({ name: 'heroImage', label: 'Hero-Bild', adminCondition: nonHomePageOnly }),
+            mediaRelationshipField({ name: 'heroImage', label: 'Hero-Bild', adminCondition: singleImagePages }),
             mediaRelationshipField({
               name: 'teaserImage',
               label: 'Teaser-Bild',
-              adminCondition: nonHomePageOnly,
+              adminCondition: singleImagePages,
               description: 'Optional. Wenn leer, nutzt das System automatisch das Hero-Bild.',
             }),
           ],
@@ -113,9 +117,10 @@ export const SitePages: CollectionConfig = {
         {
           label: 'Hero',
           admin: {
-            condition: homePageOnly,
+            condition: heroSliderPages,
           },
-          description: 'Startseiten-Slider: Bild, Titel, Kurztext und Buttons pro Slide.',
+          description:
+            'Eigener Hero-Slider dieser Seite (Startseite, Portfolio-Uebersicht oder Fotografie-Uebersicht): Bild, Titel, Kurztext und Buttons pro Slide. Jede Seite verwaltet ihre Slides unabhaengig von den anderen.',
           fields: [homeHeroSlides],
         },
         {

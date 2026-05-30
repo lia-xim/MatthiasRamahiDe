@@ -210,4 +210,18 @@ const chapters = [
       data-contact-lead="Schreiben Sie kurz, welche Leistung Sie interessiert, wo das Projekt stattfindet und welchen Zeitraum Sie planen. Ich melde mich mit Rückfragen oder einem nächsten Schritt per E-Mail."
     />
   </main>
+
+  <!-- Hero entrance: add .is-in so the OVH title/lead/actions animate in.
+       site-chrome.js does not handle .ovh, so this mirrors the legacy inline
+       script. Without it the copy stays at opacity:0 and the column reads blank. -->
+  <script is:inline>
+    (function () {
+      var h = document.querySelector('.ovh')
+      if (!h) return
+      var t = h.querySelector('.ovh__title')
+      function start() { h.classList.add('is-in'); if (t) t.classList.add('is-in') }
+      if (matchMedia('(prefers-reduced-motion:reduce)').matches) { start(); return }
+      requestAnimationFrame(function () { requestAnimationFrame(start) })
+    })()
+  </script>
 </AdoptedPageLayout>

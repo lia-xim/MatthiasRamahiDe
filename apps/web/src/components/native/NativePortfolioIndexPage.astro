@@ -3,31 +3,49 @@ import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import {
   portfolioArchivePhotos,
   portfolioContext,
-  portfolioHero,
   portfolioIndexLinks,
   portfolioSpreads,
 } from '../../lib/portfolioIndexContent'
-import { getSitePageByType, type PayloadDoc } from '../../lib/payload'
+import { homeHeroSlidesFor } from '../../lib/nativeContent'
+import { getSitePageByType, liveCmsFetchOptions, type PayloadDoc } from '../../lib/payload'
 
 const providedDoc = Astro.props.doc as PayloadDoc | undefined
-const doc = providedDoc || (await getSitePageByType('portfolio-index', { depth: 2 }))
+const doc = providedDoc || (await getSitePageByType('portfolio-index', liveCmsFetchOptions({ depth: 2 })))
+const heroSlides = homeHeroSlidesFor(doc)
+const firstHeroSlide = heroSlides[0]
+const heroImages = heroSlides.map((slide) => slide.image)
+const heroSlidesJson = JSON.stringify(heroSlides)
 const emptyImage =
   'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%221%22 height=%221%22 viewBox=%220 0 1 1%22%3E%3C/svg%3E'
 ---
-<AdoptedPageLayout legacyFile="portfolio.html" current="portfolio" doc={doc}>
+<AdoptedPageLayout
+  legacyFile="portfolio.html"
+  current="portfolio"
+  doc={doc}
+  ctaHref="#anfrage"
+  preloadImages={[firstHeroSlide.image]}
+  liveCms
+>
   <main>
-    <section class="pf-hero" data-header-theme="dark" aria-label="Portfolio">
-      <div class="pf-hero__photo" aria-hidden="true">
-        <img src={portfolioHero.image} alt="" loading="eager" decoding="async" fetchpriority="high" width="1920" height="1280" />
-      </div>
-      <div class="pf-hero__veil" aria-hidden="true"></div>
-      <div class="pf-hero__inner">
-        <div>
-          <div class="pf-hero__kicker">{portfolioHero.kicker}</div>
-          <h1>{portfolioHero.title}</h1>
+    <section class="hero" data-theme="dark" data-header-theme="dark" aria-label="Portfolio" style={`background-image:url("${firstHeroSlide.image}")`}>
+      <canvas id="hero-shader" aria-hidden="true" data-imgs={heroImages.join(',')} data-slides={heroSlidesJson}></canvas>
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-aperture" aria-hidden="true"></div>
+      <div class="hero-grid">
+        <div class="hero-stage">
+          <h1 class="hero-title" id="hero-title" data-text-idx="0">
+            {firstHeroSlide.titleLines.map((line) => (
+              <span class="line"><span class="word">{line}</span></span>
+            ))}
+          </h1>
+          <p class="hero-lead" id="hero-lead">{firstHeroSlide.lead}</p>
+          <div class="hero-actions" aria-label="Direkte Aktionen">
+            <a class="btn dark" href={firstHeroSlide.primaryHref} data-hero-primary hidden={!firstHeroSlide.primaryHref || !firstHeroSlide.primaryLabel}>{firstHeroSlide.primaryLabel}</a>
+            <a class="btn" href={firstHeroSlide.secondaryHref} data-hero-secondary hidden={!firstHeroSlide.secondaryHref || !firstHeroSlide.secondaryLabel}>{firstHeroSlide.secondaryLabel}</a>
+          </div>
         </div>
-        <p class="pf-hero__sub">{portfolioHero.subtitle}</p>
       </div>
+      <div class="hero-cursor" id="hero-cursor" aria-hidden="true"><span class="ring"></span></div>
     </section>
 
     <nav class="pf-index" id="pfIndex" aria-label="Kategorien">

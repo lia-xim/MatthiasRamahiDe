@@ -21,7 +21,7 @@ export const siteChromeContent = {
       { label: 'Home', href: 'index.html', navKey: 'home' },
       { label: 'Portfolio', href: 'portfolio.html', navKey: 'portfolio' },
       { label: 'Über mich', href: 'ueber-mich.html', navKey: 'ueber-mich' },
-      { label: 'Blog', href: 'blog.html', navKey: 'blog' },
+      { label: 'Journal', href: '/journal', navKey: 'blog' },
       { label: 'Weitere Dienstleistungen', href: 'leistungen.html', navKey: 'leistungen' },
       { label: 'Kontakt', href: 'contact.html', navKey: 'kontakt' },
     ] satisfies SiteChromeLink[],

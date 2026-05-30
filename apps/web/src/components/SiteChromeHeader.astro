@@ -1,6 +1,6 @@
 ---
 import siteChromeContent from '../data/siteChromeContent'
-import { getNavigation, linkAttributes, liveCmsFetchOptions, toRootRelativeHref, type PayloadLink } from '../lib/payload'
+import { linkAttributes, toRootRelativeHref, type PayloadLink } from '../lib/payload'
 
 type Props = {
   current?: string
@@ -9,21 +9,21 @@ type Props = {
   liveCms?: boolean
 }
 
-const { current, ctaHref, headerTheme, liveCms = false } = Astro.props as Props
-const cmsNavigation = await getNavigation(liveCms ? liveCmsFetchOptions() : {})
-const { brand, navigation: fallbackNavigation } = siteChromeContent
-const primary = (cmsNavigation?.primary?.length ? cmsNavigation.primary : fallbackNavigation.primary) as PayloadLink[]
-const photographyLinks = (cmsNavigation?.photographyLinks?.length
-  ? cmsNavigation.photographyLinks
-  : fallbackNavigation.photographyLinks) as PayloadLink[]
-const photographyOverview =
-  primary.find((link) => link.label?.toLowerCase() === 'fotografie') || fallbackNavigation.photographyOverview
-const homeLink = primary.find((link) => link.label?.toLowerCase() === 'home') || fallbackNavigation.primary[0]
+// The navigation bar is sourced from code (siteChromeContent) so it is identical on
+// every page, regardless of CMS state or render mode (liveCms vs static build). The
+// CMS navigation global is intentionally NOT used here to prevent the header from
+// diverging between the live landing page and the statically built subpages.
+const { current, ctaHref, headerTheme } = Astro.props as Props
+const { brand, navigation } = siteChromeContent
+const primary = navigation.primary as PayloadLink[]
+const photographyLinks = navigation.photographyLinks as PayloadLink[]
+const photographyOverview = navigation.photographyOverview
+const homeLink = primary.find((link) => link.label?.toLowerCase() === 'home') || primary[0]
 const mainLinks = primary.filter((link) => {
   const label = link.label?.toLowerCase()
   return label && label !== 'home' && label !== 'fotografie'
 })
-const baseCta = cmsNavigation?.cta?.href ? cmsNavigation.cta : fallbackNavigation.cta
+const baseCta = navigation.cta
 const cta = ctaHref ? { ...baseCta, href: ctaHref } : baseCta
 const navAttrs = {
   ...(current ? { 'data-current': current } : {}),
