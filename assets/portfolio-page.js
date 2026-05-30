@@ -23,54 +23,70 @@
     tiles.forEach(function(t){ io2.observe(t); });
   })();
 
-// Index strip — smooth scroll + active state
+// Archiv: lädt schrittweise beim Scrollen nach. Die nächste Charge wird vorab
+// geladen & dekodiert, SOLANGE sie noch versteckt ist — erst dann einblenden.
+// Dadurch kein Weiß-Blitz / kein Nachlade-Ruckeln (rechte Spalte) beim Reveal.
   (function(){
-    const links = document.querySelectorAll('.pf-index a');
-    const sections = Array.from(links).map(function(a){
-      const id = a.getAttribute('href').slice(1);
-      return document.getElementById(id);
-    });
-    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const grid = document.getElementById('pfArchiveGrid');
+    if(!grid) return;
+    const batch = Number(grid.getAttribute('data-archive-batch')) || 12;
+    const hiddenItems = function(){ return Array.prototype.slice.call(grid.querySelectorAll('.pf-photo[hidden]')); };
 
-    // Smooth scroll on click (custom easing, ~1.1s)
-    function scrollTo(target){
-      const topbar = document.getElementById('topbar');
-      const offset = topbar ? topbar.getBoundingClientRect().height : 64;
-      const startY = scrollY;
-      const endY = Math.max(0, target.getBoundingClientRect().top + scrollY - offset - 4);
-      if(reduced){ window.scrollTo(0, endY); return; }
-      const dist = endY - startY;
-      const dur = Math.min(1400, Math.max(700, Math.abs(dist) * 0.45));
-      const t0 = performance.now();
-      function ease(t){ return t < .5 ? 2*t*t : 1 - Math.pow(-2*t+2, 3)/2; }
-      function step(now){
-        const t = Math.min(1, (now - t0) / dur);
-        window.scrollTo(0, startY + dist * ease(t));
-        if(t < 1) requestAnimationFrame(step);
-      }
-      requestAnimationFrame(step);
+    function preload(el){
+      const img = el.querySelector('img');
+      if(!img) return Promise.resolve();
+      img.loading = 'eager';
+      const ds = img.getAttribute('data-src');
+      if(ds && !img.getAttribute('src')) img.setAttribute('src', ds);
+      try { return img.decode ? img.decode().catch(function(){}) : Promise.resolve(); }
+      catch(e){ return Promise.resolve(); }
     }
 
-    links.forEach(function(a, i){
-      a.addEventListener('click', function(ev){
-        const target = sections[i];
-        if(!target) return;
-        ev.preventDefault();
-        scrollTo(target);
-        history.replaceState(null, '', a.getAttribute('href'));
-      });
-    });
-
-    function update(){
-      const y = scrollY + innerHeight * 0.35;
-      let active = -1;
-      sections.forEach(function(s, i){
-        if(s && s.offsetTop <= y) active = i;
-      });
-      links.forEach(function(a, i){ a.classList.toggle('is-active', i === active); });
+    if(!('IntersectionObserver' in window)){
+      hiddenItems().forEach(function(el){ el.removeAttribute('hidden'); el.classList.add('is-shown'); });
+      return;
     }
-    addEventListener('scroll', update, { passive: true });
-    update();
+
+    let busy = false;
+
+    function reveal(){
+      const next = hiddenItems().slice(0, batch);
+      if(!next.length) return Promise.resolve(0);
+      // Erst dekodieren (noch hidden) …
+      return Promise.all(next.map(preload)).then(function(){
+        // … dann einblenden — die Bilder sind bereits fertig, kein Weiß.
+        next.forEach(function(el, i){
+          el.removeAttribute('hidden');
+          el.style.transitionDelay = (i * 22) + 'ms';
+          requestAnimationFrame(function(){ requestAnimationFrame(function(){ el.classList.add('is-shown'); }); });
+        });
+        return hiddenItems().length;
+      });
+    }
+
+    const sentinel = document.createElement('div');
+    sentinel.className = 'pf-archive__sentinel';
+    sentinel.setAttribute('aria-hidden', 'true');
+    grid.after(sentinel);
+
+    // Füllt nach, solange der Sentinel im Vorlade-Bereich liegt; stoppt sonst.
+    function pump(){
+      if(busy) return;
+      const r = sentinel.getBoundingClientRect();
+      if(r.top > window.innerHeight + 800) return;
+      busy = true;
+      reveal().then(function(remaining){
+        busy = false;
+        if(remaining === 0){ io.disconnect(); sentinel.remove(); return; }
+        pump();
+      });
+    }
+
+    const io = new IntersectionObserver(function(entries){
+      if(entries.some(function(e){ return e.isIntersecting; })) pump();
+    }, { rootMargin: '800px 0px' });
+    io.observe(sentinel);
+    pump();
   })();
 
 // Lightbox
@@ -81,8 +97,10 @@
     const close = document.getElementById('pfClose');
     const prev = document.getElementById('pfPrev');
     const next = document.getElementById('pfNext');
-    const photos = Array.from(document.querySelectorAll('.pf-photo'));
+    // Lightbox nur im Archiv — die Genre-Spreads sind jetzt ganz klickbar (Vorschau ohne Zoom).
+    const photos = Array.from(document.querySelectorAll('.pf-archive__grid .pf-photo'));
     let idx = 0;
+    if (!viewer || !photos.length) return;
 
     function open(i){
       idx = (i + photos.length) % photos.length;

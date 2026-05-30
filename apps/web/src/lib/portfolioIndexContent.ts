@@ -56,7 +56,7 @@ export const portfolioSpreads: PortfolioSpread[] = [
   {
     id: 'portrait',
     label: '01 / Portrait',
-    heading: 'Die Person, im Licht.',
+    heading: 'Portrait',
     href: '/portraitfotografie-duesseldorf.html',
     linkLabel: 'Zur Portraitfotografie →',
     theme: 'light',
@@ -76,7 +76,7 @@ export const portfolioSpreads: PortfolioSpread[] = [
   {
     id: 'auto',
     label: '02 / Automobil',
-    heading: 'Linie, Lack, Licht.',
+    heading: 'Automobil',
     href: '/automobil-fotografie-duesseldorf.html',
     linkLabel: 'Zur Automobilfotografie →',
     theme: 'dark',
@@ -90,7 +90,7 @@ export const portfolioSpreads: PortfolioSpread[] = [
   {
     id: 'sport',
     label: '03 / Sportwagen',
-    heading: 'Performance, stillgestellt.',
+    heading: 'Sportwagen',
     href: '/sportwagen-fotografie-duesseldorf.html',
     linkLabel: 'Zur Sportwagenfotografie →',
     theme: 'light',
@@ -104,7 +104,7 @@ export const portfolioSpreads: PortfolioSpread[] = [
   {
     id: 'classic',
     label: '04 / Oldtimer',
-    heading: 'Charakter mit Nostalgie.',
+    heading: 'Oldtimer',
     href: '/oldtimer-fotografie-duesseldorf.html',
     linkLabel: 'Zur Oldtimerfotografie →',
     theme: 'dark',
@@ -130,7 +130,7 @@ export const portfolioSpreads: PortfolioSpread[] = [
   {
     id: 'moto',
     label: '05 / Motorrad',
-    heading: 'Kraft im Schnitt.',
+    heading: 'Motorrad',
     href: '/motorrad-fotografie-duesseldorf.html',
     linkLabel: 'Zur Motorradfotografie →',
     theme: 'light',
@@ -150,7 +150,7 @@ export const portfolioSpreads: PortfolioSpread[] = [
   {
     id: 'land',
     label: '06 / Landschaft',
-    heading: 'Weite, als Print.',
+    heading: 'Landschaft',
     href: '/landschaftsfotografie-duesseldorf.html',
     linkLabel: 'Zur Landschaftsfotografie →',
     theme: 'dark',

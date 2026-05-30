@@ -7,17 +7,19 @@
   --line:rgba(13,12,10,.14);
   --line-dark:rgba(241,237,228,.16);
   --accent:oklch(54% 0.13 36);
-  --display:'Neue Haas Grotesk Display','Soehne','Avenir Next','Helvetica Neue',Arial,system-ui,sans-serif;
-  /* Body/UI nutzt denselben Schriftstack wie die ganze Seite (Startseite etc.),
-     nicht mehr Inter. So sieht das Portfolio typografisch wie der Rest aus. */
+  /* Exakt derselbe Schriftstack wie die ganze Website (native-home.css / tokens.css):
+     'Söhne' mit Umlaut (NICHT 'Soehne'), keine Inter-spezifischen OpenType-Features.
+     So rendert das Portfolio typografisch identisch zu Startseite & Co. */
+  --display:'Neue Haas Grotesk Display','Söhne','Avenir Next','Helvetica Neue',Arial,system-ui,sans-serif;
   --sans:var(--display);
+  --serif:'Iowan Old Style','Charter',Georgia,serif;
   --mono:'JetBrains Mono','IBM Plex Mono','SFMono-Regular',ui-monospace,Menlo,monospace;
   --ease:cubic-bezier(.23,1,.32,1);
   --maxw:1540px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{background:var(--paper);color:var(--ink);font-family:var(--sans);overflow-x:hidden}
-body{-webkit-font-smoothing:antialiased;font-feature-settings:'ss01','cv11'}
+body{-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision}
 img{display:block;max-width:100%;height:auto}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;border:0;background:transparent;cursor:pointer}
@@ -64,61 +66,60 @@ button{font:inherit;color:inherit;border:0;background:transparent;cursor:pointer
 @keyframes heroPanMobile{from{background-position:46% 50%}to{background-position:54% 50%}}
 @media(max-width:780px){.hero{padding:120px 20px 88px}.hero-title{font-size:clamp(32px,9.5vw,72px);letter-spacing:-.04em;overflow-wrap:break-word}.hero-lead{max-width:34rem;margin-top:18px;font-size:16px}.hero-actions{gap:10px;margin-top:22px}.hero-actions .btn{width:auto;min-height:46px;padding:12px 16px;letter-spacing:.14em}}
 
-/* ---------- INDEX STRIP ---------- */
-.pf-index{position:relative;background:var(--ink-soft);border-bottom:1px solid var(--line-dark);overflow-x:auto;scrollbar-width:none}
-.pf-index::-webkit-scrollbar{display:none}
-.pf-index ol{list-style:none;display:flex;width:max-content;min-width:100%;padding:0 5vw}
-.pf-index li{flex:1 0 auto}
-.pf-index a{display:block;padding:18px 28px;border-right:1px solid var(--line-dark);font:10px var(--mono);letter-spacing:.22em;text-transform:uppercase;color:rgba(241,237,228,.55);transition:color .25s var(--ease),background .25s var(--ease)}
-.pf-index a:hover,.pf-index a.is-active{color:var(--paper);background:rgba(241,237,228,.05)}
-.pf-index a b{font-weight:500;color:var(--paper);margin-right:10px;letter-spacing:.04em}
-.pf-index li:last-child a{border-right:0}
-
+/* ---------- CONTEXT ---------- */
 .pf-context{background:var(--paper);color:var(--ink);border-bottom:1px solid var(--line)}
 .pf-context__inner{max-width:1640px;margin:0 auto;padding:clamp(54px,7vw,92px) 5vw;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,5vw,78px);align-items:start}
 .pf-context__kicker{font:10px var(--mono);letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
-.pf-context h2{font-family:var(--sans);font-weight:500;font-size:clamp(34px,5.4vw,82px);line-height:.92;letter-spacing:-.04em;max-width:14ch}
+.pf-context h2{font-family:var(--sans);font-weight:900;text-transform:uppercase;font-size:clamp(34px,5.4vw,82px);line-height:.92;letter-spacing:-.05em;max-width:14ch}
 .pf-context p{margin:0;max-width:68ch;color:rgba(13,12,10,.68);font-size:clamp(16px,1.08vw,19px);line-height:1.62}
 .pf-context p + p{margin-top:16px}
 
 /* ---------- SPREAD (canonical pattern, used by all 6 genres) ---------- */
 .pf-spread{position:relative;min-height:auto;display:flex;flex-direction:column;justify-content:space-between;gap:clamp(32px,5vh,56px);padding:clamp(72px,9vh,120px) 5vw clamp(72px,9vh,120px);background:var(--ink);color:var(--paper);overflow:hidden;isolation:isolate;content-visibility:auto;contain-intrinsic-size:900px}
-.pf-spread__head{position:relative;z-index:2;max-width:1640px;width:100%;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,auto);gap:28px clamp(28px,5vw,72px);align-items:end}
-.pf-spread__kicker{font:10px var(--mono);letter-spacing:.28em;text-transform:uppercase;color:rgba(241,237,228,.62);margin-bottom:14px}
-.pf-spread h2{font-family:var(--sans);font-weight:500;font-size:clamp(46px,7.2vw,116px);line-height:.92;letter-spacing:-.038em;color:var(--paper);max-width:16ch;text-wrap:balance}
-.pf-spread__link{min-height:44px;display:inline-flex;align-items:center;justify-content:center;font:10px var(--mono);letter-spacing:.2em;text-transform:uppercase;padding:14px 20px;border:1px solid rgba(241,237,228,.34);color:var(--paper);transition:background .25s var(--ease),border-color .25s var(--ease);white-space:nowrap;align-self:end}
-.pf-spread__link:hover{background:rgba(241,237,228,.10);border-color:var(--paper)}
+.pf-spread__head{position:relative;z-index:2;max-width:1640px;width:100%;margin:0 auto}
+.pf-spread h2{font-family:var(--sans);font-weight:900;text-transform:uppercase;font-size:clamp(46px,7.2vw,116px);line-height:.92;letter-spacing:-.05em;color:var(--paper);max-width:16ch;text-wrap:balance}
 .pf-spread__strip{position:relative;z-index:2;max-width:1640px;width:100%;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
 .pf-spread__strip .pf-photo{aspect-ratio:1;width:100%}
 
+/* Ganze Sektion klickbar → Genre-Seite. Ein echter Link (Tastatur/Screenreader)
+   mit transparentem „stretched"-Overlay über die komplette Sektion. Reihenfolge
+   im DOM: Titel → Bilder → Link-Hinweis (gilt auch mobil). */
+.pf-spread__cta{position:static;z-index:2;max-width:1640px;width:100%;margin:0 auto;display:flex;align-items:center;min-height:44px;font:10px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:rgba(241,237,228,.66);transition:color .3s var(--ease)}
+.pf-spread__cta span{position:relative;display:inline-flex;align-items:center;gap:10px;padding-bottom:6px}
+.pf-spread__cta span::before{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
+.pf-spread__cta::after{content:"";position:absolute;inset:0;z-index:4}
+.pf-spread:hover .pf-spread__cta,.pf-spread:focus-within .pf-spread__cta{color:var(--paper)}
+.pf-spread:hover .pf-spread__cta span::before,.pf-spread:focus-within .pf-spread__cta span::before{transform:scaleX(1)}
+
 /* Light variant — alternating sections */
 .pf-spread.is-light{background:var(--paper);color:var(--ink)}
-.pf-spread.is-light .pf-spread__kicker{color:var(--muted)}
 .pf-spread.is-light h2{color:var(--ink)}
-.pf-spread.is-light .pf-spread__link{border-color:rgba(13,12,10,.28);color:var(--ink)}
-.pf-spread.is-light .pf-spread__link:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.pf-spread.is-light .pf-spread__cta{color:rgba(13,12,10,.55)}
+.pf-spread.is-light:hover .pf-spread__cta,.pf-spread.is-light:focus-within .pf-spread__cta{color:var(--ink)}
 .pf-spread.is-light .pf-photo{background:#e7e1d3}
 
-.pf-photo{position:relative;display:block;overflow:hidden;background:#1a1815;cursor:zoom-in;transform:translateY(18px);opacity:0;transition:transform .9s var(--ease),opacity .9s var(--ease)}
+.pf-photo{position:relative;display:block;overflow:hidden;background:#1a1815;margin:0;transform:translateY(18px);opacity:0;transition:transform .9s var(--ease),opacity .9s var(--ease)}
 .is-visible .pf-photo{transform:none;opacity:1}
 .pf-photo img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease)}
-.pf-photo:hover img{transform:scale(1.04)}
+/* Gruppen-Hover über die ganze Sektion signalisiert Klickbarkeit */
+.pf-spread:hover .pf-spread__strip .pf-photo img{transform:scale(1.03)}
+.pf-archive__grid .pf-photo{cursor:zoom-in}
+.pf-archive__grid .pf-photo:hover img{transform:scale(1.04)}
 .pf-photo:nth-child(2){transition-delay:.06s}
 .pf-photo:nth-child(3){transition-delay:.12s}
 .pf-photo:nth-child(4){transition-delay:.18s}
 
 /* ---------- ARCHIVE WALL — column-count masonry, gap-free ---------- */
-.pf-archive{padding:clamp(80px,12vh,140px) 5vw clamp(80px,10vh,120px);background:var(--paper);color:var(--ink);content-visibility:auto;contain-intrinsic-size:1800px}
+.pf-archive{padding:clamp(80px,12vh,140px) 5vw clamp(80px,10vh,120px);background:var(--paper);color:var(--ink)}
 .pf-archive__head{max-width:1640px;margin:0 auto clamp(40px,6vh,72px)}
-.pf-archive__kicker{font:10px var(--mono);letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
-.pf-archive__head h2{font-family:var(--sans);font-weight:500;font-size:clamp(48px,7.4vw,118px);line-height:.92;letter-spacing:-.038em;max-width:18ch;text-wrap:balance}
+.pf-archive__head h2{font-family:var(--sans);font-weight:900;text-transform:uppercase;font-size:clamp(48px,7.4vw,118px);line-height:.92;letter-spacing:-.05em;max-width:18ch;text-wrap:balance}
 .pf-archive__grid{max-width:1640px;margin:0 auto;column-count:4;column-gap:4px}
 .pf-archive__grid .pf-photo{width:100%;break-inside:avoid;margin:0 0 4px;display:block;cursor:zoom-in;transform:translateY(10px);opacity:0;transition:transform .6s var(--ease),opacity .6s var(--ease)}
+/* Noch nicht nachgeladene Archiv-Bilder: ausblenden (höhere Spezifität schlägt display:block) */
+.pf-archive__grid .pf-photo[hidden]{display:none}
 .pf-archive__grid .pf-photo img{width:100%;height:auto;display:block}
 .pf-archive__grid .pf-photo.is-shown{transform:none;opacity:1}
-.pf-archive__foot{max-width:1640px;margin:clamp(48px,6vh,72px) auto 0;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:18px;font:10px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
-.pf-archive__foot a{min-height:44px;display:inline-flex;align-items:center;justify-content:center;padding:14px 18px;border:1px solid var(--ink);color:var(--ink);transition:background .25s var(--ease),color .25s var(--ease)}
-.pf-archive__foot a:hover{background:var(--ink);color:var(--paper)}
+.pf-archive__sentinel{width:100%;height:1px}
 
 /* ---------- LIGHTBOX ---------- */
 .pf-viewer{position:fixed;inset:0;z-index:240;display:grid;place-items:center;padding:clamp(20px,4vw,60px);background:rgba(8,7,5,.94);backdrop-filter:blur(20px);opacity:0;pointer-events:none;transition:opacity .3s var(--ease)}
@@ -139,24 +140,36 @@ button{font:inherit;color:inherit;border:0;background:transparent;cursor:pointer
   .pf-spread__strip .pf-photo:nth-child(4){display:none}
 }
 @media (max-width:720px){
-  .pf-hero{min-height:100svh;padding:120px 5vw 48px}
-  .pf-hero__inner{grid-template-columns:1fr;gap:18px;align-items:start}
-  .pf-hero h1{font-size:clamp(46px,12vw,76px)}
-  .pf-hero__sub{padding-bottom:0}
-  .pf-context__inner{grid-template-columns:1fr}
-  .pf-spread{min-height:auto;padding:56px 5vw 36px}
-  .pf-spread__head{grid-template-columns:1fr;gap:18px;align-items:start}
-  .pf-spread h2{font-size:clamp(38px,11vw,64px)}
+  /* Context — eine Spalte, ruhigerer Rhythmus */
+  .pf-context__inner{grid-template-columns:1fr;gap:20px;padding:clamp(48px,12vw,68px) 22px}
+  .pf-context h2{font-size:clamp(32px,9vw,52px);max-width:18ch}
+  .pf-context p{font-size:16px;line-height:1.62}
+
+  /* Spread — Titel → Bilder → Link-Hinweis (gestapelt), 2×2-Kontaktbogen */
+  .pf-spread{min-height:auto;padding:clamp(48px,13vw,68px) 22px;gap:24px}
+  .pf-spread h2{font-size:clamp(36px,11vw,60px)}
   .pf-spread__strip{grid-template-columns:repeat(2,1fr);gap:4px}
   .pf-spread__strip .pf-photo:nth-child(4){display:block}
-  .pf-archive__grid{column-count:2}
-  .pf-archive__head h2{font-size:clamp(38px,11vw,64px)}
-  .pf-archive__foot{flex-direction:column;align-items:flex-start;gap:14px}
+
+  /* Archiv — zwei Spalten */
+  .pf-archive{padding:clamp(56px,15vw,84px) 22px clamp(48px,12vw,72px)}
+  .pf-archive__head{margin-bottom:clamp(28px,8vw,40px)}
+  .pf-archive__head h2{font-size:clamp(36px,11vw,60px)}
+  .pf-archive__grid{column-count:2;column-gap:4px}
+  .pf-archive__grid .pf-photo{margin-bottom:4px}
+
+  /* Lightbox-Steuerung näher an die Daumenzone */
   .pf-viewer__close{top:14px;right:14px;padding:10px 12px}
   .pf-viewer__prev{left:10px;padding:14px 10px}
   .pf-viewer__next{right:10px;padding:14px 10px}
 }
+@media (max-width:430px){
+  .pf-context h2,.pf-spread h2,.pf-archive__head h2{letter-spacing:-.03em}
+  .pf-spread__strip{gap:3px}
+  .pf-archive__grid{column-gap:3px}
+  .pf-archive__grid .pf-photo{margin-bottom:3px}
+}
 @media (prefers-reduced-motion:reduce){
   .hero{animation:none!important}
-  .pf-hero__photo img,.pf-photo,.pf-hero__inner > *,.pf-archive__grid .pf-photo{animation:none!important;transition:none!important;transform:none!important;opacity:1!important;filter:none!important}
+  .pf-photo,.pf-archive__grid .pf-photo{animation:none!important;transition:none!important;transform:none!important;opacity:1!important;filter:none!important}
 }

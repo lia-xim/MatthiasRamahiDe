@@ -3,7 +3,6 @@ import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import {
   portfolioArchivePhotos,
   portfolioContext,
-  portfolioIndexLinks,
   portfolioSpreads,
 } from '../../lib/portfolioIndexContent'
 import { homeHeroSlidesFor } from '../../lib/nativeContent'
@@ -48,14 +47,6 @@ const emptyImage =
       <div class="hero-cursor" id="hero-cursor" aria-hidden="true"><span class="ring"></span></div>
     </section>
 
-    <nav class="pf-index" id="pfIndex" aria-label="Kategorien">
-      <ol>
-        {portfolioIndexLinks.map((link) => (
-          <li><a href={link.href}><b>{link.number}</b>{link.label}</a></li>
-        ))}
-      </ol>
-    </nav>
-
     <section class="pf-context" data-header-theme="light" aria-label="Portfolio einordnen">
       <div class="pf-context__inner">
         <div>
@@ -76,30 +67,28 @@ const emptyImage =
         aria-label={spread.label.replace(/^\d+\s*\/\s*/, '')}
       >
         <div class="pf-spread__head">
-          <div>
-            <div class="pf-spread__kicker">{spread.label}</div>
-            <h2>{spread.heading}</h2>
-          </div>
-          <a class="pf-spread__link" href={spread.href}>{spread.linkLabel}</a>
+          <h2>{spread.heading}</h2>
         </div>
         <div class="pf-spread__strip">
           {spread.photos.map((photo) => (
-            <a class="pf-photo" data-caption={photo.caption} href={photo.href} aria-label={photo.caption || 'Bild im Großformat ansehen'}>
+            <figure class="pf-photo">
               <img src={photo.src} alt="" loading="lazy" decoding="async" width={photo.width} height={photo.height} />
-            </a>
+            </figure>
           ))}
         </div>
+        <a class="pf-spread__cta" href={spread.href}>
+          <span>{spread.linkLabel}</span>
+        </a>
       </section>
     ))}
 
     <section class="pf-archive" id="archive" data-header-theme="light" aria-label="Archiv">
       <div class="pf-archive__head">
-        <div class="pf-archive__kicker">∞ / Archiv</div>
-        <h2>Bildarchiv, vollständig.</h2>
+        <h2>Bildarchiv</h2>
       </div>
-      <div class="pf-archive__grid" id="pfArchiveGrid">
-        {portfolioArchivePhotos.map((photo) => (
-          <a class="pf-photo" data-caption={photo.caption} href={photo.href} aria-label={photo.caption || 'Bild im Großformat ansehen'}>
+      <div class="pf-archive__grid" id="pfArchiveGrid" data-archive-batch="12">
+        {portfolioArchivePhotos.map((photo, i) => (
+          <a class="pf-photo" data-archive-item hidden={i >= 12} data-caption={photo.caption} href={photo.href} aria-label={photo.caption || 'Bild im Großformat ansehen'}>
             <img
               src={photo.src}
               data-src={photo.src}
@@ -112,18 +101,14 @@ const emptyImage =
           </a>
         ))}
       </div>
-      <div class="pf-archive__foot">
-        <span>Aktualisierter Bestand · 2026</span>
-        <a href="/contact.html">Anfrage stellen ↗</a>
-      </div>
     </section>
 
     <section
       id="anfrage"
       data-contact-section
       data-theme="light"
-      data-contact-subject="Portfolio Anfrage"
-      data-contact-headline="Portfolio <em>anfragen.</em>"
+      data-contact-subject="Shooting Anfrage"
+      data-contact-headline="Shooting <em>anfragen.</em>"
       data-contact-lead="Schreiben Sie kurz, welche Bildsprache Sie interessiert, wofür die Aufnahmen genutzt werden und welchen Zeitraum Sie planen. Dann klären wir Motiv, Umfang, Rechte und Ausgabe sauber gemeinsam."
     />
 

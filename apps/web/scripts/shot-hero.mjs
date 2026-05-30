@@ -7,23 +7,37 @@ const outDir = 'C:/Users/matth/Documents/MatthiasRamahiDe/.tmp/mobshots'
 mkdirSync(outDir, { recursive: true })
 const browser = await chromium.launch()
 
-// Mobile: capture the hero at 3 focus phases (auto-cycle ~11s)
+async function full(page) {
+  await page.evaluate(async () => {
+    await new Promise((r) => { let y=0; const s=()=>{y+=500;window.scrollTo(0,y);if(y<document.body.scrollHeight)setTimeout(s,90);else r()}; s() })
+  })
+  await page.evaluate(() => window.scrollTo(0, 0))
+  await page.waitForTimeout(800)
+}
+
+// Mobile
 const m = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true })
 const mp = await m.newPage()
 await mp.goto(`${base}${path}`, { waitUntil: 'networkidle', timeout: 60000 })
-await mp.waitForTimeout(1500)
-for (const [label, wait] of [['focus1', 800], ['focus2', 3700], ['focus3', 3700]]) {
-  await mp.waitForTimeout(wait)
-  await mp.screenshot({ path: `${outDir}/swh_${label}.png`, fullPage: false })
-}
+await mp.waitForTimeout(2500)
+await mp.screenshot({ path: `${outDir}/sw_m_hero.png`, fullPage: false })
+await full(mp)
+const mh = await mp.evaluate(() => document.body.scrollHeight)
+console.log('MOBILE height(px):', mh, ' ~screens:', (mh / 844).toFixed(1))
+await mp.screenshot({ path: `${outDir}/sw_m_full.png`, fullPage: true })
+// scroll to bottom to catch the sticky CTA docked
+await mp.evaluate(() => window.scrollTo(0, document.body.scrollHeight))
+await mp.waitForTimeout(900)
+await mp.screenshot({ path: `${outDir}/sw_m_bottom.png`, fullPage: false })
 await m.close()
 
-// Desktop: confirm unchanged
+// Desktop
 const d = await browser.newContext({ viewport: { width: 1366, height: 860 } })
 const dp = await d.newPage()
 await dp.goto(`${base}${path}`, { waitUntil: 'networkidle', timeout: 60000 })
-await dp.waitForTimeout(1800)
-await dp.screenshot({ path: `${outDir}/swh_desktop.png`, fullPage: false })
+await dp.waitForTimeout(1500)
+await full(dp)
+await dp.screenshot({ path: `${outDir}/sw_d_full.png`, fullPage: true })
 await d.close()
 
 await browser.close()
