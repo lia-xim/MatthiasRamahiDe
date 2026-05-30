@@ -176,6 +176,11 @@
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr;
     padding: 0;
+    /* Let the hero grow with its content on mobile. The base .ovh is locked to
+       height:100svh + overflow:hidden, which clipped the second CTA below the
+       fold. min-height keeps it filling the screen when content is short. */
+    height: auto;
+    max-height: none;
     min-height: 100svh;
     background:
       radial-gradient(120% 80% at 10% 96%, rgba(42,78,118,.14), transparent 60%),
