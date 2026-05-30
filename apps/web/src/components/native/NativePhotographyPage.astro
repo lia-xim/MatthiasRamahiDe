@@ -60,7 +60,7 @@ const clusterParagraphs = blockParagraphs(doc, 'Ein Einstieg', [
 ---
 <AdoptedPageLayout legacyFile={legacyFile} current="fotografie" doc={doc} title={meta.title} description={meta.description} ctaHref="#anfrage" preloadImages={[firstHeroSlide.image]} liveCms>
   <main>
-    <section class="hero" data-theme="dark" aria-label="Intro" style={`background-image:url("${firstHeroSlide.image}")`}>
+    <section class="hero" data-theme="dark" aria-label="Intro" style={`background-image:url('${firstHeroSlide.image}')`}>
       <canvas id="hero-shader" aria-hidden="true" data-imgs={heroImages.join(',')} data-slides={heroSlidesJson}></canvas>
       <div class="hero-glow" aria-hidden="true"></div>
       <div class="hero-aperture" aria-hidden="true"></div>
