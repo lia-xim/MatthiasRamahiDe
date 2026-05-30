@@ -390,6 +390,25 @@
       }, { passive: true });
     })();
 
+    /* ---------- Stuck header background on scroll -------------------------
+       On mobile the header is flush to the top edge and transparent at
+       scroll-top; once the page scrolls it gains a blurred, legible bar.
+       (CSS scopes the visible effect to <=980px; the class is harmless on
+       desktop.) ----------------------------------------------------------- */
+    (function () {
+      let stuckRaf = 0;
+      function syncStuck() {
+        stuckRaf = 0;
+        bar.classList.toggle('is-stuck', window.scrollY > 8);
+      }
+      function queueStuck() {
+        if (stuckRaf) return;
+        stuckRaf = requestAnimationFrame(syncStuck);
+      }
+      syncStuck();
+      window.addEventListener('scroll', queueStuck, { passive: true });
+    })();
+
     /* ---------- Conversion intent tracking -------------------------------
        The site currently has no analytics stack in the markup. This creates a
        clean event surface for future GA4/Plausible/etc. without coupling the
@@ -605,22 +624,36 @@
       }
     });
 
-    /* ---------- Mobile overlay ---------- */
+    /* ---------- Mobile overlay (with focus trap + focus return) ---------- */
     const menuBtn = bar.querySelector('.topbar__menu');
     const overlay = document.getElementById('mobile-menu');
+    let lastFocusBeforeMenu = null;
+    function focusablesIn(el) {
+      return Array.prototype.slice
+        .call(el.querySelectorAll('a[href],button:not([disabled]),[tabindex]:not([tabindex="-1"])'))
+        .filter(function (n) { return n.offsetParent !== null; });
+    }
     function openMobile() {
       if (!overlay) return;
+      lastFocusBeforeMenu = document.activeElement;
       overlay.classList.add('is-open');
       overlay.setAttribute('aria-hidden', 'false');
       if (menuBtn) menuBtn.setAttribute('aria-expanded', 'true');
       document.body.classList.add('menu-open');
+      const focusable = focusablesIn(overlay);
+      if (focusable.length) requestAnimationFrame(function () { focusable[0].focus(); });
     }
     function closeMobile() {
       if (!overlay) return;
+      const wasOpen = overlay.classList.contains('is-open');
       overlay.classList.remove('is-open');
       overlay.setAttribute('aria-hidden', 'true');
       if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
       document.body.classList.remove('menu-open');
+      if (wasOpen) {
+        const target = lastFocusBeforeMenu || menuBtn;
+        if (target && typeof target.focus === 'function') target.focus();
+      }
     }
     if (menuBtn && overlay) {
       menuBtn.addEventListener('click', function () {
@@ -629,6 +662,15 @@
       });
       overlay.addEventListener('click', function (e) {
         if (e.target.matches('a')) closeMobile();
+      });
+      overlay.addEventListener('keydown', function (e) {
+        if (e.key !== 'Tab') return;
+        const focusable = focusablesIn(overlay);
+        if (!focusable.length) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
       });
     }
 
@@ -704,6 +746,10 @@
                   '<div class="mr-contact__field"><label for="' + uid + '-phone">Telefon fuer Rueckfragen <span>Optional</span></label><input id="' + uid + '-phone" name="phone" autocomplete="tel"></div>' +
                 '</div>' +
               '</details>' +
+              '<label class="mr-contact__consent">' +
+                '<input type="checkbox" name="consent" value="1" required>' +
+                '<span>Ich willige ein, dass meine angegebenen Daten zur Bearbeitung der Anfrage verarbeitet werden. Hinweise dazu in der <a href="/datenschutz.html" target="_blank" rel="noopener noreferrer">Datenschutzerklaerung</a>. <em>Pflicht</em></span>' +
+              '</label>' +
               '<div class="mr-contact__actions">' +
                 '<button class="mr-contact__submit" type="submit">Projekt anfragen -></button>' +
                 '<p class="mr-contact__reassurance">Unverbindlich. Kein Paket-Zwang. Antwort meist innerhalb von 24 Stunden.</p>' +
@@ -739,7 +785,8 @@
             date: form.elements['date'].value.trim(),
             use: form.elements['use'].value,
             phone: form.elements['phone'].value.trim(),
-            message: form.elements['message'].value.trim()
+            message: form.elements['message'].value.trim(),
+            consent: !!(form.elements['consent'] && form.elements['consent'].checked)
           };
           const intent = pageIntent();
           let lastCta = '';
@@ -763,6 +810,12 @@
           if (!data.name || !data.contact || !data.message) {
             setStatus('Bitte Name, Kontaktweg und Projektbeschreibung ausfuellen.', 'error');
             trackConversionEvent('form_validation_error', { form: 'mr-contact' });
+            form.reportValidity();
+            return;
+          }
+          if (!data.consent) {
+            setStatus('Bitte der Verarbeitung deiner Angaben zustimmen.', 'error');
+            trackConversionEvent('form_validation_error', { form: 'mr-contact', reason: 'consent' });
             form.reportValidity();
             return;
           }

@@ -160,8 +160,11 @@ async function readPublicAsset(href: string) {
     {jsonLdItems.map((item) => <script is:inline type="application/ld+json" set:html={JSON.stringify(item)} />)}
   </head>
   <body class={bodyClass} data-cms-layout-source="native-adopted-chrome">
+    <a href="#mr-content" class="mr-skip-link">Zum Inhalt springen</a>
     <SiteChromeHeader current={current} ctaHref={ctaHref} headerTheme={headerTheme} liveCms={liveCms} />
-    <slot />
+    <div id="mr-content" tabindex="-1">
+      <slot />
+    </div>
     <SiteChromeFooter liveCms={liveCms} />
     {allScripts.map((src) => <script is:inline src={src} defer></script>)}
   </body>

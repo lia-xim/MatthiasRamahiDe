@@ -1,0 +1,8 @@
+---
+import Native404Page from '../components/native/Native404Page.astro'
+
+export const prerender = false
+
+Astro.response.status = 404
+---
+<Native404Page />

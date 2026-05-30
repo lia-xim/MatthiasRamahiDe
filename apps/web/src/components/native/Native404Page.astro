@@ -1,0 +1,114 @@
+---
+import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
+
+const links = [
+  { href: '/', label: 'Startseite' },
+  { href: '/fotografie.html', label: 'Fotografie' },
+  { href: '/portfolio.html', label: 'Portfolio' },
+  { href: '/leistungen.html', label: 'Leistungen' },
+  { href: '/ueber-mich.html', label: 'Über mich' },
+  { href: '/contact.html', label: 'Kontakt' },
+]
+---
+<AdoptedPageLayout
+  legacyFile="404.html"
+  title="Seite nicht gefunden (404) — Matthias Ramahi"
+  description="Diese Seite existiert nicht oder wurde verschoben. Zurück zur Startseite oder direkt in einen der Fotografie-Bereiche."
+  noIndex
+>
+  <main>
+    <section class="nf" data-theme="dark" data-header-theme="dark" aria-labelledby="nf-title">
+      <div class="nf__inner">
+        <p class="nf__kicker">Fehler 404</p>
+        <h1 class="nf__title" id="nf-title">Diese Seite<br /><em>gibt es nicht</em> (mehr).</h1>
+        <p class="nf__lead">Vielleicht wurde sie verschoben, umbenannt oder der Link enthält einen Tippfehler. Hier geht es zurück in die Übersicht.</p>
+        <nav class="nf__links" aria-label="Wichtige Seiten">
+          {links.map((link) => <a class="nf__link" href={link.href}>{link.label}</a>)}
+        </nav>
+        <p class="nf__note">Bleibt etwas unauffindbar? Schreib kurz an <a href="mailto:info@matthiasramahi.de">info@matthiasramahi.de</a> — ich helfe direkt weiter.</p>
+      </div>
+    </section>
+  </main>
+</AdoptedPageLayout>
+
+<style>
+  .nf {
+    position: relative;
+    min-height: clamp(560px, 82svh, 900px);
+    display: grid;
+    align-items: center;
+    background: radial-gradient(120% 90% at 50% 0%, #07090d, #020306 60%);
+    color: #f3f5ef;
+    padding: clamp(120px, 16vw, 200px) clamp(22px, 5vw, 76px) clamp(72px, 9vw, 120px);
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .nf__inner {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    gap: clamp(20px, 2.4vw, 30px);
+  }
+  .nf__kicker {
+    font: 700 10px/1 'JetBrains Mono', 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: #7a8a86;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+  }
+  .nf__kicker::before { content: ""; width: 28px; height: 1px; background: currentColor; }
+  .nf__title {
+    margin: 0;
+    font-size: clamp(44px, 8.2vw, 132px);
+    line-height: .86;
+    letter-spacing: -.06em;
+    text-transform: uppercase;
+    font-weight: 900;
+    color: #f6f7f2;
+    text-wrap: balance;
+  }
+  .nf__title em { font-style: normal; color: #7a8a86; }
+  .nf__lead {
+    margin: 0;
+    max-width: 56ch;
+    font-size: clamp(16px, 1.3vw, 21px);
+    line-height: 1.55;
+    color: rgba(243, 245, 239, .78);
+    text-wrap: pretty;
+  }
+  .nf__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 6px;
+  }
+  .nf__link {
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    padding: 13px 20px;
+    border: 1px solid rgba(243, 245, 239, .28);
+    font: 700 10px/1 'JetBrains Mono', 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: #f3f5ef;
+    transition: background .25s cubic-bezier(.23,1,.32,1), border-color .25s cubic-bezier(.23,1,.32,1), color .25s cubic-bezier(.23,1,.32,1);
+  }
+  .nf__link:hover,
+  .nf__link:focus-visible { background: #f3f5ef; color: #090b10; border-color: #f3f5ef; }
+  .nf__note {
+    margin: 8px 0 0;
+    font-size: clamp(13px, 1vw, 15px);
+    line-height: 1.6;
+    color: rgba(243, 245, 239, .56);
+  }
+  .nf__note a { color: rgba(243, 245, 239, .86); border-bottom: 1px solid rgba(243, 245, 239, .4); }
+  .nf__note a:hover,
+  .nf__note a:focus-visible { color: #fff; border-color: #fff; }
+</style>
