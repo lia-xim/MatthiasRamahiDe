@@ -155,7 +155,11 @@ else
 fi
 
 log "Starting Payload CMS"
-compose up -d cms
+# Always recreate so a freshly built image is actually activated. Without
+# --force-recreate, `up` can leave the previous container running when only
+# the image changed, silently shipping a stale build (the health check then
+# passes against the old-but-healthy container and the deploy reports success).
+compose up -d --force-recreate cms
 
 log "Checking CMS health: $HEALTH_URL"
 for attempt in {1..30}; do
