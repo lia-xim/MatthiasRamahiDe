@@ -715,7 +715,7 @@
               '<div class="mr-contact__direct" aria-label="Direkter Kontakt">' +
                 '<a class="mr-contact__direct-link" href="mailto:info@matthiasramahi.de?subject=' + encodeURIComponent(subject) + '" data-cta-role="contact-direct-mail"><span>E-Mail</span><strong>info@matthiasramahi.de</strong></a>' +
                 '<a class="mr-contact__direct-link" href="tel:+4917642449858" data-cta-role="contact-direct-phone"><span>Telefon</span><strong>+49 176 42 44 98 58</strong></a>' +
-                '<a class="mr-contact__direct-link" href="https://www.instagram.com/" target="_blank" rel="noopener" data-cta-role="contact-direct-instagram"><span>Instagram</span><strong>Profil ansehen &#8599;</strong></a>' +
+                '<a class="mr-contact__direct-link" href="https://www.instagram.com/mathewspictures/" target="_blank" rel="noopener" data-cta-role="contact-direct-instagram"><span>Instagram</span><strong>@mathewspictures &#8599;</strong></a>' +
               '</div>' +
             '</div>' +
             '<form class="mr-contact__form" novalidate data-started-at="' + Date.now() + '">' +

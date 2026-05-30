@@ -289,9 +289,13 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
     title: 'Videografie Düsseldorf - Matthias Ramahi',
   },
   'werbetechnik-duesseldorf.html': {
-    ...serviceMiniChrome('/assets/services/Catoir_Ramahi-1-32-768x512-1.webp'),
+    current: 'leistungen',
     description:
       'Werbetechnik in Düsseldorf: Fahrzeugbeschriftung, Schaufenster, Beschilderung, Folierung und LED-Lichtwerbung - über Matthias Ramahi und das Partnernetzwerk vor Ort.',
+    ogImage: '/assets/services/Catoir_Ramahi-1-32-768x512-1.webp',
+    preloadImages: ['/assets/services/Catoir_Ramahi-1-32-768x512-1.webp'],
+    scripts: ['/assets/native-home.js', ...siteChromeScript],
+    stylesheets: [...sharedStyles, '/assets/native-werbetechnik.css'],
     title: 'Werbetechnik Düsseldorf - Matthias Ramahi',
   },
   'grossformatdruck-duesseldorf.html': {

@@ -1,0 +1,11 @@
+import { chromium } from 'playwright'
+const browser = await chromium.launch()
+const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } })
+const page = await ctx.newPage()
+await page.goto('http://localhost:4322/automobil-fotografie.html', { waitUntil: 'networkidle', timeout: 60000 })
+await page.waitForTimeout(1000)
+const el = await page.$('.st-pull')
+await el.scrollIntoViewIfNeeded(); await page.waitForTimeout(500)
+await el.screenshot({ path: 'C:/Users/matth/Documents/MatthiasRamahiDe/.tmp/mobshots/auto_stpull_desk.png' })
+const box = await el.boundingBox(); console.log('desk stpull h=', Math.round(box.height))
+await browser.close()

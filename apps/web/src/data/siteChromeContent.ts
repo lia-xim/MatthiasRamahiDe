@@ -80,7 +80,7 @@ export const siteChromeContent = {
     ownerName: 'Matthias Ramahi',
     email: 'info@matthiasramahi.de',
     phone: '+49 176 42 44 98 58',
-    instagramUrl: 'https://www.instagram.com/',
+    instagramUrl: 'https://www.instagram.com/mathewspictures/',
     defaultMetaTitle: 'Matthias Ramahi — Fotografie Düsseldorf & NRW',
     defaultMetaDescription:
       'Kuratierte Fotografie aus Düsseldorf — Automobil, Sportwagen, Oldtimer, Motorrad, Portrait, Landschaft. Für Verkauf, Marke, Sammlung, Print und Kampagne.',
@@ -97,7 +97,7 @@ export const siteChromeContent = {
     phoneHref: 'tel:+4917642449858',
     locationLabel: 'Düsseldorf · NRW',
     copyright: '© 2026 Matthias Ramahi',
-    socialLinks: [{ label: 'Instagram ↗', href: 'https://www.instagram.com/', platform: 'instagram' }],
+    socialLinks: [{ label: 'Instagram ↗', href: 'https://www.instagram.com/mathewspictures/', platform: 'instagram' }],
     legalLinks: [
       { label: 'Impressum', href: 'impressum.html' },
       { label: 'Datenschutz', href: 'datenschutz.html' },

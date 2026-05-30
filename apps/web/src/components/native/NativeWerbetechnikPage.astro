@@ -1,0 +1,153 @@
+---
+import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
+import { getBySlug, type PayloadDoc } from '../../lib/payload'
+
+const legacyFile = 'werbetechnik-duesseldorf.html'
+const providedDoc = Astro.props.doc as PayloadDoc | undefined
+const doc = providedDoc || (await getBySlug('service-pages', 'werbetechnik-duesseldorf', { depth: 2 }))
+
+// Anwendungsbereiche — editorial Grid (kein Card-Chrome).
+const areas = [
+  {
+    kicker: '01 / Fahrzeug',
+    title: 'Fahrzeugbeschriftung',
+    body: 'Logo, Kontakt, Vollverklebung — auf PKW, Transporter, LKW oder Anhänger. Mit Vorab-Visualisierung am Fahrzeugfoto.',
+    items: ['Teilbeklebung mit Hochleistungsfolie', 'Vollfolierung in Farbe oder Carbon', 'Montage im rheinländischen Raum'],
+  },
+  {
+    kicker: '02 / Schaufenster',
+    title: 'Schaufenster & Glas',
+    body: 'Werbung an Ladenflächen — von der dezenten Logofolie bis zur vollflächigen Bildmotivfolie. Demontagefreundlich und sauber.',
+    items: ['Frosted für Sichtschutz', 'Bedruckte Folien mit Bildmotiv', 'Türaufkleber und Hinweistexte'],
+  },
+  {
+    kicker: '03 / Fassade',
+    title: 'Schilder & Beschilderung',
+    body: 'Außenschilder, Hinweisschilder, Türschilder und Leitsysteme — aus Alu-Dibond, Acryl, Metall oder beleuchtet.',
+    items: ['Außenmontage mit Statik-Check', 'Acrylplatten mit Standoffs', 'Leitsysteme für Praxen und Marken'],
+  },
+  {
+    kicker: '04 / Licht',
+    title: 'LED-Lichtwerbung',
+    body: 'Hinterleuchtete Logos, Profilbuchstaben und Lightboxes — energieeffizient mit LED und langer Lebensdauer.',
+    items: ['Profilbuchstaben aus Acryl mit LED', 'Backlit-Boxes für Schaufenster', 'Außenfertige Lichtkästen IP65'],
+  },
+]
+
+// Ablauf — vier Stationen vom Foto bis zur fertigen Fläche.
+const flowSteps = [
+  { number: 'Schritt 01', title: 'Vorlauf.', body: 'Visualisierung auf dem Foto von Fahrzeug, Fläche oder Schaufenster — entschieden wird am Bild, nicht am fertigen Druck.' },
+  { number: 'Schritt 02', title: 'Material.', body: 'Hochleistungsfolien für Außenmontage — UV-stabil, salzwasserfest und demontagefreundlich. Materialcheck vor der Produktion.' },
+  { number: 'Schritt 03', title: 'Montage.', body: 'Vor-Ort-Montage im Rheinland, Werkstattfolierung für Fahrzeuge — mit Endabnahme an der montierten Fläche.' },
+  { number: 'Schritt 04', title: 'Wartung.', body: 'Nachbestellungen, Reparaturen und Wartung mit identischer Folie und gleichem Druck — über die Jahre konsistent.' },
+]
+
+// Hero = der Landing-Page-Shader-Hero (WebGL/Ken-Burns/Lens-Cursor), aber mit
+// Werbetechnik-Bild, -Texten und dem oxidierten Werbetechnik-Rot. Die Optik kommt
+// aus assets/native-werbetechnik.css (Hero-Block), die Bewegung aus
+// assets/native-home.js (gated nur auf #hero-shader).
+const heroImage = '/assets/services/Catoir_Ramahi-1-32-768x512-1.webp'
+const heroSlides = [
+  {
+    image: heroImage,
+    titleLines: ['Werbe', 'technik'],
+    lead: 'Schilder, Folien, Fahrzeuge, Schaufenster, Lichtwerbung — physische Markenpräsenz im Stadtraum. In Düsseldorf umgesetzt mit erfahrenen Partnerwerkstätten.',
+    primaryHref: '#anfrage',
+    primaryLabel: 'Werbetechnik anfragen',
+    secondaryHref: '#bereiche',
+    secondaryLabel: 'Bereiche ansehen',
+  },
+]
+const heroSlidesJson = JSON.stringify(heroSlides)
+---
+<AdoptedPageLayout legacyFile={legacyFile} current="leistungen" doc={doc}>
+  <main>
+    <section class="hero" data-theme="dark" data-header-theme="dark" aria-label="Werbetechnik Düsseldorf" style={`background-image:url('${heroImage}')`}>
+      <canvas id="hero-shader" aria-hidden="true" data-imgs={heroImage} data-slides={heroSlidesJson}></canvas>
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-aperture" aria-hidden="true"></div>
+      <div class="hero-grid">
+        <div class="hero-stage">
+          <h1 class="hero-title" id="hero-title" data-text-idx="0">
+            <span class="line"><span class="word">Werbe</span></span>
+            <span class="line"><span class="word">technik.</span></span>
+          </h1>
+          <p class="hero-lead" id="hero-lead">Schilder, Folien, Fahrzeuge, Schaufenster, Lichtwerbung — physische Markenpräsenz im Stadtraum. In Düsseldorf umgesetzt mit erfahrenen Partnerwerkstätten.</p>
+          <div class="hero-actions" aria-label="Direkte Aktionen">
+            <a class="btn dark" href="#anfrage" data-hero-primary>Werbetechnik anfragen</a>
+            <a class="btn" href="#bereiche" data-hero-secondary>Bereiche ansehen</a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-cursor" id="hero-cursor" aria-hidden="true"><span class="ring"></span></div>
+    </section>
+
+    <section class="wt-areas" id="bereiche" data-header-theme="dark" aria-label="Anwendungsbereiche">
+      <div class="wt-areas__inner">
+        <div class="wt-areas__head">
+          <div>
+            <p class="sp-eyebrow">Leistungen im Überblick</p>
+            <h2 class="wt-areas__title">Anwendungs<em>bereiche.</em></h2>
+          </div>
+          <p class="wt-areas__lead">
+            Werbetechnik ist Handwerk vor Ort. Motiv, Material und Montage werden zusammen gedacht — egal ob Schaufenster, Fahrzeug
+            oder Hausfassade.
+          </p>
+        </div>
+        <div class="wt-areas__grid">
+          {areas.map((area) => (
+            <article class="wt-area">
+              <p class="wt-area__kicker">{area.kicker}</p>
+              <h3 class="wt-area__title">{area.title}</h3>
+              <p class="wt-area__body">{area.body}</p>
+              <ul class="wt-area__list">
+                {area.items.map((item) => <li>{item}</li>)}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="wt-flow" data-header-theme="light" aria-label="Ablauf">
+      <div class="wt-flow__inner">
+        <div class="wt-flow__head">
+          <div>
+            <p class="sp-eyebrow">Ablauf</p>
+            <h2 class="wt-flow__title">Vom Foto auf die <em>Fläche.</em></h2>
+          </div>
+          <p class="wt-flow__lead">
+            Ein Aufkleber wirkt nur, wenn er sitzt. Werbetechnik kommt hier mit Vorlauf: Visualisierung am Foto, Materialcheck,
+            Montagetermin und Endabnahme.
+          </p>
+        </div>
+        <ol class="wt-flow__track" role="list">
+          {flowSteps.map((step) => (
+            <li class="wt-flow__step">
+              <p class="wt-flow__step-num">{step.number}</p>
+              <h3 class="wt-flow__step-title">{step.title}</h3>
+              <p class="wt-flow__step-body">{step.body}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <section class="sp-cta" data-header-theme="light" aria-label="Anfrage">
+      <div class="sp-cta__inner">
+        <h2 class="sp-cta__head">Bereit für ein <em>Werbetechnik-Briefing.</em></h2>
+        <a class="sp-cta__btn" href="#anfrage">Projekt anfragen →</a>
+      </div>
+    </section>
+
+    <section
+      id="anfrage"
+      data-contact-section
+      data-contact-subject="Werbetechnik-Anfrage — Matthias Ramahi"
+      data-contact-headline="Werbetechnik anfragen."
+      data-contact-lead="Schreibe kurz, was und wo beklebt oder beschriftet werden soll. Hilfreich: Foto der Fläche, gewünschtes Logo oder Motiv und ein grober Zeitraum."
+      data-header-theme="dark"
+      aria-label="Anfrage"
+    />
+  </main>
+</AdoptedPageLayout>

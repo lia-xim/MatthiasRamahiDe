@@ -343,23 +343,11 @@ const searchLinks = [
 
     <section class="st-pull" data-header-theme="light">
       <div class="st-pull-inner">
+        <span class="st-pull-kicker">Automobilfotografie</span>
         <blockquote class="st-pull-quote">
           <strong>Vom Inserat bis zur <span class="accent">Kampagne.</span></strong>
         </blockquote>
-        <div class="st-pull-foot">
-          <div class="col">
-            <span>01 · Verkauf</span>
-            <p>Klare, nachvollziehbare Ansichten. Lack, Innenraum und Zustand ehrlich und repräsentativ — web-fertige Dateien für Inserate und Portale.</p>
-          </div>
-          <div class="col">
-            <span>02 · Editorial</span>
-            <p>Bildsprache mit Charakter. Lack, Linien und Proportionen werden inszeniert statt nur dokumentiert — für Magazin, Print und Marken-Stories.</p>
-          </div>
-          <div class="col">
-            <span>03 · Kampagne</span>
-            <p>Hochformate, Teaser, Banner. Konsistente Licht-Atmosphäre über die ganze Serie — direkt einsatzbereit für Social und Web-Ads.</p>
-          </div>
-        </div>
+        <p class="st-pull-lead">Vom ehrlichen Verkaufsbild bis zur inszenierten Kampagne — eine konsistente Bildserie, sauber belichtet und sofort einsatzbereit für Inserat, Magazin, Social und Print.</p>
         <div class="st-pull-cta">
           <a href="#anfrage">Shooting buchen <span aria-hidden="true">→</span></a>
         </div>
@@ -397,7 +385,6 @@ const searchLinks = [
         <aside class="sw-desc" id="swDesc">
           <div class="group g2 is-in"><h3 class="d-title" id="swTitle">Vollformat, ruhige Linien.</h3></div>
           <div class="group g3 is-in"><p class="d-body" id="swBody">Außenaufnahmen mit kontrolliertem Licht und ruhigen Reflexen. Lack, Proportionen und Linienführung wirken stimmig — Showroom, Industrie oder urbanes Setting.</p></div>
-          <div class="group g4 is-in"><ul class="d-list" id="swList"><li>Showroom &amp; Location</li><li>Architektur &amp; Industrie</li><li>Tages- und Nachtlicht</li></ul></div>
           <div class="group g4 is-in"><a class="d-cta" href="#anfrage">Bildsatz anfragen</a></div>
         </aside>
       </div>
@@ -408,12 +395,10 @@ const searchLinks = [
     <section class="bg" data-header-theme="dark" aria-label="Ausgewählte Automobil-Arbeiten" id="bgSec">
       <div class="bg-head">
         <div class="ttl">
-          <span class="kicker">Auswahl · Bildsatz</span>
           <h2>Aktuelle <em>Arbeiten.</em></h2>
         </div>
         <div class="meta">
-          <span>09 Frames</span>
-          <a href="portfolio.html">Mehr als 240 Arbeiten im Portfolio →</a>
+          <a href="portfolio.html">Zum Portfolio →</a>
         </div>
       </div>
 
@@ -421,7 +406,6 @@ const searchLinks = [
         {inheritedGalleryTiles.map((tile, index) => (
           <button type="button" class={`bg-tile ${tile.className}`} data-i={index} data-full={tile.full} aria-label={`Frame ${index + 1} vergrößern`}>
             <img loading="lazy" src={tile.src} alt={tile.alt} width={tile.width} height={tile.height} decoding="async" />
-            <div class="bg-cap"><span class="l">{tile.left}</span><span class="r">{tile.right}</span></div>
           </button>
         ))}
       </div>

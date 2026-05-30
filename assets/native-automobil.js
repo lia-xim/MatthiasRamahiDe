@@ -241,7 +241,7 @@
       requestAnimationFrame(function(){
         title.textContent  = d.title;
         body.textContent   = d.body;
-        list.innerHTML = d.list.map(function(item){ return '<li>'+item+'</li>'; }).join('');
+        if(list){ list.innerHTML = d.list.map(function(item){ return '<li>'+item+'</li>'; }).join(''); }
         requestAnimationFrame(function(){
           groups.forEach(function(g){ g.classList.add('is-in'); });
         });
