@@ -8,6 +8,7 @@ const webSourceRoot = path.join(repoRoot, 'apps', 'web', 'src')
 const cmsSourceRoot = path.join(repoRoot, 'apps', 'cms', 'src')
 const publicRoot = path.join(repoRoot, 'apps', 'web', 'public')
 const publicAssetRoot = path.join(publicRoot, 'assets')
+const legacyReferenceHtmlRoot = path.join(repoRoot, 'legacy-reference', 'html')
 const assetSyncScript = path.join(repoRoot, 'tools', 'sync-public-assets.mjs')
 const routeAuditScript = path.join(repoRoot, 'apps', 'web', 'scripts', 'legacy-route-audit.mjs')
 const rootPackageJson = path.join(repoRoot, 'package.json')
@@ -67,6 +68,31 @@ async function assertNoPublicHtml() {
   const files = await collectFiles(publicRoot, (file) => path.extname(file).toLowerCase() === '.html')
   if (files.length === 0) return
   failures.push(`apps/web/public contains HTML files that can shadow Astro routes: ${files.slice(0, 10).map(relative).join(', ')}`)
+}
+
+async function assertNoRootHtml() {
+  const entries = await fs.readdir(repoRoot, { withFileTypes: true })
+  const htmlFiles = entries.filter((entry) => entry.isFile() && path.extname(entry.name).toLowerCase() === '.html')
+  if (htmlFiles.length === 0) return
+  failures.push(
+    `Repository root contains legacy HTML route files that can be mistaken for active project pages: ${htmlFiles
+      .slice(0, 10)
+      .map((entry) => entry.name)
+      .join(', ')}. Move legacy references to legacy-reference/html.`,
+  )
+}
+
+async function assertArchivedLegacyReferencesPresent() {
+  const manifest = JSON.parse(await fs.readFile(path.join(repoRoot, 'docs', 'legacy-reference-manifest.json'), 'utf8'))
+  const missing = []
+  for (const entry of manifest.entries || []) {
+    const file = typeof entry.file === 'string' ? entry.file : ''
+    if (!file) continue
+    if (!(await exists(path.join(legacyReferenceHtmlRoot, file)))) missing.push(file)
+  }
+  if (missing.length > 0) {
+    failures.push(`Archived legacy reference HTML files are missing from legacy-reference/html: ${missing.slice(0, 20).join(', ')}`)
+  }
 }
 
 async function assertNoRemovedRouteDirs() {
@@ -144,10 +170,13 @@ async function assertAdoptedLayoutCannotInlineHtml() {
 async function assertAssetSyncIsNativeByDefault() {
   const text = await fs.readFile(assetSyncScript, 'utf8')
   if (!text.includes('SYNC_INCLUDE_ROOT_REFERENCE_HTML')) {
-    failures.push('tools/sync-public-assets.mjs must keep root HTML reference scanning behind SYNC_INCLUDE_ROOT_REFERENCE_HTML.')
+    failures.push('tools/sync-public-assets.mjs must keep archived legacy HTML reference scanning behind SYNC_INCLUDE_ROOT_REFERENCE_HTML.')
   }
   if (!/const includeRootReferenceFiles = process\.env\.SYNC_INCLUDE_ROOT_REFERENCE_HTML === 'true'/.test(text)) {
-    failures.push('tools/sync-public-assets.mjs must not scan root HTML reference files by default.')
+    failures.push('tools/sync-public-assets.mjs must not scan archived legacy HTML reference files by default.')
+  }
+  if (!text.includes('legacy-reference')) {
+    failures.push('tools/sync-public-assets.mjs must scan archived legacy HTML references from legacy-reference/html, never repository root HTML files.')
   }
 }
 
@@ -188,7 +217,7 @@ async function assertNativeRouteCoverage() {
 
   failures.push(
     [
-      `Native route coverage must cover every frozen root HTML file (${result.frozenFiles} total).`,
+      `Native route coverage must cover every frozen archived legacy HTML file (${result.frozenFiles} total).`,
       ...result.failures.slice(0, 20),
     ].join('\n- '),
   )
@@ -199,22 +228,24 @@ async function assertLegacyReferenceWritesRequireOptIn() {
   const scripts = packageJson.scripts || {}
 
   if (!String(scripts['seo:fix'] || '').includes('print-native-seo-fix-guidance.mjs')) {
-    failures.push('package.json script seo:fix must not run legacy root HTML mutation tools.')
+    failures.push('package.json script seo:fix must not run archived legacy HTML mutation tools.')
   }
 
-  if (!String(scripts['legacy:seo:fix'] || '').includes('regenerate-local-pages-from-category-templates.mjs')) {
-    failures.push('package.json must keep the archived root HTML SEO pipeline behind the explicit legacy:seo:fix script.')
+  if (!String(scripts['legacy:seo:fix'] || '').includes('print-legacy-reference-guidance.mjs')) {
+    failures.push('package.json script legacy:seo:fix must not run archived legacy HTML mutation tools.')
   }
 
   for (const rel of legacyReferenceMutationScripts) {
     const text = await fs.readFile(path.join(repoRoot, rel), 'utf8')
     if (!text.includes("assert-legacy-reference-write-allowed.mjs")) {
-      failures.push(`${rel} must import assert-legacy-reference-write-allowed.mjs before mutating frozen root HTML references.`)
+      failures.push(`${rel} must import assert-legacy-reference-write-allowed.mjs before mutating frozen legacy HTML references.`)
     }
   }
 }
 
 await assertNoPublicHtml()
+await assertNoRootHtml()
+await assertArchivedLegacyReferencesPresent()
 await assertNoRemovedRouteDirs()
 await assertNoPublicLegacyAssets()
 await assertNoProductionLegacyRenderMarkers()
@@ -234,5 +265,5 @@ if (failures.length > 0) {
 }
 
 console.log(
-  'Native production guard passed: no public HTML shadows, no legacy/componentized route dirs, no public legacy assets, no raw legacy web render path, no mojibake in production sources, no unexpected runtime fs access, layout-marker route audit enforced, native route dispatch fails closed, frozen route coverage is complete, and root HTML mutation tools require explicit opt-in.',
+  'Native production guard passed: no public/root HTML shadows, archived legacy references are present, no legacy/componentized route dirs, no public legacy assets, no raw legacy web render path, no mojibake in production sources, no unexpected runtime fs access, layout-marker route audit enforced, native route dispatch fails closed, frozen route coverage is complete, and legacy HTML mutation tools require explicit opt-in.',
 )

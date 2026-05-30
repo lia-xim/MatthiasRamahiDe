@@ -7,6 +7,7 @@ const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..'
 const publicRoot = path.join(repoRoot, 'apps', 'web', 'public')
 const assetSource = path.join(repoRoot, 'assets')
 const assetTarget = path.join(publicRoot, 'assets')
+const legacyReferenceRoot = path.join(repoRoot, 'legacy-reference', 'html')
 const includeRootReferenceFiles = process.env.SYNC_INCLUDE_ROOT_REFERENCE_HTML === 'true'
 const mediaExtensions = new Set([
   '.avif',
@@ -139,7 +140,7 @@ async function rootMediaReferencedBySite(entries) {
     .map((entry) => entry.name)
 
   const searchFiles = []
-  if (includeRootReferenceFiles) searchFiles.push(...rootTextReferenceFiles(entries))
+  if (includeRootReferenceFiles) searchFiles.push(...(await rootTextReferenceFiles()))
   searchFiles.push(...(await collectTextFiles(path.join(repoRoot, 'apps', 'web', 'src'), appSourceReferenceExtensions)))
 
   const haystackParts = []
@@ -177,7 +178,7 @@ async function collectTextFiles(dir, extensions = assetTextReferenceExtensions) 
 
 async function assetsReferencedBySite(entries) {
   const searchFiles = []
-  if (includeRootReferenceFiles) searchFiles.push(...rootTextReferenceFiles(entries))
+  if (includeRootReferenceFiles) searchFiles.push(...(await rootTextReferenceFiles()))
 
   searchFiles.push(...(await collectTextFiles(path.join(repoRoot, 'apps', 'web', 'src'), appSourceReferenceExtensions)))
 
@@ -209,10 +210,9 @@ async function assetsReferencedBySite(entries) {
   return referenced
 }
 
-function rootTextReferenceFiles(entries) {
-  return entries
-    .filter((entry) => entry.isFile() && rootReferenceTextExtensions.has(path.extname(entry.name).toLowerCase()))
-    .map((entry) => path.join(repoRoot, entry.name))
+async function rootTextReferenceFiles() {
+  if (!includeRootReferenceFiles) return []
+  return collectTextFiles(legacyReferenceRoot, rootReferenceTextExtensions)
 }
 
 function assetSourcePath(assetPath) {
@@ -249,7 +249,7 @@ function extractAssetReferences(text, filePath) {
   }
 
   const directAssetPattern =
-    /(?:["'(`=]|^)(\/?assets\/[^"'`,>?#\r\n]+\.(?:avif|gif|jpe?g|mp4|png|svg|webm|webp|css|js|json|txt|xml))/gi
+    /(?:["'(`=,\s]|^)(\/?assets\/[^"'`,>?#\r\n]+?\.(?:avif|gif|jpe?g|mp4|png|svg|webm|webp|css|js|json|txt|xml))/gi
   while ((match = directAssetPattern.exec(text))) {
     addAssetReference(matches, match[1])
   }

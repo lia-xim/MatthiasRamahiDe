@@ -14,6 +14,7 @@ const alt = imageAlt(media, fallback)
 const dimensions = imageDimensions(media, size)
 const rasterSrcset = imageSrcset(media)
 const avifSrcset = imageSrcset(media, ['mobile', 'card', 'hero', 'wide'], 'avif')
+const fallbackSrc = typeof media === 'object' && media ? imageDisplayUrl(media, 'wide', { allowOriginal: true }) || src : src
 const blurDataUrl = typeof media === 'object' && media ? media.blurDataUrl : ''
 const dominantColor = typeof media === 'object' && media ? media.dominantColor : ''
 const objectPosition = imageObjectPosition(media)
@@ -34,6 +35,7 @@ const imageStyle = [
       src={src}
       srcset={rasterSrcset || undefined}
       sizes={sizes}
+      data-img-fallback={fallbackSrc}
       alt={alt}
       width={dimensions.width}
       height={dimensions.height}

@@ -34,6 +34,10 @@
   border: 0 !important;
 }
 
+img[data-img-broken="true"] {
+  visibility: hidden;
+}
+
 /* ============ Topbar (Desktop) ============
    Note: rules use !important on layout-critical properties because
    most pages still ship an inline <style> block that redeclares

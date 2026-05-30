@@ -3,6 +3,7 @@ import fs from 'node:fs/promises'
 import path from 'node:path'
 
 const repoRoot = path.resolve(process.cwd())
+const legacyReferenceRoot = path.join(repoRoot, 'legacy-reference', 'html')
 const outputPath = path.join(repoRoot, 'docs', 'legacy-reference-manifest.json')
 const checkMode = process.argv.includes('--check')
 
@@ -49,14 +50,14 @@ const contentTypeFor = (file) => {
 }
 
 async function buildManifest() {
-  const htmlFiles = (await fs.readdir(repoRoot))
+  const htmlFiles = (await fs.readdir(legacyReferenceRoot))
     .filter((file) => file.endsWith('.html'))
     .sort((a, b) => a.localeCompare(b))
 
   const entries = []
 
   for (const file of htmlFiles) {
-    const absolutePath = path.join(repoRoot, file)
+    const absolutePath = path.join(legacyReferenceRoot, file)
     const html = await fs.readFile(absolutePath, 'utf8')
     const stat = await fs.stat(absolutePath)
     const title = cleanText(html.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1])
@@ -80,7 +81,7 @@ async function buildManifest() {
   return {
     generatedAt: new Date().toISOString(),
     description:
-      'Current root HTML files frozen as the visual reference for the Astro/Payload migration. Do not treat these files as deleted until their matching Astro/Payload route is adopted and verified.',
+      'Archived legacy HTML files frozen as the visual reference for the Astro/Payload migration. These files live under legacy-reference/html and must not be served as production routes.',
     totals: {
       htmlFiles: entries.length,
       byType: entries.reduce((acc, entry) => {
@@ -122,10 +123,10 @@ if (checkMode) {
 
   if (JSON.stringify(expected) !== JSON.stringify(actual)) {
     const diff = explainDiff(expected, actual)
-    console.error('Legacy reference manifest is stale. Run `corepack pnpm legacy:freeze` after deliberately accepting the current root HTML baseline.')
-    if (diff.added.length > 0) console.error(`Added root HTML files: ${diff.added.slice(0, 20).join(', ')}`)
-    if (diff.missing.length > 0) console.error(`Missing root HTML files: ${diff.missing.slice(0, 20).join(', ')}`)
-    if (diff.changed.length > 0) console.error(`Changed root HTML files: ${diff.changed.slice(0, 20).join(', ')}`)
+    console.error('Legacy reference manifest is stale. Run `corepack pnpm legacy:freeze` after deliberately accepting the archived legacy HTML baseline.')
+    if (diff.added.length > 0) console.error(`Added archived HTML files: ${diff.added.slice(0, 20).join(', ')}`)
+    if (diff.missing.length > 0) console.error(`Missing archived HTML files: ${diff.missing.slice(0, 20).join(', ')}`)
+    if (diff.changed.length > 0) console.error(`Changed archived HTML files: ${diff.changed.slice(0, 20).join(', ')}`)
     process.exit(1)
   }
 

@@ -12,6 +12,7 @@ const targetRoot = path.resolve(repoRoot, process.env.LEGACY_AUDIT_TARGET || 'ap
 const providedBaseUrl = process.env.LEGACY_AUDIT_BASE_URL?.replace(/\/$/, '')
 const limit = Number(process.env.LEGACY_AUDIT_LIMIT || '0')
 const outputPath = path.resolve(webRoot, '.visual-regression', 'legacy-route-audit.json')
+const legacyManifestPath = path.join(repoRoot, 'docs', 'legacy-reference-manifest.json')
 const contentTypes = new Map([
   ['.avif', 'image/avif'],
   ['.css', 'text/css; charset=utf-8'],
@@ -32,8 +33,10 @@ const contentTypes = new Map([
   ['.xml', 'application/xml; charset=utf-8'],
 ])
 
-const files = (await fs.readdir(repoRoot))
-  .filter((file) => file.endsWith('.html'))
+const legacyManifest = JSON.parse(await fs.readFile(legacyManifestPath, 'utf8'))
+const files = (legacyManifest.entries || [])
+  .map((entry) => entry.file)
+  .filter((file) => typeof file === 'string' && file.endsWith('.html'))
   .sort((a, b) => a.localeCompare(b))
 const selectedFiles = limit > 0 ? files.slice(0, limit) : files
 const legacyRedirectTargets = await loadLegacyRedirectTargets()

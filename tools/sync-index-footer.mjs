@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Sync every <footer class="mr-footer">...</footer> block on root HTML pages
+// Historical helper for archived HTML pages; not part of the production Astro/Payload workflow.
 // to the exact markup used on index.html (Home landing). Idempotent.
 
 import { readFile, writeFile, readdir } from 'node:fs/promises';

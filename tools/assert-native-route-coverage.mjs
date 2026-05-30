@@ -119,7 +119,7 @@ export async function auditNativeRouteCoverage(options = {}) {
   let redirectCount = 0
 
   for (const file of [...frozenFiles].sort((a, b) => a.localeCompare(b))) {
-    if (!routeModelFiles.has(file)) failures.push(`Frozen root HTML file is not present in the Astro native route model: ${file}`)
+    if (!routeModelFiles.has(file)) failures.push(`Frozen legacy HTML file is not present in the Astro native route model: ${file}`)
   }
 
   for (const file of [...routeModelFiles].sort((a, b) => a.localeCompare(b))) {
@@ -138,7 +138,7 @@ export async function auditNativeRouteCoverage(options = {}) {
       continue
     }
 
-    failures.push(`Frozen root HTML file has no native renderer or redirect: ${file}`)
+    failures.push(`Frozen legacy HTML file has no native renderer or redirect: ${file}`)
   }
 
   for (const file of [...adoptedFiles].sort((a, b) => a.localeCompare(b))) {

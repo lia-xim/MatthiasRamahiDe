@@ -23,6 +23,7 @@ function flag(name) {
 
 const targetRoot = path.resolve(repoRoot, option('target', 'apps/web/dist/client'))
 const outputPath = path.resolve(process.cwd(), option('output', '.site-quality/site-quality-audit.json'))
+const legacyManifestPath = path.join(repoRoot, 'docs', 'legacy-reference-manifest.json')
 const providedBaseUrl = option('base-url').replace(/\/$/, '')
 const routeSource = option('route-source', providedBaseUrl ? 'all' : 'build')
 const routeFilter = new Set(
@@ -136,10 +137,11 @@ async function buildRoutesFromDist() {
 }
 
 async function buildRoutesFromLegacyFiles() {
-  const entries = await fs.readdir(repoRoot, { withFileTypes: true })
-  return entries
-    .filter((entry) => entry.isFile() && entry.name.endsWith('.html'))
-    .map((entry) => normalizeRoute(entry.name))
+  const manifest = JSON.parse(await fs.readFile(legacyManifestPath, 'utf8'))
+  return (manifest.entries || [])
+    .map((entry) => entry.file)
+    .filter((file) => typeof file === 'string' && file.endsWith('.html'))
+    .map((file) => normalizeRoute(file))
 }
 
 async function buildRoutesFromSitemaps() {

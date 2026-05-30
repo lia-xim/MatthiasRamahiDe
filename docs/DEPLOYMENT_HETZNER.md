@@ -197,7 +197,7 @@ Das Feld `Bilder` -> `Hero-Bild` bleibt ein einzelnes Seitenbild fuer Fallbacks,
 ## URL-Strategie
 
 - Alte `.html`-URLs bleiben erreichbar und sind fuer SEO die primaere sichtbare URL.
-- Alle 217 bisherigen Root-HTML-URLs werden als Astro-Routen gebaut; die Root-HTML-Dateien sind nur noch visuelle Referenz/Baseline, nicht Produktionsquelle.
+- Alle 217 bisherigen `.html`-URLs werden als Astro-Routen gebaut; die alten HTML-Dateien liegen nur noch unter `legacy-reference/html` als visuelle Referenz/Baseline, nicht als Produktionsquelle.
 - Adoptierte Kernseiten laufen ueber native Astro-Komponenten, Local-SEO-Seiten ueber den Family-Renderer, Journal-/Legal-Seiten ueber eigene strukturierte Renderer.
 - Echte Dubletten redirecten kanonisch mit 308, z. B. `blog-journal.html` zu `/blog.html` oder `weitere-dienstleistungen.html` zu `/leistungen.html`.
 - Konzeptseiten bleiben noindex Astro-Archivseiten, damit alte Links nicht brechen, aber keine SEO-Dubletten entstehen.

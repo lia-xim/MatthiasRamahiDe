@@ -7,6 +7,7 @@ import { chromium } from 'playwright'
 import { PNG } from 'pngjs'
 
 const repoRoot = path.resolve(process.cwd(), '../..')
+const legacyReferenceRoot = path.resolve(repoRoot, process.env.LEGACY_REFERENCE_HTML_ROOT || 'legacy-reference/html')
 const componentTargetRoot = path.resolve(process.cwd(), process.env.VISUAL_COMPONENT_TARGET || 'dist/client')
 const configuredComponentBaseUrl = process.env.VISUAL_BASE_URL?.replace(/\/$/, '')
 const configuredLegacyBaseUrl = process.env.VISUAL_LEGACY_BASE_URL?.replace(/\/$/, '')
@@ -263,6 +264,11 @@ function isInsideRepo(filePath) {
   return relative === '' || (!relative.startsWith('..') && !path.isAbsolute(relative))
 }
 
+function isInsideLegacyReference(filePath) {
+  const relative = path.relative(legacyReferenceRoot, filePath)
+  return relative === '' || (!relative.startsWith('..') && !path.isAbsolute(relative))
+}
+
 async function fileExists(filePath) {
   try {
     const stat = await fs.stat(filePath)
@@ -278,19 +284,20 @@ async function legacyFileForPath(pathname) {
   const candidates = []
 
   if (!normalizedPath || normalizedPath === '.') {
-    candidates.push(path.join(repoRoot, 'index.html'))
+    candidates.push(path.join(legacyReferenceRoot, 'index.html'))
   } else if (normalizedPath.startsWith(`assets${path.sep}`) || normalizedPath.startsWith('assets/')) {
     candidates.push(path.join(repoRoot, normalizedPath))
   } else if (!normalizedPath.includes(path.sep) && !normalizedPath.endsWith('.html')) {
-    candidates.push(path.join(repoRoot, `${normalizedPath}.html`))
-    candidates.push(path.join(repoRoot, normalizedPath))
+    candidates.push(path.join(legacyReferenceRoot, `${normalizedPath}.html`))
+    candidates.push(path.join(legacyReferenceRoot, normalizedPath))
   } else {
-    candidates.push(path.join(repoRoot, normalizedPath))
+    candidates.push(path.join(legacyReferenceRoot, normalizedPath))
   }
 
   for (const candidate of candidates) {
     const resolved = path.resolve(candidate)
-    if (isInsideRepo(resolved) && (await fileExists(resolved))) return resolved
+    const allowed = resolved.startsWith(path.join(repoRoot, 'assets')) ? isInsideRepo(resolved) : isInsideLegacyReference(resolved)
+    if (allowed && (await fileExists(resolved))) return resolved
   }
 
   return null
