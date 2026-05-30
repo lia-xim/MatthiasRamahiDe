@@ -8,6 +8,7 @@ import { mediaRelationshipField } from '../fields/editorialImages'
 import { legacyMigrationFields } from '../fields/legacyMigration'
 import { linkFields } from '../fields/links'
 import { seoFields } from '../fields/seo'
+import { serviceSectionsTab } from '../fields/serviceSections'
 import { slugField } from '../fields/slug'
 import { applyEditorialDefaults } from '../hooks/autoDefaults'
 import { normalizeLinksBeforeValidate } from '../hooks/normalizeLinks'
@@ -165,6 +166,7 @@ export const ServicePages: CollectionConfig = {
             contentBlocks,
           ],
         },
+        serviceSectionsTab,
         {
           label: 'Advanced',
           description: 'CTA, interne Links, SEO und Legacy-Migration.',

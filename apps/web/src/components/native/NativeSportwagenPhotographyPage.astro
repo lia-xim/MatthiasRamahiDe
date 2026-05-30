@@ -8,7 +8,7 @@ import {
   type NativeFamilyPreviewState,
 } from '../../lib/nativeFamilyPageContext'
 import { familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
-import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
+import { getLegacyBackedDoc, imageAlt, imageDimensions, imageDisplayUrl, imageSrcset, type PayloadDoc, type PayloadMedia } from '../../lib/payload'
 
 type Props = {
   doc?: PayloadDoc | null
@@ -36,7 +36,8 @@ const pageContext = nativeFamilyPageContext({
   preview,
 })
 const { clusterHeading, clusterLinks, isKeywordPage, isParentPage, overviewHref, publishedHref, scope, serviceLabel } = pageContext
-const heroSecondLine = isParentPage || isKeywordPage ? 'Fotografie.' : `Fotografie ${scope.label}.`
+const cmsHeroLine2 = typeof doc?.heroLine2 === 'string' ? doc.heroLine2.trim() : ''
+const heroSecondLine = cmsHeroLine2 || (isParentPage || isKeywordPage ? 'Fotografie.' : `Fotografie ${scope.label}.`)
 const heroLabel = isParentPage || isKeywordPage ? 'Sportwagenfotografie' : `Sportwagenfotografie ${scope.label}`
 const heroLead = isParentPage
   ? 'Sportwagenfotografie: Performance, Form, Innenraum und Details werden mit kontrollierten Reflexen und ruhiger Dramaturgie sichtbar — für Sammler, Händler, Marke, Verkauf und Druck. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.'
@@ -235,6 +236,75 @@ const inheritedAudiences = audiences.map((audience, index) => {
   return { ...audience, alt: visual.alt, height: visual.height, image: visual.src, width: visual.width }
 })
 
+// ===== CMS-Overrides der Themen-Sektionen =====
+// Jede Sektion liest aus dem ServicePages-Doc (Tab „Themen-Sektionen"); ist sie leer,
+// greift der bisherige Wert (inherited*/Hardcode) als Fallback. So bricht nichts,
+// solange das CMS-Feld nicht gepflegt ist.
+type SectionMedia = PayloadMedia | string | undefined
+const resolveSectionImage = <T extends { src?: string; full?: string; image?: string; mobile?: string; srcset?: string; width?: number; height?: number; alt?: string }>(
+  media: SectionMedia,
+  fallback: T,
+) => {
+  const full = imageDisplayUrl(media as PayloadMedia | string | undefined, 'wide', { allowOriginal: true })
+  if (!full) return fallback
+  const src = imageDisplayUrl(media as PayloadMedia | string | undefined, 'card', { allowOriginal: true }) || full
+  const mobile = imageDisplayUrl(media as PayloadMedia | string | undefined, 'mobile', { allowOriginal: true }) || src
+  const dim = imageDimensions(media as PayloadMedia | undefined, 'card')
+  return {
+    ...fallback,
+    src,
+    full,
+    image: src,
+    mobile,
+    srcset: imageSrcset(media as PayloadMedia | undefined, ['mobile', 'card', 'hero', 'wide']) || fallback.srcset || '',
+    width: dim.width || fallback.width,
+    height: dim.height || fallback.height,
+    alt: imageAlt(media as PayloadMedia | undefined, fallback.alt || ''),
+  }
+}
+
+const finalHeroPanels = doc?.heroPanels?.length
+  ? doc.heroPanels.map((panel, index) => {
+      const fbTuple = inheritedHeroPanels[index % inheritedHeroPanels.length]
+      const resolved = resolveSectionImage(panel.image, fbTuple[3])
+      return [fbTuple[0], resolved.full, resolved.mobile, resolved] as const
+    })
+  : inheritedHeroPanels
+
+const finalShootingStyles = doc?.shootingStyles?.length
+  ? doc.shootingStyles.map((style, index) => {
+      const fb = inheritedShootingStyles[index] || inheritedShootingStyles[inheritedShootingStyles.length - 1]
+      const resolved = resolveSectionImage(style.image, fb)
+      return { ...resolved, title: style.title || fb.title, text: style.text || fb.text }
+    })
+  : inheritedShootingStyles
+
+const finalPortfolioTiles = doc?.portfolioTiles?.length
+  ? doc.portfolioTiles.map((tile, index) => {
+      const fb = inheritedPortfolioTiles[index] || inheritedPortfolioTiles[inheritedPortfolioTiles.length - 1]
+      const resolved = resolveSectionImage(tile.image, fb)
+      return { ...resolved, className: fb.className, label: tile.label || fb.label }
+    })
+  : inheritedPortfolioTiles
+
+const finalAudiences = doc?.audienceCards?.length
+  ? doc.audienceCards.map((card, index) => {
+      const fb = inheritedAudiences[index] || inheritedAudiences[inheritedAudiences.length - 1]
+      const resolved = resolveSectionImage(card.image, fb)
+      return { ...resolved, number: card.number || fb.number, title: card.title || fb.title, text: card.text || fb.text }
+    })
+  : inheritedAudiences
+
+const finalStatementImage = finalPortfolioTiles[0] || statementImage
+const statementHeadline = (typeof doc?.statement?.headline === 'string' && doc.statement.headline.trim()) || 'Bilder mit'
+const statementEmphasis = (typeof doc?.statement?.emphasis === 'string' && doc.statement.emphasis.trim()) || 'Druckqualität.'
+const statementBody = doc?.statement?.body?.length
+  ? doc.statement.body.map((entry) => entry.text).filter((text): text is string => Boolean(text))
+  : [
+      'Sportwagen verlangen Präzision. Ich arbeite mit mobilem Licht, Reflektoren und einem klaren Plan — kontrollierte Reflexe, ruhige Hintergründe, echte Farben. Lack, Linien und Proportionen wirken stimmig, nicht überzeichnet.',
+      'Ob Verkauf, Branding, Redaktion oder persönliches Geschenk: ich kombiniere klares Licht, saubere Komposition und einen Blick für Details. Sie erhalten Dateien für Web, Social Media und Druck — aufbereitet und sofort einsatzbereit.',
+    ]
+
 const relatedAreas = [
   {
     href: 'automobil-fotografie.html',
@@ -315,7 +385,7 @@ const searchLinks = [
   title={metaTitle}
   description={metaDescription}
   ogImage={visualSlots[1].full}
-  preloadImages={[inheritedHeroPanels[0][3].full]}
+  preloadImages={[finalHeroPanels[0][3].full]}
 >
   {preview && (
     <PreviewToolbar
@@ -328,7 +398,7 @@ const searchLinks = [
   <main>
     <section class="hero-tri" id="top" data-header-theme="dark" aria-label={heroLabel}>
       <div class="tri-stage" aria-hidden="true">
-        {inheritedHeroPanels.map(([name, image, mobileImage, visual], index) => (
+        {finalHeroPanels.map(([name, image, mobileImage, visual], index) => (
           <div class="tri-col" data-tri={name}>
             <div class="tri-img">
               <picture>
@@ -366,14 +436,13 @@ const searchLinks = [
     <section class="st" data-header-theme="light">
       <div class="section-inner">
         <div class="st-copy">
-          <h2>Bilder mit <em>Druckqualität.</em></h2>
+          <h2>{statementHeadline} <em>{statementEmphasis}</em></h2>
           <div class="st-body">
-            <p>Sportwagen verlangen Präzision. Ich arbeite mit <strong>mobilem Licht, Reflektoren und einem klaren Plan</strong> — kontrollierte Reflexe, ruhige Hintergründe, echte Farben. Lack, Linien und Proportionen wirken stimmig, nicht überzeichnet.</p>
-            <p>Ob Verkauf, Branding, Redaktion oder persönliches Geschenk: ich kombiniere klares Licht, saubere Komposition und einen Blick für Details. Sie erhalten Dateien für Web, Social Media und Druck — aufbereitet und sofort einsatzbereit.</p>
+            {statementBody.map((paragraph) => <p>{paragraph}</p>)}
           </div>
         </div>
         <figure class="st-image">
-          <img loading="lazy" src={statementImage.src} alt={statementImage.alt} width={statementImage.width} height={statementImage.height} decoding="async" />
+          <img loading="lazy" src={finalStatementImage.src} alt={finalStatementImage.alt} width={finalStatementImage.width} height={finalStatementImage.height} decoding="async" />
         </figure>
       </div>
     </section>
@@ -385,7 +454,7 @@ const searchLinks = [
           <p>Exterieur, Interieur, Details und cineastische Perspektiven greifen ineinander — ein Bildsatz, der Fahrzeug, Atmosphäre und Material gleichermaßen zeigt.</p>
         </div>
         <div class="sh-grid">
-          {inheritedShootingStyles.map((style) => (
+          {finalShootingStyles.map((style) => (
             <article class="sh-card">
               <figure class="sh-img"><img loading="lazy" src={style.image} alt={style.alt} width={style.width} height={style.height} decoding="async" /></figure>
               <div class="sh-text">
@@ -407,7 +476,7 @@ const searchLinks = [
           </div>
         </header>
 
-        {inheritedPortfolioTiles.map((tile, index) => (
+        {finalPortfolioTiles.map((tile, index) => (
           <button type="button" class={`po-tile ${tile.className}`} data-i={index} data-full={tile.full} aria-label={`Bild ${index + 1} vergrößern`}>
             <img
               src={tile.src}
@@ -436,7 +505,7 @@ const searchLinks = [
           <p>Vom privaten Fahrzeug bis zur internationalen Kampagne. Jede Serie wird auf Nutzung, Marke und Zielgruppe zugeschnitten — ein Hero-Motiv oder ein vollständiges Launch-Asset-Paket.</p>
         </div>
         <div class="fw-grid">
-          {inheritedAudiences.map((audience) => (
+          {finalAudiences.map((audience) => (
             <article class="fw-card">
               <img loading="lazy" src={audience.image} alt={audience.alt} width={audience.width} height={audience.height} decoding="async" />
               <div class="overlay"></div>

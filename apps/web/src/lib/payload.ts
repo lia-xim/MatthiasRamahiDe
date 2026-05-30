@@ -73,6 +73,13 @@ export type PayloadDoc = {
   }>
   proofPoints?: Array<{ label?: string; text?: string }>
   audience?: Array<{ item?: string }>
+  // Strukturierte Themen-Seiten-Sektionen (ServicePages → Tab „Themen-Sektionen"). Alle optional → Fallback im Component.
+  heroLine2?: string
+  heroPanels?: Array<{ image?: PayloadMedia | string }>
+  statement?: { headline?: string; emphasis?: string; body?: Array<{ text?: string }> }
+  shootingStyles?: Array<{ image?: PayloadMedia | string; title?: string; text?: string }>
+  portfolioTiles?: Array<{ image?: PayloadMedia | string; label?: string }>
+  audienceCards?: Array<{ image?: PayloadMedia | string; number?: string; title?: string; text?: string }>
   faq?: Array<{ question?: string; answer?: string }>
   localFaq?: Array<{ question?: string; answer?: string }>
   relatedPages?: PayloadLink[]
