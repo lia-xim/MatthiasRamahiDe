@@ -252,7 +252,12 @@
     .rl-grid{grid-template-columns:repeat(2,1fr)}
   }
   @media (max-width:720px){
-    .mk-grid{grid-template-columns:1fr}
+    /* Shorter, editorial modules: no card chrome, flatter images, tighter. */
+    .mk-grid{grid-template-columns:1fr;gap:clamp(26px,7vw,40px)}
+    .mk-card{grid-template-columns:1fr;background:transparent;padding:0;gap:14px}
+    .mk-img{aspect-ratio:16/10}
+    .mk-text{gap:10px}
+    .mk-text h3{font-size:clamp(22px,6vw,28px)}
   }
   @media (max-width:1080px){
     .hero-mr__rail{width:clamp(160px,22vw,220px)}
@@ -274,18 +279,28 @@
     .st-body{justify-self:start}
     .mk-card{grid-template-columns:1fr}
     .po{height:auto;max-height:none}
-    .po-grid{position:relative;grid-template-columns:repeat(2,1fr);grid-template-rows:none;grid-auto-rows:38vh;padding:8px;gap:8px}
-    .po-head{grid-column:1 / 3;grid-row:auto;padding:clamp(30px,6vw,48px) clamp(16px,4vw,28px);min-height:38vh}
-    .po-head h2{font-size:clamp(34px,8vw,56px)}
+    /* Clean stacked gallery: header as a normal block (no space-between gap),
+       then all six tiles in an even 2-col grid (6 = no empty trailing cell). */
+    .po-grid{position:relative;inset:auto;grid-template-columns:1fr 1fr;grid-template-rows:none;grid-auto-rows:auto;padding:0 clamp(16px,4vw,22px) clamp(48px,9vw,72px);gap:8px}
+    .po-head{grid-column:1 / 3;display:block;background:none;min-height:0;padding:clamp(56px,12vw,92px) 0 clamp(20px,5vw,32px)}
+    .po-head h2{font-size:clamp(40px,11vw,60px);line-height:.92;margin-bottom:14px}
+    .po-head p{max-width:none}
+    .po-tile{aspect-ratio:4/5;opacity:1;transform:none}
     .po-tile.t1,.po-tile.t2,.po-tile.t3,.po-tile.t4,.po-tile.t5,.po-tile.t6{grid-column:auto;grid-row:auto}
-    .po-tile.t1{grid-column:1 / 3}
+    .fw{min-height:0}
+    .fw .section-inner{gap:clamp(26px,6vw,40px)}
     .fw-head{flex-direction:column;align-items:flex-start}
-    .fw-grid{grid-template-columns:1fr 1fr}
+    .fw-head h2{font-size:clamp(34px,9vw,52px)}
+    .fw-grid{grid-template-columns:1fr 1fr;gap:0}
     .rl-head{grid-template-columns:1fr;gap:18px}
     .rl-head p{justify-self:start}
   }
   @media (max-width:600px){
-    .fw-grid{grid-template-columns:1fr}
+    /* Stacked audience list: horizontal hairlines read cleaner than left bars. */
+    .fw-grid{grid-template-columns:1fr;gap:0}
+    .fw-card{border-left:0;border-top:1px solid rgba(10,12,16,.14);padding:clamp(18px,4.5vw,22px) 0}
+    .fw-card:first-child{border-top:0}
+    .fw-card:hover{padding-left:0;border-left:0}
     .rl-grid{grid-template-columns:1fr}
   }
   @media (prefers-reduced-motion:reduce){
