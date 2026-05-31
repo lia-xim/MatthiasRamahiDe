@@ -8,6 +8,7 @@ import {
   nativeFamilyPageContext,
   type NativeFamilyPreviewState,
 } from '../../lib/nativeFamilyPageContext'
+import { mergeAuthoredLocalSeoContent } from '../../lib/authoredSeoContent'
 import { keywordFocusCopyForSlug } from '../../lib/localSeoFamilyContent'
 import { familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
 import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
@@ -23,7 +24,8 @@ const defaultLegacyFile = 'portraitfotografie.html'
 const props = Astro.props as Props
 const { doc: providedDoc = undefined, legacyFile: providedLegacyFile, preview, visualDoc: providedVisualDoc = undefined } = props
 const legacyFile = providedLegacyFile || defaultLegacyFile
-const doc = providedDoc || (await getLegacyBackedDoc(legacyFile, { depth: 2 }))
+const fetchedDoc = providedDoc || (await getLegacyBackedDoc(legacyFile, { depth: 2 }))
+const doc = preview ? fetchedDoc : mergeAuthoredLocalSeoContent(legacyFile, fetchedDoc)
 const shouldUseCmsVisualDoc = import.meta.env.ASTRO_DISABLE_CMS_VISUAL_OVERRIDES !== 'true'
 const visualDoc = Object.hasOwn(props, 'visualDoc')
   ? providedVisualDoc
@@ -45,8 +47,8 @@ const cmsText = (value: unknown) => (typeof value === 'string' ? value.trim() : 
 const cmsHeroLine2 = cmsText(doc?.heroLine2)
 const cmsStatementBody = doc?.statement?.body?.map((entry) => cmsText(entry.text)).filter(Boolean) || []
 const heroLabel = isParentPage || isKeywordPage ? 'Portraitfotografie' : `Portraitfotografie ${scope.label}`
-const heroTitle = keywordFocusCopy?.heroTitle || (isParentPage || isKeywordPage ? 'Portrait' : 'Portraitfotografie')
-const heroEmphasis = cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || (isParentPage || isKeywordPage ? 'Fotografie.' : `${scope.label}.`)
+const heroTitle = !isParentPage && !isKeywordPage ? serviceLabel : keywordFocusCopy?.heroTitle || 'Portrait'
+const heroEmphasis = !isParentPage && !isKeywordPage ? `${scope.label}.` : cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Fotografie.'
 const defaultHeroLead = isParentPage
   ? 'Portraitfotografie: Blick, Licht, Distanz und Haltung werden auf Nutzung und Persönlichkeit abgestimmt — für Personal Branding, Business Portraits, Team, Presse und Editorial. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.'
   : isKeywordPage
@@ -54,17 +56,18 @@ const defaultHeroLead = isParentPage
     : `Portraitfotografie in ${scope.label}: Blick, Licht, Distanz und Haltung werden auf Nutzung und Persönlichkeit abgestimmt - für Personal Branding, Business Portraits, Team, Presse und Editorial. ${localScopePhrase(scope)}`
 const keywordLocalContext = keywordFocusCopy && !isParentPage && !isKeywordPage ? ` ${localScopePhrase(scope)}` : ''
 const heroLead = keywordFocusCopy?.heroLead ? `${keywordFocusCopy.heroLead}${keywordLocalContext}` : defaultHeroLead
-const metaTitle = isParentPage
+const fallbackMetaTitle = isParentPage
   ? 'Portraitfotografie - Matthias Ramahi'
   : isKeywordPage
     ? `${serviceLabel} | Matthias Ramahi`
     : `${serviceLabel} ${scope.label} | Matthias Ramahi`
+const metaTitle = doc?.seo?.title || fallbackMetaTitle
 const defaultMetaDescription = isParentPage
   ? 'Portraitfotografie: Personal Branding, Business Portraits, Editorial, Team und Presse - professionell, ruhig, nahbar und nicht glattgebuegelt.'
   : isKeywordPage
     ? `${serviceLabel}: Personal Branding, Business Portraits, Editorial, Team und Presse.`
     : `${serviceLabel} ${scope.label}: Personal Branding, Business Portraits, Editorial, Team und Presse.`
-const metaDescription = keywordFocusCopy?.metaDescription || defaultMetaDescription
+const metaDescription = doc?.seo?.description || keywordFocusCopy?.metaDescription || defaultMetaDescription
 const contactSubject = isParentPage ? 'Portrait Fotografie Anfrage' : `${serviceLabel}${isKeywordPage ? '' : ` ${scope.label}`} Anfrage`
 const contactHeadline = isParentPage
   ? 'Portrait <em>anfragen.</em>'

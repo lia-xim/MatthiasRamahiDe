@@ -52,10 +52,38 @@ const serviceHubFiles = new Set(hubs.map((e) => String(e.legacyFile || '').toLow
 // ---------- text helpers ----------
 const STOP = new Set(['und','der','die','das','für','mit','von','aus','den','dem','ein','eine','matthias','ramahi','wird','werden','sind','ist','als','auf','bei','wie','was','wo'])
 const GENERIC = new Set(['fotografie','foto','fotos','fotoshooting','fotograf','shooting','bilder','bild'])
-const toWords = (s) => (s || '').toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9äöüß ]+/g, ' ').split(/\s+/).filter((w) => w.length > 2)
+const decodeEntities = (s = '') => String(s)
+  .replace(/&nbsp;/gi, ' ')
+  .replace(/&amp;/gi, '&')
+  .replace(/&quot;/gi, '"')
+  .replace(/&#34;/gi, '"')
+  .replace(/&auml;/gi, 'ae')
+  .replace(/&ouml;/gi, 'oe')
+  .replace(/&uuml;/gi, 'ue')
+  .replace(/&Auml;/g, 'Ae')
+  .replace(/&Ouml;/g, 'Oe')
+  .replace(/&Uuml;/g, 'Ue')
+  .replace(/&szlig;/gi, 'ss')
+  .replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(Number(n)))
+const toWords = (s) => decodeEntities(s || '').toLowerCase().replace(/ß/g, 'ss').normalize('NFKD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9äöü ]+/g, ' ').split(/\s+/).filter((w) => w.length > 2)
 const shingles = (ws, n = 3) => { const set = new Set(); for (let i = 0; i + n <= ws.length; i++) set.add(ws.slice(i, i + n).join(' ')); return set }
 const jaccard = (a, b) => { if (!a.size || !b.size) return 0; let i = 0; const [s, big] = a.size < b.size ? [a, b] : [b, a]; for (const x of s) if (big.has(x)) i++; return i / (a.size + b.size - i) }
 const between = (n, lo, hi) => n >= lo && n <= hi
+const meaningfulWords = (s) => toWords(s).filter((w) => w.length > 3 && !STOP.has(w))
+const meaningfulLine = (s) => meaningfulWords(s).join(' ')
+const cityVisibleInText = (text, geo) => {
+  if (!geo || geo === 'generic' || geo === 'überregional' || geo === 'Düsseldorf (Parent)') return true
+  const haystack = new Set(toWords(text))
+  const labelWords = toWords(cityLabel[geo] || geo)
+  const slugWords = toWords(geo)
+  return (labelWords.length && labelWords.every((w) => haystack.has(w))) || (slugWords.length && slugWords.every((w) => haystack.has(w)))
+}
+const authoredTextVisible = (mainText, sourceText, signatureLength = 9) => {
+  const sig = meaningfulWords(sourceText).slice(0, signatureLength)
+  if (sig.length < 5) return true
+  return meaningfulLine(mainText).includes(sig.join(' '))
+}
+const authoredIntroVisible = (mainText, intro) => authoredTextVisible(mainText, intro, 9)
 
 const geoOf = (file) => { const slug = file.replace(/\.html$/, ''); for (const t of cityTokens) if (slug === t || slug.endsWith('-' + t)) return t; return 'generic' }
 const sigText = (e) => [e.intro, e.statement?.headline, e.statement?.emphasis, ...(e.statement?.body || []), ...(e.audienceCards || []).flatMap((c) => [c.title, c.text]), ...(e.localFaq || []).flatMap((f) => [f.question, f.answer])].filter(Boolean).join(' ')
@@ -66,14 +94,10 @@ const targetTokens = (e, geo) => {
   return new Set(toWords(stripBrand(e.seo?.title) + ' ' + (e.targetKeyword || '') + ' ' + (e.service || '')).filter((w) => !STOP.has(w) && !GENERIC.has(w) && !geoWords.has(w)))
 }
 
-const stripHtml = (html) => (html || '')
+const stripHtml = (html) => decodeEntities(html || '')
   .replace(/<script\b[\s\S]*?<\/script>/gi, ' ')
   .replace(/<style\b[\s\S]*?<\/style>/gi, ' ')
   .replace(/<[^>]+>/g, ' ')
-  .replace(/&nbsp;/g, ' ')
-  .replace(/&amp;/g, '&')
-  .replace(/&quot;/g, '"')
-  .replace(/&#34;/g, '"')
   .replace(/\s+/g, ' ')
   .trim()
 
@@ -201,6 +225,7 @@ const allBuiltPages = collectIndexPages(distClient)
       file,
       h1,
       indexable: !redirect && !noindex,
+      mainText,
       redirect,
       route,
       textWords: toWords(mainText).length,
@@ -228,6 +253,32 @@ const serviceHubCount = rows.filter((r) => serviceHubFiles.has(r.file)).length
 const createCount = rows.filter((r) => noDoc.has(r.file) && !serviceHubFiles.has(r.file)).length
 const updateCount = rows.length - createCount - serviceHubCount
 const avg = (arr) => (arr.length ? Math.round(arr.reduce((a, b) => a + b, 0) / arr.length) : 0)
+const builtByLocalFile = new Map(allBuiltPages.filter((page) => page.route.endsWith('.html')).map((page) => [page.route.toLowerCase(), page]))
+const buildAuditRows = rows.map((r) => {
+  const page = builtByLocalFile.get(r.file)
+  const sc = byFile.get(r.file)
+  const issues = []
+  if (!page) {
+    issues.push('HTML fehlt')
+  } else {
+    if (r.kind === 'city' && !cityVisibleInText(page.h1, r.scope)) issues.push('H1 ohne Ort')
+    if (r.kind === 'city' && sc?.e?.seo?.description && cityVisibleInText(sc.e.seo.description, r.scope) && !cityVisibleInText(page.description, r.scope)) issues.push('Desc ohne Ort')
+    if (sc?.e?.intro && !authoredIntroVisible(page.mainText, sc.e.intro)) issues.push('Intro fehlt im HTML')
+    const statementText = [sc?.e?.statement?.headline, sc?.e?.statement?.emphasis, ...(sc?.e?.statement?.body || [])].filter(Boolean).join(' ')
+    if (statementText && !authoredTextVisible(page.mainText, statementText, 8)) issues.push('Statement fehlt im HTML')
+    const audienceText = (sc?.e?.audienceCards || []).slice(0, 2).map((card) => `${card.title || ''} ${card.text || ''}`).join(' ')
+    if (audienceText && !authoredTextVisible(page.mainText, audienceText, 8)) issues.push('Audience fehlt im HTML')
+    const faqText = (sc?.e?.localFaq || []).slice(0, 1).map((faq) => `${faq.question || ''} ${faq.answer || ''}`).join(' ')
+    if (faqText && !authoredTextVisible(page.mainText, faqText, 8)) issues.push('FAQ fehlt im HTML')
+    const targetCore = [...(sc?.tt || [])].filter((w) => w.length > 3)
+    const builtWords = new Set(toWords(`${page.title} ${page.h1} ${page.description} ${page.mainText}`))
+    if (targetCore.length && !targetCore.every((w) => builtWords.has(w))) issues.push('Keyword fehlt im HTML')
+  }
+  return { ...r, h1: page?.h1 || '', issues }
+})
+const buildAuditByFile = new Map(buildAuditRows.map((r) => [r.file, r]))
+const buildAuditIssueRows = buildAuditRows.filter((r) => r.issues.length)
+const buildIssueCount = (label) => buildAuditRows.filter((r) => r.issues.includes(label)).length
 const all = scored
 const allIndexablePages = allBuiltPages.filter((page) => page.indexable)
 const byType = new Map()
@@ -251,12 +302,19 @@ md += `## Websiteweite Seiteninventur\n`
 md += `- Gebaute HTML-Seiten insgesamt: ${allBuiltPages.length} · indexierbar: ${allIndexablePages.length} · noindex/Redirect: ${allBuiltPages.length - allIndexablePages.length}\n`
 md += `- Typen: ${[...byType.entries()].sort((a, b) => a[0].localeCompare(b[0])).map(([type, count]) => `${type}: ${count}`).join(' · ')}\n`
 md += `- Doppelte Title auf indexierbaren Seiten: ${websiteDuplicateTitles.length} · fehlende Canonicals: ${websiteCanonicalIssues.length} · Title-Laenge ausserhalb 25-70: ${websiteTitleIssues.length} · Description-Laenge ausserhalb 90-170: ${websiteDescriptionIssues.length}\n\n`
+md += `- Local-SEO-Build-Abgleich: H1 ohne Ort: ${buildIssueCount('H1 ohne Ort')} · Keyword fehlt im HTML: ${buildIssueCount('Keyword fehlt im HTML')} · Description ohne Ort: ${buildIssueCount('Desc ohne Ort')}\n`
+md += `- Local-SEO-CMS-Ausspielung: Intro fehlt: ${buildIssueCount('Intro fehlt im HTML')} · Statement fehlt: ${buildIssueCount('Statement fehlt im HTML')} · Audience-Cards fehlen: ${buildIssueCount('Audience fehlt im HTML')} · FAQ fehlt: ${buildIssueCount('FAQ fehlt im HTML')}\n\n`
 if (websiteCanonicalIssues.length || websiteTitleIssues.length || websiteDescriptionIssues.length || websiteDuplicateTitles.length) {
   md += `**Websiteweite Flags:**\n`
   for (const page of websiteCanonicalIssues.slice(0, 20)) md += `- Canonical fehlt: \`${page.route}\`\n`
   for (const page of websiteTitleIssues.slice(0, 20)) md += `- Title-Laenge ${page.titleLength}: \`${page.route}\`\n`
   for (const page of websiteDescriptionIssues.slice(0, 20)) md += `- Description-Laenge ${page.description.length}: \`${page.route}\`\n`
   for (const routes of websiteDuplicateTitles.slice(0, 20)) md += `- Doppelter Title: ${routes.map((route) => `\`${route}\``).join(', ')}\n`
+  md += `\n`
+}
+if (buildAuditIssueRows.length) {
+  md += `**Local-SEO-Build-Flags:**\n`
+  for (const row of buildAuditIssueRows.slice(0, 40)) md += `- \`${row.file}\`: ${row.issues.join(', ')}${row.h1 ? ` (H1: "${row.h1}")` : ''}\n`
   md += `\n`
 }
 md += `| Route | Typ | Index | Title | Desc | Words | Canonical |\n|---|---|---|---:|---:|---:|---|\n`
@@ -270,6 +328,7 @@ md += `## Scoring-Methodik\n`
 md += `- **Q · SEO-Qualität (0–100):** Struktur (Intro 180–760 Z., 2 Statement-Absätze ≥110, ≥4 Audience-Cards, 4 FAQ ≥80) **+ thematische Abdeckung** (SEO-Title 30–70, Description 115–170, Fokus-Keyword im Intro, lokaler Ortsname im Intro bei Stadt-Seiten, echte W-Frage in den FAQ).\n`
 md += `- **U · Content-Einzigartigkeit (0–100):** \`100 × (1 − max. Prosa-Ähnlichkeit)\` (Jaccard über Wort-Trigramme des Fließtexts gegen **alle** Seiten) → erkennt **Duplicate Content**.\n`
 md += `- **K · Intent-Trennung / Anti-Kannibalisierung (0–100):** \`100 × (1 − max. Ziel-Überlappung)\`. Ziel = Title-/Keyword-Tokens **ohne** Marke, **ohne** generische Wörter (fotografie/foto/shooting…) und **ohne** den Ortsnamen — verglichen nur **innerhalb derselben Familie + desselben Ortes** (dort entsteht Kannibalisierung). Niedriges K = zwei Seiten zielen am selben Ort auf denselben Begriff.\n\n`
+md += `- **Build-Check:** vergleicht die gebaute HTML-Seite mit dem authored CMS-Content. Rot wird: Stadtseite ohne Ort im H1, Kernkeyword nicht sichtbar, Description ohne Ort oder authored Sektionen (Intro/Statement/Audience/FAQ) nicht im HTML.\n\n`
 md += `**Interpretation — bei allen drei gilt: höher = besser (Skala 0–100).**\n`
 md += `- **Qualität:** hoch = Seite ist inhaltlich vollständig + thematisch sauber (Keyword/Ort/FAQ abgedeckt). Niedrig = etwas fehlt oder ist zu kurz.\n`
 md += `- **Einzigartigkeit:** hoch = der Text teilt fast nichts mit anderen Seiten (kein Duplicate Content). Niedrig = zu ähnlich zu einer anderen Seite.\n`
@@ -335,11 +394,13 @@ for (const fam of famOrder) {
   const fr = rows.filter((r) => r.fam === fam)
   if (!fr.length) continue
   md += `## ${fam} (${fr.length})\n\n`
-  md += `| Seite | Prefix | Scope | Typ | Copy | FAQ | CMS | ✍️ | Qualität | Einzigartigkeit | Kannibalisierungs-Schutz | Status |\n|---|---|---|---|---|---|---|---|---|---|---|---|\n`
+  md += `| Seite | Prefix | Scope | Typ | Copy | FAQ | CMS | ✍️ | Qualität | Einzigartigkeit | Kannibalisierungs-Schutz | Build-Check | Status |\n|---|---|---|---|---|---|---|---|---|---|---|---|---|\n`
   for (const r of fr) {
     const copy = richCopy.has(r.prefix) ? 'rich' : 'gen', faq = faqKeys.has(r.prefix) ? 'ja' : '—'
     const cms = serviceHubFiles.has(r.file) ? 'SERVICE' : noDoc.has(r.file) ? 'CREATE' : 'UPDATE', done = authored.has(r.file), sc = byFile.get(r.file)
-    md += `| \`${r.slug}.html\` | ${r.prefix} | ${r.scope} | ${r.kind} | ${copy} | ${faq} | ${cms} | ${done ? '✅' : '⬜'} | ${sc ? sc.q : '–'} | ${sc ? sc.u : '–'} | ${sc ? sc.k : '–'} | ${done ? 'DONE' : 'TODO'} |\n`
+    const buildAudit = buildAuditByFile.get(r.file)
+    const buildCheck = buildAudit ? (buildAudit.issues.length ? buildAudit.issues.join('<br>') : 'ok') : 'n/a'
+    md += `| \`${r.slug}.html\` | ${r.prefix} | ${r.scope} | ${r.kind} | ${copy} | ${faq} | ${cms} | ${done ? '✅' : '⬜'} | ${sc ? sc.q : '–'} | ${sc ? sc.u : '–'} | ${sc ? sc.k : '–'} | ${buildCheck} | ${done ? 'DONE' : 'TODO'} |\n`
   }
   md += `\n`
 }

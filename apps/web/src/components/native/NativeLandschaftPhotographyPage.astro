@@ -8,6 +8,7 @@ import {
   nativeFamilyPageContext,
   type NativeFamilyPreviewState,
 } from '../../lib/nativeFamilyPageContext'
+import { mergeAuthoredLocalSeoContent } from '../../lib/authoredSeoContent'
 import { keywordFocusCopyForSlug } from '../../lib/localSeoFamilyContent'
 import { familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
 import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
@@ -23,7 +24,8 @@ const defaultLegacyFile = 'landschaftsfotografie.html'
 const props = Astro.props as Props
 const { doc: providedDoc = undefined, legacyFile: providedLegacyFile, preview, visualDoc: providedVisualDoc = undefined } = props
 const legacyFile = providedLegacyFile || defaultLegacyFile
-const doc = providedDoc || (await getLegacyBackedDoc(legacyFile, { depth: 2 }))
+const fetchedDoc = providedDoc || (await getLegacyBackedDoc(legacyFile, { depth: 2 }))
+const doc = preview ? fetchedDoc : mergeAuthoredLocalSeoContent(legacyFile, fetchedDoc)
 const shouldUseCmsVisualDoc = import.meta.env.ASTRO_DISABLE_CMS_VISUAL_OVERRIDES !== 'true'
 const visualDoc = Object.hasOwn(props, 'visualDoc')
   ? providedVisualDoc
@@ -45,18 +47,19 @@ const cmsText = (value: unknown) => (typeof value === 'string' ? value.trim() : 
 const cmsHeroLine2 = cmsText(doc?.heroLine2)
 const cmsStatementBody = doc?.statement?.body?.map((entry) => cmsText(entry.text)).filter(Boolean) || []
 const heroLabel = isParentPage || isKeywordPage ? 'Landschaftsfotografie' : `Landschaftsfotografie ${scope.label}`
-const heroTitle = keywordFocusCopy?.heroTitle || 'Landschaft'
-const heroSecondLine = cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || (isParentPage ? 'Fotografie.' : `Fotografie ${isKeywordPage ? 'Düsseldorf' : scope.label}.`)
+const heroTitle = !isParentPage && !isKeywordPage ? serviceLabel : keywordFocusCopy?.heroTitle || 'Landschaft'
+const heroSecondLine = !isParentPage && !isKeywordPage ? `${scope.label}.` : cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Fotografie.'
 const defaultHeroLead = isParentPage
   ? 'Landschaftsfotografie: Licht, Weite, Material und Raumwirkung werden kuratiert — als Fine-Art-Print, Wandbild, Edition oder großformatige Arbeit für Räume mit Ruhe. Bundesweit zählt vor allem die passende Motivwahl, Druckqualität, Materialität und Wirkung im Raum.'
   : isKeywordPage
     ? `${serviceLabel} in ${scope.label}: Landschaftsfotografie für ${scope.label}: Bildräume aus Geduld, Licht und Atmosphäre - als Fine-Art-Print, Wandbild, Edition oder Großformat für Räume, die Ruhe statt Spektakel brauchen. Düsseldorf wird als lokaler Suchraum mit klarer Planung, Lichtfenster und passender Nutzung der Bildserie verstanden.`
     : `Landschaftsfotografie für ${scope.label}: Licht, Weite, Material und Raumwirkung werden kuratiert - als Fine-Art-Print, Wandbild, Edition oder großformatige Arbeit für Räume mit Ruhe. ${localScopePhrase(scope)}`
-const metaTitle = isParentPage
+const fallbackMetaTitle = isParentPage
   ? 'Landschaftsfotografie - Matthias Ramahi'
   : isKeywordPage
     ? `${serviceLabel} | Matthias Ramahi`
     : `${serviceLabel} ${scope.label} | Matthias Ramahi`
+const metaTitle = doc?.seo?.title || fallbackMetaTitle
 const heroLead = keywordFocusCopy?.heroLead
   ? `${keywordFocusCopy.heroLead}${!isParentPage && !isKeywordPage ? ` ${localScopePhrase(scope)}` : ''}`
   : defaultHeroLead
@@ -65,7 +68,7 @@ const defaultMetaDescription = isParentPage
   : isKeywordPage
     ? `${serviceLabel}: Fine-Art-Prints, Wandbilder, Editionen und großformatige Arbeiten.`
     : `${serviceLabel} ${scope.label}: Fine-Art-Prints, Wandbilder, Editionen und großformatige Arbeiten.`
-const metaDescription = keywordFocusCopy?.metaDescription || defaultMetaDescription
+const metaDescription = doc?.seo?.description || keywordFocusCopy?.metaDescription || defaultMetaDescription
 const contactSubject = isParentPage ? 'Landschaftsfotografie Anfrage' : `${serviceLabel}${isKeywordPage ? ' Düsseldorf' : ` ${scope.label}`} Anfrage`
 const contactHeadline = isParentPage
   ? 'Landschaft <em>anfragen.</em>'
@@ -125,6 +128,23 @@ const focusModuleHeadline = keywordFocusCopy?.sectionHeadline || (isParentPage |
 const focusModuleLead = isParentPage || isKeywordPage
   ? keywordFocusCopy?.sectionLead || 'Jedes Motiv ist als Print erhaeltlich.'
   : `Jedes Motiv kann fuer Raeume in ${scope.label} nach Format, Material und Wirkung abgestimmt werden.`
+const defaultModuleCards = [
+  { visualIndex: 5, number: '01', title: 'Fine-Art', text: 'Papier, Tonwert und Motiv werden passend zum Raum abgestimmt.' },
+  { visualIndex: 6, number: '02', title: 'Aluminium', text: 'Ruhige Wandbilder auf stabilem Traeger fuer klare Raeume und Praxen.' },
+  { visualIndex: 7, number: '03', title: 'Acrylglas', text: 'Tiefe, Glanz und klare Kanten fuer Motive mit Licht und Struktur.' },
+  { visualIndex: 8, number: '04', title: 'Edition', text: 'Kuratierte Motive als Einzelabzug oder kleine Edition nach Umfang.' },
+]
+const moduleCards = defaultModuleCards.map((card, index) => {
+  const cmsCard = doc?.audienceCards?.[index]
+  return cmsCard
+    ? {
+        ...card,
+        number: cmsText(cmsCard.number) || card.number,
+        title: cmsText(cmsCard.title) || card.title,
+        text: cmsText(cmsCard.text) || card.text,
+      }
+    : card
+})
 const focusGalleryHeadline = cmsText(doc?.portfolioTiles?.[0]?.label) || keywordFocusCopy?.galleryHeadline || (isParentPage || isKeywordPage ? 'Ausgewaehlte Landschaften.' : `Auswahl fuer ${scope.label}.`)
 const focusProcessHeadline = keywordFocusCopy?.processHeadline || (isParentPage || isKeywordPage ? 'So entsteht' : `So entsteht dein Druck`)
 const focusProcessEmphasis = keywordFocusCopy?.sectionEmphasis || (isParentPage || isKeywordPage ? 'Ihr Druck.' : `fuer ${scope.label}.`)
@@ -258,34 +278,16 @@ const searchLinks = [
         <p class="mod-ls__lead">{focusModuleLead}</p>
       </div>
       <div class="mod-ls__grid">
-        <article class="mod-ls__card">
-          <div class="mod-ls__img" style={`background-image:url('${visualSlots[5].cssFull}')`}></div>
-          <div class="mod-ls__body">
-            <span class="mod-ls__num">01</span>
-            <h3 class="mod-ls__name">Fine-Art</h3>
-          </div>
-        </article>
-        <article class="mod-ls__card">
-          <div class="mod-ls__img" style={`background-image:url('${visualSlots[6].cssFull}')`}></div>
-          <div class="mod-ls__body">
-            <span class="mod-ls__num">02</span>
-            <h3 class="mod-ls__name">Aluminium</h3>
-          </div>
-        </article>
-        <article class="mod-ls__card">
-          <div class="mod-ls__img" style={`background-image:url('${visualSlots[7].cssFull}')`}></div>
-          <div class="mod-ls__body">
-            <span class="mod-ls__num">03</span>
-            <h3 class="mod-ls__name">Acryl­glas</h3>
-          </div>
-        </article>
-        <article class="mod-ls__card">
-          <div class="mod-ls__img" style={`background-image:url('${visualSlots[8].cssFull}')`}></div>
-          <div class="mod-ls__body">
-            <span class="mod-ls__num">04</span>
-            <h3 class="mod-ls__name">Edition</h3>
-          </div>
-        </article>
+        {moduleCards.map((card) => (
+          <article class="mod-ls__card">
+            <div class="mod-ls__img" style={`background-image:url('${visualSlots[card.visualIndex].cssFull}')`}></div>
+            <div class="mod-ls__body">
+              <span class="mod-ls__num">{card.number}</span>
+              <h3 class="mod-ls__name">{card.title}</h3>
+              <p>{card.text}</p>
+            </div>
+          </article>
+        ))}
       </div>
     </section>
 

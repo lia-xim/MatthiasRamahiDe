@@ -8,6 +8,7 @@ import {
   nativeFamilyPageContext,
   type NativeFamilyPreviewState,
 } from '../../lib/nativeFamilyPageContext'
+import { mergeAuthoredLocalSeoContent } from '../../lib/authoredSeoContent'
 import { keywordFocusCopyForSlug } from '../../lib/localSeoFamilyContent'
 import { familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
 import { getLegacyBackedDoc, imageAlt, imageDimensions, imageDisplayUrl, imageSrcset, type PayloadDoc, type PayloadMedia } from '../../lib/payload'
@@ -23,7 +24,8 @@ const defaultLegacyFile = 'sportwagen-fotografie.html'
 const props = Astro.props as Props
 const { doc: providedDoc = undefined, legacyFile: providedLegacyFile, preview, visualDoc: providedVisualDoc = undefined } = props
 const legacyFile = providedLegacyFile || defaultLegacyFile
-const doc = providedDoc || (await getLegacyBackedDoc(legacyFile, { depth: 2 }))
+const fetchedDoc = providedDoc || (await getLegacyBackedDoc(legacyFile, { depth: 2 }))
+const doc = preview ? fetchedDoc : mergeAuthoredLocalSeoContent(legacyFile, fetchedDoc)
 const shouldUseCmsVisualDoc = import.meta.env.ASTRO_DISABLE_CMS_VISUAL_OVERRIDES !== 'true'
 const visualDoc = Object.hasOwn(props, 'visualDoc')
   ? providedVisualDoc
@@ -42,8 +44,8 @@ const keywordFocusCopy = keywordFocusCopyForSlug(legacyFile)
 const cmsFaqItems = doc?.localFaq?.map((entry) => ({ q: entry.question || '', a: entry.answer || '' })).filter((entry) => entry.q && entry.a) || []
 const faqItems = cmsFaqItems.length ? cmsFaqItems : keywordFocusCopy?.faq
 const cmsHeroLine2 = typeof doc?.heroLine2 === 'string' ? doc.heroLine2.trim() : ''
-const heroTitle = keywordFocusCopy?.heroTitle || 'Sportwagen'
-const heroSecondLine = cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || (isParentPage || isKeywordPage ? 'Fotografie.' : `Fotografie ${scope.label}.`)
+const heroTitle = !isParentPage && !isKeywordPage ? serviceLabel : keywordFocusCopy?.heroTitle || 'Sportwagen'
+const heroSecondLine = !isParentPage && !isKeywordPage ? `${scope.label}.` : cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Fotografie.'
 const heroLabel = isParentPage || isKeywordPage ? 'Sportwagenfotografie' : `Sportwagenfotografie ${scope.label}`
 const defaultHeroLead = isParentPage
   ? 'Sportwagenfotografie: Performance, Form, Innenraum und Details werden mit kontrollierten Reflexen und ruhiger Dramaturgie sichtbar — für Sammler, Händler, Marke, Verkauf und Druck. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.'
@@ -52,17 +54,18 @@ const defaultHeroLead = isParentPage
     : `Sportwagenfotografie in ${scope.label}: Performance, Form, Innenraum und Details werden mit kontrollierten Reflexen und ruhiger Dramaturgie sichtbar - für Sammler, Händler, Marke, Verkauf und Druck. ${localScopePhrase(scope)}`
 const keywordLocalContext = keywordFocusCopy && !isParentPage && !isKeywordPage ? ` ${localScopePhrase(scope)}` : ''
 const heroLead = keywordFocusCopy?.heroLead ? `${keywordFocusCopy.heroLead}${keywordLocalContext}` : defaultHeroLead
-const metaTitle = isParentPage
+const fallbackMetaTitle = isParentPage
   ? 'Sportwagenfotografie - Matthias Ramahi'
   : isKeywordPage
     ? `${serviceLabel} | Matthias Ramahi`
     : `${serviceLabel} ${scope.label} | Matthias Ramahi`
+const metaTitle = doc?.seo?.title || fallbackMetaTitle
 const defaultMetaDescription = isParentPage
   ? 'Sportwagenfotografie: hochwertige Serien für Performance Cars, Sammlerfahrzeuge, Händler und Marken - Exterieur, Interieur, Details und Druckqualität.'
   : isKeywordPage
     ? `${serviceLabel}: hochwertige Serien für Performance Cars, Sammlerfahrzeuge, Händler und Marken.`
     : `${serviceLabel} ${scope.label}: hochwertige Serien für Performance Cars, Sammlerfahrzeuge, Händler und Marken.`
-const metaDescription = keywordFocusCopy?.metaDescription || defaultMetaDescription
+const metaDescription = doc?.seo?.description || keywordFocusCopy?.metaDescription || defaultMetaDescription
 const contactSubject = isParentPage ? 'Sportwagen Fotografie Anfrage' : `${serviceLabel}${isKeywordPage ? '' : ` ${scope.label}`} Anfrage`
 const contactHeadline = isParentPage
   ? 'Sportwagen <em>anfragen.</em>'

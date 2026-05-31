@@ -11,6 +11,7 @@ import {
   serviceLabelFromSlug,
   siblingFamilyLinks,
 } from '../../lib/localSeoFamilyContent'
+import { mergeAuthoredLocalSeoContent } from '../../lib/authoredSeoContent'
 import { familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
 import { getLegacyBackedDoc, routeForDoc, type PayloadDoc } from '../../lib/payload'
 
@@ -32,7 +33,8 @@ const defaultLegacyFile = 'automobil-fotografie.html'
 const props = Astro.props as Props
 const { doc: providedDoc = undefined, legacyFile: providedLegacyFile, preview, visualDoc: providedVisualDoc = undefined } = props
 const legacyFile = providedLegacyFile || defaultLegacyFile
-const doc = providedDoc || (await getLegacyBackedDoc(legacyFile, { depth: 2 }))
+const fetchedDoc = providedDoc || (await getLegacyBackedDoc(legacyFile, { depth: 2 }))
+const doc = preview ? fetchedDoc : mergeAuthoredLocalSeoContent(legacyFile, fetchedDoc)
 const shouldUseCmsVisualDoc = import.meta.env.ASTRO_DISABLE_CMS_VISUAL_OVERRIDES !== 'true'
 const visualDoc = Object.hasOwn(props, 'visualDoc')
   ? providedVisualDoc
@@ -51,8 +53,8 @@ const cmsText = (value: unknown) => (typeof value === 'string' ? value.trim() : 
 const cmsHeroLine2 = cmsText(doc?.heroLine2)
 const cmsStatementBody = doc?.statement?.body?.map((entry) => cmsText(entry.text)).filter(Boolean) || []
 const localSuffix = !isParentPage && !isKeywordPage ? ` ${scope.label}` : ''
-const heroTitle = keywordFocusCopy?.heroTitle || 'Automobil'
-const heroSecondLine = cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || `Fotografie${localSuffix}.`
+const heroTitle = !isParentPage && !isKeywordPage ? serviceLabel : keywordFocusCopy?.heroTitle || 'Automobil'
+const heroSecondLine = !isParentPage && !isKeywordPage ? `${scope.label}.` : cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || `Fotografie${localSuffix}.`
 const heroLabel = isParentPage ? 'Automobilfotografie' : `Automobilfotografie${localSuffix}`
 const defaultHeroLead = isParentPage
   ? 'Automobilfotografie: Exterieur, Interieur, Details und Cinematic werden als kuratierte Bildserie geplant - für Marke, Showroom, Verkauf, Kampagne und hochwertige private Fahrzeuge. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.'
@@ -61,17 +63,18 @@ const defaultHeroLead = isParentPage
     : `Automobilfotografie in ${scope.label}: Exterieur, Interieur, Details und Cinematic werden als kuratierte Bildserie geplant - für Marke, Showroom, Verkauf, Kampagne und hochwertige private Fahrzeuge. ${cityScopePhrase(scope)}`
 const keywordLocalContext = keywordFocusCopy && !isParentPage && !isKeywordPage ? ` ${cityScopePhrase(scope)}` : ''
 const heroLead = keywordFocusCopy?.heroLead ? `${keywordFocusCopy.heroLead}${keywordLocalContext}` : defaultHeroLead
-const metaTitle = isParentPage
+const fallbackMetaTitle = isParentPage
   ? 'Automobilfotografie | Matthias Ramahi'
   : isKeywordPage
     ? `${serviceLabel} | Matthias Ramahi`
     : `${serviceLabel} ${scope.label} | Matthias Ramahi`
+const metaTitle = doc?.seo?.title || fallbackMetaTitle
 const defaultMetaDescription = isParentPage
   ? 'Automobilfotografie fuer Exterieur, Interieur, Details und Kampagne in Duesseldorf und NRW. Bildserien fuer Verkauf, Marke, Showroom und hochwertige private Fahrzeuge.'
   : isKeywordPage
     ? `${serviceLabel} fuer Fahrzeuge, Marken, Showrooms und Verkauf. Exterieur, Interieur, Details und Cinematic werden als nutzbare Bildserie geplant.`
     : `${serviceLabel} in ${scope.label}: Exterieur, Interieur, Details und Cinematic als kuratierte Bildserie fuer Verkauf, Marke, Showroom und Kampagne.`
-const metaDescription = keywordFocusCopy?.metaDescription || defaultMetaDescription
+const metaDescription = doc?.seo?.description || keywordFocusCopy?.metaDescription || defaultMetaDescription
 const contactSubject = isParentPage ? 'Automobil Fotografie Anfrage' : `${serviceLabel}${isKeywordPage ? '' : ` ${scope.label}`} Anfrage`
 const contactHeadline = isParentPage
   ? 'Automobil <em>anfragen.</em>'
