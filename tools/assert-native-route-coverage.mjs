@@ -116,6 +116,7 @@ export async function auditNativeRouteCoverage(options = {}) {
 
   const failures = []
   const nativeCounts = new Map()
+  let nativeOnlyLocalSeoCount = 0
   let redirectCount = 0
 
   for (const file of [...frozenFiles].sort((a, b) => a.localeCompare(b))) {
@@ -123,7 +124,13 @@ export async function auditNativeRouteCoverage(options = {}) {
   }
 
   for (const file of [...routeModelFiles].sort((a, b) => a.localeCompare(b))) {
-    if (!frozenFiles.has(file)) failures.push(`Astro native route model contains an HTML file outside the frozen manifest: ${file}`)
+    if (frozenFiles.has(file)) continue
+    if (isLocalSeoRoute(file, adoptedFiles, localSeoPrefixes)) {
+      nativeOnlyLocalSeoCount += 1
+      continue
+    }
+
+    failures.push(`Astro native route model contains an HTML file outside the frozen manifest: ${file}`)
   }
 
   for (const file of [...frozenFiles].sort((a, b) => a.localeCompare(b))) {
@@ -156,6 +163,7 @@ export async function auditNativeRouteCoverage(options = {}) {
     failures,
     frozenFiles: frozenFiles.size,
     nativeFiles: [...nativeCounts.values()].reduce((sum, count) => sum + count, 0),
+    nativeOnlyLocalSeoFiles: nativeOnlyLocalSeoCount,
     redirectFiles: redirectCount,
     routeModelFiles: routeModelFiles.size,
     nativeCounts: Object.fromEntries([...nativeCounts.entries()].sort(([a], [b]) => a.localeCompare(b))),
@@ -174,6 +182,6 @@ if (isDirectRun) {
   }
 
   console.log(
-    `Native route coverage passed: ${result.frozenFiles}/${result.frozenFiles} frozen HTML files covered and ${result.routeModelFiles}/${result.frozenFiles} route-model files matched (${result.nativeFiles} native, ${result.redirectFiles} redirects).`,
+    `Native route coverage passed: ${result.frozenFiles}/${result.frozenFiles} frozen HTML files covered, ${result.nativeOnlyLocalSeoFiles} native-only local SEO route-model files allowed (${result.nativeFiles} native, ${result.redirectFiles} redirects).`,
   )
 }

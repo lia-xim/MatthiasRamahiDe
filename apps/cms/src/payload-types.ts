@@ -1547,6 +1547,71 @@ export interface LocalSeoPage {
       )[]
     | null;
   /**
+   * Die drei Bilder des Hero-Triptychons (Desktop). Auf dem Handy wird das erste Bild groß gezeigt.
+   */
+  heroPanels?:
+    | {
+        /**
+         * Bild aus dem Medienarchiv waehlen. Neue Bilder koennen direkt im Drawer hochgeladen und bearbeitet werden.
+         */
+        image: number | Media;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Z. B. „Fotografie." Leer lassen = automatisch aus dem Seitentyp.
+   */
+  heroLine2?: string | null;
+  statement?: {
+    headline?: string | null;
+    emphasis?: string | null;
+    body?:
+      | {
+          text: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  /**
+   * Die Bild-/Aufnahme-Perspektiven (Exterieur, Interieur, Detail, Cinematic …).
+   */
+  shootingStyles?:
+    | {
+        /**
+         * Bild aus dem Medienarchiv waehlen. Neue Bilder koennen direkt im Drawer hochgeladen und bearbeitet werden.
+         */
+        image?: (number | null) | Media;
+        title: string;
+        text?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  portfolioTiles?:
+    | {
+        /**
+         * Bild aus dem Medienarchiv waehlen. Neue Bilder koennen direkt im Drawer hochgeladen und bearbeitet werden.
+         */
+        image?: (number | null) | Media;
+        label?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Zielgruppen mit Bild, Nummer, Titel und kurzer Beschreibung.
+   */
+  audienceCards?:
+    | {
+        /**
+         * Bild aus dem Medienarchiv waehlen. Neue Bilder koennen direkt im Drawer hochgeladen und bearbeitet werden.
+         */
+        image?: (number | null) | Media;
+        number?: string | null;
+        title: string;
+        text?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
    * Zum Beispiel: Portraitfotografie Duesseldorf als Hauptseite fuer lokale Varianten.
    */
   canonicalServicePage?: (number | null) | ServicePage;
@@ -2546,6 +2611,49 @@ export interface LocalSeoPagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+      };
+  heroPanels?:
+    | T
+    | {
+        image?: T;
+        id?: T;
+      };
+  heroLine2?: T;
+  statement?:
+    | T
+    | {
+        headline?: T;
+        emphasis?: T;
+        body?:
+          | T
+          | {
+              text?: T;
+              id?: T;
+            };
+      };
+  shootingStyles?:
+    | T
+    | {
+        image?: T;
+        title?: T;
+        text?: T;
+        id?: T;
+      };
+  portfolioTiles?:
+    | T
+    | {
+        image?: T;
+        label?: T;
+        id?: T;
+      };
+  audienceCards?:
+    | T
+    | {
+        image?: T;
+        number?: T;
+        title?: T;
+        text?: T;
+        id?: T;
       };
   canonicalServicePage?: T;
   targetKeyword?: T;

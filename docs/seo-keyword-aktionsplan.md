@@ -15,6 +15,135 @@ Der stärkste SEO-Weg ist:
 3. Lokale Signale für Mettmann/Erkrath/Düsseldorf stärken.
 4. Keine Seiten für falsche Anfragen erstellen, auch wenn Suchvolumen da ist.
 
+## Umsetzungs-Checkliste Nach Worktree `codex/seo-cluster-pages`
+
+Stand nach Umsetzung im Worktree: 2026-05-31
+Technische Linie: keine neue Kategorie, sondern neue Keyword- und Ortsvarianten unter den bestehenden Fotografie-Familien. Die neuen Seiten erben Layout, Bilder, CSS und Motion der jeweiligen Hauptseite; geändert wurden Routen, Meta-Daten, Hero-/Anfragetexte, keywordindividuelle Mittel-Sektionen, lokale Abschnittstexte, Sitemap-Zuordnung und interne Clusterlinks.
+
+### Bereits Angelegt Und Verlinkt
+
+Diese Seiten sind im Astro-Routing vorhanden, bauen erfolgreich und sind in den passenden Clustern/Sitemaps sichtbar.
+
+#### Automobil-Cluster
+
+- [x] `auto-fotoshooting.html`
+- [x] `auto-fotoshooting-duesseldorf.html`
+- [x] `bilder-mit-auto.html`
+- [x] `bilder-mit-auto-duesseldorf.html`
+- [x] `fotoshooting-mit-auto.html`
+- [x] `fotoshooting-mit-auto-duesseldorf.html`
+- [x] `auto-fotografieren-tipps.html`
+- [x] `auto-fotografieren-tipps-duesseldorf.html`
+- [x] `automobil-fotografie-erkrath.html`
+- [x] `automobil-fotografie-ratingen.html`
+
+#### Sportwagen-Cluster
+
+- [x] `motorsport-sportwagen-fotografie.html`
+- [x] `motorsport-sportwagen-fotografie-duesseldorf.html`
+- [x] `motorsport-fotografie.html`
+- [x] `motorsport-fotografie-duesseldorf.html`
+- [x] `sportwagen-fotografie-erkrath.html`
+- [x] `sportwagen-fotografie-ratingen.html`
+
+#### Portrait-Cluster
+
+- [x] `portrait-fotoshooting.html`
+- [x] `portrait-fotoshooting-duesseldorf.html`
+- [x] `fotoshooting-gutschein.html`
+- [x] `fotoshooting-gutschein-duesseldorf.html`
+- [x] `fotoshooting-preise.html`
+- [x] `fotoshooting-preise-duesseldorf.html`
+- [x] `dating-fotoshooting.html`
+- [x] `dating-fotoshooting-duesseldorf.html`
+- [x] `portraitfotografie-beleuchtung.html`
+- [x] `portraitfotografie-beleuchtung-duesseldorf.html`
+- [x] `schwarz-weiss-portrait-fotografie.html`
+- [x] `schwarz-weiss-portrait-fotografie-duesseldorf.html`
+- [x] `paarshooting-familienshooting.html`
+- [x] `paarshooting-familienshooting-duesseldorf.html`
+- [x] `portraitfotografie-erkrath.html`
+- [x] `portraitfotografie-ratingen.html`
+
+#### Weitere Bestehende Fotografie-Familien Mit Neuer Lokalabdeckung
+
+- [x] `oldtimer-fotografie-erkrath.html`
+- [x] `oldtimer-fotografie-ratingen.html`
+- [x] `motorrad-fotografie-erkrath.html`
+- [x] `motorrad-fotografie-ratingen.html`
+- [x] `landschaftsfotografie-erkrath.html`
+- [x] `landschaftsfotografie-ratingen.html`
+
+### Ebenfalls Erledigt
+
+- [x] Neue Keyword-Prefixe in die bestehenden Familien eingehängt.
+- [x] Interne Suchbegriff-Links auf Automobil-, Sportwagen- und Portrait-Hauptseiten erweitert.
+- [x] Erkrath und Ratingen als lokale Zielorte in allen Familien ergänzt.
+- [x] Automobil-, Sportwagen- und Portrait-Keywordseiten mit eigenen Abschnittstexten ausgestattet: Pull/Intro, Abschnittsheadlines, Karten, Galerie-/Ablauftexte und Related-Text.
+- [x] Düsseldorf-Varianten der Keywordseiten erhalten zusätzlichen lokalen Kontext im Hero, damit generische und lokale Varianten nicht wortgleich starten.
+- [x] Oldtimer-, Motorrad- und Landschaft-Lokalseiten erhalten ortsbezogene Mittel-Sektionen statt nur lokaler Hero-/Kontakttexte.
+- [x] Sitemap-Klassifizierung für die neuen Local-SEO-Seiten erweitert.
+- [x] Native Route-Coverage so angepasst, dass neue native Local-SEO-Seiten ohne alte Legacy-Referenz erlaubt sind.
+- [x] Web-Build erfolgreich ausgeführt.
+- [x] Native Route-Coverage erfolgreich ausgeführt.
+- [x] Native Production Guard erfolgreich ausgeführt.
+
+### Unique-Text-Status
+
+| Bereich | Status | Was jetzt unique ist |
+|---|---|---|
+| Automobil-Keywordseiten | [x] umgesetzt | `auto-fotoshooting`, `bilder-mit-auto`, `fotoshooting-mit-auto`, `auto-fotografieren-tipps` haben eigene Pulltexte, Abschnittstitel, Featuretexte, Zielgruppen-Karten, Galerie-Headlines und Related-Texte. |
+| Sportwagen-Keywordseiten | [x] umgesetzt | `motorsport-fotografie` und `motorsport-sportwagen-fotografie` haben eigene Statement-Texte, Shooting-Module, Galerie-/Audience-Texte und Related-Texte. |
+| Portrait-Keywordseiten | [x] umgesetzt | `portrait-fotoshooting`, `dating-fotoshooting`, `fotoshooting-gutschein`, `fotoshooting-preise`, `portraitfotografie-beleuchtung`, `paarshooting-familienshooting`, `schwarz-weiss-portrait-fotografie` haben eigene Introtexte, Karten und Ablauf-Schritte. |
+| Lokale Seiten Erkrath/Ratingen | [x] umgesetzt | Automobil, Sportwagen, Portrait, Oldtimer, Motorrad und Landschaft haben Ortsbezug in Hero, Kontakt, Clusterlinks und relevanten Mittel-Sektionen. |
+| CMS-Feinschliff | [ ] offen | Inhalte sind technisch unique und SEO-tauglich vorbefüllt. Im CMS sollten Tonalität, konkrete Referenzen, Preise und echte Beispiele später noch fachlich finalisiert werden. |
+
+### Duplicate-/Kannibalisierungs-Audit
+
+Der detaillierte Tabellen-Audit liegt in `docs/seo-local-seiten-duplicate-audit.md`.
+
+Kurzstatus nach technischem Check:
+
+- [x] 219 lokale und keywordbasierte SEO-Seiten geprüft.
+- [x] 0 doppelte Title gefunden.
+- [x] 0 Canonical-Fehler gefunden.
+- [x] 26 Seiten haben bereits ausgebaut unique Mittel-Sektionen.
+- [ ] 40 Seiten sind noch hochriskant, weil sie zwar eigene URL/Title/Canonical haben, aber im Mittelteil noch zu stark nach Template bzw. Intent-Kopie aussehen.
+
+Wichtigste offene Gruppen:
+
+| Priorität | Gruppe | Warum kritisch | Nächste Aktion |
+|---|---|---|---|
+| 1 | Hauptseiten `automobil-fotografie.html`, `sportwagen-fotografie.html`, `oldtimer-fotografie.html`, `motorrad-fotografie.html`, `portraitfotografie.html`, `landschaftsfotografie.html` | Sie sind die Cluster-Zentren und dürfen nicht wie austauschbare Basisvarianten wirken. | Je Hauptseite 2-3 stärkere Kernsektionen, klare Abgrenzung zu Unterseiten, FAQ/Use-Cases. |
+| 2 | Verkaufs-/Händlerseiten `autohaus-fotografie`, `autoverkauf-fotos`, `oldtimer-verkaufsfotos`, `motorrad-verkaufsfotos` | Sehr nah an bestehenden Fahrzeugseiten, aber anderer kommerzieller Intent. | Eigene Verkaufslogik: Zustand, Inserat, Auktion, Händler-Workflow, Bildliste. |
+| 3 | Sportwagen-Varianten `sportwagen-shooting`, `sportwagen-fotoshooting`, `performance-car`, `exotic-car`, `supersportwagen` | Gefahr, dass mehrere Seiten um denselben Sportwagen-Intent konkurrieren. | Klare Rollen definieren oder einzelne Seiten noindex/zusammenlegen, wenn kein eigener Intent bleibt. |
+| 4 | Portrait-Businessseiten `business-portrait`, `headshot`, `personal-branding`, `unternehmensportrait`, `pressefoto` | Wirtschaftlich wichtig, aber aktuell zu nah am Portrait-Template. | Eigene Module je Business-Intent, Zielgruppe, Ablauf, FAQ und interne Verlinkung. |
+| 5 | Landschaft-/Printseiten `landschaftsbilder-kaufen`, `fine-art-prints`, `wandbilder`, `naturfotografie-prints` | Print-/Kauf-Intent ist anders als Landschaftsfotografie, braucht eigene Beratung. | Material, Format, Raumwirkung, Kaufberatung und Anfrageprozess ausbauen. |
+
+### Noch Nicht Angelegt
+
+Diese Punkte stehen noch offen oder wurden bewusst nicht als eigene Seite umgesetzt.
+
+| Status | Seite / Thema | Empfehlung | Grund |
+|---|---|---|---|
+| [ ] | `fotograf-erkrath-mettmann.html` | Noch nicht bauen oder nur als sehr schlanke lokale Hubseite | User-Wunsch war: keine neue Kategorie. Stattdessen wurden Erkrath/Mettmann-nahe Seiten unter den bestehenden Familien gestärkt. |
+| [ ] | `fotoshooting-duesseldorf.html` | Später als breiter Hub prüfen | Breiter Intent, mehr Konkurrenz. Erst sinnvoll, wenn die spezifischen Seiten Daten sammeln. |
+| [ ] | `business-portrait-duesseldorf.html` | Bestehende Seite textlich nachschärfen | Seite existiert, wurde in diesem Worktree aber nicht tief redaktionell überarbeitet. |
+| [ ] | `portraitfotografie-duesseldorf.html` | Bestehende Seite weiter ausbauen | Neue Portrait-Keywordseiten sind angelegt; die Hauptseite kann noch stärker als Verteiler arbeiten. |
+| [ ] | `oldtimer-fotografie.html` / lokale Varianten | Bestehende Texte nachschärfen | Erkrath/Ratingen sind angelegt, aber Oldtimer-spezifische Copy kann noch stärker auf Sammler, Verkauf, Auktion und Patina gehen. |
+| [ ] | `motorrad-fotografie.html` / lokale Varianten | Bestehende Texte nachschärfen | Erkrath/Ratingen sind angelegt, aber Motorrad-Copy kann noch stärker auf Custom Bikes, Biker Portrait und Verkaufsfotos gehen. |
+| [ ] | Journal-Artikel `auto-fotografieren-tipps` | Optional später als Blogartikel ergänzen | Aktuell ist `auto-fotografieren-tipps.html` als Clusterseite angelegt, nicht als Journal-Artikel. |
+| [ ] | Journal-Artikel `portraitfotografie-beleuchtung` | Optional später als Blogartikel ergänzen | Aktuell ist `portraitfotografie-beleuchtung.html` als Portrait-Clusterseite angelegt, nicht als Journal-Artikel. |
+| [ ] | Preis-/Kosten-Ratgeber | Nur vorsichtig bauen | `fotoshooting-preise.html` ist angelegt; ein längerer Ratgeber sollte erst folgen, wenn Preispositionierung final ist. |
+
+### Nächste Sinnvolle Reihenfolge
+
+1. Die neuen Seiten live stellen und in der Google Search Console beobachten.
+2. `auto-fotoshooting.html`, `bilder-mit-auto.html` und `fotoshooting-gutschein.html` nach ersten Impressionen weiter ausbauen.
+3. `business-portrait-duesseldorf.html` und `portraitfotografie.html` redaktionell schärfen.
+4. `oldtimer-fotografie.html` und `motorrad-fotografie.html` mit mehr fachlicher Angebots-Copy stärken.
+5. Erst danach über `fotoshooting-duesseldorf.html` oder `fotograf-erkrath-mettmann.html` als breite Hubseiten entscheiden.
+
 ## Was Wir Nicht Machen Sollten
 
 Diese Keyword-Bereiche haben Suchvolumen, passen aber nicht zum Angebot oder erzeugen falsche Anfragen:

@@ -7,6 +7,7 @@ import {
   nativeFamilyPageContext,
   type NativeFamilyPreviewState,
 } from '../../lib/nativeFamilyPageContext'
+import { keywordFocusCopyForSlug } from '../../lib/localSeoFamilyContent'
 import { familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
 import { getLegacyBackedDoc, imageAlt, imageDimensions, imageDisplayUrl, imageSrcset, type PayloadDoc, type PayloadMedia } from '../../lib/payload'
 
@@ -36,35 +37,41 @@ const pageContext = nativeFamilyPageContext({
   preview,
 })
 const { clusterHeading, clusterLinks, isKeywordPage, isParentPage, overviewHref, publishedHref, scope, serviceLabel } = pageContext
+const keywordFocusCopy = keywordFocusCopyForSlug(legacyFile)
 const cmsHeroLine2 = typeof doc?.heroLine2 === 'string' ? doc.heroLine2.trim() : ''
-const heroSecondLine = cmsHeroLine2 || (isParentPage || isKeywordPage ? 'Fotografie.' : `Fotografie ${scope.label}.`)
+const heroTitle = keywordFocusCopy?.heroTitle || 'Sportwagen'
+const heroSecondLine = cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || (isParentPage || isKeywordPage ? 'Fotografie.' : `Fotografie ${scope.label}.`)
 const heroLabel = isParentPage || isKeywordPage ? 'Sportwagenfotografie' : `Sportwagenfotografie ${scope.label}`
-const heroLead = isParentPage
+const defaultHeroLead = isParentPage
   ? 'Sportwagenfotografie: Performance, Form, Innenraum und Details werden mit kontrollierten Reflexen und ruhiger Dramaturgie sichtbar — für Sammler, Händler, Marke, Verkauf und Druck. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.'
   : isKeywordPage
     ? `${serviceLabel}: eigenständiger Einstieg in den Sportwagen Fotografie-Cluster. Performance, Form, Innenraum und Details werden mit kontrollierten Reflexen und ruhiger Dramaturgie sichtbar - für Sammler, Händler, Marke, Verkauf und Druck. Die Seite bleibt bewusst im Layout der übergeordneten Kategorie, setzt den Text aber auf diese konkrete Suchintention.`
     : `Sportwagenfotografie in ${scope.label}: Performance, Form, Innenraum und Details werden mit kontrollierten Reflexen und ruhiger Dramaturgie sichtbar - für Sammler, Händler, Marke, Verkauf und Druck. ${localScopePhrase(scope)}`
+const keywordLocalContext = keywordFocusCopy && !isParentPage && !isKeywordPage ? ` Der lokale Fokus fuer ${scope.label} wird ueber Strecke, Treffpunkt, Lichtfenster und Nutzungsziel konkretisiert.` : ''
+const heroLead = keywordFocusCopy?.heroLead ? `${keywordFocusCopy.heroLead}${keywordLocalContext}` : defaultHeroLead
 const metaTitle = isParentPage
   ? 'Sportwagenfotografie - Matthias Ramahi'
   : isKeywordPage
     ? `${serviceLabel} | Matthias Ramahi`
     : `${serviceLabel} ${scope.label} | Matthias Ramahi`
-const metaDescription = isParentPage
+const defaultMetaDescription = isParentPage
   ? 'Sportwagenfotografie: hochwertige Serien für Performance Cars, Sammlerfahrzeuge, Händler und Marken - Exterieur, Interieur, Details und Druckqualität.'
   : isKeywordPage
     ? `${serviceLabel}: hochwertige Serien für Performance Cars, Sammlerfahrzeuge, Händler und Marken.`
     : `${serviceLabel} ${scope.label}: hochwertige Serien für Performance Cars, Sammlerfahrzeuge, Händler und Marken.`
+const metaDescription = keywordFocusCopy?.metaDescription || defaultMetaDescription
 const contactSubject = isParentPage ? 'Sportwagen Fotografie Anfrage' : `${serviceLabel}${isKeywordPage ? '' : ` ${scope.label}`} Anfrage`
 const contactHeadline = isParentPage
   ? 'Sportwagen <em>anfragen.</em>'
   : isKeywordPage
     ? `${serviceLabel} <em>anfragen.</em>`
     : `Sportwagen ${scope.label} <em>anfragen.</em>`
-const contactLead = isParentPage
+const defaultContactLead = isParentPage
   ? 'Schreibe kurz, welcher Sportwagen fotografiert werden soll, ob die Bilder für Verkauf, Sammlung, Marke oder Social genutzt werden und welches Zeitfenster möglich ist. Wir planen Licht, Ort und Ablauf gemeinsam.'
   : isKeywordPage
     ? `Schreibe kurz, wofür ${serviceLabel} gebraucht wird, welches Motiv im Mittelpunkt steht und welche Nutzung geplant ist. Wir klären Stil, Ort, Umfang und Ausgabe gemeinsam.`
     : `Schreibe kurz, welcher Sportwagen in ${scope.label} fotografiert werden soll, ob die Bilder für Verkauf, Sammlung, Marke oder Social genutzt werden und welches Zeitfenster möglich ist. Wir planen Licht, Ort und Ablauf gemeinsam.`
+const contactLead = keywordFocusCopy?.contactLead || defaultContactLead
 
 const heroPanels = [
   ['detail', 'assets/optimized/mpixih9c-dsc3982-1920.webp', 'assets/optimized/mpixih9c-dsc3982-720.webp'],
@@ -226,6 +233,12 @@ const inheritedShootingStyles = shootingStyles.map((style, index) => {
   const visual = visualSlots[index + heroPanels.length]
   return { ...style, alt: visual.alt, height: visual.height, image: visual.src, width: visual.width }
 })
+const keywordShootingStyles = keywordFocusCopy?.cards?.length
+  ? inheritedShootingStyles.map((style, index) => {
+      const card = keywordFocusCopy.cards?.[index]
+      return card ? { ...style, title: card.title, text: card.text } : style
+    })
+  : inheritedShootingStyles
 const inheritedPortfolioTiles = portfolioTiles.map((tile, index) => {
   const visual = visualSlots[index + heroPanels.length + shootingStyles.length]
   return { ...tile, alt: visual.alt, full: visual.full, height: visual.height, src: visual.src, width: visual.width }
@@ -273,11 +286,11 @@ const finalHeroPanels = doc?.heroPanels?.length
 
 const finalShootingStyles = doc?.shootingStyles?.length
   ? doc.shootingStyles.map((style, index) => {
-      const fb = inheritedShootingStyles[index] || inheritedShootingStyles[inheritedShootingStyles.length - 1]
+      const fb = keywordShootingStyles[index] || keywordShootingStyles[keywordShootingStyles.length - 1]
       const resolved = resolveSectionImage(style.image, fb)
       return { ...resolved, title: style.title || fb.title, text: style.text || fb.text }
     })
-  : inheritedShootingStyles
+  : keywordShootingStyles
 
 const finalPortfolioTiles = doc?.portfolioTiles?.length
   ? doc.portfolioTiles.map((tile, index) => {
@@ -296,14 +309,33 @@ const finalAudiences = doc?.audienceCards?.length
   : inheritedAudiences
 
 const finalStatementImage = finalPortfolioTiles[0] || statementImage
-const statementHeadline = (typeof doc?.statement?.headline === 'string' && doc.statement.headline.trim()) || 'Bilder mit'
-const statementEmphasis = (typeof doc?.statement?.emphasis === 'string' && doc.statement.emphasis.trim()) || 'Druckqualität.'
+const statementHeadline = (typeof doc?.statement?.headline === 'string' && doc.statement.headline.trim()) || keywordFocusCopy?.statementHeadline || 'Bilder mit'
+const statementEmphasis = (typeof doc?.statement?.emphasis === 'string' && doc.statement.emphasis.trim()) || keywordFocusCopy?.statementEmphasis || 'Druckqualität.'
 const statementBody = doc?.statement?.body?.length
   ? doc.statement.body.map((entry) => entry.text).filter((text): text is string => Boolean(text))
-  : [
+  : keywordFocusCopy?.statementBody?.length
+    ? keywordFocusCopy.statementBody
+    : [
       'Sportwagen verlangen Präzision. Ich arbeite mit mobilem Licht, Reflektoren und einem klaren Plan — kontrollierte Reflexe, ruhige Hintergründe, echte Farben. Lack, Linien und Proportionen wirken stimmig, nicht überzeichnet.',
       'Ob Verkauf, Branding, Redaktion oder persönliches Geschenk: ich kombiniere klares Licht, saubere Komposition und einen Blick für Details. Sie erhalten Dateien für Web, Social Media und Druck — aufbereitet und sofort einsatzbereit.',
     ]
+
+const focusSectionHeadline = keywordFocusCopy?.sectionHeadline || (isParentPage ? 'Das Auto,' : `${serviceLabel},`)
+const focusSectionEmphasis = keywordFocusCopy?.sectionEmphasis || (isParentPage ? 'aus jedem Winkel.' : isKeywordPage ? 'klar fokussiert.' : `${scope.label}.`)
+const focusSectionLead =
+  keywordFocusCopy?.sectionLead ||
+  (isParentPage
+    ? 'Exterieur, Interieur, Details und cineastische Perspektiven greifen ineinander - ein Bildsatz, der Fahrzeug, Atmosphaere und Material gleichermaßen zeigt.'
+    : `${serviceLabel} wird als eigenstaendige Seite im Sportwagen-Cluster gefuehrt: Exterieur, Innenraum, Details und Nutzung werden passend zur Suchintention geplant.`)
+const focusGalleryHeadline = keywordFocusCopy?.galleryHeadline || 'Aktuelle Arbeiten.'
+const focusGalleryLead = keywordFocusCopy?.galleryLead || 'Sechs kuratierte Sportwagen-Bilder aus juengeren Serien. Klicken zum Vergroessern.'
+const focusAudienceHeadline = keywordFocusCopy?.audienceHeadline || 'Fuer wen ich arbeite.'
+const focusAudienceLead =
+  keywordFocusCopy?.audienceLead ||
+  'Vom privaten Fahrzeug bis zur internationalen Kampagne. Jede Serie wird auf Nutzung, Marke und Zielgruppe zugeschnitten - ein Hero-Motiv oder ein vollstaendiges Launch-Asset-Paket.'
+const focusRelatedLead =
+  keywordFocusCopy?.relatedLead ||
+  'Sportwagen ist ein Teil der Automobil-Welt. Schau dir die anderen Disziplinen an - gleicher Anspruch, anderer Bildfokus. Diese Kategorie ist Teil eines bewusst getrennten Fotografie-Clusters: Fahrzeug, Mensch und Raum bleiben eigenstaendige Suchintentionen, sind aber intern so verbunden, dass Nutzer schnell in den passenden Bildbereich wechseln koennen.'
 
 const relatedAreas = [
   {
@@ -346,6 +378,8 @@ const relatedAreas = [
 
 const cityLinks = [
   ['sportwagen-fotografie.html', 'Düsseldorf'],
+  ['sportwagen-fotografie-erkrath.html', 'Erkrath'],
+  ['sportwagen-fotografie-ratingen.html', 'Ratingen'],
   ['sportwagen-fotografie-koeln.html', 'Köln'],
   ['sportwagen-fotografie-essen.html', 'Essen'],
   ['sportwagen-fotografie-dortmund.html', 'Dortmund'],
@@ -370,6 +404,8 @@ const cityLinks = [
 ]
 
 const searchLinks = [
+  ['motorsport-sportwagen-fotografie.html', 'Motorsport & Sportwagen'],
+  ['motorsport-fotografie.html', 'Motorsport Fotografie'],
   ['sportwagen-shooting-duesseldorf.html', 'Sportwagen Shooting'],
   ['sportwagen-fotoshooting-duesseldorf.html', 'Sportwagen Fotoshooting'],
   ['performance-car-fotografie.html', 'Performance Car Fotografie'],
@@ -422,7 +458,7 @@ const searchLinks = [
 
       <div class="tri-overlay">
         <h1 class="tri-title">
-          <span class="line"><span class="word">Sportwagen</span></span>
+          <span class="line"><span class="word">{heroTitle}</span></span>
           <span class="line"><span class="word">{heroSecondLine}</span></span>
         </h1>
         <p class="tri-sub">{doc?.intro || heroLead}</p>
@@ -450,8 +486,8 @@ const searchLinks = [
     <section class="sh" data-header-theme="dark">
       <div class="section-inner">
         <div class="sh-head">
-          <h2>Das Auto, <em>aus jedem Winkel.</em></h2>
-          <p>Exterieur, Interieur, Details und cineastische Perspektiven greifen ineinander — ein Bildsatz, der Fahrzeug, Atmosphäre und Material gleichermaßen zeigt.</p>
+          <h2>{focusSectionHeadline} <em>{focusSectionEmphasis}</em></h2>
+          <p>{focusSectionLead}</p>
         </div>
         <div class="sh-grid">
           {finalShootingStyles.map((style) => (
@@ -470,9 +506,9 @@ const searchLinks = [
     <section class="po" data-header-theme="dark" aria-label="Ausgewählte Sportwagen-Arbeiten">
       <div class="po-grid" id="poGrid">
         <header class="po-head">
-          <h2>Aktuelle <em>Arbeiten.</em></h2>
-          <div class="head-foot">
-            <p>Sechs kuratierte Sportwagen-Bilder aus jüngeren Serien. Klicken zum Vergrößern.</p>
+            <h2>{focusGalleryHeadline}</h2>
+            <div class="head-foot">
+            <p>{focusGalleryLead}</p>
           </div>
         </header>
 
@@ -501,8 +537,8 @@ const searchLinks = [
     <section class="fw" data-header-theme="light">
       <div class="section-inner">
         <div class="fw-head">
-          <h2>Für <em>wen</em> ich arbeite.</h2>
-          <p>Vom privaten Fahrzeug bis zur internationalen Kampagne. Jede Serie wird auf Nutzung, Marke und Zielgruppe zugeschnitten — ein Hero-Motiv oder ein vollständiges Launch-Asset-Paket.</p>
+          <h2>{focusAudienceHeadline}</h2>
+          <p>{focusAudienceLead}</p>
         </div>
         <div class="fw-grid">
           {finalAudiences.map((audience) => (
@@ -524,7 +560,7 @@ const searchLinks = [
       <div class="section-inner">
         <div class="rl-head">
           <h2>Verwandte <em>Bereiche</em>.</h2>
-          <p>Sportwagen ist ein Teil der Automobil-Welt. Schau dir die anderen Disziplinen an — gleicher Anspruch, anderer Bildfokus. Diese Kategorie ist Teil eines bewusst getrennten Fotografie-Clusters: Fahrzeug, Mensch und Raum bleiben eigenständige Suchintentionen, sind aber intern so verbunden, dass Nutzer schnell in den passenden Bildbereich wechseln können.</p>
+          <p>{focusRelatedLead}</p>
         </div>
         <div class="rl-grid">
           {relatedAreas.map((area) => (
