@@ -277,9 +277,13 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
     title: 'Experimental Lens | Matthias Ramahi',
   },
   'webdesign-seo-duesseldorf.html': {
-    ...serviceMiniChrome('/assets/services/screencapture-gr-knospe-de-2025-10-02-23_10_04-scaled.webp'),
+    current: 'leistungen',
     description:
       'Webdesign und SEO in Düsseldorf: moderne Websites, lokale Sichtbarkeit, Performance, Bildsprache, Landingpages und suchmaschinenfreundliche Struktur.',
+    ogImage: '/assets/optimized/assets-photos-automobil-sunset-1920.webp',
+    preloadImages: ['/assets/optimized/assets-photos-automobil-sunset-1920.webp'],
+    scripts: ['/assets/native-home.js', ...siteChromeScript],
+    stylesheets: [...sharedStyles, '/assets/native-webdesign-seo.css'],
     title: 'Webdesign & SEO Düsseldorf - Matthias Ramahi',
   },
   'videografie-duesseldorf.html': {
@@ -322,9 +326,13 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
     title: 'Fotolabor & Druck Düsseldorf - Matthias Ramahi',
   },
   'viola-musik-duesseldorf.html': {
-    ...serviceMiniChrome('/assets/services/portfolio_webp_full_004-2.webp'),
+    current: 'leistungen',
     description:
-      'Viola und Geigenmusik in Düsseldorf: Empfehlung über das Partnernetzwerk von Matthias Ramahi - Hochzeit, Empfang, Trauerfeier und private Anlässe.',
+      'Viola und Geigenmusik in Düsseldorf: klassische Begleitung für Hochzeit, Empfang, Trauerfeier und private Anlässe - über ein Netzwerk erfahrener Künstler:innen vermittelt.',
+    ogImage: '/assets/services/portfolio_webp_full_004-2.webp',
+    preloadImages: ['/assets/services/portfolio_webp_full_004-2.webp'],
+    scripts: ['/assets/native-home.js', ...siteChromeScript],
+    stylesheets: [...sharedStyles, '/assets/native-viola-musik.css'],
     title: 'Viola Musik Düsseldorf - Matthias Ramahi',
   },
 }

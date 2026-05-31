@@ -11,6 +11,7 @@
     --chrome:#d5cdb8;
     --ease:cubic-bezier(.23,1,.32,1);
     --font:'Neue Haas Grotesk Display','Söhne','Avenir Next','Helvetica Neue',Arial,system-ui,sans-serif;
+    --serif:'Iowan Old Style','Charter','Hoefler Text',Georgia,'Times New Roman',serif;
     --mono:'JetBrains Mono','IBM Plex Mono','SFMono-Regular',ui-monospace,Menlo,monospace;
     --maxw:1540px;
   }
@@ -38,203 +39,49 @@
   section{position:relative}
   .section-inner{max-width:var(--maxw);margin:0 auto;padding:clamp(80px,11vw,160px) clamp(22px,5vw,76px)}
 
-  /* ============ HERO — KEN BURNS + SOFT-FOCUS IRIS + BOKEH FLARE ============
-     Crossfade-Slideshow ohne clip-path/Wipe-Kante. Pro Slide:
-       1) Ken-Burns (langsamer Zoom/Pan, drei Richtungsvarianten)
-       2) Soft-Focus-Iris als ::after — gleiches Bild stark unscharf,
-          radial ausgespart; die Schärfe-Apertur wandert via @property-
-          getriebenen --iris-x/--iris-y (eine CSS-Quelle).
-       3) Bokeh-Flare-Video Overlay mit mix-blend-mode:screen — der schwarze
-          Hintergrund des Footage fällt automatisch weg; hue-rotate warmt
-          den Bokeh zu Bronze/Amber. Eigene langsame transform-Drift.
-     Genau eine setInterval-Quelle treibt nur den Active-Toggle;
-     alle anderen Bewegungen sind CSS-Loops. */
-  @property --iris-x{ syntax:'<percentage>'; inherits:true; initial-value:55% }
-  @property --iris-y{ syntax:'<percentage>'; inherits:true; initial-value:42% }
-
-  .hero-mp{position:relative;height:100svh;max-height:100svh;overflow:hidden;background:#050505;color:var(--fg);
-    --patina:color-mix(in oklch, var(--accent) 62%, oklch(36% .08 42));
-    --bronze:color-mix(in oklch, var(--accent-2) 72%, oklch(48% .06 60));
-    --iris-x:55%; --iris-y:42%;
-  }
-  .hero-mp.is-animated{animation:mpIrisDrift 26s ease-in-out infinite alternate}
-  @keyframes mpIrisDrift{
-    0%   { --iris-x:46%; --iris-y:38% }
-    33%  { --iris-x:62%; --iris-y:46% }
-    66%  { --iris-x:54%; --iris-y:40% }
-    100% { --iris-x:60%; --iris-y:50% }
-  }
-  .hero-mp__stage{position:absolute;inset:0;z-index:1;background:#040404}
-
-  /* Slide system — diagonaler clip-path Page-Turn (zurück) + ruhiger Ken Burns.
-     Active-Slide steht zunächst voll sichtbar als Polygon mit voller Fläche;
-     wird Slide inaktiv, läuft sein clip-path zur rechten Kante zusammen
-     (Page-Turn). Der nachfolgende Slide liegt darunter und wird sofort sichtbar.
-     Ken Burns ist sehr subtil (kein Translate, nur leichter Zoom) damit nichts
-     mehr "hackelt". Drei minimale Varianten für leichte Wiederholungsvermeidung. */
-  .hero-mp__slides{position:absolute;inset:0;z-index:1}
-  .hero-mp__slide{position:absolute;inset:0;
-    background-image:var(--hero-bg-desktop,none);
-    background-size:cover;background-position:center 54%;
-    filter:contrast(1.07) saturate(.92) brightness(.94);
-    clip-path:polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
-    transition:clip-path 1500ms cubic-bezier(.76,0,.24,1);
-    will-change:clip-path, transform;
-    z-index:1;
-  }
-  .hero-mp__slide.is-active{
-    clip-path:polygon(-22% 0, 100% 0, 100% 100%, 22% 100%);
-    z-index:3;
-    animation:none;
-  }
-  .hero-mp__slide.is-prev{
-    clip-path:polygon(-22% 0, 100% 0, 100% 100%, 22% 100%);
-    z-index:2;
-    transition:none;
-  }
-  .hero-mp.is-animated .hero-mp__slide.is-active{animation:mpKB1 14s ease-out forwards}
-  .hero-mp.is-animated .hero-mp__slide[data-kb="2"].is-active{animation-name:mpKB2}
-  .hero-mp.is-animated .hero-mp__slide[data-kb="3"].is-active{animation-name:mpKB3}
-  @keyframes mpKB1{
-    0%   { transform:scale(1.02) }
-    100% { transform:scale(1.08) }
-  }
-  @keyframes mpKB2{
-    0%   { transform:scale(1.04) }
-    100% { transform:scale(1.09) }
-  }
-  @keyframes mpKB3{
-    0%   { transform:scale(1.07) }
-    100% { transform:scale(1.02) }
-  }
-
-  /* Soft-Focus-Iris ::after — gleiches Bild (background:inherit) STARK
-     unscharf + entsättigt + dunkler, FULL OPAQUE Layer über dem scharfen
-     Slide. Radial-Mask: in der Iris-Mitte voll transparent (scharfes Bild
-     darunter sichtbar), nach außen hart zu #000 (Blur-Layer voll opak).
-     Iris-Position folgt --iris-x/--iris-y aus .hero-mp. Inset:-3%
-     verhindert harte Bildkanten beim Blur. Wie Portrait-Hero: deutlich
-     sichtbarer Schärfe-Sweetspot, Rest ist „Bokeh-Bett". */
-  .hero-mp__slide::after{
-    content:none;position:absolute;inset:-3%;
-    background:inherit;background-size:cover;background-position:center 54%;
-    filter:blur(15px) saturate(.86) brightness(.88) contrast(1.04);
-    -webkit-mask:radial-gradient(circle at var(--iris-x) var(--iris-y),
-      transparent 0%, transparent 24%,
-      rgba(0,0,0,.32) 40%, rgba(0,0,0,.72) 56%, #000 74%);
-    mask:radial-gradient(circle at var(--iris-x) var(--iris-y),
-      transparent 0%, transparent 24%,
-      rgba(0,0,0,.32) 40%, rgba(0,0,0,.72) 56%, #000 74%);
-    opacity:.82;
-    pointer-events:none;
-    z-index:2;
-  }
-  .hero-mp.is-animated .hero-mp__slide::after{content:""}
-
-  /* Bokeh-Flare Overlay — sehr dezent. Nur die hellen Bokeh-Bälle dringen
-     durch (mix-blend-mode:screen, schwarzer Hintergrund fällt weg). Saturation
-     stark zurück und opacity sehr niedrig, damit das Bild dominant bleibt. */
-  .hero-mp__bokeh{position:absolute;inset:-6%;width:112%;height:112%;
-    display:none;
-    object-fit:cover;object-position:center;
-    mix-blend-mode:screen;
-    opacity:.18;
-    filter:hue-rotate(-22deg) saturate(.55) contrast(.92) brightness(.78);
-    pointer-events:none;z-index:5;
-    will-change:transform;
-  }
-  .hero-mp.is-animated .hero-mp__bokeh{display:block;animation:mpBokehDrift 46s ease-in-out infinite alternate}
-  @keyframes mpBokehDrift{
-    0%   { transform:scale(1.04) translate(-2%, -1%) }
-    50%  { transform:scale(1.08) translate(1%, .8%) }
-    100% { transform:scale(1.05) translate(2%, -.4%) }
-  }
-
-  /* VIGNETTE — kräftiger Randabfall, zieht Auge ins Zentrum. Zwei radiale
-     Layer (großer weicher + harter Eckabfall) + leichter Bottom-Gradient
-     für die Headline-Lesbarkeit. */
-  .hero-mp__vignette{position:absolute;inset:0;pointer-events:none;z-index:4;
-    background:
-      radial-gradient(ellipse 88% 92% at 50% 48%,
-        transparent 0%, transparent 38%,
-        rgba(4,4,6,.18) 58%, rgba(4,4,6,.46) 78%, rgba(2,2,4,.78) 100%),
-      radial-gradient(ellipse 130% 110% at 50% 50%,
-        transparent 50%, rgba(0,0,0,.55) 100%);
-  }
-
-  /* FILMKÖRNUNG — SVG fractal noise als data-URI, mix-blend:overlay legt
-     die helle/dunkle Korn-Information über das Bild ohne Farbe zu kippen.
-     animation-driven translate macht die Körnung „lebendig" (kein
-     statisches Pattern). Bewusst stark (opacity .42) wie 35-mm-Push. */
-  .hero-mp__grain{position:absolute;inset:-12%;width:124%;height:124%;
-    display:none;
-    pointer-events:none;z-index:8;
-    opacity:.42;mix-blend-mode:overlay;
-    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 280 280'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.94  0 0 0 0 0.92  0 0 0 0 0.88  0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-    background-size:280px 280px;
-    will-change:transform;
-  }
-  .hero-mp.is-animated .hero-mp__grain{display:block;animation:mpGrainShift 1.2s steps(6) infinite}
-  @keyframes mpGrainShift{
-    0%   { transform:translate(0,0) }
-    16%  { transform:translate(-3%,2%) }
-    33%  { transform:translate(2%,-3%) }
-    50%  { transform:translate(-2%,-2%) }
-    66%  { transform:translate(3%,3%) }
-    83%  { transform:translate(-1%,2%) }
-    100% { transform:translate(0,0) }
-  }
-
-  .hero-mp__stage:before{content:"";position:absolute;inset:0;background:
-    radial-gradient(78% 88% at 50% 52%, rgba(0,0,0,0) 0%, rgba(0,0,0,.2) 36%, rgba(0,0,0,.62) 72%, rgba(0,0,0,.92) 100%),
-    linear-gradient(180deg, rgba(0,0,0,.42) 0%, rgba(0,0,0,0) 24%, rgba(0,0,0,0) 60%, rgba(0,0,0,.92) 100%);
-    z-index:3;pointer-events:none}
-  .hero-mp__stage:after{content:"";position:absolute;left:0;right:0;bottom:0;height:36%;background:linear-gradient(180deg, rgba(184,164,122,0) 0%, rgba(184,164,122,.08) 100%);z-index:3;pointer-events:none;mix-blend-mode:overlay}
-
-  .hero-mp__overlay{position:absolute;inset:0;z-index:6;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(56px,7vw,96px) clamp(22px,5vw,76px) clamp(40px,5vw,72px);pointer-events:none}
-  .hero-mp__overlay > *{pointer-events:auto}
-
-  /* Letterpress title — Iowan Old Style serif, 7-layer engraving */
-  .hero-mp__title{
-    font-family:'Iowan Old Style','Charter','Hoefler Text','Georgia',serif;
-    font-size:clamp(58px,12.4vw,206px);line-height:.84;letter-spacing:-.025em;
-    max-width:1500px;font-weight:600;
-    color:color-mix(in oklch, #f4f1ea 88%, var(--accent) 12%);
-    hanging-punctuation:first last;
-    text-shadow:
-      0 1px 0 rgba(255,248,228,.10),
-      0 -1px 0 rgba(0,0,0,.55),
-      0 -2px 1px rgba(0,0,0,.40),
-      0 -3px 2px rgba(0,0,0,.28),
-      0 -4px 3px rgba(0,0,0,.18),
-      0 2px 14px rgba(0,0,0,.55),
-      0 8px 36px rgba(0,0,0,.42);
-    transition:opacity 1.4s var(--ease), transform 1.6s var(--ease), filter 1.2s var(--ease);
-  }
-  .hero-mp__title > span,
-  .hero-mp__title > em{display:block}
-  .hero-mp__title em{
-    font-style:italic;font-weight:400;letter-spacing:-.02em;
-    color:color-mix(in oklch, var(--accent) 78%, oklch(40% .08 40));
-  }
-  @starting-style{
-    .hero-mp__title{opacity:0;transform:translateY(14px) scale(.985);filter:blur(4px)}
-    .hero-mp__sub{opacity:0;transform:translateY(8px)}
-    .hero-mp__actions{opacity:0;transform:translateY(8px)}
-  }
-
-  .hero-mp__sub{margin-top:clamp(22px,2.4vw,32px);max-width:640px;
-    font-size:clamp(14px,1.05vw,16.5px);line-height:1.66;color:var(--muted);
-    hanging-punctuation:first;
-    transition:opacity 1.2s var(--ease) .55s, transform 1.2s var(--ease) .55s;
-  }
-  .hero-mp__actions{margin-top:clamp(28px,3vw,40px);display:flex;gap:14px;flex-wrap:wrap;
-    transition:opacity 1.2s var(--ease) .75s, transform 1.2s var(--ease) .75s;
-  }
-  .hero-mp__actions a{min-height:44px;display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border:1px solid var(--accent);color:var(--fg);font:11px var(--mono);letter-spacing:.22em;text-transform:uppercase;transition:background .35s var(--ease),color .35s var(--ease);font-variant-numeric:tabular-nums}
-  .hero-mp__actions a:hover{background:var(--accent);color:var(--ink)}
-  .hero-mp__actions a.ghost{border-color:rgba(244,241,234,.28);color:var(--muted)}
-  .hero-mp__actions a.ghost:hover{border-color:var(--fg);color:var(--fg)}
+  /* ===== HERO — Landing-Page-Shader-Hero, getintet im Oldtimer-Messing =====
+     Struktur 1:1 von der Startseite/Fotolabor (.hero + #hero-shader +
+     glow/aperture/cursor). Bewegung via assets/native-home.js (gated nur auf
+     #hero-shader); auf Mobile/Touch versteckt sich der Canvas und der Hero
+     pant als statisches Bild. --hero-accent = warmes Messing/Patina (--accent).
+     box-sizing:border-box (oben global) verhindert, dass das Padding auf
+     100svh aufaddiert und der Hero überläuft. */
+  .hero{--hero-accent:var(--accent);position:relative;height:100svh;min-height:600px;max-height:100svh;display:grid;align-items:end;padding:clamp(120px,14vw,180px) clamp(22px,5vw,76px) clamp(48px,7vw,96px);overflow:hidden;isolation:isolate;background:#0a0a0a center/cover no-repeat;background-image:var(--hero-bg-desktop,none);cursor:none;color:#f4f1ea}
+  .hero canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;display:block;opacity:0;transition:opacity .45s var(--ease)}
+  .hero canvas.is-ready{opacity:1}
+  .hero:before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(2,2,4,.36) 0%,rgba(2,2,4,0) 22%,rgba(2,2,4,0) 50%,rgba(2,2,4,.60) 84%,rgba(2,2,4,.86) 100%)}
+  .hero:after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(95% 60% at 50% 100%,rgba(2,2,4,.48) 0%,rgba(2,2,4,0) 60%)}
+  .hero-aperture{position:absolute;z-index:2;left:-15vw;right:-15vw;top:42%;height:96px;pointer-events:none;opacity:.28;transform:rotate(-4deg) translateX(-18vw);background:linear-gradient(90deg,transparent 0%,rgba(244,241,234,.08) 36%,color-mix(in oklch,var(--hero-accent) 60%,#fff 40%) 49%,color-mix(in oklch,var(--hero-accent) 30%,transparent) 55%,color-mix(in oklch,var(--hero-accent) 22%,transparent) 62%,transparent 82%);filter:blur(.2px);-webkit-mask-image:linear-gradient(180deg,transparent,black 44%,black 56%,transparent);mask-image:linear-gradient(180deg,transparent,black 44%,black 56%,transparent);animation:heroAperture 11s var(--ease) infinite}
+  @keyframes heroAperture{0%,10%{transform:rotate(-4deg) translateX(-30vw);opacity:0}28%{opacity:.42}58%{transform:rotate(-4deg) translateX(22vw);opacity:.24}100%{transform:rotate(-4deg) translateX(30vw);opacity:0}}
+  .hero-glow{position:absolute;inset:-30% -18%;z-index:2;pointer-events:none;background:radial-gradient(circle at 22% 28%,color-mix(in oklch,var(--hero-accent) 12%,transparent),transparent 30%),radial-gradient(circle at 84% 70%,color-mix(in oklch,var(--hero-accent) 20%,transparent),transparent 36%);filter:blur(38px);opacity:.55;animation:heroGlow 18s var(--ease) infinite alternate}
+  @keyframes heroGlow{0%{transform:translate3d(-1.6%,1.2%,0) scale(1)}100%{transform:translate3d(2.2%,-1.2%,0) scale(1.04)}}
+  .hero-grid{position:relative;z-index:3;display:block;width:100%;max-width:var(--maxw);margin:0 auto}
+  .hero-stage{position:relative;display:block}
+  .hero-title{position:relative;margin:0;font-family:var(--serif);font-size:clamp(56px,10.6vw,168px);line-height:.86;letter-spacing:-.035em;text-transform:uppercase;font-weight:600;color:#f7f4ec;-webkit-mask-image:linear-gradient(180deg,#000 0%,#000 76%,rgba(0,0,0,.55) 100%);mask-image:linear-gradient(180deg,#000 0%,#000 76%,rgba(0,0,0,.55) 100%);text-shadow:0 24px 80px rgba(0,0,0,.55),0 2px 18px rgba(0,0,0,.55)}
+  .hero-title .line{display:block;overflow:hidden;padding:.04em 0 .06em}
+  .hero-title .word{display:inline-block;will-change:transform,opacity;transition:transform 1.05s cubic-bezier(.18,.78,.24,1),opacity .82s var(--ease)}
+  .hero-title.is-in .word{transform:translate3d(0,0,0);opacity:1}
+  .hero-title.is-out .word{transform:translate3d(112%,0,0);opacity:0;transition:transform .7s cubic-bezier(.62,.02,.86,.18),opacity .5s var(--ease)}
+  .hero-title .line:nth-child(2) .word{transition-delay:.10s}
+  .hero-title .line:nth-child(2){font-style:italic;font-weight:500;color:color-mix(in oklch,var(--hero-accent) 80%,#fff 20%)}
+  .hero-title.no-anim .word{transition:none !important}
+  .hero-lead{max-width:46rem;margin-top:22px;color:rgba(244,241,234,.82);font-size:clamp(16px,1.28vw,21px);line-height:1.48;font-weight:400;letter-spacing:-.005em;text-wrap:pretty;text-shadow:0 14px 42px rgba(0,0,0,.50);transition:opacity .42s var(--ease),transform .42s var(--ease)}
+  .hero-lead.is-hidden{opacity:0;transform:translateY(10px);pointer-events:none}
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+  .hero-actions .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:14px 22px;font:11px var(--mono);letter-spacing:.2em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(244,241,234,.52);color:#f4f1ea;background:rgba(2,2,4,.22);backdrop-filter:blur(14px);transition:all .3s var(--ease)}
+  .hero-actions .btn.dark{background:#f4f1ea;color:#0a0a0a;border-color:#f4f1ea}
+  .hero-actions .btn:hover{background:color-mix(in oklch,var(--hero-accent) 64%,#fff 36%);color:#0a0a0a;border-color:transparent}
+  .hero-cursor{position:fixed;top:0;left:0;width:64px;height:64px;border:1px solid rgba(244,241,234,.78);border-radius:50%;pointer-events:none;z-index:60;transform:translate(-50%,-50%) scale(.6);mix-blend-mode:difference;transition:opacity .35s ease,transform .45s var(--ease),border-color .35s ease;opacity:0;will-change:transform}
+  .hero-cursor:before,.hero-cursor:after{content:"";position:absolute;top:50%;left:50%;background:rgba(244,241,234,.85)}
+  .hero-cursor:before{width:1px;height:14px;transform:translate(-50%,-50%)}
+  .hero-cursor:after{width:14px;height:1px;transform:translate(-50%,-50%)}
+  .hero-cursor .ring{position:absolute;inset:-10px;border:1px solid rgba(244,241,234,.20);border-radius:50%;transition:.35s var(--ease)}
+  .hero-cursor.is-active{opacity:1;transform:translate(-50%,-50%) scale(1)}
+  .hero-cursor.is-pressed{transform:translate(-50%,-50%) scale(.68);border-color:#fff}
+  .hero-cursor.is-pressed .ring{inset:-18px;border-color:rgba(244,241,234,.35)}
+  .hero a,.hero button{cursor:pointer}
+  @media (hover:none),(pointer:coarse),(max-width:900px){.hero{cursor:auto;background-image:var(--hero-bg-mobile,var(--hero-bg-desktop,none));animation:heroPanMobile 34s var(--ease) infinite alternate}.hero canvas{display:none}.hero-cursor{display:none}}
+  @keyframes heroPanMobile{from{background-position:46% 50%}to{background-position:54% 50%}}
 
   /* ============ STATEMENT ============ */
   .st{background:var(--paper);color:var(--ink);min-height:64svh;max-height:68svh;display:flex;align-items:center;overflow:hidden;position:relative}
@@ -262,7 +109,9 @@
   .pv-card p{color:var(--muted);font-size:15px;line-height:1.6}
 
   /* ============ MINI PORTFOLIO ============ */
-  .po{background:#0a0a0a;color:#fff;height:100svh;max-height:100svh;overflow:hidden;position:relative}
+  /* border-top trennt die (gleichfarbige) dunkle .pv von der dunklen .po,
+     damit kein toter Übergang entsteht. */
+  .po{background:#0a0a0a;color:#fff;height:100svh;max-height:100svh;overflow:hidden;position:relative;border-top:1px solid var(--line)}
   .po-grid{position:absolute;inset:0;display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:repeat(12,1fr);gap:6px;padding:6px}
   .po-head{grid-column:8 / 13;grid-row:1 / 5;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(20px,2.2vw,40px);position:relative;z-index:3;background:linear-gradient(180deg,rgba(10,10,10,.45),rgba(10,10,10,.78))}
   .po-head h2{font-size:clamp(40px,5.4vw,96px);line-height:.88;letter-spacing:-.06em;font-weight:900;color:#fff;margin:0}
@@ -349,38 +198,62 @@
     .fw-grid{grid-template-columns:repeat(3,1fr)}
     .rl-grid{grid-template-columns:repeat(2,1fr)}
   }
+  @media (max-width:980px){
+    .hero{padding:clamp(96px,16vw,130px) 22px clamp(44px,9vw,60px)}
+    .hero-title{font-size:clamp(46px,12vw,88px)}
+    .hero-lead{font-size:16px;margin-top:18px}
+  }
   @media (max-width:900px){
-    .hero-mp__slide{background-image:var(--hero-bg-mobile,var(--hero-bg-desktop,none))}
-    .hero-mp{height:auto;max-height:none;min-height:88svh}
-    .hero-mp__title{font-size:clamp(48px,13.5vw,92px);line-height:.88}
+    /* Sektions-Padding global enger -> kürzere Seite, kein toter Raum */
+    .section-inner{padding:clamp(52px,10vw,72px) 22px}
+
+    /* STATEMENT */
     .st{height:auto;max-height:none;min-height:auto}
-    .st .section-inner{grid-template-columns:1fr;gap:32px;padding:clamp(80px,12vw,120px) 22px clamp(60px,8vw,90px)}
+    .st .section-inner{grid-template-columns:1fr;gap:24px;padding:clamp(56px,11vw,76px) 22px}
+    .st h2{font-size:clamp(40px,11vw,62px)}
     .st-body{justify-self:start}
-    .pv-grid{grid-template-columns:1fr}
+
+    /* PROVENANCE -> horizontaler Swipe-Carousel (kompakt, lesbar) */
+    .pv-head{margin-bottom:clamp(22px,5vw,34px)}
+    .pv-head h2{font-size:clamp(36px,9vw,62px);margin-bottom:16px}
+    .pv-grid{display:flex;grid-template-columns:none;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:0 -22px;padding:0 22px 6px}
+    .pv-grid::-webkit-scrollbar{display:none}
+    .pv-card{flex:0 0 78%;scroll-snap-align:start;gap:14px}
+    .pv-img{aspect-ratio:4/5}
+    .pv-card h3{font-size:clamp(22px,6vw,28px)}
+
+    /* MINI PORTFOLIO -> gleichmäßiges 2-Spalten-Raster (kein Waisen-Tile) */
     .po{height:auto;max-height:none}
-    .po-grid{position:relative;grid-template-columns:repeat(2,1fr);grid-template-rows:none;grid-auto-rows:38vh;padding:8px;gap:8px}
-    .po-head{grid-column:1 / 3;grid-row:auto;padding:clamp(30px,6vw,48px) clamp(16px,4vw,28px);min-height:38vh}
-    .po-head h2{font-size:clamp(34px,8vw,56px)}
+    .po-grid{position:relative;grid-template-columns:repeat(2,1fr);grid-template-rows:none;grid-auto-rows:24vh;padding:8px;gap:8px}
+    .po-head{grid-column:1 / 3;grid-row:auto;min-height:0;padding:clamp(28px,7vw,40px) 4px clamp(18px,4vw,26px);background:none}
+    .po-head h2{font-size:clamp(32px,8.5vw,52px)}
     .po-tile.t1,.po-tile.t2,.po-tile.t3,.po-tile.t4,.po-tile.t5,.po-tile.t6{grid-column:auto;grid-row:auto}
-    .po-tile.t1{grid-column:1 / 3}
-    .fw-head{flex-direction:column;align-items:flex-start}
-    .fw-grid{grid-template-columns:1fr 1fr}
-    .rl-head{grid-template-columns:1fr;gap:18px}
+
+    /* FUER WEN */
+    .fw{min-height:auto}
+    .fw .section-inner{gap:clamp(24px,5vw,36px);padding:clamp(52px,11vw,72px) 22px}
+    .fw-head{flex-direction:column;align-items:flex-start;gap:14px}
+    .fw-grid{grid-template-columns:1fr 1fr;gap:10px}
+
+    /* RELATED -> horizontaler Swipe-Carousel */
+    .rl-head{grid-template-columns:1fr;gap:16px;margin-bottom:clamp(22px,5vw,34px)}
+    .rl-head h2{font-size:clamp(38px,9vw,62px)}
     .rl-head p{justify-self:start}
+    .rl-grid{display:flex;grid-template-columns:none;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:0 -22px;padding:0 22px 6px}
+    .rl-grid::-webkit-scrollbar{display:none}
+    .rl-card{flex:0 0 78%;scroll-snap-align:start;aspect-ratio:3/4}
+    .rl-card img{filter:brightness(.82) grayscale(.1)}
   }
   @media (max-width:600px){
     .fw-grid{grid-template-columns:1fr}
-    .rl-grid{grid-template-columns:1fr}
+    .pv-card{flex-basis:84%}
+    .rl-card{flex-basis:84%}
+    .po-grid{grid-auto-rows:22vh}
   }
   @media (prefers-reduced-motion:reduce){
-    .hero-mp{animation:none;--iris-x:55%;--iris-y:42%}
-    .hero-mp__slide{filter:contrast(1.07) saturate(.92) brightness(.94);transition:none;transform:none;
-      clip-path:polygon(100% 0, 100% 0, 100% 100%, 100% 100%);}
-    .hero-mp__slide.is-active{clip-path:polygon(-22% 0, 100% 0, 100% 100%, 22% 100%);animation:none}
-    .hero-mp__slide::after{filter:blur(13px) saturate(.88) brightness(.9);opacity:.82}
-    .hero-mp__bokeh{display:none}
-    .hero-mp__grain{animation:none;opacity:.32}
-    .hero-mp__title,.hero-mp__sub,.hero-mp__actions{transition:none}
+    .hero{animation:none}
+    .hero-glow,.hero-aperture{animation:none}
+    .hero-title .word{transition:none;transform:none;opacity:1}
     .po-tile{opacity:1;transform:none;transition:none}
     .po-grid:hover .po-tile:not(:hover){filter:none}
   }

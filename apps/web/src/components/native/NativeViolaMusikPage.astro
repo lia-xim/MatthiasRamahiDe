@@ -1,0 +1,130 @@
+---
+import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
+import { getBySlug, type PayloadDoc } from '../../lib/payload'
+
+const legacyFile = 'viola-musik-duesseldorf.html'
+const providedDoc = Astro.props.doc as PayloadDoc | undefined
+const doc = providedDoc || (await getBySlug('service-pages', 'viola-musik-duesseldorf', { depth: 2 }))
+
+const metaDescription =
+  'Viola und Geigenmusik in Düsseldorf: klassische Begleitung für Hochzeit, Empfang, Trauerfeier und private Anlässe — über ein Netzwerk erfahrener Künstler:innen vermittelt.'
+
+// Anlässe — bewusst simpel: große Nummer als visueller Anker, Anlass-Name, eine knappe Zeile.
+const occasions = [
+  { num: '01', name: 'Trauung & Empfang', line: 'Klassik oder feine Pop-Arrangements für Trauung und Sektempfang.' },
+  { num: '02', name: 'Trauerfeier', line: 'Würdevolle, ruhige Begleitung — diskret im Hintergrund.' },
+  { num: '03', name: 'Private Anlässe', line: 'Geburtstag, Jubiläum oder Gala — Atmosphäre statt Beschallung.' },
+  { num: '04', name: 'Location-Aufnahmen', line: 'Live- und Location-Aufnahmen für Film und Imagefilm.' },
+]
+
+// Ablauf — drei verbundene Stationen vom Anliegen bis zum Auftritt.
+const flowSteps = [
+  { number: '01', title: 'Anfrage.', body: 'Du schilderst Anlass, Ort, Datum und ungefähre Dauer — der Rest entsteht im Gespräch, unverbindlich.' },
+  { number: '02', title: 'Auswahl.', body: 'Passende Besetzung (Solo Viola/Geige, Duo mit Klavier, kleines Ensemble) und Repertoire — Klassik, Filmmusik oder Pop-Arrangements, vorab abgestimmt.' },
+  { number: '03', title: 'Auftritt.', body: 'Leiser Auf- und Abbau, sensibles Spiel im richtigen Moment — in Düsseldorf, im Rheinland und auf Anfrage deutschlandweit.' },
+]
+
+// Hero = der Landing-Page-Shader-Hero (WebGL/Ken-Burns/Lens-Cursor) mit dem B&W-Viola-Bild,
+// Viola-Texten und dem Violett-Akzent. Optik: assets/native-viola-musik.css; Bewegung: native-home.js.
+const heroImage = '/assets/services/portfolio_webp_full_004-2.webp'
+const heroSlides = [
+  {
+    image: heroImage,
+    titleLines: ['Viola', 'Musik'],
+    lead: 'Klassische Begleitung für Hochzeit, Empfang, Trauerfeier und private Anlässe — Viola, Geige und Klavier. Über ein Netzwerk erfahrener Künstler:innen aus Düsseldorf vermittelt.',
+    primaryHref: '#anfrage',
+    primaryLabel: 'Musik anfragen',
+    secondaryHref: '#anlaesse',
+    secondaryLabel: 'Anlässe ansehen',
+  },
+]
+const heroSlidesJson = JSON.stringify(heroSlides)
+---
+<AdoptedPageLayout legacyFile={legacyFile} current="leistungen" doc={doc} description={metaDescription}>
+  <main>
+    <section class="hero" data-theme="dark" data-header-theme="dark" aria-label="Viola Musik Düsseldorf" style={`background-image:url('${heroImage}')`}>
+      <canvas id="hero-shader" aria-hidden="true" data-imgs={heroImage} data-slides={heroSlidesJson}></canvas>
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-aperture" aria-hidden="true"></div>
+      <div class="hero-grid">
+        <div class="hero-stage">
+          <h1 class="hero-title" id="hero-title" data-text-idx="0">
+            <span class="line"><span class="word">Viola</span></span>
+            <span class="line"><span class="word">Musik.</span></span>
+          </h1>
+          <p class="hero-lead" id="hero-lead">Klassische Begleitung für Hochzeit, Empfang, Trauerfeier und private Anlässe — Viola, Geige und Klavier. Über ein Netzwerk erfahrener Künstler:innen aus Düsseldorf vermittelt.</p>
+          <div class="hero-actions" aria-label="Direkte Aktionen">
+            <a class="btn dark" href="#anfrage" data-hero-primary>Musik anfragen</a>
+            <a class="btn" href="#anlaesse" data-hero-secondary>Anlässe ansehen</a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-cursor" id="hero-cursor" aria-hidden="true"><span class="ring"></span></div>
+    </section>
+
+    <section class="vm-occ-sec" id="anlaesse" data-header-theme="dark" aria-label="Anlässe">
+      <div class="vm-occ-sec__inner">
+        <div class="vm-occ-sec__head">
+          <div>
+            <p class="sp-eyebrow">Anlässe</p>
+            <h2 class="vm-occ-sec__title">Für jeden <em>Anlass.</em></h2>
+          </div>
+          <p class="vm-occ-sec__lead">
+            Eine ruhige musikalische Begleitung verändert einen Raum spürbar. Vermittelte Künstler:innen spielen klassisches
+            Repertoire — sensibel und ohne Show.
+          </p>
+        </div>
+        <div class="vm-occ-list">
+          {occasions.map((occ) => (
+            <article class="vm-occ">
+              <p class="vm-occ__num" aria-hidden="true">{occ.num}</p>
+              <h3 class="vm-occ__name">{occ.name}</h3>
+              <p class="vm-occ__line">{occ.line}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="vm-flow" data-header-theme="light" aria-label="Ablauf">
+      <div class="vm-flow__inner">
+        <div class="vm-flow__head">
+          <div>
+            <p class="sp-eyebrow">Vermittlung</p>
+            <h2 class="vm-flow__title">Musik aus dem <em>Netzwerk.</em></h2>
+          </div>
+          <p class="vm-flow__lead">
+            Wir spielen nicht selbst — wir vermitteln Künstler:innen aus dem direkten Umfeld. Erfahren, zuverlässig und im Rheinland
+            verwurzelt, von der ersten Anfrage bis zum Auftritt.
+          </p>
+        </div>
+        <ol class="vm-flow__track" role="list">
+          {flowSteps.map((step) => (
+            <li class="vm-flow__step">
+              <p class="vm-flow__step-num">Schritt {step.number}</p>
+              <h3 class="vm-flow__step-title">{step.title}</h3>
+              <p class="vm-flow__step-body">{step.body}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <section class="sp-cta" data-header-theme="light" aria-label="Anfrage">
+      <div class="sp-cta__inner">
+        <h2 class="sp-cta__head">Bereit für ein <em>Musik-Briefing.</em></h2>
+        <a class="sp-cta__btn" href="#anfrage">Musik anfragen →</a>
+      </div>
+    </section>
+
+    <section
+      id="anfrage"
+      data-contact-section
+      data-contact-subject="Musik-Anfrage — Matthias Ramahi"
+      data-contact-headline="Musik anfragen."
+      data-contact-lead="Schreibe kurz Anlass, Ort, Datum und ungefähre Dauer. Wir vermitteln passende Künstler:innen und melden uns mit Vorschlag und Konditionen."
+      data-header-theme="dark"
+      aria-label="Anfrage"
+    />
+  </main>
+</AdoptedPageLayout>

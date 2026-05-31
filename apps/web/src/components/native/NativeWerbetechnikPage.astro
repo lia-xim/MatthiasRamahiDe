@@ -6,40 +6,27 @@ const legacyFile = 'werbetechnik-duesseldorf.html'
 const providedDoc = Astro.props.doc as PayloadDoc | undefined
 const doc = providedDoc || (await getBySlug('service-pages', 'werbetechnik-duesseldorf', { depth: 2 }))
 
-// Anwendungsbereiche — editorial Grid (kein Card-Chrome).
-const areas = [
-  {
-    kicker: '01 / Fahrzeug',
-    title: 'Fahrzeugbeschriftung',
-    body: 'Logo, Kontakt, Vollverklebung — auf PKW, Transporter, LKW oder Anhänger. Mit Vorab-Visualisierung am Fahrzeugfoto.',
-    items: ['Teilbeklebung mit Hochleistungsfolie', 'Vollfolierung in Farbe oder Carbon', 'Montage im rheinländischen Raum'],
-  },
-  {
-    kicker: '02 / Schaufenster',
-    title: 'Schaufenster & Glas',
-    body: 'Werbung an Ladenflächen — von der dezenten Logofolie bis zur vollflächigen Bildmotivfolie. Demontagefreundlich und sauber.',
-    items: ['Frosted für Sichtschutz', 'Bedruckte Folien mit Bildmotiv', 'Türaufkleber und Hinweistexte'],
-  },
-  {
-    kicker: '03 / Fassade',
-    title: 'Schilder & Beschilderung',
-    body: 'Außenschilder, Hinweisschilder, Türschilder und Leitsysteme — aus Alu-Dibond, Acryl, Metall oder beleuchtet.',
-    items: ['Außenmontage mit Statik-Check', 'Acrylplatten mit Standoffs', 'Leitsysteme für Praxen und Marken'],
-  },
-  {
-    kicker: '04 / Licht',
-    title: 'LED-Lichtwerbung',
-    body: 'Hinterleuchtete Logos, Profilbuchstaben und Lightboxes — energieeffizient mit LED und langer Lebensdauer.',
-    items: ['Profilbuchstaben aus Acryl mit LED', 'Backlit-Boxes für Schaufenster', 'Außenfertige Lichtkästen IP65'],
-  },
+// Meta-Description explizit setzen: die Prod-CMS-doc.seo.description trägt noch die alte
+// Auto-/Schilder-Beschreibung und hätte sonst Vorrang vor der Chrome-Description.
+const metaDescription =
+  'Werbetechnik in Düsseldorf: Schaufenster, Pop-ups, Brand-Booths, Promotionflächen und LED-Lichtwerbung — Markenerlebnisse seit 35 Jahren, mit erfahrenen Partnerwerkstätten.'
+
+// Markenerlebnisse — kuratierte Arbeits-Galerie. 6 Bilder => sauberer Abschluss in
+// 2 Spalten (mobil) wie in 3 Spalten (desktop), kein Einzelbild als Rest. Caption = N°-Index.
+const works = [
+  { slug: 'dior', alt: 'Schaufenster-Installation für eine Premium-Marke', w: 400, h: 271 },
+  { slug: 'byredo', alt: 'Schaufenster mit Skulptur-Display', w: 400, h: 271 },
+  { slug: 'montblanc-booth', alt: 'Brand-Booth mit beleuchteter Struktur', w: 400, h: 271 },
+  { slug: 'diptyque', alt: 'Pop-up Display mit Produktinszenierung', w: 400, h: 271 },
+  { slug: 'riani', alt: 'Brand Space mit großformatigem Schriftzug', w: 400, h: 258 },
+  { slug: 'pedestals', alt: 'Brand-Booth mit Podest-Landschaft', w: 400, h: 258 },
 ]
 
-// Ablauf — vier Stationen vom Foto bis zur fertigen Fläche.
+// Ablauf — drei verbundene Stationen vom Entwurf bis zum fertigen Aufbau.
 const flowSteps = [
-  { number: 'Schritt 01', title: 'Vorlauf.', body: 'Visualisierung auf dem Foto von Fahrzeug, Fläche oder Schaufenster — entschieden wird am Bild, nicht am fertigen Druck.' },
-  { number: 'Schritt 02', title: 'Material.', body: 'Hochleistungsfolien für Außenmontage — UV-stabil, salzwasserfest und demontagefreundlich. Materialcheck vor der Produktion.' },
-  { number: 'Schritt 03', title: 'Montage.', body: 'Vor-Ort-Montage im Rheinland, Werkstattfolierung für Fahrzeuge — mit Endabnahme an der montierten Fläche.' },
-  { number: 'Schritt 04', title: 'Wartung.', body: 'Nachbestellungen, Reparaturen und Wartung mit identischer Folie und gleichem Druck — über die Jahre konsistent.' },
+  { number: '01', title: 'Vorlauf.', body: 'Visualisierung am Foto der Fläche, des Schaufensters oder des Standorts — entschieden wird am Bild, nicht erst am fertigen Aufbau.' },
+  { number: '02', title: 'Material.', body: 'Folien, aber genauso dreidimensionale Aufbauten, Displays und Sonderanfertigungen — Materialwahl und -check passend zu Auftritt und Standort.' },
+  { number: '03', title: 'Montage.', body: 'Aufbau und Vor-Ort-Montage im Rheinland und darüber hinaus — sauber abgestimmt, mit Endabnahme an der fertigen Fläche.' },
 ]
 
 // Hero = der Landing-Page-Shader-Hero (WebGL/Ken-Burns/Lens-Cursor), aber mit
@@ -51,16 +38,16 @@ const heroSlides = [
   {
     image: heroImage,
     titleLines: ['Werbe', 'technik'],
-    lead: 'Schilder, Folien, Fahrzeuge, Schaufenster, Lichtwerbung — physische Markenpräsenz im Stadtraum. In Düsseldorf umgesetzt mit erfahrenen Partnerwerkstätten.',
+    lead: 'Schaufenster, Pop-ups, Brand-Booths und Promotionflächen — physische Markenerlebnisse, die im Stadtraum auffallen. Seit 35 Jahren, in Düsseldorf und weit darüber hinaus.',
     primaryHref: '#anfrage',
     primaryLabel: 'Werbetechnik anfragen',
-    secondaryHref: '#bereiche',
-    secondaryLabel: 'Bereiche ansehen',
+    secondaryHref: '#arbeiten',
+    secondaryLabel: 'Arbeiten ansehen',
   },
 ]
 const heroSlidesJson = JSON.stringify(heroSlides)
 ---
-<AdoptedPageLayout legacyFile={legacyFile} current="leistungen" doc={doc}>
+<AdoptedPageLayout legacyFile={legacyFile} current="leistungen" doc={doc} description={metaDescription}>
   <main>
     <section class="hero" data-theme="dark" data-header-theme="dark" aria-label="Werbetechnik Düsseldorf" style={`background-image:url('${heroImage}')`}>
       <canvas id="hero-shader" aria-hidden="true" data-imgs={heroImage} data-slides={heroSlidesJson}></canvas>
@@ -72,38 +59,45 @@ const heroSlidesJson = JSON.stringify(heroSlides)
             <span class="line"><span class="word">Werbe</span></span>
             <span class="line"><span class="word">technik.</span></span>
           </h1>
-          <p class="hero-lead" id="hero-lead">Schilder, Folien, Fahrzeuge, Schaufenster, Lichtwerbung — physische Markenpräsenz im Stadtraum. In Düsseldorf umgesetzt mit erfahrenen Partnerwerkstätten.</p>
+          <p class="hero-lead" id="hero-lead">Schaufenster, Pop-ups, Brand-Booths und Promotionflächen — physische Markenerlebnisse, die im Stadtraum auffallen. Seit 35 Jahren, in Düsseldorf und weit darüber hinaus.</p>
           <div class="hero-actions" aria-label="Direkte Aktionen">
             <a class="btn dark" href="#anfrage" data-hero-primary>Werbetechnik anfragen</a>
-            <a class="btn" href="#bereiche" data-hero-secondary>Bereiche ansehen</a>
+            <a class="btn" href="#arbeiten" data-hero-secondary>Arbeiten ansehen</a>
           </div>
         </div>
       </div>
       <div class="hero-cursor" id="hero-cursor" aria-hidden="true"><span class="ring"></span></div>
     </section>
 
-    <section class="wt-areas" id="bereiche" data-header-theme="dark" aria-label="Anwendungsbereiche">
-      <div class="wt-areas__inner">
-        <div class="wt-areas__head">
+    <section class="wt-work" id="arbeiten" data-header-theme="dark" aria-label="Markenerlebnisse">
+      <div class="wt-work__inner">
+        <div class="wt-work__head">
           <div>
-            <p class="sp-eyebrow">Leistungen im Überblick</p>
-            <h2 class="wt-areas__title">Anwendungs<em>bereiche.</em></h2>
+            <p class="sp-eyebrow">Markenerlebnisse · seit 35 Jahren</p>
+            <h2 class="wt-work__title">Keine Bühne. <em>Echte Wirkung.</em></h2>
           </div>
-          <p class="wt-areas__lead">
-            Werbetechnik ist Handwerk vor Ort. Motiv, Material und Montage werden zusammen gedacht — egal ob Schaufenster, Fahrzeug
-            oder Hausfassade.
+          <p class="wt-work__lead">
+            Seit 35 Jahren erwecken wir Schaufenster, Pop-ups, Brand-Booths und Promotionflächen zum Leben — mit Gespür für die
+            <b>DNA jeder Marke</b> und das Tempo der Branche. Aus klugen Ideen, einem Blick fürs Detail und erprobtem Handwerk
+            entstehen Markenerlebnisse, die echt wirken und im Kopf bleiben. Es geht um die Optik — genauso um Funktion, Machbarkeit
+            und die Wirkung beim Kunden.
           </p>
         </div>
-        <div class="wt-areas__grid">
-          {areas.map((area) => (
-            <article class="wt-area">
-              <p class="wt-area__kicker">{area.kicker}</p>
-              <h3 class="wt-area__title">{area.title}</h3>
-              <p class="wt-area__body">{area.body}</p>
-              <ul class="wt-area__list">
-                {area.items.map((item) => <li>{item}</li>)}
-              </ul>
-            </article>
+        <div class="wt-work__grid">
+          {works.map((work, i) => (
+            <figure class="wt-figure">
+              <div class="wt-figure__img">
+                <img
+                  src={`/assets/services/werbetechnik/${work.slug}.webp`}
+                  alt={work.alt}
+                  width={work.w}
+                  height={work.h}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <figcaption class="wt-figure__cap"><b>N° {String(i + 1).padStart(2, '0')}</b></figcaption>
+            </figure>
           ))}
         </div>
       </div>
@@ -117,14 +111,14 @@ const heroSlidesJson = JSON.stringify(heroSlides)
             <h2 class="wt-flow__title">Vom Foto auf die <em>Fläche.</em></h2>
           </div>
           <p class="wt-flow__lead">
-            Ein Aufkleber wirkt nur, wenn er sitzt. Werbetechnik kommt hier mit Vorlauf: Visualisierung am Foto, Materialcheck,
-            Montagetermin und Endabnahme.
+            Ein Markenauftritt wirkt nur, wenn alles sitzt. Vom ersten Entwurf bis zum Aufbau vor Ort: Visualisierung, Materialwahl und
+            präzise Montage — Folie genauso wie dreidimensionale Sonderanfertigungen.
           </p>
         </div>
         <ol class="wt-flow__track" role="list">
           {flowSteps.map((step) => (
             <li class="wt-flow__step">
-              <p class="wt-flow__step-num">{step.number}</p>
+              <p class="wt-flow__step-num">Schritt {step.number}</p>
               <h3 class="wt-flow__step-title">{step.title}</h3>
               <p class="wt-flow__step-body">{step.body}</p>
             </li>
@@ -145,7 +139,7 @@ const heroSlidesJson = JSON.stringify(heroSlides)
       data-contact-section
       data-contact-subject="Werbetechnik-Anfrage — Matthias Ramahi"
       data-contact-headline="Werbetechnik anfragen."
-      data-contact-lead="Schreibe kurz, was und wo beklebt oder beschriftet werden soll. Hilfreich: Foto der Fläche, gewünschtes Logo oder Motiv und ein grober Zeitraum."
+      data-contact-lead="Schreibe kurz, welche Fläche, welcher Auftritt oder welches Pop-up geplant ist. Hilfreich: Foto der Fläche, Marke oder Motiv und ein grober Zeitraum."
       data-header-theme="dark"
       aria-label="Anfrage"
     />

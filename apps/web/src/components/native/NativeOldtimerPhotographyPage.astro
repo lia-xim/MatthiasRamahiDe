@@ -183,6 +183,20 @@ const inheritedRelatedAreas = relatedAreas.map((area, index) => {
   return { ...area, alt: visual.alt, height: visual.height, image: visual.src, width: visual.width }
 })
 
+// Hero = der Landing-Page-Shader-Hero (WebGL/Ken-Burns/Lens-Cursor), 1:1 wie auf
+// der Fotolabor-Seite — nur mit Oldtimer-Bild, -Texten und dem warmen Messing/
+// Patina-Akzent (--hero-accent). Optik aus assets/native-oldtimer.css (.hero),
+// Bewegung aus assets/native-home.js (gated nur auf #hero-shader).
+// Festes, kanonisches Oldtimer-Bühnenbild als Hero (wie Fotolabor ein fixes
+// Bild nutzt). Der CMS-Family-Visual-Slot 0 mappt hier auf ein Portrait —
+// fürs Hero-„Wow" bleibt daher das starke Bühnenmotiv gesetzt.
+const heroBgDesktop = 'assets/optimized/assets-photos-oldtimer-stage-1920.webp'
+const heroBgMobile = 'assets/optimized/assets-photos-oldtimer-stage-1280.webp'
+const heroSubText = doc?.intro || heroLead
+const heroSlidesJson = JSON.stringify([
+  { image: heroBgDesktop, titleLines: [heroTitlePrefix, heroTitleSuffix], lead: heroSubText },
+])
+
 const cityLinks = [
   ['oldtimer-fotografie.html', 'Düsseldorf'],
   ['oldtimer-fotografie-koeln.html', 'Köln'],
@@ -223,8 +237,8 @@ const searchLinks = [
   noIndex={Boolean(preview)}
   title={metaTitle}
   description={metaDescription}
-  ogImage={visualSlots[0].full}
-  preloadImages={[visualSlots[0].mobile, visualSlots[0].full]}
+  ogImage={heroBgDesktop}
+  preloadImages={[heroBgMobile, heroBgDesktop]}
 >
   {preview && (
     <PreviewToolbar
@@ -235,33 +249,31 @@ const searchLinks = [
     />
   )}
   <main>
-    <section class="hero-mp" id="top" data-header-theme="dark" aria-label={heroLabel}>
-      <div class="hero-mp__stage" aria-hidden="true">
-        <div class="hero-mp__slides" id="oldtimerSlides">
-          {inheritedHeroSlides.map(([slide, mobileSlide], index) => (
-            <div
-              class={`hero-mp__slide${index === 0 ? ' is-active' : ''}`}
-              data-kb={index + 1}
-              data-bg={slide}
-              style={index === 0 ? `--hero-bg-mobile:url('${mobileSlide}');--hero-bg-desktop:url('${slide}')` : undefined}
-            />
-          ))}
-        </div>
-        <video class="hero-mp__bokeh" muted loop playsinline preload="none" aria-hidden="true">
-          <source src="assets/atmosphere/bokeh.mp4" type="video/mp4" />
-        </video>
-        <div class="hero-mp__vignette" aria-hidden="true"></div>
-        <div class="hero-mp__grain" aria-hidden="true"></div>
-      </div>
-
-      <div class="hero-mp__overlay">
-        <h1 class="hero-mp__title"><span>{heroTitlePrefix}</span><em>{heroTitleSuffix}</em></h1>
-        <p class="hero-mp__sub">{doc?.intro || heroLead}</p>
-        <div class="hero-mp__actions">
-          <a href="#anfrage">Shooting buchen →</a>
-          <a class="ghost" href="portfolio.html">Portfolio</a>
+    <section
+      class="hero"
+      id="top"
+      data-theme="dark"
+      data-header-theme="dark"
+      aria-label={heroLabel}
+      style={`--hero-bg-desktop:url('${heroBgDesktop}');--hero-bg-mobile:url('${heroBgMobile}')`}
+    >
+      <canvas id="hero-shader" aria-hidden="true" data-imgs={heroBgDesktop} data-slides={heroSlidesJson}></canvas>
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-aperture" aria-hidden="true"></div>
+      <div class="hero-grid">
+        <div class="hero-stage">
+          <h1 class="hero-title" id="hero-title" data-text-idx="0">
+            <span class="line"><span class="word">{heroTitlePrefix}</span></span>
+            <span class="line"><span class="word">{heroTitleSuffix}</span></span>
+          </h1>
+          <p class="hero-lead" id="hero-lead">{heroSubText}</p>
+          <div class="hero-actions" aria-label="Direkte Aktionen">
+            <a class="btn dark" href="#anfrage" data-hero-primary>Shooting buchen</a>
+            <a class="btn" href="portfolio.html" data-hero-secondary>Portfolio</a>
+          </div>
         </div>
       </div>
+      <div class="hero-cursor" id="hero-cursor" aria-hidden="true"><span class="ring"></span></div>
     </section>
 
     <section class="st" data-header-theme="light">

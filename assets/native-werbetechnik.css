@@ -60,41 +60,52 @@ img{display:block;max-width:100%;height:auto}
 @media (hover:none),(pointer:coarse),(max-width:900px){.hero{cursor:auto;animation:heroPanMobile 34s var(--ease) infinite alternate}.hero canvas{display:none}.hero-cursor{display:none}}
 @keyframes heroPanMobile{from{background-position:46% 50%}to{background-position:54% 50%}}
 
-/* ===== ANWENDUNGSBEREICHE — dunkle editorial Grid =====
-   border-top trennt die Sektion sichtbar vom (gleichfarbigen) dunklen Hero,
-   damit der Hero klar endet und kein toter dunkler Raum entsteht. */
-.wt-areas{padding:clamp(52px,7vw,96px) clamp(28px,5vw,84px);background:var(--ink);color:#f3f1ea;position:relative;overflow:hidden;border-top:1px solid color-mix(in oklch,var(--accent) 40%,rgba(243,241,234,.16))}
-.wt-areas::before{content:"";position:absolute;inset:0;background:
-  radial-gradient(ellipse at 18% 12%,color-mix(in oklch,var(--accent) 14%,transparent) 0,transparent 50%),
-  radial-gradient(ellipse at 84% 88%,rgba(243,241,234,.05) 0,transparent 60%);pointer-events:none}
-.wt-areas__inner{max-width:1320px;margin:0 auto;position:relative;z-index:1}
-.wt-areas__head{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,4vw,80px);align-items:end;margin-bottom:clamp(36px,5vw,60px)}
-.wt-areas__title{margin:18px 0 0;font-family:var(--serif);font-weight:600;font-size:clamp(40px,5.2vw,80px);line-height:.96;letter-spacing:-.024em;color:#f7f4ec}
-.wt-areas__title em{font-style:italic;font-weight:500;color:color-mix(in oklch,var(--accent) 78%,#fff 22%)}
-.wt-areas__lead{margin:0;max-width:48ch;font-size:clamp(15px,1.14vw,18px);line-height:1.6;color:rgba(243,241,234,.74)}
-.wt-areas__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:rgba(243,241,234,.14);border:1px solid rgba(243,241,234,.14)}
-.wt-area{background:var(--ink);padding:clamp(26px,2.6vw,40px) clamp(22px,2.2vw,34px);display:flex;flex-direction:column;gap:14px;transition:background .4s var(--ease)}
-.wt-area:hover{background:color-mix(in oklch,var(--accent) 9%,var(--ink))}
-.wt-area__kicker{font:10px var(--mono);letter-spacing:.28em;text-transform:uppercase;color:color-mix(in oklch,var(--accent) 78%,#fff 22%);margin:0}
-.wt-area__title{margin:2px 0 0;font-family:var(--serif);font-weight:600;font-size:clamp(22px,2vw,30px);line-height:1.1;letter-spacing:-.018em;color:#f7f4ec}
-.wt-area__body{margin:0;font-size:14.5px;line-height:1.55;color:rgba(243,241,234,.74)}
-.wt-area__list{margin:6px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
-.wt-area__list li{position:relative;padding-left:18px;font:12px/1.5 var(--mono);letter-spacing:.01em;color:rgba(243,241,234,.66)}
-.wt-area__list li::before{content:"";position:absolute;left:0;top:.6em;width:8px;height:1px;background:color-mix(in oklch,var(--accent) 70%,transparent)}
+/* ===== MARKENERLEBNISSE — bildgeführte editorial Galerie (dunkel) =====
+   Keine Service-Textliste mehr, sondern eine kuratierte Arbeits-Galerie
+   (Schaufenster, Pop-ups, Brand-Booths, Promotionflächen). Kontaktbogen-Geometrie,
+   scharfe Kanten, Mono-Caption je Kachel — wie das Landing-„Sechs Bereiche".
+   border-top trennt sichtbar vom dunklen Hero. */
+.wt-work{padding:clamp(54px,6.5vw,92px) clamp(28px,5vw,84px);background:var(--ink);color:#f3f1ea;position:relative;overflow:hidden;border-top:1px solid color-mix(in oklch,var(--accent) 40%,rgba(243,241,234,.16))}
+.wt-work::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(ellipse at 14% 6%,color-mix(in oklch,var(--accent) 12%,transparent) 0,transparent 52%),
+  radial-gradient(ellipse at 90% 98%,rgba(243,241,234,.04) 0,transparent 60%);pointer-events:none}
+.wt-work__inner{max-width:1320px;margin:0 auto;position:relative;z-index:1}
+.wt-work__head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,72px);align-items:end;margin-bottom:clamp(30px,3.6vw,48px)}
+.wt-work__title{margin:16px 0 0;font-family:var(--serif);font-weight:600;font-size:clamp(38px,5vw,76px);line-height:.98;letter-spacing:-.026em;color:#f7f4ec}
+.wt-work__title em{font-style:italic;font-weight:500;color:color-mix(in oklch,var(--accent) 78%,#fff 22%)}
+.wt-work__lead{margin:0;font-size:clamp(15px,1.1vw,17px);line-height:1.62;color:rgba(243,241,234,.76)}
+.wt-work__lead b{font-weight:600;color:#f7f4ec}
+.wt-work__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(10px,1vw,16px)}
+.wt-figure{margin:0}
+.wt-figure__img{position:relative;aspect-ratio:3/2;overflow:hidden;background:#15171d}
+.wt-figure__img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(2,3,6,.32));opacity:0;transition:opacity .5s var(--ease);pointer-events:none}
+.wt-figure__img img{width:100%;height:100%;object-fit:cover;filter:brightness(.9) saturate(.97);transform:scale(1.001);transition:filter .55s var(--ease),transform 1.4s var(--ease)}
+.wt-figure__cap{margin:11px 0 0;display:flex;align-items:baseline;gap:11px;font:10px var(--mono);letter-spacing:.22em;text-transform:uppercase;color:rgba(243,241,234,.6);transition:color .4s var(--ease)}
+.wt-figure__cap b{font-weight:600;color:color-mix(in oklch,var(--accent) 80%,#fff 20%)}
+@media (hover:hover){
+  .wt-figure:hover .wt-figure__img img{filter:brightness(1.05) saturate(1.05);transform:scale(1.04)}
+  .wt-figure:hover .wt-figure__img::after{opacity:1}
+  .wt-figure:hover .wt-figure__cap{color:rgba(243,241,234,.9)}
+}
 
-/* ===== ABLAUF — heller Prozess-Track ===== */
-.wt-flow{padding:clamp(56px,7vw,96px) clamp(28px,5vw,84px);background:var(--paper);color:var(--ink)}
+/* ===== ABLAUF — verbundene Timeline (hell) =====
+   Echte Prozess-Linie statt 4 gleicher Textspalten: Knoten auf einer Linie zeigen
+   den Weg "vom Foto auf die Fläche". Desktop horizontal, Mobile vertikal. */
+.wt-flow{padding:clamp(56px,7vw,104px) clamp(28px,5vw,84px);background:var(--paper);color:var(--ink)}
 .wt-flow__inner{max-width:1320px;margin:0 auto}
-.wt-flow__head{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(28px,4vw,80px);align-items:end;margin-bottom:clamp(36px,5vw,56px)}
+.wt-flow__head{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(28px,4vw,80px);align-items:end;margin-bottom:clamp(40px,5vw,68px)}
 .wt-flow__title{margin:18px 0 0;font-family:var(--serif);font-weight:600;font-size:clamp(40px,5.2vw,80px);line-height:.96;letter-spacing:-.024em;color:var(--ink)}
 .wt-flow__title em{font-style:italic;font-weight:500;color:color-mix(in oklch,var(--accent) 70%,var(--ink) 30%)}
 .wt-flow__lead{margin:0;max-width:48ch;font-size:clamp(15px,1.14vw,18px);line-height:1.6;color:color-mix(in oklch,var(--ink) 70%,#fff 30%)}
-.wt-flow__track{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
-.wt-flow__step{padding:clamp(30px,3vw,48px) clamp(18px,1.8vw,28px);display:flex;flex-direction:column;gap:10px;border-right:1px solid var(--rule);min-height:clamp(180px,18vw,240px)}
-.wt-flow__step:last-child{border-right:0}
-.wt-flow__step-num{font:10px var(--mono);letter-spacing:.28em;text-transform:uppercase;color:color-mix(in oklch,var(--accent) 70%,var(--ink) 30%);margin:0}
-.wt-flow__step-title{margin:4px 0 0;font-family:var(--serif);font-weight:600;font-size:clamp(20px,1.7vw,26px);line-height:1.1;letter-spacing:-.018em;color:var(--ink)}
-.wt-flow__step-body{margin:6px 0 0;font-size:14px;line-height:1.55;color:color-mix(in oklch,var(--ink) 68%,#fff 32%)}
+.wt-flow__track{--fgap:clamp(24px,3vw,52px);list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--fgap)}
+.wt-flow__step{position:relative;padding-top:clamp(34px,3vw,46px)}
+/* Knoten + Verbindungslinie zum nächsten Schritt */
+.wt-flow__step::before{content:"";position:absolute;left:0;top:clamp(6px,.6vw,9px);width:13px;height:13px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--paper),0 0 0 5px color-mix(in oklch,var(--accent) 32%,transparent);z-index:1}
+.wt-flow__step::after{content:"";position:absolute;left:22px;right:calc(var(--fgap) * -1);top:calc(clamp(6px,.6vw,9px) + 6px);height:1px;background:linear-gradient(90deg,color-mix(in oklch,var(--accent) 55%,transparent),var(--rule));z-index:0}
+.wt-flow__step:last-child::after{display:none}
+.wt-flow__step-num{margin:0 0 0 0;font:10px var(--mono);letter-spacing:.28em;text-transform:uppercase;color:color-mix(in oklch,var(--accent) 70%,var(--ink) 30%)}
+.wt-flow__step-title{margin:8px 0 0;font-family:var(--serif);font-weight:600;font-size:clamp(21px,1.8vw,28px);line-height:1.08;letter-spacing:-.018em;color:var(--ink)}
+.wt-flow__step-body{margin:8px 0 0;font-size:14px;line-height:1.56;color:color-mix(in oklch,var(--ink) 66%,#fff 34%)}
 
 /* ===== CTA STRIP ===== */
 .sp-cta{padding:clamp(40px,5vw,64px) clamp(28px,5vw,84px);background:var(--paper-2)}
@@ -106,28 +117,34 @@ img{display:block;max-width:100%;height:auto}
 
 /* ===== RESPONSIVE ===== */
 @media (max-width:1080px){
-  .wt-areas__head,.wt-flow__head{grid-template-columns:1fr;gap:24px}
-  .wt-flow__track{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .wt-flow__step{min-height:auto}
-  .wt-flow__step:nth-child(2){border-right:0}
-  .wt-flow__step:nth-child(-n+2){border-bottom:1px solid var(--rule)}
+  .wt-work__head,.wt-flow__head{grid-template-columns:1fr;gap:22px}
+  .wt-work__grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  /* Timeline: zweispaltige Knotenreihe statt vier */
+  .wt-flow__track{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:clamp(34px,5vw,48px)}
+  .wt-flow__step:nth-child(2)::after{display:none}
 }
 @media (max-width:980px){
   .hero{padding:clamp(96px,16vw,130px) 22px clamp(44px,9vw,60px)}
   .hero-title{font-size:clamp(46px,12vw,88px)}
   .hero-lead{font-size:16px;margin-top:18px}
-  /* Sektionen mobil deutlich kompakter, damit nach dem Hero kein toter Raum
-     entsteht und die Seite nicht endlos scrollt. */
-  .wt-areas,.wt-flow{padding:clamp(48px,9vw,72px) 22px}
-  .wt-areas__head,.wt-flow__head{margin-bottom:clamp(28px,5vw,44px)}
+  /* Sektionen mobil deutlich kompakter, damit nach dem Hero kein toter Raum entsteht. */
+  .wt-work,.wt-flow{padding:clamp(48px,9vw,72px) 22px}
+  .wt-work__head{margin-bottom:clamp(24px,5vw,34px)}
+  .wt-flow__head{margin-bottom:clamp(30px,6vw,44px)}
   .sp-cta{padding:clamp(36px,7vw,56px) 22px}
   .sp-cta__inner{grid-template-columns:1fr;text-align:left;gap:18px}
 }
 @media (max-width:680px){
-  .wt-areas__grid{grid-template-columns:1fr}
-  .wt-flow__track{grid-template-columns:1fr;border-top:0;border-bottom:0}
-  .wt-flow__step{border-right:0;border-bottom:1px solid var(--rule);padding:22px 4px}
-  .wt-flow__step:last-child{border-bottom:0}
+  /* Galerie: 2-spaltiger Kontaktbogen, kompakt */
+  .wt-work__grid{gap:8px}
+  .wt-figure__cap{margin-top:9px;gap:8px;letter-spacing:.18em}
+  /* Timeline: vertikale Achse */
+  .wt-flow__track{display:block;position:relative;margin-left:6px}
+  .wt-flow__track::before{content:"";position:absolute;left:5px;top:8px;bottom:10px;width:1px;background:linear-gradient(180deg,color-mix(in oklch,var(--accent) 55%,transparent),var(--rule));z-index:0}
+  .wt-flow__step{padding:0 0 clamp(26px,6vw,34px) 30px}
+  .wt-flow__step:last-child{padding-bottom:0}
+  .wt-flow__step::before{left:0;top:3px;box-shadow:0 0 0 4px var(--paper)}
+  .wt-flow__step::after{display:none}
 }
 @media (max-width:560px){
   .hero{padding-bottom:clamp(36px,8vw,48px)}
@@ -135,11 +152,9 @@ img{display:block;max-width:100%;height:auto}
   .hero-lead{margin-top:16px}
   .hero-actions{gap:10px;margin-top:22px}
   .hero-actions .btn{flex:1 1 auto}
-  .wt-areas,.wt-flow{padding:clamp(40px,9vw,56px) 18px}
-  .wt-areas__title,.wt-flow__title{font-size:clamp(30px,8.5vw,44px)}
-  .wt-areas__lead,.wt-flow__lead{font-size:15px}
-  .wt-areas__head,.wt-flow__head{margin-bottom:24px}
-  .wt-area{padding:24px 20px}
+  .wt-work,.wt-flow{padding:clamp(40px,9vw,56px) 18px}
+  .wt-work__title,.wt-flow__title{font-size:clamp(30px,8.5vw,44px)}
+  .wt-work__lead,.wt-flow__lead{font-size:15px}
   .sp-cta{padding:clamp(32px,8vw,44px) 18px}
   .sp-cta__head{font-size:clamp(26px,7.5vw,38px)}
 }
@@ -149,5 +164,5 @@ img{display:block;max-width:100%;height:auto}
   .hero{animation:none}
   .hero-glow,.hero-aperture{animation:none}
   .hero-title .word{transition:none;transform:none;opacity:1}
-  .wt-area{transition:none}
+  .wt-figure__img img{transition:none;transform:none;filter:none}
 }

@@ -24,7 +24,9 @@ export type NativeAdoptedRouteKind =
   | 'service-detail'
   | 'services-index'
   | 'sportscar'
+  | 'webdesign-seo'
   | 'videografie'
+  | 'viola-musik'
   | 'werbetechnik'
 
 const photographyOverviewFiles = new Set(['fotografie-duesseldorf.html', 'fotografie-nrw.html', 'fotografie-deutschland.html'])
@@ -43,7 +45,9 @@ const exactRouteKinds: Record<string, NativeAdoptedRouteKind> = {
   'portfolio.html': 'portfolio-index',
   'fotolabor-druck-duesseldorf.html': 'print-lab',
   'werbetechnik-duesseldorf.html': 'werbetechnik',
+  'webdesign-seo-duesseldorf.html': 'webdesign-seo',
   'videografie-duesseldorf.html': 'videografie',
+  'viola-musik-duesseldorf.html': 'viola-musik',
   'leistungen.html': 'services-index',
   'contact.html': 'contact',
   'ueber-mich.html': 'about',

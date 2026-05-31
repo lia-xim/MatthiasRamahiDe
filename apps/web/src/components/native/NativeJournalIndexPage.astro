@@ -57,6 +57,9 @@ const cmsCards = cmsPosts
   .filter(Boolean) as JournalPostCard[]
 const posts = useCmsJournalIndexCards && cmsCards.length > 0 ? cmsCards : journalCards
 const heroLead = useCmsJournalIndexCards ? doc?.intro || journalHero.lead : journalHero.lead
+// Der oberste Beitrag wird als „Im Fokus"-Beitrag herausgestellt; das Raster zeigt den Rest.
+const featured = posts[0]
+const gridPosts = posts.slice(1)
 const initialVisiblePostCount = 6
 ---
 <AdoptedPageLayout legacyFile="blog.html" current="blog" doc={doc}>
@@ -86,27 +89,32 @@ const initialVisiblePostCount = 6
       </div>
     </section>
 
-    <section class="featured" aria-label="Ausgewählter Artikel">
-      <div class="featured-inner">
-        <div class="feature-copy reveal">
-          <p class="kicker">Ausgewählter Beitrag</p>
-          <h2>Geplant, nicht zufällig.</h2>
-          <p>Ein starkes Foto entsteht nicht erst beim Auslösen — sondern in der Entscheidung für Ort, Tageszeit, Bildschnitt und Stimmung.</p>
-          <div class="hero-actions"><a class="btn dark" href="/blog-automotive-fotografie-duesseldorf.html">Beitrag lesen</a></div>
+    {featured && (
+      <section class="featured" aria-label="Im Fokus">
+        <a class="featured__link" href={featured.href} aria-label={`Beitrag lesen: ${featured.title}`}></a>
+        <div class="featured__inner">
+          <figure class="featured__media">
+            <img
+              src={featured.image}
+              alt={featured.imageAlt}
+              width={featured.width}
+              height={featured.height}
+              decoding="async"
+              loading="eager"
+            />
+          </figure>
+          <div class="featured__copy">
+            <div class="featured__meta">
+              <span>{categoryLabels[featured.category] || 'Automotive'}</span>
+              <span>{featured.readTime}</span>
+            </div>
+            <h2 class="featured__title">{featured.title}</h2>
+            <p class="featured__excerpt">{featured.text}</p>
+            <span class="featured__go">Beitrag lesen</span>
+          </div>
         </div>
-        <figure class="feature-image reveal">
-          <img
-            src="/assets/optimized/assets-photos-automobil-sunset-960.webp"
-            data-src="/assets/optimized/assets-photos-automobil-sunset-960.webp"
-            alt="Auto in dramatischem Licht als Beispiel für geplante Bildstimmung"
-            width="960"
-            height="640"
-            decoding="async"
-            loading="lazy"
-          />
-        </figure>
-      </div>
-    </section>
+      </section>
+    )}
 
     <section class="journal" id="journal" aria-label="Journal Artikel">
       <div class="journal-head">
@@ -118,7 +126,7 @@ const initialVisiblePostCount = 6
         </div>
       </div>
       <div class="post-grid">
-        {posts.map((post, index) => (
+        {gridPosts.map((post, index) => (
           <a
             class={`post ${post.dark ? 'dark' : ''} ${index >= initialVisiblePostCount ? 'not-loaded' : ''}`.trim()}
             href={post.href}
@@ -146,7 +154,7 @@ const initialVisiblePostCount = 6
         ))}
       </div>
       <div class="load-panel" id="loadPanel" aria-live="polite">
-        <span class="load-status" id="loadStatus">{Math.min(initialVisiblePostCount, posts.length)} von {posts.length} Beiträgen sichtbar</span>
+        <span class="load-status" id="loadStatus">{Math.min(initialVisiblePostCount, gridPosts.length)} von {gridPosts.length} Beiträgen sichtbar</span>
         <button class="load-more" id="loadMore" type="button">Mehr Beiträge laden</button>
       </div>
     </section>
