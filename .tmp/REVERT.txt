@@ -1,0 +1,10 @@
+PATCHED apps/web/src/lib/nativeAdoptedRouteRegistry.ts
+PATCHED apps/web/src/components/native/NativeAdoptedPage.astro
+PATCHED apps/web/src/lib/serviceDetailContent.ts
+DELETED apps/web/src/components/native/NativeWebdesignSeoPage.astro
+DELETED assets/native-webdesign-seo.css
+DELETED apps/web/public/assets/native-webdesign-seo.css
+gone  apps/web/src/components/native/NativeWebdesignSeoPage.astro
+gone  assets/native-webdesign-seo.css
+registry has webdesign-seo: no(good)
+serviceDetail still has screencapture for webdesign: no

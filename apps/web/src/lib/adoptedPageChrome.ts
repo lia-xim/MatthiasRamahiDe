@@ -277,13 +277,9 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
     title: 'Experimental Lens | Matthias Ramahi',
   },
   'webdesign-seo-duesseldorf.html': {
-    current: 'leistungen',
+    ...serviceMiniChrome('/assets/optimized/assets-photos-automobil-sunset-1920.webp'),
     description:
       'Webdesign und SEO in Düsseldorf: moderne Websites, lokale Sichtbarkeit, Performance, Bildsprache, Landingpages und suchmaschinenfreundliche Struktur.',
-    ogImage: '/assets/optimized/assets-photos-automobil-sunset-1920.webp',
-    preloadImages: ['/assets/optimized/assets-photos-automobil-sunset-1920.webp'],
-    scripts: ['/assets/native-home.js', ...siteChromeScript],
-    stylesheets: [...sharedStyles, '/assets/native-webdesign-seo.css'],
     title: 'Webdesign & SEO Düsseldorf - Matthias Ramahi',
   },
   'videografie-duesseldorf.html': {
