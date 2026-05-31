@@ -1,4 +1,5 @@
 import {
+  cityScopePhrase,
   localSeoFamilyContent,
   scopeFromSlug,
   serviceLabelFromSlug,
@@ -61,5 +62,5 @@ export function nativeFamilyPageContext({
 }
 
 export function localScopePhrase(scope: LocalSeoScope) {
-  return `${scope.label} wird als lokaler Suchraum mit klarer Planung, passendem Lichtfenster und sauberer Nutzung der Bildserie geführt.`
+  return cityScopePhrase(scope)
 }

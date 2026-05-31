@@ -177,6 +177,7 @@ const standaloneKeywordSlugs = new Set([
 export type KeywordFocusCopy = {
   audienceHeadline?: string
   audienceLead?: string
+  faq?: Array<{ q: string; a: string }>
   cards?: Array<{
     label?: string
     text: string
@@ -1314,6 +1315,255 @@ const keywordFocusCopies: Record<string, KeywordFocusCopy> = {
     relatedLead:
       'Schwarz-Weiss Portrait Fotografie ist eine Stilseite innerhalb des Portrait-Clusters und verlinkt sinnvoll zu Beleuchtung, Portrait Fotoshooting und Personal Branding.',
   },
+  'business-portrait': {
+    heroLead:
+      'Business Portrait fuer Website, LinkedIn, Presse und Team: professionelle Portraits mit Haltung statt Passbild. Klar, hochwertig und auf den Auftritt der Person abgestimmt.',
+    metaDescription:
+      'Business Portrait Fotograf: professionelle Portraits fuer Website, LinkedIn, Presse, Team und Marke in Duesseldorf und NRW - keine Passbilder.',
+    contactLead:
+      'Schreibe kurz, fuer wen das Business Portrait gedacht ist - einzelne Person, Fuehrungsebene oder Team - wofuer die Bilder genutzt werden (Website, LinkedIn, Presse) und ob es vor Ort, on location oder in ruhiger Umgebung entstehen soll.',
+    pullHeadline: 'Professionell wirken,',
+    pullEmphasis: 'nicht gestellt.',
+    statementBody: [
+      'Ein Business Portrait ist kein Bewerbungsfoto und kein Passbild. Es soll Kompetenz, Nahbarkeit und Wiedererkennung transportieren - fuer Website, LinkedIn, Presse oder die Teamseite.',
+      'Licht, Distanz und Hintergrund werden auf Rolle und Branche abgestimmt. Eine Kanzlei braucht andere Bilder als ein Startup, bleibt aber in einer klaren, professionellen Bildsprache.',
+    ],
+    sectionHeadline: 'Vom Einzelportrait bis zum',
+    sectionEmphasis: 'Team.',
+    sectionLead:
+      'Diese Seite buendelt die Business-Portrait-Suchintention und fuehrt sie in klare Module fuer Person, Fuehrung, Team und Marke - ohne in Passbild- oder Studio-Massenware abzurutschen.',
+    cards: [
+      { label: '01 · Person', title: 'Einzelportrait', text: 'Hochwertige Portraits fuer Website, LinkedIn und Profil mit klarer, professioneller Wirkung.' },
+      { label: '02 · Fuehrung', title: 'Geschaeftsfuehrung', text: 'Portraits fuer Fuehrungsebene, Aufsichtsrat und Presse mit ruhiger Autoritaet.' },
+      { label: '03 · Team', title: 'Teamseite', text: 'Konsistente Bildsprache ueber mehrere Personen, damit die Teamseite zusammenhaengt.' },
+      { label: '04 · Marke', title: 'Corporate Look', text: 'Bildwelt, die zu Branding, Website und Unternehmensauftritt passt.' },
+    ],
+    processHeadline: 'Ablauf fuer ein Business Portrait.',
+    processLead:
+      'Der Ablauf bleibt effizient und planbar - wichtig bei mehreren Personen oder engem Terminfenster im Unternehmen.',
+    processSteps: [
+      { title: 'Nutzung klaeren', text: 'Wir legen fest, ob die Bilder fuer Website, LinkedIn, Presse, Team oder Kampagne gedacht sind.' },
+      { title: 'Look abstimmen', text: 'Hintergrund, Kleidung, Bildausschnitt und Stimmung werden auf Rolle und Branche abgestimmt.' },
+      { title: 'Vor Ort oder on location', text: 'Das Shooting findet im Unternehmen, on location oder in ruhiger Umgebung statt - je nach Bedarf.' },
+      { title: 'Effizient fotografieren', text: 'Auch mehrere Personen werden in einem klaren Ablauf mit gleichbleibender Qualitaet fotografiert.' },
+      { title: 'Liefern und pflegen', text: 'Finale Dateien kommen passend fuer Web, Print und Social; Nachzuegler lassen sich konsistent ergaenzen.' },
+    ],
+    relatedLead:
+      'Business Portrait ist die kommerzielle Einstiegsseite. Fuer engere Intentionen verweist sie auf Headshot, Personal Branding, Unternehmensportrait und Pressefoto.',
+  },
+  'headshot-fotograf': {
+    heroLead:
+      'Headshots fuer LinkedIn, Team-Seiten und Bewerbung: klar, sauber und auf den Punkt - ein professionelles Gesicht ohne Studio-Steifheit.',
+    metaDescription:
+      'Headshot Fotograf: klare, professionelle Headshots fuer LinkedIn, Profil, Team und Bewerbung in Duesseldorf und NRW.',
+    contactLead:
+      'Schreibe kurz, ob es um eine Person oder ein Team geht, wo die Headshots genutzt werden (LinkedIn, Website, Bewerbung) und ob ein einheitlicher Look ueber mehrere Personen wichtig ist.',
+    pullHeadline: 'Ein Gesicht,',
+    pullEmphasis: 'klar gezeigt.',
+    statementBody: [
+      'Ein Headshot ist der enge, fokussierte Ausschnitt: Gesicht, Blick und Ausdruck stehen im Mittelpunkt. Genau das brauchen LinkedIn, Profile, Team-Grids und Bewerbungen.',
+      'Wichtig ist Wiederholbarkeit. Wenn mehrere Personen denselben Look brauchen, bleiben Licht, Hintergrund und Ausschnitt ueber alle Aufnahmen konsistent.',
+    ],
+    sectionHeadline: 'Sauber, einheitlich,',
+    sectionEmphasis: 'wiedererkennbar.',
+    sectionLead:
+      'Diese Seite bedient die Headshot-Suchintention bewusst eng: professionelle Profilbilder, kein verkleidetes Konzept-Shooting.',
+    cards: [
+      { label: '01 · Profil', title: 'LinkedIn & Web', text: 'Klare Headshots, die auf Profilen und Teamseiten sofort professionell wirken.' },
+      { label: '02 · Team', title: 'Einheitlicher Look', text: 'Gleiches Licht, gleicher Hintergrund, gleicher Ausschnitt ueber alle Personen.' },
+      { label: '03 · Bewerbung', title: 'Bewerbungsbild', text: 'Sympathisch und professionell - moderner als ein klassisches Passbild.' },
+      { label: '04 · Schnell', title: 'Effizienter Termin', text: 'Kompakter Ablauf, ideal fuer einzelne Personen oder ganze Teams am Stueck.' },
+    ],
+    processHeadline: 'Ablauf fuer Headshots.',
+    processLead:
+      'Headshots leben von einem ruhigen, schnellen Ablauf - besonders, wenn mehrere Personen nacheinander fotografiert werden.',
+    processSteps: [
+      { title: 'Zweck klaeren', text: 'Wir klaeren Nutzung, gewuenschte Wirkung und ob ein einheitlicher Team-Look noetig ist.' },
+      { title: 'Setup setzen', text: 'Licht, Hintergrund und Ausschnitt werden einmal sauber festgelegt und konstant gehalten.' },
+      { title: 'Person fuehren', text: 'Kurze, klare Regie fuer Blick und Haltung, damit der Ausdruck natuerlich bleibt.' },
+      { title: 'Auswahl treffen', text: 'Pro Person eine kuratierte Auswahl der besten Aufnahmen.' },
+      { title: 'Konsistent liefern', text: 'Finale Headshots in einheitlichem Look fuer Web, Profil und Bewerbung.' },
+    ],
+    relatedLead:
+      'Headshot ist die engste Portraitform. Wer mehr Bildwelt braucht, findet bei Business Portrait, Personal Branding und Unternehmensportrait den passenden Umfang.',
+  },
+  'personal-branding-fotografie': {
+    heroLead:
+      'Personal Branding Fotografie fuer Selbststaendige, Founder und Coaches: eine Bildwelt aus mehreren Looks und Orten statt eines einzelnen Profilbilds.',
+    metaDescription:
+      'Personal Branding Fotografie: Bildwelt fuer Website, Social und Angebot - mehrere Looks, Orte und Motive fuer Selbststaendige und Founder.',
+    contactLead:
+      'Schreibe kurz, wofuer die Bilder gebraucht werden (Website, Social, Angebot), wie du positioniert bist und welche Themen oder Orte deine Arbeit am besten zeigen.',
+    pullHeadline: 'Eine Person,',
+    pullEmphasis: 'eine Bildwelt.',
+    statementBody: [
+      'Personal Branding Fotografie endet nicht beim Portrait. Es geht um eine zusammenhaengende Bildwelt: Person, Arbeitsweise, Umfeld und wiederkehrende Motive fuer alle Kanaele.',
+      'Eine Serie liefert Material fuer Website, Social Media, Newsletter und Angebote - mit genug Varianten, damit ueber Monate nicht immer dasselbe Bild laeuft.',
+    ],
+    sectionHeadline: 'Mehr als ein',
+    sectionEmphasis: 'Profilbild.',
+    sectionLead:
+      'Diese Seite richtet sich an Menschen, die ihre Marke selbst sind. Statt eines Einzelbilds entsteht ein nutzbarer Vorrat an Motiven.',
+    cards: [
+      { label: '01 · Person', title: 'Hauptportraits', text: 'Klare Portraits als Anker der Bildwelt fuer Startseite und Profil.' },
+      { label: '02 · Arbeit', title: 'In Aktion', text: 'Bilder bei der Arbeit, im Gespraech oder am Material - glaubwuerdig statt gestellt.' },
+      { label: '03 · Umfeld', title: 'Orte & Atmosphaere', text: 'Buero, Studio oder typische Locations als Teil der Geschichte.' },
+      { label: '04 · Content', title: 'Social-Vorrat', text: 'Hoch- und Querformate plus Detailmotive fuer einen laufenden Content-Plan.' },
+    ],
+    processHeadline: 'Ablauf fuer Personal Branding.',
+    processLead:
+      'Vor dem Shooting steht ein kleiner Content-Plan: Positionierung, Themen und Kanaele bestimmen, welche Motive wirklich gebraucht werden.',
+    processSteps: [
+      { title: 'Positionierung klaeren', text: 'Wir schauen, wofuer du stehst und welche Bilder dein Angebot stuetzen.' },
+      { title: 'Motivliste bauen', text: 'Themen, Orte, Outfits und Formate werden als Liste statt als Zufall geplant.' },
+      { title: 'In Etappen fotografieren', text: 'Verschiedene Looks und Situationen entstehen in einem strukturierten Termin.' },
+      { title: 'Auswahl kuratieren', text: 'Du bekommst eine sortierte Auswahl nach Verwendungszweck, nicht nur nach Schoenheit.' },
+      { title: 'Vorrat liefern', text: 'Die Bildwelt kommt in Formaten fuer Website, Social und Print - bereit fuer Monate.' },
+    ],
+    relatedLead:
+      'Personal Branding Fotografie ist die breiteste Auftritts-Seite. Sie grenzt sich von Headshot und Business Portrait ab, verlinkt aber bewusst dorthin.',
+  },
+  'unternehmensportrait': {
+    heroLead:
+      'Unternehmensportrait fuer Team, Fuehrung und Standort: eine konsistente Bildsprache ueber alle Personen - vor Ort im Unternehmen oder on location.',
+    metaDescription:
+      'Unternehmensportrait: konsistente Portraits fuer Team, Fuehrung und Standort in Duesseldorf und NRW - vor Ort und mit einheitlichem Look.',
+    contactLead:
+      'Schreibe kurz, wie viele Personen fotografiert werden, ob es vor Ort im Unternehmen stattfinden soll und wofuer die Bilder genutzt werden (Website, Recruiting, Presse, Bericht).',
+    pullHeadline: 'Ein Unternehmen,',
+    pullEmphasis: 'eine Bildsprache.',
+    statementBody: [
+      'Beim Unternehmensportrait geht es selten um eine einzelne Person, sondern um viele: Team, Fuehrung, Abteilungen und Standort sollen in einer gemeinsamen Bildsprache erscheinen.',
+      'Der Schluessel ist Konsistenz und Logistik. Licht, Hintergrund und Ausschnitt bleiben gleich, auch wenn an einem Tag viele Menschen nacheinander fotografiert werden.',
+    ],
+    sectionHeadline: 'Team, Fuehrung,',
+    sectionEmphasis: 'Standort.',
+    sectionLead:
+      'Diese Seite ist fuer Unternehmen, die mehr als ein Portrait brauchen: eine verlaessliche, wiederholbare Bildlinie fuer den gesamten Auftritt.',
+    cards: [
+      { label: '01 · Team', title: 'Mitarbeiterportraits', text: 'Einheitliche Portraits fuer Website, Recruiting und Teamseite.' },
+      { label: '02 · Fuehrung', title: 'Geschaeftsleitung', text: 'Repraesentative Portraits fuer Presse, Bericht und Investor Relations.' },
+      { label: '03 · Standort', title: 'Vor Ort', text: 'Arbeitsumgebung und Raeume als Teil des Unternehmensbildes.' },
+      { label: '04 · System', title: 'Erweiterbar', text: 'Neue Mitarbeitende lassen sich spaeter im gleichen Look ergaenzen.' },
+    ],
+    processHeadline: 'Ablauf fuer Unternehmensportraits.',
+    processLead:
+      'Bei vielen Personen entscheidet die Organisation ueber das Ergebnis: klarer Zeitplan, fester Setup-Ort und ein effizienter Durchlauf.',
+    processSteps: [
+      { title: 'Umfang klaeren', text: 'Personenzahl, Orte, Nutzung und gewuenschter Look werden vorab abgestimmt.' },
+      { title: 'Setup aufbauen', text: 'Ein fester Punkt im Unternehmen sorgt fuer gleichbleibendes Licht und Hintergrund.' },
+      { title: 'Im Takt fotografieren', text: 'Personen werden nacheinander in kurzen, ruhigen Slots fotografiert.' },
+      { title: 'Konsistent bearbeiten', text: 'Alle Portraits werden in derselben Bildsprache retuschiert.' },
+      { title: 'Strukturiert liefern', text: 'Benannte Dateien pro Person, bereit fuer Website, Intranet und Presse.' },
+    ],
+    relatedLead:
+      'Unternehmensportrait ist die team- und standortbezogene Seite. Fuer einzelne Personen passt Business Portrait oder Headshot, fuer Marken-Aufbau Personal Branding.',
+  },
+  'pressefoto': {
+    heroLead:
+      'Pressefotos fuer Medien, PR und Bericht: glaubwuerdig, redaktionell nutzbar und mit klaren Rechten - Portraits und Motive, die Redaktionen direkt verwenden koennen.',
+    metaDescription:
+      'Pressefoto Fotograf: redaktionell nutzbare Portraits und Motive fuer Presse, PR und Medienkit in Duesseldorf und NRW - mit klarer Nutzungsfreigabe.',
+    contactLead:
+      'Schreibe kurz, wofuer die Pressefotos gebraucht werden (Pressemitteilung, Medienkit, Bericht), wer abgebildet wird und welche Rechte oder Formate die Redaktionen brauchen.',
+    pullHeadline: 'Bilder, die Redaktionen',
+    pullEmphasis: 'verwenden.',
+    statementBody: [
+      'Ein Pressefoto muss anders funktionieren als ein Werbebild: glaubwuerdig, redaktionell nutzbar und technisch sauber. Es soll eine Geschichte stuetzen, nicht ueberinszenieren.',
+      'Genauso wichtig sind klare Nutzungsrechte und Formate. Ein gutes Medienkit liefert Portrait, Situativ und Detail in Aufloesungen, die Print und Online abdecken.',
+    ],
+    sectionHeadline: 'Glaubwuerdig, klar,',
+    sectionEmphasis: 'freigegeben.',
+    sectionLead:
+      'Diese Seite richtet sich an PR, Kommunikation und Personen des oeffentlichen Lebens, die verlaessliches, redaktionstaugliches Bildmaterial brauchen.',
+    cards: [
+      { label: '01 · Portrait', title: 'Pressebild Person', text: 'Repraesentatives, glaubwuerdiges Portrait fuer Pressemitteilung und Profil.' },
+      { label: '02 · Situativ', title: 'Im Kontext', text: 'Person in Arbeits- oder Anlasssituation - redaktionell statt gestellt.' },
+      { label: '03 · Kit', title: 'Medienkit', text: 'Mehrere Motive und Formate als fertiger Satz fuer Redaktionen.' },
+      { label: '04 · Rechte', title: 'Klare Freigabe', text: 'Nutzungsrechte und Bildunterschriften werden eindeutig geregelt.' },
+    ],
+    processHeadline: 'Ablauf fuer Pressefotos.',
+    processLead:
+      'Vor dem Termin werden Anlass, Verwendung und Rechte geklaert, damit das Material spaeter ohne Rueckfragen einsatzbereit ist.',
+    processSteps: [
+      { title: 'Anlass klaeren', text: 'Pressemitteilung, Medienkit oder Bericht bestimmen Motive und Tonalitaet.' },
+      { title: 'Motive planen', text: 'Portrait, Situativ und Detail werden so geplant, dass Redaktionen Auswahl haben.' },
+      { title: 'Redaktionell fotografieren', text: 'Die Bildsprache bleibt glaubwuerdig und vermeidet ueberzogene Werbeoptik.' },
+      { title: 'Aufloesungen liefern', text: 'Print- und Online-Formate werden getrennt bereitgestellt.' },
+      { title: 'Rechte dokumentieren', text: 'Nutzungsfreigabe und Credits werden klar mitgeliefert.' },
+    ],
+    relatedLead:
+      'Pressefoto ist die redaktionell ausgerichtete Seite. Fuer reine Profilbilder passt Business Portrait oder Headshot, fuer laufende Marke Personal Branding.',
+  },
+}
+
+const keywordFaqs: Record<string, Array<{ q: string; a: string }>> = {
+  'automobil-fotografie': [
+    { q: 'Was kostet ein Automobil-Fotoshooting?', a: 'Der Preis richtet sich nach Umfang: Anzahl der Fahrzeuge, gewünschte Bildtypen (Exterieur, Interieur, Detail, Cinematic), Location und Nutzung. Du bekommst vorab ein klares Angebot statt eines Pauschalpreises.' },
+    { q: 'Wo findet das Shooting statt?', a: 'In Düsseldorf, im Umland oder an einer passenden Location in NRW. Ort und Lichtfenster werden nach Fahrzeug und gewünschter Wirkung gemeinsam festgelegt.' },
+    { q: 'Kann ich mein eigenes Fahrzeug mitbringen?', a: 'Ja. Die meisten Serien entstehen mit dem Fahrzeug des Kunden – vom privaten Liebhaberstück bis zum Händler- oder Markenfahrzeug.' },
+    { q: 'Wofür sind die Bilder nutzbar?', a: 'Für Verkauf und Inserat, Website und Social Media, Showroom, Editorial und Kampagne. Formate und Auflösung werden auf die geplante Nutzung abgestimmt.' },
+  ],
+  'sportwagen-fotografie': [
+    { q: 'Worin unterscheidet sich Sportwagen- von allgemeiner Automobilfotografie?', a: 'Sportwagen brauchen Präzision statt Effekt: niedrige Blickachsen, kontrollierte Reflexe und Details, die Leistung sichtbar machen. Die Bildsprache bleibt ruhig und hochwertig statt reißerisch.' },
+    { q: 'Wo wird fotografiert?', a: 'In Düsseldorf und NRW, je nach Wagen an ruhiger Location, in Architektur oder Halle. Ort und Tageszeit werden auf Lack, Form und Reflexe abgestimmt.' },
+    { q: 'Eignen sich die Bilder für Verkauf oder Sammlung?', a: 'Ja. Eine Serie funktioniert für Verkauf und Inserat genauso wie als Sammlungs- oder Markendokumentation.' },
+    { q: 'Was kostet ein Sportwagen-Shooting?', a: 'Nach Umfang – Fahrzeuganzahl, Bildtypen, Location und Nutzung. Du erhältst vorab ein konkretes Angebot.' },
+  ],
+  'oldtimer-fotografie': [
+    { q: 'Wie werden Oldtimer fotografiert?', a: 'Mit Ruhe und Abstand. Lack, Chrom, Leder und Patina werden bewusst geführt – ehrlich und ohne Effekt-Pose, damit Charakter und Zustand lesbar bleiben.' },
+    { q: 'Eignen sich die Bilder für Auktion oder Verkauf?', a: 'Ja. Exterieur, Interieur, Material- und Detailaufnahmen dokumentieren Herkunft und Zustand für Auktion, Inserat, Versicherung oder Sammlung.' },
+    { q: 'Wo findet das Shooting statt?', a: 'In Düsseldorf, im Umland oder an einer passenden Bühne in NRW. Für empfindliche Fahrzeuge wird die Logistik vorab geklärt.' },
+    { q: 'Was kostet eine Oldtimer-Serie?', a: 'Nach Umfang und Nutzung. Du bekommst vorab ein klares Angebot, abgestimmt auf Fahrzeug und Verwendungszweck.' },
+  ],
+  'motorrad-fotografie': [
+    { q: 'Wird mit oder ohne Fahrer fotografiert?', a: 'Beides. Das Bike pur (Silhouette, Mechanik, Detail) oder mit Fahrerbezug als Haltung – je nach gewünschter Wirkung und Nutzung.' },
+    { q: 'Fotografierst du auch Custom Bikes?', a: 'Ja. Umbauten, Details und Lackierung werden so in Szene gesetzt, dass die handwerkliche Arbeit sichtbar wird.' },
+    { q: 'Sind Verkaufsfotos möglich?', a: 'Ja. Saubere Stand-, Detail- und Innenaufnahmen unterstützen Inserat und Verkauf.' },
+    { q: 'Was kostet ein Motorrad-Shooting?', a: 'Nach Umfang – Maschine, Bildtypen, Fahrerbilder und Location. Vorab gibt es ein konkretes Angebot.' },
+  ],
+  'portraitfotografie': [
+    { q: 'Machst du Passbilder oder Bewerbungsfotos?', a: 'Keine klassischen Passbilder. Es geht um professionelle Portraits mit Haltung – für Profil, Personal Branding, Editorial, Paar oder Familie.' },
+    { q: 'Findet das Shooting indoor oder outdoor statt?', a: 'Beides ist möglich. Ort, Licht und Hintergrund werden auf Person, Nutzung und gewünschte Stimmung abgestimmt – on location, draußen oder in ruhiger Umgebung.' },
+    { q: 'Wie läuft die Bildauswahl ab?', a: 'Du bekommst eine kuratierte Vorauswahl als Galerie und entscheidest, welche Motive final – zurückhaltend – retuschiert werden.' },
+    { q: 'Was kostet ein Portrait-Shooting?', a: 'Nach Umfang: Dauer, Anzahl der Bilder, Personen und Nutzung. Vorab erhältst du ein klares Angebot.' },
+  ],
+  'landschaftsfotografie': [
+    { q: 'Kann ich Bilder als Print oder Wandbild kaufen?', a: 'Ja. Die Landschaftsarbeiten sind als Fine-Art-Print, Wandbild oder limitierte Edition erhältlich – kuratiert und passend zum Raum.' },
+    { q: 'Welche Materialien gibt es?', a: 'Fine-Art-Papier, Aluminium-Dibond und Acrylglas. Das Material wird nach Motiv, Raum und gewünschter Wirkung empfohlen.' },
+    { q: 'Welche Formate und Größen sind möglich?', a: 'Von kleineren Editionen bis zu großformatigen Arbeiten. Format und Größe werden auf Raum und Betrachtungsabstand abgestimmt.' },
+    { q: 'Wie läuft die Bestellung ab?', a: 'Nach Anfrage werden Motiv, Material, Format und Lieferung geklärt; die Fertigung erfolgt sauber und auf Bestellung.' },
+  ],
+  'business-portrait': [
+    { q: 'Was ist der Unterschied zwischen Business Portrait und Bewerbungsfoto?', a: 'Ein Business Portrait ist kein Passbild. Es transportiert Kompetenz und Wiedererkennung für Website, LinkedIn, Presse und Team – hochwertiger und vielseitiger als ein klassisches Bewerbungsfoto.' },
+    { q: 'Können mehrere Personen oder ein ganzes Team fotografiert werden?', a: 'Ja. Auch größere Teams werden in einem effizienten Ablauf mit gleichbleibender Bildsprache fotografiert.' },
+    { q: 'Bekomme ich Bilder für Website und LinkedIn?', a: 'Ja. Die Portraits werden in passenden Ausschnitten und Formaten für Website, LinkedIn, Presse und Print geliefert.' },
+    { q: 'Wo findet das Shooting statt?', a: 'Im Unternehmen, on location oder in ruhiger Umgebung in Düsseldorf und NRW – je nach gewünschter Wirkung.' },
+  ],
+  'headshot-fotograf': [
+    { q: 'Was ist ein Headshot?', a: 'Der enge, fokussierte Portraitausschnitt: Gesicht, Blick und Ausdruck stehen im Mittelpunkt – ideal für LinkedIn, Profile, Teamseiten und Bewerbungen.' },
+    { q: 'Bekommt ein ganzes Team denselben Look?', a: 'Ja. Licht, Hintergrund und Ausschnitt bleiben über alle Personen konsistent, damit die Teamseite zusammenhängt.' },
+    { q: 'Eignet sich ein Headshot als Bewerbungsbild?', a: 'Ja – moderner und natürlicher als ein klassisches Passbild, aber genauso professionell.' },
+    { q: 'Wie schnell geht ein Headshot-Termin?', a: 'Der Ablauf ist kompakt. Einzelpersonen sind schnell fertig, Teams werden effizient nacheinander fotografiert.' },
+  ],
+  'personal-branding-fotografie': [
+    { q: 'Was ist Personal Branding Fotografie?', a: 'Eine zusammenhängende Bildwelt aus Portraits, Arbeitssituationen und Umfeld – statt eines einzelnen Profilbilds. Material für Website, Social Media und Angebote.' },
+    { q: 'Wie viele Looks oder Bilder entstehen?', a: 'Nach Bedarf. Geplant wird eine Motivliste mit verschiedenen Looks und Orten, damit über Monate genug Varianten vorhanden sind.' },
+    { q: 'Für wen ist das geeignet?', a: 'Für Selbstständige, Founder, Coaches, Speaker und Experten, die selbst Teil ihrer Marke sind.' },
+    { q: 'Wie planen wir die Motive?', a: 'Vor dem Shooting steht ein kleiner Content-Plan aus Positionierung, Themen, Orten und Formaten – so entsteht ein nutzbarer Bildvorrat statt Zufall.' },
+  ],
+  'unternehmensportrait': [
+    { q: 'Können viele Mitarbeitende an einem Tag fotografiert werden?', a: 'Ja. Mit festem Setup-Punkt und klarem Zeitplan werden auch große Teams in ruhigen Slots nacheinander fotografiert.' },
+    { q: 'Findet das Shooting vor Ort im Unternehmen statt?', a: 'In der Regel ja. Vor Ort lassen sich Arbeitsumgebung und Räume als Teil des Unternehmensbildes nutzen; on location ist ebenfalls möglich.' },
+    { q: 'Lassen sich neue Mitarbeitende später ergänzen?', a: 'Ja. Licht, Hintergrund und Ausschnitt sind dokumentiert, sodass spätere Aufnahmen im gleichen Look entstehen.' },
+    { q: 'Wofür werden die Bilder genutzt?', a: 'Für Website, Recruiting, Teamseite, Presse und Bericht – benannt und geliefert pro Person.' },
+  ],
+  'pressefoto': [
+    { q: 'Was macht ein gutes Pressefoto aus?', a: 'Es ist glaubwürdig, redaktionell nutzbar und technisch sauber. Es stützt eine Geschichte, statt wie Werbung zu überinszenieren.' },
+    { q: 'Bekomme ich klare Nutzungsrechte?', a: 'Ja. Nutzungsfreigabe und Bildunterschriften werden eindeutig geregelt, damit Redaktionen das Material ohne Rückfragen verwenden können.' },
+    { q: 'Welche Formate werden geliefert?', a: 'Print- und Online-Auflösungen getrennt, auf Wunsch als Medienkit mit Portrait, Situativ und Detail.' },
+    { q: 'Was kostet ein Pressetermin?', a: 'Nach Anlass und Umfang. Du erhältst vorab ein klares Angebot, abgestimmt auf Verwendung und Lieferumfang.' },
+  ],
 }
 
 export function keywordFocusCopyForSlug(value?: string | null) {
@@ -1327,16 +1577,22 @@ export function keywordFocusCopyForSlug(value?: string | null) {
 
   const defaults = keywordFocusDefaults[prefix]
   const custom = keywordFocusCopies[prefix]
-  if (!defaults) return custom
-  if (!custom) return defaults
+  const faq = keywordFaqs[prefix]
 
-  return {
-    ...defaults,
-    ...custom,
-    cards: custom.cards || defaults.cards,
-    processSteps: custom.processSteps || defaults.processSteps,
-    statementBody: custom.statementBody || defaults.statementBody,
-  }
+  const base = !defaults
+    ? custom
+    : !custom
+      ? defaults
+      : {
+          ...defaults,
+          ...custom,
+          cards: custom.cards || defaults.cards,
+          processSteps: custom.processSteps || defaults.processSteps,
+          statementBody: custom.statementBody || defaults.statementBody,
+        }
+
+  if (!base) return faq ? { faq } : null
+  return faq ? { ...base, faq } : base
 }
 
 const visual = (
@@ -1725,6 +1981,44 @@ export function titleForLocalSeoPage(doc: PayloadDoc | null | undefined, service
   return doc?.title || `${serviceLabel} ${scope.label}`
 }
 
+const cityCharacter: Record<string, string> = {
+  koeln: 'Rhein, Rheinauhafen und urbane Hinterhöfe',
+  essen: 'Ruhrgebiet, Zeche Zollverein und sachliche Industriearchitektur',
+  dortmund: 'Phoenix-See, Westfalenpark und Hafenkante',
+  duisburg: 'Innenhafen, Landschaftspark und Industriekulisse',
+  bochum: 'Jahrhunderthalle, Bermuda3eck und Ruhr-Architektur',
+  wuppertal: 'Schwebebahn, Wupper-Tal und steile Talsenken',
+  leverkusen: 'Rhein, Bayer-Werk und ruhige Wohnlagen',
+  oberhausen: 'Gasometer, CentrO und weite Industrielandschaft',
+  krefeld: 'Rhein, Seide-Architektur und der Hülser Berg',
+  moenchengladbach: 'Schloss Rheydt, Hardter Wald und Hockeypark',
+  moers: 'Niederrhein, Schlosspark und ruhige Altstadt',
+  gelsenkirchen: 'Arena, Nordsternpark und Zechen-Kulisse',
+  'bergisch-gladbach': 'Bergisches Land, Bensberg und Forsbach',
+  solingen: 'Schloss Burg, Müngstener Brücke und Wupperhänge',
+  remscheid: 'Bergisches Land, Müngstener Brücke und Talsperren',
+  mettmann: 'Neandertal, Bergisches Land und die ruhige Lage zwischen Düsseldorf und Wuppertal',
+  hilden: 'Stadtwald, Itter und die Düsseldorf-nahe Lage',
+  dormagen: 'Rhein, Chempark und ländliche Außenbereiche',
+  neuss: 'Rhein, Hafen und die Düsseldorf-nahe Lage',
+  erkrath: 'Neandertal, Düssel-Auen und die direkte Nähe zu Düsseldorf',
+  ratingen: 'Blauer See, Altstadt und die Lage am Rand von Düsseldorf',
+}
+
+export function cityScopePhrase(scope: LocalSeoScope): string {
+  if (scope.generic) return ''
+  if (scope.slug === 'duesseldorf')
+    return 'Düsseldorf ist der Standort- und Planungsanker; Wege, Lichtfenster, Location und Ausgabeformat lassen sich dadurch präzise abstimmen.'
+  if (scope.slug === 'nrw')
+    return 'NRW verbindet Rheinland, Ruhrgebiet, Niederrhein und Bergisches Land; die Produktion bleibt lokal auffindbar und wird von Düsseldorf aus sauber geplant.'
+  if (scope.slug === 'deutschland')
+    return 'Deutschlandweite Termine werden über Motiv, Nutzung, Anreise und Lichtfenster geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.'
+  const character = cityCharacter[scope.slug]
+  return character
+    ? `In ${scope.label} prägen ${character} den Bildkontext; Wege, Lichtfenster und Location werden gezielt darauf abgestimmt.`
+    : `${scope.label} wird als lokaler Suchraum mit klarer Planung, passendem Lichtfenster und sauberer Nutzung der Bildserie geführt.`
+}
+
 export function placeDescriptor(scope: LocalSeoScope, family: LocalSeoLayoutFamily) {
   if (scope.slug === 'nrw') {
     return family === 'landschaft'
@@ -1742,7 +2036,7 @@ export function placeDescriptor(scope: LocalSeoScope, family: LocalSeoLayoutFami
     return 'Düsseldorf ist der lokale Standort- und Planungsanker; Wege, Lichtfenster, Location und Ausgabeformat lassen sich dadurch präzise abstimmen.'
   }
 
-  return `${scope.label} wird als lokaler Suchraum mit klarer Planung, passendem Lichtfenster und sauberer Nutzung der Bildserie geführt.`
+  return cityScopePhrase(scope)
 }
 
 export function heroCopyForLocalSeoPage(

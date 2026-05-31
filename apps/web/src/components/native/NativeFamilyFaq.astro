@@ -1,0 +1,151 @@
+---
+type FaqItem = { q: string; a: string }
+
+type Props = {
+  faq?: FaqItem[] | null
+  pageUrl?: string
+  theme?: 'dark' | 'light'
+  headline?: string
+  emphasis?: string
+}
+
+const { faq, pageUrl, theme = 'dark', headline = 'Häufige', emphasis = 'Fragen.' } = Astro.props as Props
+const items = (faq || []).filter((entry) => entry && entry.q && entry.a)
+
+const jsonLd = items.length
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      ...(pageUrl ? { '@id': `${pageUrl}#faq` } : {}),
+      mainEntity: items.map((entry) => ({
+        '@type': 'Question',
+        name: entry.q,
+        acceptedAnswer: { '@type': 'Answer', text: entry.a },
+      })),
+    }
+  : null
+---
+{items.length > 0 && (
+  <section class="fam-faq" data-faq-theme={theme} data-header-theme={theme} aria-label="Häufige Fragen">
+    <div class="fam-faq__inner">
+      <div class="fam-faq__head">
+        <p class="fam-faq__kicker">F · A · Q</p>
+        <h2 class="fam-faq__title">{headline} <em>{emphasis}</em></h2>
+      </div>
+      <div class="fam-faq__list">
+        {items.map((entry, index) => (
+          <details class="fam-faq__item" open={index === 0}>
+            <summary class="fam-faq__q">
+              <span>{entry.q}</span>
+              <span class="fam-faq__mark" aria-hidden="true"></span>
+            </summary>
+            <div class="fam-faq__a"><p>{entry.a}</p></div>
+          </details>
+        ))}
+      </div>
+    </div>
+    {jsonLd && <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+  </section>
+)}
+
+<style>
+  .fam-faq {
+    --faq-fg: var(--fg);
+    --faq-bg: var(--bg);
+    --faq-muted: var(--muted);
+    --faq-line: var(--border);
+    background: var(--faq-bg);
+    color: var(--faq-fg);
+    padding: clamp(72px, 11vw, 168px) 0;
+  }
+  .fam-faq[data-faq-theme='light'] {
+    --faq-fg: var(--paper-ink);
+    --faq-bg: var(--paper);
+    --faq-muted: color-mix(in oklch, var(--paper-ink) 64%, transparent);
+    --faq-line: color-mix(in oklch, var(--paper-ink) 14%, transparent);
+  }
+  .fam-faq__inner {
+    width: min(100% - clamp(32px, 8vw, 128px), 1640px);
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr);
+    gap: clamp(32px, 5vw, 96px);
+    align-items: start;
+  }
+  .fam-faq__kicker {
+    font: 700 10px/1 var(--font-mono);
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--accent, #cf392e);
+    margin: 0 0 18px;
+  }
+  .fam-faq__title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(36px, 5vw, 88px);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    margin: 0;
+    text-transform: uppercase;
+  }
+  .fam-faq__title em {
+    font-style: normal;
+    color: var(--accent-2, #7a8a86);
+  }
+  .fam-faq__list {
+    border-top: 1px solid var(--faq-line);
+  }
+  .fam-faq__item {
+    border-bottom: 1px solid var(--faq-line);
+  }
+  .fam-faq__q {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    cursor: pointer;
+    list-style: none;
+    padding: clamp(20px, 2.4vw, 30px) 0;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(17px, 1.5vw, 23px);
+    line-height: 1.25;
+    color: var(--faq-fg);
+  }
+  .fam-faq__q::-webkit-details-marker { display: none; }
+  .fam-faq__mark {
+    position: relative;
+    flex: 0 0 auto;
+    width: 16px;
+    height: 16px;
+  }
+  .fam-faq__mark::before,
+  .fam-faq__mark::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    background: var(--accent, #cf392e);
+  }
+  .fam-faq__mark::before { width: 16px; height: 1.5px; }
+  .fam-faq__mark::after { width: 1.5px; height: 16px; transition: transform 0.3s var(--ease, cubic-bezier(0.23, 1, 0.32, 1)); }
+  .fam-faq__item[open] .fam-faq__mark::after { transform: scaleY(0); }
+  .fam-faq__a {
+    overflow: hidden;
+    max-width: 64ch;
+    padding: 0 0 clamp(22px, 2.6vw, 32px);
+  }
+  .fam-faq__a p {
+    margin: 0;
+    font-family: var(--font-body, var(--font-display));
+    font-size: clamp(15px, 1.05vw, 17px);
+    line-height: 1.6;
+    color: var(--faq-muted);
+  }
+  @media (max-width: 860px) {
+    .fam-faq__inner { grid-template-columns: 1fr; gap: clamp(24px, 6vw, 40px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .fam-faq__mark::after { transition: none; }
+  }
+</style>

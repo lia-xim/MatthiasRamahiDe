@@ -1,8 +1,10 @@
 ---
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import NativeFamilyClusterLinks from './NativeFamilyClusterLinks.astro'
+import NativeFamilyFaq from './NativeFamilyFaq.astro'
 import PreviewToolbar from '../PreviewToolbar.astro'
 import {
+  cityScopePhrase,
   keywordFocusCopyForSlug,
   localSeoFamilyContent,
   scopeFromSlug,
@@ -54,8 +56,8 @@ const defaultHeroLead = isParentPage
   ? 'Automobilfotografie: Exterieur, Interieur, Details und Cinematic werden als kuratierte Bildserie geplant - für Marke, Showroom, Verkauf, Kampagne und hochwertige private Fahrzeuge. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.'
   : isKeywordPage
     ? `${serviceLabel}: eigenständiger Einstieg in den Automobil Fotografie-Cluster. Exterieur, Interieur, Details und Cinematic werden als kuratierte Serie geplant - für Marke, Showroom, Verkauf, Kampagne und hochwertige private Fahrzeuge. Die Seite bleibt bewusst im Layout der übergeordneten Kategorie, setzt den Text aber auf diese konkrete Suchintention.`
-    : `Automobilfotografie in ${scope.label}: Exterieur, Interieur, Details und Cinematic werden als kuratierte Bildserie geplant - für Marke, Showroom, Verkauf, Kampagne und hochwertige private Fahrzeuge. ${scope.label} wird als lokaler Suchraum mit klarer Planung, passendem Lichtfenster und sauberer Nutzung der Bildserie geführt.`
-const keywordLocalContext = keywordFocusCopy && !isParentPage && !isKeywordPage ? ` Der lokale Fokus fuer ${scope.label} wird ueber Location, Lichtfenster und Ablauf konkretisiert.` : ''
+    : `Automobilfotografie in ${scope.label}: Exterieur, Interieur, Details und Cinematic werden als kuratierte Bildserie geplant - für Marke, Showroom, Verkauf, Kampagne und hochwertige private Fahrzeuge. ${cityScopePhrase(scope)}`
+const keywordLocalContext = keywordFocusCopy && !isParentPage && !isKeywordPage ? ` ${cityScopePhrase(scope)}` : ''
 const heroLead = keywordFocusCopy?.heroLead ? `${keywordFocusCopy.heroLead}${keywordLocalContext}` : defaultHeroLead
 const metaTitle = isParentPage
   ? 'Automobilfotografie | Matthias Ramahi'
@@ -525,6 +527,8 @@ const searchLinks = [
         </nav>
       </div>
     </section>
+
+    <NativeFamilyFaq faq={keywordFocusCopy?.faq} pageUrl={`https://matthiasramahi.de/${legacyFile}`} theme="dark" />
 
     <section
       id="anfrage"

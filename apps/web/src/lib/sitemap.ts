@@ -361,7 +361,7 @@ ${imageXml}` : ''}
 
 export function sitemapIndexXml() {
   const siteUrl = configuredSiteUrl()
-  const today = new Date().toISOString().slice(0, 10)
+  const generatedAt = new Date().toISOString()
   const files = [
     ...sitemapSections.map((section) => `sitemap-${section}.xml`),
     'sitemap-images.xml',
@@ -374,7 +374,7 @@ ${files
   .map(
     (file) => `  <sitemap>
     <loc>${escapeXml(`${siteUrl}/${file}`)}</loc>
-    <lastmod>${today}</lastmod>
+    <lastmod>${generatedAt}</lastmod>
   </sitemap>`,
   )
   .join('\n')}

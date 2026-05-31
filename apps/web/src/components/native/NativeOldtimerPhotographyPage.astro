@@ -1,6 +1,7 @@
 ---
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import NativeFamilyClusterLinks from './NativeFamilyClusterLinks.astro'
+import NativeFamilyFaq from './NativeFamilyFaq.astro'
 import PreviewToolbar from '../PreviewToolbar.astro'
 import {
   localScopePhrase,
@@ -54,7 +55,9 @@ const metaTitle = isParentPage
   : isKeywordPage
     ? `${serviceLabel} | Matthias Ramahi`
     : `${serviceLabel} ${scope.label} | Matthias Ramahi`
-const heroLead = keywordFocusCopy?.heroLead || defaultHeroLead
+const heroLead = keywordFocusCopy?.heroLead
+  ? `${keywordFocusCopy.heroLead}${!isParentPage && !isKeywordPage ? ` ${localScopePhrase(scope)}` : ''}`
+  : defaultHeroLead
 const defaultMetaDescription = isParentPage
   ? 'Oldtimer-Fotografie: Bildserien für Sammlung, Verkauf, Auktion und Ausstellung - Karosserie, Lack, Chrom, Leder, Patina und Herkunft.'
   : isKeywordPage
@@ -444,6 +447,8 @@ const searchLinks = [
         </nav>
       </div>
     </section>
+
+    <NativeFamilyFaq faq={keywordFocusCopy?.faq} pageUrl={`https://matthiasramahi.de/${legacyFile}`} theme="dark" />
 
     <section
       id="anfrage"

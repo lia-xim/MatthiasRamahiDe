@@ -1,6 +1,7 @@
 ---
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import NativeFamilyClusterLinks from './NativeFamilyClusterLinks.astro'
+import NativeFamilyFaq from './NativeFamilyFaq.astro'
 import PreviewToolbar from '../PreviewToolbar.astro'
 import {
   localScopePhrase,
@@ -49,7 +50,7 @@ const defaultHeroLead = isParentPage
   : isKeywordPage
     ? `${serviceLabel}: eigenständiger Einstieg in den Portrait Fotografie-Cluster. Blick, Licht, Distanz und Haltung werden auf Nutzung und Persönlichkeit abgestimmt - für Personal Branding, Business Portraits, Team, Presse und Editorial. Die Seite bleibt bewusst im Layout der übergeordneten Kategorie, setzt den Text aber auf diese konkrete Suchintention.`
     : `Portraitfotografie in ${scope.label}: Blick, Licht, Distanz und Haltung werden auf Nutzung und Persönlichkeit abgestimmt - für Personal Branding, Business Portraits, Team, Presse und Editorial. ${localScopePhrase(scope)}`
-const keywordLocalContext = keywordFocusCopy && !isParentPage && !isKeywordPage ? ` Der lokale Fokus fuer ${scope.label} wird ueber Ort, Licht, Styling und Ablauf konkretisiert.` : ''
+const keywordLocalContext = keywordFocusCopy && !isParentPage && !isKeywordPage ? ` ${localScopePhrase(scope)}` : ''
 const heroLead = keywordFocusCopy?.heroLead ? `${keywordFocusCopy.heroLead}${keywordLocalContext}` : defaultHeroLead
 const metaTitle = isParentPage
   ? 'Portraitfotografie - Matthias Ramahi'
@@ -428,6 +429,8 @@ const focusRelatedLead =
         </nav>
       </div>
     </section>
+
+    <NativeFamilyFaq faq={keywordFocusCopy?.faq} pageUrl={`https://matthiasramahi.de/${legacyFile}`} theme="dark" />
 
     <section
       id="anfrage"
