@@ -7,6 +7,7 @@ import { contentBlocks } from '../fields/contentBlocks'
 import { mediaRelationshipField } from '../fields/editorialImages'
 import { legacyMigrationFields } from '../fields/legacyMigration'
 import { seoFields } from '../fields/seo'
+import { serviceSectionsTab } from '../fields/serviceSections'
 import { slugField } from '../fields/slug'
 import { applyEditorialDefaults } from '../hooks/autoDefaults'
 import { normalizeLinksBeforeValidate } from '../hooks/normalizeLinks'
@@ -127,6 +128,7 @@ export const LocalSeoPages: CollectionConfig = {
             contentBlocks,
           ],
         },
+        serviceSectionsTab,
         {
           label: 'Advanced',
           description: 'Canonical-Zuordnung, Keyword-Notiz, SEO und Legacy-Migration.',

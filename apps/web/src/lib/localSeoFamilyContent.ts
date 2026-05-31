@@ -58,6 +58,7 @@ const scopeLabels: Record<string, string> = {
   dortmund: 'Dortmund',
   duesseldorf: 'Düsseldorf',
   duisburg: 'Duisburg',
+  erkrath: 'Erkrath',
   essen: 'Essen',
   gelsenkirchen: 'Gelsenkirchen',
   hilden: 'Hilden',
@@ -70,6 +71,7 @@ const scopeLabels: Record<string, string> = {
   neuss: 'Neuss',
   nrw: 'NRW',
   oberhausen: 'Oberhausen',
+  ratingen: 'Ratingen',
   remscheid: 'Remscheid',
   solingen: 'Solingen',
   wuppertal: 'Wuppertal',
@@ -84,6 +86,8 @@ export const localSeoScopes: LocalSeoScope[] = [
 }))
 
 const keywordLabels: Record<string, string> = {
+  'auto-fotografieren-tipps': 'Auto fotografieren Tipps',
+  'auto-fotoshooting': 'Auto-Fotoshooting',
   'autohaus-fotografie': 'Autohaus Fotografie',
   autofotografie: 'Autofotografie',
   'autoverkauf-fotos': 'Autoverkauf Fotos',
@@ -91,12 +95,17 @@ const keywordLabels: Record<string, string> = {
   'automotive-fotografie': 'Automotive Fotografie',
   'bike-fotografie': 'Bike Fotografie',
   'biker-portrait': 'Biker Portrait',
+  'bilder-mit-auto': 'Bilder mit Auto',
   'business-portrait': 'Business Portrait',
   'classic-car-fotografie': 'Classic Car Fotografie',
   'custom-bike-fotografie': 'Custom Bike Fotografie',
+  'dating-fotoshooting': 'Dating Fotoshooting',
   'exotic-car-fotografie': 'Exotic Car Fotografie',
   fahrzeugfotografie: 'Fahrzeugfotografie',
   'fine-art-prints': 'Fine-Art-Prints Landschaft',
+  'fotoshooting-gutschein': 'Fotoshooting Gutschein',
+  'fotoshooting-mit-auto': 'Fotoshooting mit Auto',
+  'fotoshooting-preise': 'Fotoshooting Preise',
   'headshot-fotograf': 'Headshot Fotograf',
   landschaftsbilder: 'Landschaftsbilder kaufen',
   landschaftsfotografie: 'Landschaftsfotografie',
@@ -104,15 +113,21 @@ const keywordLabels: Record<string, string> = {
   'motorrad-fotografie': 'Motorrad Fotografie',
   'motorrad-shooting': 'Motorrad Shooting',
   'motorrad-verkaufsfotos': 'Motorrad Verkaufsfotos',
+  'motorsport-fotografie': 'Motorsport Fotografie',
+  'motorsport-sportwagen-fotografie': 'Motorsport- und Sportwagen-Fotografie',
   naturfotografie: 'Naturfotografie Prints',
   'oldtimer-fotografie': 'Oldtimer Fotografie',
   'oldtimer-shooting': 'Oldtimer Shooting',
   'oldtimer-verkaufsfotos': 'Oldtimer Verkaufsfotos',
   'performance-car-fotografie': 'Performance Car Fotografie',
+  'paarshooting-familienshooting': 'Paarshooting und Familienshooting',
   'personal-branding-fotografie': 'Personal Branding Fotografie',
+  'portrait-fotoshooting': 'Portrait Fotoshooting',
+  'portraitfotografie-beleuchtung': 'Portraitfotografie Beleuchtung',
   portraitfotografie: 'Portraitfotografie',
   pressefoto: 'Pressefoto',
   sammlerfahrzeug: 'Sammlerfahrzeug Fotografie',
+  'schwarz-weiss-portrait-fotografie': 'Schwarz-Weiss Portrait Fotografie',
   'sportwagen-fotografie': 'Sportwagen Fotografie',
   'sportwagen-fotoshooting': 'Sportwagen Fotoshooting',
   'sportwagen-shooting': 'Sportwagen Shooting',
@@ -127,24 +142,1202 @@ const normalizedPrefixEntries = localSeoFamilyPrefixMap.flatMap(({ family, prefi
 )
 
 const standaloneKeywordSlugs = new Set([
+  'auto-fotografieren-tipps',
+  'auto-fotoshooting',
   'autofotografie',
   'autohaus-fotografie',
   'automotive-fotografie',
   'bike-fotografie',
+  'bilder-mit-auto',
   'classic-car-fotografie',
   'custom-bike-fotografie',
+  'dating-fotoshooting',
   'exotic-car-fotografie',
   'fahrzeugfotografie',
   'fine-art-prints-landschaft',
+  'fotoshooting-gutschein',
+  'fotoshooting-mit-auto',
+  'fotoshooting-preise',
   'landschaftsbilder-kaufen',
+  'motorsport-fotografie',
+  'motorsport-sportwagen-fotografie',
   'naturfotografie-prints',
+  'paarshooting-familienshooting',
   'performance-car-fotografie',
   'personal-branding-fotografie',
+  'portrait-fotoshooting',
+  'portraitfotografie-beleuchtung',
   'sammlerfahrzeug-fotografie',
+  'schwarz-weiss-portrait-fotografie',
   'supersportwagen-fotografie',
   'wandbilder-landschaftsfotografie',
   'youngtimer-fotografie',
 ])
+
+export type KeywordFocusCopy = {
+  audienceHeadline?: string
+  audienceLead?: string
+  cards?: Array<{
+    label?: string
+    text: string
+    title: string
+  }>
+  contactLead?: string
+  featureBody?: string
+  featureTitle?: string
+  galleryHeadline?: string
+  galleryLead?: string
+  heroEmphasis?: string
+  heroLead?: string
+  heroTitle?: string
+  metaDescription?: string
+  processHeadline?: string
+  processLead?: string
+  processSteps?: Array<{
+    label?: string
+    text: string
+    title: string
+  }>
+  pullEmphasis?: string
+  pullHeadline?: string
+  pullKicker?: string
+  pullLead?: string
+  relatedLead?: string
+  sectionEmphasis?: string
+  sectionHeadline?: string
+  sectionLead?: string
+  statementBody?: string[]
+  statementEmphasis?: string
+  statementHeadline?: string
+}
+
+type SimpleKeywordBrief = {
+  cards: [string, string, string, string]
+  feature: string
+  heroEmphasis: string
+  heroTitle: string
+  intent: string
+  output: string
+  planning: string
+  related: string
+  sectionEmphasis: string
+  sectionHeadline: string
+}
+
+const simpleKeywordCopy = (label: string, brief: SimpleKeywordBrief): KeywordFocusCopy => ({
+  audienceHeadline: `${label}: passende Anfragen.`,
+  audienceLead: brief.output,
+  cards: [
+    { label: '01 / Fokus', title: brief.cards[0], text: brief.intent },
+    { label: '02 / Planung', title: brief.cards[1], text: brief.planning },
+    { label: '03 / Ausgabe', title: brief.cards[2], text: brief.output },
+    { label: '04 / Grenze', title: brief.cards[3], text: brief.related },
+  ],
+  contactLead: `Schreibe kurz, welches Motiv im Mittelpunkt steht, wofuer ${label} gebraucht wird und ob die Bilder privat, kommerziell, redaktionell oder fuer Verkauf und Print genutzt werden sollen.`,
+  featureBody: brief.feature,
+  featureTitle: 'Intent statt Kopie.',
+  galleryHeadline: `${label} als Bildserie.`,
+  galleryLead: brief.output,
+  heroEmphasis: brief.heroEmphasis,
+  heroLead: `${label}: ${brief.intent} ${brief.planning}`,
+  heroTitle: brief.heroTitle,
+  metaDescription: `${label}: ${brief.output}`,
+  processHeadline: `${label}: Ablauf.`,
+  processLead: `Vor dem Termin werden Suchintention, Motiv, Ort, Lichtfenster und Ausgabe geklaert, damit diese Seite nicht nur eine andere URL traegt.`,
+  processSteps: [
+    { title: 'Ziel klaeren', text: brief.intent },
+    { title: 'Motiv planen', text: brief.planning },
+    { title: 'Serie bauen', text: brief.feature },
+    { title: 'Ausgabe liefern', text: brief.output },
+  ],
+  pullEmphasis: 'eigener Richtung.',
+  pullHeadline: `${label} mit`,
+  pullKicker: 'SEO-Intent',
+  pullLead: brief.intent,
+  relatedLead: brief.related,
+  sectionEmphasis: brief.sectionEmphasis,
+  sectionHeadline: brief.sectionHeadline,
+  sectionLead: brief.planning,
+  statementBody: [brief.intent, brief.planning],
+  statementEmphasis: 'eigenem Zweck.',
+  statementHeadline: `${label} mit`,
+})
+
+const keywordFocusDefaults: Record<string, KeywordFocusCopy> = {
+  'auto-fotografieren-tipps': simpleKeywordCopy('Auto fotografieren Tipps', {
+    cards: ['Licht verstehen', 'Perspektive waehlen', 'Reflexe kontrollieren', 'Zum Shooting fuehren'],
+    feature: 'Die Ratgeberseite beantwortet praktische Fragen und zeigt, wann ein professioneller Bildsatz mehr bringt als weitere Einzelversuche.',
+    heroEmphasis: 'Tipps.',
+    heroTitle: 'Auto fotografieren',
+    intent: 'Suchende wollen konkrete Hilfe zu Licht, Winkel, Lackreflexen, Standort und Bildaufbau.',
+    output: 'Hilfreiche Tipps plus Bruecke zur professionellen Automobilfotografie in NRW.',
+    planning: 'Der Text trennt Grundlagen, typische Fehler und professionelle Umsetzung klar voneinander.',
+    related: 'Die Seite verlinkt zu Auto-Fotoshooting, Bilder mit Auto und Automobilfotografie, ohne diese Intents zu ersetzen.',
+    sectionEmphasis: 'Reflexe.',
+    sectionHeadline: 'Licht, Linien,',
+  }),
+  'auto-fotoshooting': simpleKeywordCopy('Auto-Fotoshooting', {
+    cards: ['Lieblingsfahrzeug', 'Location und Licht', 'Bildserie', 'Nicht nur Inserat'],
+    feature: 'Das Shooting wird als Erlebnis und verwertbare Serie geplant: Hero-Motiv, Details, Innenraum und Social-Crops.',
+    heroEmphasis: 'planen.',
+    heroTitle: 'Auto-Fotoshooting',
+    intent: 'Die Seite holt private Fahrzeugbesitzer, Sammler, Content-Anfragen und Verkaufsabsichten gemeinsam ab.',
+    output: 'Professionelles Auto-Fotoshooting fuer Privat, Verkauf, Marke und Social Media.',
+    planning: 'Ort, Zustand, Tageszeit und Nutzung werden vorab festgelegt, damit das Fahrzeug nicht zufaellig wirkt.',
+    related: 'Auto-Fotoshooting bleibt die breite Einstiegsseite und verweist auf Bilder mit Auto, Sportwagen, Oldtimer und Motorrad.',
+    sectionEmphasis: 'Serie.',
+    sectionHeadline: 'Fahrzeug als',
+  }),
+  'automobil-fotografie': simpleKeywordCopy('Automobilfotografie', {
+    cards: ['Exterieur', 'Interieur', 'Details', 'Kampagne'],
+    feature: 'Die Hauptseite bleibt die Klammer fuer Fahrzeugbilder mit Nutzungsziel: Inserat, Marke, Showroom, Kampagne oder private Sammlung.',
+    heroEmphasis: 'Fotografie.',
+    heroTitle: 'Automobil',
+    intent: 'Hier geht es um hochwertige Fahrzeugserien statt um ein einzelnes schoenes Autobild.',
+    output: 'Automobilfotografie fuer Verkauf, Marke, Showroom, Kampagne und hochwertige private Fahrzeuge.',
+    planning: 'Fahrzeug, Location, Lichtfenster, Bildtypen und Ausgabe werden als Produktionsplan zusammengebracht.',
+    related: 'Die Hauptseite verteilt Suchende sauber in Sportwagen, Oldtimer, Motorrad und Auto-Fotoshooting.',
+    sectionEmphasis: 'Nutzung.',
+    sectionHeadline: 'Fahrzeug, Licht,',
+  }),
+  'automotive-fotografie': simpleKeywordCopy('Automotive Fotografie', {
+    cards: ['Markenlook', 'Editorial', 'Content-Serie', 'Abgrenzung'],
+    feature: 'Automotive Fotografie spricht Marken-, Agentur- und Content-Suchen an und ist damit kommerzieller als ein privates Auto-Fotoshooting.',
+    heroEmphasis: 'Content.',
+    heroTitle: 'Automotive',
+    intent: 'Suchende erwarten eine visuelle Sprache fuer Marke, Kampagne, Social Media oder redaktionelle Strecke.',
+    output: 'Automotive Fotografie fuer Marken, Haendler, Content-Serien und redaktionelle Nutzung.',
+    planning: 'Briefing, Kanaluebersicht, Formate und Wiedererkennbarkeit werden vor der Produktion geklaert.',
+    related: 'Die Seite grenzt kommerzielle Automotive-Arbeit von Auto-Fotoshooting und reinen Verkaufsbildern ab.',
+    sectionEmphasis: 'Marke.',
+    sectionHeadline: 'Bildsprache fuer',
+  }),
+  'autofotografie': simpleKeywordCopy('Autofotografie', {
+    cards: ['Breiter Einstieg', 'Privat und Business', 'Saubere Motive', 'Weiterleitung'],
+    feature: 'Autofotografie ist der kuerzere, allgemeinere Begriff und braucht deshalb eine klare Fuehrung in die passenden Unterseiten.',
+    heroEmphasis: 'klar.',
+    heroTitle: 'Autofotografie',
+    intent: 'Der Begriff ist breit: private Autos, Verkauf, Marke, Social und Fahrzeugliebe koennen gemeint sein.',
+    output: 'Autofotografie als Ueberblick mit schneller Orientierung zu Shooting, Verkauf und Automotive-Serien.',
+    planning: 'Die Seite fragt frueh nach Zweck, Fahrzeugart und Ausgabe, damit keine Kannibalisierung mit Spezialseiten entsteht.',
+    related: 'Von hier geht es gezielt zu Automobilfotografie, Auto-Fotoshooting, Fahrzeugfotografie und Autohaus-Fotografie.',
+    sectionEmphasis: 'Zweck.',
+    sectionHeadline: 'Auto, Bild,',
+  }),
+  'autohaus-fotografie': simpleKeywordCopy('Autohaus Fotografie', {
+    cards: ['Bestand', 'Showroom', 'Portale', 'Prozess'],
+    feature: 'Autohaus Fotografie braucht Wiederholbarkeit: gleiche Bildlogik, schnelle Ablaeufe und klare Motive fuer Web, Portale und Verkauf.',
+    heroEmphasis: 'Bestand.',
+    heroTitle: 'Autohaus',
+    intent: 'Haendler suchen nicht nur schoene Autos, sondern konsistente Bildsaetze fuer viele Fahrzeuge.',
+    output: 'Autohaus Fotografie fuer Showroom, Bestand, Fahrzeugportale und Verkaufsseiten.',
+    planning: 'Fahrzeugliste, Standort, Stellflaeche, Licht und Reihenfolge werden als Ablauf vorbereitet.',
+    related: 'Die Seite trennt Haendlerbedarf klar von privaten Shootings und fuehrt zu Autoverkauf-Fotos.',
+    sectionEmphasis: 'Verkauf.',
+    sectionHeadline: 'Bestand mit',
+  }),
+  'autoverkauf-fotos': simpleKeywordCopy('Autoverkauf Fotos', {
+    cards: ['Inserat', 'Zustand', 'Ausstattung', 'Vertrauen'],
+    feature: 'Verkaufsbilder muessen Zustand, Ausstattung und Wertigkeit nachvollziehbar zeigen, ohne das Fahrzeug falsch zu ueberinszenieren.',
+    heroEmphasis: 'verkaufen.',
+    heroTitle: 'Autoverkauf Fotos',
+    intent: 'Die Suchintention ist transaktional: bessere Bilder sollen Vertrauen schaffen und den Verkauf unterstuetzen.',
+    output: 'Autoverkauf Fotos fuer Inserate, Auktionen, Portale und private Fahrzeugverkaeufe.',
+    planning: 'Vorab werden Bildliste, Maengel, Details, Innenraum und Ausstattungsmerkmale festgelegt.',
+    related: 'Autoverkauf-Fotos werden von Autohaus-Fotografie und Auto-Fotoshooting getrennt, damit der Verkaufsintent klar bleibt.',
+    sectionEmphasis: 'Vertrauen.',
+    sectionHeadline: 'Bilder fuer',
+  }),
+  fahrzeugfotografie: simpleKeywordCopy('Fahrzeugfotografie', {
+    cards: ['Auto', 'Motorrad', 'Nutzungsziel', 'Cluster'],
+    feature: 'Fahrzeugfotografie ist der neutrale Sammelbegriff und braucht eine saubere Sortierung nach Auto, Sportwagen, Oldtimer und Motorrad.',
+    heroEmphasis: 'sortiert.',
+    heroTitle: 'Fahrzeugfotografie',
+    intent: 'Suchende koennen Autos, Bikes, Haendlerbestand, Verkauf oder redaktionelle Serien meinen.',
+    output: 'Fahrzeugfotografie als Clusterseite fuer Auto, Sportwagen, Oldtimer, Motorrad und Verkauf.',
+    planning: 'Die Seite fuehrt frueh ueber Fahrzeugart, Zweck und Bildausgabe zur passenden Unterseite.',
+    related: 'Sie verhindert Kannibalisierung, indem sie nicht jedes Angebot ersetzt, sondern bewusst verteilt.',
+    sectionEmphasis: 'Kategorie.',
+    sectionHeadline: 'Fahrzeug nach',
+  }),
+  'bilder-mit-auto': simpleKeywordCopy('Bilder mit Auto', {
+    cards: ['Mensch und Auto', 'Geschenk', 'Social', 'Portraitnaehe'],
+    feature: 'Diese Seite mischt Fahrzeug- und Portraitlogik und erklaert, wann Auto, Person und Location zusammenarbeiten.',
+    heroEmphasis: 'inszenieren.',
+    heroTitle: 'Bilder mit Auto',
+    intent: 'Suchende wollen oft nicht nur das Auto, sondern sich selbst, ein Paar oder eine Geschichte mit dem Fahrzeug zeigen.',
+    output: 'Bilder mit Auto fuer Besitzer, Geschenkideen, Social Content und persoenliche Serien.',
+    planning: 'Pose, Abstand, Kleidung, Ort und Fahrzeugwirkung werden so geplant, dass das Auto nicht wie Requisite wirkt.',
+    related: 'Die Seite verbindet Automobil und Portrait, bleibt aber im Automobil-Cluster.',
+    sectionEmphasis: 'Person.',
+    sectionHeadline: 'Auto plus',
+  }),
+  'fotoshooting-mit-auto': simpleKeywordCopy('Fotoshooting mit Auto', {
+    cards: ['Erlebnis', 'Auto und Mensch', 'Location', 'Serie'],
+    feature: 'Das Keyword ist naeher am Shooting-Erlebnis als an klassischer Produktfotografie.',
+    heroEmphasis: 'erleben.',
+    heroTitle: 'Fotoshooting mit Auto',
+    intent: 'Hier geht es um einen Termin mit Fahrzeug, Stimmung, Person und nutzbaren Motiven.',
+    output: 'Fotoshooting mit Auto fuer Lieblingsfahrzeuge, Geschenk, Social Media und private Erinnerungen.',
+    planning: 'Fahrzeug, Personen, Stimmung und Bildformate werden gemeinsam geplant.',
+    related: 'Die Seite fuehrt weiter zu Auto-Fotoshooting, Bilder mit Auto, Portrait und Gutschein.',
+    sectionEmphasis: 'Moment.',
+    sectionHeadline: 'Shooting mit',
+  }),
+  'motorsport-fotografie': simpleKeywordCopy('Motorsport Fotografie', {
+    cards: ['Trackday', 'Bewegung', 'Team', 'Eventcontent'],
+    feature: 'Motorsport braucht Dynamik, Sicherheit, Standortplanung und ruhige Details neben Actionbildern.',
+    heroEmphasis: 'Track.',
+    heroTitle: 'Motorsport',
+    intent: 'Die Seite bedient Event-, Trackday-, Club- und Team-Suchen mit bewegten Fahrzeugen.',
+    output: 'Motorsport Fotografie fuer Trackdays, Clubs, Teams, Sponsoren und private Fahrer.',
+    planning: 'Strecke, Zonen, Licht, Bewegungsrichtung, Fahrerlager und Nutzungsrechte werden vorab geklaert.',
+    related: 'Motorsport bleibt eigenstaendig und verlinkt zu Sportwagen, Performance Cars und Automobil.',
+    sectionEmphasis: 'Bewegung.',
+    sectionHeadline: 'Track und',
+  }),
+  'motorsport-sportwagen-fotografie': simpleKeywordCopy('Motorsport- und Sportwagen-Fotografie', {
+    cards: ['Performance', 'Standbild', 'Action', 'Sammler'],
+    feature: 'Diese Brueckenseite kombiniert ruhige Sportwagenbilder mit Motorsport- und Trackday-Dynamik.',
+    heroEmphasis: 'Performance.',
+    heroTitle: 'Motorsport und Sportwagen',
+    intent: 'Suchende wollen Performance zeigen: im Stand, in Bewegung oder als komplette Strecke.',
+    output: 'Motorsport- und Sportwagen-Fotografie fuer Performance Cars, Clubs, Sammler und Marken.',
+    planning: 'Standort, Actionfenster, Detailmotive und Nutzungsformate werden zusammen gedacht.',
+    related: 'Die Seite verbindet Motorsport mit Sportwagen, ohne beide Hauptseiten zu ersetzen.',
+    sectionEmphasis: 'Standbild.',
+    sectionHeadline: 'Bewegung plus',
+  }),
+  'sportwagen-fotografie': simpleKeywordCopy('Sportwagenfotografie', {
+    cards: ['Performance Car', 'Material', 'Druck', 'Sammlung'],
+    feature: 'Sportwagen werden ueber Form, Innenraum, Details und Druckqualitaet als hochwertige Serie gezeigt.',
+    heroEmphasis: 'Fotografie.',
+    heroTitle: 'Sportwagen',
+    intent: 'Der Fokus liegt auf Performance, Design, Wertigkeit und Nutzbarkeit der Bildserie.',
+    output: 'Sportwagenfotografie fuer Sammler, Haendler, Marken, Verkauf und Fine-Art-Druck.',
+    planning: 'Reflexe, Strecke, Standbild, Cockpit und Detailmotive werden mit klarer Dramaturgie geplant.',
+    related: 'Die Hauptseite fuehrt zu Motorsport, Performance Car, Exotic Car und Supersportwagen.',
+    sectionEmphasis: 'Druckqualitaet.',
+    sectionHeadline: 'Form, Material,',
+  }),
+  'sportwagen-shooting': simpleKeywordCopy('Sportwagen Shooting', {
+    cards: ['Privat', 'Treffpunkt', 'Cinematic', 'Abgrenzung'],
+    feature: 'Sportwagen Shooting ist persoenlicher als reine Sportwagenfotografie und braucht Anlass, Ort und Erlebnislogik.',
+    heroEmphasis: 'buchen.',
+    heroTitle: 'Sportwagen Shooting',
+    intent: 'Suchende wollen einen konkreten Termin fuer ihr Fahrzeug, haeufig privat, als Geschenk oder fuer Social.',
+    output: 'Sportwagen Shooting in Duesseldorf und NRW mit Exterieur, Interieur, Details und starken Hero-Motiven.',
+    planning: 'Treffpunkt, Lichtfenster, Fahrbarkeit und Bildformate werden vorab festgelegt.',
+    related: 'Die Seite grenzt sich von Motorsport und Haendler-Fotografie ab.',
+    sectionEmphasis: 'Termin.',
+    sectionHeadline: 'Sportwagen als',
+  }),
+  'sportwagen-fotoshooting': simpleKeywordCopy('Sportwagen Fotoshooting', {
+    cards: ['Erlebnis', 'Bildserie', 'Details', 'Social'],
+    feature: 'Das Keyword sucht nach Shooting-Erlebnis und Ergebnis zugleich: hochwertige Bilder vom eigenen Sportwagen.',
+    heroEmphasis: 'erleben.',
+    heroTitle: 'Sportwagen Fotoshooting',
+    intent: 'Der Suchende will nicht nur Informationen, sondern einen planbaren Foto-Termin.',
+    output: 'Sportwagen Fotoshooting fuer Besitzer, Geschenk, Social Media und hochwertige Erinnerungen.',
+    planning: 'Auto, Person, Ort und Stimmung werden so kombiniert, dass die Serie nicht beliebig wirkt.',
+    related: 'Die Seite verbindet Sportwagenfotografie mit Auto-Fotoshooting und Gutschein.',
+    sectionEmphasis: 'Serie.',
+    sectionHeadline: 'Fotoshooting mit',
+  }),
+  'performance-car-fotografie': simpleKeywordCopy('Performance Car Fotografie', {
+    cards: ['Leistung', 'Aerodynamik', 'Tracknaehe', 'Content'],
+    feature: 'Performance Cars brauchen eine Bildsprache, die technische Details, Dynamik und Wertigkeit zusammenhaelt.',
+    heroEmphasis: 'zeigen.',
+    heroTitle: 'Performance Car',
+    intent: 'Der Fokus liegt auf sportlichen Fahrzeugen, Umbauten, Track-nahem Look und leistungsbezogenem Content.',
+    output: 'Performance Car Fotografie fuer Besitzer, Tuner, Clubs, Marken und Social Content.',
+    planning: 'Standbild, Detail, Bewegung, Sound-Anmutung und Formatbedarf werden im Ablauf kombiniert.',
+    related: 'Die Seite grenzt Performance Cars von Exotic Cars, Supersportwagen und Motorsport ab.',
+    sectionEmphasis: 'Leistung.',
+    sectionHeadline: 'Design trifft',
+  }),
+  'exotic-car-fotografie': simpleKeywordCopy('Exotic Car Fotografie', {
+    cards: ['Seltenheit', 'Wertigkeit', 'Sammler', 'Diskretion'],
+    feature: 'Exotic Cars brauchen ruhige, hochwertige Bilder mit Blick auf Seltenheit, Zustand und Praesentation.',
+    heroEmphasis: 'selten.',
+    heroTitle: 'Exotic Car',
+    intent: 'Suchende meinen oft besondere, seltene oder sehr hochwertige Fahrzeuge mit Sammlerwert.',
+    output: 'Exotic Car Fotografie fuer Sammler, Verkauf, private Archive und hochwertige Praesentation.',
+    planning: 'Location, Diskretion, Transport, Licht und Detailtiefe werden sensibel geplant.',
+    related: 'Die Seite bleibt im Sportwagen-Cluster und verweist zu Supersportwagen und Performance Car.',
+    sectionEmphasis: 'Seltenheit.',
+    sectionHeadline: 'Seltenes mit',
+  }),
+  'supersportwagen-fotografie': simpleKeywordCopy('Supersportwagen Fotografie', {
+    cards: ['High-End', 'Details', 'Launch-Look', 'Sammlung'],
+    feature: 'Supersportwagen brauchen maximale Kontrolle ueber Reflexe, Linien, Innenraum und Hero-Frames.',
+    heroEmphasis: 'High-End.',
+    heroTitle: 'Supersportwagen',
+    intent: 'Die Suchintention ist enger und hochwertiger als normale Sportwagenfotografie.',
+    output: 'Supersportwagen Fotografie fuer Besitzer, Sammler, Haendler, Marken und Editorials.',
+    planning: 'Sicherheit, Location, Licht, Formate und Nutzungsrechte werden vorab sauber abgestimmt.',
+    related: 'Die Seite fuehrt zu Sportwagen, Exotic Car und Performance Car, ohne diese Begriffe zu vermischen.',
+    sectionEmphasis: 'Kontrolle.',
+    sectionHeadline: 'High-End mit',
+  }),
+  'oldtimer-fotografie': simpleKeywordCopy('Oldtimer-Fotografie', {
+    cards: ['Patina', 'Innenraum', 'Sammlung', 'Auktion'],
+    feature: 'Oldtimer brauchen ruhige Dokumentation statt Effektpose: Zustand, Herkunft und Material muessen lesbar bleiben.',
+    heroEmphasis: 'Fotografie.',
+    heroTitle: 'Oldtimer',
+    intent: 'Die Seite konzentriert sich auf Fahrzeuge mit Geschichte, Patina, Material und Sammlerwert.',
+    output: 'Oldtimer-Fotografie fuer Sammlung, Verkauf, Auktion, Ausstellung und private Archive.',
+    planning: 'Baujahr, Zustand, Dokumente, Detailbedarf und Ausgabeformat bestimmen die Bildliste.',
+    related: 'Die Hauptseite fuehrt zu Classic Car, Youngtimer, Sammlerfahrzeug und Oldtimer-Verkaufsfotos.',
+    sectionEmphasis: 'Herkunft.',
+    sectionHeadline: 'Patina und',
+  }),
+  'oldtimer-shooting': simpleKeywordCopy('Oldtimer Shooting', {
+    cards: ['Liebhaber', 'Geschichte', 'Ort', 'Serie'],
+    feature: 'Das Shooting stellt den Oldtimer als persoenliches Fahrzeug und nicht nur als Verkaufsobjekt in den Mittelpunkt.',
+    heroEmphasis: 'planen.',
+    heroTitle: 'Oldtimer Shooting',
+    intent: 'Suchende wollen einen Termin fuer ein besonderes Fahrzeug mit emotionalem oder historischem Wert.',
+    output: 'Oldtimer Shooting fuer Besitzer, Geschenkideen, Sammlung und hochwertige Erinnerungen.',
+    planning: 'Fahrzeuggeschichte, Ort, Licht und gewuenschte Bildwirkung werden vorab abgestimmt.',
+    related: 'Die Seite grenzt sich von Verkaufsfotos und Auktionsdokumentation ab.',
+    sectionEmphasis: 'Geschichte.',
+    sectionHeadline: 'Shooting mit',
+  }),
+  'oldtimer-verkaufsfotos': simpleKeywordCopy('Oldtimer Verkaufsfotos', {
+    cards: ['Zustand', 'Details', 'Dokumente', 'Auktion'],
+    feature: 'Verkaufsfotos fuer Oldtimer muessen Vertrauen schaffen: Patina zeigen, Maengel nicht verstecken und Wertmerkmale sauber dokumentieren.',
+    heroEmphasis: 'verkaufen.',
+    heroTitle: 'Oldtimer Verkaufsfotos',
+    intent: 'Die Suchintention ist klar kommerziell: bessere Bilder fuer Inserat, Auktion oder Sammler-Verkauf.',
+    output: 'Oldtimer Verkaufsfotos fuer Inserate, Auktionen, Sammlerfahrzeuge und Versicherungsdokumentation.',
+    planning: 'Bildliste, Detailtiefe, Innenraum, Motorraum, Dokumente und Provenienz werden vorab sortiert.',
+    related: 'Die Seite trennt Verkauf klar von Oldtimer Shooting und Classic Car Fotografie.',
+    sectionEmphasis: 'Vertrauen.',
+    sectionHeadline: 'Verkauf mit',
+  }),
+  'classic-car-fotografie': simpleKeywordCopy('Classic Car Fotografie', {
+    cards: ['Classic Look', 'Material', 'Editorial', 'Sammlung'],
+    feature: 'Classic Car Fotografie spricht internationale und stilistische Suchintentionen an, bleibt aber fachlich bei Oldtimer und Sammlerfahrzeugen.',
+    heroEmphasis: 'classic.',
+    heroTitle: 'Classic Car',
+    intent: 'Der Begriff ist stilistisch und internationaler als Oldtimer-Fotografie.',
+    output: 'Classic Car Fotografie fuer Sammler, Editorials, Verkauf, Auktion und hochwertige Serien.',
+    planning: 'Designlinie, Baujahr, Material und Bildstil werden bewusst ruhiger gefuehrt.',
+    related: 'Die Seite verlinkt zu Oldtimer, Youngtimer und Sammlerfahrzeug, statt diese Intents zu ueberdecken.',
+    sectionEmphasis: 'Stil.',
+    sectionHeadline: 'Klassik mit',
+  }),
+  'youngtimer-fotografie': simpleKeywordCopy('Youngtimer Fotografie', {
+    cards: ['90er und 00er', 'Zustand', 'Szene', 'Verkauf'],
+    feature: 'Youngtimer brauchen weniger Museumspathos und mehr Blick auf Zustand, Originalitaet, Umbauten und Szene.',
+    heroEmphasis: 'neu klassisch.',
+    heroTitle: 'Youngtimer',
+    intent: 'Suchende meinen juengere Klassiker, Liebhaberfahrzeuge und Szeneautos.',
+    output: 'Youngtimer Fotografie fuer Besitzer, Verkauf, Sammlung, Szene und Social Content.',
+    planning: 'Baujahr, Originalzustand, Umbauten, Details und Nutzung der Bilder werden separat bewertet.',
+    related: 'Die Seite trennt Youngtimer klar von Oldtimer und Classic Car.',
+    sectionEmphasis: 'Szene.',
+    sectionHeadline: 'Junge Klassiker',
+  }),
+  'sammlerfahrzeug-fotografie': simpleKeywordCopy('Sammlerfahrzeug Fotografie', {
+    cards: ['Provenienz', 'Archiv', 'Edition', 'Wert'],
+    feature: 'Sammlerfahrzeuge brauchen eine dokumentierende, wertige Bildsprache fuer Archiv, Versicherung, Verkauf oder Ausstellung.',
+    heroEmphasis: 'archivieren.',
+    heroTitle: 'Sammlerfahrzeug',
+    intent: 'Der Fokus liegt auf Besitz, Wert, Herkunft und langfristiger Dokumentation.',
+    output: 'Sammlerfahrzeug Fotografie fuer private Sammlungen, Archive, Versicherung, Verkauf und Kataloge.',
+    planning: 'Fahrzeugdaten, Historie, Zustand, Detailmotive und Ausgabeformate werden strukturiert aufgenommen.',
+    related: 'Die Seite verbindet Oldtimer, Classic Car, Youngtimer und Verkaufsfotos mit Sammlungslogik.',
+    sectionEmphasis: 'Wert.',
+    sectionHeadline: 'Sammlung mit',
+  }),
+  'motorrad-fotografie': simpleKeywordCopy('Motorradfotografie', {
+    cards: ['Silhouette', 'Mechanik', 'Fahrerbezug', 'Social'],
+    feature: 'Motorradfotografie verbindet Maschine, Haltung, Detail und bei Bedarf Fahrerportrait.',
+    heroEmphasis: 'Fotografie.',
+    heroTitle: 'Motorrad',
+    intent: 'Die Hauptseite sortiert Bike-Shootings, Custom Bikes, Verkaufsbilder und Biker Portraits.',
+    output: 'Motorradfotografie fuer private Maschinen, Custom Bikes, Haendler, Werkstaetten und Social Content.',
+    planning: 'Bike, Standort, Fahrerbezug, Licht und Hochformatbedarf werden vorab geplant.',
+    related: 'Die Hauptseite verteilt weiter zu Motorrad Shooting, Bike Fotografie, Custom Bike und Verkaufsfotos.',
+    sectionEmphasis: 'Haltung.',
+    sectionHeadline: 'Maschine mit',
+  }),
+  'motorrad-shooting': simpleKeywordCopy('Motorrad Shooting', {
+    cards: ['Besitzer', 'Location', 'Bike und Fahrer', 'Erlebnis'],
+    feature: 'Motorrad Shooting ist naeher am Erlebnis und an persoenlichen Bildern als an reiner Fahrzeugdokumentation.',
+    heroEmphasis: 'buchen.',
+    heroTitle: 'Motorrad Shooting',
+    intent: 'Suchende wollen einen Termin fuer Bike, Besitzer, Treffpunkt und Bildserie.',
+    output: 'Motorrad Shooting fuer Besitzer, Geschenk, Social Media, Werkstatt und private Erinnerung.',
+    planning: 'Maschine, Kleidung, Helm, Ort, Tageszeit und Bildtypen werden abgestimmt.',
+    related: 'Die Seite trennt private Shooting-Anfragen von Verkaufsfotos und Custom-Bike-Dokumentation.',
+    sectionEmphasis: 'Besitzer.',
+    sectionHeadline: 'Bike plus',
+  }),
+  'motorrad-verkaufsfotos': simpleKeywordCopy('Motorrad Verkaufsfotos', {
+    cards: ['Inserat', 'Zustand', 'Umbauten', 'Details'],
+    feature: 'Verkaufsfotos fuer Motorraeder muessen Zustand, Umbauten, Pflege und Details klar zeigen.',
+    heroEmphasis: 'verkaufen.',
+    heroTitle: 'Motorrad Verkaufsfotos',
+    intent: 'Die Suche ist verkaufsnah und braucht vertrauensbildende Motive statt Lifestyle.',
+    output: 'Motorrad Verkaufsfotos fuer Inserate, Portale, Haendler und private Verkaeufe.',
+    planning: 'Tank, Motor, Reifen, Cockpit, Umbauten, Gebrauchsspuren und Gesamtansichten werden vorab als Bildliste gedacht.',
+    related: 'Die Seite grenzt sich von Motorrad Shooting und Biker Portrait ab.',
+    sectionEmphasis: 'Zustand.',
+    sectionHeadline: 'Verkauf mit',
+  }),
+  'bike-fotografie': simpleKeywordCopy('Bike Fotografie', {
+    cards: ['Breiter Begriff', 'Motorrad', 'Szene', 'Weiterfuehrung'],
+    feature: 'Bike Fotografie ist breiter und umgangssprachlicher als Motorradfotografie und braucht klare Sortierung.',
+    heroEmphasis: 'sortiert.',
+    heroTitle: 'Bike Fotografie',
+    intent: 'Suchende koennen Motorrad, Custom Bike, Fahrerbild oder Social Content meinen.',
+    output: 'Bike Fotografie als Einstieg fuer Motorrad, Custom Bike, Biker Portrait und Verkaufsbilder.',
+    planning: 'Der Text fragt frueh nach Bike-Art, Person, Nutzung und Ort.',
+    related: 'Die Seite fuehrt in die passenden Motorrad-Unterseiten statt alle Intents zu vermischen.',
+    sectionEmphasis: 'Intent.',
+    sectionHeadline: 'Bike nach',
+  }),
+  'custom-bike-fotografie': simpleKeywordCopy('Custom Bike Fotografie', {
+    cards: ['Umbau', 'Handwerk', 'Werkstatt', 'Detail'],
+    feature: 'Custom Bikes brauchen Detailnaehe: Material, Teile, Umbauideen und handwerkliche Entscheidungen.',
+    heroEmphasis: 'Umbau.',
+    heroTitle: 'Custom Bike',
+    intent: 'Die Seite richtet sich an Besitzer, Werkstaetten und Builder mit individuellen Maschinen.',
+    output: 'Custom Bike Fotografie fuer Umbauten, Werkstaetten, Builder, Magazine und Social Content.',
+    planning: 'Umbaugeschichte, Teile, Materialien, Werkstattumfeld und Detailmotive werden bewusst eingeplant.',
+    related: 'Die Seite trennt individuelle Umbauten von allgemeinen Motorrad-Shootings und Verkaufsfotos.',
+    sectionEmphasis: 'Handwerk.',
+    sectionHeadline: 'Umbau und',
+  }),
+  'biker-portrait': simpleKeywordCopy('Biker Portrait', {
+    cards: ['Fahrer', 'Haltung', 'Bike', 'Portrait'],
+    feature: 'Biker Portrait verbindet Portraitregie mit Motorrad-Haltung und vermeidet reine Pose.',
+    heroEmphasis: 'Portrait.',
+    heroTitle: 'Biker',
+    intent: 'Suchende wollen Mensch und Maschine zusammen zeigen, nicht nur das Fahrzeug.',
+    output: 'Biker Portrait fuer Fahrer, Clubs, Social Media, Personal Branding und private Serien.',
+    planning: 'Person, Bike, Kleidung, Helm, Location und gewuenschte Wirkung werden gemeinsam abgestimmt.',
+    related: 'Die Seite liegt zwischen Portrait und Motorrad, bleibt aber im Motorrad-Cluster.',
+    sectionEmphasis: 'Mensch.',
+    sectionHeadline: 'Bike plus',
+  }),
+  portraitfotografie: simpleKeywordCopy('Portraitfotografie', {
+    cards: ['Person', 'Licht', 'Wirkung', 'Nutzung'],
+    feature: 'Portraitfotografie braucht Regie, Licht und eine klare Verwendung statt Passbild- oder Massenstudio-Logik.',
+    heroEmphasis: 'Fotografie.',
+    heroTitle: 'Portrait',
+    intent: 'Die Hauptseite sammelt private, berufliche, redaktionelle und persoenliche Portrait-Suchen.',
+    output: 'Portraitfotografie fuer Personal Branding, Business, Editorial, Dating, Paar und private Serien.',
+    planning: 'Person, Wirkung, Ort, Kleidung, Licht und Ausgabe werden vorab besprochen.',
+    related: 'Die Hauptseite verteilt sauber zu Dating, Gutschein, Preisen, Beleuchtung und Schwarz-Weiss.',
+    sectionEmphasis: 'Wirkung.',
+    sectionHeadline: 'Blick und',
+  }),
+  'portrait-fotoshooting': simpleKeywordCopy('Portrait Fotoshooting', {
+    cards: ['Privat', 'Profil', 'Paar', 'Brand'],
+    feature: 'Portrait Fotoshooting ist der breite Buchungsintent und muss Anlass, Person und Wirkung klar fuehren.',
+    heroEmphasis: 'buchen.',
+    heroTitle: 'Portrait Fotoshooting',
+    intent: 'Suchende wollen gute Bilder von sich oder anderen, ohne Passbild- oder Standardstudio-Charakter.',
+    output: 'Portrait Fotoshooting fuer Profile, Dating, Paar, Familie, Personal Branding und private Bilder.',
+    planning: 'Vorbereitung, Ort, Licht, Kleidung und Bildauswahl werden so einfach wie moeglich gehalten.',
+    related: 'Die Seite fuehrt zu Dating, Gutschein, Preise, Paar/Familie und Personal Branding.',
+    sectionEmphasis: 'Richtung.',
+    sectionHeadline: 'Portrait mit',
+  }),
+  'business-portrait': simpleKeywordCopy('Business Portrait', {
+    cards: ['Profil', 'Website', 'Team', 'Vertrauen'],
+    feature: 'Business Portraits muessen professionell wirken, ohne die Person glattzubuegeln.',
+    heroEmphasis: 'professionell.',
+    heroTitle: 'Business Portrait',
+    intent: 'Suchende brauchen Bilder fuer Website, LinkedIn, Presse, Bewerbung oder Teamseite.',
+    output: 'Business Portraits fuer Selbststaendige, Fuehrungskraefte, Teams, Praxen, Kanzleien und Agenturen.',
+    planning: 'Branche, Wirkung, Hintergrund, Kleidung, Licht und Wiederverwendbarkeit werden vorab geklaert.',
+    related: 'Die Seite grenzt Business Portrait von Headshot, Personal Branding und Unternehmensportrait ab.',
+    sectionEmphasis: 'Vertrauen.',
+    sectionHeadline: 'Professionell mit',
+  }),
+  'headshot-fotograf': simpleKeywordCopy('Headshot Fotograf', {
+    cards: ['Kopfportrait', 'Profil', 'Presse', 'Klarheit'],
+    feature: 'Headshots brauchen Reduktion: Blick, Licht, Hauttoene und Haltung muessen sofort funktionieren.',
+    heroEmphasis: 'klar.',
+    heroTitle: 'Headshot Fotograf',
+    intent: 'Die Suchintention ist enger als Portraitfotografie und meist profil- oder pressebezogen.',
+    output: 'Headshot Fotograf fuer LinkedIn, Website, Presse, Bewerbung, Speaker und Teams.',
+    planning: 'Ausschnitt, Hintergrund, Licht, Ausdruck und Dateiformate werden effizient vorbereitet.',
+    related: 'Die Seite verweist zu Business Portrait, Personal Branding und Pressefoto.',
+    sectionEmphasis: 'Profil.',
+    sectionHeadline: 'Kopfportrait mit',
+  }),
+  'personal-branding-fotografie': simpleKeywordCopy('Personal Branding Fotografie', {
+    cards: ['Person', 'Arbeit', 'Content', 'Positionierung'],
+    feature: 'Personal Branding Fotografie zeigt Person, Arbeitsweise, Umfeld und wiederkehrende Kommunikationsmotive.',
+    heroEmphasis: 'sichtbar.',
+    heroTitle: 'Personal Branding',
+    intent: 'Suchende brauchen mehr als ein Profilbild: eine Bildwelt fuer Website, Social und Angebot.',
+    output: 'Personal Branding Fotografie fuer Selbststaendige, Founder, Speaker, Coaches und Experten.',
+    planning: 'Positionierung, Themen, Orte, Kleidung, Requisiten und Formate werden als Content-Plan gedacht.',
+    related: 'Die Seite grenzt sich von Business Portrait und Headshot ab, verlinkt aber bewusst dorthin.',
+    sectionEmphasis: 'Auftritt.',
+    sectionHeadline: 'Person als',
+  }),
+  'dating-fotoshooting': simpleKeywordCopy('Dating Fotoshooting', {
+    cards: ['Natuerlich', 'Profil', 'Alltag', 'Auswahl'],
+    feature: 'Datingbilder muessen sympathisch wirken und duerfen nicht wie eine fremde Kampagne aussehen.',
+    heroEmphasis: 'echt.',
+    heroTitle: 'Dating Fotoshooting',
+    intent: 'Suchende wollen bessere Bilder fuer Dating-Apps, Social Media oder private Profile.',
+    output: 'Dating Fotoshooting fuer natuerliche Profilbilder ohne steife Studio-Posen.',
+    planning: 'Location, Kleidung, Ausdruck, Ganzkoerperbild und Auswahl fuer das Profil werden zusammen geplant.',
+    related: 'Die Seite bleibt im Portrait-Cluster und fuehrt zu Preisen und Portrait Fotoshooting.',
+    sectionEmphasis: 'Profil.',
+    sectionHeadline: 'Sympathisch im',
+  }),
+  'fotoshooting-gutschein': simpleKeywordCopy('Fotoshooting Gutschein', {
+    cards: ['Geschenk', 'Flexibel', 'Einloesen', 'Shootingart'],
+    feature: 'Ein Gutschein muss offen genug sein, damit Portrait, Paar, Familie oder Auto spaeter passend gewaehlt werden koennen.',
+    heroEmphasis: 'schenken.',
+    heroTitle: 'Fotoshooting Gutschein',
+    intent: 'Suchende wollen ein Geschenk, aber oft noch keine finale Shootingart festlegen.',
+    output: 'Fotoshooting Gutschein fuer Portrait, Paar, Familie, Auto-Fotoshooting und besondere Anlaesse.',
+    planning: 'Wert, Anlass, Einloesung, Stil und moegliche Shootingarten werden einfach geklaert.',
+    related: 'Die Seite verbindet Portrait, Paar/Familie, Auto-Fotoshooting und Preise.',
+    sectionEmphasis: 'Spielraum.',
+    sectionHeadline: 'Geschenk mit',
+  }),
+  'fotoshooting-preise': simpleKeywordCopy('Fotoshooting Preise', {
+    cards: ['Umfang', 'Nutzung', 'Ort', 'Angebot'],
+    feature: 'Preis-Suchen brauchen Transparenz ueber Aufwand, Nutzung und Ausgabe statt starre Billigpakete.',
+    heroEmphasis: 'transparent.',
+    heroTitle: 'Fotoshooting Preise',
+    intent: 'Suchende wollen Orientierung, was ein Shooting kostet und warum Preise variieren.',
+    output: 'Fotoshooting Preise fuer Portrait, Auto, Sportwagen, Paar, Familie und individuelle Bildserien.',
+    planning: 'Shootingart, Dauer, Location, Bildanzahl, Retusche und Nutzungsrechte werden getrennt betrachtet.',
+    related: 'Die Seite fuehrt zu den passenden Leistungsseiten und ersetzt keine konkrete Anfrage.',
+    sectionEmphasis: 'Kontext.',
+    sectionHeadline: 'Preis mit',
+  }),
+  'portraitfotografie-beleuchtung': simpleKeywordCopy('Portraitfotografie Beleuchtung', {
+    cards: ['Fensterlicht', 'Mobiles Licht', 'Kontrast', 'Look'],
+    feature: 'Die Ratgeberseite erklaert Licht als Bildsprache und nicht als Technikliste.',
+    heroEmphasis: 'Licht.',
+    heroTitle: 'Portrait Beleuchtung',
+    intent: 'Suchende interessieren sich fuer Lichtwirkung, Setup und professionelle Portraitanmutung.',
+    output: 'Portraitfotografie Beleuchtung fuer natuerliche, kontrollierte und editorial wirkende Portraits.',
+    planning: 'Wirkung, Ort, vorhandenes Licht, mobiles Setup und finaler Look werden vor dem Shooting geklaert.',
+    related: 'Die Seite verbindet Portrait Fotoshooting, Schwarz-Weiss und Personal Branding.',
+    sectionEmphasis: 'Kontur.',
+    sectionHeadline: 'Licht mit',
+  }),
+  'paarshooting-familienshooting': simpleKeywordCopy('Paarshooting und Familienshooting', {
+    cards: ['Paar', 'Kleine Familie', 'Zuhause', 'Outdoor'],
+    feature: 'Paar- und Familienshootings leben von Naehe, Bewegung und kleinen Momenten statt starrer Aufstellung.',
+    heroEmphasis: 'natuerlich.',
+    heroTitle: 'Paar und Familie',
+    intent: 'Suchende wollen persoenliche Bilder von zwei Menschen oder kleinen Familien.',
+    output: 'Paarshooting und Familienshooting fuer ruhige, natuerliche Serien ohne Gruppenfoto-Fokus.',
+    planning: 'Konstellation, Ort, Stimmung, Kinder, Licht und Tempo werden entspannt vorbereitet.',
+    related: 'Die Seite bleibt bewusst im Portrait-Cluster und grenzt grosse Gruppen aus.',
+    sectionEmphasis: 'Naehe.',
+    sectionHeadline: 'Menschen mit',
+  }),
+  'schwarz-weiss-portrait-fotografie': simpleKeywordCopy('Schwarz-Weiss Portrait Fotografie', {
+    cards: ['Kontrast', 'Tonwerte', 'Editorial', 'Print'],
+    feature: 'Schwarz-Weiss ist kein Filter, sondern eine Entscheidung fuer Licht, Blick, Form und Haltung.',
+    heroEmphasis: 'reduziert.',
+    heroTitle: 'Schwarz-Weiss Portrait',
+    intent: 'Suchende wollen zeitlose, markante oder kuenstlerisch reduzierte Portraits.',
+    output: 'Schwarz-Weiss Portrait Fotografie fuer Profil, Editorial, Personal Branding, Print und private Serien.',
+    planning: 'Licht, Kontrast, Kleidung, Hintergrund und Tonwerte werden bereits beim Shooting mitgedacht.',
+    related: 'Die Seite verlinkt zu Beleuchtung, Portrait Fotoshooting und Personal Branding.',
+    sectionEmphasis: 'Tonwert.',
+    sectionHeadline: 'Kontrast und',
+  }),
+  unternehmensportrait: simpleKeywordCopy('Unternehmensportrait', {
+    cards: ['Team', 'Fuehrung', 'Raeume', 'Vertrauen'],
+    feature: 'Unternehmensportraits zeigen Menschen, Arbeit, Raeume und Haltung in einer konsistenten Bildsprache.',
+    heroEmphasis: 'zeigen.',
+    heroTitle: 'Unternehmensportrait',
+    intent: 'Suchende brauchen Bilder fuer Website, PR, Recruiting, Teamseiten oder Unternehmenskommunikation.',
+    output: 'Unternehmensportrait fuer Teams, Fuehrungskraefte, Praxen, Kanzleien, Agenturen und Mittelstand.',
+    planning: 'Personen, Ablauf, Location, Bildliste, Nutzungsrechte und interne Abstimmung werden vorab sortiert.',
+    related: 'Die Seite trennt Unternehmensportrait von Business Portrait und Personal Branding.',
+    sectionEmphasis: 'Organisation.',
+    sectionHeadline: 'Menschen im',
+  }),
+  pressefoto: simpleKeywordCopy('Pressefoto', {
+    cards: ['PR', 'Speaker', 'Redaktion', 'Dateiformate'],
+    feature: 'Pressefotos brauchen klare Aussage, schnelle Nutzbarkeit und saubere Formate fuer Redaktionen.',
+    heroEmphasis: 'bereit.',
+    heroTitle: 'Pressefoto',
+    intent: 'Suchende brauchen Bilder fuer Medien, Vortraege, Interviews, Pressekit oder Website.',
+    output: 'Pressefoto fuer Unternehmer, Kuenstler, Speaker, PR, Redaktion und Personal Branding.',
+    planning: 'Aussage, Hintergrund, Quer-/Hochformat, Freistellung, Dateinamen und Nutzungsrechte werden mitgedacht.',
+    related: 'Die Seite fuehrt zu Headshot, Business Portrait und Personal Branding.',
+    sectionEmphasis: 'Redaktion.',
+    sectionHeadline: 'Bild fuer',
+  }),
+  landschaftsfotografie: simpleKeywordCopy('Landschaftsfotografie', {
+    cards: ['Motiv', 'Raum', 'Material', 'Edition'],
+    feature: 'Landschaftsfotografie wird hier als kuratierte Bild- und Printwelt fuer Raeume verstanden.',
+    heroEmphasis: 'Fotografie.',
+    heroTitle: 'Landschaft',
+    intent: 'Suchende interessieren sich fuer Motive, Ruhe, Raumwirkung, Druck und Editionen.',
+    output: 'Landschaftsfotografie als Fine-Art-Print, Wandbild, Edition und grossformatige Arbeit.',
+    planning: 'Motiv, Format, Material, Raumlicht und Lieferung werden als Printprojekt geplant.',
+    related: 'Die Hauptseite fuehrt zu Landschaftsbilder kaufen, Fine-Art-Prints, Wandbildern und Naturfotografie-Prints.',
+    sectionEmphasis: 'Raum.',
+    sectionHeadline: 'Motiv und',
+  }),
+  'landschaftsfotografie-print': simpleKeywordCopy('Landschaftsfotografie Print', {
+    cards: ['Motivwahl', 'Material', 'Format', 'Lieferung'],
+    feature: 'Der Print-Intent braucht mehr Material-, Format- und Raumberatung als die allgemeine Landschaftsseite.',
+    heroEmphasis: 'Print.',
+    heroTitle: 'Landschaftsfotografie',
+    intent: 'Suchende wollen Landschaftsbilder als fertigen Druck fuer Wand, Praxis, Hotel oder Sammlung.',
+    output: 'Landschaftsfotografie Print fuer Fine-Art-Papier, Aluminium, Acrylglas, Edition und Sonderformat.',
+    planning: 'Motiv, Groesse, Material, Raumwirkung, Helligkeit und Montage werden gemeinsam geplant.',
+    related: 'Die Seite trennt Printberatung von Portfolio- und Landschafts-Hauptseite.',
+    sectionEmphasis: 'Material.',
+    sectionHeadline: 'Print mit',
+  }),
+  landschaftsbilder: simpleKeywordCopy('Landschaftsbilder kaufen', {
+    cards: ['Auswahl', 'Wohnraum', 'Praxis', 'Geschenk'],
+    feature: 'Kauf-Suchende brauchen Orientierung zu Motiv, Format, Material und Wirkung im Raum.',
+    heroEmphasis: 'kaufen.',
+    heroTitle: 'Landschaftsbilder',
+    intent: 'Die Suchintention ist transaktional: ein Bild soll ausgewaehlt und als fertiges Objekt bestellt werden.',
+    output: 'Landschaftsbilder kaufen als Fine-Art-Print, Wandbild, Edition oder grossformatige Arbeit.',
+    planning: 'Raum, Wandgroesse, Farbigkeit, Material und Lieferziel bestimmen die Empfehlung.',
+    related: 'Die Seite fuehrt weiter zu Fine-Art-Prints, Wandbildern und Druck/Sonderanfertigung.',
+    sectionEmphasis: 'Auswahl.',
+    sectionHeadline: 'Bild fuer',
+  }),
+  'fine-art-prints': simpleKeywordCopy('Fine-Art-Prints Landschaft', {
+    cards: ['Papier', 'Tonwert', 'Edition', 'Sammlung'],
+    feature: 'Fine-Art-Prints brauchen mehr Fokus auf Papier, Farbstabilitaet, Tonwert und Haptik.',
+    heroEmphasis: 'Fine-Art.',
+    heroTitle: 'Fine-Art-Prints',
+    intent: 'Suchende wollen hochwertige Drucke, nicht nur digitale Landschaftsbilder.',
+    output: 'Fine-Art-Prints Landschaft fuer Wohnraum, Praxis, Sammlung, Edition und Geschenk.',
+    planning: 'Motiv, Papier, Format, Rand, Signatur, Rahmung und Lieferung werden abgestimmt.',
+    related: 'Die Seite grenzt Fine-Art-Papier von Wandbildern, Acrylglas und Aluminium ab.',
+    sectionEmphasis: 'Papier.',
+    sectionHeadline: 'Print auf',
+  }),
+  'wandbilder-landschaftsfotografie': simpleKeywordCopy('Wandbilder Landschaftsfotografie', {
+    cards: ['Wandgroesse', 'Material', 'Raumwirkung', 'Montage'],
+    feature: 'Wandbilder brauchen Planung aus Sicht des Raums: Groesse, Abstand, Licht und Material entscheiden.',
+    heroEmphasis: 'Wandbild.',
+    heroTitle: 'Wandbilder',
+    intent: 'Suchende wollen Landschaftsfotografie als sichtbares Objekt fuer Wand, Praxis, Hotel oder Buero.',
+    output: 'Wandbilder Landschaftsfotografie auf Fine-Art-Papier, Aluminium, Acrylglas oder als Sonderformat.',
+    planning: 'Raumfoto, Wandmass, Licht, Farbigkeit, Format und Montageart werden beruecksichtigt.',
+    related: 'Die Seite verlinkt zu Landschaftsbilder kaufen, Fine-Art-Prints und Druck/Sonderanfertigung.',
+    sectionEmphasis: 'Raum.',
+    sectionHeadline: 'Wandbild mit',
+  }),
+  'naturfotografie-prints': simpleKeywordCopy('Naturfotografie Prints', {
+    cards: ['Naturmotiv', 'Ruhe', 'Material', 'Edition'],
+    feature: 'Naturfotografie-Prints setzen staerker auf Ruhe, Motivwirkung und Material als auf lokale Shooting-Anfragen.',
+    heroEmphasis: 'Prints.',
+    heroTitle: 'Naturfotografie',
+    intent: 'Suchende wollen Naturmotive als hochwertige Drucke fuer private oder gewerbliche Raeume.',
+    output: 'Naturfotografie Prints fuer Wohnraum, Praxis, Hotel, Buero, Sammlung und Geschenk.',
+    planning: 'Motivstimmung, Format, Material, Raumlicht und Lieferziel werden passend ausgewaehlt.',
+    related: 'Die Seite bleibt im Landschafts- und Print-Cluster und verweist zu Wandbildern und Fine-Art-Prints.',
+    sectionEmphasis: 'Ruhe.',
+    sectionHeadline: 'Natur als',
+  }),
+}
+
+const keywordFocusCopies: Record<string, KeywordFocusCopy> = {
+  'auto-fotografieren-tipps': {
+    heroLead:
+      'Auto fotografieren Tipps: Perspektive, Licht, Reflexe, Location und Details entscheiden, ob ein Fahrzeug wertig wirkt. Diese Seite bleibt im Automobil-Cluster und fuehrt von hilfreichen Grundlagen direkt zu einem professionell geplanten Auto-Shooting.',
+    metaDescription:
+      'Auto fotografieren Tipps zu Licht, Perspektive, Reflexen und Details. Professionelle Automobilfotografie fuer private Fahrzeuge, Verkauf und Marke.',
+    contactLead:
+      'Wenn aus den Tipps ein professioneller Bildsatz werden soll, schreibe kurz, welches Fahrzeug fotografiert werden soll, wo es steht und ob die Bilder fuer Verkauf, privat, Marke oder Social gedacht sind.',
+    pullKicker: 'Praxisleitfaden',
+    pullHeadline: 'Tipps, die zum',
+    pullEmphasis: 'Bildsatz fuehren.',
+    pullLead:
+      'Diese Seite beantwortet die Suchintention zuerst hilfreich: Licht, Standort, Brennweite und Reflexe. Danach wird klar, wann ein professionelles Auto-Shooting den Unterschied zwischen Einzelbild und verwendbarer Serie macht.',
+    sectionHeadline: 'Licht, Linien,',
+    sectionEmphasis: 'Reflexe.',
+    sectionLead:
+      'Gute Autofotos beginnen vor der Kamera: saubere Flaechen, ruhiger Hintergrund, ein planbares Lichtfenster und ein Ablauf, der Exterieur, Interieur und Details getrennt denkt.',
+    featureTitle: 'Erst sehen, dann ausloesen.',
+    featureBody:
+      'Viele Fehler entstehen, weil das Fahrzeug wie ein normales Motiv behandelt wird. Entscheidend sind Karosseriekanten, Spiegelungen im Lack, Radstellung, Hoehe der Kamera und ein klarer Zweck fuer jedes Bild.',
+    galleryHeadline: 'Tipps als Bildbeispiele.',
+    galleryLead:
+      'Die Motive zeigen typische Entscheidungen aus einem Auto-Shooting: ruhige Linien, Materialdetails, Innenraum und Lichtstimmung.',
+    audienceHeadline: 'Fuer wen diese Tipps nuetzlich sind.',
+    audienceLead:
+      'Die Tipps helfen beim Einstieg. Wenn die Bilder verkaufen, ueberzeugen oder als hochwertige Erinnerung bleiben sollen, wird aus dem Wissen ein sauber geplanter Bildsatz.',
+    cards: [
+      { label: 'Privat', title: 'Besitzer', text: 'Lieblingsfahrzeug besser zeigen, ohne dass die Bilder zufaellig oder nach Handy-Snapshot wirken.' },
+      { label: 'Verkauf', title: 'Inserate', text: 'Perspektiven und Details so planen, dass Zustand, Wertigkeit und Ausstattung klar lesbar werden.' },
+      { label: 'Content', title: 'Social Media', text: 'Mehrere Motive aus einer Location holen: Front, Heck, Seite, Cockpit und kleine Details.' },
+      { label: 'Marke', title: 'Professionelle Serie', text: 'Wenn ein Fahrzeug wiederholt eingesetzt wird, braucht die Bildsprache System statt Zufall.' },
+    ],
+    relatedLead:
+      'Auto fotografieren Tipps sind der Einstieg in den Cluster. Von hier fuehrt die interne Struktur zu konkreten Shooting-Seiten, Verkaufsbildern und spezialisierten Fahrzeugbereichen.',
+  },
+  'auto-fotoshooting': {
+    heroLead:
+      'Auto-Fotoshooting fuer private Fahrzeuge, Sportwagen, Oldtimer, Autohaeuser und Marken. Exterieur, Interieur, Details und Cinematic werden als nutzbare Serie geplant - mit derselben Bildsprache wie die Automobil-Hauptseite.',
+    metaDescription:
+      'Auto-Fotoshooting fuer private Fahrzeuge, Sportwagen, Oldtimer, Verkauf und Marke. Automobilfotografie in Duesseldorf, NRW und DACH.',
+    contactLead:
+      'Schreibe kurz, welches Auto im Mittelpunkt steht, ob es um private Erinnerung, Verkauf, Marke oder Social geht und welcher Ort oder Zeitraum moeglich ist.',
+    pullKicker: 'Shootingplanung',
+    pullHeadline: 'Ein Auto-Fotoshooting mit',
+    pullEmphasis: 'klarem Zweck.',
+    pullLead:
+      'Beim Auto-Fotoshooting geht es nicht um eine schoene Einzelaufnahme, sondern um eine Serie, die nachher wirklich nutzbar ist: Hero-Motiv, Details, Innenraum, Social-Crops und bei Bedarf Verkaufsbilder.',
+    sectionHeadline: 'Von der Karosserie bis zur',
+    sectionEmphasis: 'Atmosphaere.',
+    sectionLead:
+      'Das Fahrzeug wird in mehreren Ebenen fotografiert: Totale fuer Proportion, Detail fuer Wertigkeit, Interieur fuer Material und Stimmungsbilder fuer Charakter.',
+    featureTitle: 'Geplant statt gesucht.',
+    featureBody:
+      'Vor dem Termin werden Zustand, Location, Lichtfenster und Nutzung geklaert. So entsteht ein ruhiger Ablauf, bei dem Lack, Linien und Ausstattung nicht dem Zufall ueberlassen werden.',
+    galleryHeadline: 'Bildserie statt Einzelmotiv.',
+    galleryLead:
+      'Die Galerie steht fuer den Mix, den ein Auto-Fotoshooting braucht: starke Hauptmotive, kleine Detailbilder und nutzbare Formate fuer Website, Social und Druck.',
+    audienceHeadline: 'Auto-Fotoshooting fuer konkrete Anlaesse.',
+    audienceLead:
+      'Die Seite richtet sich an Menschen und Marken, die ein Fahrzeug nicht nur dokumentieren, sondern bewusster zeigen moechten.',
+    cards: [
+      { label: 'Privat', title: 'Lieblingsfahrzeug', text: 'Ein sauberer Bildsatz fuer Erinnerung, Geschenk oder Portfolio des eigenen Autos.' },
+      { label: 'Verkauf', title: 'Inserat & Auktion', text: 'Bilder, die Ausstattung, Pflegezustand und Charakter nachvollziehbar zeigen.' },
+      { label: 'Marke', title: 'Content-Serie', text: 'Motive fuer Website, Kampagne, Social Media und wiederkehrende Kommunikation.' },
+      { label: 'Sammlung', title: 'Archiv', text: 'Ruhige Serien fuer Sammlerfahrzeuge, Umbauten oder besondere Fahrzeuggeschichten.' },
+    ],
+    relatedLead:
+      'Auto-Fotoshooting bleibt die breite Einstiegsseite. Wer spezieller sucht, findet im Cluster separate Seiten fuer Bilder mit Auto, Fotoshooting mit Auto, Sportwagen, Oldtimer und Motorrad.',
+  },
+  'bilder-mit-auto': {
+    heroLead:
+      'Bilder mit Auto fuer Besitzer, Sammler, Content, Geschenkideen und hochwertige Verkaufsauftritte. Fahrzeug, Mensch, Location und Licht werden so verbunden, dass das Auto nicht nur dokumentiert, sondern inszeniert wird.',
+    metaDescription:
+      'Bilder mit Auto als professionelles Shooting fuer Besitzer, Verkauf, Social Media und Markenauftritt. Automobilfotografie in NRW.',
+    contactLead:
+      'Schreibe kurz, ob das Auto allein, mit Person oder als komplette Serie fotografiert werden soll und wofuer die Bilder spaeter genutzt werden.',
+    pullKicker: 'Auto und Mensch',
+    pullHeadline: 'Bilder mit Auto,',
+    pullEmphasis: 'nicht nur vom Auto.',
+    pullLead:
+      'Diese Suchintention ist breiter als klassische Automobilfotografie. Hier geht es oft um Besitzer, Paar, Geschenk, Social Content oder eine Geschichte, in der das Fahrzeug Teil der Identitaet ist.',
+    sectionHeadline: 'Fahrzeug, Person,',
+    sectionEmphasis: 'Szene.',
+    sectionLead:
+      'Die Serie kann das Auto allein zeigen oder Mensch und Fahrzeug zusammenbringen. Wichtig ist, dass Pose, Abstand und Location natuerlich bleiben und das Auto nicht wie eine Requisite wirkt.',
+    featureTitle: 'Nahe am Besitzer.',
+    featureBody:
+      'Bei Bildern mit Auto wird die Inszenierung persoenlicher: Sitzposition, Blickrichtung, Kleidung und Umgebung entscheiden, ob das Motiv authentisch oder gestellt wirkt.',
+    galleryHeadline: 'Zwischen Portrait und Fahrzeug.',
+    galleryLead:
+      'Die Bildauswahl kann ruhige Fahrzeugmotive, Detailaufnahmen und Motive mit Person mischen, damit die Seite sowohl Auto- als auch Shooting-Suchende abholt.',
+    audienceHeadline: 'Bilder mit Auto fuer persoenliche Motive.',
+    audienceLead:
+      'Geeignet fuer alle, die das Fahrzeug als Teil einer Geschichte zeigen moechten - vom neuen Sportwagen bis zum Oldtimer mit emotionalem Wert.',
+    cards: [
+      { label: 'Besitzer', title: 'Du mit deinem Auto', text: 'Natuerliche Motive, die Verbindung und Charakter zeigen, ohne uebertrieben zu posen.' },
+      { label: 'Geschenk', title: 'Ueberraschung', text: 'Ein Shooting als Erlebnis fuer Menschen, die ihr Fahrzeug wirklich feiern.' },
+      { label: 'Social', title: 'Content', text: 'Eine abwechslungsreiche Serie fuer Profilbilder, Posts, Reels-Cover und Story-Motive.' },
+      { label: 'Paar', title: 'Gemeinsame Bilder', text: 'Wenn Auto, Menschen und Location zusammen eine kleine Strecke ergeben sollen.' },
+    ],
+    relatedLead:
+      'Bilder mit Auto verbindet Portrait- und Automobil-Suchintention. Deshalb fuehrt die Seite intern zu Auto-Fotoshooting, Portrait und spezialisierten Fahrzeugbereichen.',
+  },
+  'fotoshooting-mit-auto': {
+    heroLead:
+      'Fotoshooting mit Auto: ideal fuer Lieblingsfahrzeuge, Sportwagen, Oldtimer, Geschenkideen und Content-Serien. Die Seite nutzt das Automobil-Layout und setzt den Text gezielt auf die Suchintention rund um Auto und Shooting.',
+    metaDescription:
+      'Fotoshooting mit Auto fuer private Fahrzeuge, Sportwagen, Oldtimer und Content. Professionelle Automobilfotografie in Duesseldorf und NRW.',
+    contactLead:
+      'Schreibe kurz, welches Fahrzeug dabei ist, ob Menschen mit aufs Bild sollen und welche Stimmung die Serie bekommen soll.',
+    pullKicker: 'Shootingidee',
+    pullHeadline: 'Fotoshooting mit Auto als',
+    pullEmphasis: 'Erlebnis.',
+    pullLead:
+      'Viele suchen nicht nach reiner Fahrzeugfotografie, sondern nach einem Shooting mit Auto: persoenlich, planbar und mit Bildern, die sowohl das Fahrzeug als auch den Anlass tragen.',
+    sectionHeadline: 'Mehr als ein',
+    sectionEmphasis: 'Parkplatzfoto.',
+    sectionLead:
+      'Der Ablauf wird auf die gewuenschte Stimmung angepasst: urban, ruhig, sportlich, nostalgisch oder clean. Daraus entstehen Motive fuer Menschen, Fahrzeug und Details.',
+    featureTitle: 'Das Auto gibt den Rahmen.',
+    featureBody:
+      'Ein gutes Fotoshooting mit Auto braucht Balance. Das Fahrzeug soll wirken, ohne alle Aufmerksamkeit zu verschlucken; Menschen sollen natuerlich aussehen, ohne das Auto nur als Hintergrund zu nutzen.',
+    galleryHeadline: 'Shootingstrecke mit Fahrzeug.',
+    galleryLead:
+      'Die Motive zeigen, wie Hauptbild, Details, Innenraum und Atmosphaere als kleine Strecke zusammenspielen koennen.',
+    audienceHeadline: 'Passend fuer Anlass und Nutzung.',
+    audienceLead:
+      'Die Seite holt Geschenk-, Privat- und Content-Suchen ab und fuehrt sie in den professionellen Automobil-Cluster.',
+    cards: [
+      { label: 'Privat', title: 'Lieblingsauto', text: 'Ein persoenlicher Bildsatz fuer Erinnerung, Wandbild oder Social-Profil.' },
+      { label: 'Geschenk', title: 'Gutscheinidee', text: 'Ein Shooting, das beim Einloesen flexibel auf Person und Fahrzeug abgestimmt wird.' },
+      { label: 'Content', title: 'Profil & Feed', text: 'Mehrere Motive in konsistentem Stil fuer Posts, Website oder Portfolio.' },
+      { label: 'Besonderes Auto', title: 'Sportwagen & Oldtimer', text: 'Fahrzeuge mit Charakter bekommen mehr Raum fuer Details, Linien und Geschichte.' },
+    ],
+    relatedLead:
+      'Fotoshooting mit Auto sitzt bewusst unter Automobilfotografie, verbindet aber zu Gutschein-, Portrait- und Sportwagen-Seiten, weil die Suchintention haeufig gemischt ist.',
+  },
+  'motorsport-fotografie': {
+    heroLead:
+      'Motorsport Fotografie fuer Fahrzeuge, Teams, Trackdays, Clubs und Performance-Content. Fokus liegt auf Dynamik, Linien, Details und einem Bildsatz, der Event, Fahrzeug und Marke zusammenhaelt.',
+    metaDescription:
+      'Motorsport Fotografie fuer Trackdays, Clubs, Teams und Performance-Fahrzeuge. Sportwagen- und Automobilfotografie aus NRW.',
+    contactLead:
+      'Schreibe kurz, welches Motorsport- oder Trackday-Format geplant ist, welche Fahrzeuge dabei sind und welche Nutzung die Bilder haben sollen.',
+    statementHeadline: 'Motorsport braucht',
+    statementEmphasis: 'Tempo und Ordnung.',
+    statementBody: [
+      'Motorsport Fotografie muss Geschwindigkeit zeigen, ohne dass die Serie unruhig wird. Deshalb werden Standort, Licht, Bewegungsrichtung und sichere Blickachsen vor dem Einsatz mitgedacht.',
+      'Neben Action zaehlen Details: Fahrer, Boxengasse, Reifen, Bremsen, Material, Team und Atmosphaere. So entsteht Content, der Event und Fahrzeug nicht voneinander trennt.',
+    ],
+    sectionHeadline: 'Track, Team,',
+    sectionEmphasis: 'Fahrzeug.',
+    sectionLead:
+      'Der Bildsatz verbindet dynamische Motive mit ruhigen Detailbildern. Dadurch kann die Serie fuer Club, Website, Social Media, Sponsoren oder private Erinnerung genutzt werden.',
+    galleryHeadline: 'Motorsport in Sequenzen.',
+    galleryLead:
+      'Die Auswahl denkt in Serien: Hero-Frame, Bewegung, Detail, Umfeld und Stimmungsbild statt nur ein einzelner Mitzieher.',
+    audienceHeadline: 'Fuer Trackdays, Clubs und Teams.',
+    audienceLead:
+      'Motorsport Fotografie lohnt sich, wenn ein Event nicht nur dokumentiert, sondern als wiederverwendbarer Content aufgebaut werden soll.',
+    cards: [
+      { label: 'Trackday', title: 'Fahrer & Fahrzeuge', text: 'Dynamische Motive auf Strecke plus ruhige Bilder im Fahrerlager.' },
+      { label: 'Club', title: 'Events', text: 'Eine Strecke fuer Mitglieder, Social Media, Rueckblick und Website.' },
+      { label: 'Team', title: 'Sponsorencontent', text: 'Fahrzeug, Fahrer, Details und Umfeld als konsistente Kommunikationsbasis.' },
+      { label: 'Privat', title: 'Performance Cars', text: 'Sportliche Fahrzeuge mit Bewegung, Standbild und Materialdetails.' },
+    ],
+    relatedLead:
+      'Motorsport Fotografie fuehrt Nutzer in den Sportwagen-Cluster, bleibt aber eigenstaendig: Action, Event und Trackday haben eine andere Suchintention als ein ruhiges Sportwagen-Shooting.',
+  },
+  'motorsport-sportwagen-fotografie': {
+    heroLead:
+      'Motorsport- und Sportwagen-Fotografie fuer Performance Cars, Trackdays, Clubs, Sammler und Marken. Standbilder, Details und dynamische Motive werden als zusammenhaengende Serie geplant.',
+    metaDescription:
+      'Motorsport- und Sportwagen-Fotografie fuer Performance Cars, Trackdays, Clubs und Marken in NRW und DACH.',
+    contactLead:
+      'Schreibe kurz, welcher Sportwagen oder Motorsport-Kontext fotografiert werden soll, ob Standbilder, Details oder Action im Fokus stehen und wofuer die Serie genutzt wird.',
+    statementHeadline: 'Performance sichtbar',
+    statementEmphasis: 'machen.',
+    statementBody: [
+      'Motorsport- und Sportwagen-Fotografie sitzt zwischen zwei Welten: praezise Standbilder fuer Form und Material, dynamische Bilder fuer Tempo, Sound und Charakter.',
+      'Die Serie wird so geplant, dass sie fuer Sammler, Clubs, Trackdays und Marken funktioniert. Nicht jedes Motiv muss schnell sein; wichtig ist, dass jedes Bild die Performance glaubwuerdig erzaehlt.',
+    ],
+    sectionHeadline: 'Standbild und',
+    sectionEmphasis: 'Bewegung.',
+    sectionLead:
+      'Exterieur, Interieur, Details und Action werden als zusammenhaengende Strecke gedacht. So entstehen Motive fuer Website, Social, Druck und redaktionelle Nutzung.',
+    galleryHeadline: 'Performance als Bildsprache.',
+    galleryLead:
+      'Die Galerie bleibt visuell im Sportwagen-Layout, aber die Texte rahmen sie als Mischung aus Motorsport, Fahrzeugportrait und Detailserie.',
+    audienceHeadline: 'Fuer Besitzer, Clubs und Marken.',
+    audienceLead:
+      'Die Seite holt Suchende ab, die Motorsport und Sportwagen nicht trennen wollen: Trackday, Performance Car, Event, Sammlung oder Kampagne.',
+    cards: [
+      { label: 'Sportwagen', title: 'Besitzer & Sammler', text: 'Hochwertige Motive fuer Fahrzeuge, die mehr brauchen als normale Verkaufsbilder.' },
+      { label: 'Motorsport', title: 'Trackday & Club', text: 'Action, Fahrerlager und Details als Serie fuer Event und Community.' },
+      { label: 'Marke', title: 'Performance Content', text: 'Bildsprache fuer Launches, Social Media, Website oder redaktionelle Strecken.' },
+      { label: 'Druck', title: 'Fine Details', text: 'Ruhige Frames, die Linien, Material und Innenraum grossformatig tragen.' },
+    ],
+    relatedLead:
+      'Diese Seite ist die Bruecke zwischen Sportwagen- und Motorsport-Suche. Darum verlinkt sie bewusst weiter zu Automobil, Oldtimer und Motorrad, ohne die Hauptkategorie zu verlassen.',
+  },
+  'portrait-fotoshooting': {
+    heroLead:
+      'Portrait Fotoshooting fuer Menschen, die keine austauschbaren Bilder wollen: ruhig, nahbar, klar gefuehrt und passend zu Nutzung, Person und Wirkung.',
+    metaDescription:
+      'Portrait Fotoshooting fuer Personal Branding, Dating, Paar, Familie, Editorial und professionelle Profile in Duesseldorf und NRW.',
+    contactLead:
+      'Schreibe kurz, fuer wen das Portrait Fotoshooting gedacht ist, welche Wirkung du dir wuenschst und ob es um privat, Profil, Dating, Paar, Familie oder Personal Branding geht.',
+    pullHeadline: 'Portraits mit Richtung,',
+    pullEmphasis: 'nicht mit Pose.',
+    statementBody: [
+      'Ein Portrait Fotoshooting beginnt mit der Frage, wofuer die Bilder gebraucht werden. Profil, Dating, Paar, Familie oder Personal Branding brauchen jeweils andere Distanz, anderes Licht und eine andere Bildauswahl.',
+      'Die Regie bleibt ruhig und konkret. Es geht nicht darum, jemanden zu verkleiden, sondern Blick, Haltung und Umgebung so zu fuehren, dass die Person erkennbar bleibt.',
+    ],
+    sectionHeadline: 'Vom privaten Bild bis zum',
+    sectionEmphasis: 'Auftritt.',
+    sectionLead:
+      'Diese Seite sammelt die breiten Portrait-Suchintentionen und fuehrt sie in klare Shooting-Module, ohne Passbild- oder Studio-Massenware zu bedienen.',
+    cards: [
+      { label: '01 · Profil', title: 'Profilbilder', text: 'Klare Portraits fuer Website, LinkedIn, Dating oder Social Media mit passender Bildwirkung.' },
+      { label: '02 · Privat', title: 'Persoenliche Serie', text: 'Ruhige Bilder fuer Menschen, die ein gutes Portrait von sich moechten, ohne kuenstlich zu wirken.' },
+      { label: '03 · Paar', title: 'Zu zweit', text: 'Nahe Motive mit echter Verbindung, gefuehrt ohne steife Standardsituationen.' },
+      { label: '04 · Familie', title: 'Kleine Familien', text: 'Natuerliche Serien fuer Familien, bei denen Stimmung wichtiger ist als perfekte Aufstellung.' },
+      { label: '05 · Brand', title: 'Personal Branding', text: 'Portraits, die Person, Arbeit und Wirkung in eine konsistente Bildsprache bringen.' },
+    ],
+    processHeadline: 'Ablauf fuer ein Portrait Fotoshooting.',
+    processLead:
+      'Der Ablauf bleibt bewusst uebersichtlich: kurze Einordnung, Stilabstimmung, entspanntes Shooting und eine Auswahl, die zur spaeteren Nutzung passt.',
+    processSteps: [
+      { title: 'Ziel klaeren', text: 'Wir legen fest, ob die Bilder privat, beruflich, fuer Dating, Paar, Familie oder Personal Branding gedacht sind.' },
+      { title: 'Stimmung setzen', text: 'Licht, Ort, Kleidung und Bildsprache werden so abgestimmt, dass du dich nicht verkleidet fuehlst.' },
+      { title: 'Ruhig fotografieren', text: 'Beim Shooting bekommst du klare Regie, genug Zeit und zwischendurch Orientierung am Bild.' },
+      { title: 'Auswahl treffen', text: 'Du bekommst eine kuratierte Vorauswahl und entscheidest, welche Motive final bearbeitet werden.' },
+      { title: 'Fertig liefern', text: 'Die finalen Dateien kommen passend fuer Web, Social, Print oder persoenliche Nutzung.' },
+    ],
+    relatedLead:
+      'Portrait Fotoshooting bleibt die breite Einstiegsseite. Die Unterseiten fuer Dating, Gutschein, Preise, Schwarz-Weiss und Beleuchtung fangen enger gefasste Suchintentionen ab.',
+  },
+  'portraitfotografie-beleuchtung': {
+    heroLead:
+      'Portraitfotografie Beleuchtung: Licht ist kein Effekt, sondern die Grundlage fuer Naehe, Kontur und Haltung. Diese Seite greift Suchende ab, die gezielt nach Licht, Setup und professioneller Portraitwirkung suchen.',
+    metaDescription:
+      'Portraitfotografie Beleuchtung: ruhige, professionelle Portraits mit passendem Licht fuer Profil, Personal Branding, Editorial und private Shootings.',
+    contactLead:
+      'Schreibe kurz, welche Lichtstimmung du suchst - weich, kontrastreich, natuerlich oder editorial - und wofuer die Portraits spaeter genutzt werden.',
+    pullHeadline: 'Licht fuehrt den Blick,',
+    pullEmphasis: 'nicht die Technik.',
+    statementBody: [
+      'Bei Portraitfotografie Beleuchtung geht es nicht um moeglichst viel Equipment. Entscheidend ist, ob das Licht Gesicht, Haltung und Stimmung unterstuetzt.',
+      'Weiches Fensterlicht, gesetztes mobiles Licht oder ein kontrastreicher Look erzeugen voellig unterschiedliche Aussagen. Deshalb wird die Lichtwirkung vor dem Shooting bewusst gewaehlt.',
+    ],
+    sectionHeadline: 'Weich, klar oder',
+    sectionEmphasis: 'kontrastreich.',
+    sectionLead:
+      'Diese Seite erklaert Licht als Teil der Bildsprache und nicht als technische Spielerei. Sie passt fuer Suchende, die bewusst nach Wirkung, Setup und professioneller Portraitanmutung suchen.',
+    cards: [
+      { label: '01 · Weich', title: 'Natuerliches Licht', text: 'Ruhige Portraits mit sanften Uebergaengen, ideal fuer nahbare Profile und private Serien.' },
+      { label: '02 · Klar', title: 'Kontrolliertes Setup', text: 'Mobiles Licht fuer konsistente Ergebnisse, wenn Ort oder Tageszeit nicht alles leisten.' },
+      { label: '03 · Kontur', title: 'Kantenlicht', text: 'Feine Trennung von Person und Hintergrund, ohne den Look kuenstlich wirken zu lassen.' },
+      { label: '04 · Editorial', title: 'Kontrast', text: 'Staerkere Lichtsetzung fuer markante Portraits, Schwarz-Weiss-Serien oder Magazinwirkung.' },
+      { label: '05 · Mix', title: 'Innen und aussen', text: 'Lichtstimmungen koennen innerhalb einer Serie wechseln, solange die Bildsprache zusammenhaelt.' },
+    ],
+    processHeadline: 'Lichtplanung vor dem Portrait.',
+    processLead:
+      'Vor dem Shooting wird nicht nur der Ort festgelegt, sondern auch die Lichtidee: natuerlich, ruhig, grafisch, kontrastreich oder editorial.',
+    processSteps: [
+      { title: 'Wirkung bestimmen', text: 'Wir klaeren, ob die Portraits weich, seriös, markant, ruhig oder redaktionell wirken sollen.' },
+      { title: 'Ort pruefen', text: 'Fenster, Schatten, Wandfarbe und Hintergrund entscheiden, ob vorhandenes Licht reicht.' },
+      { title: 'Setup waehlen', text: 'Bei Bedarf kommt mobiles Licht dazu, damit Augen, Kontur und Hauttöne kontrolliert bleiben.' },
+      { title: 'Varianten fotografieren', text: 'Innerhalb des Termins koennen ruhige und staerkere Lichtstimmungen entstehen.' },
+      { title: 'Look finalisieren', text: 'Die Bearbeitung bleibt zurueckhaltend und staerkt die geplante Lichtwirkung.' },
+    ],
+    relatedLead:
+      'Portraitfotografie Beleuchtung eignet sich als fachlicher Ratgeber innerhalb des Portrait-Clusters und verlinkt zu Portrait Fotoshooting, Schwarz-Weiss und Personal Branding.',
+  },
+  'dating-fotoshooting': {
+    heroLead:
+      'Dating Fotoshooting fuer natuerliche, gute Portraits ohne steife Posen. Ziel sind Bilder, die sympathisch, klar und ehrlich wirken - fuer Datingprofile, Social Media und private Nutzung.',
+    metaDescription:
+      'Dating Fotoshooting fuer natuerliche Portraits in Duesseldorf und NRW. Authentische Bilder fuer Datingprofile, Social Media und private Nutzung.',
+    contactLead:
+      'Schreibe kurz, welche Plattform oder Wirkung wichtig ist und ob du eher natuerliche Outdoor-Bilder, ruhige Portraits oder eine kleine Serie moechtest.',
+    pullHeadline: 'Datingbilder, die',
+    pullEmphasis: 'echt wirken.',
+    statementBody: [
+      'Ein Dating Fotoshooting braucht keine kuenstliche Coolness. Gute Bilder zeigen Sympathie, Offenheit und ein bisschen Kontext, ohne wie eine Kampagne fuer eine fremde Person zu wirken.',
+      'Die Serie wird so geplant, dass mehrere Situationen entstehen: klares Portrait, natuerliches Lachen, ruhige Ganzkoerperaufnahme und ein Bild mit Umgebung.',
+    ],
+    sectionHeadline: 'Sympathisch, klar,',
+    sectionEmphasis: 'unverkrampft.',
+    sectionLead:
+      'Die Seite spricht Menschen an, die bessere Datingbilder moechten, aber keine gestellten Studiofotos. Der Look bleibt natuerlich und alltagstauglich.',
+    cards: [
+      { label: '01 · Profil', title: 'Erstes Bild', text: 'Ein klares Portrait, das freundlich wirkt und nicht ueberinszeniert ist.' },
+      { label: '02 · Alltag', title: 'Natuerlicher Kontext', text: 'Motive mit Umgebung, damit dein Profil mehr zeigt als nur ein Gesicht.' },
+      { label: '03 · Haltung', title: 'Ganzkoerper', text: 'Lockere Bilder mit Koerperhaltung, ohne starre Posen.' },
+      { label: '04 · Auswahl', title: 'Serienlogik', text: 'Mehrere Bilder, die zusammen abwechslungsreich wirken und nicht wie derselbe Moment.' },
+      { label: '05 · Ehrlich', title: 'Keine Maskerade', text: 'Die Bearbeitung bleibt realistisch, damit du auf dem Bild wiedererkannt wirst.' },
+    ],
+    processHeadline: 'Ablauf fuer Datingbilder.',
+    processLead:
+      'Der Termin bleibt leicht und praktisch: kurze Vorbereitung, passende Location, klare Regie und am Ende eine Auswahl fuer dein Profil.',
+    processSteps: [
+      { title: 'Profilziel klaeren', text: 'Wir sprechen kurz ueber Plattform, Bildwirkung und welche Seiten von dir sichtbar werden sollen.' },
+      { title: 'Location waehlen', text: 'Outdoor, Cafe-Umfeld, ruhige Strasse oder schlichter Hintergrund - passend zu dir.' },
+      { title: 'Locker starten', text: 'Wir beginnen mit einfachen Motiven, damit du ins Shooting reinkommst.' },
+      { title: 'Varianten bauen', text: 'Portrait, Lachen, Ganzkoerper und Umfeld werden als kleine Profilserie fotografiert.' },
+      { title: 'Profilauswahl liefern', text: 'Du bekommst bearbeitete Bilder, die fuer App, Social und private Nutzung funktionieren.' },
+    ],
+    relatedLead:
+      'Dating Fotoshooting ist eine eigene Suchintention im Portrait-Cluster. Von hier fuehren interne Links zu Portrait Fotoshooting, Preisen und Gutschein, ohne Passfoto-Themen aufzunehmen.',
+  },
+  'fotoshooting-gutschein': {
+    heroLead:
+      'Fotoshooting Gutschein als hochwertiges Geschenk: fuer Portraits, Paare, Familie oder ein besonderes Fahrzeug. Der Gutschein bleibt einfach einloesbar und wird spaeter in ein konkretes Shooting uebersetzt.',
+    metaDescription:
+      'Fotoshooting Gutschein fuer Portrait, Paar, Familie oder Auto-Fotoshooting in Duesseldorf, Mettmann, Erkrath und NRW.',
+    contactLead:
+      'Schreibe kurz, fuer wen der Gutschein gedacht ist und ob eher Portrait, Paar, Familie oder Auto-Fotoshooting passt. Den genauen Stil koennen wir beim Einloesen gemeinsam festlegen.',
+    pullHeadline: 'Ein Gutschein mit',
+    pullEmphasis: 'echtem Spielraum.',
+    statementBody: [
+      'Ein Fotoshooting Gutschein sollte nicht wie ein starres Paket wirken. Die beschenkte Person soll spaeter entscheiden koennen, ob Portrait, Paar, Familie oder Auto besser passt.',
+      'Darum wird der Gutschein bewusst offen gehalten und erst beim Einloesen in Stil, Ort, Umfang und Bildsprache uebersetzt.',
+    ],
+    sectionHeadline: 'Geschenkidee mit',
+    sectionEmphasis: 'klarer Einloesung.',
+    sectionLead:
+      'Diese Seite holt Geschenk-Suchende ab und fuehrt sie nicht auf eine generische Shop-Seite, sondern in konkrete Shootingarten, die Matthias tatsaechlich anbietet.',
+    cards: [
+      { label: '01 · Portrait', title: 'Einzelperson', text: 'Fuer Menschen, die endlich gute Bilder von sich selbst haben moechten.' },
+      { label: '02 · Paar', title: 'Gemeinsam', text: 'Ein ruhiger Termin fuer Paare, die natuerliche Bilder statt gestellte Motive wollen.' },
+      { label: '03 · Familie', title: 'Kleine Familie', text: 'Als Geschenk fuer Eltern, Geschwister oder besondere Anlaesse.' },
+      { label: '04 · Auto', title: 'Fahrzeugliebe', text: 'Fuer Besitzer von Sportwagen, Oldtimer, Motorrad oder besonderem Alltagsauto.' },
+      { label: '05 · Frei', title: 'Stil spaeter klaeren', text: 'Der konkrete Look wird erst beim Einloesen gemeinsam abgestimmt.' },
+    ],
+    processHeadline: 'So funktioniert der Gutschein.',
+    processLead:
+      'Der Gutschein bleibt unkompliziert: Anfrage, Wert oder Shootingart festlegen, persoenlich uebergeben und spaeter gemeinsam einloesen.',
+    processSteps: [
+      { title: 'Anlass nennen', text: 'Du sagst kurz, fuer wen der Gutschein ist und ob ein bestimmtes Shooting naheliegt.' },
+      { title: 'Rahmen festlegen', text: 'Wir klaeren Wert, Shootingart und ob der Gutschein offen oder konkreter formuliert wird.' },
+      { title: 'Gutschein vorbereiten', text: 'Der Gutschein wird so gehalten, dass er als Geschenk sauber uebergeben werden kann.' },
+      { title: 'Einloesen planen', text: 'Die beschenkte Person meldet sich und wir planen Ort, Stil und Ablauf.' },
+      { title: 'Shooting umsetzen', text: 'Aus dem Geschenk wird ein echter Termin mit final bearbeiteten Bildern.' },
+    ],
+    relatedLead:
+      'Fotoshooting Gutschein verbindet Portrait-, Paar-, Familien- und Automobilseiten. Die interne Verlinkung hilft, den passenden Gutscheinrahmen schnell zu finden.',
+  },
+  'fotoshooting-preise': {
+    heroLead:
+      'Fotoshooting Preise haengen von Umfang, Nutzung, Ort, Vorbereitung und Ausgabe ab. Diese Seite gibt Suchenden einen passenden Einstieg und fuehrt zur konkreten Anfrage statt zu pauschalen Billigpaketen.',
+    metaDescription:
+      'Fotoshooting Preise fuer Portrait, Auto, Sportwagen und individuelle Shootings. Anfrage fuer transparente Pakete in Duesseldorf und NRW.',
+    contactLead:
+      'Schreibe kurz, welche Art Shooting du planst, wie viele Personen oder Fahrzeuge dabei sind und wofuer die Bilder genutzt werden. Dann laesst sich der Preis sauber einordnen.',
+    pullHeadline: 'Preise brauchen',
+    pullEmphasis: 'Kontext.',
+    statementBody: [
+      'Fotoshooting Preise sind selten sinnvoll vergleichbar, wenn nur eine Zahl im Raum steht. Entscheidend sind Motiv, Nutzung, Ort, Dauer, Vorbereitung und Anzahl der finalen Bilder.',
+      'Diese Seite erklaert, warum ein Portraittermin, ein Auto-Fotoshooting und eine Content-Serie unterschiedlich kalkuliert werden, ohne in unpassende Billigpakete abzurutschen.',
+    ],
+    sectionHeadline: 'Was den Umfang',
+    sectionEmphasis: 'veraendert.',
+    sectionLead:
+      'Die Preis-Suchintention wird transparent abgeholt: nicht mit einer langen Paketliste, sondern mit Kriterien, die fuer eine serioese Anfrage wirklich zaehlen.',
+    cards: [
+      { label: '01 · Art', title: 'Shootingtyp', text: 'Portrait, Paar, Familie, Auto oder Sportwagen haben unterschiedliche Vorbereitung und Bildlogik.' },
+      { label: '02 · Ort', title: 'Location', text: 'Anfahrt, Genehmigung, Lichtfenster und Setup beeinflussen den Aufwand.' },
+      { label: '03 · Nutzung', title: 'Privat oder kommerziell', text: 'Bilder fuer Website, Kampagne oder Verkauf werden anders lizenziert als private Erinnerungen.' },
+      { label: '04 · Umfang', title: 'Bildanzahl', text: 'Eine kleine Auswahl braucht weniger Retusche und Abstimmung als eine umfangreiche Serie.' },
+      { label: '05 · Output', title: 'Dateien & Formate', text: 'Web, Social, Print und grosse Drucke haben unterschiedliche Anforderungen.' },
+    ],
+    processHeadline: 'So wird ein Preis sauber.',
+    processLead:
+      'Statt pauschal zu raten, wird der Rahmen in wenigen Punkten geklaert. Danach kann ein Angebot passend zum echten Bedarf entstehen.',
+    processSteps: [
+      { title: 'Shootingart nennen', text: 'Du beschreibst kurz, ob es um Portrait, Paar, Familie, Auto, Sportwagen oder Content geht.' },
+      { title: 'Nutzung klaeren', text: 'Privat, Social, Website, Verkauf oder Kampagne machen einen Unterschied.' },
+      { title: 'Umfang schaetzen', text: 'Wir sprechen ueber Dauer, Location, Personen oder Fahrzeuge und gewuenschte Bildanzahl.' },
+      { title: 'Angebot erhalten', text: 'Du bekommst eine klare Einordnung mit passendem Leistungsrahmen.' },
+      { title: 'Termin planen', text: 'Nach Freigabe werden Ort, Ablauf und Ausgabe sauber festgelegt.' },
+    ],
+    relatedLead:
+      'Fotoshooting Preise ist ein beratender Einstieg. Von hier sollten Nutzer direkt zu den passenden Leistungsseiten wechseln koennen: Portrait, Auto, Gutschein oder Dating.',
+  },
+  'paarshooting-familienshooting': {
+    heroLead:
+      'Paarshooting und Familienshooting fuer echte Naehe statt gestellter Gruppenbilder. Der Fokus liegt auf ruhigen, persoenlichen Serien mit klarer Lichtfuehrung und natuerlicher Regie.',
+    metaDescription:
+      'Paarshooting und Familienshooting in Duesseldorf, Mettmann, Erkrath und NRW. Natuerliche Portraits fuer Paare und Familien.',
+    contactLead:
+      'Schreibe kurz, ob es um Paar, kleine Familie oder einen besonderen Anlass geht, welche Stimmung passen soll und wo das Shooting stattfinden koennte.',
+    pullHeadline: 'Nahe Bilder ohne',
+    pullEmphasis: 'Aufstellung.',
+    statementBody: [
+      'Paarshooting und Familienshooting funktionieren am besten, wenn nicht jede Person in eine perfekte Pose gezwungen wird. Kleine Bewegungen, Blickwechsel und echte Situationen tragen mehr.',
+      'Der Fokus liegt auf Paaren und kleinen Familien, die ruhige, persoenliche Bilder moechten. Grosse Gruppen werden bewusst nicht als Hauptangebot nach vorne gestellt.',
+    ],
+    sectionHeadline: 'Paar, kleine Familie,',
+    sectionEmphasis: 'echte Momente.',
+    sectionLead:
+      'Diese Seite verbindet zwei Suchintentionen, ohne sie zu verwaessern: Paarbilder und kleine Familienshootings mit natuerlicher Regie.',
+    cards: [
+      { label: '01 · Paar', title: 'Zu zweit', text: 'Ruhige Motive, die Verbindung zeigen, ohne kitschig oder gestellt zu wirken.' },
+      { label: '02 · Familie', title: 'Kleine Familien', text: 'Natuerliche Serien mit Kindern oder Eltern, bei denen Bewegung erlaubt bleibt.' },
+      { label: '03 · Anlass', title: 'Jahrestag & Geschenk', text: 'Ein Shooting als gemeinsames Erlebnis oder als persoenliches Geschenk.' },
+      { label: '04 · Zuhause', title: 'Vertraute Orte', text: 'Wenn der Ort Teil der Geschichte ist, kann er bewusst in die Bilder einfließen.' },
+      { label: '05 · Outdoor', title: 'Licht und Raum', text: 'Ruhige Aussenorte schaffen Abstand, Bewegung und eine natuerliche Atmosphaere.' },
+    ],
+    processHeadline: 'Ablauf fuer Paar und Familie.',
+    processLead:
+      'Der Termin soll leicht bleiben: klare Vorbereitung, wenig Druck, flexible Fuehrung und eine Auswahl mit echten Zwischenmomenten.',
+    processSteps: [
+      { title: 'Konstellation klaeren', text: 'Wir sprechen darueber, ob es um Paar, kleine Familie oder einen konkreten Anlass geht.' },
+      { title: 'Ort waehlen', text: 'Zuhause, draussen oder an einem persoenlichen Ort - passend zur Geschichte.' },
+      { title: 'Locker beginnen', text: 'Einfache Bewegungen helfen, damit sich niemand beobachtet oder aufgestellt fuehlt.' },
+      { title: 'Momente sammeln', text: 'Neben klaren Portraits entstehen kleine Szenen, Details und Zwischentoene.' },
+      { title: 'Serie liefern', text: 'Die finalen Bilder werden als zusammenhaengende Erinnerung bearbeitet.' },
+    ],
+    relatedLead:
+      'Paarshooting und Familienshooting bleibt bewusst im Portrait-Cluster und grenzt sich von Gruppen- und Passbildsuchen ab.',
+  },
+  'schwarz-weiss-portrait-fotografie': {
+    heroLead:
+      'Schwarz-Weiss Portrait Fotografie reduziert ein Bild auf Licht, Blick, Kontur und Haltung. Geeignet fuer starke Einzelportraits, Editorials, Personal Branding und private Serien mit ruhiger Wirkung.',
+    metaDescription:
+      'Schwarz-Weiss Portrait Fotografie fuer klare, ruhige Portraits mit Fokus auf Licht, Blick und Haltung in Duesseldorf und NRW.',
+    contactLead:
+      'Schreibe kurz, ob du eine reine Schwarz-Weiss-Serie oder eine Mischung aus Farbe und Schwarz-Weiss moechtest und wofuer die Bilder genutzt werden.',
+    pullHeadline: 'Reduziert auf Licht,',
+    pullEmphasis: 'Blick und Haltung.',
+    statementBody: [
+      'Schwarz-Weiss Portrait Fotografie nimmt Farbe aus dem Bild und macht dadurch andere Dinge lauter: Blick, Form, Haut, Kontur, Schatten und Haltung.',
+      'Der Look eignet sich fuer markante Einzelportraits, Editorials, kuenstlerische Serien und Personal Branding, wenn die Bilder ruhiger und zeitloser wirken sollen.',
+    ],
+    sectionHeadline: 'Kontrast statt',
+    sectionEmphasis: 'Ablenkung.',
+    sectionLead:
+      'Diese Seite bedient eine klare Stil-Suche. Sie erklaert Schwarz-Weiss nicht als Filter, sondern als bewusste Entscheidung fuer Licht, Tonwerte und Bildwirkung.',
+    cards: [
+      { label: '01 · Klar', title: 'Einzelportrait', text: 'Reduzierte Bilder mit Fokus auf Gesicht, Blick und Haltung.' },
+      { label: '02 · Editorial', title: 'Staerkere Serie', text: 'Kontraste, Schatten und Ausschnitt duerfen praesenter sein als in klassischen Profilbildern.' },
+      { label: '03 · Brand', title: 'Zeitloser Auftritt', text: 'Schwarz-Weiss kann Personal Branding ruhiger und weniger trendabhaengig machen.' },
+      { label: '04 · Mix', title: 'Farbe plus Schwarz-Weiss', text: 'Eine Serie kann farbige Hauptmotive und ausgewaehlte Schwarz-Weiss-Finals kombinieren.' },
+      { label: '05 · Print', title: 'Wandbild', text: 'Tonwerte und Kontrast werden so bearbeitet, dass die Bilder auch im Druck tragen.' },
+    ],
+    processHeadline: 'Ablauf fuer Schwarz-Weiss Portraits.',
+    processLead:
+      'Schon vor dem Shooting wird entschieden, ob Schwarz-Weiss die Hauptsprache der Serie ist oder als finale Auswahl dazukommt.',
+    processSteps: [
+      { title: 'Look festlegen', text: 'Wir klaeren, ob die Serie weich, kontrastreich, ruhig oder editorial werden soll.' },
+      { title: 'Licht planen', text: 'Schwarz-Weiss lebt von Form und Schatten; das Licht wird entsprechend gesetzt.' },
+      { title: 'Motive fotografieren', text: 'Blick, Haltung und Ausschnitt werden bewusster gefuehrt als bei sehr farbigen Serien.' },
+      { title: 'Tonwerte bearbeiten', text: 'Die Retusche konzentriert sich auf Kontrast, Haut, Struktur und saubere Graustufen.' },
+      { title: 'Finale Auswahl liefern', text: 'Du bekommst die Bilder passend fuer Profil, Print, Website oder private Nutzung.' },
+    ],
+    relatedLead:
+      'Schwarz-Weiss Portrait Fotografie ist eine Stilseite innerhalb des Portrait-Clusters und verlinkt sinnvoll zu Beleuchtung, Portrait Fotoshooting und Personal Branding.',
+  },
+}
+
+export function keywordFocusCopyForSlug(value?: string | null) {
+  const slug = normalizeLocalSeoSlug(value)
+  const copies = { ...keywordFocusDefaults, ...keywordFocusCopies }
+  const prefix = Object.keys(copies)
+    .sort((a, b) => b.length - a.length)
+    .find((entry) => slug === entry || slug.startsWith(`${entry}-`))
+
+  if (!prefix) return null
+
+  const defaults = keywordFocusDefaults[prefix]
+  const custom = keywordFocusCopies[prefix]
+  if (!defaults) return custom
+  if (!custom) return defaults
+
+  return {
+    ...defaults,
+    ...custom,
+    cards: custom.cards || defaults.cards,
+    processSteps: custom.processSteps || defaults.processSteps,
+    statementBody: custom.statementBody || defaults.statementBody,
+  }
+}
 
 const visual = (
   image: string,
@@ -240,9 +1433,13 @@ export const localSeoFamilyContent: Record<LocalSeoLayoutFamily, LocalSeoFamilyC
       visual('/assets/optimized/assets-photos-motorrad-1920.webp', 'Motorradfotografie', 1707, 2560, { title: 'Motorrad', label: '/motorrad-fotografie.html' }),
     ],
     searchLinks: [
+      { href: '/auto-fotoshooting.html', label: 'Auto-Fotoshooting' },
+      { href: '/bilder-mit-auto.html', label: 'Bilder mit Auto' },
+      { href: '/fotoshooting-mit-auto.html', label: 'Fotoshooting mit Auto' },
       { href: '/automotive-fotografie.html', label: 'Automotive Fotografie' },
       { href: '/autofotografie.html', label: 'Autofotografie' },
       { href: '/fahrzeugfotografie.html', label: 'Fahrzeugfotografie' },
+      { href: '/auto-fotografieren-tipps.html', label: 'Auto fotografieren Tipps' },
       { href: '/autohaus-fotografie.html', label: 'Autohaus Fotografie' },
       { href: '/autoverkauf-fotos-duesseldorf.html', label: 'Autoverkauf Fotos' },
     ],
@@ -288,6 +1485,8 @@ export const localSeoFamilyContent: Record<LocalSeoLayoutFamily, LocalSeoFamilyC
       visual('/assets/portfolio/thumbs/_DSC3879.webp', 'Portfolio', 720, 480, { title: 'Portfolio', label: '/portfolio.html' }),
     ],
     searchLinks: [
+      { href: '/motorsport-sportwagen-fotografie.html', label: 'Motorsport & Sportwagen' },
+      { href: '/motorsport-fotografie.html', label: 'Motorsport Fotografie' },
       { href: '/sportwagen-shooting-duesseldorf.html', label: 'Sportwagen Shooting' },
       { href: '/sportwagen-fotoshooting-duesseldorf.html', label: 'Sportwagen Fotoshooting' },
       { href: '/performance-car-fotografie.html', label: 'Performance Car Fotografie' },
@@ -433,9 +1632,16 @@ export const localSeoFamilyContent: Record<LocalSeoLayoutFamily, LocalSeoFamilyC
       visual('/assets/portraits/_DSC9321-Enhanced-NR.webp', 'Portfolio', 1707, 2560, { title: 'Portfolio', label: '/portfolio.html' }),
     ],
     searchLinks: [
+      { href: '/portrait-fotoshooting.html', label: 'Portrait Fotoshooting' },
+      { href: '/fotoshooting-gutschein.html', label: 'Fotoshooting Gutschein' },
+      { href: '/fotoshooting-preise.html', label: 'Fotoshooting Preise' },
+      { href: '/dating-fotoshooting.html', label: 'Dating Fotoshooting' },
       { href: '/business-portrait-duesseldorf.html', label: 'Business Portrait' },
       { href: '/headshot-fotograf-duesseldorf.html', label: 'Headshot Fotograf' },
       { href: '/personal-branding-fotografie.html', label: 'Personal Branding Fotografie' },
+      { href: '/schwarz-weiss-portrait-fotografie.html', label: 'Schwarz-Weiss Portrait' },
+      { href: '/portraitfotografie-beleuchtung.html', label: 'Portrait Beleuchtung' },
+      { href: '/paarshooting-familienshooting.html', label: 'Paar & Familie' },
       { href: '/unternehmensportrait-duesseldorf.html', label: 'Unternehmensportrait' },
       { href: '/pressefoto-duesseldorf.html', label: 'Pressefoto' },
     ],

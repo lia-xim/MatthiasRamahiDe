@@ -3,6 +3,7 @@ import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import NativeFamilyClusterLinks from './NativeFamilyClusterLinks.astro'
 import PreviewToolbar from '../PreviewToolbar.astro'
 import {
+  keywordFocusCopyForSlug,
   localSeoFamilyContent,
   scopeFromSlug,
   serviceLabelFromSlug,
@@ -41,37 +42,46 @@ const scope = scopeFromSlug(legacyFile)
 const isParentPage = legacyFile === defaultLegacyFile
 const isKeywordPage = scope.generic
 const serviceLabel = serviceLabelFromSlug(legacyFile, familyContent)
+const keywordFocusCopy = keywordFocusCopyForSlug(legacyFile)
+const cmsText = (value: unknown) => (typeof value === 'string' ? value.trim() : '')
+const cmsHeroLine2 = cmsText(doc?.heroLine2)
+const cmsStatementBody = doc?.statement?.body?.map((entry) => cmsText(entry.text)).filter(Boolean) || []
 const localSuffix = !isParentPage && !isKeywordPage ? ` ${scope.label}` : ''
-const heroSecondLine = `Fotografie${localSuffix}.`
+const heroTitle = keywordFocusCopy?.heroTitle || 'Automobil'
+const heroSecondLine = cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || `Fotografie${localSuffix}.`
 const heroLabel = isParentPage ? 'Automobilfotografie' : `Automobilfotografie${localSuffix}`
-const heroLead = isParentPage
+const defaultHeroLead = isParentPage
   ? 'Automobilfotografie: Exterieur, Interieur, Details und Cinematic werden als kuratierte Bildserie geplant - für Marke, Showroom, Verkauf, Kampagne und hochwertige private Fahrzeuge. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.'
   : isKeywordPage
     ? `${serviceLabel}: eigenständiger Einstieg in den Automobil Fotografie-Cluster. Exterieur, Interieur, Details und Cinematic werden als kuratierte Serie geplant - für Marke, Showroom, Verkauf, Kampagne und hochwertige private Fahrzeuge. Die Seite bleibt bewusst im Layout der übergeordneten Kategorie, setzt den Text aber auf diese konkrete Suchintention.`
     : `Automobilfotografie in ${scope.label}: Exterieur, Interieur, Details und Cinematic werden als kuratierte Bildserie geplant - für Marke, Showroom, Verkauf, Kampagne und hochwertige private Fahrzeuge. ${scope.label} wird als lokaler Suchraum mit klarer Planung, passendem Lichtfenster und sauberer Nutzung der Bildserie geführt.`
+const keywordLocalContext = keywordFocusCopy && !isParentPage && !isKeywordPage ? ` Der lokale Fokus fuer ${scope.label} wird ueber Location, Lichtfenster und Ablauf konkretisiert.` : ''
+const heroLead = keywordFocusCopy?.heroLead ? `${keywordFocusCopy.heroLead}${keywordLocalContext}` : defaultHeroLead
 const metaTitle = isParentPage
   ? 'Automobilfotografie | Matthias Ramahi'
   : isKeywordPage
     ? `${serviceLabel} | Matthias Ramahi`
     : `${serviceLabel} ${scope.label} | Matthias Ramahi`
-const metaDescription = isParentPage
+const defaultMetaDescription = isParentPage
   ? 'Automobilfotografie fuer Exterieur, Interieur, Details und Kampagne in Duesseldorf und NRW. Bildserien fuer Verkauf, Marke, Showroom und hochwertige private Fahrzeuge.'
   : isKeywordPage
     ? `${serviceLabel} fuer Fahrzeuge, Marken, Showrooms und Verkauf. Exterieur, Interieur, Details und Cinematic werden als nutzbare Bildserie geplant.`
     : `${serviceLabel} in ${scope.label}: Exterieur, Interieur, Details und Cinematic als kuratierte Bildserie fuer Verkauf, Marke, Showroom und Kampagne.`
+const metaDescription = keywordFocusCopy?.metaDescription || defaultMetaDescription
 const contactSubject = isParentPage ? 'Automobil Fotografie Anfrage' : `${serviceLabel}${isKeywordPage ? '' : ` ${scope.label}`} Anfrage`
 const contactHeadline = isParentPage
   ? 'Automobil <em>anfragen.</em>'
   : isKeywordPage
     ? `${serviceLabel} <em>anfragen.</em>`
     : `Automobil ${scope.label} <em>anfragen.</em>`
-const contactLead = isParentPage
+const defaultContactLead = isParentPage
   ? 'Schreibe kurz, welches Fahrzeug fotografiert werden soll, wo es steht, welche Wirkung die Bilder tragen sollen und ob die Serie privat, kommerziell oder als Kampagne genutzt wird. Wir klären Location, Licht und Ablauf gemeinsam vor dem ersten Klick.'
   : isKeywordPage
     ? `Schreibe kurz, wofür ${serviceLabel} gebraucht wird, welches Motiv im Mittelpunkt steht und welche Nutzung geplant ist. Wir klären Stil, Ort, Umfang und Ausgabe gemeinsam.`
     : `Schreibe kurz, welches Fahrzeug in ${scope.label} fotografiert werden soll, wo es steht, welche Wirkung die Bilder tragen sollen und ob die Serie privat, kommerziell oder als Kampagne genutzt wird. Wir klären Location, Licht und Ablauf gemeinsam vor dem ersten Klick.`
-const cityHeading = isParentPage ? 'Automobil Fotografie <em>vor Ort.</em>' : `Automobilfotografie <em>vor Ort in ${scope.label}.</em>`
-const clusterHeading = `Weitere Fotografie-Bereiche <em>${scope.label}.</em>`
+const contactLead = keywordFocusCopy?.contactLead || defaultContactLead
+const cityHeading = isParentPage || isKeywordPage ? 'Automobil Fotografie <em>vor Ort.</em>' : `Automobilfotografie <em>vor Ort in ${scope.label}.</em>`
+const clusterHeading = isKeywordPage ? 'Weitere Fotografie-Bereiche.' : `Weitere Fotografie-Bereiche <em>${scope.label}.</em>`
 const clusterLinks = siblingFamilyLinks(scope, 'automobil')
 const overviewHref = 'fotografie-duesseldorf.html'
 const publishedHref = preview?.publishedHref || (doc ? routeForDoc('local-seo-pages', doc) : `/${legacyFile}`)
@@ -258,8 +268,38 @@ const inheritedRelatedAreas = relatedAreas.map((area, index) => {
   return { ...area, alt: visual.alt, height: visual.height, image: visual.src, width: visual.width }
 })
 
+const focusPullKicker = keywordFocusCopy?.pullKicker || (isParentPage ? 'Automobilfotografie' : serviceLabel)
+const focusPullHeadline = cmsText(doc?.statement?.headline) || keywordFocusCopy?.pullHeadline || (isParentPage ? 'Vom Inserat bis zur' : `${serviceLabel}:`)
+const focusPullEmphasis = cmsText(doc?.statement?.emphasis) || keywordFocusCopy?.pullEmphasis || (isParentPage ? 'Kampagne.' : 'als Bildserie.')
+const focusPullLead =
+  cmsStatementBody[0] ||
+  keywordFocusCopy?.pullLead ||
+  (isParentPage
+    ? 'Vom ehrlichen Verkaufsbild bis zur inszenierten Kampagne - eine konsistente Bildserie, sauber belichtet und sofort einsatzbereit fuer Inserat, Magazin, Social und Print.'
+    : `${serviceLabel} wird als eigenstaendige Suchintention gefuehrt, bleibt aber in der Automobil-Struktur: Fahrzeug, Licht, Nutzung und Ausgabe werden vor dem Shooting sauber geplant.`)
+const focusSectionHeadline = keywordFocusCopy?.sectionHeadline || (isParentPage ? 'Ein Bildsatz,' : `${serviceLabel},`)
+const focusSectionEmphasis = keywordFocusCopy?.sectionEmphasis || (isParentPage ? 'vier Blickwinkel.' : isKeywordPage ? 'klar fokussiert.' : `${scope.label}.`)
+const focusFeatureTitle = cmsText(doc?.shootingStyles?.[0]?.title) || keywordFocusCopy?.featureTitle || 'Vollformat, ruhige Linien.'
+const focusFeatureBody =
+  cmsText(doc?.shootingStyles?.[0]?.text) ||
+  keywordFocusCopy?.featureBody ||
+  'Aussenaufnahmen mit kontrolliertem Licht und ruhigen Reflexen. Lack, Proportionen und Linienfuehrung wirken stimmig - Showroom, Industrie oder urbanes Setting.'
+const focusGalleryHeadline = cmsText(doc?.portfolioTiles?.[0]?.label) || keywordFocusCopy?.galleryHeadline || 'Aktuelle Arbeiten.'
+const focusAudienceHeadline = keywordFocusCopy?.audienceHeadline || 'Fuer wen ich arbeite.'
+const focusAudienceLead = cmsText(doc?.audienceCards?.[0]?.text) || keywordFocusCopy?.audienceLead || 'Du erkennst dich wieder?'
+const focusAudiences = doc?.audienceCards?.length
+  ? doc.audienceCards.map((card, index) => [cmsText(card.number) || String(index + 1).padStart(2, '0'), cmsText(card.title) || `Zielgruppe ${index + 1}`, cmsText(card.text) || 'CMS'])
+  : keywordFocusCopy?.cards?.length
+  ? keywordFocusCopy.cards.map((card, index) => [String(index + 1).padStart(2, '0'), card.title, card.label || 'Shooting'])
+  : audiences
+const focusRelatedLead =
+  keywordFocusCopy?.relatedLead ||
+  'Automobil ist die Klammer. Schau dir die spezialisierten Disziplinen an - gleicher Anspruch, anderer Bildfokus. Diese Kategorie ist Teil eines bewusst getrennten Fotografie-Clusters: Fahrzeug, Mensch und Raum bleiben eigenstaendige Suchintentionen, sind aber intern so verbunden, dass Nutzer schnell in den passenden Bildbereich wechseln koennen.'
+
 const cityLinks = [
   ['automobil-fotografie.html', 'Düsseldorf'],
+  ['automobil-fotografie-erkrath.html', 'Erkrath'],
+  ['automobil-fotografie-ratingen.html', 'Ratingen'],
   ['automobil-fotografie-koeln.html', 'Köln'],
   ['automobil-fotografie-essen.html', 'Essen'],
   ['automobil-fotografie-dortmund.html', 'Dortmund'],
@@ -284,9 +324,13 @@ const cityLinks = [
 ]
 
 const searchLinks = [
+  ['auto-fotoshooting.html', 'Auto-Fotoshooting'],
+  ['bilder-mit-auto.html', 'Bilder mit Auto'],
+  ['fotoshooting-mit-auto.html', 'Fotoshooting mit Auto'],
   ['automotive-fotografie.html', 'Automotive Fotografie'],
   ['autofotografie.html', 'Autofotografie'],
   ['fahrzeugfotografie.html', 'Fahrzeugfotografie'],
+  ['auto-fotografieren-tipps.html', 'Auto fotografieren Tipps'],
   ['autohaus-fotografie.html', 'Autohaus Fotografie'],
   ['autoverkauf-fotos-duesseldorf.html', 'Autoverkauf Fotos'],
 ]
@@ -329,7 +373,7 @@ const searchLinks = [
       <div class="pd-overlay">
         <div class="pd-bottom">
           <h1 class="pd-title">
-            <span class="line"><span class="word">Automobil</span></span>
+            <span class="line"><span class="word">{heroTitle}</span></span>
             <span class="line"><span class="word">{heroSecondLine}</span></span>
           </h1>
           <p class="pd-sub">{doc?.intro || heroLead}</p>
@@ -343,11 +387,11 @@ const searchLinks = [
 
     <section class="st-pull" data-header-theme="light">
       <div class="st-pull-inner">
-        <span class="st-pull-kicker">Automobilfotografie</span>
+        <span class="st-pull-kicker">{focusPullKicker}</span>
         <blockquote class="st-pull-quote">
-          <strong>Vom Inserat bis zur <span class="accent">Kampagne.</span></strong>
+          <strong>{focusPullHeadline} <span class="accent">{focusPullEmphasis}</span></strong>
         </blockquote>
-        <p class="st-pull-lead">Vom ehrlichen Verkaufsbild bis zur inszenierten Kampagne — eine konsistente Bildserie, sauber belichtet und sofort einsatzbereit für Inserat, Magazin, Social und Print.</p>
+        <p class="st-pull-lead">{focusPullLead}</p>
         <div class="st-pull-cta">
           <a href="#anfrage">Shooting buchen <span aria-hidden="true">→</span></a>
         </div>
@@ -357,7 +401,7 @@ const searchLinks = [
     <section class="sw" id="sichten" data-header-theme="dark">
       <header class="sw-head">
         <div class="ttl">
-          <h2>Ein Bildsatz, <em>vier Blickwinkel.</em></h2>
+          <h2>{focusSectionHeadline} <em>{focusSectionEmphasis}</em></h2>
         </div>
       </header>
 
@@ -383,8 +427,8 @@ const searchLinks = [
         </div>
 
         <aside class="sw-desc" id="swDesc">
-          <div class="group g2 is-in"><h3 class="d-title" id="swTitle">Vollformat, ruhige Linien.</h3></div>
-          <div class="group g3 is-in"><p class="d-body" id="swBody">Außenaufnahmen mit kontrolliertem Licht und ruhigen Reflexen. Lack, Proportionen und Linienführung wirken stimmig — Showroom, Industrie oder urbanes Setting.</p></div>
+          <div class="group g2 is-in"><h3 class="d-title" id="swTitle">{focusFeatureTitle}</h3></div>
+          <div class="group g3 is-in"><p class="d-body" id="swBody">{focusFeatureBody}</p></div>
           <div class="group g4 is-in"><a class="d-cta" href="#anfrage">Bildsatz anfragen</a></div>
         </aside>
       </div>
@@ -395,7 +439,7 @@ const searchLinks = [
     <section class="bg" data-header-theme="dark" aria-label="Ausgewählte Automobil-Arbeiten" id="bgSec">
       <div class="bg-head">
         <div class="ttl">
-          <h2>Aktuelle <em>Arbeiten.</em></h2>
+          <h2>{focusGalleryHeadline}</h2>
         </div>
         <div class="meta">
           <a href="portfolio.html">Zum Portfolio →</a>
@@ -414,11 +458,11 @@ const searchLinks = [
     <section class="ki" data-header-theme="light" aria-label="Für wen ich arbeite">
       <div class="section-inner">
         <div class="ki-head">
-          <h2>Für <em>wen</em> ich arbeite.</h2>
+          <h2>{focusAudienceHeadline}</h2>
         </div>
 
         <div class="ki-grid">
-          {audiences.map(([number, title, label]) => (
+          {focusAudiences.map(([number, title, label]) => (
             <a href="#anfrage" class="ki-card">
               <span class="no">{number}</span>
               <h3>{title}</h3>
@@ -428,7 +472,7 @@ const searchLinks = [
           ))}
         </div>
         <div class="ki-cta">
-          <p>Du erkennst dich wieder? <a href="#anfrage">Lass uns sprechen <span aria-hidden="true">→</span></a></p>
+          <p>{focusAudienceLead} <a href="#anfrage">Lass uns sprechen <span aria-hidden="true">→</span></a></p>
         </div>
       </div>
     </section>
@@ -437,7 +481,7 @@ const searchLinks = [
       <div class="section-inner">
         <div class="rl-head">
           <h2>Verwandte <em>Bereiche</em>.</h2>
-          <p>Automobil ist die Klammer. Schau dir die spezialisierten Disziplinen an — gleicher Anspruch, anderer Bildfokus. Diese Kategorie ist Teil eines bewusst getrennten Fotografie-Clusters: Fahrzeug, Mensch und Raum bleiben eigenständige Suchintentionen, sind aber intern so verbunden, dass Nutzer schnell in den passenden Bildbereich wechseln können.</p>
+          <p>{focusRelatedLead}</p>
         </div>
         <div class="rl-grid">
           {inheritedRelatedAreas.map((area) => (

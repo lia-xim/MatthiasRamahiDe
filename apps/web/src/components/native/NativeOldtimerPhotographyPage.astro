@@ -7,6 +7,7 @@ import {
   nativeFamilyPageContext,
   type NativeFamilyPreviewState,
 } from '../../lib/nativeFamilyPageContext'
+import { keywordFocusCopyForSlug } from '../../lib/localSeoFamilyContent'
 import { familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
 import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
 
@@ -36,10 +37,14 @@ const pageContext = nativeFamilyPageContext({
   preview,
 })
 const { clusterHeading, clusterLinks, isKeywordPage, isParentPage, overviewHref, publishedHref, scope, serviceLabel } = pageContext
+const keywordFocusCopy = keywordFocusCopyForSlug(legacyFile)
+const cmsText = (value: unknown) => (typeof value === 'string' ? value.trim() : '')
+const cmsHeroLine2 = cmsText(doc?.heroLine2)
+const cmsStatementBody = doc?.statement?.body?.map((entry) => cmsText(entry.text)).filter(Boolean) || []
 const heroLabel = isParentPage || isKeywordPage ? 'Oldtimer-Fotografie' : `Oldtimer-Fotografie ${scope.label}`
-const heroTitlePrefix = isParentPage || isKeywordPage ? 'Oldtimer' : 'Oldtimer-Fotografie'
-const heroTitleSuffix = isParentPage || isKeywordPage ? 'Fotografie.' : `${scope.label}.`
-const heroLead = isParentPage
+const heroTitlePrefix = keywordFocusCopy?.heroTitle || (isParentPage || isKeywordPage ? 'Oldtimer' : 'Oldtimer-Fotografie')
+const heroTitleSuffix = cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || (isParentPage || isKeywordPage ? 'Fotografie.' : `${scope.label}.`)
+const defaultHeroLead = isParentPage
   ? 'Oldtimer-Fotografie: Herkunft, Material, Lack, Chrom, Leder und Patina werden ruhig dokumentiert — für Sammlung, Verkauf, Auktion, Ausstellung und Fahrzeuge mit Geschichte. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.'
   : isKeywordPage
     ? `${serviceLabel}: eigenständiger Einstieg in den Oldtimer Fotografie-Cluster. Herkunft, Material, Lack, Chrom, Leder und Patina werden ruhig dokumentiert - für Sammlung, Verkauf, Auktion, Ausstellung und Fahrzeuge mit Geschichte. Die Seite bleibt bewusst im Layout der übergeordneten Kategorie, setzt den Text aber auf diese konkrete Suchintention.`
@@ -49,22 +54,26 @@ const metaTitle = isParentPage
   : isKeywordPage
     ? `${serviceLabel} | Matthias Ramahi`
     : `${serviceLabel} ${scope.label} | Matthias Ramahi`
-const metaDescription = isParentPage
+const heroLead = keywordFocusCopy?.heroLead || defaultHeroLead
+const defaultMetaDescription = isParentPage
   ? 'Oldtimer-Fotografie: Bildserien für Sammlung, Verkauf, Auktion und Ausstellung - Karosserie, Lack, Chrom, Leder, Patina und Herkunft.'
   : isKeywordPage
     ? `${serviceLabel}: Bildserien für Sammlung, Verkauf, Auktion und Ausstellung.`
     : `${serviceLabel} ${scope.label}: Bildserien für Sammlung, Verkauf, Auktion und Ausstellung.`
 const contactSubject = isParentPage ? 'Oldtimer Fotografie Anfrage' : `${serviceLabel}${isKeywordPage ? '' : ` ${scope.label}`} Anfrage`
+const metaDescription = keywordFocusCopy?.metaDescription || defaultMetaDescription
 const contactHeadline = isParentPage
   ? 'Oldtimer <em>anfragen.</em>'
   : isKeywordPage
     ? `${serviceLabel} <em>anfragen.</em>`
     : `Oldtimer ${scope.label} <em>anfragen.</em>`
-const contactLead = isParentPage
+const defaultContactLead = isParentPage
   ? 'Schreibe kurz, welcher Oldtimer fotografiert werden soll — Modell, Baujahr, Standort und ob die Bilder für Sammlung, Auktion, Verkauf oder privat genutzt werden. Wir klären Raum, Licht und Ablauf gemeinsam.'
   : isKeywordPage
     ? `Schreibe kurz, wofür ${serviceLabel} gebraucht wird, welches Motiv im Mittelpunkt steht und welche Nutzung geplant ist. Wir klären Stil, Ort, Umfang und Ausgabe gemeinsam.`
     : `Schreibe kurz, welcher Oldtimer in ${scope.label} fotografiert werden soll - Modell, Baujahr, Standort und ob die Bilder für Sammlung, Auktion, Verkauf oder privat genutzt werden. Wir klären Raum, Licht und Ablauf gemeinsam.`
+
+const contactLead = keywordFocusCopy?.contactLead || defaultContactLead
 
 const heroSlides = [
   ['assets/optimized/assets-photos-oldtimer-stage-1280.webp', 'assets/optimized/assets-photos-oldtimer-stage-960.webp'],
@@ -183,6 +192,52 @@ const inheritedRelatedAreas = relatedAreas.map((area, index) => {
   return { ...area, alt: visual.alt, height: visual.height, image: visual.src, width: visual.width }
 })
 
+const focusStoryCards = inheritedStoryCards.map((card, index) => {
+  const cmsCard = doc?.shootingStyles?.[index]
+  const override = cmsCard
+    ? { title: cmsText(cmsCard.title), text: cmsText(cmsCard.text) }
+    : keywordFocusCopy?.cards?.[index]
+
+  return override ? { ...card, title: override.title || card.title, text: override.text || card.text } : card
+})
+
+const focusIntroHeadline = cmsText(doc?.statement?.headline) || keywordFocusCopy?.pullHeadline || (isParentPage || isKeywordPage ? 'Charakter' : `Oldtimer in ${scope.label}`)
+const focusIntroEmphasis = cmsText(doc?.statement?.emphasis) || keywordFocusCopy?.pullEmphasis || (isParentPage || isKeywordPage ? 'mit Nostalgie.' : 'mit Herkunft.')
+const focusIntroParagraphs = cmsStatementBody.length
+  ? cmsStatementBody
+  : keywordFocusCopy?.statementBody?.length
+    ? keywordFocusCopy.statementBody
+    : isParentPage || isKeywordPage
+      ? [
+          'Oldtimer brauchen Ruhe und Abstand. Ich arbeite mit mobilem Licht, sauberer Komposition und einem klaren Plan - Chrom, Leder, Lack und Patina werden bewusst gefuehrt, ohne Effekt-Pose.',
+          'Ziel ist nicht Nostalgie-Kitsch, sondern eine Bildserie, die Sammlung, Auktion oder Verkaufsinserat traegt. Sie erhalten Dateien fuer Web, Katalog und Print - bereit fuer die naechste Ausgabe.',
+        ]
+      : [
+          `Oldtimer-Fotografie in ${scope.label} wird als ruhige Dokumentation geplant: Modell, Baujahr, Standort, Material, Patina und Nutzung bestimmen den Ablauf.`,
+          `Der lokale Bezug hilft bei Treffpunkt, Lichtfenster und Logistik. So entsteht in ${scope.label} eine Serie fuer Sammlung, Verkauf, Auktion oder privates Archiv, ohne die Hauptkategorie zu verlassen.`,
+        ]
+const focusStoryHeadline = keywordFocusCopy?.sectionHeadline || (isParentPage || isKeywordPage ? 'Vier Spuren' : `Vier Spuren in ${scope.label}`)
+const focusStoryEmphasis = keywordFocusCopy?.sectionEmphasis || (isParentPage || isKeywordPage ? 'einer Geschichte.' : 'eines Fahrzeugs.')
+const focusStoryLead = isParentPage || isKeywordPage
+  ? keywordFocusCopy?.sectionLead || 'Jeder Oldtimer traegt seine Provenienz in den Details. Material, Patina, Embleme und Innenraum greifen ineinander - ein Bildsatz, der Herkunft und Zustand vollstaendig dokumentiert.'
+  : `In ${scope.label} wird der Bildsatz auf das konkrete Fahrzeug zugeschnitten: ruhige Totalen, Patina, Innenraum und Details, die Zustand und Geschichte nachvollziehbar machen.`
+const focusPortfolioHeadline = cmsText(doc?.portfolioTiles?.[0]?.label) || keywordFocusCopy?.galleryHeadline || (isParentPage || isKeywordPage ? 'Aktuelle Arbeiten.' : `Oldtimer-Arbeiten ${scope.label}.`)
+const focusPortfolioLead = isParentPage || isKeywordPage
+  ? keywordFocusCopy?.galleryLead || 'Sechs kuratierte Oldtimer-Bilder aus juengeren Serien. Klicken zum Vergroessern.'
+  : `Beispiele fuer Bildtypen, die auch bei einem Oldtimer-Shooting in ${scope.label} sinnvoll sind: Exponat, Cockpit, Material, Profil und Detail.`
+const focusAudienceHeadline = keywordFocusCopy?.audienceHeadline || (isParentPage || isKeywordPage ? 'Fuer wen ich arbeite.' : `Fuer Oldtimer in ${scope.label}.`)
+const focusAudienceLead = isParentPage || isKeywordPage
+  ? keywordFocusCopy?.audienceLead || 'Vom privaten Liebhaberstueck bis zum Auktionskatalog - jede Serie wird auf Nutzung und Zielpublikum zugeschnitten.'
+  : `Geeignet fuer Besitzer, Sammler und Verkaufer in ${scope.label}, die ein Fahrzeug hochwertig, aber nicht kuenstlich zeigen moechten.`
+const focusAudiences = doc?.audienceCards?.length
+  ? doc.audienceCards.map((card, index) => [cmsText(card.number) || String(index + 1).padStart(2, '0'), cmsText(card.title) || `Zielgruppe ${index + 1}`, cmsText(card.text) || 'CMS'])
+  : keywordFocusCopy?.cards?.length
+    ? keywordFocusCopy.cards.map((card, index) => [String(index + 1).padStart(2, '0'), card.title, card.label || 'Oldtimer'])
+    : audiences
+const focusRelatedLead = isParentPage || isKeywordPage
+  ? keywordFocusCopy?.relatedLead || 'Oldtimer ist Teil einer groesseren automotive Welt. Schau dir die anderen Disziplinen an - gleicher Anspruch, anderer Bildfokus. Diese Kategorie ist Teil eines bewusst getrennten Fotografie-Clusters: Fahrzeug, Mensch und Raum bleiben eigenstaendige Suchintentionen, sind aber intern so verbunden, dass Nutzer schnell in den passenden Bildbereich wechseln koennen.'
+  : `Oldtimer-Fotografie ${scope.label} bleibt im Fahrzeug-Cluster. Von hier fuehren die internen Links zu Automobil, Sportwagen, Druck und Portfolio, damit Nutzer schnell den passenden Bildbereich finden.`
+
 // Hero = der Landing-Page-Shader-Hero (WebGL/Ken-Burns/Lens-Cursor), 1:1 wie auf
 // der Fotolabor-Seite — nur mit Oldtimer-Bild, -Texten und dem warmen Messing/
 // Patina-Akzent (--hero-accent). Optik aus assets/native-oldtimer.css (.hero),
@@ -199,6 +254,8 @@ const heroSlidesJson = JSON.stringify([
 
 const cityLinks = [
   ['oldtimer-fotografie.html', 'Düsseldorf'],
+  ['oldtimer-fotografie-erkrath.html', 'Erkrath'],
+  ['oldtimer-fotografie-ratingen.html', 'Ratingen'],
   ['oldtimer-fotografie-koeln.html', 'Köln'],
   ['oldtimer-fotografie-essen.html', 'Essen'],
   ['oldtimer-fotografie-dortmund.html', 'Dortmund'],
@@ -279,11 +336,10 @@ const searchLinks = [
     <section class="st" data-header-theme="light">
       <div class="section-inner">
         <div>
-          <h2>Charakter <em>mit Nostalgie.</em></h2>
+          <h2>{focusIntroHeadline} <em>{focusIntroEmphasis}</em></h2>
         </div>
         <div class="st-body">
-          <p>Oldtimer brauchen <strong>Ruhe und Abstand</strong>. Ich arbeite mit mobilem Licht, sauberer Komposition und einem klaren Plan — Chrom, Leder, Lack und Patina werden bewusst geführt, ohne Effekt-Pose.</p>
-          <p>Ziel ist nicht Nostalgie-Kitsch, sondern eine Bildserie, die <strong>Sammlung, Auktion oder Verkaufsinserat</strong> trägt. Sie erhalten Dateien für Web, Katalog und Print — bereit für die nächste Ausgabe.</p>
+          {focusIntroParagraphs.map((paragraph) => <p>{paragraph}</p>)}
           <a class="st-cta" href="#anfrage">Shooting buchen →</a>
         </div>
       </div>
@@ -292,11 +348,11 @@ const searchLinks = [
     <section class="pv" data-header-theme="dark">
       <div class="section-inner">
         <div class="pv-head">
-          <h2>Vier Spuren <em>einer Geschichte.</em></h2>
-          <p>Jeder Oldtimer trägt seine Provenienz in den Details. Material, Patina, Embleme und Innenraum greifen ineinander — ein Bildsatz, der Herkunft und Zustand vollständig dokumentiert.</p>
+          <h2>{focusStoryHeadline} <em>{focusStoryEmphasis}</em></h2>
+          <p>{focusStoryLead}</p>
         </div>
         <div class="pv-grid">
-          {inheritedStoryCards.map((card) => (
+          {focusStoryCards.map((card) => (
             <article class="pv-card">
               <figure class="pv-img"><img loading="lazy" src={card.image} alt={card.alt} width={card.width} height={card.height} decoding="async" /></figure>
               <h3>{card.title}</h3>
@@ -310,8 +366,8 @@ const searchLinks = [
     <section class="po" data-header-theme="dark" aria-label="Ausgewählte Oldtimer-Arbeiten">
       <div class="po-grid" id="poGrid">
         <header class="po-head">
-          <h2>Aktuelle <em>Arbeiten.</em></h2>
-          <p>Sechs kuratierte Oldtimer-Bilder aus jüngeren Serien. Klicken zum Vergrößern.</p>
+          <h2>{focusPortfolioHeadline}</h2>
+          <p>{focusPortfolioLead}</p>
         </header>
         {inheritedPortfolioTiles.map(([className, image, alt, width, height, full], index) => (
           <button type="button" class={`po-tile ${className}`} data-i={index} data-full={full} aria-label={`Bild ${index + 1} vergrößern`}>
@@ -325,11 +381,11 @@ const searchLinks = [
     <section class="fw" data-header-theme="light">
       <div class="section-inner">
         <div class="fw-head">
-          <h2>Für <em>wen</em> ich arbeite.</h2>
-          <p class="lead">Vom privaten Liebhaberstück bis zum Auktionskatalog — jede Serie wird auf Nutzung und Zielpublikum zugeschnitten.</p>
+          <h2>{focusAudienceHeadline}</h2>
+          <p class="lead">{focusAudienceLead}</p>
         </div>
         <div class="fw-grid">
-          {audiences.map(([number, title, label]) => (
+          {focusAudiences.map(([number, title, label]) => (
             <article class="fw-card"><span class="no">{number}</span><strong>{title}</strong><span class="lbl">{label}</span></article>
           ))}
         </div>
@@ -344,7 +400,7 @@ const searchLinks = [
       <div class="section-inner">
         <div class="rl-head">
           <h2>Verwandte <em>Bereiche</em>.</h2>
-          <p>Oldtimer ist Teil einer grösseren automotive Welt. Schau dir die anderen Disziplinen an — gleicher Anspruch, anderer Bildfokus. Diese Kategorie ist Teil eines bewusst getrennten Fotografie-Clusters: Fahrzeug, Mensch und Raum bleiben eigenständige Suchintentionen, sind aber intern so verbunden, dass Nutzer schnell in den passenden Bildbereich wechseln können.</p>
+          <p>{focusRelatedLead}</p>
         </div>
         <div class="rl-grid">
           {inheritedRelatedAreas.map((area) => (

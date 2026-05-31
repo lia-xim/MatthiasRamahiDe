@@ -7,6 +7,7 @@ import {
   nativeFamilyPageContext,
   type NativeFamilyPreviewState,
 } from '../../lib/nativeFamilyPageContext'
+import { keywordFocusCopyForSlug } from '../../lib/localSeoFamilyContent'
 import { familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
 import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
 
@@ -36,9 +37,14 @@ const pageContext = nativeFamilyPageContext({
   preview,
 })
 const { clusterHeading, clusterLinks, isKeywordPage, isParentPage, overviewHref, publishedHref, scope, serviceLabel } = pageContext
-const heroSecondLine = isParentPage || isKeywordPage ? 'Fotografie.' : `Fotografie ${scope.label}`
+const keywordFocusCopy = keywordFocusCopyForSlug(legacyFile)
+const cmsText = (value: unknown) => (typeof value === 'string' ? value.trim() : '')
+const cmsHeroLine2 = cmsText(doc?.heroLine2)
+const cmsStatementBody = doc?.statement?.body?.map((entry) => cmsText(entry.text)).filter(Boolean) || []
+const heroTitle = keywordFocusCopy?.heroTitle || 'Motorrad'
+const heroSecondLine = cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || (isParentPage || isKeywordPage ? 'Fotografie.' : `Fotografie ${scope.label}`)
 const heroLabel = isParentPage || isKeywordPage ? 'Motorradfotografie' : `Motorradfotografie ${scope.label}`
-const heroLead = isParentPage
+const defaultHeroLead = isParentPage
   ? 'Motorradfotografie: Silhouette, Mechanik, Haltung, Detail und Fahrerbezug werden als kraftvolle Serie geplant — für Custom Bikes, Händler, Werkstätten und private Maschinen. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.'
   : isKeywordPage
     ? `${serviceLabel}: eigenständiger Einstieg in den Motorrad Fotografie-Cluster. Silhouette, Mechanik, Haltung, Detail und Fahrerbezug werden als kraftvolle Serie geplant - für Custom Bikes, Händler, Werkstätten und private Maschinen. Die Seite bleibt bewusst im Layout der übergeordneten Kategorie, setzt den Text aber auf diese konkrete Suchintention.`
@@ -48,22 +54,26 @@ const metaTitle = isParentPage
   : isKeywordPage
     ? `${serviceLabel} | Matthias Ramahi`
     : `${serviceLabel} ${scope.label} | Matthias Ramahi`
-const metaDescription = isParentPage
+const heroLead = keywordFocusCopy?.heroLead || defaultHeroLead
+const defaultMetaDescription = isParentPage
   ? 'Motorradfotografie: Bildserien für Custom Bikes, Werkstätten, Händler und private Maschinen - Silhouette, Mechanik, Haltung und Detail.'
   : isKeywordPage
     ? `${serviceLabel}: Bildserien für Custom Bikes, Werkstätten, Händler und private Maschinen.`
     : `${serviceLabel} ${scope.label}: Bildserien für Custom Bikes, Werkstätten, Händler und private Maschinen.`
+const metaDescription = keywordFocusCopy?.metaDescription || defaultMetaDescription
 const contactSubject = isParentPage ? 'Motorrad Fotografie Anfrage' : `${serviceLabel}${isKeywordPage ? '' : ` ${scope.label}`} Anfrage`
 const contactHeadline = isParentPage
   ? 'Motorrad <em>anfragen.</em>'
   : isKeywordPage
     ? `${serviceLabel} <em>anfragen.</em>`
     : `Motorrad ${scope.label} <em>anfragen.</em>`
-const contactLead = isParentPage
+const defaultContactLead = isParentPage
   ? 'Schreibe kurz, welches Bike fotografiert werden soll — Modell, Standort, ob Fahrerbilder gewünscht sind und wofür die Bilder genutzt werden. Wir klären Licht, Location und Ablauf gemeinsam.'
   : isKeywordPage
     ? `Schreibe kurz, wofür ${serviceLabel} gebraucht wird, welches Motiv im Mittelpunkt steht und welche Nutzung geplant ist. Wir klären Stil, Ort, Umfang und Ausgabe gemeinsam.`
     : `Schreibe kurz, welches Bike in ${scope.label} fotografiert werden soll - Modell, Standort, ob Fahrerbilder gewünscht sind und wofür die Bilder genutzt werden. Wir klären Licht, Location und Ablauf gemeinsam.`
+
+const contactLead = keywordFocusCopy?.contactLead || defaultContactLead
 
 const visualSlots = familyVisualSlots(visualDoc, [
   { alt: 'Motorrad Stand und Silhouette', full: 'assets/optimized/assets-photos-motorrad-ninja-road-1920.webp', mobile: 'assets/optimized/assets-photos-motorrad-ninja-road-720.webp', src: 'assets/optimized/assets-photos-motorrad-ninja-road-960.webp', width: 960, height: 1440 },
@@ -83,8 +93,59 @@ const visualSlots = familyVisualSlots(visualDoc, [
   { alt: 'Motorrad Cinematic', full: 'assets/optimized/assets-portfolio-dsc3878-1920.webp', src: 'assets/portfolio/thumbs/_DSC3878.webp', width: 720, height: 480 },
 ])
 
+const focusIntroHeadline = cmsText(doc?.statement?.headline) || keywordFocusCopy?.pullHeadline || (isParentPage || isKeywordPage ? 'Geschwindigkeit und Leidenschaft' : `Motorrad in ${scope.label}`)
+const focusIntroEmphasis = cmsText(doc?.statement?.emphasis) || keywordFocusCopy?.pullEmphasis || (isParentPage || isKeywordPage ? 'auf Bildern.' : 'mit Haltung.')
+const focusIntroParagraphs = cmsStatementBody.length
+  ? cmsStatementBody
+  : keywordFocusCopy?.statementBody?.length
+    ? keywordFocusCopy.statementBody
+    : isParentPage || isKeywordPage
+      ? [
+      'Ein Motorrad muss auch im Stand Spannung tragen. Ich arbeite mit gesetzten Winkeln, kontrolliertem Licht und einer ruhigen Bildsprache - Mechanik, Material und Haltung wirken sofort, ohne Effektpose.',
+      'Einsatz: Social, Website, Verkauf, Werkstatt, Kampagne. Sie erhalten Dateien fuer Web und Druck - bereit fuer Reels, Story, Magazin und Print, im einheitlichen Bild-Look.',
+    ]
+      : [
+      `Motorradfotografie in ${scope.label} wird auf Maschine, Fahrerbezug, Standort und Nutzung geplant. Das Bike soll kraftvoll wirken, ohne dass die Serie nach Zufall oder Parkplatzbild aussieht.`,
+      `Fuer ${scope.label} werden Treffpunkt, Lichtfenster und Bildtypen vorab geklaert: Standbild, Detail, Fahrerportrait, Social-Crop oder Verkaufsserie.`,
+    ]
+const focusModuleHeadline = keywordFocusCopy?.sectionHeadline || (isParentPage || isKeywordPage ? 'Vom Detail' : `Vom Detail in ${scope.label}`)
+const focusModuleEmphasis = keywordFocusCopy?.sectionEmphasis || (isParentPage || isKeywordPage ? 'bis zur Kurve.' : 'bis zum Fahrerbild.')
+const focusModuleLead = isParentPage || isKeywordPage
+  ? keywordFocusCopy?.sectionLead || 'Sechs Bildtypen, die ich anbiete - vom ruhigen Standschuss bis zum Pan-Shot in der Schraeglage. Jede Serie wird aus diesen Modulen zusammengestellt, je nach Bike, Anlass und Verwendung.'
+  : `Die Serie fuer ${scope.label} kann ruhig oder dynamisch gebaut werden: Silhouette, Mechanik, Fahrerbezug, Detail und Hochformat werden nach Nutzung kombiniert.`
+const focusPortfolioHeadline = cmsText(doc?.portfolioTiles?.[0]?.label) || keywordFocusCopy?.galleryHeadline || (isParentPage || isKeywordPage ? 'Aktuelle Arbeiten.' : `Motorrad-Arbeiten ${scope.label}.`)
+const focusPortfolioLead = isParentPage || isKeywordPage
+  ? keywordFocusCopy?.galleryLead || 'Sechs kuratierte Motorrad-Bilder aus juengeren Serien. Klicken zum Vergroessern.'
+  : `Beispielhafte Bildtypen fuer ein Motorrad-Shooting in ${scope.label}: Standmotiv, Detail, Werkstatt, Vertical und Profil.`
+const focusAudienceHeadline = keywordFocusCopy?.audienceHeadline || (isParentPage || isKeywordPage ? 'Fuer wen ich arbeite.' : `Fuer Bikes in ${scope.label}.`)
+const focusAudienceLead = isParentPage || isKeywordPage
+  ? keywordFocusCopy?.audienceLead || 'Vom ersten eigenen Bike bis zur Kampagne - jede Serie wird auf Maschine, Marke und Nutzung zugeschnitten.'
+  : `Fuer Besitzer, Custom-Bikes, Werkstaetten und Haendler in ${scope.label}, die mehr brauchen als schnelle Handyfotos.`
+const focusRelatedLead = isParentPage || isKeywordPage
+  ? keywordFocusCopy?.relatedLead || 'Motorrad steht selten allein. Schau dir die anderen Disziplinen an - gleicher Anspruch, anderer Bildfokus. Diese Kategorie ist Teil eines bewusst getrennten Fotografie-Clusters: Fahrzeug, Mensch und Raum bleiben eigenstaendige Suchintentionen, sind aber intern so verbunden, dass Nutzer schnell in den passenden Bildbereich wechseln koennen.'
+  : `Motorradfotografie ${scope.label} bleibt im Fahrzeug-Cluster und verlinkt bewusst zu Automobil, Sportwagen, Oldtimer und Portfolio, damit die Suchintention sauber weitergefuehrt wird.`
+
+const cleanDefaultModuleCards = [
+  { visualIndex: 3, label: '01 / Stand & Silhouette', title: 'Die ruhige Bildbuehne', text: 'Bike pur: Proportionen, Linienfuehrung und Haltung. Gesetztes Licht, klare Winkel, bereit fuer Header, Print und Werkstatt-Wand.' },
+  { visualIndex: 4, label: '02 / Detail', title: 'Tank, Motor, Felge, Lenker', text: 'Nahaufnahmen, die Material, Verarbeitung und Charakter ehrlich zeigen - fuer Custom-Doku, Haendlerseiten und redaktionelle Strecken.' },
+  { visualIndex: 5, label: '03 / Mit Fahrer', title: 'Mensch + Maschine, Haltung', text: 'Fahrer und Bike zusammen: Haltung, Helm, Haende am Lenker. Portrait-Logik trifft Maschine, gerne vor Ort oder am Werkstatttor.' },
+  { visualIndex: 6, label: '04 / Schraeglage & Kurve', title: 'On-the-go, Pan-Shots', text: 'Mitziehaufnahmen aus der Kurve, sauber gezogene Pan-Shots - Geschwindigkeit als Bild, nicht als Behauptung. Strecke nach Absprache.' },
+  { visualIndex: 7, label: '05 / Cinematic', title: 'Atmosphaere, Licht, Editorial', text: 'Bildserien mit Stimmung: Gegenlicht, Daemmerung, Werkhalle, Asphalt nach Regen. Editorial-Look fuer Magazin und Marken-Kampagne.' },
+  { visualIndex: 8, label: '06 / Social & Vertical', title: 'Reels, Story, 9:16-Cuts', text: 'Hochformat wird von Anfang an mitgeplant - eine Aufnahme, zwei Formate. Reels-, Story- und 9:16-Cuts direkt aus dem Set.' },
+]
+const moduleCards = cleanDefaultModuleCards.map((cleanCard, index) => {
+  const cmsCard = doc?.shootingStyles?.[index]
+  const override = cmsCard
+    ? { title: cmsText(cmsCard.title), text: cmsText(cmsCard.text), label: cleanCard.label }
+    : keywordFocusCopy?.cards?.[index]
+
+  return override ? { ...cleanCard, label: override.label || cleanCard.label, title: override.title || cleanCard.title, text: override.text || cleanCard.text } : cleanCard
+})
+
 const cityLinks = [
   ['motorrad-fotografie.html', 'Düsseldorf'],
+  ['motorrad-fotografie-erkrath.html', 'Erkrath'],
+  ['motorrad-fotografie-ratingen.html', 'Ratingen'],
   ['motorrad-fotografie-koeln.html', 'Köln'],
   ['motorrad-fotografie-essen.html', 'Essen'],
   ['motorrad-fotografie-dortmund.html', 'Dortmund'],
@@ -160,7 +221,7 @@ const searchLinks = [
 
       <div class="hero-mr__grid">
         <h1 class="hero-mr__title" id="heroMrTitle">
-          <span class="line"><span class="word">Motorrad</span></span>
+          <span class="line"><span class="word">{heroTitle}</span></span>
           <span class="line"><span class="word">{heroSecondLine}</span></span>
         </h1>
         <div class="hero-mr__lede-block">
@@ -184,11 +245,10 @@ const searchLinks = [
     <section class="st" data-header-theme="light">
       <div class="section-inner">
         <div>
-          <h2>Geschwindigkeit und Leidenschaft <em>auf Bildern.</em></h2>
+          <h2>{focusIntroHeadline} <em>{focusIntroEmphasis}</em></h2>
         </div>
         <div class="st-body">
-          <p>Ein Motorrad muss <strong>auch im Stand Spannung tragen</strong>. Ich arbeite mit gesetzten Winkeln, kontrolliertem Licht und einer ruhigen Bildsprache — Mechanik, Material und Haltung wirken sofort, ohne Effektpose.</p>
-          <p>Einsatz: <strong>Social, Website, Verkauf, Werkstatt, Kampagne</strong>. Sie erhalten Dateien für Web und Druck — bereit für Reels, Story, Magazin und Print, im einheitlichen Bild-Look.</p>
+          {focusIntroParagraphs.map((paragraph) => <p>{paragraph}</p>)}
           <a class="st-cta" href="#anfrage">Shooting anfragen →</a>
         </div>
       </div>
@@ -197,56 +257,56 @@ const searchLinks = [
     <section class="mk" data-header-theme="dark">
       <div class="section-inner">
         <div class="mk-head">
-          <h2>Vom Detail <em>bis zur Kurve.</em></h2>
-          <p>Sechs Bildtypen, die ich anbiete — vom ruhigen Standschuss bis zum Pan-Shot in der Schräglage. Jede Serie wird aus diesen Modulen zusammengestellt, je nach Bike, Anlass und Verwendung.</p>
+          <h2>{focusModuleHeadline} <em>{focusModuleEmphasis}</em></h2>
+          <p>{focusModuleLead}</p>
         </div>
         <div class="mk-grid">
           <article class="mk-card">
             <figure class="mk-img"><img src={visualSlots[3].src} data-src={visualSlots[3].src} loading="lazy" alt={visualSlots[3].alt} width={visualSlots[3].width} height={visualSlots[3].height} decoding="async" /></figure>
             <div class="mk-text">
-              <span class="no">01 · Stand & Silhouette</span>
-              <h3>Die ruhige Bildbühne</h3>
-              <p>Bike pur — Proportionen, Linienführung, Haltung. Gesetztes Licht, klare Winkel. Bereit für Header, Print und Werkstatt-Wand.</p>
+              <span class="no">{moduleCards[0].label}</span>
+              <h3>{moduleCards[0].title}</h3>
+              <p>{moduleCards[0].text}</p>
             </div>
           </article>
           <article class="mk-card">
             <figure class="mk-img"><img loading="lazy" src={visualSlots[4].src} alt={visualSlots[4].alt} width={visualSlots[4].width} height={visualSlots[4].height} decoding="async" /></figure>
             <div class="mk-text">
-              <span class="no">02 · Detail</span>
-              <h3>Tank, Motor, Felge, Lenker</h3>
-              <p>Nahaufnahmen, die Material, Verarbeitung und Charakter ehrlich zeigen — für Custom-Doku, Händlerseiten und redaktionelle Strecken.</p>
+              <span class="no">{moduleCards[1].label}</span>
+              <h3>{moduleCards[1].title}</h3>
+              <p>{moduleCards[1].text}</p>
             </div>
           </article>
           <article class="mk-card">
             <figure class="mk-img"><img src={visualSlots[5].src} data-src={visualSlots[5].src} loading="lazy" alt={visualSlots[5].alt} width={visualSlots[5].width} height={visualSlots[5].height} decoding="async" /></figure>
             <div class="mk-text">
-              <span class="no">03 · Mit Fahrer</span>
-              <h3>Mensch + Maschine, Haltung</h3>
-              <p>Fahrer und Bike zusammen — Haltung, Helm, Hände am Lenker. Porträt-Logik trifft Maschine, gerne vor Ort oder am Werkstatttor.</p>
+              <span class="no">{moduleCards[2].label}</span>
+              <h3>{moduleCards[2].title}</h3>
+              <p>{moduleCards[2].text}</p>
             </div>
           </article>
           <article class="mk-card">
             <figure class="mk-img"><img src={visualSlots[6].src} data-src={visualSlots[6].src} loading="lazy" alt={visualSlots[6].alt} width={visualSlots[6].width} height={visualSlots[6].height} decoding="async" /></figure>
             <div class="mk-text">
-              <span class="no">04 · Schräglage & Kurve</span>
-              <h3>On-the-go, Pan-Shots</h3>
-              <p>Mitziehaufnahmen aus der Kurve, sauber gezogene Pan-Shots — Geschwindigkeit als Bild, nicht als Behauptung. Strecke nach Absprache.</p>
+              <span class="no">{moduleCards[3].label}</span>
+              <h3>{moduleCards[3].title}</h3>
+              <p>{moduleCards[3].text}</p>
             </div>
           </article>
           <article class="mk-card">
             <figure class="mk-img"><img loading="lazy" src={visualSlots[7].src} alt={visualSlots[7].alt} width={visualSlots[7].width} height={visualSlots[7].height} decoding="async" /></figure>
             <div class="mk-text">
-              <span class="no">05 · Cinematic</span>
-              <h3>Atmosphäre, Licht, Editorial</h3>
-              <p>Bildserien mit Stimmung — Gegenlicht, Dämmerung, Werkhalle, Asphalt nach Regen. Editorial-Look für Magazin und Marken-Kampagne.</p>
+              <span class="no">{moduleCards[4].label}</span>
+              <h3>{moduleCards[4].title}</h3>
+              <p>{moduleCards[4].text}</p>
             </div>
           </article>
           <article class="mk-card">
             <figure class="mk-img"><img loading="lazy" src={visualSlots[8].src} alt={visualSlots[8].alt} width={visualSlots[8].width} height={visualSlots[8].height} decoding="async" /></figure>
             <div class="mk-text">
-              <span class="no">06 · Social & Vertical</span>
-              <h3>Reels, Story, 9:16-Cuts</h3>
-              <p>Hochformat wird von Anfang an mitgeplant — eine Aufnahme, zwei Formate. Reels-, Story- und 9:16-Cuts direkt aus dem Set.</p>
+              <span class="no">{moduleCards[5].label}</span>
+              <h3>{moduleCards[5].title}</h3>
+              <p>{moduleCards[5].text}</p>
             </div>
           </article>
         </div>
@@ -256,8 +316,8 @@ const searchLinks = [
     <section class="po" data-header-theme="dark" aria-label="Ausgewählte Motorrad-Arbeiten">
       <div class="po-grid" id="poGrid">
         <header class="po-head">
-          <h2>Aktuelle <em>Arbeiten.</em></h2>
-          <p>Sechs kuratierte Motorrad-Bilder aus jüngeren Serien. Klicken zum Vergrössern.</p>
+          <h2>{focusPortfolioHeadline}</h2>
+          <p>{focusPortfolioLead}</p>
         </header>
         <button type="button" class="po-tile t1" data-i="0" data-full={visualSlots[9].full} aria-label="Bild 1 vergrößern">
           <img loading="lazy" src={visualSlots[9].src} data-full={visualSlots[9].full} alt={visualSlots[9].alt} width={visualSlots[9].width} height={visualSlots[9].height} decoding="async" />
@@ -289,8 +349,8 @@ const searchLinks = [
     <section class="fw" data-header-theme="light">
       <div class="section-inner">
         <div class="fw-head">
-          <h2>Für <em>wen</em> ich arbeite.</h2>
-          <p class="lead">Vom ersten eigenen Bike bis zur Kampagne — jede Serie wird auf Maschine, Marke und Nutzung zugeschnitten.</p>
+          <h2>{focusAudienceHeadline}</h2>
+          <p class="lead">{focusAudienceLead}</p>
         </div>
         <div class="fw-grid">
           <article class="fw-card"><span class="no">01</span><strong>Motorradfahrer mit eigener Maschine</strong></article>
@@ -309,7 +369,7 @@ const searchLinks = [
       <div class="section-inner">
         <div class="rl-head">
           <h2>Verwandte <em>Bereiche</em>.</h2>
-          <p>Motorrad steht selten allein. Schau dir die anderen Disziplinen an — gleicher Anspruch, anderer Bildfokus. Diese Kategorie ist Teil eines bewusst getrennten Fotografie-Clusters: Fahrzeug, Mensch und Raum bleiben eigenständige Suchintentionen, sind aber intern so verbunden, dass Nutzer schnell in den passenden Bildbereich wechseln können.</p>
+          <p>{focusRelatedLead}</p>
         </div>
         <div class="rl-grid">
           <a class="rl-card" href="automobil-fotografie.html">
