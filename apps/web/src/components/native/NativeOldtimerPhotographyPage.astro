@@ -47,8 +47,8 @@ const cmsText = (value: unknown) => (typeof value === 'string' ? value.trim() : 
 const cmsHeroLine2 = cmsText(doc?.heroLine2)
 const cmsStatementBody = doc?.statement?.body?.map((entry) => cmsText(entry.text)).filter(Boolean) || []
 const heroLabel = isParentPage || isKeywordPage ? 'Oldtimer-Fotografie' : `Oldtimer-Fotografie ${scope.label}`
-const heroTitlePrefix = !isParentPage && !isKeywordPage ? serviceLabel : keywordFocusCopy?.heroTitle || 'Oldtimer'
-const heroTitleSuffix = !isParentPage && !isKeywordPage ? `${scope.label}.` : cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Fotografie.'
+const heroTitlePrefix = !isParentPage && !isKeywordPage ? `${serviceLabel} ${scope.label}` : keywordFocusCopy?.heroTitle || 'Oldtimer'
+const heroTitleSuffix = !isParentPage && !isKeywordPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Charakter vor Ort.' : cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Fotografie.'
 const defaultHeroLead = isParentPage
   ? 'Oldtimer-Fotografie: Herkunft, Material, Lack, Chrom, Leder und Patina werden ruhig dokumentiert — für Sammlung, Verkauf, Auktion, Ausstellung und Fahrzeuge mit Geschichte. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.'
   : isKeywordPage

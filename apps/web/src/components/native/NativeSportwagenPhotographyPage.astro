@@ -44,8 +44,8 @@ const keywordFocusCopy = keywordFocusCopyForSlug(legacyFile)
 const cmsFaqItems = doc?.localFaq?.map((entry) => ({ q: entry.question || '', a: entry.answer || '' })).filter((entry) => entry.q && entry.a) || []
 const faqItems = cmsFaqItems.length ? cmsFaqItems : keywordFocusCopy?.faq
 const cmsHeroLine2 = typeof doc?.heroLine2 === 'string' ? doc.heroLine2.trim() : ''
-const heroTitle = !isParentPage && !isKeywordPage ? serviceLabel : keywordFocusCopy?.heroTitle || 'Sportwagen'
-const heroSecondLine = !isParentPage && !isKeywordPage ? `${scope.label}.` : cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Fotografie.'
+const heroTitle = !isParentPage && !isKeywordPage ? `${serviceLabel} ${scope.label}` : keywordFocusCopy?.heroTitle || 'Sportwagen'
+const heroSecondLine = !isParentPage && !isKeywordPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Performance. Linie. Detail.' : cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Fotografie.'
 const heroLabel = isParentPage || isKeywordPage ? 'Sportwagenfotografie' : `Sportwagenfotografie ${scope.label}`
 const defaultHeroLead = isParentPage
   ? 'Sportwagenfotografie: Performance, Form, Innenraum und Details werden mit kontrollierten Reflexen und ruhiger Dramaturgie sichtbar — für Sammler, Händler, Marke, Verkauf und Druck. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.'

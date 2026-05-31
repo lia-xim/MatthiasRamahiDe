@@ -53,8 +53,8 @@ const cmsText = (value: unknown) => (typeof value === 'string' ? value.trim() : 
 const cmsHeroLine2 = cmsText(doc?.heroLine2)
 const cmsStatementBody = doc?.statement?.body?.map((entry) => cmsText(entry.text)).filter(Boolean) || []
 const localSuffix = !isParentPage && !isKeywordPage ? ` ${scope.label}` : ''
-const heroTitle = !isParentPage && !isKeywordPage ? serviceLabel : keywordFocusCopy?.heroTitle || 'Automobil'
-const heroSecondLine = !isParentPage && !isKeywordPage ? `${scope.label}.` : cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || `Fotografie${localSuffix}.`
+const heroTitle = !isParentPage && !isKeywordPage ? `${serviceLabel} ${scope.label}` : keywordFocusCopy?.heroTitle || 'Automobil'
+const heroSecondLine = !isParentPage && !isKeywordPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Bildserie vor Ort.' : cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || `Fotografie${localSuffix}.`
 const heroLabel = isParentPage ? 'Automobilfotografie' : `Automobilfotografie${localSuffix}`
 const defaultHeroLead = isParentPage
   ? 'Automobilfotografie: Exterieur, Interieur, Details und Cinematic werden als kuratierte Bildserie geplant - für Marke, Showroom, Verkauf, Kampagne und hochwertige private Fahrzeuge. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.'

@@ -47,8 +47,8 @@ const cmsText = (value: unknown) => (typeof value === 'string' ? value.trim() : 
 const cmsHeroLine2 = cmsText(doc?.heroLine2)
 const cmsStatementBody = doc?.statement?.body?.map((entry) => cmsText(entry.text)).filter(Boolean) || []
 const heroLabel = isParentPage || isKeywordPage ? 'Landschaftsfotografie' : `Landschaftsfotografie ${scope.label}`
-const heroTitle = !isParentPage && !isKeywordPage ? serviceLabel : keywordFocusCopy?.heroTitle || 'Landschaft'
-const heroSecondLine = !isParentPage && !isKeywordPage ? `${scope.label}.` : cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Fotografie.'
+const heroTitle = !isParentPage && !isKeywordPage ? `${serviceLabel} ${scope.label}` : keywordFocusCopy?.heroTitle || 'Landschaft'
+const heroSecondLine = !isParentPage && !isKeywordPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Licht. Raum. Print.' : cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Fotografie.'
 const defaultHeroLead = isParentPage
   ? 'Landschaftsfotografie: Licht, Weite, Material und Raumwirkung werden kuratiert — als Fine-Art-Print, Wandbild, Edition oder großformatige Arbeit für Räume mit Ruhe. Bundesweit zählt vor allem die passende Motivwahl, Druckqualität, Materialität und Wirkung im Raum.'
   : isKeywordPage

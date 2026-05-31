@@ -201,7 +201,9 @@ const allBuiltPages = collectIndexPages(distClient)
     const title = stripHtml(htmlText(html, /<title\b[^>]*>([\s\S]*?)<\/title>/i))
     const description = htmlAttr(html, /<meta[^>]+name=["']description["'][^>]+content=["']([^"']*)["']/i)
     const canonical = htmlAttr(html, /<link[^>]+rel=["']canonical["'][^>]+href=["']([^"']*)["']/i)
-    const h1 = htmlText(html, /<h1\b[^>]*>([\s\S]*?)<\/h1>/i)
+    const h1Source = html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1] || ''
+    const h1 = stripHtml(h1Source)
+    const h1Primary = htmlText(h1Source, /<span[^>]+class=["'][^"']*(?:line|l)[^"']*["'][^>]*>([\s\S]*?)<\/span>/i) || h1
     const mainText = stripHtml(html.match(/<main\b[\s\S]*?<\/main>/i)?.[0] || html)
     const localFile = route.endsWith('.html') ? route.toLowerCase() : ''
     const type = redirect
@@ -224,6 +226,7 @@ const allBuiltPages = collectIndexPages(distClient)
       description,
       file,
       h1,
+      h1Primary,
       indexable: !redirect && !noindex,
       mainText,
       redirect,
@@ -262,6 +265,7 @@ const buildAuditRows = rows.map((r) => {
     issues.push('HTML fehlt')
   } else {
     if (r.kind === 'city' && !cityVisibleInText(page.h1, r.scope)) issues.push('H1 ohne Ort')
+    if (r.kind === 'city' && !cityVisibleInText(page.h1Primary, r.scope)) issues.push('H1-Hauptzeile ohne Ort')
     if (r.kind === 'city' && sc?.e?.seo?.description && cityVisibleInText(sc.e.seo.description, r.scope) && !cityVisibleInText(page.description, r.scope)) issues.push('Desc ohne Ort')
     if (sc?.e?.intro && !authoredIntroVisible(page.mainText, sc.e.intro)) issues.push('Intro fehlt im HTML')
     const statementText = [sc?.e?.statement?.headline, sc?.e?.statement?.emphasis, ...(sc?.e?.statement?.body || [])].filter(Boolean).join(' ')
@@ -302,7 +306,7 @@ md += `## Websiteweite Seiteninventur\n`
 md += `- Gebaute HTML-Seiten insgesamt: ${allBuiltPages.length} · indexierbar: ${allIndexablePages.length} · noindex/Redirect: ${allBuiltPages.length - allIndexablePages.length}\n`
 md += `- Typen: ${[...byType.entries()].sort((a, b) => a[0].localeCompare(b[0])).map(([type, count]) => `${type}: ${count}`).join(' · ')}\n`
 md += `- Doppelte Title auf indexierbaren Seiten: ${websiteDuplicateTitles.length} · fehlende Canonicals: ${websiteCanonicalIssues.length} · Title-Laenge ausserhalb 25-70: ${websiteTitleIssues.length} · Description-Laenge ausserhalb 90-170: ${websiteDescriptionIssues.length}\n\n`
-md += `- Local-SEO-Build-Abgleich: H1 ohne Ort: ${buildIssueCount('H1 ohne Ort')} · Keyword fehlt im HTML: ${buildIssueCount('Keyword fehlt im HTML')} · Description ohne Ort: ${buildIssueCount('Desc ohne Ort')}\n`
+md += `- Local-SEO-Build-Abgleich: H1 ohne Ort: ${buildIssueCount('H1 ohne Ort')} · H1-Hauptzeile ohne Ort: ${buildIssueCount('H1-Hauptzeile ohne Ort')} · Keyword fehlt im HTML: ${buildIssueCount('Keyword fehlt im HTML')} · Description ohne Ort: ${buildIssueCount('Desc ohne Ort')}\n`
 md += `- Local-SEO-CMS-Ausspielung: Intro fehlt: ${buildIssueCount('Intro fehlt im HTML')} · Statement fehlt: ${buildIssueCount('Statement fehlt im HTML')} · Audience-Cards fehlen: ${buildIssueCount('Audience fehlt im HTML')} · FAQ fehlt: ${buildIssueCount('FAQ fehlt im HTML')}\n\n`
 if (websiteCanonicalIssues.length || websiteTitleIssues.length || websiteDescriptionIssues.length || websiteDuplicateTitles.length) {
   md += `**Websiteweite Flags:**\n`
@@ -328,7 +332,7 @@ md += `## Scoring-Methodik\n`
 md += `- **Q · SEO-Qualität (0–100):** Struktur (Intro 180–760 Z., 2 Statement-Absätze ≥110, ≥4 Audience-Cards, 4 FAQ ≥80) **+ thematische Abdeckung** (SEO-Title 30–70, Description 115–170, Fokus-Keyword im Intro, lokaler Ortsname im Intro bei Stadt-Seiten, echte W-Frage in den FAQ).\n`
 md += `- **U · Content-Einzigartigkeit (0–100):** \`100 × (1 − max. Prosa-Ähnlichkeit)\` (Jaccard über Wort-Trigramme des Fließtexts gegen **alle** Seiten) → erkennt **Duplicate Content**.\n`
 md += `- **K · Intent-Trennung / Anti-Kannibalisierung (0–100):** \`100 × (1 − max. Ziel-Überlappung)\`. Ziel = Title-/Keyword-Tokens **ohne** Marke, **ohne** generische Wörter (fotografie/foto/shooting…) und **ohne** den Ortsnamen — verglichen nur **innerhalb derselben Familie + desselben Ortes** (dort entsteht Kannibalisierung). Niedriges K = zwei Seiten zielen am selben Ort auf denselben Begriff.\n\n`
-md += `- **Build-Check:** vergleicht die gebaute HTML-Seite mit dem authored CMS-Content. Rot wird: Stadtseite ohne Ort im H1, Kernkeyword nicht sichtbar, Description ohne Ort oder authored Sektionen (Intro/Statement/Audience/FAQ) nicht im HTML.\n\n`
+md += `- **Build-Check:** vergleicht die gebaute HTML-Seite mit dem authored CMS-Content. Rot wird: Stadtseite ohne Ort im H1, ohne Ort in der ersten sichtbaren H1-Hauptzeile, Kernkeyword nicht sichtbar, Description ohne Ort oder authored Sektionen (Intro/Statement/Audience/FAQ) nicht im HTML.\n\n`
 md += `**Interpretation — bei allen drei gilt: höher = besser (Skala 0–100).**\n`
 md += `- **Qualität:** hoch = Seite ist inhaltlich vollständig + thematisch sauber (Keyword/Ort/FAQ abgedeckt). Niedrig = etwas fehlt oder ist zu kurz.\n`
 md += `- **Einzigartigkeit:** hoch = der Text teilt fast nichts mit anderen Seiten (kein Duplicate Content). Niedrig = zu ähnlich zu einer anderen Seite.\n`

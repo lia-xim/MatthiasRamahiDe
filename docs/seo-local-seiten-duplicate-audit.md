@@ -35,185 +35,185 @@ Wichtig: Gleiche Layouts sind fuer Clusterseiten nicht automatisch ein Problem. 
 
 | Seite | Familie | Scope | Title | Canonical | H1 | Sektionen/Text | Naehe zur Prefix-Basis | Risiko | To-do |
 |---|---|---|---|---|---|---|---:|---|---|
-| `auto-fotografieren-tipps-duesseldorf.html` | automobil | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 10% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
+| `auto-fotografieren-tipps-duesseldorf.html` | automobil | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 10% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
 | `auto-fotografieren-tipps.html` | automobil | standalone-keyword | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | H1/Headline keywordgenauer setzen, Sektionstexte sind bereits unique |
-| `auto-fotoshooting-duesseldorf.html` | automobil | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 11% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
+| `auto-fotoshooting-duesseldorf.html` | automobil | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 11% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
 | `auto-fotoshooting.html` | automobil | standalone-keyword | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | H1/Headline keywordgenauer setzen, Sektionstexte sind bereits unique |
-| `autofotografie-duesseldorf.html` | automobil | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 10% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
+| `autofotografie-duesseldorf.html` | automobil | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 10% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
 | `autofotografie.html` | automobil | standalone-keyword | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | H1/Headline keywordgenauer setzen, Sektionstexte sind bereits unique |
-| `autohaus-fotografie-duesseldorf.html` | automobil | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
+| `autohaus-fotografie-duesseldorf.html` | automobil | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
 | `autohaus-fotografie.html` | automobil | standalone-keyword | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | H1/Headline keywordgenauer setzen, Sektionstexte sind bereits unique |
-| `automobil-fotografie-bergisch-gladbach.html` | automobil | Bergisch Gladbach | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `automobil-fotografie-bochum.html` | automobil | Bochum | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `automobil-fotografie-deutschland.html` | automobil | Deutschland | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `automobil-fotografie-dormagen.html` | automobil | Dormagen | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `automobil-fotografie-dortmund.html` | automobil | Dortmund | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `automobil-fotografie-duesseldorf.html` | automobil | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `automobil-fotografie-duisburg.html` | automobil | Duisburg | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `automobil-fotografie-erkrath.html` | automobil | Erkrath | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `automobil-fotografie-essen.html` | automobil | Essen | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `automobil-fotografie-gelsenkirchen.html` | automobil | Gelsenkirchen | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `automobil-fotografie-hilden.html` | automobil | Hilden | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `automobil-fotografie-koeln.html` | automobil | Koeln | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `automobil-fotografie-krefeld.html` | automobil | Krefeld | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `automobil-fotografie-leverkusen.html` | automobil | Leverkusen | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `automobil-fotografie-mettmann.html` | automobil | Mettmann | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `automobil-fotografie-moenchengladbach.html` | automobil | Moenchengladbach | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `automobil-fotografie-moers.html` | automobil | Moers | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `automobil-fotografie-neuss.html` | automobil | Neuss | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `automobil-fotografie-nrw.html` | automobil | NRW | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `automobil-fotografie-oberhausen.html` | automobil | Oberhausen | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `automobil-fotografie-ratingen.html` | automobil | Ratingen | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `automobil-fotografie-remscheid.html` | automobil | Remscheid | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `automobil-fotografie-solingen.html` | automobil | Solingen | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `automobil-fotografie-wuppertal.html` | automobil | Wuppertal | unique | ok | unique | eigene Sektionstexte | 10% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
+| `automobil-fotografie-bergisch-gladbach.html` | automobil | Bergisch Gladbach | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `automobil-fotografie-bochum.html` | automobil | Bochum | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `automobil-fotografie-deutschland.html` | automobil | Deutschland | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `automobil-fotografie-dormagen.html` | automobil | Dormagen | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `automobil-fotografie-dortmund.html` | automobil | Dortmund | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `automobil-fotografie-duesseldorf.html` | automobil | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `automobil-fotografie-duisburg.html` | automobil | Duisburg | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `automobil-fotografie-erkrath.html` | automobil | Erkrath | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `automobil-fotografie-essen.html` | automobil | Essen | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `automobil-fotografie-gelsenkirchen.html` | automobil | Gelsenkirchen | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `automobil-fotografie-hilden.html` | automobil | Hilden | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `automobil-fotografie-koeln.html` | automobil | Koeln | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `automobil-fotografie-krefeld.html` | automobil | Krefeld | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `automobil-fotografie-leverkusen.html` | automobil | Leverkusen | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `automobil-fotografie-mettmann.html` | automobil | Mettmann | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `automobil-fotografie-moenchengladbach.html` | automobil | Moenchengladbach | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `automobil-fotografie-moers.html` | automobil | Moers | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `automobil-fotografie-neuss.html` | automobil | Neuss | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `automobil-fotografie-nrw.html` | automobil | NRW | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `automobil-fotografie-oberhausen.html` | automobil | Oberhausen | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `automobil-fotografie-ratingen.html` | automobil | Ratingen | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `automobil-fotografie-remscheid.html` | automobil | Remscheid | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `automobil-fotografie-solingen.html` | automobil | Solingen | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `automobil-fotografie-wuppertal.html` | automobil | Wuppertal | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
 | `automobil-fotografie.html` | automobil | parent-or-default | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | H1/Headline keywordgenauer setzen, Sektionstexte sind bereits unique |
-| `automotive-fotografie-duesseldorf.html` | automobil | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 10% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
+| `automotive-fotografie-duesseldorf.html` | automobil | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
 | `automotive-fotografie.html` | automobil | standalone-keyword | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | H1/Headline keywordgenauer setzen, Sektionstexte sind bereits unique |
-| `autoverkauf-fotos-duesseldorf.html` | automobil | Duesseldorf | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `bilder-mit-auto-duesseldorf.html` | automobil | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 11% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
+| `autoverkauf-fotos-duesseldorf.html` | automobil | Duesseldorf | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `bilder-mit-auto-duesseldorf.html` | automobil | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 11% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
 | `bilder-mit-auto.html` | automobil | standalone-keyword | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | H1/Headline keywordgenauer setzen, Sektionstexte sind bereits unique |
 | `fahrzeugfotografie-duesseldorf.html` | automobil | Duesseldorf | unique | ok | unique | gleiches Layout, Intent-Copy ausbauen | 10% | mittel-hoch | eigene Mittel-Sektionen, FAQ und interne Links passend zum Keyword ergaenzen |
 | `fahrzeugfotografie.html` | automobil | standalone-keyword | unique | ok | unique | gleiches Layout + kaum eigene Mitteltexte | Basis | hoch | eigene Mittel-Sektionen, FAQ und interne Links passend zum Keyword ergaenzen |
-| `fotoshooting-mit-auto-duesseldorf.html` | automobil | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 12% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
+| `fotoshooting-mit-auto-duesseldorf.html` | automobil | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 12% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
 | `fotoshooting-mit-auto.html` | automobil | standalone-keyword | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | H1/Headline keywordgenauer setzen, Sektionstexte sind bereits unique |
 
 ## Sportwagen
 
 | Seite | Familie | Scope | Title | Canonical | H1 | Sektionen/Text | Naehe zur Prefix-Basis | Risiko | To-do |
 |---|---|---|---|---|---|---|---:|---|---|
-| `exotic-car-fotografie-duesseldorf.html` | sportwagen | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 11% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
+| `exotic-car-fotografie-duesseldorf.html` | sportwagen | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 11% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
 | `exotic-car-fotografie.html` | sportwagen | standalone-keyword | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | H1/Headline keywordgenauer setzen, Sektionstexte sind bereits unique |
-| `motorsport-fotografie-duesseldorf.html` | sportwagen | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 18% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
+| `motorsport-fotografie-duesseldorf.html` | sportwagen | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 18% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
 | `motorsport-fotografie.html` | sportwagen | standalone-keyword | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | H1/Headline keywordgenauer setzen, Sektionstexte sind bereits unique |
-| `motorsport-sportwagen-fotografie-duesseldorf.html` | sportwagen | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 19% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
+| `motorsport-sportwagen-fotografie-duesseldorf.html` | sportwagen | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 19% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
 | `motorsport-sportwagen-fotografie.html` | sportwagen | standalone-keyword | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | H1/Headline keywordgenauer setzen, Sektionstexte sind bereits unique |
-| `performance-car-fotografie-duesseldorf.html` | sportwagen | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 11% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
+| `performance-car-fotografie-duesseldorf.html` | sportwagen | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 11% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
 | `performance-car-fotografie.html` | sportwagen | standalone-keyword | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | H1/Headline keywordgenauer setzen, Sektionstexte sind bereits unique |
-| `sportwagen-fotografie-bergisch-gladbach.html` | sportwagen | Bergisch Gladbach | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `sportwagen-fotografie-bochum.html` | sportwagen | Bochum | unique | ok | unique | eigene Sektionstexte | 10% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `sportwagen-fotografie-deutschland.html` | sportwagen | Deutschland | unique | ok | unique | eigene Sektionstexte | 10% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `sportwagen-fotografie-dormagen.html` | sportwagen | Dormagen | unique | ok | unique | eigene Sektionstexte | 10% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `sportwagen-fotografie-dortmund.html` | sportwagen | Dortmund | unique | ok | unique | eigene Sektionstexte | 10% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `sportwagen-fotografie-duesseldorf.html` | sportwagen | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 11% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `sportwagen-fotografie-duisburg.html` | sportwagen | Duisburg | unique | ok | unique | eigene Sektionstexte | 11% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `sportwagen-fotografie-erkrath.html` | sportwagen | Erkrath | unique | ok | unique | eigene Sektionstexte | 11% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `sportwagen-fotografie-essen.html` | sportwagen | Essen | unique | ok | unique | eigene Sektionstexte | 10% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `sportwagen-fotografie-gelsenkirchen.html` | sportwagen | Gelsenkirchen | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `sportwagen-fotografie-hilden.html` | sportwagen | Hilden | unique | ok | unique | eigene Sektionstexte | 10% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `sportwagen-fotografie-koeln.html` | sportwagen | Koeln | unique | ok | unique | eigene Sektionstexte | 11% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `sportwagen-fotografie-krefeld.html` | sportwagen | Krefeld | unique | ok | unique | eigene Sektionstexte | 10% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `sportwagen-fotografie-leverkusen.html` | sportwagen | Leverkusen | unique | ok | unique | eigene Sektionstexte | 10% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `sportwagen-fotografie-mettmann.html` | sportwagen | Mettmann | unique | ok | unique | eigene Sektionstexte | 10% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `sportwagen-fotografie-moenchengladbach.html` | sportwagen | Moenchengladbach | unique | ok | unique | eigene Sektionstexte | 11% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `sportwagen-fotografie-moers.html` | sportwagen | Moers | unique | ok | unique | eigene Sektionstexte | 11% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `sportwagen-fotografie-neuss.html` | sportwagen | Neuss | unique | ok | unique | eigene Sektionstexte | 10% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `sportwagen-fotografie-nrw.html` | sportwagen | NRW | unique | ok | unique | eigene Sektionstexte | 10% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `sportwagen-fotografie-oberhausen.html` | sportwagen | Oberhausen | unique | ok | unique | eigene Sektionstexte | 11% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `sportwagen-fotografie-ratingen.html` | sportwagen | Ratingen | unique | ok | unique | eigene Sektionstexte | 10% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `sportwagen-fotografie-remscheid.html` | sportwagen | Remscheid | unique | ok | unique | eigene Sektionstexte | 10% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `sportwagen-fotografie-solingen.html` | sportwagen | Solingen | unique | ok | unique | eigene Sektionstexte | 10% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `sportwagen-fotografie-wuppertal.html` | sportwagen | Wuppertal | unique | ok | unique | eigene Sektionstexte | 10% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
+| `sportwagen-fotografie-bergisch-gladbach.html` | sportwagen | Bergisch Gladbach | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `sportwagen-fotografie-bochum.html` | sportwagen | Bochum | unique | ok | unique | eigene Sektionstexte | 10% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `sportwagen-fotografie-deutschland.html` | sportwagen | Deutschland | unique | ok | unique | eigene Sektionstexte | 10% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `sportwagen-fotografie-dormagen.html` | sportwagen | Dormagen | unique | ok | unique | eigene Sektionstexte | 10% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `sportwagen-fotografie-dortmund.html` | sportwagen | Dortmund | unique | ok | unique | eigene Sektionstexte | 10% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `sportwagen-fotografie-duesseldorf.html` | sportwagen | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 11% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `sportwagen-fotografie-duisburg.html` | sportwagen | Duisburg | unique | ok | unique | eigene Sektionstexte | 11% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `sportwagen-fotografie-erkrath.html` | sportwagen | Erkrath | unique | ok | unique | eigene Sektionstexte | 11% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `sportwagen-fotografie-essen.html` | sportwagen | Essen | unique | ok | unique | eigene Sektionstexte | 10% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `sportwagen-fotografie-gelsenkirchen.html` | sportwagen | Gelsenkirchen | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `sportwagen-fotografie-hilden.html` | sportwagen | Hilden | unique | ok | unique | eigene Sektionstexte | 10% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `sportwagen-fotografie-koeln.html` | sportwagen | Koeln | unique | ok | unique | eigene Sektionstexte | 11% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `sportwagen-fotografie-krefeld.html` | sportwagen | Krefeld | unique | ok | unique | eigene Sektionstexte | 10% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `sportwagen-fotografie-leverkusen.html` | sportwagen | Leverkusen | unique | ok | unique | eigene Sektionstexte | 10% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `sportwagen-fotografie-mettmann.html` | sportwagen | Mettmann | unique | ok | unique | eigene Sektionstexte | 10% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `sportwagen-fotografie-moenchengladbach.html` | sportwagen | Moenchengladbach | unique | ok | unique | eigene Sektionstexte | 11% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `sportwagen-fotografie-moers.html` | sportwagen | Moers | unique | ok | unique | eigene Sektionstexte | 11% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `sportwagen-fotografie-neuss.html` | sportwagen | Neuss | unique | ok | unique | eigene Sektionstexte | 10% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `sportwagen-fotografie-nrw.html` | sportwagen | NRW | unique | ok | unique | eigene Sektionstexte | 10% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `sportwagen-fotografie-oberhausen.html` | sportwagen | Oberhausen | unique | ok | unique | eigene Sektionstexte | 11% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `sportwagen-fotografie-ratingen.html` | sportwagen | Ratingen | unique | ok | unique | eigene Sektionstexte | 10% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `sportwagen-fotografie-remscheid.html` | sportwagen | Remscheid | unique | ok | unique | eigene Sektionstexte | 10% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `sportwagen-fotografie-solingen.html` | sportwagen | Solingen | unique | ok | unique | eigene Sektionstexte | 10% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `sportwagen-fotografie-wuppertal.html` | sportwagen | Wuppertal | unique | ok | unique | eigene Sektionstexte | 10% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
 | `sportwagen-fotografie.html` | sportwagen | parent-or-default | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | H1/Headline keywordgenauer setzen, Sektionstexte sind bereits unique |
-| `sportwagen-fotoshooting-duesseldorf.html` | sportwagen | Duesseldorf | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `sportwagen-shooting-duesseldorf.html` | sportwagen | Duesseldorf | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `supersportwagen-fotografie-duesseldorf.html` | sportwagen | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 12% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
+| `sportwagen-fotoshooting-duesseldorf.html` | sportwagen | Duesseldorf | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `sportwagen-shooting-duesseldorf.html` | sportwagen | Duesseldorf | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `supersportwagen-fotografie-duesseldorf.html` | sportwagen | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 12% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
 | `supersportwagen-fotografie.html` | sportwagen | standalone-keyword | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | H1/Headline keywordgenauer setzen, Sektionstexte sind bereits unique |
 
 ## Oldtimer
 
 | Seite | Familie | Scope | Title | Canonical | H1 | Sektionen/Text | Naehe zur Prefix-Basis | Risiko | To-do |
 |---|---|---|---|---|---|---|---:|---|---|
-| `classic-car-fotografie-duesseldorf.html` | oldtimer | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
+| `classic-car-fotografie-duesseldorf.html` | oldtimer | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
 | `classic-car-fotografie.html` | oldtimer | standalone-keyword | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | H1/Headline keywordgenauer setzen, Sektionstexte sind bereits unique |
-| `oldtimer-fotografie-bergisch-gladbach.html` | oldtimer | Bergisch Gladbach | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `oldtimer-fotografie-bochum.html` | oldtimer | Bochum | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `oldtimer-fotografie-deutschland.html` | oldtimer | Deutschland | unique | ok | unique | eigene Sektionstexte | 10% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `oldtimer-fotografie-dormagen.html` | oldtimer | Dormagen | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `oldtimer-fotografie-dortmund.html` | oldtimer | Dortmund | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `oldtimer-fotografie-duesseldorf.html` | oldtimer | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `oldtimer-fotografie-duisburg.html` | oldtimer | Duisburg | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `oldtimer-fotografie-erkrath.html` | oldtimer | Erkrath | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `oldtimer-fotografie-essen.html` | oldtimer | Essen | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `oldtimer-fotografie-gelsenkirchen.html` | oldtimer | Gelsenkirchen | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `oldtimer-fotografie-hilden.html` | oldtimer | Hilden | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `oldtimer-fotografie-koeln.html` | oldtimer | Koeln | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `oldtimer-fotografie-krefeld.html` | oldtimer | Krefeld | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `oldtimer-fotografie-leverkusen.html` | oldtimer | Leverkusen | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `oldtimer-fotografie-mettmann.html` | oldtimer | Mettmann | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `oldtimer-fotografie-moenchengladbach.html` | oldtimer | Moenchengladbach | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `oldtimer-fotografie-moers.html` | oldtimer | Moers | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `oldtimer-fotografie-neuss.html` | oldtimer | Neuss | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `oldtimer-fotografie-nrw.html` | oldtimer | NRW | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `oldtimer-fotografie-oberhausen.html` | oldtimer | Oberhausen | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `oldtimer-fotografie-ratingen.html` | oldtimer | Ratingen | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `oldtimer-fotografie-remscheid.html` | oldtimer | Remscheid | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `oldtimer-fotografie-solingen.html` | oldtimer | Solingen | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `oldtimer-fotografie-wuppertal.html` | oldtimer | Wuppertal | unique | ok | unique | eigene Sektionstexte | 10% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
+| `oldtimer-fotografie-bergisch-gladbach.html` | oldtimer | Bergisch Gladbach | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `oldtimer-fotografie-bochum.html` | oldtimer | Bochum | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `oldtimer-fotografie-deutschland.html` | oldtimer | Deutschland | unique | ok | unique | eigene Sektionstexte | 10% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `oldtimer-fotografie-dormagen.html` | oldtimer | Dormagen | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `oldtimer-fotografie-dortmund.html` | oldtimer | Dortmund | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `oldtimer-fotografie-duesseldorf.html` | oldtimer | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `oldtimer-fotografie-duisburg.html` | oldtimer | Duisburg | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `oldtimer-fotografie-erkrath.html` | oldtimer | Erkrath | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `oldtimer-fotografie-essen.html` | oldtimer | Essen | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `oldtimer-fotografie-gelsenkirchen.html` | oldtimer | Gelsenkirchen | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `oldtimer-fotografie-hilden.html` | oldtimer | Hilden | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `oldtimer-fotografie-koeln.html` | oldtimer | Koeln | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `oldtimer-fotografie-krefeld.html` | oldtimer | Krefeld | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `oldtimer-fotografie-leverkusen.html` | oldtimer | Leverkusen | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `oldtimer-fotografie-mettmann.html` | oldtimer | Mettmann | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `oldtimer-fotografie-moenchengladbach.html` | oldtimer | Moenchengladbach | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `oldtimer-fotografie-moers.html` | oldtimer | Moers | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `oldtimer-fotografie-neuss.html` | oldtimer | Neuss | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `oldtimer-fotografie-nrw.html` | oldtimer | NRW | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `oldtimer-fotografie-oberhausen.html` | oldtimer | Oberhausen | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `oldtimer-fotografie-ratingen.html` | oldtimer | Ratingen | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `oldtimer-fotografie-remscheid.html` | oldtimer | Remscheid | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `oldtimer-fotografie-solingen.html` | oldtimer | Solingen | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `oldtimer-fotografie-wuppertal.html` | oldtimer | Wuppertal | unique | ok | unique | eigene Sektionstexte | 10% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
 | `oldtimer-fotografie.html` | oldtimer | parent-or-default | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | H1/Headline keywordgenauer setzen, Sektionstexte sind bereits unique |
-| `oldtimer-shooting-duesseldorf.html` | oldtimer | Duesseldorf | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `oldtimer-verkaufsfotos-duesseldorf.html` | oldtimer | Duesseldorf | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `sammlerfahrzeug-fotografie-duesseldorf.html` | oldtimer | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
+| `oldtimer-shooting-duesseldorf.html` | oldtimer | Duesseldorf | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `oldtimer-verkaufsfotos-duesseldorf.html` | oldtimer | Duesseldorf | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `sammlerfahrzeug-fotografie-duesseldorf.html` | oldtimer | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
 | `sammlerfahrzeug-fotografie.html` | oldtimer | standalone-keyword | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | H1/Headline keywordgenauer setzen, Sektionstexte sind bereits unique |
-| `youngtimer-fotografie-duesseldorf.html` | oldtimer | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 9% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
+| `youngtimer-fotografie-duesseldorf.html` | oldtimer | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 8% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
 | `youngtimer-fotografie.html` | oldtimer | standalone-keyword | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | H1/Headline keywordgenauer setzen, Sektionstexte sind bereits unique |
 
 ## Motorrad
 
 | Seite | Familie | Scope | Title | Canonical | H1 | Sektionen/Text | Naehe zur Prefix-Basis | Risiko | To-do |
 |---|---|---|---|---|---|---|---:|---|---|
-| `bike-fotografie-duesseldorf.html` | motorrad | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 12% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
+| `bike-fotografie-duesseldorf.html` | motorrad | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 12% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
 | `bike-fotografie.html` | motorrad | standalone-keyword | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | H1/Headline keywordgenauer setzen, Sektionstexte sind bereits unique |
-| `biker-portrait-duesseldorf.html` | motorrad | Duesseldorf | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `custom-bike-fotografie-duesseldorf.html` | motorrad | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 12% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
+| `biker-portrait-duesseldorf.html` | motorrad | Duesseldorf | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `custom-bike-fotografie-duesseldorf.html` | motorrad | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 12% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
 | `custom-bike-fotografie.html` | motorrad | standalone-keyword | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | H1/Headline keywordgenauer setzen, Sektionstexte sind bereits unique |
-| `motorrad-fotografie-bergisch-gladbach.html` | motorrad | Bergisch Gladbach | unique | ok | unique | eigene Sektionstexte | 13% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `motorrad-fotografie-bochum.html` | motorrad | Bochum | unique | ok | unique | eigene Sektionstexte | 15% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `motorrad-fotografie-deutschland.html` | motorrad | Deutschland | unique | ok | unique | eigene Sektionstexte | 15% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `motorrad-fotografie-dormagen.html` | motorrad | Dormagen | unique | ok | unique | eigene Sektionstexte | 15% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `motorrad-fotografie-dortmund.html` | motorrad | Dortmund | unique | ok | unique | eigene Sektionstexte | 12% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `motorrad-fotografie-duesseldorf.html` | motorrad | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 14% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `motorrad-fotografie-duisburg.html` | motorrad | Duisburg | unique | ok | unique | eigene Sektionstexte | 14% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `motorrad-fotografie-erkrath.html` | motorrad | Erkrath | unique | ok | unique | eigene Sektionstexte | 13% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `motorrad-fotografie-essen.html` | motorrad | Essen | unique | ok | unique | eigene Sektionstexte | 14% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `motorrad-fotografie-gelsenkirchen.html` | motorrad | Gelsenkirchen | unique | ok | unique | eigene Sektionstexte | 15% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `motorrad-fotografie-hilden.html` | motorrad | Hilden | unique | ok | unique | eigene Sektionstexte | 12% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `motorrad-fotografie-koeln.html` | motorrad | Koeln | unique | ok | unique | eigene Sektionstexte | 15% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `motorrad-fotografie-krefeld.html` | motorrad | Krefeld | unique | ok | unique | eigene Sektionstexte | 15% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `motorrad-fotografie-leverkusen.html` | motorrad | Leverkusen | unique | ok | unique | eigene Sektionstexte | 13% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `motorrad-fotografie-mettmann.html` | motorrad | Mettmann | unique | ok | unique | eigene Sektionstexte | 12% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `motorrad-fotografie-moenchengladbach.html` | motorrad | Moenchengladbach | unique | ok | unique | eigene Sektionstexte | 15% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `motorrad-fotografie-moers.html` | motorrad | Moers | unique | ok | unique | eigene Sektionstexte | 16% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `motorrad-fotografie-neuss.html` | motorrad | Neuss | unique | ok | unique | eigene Sektionstexte | 14% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `motorrad-fotografie-nrw.html` | motorrad | NRW | unique | ok | unique | eigene Sektionstexte | 13% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `motorrad-fotografie-oberhausen.html` | motorrad | Oberhausen | unique | ok | unique | eigene Sektionstexte | 15% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `motorrad-fotografie-ratingen.html` | motorrad | Ratingen | unique | ok | unique | eigene Sektionstexte | 13% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `motorrad-fotografie-remscheid.html` | motorrad | Remscheid | unique | ok | unique | eigene Sektionstexte | 13% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `motorrad-fotografie-solingen.html` | motorrad | Solingen | unique | ok | unique | eigene Sektionstexte | 15% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `motorrad-fotografie-wuppertal.html` | motorrad | Wuppertal | unique | ok | unique | eigene Sektionstexte | 13% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
+| `motorrad-fotografie-bergisch-gladbach.html` | motorrad | Bergisch Gladbach | unique | ok | unique | eigene Sektionstexte | 12% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `motorrad-fotografie-bochum.html` | motorrad | Bochum | unique | ok | unique | eigene Sektionstexte | 15% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `motorrad-fotografie-deutschland.html` | motorrad | Deutschland | unique | ok | unique | eigene Sektionstexte | 15% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `motorrad-fotografie-dormagen.html` | motorrad | Dormagen | unique | ok | unique | eigene Sektionstexte | 15% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `motorrad-fotografie-dortmund.html` | motorrad | Dortmund | unique | ok | unique | eigene Sektionstexte | 12% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `motorrad-fotografie-duesseldorf.html` | motorrad | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 14% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `motorrad-fotografie-duisburg.html` | motorrad | Duisburg | unique | ok | unique | eigene Sektionstexte | 14% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `motorrad-fotografie-erkrath.html` | motorrad | Erkrath | unique | ok | unique | eigene Sektionstexte | 13% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `motorrad-fotografie-essen.html` | motorrad | Essen | unique | ok | unique | eigene Sektionstexte | 14% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `motorrad-fotografie-gelsenkirchen.html` | motorrad | Gelsenkirchen | unique | ok | unique | eigene Sektionstexte | 15% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `motorrad-fotografie-hilden.html` | motorrad | Hilden | unique | ok | unique | eigene Sektionstexte | 12% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `motorrad-fotografie-koeln.html` | motorrad | Koeln | unique | ok | unique | eigene Sektionstexte | 15% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `motorrad-fotografie-krefeld.html` | motorrad | Krefeld | unique | ok | unique | eigene Sektionstexte | 15% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `motorrad-fotografie-leverkusen.html` | motorrad | Leverkusen | unique | ok | unique | eigene Sektionstexte | 13% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `motorrad-fotografie-mettmann.html` | motorrad | Mettmann | unique | ok | unique | eigene Sektionstexte | 12% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `motorrad-fotografie-moenchengladbach.html` | motorrad | Moenchengladbach | unique | ok | unique | eigene Sektionstexte | 15% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `motorrad-fotografie-moers.html` | motorrad | Moers | unique | ok | unique | eigene Sektionstexte | 16% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `motorrad-fotografie-neuss.html` | motorrad | Neuss | unique | ok | unique | eigene Sektionstexte | 14% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `motorrad-fotografie-nrw.html` | motorrad | NRW | unique | ok | unique | eigene Sektionstexte | 13% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `motorrad-fotografie-oberhausen.html` | motorrad | Oberhausen | unique | ok | unique | eigene Sektionstexte | 15% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `motorrad-fotografie-ratingen.html` | motorrad | Ratingen | unique | ok | unique | eigene Sektionstexte | 13% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `motorrad-fotografie-remscheid.html` | motorrad | Remscheid | unique | ok | unique | eigene Sektionstexte | 13% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `motorrad-fotografie-solingen.html` | motorrad | Solingen | unique | ok | unique | eigene Sektionstexte | 15% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `motorrad-fotografie-wuppertal.html` | motorrad | Wuppertal | unique | ok | unique | eigene Sektionstexte | 13% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
 | `motorrad-fotografie.html` | motorrad | parent-or-default | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | H1/Headline keywordgenauer setzen, Sektionstexte sind bereits unique |
-| `motorrad-shooting-duesseldorf.html` | motorrad | Duesseldorf | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `motorrad-verkaufsfotos-duesseldorf.html` | motorrad | Duesseldorf | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
+| `motorrad-shooting-duesseldorf.html` | motorrad | Duesseldorf | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `motorrad-verkaufsfotos-duesseldorf.html` | motorrad | Duesseldorf | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
 
 ## Portrait
 
 | Seite | Familie | Scope | Title | Canonical | H1 | Sektionen/Text | Naehe zur Prefix-Basis | Risiko | To-do |
 |---|---|---|---|---|---|---|---:|---|---|
-| `business-portrait-duesseldorf.html` | portrait | Duesseldorf | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `dating-fotoshooting-duesseldorf.html` | portrait | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 16% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
+| `business-portrait-duesseldorf.html` | portrait | Duesseldorf | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `dating-fotoshooting-duesseldorf.html` | portrait | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 16% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
 | `dating-fotoshooting.html` | portrait | standalone-keyword | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | H1/Headline keywordgenauer setzen, Sektionstexte sind bereits unique |
-| `fotoshooting-gutschein-duesseldorf.html` | portrait | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 17% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
+| `fotoshooting-gutschein-duesseldorf.html` | portrait | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 17% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
 | `fotoshooting-gutschein.html` | portrait | standalone-keyword | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | H1/Headline keywordgenauer setzen, Sektionstexte sind bereits unique |
-| `fotoshooting-preise-duesseldorf.html` | portrait | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 14% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
+| `fotoshooting-preise-duesseldorf.html` | portrait | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 14% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
 | `fotoshooting-preise.html` | portrait | standalone-keyword | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | H1/Headline keywordgenauer setzen, Sektionstexte sind bereits unique |
-| `headshot-fotograf-duesseldorf.html` | portrait | Duesseldorf | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `paarshooting-familienshooting-duesseldorf.html` | portrait | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 16% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
+| `headshot-fotograf-duesseldorf.html` | portrait | Duesseldorf | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `paarshooting-familienshooting-duesseldorf.html` | portrait | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 16% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
 | `paarshooting-familienshooting.html` | portrait | standalone-keyword | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | H1/Headline keywordgenauer setzen, Sektionstexte sind bereits unique |
-| `personal-branding-fotografie-duesseldorf.html` | portrait | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 16% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
+| `personal-branding-fotografie-duesseldorf.html` | portrait | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 16% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
 | `personal-branding-fotografie.html` | portrait | standalone-keyword | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | H1/Headline keywordgenauer setzen, Sektionstexte sind bereits unique |
-| `portrait-fotoshooting-duesseldorf.html` | portrait | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 18% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
+| `portrait-fotoshooting-duesseldorf.html` | portrait | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 18% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
 | `portrait-fotoshooting.html` | portrait | standalone-keyword | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | H1/Headline keywordgenauer setzen, Sektionstexte sind bereits unique |
-| `portraitfotografie-beleuchtung-duesseldorf.html` | portrait | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 16% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
+| `portraitfotografie-beleuchtung-duesseldorf.html` | portrait | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 16% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
 | `portraitfotografie-beleuchtung.html` | portrait | standalone-keyword | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | H1/Headline keywordgenauer setzen, Sektionstexte sind bereits unique |
 | `portraitfotografie-bergisch-gladbach.html` | portrait | Bergisch Gladbach | unique | ok | unique | gleiches Layout, lokale Mitteltexte | 16% | mittel-niedrig | vorerst okay, erst bei Impressionen weiter individualisieren |
 | `portraitfotografie-bochum.html` | portrait | Bochum | unique | ok | unique | gleiches Layout, lokale Mitteltexte | 15% | mittel-niedrig | vorerst okay, erst bei Impressionen weiter individualisieren |
@@ -240,10 +240,10 @@ Wichtig: Gleiche Layouts sind fuer Clusterseiten nicht automatisch ein Problem. 
 | `portraitfotografie-solingen.html` | portrait | Solingen | unique | ok | unique | gleiches Layout, lokale Mitteltexte | 16% | mittel-niedrig | vorerst okay, erst bei Impressionen weiter individualisieren |
 | `portraitfotografie-wuppertal.html` | portrait | Wuppertal | unique | ok | unique | gleiches Layout, lokale Mitteltexte | 15% | mittel-niedrig | vorerst okay, erst bei Impressionen weiter individualisieren |
 | `portraitfotografie.html` | portrait | parent-or-default | unique | ok | unique | gleiches Layout + kaum eigene Mitteltexte | Basis | hoch | eigene Mittel-Sektionen, FAQ und interne Links passend zum Keyword ergaenzen |
-| `pressefoto-duesseldorf.html` | portrait | Duesseldorf | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
-| `schwarz-weiss-portrait-fotografie-duesseldorf.html` | portrait | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 18% | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
+| `pressefoto-duesseldorf.html` | portrait | Duesseldorf | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
+| `schwarz-weiss-portrait-fotografie-duesseldorf.html` | portrait | Duesseldorf | unique | ok | unique | eigene Sektionstexte | 18% | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
 | `schwarz-weiss-portrait-fotografie.html` | portrait | standalone-keyword | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | H1/Headline keywordgenauer setzen, Sektionstexte sind bereits unique |
-| `unternehmensportrait-duesseldorf.html` | portrait | Duesseldorf | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
+| `unternehmensportrait-duesseldorf.html` | portrait | Duesseldorf | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
 
 ## Landschaft
 
@@ -271,7 +271,7 @@ Wichtig: Gleiche Layouts sind fuer Clusterseiten nicht automatisch ein Problem. 
 | `landschaftsfotografie-neuss.html` | landschaft | Neuss | unique | ok | unique | gleiches Layout, lokale Mitteltexte | 3% | mittel-niedrig | vorerst okay, erst bei Impressionen weiter individualisieren |
 | `landschaftsfotografie-nrw.html` | landschaft | NRW | unique | ok | unique | gleiches Layout, lokale Mitteltexte | 3% | mittel-niedrig | vorerst okay, erst bei Impressionen weiter individualisieren |
 | `landschaftsfotografie-oberhausen.html` | landschaft | Oberhausen | unique | ok | unique | gleiches Layout, lokale Mitteltexte | 3% | mittel-niedrig | vorerst okay, erst bei Impressionen weiter individualisieren |
-| `landschaftsfotografie-print-deutschland.html` | landschaft | Deutschland | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen |
+| `landschaftsfotografie-print-deutschland.html` | landschaft | Deutschland | unique | ok | unique | eigene Sektionstexte | Basis | niedrig | bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen |
 | `landschaftsfotografie-ratingen.html` | landschaft | Ratingen | unique | ok | unique | gleiches Layout, lokale Mitteltexte | 3% | mittel | 1-2 echte Orts-/Referenzabschnitte fuer Prioritaetsstadt ergaenzen |
 | `landschaftsfotografie-remscheid.html` | landschaft | Remscheid | unique | ok | unique | gleiches Layout, lokale Mitteltexte | 3% | mittel-niedrig | vorerst okay, erst bei Impressionen weiter individualisieren |
 | `landschaftsfotografie-solingen.html` | landschaft | Solingen | unique | ok | unique | gleiches Layout, lokale Mitteltexte | 3% | mittel-niedrig | vorerst okay, erst bei Impressionen weiter individualisieren |

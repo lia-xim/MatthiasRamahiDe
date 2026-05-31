@@ -187,7 +187,7 @@ const statusTextFor = ({ prefix, scope, family, sectionSimilarity }) => {
 const todoFor = ({ prefix, scope, risk, statusText }) => {
   if (sectionRichPrefixes.has(prefix)) {
     return scope.kind === 'lokal'
-      ? 'H1/Headline plus 1 lokale Mini-Sektion staerker auf Ort setzen'
+      ? 'bei Impressionen 1 lokale Mini-Sektion oder FAQ weiter schaerfen'
       : 'H1/Headline keywordgenauer setzen, Sektionstexte sind bereits unique'
   }
   if (risk === 'niedrig') return 'beobachten, spaeter CMS-Feinschliff'
