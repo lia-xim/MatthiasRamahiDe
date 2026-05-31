@@ -45,16 +45,27 @@ const familyContent = localSeoFamilyContent.automobil
 const scope = scopeFromSlug(legacyFile)
 const isParentPage = legacyFile === defaultLegacyFile
 const isKeywordPage = scope.generic
+const isLocalCityPage = !isParentPage && !isKeywordPage
 const serviceLabel = serviceLabelFromSlug(legacyFile, familyContent)
 const keywordFocusCopy = keywordFocusCopyForSlug(legacyFile)
 const cmsFaqItems = doc?.localFaq?.map((entry) => ({ q: entry.question || '', a: entry.answer || '' })).filter((entry) => entry.q && entry.a) || []
 const faqItems = cmsFaqItems.length ? cmsFaqItems : keywordFocusCopy?.faq
 const cmsText = (value: unknown) => (typeof value === 'string' ? value.trim() : '')
+const teaserText = (value: unknown, maxLength = 180) => {
+  const text = cmsText(value).replace(/\s+/g, ' ')
+  if (text.length <= maxLength) return text
+  const softCut = text.slice(0, maxLength)
+  const sentenceEnd = Math.max(softCut.lastIndexOf('.'), softCut.lastIndexOf('!'), softCut.lastIndexOf('?'))
+  if (sentenceEnd > 70) return softCut.slice(0, sentenceEnd + 1)
+  const wordCut = softCut.lastIndexOf(' ')
+  return `${softCut.slice(0, wordCut > 70 ? wordCut : maxLength).trimEnd()}...`
+}
 const cmsHeroLine2 = cmsText(doc?.heroLine2)
 const cmsStatementBody = doc?.statement?.body?.map((entry) => cmsText(entry.text)).filter(Boolean) || []
 const localSuffix = !isParentPage && !isKeywordPage ? ` ${scope.label}` : ''
 const heroTitle = !isParentPage && !isKeywordPage ? `${serviceLabel} ${scope.label}` : keywordFocusCopy?.heroTitle || 'Automobil'
-const heroSecondLine = !isParentPage && !isKeywordPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Bildserie vor Ort.' : cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || `Fotografie${localSuffix}.`
+const heroSecondLine = isLocalCityPage ? '' : cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || `Fotografie${localSuffix}.`
+const heroLocalNote = isLocalCityPage ? cmsHeroLine2 : ''
 const heroLabel = isParentPage ? 'Automobilfotografie' : `Automobilfotografie${localSuffix}`
 const defaultHeroLead = isParentPage
   ? 'Automobilfotografie: Exterieur, Interieur, Details und Cinematic werden als kuratierte Bildserie geplant - für Marke, Showroom, Verkauf, Kampagne und hochwertige private Fahrzeuge. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.'
@@ -275,7 +286,41 @@ const inheritedRelatedAreas = relatedAreas.map((area, index) => {
   return { ...area, alt: visual.alt, height: visual.height, image: visual.src, width: visual.width }
 })
 
-const focusPullKicker = keywordFocusCopy?.pullKicker || (isParentPage ? 'Automobilfotografie' : serviceLabel)
+const defaultSwitchCopy = [
+  {
+    title: 'Vollformat, ruhige Linien.',
+    body: 'Aussenaufnahmen mit kontrolliertem Licht und ruhigen Reflexen. Lack, Proportionen und Linienfuehrung wirken stimmig - Showroom, Industrie oder urbanes Setting.',
+  },
+  {
+    title: 'Cockpit, Sitz, Material.',
+    body: 'Innenraum mit mobilem Licht inszeniert. Leder, Carbon und Chrom behalten ihren Ton - der Innenraum spricht dieselbe Sprache wie das Exterieur.',
+  },
+  {
+    title: 'Emblem, Felge, Naht.',
+    body: 'Sicken, Felgen, Bremsen, Schalter, Logos. Detailaufnahmen erzaehlen die Geschichte eines Fahrzeugs im Kleinen - fuer Haendlerseiten, Landingpages und Magazinstrecken.',
+  },
+  {
+    title: 'Architektur, Licht, Dramaturgie.',
+    body: 'Inszenierte Perspektiven mit gesetztem Licht und gewaehlter Architektur. Bilder mit Filmcharakter - fuer Kampagne, Magazin und Bildstrecken, die Stimmung tragen.',
+  },
+]
+const localAudienceCards = doc?.audienceCards?.map((card, index) => ({
+  number: cmsText(card.number) || String(index + 1).padStart(2, '0'),
+  title: cmsText(card.title),
+  text: cmsText(card.text),
+})).filter((card) => card.title || card.text) || []
+const focusSwitchFrames = inheritedSwitchFrames.map((frame, index) => {
+  const localCard = !isParentPage && !isKeywordPage ? localAudienceCards[index] : undefined
+  const fallback = defaultSwitchCopy[index] || defaultSwitchCopy[0]
+  return {
+    ...frame,
+    label: frame.label,
+    title: localCard?.title || cmsText(doc?.shootingStyles?.[index]?.title) || keywordFocusCopy?.cards?.[index]?.title || fallback.title,
+    body: teaserText(localCard?.text || cmsText(doc?.shootingStyles?.[index]?.text) || keywordFocusCopy?.cards?.[index]?.text || fallback.body, 190),
+  }
+})
+
+const focusPullKicker = isLocalCityPage ? `${serviceLabel} ${scope.label}` : keywordFocusCopy?.pullKicker || (isParentPage ? 'Automobilfotografie' : serviceLabel)
 const focusPullHeadline = cmsText(doc?.statement?.headline) || keywordFocusCopy?.pullHeadline || (isParentPage ? 'Vom Inserat bis zur' : `${serviceLabel}:`)
 const focusPullEmphasis = cmsText(doc?.statement?.emphasis) || keywordFocusCopy?.pullEmphasis || (isParentPage ? 'Kampagne.' : 'als Bildserie.')
 const focusPullLead =
@@ -284,24 +329,26 @@ const focusPullLead =
   (isParentPage
     ? 'Vom ehrlichen Verkaufsbild bis zur inszenierten Kampagne - eine konsistente Bildserie, sauber belichtet und sofort einsatzbereit fuer Inserat, Magazin, Social und Print.'
     : `${serviceLabel} wird als eigenstaendige Suchintention gefuehrt, bleibt aber in der Automobil-Struktur: Fahrzeug, Licht, Nutzung und Ausgabe werden vor dem Shooting sauber geplant.`)
-const focusSectionHeadline = keywordFocusCopy?.sectionHeadline || (isParentPage ? 'Ein Bildsatz,' : `${serviceLabel},`)
-const focusSectionEmphasis = keywordFocusCopy?.sectionEmphasis || (isParentPage ? 'vier Blickwinkel.' : isKeywordPage ? 'klar fokussiert.' : `${scope.label}.`)
-const focusFeatureTitle = cmsText(doc?.shootingStyles?.[0]?.title) || keywordFocusCopy?.featureTitle || 'Vollformat, ruhige Linien.'
-const focusFeatureBody =
-  cmsText(doc?.shootingStyles?.[0]?.text) ||
-  keywordFocusCopy?.featureBody ||
-  'Aussenaufnahmen mit kontrolliertem Licht und ruhigen Reflexen. Lack, Proportionen und Linienfuehrung wirken stimmig - Showroom, Industrie oder urbanes Setting.'
-const focusGalleryHeadline = cmsText(doc?.portfolioTiles?.[0]?.label) || keywordFocusCopy?.galleryHeadline || 'Aktuelle Arbeiten.'
-const focusAudienceHeadline = keywordFocusCopy?.audienceHeadline || 'Fuer wen ich arbeite.'
-const focusAudienceLead = cmsText(doc?.audienceCards?.[0]?.text) || keywordFocusCopy?.audienceLead || 'Du erkennst dich wieder?'
-const focusAudiences = doc?.audienceCards?.length
-  ? doc.audienceCards.map((card, index) => [cmsText(card.number) || String(index + 1).padStart(2, '0'), cmsText(card.title) || `Zielgruppe ${index + 1}`, cmsText(card.text) || 'CMS'])
+const focusPullRest = cmsStatementBody.slice(1)
+const focusSectionHeadline = isLocalCityPage ? `${serviceLabel} in ${scope.label},` : keywordFocusCopy?.sectionHeadline || (isParentPage ? 'Ein Bildsatz,' : `${serviceLabel},`)
+const focusSectionEmphasis = isLocalCityPage ? 'lokal geplant.' : keywordFocusCopy?.sectionEmphasis || (isParentPage ? 'vier Blickwinkel.' : 'klar fokussiert.')
+const focusFeatureTitle = focusSwitchFrames[0]?.title || keywordFocusCopy?.featureTitle || defaultSwitchCopy[0].title
+const focusFeatureBody = focusSwitchFrames[0]?.body || keywordFocusCopy?.featureBody || defaultSwitchCopy[0].body
+const focusGalleryHeadline = isLocalCityPage ? `${serviceLabel} ${scope.label}: Bildtypen.` : cmsText(doc?.portfolioTiles?.[0]?.label) || keywordFocusCopy?.galleryHeadline || 'Automobilfotografie als Bildserie.'
+const focusAudienceHeadline = isLocalCityPage ? `${serviceLabel} ${scope.label}: passende Anfragen.` : keywordFocusCopy?.audienceHeadline || 'Automobilfotografie: passende Anfragen.'
+const focusAudienceLead = keywordFocusCopy?.audienceLead || (!isParentPage && !isKeywordPage
+  ? `Ob Showroom, privates Fahrzeug oder Kampagne: in ${scope.label} wird die Bildserie nach Nutzung, Standort und Ausgabe geplant.`
+  : 'Du erkennst dich wieder?')
+const focusAudiences = localAudienceCards.length
+  ? localAudienceCards.map((card, index) => [card.number, card.title || `Zielgruppe ${index + 1}`, teaserText(card.text || 'Anfrage mit konkretem Fahrzeugbezug.', 130)])
   : keywordFocusCopy?.cards?.length
   ? keywordFocusCopy.cards.map((card, index) => [String(index + 1).padStart(2, '0'), card.title, card.label || 'Shooting'])
   : audiences
 const focusRelatedLead =
-  keywordFocusCopy?.relatedLead ||
-  'Automobil ist die Klammer. Schau dir die spezialisierten Disziplinen an - gleicher Anspruch, anderer Bildfokus. Diese Kategorie ist Teil eines bewusst getrennten Fotografie-Clusters: Fahrzeug, Mensch und Raum bleiben eigenstaendige Suchintentionen, sind aber intern so verbunden, dass Nutzer schnell in den passenden Bildbereich wechseln koennen.'
+  isLocalCityPage
+    ? `Automobil Fotografie ${scope.label} bleibt der Hub fuer Fahrzeugbilder vor Ort. Sportwagen, Oldtimer, Motorrad und Auto-Fotoshooting werden intern getrennt verlinkt, damit Suchintentionen nicht gegeneinander laufen.`
+    : keywordFocusCopy?.relatedLead ||
+      'Automobil ist die Klammer. Schau dir die spezialisierten Disziplinen an - gleicher Anspruch, anderer Bildfokus. Diese Kategorie ist Teil eines bewusst getrennten Fotografie-Clusters: Fahrzeug, Mensch und Raum bleiben eigenstaendige Suchintentionen, sind aber intern so verbunden, dass Nutzer schnell in den passenden Bildbereich wechseln koennen.'
 
 const cityLinks = [
   ['automobil-fotografie.html', 'Düsseldorf'],
@@ -379,10 +426,11 @@ const searchLinks = [
       <div class="pd-grain" aria-hidden="true"></div>
       <div class="pd-overlay">
         <div class="pd-bottom">
-          <h1 class="pd-title">
+          <h1 class={`pd-title${isLocalCityPage ? ' pd-title--local' : ''}`}>
             <span class="line"><span class="word">{heroTitle}</span></span>
-            <span class="line"><span class="word">{heroSecondLine}</span></span>
+            {heroSecondLine && <span class="line"><span class="word">{heroSecondLine}</span></span>}
           </h1>
+          {heroLocalNote && <p class="pd-local-note">{heroLocalNote}</p>}
           <p class="pd-sub">{doc?.intro || heroLead}</p>
           <div class="pd-actions">
             <a href="#anfrage">Shooting buchen →</a>
@@ -398,7 +446,10 @@ const searchLinks = [
         <blockquote class="st-pull-quote">
           <strong>{focusPullHeadline} <span class="accent">{focusPullEmphasis}</span></strong>
         </blockquote>
-        <p class="st-pull-lead">{focusPullLead}</p>
+        <div class="st-pull-copy">
+          <p class="st-pull-lead">{focusPullLead}</p>
+          {focusPullRest.map((paragraph) => <p class="st-pull-lead">{paragraph}</p>)}
+        </div>
         <div class="st-pull-cta">
           <a href="#anfrage">Shooting buchen <span aria-hidden="true">→</span></a>
         </div>
@@ -414,15 +465,15 @@ const searchLinks = [
 
       <div class="sw-body">
         <nav class="sw-tabs" role="tablist" aria-label="Bildkategorien">
-          {inheritedSwitchFrames.map((frame, index) => (
-            <button class="sw-tab" role="tab" aria-selected={index === 0 ? 'true' : 'false'} data-cat={index}>
+          {focusSwitchFrames.map((frame, index) => (
+            <button class="sw-tab" role="tab" aria-selected={index === 0 ? 'true' : 'false'} data-cat={index} data-title={frame.title} data-body={frame.body}>
               <span class="lbl">{frame.label}</span>
             </button>
           ))}
         </nav>
 
         <div class="sw-stage" id="swStage" role="region" aria-live="polite">
-          {inheritedSwitchFrames.map((frame, index) => (
+          {focusSwitchFrames.map((frame, index) => (
             <div
               class={`frame${index === 0 ? ' is-active' : ''}`}
               data-frame={index}

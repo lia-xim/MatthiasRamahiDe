@@ -209,7 +209,7 @@
     var fill   = document.getElementById('swFill');
     var prog   = document.getElementById('swProgress');
 
-    var DATA = [
+    var fallbackData = [
       {label:'Exterieur', title:'Vollformat, ruhige Linien.',
        body:'Außenaufnahmen mit kontrolliertem Licht und ruhigen Reflexen. Lack, Proportionen und Linienführung wirken stimmig — Showroom, Industrie oder urbanes Setting.',
        list:['Showroom & Location','Architektur & Industrie','Tages- und Nachtlicht']},
@@ -223,6 +223,17 @@
        body:'Inszenierte Perspektiven mit gesetztem Licht und gewählter Architektur. Bilder mit Filmcharakter — für Kampagne, Magazin und Bildstrecken, die Stimmung tragen.',
        list:['Nachtaufnahmen','Architektur als Bühne','Kampagnen-Look']}
     ];
+
+    var DATA = tabs.map(function(tab, idx){
+      var fallback = fallbackData[idx] || fallbackData[0];
+      return {
+        label: (tab.textContent || '').trim() || fallback.label,
+        title: tab.getAttribute('data-title') || fallback.title,
+        body: tab.getAttribute('data-body') || fallback.body,
+        list: fallback.list
+      };
+    });
+    if(!DATA.length) DATA = fallbackData;
 
     var CYCLE_MS = 6000;
     var TICK_MS  = 80;
