@@ -1,9 +1,14 @@
-// Run from apps/web:  node ../../tools/gen-seo-tracker.mjs
+// Run from repo root: node tools/gen-seo-tracker.mjs
 // Generates docs/seo-content-tracker.md incl. CMS-Status + Scoring:
 //   Q = SEO-Qualität (Struktur + thematische Keyword/Geo-Abdeckung)
 //   U = Content-Einzigartigkeit (Prosa-Trigramm-Jaccard -> Duplicate-Content-Risiko)
 //   K = Intent-Trennung / Anti-Kannibalisierung (Titel-/Keyword-Ziel-Überlappung INNERHALB Familie+Ort)
 import fs from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+
+const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
+const fromRoot = (...parts) => path.join(repoRoot, ...parts)
 
 const families = {
   automobil: ['automobil-fotografie', 'auto-fotoshooting', 'auto-fotografieren-tipps', 'automotive-fotografie', 'autofotografie', 'autohaus-fotografie', 'autoverkauf-fotos', 'bilder-mit-auto', 'fahrzeugfotografie', 'fotoshooting-mit-auto'],
@@ -19,11 +24,30 @@ const richCopy = new Set(['auto-fotografieren-tipps','auto-fotoshooting','bilder
 const faqKeys = new Set(['automobil-fotografie','sportwagen-fotografie','oldtimer-fotografie','motorrad-fotografie','portraitfotografie','landschaftsfotografie','business-portrait','headshot-fotograf','personal-branding-fotografie','unternehmensportrait','pressefoto'])
 const famParent = { automobil: 'automobil-fotografie', sportwagen: 'sportwagen-fotografie', oldtimer: 'oldtimer-fotografie', motorrad: 'motorrad-fotografie', portrait: 'portraitfotografie', landschaft: 'landschaftsfotografie' }
 
-const audit = JSON.parse(fs.readFileSync('../../.tmp/cms-connection-audit.json', 'utf8'))
+const labelFromSlug = (slug) => slug
+  .split('-')
+  .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+  .join(' ')
+
+const audit = JSON.parse(fs.readFileSync(fromRoot('.tmp/cms-connection-audit.json'), 'utf8'))
 const noDoc = new Set(audit.withoutDoc.map((s) => s.toLowerCase()))
 let content = []
-try { content = JSON.parse(fs.readFileSync('../cms/content/local-seo-content.json', 'utf8')) || [] } catch {}
+try { content = JSON.parse(fs.readFileSync(fromRoot('apps/cms/content/local-seo-content.json'), 'utf8')) || [] } catch {}
+// auch die 6 Familien-Hauptseiten (Hubs, liegen in service-pages) mit erfassen -> ALLE Seiten im Scoring
+let hubs = []
+try {
+  hubs = (JSON.parse(fs.readFileSync(fromRoot('apps/cms/content/service-page-content.json'), 'utf8')) || []).map((e) => ({
+    ...e,
+    legacyFile: `${e.slug}.html`,
+    family: Object.keys(famParent).find((f) => famParent[f] === e.slug),
+    collection: 'service-pages',
+    service: e.service || labelFromSlug(e.slug),
+    targetKeyword: e.targetKeyword || labelFromSlug(e.slug),
+  }))
+} catch {}
+content = [...content, ...hubs]
 const authored = new Set(content.map((e) => String(e.legacyFile || '').toLowerCase()))
+const serviceHubFiles = new Set(hubs.map((e) => String(e.legacyFile || '').toLowerCase()))
 
 // ---------- text helpers ----------
 const STOP = new Set(['und','der','die','das','für','mit','von','aus','den','dem','ein','eine','matthias','ramahi','wird','werden','sind','ist','als','auf','bei','wie','was','wo'])
@@ -40,6 +64,41 @@ const stripBrand = (t) => (t || '').toLowerCase().replace(/[|–—-]\s*matthias
 const targetTokens = (e, geo) => {
   const geoWords = new Set(toWords(cityLabel[geo] || geo).concat(toWords(geo)))
   return new Set(toWords(stripBrand(e.seo?.title) + ' ' + (e.targetKeyword || '') + ' ' + (e.service || '')).filter((w) => !STOP.has(w) && !GENERIC.has(w) && !geoWords.has(w)))
+}
+
+const stripHtml = (html) => (html || '')
+  .replace(/<script\b[\s\S]*?<\/script>/gi, ' ')
+  .replace(/<style\b[\s\S]*?<\/style>/gi, ' ')
+  .replace(/<[^>]+>/g, ' ')
+  .replace(/&nbsp;/g, ' ')
+  .replace(/&amp;/g, '&')
+  .replace(/&quot;/g, '"')
+  .replace(/&#34;/g, '"')
+  .replace(/\s+/g, ' ')
+  .trim()
+
+const htmlAttr = (html, re) => html.match(re)?.[1] || ''
+const htmlText = (html, re) => stripHtml(html.match(re)?.[1] || '')
+const isRedirectHtml = (html) => /<meta[^>]+http-equiv=["']refresh["']/i.test(html)
+const hasNoindex = (html) => /<meta[^>]+name=["']robots["'][^>]+content=["'][^"']*noindex/i.test(html)
+
+function collectIndexPages(dir, base = dir) {
+  const pages = []
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, entry.name)
+    if (entry.isDirectory()) {
+      pages.push(...collectIndexPages(full, base))
+    } else if (entry.name === 'index.html') {
+      pages.push(full)
+    }
+  }
+  return pages
+}
+
+function routeFromIndexPath(indexPath, baseDir) {
+  const rel = path.relative(baseDir, path.dirname(indexPath)).replace(/\\/g, '/')
+  if (!rel || rel === '.') return 'index.html'
+  return rel.endsWith('.html') ? rel : `${rel}/`
 }
 
 // ---------- per-page scores ----------
@@ -107,18 +166,105 @@ function classify(slug) {
   else if (cityTokens.includes(rest)) { scope = rest; kind = 'city' }
   return { fam: m.fam, prefix: m.p, scope, kind }
 }
-const dirs = fs.readdirSync('dist/client').filter((d) => d.endsWith('.html') && fs.existsSync(`dist/client/${d}/index.html`))
+const distClient = fromRoot('apps/web/dist/client')
+const allBuiltPages = collectIndexPages(distClient)
+  .map((indexPath) => {
+    const html = fs.readFileSync(indexPath, 'utf8')
+    const route = routeFromIndexPath(indexPath, distClient)
+    const file = route.toLowerCase()
+    const redirect = isRedirectHtml(html)
+    const noindex = hasNoindex(html)
+    const title = stripHtml(htmlText(html, /<title\b[^>]*>([\s\S]*?)<\/title>/i))
+    const description = htmlAttr(html, /<meta[^>]+name=["']description["'][^>]+content=["']([^"']*)["']/i)
+    const canonical = htmlAttr(html, /<link[^>]+rel=["']canonical["'][^>]+href=["']([^"']*)["']/i)
+    const h1 = htmlText(html, /<h1\b[^>]*>([\s\S]*?)<\/h1>/i)
+    const mainText = stripHtml(html.match(/<main\b[\s\S]*?<\/main>/i)?.[0] || html)
+    const localFile = route.endsWith('.html') ? route.toLowerCase() : ''
+    const type = redirect
+      ? 'redirect'
+      : serviceHubFiles.has(localFile)
+        ? 'service-hub'
+        : byFile.has(localFile)
+          ? 'local-seo'
+          : route.startsWith('portfolio/')
+            ? 'portfolio'
+            : route.startsWith('journal/') || route === 'blog.html' || route.startsWith('blog-')
+              ? 'journal'
+              : route.startsWith('services/')
+                ? 'service-route'
+                : noindex
+                  ? 'noindex-archiv'
+                  : 'site-page'
+    return {
+      canonical,
+      description,
+      file,
+      h1,
+      indexable: !redirect && !noindex,
+      redirect,
+      route,
+      textWords: toWords(mainText).length,
+      title,
+      titleLength: title.length,
+      type,
+    }
+  })
+  .sort((a, b) => a.route.localeCompare(b.route))
+const redirectLocalSeoFiles = new Set(allBuiltPages.filter((page) => page.redirect && page.route.endsWith('.html')).map((page) => page.route.toLowerCase()))
+
+const dirs = fs.readdirSync(distClient).filter((d) => d.endsWith('.html') && fs.existsSync(path.join(distClient, d, 'index.html')))
 const rows = []
-for (const d of dirs) { const slug = d.replace(/\.html$/, ''); const c = classify(slug); if (c) rows.push({ slug, file: d.toLowerCase(), ...c }) }
+for (const d of dirs) {
+  const file = d.toLowerCase()
+  if (redirectLocalSeoFiles.has(file)) continue
+  const slug = d.replace(/\.html$/, '')
+  const c = classify(slug)
+  if (c) rows.push({ slug, file, ...c })
+}
 rows.sort((a, b) => a.fam.localeCompare(b.fam) || a.prefix.localeCompare(b.prefix) || a.slug.localeCompare(b.slug))
 
 const famOrder = ['automobil', 'sportwagen', 'oldtimer', 'motorrad', 'portrait', 'landschaft']
-const createCount = rows.filter((r) => noDoc.has(r.file)).length
+const serviceHubCount = rows.filter((r) => serviceHubFiles.has(r.file)).length
+const createCount = rows.filter((r) => noDoc.has(r.file) && !serviceHubFiles.has(r.file)).length
+const updateCount = rows.length - createCount - serviceHubCount
 const avg = (arr) => (arr.length ? Math.round(arr.reduce((a, b) => a + b, 0) / arr.length) : 0)
 const all = scored
+const allIndexablePages = allBuiltPages.filter((page) => page.indexable)
+const byType = new Map()
+for (const page of allBuiltPages) byType.set(page.type, (byType.get(page.type) || 0) + 1)
+const websiteTitleGroups = new Map()
+for (const page of allIndexablePages) {
+  const key = page.title.toLowerCase().replace(/\s+/g, ' ').trim()
+  if (!key) continue
+  if (!websiteTitleGroups.has(key)) websiteTitleGroups.set(key, [])
+  websiteTitleGroups.get(key).push(page.route)
+}
+const websiteDuplicateTitles = [...websiteTitleGroups.values()].filter((routes) => routes.length > 1)
+const websiteCanonicalIssues = allIndexablePages.filter((page) => !page.canonical)
+const websiteTitleIssues = allIndexablePages.filter((page) => page.titleLength < 25 || page.titleLength > 70)
+const websiteDescriptionIssues = allIndexablePages.filter((page) => page.description.length < 90 || page.description.length > 170)
 
 let md = `# SEO Content Tracker\n\nQuelle: gebaute Seiten (\`apps/web/dist/client\`) + CMS-Connection-Audit + Content-Scoring aus \`apps/cms/content/local-seo-content.json\`. Neu berechnen: \`node tools/gen-seo-tracker.mjs\`.\n\n`
-md += `**Gesamt:** ${rows.length} Seiten · CMS-Doc (UPDATE): ${rows.length - createCount} · ohne Doc (CREATE): ${createCount} · Content geschrieben (✍️): ${rows.filter((r) => authored.has(r.file)).length}\n\n`
+md += `**Local-/Cluster-Content:** ${rows.length} Seiten · Local-SEO-Doc (UPDATE): ${updateCount} · Service-Hub: ${serviceHubCount} · ohne Local-SEO-Doc (CREATE): ${createCount} · Content geschrieben (✍️): ${rows.filter((r) => authored.has(r.file)).length} · offen: ${rows.filter((r) => !authored.has(r.file)).length}\n\n`
+
+md += `## Websiteweite Seiteninventur\n`
+md += `- Gebaute HTML-Seiten insgesamt: ${allBuiltPages.length} · indexierbar: ${allIndexablePages.length} · noindex/Redirect: ${allBuiltPages.length - allIndexablePages.length}\n`
+md += `- Typen: ${[...byType.entries()].sort((a, b) => a[0].localeCompare(b[0])).map(([type, count]) => `${type}: ${count}`).join(' · ')}\n`
+md += `- Doppelte Title auf indexierbaren Seiten: ${websiteDuplicateTitles.length} · fehlende Canonicals: ${websiteCanonicalIssues.length} · Title-Laenge ausserhalb 25-70: ${websiteTitleIssues.length} · Description-Laenge ausserhalb 90-170: ${websiteDescriptionIssues.length}\n\n`
+if (websiteCanonicalIssues.length || websiteTitleIssues.length || websiteDescriptionIssues.length || websiteDuplicateTitles.length) {
+  md += `**Websiteweite Flags:**\n`
+  for (const page of websiteCanonicalIssues.slice(0, 20)) md += `- Canonical fehlt: \`${page.route}\`\n`
+  for (const page of websiteTitleIssues.slice(0, 20)) md += `- Title-Laenge ${page.titleLength}: \`${page.route}\`\n`
+  for (const page of websiteDescriptionIssues.slice(0, 20)) md += `- Description-Laenge ${page.description.length}: \`${page.route}\`\n`
+  for (const routes of websiteDuplicateTitles.slice(0, 20)) md += `- Doppelter Title: ${routes.map((route) => `\`${route}\``).join(', ')}\n`
+  md += `\n`
+}
+md += `| Route | Typ | Index | Title | Desc | Words | Canonical |\n|---|---|---|---:|---:|---:|---|\n`
+for (const page of allBuiltPages) {
+  const canonicalStatus = page.redirect ? 'redirect' : page.canonical ? 'ok' : 'fehlt'
+  md += `| \`${page.route}\` | ${page.type} | ${page.indexable ? 'ja' : 'nein'} | ${page.titleLength || '–'} | ${page.description.length || '–'} | ${page.textWords} | ${canonicalStatus} |\n`
+}
+md += `\n`
 
 md += `## Scoring-Methodik\n`
 md += `- **Q · SEO-Qualität (0–100):** Struktur (Intro 180–760 Z., 2 Statement-Absätze ≥110, ≥4 Audience-Cards, 4 FAQ ≥80) **+ thematische Abdeckung** (SEO-Title 30–70, Description 115–170, Fokus-Keyword im Intro, lokaler Ortsname im Intro bei Stadt-Seiten, echte W-Frage in den FAQ).\n`
@@ -134,6 +280,7 @@ if (all.length) {
   md += `## Bewertung (${all.length} Seiten im CMS-Content)\n`
   md += `- **Ø Qualität ${avg(all.map((p) => p.q))}** · **Ø Einzigartigkeit ${avg(all.map((p) => p.u))}** · **Ø Kannibalisierungs-Schutz ${avg(all.map((p) => p.k))}**\n`
   md += `- Qualität<80: ${all.filter((p) => p.q < 80).length} · Einzigartigkeit<70: ${all.filter((p) => p.u < 70).length} · **Kannibalisierungs-Verdacht (Schutz<60): ${all.filter((p) => p.k < 60).length}**\n`
+  md += `- **Strenge Review-Schwellen:** Qualität<90: ${all.filter((p) => p.q < 90).length} · Einzigartigkeit<90: ${all.filter((p) => p.u < 90).length} · Kannibalisierungs-Schutz<75: ${all.filter((p) => p.k < 75).length}\n`
   md += `- **Doppelte SEO-Titel: ${dupTitles.length}**${dupTitles.length ? ' ⚠️' : ' ✅'}\n\n`
   md += `| Familie | Seiten | Ø Qualität | Ø Einzigartigkeit | Ø Kannibalisierungs-Schutz | min Kanni.-Schutz |\n|---|---|---|---|---|---|\n`
   for (const f of famOrder) { const ps = all.filter((p) => p.fam === f); if (ps.length) md += `| ${f} | ${ps.length} | ${avg(ps.map((p) => p.q))} | ${avg(ps.map((p) => p.u))} | ${avg(ps.map((p) => p.k))} | ${Math.min(...ps.map((p) => p.k))} |\n` }
@@ -143,7 +290,10 @@ if (all.length) {
   else md += `Keine doppelten SEO-Titel. `
   md += competing.length ? `\n**Konkurrierende Paare (gleiche Familie+Ort, niedriges K):**\n\n| Seite | K | konkurriert mit |\n|---|---|---|\n` + competing.slice(0, 15).map((c) => `| \`${c.a}\` | ${c.k} | \`${c.b}\` |`).join('\n') + '\n' : `Keine Seitenpaare mit K<60 — keine direkte Keyword-Kannibalisierung erkannt.\n`
   md += `\n**Intent-Gruppen (Familie × Ort mit mehreren Seiten – jede Gruppe braucht klar getrennte Sub-Intents):**\n\n| Gruppe | Seiten | Sub-Intents (Service) | Ø K |\n|---|---|---|---|\n`
-  for (const [g, ps] of multiGroups.slice(0, 16)) md += `| ${g} | ${ps.length} | ${[...new Set(ps.map((p) => p.e.service))].join(', ')} | ${avg(ps.map((p) => p.k))} |\n`
+  for (const [g, ps] of multiGroups.slice(0, 16)) {
+    const intents = [...new Set(ps.map((p) => p.e.service).filter(Boolean))]
+    md += `| ${g} | ${ps.length} | ${intents.join(', ')} | ${avg(ps.map((p) => p.k))} |\n`
+  }
   md += `\n_Grenze der Metrik: K erkennt gleiche/sehr ähnliche Titel-Ziele am selben Ort. Echte Synonym-Cluster (z. B. „Autofotografie" vs „Automobilfotografie") sind lexikalisch verschieden → über die Intent-Gruppen oben manuell prüfen; dort trennt der Sub-Intent (Shooting/Verkauf/Tipps/Print) die Seiten._\n\n`
 }
 // ---------- validation: prove the metric reacts to real text ----------
@@ -188,10 +338,10 @@ for (const fam of famOrder) {
   md += `| Seite | Prefix | Scope | Typ | Copy | FAQ | CMS | ✍️ | Qualität | Einzigartigkeit | Kannibalisierungs-Schutz | Status |\n|---|---|---|---|---|---|---|---|---|---|---|---|\n`
   for (const r of fr) {
     const copy = richCopy.has(r.prefix) ? 'rich' : 'gen', faq = faqKeys.has(r.prefix) ? 'ja' : '—'
-    const cms = noDoc.has(r.file) ? 'CREATE' : 'UPDATE', done = authored.has(r.file), sc = byFile.get(r.file)
+    const cms = serviceHubFiles.has(r.file) ? 'SERVICE' : noDoc.has(r.file) ? 'CREATE' : 'UPDATE', done = authored.has(r.file), sc = byFile.get(r.file)
     md += `| \`${r.slug}.html\` | ${r.prefix} | ${r.scope} | ${r.kind} | ${copy} | ${faq} | ${cms} | ${done ? '✅' : '⬜'} | ${sc ? sc.q : '–'} | ${sc ? sc.u : '–'} | ${sc ? sc.k : '–'} | ${done ? 'DONE' : 'TODO'} |\n`
   }
   md += `\n`
 }
-fs.writeFileSync('../../docs/seo-content-tracker.md', md)
+fs.writeFileSync(fromRoot('docs/seo-content-tracker.md'), md)
 console.log(`scored=${all.length} avgQ=${avg(all.map((p) => p.q))} avgU=${avg(all.map((p) => p.u))} avgK=${avg(all.map((p) => p.k))} dupTitles=${dupTitles.length} K<60=${all.filter((p) => p.k < 60).length}`)

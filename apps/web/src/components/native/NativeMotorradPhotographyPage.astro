@@ -39,9 +39,8 @@ const pageContext = nativeFamilyPageContext({
 })
 const { clusterHeading, clusterLinks, isKeywordPage, isParentPage, overviewHref, publishedHref, scope, serviceLabel } = pageContext
 const keywordFocusCopy = keywordFocusCopyForSlug(legacyFile)
-const faqItems = doc?.localFaq?.length
-  ? doc.localFaq.map((entry) => ({ q: entry.question || '', a: entry.answer || '' })).filter((entry) => entry.q && entry.a)
-  : keywordFocusCopy?.faq
+const cmsFaqItems = doc?.localFaq?.map((entry) => ({ q: entry.question || '', a: entry.answer || '' })).filter((entry) => entry.q && entry.a) || []
+const faqItems = cmsFaqItems.length ? cmsFaqItems : keywordFocusCopy?.faq
 const cmsText = (value: unknown) => (typeof value === 'string' ? value.trim() : '')
 const cmsHeroLine2 = cmsText(doc?.heroLine2)
 const cmsStatementBody = doc?.statement?.body?.map((entry) => cmsText(entry.text)).filter(Boolean) || []
@@ -100,21 +99,20 @@ const visualSlots = familyVisualSlots(visualDoc, [
 ])
 
 // Hero slides — the brand signature has to stay razor-sharp on retina phones.
-// A full-bleed 100vw hero on a DPR 2-3 screen needs ~1200-2600 device px wide,
-// so a 720/960 source gets upscaled and looks mushy. We serve the local optimized
-// ladder by default and only defer to a CMS hero when it already ships a >=1280px
-// candidate, so neither path can fall back to a soft low-res image.
+// A full-bleed 100vw hero on a DPR 2-3 screen needs a high-res candidate, so the
+// fallback srcset must only reference variants that actually exist in public assets.
+const optimizedAsset = (fileName: string) => ['assets', 'optimized', fileName].join('/')
 const heroLadder = (base: string, widths: number[]) =>
-  widths.map((w) => `assets/optimized/${base}-${w}.webp ${w}w`).join(', ')
+  widths.map((w) => `${optimizedAsset(`${base}-${w}.webp`)} ${w}w`).join(', ')
 const heroHasHiRes = (srcset: string) => /(?:1280|1440|1600|1920|2048|2560)w/.test(srcset)
-const heroSlide = (slot: (typeof visualSlots)[number], base: string, widths: number[], fallbackWidth = 1280) =>
+const heroSlide = (slot: (typeof visualSlots)[number], base: string, widths: number[], fallbackWidth = 1920) =>
   heroHasHiRes(slot.srcset)
     ? { src: slot.src, srcset: slot.srcset }
-    : { src: `assets/optimized/${base}-${fallbackWidth}.webp`, srcset: heroLadder(base, widths) }
+    : { src: optimizedAsset(`${base}-${fallbackWidth}.webp`), srcset: heroLadder(base, widths) }
 const heroSlides = [
-  heroSlide(visualSlots[0], 'assets-photos-motorrad-ninja-road', [768, 1024, 1280, 1600, 1920, 2560]),
-  heroSlide(visualSlots[1], 'assets-photos-motorrad-duke', [720, 960, 1280, 1920]),
-  heroSlide(visualSlots[2], 'assets-photos-motorrad-ninja-road', [768, 1024, 1280, 1600, 1920, 2560]),
+  heroSlide(visualSlots[0], 'assets-photos-motorrad-ninja-road', [720, 960, 1920]),
+  heroSlide(visualSlots[1], 'assets-photos-motorrad-duke', [720, 960, 1920]),
+  heroSlide(visualSlots[2], 'assets-photos-motorrad-ninja-road', [720, 960, 1920]),
 ]
 
 // Module/gallery images carried no srcset/sizes before, so they always loaded the

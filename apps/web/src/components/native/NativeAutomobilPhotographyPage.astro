@@ -45,9 +45,8 @@ const isParentPage = legacyFile === defaultLegacyFile
 const isKeywordPage = scope.generic
 const serviceLabel = serviceLabelFromSlug(legacyFile, familyContent)
 const keywordFocusCopy = keywordFocusCopyForSlug(legacyFile)
-const faqItems = doc?.localFaq?.length
-  ? doc.localFaq.map((entry) => ({ q: entry.question || '', a: entry.answer || '' })).filter((entry) => entry.q && entry.a)
-  : keywordFocusCopy?.faq
+const cmsFaqItems = doc?.localFaq?.map((entry) => ({ q: entry.question || '', a: entry.answer || '' })).filter((entry) => entry.q && entry.a) || []
+const faqItems = cmsFaqItems.length ? cmsFaqItems : keywordFocusCopy?.faq
 const cmsText = (value: unknown) => (typeof value === 'string' ? value.trim() : '')
 const cmsHeroLine2 = cmsText(doc?.heroLine2)
 const cmsStatementBody = doc?.statement?.body?.map((entry) => cmsText(entry.text)).filter(Boolean) || []

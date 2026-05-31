@@ -1,7 +1,8 @@
 import { readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 
-const root = process.cwd()
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const srcDir = path.join(root, 'apps/web/src/lib')
 const distDir = path.join(root, 'apps/web/dist/client')
 const reportPath = path.join(root, 'docs/seo-local-seiten-duplicate-audit.md')

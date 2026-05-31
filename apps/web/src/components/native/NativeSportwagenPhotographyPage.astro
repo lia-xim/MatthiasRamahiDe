@@ -39,9 +39,8 @@ const pageContext = nativeFamilyPageContext({
 })
 const { clusterHeading, clusterLinks, isKeywordPage, isParentPage, overviewHref, publishedHref, scope, serviceLabel } = pageContext
 const keywordFocusCopy = keywordFocusCopyForSlug(legacyFile)
-const faqItems = doc?.localFaq?.length
-  ? doc.localFaq.map((entry) => ({ q: entry.question || '', a: entry.answer || '' })).filter((entry) => entry.q && entry.a)
-  : keywordFocusCopy?.faq
+const cmsFaqItems = doc?.localFaq?.map((entry) => ({ q: entry.question || '', a: entry.answer || '' })).filter((entry) => entry.q && entry.a) || []
+const faqItems = cmsFaqItems.length ? cmsFaqItems : keywordFocusCopy?.faq
 const cmsHeroLine2 = typeof doc?.heroLine2 === 'string' ? doc.heroLine2.trim() : ''
 const heroTitle = keywordFocusCopy?.heroTitle || 'Sportwagen'
 const heroSecondLine = cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || (isParentPage || isKeywordPage ? 'Fotografie.' : `Fotografie ${scope.label}.`)
