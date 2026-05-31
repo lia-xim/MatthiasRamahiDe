@@ -164,12 +164,11 @@
 }
 .vg-service:nth-child(odd) { border-right: 1px solid var(--vg-line-d); padding-left: 0; }
 .vg-service:nth-child(even) { padding-right: 0; }
-.vg-service__num { margin: 0; font: 700 10px/1 var(--vg-mono); letter-spacing: .24em; text-transform: uppercase; color: var(--vg-chrome); }
-.vg-service__title { margin: 0; font-size: clamp(26px, 2.6vw, 40px); line-height: 1; letter-spacing: -.035em; text-transform: uppercase; font-weight: 850; }
-.vg-service__body { margin: 0; font-size: clamp(14px, 1.05vw, 16px); line-height: 1.6; color: var(--vg-muted-d); max-width: 42ch; }
-.vg-service__list { list-style: none; margin: 6px 0 0; padding: 0; display: grid; gap: 9px; }
-.vg-service__list li { position: relative; padding-left: 22px; font: 600 11px/1.5 var(--vg-mono); letter-spacing: .04em; text-transform: uppercase; color: var(--vg-quiet-d); }
-.vg-service__list li::before { content: ""; position: absolute; left: 0; top: .6em; width: 13px; height: 1px; background: var(--vg-steel); }
+.vg-service__cat { margin: 0; display: inline-flex; align-items: center; gap: 11px; font: 700 10px/1 var(--vg-mono); letter-spacing: .26em; text-transform: uppercase; color: var(--vg-steel); }
+.vg-service__cat::before { content: ""; width: 22px; height: 1px; background: currentColor; opacity: .85; }
+.vg-service__title { margin: 2px 0 0; font-size: clamp(30px, 3vw, 46px); line-height: .98; letter-spacing: -.04em; text-transform: uppercase; font-weight: 850; }
+.vg-service__body { margin: 0; font-size: clamp(14.5px, 1.08vw, 16.5px); line-height: 1.62; color: var(--vg-muted-d); max-width: 44ch; }
+.vg-service__meta { margin: auto 0 0; padding-top: 18px; border-top: 1px solid var(--vg-line-d); font: 700 9.5px/1.5 var(--vg-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--vg-quiet-d); }
 
 /* ===== FOTO + VIDEO (light) — process / aus einem Guss ================ */
 .vg-feature { background: var(--vg-paper); color: var(--vg-ink); }
@@ -206,11 +205,14 @@
     align-items: end;
     padding: clamp(112px, 24vw, 150px) 22px clamp(40px, 12vw, 64px);
   }
-  .vg-hero__title { font-size: clamp(48px, 16vw, 88px); letter-spacing: -.05em; }
-  .vg-hero__lead { font-size: 16px; max-width: 40ch; }
-  .vg-hero__actions { gap: 10px; }
-  .vg-hero__actions .vg-btn { flex: 1 1 auto; min-width: 0; padding: 14px 16px; letter-spacing: .14em; }
-  .vg-hero__meta { gap: 14px 28px; }
+  .vg-hero__inner { gap: clamp(14px, 4vw, 20px); }
+  .vg-hero__media img { object-position: center 24%; }
+  .vg-hero__title { font-size: clamp(52px, 17vw, 92px); letter-spacing: -.05em; line-height: .82; }
+  .vg-hero__lead { font-size: 16px; max-width: 42ch; }
+  .vg-hero__actions { gap: 10px; margin-top: 4px; }
+  .vg-hero__actions .vg-btn { flex: 1 1 auto; min-width: 0; padding: 15px 14px; letter-spacing: .12em; }
+  /* Eckdaten-Zeile mobil ausblenden — entschlackt den Hero (wie die Home-Hero). */
+  .vg-hero__meta { display: none; }
 
   .vg-services__grid { grid-template-columns: 1fr; }
   .vg-service, .vg-service:nth-child(odd), .vg-service:nth-child(even) {

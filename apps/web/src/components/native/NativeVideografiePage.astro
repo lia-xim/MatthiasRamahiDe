@@ -70,12 +70,10 @@ const { hero, overview, feature, contact } = page
         <div class="vg-services__grid">
           {overview.cards.map((card) => (
             <article class="vg-service">
-              <p class="vg-service__num">N° {card.kicker.split('/')[0].trim()}</p>
+              <p class="vg-service__cat">{card.kicker.split('/')[1]?.trim() || card.kicker}</p>
               <h3 class="vg-service__title">{card.title}</h3>
               <p class="vg-service__body">{card.body}</p>
-              <ul class="vg-service__list">
-                {card.items.map((item) => <li>{item}</li>)}
-              </ul>
+              <p class="vg-service__meta">{card.items.slice(0, 2).join('  ·  ')}</p>
             </article>
           ))}
         </div>
