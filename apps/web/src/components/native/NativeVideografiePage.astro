@@ -1,0 +1,116 @@
+---
+import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
+import { nativeServiceDetailPages } from '../../lib/serviceDetailContent'
+import type { PayloadDoc } from '../../lib/payload'
+
+type Props = { doc?: PayloadDoc; legacyFile?: string }
+const legacyFile = (Astro.props as Props).legacyFile || 'videografie-duesseldorf.html'
+const doc = (Astro.props as Props).doc
+const page = nativeServiceDetailPages[legacyFile]
+const { hero, overview, feature, contact } = page
+---
+<AdoptedPageLayout
+  legacyFile={legacyFile}
+  current="leistungen"
+  doc={doc}
+  ctaHref="#anfrage"
+  preloadImages={[hero.image]}
+>
+  <main>
+    {/* ===== HERO (dark) — Ken-Burns static, image-led ===== */}
+    <section class="vg-hero" data-theme="dark" data-header-theme="dark" aria-label="Videografie Düsseldorf">
+      <div class="vg-hero__media" aria-hidden="true">
+        <img src={hero.image} alt="" width={hero.width} height={hero.height} fetchpriority="high" decoding="async" />
+      </div>
+      <div class="vg-hero__veil" aria-hidden="true"></div>
+      <div class="vg-hero__beam" aria-hidden="true"></div>
+      <div class="vg-hero__inner">
+        <p class="vg-kicker">Videografie · Düsseldorf · NRW</p>
+        <h1 class="vg-hero__title">
+          <span class="line">Bewegtes</span>
+          <span class="line"><em>Bild.</em></span>
+        </h1>
+        <p class="vg-hero__lead">{hero.lead}</p>
+        <div class="vg-hero__actions">
+          <a class="vg-btn vg-btn--solid" href="#anfrage">{hero.primary}</a>
+          <a class="vg-btn vg-btn--ghost" href="#leistungen">{hero.secondary}</a>
+        </div>
+        <dl class="vg-hero__meta" aria-label="Eckdaten">
+          <div><dt>Standort</dt><dd>{hero.side[0]}</dd></div>
+          <div><dt>Bereich</dt><dd>Videografie</dd></div>
+          <div><dt>Antwort</dt><dd>{hero.side[2]}</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    {/* ===== STATEMENT (light) — editorial pause ===== */}
+    <section class="vg-statement" data-theme="light" data-header-theme="light" aria-label="Foto und Video aus einer Bildsprache">
+      <div class="vg-inner vg-statement__grid">
+        <div>
+          <h2>Eine Familie,<br /><em>eine Bildsprache.</em></h2>
+        </div>
+        <div class="vg-statement__body">
+          <p class="vg-lead">Für bewegtes Bild arbeite ich mit meiner Schwester Sophia Ramahi — Videografin aus dem Rheinland. Wir denken Sets gemeinsam: dieselbe Bildsprache, derselbe ruhige, editoriale Anspruch.</p>
+          <p>Imagefilm, Musikvideo, Eventfilm und redaktionelles Bewegtbild — geplant mit echtem Bildmaterial statt Stock. Wenn Foto und Video parallel laufen, gibt es weniger Termine, weniger Doppelarbeit und ein Ergebnis, das zusammengehört.</p>
+          <div class="vg-actions">
+            <a class="vg-btn vg-btn--ink" href="#leistungen">Leistungen ansehen</a>
+            <a class="vg-btn vg-btn--ghost-ink" href="#anfrage">Projekt anfragen</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ===== LEISTUNGEN (dark) — editorial grid, no card chrome ===== */}
+    <section class="vg-services" id="leistungen" data-theme="dark" data-header-theme="dark" aria-label="Bewegtbild-Leistungen">
+      <div class="vg-inner">
+        <div class="vg-services__head">
+          <h2>Bewegtbild<br /><em>leistungen.</em></h2>
+          <p class="vg-lead">{overview.lead}</p>
+        </div>
+        <div class="vg-services__grid">
+          {overview.cards.map((card) => (
+            <article class="vg-service">
+              <p class="vg-service__num">N° {card.kicker.split('/')[0].trim()}</p>
+              <h3 class="vg-service__title">{card.title}</h3>
+              <p class="vg-service__body">{card.body}</p>
+              <ul class="vg-service__list">
+                {card.items.map((item) => <li>{item}</li>)}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* ===== FOTO + VIDEO (light) — process / aus einem Guss ===== */}
+    <section class="vg-feature" data-theme="light" data-header-theme="light" aria-label={feature.aria}>
+      <div class="vg-inner vg-feature__grid">
+        <div class="vg-feature__copy">
+          <p class="vg-eyebrow vg-eyebrow--ink">{feature.eyebrow}</p>
+          <h2>Bewegung und<br /><em>Bild — gleichzeitig.</em></h2>
+          <p class="vg-lead">{feature.lead}</p>
+        </div>
+        <dl class="vg-feature__list">
+          {feature.items.map((item) => (
+            <div class="vg-feature__item">
+              <dt>{item.tag}</dt>
+              <dd>{item.line}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+
+    {/* ===== CONTACT (dark) ===== */}
+    <section
+      id="anfrage"
+      data-contact-section
+      data-theme="dark"
+      data-header-theme="dark"
+      data-contact-subject={contact.subject}
+      data-contact-headline={contact.headline}
+      data-contact-lead={contact.lead}
+      aria-label="Anfrage"
+    />
+  </main>
+</AdoptedPageLayout>

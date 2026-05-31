@@ -18,6 +18,7 @@ import NativePrintLabPage from './NativePrintLabPage.astro'
 import NativeServiceDetailPage from './NativeServiceDetailPage.astro'
 import NativeServicesIndexPage from './NativeServicesIndexPage.astro'
 import NativeSportwagenPhotographyPage from './NativeSportwagenPhotographyPage.astro'
+import NativeVideografiePage from './NativeVideografiePage.astro'
 import NativeWerbetechnikPage from './NativeWerbetechnikPage.astro'
 import { nativeAdoptedRouteKindForFile } from '../../lib/nativeAdoptedRouteRegistry'
 import { getByLegacyUrlFromIndex, type PayloadDoc } from '../../lib/payload'
@@ -79,6 +80,8 @@ if (nativeRouteKind === 'journal-detail') {
     <NativePrintLabPage />
   ) : nativeRouteKind === 'werbetechnik' ? (
     <NativeWerbetechnikPage />
+  ) : nativeRouteKind === 'videografie' ? (
+    <NativeVideografiePage legacyFile={legacyFile} />
   ) : nativeRouteKind === 'service-detail' ? (
     <NativeServiceDetailPage legacyFile={legacyFile} />
   ) : nativeRouteKind === 'services-index' ? (

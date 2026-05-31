@@ -46,7 +46,7 @@ const oldtimerChrome: AdoptedPageChrome = {
   current: 'fotografie',
   ogImage: '/assets/optimized/assets-photos-oldtimer-stage-1920.webp',
   preloadImages: ['/assets/optimized/assets-photos-oldtimer-stage-1280.webp'],
-  scripts: [...siteChromeScript, '/assets/native-oldtimer.js'],
+  scripts: ['/assets/native-home.js', ...siteChromeScript, '/assets/native-oldtimer.js'],
   stylesheets: [...sharedStyles, '/assets/native-oldtimer.css'],
 }
 
@@ -284,6 +284,7 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
   },
   'videografie-duesseldorf.html': {
     ...serviceMiniChrome('/assets/services/portfolio_webp_full_058-1.webp'),
+    stylesheets: [...sharedStyles, '/assets/native-videografie.css'],
     description:
       'Videografie in Düsseldorf: Imagefilm, Musikvideo, Eventfilm und redaktionelles Bewegtbild - über Sophia Ramahi und das Kreativnetzwerk aus dem Rheinland.',
     title: 'Videografie Düsseldorf - Matthias Ramahi',
@@ -291,7 +292,7 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
   'werbetechnik-duesseldorf.html': {
     current: 'leistungen',
     description:
-      'Werbetechnik in Düsseldorf: Fahrzeugbeschriftung, Schaufenster, Beschilderung, Folierung und LED-Lichtwerbung - über Matthias Ramahi und das Partnernetzwerk vor Ort.',
+      'Werbetechnik in Düsseldorf: Schaufenster, Pop-ups, Brand-Booths, Promotionflächen und LED-Lichtwerbung - Markenerlebnisse seit 35 Jahren, mit erfahrenen Partnerwerkstätten.',
     ogImage: '/assets/services/Catoir_Ramahi-1-32-768x512-1.webp',
     preloadImages: ['/assets/services/Catoir_Ramahi-1-32-768x512-1.webp'],
     scripts: ['/assets/native-home.js', ...siteChromeScript],

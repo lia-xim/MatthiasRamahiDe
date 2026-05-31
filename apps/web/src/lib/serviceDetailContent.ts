@@ -262,7 +262,7 @@ export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
         {
           kicker: '01 / Marke',
           title: 'Imagefilm',
-          body: 'Kurze, ruhige Imagefilme für Marken, Marken, Praxen und Handwerk — mit echtem Bildmaterial statt Stock.',
+          body: 'Kurze, ruhige Imagefilme für Marken, Praxen und Handwerk — mit echtem Bildmaterial statt Stock.',
           items: ['60–120 Sekunden Schnittfassung', 'Voice-Over oder reine Bildsprache', 'Vertikal- und Horizontalvariante'],
         },
         {
