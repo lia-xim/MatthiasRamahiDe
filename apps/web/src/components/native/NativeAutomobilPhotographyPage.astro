@@ -60,6 +60,29 @@ const teaserText = (value: unknown, maxLength = 180) => {
   const wordCut = softCut.lastIndexOf(' ')
   return `${softCut.slice(0, wordCut > 70 ? wordCut : maxLength).trimEnd()}...`
 }
+const normalizeCopyToken = (value: string) =>
+  value
+    .normalize('NFKC')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/[.,!?;:]+$/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .toLocaleLowerCase('de-DE')
+const splitTrailingEmphasis = (headline: string, emphasis: string) => {
+  const headlineWords = headline.split(/\s+/).filter(Boolean)
+  const emphasisWords = emphasis.split(/\s+/).filter(Boolean)
+  if (!headlineWords.length || !emphasisWords.length || headlineWords.length < emphasisWords.length) {
+    return { headline, emphasis }
+  }
+
+  const tail = headlineWords.slice(-emphasisWords.length).join(' ')
+  if (normalizeCopyToken(tail) !== normalizeCopyToken(emphasis)) return { headline, emphasis }
+
+  return {
+    headline: headlineWords.slice(0, -emphasisWords.length).join(' '),
+    emphasis,
+  }
+}
 const cmsHeroLine2 = cmsText(doc?.heroLine2)
 const cmsStatementBody = doc?.statement?.body?.map((entry) => cmsText(entry.text)).filter(Boolean) || []
 const localSuffix = !isParentPage && !isKeywordPage ? ` ${scope.label}` : ''
@@ -323,6 +346,7 @@ const focusSwitchFrames = inheritedSwitchFrames.map((frame, index) => {
 const focusPullKicker = isLocalCityPage ? `${serviceLabel} ${scope.label}` : keywordFocusCopy?.pullKicker || (isParentPage ? 'Automobilfotografie' : serviceLabel)
 const focusPullHeadline = cmsText(doc?.statement?.headline) || keywordFocusCopy?.pullHeadline || (isParentPage ? 'Vom Inserat bis zur' : `${serviceLabel}:`)
 const focusPullEmphasis = cmsText(doc?.statement?.emphasis) || keywordFocusCopy?.pullEmphasis || (isParentPage ? 'Kampagne.' : 'als Bildserie.')
+const focusPullTitle = splitTrailingEmphasis(focusPullHeadline, focusPullEmphasis)
 const focusPullLead =
   cmsStatementBody[0] ||
   keywordFocusCopy?.pullLead ||
@@ -444,7 +468,11 @@ const searchLinks = [
       <div class="st-pull-inner">
         <span class="st-pull-kicker">{focusPullKicker}</span>
         <blockquote class="st-pull-quote">
-          <strong>{focusPullHeadline} <span class="accent">{focusPullEmphasis}</span></strong>
+          <strong>
+            {focusPullTitle.headline}
+            {focusPullTitle.headline && focusPullTitle.emphasis ? ' ' : ''}
+            {focusPullTitle.emphasis && <span class="accent">{focusPullTitle.emphasis}</span>}
+          </strong>
         </blockquote>
         <div class="st-pull-copy">
           <p class="st-pull-lead">{focusPullLead}</p>
