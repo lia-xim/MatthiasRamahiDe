@@ -251,8 +251,12 @@ const focusRelatedLead = isParentPage || isKeywordPage
 // Festes, kanonisches Oldtimer-Bühnenbild als Hero (wie Fotolabor ein fixes
 // Bild nutzt). Der CMS-Family-Visual-Slot 0 mappt hier auf ein Portrait —
 // fürs Hero-„Wow" bleibt daher das starke Bühnenmotiv gesetzt.
-const heroBgDesktop = 'assets/optimized/assets-photos-oldtimer-stage-1920.webp'
-const heroBgMobile = 'assets/optimized/assets-photos-oldtimer-stage-1280.webp'
+// Absolute Pfade (führender /). Wichtig: in der CSS-Custom-Property
+// --hero-bg-* löst eine RELATIVE url() gegen das Stylesheet (/assets/…) auf →
+// /assets/assets/… (404). Auf Mobile/Touch ist der Canvas aus, dann griff der
+// kaputte CSS-Hintergrund = kein Hero-Bild. Absolut behebt das eindeutig.
+const heroBgDesktop = '/assets/optimized/assets-photos-oldtimer-stage-1920.webp'
+const heroBgMobile = '/assets/optimized/assets-photos-oldtimer-stage-1280.webp'
 const heroSubText = doc?.intro || heroLead
 const heroSlidesJson = JSON.stringify([
   { image: heroBgDesktop, titleLines: [heroTitlePrefix, heroTitleSuffix], lead: heroSubText },
