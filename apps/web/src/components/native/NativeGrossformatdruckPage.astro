@@ -1,0 +1,131 @@
+---
+import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
+import { getBySlug, type PayloadDoc } from '../../lib/payload'
+
+const legacyFile = 'grossformatdruck-duesseldorf.html'
+const providedDoc = Astro.props.doc as PayloadDoc | undefined
+const doc = providedDoc || (await getBySlug('service-pages', 'grossformatdruck-duesseldorf', { depth: 2 }))
+
+const metaDescription =
+  'Großformatdruck in Düsseldorf: hochauflösende Wandbilder, Showroom-Wände, Messebanner und Schaufensterfolien — vom Soft-Proof bis zur Montage vor Ort.'
+
+// Anwendungen — die große Maß-Angabe (size/unit) ist der visuelle Anker.
+const formats = [
+  { name: 'Wandbilder XL', line: 'Hoch- oder querformatige Bilder auf Acryl, Alu-Dibond, Leinwand oder direkt geklebt.', size: '400 × 250', unit: 'cm' },
+  { name: 'Showroom & Empfang', line: 'Markenwände für Empfang, Autohaus oder Boutique — auf CI-Farben und Licht abgestimmt.', size: 'raumhoch', unit: '' },
+  { name: 'Messebanner & Roll-Ups', line: 'Vom mobilen Roll-Up bis zur Messewand — Stoff, PVC oder Backlit, im Hardcase geliefert.', size: '6', unit: 'm' },
+  { name: 'Folien & Fenster', line: 'Schaufenster-, Sichtschutz- und Akzentfolien auf Glas und Türen, Verlegung auf Wunsch.', size: 'vollflächig', unit: '' },
+]
+
+// Worauf es ankommt — technisches Spec-Sheet (Label · Wert).
+const specs = [
+  { label: 'Auflösung', text: 'Mindestens <b>150 dpi</b> auf der finalen Größe — bei Wandabstand reichen oft 120 dpi.' },
+  { label: 'Material', text: 'Acryl wirkt mit Licht, Alu ruhig, Stoff weich. Die Wahl folgt dem Raum.' },
+  { label: 'Montage', text: 'Schienen, Distanzhalter, Klett oder Direktklebung — je nach Wand und Wechselbedarf.' },
+  { label: 'Lieferung', text: 'Eigenlieferung im Rheinland, Spedition deutschlandweit, Aufbau auf Wunsch.' },
+]
+
+// Hero = Landing-Page-Shader-Hero mit dem Fassaden-/Großformat-Bild und Blueprint-Blau.
+const heroImage = '/assets/services/Catoir_Ramahi-1-106-768x512-1.webp'
+const heroSlides = [
+  {
+    image: heroImage,
+    titleLines: ['Großformat', 'druck'],
+    lead: 'Hochauflösender Druck im Großformat — für Wandbilder, Showrooms, Schaufenster und Messen. Vom Korrekturlauf am Soft-Proof bis zur Montage vor Ort.',
+    primaryHref: '#anfrage',
+    primaryLabel: 'Großformat anfragen',
+    secondaryHref: '#anwendungen',
+    secondaryLabel: 'Anwendungen ansehen',
+  },
+]
+const heroSlidesJson = JSON.stringify(heroSlides)
+---
+<AdoptedPageLayout legacyFile={legacyFile} current="leistungen" doc={doc} description={metaDescription}>
+  <main>
+    <section class="hero" data-theme="dark" data-header-theme="dark" aria-label="Großformatdruck Düsseldorf" style={`background-image:url('${heroImage}')`}>
+      <canvas id="hero-shader" aria-hidden="true" data-imgs={heroImage} data-slides={heroSlidesJson}></canvas>
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-aperture" aria-hidden="true"></div>
+      <div class="hero-grid">
+        <div class="hero-stage">
+          <h1 class="hero-title" id="hero-title" data-text-idx="0">
+            <span class="line"><span class="word">Großformat</span></span>
+            <span class="line"><span class="word">druck.</span></span>
+          </h1>
+          <p class="hero-lead" id="hero-lead">Hochauflösender Druck im Großformat — für Wandbilder, Showrooms, Schaufenster und Messen. Vom Korrekturlauf am Soft-Proof bis zur Montage vor Ort.</p>
+          <div class="hero-actions" aria-label="Direkte Aktionen">
+            <a class="btn dark" href="#anfrage" data-hero-primary>Großformat anfragen</a>
+            <a class="btn" href="#anwendungen" data-hero-secondary>Anwendungen ansehen</a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-cursor" id="hero-cursor" aria-hidden="true"><span class="ring"></span></div>
+    </section>
+
+    <section class="gf-fmt" id="anwendungen" data-header-theme="dark" aria-label="Anwendungen">
+      <div class="gf-fmt__inner">
+        <div class="gf-fmt__head">
+          <div>
+            <p class="sp-eyebrow">Anwendungen</p>
+            <h2 class="gf-fmt__title">Wenn Größe <em>Bestandteil ist.</em></h2>
+          </div>
+          <p class="gf-fmt__lead">
+            Große Flächen brauchen mehr als hohe Auflösung. Material, Betrachtungsabstand, Licht und Montage entscheiden, ob ein
+            Großformat ruhig oder unruhig wirkt.
+          </p>
+        </div>
+        <div class="gf-fmt__list">
+          {formats.map((fmt) => (
+            <article class="gf-fmt__row">
+              <div>
+                <h3 class="gf-fmt__name">{fmt.name}</h3>
+                <p class="gf-fmt__line">{fmt.line}</p>
+              </div>
+              <p class="gf-fmt__size">{fmt.size}{fmt.unit && <span class="u">{fmt.unit}</span>}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="gf-spec" data-header-theme="light" aria-label="Worauf es ankommt">
+      <div class="gf-spec__inner">
+        <div class="gf-spec__head">
+          <div>
+            <p class="sp-eyebrow">Technik</p>
+            <h2 class="gf-spec__title">Worauf es <em>ankommt.</em></h2>
+          </div>
+          <p class="gf-spec__lead">
+            Ein gutes Bild bleibt im Großformat ruhig — schlechtes Material wird laut. Auswahl, Aufbereitung und Material sind
+            gleichwertig zur Größe selbst.
+          </p>
+        </div>
+        <div class="gf-spec__sheet">
+          {specs.map((spec, i) => (
+            <div class="gf-spec__row">
+              <p class="gf-spec__label"><b>{String(i + 1).padStart(2, '0')}</b>{spec.label}</p>
+              <p class="gf-spec__text" set:html={spec.text}></p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="sp-cta" data-header-theme="light" aria-label="Anfrage">
+      <div class="sp-cta__inner">
+        <h2 class="sp-cta__head">Bereit für ein <em>Großformat-Briefing.</em></h2>
+        <a class="sp-cta__btn" href="#anfrage">Großformat anfragen →</a>
+      </div>
+    </section>
+
+    <section
+      id="anfrage"
+      data-contact-section
+      data-contact-subject="Großformat-Anfrage — Matthias Ramahi"
+      data-contact-headline="Großformat anfragen."
+      data-contact-lead="Beschreibe kurz Wand oder Anlass, ungefähre Größe und Material. Wenn nur die Wand bekannt ist, reicht ein Foto und die Maße — daraus lassen sich Format und Material vorschlagen."
+      data-header-theme="dark"
+      aria-label="Anfrage"
+    />
+  </main>
+</AdoptedPageLayout>

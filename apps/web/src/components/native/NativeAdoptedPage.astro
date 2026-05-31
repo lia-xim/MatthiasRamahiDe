@@ -4,6 +4,7 @@ import NativeAboutPage from './NativeAboutPage.astro'
 import NativeAutomobilPhotographyPage from './NativeAutomobilPhotographyPage.astro'
 import NativeConceptArchivePage from './NativeConceptArchivePage.astro'
 import NativeContactPage from './NativeContactPage.astro'
+import NativeGrossformatdruckPage from './NativeGrossformatdruckPage.astro'
 import NativeHomePage from './NativeHomePage.astro'
 import NativeJournalIndexPage from './NativeJournalIndexPage.astro'
 import NativeJournalArticleLegacyUrlPage from './NativeJournalArticleLegacyUrlPage.astro'
@@ -88,6 +89,8 @@ if (nativeRouteKind === 'journal-detail') {
     <NativeVideografiePage legacyFile={legacyFile} />
   ) : nativeRouteKind === 'viola-musik' ? (
     <NativeViolaMusikPage />
+  ) : nativeRouteKind === 'grossformat' ? (
+    <NativeGrossformatdruckPage />
   ) : nativeRouteKind === 'service-detail' ? (
     <NativeServiceDetailPage legacyFile={legacyFile} />
   ) : nativeRouteKind === 'services-index' ? (

@@ -23,8 +23,8 @@ const m = await browser.newContext({ viewport: { width: 390, height: 844 }, devi
 const mp = await m.newPage()
 await mp.goto(`${base}${path}`, { waitUntil: 'networkidle', timeout: 60000 })
 await mp.waitForTimeout(1500)
-await shootSection(mp, '.vm-occ-sec', 'areas', `${tag}_m`)
-await shootSection(mp, '.vm-flow', 'flow', `${tag}_m`)
+await shootSection(mp, '.gf-fmt', 'areas', `${tag}_m`)
+await shootSection(mp, '.gf-spec', 'flow', `${tag}_m`)
 await m.close()
 
 // Desktop
@@ -32,8 +32,8 @@ const d = await browser.newContext({ viewport: { width: 1440, height: 900 } })
 const dp = await d.newPage()
 await dp.goto(`${base}${path}`, { waitUntil: 'networkidle', timeout: 60000 })
 await dp.waitForTimeout(1200)
-await shootSection(dp, '.vm-occ-sec', 'areas', `${tag}_d`)
-await shootSection(dp, '.vm-flow', 'flow', `${tag}_d`)
+await shootSection(dp, '.gf-fmt', 'areas', `${tag}_d`)
+await shootSection(dp, '.gf-spec', 'flow', `${tag}_d`)
 await d.close()
 
 await browser.close()

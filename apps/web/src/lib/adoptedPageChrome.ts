@@ -304,9 +304,13 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
     title: 'Werbetechnik Düsseldorf - Matthias Ramahi',
   },
   'grossformatdruck-duesseldorf.html': {
-    ...serviceMiniChrome('/assets/services/Catoir_Ramahi-1-106-768x512-1.webp'),
+    current: 'leistungen',
     description:
       'Großformatdruck in Düsseldorf: hochauflösende Wandbilder, Schaufensterfolien, Messebanner und individuelle Großformate für Marken, Showrooms und Galerien.',
+    ogImage: '/assets/services/Catoir_Ramahi-1-106-768x512-1.webp',
+    preloadImages: ['/assets/services/Catoir_Ramahi-1-106-768x512-1.webp'],
+    scripts: ['/assets/native-home.js', ...siteChromeScript],
+    stylesheets: [...sharedStyles, '/assets/native-grossformatdruck.css'],
     title: 'Großformatdruck Düsseldorf - Matthias Ramahi',
   },
   'drucke-sonderanfertigungen-duesseldorf.html': {

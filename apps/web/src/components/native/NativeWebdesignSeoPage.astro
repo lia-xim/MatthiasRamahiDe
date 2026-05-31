@@ -6,40 +6,21 @@ const legacyFile = 'webdesign-seo-duesseldorf.html'
 const providedDoc = Astro.props.doc as PayloadDoc | undefined
 const doc = providedDoc || (await getBySlug('service-pages', 'webdesign-seo-duesseldorf', { depth: 2 }))
 
-// Vier Disziplinen als editoriales 2-Spalten-Raster (Hairlines, kein Card-Chrome).
+// Vier Disziplinen — kompaktes editoriales Raster (Hairlines, kein Card-Chrome).
+// Bewusst knappe Bodies, keine Meta-Zeilen: schnell scanbar, auch auf Mobile kurz.
 const services = [
-  {
-    cat: 'Site',
-    title: 'Neue Websites',
-    body: 'Editorial geführte, moderne Websites — handgebaut, ohne Page-Builder-Aufblähung. Schnell, schlank, semantisch sauber.',
-    meta: 'HTML · CSS · JS  ·  < 200 KB initial  ·  Strukturierte Daten',
-  },
-  {
-    cat: 'Local SEO',
-    title: 'Lokale Sichtbarkeit',
-    body: 'Lokale Kategorieseiten, Google-Business-Optimierung und strukturierte Daten für echte Local-Pack-Sichtbarkeit in Düsseldorf und NRW.',
-    meta: 'Stadtseiten  ·  LocalBusiness-Schema  ·  GBP-Pflege',
-  },
-  {
-    cat: 'Content',
-    title: 'Inhalte & Bildsprache',
-    body: 'Aus Fotografie und Text wird ein konsistenter Auftritt. Bildauswahl, Tonalität und Struktur kommen aus einer Hand.',
-    meta: 'Eigene Fotos  ·  Editorial-Texte  ·  Mikrocopy',
-  },
-  {
-    cat: 'Tech',
-    title: 'Performance & Wartung',
-    body: 'Schnelle Ladezeiten, Core-Web-Vitals im grünen Bereich, regelmäßige Wartung und neue Inhalte ohne Drama.',
-    meta: 'LCP < 2 s  ·  CLS ~ 0  ·  Wartungspaket',
-  },
+  { n: '01', title: 'Neue Websites', body: 'Handgebaut, schnell, schlank — ohne Page-Builder-Aufblähung.' },
+  { n: '02', title: 'Lokale Sichtbarkeit', body: 'Stadtseiten, GBP und Schema für echte Local-Pack-Sichtbarkeit.' },
+  { n: '03', title: 'Inhalte & Bildsprache', body: 'Eigene Fotos und editoriale Texte statt Stock — aus einer Hand.' },
+  { n: '04', title: 'Performance & Wartung', body: 'Core-Web-Vitals im grünen Bereich, Pflege ohne CMS-Stress.' },
 ]
 
-// "Nicht eine Seite — ein System": die vier Ebenen vor dem ersten Pixel.
+// "Nicht eine Seite — ein System": die vier Ebenen, knapp gehalten.
 const systemLayers = [
-  { tag: 'Struktur', line: 'Sitemap, URL-Schema und interne Verlinkung — vor dem ersten Pixel.' },
-  { tag: 'Design', line: 'Editorial geführt, mit echtem Bildmaterial und ruhiger Typografie.' },
-  { tag: 'Tech', line: 'Astro, Next.js oder reines HTML — nach Bedarf, nicht nach Trend.' },
-  { tag: 'SEO', line: 'On-Page, Local, Schema, OG-Tags und Sitemap im Standard inbegriffen.' },
+  { n: '01', tag: 'Struktur', line: 'Sitemap, URLs und interne Links — vor dem ersten Pixel.' },
+  { n: '02', tag: 'Design', line: 'Editorial, mit echtem Bild und ruhiger Typografie.' },
+  { n: '03', tag: 'Tech', line: 'Astro, Next.js oder reines HTML — nach Bedarf.' },
+  { n: '04', tag: 'SEO', line: 'On-Page, Local, Schema und Sitemap im Standard.' },
 ]
 
 const buildStats = [
@@ -111,23 +92,24 @@ const caseImage = '/assets/services/screencapture-gr-knospe-de-2025-10-02-23_10_
       </div>
     </section>
 
-    {/* ===== LEISTUNGEN (dark) — editorial grid, no card chrome ===== */}
+    {/* ===== LEISTUNGEN (dark) — kompaktes editorial grid, no card chrome ===== */}
     <section class="ws-services" id="leistungen" data-theme="dark" data-header-theme="dark" aria-label="Webleistungen">
       <div class="ws-inner">
         <div class="ws-services__head">
-          <h2>Web<br /><em>leistungen.</em></h2>
-          <p class="ws-lead">Webdesign und SEO als eine Sache — vier Disziplinen, ein Auftritt. Eine schöne Seite, die niemand findet, ist so wenig wert wie eine ranking-starke, die niemand mag.</p>
+          <h2>Web<em>leistungen.</em></h2>
+          <p class="ws-lead">Webdesign und SEO als eine Sache — vier Disziplinen, ein Auftritt.</p>
         </div>
-        <div class="ws-services__grid">
+        <ol class="ws-services__grid">
           {services.map((s) => (
-            <article class="ws-service">
-              <p class="ws-service__cat">{s.cat}</p>
-              <h3 class="ws-service__title">{s.title}</h3>
-              <p class="ws-service__body">{s.body}</p>
-              <p class="ws-service__meta">{s.meta}</p>
-            </article>
+            <li class="ws-service">
+              <span class="ws-service__num">{s.n}</span>
+              <div class="ws-service__main">
+                <h3 class="ws-service__title">{s.title}</h3>
+                <p class="ws-service__body">{s.body}</p>
+              </div>
+            </li>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
 
@@ -146,7 +128,7 @@ const caseImage = '/assets/services/screencapture-gr-knospe-de-2025-10-02-23_10_
         <div class="ws-case__copy">
           <p class="ws-eyebrow ws-eyebrow--ink">Aus der Praxis</p>
           <h2>Eine Seite,<br /><em>die trägt.</em></h2>
-          <p class="ws-lead">Handgebaut statt Baukasten: klare Struktur, eigene Bildsprache und ein schlanker Code-Stand, der auch nach Jahren noch schnell lädt. Jede Seite folgt demselben Bau-Standard.</p>
+          <p class="ws-lead">Handgebaut statt Baukasten: klare Struktur, eigene Bildsprache und ein schlanker Code-Stand, der auch nach Jahren noch schnell lädt.</p>
           <dl class="ws-case__stats">
             {buildStats.map((s) => (
               <div class="ws-case__stat"><dd>{s.value}</dd><dt>{s.label}</dt></div>
@@ -156,22 +138,25 @@ const caseImage = '/assets/services/screencapture-gr-knospe-de-2025-10-02-23_10_
       </div>
     </section>
 
-    {/* ===== SYSTEM (dark) — "ein System" ===== */}
+    {/* ===== SYSTEM (dark) — "ein System": kompakte nummerierte Liste ===== */}
     <section class="ws-system" data-theme="dark" data-header-theme="dark" aria-label="System">
-      <div class="ws-inner ws-system__grid">
-        <div class="ws-system__copy">
+      <div class="ws-inner">
+        <div class="ws-system__head">
           <p class="ws-eyebrow">System</p>
           <h2>Nicht eine Seite —<br /><em>ein System.</em></h2>
-          <p class="ws-lead">Eine Website ist kein Layout, sondern ein System aus Inhalten, Struktur und Verbindungen. Wenn das System stimmt, wachsen einzelne Seiten organisch dazu.</p>
+          <p class="ws-lead">Eine Website ist kein Layout, sondern ein System aus Inhalten, Struktur und Verbindungen. Stimmt das System, wachsen einzelne Seiten organisch dazu.</p>
         </div>
-        <dl class="ws-system__list">
-          {systemLayers.map((layer) => (
-            <div class="ws-system__item">
-              <dt>{layer.tag}</dt>
-              <dd>{layer.line}</dd>
-            </div>
+        <ol class="ws-system__list">
+          {systemLayers.map((l) => (
+            <li class="ws-system__item">
+              <span class="ws-system__num">{l.n}</span>
+              <div class="ws-system__text">
+                <p class="ws-system__tag">{l.tag}</p>
+                <p class="ws-system__line">{l.line}</p>
+              </div>
+            </li>
           ))}
-        </dl>
+        </ol>
       </div>
     </section>
 

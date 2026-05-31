@@ -8,6 +8,7 @@ export type NativeAdoptedRouteKind =
   | 'automobil'
   | 'concept'
   | 'contact'
+  | 'grossformat'
   | 'home'
   | 'journal-detail'
   | 'journal-index'
@@ -44,6 +45,7 @@ const exactRouteKinds: Record<string, NativeAdoptedRouteKind> = {
   'blog.html': 'journal-index',
   'portfolio.html': 'portfolio-index',
   'fotolabor-druck-duesseldorf.html': 'print-lab',
+  'grossformatdruck-duesseldorf.html': 'grossformat',
   'werbetechnik-duesseldorf.html': 'werbetechnik',
   'webdesign-seo-duesseldorf.html': 'webdesign-seo',
   'videografie-duesseldorf.html': 'videografie',
