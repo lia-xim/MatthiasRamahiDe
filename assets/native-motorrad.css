@@ -269,7 +269,7 @@
     .hero-mr__title .line:nth-child(2) .word{font-size:clamp(15px,3.4vw,22px);letter-spacing:.2em}
     .hero-mr__title .line:nth-child(2) .word::after{width:clamp(24px,5vw,42px);margin-left:12px}
     .hero-mr__lede-block{max-width:none;gap:16px;margin-top:clamp(20px,5vw,30px)}
-    .hero-mr__lede{font-size:14.5px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+    .hero-mr__lede{font-size:14.5px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
     .hero-mr__actions{justify-content:flex-start}
     /* Rail collapses to dots inline below the title on mobile. */
     .hero-mr__rail{position:static;width:auto;flex-direction:row;justify-content:flex-start;align-items:center;gap:14px;
@@ -297,6 +297,10 @@
     .rl-head p{justify-self:start}
   }
   @media (max-width:600px){
+    /* Full-width stacked CTAs read as native app buttons on a phone and remove any
+       chance of two pill buttons colliding / overflowing at 390px. */
+    .hero-mr__actions{flex-direction:column;align-items:stretch;width:100%;gap:10px}
+    .hero-mr__actions a{width:100%;justify-content:center;padding:15px 20px}
     /* Stacked audience list: horizontal hairlines read cleaner than left bars. */
     .fw-grid{grid-template-columns:1fr;gap:0}
     .fw-card{border-left:0;border-top:1px solid rgba(10,12,16,.14);padding:clamp(18px,4.5vw,22px) 0}

@@ -99,6 +99,29 @@ const visualSlots = familyVisualSlots(visualDoc, [
   { alt: 'Motorrad Cinematic', full: 'assets/optimized/assets-portfolio-dsc3878-1920.webp', src: 'assets/portfolio/thumbs/_DSC3878.webp', width: 720, height: 480 },
 ])
 
+// Hero slides — the brand signature has to stay razor-sharp on retina phones.
+// A full-bleed 100vw hero on a DPR 2-3 screen needs ~1200-2600 device px wide,
+// so a 720/960 source gets upscaled and looks mushy. We serve the local optimized
+// ladder by default and only defer to a CMS hero when it already ships a >=1280px
+// candidate, so neither path can fall back to a soft low-res image.
+const heroLadder = (base: string, widths: number[]) =>
+  widths.map((w) => `assets/optimized/${base}-${w}.webp ${w}w`).join(', ')
+const heroHasHiRes = (srcset: string) => /(?:1280|1440|1600|1920|2048|2560)w/.test(srcset)
+const heroSlide = (slot: (typeof visualSlots)[number], base: string, widths: number[], fallbackWidth = 1280) =>
+  heroHasHiRes(slot.srcset)
+    ? { src: slot.src, srcset: slot.srcset }
+    : { src: `assets/optimized/${base}-${fallbackWidth}.webp`, srcset: heroLadder(base, widths) }
+const heroSlides = [
+  heroSlide(visualSlots[0], 'assets-photos-motorrad-ninja-road', [768, 1024, 1280, 1600, 1920, 2560]),
+  heroSlide(visualSlots[1], 'assets-photos-motorrad-duke', [720, 960, 1280, 1920]),
+  heroSlide(visualSlots[2], 'assets-photos-motorrad-ninja-road', [768, 1024, 1280, 1600, 1920, 2560]),
+]
+
+// Module/gallery images carried no srcset/sizes before, so they always loaded the
+// single (often thumbnail) `src` and went soft when scaled up. Emit the CMS srcset
+// when present, otherwise synthesise one from the large `full` source.
+const slotSrcset = (slot: (typeof visualSlots)[number]) => slot.srcset || `${slot.full} 1920w`
+
 const focusIntroHeadline = cmsText(doc?.statement?.headline) || keywordFocusCopy?.pullHeadline || (isParentPage || isKeywordPage ? 'Geschwindigkeit und Leidenschaft' : `Motorrad in ${scope.label}`)
 const focusIntroEmphasis = cmsText(doc?.statement?.emphasis) || keywordFocusCopy?.pullEmphasis || (isParentPage || isKeywordPage ? 'auf Bildern.' : 'mit Haltung.')
 const focusIntroParagraphs = cmsStatementBody.length
@@ -207,17 +230,17 @@ const searchLinks = [
         <div class="hero-mr__slides">
           <div class="hero-mr__slide is-active" data-slide="0" style="--pos:50% 52%">
             <div class="hero-mr__zoom">
-              <img class="hero-mr__image" src={visualSlots[0].src} srcset={visualSlots[0].srcset} sizes="100vw" alt="" loading="eager" fetchpriority="high" decoding="async" width={visualSlots[0].width} height={visualSlots[0].height} />
+              <img class="hero-mr__image" src={heroSlides[0].src} srcset={heroSlides[0].srcset} sizes="100vw" alt="" loading="eager" fetchpriority="high" decoding="async" width={visualSlots[0].width} height={visualSlots[0].height} />
             </div>
           </div>
           <div class="hero-mr__slide" data-slide="1" style="--pos:50% 48%">
             <div class="hero-mr__zoom">
-              <img class="hero-mr__image" src={visualSlots[1].src} srcset={visualSlots[1].srcset} sizes="100vw" alt="" decoding="async" loading="lazy" width={visualSlots[1].width} height={visualSlots[1].height} />
+              <img class="hero-mr__image" src={heroSlides[1].src} srcset={heroSlides[1].srcset} sizes="100vw" alt="" decoding="async" loading="lazy" width={visualSlots[1].width} height={visualSlots[1].height} />
             </div>
           </div>
           <div class="hero-mr__slide" data-slide="2" style="--pos:50% 50%">
             <div class="hero-mr__zoom">
-              <img class="hero-mr__image" src={visualSlots[2].src} srcset={visualSlots[2].srcset} sizes="100vw" alt="" decoding="async" loading="lazy" width={visualSlots[2].width} height={visualSlots[2].height} />
+              <img class="hero-mr__image" src={heroSlides[2].src} srcset={heroSlides[2].srcset} sizes="100vw" alt="" decoding="async" loading="lazy" width={visualSlots[2].width} height={visualSlots[2].height} />
             </div>
           </div>
         </div>
@@ -268,7 +291,7 @@ const searchLinks = [
         </div>
         <div class="mk-grid">
           <article class="mk-card">
-            <figure class="mk-img"><img src={visualSlots[3].src} data-src={visualSlots[3].src} loading="lazy" alt={visualSlots[3].alt} width={visualSlots[3].width} height={visualSlots[3].height} decoding="async" /></figure>
+            <figure class="mk-img"><img src={visualSlots[3].src} srcset={slotSrcset(visualSlots[3])} sizes="(max-width:720px) 92vw, (max-width:1180px) 47vw, 31vw" data-src={visualSlots[3].src} loading="lazy" alt={visualSlots[3].alt} width={visualSlots[3].width} height={visualSlots[3].height} decoding="async" /></figure>
             <div class="mk-text">
               <span class="no">{moduleCards[0].label}</span>
               <h3>{moduleCards[0].title}</h3>
@@ -276,7 +299,7 @@ const searchLinks = [
             </div>
           </article>
           <article class="mk-card">
-            <figure class="mk-img"><img loading="lazy" src={visualSlots[4].src} alt={visualSlots[4].alt} width={visualSlots[4].width} height={visualSlots[4].height} decoding="async" /></figure>
+            <figure class="mk-img"><img loading="lazy" src={visualSlots[4].src} srcset={slotSrcset(visualSlots[4])} sizes="(max-width:720px) 92vw, (max-width:1180px) 47vw, 31vw" alt={visualSlots[4].alt} width={visualSlots[4].width} height={visualSlots[4].height} decoding="async" /></figure>
             <div class="mk-text">
               <span class="no">{moduleCards[1].label}</span>
               <h3>{moduleCards[1].title}</h3>
@@ -284,7 +307,7 @@ const searchLinks = [
             </div>
           </article>
           <article class="mk-card">
-            <figure class="mk-img"><img src={visualSlots[5].src} data-src={visualSlots[5].src} loading="lazy" alt={visualSlots[5].alt} width={visualSlots[5].width} height={visualSlots[5].height} decoding="async" /></figure>
+            <figure class="mk-img"><img src={visualSlots[5].src} srcset={slotSrcset(visualSlots[5])} sizes="(max-width:720px) 92vw, (max-width:1180px) 47vw, 31vw" data-src={visualSlots[5].src} loading="lazy" alt={visualSlots[5].alt} width={visualSlots[5].width} height={visualSlots[5].height} decoding="async" /></figure>
             <div class="mk-text">
               <span class="no">{moduleCards[2].label}</span>
               <h3>{moduleCards[2].title}</h3>
@@ -292,7 +315,7 @@ const searchLinks = [
             </div>
           </article>
           <article class="mk-card">
-            <figure class="mk-img"><img src={visualSlots[6].src} data-src={visualSlots[6].src} loading="lazy" alt={visualSlots[6].alt} width={visualSlots[6].width} height={visualSlots[6].height} decoding="async" /></figure>
+            <figure class="mk-img"><img src={visualSlots[6].src} srcset={slotSrcset(visualSlots[6])} sizes="(max-width:720px) 92vw, (max-width:1180px) 47vw, 31vw" data-src={visualSlots[6].src} loading="lazy" alt={visualSlots[6].alt} width={visualSlots[6].width} height={visualSlots[6].height} decoding="async" /></figure>
             <div class="mk-text">
               <span class="no">{moduleCards[3].label}</span>
               <h3>{moduleCards[3].title}</h3>
@@ -300,7 +323,7 @@ const searchLinks = [
             </div>
           </article>
           <article class="mk-card">
-            <figure class="mk-img"><img loading="lazy" src={visualSlots[7].src} alt={visualSlots[7].alt} width={visualSlots[7].width} height={visualSlots[7].height} decoding="async" /></figure>
+            <figure class="mk-img"><img loading="lazy" src={visualSlots[7].src} srcset={slotSrcset(visualSlots[7])} sizes="(max-width:720px) 92vw, (max-width:1180px) 47vw, 31vw" alt={visualSlots[7].alt} width={visualSlots[7].width} height={visualSlots[7].height} decoding="async" /></figure>
             <div class="mk-text">
               <span class="no">{moduleCards[4].label}</span>
               <h3>{moduleCards[4].title}</h3>
@@ -308,7 +331,7 @@ const searchLinks = [
             </div>
           </article>
           <article class="mk-card">
-            <figure class="mk-img"><img loading="lazy" src={visualSlots[8].src} alt={visualSlots[8].alt} width={visualSlots[8].width} height={visualSlots[8].height} decoding="async" /></figure>
+            <figure class="mk-img"><img loading="lazy" src={visualSlots[8].src} srcset={slotSrcset(visualSlots[8])} sizes="(max-width:720px) 92vw, (max-width:1180px) 47vw, 31vw" alt={visualSlots[8].alt} width={visualSlots[8].width} height={visualSlots[8].height} decoding="async" /></figure>
             <div class="mk-text">
               <span class="no">{moduleCards[5].label}</span>
               <h3>{moduleCards[5].title}</h3>
@@ -326,27 +349,27 @@ const searchLinks = [
           <p>{focusPortfolioLead}</p>
         </header>
         <button type="button" class="po-tile t1" data-i="0" data-full={visualSlots[9].full} aria-label="Bild 1 vergrößern">
-          <img loading="lazy" src={visualSlots[9].src} data-full={visualSlots[9].full} alt={visualSlots[9].alt} width={visualSlots[9].width} height={visualSlots[9].height} decoding="async" />
+          <img loading="lazy" src={visualSlots[9].src} srcset={slotSrcset(visualSlots[9])} sizes="(max-width:720px) 48vw, 58vw" data-full={visualSlots[9].full} alt={visualSlots[9].alt} width={visualSlots[9].width} height={visualSlots[9].height} decoding="async" />
           <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
         </button>
         <button type="button" class="po-tile t2" data-i="1" data-full={visualSlots[10].full} aria-label="Bild 2 vergrößern">
-          <img src={visualSlots[10].src} data-full={visualSlots[10].full} loading="lazy" alt={visualSlots[10].alt} width={visualSlots[10].width} height={visualSlots[10].height} decoding="async" />
+          <img src={visualSlots[10].src} srcset={slotSrcset(visualSlots[10])} sizes="(max-width:720px) 48vw, 33vw" data-full={visualSlots[10].full} loading="lazy" alt={visualSlots[10].alt} width={visualSlots[10].width} height={visualSlots[10].height} decoding="async" />
           <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
         </button>
         <button type="button" class="po-tile t3" data-i="2" data-full={visualSlots[11].full} aria-label="Bild 3 vergrößern">
-          <img src={visualSlots[11].src} data-full={visualSlots[11].full} loading="lazy" alt={visualSlots[11].alt} width={visualSlots[11].width} height={visualSlots[11].height} decoding="async" />
+          <img src={visualSlots[11].src} srcset={slotSrcset(visualSlots[11])} sizes="(max-width:720px) 48vw, 33vw" data-full={visualSlots[11].full} loading="lazy" alt={visualSlots[11].alt} width={visualSlots[11].width} height={visualSlots[11].height} decoding="async" />
           <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
         </button>
         <button type="button" class="po-tile t4" data-i="3" data-full={visualSlots[12].full} aria-label="Bild 4 vergrößern">
-          <img src={visualSlots[12].src} data-full={visualSlots[12].full} loading="lazy" alt={visualSlots[12].alt} width={visualSlots[12].width} height={visualSlots[12].height} decoding="async" />
+          <img src={visualSlots[12].src} srcset={slotSrcset(visualSlots[12])} sizes="(max-width:720px) 48vw, 33vw" data-full={visualSlots[12].full} loading="lazy" alt={visualSlots[12].alt} width={visualSlots[12].width} height={visualSlots[12].height} decoding="async" />
           <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
         </button>
         <button type="button" class="po-tile t5" data-i="4" data-full={visualSlots[13].full} aria-label="Bild 5 vergrößern">
-          <img loading="lazy" src={visualSlots[13].src} data-full={visualSlots[13].full} alt={visualSlots[13].alt} width={visualSlots[13].width} height={visualSlots[13].height} decoding="async" />
+          <img loading="lazy" src={visualSlots[13].src} srcset={slotSrcset(visualSlots[13])} sizes="(max-width:720px) 48vw, 33vw" data-full={visualSlots[13].full} alt={visualSlots[13].alt} width={visualSlots[13].width} height={visualSlots[13].height} decoding="async" />
           <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
         </button>
         <button type="button" class="po-tile t6" data-i="5" data-full={visualSlots[14].full} aria-label="Bild 6 vergrößern">
-          <img loading="lazy" src={visualSlots[14].src} data-full={visualSlots[14].full} alt={visualSlots[14].alt} width={visualSlots[14].width} height={visualSlots[14].height} decoding="async" />
+          <img loading="lazy" src={visualSlots[14].src} srcset={slotSrcset(visualSlots[14])} sizes="(max-width:720px) 48vw, 33vw" data-full={visualSlots[14].full} alt={visualSlots[14].alt} width={visualSlots[14].width} height={visualSlots[14].height} decoding="async" />
           <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
         </button>
       </div>
