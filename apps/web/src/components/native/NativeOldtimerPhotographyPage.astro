@@ -39,6 +39,9 @@ const pageContext = nativeFamilyPageContext({
 })
 const { clusterHeading, clusterLinks, isKeywordPage, isParentPage, overviewHref, publishedHref, scope, serviceLabel } = pageContext
 const keywordFocusCopy = keywordFocusCopyForSlug(legacyFile)
+const faqItems = doc?.localFaq?.length
+  ? doc.localFaq.map((entry) => ({ q: entry.question || '', a: entry.answer || '' })).filter((entry) => entry.q && entry.a)
+  : keywordFocusCopy?.faq
 const cmsText = (value: unknown) => (typeof value === 'string' ? value.trim() : '')
 const cmsHeroLine2 = cmsText(doc?.heroLine2)
 const cmsStatementBody = doc?.statement?.body?.map((entry) => cmsText(entry.text)).filter(Boolean) || []
@@ -448,7 +451,7 @@ const searchLinks = [
       </div>
     </section>
 
-    <NativeFamilyFaq faq={keywordFocusCopy?.faq} pageUrl={`https://matthiasramahi.de/${legacyFile}`} theme="dark" />
+    <NativeFamilyFaq faq={faqItems} pageUrl={`https://matthiasramahi.de/${legacyFile}`} theme="dark" />
 
     <section
       id="anfrage"

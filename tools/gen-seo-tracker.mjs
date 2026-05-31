@@ -1,6 +1,6 @@
+// Run from apps/web:  node ../../tools/gen-seo-tracker.mjs
 import fs from 'node:fs'
 
-const distDir = 'dist/client'
 const families = {
   automobil: ['automobil-fotografie', 'auto-fotoshooting', 'auto-fotografieren-tipps', 'automotive-fotografie', 'autofotografie', 'autohaus-fotografie', 'autoverkauf-fotos', 'bilder-mit-auto', 'fahrzeugfotografie', 'fotoshooting-mit-auto'],
   sportwagen: ['motorsport-sportwagen-fotografie', 'motorsport-fotografie', 'sportwagen-fotografie', 'sportwagen-shooting', 'sportwagen-fotoshooting', 'performance-car-fotografie', 'exotic-car-fotografie', 'supersportwagen-fotografie'],
@@ -12,50 +12,50 @@ const families = {
 const cityTokens = ['bergisch-gladbach','bochum','deutschland','dormagen','dortmund','duesseldorf','duisburg','essen','gelsenkirchen','hilden','koeln','krefeld','leverkusen','mettmann','moenchengladbach','moers','neuss','nrw','oberhausen','remscheid','solingen','wuppertal','erkrath','ratingen']
 const richCopy = new Set(['auto-fotografieren-tipps','auto-fotoshooting','bilder-mit-auto','fotoshooting-mit-auto','motorsport-fotografie','motorsport-sportwagen-fotografie','portrait-fotoshooting','portraitfotografie-beleuchtung','dating-fotoshooting','fotoshooting-gutschein','fotoshooting-preise','paarshooting-familienshooting','schwarz-weiss-portrait-fotografie','business-portrait','headshot-fotograf','personal-branding-fotografie','unternehmensportrait','pressefoto'])
 const faqKeys = new Set(['automobil-fotografie','sportwagen-fotografie','oldtimer-fotografie','motorrad-fotografie','portraitfotografie','landschaftsfotografie','business-portrait','headshot-fotograf','personal-branding-fotografie','unternehmensportrait','pressefoto'])
+const famParent = { automobil: 'automobil-fotografie', sportwagen: 'sportwagen-fotografie', oldtimer: 'oldtimer-fotografie', motorrad: 'motorrad-fotografie', portrait: 'portraitfotografie', landschaft: 'landschaftsfotografie' }
 
-const allPrefixes = Object.entries(families).flatMap(([fam, ps]) => ps.map((p) => ({ fam, p })))
-const prefixesByLen = [...allPrefixes].sort((a, b) => b.p.length - a.p.length)
+const audit = JSON.parse(fs.readFileSync('../../.tmp/cms-connection-audit.json', 'utf8'))
+const noDoc = new Set(audit.withoutDoc.map((s) => s.toLowerCase()))
 
+const prefixesByLen = Object.entries(families).flatMap(([fam, ps]) => ps.map((p) => ({ fam, p }))).sort((a, b) => b.p.length - a.p.length)
 function classify(slug) {
   const m = prefixesByLen.find(({ p }) => slug === p || slug.startsWith(p + '-'))
   if (!m) return null
   const rest = slug === m.p ? '' : slug.slice(m.p.length + 1)
-  const city = cityTokens.includes(rest) ? rest : (rest === '' ? '' : (cityTokens.includes(slug.split('-').slice(-1)[0]) ? slug.split('-').slice(-1)[0] : null))
-  // scope detection: trailing city token
-  let scope = 'überregional/keyword'
-  let kind = 'keyword'
-  if (rest === '') { scope = (m.p === famParent[m.fam]) ? 'Düsseldorf (Parent)' : 'überregional'; kind = (m.p === famParent[m.fam]) ? 'PARENT' : 'keyword' }
+  let scope = 'überregional', kind = 'keyword'
+  if (rest === '') { const isP = m.p === famParent[m.fam]; scope = isP ? 'Düsseldorf (Parent)' : 'überregional'; kind = isP ? 'PARENT' : 'keyword' }
   else if (cityTokens.includes(rest)) { scope = rest; kind = 'city' }
   return { fam: m.fam, prefix: m.p, scope, kind }
 }
-const famParent = { automobil: 'automobil-fotografie', sportwagen: 'sportwagen-fotografie', oldtimer: 'oldtimer-fotografie', motorrad: 'motorrad-fotografie', portrait: 'portraitfotografie', landschaft: 'landschaftsfotografie' }
 
-const dirs = fs.readdirSync(distDir).filter((d) => d.endsWith('.html') && fs.existsSync(`${distDir}/${d}/index.html`))
+const dirs = fs.readdirSync('dist/client').filter((d) => d.endsWith('.html') && fs.existsSync(`dist/client/${d}/index.html`))
 const rows = []
 for (const d of dirs) {
   const slug = d.replace(/\.html$/, '')
   const c = classify(slug)
-  if (!c) continue
-  rows.push({ slug, ...c })
+  if (c) rows.push({ slug, file: d.toLowerCase(), ...c })
 }
-rows.sort((a, b) => (a.fam.localeCompare(b.fam)) || a.prefix.localeCompare(b.prefix) || a.slug.localeCompare(b.slug))
+rows.sort((a, b) => a.fam.localeCompare(b.fam) || a.prefix.localeCompare(b.prefix) || a.slug.localeCompare(b.slug))
 
 const famOrder = ['automobil','sportwagen','oldtimer','motorrad','portrait','landschaft']
-let md = `# SEO Content Tracker\n\nStand: angelegt automatisch. Quelle: gebaute Seiten in \`apps/web/dist/client\`.\n\n**Spalten:** Code-Copy = \`rich\` (handgeschrieben) / \`generiert\` (simpleKeywordCopy). FAQ = Code-FAQ vorhanden. CMS = CMS-\`intro\`/\`localFaq\`/\`localProof\` befüllt. Status = TODO / WIP / DONE.\n\n> Ziel: jede Seite eigener, kreativer Text mit mehreren parallelen Keywords. Bei steigender Zahl: Schreibstil, Themen und Keyword-Sets variieren. Inhalte gehören ins CMS (Code = Fallback).\n\n`
-md += `**Gesamt:** ${rows.length} Seiten\n\n`
+const createCount = rows.filter((r) => noDoc.has(r.file)).length
+let md = `# SEO Content Tracker\n\nQuelle: gebaute Seiten (\`apps/web/dist/client\`) + CMS-Connection-Audit (\`tools/audit-cms-connections.mjs\`).\n\n`
+md += `**Gesamt:** ${rows.length} Seiten · CMS-Doc vorhanden (UPDATE): ${rows.length - createCount} · ohne Doc (CREATE): ${createCount}\n\n`
+md += `**Spalten:** Copy = \`rich\`/\`gen\` (Code-Fallback) · FAQ = Code-FAQ · CMS = \`UPDATE\` (Doc existiert) / \`CREATE\` (neu anlegen) · ✍️ = Content geschrieben (CMS) · Status.\n\n`
+md += `> Ziel: jede Seite eigener, kreativer Text mit mehreren parallelen Keywords; Stil/Themen/Keywords variieren. Inhalte ins CMS (intro/localProof/localFaq), Code = Fallback.\n\n`
 
 for (const fam of famOrder) {
   const fr = rows.filter((r) => r.fam === fam)
   if (!fr.length) continue
   md += `## ${fam} (${fr.length})\n\n`
-  md += `| Seite | Prefix | Scope | Typ | Code-Copy | FAQ | CMS | Status | Notiz |\n|---|---|---|---|---|---|---|---|---|\n`
+  md += `| Seite | Prefix | Scope | Typ | Copy | FAQ | CMS | ✍️ | Status |\n|---|---|---|---|---|---|---|---|---|\n`
   for (const r of fr) {
-    const code = richCopy.has(r.prefix) ? 'rich' : 'generiert'
+    const copy = richCopy.has(r.prefix) ? 'rich' : 'gen'
     const faq = faqKeys.has(r.prefix) ? 'ja' : '—'
-    md += `| \`${r.slug}.html\` | ${r.prefix} | ${r.scope} | ${r.kind} | ${code} | ${faq} | ⬜ | TODO | |\n`
+    const cms = noDoc.has(r.file) ? 'CREATE' : 'UPDATE'
+    md += `| \`${r.slug}.html\` | ${r.prefix} | ${r.scope} | ${r.kind} | ${copy} | ${faq} | ${cms} | ⬜ | TODO |\n`
   }
   md += `\n`
 }
-fs.mkdirSync('../../docs', { recursive: true })
 fs.writeFileSync('../../docs/seo-content-tracker.md', md)
-console.log(`wrote docs/seo-content-tracker.md with ${rows.length} rows`)
+console.log(`tracker: ${rows.length} rows, CREATE=${createCount}, UPDATE=${rows.length - createCount}`)
