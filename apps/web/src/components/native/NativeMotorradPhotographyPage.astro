@@ -39,7 +39,7 @@ const { clusterHeading, clusterLinks, isKeywordPage, isParentPage, overviewHref,
 const heroSecondLine = isParentPage || isKeywordPage ? 'Fotografie.' : `Fotografie ${scope.label}`
 const heroLabel = isParentPage || isKeywordPage ? 'Motorradfotografie' : `Motorradfotografie ${scope.label}`
 const heroLead = isParentPage
-  ? 'Motorradfotografie: Silhouette, Mechanik, Haltung, Detail und Fahrerbezug werden als kraftvolle Serie geplant — für Custom Bikes, Händler, Werkstätten und private Maschinen. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.'
+  ? 'Motorradfotografie: Silhouette, Mechanik, Haltung und Fahrerbezug — als kraftvolle Serie geplant für Custom Bikes, Händler, Werkstätten und private Maschinen.'
   : isKeywordPage
     ? `${serviceLabel}: eigenständiger Einstieg in den Motorrad Fotografie-Cluster. Silhouette, Mechanik, Haltung, Detail und Fahrerbezug werden als kraftvolle Serie geplant - für Custom Bikes, Händler, Werkstätten und private Maschinen. Die Seite bleibt bewusst im Layout der übergeordneten Kategorie, setzt den Text aber auf diese konkrete Suchintention.`
     : `Motorradfotografie in ${scope.label}: Silhouette, Mechanik, Haltung, Detail und Fahrerbezug werden als kraftvolle Serie geplant - für Custom Bikes, Händler, Werkstätten und private Maschinen. ${localScopePhrase(scope)}`
@@ -164,7 +164,7 @@ const searchLinks = [
           <span class="line"><span class="word">{heroSecondLine}</span></span>
         </h1>
         <div class="hero-mr__lede-block">
-          <p class="hero-mr__lede">{doc?.intro || heroLead}</p>
+          <p class="hero-mr__lede">{heroLead}</p>
           <div class="hero-mr__actions">
             <a href="#anfrage">Shooting buchen →</a>
             <a class="ghost" href="portfolio.html">Portfolio</a>

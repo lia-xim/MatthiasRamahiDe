@@ -268,7 +268,8 @@
     .hero-mr__title .line:first-child .word{font-size:clamp(48px,13vw,88px);letter-spacing:-.05em}
     .hero-mr__title .line:nth-child(2) .word{font-size:clamp(15px,3.4vw,22px);letter-spacing:.2em}
     .hero-mr__title .line:nth-child(2) .word::after{width:clamp(24px,5vw,42px);margin-left:12px}
-    .hero-mr__lede-block{max-width:none}
+    .hero-mr__lede-block{max-width:none;gap:16px;margin-top:clamp(20px,5vw,30px)}
+    .hero-mr__lede{font-size:14.5px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
     .hero-mr__actions{justify-content:flex-start}
     /* Rail collapses to dots inline below the title on mobile. */
     .hero-mr__rail{position:static;width:auto;flex-direction:row;justify-content:flex-start;align-items:center;gap:14px;
