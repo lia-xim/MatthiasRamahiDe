@@ -1,11 +1,9 @@
-import { sitemapEntries, urlsetXml } from '../lib/sitemap'
+import { sitemapEntries, sitemapXmlHeaders, urlsetXml } from '../lib/sitemap'
 
-export const prerender = true
+export const prerender = false
 
 export async function GET() {
   return new Response(urlsetXml(await sitemapEntries('services')), {
-    headers: {
-      'content-type': 'application/xml; charset=utf-8',
-    },
+    headers: sitemapXmlHeaders(),
   })
 }

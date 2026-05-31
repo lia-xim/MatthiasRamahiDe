@@ -223,9 +223,7 @@
     /* PROVENANCE -> horizontaler Swipe-Carousel (kompakt, lesbar) */
     .pv-head{margin-bottom:clamp(22px,5vw,34px)}
     .pv-head h2{font-size:clamp(36px,9vw,62px);margin-bottom:16px}
-    /* Carousel inset wie die Überschrift (nicht flush links), trotzdem scrollbar.
-       scroll-padding sorgt für sauberes Snapping am linken Inset. */
-    .pv-grid{display:flex;grid-template-columns:none;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;scroll-padding-left:0;padding:0 0 6px}
+    .pv-grid{display:flex;grid-template-columns:none;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:0 -22px;padding:0 22px 6px}
     .pv-grid::-webkit-scrollbar{display:none}
     .pv-card{flex:0 0 78%;scroll-snap-align:start;gap:14px}
     .pv-img{aspect-ratio:4/5}
@@ -256,7 +254,7 @@
     .rl-head{grid-template-columns:1fr;gap:16px;margin-bottom:clamp(22px,5vw,34px)}
     .rl-head h2{font-size:clamp(38px,9vw,62px)}
     .rl-head p{justify-self:start}
-    .rl-grid{display:flex;grid-template-columns:none;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;scroll-padding-left:0;padding:0 0 6px}
+    .rl-grid{display:flex;grid-template-columns:none;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:0 -22px;padding:0 22px 6px}
     .rl-grid::-webkit-scrollbar{display:none}
     .rl-card{flex:0 0 78%;scroll-snap-align:start;aspect-ratio:3/4}
     .rl-card img{filter:brightness(.82) grayscale(.1)}

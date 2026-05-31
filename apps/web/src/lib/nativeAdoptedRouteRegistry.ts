@@ -25,6 +25,7 @@ export type NativeAdoptedRouteKind =
   | 'service-detail'
   | 'services-index'
   | 'sportscar'
+  | 'webdesign-seo'
   | 'videografie'
   | 'viola-musik'
   | 'werbetechnik'
@@ -46,6 +47,7 @@ const exactRouteKinds: Record<string, NativeAdoptedRouteKind> = {
   'fotolabor-druck-duesseldorf.html': 'print-lab',
   'grossformatdruck-duesseldorf.html': 'grossformat',
   'werbetechnik-duesseldorf.html': 'werbetechnik',
+  'webdesign-seo-duesseldorf.html': 'webdesign-seo',
   'videografie-duesseldorf.html': 'videografie',
   'viola-musik-duesseldorf.html': 'viola-musik',
   'leistungen.html': 'services-index',

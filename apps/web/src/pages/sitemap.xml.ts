@@ -1,11 +1,9 @@
-import { sitemapIndexXml } from '../lib/sitemap'
+import { sitemapIndexXml, sitemapXmlHeaders } from '../lib/sitemap'
 
-export const prerender = true
+export const prerender = false
 
 export async function GET() {
   return new Response(sitemapIndexXml(), {
-    headers: {
-      'content-type': 'application/xml; charset=utf-8',
-    },
+    headers: sitemapXmlHeaders(),
   })
 }

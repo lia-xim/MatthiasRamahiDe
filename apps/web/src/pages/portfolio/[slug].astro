@@ -3,15 +3,10 @@ import ContentBlocks from '../../components/ContentBlocks.astro'
 import ContactCta from '../../components/ContactCta.astro'
 import LoadMoreGallery from '../../components/LoadMoreGallery.astro'
 import BaseLayout from '../../layouts/BaseLayout.astro'
-import { getBySlug, imageDisplayUrl, listDocuments, routeForDoc, toAbsoluteSiteUrl } from '../../lib/payload'
+import { getBySlug, imageDisplayUrl, routeForDoc, toAbsoluteSiteUrl } from '../../lib/payload'
 import { breadcrumbJsonLd, imageGalleryJsonLd, type JsonLd } from '../../lib/seo'
 
-export const prerender = true
-
-export async function getStaticPaths() {
-  const docs = await listDocuments('portfolio-projects', { limit: 300, sort: 'sortOrder,-updatedAt' })
-  return docs.map((doc) => ({ params: { slug: doc.slug }, props: { doc } }))
-}
+export const prerender = false
 
 const { slug } = Astro.params
 const doc = Astro.props.doc ?? (slug ? await getBySlug('portfolio-projects', slug) : null)
@@ -19,6 +14,8 @@ const doc = Astro.props.doc ?? (slug ? await getBySlug('portfolio-projects', slu
 if (!doc) {
   return Astro.redirect('/portfolio')
 }
+
+Astro.response.headers.set('cache-control', 'public, max-age=300, stale-while-revalidate=86400')
 
 const hero = imageDisplayUrl(doc.coverImage, 'wide')
 const gallery = doc.gallery ?? []

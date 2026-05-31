@@ -386,7 +386,7 @@ const searchLinks = [
         </div>
         <div class="fw-grid">
           {focusAudiences.map(([number, title, label]) => (
-            <article class="fw-card"><span class="no">{number}</span><strong>{title}</strong><span class="lbl">{label}</span></article>
+            <a class="fw-card" href="#anfrage"><span class="no">{number}</span><strong>{title}</strong><span class="lbl">{label}</span><span class="arrow" aria-hidden="true">→</span></a>
           ))}
         </div>
         <div class="fw-foot">

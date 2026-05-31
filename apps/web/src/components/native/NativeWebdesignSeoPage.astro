@@ -1,0 +1,184 @@
+---
+import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
+import { getBySlug, imageUrl, type PayloadDoc } from '../../lib/payload'
+
+const legacyFile = 'webdesign-seo-duesseldorf.html'
+const providedDoc = Astro.props.doc as PayloadDoc | undefined
+const doc = providedDoc || (await getBySlug('service-pages', 'webdesign-seo-duesseldorf', { depth: 2 }))
+
+// Kompakte, minimalistische Sektionen — nummerierte Hairline-Listen, kein Card-Chrome.
+const services = [
+  { n: '01', title: 'Neue Websites', body: 'Handgebaut, schnell, schlank — ohne Page-Builder-Aufblähung.' },
+  { n: '02', title: 'Lokale Sichtbarkeit', body: 'Stadtseiten, GBP und Schema für echte Local-Pack-Sichtbarkeit.' },
+  { n: '03', title: 'Inhalte & Bildsprache', body: 'Eigene Fotos und editoriale Texte statt Stock — aus einer Hand.' },
+  { n: '04', title: 'Performance & Wartung', body: 'Core-Web-Vitals im grünen Bereich, Pflege ohne CMS-Stress.' },
+]
+const systemLayers = [
+  { n: '01', tag: 'Struktur', line: 'Sitemap, URLs und interne Links — vor dem ersten Pixel.' },
+  { n: '02', tag: 'Design', line: 'Editorial, mit echtem Bild und ruhiger Typografie.' },
+  { n: '03', tag: 'Tech', line: 'Astro, Next.js oder reines HTML — nach Bedarf.' },
+  { n: '04', tag: 'SEO', line: 'On-Page, Local, Schema und Sitemap im Standard.' },
+]
+const buildStats = [
+  { value: '< 2 s', label: 'LCP-Ziel' },
+  { value: '~ 0', label: 'CLS-Ziel' },
+  { value: '< 200 KB', label: 'Initial' },
+]
+
+// Hero-Bild aus dem CMS (service-pages.heroImage), aber NIE der gr-knospe-Website-
+// Screenshot — der wirkt als Hero verwirrend. Bis ein echtes Web-/SEO-Motiv im CMS
+// liegt, greift ein dunkles Bestandsbild. Bewegung kommt aus native-home.js,
+// gated nur auf #hero-shader (Touch/≤900px: Canvas aus, sanfter Pan).
+const heroFallback = '/assets/optimized/assets-photos-automobil-sunset-1920.webp'
+const cmsHero = imageUrl(doc?.heroImage, 'hero', { allowOriginal: true })
+const isScreenshot = typeof cmsHero === 'string' && /screencapture|gr-knospe/i.test(cmsHero)
+const heroImage = cmsHero && !isScreenshot ? cmsHero : heroFallback
+const caseImage = '/assets/services/screencapture-gr-knospe-de-2025-10-02-23_10_04-720.webp'
+
+const heroSlides = [
+  {
+    image: heroImage,
+    titleLines: ['Webdesign', '& SEO'],
+    lead: 'Moderne Websites mit klarer Struktur, schneller Performance und lokaler Suchmaschinen-Sichtbarkeit — handgebaut für Marken und Mittelstand im Rheinland.',
+    primaryHref: '#anfrage',
+    primaryLabel: 'Website anfragen',
+    secondaryHref: '#leistungen',
+    secondaryLabel: 'Leistungen ansehen',
+  },
+]
+const heroSlidesJson = JSON.stringify(heroSlides)
+---
+<AdoptedPageLayout
+  legacyFile={legacyFile}
+  current="leistungen"
+  doc={doc}
+  ogImage={heroImage}
+  preloadImages={[heroImage]}
+>
+  <main>
+    {/* ===== HERO (dark) — Landing-Page-Shader-Hero ===== */}
+    <section class="hero" data-theme="dark" data-header-theme="dark" aria-label="Webdesign &amp; SEO Düsseldorf" style={`background-image:url('${heroImage}')`}>
+      <canvas id="hero-shader" aria-hidden="true" data-imgs={heroImage} data-slides={heroSlidesJson}></canvas>
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-aperture" aria-hidden="true"></div>
+      <div class="hero-grid">
+        <div class="hero-stage">
+          <h1 class="hero-title" id="hero-title" data-text-idx="0">
+            <span class="line"><span class="word">Webdesign</span></span>
+            <span class="line"><span class="word">&amp; SEO.</span></span>
+          </h1>
+          <p class="hero-lead" id="hero-lead">Moderne Websites mit klarer Struktur, schneller Performance und lokaler Suchmaschinen-Sichtbarkeit — handgebaut für Marken und Mittelstand im Rheinland.</p>
+          <div class="hero-actions" aria-label="Direkte Aktionen">
+            <a class="btn dark" href="#anfrage" data-hero-primary>Website anfragen</a>
+            <a class="btn" href="#leistungen" data-hero-secondary>Leistungen ansehen</a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-cursor" id="hero-cursor" aria-hidden="true"><span class="ring"></span></div>
+    </section>
+
+    {/* ===== STATEMENT (light) ===== */}
+    <section class="ws-statement" data-header-theme="light" aria-label="Gefunden werden und überzeugen">
+      <div class="ws-inner ws-statement__grid">
+        <div>
+          <h2>Gefunden werden,<br /><em>und überzeugen.</em></h2>
+        </div>
+        <div class="ws-statement__body">
+          <p class="ws-lead">Eine Website muss zwei Dinge gleichzeitig können: in der Suche auftauchen und danach überzeugen. Beides entsteht hier aus einer Hand — Struktur, Text, Bild und Technik.</p>
+          <p>Kein Page-Builder-Wust, keine Stockbilder, kein Template von der Stange. Stattdessen handgebaute Seiten mit eigener Bildsprache und einem schlanken Code-Stand, der schnell lädt und sauber rankt.</p>
+          <div class="ws-actions">
+            <a class="ws-btn ws-btn--ink" href="#leistungen">Leistungen ansehen</a>
+            <a class="ws-btn ws-btn--ghost-ink" href="#anfrage">Projekt anfragen</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ===== LEISTUNGEN (dark) ===== */}
+    <section class="ws-services" id="leistungen" data-header-theme="dark" aria-label="Webleistungen">
+      <div class="ws-inner">
+        <div class="ws-services__head">
+          <h2>Web<em>leistungen.</em></h2>
+          <p class="ws-lead">Webdesign und SEO als eine Sache — vier Disziplinen, ein Auftritt.</p>
+        </div>
+        <ol class="ws-services__grid">
+          {services.map((s) => (
+            <li class="ws-service">
+              <span class="ws-service__num">{s.n}</span>
+              <div class="ws-service__main">
+                <h3 class="ws-service__title">{s.title}</h3>
+                <p class="ws-service__body">{s.body}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    {/* ===== CASE (light) ===== */}
+    <section class="ws-case" data-header-theme="light" aria-label="Aus der Praxis">
+      <div class="ws-inner ws-case__grid">
+        <div class="ws-case__frame">
+          <div class="ws-case__bar" aria-hidden="true">
+            <span class="ws-case__dot"></span><span class="ws-case__dot"></span><span class="ws-case__dot"></span>
+            <span class="ws-case__url">gr-knospe.de</span>
+          </div>
+          <div class="ws-case__shot">
+            <img src={caseImage} alt="Website-Beispiel — Startseite einer von Matthias Ramahi gebauten Website" loading="lazy" decoding="async" width="720" height="1017" />
+          </div>
+        </div>
+        <div class="ws-case__copy">
+          <p class="ws-eyebrow ws-eyebrow--ink">Aus der Praxis</p>
+          <h2>Eine Seite,<br /><em>die trägt.</em></h2>
+          <p class="ws-lead">Handgebaut statt Baukasten: klare Struktur, eigene Bildsprache und ein schlanker Code-Stand, der auch nach Jahren noch schnell lädt.</p>
+          <dl class="ws-case__stats">
+            {buildStats.map((s) => (
+              <div class="ws-case__stat"><dd>{s.value}</dd><dt>{s.label}</dt></div>
+            ))}
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    {/* ===== SYSTEM (dark) ===== */}
+    <section class="ws-system" data-header-theme="dark" aria-label="System">
+      <div class="ws-inner">
+        <div class="ws-system__head">
+          <p class="ws-eyebrow">System</p>
+          <h2>Nicht eine Seite —<br /><em>ein System.</em></h2>
+          <p class="ws-lead">Eine Website ist kein Layout, sondern ein System aus Inhalten, Struktur und Verbindungen. Stimmt das System, wachsen einzelne Seiten organisch dazu.</p>
+        </div>
+        <ol class="ws-system__list">
+          {systemLayers.map((l) => (
+            <li class="ws-system__item">
+              <span class="ws-system__num">{l.n}</span>
+              <div class="ws-system__text">
+                <p class="ws-system__tag">{l.tag}</p>
+                <p class="ws-system__line">{l.line}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    {/* ===== CTA STRIP (light) ===== */}
+    <section class="sp-cta" data-header-theme="light" aria-label="Anfrage">
+      <div class="sp-cta__inner">
+        <h2 class="sp-cta__head">Bereit für ein <em>Webdesign-&amp;-SEO-Briefing.</em></h2>
+        <a class="sp-cta__btn" href="#anfrage">Projekt anfragen →</a>
+      </div>
+    </section>
+
+    {/* ===== CONTACT (dark) ===== */}
+    <section
+      id="anfrage"
+      data-contact-section
+      data-header-theme="dark"
+      data-contact-subject="Webdesign-Anfrage — Matthias Ramahi"
+      data-contact-headline="Website anfragen."
+      data-contact-lead="Beschreibe kurz, ob es um eine neue Website, einen Relaunch, lokale SEO-Seiten oder eine Beratung geht. Hilfreich: vorhandene Website, Branche, Zielregion und ob Texte oder Bilder schon vorhanden sind."
+      aria-label="Anfrage"
+    />
+  </main>
+</AdoptedPageLayout>

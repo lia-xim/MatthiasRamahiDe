@@ -9,7 +9,9 @@ import {
   configuredSiteUrl,
   imageAlt,
   imageUrl,
+  liveCmsFetchOptions,
   listDocuments,
+  payloadFetch,
   routeForDoc,
   toAbsoluteSiteUrl,
   type PayloadDoc,
@@ -23,6 +25,18 @@ export type SitemapEntry = {
   lastmod?: string
   images?: Array<{ loc: string; title?: string }>
 }
+
+type PayloadListResponse = {
+  docs?: PayloadDoc[]
+  hasNextPage?: boolean
+  nextPage?: number | null
+  totalPages?: number
+}
+
+export const sitemapXmlHeaders = (contentType = 'application/xml; charset=utf-8') => ({
+  'content-type': contentType,
+  'cache-control': 'public, max-age=0, s-maxage=60, stale-while-revalidate=600',
+})
 
 const photoClusterPrefixes = [
   'automobil-fotografie',
@@ -121,6 +135,21 @@ const dateOnly = (value?: string | number | Date) => {
 
 const legacyUrlForFile = (file: string) => (file === 'index.html' ? '/' : `/${file}`)
 
+const normalizePageLoc = (loc?: string) => {
+  try {
+    const site = new URL(configuredSiteUrl())
+    const url = new URL(toAbsoluteSiteUrl(loc))
+
+    if (url.hostname !== site.hostname || url.protocol !== site.protocol) return ''
+
+    url.hash = ''
+    const pathname = url.pathname === '/' ? '' : url.pathname.replace(/\/+$/, '')
+    return `${site.origin}${pathname}${url.search}`
+  } catch {
+    return ''
+  }
+}
+
 const sectionForLegacyFile = (file: string): SitemapSection => {
   const slug = file.replace(/\.html$/, '')
   if (file.startsWith('blog')) return 'journal'
@@ -136,6 +165,24 @@ const sectionForCollection = (collection: string): SitemapSection => {
   if (collection === 'journal-posts') return 'journal'
   if (collection === 'portfolio-projects') return 'portfolio'
   return 'pages'
+}
+
+const sectionForSitemapLoc = (loc: string, fallback: SitemapSection): SitemapSection => {
+  try {
+    const path = decodeURIComponent(new URL(toAbsoluteSiteUrl(loc)).pathname)
+      .replace(/^\/+/, '')
+      .replace(/\/+$/, '')
+
+    if (!path) return 'pages'
+    if (path.startsWith('portfolio/')) return 'portfolio'
+    if (path.startsWith('journal/')) return 'journal'
+    if (path.startsWith('services/')) return 'services'
+    if (!path.includes('/')) return sectionForLegacyFile(path.endsWith('.html') ? path : `${path}.html`)
+  } catch {
+    return fallback
+  }
+
+  return fallback
 }
 
 const mediaTitle = (media: PayloadMedia | string | undefined, fallback?: string) => {
@@ -208,13 +255,15 @@ export async function cmsSitemapEntries(section?: SitemapSection): Promise<Sitem
   const collections = ['portfolio-projects', 'service-pages', 'local-seo-pages', 'journal-posts', 'site-pages']
 
   for (const collection of collections) {
-    if (section && sectionForCollection(collection) !== section) continue
+    const collectionSection = sectionForCollection(collection)
 
-    const docs = await listDocuments(collection, { limit: 1000, depth: 1 })
+    const docs = await listSitemapDocuments(collection)
     docs
       .filter((doc) => doc._status !== 'draft' && !doc.seo?.noIndex)
       .forEach((doc: PayloadDoc) => {
         const loc = doc.seo?.canonicalUrl || routeForDoc(collection, doc)
+        if (section && sectionForSitemapLoc(loc, collectionSection) !== section) return
+
         entries.push({
           loc: toAbsoluteSiteUrl(loc),
           lastmod: dateOnly(doc.updatedAt || doc.publishedAt),
@@ -226,16 +275,46 @@ export async function cmsSitemapEntries(section?: SitemapSection): Promise<Sitem
   return entries
 }
 
+async function listSitemapDocuments(collection: string): Promise<PayloadDoc[]> {
+  const docs: PayloadDoc[] = []
+  let page = 1
+
+  for (let requestCount = 0; requestCount < 50; requestCount += 1) {
+    const data = await payloadFetch<PayloadListResponse>(
+      collection,
+      {
+        limit: 1000,
+        depth: 1,
+        page,
+      },
+      false,
+      liveCmsFetchOptions(),
+    )
+
+    const batch = data?.docs ?? []
+    docs.push(...batch)
+
+    const nextPage = typeof data?.nextPage === 'number' ? data.nextPage : data?.hasNextPage ? page + 1 : null
+    if (!nextPage || nextPage === page || batch.length === 0) break
+    page = nextPage
+  }
+
+  if (docs.length > 0) return docs
+
+  return listDocuments(collection, liveCmsFetchOptions({ limit: 1000, depth: 1 }))
+}
+
 export async function sitemapEntries(section?: SitemapSection): Promise<SitemapEntry[]> {
   const entries = [...(await nativeRouteSitemapEntries(section)), ...(await cmsSitemapEntries(section))]
   const byUrl = new Map<string, SitemapEntry>()
 
   for (const entry of entries) {
-    const normalized = toAbsoluteSiteUrl(entry.loc).replace(/\/$/, '')
-    const key = normalized || configuredSiteUrl()
+    const normalized = normalizePageLoc(entry.loc)
+    if (!normalized) continue
+    const key = normalized
     const existing = byUrl.get(key)
     if (!existing || (entry.lastmod && (!existing.lastmod || entry.lastmod > existing.lastmod))) {
-      byUrl.set(key, { ...entry, loc: normalized || configuredSiteUrl() })
+      byUrl.set(key, { ...entry, loc: normalized })
     }
   }
 
@@ -254,6 +333,7 @@ export async function imageSitemapEntries(): Promise<SitemapEntry[]> {
 export function urlsetXml(entries: SitemapEntry[], options: { images?: boolean } = {}) {
   const imageNs = options.images ? ' xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"' : ''
   return `<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"${imageNs}>
 ${entries
   .map((entry) => {
@@ -288,6 +368,7 @@ export function sitemapIndexXml() {
   ]
 
   return `<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${files
   .map(
