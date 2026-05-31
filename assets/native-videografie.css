@@ -29,6 +29,9 @@
    chrome (footer/contact) uses vw padding that overflows without border-box.
    Matches native-home.css / fotografie-overview.css which set the same reset. */
 * { box-sizing: border-box; }
+/* UA-Body-Margin (8px) zurücksetzen — sonst rahmt ein ~8px-Rand die ganze Seite,
+   da site-chrome.css kein margin:0 setzt. */
+body { margin: 0; }
 .vg-inner { width: min(100% - clamp(40px, 10vw, 152px), var(--vg-maxw)); margin-inline: auto; }
 
 /* Shared bits ----------------------------------------------------------- */
