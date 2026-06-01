@@ -1,6 +1,6 @@
 ---
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
-import { type JournalPostCard, journalCards, journalFilters, journalHero, journalTicker } from '../../lib/journalIndexContent'
+import { type JournalPostCard, journalCards, journalFilters, journalHero, journalHeroSlides, journalTicker } from '../../lib/journalIndexContent'
 import {
   getSitePageByType,
   imageAlt,
@@ -57,6 +57,11 @@ const cmsCards = cmsPosts
   .filter(Boolean) as JournalPostCard[]
 const posts = useCmsJournalIndexCards && cmsCards.length > 0 ? cmsCards : journalCards
 const heroLead = useCmsJournalIndexCards ? doc?.intro || journalHero.lead : journalHero.lead
+// Shader-Hero wie Home/Portfolio: erste Folie übernimmt (falls vorhanden) das CMS-Intro als Lead.
+const heroSlides = journalHeroSlides.map((slide, index) => (index === 0 ? { ...slide, lead: heroLead } : slide))
+const firstHeroSlide = heroSlides[0]
+const heroImages = heroSlides.map((slide) => slide.image)
+const heroSlidesJson = JSON.stringify(heroSlides)
 // Der oberste Beitrag wird als „Im Fokus"-Beitrag herausgestellt; das Raster zeigt den Rest.
 const featured = posts[0]
 const gridPosts = posts.slice(1)
@@ -65,22 +70,25 @@ const initialVisiblePostCount = 6
 <AdoptedPageLayout legacyFile="blog.html" current="blog" doc={doc}>
   <div class="light" aria-hidden="true"></div>
   <main>
-    <section class="hero" id="top" data-header-theme="dark" aria-label="Blog Intro">
-      <div class="hero__bg" aria-hidden="true">
-        <img src={journalHero.image} alt="" width="960" height="640" decoding="async" />
-      </div>
-      <div class="hero__veil" aria-hidden="true"></div>
-      <div class="hero__inner">
-        <div class="hero__copy">
-          <p class="hero__kicker">{journalHero.kicker}</p>
-          <h1 set:html={journalHero.title}></h1>
-          <p class="hero__lead">{heroLead}</p>
-          <div class="hero__actions">
-            <a class="hero__btn hero__btn--primary" href="#journal">Artikel ansehen</a>
-            <a class="hero__btn" href="/contact.html">Fotoauftrag anfragen</a>
+    <section class="hero" id="top" data-theme="dark" data-header-theme="dark" aria-label="Journal Intro" style={`background-image:url('${firstHeroSlide.image}')`}>
+      <canvas id="hero-shader" aria-hidden="true" data-imgs={heroImages.join(',')} data-slides={heroSlidesJson}></canvas>
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-aperture" aria-hidden="true"></div>
+      <div class="hero-grid">
+        <div class="hero-stage">
+          <h1 class="hero-title" id="hero-title" data-text-idx="0">
+            {firstHeroSlide.titleLines.map((line) => (
+              <span class="line"><span class="word">{line}</span></span>
+            ))}
+          </h1>
+          <p class="hero-lead" id="hero-lead">{firstHeroSlide.lead}</p>
+          <div class="hero-actions" aria-label="Direkte Aktionen">
+            <a class="btn dark" href={firstHeroSlide.primaryHref} data-hero-primary hidden={!firstHeroSlide.primaryHref || !firstHeroSlide.primaryLabel}>{firstHeroSlide.primaryLabel}</a>
+            <a class="btn" href={firstHeroSlide.secondaryHref} data-hero-secondary hidden={!firstHeroSlide.secondaryHref || !firstHeroSlide.secondaryLabel}>{firstHeroSlide.secondaryLabel}</a>
           </div>
         </div>
       </div>
+      <div class="hero-cursor" id="hero-cursor" aria-hidden="true"><span class="ring"></span></div>
     </section>
 
     <section class="ticker" aria-label="Themenlaufband">

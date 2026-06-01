@@ -353,6 +353,19 @@
       document.dispatchEvent(new CustomEvent('mr:conversion', { detail: payload }));
     }
 
+    /* Platzierung einer CTA ableiten (Hero/Sticky/Exit/Footer/Nav/Contact),
+       damit sich auswerten laesst, welche Position konvertiert. */
+    function ctaPlacement(el) {
+      if (!el || !el.closest) return 'body';
+      if (el.closest('.mr-sticky-cta') || el.getAttribute('data-cta-role') === 'mobile-sticky') return 'sticky';
+      if (el.closest('.mr-exit-cta')) return 'exit';
+      if (el.closest('.topbar, header')) return 'header';
+      if (el.closest('.contact-cta, .mr-contact, [data-contact-section]')) return 'contact';
+      if (el.closest('.mr-footer, footer')) return 'footer';
+      if (el.closest('.hero, #hero, .hero-stage, [data-hero]')) return 'hero';
+      return 'body';
+    }
+
     /* ---------- Mobile quick CTA -----------------------------------------
        The desktop header CTA is hidden on small screens to keep the menu
        usable. Add a compact sticky action so mobile visitors can start an
@@ -432,7 +445,7 @@
             at: Date.now()
           }));
         } catch (err) {}
-        trackConversionEvent('cta_click', { text: text, href: href, role: role });
+        trackConversionEvent('cta_click', { text: text, href: href, role: role, placement: ctaPlacement(el) });
       }, { capture: true });
     })();
 
@@ -751,6 +764,7 @@
         form.addEventListener('focusin', function () {
           if (formStarted) return;
           formStarted = true;
+          form.dataset.focusAt = String(Date.now());
           trackConversionEvent('form_start', { form: 'mr-contact', subject: subject });
         });
 
@@ -764,13 +778,20 @@
           };
           const intent = pageIntent();
           let lastCta = '';
+          let lastCtaRole = '';
           try {
             const stored = JSON.parse(sessionStorage.getItem('mr:lastCta') || '{}');
             lastCta = [stored.text, stored.role, stored.href].filter(Boolean).join(' / ');
+            lastCtaRole = stored.role || '';
           } catch (err) {}
+          const focusAt = Number(form.dataset.focusAt || 0);
+          const durationSeconds = focusAt ? Math.max(0, Math.round((Date.now() - focusAt) / 1000)) : 0;
           trackConversionEvent('form_submit_attempt', {
             form: 'mr-contact',
-            subject: subject
+            subject: subject,
+            lastCta: lastCta,
+            lastCtaRole: lastCtaRole,
+            durationSeconds: durationSeconds
           });
           if (form.elements['website'] && form.elements['website'].value) {
             form.reset();
@@ -813,7 +834,10 @@
               trackConversionEvent('form_submit_success', {
                 form: 'mr-contact',
                 transport: result.queued ? 'resend-queue' : 'resend',
-                requestId: result.id || ''
+                requestId: result.id || '',
+                lastCta: lastCta,
+                lastCtaRole: lastCtaRole,
+                durationSeconds: durationSeconds
               });
               form.reset();
             } catch (err) {
@@ -828,7 +852,13 @@
                 'Nachricht:\n' + data.message;
               window.location.href = 'mailto:info@matthiasramahi.de?subject=' +
                 encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-              trackConversionEvent('form_submit_fallback', { form: 'mr-contact', transport: 'mailto' });
+              trackConversionEvent('form_submit_fallback', {
+                form: 'mr-contact',
+                transport: 'mailto',
+                reason: (err && err.message) ? String(err.message).slice(0, 120) : 'delivery-failed',
+                lastCta: lastCta,
+                lastCtaRole: lastCtaRole
+              });
             } finally {
               submit.disabled = false;
             }
@@ -844,7 +874,13 @@
             setStatus('Mail-App wird geöffnet …', 'ok');
             window.location.href = 'mailto:info@matthiasramahi.de?subject=' +
               encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-            trackConversionEvent('form_submit_success', { form: 'mr-contact', transport: 'mailto' });
+            trackConversionEvent('form_submit_success', {
+              form: 'mr-contact',
+              transport: 'mailto',
+              lastCta: lastCta,
+              lastCtaRole: lastCtaRole,
+              durationSeconds: durationSeconds
+            });
           }
         });
       });

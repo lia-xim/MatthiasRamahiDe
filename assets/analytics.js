@@ -98,8 +98,9 @@
     form_honeypot: 'form-honeypot'
   };
   var CONVERSION_PROPS = [
-    'form', 'subject', 'transport', 'role', 'text', 'href',
-    'intent', 'use', 'reason', 'requestId'
+    'form', 'subject', 'transport', 'role', 'placement', 'text', 'href',
+    'intent', 'use', 'reason', 'requestId',
+    'lastCta', 'lastCtaRole', 'durationSeconds', 'lastField'
   ];
 
   document.addEventListener('mr:conversion', function (e) {
@@ -190,12 +191,95 @@
   document.addEventListener('toggle', function (e) {
     var el = e.target;
     if (!el || el.tagName !== 'DETAILS' || !el.open) return;
-    // Anfrage-Form-Details ("Projektangaben ergaenzen") nicht als FAQ zaehlen
-    if (el.classList && el.classList.contains('contact-cta__details')) return;
+    // Anfrage-Form-Details ("Projektangaben ergaenzen") = Engagement-Signal, kein FAQ
+    if (el.classList && el.classList.contains('contact-cta__details')) {
+      track('form-expand', { form: 'contact-cta', page: location.pathname });
+      return;
+    }
     var summary = el.querySelector('summary');
     var q = summary ? (summary.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 120) : '';
     track('faq-open', { question: q, page: location.pathname });
   }, { capture: true });
+
+  /* =====================================================================
+     2e) Formular-Abbruch — wer anfaengt, aber nicht absendet
+     Wichtigste Funnel-Insight: Abbruchquote + das zuletzt erreichte Feld
+     (= ungefaehre Aussteiger-Position). Erfolgreicher Versand ODER
+     mailto-Fallback zaehlen NICHT als Abbruch.
+     ===================================================================== */
+  (function () {
+    var FORM_SEL = '.contact-cta__form, .mr-contact__form';
+    var started = false;
+    var completed = false;
+    var abandonSent = false;
+    var formName = '';
+    var lastField = '';
+
+    document.addEventListener('focusin', function (e) {
+      var control = e.target && e.target.closest && e.target.closest('input,textarea,select');
+      if (!control) return;
+      var form = control.closest(FORM_SEL);
+      if (!form) return;
+      started = true;
+      formName = form.classList.contains('mr-contact__form') ? 'mr-contact' : 'contact-cta';
+      var n = control.getAttribute('name');
+      if (n && n !== 'website') lastField = n; // Honeypot ignorieren
+    }, true);
+
+    document.addEventListener('mr:conversion', function (e) {
+      var ev = e && e.detail && e.detail.event;
+      if (ev === 'form_submit_success' || ev === 'form_submit_fallback') completed = true;
+    });
+
+    function maybeAbandon() {
+      if (abandonSent || !started || completed) return;
+      abandonSent = true;
+      // pagehide laesst keine Zeit fuer den 300ms-Puffer -> track() flusht
+      // synchron, wenn Umami bereit ist (sendet via Beacon).
+      track('form-abandon', { form: formName, lastField: lastField, page: location.pathname });
+    }
+    window.addEventListener('pagehide', maybeAbandon);
+  })();
+
+  /* =====================================================================
+     2f) CTA-Impressionen — ermoeglicht Click-Through-Rate je Platzierung
+     (cta-view vs. cta-click mit gleichem `placement`).
+     ===================================================================== */
+  (function () {
+    if (!('IntersectionObserver' in window)) return;
+
+    function collect() {
+      var targets = [];
+      function add(sel, placement) {
+        document.querySelectorAll(sel).forEach(function (el) {
+          targets.push({ el: el, placement: placement });
+        });
+      }
+      add('.topbar__cta', 'header');
+      add('.mr-sticky-cta', 'sticky');
+      add('.contact-cta, .mr-contact, [data-contact-section]', 'contact');
+      add('.mr-exit-cta', 'exit');
+      return targets;
+    }
+
+    var targets = collect();
+    if (!targets.length) return;
+
+    var seen = {};
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        io.unobserve(entry.target);
+        var match = targets.filter(function (x) { return x.el === entry.target; })[0];
+        var placement = match ? match.placement : 'body';
+        if (seen[placement]) return; // pro Platzierung nur einmal zaehlen
+        seen[placement] = true;
+        track('cta-view', { placement: placement, page: location.pathname });
+      });
+    }, { threshold: 0.4 });
+
+    targets.forEach(function (t) { io.observe(t.el); });
+  })();
 
   /* =====================================================================
      2c) Scrolltiefe — 25 / 50 / 75 / 100 %

@@ -13,10 +13,23 @@ function trackContactEvent(name, detail) {
   document.dispatchEvent(new CustomEvent('mr:conversion', { detail: payload }))
 }
 
+function readLastCta() {
+  try {
+    var s = JSON.parse(sessionStorage.getItem('mr:lastCta') || '{}')
+    return {
+      lastCta: [s.text, s.role, s.href].filter(Boolean).join(' / '),
+      lastCtaRole: s.role || '',
+    }
+  } catch (err) {
+    return { lastCta: '', lastCtaRole: '' }
+  }
+}
+
 document.addEventListener('focusin', function (event) {
   var form = event.target && event.target.closest && event.target.closest('.contact-cta__form')
   if (!form || form.dataset.started === 'true') return
   form.dataset.started = 'true'
+  form.dataset.startedAt = String(Date.now())
   trackContactEvent('form_start', { subject: form.dataset.subject || 'Projektanfrage' })
 })
 
@@ -36,11 +49,17 @@ document.addEventListener('submit', function (event) {
   const name = String(data.get('name') || '').trim()
   const contact = String(data.get('contact') || '').trim()
   const message = String(data.get('message') || '').trim()
+  const cta = readLastCta()
+  const startedAt = Number(form.dataset.startedAt || 0)
+  const durationSeconds = startedAt ? Math.max(0, Math.round((Date.now() - startedAt) / 1000)) : 0
   trackContactEvent('form_submit_attempt', {
     subject: form.dataset.subject || 'Projektanfrage',
     hasProject: Boolean(String(data.get('project') || '').trim()),
     hasDate: Boolean(String(data.get('date') || '').trim()),
     use: data.get('use') || 'Noch offen',
+    lastCta: cta.lastCta,
+    lastCtaRole: cta.lastCtaRole,
+    durationSeconds: durationSeconds,
   })
 
   if (!name || !contact) {
@@ -70,7 +89,7 @@ document.addEventListener('submit', function (event) {
   const endpoint = form.dataset.endpoint || '/api/contact'
   const submit = form.querySelector('button[type="submit"]')
 
-  function openMailFallback() {
+  function openMailFallback(reason) {
     window.location.href =
       'mailto:' +
       encodeURIComponent(form.dataset.mailto || 'info@matthiasramahi.de') +
@@ -78,7 +97,13 @@ document.addEventListener('submit', function (event) {
       encodeURIComponent(form.dataset.subject || 'Projektanfrage') +
       '&body=' +
       encodeURIComponent(body)
-    trackContactEvent('form_submit_fallback', { transport: 'mailto', subject: form.dataset.subject || 'Projektanfrage' })
+    trackContactEvent('form_submit_fallback', {
+      transport: 'mailto',
+      subject: form.dataset.subject || 'Projektanfrage',
+      reason: reason ? String(reason).slice(0, 120) : 'delivery-failed',
+      lastCta: cta.lastCta,
+      lastCtaRole: cta.lastCtaRole,
+    })
   }
 
   if (status) status.textContent = 'Wird sicher uebertragen ...'
@@ -116,13 +141,16 @@ document.addEventListener('submit', function (event) {
           transport: result.queued ? 'resend-queue' : 'resend',
           subject: form.dataset.subject || 'Projektanfrage',
           requestId: result.id || '',
+          lastCta: cta.lastCta,
+          lastCtaRole: cta.lastCtaRole,
+          durationSeconds: durationSeconds,
         })
         form.reset()
       })
     })
-    .catch(function () {
+    .catch(function (err) {
       if (status) status.textContent = 'Direktversand nicht moeglich. Mail-App wird als Fallback geoeffnet.'
-      openMailFallback()
+      openMailFallback(err && err.message)
     })
     .finally(function () {
       if (submit) submit.disabled = false

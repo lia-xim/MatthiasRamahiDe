@@ -232,7 +232,8 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
     description:
       'Journal von Matthias Ramahi: Einblicke in Automotive-Fotografie, Portraits, Landschaft, Bildauswahl, Druck und visuelle Inszenierung in Düsseldorf.',
     ogImage: '/assets/optimized/assets-photos-automobil-sunset-1920.webp',
-    scripts: [...siteChromeScript, '/assets/native-journal.js'],
+    preloadImages: ['/assets/optimized/assets-photos-automobil-sunset-1280.webp'],
+    scripts: ['/assets/native-home.js', ...siteChromeScript, '/assets/native-journal.js'],
     stylesheets: ['/assets/native-journal.css', ...sharedStyles],
     title: 'Blog / Journal - Matthias Ramahi',
   },

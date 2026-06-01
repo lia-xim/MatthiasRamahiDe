@@ -14,12 +14,12 @@ const metaDescription =
 // Markenerlebnisse — kuratierte Arbeits-Galerie. 6 Bilder => sauberer Abschluss in
 // 2 Spalten (mobil) wie in 3 Spalten (desktop), kein Einzelbild als Rest. Caption = N°-Index.
 const works = [
-  { slug: 'dior', alt: 'Schaufenster-Installation für eine Premium-Marke', w: 400, h: 271 },
-  { slug: 'byredo', alt: 'Schaufenster mit Skulptur-Display', w: 400, h: 271 },
-  { slug: 'montblanc-booth', alt: 'Brand-Booth mit beleuchteter Struktur', w: 400, h: 271 },
-  { slug: 'diptyque', alt: 'Pop-up Display mit Produktinszenierung', w: 400, h: 271 },
-  { slug: 'riani', alt: 'Brand Space mit großformatigem Schriftzug', w: 400, h: 258 },
-  { slug: 'pedestals', alt: 'Brand-Booth mit Podest-Landschaft', w: 400, h: 258 },
+  { image: '/assets/services/werbetechnik/dior.webp', alt: 'Schaufenster-Installation für eine Premium-Marke', w: 400, h: 271 },
+  { image: '/assets/services/werbetechnik/byredo.webp', alt: 'Schaufenster mit Skulptur-Display', w: 400, h: 271 },
+  { image: '/assets/services/werbetechnik/montblanc-booth.webp', alt: 'Brand-Booth mit beleuchteter Struktur', w: 400, h: 271 },
+  { image: '/assets/services/werbetechnik/diptyque.webp', alt: 'Pop-up Display mit Produktinszenierung', w: 400, h: 271 },
+  { image: '/assets/services/werbetechnik/riani.webp', alt: 'Brand Space mit großformatigem Schriftzug', w: 400, h: 258 },
+  { image: '/assets/services/werbetechnik/pedestals.webp', alt: 'Brand-Booth mit Podest-Landschaft', w: 400, h: 258 },
 ]
 
 // Ablauf — drei verbundene Stationen vom Entwurf bis zum fertigen Aufbau.
@@ -88,7 +88,7 @@ const heroSlidesJson = JSON.stringify(heroSlides)
             <figure class="wt-figure">
               <div class="wt-figure__img">
                 <img
-                  src={`/assets/services/werbetechnik/${work.slug}.webp`}
+                  src={work.image}
                   alt={work.alt}
                   width={work.w}
                   height={work.h}

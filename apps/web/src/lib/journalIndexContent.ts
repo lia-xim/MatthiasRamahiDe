@@ -1,3 +1,5 @@
+import type { HomeHeroSlide } from './nativeContent'
+
 export type JournalPostCard = {
   category: string
   dark?: boolean
@@ -18,6 +20,43 @@ export const journalHero = {
   title: 'Notizen <em>aus Licht.</em>',
   lead: 'Ein kuratiertes Journal über Fotografie, Orte, Bildauswahl und Präsentation — ruhig, persönlich, ohne Content-Masse.',
 }
+
+// Shader-Hero (gleiche Animation/Markup wie Home & Portfolio): Bild-Cycle, Lens-Cursor,
+// Aperture-Beam, Glow. Eigene Texte/Bilder für das Journal. Erste Lead wird zur Laufzeit
+// ggf. durch das CMS-Intro überschrieben (siehe NativeJournalIndexPage).
+const journalHeroCtas = {
+  primaryHref: '#journal',
+  primaryLabel: 'Artikel ansehen',
+  secondaryHref: '/contact.html',
+  secondaryLabel: 'Fotoauftrag anfragen',
+} satisfies Pick<HomeHeroSlide, 'primaryHref' | 'primaryLabel' | 'secondaryHref' | 'secondaryLabel'>
+
+export const journalHeroSlides: HomeHeroSlide[] = [
+  {
+    image: '/assets/optimized/assets-photos-automobil-sunset-1280.webp',
+    titleLines: ['Notizen', 'aus Licht'],
+    lead: journalHero.lead,
+    ...journalHeroCtas,
+  },
+  {
+    image: '/assets/optimized/assets-photos-automobil-neon-1280.webp',
+    titleLines: ['Automotive', 'im Detail'],
+    lead: 'Lichtkanten, Lackreflexe und die Frage, wann ein Fahrzeug im Bild wirklich lebt.',
+    ...journalHeroCtas,
+  },
+  {
+    image: '/assets/optimized/assets-photos-oldtimer-stage-1280.webp',
+    titleLines: ['Material', '& Patina'],
+    lead: 'Wie Geschichte sichtbar wird — Chrom, Leder, Lack und die ruhige Inszenierung von Wert.',
+    ...journalHeroCtas,
+  },
+  {
+    image: '/assets/optimized/assets-photos-landschaft-960.webp',
+    titleLines: ['Vom Bild', 'zum Druck'],
+    lead: 'Vom Negativ zur Wand — Material, Farbmanagement und Format als Teil der fotografischen Wirkung.',
+    ...journalHeroCtas,
+  },
+]
 
 export const journalTicker = [
   '<b>Automotive</b> Lichtführung',
