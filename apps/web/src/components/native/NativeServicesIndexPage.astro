@@ -6,13 +6,16 @@ import {
   imageAlt,
   imageDimensions,
   imageDisplayUrl,
+  liveCmsFetchOptions,
   toRootRelativeHref,
   type PayloadDoc,
   type PayloadMedia,
 } from '../../lib/payload'
 
 const providedDoc = Astro.props.doc as PayloadDoc | undefined
-const doc = providedDoc || (await getSitePageByType('services-index', { depth: 2 }))
+// force:true (liveCmsFetchOptions) ist nötig, weil der Vercel-Build ASTRO_DISABLE_PAYLOAD_FETCH=true setzt
+// und nicht-erzwungene Fetches sonst null liefern -> Fallback statt CMS-Inhalt.
+const doc = providedDoc || (await getSitePageByType('services-index', liveCmsFetchOptions({ depth: 2 })))
 
 // Hero: bewusst code-definiert (wie Fotografie-Uebersicht). Erste Lead ggf. aus CMS-Intro.
 const heroSlides = servicesHeroSlides.map((slide, index) =>
