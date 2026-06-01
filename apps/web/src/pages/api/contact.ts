@@ -1,5 +1,6 @@
 import type { APIContext } from 'astro'
 
+import { trackServerEvent } from '../../lib/analytics/umamiServer'
 import {
   parseContactPayload,
   retryQueuedContactRequests,
@@ -41,6 +42,15 @@ function isRateLimited(request: Request) {
   return current.count > maxRequestsPerWindow
 }
 
+function pageLocation(pageUrl?: string, source?: string) {
+  try {
+    const url = new URL(String(pageUrl))
+    return { hostname: url.hostname, url: url.pathname + url.search }
+  } catch {
+    return { hostname: '', url: source || '/' }
+  }
+}
+
 async function readJson(request: Request) {
   const contentType = request.headers.get('content-type') || ''
   if (contentType.includes('application/json')) return request.json()
@@ -72,6 +82,24 @@ export async function POST({ request }: APIContext) {
   retryQueuedContactRequests(5).catch((error) => {
     console.error('Contact queue opportunistic retry failed', error)
   })
+
+  if (result.ok || result.queued) {
+    const loc = pageLocation(contactRequest.pageUrl, contactRequest.source)
+    await trackServerEvent(request, {
+      name: 'server-conversion',
+      hostname: loc.hostname,
+      url: loc.url,
+      referrer: contactRequest.lastCta || '',
+      data: {
+        transport: result.ok ? 'resend' : 'queued',
+        queued: Boolean(result.queued),
+        subject: contactRequest.subject || 'Projektanfrage',
+        intent: contactRequest.intentLabel || '',
+        lastCta: contactRequest.lastCta || '',
+        hasMessage: Boolean(contactRequest.message),
+      },
+    })
+  }
 
   if (result.ok) {
     return json({

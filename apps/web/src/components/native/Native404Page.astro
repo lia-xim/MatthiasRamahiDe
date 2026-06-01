@@ -29,6 +29,22 @@ const links = [
       </div>
     </section>
   </main>
+  <script is:inline>
+    // 404 an Umami melden (kaputter Pfad + Referrer) — laeuft ueber die
+    // mr:conversion-Bridge in analytics.js. DOMContentLoaded stellt sicher,
+    // dass der Bridge-Listener (defer) bereits registriert ist.
+    document.addEventListener('DOMContentLoaded', function () {
+      try {
+        document.dispatchEvent(new CustomEvent('mr:conversion', {
+          detail: {
+            event: 'page_not_found',
+            badPath: location.pathname + location.search,
+            referrer: document.referrer || ''
+          }
+        }))
+      } catch (err) {}
+    })
+  </script>
 </AdoptedPageLayout>
 
 <style>

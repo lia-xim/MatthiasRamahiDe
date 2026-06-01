@@ -143,11 +143,11 @@ export const legalContentByFile: Record<LegalLegacyFile, LegalContent> = {
       },
       {
         id: 'analytics',
-        title: 'Google Analytics / Branchenverzeichnis',
+        title: 'Webanalyse / Branchenverzeichnis',
         items: [
           {
             type: 'paragraph',
-            html: 'Soweit Google Analytics eingesetzt wird, erfolgt dies zur Analyse der Benutzung der Website. Google Analytics verwendet Cookies, die Informationen über die Nutzung der Website erzeugen können. Nutzer können die Speicherung von Cookies durch eine entsprechende Einstellung der Browser-Software verhindern.',
+            html: 'Zur Reichweitenmessung setzen wir die selbst gehostete, cookiefreie Analyse-Software Umami ein. Dabei werden keine Cookies gesetzt und keine personenbezogenen Daten gespeichert. Einzelheiten dazu finden sich in unserer <a href="/datenschutz.html#analytics">Datenschutzerklärung</a>.',
           },
           {
             type: 'paragraph',
@@ -176,6 +176,7 @@ export const legalContentByFile: Record<LegalLegacyFile, LegalContent> = {
       { href: '#sicherheit', label: 'Sicherheit' },
       { href: '#rechte', label: 'Rechte' },
       { href: '#cookies', label: 'Cookies / Kontakt' },
+      { href: '#analytics', label: 'Webanalyse (Umami)' },
     ],
     sections: [
       {
@@ -186,7 +187,7 @@ export const legalContentByFile: Record<LegalLegacyFile, LegalContent> = {
             type: 'paragraph',
             html: 'Mit dieser Datenschutzerklärung informieren wir darüber, welche Arten personenbezogener Daten zu welchen Zwecken und in welchem Umfang verarbeitet werden. Die Erklärung gilt für alle Verarbeitungen im Rahmen unserer Leistungen, auf unseren Webseiten sowie innerhalb externer Onlinepräsenzen.',
           },
-          { type: 'paragraph', html: 'Stand: 20. Mai 2025', small: true },
+          { type: 'paragraph', html: 'Stand: 1. Juni 2026', small: true },
         ],
       },
       {
@@ -305,15 +306,24 @@ export const legalContentByFile: Record<LegalLegacyFile, LegalContent> = {
         ],
       },
       {
-        title: 'Webanalyse, Monitoring und Social Media',
+        id: 'analytics',
+        title: 'Webanalyse mit Umami (Reichweitenmessung)',
         items: [
           {
             type: 'paragraph',
-            html: 'Soweit Webanalyse- oder Monitoring-Dienste eingesetzt werden, geschieht dies zur Reichweitenmessung, Optimierung und Sicherheit des Onlineangebotes. Präsenzen in sozialen Netzwerken dienen der Außendarstellung und Kommunikation mit Interessenten.',
+            html: 'Zur Reichweitenmessung und zur Verbesserung unseres Onlineangebotes setzen wir <b>Umami</b> ein – eine Analyse-Software, die wir selbst auf einem von uns betriebenen Server hosten. Eine Weitergabe der Nutzungsdaten an Dritte oder eine Übermittlung in Drittländer findet dabei nicht statt.',
           },
           {
             type: 'paragraph',
-            html: 'Wenn Google Analytics eingesetzt wird, verwendet der Dienst Cookies zur Analyse der Nutzung. Die durch Cookies erzeugten Informationen können an Server von Google übertragen werden. Nutzer können die Installation von Cookies durch entsprechende Browser-Einstellungen verhindern.',
+            html: 'Umami arbeitet <b>cookiefrei</b> und ohne geräteübergreifende Wiedererkennung. Es werden weder Cookies gesetzt noch Daten erhoben, die eine Identifizierung einzelner Personen ermöglichen. Erfasst werden ausschließlich aggregierte, anonyme Kennzahlen – etwa aufgerufene Seiten, ungefähre Herkunft (Land), verweisende Website (Referrer), Gerätetyp und Browser sowie ausgelöste Ereignisse (z. B. Klick auf eine Schaltfläche oder das Absenden des Kontaktformulars). Die IP-Adresse wird lediglich zur Ableitung dieser anonymen Kennzahlen verwendet und <b>nicht gespeichert</b>.',
+          },
+          {
+            type: 'paragraph',
+            html: 'Da hierbei keine personenbezogenen Daten verarbeitet und keine Cookies oder vergleichbaren Technologien eingesetzt werden, ist weder eine Einwilligung nach § 25 TDDDG noch nach Art. 6 Abs. 1 S. 1 lit. a DSGVO erforderlich. Rechtsgrundlage für die anonyme Reichweitenmessung ist unser berechtigtes Interesse an der statistischen Auswertung und technischen Optimierung des Onlineangebotes (Art. 6 Abs. 1 S. 1 lit. f DSGVO).',
+          },
+          {
+            type: 'paragraph',
+            html: 'Präsenzen in sozialen Netzwerken dienen der Außendarstellung und der Kommunikation mit Interessenten. Beim Aufruf verlinkter externer Netzwerke gelten die Datenschutzbestimmungen des jeweiligen Anbieters.',
           },
         ],
       },

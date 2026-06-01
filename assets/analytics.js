@@ -100,7 +100,8 @@
   var CONVERSION_PROPS = [
     'form', 'subject', 'transport', 'role', 'placement', 'text', 'href',
     'intent', 'use', 'reason', 'requestId',
-    'lastCta', 'lastCtaRole', 'durationSeconds', 'lastField'
+    'lastCta', 'lastCtaRole', 'durationSeconds', 'lastField',
+    'badPath', 'referrer'
   ];
 
   document.addEventListener('mr:conversion', function (e) {
@@ -178,6 +179,26 @@
       track('outbound-link', { domain: host, href: href.slice(0, 180) });
     }
   }, { capture: true });
+
+  /* =====================================================================
+     2a2) Copy-Tracking — E-Mail/Telefon kopiert = Kontaktabsicht ohne Klick
+     ===================================================================== */
+  (function () {
+    var EMAIL_RE = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i;
+    var PHONE_RE = /(?:\+|00)?[\d][\d\s/().-]{6,}\d/;
+    var lastFired = 0;
+    document.addEventListener('copy', function () {
+      try {
+        var sel = (window.getSelection ? String(window.getSelection()) : '').trim();
+        if (!sel || sel.length > 120) return;
+        var now = (window.performance && performance.now) ? performance.now() : 0;
+        if (now && now - lastFired < 1000) return; // Doppel-Events entprellen
+        lastFired = now;
+        if (EMAIL_RE.test(sel)) track('contact-copy', { kind: 'email', page: location.pathname });
+        else if (PHONE_RE.test(sel)) track('contact-copy', { kind: 'phone', page: location.pathname });
+      } catch (err) {}
+    });
+  })();
 
   /* =====================================================================
      2b) Galerie "Mehr laden" + FAQ aufklappen
