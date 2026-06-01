@@ -9,6 +9,7 @@ import {
   type NativeFamilyPreviewState,
 } from '../../lib/nativeFamilyPageContext'
 import { mergeAuthoredLocalSeoContent } from '../../lib/authoredSeoContent'
+import { splitHeroTitleLines } from '../../lib/heroTitleLines'
 import { keywordFocusCopyForSlug } from '../../lib/localSeoFamilyContent'
 import { familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
 import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
@@ -47,10 +48,11 @@ const faqItems = cmsFaqItems.length ? cmsFaqItems : keywordFocusCopy?.faq
 const cmsText = (value: unknown) => (typeof value === 'string' ? value.trim() : '')
 const cmsHeroLine2 = cmsText(doc?.heroLine2)
 const cmsStatementBody = doc?.statement?.body?.map((entry) => cmsText(entry.text)).filter(Boolean) || []
-const heroLabel = isParentPage || isKeywordPage ? 'Landschaftsfotografie' : `Landschaftsfotografie ${scope.label}`
+const heroLabel = isParentPage ? 'Landschaftsfotografie' : isKeywordPage ? serviceLabel : `Landschaftsfotografie ${scope.label}`
 const isLocalHeroPage = !isParentPage && !isKeywordPage
 const heroTitle = isParentPage ? 'Landschaftsfotografie' : serviceLabel
 const heroSecondLine = isLocalHeroPage ? scope.label : ''
+const heroTitleLines = [...splitHeroTitleLines(heroTitle), ...splitHeroTitleLines(heroSecondLine)]
 const heroLocalNote = isLocalHeroPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Licht. Raum. Print.' : isKeywordPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || '' : ''
 const defaultHeroLead = isParentPage
   ? 'Landschaftsfotografie: Licht, Weite, Material und Raumwirkung werden kuratiert — als Fine-Art-Print, Wandbild, Edition oder großformatige Arbeit für Räume mit Ruhe. Bundesweit zählt vor allem die passende Motivwahl, Druckqualität, Materialität und Wirkung im Raum.'
@@ -258,9 +260,10 @@ const searchLinks = [
       <div class="hero-ls__text-scrim" aria-hidden="true"></div>
 
       <div class="hero-ls__inner">
-        <h1 class="hero-ls__title">
-          <span class="l"><span class="w">{heroTitle}</span></span>
-          {heroSecondLine && <span class="l"><span class="w">{heroSecondLine}</span></span>}
+        <h1 class="hero-ls__title" aria-label={heroLabel}>
+          {heroTitleLines.map((line) => (
+            <span class="l"><span class="w">{line}</span></span>
+          ))}
         </h1>
         {heroLocalNote && <p class="hero-ls__local-note">{heroLocalNote}</p>}
         <p class="hero-ls__sub">{doc?.intro || heroLead}</p>

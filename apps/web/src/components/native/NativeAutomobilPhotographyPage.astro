@@ -12,6 +12,7 @@ import {
   siblingFamilyLinks,
 } from '../../lib/localSeoFamilyContent'
 import { mergeAuthoredLocalSeoContent } from '../../lib/authoredSeoContent'
+import { splitHeroTitleLines } from '../../lib/heroTitleLines'
 import { familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
 import { getLegacyBackedDoc, routeForDoc, type PayloadDoc } from '../../lib/payload'
 
@@ -88,8 +89,9 @@ const cmsStatementBody = doc?.statement?.body?.map((entry) => cmsText(entry.text
 const localSuffix = !isParentPage && !isKeywordPage ? ` ${scope.label}` : ''
 const heroTitle = isParentPage ? 'Automobil' : serviceLabel
 const heroSecondLine = isParentPage ? 'Fotografie' : isLocalCityPage ? scope.label : ''
+const heroTitleLines = [...splitHeroTitleLines(heroTitle), ...splitHeroTitleLines(heroSecondLine)]
 const heroLocalNote = isLocalCityPage ? cmsHeroLine2 : isKeywordPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || '' : ''
-const heroLabel = isParentPage ? 'Automobilfotografie' : `Automobilfotografie${localSuffix}`
+const heroLabel = isParentPage ? 'Automobilfotografie' : isKeywordPage ? serviceLabel : `Automobilfotografie${localSuffix}`
 const defaultHeroLead = isParentPage
   ? 'Automobilfotografie: Exterieur, Interieur, Details und Cinematic werden als kuratierte Bildserie geplant - für Marke, Showroom, Verkauf, Kampagne und hochwertige private Fahrzeuge. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.'
   : isKeywordPage
@@ -450,9 +452,10 @@ const searchLinks = [
       <div class="pd-grain" aria-hidden="true"></div>
       <div class="pd-overlay">
         <div class="pd-bottom">
-          <h1 class={`pd-title${isLocalCityPage ? ' pd-title--local' : ''}`}>
-            <span class="line"><span class="word">{heroTitle}</span></span>
-            {heroSecondLine && <span class="line"><span class="word">{heroSecondLine}</span></span>}
+          <h1 class={`pd-title${isLocalCityPage ? ' pd-title--local' : ''}`} aria-label={heroLabel}>
+            {heroTitleLines.map((line) => (
+              <span class="line"><span class="word">{line}</span></span>
+            ))}
           </h1>
           {heroLocalNote && <p class="pd-local-note">{heroLocalNote}</p>}
           <p class="pd-sub">{doc?.intro || heroLead}</p>

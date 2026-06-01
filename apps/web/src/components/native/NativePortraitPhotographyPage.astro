@@ -9,6 +9,7 @@ import {
   type NativeFamilyPreviewState,
 } from '../../lib/nativeFamilyPageContext'
 import { mergeAuthoredLocalSeoContent } from '../../lib/authoredSeoContent'
+import { splitHeroTitleLines } from '../../lib/heroTitleLines'
 import { keywordFocusCopyForSlug } from '../../lib/localSeoFamilyContent'
 import { familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
 import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
@@ -47,10 +48,12 @@ const faqItems = cmsFaqItems.length ? cmsFaqItems : keywordFocusCopy?.faq
 const cmsText = (value: unknown) => (typeof value === 'string' ? value.trim() : '')
 const cmsHeroLine2 = cmsText(doc?.heroLine2)
 const cmsStatementBody = doc?.statement?.body?.map((entry) => cmsText(entry.text)).filter(Boolean) || []
-const heroLabel = isParentPage || isKeywordPage ? 'Portraitfotografie' : `Portraitfotografie ${scope.label}`
+const heroLabel = isParentPage ? 'Portraitfotografie' : isKeywordPage ? serviceLabel : `Portraitfotografie ${scope.label}`
 const isLocalHeroPage = !isParentPage && !isKeywordPage
 const heroTitle = isParentPage ? 'Porträtfotografie' : serviceLabel
 const heroEmphasis = isLocalHeroPage ? scope.label : ''
+const heroTitleLines = splitHeroTitleLines(heroTitle)
+const heroEmphasisLines = splitHeroTitleLines(heroEmphasis)
 const heroLocalNote = isLocalHeroPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Portrait vor Ort.' : isKeywordPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || '' : ''
 const defaultHeroLead = isParentPage
   ? 'Portraitfotografie: Blick, Licht, Distanz und Haltung werden auf Nutzung und Persönlichkeit abgestimmt — für Personal Branding, Business Portraits, Team, Presse und Editorial. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.'
@@ -325,9 +328,13 @@ const focusRelatedLead =
         <span class="hero-pt__catchlight"></span>
       </div>
 
-      <h1 class={`hero-pt__title${isLocalHeroPage ? ' hero-pt__title--local' : ''}`}>
-        {heroTitle}
-        {heroEmphasis && <em>{heroEmphasis}</em>}
+      <h1 class={`hero-pt__title${isLocalHeroPage ? ' hero-pt__title--local' : ''}`} aria-label={heroLabel}>
+        {heroTitleLines.map((line) => (
+          <span class="line"><span class="word">{line}</span></span>
+        ))}
+        {heroEmphasisLines.map((line) => (
+          <span class="line line--em"><span class="word"><em>{line}</em></span></span>
+        ))}
       </h1>
 
       <div class="hero-pt__sub-block">

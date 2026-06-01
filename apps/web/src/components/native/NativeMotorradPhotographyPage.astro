@@ -9,6 +9,7 @@ import {
   type NativeFamilyPreviewState,
 } from '../../lib/nativeFamilyPageContext'
 import { mergeAuthoredLocalSeoContent } from '../../lib/authoredSeoContent'
+import { splitHeroTitleLines } from '../../lib/heroTitleLines'
 import { keywordFocusCopyForSlug } from '../../lib/localSeoFamilyContent'
 import { familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
 import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
@@ -50,8 +51,9 @@ const cmsStatementBody = doc?.statement?.body?.map((entry) => cmsText(entry.text
 const isLocalHeroPage = !isParentPage && !isKeywordPage
 const heroTitle = isParentPage ? 'Motorradfotografie' : serviceLabel
 const heroSecondLine = isLocalHeroPage ? scope.label : ''
+const heroTitleLines = [...splitHeroTitleLines(heroTitle), ...splitHeroTitleLines(heroSecondLine)]
 const heroLocalNote = isLocalHeroPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Maschine. Haltung. Detail.' : isKeywordPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || '' : ''
-const heroLabel = isParentPage || isKeywordPage ? 'Motorradfotografie' : `Motorradfotografie ${scope.label}`
+const heroLabel = isParentPage ? 'Motorradfotografie' : isKeywordPage ? serviceLabel : `Motorradfotografie ${scope.label}`
 const defaultHeroLead = isParentPage
   ? 'Motorradfotografie: Silhouette, Mechanik, Haltung, Detail und Fahrerbezug werden als kraftvolle Serie geplant — für Custom Bikes, Händler, Werkstätten und private Maschinen. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.'
   : isKeywordPage
@@ -276,9 +278,10 @@ const searchLinks = [
       </div>
 
       <div class="hero-mr__grid">
-        <h1 class="hero-mr__title" id="heroMrTitle">
-          <span class="line"><span class="word">{heroTitle}</span></span>
-          {heroSecondLine && <span class="line"><span class="word">{heroSecondLine}</span></span>}
+        <h1 class="hero-mr__title" id="heroMrTitle" aria-label={heroLabel}>
+          {heroTitleLines.map((line) => (
+            <span class="line"><span class="word">{line}</span></span>
+          ))}
         </h1>
         <div class="hero-mr__lede-block">
           {heroLocalNote && <p class="hero-mr__local-note">{heroLocalNote}</p>}
