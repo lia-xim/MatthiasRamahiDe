@@ -54,7 +54,7 @@ const heroTitleLines = [...splitHeroTitleLines(heroTitle), ...splitHeroTitleLine
 const heroLocalNote = isLocalHeroPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Performance. Linie. Detail.' : isKeywordPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || '' : ''
 const heroLabel = isParentPage ? 'Sportwagenfotografie' : isKeywordPage ? serviceLabel : `Sportwagenfotografie ${scope.label}`
 const defaultHeroLead = isParentPage
-  ? 'Sportwagenfotografie: Performance, Form, Innenraum und Details werden mit kontrollierten Reflexen und ruhiger Dramaturgie sichtbar — für Sammler, Händler, Marke, Verkauf und Druck. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.'
+  ? 'Sportwagenfotografie: Performance, Form, Innenraum und Details werden mit kontrollierten Reflexen und ruhiger Dramaturgie sichtbar — für Sammler, Händler, Marke, Verkauf und Druck. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant — in ganz NRW.'
   : isKeywordPage
     ? `${serviceLabel}: eigenständiger Einstieg in die Sportwagenfotografie. Performance, Form, Innenraum und Details werden mit kontrollierten Reflexen und ruhiger Dramaturgie sichtbar - für Sammler, Händler, Marke, Verkauf und Druck. Die Seite bleibt bewusst im Layout der übergeordneten Kategorie, ist aber klar auf dieses Motiv und diese Nutzung formuliert.`
     : `Sportwagenfotografie in ${scope.label}: Performance, Form, Innenraum und Details werden mit kontrollierten Reflexen und ruhiger Dramaturgie sichtbar - für Sammler, Händler, Marke, Verkauf und Druck. ${localScopePhrase(scope)}`
@@ -204,7 +204,7 @@ const audiences = [
   },
   {
     image: 'assets/portfolio/thumbs/_DSC3982.webp',
-    alt: 'Autohaus-Fotografie Düsseldorf',
+    alt: 'Autohaus-Fotografie NRW',
     width: 720,
     height: 480,
     number: '03 / Händler',
@@ -295,6 +295,9 @@ const finalHeroPanels = doc?.heroPanels?.length
       return [fbTuple[0], resolved.full, resolved.mobile, resolved] as const
     })
   : inheritedHeroPanels
+const transparentHeroPixel = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=='
+const mobileHeroPreload = finalHeroPanels[1]?.[2] || finalHeroPanels[0]?.[2] || ''
+const desktopHeroPreload = finalHeroPanels[0]?.[3]?.full || ''
 
 const finalShootingStyles = doc?.shootingStyles?.length
   ? doc.shootingStyles.map((style, index) => {
@@ -398,7 +401,7 @@ const relatedAreas = [
 ]
 
 const cityLinks = [
-  ['sportwagen-fotografie.html', 'Düsseldorf'],
+  ['sportwagen-fotografie-duesseldorf.html', 'Düsseldorf'],
   ['sportwagen-fotografie-erkrath.html', 'Erkrath'],
   ['sportwagen-fotografie-ratingen.html', 'Ratingen'],
   ['sportwagen-fotografie-koeln.html', 'Köln'],
@@ -442,7 +445,10 @@ const searchLinks = [
   title={metaTitle}
   description={metaDescription}
   ogImage={visualSlots[1].full}
-  preloadImages={[finalHeroPanels[0][3].full]}
+  preloadImages={[
+    { href: mobileHeroPreload, media: '(max-width: 720px)' },
+    { href: desktopHeroPreload, media: '(min-width: 721px)' },
+  ]}
 >
   {preview && (
     <PreviewToolbar
@@ -459,14 +465,14 @@ const searchLinks = [
           <div class="tri-col" data-tri={name}>
             <div class="tri-img">
               <picture>
-                <source media="(max-width: 720px)" srcset={mobileImage} />
+                <source media="(max-width: 720px)" srcset={index === 1 ? mobileImage : transparentHeroPixel} />
                 <img
                   src={image}
                   srcset={visual.srcset || undefined}
                   sizes="(max-width: 720px) 100vw, 34vw"
                   alt=""
                   loading="eager"
-                  fetchpriority={index === 0 ? 'high' : 'auto'}
+                  fetchpriority={index === 1 ? 'high' : 'auto'}
                   width={visual.width}
                   height={visual.height}
                   decoding="async"

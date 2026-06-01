@@ -133,7 +133,13 @@ async function pruneTarget(targetRoot) {
   const referenced = new Set()
   for (const file of [...files, ...extraReferenceFiles]) {
     if (!textExtensions.has(path.extname(file).toLowerCase())) continue
-    const text = await fs.readFile(file, 'utf8')
+    let text = ''
+    try {
+      text = await fs.readFile(file, 'utf8')
+    } catch (error) {
+      if (error?.code === 'ENOENT') continue
+      throw error
+    }
     for (const ref of extractReferences(text, file, targetRoot)) referenced.add(ref)
   }
 
@@ -144,7 +150,13 @@ async function pruneTarget(targetRoot) {
     const rel = toPosix(path.relative(targetRoot, file))
     if (referenced.has(rel)) continue
 
-    const stat = await fs.stat(file)
+    let stat
+    try {
+      stat = await fs.stat(file)
+    } catch (error) {
+      if (error?.code === 'ENOENT') continue
+      throw error
+    }
     await fs.rm(file, { force: true })
     removed += 1
     bytes += stat.size
@@ -161,7 +173,11 @@ async function pruneTarget(targetRoot) {
 
 const argTargets = process.argv.filter((arg) => arg.startsWith('--target=')).map((arg) => path.resolve(repoRoot, arg.slice('--target='.length)))
 const targets = argTargets.length > 0 ? argTargets : defaultTargets
-const results = (await Promise.all(targets.map(pruneTarget))).filter(Boolean)
+const results = []
+for (const target of targets) {
+  const result = await pruneTarget(target)
+  if (result) results.push(result)
+}
 
 for (const result of results) {
   if (result.removed > 0) {

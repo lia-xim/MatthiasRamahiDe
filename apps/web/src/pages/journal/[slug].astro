@@ -15,7 +15,7 @@ if (!journalRoutesEnabled) {
 const doc = Astro.props.doc ?? (slug ? await getBySlug('journal-posts', slug) : null)
 
 if (!doc) {
-  return Astro.redirect('/journal')
+  return Astro.redirect('/blog.html', 308)
 }
 ---
 <NativeJournalPostPage doc={doc} />

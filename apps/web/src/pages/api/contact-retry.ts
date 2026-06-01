@@ -1,4 +1,6 @@
 import type { APIContext } from 'astro'
+import { Buffer } from 'node:buffer'
+import { timingSafeEqual } from 'node:crypto'
 
 import { retryQueuedContactRequests } from '../../lib/contact/email'
 
@@ -19,7 +21,9 @@ function authorized(request: Request) {
   if (!secret) return false
   const header = request.headers.get('authorization') || ''
   const token = header.replace(/^Bearer\s+/i, '').trim()
-  return token === secret
+  const tokenBuffer = Buffer.from(token)
+  const secretBuffer = Buffer.from(secret)
+  return tokenBuffer.length === secretBuffer.length && timingSafeEqual(tokenBuffer, secretBuffer)
 }
 
 export async function POST({ request }: APIContext) {

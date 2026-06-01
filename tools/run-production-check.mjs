@@ -120,6 +120,22 @@ async function waitForPort(port, host, timeoutMs) {
   throw new Error(`Astro preview did not become reachable on ${host}:${port} within ${timeoutMs}ms.`);
 }
 
+async function waitForHttpOk(url, timeoutMs) {
+  const started = Date.now();
+  while (Date.now() - started < timeoutMs) {
+    try {
+      const response = await fetch(url);
+      if (response.ok) return;
+    } catch {
+      // The preview process may have opened the port before Astro can serve routes.
+    }
+
+    await new Promise((resolve) => setTimeout(resolve, 500));
+  }
+
+  throw new Error(`Astro preview did not serve ${url} within ${timeoutMs}ms.`);
+}
+
 async function findAvailablePort(preferredPort, host) {
   if (!(await isPortOpen(preferredPort, host))) return preferredPort;
 
@@ -171,13 +187,20 @@ try {
       String(webPort),
     ]);
     await waitForPort(webPort, webHost, 45000);
+    await waitForHttpOk(`http://${webHost}:${webPort}/sitemap.xml`, 45000);
   }
 
   const previewBaseUrl = shouldStartPreview ? `http://${webHost}:${webPort}` : '';
   const routeAuditOptions = previewBaseUrl
     ? { env: { ...process.env, LEGACY_AUDIT_BASE_URL: previewBaseUrl } }
     : {};
-  const visualOptions = previewBaseUrl ? { env: { ...process.env, VISUAL_BASE_URL: previewBaseUrl } } : {};
+  const visualTarget = process.env.PRODUCTION_CHECK_VISUAL_TARGET || 'static';
+  const visualOptions =
+    previewBaseUrl && visualTarget === 'preview' ? { env: { ...process.env, VISUAL_BASE_URL: previewBaseUrl } } : {};
+
+  if (previewBaseUrl) {
+    await run('corepack', ['pnpm', 'seo:release-routing', '--', `--base-url=${previewBaseUrl}`]);
+  }
 
   await run('corepack', ['pnpm', 'web:test:legacy-routes'], routeAuditOptions);
   await runVisualRegression(visualOptions);

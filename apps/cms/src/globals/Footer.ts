@@ -104,8 +104,8 @@ export const Footer: GlobalConfig = {
               defaultValue: [
                 { label: 'Home', href: '/' },
                 { label: 'Portfolio', href: '/portfolio.html' },
-                { label: 'Leistungen', href: '/services' },
-                { label: 'Journal', href: '/journal' },
+                { label: 'Leistungen', href: '/leistungen.html' },
+                { label: 'Journal', href: '/blog.html' },
                 { label: 'Kontakt', href: '/contact.html#anfrage' },
               ],
               admin: { initCollapsed: true },
@@ -136,8 +136,8 @@ export const Footer: GlobalConfig = {
               label: 'Rechtliches',
               type: 'array',
               defaultValue: [
-                { label: 'Impressum', href: '/impressum' },
-                { label: 'Datenschutz', href: '/datenschutz' },
+                { label: 'Impressum', href: '/impressum.html' },
+                { label: 'Datenschutz', href: '/datenschutz.html' },
               ],
               admin: { initCollapsed: true },
               fields: linkFields(),

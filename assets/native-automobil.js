@@ -32,12 +32,19 @@
     ];
     var POOL = matchMedia('(max-width:900px)').matches ? mobilePool : desktopPool;
 
-    // preload images quietly so each develop-in starts from cache
-    POOL.forEach(function(src){ var i=new Image(); i.src=src; });
-
     function setFrameImage(frame, src){
       var inner = frame.querySelector('.pd-frame-inner');
       if(inner) inner.style.backgroundImage = "url('" + src + "')";
+    }
+    function warmPool(){
+      if(warmPool.done) return;
+      warmPool.done = true;
+      POOL.slice(1).forEach(function(src){ var i=new Image(); i.src=src; });
+    }
+    function scheduleWarmPool(){
+      var run = function(){ warmPool(); };
+      if('requestIdleCallback' in window) requestIdleCallback(run, { timeout: 3200 });
+      else setTimeout(run, 0);
     }
     function setInkOrigin(frame){
       // bias origin toward the lower-left / right thirds for cinematic feel
@@ -56,6 +63,10 @@
     }
 
     if(reduce){ return; } // single static frame is enough for reduced-motion
+
+    // Keep the first render quiet; the next frames are only needed for the later
+    // develop cycle, so warming them can wait until after LCP.
+    setTimeout(scheduleWarmPool, 6200);
 
     var idx = 0;             // index of currently-developed frame's image
     var active = a;          // currently visible / developing frame

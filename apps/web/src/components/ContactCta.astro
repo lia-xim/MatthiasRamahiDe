@@ -41,8 +41,8 @@ const subject = cta?.emailSubject || module.emailSubject || 'Projektanfrage'
           <input name="name" autocomplete="name" required />
         </label>
         <label>
-          <span>E-Mail oder Telefon <em>Pflicht</em></span>
-          <input name="contact" autocomplete="email" inputmode="email" required />
+          <span>E-Mail <em>Pflicht</em></span>
+          <input name="contact" type="email" autocomplete="email" inputmode="email" required />
         </label>
       </div>
       <label>
@@ -79,6 +79,14 @@ const subject = cta?.emailSubject || module.emailSubject || 'Projektanfrage'
           </label>
         </div>
       </details>
+      <label class="contact-cta__consent">
+        <input type="checkbox" name="consent" value="1" required />
+        <span>
+          Ich willige ein, dass meine angegebenen Daten zur Bearbeitung der Anfrage verarbeitet werden. Hinweise dazu in der
+          <a href="/datenschutz.html" target="_blank" rel="noopener noreferrer">Datenschutzerklaerung</a>.
+          <em>Pflicht</em>
+        </span>
+      </label>
       <div class="contact-cta__actions">
         <button class="button is-accent" type="submit">{buttonLabel}</button>
         <p class="contact-cta__reassurance">Unverbindlich. Antwort meist innerhalb von 24 Stunden.</p>

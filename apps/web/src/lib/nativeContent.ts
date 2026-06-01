@@ -120,6 +120,24 @@ export const homeHeroImages = [
   '/assets/optimized/assets-photos-motorrad-960.webp',
 ]
 
+const cachedHomeHeroImages: Array<[string, string]> = [
+  ['mpik8b82-dsc3879', '/assets/optimized/mpik8b82-dsc3879-1280.webp'],
+  ['assets-photos-automobil-neon', '/assets/optimized/assets-photos-automobil-neon-1280.webp'],
+  ['assets-photos-automobil-sunset', '/assets/optimized/assets-photos-automobil-sunset-1280.webp'],
+  ['assets-photos-landschaft', '/assets/optimized/assets-photos-landschaft-960.webp'],
+  ['assets-photos-oldtimer-stage', '/assets/optimized/assets-photos-oldtimer-stage-1280.webp'],
+  ['assets-photos-motorrad', '/assets/optimized/assets-photos-motorrad-960.webp'],
+]
+
+const cachedHomeHeroImage = (image: string) => {
+  const normalized = image.toLowerCase()
+  const match = cachedHomeHeroImages.find(([needle]) => normalized.includes(needle))
+  return match?.[1] || image
+}
+
+const homeChapterSizes =
+  '(max-width: 780px) calc((100vw - 52px) / 2), (max-width: 1180px) calc((100vw - 112px) / 2), 437px'
+
 const defaultHomeHeroLead =
   'Automobil-, Portrait- und Landschaftsfotografie aus Duesseldorf fuer Marken, Sammler und Menschen mit Anspruch.'
 
@@ -188,7 +206,7 @@ const homeHeroSlidesFromCms = (doc: PayloadDoc | null | undefined) => {
 
   return (doc?.heroSlides || [])
     .map((slide, index) => {
-      const image = imageDisplayUrl(slide.image, 'wide', { allowOriginal: true })
+      const image = cachedHomeHeroImage(imageDisplayUrl(slide.image, 'wide', { allowOriginal: true }))
       if (!image) return undefined
 
       return {
@@ -244,8 +262,8 @@ export const homeChapters: HomeChapter[] = [
     href: '/automobil-fotografie-duesseldorf.html',
     image: '/assets/optimized/assets-photos-automobil-sunset-960.webp',
     srcset:
-      '/assets/optimized/assets-photos-automobil-sunset-640.webp 640w, /assets/optimized/assets-photos-automobil-sunset-960.webp 960w, /assets/optimized/assets-photos-automobil-sunset-1280.webp 1280w',
-    sizes: '(max-width: 780px) calc(100vw - 44px), (max-width: 1180px) calc((100vw - 112px) / 2), 437px',
+      '/assets/optimized/assets-photos-automobil-sunset-480.webp 480w, /assets/optimized/assets-photos-automobil-sunset-640.webp 640w, /assets/optimized/assets-photos-automobil-sunset-960.webp 960w, /assets/optimized/assets-photos-automobil-sunset-1280.webp 1280w',
+    sizes: homeChapterSizes,
     alt: 'Automobilfotografie',
     width: 1920,
     height: 1280,
@@ -256,8 +274,8 @@ export const homeChapters: HomeChapter[] = [
     href: '/sportwagen-fotografie-duesseldorf.html',
     image: '/assets/optimized/assets-photos-automobil-neon-960.webp',
     srcset:
-      '/assets/optimized/assets-photos-automobil-neon-640.webp 640w, /assets/optimized/assets-photos-automobil-neon-960.webp 960w, /assets/optimized/assets-photos-automobil-neon-1280.webp 1280w',
-    sizes: '(max-width: 780px) calc(100vw - 44px), (max-width: 1180px) calc((100vw - 112px) / 2), 437px',
+      '/assets/optimized/assets-photos-automobil-neon-480.webp 480w, /assets/optimized/assets-photos-automobil-neon-640.webp 640w, /assets/optimized/assets-photos-automobil-neon-960.webp 960w, /assets/optimized/assets-photos-automobil-neon-1280.webp 1280w',
+    sizes: homeChapterSizes,
     alt: 'Sportwagenfotografie',
     width: 1920,
     height: 1280,
@@ -268,8 +286,8 @@ export const homeChapters: HomeChapter[] = [
     href: '/oldtimer-fotografie-duesseldorf.html',
     image: '/assets/optimized/assets-photos-oldtimer-stage-960.webp',
     srcset:
-      '/assets/optimized/assets-photos-oldtimer-stage-640.webp 640w, /assets/optimized/assets-photos-oldtimer-stage-960.webp 960w, /assets/optimized/assets-photos-oldtimer-stage-1280.webp 1280w',
-    sizes: '(max-width: 780px) calc(100vw - 44px), (max-width: 1180px) calc((100vw - 112px) / 2), 437px',
+      '/assets/optimized/assets-photos-oldtimer-stage-480.webp 480w, /assets/optimized/assets-photos-oldtimer-stage-640.webp 640w, /assets/optimized/assets-photos-oldtimer-stage-960.webp 960w, /assets/optimized/assets-photos-oldtimer-stage-1280.webp 1280w',
+    sizes: homeChapterSizes,
     alt: 'Oldtimerfotografie',
     width: 1920,
     height: 1280,
@@ -281,7 +299,7 @@ export const homeChapters: HomeChapter[] = [
     image: '/assets/optimized/assets-photos-motorrad-720.webp',
     srcset:
       '/assets/optimized/assets-photos-motorrad-480.webp 480w, /assets/optimized/assets-photos-motorrad-720.webp 720w, /assets/optimized/assets-photos-motorrad-960.webp 960w',
-    sizes: '(max-width: 780px) calc(100vw - 44px), (max-width: 1180px) calc((100vw - 112px) / 2), 437px',
+    sizes: homeChapterSizes,
     alt: 'Motorradfotografie',
     width: 1707,
     height: 2560,
@@ -293,7 +311,7 @@ export const homeChapters: HomeChapter[] = [
     image: '/assets/optimized/assets-photos-portrait-warm-720.webp',
     srcset:
       '/assets/optimized/assets-photos-portrait-warm-480.webp 480w, /assets/optimized/assets-photos-portrait-warm-720.webp 720w, /assets/optimized/assets-photos-portrait-warm-960.webp 960w',
-    sizes: '(max-width: 780px) calc(100vw - 44px), (max-width: 1180px) calc((100vw - 112px) / 2), 437px',
+    sizes: homeChapterSizes,
     alt: 'Portraitfotografie',
     width: 1600,
     height: 2560,
@@ -305,7 +323,7 @@ export const homeChapters: HomeChapter[] = [
     image: '/assets/optimized/assets-photos-landschaft-720.webp',
     srcset:
       '/assets/optimized/assets-photos-landschaft-480.webp 480w, /assets/optimized/assets-photos-landschaft-720.webp 720w, /assets/optimized/assets-photos-landschaft-960.webp 960w',
-    sizes: '(max-width: 780px) calc(100vw - 44px), (max-width: 1180px) calc((100vw - 112px) / 2), 437px',
+    sizes: homeChapterSizes,
     alt: 'Landschaftsfotografie',
     width: 1707,
     height: 2560,
@@ -590,6 +608,50 @@ export const servicesIndexItems: ServicesIndexItem[] = [
         caption: 'Format',
       },
     ],
+  },
+]
+
+// Shader-Hero für die Leistungs-Übersicht (gleiche Mechanik wie Home/Portfolio:
+// Bild-Cycle, Lens-Cursor, Aperture-Beam, Glow), aber auf die weiteren
+// Dienstleistungen gemünzt — eigene Service-Bilder und Texte. Erste Lead wird in
+// NativeServicesIndexPage ggf. durch das CMS-Intro ersetzt.
+const servicesHeroCtas = {
+  primaryHref: '#anfrage',
+  primaryLabel: 'Projekt anfragen',
+  secondaryHref: '#overview',
+  secondaryLabel: 'Leistungen ansehen',
+} satisfies Pick<HomeHeroSlide, 'primaryHref' | 'primaryLabel' | 'secondaryHref' | 'secondaryLabel'>
+
+export const servicesHeroSlides: HomeHeroSlide[] = [
+  {
+    image: '/assets/services/portfolio_webp_full_006-1.webp',
+    titleLines: ['Alles aus', 'einer Hand'],
+    lead: 'Für Projekte, die über die Fotografie hinausgehen — Druck, Großformat, Werbetechnik, Webdesign, Video und Live-Musik, seriös koordiniert über erfahrene Partner aus Düsseldorf und NRW.',
+    ...servicesHeroCtas,
+  },
+  {
+    image: '/assets/services/fea8218e-7546-48ef-8581-2b99bb3cdefe_centered_reduced.webp',
+    titleLines: ['Vom Bild', 'zum Druck'],
+    lead: 'Vom Motiv zur signierten Edition: Fine-Art-Prints, Fotobücher und Spezialmaterial, abgestimmt auf Papier, Oberfläche und Präsentation.',
+    ...servicesHeroCtas,
+  },
+  {
+    image: '/assets/services/Catoir_Ramahi-1-106-768x512-1.webp',
+    titleLines: ['Großformat', '& Raum'],
+    lead: 'Großformat, Schaufenster und Displays mit klarer Fernwirkung — geplant, visualisiert und sauber vor Ort umgesetzt.',
+    ...servicesHeroCtas,
+  },
+  {
+    image: '/assets/services/portfolio_webp_full_057-1.webp',
+    titleLines: ['Bewegtbild', '& Marke'],
+    lead: 'Bewegtbild mit fotografischem Blick: Image-, Event- und Markenfilme, von der Dramaturgie bis zum finalen Cut.',
+    ...servicesHeroCtas,
+  },
+  {
+    image: '/assets/services/portfolio_webp_full_254.webp',
+    titleLines: ['Live', '& Event'],
+    lead: 'Live-Musik und klassische Begleitung, die Atmosphäre schafft — dezent planbar für Empfang, Vernissage und Feier.',
+    ...servicesHeroCtas,
   },
 ]
 

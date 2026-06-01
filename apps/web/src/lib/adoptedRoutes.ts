@@ -53,6 +53,31 @@ export const legacyRedirectTargets = {
 
 export type LegacyRedirectFile = keyof typeof legacyRedirectTargets
 
+export const legacyPathRedirectTargets = {
+  'autofotografie': 'autofotografie.html',
+  'autofotografie/autofotografie-duesseldorf': 'autofotografie-duesseldorf.html',
+  'autofotografie/automobilfotografie-im-regen': 'autofotografie.html',
+  'autofotografie-bochum': 'automobil-fotografie-bochum.html',
+  'autofotografie-dortmund': 'automobil-fotografie-dortmund.html',
+  'autofotografie-duesseldorf': 'autofotografie-duesseldorf.html',
+  'autofotografie-guide': 'autofotografie.html',
+  'autofotografie-wuppertal': 'automobil-fotografie-wuppertal.html',
+  'fotografie': 'fotografie.html',
+  'fotografie-musiker': 'portraitfotografie.html',
+  'fotoshooting-mit-motorrad-duisburg-urbane-kulisse-industrielle-seele-echte-emotion':
+    'motorrad-fotografie-duisburg.html',
+  'motorradfotografie': 'motorrad-fotografie.html',
+  'motorradfotografie/motorrad-fotografie-mit-gopros': 'motorrad-fotografie.html',
+  'motorradfotografie-guide': 'motorrad-fotografie.html',
+  'portraitfotografie/farbtheorie-in-der-fotografie': 'portraitfotografie.html',
+  'portraitfotografie/low-key-fotografie-beleuchtung-und-high-key-fotografie': 'portraitfotografie.html',
+  'portraitfotografie/mikrogesten-und-haende-im-charakterportraet-fuer-mehr-wirkung': 'portraitfotografie.html',
+  'portraitfotografie/retro-looks-in-der-digitalen-fotografie': 'portraitfotografie.html',
+  'vintage-portraets-fotografie': 'portraitfotografie.html',
+} as const
+
+export type LegacyPathRedirect = keyof typeof legacyPathRedirectTargets
+
 const legacyRedirectFileSet = new Set<string>(Object.keys(legacyRedirectTargets))
 
 const extensionlessHtmlAliases: Record<string, string> = {
@@ -178,6 +203,20 @@ const nativeHtmlRouteFileSet = new Set<string>(listNativeHtmlRouteFiles())
 export function getLegacyRedirectTarget(fileName?: string | null) {
   const normalized = (fileName || '').replace(/^\/+/, '').toLowerCase()
   return legacyRedirectTargets[normalized as LegacyRedirectFile] || null
+}
+
+export function normalizeLegacyPathRedirectPath(pathname?: string | null) {
+  const withoutOrigin = decodeURIComponent(pathname || '')
+    .split('?')[0]
+    .split('#')[0]
+    .replace(/^https?:\/\/[^/]+/i, '')
+
+  return withoutOrigin.replace(/^\/+/, '').replace(/\/+$/, '').toLowerCase()
+}
+
+export function getLegacyPathRedirectTarget(pathname?: string | null) {
+  const normalized = normalizeLegacyPathRedirectPath(pathname)
+  return legacyPathRedirectTargets[normalized as LegacyPathRedirect] || null
 }
 
 export function isLegacyRedirectFile(fileName?: string | null): fileName is LegacyRedirectFile {

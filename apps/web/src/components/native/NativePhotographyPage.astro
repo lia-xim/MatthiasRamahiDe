@@ -1,6 +1,6 @@
 ---
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
-import { blockParagraphs, homeHeroSlidesFor, photographyTopics } from '../../lib/nativeContent'
+import { blockParagraphs, photographyTopics } from '../../lib/nativeContent'
 import { getSitePageByType, liveCmsFetchOptions, type PayloadDoc } from '../../lib/payload'
 
 type Props = {
@@ -45,11 +45,25 @@ const overviewMeta: Record<string, { description: string; heroLines: [string, st
 
 const { legacyFile = 'fotografie.html' } = Astro.props as Props
 const meta = overviewMeta[legacyFile] || overviewMeta['fotografie.html']
+const canonicalPath = `/${legacyFile}`
 const providedDoc = (Astro.props as Props).doc
 const doc = providedDoc || (await getSitePageByType('photography-index', liveCmsFetchOptions({ depth: 2 })))
-// Hero = identischer Startseiten-Hero (Shader/Slides), aber eigenständig ueber das
-// CMS-Feld `heroSlides` der Fotografie-Uebersicht pflegbar — nicht mehr vom Home-Doc.
-const heroSlides = homeHeroSlidesFor(doc)
+// Übersichts-Hero: Titel = Bereichs-Lockup der jeweiligen Übersicht (z. B.
+// „Fotografie-Bereiche.“), die Slides zeigen die angebotenen Fotografie-Bereiche mit
+// eigenem Bild + Kurztext. Bewusst NICHT der Auto-/Düsseldorf-lastige Startseiten-Hero —
+// hier geht es um die Bandbreite der Bereiche, nicht um ein einzelnes Motiv oder eine Stadt.
+// (Bewusst code-definiert statt CMS-heroSlides: die Prod-CMS-Slides der Übersicht trugen
+// den Auto-/Düsseldorf-Startseiten-Hero und sollen die Übersicht nicht mehr überschreiben.)
+const overviewHeroSlides = photographyTopics.map((topic, index) => ({
+  image: topic.image,
+  titleLines: [...meta.heroLines],
+  lead: index === 0 ? doc?.intro || meta.intro : topic.text,
+  primaryHref: '#anfrage',
+  primaryLabel: 'Projekt anfragen',
+  secondaryHref: '/portfolio.html',
+  secondaryLabel: 'Portfolio ansehen',
+}))
+const heroSlides = overviewHeroSlides
 const firstHeroSlide = heroSlides[0]
 const heroImages = heroSlides.map((slide) => slide.image)
 const heroSlidesJson = JSON.stringify(heroSlides)
@@ -58,7 +72,7 @@ const clusterParagraphs = blockParagraphs(doc, 'Ein Einstieg', [
   'Nutzer wählen nicht aus einem generischen Portfolio, sondern steigen direkt in Automobil, Sportwagen, Oldtimer, Motorrad, Portrait oder Landschaft ein. Jede Kategorie zeigt auf ihrer Hauptseite die zugehörigen Städte und Regionen.',
 ])
 ---
-<AdoptedPageLayout legacyFile={legacyFile} current="fotografie" doc={doc} title={meta.title} description={meta.description} ctaHref="#anfrage" preloadImages={[firstHeroSlide.image]} liveCms>
+<AdoptedPageLayout legacyFile={legacyFile} current="fotografie" doc={doc} title={meta.title} description={meta.description} canonicalUrl={canonicalPath} ctaHref="#anfrage" preloadImages={[firstHeroSlide.image]} liveCms>
   <main>
     <section class="hero" data-theme="dark" aria-label="Intro" style={`background-image:url('${firstHeroSlide.image}')`}>
       <canvas id="hero-shader" aria-hidden="true" data-imgs={heroImages.join(',')} data-slides={heroSlidesJson}></canvas>

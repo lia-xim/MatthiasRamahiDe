@@ -94,7 +94,7 @@ const heroTitleLines = [...splitHeroTitleLines(heroTitle), ...splitHeroTitleLine
 const heroLocalNote = isLocalCityPage ? cmsHeroLine2 : isKeywordPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || '' : ''
 const heroLabel = isParentPage ? 'Automobilfotografie' : isKeywordPage ? serviceLabel : `Automobilfotografie${localSuffix}`
 const defaultHeroLead = isParentPage
-  ? 'Automobilfotografie: Exterieur, Interieur, Details und Cinematic werden als kuratierte Bildserie geplant - für Marke, Showroom, Verkauf, Kampagne und hochwertige private Fahrzeuge. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.'
+  ? 'Automobilfotografie: Exterieur, Interieur, Details und Cinematic werden als kuratierte Bildserie geplant - für Marke, Showroom, Verkauf, Kampagne und hochwertige private Fahrzeuge. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant — in ganz NRW.'
   : isKeywordPage
     ? `${serviceLabel}: eigenständiger Einstieg in die Automobilfotografie. Exterieur, Interieur, Details und Cinematic werden als kuratierte Serie geplant - für Marke, Showroom, Verkauf, Kampagne und hochwertige private Fahrzeuge. Die Seite bleibt bewusst im Layout der übergeordneten Kategorie, ist aber klar auf dieses Motiv und diese Nutzung formuliert.`
     : `Automobilfotografie in ${scope.label}: Exterieur, Interieur, Details und Cinematic werden als kuratierte Bildserie geplant - für Marke, Showroom, Verkauf, Kampagne und hochwertige private Fahrzeuge. ${cityScopePhrase(scope)}`
@@ -107,7 +107,7 @@ const fallbackMetaTitle = isParentPage
     : `${serviceLabel} ${scope.label} | Matthias Ramahi`
 const metaTitle = doc?.seo?.title || fallbackMetaTitle
 const defaultMetaDescription = isParentPage
-  ? 'Automobilfotografie fuer Exterieur, Interieur, Details und Kampagne in Duesseldorf und NRW. Bildserien fuer Verkauf, Marke, Showroom und hochwertige private Fahrzeuge.'
+  ? 'Automobilfotografie fuer Exterieur, Interieur, Details und Kampagne in ganz NRW. Bildserien fuer Verkauf, Marke, Showroom und hochwertige private Fahrzeuge.'
   : isKeywordPage
     ? `${serviceLabel} fuer Fahrzeuge, Marken, Showrooms und Verkauf. Exterieur, Interieur, Details und Cinematic werden als nutzbare Bildserie geplant.`
     : `${serviceLabel} in ${scope.label}: Exterieur, Interieur, Details und Cinematic als kuratierte Bildserie fuer Verkauf, Marke, Showroom und Kampagne.`
@@ -156,11 +156,11 @@ const galleryTiles = [
     className: 'bg-t-hero',
     src: 'assets/portfolio/thumbs/_DSC3879.webp',
     full: 'assets/optimized/assets-portfolio-dsc3879-1920.webp',
-    alt: 'Ferrari F12 Berlinetta in Düsseldorfer Ausstellungsraum — Automobilfotografie',
+    alt: 'Ferrari F12 Berlinetta im Ausstellungsraum — Automobilfotografie',
     width: 720,
     height: 480,
     left: '01 · Showroom',
-    right: 'Düsseldorf · 2025',
+    right: 'NRW · 2025',
   },
   {
     className: 'bg-t-a',
@@ -378,7 +378,7 @@ const focusRelatedLead =
       'Automobil ist die Klammer. Schau dir die spezialisierten Disziplinen an - gleicher Anspruch, anderer Bildfokus. Die Links fuehren schnell zu der Bildwelt, die zum Fahrzeug, zur Nutzung und zum geplanten Shooting passt.'
 
 const cityLinks = [
-  ['automobil-fotografie.html', 'Düsseldorf'],
+  ['automobil-fotografie-duesseldorf.html', 'Düsseldorf'],
   ['automobil-fotografie-erkrath.html', 'Erkrath'],
   ['automobil-fotografie-ratingen.html', 'Ratingen'],
   ['automobil-fotografie-koeln.html', 'Köln'],
@@ -424,7 +424,10 @@ const searchLinks = [
   title={metaTitle}
   description={metaDescription}
   ogImage={visualSlots[0].full}
-  preloadImages={[visualSlots[0].mobile, visualSlots[0].full]}
+  preloadImages={[
+    { href: inheritedHeroDevelopInitialMobile, media: '(max-width: 900px)' },
+    { href: inheritedHeroDevelopInitial, media: '(min-width: 901px)' },
+  ]}
 >
   {preview && (
     <PreviewToolbar

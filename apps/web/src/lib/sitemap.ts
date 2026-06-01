@@ -226,6 +226,22 @@ const collectCmsImages = (doc: PayloadDoc) => {
 
 export async function nativeRouteSitemapEntries(section?: SitemapSection): Promise<SitemapEntry[]> {
   const entries: SitemapEntry[] = []
+  if (!section || section === 'pages') {
+    const chrome = getAdoptedPageChrome('index.html')
+    const images = [...(chrome.ogImage ? [chrome.ogImage] : []), ...(chrome.preloadImages || [])]
+      .filter(Boolean)
+      .slice(0, 12)
+      .map((image) => ({
+        loc: toAbsoluteSiteUrl(image),
+        title: decodeEntities(chrome.title || 'Matthias Ramahi Fotografie'),
+      }))
+
+    entries.push({
+      loc: toAbsoluteSiteUrl('/'),
+      images,
+    })
+  }
+
   const files = listNativeHtmlRouteFiles()
 
   for (const file of files) {

@@ -57,7 +57,7 @@ const heroTitleLines = splitHeroTitleLines(heroTitle)
 const heroEmphasisLines = splitHeroTitleLines(heroEmphasis)
 const heroLocalNote = isLocalHeroPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Portrait vor Ort.' : isKeywordPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || '' : ''
 const defaultHeroLead = isParentPage
-  ? 'Portraitfotografie: Blick, Licht, Distanz und Haltung werden auf Nutzung und Persönlichkeit abgestimmt — für Personal Branding, Business Portraits, Team, Presse und Editorial. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.'
+  ? 'Portraitfotografie: Blick, Licht, Distanz und Haltung werden auf Nutzung und Persönlichkeit abgestimmt — für Personal Branding, Business Portraits, Team, Presse und Editorial. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant — in ganz NRW.'
   : isKeywordPage
     ? `${serviceLabel}: eigenständiger Einstieg in die Portraitfotografie. Blick, Licht, Distanz und Haltung werden auf Nutzung und Persönlichkeit abgestimmt - für Personal Branding, Business Portraits, Team, Presse und Editorial. Die Seite bleibt bewusst im Layout der übergeordneten Kategorie, ist aber klar auf dieses Motiv und diese Nutzung formuliert.`
     : `Portraitfotografie in ${scope.label}: Blick, Licht, Distanz und Haltung werden auf Nutzung und Persönlichkeit abgestimmt - für Personal Branding, Business Portraits, Team, Presse und Editorial. ${localScopePhrase(scope)}`
@@ -119,7 +119,7 @@ const visualSlots = familyVisualSlots(visualDoc, [
 ])
 
 const cityLinks = [
-  ['portraitfotografie.html', 'Düsseldorf'],
+  ['portraitfotografie-duesseldorf.html', 'Düsseldorf'],
   ['portraitfotografie-erkrath.html', 'Erkrath'],
   ['portraitfotografie-ratingen.html', 'Ratingen'],
   ['portraitfotografie-koeln.html', 'Köln'],
@@ -263,7 +263,7 @@ const defaultProcessSteps = [
     visualIndex: 21,
     imageLabel: 'Shooting',
     title: 'Shooting',
-    text: 'Location in Duesseldorf oder vor Ort. Ruhiges Setup, viel Raum zum Ankommen, klare Regie ohne Pose-Drill. Zwischendurch ein gemeinsamer Blick auf den Monitor.',
+    text: 'Location in NRW oder vor Ort. Ruhiges Setup, viel Raum zum Ankommen, klare Regie ohne Pose-Drill. Zwischendurch ein gemeinsamer Blick auf den Monitor.',
   },
   {
     visualIndex: 22,

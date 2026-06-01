@@ -5,7 +5,7 @@
 
 /* ====== Global smooth lazy-image fade-in ======
    Every <img loading="lazy" decoding="async"> starts hidden via CSS and gets .is-loaded once
-   the browser actually has the pixels â€” for cached, in-flight, and
+   the browser actually has the pixels - for cached, in-flight, and
    future-injected images alike. */
 (()=>{
   const mark = img => {
@@ -32,12 +32,12 @@
 })();
 
 /* ====== HERO: Cinematic Image Cycle + Lens Shader ======
-   Konzept: BÃ¼hne aus 6 Bildern (Automobil â†’ PortrÃ¤t â†’ Oldtimer â†’
-   Motorrad â†’ Landschaft â†’ Sportwagen), die in langsamen Cinematic-
+   Konzept: Buehne aus 6 Bildern (Automobil -> Portraet -> Oldtimer ->
+   Motorrad -> Landschaft -> Sportwagen), die in langsamen Cinematic-
    Crossfades wechseln. Eine virtuelle Linse folgt der Maus: dort
    wird das Bild scharf, voll farbig, leicht magnifiziert, und
    bei schneller Mausbewegung tritt Chromatic Aberration auf.
-   Klick = Shutter-Flash + sofortiger Wechsel zum nÃ¤chsten Motiv.
+   Klick = Shutter-Flash + sofortiger Wechsel zum naechsten Motiv.
    Ken-Burns gibt der Szene eine ruhige Atmung. Komplett eigener
    Shader, keine externen Libs.
 */
@@ -154,7 +154,7 @@
     float canvasRatio=uR.x/uR.y;
 
     /* both slots sample with the SAME continuous time-based motion, so the
-       promote moment cannot cause a position jump â€” motion is identical
+       promote moment cannot cause a position jump - motion is identical
        in both textures, only the texture content swaps. */
     vec2 uvA=coverUV(uv, uIRA, uKB, 17.0);
     vec2 uvB=coverUV(uv, uIRB, uKB, 17.0);
@@ -169,20 +169,20 @@
 
     float dist=length(p-lp);
 
-    /* BASE: photo at near-full visibility â€” no distortion, no CA */
+    /* BASE: photo at near-full visibility - no distortion, no CA */
     vec3 baseA=texture2D(uA, clamp(uvA, 0.0, 1.0)).rgb;
     vec3 baseB=texture2D(uB, clamp(uvB, 0.0, 1.0)).rgb;
     vec3 col=mix(baseA, baseB, uMix);
 
-    /* gentle filmic grade â€” split-tone + light contrast lift */
+    /* gentle filmic grade - split-tone + light contrast lift */
     col=pow(max(col, 0.0), vec3(0.97));
     col=splitTone(col);
 
-    /* very slow global "breath" â€” barely perceptible exposure pulse */
+    /* very slow global "breath" - barely perceptible exposure pulse */
     float breath=0.5 + 0.5*sin(uT*0.22);
     col*=mix(0.985, 1.015, breath);
 
-    /* SPOTLIGHT â€” base sits slightly darker / a touch desaturated so the
+    /* SPOTLIGHT - base sits slightly darker / a touch desaturated so the
        cursor's lift reads as a real reveal. No lens distortion. */
     float liftR=0.95;
     float lift=1.0 - smoothstep(0.0, liftR, dist);
@@ -190,7 +190,7 @@
     /* far-from-cursor darken (this is what gives the spotlight feel) */
     float ambient=mix(0.78, 1.0, lift);
     col*=ambient;
-    /* lateral desat far from cursor â€” pulls grey deeper, color blooms at cursor */
+    /* lateral desat far from cursor - pulls grey deeper, color blooms at cursor */
     float lum0=dot(col, vec3(0.2126, 0.7152, 0.0722));
     col=mix(mix(vec3(lum0), col, 0.78), col, mix(0.0, 1.0, lift));
     /* exposure lift right under the cursor */
@@ -199,15 +199,15 @@
     float lum=dot(col, vec3(0.2126, 0.7152, 0.0722));
     col=mix(col, mix(vec3(lum), col, 1.32), lift * (0.62 + 0.55*uMA));
 
-    /* warm core right at the cursor â€” small punch of "exposure" */
+    /* warm core right at the cursor - small punch of "exposure" */
     float core=exp(-dist*5.4);
     col += core * vec3(0.14, 0.10, 0.06) * (0.10 + 0.42*uMA);
 
-    /* secondary ring â€” a wider, much subtler halo (gives the spotlight depth) */
+    /* secondary ring - a wider, much subtler halo (gives the spotlight depth) */
     float halo=exp(-dist*1.7) - exp(-dist*3.2);
     col += max(halo, 0.0) * vec3(0.06, 0.05, 0.04) * (0.20 + 0.45*uMA);
 
-    /* PHOTOGRAPHIC EDGE FRAME â€” soft dark corners + a tighter inner vignette
+    /* PHOTOGRAPHIC EDGE FRAME - soft dark corners + a tighter inner vignette
        so the image feels printed, not slapped onto the canvas. */
     vec2 vuv=uv-0.5;
     float r2=dot(vuv, vuv);
@@ -226,14 +226,14 @@
     col*=mix(0.84, 1.0, topFade);
     col*=mix(0.78, 1.0, bottomFade);
 
-    /* crossfade darken right when mixing slides â€” small */
+    /* crossfade darken right when mixing slides - small */
     float xfade=4.0 * uMix * (1.0-uMix);
     col *= 1.0 - xfade*0.06 * smoothstep(0.0, 0.7, length(uv-0.5));
 
-    /* shutter flash on click â€” softer */
+    /* shutter flash on click - softer */
     col = mix(col, vec3(1.0), uShutter*0.55);
 
-    /* 35mm grain â€” very fine, modulated by luminance so it lives in mids */
+    /* 35mm grain - very fine, modulated by luminance so it lives in mids */
     float g=fract(sin(dot(uv*vec2(1920.0,1080.0)+uT, vec2(12.9898, 78.233)))*43758.5453);
     float gl=dot(col, vec3(0.2126, 0.7152, 0.0722));
     float gmask=smoothstep(0.05, 0.55, gl) * (1.0 - smoothstep(0.55, 0.95, gl));
@@ -297,7 +297,7 @@
     gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);
   }
 
-  /* slot state: slotA + slotB hold images; uMix interpolates Aâ†’B */
+  /* slot state: slotA + slotB hold images; uMix interpolates A->B */
   let currentIdx=0, nextIdx=1;
   let irA={w:1,h:1}, irB={w:1,h:1};
   let targetReady=0, ready=0;
@@ -305,7 +305,7 @@
   let transitioning=false;
   const heroStartT=performance.now();
 
-  /* boot â€” load first image into slot A, second into slot B */
+  /* boot - load first image into slot A, second into slot B */
   loadImage(0).then(entry=>{
     if(!entry) return;
     irA={w:entry.w,h:entry.h};
@@ -346,7 +346,7 @@
     }
     targetMix=1;
 
-    /* after the mix completes, promote Bâ†’A and reset */
+    /* after the mix completes, promote B->A and reset */
     setTimeout(()=>{
       /* copy: now slot A should hold the "target" image, slot B can hold whatever comes next */
       const promote=cache[target];
@@ -364,7 +364,7 @@
           gl.activeTexture(gl.TEXTURE1); uploadInto(texB, e);
         }
       });
-      /* motion is continuous and identical for both slots â€” no kb reset
+      /* motion is continuous and identical for both slots - no kb reset
          needed, both samples drift with the same time-based pan/zoom so
          the promote is invisible. */
       transitioning=false;
@@ -642,7 +642,7 @@
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'pf-tile ' + sizeCls;
-    btn.setAttribute('aria-label','Bild vergrÃ¶ÃŸern');
+    btn.setAttribute('aria-label','Bild vergroessern');
     btn.dataset.idx = String(item.index);
     const img = document.createElement('img');
     img.src = item.teaser || item.thumb;
@@ -702,27 +702,22 @@
     fillTrack(t2, list2, 3);
   };
 
-  if (!saveData) {
-    scheduleIdle(() => {
-      prewarmTeasers(12);
-      buildTiles();
-    }, 2200);
-  }
-
   if ('IntersectionObserver' in window && marquee) {
     const io = new IntersectionObserver((entries) => {
       for (const e of entries) {
         if (e.isIntersecting) {
-          prewarmTeasers(18);
-          buildTiles();
+          scheduleIdle(() => {
+            prewarmTeasers(saveData ? 6 : 18);
+            buildTiles();
+          }, 900);
           io.disconnect();
           break;
         }
       }
-    }, { rootMargin: '1800px 0px' });
+    }, { rootMargin: '900px 0px' });
     io.observe(marquee);
   } else {
-    buildTiles();
+    scheduleIdle(buildTiles, 1200);
   }
 
   /* Lightbox */

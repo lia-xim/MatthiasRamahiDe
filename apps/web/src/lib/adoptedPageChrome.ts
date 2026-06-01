@@ -195,8 +195,8 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
     current: 'leistungen',
     description:
       'Weitere Dienstleistungen von Matthias Ramahi: Fotografie, Druck, Webdesign, Videografie und visuelle Produktion in Düsseldorf, NRW und Deutschland.',
-    ogImage: '/assets/services/portfolio_webp_full_057-1.webp',
-    scripts: siteChromeScript,
+    ogImage: '/assets/services/portfolio_webp_full_006-1.webp',
+    scripts: ['/assets/native-home.js', ...siteChromeScript],
     stylesheets: ['/assets/native-services.css', ...sharedStyles],
     title: 'Weitere Dienstleistungen - Matthias Ramahi',
   },

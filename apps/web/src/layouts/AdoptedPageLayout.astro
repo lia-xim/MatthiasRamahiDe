@@ -30,11 +30,21 @@ type Props = {
   noIndex?: boolean
   ogImage?: PayloadMedia | string
   ogType?: string
-  preloadImages?: string[]
+  preloadImages?: PreloadImage[]
   scripts?: string[]
   stylesheets?: string[]
   title?: string
 }
+
+type PreloadImage =
+  | string
+  | {
+      fetchpriority?: 'auto' | 'high' | 'low'
+      href: string
+      imagesizes?: string
+      imagesrcset?: string
+      media?: string
+    }
 
 const {
   bodyClass: providedBodyClass,
@@ -81,7 +91,7 @@ const bodyClass = providedBodyClass || doc?.legacy?.bodyClass || chrome.bodyClas
 const current = providedCurrent || doc?.legacy?.headerCurrent || chrome.current
 const headerTheme = providedHeaderTheme || chrome.headerTheme
 const allStylesheets = mergeAssetLists(chrome.stylesheets, stylesheets)
-const allPreloadImages = preloadImages.length > 0 ? mergeAssetLists(preloadImages) : mergeAssetLists(chrome.preloadImages)
+const allPreloadImages = normalizePreloadImages(preloadImages.length > 0 ? preloadImages : chrome.preloadImages || [])
 const allScripts = mergeAssetLists(chrome.scripts, scripts)
 const siteName = settings?.siteName || 'Matthias Ramahi Fotografie'
 const jsonLdItems = [
@@ -91,6 +101,14 @@ const jsonLdItems = [
   ...(Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : []),
 ].filter(Boolean)
 const criticalCss = chrome.inlineCriticalCss ? minifyCriticalCss(await readPublicAsset(chrome.inlineCriticalCss)) : ''
+const deferStylesheets = Boolean(criticalCss)
+const deferredStylesheetLinks = allStylesheets.map((href) => {
+  const safeHref = escapeHtmlAttribute(href)
+  return `<link rel="preload" as="style" href="${safeHref}"><link rel="stylesheet" href="${safeHref}" media="print" onload="this.onload=null;this.media='all'">`
+}).join('')
+const noscriptStylesheetLinks = allStylesheets
+  .map((href) => `<link rel="stylesheet" href="${escapeHtmlAttribute(href)}">`)
+  .join('')
 
 Astro.response.headers.set('x-cms-render-source', 'structured-astro')
 Astro.response.headers.set('x-cms-migration-status', 'native-component')
@@ -103,6 +121,32 @@ function minifyCriticalCss(css: string) {
     .replace(/\s*([{}:;,>])\s*/g, '$1')
     .replace(/;}/g, '}')
     .trim()
+}
+
+function escapeHtmlAttribute(value: string) {
+  return value.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;')
+}
+
+function normalizePreloadImageHref(href: string) {
+  if (!href || /^(https?:|data:|mailto:|tel:|#)/i.test(href) || href.startsWith('/')) return href
+  return `/${href.replace(/^\/+/, '')}`
+}
+
+function normalizePreloadImages(items: PreloadImage[]) {
+  const seen = new Set<string>()
+  return items
+    .map((item) => (typeof item === 'string' ? { href: item } : item))
+    .map((item) => ({
+      ...item,
+      fetchpriority: item.fetchpriority || 'high',
+      href: normalizePreloadImageHref(item.href),
+    }))
+    .filter((item) => {
+      const key = [item.href, item.media || '', item.imagesrcset || '', item.imagesizes || ''].join('|')
+      if (!item.href || seen.has(key)) return false
+      seen.add(key)
+      return true
+    })
 }
 
 async function readPublicAsset(href: string) {
@@ -155,8 +199,25 @@ async function readPublicAsset(href: string) {
     <meta name="twitter:description" content={description} />
     {socialImage && <meta name="twitter:image" content={socialImage} />}
     {criticalCss && <style data-critical="home" set:html={criticalCss} />}
-    {allPreloadImages.map((href) => <link rel="preload" as="image" href={href} fetchpriority="high" />)}
-    {allStylesheets.map((href) => <link rel="stylesheet" href={href} />)}
+    {allPreloadImages.map((image) => (
+      <link
+        rel="preload"
+        as="image"
+        href={image.href}
+        media={image.media}
+        imagesizes={image.imagesizes}
+        imagesrcset={image.imagesrcset}
+        fetchpriority={image.fetchpriority}
+      />
+    ))}
+    {deferStylesheets ? (
+      <>
+        <Fragment set:html={deferredStylesheetLinks} />
+        <noscript><Fragment set:html={noscriptStylesheetLinks} /></noscript>
+      </>
+    ) : (
+      allStylesheets.map((href) => <link rel="stylesheet" href={href} />)
+    )}
     {jsonLdItems.map((item) => <script is:inline type="application/ld+json" set:html={JSON.stringify(item)} />)}
     <script
       is:inline

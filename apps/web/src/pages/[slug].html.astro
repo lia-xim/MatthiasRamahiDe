@@ -2,6 +2,7 @@
 import NativeAdoptedPage from '../components/native/NativeAdoptedPage.astro'
 import {
   getLegacyRedirectTarget,
+  isLegacyRedirectFile,
   isCmsAdoptedLegacyFile,
   listNativeHtmlRouteFiles,
 } from '../lib/adoptedRoutes'
@@ -15,6 +16,7 @@ type Props = {
 export function getStaticPaths() {
   return listNativeHtmlRouteFiles()
     .filter((file) => file !== 'index.html')
+    .filter((file) => !isLegacyRedirectFile(file))
     .map((file) => ({
       params: { slug: file.replace(/\.html$/i, '') },
       props: { legacyFile: file },

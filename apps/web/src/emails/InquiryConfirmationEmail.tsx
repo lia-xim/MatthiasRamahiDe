@@ -20,6 +20,14 @@ import type { InquiryEmailData } from './types'
 
 export function InquiryConfirmationEmail({ data }: { data: InquiryEmailData }) {
   const message = (data.message || '').trim()
+  const rows: Array<[string, string]> = [
+    ['Eingang', formatDate(data.createdAt)],
+    ['Referenz', refCode(data.id)],
+    ['Themenbereich', data.intentLabel || 'Allgemein'],
+  ]
+  if (data.project) rows.push(['Projekt / Motiv', data.project])
+  if (data.date) rows.push(['Zeitraum', data.date])
+  if (data.use) rows.push(['Nutzung', data.use])
 
   return (
     <EmailShell preview="Deine Anfrage ist bei Matthias Ramahi angekommen.">
@@ -44,13 +52,7 @@ export function InquiryConfirmationEmail({ data }: { data: InquiryEmailData }) {
       </MessagePanel>
 
       <Section style={{ padding: '16px 34px 6px' }}>
-        <MetaGrid
-          rows={[
-            ['Eingang', formatDate(data.createdAt)],
-            ['Referenz', refCode(data.id)],
-            ['Themenbereich', data.intentLabel || 'Allgemein'],
-          ]}
-        />
+        <MetaGrid rows={rows} />
       </Section>
 
       <Section style={{ padding: '22px 34px 6px' }}>
