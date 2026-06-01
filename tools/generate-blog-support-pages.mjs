@@ -125,8 +125,8 @@ const articles = [
     sections: [
       ['Ein Ort muss arbeiten', 'Eine Location ist nicht nur Kulisse. Sie bestimmt Licht, Linien, Abstand, Ruhe und organisatorischen Ablauf. Gute Orte helfen dem Motiv, statt sich davorzudraengen.'],
       ['Lichtfenster zuerst', 'Der gleiche Ort kann morgens weich, mittags flach und abends cineastisch wirken. Deshalb beginnt Scouting mit Sonnenstand, Schatten, Reflexionsflaechen und der Frage, wann ein Motiv wirklich atmen kann.'],
-      ['Zugang und Stoerungen planen', 'Parken, Publikumsverkehr, Genehmigungen und Wetteroptionen sind technische SEO-fremde, aber fotografisch entscheidende Faktoren. Eine starke Serie entsteht leichter, wenn diese Reibung vorher geloest ist.'],
-      ['Ort und Suchintention verbinden', 'Fuer lokale SEO-Seiten ist Location nicht nur ein Keyword. Sie muss zeigen, warum ein Auftrag in Duesseldorf, NRW oder einer konkreten Stadt sinnvoll geplant werden kann. Ein guter Ort ergaenzt deshalb die Suchintention: Er macht sichtbar, ob es um Verkauf, Markenwirkung, persoenliche Praesenz oder eine ruhige redaktionelle Serie geht.'],
+      ['Zugang und Stoerungen planen', 'Parken, Publikumsverkehr, Genehmigungen und Wetteroptionen sind organisatorische, aber fotografisch entscheidende Faktoren. Eine starke Serie entsteht leichter, wenn diese Reibung vorher geloest ist.'],
+      ['Ort und Auftrag verbinden', 'Eine Location ist nicht nur ein Name auf der Karte. Sie muss zeigen, warum ein Auftrag in Duesseldorf, NRW oder einer konkreten Stadt sinnvoll geplant werden kann. Ein guter Ort unterstuetzt die Bildaufgabe: Verkauf, Markenwirkung, persoenliche Praesenz oder eine ruhige redaktionelle Serie.'],
     ],
     faq: [
       ['Wird die Location vorab festgelegt?', 'Ja, zumindest die Richtung. Je nach Wetter und Motiv koennen Alternativen vorbereitet werden.'],
@@ -283,7 +283,7 @@ function render(article) {
       <div class="article-body">
         <div class="article-grid">
           <aside>
-            <p>Dieser Beitrag stuetzt die SEO-Cluster der Fotografie-Seiten und fuehrt zu passenden Leistungs- und Standortseiten weiter.</p>
+            <p>Dieser Beitrag fuehrt zu passenden Leistungs- und Standortseiten weiter.</p>
             ${related}
           </aside>
           <div>${bodySections}</div>
@@ -294,7 +294,7 @@ function render(article) {
         <div class="faq-grid">${faq}</div>
       </section>
       <section class="related" aria-label="Verwandte Seiten">
-        <h2>Weiter im Cluster.</h2>
+        <h2>Verwandte Beitraege.</h2>
         <nav>${related}</nav>
       </section>
     </article>

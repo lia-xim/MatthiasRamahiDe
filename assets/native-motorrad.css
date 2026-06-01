@@ -112,6 +112,7 @@
   /* Bottom-left lede + CTAs (anchored under title, asymmetric). */
   .hero-mr__lede-block{display:flex;flex-direction:column;gap:clamp(18px,2vw,24px);max-width:min(48vw,520px);margin-top:clamp(28px,3.4vw,44px);opacity:0;transform:translateY(14px);transition:opacity 1.1s var(--ease) 1.4s,transform 1.2s var(--ease) 1.4s}
   .hero-mr.is-on .hero-mr__lede-block{opacity:1;transform:translateY(0)}
+  .hero-mr__local-note{margin:0;color:rgba(243,245,239,.74);font:11px/1.45 var(--mono);letter-spacing:.26em;text-transform:uppercase;text-shadow:0 1px 18px rgba(0,0,0,.72)}
   .hero-mr__lede{color:rgba(243,245,239,.82);font-size:clamp(14px,1.05vw,16.5px);line-height:1.6;margin:0;text-shadow:0 1px 18px rgba(0,0,0,.7)}
   .hero-mr__actions{display:flex;gap:10px;flex-wrap:wrap}
   .hero-mr__actions a{min-height:44px;display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border:1px solid rgba(243,245,239,.9);color:#f6f7f2;font:11px var(--mono);letter-spacing:.22em;text-transform:uppercase;transition:background .35s var(--ease),color .35s var(--ease),border-color .35s var(--ease);background:transparent}
@@ -269,6 +270,7 @@
     .hero-mr__title .line:nth-child(2) .word{font-size:clamp(15px,3.4vw,22px);letter-spacing:.2em}
     .hero-mr__title .line:nth-child(2) .word::after{width:clamp(24px,5vw,42px);margin-left:12px}
     .hero-mr__lede-block{max-width:none;gap:16px;margin-top:clamp(20px,5vw,30px)}
+    .hero-mr__local-note{font-size:10px;letter-spacing:.18em}
     .hero-mr__lede{font-size:14.5px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
     .hero-mr__actions{justify-content:flex-start}
     /* Rail collapses to dots inline below the title on mobile. */

@@ -236,7 +236,7 @@ const simpleKeywordCopy = (label: string, brief: SimpleKeywordBrief): KeywordFoc
   ],
   contactLead: `Schreibe kurz, welches Motiv im Mittelpunkt steht, wofuer ${label} gebraucht wird und ob die Bilder privat, kommerziell, redaktionell oder fuer Verkauf und Print genutzt werden sollen.`,
   featureBody: brief.feature,
-  featureTitle: 'Intent statt Kopie.',
+  featureTitle: 'Eigenes Motiv statt Kopie.',
   galleryHeadline: `${label} als Bildserie.`,
   galleryLead: brief.output,
   heroEmphasis: brief.heroEmphasis,
@@ -244,7 +244,7 @@ const simpleKeywordCopy = (label: string, brief: SimpleKeywordBrief): KeywordFoc
   heroTitle: brief.heroTitle,
   metaDescription: `${label}: ${brief.output}`,
   processHeadline: `${label}: Ablauf.`,
-  processLead: `Vor dem Termin werden Suchintention, Motiv, Ort, Lichtfenster und Ausgabe geklaert, damit diese Seite nicht nur eine andere URL traegt.`,
+  processLead: `Vor dem Termin werden Ziel, Motiv, Ort, Lichtfenster und Ausgabe geklaert, damit aus der Anfrage ein eigener Bildsatz wird.`,
   processSteps: [
     { title: 'Ziel klaeren', text: brief.intent },
     { title: 'Motiv planen', text: brief.planning },
@@ -253,7 +253,7 @@ const simpleKeywordCopy = (label: string, brief: SimpleKeywordBrief): KeywordFoc
   ],
   pullEmphasis: 'eigener Richtung.',
   pullHeadline: `${label} mit`,
-  pullKicker: 'SEO-Intent',
+  pullKicker: 'Bildrichtung',
   pullLead: brief.intent,
   relatedLead: brief.related,
   sectionEmphasis: brief.sectionEmphasis,
@@ -273,7 +273,7 @@ const keywordFocusDefaults: Record<string, KeywordFocusCopy> = {
     intent: 'Suchende wollen konkrete Hilfe zu Licht, Winkel, Lackreflexen, Standort und Bildaufbau.',
     output: 'Hilfreiche Tipps plus Bruecke zur professionellen Automobilfotografie in NRW.',
     planning: 'Der Text trennt Grundlagen, typische Fehler und professionelle Umsetzung klar voneinander.',
-    related: 'Die Seite verlinkt zu Auto-Fotoshooting, Bilder mit Auto und Automobilfotografie, ohne diese Intents zu ersetzen.',
+    related: 'Die Seite verlinkt zu Auto-Fotoshooting, Bilder mit Auto und Automobilfotografie, ohne diese Angebote zu verwischen.',
     sectionEmphasis: 'Reflexe.',
     sectionHeadline: 'Licht, Linien,',
   }),
@@ -320,7 +320,7 @@ const keywordFocusDefaults: Record<string, KeywordFocusCopy> = {
     heroTitle: 'Autofotografie',
     intent: 'Der Begriff ist breit: private Autos, Verkauf, Marke, Social und Fahrzeugliebe koennen gemeint sein.',
     output: 'Autofotografie als Ueberblick mit schneller Orientierung zu Shooting, Verkauf und Automotive-Serien.',
-    planning: 'Die Seite fragt frueh nach Zweck, Fahrzeugart und Ausgabe, damit keine Kannibalisierung mit Spezialseiten entsteht.',
+    planning: 'Die Seite fragt frueh nach Zweck, Fahrzeugart und Ausgabe, damit Nutzer schnell beim passenden Angebot landen.',
     related: 'Von hier geht es gezielt zu Automobilfotografie, Auto-Fotoshooting, Fahrzeugfotografie und Autohaus-Fotografie.',
     sectionEmphasis: 'Zweck.',
     sectionHeadline: 'Auto, Bild,',
@@ -342,7 +342,7 @@ const keywordFocusDefaults: Record<string, KeywordFocusCopy> = {
     feature: 'Verkaufsbilder muessen Zustand, Ausstattung und Wertigkeit nachvollziehbar zeigen, ohne das Fahrzeug falsch zu ueberinszenieren.',
     heroEmphasis: 'verkaufen.',
     heroTitle: 'Autoverkauf Fotos',
-    intent: 'Die Suchintention ist transaktional: bessere Bilder sollen Vertrauen schaffen und den Verkauf unterstuetzen.',
+    intent: 'Hier geht es konkret um bessere Verkaufsbilder, die Vertrauen schaffen und den Verkauf unterstuetzen.',
     output: 'Autoverkauf Fotos fuer Inserate, Auktionen, Portale und private Fahrzeugverkaeufe.',
     planning: 'Vorab werden Bildliste, Maengel, Details, Innenraum und Ausstattungsmerkmale festgelegt.',
     related: 'Autoverkauf-Fotos werden von Autohaus-Fotografie und Auto-Fotoshooting getrennt, damit der Verkaufsintent klar bleibt.',
@@ -350,14 +350,14 @@ const keywordFocusDefaults: Record<string, KeywordFocusCopy> = {
     sectionHeadline: 'Bilder fuer',
   }),
   fahrzeugfotografie: simpleKeywordCopy('Fahrzeugfotografie', {
-    cards: ['Auto', 'Motorrad', 'Nutzungsziel', 'Cluster'],
+    cards: ['Auto', 'Motorrad', 'Nutzungsziel', 'Bereich'],
     feature: 'Fahrzeugfotografie ist der neutrale Sammelbegriff und braucht eine saubere Sortierung nach Auto, Sportwagen, Oldtimer und Motorrad.',
     heroEmphasis: 'sortiert.',
     heroTitle: 'Fahrzeugfotografie',
     intent: 'Suchende koennen Autos, Bikes, Haendlerbestand, Verkauf oder redaktionelle Serien meinen.',
-    output: 'Fahrzeugfotografie als Clusterseite fuer Auto, Sportwagen, Oldtimer, Motorrad und Verkauf.',
+    output: 'Fahrzeugfotografie als Ueberblick fuer Auto, Sportwagen, Oldtimer, Motorrad und Verkauf.',
     planning: 'Die Seite fuehrt frueh ueber Fahrzeugart, Zweck und Bildausgabe zur passenden Unterseite.',
-    related: 'Sie verhindert Kannibalisierung, indem sie nicht jedes Angebot ersetzt, sondern bewusst verteilt.',
+    related: 'Sie ersetzt nicht jedes Angebot, sondern fuehrt bewusst zur passenden Fahrzeugart weiter.',
     sectionEmphasis: 'Kategorie.',
     sectionHeadline: 'Fahrzeug nach',
   }),
@@ -369,7 +369,7 @@ const keywordFocusDefaults: Record<string, KeywordFocusCopy> = {
     intent: 'Suchende wollen oft nicht nur das Auto, sondern sich selbst, ein Paar oder eine Geschichte mit dem Fahrzeug zeigen.',
     output: 'Bilder mit Auto fuer Besitzer, Geschenkideen, Social Content und persoenliche Serien.',
     planning: 'Pose, Abstand, Kleidung, Ort und Fahrzeugwirkung werden so geplant, dass das Auto nicht wie Requisite wirkt.',
-    related: 'Die Seite verbindet Automobil und Portrait, bleibt aber im Automobil-Cluster.',
+    related: 'Die Seite verbindet Automobil und Portrait und fuehrt passend zu beiden Bereichen weiter.',
     sectionEmphasis: 'Person.',
     sectionHeadline: 'Auto plus',
   }),
@@ -465,7 +465,7 @@ const keywordFocusDefaults: Record<string, KeywordFocusCopy> = {
     intent: 'Suchende meinen oft besondere, seltene oder sehr hochwertige Fahrzeuge mit Sammlerwert.',
     output: 'Exotic Car Fotografie fuer Sammler, Verkauf, private Archive und hochwertige Praesentation.',
     planning: 'Location, Diskretion, Transport, Licht und Detailtiefe werden sensibel geplant.',
-    related: 'Die Seite bleibt im Sportwagen-Cluster und verweist zu Supersportwagen und Performance Car.',
+    related: 'Die Seite bleibt bei hochwertigen Sportwagen und verweist zu Supersportwagen und Performance Car.',
     sectionEmphasis: 'Seltenheit.',
     sectionHeadline: 'Seltenes mit',
   }),
@@ -474,7 +474,7 @@ const keywordFocusDefaults: Record<string, KeywordFocusCopy> = {
     feature: 'Supersportwagen brauchen maximale Kontrolle ueber Reflexe, Linien, Innenraum und Hero-Frames.',
     heroEmphasis: 'High-End.',
     heroTitle: 'Supersportwagen',
-    intent: 'Die Suchintention ist enger und hochwertiger als normale Sportwagenfotografie.',
+    intent: 'Hier geht es um besonders hochwertige Sportwagen mit engerem Bildanspruch als bei allgemeiner Sportwagenfotografie.',
     output: 'Supersportwagen Fotografie fuer Besitzer, Sammler, Haendler, Marken und Editorials.',
     planning: 'Sicherheit, Location, Licht, Formate und Nutzungsrechte werden vorab sauber abgestimmt.',
     related: 'Die Seite fuehrt zu Sportwagen, Exotic Car und Performance Car, ohne diese Begriffe zu vermischen.',
@@ -510,7 +510,7 @@ const keywordFocusDefaults: Record<string, KeywordFocusCopy> = {
     feature: 'Verkaufsfotos fuer Oldtimer muessen Vertrauen schaffen: Patina zeigen, Maengel nicht verstecken und Wertmerkmale sauber dokumentieren.',
     heroEmphasis: 'verkaufen.',
     heroTitle: 'Oldtimer Verkaufsfotos',
-    intent: 'Die Suchintention ist klar kommerziell: bessere Bilder fuer Inserat, Auktion oder Sammler-Verkauf.',
+    intent: 'Hier geht es klar um Verkauf: bessere Bilder fuer Inserat, Auktion oder Sammlerfahrzeug.',
     output: 'Oldtimer Verkaufsfotos fuer Inserate, Auktionen, Sammlerfahrzeuge und Versicherungsdokumentation.',
     planning: 'Bildliste, Detailtiefe, Innenraum, Motorraum, Dokumente und Provenienz werden vorab sortiert.',
     related: 'Die Seite trennt Verkauf klar von Oldtimer Shooting und Classic Car Fotografie.',
@@ -519,13 +519,13 @@ const keywordFocusDefaults: Record<string, KeywordFocusCopy> = {
   }),
   'classic-car-fotografie': simpleKeywordCopy('Classic Car Fotografie', {
     cards: ['Classic Look', 'Material', 'Editorial', 'Sammlung'],
-    feature: 'Classic Car Fotografie spricht internationale und stilistische Suchintentionen an, bleibt aber fachlich bei Oldtimer und Sammlerfahrzeugen.',
+    feature: 'Classic Car Fotografie spricht eine internationale, stilistische Bildsprache an und bleibt fachlich bei Oldtimer und Sammlerfahrzeugen.',
     heroEmphasis: 'classic.',
     heroTitle: 'Classic Car',
     intent: 'Der Begriff ist stilistisch und internationaler als Oldtimer-Fotografie.',
     output: 'Classic Car Fotografie fuer Sammler, Editorials, Verkauf, Auktion und hochwertige Serien.',
     planning: 'Designlinie, Baujahr, Material und Bildstil werden bewusst ruhiger gefuehrt.',
-    related: 'Die Seite verlinkt zu Oldtimer, Youngtimer und Sammlerfahrzeug, statt diese Intents zu ueberdecken.',
+    related: 'Die Seite verlinkt zu Oldtimer, Youngtimer und Sammlerfahrzeug, statt diese Angebote zu ueberdecken.',
     sectionEmphasis: 'Stil.',
     sectionHeadline: 'Klassik mit',
   }),
@@ -597,8 +597,8 @@ const keywordFocusDefaults: Record<string, KeywordFocusCopy> = {
     intent: 'Suchende koennen Motorrad, Custom Bike, Fahrerbild oder Social Content meinen.',
     output: 'Bike Fotografie als Einstieg fuer Motorrad, Custom Bike, Biker Portrait und Verkaufsbilder.',
     planning: 'Der Text fragt frueh nach Bike-Art, Person, Nutzung und Ort.',
-    related: 'Die Seite fuehrt in die passenden Motorrad-Unterseiten statt alle Intents zu vermischen.',
-    sectionEmphasis: 'Intent.',
+    related: 'Die Seite fuehrt in die passenden Motorrad-Unterseiten, statt alles in einem Angebot zu vermischen.',
+    sectionEmphasis: 'Nutzung.',
     sectionHeadline: 'Bike nach',
   }),
   'custom-bike-fotografie': simpleKeywordCopy('Custom Bike Fotografie', {
@@ -621,7 +621,7 @@ const keywordFocusDefaults: Record<string, KeywordFocusCopy> = {
     intent: 'Suchende wollen Mensch und Maschine zusammen zeigen, nicht nur das Fahrzeug.',
     output: 'Biker Portrait fuer Fahrer, Clubs, Social Media, Personal Branding und private Serien.',
     planning: 'Person, Bike, Kleidung, Helm, Location und gewuenschte Wirkung werden gemeinsam abgestimmt.',
-    related: 'Die Seite liegt zwischen Portrait und Motorrad, bleibt aber im Motorrad-Cluster.',
+    related: 'Die Seite liegt zwischen Portrait und Motorrad und verbindet beide Bildwelten.',
     sectionEmphasis: 'Mensch.',
     sectionHeadline: 'Bike plus',
   }),
@@ -666,7 +666,7 @@ const keywordFocusDefaults: Record<string, KeywordFocusCopy> = {
     feature: 'Headshots brauchen Reduktion: Blick, Licht, Hauttoene und Haltung muessen sofort funktionieren.',
     heroEmphasis: 'klar.',
     heroTitle: 'Headshot Fotograf',
-    intent: 'Die Suchintention ist enger als Portraitfotografie und meist profil- oder pressebezogen.',
+    intent: 'Die Anfrage ist enger als klassische Portraitfotografie und meist profil- oder pressebezogen.',
     output: 'Headshot Fotograf fuer LinkedIn, Website, Presse, Bewerbung, Speaker und Teams.',
     planning: 'Ausschnitt, Hintergrund, Licht, Ausdruck und Dateiformate werden effizient vorbereitet.',
     related: 'Die Seite verweist zu Business Portrait, Personal Branding und Pressefoto.',
@@ -693,7 +693,7 @@ const keywordFocusDefaults: Record<string, KeywordFocusCopy> = {
     intent: 'Suchende wollen bessere Bilder fuer Dating-Apps, Social Media oder private Profile.',
     output: 'Dating Fotoshooting fuer natuerliche Profilbilder ohne steife Studio-Posen.',
     planning: 'Location, Kleidung, Ausdruck, Ganzkoerperbild und Auswahl fuer das Profil werden zusammen geplant.',
-    related: 'Die Seite bleibt im Portrait-Cluster und fuehrt zu Preisen und Portrait Fotoshooting.',
+    related: 'Die Seite bleibt bei Portraits und fuehrt zu Preisen und Portrait Fotoshooting.',
     sectionEmphasis: 'Profil.',
     sectionHeadline: 'Sympathisch im',
   }),
@@ -741,7 +741,7 @@ const keywordFocusDefaults: Record<string, KeywordFocusCopy> = {
     intent: 'Suchende wollen persoenliche Bilder von zwei Menschen oder kleinen Familien.',
     output: 'Paarshooting und Familienshooting fuer ruhige, natuerliche Serien ohne Gruppenfoto-Fokus.',
     planning: 'Konstellation, Ort, Stimmung, Kinder, Licht und Tempo werden entspannt vorbereitet.',
-    related: 'Die Seite bleibt bewusst im Portrait-Cluster und grenzt grosse Gruppen aus.',
+    related: 'Die Seite bleibt bewusst bei Portraits und grenzt grosse Gruppen aus.',
     sectionEmphasis: 'Naehe.',
     sectionHeadline: 'Menschen mit',
   }),
@@ -795,7 +795,7 @@ const keywordFocusDefaults: Record<string, KeywordFocusCopy> = {
   }),
   'landschaftsfotografie-print': simpleKeywordCopy('Landschaftsfotografie Print', {
     cards: ['Motivwahl', 'Material', 'Format', 'Lieferung'],
-    feature: 'Der Print-Intent braucht mehr Material-, Format- und Raumberatung als die allgemeine Landschaftsseite.',
+    feature: 'Print-Anfragen brauchen mehr Material-, Format- und Raumberatung als die allgemeine Landschaftsseite.',
     heroEmphasis: 'Print.',
     heroTitle: 'Landschaftsfotografie',
     intent: 'Suchende wollen Landschaftsbilder als fertigen Druck fuer Wand, Praxis, Hotel oder Sammlung.',
@@ -810,7 +810,7 @@ const keywordFocusDefaults: Record<string, KeywordFocusCopy> = {
     feature: 'Kauf-Suchende brauchen Orientierung zu Motiv, Format, Material und Wirkung im Raum.',
     heroEmphasis: 'kaufen.',
     heroTitle: 'Landschaftsbilder',
-    intent: 'Die Suchintention ist transaktional: ein Bild soll ausgewaehlt und als fertiges Objekt bestellt werden.',
+    intent: 'Hier soll ein Bild ausgewaehlt und als fertiges Objekt bestellt werden.',
     output: 'Landschaftsbilder kaufen als Fine-Art-Print, Wandbild, Edition oder grossformatige Arbeit.',
     planning: 'Raum, Wandgroesse, Farbigkeit, Material und Lieferziel bestimmen die Empfehlung.',
     related: 'Die Seite fuehrt weiter zu Fine-Art-Prints, Wandbildern und Druck/Sonderanfertigung.',
@@ -849,7 +849,7 @@ const keywordFocusDefaults: Record<string, KeywordFocusCopy> = {
     intent: 'Suchende wollen Naturmotive als hochwertige Drucke fuer private oder gewerbliche Raeume.',
     output: 'Naturfotografie Prints fuer Wohnraum, Praxis, Hotel, Buero, Sammlung und Geschenk.',
     planning: 'Motivstimmung, Format, Material, Raumlicht und Lieferziel werden passend ausgewaehlt.',
-    related: 'Die Seite bleibt im Landschafts- und Print-Cluster und verweist zu Wandbildern und Fine-Art-Prints.',
+    related: 'Die Seite bleibt bei Landschaft und Print und verweist zu Wandbildern und Fine-Art-Prints.',
     sectionEmphasis: 'Ruhe.',
     sectionHeadline: 'Natur als',
   }),
@@ -858,7 +858,7 @@ const keywordFocusDefaults: Record<string, KeywordFocusCopy> = {
 const keywordFocusCopies: Record<string, KeywordFocusCopy> = {
   'auto-fotografieren-tipps': {
     heroLead:
-      'Auto fotografieren Tipps: Perspektive, Licht, Reflexe, Location und Details entscheiden, ob ein Fahrzeug wertig wirkt. Diese Seite bleibt im Automobil-Cluster und fuehrt von hilfreichen Grundlagen direkt zu einem professionell geplanten Auto-Shooting.',
+      'Auto fotografieren Tipps: Perspektive, Licht, Reflexe, Location und Details entscheiden, ob ein Fahrzeug wertig wirkt. Von den Grundlagen geht es direkt zu einem professionell geplanten Auto-Shooting, wenn aus Einzelbildern ein nutzbarer Bildsatz werden soll.',
     metaDescription:
       'Auto fotografieren Tipps zu Licht, Perspektive, Reflexen und Details. Professionelle Automobilfotografie fuer private Fahrzeuge, Verkauf und Marke.',
     contactLead:
@@ -867,7 +867,7 @@ const keywordFocusCopies: Record<string, KeywordFocusCopy> = {
     pullHeadline: 'Tipps, die zum',
     pullEmphasis: 'Bildsatz fuehren.',
     pullLead:
-      'Diese Seite beantwortet die Suchintention zuerst hilfreich: Licht, Standort, Brennweite und Reflexe. Danach wird klar, wann ein professionelles Auto-Shooting den Unterschied zwischen Einzelbild und verwendbarer Serie macht.',
+      'Diese Seite beantwortet zuerst praktische Fragen: Licht, Standort, Brennweite und Reflexe. Danach wird klar, wann ein professionelles Auto-Shooting den Unterschied zwischen Einzelbild und verwendbarer Serie macht.',
     sectionHeadline: 'Licht, Linien,',
     sectionEmphasis: 'Reflexe.',
     sectionLead:
@@ -888,7 +888,7 @@ const keywordFocusCopies: Record<string, KeywordFocusCopy> = {
       { label: 'Marke', title: 'Professionelle Serie', text: 'Wenn ein Fahrzeug wiederholt eingesetzt wird, braucht die Bildsprache System statt Zufall.' },
     ],
     relatedLead:
-      'Auto fotografieren Tipps sind der Einstieg in den Cluster. Von hier fuehrt die interne Struktur zu konkreten Shooting-Seiten, Verkaufsbildern und spezialisierten Fahrzeugbereichen.',
+      'Auto fotografieren Tipps sind der Einstieg in bessere Fahrzeugbilder. Von hier fuehren die passenden Links zu konkreten Shootings, Verkaufsbildern und spezialisierten Fahrzeugbereichen.',
   },
   'auto-fotoshooting': {
     heroLead:
@@ -922,7 +922,7 @@ const keywordFocusCopies: Record<string, KeywordFocusCopy> = {
       { label: 'Sammlung', title: 'Archiv', text: 'Ruhige Serien fuer Sammlerfahrzeuge, Umbauten oder besondere Fahrzeuggeschichten.' },
     ],
     relatedLead:
-      'Auto-Fotoshooting bleibt die breite Einstiegsseite. Wer spezieller sucht, findet im Cluster separate Seiten fuer Bilder mit Auto, Fotoshooting mit Auto, Sportwagen, Oldtimer und Motorrad.',
+      'Auto-Fotoshooting bleibt der breite Einstieg. Wer spezieller sucht, findet eigene Seiten fuer Bilder mit Auto, Fotoshooting mit Auto, Sportwagen, Oldtimer und Motorrad.',
   },
   'bilder-mit-auto': {
     heroLead:
@@ -935,7 +935,7 @@ const keywordFocusCopies: Record<string, KeywordFocusCopy> = {
     pullHeadline: 'Bilder mit Auto,',
     pullEmphasis: 'nicht nur vom Auto.',
     pullLead:
-      'Diese Suchintention ist breiter als klassische Automobilfotografie. Hier geht es oft um Besitzer, Paar, Geschenk, Social Content oder eine Geschichte, in der das Fahrzeug Teil der Identitaet ist.',
+      'Diese Anfrage ist breiter als klassische Automobilfotografie. Hier geht es oft um Besitzer, Paar, Geschenk, Social Content oder eine Geschichte, in der das Fahrzeug Teil der Identitaet ist.',
     sectionHeadline: 'Fahrzeug, Person,',
     sectionEmphasis: 'Szene.',
     sectionLead:
@@ -956,11 +956,11 @@ const keywordFocusCopies: Record<string, KeywordFocusCopy> = {
       { label: 'Paar', title: 'Gemeinsame Bilder', text: 'Wenn Auto, Menschen und Location zusammen eine kleine Strecke ergeben sollen.' },
     ],
     relatedLead:
-      'Bilder mit Auto verbindet Portrait- und Automobil-Suchintention. Deshalb fuehrt die Seite intern zu Auto-Fotoshooting, Portrait und spezialisierten Fahrzeugbereichen.',
+      'Bilder mit Auto verbindet Portrait- und Automobilfotografie. Deshalb fuehrt die Seite zu Auto-Fotoshooting, Portrait und spezialisierten Fahrzeugbereichen.',
   },
   'fotoshooting-mit-auto': {
     heroLead:
-      'Fotoshooting mit Auto: ideal fuer Lieblingsfahrzeuge, Sportwagen, Oldtimer, Geschenkideen und Content-Serien. Die Seite nutzt das Automobil-Layout und setzt den Text gezielt auf die Suchintention rund um Auto und Shooting.',
+      'Fotoshooting mit Auto: ideal fuer Lieblingsfahrzeuge, Sportwagen, Oldtimer, Geschenkideen und Content-Serien. Die Seite verbindet Fahrzeug, Mensch und Anlass zu einer planbaren Shootingstrecke.',
     metaDescription:
       'Fotoshooting mit Auto fuer private Fahrzeuge, Sportwagen, Oldtimer und Content. Professionelle Automobilfotografie in Duesseldorf und NRW.',
     contactLead:
@@ -982,7 +982,7 @@ const keywordFocusCopies: Record<string, KeywordFocusCopy> = {
       'Die Motive zeigen, wie Hauptbild, Details, Innenraum und Atmosphaere als kleine Strecke zusammenspielen koennen.',
     audienceHeadline: 'Passend fuer Anlass und Nutzung.',
     audienceLead:
-      'Die Seite holt Geschenk-, Privat- und Content-Suchen ab und fuehrt sie in den professionellen Automobil-Cluster.',
+      'Die Seite holt Geschenk-, Privat- und Content-Anfragen ab und fuehrt sie in eine professionell geplante Automobilserie.',
     cards: [
       { label: 'Privat', title: 'Lieblingsauto', text: 'Ein persoenlicher Bildsatz fuer Erinnerung, Wandbild oder Social-Profil.' },
       { label: 'Geschenk', title: 'Gutscheinidee', text: 'Ein Shooting, das beim Einloesen flexibel auf Person und Fahrzeug abgestimmt wird.' },
@@ -990,7 +990,7 @@ const keywordFocusCopies: Record<string, KeywordFocusCopy> = {
       { label: 'Besonderes Auto', title: 'Sportwagen & Oldtimer', text: 'Fahrzeuge mit Charakter bekommen mehr Raum fuer Details, Linien und Geschichte.' },
     ],
     relatedLead:
-      'Fotoshooting mit Auto sitzt bewusst unter Automobilfotografie, verbindet aber zu Gutschein-, Portrait- und Sportwagen-Seiten, weil die Suchintention haeufig gemischt ist.',
+      'Fotoshooting mit Auto sitzt bewusst unter Automobilfotografie und verbindet zu Gutschein-, Portrait- und Sportwagen-Seiten, weil Anlass, Person und Fahrzeug haeufig zusammengehoeren.',
   },
   'motorsport-fotografie': {
     heroLead:
@@ -1022,7 +1022,7 @@ const keywordFocusCopies: Record<string, KeywordFocusCopy> = {
       { label: 'Privat', title: 'Performance Cars', text: 'Sportliche Fahrzeuge mit Bewegung, Standbild und Materialdetails.' },
     ],
     relatedLead:
-      'Motorsport Fotografie fuehrt Nutzer in den Sportwagen-Cluster, bleibt aber eigenstaendig: Action, Event und Trackday haben eine andere Suchintention als ein ruhiges Sportwagen-Shooting.',
+      'Motorsport Fotografie fuehrt zu Sportwagen und Performance Cars, bleibt aber eigenstaendig: Action, Event und Trackday brauchen eine andere Bildsprache als ein ruhiges Sportwagen-Shooting.',
   },
   'motorsport-sportwagen-fotografie': {
     heroLead:
@@ -1072,7 +1072,7 @@ const keywordFocusCopies: Record<string, KeywordFocusCopy> = {
     sectionHeadline: 'Vom privaten Bild bis zum',
     sectionEmphasis: 'Auftritt.',
     sectionLead:
-      'Diese Seite sammelt die breiten Portrait-Suchintentionen und fuehrt sie in klare Shooting-Module, ohne Passbild- oder Studio-Massenware zu bedienen.',
+      'Diese Seite sammelt die breiten Portrait-Anfragen und fuehrt sie in klare Shooting-Module, ohne Passbild- oder Studio-Massenware zu bedienen.',
     cards: [
       { label: '01 · Profil', title: 'Profilbilder', text: 'Klare Portraits fuer Website, LinkedIn, Dating oder Social Media mit passender Bildwirkung.' },
       { label: '02 · Privat', title: 'Persoenliche Serie', text: 'Ruhige Bilder fuer Menschen, die ein gutes Portrait von sich moechten, ohne kuenstlich zu wirken.' },
@@ -1091,7 +1091,7 @@ const keywordFocusCopies: Record<string, KeywordFocusCopy> = {
       { title: 'Fertig liefern', text: 'Die finalen Dateien kommen passend fuer Web, Social, Print oder persoenliche Nutzung.' },
     ],
     relatedLead:
-      'Portrait Fotoshooting bleibt die breite Einstiegsseite. Die Unterseiten fuer Dating, Gutschein, Preise, Schwarz-Weiss und Beleuchtung fangen enger gefasste Suchintentionen ab.',
+      'Portrait Fotoshooting bleibt die breite Einstiegsseite. Die Unterseiten fuer Dating, Gutschein, Preise, Schwarz-Weiss und Beleuchtung greifen enger gefasste Anliegen auf.',
   },
   'portraitfotografie-beleuchtung': {
     heroLead:
@@ -1165,7 +1165,7 @@ const keywordFocusCopies: Record<string, KeywordFocusCopy> = {
       { title: 'Profilauswahl liefern', text: 'Du bekommst bearbeitete Bilder, die fuer App, Social und private Nutzung funktionieren.' },
     ],
     relatedLead:
-      'Dating Fotoshooting ist eine eigene Suchintention im Portrait-Cluster. Von hier fuehren interne Links zu Portrait Fotoshooting, Preisen und Gutschein, ohne Passfoto-Themen aufzunehmen.',
+      'Dating Fotoshooting ist eine eigene Portrait-Anfrage. Von hier fuehren Links zu Portrait Fotoshooting, Preisen und Gutschein, ohne Passfoto-Themen aufzunehmen.',
   },
   'fotoshooting-gutschein': {
     heroLead:
@@ -1220,7 +1220,7 @@ const keywordFocusCopies: Record<string, KeywordFocusCopy> = {
     sectionHeadline: 'Was den Umfang',
     sectionEmphasis: 'veraendert.',
     sectionLead:
-      'Die Preis-Suchintention wird transparent abgeholt: nicht mit einer langen Paketliste, sondern mit Kriterien, die fuer eine serioese Anfrage wirklich zaehlen.',
+      'Preisfragen werden transparent beantwortet: nicht mit einer langen Paketliste, sondern mit Kriterien, die fuer eine serioese Anfrage wirklich zaehlen.',
     cards: [
       { label: '01 · Art', title: 'Shootingtyp', text: 'Portrait, Paar, Familie, Auto oder Sportwagen haben unterschiedliche Vorbereitung und Bildlogik.' },
       { label: '02 · Ort', title: 'Location', text: 'Anfahrt, Genehmigung, Lichtfenster und Setup beeinflussen den Aufwand.' },
@@ -1257,7 +1257,7 @@ const keywordFocusCopies: Record<string, KeywordFocusCopy> = {
     sectionHeadline: 'Paar, kleine Familie,',
     sectionEmphasis: 'echte Momente.',
     sectionLead:
-      'Diese Seite verbindet zwei Suchintentionen, ohne sie zu verwaessern: Paarbilder und kleine Familienshootings mit natuerlicher Regie.',
+      'Diese Seite verbindet zwei nahe Anlaesse, ohne sie zu verwaessern: Paarbilder und kleine Familienshootings mit natuerlicher Regie.',
     cards: [
       { label: '01 · Paar', title: 'Zu zweit', text: 'Ruhige Motive, die Verbindung zeigen, ohne kitschig oder gestellt zu wirken.' },
       { label: '02 · Familie', title: 'Kleine Familien', text: 'Natuerliche Serien mit Kindern oder Eltern, bei denen Bewegung erlaubt bleibt.' },
@@ -1276,7 +1276,7 @@ const keywordFocusCopies: Record<string, KeywordFocusCopy> = {
       { title: 'Serie liefern', text: 'Die finalen Bilder werden als zusammenhaengende Erinnerung bearbeitet.' },
     ],
     relatedLead:
-      'Paarshooting und Familienshooting bleibt bewusst im Portrait-Cluster und grenzt sich von Gruppen- und Passbildsuchen ab.',
+      'Paarshooting und Familienshooting bleibt bewusst bei Portraits und grenzt sich von Gruppen- und Passbildsuchen ab.',
   },
   'schwarz-weiss-portrait-fotografie': {
     heroLead:
@@ -1331,7 +1331,7 @@ const keywordFocusCopies: Record<string, KeywordFocusCopy> = {
     sectionHeadline: 'Vom Einzelportrait bis zum',
     sectionEmphasis: 'Team.',
     sectionLead:
-      'Diese Seite buendelt die Business-Portrait-Suchintention und fuehrt sie in klare Module fuer Person, Fuehrung, Team und Marke - ohne in Passbild- oder Studio-Massenware abzurutschen.',
+      'Diese Seite buendelt Business-Portraits fuer Person, Fuehrung, Team und Marke - ohne in Passbild- oder Studio-Massenware abzurutschen.',
     cards: [
       { label: '01 · Person', title: 'Einzelportrait', text: 'Hochwertige Portraits fuer Website, LinkedIn und Profil mit klarer, professioneller Wirkung.' },
       { label: '02 · Fuehrung', title: 'Geschaeftsfuehrung', text: 'Portraits fuer Fuehrungsebene, Aufsichtsrat und Presse mit ruhiger Autoritaet.' },
@@ -1367,7 +1367,7 @@ const keywordFocusCopies: Record<string, KeywordFocusCopy> = {
     sectionHeadline: 'Sauber, einheitlich,',
     sectionEmphasis: 'wiedererkennbar.',
     sectionLead:
-      'Diese Seite bedient die Headshot-Suchintention bewusst eng: professionelle Profilbilder, kein verkleidetes Konzept-Shooting.',
+      'Diese Seite bleibt bewusst eng: professionelle Profilbilder, kein verkleidetes Konzept-Shooting.',
     cards: [
       { label: '01 · Profil', title: 'LinkedIn & Web', text: 'Klare Headshots, die auf Profilen und Teamseiten sofort professionell wirken.' },
       { label: '02 · Team', title: 'Einheitlicher Look', text: 'Gleiches Licht, gleicher Hintergrund, gleicher Ausschnitt ueber alle Personen.' },
@@ -1722,7 +1722,7 @@ export const localSeoFamilyContent: Record<LocalSeoLayoutFamily, LocalSeoFamilyC
     introHeadline: 'Bilder mit Druckqualität.',
     introParagraphs: [
       'Sportwagen brauchen Präzision statt Effektfeuerwerk: niedrige Blickachsen, kontrollierte Reflexe und Details, die Leistung sichtbar machen.',
-      'Die lokale Variante bleibt Teil derselben visuellen Familie und setzt nur Ort, Suchintention und Anfrage-Kontext gezielt um.',
+      'Die lokale Variante bleibt Teil derselben visuellen Familie und setzt Ort, Anlass und Anfrage-Kontext gezielt um.',
     ],
     label: 'Sportwagen',
     moduleHeadline: 'Das Auto, aus jedem Winkel.',
@@ -1820,7 +1820,7 @@ export const localSeoFamilyContent: Record<LocalSeoLayoutFamily, LocalSeoFamilyC
     introHeadline: 'Geschwindigkeit und Leidenschaft auf Bildern.',
     introParagraphs: [
       'Ein Motorrad muss auch im Stand Spannung tragen: Mechanik, Material, Silhouette und Haltung werden als kraftvolle Serie geplant.',
-      'Die lokale Seite bleibt im Motorrad-Layout und passt Standort, Suchintention und Anfrage sauber an.',
+      'Die lokale Seite bleibt im Motorrad-Layout und passt Standort, Anlass und Anfrage sauber an.',
     ],
     label: 'Motorrad',
     moduleHeadline: 'Vom Detail bis zur Kurve.',

@@ -339,15 +339,15 @@ const supportArticles: JournalArticle[] = [
         kicker: '03',
         title: 'Zugang und Stoerungen planen',
         paragraphs: [
-          'Parken, Publikumsverkehr, Genehmigungen und Wetteroptionen sind technische SEO-fremde, aber fotografisch entscheidende Faktoren. Eine starke Serie entsteht leichter, wenn diese Reibung vorher geloest ist.',
+          'Parken, Publikumsverkehr, Genehmigungen und Wetteroptionen sind organisatorische, aber fotografisch entscheidende Faktoren. Eine starke Serie entsteht leichter, wenn diese Reibung vorher geloest ist.',
         ],
       },
       {
         id: 'abschnitt-4',
         kicker: '04',
-        title: 'Ort und Suchintention verbinden',
+        title: 'Ort und Auftrag verbinden',
         paragraphs: [
-          'Fuer lokale SEO-Seiten ist Location nicht nur ein Keyword. Sie muss zeigen, warum ein Auftrag in Duesseldorf, NRW oder einer konkreten Stadt sinnvoll geplant werden kann. Ein guter Ort ergaenzt deshalb die Suchintention: Er macht sichtbar, ob es um Verkauf, Markenwirkung, persoenliche Praesenz oder eine ruhige redaktionelle Serie geht.',
+          'Eine Location ist nicht nur ein Name auf der Karte. Sie muss zeigen, warum ein Auftrag in Duesseldorf, NRW oder einer konkreten Stadt sinnvoll geplant werden kann. Ein guter Ort unterstuetzt die Bildaufgabe: Verkauf, Markenwirkung, persoenliche Praesenz oder eine ruhige redaktionelle Serie.',
         ],
       },
     ],

@@ -86,14 +86,14 @@ const splitTrailingEmphasis = (headline: string, emphasis: string) => {
 const cmsHeroLine2 = cmsText(doc?.heroLine2)
 const cmsStatementBody = doc?.statement?.body?.map((entry) => cmsText(entry.text)).filter(Boolean) || []
 const localSuffix = !isParentPage && !isKeywordPage ? ` ${scope.label}` : ''
-const heroTitle = !isParentPage && !isKeywordPage ? `${serviceLabel} ${scope.label}` : keywordFocusCopy?.heroTitle || 'Automobil'
-const heroSecondLine = isLocalCityPage ? '' : cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || `Fotografie${localSuffix}.`
+const heroTitle = isLocalCityPage ? serviceLabel : keywordFocusCopy?.heroTitle || 'Automobil'
+const heroSecondLine = isLocalCityPage ? scope.label : cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || `Fotografie${localSuffix}.`
 const heroLocalNote = isLocalCityPage ? cmsHeroLine2 : ''
 const heroLabel = isParentPage ? 'Automobilfotografie' : `Automobilfotografie${localSuffix}`
 const defaultHeroLead = isParentPage
   ? 'Automobilfotografie: Exterieur, Interieur, Details und Cinematic werden als kuratierte Bildserie geplant - für Marke, Showroom, Verkauf, Kampagne und hochwertige private Fahrzeuge. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.'
   : isKeywordPage
-    ? `${serviceLabel}: eigenständiger Einstieg in den Automobil Fotografie-Cluster. Exterieur, Interieur, Details und Cinematic werden als kuratierte Serie geplant - für Marke, Showroom, Verkauf, Kampagne und hochwertige private Fahrzeuge. Die Seite bleibt bewusst im Layout der übergeordneten Kategorie, setzt den Text aber auf diese konkrete Suchintention.`
+    ? `${serviceLabel}: eigenständiger Einstieg in die Automobilfotografie. Exterieur, Interieur, Details und Cinematic werden als kuratierte Serie geplant - für Marke, Showroom, Verkauf, Kampagne und hochwertige private Fahrzeuge. Die Seite bleibt bewusst im Layout der übergeordneten Kategorie, ist aber klar auf dieses Motiv und diese Nutzung formuliert.`
     : `Automobilfotografie in ${scope.label}: Exterieur, Interieur, Details und Cinematic werden als kuratierte Bildserie geplant - für Marke, Showroom, Verkauf, Kampagne und hochwertige private Fahrzeuge. ${cityScopePhrase(scope)}`
 const keywordLocalContext = keywordFocusCopy && !isParentPage && !isKeywordPage ? ` ${cityScopePhrase(scope)}` : ''
 const heroLead = keywordFocusCopy?.heroLead ? `${keywordFocusCopy.heroLead}${keywordLocalContext}` : defaultHeroLead
@@ -352,7 +352,7 @@ const focusPullLead =
   keywordFocusCopy?.pullLead ||
   (isParentPage
     ? 'Vom ehrlichen Verkaufsbild bis zur inszenierten Kampagne - eine konsistente Bildserie, sauber belichtet und sofort einsatzbereit fuer Inserat, Magazin, Social und Print.'
-    : `${serviceLabel} wird als eigenstaendige Suchintention gefuehrt, bleibt aber in der Automobil-Struktur: Fahrzeug, Licht, Nutzung und Ausgabe werden vor dem Shooting sauber geplant.`)
+    : `${serviceLabel} bekommt eine eigene Seite in der Automobil-Struktur: Fahrzeug, Licht, Nutzung und Ausgabe werden vor dem Shooting sauber geplant.`)
 const focusPullRest = cmsStatementBody.slice(1)
 const focusSectionHeadline = isLocalCityPage ? `${serviceLabel} in ${scope.label},` : keywordFocusCopy?.sectionHeadline || (isParentPage ? 'Ein Bildsatz,' : `${serviceLabel},`)
 const focusSectionEmphasis = isLocalCityPage ? 'lokal geplant.' : keywordFocusCopy?.sectionEmphasis || (isParentPage ? 'vier Blickwinkel.' : 'klar fokussiert.')
@@ -370,9 +370,9 @@ const focusAudiences = localAudienceCards.length
   : audiences
 const focusRelatedLead =
   isLocalCityPage
-    ? `Automobil Fotografie ${scope.label} bleibt der Hub fuer Fahrzeugbilder vor Ort. Sportwagen, Oldtimer, Motorrad und Auto-Fotoshooting werden intern getrennt verlinkt, damit Suchintentionen nicht gegeneinander laufen.`
+    ? `Automobil Fotografie ${scope.label} bleibt der Einstieg fuer Fahrzeugbilder vor Ort. Sportwagen, Oldtimer, Motorrad und Auto-Fotoshooting werden als eigene Bereiche verlinkt, damit Nutzer schneller zum passenden Angebot finden.`
     : keywordFocusCopy?.relatedLead ||
-      'Automobil ist die Klammer. Schau dir die spezialisierten Disziplinen an - gleicher Anspruch, anderer Bildfokus. Diese Kategorie ist Teil eines bewusst getrennten Fotografie-Clusters: Fahrzeug, Mensch und Raum bleiben eigenstaendige Suchintentionen, sind aber intern so verbunden, dass Nutzer schnell in den passenden Bildbereich wechseln koennen.'
+      'Automobil ist die Klammer. Schau dir die spezialisierten Disziplinen an - gleicher Anspruch, anderer Bildfokus. Die Links fuehren schnell zu der Bildwelt, die zum Fahrzeug, zur Nutzung und zum geplanten Shooting passt.'
 
 const cityLinks = [
   ['automobil-fotografie.html', 'Düsseldorf'],

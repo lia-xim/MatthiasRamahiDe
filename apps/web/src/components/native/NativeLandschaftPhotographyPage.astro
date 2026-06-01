@@ -12,6 +12,7 @@ import { mergeAuthoredLocalSeoContent } from '../../lib/authoredSeoContent'
 import { keywordFocusCopyForSlug } from '../../lib/localSeoFamilyContent'
 import { familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
 import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
+import { splitTrailingEmphasis } from '../../lib/splitTrailingEmphasis'
 
 type Props = {
   doc?: PayloadDoc | null
@@ -47,8 +48,10 @@ const cmsText = (value: unknown) => (typeof value === 'string' ? value.trim() : 
 const cmsHeroLine2 = cmsText(doc?.heroLine2)
 const cmsStatementBody = doc?.statement?.body?.map((entry) => cmsText(entry.text)).filter(Boolean) || []
 const heroLabel = isParentPage || isKeywordPage ? 'Landschaftsfotografie' : `Landschaftsfotografie ${scope.label}`
-const heroTitle = !isParentPage && !isKeywordPage ? `${serviceLabel} ${scope.label}` : keywordFocusCopy?.heroTitle || 'Landschaft'
-const heroSecondLine = !isParentPage && !isKeywordPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Licht. Raum. Print.' : cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Fotografie.'
+const isLocalHeroPage = !isParentPage && !isKeywordPage
+const heroTitle = isLocalHeroPage ? serviceLabel : keywordFocusCopy?.heroTitle || 'Landschaft'
+const heroSecondLine = isLocalHeroPage ? scope.label : cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Fotografie.'
+const heroLocalNote = isLocalHeroPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Licht. Raum. Print.' : ''
 const defaultHeroLead = isParentPage
   ? 'Landschaftsfotografie: Licht, Weite, Material und Raumwirkung werden kuratiert — als Fine-Art-Print, Wandbild, Edition oder großformatige Arbeit für Räume mit Ruhe. Bundesweit zählt vor allem die passende Motivwahl, Druckqualität, Materialität und Wirkung im Raum.'
   : isKeywordPage
@@ -111,6 +114,7 @@ const heroImages = visualSlots.slice(0, 5).map((slot) => slot.full).join(',')
 
 const focusIntroHeadline = cmsText(doc?.statement?.headline) || keywordFocusCopy?.pullHeadline || (isParentPage || isKeywordPage ? 'Bilder, die einen' : `Landschaft fuer ${scope.label}`)
 const focusIntroEmphasis = cmsText(doc?.statement?.emphasis) || keywordFocusCopy?.pullEmphasis || (isParentPage || isKeywordPage ? 'Raum veraendern.' : 'als Raumwirkung.')
+const focusIntroTitle = splitTrailingEmphasis(focusIntroHeadline, focusIntroEmphasis)
 const focusIntroParagraphs = cmsStatementBody.length
   ? cmsStatementBody
   : keywordFocusCopy?.statementBody?.length
@@ -122,7 +126,7 @@ const focusIntroParagraphs = cmsStatementBody.length
     ]
       : [
       `Landschaftsfotografie fuer ${scope.label} wird nicht als Termin vor Ort verkauft, sondern als kuratierte Bild- und Printauswahl fuer Raeume, Marken und private Sammlungen verstanden.`,
-      `Der lokale Bezug hilft der Suchintention: Menschen in ${scope.label} suchen Wandbilder, Fine-Art-Prints oder ruhige Bildraeume, die zu Wohnung, Praxis, Hotel oder Buero passen.`,
+      `Der lokale Bezug macht die Anfrage konkreter: Menschen in ${scope.label} suchen Wandbilder, Fine-Art-Prints oder ruhige Bildraeume, die zu Wohnung, Praxis, Hotel oder Buero passen.`,
     ]
 const focusModuleHeadline = keywordFocusCopy?.sectionHeadline || (isParentPage || isKeywordPage ? 'Vier Ausfuehrungen.' : `Ausfuehrungen fuer ${scope.label}.`)
 const focusModuleLead = isParentPage || isKeywordPage
@@ -152,8 +156,8 @@ const focusProcessLead = isParentPage || isKeywordPage
   ? keywordFocusCopy?.processLead || 'Jedes Bild aus dem Portfolio, in jedem Format, mit oder ohne Rahmen - auf Anfrage gefertigt und zu Ihnen geliefert.'
   : `Motiv, Format, Material und Lieferziel werden fuer ${scope.label} abgestimmt, damit der Print im Raum ruhig und hochwertig wirkt.`
 const focusRelatedLead = isParentPage || isKeywordPage
-  ? keywordFocusCopy?.relatedLead || 'Diese Kategorie ist Teil eines bewusst getrennten Fotografie-Clusters: Fahrzeug, Mensch und Raum bleiben eigenstaendige Suchintentionen, sind aber intern so verbunden, dass Nutzer schnell in den passenden Bildbereich wechseln koennen.'
-  : `Landschaftsfotografie ${scope.label} bleibt im Raum- und Print-Cluster. Von hier fuehren die Links zu Portrait, Oldtimer, Druck und Portfolio, ohne die Suchintention zu verwischen.`
+  ? keywordFocusCopy?.relatedLead || 'Fahrzeug, Mensch und Raum bleiben eigene Bildbereiche. Die Links fuehren schnell zu der Seite, die zum Motiv, zur Nutzung und zum geplanten Projekt passt.'
+  : `Landschaftsfotografie ${scope.label} fuehrt zu Portrait, Oldtimer, Druck und Portfolio, ohne den Fokus auf Raum, Print und Motiv zu verwischen.`
 
 const cityLinks = [
   ['landschaftsfotografie.html', 'Düsseldorf'],
@@ -252,6 +256,7 @@ const searchLinks = [
           <span class="l"><span class="w">{heroTitle}</span></span>
           <span class="l"><span class="w">{heroSecondLine}</span></span>
         </h1>
+        {heroLocalNote && <p class="hero-ls__local-note">{heroLocalNote}</p>}
         <p class="hero-ls__sub">{doc?.intro || heroLead}</p>
         <div class="hero-ls__actions">
           <a class="btn primary" href="#anfrage">Landschafts-Serie anfragen →</a>
@@ -264,7 +269,11 @@ const searchLinks = [
 
     <section class="st-ls" data-header-theme="light">
       <div class="st-ls__inner">
-        <h2 class="st-ls__title">{focusIntroHeadline} <em>{focusIntroEmphasis}</em></h2>
+        <h2 class="st-ls__title">
+          {focusIntroTitle.headline}
+          {focusIntroTitle.headline && focusIntroTitle.emphasis ? ' ' : ''}
+          {focusIntroTitle.emphasis && <em>{focusIntroTitle.emphasis}</em>}
+        </h2>
         <div class="st-ls__body">
           {focusIntroParagraphs.map((paragraph) => <p>{paragraph}</p>)}
           <a class="st-ls__cta" href="#anfrage">Projekt anfragen →</a>

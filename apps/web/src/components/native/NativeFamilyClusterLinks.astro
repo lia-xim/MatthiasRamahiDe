@@ -18,15 +18,14 @@ const { clusterHeading, clusterLinks, overviewHref, scopeLabel } = Astro.props a
   class="mr-cities mr-photo-cluster"
   data-header-theme="light"
   data-theme="light"
-  aria-label={`Fotografie-Cluster ${scopeLabel}`}
+  aria-label={`Verwandte Fotografie-Bereiche ${scopeLabel}`}
 >
   <div class="mr-cities__inner">
     <div class="mr-cities__head">
       <h2 set:html={clusterHeading}></h2>
       <p class="mr-cities__copy">
-        Diese Kategorie ist Teil eines bewusst getrennten Fotografie-Clusters: Fahrzeug, Mensch und Raum bleiben
-        eigenständige Suchintentionen, sind aber intern so verbunden, dass Nutzer schnell in den passenden Bildbereich
-        wechseln können.
+        Fahrzeug, Mensch und Raum bleiben eigene Bildbereiche. Die Links führen schnell zu der Seite, die zum Motiv,
+        zur Nutzung und zum geplanten Shooting passt.
       </p>
     </div>
     <nav class="mr-cities__grid" aria-label="Verwandte Fotografie-Bereiche">

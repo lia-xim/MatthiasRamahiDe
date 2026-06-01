@@ -84,6 +84,18 @@ const authoredTextVisible = (mainText, sourceText, signatureLength = 9) => {
   return meaningfulLine(mainText).includes(sig.join(' '))
 }
 const authoredIntroVisible = (mainText, intro) => authoredTextVisible(mainText, intro, 9)
+const authoredStatementText = (statement) => {
+  if (!statement) return ''
+  const headline = statement.headline || ''
+  const emphasis = statement.emphasis || ''
+  const headlineWords = toWords(headline)
+  const emphasisWords = toWords(emphasis)
+  const emphasisAlreadyInHeadline =
+    headlineWords.length >= emphasisWords.length &&
+    emphasisWords.length > 0 &&
+    headlineWords.slice(-emphasisWords.length).join(' ') === emphasisWords.join(' ')
+  return [headline, emphasisAlreadyInHeadline ? '' : emphasis, ...(statement.body || [])].filter(Boolean).join(' ')
+}
 
 const geoOf = (file) => { const slug = file.replace(/\.html$/, ''); for (const t of cityTokens) if (slug === t || slug.endsWith('-' + t)) return t; return 'generic' }
 const sigText = (e) => [e.intro, e.statement?.headline, e.statement?.emphasis, ...(e.statement?.body || []), ...(e.audienceCards || []).flatMap((c) => [c.title, c.text]), ...(e.localFaq || []).flatMap((f) => [f.question, f.answer])].filter(Boolean).join(' ')
@@ -268,7 +280,7 @@ const buildAuditRows = rows.map((r) => {
     if (r.kind === 'city' && !cityVisibleInText(page.h1Primary, r.scope)) issues.push('H1-Hauptzeile ohne Ort')
     if (r.kind === 'city' && sc?.e?.seo?.description && cityVisibleInText(sc.e.seo.description, r.scope) && !cityVisibleInText(page.description, r.scope)) issues.push('Desc ohne Ort')
     if (sc?.e?.intro && !authoredIntroVisible(page.mainText, sc.e.intro)) issues.push('Intro fehlt im HTML')
-    const statementText = [sc?.e?.statement?.headline, sc?.e?.statement?.emphasis, ...(sc?.e?.statement?.body || [])].filter(Boolean).join(' ')
+    const statementText = authoredStatementText(sc?.e?.statement)
     if (statementText && !authoredTextVisible(page.mainText, statementText, 8)) issues.push('Statement fehlt im HTML')
     const audienceText = (sc?.e?.audienceCards || []).slice(0, 2).map((card) => `${card.title || ''} ${card.text || ''}`).join(' ')
     if (audienceText && !authoredTextVisible(page.mainText, audienceText, 8)) issues.push('Audience fehlt im HTML')

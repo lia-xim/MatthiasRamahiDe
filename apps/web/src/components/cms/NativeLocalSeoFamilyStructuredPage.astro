@@ -181,7 +181,7 @@ Astro.response.headers.set('x-cms-layout-parent', familyContent.parentLegacyFile
       <div class="local-native__inner">
         <div class="local-native__section-head">
           <h2>Verwandte <em>Bereiche.</em></h2>
-          <p>Die lokalen Seiten erben die Art Direction der passenden Hauptkategorie und verlinken die übrigen Fotografie-Cluster bewusst weiter.</p>
+          <p>Die lokalen Seiten erben die Art Direction der passenden Hauptkategorie und verlinken bewusst zu verwandten Fotografie-Bereichen.</p>
         </div>
         <div class="local-native__related-grid">
           {relatedItems.map((item) => (
@@ -194,11 +194,11 @@ Astro.response.headers.set('x-cms-layout-parent', familyContent.parentLegacyFile
       </div>
     </section>
 
-    <section class="mr-cities mr-photo-cluster" data-header-theme="light" data-theme="light" aria-label={scope.generic ? 'Fotografie-Cluster' : `Fotografie-Cluster ${scope.label}`}>
+    <section class="mr-cities mr-photo-cluster" data-header-theme="light" data-theme="light" aria-label={scope.generic ? 'Verwandte Fotografie-Bereiche' : `Verwandte Fotografie-Bereiche ${scope.label}`}>
       <div class="mr-cities__inner">
         <div class="mr-cities__head">
           <h2>Weitere Fotografie-Bereiche{!scope.generic && <> <em>{scope.label}.</em></>}</h2>
-          <p class="mr-cities__copy">Jede lokale Seite nutzt eine der sechs Hauptfamilien als Layout-Basis. So bleiben Suchintention, Gestaltung und redaktionelle Pflege sauber getrennt.</p>
+          <p class="mr-cities__copy">Jede lokale Seite nutzt eine der sechs Hauptfamilien als Layout-Basis. So bleiben Motiv, Gestaltung und redaktionelle Pflege sauber getrennt.</p>
         </div>
         <nav class="mr-cities__grid" aria-label="Verwandte Fotografie-Bereiche">
           <a class="mr-cities__cell" href={overviewHref}>Fotografie Übersicht</a>

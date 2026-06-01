@@ -12,6 +12,7 @@ import { mergeAuthoredLocalSeoContent } from '../../lib/authoredSeoContent'
 import { keywordFocusCopyForSlug } from '../../lib/localSeoFamilyContent'
 import { familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
 import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
+import { splitTrailingEmphasis } from '../../lib/splitTrailingEmphasis'
 
 type Props = {
   doc?: PayloadDoc | null
@@ -47,12 +48,14 @@ const cmsText = (value: unknown) => (typeof value === 'string' ? value.trim() : 
 const cmsHeroLine2 = cmsText(doc?.heroLine2)
 const cmsStatementBody = doc?.statement?.body?.map((entry) => cmsText(entry.text)).filter(Boolean) || []
 const heroLabel = isParentPage || isKeywordPage ? 'Portraitfotografie' : `Portraitfotografie ${scope.label}`
-const heroTitle = !isParentPage && !isKeywordPage ? `${serviceLabel} ${scope.label}` : keywordFocusCopy?.heroTitle || 'Portrait'
-const heroEmphasis = !isParentPage && !isKeywordPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Portrait vor Ort.' : cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Fotografie.'
+const isLocalHeroPage = !isParentPage && !isKeywordPage
+const heroTitle = isLocalHeroPage ? serviceLabel : keywordFocusCopy?.heroTitle || 'Portrait'
+const heroEmphasis = isLocalHeroPage ? scope.label : cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Fotografie.'
+const heroLocalNote = isLocalHeroPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Portrait vor Ort.' : ''
 const defaultHeroLead = isParentPage
   ? 'Portraitfotografie: Blick, Licht, Distanz und Haltung werden auf Nutzung und Persönlichkeit abgestimmt — für Personal Branding, Business Portraits, Team, Presse und Editorial. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.'
   : isKeywordPage
-    ? `${serviceLabel}: eigenständiger Einstieg in den Portrait Fotografie-Cluster. Blick, Licht, Distanz und Haltung werden auf Nutzung und Persönlichkeit abgestimmt - für Personal Branding, Business Portraits, Team, Presse und Editorial. Die Seite bleibt bewusst im Layout der übergeordneten Kategorie, setzt den Text aber auf diese konkrete Suchintention.`
+    ? `${serviceLabel}: eigenständiger Einstieg in die Portraitfotografie. Blick, Licht, Distanz und Haltung werden auf Nutzung und Persönlichkeit abgestimmt - für Personal Branding, Business Portraits, Team, Presse und Editorial. Die Seite bleibt bewusst im Layout der übergeordneten Kategorie, ist aber klar auf dieses Motiv und diese Nutzung formuliert.`
     : `Portraitfotografie in ${scope.label}: Blick, Licht, Distanz und Haltung werden auf Nutzung und Persönlichkeit abgestimmt - für Personal Branding, Business Portraits, Team, Presse und Editorial. ${localScopePhrase(scope)}`
 const keywordLocalContext = keywordFocusCopy && !isParentPage && !isKeywordPage ? ` ${localScopePhrase(scope)}` : ''
 const heroLead = keywordFocusCopy?.heroLead ? `${keywordFocusCopy.heroLead}${keywordLocalContext}` : defaultHeroLead
@@ -155,6 +158,7 @@ const searchLinks = [
 
 const focusIntroHeadline = cmsText(doc?.statement?.headline) || keywordFocusCopy?.pullHeadline || (isParentPage ? 'Naehe ohne' : `${serviceLabel}:`)
 const focusIntroEmphasis = cmsText(doc?.statement?.emphasis) || keywordFocusCopy?.pullEmphasis || (isParentPage ? 'Beliebigkeit.' : isKeywordPage ? 'klar geplant.' : `${scope.label}.`)
+const focusIntroTitle = splitTrailingEmphasis(focusIntroHeadline, focusIntroEmphasis)
 const focusIntroParagraphs =
   cmsStatementBody.length
     ? cmsStatementBody
@@ -166,7 +170,7 @@ const focusIntroParagraphs =
           'Fuer Personal Branding, Founder, Teams, Editorials und Kampagnen, die mehr Persoenlichkeit tragen sollen als ein Standard-Headshot.',
         ]
       : [
-          `${serviceLabel} wird als eigene Suchintention gefuehrt und bleibt trotzdem im Portrait-Cluster. Entscheidend sind Wirkung, Person, Licht und eine Bildauswahl, die spaeter wirklich genutzt wird.`,
+          `${serviceLabel} bekommt eine eigene Seite im Portraitbereich. Entscheidend sind Wirkung, Person, Licht und eine Bildauswahl, die spaeter wirklich genutzt wird.`,
           isKeywordPage
             ? 'Der Text ist auf diese konkrete Suche zugeschnitten, ohne ein neues Layout oder eine unpassende Kategorie zu erzwingen.'
             : `Der lokale Bezug fuer ${scope.label} wird ueber Ort, Anfahrt, Lichtfenster und Ablauf konkretisiert.`,
@@ -260,7 +264,7 @@ const portraitProcessSteps = defaultProcessSteps.map((step, index) => {
 })
 const focusRelatedLead =
   keywordFocusCopy?.relatedLead ||
-  'Diese Kategorie ist Teil eines bewusst getrennten Fotografie-Clusters: Fahrzeug, Mensch und Raum bleiben eigenstaendige Suchintentionen, sind aber intern so verbunden, dass Nutzer schnell in den passenden Bildbereich wechseln koennen.'
+  'Fahrzeug, Mensch und Raum bleiben eigene Bildbereiche. Die Links fuehren schnell zu der Seite, die zum Motiv, zur Nutzung und zum geplanten Shooting passt.'
 ---
 <AdoptedPageLayout
   legacyFile={legacyFile}
@@ -309,10 +313,16 @@ const focusRelatedLead =
         <span class="hero-pt__catchlight"></span>
       </div>
 
-      <h1 class="hero-pt__title">{heroTitle} <em>{heroEmphasis}</em></h1>
+      <h1 class="hero-pt__title">
+        {heroTitle}
+        {heroEmphasis && <em>{heroEmphasis}</em>}
+      </h1>
 
       <div class="hero-pt__sub-block">
-        <p class="hero-pt__sub">{doc?.intro || heroLead}</p>
+        <div class="hero-pt__copy">
+          {heroLocalNote && <p class="hero-pt__local-note">{heroLocalNote}</p>}
+          <p class="hero-pt__sub">{doc?.intro || heroLead}</p>
+        </div>
         <div class="hero-pt__actions">
           <a href="#anfrage">Portraitshooting anfragen →</a>
           <a class="ghost" href="portfolio.html">Portfolio</a>
@@ -322,7 +332,11 @@ const focusRelatedLead =
 
     <section class="st-pt" data-header-theme="light">
       <div class="st-pt__inner">
-        <h2 class="st-pt__title">{focusIntroHeadline} <em>{focusIntroEmphasis}</em></h2>
+        <h2 class="st-pt__title">
+          {focusIntroTitle.headline}
+          {focusIntroTitle.headline && focusIntroTitle.emphasis ? ' ' : ''}
+          {focusIntroTitle.emphasis && <em>{focusIntroTitle.emphasis}</em>}
+        </h2>
         <div class="st-pt__body">
           {focusIntroParagraphs.map((paragraph) => <p>{paragraph}</p>)}
           <a class="st-pt__cta" href="#anfrage">Jetzt anfragen →</a>

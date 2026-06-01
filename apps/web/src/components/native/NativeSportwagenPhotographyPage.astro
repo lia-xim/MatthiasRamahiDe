@@ -12,6 +12,7 @@ import { mergeAuthoredLocalSeoContent } from '../../lib/authoredSeoContent'
 import { keywordFocusCopyForSlug } from '../../lib/localSeoFamilyContent'
 import { familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
 import { getLegacyBackedDoc, imageAlt, imageDimensions, imageDisplayUrl, imageSrcset, type PayloadDoc, type PayloadMedia } from '../../lib/payload'
+import { splitTrailingEmphasis } from '../../lib/splitTrailingEmphasis'
 
 type Props = {
   doc?: PayloadDoc | null
@@ -44,13 +45,15 @@ const keywordFocusCopy = keywordFocusCopyForSlug(legacyFile)
 const cmsFaqItems = doc?.localFaq?.map((entry) => ({ q: entry.question || '', a: entry.answer || '' })).filter((entry) => entry.q && entry.a) || []
 const faqItems = cmsFaqItems.length ? cmsFaqItems : keywordFocusCopy?.faq
 const cmsHeroLine2 = typeof doc?.heroLine2 === 'string' ? doc.heroLine2.trim() : ''
-const heroTitle = !isParentPage && !isKeywordPage ? `${serviceLabel} ${scope.label}` : keywordFocusCopy?.heroTitle || 'Sportwagen'
-const heroSecondLine = !isParentPage && !isKeywordPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Performance. Linie. Detail.' : cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Fotografie.'
+const isLocalHeroPage = !isParentPage && !isKeywordPage
+const heroTitle = isLocalHeroPage ? serviceLabel : keywordFocusCopy?.heroTitle || 'Sportwagen'
+const heroSecondLine = isLocalHeroPage ? scope.label : cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Fotografie.'
+const heroLocalNote = isLocalHeroPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Performance. Linie. Detail.' : ''
 const heroLabel = isParentPage || isKeywordPage ? 'Sportwagenfotografie' : `Sportwagenfotografie ${scope.label}`
 const defaultHeroLead = isParentPage
   ? 'Sportwagenfotografie: Performance, Form, Innenraum und Details werden mit kontrollierten Reflexen und ruhiger Dramaturgie sichtbar — für Sammler, Händler, Marke, Verkauf und Druck. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.'
   : isKeywordPage
-    ? `${serviceLabel}: eigenständiger Einstieg in den Sportwagen Fotografie-Cluster. Performance, Form, Innenraum und Details werden mit kontrollierten Reflexen und ruhiger Dramaturgie sichtbar - für Sammler, Händler, Marke, Verkauf und Druck. Die Seite bleibt bewusst im Layout der übergeordneten Kategorie, setzt den Text aber auf diese konkrete Suchintention.`
+    ? `${serviceLabel}: eigenständiger Einstieg in die Sportwagenfotografie. Performance, Form, Innenraum und Details werden mit kontrollierten Reflexen und ruhiger Dramaturgie sichtbar - für Sammler, Händler, Marke, Verkauf und Druck. Die Seite bleibt bewusst im Layout der übergeordneten Kategorie, ist aber klar auf dieses Motiv und diese Nutzung formuliert.`
     : `Sportwagenfotografie in ${scope.label}: Performance, Form, Innenraum und Details werden mit kontrollierten Reflexen und ruhiger Dramaturgie sichtbar - für Sammler, Händler, Marke, Verkauf und Druck. ${localScopePhrase(scope)}`
 const keywordLocalContext = keywordFocusCopy && !isParentPage && !isKeywordPage ? ` ${localScopePhrase(scope)}` : ''
 const heroLead = keywordFocusCopy?.heroLead ? `${keywordFocusCopy.heroLead}${keywordLocalContext}` : defaultHeroLead
@@ -317,6 +320,7 @@ const finalAudiences = doc?.audienceCards?.length
 const finalStatementImage = finalPortfolioTiles[0] || statementImage
 const statementHeadline = (typeof doc?.statement?.headline === 'string' && doc.statement.headline.trim()) || keywordFocusCopy?.statementHeadline || 'Bilder mit'
 const statementEmphasis = (typeof doc?.statement?.emphasis === 'string' && doc.statement.emphasis.trim()) || keywordFocusCopy?.statementEmphasis || 'Druckqualität.'
+const statementTitle = splitTrailingEmphasis(statementHeadline, statementEmphasis)
 const statementBody = doc?.statement?.body?.length
   ? doc.statement.body.map((entry) => entry.text).filter((text): text is string => Boolean(text))
   : keywordFocusCopy?.statementBody?.length
@@ -332,7 +336,7 @@ const focusSectionLead =
   keywordFocusCopy?.sectionLead ||
   (isParentPage
     ? 'Exterieur, Interieur, Details und cineastische Perspektiven greifen ineinander - ein Bildsatz, der Fahrzeug, Atmosphaere und Material gleichermaßen zeigt.'
-    : `${serviceLabel} wird als eigenstaendige Seite im Sportwagen-Cluster gefuehrt: Exterieur, Innenraum, Details und Nutzung werden passend zur Suchintention geplant.`)
+    : `${serviceLabel} bekommt eine eigene Seite im Sportwagenbereich: Exterieur, Innenraum, Details und Nutzung werden passend zum Motiv geplant.`)
 const focusGalleryHeadline = keywordFocusCopy?.galleryHeadline || 'Aktuelle Arbeiten.'
 const focusGalleryLead = keywordFocusCopy?.galleryLead || 'Sechs kuratierte Sportwagen-Bilder aus juengeren Serien. Klicken zum Vergroessern.'
 const focusAudienceHeadline = keywordFocusCopy?.audienceHeadline || 'Fuer wen ich arbeite.'
@@ -341,7 +345,7 @@ const focusAudienceLead =
   'Vom privaten Fahrzeug bis zur internationalen Kampagne. Jede Serie wird auf Nutzung, Marke und Zielgruppe zugeschnitten - ein Hero-Motiv oder ein vollstaendiges Launch-Asset-Paket.'
 const focusRelatedLead =
   keywordFocusCopy?.relatedLead ||
-  'Sportwagen ist ein Teil der Automobil-Welt. Schau dir die anderen Disziplinen an - gleicher Anspruch, anderer Bildfokus. Diese Kategorie ist Teil eines bewusst getrennten Fotografie-Clusters: Fahrzeug, Mensch und Raum bleiben eigenstaendige Suchintentionen, sind aber intern so verbunden, dass Nutzer schnell in den passenden Bildbereich wechseln koennen.'
+  'Sportwagen ist ein Teil der Automobil-Welt. Schau dir die anderen Disziplinen an - gleicher Anspruch, anderer Bildfokus. Die Links fuehren schnell zu der Bildwelt, die zum Fahrzeug, zur Nutzung und zum geplanten Shooting passt.'
 
 const relatedAreas = [
   {
@@ -467,6 +471,7 @@ const searchLinks = [
           <span class="line"><span class="word">{heroTitle}</span></span>
           <span class="line"><span class="word">{heroSecondLine}</span></span>
         </h1>
+        {heroLocalNote && <p class="tri-local-note">{heroLocalNote}</p>}
         <p class="tri-sub">{doc?.intro || heroLead}</p>
         <div class="tri-actions">
           <a href="#anfrage">Shooting buchen →</a>
@@ -478,7 +483,11 @@ const searchLinks = [
     <section class="st" data-header-theme="light">
       <div class="section-inner">
         <div class="st-copy">
-          <h2>{statementHeadline} <em>{statementEmphasis}</em></h2>
+          <h2>
+            {statementTitle.headline}
+            {statementTitle.headline && statementTitle.emphasis ? ' ' : ''}
+            {statementTitle.emphasis && <em>{statementTitle.emphasis}</em>}
+          </h2>
           <div class="st-body">
             {statementBody.map((paragraph) => <p>{paragraph}</p>)}
           </div>

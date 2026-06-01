@@ -339,7 +339,7 @@ function sectionHtml(section: JournalArticle['sections'][number]) {
         <div class="article-body" data-header-theme="light">
           <div class="article-grid">
             <aside>
-              <p>Dieser Beitrag stützt die SEO-Cluster der Fotografie-Seiten und führt zu passenden Leistungs- und Standortseiten weiter.</p>
+              <p>Dieser Beitrag führt zu passenden Leistungs- und Standortseiten weiter.</p>
               {article.links.map((link) => <a href={link.href}>{link.label}</a>)}
             </aside>
             <div>
@@ -371,7 +371,7 @@ function sectionHtml(section: JournalArticle['sections'][number]) {
 
         {primaryRelatedLink && (
           <section class="related" aria-label="Verwandte Seiten" data-header-theme="light">
-            <h2>Weiter im Cluster.</h2>
+            <h2>Verwandte Beiträge.</h2>
             <nav>
               {article.links.map((link) => <a href={link.href}>{link.label}</a>)}
             </nav>

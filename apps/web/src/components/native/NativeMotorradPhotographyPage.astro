@@ -12,6 +12,7 @@ import { mergeAuthoredLocalSeoContent } from '../../lib/authoredSeoContent'
 import { keywordFocusCopyForSlug } from '../../lib/localSeoFamilyContent'
 import { familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
 import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
+import { splitTrailingEmphasis } from '../../lib/splitTrailingEmphasis'
 
 type Props = {
   doc?: PayloadDoc | null
@@ -46,13 +47,15 @@ const faqItems = cmsFaqItems.length ? cmsFaqItems : keywordFocusCopy?.faq
 const cmsText = (value: unknown) => (typeof value === 'string' ? value.trim() : '')
 const cmsHeroLine2 = cmsText(doc?.heroLine2)
 const cmsStatementBody = doc?.statement?.body?.map((entry) => cmsText(entry.text)).filter(Boolean) || []
-const heroTitle = !isParentPage && !isKeywordPage ? `${serviceLabel} ${scope.label}` : keywordFocusCopy?.heroTitle || 'Motorrad'
-const heroSecondLine = !isParentPage && !isKeywordPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Maschine. Haltung. Detail.' : cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Fotografie.'
+const isLocalHeroPage = !isParentPage && !isKeywordPage
+const heroTitle = isLocalHeroPage ? serviceLabel : keywordFocusCopy?.heroTitle || 'Motorrad'
+const heroSecondLine = isLocalHeroPage ? scope.label : cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Fotografie.'
+const heroLocalNote = isLocalHeroPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Maschine. Haltung. Detail.' : ''
 const heroLabel = isParentPage || isKeywordPage ? 'Motorradfotografie' : `Motorradfotografie ${scope.label}`
 const defaultHeroLead = isParentPage
   ? 'Motorradfotografie: Silhouette, Mechanik, Haltung, Detail und Fahrerbezug werden als kraftvolle Serie geplant — für Custom Bikes, Händler, Werkstätten und private Maschinen. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.'
   : isKeywordPage
-    ? `${serviceLabel}: eigenständiger Einstieg in den Motorrad Fotografie-Cluster. Silhouette, Mechanik, Haltung, Detail und Fahrerbezug werden als kraftvolle Serie geplant - für Custom Bikes, Händler, Werkstätten und private Maschinen. Die Seite bleibt bewusst im Layout der übergeordneten Kategorie, setzt den Text aber auf diese konkrete Suchintention.`
+    ? `${serviceLabel}: eigenständiger Einstieg in die Motorradfotografie. Silhouette, Mechanik, Haltung, Detail und Fahrerbezug werden als kraftvolle Serie geplant - für Custom Bikes, Händler, Werkstätten und private Maschinen. Die Seite bleibt bewusst im Layout der übergeordneten Kategorie, ist aber klar auf dieses Motiv und diese Nutzung formuliert.`
     : `Motorradfotografie in ${scope.label}: Silhouette, Mechanik, Haltung, Detail und Fahrerbezug werden als kraftvolle Serie geplant - für Custom Bikes, Händler, Werkstätten und private Maschinen. ${localScopePhrase(scope)}`
 const fallbackMetaTitle = isParentPage
   ? 'Motorradfotografie - Matthias Ramahi'
@@ -125,6 +128,7 @@ const slotSrcset = (slot: (typeof visualSlots)[number]) => slot.srcset || `${slo
 
 const focusIntroHeadline = cmsText(doc?.statement?.headline) || keywordFocusCopy?.pullHeadline || (isParentPage || isKeywordPage ? 'Geschwindigkeit und Leidenschaft' : `Motorrad in ${scope.label}`)
 const focusIntroEmphasis = cmsText(doc?.statement?.emphasis) || keywordFocusCopy?.pullEmphasis || (isParentPage || isKeywordPage ? 'auf Bildern.' : 'mit Haltung.')
+const focusIntroTitle = splitTrailingEmphasis(focusIntroHeadline, focusIntroEmphasis)
 const focusIntroParagraphs = cmsStatementBody.length
   ? cmsStatementBody
   : keywordFocusCopy?.statementBody?.length
@@ -168,8 +172,8 @@ const focusAudienceCards = defaultAudienceCards.map((card, index) => {
     : card
 })
 const focusRelatedLead = isParentPage || isKeywordPage
-  ? keywordFocusCopy?.relatedLead || 'Motorrad steht selten allein. Schau dir die anderen Disziplinen an - gleicher Anspruch, anderer Bildfokus. Diese Kategorie ist Teil eines bewusst getrennten Fotografie-Clusters: Fahrzeug, Mensch und Raum bleiben eigenstaendige Suchintentionen, sind aber intern so verbunden, dass Nutzer schnell in den passenden Bildbereich wechseln koennen.'
-  : `Motorradfotografie ${scope.label} bleibt im Fahrzeug-Cluster und verlinkt bewusst zu Automobil, Sportwagen, Oldtimer und Portfolio, damit die Suchintention sauber weitergefuehrt wird.`
+  ? keywordFocusCopy?.relatedLead || 'Motorrad steht selten allein. Schau dir die anderen Disziplinen an - gleicher Anspruch, anderer Bildfokus. Die Links fuehren schnell zu der Bildwelt, die zum Fahrzeug, zur Nutzung und zum geplanten Shooting passt.'
+  : `Motorradfotografie ${scope.label} verlinkt bewusst zu Automobil, Sportwagen, Oldtimer und Portfolio, damit Nutzer schnell den passenden Bildbereich finden.`
 
 const cleanDefaultModuleCards = [
   { visualIndex: 3, label: '01 / Stand & Silhouette', title: 'Die ruhige Bildbuehne', text: 'Bike pur: Proportionen, Linienfuehrung und Haltung. Gesetztes Licht, klare Winkel, bereit fuer Header, Print und Werkstatt-Wand.' },
@@ -271,6 +275,7 @@ const searchLinks = [
           <span class="line"><span class="word">{heroSecondLine}</span></span>
         </h1>
         <div class="hero-mr__lede-block">
+          {heroLocalNote && <p class="hero-mr__local-note">{heroLocalNote}</p>}
           <p class="hero-mr__lede">{doc?.intro || heroLead}</p>
           <div class="hero-mr__actions">
             <a href="#anfrage">Shooting buchen →</a>
@@ -291,7 +296,11 @@ const searchLinks = [
     <section class="st" data-header-theme="light">
       <div class="section-inner">
         <div>
-          <h2>{focusIntroHeadline} <em>{focusIntroEmphasis}</em></h2>
+          <h2>
+            {focusIntroTitle.headline}
+            {focusIntroTitle.headline && focusIntroTitle.emphasis ? ' ' : ''}
+            {focusIntroTitle.emphasis && <em>{focusIntroTitle.emphasis}</em>}
+          </h2>
         </div>
         <div class="st-body">
           {focusIntroParagraphs.map((paragraph) => <p>{paragraph}</p>)}

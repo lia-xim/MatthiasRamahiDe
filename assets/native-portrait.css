@@ -103,6 +103,9 @@
     .hero-pt__sub-block{position:absolute;left:clamp(20px,4vw,60px);right:clamp(20px,4vw,60px);
       bottom:clamp(40px,6vh,84px);display:flex;align-items:flex-end;justify-content:space-between;
       gap:36px;z-index:8}
+    .hero-pt__copy{display:flex;flex-direction:column;gap:clamp(10px,1.2vw,14px);max-width:520px}
+    .hero-pt__local-note{margin:0;color:rgba(246,245,240,.76);font-family:var(--font-mono);font-size:11px;line-height:1.45;letter-spacing:.26em;text-transform:uppercase;opacity:0;transform:translateY(16px);transition:opacity 1s ease 3.65s,transform 1.1s ease 3.65s}
+    .hero-pt.is-revealed .hero-pt__local-note{opacity:1;transform:translateY(0)}
     .hero-pt__sub{max-width:460px;color:rgba(246,245,240,.82);
       font-size:clamp(14.5px,1.05vw,17px);line-height:1.62;text-wrap:pretty;
       opacity:0;transform:translateY(16px);
@@ -228,7 +231,7 @@
 
     @media (max-width:1080px){
       .hero-pt__sub-block{flex-direction:column;align-items:flex-start;gap:22px}
-      .hero-pt__sub{max-width:520px}
+      .hero-pt__copy,.hero-pt__sub{max-width:520px}
       .hero-pt__title{font-size:clamp(42px,9vw,108px);bottom:clamp(220px,32vh,300px)}
       .mod-pt__grid{grid-template-columns:repeat(2,1fr)}
       .fw-pt__head{grid-template-columns:1fr;gap:18px;align-items:start}
@@ -246,6 +249,7 @@
       .st-pt__inner{grid-template-columns:1fr}
       .hero-pt__title{font-size:clamp(42px,11vw,76px);bottom:clamp(240px,36vh,320px)}
       .hero-pt__sub-block{bottom:clamp(28px,5vh,56px)}
+      .hero-pt__local-note{font-size:10px;letter-spacing:.18em}
       .mod-pt__grid{grid-template-columns:1fr}
       .fw-pt__row{grid-template-columns:40px 64px 1fr;column-gap:18px;padding:18px 6px}
       .fw-pt__row .fw-pt__arrow{display:none}
@@ -264,7 +268,7 @@
       .hero-pt__zoom{transform:scale(1.04) !important;animation:none !important}
       .hero-pt__slide.is-active .hero-pt__zoom{animation:none !important;transform:scale(1.04) !important}
       .hero-pt__image{filter:saturate(1) contrast(1.04) brightness(.94) !important}      .hero-pt__catchlight{display:none}
-      .hero-pt__title,.hero-pt__sub,.hero-pt__actions{opacity:1 !important;transform:none !important;transition:opacity .35s ease !important}
+      .hero-pt__title,.hero-pt__local-note,.hero-pt__sub,.hero-pt__actions{opacity:1 !important;transform:none !important;transition:opacity .35s ease !important}
       .hero-pt__vignette{transition:opacity .35s ease !important}
       .mod-pt__card,.bg-pt__tile,.rl-pt__card,.rl-pt__card-img,.mod-pt__img{animation:none !important;transition:none !important;transform:none !important}
     }

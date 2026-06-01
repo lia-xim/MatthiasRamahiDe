@@ -23,7 +23,7 @@ export type PortfolioSpread = {
 
 export const portfolioContext = [
   'Das Portfolio ist nach Bildfunktionen und Themenclustern aufgebaut: Portrait, Automobil, Sportwagen, Oldtimer, Motorrad und Landschaft. Jede Strecke zeigt nicht nur ein einzelnes Motiv, sondern die visuelle Logik dahinter: Einstieg, Detail, Material, Atmosphaere und ein ruhiges Schlussbild.',
-  'So wird schneller sichtbar, welche Bildsprache fuer Verkauf, Marke, Sammlung, Website, Print oder redaktionelle Nutzung passt. Die Galerie fuehrt bewusst in die passenden Leistungsseiten weiter, damit Portfolio, lokale SEO-Seiten und konkrete Anfragen dieselbe Struktur sprechen.',
+  'So wird schneller sichtbar, welche Bildsprache fuer Verkauf, Marke, Sammlung, Website, Print oder redaktionelle Nutzung passt. Die Galerie fuehrt bewusst in die passenden Leistungs- und Standortseiten weiter, damit Portfolio und konkrete Anfragen dieselbe Struktur sprechen.',
 ]
 
 export const portfolioIndexLinks = [

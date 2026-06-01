@@ -12,6 +12,7 @@ import { mergeAuthoredLocalSeoContent } from '../../lib/authoredSeoContent'
 import { keywordFocusCopyForSlug } from '../../lib/localSeoFamilyContent'
 import { familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
 import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
+import { splitTrailingEmphasis } from '../../lib/splitTrailingEmphasis'
 
 type Props = {
   doc?: PayloadDoc | null
@@ -47,12 +48,14 @@ const cmsText = (value: unknown) => (typeof value === 'string' ? value.trim() : 
 const cmsHeroLine2 = cmsText(doc?.heroLine2)
 const cmsStatementBody = doc?.statement?.body?.map((entry) => cmsText(entry.text)).filter(Boolean) || []
 const heroLabel = isParentPage || isKeywordPage ? 'Oldtimer-Fotografie' : `Oldtimer-Fotografie ${scope.label}`
-const heroTitlePrefix = !isParentPage && !isKeywordPage ? `${serviceLabel} ${scope.label}` : keywordFocusCopy?.heroTitle || 'Oldtimer'
-const heroTitleSuffix = !isParentPage && !isKeywordPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Charakter vor Ort.' : cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Fotografie.'
+const isLocalHeroPage = !isParentPage && !isKeywordPage
+const heroTitlePrefix = isLocalHeroPage ? serviceLabel : keywordFocusCopy?.heroTitle || 'Oldtimer'
+const heroTitleSuffix = isLocalHeroPage ? scope.label : cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Fotografie.'
+const heroLocalNote = isLocalHeroPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Charakter vor Ort.' : ''
 const defaultHeroLead = isParentPage
   ? 'Oldtimer-Fotografie: Herkunft, Material, Lack, Chrom, Leder und Patina werden ruhig dokumentiert — für Sammlung, Verkauf, Auktion, Ausstellung und Fahrzeuge mit Geschichte. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.'
   : isKeywordPage
-    ? `${serviceLabel}: eigenständiger Einstieg in den Oldtimer Fotografie-Cluster. Herkunft, Material, Lack, Chrom, Leder und Patina werden ruhig dokumentiert - für Sammlung, Verkauf, Auktion, Ausstellung und Fahrzeuge mit Geschichte. Die Seite bleibt bewusst im Layout der übergeordneten Kategorie, setzt den Text aber auf diese konkrete Suchintention.`
+    ? `${serviceLabel}: eigenständiger Einstieg in die Oldtimer-Fotografie. Herkunft, Material, Lack, Chrom, Leder und Patina werden ruhig dokumentiert - für Sammlung, Verkauf, Auktion, Ausstellung und Fahrzeuge mit Geschichte. Die Seite bleibt bewusst im Layout der übergeordneten Kategorie, ist aber klar auf dieses Motiv und diese Nutzung formuliert.`
     : `Oldtimer-Fotografie in ${scope.label}: Herkunft, Material, Lack, Chrom, Leder und Patina werden ruhig dokumentiert - für Sammlung, Verkauf, Auktion, Ausstellung und Fahrzeuge mit Geschichte. ${localScopePhrase(scope)}`
 const fallbackMetaTitle = isParentPage
   ? 'Oldtimer-Fotografie - Matthias Ramahi'
@@ -211,6 +214,7 @@ const focusStoryCards = inheritedStoryCards.map((card, index) => {
 
 const focusIntroHeadline = cmsText(doc?.statement?.headline) || keywordFocusCopy?.pullHeadline || (isParentPage || isKeywordPage ? 'Charakter' : `Oldtimer in ${scope.label}`)
 const focusIntroEmphasis = cmsText(doc?.statement?.emphasis) || keywordFocusCopy?.pullEmphasis || (isParentPage || isKeywordPage ? 'mit Nostalgie.' : 'mit Herkunft.')
+const focusIntroTitle = splitTrailingEmphasis(focusIntroHeadline, focusIntroEmphasis)
 const focusIntroParagraphs = cmsStatementBody.length
   ? cmsStatementBody
   : keywordFocusCopy?.statementBody?.length
@@ -243,8 +247,8 @@ const focusAudiences = doc?.audienceCards?.length
     ? keywordFocusCopy.cards.map((card, index) => [String(index + 1).padStart(2, '0'), card.title, card.label || 'Oldtimer'])
     : audiences
 const focusRelatedLead = isParentPage || isKeywordPage
-  ? keywordFocusCopy?.relatedLead || 'Oldtimer ist Teil einer groesseren automotive Welt. Schau dir die anderen Disziplinen an - gleicher Anspruch, anderer Bildfokus. Diese Kategorie ist Teil eines bewusst getrennten Fotografie-Clusters: Fahrzeug, Mensch und Raum bleiben eigenstaendige Suchintentionen, sind aber intern so verbunden, dass Nutzer schnell in den passenden Bildbereich wechseln koennen.'
-  : `Oldtimer-Fotografie ${scope.label} bleibt im Fahrzeug-Cluster. Von hier fuehren die internen Links zu Automobil, Sportwagen, Druck und Portfolio, damit Nutzer schnell den passenden Bildbereich finden.`
+  ? keywordFocusCopy?.relatedLead || 'Oldtimer ist Teil einer groesseren automotive Welt. Schau dir die anderen Disziplinen an - gleicher Anspruch, anderer Bildfokus. Die Links fuehren schnell zu der Bildwelt, die zum Fahrzeug, zur Nutzung und zum geplanten Shooting passt.'
+  : `Oldtimer-Fotografie ${scope.label} fuehrt zu Automobil, Sportwagen, Druck und Portfolio, damit Nutzer schnell den passenden Bildbereich finden.`
 
 // Hero = der Landing-Page-Shader-Hero (WebGL/Ken-Burns/Lens-Cursor), 1:1 wie auf
 // der Fotolabor-Seite — nur mit Oldtimer-Bild, -Texten und dem warmen Messing/
@@ -335,6 +339,7 @@ const searchLinks = [
             <span class="line"><span class="word">{heroTitlePrefix}</span></span>
             <span class="line"><span class="word">{heroTitleSuffix}</span></span>
           </h1>
+          {heroLocalNote && <p class="hero-local-note">{heroLocalNote}</p>}
           <p class="hero-lead" id="hero-lead">{heroSubText}</p>
           <div class="hero-actions" aria-label="Direkte Aktionen">
             <a class="btn dark" href="#anfrage" data-hero-primary>Shooting buchen</a>
@@ -348,7 +353,11 @@ const searchLinks = [
     <section class="st" data-header-theme="light">
       <div class="section-inner">
         <div>
-          <h2>{focusIntroHeadline} <em>{focusIntroEmphasis}</em></h2>
+          <h2>
+            {focusIntroTitle.headline}
+            {focusIntroTitle.headline && focusIntroTitle.emphasis ? ' ' : ''}
+            {focusIntroTitle.emphasis && <em>{focusIntroTitle.emphasis}</em>}
+          </h2>
         </div>
         <div class="st-body">
           {focusIntroParagraphs.map((paragraph) => <p>{paragraph}</p>)}
