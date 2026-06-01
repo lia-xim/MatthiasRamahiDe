@@ -98,7 +98,9 @@ export function mergeAuthoredLocalSeoContent(legacyFile: string, doc?: PayloadDo
     if (audienceCards) next.audienceCards = audienceCards
   }
 
-  if (!next.localFaq?.length) {
+  // ServicePages store FAQ under `faq`, LocalSeoPages under `localFaq`. Treat
+  // either as "the CMS already has FAQ" so authored JSON only fills a true gap.
+  if (!next.localFaq?.length && !next.faq?.length) {
     const localFaq = authoredFaq(authored)
     if (localFaq) next.localFaq = localFaq
   }

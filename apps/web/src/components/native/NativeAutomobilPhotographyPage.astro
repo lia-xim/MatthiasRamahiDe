@@ -49,7 +49,8 @@ const isKeywordPage = scope.generic
 const isLocalCityPage = !isParentPage && !isKeywordPage
 const serviceLabel = serviceLabelFromSlug(legacyFile, familyContent)
 const keywordFocusCopy = keywordFocusCopyForSlug(legacyFile)
-const cmsFaqItems = doc?.localFaq?.map((entry) => ({ q: entry.question || '', a: entry.answer || '' })).filter((entry) => entry.q && entry.a) || []
+const cmsFaqSource = (doc?.localFaq?.length ? doc.localFaq : doc?.faq) || []
+const cmsFaqItems = cmsFaqSource.map((entry) => ({ q: entry.question || '', a: entry.answer || '' })).filter((entry) => entry.q && entry.a)
 const faqItems = cmsFaqItems.length ? cmsFaqItems : keywordFocusCopy?.faq
 const cmsText = (value: unknown) => (typeof value === 'string' ? value.trim() : '')
 const teaserText = (value: unknown, maxLength = 180) => {

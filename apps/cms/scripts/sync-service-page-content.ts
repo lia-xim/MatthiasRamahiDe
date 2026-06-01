@@ -78,8 +78,10 @@ for (const e of entries) {
     if (e.audienceCards?.length) {
       set('audienceCards', isEmpty(doc.audienceCards), e.audienceCards.map((c, i) => ({ number: c.number || String(i + 1).padStart(2, '0'), title: c.title, text: c.text })))
     }
+    // ServicePages expose the FAQ array as `faq` (LocalSeoPages use `localFaq`).
+    // The authored JSON keeps everything under `localFaq`, so map across here.
     if (e.localFaq?.length) {
-      set('localFaq', isEmpty(doc.localFaq), e.localFaq.filter((f) => f.question && f.answer).map((f) => ({ question: f.question, answer: f.answer })))
+      set('faq', isEmpty(doc.faq), e.localFaq.filter((f) => f.question && f.answer).map((f) => ({ question: f.question, answer: f.answer })))
     }
 
     const prevSeo = (doc.seo as Record<string, unknown>) || {}
