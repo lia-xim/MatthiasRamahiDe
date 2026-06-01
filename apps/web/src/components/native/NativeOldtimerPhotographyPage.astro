@@ -56,7 +56,7 @@ const heroTitleSuffix = isLocalHeroPage ? scope.label : ''
 const heroTitleLines = [...splitHeroTitleLines(heroTitlePrefix), ...splitHeroTitleLines(heroTitleSuffix)]
 const heroLocalNote = isLocalHeroPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Charakter vor Ort.' : isKeywordPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || '' : ''
 const defaultHeroLead = isParentPage
-  ? 'Oldtimer-Fotografie: Herkunft, Material, Lack, Chrom, Leder und Patina werden ruhig dokumentiert — für Sammlung, Verkauf, Auktion, Ausstellung und Fahrzeuge mit Geschichte. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.'
+  ? 'Oldtimer-Fotografie: Herkunft, Material, Lack, Chrom, Leder und Patina werden ruhig dokumentiert — für Sammlung, Verkauf, Auktion, Ausstellung und Fahrzeuge mit Geschichte. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant — in ganz NRW.'
   : isKeywordPage
     ? `${serviceLabel}: eigenständiger Einstieg in die Oldtimer-Fotografie. Herkunft, Material, Lack, Chrom, Leder und Patina werden ruhig dokumentiert - für Sammlung, Verkauf, Auktion, Ausstellung und Fahrzeuge mit Geschichte. Die Seite bleibt bewusst im Layout der übergeordneten Kategorie, ist aber klar auf dieses Motiv und diese Nutzung formuliert.`
     : `Oldtimer-Fotografie in ${scope.label}: Herkunft, Material, Lack, Chrom, Leder und Patina werden ruhig dokumentiert - für Sammlung, Verkauf, Auktion, Ausstellung und Fahrzeuge mit Geschichte. ${localScopePhrase(scope)}`
@@ -277,7 +277,7 @@ const heroSlidesJson = JSON.stringify([
 ])
 
 const cityLinks = [
-  ['oldtimer-fotografie.html', 'Düsseldorf'],
+  ['oldtimer-fotografie-duesseldorf.html', 'Düsseldorf'],
   ['oldtimer-fotografie-erkrath.html', 'Erkrath'],
   ['oldtimer-fotografie-ratingen.html', 'Ratingen'],
   ['oldtimer-fotografie-koeln.html', 'Köln'],

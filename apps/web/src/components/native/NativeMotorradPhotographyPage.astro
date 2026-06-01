@@ -56,7 +56,7 @@ const heroTitleLines = [...splitHeroTitleLines(heroTitle), ...splitHeroTitleLine
 const heroLocalNote = isLocalHeroPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Maschine. Haltung. Detail.' : isKeywordPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || '' : ''
 const heroLabel = isParentPage ? 'Motorradfotografie' : isKeywordPage ? serviceLabel : `Motorradfotografie ${scope.label}`
 const defaultHeroLead = isParentPage
-  ? 'Motorradfotografie: Silhouette, Mechanik, Haltung, Detail und Fahrerbezug werden als kraftvolle Serie geplant — für Custom Bikes, Händler, Werkstätten und private Maschinen. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.'
+  ? 'Motorradfotografie: Silhouette, Mechanik, Haltung, Detail und Fahrerbezug werden als kraftvolle Serie geplant — für Custom Bikes, Händler, Werkstätten und private Maschinen. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant — in ganz NRW.'
   : isKeywordPage
     ? `${serviceLabel}: eigenständiger Einstieg in die Motorradfotografie. Silhouette, Mechanik, Haltung, Detail und Fahrerbezug werden als kraftvolle Serie geplant - für Custom Bikes, Händler, Werkstätten und private Maschinen. Die Seite bleibt bewusst im Layout der übergeordneten Kategorie, ist aber klar auf dieses Motiv und diese Nutzung formuliert.`
     : `Motorradfotografie in ${scope.label}: Silhouette, Mechanik, Haltung, Detail und Fahrerbezug werden als kraftvolle Serie geplant - für Custom Bikes, Händler, Werkstätten und private Maschinen. ${localScopePhrase(scope)}`
@@ -202,7 +202,7 @@ const moduleCards = cleanDefaultModuleCards.map((cleanCard, index) => {
 })
 
 const cityLinks = [
-  ['motorrad-fotografie.html', 'Düsseldorf'],
+  ['motorrad-fotografie-duesseldorf.html', 'Düsseldorf'],
   ['motorrad-fotografie-erkrath.html', 'Erkrath'],
   ['motorrad-fotografie-ratingen.html', 'Ratingen'],
   ['motorrad-fotografie-koeln.html', 'Köln'],
