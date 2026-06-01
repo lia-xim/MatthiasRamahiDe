@@ -1,7 +1,15 @@
 ---
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
-import { blockParagraphs, photographyTopics } from '../../lib/nativeContent'
-import { getSitePageByType, liveCmsFetchOptions, type PayloadDoc } from '../../lib/payload'
+import { blockParagraphs, photographyTopics as fallbackTopics } from '../../lib/nativeContent'
+import {
+  getSitePageByType,
+  imageAlt,
+  imageDimensions,
+  imageDisplayUrl,
+  liveCmsFetchOptions,
+  toRootRelativeHref,
+  type PayloadDoc,
+} from '../../lib/payload'
 
 type Props = {
   doc?: PayloadDoc
@@ -54,7 +62,34 @@ const doc = providedDoc || (await getSitePageByType('photography-index', liveCms
 // hier geht es um die Bandbreite der Bereiche, nicht um ein einzelnes Motiv oder eine Stadt.
 // (Bewusst code-definiert statt CMS-heroSlides: die Prod-CMS-Slides der Übersicht trugen
 // den Auto-/Düsseldorf-Startseiten-Hero und sollen die Übersicht nicht mehr überschreiben.)
-const overviewHeroSlides = photographyTopics.map((topic, index) => ({
+const hasText = (value?: string): value is string => typeof value === 'string' && value.trim().length > 0
+const topicSlug = (value = '') =>
+  value.toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')
+
+// Themen-Bereiche: CMS bevorzugt, sonst eingebaute Defaults. Theme-Wechsel + CSS-Klasse + Maße abgeleitet.
+const cmsTopics = (doc?.photographyIndex?.topics || [])
+  .filter((topic) => topic?.image && hasText(topic?.title))
+  .map((topic, index) => {
+    const id = topicSlug(topic.title) || `bereich-${index + 1}`
+    const dimensions = imageDimensions(topic.image, 'card')
+    return {
+      id,
+      theme: index % 2 === 0 ? 'dark' : 'light',
+      className: `topic--${id}`,
+      title: topic.title || '',
+      emphasis: topic.emphasis || '',
+      text: topic.text || '',
+      href: toRootRelativeHref(topic.href) || '#',
+      linkLabel: topic.linkLabel || '',
+      image: imageDisplayUrl(topic.image, 'card', { allowOriginal: true }),
+      alt: imageAlt(topic.image, topic.title || ''),
+      width: dimensions.width || 960,
+      height: dimensions.height || 640,
+    }
+  })
+const topics = cmsTopics.length ? cmsTopics : fallbackTopics
+
+const overviewHeroSlides = topics.map((topic, index) => ({
   image: topic.image,
   titleLines: [...meta.heroLines],
   lead: index === 0 ? doc?.intro || meta.intro : topic.text,
@@ -67,10 +102,13 @@ const heroSlides = overviewHeroSlides
 const firstHeroSlide = heroSlides[0]
 const heroImages = heroSlides.map((slide) => slide.image)
 const heroSlidesJson = JSON.stringify(heroSlides)
-const clusterParagraphs = blockParagraphs(doc, 'Ein Einstieg', [
-  'Die Übersicht ist der Einstiegspunkt. Von hier aus führen die sechs Bereiche auf eigene Hauptseiten — und von dort weiter in lokale Varianten, NRW- und Deutschland-Hubs sowie die jeweiligen Keyword-Seiten.',
-  'Nutzer wählen nicht aus einem generischen Portfolio, sondern steigen direkt in Automobil, Sportwagen, Oldtimer, Motorrad, Portrait oder Landschaft ein. Jede Kategorie zeigt auf ihrer Hauptseite die zugehörigen Städte und Regionen.',
-])
+const clusterIntroCms = (doc?.photographyIndex?.clusterIntro || []).map((paragraph) => paragraph?.text).filter(hasText)
+const clusterParagraphs = clusterIntroCms.length
+  ? clusterIntroCms
+  : blockParagraphs(doc, 'Ein Einstieg', [
+      'Die Übersicht ist der Einstiegspunkt. Von hier aus führen die sechs Bereiche auf eigene Hauptseiten — und von dort weiter in lokale Varianten, NRW- und Deutschland-Hubs sowie die jeweiligen Keyword-Seiten.',
+      'Nutzer wählen nicht aus einem generischen Portfolio, sondern steigen direkt in Automobil, Sportwagen, Oldtimer, Motorrad, Portrait oder Landschaft ein. Jede Kategorie zeigt auf ihrer Hauptseite die zugehörigen Städte und Regionen.',
+    ])
 ---
 <AdoptedPageLayout legacyFile={legacyFile} current="fotografie" doc={doc} title={meta.title} description={meta.description} canonicalUrl={canonicalPath} ctaHref="#anfrage" preloadImages={[firstHeroSlide.image]} liveCms>
   <main>
@@ -95,7 +133,7 @@ const clusterParagraphs = blockParagraphs(doc, 'Ein Einstieg', [
       <div class="hero-cursor" id="hero-cursor" aria-hidden="true"><span class="ring"></span></div>
     </section>
 
-    {photographyTopics.map((topic, index) => (
+    {topics.map((topic, index) => (
       <section class={`topic ${topic.theme} ${topic.className}`} id={topic.id} data-theme={topic.theme} data-no={`${String(index + 1).padStart(2, '0')} / ${topic.id.toUpperCase()}`}>
         <div class="topic-grid">
           <div class="topic-copy">
@@ -118,7 +156,7 @@ const clusterParagraphs = blockParagraphs(doc, 'Ein Einstieg', [
         <div class="cluster-copy">
           {clusterParagraphs.map((paragraph) => <p>{paragraph}</p>)}
           <div class="cluster-links">
-            {photographyTopics.map((topic) => <a href={topic.href}>{topic.title.replace('.', '')}</a>)}
+            {topics.map((topic) => <a href={topic.href}>{topic.title.replace('.', '')}</a>)}
           </div>
         </div>
       </div>

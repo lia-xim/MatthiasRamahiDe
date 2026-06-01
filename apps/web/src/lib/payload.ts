@@ -118,6 +118,18 @@ export type PayloadDoc = {
       href?: string
     }>
   }
+  // Fotografie-Uebersicht (SitePages, pageType 'photography-index'). Optional -> Fallback im Component.
+  photographyIndex?: {
+    clusterIntro?: Array<{ text?: string }>
+    topics?: Array<{
+      image?: PayloadMedia | string
+      title?: string
+      emphasis?: string
+      text?: string
+      linkLabel?: string
+      href?: string
+    }>
+  }
   relatedPages?: PayloadLink[]
   blocks?: unknown[]
   cta?: PayloadCta
