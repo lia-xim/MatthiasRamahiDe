@@ -64,3 +64,7 @@ apps/cms/payload-dev.db*
 /mp*-*.jpeg
 /mp*-*.webp
 /screencapture-*.png
+# Real site asset (default OG image + Ueber-mich hero) that matches the scratch
+# pattern above. syncRootMedia() copies it from repo root into public/ at build,
+# so it MUST stay tracked — it 404'd in prod while ignored.
+!/mpissxxj-portfolio_webp_full_063-1.webp
