@@ -205,6 +205,10 @@
      chrome; hairline column+row separators keep it editorial. */
   .fw-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(32px,4vw,72px);border-top:1px solid var(--line-l);min-width:0}
   .fw-card{position:relative;min-width:0;display:grid;grid-template-columns:clamp(120px,12vw,168px) 1fr;align-items:center;gap:clamp(18px,1.8vw,28px);padding:clamp(22px,2.2vw,34px) 0;border-bottom:1px solid var(--line-l);background:transparent;aspect-ratio:auto;overflow:hidden}
+  /* Odd count (e.g. all 25 pages have 5 audiences): the lone trailing card spans
+     both columns as a full-width editorial row — no orphaned empty cell. Wider
+     image column there so the full-bleed card stays balanced, not stretched. */
+  .fw-card:last-child:nth-child(odd){grid-column:1 / -1;grid-template-columns:clamp(168px,18vw,300px) 1fr;gap:clamp(28px,4vw,72px)}
   /* Last row's bottom hairline only if it's a full row; single trailing card keeps its line */
   .fw-card > img{width:100%;max-width:100%;aspect-ratio:1/1;height:auto;object-fit:cover;filter:grayscale(.16) contrast(1.03);transition:transform 1s var(--ease),filter .6s var(--ease)}
   .fw-card:hover > img{transform:scale(1.03);filter:grayscale(0) contrast(1.02)}
