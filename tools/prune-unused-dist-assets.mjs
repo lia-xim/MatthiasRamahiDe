@@ -5,6 +5,10 @@ import { fileURLToPath } from 'node:url'
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const assetExtensions = new Set(['.avif', '.gif', '.ico', '.jpeg', '.jpg', '.mp4', '.png', '.svg', '.webm', '.webp'])
 const textExtensions = new Set(['.cjs', '.css', '.html', '.js', '.json', '.mjs', '.txt', '.webmanifest', '.xml'])
+// Path prefixes (relative to a prune target root) that must never be removed,
+// regardless of static reference detection. Curated responsive image variants
+// live here and are referenced via runtime-rendered srcset on SSR routes.
+const keepPrefixes = ['assets/optimized/']
 const defaultTargets = [
   path.join(repoRoot, 'apps', 'web', 'dist', 'client'),
   path.join(repoRoot, 'apps', 'web', '.vercel', 'output', 'static'),
@@ -155,6 +159,12 @@ async function pruneTarget(targetRoot) {
     if (!assetExtensions.has(path.extname(file).toLowerCase())) continue
     const rel = toPosix(path.relative(targetRoot, file))
     if (referenced.has(rel)) continue
+    // Never prune curated responsive variants under assets/optimized/. They are
+    // referenced almost exclusively through srcset strings rendered at runtime by
+    // SSR routes, which are not reliably visible to static reference scanning of
+    // the Vercel static output -> they were wrongly pruned, 404ing widths like
+    // -480/-640. These files exist to be served; keeping them is the safe default.
+    if (keepPrefixes.some((prefix) => rel.startsWith(prefix))) continue
 
     let stat
     try {
