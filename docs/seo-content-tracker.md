@@ -68,7 +68,7 @@ Quelle: gebaute Seiten (`apps/web/dist/client`) + CMS-Connection-Audit + Content
 | `automobil-fotografie-remscheid.html` | local-seo | ja | 48 | 165 | 574 | ok |
 | `automobil-fotografie-solingen.html` | local-seo | ja | 47 | 170 | 587 | ok |
 | `automobil-fotografie-wuppertal.html` | local-seo | ja | 48 | 172 | 559 | ok |
-| `automobil-fotografie.html` | service-hub | ja | 37 | 136 | 558 | ok |
+| `automobil-fotografie.html` | service-hub | ja | 37 | 136 | 559 | ok |
 | `automotive-fotografie-duesseldorf.html` | local-seo | ja | 50 | 179 | 703 | ok |
 | `automotive-fotografie.html` | local-seo | ja | 39 | 179 | 590 | ok |
 | `autoverkauf-fotos-duesseldorf.html` | local-seo | ja | 46 | 152 | 637 | ok |

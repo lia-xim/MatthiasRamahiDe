@@ -86,8 +86,8 @@ const splitTrailingEmphasis = (headline: string, emphasis: string) => {
 const cmsHeroLine2 = cmsText(doc?.heroLine2)
 const cmsStatementBody = doc?.statement?.body?.map((entry) => cmsText(entry.text)).filter(Boolean) || []
 const localSuffix = !isParentPage && !isKeywordPage ? ` ${scope.label}` : ''
-const heroTitle = isParentPage ? 'Automobilfotografie' : serviceLabel
-const heroSecondLine = isLocalCityPage ? scope.label : ''
+const heroTitle = isParentPage ? 'Automobil' : serviceLabel
+const heroSecondLine = isParentPage ? 'Fotografie' : isLocalCityPage ? scope.label : ''
 const heroLocalNote = isLocalCityPage ? cmsHeroLine2 : isKeywordPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || '' : ''
 const heroLabel = isParentPage ? 'Automobilfotografie' : `Automobilfotografie${localSuffix}`
 const defaultHeroLead = isParentPage
