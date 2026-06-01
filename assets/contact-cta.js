@@ -49,6 +49,8 @@ document.addEventListener('submit', function (event) {
   const name = String(data.get('name') || '').trim()
   const contact = String(data.get('contact') || '').trim()
   const message = String(data.get('message') || '').trim()
+  const consent = data.get('consent') === '1'
+  const contactField = form.elements && form.elements.contact
   const cta = readLastCta()
   const startedAt = Number(form.dataset.startedAt || 0)
   const durationSeconds = startedAt ? Math.max(0, Math.round((Date.now() - startedAt) / 1000)) : 0
@@ -63,8 +65,22 @@ document.addEventListener('submit', function (event) {
   })
 
   if (!name || !contact) {
-    if (status) status.textContent = 'Bitte Name und Kontaktweg (E-Mail oder Telefon) angeben.'
+    if (status) status.textContent = 'Bitte Name und E-Mail-Adresse angeben.'
     trackContactEvent('form_validation_error', { subject: form.dataset.subject || 'Projektanfrage' })
+    form.reportValidity()
+    return
+  }
+
+  if (contactField && typeof contactField.checkValidity === 'function' && !contactField.checkValidity()) {
+    if (status) status.textContent = 'Bitte eine gueltige E-Mail-Adresse angeben.'
+    trackContactEvent('form_validation_error', { subject: form.dataset.subject || 'Projektanfrage', reason: 'email' })
+    form.reportValidity()
+    return
+  }
+
+  if (!consent) {
+    if (status) status.textContent = 'Bitte der Verarbeitung deiner Angaben zustimmen.'
+    trackContactEvent('form_validation_error', { subject: form.dataset.subject || 'Projektanfrage', reason: 'consent' })
     form.reportValidity()
     return
   }
@@ -73,7 +89,7 @@ document.addEventListener('submit', function (event) {
     ['Seite', document.title],
     ['URL', location.href],
     ['Name', name],
-    ['Kontakt', contact],
+    ['E-Mail', contact],
     ['Projekt / Motiv', data.get('project') || 'Noch offen'],
     ['Zeitraum', data.get('date') || 'Noch offen'],
     ['Nutzung', data.get('use') || 'Noch offen'],
@@ -124,6 +140,7 @@ document.addEventListener('submit', function (event) {
       date: data.get('date') || '',
       use: data.get('use') || '',
       phone: data.get('phone') || '',
+      consent: consent ? '1' : '',
       website: data.get('website') || '',
     }),
   })

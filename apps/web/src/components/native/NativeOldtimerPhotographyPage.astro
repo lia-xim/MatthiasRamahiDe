@@ -192,7 +192,6 @@ const visualSlots = familyVisualSlots(visualDoc, [
   ...portfolioTiles.map(([, src, alt, width, height, full]) => ({ alt, full, height, src, width })),
   ...relatedAreas.map(({ alt, height, image, width }) => ({ alt, height, src: image, width })),
 ])
-const inheritedHeroSlides = heroSlides.map((_, index) => [visualSlots[index].cssFull, visualSlots[index].cssMobile])
 const inheritedStoryCards = storyCards.map((card, index) => {
   const visual = visualSlots[index + heroSlides.length]
   return { ...card, alt: visual.alt, height: visual.height, image: visual.src, width: visual.width }
@@ -320,7 +319,10 @@ const searchLinks = [
   title={metaTitle}
   description={metaDescription}
   ogImage={heroBgDesktop}
-  preloadImages={[heroBgMobile, heroBgDesktop]}
+  preloadImages={[
+    { href: heroBgMobile, media: '(max-width: 900px)' },
+    { href: heroBgDesktop, media: '(min-width: 901px)' },
+  ]}
 >
   {preview && (
     <PreviewToolbar
@@ -339,6 +341,7 @@ const searchLinks = [
       aria-label={heroLabel}
       style={`--hero-bg-desktop:url('${heroBgDesktop}');--hero-bg-mobile:url('${heroBgMobile}')`}
     >
+      <div class="hero-bg" aria-hidden="true"></div>
       <canvas id="hero-shader" aria-hidden="true" data-imgs={heroBgDesktop} data-slides={heroSlidesJson}></canvas>
       <div class="hero-glow" aria-hidden="true"></div>
       <div class="hero-aperture" aria-hidden="true"></div>

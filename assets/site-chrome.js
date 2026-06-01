@@ -800,8 +800,14 @@
             return;
           }
           if (!data.name || !data.contact) {
-            setStatus('Bitte Name und Kontaktweg (E-Mail oder Telefon) angeben.', 'error');
+            setStatus('Bitte Name und E-Mail-Adresse angeben.', 'error');
             trackConversionEvent('form_validation_error', { form: 'mr-contact' });
+            form.reportValidity();
+            return;
+          }
+          if (form.elements['contact'] && !form.elements['contact'].checkValidity()) {
+            setStatus('Bitte eine gueltige E-Mail-Adresse angeben.', 'error');
+            trackConversionEvent('form_validation_error', { form: 'mr-contact', reason: 'email' });
             form.reportValidity();
             return;
           }
@@ -848,7 +854,7 @@
                 'Kontext: ' + intent.label + '\n' +
                 'CTA: ' + (lastCta || 'Direkt / unbekannt') + '\n\n' +
                 'Name: ' + data.name + '\n' +
-                'Kontakt: ' + data.contact + '\n\n' +
+                'E-Mail: ' + data.contact + '\n\n' +
                 'Nachricht:\n' + data.message;
               window.location.href = 'mailto:info@matthiasramahi.de?subject=' +
                 encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
@@ -869,7 +875,7 @@
               'Kontext: ' + intent.label + '\n' +
               'CTA: ' + (lastCta || 'Direkt / unbekannt') + '\n\n' +
               'Name: ' + data.name + '\n' +
-              'Kontakt: ' + data.contact + '\n\n' +
+              'E-Mail: ' + data.contact + '\n\n' +
               'Nachricht:\n' + data.message;
             setStatus('Mail-App wird geöffnet …', 'ok');
             window.location.href = 'mailto:info@matthiasramahi.de?subject=' +

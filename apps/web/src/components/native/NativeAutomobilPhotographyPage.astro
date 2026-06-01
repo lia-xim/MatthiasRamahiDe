@@ -424,7 +424,10 @@ const searchLinks = [
   title={metaTitle}
   description={metaDescription}
   ogImage={visualSlots[0].full}
-  preloadImages={[visualSlots[0].mobile, visualSlots[0].full]}
+  preloadImages={[
+    { href: inheritedHeroDevelopInitialMobile, media: '(max-width: 900px)' },
+    { href: inheritedHeroDevelopInitial, media: '(min-width: 901px)' },
+  ]}
 >
   {preview && (
     <PreviewToolbar

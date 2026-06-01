@@ -94,7 +94,7 @@ button{font:inherit;color:inherit;border:0;background:transparent;cursor:pointer
 /* Light variant — alternating sections */
 .pf-spread.is-light{background:var(--paper);color:var(--ink)}
 .pf-spread.is-light h2{color:var(--ink)}
-.pf-spread.is-light .pf-spread__cta{color:rgba(13,12,10,.55)}
+.pf-spread.is-light .pf-spread__cta{color:var(--muted)}
 .pf-spread.is-light:hover .pf-spread__cta,.pf-spread.is-light:focus-within .pf-spread__cta{color:var(--ink)}
 .pf-spread.is-light .pf-photo{background:#e7e1d3}
 

@@ -9,6 +9,33 @@ type LinkFieldOptions = {
 
 const internalHosts = new Set(['matthiasramahi.de', 'www.matthiasramahi.de', 'localhost', '127.0.0.1'])
 
+const canonicalInternalHrefAliases: Record<string, string> = {
+  '/about': '/ueber-mich.html',
+  '/blog': '/blog.html',
+  '/contact': '/contact.html',
+  '/index': '/',
+  '/index.html': '/',
+  '/journal': '/blog.html',
+  '/kontakt': '/contact.html',
+  '/leistungen': '/leistungen.html',
+  '/portfolio': '/portfolio.html',
+  '/services': '/leistungen.html',
+  '/ueber-mich': '/ueber-mich.html',
+}
+
+const canonicalizeInternalHref = (href: string) => {
+  const [pathWithSearch, hash = ''] = href.split('#')
+  const [rawPath, search = ''] = pathWithSearch.split('?')
+  const suffix = `${search ? `?${search}` : ''}${hash ? `#${hash}` : ''}`
+  const path = rawPath === '/' ? '/' : rawPath.replace(/\/+$/, '')
+  const lowerPath = path.toLowerCase()
+
+  if (canonicalInternalHrefAliases[lowerPath]) return `${canonicalInternalHrefAliases[lowerPath]}${suffix}`
+  if (/^\/[^/.]+$/i.test(path)) return `${path}.html${suffix}`
+
+  return `${path || '/'}${suffix}`
+}
+
 export const normalizeHref = (value: unknown) => {
   const href = typeof value === 'string' ? value.trim() : ''
   if (!href) return href
@@ -18,10 +45,10 @@ export const normalizeHref = (value: unknown) => {
 
   try {
     const url = new URL(href)
-    if (internalHosts.has(url.hostname)) return `${url.pathname}${url.search}${url.hash}` || '/'
+    if (internalHosts.has(url.hostname)) return canonicalizeInternalHref(`${url.pathname}${url.search}${url.hash}` || '/')
     return url.toString()
   } catch {
-    return href.startsWith('/') ? href : `/${href}`
+    return canonicalizeInternalHref(href.startsWith('/') ? href : `/${href}`)
   }
 }
 

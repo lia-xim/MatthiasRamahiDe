@@ -3,16 +3,27 @@ import ContentBlocks from '../../components/ContentBlocks.astro'
 import ContactCta from '../../components/ContactCta.astro'
 import LoadMoreGallery from '../../components/LoadMoreGallery.astro'
 import BaseLayout from '../../layouts/BaseLayout.astro'
-import { getBySlug, imageDisplayUrl, routeForDoc, toAbsoluteSiteUrl } from '../../lib/payload'
+import { getBySlug, imageDisplayUrl, listDocuments, routeForDoc, toAbsoluteSiteUrl, type PayloadDoc } from '../../lib/payload'
 import { breadcrumbJsonLd, imageGalleryJsonLd, type JsonLd } from '../../lib/seo'
 
-export const prerender = false
+export const prerender = true
+
+export async function getStaticPaths() {
+  const docs = await listDocuments('portfolio-projects', { limit: 1000, depth: 2 })
+
+  return docs
+    .filter((doc): doc is PayloadDoc & { slug: string } => Boolean(doc.slug) && doc._status !== 'draft' && !doc.seo?.noIndex)
+    .map((doc) => ({
+      params: { slug: doc.slug },
+      props: { doc },
+    }))
+}
 
 const { slug } = Astro.params
 const doc = Astro.props.doc ?? (slug ? await getBySlug('portfolio-projects', slug) : null)
 
 if (!doc) {
-  return Astro.redirect('/portfolio')
+  return Astro.redirect('/portfolio.html', 308)
 }
 
 Astro.response.headers.set('cache-control', 'public, max-age=300, stale-while-revalidate=86400')
@@ -24,7 +35,7 @@ const rawDescription = doc.seo?.description || doc.excerpt || ''
 const description =
   rawDescription.length >= 70
     ? rawDescription
-    : `${doc.title || 'Portfolio-Serie'}: kuratierte Bildstrecke von Matthias Ramahi mit ausgewählten Motiven, Details und visueller Produktion aus Düsseldorf / NRW.`
+    : `${doc.title || 'Portfolio-Serie'}: kuratierte Bildstrecke von Matthias Ramahi mit ausgewaehlten Motiven, Details und visueller Produktion aus Duesseldorf / NRW.`
 const seoCanonicalUrl = doc.seo?.canonicalUrl ? toAbsoluteSiteUrl(doc.seo.canonicalUrl) : ''
 const canonicalUrl =
   seoCanonicalUrl && new URL(seoCanonicalUrl).pathname !== '/portfolio.html'

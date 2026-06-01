@@ -7,6 +7,10 @@ export type InquiryEmailData = {
   name: string
   contact: string
   message?: string
+  project?: string
+  date?: string
+  use?: string
+  phone?: string
   intentLabel?: string
   lastCta?: string
   pageTitle?: string

@@ -3,6 +3,8 @@ import path from 'node:path'
 
 import { getPayload } from 'payload'
 
+import { listNativeHtmlRouteFiles } from '../../web/src/lib/adoptedRoutes'
+import { normalizeHref } from '../src/fields/links'
 import { printPayloadScriptError } from './lib/errors'
 
 type CollectionSlug = 'site-pages' | 'service-pages' | 'local-seo-pages' | 'portfolio-projects' | 'journal-posts' | 'portfolio-categories'
@@ -74,7 +76,7 @@ const pathFromHref = (href: string) => {
 }
 
 const normalizeRouteVariants = (href: string) => {
-  const pathname = pathFromHref(href)
+  const pathname = pathFromHref(normalizeHref(href))
   if (!pathname) return []
   const variants = new Set([pathname])
   if (pathname.endsWith('.html')) variants.add(pathname.replace(/\.html$/i, ''))
@@ -126,13 +128,18 @@ const collectImages = (doc: DataRecord) => {
 
 const legacyRouteSet = () => {
   const repoRoot = path.resolve(process.cwd(), '../..')
-  const routes = new Set<string>(['/'])
+  const routes = new Set<string>(['/', '/index', '/index.html'])
+  const addHtmlRoute = (file: string) => {
+    const route = file === 'index.html' ? '/' : `/${file.replace(/^\/+/, '')}`
+    routes.add(route)
+    if (route.endsWith('.html')) routes.add(route.replace(/\.html$/i, '') || '/')
+  }
+
+  for (const file of listNativeHtmlRouteFiles()) addHtmlRoute(file)
 
   for (const file of fs.readdirSync(repoRoot)) {
     if (!file.endsWith('.html')) continue
-    const withoutExt = `/${file.replace(/\.html$/i, '')}`
-    routes.add(`/${file}`)
-    routes.add(withoutExt === '/index' ? '/' : withoutExt)
+    addHtmlRoute(file)
   }
 
   const pagesDir = path.join(repoRoot, 'apps/web/src/pages')

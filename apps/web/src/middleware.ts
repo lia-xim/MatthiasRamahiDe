@@ -1,6 +1,11 @@
 import { defineMiddleware } from 'astro:middleware'
 
-import { getLegacyRedirectTarget, getNativeHtmlFileForPath, isCmsAdoptedLegacyFile } from './lib/adoptedRoutes'
+import {
+  getLegacyPathRedirectTarget,
+  getLegacyRedirectTarget,
+  getNativeHtmlFileForPath,
+  isCmsAdoptedLegacyFile,
+} from './lib/adoptedRoutes'
 import { envFlagNotFalse } from './lib/envFlags'
 import { localSeoLayoutFamilyForSlug, localSeoParentLegacyFiles } from './lib/localSeoLayoutFamilies'
 
@@ -19,6 +24,11 @@ const adoptedRouteCacheControl = import.meta.env.DEV ? 'no-store' : 'public, max
 export const onRequest = defineMiddleware(async (context, next) => {
   const pathname = context.url.pathname
   const noindexPrefixes = ['/preview/']
+
+  const legacyPathRedirectTarget = getLegacyPathRedirectTarget(pathname)
+  if (legacyPathRedirectTarget) {
+    return permanentRedirect(`/${legacyPathRedirectTarget}${context.url.search}`)
+  }
 
   const nativeHtmlFile = getNativeHtmlFileForPath(pathname)
   const redirectTarget = getLegacyRedirectTarget(nativeHtmlFile)

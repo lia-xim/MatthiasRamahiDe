@@ -37,6 +37,73 @@ const ensureColumn = (db: DatabaseSync, table: string, column: string, definitio
   return true
 }
 
+const ensureTable = (db: DatabaseSync, table: string, sql: string) => {
+  const before = db.prepare("SELECT name FROM sqlite_master WHERE type = 'table' AND name = ?").get(table)
+  db.exec(sql)
+  return !before
+}
+
+const ensureSectionTables = (db: DatabaseSync, prefix: string, parentTable: string, versionParentTable: string) => {
+  const changes: string[] = []
+  const baseTables = [
+    [`${prefix}_hero_panels`, '"image_id" integer'],
+    [`${prefix}_statement_body`, '"text" text'],
+    [`${prefix}_shooting_styles`, '"image_id" integer, "title" text, "text" text'],
+    [`${prefix}_portfolio_tiles`, '"image_id" integer, "label" text'],
+    [`${prefix}_audience_cards`, '"image_id" integer, "number" text, "title" text, "text" text'],
+  ] as const
+  const versionTables = [
+    [`_${prefix}_v_version_hero_panels`, '"image_id" integer, "_uuid" text'],
+    [`_${prefix}_v_version_statement_body`, '"text" text, "_uuid" text'],
+    [`_${prefix}_v_version_shooting_styles`, '"image_id" integer, "title" text, "text" text, "_uuid" text'],
+    [`_${prefix}_v_version_portfolio_tiles`, '"image_id" integer, "label" text, "_uuid" text'],
+    [`_${prefix}_v_version_audience_cards`, '"image_id" integer, "number" text, "title" text, "text" text, "_uuid" text'],
+  ] as const
+
+  for (const [table, fields] of baseTables) {
+    if (
+      ensureTable(
+        db,
+        table,
+        `CREATE TABLE IF NOT EXISTS "${table}" ("_order" integer NOT NULL, "_parent_id" integer NOT NULL, "id" text PRIMARY KEY NOT NULL, ${fields})`,
+      )
+    ) {
+      changes.push(table)
+    }
+    db.exec(`CREATE INDEX IF NOT EXISTS "${table}_order_idx" ON "${table}" ("_order")`)
+    db.exec(`CREATE INDEX IF NOT EXISTS "${table}_parent_id_idx" ON "${table}" ("_parent_id")`)
+    if (fields.includes('image_id')) db.exec(`CREATE INDEX IF NOT EXISTS "${table}_image_idx" ON "${table}" ("image_id")`)
+  }
+
+  for (const [table, fields] of versionTables) {
+    if (
+      ensureTable(
+        db,
+        table,
+        `CREATE TABLE IF NOT EXISTS "${table}" ("_order" integer NOT NULL, "_parent_id" integer NOT NULL, "id" integer PRIMARY KEY NOT NULL, ${fields})`,
+      )
+    ) {
+      changes.push(table)
+    }
+    db.exec(`CREATE INDEX IF NOT EXISTS "${table}_order_idx" ON "${table}" ("_order")`)
+    db.exec(`CREATE INDEX IF NOT EXISTS "${table}_parent_id_idx" ON "${table}" ("_parent_id")`)
+    if (fields.includes('image_id')) db.exec(`CREATE INDEX IF NOT EXISTS "${table}_image_idx" ON "${table}" ("image_id")`)
+  }
+
+  if (ensureColumn(db, parentTable, 'hero_line2', 'text')) changes.push(`${parentTable}.hero_line2`)
+  if (ensureColumn(db, parentTable, 'statement_headline', 'text')) changes.push(`${parentTable}.statement_headline`)
+  if (ensureColumn(db, parentTable, 'statement_emphasis', 'text')) changes.push(`${parentTable}.statement_emphasis`)
+  if (ensureColumn(db, versionParentTable, 'version_hero_line2', 'text')) changes.push(`${versionParentTable}.version_hero_line2`)
+  if (ensureColumn(db, versionParentTable, 'version_statement_headline', 'text')) {
+    changes.push(`${versionParentTable}.version_statement_headline`)
+  }
+  if (ensureColumn(db, versionParentTable, 'version_statement_emphasis', 'text')) {
+    changes.push(`${versionParentTable}.version_statement_emphasis`)
+  }
+
+  return changes
+}
+
 const repairKnownLocalSQLiteDrift = () => {
   const databasePath = localSqlitePath()
   if (!databasePath || !fs.existsSync(databasePath)) return []
@@ -106,6 +173,9 @@ const repairKnownLocalSQLiteDrift = () => {
 
     if (!beforeHeroSlides) changes.push('site_pages_hero_slides')
     if (!beforeVersionHeroSlides) changes.push('_site_pages_v_version_hero_slides')
+
+    changes.push(...ensureSectionTables(db, 'service_pages', 'service_pages', '_service_pages_v'))
+    changes.push(...ensureSectionTables(db, 'local_seo_pages', 'local_seo_pages', '_local_seo_pages_v'))
   } finally {
     db.close()
   }

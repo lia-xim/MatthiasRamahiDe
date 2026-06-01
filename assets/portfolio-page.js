@@ -110,11 +110,13 @@
       cap.textContent = a.dataset.caption || '';
       viewer.classList.add('is-open');
       viewer.setAttribute('aria-hidden', 'false');
+      viewer.removeAttribute('inert');
       document.body.style.overflow = 'hidden';
     }
     function closeViewer(){
       viewer.classList.remove('is-open');
       viewer.setAttribute('aria-hidden', 'true');
+      viewer.setAttribute('inert', '');
       document.body.style.overflow = '';
     }
     photos.forEach(function(a, i){

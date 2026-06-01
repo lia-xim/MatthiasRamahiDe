@@ -18,6 +18,7 @@ type ContactPayload = {
   pageTitle?: string
   intentLabel?: string
   lastCta?: string
+  consent?: boolean | string
   website?: string
 }
 
@@ -26,6 +27,7 @@ export type ContactRequest = ContactPayload & {
   createdAt: string
   ipHash: string
   userAgent: string
+  consent: boolean
   status?: 'queued' | 'sent'
   lastError?: string
   attempts?: number
@@ -67,6 +69,24 @@ function firstEmail(value: string) {
   return value.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i)?.[0] || ''
 }
 
+function isSingleEmail(value: string) {
+  return /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value.trim())
+}
+
+function asBoolean(value: unknown) {
+  if (value === true) return true
+  const normalized = String(value || '').trim().toLowerCase()
+  return normalized === '1' || normalized === 'true' || normalized === 'yes' || normalized === 'on'
+}
+
+function countUrls(value: string) {
+  return (value.match(/\b(?:https?:\/\/|www\.)\S+|\b[A-Z0-9.-]+\.(?:com|net|org|info|biz|top|xyz|ru|cn|de|io|co)\b/gi) || []).length
+}
+
+function containsMarkup(value: string) {
+  return /<\s*\/?\s*[a-z][^>]*>/i.test(value)
+}
+
 function queueDir() {
   return path.resolve(env('CONTACT_QUEUE_DIR', path.join(process.cwd(), '.contact-queue')))
 }
@@ -99,7 +119,7 @@ function subjectFor(request: ContactRequest) {
 }
 
 // Interne Queue-Warnung an den Betreiber. Bleibt als schlankes String-Template
-// (kein Marken-Mailing) â€” die kundenseitigen Mails laufen ueber src/emails (react-email).
+// (kein Marken-Mailing) - die kundenseitigen Mails laufen ueber src/emails (react-email).
 function renderAlertHtml(request: ContactRequest, error: string) {
   return `<!doctype html><html lang="de"><body style="margin:0;background:#fff7f5;color:#1b1b1b;font-family:Arial,sans-serif;">
     <div style="max-width:680px;margin:0 auto;padding:32px 18px;">
@@ -222,16 +242,28 @@ export function parseContactPayload(input: unknown, request: Request): ContactRe
     website,
     ipHash,
     userAgent: clean(request.headers.get('user-agent'), 500),
+    consent: asBoolean(payload.consent),
     attempts: 0,
   }
 }
 
 export function validateContactRequest(request: ContactRequest) {
   if (request.website) return { ok: true, spam: true }
-  // Nachricht ist optional: viele geben nur Name + Kontaktweg an und wollen
-  // bewusst keinen Text schreiben. Pflicht sind daher nur Name und Kontakt.
+  if (/(?:https?:\/\/|www\.)/i.test(`${request.name} ${request.contact}`)) return { ok: true, spam: true }
+  if (countUrls(`${request.message} ${request.project}`) > 2) return { ok: true, spam: true }
+  if (containsMarkup(`${request.message} ${request.project}`)) return { ok: true, spam: true }
+
+  // Nachricht ist optional: viele geben nur Name + E-Mail an und wollen bewusst
+  // keinen Text schreiben. Fuer die Eingangsbestätigung ist aber eine echte
+  // E-Mail-Adresse Pflicht; Telefon bleibt ein optionales Zusatzfeld.
   if (!request.name || !request.contact) {
-    return { ok: false, error: 'Bitte Name und Kontaktweg (E-Mail oder Telefon) angeben.' }
+    return { ok: false, error: 'Bitte Name und E-Mail-Adresse angeben.' }
+  }
+  if (!isSingleEmail(request.contact)) {
+    return { ok: false, error: 'Bitte eine gueltige E-Mail-Adresse angeben.' }
+  }
+  if (!request.consent) {
+    return { ok: false, error: 'Bitte der Verarbeitung deiner Angaben zustimmen.' }
   }
   return { ok: true, spam: false }
 }
@@ -290,6 +322,12 @@ export async function retryQueuedContactRequests(limit = 25) {
     try {
       const request = JSON.parse(await fs.readFile(filePath, 'utf8')) as ContactRequest
       await sendAdminEmail(request, true)
+      try {
+        await sendSenderConfirmation(request)
+      } catch (confirmError) {
+        const detail = confirmError instanceof Error ? confirmError.message : 'Unknown confirmation error'
+        console.error('Queued contact confirmation failed', { id: request.id, error: detail })
+      }
       await removeQueuedRequest(filePath)
       sent += 1
     } catch (error) {

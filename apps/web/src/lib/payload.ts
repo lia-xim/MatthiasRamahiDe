@@ -73,7 +73,7 @@ export type PayloadDoc = {
   }>
   proofPoints?: Array<{ label?: string; text?: string }>
   audience?: Array<{ item?: string }>
-  // Strukturierte Themen-Seiten-Sektionen (ServicePages → Tab „Themen-Sektionen"). Alle optional → Fallback im Component.
+  // Strukturierte Themen-Seiten-Sektionen (ServicePages -> Tab "Themen-Sektionen"). Alle optional -> Fallback im Component.
   heroLine2?: string
   heroPanels?: Array<{ image?: PayloadMedia | string }>
   statement?: { headline?: string; emphasis?: string; body?: Array<{ text?: string }> }
@@ -392,10 +392,37 @@ export const toAbsoluteSiteUrl = (pathOrUrl?: string) => {
   return `${siteUrl}${pathOrUrl.startsWith('/') ? '' : '/'}${pathOrUrl}`
 }
 
+const canonicalInternalHrefAliases: Record<string, string> = {
+  '/about': '/ueber-mich.html',
+  '/blog': '/blog.html',
+  '/contact': '/contact.html',
+  '/index': '/',
+  '/index.html': '/',
+  '/journal': '/blog.html',
+  '/kontakt': '/contact.html',
+  '/leistungen': '/leistungen.html',
+  '/portfolio': '/portfolio.html',
+  '/services': '/leistungen.html',
+  '/ueber-mich': '/ueber-mich.html',
+}
+
+const canonicalizeRootRelativeHref = (href: string) => {
+  const [pathWithSearch, hash = ''] = href.split('#')
+  const [rawPath, search = ''] = pathWithSearch.split('?')
+  const suffix = `${search ? `?${search}` : ''}${hash ? `#${hash}` : ''}`
+  const path = rawPath === '/' ? '/' : rawPath.replace(/\/+$/, '')
+  const lowerPath = path.toLowerCase()
+
+  if (canonicalInternalHrefAliases[lowerPath]) return `${canonicalInternalHrefAliases[lowerPath]}${suffix}`
+  if (/^\/[^/.]+$/i.test(path)) return `${path}.html${suffix}`
+
+  return `${path || '/'}${suffix}`
+}
+
 export const toRootRelativeHref = (href?: string) => {
   if (!href) return ''
   if (/^(https?:|mailto:|tel:|#)/i.test(href)) return href
-  return href.startsWith('/') ? href : `/${href}`
+  return canonicalizeRootRelativeHref(href.startsWith('/') ? href : `/${href}`)
 }
 
 const isExternalHref = (href?: string) => Boolean(href && /^https?:\/\//i.test(href))

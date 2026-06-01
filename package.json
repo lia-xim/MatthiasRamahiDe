@@ -13,6 +13,7 @@
     "seo:audit:strict": "node tools/seo-audit.mjs --target=apps/web/dist/client --strict",
     "seo:audit:deep": "node tools/seo-deep-audit.mjs --target=apps/web/dist/client",
     "seo:audit:deep:strict": "node tools/seo-deep-audit.mjs --target=apps/web/dist/client --strict",
+    "seo:release-routing": "node tools/assert-seo-release-routing.mjs",
     "seo:fix": "node tools/print-native-seo-fix-guidance.mjs",
     "legacy:seo:fix": "node tools/print-legacy-reference-guidance.mjs",
     "legacy:freeze": "node tools/freeze-legacy-reference.mjs",

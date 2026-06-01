@@ -1,7 +1,7 @@
 ---
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import { type JournalArticle, journalArticleByLegacyFile } from '../../lib/journalArticleContent'
-import { toAbsoluteSiteUrl } from '../../lib/payload'
+import { toAbsoluteSiteUrl, toRootRelativeHref } from '../../lib/payload'
 import { breadcrumbJsonLd, faqJsonLd, type JsonLd } from '../../lib/seo'
 
 type Props = {
@@ -24,6 +24,7 @@ const primaryRelatedLink = article.links[0]
 const plainTitle = article.title.replace(/<[^>]+>/g, '')
 const seoTitle = article.seoTitle || `${plainTitle} | Matthias Ramahi`
 const canonicalUrl = `/${article.legacyFile}`
+const articleHref = (href?: string) => toRootRelativeHref(href || 'blog.html')
 const jsonLd = [
   breadcrumbJsonLd([
     { name: 'Home', url: '/' },
@@ -130,8 +131,8 @@ function sectionHtml(section: JournalArticle['sections'][number]) {
           </div>
           <div class="art-hero__inner">
             <nav class="breadcrumb" aria-label="Brotkrumen">
-              <a href="index.html">Home</a><span class="sep">/</span>
-              <a href="blog.html">Blog</a><span class="sep">/</span>
+              <a href="/">Home</a><span class="sep">/</span>
+              <a href="/blog.html">Blog</a><span class="sep">/</span>
               <span aria-current="page">{article.title.replace(/<[^>]+>/g, '')}</span>
             </nav>
             <p class="kicker">{article.category} · Werkstattbericht</p>
@@ -144,13 +145,13 @@ function sectionHtml(section: JournalArticle['sections'][number]) {
                 <dd><strong>Lesedauer</strong>{article.minutes}</dd>
                 <dd>
                   <strong>Kategorie</strong>
-                  <a href={article.categoryHref || 'blog.html'} style="color:inherit;border-bottom:1px solid currentColor">
+                  <a href={articleHref(article.categoryHref)} style="color:inherit;border-bottom:1px solid currentColor">
                     {article.category}
                   </a>
                 </dd>
                 <dd>
                   <strong>Autor</strong>
-                  <a href="ueber-mich.html" style="color:inherit;border-bottom:1px solid currentColor">Matthias Ramahi</a>
+                  <a href="/ueber-mich.html" style="color:inherit;border-bottom:1px solid currentColor">Matthias Ramahi</a>
                 </dd>
               </dl>
             </div>
@@ -218,7 +219,7 @@ function sectionHtml(section: JournalArticle['sections'][number]) {
                         <strong>{section.inlineCta.title}</strong>
                         <p>{section.inlineCta.text}</p>
                       </div>
-                      <a class="inline-cta__btn" href={section.inlineCta.href}>{section.inlineCta.label}</a>
+                      <a class="inline-cta__btn" href={articleHref(section.inlineCta.href)}>{section.inlineCta.label}</a>
                     </div>
                   )}
                 </>
@@ -231,7 +232,7 @@ function sectionHtml(section: JournalArticle['sections'][number]) {
                     <em>Weiterlesen:</em>{' '}
                     {article.links.map((link, index) => (
                       <>
-                        <a href={link.href}>{link.label}</a>{index < article.links.length - 1 ? ' · ' : ''}
+                        <a href={articleHref(link.href)}>{link.label}</a>{index < article.links.length - 1 ? ' · ' : ''}
                       </>
                     ))}
                   </p>
@@ -264,9 +265,9 @@ function sectionHtml(section: JournalArticle['sections'][number]) {
                 <h4>Matthias Ramahi</h4>
                 <p>{article.author.text}</p>
                 <div class="art-author__links">
-                  <a href="ueber-mich.html">Über mich →</a>
-                  <a href="portfolio.html">Portfolio →</a>
-                  <a href="contact.html">Projekt anfragen →</a>
+                  <a href="/ueber-mich.html">Über mich →</a>
+                  <a href="/portfolio.html">Portfolio →</a>
+                  <a href="/contact.html">Projekt anfragen →</a>
                 </div>
               </div>
             </div>
@@ -281,11 +282,11 @@ function sectionHtml(section: JournalArticle['sections'][number]) {
                   <p class="kicker" style="color:var(--red)">Weiterlesen</p>
                   <h2>Verwandte Beiträge.</h2>
                 </div>
-                <a href="blog.html">Alle Artikel →</a>
+                <a href="/blog.html">Alle Artikel →</a>
               </div>
               <div class="related__grid">
                 {article.relatedCards.map((card) => (
-                  <a class="related__card" href={card.href}>
+                  <a class="related__card" href={articleHref(card.href)}>
                     <div class="related__media">
                       <img
                         src={imagePreview(card.image).image}
@@ -314,9 +315,9 @@ function sectionHtml(section: JournalArticle['sections'][number]) {
             <h2>{article.cta.title}</h2>
             <p>{article.cta.text}</p>
             <div class="art-final__btns">
-              <a class="primary" href={article.cta.primaryHref}>{article.cta.primaryLabel}</a>
+              <a class="primary" href={articleHref(article.cta.primaryHref)}>{article.cta.primaryLabel}</a>
               {article.cta.secondaryHref && article.cta.secondaryLabel && (
-                <a class="secondary" href={article.cta.secondaryHref}>{article.cta.secondaryLabel}</a>
+                <a class="secondary" href={articleHref(article.cta.secondaryHref)}>{article.cta.secondaryLabel}</a>
               )}
             </div>
           </section>
@@ -327,7 +328,7 @@ function sectionHtml(section: JournalArticle['sections'][number]) {
         <header class="article-hero" style={supportHeroStyle(displayHero.image)} data-header-theme="dark">
           <div class="article-hero__inner">
             <nav class="breadcrumb" aria-label="Breadcrumb">
-              <a href="index.html">Home</a><span>/</span><a href="blog.html">Journal</a><span>/</span><span>{article.category}</span>
+              <a href="/">Home</a><span>/</span><a href="/blog.html">Journal</a><span>/</span><span>{article.category}</span>
             </nav>
             <p class="kicker">{article.category} · {article.minutes}</p>
             <h1>{article.title}</h1>
@@ -340,7 +341,7 @@ function sectionHtml(section: JournalArticle['sections'][number]) {
           <div class="article-grid">
             <aside>
               <p>Dieser Beitrag führt zu passenden Leistungs- und Standortseiten weiter.</p>
-              {article.links.map((link) => <a href={link.href}>{link.label}</a>)}
+              {article.links.map((link) => <a href={articleHref(link.href)}>{link.label}</a>)}
             </aside>
             <div>
               {supportSections.map((section) => (
@@ -373,7 +374,7 @@ function sectionHtml(section: JournalArticle['sections'][number]) {
           <section class="related" aria-label="Verwandte Seiten" data-header-theme="light">
             <h2>Verwandte Beiträge.</h2>
             <nav>
-              {article.links.map((link) => <a href={link.href}>{link.label}</a>)}
+              {article.links.map((link) => <a href={articleHref(link.href)}>{link.label}</a>)}
             </nav>
           </section>
         )}

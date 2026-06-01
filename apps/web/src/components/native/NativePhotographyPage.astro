@@ -45,6 +45,7 @@ const overviewMeta: Record<string, { description: string; heroLines: [string, st
 
 const { legacyFile = 'fotografie.html' } = Astro.props as Props
 const meta = overviewMeta[legacyFile] || overviewMeta['fotografie.html']
+const canonicalPath = `/${legacyFile}`
 const providedDoc = (Astro.props as Props).doc
 const doc = providedDoc || (await getSitePageByType('photography-index', liveCmsFetchOptions({ depth: 2 })))
 // Hero = identischer Startseiten-Hero (Shader/Slides), aber eigenständig ueber das
@@ -58,7 +59,7 @@ const clusterParagraphs = blockParagraphs(doc, 'Ein Einstieg', [
   'Nutzer wählen nicht aus einem generischen Portfolio, sondern steigen direkt in Automobil, Sportwagen, Oldtimer, Motorrad, Portrait oder Landschaft ein. Jede Kategorie zeigt auf ihrer Hauptseite die zugehörigen Städte und Regionen.',
 ])
 ---
-<AdoptedPageLayout legacyFile={legacyFile} current="fotografie" doc={doc} title={meta.title} description={meta.description} ctaHref="#anfrage" preloadImages={[firstHeroSlide.image]} liveCms>
+<AdoptedPageLayout legacyFile={legacyFile} current="fotografie" doc={doc} title={meta.title} description={meta.description} canonicalUrl={canonicalPath} ctaHref="#anfrage" preloadImages={[firstHeroSlide.image]} liveCms>
   <main>
     <section class="hero" data-theme="dark" aria-label="Intro" style={`background-image:url('${firstHeroSlide.image}')`}>
       <canvas id="hero-shader" aria-hidden="true" data-imgs={heroImages.join(',')} data-slides={heroSlidesJson}></canvas>

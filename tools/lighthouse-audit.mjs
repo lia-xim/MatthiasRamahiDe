@@ -4,7 +4,7 @@ import http from 'node:http'
 import path from 'node:path'
 
 import { launch } from 'chrome-launcher'
-import lighthouse from 'lighthouse'
+import lighthouse, { desktopConfig } from 'lighthouse'
 
 const args = process.argv.slice(2).filter((arg) => arg !== '--')
 const root = process.cwd()
@@ -141,19 +141,7 @@ function startStaticServer() {
 
 function lighthouseConfig(formFactor) {
   if (formFactor !== 'desktop') return undefined
-  return {
-    extends: 'lighthouse:default',
-    settings: {
-      formFactor: 'desktop',
-      screenEmulation: {
-        deviceScaleFactor: 1,
-        disabled: false,
-        height: 940,
-        mobile: false,
-        width: 1350,
-      },
-    },
-  }
+  return desktopConfig
 }
 
 function scoreOf(categories, id) {

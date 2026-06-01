@@ -295,6 +295,9 @@ const finalHeroPanels = doc?.heroPanels?.length
       return [fbTuple[0], resolved.full, resolved.mobile, resolved] as const
     })
   : inheritedHeroPanels
+const transparentHeroPixel = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=='
+const mobileHeroPreload = finalHeroPanels[1]?.[2] || finalHeroPanels[0]?.[2] || ''
+const desktopHeroPreload = finalHeroPanels[0]?.[3]?.full || ''
 
 const finalShootingStyles = doc?.shootingStyles?.length
   ? doc.shootingStyles.map((style, index) => {
@@ -442,7 +445,10 @@ const searchLinks = [
   title={metaTitle}
   description={metaDescription}
   ogImage={visualSlots[1].full}
-  preloadImages={[finalHeroPanels[0][3].full]}
+  preloadImages={[
+    { href: mobileHeroPreload, media: '(max-width: 720px)' },
+    { href: desktopHeroPreload, media: '(min-width: 721px)' },
+  ]}
 >
   {preview && (
     <PreviewToolbar
@@ -459,14 +465,14 @@ const searchLinks = [
           <div class="tri-col" data-tri={name}>
             <div class="tri-img">
               <picture>
-                <source media="(max-width: 720px)" srcset={mobileImage} />
+                <source media="(max-width: 720px)" srcset={index === 1 ? mobileImage : transparentHeroPixel} />
                 <img
                   src={image}
                   srcset={visual.srcset || undefined}
                   sizes="(max-width: 720px) 100vw, 34vw"
                   alt=""
                   loading="eager"
-                  fetchpriority={index === 0 ? 'high' : 'auto'}
+                  fetchpriority={index === 1 ? 'high' : 'auto'}
                   width={visual.width}
                   height={visual.height}
                   decoding="async"

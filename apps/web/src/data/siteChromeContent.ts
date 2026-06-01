@@ -13,15 +13,15 @@ export type SiteChromeFooterColumn = {
 export const siteChromeContent = {
   brand: {
     label: 'Matthias Ramahi',
-    href: 'index.html',
+    href: '/',
     lines: ['Matthias', 'Ramahi'],
   },
   navigation: {
     primary: [
-      { label: 'Home', href: 'index.html', navKey: 'home' },
+      { label: 'Home', href: '/', navKey: 'home' },
       { label: 'Portfolio', href: 'portfolio.html', navKey: 'portfolio' },
       { label: 'Über mich', href: 'ueber-mich.html', navKey: 'ueber-mich' },
-      { label: 'Journal', href: '/journal', navKey: 'blog' },
+      { label: 'Journal', href: 'blog.html', navKey: 'blog' },
       { label: 'Weitere Dienstleistungen', href: 'leistungen.html', navKey: 'leistungen' },
       { label: 'Kontakt', href: 'contact.html', navKey: 'kontakt' },
     ] satisfies SiteChromeLink[],
@@ -120,7 +120,7 @@ export const siteChromeContent = {
         id: 'about',
         label: 'Über mich',
         links: [
-          { label: 'Home', href: 'index.html' },
+          { label: 'Home', href: '/' },
           { label: 'Portfolio', href: 'portfolio.html' },
           { label: 'Über mich', href: 'ueber-mich.html' },
           { label: 'Journal', href: 'blog.html' },

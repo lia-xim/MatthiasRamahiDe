@@ -27,6 +27,7 @@ interface ImportMetaEnv {
   readonly CONTACT_QUEUE_DIR?: string
   readonly CONTACT_RETRY_SECRET?: string
   readonly CONTACT_IP_HASH_SALT?: string
+  readonly CONTACT_ALLOWED_ORIGINS?: string
 }
 
 interface ImportMeta {

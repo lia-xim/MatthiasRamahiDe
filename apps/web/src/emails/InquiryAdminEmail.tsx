@@ -25,6 +25,10 @@ export function InquiryAdminEmail({ data, delayed = false }: { data: InquiryEmai
   const message = (data.message || '').trim()
   const meta: Array<[string, string]> = [
     ['Themenbereich', data.intentLabel || 'Allgemein'],
+    ['Projekt / Motiv', data.project || '—'],
+    ['Zeitraum', data.date || '—'],
+    ['Nutzung', data.use || '—'],
+    ['Telefon', data.phone || '—'],
     ['Letzter CTA', data.lastCta || '—'],
     ['Seite', data.pageTitle || '—'],
     ['URL', data.pageUrl || '—'],

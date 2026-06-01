@@ -73,6 +73,34 @@ const mediaKey = (media: PayloadMedia | string | undefined) => {
 
 const cssUrl = (url: string) => (url.startsWith('http') || url.startsWith('/') ? url : `/${url}`)
 
+const cachedCmsMedia: Array<[RegExp, string]> = [
+  [/assets-portfolio-dsc3879-1920-760x507\.webp$/i, '/assets/portfolio/thumbs/_DSC3879.webp'],
+  [/assets-portfolio-dsc3879-1920(?:-1920x1280)?\.webp$/i, '/assets/optimized/assets-portfolio-dsc3879-1920.webp'],
+  [/assets-portfolio-dsc3982-1920-760x507\.webp$/i, '/assets/portfolio/thumbs/_DSC3982.webp'],
+  [/assets-portfolio-dsc3982-1920(?:-1920x1280)?\.webp$/i, '/assets/optimized/assets-portfolio-dsc3982-1920.webp'],
+  [/assets-photos-automobil-neon-1920\.webp$/i, '/assets/optimized/assets-photos-automobil-neon-1920.webp'],
+  [/assets-photos-oldtimer-stage-1920(?:-1920x1280)?\.webp$/i, '/assets/optimized/assets-photos-oldtimer-stage-1920.webp'],
+]
+
+function cachedCmsMediaUrl(url: string) {
+  const match = cachedCmsMedia.find(([pattern]) => pattern.test(url))
+  return match ? match[1] : url
+}
+
+function cachedCmsMediaSrcset(srcset: string) {
+  if (!srcset) return ''
+  return srcset
+    .split(',')
+    .map((candidate) => {
+      const parts = candidate.trim().split(/\s+/)
+      const url = parts.shift()
+      if (!url) return ''
+      return [cachedCmsMediaUrl(url), ...parts].join(' ')
+    })
+    .filter(Boolean)
+    .join(', ')
+}
+
 export async function getFamilyVisualSourceDoc(
   family: LocalSeoLayoutFamily,
   doc: PayloadDoc | null | undefined,
@@ -149,7 +177,7 @@ export function familyVisualSlots(
     if (!media) return fallbackValue
 
     if (!isPayloadMedia(media)) {
-      const mediaUrl = toDisplayAssetUrl(media)
+      const mediaUrl = cachedCmsMediaUrl(toDisplayAssetUrl(media))
       return {
         ...fallbackValue,
         cssFull: cssUrl(mediaUrl),
@@ -161,9 +189,9 @@ export function familyVisualSlots(
       }
     }
 
-    const full = imageDisplayUrl(media, 'wide', { allowOriginal: true }) || fallbackValue.full
-    const src = imageDisplayUrl(media, 'card', { allowOriginal: true }) || full
-    const mobile = imageDisplayUrl(media, 'mobile', { allowOriginal: true }) || src
+    const full = cachedCmsMediaUrl(imageDisplayUrl(media, 'wide', { allowOriginal: true }) || fallbackValue.full)
+    const src = cachedCmsMediaUrl(imageDisplayUrl(media, 'card', { allowOriginal: true }) || full)
+    const mobile = cachedCmsMediaUrl(imageDisplayUrl(media, 'mobile', { allowOriginal: true }) || src)
     const dimensions = imageDimensions(media, 'card')
 
     return {
@@ -175,7 +203,7 @@ export function familyVisualSlots(
       height: dimensions.height || media.height || fallbackValue.height,
       mobile,
       src,
-      srcset: imageSrcset(media, ['mobile', 'card', 'hero', 'wide']) || '',
+      srcset: cachedCmsMediaSrcset(imageSrcset(media, ['mobile', 'card', 'hero', 'wide']) || ''),
       width: dimensions.width || media.width || fallbackValue.width,
     }
   })

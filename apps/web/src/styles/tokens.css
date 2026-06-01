@@ -120,6 +120,12 @@ body[data-cms-layout-source="base-layout"] ::selection { background: var(--accen
 .contact-cta__details[open] summary { border-bottom: 1px solid color-mix(in oklch, var(--paper-ink) 10%, transparent); margin-bottom: 18px; }
 .contact-cta__details[open] summary::after { content: "-"; }
 .contact-cta__details > .contact-cta__row { margin-bottom: 18px; }
+.contact-cta__consent { display: flex; align-items: flex-start; gap: 11px; color: color-mix(in oklch, var(--paper-ink) 62%, transparent); font-size: 13px; line-height: 1.5; cursor: pointer; }
+.contact-cta__consent input { flex: 0 0 auto; width: 18px; height: 18px; margin: 2px 0 0; accent-color: var(--paper-ink); cursor: pointer; }
+.contact-cta__consent span { font: inherit; letter-spacing: 0; text-transform: none; color: inherit; }
+.contact-cta__consent a { color: var(--paper-ink); text-decoration: underline; text-underline-offset: 2px; }
+.contact-cta__consent a:hover { text-decoration: none; }
+.contact-cta__consent em { margin-left: 4px; font: 700 9px/1 var(--font-mono); font-style: normal; letter-spacing: 0; text-transform: uppercase; color: color-mix(in oklch, var(--paper-ink) 42%, transparent); white-space: nowrap; }
 .contact-cta__form input:focus,
 .contact-cta__form select:focus,
 .contact-cta__form textarea:focus { border-color: var(--paper-ink); box-shadow: 0 0 0 3px color-mix(in oklch, var(--paper-ink) 5%, transparent); }
