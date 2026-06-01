@@ -52,3 +52,15 @@ apps/cms/payload-dev.db*
 *.tsbuildinfo
 
 .vercel
+
+# Scratch + agent artifacts (never commit these)
+.tmp/
+/_NUL
+/critique.json
+/DESIGN-MANIFEST.json
+# Pasted/captured images dropped in the repo root by tools/agents
+/mp*-*.png
+/mp*-*.jpg
+/mp*-*.jpeg
+/mp*-*.webp
+/screencapture-*.png
