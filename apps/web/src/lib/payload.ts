@@ -130,6 +130,30 @@ export type PayloadDoc = {
       href?: string
     }>
   }
+  // Leistungs-Uebersicht (SitePages, pageType 'services-index'). Optional -> Fallback im Component.
+  servicesIndex?: {
+    overviewHeadline?: string
+    overviewEmphasis?: string
+    overviewIntro?: string
+    items?: Array<{
+      number?: string
+      overviewLabel?: string
+      headline?: string
+      emphasis?: string
+      text?: string
+      tags?: string
+      href?: string
+      image1?: PayloadMedia | string
+      caption1?: string
+      image2?: PayloadMedia | string
+      caption2?: string
+    }>
+    whyKicker?: string
+    whyHeadline?: string
+    whyEmphasis?: string
+    whyLead?: string
+    whyCards?: Array<{ label?: string; headline?: string; emphasis?: string; text?: string }>
+  }
   relatedPages?: PayloadLink[]
   blocks?: unknown[]
   cta?: PayloadCta

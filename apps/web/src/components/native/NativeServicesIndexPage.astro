@@ -1,16 +1,27 @@
 ---
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
-import { servicesHeroSlides, servicesIndexItems } from '../../lib/nativeContent'
-import { getSitePageByType, type PayloadDoc } from '../../lib/payload'
+import { servicesHeroSlides, servicesIndexItems as fallbackServices } from '../../lib/nativeContent'
+import {
+  getSitePageByType,
+  imageAlt,
+  imageDimensions,
+  imageDisplayUrl,
+  toRootRelativeHref,
+  type PayloadDoc,
+  type PayloadMedia,
+} from '../../lib/payload'
 
 const providedDoc = Astro.props.doc as PayloadDoc | undefined
 const doc = providedDoc || (await getSitePageByType('services-index', { depth: 2 }))
+
+// Hero: bewusst code-definiert (wie Fotografie-Uebersicht). Erste Lead ggf. aus CMS-Intro.
 const heroSlides = servicesHeroSlides.map((slide, index) =>
   index === 0 && doc?.intro ? { ...slide, lead: doc.intro } : slide,
 )
 const firstHeroSlide = heroSlides[0]
 const heroImages = heroSlides.map((slide) => slide.image)
 const heroSlidesJson = JSON.stringify(heroSlides)
+
 const overviewOrder = ['fotolabor', 'werbetechnik', 'webdesign', 'videografie', 'viola', 'grossformat']
 const overviewLabels: Record<string, string> = {
   fotolabor: 'Fine Art',
@@ -20,13 +31,101 @@ const overviewLabels: Record<string, string> = {
   videografie: 'Motion',
   viola: 'Live',
 }
-const overviewImageIndex: Record<string, number> = {
-  viola: 1,
-  webdesign: 1,
+const overviewImageIndex: Record<string, number> = { viola: 1, webdesign: 1 }
+
+const hasText = (value?: string): value is string => typeof value === 'string' && value.trim().length > 0
+const stripHtml = (value = '') => value.replace(/<[^>]+>/g, '')
+// Hebt das Emphasis-Wort als Substring kursiv hervor (funktioniert auch mitten im Wort).
+const emphasize = (headline = '', emphasis = '') =>
+  hasText(emphasis) && headline.includes(emphasis) ? headline.replace(emphasis, `<em>${emphasis}</em>`) : headline
+
+const cms = doc?.servicesIndex
+const cmsItems = cms?.items || []
+
+type ServiceImage = { src: string; alt: string; caption: string; className?: string; width?: number; height?: number }
+type FallbackService = (typeof fallbackServices)[number]
+
+const buildCmsImages = (item: NonNullable<typeof cmsItems>[number], fb?: FallbackService): ServiceImage[] => {
+  const slots = [
+    { image: item.image1, caption: item.caption1 },
+    { image: item.image2, caption: item.caption2 },
+  ].filter((slot): slot is { image: PayloadMedia | string; caption: string | undefined } => Boolean(slot.image))
+  if (!slots.length) return fb?.images ?? []
+  return slots.map((slot, idx) => {
+    const dimensions = imageDimensions(slot.image, 'card')
+    return {
+      src: imageDisplayUrl(slot.image, 'card', { allowOriginal: true }),
+      alt: imageAlt(slot.image, stripHtml(fb?.headline ?? '')),
+      caption: slot.caption || fb?.images[idx]?.caption || '',
+      className: fb?.images[idx]?.className ?? (idx === 1 ? 'small' : ''),
+      width: dimensions.width || fb?.images[idx]?.width,
+      height: dimensions.height || fb?.images[idx]?.height,
+    }
+  })
 }
+
+const mergeService = (fb: FallbackService | undefined, item: NonNullable<typeof cmsItems>[number] | undefined, index: number) => {
+  const id = fb?.id || `leistung-${index + 1}`
+  const headline = item && hasText(item.headline) ? emphasize(item.headline, item.emphasis) : fb?.headline ?? ''
+  const tags =
+    item && hasText(item.tags)
+      ? item.tags.split(',').map((tag) => tag.trim()).filter(Boolean)
+      : fb?.tags ?? []
+  return {
+    id,
+    theme: fb?.theme ?? (index % 2 === 0 ? 'light' : 'dark'),
+    href: item && hasText(item.href) ? toRootRelativeHref(item.href) : fb?.href ?? '#',
+    number: item && hasText(item.number) ? item.number! : fb?.number ?? '',
+    overviewLabel: item && hasText(item.overviewLabel) ? item.overviewLabel! : overviewLabels[id] || 'Leistung',
+    headline,
+    text: item && hasText(item.text) ? item.text! : fb?.text ?? '',
+    tags,
+    images: item ? buildCmsImages(item, fb) : fb?.images ?? [],
+  }
+}
+
+// Positioneller Merge: Code-Defaults sind die Basis, CMS ueberschreibt pro Position.
+const baseLength = Math.max(fallbackServices.length, cmsItems.length)
+const items = Array.from({ length: baseLength }, (_, index) =>
+  mergeService(fallbackServices[index], cmsItems[index], index),
+).filter((service) => hasText(stripHtml(service.headline)))
+
 const overviewItems = overviewOrder
-  .map((id) => servicesIndexItems.find((service) => service.id === id))
-  .filter((service): service is (typeof servicesIndexItems)[number] => Boolean(service))
+  .map((id) => items.find((service) => service.id === id))
+  .filter((service): service is (typeof items)[number] => Boolean(service))
+
+const overviewHead = {
+  headlineHtml:
+    cms && hasText(cms.overviewHeadline)
+      ? emphasize(cms.overviewHeadline, cms.overviewEmphasis)
+      : 'Dienstleistungen <em>im Überblick.</em>',
+  intro: hasText(cms?.overviewIntro)
+    ? cms!.overviewIntro!
+    : 'Vom einzelnen Fine-Art-Print bis zur kompletten Markenfläche, Website, Filmproduktion oder Eventbegleitung. Sechs ergänzende Bereiche, ein gemeinsamer visueller Anspruch.',
+}
+
+const fallbackWhyCards = [
+  { label: 'Koordination', headlineHtml: 'Ein Ansprechpartner, <em>weniger Reibung.</em>', text: 'Abstimmung, Reihenfolge und Partner werden gebündelt, damit das Projekt nicht zwischen Gewerken zerfällt.' },
+  { label: 'Qualität', headlineHtml: 'Ein visueller Anspruch <em>über alle Medien.</em>', text: 'Druck, Website, Video oder Event-Auftritt werden nicht einzeln gedacht, sondern auf dieselbe Bildsprache ausgerichtet.' },
+  { label: 'Netzwerk', headlineHtml: 'Spezialisierte Partner <em>aus Düsseldorf &amp; NRW.</em>', text: 'Kurze Wege, klare Kommunikation und erfahrene Partner für Produktion, Präsentation und digitale Umsetzung.' },
+  { label: 'Lösung', headlineHtml: 'Keine <em>Standardpakete.</em>', text: 'Format, Material, Umfang und Timing richten sich nach dem Projekt — nicht nach einer festen Schablone.' },
+]
+const why = {
+  kicker: hasText(cms?.whyKicker) ? cms!.whyKicker! : 'Projektablauf',
+  headlineHtml:
+    cms && hasText(cms.whyHeadline) ? emphasize(cms.whyHeadline, cms.whyEmphasis) : 'Ein Bildsystem, <em>mehrere Ausgänge.</em>',
+  lead: hasText(cms?.whyLead)
+    ? cms!.whyLead!
+    : 'Der Vorteil liegt nicht in möglichst vielen Leistungen, sondern in einem sauber geführten Prozess: Bildsprache, Material, digitale Präsenz und Präsentation wirken am Ende wie ein zusammenhängender Auftritt.',
+  cards:
+    cms?.whyCards && cms.whyCards.length > 0
+      ? cms.whyCards.map((card) => ({
+          label: card.label || '',
+          headlineHtml: emphasize(card.headline || '', card.emphasis),
+          text: card.text || '',
+        }))
+      : fallbackWhyCards,
+}
 ---
 <AdoptedPageLayout
   legacyFile="leistungen.html"
@@ -60,16 +159,16 @@ const overviewItems = overviewOrder
     <section class="overview" id="overview" data-header-theme="light" aria-label="Unsere Dienstleistungen im Überblick">
       <div class="overview-inner">
         <div class="overview-head">
-          <h2>Dienstleistungen <em>im Überblick.</em></h2>
-          <p>Vom einzelnen Fine-Art-Print bis zur kompletten Markenfläche, Website, Filmproduktion oder Eventbegleitung. Sechs ergänzende Bereiche, ein gemeinsamer visueller Anspruch.</p>
+          <h2 set:html={overviewHead.headlineHtml}></h2>
+          <p>{overviewHead.intro}</p>
         </div>
         <div class="overview-grid">
           {overviewItems.map((service) => {
             const image = service.images[overviewImageIndex[service.id] || 0] || service.images[0]
             return (
               <a class="overview-tile" href={service.href}>
-                <img src={image.src} alt={image.alt} loading="lazy" width={image.width} height={image.height} decoding="async" />
-                <div class="label"><strong set:html={service.headline.replace(/\.$/, '')}></strong><span>{overviewLabels[service.id] || 'Leistung'}</span></div>
+                {image && <img src={image.src} alt={image.alt} loading="lazy" width={image.width} height={image.height} decoding="async" />}
+                <div class="label"><strong set:html={service.headline.replace(/\.$/, '')}></strong><span>{service.overviewLabel}</span></div>
               </a>
             )
           })}
@@ -79,7 +178,7 @@ const overviewItems = overviewOrder
 
     <section class="services" data-header-theme="light" aria-label="Leistungsdetails">
       <div class="services-list">
-        {servicesIndexItems.map((service) => (
+        {items.map((service) => (
           <a class="service" id={service.id} href={service.href} data-header-theme={service.theme}>
             <div class="service-copy">
               <h3 set:html={service.headline}></h3>
@@ -101,12 +200,11 @@ const overviewItems = overviewOrder
 
     <section class="why" data-header-theme="dark" aria-label="Warum alles aus einer Hand Sinn ergibt">
       <div class="why-inner">
-        <div class="why-copy"><p class="kicker">Projektablauf</p><h2>Ein Bildsystem, <em>mehrere Ausgänge.</em></h2><p class="why-lead">Der Vorteil liegt nicht in möglichst vielen Leistungen, sondern in einem sauber geführten Prozess: Bildsprache, Material, digitale Präsenz und Präsentation wirken am Ende wie ein zusammenhängender Auftritt.</p></div>
+        <div class="why-copy"><p class="kicker">{why.kicker}</p><h2 set:html={why.headlineHtml}></h2><p class="why-lead">{why.lead}</p></div>
         <div class="why-board">
-          <article class="why-card"><span>Koordination</span><strong>Ein Ansprechpartner, <em>weniger Reibung.</em></strong><p>Abstimmung, Reihenfolge und Partner werden gebündelt, damit das Projekt nicht zwischen Gewerken zerfällt.</p></article>
-          <article class="why-card"><span>Qualität</span><strong>Ein visueller Anspruch <em>über alle Medien.</em></strong><p>Druck, Website, Video oder Event-Auftritt werden nicht einzeln gedacht, sondern auf dieselbe Bildsprache ausgerichtet.</p></article>
-          <article class="why-card"><span>Netzwerk</span><strong>Spezialisierte Partner <em>aus Düsseldorf &amp; NRW.</em></strong><p>Kurze Wege, klare Kommunikation und erfahrene Partner für Produktion, Präsentation und digitale Umsetzung.</p></article>
-          <article class="why-card"><span>Lösung</span><strong>Keine <em>Standardpakete.</em></strong><p>Format, Material, Umfang und Timing richten sich nach dem Projekt — nicht nach einer festen Schablone.</p></article>
+          {why.cards.map((card) => (
+            <article class="why-card"><span>{card.label}</span><strong set:html={card.headlineHtml}></strong><p>{card.text}</p></article>
+          ))}
         </div>
       </div>
     </section>

@@ -5,6 +5,7 @@ import * as migration_20260530_193435_svc_sections from './20260530_193435_svc_s
 import * as migration_20260531_120000_local_seo_sections from './20260531_120000_local_seo_sections';
 import * as migration_20260601_120000_home_sections from './20260601_120000_home_sections';
 import * as migration_20260601_140000_photography_index_sections from './20260601_140000_photography_index_sections';
+import * as migration_20260602_120000_services_index_sections from './20260602_120000_services_index_sections';
 
 export const migrations = [
   {
@@ -41,5 +42,10 @@ export const migrations = [
     up: migration_20260601_140000_photography_index_sections.up,
     down: migration_20260601_140000_photography_index_sections.down,
     name: '20260601_140000_photography_index_sections'
+  },
+  {
+    up: migration_20260602_120000_services_index_sections.up,
+    down: migration_20260602_120000_services_index_sections.down,
+    name: '20260602_120000_services_index_sections'
   },
 ];

@@ -9,6 +9,7 @@ import { homeHeroSlides } from '../fields/homeHeroSlides'
 import { homeSectionsTab } from '../fields/homeSections'
 import { legacyMigrationFields } from '../fields/legacyMigration'
 import { photographyIndexSectionsTab } from '../fields/photographyIndexSections'
+import { servicesIndexSectionsTab } from '../fields/servicesIndexSections'
 import { seoFields } from '../fields/seo'
 import { slugField } from '../fields/slug'
 import { applyEditorialDefaults } from '../hooks/autoDefaults'
@@ -26,6 +27,8 @@ const singleImagePages = (data: Record<string, unknown> | undefined) => !heroSli
 const homePage = (data: Record<string, unknown> | undefined) => ((data?.pageType as string) ?? '') === 'home'
 const photographyIndexPage = (data: Record<string, unknown> | undefined) =>
   ((data?.pageType as string) ?? '') === 'photography-index'
+const servicesIndexPage = (data: Record<string, unknown> | undefined) =>
+  ((data?.pageType as string) ?? '') === 'services-index'
 
 export const SitePages: CollectionConfig = {
   slug: 'site-pages',
@@ -135,6 +138,10 @@ export const SitePages: CollectionConfig = {
         {
           ...photographyIndexSectionsTab,
           admin: { condition: photographyIndexPage },
+        },
+        {
+          ...servicesIndexSectionsTab,
+          admin: { condition: servicesIndexPage },
         },
         {
           label: 'Inhalt',
