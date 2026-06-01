@@ -98,6 +98,13 @@
       text-wrap:balance}
     .hero-pt.is-revealed .hero-pt__title{opacity:1;transform:translateY(0)}
     .hero-pt__title em{font-style:italic;font-weight:500;color:#fff;letter-spacing:-.025em}
+    .hero-pt__title.hero-pt__title--local{
+      font-size:clamp(42px,6.8vw,118px);
+      line-height:.9;
+      bottom:clamp(390px,43vh,500px);
+      max-width:min(1180px,calc(100vw - 120px));
+    }
+    .hero-pt__title.hero-pt__title--local em{display:block}
 
     /* Sub-Block am unteren Rand */
     .hero-pt__sub-block{position:absolute;left:clamp(20px,4vw,60px);right:clamp(20px,4vw,60px);
@@ -233,6 +240,7 @@
       .hero-pt__sub-block{flex-direction:column;align-items:flex-start;gap:22px}
       .hero-pt__copy,.hero-pt__sub{max-width:520px}
       .hero-pt__title{font-size:clamp(42px,9vw,108px);bottom:clamp(220px,32vh,300px)}
+      .hero-pt__title.hero-pt__title--local{font-size:clamp(38px,7.6vw,78px);bottom:clamp(430px,50vh,520px);max-width:calc(100vw - 40px)}
       .mod-pt__grid{grid-template-columns:repeat(2,1fr)}
       .fw-pt__head{grid-template-columns:1fr;gap:18px;align-items:start}
       .fw-pt__lead{justify-self:start;padding-bottom:0}
@@ -248,6 +256,7 @@
     @media (max-width:780px){
       .st-pt__inner{grid-template-columns:1fr}
       .hero-pt__title{font-size:clamp(42px,11vw,76px);bottom:clamp(240px,36vh,320px)}
+      .hero-pt__title.hero-pt__title--local{font-size:clamp(32px,8.6vw,54px);bottom:clamp(330px,48vh,430px)}
       .hero-pt__sub-block{bottom:clamp(28px,5vh,56px)}
       .hero-pt__local-note{font-size:10px;letter-spacing:.18em}
       .mod-pt__grid{grid-template-columns:1fr}

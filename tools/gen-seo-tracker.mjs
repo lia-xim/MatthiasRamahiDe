@@ -23,6 +23,14 @@ const cityLabel = { 'bergisch-gladbach':'bergisch gladbach', koeln:'köln', moen
 const richCopy = new Set(['auto-fotografieren-tipps','auto-fotoshooting','bilder-mit-auto','fotoshooting-mit-auto','motorsport-fotografie','motorsport-sportwagen-fotografie','portrait-fotoshooting','portraitfotografie-beleuchtung','dating-fotoshooting','fotoshooting-gutschein','fotoshooting-preise','paarshooting-familienshooting','schwarz-weiss-portrait-fotografie','business-portrait','headshot-fotograf','personal-branding-fotografie','unternehmensportrait','pressefoto'])
 const faqKeys = new Set(['automobil-fotografie','sportwagen-fotografie','oldtimer-fotografie','motorrad-fotografie','portraitfotografie','landschaftsfotografie','business-portrait','headshot-fotograf','personal-branding-fotografie','unternehmensportrait','pressefoto'])
 const famParent = { automobil: 'automobil-fotografie', sportwagen: 'sportwagen-fotografie', oldtimer: 'oldtimer-fotografie', motorrad: 'motorrad-fotografie', portrait: 'portraitfotografie', landschaft: 'landschaftsfotografie' }
+const parentHeroLabels = {
+  automobil: 'Automobilfotografie',
+  sportwagen: 'Sportwagenfotografie',
+  oldtimer: 'Oldtimerfotografie',
+  motorrad: 'Motorradfotografie',
+  portrait: 'Porträtfotografie',
+  landschaft: 'Landschaftsfotografie',
+}
 
 const labelFromSlug = (slug) => slug
   .split('-')
@@ -72,7 +80,7 @@ const between = (n, lo, hi) => n >= lo && n <= hi
 const meaningfulWords = (s) => toWords(s).filter((w) => w.length > 3 && !STOP.has(w))
 const meaningfulLine = (s) => meaningfulWords(s).join(' ')
 const cityVisibleInText = (text, geo) => {
-  if (!geo || geo === 'generic' || geo === 'überregional' || geo === 'Düsseldorf (Parent)') return true
+  if (!geo || geo === 'generic' || geo === 'überregional' || geo === 'Kategorie-Hub') return true
   const haystack = new Set(toWords(text))
   const labelWords = toWords(cityLabel[geo] || geo)
   const slugWords = toWords(geo)
@@ -91,6 +99,10 @@ const localTargetVisibleInHeadings = (headings, row, scoredRow) => {
   return (headings || [])
     .slice(0, 5)
     .some((heading) => cityVisibleInText(heading, row.scope) && serviceVisibleInText(heading, service))
+}
+const targetVisibleInHeading = (heading, row, scoredRow) => {
+  const service = scoredRow?.e?.service || scoredRow?.e?.targetKeyword || labelFromSlug(row.prefix)
+  return cityVisibleInText(heading, row.scope) && serviceVisibleInText(heading, service)
 }
 const authoredTextVisible = (mainText, sourceText, signatureLength = 9) => {
   const sig = meaningfulWords(sourceText).slice(0, signatureLength)
@@ -212,7 +224,7 @@ function classify(slug) {
   if (!m) return null
   const rest = slug === m.p ? '' : slug.slice(m.p.length + 1)
   let scope = 'überregional', kind = 'keyword'
-  if (rest === '') { const isP = m.p === famParent[m.fam]; scope = isP ? 'Düsseldorf (Parent)' : 'überregional'; kind = isP ? 'PARENT' : 'keyword' }
+  if (rest === '') { const isP = m.p === famParent[m.fam]; scope = isP ? 'Kategorie-Hub' : 'überregional'; kind = isP ? 'PARENT' : 'keyword' }
   else if (cityTokens.includes(rest)) { scope = rest; kind = 'city' }
   return { fam: m.fam, prefix: m.p, scope, kind }
 }
@@ -288,12 +300,15 @@ const builtByLocalFile = new Map(allBuiltPages.filter((page) => page.route.endsW
 const buildAuditRows = rows.map((r) => {
   const page = builtByLocalFile.get(r.file)
   const sc = byFile.get(r.file)
+  const expectedService = r.kind === 'PARENT' ? parentHeroLabels[r.fam] : sc?.e?.service || sc?.e?.targetKeyword || labelFromSlug(r.prefix)
   const issues = []
   if (!page) {
     issues.push('HTML fehlt')
   } else {
+    if (!serviceVisibleInText(page.h1, expectedService)) issues.push('H1 ohne Ziel')
     if (r.kind === 'city' && !cityVisibleInText(page.h1, r.scope)) issues.push('H1 ohne Ort')
-    if (r.kind === 'city' && !localTargetVisibleInHeadings(page.h2s, r, sc)) issues.push('Lokale H2 ohne Ziel')
+    if (r.kind !== 'PARENT' && !targetVisibleInHeading(page.h2s[0] || '', r, sc)) issues.push('Erste H2 ohne Ziel')
+    if (r.kind !== 'PARENT' && !localTargetVisibleInHeadings(page.h2s, r, sc)) issues.push('Fruehe H2 ohne Ziel')
     if (r.kind === 'city' && sc?.e?.seo?.description && cityVisibleInText(sc.e.seo.description, r.scope) && !cityVisibleInText(page.description, r.scope)) issues.push('Desc ohne Ort')
     if (sc?.e?.intro && !authoredIntroVisible(page.mainText, sc.e.intro)) issues.push('Intro fehlt im HTML')
     const statementText = authoredStatementText(sc?.e?.statement)
@@ -334,8 +349,8 @@ md += `## Websiteweite Seiteninventur\n`
 md += `- Gebaute HTML-Seiten insgesamt: ${allBuiltPages.length} · indexierbar: ${allIndexablePages.length} · noindex/Redirect: ${allBuiltPages.length - allIndexablePages.length}\n`
 md += `- Typen: ${[...byType.entries()].sort((a, b) => a[0].localeCompare(b[0])).map(([type, count]) => `${type}: ${count}`).join(' · ')}\n`
 md += `- Doppelte Title auf indexierbaren Seiten: ${websiteDuplicateTitles.length} · fehlende Canonicals: ${websiteCanonicalIssues.length} · Title-Laenge ausserhalb 25-70: ${websiteTitleIssues.length} · Description-Laenge ausserhalb 90-170: ${websiteDescriptionIssues.length}\n\n`
-md += `- Local-SEO-Build-Abgleich: H1 ohne Ort: ${buildIssueCount('H1 ohne Ort')} · lokale H2 ohne Ziel: ${buildIssueCount('Lokale H2 ohne Ziel')} · Keyword fehlt im HTML: ${buildIssueCount('Keyword fehlt im HTML')} · Description ohne Ort: ${buildIssueCount('Desc ohne Ort')}\n`
-md += `- Local-SEO-CMS-Ausspielung: Intro fehlt: ${buildIssueCount('Intro fehlt im HTML')} · Statement fehlt: ${buildIssueCount('Statement fehlt im HTML')} · Audience-Cards fehlen: ${buildIssueCount('Audience fehlt im HTML')} · FAQ fehlt: ${buildIssueCount('FAQ fehlt im HTML')}\n\n`
+md += `- Local-/Keyword-Build-Abgleich: H1 ohne Ziel: ${buildIssueCount('H1 ohne Ziel')} · H1 ohne Ort: ${buildIssueCount('H1 ohne Ort')} · erste H2 ohne Ziel: ${buildIssueCount('Erste H2 ohne Ziel')} · fruehe H2 ohne Ziel: ${buildIssueCount('Fruehe H2 ohne Ziel')} · Keyword fehlt im HTML: ${buildIssueCount('Keyword fehlt im HTML')} · Description ohne Ort: ${buildIssueCount('Desc ohne Ort')}\n`
+md += `- CMS-Ausspielung: Intro fehlt: ${buildIssueCount('Intro fehlt im HTML')} · Statement fehlt: ${buildIssueCount('Statement fehlt im HTML')} · Audience-Cards fehlen: ${buildIssueCount('Audience fehlt im HTML')} · FAQ fehlt: ${buildIssueCount('FAQ fehlt im HTML')}\n\n`
 if (websiteCanonicalIssues.length || websiteTitleIssues.length || websiteDescriptionIssues.length || websiteDuplicateTitles.length) {
   md += `**Websiteweite Flags:**\n`
   for (const page of websiteCanonicalIssues.slice(0, 20)) md += `- Canonical fehlt: \`${page.route}\`\n`
@@ -360,7 +375,7 @@ md += `## Scoring-Methodik\n`
 md += `- **Q · SEO-Qualität (0–100):** Struktur (Intro 180–760 Z., 2 Statement-Absätze ≥110, ≥4 Audience-Cards, 4 FAQ ≥80) **+ thematische Abdeckung** (SEO-Title 30–70, Description 115–170, Fokus-Keyword im Intro, lokaler Ortsname im Intro bei Stadt-Seiten, echte W-Frage in den FAQ).\n`
 md += `- **U · Content-Einzigartigkeit (0–100):** \`100 × (1 − max. Prosa-Ähnlichkeit)\` (Jaccard über Wort-Trigramme des Fließtexts gegen **alle** Seiten) → erkennt **Duplicate Content**.\n`
 md += `- **K · Intent-Trennung / Anti-Kannibalisierung (0–100):** \`100 × (1 − max. Ziel-Überlappung)\`. Ziel = Title-/Keyword-Tokens **ohne** Marke, **ohne** generische Wörter (fotografie/foto/shooting…) und **ohne** den Ortsnamen — verglichen nur **innerhalb derselben Familie + desselben Ortes** (dort entsteht Kannibalisierung). Niedriges K = zwei Seiten zielen am selben Ort auf denselben Begriff.\n\n`
-md += `- **Build-Check:** vergleicht die gebaute HTML-Seite mit dem authored CMS-Content. Rot wird: Stadtseite ohne Ort im H1, keine fruehe lokale H2 mit Service+Ort, Kernkeyword nicht sichtbar, Description ohne Ort oder authored Sektionen (Intro/Statement/Audience/FAQ) nicht im HTML.\n\n`
+md += `- **Build-Check:** vergleicht die gebaute HTML-Seite mit dem authored CMS-Content. Rot wird: Hauptseite ohne Kategorie-Fotografie im H1, Keyword-/Stadtseite ohne Ziel im H1, Stadtseite ohne Ort im H1, erste H2 ohne Zielbegriff und ggf. Ort, keine fruehe H2 mit Zielbegriff und ggf. Ort, Kernkeyword nicht sichtbar, Description ohne Ort oder authored Sektionen (Intro/Statement/Audience/FAQ) nicht im HTML.\n\n`
 md += `**Interpretation — bei allen drei gilt: höher = besser (Skala 0–100).**\n`
 md += `- **Qualität:** hoch = Seite ist inhaltlich vollständig + thematisch sauber (Keyword/Ort/FAQ abgedeckt). Niedrig = etwas fehlt oder ist zu kurz.\n`
 md += `- **Einzigartigkeit:** hoch = der Text teilt fast nichts mit anderen Seiten (kein Duplicate Content). Niedrig = zu ähnlich zu einer anderen Seite.\n`

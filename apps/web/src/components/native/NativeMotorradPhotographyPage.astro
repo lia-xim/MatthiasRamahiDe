@@ -48,9 +48,9 @@ const cmsText = (value: unknown) => (typeof value === 'string' ? value.trim() : 
 const cmsHeroLine2 = cmsText(doc?.heroLine2)
 const cmsStatementBody = doc?.statement?.body?.map((entry) => cmsText(entry.text)).filter(Boolean) || []
 const isLocalHeroPage = !isParentPage && !isKeywordPage
-const heroTitle = isLocalHeroPage ? serviceLabel : keywordFocusCopy?.heroTitle || 'Motorrad'
-const heroSecondLine = isLocalHeroPage ? scope.label : cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Fotografie.'
-const heroLocalNote = isLocalHeroPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Maschine. Haltung. Detail.' : ''
+const heroTitle = isParentPage ? 'Motorradfotografie' : serviceLabel
+const heroSecondLine = isLocalHeroPage ? scope.label : ''
+const heroLocalNote = isLocalHeroPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Maschine. Haltung. Detail.' : isKeywordPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || '' : ''
 const heroLabel = isParentPage || isKeywordPage ? 'Motorradfotografie' : `Motorradfotografie ${scope.label}`
 const defaultHeroLead = isParentPage
   ? 'Motorradfotografie: Silhouette, Mechanik, Haltung, Detail und Fahrerbezug werden als kraftvolle Serie geplant — für Custom Bikes, Händler, Werkstätten und private Maschinen. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.'
@@ -126,10 +126,15 @@ const heroSlides = [
 // when present, otherwise synthesise one from the large `full` source.
 const slotSrcset = (slot: (typeof visualSlots)[number]) => slot.srcset || `${slot.full} 1920w`
 
-const focusIntroHeadline = cmsText(doc?.statement?.headline) || keywordFocusCopy?.pullHeadline || (isParentPage || isKeywordPage ? 'Geschwindigkeit und Leidenschaft' : `Motorrad in ${scope.label}`)
-const focusIntroEmphasis = cmsText(doc?.statement?.emphasis) || keywordFocusCopy?.pullEmphasis || (isParentPage || isKeywordPage ? 'auf Bildern.' : 'mit Haltung.')
+const firstSectionTarget = isLocalHeroPage ? `${serviceLabel} ${scope.label}` : isKeywordPage ? serviceLabel : ''
+const focusIntroHeadlineSource = cmsText(doc?.statement?.headline) || keywordFocusCopy?.pullHeadline || (isParentPage || isKeywordPage ? 'Geschwindigkeit und Leidenschaft' : `Motorrad in ${scope.label}`)
+const focusIntroEmphasisSource = cmsText(doc?.statement?.emphasis) || keywordFocusCopy?.pullEmphasis || (isParentPage || isKeywordPage ? 'auf Bildern.' : 'mit Haltung.')
+const focusIntroHeadline = firstSectionTarget || focusIntroHeadlineSource
+const focusIntroEmphasis = firstSectionTarget ? '' : focusIntroEmphasisSource
 const focusIntroTitle = splitTrailingEmphasis(focusIntroHeadline, focusIntroEmphasis)
-const focusIntroParagraphs = cmsStatementBody.length
+const focusIntroSourceTitle = splitTrailingEmphasis(focusIntroHeadlineSource, focusIntroEmphasisSource)
+const focusIntroSupportLine = firstSectionTarget ? [focusIntroSourceTitle.headline, focusIntroSourceTitle.emphasis].filter(Boolean).join(' ') : ''
+const focusIntroBaseParagraphs = cmsStatementBody.length
   ? cmsStatementBody
   : keywordFocusCopy?.statementBody?.length
     ? keywordFocusCopy.statementBody
@@ -142,16 +147,17 @@ const focusIntroParagraphs = cmsStatementBody.length
       `Motorradfotografie in ${scope.label} wird auf Maschine, Fahrerbezug, Standort und Nutzung geplant. Das Bike soll kraftvoll wirken, ohne dass die Serie nach Zufall oder Parkplatzbild aussieht.`,
       `Fuer ${scope.label} werden Treffpunkt, Lichtfenster und Bildtypen vorab geklaert: Standbild, Detail, Fahrerportrait, Social-Crop oder Verkaufsserie.`,
     ]
-const focusModuleHeadline = isLocalHeroPage ? serviceLabel : keywordFocusCopy?.sectionHeadline || (isParentPage || isKeywordPage ? 'Vom Detail' : `Vom Detail in ${scope.label}`)
-const focusModuleEmphasis = isLocalHeroPage ? `${scope.label}.` : keywordFocusCopy?.sectionEmphasis || (isParentPage || isKeywordPage ? 'bis zur Kurve.' : 'bis zum Fahrerbild.')
+const focusIntroParagraphs = focusIntroSupportLine ? [focusIntroSupportLine, ...focusIntroBaseParagraphs] : focusIntroBaseParagraphs
+const focusModuleHeadline = isLocalHeroPage || isKeywordPage ? serviceLabel : keywordFocusCopy?.sectionHeadline || (isParentPage ? 'Vom Detail' : `Vom Detail in ${scope.label}`)
+const focusModuleEmphasis = isLocalHeroPage ? `${scope.label}.` : isKeywordPage ? 'klar geplant.' : keywordFocusCopy?.sectionEmphasis || (isParentPage ? 'bis zur Kurve.' : 'bis zum Fahrerbild.')
 const focusModuleLead = isParentPage || isKeywordPage
   ? keywordFocusCopy?.sectionLead || 'Sechs Bildtypen, die ich anbiete - vom ruhigen Standschuss bis zum Pan-Shot in der Schraeglage. Jede Serie wird aus diesen Modulen zusammengestellt, je nach Bike, Anlass und Verwendung.'
   : `Die Serie fuer ${scope.label} kann ruhig oder dynamisch gebaut werden: Silhouette, Mechanik, Fahrerbezug, Detail und Hochformat werden nach Nutzung kombiniert.`
-const focusPortfolioHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}: Bildserie.` : cmsText(doc?.portfolioTiles?.[0]?.label) || keywordFocusCopy?.galleryHeadline || (isParentPage || isKeywordPage ? 'Aktuelle Arbeiten.' : `Motorrad-Arbeiten ${scope.label}.`)
+const focusPortfolioHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}: Bildserie.` : isKeywordPage ? `${serviceLabel}: Bildserie.` : cmsText(doc?.portfolioTiles?.[0]?.label) || keywordFocusCopy?.galleryHeadline || (isParentPage ? 'Aktuelle Arbeiten.' : `Motorrad-Arbeiten ${scope.label}.`)
 const focusPortfolioLead = isParentPage || isKeywordPage
   ? keywordFocusCopy?.galleryLead || 'Sechs kuratierte Motorrad-Bilder aus juengeren Serien. Klicken zum Vergroessern.'
   : `Beispielhafte Bildtypen fuer ein Motorrad-Shooting in ${scope.label}: Standmotiv, Detail, Werkstatt, Vertical und Profil.`
-const focusAudienceHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}: passende Anfragen.` : keywordFocusCopy?.audienceHeadline || (isParentPage || isKeywordPage ? 'Fuer wen ich arbeite.' : `Fuer Bikes in ${scope.label}.`)
+const focusAudienceHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}: passende Anfragen.` : isKeywordPage ? `${serviceLabel}: passende Anfragen.` : keywordFocusCopy?.audienceHeadline || (isParentPage ? 'Fuer wen ich arbeite.' : `Fuer Bikes in ${scope.label}.`)
 const focusAudienceLead = isParentPage || isKeywordPage
   ? keywordFocusCopy?.audienceLead || 'Vom ersten eigenen Bike bis zur Kampagne - jede Serie wird auf Maschine, Marke und Nutzung zugeschnitten.'
   : `Fuer Besitzer, Custom-Bikes, Werkstaetten und Haendler in ${scope.label}, die mehr brauchen als schnelle Handyfotos.`
@@ -272,7 +278,7 @@ const searchLinks = [
       <div class="hero-mr__grid">
         <h1 class="hero-mr__title" id="heroMrTitle">
           <span class="line"><span class="word">{heroTitle}</span></span>
-          <span class="line"><span class="word">{heroSecondLine}</span></span>
+          {heroSecondLine && <span class="line"><span class="word">{heroSecondLine}</span></span>}
         </h1>
         <div class="hero-mr__lede-block">
           {heroLocalNote && <p class="hero-mr__local-note">{heroLocalNote}</p>}

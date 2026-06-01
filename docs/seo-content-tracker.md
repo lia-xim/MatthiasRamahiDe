@@ -9,8 +9,8 @@ Quelle: gebaute Seiten (`apps/web/dist/client`) + CMS-Connection-Audit + Content
 - Typen: journal: 8 · local-seo: 213 · noindex-archiv: 4 · redirect: 9 · service-hub: 6 · site-page: 17
 - Doppelte Title auf indexierbaren Seiten: 0 · fehlende Canonicals: 0 · Title-Laenge ausserhalb 25-70: 0 · Description-Laenge ausserhalb 90-170: 38
 
-- Local-SEO-Build-Abgleich: H1 ohne Ort: 0 · lokale H2 ohne Ziel: 0 · Keyword fehlt im HTML: 0 · Description ohne Ort: 0
-- Local-SEO-CMS-Ausspielung: Intro fehlt: 0 · Statement fehlt: 0 · Audience-Cards fehlen: 0 · FAQ fehlt: 0
+- Local-/Keyword-Build-Abgleich: H1 ohne Ziel: 0 · H1 ohne Ort: 0 · erste H2 ohne Ziel: 0 · fruehe H2 ohne Ziel: 0 · Keyword fehlt im HTML: 0 · Description ohne Ort: 0
+- CMS-Ausspielung: Intro fehlt: 0 · Statement fehlt: 0 · Audience-Cards fehlen: 0 · FAQ fehlt: 0
 
 **Websiteweite Flags:**
 - Description-Laenge 172: `auto-fotografieren-tipps-duesseldorf.html`
@@ -37,13 +37,13 @@ Quelle: gebaute Seiten (`apps/web/dist/client`) + CMS-Connection-Audit + Content
 | Route | Typ | Index | Title | Desc | Words | Canonical |
 |---|---|---|---:|---:|---:|---|
 | `auto-fotografieren-tipps-duesseldorf.html` | local-seo | ja | 53 | 172 | 756 | ok |
-| `auto-fotografieren-tipps.html` | local-seo | ja | 54 | 161 | 672 | ok |
+| `auto-fotografieren-tipps.html` | local-seo | ja | 54 | 161 | 675 | ok |
 | `auto-fotoshooting-duesseldorf.html` | local-seo | ja | 46 | 148 | 655 | ok |
-| `auto-fotoshooting.html` | local-seo | ja | 35 | 168 | 601 | ok |
+| `auto-fotoshooting.html` | local-seo | ja | 35 | 168 | 598 | ok |
 | `autofotografie-duesseldorf.html` | local-seo | ja | 43 | 175 | 640 | ok |
-| `autofotografie.html` | local-seo | ja | 54 | 167 | 551 | ok |
+| `autofotografie.html` | local-seo | ja | 54 | 167 | 550 | ok |
 | `autohaus-fotografie-duesseldorf.html` | local-seo | ja | 48 | 173 | 638 | ok |
-| `autohaus-fotografie.html` | local-seo | ja | 49 | 160 | 606 | ok |
+| `autohaus-fotografie.html` | local-seo | ja | 49 | 160 | 607 | ok |
 | `automobil-fotografie-bergisch-gladbach.html` | local-seo | ja | 56 | 169 | 650 | ok |
 | `automobil-fotografie-bochum.html` | local-seo | ja | 44 | 142 | 602 | ok |
 | `automobil-fotografie-deutschland.html` | local-seo | ja | 49 | 143 | 609 | ok |
@@ -68,15 +68,15 @@ Quelle: gebaute Seiten (`apps/web/dist/client`) + CMS-Connection-Audit + Content
 | `automobil-fotografie-remscheid.html` | local-seo | ja | 48 | 165 | 574 | ok |
 | `automobil-fotografie-solingen.html` | local-seo | ja | 47 | 170 | 587 | ok |
 | `automobil-fotografie-wuppertal.html` | local-seo | ja | 48 | 172 | 559 | ok |
-| `automobil-fotografie.html` | service-hub | ja | 49 | 156 | 559 | ok |
+| `automobil-fotografie.html` | service-hub | ja | 37 | 136 | 558 | ok |
 | `automotive-fotografie-duesseldorf.html` | local-seo | ja | 50 | 179 | 703 | ok |
-| `automotive-fotografie.html` | local-seo | ja | 39 | 179 | 589 | ok |
+| `automotive-fotografie.html` | local-seo | ja | 39 | 179 | 590 | ok |
 | `autoverkauf-fotos-duesseldorf.html` | local-seo | ja | 46 | 152 | 637 | ok |
-| `bike-fotografie-duesseldorf.html` | local-seo | ja | 44 | 157 | 736 | ok |
-| `bike-fotografie.html` | local-seo | ja | 56 | 159 | 767 | ok |
-| `biker-portrait-duesseldorf.html` | local-seo | ja | 59 | 141 | 779 | ok |
+| `bike-fotografie-duesseldorf.html` | local-seo | ja | 44 | 157 | 739 | ok |
+| `bike-fotografie.html` | local-seo | ja | 56 | 159 | 769 | ok |
+| `biker-portrait-duesseldorf.html` | local-seo | ja | 59 | 141 | 782 | ok |
 | `bilder-mit-auto-duesseldorf.html` | local-seo | ja | 50 | 158 | 700 | ok |
-| `bilder-mit-auto.html` | local-seo | ja | 54 | 154 | 627 | ok |
+| `bilder-mit-auto.html` | local-seo | ja | 54 | 154 | 628 | ok |
 | `blog-automotive-fotografie-duesseldorf.html` | journal | ja | 50 | 151 | 827 | ok |
 | `blog-fine-art-druck.html` | journal | ja | 45 | 154 | 230 | ok |
 | `blog-journal.html` | redirect | nein | 26 | – | 10 | redirect |
@@ -86,22 +86,22 @@ Quelle: gebaute Seiten (`apps/web/dist/client`) + CMS-Connection-Audit + Content
 | `blog-portraits-ohne-generische-posen.html` | journal | ja | 49 | 150 | 270 | ok |
 | `blog-serie-kuratieren.html` | journal | ja | 61 | 129 | 238 | ok |
 | `blog.html` | journal | ja | 62 | 130 | 228 | ok |
-| `business-portrait-duesseldorf.html` | local-seo | ja | 46 | 155 | 701 | ok |
-| `classic-car-fotografie-duesseldorf.html` | local-seo | ja | 51 | 158 | 743 | ok |
-| `classic-car-fotografie.html` | local-seo | ja | 40 | 175 | 632 | ok |
+| `business-portrait-duesseldorf.html` | local-seo | ja | 46 | 155 | 704 | ok |
+| `classic-car-fotografie-duesseldorf.html` | local-seo | ja | 51 | 158 | 747 | ok |
+| `classic-car-fotografie.html` | local-seo | ja | 40 | 175 | 637 | ok |
 | `contact.html` | site-page | ja | 53 | 133 | 41 | ok |
-| `custom-bike-fotografie-duesseldorf.html` | local-seo | ja | 51 | 172 | 813 | ok |
-| `custom-bike-fotografie.html` | local-seo | ja | 49 | 171 | 690 | ok |
+| `custom-bike-fotografie-duesseldorf.html` | local-seo | ja | 51 | 172 | 817 | ok |
+| `custom-bike-fotografie.html` | local-seo | ja | 49 | 171 | 695 | ok |
 | `datenschutz.html` | site-page | ja | 38 | 150 | 523 | ok |
-| `dating-fotoshooting-duesseldorf.html` | local-seo | ja | 55 | 163 | 697 | ok |
-| `dating-fotoshooting.html` | local-seo | ja | 50 | 153 | 726 | ok |
+| `dating-fotoshooting-duesseldorf.html` | local-seo | ja | 55 | 163 | 700 | ok |
+| `dating-fotoshooting.html` | local-seo | ja | 50 | 153 | 729 | ok |
 | `drucke-sonderanfertigungen-duesseldorf.html` | site-page | ja | 57 | 156 | 247 | ok |
-| `exotic-car-fotografie-duesseldorf.html` | local-seo | ja | 50 | 177 | 714 | ok |
-| `exotic-car-fotografie.html` | local-seo | ja | 39 | 155 | 655 | ok |
+| `exotic-car-fotografie-duesseldorf.html` | local-seo | ja | 50 | 177 | 718 | ok |
+| `exotic-car-fotografie.html` | local-seo | ja | 39 | 155 | 660 | ok |
 | `experimental-lens.html` | noindex-archiv | nein | 35 | 125 | 76 | ok |
 | `fahrzeugfotografie-duesseldorf.html` | local-seo | ja | 47 | 187 | 598 | ok |
-| `fahrzeugfotografie.html` | local-seo | ja | 36 | 160 | 577 | ok |
-| `fine-art-prints-landschaft.html` | local-seo | ja | 44 | 192 | 620 | ok |
+| `fahrzeugfotografie.html` | local-seo | ja | 36 | 160 | 576 | ok |
+| `fine-art-prints-landschaft.html` | local-seo | ja | 44 | 192 | 627 | ok |
 | `floating-archive.html` | noindex-archiv | nein | 34 | 143 | 82 | ok |
 | `fotografie-deutschland.html` | site-page | ja | 52 | 170 | 296 | ok |
 | `fotografie-duesseldorf.html` | site-page | ja | 51 | 163 | 296 | ok |
@@ -109,197 +109,197 @@ Quelle: gebaute Seiten (`apps/web/dist/client`) + CMS-Connection-Audit + Content
 | `fotografie-nrw.html` | site-page | ja | 44 | 177 | 296 | ok |
 | `fotografie.html` | site-page | ja | 53 | 152 | 296 | ok |
 | `fotolabor-druck-duesseldorf.html` | site-page | ja | 46 | 118 | 206 | ok |
-| `fotoshooting-gutschein-duesseldorf.html` | local-seo | ja | 61 | 160 | 662 | ok |
-| `fotoshooting-gutschein.html` | local-seo | ja | 47 | 154 | 733 | ok |
+| `fotoshooting-gutschein-duesseldorf.html` | local-seo | ja | 61 | 160 | 665 | ok |
+| `fotoshooting-gutschein.html` | local-seo | ja | 47 | 154 | 735 | ok |
 | `fotoshooting-mit-auto-duesseldorf.html` | local-seo | ja | 50 | 156 | 648 | ok |
-| `fotoshooting-mit-auto.html` | local-seo | ja | 62 | 160 | 640 | ok |
-| `fotoshooting-preise-duesseldorf.html` | local-seo | ja | 48 | 137 | 717 | ok |
-| `fotoshooting-preise.html` | local-seo | ja | 59 | 161 | 795 | ok |
+| `fotoshooting-mit-auto.html` | local-seo | ja | 62 | 160 | 642 | ok |
+| `fotoshooting-preise-duesseldorf.html` | local-seo | ja | 48 | 137 | 720 | ok |
+| `fotoshooting-preise.html` | local-seo | ja | 59 | 161 | 796 | ok |
 | `grossformatdruck-duesseldorf.html` | site-page | ja | 44 | 150 | 181 | ok |
-| `headshot-fotograf-duesseldorf.html` | local-seo | ja | 46 | 169 | 705 | ok |
+| `headshot-fotograf-duesseldorf.html` | local-seo | ja | 46 | 169 | 708 | ok |
 | `impressum.html` | site-page | ja | 38 | 138 | 467 | ok |
 | `journal/` | redirect | nein | 26 | – | 8 | redirect |
-| `landschaftsbilder-kaufen.html` | local-seo | ja | 52 | 157 | 618 | ok |
-| `landschaftsfotografie-bergisch-gladbach.html` | local-seo | ja | 57 | 148 | 584 | ok |
-| `landschaftsfotografie-bochum.html` | local-seo | ja | 46 | 149 | 627 | ok |
-| `landschaftsfotografie-deutschland.html` | local-seo | ja | 51 | 156 | 619 | ok |
-| `landschaftsfotografie-dormagen.html` | local-seo | ja | 48 | 152 | 627 | ok |
-| `landschaftsfotografie-dortmund.html` | local-seo | ja | 48 | 149 | 640 | ok |
-| `landschaftsfotografie-duesseldorf.html` | local-seo | ja | 50 | 154 | 618 | ok |
-| `landschaftsfotografie-duisburg.html` | local-seo | ja | 58 | 178 | 635 | ok |
-| `landschaftsfotografie-erkrath.html` | local-seo | ja | 51 | 153 | 662 | ok |
-| `landschaftsfotografie-essen.html` | local-seo | ja | 45 | 174 | 585 | ok |
-| `landschaftsfotografie-gelsenkirchen.html` | local-seo | ja | 52 | 167 | 631 | ok |
-| `landschaftsfotografie-hilden.html` | local-seo | ja | 57 | 164 | 577 | ok |
-| `landschaftsfotografie-koeln.html` | local-seo | ja | 54 | 148 | 543 | ok |
-| `landschaftsfotografie-krefeld.html` | local-seo | ja | 47 | 158 | 550 | ok |
-| `landschaftsfotografie-leverkusen.html` | local-seo | ja | 50 | 150 | 611 | ok |
-| `landschaftsfotografie-mettmann.html` | local-seo | ja | 48 | 152 | 641 | ok |
-| `landschaftsfotografie-moenchengladbach.html` | local-seo | ja | 55 | 162 | 642 | ok |
-| `landschaftsfotografie-moers.html` | local-seo | ja | 55 | 150 | 617 | ok |
-| `landschaftsfotografie-neuss.html` | local-seo | ja | 58 | 164 | 646 | ok |
-| `landschaftsfotografie-nrw.html` | local-seo | ja | 43 | 159 | 597 | ok |
-| `landschaftsfotografie-oberhausen.html` | local-seo | ja | 50 | 159 | 601 | ok |
-| `landschaftsfotografie-print-deutschland.html` | local-seo | ja | 64 | 169 | 689 | ok |
-| `landschaftsfotografie-ratingen.html` | local-seo | ja | 58 | 173 | 626 | ok |
-| `landschaftsfotografie-remscheid.html` | local-seo | ja | 49 | 151 | 609 | ok |
-| `landschaftsfotografie-solingen.html` | local-seo | ja | 58 | 158 | 604 | ok |
-| `landschaftsfotografie-wuppertal.html` | local-seo | ja | 49 | 150 | 597 | ok |
-| `landschaftsfotografie.html` | service-hub | ja | 52 | 160 | 526 | ok |
+| `landschaftsbilder-kaufen.html` | local-seo | ja | 52 | 157 | 621 | ok |
+| `landschaftsfotografie-bergisch-gladbach.html` | local-seo | ja | 57 | 148 | 587 | ok |
+| `landschaftsfotografie-bochum.html` | local-seo | ja | 46 | 149 | 629 | ok |
+| `landschaftsfotografie-deutschland.html` | local-seo | ja | 51 | 156 | 621 | ok |
+| `landschaftsfotografie-dormagen.html` | local-seo | ja | 48 | 152 | 629 | ok |
+| `landschaftsfotografie-dortmund.html` | local-seo | ja | 48 | 149 | 642 | ok |
+| `landschaftsfotografie-duesseldorf.html` | local-seo | ja | 50 | 154 | 620 | ok |
+| `landschaftsfotografie-duisburg.html` | local-seo | ja | 58 | 178 | 637 | ok |
+| `landschaftsfotografie-erkrath.html` | local-seo | ja | 51 | 153 | 664 | ok |
+| `landschaftsfotografie-essen.html` | local-seo | ja | 45 | 174 | 587 | ok |
+| `landschaftsfotografie-gelsenkirchen.html` | local-seo | ja | 52 | 167 | 633 | ok |
+| `landschaftsfotografie-hilden.html` | local-seo | ja | 57 | 164 | 579 | ok |
+| `landschaftsfotografie-koeln.html` | local-seo | ja | 54 | 148 | 545 | ok |
+| `landschaftsfotografie-krefeld.html` | local-seo | ja | 47 | 158 | 552 | ok |
+| `landschaftsfotografie-leverkusen.html` | local-seo | ja | 50 | 150 | 613 | ok |
+| `landschaftsfotografie-mettmann.html` | local-seo | ja | 48 | 152 | 643 | ok |
+| `landschaftsfotografie-moenchengladbach.html` | local-seo | ja | 55 | 162 | 644 | ok |
+| `landschaftsfotografie-moers.html` | local-seo | ja | 55 | 150 | 619 | ok |
+| `landschaftsfotografie-neuss.html` | local-seo | ja | 58 | 164 | 648 | ok |
+| `landschaftsfotografie-nrw.html` | local-seo | ja | 43 | 159 | 599 | ok |
+| `landschaftsfotografie-oberhausen.html` | local-seo | ja | 50 | 159 | 603 | ok |
+| `landschaftsfotografie-print-deutschland.html` | local-seo | ja | 64 | 169 | 692 | ok |
+| `landschaftsfotografie-ratingen.html` | local-seo | ja | 58 | 173 | 628 | ok |
+| `landschaftsfotografie-remscheid.html` | local-seo | ja | 49 | 151 | 611 | ok |
+| `landschaftsfotografie-solingen.html` | local-seo | ja | 58 | 158 | 606 | ok |
+| `landschaftsfotografie-wuppertal.html` | local-seo | ja | 49 | 150 | 599 | ok |
+| `landschaftsfotografie.html` | service-hub | ja | 39 | 152 | 524 | ok |
 | `leistungen.html` | site-page | ja | 42 | 147 | 433 | ok |
 | `matthias-ramahi-portfolio.html` | redirect | nein | 31 | – | 11 | redirect |
-| `motorrad-fotografie-bergisch-gladbach.html` | local-seo | ja | 55 | 161 | 798 | ok |
-| `motorrad-fotografie-bochum.html` | local-seo | ja | 44 | 165 | 754 | ok |
-| `motorrad-fotografie-deutschland.html` | local-seo | ja | 49 | 166 | 708 | ok |
-| `motorrad-fotografie-dormagen.html` | local-seo | ja | 46 | 162 | 650 | ok |
-| `motorrad-fotografie-dortmund.html` | local-seo | ja | 46 | 140 | 788 | ok |
-| `motorrad-fotografie-duesseldorf.html` | local-seo | ja | 48 | 142 | 645 | ok |
-| `motorrad-fotografie-duisburg.html` | local-seo | ja | 46 | 154 | 734 | ok |
-| `motorrad-fotografie-erkrath.html` | local-seo | ja | 45 | 150 | 755 | ok |
-| `motorrad-fotografie-essen.html` | local-seo | ja | 43 | 149 | 778 | ok |
-| `motorrad-fotografie-gelsenkirchen.html` | local-seo | ja | 51 | 153 | 690 | ok |
-| `motorrad-fotografie-hilden.html` | local-seo | ja | 44 | 147 | 764 | ok |
-| `motorrad-fotografie-koeln.html` | local-seo | ja | 42 | 153 | 738 | ok |
-| `motorrad-fotografie-krefeld.html` | local-seo | ja | 45 | 158 | 725 | ok |
-| `motorrad-fotografie-leverkusen.html` | local-seo | ja | 48 | 153 | 757 | ok |
-| `motorrad-fotografie-mettmann.html` | local-seo | ja | 45 | 145 | 751 | ok |
-| `motorrad-fotografie-moenchengladbach.html` | local-seo | ja | 53 | 158 | 740 | ok |
-| `motorrad-fotografie-moers.html` | local-seo | ja | 43 | 142 | 735 | ok |
-| `motorrad-fotografie-neuss.html` | local-seo | ja | 43 | 142 | 739 | ok |
-| `motorrad-fotografie-nrw.html` | local-seo | ja | 41 | 144 | 737 | ok |
-| `motorrad-fotografie-oberhausen.html` | local-seo | ja | 48 | 170 | 646 | ok |
-| `motorrad-fotografie-ratingen.html` | local-seo | ja | 46 | 146 | 732 | ok |
-| `motorrad-fotografie-remscheid.html` | local-seo | ja | 47 | 155 | 732 | ok |
-| `motorrad-fotografie-solingen.html` | local-seo | ja | 46 | 168 | 702 | ok |
-| `motorrad-fotografie-wuppertal.html` | local-seo | ja | 47 | 160 | 749 | ok |
-| `motorrad-fotografie.html` | service-hub | ja | 36 | 165 | 654 | ok |
-| `motorrad-shooting-duesseldorf.html` | local-seo | ja | 46 | 172 | 742 | ok |
-| `motorrad-verkaufsfotos-duesseldorf.html` | local-seo | ja | 51 | 150 | 702 | ok |
-| `motorsport-fotografie-duesseldorf.html` | local-seo | ja | 50 | 144 | 730 | ok |
-| `motorsport-fotografie.html` | local-seo | ja | 65 | 153 | 611 | ok |
-| `motorsport-sportwagen-fotografie-duesseldorf.html` | local-seo | ja | 63 | 152 | 652 | ok |
-| `motorsport-sportwagen-fotografie.html` | local-seo | ja | 52 | 134 | 718 | ok |
+| `motorrad-fotografie-bergisch-gladbach.html` | local-seo | ja | 55 | 161 | 802 | ok |
+| `motorrad-fotografie-bochum.html` | local-seo | ja | 44 | 165 | 757 | ok |
+| `motorrad-fotografie-deutschland.html` | local-seo | ja | 49 | 166 | 711 | ok |
+| `motorrad-fotografie-dormagen.html` | local-seo | ja | 46 | 162 | 653 | ok |
+| `motorrad-fotografie-dortmund.html` | local-seo | ja | 46 | 140 | 791 | ok |
+| `motorrad-fotografie-duesseldorf.html` | local-seo | ja | 48 | 142 | 648 | ok |
+| `motorrad-fotografie-duisburg.html` | local-seo | ja | 46 | 154 | 737 | ok |
+| `motorrad-fotografie-erkrath.html` | local-seo | ja | 45 | 150 | 758 | ok |
+| `motorrad-fotografie-essen.html` | local-seo | ja | 43 | 149 | 781 | ok |
+| `motorrad-fotografie-gelsenkirchen.html` | local-seo | ja | 51 | 153 | 693 | ok |
+| `motorrad-fotografie-hilden.html` | local-seo | ja | 44 | 147 | 767 | ok |
+| `motorrad-fotografie-koeln.html` | local-seo | ja | 42 | 153 | 741 | ok |
+| `motorrad-fotografie-krefeld.html` | local-seo | ja | 45 | 158 | 728 | ok |
+| `motorrad-fotografie-leverkusen.html` | local-seo | ja | 48 | 153 | 760 | ok |
+| `motorrad-fotografie-mettmann.html` | local-seo | ja | 45 | 145 | 754 | ok |
+| `motorrad-fotografie-moenchengladbach.html` | local-seo | ja | 53 | 158 | 743 | ok |
+| `motorrad-fotografie-moers.html` | local-seo | ja | 43 | 142 | 738 | ok |
+| `motorrad-fotografie-neuss.html` | local-seo | ja | 43 | 142 | 742 | ok |
+| `motorrad-fotografie-nrw.html` | local-seo | ja | 41 | 144 | 740 | ok |
+| `motorrad-fotografie-oberhausen.html` | local-seo | ja | 48 | 170 | 649 | ok |
+| `motorrad-fotografie-ratingen.html` | local-seo | ja | 46 | 146 | 735 | ok |
+| `motorrad-fotografie-remscheid.html` | local-seo | ja | 47 | 155 | 735 | ok |
+| `motorrad-fotografie-solingen.html` | local-seo | ja | 46 | 168 | 705 | ok |
+| `motorrad-fotografie-wuppertal.html` | local-seo | ja | 47 | 160 | 752 | ok |
+| `motorrad-fotografie.html` | service-hub | ja | 36 | 143 | 652 | ok |
+| `motorrad-shooting-duesseldorf.html` | local-seo | ja | 46 | 172 | 745 | ok |
+| `motorrad-verkaufsfotos-duesseldorf.html` | local-seo | ja | 51 | 150 | 705 | ok |
+| `motorsport-fotografie-duesseldorf.html` | local-seo | ja | 50 | 144 | 733 | ok |
+| `motorsport-fotografie.html` | local-seo | ja | 65 | 153 | 615 | ok |
+| `motorsport-sportwagen-fotografie-duesseldorf.html` | local-seo | ja | 63 | 152 | 657 | ok |
+| `motorsport-sportwagen-fotografie.html` | local-seo | ja | 52 | 134 | 729 | ok |
 | `narrative-stage.html` | noindex-archiv | nein | 33 | 129 | 105 | ok |
-| `naturfotografie-prints.html` | local-seo | ja | 62 | 159 | 583 | ok |
-| `oldtimer-fotografie-bergisch-gladbach.html` | local-seo | ja | 55 | 158 | 689 | ok |
-| `oldtimer-fotografie-bochum.html` | local-seo | ja | 44 | 170 | 672 | ok |
-| `oldtimer-fotografie-deutschland.html` | local-seo | ja | 49 | 164 | 580 | ok |
-| `oldtimer-fotografie-dormagen.html` | local-seo | ja | 46 | 160 | 671 | ok |
-| `oldtimer-fotografie-dortmund.html` | local-seo | ja | 46 | 145 | 674 | ok |
-| `oldtimer-fotografie-duesseldorf.html` | local-seo | ja | 48 | 165 | 660 | ok |
-| `oldtimer-fotografie-duisburg.html` | local-seo | ja | 46 | 177 | 689 | ok |
-| `oldtimer-fotografie-erkrath.html` | local-seo | ja | 45 | 158 | 690 | ok |
-| `oldtimer-fotografie-essen.html` | local-seo | ja | 43 | 155 | 692 | ok |
-| `oldtimer-fotografie-gelsenkirchen.html` | local-seo | ja | 51 | 159 | 650 | ok |
-| `oldtimer-fotografie-hilden.html` | local-seo | ja | 44 | 153 | 634 | ok |
-| `oldtimer-fotografie-koeln.html` | local-seo | ja | 42 | 157 | 666 | ok |
-| `oldtimer-fotografie-krefeld.html` | local-seo | ja | 45 | 146 | 564 | ok |
-| `oldtimer-fotografie-leverkusen.html` | local-seo | ja | 48 | 162 | 660 | ok |
-| `oldtimer-fotografie-mettmann.html` | local-seo | ja | 46 | 144 | 648 | ok |
-| `oldtimer-fotografie-moenchengladbach.html` | local-seo | ja | 53 | 148 | 579 | ok |
-| `oldtimer-fotografie-moers.html` | local-seo | ja | 43 | 152 | 630 | ok |
-| `oldtimer-fotografie-neuss.html` | local-seo | ja | 43 | 162 | 668 | ok |
-| `oldtimer-fotografie-nrw.html` | local-seo | ja | 41 | 143 | 726 | ok |
-| `oldtimer-fotografie-oberhausen.html` | local-seo | ja | 48 | 158 | 704 | ok |
-| `oldtimer-fotografie-ratingen.html` | local-seo | ja | 46 | 160 | 592 | ok |
-| `oldtimer-fotografie-remscheid.html` | local-seo | ja | 47 | 165 | 616 | ok |
-| `oldtimer-fotografie-solingen.html` | local-seo | ja | 46 | 153 | 656 | ok |
-| `oldtimer-fotografie-wuppertal.html` | local-seo | ja | 47 | 146 | 578 | ok |
-| `oldtimer-fotografie.html` | service-hub | ja | 37 | 158 | 568 | ok |
-| `oldtimer-shooting-duesseldorf.html` | local-seo | ja | 46 | 186 | 727 | ok |
-| `oldtimer-verkaufsfotos-duesseldorf.html` | local-seo | ja | 51 | 163 | 753 | ok |
-| `paarshooting-familienshooting-duesseldorf.html` | local-seo | ja | 60 | 168 | 713 | ok |
-| `paarshooting-familienshooting.html` | local-seo | ja | 49 | 160 | 744 | ok |
-| `performance-car-fotografie-duesseldorf.html` | local-seo | ja | 55 | 185 | 730 | ok |
-| `performance-car-fotografie.html` | local-seo | ja | 44 | 169 | 743 | ok |
-| `personal-branding-fotografie-duesseldorf.html` | local-seo | ja | 57 | 159 | 634 | ok |
-| `personal-branding-fotografie.html` | local-seo | ja | 46 | 174 | 769 | ok |
+| `naturfotografie-prints.html` | local-seo | ja | 62 | 159 | 586 | ok |
+| `oldtimer-fotografie-bergisch-gladbach.html` | local-seo | ja | 55 | 158 | 693 | ok |
+| `oldtimer-fotografie-bochum.html` | local-seo | ja | 44 | 170 | 675 | ok |
+| `oldtimer-fotografie-deutschland.html` | local-seo | ja | 49 | 164 | 583 | ok |
+| `oldtimer-fotografie-dormagen.html` | local-seo | ja | 46 | 160 | 674 | ok |
+| `oldtimer-fotografie-dortmund.html` | local-seo | ja | 46 | 145 | 677 | ok |
+| `oldtimer-fotografie-duesseldorf.html` | local-seo | ja | 48 | 165 | 663 | ok |
+| `oldtimer-fotografie-duisburg.html` | local-seo | ja | 46 | 177 | 692 | ok |
+| `oldtimer-fotografie-erkrath.html` | local-seo | ja | 45 | 158 | 693 | ok |
+| `oldtimer-fotografie-essen.html` | local-seo | ja | 43 | 155 | 695 | ok |
+| `oldtimer-fotografie-gelsenkirchen.html` | local-seo | ja | 51 | 159 | 653 | ok |
+| `oldtimer-fotografie-hilden.html` | local-seo | ja | 44 | 153 | 637 | ok |
+| `oldtimer-fotografie-koeln.html` | local-seo | ja | 42 | 157 | 669 | ok |
+| `oldtimer-fotografie-krefeld.html` | local-seo | ja | 45 | 146 | 567 | ok |
+| `oldtimer-fotografie-leverkusen.html` | local-seo | ja | 48 | 162 | 663 | ok |
+| `oldtimer-fotografie-mettmann.html` | local-seo | ja | 46 | 144 | 651 | ok |
+| `oldtimer-fotografie-moenchengladbach.html` | local-seo | ja | 53 | 148 | 582 | ok |
+| `oldtimer-fotografie-moers.html` | local-seo | ja | 43 | 152 | 633 | ok |
+| `oldtimer-fotografie-neuss.html` | local-seo | ja | 43 | 162 | 671 | ok |
+| `oldtimer-fotografie-nrw.html` | local-seo | ja | 41 | 143 | 729 | ok |
+| `oldtimer-fotografie-oberhausen.html` | local-seo | ja | 48 | 158 | 707 | ok |
+| `oldtimer-fotografie-ratingen.html` | local-seo | ja | 46 | 160 | 595 | ok |
+| `oldtimer-fotografie-remscheid.html` | local-seo | ja | 47 | 165 | 619 | ok |
+| `oldtimer-fotografie-solingen.html` | local-seo | ja | 46 | 153 | 659 | ok |
+| `oldtimer-fotografie-wuppertal.html` | local-seo | ja | 47 | 146 | 581 | ok |
+| `oldtimer-fotografie.html` | service-hub | ja | 36 | 142 | 566 | ok |
+| `oldtimer-shooting-duesseldorf.html` | local-seo | ja | 46 | 186 | 730 | ok |
+| `oldtimer-verkaufsfotos-duesseldorf.html` | local-seo | ja | 51 | 163 | 756 | ok |
+| `paarshooting-familienshooting-duesseldorf.html` | local-seo | ja | 60 | 168 | 717 | ok |
+| `paarshooting-familienshooting.html` | local-seo | ja | 49 | 160 | 746 | ok |
+| `performance-car-fotografie-duesseldorf.html` | local-seo | ja | 55 | 185 | 734 | ok |
+| `performance-car-fotografie.html` | local-seo | ja | 44 | 169 | 748 | ok |
+| `personal-branding-fotografie-duesseldorf.html` | local-seo | ja | 57 | 159 | 638 | ok |
+| `personal-branding-fotografie.html` | local-seo | ja | 46 | 174 | 774 | ok |
 | `portfolio-1-tunnel.html` | redirect | nein | 31 | – | 10 | redirect |
 | `portfolio.html` | site-page | ja | 56 | 124 | 143 | ok |
 | `portfolio/` | redirect | nein | 31 | – | 8 | redirect |
-| `portrait-fotoshooting-duesseldorf.html` | local-seo | ja | 50 | 142 | 791 | ok |
-| `portrait-fotoshooting.html` | local-seo | ja | 50 | 135 | 683 | ok |
-| `portraitfotografie-beleuchtung-duesseldorf.html` | local-seo | ja | 59 | 156 | 701 | ok |
-| `portraitfotografie-beleuchtung.html` | local-seo | ja | 68 | 161 | 703 | ok |
-| `portraitfotografie-bergisch-gladbach.html` | local-seo | ja | 54 | 165 | 686 | ok |
-| `portraitfotografie-bochum.html` | local-seo | ja | 44 | 171 | 732 | ok |
-| `portraitfotografie-deutschland.html` | local-seo | ja | 48 | 173 | 715 | ok |
-| `portraitfotografie-dormagen.html` | local-seo | ja | 46 | 159 | 749 | ok |
-| `portraitfotografie-dortmund.html` | local-seo | ja | 46 | 182 | 671 | ok |
-| `portraitfotografie-duesseldorf.html` | local-seo | ja | 48 | 138 | 770 | ok |
-| `portraitfotografie-duisburg.html` | local-seo | ja | 46 | 155 | 724 | ok |
-| `portraitfotografie-erkrath.html` | local-seo | ja | 45 | 143 | 748 | ok |
-| `portraitfotografie-essen.html` | local-seo | ja | 42 | 142 | 648 | ok |
+| `portrait-fotoshooting-duesseldorf.html` | local-seo | ja | 50 | 142 | 794 | ok |
+| `portrait-fotoshooting.html` | local-seo | ja | 50 | 135 | 681 | ok |
+| `portraitfotografie-beleuchtung-duesseldorf.html` | local-seo | ja | 59 | 156 | 704 | ok |
+| `portraitfotografie-beleuchtung.html` | local-seo | ja | 68 | 161 | 704 | ok |
+| `portraitfotografie-bergisch-gladbach.html` | local-seo | ja | 54 | 165 | 689 | ok |
+| `portraitfotografie-bochum.html` | local-seo | ja | 44 | 171 | 734 | ok |
+| `portraitfotografie-deutschland.html` | local-seo | ja | 48 | 173 | 717 | ok |
+| `portraitfotografie-dormagen.html` | local-seo | ja | 46 | 159 | 751 | ok |
+| `portraitfotografie-dortmund.html` | local-seo | ja | 46 | 182 | 673 | ok |
+| `portraitfotografie-duesseldorf.html` | local-seo | ja | 48 | 138 | 772 | ok |
+| `portraitfotografie-duisburg.html` | local-seo | ja | 46 | 155 | 726 | ok |
+| `portraitfotografie-erkrath.html` | local-seo | ja | 45 | 143 | 750 | ok |
+| `portraitfotografie-essen.html` | local-seo | ja | 42 | 142 | 650 | ok |
 | `portraitfotografie-experience.html` | redirect | nein | 52 | – | 12 | redirect |
-| `portraitfotografie-gelsenkirchen.html` | local-seo | ja | 51 | 149 | 724 | ok |
-| `portraitfotografie-hilden.html` | local-seo | ja | 44 | 154 | 714 | ok |
-| `portraitfotografie-koeln.html` | local-seo | ja | 42 | 171 | 731 | ok |
-| `portraitfotografie-krefeld.html` | local-seo | ja | 45 | 171 | 718 | ok |
-| `portraitfotografie-leverkusen.html` | local-seo | ja | 47 | 139 | 704 | ok |
-| `portraitfotografie-mettmann.html` | local-seo | ja | 46 | 145 | 795 | ok |
-| `portraitfotografie-moenchengladbach.html` | local-seo | ja | 53 | 167 | 710 | ok |
-| `portraitfotografie-moers.html` | local-seo | ja | 42 | 148 | 651 | ok |
-| `portraitfotografie-neuss.html` | local-seo | ja | 42 | 171 | 792 | ok |
-| `portraitfotografie-nrw.html` | local-seo | ja | 41 | 160 | 736 | ok |
-| `portraitfotografie-oberhausen.html` | local-seo | ja | 48 | 151 | 704 | ok |
-| `portraitfotografie-ratingen.html` | local-seo | ja | 45 | 144 | 684 | ok |
-| `portraitfotografie-remscheid.html` | local-seo | ja | 47 | 151 | 687 | ok |
-| `portraitfotografie-solingen.html` | local-seo | ja | 46 | 160 | 697 | ok |
-| `portraitfotografie-wuppertal.html` | local-seo | ja | 47 | 159 | 814 | ok |
-| `portraitfotografie.html` | service-hub | ja | 47 | 161 | 666 | ok |
-| `pressefoto-duesseldorf.html` | local-seo | ja | 39 | 163 | 742 | ok |
+| `portraitfotografie-gelsenkirchen.html` | local-seo | ja | 51 | 149 | 726 | ok |
+| `portraitfotografie-hilden.html` | local-seo | ja | 44 | 154 | 716 | ok |
+| `portraitfotografie-koeln.html` | local-seo | ja | 42 | 171 | 733 | ok |
+| `portraitfotografie-krefeld.html` | local-seo | ja | 45 | 171 | 720 | ok |
+| `portraitfotografie-leverkusen.html` | local-seo | ja | 47 | 139 | 706 | ok |
+| `portraitfotografie-mettmann.html` | local-seo | ja | 46 | 145 | 797 | ok |
+| `portraitfotografie-moenchengladbach.html` | local-seo | ja | 53 | 167 | 712 | ok |
+| `portraitfotografie-moers.html` | local-seo | ja | 42 | 148 | 653 | ok |
+| `portraitfotografie-neuss.html` | local-seo | ja | 42 | 171 | 794 | ok |
+| `portraitfotografie-nrw.html` | local-seo | ja | 41 | 160 | 738 | ok |
+| `portraitfotografie-oberhausen.html` | local-seo | ja | 48 | 151 | 706 | ok |
+| `portraitfotografie-ratingen.html` | local-seo | ja | 45 | 144 | 686 | ok |
+| `portraitfotografie-remscheid.html` | local-seo | ja | 47 | 151 | 689 | ok |
+| `portraitfotografie-solingen.html` | local-seo | ja | 46 | 160 | 699 | ok |
+| `portraitfotografie-wuppertal.html` | local-seo | ja | 47 | 159 | 816 | ok |
+| `portraitfotografie.html` | service-hub | ja | 36 | 139 | 665 | ok |
+| `pressefoto-duesseldorf.html` | local-seo | ja | 39 | 163 | 744 | ok |
 | `radikale-fotografie-portfolio-konzepte.html` | noindex-archiv | nein | 56 | 155 | 88 | ok |
-| `sammlerfahrzeug-fotografie-duesseldorf.html` | local-seo | ja | 55 | 161 | 713 | ok |
-| `sammlerfahrzeug-fotografie.html` | local-seo | ja | 44 | 147 | 593 | ok |
-| `schwarz-weiss-portrait-fotografie-duesseldorf.html` | local-seo | ja | 61 | 172 | 693 | ok |
-| `schwarz-weiss-portrait-fotografie.html` | local-seo | ja | 51 | 155 | 682 | ok |
+| `sammlerfahrzeug-fotografie-duesseldorf.html` | local-seo | ja | 55 | 161 | 716 | ok |
+| `sammlerfahrzeug-fotografie.html` | local-seo | ja | 44 | 147 | 596 | ok |
+| `schwarz-weiss-portrait-fotografie-duesseldorf.html` | local-seo | ja | 61 | 172 | 698 | ok |
+| `schwarz-weiss-portrait-fotografie.html` | local-seo | ja | 51 | 155 | 690 | ok |
 | `services/` | redirect | nein | 32 | – | 8 | redirect |
-| `sportwagen-fotografie-bergisch-gladbach.html` | local-seo | ja | 57 | 152 | 799 | ok |
-| `sportwagen-fotografie-bochum.html` | local-seo | ja | 46 | 157 | 732 | ok |
-| `sportwagen-fotografie-deutschland.html` | local-seo | ja | 51 | 144 | 714 | ok |
-| `sportwagen-fotografie-dormagen.html` | local-seo | ja | 48 | 155 | 693 | ok |
-| `sportwagen-fotografie-dortmund.html` | local-seo | ja | 48 | 161 | 684 | ok |
-| `sportwagen-fotografie-duesseldorf.html` | local-seo | ja | 50 | 160 | 610 | ok |
-| `sportwagen-fotografie-duisburg.html` | local-seo | ja | 48 | 174 | 633 | ok |
-| `sportwagen-fotografie-erkrath.html` | local-seo | ja | 47 | 166 | 555 | ok |
-| `sportwagen-fotografie-essen.html` | local-seo | ja | 45 | 139 | 732 | ok |
-| `sportwagen-fotografie-gelsenkirchen.html` | local-seo | ja | 53 | 163 | 807 | ok |
-| `sportwagen-fotografie-hilden.html` | local-seo | ja | 46 | 151 | 667 | ok |
-| `sportwagen-fotografie-koeln.html` | local-seo | ja | 44 | 159 | 638 | ok |
-| `sportwagen-fotografie-krefeld.html` | local-seo | ja | 47 | 160 | 691 | ok |
-| `sportwagen-fotografie-leverkusen.html` | local-seo | ja | 50 | 149 | 653 | ok |
-| `sportwagen-fotografie-mettmann.html` | local-seo | ja | 48 | 166 | 654 | ok |
-| `sportwagen-fotografie-moenchengladbach.html` | local-seo | ja | 55 | 176 | 647 | ok |
-| `sportwagen-fotografie-moers.html` | local-seo | ja | 45 | 146 | 632 | ok |
-| `sportwagen-fotografie-neuss.html` | local-seo | ja | 45 | 142 | 707 | ok |
-| `sportwagen-fotografie-nrw.html` | local-seo | ja | 43 | 156 | 730 | ok |
-| `sportwagen-fotografie-oberhausen.html` | local-seo | ja | 50 | 164 | 629 | ok |
-| `sportwagen-fotografie-ratingen.html` | local-seo | ja | 48 | 151 | 649 | ok |
-| `sportwagen-fotografie-remscheid.html` | local-seo | ja | 49 | 162 | 708 | ok |
-| `sportwagen-fotografie-solingen.html` | local-seo | ja | 48 | 163 | 721 | ok |
-| `sportwagen-fotografie-wuppertal.html` | local-seo | ja | 49 | 164 | 751 | ok |
-| `sportwagen-fotografie.html` | service-hub | ja | 38 | 166 | 767 | ok |
-| `sportwagen-fotoshooting-duesseldorf.html` | local-seo | ja | 52 | 163 | 704 | ok |
-| `sportwagen-shooting-duesseldorf.html` | local-seo | ja | 48 | 177 | 750 | ok |
-| `supersportwagen-fotografie-duesseldorf.html` | local-seo | ja | 55 | 158 | 695 | ok |
-| `supersportwagen-fotografie.html` | local-seo | ja | 44 | 172 | 699 | ok |
+| `sportwagen-fotografie-bergisch-gladbach.html` | local-seo | ja | 57 | 152 | 803 | ok |
+| `sportwagen-fotografie-bochum.html` | local-seo | ja | 46 | 157 | 735 | ok |
+| `sportwagen-fotografie-deutschland.html` | local-seo | ja | 51 | 144 | 717 | ok |
+| `sportwagen-fotografie-dormagen.html` | local-seo | ja | 48 | 155 | 696 | ok |
+| `sportwagen-fotografie-dortmund.html` | local-seo | ja | 48 | 161 | 687 | ok |
+| `sportwagen-fotografie-duesseldorf.html` | local-seo | ja | 50 | 160 | 613 | ok |
+| `sportwagen-fotografie-duisburg.html` | local-seo | ja | 48 | 174 | 636 | ok |
+| `sportwagen-fotografie-erkrath.html` | local-seo | ja | 47 | 166 | 558 | ok |
+| `sportwagen-fotografie-essen.html` | local-seo | ja | 45 | 139 | 735 | ok |
+| `sportwagen-fotografie-gelsenkirchen.html` | local-seo | ja | 53 | 163 | 810 | ok |
+| `sportwagen-fotografie-hilden.html` | local-seo | ja | 46 | 151 | 670 | ok |
+| `sportwagen-fotografie-koeln.html` | local-seo | ja | 44 | 159 | 641 | ok |
+| `sportwagen-fotografie-krefeld.html` | local-seo | ja | 47 | 160 | 694 | ok |
+| `sportwagen-fotografie-leverkusen.html` | local-seo | ja | 50 | 149 | 656 | ok |
+| `sportwagen-fotografie-mettmann.html` | local-seo | ja | 48 | 166 | 657 | ok |
+| `sportwagen-fotografie-moenchengladbach.html` | local-seo | ja | 55 | 176 | 650 | ok |
+| `sportwagen-fotografie-moers.html` | local-seo | ja | 45 | 146 | 635 | ok |
+| `sportwagen-fotografie-neuss.html` | local-seo | ja | 45 | 142 | 710 | ok |
+| `sportwagen-fotografie-nrw.html` | local-seo | ja | 43 | 156 | 733 | ok |
+| `sportwagen-fotografie-oberhausen.html` | local-seo | ja | 50 | 164 | 632 | ok |
+| `sportwagen-fotografie-ratingen.html` | local-seo | ja | 48 | 151 | 652 | ok |
+| `sportwagen-fotografie-remscheid.html` | local-seo | ja | 49 | 162 | 711 | ok |
+| `sportwagen-fotografie-solingen.html` | local-seo | ja | 48 | 163 | 724 | ok |
+| `sportwagen-fotografie-wuppertal.html` | local-seo | ja | 49 | 164 | 754 | ok |
+| `sportwagen-fotografie.html` | service-hub | ja | 38 | 137 | 764 | ok |
+| `sportwagen-fotoshooting-duesseldorf.html` | local-seo | ja | 52 | 163 | 707 | ok |
+| `sportwagen-shooting-duesseldorf.html` | local-seo | ja | 48 | 177 | 753 | ok |
+| `supersportwagen-fotografie-duesseldorf.html` | local-seo | ja | 55 | 158 | 698 | ok |
+| `supersportwagen-fotografie.html` | local-seo | ja | 44 | 172 | 701 | ok |
 | `ueber-mich.html` | site-page | ja | 52 | 107 | 263 | ok |
-| `unternehmensportrait-duesseldorf.html` | local-seo | ja | 49 | 160 | 707 | ok |
+| `unternehmensportrait-duesseldorf.html` | local-seo | ja | 49 | 160 | 709 | ok |
 | `videografie-duesseldorf.html` | site-page | ja | 40 | 153 | 264 | ok |
 | `viola-musik-duesseldorf.html` | site-page | ja | 40 | 171 | 173 | ok |
-| `wandbilder-landschaftsfotografie.html` | local-seo | ja | 52 | 182 | 651 | ok |
+| `wandbilder-landschaftsfotografie.html` | local-seo | ja | 52 | 182 | 654 | ok |
 | `webdesign-seo-duesseldorf.html` | site-page | ja | 44 | 149 | 239 | ok |
 | `weitere-dienstleistungen.html` | redirect | nein | 32 | – | 10 | redirect |
 | `werbetechnik-duesseldorf.html` | site-page | ja | 41 | 172 | 177 | ok |
-| `youngtimer-fotografie-duesseldorf.html` | local-seo | ja | 50 | 179 | 701 | ok |
-| `youngtimer-fotografie.html` | local-seo | ja | 39 | 144 | 652 | ok |
+| `youngtimer-fotografie-duesseldorf.html` | local-seo | ja | 50 | 179 | 704 | ok |
+| `youngtimer-fotografie.html` | local-seo | ja | 39 | 144 | 655 | ok |
 
 ## Scoring-Methodik
 - **Q · SEO-Qualität (0–100):** Struktur (Intro 180–760 Z., 2 Statement-Absätze ≥110, ≥4 Audience-Cards, 4 FAQ ≥80) **+ thematische Abdeckung** (SEO-Title 30–70, Description 115–170, Fokus-Keyword im Intro, lokaler Ortsname im Intro bei Stadt-Seiten, echte W-Frage in den FAQ).
 - **U · Content-Einzigartigkeit (0–100):** `100 × (1 − max. Prosa-Ähnlichkeit)` (Jaccard über Wort-Trigramme des Fließtexts gegen **alle** Seiten) → erkennt **Duplicate Content**.
 - **K · Intent-Trennung / Anti-Kannibalisierung (0–100):** `100 × (1 − max. Ziel-Überlappung)`. Ziel = Title-/Keyword-Tokens **ohne** Marke, **ohne** generische Wörter (fotografie/foto/shooting…) und **ohne** den Ortsnamen — verglichen nur **innerhalb derselben Familie + desselben Ortes** (dort entsteht Kannibalisierung). Niedriges K = zwei Seiten zielen am selben Ort auf denselben Begriff.
 
-- **Build-Check:** vergleicht die gebaute HTML-Seite mit dem authored CMS-Content. Rot wird: Stadtseite ohne Ort im H1, keine fruehe lokale H2 mit Service+Ort, Kernkeyword nicht sichtbar, Description ohne Ort oder authored Sektionen (Intro/Statement/Audience/FAQ) nicht im HTML.
+- **Build-Check:** vergleicht die gebaute HTML-Seite mit dem authored CMS-Content. Rot wird: Hauptseite ohne Kategorie-Fotografie im H1, Keyword-/Stadtseite ohne Ziel im H1, Stadtseite ohne Ort im H1, erste H2 ohne Zielbegriff und ggf. Ort, keine fruehe H2 mit Zielbegriff und ggf. Ort, Kernkeyword nicht sichtbar, Description ohne Ort oder authored Sektionen (Intro/Statement/Audience/FAQ) nicht im HTML.
 
 **Interpretation — bei allen drei gilt: höher = besser (Skala 0–100).**
 - **Qualität:** hoch = Seite ist inhaltlich vollständig + thematisch sauber (Keyword/Ort/FAQ abgedeckt). Niedrig = etwas fehlt oder ist zu kurz.
@@ -309,8 +309,8 @@ Quelle: gebaute Seiten (`apps/web/dist/client`) + CMS-Connection-Audit + Content
 
 ## Bewertung (219 Seiten im CMS-Content)
 - **Ø Qualität 98** · **Ø Einzigartigkeit 95** · **Ø Kannibalisierungs-Schutz 89**
-- Qualität<80: 0 · Einzigartigkeit<70: 0 · **Kannibalisierungs-Verdacht (Schutz<60): 22**
-- **Strenge Review-Schwellen:** Qualität<90: 6 · Einzigartigkeit<90: 6 · Kannibalisierungs-Schutz<75: 36
+- Qualität<80: 0 · Einzigartigkeit<70: 0 · **Kannibalisierungs-Verdacht (Schutz<60): 21**
+- **Strenge Review-Schwellen:** Qualität<90: 6 · Einzigartigkeit<90: 6 · Kannibalisierungs-Schutz<75: 34
 - **Doppelte SEO-Titel: 0** ✅
 
 | Familie | Seiten | Ø Qualität | Ø Einzigartigkeit | Ø Kannibalisierungs-Schutz | min Kanni.-Schutz |
@@ -320,7 +320,7 @@ Quelle: gebaute Seiten (`apps/web/dist/client`) + CMS-Connection-Audit + Content
 | oldtimer | 33 | 97 | 95 | 92 | 0 |
 | motorrad | 32 | 99 | 95 | 87 | 0 |
 | portrait | 45 | 98 | 96 | 90 | 0 |
-| landschaft | 30 | 97 | 96 | 91 | 33 |
+| landschaft | 30 | 97 | 96 | 93 | 50 |
 
 ### Kannibalisierungs-Check
 Keine doppelten SEO-Titel. 
@@ -339,10 +339,10 @@ Keine doppelten SEO-Titel.
 | `oldtimer-shooting-duesseldorf.html` | 0 | `oldtimer-fotografie-duesseldorf.html` |
 | `motorrad-shooting-duesseldorf.html` | 0 | `motorrad-fotografie-duesseldorf.html` |
 | `portrait-fotoshooting-duesseldorf.html` | 0 | `portraitfotografie-duesseldorf.html` |
-| `naturfotografie-prints.html` | 33 | `landschaftsfotografie.html` |
-| `landschaftsfotografie.html` | 33 | `naturfotografie-prints.html` |
 | `business-portrait-duesseldorf.html` | 50 | `portraitfotografie-duesseldorf.html` |
 | `oldtimer-verkaufsfotos-duesseldorf.html` | 50 | `oldtimer-fotografie-duesseldorf.html` |
+| `motorrad-verkaufsfotos-duesseldorf.html` | 50 | `motorrad-fotografie-duesseldorf.html` |
+| `fine-art-prints-landschaft.html` | 50 | `naturfotografie-prints.html` |
 
 **Intent-Gruppen (Familie × Ort mit mehreren Seiten – jede Gruppe braucht klar getrennte Sub-Intents):**
 
@@ -350,13 +350,13 @@ Keine doppelten SEO-Titel.
 |---|---|---|---|
 | portrait · duesseldorf | 13 | Business Portrait, Headshot Fotograf, Unternehmensportrait, Pressefoto, Portrait Fotografie, Dating Fotoshooting, Fotoshooting Gutschein, Fotoshooting Preise, Paarshooting & Familienshooting, Personal Branding Fotografie, Portrait Fotoshooting, Portraitfotografie Beleuchtung, Schwarz-Weiß Portrait Fotografie | 76 |
 | automobil · duesseldorf | 10 | Autohaus Fotografie, Autoverkauf Fotos, Automobil Fotografie, Auto fotografieren – Tipps, Auto-Fotoshooting, Autofotografie, Automotive Fotografie, Bilder mit Auto, Fahrzeugfotografie, Fotoshooting mit Auto | 72 |
-| automobil · generic | 9 | Auto-Fotoshooting, Auto fotografieren – Tipps, Autofotografie, Autohaus Fotografie, Automotive Fotografie, Bilder mit Auto, Fahrzeugfotografie, Fotoshooting mit Auto, Automobil Fotografie | 85 |
-| portrait · generic | 9 | Personal Branding Fotografie, Dating Fotoshooting, Fotoshooting Gutschein, Fotoshooting Preise, Paarshooting & Familienshooting, Portrait Fotoshooting, Portraitfotografie Beleuchtung, Schwarz-Weiß Portrait Fotografie, Portraitfotografie | 84 |
+| automobil · generic | 9 | Auto-Fotoshooting, Auto fotografieren – Tipps, Autofotografie, Autohaus Fotografie, Automotive Fotografie, Bilder mit Auto, Fahrzeugfotografie, Fotoshooting mit Auto, Automobil Fotografie | 83 |
+| portrait · generic | 9 | Personal Branding Fotografie, Dating Fotoshooting, Fotoshooting Gutschein, Fotoshooting Preise, Paarshooting & Familienshooting, Portrait Fotoshooting, Portraitfotografie Beleuchtung, Schwarz-Weiß Portrait Fotografie, Portraitfotografie | 83 |
 | sportwagen · duesseldorf | 8 | Sportwagen Shooting, Sportwagen Fotografie, Exotic Car Fotografie, Motorsport Fotografie, Motorsport & Sportwagen Fotografie, Performance Car Fotografie, Sportwagen Fotoshooting, Supersportwagen Fotografie | 42 |
 | oldtimer · duesseldorf | 6 | Oldtimer Verkaufsfotos, Oldtimer Fotografie, Classic Car Fotografie, Oldtimer Shooting, Sammlerfahrzeug Fotografie, Youngtimer Fotografie | 58 |
 | motorrad · duesseldorf | 6 | Motorrad Verkaufsfotos, Motorrad Fotografie, Bike Fotografie, Biker Portrait, Custom Bike Fotografie, Motorrad Shooting | 42 |
 | sportwagen · generic | 6 | Performance Car Fotografie, Exotic Car Fotografie, Motorsport Fotografie, Motorsport & Sportwagen Fotografie, Supersportwagen Fotografie, Sportwagen Fotografie | 75 |
-| landschaft · generic | 5 | Landschaftsbilder kaufen, Fine-Art-Prints Landschaft, Wandbilder Landschaftsfotografie, Naturfotografie Prints, Landschaftsfotografie | 52 |
+| landschaft · generic | 5 | Landschaftsbilder kaufen, Fine-Art-Prints Landschaft, Wandbilder Landschaftsfotografie, Naturfotografie Prints, Landschaftsfotografie | 65 |
 | oldtimer · generic | 4 | Classic Car Fotografie, Sammlerfahrzeug Fotografie, Youngtimer Fotografie, Oldtimer Fotografie | 100 |
 | motorrad · generic | 3 | Bike Fotografie, Custom Bike Fotografie, Motorrad Fotografie | 78 |
 | landschaft · deutschland | 2 | Landschaftsfotografie, Landschaftsfotografie Print | 83 |
@@ -405,7 +405,7 @@ faqIntent   8
 | `autofotografie-duesseldorf.html` | autofotografie | duesseldorf | city | gen | — | UPDATE | ✅ | 95 | 97 | 100 | ok | DONE |
 | `autohaus-fotografie.html` | autohaus-fotografie | überregional | keyword | gen | — | CREATE | ✅ | 96 | 99 | 100 | ok | DONE |
 | `autohaus-fotografie-duesseldorf.html` | autohaus-fotografie | duesseldorf | city | gen | — | UPDATE | ✅ | 92 | 98 | 100 | ok | DONE |
-| `automobil-fotografie.html` | automobil-fotografie | Düsseldorf (Parent) | PARENT | gen | ja | SERVICE | ✅ | 96 | 99 | 100 | ok | DONE |
+| `automobil-fotografie.html` | automobil-fotografie | Kategorie-Hub | PARENT | gen | ja | SERVICE | ✅ | 96 | 99 | 80 | ok | DONE |
 | `automobil-fotografie-bergisch-gladbach.html` | automobil-fotografie | bergisch-gladbach | city | gen | ja | UPDATE | ✅ | 100 | 95 | 100 | ok | DONE |
 | `automobil-fotografie-bochum.html` | automobil-fotografie | bochum | city | gen | ja | UPDATE | ✅ | 100 | 96 | 100 | ok | DONE |
 | `automobil-fotografie-deutschland.html` | automobil-fotografie | deutschland | city | gen | ja | UPDATE | ✅ | 100 | 96 | 100 | ok | DONE |
@@ -452,7 +452,7 @@ faqIntent   8
 | `motorsport-sportwagen-fotografie-duesseldorf.html` | motorsport-sportwagen-fotografie | duesseldorf | city | rich | — | CREATE | ✅ | 100 | 98 | 50 | ok | DONE |
 | `performance-car-fotografie.html` | performance-car-fotografie | überregional | keyword | gen | — | CREATE | ✅ | 96 | 97 | 67 | ok | DONE |
 | `performance-car-fotografie-duesseldorf.html` | performance-car-fotografie | duesseldorf | city | gen | — | UPDATE | ✅ | 95 | 98 | 67 | ok | DONE |
-| `sportwagen-fotografie.html` | sportwagen-fotografie | Düsseldorf (Parent) | PARENT | gen | ja | SERVICE | ✅ | 96 | 98 | 67 | ok | DONE |
+| `sportwagen-fotografie.html` | sportwagen-fotografie | Kategorie-Hub | PARENT | gen | ja | SERVICE | ✅ | 96 | 98 | 67 | ok | DONE |
 | `sportwagen-fotografie-bergisch-gladbach.html` | sportwagen-fotografie | bergisch-gladbach | city | gen | ja | UPDATE | ✅ | 100 | 96 | 100 | ok | DONE |
 | `sportwagen-fotografie-bochum.html` | sportwagen-fotografie | bochum | city | gen | ja | UPDATE | ✅ | 100 | 95 | 100 | ok | DONE |
 | `sportwagen-fotografie-deutschland.html` | sportwagen-fotografie | deutschland | city | gen | ja | UPDATE | ✅ | 100 | 96 | 100 | ok | DONE |
@@ -488,7 +488,7 @@ faqIntent   8
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | `classic-car-fotografie.html` | classic-car-fotografie | überregional | keyword | gen | — | CREATE | ✅ | 91 | 97 | 100 | ok | DONE |
 | `classic-car-fotografie-duesseldorf.html` | classic-car-fotografie | duesseldorf | city | gen | — | UPDATE | ✅ | 100 | 97 | 100 | ok | DONE |
-| `oldtimer-fotografie.html` | oldtimer-fotografie | Düsseldorf (Parent) | PARENT | gen | ja | SERVICE | ✅ | 96 | 97 | 100 | ok | DONE |
+| `oldtimer-fotografie.html` | oldtimer-fotografie | Kategorie-Hub | PARENT | gen | ja | SERVICE | ✅ | 96 | 97 | 100 | ok | DONE |
 | `oldtimer-fotografie-bergisch-gladbach.html` | oldtimer-fotografie | bergisch-gladbach | city | gen | ja | UPDATE | ✅ | 100 | 90 | 100 | ok | DONE |
 | `oldtimer-fotografie-bochum.html` | oldtimer-fotografie | bochum | city | gen | ja | UPDATE | ✅ | 100 | 95 | 100 | ok | DONE |
 | `oldtimer-fotografie-deutschland.html` | oldtimer-fotografie | deutschland | city | gen | ja | UPDATE | ✅ | 93 | 95 | 100 | ok | DONE |
@@ -529,7 +529,7 @@ faqIntent   8
 | `biker-portrait-duesseldorf.html` | biker-portrait | duesseldorf | city | gen | — | UPDATE | ✅ | 100 | 98 | 100 | ok | DONE |
 | `custom-bike-fotografie.html` | custom-bike-fotografie | überregional | keyword | gen | — | CREATE | ✅ | 91 | 98 | 75 | ok | DONE |
 | `custom-bike-fotografie-duesseldorf.html` | custom-bike-fotografie | duesseldorf | city | gen | — | UPDATE | ✅ | 95 | 97 | 50 | ok | DONE |
-| `motorrad-fotografie.html` | motorrad-fotografie | Düsseldorf (Parent) | PARENT | gen | ja | SERVICE | ✅ | 96 | 93 | 83 | ok | DONE |
+| `motorrad-fotografie.html` | motorrad-fotografie | Kategorie-Hub | PARENT | gen | ja | SERVICE | ✅ | 96 | 93 | 83 | ok | DONE |
 | `motorrad-fotografie-bergisch-gladbach.html` | motorrad-fotografie | bergisch-gladbach | city | gen | ja | UPDATE | ✅ | 100 | 96 | 100 | ok | DONE |
 | `motorrad-fotografie-bochum.html` | motorrad-fotografie | bochum | city | gen | ja | UPDATE | ✅ | 100 | 92 | 100 | ok | DONE |
 | `motorrad-fotografie-deutschland.html` | motorrad-fotografie | deutschland | city | gen | ja | UPDATE | ✅ | 100 | 95 | 100 | ok | DONE |
@@ -575,7 +575,7 @@ faqIntent   8
 | `personal-branding-fotografie-duesseldorf.html` | personal-branding-fotografie | duesseldorf | city | rich | ja | UPDATE | ✅ | 100 | 99 | 100 | ok | DONE |
 | `portrait-fotoshooting.html` | portrait-fotoshooting | überregional | keyword | rich | — | CREATE | ✅ | 96 | 95 | 67 | ok | DONE |
 | `portrait-fotoshooting-duesseldorf.html` | portrait-fotoshooting | duesseldorf | city | rich | — | CREATE | ✅ | 100 | 95 | 0 | ok | DONE |
-| `portraitfotografie.html` | portraitfotografie | Düsseldorf (Parent) | PARENT | gen | ja | SERVICE | ✅ | 96 | 97 | 80 | ok | DONE |
+| `portraitfotografie.html` | portraitfotografie | Kategorie-Hub | PARENT | gen | ja | SERVICE | ✅ | 96 | 97 | 75 | ok | DONE |
 | `portraitfotografie-bergisch-gladbach.html` | portraitfotografie | bergisch-gladbach | city | gen | ja | UPDATE | ✅ | 100 | 93 | 100 | ok | DONE |
 | `portraitfotografie-bochum.html` | portraitfotografie | bochum | city | gen | ja | UPDATE | ✅ | 95 | 92 | 100 | ok | DONE |
 | `portraitfotografie-deutschland.html` | portraitfotografie | deutschland | city | gen | ja | UPDATE | ✅ | 95 | 95 | 100 | ok | DONE |
@@ -613,7 +613,7 @@ faqIntent   8
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | `fine-art-prints-landschaft.html` | fine-art-prints | überregional | keyword | gen | — | CREATE | ✅ | 91 | 98 | 50 | ok | DONE |
 | `landschaftsbilder-kaufen.html` | landschaftsbilder | überregional | keyword | gen | — | CREATE | ✅ | 88 | 98 | 75 | ok | DONE |
-| `landschaftsfotografie.html` | landschaftsfotografie | Düsseldorf (Parent) | PARENT | gen | ja | SERVICE | ✅ | 96 | 98 | 33 | ok | DONE |
+| `landschaftsfotografie.html` | landschaftsfotografie | Kategorie-Hub | PARENT | gen | ja | SERVICE | ✅ | 96 | 98 | 75 | ok | DONE |
 | `landschaftsfotografie-bergisch-gladbach.html` | landschaftsfotografie | bergisch-gladbach | city | gen | ja | UPDATE | ✅ | 100 | 95 | 100 | ok | DONE |
 | `landschaftsfotografie-bochum.html` | landschaftsfotografie | bochum | city | gen | ja | UPDATE | ✅ | 100 | 95 | 100 | ok | DONE |
 | `landschaftsfotografie-deutschland.html` | landschaftsfotografie | deutschland | city | gen | ja | UPDATE | ✅ | 100 | 96 | 83 | ok | DONE |
@@ -639,6 +639,6 @@ faqIntent   8
 | `landschaftsfotografie-solingen.html` | landschaftsfotografie | solingen | city | gen | ja | UPDATE | ✅ | 92 | 97 | 100 | ok | DONE |
 | `landschaftsfotografie-wuppertal.html` | landschaftsfotografie | wuppertal | city | gen | ja | UPDATE | ✅ | 100 | 96 | 100 | ok | DONE |
 | `landschaftsfotografie-print-deutschland.html` | landschaftsfotografie-print | deutschland | city | gen | — | UPDATE | ✅ | 92 | 99 | 83 | ok | DONE |
-| `naturfotografie-prints.html` | naturfotografie-prints | überregional | keyword | gen | — | CREATE | ✅ | 96 | 97 | 33 | ok | DONE |
-| `wandbilder-landschaftsfotografie.html` | wandbilder-landschaftsfotografie | überregional | keyword | gen | — | CREATE | ✅ | 83 | 98 | 71 | ok | DONE |
+| `naturfotografie-prints.html` | naturfotografie-prints | überregional | keyword | gen | — | CREATE | ✅ | 96 | 97 | 50 | ok | DONE |
+| `wandbilder-landschaftsfotografie.html` | wandbilder-landschaftsfotografie | überregional | keyword | gen | — | CREATE | ✅ | 83 | 98 | 75 | ok | DONE |
 

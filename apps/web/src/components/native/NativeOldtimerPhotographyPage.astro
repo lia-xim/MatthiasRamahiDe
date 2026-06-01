@@ -49,9 +49,9 @@ const cmsHeroLine2 = cmsText(doc?.heroLine2)
 const cmsStatementBody = doc?.statement?.body?.map((entry) => cmsText(entry.text)).filter(Boolean) || []
 const heroLabel = isParentPage || isKeywordPage ? 'Oldtimer-Fotografie' : `Oldtimer-Fotografie ${scope.label}`
 const isLocalHeroPage = !isParentPage && !isKeywordPage
-const heroTitlePrefix = isLocalHeroPage ? serviceLabel : keywordFocusCopy?.heroTitle || 'Oldtimer'
-const heroTitleSuffix = isLocalHeroPage ? scope.label : cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Fotografie.'
-const heroLocalNote = isLocalHeroPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Charakter vor Ort.' : ''
+const heroTitlePrefix = isParentPage ? 'Oldtimerfotografie' : serviceLabel
+const heroTitleSuffix = isLocalHeroPage ? scope.label : ''
+const heroLocalNote = isLocalHeroPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Charakter vor Ort.' : isKeywordPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || '' : ''
 const defaultHeroLead = isParentPage
   ? 'Oldtimer-Fotografie: Herkunft, Material, Lack, Chrom, Leder und Patina werden ruhig dokumentiert — für Sammlung, Verkauf, Auktion, Ausstellung und Fahrzeuge mit Geschichte. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.'
   : isKeywordPage
@@ -212,10 +212,15 @@ const focusStoryCards = inheritedStoryCards.map((card, index) => {
   return override ? { ...card, title: override.title || card.title, text: override.text || card.text } : card
 })
 
-const focusIntroHeadline = cmsText(doc?.statement?.headline) || keywordFocusCopy?.pullHeadline || (isParentPage || isKeywordPage ? 'Charakter' : `Oldtimer in ${scope.label}`)
-const focusIntroEmphasis = cmsText(doc?.statement?.emphasis) || keywordFocusCopy?.pullEmphasis || (isParentPage || isKeywordPage ? 'mit Nostalgie.' : 'mit Herkunft.')
+const firstSectionTarget = isLocalHeroPage ? `${serviceLabel} ${scope.label}` : isKeywordPage ? serviceLabel : ''
+const focusIntroHeadlineSource = cmsText(doc?.statement?.headline) || keywordFocusCopy?.pullHeadline || (isParentPage || isKeywordPage ? 'Charakter' : `Oldtimer in ${scope.label}`)
+const focusIntroEmphasisSource = cmsText(doc?.statement?.emphasis) || keywordFocusCopy?.pullEmphasis || (isParentPage || isKeywordPage ? 'mit Nostalgie.' : 'mit Herkunft.')
+const focusIntroHeadline = firstSectionTarget || focusIntroHeadlineSource
+const focusIntroEmphasis = firstSectionTarget ? '' : focusIntroEmphasisSource
 const focusIntroTitle = splitTrailingEmphasis(focusIntroHeadline, focusIntroEmphasis)
-const focusIntroParagraphs = cmsStatementBody.length
+const focusIntroSourceTitle = splitTrailingEmphasis(focusIntroHeadlineSource, focusIntroEmphasisSource)
+const focusIntroSupportLine = firstSectionTarget ? [focusIntroSourceTitle.headline, focusIntroSourceTitle.emphasis].filter(Boolean).join(' ') : ''
+const focusIntroBaseParagraphs = cmsStatementBody.length
   ? cmsStatementBody
   : keywordFocusCopy?.statementBody?.length
     ? keywordFocusCopy.statementBody
@@ -228,16 +233,17 @@ const focusIntroParagraphs = cmsStatementBody.length
           `Oldtimer-Fotografie in ${scope.label} wird als ruhige Dokumentation geplant: Modell, Baujahr, Standort, Material, Patina und Nutzung bestimmen den Ablauf.`,
           `Der lokale Bezug hilft bei Treffpunkt, Lichtfenster und Logistik. So entsteht in ${scope.label} eine Serie fuer Sammlung, Verkauf, Auktion oder privates Archiv, ohne die Hauptkategorie zu verlassen.`,
         ]
-const focusStoryHeadline = isLocalHeroPage ? serviceLabel : keywordFocusCopy?.sectionHeadline || (isParentPage || isKeywordPage ? 'Vier Spuren' : `Vier Spuren in ${scope.label}`)
-const focusStoryEmphasis = isLocalHeroPage ? `${scope.label}.` : keywordFocusCopy?.sectionEmphasis || (isParentPage || isKeywordPage ? 'einer Geschichte.' : 'eines Fahrzeugs.')
+const focusIntroParagraphs = focusIntroSupportLine ? [focusIntroSupportLine, ...focusIntroBaseParagraphs] : focusIntroBaseParagraphs
+const focusStoryHeadline = isLocalHeroPage || isKeywordPage ? serviceLabel : keywordFocusCopy?.sectionHeadline || (isParentPage ? 'Vier Spuren' : `Vier Spuren in ${scope.label}`)
+const focusStoryEmphasis = isLocalHeroPage ? `${scope.label}.` : isKeywordPage ? 'klar geplant.' : keywordFocusCopy?.sectionEmphasis || (isParentPage ? 'einer Geschichte.' : 'eines Fahrzeugs.')
 const focusStoryLead = isParentPage || isKeywordPage
   ? keywordFocusCopy?.sectionLead || 'Jeder Oldtimer traegt seine Provenienz in den Details. Material, Patina, Embleme und Innenraum greifen ineinander - ein Bildsatz, der Herkunft und Zustand vollstaendig dokumentiert.'
   : `In ${scope.label} wird der Bildsatz auf das konkrete Fahrzeug zugeschnitten: ruhige Totalen, Patina, Innenraum und Details, die Zustand und Geschichte nachvollziehbar machen.`
-const focusPortfolioHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}: Bildserie.` : cmsText(doc?.portfolioTiles?.[0]?.label) || keywordFocusCopy?.galleryHeadline || (isParentPage || isKeywordPage ? 'Aktuelle Arbeiten.' : `Oldtimer-Arbeiten ${scope.label}.`)
+const focusPortfolioHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}: Bildserie.` : isKeywordPage ? `${serviceLabel}: Bildserie.` : cmsText(doc?.portfolioTiles?.[0]?.label) || keywordFocusCopy?.galleryHeadline || (isParentPage ? 'Aktuelle Arbeiten.' : `Oldtimer-Arbeiten ${scope.label}.`)
 const focusPortfolioLead = isParentPage || isKeywordPage
   ? keywordFocusCopy?.galleryLead || 'Sechs kuratierte Oldtimer-Bilder aus juengeren Serien. Klicken zum Vergroessern.'
   : `Beispiele fuer Bildtypen, die auch bei einem Oldtimer-Shooting in ${scope.label} sinnvoll sind: Exponat, Cockpit, Material, Profil und Detail.`
-const focusAudienceHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}: passende Anfragen.` : keywordFocusCopy?.audienceHeadline || (isParentPage || isKeywordPage ? 'Fuer wen ich arbeite.' : `Fuer Oldtimer in ${scope.label}.`)
+const focusAudienceHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}: passende Anfragen.` : isKeywordPage ? `${serviceLabel}: passende Anfragen.` : keywordFocusCopy?.audienceHeadline || (isParentPage ? 'Fuer wen ich arbeite.' : `Fuer Oldtimer in ${scope.label}.`)
 const focusAudienceLead = isParentPage || isKeywordPage
   ? keywordFocusCopy?.audienceLead || 'Vom privaten Liebhaberstueck bis zum Auktionskatalog - jede Serie wird auf Nutzung und Zielpublikum zugeschnitten.'
   : `Geeignet fuer Besitzer, Sammler und Verkaufer in ${scope.label}, die ein Fahrzeug hochwertig, aber nicht kuenstlich zeigen moechten.`
@@ -265,7 +271,7 @@ const heroBgDesktop = '/assets/optimized/assets-photos-oldtimer-stage-1920.webp'
 const heroBgMobile = '/assets/optimized/assets-photos-oldtimer-stage-1280.webp'
 const heroSubText = doc?.intro || heroLead
 const heroSlidesJson = JSON.stringify([
-  { image: heroBgDesktop, titleLines: [heroTitlePrefix, heroTitleSuffix], lead: heroSubText },
+  { image: heroBgDesktop, titleLines: [heroTitlePrefix, heroTitleSuffix].filter(Boolean), lead: heroSubText },
 ])
 
 const cityLinks = [
@@ -337,7 +343,7 @@ const searchLinks = [
         <div class="hero-stage">
           <h1 class="hero-title" id="hero-title" data-text-idx="0">
             <span class="line"><span class="word">{heroTitlePrefix}</span></span>
-            <span class="line"><span class="word">{heroTitleSuffix}</span></span>
+            {heroTitleSuffix && <span class="line"><span class="word">{heroTitleSuffix}</span></span>}
           </h1>
           {heroLocalNote && <p class="hero-local-note">{heroLocalNote}</p>}
           <p class="hero-lead" id="hero-lead">{heroSubText}</p>

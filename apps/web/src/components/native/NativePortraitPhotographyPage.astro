@@ -49,9 +49,9 @@ const cmsHeroLine2 = cmsText(doc?.heroLine2)
 const cmsStatementBody = doc?.statement?.body?.map((entry) => cmsText(entry.text)).filter(Boolean) || []
 const heroLabel = isParentPage || isKeywordPage ? 'Portraitfotografie' : `Portraitfotografie ${scope.label}`
 const isLocalHeroPage = !isParentPage && !isKeywordPage
-const heroTitle = isLocalHeroPage ? serviceLabel : keywordFocusCopy?.heroTitle || 'Portrait'
-const heroEmphasis = isLocalHeroPage ? scope.label : cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Fotografie.'
-const heroLocalNote = isLocalHeroPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Portrait vor Ort.' : ''
+const heroTitle = isParentPage ? 'Porträtfotografie' : serviceLabel
+const heroEmphasis = isLocalHeroPage ? scope.label : ''
+const heroLocalNote = isLocalHeroPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Portrait vor Ort.' : isKeywordPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || '' : ''
 const defaultHeroLead = isParentPage
   ? 'Portraitfotografie: Blick, Licht, Distanz und Haltung werden auf Nutzung und Persönlichkeit abgestimmt — für Personal Branding, Business Portraits, Team, Presse und Editorial. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.'
   : isKeywordPage
@@ -156,10 +156,15 @@ const searchLinks = [
   ['pressefoto-duesseldorf.html', 'Pressefoto'],
 ] as const
 
-const focusIntroHeadline = cmsText(doc?.statement?.headline) || keywordFocusCopy?.pullHeadline || (isParentPage ? 'Naehe ohne' : `${serviceLabel}:`)
-const focusIntroEmphasis = cmsText(doc?.statement?.emphasis) || keywordFocusCopy?.pullEmphasis || (isParentPage ? 'Beliebigkeit.' : isKeywordPage ? 'klar geplant.' : `${scope.label}.`)
+const firstSectionTarget = isLocalHeroPage ? `${serviceLabel} ${scope.label}` : isKeywordPage ? serviceLabel : ''
+const focusIntroHeadlineSource = cmsText(doc?.statement?.headline) || keywordFocusCopy?.pullHeadline || (isParentPage ? 'Naehe ohne' : `${serviceLabel}:`)
+const focusIntroEmphasisSource = cmsText(doc?.statement?.emphasis) || keywordFocusCopy?.pullEmphasis || (isParentPage ? 'Beliebigkeit.' : isKeywordPage ? 'klar geplant.' : `${scope.label}.`)
+const focusIntroHeadline = firstSectionTarget || focusIntroHeadlineSource
+const focusIntroEmphasis = firstSectionTarget ? '' : focusIntroEmphasisSource
 const focusIntroTitle = splitTrailingEmphasis(focusIntroHeadline, focusIntroEmphasis)
-const focusIntroParagraphs =
+const focusIntroSourceTitle = splitTrailingEmphasis(focusIntroHeadlineSource, focusIntroEmphasisSource)
+const focusIntroSupportLine = firstSectionTarget ? [focusIntroSourceTitle.headline, focusIntroSourceTitle.emphasis].filter(Boolean).join(' ') : ''
+const focusIntroBaseParagraphs =
   cmsStatementBody.length
     ? cmsStatementBody
     : keywordFocusCopy?.statementBody?.length
@@ -175,8 +180,9 @@ const focusIntroParagraphs =
             ? 'Der Text ist auf diese konkrete Suche zugeschnitten, ohne ein neues Layout oder eine unpassende Kategorie zu erzwingen.'
             : `Der lokale Bezug fuer ${scope.label} wird ueber Ort, Anfahrt, Lichtfenster und Ablauf konkretisiert.`,
         ]
-const focusModuleHeadline = isLocalHeroPage ? serviceLabel : keywordFocusCopy?.sectionHeadline || 'Verschiedene'
-const focusModuleEmphasis = isLocalHeroPage ? `${scope.label}.` : keywordFocusCopy?.sectionEmphasis || 'Perspektiven.'
+const focusIntroParagraphs = focusIntroSupportLine ? [focusIntroSupportLine, ...focusIntroBaseParagraphs] : focusIntroBaseParagraphs
+const focusModuleHeadline = isLocalHeroPage || isKeywordPage ? serviceLabel : keywordFocusCopy?.sectionHeadline || 'Verschiedene'
+const focusModuleEmphasis = isLocalHeroPage ? `${scope.label}.` : isKeywordPage ? 'klar geplant.' : keywordFocusCopy?.sectionEmphasis || 'Perspektiven.'
 const focusModuleLead =
   isLocalHeroPage
     ? `${serviceLabel} in ${scope.label}: Wirkung, Person, Licht und Nutzung werden vor dem Termin zusammen geplant.`
@@ -224,7 +230,7 @@ const portraitFocusCards = defaultPortraitFocusCards.map((card, index) => {
   return override ? { ...card, label: override.label || card.label, title: override.title || card.title, text: override.text || card.text } : card
 })
 
-const focusProcessHeadline = isLocalHeroPage ? `Ablauf ${scope.label}.` : keywordFocusCopy?.processHeadline || 'Ablauf.'
+const focusProcessHeadline = isLocalHeroPage ? `Ablauf ${scope.label}.` : isKeywordPage ? `Ablauf ${serviceLabel}.` : keywordFocusCopy?.processHeadline || 'Ablauf.'
 const focusProcessLead =
   isLocalHeroPage
     ? `Vom ersten Kontakt bis zur Bildabgabe bleibt der Ablauf in ${scope.label} klar: Ziel, Ort, Licht, Auswahl und Lieferung werden vorab abgestimmt.`
@@ -319,7 +325,7 @@ const focusRelatedLead =
         <span class="hero-pt__catchlight"></span>
       </div>
 
-      <h1 class="hero-pt__title">
+      <h1 class={`hero-pt__title${isLocalHeroPage ? ' hero-pt__title--local' : ''}`}>
         {heroTitle}
         {heroEmphasis && <em>{heroEmphasis}</em>}
       </h1>

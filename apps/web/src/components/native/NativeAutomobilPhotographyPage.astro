@@ -86,9 +86,9 @@ const splitTrailingEmphasis = (headline: string, emphasis: string) => {
 const cmsHeroLine2 = cmsText(doc?.heroLine2)
 const cmsStatementBody = doc?.statement?.body?.map((entry) => cmsText(entry.text)).filter(Boolean) || []
 const localSuffix = !isParentPage && !isKeywordPage ? ` ${scope.label}` : ''
-const heroTitle = isLocalCityPage ? serviceLabel : keywordFocusCopy?.heroTitle || 'Automobil'
-const heroSecondLine = isLocalCityPage ? scope.label : cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || `Fotografie${localSuffix}.`
-const heroLocalNote = isLocalCityPage ? cmsHeroLine2 : ''
+const heroTitle = isParentPage ? 'Automobilfotografie' : serviceLabel
+const heroSecondLine = isLocalCityPage ? scope.label : ''
+const heroLocalNote = isLocalCityPage ? cmsHeroLine2 : isKeywordPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || '' : ''
 const heroLabel = isParentPage ? 'Automobilfotografie' : `Automobilfotografie${localSuffix}`
 const defaultHeroLead = isParentPage
   ? 'Automobilfotografie: Exterieur, Interieur, Details und Cinematic werden als kuratierte Bildserie geplant - für Marke, Showroom, Verkauf, Kampagne und hochwertige private Fahrzeuge. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.'
@@ -354,12 +354,12 @@ const focusPullLead =
     ? 'Vom ehrlichen Verkaufsbild bis zur inszenierten Kampagne - eine konsistente Bildserie, sauber belichtet und sofort einsatzbereit fuer Inserat, Magazin, Social und Print.'
     : `${serviceLabel} bekommt eine eigene Seite in der Automobil-Struktur: Fahrzeug, Licht, Nutzung und Ausgabe werden vor dem Shooting sauber geplant.`)
 const focusPullRest = cmsStatementBody.slice(1)
-const focusSectionHeadline = isLocalCityPage ? `${serviceLabel} in ${scope.label},` : keywordFocusCopy?.sectionHeadline || (isParentPage ? 'Ein Bildsatz,' : `${serviceLabel},`)
-const focusSectionEmphasis = isLocalCityPage ? 'lokal geplant.' : keywordFocusCopy?.sectionEmphasis || (isParentPage ? 'vier Blickwinkel.' : 'klar fokussiert.')
+const focusSectionHeadline = isLocalCityPage ? `${serviceLabel} in ${scope.label},` : isKeywordPage ? serviceLabel : keywordFocusCopy?.sectionHeadline || (isParentPage ? 'Ein Bildsatz,' : `${serviceLabel},`)
+const focusSectionEmphasis = isLocalCityPage ? 'lokal geplant.' : isKeywordPage ? 'klar geplant.' : keywordFocusCopy?.sectionEmphasis || (isParentPage ? 'vier Blickwinkel.' : 'klar fokussiert.')
 const focusFeatureTitle = focusSwitchFrames[0]?.title || keywordFocusCopy?.featureTitle || defaultSwitchCopy[0].title
 const focusFeatureBody = focusSwitchFrames[0]?.body || keywordFocusCopy?.featureBody || defaultSwitchCopy[0].body
-const focusGalleryHeadline = isLocalCityPage ? `${serviceLabel} ${scope.label}: Bildtypen.` : cmsText(doc?.portfolioTiles?.[0]?.label) || keywordFocusCopy?.galleryHeadline || 'Automobilfotografie als Bildserie.'
-const focusAudienceHeadline = isLocalCityPage ? `${serviceLabel} ${scope.label}: passende Anfragen.` : keywordFocusCopy?.audienceHeadline || 'Automobilfotografie: passende Anfragen.'
+const focusGalleryHeadline = isLocalCityPage ? `${serviceLabel} ${scope.label}: Bildtypen.` : isKeywordPage ? `${serviceLabel}: Bildtypen.` : cmsText(doc?.portfolioTiles?.[0]?.label) || keywordFocusCopy?.galleryHeadline || 'Automobilfotografie als Bildserie.'
+const focusAudienceHeadline = isLocalCityPage ? `${serviceLabel} ${scope.label}: passende Anfragen.` : isKeywordPage ? `${serviceLabel}: passende Anfragen.` : keywordFocusCopy?.audienceHeadline || 'Automobilfotografie: passende Anfragen.'
 const focusAudienceLead = keywordFocusCopy?.audienceLead || (!isParentPage && !isKeywordPage
   ? `Ob Showroom, privates Fahrzeug oder Kampagne: in ${scope.label} wird die Bildserie nach Nutzung, Standort und Ausgabe geplant.`
   : 'Du erkennst dich wieder?')

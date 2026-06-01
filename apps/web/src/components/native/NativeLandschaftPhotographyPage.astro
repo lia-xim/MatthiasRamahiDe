@@ -49,9 +49,9 @@ const cmsHeroLine2 = cmsText(doc?.heroLine2)
 const cmsStatementBody = doc?.statement?.body?.map((entry) => cmsText(entry.text)).filter(Boolean) || []
 const heroLabel = isParentPage || isKeywordPage ? 'Landschaftsfotografie' : `Landschaftsfotografie ${scope.label}`
 const isLocalHeroPage = !isParentPage && !isKeywordPage
-const heroTitle = isLocalHeroPage ? serviceLabel : keywordFocusCopy?.heroTitle || 'Landschaft'
-const heroSecondLine = isLocalHeroPage ? scope.label : cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Fotografie.'
-const heroLocalNote = isLocalHeroPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Licht. Raum. Print.' : ''
+const heroTitle = isParentPage ? 'Landschaftsfotografie' : serviceLabel
+const heroSecondLine = isLocalHeroPage ? scope.label : ''
+const heroLocalNote = isLocalHeroPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Licht. Raum. Print.' : isKeywordPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || '' : ''
 const defaultHeroLead = isParentPage
   ? 'Landschaftsfotografie: Licht, Weite, Material und Raumwirkung werden kuratiert — als Fine-Art-Print, Wandbild, Edition oder großformatige Arbeit für Räume mit Ruhe. Bundesweit zählt vor allem die passende Motivwahl, Druckqualität, Materialität und Wirkung im Raum.'
   : isKeywordPage
@@ -112,10 +112,15 @@ const visualSlots = familyVisualSlots(visualDoc, [
 ])
 const heroImages = visualSlots.slice(0, 5).map((slot) => slot.full).join(',')
 
-const focusIntroHeadline = cmsText(doc?.statement?.headline) || keywordFocusCopy?.pullHeadline || (isParentPage || isKeywordPage ? 'Bilder, die einen' : `Landschaft fuer ${scope.label}`)
-const focusIntroEmphasis = cmsText(doc?.statement?.emphasis) || keywordFocusCopy?.pullEmphasis || (isParentPage || isKeywordPage ? 'Raum veraendern.' : 'als Raumwirkung.')
+const firstSectionTarget = isLocalHeroPage ? `${serviceLabel} ${scope.label}` : isKeywordPage ? serviceLabel : ''
+const focusIntroHeadlineSource = cmsText(doc?.statement?.headline) || keywordFocusCopy?.pullHeadline || (isParentPage || isKeywordPage ? 'Bilder, die einen' : `Landschaft fuer ${scope.label}`)
+const focusIntroEmphasisSource = cmsText(doc?.statement?.emphasis) || keywordFocusCopy?.pullEmphasis || (isParentPage || isKeywordPage ? 'Raum veraendern.' : 'als Raumwirkung.')
+const focusIntroHeadline = firstSectionTarget || focusIntroHeadlineSource
+const focusIntroEmphasis = firstSectionTarget ? '' : focusIntroEmphasisSource
 const focusIntroTitle = splitTrailingEmphasis(focusIntroHeadline, focusIntroEmphasis)
-const focusIntroParagraphs = cmsStatementBody.length
+const focusIntroSourceTitle = splitTrailingEmphasis(focusIntroHeadlineSource, focusIntroEmphasisSource)
+const focusIntroSupportLine = firstSectionTarget ? [focusIntroSourceTitle.headline, focusIntroSourceTitle.emphasis].filter(Boolean).join(' ') : ''
+const focusIntroBaseParagraphs = cmsStatementBody.length
   ? cmsStatementBody
   : keywordFocusCopy?.statementBody?.length
     ? keywordFocusCopy.statementBody
@@ -128,7 +133,8 @@ const focusIntroParagraphs = cmsStatementBody.length
       `Landschaftsfotografie fuer ${scope.label} wird nicht als Termin vor Ort verkauft, sondern als kuratierte Bild- und Printauswahl fuer Raeume, Marken und private Sammlungen verstanden.`,
       `Der lokale Bezug macht die Anfrage konkreter: Menschen in ${scope.label} suchen Wandbilder, Fine-Art-Prints oder ruhige Bildraeume, die zu Wohnung, Praxis, Hotel oder Buero passen.`,
     ]
-const focusModuleHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}.` : keywordFocusCopy?.sectionHeadline || (isParentPage || isKeywordPage ? 'Vier Ausfuehrungen.' : `Ausfuehrungen fuer ${scope.label}.`)
+const focusIntroParagraphs = focusIntroSupportLine ? [focusIntroSupportLine, ...focusIntroBaseParagraphs] : focusIntroBaseParagraphs
+const focusModuleHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}.` : isKeywordPage ? `${serviceLabel}.` : keywordFocusCopy?.sectionHeadline || (isParentPage ? 'Vier Ausfuehrungen.' : `Ausfuehrungen fuer ${scope.label}.`)
 const focusModuleLead = isParentPage || isKeywordPage
   ? keywordFocusCopy?.sectionLead || 'Jedes Motiv ist als Print erhaeltlich.'
   : `Jedes Motiv kann fuer Raeume in ${scope.label} nach Format, Material und Wirkung abgestimmt werden.`
@@ -149,9 +155,9 @@ const moduleCards = defaultModuleCards.map((card, index) => {
       }
     : card
 })
-const focusGalleryHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}: Bildauswahl.` : cmsText(doc?.portfolioTiles?.[0]?.label) || keywordFocusCopy?.galleryHeadline || (isParentPage || isKeywordPage ? 'Ausgewaehlte Landschaften.' : `Auswahl fuer ${scope.label}.`)
-const focusProcessHeadline = isLocalHeroPage ? `Ablauf ${scope.label}` : keywordFocusCopy?.processHeadline || (isParentPage || isKeywordPage ? 'So entsteht' : `So entsteht dein Druck`)
-const focusProcessEmphasis = isLocalHeroPage ? 'und Lieferung.' : keywordFocusCopy?.sectionEmphasis || (isParentPage || isKeywordPage ? 'Ihr Druck.' : `fuer ${scope.label}.`)
+const focusGalleryHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}: Bildauswahl.` : isKeywordPage ? `${serviceLabel}: Bildauswahl.` : cmsText(doc?.portfolioTiles?.[0]?.label) || keywordFocusCopy?.galleryHeadline || (isParentPage ? 'Ausgewaehlte Landschaften.' : `Auswahl fuer ${scope.label}.`)
+const focusProcessHeadline = isLocalHeroPage ? `Ablauf ${scope.label}` : isKeywordPage ? `Ablauf ${serviceLabel}` : keywordFocusCopy?.processHeadline || (isParentPage ? 'So entsteht' : `So entsteht dein Druck`)
+const focusProcessEmphasis = isLocalHeroPage ? 'und Lieferung.' : isKeywordPage ? 'und Lieferung.' : keywordFocusCopy?.sectionEmphasis || (isParentPage ? 'Ihr Druck.' : `fuer ${scope.label}.`)
 const focusProcessLead = isParentPage || isKeywordPage
   ? keywordFocusCopy?.processLead || 'Jedes Bild aus dem Portfolio, in jedem Format, mit oder ohne Rahmen - auf Anfrage gefertigt und zu Ihnen geliefert.'
   : `Motiv, Format, Material und Lieferziel werden fuer ${scope.label} abgestimmt, damit der Print im Raum ruhig und hochwertig wirkt.`
@@ -254,7 +260,7 @@ const searchLinks = [
       <div class="hero-ls__inner">
         <h1 class="hero-ls__title">
           <span class="l"><span class="w">{heroTitle}</span></span>
-          <span class="l"><span class="w">{heroSecondLine}</span></span>
+          {heroSecondLine && <span class="l"><span class="w">{heroSecondLine}</span></span>}
         </h1>
         {heroLocalNote && <p class="hero-ls__local-note">{heroLocalNote}</p>}
         <p class="hero-ls__sub">{doc?.intro || heroLead}</p>

@@ -46,9 +46,9 @@ const cmsFaqItems = doc?.localFaq?.map((entry) => ({ q: entry.question || '', a:
 const faqItems = cmsFaqItems.length ? cmsFaqItems : keywordFocusCopy?.faq
 const cmsHeroLine2 = typeof doc?.heroLine2 === 'string' ? doc.heroLine2.trim() : ''
 const isLocalHeroPage = !isParentPage && !isKeywordPage
-const heroTitle = isLocalHeroPage ? serviceLabel : keywordFocusCopy?.heroTitle || 'Sportwagen'
-const heroSecondLine = isLocalHeroPage ? scope.label : cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Fotografie.'
-const heroLocalNote = isLocalHeroPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Performance. Linie. Detail.' : ''
+const heroTitle = isParentPage ? 'Sportwagenfotografie' : serviceLabel
+const heroSecondLine = isLocalHeroPage ? scope.label : ''
+const heroLocalNote = isLocalHeroPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Performance. Linie. Detail.' : isKeywordPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || '' : ''
 const heroLabel = isParentPage || isKeywordPage ? 'Sportwagenfotografie' : `Sportwagenfotografie ${scope.label}`
 const defaultHeroLead = isParentPage
   ? 'Sportwagenfotografie: Performance, Form, Innenraum und Details werden mit kontrollierten Reflexen und ruhiger Dramaturgie sichtbar — für Sammler, Händler, Marke, Verkauf und Druck. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant; Düsseldorf bleibt der organisatorische Ausgangspunkt.'
@@ -318,10 +318,15 @@ const finalAudiences = doc?.audienceCards?.length
   : inheritedAudiences
 
 const finalStatementImage = finalPortfolioTiles[0] || statementImage
-const statementHeadline = (typeof doc?.statement?.headline === 'string' && doc.statement.headline.trim()) || keywordFocusCopy?.statementHeadline || 'Bilder mit'
-const statementEmphasis = (typeof doc?.statement?.emphasis === 'string' && doc.statement.emphasis.trim()) || keywordFocusCopy?.statementEmphasis || 'Druckqualität.'
+const firstSectionTarget = isLocalHeroPage ? `${serviceLabel} ${scope.label}` : isKeywordPage ? serviceLabel : ''
+const statementHeadlineSource = (typeof doc?.statement?.headline === 'string' && doc.statement.headline.trim()) || keywordFocusCopy?.statementHeadline || 'Bilder mit'
+const statementEmphasisSource = (typeof doc?.statement?.emphasis === 'string' && doc.statement.emphasis.trim()) || keywordFocusCopy?.statementEmphasis || 'Druckqualität.'
+const statementHeadline = firstSectionTarget || statementHeadlineSource
+const statementEmphasis = firstSectionTarget ? '' : statementEmphasisSource
 const statementTitle = splitTrailingEmphasis(statementHeadline, statementEmphasis)
-const statementBody = doc?.statement?.body?.length
+const statementSourceTitle = splitTrailingEmphasis(statementHeadlineSource, statementEmphasisSource)
+const statementSupportLine = firstSectionTarget ? [statementSourceTitle.headline, statementSourceTitle.emphasis].filter(Boolean).join(' ') : ''
+const baseStatementBody = doc?.statement?.body?.length
   ? doc.statement.body.map((entry) => entry.text).filter((text): text is string => Boolean(text))
   : keywordFocusCopy?.statementBody?.length
     ? keywordFocusCopy.statementBody
@@ -329,9 +334,10 @@ const statementBody = doc?.statement?.body?.length
       'Sportwagen verlangen Präzision. Ich arbeite mit mobilem Licht, Reflektoren und einem klaren Plan — kontrollierte Reflexe, ruhige Hintergründe, echte Farben. Lack, Linien und Proportionen wirken stimmig, nicht überzeichnet.',
       'Ob Verkauf, Branding, Redaktion oder persönliches Geschenk: ich kombiniere klares Licht, saubere Komposition und einen Blick für Details. Sie erhalten Dateien für Web, Social Media und Druck — aufbereitet und sofort einsatzbereit.',
     ]
+const statementBody = statementSupportLine ? [statementSupportLine, ...baseStatementBody] : baseStatementBody
 
-const focusSectionHeadline = isLocalHeroPage ? serviceLabel : keywordFocusCopy?.sectionHeadline || (isParentPage ? 'Das Auto,' : `${serviceLabel},`)
-const focusSectionEmphasis = isLocalHeroPage ? `${scope.label}.` : keywordFocusCopy?.sectionEmphasis || (isParentPage ? 'aus jedem Winkel.' : isKeywordPage ? 'klar fokussiert.' : `${scope.label}.`)
+const focusSectionHeadline = isLocalHeroPage || isKeywordPage ? serviceLabel : keywordFocusCopy?.sectionHeadline || (isParentPage ? 'Das Auto,' : `${serviceLabel},`)
+const focusSectionEmphasis = isLocalHeroPage ? `${scope.label}.` : isKeywordPage ? 'klar fokussiert.' : keywordFocusCopy?.sectionEmphasis || (isParentPage ? 'aus jedem Winkel.' : `${scope.label}.`)
 const focusSectionLead =
   isLocalHeroPage
     ? `${serviceLabel} in ${scope.label}: Exterieur, Innenraum, Details und Nutzung werden passend zu Fahrzeug, Ort und Ausgabeformat geplant.`
@@ -339,9 +345,9 @@ const focusSectionLead =
   (isParentPage
     ? 'Exterieur, Interieur, Details und cineastische Perspektiven greifen ineinander - ein Bildsatz, der Fahrzeug, Atmosphaere und Material gleichermaßen zeigt.'
     : `${serviceLabel} bekommt eine eigene Seite im Sportwagenbereich: Exterieur, Innenraum, Details und Nutzung werden passend zum Motiv geplant.`)
-const focusGalleryHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}: Bildserie.` : keywordFocusCopy?.galleryHeadline || 'Aktuelle Arbeiten.'
+const focusGalleryHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}: Bildserie.` : isKeywordPage ? `${serviceLabel}: Bildserie.` : keywordFocusCopy?.galleryHeadline || 'Aktuelle Arbeiten.'
 const focusGalleryLead = keywordFocusCopy?.galleryLead || 'Sechs kuratierte Sportwagen-Bilder aus juengeren Serien. Klicken zum Vergroessern.'
-const focusAudienceHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}: passende Anfragen.` : keywordFocusCopy?.audienceHeadline || 'Fuer wen ich arbeite.'
+const focusAudienceHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}: passende Anfragen.` : isKeywordPage ? `${serviceLabel}: passende Anfragen.` : keywordFocusCopy?.audienceHeadline || 'Fuer wen ich arbeite.'
 const focusAudienceLead =
   keywordFocusCopy?.audienceLead ||
   'Vom privaten Fahrzeug bis zur internationalen Kampagne. Jede Serie wird auf Nutzung, Marke und Zielgruppe zugeschnitten - ein Hero-Motiv oder ein vollstaendiges Launch-Asset-Paket.'
@@ -471,7 +477,7 @@ const searchLinks = [
       <div class="tri-overlay">
         <h1 class="tri-title">
           <span class="line"><span class="word">{heroTitle}</span></span>
-          <span class="line"><span class="word">{heroSecondLine}</span></span>
+          {heroSecondLine && <span class="line"><span class="word">{heroSecondLine}</span></span>}
         </h1>
         {heroLocalNote && <p class="tri-local-note">{heroLocalNote}</p>}
         <p class="tri-sub">{doc?.intro || heroLead}</p>
