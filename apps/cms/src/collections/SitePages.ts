@@ -6,6 +6,7 @@ import { advancedSettings } from '../fields/advancedSettings'
 import { contentBlocks } from '../fields/contentBlocks'
 import { mediaRelationshipField } from '../fields/editorialImages'
 import { homeHeroSlides } from '../fields/homeHeroSlides'
+import { homeSectionsTab } from '../fields/homeSections'
 import { legacyMigrationFields } from '../fields/legacyMigration'
 import { seoFields } from '../fields/seo'
 import { slugField } from '../fields/slug'
@@ -21,6 +22,7 @@ const heroSliderPageTypes = ['home', 'portfolio-index', 'photography-index']
 const heroSliderPages = (data: Record<string, unknown> | undefined) =>
   heroSliderPageTypes.includes((data?.pageType as string) ?? '')
 const singleImagePages = (data: Record<string, unknown> | undefined) => !heroSliderPages(data)
+const homePage = (data: Record<string, unknown> | undefined) => ((data?.pageType as string) ?? '') === 'home'
 
 export const SitePages: CollectionConfig = {
   slug: 'site-pages',
@@ -122,6 +124,10 @@ export const SitePages: CollectionConfig = {
           description:
             'Eigener Hero-Slider dieser Seite (Startseite, Portfolio-Uebersicht oder Fotografie-Uebersicht): Bild, Titel, Kurztext und Buttons pro Slide. Jede Seite verwaltet ihre Slides unabhaengig von den anderen.',
           fields: [homeHeroSlides],
+        },
+        {
+          ...homeSectionsTab,
+          admin: { condition: homePage },
         },
         {
           label: 'Inhalt',

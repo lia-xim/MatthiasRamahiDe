@@ -82,6 +82,42 @@ export type PayloadDoc = {
   audienceCards?: Array<{ image?: PayloadMedia | string; number?: string; title?: string; text?: string }>
   faq?: Array<{ question?: string; answer?: string }>
   localFaq?: Array<{ question?: string; answer?: string }>
+  // Startseiten-Sektionen (SitePages, pageType 'home'). Alle optional -> Fallback im Component.
+  homeStatement?: { headline?: string; headlineEmphasis?: string; body?: Array<{ text?: string }> }
+  homeChapters?: {
+    headline?: string
+    headlineEmphasis?: string
+    intro?: string
+    items?: Array<{ image?: PayloadMedia | string; title?: string; meta?: string; href?: string }>
+  }
+  homeSelectedWorks?: { headline?: string; headlineEmphasis?: string; intro?: string }
+  homeAbout?: {
+    kicker?: string
+    headline?: string
+    headlineEmphasis?: string
+    image?: PayloadMedia | string
+    body?: Array<{ text?: string }>
+  }
+  homeServices?: {
+    headline?: string
+    headlineEmphasis?: string
+    intro?: string
+    items?: Array<{ number?: string; title?: string; text?: string; href?: string }>
+  }
+  homeJournal?: {
+    headline?: string
+    headlineEmphasis?: string
+    intro?: string
+    items?: Array<{
+      image?: PayloadMedia | string
+      number?: string
+      date?: string
+      category?: string
+      title?: string
+      text?: string
+      href?: string
+    }>
+  }
   relatedPages?: PayloadLink[]
   blocks?: unknown[]
   cta?: PayloadCta

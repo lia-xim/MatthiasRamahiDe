@@ -1,41 +1,152 @@
-﻿---
+---
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import {
   blockParagraphs,
-  homeChapters,
+  homeChapters as fallbackChapters,
   homeHeroSlidesFor,
-  homeJournalCards,
-  homeServices,
+  homeJournalCards as fallbackJournalCards,
+  homeServices as fallbackServices,
 } from '../../lib/nativeContent'
-import { getSitePageByType, liveCmsFetchOptions, type PayloadDoc } from '../../lib/payload'
+import {
+  getSitePageByType,
+  imageAlt,
+  imageDimensions,
+  imageDisplayUrl,
+  imageSrcset,
+  liveCmsFetchOptions,
+  toRootRelativeHref,
+  type PayloadDoc,
+  type PayloadMedia,
+} from '../../lib/payload'
 
 const providedDoc = Astro.props.doc as PayloadDoc | undefined
 const doc = providedDoc || (await getSitePageByType('home', liveCmsFetchOptions({ depth: 2 })))
+
 const heroSlides = homeHeroSlidesFor(doc)
 const firstHeroSlide = heroSlides[0]
 const heroImages = heroSlides.map((slide) => slide.image)
 const heroSlidesJson = JSON.stringify(heroSlides)
-const statementParagraphs = blockParagraphs(doc, 'Bilder', [
-  'Seit über zehn Jahren entstehen meine Serien im Spannungsfeld von Präzision und Atmosphäre - Automobile, Oldtimer, Sportwagen, Motorräder, Portraits und Landschaften. Jede Arbeit folgt einer ruhigen redaktionellen Logik: Licht, Komposition, Material, Zeit.',
-  'Auftraggeber sind Marken, Sammler, Manufakturen und private Eigentümer aus Düsseldorf, Köln, Essen, Dortmund und dem gesamten Rheinland - überall dort, wo Bilder über Auflage, Sammlung oder Markenwert mitentscheiden.',
-])
-const chaptersParagraphs = blockParagraphs(doc, 'Sechs Bereiche', [
-  'Jeder Bereich hat eine eigene visuelle Logik - Bewegung, Material, Mensch, Raum. Auswählen, weiterlesen, eine Serie sehen.',
-])
-const portfolioParagraphs = blockParagraphs(doc, 'Ausgewählte', [
-  'Ein Strom aus aktuellen Serien - kontinuierlich in Bewegung. Klick auf ein Bild öffnet die Vorschau.',
-])
-const aboutParagraphs = blockParagraphs(doc, 'Hinter der Kamera', [
-  'Ausgebildet im Handwerk, denkend wie ein Editor - ich arbeite ruhig, präzise und in engem Dialog mit dem Auftraggeber. Vom ersten Briefing bis zum finalen Druck.',
-  'Meine Location steht in Düsseldorf, mein Netzwerk im gesamten Rheinland. Ich begleite Marken, Manufakturen, Sammler und private Eigentümer dort, wo ein Bild über Auflage, Sammlung oder Markenwert mitentscheidet.',
-])
-const servicesParagraphs = blockParagraphs(doc, 'Weitere Leistungen', [
-  'Für Projekte, die über die Fotografie hinausgehen - Druck, Großformat, Werbetechnik, Webdesign, Video, Sonderanfertigungen und Musik. Kuratiert, koordiniert, ein Ansprechpartner.',
-])
+const heroCssImage = firstHeroSlide.image.replace(/'/g, "\\'")
+
+const hasText = (value?: string): value is string => typeof value === 'string' && value.trim().length > 0
+
+// Bildgroessen (technische Moeblierung, bleibt Code — wird nicht im CMS gepflegt)
+const chapterSizes = '(max-width: 780px) calc((100vw - 52px) / 2), (max-width: 1180px) calc((100vw - 112px) / 2), 437px'
+const journalSizes = '(max-width: 780px) calc(100vw - 44px), (max-width: 1180px) calc((100vw - 112px) / 2), 437px'
+
+const cmsSrcset = (image?: PayloadMedia | string) =>
+  image && typeof image !== 'string' ? imageSrcset(image, ['mobile', 'card', 'hero']) || undefined : undefined
+
+// --- Statement: „Bilder, die einen Raum verändern." ---
+const statement = doc?.homeStatement
+const statementHeadline = hasText(statement?.headline) ? statement!.headline! : ''
+const statementEmphasis = statement?.headlineEmphasis || ''
+const statementBody = (statement?.body || []).map((paragraph) => paragraph?.text).filter(hasText)
+const statementParagraphs = statementBody.length
+  ? statementBody
+  : blockParagraphs(doc, 'Bilder', [
+      'Seit über zehn Jahren entstehen meine Serien im Spannungsfeld von Präzision und Atmosphäre - Automobile, Oldtimer, Sportwagen, Motorräder, Portraits und Landschaften. Jede Arbeit folgt einer ruhigen redaktionellen Logik: Licht, Komposition, Material, Zeit.',
+      'Auftraggeber sind Marken, Sammler, Manufakturen und private Eigentümer aus Düsseldorf, Köln, Essen, Dortmund und dem gesamten Rheinland - überall dort, wo Bilder über Auflage, Sammlung oder Markenwert mitentscheiden.',
+    ])
+
+// --- „Sechs Bereiche. Eine Linse." ---
+const chaptersGroup = doc?.homeChapters
+const chaptersHeadline = hasText(chaptersGroup?.headline) ? chaptersGroup!.headline! : ''
+const chaptersEmphasis = chaptersGroup?.headlineEmphasis || ''
+const chaptersIntro = hasText(chaptersGroup?.intro)
+  ? chaptersGroup!.intro!
+  : blockParagraphs(doc, 'Sechs Bereiche', [
+      'Jeder Bereich hat eine eigene visuelle Logik - Bewegung, Material, Mensch, Raum. Auswählen, weiterlesen, eine Serie sehen.',
+    ])[0]
+const cmsChapters = (chaptersGroup?.items || [])
+  .filter((item) => item?.image)
+  .map((item) => ({
+    href: toRootRelativeHref(item.href) || '#',
+    image: imageDisplayUrl(item.image, 'card', { allowOriginal: true }),
+    srcset: cmsSrcset(item.image),
+    sizes: chapterSizes,
+    alt: imageAlt(item.image, item.title || ''),
+    title: item.title || '',
+    meta: item.meta || '',
+    ...imageDimensions(item.image, 'card'),
+  }))
+const chapters = cmsChapters.length ? cmsChapters : fallbackChapters
+
+// --- „Ausgewählte Arbeiten" (Portfolio-Teaser, Bilder laufen automatisch) ---
+const selectedWorks = doc?.homeSelectedWorks
+const selectedWorksHeadline = hasText(selectedWorks?.headline) ? selectedWorks!.headline! : ''
+const selectedWorksEmphasis = selectedWorks?.headlineEmphasis || ''
+const portfolioIntro = hasText(selectedWorks?.intro)
+  ? selectedWorks!.intro!
+  : blockParagraphs(doc, 'Ausgewählte', [
+      'Ein Strom aus aktuellen Serien - kontinuierlich in Bewegung. Klick auf ein Bild öffnet die Vorschau.',
+    ])[0]
+
+// --- „Hinter der Kamera" ---
+const about = doc?.homeAbout
+const aboutKicker = hasText(about?.kicker) ? about!.kicker! : 'Über mich'
+const aboutHeadline = hasText(about?.headline) ? about!.headline! : ''
+const aboutEmphasis = about?.headlineEmphasis || ''
+const aboutBody = (about?.body || []).map((paragraph) => paragraph?.text).filter(hasText)
+const aboutParagraphs = aboutBody.length
+  ? aboutBody
+  : blockParagraphs(doc, 'Hinter der Kamera', [
+      'Ausgebildet im Handwerk, denkend wie ein Editor - ich arbeite ruhig, präzise und in engem Dialog mit dem Auftraggeber. Vom ersten Briefing bis zum finalen Druck.',
+      'Meine Location steht in Düsseldorf, mein Netzwerk im gesamten Rheinland. Ich begleite Marken, Manufakturen, Sammler und private Eigentümer dort, wo ein Bild über Auflage, Sammlung oder Markenwert mitentscheidet.',
+    ])
+const aboutImage = about?.image
+  ? imageDisplayUrl(about.image, 'card', { allowOriginal: true })
+  : '/mpissxxj-portfolio_webp_full_063-1.webp'
+const aboutImageAlt = about?.image ? imageAlt(about.image, 'Matthias Ramahi') : 'Matthias Ramahi'
+const aboutImageDimensions = about?.image ? imageDimensions(about.image, 'card') : { width: 1628, height: 1920 }
+
+// --- „Weitere Leistungen" ---
+const servicesGroup = doc?.homeServices
+const servicesHeadline = hasText(servicesGroup?.headline) ? servicesGroup!.headline! : ''
+const servicesEmphasis = servicesGroup?.headlineEmphasis || ''
+const servicesIntro = hasText(servicesGroup?.intro)
+  ? servicesGroup!.intro!
+  : blockParagraphs(doc, 'Weitere Leistungen', [
+      'Für Projekte, die über die Fotografie hinausgehen - Druck, Großformat, Werbetechnik, Webdesign, Video, Sonderanfertigungen und Musik. Kuratiert, koordiniert, ein Ansprechpartner.',
+    ])[0]
+const cmsServices = (servicesGroup?.items || [])
+  .filter((item) => hasText(item?.title))
+  .map((item, index) => ({
+    href: toRootRelativeHref(item.href) || '#',
+    number: hasText(item.number) ? item.number! : `N° ${String(index + 1).padStart(2, '0')}`,
+    title: item.title || '',
+    text: item.text || '',
+  }))
+const services = cmsServices.length ? cmsServices : fallbackServices
+
+// --- „Journal" ---
+const journalGroup = doc?.homeJournal
+const journalHeadline = hasText(journalGroup?.headline) ? journalGroup!.headline! : ''
+const journalEmphasis = journalGroup?.headlineEmphasis || ''
+const journalIntro = hasText(journalGroup?.intro)
+  ? journalGroup!.intro!
+  : 'Notizen aus dem Netzwerk - Workflow, Material, Auftragsgeschichten. Lange Form, ruhig kuratiert.'
+const cmsJournalCards = (journalGroup?.items || [])
+  .filter((item) => item?.image)
+  .map((item, index) => ({
+    href: toRootRelativeHref(item.href) || '#',
+    image: imageDisplayUrl(item.image, 'card', { allowOriginal: true }),
+    dataSrcset: cmsSrcset(item.image),
+    sizes: journalSizes,
+    alt: imageAlt(item.image, item.title || ''),
+    number: hasText(item.number) ? item.number! : `N° ${String(index + 1).padStart(2, '0')}`,
+    date: item.date || '',
+    category: item.category || '',
+    title: item.title || '',
+    text: item.text || '',
+    ...imageDimensions(item.image, 'card'),
+  }))
+const journalCards = cmsJournalCards.length ? cmsJournalCards : fallbackJournalCards
 ---
 <AdoptedPageLayout legacyFile="index.html" current="home" doc={doc} ctaHref="#anfrage" preloadImages={[firstHeroSlide.image]} liveCms>
   <main>
-    <section class="hero" data-theme="dark" aria-label="Intro" style={`background-image:url('${firstHeroSlide.image}')`}>
+    <section class="hero" data-theme="dark" aria-label="Intro" style={`--hero-bg:url('${heroCssImage}');background-image:url('${heroCssImage}')`}>
+      <div class="hero-bg" aria-hidden="true"></div>
       <canvas id="hero-shader" aria-hidden="true" data-imgs={heroImages.join(',')} data-slides={heroSlidesJson}></canvas>
       <div class="hero-glow" aria-hidden="true"></div>
       <div class="hero-aperture" aria-hidden="true"></div>
@@ -59,7 +170,9 @@ const servicesParagraphs = blockParagraphs(doc, 'Weitere Leistungen', [
     <section class="statement sec-light" data-theme="light" aria-label="Haltung">
       <div class="section-inner">
         <div>
-          <h2>Bilder, die einen Raum<br /><em>verändern</em>.</h2>
+          {statementHeadline
+            ? <h2>{statementHeadline}{statementEmphasis ? <Fragment> <em>{statementEmphasis}</em></Fragment> : null}</h2>
+            : <h2>Bilder, die einen Raum<br /><em>verändern</em>.</h2>}
         </div>
         <div class="body">
           <p class="lead">{statementParagraphs[0]}</p>
@@ -75,11 +188,13 @@ const servicesParagraphs = blockParagraphs(doc, 'Weitere Leistungen', [
     <section class="chapters sec-dark" id="chapters" data-theme="dark" aria-label="Fotografie">
       <div class="section-inner">
         <div class="chapters-head">
-          <h2>Sechs Bereiche.<br />Eine <em>Linse</em>.</h2>
-          <p class="lead">{chaptersParagraphs[0]}</p>
+          {chaptersHeadline
+            ? <h2>{chaptersHeadline}{chaptersEmphasis ? <Fragment> <em>{chaptersEmphasis}</em></Fragment> : null}</h2>
+            : <h2>Sechs Bereiche.<br />Eine <em>Linse</em>.</h2>}
+          <p class="lead">{chaptersIntro}</p>
         </div>
         <div class="chapter-grid">
-          {homeChapters.map((chapter, index) => (
+          {chapters.map((chapter, index) => (
             <a class="chapter" href={chapter.href}>
               <div class="img">
                 <img src={chapter.image} srcset={chapter.srcset} sizes={chapter.sizes} alt={chapter.alt} loading="lazy" width={chapter.width} height={chapter.height} decoding="async" />
@@ -95,8 +210,10 @@ const servicesParagraphs = blockParagraphs(doc, 'Weitere Leistungen', [
     <section class="pf-teaser sec-light" data-theme="light" aria-label="Portfolio">
       <div class="section-inner">
         <div class="pf-head">
-          <h2>Ausgewählte<br /><em>Arbeiten</em>.</h2>
-          <p class="lead">{portfolioParagraphs[0]}</p>
+          {selectedWorksHeadline
+            ? <h2>{selectedWorksHeadline}{selectedWorksEmphasis ? <Fragment> <em>{selectedWorksEmphasis}</em></Fragment> : null}</h2>
+            : <h2>Ausgewählte<br /><em>Arbeiten</em>.</h2>}
+          <p class="lead">{portfolioIntro}</p>
         </div>
         <div class="pf-marquee" id="pfMarquee">
           <div class="pf-row row-1">
@@ -115,11 +232,13 @@ const servicesParagraphs = blockParagraphs(doc, 'Weitere Leistungen', [
     <section class="about sec-dark" data-theme="dark" aria-label="Über mich">
       <div class="section-inner">
         <div class="about-img">
-          <img src="/mpissxxj-portfolio_webp_full_063-1.webp" alt="Matthias Ramahi" loading="lazy" width="1628" height="1920" decoding="async" />
+          <img src={aboutImage} alt={aboutImageAlt} loading="lazy" width={aboutImageDimensions.width} height={aboutImageDimensions.height} decoding="async" />
         </div>
         <div class="about-copy">
-          <p class="kicker">Über mich</p>
-          <h2>Hinter der<br /><em>Kamera</em>.</h2>
+          <p class="kicker">{aboutKicker}</p>
+          {aboutHeadline
+            ? <h2>{aboutHeadline}{aboutEmphasis ? <Fragment> <em>{aboutEmphasis}</em></Fragment> : null}</h2>
+            : <h2>Hinter der<br /><em>Kamera</em>.</h2>}
           <p class="lead">{aboutParagraphs[0]}</p>
           {aboutParagraphs[1] && <p>{aboutParagraphs[1]}</p>}
           <div class="actions">
@@ -133,11 +252,13 @@ const servicesParagraphs = blockParagraphs(doc, 'Weitere Leistungen', [
     <section class="services-sec sec-light" data-theme="light" aria-label="Weitere Dienstleistungen">
       <div class="section-inner">
         <div class="services-head">
-          <h2>Weitere Leistungen<br /><em>im&nbsp;Überblick</em>.</h2>
-          <p class="lead">{servicesParagraphs[0]}</p>
+          {servicesHeadline
+            ? <h2>{servicesHeadline}{servicesEmphasis ? <Fragment> <em>{servicesEmphasis}</em></Fragment> : null}</h2>
+            : <h2>Weitere Leistungen<br /><em>im&nbsp;Überblick</em>.</h2>}
+          <p class="lead">{servicesIntro}</p>
         </div>
         <div class="services-list">
-          {homeServices.map((service) => (
+          {services.map((service) => (
             <a class="service-row" href={service.href}>
               <span class="num">{service.number}</span><h3>{service.title}</h3><p>{service.text}</p><span class="arr">Detail →</span>
             </a>
@@ -153,11 +274,13 @@ const servicesParagraphs = blockParagraphs(doc, 'Weitere Leistungen', [
     <section class="blog-sec sec-dark" data-theme="dark" aria-label="Journal">
       <div class="section-inner">
         <div class="blog-head">
-          <h2>Journal.</h2>
-          <p class="lead">Notizen aus dem Netzwerk - Workflow, Material, Auftragsgeschichten. Lange Form, ruhig kuratiert.</p>
+          {journalHeadline
+            ? <h2>{journalHeadline}{journalEmphasis ? <Fragment> <em>{journalEmphasis}</em></Fragment> : null}</h2>
+            : <h2>Journal.</h2>}
+          <p class="lead">{journalIntro}</p>
         </div>
         <div class="blog-grid">
-          {homeJournalCards.map((post) => (
+          {journalCards.map((post) => (
             <a class="post" href={post.href}>
               <div class="pimg">
                 <img
