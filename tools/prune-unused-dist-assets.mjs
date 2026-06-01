@@ -94,7 +94,13 @@ function extractReferences(text, sourceFile, targetRoot) {
     for (const candidate of match[1].split(',')) add(candidate.trim().split(/\s+/)[0])
   }
 
-  const directAssetPattern = /(?:["'(`=]|^)(\/?(?:assets|_astro)\/[^"'`\s,)>?#]+\.(?:avif|gif|jpe?g|mp4|png|svg|webm|webp|css|js|json|txt|webmanifest|xml))/gi
+  // Match every assets//_astro path token anywhere — not only those preceded by
+  // a quote/paren/=. srcset values stored as plain strings in the SSR server
+  // bundle ("/a-480.webp 480w, /a-640.webp 640w, ...") otherwise only matched
+  // their first entry, so the comma/space-separated variants (640/1280/...) were
+  // wrongly treated as unused and pruned -> 404 for responsive srcset variants.
+  // Over-matching here only keeps extra files (safe); a miss deletes a used one.
+  const directAssetPattern = /(\/?(?:assets|_astro)\/[^"'`\s,)>?#]+\.(?:avif|gif|jpe?g|mp4|png|svg|webm|webp|css|js|json|txt|webmanifest|xml))/gi
   while ((match = directAssetPattern.exec(text))) add(match[1])
 
   const urlPattern = /url\(\s*(?:"([^"]+)"|'([^']+)'|([^'")]+))\s*\)/g
