@@ -8,6 +8,7 @@
     "start": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts next start -p 3000",
     "seed:legacy": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts PAYLOAD_DB_PUSH=false tsx scripts/seed-legacy.ts",
     "seed:home-hero": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts PAYLOAD_DB_PUSH=false tsx scripts/seed-home-hero-slides.ts",
+    "seed:home-sections": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts PAYLOAD_DB_PUSH=false tsx scripts/seed-home-sections.ts",
     "import:legacy": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts PAYLOAD_DB_PUSH=false tsx scripts/import-legacy-site.ts",
     "import:adopted": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts PAYLOAD_DB_PUSH=false LEGACY_IMPORT_ADOPTED_ONLY=true tsx scripts/import-legacy-site.ts",
     "audit:readiness": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts PAYLOAD_DB_PUSH=false tsx scripts/audit-readiness.ts",
