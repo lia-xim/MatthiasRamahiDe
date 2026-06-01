@@ -78,8 +78,8 @@ const jsonLd = items.length
     width: min(100% - clamp(32px, 8vw, 128px), 1640px);
     margin-inline: auto;
     display: grid;
-    grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.5fr);
-    gap: clamp(32px, 5vw, 110px);
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.6fr);
+    gap: clamp(32px, 5vw, 96px);
     align-items: start;
   }
   /* Title rides along on desktop so it stays anchored over a long list. */
@@ -106,16 +106,22 @@ const jsonLd = items.length
     height: 1px;
     background: var(--accent, #cf392e);
   }
+  /* Title is scaled to its OWN column width (col-bound vw), and the em breaks
+     to its own line — so the two words can never run wider than the left column
+     and bleed into the questions. Previously a single-line clamp(...96px) lockup
+     overflowed the ~580px column on wide screens and overlapped the answers. */
   .fam-faq__title {
     font-family: var(--faq-display);
     font-weight: 900;
-    font-size: clamp(40px, 5.6vw, 96px);
-    line-height: 0.92;
+    font-size: clamp(34px, 4.4vw, 76px);
+    line-height: 0.9;
     letter-spacing: -0.055em;
     margin: 0;
     text-transform: uppercase;
+    overflow-wrap: break-word;
   }
   .fam-faq__title em {
+    display: block;
     font-style: normal;
     color: var(--faq-accent);
   }
