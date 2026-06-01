@@ -1,4 +1,5 @@
 import node from '@astrojs/node'
+import react from '@astrojs/react'
 import vercel from '@astrojs/vercel'
 import { defineConfig } from 'astro/config'
 
@@ -13,6 +14,7 @@ const isVercel = process.env.VERCEL === '1' || process.env.ASTRO_ADAPTER === 've
 export default defineConfig({
   site: siteUrl,
   output: 'server',
+  integrations: [react({ include: ['**/emails/**'] })],
   adapter: isVercel
     ? vercel()
     : node({

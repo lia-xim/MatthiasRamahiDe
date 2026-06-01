@@ -43,8 +43,8 @@ document.addEventListener('submit', function (event) {
     use: data.get('use') || 'Noch offen',
   })
 
-  if (!name || !contact || !message) {
-    if (status) status.textContent = 'Bitte Name, Kontaktweg und Projektbeschreibung ausfuellen.'
+  if (!name || !contact) {
+    if (status) status.textContent = 'Bitte Name und Kontaktweg (E-Mail oder Telefon) angeben.'
     trackContactEvent('form_validation_error', { subject: form.dataset.subject || 'Projektanfrage' })
     form.reportValidity()
     return

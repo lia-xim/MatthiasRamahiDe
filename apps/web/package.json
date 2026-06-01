@@ -10,20 +10,29 @@
     "build": "node ../../tools/run-web-build.mjs",
     "prepreview": "node ../../tools/sync-public-assets.mjs",
     "preview": "astro preview --host 0.0.0.0 --port 4321",
+    "email:dev": "email dev --dir src/emails --port 3030",
     "test:legacy-routes": "node scripts/legacy-route-audit.mjs",
     "test:site-quality": "node scripts/site-quality-audit.mjs",
     "test:visual": "node scripts/visual-regression.mjs"
   },
   "dependencies": {
     "@astrojs/node": "^9.0.0",
+    "@astrojs/react": "^4.4.2",
     "@astrojs/vercel": "9.0.0",
-    "astro": "^5.0.0"
+    "@react-email/components": "^1.0.12",
+    "@react-email/render": "^2.0.8",
+    "astro": "^5.0.0",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
+    "@types/react": "^19.2.15",
+    "@types/react-dom": "^19.2.3",
     "pixelmatch": "^7.2.0",
     "playwright": "^1.60.0",
     "pngjs": "^7.0.0",
+    "react-email": "^6.5.0",
     "typescript": "^5.8.0"
   }
 }

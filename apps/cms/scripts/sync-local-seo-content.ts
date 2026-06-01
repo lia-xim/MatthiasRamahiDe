@@ -31,6 +31,7 @@ loadEnvFile(path.resolve(process.cwd(), '.env'))
 
 const DRY = process.env.SYNC_DRY_RUN === 'true'
 const ONLY_FAMILY = process.env.SYNC_FAMILY // optional: limit to one family slug
+const ONLY = (process.env.SYNC_ONLY || '').split(',').map((s) => s.trim()).filter(Boolean) // optional: limit to specific legacyFiles
 
 type FaqEntry = { question: string; answer: string }
 type AudienceCard = { number?: string; title: string; text: string }
@@ -129,6 +130,7 @@ const errors: string[] = []
 for (const e of entries) {
   if (PARENTS.has(e.legacyFile)) { skipped++; continue }
   if (ONLY_FAMILY && e.family !== ONLY_FAMILY) { skipped++; continue }
+  if (ONLY.length && !ONLY.includes(e.legacyFile)) { skipped++; continue }
   try {
     const existing = await findDoc(e.legacyFile)
     if (existing?.id) {

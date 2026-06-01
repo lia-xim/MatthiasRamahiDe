@@ -114,6 +114,13 @@ const activeNav = currentNav || inferredNav
     <link rel="stylesheet" href="/assets/load-more-gallery.css" />
     {stylesheets.map((href) => <link rel="stylesheet" href={href} />)}
     {jsonLdItems.map((item) => <script is:inline type="application/ld+json" set:html={JSON.stringify(item)} />)}
+    <script
+      is:inline
+      defer
+      src="https://analytics.contextter.com/script.js"
+      data-website-id="be66c314-29d1-4d96-8a3e-9c842d472210"
+      data-domains="matthiasramahi.de,www.matthiasramahi.de"
+    ></script>
   </head>
   <body class={bodyClass} data-cms-layout-source="base-layout">
     <div class="site-shell">
@@ -124,5 +131,6 @@ const activeNav = currentNav || inferredNav
       <SiteChromeFooter liveCms={liveCms} />
     </div>
     <script is:inline src="/assets/site-chrome.js" defer></script>
+    <script is:inline src="/assets/analytics.js" defer></script>
   </body>
 </html>

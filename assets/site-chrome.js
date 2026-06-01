@@ -724,7 +724,7 @@
                 '<div class="mr-contact__field"><label for="' + uid + '-name">Name <span>Pflicht</span></label><input id="' + uid + '-name" name="name" autocomplete="name" required></div>' +
                 '<div class="mr-contact__field"><label for="' + uid + '-contact">E-Mail <span>Pflicht</span></label><input id="' + uid + '-contact" name="contact" type="email" autocomplete="email" inputmode="email" required></div>' +
               '</div>' +
-              '<div class="mr-contact__field"><label for="' + uid + '-msg">Projekt kurz beschreiben <span>Pflicht</span></label><textarea id="' + uid + '-msg" name="message" required placeholder="Worum geht es? Ein paar Stichpunkte reichen."></textarea></div>' +
+              '<div class="mr-contact__field"><label for="' + uid + '-msg">Projekt kurz beschreiben <span>Optional</span></label><textarea id="' + uid + '-msg" name="message" placeholder="Worum geht es? Ein paar Stichpunkte reichen — optional."></textarea></div>' +
               '<label class="mr-contact__consent">' +
                 '<input type="checkbox" name="consent" value="1" required>' +
                 '<span>Ich willige ein, dass meine angegebenen Daten zur Bearbeitung der Anfrage verarbeitet werden. Hinweise dazu in der <a href="/datenschutz.html" target="_blank" rel="noopener noreferrer">Datenschutzerklaerung</a>. <em>Pflicht</em></span>' +
@@ -778,8 +778,8 @@
             trackConversionEvent('form_honeypot', { form: 'mr-contact' });
             return;
           }
-          if (!data.name || !data.contact || !data.message) {
-            setStatus('Bitte Name, Kontaktweg und Projektbeschreibung ausfuellen.', 'error');
+          if (!data.name || !data.contact) {
+            setStatus('Bitte Name und Kontaktweg (E-Mail oder Telefon) angeben.', 'error');
             trackConversionEvent('form_validation_error', { form: 'mr-contact' });
             form.reportValidity();
             return;

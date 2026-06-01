@@ -158,6 +158,13 @@ async function readPublicAsset(href: string) {
     {allPreloadImages.map((href) => <link rel="preload" as="image" href={href} fetchpriority="high" />)}
     {allStylesheets.map((href) => <link rel="stylesheet" href={href} />)}
     {jsonLdItems.map((item) => <script is:inline type="application/ld+json" set:html={JSON.stringify(item)} />)}
+    <script
+      is:inline
+      defer
+      src="https://analytics.contextter.com/script.js"
+      data-website-id="be66c314-29d1-4d96-8a3e-9c842d472210"
+      data-domains="matthiasramahi.de,www.matthiasramahi.de"
+    ></script>
   </head>
   <body class={bodyClass} data-cms-layout-source="native-adopted-chrome">
     <a href="#mr-content" class="mr-skip-link">Zum Inhalt springen</a>
@@ -167,5 +174,6 @@ async function readPublicAsset(href: string) {
     </div>
     <SiteChromeFooter liveCms={liveCms} />
     {allScripts.map((src) => <script is:inline src={src} defer></script>)}
+    <script is:inline src="/assets/analytics.js" defer></script>
   </body>
 </html>
