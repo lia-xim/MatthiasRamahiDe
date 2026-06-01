@@ -330,16 +330,18 @@ const statementBody = doc?.statement?.body?.length
       'Ob Verkauf, Branding, Redaktion oder persönliches Geschenk: ich kombiniere klares Licht, saubere Komposition und einen Blick für Details. Sie erhalten Dateien für Web, Social Media und Druck — aufbereitet und sofort einsatzbereit.',
     ]
 
-const focusSectionHeadline = keywordFocusCopy?.sectionHeadline || (isParentPage ? 'Das Auto,' : `${serviceLabel},`)
-const focusSectionEmphasis = keywordFocusCopy?.sectionEmphasis || (isParentPage ? 'aus jedem Winkel.' : isKeywordPage ? 'klar fokussiert.' : `${scope.label}.`)
+const focusSectionHeadline = isLocalHeroPage ? serviceLabel : keywordFocusCopy?.sectionHeadline || (isParentPage ? 'Das Auto,' : `${serviceLabel},`)
+const focusSectionEmphasis = isLocalHeroPage ? `${scope.label}.` : keywordFocusCopy?.sectionEmphasis || (isParentPage ? 'aus jedem Winkel.' : isKeywordPage ? 'klar fokussiert.' : `${scope.label}.`)
 const focusSectionLead =
-  keywordFocusCopy?.sectionLead ||
+  isLocalHeroPage
+    ? `${serviceLabel} in ${scope.label}: Exterieur, Innenraum, Details und Nutzung werden passend zu Fahrzeug, Ort und Ausgabeformat geplant.`
+    : keywordFocusCopy?.sectionLead ||
   (isParentPage
     ? 'Exterieur, Interieur, Details und cineastische Perspektiven greifen ineinander - ein Bildsatz, der Fahrzeug, Atmosphaere und Material gleichermaßen zeigt.'
     : `${serviceLabel} bekommt eine eigene Seite im Sportwagenbereich: Exterieur, Innenraum, Details und Nutzung werden passend zum Motiv geplant.`)
-const focusGalleryHeadline = keywordFocusCopy?.galleryHeadline || 'Aktuelle Arbeiten.'
+const focusGalleryHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}: Bildserie.` : keywordFocusCopy?.galleryHeadline || 'Aktuelle Arbeiten.'
 const focusGalleryLead = keywordFocusCopy?.galleryLead || 'Sechs kuratierte Sportwagen-Bilder aus juengeren Serien. Klicken zum Vergroessern.'
-const focusAudienceHeadline = keywordFocusCopy?.audienceHeadline || 'Fuer wen ich arbeite.'
+const focusAudienceHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}: passende Anfragen.` : keywordFocusCopy?.audienceHeadline || 'Fuer wen ich arbeite.'
 const focusAudienceLead =
   keywordFocusCopy?.audienceLead ||
   'Vom privaten Fahrzeug bis zur internationalen Kampagne. Jede Serie wird auf Nutzung, Marke und Zielgruppe zugeschnitten - ein Hero-Motiv oder ein vollstaendiges Launch-Asset-Paket.'

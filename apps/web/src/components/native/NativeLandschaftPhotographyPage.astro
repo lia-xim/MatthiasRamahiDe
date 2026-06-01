@@ -128,7 +128,7 @@ const focusIntroParagraphs = cmsStatementBody.length
       `Landschaftsfotografie fuer ${scope.label} wird nicht als Termin vor Ort verkauft, sondern als kuratierte Bild- und Printauswahl fuer Raeume, Marken und private Sammlungen verstanden.`,
       `Der lokale Bezug macht die Anfrage konkreter: Menschen in ${scope.label} suchen Wandbilder, Fine-Art-Prints oder ruhige Bildraeume, die zu Wohnung, Praxis, Hotel oder Buero passen.`,
     ]
-const focusModuleHeadline = keywordFocusCopy?.sectionHeadline || (isParentPage || isKeywordPage ? 'Vier Ausfuehrungen.' : `Ausfuehrungen fuer ${scope.label}.`)
+const focusModuleHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}.` : keywordFocusCopy?.sectionHeadline || (isParentPage || isKeywordPage ? 'Vier Ausfuehrungen.' : `Ausfuehrungen fuer ${scope.label}.`)
 const focusModuleLead = isParentPage || isKeywordPage
   ? keywordFocusCopy?.sectionLead || 'Jedes Motiv ist als Print erhaeltlich.'
   : `Jedes Motiv kann fuer Raeume in ${scope.label} nach Format, Material und Wirkung abgestimmt werden.`
@@ -149,9 +149,9 @@ const moduleCards = defaultModuleCards.map((card, index) => {
       }
     : card
 })
-const focusGalleryHeadline = cmsText(doc?.portfolioTiles?.[0]?.label) || keywordFocusCopy?.galleryHeadline || (isParentPage || isKeywordPage ? 'Ausgewaehlte Landschaften.' : `Auswahl fuer ${scope.label}.`)
-const focusProcessHeadline = keywordFocusCopy?.processHeadline || (isParentPage || isKeywordPage ? 'So entsteht' : `So entsteht dein Druck`)
-const focusProcessEmphasis = keywordFocusCopy?.sectionEmphasis || (isParentPage || isKeywordPage ? 'Ihr Druck.' : `fuer ${scope.label}.`)
+const focusGalleryHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}: Bildauswahl.` : cmsText(doc?.portfolioTiles?.[0]?.label) || keywordFocusCopy?.galleryHeadline || (isParentPage || isKeywordPage ? 'Ausgewaehlte Landschaften.' : `Auswahl fuer ${scope.label}.`)
+const focusProcessHeadline = isLocalHeroPage ? `Ablauf ${scope.label}` : keywordFocusCopy?.processHeadline || (isParentPage || isKeywordPage ? 'So entsteht' : `So entsteht dein Druck`)
+const focusProcessEmphasis = isLocalHeroPage ? 'und Lieferung.' : keywordFocusCopy?.sectionEmphasis || (isParentPage || isKeywordPage ? 'Ihr Druck.' : `fuer ${scope.label}.`)
 const focusProcessLead = isParentPage || isKeywordPage
   ? keywordFocusCopy?.processLead || 'Jedes Bild aus dem Portfolio, in jedem Format, mit oder ohne Rahmen - auf Anfrage gefertigt und zu Ihnen geliefert.'
   : `Motiv, Format, Material und Lieferziel werden fuer ${scope.label} abgestimmt, damit der Print im Raum ruhig und hochwertig wirkt.`

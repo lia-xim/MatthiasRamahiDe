@@ -228,16 +228,16 @@ const focusIntroParagraphs = cmsStatementBody.length
           `Oldtimer-Fotografie in ${scope.label} wird als ruhige Dokumentation geplant: Modell, Baujahr, Standort, Material, Patina und Nutzung bestimmen den Ablauf.`,
           `Der lokale Bezug hilft bei Treffpunkt, Lichtfenster und Logistik. So entsteht in ${scope.label} eine Serie fuer Sammlung, Verkauf, Auktion oder privates Archiv, ohne die Hauptkategorie zu verlassen.`,
         ]
-const focusStoryHeadline = keywordFocusCopy?.sectionHeadline || (isParentPage || isKeywordPage ? 'Vier Spuren' : `Vier Spuren in ${scope.label}`)
-const focusStoryEmphasis = keywordFocusCopy?.sectionEmphasis || (isParentPage || isKeywordPage ? 'einer Geschichte.' : 'eines Fahrzeugs.')
+const focusStoryHeadline = isLocalHeroPage ? serviceLabel : keywordFocusCopy?.sectionHeadline || (isParentPage || isKeywordPage ? 'Vier Spuren' : `Vier Spuren in ${scope.label}`)
+const focusStoryEmphasis = isLocalHeroPage ? `${scope.label}.` : keywordFocusCopy?.sectionEmphasis || (isParentPage || isKeywordPage ? 'einer Geschichte.' : 'eines Fahrzeugs.')
 const focusStoryLead = isParentPage || isKeywordPage
   ? keywordFocusCopy?.sectionLead || 'Jeder Oldtimer traegt seine Provenienz in den Details. Material, Patina, Embleme und Innenraum greifen ineinander - ein Bildsatz, der Herkunft und Zustand vollstaendig dokumentiert.'
   : `In ${scope.label} wird der Bildsatz auf das konkrete Fahrzeug zugeschnitten: ruhige Totalen, Patina, Innenraum und Details, die Zustand und Geschichte nachvollziehbar machen.`
-const focusPortfolioHeadline = cmsText(doc?.portfolioTiles?.[0]?.label) || keywordFocusCopy?.galleryHeadline || (isParentPage || isKeywordPage ? 'Aktuelle Arbeiten.' : `Oldtimer-Arbeiten ${scope.label}.`)
+const focusPortfolioHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}: Bildserie.` : cmsText(doc?.portfolioTiles?.[0]?.label) || keywordFocusCopy?.galleryHeadline || (isParentPage || isKeywordPage ? 'Aktuelle Arbeiten.' : `Oldtimer-Arbeiten ${scope.label}.`)
 const focusPortfolioLead = isParentPage || isKeywordPage
   ? keywordFocusCopy?.galleryLead || 'Sechs kuratierte Oldtimer-Bilder aus juengeren Serien. Klicken zum Vergroessern.'
   : `Beispiele fuer Bildtypen, die auch bei einem Oldtimer-Shooting in ${scope.label} sinnvoll sind: Exponat, Cockpit, Material, Profil und Detail.`
-const focusAudienceHeadline = keywordFocusCopy?.audienceHeadline || (isParentPage || isKeywordPage ? 'Fuer wen ich arbeite.' : `Fuer Oldtimer in ${scope.label}.`)
+const focusAudienceHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}: passende Anfragen.` : keywordFocusCopy?.audienceHeadline || (isParentPage || isKeywordPage ? 'Fuer wen ich arbeite.' : `Fuer Oldtimer in ${scope.label}.`)
 const focusAudienceLead = isParentPage || isKeywordPage
   ? keywordFocusCopy?.audienceLead || 'Vom privaten Liebhaberstueck bis zum Auktionskatalog - jede Serie wird auf Nutzung und Zielpublikum zugeschnitten.'
   : `Geeignet fuer Besitzer, Sammler und Verkaufer in ${scope.label}, die ein Fahrzeug hochwertig, aber nicht kuenstlich zeigen moechten.`

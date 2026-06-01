@@ -175,10 +175,12 @@ const focusIntroParagraphs =
             ? 'Der Text ist auf diese konkrete Suche zugeschnitten, ohne ein neues Layout oder eine unpassende Kategorie zu erzwingen.'
             : `Der lokale Bezug fuer ${scope.label} wird ueber Ort, Anfahrt, Lichtfenster und Ablauf konkretisiert.`,
         ]
-const focusModuleHeadline = keywordFocusCopy?.sectionHeadline || 'Verschiedene'
-const focusModuleEmphasis = keywordFocusCopy?.sectionEmphasis || 'Perspektiven.'
+const focusModuleHeadline = isLocalHeroPage ? serviceLabel : keywordFocusCopy?.sectionHeadline || 'Verschiedene'
+const focusModuleEmphasis = isLocalHeroPage ? `${scope.label}.` : keywordFocusCopy?.sectionEmphasis || 'Perspektiven.'
 const focusModuleLead =
-  keywordFocusCopy?.sectionLead ||
+  isLocalHeroPage
+    ? `${serviceLabel} in ${scope.label}: Wirkung, Person, Licht und Nutzung werden vor dem Termin zusammen geplant.`
+    : keywordFocusCopy?.sectionLead ||
   'Fuenf Felder, in denen ein Portrait konkret etwas verschiebt - vom Personal Brand bis zur redaktionellen Strecke.'
 
 const defaultPortraitFocusCards = [
@@ -222,9 +224,11 @@ const portraitFocusCards = defaultPortraitFocusCards.map((card, index) => {
   return override ? { ...card, label: override.label || card.label, title: override.title || card.title, text: override.text || card.text } : card
 })
 
-const focusProcessHeadline = keywordFocusCopy?.processHeadline || 'Ablauf.'
+const focusProcessHeadline = isLocalHeroPage ? `Ablauf ${scope.label}.` : keywordFocusCopy?.processHeadline || 'Ablauf.'
 const focusProcessLead =
-  keywordFocusCopy?.processLead ||
+  isLocalHeroPage
+    ? `Vom ersten Kontakt bis zur Bildabgabe bleibt der Ablauf in ${scope.label} klar: Ziel, Ort, Licht, Auswahl und Lieferung werden vorab abgestimmt.`
+    : keywordFocusCopy?.processLead ||
   'Vom ersten Kontakt bis zur Bildabgabe - fuenf ruhige Schritte, damit du vor dem Shooting weisst, was passiert und nach dem Shooting weisst, was kommt.'
 const defaultProcessSteps = [
   {
@@ -263,7 +267,9 @@ const portraitProcessSteps = defaultProcessSteps.map((step, index) => {
   return override ? { ...step, imageLabel: override.label || step.imageLabel, title: override.title, text: override.text } : step
 })
 const focusRelatedLead =
-  keywordFocusCopy?.relatedLead ||
+  isLocalHeroPage
+    ? `Portraitfotografie ${scope.label} bleibt im Portraitbereich, fuehrt aber sauber zu Fahrzeug-, Landschafts- und Portfolio-Seiten weiter.`
+    : keywordFocusCopy?.relatedLead ||
   'Fahrzeug, Mensch und Raum bleiben eigene Bildbereiche. Die Links fuehren schnell zu der Seite, die zum Motiv, zur Nutzung und zum geplanten Shooting passt.'
 ---
 <AdoptedPageLayout

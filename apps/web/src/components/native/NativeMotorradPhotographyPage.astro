@@ -142,16 +142,16 @@ const focusIntroParagraphs = cmsStatementBody.length
       `Motorradfotografie in ${scope.label} wird auf Maschine, Fahrerbezug, Standort und Nutzung geplant. Das Bike soll kraftvoll wirken, ohne dass die Serie nach Zufall oder Parkplatzbild aussieht.`,
       `Fuer ${scope.label} werden Treffpunkt, Lichtfenster und Bildtypen vorab geklaert: Standbild, Detail, Fahrerportrait, Social-Crop oder Verkaufsserie.`,
     ]
-const focusModuleHeadline = keywordFocusCopy?.sectionHeadline || (isParentPage || isKeywordPage ? 'Vom Detail' : `Vom Detail in ${scope.label}`)
-const focusModuleEmphasis = keywordFocusCopy?.sectionEmphasis || (isParentPage || isKeywordPage ? 'bis zur Kurve.' : 'bis zum Fahrerbild.')
+const focusModuleHeadline = isLocalHeroPage ? serviceLabel : keywordFocusCopy?.sectionHeadline || (isParentPage || isKeywordPage ? 'Vom Detail' : `Vom Detail in ${scope.label}`)
+const focusModuleEmphasis = isLocalHeroPage ? `${scope.label}.` : keywordFocusCopy?.sectionEmphasis || (isParentPage || isKeywordPage ? 'bis zur Kurve.' : 'bis zum Fahrerbild.')
 const focusModuleLead = isParentPage || isKeywordPage
   ? keywordFocusCopy?.sectionLead || 'Sechs Bildtypen, die ich anbiete - vom ruhigen Standschuss bis zum Pan-Shot in der Schraeglage. Jede Serie wird aus diesen Modulen zusammengestellt, je nach Bike, Anlass und Verwendung.'
   : `Die Serie fuer ${scope.label} kann ruhig oder dynamisch gebaut werden: Silhouette, Mechanik, Fahrerbezug, Detail und Hochformat werden nach Nutzung kombiniert.`
-const focusPortfolioHeadline = cmsText(doc?.portfolioTiles?.[0]?.label) || keywordFocusCopy?.galleryHeadline || (isParentPage || isKeywordPage ? 'Aktuelle Arbeiten.' : `Motorrad-Arbeiten ${scope.label}.`)
+const focusPortfolioHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}: Bildserie.` : cmsText(doc?.portfolioTiles?.[0]?.label) || keywordFocusCopy?.galleryHeadline || (isParentPage || isKeywordPage ? 'Aktuelle Arbeiten.' : `Motorrad-Arbeiten ${scope.label}.`)
 const focusPortfolioLead = isParentPage || isKeywordPage
   ? keywordFocusCopy?.galleryLead || 'Sechs kuratierte Motorrad-Bilder aus juengeren Serien. Klicken zum Vergroessern.'
   : `Beispielhafte Bildtypen fuer ein Motorrad-Shooting in ${scope.label}: Standmotiv, Detail, Werkstatt, Vertical und Profil.`
-const focusAudienceHeadline = keywordFocusCopy?.audienceHeadline || (isParentPage || isKeywordPage ? 'Fuer wen ich arbeite.' : `Fuer Bikes in ${scope.label}.`)
+const focusAudienceHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}: passende Anfragen.` : keywordFocusCopy?.audienceHeadline || (isParentPage || isKeywordPage ? 'Fuer wen ich arbeite.' : `Fuer Bikes in ${scope.label}.`)
 const focusAudienceLead = isParentPage || isKeywordPage
   ? keywordFocusCopy?.audienceLead || 'Vom ersten eigenen Bike bis zur Kampagne - jede Serie wird auf Maschine, Marke und Nutzung zugeschnitten.'
   : `Fuer Besitzer, Custom-Bikes, Werkstaetten und Haendler in ${scope.label}, die mehr brauchen als schnelle Handyfotos.`
