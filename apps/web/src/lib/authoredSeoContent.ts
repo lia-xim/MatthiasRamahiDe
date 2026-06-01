@@ -62,10 +62,17 @@ export function getAuthoredLocalSeoContent(legacyFile: string) {
   return byLegacyFile.get(legacyFile.toLowerCase()) || null
 }
 
+const hasStatement = (statement?: PayloadDoc['statement']) =>
+  Boolean(statement && (statement.headline || statement.emphasis || statement.body?.length))
+
 export function mergeAuthoredLocalSeoContent(legacyFile: string, doc?: PayloadDoc | null): PayloadDoc | null {
   const authored = getAuthoredLocalSeoContent(legacyFile)
   if (!authored) return doc || null
 
+  // Payload wins: the CMS doc is the base, and authored JSON only fills fields
+  // the CMS left empty. (Inverse of the old behaviour, where authored JSON
+  // overrode published Payload content — so admin FAQ/Statement edits never
+  // reached the live page outside preview.)
   const targetKeyword = authored.targetKeyword || [authored.service, authored.city].filter(Boolean).join(' ')
   const next: PayloadDoc = {
     id: doc?.id || `authored-${authored.slug || legacyFile.replace(/\.html$/i, '')}`,
@@ -73,26 +80,32 @@ export function mergeAuthoredLocalSeoContent(legacyFile: string, doc?: PayloadDo
   }
 
   if (!next.slug && authored.slug) next.slug = authored.slug
-  if (authored.title) next.title = authored.title
-  if (authored.city) next.city = authored.city
-  if (authored.service) next.service = authored.service
-  if (targetKeyword) next.targetKeyword = targetKeyword
+  if (!next.title && authored.title) next.title = authored.title
+  if (!next.city && authored.city) next.city = authored.city
+  if (!next.service && authored.service) next.service = authored.service
+  if (!next.targetKeyword && targetKeyword) next.targetKeyword = targetKeyword
 
-  if (authored.intro) next.intro = authored.intro
-  if (authored.heroLine2) next.heroLine2 = authored.heroLine2
+  if (!next.intro && authored.intro) next.intro = authored.intro
+  if (!next.heroLine2 && authored.heroLine2) next.heroLine2 = authored.heroLine2
 
-  const statement = authoredStatement(authored)
-  if (statement) next.statement = statement
+  if (!hasStatement(next.statement)) {
+    const statement = authoredStatement(authored)
+    if (statement) next.statement = statement
+  }
 
-  const audienceCards = authoredAudienceCards(authored)
-  if (audienceCards) next.audienceCards = audienceCards
+  if (!next.audienceCards?.length) {
+    const audienceCards = authoredAudienceCards(authored)
+    if (audienceCards) next.audienceCards = audienceCards
+  }
 
-  const localFaq = authoredFaq(authored)
-  if (localFaq) next.localFaq = localFaq
+  if (!next.localFaq?.length) {
+    const localFaq = authoredFaq(authored)
+    if (localFaq) next.localFaq = localFaq
+  }
 
   next.seo = { ...(next.seo || {}) }
-  if (authored.seo?.title) next.seo.title = authored.seo.title
-  if (authored.seo?.description) next.seo.description = authored.seo.description
+  if (!next.seo.title && authored.seo?.title) next.seo.title = authored.seo.title
+  if (!next.seo.description && authored.seo?.description) next.seo.description = authored.seo.description
   if (!next.seo.legacyUrl) next.seo.legacyUrl = legacyFile
   if (!next.seo.canonicalUrl) next.seo.canonicalUrl = `https://matthiasramahi.de/${legacyFile}`
 
