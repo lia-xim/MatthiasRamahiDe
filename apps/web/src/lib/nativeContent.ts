@@ -185,6 +185,8 @@ const titleLinesFor = (slide: Pick<CmsHeroSlide, 'headlineLine1' | 'headlineLine
   return lines.length > 0 ? lines : fallback
 }
 
+const optionalText = (value?: string) => (typeof value === 'string' ? value.trim() : '')
+
 const slideFromImage = (image: string, index: number, lead?: string): HomeHeroSlide => {
   const fallback = fallbackHeroText[index % fallbackHeroText.length] || fallbackHeroText[0]
 
@@ -206,7 +208,7 @@ const homeHeroSlidesFromCms = (doc: PayloadDoc | null | undefined) => {
 
       return {
         image,
-        lead: slide.lead || (index === 0 ? doc?.intro || defaultHomeHeroLead : ''),
+        lead: optionalText(slide.lead),
         primaryHref: slide.primaryHref || defaultHeroCtas.primaryHref,
         primaryLabel: slide.primaryLabel || defaultHeroCtas.primaryLabel,
         secondaryHref: slide.secondaryHref || defaultHeroCtas.secondaryHref,

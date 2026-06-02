@@ -27,13 +27,13 @@ export const portfolioContext = [
 ]
 
 export const portfolioIndexLinks = [
-  { number: '01', label: 'Portrait', href: '#portrait' },
-  { number: '02', label: 'Automobil', href: '#auto' },
-  { number: '03', label: 'Sportwagen', href: '#sport' },
-  { number: '04', label: 'Oldtimer', href: '#classic' },
-  { number: '05', label: 'Motorrad', href: '#moto' },
-  { number: '06', label: 'Landschaft', href: '#land' },
-  { number: '∞', label: 'Archiv', href: '#archive' },
+  { label: 'Portrait', href: '#portrait' },
+  { label: 'Automobil', href: '#auto' },
+  { label: 'Sportwagen', href: '#sport' },
+  { label: 'Oldtimer', href: '#classic' },
+  { label: 'Motorrad', href: '#moto' },
+  { label: 'Landschaft', href: '#land' },
+  { label: 'Archiv', href: '#archive' },
 ]
 
 const photo = (
@@ -55,7 +55,7 @@ const photo = (
 export const portfolioSpreads: PortfolioSpread[] = [
   {
     id: 'portrait',
-    label: '01 / Portrait',
+    label: 'Portrait',
     heading: 'Portrait',
     href: '/portraitfotografie-duesseldorf.html',
     linkLabel: 'Zur Portraitfotografie →',
@@ -75,7 +75,7 @@ export const portfolioSpreads: PortfolioSpread[] = [
   },
   {
     id: 'auto',
-    label: '02 / Automobil',
+    label: 'Automobil',
     heading: 'Automobil',
     href: '/automobil-fotografie-duesseldorf.html',
     linkLabel: 'Zur Automobilfotografie →',
@@ -89,7 +89,7 @@ export const portfolioSpreads: PortfolioSpread[] = [
   },
   {
     id: 'sport',
-    label: '03 / Sportwagen',
+    label: 'Sportwagen',
     heading: 'Sportwagen',
     href: '/sportwagen-fotografie-duesseldorf.html',
     linkLabel: 'Zur Sportwagenfotografie →',
@@ -103,7 +103,7 @@ export const portfolioSpreads: PortfolioSpread[] = [
   },
   {
     id: 'classic',
-    label: '04 / Oldtimer',
+    label: 'Oldtimer',
     heading: 'Oldtimer',
     href: '/oldtimer-fotografie-duesseldorf.html',
     linkLabel: 'Zur Oldtimerfotografie →',
@@ -129,7 +129,7 @@ export const portfolioSpreads: PortfolioSpread[] = [
   },
   {
     id: 'moto',
-    label: '05 / Motorrad',
+    label: 'Motorrad',
     heading: 'Motorrad',
     href: '/motorrad-fotografie-duesseldorf.html',
     linkLabel: 'Zur Motorradfotografie →',
@@ -149,7 +149,7 @@ export const portfolioSpreads: PortfolioSpread[] = [
   },
   {
     id: 'land',
-    label: '06 / Landschaft',
+    label: 'Landschaft',
     heading: 'Landschaft',
     href: '/landschaftsfotografie-duesseldorf.html',
     linkLabel: 'Zur Landschaftsfotografie →',

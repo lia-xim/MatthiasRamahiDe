@@ -864,6 +864,11 @@ section[data-contact-section]:empty {
   min-height: clamp(500px, 52vw, 640px);
   background: var(--mrc-paper, #f3f5ef);
 }
+@media(max-width:780px){
+  section[data-contact-section]:empty {
+    min-height: 920px;
+  }
+}
 .mr-contact,
 .mr-contact *{box-sizing:border-box}
 .mr-contact__inner{

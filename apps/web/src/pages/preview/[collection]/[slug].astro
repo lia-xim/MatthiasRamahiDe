@@ -2,6 +2,7 @@
 import CmsRoutedPage from '../../../components/cms/CmsRoutedPage.astro'
 import NativeJournalPostPage from '../../../components/cms/NativeJournalPostPage.astro'
 import NativeLocalSeoFamilyPage from '../../../components/cms/NativeLocalSeoFamilyPage.astro'
+import NativeHomePage from '../../../components/native/NativeHomePage.astro'
 import { getBySlug, routeForDoc } from '../../../lib/payload'
 
 export const prerender = false
@@ -23,13 +24,18 @@ if (!doc) {
 }
 
 const publishedHref = routeForDoc(collection, doc)
+const previewState = { collection, slug, status: doc._status, publishedHref }
 ---
 {collection === 'local-seo-pages' ? (
-  <NativeLocalSeoFamilyPage doc={doc} preview={{ collection, slug, status: doc._status, publishedHref }} />
+  <NativeLocalSeoFamilyPage doc={doc} preview={previewState} />
 ) : (
   collection === 'journal-posts' ? (
-    <NativeJournalPostPage doc={doc} preview={{ collection, slug, status: doc._status, publishedHref }} />
+    <NativeJournalPostPage doc={doc} preview={previewState} />
   ) : (
-    <CmsRoutedPage collection={collection} doc={doc} preview={{ collection, slug, status: doc._status, publishedHref }} />
+    collection === 'site-pages' && doc.pageType === 'home' ? (
+      <NativeHomePage doc={doc} preview={previewState} />
+    ) : (
+      <CmsRoutedPage collection={collection} doc={doc} preview={previewState} />
+    )
   )
 )}

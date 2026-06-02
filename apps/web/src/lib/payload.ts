@@ -270,6 +270,7 @@ const cachedCmsAssetMap: Array<[RegExp, string]> = [
   [/^portrait-warm-\d+x\d+\.webp$/i, '/assets/optimized/assets-photos-portrait-warm-480.webp'],
   [/^portrait-warm\.webp$/i, '/assets/optimized/assets-photos-portrait-warm-960.webp'],
   [/^portrait-blue-\d+x\d+\.webp$/i, '/assets/optimized/assets-photos-portrait-blue-720.webp'],
+  [/^portrait-blue\.webp$/i, '/assets/photos/portrait-blue.webp'],
   [/^assets-portfolio-dsc3879-1920-\d+x\d+\.webp$/i, '/assets/portfolio/thumbs/_DSC3879.webp'],
   [/^assets-portfolio-dsc3879-1920\.webp$/i, '/assets/optimized/assets-portfolio-dsc3879-1920.webp'],
   [/^assets-portfolio-dsc3982-1920-\d+x\d+\.webp$/i, '/assets/portfolio/thumbs/_DSC3982.webp'],
@@ -285,7 +286,7 @@ const cachedCmsAssetMap: Array<[RegExp, string]> = [
   [/^_DSC9321-Enhanced-NR-\d+x\d+\.webp$/i, '/assets/portfolio/thumbs/_DSC9321-Enhanced-NR.webp'],
   [/^_DSC9321-Enhanced-NR\.webp$/i, '/assets/portfolio/_DSC9321-Enhanced-NR.webp'],
   [/^Wettberwerb_Foto5_Wunder_der_Natur2-\d+x\d+\.webp$/i, '/assets/portfolio/thumbs/Wettberwerb_Foto5_Wunder_der_Natur2.webp'],
-  [/^Wettberwerb_Foto5_Wunder_der_Natur2\.webp$/i, '/assets/portfolio/Wettberwerb_Foto5_Wunder_der_Natur2.webp'],
+  [/^Wettberwerb_Foto5_Wunder_der_Natur2\.webp$/i, '/assets/portfolio/thumbs/Wettberwerb_Foto5_Wunder_der_Natur2.webp'],
   [/^Wettberwerb_Foto6_Wunder_der_Natur(?:-\d+x\d+)?\.webp$/i, '/assets/portfolio/thumbs/Wettberwerb_Foto6_Wunder_der_Natur.webp'],
   [/^20250327-DSC01550(?:-\d+x\d+)?\.webp$/i, '/assets/portfolio/thumbs/20250327-DSC01550.webp'],
   [/^20250605-DSC03756(?:-\d+x\d+)?\.webp$/i, '/assets/portfolio/thumbs/20250605-DSC03756.webp'],
@@ -744,6 +745,12 @@ export const imageSrcset = (
       const url = selected ? media.sizes?.[selected]?.url : undefined
       const displayUrl = url ? toDisplayAssetUrl(url) : ''
       if (!selected || !displayUrl || seen.has(displayUrl)) return ''
+      if (
+        format === 'avif' &&
+        (!/\.avif(?:[?#]|$)/i.test(displayUrl) || /^https:\/\/cms\.matthiasramahi\.de\/api\/media\/file\//i.test(displayUrl))
+      ) {
+        return ''
+      }
       seen.add(displayUrl)
       return `${displayUrl} ${assetWidthFromUrl(displayUrl) || sizeWidths[selected] || sizeWidths[size] || 1600}w`
     })

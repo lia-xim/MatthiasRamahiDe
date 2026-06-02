@@ -133,8 +133,8 @@ const clusterParagraphs = clusterIntroCms.length
       <div class="hero-cursor" id="hero-cursor" aria-hidden="true"><span class="ring"></span></div>
     </section>
 
-    {topics.map((topic, index) => (
-      <section class={`topic ${topic.theme} ${topic.className}`} id={topic.id} data-theme={topic.theme} data-no={`${String(index + 1).padStart(2, '0')} / ${topic.id.toUpperCase()}`}>
+    {topics.map((topic) => (
+      <section class={`topic ${topic.theme} ${topic.className}`} id={topic.id} data-theme={topic.theme}>
         <div class="topic-grid">
           <div class="topic-copy">
             <h2><span>{topic.title}</span><em>{topic.emphasis}</em></h2>

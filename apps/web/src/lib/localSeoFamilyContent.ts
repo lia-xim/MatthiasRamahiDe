@@ -1,4 +1,4 @@
-import type { PayloadDoc } from './payload'
+﻿import type { PayloadDoc } from './payload'
 import {
   type LocalSeoLayoutFamily,
   localSeoCityTokens,
@@ -229,10 +229,10 @@ const simpleKeywordCopy = (label: string, brief: SimpleKeywordBrief): KeywordFoc
   audienceHeadline: `${label}: passende Anfragen.`,
   audienceLead: brief.output,
   cards: [
-    { label: '01 / Fokus', title: brief.cards[0], text: brief.intent },
-    { label: '02 / Planung', title: brief.cards[1], text: brief.planning },
-    { label: '03 / Ausgabe', title: brief.cards[2], text: brief.output },
-    { label: '04 / Grenze', title: brief.cards[3], text: brief.related },
+    { label: 'Fokus', title: brief.cards[0], text: brief.intent },
+    { label: 'Planung', title: brief.cards[1], text: brief.planning },
+    { label: 'Ausgabe', title: brief.cards[2], text: brief.output },
+    { label: 'Grenze', title: brief.cards[3], text: brief.related },
   ],
   contactLead: `Schreibe kurz, welches Motiv im Mittelpunkt steht, wofuer ${label} gebraucht wird und ob die Bilder privat, kommerziell, redaktionell oder fuer Verkauf und Print genutzt werden sollen.`,
   featureBody: brief.feature,
@@ -1074,11 +1074,11 @@ const keywordFocusCopies: Record<string, KeywordFocusCopy> = {
     sectionLead:
       'Diese Seite sammelt die breiten Portrait-Anfragen und fuehrt sie in klare Shooting-Module, ohne Passbild- oder Studio-Massenware zu bedienen.',
     cards: [
-      { label: '01 · Profil', title: 'Profilbilder', text: 'Klare Portraits fuer Website, LinkedIn, Dating oder Social Media mit passender Bildwirkung.' },
-      { label: '02 · Privat', title: 'Persoenliche Serie', text: 'Ruhige Bilder fuer Menschen, die ein gutes Portrait von sich moechten, ohne kuenstlich zu wirken.' },
-      { label: '03 · Paar', title: 'Zu zweit', text: 'Nahe Motive mit echter Verbindung, gefuehrt ohne steife Standardsituationen.' },
-      { label: '04 · Familie', title: 'Kleine Familien', text: 'Natuerliche Serien fuer Familien, bei denen Stimmung wichtiger ist als perfekte Aufstellung.' },
-      { label: '05 · Brand', title: 'Personal Branding', text: 'Portraits, die Person, Arbeit und Wirkung in eine konsistente Bildsprache bringen.' },
+      { label: 'Profil', title: 'Profilbilder', text: 'Klare Portraits fuer Website, LinkedIn, Dating oder Social Media mit passender Bildwirkung.' },
+      { label: 'Privat', title: 'Persoenliche Serie', text: 'Ruhige Bilder fuer Menschen, die ein gutes Portrait von sich moechten, ohne kuenstlich zu wirken.' },
+      { label: 'Paar', title: 'Zu zweit', text: 'Nahe Motive mit echter Verbindung, gefuehrt ohne steife Standardsituationen.' },
+      { label: 'Familie', title: 'Kleine Familien', text: 'Natuerliche Serien fuer Familien, bei denen Stimmung wichtiger ist als perfekte Aufstellung.' },
+      { label: 'Brand', title: 'Personal Branding', text: 'Portraits, die Person, Arbeit und Wirkung in eine konsistente Bildsprache bringen.' },
     ],
     processHeadline: 'Ablauf fuer ein Portrait Fotoshooting.',
     processLead:
@@ -1111,11 +1111,11 @@ const keywordFocusCopies: Record<string, KeywordFocusCopy> = {
     sectionLead:
       'Diese Seite erklaert Licht als Teil der Bildsprache und nicht als technische Spielerei. Sie passt fuer Suchende, die bewusst nach Wirkung, Setup und professioneller Portraitanmutung suchen.',
     cards: [
-      { label: '01 · Weich', title: 'Natuerliches Licht', text: 'Ruhige Portraits mit sanften Uebergaengen, ideal fuer nahbare Profile und private Serien.' },
-      { label: '02 · Klar', title: 'Kontrolliertes Setup', text: 'Mobiles Licht fuer konsistente Ergebnisse, wenn Ort oder Tageszeit nicht alles leisten.' },
-      { label: '03 · Kontur', title: 'Kantenlicht', text: 'Feine Trennung von Person und Hintergrund, ohne den Look kuenstlich wirken zu lassen.' },
-      { label: '04 · Editorial', title: 'Kontrast', text: 'Staerkere Lichtsetzung fuer markante Portraits, Schwarz-Weiss-Serien oder Magazinwirkung.' },
-      { label: '05 · Mix', title: 'Innen und aussen', text: 'Lichtstimmungen koennen innerhalb einer Serie wechseln, solange die Bildsprache zusammenhaelt.' },
+      { label: 'Weich', title: 'Natuerliches Licht', text: 'Ruhige Portraits mit sanften Uebergaengen, ideal fuer nahbare Profile und private Serien.' },
+      { label: 'Klar', title: 'Kontrolliertes Setup', text: 'Mobiles Licht fuer konsistente Ergebnisse, wenn Ort oder Tageszeit nicht alles leisten.' },
+      { label: 'Kontur', title: 'Kantenlicht', text: 'Feine Trennung von Person und Hintergrund, ohne den Look kuenstlich wirken zu lassen.' },
+      { label: 'Editorial', title: 'Kontrast', text: 'Staerkere Lichtsetzung fuer markante Portraits, Schwarz-Weiss-Serien oder Magazinwirkung.' },
+      { label: 'Mix', title: 'Innen und aussen', text: 'Lichtstimmungen koennen innerhalb einer Serie wechseln, solange die Bildsprache zusammenhaelt.' },
     ],
     processHeadline: 'Lichtplanung vor dem Portrait.',
     processLead:
@@ -1148,11 +1148,11 @@ const keywordFocusCopies: Record<string, KeywordFocusCopy> = {
     sectionLead:
       'Die Seite spricht Menschen an, die bessere Datingbilder moechten, aber keine gestellten Studiofotos. Der Look bleibt natuerlich und alltagstauglich.',
     cards: [
-      { label: '01 · Profil', title: 'Erstes Bild', text: 'Ein klares Portrait, das freundlich wirkt und nicht ueberinszeniert ist.' },
-      { label: '02 · Alltag', title: 'Natuerlicher Kontext', text: 'Motive mit Umgebung, damit dein Profil mehr zeigt als nur ein Gesicht.' },
-      { label: '03 · Haltung', title: 'Ganzkoerper', text: 'Lockere Bilder mit Koerperhaltung, ohne starre Posen.' },
-      { label: '04 · Auswahl', title: 'Serienlogik', text: 'Mehrere Bilder, die zusammen abwechslungsreich wirken und nicht wie derselbe Moment.' },
-      { label: '05 · Ehrlich', title: 'Keine Maskerade', text: 'Die Bearbeitung bleibt realistisch, damit du auf dem Bild wiedererkannt wirst.' },
+      { label: 'Profil', title: 'Erstes Bild', text: 'Ein klares Portrait, das freundlich wirkt und nicht ueberinszeniert ist.' },
+      { label: 'Alltag', title: 'Natuerlicher Kontext', text: 'Motive mit Umgebung, damit dein Profil mehr zeigt als nur ein Gesicht.' },
+      { label: 'Haltung', title: 'Ganzkoerper', text: 'Lockere Bilder mit Koerperhaltung, ohne starre Posen.' },
+      { label: 'Auswahl', title: 'Serienlogik', text: 'Mehrere Bilder, die zusammen abwechslungsreich wirken und nicht wie derselbe Moment.' },
+      { label: 'Ehrlich', title: 'Keine Maskerade', text: 'Die Bearbeitung bleibt realistisch, damit du auf dem Bild wiedererkannt wirst.' },
     ],
     processHeadline: 'Ablauf fuer Datingbilder.',
     processLead:
@@ -1185,11 +1185,11 @@ const keywordFocusCopies: Record<string, KeywordFocusCopy> = {
     sectionLead:
       'Diese Seite holt Geschenk-Suchende ab und fuehrt sie nicht auf eine generische Shop-Seite, sondern in konkrete Shootingarten, die Matthias tatsaechlich anbietet.',
     cards: [
-      { label: '01 · Portrait', title: 'Einzelperson', text: 'Fuer Menschen, die endlich gute Bilder von sich selbst haben moechten.' },
-      { label: '02 · Paar', title: 'Gemeinsam', text: 'Ein ruhiger Termin fuer Paare, die natuerliche Bilder statt gestellte Motive wollen.' },
-      { label: '03 · Familie', title: 'Kleine Familie', text: 'Als Geschenk fuer Eltern, Geschwister oder besondere Anlaesse.' },
-      { label: '04 · Auto', title: 'Fahrzeugliebe', text: 'Fuer Besitzer von Sportwagen, Oldtimer, Motorrad oder besonderem Alltagsauto.' },
-      { label: '05 · Frei', title: 'Stil spaeter klaeren', text: 'Der konkrete Look wird erst beim Einloesen gemeinsam abgestimmt.' },
+      { label: 'Portrait', title: 'Einzelperson', text: 'Fuer Menschen, die endlich gute Bilder von sich selbst haben moechten.' },
+      { label: 'Paar', title: 'Gemeinsam', text: 'Ein ruhiger Termin fuer Paare, die natuerliche Bilder statt gestellte Motive wollen.' },
+      { label: 'Familie', title: 'Kleine Familie', text: 'Als Geschenk fuer Eltern, Geschwister oder besondere Anlaesse.' },
+      { label: 'Auto', title: 'Fahrzeugliebe', text: 'Fuer Besitzer von Sportwagen, Oldtimer, Motorrad oder besonderem Alltagsauto.' },
+      { label: 'Frei', title: 'Stil spaeter klaeren', text: 'Der konkrete Look wird erst beim Einloesen gemeinsam abgestimmt.' },
     ],
     processHeadline: 'So funktioniert der Gutschein.',
     processLead:
@@ -1222,11 +1222,11 @@ const keywordFocusCopies: Record<string, KeywordFocusCopy> = {
     sectionLead:
       'Preisfragen werden transparent beantwortet: nicht mit einer langen Paketliste, sondern mit Kriterien, die fuer eine serioese Anfrage wirklich zaehlen.',
     cards: [
-      { label: '01 · Art', title: 'Shootingtyp', text: 'Portrait, Paar, Familie, Auto oder Sportwagen haben unterschiedliche Vorbereitung und Bildlogik.' },
-      { label: '02 · Ort', title: 'Location', text: 'Anfahrt, Genehmigung, Lichtfenster und Setup beeinflussen den Aufwand.' },
-      { label: '03 · Nutzung', title: 'Privat oder kommerziell', text: 'Bilder fuer Website, Kampagne oder Verkauf werden anders lizenziert als private Erinnerungen.' },
-      { label: '04 · Umfang', title: 'Bildanzahl', text: 'Eine kleine Auswahl braucht weniger Retusche und Abstimmung als eine umfangreiche Serie.' },
-      { label: '05 · Output', title: 'Dateien & Formate', text: 'Web, Social, Print und grosse Drucke haben unterschiedliche Anforderungen.' },
+      { label: 'Art', title: 'Shootingtyp', text: 'Portrait, Paar, Familie, Auto oder Sportwagen haben unterschiedliche Vorbereitung und Bildlogik.' },
+      { label: 'Ort', title: 'Location', text: 'Anfahrt, Genehmigung, Lichtfenster und Setup beeinflussen den Aufwand.' },
+      { label: 'Nutzung', title: 'Privat oder kommerziell', text: 'Bilder fuer Website, Kampagne oder Verkauf werden anders lizenziert als private Erinnerungen.' },
+      { label: 'Umfang', title: 'Bildanzahl', text: 'Eine kleine Auswahl braucht weniger Retusche und Abstimmung als eine umfangreiche Serie.' },
+      { label: 'Output', title: 'Dateien & Formate', text: 'Web, Social, Print und grosse Drucke haben unterschiedliche Anforderungen.' },
     ],
     processHeadline: 'So wird ein Preis sauber.',
     processLead:
@@ -1259,11 +1259,11 @@ const keywordFocusCopies: Record<string, KeywordFocusCopy> = {
     sectionLead:
       'Diese Seite verbindet zwei nahe Anlaesse, ohne sie zu verwaessern: Paarbilder und kleine Familienshootings mit natuerlicher Regie.',
     cards: [
-      { label: '01 · Paar', title: 'Zu zweit', text: 'Ruhige Motive, die Verbindung zeigen, ohne kitschig oder gestellt zu wirken.' },
-      { label: '02 · Familie', title: 'Kleine Familien', text: 'Natuerliche Serien mit Kindern oder Eltern, bei denen Bewegung erlaubt bleibt.' },
-      { label: '03 · Anlass', title: 'Jahrestag & Geschenk', text: 'Ein Shooting als gemeinsames Erlebnis oder als persoenliches Geschenk.' },
-      { label: '04 · Zuhause', title: 'Vertraute Orte', text: 'Wenn der Ort Teil der Geschichte ist, kann er bewusst in die Bilder einfließen.' },
-      { label: '05 · Outdoor', title: 'Licht und Raum', text: 'Ruhige Aussenorte schaffen Abstand, Bewegung und eine natuerliche Atmosphaere.' },
+      { label: 'Paar', title: 'Zu zweit', text: 'Ruhige Motive, die Verbindung zeigen, ohne kitschig oder gestellt zu wirken.' },
+      { label: 'Familie', title: 'Kleine Familien', text: 'Natuerliche Serien mit Kindern oder Eltern, bei denen Bewegung erlaubt bleibt.' },
+      { label: 'Anlass', title: 'Jahrestag & Geschenk', text: 'Ein Shooting als gemeinsames Erlebnis oder als persoenliches Geschenk.' },
+      { label: 'Zuhause', title: 'Vertraute Orte', text: 'Wenn der Ort Teil der Geschichte ist, kann er bewusst in die Bilder einfließen.' },
+      { label: 'Outdoor', title: 'Licht und Raum', text: 'Ruhige Aussenorte schaffen Abstand, Bewegung und eine natuerliche Atmosphaere.' },
     ],
     processHeadline: 'Ablauf fuer Paar und Familie.',
     processLead:
@@ -1296,11 +1296,11 @@ const keywordFocusCopies: Record<string, KeywordFocusCopy> = {
     sectionLead:
       'Diese Seite bedient eine klare Stil-Suche. Sie erklaert Schwarz-Weiss nicht als Filter, sondern als bewusste Entscheidung fuer Licht, Tonwerte und Bildwirkung.',
     cards: [
-      { label: '01 · Klar', title: 'Einzelportrait', text: 'Reduzierte Bilder mit Fokus auf Gesicht, Blick und Haltung.' },
-      { label: '02 · Editorial', title: 'Staerkere Serie', text: 'Kontraste, Schatten und Ausschnitt duerfen praesenter sein als in klassischen Profilbildern.' },
-      { label: '03 · Brand', title: 'Zeitloser Auftritt', text: 'Schwarz-Weiss kann Personal Branding ruhiger und weniger trendabhaengig machen.' },
-      { label: '04 · Mix', title: 'Farbe plus Schwarz-Weiss', text: 'Eine Serie kann farbige Hauptmotive und ausgewaehlte Schwarz-Weiss-Finals kombinieren.' },
-      { label: '05 · Print', title: 'Wandbild', text: 'Tonwerte und Kontrast werden so bearbeitet, dass die Bilder auch im Druck tragen.' },
+      { label: 'Klar', title: 'Einzelportrait', text: 'Reduzierte Bilder mit Fokus auf Gesicht, Blick und Haltung.' },
+      { label: 'Editorial', title: 'Staerkere Serie', text: 'Kontraste, Schatten und Ausschnitt duerfen praesenter sein als in klassischen Profilbildern.' },
+      { label: 'Brand', title: 'Zeitloser Auftritt', text: 'Schwarz-Weiss kann Personal Branding ruhiger und weniger trendabhaengig machen.' },
+      { label: 'Mix', title: 'Farbe plus Schwarz-Weiss', text: 'Eine Serie kann farbige Hauptmotive und ausgewaehlte Schwarz-Weiss-Finals kombinieren.' },
+      { label: 'Print', title: 'Wandbild', text: 'Tonwerte und Kontrast werden so bearbeitet, dass die Bilder auch im Druck tragen.' },
     ],
     processHeadline: 'Ablauf fuer Schwarz-Weiss Portraits.',
     processLead:
@@ -1333,10 +1333,10 @@ const keywordFocusCopies: Record<string, KeywordFocusCopy> = {
     sectionLead:
       'Diese Seite buendelt Business-Portraits fuer Person, Fuehrung, Team und Marke - ohne in Passbild- oder Studio-Massenware abzurutschen.',
     cards: [
-      { label: '01 · Person', title: 'Einzelportrait', text: 'Hochwertige Portraits fuer Website, LinkedIn und Profil mit klarer, professioneller Wirkung.' },
-      { label: '02 · Fuehrung', title: 'Geschaeftsfuehrung', text: 'Portraits fuer Fuehrungsebene, Aufsichtsrat und Presse mit ruhiger Autoritaet.' },
-      { label: '03 · Team', title: 'Teamseite', text: 'Konsistente Bildsprache ueber mehrere Personen, damit die Teamseite zusammenhaengt.' },
-      { label: '04 · Marke', title: 'Corporate Look', text: 'Bildwelt, die zu Branding, Website und Unternehmensauftritt passt.' },
+      { label: 'Person', title: 'Einzelportrait', text: 'Hochwertige Portraits fuer Website, LinkedIn und Profil mit klarer, professioneller Wirkung.' },
+      { label: 'Fuehrung', title: 'Geschaeftsfuehrung', text: 'Portraits fuer Fuehrungsebene, Aufsichtsrat und Presse mit ruhiger Autoritaet.' },
+      { label: 'Team', title: 'Teamseite', text: 'Konsistente Bildsprache ueber mehrere Personen, damit die Teamseite zusammenhaengt.' },
+      { label: 'Marke', title: 'Corporate Look', text: 'Bildwelt, die zu Branding, Website und Unternehmensauftritt passt.' },
     ],
     processHeadline: 'Ablauf fuer ein Business Portrait.',
     processLead:
@@ -1369,10 +1369,10 @@ const keywordFocusCopies: Record<string, KeywordFocusCopy> = {
     sectionLead:
       'Diese Seite bleibt bewusst eng: professionelle Profilbilder, kein verkleidetes Konzept-Shooting.',
     cards: [
-      { label: '01 · Profil', title: 'LinkedIn & Web', text: 'Klare Headshots, die auf Profilen und Teamseiten sofort professionell wirken.' },
-      { label: '02 · Team', title: 'Einheitlicher Look', text: 'Gleiches Licht, gleicher Hintergrund, gleicher Ausschnitt ueber alle Personen.' },
-      { label: '03 · Bewerbung', title: 'Bewerbungsbild', text: 'Sympathisch und professionell - moderner als ein klassisches Passbild.' },
-      { label: '04 · Schnell', title: 'Effizienter Termin', text: 'Kompakter Ablauf, ideal fuer einzelne Personen oder ganze Teams am Stueck.' },
+      { label: 'Profil', title: 'LinkedIn & Web', text: 'Klare Headshots, die auf Profilen und Teamseiten sofort professionell wirken.' },
+      { label: 'Team', title: 'Einheitlicher Look', text: 'Gleiches Licht, gleicher Hintergrund, gleicher Ausschnitt ueber alle Personen.' },
+      { label: 'Bewerbung', title: 'Bewerbungsbild', text: 'Sympathisch und professionell - moderner als ein klassisches Passbild.' },
+      { label: 'Schnell', title: 'Effizienter Termin', text: 'Kompakter Ablauf, ideal fuer einzelne Personen oder ganze Teams am Stueck.' },
     ],
     processHeadline: 'Ablauf fuer Headshots.',
     processLead:
@@ -1405,10 +1405,10 @@ const keywordFocusCopies: Record<string, KeywordFocusCopy> = {
     sectionLead:
       'Diese Seite richtet sich an Menschen, die ihre Marke selbst sind. Statt eines Einzelbilds entsteht ein nutzbarer Vorrat an Motiven.',
     cards: [
-      { label: '01 · Person', title: 'Hauptportraits', text: 'Klare Portraits als Anker der Bildwelt fuer Startseite und Profil.' },
-      { label: '02 · Arbeit', title: 'In Aktion', text: 'Bilder bei der Arbeit, im Gespraech oder am Material - glaubwuerdig statt gestellt.' },
-      { label: '03 · Umfeld', title: 'Orte & Atmosphaere', text: 'Buero, Studio oder typische Locations als Teil der Geschichte.' },
-      { label: '04 · Content', title: 'Social-Vorrat', text: 'Hoch- und Querformate plus Detailmotive fuer einen laufenden Content-Plan.' },
+      { label: 'Person', title: 'Hauptportraits', text: 'Klare Portraits als Anker der Bildwelt fuer Startseite und Profil.' },
+      { label: 'Arbeit', title: 'In Aktion', text: 'Bilder bei der Arbeit, im Gespraech oder am Material - glaubwuerdig statt gestellt.' },
+      { label: 'Umfeld', title: 'Orte & Atmosphaere', text: 'Buero, Studio oder typische Locations als Teil der Geschichte.' },
+      { label: 'Content', title: 'Social-Vorrat', text: 'Hoch- und Querformate plus Detailmotive fuer einen laufenden Content-Plan.' },
     ],
     processHeadline: 'Ablauf fuer Personal Branding.',
     processLead:
@@ -1441,10 +1441,10 @@ const keywordFocusCopies: Record<string, KeywordFocusCopy> = {
     sectionLead:
       'Diese Seite ist fuer Unternehmen, die mehr als ein Portrait brauchen: eine verlaessliche, wiederholbare Bildlinie fuer den gesamten Auftritt.',
     cards: [
-      { label: '01 · Team', title: 'Mitarbeiterportraits', text: 'Einheitliche Portraits fuer Website, Recruiting und Teamseite.' },
-      { label: '02 · Fuehrung', title: 'Geschaeftsleitung', text: 'Repraesentative Portraits fuer Presse, Bericht und Investor Relations.' },
-      { label: '03 · Standort', title: 'Vor Ort', text: 'Arbeitsumgebung und Raeume als Teil des Unternehmensbildes.' },
-      { label: '04 · System', title: 'Erweiterbar', text: 'Neue Mitarbeitende lassen sich spaeter im gleichen Look ergaenzen.' },
+      { label: 'Team', title: 'Mitarbeiterportraits', text: 'Einheitliche Portraits fuer Website, Recruiting und Teamseite.' },
+      { label: 'Fuehrung', title: 'Geschaeftsleitung', text: 'Repraesentative Portraits fuer Presse, Bericht und Investor Relations.' },
+      { label: 'Standort', title: 'Vor Ort', text: 'Arbeitsumgebung und Raeume als Teil des Unternehmensbildes.' },
+      { label: 'System', title: 'Erweiterbar', text: 'Neue Mitarbeitende lassen sich spaeter im gleichen Look ergaenzen.' },
     ],
     processHeadline: 'Ablauf fuer Unternehmensportraits.',
     processLead:
@@ -1477,10 +1477,10 @@ const keywordFocusCopies: Record<string, KeywordFocusCopy> = {
     sectionLead:
       'Diese Seite richtet sich an PR, Kommunikation und Personen des oeffentlichen Lebens, die verlaessliches, redaktionstaugliches Bildmaterial brauchen.',
     cards: [
-      { label: '01 · Portrait', title: 'Pressebild Person', text: 'Repraesentatives, glaubwuerdiges Portrait fuer Pressemitteilung und Profil.' },
-      { label: '02 · Situativ', title: 'Im Kontext', text: 'Person in Arbeits- oder Anlasssituation - redaktionell statt gestellt.' },
-      { label: '03 · Kit', title: 'Medienkit', text: 'Mehrere Motive und Formate als fertiger Satz fuer Redaktionen.' },
-      { label: '04 · Rechte', title: 'Klare Freigabe', text: 'Nutzungsrechte und Bildunterschriften werden eindeutig geregelt.' },
+      { label: 'Portrait', title: 'Pressebild Person', text: 'Repraesentatives, glaubwuerdiges Portrait fuer Pressemitteilung und Profil.' },
+      { label: 'Situativ', title: 'Im Kontext', text: 'Person in Arbeits- oder Anlasssituation - redaktionell statt gestellt.' },
+      { label: 'Kit', title: 'Medienkit', text: 'Mehrere Motive und Formate als fertiger Satz fuer Redaktionen.' },
+      { label: 'Rechte', title: 'Klare Freigabe', text: 'Nutzungsrechte und Bildunterschriften werden eindeutig geregelt.' },
     ],
     processHeadline: 'Ablauf fuer Pressefotos.',
     processLead:
@@ -1566,7 +1566,7 @@ const keywordFaqs: Record<string, Array<{ q: string; a: string }>> = {
   ],
 }
 
-export function keywordFocusCopyForSlug(value?: string | null) {
+export function keywordFocusCopyForSlug(value?: string | null): KeywordFocusCopy | null {
   const slug = normalizeLocalSeoSlug(value)
   const copies = { ...keywordFocusDefaults, ...keywordFocusCopies }
   const prefix = Object.keys(copies)
@@ -1592,7 +1592,12 @@ export function keywordFocusCopyForSlug(value?: string | null) {
         }
 
   if (!base) return faq ? { faq } : null
-  return faq ? { ...base, faq } : base
+  const cleanCardLabel = (label = '') => label.replace(/^\s*\d+\s*(?:\/|·|-)\s*/, '').trim()
+  const cleaned = {
+    ...base,
+    cards: base.cards?.map((card) => ({ ...card, label: cleanCardLabel(card.label) || card.label })),
+  }
+  return faq ? { ...cleaned, faq } : cleaned
 }
 
 const visual = (
@@ -1657,10 +1662,10 @@ export const localSeoFamilyContent: Record<LocalSeoLayoutFamily, LocalSeoFamilyC
     contactNoun: 'Automobil',
     family: 'automobil',
     gallery: [
-      visual('/assets/optimized/assets-portfolio-dsc3879-1920.webp', 'Ferrari F12 Berlinetta als Exterieur-Motiv', 1920, 1280, { className: 'bg-t-hero', label: '01 / Showroom' }),
-      visual('/assets/portfolio/_DSC9301-Enhanced-NR.webp', 'Cockpit und Materialdetail im Fahrzeug', 2048, 2560, { className: 'bg-t-a', label: '02 / Interieur' }),
-      visual('/assets/optimized/assets-portfolio-dsc3892-1920.webp', 'Lack- und Linien-Detail', 1920, 1280, { className: 'bg-t-b', label: '03 / Detail' }),
-      visual('/assets/optimized/assets-portfolio-dsc3032-generase-1-1920.webp', 'Cineastische Fahrzeugaufnahme', 1920, 1280, { className: 'bg-t-c', label: '04 / Cinematic' }),
+      visual('/assets/optimized/assets-portfolio-dsc3879-1920.webp', 'Ferrari F12 Berlinetta als Exterieur-Motiv', 1920, 1280, { className: 'bg-t-hero', label: 'Showroom' }),
+      visual('/assets/portfolio/_DSC9301-Enhanced-NR.webp', 'Cockpit und Materialdetail im Fahrzeug', 2048, 2560, { className: 'bg-t-a', label: 'Interieur' }),
+      visual('/assets/optimized/assets-portfolio-dsc3892-1920.webp', 'Lack- und Linien-Detail', 1920, 1280, { className: 'bg-t-b', label: 'Detail' }),
+      visual('/assets/optimized/assets-portfolio-dsc3032-generase-1-1920.webp', 'Cineastische Fahrzeugaufnahme', 1920, 1280, { className: 'bg-t-c', label: 'Cinematic' }),
     ],
     heroImages: [
       visual('/assets/optimized/assets-portfolio-dsc3879-1920.webp', 'Automobil Exterieur', 1920, 1280),
@@ -1709,10 +1714,10 @@ export const localSeoFamilyContent: Record<LocalSeoLayoutFamily, LocalSeoFamilyC
     contactNoun: 'Sportwagen',
     family: 'sportwagen',
     gallery: [
-      visual('/assets/optimized/assets-portfolio-dsc3879-1920.webp', 'Sportwagen Exterieur', 1920, 1280, { className: 't1', label: '01 / Exterieur' }),
-      visual('/assets/portfolio/_DSC9321-Enhanced-NR.webp', 'Sportwagen Cockpit', 1707, 2560, { className: 't2', label: '02 / Interieur' }),
-      visual('/assets/optimized/assets-portfolio-dsc3982-1920.webp', 'Sportwagen Detail', 1920, 1280, { className: 't3', label: '03 / Detail' }),
-      visual('/assets/optimized/assets-photos-automobil-neon-1920.webp', 'Sportwagen Cinematic', 1920, 1280, { className: 't6', label: '04 / Cinematic' }),
+      visual('/assets/optimized/assets-portfolio-dsc3879-1920.webp', 'Sportwagen Exterieur', 1920, 1280, { className: 't1', label: 'Exterieur' }),
+      visual('/assets/portfolio/_DSC9321-Enhanced-NR.webp', 'Sportwagen Cockpit', 1707, 2560, { className: 't2', label: 'Interieur' }),
+      visual('/assets/optimized/assets-portfolio-dsc3982-1920.webp', 'Sportwagen Detail', 1920, 1280, { className: 't3', label: 'Detail' }),
+      visual('/assets/optimized/assets-photos-automobil-neon-1920.webp', 'Sportwagen Cinematic', 1920, 1280, { className: 't6', label: 'Cinematic' }),
     ],
     heroImages: [
       visual('/assets/optimized/mpixih9c-dsc3982-1920.webp', 'Sportwagen Detail', 1920, 1280, { className: 'detail' }),
@@ -1759,10 +1764,10 @@ export const localSeoFamilyContent: Record<LocalSeoLayoutFamily, LocalSeoFamilyC
     contactNoun: 'Oldtimer',
     family: 'oldtimer',
     gallery: [
-      visual('/assets/portfolio/_DSC0470-Enhanced-NR.webp', 'Oldtimer Exponat', 1600, 2560, { className: 't1', label: '01 / Exponat' }),
-      visual('/assets/portfolio/_DSC9321-Enhanced-NR.webp', 'Oldtimer Cockpit', 1707, 2560, { className: 't2', label: '02 / Cockpit' }),
-      visual('/assets/optimized/assets-portfolio-dsc3892-1920.webp', 'Oldtimer Material', 1920, 1280, { className: 't3', label: '03 / Material' }),
-      visual('/assets/optimized/assets-photos-oldtimer-stage-1920.webp', 'Oldtimer Bühne', 1920, 1280, { className: 't6', label: '04 / Bühne' }),
+      visual('/assets/portfolio/_DSC0470-Enhanced-NR.webp', 'Oldtimer Exponat', 1600, 2560, { className: 't1', label: 'Exponat' }),
+      visual('/assets/portfolio/_DSC9321-Enhanced-NR.webp', 'Oldtimer Cockpit', 1707, 2560, { className: 't2', label: 'Cockpit' }),
+      visual('/assets/optimized/assets-portfolio-dsc3892-1920.webp', 'Oldtimer Material', 1920, 1280, { className: 't3', label: 'Material' }),
+      visual('/assets/optimized/assets-photos-oldtimer-stage-1920.webp', 'Oldtimer Bühne', 1920, 1280, { className: 't6', label: 'Bühne' }),
     ],
     heroImages: [
       visual('/assets/optimized/assets-photos-oldtimer-stage-1920.webp', 'Oldtimer Bühne', 1920, 1280),
@@ -1807,10 +1812,10 @@ export const localSeoFamilyContent: Record<LocalSeoLayoutFamily, LocalSeoFamilyC
     contactNoun: 'Motorrad',
     family: 'motorrad',
     gallery: [
-      visual('/assets/optimized/assets-photos-motorrad-1920.webp', 'Motorrad Hero-Motiv', 1707, 2560, { className: 't1', label: '01 / Silhouette' }),
-      visual('/assets/optimized/assets-portfolio-dsc3892-1920.webp', 'Motorrad Detail', 1920, 1280, { className: 't2', label: '02 / Detail' }),
-      visual('/assets/optimized/assets-photos-motorrad-duke-1920.webp', 'Motorrad mit Fahrerbezug', 1920, 3413, { className: 't3', label: '03 / Haltung' }),
-      visual('/assets/optimized/assets-portfolio-dsc3878-1920.webp', 'Motorrad Cinematic', 1920, 1280, { className: 't6', label: '04 / Cinematic' }),
+      visual('/assets/optimized/assets-photos-motorrad-1920.webp', 'Motorrad Hero-Motiv', 1707, 2560, { className: 't1', label: 'Silhouette' }),
+      visual('/assets/optimized/assets-portfolio-dsc3892-1920.webp', 'Motorrad Detail', 1920, 1280, { className: 't2', label: 'Detail' }),
+      visual('/assets/optimized/assets-photos-motorrad-duke-1920.webp', 'Motorrad mit Fahrerbezug', 1920, 3413, { className: 't3', label: 'Haltung' }),
+      visual('/assets/optimized/assets-portfolio-dsc3878-1920.webp', 'Motorrad Cinematic', 1920, 1280, { className: 't6', label: 'Cinematic' }),
     ],
     heroImages: [
       visual('/assets/optimized/assets-photos-motorrad-ninja-road-1920.webp', 'Motorrad Straße', 1920, 2880),
@@ -1855,10 +1860,10 @@ export const localSeoFamilyContent: Record<LocalSeoLayoutFamily, LocalSeoFamilyC
     contactNoun: 'Portrait',
     family: 'portrait',
     gallery: [
-      visual('/assets/portraits/_DSC0470-Enhanced-NR.webp', 'Portrait Hauptmotiv', 1600, 2560, { className: 't-hero', label: '01 / Portrait' }),
-      visual('/assets/portraits/_DSC9321-Enhanced-NR.webp', 'Portrait Editorial', 1707, 2560, { className: 't-a', label: '02 / Editorial' }),
-      visual('/assets/optimized/assets-portraits-dsc3908-1920.webp', 'Portrait Team', 1920, 1280, { className: 't-b', label: '03 / Team' }),
-      visual('/assets/optimized/assets-portraits-20250605-dsc04020-1920.webp', 'Portrait Konzept', 1707, 2560, { className: 't-f', label: '04 / Konzept' }),
+      visual('/assets/portraits/_DSC0470-Enhanced-NR.webp', 'Portrait Hauptmotiv', 1600, 2560, { className: 't-hero', label: 'Portrait' }),
+      visual('/assets/portraits/_DSC9321-Enhanced-NR.webp', 'Portrait Editorial', 1707, 2560, { className: 't-a', label: 'Editorial' }),
+      visual('/assets/optimized/assets-portraits-dsc3908-1920.webp', 'Portrait Team', 1920, 1280, { className: 't-b', label: 'Team' }),
+      visual('/assets/optimized/assets-portraits-20250605-dsc04020-1920.webp', 'Portrait Konzept', 1707, 2560, { className: 't-f', label: 'Konzept' }),
     ],
     heroImages: [
       visual('/assets/portraits/_DSC0470-Enhanced-NR.webp', 'Portrait warm', 1600, 2560),
@@ -1911,10 +1916,10 @@ export const localSeoFamilyContent: Record<LocalSeoLayoutFamily, LocalSeoFamilyC
     contactNoun: 'Landschaft',
     family: 'landschaft',
     gallery: [
-      visual('/assets/portfolio/thumbs/Wettberwerb_Foto5_Wunder_der_Natur2.webp', 'Landschaft Hauptmotiv', 720, 471, { className: 't-hero', label: '01 / Ruhe' }),
-      visual('/assets/portfolio/thumbs/Wettberwerb_Foto6_Wunder_der_Natur.webp', 'Landschaft Fine Art', 720, 520, { className: 't-a', label: '02 / Fine Art' }),
-      visual('/assets/portfolio/thumbs/Wettberwerb_Foto10_Wunder_der_natur.webp', 'Landschaft Atmosphäre', 720, 448, { className: 't-b', label: '03 / Atmosphäre' }),
-      visual('/assets/portfolio/thumbs/20250605-DSC04020.webp', 'Landschaft Cinema', 720, 1080, { className: 't-c', label: '04 / Raum' }),
+      visual('/assets/portfolio/thumbs/Wettberwerb_Foto5_Wunder_der_Natur2.webp', 'Landschaft Hauptmotiv', 720, 471, { className: 't-hero', label: 'Ruhe' }),
+      visual('/assets/portfolio/thumbs/Wettberwerb_Foto6_Wunder_der_Natur.webp', 'Landschaft Fine Art', 720, 520, { className: 't-a', label: 'Fine Art' }),
+      visual('/assets/portfolio/thumbs/Wettberwerb_Foto10_Wunder_der_natur.webp', 'Landschaft Atmosphäre', 720, 448, { className: 't-b', label: 'Atmosphäre' }),
+      visual('/assets/portfolio/thumbs/20250605-DSC04020.webp', 'Landschaft Cinema', 720, 1080, { className: 't-c', label: 'Raum' }),
     ],
     heroImages: [
       visual('/assets/optimized/assets-portfolio-wettberwerb-foto5-wunder-der-natur2-1920.webp', 'Landschaft Wasser', 1920, 1280),

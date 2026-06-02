@@ -43,21 +43,21 @@ export const conceptArchivePages: Record<string, ConceptArchivePage> = {
     ogImage: '/assets/optimized/assets-photos-automobil-sunset-1920.webp',
     cards: [
       {
-        label: 'Variante 01',
+        label: 'Floating Archive',
         title: 'The Floating Archive',
         body: 'Ein raeumliches Gedaechtnis aus Bildern, Kontaktspuren, Koordinaten und Fragmenten. Navigation ueber Naehe, Fokus und Tiefenebenen.',
         href: 'floating-archive.html',
         variant: 'archive',
       },
       {
-        label: 'Variante 02',
+        label: 'Narrative Stage',
         title: 'The Narrative Stage',
         body: 'Fotoserien treten wie Akte auf: Enthuellung, Gegenueberstellung, Licht/Schatten, dramaturgische Kapitel statt Standardseiten.',
         href: 'narrative-stage.html',
         variant: 'stage',
       },
       {
-        label: 'Variante 03',
+        label: 'Experimental Lens',
         title: 'The Experimental Lens',
         body: 'Das Interface leitet sich aus Fokus, Belichtung, Kontaktbogen und Glaslagen ab: untersuchen statt bloss ansehen.',
         href: 'experimental-lens.html',
@@ -70,7 +70,7 @@ export const conceptArchivePages: Record<string, ConceptArchivePage> = {
     kind: 'archive',
     backHref: 'radikale-fotografie-portfolio-konzepte.html',
     backLabel: 'Konzepte',
-    eyebrow: '01 / Floating Archive',
+    eyebrow: 'Floating Archive',
     heroTitle: 'Das Gedaechtnis des Fotografen als begehbarer Raum.',
     heroBody:
       'Startseite: kein Hero, sondern ein kontrolliertes Schweben. Serien, Notizen und Bildfragmente organisieren sich durch Scrolltiefe und Mausnaehe.',
@@ -96,7 +96,7 @@ export const conceptArchivePages: Record<string, ConceptArchivePage> = {
     kind: 'stage',
     backHref: 'radikale-fotografie-portfolio-konzepte.html',
     backLabel: 'Konzepte',
-    eyebrow: '02 / Narrative Stage',
+    eyebrow: 'Narrative Stage',
     heroTitle: 'Jede Serie betritt die Buehne anders.',
     heroBody:
       'Startseite: keine Galerie. Drei Akte fuehren in die Bildwelt ein, mit Licht, Gegenlicht und choreografierten Enthuellungen.',
@@ -130,7 +130,7 @@ export const conceptArchivePages: Record<string, ConceptArchivePage> = {
     kind: 'lens',
     backHref: 'radikale-fotografie-portfolio-konzepte.html',
     backLabel: 'Konzepte',
-    eyebrow: '03 / Experimental Lens',
+    eyebrow: 'Experimental Lens',
     heroTitle: 'Das Werk wird optisch untersucht.',
     heroBody:
       'Startseite: ein lebender Sucher statt Hero. Fokus, Belichtung und Ausschnitt werden zur Navigation: praezise, mutig, aber benutzbar.',

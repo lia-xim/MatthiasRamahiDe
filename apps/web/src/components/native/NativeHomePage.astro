@@ -1,5 +1,6 @@
 ---
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
+import PreviewToolbar from '../PreviewToolbar.astro'
 import {
   blockParagraphs,
   homeChapters as fallbackChapters,
@@ -19,7 +20,19 @@ import {
   type PayloadMedia,
 } from '../../lib/payload'
 
-const providedDoc = Astro.props.doc as PayloadDoc | undefined
+type PreviewState = {
+  collection: string
+  publishedHref: string
+  slug: string
+  status?: string
+}
+
+type Props = {
+  doc?: PayloadDoc
+  preview?: PreviewState
+}
+
+const { doc: providedDoc, preview } = Astro.props as Props
 const doc = providedDoc || (await getSitePageByType('home', liveCmsFetchOptions({ depth: 2 })))
 
 const heroSlides = homeHeroSlidesFor(doc)
@@ -149,7 +162,23 @@ const cmsJournalCards = (journalGroup?.items || [])
   }))
 const journalCards = cmsJournalCards.length ? cmsJournalCards : fallbackJournalCards
 ---
-<AdoptedPageLayout legacyFile="index.html" current="home" doc={doc} ctaHref="#anfrage" preloadImages={[firstHeroSlide.image]} liveCms>
+<AdoptedPageLayout
+  legacyFile="index.html"
+  current="home"
+  doc={doc}
+  ctaHref="#anfrage"
+  preloadImages={[firstHeroSlide.image]}
+  noIndex={Boolean(preview)}
+  liveCms
+>
+  {preview && (
+    <PreviewToolbar
+      collection={preview.collection}
+      slug={preview.slug}
+      status={preview.status}
+      publishedHref={preview.publishedHref}
+    />
+  )}
   <main>
     <section class="hero" data-theme="dark" aria-label="Intro" style={`--hero-bg:url('${heroCssImage}');background-image:url('${heroCssImage}')`}>
       <div class="hero-bg" aria-hidden="true"></div>

@@ -47,13 +47,7 @@ export const servicesIndexSectionsTab: Tab = {
             description: 'Reihenfolge wie im Code. Leere Felder erben den eingebauten Standard der jeweiligen Leistung.',
           },
           fields: [
-            {
-              type: 'row',
-              fields: [
-                { name: 'number', label: 'Nummer / Eyebrow', type: 'text', admin: { width: '50%', placeholder: '01 · Fine Art' } },
-                { name: 'overviewLabel', label: 'Label (Übersicht-Kachel)', type: 'text', admin: { width: '50%', placeholder: 'Fine Art' } },
-              ],
-            },
+            { name: 'overviewLabel', label: 'Label (Übersicht-Kachel)', type: 'text', admin: { placeholder: 'Fine Art' } },
             {
               type: 'row',
               fields: [

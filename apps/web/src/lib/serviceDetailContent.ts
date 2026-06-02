@@ -65,25 +65,25 @@ export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
       lead: 'Große Flächen brauchen mehr als hohe Auflösung. Material, Betrachtungsabstand, Lichtsituation und Montage entscheiden, ob ein Großformat ruhig oder unruhig wirkt.',
       cards: [
         {
-          kicker: '01 / Wand',
+          kicker: 'Wand',
           title: 'Wandbilder XL',
           body: 'Hochformatige oder querformatige Bilder ab 100 × 70 cm bis 400 × 250 cm — auf Acryl, Alu, Leinwand oder direkt geklebt.',
           items: ['Acryl bis 250 × 150 cm', 'Alu-Dibond bis 300 × 150 cm', 'Direktklebung auf gestrichene Wand'],
         },
         {
-          kicker: '02 / Marke',
+          kicker: 'Marke',
           title: 'Showroom &amp; Empfang',
           body: 'Markenwände für Empfangsbereiche, Autohäuser, Boutiquen und Marken — abgestimmt auf Corporate Look und Lichtsituation.',
           items: ['Beleuchtungs-Check vor Druck', 'Material auf CI-Farben abgestimmt', 'Montage mit Schiene oder Distanzhalter'],
         },
         {
-          kicker: '03 / Event',
+          kicker: 'Event',
           title: 'Messebanner &amp; Roll-Ups',
           body: 'Vom mobilen Roll-Up bis zur 6 m Messewand — leichte Stoffsysteme, Backlit-Folien, Hardcase-Lieferung.',
           items: ['Stoff- oder PVC-Banner', 'Roll-Up 85 × 200 cm und 120 × 200 cm', 'Backlit für hinterleuchtete Rahmen'],
         },
         {
-          kicker: '04 / Schaufenster',
+          kicker: 'Schaufenster',
           title: 'Folien &amp; Fenster',
           body: 'Schaufensterfolien, Sichtschutzfolien, milchige Klebefolie und farbige Akzentfolien — mit Verlegung auf Wunsch.',
           items: ['Frosted-Folien und Sandstrahleffekt', 'Vollflächige Bildmotive', 'Branding-Folien auf Glas und Türen'],
@@ -130,25 +130,25 @@ export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
       lead: 'Werbetechnik ist Handwerk vor Ort. Wir denken Motiv, Material und Montage zusammen — egal ob Schaufenster, Fahrzeug oder Hausfassade.',
       cards: [
         {
-          kicker: '01 / Fahrzeug',
+          kicker: 'Fahrzeug',
           title: 'Fahrzeugbeschriftung',
           body: 'Logo, Kontakt, Vollverklebung — auf PKW, Transporter, LKW oder Anhänger. Mit Vorab-Visualisierung am Fahrzeugfoto.',
           items: ['Teilbeklebung mit Hochleistungsfolie', 'Vollfolierung in Farbe oder Carbon', 'Montage im rheinländischen Raum'],
         },
         {
-          kicker: '02 / Schaufenster',
+          kicker: 'Schaufenster',
           title: 'Schaufenster &amp; Glas',
           body: 'Werbung an Ladenflächen — von der dezenten Logofolie bis zur vollflächigen Bildmotivfolie. Demontagefreundlich und sauber.',
           items: ['Frosted für Sichtschutz', 'Bedruckte Folien mit Bildmotiv', 'Türaufkleber und Hinweistexte'],
         },
         {
-          kicker: '03 / Fassade',
+          kicker: 'Fassade',
           title: 'Schilder &amp; Beschilderung',
           body: 'Außenschilder, Hinweisschilder, Türschilder und Leitsysteme — aus Alu-Dibond, Acryl, Metall oder beleuchtet.',
           items: ['Außenmontage mit Statik-Check', 'Acrylplatten mit Standoffs', 'Leitsysteme für Praxen und Marken'],
         },
         {
-          kicker: '04 / Licht',
+          kicker: 'Licht',
           title: 'LED-Lichtwerbung',
           body: 'Hinterleuchtete Logos, Profilbuchstaben und Lightboxes — energieeffizient mit LED und langer Lebensdauer.',
           items: ['Profilbuchstaben aus Acryl mit LED', 'Backlit-Boxes für Schaufenster', 'Außenfertige Lichtkästen IP65'],
@@ -195,25 +195,25 @@ export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
       lead: 'Webdesign und SEO als eine Sache. Eine schöne Seite, die niemand findet, ist genauso wenig wert wie eine ranking-starke Seite, die niemand mag.',
       cards: [
         {
-          kicker: '01 / Site',
+          kicker: 'Site',
           title: 'Neue Websites',
           body: 'Editorial geführte, moderne Websites — handgebaut, ohne Page-Builder-Aufblähung. Schnell, schlank, semantisch sauber.',
           items: ['HTML/CSS/JS hand-getuned', 'Performance-Budget &lt; 200 KB Initial', 'Strukturierte Daten und OG-Tags'],
         },
         {
-          kicker: '02 / Local SEO',
+          kicker: 'Local SEO',
           title: 'Lokale Sichtbarkeit',
           body: 'Lokale Kategorieseiten, Google-Business-Optimierung, strukturierte Daten und Local-Pack-Sichtbarkeit für Düsseldorf und NRW.',
           items: ['Stadtseiten mit echtem Mehrwert', 'LocalBusiness-Schema', 'Bewertungs- und GBP-Pflege'],
         },
         {
-          kicker: '03 / Content',
+          kicker: 'Content',
           title: 'Inhalte &amp; Bildsprache',
           body: 'Aus Fotografie und Text wird ein konsistenter Auftritt. Bildauswahl, Tonalität und Struktur kommen aus einer Hand.',
           items: ['Eigene Fotos statt Stock', 'Editorial-Texte mit Haltung', 'Konsistente Mikrocopy'],
         },
         {
-          kicker: '04 / Tech',
+          kicker: 'Tech',
           title: 'Performance &amp; Wartung',
           body: 'Schnelle Ladezeiten, Core-Web-Vitals im grünen Bereich, regelmäßige Wartung und neue Inhalte ohne Drama.',
           items: ['LCP &lt; 2 s, CLS ~ 0', 'Wartungspaket monatlich', 'Inhalte-Updates ohne CMS-Stress'],
@@ -260,25 +260,25 @@ export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
       lead: 'Bewegtbild verlangt eine andere Planung als Stand — aber dieselbe Bildsprache. Wir koordinieren beides parallel auf Set, damit nichts zweimal gefilmt werden muss.',
       cards: [
         {
-          kicker: '01 / Marke',
+          kicker: 'Marke',
           title: 'Imagefilm',
           body: 'Kurze, ruhige Imagefilme für Marken, Praxen und Handwerk — mit echtem Bildmaterial statt Stock.',
           items: ['60–120 Sekunden Schnittfassung', 'Voice-Over oder reine Bildsprache', 'Vertikal- und Horizontalvariante'],
         },
         {
-          kicker: '02 / Musik',
+          kicker: 'Musik',
           title: 'Musikvideo',
           body: 'Musikvideos für Soloartists, Bands und Klassiker — produziert von Sophia Ramahi in Düsseldorf.',
           items: ['Konzeption mit Künstler:innen', 'Mehrtägige Drehs möglich', 'Color Grading editorial'],
         },
         {
-          kicker: '03 / Event',
+          kicker: 'Event',
           title: 'Eventfilm',
           body: 'Hochzeit, Konzert, Konferenz, Galaabend — diskrete Multi-Kamera-Aufzeichnung und cineastischer Schnitt.',
           items: ['Multi-Kamera mit getrenntem Audio', 'Highlightfilm und Lang-Dokument', 'Lieferung in 14 Tagen'],
         },
         {
-          kicker: '04 / Redaktion',
+          kicker: 'Redaktion',
           title: 'Redaktionelles Bewegtbild',
           body: 'Reportagen, Interviews, Behind-the-Scenes — für Pressekits, Social und Magazine.',
           items: ['Interview-Setup mit Backdrop', 'Untertitel und Kapitelmarken', 'Vertikal-Version für Social'],
@@ -325,25 +325,25 @@ export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
       lead: 'Eine ruhige musikalische Begleitung verändert einen Raum spürbar. Hier vermittelte Künstler:innen spielen klassisches Repertoire, sensibel und ohne Show.',
       cards: [
         {
-          kicker: '01 / Hochzeit',
+          kicker: 'Hochzeit',
           title: 'Trauung &amp; Empfang',
           body: 'Standesamt, kirchliche Trauung, freie Trauung und Sektempfang — mit klassischem Repertoire oder Pop-Arrangements.',
           items: ['Solo Viola, Geige oder Duo', 'Repertoire abgestimmt vorab', 'Auf-/Abbau leise und unkompliziert'],
         },
         {
-          kicker: '02 / Trauer',
+          kicker: 'Trauer',
           title: 'Trauerfeier',
           body: 'Würdevolle musikalische Begleitung in Trauerhalle, Kirche oder am Grab — ruhig und einfühlsam.',
           items: ['Ruhige Stückauswahl', 'Diskret im Hintergrund', 'Kurzfristig verfügbar'],
         },
         {
-          kicker: '03 / Privat',
+          kicker: 'Privat',
           title: 'Private Anlässe',
           body: 'Geburtstag, Jubiläum, Firmenfeier, Galaempfang — klassische Musik als Atmosphäre, nicht als Hintergrundbeschallung.',
           items: ['Sets von 30–90 Minuten', 'Mehrere Künstler verfügbar', 'Beleuchtung und Aufstellung beachtet'],
         },
         {
-          kicker: '04 / Location',
+          kicker: 'Location',
           title: 'Aufnahmen',
           body: 'Für Filme, Imagefilme oder eigene Kompositionen entstehen Location- und Live-Aufnahmen über das Musiknetzwerk.',
           items: ['Live- und Location-Aufnahmen in Düsseldorf', 'Live-Mitschnitt mit Multi-Mikro', 'Lizenzierung für Imagefilme'],
@@ -390,25 +390,25 @@ export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
       lead: 'Diese Seite bündelt alles, was nicht in Standardformate passt: besondere Materialien, kleine Serien, persönliche Geschenke und objektartige Präsentationen.',
       cards: [
         {
-          kicker: '01 / Objekt',
+          kicker: 'Objekt',
           title: 'Individuelle Fotodrucke',
           body: 'Einzelmotive als hochwertiges Objekt geplant — Format, Material und Oberfläche passend zum Bild, nicht zur Lagerware.',
           items: ['Portrait, Landschaft oder Fahrzeug', 'Rahmung und Präsentationsart', 'Materialberatung nach Einsatzort'],
         },
         {
-          kicker: '02 / Serie',
+          kicker: 'Serie',
           title: 'Kleine Serien &amp; Editionen',
           body: 'Für Ausstellungen, Geschenke oder Sammler entstehen abgestimmte Serien mit konsistenter Farbe und Präsentation.',
           items: ['Signatur oder Editionsnummer', 'Mehrere Größen aus einer Serie', 'Verpackung und Übergabe'],
         },
         {
-          kicker: '03 / Raum',
+          kicker: 'Raum',
           title: 'Interior &amp; Wand',
           body: 'Motiv und Raum gemeinsam gedacht: Größe, Blickachse, Licht und Material bestimmen das Ergebnis.',
           items: ['Wohnraum, Büro oder Showroom', 'Panoramen und Sonderformate', 'Wandcheck und Empfehlung'],
         },
         {
-          kicker: '04 / Test',
+          kicker: 'Test',
           title: 'Materialtests &amp; Sonderfinish',
           body: 'Wenn das Motiv eine besondere Oberfläche braucht, werden Finish, Träger und Wirkung vorher sauber geprüft.',
           items: ['Acryl, Dibond, Canvas, Papier', 'Matt, glänzend, metallic', 'Proof und Muster möglich'],
