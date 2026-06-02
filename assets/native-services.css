@@ -77,7 +77,7 @@
     .hero-cursor.is-pressed .ring{inset:-18px;border-color:rgba(243,245,239,.35)}
     .hero a,.hero button{cursor:pointer}
     @media (hover:none),(pointer:coarse),(max-width:900px){.hero{cursor:auto;animation:heroPanMobile 34s var(--ease) infinite alternate}.hero canvas{display:none}.hero-cursor{display:none}}
-    @keyframes heroPanMobile{from{background-position:46% 50%}to{background-position:54% 50%}}
+    @keyframes heroPanMobile{from{background-position:50% 50%}to{background-position:54% 50%}}
     @media(max-width:780px){.hero{padding:120px 20px 88px}.hero-title{font-size:clamp(46px,13vw,82px);letter-spacing:-.045em}.hero-lead{max-width:34rem;margin-top:18px;font-size:16px}.hero .hero-actions{gap:10px;margin-top:22px}.hero .hero-actions .btn{min-height:46px;padding:12px 16px;letter-spacing:.14em}}
     @media (prefers-reduced-motion: reduce){.hero{animation:none}.hero-aperture,.hero-glow{animation:none}.hero-title .word{transition:none}}
 

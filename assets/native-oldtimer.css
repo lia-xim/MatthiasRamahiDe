@@ -47,7 +47,7 @@
      box-sizing:border-box (oben global) verhindert, dass das Padding auf
      100svh aufaddiert und der Hero überläuft. */
   .hero{--hero-accent:var(--accent);position:relative;height:100svh;min-height:600px;max-height:100svh;display:grid;align-items:end;padding:clamp(120px,14vw,180px) clamp(22px,5vw,76px) clamp(48px,7vw,96px);overflow:hidden;isolation:isolate;background:#0a0a0a center/cover no-repeat;background-image:var(--hero-bg-desktop,none);cursor:none;color:#f4f1ea}
-  .hero-bg{position:absolute;inset:-3%;z-index:0;pointer-events:none;background:var(--hero-bg-desktop,none) center/cover no-repeat;transform:translate3d(0,0,0) scale(1.035);will-change:transform}
+  .hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none;background:var(--hero-bg-desktop,none) center/cover no-repeat;transform:translate3d(0,0,0) scale(1);will-change:transform}
   .hero canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;display:block;opacity:0;transition:opacity .45s var(--ease)}
   .hero canvas.is-ready{opacity:1}
   .hero:before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(2,2,4,.36) 0%,rgba(2,2,4,0) 22%,rgba(2,2,4,0) 50%,rgba(2,2,4,.60) 84%,rgba(2,2,4,.86) 100%)}
@@ -82,8 +82,8 @@
   .hero-cursor.is-pressed{transform:translate(-50%,-50%) scale(.68);border-color:#fff}
   .hero-cursor.is-pressed .ring{inset:-18px;border-color:rgba(244,241,234,.35)}
   .hero a,.hero button{cursor:pointer}
-  @media (hover:none),(pointer:coarse),(max-width:900px){.hero{cursor:auto;background-image:var(--hero-bg-mobile,var(--hero-bg-desktop,none));animation:none}.hero-bg{background-image:var(--hero-bg-mobile,var(--hero-bg-desktop,none));animation:heroPanMobile 34s var(--ease) infinite alternate}.hero canvas{display:none}.hero-cursor{display:none}}
-  @keyframes heroPanMobile{from{transform:translate3d(-1.3%,0,0) scale(1.055)}to{transform:translate3d(1.3%,0,0) scale(1.055)}}
+  @media (hover:none),(pointer:coarse),(max-width:900px){.hero{cursor:auto;background-image:var(--hero-bg-mobile,var(--hero-bg-desktop,none));animation:none}.hero-bg{background-image:var(--hero-bg-mobile,var(--hero-bg-desktop,none));transform:translate3d(0,0,0) scale(1.055);animation:heroPanMobile 34s var(--ease) infinite alternate}.hero canvas{display:none}.hero-cursor{display:none}}
+  @keyframes heroPanMobile{from{transform:translate3d(0,0,0) scale(1.055)}to{transform:translate3d(1.3%,0,0) scale(1.055)}}
 
   /* ============ STATEMENT ============ */
   .st{background:var(--paper);color:var(--ink);min-height:64svh;max-height:68svh;display:flex;align-items:center;overflow:hidden;position:relative}

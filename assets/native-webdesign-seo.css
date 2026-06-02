@@ -65,7 +65,7 @@ img{display:block;max-width:100%;height:auto}
 .hero-cursor.is-pressed .ring{inset:-18px;border-color:rgba(243,245,239,.35)}
 .hero a,.hero button{cursor:pointer}
 @media (hover:none),(pointer:coarse),(max-width:900px){.hero{cursor:auto;animation:heroPanMobile 34s var(--ease) infinite alternate}.hero canvas{display:none}.hero-cursor{display:none}}
-@keyframes heroPanMobile{from{background-position:46% 50%}to{background-position:54% 50%}}
+@keyframes heroPanMobile{from{background-position:50% 50%}to{background-position:54% 50%}}
 
 /* ===== STATEMENT (light) ============================================== */
 .ws-statement{background:var(--paper);color:var(--ink)}

@@ -128,12 +128,11 @@
     /* proper "cover" sampling: shrink the sampled UV range along the
        overflow axis so the image fills the canvas without stretch.    */
     vec2 scale=(canvasRatio>imgRatio) ? vec2(1.0, imgRatio/canvasRatio) : vec2(canvasRatio/imgRatio, 1.0);
-    /* continuous ken-burns: time-based slow drift that never stops and
-       never resets between slides. Both slots use identical motion, so
-       the promote moment cannot cause a visible jump. kb is elapsed
-       seconds since hero load. */
-    float kbScale=1.045 + 0.045*sin(kb*0.15);
-    vec2 kbPan=vec2(sin(kb*0.22)*0.055, cos(kb*0.17)*0.042);
+    /* Start pixel-aligned with the CSS background, then grow into motion.
+       That keeps reloads from snapping when the canvas takes over. */
+    float kbScale=1.0 + 0.075*(1.0-exp(-kb*0.095));
+    float panReady=smoothstep(0.0, 6.0, kb);
+    vec2 kbPan=panReady*vec2(sin(kb*0.22)*0.052, sin(kb*0.17)*0.040);
     vec2 q=(uv-0.5) * scale / kbScale + kbPan;
     q+=0.5;
     q.y=1.0-q.y;
@@ -283,6 +282,8 @@
     return new Promise(res=>{
       if(cache[idx]){res(cache[idx]);return;}
       const im=new Image(); im.crossOrigin='anonymous';
+      im.decoding='async';
+      im.fetchPriority=idx===0?'high':'low';
       im.onload=()=>{cache[idx]={img:im,w:im.naturalWidth||im.width,h:im.naturalHeight||im.height};res(cache[idx]);};
       im.onerror=()=>{cache[idx]={img:null,w:1,h:1};res(cache[idx]);};
       im.src=slides[idx].url;
@@ -303,15 +304,19 @@
   let targetReady=0, ready=0;
   let mix=0, targetMix=0;
   let transitioning=false;
-  const heroStartT=performance.now();
+  let heroStartT=performance.now();
 
   /* boot - load first image into slot A, second into slot B */
   loadImage(0).then(entry=>{
     if(!entry) return;
     irA={w:entry.w,h:entry.h};
     gl.activeTexture(gl.TEXTURE0); uploadInto(texA, entry);
-    canvas.classList.add('is-ready');
+    heroStartT=performance.now();
+    ready=1;
     targetReady=1;
+    requestAnimationFrame(()=>{
+      requestAnimationFrame(()=>canvas.classList.add('is-ready'));
+    });
   });
   const loadNextSlot = () => {
     loadImage(1%slides.length).then(entry=>{
@@ -544,9 +549,8 @@
     /* shutter decay */
     shutter*=0.88;
 
-    /* continuous ken-burns clock: seconds since hero load. The shader
-       drives slow sinusoidal pan + zoom from this so motion never stops
-       and never resets between slides. */
+    /* continuous ken-burns clock: starts exactly when the first image
+       is uploaded, so the CSS fallback and first canvas frame align. */
     const kbT=(now-heroStartT)/1000;
 
     /* auto-cycle */
@@ -579,8 +583,7 @@
       if ('requestAnimationFrame' in window) requestAnimationFrame(startHeroShader);
       else setTimeout(startHeroShader, 0);
     };
-    if ('requestIdleCallback' in window) requestIdleCallback(start, { timeout: 2400 });
-    else setTimeout(start, 900);
+    start();
   };
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', bootHeroShader, { once: true });
