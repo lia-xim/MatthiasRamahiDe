@@ -60,7 +60,7 @@
   .sec-light .kicker{color:var(--accent-2)}
 
   /* ============ HERO — full-bleed name over photo, mouse-reveal shader ============ */
-  .hero{position:relative;height:100svh;min-height:600px;max-height:100svh;display:grid;align-items:end;padding:clamp(120px,14vw,180px) clamp(22px,5vw,76px) clamp(48px,7vw,96px);overflow:hidden;isolation:isolate;background:#05070b url('optimized/mpik8b82-dsc3879-1280.webp') center/cover no-repeat;cursor:none;color:#f3f5ef}
+  .hero{position:relative;height:100svh;min-height:600px;max-height:100svh;display:grid;align-items:end;padding:clamp(120px,14vw,180px) clamp(22px,5vw,76px) clamp(48px,7vw,96px);overflow:hidden;isolation:isolate;background:#05070b url('optimized/mpik8b82-dsc3879-1280.webp') center/cover no-repeat;cursor:auto;color:#f3f5ef}
   .hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none;background:var(--hero-bg,url('optimized/mpik8b82-dsc3879-1280.webp')) center/cover no-repeat;transform:translate3d(0,0,0) scale(1);will-change:transform;animation:heroBgKenBurns 38s var(--ease) infinite alternate}
   .hero-shader-preload{position:absolute;left:0;top:0;width:1px;height:1px;opacity:0;pointer-events:none}
   .hero canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;display:block;opacity:0;transition:opacity .18s linear}
