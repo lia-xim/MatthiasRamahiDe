@@ -116,7 +116,7 @@
   .hero-actions .btn.dark{background:#f3f5ef;color:#090b10;border-color:#f3f5ef}
   .hero-actions .btn:hover{background:#f3f5ef;color:#090b10;border-color:#f3f5ef}
 
-  .hero-cursor{position:fixed;top:0;left:0;width:64px;height:64px;border:1px solid rgba(243,245,239,.78);border-radius:50%;pointer-events:none;z-index:60;transform:translate(-50%,-50%) scale(.6);mix-blend-mode:difference;transition:opacity .35s ease,transform .45s var(--ease),border-color .35s ease;opacity:0;will-change:transform}
+  .hero-cursor{position:fixed;top:0;left:0;width:64px;height:64px;border:1px solid rgba(243,245,239,.78);border-radius:50%;pointer-events:none;z-index:60;transform:translate(-50%,-50%) scale(.6);box-shadow:0 0 8px rgba(5,7,11,.5);transition:opacity .35s ease,transform .45s var(--ease),border-color .35s ease;opacity:0;will-change:transform}
   .hero-cursor:before,.hero-cursor:after{content:"";position:absolute;top:50%;left:50%;background:rgba(243,245,239,.85)}
   .hero-cursor:before{width:1px;height:14px;transform:translate(-50%,-50%)}
   .hero-cursor:after{width:14px;height:1px;transform:translate(-50%,-50%)}

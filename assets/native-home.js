@@ -514,7 +514,7 @@
   const start=performance.now();
   const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
   const coarsePointer=window.matchMedia&&window.matchMedia('(hover:none), (pointer:coarse)').matches;
-  const targetFrameMs=coarsePointer ? 1000/24 : 0;
+  const targetFrameMs=coarsePointer ? 1000/24 : 1000/45;
   let lastDraw=0;
 
   function frame(){
