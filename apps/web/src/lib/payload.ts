@@ -249,6 +249,97 @@ type FetchOptions = {
 const productionSiteUrl = 'https://matthiasramahi.de'
 const productionPayloadUrl = 'https://cms.matthiasramahi.de'
 
+const cachedCmsAssetMap: Array<[RegExp, string]> = [
+  [/^mpissxxj-portfolio_webp_full_063-1\.webp$/i, '/assets/optimized/mpissxxj-portrait-960.webp'],
+  [/^assets-photos-oldtimer-stage-1920-760x507\.webp$/i, '/assets/optimized/assets-photos-oldtimer-stage-960.webp'],
+  [/^assets-photos-motorrad-1920-760x1140\.webp$/i, '/assets/optimized/assets-photos-motorrad-720.webp'],
+  [/^assets-photos-automobil-neon-1920-\d+x\d+\.webp$/i, '/assets/optimized/assets-photos-automobil-neon-480.webp'],
+  [/^assets-photos-automobil-neon-1920\.webp$/i, '/assets/optimized/assets-photos-automobil-neon-1920.webp'],
+  [/^assets-photos-automobil-sunset-1920-\d+x\d+\.webp$/i, '/assets/optimized/assets-photos-automobil-sunset-480.webp'],
+  [/^assets-photos-automobil-sunset-1920\.webp$/i, '/assets/optimized/assets-photos-automobil-sunset-1920.webp'],
+  [/^assets-photos-landschaft-1920-\d+x\d+\.webp$/i, '/assets/optimized/assets-photos-landschaft-480.webp'],
+  [/^assets-photos-landschaft-1920\.webp$/i, '/assets/optimized/assets-photos-landschaft-1920.webp'],
+  [/^assets-photos-motorrad-1920-\d+x\d+\.webp$/i, '/assets/optimized/assets-photos-motorrad-720.webp'],
+  [/^assets-photos-motorrad-1920\.webp$/i, '/assets/optimized/assets-photos-motorrad-1920.webp'],
+  [/^assets-photos-motorrad-ninja-road-1920-\d+x\d+\.webp$/i, '/assets/optimized/assets-photos-motorrad-ninja-road-720.webp'],
+  [/^assets-photos-motorrad-ninja-road-1920\.webp$/i, '/assets/optimized/assets-photos-motorrad-ninja-road-1920.webp'],
+  [/^assets-photos-motorrad-duke-1920-\d+x\d+\.webp$/i, '/assets/optimized/assets-photos-motorrad-duke-720.webp'],
+  [/^assets-photos-motorrad-duke-1920\.webp$/i, '/assets/optimized/assets-photos-motorrad-duke-1920.webp'],
+  [/^assets-photos-oldtimer-stage-1920-\d+x\d+\.webp$/i, '/assets/optimized/assets-photos-oldtimer-stage-640.webp'],
+  [/^assets-photos-oldtimer-stage-1920\.webp$/i, '/assets/optimized/assets-photos-oldtimer-stage-1920.webp'],
+  [/^portrait-warm-\d+x\d+\.webp$/i, '/assets/optimized/assets-photos-portrait-warm-480.webp'],
+  [/^portrait-warm\.webp$/i, '/assets/optimized/assets-photos-portrait-warm-960.webp'],
+  [/^portrait-blue-\d+x\d+\.webp$/i, '/assets/optimized/assets-photos-portrait-blue-720.webp'],
+  [/^assets-portfolio-dsc3879-1920-\d+x\d+\.webp$/i, '/assets/portfolio/thumbs/_DSC3879.webp'],
+  [/^assets-portfolio-dsc3879-1920\.webp$/i, '/assets/optimized/assets-portfolio-dsc3879-1920.webp'],
+  [/^assets-portfolio-dsc3982-1920-\d+x\d+\.webp$/i, '/assets/portfolio/thumbs/_DSC3982.webp'],
+  [/^assets-portfolio-dsc3982-1920\.webp$/i, '/assets/optimized/assets-portfolio-dsc3982-1920.webp'],
+  [/^assets-portfolio-dsc3892-1920-\d+x\d+\.webp$/i, '/assets/portfolio/thumbs/_DSC3892.webp'],
+  [/^assets-portfolio-dsc3892-1920\.webp$/i, '/assets/optimized/assets-portfolio-dsc3892-1920.webp'],
+  [/^assets-portfolio-dsc2986-1920-\d+x\d+\.webp$/i, '/assets/portfolio/thumbs/_DSC2986.webp'],
+  [/^assets-portfolio-dsc2986-1920\.webp$/i, '/assets/optimized/assets-portfolio-dsc2986-1920.webp'],
+  [/^_DSC0470-Enhanced-NR-\d+x\d+\.webp$/i, '/assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp'],
+  [/^_DSC0470-Enhanced-NR\.webp$/i, '/assets/portraits/_DSC0470-Enhanced-NR.webp'],
+  [/^_DSC9301-Enhanced-NR-\d+x\d+\.webp$/i, '/assets/portfolio/thumbs/_DSC9301-Enhanced-NR.webp'],
+  [/^_DSC9301-Enhanced-NR\.webp$/i, '/assets/portfolio/_DSC9301-Enhanced-NR.webp'],
+  [/^_DSC9321-Enhanced-NR-\d+x\d+\.webp$/i, '/assets/portfolio/thumbs/_DSC9321-Enhanced-NR.webp'],
+  [/^_DSC9321-Enhanced-NR\.webp$/i, '/assets/portfolio/_DSC9321-Enhanced-NR.webp'],
+  [/^Wettberwerb_Foto5_Wunder_der_Natur2-\d+x\d+\.webp$/i, '/assets/portfolio/thumbs/Wettberwerb_Foto5_Wunder_der_Natur2.webp'],
+  [/^Wettberwerb_Foto5_Wunder_der_Natur2\.webp$/i, '/assets/portfolio/Wettberwerb_Foto5_Wunder_der_Natur2.webp'],
+  [/^Wettberwerb_Foto6_Wunder_der_Natur(?:-\d+x\d+)?\.webp$/i, '/assets/portfolio/thumbs/Wettberwerb_Foto6_Wunder_der_Natur.webp'],
+  [/^20250327-DSC01550(?:-\d+x\d+)?\.webp$/i, '/assets/portfolio/thumbs/20250327-DSC01550.webp'],
+  [/^20250605-DSC03756(?:-\d+x\d+)?\.webp$/i, '/assets/portfolio/thumbs/20250605-DSC03756.webp'],
+  [/^20250605-DSC04020(?:-\d+x\d+)?\.webp$/i, '/assets/portfolio/thumbs/20250605-DSC04020.webp'],
+  [/^_DSC2310(?:-\d+x\d+)?\.webp$/i, '/assets/portfolio/thumbs/_DSC2310.webp'],
+  [/^_DSC2316(?:-\d+x\d+)?\.webp$/i, '/assets/portfolio/thumbs/_DSC2316.webp'],
+  [/^_DSC2345(?:-\d+x\d+)?\.webp$/i, '/assets/portfolio/thumbs/_DSC2345.webp'],
+  [/^_DSC2358(?:-\d+x\d+)?\.webp$/i, '/assets/portfolio/thumbs/_DSC2358.webp'],
+  [/^_DSC2986(?:-\d+x\d+)?\.webp$/i, '/assets/portfolio/thumbs/_DSC2986.webp'],
+  [/^_DSC2876_genErase \(1\)(?:-\d+x\d+)?\.webp$/i, '/assets/portfolio/thumbs/_DSC2876_genErase%20%281%29.webp'],
+  [/^_DSC3032_genErase \(1\)(?:-\d+x\d+)?\.webp$/i, '/assets/portfolio/thumbs/_DSC3032_genErase%20%281%29.webp'],
+  [/^_DSC3032_genErase \(2\)(?:-\d+x\d+)?\.webp$/i, '/assets/portfolio/thumbs/_DSC3032_genErase%20%282%29.webp'],
+  [/^_DSC3892(?:-\d+x\d+)?\.webp$/i, '/assets/portfolio/thumbs/_DSC3892.webp'],
+  [/^_DSC3878(?:-\d+x\d+)?\.webp$/i, '/assets/portfolio/thumbs/_DSC3878.webp'],
+  [/^_DSC3908(?:-\d+x\d+)?\.webp$/i, '/assets/portfolio/thumbs/_DSC3908.webp'],
+  [/^_DSC3982(?:-\d+x\d+)?\.webp$/i, '/assets/portfolio/thumbs/_DSC3982.webp'],
+  [/^_DSC6982(?:-\d+x\d+)?\.webp$/i, '/assets/portfolio/thumbs/_DSC6982.webp'],
+  [/^_DSC8032(?:-\d+x\d+)?\.webp$/i, '/assets/portfolio/thumbs/_DSC8032.webp'],
+  [/^catoir_ramahiinuikiim21(?:-\d+x\d+)?\.webp$/i, '/assets/services/catoir_ramahiinuikiim21-720.webp'],
+  [/^portfolio_webp_full_001(?:-\d+x\d+)?\.webp$/i, '/assets/services/portfolio_webp_full_001.webp'],
+  [/^portfolio_webp_full_004-2(?:-\d+x\d+)?\.webp$/i, '/assets/services/portfolio_webp_full_004-2.webp'],
+  [/^portfolio_webp_full_005-2(?:-\d+x\d+)?\.webp$/i, '/assets/services/portfolio_webp_full_005-2.webp'],
+  [/^portfolio_webp_full_006-1(?:-\d+x\d+)?\.webp$/i, '/assets/services/portfolio_webp_full_006-1.webp'],
+  [/^portfolio_webp_full_057-1(?:-\d+x\d+)?\.webp$/i, '/assets/services/portfolio_webp_full_057-1.webp'],
+  [/^portfolio_webp_full_058-1(?:-\d+x\d+)?\.webp$/i, '/assets/services/portfolio_webp_full_058-1.webp'],
+  [/^portfolio_webp_full_254(?:-\d+x\d+)?\.webp$/i, '/assets/services/portfolio_webp_full_254.webp'],
+  [/^Catoir_Ramahi-1-106-768x512-1(?:-\d+x\d+)?\.webp$/i, '/assets/services/Catoir_Ramahi-1-106-768x512-1.webp'],
+  [/^Catoir_Ramahi-1-32-768x512-1(?:-\d+x\d+)?\.webp$/i, '/assets/services/Catoir_Ramahi-1-32-768x512-1.webp'],
+  [/^fea8218e-7546-48ef-8581-2b99bb3cdefe_centered_reduced(?:-\d+x\d+)?\.webp$/i, '/assets/services/fea8218e-7546-48ef-8581-2b99bb3cdefe_centered_reduced.webp'],
+  [/^screencapture-gr-knospe-de-2025-10-02-23_10_04(?:-scaled)?(?:-\d+x\d+)?\.webp$/i, '/assets/services/screencapture-gr-knospe-de-2025-10-02-23_10_04-720.webp'],
+]
+
+export const cachedCmsAssetPath = (url?: string) => {
+  if (!url) return ''
+  let file = url.split('#')[0].split('?')[0].split('/').pop() || ''
+  try {
+    file = decodeURIComponent(file)
+  } catch {
+    // Keep the original filename if it is not safely decodable.
+  }
+  file = file.replace(/&#34;$/i, '').trim()
+  return cachedCmsAssetMap.find(([pattern]) => pattern.test(file))?.[1] || ''
+}
+
+const assetWidthFromUrl = (url: string) => {
+  const file = url.split('/').pop() || ''
+  const explicitWidth = file.match(/-(360|480|640|720|760|960|1100|1280|1920|2048|2560)\.(?:avif|jpe?g|png|webp)$/i)?.[1]
+  if (explicitWidth) return Number(explicitWidth)
+  if (url.includes('/thumbs/')) return 720
+  if (url.includes('/marquee/')) return 720
+  if (url.includes('/assets/services/')) return 768
+  return 0
+}
+
 const apiBase = () => {
   const configured = import.meta.env.PAYLOAD_PUBLIC_SERVER_URL || (import.meta.env.PROD ? productionPayloadUrl : 'http://localhost:3000')
   if (import.meta.env.PROD && /https?:\/\/(?:localhost|127\.0\.0\.1)(?::\d+)?/i.test(configured)) return productionPayloadUrl
@@ -434,6 +525,8 @@ export async function getLegacyBackedDoc(legacyFile: string, options: ListOption
 
 export const toAbsolutePayloadUrl = (url?: string) => {
   if (!url) return ''
+  const cachedAsset = cachedCmsAssetPath(url)
+  if (cachedAsset) return toAbsoluteSiteUrl(cachedAsset)
   if (/^https?:\/\//i.test(url)) {
     try {
       const parsed = new URL(url)
@@ -519,6 +612,8 @@ export const linkAttributes = (link?: PayloadLink | null) => {
 
 export const toDisplayAssetUrl = (url?: string) => {
   if (!url) return ''
+  const cachedAsset = cachedCmsAssetPath(url)
+  if (cachedAsset) return cachedAsset
   if (/^https?:\/\//i.test(url)) {
     try {
       const parsed = new URL(url)
@@ -647,9 +742,10 @@ export const imageSrcset = (
     .map((size) => {
       const selected = bestSize(media, size, format)
       const url = selected ? media.sizes?.[selected]?.url : undefined
-      if (!selected || !url || seen.has(url)) return ''
-      seen.add(url)
-      return `${toAbsolutePayloadUrl(url)} ${sizeWidths[selected] || sizeWidths[size] || 1600}w`
+      const displayUrl = url ? toDisplayAssetUrl(url) : ''
+      if (!selected || !displayUrl || seen.has(displayUrl)) return ''
+      seen.add(displayUrl)
+      return `${displayUrl} ${assetWidthFromUrl(displayUrl) || sizeWidths[selected] || sizeWidths[size] || 1600}w`
     })
     .filter(Boolean)
     .join(', ')

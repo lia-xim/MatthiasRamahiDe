@@ -12,7 +12,7 @@ const metaDescription =
   'Werbetechnik in Düsseldorf: Schaufenster, Pop-ups, Brand-Booths, Promotionflächen und LED-Lichtwerbung — Markenerlebnisse seit 35 Jahren, mit erfahrenen Partnerwerkstätten.'
 
 // Markenerlebnisse — kuratierte Arbeits-Galerie. 6 Bilder => sauberer Abschluss in
-// 2 Spalten (mobil) wie in 3 Spalten (desktop), kein Einzelbild als Rest. Caption = N°-Index.
+// 2 Spalten (mobil) wie in 3 Spalten (desktop), kein Einzelbild als Rest.
 const works = [
   { image: '/assets/services/werbetechnik/dior.webp', alt: 'Schaufenster-Installation für eine Premium-Marke', w: 400, h: 271 },
   { image: '/assets/services/werbetechnik/byredo.webp', alt: 'Schaufenster mit Skulptur-Display', w: 400, h: 271 },
@@ -24,9 +24,9 @@ const works = [
 
 // Ablauf — drei verbundene Stationen vom Entwurf bis zum fertigen Aufbau.
 const flowSteps = [
-  { number: '01', title: 'Vorlauf.', body: 'Visualisierung am Foto der Fläche, des Schaufensters oder des Standorts — entschieden wird am Bild, nicht erst am fertigen Aufbau.' },
-  { number: '02', title: 'Material.', body: 'Folien, aber genauso dreidimensionale Aufbauten, Displays und Sonderanfertigungen — Materialwahl und -check passend zu Auftritt und Standort.' },
-  { number: '03', title: 'Montage.', body: 'Aufbau und Vor-Ort-Montage im Rheinland und darüber hinaus — sauber abgestimmt, mit Endabnahme an der fertigen Fläche.' },
+  { title: 'Vorlauf.', body: 'Visualisierung am Foto der Fläche, des Schaufensters oder des Standorts — entschieden wird am Bild, nicht erst am fertigen Aufbau.' },
+  { title: 'Material.', body: 'Folien, aber genauso dreidimensionale Aufbauten, Displays und Sonderanfertigungen — Materialwahl und -check passend zu Auftritt und Standort.' },
+  { title: 'Montage.', body: 'Aufbau und Vor-Ort-Montage im Rheinland und darüber hinaus — sauber abgestimmt, mit Endabnahme an der fertigen Fläche.' },
 ]
 
 // Hero = der Landing-Page-Shader-Hero (WebGL/Ken-Burns/Lens-Cursor), aber mit
@@ -84,7 +84,7 @@ const heroSlidesJson = JSON.stringify(heroSlides)
           </p>
         </div>
         <div class="wt-work__grid">
-          {works.map((work, i) => (
+          {works.map((work) => (
             <figure class="wt-figure">
               <div class="wt-figure__img">
                 <img
@@ -96,7 +96,6 @@ const heroSlidesJson = JSON.stringify(heroSlides)
                   decoding="async"
                 />
               </div>
-              <figcaption class="wt-figure__cap"><b>N° {String(i + 1).padStart(2, '0')}</b></figcaption>
             </figure>
           ))}
         </div>
@@ -118,7 +117,6 @@ const heroSlidesJson = JSON.stringify(heroSlides)
         <ol class="wt-flow__track" role="list">
           {flowSteps.map((step) => (
             <li class="wt-flow__step">
-              <p class="wt-flow__step-num">Schritt {step.number}</p>
               <h3 class="wt-flow__step-title">{step.title}</h3>
               <p class="wt-flow__step-body">{step.body}</p>
             </li>

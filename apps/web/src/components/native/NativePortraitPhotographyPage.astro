@@ -196,31 +196,26 @@ const focusModuleLead =
 const defaultPortraitFocusCards = [
   {
     visualIndex: 4,
-    label: '01 · Personal Brand',
     title: 'Founder & Speaker',
     text: 'Selbststaendige, Coaches, Speaker, Founder - ein Bild, das wirkt, ohne sich aufzudraengen.',
   },
   {
     visualIndex: 5,
-    label: '02 · Team',
     title: 'Agentur & Kanzlei',
     text: 'Agenturen, Kanzleien, Praxen, Marken - eine konsistente Bildsprache, ohne jeden Charakter zu glaetten.',
   },
   {
     visualIndex: 6,
-    label: '03 · Editorial',
     title: 'Magazin & Strecke',
     text: 'Magazine, Bildstrecken, Kuenstler-Features - Portraits mit Haltung und Erzaehlung statt Pose.',
   },
   {
     visualIndex: 7,
-    label: '04 · Presse',
     title: 'Headshot & Profil',
     text: 'Pressefotos, Headshots, Bewerbung, Profil - klare, ruhige Bilder fuer den professionellen Auftritt.',
   },
   {
     visualIndex: 8,
-    label: '05 · Kampagne',
     title: 'Cover & Konzept',
     text: 'Marken-Portraits, Cover, Konzept-Strecken - inszenierte Bilder mit einem klaren Standpunkt.',
   },
@@ -228,10 +223,10 @@ const defaultPortraitFocusCards = [
 const portraitFocusCards = defaultPortraitFocusCards.map((card, index) => {
   const cmsCard = doc?.shootingStyles?.[index] || doc?.audienceCards?.[index]
   const override = cmsCard
-    ? { label: cmsText('number' in cmsCard ? cmsCard.number : '') || card.label, title: cmsText(cmsCard.title), text: cmsText(cmsCard.text) }
+    ? { title: cmsText(cmsCard.title), text: cmsText(cmsCard.text) }
     : keywordFocusCopy?.cards?.[index]
 
-  return override ? { ...card, label: override.label || card.label, title: override.title || card.title, text: override.text || card.text } : card
+  return override ? { ...card, title: override.title || card.title, text: override.text || card.text } : card
 })
 
 const focusProcessHeadline = isLocalHeroPage ? `Ablauf ${scope.label}.` : isKeywordPage ? `Ablauf ${serviceLabel}.` : keywordFocusCopy?.processHeadline || 'Ablauf.'
@@ -374,7 +369,6 @@ const focusRelatedLead =
           <article class="mod-pt__card">
             <div class="mod-pt__img" style={`background-image:url('${visualSlots[card.visualIndex].cssSrc}')`}></div>
             <div class="mod-pt__body">
-              <span class="mod-pt__num">{card.label}</span>
               <h3 class="mod-pt__name">{card.title}</h3>
               <p class="mod-pt__desc">{card.text}</p>
             </div>
@@ -408,9 +402,8 @@ const focusRelatedLead =
           <p class="fw-pt__lead">{focusProcessLead}</p>
         </div>
         <ul class="fw-pt__list">
-          {portraitProcessSteps.map((step, index) => (
+          {portraitProcessSteps.map((step) => (
             <li class="fw-pt__row">
-              <span class="fw-pt__num">{String(index + 1).padStart(2, '0')}</span>
               <div class="fw-pt__thumb" style={`background-image:url('${visualSlots[step.visualIndex].cssSrc}')`} role="img" aria-label={step.imageLabel}></div>
               <h3 class="fw-pt__name">{step.title}</h3>
               <p class="fw-pt__copy">{step.text}</p>

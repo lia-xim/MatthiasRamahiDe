@@ -156,7 +156,7 @@
   .chapter .img{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--panel)}
   .chapter .img img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease),filter 1.4s var(--ease);filter:grayscale(.15) contrast(1.03) brightness(.92)}
   .chapter:hover .img img{transform:scale(1.04);filter:grayscale(0) contrast(1.06) brightness(1)}
-  .chapter .head{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+  .chapter .head{display:flex;justify-content:flex-start;align-items:baseline;gap:12px}
   .chapter h3{font-size:clamp(22px,2vw,30px);line-height:1.02;letter-spacing:-.035em;text-transform:uppercase;font-weight:850}
   .chapter .num{font:10px var(--mono);letter-spacing:.24em;text-transform:uppercase;color:var(--accent);opacity:1}
   .chapter .meta{display:flex;justify-content:space-between;align-items:center;gap:14px;font:10px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:#dce2df}
@@ -236,7 +236,7 @@
   .services-head h2 em{font-style:normal;color:var(--accent-2)}
   .services-head .lead{color:var(--muted-l);max-width:42ch;text-align:right;justify-self:end;font-size:clamp(14px,1.06vw,17px);line-height:1.55}
   .services-list{border-top:1px solid var(--ink);border-bottom:1px solid var(--line-l)}
-  .service-row{display:grid;grid-template-columns:72px minmax(220px,1fr) 2fr 100px;align-items:center;gap:clamp(16px,2vw,32px);padding:clamp(22px,2.4vw,34px) 0;border-bottom:1px solid var(--line-l);transition:transform .35s var(--ease)}
+  .service-row{display:grid;grid-template-columns:minmax(220px,1fr) 2fr 100px;align-items:center;gap:clamp(16px,2vw,32px);padding:clamp(22px,2.4vw,34px) 0;border-bottom:1px solid var(--line-l);transition:transform .35s var(--ease)}
   .service-row:last-child{border-bottom:0}
   .service-row:hover{transform:translateX(18px);background:linear-gradient(90deg,rgba(10,12,17,.025),transparent 60%)}
   .service-row .num{font:10px var(--mono);letter-spacing:.22em;text-transform:uppercase;color:#3f4c49;font-weight:700}
@@ -327,7 +327,7 @@
     .pf-tile.--t{width:clamp(180px,22vw,260px)}
     .pf-tile.--s{width:clamp(200px,24vw,280px)}
     .about .section-inner{grid-template-columns:1fr;gap:40px}
-    .service-row{grid-template-columns:54px 1fr 100px}.service-row p{grid-column:2 / 3;margin-top:8px}.service-row .arr{grid-column:3 / 4}
+    .service-row{grid-template-columns:minmax(220px,1fr) 2fr 100px}.service-row p{grid-column:2 / 3;margin-top:8px}.service-row .arr{grid-column:3 / 4}
     .blog-grid{grid-template-columns:1fr;gap:36px}.post{padding-bottom:32px;border-bottom:1px solid var(--line)}.post:last-child{padding-bottom:0;border-bottom:0}
     .mr-footer{padding:32px 5vw 22px}
     .mr-footer__top{grid-template-columns:1fr;align-items:start;gap:18px}
@@ -346,9 +346,7 @@
     .chapter .img{aspect-ratio:1/1}
     .chapter .head{gap:8px}
     .chapter h3{font-size:15px}
-    .chapter .num{font-size:8.5px;letter-spacing:.16em}
     .chapter .meta{font-size:8px;letter-spacing:.1em;gap:8px}
-    .chapter .meta > span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
     /* Portfolio-Strom: nur eine Reihe auf dem Handy (weniger Höhe, leichter für die CPU) */
     .pf-row.row-2{display:none}
     .pf-tile.--ww{width:78vw}
@@ -359,8 +357,7 @@
     .pf-row.row-1 .pf-track{animation-duration:77s}
     .pf-head h2 .num{position:static;display:block;margin-top:14px}
     /* Leistungen: kompakte Liste — Beschreibungstext aus, nur Nr · Titel · Detail in einer Zeile */
-    .service-row{grid-template-columns:auto 1fr auto;align-items:center;gap:12px 14px;padding:16px 0}
-    .service-row .num{align-self:center}
+    .service-row{grid-template-columns:1fr auto;align-items:center;gap:12px 14px;padding:16px 0}
     .service-row h3{font-size:16px;letter-spacing:-.02em}
     .service-row p{display:none}
     .service-row .arr{justify-self:end;margin-top:0}

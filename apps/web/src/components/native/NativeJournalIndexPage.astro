@@ -23,12 +23,6 @@ const categoryToFilter: Record<string, string> = {
   'behind-the-scenes': 'prozess',
   'landscape-print': 'print',
 }
-const categoryLabels: Record<string, string> = {
-  automotive: 'Automotive',
-  portrait: 'Portrait',
-  prozess: 'Prozess',
-  print: 'Druck',
-}
 const cmsCards = cmsPosts
   .map((post, index): JournalPostCard | null => {
     const slug = post.slug || ''
@@ -112,10 +106,6 @@ const initialVisiblePostCount = 6
             />
           </figure>
           <div class="featured__copy">
-            <div class="featured__meta">
-              <span>{categoryLabels[featured.category] || 'Automotive'}</span>
-              <span>{featured.readTime}</span>
-            </div>
             <h2 class="featured__title">{featured.title}</h2>
             <p class="featured__excerpt">{featured.text}</p>
             <span class="featured__go">Beitrag lesen</span>
@@ -153,7 +143,6 @@ const initialVisiblePostCount = 6
               />
             </div>
             <div class="post-body">
-              <div class="post-meta"><span>{categoryLabels[post.category] || (post.title.startsWith('Oldtimer') ? 'Oldtimer' : post.title.startsWith('Linien') ? 'Motorrad' : 'Automotive')}</span><span>{post.readTime}</span></div>
               <h3>{post.title}</h3>
               <p>{post.text}</p>
               <span class="post-go">Beitrag lesen</span>

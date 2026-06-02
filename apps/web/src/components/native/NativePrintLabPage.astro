@@ -17,17 +17,14 @@ const formatLabels = [
 
 const proofStages = [
   {
-    number: 'Stage 01',
     title: 'Datei-Vorbereitung.',
     body: 'RAW-Datei wird auf den finalen Bildausschnitt gebracht, Schärfung folgt dem Druckmaterial. 16-bit TIFF in Adobe RGB oder ProPhoto.',
   },
   {
-    number: 'Stage 02',
     title: 'Soft-Proof am Monitor.',
     body: 'Mit dem ICC-Profil des Zielpapiers wird simuliert, wie der Druck wirkt — Farb-Korrekturen werden vor dem Druck eingesteuert.',
   },
   {
-    number: 'Stage 03',
     title: 'Final &amp; Versand.',
     body: 'Druck in Endgröße, säurefreie Verpackung. Versand als Rohr oder Flachpaket, deutschlandweit innerhalb 48 h.',
   },
@@ -120,7 +117,6 @@ const heroSlidesJson = JSON.stringify(heroSlides)
         <ol class="lab-proof__track" role="list">
           {proofStages.map((stage) => (
             <li class="lab-proof__stage">
-              <p class="lab-proof__stage-num">{stage.number}</p>
               <h3 class="lab-proof__stage-title" set:html={stage.title}></h3>
               <p class="lab-proof__stage-body">{stage.body}</p>
             </li>

@@ -159,8 +159,6 @@ const galleryTiles = [
     alt: 'Ferrari F12 Berlinetta im Ausstellungsraum — Automobilfotografie',
     width: 720,
     height: 480,
-    left: '01 · Showroom',
-    right: 'NRW · 2025',
   },
   {
     className: 'bg-t-a',
@@ -169,8 +167,6 @@ const galleryTiles = [
     alt: 'Sportwagen-Cockpit mit Leder und Carbon — Interieur',
     width: 720,
     height: 900,
-    left: '02 · Cockpit',
-    right: 'Fotograf',
   },
   {
     className: 'bg-t-b',
@@ -179,8 +175,6 @@ const galleryTiles = [
     alt: 'Detail von Lack und Sicke an einem Automobil',
     width: 720,
     height: 480,
-    left: '03 · Detail',
-    right: 'NRW',
   },
   {
     className: 'bg-t-c',
@@ -189,8 +183,6 @@ const galleryTiles = [
     alt: 'Cineastische Automobilaufnahme bei Nacht',
     width: 720,
     height: 480,
-    left: '04 · Night',
-    right: 'Editorial',
   },
   {
     className: 'bg-t-d',
@@ -199,8 +191,6 @@ const galleryTiles = [
     alt: 'Automobil-Detail in Architektur',
     width: 720,
     height: 450,
-    left: '05 · Lines',
-    right: 'Architektur',
   },
   {
     className: 'bg-t-e',
@@ -209,8 +199,6 @@ const galleryTiles = [
     alt: 'Automobil — Showroom-Tiefschwarz',
     width: 720,
     height: 480,
-    left: '06 · Black',
-    right: 'Hall',
   },
   {
     className: 'bg-t-f',
@@ -219,8 +207,6 @@ const galleryTiles = [
     alt: 'Cineastische Aufnahme — Automobil in Bewegung',
     width: 720,
     height: 480,
-    left: '07 · Motion',
-    right: 'Rheinland',
   },
   {
     className: 'bg-t-g',
@@ -229,8 +215,6 @@ const galleryTiles = [
     alt: 'Automobil — Editorial-Frame im Tageslicht',
     width: 720,
     height: 1080,
-    left: '08 · Daylight',
-    right: 'Editorial',
   },
   {
     className: 'bg-t-h',
@@ -239,17 +223,15 @@ const galleryTiles = [
     alt: 'Automobil — Detail-Komposition',
     width: 720,
     height: 900,
-    left: '09 · Frame',
-    right: 'Fotograf',
   },
 ]
 
 const audiences = [
-  ['01', 'Privatkund·innen', 'Privat · Geschenk'],
-  ['02', 'Hersteller & Marken', 'Kampagne · CI'],
-  ['03', 'Autohäuser & Händler', 'Showroom · Serie'],
-  ['04', 'Clubs & Redaktionen', 'Magazin · Editorial'],
-  ['05', 'Sammler & Besitzer', 'Edition · Archiv'],
+  ['Privatkund·innen', 'Privat · Geschenk'],
+  ['Hersteller & Marken', 'Kampagne · CI'],
+  ['Autohäuser & Händler', 'Showroom · Serie'],
+  ['Clubs & Redaktionen', 'Magazin · Editorial'],
+  ['Sammler & Besitzer', 'Edition · Archiv'],
 ]
 
 const relatedAreas = [
@@ -259,7 +241,6 @@ const relatedAreas = [
     alt: 'Sportwagenfotografie',
     width: 720,
     height: 480,
-    meta: '01 / Verwandt',
     title: 'Sportwagen',
   },
   {
@@ -268,7 +249,6 @@ const relatedAreas = [
     alt: 'Oldtimerfotografie',
     width: 1920,
     height: 1280,
-    meta: '02 / Verwandt',
     title: 'Oldtimer',
   },
   {
@@ -277,7 +257,6 @@ const relatedAreas = [
     alt: 'Motorradfotografie',
     width: 1707,
     height: 2560,
-    meta: '03 / Verwandt',
     title: 'Motorrad',
   },
   {
@@ -286,7 +265,6 @@ const relatedAreas = [
     alt: 'Vollständiges Portfolio',
     width: 720,
     height: 480,
-    meta: '04 / Übersicht',
     title: 'Portfolio',
   },
 ]
@@ -330,8 +308,7 @@ const defaultSwitchCopy = [
     body: 'Inszenierte Perspektiven mit gesetztem Licht und gewaehlter Architektur. Bilder mit Filmcharakter - fuer Kampagne, Magazin und Bildstrecken, die Stimmung tragen.',
   },
 ]
-const localAudienceCards = doc?.audienceCards?.map((card, index) => ({
-  number: cmsText(card.number) || String(index + 1).padStart(2, '0'),
+const localAudienceCards = doc?.audienceCards?.map((card) => ({
   title: cmsText(card.title),
   text: cmsText(card.text),
 })).filter((card) => card.title || card.text) || []
@@ -367,9 +344,9 @@ const focusAudienceLead = keywordFocusCopy?.audienceLead || (!isParentPage && !i
   ? `Ob Showroom, privates Fahrzeug oder Kampagne: in ${scope.label} wird die Bildserie nach Nutzung, Standort und Ausgabe geplant.`
   : 'Du erkennst dich wieder?')
 const focusAudiences = localAudienceCards.length
-  ? localAudienceCards.map((card, index) => [card.number, card.title || `Zielgruppe ${index + 1}`, teaserText(card.text || 'Anfrage mit konkretem Fahrzeugbezug.', 130)])
+  ? localAudienceCards.map((card, index) => [card.title || `Zielgruppe ${index + 1}`, teaserText(card.text || 'Anfrage mit konkretem Fahrzeugbezug.', 130)])
   : keywordFocusCopy?.cards?.length
-  ? keywordFocusCopy.cards.map((card, index) => [String(index + 1).padStart(2, '0'), card.title, card.label || 'Shooting'])
+  ? keywordFocusCopy.cards.map((card) => [card.title, card.label || 'Shooting'])
   : audiences
 const focusRelatedLead =
   isLocalCityPage
@@ -555,9 +532,8 @@ const searchLinks = [
         </div>
 
         <div class="ki-grid">
-          {focusAudiences.map(([number, title, label]) => (
+          {focusAudiences.map(([title, label]) => (
             <a href="#anfrage" class="ki-card">
-              <span class="no">{number}</span>
               <h3>{title}</h3>
               <span class="lbl">{label}</span>
               <span class="arrow">→</span>
@@ -581,7 +557,7 @@ const searchLinks = [
             <a class="rl-card" href={area.href}>
               <img loading="lazy" src={area.image} alt={area.alt} width={area.width} height={area.height} decoding="async" />
               <div class="overlay"></div>
-              <div class="content"><div><span>{area.meta}</span><strong>{area.title}</strong></div><span class="arrow">→</span></div>
+              <div class="content"><div><strong>{area.title}</strong></div><span class="arrow">→</span></div>
             </a>
           ))}
         </div>

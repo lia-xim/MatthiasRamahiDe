@@ -47,7 +47,6 @@ export type HomeChapter = {
 
 export type HomeService = {
   href: string
-  number: string
   title: string
   text: string
 }
@@ -61,9 +60,6 @@ export type HomeJournalCard = {
   alt: string
   width: number
   height: number
-  number: string
-  date: string
-  category: string
   title: string
   text: string
 }
@@ -81,7 +77,6 @@ export type HomeHeroSlide = {
 export type ServicesIndexItem = {
   id: string
   href: string
-  number: string
   headline: string
   text: string
   tags: string[]
@@ -334,43 +329,36 @@ export const homeChapters: HomeChapter[] = [
 export const homeServices: HomeService[] = [
   {
     href: '/fotolabor-druck-duesseldorf.html',
-    number: 'N° 01',
     title: 'Fotolabor & Druck',
     text: 'FineArt- und Hochwertdruck — von der Datei bis zur signierten Edition.',
   },
   {
     href: '/grossformatdruck-duesseldorf.html',
-    number: 'N° 02',
     title: 'Großformatdruck',
     text: 'Poster, Banner, Messewände, Acrylglas — kalibrierte Galeriequalität.',
   },
   {
     href: '/werbetechnik-duesseldorf.html',
-    number: 'N° 03',
     title: 'Werbetechnik',
     text: 'Schaufenster, Beklebungen, Firmenschilder und Displaylösungen für den Raum.',
   },
   {
     href: '/webdesign-seo-duesseldorf.html',
-    number: 'N° 04',
     title: 'Webdesign & SEO',
     text: 'Markenseiten, Portfolios und lokale Sichtbarkeit im Rheinland.',
   },
   {
     href: '/viola-musik-duesseldorf.html',
-    number: 'N° 05',
     title: 'Viola Musik',
     text: 'Live-Musik und klassische Begleitung für Empfänge und Vernissagen.',
   },
   {
     href: '/videografie-duesseldorf.html',
-    number: 'N° 06',
     title: 'Videografie',
     text: 'Marken-, Event- und Imagefilm — vom Konzept bis zum finalen Cut.',
   },
   {
     href: '/drucke-sonderanfertigungen-duesseldorf.html',
-    number: 'N° 07',
     title: 'Drucke & Sonderanfertigungen',
     text: 'Mappen, Editionen, Geschenke und Interior — von der Idee zum Unikat.',
   },
@@ -387,9 +375,6 @@ export const homeJournalCards: HomeJournalCard[] = [
     alt: 'Location Setup für Oldtimer',
     width: 1920,
     height: 1280,
-    number: 'N° 01',
-    date: '05 / 2026',
-    category: 'Fotograf',
     title: 'Wie ich einen Oldtimer-Shoot vor Ort aufbaue.',
     text: 'Lichtsetup, Material, Reflexionen — Schritt für Schritt durch einen kompletten Location-Workflow.',
   },
@@ -399,9 +384,6 @@ export const homeJournalCards: HomeJournalCard[] = [
     alt: 'FineArt Print Edition',
     width: 1536,
     height: 1920,
-    number: 'N° 02',
-    date: '04 / 2026',
-    category: 'Print',
     title: 'Vom Sensor bis zur FineArt-Edition.',
     text: 'Farbprofile, Papiere, Druckpartner — was zwischen Bild und signierter Edition wirklich passiert.',
   },
@@ -415,9 +397,6 @@ export const homeJournalCards: HomeJournalCard[] = [
     alt: 'Lokal arbeiten im Rheinland',
     width: 1707,
     height: 2560,
-    number: 'N° 03',
-    date: '03 / 2026',
-    category: 'NRW',
     title: 'Lokal arbeiten — Düsseldorf, Köln, Essen.',
     text: 'Wie aus einem Netzwerk im Rheinland ein Workflow für Auflage, Sammlung und Marke entsteht.',
   },
@@ -427,7 +406,6 @@ export const servicesIndexItems: ServicesIndexItem[] = [
   {
     id: 'fotolabor',
     href: '/fotolabor-druck-duesseldorf.html',
-    number: '01 · Fine Art',
     headline: 'Fotolabor & <em>Druck.</em>',
     text: 'In Zusammenarbeit mit einem Druckpartner in Düsseldorf entstehen hochwertige Fotodrucke, Bücher, Leinwände und Spezialmaterialien — von der Motivprüfung über Papier und Oberfläche bis zur finalen Präsentation an Wand, Tisch oder Portfolio.',
     tags: ['Fine Art Prints', 'Fotobücher', 'Spezialmaterial'],
@@ -454,7 +432,6 @@ export const servicesIndexItems: ServicesIndexItem[] = [
   {
     id: 'grossformat',
     href: '/grossformatdruck-duesseldorf.html',
-    number: '02 · Präsentation',
     headline: 'Großformat<em>druck.</em>',
     text: 'Für große Auftritte: Poster, Banner, Acrylglasdrucke oder Messesysteme in hochwertiger Qualität — geeignet für Ausstellungen, Autohauspräsentationen, Schaufenster, Messewände und Interior-Lösungen mit klarer Fernwirkung.',
     tags: ['Poster', 'Banner', 'Acrylglas'],
@@ -480,7 +457,6 @@ export const servicesIndexItems: ServicesIndexItem[] = [
   {
     id: 'werbetechnik',
     href: '/werbetechnik-duesseldorf.html',
-    number: '03 · Beschriftung',
     headline: 'Werbe<em>technik.</em>',
     text: 'Schaufensterbeklebung, Firmenschilder, Displaylösungen und Raumgrafiken werden gemeinsam mit einem Werbetechnik-Partner geplant und sauber umgesetzt — inklusive Materialwahl, Visualisierung und Montage vor Ort.',
     tags: ['Schaufenster', 'Displays', 'Beschilderung'],
@@ -506,7 +482,6 @@ export const servicesIndexItems: ServicesIndexItem[] = [
   {
     id: 'webdesign',
     href: '/webdesign-seo-duesseldorf.html',
-    number: '04 · Online',
     headline: 'Webdesign & <em>SEO.</em>',
     text: 'Gemeinsam mit einer Webagentur entstehen moderne Online-Auftritte, die Bildsprache, Performance und Sichtbarkeit verbinden — mit Struktur für Leistungen, lokale Suchanfragen, Referenzen, Blog und einfache Kontaktaufnahme.',
     tags: ['Website', 'SEO', 'Performance'],
@@ -533,7 +508,6 @@ export const servicesIndexItems: ServicesIndexItem[] = [
   {
     id: 'viola',
     href: '/viola-musik-duesseldorf.html',
-    number: '05 · Event',
     headline: 'Viola <em>Musik.</em>',
     text: 'Musikalische Begleitung für besondere Momente — ob Hochzeit, Firmenfeier oder Event. Live-Musik schafft Atmosphäre, bleibt aber dezent planbar: passend zu Ablauf, Raum, Gästezahl und gewünschter Stimmung.',
     tags: ['Hochzeit', 'Event', 'Live-Musik'],
@@ -560,7 +534,6 @@ export const servicesIndexItems: ServicesIndexItem[] = [
   {
     id: 'videografie',
     href: '/videografie-duesseldorf.html',
-    number: '06 · Motion',
     headline: 'Video<em>grafie.</em>',
     text: 'Professionelle Videos für Fahrzeuge, Events, Imagekampagnen und Social Media — konzipiert mit fotografischem Blick, klarer Dramaturgie und passenden Exportformaten für Website, Reels, Kampagnen oder Präsentationen.',
     tags: ['Imagefilm', 'Event', 'Social Media'],
@@ -586,7 +559,6 @@ export const servicesIndexItems: ServicesIndexItem[] = [
   {
     id: 'sonder',
     href: '/drucke-sonderanfertigungen-duesseldorf.html',
-    number: '07 · Sonderformat',
     headline: 'Drucke & <em>Sonderanfertigungen.</em>',
     text: 'Für Motive, die einen besonderen Ort bekommen sollen: Sonderformate, Materialtests, dekorative Drucklösungen und individuelle Präsentationen werden passend zu Raum, Anlass, Menge, Oberfläche und gewünschter Wirkung geplant.',
     tags: ['Sonderformate', 'Materialtest', 'Interior'],

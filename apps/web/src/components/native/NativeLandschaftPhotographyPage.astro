@@ -142,17 +142,16 @@ const focusModuleLead = isParentPage || isKeywordPage
   ? keywordFocusCopy?.sectionLead || 'Jedes Motiv ist als Print erhaeltlich.'
   : `Jedes Motiv kann fuer Raeume in ${scope.label} nach Format, Material und Wirkung abgestimmt werden.`
 const defaultModuleCards = [
-  { visualIndex: 5, number: '01', title: 'Fine-Art', text: 'Papier, Tonwert und Motiv werden passend zum Raum abgestimmt.' },
-  { visualIndex: 6, number: '02', title: 'Aluminium', text: 'Ruhige Wandbilder auf stabilem Traeger fuer klare Raeume und Praxen.' },
-  { visualIndex: 7, number: '03', title: 'Acrylglas', text: 'Tiefe, Glanz und klare Kanten fuer Motive mit Licht und Struktur.' },
-  { visualIndex: 8, number: '04', title: 'Edition', text: 'Kuratierte Motive als Einzelabzug oder kleine Edition nach Umfang.' },
+  { visualIndex: 5, title: 'Fine-Art', text: 'Papier, Tonwert und Motiv werden passend zum Raum abgestimmt.' },
+  { visualIndex: 6, title: 'Aluminium', text: 'Ruhige Wandbilder auf stabilem Traeger fuer klare Raeume und Praxen.' },
+  { visualIndex: 7, title: 'Acrylglas', text: 'Tiefe, Glanz und klare Kanten fuer Motive mit Licht und Struktur.' },
+  { visualIndex: 8, title: 'Edition', text: 'Kuratierte Motive als Einzelabzug oder kleine Edition nach Umfang.' },
 ]
 const moduleCards = defaultModuleCards.map((card, index) => {
   const cmsCard = doc?.audienceCards?.[index]
   return cmsCard
     ? {
         ...card,
-        number: cmsText(cmsCard.number) || card.number,
         title: cmsText(cmsCard.title) || card.title,
         text: cmsText(cmsCard.text) || card.text,
       }
@@ -301,7 +300,6 @@ const searchLinks = [
           <article class="mod-ls__card">
             <div class="mod-ls__img" style={`background-image:url('${visualSlots[card.visualIndex].cssFull}')`}></div>
             <div class="mod-ls__body">
-              <span class="mod-ls__num">{card.number}</span>
               <h3 class="mod-ls__name">{card.title}</h3>
               <p>{card.text}</p>
             </div>
@@ -337,19 +335,15 @@ const searchLinks = [
 
         <div class="fw-ls__flow">
           <div class="fw-ls__step">
-            <span class="fw-ls__step-num">01</span>
             <h3>Anfrage</h3>
           </div>
           <div class="fw-ls__step">
-            <span class="fw-ls__step-num">02</span>
             <h3>Beratung</h3>
           </div>
           <div class="fw-ls__step">
-            <span class="fw-ls__step-num">03</span>
             <h3>Produktion</h3>
           </div>
           <div class="fw-ls__step">
-            <span class="fw-ls__step-num">04</span>
             <h3>Lieferung</h3>
           </div>
         </div>

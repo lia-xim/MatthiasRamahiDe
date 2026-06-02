@@ -19,9 +19,9 @@ const occasions = [
 
 // Ablauf — drei verbundene Stationen vom Anliegen bis zum Auftritt.
 const flowSteps = [
-  { number: '01', title: 'Anfrage.', body: 'Du schilderst Anlass, Ort, Datum und ungefähre Dauer — der Rest entsteht im Gespräch, unverbindlich.' },
-  { number: '02', title: 'Auswahl.', body: 'Passende Besetzung (Solo Viola/Geige, Duo mit Klavier, kleines Ensemble) und Repertoire — Klassik, Filmmusik oder Pop-Arrangements, vorab abgestimmt.' },
-  { number: '03', title: 'Auftritt.', body: 'Leiser Auf- und Abbau, sensibles Spiel im richtigen Moment — in Düsseldorf, im Rheinland und auf Anfrage deutschlandweit.' },
+  { title: 'Anfrage.', body: 'Du schilderst Anlass, Ort, Datum und ungefähre Dauer — der Rest entsteht im Gespräch, unverbindlich.' },
+  { title: 'Auswahl.', body: 'Passende Besetzung (Solo Viola/Geige, Duo mit Klavier, kleines Ensemble) und Repertoire — Klassik, Filmmusik oder Pop-Arrangements, vorab abgestimmt.' },
+  { title: 'Auftritt.', body: 'Leiser Auf- und Abbau, sensibles Spiel im richtigen Moment — in Düsseldorf, im Rheinland und auf Anfrage deutschlandweit.' },
 ]
 
 // Hero = der Landing-Page-Shader-Hero (WebGL/Ken-Burns/Lens-Cursor) mit dem B&W-Viola-Bild,
@@ -77,7 +77,6 @@ const heroSlidesJson = JSON.stringify(heroSlides)
         <div class="vm-occ-list">
           {occasions.map((occ) => (
             <article class="vm-occ">
-              <p class="vm-occ__num" aria-hidden="true">{occ.num}</p>
               <h3 class="vm-occ__name">{occ.name}</h3>
               <p class="vm-occ__line">{occ.line}</p>
             </article>
@@ -101,7 +100,6 @@ const heroSlidesJson = JSON.stringify(heroSlides)
         <ol class="vm-flow__track" role="list">
           {flowSteps.map((step) => (
             <li class="vm-flow__step">
-              <p class="vm-flow__step-num">Schritt {step.number}</p>
               <h3 class="vm-flow__step-title">{step.title}</h3>
               <p class="vm-flow__step-body">{step.body}</p>
             </li>

@@ -74,12 +74,12 @@ export const homeSectionsTab: Tab = {
           labels: { singular: 'Kachel', plural: 'Kacheln' },
           admin: {
             initCollapsed: true,
-            description: 'Reihenfolge = Anzeige-Reihenfolge. Die Nummerierung (N° 01 …) wird automatisch vergeben.',
+            description: 'Reihenfolge = Anzeige-Reihenfolge. Die Kacheln erscheinen bewusst ohne Meta-Nummern.',
             components: {
               beforeInput: [
                 mediaGalleryPickerComponent({
                   buttonLabel: 'Bilder als Kacheln übernehmen',
-                  rowDefaults: { title: '', meta: '', href: '' },
+                  rowDefaults: { title: '', href: '' },
                   title: 'Bereich-Kacheln visuell zusammenstellen',
                 }),
               ],
@@ -90,8 +90,7 @@ export const homeSectionsTab: Tab = {
             {
               type: 'row',
               fields: [
-                { name: 'title', label: 'Titel', type: 'text', required: true, admin: { width: '50%' } },
-                { name: 'meta', label: 'Meta-Zeile', type: 'text', admin: { width: '50%', description: 'z. B. „Location · Detail".' } },
+                { name: 'title', label: 'Titel', type: 'text', required: true, admin: { width: '100%' } },
               ],
             },
             hrefField('Link-Ziel'),
@@ -156,8 +155,7 @@ export const homeSectionsTab: Tab = {
             {
               type: 'row',
               fields: [
-                { name: 'number', label: 'Nummer', type: 'text', admin: { width: '25%', placeholder: 'N° 01' } },
-                { name: 'title', label: 'Titel', type: 'text', required: true, admin: { width: '75%' } },
+                { name: 'title', label: 'Titel', type: 'text', required: true, admin: { width: '100%' } },
               ],
             },
             { name: 'text', label: 'Kurzbeschreibung', type: 'textarea' },
@@ -189,7 +187,7 @@ export const homeSectionsTab: Tab = {
               beforeInput: [
                 mediaGalleryPickerComponent({
                   buttonLabel: 'Bilder als Karten übernehmen',
-                  rowDefaults: { number: '', date: '', category: '', title: '', text: '', href: '' },
+                  rowDefaults: { title: '', text: '', href: '' },
                   title: 'Journal-Karten visuell zusammenstellen',
                 }),
               ],
@@ -197,14 +195,6 @@ export const homeSectionsTab: Tab = {
           },
           fields: [
             mediaRelationshipField({ name: 'image', label: 'Bild', required: true }),
-            {
-              type: 'row',
-              fields: [
-                { name: 'number', label: 'Nummer', type: 'text', admin: { width: '33%', placeholder: 'N° 01' } },
-                { name: 'date', label: 'Datum', type: 'text', admin: { width: '33%', placeholder: '05 / 2026' } },
-                { name: 'category', label: 'Kategorie', type: 'text', admin: { width: '34%' } },
-              ],
-            },
             { name: 'title', label: 'Titel', type: 'text', required: true },
             { name: 'text', label: 'Kurztext', type: 'textarea' },
             hrefField('Link-Ziel'),

@@ -152,6 +152,7 @@ Projekt ist mit Vercel verlinkt. Produktions-ENV muss im Vercel-Projekt gesetzt 
 - `CONTACT_QUEUE_DIR=/tmp/matthias-contact-queue`
 - `CONTACT_RETRY_SECRET`
 - `CONTACT_IP_HASH_SALT`
+- `CONTACT_ALLOWED_ORIGINS=https://matthiasramahi.de,https://www.matthiasramahi.de`
 - `PAYLOAD_FETCH_TIMEOUT_MS=3500`
 - `PAYLOAD_FETCH_CACHE_MS=300000`
 

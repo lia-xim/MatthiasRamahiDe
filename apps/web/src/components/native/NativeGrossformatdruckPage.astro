@@ -101,9 +101,9 @@ const heroSlidesJson = JSON.stringify(heroSlides)
           </p>
         </div>
         <div class="gf-spec__sheet">
-          {specs.map((spec, i) => (
+          {specs.map((spec) => (
             <div class="gf-spec__row">
-              <p class="gf-spec__label"><b>{String(i + 1).padStart(2, '0')}</b>{spec.label}</p>
+              <p class="gf-spec__label">{spec.label}</p>
               <p class="gf-spec__text" set:html={spec.text}></p>
             </div>
           ))}

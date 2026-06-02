@@ -165,16 +165,15 @@ const focusAudienceLead = isParentPage || isKeywordPage
   ? keywordFocusCopy?.audienceLead || 'Vom ersten eigenen Bike bis zur Kampagne - jede Serie wird auf Maschine, Marke und Nutzung zugeschnitten.'
   : `Fuer Besitzer, Custom-Bikes, Werkstaetten und Haendler in ${scope.label}, die mehr brauchen als schnelle Handyfotos.`
 const defaultAudienceCards = [
-  { number: '01', title: 'Motorradfahrer mit eigener Maschine', text: 'Persoenliche Bildserien fuer ein Bike, das nicht nur dokumentiert, sondern mit Haltung gezeigt werden soll.' },
-  { number: '02', title: 'Custom Builder & Manufakturen', text: 'Umbauten, Details und Handwerk werden so fotografiert, dass Material, Linie und Werkstattarbeit nachvollziehbar bleiben.' },
-  { number: '03', title: 'Werkstaetten & Haendler', text: 'Serien fuer Website, Verkauf und Social Media, bei denen jedes Motorrad wiedererkennbar und sauber aufbereitet wird.' },
-  { number: '04', title: 'Marken, Magazin & Kampagne', text: 'Editoriale Motive fuer Launches, redaktionelle Strecken und Kampagnen mit klarer Bildsprache.' },
+  { title: 'Motorradfahrer mit eigener Maschine', text: 'Persoenliche Bildserien fuer ein Bike, das nicht nur dokumentiert, sondern mit Haltung gezeigt werden soll.' },
+  { title: 'Custom Builder & Manufakturen', text: 'Umbauten, Details und Handwerk werden so fotografiert, dass Material, Linie und Werkstattarbeit nachvollziehbar bleiben.' },
+  { title: 'Werkstaetten & Haendler', text: 'Serien fuer Website, Verkauf und Social Media, bei denen jedes Motorrad wiedererkennbar und sauber aufbereitet wird.' },
+  { title: 'Marken, Magazin & Kampagne', text: 'Editoriale Motive fuer Launches, redaktionelle Strecken und Kampagnen mit klarer Bildsprache.' },
 ]
 const focusAudienceCards = defaultAudienceCards.map((card, index) => {
   const cmsCard = doc?.audienceCards?.[index]
   return cmsCard
     ? {
-        number: cmsText(cmsCard.number) || card.number,
         title: cmsText(cmsCard.title) || card.title,
         text: cmsText(cmsCard.text) || card.text,
       }
@@ -185,20 +184,20 @@ const focusRelatedLead = isParentPage || isKeywordPage
   : `Motorradfotografie ${scope.label} verlinkt bewusst zu Automobil, Sportwagen, Oldtimer und Portfolio, damit Nutzer schnell den passenden Bildbereich finden.`
 
 const cleanDefaultModuleCards = [
-  { visualIndex: 3, label: '01 / Stand & Silhouette', title: 'Die ruhige Bildbuehne', text: 'Bike pur: Proportionen, Linienfuehrung und Haltung. Gesetztes Licht, klare Winkel, bereit fuer Header, Print und Werkstatt-Wand.' },
-  { visualIndex: 4, label: '02 / Detail', title: 'Tank, Motor, Felge, Lenker', text: 'Nahaufnahmen, die Material, Verarbeitung und Charakter ehrlich zeigen - fuer Custom-Doku, Haendlerseiten und redaktionelle Strecken.' },
-  { visualIndex: 5, label: '03 / Mit Fahrer', title: 'Mensch + Maschine, Haltung', text: 'Fahrer und Bike zusammen: Haltung, Helm, Haende am Lenker. Portrait-Logik trifft Maschine, gerne vor Ort oder am Werkstatttor.' },
-  { visualIndex: 6, label: '04 / Schraeglage & Kurve', title: 'On-the-go, Pan-Shots', text: 'Mitziehaufnahmen aus der Kurve, sauber gezogene Pan-Shots - Geschwindigkeit als Bild, nicht als Behauptung. Strecke nach Absprache.' },
-  { visualIndex: 7, label: '05 / Cinematic', title: 'Atmosphaere, Licht, Editorial', text: 'Bildserien mit Stimmung: Gegenlicht, Daemmerung, Werkhalle, Asphalt nach Regen. Editorial-Look fuer Magazin und Marken-Kampagne.' },
-  { visualIndex: 8, label: '06 / Social & Vertical', title: 'Reels, Story, 9:16-Cuts', text: 'Hochformat wird von Anfang an mitgeplant - eine Aufnahme, zwei Formate. Reels-, Story- und 9:16-Cuts direkt aus dem Set.' },
+  { visualIndex: 3, title: 'Die ruhige Bildbuehne', text: 'Bike pur: Proportionen, Linienfuehrung und Haltung. Gesetztes Licht, klare Winkel, bereit fuer Header, Print und Werkstatt-Wand.' },
+  { visualIndex: 4, title: 'Tank, Motor, Felge, Lenker', text: 'Nahaufnahmen, die Material, Verarbeitung und Charakter ehrlich zeigen - fuer Custom-Doku, Haendlerseiten und redaktionelle Strecken.' },
+  { visualIndex: 5, title: 'Mensch + Maschine, Haltung', text: 'Fahrer und Bike zusammen: Haltung, Helm, Haende am Lenker. Portrait-Logik trifft Maschine, gerne vor Ort oder am Werkstatttor.' },
+  { visualIndex: 6, title: 'On-the-go, Pan-Shots', text: 'Mitziehaufnahmen aus der Kurve, sauber gezogene Pan-Shots - Geschwindigkeit als Bild, nicht als Behauptung. Strecke nach Absprache.' },
+  { visualIndex: 7, title: 'Atmosphaere, Licht, Editorial', text: 'Bildserien mit Stimmung: Gegenlicht, Daemmerung, Werkhalle, Asphalt nach Regen. Editorial-Look fuer Magazin und Marken-Kampagne.' },
+  { visualIndex: 8, title: 'Reels, Story, 9:16-Cuts', text: 'Hochformat wird von Anfang an mitgeplant - eine Aufnahme, zwei Formate. Reels-, Story- und 9:16-Cuts direkt aus dem Set.' },
 ]
 const moduleCards = cleanDefaultModuleCards.map((cleanCard, index) => {
   const cmsCard = doc?.shootingStyles?.[index]
   const override = cmsCard
-    ? { title: cmsText(cmsCard.title), text: cmsText(cmsCard.text), label: cleanCard.label }
+    ? { title: cmsText(cmsCard.title), text: cmsText(cmsCard.text) }
     : keywordFocusCopy?.cards?.[index]
 
-  return override ? { ...cleanCard, label: override.label || cleanCard.label, title: override.title || cleanCard.title, text: override.text || cleanCard.text } : cleanCard
+  return override ? { ...cleanCard, title: override.title || cleanCard.title, text: override.text || cleanCard.text } : cleanCard
 })
 
 const cityLinks = [
@@ -329,7 +328,6 @@ const searchLinks = [
           <article class="mk-card">
             <figure class="mk-img"><img src={visualSlots[3].src} srcset={slotSrcset(visualSlots[3])} sizes="(max-width:720px) 92vw, (max-width:1180px) 47vw, 31vw" data-src={visualSlots[3].src} loading="lazy" alt={visualSlots[3].alt} width={visualSlots[3].width} height={visualSlots[3].height} decoding="async" /></figure>
             <div class="mk-text">
-              <span class="no">{moduleCards[0].label}</span>
               <h3>{moduleCards[0].title}</h3>
               <p>{moduleCards[0].text}</p>
             </div>
@@ -337,7 +335,6 @@ const searchLinks = [
           <article class="mk-card">
             <figure class="mk-img"><img loading="lazy" src={visualSlots[4].src} srcset={slotSrcset(visualSlots[4])} sizes="(max-width:720px) 92vw, (max-width:1180px) 47vw, 31vw" alt={visualSlots[4].alt} width={visualSlots[4].width} height={visualSlots[4].height} decoding="async" /></figure>
             <div class="mk-text">
-              <span class="no">{moduleCards[1].label}</span>
               <h3>{moduleCards[1].title}</h3>
               <p>{moduleCards[1].text}</p>
             </div>
@@ -345,7 +342,6 @@ const searchLinks = [
           <article class="mk-card">
             <figure class="mk-img"><img src={visualSlots[5].src} srcset={slotSrcset(visualSlots[5])} sizes="(max-width:720px) 92vw, (max-width:1180px) 47vw, 31vw" data-src={visualSlots[5].src} loading="lazy" alt={visualSlots[5].alt} width={visualSlots[5].width} height={visualSlots[5].height} decoding="async" /></figure>
             <div class="mk-text">
-              <span class="no">{moduleCards[2].label}</span>
               <h3>{moduleCards[2].title}</h3>
               <p>{moduleCards[2].text}</p>
             </div>
@@ -353,7 +349,6 @@ const searchLinks = [
           <article class="mk-card">
             <figure class="mk-img"><img src={visualSlots[6].src} srcset={slotSrcset(visualSlots[6])} sizes="(max-width:720px) 92vw, (max-width:1180px) 47vw, 31vw" data-src={visualSlots[6].src} loading="lazy" alt={visualSlots[6].alt} width={visualSlots[6].width} height={visualSlots[6].height} decoding="async" /></figure>
             <div class="mk-text">
-              <span class="no">{moduleCards[3].label}</span>
               <h3>{moduleCards[3].title}</h3>
               <p>{moduleCards[3].text}</p>
             </div>
@@ -361,7 +356,6 @@ const searchLinks = [
           <article class="mk-card">
             <figure class="mk-img"><img loading="lazy" src={visualSlots[7].src} srcset={slotSrcset(visualSlots[7])} sizes="(max-width:720px) 92vw, (max-width:1180px) 47vw, 31vw" alt={visualSlots[7].alt} width={visualSlots[7].width} height={visualSlots[7].height} decoding="async" /></figure>
             <div class="mk-text">
-              <span class="no">{moduleCards[4].label}</span>
               <h3>{moduleCards[4].title}</h3>
               <p>{moduleCards[4].text}</p>
             </div>
@@ -369,7 +363,6 @@ const searchLinks = [
           <article class="mk-card">
             <figure class="mk-img"><img loading="lazy" src={visualSlots[8].src} srcset={slotSrcset(visualSlots[8])} sizes="(max-width:720px) 92vw, (max-width:1180px) 47vw, 31vw" alt={visualSlots[8].alt} width={visualSlots[8].width} height={visualSlots[8].height} decoding="async" /></figure>
             <div class="mk-text">
-              <span class="no">{moduleCards[5].label}</span>
               <h3>{moduleCards[5].title}</h3>
               <p>{moduleCards[5].text}</p>
             </div>
@@ -420,7 +413,6 @@ const searchLinks = [
         <div class="fw-grid">
           {focusAudienceCards.map((card) => (
             <article class="fw-card">
-              <span class="no">{card.number}</span>
               <strong>{card.title}</strong>
               <p>{card.text}</p>
             </article>
@@ -443,22 +435,22 @@ const searchLinks = [
           <a class="rl-card" href="automobil-fotografie.html">
             <img loading="lazy" src="assets/optimized/assets-photos-automobil-neon-960.webp" alt="Automobilfotografie" width="960" height="640" decoding="async" />
             <div class="overlay"></div>
-            <div class="content"><div><span>01 / Verwandt</span><strong>Automobil</strong></div><span class="arrow">→</span></div>
+            <div class="content"><div><strong>Automobil</strong></div><span class="arrow">→</span></div>
           </a>
           <a class="rl-card" href="sportwagen-fotografie.html">
             <img loading="lazy" src="assets/portfolio/thumbs/_DSC3032_genErase (1).webp" alt="Sportwagenfotografie" width="720" height="480" decoding="async" />
             <div class="overlay"></div>
-            <div class="content"><div><span>02 / Verwandt</span><strong>Sportwagen</strong></div><span class="arrow">→</span></div>
+            <div class="content"><div><strong>Sportwagen</strong></div><span class="arrow">→</span></div>
           </a>
           <a class="rl-card" href="videografie-duesseldorf.html">
             <img loading="lazy" src="assets/portfolio/thumbs/_DSC8032.webp" alt="Videografie" width="720" height="900" decoding="async" />
             <div class="overlay"></div>
-            <div class="content"><div><span>03 / Service</span><strong>Videografie</strong></div><span class="arrow">→</span></div>
+            <div class="content"><div><strong>Videografie</strong></div><span class="arrow">→</span></div>
           </a>
           <a class="rl-card" href="portfolio.html">
             <img loading="lazy" src="assets/portfolio/thumbs/_DSC3879.webp" alt="Vollständiges Portfolio" width="720" height="480" decoding="async" />
             <div class="overlay"></div>
-            <div class="content"><div><span>04 / Übersicht</span><strong>Portfolio</strong></div><span class="arrow">→</span></div>
+            <div class="content"><div><strong>Portfolio</strong></div><span class="arrow">→</span></div>
           </a>
         </div>
       </div>

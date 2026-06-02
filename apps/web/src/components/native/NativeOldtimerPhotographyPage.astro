@@ -140,11 +140,11 @@ const portfolioTiles = [
 ] as const
 
 const audiences = [
-  ['01', 'Sammler', 'Liebhaber · Garage'],
-  ['02', 'Auktionshäuser', 'Katalog · Bestandsdoku'],
-  ['03', 'Verkäufer', 'Inserat · Portale'],
-  ['04', 'Redaktion', 'Magazin · Strecke'],
-  ['05', 'Privat', 'Geschenk · Wandbild'],
+  ['Sammler', 'Liebhaber · Garage'],
+  ['Auktionshäuser', 'Katalog · Bestandsdoku'],
+  ['Verkäufer', 'Inserat · Portale'],
+  ['Redaktion', 'Magazin · Strecke'],
+  ['Privat', 'Geschenk · Wandbild'],
 ]
 
 const relatedAreas = [
@@ -154,7 +154,6 @@ const relatedAreas = [
     alt: 'Automobilfotografie',
     width: 960,
     height: 640,
-    meta: '01 / Verwandt',
     title: 'Automobil',
   },
   {
@@ -163,7 +162,6 @@ const relatedAreas = [
     alt: 'Sportwagenfotografie',
     width: 720,
     height: 480,
-    meta: '02 / Verwandt',
     title: 'Sportwagen',
   },
   {
@@ -172,7 +170,6 @@ const relatedAreas = [
     alt: 'Drucke und Sonderanfertigungen',
     width: 720,
     height: 900,
-    meta: '03 / Service',
     title: 'Drucke',
   },
   {
@@ -181,7 +178,6 @@ const relatedAreas = [
     alt: 'Vollständiges Portfolio',
     width: 720,
     height: 1152,
-    meta: '04 / Übersicht',
     title: 'Portfolio',
   },
 ]
@@ -250,9 +246,9 @@ const focusAudienceLead = isParentPage || isKeywordPage
   ? keywordFocusCopy?.audienceLead || 'Vom privaten Liebhaberstueck bis zum Auktionskatalog - jede Serie wird auf Nutzung und Zielpublikum zugeschnitten.'
   : `Geeignet fuer Besitzer, Sammler und Verkaufer in ${scope.label}, die ein Fahrzeug hochwertig, aber nicht kuenstlich zeigen moechten.`
 const focusAudiences = doc?.audienceCards?.length
-  ? doc.audienceCards.map((card, index) => [cmsText(card.number) || String(index + 1).padStart(2, '0'), cmsText(card.title) || `Zielgruppe ${index + 1}`, cmsText(card.text) || 'CMS'])
+  ? doc.audienceCards.map((card, index) => [cmsText(card.title) || `Zielgruppe ${index + 1}`, cmsText(card.text) || 'CMS'])
   : keywordFocusCopy?.cards?.length
-    ? keywordFocusCopy.cards.map((card, index) => [String(index + 1).padStart(2, '0'), card.title, card.label || 'Oldtimer'])
+    ? keywordFocusCopy.cards.map((card) => [card.title, card.label || 'Oldtimer'])
     : audiences
 const focusRelatedLead = isParentPage || isKeywordPage
   ? keywordFocusCopy?.relatedLead || 'Oldtimer ist Teil einer groesseren automotive Welt. Schau dir die anderen Disziplinen an - gleicher Anspruch, anderer Bildfokus. Die Links fuehren schnell zu der Bildwelt, die zum Fahrzeug, zur Nutzung und zum geplanten Shooting passt.'
@@ -419,8 +415,8 @@ const searchLinks = [
           <p class="lead">{focusAudienceLead}</p>
         </div>
         <div class="fw-grid">
-          {focusAudiences.map(([number, title, label]) => (
-            <a class="fw-card" href="#anfrage"><span class="no">{number}</span><strong>{title}</strong><span class="lbl">{label}</span><span class="arrow" aria-hidden="true">→</span></a>
+          {focusAudiences.map(([title, label]) => (
+            <a class="fw-card" href="#anfrage"><strong>{title}</strong><span class="lbl">{label}</span><span class="arrow" aria-hidden="true">→</span></a>
           ))}
         </div>
         <div class="fw-foot">
@@ -441,7 +437,7 @@ const searchLinks = [
             <a class="rl-card" href={area.href}>
               <img data-src={area.image} src={area.image} loading="lazy" alt={area.alt} width={area.width} height={area.height} decoding="async" />
               <div class="overlay"></div>
-              <div class="content"><div><span>{area.meta}</span><strong>{area.title}</strong></div><span class="arrow">→</span></div>
+              <div class="content"><div><strong>{area.title}</strong></div><span class="arrow">→</span></div>
             </a>
           ))}
         </div>

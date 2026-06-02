@@ -26,14 +26,6 @@ const heroImages = heroSlides.map((slide) => slide.image)
 const heroSlidesJson = JSON.stringify(heroSlides)
 
 const overviewOrder = ['fotolabor', 'werbetechnik', 'webdesign', 'videografie', 'viola', 'grossformat']
-const overviewLabels: Record<string, string> = {
-  fotolabor: 'Fine Art',
-  grossformat: 'Präsentation',
-  werbetechnik: 'Displays',
-  webdesign: 'Online',
-  videografie: 'Motion',
-  viola: 'Live',
-}
 const overviewImageIndex: Record<string, number> = { viola: 1, webdesign: 1 }
 
 const hasText = (value?: string): value is string => typeof value === 'string' && value.trim().length > 0
@@ -70,19 +62,12 @@ const buildCmsImages = (item: NonNullable<typeof cmsItems>[number], fb?: Fallbac
 const mergeService = (fb: FallbackService | undefined, item: NonNullable<typeof cmsItems>[number] | undefined, index: number) => {
   const id = fb?.id || `leistung-${index + 1}`
   const headline = item && hasText(item.headline) ? emphasize(item.headline, item.emphasis) : fb?.headline ?? ''
-  const tags =
-    item && hasText(item.tags)
-      ? item.tags.split(',').map((tag) => tag.trim()).filter(Boolean)
-      : fb?.tags ?? []
   return {
     id,
     theme: fb?.theme ?? (index % 2 === 0 ? 'light' : 'dark'),
     href: item && hasText(item.href) ? toRootRelativeHref(item.href) : fb?.href ?? '#',
-    number: item && hasText(item.number) ? item.number! : fb?.number ?? '',
-    overviewLabel: item && hasText(item.overviewLabel) ? item.overviewLabel! : overviewLabels[id] || 'Leistung',
     headline,
     text: item && hasText(item.text) ? item.text! : fb?.text ?? '',
-    tags,
     images: item ? buildCmsImages(item, fb) : fb?.images ?? [],
   }
 }
@@ -171,7 +156,7 @@ const why = {
             return (
               <a class="overview-tile" href={service.href}>
                 {image && <img src={image.src} alt={image.alt} loading="lazy" width={image.width} height={image.height} decoding="async" />}
-                <div class="label"><strong set:html={service.headline.replace(/\.$/, '')}></strong><span>{service.overviewLabel}</span></div>
+                <div class="label"><strong set:html={service.headline.replace(/\.$/, '')}></strong></div>
               </a>
             )
           })}
@@ -186,7 +171,6 @@ const why = {
             <div class="service-copy">
               <h3 set:html={service.headline}></h3>
               <p>{service.text}</p>
-              <div class="tags">{service.tags.map((tag) => <span class="tag">{tag}</span>)}</div>
             </div>
             <div class="image-set">
               {service.images.map((image) => (

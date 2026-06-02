@@ -33,6 +33,10 @@ const hasText = (value?: string): value is string => typeof value === 'string' &
 // Bildgroessen (technische Moeblierung, bleibt Code — wird nicht im CMS gepflegt)
 const chapterSizes = '(max-width: 780px) calc((100vw - 52px) / 2), (max-width: 1180px) calc((100vw - 112px) / 2), 437px'
 const journalSizes = '(max-width: 780px) calc(100vw - 44px), (max-width: 1180px) calc((100vw - 112px) / 2), 437px'
+const aboutSizes = '(max-width: 780px) calc(100vw - 44px), (max-width: 1180px) calc(100vw - 112px), 560px'
+const defaultAboutImage = '/assets/optimized/mpissxxj-portrait-960.webp'
+const defaultAboutImageSrcset =
+  '/assets/optimized/mpissxxj-portrait-480.webp 480w, /assets/optimized/mpissxxj-portrait-720.webp 720w, /assets/optimized/mpissxxj-portrait-960.webp 960w, /assets/optimized/mpissxxj-portrait-1280.webp 1280w'
 
 const cmsSrcset = (image?: PayloadMedia | string) =>
   image && typeof image !== 'string' ? imageSrcset(image, ['mobile', 'card', 'hero']) || undefined : undefined
@@ -96,9 +100,15 @@ const aboutParagraphs = aboutBody.length
     ])
 const aboutImage = about?.image
   ? imageDisplayUrl(about.image, 'card', { allowOriginal: true })
-  : '/mpissxxj-portfolio_webp_full_063-1.webp'
+  : defaultAboutImage
+const aboutImageSrcset = about?.image ? cmsSrcset(about.image) : defaultAboutImageSrcset
+const resolvedAboutImageSrcset = aboutImage.includes('mpissxxj-portrait') ? defaultAboutImageSrcset : aboutImageSrcset
 const aboutImageAlt = about?.image ? imageAlt(about.image, 'Matthias Ramahi') : 'Matthias Ramahi'
-const aboutImageDimensions = about?.image ? imageDimensions(about.image, 'card') : { width: 1628, height: 1920 }
+const aboutImageDimensions = aboutImage.includes('mpissxxj-portrait')
+  ? { width: 960, height: 1132 }
+  : about?.image
+    ? imageDimensions(about.image, 'card')
+    : { width: 960, height: 1132 }
 
 // --- „Weitere Leistungen" ---
 const servicesGroup = doc?.homeServices
@@ -111,9 +121,8 @@ const servicesIntro = hasText(servicesGroup?.intro)
     ])[0]
 const cmsServices = (servicesGroup?.items || [])
   .filter((item) => hasText(item?.title))
-  .map((item, index) => ({
+  .map((item) => ({
     href: toRootRelativeHref(item.href) || '#',
-    number: hasText(item.number) ? item.number! : `N° ${String(index + 1).padStart(2, '0')}`,
     title: item.title || '',
     text: item.text || '',
   }))
@@ -128,15 +137,12 @@ const journalIntro = hasText(journalGroup?.intro)
   : 'Notizen aus dem Netzwerk - Workflow, Material, Auftragsgeschichten. Lange Form, ruhig kuratiert.'
 const cmsJournalCards = (journalGroup?.items || [])
   .filter((item) => item?.image)
-  .map((item, index) => ({
+  .map((item) => ({
     href: toRootRelativeHref(item.href) || '#',
     image: imageDisplayUrl(item.image, 'card', { allowOriginal: true }),
     dataSrcset: cmsSrcset(item.image),
     sizes: journalSizes,
     alt: imageAlt(item.image, item.title || ''),
-    number: hasText(item.number) ? item.number! : `N° ${String(index + 1).padStart(2, '0')}`,
-    date: item.date || '',
-    category: item.category || '',
     title: item.title || '',
     text: item.text || '',
     ...imageDimensions(item.image, 'card'),
@@ -194,13 +200,13 @@ const journalCards = cmsJournalCards.length ? cmsJournalCards : fallbackJournalC
           <p class="lead">{chaptersIntro}</p>
         </div>
         <div class="chapter-grid">
-          {chapters.map((chapter, index) => (
+          {chapters.map((chapter) => (
             <a class="chapter" href={chapter.href}>
               <div class="img">
                 <img src={chapter.image} srcset={chapter.srcset} sizes={chapter.sizes} alt={chapter.alt} loading="lazy" width={chapter.width} height={chapter.height} decoding="async" />
               </div>
-              <div class="head"><h3>{chapter.title}</h3><span class="num">N° {String(index + 1).padStart(2, '0')}</span></div>
-              <span class="meta"><span>{chapter.meta}</span><span class="arr">→</span></span>
+              <div class="head"><h3>{chapter.title}</h3></div>
+              <span class="meta"><span class="arr">Bereich ansehen →</span></span>
             </a>
           ))}
         </div>
@@ -232,7 +238,7 @@ const journalCards = cmsJournalCards.length ? cmsJournalCards : fallbackJournalC
     <section class="about sec-dark" data-theme="dark" aria-label="Über mich">
       <div class="section-inner">
         <div class="about-img">
-          <img src={aboutImage} alt={aboutImageAlt} loading="lazy" width={aboutImageDimensions.width} height={aboutImageDimensions.height} decoding="async" />
+          <img src={aboutImage} srcset={resolvedAboutImageSrcset} sizes={aboutSizes} alt={aboutImageAlt} loading="lazy" width={aboutImageDimensions.width} height={aboutImageDimensions.height} decoding="async" />
         </div>
         <div class="about-copy">
           <p class="kicker">{aboutKicker}</p>
@@ -260,12 +266,11 @@ const journalCards = cmsJournalCards.length ? cmsJournalCards : fallbackJournalC
         <div class="services-list">
           {services.map((service) => (
             <a class="service-row" href={service.href}>
-              <span class="num">{service.number}</span><h3>{service.title}</h3><p>{service.text}</p><span class="arr">Detail →</span>
+              <h3>{service.title}</h3><p>{service.text}</p><span class="arr">Detail →</span>
             </a>
           ))}
         </div>
         <div style="margin-top:32px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center">
-          <span style="font:10px var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--quiet-l)">07 Bereiche · ein Netzwerk</span>
           <a class="btn dark" href="/leistungen.html">Alle Leistungen</a>
         </div>
       </div>
@@ -294,7 +299,6 @@ const journalCards = cmsJournalCards.length ? cmsJournalCards : fallbackJournalC
                   decoding="async"
                 />
               </div>
-              <span class="meta"><span>{post.number}</span><span>{post.date}</span><span>{post.category}</span></span>
               <h3>{post.title}</h3>
               <p>{post.text}</p>
               <span class="read">Lesen →</span>
@@ -302,7 +306,6 @@ const journalCards = cmsJournalCards.length ? cmsJournalCards : fallbackJournalC
           ))}
         </div>
         <div style="margin-top:36px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center">
-          <span style="font:10px var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--quiet)">03 aktuelle · Archiv im Journal</span>
           <a class="btn" style="color:#f3f5ef;border-color:rgba(243,245,239,.4)" href="/blog.html">Alle Beiträge</a>
         </div>
       </div>

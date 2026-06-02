@@ -134,7 +134,7 @@ const portfolioTiles = [
     alt: 'Sportwagen Exterieur — Hauptmotiv',
     width: 720,
     height: 480,
-    label: '01 · Exterieur',
+    label: 'Exterieur',
   },
   {
     className: 't2',
@@ -143,7 +143,7 @@ const portfolioTiles = [
     alt: 'Sportwagen Interieur — Cockpit',
     width: 720,
     height: 1080,
-    label: '02 · Interieur',
+    label: 'Interieur',
   },
   {
     className: 't3',
@@ -152,7 +152,7 @@ const portfolioTiles = [
     alt: 'Sportwagen Detail — Emblem',
     width: 720,
     height: 480,
-    label: '03 · Detail',
+    label: 'Detail',
   },
   {
     className: 't4',
@@ -161,7 +161,7 @@ const portfolioTiles = [
     alt: 'Sportwagen Detail — Felge',
     width: 720,
     height: 900,
-    label: '04 · Felge',
+    label: 'Felge',
   },
   {
     className: 't5',
@@ -170,7 +170,7 @@ const portfolioTiles = [
     alt: 'Sportwagen Profil — Linienführung',
     width: 720,
     height: 480,
-    label: '05 · Profil',
+    label: 'Profil',
   },
   {
     className: 't6',
@@ -179,7 +179,7 @@ const portfolioTiles = [
     alt: 'Sportwagen Cinematic — Nacht und Architektur',
     width: 960,
     height: 640,
-    label: '06 · Cinematic',
+    label: 'Cinematic',
   },
 ]
 
@@ -189,7 +189,6 @@ const audiences = [
     alt: 'Privatkunde mit Sportwagen',
     width: 720,
     height: 480,
-    number: '01 / Privat',
     title: 'Privatkunden',
     text: 'Ein persönliches Auto-Fotoshooting als Geschenk oder Erinnerung.',
   },
@@ -198,7 +197,6 @@ const audiences = [
     alt: 'Hersteller- und Markenshooting',
     width: 720,
     height: 480,
-    number: '02 / Marke',
     title: 'Hersteller & Agenturen',
     text: 'Kampagnenmotive im einheitlichen Stil — von Planung bis Dateiübergabe.',
   },
@@ -207,7 +205,6 @@ const audiences = [
     alt: 'Autohaus-Fotografie NRW',
     width: 720,
     height: 480,
-    number: '03 / Händler',
     title: 'Autohäuser',
     text: 'Konsistente Serien für Website und Portale — Außen, Innen, Details.',
   },
@@ -216,7 +213,6 @@ const audiences = [
     alt: 'Club-Shooting und Redaktion',
     width: 720,
     height: 1080,
-    number: '04 / Editorial',
     title: 'Clubs & Redaktionen',
     text: 'Automotive Fotografie mit Fokus auf Design, Historie und Atmosphäre.',
   },
@@ -225,7 +221,6 @@ const audiences = [
     alt: 'Oldtimer-Besitzer Fotoshooting',
     width: 720,
     height: 1152,
-    number: '05 / Sammlung',
     title: 'Sammler & Besitzer',
     text: 'Ruhige Kulissen mit Charakter — für die persönliche Sammlung oder den Verkauf.',
   },
@@ -319,7 +314,7 @@ const finalAudiences = doc?.audienceCards?.length
   ? doc.audienceCards.map((card, index) => {
       const fb = inheritedAudiences[index] || inheritedAudiences[inheritedAudiences.length - 1]
       const resolved = resolveSectionImage(card.image, fb)
-      return { ...resolved, number: card.number || fb.number, title: card.title || fb.title, text: card.text || fb.text }
+      return { ...resolved, title: card.title || fb.title, text: card.text || fb.text }
     })
   : inheritedAudiences
 
@@ -368,7 +363,6 @@ const relatedAreas = [
     alt: 'Automobilfotografie',
     width: 960,
     height: 640,
-    meta: '01 / Verwandt',
     title: 'Automobil',
   },
   {
@@ -377,7 +371,6 @@ const relatedAreas = [
     alt: 'Oldtimerfotografie',
     width: 960,
     height: 640,
-    meta: '02 / Verwandt',
     title: 'Oldtimer',
   },
   {
@@ -386,7 +379,6 @@ const relatedAreas = [
     alt: 'Motorradfotografie',
     width: 720,
     height: 1080,
-    meta: '03 / Verwandt',
     title: 'Motorrad',
   },
   {
@@ -395,7 +387,6 @@ const relatedAreas = [
     alt: 'Vollständiges Portfolio',
     width: 720,
     height: 480,
-    meta: '04 / Übersicht',
     title: 'Portfolio',
   },
 ]
@@ -579,7 +570,6 @@ const searchLinks = [
               <img loading="lazy" src={audience.image} alt={audience.alt} width={audience.width} height={audience.height} decoding="async" />
               <div class="overlay"></div>
               <div class="content">
-                <span class="num">{audience.number}</span>
                 <strong>{audience.title}</strong>
                 <p>{audience.text}</p>
               </div>
@@ -600,7 +590,7 @@ const searchLinks = [
             <a class="rl-card" href={area.href}>
               <img data-src={area.dataSrc} src={area.src || area.dataSrc} loading="lazy" alt={area.alt} width={area.width} height={area.height} decoding="async" />
               <div class="overlay"></div>
-              <div class="content"><div><span>{area.meta}</span><strong>{area.title}</strong></div><span class="arrow">→</span></div>
+              <div class="content"><div><strong>{area.title}</strong></div><span class="arrow">→</span></div>
             </a>
           ))}
         </div>
