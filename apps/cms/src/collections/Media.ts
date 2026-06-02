@@ -4,8 +4,13 @@ import { authenticated } from '../access/publishedOrAuthenticated'
 import { adminGroups, editorPagination } from '../admin/structure'
 import { enrichMediaAfterChange } from '../hooks/enrichMedia'
 import { prepareMediaBeforeValidate } from '../hooks/prepareMedia'
+import { reoptimizeEndpoint } from '../endpoints/reoptimizeMediaEndpoint'
+import { defaultMediaQualityPreset, resolveMediaQualityProfile } from '../lib/mediaQuality'
 
 const fastImportImageSizes = process.env.PAYLOAD_FAST_MEDIA_IMPORT === 'true'
+// Quality for NEW uploads, driven by the deploy-time default preset.
+// The live dial in Website-Einstellungen applies to existing images via "Neu optimieren".
+const qualityProfile = resolveMediaQualityProfile(defaultMediaQualityPreset())
 const webpFormat = (quality: number) => ({
   format: 'webp' as const,
   options: {
@@ -23,18 +28,18 @@ const avifFormat = (quality: number) => ({
 })
 
 const imageSizes = fastImportImageSizes
-  ? [{ name: 'thumb', width: 360, height: 360, position: 'centre' as const, formatOptions: webpFormat(84) }]
+  ? [{ name: 'thumb', width: 360, height: 360, position: 'centre' as const, formatOptions: webpFormat(qualityProfile.thumb.webp) }]
   : [
-      { name: 'thumb', width: 360, height: 360, position: 'centre' as const, formatOptions: webpFormat(84) },
-      { name: 'mobile', width: 760, withoutEnlargement: true, formatOptions: webpFormat(88) },
-      { name: 'card', width: 1100, withoutEnlargement: true, formatOptions: webpFormat(90) },
-      { name: 'hero', width: 1920, withoutEnlargement: true, formatOptions: webpFormat(94) },
-      { name: 'wide', width: 2560, withoutEnlargement: true, formatOptions: webpFormat(94) },
-      { name: 'thumbAvif', width: 360, height: 360, position: 'centre' as const, formatOptions: avifFormat(62) },
-      { name: 'mobileAvif', width: 760, withoutEnlargement: true, formatOptions: avifFormat(70) },
-      { name: 'cardAvif', width: 1100, withoutEnlargement: true, formatOptions: avifFormat(74) },
-      { name: 'heroAvif', width: 1920, withoutEnlargement: true, formatOptions: avifFormat(80) },
-      { name: 'wideAvif', width: 2560, withoutEnlargement: true, formatOptions: avifFormat(80) },
+      { name: 'thumb', width: 360, height: 360, position: 'centre' as const, formatOptions: webpFormat(qualityProfile.thumb.webp) },
+      { name: 'mobile', width: 760, withoutEnlargement: true, formatOptions: webpFormat(qualityProfile.mobile.webp) },
+      { name: 'card', width: 1100, withoutEnlargement: true, formatOptions: webpFormat(qualityProfile.card.webp) },
+      { name: 'hero', width: 1920, withoutEnlargement: true, formatOptions: webpFormat(qualityProfile.hero.webp) },
+      { name: 'wide', width: 2560, withoutEnlargement: true, formatOptions: webpFormat(qualityProfile.wide.webp) },
+      { name: 'thumbAvif', width: 360, height: 360, position: 'centre' as const, formatOptions: avifFormat(qualityProfile.thumb.avif) },
+      { name: 'mobileAvif', width: 760, withoutEnlargement: true, formatOptions: avifFormat(qualityProfile.mobile.avif) },
+      { name: 'cardAvif', width: 1100, withoutEnlargement: true, formatOptions: avifFormat(qualityProfile.card.avif) },
+      { name: 'heroAvif', width: 1920, withoutEnlargement: true, formatOptions: avifFormat(qualityProfile.hero.avif) },
+      { name: 'wideAvif', width: 2560, withoutEnlargement: true, formatOptions: avifFormat(qualityProfile.wide.avif) },
     ]
 
 export const Media: CollectionConfig = {
@@ -46,7 +51,7 @@ export const Media: CollectionConfig = {
   admin: {
     useAsTitle: 'title',
     group: adminGroups.media,
-    defaultColumns: ['filename', 'title', 'alt', 'category', 'orientation', 'featured', 'updatedAt'],
+    defaultColumns: ['filename', 'title', 'optimizationStatus', 'category', 'orientation', 'featured', 'updatedAt'],
     listSearchableFields: ['filename', 'title', 'alt', 'caption', 'category', 'tags', 'imageType', 'usagePurpose', 'legacySourcePath'],
     pagination: editorPagination,
     hideAPIURL: true,
@@ -72,6 +77,7 @@ export const Media: CollectionConfig = {
     beforeValidate: [prepareMediaBeforeValidate],
     afterChange: [enrichMediaAfterChange],
   },
+  endpoints: [reoptimizeEndpoint],
   fields: [
     {
       type: 'tabs',
@@ -225,6 +231,17 @@ export const Media: CollectionConfig = {
           label: 'Technik',
           description: 'Automatisch erzeugte Performance-Daten fuer Blur-Placeholder und Farb-Fallback.',
           fields: [
+            {
+              name: 'optimizationStatus',
+              type: 'ui',
+              label: 'Optimierungs-Status',
+              admin: {
+                components: {
+                  Field: '/src/admin/components/MediaOptimizationPanel#MediaOptimizationPanel',
+                  Cell: '/src/admin/components/MediaOptimizationCell#MediaOptimizationCell',
+                },
+              },
+            },
             {
               name: 'dominantColor',
               label: 'Dominante Farbe',

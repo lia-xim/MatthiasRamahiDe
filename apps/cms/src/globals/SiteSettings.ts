@@ -57,6 +57,27 @@ export const SiteSettings: GlobalConfig = {
           ],
         },
         {
+          label: 'Bilder',
+          description: 'Globale Bildqualitaet und Kompression fuer responsive Varianten.',
+          fields: [
+            {
+              name: 'mediaQualityPreset',
+              label: 'Kompressionsstaerke',
+              type: 'select',
+              defaultValue: 'standard',
+              options: [
+                { label: 'Eco - kleinste Dateien, schnellste Ladezeit', value: 'eco' },
+                { label: 'Standard - ausgewogen (empfohlen)', value: 'standard' },
+                { label: 'Maximal - hoechste Qualitaet, groessere Dateien', value: 'maximal' },
+              ],
+              admin: {
+                description:
+                  'Steuert die Kompression der responsiven Varianten. Wirkt sofort, wenn ein Bild ueber "Neu optimieren" (Medien -> Technik) neu erzeugt wird. Neue Uploads nutzen die Standardstufe des Deploys. Eco spart Ladezeit, Maximal liefert maximale Detailtreue bei groesseren Dateien.',
+              },
+            },
+          ],
+        },
+        {
           label: 'Advanced',
           description: 'Legacy-Fallbacks und selten genutzte globale Texte.',
           fields: [
