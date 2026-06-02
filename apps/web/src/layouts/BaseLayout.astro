@@ -2,6 +2,7 @@
 import '../styles/tokens.css'
 import SiteChromeFooter from '../components/SiteChromeFooter.astro'
 import SiteChromeHeader from '../components/SiteChromeHeader.astro'
+import { versionStaticAssetUrl } from '../lib/cache'
 import {
   getSiteSettings,
   imageDimensions,
@@ -50,7 +51,7 @@ const title = providedTitle || settings?.defaultMetaTitle || 'Matthias Ramahi Fo
 const siteName = settings?.siteName || 'Matthias Ramahi Fotografie'
 const pathname = Astro.url.pathname === '/' ? '/' : Astro.url.pathname.replace(/\/$/, '')
 const canonical = toAbsoluteSiteUrl(canonicalUrl || pathname)
-const socialImage = typeof ogImage === 'string' ? toAbsoluteSiteUrl(ogImage) : imageUrl(ogImage || settings?.defaultOgImage, 'hero')
+const socialImage = typeof ogImage === 'string' ? toAbsoluteSiteUrl(versionStaticAssetUrl(ogImage)) : imageUrl(ogImage || settings?.defaultOgImage, 'hero')
 const socialImageDimensions = typeof ogImage === 'string' ? {} : imageDimensions(ogImage || settings?.defaultOgImage, 'hero')
 const jsonLdItems = [
   personJsonLd(settings),
@@ -75,6 +76,8 @@ const inferredNav =
               : undefined
 
 const activeNav = currentNav || inferredNav
+const versionedPreloadImages = preloadImages.map(versionStaticAssetUrl)
+const versionedStylesheets = stylesheets.map(versionStaticAssetUrl)
 ---
 <!doctype html>
 <html lang="de">
@@ -109,10 +112,10 @@ const activeNav = currentNav || inferredNav
     <meta name="twitter:description" content={description} />
     {socialImage && <meta name="twitter:image" content={socialImage} />}
     {socialImage && <meta name="twitter:image:alt" content={title} />}
-    {preloadImages.map((href) => <link rel="preload" as="image" href={href} fetchpriority="high" />)}
-    <link rel="stylesheet" href="/assets/site-chrome.css" />
-    <link rel="stylesheet" href="/assets/load-more-gallery.css" />
-    {stylesheets.map((href) => <link rel="stylesheet" href={href} />)}
+    {versionedPreloadImages.map((href) => <link rel="preload" as="image" href={href} fetchpriority="high" />)}
+    <link rel="stylesheet" href={versionStaticAssetUrl('/assets/site-chrome.css')} />
+    <link rel="stylesheet" href={versionStaticAssetUrl('/assets/load-more-gallery.css')} />
+    {versionedStylesheets.map((href) => <link rel="stylesheet" href={href} />)}
     {jsonLdItems.map((item) => <script is:inline type="application/ld+json" set:html={JSON.stringify(item)} />)}
     <script
       is:inline
@@ -130,7 +133,7 @@ const activeNav = currentNav || inferredNav
       </main>
       <SiteChromeFooter liveCms={liveCms} />
     </div>
-    <script is:inline src="/assets/site-chrome.js" defer></script>
-    <script is:inline src="/assets/analytics.js" defer></script>
+    <script is:inline src={versionStaticAssetUrl('/assets/site-chrome.js')} defer></script>
+    <script is:inline src={versionStaticAssetUrl('/assets/analytics.js')} defer></script>
   </body>
 </html>

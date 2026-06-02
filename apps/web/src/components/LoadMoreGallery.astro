@@ -1,6 +1,7 @@
 ---
 import ResponsiveImage from './ResponsiveImage.astro'
 import { imageAlt, type PayloadMedia } from '../lib/payload'
+import { versionStaticAssetUrl } from '../lib/cache'
 
 type GalleryItem = {
   image?: PayloadMedia | string
@@ -39,6 +40,6 @@ const hasMore = items.length > batchSize
         Mehr Bilder laden
       </button>
     )}
-    <script is:inline src="/assets/load-more-gallery.js" defer></script>
+    <script is:inline src={versionStaticAssetUrl('/assets/load-more-gallery.js')} defer></script>
   </section>
 )}

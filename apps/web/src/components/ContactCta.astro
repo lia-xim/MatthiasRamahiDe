@@ -1,5 +1,6 @@
 ---
 import { getFooter, getGlobalCtas, liveCmsFetchOptions, type PayloadCta } from '../lib/payload'
+import { versionStaticAssetUrl } from '../lib/cache'
 
 const { cta, liveCms = false } = Astro.props as { cta?: PayloadCta; liveCms?: boolean }
 const fetchOptions = liveCms ? liveCmsFetchOptions() : {}
@@ -96,4 +97,4 @@ const subject = cta?.emailSubject || module.emailSubject || 'Projektanfrage'
   </div>
 </section>
 
-<script is:inline src="/assets/contact-cta.js" defer></script>
+<script is:inline src={versionStaticAssetUrl('/assets/contact-cta.js')} defer></script>

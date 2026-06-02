@@ -2,6 +2,8 @@
 
 interface ImportMetaEnv {
   readonly PAYLOAD_PUBLIC_SERVER_URL?: string
+  readonly PUBLIC_ASSET_VERSION?: string
+  readonly ASTRO_ASSET_VERSION?: string
   readonly ASTRO_PUBLIC_SITE_URL?: string
   readonly ASTRO_ENABLE_ADOPTED_ROUTES?: string
   readonly ASTRO_ENABLE_LOCAL_SEO_ADOPTED_ROUTES?: string
