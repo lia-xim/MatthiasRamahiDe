@@ -317,6 +317,12 @@
     requestAnimationFrame(()=>{
       requestAnimationFrame(()=>canvas.classList.add('is-ready'));
     });
+    /* The LCP hero image is now in. Only AFTER that do we preload the next
+       slide into slot B, during idle time. The first slide change is 18s away
+       (FIRST_CYCLE_DELAY_MS), so the second image never needs to compete with
+       the hero for initial bandwidth. */
+    if ('requestIdleCallback' in window) requestIdleCallback(loadNextSlot, { timeout: 4000 });
+    else setTimeout(loadNextSlot, 1200);
   });
   const loadNextSlot = () => {
     loadImage(1%slides.length).then(entry=>{
@@ -325,11 +331,6 @@
       gl.activeTexture(gl.TEXTURE1); uploadInto(texB, entry);
     });
   };
-  if ('requestIdleCallback' in window) {
-    requestIdleCallback(loadNextSlot, { timeout: 2800 });
-  } else {
-    setTimeout(loadNextSlot, 1400);
-  }
 
   const CYCLE_MS=6800;
   const FIRST_CYCLE_DELAY_MS=18000;
