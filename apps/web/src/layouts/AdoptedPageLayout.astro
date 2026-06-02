@@ -6,6 +6,11 @@ import SiteChromeFooter from '../components/SiteChromeFooter.astro'
 import SiteChromeHeader from '../components/SiteChromeHeader.astro'
 import { getAdoptedPageChrome, mergeAssetLists } from '../lib/adoptedPageChrome'
 import { versionStaticAssetUrl } from '../lib/cache'
+// Bundle the critical CSS as a string at build time. The home page is SSR
+// (prerender=false), so reading public/ from the filesystem at request time
+// fails on Vercel (public/ isn't in the function cwd) — which silently disabled
+// the critical-CSS inline + stylesheet deferral and left the CSS render-blocking.
+import criticalHomeCss from '../../../../assets/critical-home.css?raw'
 import {
   imageDimensions,
   imageUrl,
@@ -107,7 +112,11 @@ const jsonLdItems = [
   localBusinessJsonLd(settings),
   ...(Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : []),
 ].filter(Boolean)
-const criticalCss = chrome.inlineCriticalCss ? minifyCriticalCss(await readPublicAsset(chrome.inlineCriticalCss)) : ''
+const criticalCssByHref: Record<string, string> = { 'assets/critical-home.css': criticalHomeCss }
+const rawCriticalCss = chrome.inlineCriticalCss
+  ? (criticalCssByHref[chrome.inlineCriticalCss.replace(/^\/+/, '')] ?? (await readPublicAsset(chrome.inlineCriticalCss)))
+  : ''
+const criticalCss = rawCriticalCss ? minifyCriticalCss(rawCriticalCss) : ''
 const deferStylesheets = Boolean(criticalCss)
 const deferredStylesheetLinks = versionedStylesheets.map((href) => {
   const safeHref = escapeHtmlAttribute(href)
