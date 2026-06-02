@@ -19,29 +19,30 @@ export type MediaQualityProfile = {
 }
 
 export const MEDIA_QUALITY_PROFILES: Record<MediaQualityPreset, MediaQualityProfile> = {
-  // Smaller files, still clean for web. ~30-40% lighter than Standard.
+  // Smallest files / fastest load. Targets ~380 KB for a 2560px hero photo.
+  // Kept in sync with scripts/recompress-all-media.ts.
   eco: {
-    thumb: { webp: 78, avif: 55 },
-    mobile: { webp: 80, avif: 60 },
-    card: { webp: 82, avif: 62 },
-    hero: { webp: 84, avif: 66 },
-    wide: { webp: 84, avif: 66 },
+    thumb: { webp: 78, avif: 54 },
+    mobile: { webp: 80, avif: 56 },
+    card: { webp: 80, avif: 56 },
+    hero: { webp: 76, avif: 52 },
+    wide: { webp: 73, avif: 50 },
   },
-  // Current production tuning. Balanced quality/size.
+  // Balanced quality/size for web.
   standard: {
-    thumb: { webp: 84, avif: 62 },
-    mobile: { webp: 88, avif: 70 },
-    card: { webp: 90, avif: 74 },
-    hero: { webp: 94, avif: 80 },
-    wide: { webp: 94, avif: 80 },
+    thumb: { webp: 84, avif: 60 },
+    mobile: { webp: 86, avif: 64 },
+    card: { webp: 86, avif: 66 },
+    hero: { webp: 84, avif: 64 },
+    wide: { webp: 82, avif: 62 },
   },
   // Near-lossless for portfolio-grade detail. Noticeably larger files.
   maximal: {
-    thumb: { webp: 90, avif: 72 },
-    mobile: { webp: 92, avif: 78 },
-    card: { webp: 95, avif: 82 },
-    hero: { webp: 97, avif: 86 },
-    wide: { webp: 97, avif: 88 },
+    thumb: { webp: 88, avif: 72 },
+    mobile: { webp: 92, avif: 76 },
+    card: { webp: 92, avif: 78 },
+    hero: { webp: 90, avif: 76 },
+    wide: { webp: 90, avif: 74 },
   },
 }
 

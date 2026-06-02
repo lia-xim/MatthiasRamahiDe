@@ -7,6 +7,7 @@ import * as migration_20260601_120000_home_sections from './20260601_120000_home
 import * as migration_20260601_140000_photography_index_sections from './20260601_140000_photography_index_sections';
 import * as migration_20260602_120000_services_index_sections from './20260602_120000_services_index_sections';
 import * as migration_20260602_130000_media_quality_preset from './20260602_130000_media_quality_preset';
+import * as migration_20260602_140000_hero_slide_duration from './20260602_140000_hero_slide_duration';
 
 export const migrations = [
   {
@@ -53,5 +54,10 @@ export const migrations = [
     up: migration_20260602_130000_media_quality_preset.up,
     down: migration_20260602_130000_media_quality_preset.down,
     name: '20260602_130000_media_quality_preset'
+  },
+  {
+    up: migration_20260602_140000_hero_slide_duration.up,
+    down: migration_20260602_140000_hero_slide_duration.down,
+    name: '20260602_140000_hero_slide_duration'
   },
 ];

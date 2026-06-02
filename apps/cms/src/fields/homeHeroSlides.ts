@@ -79,6 +79,19 @@ export const homeHeroSlides: Field = {
       },
     },
     {
+      name: 'durationSec',
+      label: 'Anzeigedauer (Sekunden)',
+      type: 'number',
+      defaultValue: 7,
+      min: 2,
+      max: 30,
+      admin: {
+        step: 1,
+        description:
+          'Wie lange dieser Slide sichtbar bleibt, bevor automatisch zum naechsten gewechselt wird. Standard: 7 Sekunden.',
+      },
+    },
+    {
       type: 'row',
       fields: [
         {

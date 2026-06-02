@@ -72,6 +72,14 @@ export type HomeHeroSlide = {
   secondaryHref: string
   secondaryLabel: string
   titleLines: string[]
+  durationSec?: number
+}
+
+const DEFAULT_HERO_SLIDE_DURATION_SEC = 7
+
+const heroSlideDuration = (value: unknown): number => {
+  const n = typeof value === 'number' ? value : Number(value)
+  return Number.isFinite(n) && n >= 2 ? n : DEFAULT_HERO_SLIDE_DURATION_SEC
 }
 
 export type ServicesIndexItem = {
@@ -194,6 +202,7 @@ const slideFromImage = (image: string, index: number, lead?: string): HomeHeroSl
     image,
     lead: lead || fallback.lead || '',
     titleLines: fallback.titleLines,
+    durationSec: DEFAULT_HERO_SLIDE_DURATION_SEC,
     ...defaultHeroCtas,
   }
 }
@@ -202,7 +211,7 @@ const homeHeroSlidesFromCms = (doc: PayloadDoc | null | undefined) => {
   const fallback = fallbackHeroText[0]
 
   return (doc?.heroSlides || [])
-    .map((slide, index) => {
+    .map((slide, index): HomeHeroSlide | undefined => {
       const image = cachedHomeHeroImage(imageDisplayUrl(slide.image, 'wide', { allowOriginal: true }))
       if (!image) return undefined
 
@@ -214,6 +223,7 @@ const homeHeroSlidesFromCms = (doc: PayloadDoc | null | undefined) => {
         secondaryHref: slide.secondaryHref || defaultHeroCtas.secondaryHref,
         secondaryLabel: slide.secondaryLabel || defaultHeroCtas.secondaryLabel,
         titleLines: titleLinesFor(slide, index === 0 ? fallback.titleLines : fallbackHeroText[index]?.titleLines || ['Fotografie']),
+        durationSec: heroSlideDuration((slide as { durationSec?: number | null }).durationSec),
       } satisfies HomeHeroSlide
     })
     .filter((slide): slide is HomeHeroSlide => Boolean(slide))

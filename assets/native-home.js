@@ -90,7 +90,8 @@
       primaryHref: slide.primaryHref || fallbackCtas.primaryHref,
       primaryLabel: slide.primaryLabel || fallbackCtas.primaryLabel,
       secondaryHref: slide.secondaryHref || fallbackCtas.secondaryHref,
-      secondaryLabel: slide.secondaryLabel || fallbackCtas.secondaryLabel
+      secondaryLabel: slide.secondaryLabel || fallbackCtas.secondaryLabel,
+      durationMs: (Number(slide.durationSec) > 0 ? Number(slide.durationSec) : 0) * 1000
     };
   }).filter(slide=>slide.url);
   if(!slides.length){return;}
@@ -318,9 +319,9 @@
       requestAnimationFrame(()=>canvas.classList.add('is-ready'));
     });
     /* The LCP hero image is now in. Only AFTER that do we preload the next
-       slide into slot B, during idle time. The first slide change is 18s away
-       (FIRST_CYCLE_DELAY_MS), so the second image never needs to compete with
-       the hero for initial bandwidth. */
+       slide into slot B, during idle time. The first slide stays at least a
+       few seconds (its CMS "Anzeigedauer", default 7s), so the second image
+       never needs to compete with the hero for initial bandwidth. */
     if ('requestIdleCallback' in window) requestIdleCallback(loadNextSlot, { timeout: 4000 });
     else setTimeout(loadNextSlot, 1200);
   });
@@ -333,9 +334,10 @@
   };
 
   const CYCLE_MS=6800;
-  const FIRST_CYCLE_DELAY_MS=18000;
   const TRANSITION_MS=1500;
-  let nextCycleAt=performance.now()+FIRST_CYCLE_DELAY_MS;
+  /* Per-slide visible duration (CMS "Anzeigedauer"), falling back to CYCLE_MS. */
+  const slideDurationMs=(idx)=>{ const d=slides[idx] && slides[idx].durationMs; return (typeof d==='number' && d>0) ? d : CYCLE_MS; };
+  let nextCycleAt=performance.now()+slideDurationMs(0);
 
   async function startTransition(toIdx){
     if(transitioning) return;
@@ -374,7 +376,7 @@
          needed, both samples drift with the same time-based pan/zoom so
          the promote is invisible. */
       transitioning=false;
-      nextCycleAt=performance.now()+CYCLE_MS;
+      nextCycleAt=performance.now()+slideDurationMs(currentIdx);
     }, TRANSITION_MS+40);
   }
 
@@ -557,7 +559,7 @@
     /* auto-cycle */
     if(!reduce && !transitioning && now>nextCycleAt){
       cycleNext();
-      nextCycleAt=now+CYCLE_MS;
+      nextCycleAt=now+slideDurationMs(currentIdx);
     }
 
     gl.uniform1f(U.uT, reduce?0.0:t);
