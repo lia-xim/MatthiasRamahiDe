@@ -118,10 +118,24 @@ jobs:
             "https://github.com/${GITHUB_REPOSITORY}.git" \
             "$CMS_HEALTH_URL"
 
+          # Copy the script and run it as a FILE (not piped via stdin). Piping the
+          # script over the SSH stdin is fragile: `docker compose exec -T`/`run`
+          # inside the script inherit fd0 and consume the remaining script text,
+          # so bash hits EOF right after "Waiting for Postgres" and exits 0 without
+          # ever running migrations or recreating the container (stale-deploy bug).
+          # Running from a file with stdin redirected to /dev/null avoids this.
+          scp \
+            -i ~/.ssh/hetzner_cms_deploy \
+            -P "$HETZNER_PORT" \
+            -o IdentitiesOnly=yes \
+            -o StrictHostKeyChecking=yes \
+            deploy/deploy-cms-hetzner.sh \
+            "$HETZNER_USER@$HETZNER_HOST:/tmp/deploy-cms-hetzner.sh"
+
           ssh \
             -i ~/.ssh/hetzner_cms_deploy \
             -p "$HETZNER_PORT" \
             -o IdentitiesOnly=yes \
             -o StrictHostKeyChecking=yes \
             "$HETZNER_USER@$HETZNER_HOST" \
-            "$remote_env bash -s" < deploy/deploy-cms-hetzner.sh
+            "$remote_env bash /tmp/deploy-cms-hetzner.sh </dev/null"

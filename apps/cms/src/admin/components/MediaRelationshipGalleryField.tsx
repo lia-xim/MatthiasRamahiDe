@@ -9,7 +9,6 @@ import {
   getPreviewURL,
   getTitle,
   type MediaDoc,
-  type MediaID,
   normalizeID,
   orientationOptions,
 } from './MediaGalleryPicker'
@@ -42,6 +41,30 @@ export function MediaRelationshipGalleryField({
 
   const { path, setValue, value } = useField<unknown>({ potentiallyStalePath: pathFromProps })
   const currentID = normalizeID(value)
+  const [previewDoc, setPreviewDoc] = useState<MediaDoc | null>(null)
+
+  // Reflect the actual field value as a visible preview so editors get clear
+  // confirmation that a slide image is set (the toast alone was easy to miss).
+  useEffect(() => {
+    if (!currentID) {
+      setPreviewDoc(null)
+      return
+    }
+    if (value && typeof value === 'object') {
+      setPreviewDoc(value as MediaDoc)
+      return
+    }
+    let active = true
+    fetch(`/api/media/${currentID}?depth=0`, { credentials: 'include' })
+      .then((res) => (res.ok ? res.json() : null))
+      .then((doc) => {
+        if (active && doc) setPreviewDoc(doc as MediaDoc)
+      })
+      .catch(() => {})
+    return () => {
+      active = false
+    }
+  }, [currentID, value])
 
   const params = useMemo(() => {
     const and: Record<string, unknown>[] = []
@@ -88,8 +111,9 @@ export function MediaRelationshipGalleryField({
   const totalPages = Number(data?.totalPages || 1)
 
   const chooseImage = useCallback(
-    (id: MediaID) => {
-      setValue(id)
+    (doc: MediaDoc) => {
+      setValue(doc.id)
+      setPreviewDoc(doc)
       toast.success('Bild ausgewaehlt')
       setIsOpen(false)
     },
@@ -104,6 +128,35 @@ export function MediaRelationshipGalleryField({
 
   return (
     <div className="media-relationship-gallery-field">
+      {previewDoc ? (
+        <div
+          style={{
+            display: 'flex', alignItems: 'center', gap: 12, padding: 10, marginBottom: 10,
+            border: '1px solid var(--theme-elevation-150)', borderRadius: 6, background: 'var(--theme-elevation-50)',
+          }}
+        >
+          {getPreviewURL(previewDoc) ? (
+            <img
+              alt={previewDoc.alt || getTitle(previewDoc)}
+              src={getPreviewURL(previewDoc)}
+              style={{ width: 64, height: 64, objectFit: 'cover', borderRadius: 4, flex: '0 0 auto' }}
+            />
+          ) : null}
+          <div style={{ minWidth: 0 }}>
+            <strong style={{ display: 'block', color: '#1f9d55' }}>✓ Bild gewählt</strong>
+            <span style={{ fontSize: 13, opacity: 0.8 }}>{getTitle(previewDoc)}</span>
+          </div>
+        </div>
+      ) : !readOnly ? (
+        <div
+          style={{
+            padding: '8px 10px', marginBottom: 10, fontSize: 13, opacity: 0.8,
+            border: '1px dashed var(--theme-elevation-200)', borderRadius: 6,
+          }}
+        >
+          Noch kein Bild gewählt — unten „Galerie öffnen" und ein Motiv anklicken (oder das Fallback-Feld nutzen).
+        </div>
+      ) : null}
       {!readOnly ? (
         <section className="media-gallery-picker media-gallery-picker--single">
           <div className="media-gallery-picker__topline">
@@ -180,7 +233,7 @@ export function MediaRelationshipGalleryField({
                         .filter(Boolean)
                         .join(' ')}
                       key={id}
-                      onClick={() => chooseImage(doc.id)}
+                      onClick={() => chooseImage(doc)}
                       type="button"
                     >
                       <span className="media-gallery-picker__preview">
