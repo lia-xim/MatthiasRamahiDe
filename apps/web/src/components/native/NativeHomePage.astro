@@ -167,7 +167,7 @@ const journalCards = cmsJournalCards.length ? cmsJournalCards : fallbackJournalC
   current="home"
   doc={doc}
   ctaHref="#anfrage"
-  preloadImages={[firstHeroSlide.image]}
+  preloadImages={[{ href: firstHeroSlide.image, crossorigin: 'anonymous' }]}
   noIndex={Boolean(preview)}
   liveCms
 >
@@ -182,6 +182,7 @@ const journalCards = cmsJournalCards.length ? cmsJournalCards : fallbackJournalC
   <main>
     <section class="hero" data-theme="dark" aria-label="Intro" style={`--hero-bg:url('${heroCssImage}');background-image:url('${heroCssImage}')`}>
       <div class="hero-bg" aria-hidden="true"></div>
+      <img class="hero-shader-preload" data-hero-shader-preload src={firstHeroSlide.image} alt="" width="1" height="1" loading="eager" decoding="async" fetchpriority="high" crossorigin="anonymous" aria-hidden="true" />
       <canvas id="hero-shader" aria-hidden="true" data-imgs={heroImages.join(',')} data-slides={heroSlidesJson}></canvas>
       <div class="hero-glow" aria-hidden="true"></div>
       <div class="hero-aperture" aria-hidden="true"></div>

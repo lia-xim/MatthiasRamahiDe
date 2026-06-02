@@ -290,13 +290,31 @@
   function loadImage(idx){
     return new Promise(res=>{
       if(cache[idx]){res(cache[idx]);return;}
-      const im=new Image(); im.crossOrigin='anonymous';
-      im.decoding='async';
-      im.fetchPriority=idx===0?'high':'low';
-      im.onload=()=>{cache[idx]={img:im,w:im.naturalWidth||im.width,h:im.naturalHeight||im.height};res(cache[idx]);};
-      im.onerror=()=>{cache[idx]={img:null,w:1,h:1};res(cache[idx]);};
-      im.src=slides[idx].url;
+      const preloadImg=idx===0 ? hero?.querySelector('[data-hero-shader-preload]') : null;
+      if(preloadImg){
+        const usePreload=()=>{
+          cache[idx]={img:preloadImg,w:preloadImg.naturalWidth||preloadImg.width||1,h:preloadImg.naturalHeight||preloadImg.height||1};
+          res(cache[idx]);
+        };
+        if(preloadImg.complete){
+          if(preloadImg.naturalWidth>0) usePreload();
+          else loadStandaloneImage(idx,res);
+          return;
+        }
+        preloadImg.addEventListener('load',usePreload,{once:true});
+        preloadImg.addEventListener('error',()=>loadStandaloneImage(idx,res),{once:true});
+        return;
+      }
+      loadStandaloneImage(idx,res);
     });
+  }
+  function loadStandaloneImage(idx,res){
+    const im=new Image(); im.crossOrigin='anonymous';
+    im.decoding='async';
+    im.fetchPriority=idx===0?'high':'low';
+    im.onload=()=>{cache[idx]={img:im,w:im.naturalWidth||im.width,h:im.naturalHeight||im.height};res(cache[idx]);};
+    im.onerror=()=>{cache[idx]={img:null,w:1,h:1};res(cache[idx]);};
+    im.src=slides[idx].url;
   }
   function uploadInto(tex, entry){
     if(!entry || !entry.img) return false;
@@ -334,7 +352,6 @@
     gl.activeTexture(gl.TEXTURE0);
     const uploaded=uploadInto(texA, entry);
     if(!uploaded) return;
-    heroStartT=performance.now();
     revealShaderCanvas();
     /* The LCP hero image is now in. Only AFTER that do we preload the next
        slide into slot B, during idle time. The first slide stays at least a
@@ -590,8 +607,8 @@
     /* shutter decay */
     shutter*=0.88;
 
-    /* continuous ken-burns clock: starts exactly when the first image
-       is uploaded, so the CSS fallback and first canvas frame align. */
+    /* continuous ken-burns clock: starts with the hero boot so a delayed
+       first texture keeps moving in step with the animated CSS fallback. */
     const kbT=(now-heroStartT)/1000;
 
     /* auto-cycle */

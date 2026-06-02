@@ -45,6 +45,7 @@ type Props = {
 type PreloadImage =
   | string
   | {
+      crossorigin?: 'anonymous' | 'use-credentials'
       fetchpriority?: 'auto' | 'high' | 'low'
       href: string
       imagesizes?: string
@@ -224,6 +225,7 @@ async function readPublicAsset(href: string) {
         media={image.media}
         imagesizes={image.imagesizes}
         imagesrcset={image.imagesrcset}
+        crossorigin={image.crossorigin}
         fetchpriority={image.fetchpriority}
       />
     ))}

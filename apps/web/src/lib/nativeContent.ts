@@ -125,6 +125,7 @@ export const homeHeroImages = [
 ]
 
 const cachedHomeHeroImages: Array<[string, string]> = [
+  ['_dsc3882', '/assets/optimized/assets-photos-automobil-neon-1280.webp'],
   ['mpik8b82-dsc3879', '/assets/optimized/mpik8b82-dsc3879-1280.webp'],
   ['assets-photos-automobil-neon', '/assets/optimized/assets-photos-automobil-neon-1280.webp'],
   ['assets-photos-automobil-sunset', '/assets/optimized/assets-photos-automobil-sunset-1280.webp'],

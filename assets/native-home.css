@@ -61,7 +61,8 @@
 
   /* ============ HERO — full-bleed name over photo, mouse-reveal shader ============ */
   .hero{position:relative;height:100svh;min-height:600px;max-height:100svh;display:grid;align-items:end;padding:clamp(120px,14vw,180px) clamp(22px,5vw,76px) clamp(48px,7vw,96px);overflow:hidden;isolation:isolate;background:#05070b url('optimized/mpik8b82-dsc3879-1280.webp') center/cover no-repeat;cursor:none;color:#f3f5ef}
-  .hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none;background:var(--hero-bg,url('optimized/mpik8b82-dsc3879-1280.webp')) center/cover no-repeat;transform:translate3d(0,0,0) scale(1);will-change:transform}
+  .hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none;background:var(--hero-bg,url('optimized/mpik8b82-dsc3879-1280.webp')) center/cover no-repeat;transform:translate3d(0,0,0) scale(1);will-change:transform;animation:heroBgKenBurns 38s var(--ease) infinite alternate}
+  .hero-shader-preload{position:absolute;left:0;top:0;width:1px;height:1px;opacity:0;pointer-events:none}
   .hero canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;display:block;opacity:0;transition:opacity .18s linear}
   .hero canvas.is-ready{opacity:1}
   /* Cinematic gradient overlays — let the photo breathe but keep text legible */
@@ -73,6 +74,7 @@
   /* soft moving glow */
   .hero-glow{position:absolute;inset:-30% -18%;z-index:2;pointer-events:none;background:radial-gradient(circle at 22% 28%,rgba(220,226,223,.07),transparent 30%),radial-gradient(circle at 84% 70%,rgba(42,78,118,.16),transparent 36%);filter:blur(38px);opacity:.55;animation:heroGlow 18s var(--ease) infinite alternate}
   @keyframes heroGlow{0%{transform:translate3d(-1.6%,1.2%,0) scale(1)}100%{transform:translate3d(2.2%,-1.2%,0) scale(1.04)}}
+  @keyframes heroBgKenBurns{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(1.3%,0,0) scale(1.055)}}
 
   .hero-grid{position:relative;z-index:3;display:block;width:100%;max-width:var(--maxw);margin:0 auto}
 
