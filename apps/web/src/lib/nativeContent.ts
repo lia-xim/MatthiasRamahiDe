@@ -116,7 +116,7 @@ export const blockHeadline = (doc: PayloadDoc | null | undefined, needle: string
   cleanTitle(blockByHeadline(doc, needle)?.headline) || fallback
 
 export const homeHeroImages = [
-  '/assets/optimized/mpik8b82-dsc3879-1280.webp',
+  '/assets/optimized/_DSC3882-1280.webp',
   '/assets/optimized/assets-photos-automobil-neon-1280.webp',
   '/assets/optimized/assets-photos-landschaft-960.webp',
   '/assets/optimized/assets-photos-oldtimer-stage-1280.webp',
@@ -125,7 +125,7 @@ export const homeHeroImages = [
 ]
 
 const cachedHomeHeroImages: Array<[string, string]> = [
-  ['_dsc3882', '/assets/optimized/assets-photos-automobil-neon-1280.webp'],
+  ['_dsc3882', '/assets/optimized/_DSC3882-1280.webp'],
   ['mpik8b82-dsc3879', '/assets/optimized/mpik8b82-dsc3879-1280.webp'],
   ['assets-photos-automobil-neon', '/assets/optimized/assets-photos-automobil-neon-1280.webp'],
   ['assets-photos-automobil-sunset', '/assets/optimized/assets-photos-automobil-sunset-1280.webp'],
