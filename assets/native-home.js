@@ -303,7 +303,7 @@
   let currentIdx=0, nextIdx=1;
   let irA={w:1,h:1}, irB={w:1,h:1};
   let targetReady=0, ready=0;
-  let mix=0, targetMix=0;
+  let mix=0, targetMix=0, transitionStart=0;
   let transitioning=false;
   let heroStartT=performance.now();
 
@@ -352,6 +352,7 @@
       irB={w:entry.w,h:entry.h};
       gl.activeTexture(gl.TEXTURE1); uploadInto(texB, entry);
     }
+    transitionStart=performance.now();
     targetMix=1;
 
     /* after the mix completes, promote B->A and reset */
@@ -517,7 +518,7 @@
   const start=performance.now();
   const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
   const coarsePointer=window.matchMedia&&window.matchMedia('(hover:none), (pointer:coarse)').matches;
-  const targetFrameMs=coarsePointer ? 1000/24 : 1000/45;
+  const targetFrameMs=coarsePointer ? 1000/24 : 0;
   let lastDraw=0;
 
   function frame(){
@@ -542,11 +543,11 @@
     vel+=(velTarget-vel)*0.18;
     lastX=mx; lastY=my;
 
-    /* mix animation */
-    if(targetMix>mix){
-      const step=1000/TRANSITION_MS / 60;
-      mix+=step;
-      if(mix>=1){mix=1;}
+    /* mix animation - time-based so the cross-fade completes in exactly
+       TRANSITION_MS at ANY frame rate (a frame-counted step assumed 60fps and
+       under-shot at the throttled 45fps, causing the fade to snap at the end). */
+    if(targetMix>0){
+      mix=Math.min(1,(now-transitionStart)/TRANSITION_MS);
     }
 
     /* shutter decay */
