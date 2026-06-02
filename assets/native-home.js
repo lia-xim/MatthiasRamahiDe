@@ -299,12 +299,13 @@
     });
   }
   function uploadInto(tex, entry){
-    if(!entry || !entry.img) return;
+    if(!entry || !entry.img) return false;
     gl.bindTexture(gl.TEXTURE_2D, tex);
     try{ gl.texImage2D(gl.TEXTURE_2D,0,gl.RGB,gl.RGB,gl.UNSIGNED_BYTE,entry.img); }
-    catch(e){ console.warn('tex upload failed',e); }
+    catch(e){ console.warn('tex upload failed',e); return false; }
     gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);
     gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);
+    return true;
   }
 
   /* slot state: slotA + slotB hold images; uMix interpolates A->B */
@@ -314,18 +315,27 @@
   let mix=0, targetMix=0, transitionStart=0;
   let transitioning=false;
   let heroStartT=performance.now();
+  let shaderVisible=false;
 
-  /* boot - load first image into slot A, second into slot B */
-  loadImage(0).then(entry=>{
-    if(!entry) return;
-    irA={w:entry.w,h:entry.h};
-    gl.activeTexture(gl.TEXTURE0); uploadInto(texA, entry);
-    heroStartT=performance.now();
+  function revealShaderCanvas(){
+    if(shaderVisible) return;
+    shaderVisible=true;
     ready=1;
     targetReady=1;
     requestAnimationFrame(()=>{
       requestAnimationFrame(()=>canvas.classList.add('is-ready'));
     });
+  }
+
+  /* boot - load first image into slot A, second into slot B */
+  loadImage(0).then(entry=>{
+    if(!entry) return;
+    irA={w:entry.w,h:entry.h};
+    gl.activeTexture(gl.TEXTURE0);
+    const uploaded=uploadInto(texA, entry);
+    if(!uploaded) return;
+    heroStartT=performance.now();
+    revealShaderCanvas();
     /* The LCP hero image is now in. Only AFTER that do we preload the next
        slide into slot B, during idle time. The first slide stays at least a
        few seconds (its CMS "Anzeigedauer", default 7s), so the second image
@@ -356,9 +366,28 @@
     const target=toIdx;
     /* load target into the inactive slot (slot B) */
     const entry=await loadImage(target);
+    let uploaded=false;
     if(entry){
       irB={w:entry.w,h:entry.h};
-      gl.activeTexture(gl.TEXTURE1); uploadInto(texB, entry);
+      gl.activeTexture(gl.TEXTURE1);
+      uploaded=uploadInto(texB, entry);
+    }
+    if(!shaderVisible && uploaded && entry){
+      irA={w:entry.w,h:entry.h};
+      gl.activeTexture(gl.TEXTURE0); uploadInto(texA, entry);
+      heroStartT=performance.now();
+      currentIdx=target;
+      nextIdx=(target+1)%slides.length;
+      revealShaderCanvas();
+      loadImage(nextIdx).then(e=>{
+        if(e){
+          irB={w:e.w,h:e.h};
+          gl.activeTexture(gl.TEXTURE1); uploadInto(texB, e);
+        }
+      });
+      transitioning=false;
+      nextCycleAt=performance.now()+slideDurationMs(currentIdx);
+      return;
     }
     transitionStart=performance.now();
     targetMix=1;

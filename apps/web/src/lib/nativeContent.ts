@@ -1,3 +1,4 @@
+import { versionStaticAssetUrl } from './cache'
 import { imageDisplayUrl, type PayloadDoc, type PayloadMedia } from './payload'
 import { richTextToParagraphs, type PlainRichText } from './richText'
 
@@ -135,7 +136,7 @@ const cachedHomeHeroImages: Array<[string, string]> = [
 const cachedHomeHeroImage = (image: string) => {
   const normalized = image.toLowerCase()
   const match = cachedHomeHeroImages.find(([needle]) => normalized.includes(needle))
-  return match?.[1] || image
+  return match ? versionStaticAssetUrl(match[1]) : image
 }
 
 const homeChapterSizes =
