@@ -7,7 +7,7 @@ export const homeHeroSlides: Field = {
   label: 'Hero-Slider',
   type: 'array',
   minRows: 1,
-  maxRows: 8,
+  maxRows: 20,
   labels: {
     singular: 'Slide',
     plural: 'Slides',
