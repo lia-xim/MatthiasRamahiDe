@@ -3,6 +3,14 @@
 /* ====== Footer aperture animation observer ====== */
 (()=>{const f=document.querySelector('.mr-footer');if(!f) return;const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){f.classList.add('in-view');io.disconnect();}});},{threshold:.28});io.observe(f);})();
 
+/* ====== Hero headline early reveal ======
+   This (deferred) script runs right after the DOM is parsed. Reveal the hero
+   headline NOW instead of waiting for the lazily-booted WebGL shader: the
+   headline is the LCP text and gating its reveal behind requestIdleCallback
+   pushed LCP out to ~3.8s. The shader/background still boots lazily afterwards;
+   startHeroShader re-adding `is-in` is a harmless no-op. */
+(()=>{const t=document.getElementById('hero-title');if(t)t.classList.add('is-in');})();
+
 /* ====== Global smooth lazy-image fade-in ======
    Every <img loading="lazy" decoding="async"> starts hidden via CSS and gets .is-loaded once
    the browser actually has the pixels - for cached, in-flight, and
