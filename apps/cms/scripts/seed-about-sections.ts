@@ -54,7 +54,12 @@ const IMG = {
   automobilNeon: ['assets/optimized/assets-photos-automobil-neon-1920.webp', 'assets/optimized/assets-photos-automobil-neon-960.webp'],
   oldtimerStage: ['assets/optimized/assets-photos-oldtimer-stage-1920.webp', 'assets/optimized/assets-photos-oldtimer-stage-960.webp'],
   motorrad: ['assets/optimized/assets-photos-motorrad-1920.webp', 'assets/optimized/assets-photos-motorrad-720.webp'],
-  portraitBlue: ['assets/optimized/assets-photos-portrait-blue-960.webp', 'assets/optimized/assets-photos-portrait-blue-720.webp'],
+  portraitBlue: [
+    'assets/optimized/assets-photos-portrait-blue-960.webp',
+    'assets/optimized/assets-photos-portrait-blue-720.webp',
+    'assets/photos/portrait-blue.webp',
+    'portrait-blue.webp',
+  ],
   landschaft: ['assets/optimized/assets-photos-landschaft-1920.webp', 'assets/optimized/assets-photos-landschaft-720.webp'],
 }
 
