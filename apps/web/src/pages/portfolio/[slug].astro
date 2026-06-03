@@ -6,13 +6,21 @@ import NativeShaderHero from '../../components/native/NativeShaderHero.astro'
 import BaseLayout from '../../layouts/BaseLayout.astro'
 import { versionStaticAssetUrl } from '../../lib/cache'
 import { homeHeroSlidesFor } from '../../lib/nativeContent'
-import { getBySlug, imageDisplayUrl, listDocuments, routeForDoc, toAbsoluteSiteUrl, type PayloadDoc } from '../../lib/payload'
+import {
+  getBySlug,
+  imageDisplayUrl,
+  listDocuments,
+  liveCmsFetchOptions,
+  routeForDoc,
+  toAbsoluteSiteUrl,
+  type PayloadDoc,
+} from '../../lib/payload'
 import { breadcrumbJsonLd, imageGalleryJsonLd, type JsonLd } from '../../lib/seo'
 
 export const prerender = true
 
 export async function getStaticPaths() {
-  const docs = await listDocuments('portfolio-projects', { limit: 1000, depth: 2 })
+  const docs = await listDocuments('portfolio-projects', liveCmsFetchOptions({ limit: 1000, depth: 2 }))
 
   return docs
     .filter((doc): doc is PayloadDoc & { slug: string } => Boolean(doc.slug) && doc._status !== 'draft' && !doc.seo?.noIndex)
@@ -23,7 +31,7 @@ export async function getStaticPaths() {
 }
 
 const { slug } = Astro.params
-const doc = Astro.props.doc ?? (slug ? await getBySlug('portfolio-projects', slug) : null)
+const doc = Astro.props.doc ?? (slug ? await getBySlug('portfolio-projects', slug, liveCmsFetchOptions({ depth: 2 })) : null)
 
 if (!doc) {
   return Astro.redirect('/portfolio.html', 308)
