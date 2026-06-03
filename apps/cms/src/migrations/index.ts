@@ -9,6 +9,7 @@ import * as migration_20260602_120000_services_index_sections from './20260602_1
 import * as migration_20260602_130000_media_quality_preset from './20260602_130000_media_quality_preset';
 import * as migration_20260602_140000_hero_slide_duration from './20260602_140000_hero_slide_duration';
 import * as migration_20260603_100000_about_sections from './20260603_100000_about_sections';
+import * as migration_20260603_110000_portfolio_index_sections from './20260603_110000_portfolio_index_sections';
 
 export const migrations = [
   {
@@ -65,5 +66,10 @@ export const migrations = [
     up: migration_20260603_100000_about_sections.up,
     down: migration_20260603_100000_about_sections.down,
     name: '20260603_100000_about_sections'
+  },
+  {
+    up: migration_20260603_110000_portfolio_index_sections.up,
+    down: migration_20260603_110000_portfolio_index_sections.down,
+    name: '20260603_110000_portfolio_index_sections'
   },
 ];

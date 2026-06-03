@@ -135,6 +135,37 @@ export type PayloadDoc = {
       href?: string
     }>
   }
+  // Portfolio / Bildarchiv (SitePages, pageType 'portfolio-index'). Optional -> Fallback im Component.
+  portfolioIndex?: {
+    contextKicker?: string
+    contextHeadline?: string
+    contextBody?: Array<{ text?: string }>
+    slices?: Array<{
+      anchor?: string
+      label?: string
+      heading?: string
+      theme?: string
+      href?: string
+      linkLabel?: string
+      photos?: Array<{
+        image?: PayloadMedia | string
+        fullImage?: PayloadMedia | string
+        caption?: string
+        href?: string
+      }>
+    }>
+    archive?: {
+      headline?: string
+      batchSize?: number
+      items?: Array<{
+        image?: PayloadMedia | string
+        fullImage?: PayloadMedia | string
+        caption?: string
+        href?: string
+      }>
+    }
+    contact?: { subject?: string; headline?: string; lead?: string }
+  }
   // Leistungs-Uebersicht (SitePages, pageType 'services-index'). Optional -> Fallback im Component.
   servicesIndex?: {
     overviewHeadline?: string

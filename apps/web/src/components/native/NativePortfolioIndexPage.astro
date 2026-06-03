@@ -3,19 +3,101 @@ import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import {
   portfolioArchivePhotos,
   portfolioContext,
+  portfolioHeroSlidesFallback,
   portfolioSpreads,
+  type PortfolioPhoto,
+  type PortfolioSpread,
 } from '../../lib/portfolioIndexContent'
 import { homeHeroSlidesFor } from '../../lib/nativeContent'
-import { getSitePageByType, liveCmsFetchOptions, type PayloadDoc } from '../../lib/payload'
+import {
+  getSitePageByType,
+  imageAlt,
+  imageDimensions,
+  imageDisplayUrl,
+  liveCmsFetchOptions,
+  toRootRelativeHref,
+  type PayloadDoc,
+} from '../../lib/payload'
 
 const providedDoc = Astro.props.doc as PayloadDoc | undefined
 const doc = providedDoc || (await getSitePageByType('portfolio-index', liveCmsFetchOptions({ depth: 2 })))
-const heroSlides = homeHeroSlidesFor(doc)
+const heroSlides = (doc?.heroSlides || []).length > 0 ? homeHeroSlidesFor(doc) : portfolioHeroSlidesFallback
 const firstHeroSlide = heroSlides[0]
 const heroImages = heroSlides.map((slide) => slide.image)
 const heroSlidesJson = JSON.stringify(heroSlides)
 const emptyImage =
   'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%221%22 height=%221%22 viewBox=%220 0 1 1%22%3E%3C/svg%3E'
+
+type CmsPortfolioPhoto = {
+  image?: PayloadDoc['heroImage']
+  fullImage?: PayloadDoc['heroImage']
+  caption?: string
+  href?: string
+}
+
+const portfolioIndex = doc?.portfolioIndex
+const cleanText = (value?: string) => (typeof value === 'string' ? value.trim() : '')
+const filledTextRows = (rows?: Array<{ text?: string }>) => rows?.map((row) => cleanText(row.text)).filter(Boolean) || []
+const isPortfolioPhoto = (value: PortfolioPhoto | undefined): value is PortfolioPhoto => Boolean(value)
+const isPortfolioSpread = (value: PortfolioSpread | undefined): value is PortfolioSpread => Boolean(value)
+const dimensionsFor = (media: CmsPortfolioPhoto['image'], fallbackWidth: number, fallbackHeight: number) => {
+  const dims = imageDimensions(media, 'card')
+  return {
+    width: dims.width || fallbackWidth,
+    height: dims.height || fallbackHeight,
+  }
+}
+const portfolioPhotoFromCms = (item?: CmsPortfolioPhoto) => {
+  if (!item) return undefined
+  const displayMedia = item.image || item.fullImage
+  const fullMedia = item.fullImage || item.image
+  const src = imageDisplayUrl(displayMedia, 'card', { allowOriginal: true })
+  if (!src) return undefined
+  const href = toRootRelativeHref(item.href) || imageDisplayUrl(fullMedia, 'wide', { allowOriginal: true }) || src
+  const dims = dimensionsFor(displayMedia, 720, 900)
+
+  return {
+    caption: cleanText(item.caption) || imageAlt(displayMedia, 'Portfolio-Bild'),
+    height: dims.height,
+    href,
+    src,
+    width: dims.width,
+  }
+}
+
+const contextBody = filledTextRows(portfolioIndex?.contextBody)
+const contextParagraphs = contextBody.length > 0 ? contextBody : portfolioContext
+const contextKicker = cleanText(portfolioIndex?.contextKicker) || 'Einordnung'
+const contextHeadline = cleanText(portfolioIndex?.contextHeadline) || 'Serien statt Sammelmappe.'
+
+const cmsSpreads =
+  portfolioIndex?.slices
+    ?.map((slice, index) => {
+      const photos = (slice.photos || []).map(portfolioPhotoFromCms).filter(isPortfolioPhoto)
+      if (photos.length === 0) return undefined
+
+      return {
+        id: cleanText(slice.anchor) || `portfolio-slice-${index + 1}`,
+        label: cleanText(slice.label) || cleanText(slice.heading) || `Portfolio Slice ${index + 1}`,
+        heading: cleanText(slice.heading) || cleanText(slice.label) || `Portfolio Slice ${index + 1}`,
+        href: toRootRelativeHref(slice.href) || '#archive',
+        linkLabel: cleanText(slice.linkLabel) || 'Zur Seite ->',
+        theme: slice.theme === 'dark' ? 'dark' : 'light',
+        photos,
+      } satisfies PortfolioSpread
+    })
+    .filter(isPortfolioSpread) || []
+const displaySpreads = cmsSpreads.length > 0 ? cmsSpreads : portfolioSpreads
+
+const cmsArchivePhotos = (portfolioIndex?.archive?.items || []).map(portfolioPhotoFromCms).filter(isPortfolioPhoto)
+const archivePhotos = cmsArchivePhotos.length > 0 ? cmsArchivePhotos : portfolioArchivePhotos
+const archiveBatchSize = Math.max(1, Math.min(Number(portfolioIndex?.archive?.batchSize) || 12, archivePhotos.length || 12))
+const archiveHeadline = cleanText(portfolioIndex?.archive?.headline) || 'Bildarchiv'
+const contactSubject = cleanText(portfolioIndex?.contact?.subject) || 'Shooting Anfrage'
+const contactHeadline = cleanText(portfolioIndex?.contact?.headline) || 'Shooting <em>anfragen.</em>'
+const contactLead =
+  cleanText(portfolioIndex?.contact?.lead) ||
+  'Schreiben Sie kurz, welche Bildsprache Sie interessiert, wofuer die Aufnahmen genutzt werden und welchen Zeitraum Sie planen. Dann klaeren wir Motiv, Umfang, Rechte und Ausgabe sauber gemeinsam.'
 ---
 <AdoptedPageLayout
   legacyFile="portfolio.html"
@@ -50,16 +132,16 @@ const emptyImage =
     <section class="pf-context" data-header-theme="light" aria-label="Portfolio einordnen">
       <div class="pf-context__inner">
         <div>
-          <div class="pf-context__kicker">Einordnung</div>
-          <h2>Serien statt Sammelmappe.</h2>
+          <div class="pf-context__kicker">{contextKicker}</div>
+          <h2>{contextHeadline}</h2>
         </div>
         <div>
-          {portfolioContext.map((paragraph) => <p>{paragraph}</p>)}
+          {contextParagraphs.map((paragraph) => <p>{paragraph}</p>)}
         </div>
       </div>
     </section>
 
-    {portfolioSpreads.map((spread) => (
+    {displaySpreads.map((spread) => (
       <section
         class={`pf-spread ${spread.theme === 'light' ? 'is-light' : ''}`.trim()}
         id={spread.id}
@@ -84,11 +166,11 @@ const emptyImage =
 
     <section class="pf-archive" id="archive" data-header-theme="light" aria-label="Archiv">
       <div class="pf-archive__head">
-        <h2>Bildarchiv</h2>
+        <h2>{archiveHeadline}</h2>
       </div>
-      <div class="pf-archive__grid" id="pfArchiveGrid" data-archive-batch="12">
-        {portfolioArchivePhotos.map((photo, i) => (
-          <a class="pf-photo" data-archive-item hidden={i >= 12} data-caption={photo.caption} href={photo.href} aria-label={photo.caption || 'Bild im Großformat ansehen'}>
+      <div class="pf-archive__grid" id="pfArchiveGrid" data-archive-batch={String(archiveBatchSize)}>
+        {archivePhotos.map((photo, i) => (
+          <a class="pf-photo" data-archive-item hidden={i >= archiveBatchSize} data-caption={photo.caption} href={photo.href} aria-label={photo.caption || 'Bild im Grossformat ansehen'}>
             <img
               src={photo.src}
               data-src={photo.src}
@@ -107,15 +189,15 @@ const emptyImage =
       id="anfrage"
       data-contact-section
       data-theme="light"
-      data-contact-subject="Shooting Anfrage"
-      data-contact-headline="Shooting <em>anfragen.</em>"
-      data-contact-lead="Schreiben Sie kurz, welche Bildsprache Sie interessiert, wofür die Aufnahmen genutzt werden und welchen Zeitraum Sie planen. Dann klären wir Motiv, Umfang, Rechte und Ausgabe sauber gemeinsam."
+      data-contact-subject={contactSubject}
+      data-contact-headline={contactHeadline}
+      data-contact-lead={contactLead}
     />
 
     <div class="pf-viewer" id="pfViewer" aria-hidden="true" inert role="dialog" aria-label="Bildansicht">
-      <button class="pf-viewer__close" type="button" id="pfClose">Schließen</button>
-      <button class="pf-viewer__prev" type="button" id="pfPrev" aria-label="Vorheriges Bild">‹</button>
-      <button class="pf-viewer__next" type="button" id="pfNext" aria-label="Nächstes Bild">›</button>
+      <button class="pf-viewer__close" type="button" id="pfClose">Schliessen</button>
+      <button class="pf-viewer__prev" type="button" id="pfPrev" aria-label="Vorheriges Bild">&lsaquo;</button>
+      <button class="pf-viewer__next" type="button" id="pfNext" aria-label="Naechstes Bild">&rsaquo;</button>
       <figure class="pf-viewer__figure">
         <img id="pfViewerImg" src={emptyImage} alt="" decoding="async" loading="lazy" width="1" height="1" />
       </figure>

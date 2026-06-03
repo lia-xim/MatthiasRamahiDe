@@ -17,9 +17,53 @@ export type PortfolioSpread = {
   photos: PortfolioPhoto[]
 }
 
-// Der Portfolio-Hero nutzt jetzt den geteilten Startseiten-Hero (homeHeroSlidesFor),
-// gespeist aus dem CMS-Feld `heroSlides` der Portfolio-Uebersicht. Das alte
-// statische portfolioHero-Objekt entfaellt dadurch.
+export const portfolioHeroSlidesFallback = [
+  {
+    image: '/assets/optimized/assets-portfolio-dsc3879-1920.webp',
+    titleLines: ['Portfolio', 'Bildarchiv'],
+    lead: 'Serien aus Portrait, Automobil, Sportwagen, Oldtimer, Motorrad und Landschaft als eigener Einstieg ins Bildarchiv.',
+    primaryHref: '#archive',
+    primaryLabel: 'Archiv ansehen',
+    secondaryHref: '#anfrage',
+    secondaryLabel: 'Projekt anfragen',
+  },
+  {
+    image: '/assets/optimized/assets-portfolio-dsc2310-1920.webp',
+    titleLines: ['Sportwagen', 'Details'],
+    lead: 'Form, Reflexion und Linie in ruhigen Serien fuer Marke, Verkauf und Sammlung.',
+    primaryHref: '#sport',
+    primaryLabel: 'Serie ansehen',
+    secondaryHref: '#archive',
+    secondaryLabel: 'Zum Archiv',
+  },
+  {
+    image: '/assets/optimized/assets-photos-oldtimer-stage-1920.webp',
+    titleLines: ['Oldtimer', 'Charakter'],
+    lead: 'Material, Patina und Geschichte als Bildstrecke mit kontrolliertem Licht.',
+    primaryHref: '#classic',
+    primaryLabel: 'Serie ansehen',
+    secondaryHref: '#anfrage',
+    secondaryLabel: 'Anfragen',
+  },
+  {
+    image: '/assets/optimized/assets-photos-motorrad-ninja-road-1920.webp',
+    titleLines: ['Motorrad', 'Mechanik'],
+    lead: 'Maschine, Haltung und Details fuer konzentrierte Editorial- und Verkaufsbilder.',
+    primaryHref: '#moto',
+    primaryLabel: 'Serie ansehen',
+    secondaryHref: '#archive',
+    secondaryLabel: 'Zum Archiv',
+  },
+  {
+    image: '/assets/optimized/assets-portfolio-wettberwerb-foto5-wunder-der-natur2-1920.webp',
+    titleLines: ['Landschaft', 'Edition'],
+    lead: 'Ruhige Landschaftsmotive fuer Fine-Art, Wandbild und grossformatige Praesentation.',
+    primaryHref: '#land',
+    primaryLabel: 'Serie ansehen',
+    secondaryHref: '#archive',
+    secondaryLabel: 'Zum Archiv',
+  },
+]
 
 export const portfolioContext = [
   'Das Portfolio ist nach Bildfunktionen und Themenclustern aufgebaut: Portrait, Automobil, Sportwagen, Oldtimer, Motorrad und Landschaft. Jede Strecke zeigt nicht nur ein einzelnes Motiv, sondern die visuelle Logik dahinter: Einstieg, Detail, Material, Atmosphaere und ein ruhiges Schlussbild.',

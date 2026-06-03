@@ -512,6 +512,81 @@ export interface SitePage {
         }[]
       | null;
   };
+  portfolioIndex?: {
+    contextKicker?: string | null;
+    contextHeadline?: string | null;
+    contextBody?:
+      | {
+          text: string;
+          id?: string | null;
+        }[]
+      | null;
+    /**
+     * Reihenfolge = Anzeige-Reihenfolge. Mindestens fuenf Standard-Slices sind vorgesehen; weitere koennen ergaenzt werden.
+     */
+    slices?:
+      | {
+          anchor?: string | null;
+          label?: string | null;
+          heading?: string | null;
+          /**
+           * light oder dark
+           */
+          theme?: string | null;
+          linkLabel?: string | null;
+          /**
+           * Interne Links am besten root-relativ eintragen, z. B. /portraitfotografie-duesseldorf.html.
+           */
+          href?: string | null;
+          photos?:
+            | {
+                /**
+                 * Wird im Raster bzw. in der Bildstrecke angezeigt.
+                 */
+                image: number | Media;
+                /**
+                 * Optional. Wenn leer, wird das Vorschaubild fuer die Grossansicht verwendet.
+                 */
+                fullImage?: (number | null) | Media;
+                caption?: string | null;
+                /**
+                 * Interne Links am besten root-relativ eintragen, z. B. /portraitfotografie-duesseldorf.html.
+                 */
+                href?: string | null;
+                id?: string | null;
+              }[]
+            | null;
+          id?: string | null;
+        }[]
+      | null;
+    archive?: {
+      headline?: string | null;
+      batchSize?: number | null;
+      items?:
+        | {
+            /**
+             * Wird im Raster bzw. in der Bildstrecke angezeigt.
+             */
+            image: number | Media;
+            /**
+             * Optional. Wenn leer, wird das Vorschaubild fuer die Grossansicht verwendet.
+             */
+            fullImage?: (number | null) | Media;
+            caption?: string | null;
+            /**
+             * Interne Links am besten root-relativ eintragen, z. B. /portraitfotografie-duesseldorf.html.
+             */
+            href?: string | null;
+            id?: string | null;
+          }[]
+        | null;
+    };
+    contact?: {
+      subject?: string | null;
+      headline?: string | null;
+      lead?: string | null;
+    };
+  };
   servicesIndex?: {
     overviewHeadline?: string | null;
     overviewEmphasis?: string | null;
@@ -2386,6 +2461,60 @@ export interface SitePagesSelect<T extends boolean = true> {
               linkLabel?: T;
               href?: T;
               id?: T;
+            };
+      };
+  portfolioIndex?:
+    | T
+    | {
+        contextKicker?: T;
+        contextHeadline?: T;
+        contextBody?:
+          | T
+          | {
+              text?: T;
+              id?: T;
+            };
+        slices?:
+          | T
+          | {
+              anchor?: T;
+              label?: T;
+              heading?: T;
+              theme?: T;
+              linkLabel?: T;
+              href?: T;
+              photos?:
+                | T
+                | {
+                    image?: T;
+                    fullImage?: T;
+                    caption?: T;
+                    href?: T;
+                    id?: T;
+                  };
+              id?: T;
+            };
+        archive?:
+          | T
+          | {
+              headline?: T;
+              batchSize?: T;
+              items?:
+                | T
+                | {
+                    image?: T;
+                    fullImage?: T;
+                    caption?: T;
+                    href?: T;
+                    id?: T;
+                  };
+            };
+        contact?:
+          | T
+          | {
+              subject?: T;
+              headline?: T;
+              lead?: T;
             };
       };
   servicesIndex?:
