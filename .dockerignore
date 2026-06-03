@@ -23,3 +23,19 @@ apps/web/.visual-regression/
 apps/web/.contact-queue/
 
 *.log
+
+# Server-local artifacts: never send these into Docker build context.
+backups/
+outputs/
+legacy-reference/
+.claude/
+*.tgz
+*.tar
+*.tar.gz
+*.zip
+*.sql
+*.sql.gz
+*.dump
+*.bak
+*.backup
+*.before-cache-fix-*
