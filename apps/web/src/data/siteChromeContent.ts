@@ -197,6 +197,58 @@ export const siteChromeContent = {
       slug: 'ueber-mich',
       pageType: 'about',
       intro: '23 Jahre, kreativ besessen — Fotografie als Handwerk, Haltung und ein leises Stück Inszenierung.',
+      aboutHero: {
+        kicker: 'Über mich · Düsseldorf · NRW',
+        titleLine1: 'Hinter der',
+        titleLine2: 'Kamera.',
+        lead:
+          'Matthias Ramahi — Fotograf aus Düsseldorf. Editorial geführte Bildserien für Automobile, Oldtimer, Sportwagen, Motorräder, Portraits und Landschaften. Ausgebildet im Handwerk, denkend wie ein Editor.',
+        primaryLabel: 'Portfolio ansehen →',
+        primaryHref: 'portfolio.html',
+        secondaryLabel: 'Projekt anfragen',
+        secondaryHref: '#anfrage',
+      },
+      aboutStatement: {
+        headline: 'Bild vor Filter, Motiv vor',
+        headlineEmphasis: 'Effekt',
+        lead:
+          'Was mich an Fotografie hält, ist nicht das eine spektakuläre Bild — es ist die ruhige Arbeit davor: das genaue Hinsehen, das Warten auf das richtige Licht, die kleine Verschiebung in der Komposition, die ein Motiv plötzlich tragen lässt.',
+        body:
+          'Mein Anspruch ist editorial: klare Linien, ehrliche Farben, keine Effektkette. Ob Portrait, Automobil oder Landschaft — am Ende geht es darum, dass das Bild den Charakter seines Motivs zeigt und nicht den meiner Software. Aus dieser Geduld entstehen Aufnahmen, die nach dem Shooting noch arbeiten — auf dem Inserat, im Pressekit, an der Wand.',
+        primaryLabel: 'Portfolio ansehen',
+        primaryHref: 'portfolio.html',
+        secondaryLabel: 'Bereiche ansehen',
+        secondaryHref: '#schwerpunkte',
+      },
+      aboutChapters: {
+        headline: 'Sechs Bereiche. Eine',
+        headlineEmphasis: 'Hand',
+        intro:
+          'Ich arbeite nicht in Genre-Schubladen — aber jede Disziplin braucht ihr eigenes Vorgehen. Licht, Distanz, Material und Rhythmus passen sich an, die Bildsprache bleibt verwandt.',
+      },
+      aboutSister: {
+        kicker: 'Bewegte Bilder · Empfehlung',
+        headline: 'Wenn es',
+        headlineEmphasis: 'bewegt',
+        lead: 'Für bewegte Bilder empfehle ich meine Schwester Sophia Ramahi — Videografin aus dem Rheinland.',
+        body:
+          'Sophia produziert Musikvideos, Imagefilme und redaktionelles Bewegtbild. Aus einer Familie, aus einer Bildsprache — wir arbeiten regelmäßig parallel auf Set, damit Foto und Video aus einem Guss kommen.',
+        buttonLabel: 'Anfrage Foto + Video →',
+        href: 'contact.html#anfrage',
+        plate: {
+          tag: 'Schwester · Location',
+          nameLine1: 'Sophia',
+          nameLine2: 'Ramahi',
+          roles: [{ label: 'Videografin' }, { label: 'Musikvideos' }, { label: 'Imagefilm' }, { label: 'Editorial · Set' }],
+          location: 'Düsseldorf · NRW',
+        },
+      },
+      aboutContact: {
+        subject: 'Projektanfrage',
+        headline: 'Projekt <em>anfragen.</em>',
+        lead:
+          'Schreiben Sie kurz, welche Leistung Sie interessiert, wo das Projekt stattfindet und welchen Zeitraum Sie planen. Ich melde mich mit Rückfragen oder einem nächsten Schritt per E-Mail.',
+      },
       seo: {
         title: 'Über mich — Matthias Ramahi, Fotograf aus Düsseldorf',
         description:

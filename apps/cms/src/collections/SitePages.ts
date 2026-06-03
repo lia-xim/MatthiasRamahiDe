@@ -3,6 +3,7 @@ import type { CollectionConfig } from 'payload'
 import { authenticated, publishedOrAuthenticated } from '../access/publishedOrAuthenticated'
 import { adminGroups, editorPagination } from '../admin/structure'
 import { advancedSettings } from '../fields/advancedSettings'
+import { aboutSectionsTab } from '../fields/aboutSections'
 import { contentBlocks } from '../fields/contentBlocks'
 import { mediaRelationshipField } from '../fields/editorialImages'
 import { homeHeroSlides } from '../fields/homeHeroSlides'
@@ -25,6 +26,7 @@ const heroSliderPages = (data: Record<string, unknown> | undefined) =>
   heroSliderPageTypes.includes((data?.pageType as string) ?? '')
 const singleImagePages = (data: Record<string, unknown> | undefined) => !heroSliderPages(data)
 const homePage = (data: Record<string, unknown> | undefined) => ((data?.pageType as string) ?? '') === 'home'
+const aboutPage = (data: Record<string, unknown> | undefined) => ((data?.pageType as string) ?? '') === 'about'
 const photographyIndexPage = (data: Record<string, unknown> | undefined) =>
   ((data?.pageType as string) ?? '') === 'photography-index'
 const servicesIndexPage = (data: Record<string, unknown> | undefined) =>
@@ -134,6 +136,10 @@ export const SitePages: CollectionConfig = {
         {
           ...homeSectionsTab,
           admin: { condition: homePage },
+        },
+        {
+          ...aboutSectionsTab,
+          admin: { condition: aboutPage },
         },
         {
           ...photographyIndexSectionsTab,

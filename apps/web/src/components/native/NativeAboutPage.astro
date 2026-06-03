@@ -1,12 +1,78 @@
 ---
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
-import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
+import { getLegacyBackedDoc, imageAlt, imageDisplayUrl, type PayloadDoc, type PayloadMedia } from '../../lib/payload'
 
 const legacyFile = 'ueber-mich.html'
 const providedDoc = Astro.props.doc as PayloadDoc | undefined
 const doc = providedDoc || (await getLegacyBackedDoc(legacyFile, { depth: 2 }))
 
-const chapters = [
+type AboutChapter = {
+  href?: string
+  image?: PayloadMedia | string
+  alt?: string
+  width?: number
+  height?: number
+  title?: string
+  linkLabel?: string
+}
+
+const fallback = {
+  hero: {
+    kicker: 'Über mich · Düsseldorf · NRW',
+    titleLine1: 'Hinter der',
+    titleLine2: 'Kamera.',
+    lead:
+      'Matthias Ramahi — Fotograf aus Düsseldorf. Editorial geführte Bildserien für Automobile, Oldtimer, Sportwagen, Motorräder, Portraits und Landschaften. Ausgebildet im Handwerk, denkend wie ein Editor.',
+    image: 'mpissxxj-portfolio_webp_full_063-1.webp',
+    primaryLabel: 'Portfolio ansehen →',
+    primaryHref: 'portfolio.html',
+    secondaryLabel: 'Projekt anfragen',
+    secondaryHref: '#anfrage',
+  },
+  statement: {
+    headline: 'Bild vor Filter, Motiv vor',
+    headlineEmphasis: 'Effekt',
+    lead:
+      'Was mich an Fotografie hält, ist nicht das eine spektakuläre Bild — es ist die ruhige Arbeit davor: das genaue Hinsehen, das Warten auf das richtige Licht, die kleine Verschiebung in der Komposition, die ein Motiv plötzlich tragen lässt.',
+    body:
+      'Mein Anspruch ist editorial: klare Linien, ehrliche Farben, keine Effektkette. Ob Portrait, Automobil oder Landschaft — am Ende geht es darum, dass das Bild den Charakter seines Motivs zeigt und nicht den meiner Software. Aus dieser Geduld entstehen Aufnahmen, die nach dem Shooting noch arbeiten — auf dem Inserat, im Pressekit, an der Wand.',
+    primaryLabel: 'Portfolio ansehen',
+    primaryHref: 'portfolio.html',
+    secondaryLabel: 'Bereiche ansehen',
+    secondaryHref: '#schwerpunkte',
+  },
+  chapters: {
+    headline: 'Sechs Bereiche. Eine',
+    headlineEmphasis: 'Hand',
+    intro:
+      'Ich arbeite nicht in Genre-Schubladen — aber jede Disziplin braucht ihr eigenes Vorgehen. Licht, Distanz, Material und Rhythmus passen sich an, die Bildsprache bleibt verwandt.',
+  },
+  sister: {
+    kicker: 'Bewegte Bilder · Empfehlung',
+    headline: 'Wenn es',
+    headlineEmphasis: 'bewegt',
+    lead: 'Für bewegte Bilder empfehle ich meine Schwester Sophia Ramahi — Videografin aus dem Rheinland.',
+    body:
+      'Sophia produziert Musikvideos, Imagefilme und redaktionelles Bewegtbild. Aus einer Familie, aus einer Bildsprache — wir arbeiten regelmäßig parallel auf Set, damit Foto und Video aus einem Guss kommen.',
+    buttonLabel: 'Anfrage Foto + Video →',
+    href: 'contact.html#anfrage',
+    plate: {
+      tag: 'Schwester · Location',
+      nameLine1: 'Sophia',
+      nameLine2: 'Ramahi',
+      roles: [{ label: 'Videografin' }, { label: 'Musikvideos' }, { label: 'Imagefilm' }, { label: 'Editorial · Set' }],
+      location: 'Düsseldorf · NRW',
+    },
+  },
+  contact: {
+    subject: 'Projektanfrage',
+    headline: 'Projekt <em>anfragen.</em>',
+    lead:
+      'Schreiben Sie kurz, welche Leistung Sie interessiert, wo das Projekt stattfindet und welchen Zeitraum Sie planen. Ich melde mich mit Rückfragen oder einem nächsten Schritt per E-Mail.',
+  },
+}
+
+const fallbackChapters: AboutChapter[] = [
   {
     href: 'automobil-fotografie-duesseldorf.html',
     image: 'assets/optimized/assets-photos-automobil-sunset-960.webp',
@@ -56,24 +122,40 @@ const chapters = [
     title: 'Landschaft',
   },
 ]
+
+const aboutHero = { ...fallback.hero, ...((doc?.aboutHero as Record<string, unknown> | undefined) || {}) }
+const aboutStatement = { ...fallback.statement, ...((doc?.aboutStatement as Record<string, unknown> | undefined) || {}) }
+const aboutChapters = { ...fallback.chapters, ...((doc?.aboutChapters as Record<string, unknown> | undefined) || {}) }
+const aboutSister = { ...fallback.sister, ...((doc?.aboutSister as Record<string, unknown> | undefined) || {}) }
+const sisterPlate = {
+  ...fallback.sister.plate,
+  ...((aboutSister.plate as Record<string, unknown> | undefined) || {}),
+}
+const aboutContact = { ...fallback.contact, ...((doc?.aboutContact as Record<string, unknown> | undefined) || {}) }
+const aboutChapterItems = (aboutChapters as { items?: AboutChapter[] }).items
+const chapters = (aboutChapterItems?.length ? aboutChapterItems : fallbackChapters) as AboutChapter[]
+const sisterRoles = ((sisterPlate.roles as Array<{ label?: string }> | undefined)?.length
+  ? (sisterPlate.roles as Array<{ label?: string }>)
+  : fallback.sister.plate.roles)
+const heroImage = imageDisplayUrl(aboutHero.image as PayloadMedia | string | undefined, 'hero') || fallback.hero.image
 ---
 <AdoptedPageLayout legacyFile={legacyFile} current="ueber-mich" doc={doc}>
   <main>
     <section class="ovh ovh--ueber" data-theme="dark" data-header-theme="dark" aria-label="Matthias Ramahi — Fotograf aus Düsseldorf">
-      <img class="ovh__photo" src="mpissxxj-portfolio_webp_full_063-1.webp" alt="" width="1920" height="1280" fetchpriority="high" decoding="async" aria-hidden="true" />
+      <img class="ovh__photo" src={heroImage} alt="" width="1920" height="1280" fetchpriority="high" decoding="async" aria-hidden="true" />
       <div class="ovh__glow" aria-hidden="true"></div>
       <div class="ovh__aperture" aria-hidden="true"></div>
       <div class="ovh__grid">
         <div class="ovh__beam" aria-hidden="true"></div>
-        <p class="ovh__kicker">Über mich · Düsseldorf · NRW</p>
+        <p class="ovh__kicker">{aboutHero.kicker}</p>
         <h1 class="ovh__title">
-          <span class="line"><span class="word">Hinter der</span></span>
-          <span class="line"><span class="word">Kamera.</span></span>
+          <span class="line"><span class="word">{aboutHero.titleLine1}</span></span>
+          <span class="line"><span class="word">{aboutHero.titleLine2}</span></span>
         </h1>
-        <p class="ovh__lead">Matthias Ramahi — Fotograf aus Düsseldorf. Editorial geführte Bildserien für Automobile, Oldtimer, Sportwagen, Motorräder, Portraits und Landschaften. Ausgebildet im Handwerk, denkend wie ein Editor.</p>
+        <p class="ovh__lead">{aboutHero.lead}</p>
         <div class="ovh__actions">
-          <a class="ovh__btn" href="portfolio.html">Portfolio ansehen →</a>
-          <a class="ovh__btn ovh__btn--ghost" href="#anfrage">Projekt anfragen</a>
+          <a class="ovh__btn" href={aboutHero.primaryHref as string}>{aboutHero.primaryLabel}</a>
+          <a class="ovh__btn ovh__btn--ghost" href={aboutHero.secondaryHref as string}>{aboutHero.secondaryLabel}</a>
         </div>
       </div>
     </section>
@@ -81,14 +163,14 @@ const chapters = [
     <section class="statement sec-light" data-theme="light" data-header-theme="light" aria-label="Haltung">
       <div class="section-inner">
         <div>
-          <h2>Bild vor Filter,<br />Motiv vor <em>Effekt</em>.</h2>
+          <h2>{aboutStatement.headline}<br /> <em>{aboutStatement.headlineEmphasis}</em>.</h2>
         </div>
         <div class="body">
-          <p class="lead">Was mich an Fotografie hält, ist nicht das eine spektakuläre Bild — es ist die ruhige Arbeit davor: das genaue Hinsehen, das Warten auf das richtige Licht, die kleine Verschiebung in der Komposition, die ein Motiv plötzlich tragen lässt.</p>
-          <p>Mein Anspruch ist editorial: klare Linien, ehrliche Farben, keine Effektkette. Ob Portrait, Automobil oder Landschaft — am Ende geht es darum, dass das Bild den Charakter seines Motivs zeigt und nicht den meiner Software. Aus dieser Geduld entstehen Aufnahmen, die nach dem Shooting noch arbeiten — auf dem Inserat, im Pressekit, an der Wand.</p>
+          <p class="lead">{aboutStatement.lead}</p>
+          <p>{aboutStatement.body}</p>
           <div class="actions">
-            <a class="btn dark" href="portfolio.html">Portfolio ansehen</a>
-            <a class="btn" href="#schwerpunkte" style="color:var(--ink);border-color:var(--ink)">Bereiche ansehen</a>
+            <a class="btn dark" href={aboutStatement.primaryHref as string}>{aboutStatement.primaryLabel}</a>
+            <a class="btn" href={aboutStatement.secondaryHref as string} style="color:var(--ink);border-color:var(--ink)">{aboutStatement.secondaryLabel}</a>
           </div>
         </div>
       </div>
@@ -97,15 +179,24 @@ const chapters = [
     <section class="chapters sec-dark" id="schwerpunkte" data-theme="dark" data-header-theme="dark" aria-label="Schwerpunkte">
       <div class="section-inner">
         <div class="chapters-head">
-          <h2>Sechs Bereiche.<br />Eine <em>Hand</em>.</h2>
-          <p class="lead">Ich arbeite nicht in Genre-Schubladen — aber jede Disziplin braucht ihr eigenes Vorgehen. Licht, Distanz, Material und Rhythmus passen sich an, die Bildsprache bleibt verwandt.</p>
+          <h2>{aboutChapters.headline}<br /> <em>{aboutChapters.headlineEmphasis}</em>.</h2>
+          <p class="lead">{aboutChapters.intro}</p>
         </div>
         <div class="chapter-grid">
           {chapters.map((chapter) => (
-            <a class="chapter" href={chapter.href}>
-              <div class="img"><img src={chapter.image} alt={chapter.alt} loading="lazy" width={chapter.width} height={chapter.height} decoding="async" /></div>
+            <a class="chapter" href={chapter.href || '#'}>
+              <div class="img">
+                <img
+                  src={imageDisplayUrl(chapter.image, 'card') || ''}
+                  alt={imageAlt(chapter.image, chapter.alt || chapter.title || '')}
+                  loading="lazy"
+                  width={chapter.width}
+                  height={chapter.height}
+                  decoding="async"
+                />
+              </div>
               <div class="head"><h3>{chapter.title}</h3></div>
-              <span class="meta"><span class="arr">Bereich ansehen →</span></span>
+              <span class="meta"><span class="arr">{chapter.linkLabel || 'Bereich ansehen →'}</span></span>
             </a>
           ))}
         </div>
@@ -115,24 +206,23 @@ const chapters = [
     <section class="sister sec-light" data-theme="light" data-header-theme="light" aria-label="Sophia Ramahi — Videografin">
       <div class="section-inner sister-grid">
         <div class="sister-copy">
-          <p class="kicker dark">Bewegte Bilder · Empfehlung</p>
-          <h2>Wenn es <em>bewegt</em> sein soll.</h2>
-          <p class="lead">Für bewegte Bilder empfehle ich meine Schwester Sophia Ramahi — Videografin aus dem Rheinland.</p>
-          <p>Sophia produziert Musikvideos, Imagefilme und redaktionelles Bewegtbild. Aus einer Familie, aus einer Bildsprache — wir arbeiten regelmäßig parallel auf Set, damit Foto und Video aus einem Guss kommen.</p>
+          <p class="kicker dark">{aboutSister.kicker}</p>
+          <h2>{aboutSister.headline} <em>{aboutSister.headlineEmphasis}</em> sein soll.</h2>
+          <p class="lead">{aboutSister.lead}</p>
+          <p>{aboutSister.body}</p>
           <div class="actions">
-            <a class="btn dark" href="contact.html#anfrage">Anfrage Foto + Video →</a>
+            <a class="btn dark" href={aboutSister.href as string}>{aboutSister.buttonLabel}</a>
           </div>
         </div>
         <aside class="sister-plate" aria-label="Visitentafel Sophia Ramahi">
-          <p class="sister-plate__tag">Schwester · Location</p>
-          <p class="sister-plate__name">Sophia<br /><em>Ramahi</em>.</p>
+          <p class="sister-plate__tag">{sisterPlate.tag}</p>
+          <p class="sister-plate__name">{sisterPlate.nameLine1}<br /><em>{sisterPlate.nameLine2}</em>.</p>
           <ul class="sister-plate__roles">
-            <li>Videografin</li>
-            <li>Musikvideos</li>
-            <li>Imagefilm</li>
-            <li>Editorial · Set</li>
+            {sisterRoles.map((role) => (
+              <li>{role.label}</li>
+            ))}
           </ul>
-          <p class="sister-plate__loc">Düsseldorf · NRW</p>
+          <p class="sister-plate__loc">{sisterPlate.location}</p>
         </aside>
       </div>
     </section>
@@ -142,9 +232,9 @@ const chapters = [
       data-contact-section
       data-theme="light"
       data-header-theme="light"
-      data-contact-subject="Projektanfrage"
-      data-contact-headline="Projekt <em>anfragen.</em>"
-      data-contact-lead="Schreiben Sie kurz, welche Leistung Sie interessiert, wo das Projekt stattfindet und welchen Zeitraum Sie planen. Ich melde mich mit Rückfragen oder einem nächsten Schritt per E-Mail."
+      data-contact-subject={aboutContact.subject as string}
+      data-contact-headline={aboutContact.headline as string}
+      data-contact-lead={aboutContact.lead as string}
     />
   </main>
 

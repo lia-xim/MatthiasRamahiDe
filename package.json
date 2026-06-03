@@ -41,6 +41,7 @@
     "cms:harden-seo": "corepack pnpm --filter @matthias-ramahi/cms seo:harden-baseline",
     "cms:suggest-seo": "corepack pnpm --filter @matthias-ramahi/cms suggest:seo",
     "cms:seed-home-hero": "corepack pnpm --filter @matthias-ramahi/cms seed:home-hero",
+    "cms:seed-about-sections": "corepack pnpm --filter @matthias-ramahi/cms seed:about-sections",
     "cms:import-adopted": "corepack pnpm --filter @matthias-ramahi/cms import:adopted",
     "cms:review-adopted": "corepack pnpm --filter @matthias-ramahi/cms review:adopted",
     "cms:review-portfolio": "corepack pnpm --filter @matthias-ramahi/cms review:portfolio",

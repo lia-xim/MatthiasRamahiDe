@@ -188,6 +188,10 @@ export interface SitePage {
          * Optionaler Text unter dem Titel. Kurz halten, damit der Hero ruhig bleibt.
          */
         lead?: string | null;
+        /**
+         * Wie lange dieser Slide sichtbar bleibt, bevor automatisch zum naechsten gewechselt wird. Standard: 7 Sekunden.
+         */
+        durationSec?: number | null;
         primaryLabel?: string | null;
         primaryHref?: string | null;
         secondaryLabel?: string | null;
@@ -195,6 +199,364 @@ export interface SitePage {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Heller Block direkt unter dem Hero („Bilder, die einen Raum verändern.").
+   */
+  homeStatement?: {
+    /**
+     * Optional. Leer lassen = eingebaute Headline bleibt.
+     */
+    headline?: string | null;
+    /**
+     * Optional. Wird kursiv/akzentuiert gesetzt.
+     */
+    headlineEmphasis?: string | null;
+    /**
+     * Fließtext rechts neben der Headline.
+     */
+    body?:
+      | {
+          text: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  /**
+   * Dunkles Raster mit den Fotografie-Bereichen.
+   */
+  homeChapters?: {
+    /**
+     * Optional. Leer lassen = eingebaute Headline bleibt.
+     */
+    headline?: string | null;
+    /**
+     * Optional. Wird kursiv/akzentuiert gesetzt.
+     */
+    headlineEmphasis?: string | null;
+    /**
+     * Kurzer Text unter der Headline.
+     */
+    intro?: string | null;
+    /**
+     * Reihenfolge = Anzeige-Reihenfolge. Die Kacheln erscheinen bewusst ohne Meta-Nummern.
+     */
+    items?:
+      | {
+          /**
+           * Bild aus dem Medienarchiv waehlen. Neue Bilder koennen direkt im Drawer hochgeladen und bearbeitet werden.
+           */
+          image: number | Media;
+          title: string;
+          /**
+           * Interne Links am besten root-relativ eintragen, z. B. /portfolio. Vollstaendige eigene URLs werden automatisch gekuerzt.
+           */
+          href: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  /**
+   * Heller Portfolio-Teaser. Die laufenden Bilder werden automatisch aus dem Portfolio gezogen — hier nur Headline und Intro.
+   */
+  homeSelectedWorks?: {
+    /**
+     * Optional. Leer lassen = eingebaute Headline bleibt.
+     */
+    headline?: string | null;
+    /**
+     * Optional. Wird kursiv/akzentuiert gesetzt.
+     */
+    headlineEmphasis?: string | null;
+    intro?: string | null;
+  };
+  /**
+   * Dunkler Über-mich-Block mit Portrait links und Text rechts.
+   */
+  homeAbout?: {
+    /**
+     * Optional, z. B. „Über mich".
+     */
+    kicker?: string | null;
+    /**
+     * Optional. Leer lassen = eingebaute Headline bleibt.
+     */
+    headline?: string | null;
+    /**
+     * Optional. Wird kursiv/akzentuiert gesetzt.
+     */
+    headlineEmphasis?: string | null;
+    /**
+     * Optional. Leer = eingebautes Portrait.
+     */
+    image?: (number | null) | Media;
+    body?:
+      | {
+          text: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  /**
+   * Helle Liste mit den weiteren Dienstleistungen.
+   */
+  homeServices?: {
+    /**
+     * Optional. Leer lassen = eingebaute Headline bleibt.
+     */
+    headline?: string | null;
+    /**
+     * Optional. Wird kursiv/akzentuiert gesetzt.
+     */
+    headlineEmphasis?: string | null;
+    intro?: string | null;
+    /**
+     * Reihenfolge = Anzeige-Reihenfolge.
+     */
+    items?:
+      | {
+          title: string;
+          text?: string | null;
+          /**
+           * Interne Links am besten root-relativ eintragen, z. B. /portfolio. Vollstaendige eigene URLs werden automatisch gekuerzt.
+           */
+          href: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  /**
+   * Dunkler Journal-Teaser mit Karten.
+   */
+  homeJournal?: {
+    /**
+     * Optional. Leer lassen = „Journal.".
+     */
+    headline?: string | null;
+    /**
+     * Optional. Wird kursiv/akzentuiert gesetzt.
+     */
+    headlineEmphasis?: string | null;
+    intro?: string | null;
+    /**
+     * Reihenfolge = Anzeige-Reihenfolge.
+     */
+    items?:
+      | {
+          /**
+           * Bild aus dem Medienarchiv waehlen. Neue Bilder koennen direkt im Drawer hochgeladen und bearbeitet werden.
+           */
+          image: number | Media;
+          title: string;
+          text?: string | null;
+          /**
+           * Interne Links am besten root-relativ eintragen, z. B. /portfolio. Vollstaendige eigene URLs werden automatisch gekuerzt.
+           */
+          href: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  /**
+   * Intro-Buehne oben auf der Seite.
+   */
+  aboutHero?: {
+    kicker?: string | null;
+    titleLine1?: string | null;
+    titleLine2?: string | null;
+    lead?: string | null;
+    /**
+     * Optional. Leer = eingebautes Portraitmotiv.
+     */
+    image?: (number | null) | Media;
+    primaryLabel?: string | null;
+    /**
+     * Interne Links am besten root-relativ eintragen, z. B. /portfolio. Vollstaendige eigene URLs werden automatisch gekuerzt.
+     */
+    primaryHref?: string | null;
+    secondaryLabel?: string | null;
+    /**
+     * Interne Links am besten root-relativ eintragen, z. B. /portfolio. Vollstaendige eigene URLs werden automatisch gekuerzt.
+     */
+    secondaryHref?: string | null;
+  };
+  /**
+   * Heller Statement-Block unter dem Hero.
+   */
+  aboutStatement?: {
+    /**
+     * Optional. Leer lassen = eingebauter Standardinhalt bleibt.
+     */
+    headline?: string | null;
+    /**
+     * Optional. Wird kursiv/akzentuiert gesetzt.
+     */
+    headlineEmphasis?: string | null;
+    lead?: string | null;
+    /**
+     * Zweiter Textabsatz.
+     */
+    body?: string | null;
+    primaryLabel?: string | null;
+    /**
+     * Interne Links am besten root-relativ eintragen, z. B. /portfolio. Vollstaendige eigene URLs werden automatisch gekuerzt.
+     */
+    primaryHref?: string | null;
+    secondaryLabel?: string | null;
+    /**
+     * Interne Links am besten root-relativ eintragen, z. B. /portfolio. Vollstaendige eigene URLs werden automatisch gekuerzt.
+     */
+    secondaryHref?: string | null;
+  };
+  /**
+   * Dunkles Raster mit den sechs fotografischen Schwerpunkten.
+   */
+  aboutChapters?: {
+    /**
+     * Optional. Leer lassen = eingebauter Standardinhalt bleibt.
+     */
+    headline?: string | null;
+    /**
+     * Optional. Wird kursiv/akzentuiert gesetzt.
+     */
+    headlineEmphasis?: string | null;
+    intro?: string | null;
+    /**
+     * Reihenfolge = Anzeige-Reihenfolge.
+     */
+    items?:
+      | {
+          /**
+           * Bild aus dem Medienarchiv waehlen. Neue Bilder koennen direkt im Drawer hochgeladen und bearbeitet werden.
+           */
+          image: number | Media;
+          title: string;
+          alt?: string | null;
+          linkLabel?: string | null;
+          /**
+           * Interne Links am besten root-relativ eintragen, z. B. /portfolio. Vollstaendige eigene URLs werden automatisch gekuerzt.
+           */
+          href?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  /**
+   * Heller Empfehlungsblock fuer bewegte Bilder.
+   */
+  aboutSister?: {
+    kicker?: string | null;
+    /**
+     * Optional. Leer lassen = eingebauter Standardinhalt bleibt.
+     */
+    headline?: string | null;
+    /**
+     * Optional. Wird kursiv/akzentuiert gesetzt.
+     */
+    headlineEmphasis?: string | null;
+    lead?: string | null;
+    body?: string | null;
+    buttonLabel?: string | null;
+    /**
+     * Interne Links am besten root-relativ eintragen, z. B. /portfolio. Vollstaendige eigene URLs werden automatisch gekuerzt.
+     */
+    href?: string | null;
+    plate?: {
+      tag?: string | null;
+      nameLine1?: string | null;
+      nameLine2?: string | null;
+      roles?:
+        | {
+            label: string;
+            id?: string | null;
+          }[]
+        | null;
+      location?: string | null;
+    };
+  };
+  /**
+   * Text fuer das Kontaktmodul am Ende der Seite.
+   */
+  aboutContact?: {
+    subject?: string | null;
+    headline?: string | null;
+    lead?: string | null;
+  };
+  photographyIndex?: {
+    /**
+     * Die Absätze im hellen „Ein Einstieg, sechs Bereiche."-Block.
+     */
+    clusterIntro?:
+      | {
+          text: string;
+          id?: string | null;
+        }[]
+      | null;
+    /**
+     * Die Fotografie-Bereiche (Automobil, Sportwagen, …). Reihenfolge = Anzeige-Reihenfolge; heller/dunkler Wechsel wird automatisch gesetzt.
+     */
+    topics?:
+      | {
+          /**
+           * Bild aus dem Medienarchiv waehlen. Neue Bilder koennen direkt im Drawer hochgeladen und bearbeitet werden.
+           */
+          image: number | Media;
+          title: string;
+          emphasis?: string | null;
+          text?: string | null;
+          linkLabel?: string | null;
+          /**
+           * Interne Links am besten root-relativ eintragen, z. B. /portfolio. Vollstaendige eigene URLs werden automatisch gekuerzt.
+           */
+          href: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  servicesIndex?: {
+    overviewHeadline?: string | null;
+    overviewEmphasis?: string | null;
+    overviewIntro?: string | null;
+    /**
+     * Reihenfolge wie im Code. Leere Felder erben den eingebauten Standard der jeweiligen Leistung.
+     */
+    items?:
+      | {
+          overviewLabel?: string | null;
+          headline?: string | null;
+          emphasis?: string | null;
+          text?: string | null;
+          tags?: string | null;
+          /**
+           * Interne Links am besten root-relativ eintragen, z. B. /portfolio. Vollstaendige eigene URLs werden automatisch gekuerzt.
+           */
+          href: string;
+          /**
+           * Bild aus dem Medienarchiv waehlen. Neue Bilder koennen direkt im Drawer hochgeladen und bearbeitet werden.
+           */
+          image1?: (number | null) | Media;
+          caption1?: string | null;
+          /**
+           * Bild aus dem Medienarchiv waehlen. Neue Bilder koennen direkt im Drawer hochgeladen und bearbeitet werden.
+           */
+          image2?: (number | null) | Media;
+          caption2?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    whyKicker?: string | null;
+    whyHeadline?: string | null;
+    whyEmphasis?: string | null;
+    whyLead?: string | null;
+    whyCards?:
+      | {
+          label?: string | null;
+          emphasis?: string | null;
+          headline?: string | null;
+          text?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
   /**
    * Optionale Inhaltsmodule. Fuer reine Bildwechsel sind die Bildfelder der jeweiligen Seite schneller.
    */
@@ -1845,11 +2207,221 @@ export interface SitePagesSelect<T extends boolean = true> {
         headlineLine1?: T;
         headlineLine2?: T;
         lead?: T;
+        durationSec?: T;
         primaryLabel?: T;
         primaryHref?: T;
         secondaryLabel?: T;
         secondaryHref?: T;
         id?: T;
+      };
+  homeStatement?:
+    | T
+    | {
+        headline?: T;
+        headlineEmphasis?: T;
+        body?:
+          | T
+          | {
+              text?: T;
+              id?: T;
+            };
+      };
+  homeChapters?:
+    | T
+    | {
+        headline?: T;
+        headlineEmphasis?: T;
+        intro?: T;
+        items?:
+          | T
+          | {
+              image?: T;
+              title?: T;
+              href?: T;
+              id?: T;
+            };
+      };
+  homeSelectedWorks?:
+    | T
+    | {
+        headline?: T;
+        headlineEmphasis?: T;
+        intro?: T;
+      };
+  homeAbout?:
+    | T
+    | {
+        kicker?: T;
+        headline?: T;
+        headlineEmphasis?: T;
+        image?: T;
+        body?:
+          | T
+          | {
+              text?: T;
+              id?: T;
+            };
+      };
+  homeServices?:
+    | T
+    | {
+        headline?: T;
+        headlineEmphasis?: T;
+        intro?: T;
+        items?:
+          | T
+          | {
+              title?: T;
+              text?: T;
+              href?: T;
+              id?: T;
+            };
+      };
+  homeJournal?:
+    | T
+    | {
+        headline?: T;
+        headlineEmphasis?: T;
+        intro?: T;
+        items?:
+          | T
+          | {
+              image?: T;
+              title?: T;
+              text?: T;
+              href?: T;
+              id?: T;
+            };
+      };
+  aboutHero?:
+    | T
+    | {
+        kicker?: T;
+        titleLine1?: T;
+        titleLine2?: T;
+        lead?: T;
+        image?: T;
+        primaryLabel?: T;
+        primaryHref?: T;
+        secondaryLabel?: T;
+        secondaryHref?: T;
+      };
+  aboutStatement?:
+    | T
+    | {
+        headline?: T;
+        headlineEmphasis?: T;
+        lead?: T;
+        body?: T;
+        primaryLabel?: T;
+        primaryHref?: T;
+        secondaryLabel?: T;
+        secondaryHref?: T;
+      };
+  aboutChapters?:
+    | T
+    | {
+        headline?: T;
+        headlineEmphasis?: T;
+        intro?: T;
+        items?:
+          | T
+          | {
+              image?: T;
+              title?: T;
+              alt?: T;
+              linkLabel?: T;
+              href?: T;
+              id?: T;
+            };
+      };
+  aboutSister?:
+    | T
+    | {
+        kicker?: T;
+        headline?: T;
+        headlineEmphasis?: T;
+        lead?: T;
+        body?: T;
+        buttonLabel?: T;
+        href?: T;
+        plate?:
+          | T
+          | {
+              tag?: T;
+              nameLine1?: T;
+              nameLine2?: T;
+              roles?:
+                | T
+                | {
+                    label?: T;
+                    id?: T;
+                  };
+              location?: T;
+            };
+      };
+  aboutContact?:
+    | T
+    | {
+        subject?: T;
+        headline?: T;
+        lead?: T;
+      };
+  photographyIndex?:
+    | T
+    | {
+        clusterIntro?:
+          | T
+          | {
+              text?: T;
+              id?: T;
+            };
+        topics?:
+          | T
+          | {
+              image?: T;
+              title?: T;
+              emphasis?: T;
+              text?: T;
+              linkLabel?: T;
+              href?: T;
+              id?: T;
+            };
+      };
+  servicesIndex?:
+    | T
+    | {
+        overviewHeadline?: T;
+        overviewEmphasis?: T;
+        overviewIntro?: T;
+        items?:
+          | T
+          | {
+              overviewLabel?: T;
+              headline?: T;
+              emphasis?: T;
+              text?: T;
+              tags?: T;
+              href?: T;
+              image1?: T;
+              caption1?: T;
+              image2?: T;
+              caption2?: T;
+              id?: T;
+            };
+        whyKicker?: T;
+        whyHeadline?: T;
+        whyEmphasis?: T;
+        whyLead?: T;
+        whyCards?:
+          | T
+          | {
+              label?: T;
+              emphasis?: T;
+              headline?: T;
+              text?: T;
+              id?: T;
+            };
       };
   blocks?:
     | T
@@ -2983,6 +3555,10 @@ export interface SiteSetting {
    * Fallback fuer Open Graph und Social Preview, wenn keine Seite ein eigenes Bild setzt.
    */
   defaultOgImage?: (number | null) | Media;
+  /**
+   * Steuert die Kompression der responsiven Varianten. Wirkt sofort, wenn ein Bild ueber "Neu optimieren" (Medien -> Technik) neu erzeugt wird. Neue Uploads nutzen die Standardstufe des Deploys. Eco spart Ladezeit, Maximal liefert maximale Detailtreue bei groesseren Dateien.
+   */
+  mediaQualityPreset?: ('eco' | 'standard' | 'maximal') | null;
   footerStatement?: string | null;
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -3187,6 +3763,7 @@ export interface SiteSettingsSelect<T extends boolean = true> {
   defaultMetaTitle?: T;
   defaultMetaDescription?: T;
   defaultOgImage?: T;
+  mediaQualityPreset?: T;
   footerStatement?: T;
   updatedAt?: T;
   createdAt?: T;

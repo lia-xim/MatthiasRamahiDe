@@ -159,6 +159,57 @@ export type PayloadDoc = {
     whyLead?: string
     whyCards?: Array<{ label?: string; headline?: string; emphasis?: string; text?: string }>
   }
+  // Ueber-mich-Seite (SitePages, pageType 'about'). Optional -> Fallback im Component.
+  aboutHero?: {
+    kicker?: string
+    titleLine1?: string
+    titleLine2?: string
+    lead?: string
+    image?: PayloadMedia | string
+    primaryLabel?: string
+    primaryHref?: string
+    secondaryLabel?: string
+    secondaryHref?: string
+  }
+  aboutStatement?: {
+    headline?: string
+    headlineEmphasis?: string
+    lead?: string
+    body?: string
+    primaryLabel?: string
+    primaryHref?: string
+    secondaryLabel?: string
+    secondaryHref?: string
+  }
+  aboutChapters?: {
+    headline?: string
+    headlineEmphasis?: string
+    intro?: string
+    items?: Array<{
+      image?: PayloadMedia | string
+      title?: string
+      alt?: string
+      linkLabel?: string
+      href?: string
+    }>
+  }
+  aboutSister?: {
+    kicker?: string
+    headline?: string
+    headlineEmphasis?: string
+    lead?: string
+    body?: string
+    buttonLabel?: string
+    href?: string
+    plate?: {
+      tag?: string
+      nameLine1?: string
+      nameLine2?: string
+      roles?: Array<{ label?: string }>
+      location?: string
+    }
+  }
+  aboutContact?: { subject?: string; headline?: string; lead?: string }
   relatedPages?: PayloadLink[]
   blocks?: unknown[]
   cta?: PayloadCta
