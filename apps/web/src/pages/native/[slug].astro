@@ -5,6 +5,7 @@ import {
   getNativeHtmlFileForPath,
   isCmsAdoptedLegacyFile,
 } from '../../lib/adoptedRoutes'
+import { livePageCacheControl } from '../../lib/liveCache'
 
 export const prerender = false
 
@@ -21,10 +22,7 @@ if (redirectTarget) {
   return Astro.redirect(`/${redirectTarget}`, 308)
 }
 
-Astro.response.headers.set(
-  'cache-control',
-  import.meta.env.DEV ? 'no-store' : 'public, max-age=300, stale-while-revalidate=86400',
-)
+Astro.response.headers.set('cache-control', livePageCacheControl())
 Astro.response.headers.set('x-migration-render', 'adopted-astro-payload')
 ---
 <NativeAdoptedPage legacyFile={legacyFile} />

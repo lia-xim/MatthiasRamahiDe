@@ -1,28 +1,10 @@
 ---
 import NativeHomePage from '../components/native/NativeHomePage.astro'
+import { livePageCacheControl } from '../lib/liveCache'
 
 export const prerender = false
 
-const numberFromEnv = (value: unknown, fallback: number) => {
-  const parsed = Number(value)
-  return Number.isFinite(parsed) && parsed >= 0 ? parsed : fallback
-}
-
-const livePageCacheSeconds = numberFromEnv(
-  import.meta.env.ASTRO_LIVE_PAGE_CACHE_SECONDS ?? process.env.ASTRO_LIVE_PAGE_CACHE_SECONDS,
-  60,
-)
-const livePageStaleSeconds = numberFromEnv(
-  import.meta.env.ASTRO_LIVE_PAGE_STALE_SECONDS ?? process.env.ASTRO_LIVE_PAGE_STALE_SECONDS,
-  300,
-)
-
-Astro.response.headers.set(
-  'cache-control',
-  import.meta.env.DEV || livePageCacheSeconds <= 0
-    ? 'no-store'
-    : `public, max-age=0, s-maxage=${livePageCacheSeconds}, stale-while-revalidate=${livePageStaleSeconds}`,
-)
+Astro.response.headers.set('cache-control', livePageCacheControl())
 Astro.response.headers.set('x-cms-live-route', 'home')
 ---
 <NativeHomePage />

@@ -8,6 +8,7 @@ import {
 } from './lib/adoptedRoutes'
 import { envFlagNotFalse } from './lib/envFlags'
 import { localSeoLayoutFamilyForSlug, localSeoParentLegacyFiles } from './lib/localSeoLayoutFamilies'
+import { livePageCacheControl } from './lib/liveCache'
 
 const permanentRedirect = (location: string) =>
   new Response(null, {
@@ -19,7 +20,6 @@ const permanentRedirect = (location: string) =>
 
 const enableAdoptedRouteRewrite = envFlagNotFalse('ASTRO_ENABLE_ADOPTED_ROUTES')
 const enableLocalSeoAdoptedRouteRewrite = envFlagNotFalse('ASTRO_ENABLE_LOCAL_SEO_ADOPTED_ROUTES')
-const adoptedRouteCacheControl = import.meta.env.DEV ? 'no-store' : 'public, max-age=300, stale-while-revalidate=86400'
 
 export const onRequest = defineMiddleware(async (context, next) => {
   const pathname = context.url.pathname
@@ -61,7 +61,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
     if (legacyFile && isCmsAdoptedLegacyFile(legacyFile, { includeLocalSeo: enableLocalSeoAdoptedRouteRewrite })) {
       const slug = legacyFile.replace(/\.html$/i, '')
       const response = await context.rewrite(`/native/${slug}${context.url.search}`)
-      response.headers.set('cache-control', adoptedRouteCacheControl)
+      response.headers.set('cache-control', livePageCacheControl())
       response.headers.set('x-migration-render', 'adopted-astro-payload')
       const family = localSeoLayoutFamilyForSlug(legacyFile)
       if (family) {
