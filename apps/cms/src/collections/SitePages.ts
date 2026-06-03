@@ -22,7 +22,7 @@ import { buildPreviewUrl } from '../livePreview'
 
 // Seiten, die den Hero-Slider (mehrere Slides) nutzen statt eines Einzelbildes.
 // Jede dieser Seiten pflegt ihre Slides voellig eigenstaendig (eigene Bilder + Texte).
-const heroSliderPageTypes = ['home', 'portfolio-index', 'photography-index']
+const heroSliderPageTypes = ['home', 'portfolio-index', 'photography-index', 'services-index']
 const heroSliderPages = (data: Record<string, unknown> | undefined) =>
   heroSliderPageTypes.includes((data?.pageType as string) ?? '')
 const singleImagePages = (data: Record<string, unknown> | undefined) => !heroSliderPages(data)

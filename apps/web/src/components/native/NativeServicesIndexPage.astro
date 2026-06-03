@@ -1,6 +1,6 @@
 ---
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
-import { servicesHeroSlides, servicesIndexItems as fallbackServices } from '../../lib/nativeContent'
+import { homeHeroSlidesFor, servicesHeroSlides, servicesIndexItems as fallbackServices } from '../../lib/nativeContent'
 import {
   getSitePageByType,
   imageAlt,
@@ -17,16 +17,14 @@ const providedDoc = Astro.props.doc as PayloadDoc | undefined
 // und nicht-erzwungene Fetches sonst null liefern -> Fallback statt CMS-Inhalt.
 const doc = providedDoc || (await getSitePageByType('services-index', liveCmsFetchOptions({ depth: 2 })))
 
-// Hero: bewusst code-definiert (wie Fotografie-Uebersicht). Erste Lead ggf. aus CMS-Intro.
-const heroSlides = servicesHeroSlides.map((slide, index) =>
+const fallbackHeroSlides = servicesHeroSlides.map((slide, index) =>
   index === 0 && doc?.intro ? { ...slide, lead: doc.intro } : slide,
 )
+const cmsHeroSlides = (doc?.heroSlides || []).length > 0 ? homeHeroSlidesFor(doc) : []
+const heroSlides = cmsHeroSlides.length ? cmsHeroSlides : fallbackHeroSlides
 const firstHeroSlide = heroSlides[0]
 const heroImages = heroSlides.map((slide) => slide.image)
 const heroSlidesJson = JSON.stringify(heroSlides)
-
-const overviewOrder = ['fotolabor', 'werbetechnik', 'webdesign', 'videografie', 'viola', 'grossformat']
-const overviewImageIndex: Record<string, number> = { viola: 1, webdesign: 1 }
 
 const hasText = (value?: string): value is string => typeof value === 'string' && value.trim().length > 0
 const stripHtml = (value = '') => value.replace(/<[^>]+>/g, '')
@@ -67,6 +65,7 @@ const mergeService = (fb: FallbackService | undefined, item: NonNullable<typeof 
     theme: fb?.theme ?? (index % 2 === 0 ? 'light' : 'dark'),
     href: item && hasText(item.href) ? toRootRelativeHref(item.href) : fb?.href ?? '#',
     headline,
+    overviewLabel: item && hasText(item.overviewLabel) ? item.overviewLabel! : stripHtml(headline).replace(/\.$/, ''),
     text: item && hasText(item.text) ? item.text! : fb?.text ?? '',
     images: item ? buildCmsImages(item, fb) : fb?.images ?? [],
   }
@@ -78,9 +77,7 @@ const items = Array.from({ length: baseLength }, (_, index) =>
   mergeService(fallbackServices[index], cmsItems[index], index),
 ).filter((service) => hasText(stripHtml(service.headline)))
 
-const overviewItems = overviewOrder
-  .map((id) => items.find((service) => service.id === id))
-  .filter((service): service is (typeof items)[number] => Boolean(service))
+const overviewItems = items
 
 const overviewHead = {
   headlineHtml:
@@ -89,7 +86,7 @@ const overviewHead = {
       : 'Dienstleistungen <em>im Überblick.</em>',
   intro: hasText(cms?.overviewIntro)
     ? cms!.overviewIntro!
-    : 'Vom einzelnen Fine-Art-Print bis zur kompletten Markenfläche, Website, Filmproduktion oder Eventbegleitung. Sechs ergänzende Bereiche, ein gemeinsamer visueller Anspruch.',
+    : 'Vom einzelnen Fine-Art-Print bis zur kompletten Markenfläche, Website, Filmproduktion oder Eventbegleitung. Sieben ergänzende Bereiche, ein gemeinsamer visueller Anspruch.',
 }
 
 const fallbackWhyCards = [
@@ -152,11 +149,11 @@ const why = {
         </div>
         <div class="overview-grid">
           {overviewItems.map((service) => {
-            const image = service.images[overviewImageIndex[service.id] || 0] || service.images[0]
+            const image = service.images[0]
             return (
               <a class="overview-tile" href={service.href}>
                 {image && <img src={image.src} alt={image.alt} loading="lazy" width={image.width} height={image.height} decoding="async" />}
-                <div class="label"><strong set:html={service.headline.replace(/\.$/, '')}></strong></div>
+                <div class="label"><strong>{service.overviewLabel}</strong></div>
               </a>
             )
           })}

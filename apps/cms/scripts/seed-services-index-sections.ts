@@ -100,6 +100,44 @@ const serviceSeeds = [
   },
 ]
 
+const heroSlideSeeds = [
+  {
+    img: ['portfolio_webp_full_006-1.webp'],
+    headlineLine1: 'Alles aus',
+    headlineLine2: 'einer Hand',
+    lead:
+      'Fuer Projekte, die ueber die Fotografie hinausgehen - Druck, Grossformat, Werbetechnik, Webdesign, Video und Live-Musik, serioes koordiniert ueber erfahrene Partner aus Duesseldorf und NRW.',
+  },
+  {
+    img: ['fea8218e-7546-48ef-8581-2b99bb3cdefe_centered_reduced.webp'],
+    headlineLine1: 'Vom Bild',
+    headlineLine2: 'zum Druck',
+    lead:
+      'Vom Motiv zur signierten Edition: Fine-Art-Prints, Fotobuecher und Spezialmaterial, abgestimmt auf Papier, Oberflaeche und Praesentation.',
+  },
+  {
+    img: ['Catoir_Ramahi-1-106-768x512-1.webp'],
+    headlineLine1: 'Grossformat',
+    headlineLine2: '& Raum',
+    lead:
+      'Grossformat, Schaufenster und Displays mit klarer Fernwirkung - geplant, visualisiert und sauber vor Ort umgesetzt.',
+  },
+  {
+    img: ['portfolio_webp_full_057-1.webp'],
+    headlineLine1: 'Bewegtbild',
+    headlineLine2: '& Marke',
+    lead:
+      'Bewegtbild mit fotografischem Blick: Image-, Event- und Markenfilme, von der Dramaturgie bis zum finalen Cut.',
+  },
+  {
+    img: ['portfolio_webp_full_254.webp'],
+    headlineLine1: 'Live',
+    headlineLine2: '& Event',
+    lead:
+      'Live-Musik und klassische Begleitung, die Atmosphaere schafft - dezent planbar fuer Empfang, Vernissage und Feier.',
+  },
+]
+
 const whyCards = [
   { label: 'Koordination', headline: 'Ein Ansprechpartner, weniger Reibung.', emphasis: 'weniger Reibung.', text: 'Abstimmung, Reihenfolge und Partner werden gebündelt, damit das Projekt nicht zwischen Gewerken zerfällt.' },
   { label: 'Qualität', headline: 'Ein visueller Anspruch über alle Medien.', emphasis: 'über alle Medien.', text: 'Druck, Website, Video oder Event-Auftritt werden nicht einzeln gedacht, sondern auf dieselbe Bildsprache ausgerichtet.' },
@@ -109,6 +147,23 @@ const whyCards = [
 
 const isFilledArray = (value: unknown) => Array.isArray(value) && value.length > 0
 const isFilledText = (value: unknown) => typeof value === 'string' && value.trim().length > 0
+
+const heroSlideSeed = async (seed: (typeof heroSlideSeeds)[number]) => {
+  const image = await resolveMediaId(seed.img)
+  if (!image) return undefined
+
+  return {
+    image,
+    headlineLine1: seed.headlineLine1,
+    headlineLine2: seed.headlineLine2,
+    lead: seed.lead,
+    primaryLabel: 'Projekt anfragen',
+    primaryHref: '#anfrage',
+    secondaryLabel: 'Leistungen ansehen',
+    secondaryHref: '#overview',
+    durationSec: 7,
+  }
+}
 
 try {
   const found = await payload.find({
@@ -122,11 +177,20 @@ try {
   if (!doc?.id) throw new Error('Leistungs-Uebersicht (pageType=services-index) in Payload nicht gefunden.')
 
   const group = doc.servicesIndex || {}
+  const data: Record<string, unknown> = {}
   const next: Record<string, unknown> = { ...group }
   const filled: string[] = []
   const skipped: string[] = []
   let imagesLinked = 0
   let imagesFallback = 0
+
+  if (!isFilledArray(doc.heroSlides)) {
+    const heroSlides = (await Promise.all(heroSlideSeeds.map(heroSlideSeed))).filter(Boolean)
+    if (heroSlides.length > 0) {
+      data.heroSlides = heroSlides
+      filled.push('Hero-Slides')
+    }
+  } else skipped.push('Hero-Slides')
 
   if (!isFilledArray(group.items)) {
     const items = []
@@ -155,7 +219,7 @@ try {
     next.overviewHeadline = 'Dienstleistungen im Überblick.'
     next.overviewEmphasis = 'im Überblick.'
     next.overviewIntro =
-      'Vom einzelnen Fine-Art-Print bis zur kompletten Markenfläche, Website, Filmproduktion oder Eventbegleitung. Sechs ergänzende Bereiche, ein gemeinsamer visueller Anspruch.'
+      'Vom einzelnen Fine-Art-Print bis zur kompletten Markenfläche, Website, Filmproduktion oder Eventbegleitung. Sieben ergänzende Bereiche, ein gemeinsamer visueller Anspruch.'
     filled.push('Überblick-Kopf')
   } else skipped.push('Überblick-Kopf')
 
@@ -172,10 +236,11 @@ try {
   if (filled.length === 0) {
     payload.logger.info('Leistungs-Uebersicht ist bereits gefuellt — nichts zu tun.')
   } else {
+    data.servicesIndex = next
     await payload.update({
       collection: 'site-pages',
       id: doc.id as RelationId,
-      data: { servicesIndex: next, _status: 'published' } as never,
+      data: { ...data, _status: 'published' } as never,
       draft: false,
       overrideAccess: true,
     })
