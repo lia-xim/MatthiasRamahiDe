@@ -24,6 +24,7 @@
     "lighthouse:audit": "node tools/lighthouse-audit.mjs",
     "cache:warmup": "node tools/warmup-deployment-cache.mjs",
     "cache:warmup:production": "node tools/warmup-deployment-cache.mjs --origin=https://matthiasramahi.de --asset-mode=critical --concurrency=8",
+    "indexnow:submit": "node tools/submit-indexnow.mjs",
     "quality:audit": "corepack pnpm web:build && corepack pnpm seo:audit:strict && corepack pnpm perf:audit && node tools/run-site-quality-audit.mjs",
     "quality:full": "corepack pnpm quality:audit && corepack pnpm lighthouse:audit",
     "production:check": "node tools/run-production-check.mjs",

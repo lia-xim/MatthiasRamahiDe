@@ -102,6 +102,7 @@ const servicePrefixes = [
 ]
 
 export const sitemapSections: SitemapSection[] = ['pages', 'local-seo', 'services', 'journal', 'portfolio']
+const nativeRouteLastmod = '2026-06-03'
 
 export const escapeXml = (value: string) =>
   value
@@ -238,6 +239,7 @@ export async function nativeRouteSitemapEntries(section?: SitemapSection): Promi
 
     entries.push({
       loc: toAbsoluteSiteUrl('/'),
+      lastmod: nativeRouteLastmod,
       images,
     })
   }
@@ -259,6 +261,7 @@ export async function nativeRouteSitemapEntries(section?: SitemapSection): Promi
 
     entries.push({
       loc: toAbsoluteSiteUrl(legacyUrlForFile(file)),
+      lastmod: nativeRouteLastmod,
       images,
     })
   }
