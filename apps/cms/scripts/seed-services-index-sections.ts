@@ -115,35 +115,35 @@ const serviceSeeds = [
 
 const heroSlideSeeds = [
   {
-    img: ['portfolio_webp_full_006-1.webp'],
+    img: ['fea8218e-7546-48ef-8581-2b99bb3cdefe_centered_reduced.webp'],
     headlineLine1: 'Alles aus',
     headlineLine2: 'einer Hand',
     lead:
       'Fuer Projekte, die ueber die Fotografie hinausgehen - Druck, Grossformat, Werbetechnik, Webdesign, Video und Live-Musik, serioes koordiniert ueber erfahrene Partner aus Duesseldorf und NRW.',
   },
   {
-    img: ['fea8218e-7546-48ef-8581-2b99bb3cdefe_centered_reduced.webp'],
+    img: ['Catoir_Ramahi-1-106-768x512-1.webp'],
     headlineLine1: 'Vom Bild',
     headlineLine2: 'zum Druck',
     lead:
       'Vom Motiv zur signierten Edition: Fine-Art-Prints, Fotobuecher und Spezialmaterial, abgestimmt auf Papier, Oberflaeche und Praesentation.',
   },
   {
-    img: ['Catoir_Ramahi-1-106-768x512-1.webp'],
+    img: ['Catoir_Ramahi-1-32-768x512-1.webp'],
     headlineLine1: 'Grossformat',
     headlineLine2: '& Raum',
     lead:
       'Grossformat, Schaufenster und Displays mit klarer Fernwirkung - geplant, visualisiert und sauber vor Ort umgesetzt.',
   },
   {
-    img: ['portfolio_webp_full_057-1.webp'],
+    img: ['screencapture-gr-knospe-de-2025-10-02-23_10_04-scaled.webp'],
     headlineLine1: 'Bewegtbild',
     headlineLine2: '& Marke',
     lead:
       'Bewegtbild mit fotografischem Blick: Image-, Event- und Markenfilme, von der Dramaturgie bis zum finalen Cut.',
   },
   {
-    img: ['portfolio_webp_full_254.webp'],
+    img: ['portfolio_webp_full_058-1.webp'],
     headlineLine1: 'Live',
     headlineLine2: '& Event',
     lead:
@@ -201,7 +201,7 @@ try {
   let imagesLinked = 0
   let imagesFallback = 0
 
-  if (!isFilledArray(doc.heroSlides)) {
+  if (!isFilledArray(doc.heroSlides) || doc.heroSlides.length < heroSlideSeeds.length) {
     const heroSlides = (await Promise.all(heroSlideSeeds.map(heroSlideSeed))).filter(Boolean)
     if (heroSlides.length > 0) {
       data.heroSlides = heroSlides
