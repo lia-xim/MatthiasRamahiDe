@@ -2,7 +2,7 @@
 import CmsRoutedPage from '../components/cms/CmsRoutedPage.astro'
 import NativeLocalSeoFamilyPage from '../components/cms/NativeLocalSeoFamilyPage.astro'
 import Native404Page from '../components/native/Native404Page.astro'
-import { getNativeHtmlFileForPath } from '../lib/adoptedRoutes'
+import { getLegacyRedirectTarget, getNativeHtmlFileForPath } from '../lib/adoptedRoutes'
 import { envFlagNotFalse } from '../lib/envFlags'
 import { getBySlug, liveCmsFetchOptions, type PayloadDoc } from '../lib/payload'
 
@@ -16,6 +16,11 @@ let cmsDoc: PayloadDoc | null = null
 let cmsCollection = ''
 
 if (legacyFile) {
+  const redirectTarget = getLegacyRedirectTarget(legacyFile)
+  if (redirectTarget) {
+    return Astro.redirect(`/${redirectTarget}`, 308)
+  }
+
   return Astro.redirect(`/${legacyFile}`, 308)
 }
 
