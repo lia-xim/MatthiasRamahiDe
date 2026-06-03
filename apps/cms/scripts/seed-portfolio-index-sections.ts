@@ -38,6 +38,17 @@ const payload = await getPayload({ config })
 type RelationId = string | number
 
 const normalizeAssetPath = (value: string) => value.split('?')[0].split('#')[0].trim().replace(/^\/+/, '')
+const fallbackMediaCandidates: Record<string, string[]> = {
+  'assets/portfolio/_DSC0470-Enhanced-NR.webp': ['assets/portraits/_DSC0470-Enhanced-NR.webp'],
+  'assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp': ['assets/portraits/_DSC0470-Enhanced-NR.webp'],
+  'assets/optimized/assets-portfolio-wettberwerb-foto5-wunder-der-natur2-1920.webp': [
+    'assets/portfolio/thumbs/Wettberwerb_Foto5_Wunder_der_Natur2.webp',
+  ],
+}
+const withFallbackMediaCandidates = (value: string) => {
+  const cleanPath = normalizeAssetPath(value)
+  return [cleanPath, ...(fallbackMediaCandidates[cleanPath] || [])]
+}
 const basenameCandidates = (value: string) => {
   const cleanPath = normalizeAssetPath(value)
   const filename = path.basename(cleanPath)
@@ -52,13 +63,26 @@ const basenameCandidates = (value: string) => {
 }
 
 async function resolveMediaId(candidates: string[]): Promise<RelationId | undefined> {
-  for (const candidate of candidates.flatMap(basenameCandidates)) {
+  for (const candidate of candidates.flatMap(withFallbackMediaCandidates).flatMap(basenameCandidates)) {
     const found = await payload.find({
       collection: 'media',
       depth: 0,
       limit: 1,
       overrideAccess: true,
       where: { or: [{ legacySourcePath: { equals: candidate } }, { filename: { equals: path.basename(candidate) } }] } as never,
+    })
+    const id = found.docs[0]?.id
+    if (typeof id === 'string' || typeof id === 'number') return id
+  }
+  for (const candidate of candidates.flatMap(withFallbackMediaCandidates)) {
+    const stem = path.basename(normalizeAssetPath(candidate)).replace(/\.[^.]+$/, '')
+    if (!stem) continue
+    const found = await payload.find({
+      collection: 'media',
+      depth: 0,
+      limit: 1,
+      overrideAccess: true,
+      where: { filename: { like: stem } } as never,
     })
     const id = found.docs[0]?.id
     if (typeof id === 'string' || typeof id === 'number') return id
