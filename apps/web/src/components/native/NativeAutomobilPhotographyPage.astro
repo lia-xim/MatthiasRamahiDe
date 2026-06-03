@@ -381,16 +381,18 @@ const cityLinks = [
   ['automobil-fotografie-deutschland.html', 'Deutschland'],
 ]
 
+const localSearchHref = (duesseldorfHref: string, fallbackHref?: string) =>
+  scope.slug === 'duesseldorf' ? duesseldorfHref : fallbackHref || duesseldorfHref
 const searchLinks = [
-  ['auto-fotoshooting.html', 'Auto-Fotoshooting'],
-  ['bilder-mit-auto.html', 'Bilder mit Auto'],
-  ['fotoshooting-mit-auto.html', 'Fotoshooting mit Auto'],
-  ['automotive-fotografie.html', 'Automotive Fotografie'],
-  ['autofotografie.html', 'Autofotografie'],
-  ['fahrzeugfotografie.html', 'Fahrzeugfotografie'],
-  ['auto-fotografieren-tipps.html', 'Auto fotografieren Tipps'],
-  ['autohaus-fotografie.html', 'Autohaus Fotografie'],
-  ['autoverkauf-fotos-duesseldorf.html', 'Autoverkauf Fotos'],
+  [localSearchHref('auto-fotoshooting-duesseldorf.html', 'auto-fotoshooting.html'), 'Auto-Fotoshooting'],
+  [localSearchHref('bilder-mit-auto-duesseldorf.html', 'bilder-mit-auto.html'), 'Bilder mit Auto'],
+  [localSearchHref('fotoshooting-mit-auto-duesseldorf.html', 'fotoshooting-mit-auto.html'), 'Fotoshooting mit Auto'],
+  [localSearchHref('automotive-fotografie-duesseldorf.html', 'automotive-fotografie.html'), 'Automotive Fotografie'],
+  [localSearchHref('autofotografie-duesseldorf.html', 'autofotografie.html'), 'Autofotografie'],
+  [localSearchHref('fahrzeugfotografie-duesseldorf.html', 'fahrzeugfotografie.html'), 'Fahrzeugfotografie'],
+  [localSearchHref('auto-fotografieren-tipps-duesseldorf.html', 'auto-fotografieren-tipps.html'), 'Auto fotografieren Tipps'],
+  [localSearchHref('autohaus-fotografie-duesseldorf.html', 'autohaus-fotografie.html'), 'Autohaus Fotografie'],
+  [localSearchHref('autoverkauf-fotos-duesseldorf.html'), 'Autoverkauf Fotos'],
 ]
 ---
 <AdoptedPageLayout

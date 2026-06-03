@@ -418,14 +418,16 @@ const cityLinks = [
   ['sportwagen-fotografie-deutschland.html', 'Deutschland'],
 ]
 
+const localSearchHref = (duesseldorfHref: string, fallbackHref?: string) =>
+  scope.slug === 'duesseldorf' ? duesseldorfHref : fallbackHref || duesseldorfHref
 const searchLinks = [
-  ['motorsport-sportwagen-fotografie.html', 'Motorsport & Sportwagen'],
-  ['motorsport-fotografie.html', 'Motorsport Fotografie'],
+  [localSearchHref('motorsport-sportwagen-fotografie-duesseldorf.html', 'motorsport-sportwagen-fotografie.html'), 'Motorsport & Sportwagen'],
+  [localSearchHref('motorsport-fotografie-duesseldorf.html', 'motorsport-fotografie.html'), 'Motorsport Fotografie'],
   ['sportwagen-shooting-duesseldorf.html', 'Sportwagen Shooting'],
   ['sportwagen-fotoshooting-duesseldorf.html', 'Sportwagen Fotoshooting'],
-  ['performance-car-fotografie.html', 'Performance Car Fotografie'],
-  ['exotic-car-fotografie.html', 'Exotic Car Fotografie'],
-  ['supersportwagen-fotografie.html', 'Supersportwagen Fotografie'],
+  [localSearchHref('performance-car-fotografie-duesseldorf.html', 'performance-car-fotografie.html'), 'Performance Car Fotografie'],
+  [localSearchHref('exotic-car-fotografie-duesseldorf.html', 'exotic-car-fotografie.html'), 'Exotic Car Fotografie'],
+  [localSearchHref('supersportwagen-fotografie-duesseldorf.html', 'supersportwagen-fotografie.html'), 'Supersportwagen Fotografie'],
 ]
 ---
 <AdoptedPageLayout

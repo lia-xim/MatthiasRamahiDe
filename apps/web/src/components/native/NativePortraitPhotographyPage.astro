@@ -145,17 +145,19 @@ const cityLinks = [
   ['portraitfotografie-deutschland.html', 'Deutschland'],
 ] as const
 
+const localSearchHref = (duesseldorfHref: string, fallbackHref?: string) =>
+  scope.slug === 'duesseldorf' ? duesseldorfHref : fallbackHref || duesseldorfHref
 const searchLinks = [
-  ['portrait-fotoshooting.html', 'Portrait Fotoshooting'],
-  ['fotoshooting-gutschein.html', 'Fotoshooting Gutschein'],
-  ['fotoshooting-preise.html', 'Fotoshooting Preise'],
-  ['dating-fotoshooting.html', 'Dating Fotoshooting'],
+  [localSearchHref('portrait-fotoshooting-duesseldorf.html', 'portrait-fotoshooting.html'), 'Portrait Fotoshooting'],
+  [localSearchHref('fotoshooting-gutschein-duesseldorf.html', 'fotoshooting-gutschein.html'), 'Fotoshooting Gutschein'],
+  [localSearchHref('fotoshooting-preise-duesseldorf.html', 'fotoshooting-preise.html'), 'Fotoshooting Preise'],
+  [localSearchHref('dating-fotoshooting-duesseldorf.html', 'dating-fotoshooting.html'), 'Dating Fotoshooting'],
   ['business-portrait-duesseldorf.html', 'Business Portrait'],
   ['headshot-fotograf-duesseldorf.html', 'Headshot Fotograf'],
-  ['personal-branding-fotografie.html', 'Personal Branding Fotografie'],
-  ['schwarz-weiss-portrait-fotografie.html', 'Schwarz-Weiss Portrait'],
-  ['portraitfotografie-beleuchtung.html', 'Portrait Beleuchtung'],
-  ['paarshooting-familienshooting.html', 'Paar & Familie'],
+  [localSearchHref('personal-branding-fotografie-duesseldorf.html', 'personal-branding-fotografie.html'), 'Personal Branding Fotografie'],
+  [localSearchHref('schwarz-weiss-portrait-fotografie-duesseldorf.html', 'schwarz-weiss-portrait-fotografie.html'), 'Schwarz-Weiss Portrait'],
+  [localSearchHref('portraitfotografie-beleuchtung-duesseldorf.html', 'portraitfotografie-beleuchtung.html'), 'Portrait Beleuchtung'],
+  [localSearchHref('paarshooting-familienshooting-duesseldorf.html', 'paarshooting-familienshooting.html'), 'Paar & Familie'],
   ['unternehmensportrait-duesseldorf.html', 'Unternehmensportrait'],
   ['pressefoto-duesseldorf.html', 'Pressefoto'],
 ] as const

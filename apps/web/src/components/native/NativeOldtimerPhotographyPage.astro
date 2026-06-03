@@ -299,11 +299,13 @@ const cityLinks = [
   ['oldtimer-fotografie-deutschland.html', 'Deutschland'],
 ]
 
+const localSearchHref = (duesseldorfHref: string, fallbackHref?: string) =>
+  scope.slug === 'duesseldorf' ? duesseldorfHref : fallbackHref || duesseldorfHref
 const searchLinks = [
-  ['classic-car-fotografie.html', 'Classic Car Fotografie'],
+  [localSearchHref('classic-car-fotografie-duesseldorf.html', 'classic-car-fotografie.html'), 'Classic Car Fotografie'],
   ['oldtimer-shooting-duesseldorf.html', 'Oldtimer Shooting'],
-  ['youngtimer-fotografie.html', 'Youngtimer Fotografie'],
-  ['sammlerfahrzeug-fotografie.html', 'Sammlerfahrzeug Fotografie'],
+  [localSearchHref('youngtimer-fotografie-duesseldorf.html', 'youngtimer-fotografie.html'), 'Youngtimer Fotografie'],
+  [localSearchHref('sammlerfahrzeug-fotografie-duesseldorf.html', 'sammlerfahrzeug-fotografie.html'), 'Sammlerfahrzeug Fotografie'],
   ['oldtimer-verkaufsfotos-duesseldorf.html', 'Oldtimer Verkaufsfotos'],
 ]
 ---

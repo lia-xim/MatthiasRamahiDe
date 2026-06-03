@@ -9,16 +9,19 @@ const textExtensions = new Set(['.cjs', '.css', '.html', '.js', '.json', '.mjs',
 // regardless of static reference detection. Curated responsive image variants
 // live here and are referenced via runtime-rendered srcset on SSR routes.
 const keepPrefixes = ['assets/optimized/']
+const appDistClient = path.join(repoRoot, 'apps', 'web', 'dist', 'client')
+const appDistServer = path.join(repoRoot, 'apps', 'web', 'dist', 'server')
+const appVercelOutput = path.join(repoRoot, 'apps', 'web', '.vercel', 'output')
+const rootVercelOutput = path.join(repoRoot, '.vercel', 'output')
 const defaultTargets = [
-  path.join(repoRoot, 'apps', 'web', 'dist', 'client'),
-  path.join(repoRoot, 'apps', 'web', '.vercel', 'output', 'static'),
-  path.join(repoRoot, '.vercel', 'output', 'static'),
+  appDistClient,
+  path.join(appVercelOutput, 'static'),
+  path.join(rootVercelOutput, 'static'),
 ]
 const extraReferenceRoots = new Map([
-  [
-    path.join(repoRoot, 'apps', 'web', 'dist', 'client'),
-    [path.join(repoRoot, 'apps', 'web', 'dist', 'server')],
-  ],
+  [appDistClient, [appDistServer]],
+  [path.join(appVercelOutput, 'static'), [path.join(appVercelOutput, 'functions'), path.join(appVercelOutput, '_functions')]],
+  [path.join(rootVercelOutput, 'static'), [path.join(rootVercelOutput, 'functions'), path.join(rootVercelOutput, '_functions')]],
 ])
 
 function toPosix(value) {
@@ -104,7 +107,8 @@ function extractReferences(text, sourceFile, targetRoot) {
   // their first entry, so the comma/space-separated variants (640/1280/...) were
   // wrongly treated as unused and pruned -> 404 for responsive srcset variants.
   // Over-matching here only keeps extra files (safe); a miss deletes a used one.
-  const directAssetPattern = /(\/?(?:assets|_astro)\/[^"'`\s,)>?#]+\.(?:avif|gif|jpe?g|mp4|png|svg|webm|webp|css|js|json|txt|webmanifest|xml))/gi
+  const directAssetPattern =
+    /(\/?(?:assets|_astro)\/[^"'`,>?#\r\n]+?\.(?:avif|gif|jpe?g|mp4|png|svg|webm|webp|css|js|json|txt|webmanifest|xml))/gi
   while ((match = directAssetPattern.exec(text))) add(match[1])
 
   const urlPattern = /url\(\s*(?:"([^"]+)"|'([^']+)'|([^'")]+))\s*\)/g

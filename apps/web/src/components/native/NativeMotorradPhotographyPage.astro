@@ -227,10 +227,12 @@ const cityLinks = [
   ['motorrad-fotografie-deutschland.html', 'Deutschland'],
 ] as const
 
+const localSearchHref = (duesseldorfHref: string, fallbackHref?: string) =>
+  scope.slug === 'duesseldorf' ? duesseldorfHref : fallbackHref || duesseldorfHref
 const searchLinks = [
   ['motorrad-shooting-duesseldorf.html', 'Motorrad Shooting'],
-  ['bike-fotografie.html', 'Bike Fotografie'],
-  ['custom-bike-fotografie.html', 'Custom Bike Fotografie'],
+  [localSearchHref('bike-fotografie-duesseldorf.html', 'bike-fotografie.html'), 'Bike Fotografie'],
+  [localSearchHref('custom-bike-fotografie-duesseldorf.html', 'custom-bike-fotografie.html'), 'Custom Bike Fotografie'],
   ['motorrad-verkaufsfotos-duesseldorf.html', 'Motorrad Verkaufsfotos'],
   ['biker-portrait-duesseldorf.html', 'Biker Portrait'],
 ] as const
