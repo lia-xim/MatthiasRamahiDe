@@ -1036,7 +1036,7 @@ export interface Media {
   };
 }
 /**
- * Leistungsseite mit alter URL, Hero, Nutzenargumenten, FAQ, CTA und SEO.
+ * Leistungs-/SEO-Seite mit alter URL, Hero, Nutzenargumenten, FAQ, CTA und SEO. Portfolio-Auswahlseiten bitte unter Portfolio-Projekte pflegen.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "service-pages".
@@ -1357,7 +1357,7 @@ export interface ServicePage {
   _status?: ('draft' | 'published') | null;
 }
 /**
- * Kuratiertes Projekt mit Cover, Galerie, Kontext, SEO und Vorschau.
+ * Kanonische Portfolio-Projekt-/Auswahlseite unter /portfolio/<slug> mit eigenem Hero, Galerie, Projektsektionen, SEO und Vorschau.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "portfolio-projects".

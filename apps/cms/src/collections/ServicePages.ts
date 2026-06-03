@@ -26,7 +26,8 @@ export const ServicePages: CollectionConfig = {
     listSearchableFields: ['title', 'slug', 'serviceType', 'intro', 'seo.title', 'seo.description', 'legacy.sourceFile'],
     pagination: editorPagination,
     hideAPIURL: true,
-    description: 'Leistungsseite mit alter URL, Hero, Nutzenargumenten, FAQ, CTA und SEO.',
+    description:
+      'Leistungs-/SEO-Seite mit alter URL, Hero, Nutzenargumenten, FAQ, CTA und SEO. Portfolio-Auswahlseiten bitte unter Portfolio-Projekte pflegen.',
     preview: (data) => buildPreviewUrl({ collection: 'service-pages', slug: data?.slug }),
   },
   versions: { drafts: { autosave: { interval: 3000 } }, maxPerDoc: 20 },

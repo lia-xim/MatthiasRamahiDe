@@ -4,11 +4,12 @@ import NativeLocalSeoFamilyPage from '../components/cms/NativeLocalSeoFamilyPage
 import Native404Page from '../components/native/Native404Page.astro'
 import { getNativeHtmlFileForPath } from '../lib/adoptedRoutes'
 import { envFlagNotFalse } from '../lib/envFlags'
-import { getBySlug, type PayloadDoc } from '../lib/payload'
+import { getBySlug, liveCmsFetchOptions, type PayloadDoc } from '../lib/payload'
 
 export const prerender = false
 
 const slug = Astro.params.slug || ''
+const normalizedSlug = slug.replace(/\.html$/i, '')
 const legacyFile = Astro.props.legacyFile || getNativeHtmlFileForPath(Astro.url.pathname)
 const enableCmsDynamicRoutes = envFlagNotFalse('ASTRO_ENABLE_CMS_DYNAMIC_ROUTES')
 let cmsDoc: PayloadDoc | null = null
@@ -20,11 +21,18 @@ if (legacyFile) {
 
 if (enableCmsDynamicRoutes && slug) {
   for (const collection of ['site-pages', 'service-pages', 'local-seo-pages'] as const) {
-    const doc = await getBySlug(collection, slug, { depth: 2 })
+    const doc = await getBySlug(collection, normalizedSlug, liveCmsFetchOptions({ depth: 2 }))
     if (doc) {
       cmsDoc = doc
       cmsCollection = collection
       break
+    }
+  }
+
+  if (!cmsDoc) {
+    const portfolioDoc = await getBySlug('portfolio-projects', normalizedSlug, liveCmsFetchOptions({ depth: 1 }))
+    if (portfolioDoc) {
+      return Astro.redirect(`/portfolio/${portfolioDoc.slug}`, 308)
     }
   }
 }

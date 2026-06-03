@@ -26,7 +26,8 @@ export const PortfolioProjects: CollectionConfig = {
     listSearchableFields: ['title', 'slug', 'excerpt', 'usageSummary', 'location', 'client', 'seo.title', 'seo.description', 'legacy.sourceFile'],
     pagination: editorPagination,
     hideAPIURL: true,
-    description: 'Kuratiertes Projekt mit Cover, Galerie, Kontext, SEO und Vorschau.',
+    description:
+      'Kanonische Portfolio-Projekt-/Auswahlseite unter /portfolio/<slug> mit eigenem Hero, Galerie, Projektsektionen, SEO und Vorschau.',
     preview: (data) => buildPreviewUrl({ collection: 'portfolio-projects', slug: data?.slug }),
   },
   versions: {

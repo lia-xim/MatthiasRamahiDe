@@ -6,6 +6,7 @@ import {
   isCmsAdoptedLegacyFile,
 } from '../lib/adoptedRoutes'
 import { livePageCacheControl } from '../lib/liveCache'
+import { getBySlug, liveCmsFetchOptions } from '../lib/payload'
 
 export const prerender = false
 
@@ -13,6 +14,14 @@ const slug = Astro.params.slug || ''
 const legacyFile = getNativeHtmlFileForPath(`/${slug}.html`)
 
 if (!legacyFile) {
+  const portfolioDoc = slug
+    ? await getBySlug('portfolio-projects', slug, liveCmsFetchOptions({ depth: 1 }))
+    : null
+
+  if (portfolioDoc) {
+    return Astro.redirect(`/portfolio/${portfolioDoc.slug}`, 308)
+  }
+
   return new Response('Not found', { status: 404 })
 }
 
