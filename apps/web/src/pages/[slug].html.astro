@@ -1,29 +1,16 @@
 ---
 import NativeAdoptedPage from '../components/native/NativeAdoptedPage.astro'
 import {
+  getNativeHtmlFileForPath,
   getLegacyRedirectTarget,
-  isLegacyRedirectFile,
   isCmsAdoptedLegacyFile,
-  listNativeHtmlRouteFiles,
 } from '../lib/adoptedRoutes'
+import { livePageCacheControl } from '../lib/liveCache'
 
-export const prerender = true
+export const prerender = false
 
-type Props = {
-  legacyFile?: string
-}
-
-export function getStaticPaths() {
-  return listNativeHtmlRouteFiles()
-    .filter((file) => file !== 'index.html')
-    .filter((file) => !isLegacyRedirectFile(file))
-    .map((file) => ({
-      params: { slug: file.replace(/\.html$/i, '') },
-      props: { legacyFile: file },
-    }))
-}
-
-const { legacyFile } = Astro.props as Props
+const slug = Astro.params.slug || ''
+const legacyFile = getNativeHtmlFileForPath(`/${slug}.html`)
 
 if (!legacyFile) {
   return new Response('Not found', { status: 404 })
@@ -41,6 +28,7 @@ if (!shouldRenderFromCms) {
   return new Response('Not found', { status: 404 })
 }
 
+Astro.response.headers.set('cache-control', livePageCacheControl())
 Astro.response.headers.set('x-migration-render', 'adopted-astro-payload')
 ---
 <NativeAdoptedPage legacyFile={legacyFile} />
