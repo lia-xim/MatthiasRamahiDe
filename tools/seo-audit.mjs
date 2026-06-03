@@ -12,6 +12,26 @@ const strict = args.has('--strict')
 
 const htmlExtensions = new Set(['.html', ''])
 const assetExtensions = new Set(['.jpg', '.jpeg', '.png', '.webp', '.avif', '.gif', '.mp4', '.webm'])
+const adoptedRoutesPath = path.join(ROOT, 'apps', 'web', 'src', 'lib', 'adoptedRoutes.ts')
+
+function stringLiteralsFromArray(source, name) {
+  const match = source.match(new RegExp(`(?:export\\s+)?const\\s+${name}\\s*=\\s*\\[([\\s\\S]*?)\\]\\s+as\\s+const`))
+  if (!match) return []
+  return [...match[1].matchAll(/['"]([^'"]+)['"]/g)].map((literal) => literal[1])
+}
+
+function knownNativeRouteFiles() {
+  if (!fs.existsSync(adoptedRoutesPath)) return new Set()
+  const source = fs.readFileSync(adoptedRoutesPath, 'utf8')
+  return new Set([
+    ...stringLiteralsFromArray(source, 'adoptedLegacyFiles'),
+    ...stringLiteralsFromArray(source, 'standaloneKeywordFiles'),
+    ...stringLiteralsFromArray(source, 'specialScopedKeywordFiles'),
+    ...stringLiteralsFromArray(source, 'duesseldorfScopedKeywordPrefixes').map((prefix) => `${prefix}-duesseldorf.html`),
+  ])
+}
+
+const nativeRouteFiles = knownNativeRouteFiles()
 
 const stripTags = (value) => String(value || '').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim()
 
@@ -85,8 +105,9 @@ function refsFrom(html) {
 }
 
 function existsRef(fromFile, ref) {
-  const base = ref.startsWith('/') ? target : path.dirname(fromFile)
-  let clean = ref.startsWith('/') ? ref.replace(/^\/+/, '') : ref
+  const rootRelative = ref.startsWith('/')
+  const base = rootRelative ? target : path.dirname(fromFile)
+  let clean = rootRelative ? ref.replace(/^\/+/, '') : ref
   try {
     clean = decodeURIComponent(clean)
   } catch {
@@ -101,7 +122,8 @@ function existsRef(fromFile, ref) {
     path.resolve(target, `${clean}.html`),
     path.resolve(target, clean, 'index.html'),
   ]
-  return candidates.some((candidate) => fs.existsSync(candidate))
+  if (candidates.some((candidate) => fs.existsSync(candidate))) return true
+  return rootRelative && nativeRouteFiles.has(clean)
 }
 
 function auditHtml() {
