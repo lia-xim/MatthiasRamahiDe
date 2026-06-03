@@ -22,12 +22,8 @@
   --sc-ease:   var(--ease,   cubic-bezier(.22,.61,.36,1));
 }
 
-/* ===== Accessibility: skip link + global keyboard focus ring ===== */
-.mr-skip-link{position:fixed;top:10px;left:10px;z-index:1000;transform:translateY(-180%);background:#020306;color:#f3f5ef;padding:12px 18px;border:1px solid #f3f5ef;border-radius:2px;font:700 11px/1 var(--sc-mono);letter-spacing:.18em;text-transform:uppercase;text-decoration:none;transition:transform .2s var(--sc-ease)}
-.mr-skip-link:focus{transform:translateY(0);outline:none}
-#mr-content:focus{outline:none}
+/* ===== Accessibility: global keyboard focus ring ===== */
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:2px solid #7a8a86;outline-offset:2px;border-radius:2px}
-@media (prefers-reduced-motion: reduce){.mr-skip-link{transition:none}}
 
 .sr-only {
   position: absolute !important;
