@@ -27,12 +27,16 @@ if (!doc) {
 
 Astro.response.headers.set('cache-control', 'no-store, max-age=0')
 
-const hero = imageDisplayUrl(doc.coverImage, 'wide')
+const portfolioImageOptions = { allowOriginal: true, mapCachedAssets: false } as const
+const hero = imageDisplayUrl(doc.coverImage, 'wide', portfolioImageOptions)
 const gallery = doc.gallery ?? []
 const portfolioFocus = doc.category || doc.presentationMode || doc.title || 'Portfolio-Serie'
 const hasText = (value?: string): value is string => typeof value === 'string' && value.trim().length > 0
 const cmsHeroSlides = (doc.heroSlides || []).length > 0 ? homeHeroSlidesFor(doc, { preferCmsMedia: true }) : []
-const fallbackHeroImage = hero || imageDisplayUrl(doc.coverImage, 'hero') || imageDisplayUrl(doc.gallery?.[0]?.image, 'wide')
+const fallbackHeroImage =
+  hero ||
+  imageDisplayUrl(doc.coverImage, 'hero', portfolioImageOptions) ||
+  imageDisplayUrl(doc.gallery?.[0]?.image, 'wide', portfolioImageOptions)
 const fallbackHeroSlides = fallbackHeroImage
   ? [
       {
@@ -64,7 +68,7 @@ const defaultContextBody = [
 const resolvedContextBody = contextBody.length ? contextBody : defaultContextBody
 const perspectives = (projectPage.perspectives || []).filter((item) => hasText(item.title) || hasText(item.text))
 const firstPerspectiveImage = perspectives
-  .map((item) => imageDisplayUrl(item.image, 'wide', { allowOriginal: true }))
+  .map((item) => imageDisplayUrl(item.image, 'wide', portfolioImageOptions))
   .find(hasText)
 const infoCards = (projectPage.infoCards || []).filter((item) => hasText(item.title))
 const relatedCards = (projectPage.relatedCards || []).filter((item) => hasText(item.title) && hasText(item.href))
@@ -175,7 +179,7 @@ if (gallerySchema) jsonLdItems.push(gallerySchema)
         <h2>Aktuelle <em>Arbeiten.</em></h2>
       </div>
     </div>
-    <LoadMoreGallery id="bilder" items={gallery} eyebrow="" fallback="Portfolio-Bild" />
+    <LoadMoreGallery id="bilder" items={gallery} eyebrow="" fallback="Portfolio-Bild" mapCachedAssets={false} />
   </section>
 
   {infoCards.length > 0 && (
@@ -211,7 +215,7 @@ if (gallerySchema) jsonLdItems.push(gallerySchema)
         </div>
         <div class="project-related__grid">
           {relatedCards.map((card) => {
-            const cardImage = imageDisplayUrl(card.image, 'card', { allowOriginal: true })
+            const cardImage = imageDisplayUrl(card.image, 'card', portfolioImageOptions)
             return (
               <a class="project-related-card" href={card.href}>
                 {cardImage && <img src={cardImage} alt="" loading="lazy" decoding="async" />}

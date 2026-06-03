@@ -8,13 +8,15 @@ const {
   fallback = 'Bild folgt',
   sizes = '(max-width: 760px) 100vw, 50vw',
   loading = 'lazy',
+  mapCachedAssets = true,
 } = Astro.props
-const src = imageDisplayUrl(media, size)
+const mediaOptions = { mapCachedAssets }
+const src = imageDisplayUrl(media, size, mediaOptions)
 const alt = imageAlt(media, fallback)
 const dimensions = imageDimensions(media, size)
-const rasterSrcset = imageSrcset(media)
-const avifSrcset = imageSrcset(media, ['mobile', 'card', 'hero', 'wide'], 'avif')
-const fallbackSrc = typeof media === 'object' && media ? imageDisplayUrl(media, 'wide', { allowOriginal: true }) || src : src
+const rasterSrcset = imageSrcset(media, ['mobile', 'card', 'hero', 'wide'], 'raster', mediaOptions)
+const avifSrcset = imageSrcset(media, ['mobile', 'card', 'hero', 'wide'], 'avif', mediaOptions)
+const fallbackSrc = typeof media === 'object' && media ? imageDisplayUrl(media, 'wide', { allowOriginal: true, mapCachedAssets }) || src : src
 const blurDataUrl = typeof media === 'object' && media ? media.blurDataUrl : ''
 const dominantColor = typeof media === 'object' && media ? media.dominantColor : ''
 const objectPosition = imageObjectPosition(media)

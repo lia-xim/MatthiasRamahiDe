@@ -668,9 +668,17 @@ export async function getLegacyBackedDoc(legacyFile: string, options: ListOption
   }
 }
 
-export const toAbsolutePayloadUrl = (url?: string) => {
+type MediaUrlOptions = {
+  allowOriginal?: boolean
+  format?: 'avif' | 'raster'
+  mapCachedAssets?: boolean
+}
+
+const shouldMapCachedAssets = (options?: Pick<MediaUrlOptions, 'mapCachedAssets'>) => options?.mapCachedAssets !== false
+
+export const toAbsolutePayloadUrl = (url?: string, options: Pick<MediaUrlOptions, 'mapCachedAssets'> = {}) => {
   if (!url) return ''
-  const cachedAsset = cachedCmsAssetPath(url)
+  const cachedAsset = shouldMapCachedAssets(options) ? cachedCmsAssetPath(url) : ''
   if (cachedAsset) return toAbsoluteSiteUrl(versionStaticAssetUrl(cachedAsset))
   if (/^https?:\/\//i.test(url)) {
     try {
@@ -755,9 +763,9 @@ export const linkAttributes = (link?: PayloadLink | null) => {
   }
 }
 
-export const toDisplayAssetUrl = (url?: string) => {
+export const toDisplayAssetUrl = (url?: string, options: Pick<MediaUrlOptions, 'mapCachedAssets'> = {}) => {
   if (!url) return ''
-  const cachedAsset = cachedCmsAssetPath(url)
+  const cachedAsset = shouldMapCachedAssets(options) ? cachedCmsAssetPath(url) : ''
   if (cachedAsset) return versionStaticAssetUrl(cachedAsset)
   if (/^https?:\/\//i.test(url)) {
     try {
@@ -837,31 +845,35 @@ const shouldPreferOriginal = (media: PayloadMedia, requestedSize: string, select
 export const imageUrl = (
   media: PayloadMedia | string | undefined,
   size = 'hero',
-  options: { allowOriginal?: boolean; format?: 'avif' | 'raster' } = {},
+  options: MediaUrlOptions = {},
 ) => {
   if (!media) return ''
   if (typeof media === 'string') {
     if (/^https?:\/\//i.test(media)) return toAbsoluteSiteUrl(versionStaticAssetUrl(media))
     if (/^\/?assets\//i.test(media)) return toAbsoluteSiteUrl(versionStaticAssetUrl(media))
-    return toAbsolutePayloadUrl(media)
+    return toAbsolutePayloadUrl(media, options)
   }
   const selected = bestSize(media, size, options.format || 'raster')
   const sized = selected ? media.sizes?.[selected]?.url : undefined
-  if (shouldPreferOriginal(media, size, selected, options.allowOriginal)) return versionCmsMediaUrl(toAbsolutePayloadUrl(media.url), media)
-  return versionCmsMediaUrl(toAbsolutePayloadUrl(sized || (options.allowOriginal ? media.url : undefined)), media)
+  if (shouldPreferOriginal(media, size, selected, options.allowOriginal)) {
+    return versionCmsMediaUrl(toAbsolutePayloadUrl(media.url, options), media)
+  }
+  return versionCmsMediaUrl(toAbsolutePayloadUrl(sized || (options.allowOriginal ? media.url : undefined), options), media)
 }
 
 export const imageDisplayUrl = (
   media: PayloadMedia | string | undefined,
   size = 'hero',
-  options: { allowOriginal?: boolean; format?: 'avif' | 'raster' } = {},
+  options: MediaUrlOptions = {},
 ) => {
   if (!media) return ''
-  if (typeof media === 'string') return toDisplayAssetUrl(media)
+  if (typeof media === 'string') return toDisplayAssetUrl(media, options)
   const selected = bestSize(media, size, options.format || 'raster')
   const sized = selected ? media.sizes?.[selected]?.url : undefined
-  if (shouldPreferOriginal(media, size, selected, options.allowOriginal)) return versionCmsMediaUrl(toDisplayAssetUrl(media.url), media)
-  return versionCmsMediaUrl(toDisplayAssetUrl(sized || (options.allowOriginal ? media.url : undefined)), media)
+  if (shouldPreferOriginal(media, size, selected, options.allowOriginal)) {
+    return versionCmsMediaUrl(toDisplayAssetUrl(media.url, options), media)
+  }
+  return versionCmsMediaUrl(toDisplayAssetUrl(sized || (options.allowOriginal ? media.url : undefined), options), media)
 }
 
 export const imageDimensions = (media: PayloadMedia | string | undefined, size = 'hero') => {
@@ -878,6 +890,7 @@ export const imageSrcset = (
   media: PayloadMedia | string | undefined,
   sizes: string[] = ['mobile', 'card', 'hero', 'wide'],
   format: 'avif' | 'raster' = 'raster',
+  options: Pick<MediaUrlOptions, 'mapCachedAssets'> = {},
 ) => {
   if (!media || typeof media === 'string') return ''
 
@@ -887,7 +900,7 @@ export const imageSrcset = (
     .map((size) => {
       const selected = bestSize(media, size, format)
       const url = selected ? media.sizes?.[selected]?.url : undefined
-      const displayUrl = url ? versionCmsMediaUrl(toDisplayAssetUrl(url), media) : ''
+      const displayUrl = url ? versionCmsMediaUrl(toDisplayAssetUrl(url, options), media) : ''
       if (!selected || !displayUrl || seen.has(displayUrl)) return ''
       if (
         format === 'avif' &&
