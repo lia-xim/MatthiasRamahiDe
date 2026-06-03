@@ -73,6 +73,16 @@ const loadStatusTemplate = hasText(journalIndex?.loadStatusTemplate)
   ? journalIndex!.loadStatusTemplate!
   : '{visible} von {total} Beitraegen sichtbar'
 const featured = posts[0]
+const featuredSettings = journalIndex?.featured || {}
+const featuredHref = toRootRelativeHref(featuredSettings.buttonHref) || featured?.href || '/blog-automotive-fotografie-duesseldorf.html'
+const featuredImage = imageDisplayUrl(featuredSettings.image, 'wide', { allowOriginal: true }) || featured?.image || journalHero.image
+const featuredImageDimensions = imageDimensions(featuredSettings.image, 'wide')
+const featuredKicker = hasText(featuredSettings.kicker) ? featuredSettings.kicker! : 'Ausgewaehlter Beitrag'
+const featuredHeadline = hasText(featuredSettings.headline) ? featuredSettings.headline! : featured?.title || 'Geplant, nicht zufaellig.'
+const featuredText = hasText(featuredSettings.text)
+  ? featuredSettings.text!
+  : featured?.text || 'Ein starkes Foto entsteht nicht erst beim Ausloesen - sondern in der Entscheidung fuer Ort, Tageszeit, Bildschnitt und Stimmung.'
+const featuredButtonLabel = hasText(featuredSettings.buttonLabel) ? featuredSettings.buttonLabel! : 'Beitrag lesen'
 const gridPosts = posts.slice(1)
 const loadStatus = loadStatusTemplate
   .replace('{visible}', String(Math.min(initialVisiblePostCount, gridPosts.length)))
@@ -101,22 +111,23 @@ const finalSecondaryHref = toRootRelativeHref(finalCta.secondaryHref) || '/portf
 
     {featured && (
       <section class="featured" aria-label="Im Fokus">
-        <a class="featured__link" href={featured.href} aria-label={`Beitrag lesen: ${featured.title}`}></a>
+        <a class="featured__link" href={featuredHref} aria-label={`Beitrag lesen: ${featuredHeadline}`}></a>
         <div class="featured__inner">
           <figure class="featured__media">
             <img
-              src={featured.image}
-              alt={featured.imageAlt}
-              width={featured.width}
-              height={featured.height}
+              src={featuredImage}
+              alt={imageAlt(featuredSettings.image, featured.imageAlt || featuredHeadline)}
+              width={featuredImageDimensions.width || featured.width}
+              height={featuredImageDimensions.height || featured.height}
               decoding="async"
               loading="eager"
             />
           </figure>
           <div class="featured__copy">
-            <h2 class="featured__title">{featured.title}</h2>
-            <p class="featured__excerpt">{featured.text}</p>
-            <span class="featured__go">Beitrag lesen</span>
+            <p class="featured__meta"><span>{featuredKicker}</span></p>
+            <h2 class="featured__title">{featuredHeadline}</h2>
+            <p class="featured__excerpt">{featuredText}</p>
+            <span class="featured__go">{featuredButtonLabel}</span>
           </div>
         </div>
       </section>

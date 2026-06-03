@@ -78,11 +78,32 @@ export type PayloadDoc = {
   }>
   projectPage?: {
     galleryEyebrow?: string
+    statement?: {
+      quote?: string
+      accent?: string
+      stats?: Array<{ label?: string; text?: string }>
+      buttonLabel?: string
+      buttonHref?: string
+    }
     context?: {
       kicker?: string
       headline?: string
       body?: Array<{ text?: string }>
     }
+    perspectives?: Array<{
+      label?: string
+      title?: string
+      text?: string
+      image?: PayloadMedia | string
+      bullets?: Array<{ text?: string }>
+    }>
+    infoCards?: Array<{ number?: string; title?: string; label?: string; href?: string }>
+    relatedCards?: Array<{
+      label?: string
+      title?: string
+      href?: string
+      image?: PayloadMedia | string
+    }>
     contact?: PayloadCta
   }
   proofPoints?: Array<{ label?: string; text?: string }>
@@ -202,6 +223,14 @@ export type PayloadDoc = {
   // Journal-Uebersicht (SitePages, pageType 'journal-index'). Optional -> Fallback im Component.
   journalIndex?: {
     tickerItems?: Array<{ text?: string }>
+    featured?: {
+      kicker?: string
+      headline?: string
+      text?: string
+      buttonLabel?: string
+      buttonHref?: string
+      image?: PayloadMedia | string
+    }
     indexHeadline?: string
     initialVisiblePostCount?: number
     loadMoreLabel?: string

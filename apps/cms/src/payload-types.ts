@@ -642,6 +642,17 @@ export interface SitePage {
           id?: string | null;
         }[]
       | null;
+    featured?: {
+      kicker?: string | null;
+      headline?: string | null;
+      text?: string | null;
+      buttonLabel?: string | null;
+      /**
+       * Interne Links am besten root-relativ eintragen, z. B. /contact oder #journal.
+       */
+      buttonHref?: string | null;
+      image?: (number | null) | Media;
+    };
     indexHeadline?: string | null;
     initialVisiblePostCount?: number | null;
     loadMoreLabel?: string | null;
@@ -1425,6 +1436,19 @@ export interface PortfolioProject {
     | null;
   projectPage?: {
     galleryEyebrow?: string | null;
+    statement?: {
+      quote?: string | null;
+      accent?: string | null;
+      stats?:
+        | {
+            label: string;
+            text: string;
+            id?: string | null;
+          }[]
+        | null;
+      buttonLabel?: string | null;
+      buttonHref?: string | null;
+    };
     context?: {
       kicker?: string | null;
       headline?: string | null;
@@ -1435,6 +1459,42 @@ export interface PortfolioProject {
           }[]
         | null;
     };
+    /**
+     * Sektion mit Bild, Titel, Text und Stichpunkten - z. B. Exterieur, Interieur, Details, Cinematic.
+     */
+    perspectives?:
+      | {
+          label: string;
+          title: string;
+          text: string;
+          image?: (number | null) | Media;
+          bullets?:
+            | {
+                text: string;
+                id?: string | null;
+              }[]
+            | null;
+          id?: string | null;
+        }[]
+      | null;
+    infoCards?:
+      | {
+          number?: string | null;
+          title: string;
+          label?: string | null;
+          href?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    relatedCards?:
+      | {
+          label?: string | null;
+          title: string;
+          href: string;
+          image?: (number | null) | Media;
+          id?: string | null;
+        }[]
+      | null;
     contact?: {
       headline?: string | null;
       text?: string | null;
@@ -2654,6 +2714,16 @@ export interface SitePagesSelect<T extends boolean = true> {
               text?: T;
               id?: T;
             };
+        featured?:
+          | T
+          | {
+              kicker?: T;
+              headline?: T;
+              text?: T;
+              buttonLabel?: T;
+              buttonHref?: T;
+              image?: T;
+            };
         indexHeadline?: T;
         initialVisiblePostCount?: T;
         loadMoreLabel?: T;
@@ -3047,6 +3117,21 @@ export interface PortfolioProjectsSelect<T extends boolean = true> {
     | T
     | {
         galleryEyebrow?: T;
+        statement?:
+          | T
+          | {
+              quote?: T;
+              accent?: T;
+              stats?:
+                | T
+                | {
+                    label?: T;
+                    text?: T;
+                    id?: T;
+                  };
+              buttonLabel?: T;
+              buttonHref?: T;
+            };
         context?:
           | T
           | {
@@ -3058,6 +3143,39 @@ export interface PortfolioProjectsSelect<T extends boolean = true> {
                     text?: T;
                     id?: T;
                   };
+            };
+        perspectives?:
+          | T
+          | {
+              label?: T;
+              title?: T;
+              text?: T;
+              image?: T;
+              bullets?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+              id?: T;
+            };
+        infoCards?:
+          | T
+          | {
+              number?: T;
+              title?: T;
+              label?: T;
+              href?: T;
+              id?: T;
+            };
+        relatedCards?:
+          | T
+          | {
+              label?: T;
+              title?: T;
+              href?: T;
+              image?: T;
+              id?: T;
             };
         contact?:
           | T

@@ -1,0 +1,314 @@
+.project-statement {
+  background: #f5f1e8;
+  color: #161616;
+  padding: clamp(56px, 8vw, 116px) 0;
+}
+
+.project-statement__inner,
+.project-system__inner,
+.project-audience__inner,
+.project-related__inner {
+  width: min(1180px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.project-statement__quote {
+  max-width: 980px;
+  margin: 0;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: clamp(36px, 7vw, 92px);
+  line-height: .92;
+}
+
+.project-statement__quote em {
+  color: #8d1f18;
+  font-style: italic;
+}
+
+.project-statement__foot {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
+  gap: 18px;
+  align-items: end;
+  margin-top: clamp(32px, 5vw, 64px);
+}
+
+.project-stat {
+  border-top: 1px solid rgba(22, 22, 22, .22);
+  padding-top: 14px;
+}
+
+.project-stat span,
+.project-system__kicker,
+.project-gallery__kicker,
+.project-audience__kicker,
+.project-related__kicker {
+  display: block;
+  color: rgba(22, 22, 22, .56);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.project-stat strong {
+  display: block;
+  margin-top: 7px;
+  font-size: clamp(16px, 1.6vw, 20px);
+}
+
+.project-btn {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: 0 20px;
+  color: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.project-system {
+  background: #101010;
+  color: #f7f2e8;
+  padding: clamp(64px, 9vw, 132px) 0;
+}
+
+.project-system__head,
+.project-gallery__head,
+.project-audience__head,
+.project-related__head {
+  display: flex;
+  justify-content: space-between;
+  gap: 28px;
+  align-items: end;
+  margin-bottom: clamp(28px, 5vw, 60px);
+}
+
+.project-system h2,
+.project-gallery h2,
+.project-audience h2,
+.project-related h2 {
+  max-width: 760px;
+  margin: 8px 0 0;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: clamp(34px, 6vw, 82px);
+  line-height: .95;
+}
+
+.project-system h2 em,
+.project-gallery h2 em,
+.project-audience h2 em,
+.project-related h2 em {
+  color: #c84d3c;
+  font-style: italic;
+}
+
+.project-system__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(300px, .75fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: stretch;
+}
+
+.project-system__visual {
+  min-height: clamp(360px, 52vw, 680px);
+  overflow: hidden;
+  background: #050505;
+}
+
+.project-system__visual img,
+.project-related-card img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.project-system__list {
+  display: grid;
+  gap: 12px;
+}
+
+.project-perspective {
+  border: 1px solid rgba(247, 242, 232, .14);
+  padding: clamp(18px, 3vw, 28px);
+  background: rgba(255, 255, 255, .035);
+}
+
+.project-perspective span {
+  color: rgba(247, 242, 232, .56);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.project-perspective h3 {
+  margin: 10px 0;
+  font-size: clamp(22px, 2.5vw, 34px);
+}
+
+.project-perspective p,
+.project-context p {
+  color: rgba(247, 242, 232, .76);
+  line-height: 1.65;
+}
+
+.project-perspective ul {
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.project-perspective li {
+  border-top: 1px solid rgba(247, 242, 232, .12);
+  padding: 9px 0;
+  color: rgba(247, 242, 232, .84);
+  font-size: 14px;
+}
+
+.project-gallery {
+  background: #f8f5ee;
+  color: #161616;
+  padding-top: clamp(58px, 8vw, 104px);
+}
+
+.project-gallery .gallery-loadmore {
+  padding-top: 0;
+}
+
+.project-audience {
+  background: #f8f5ee;
+  color: #161616;
+  padding: clamp(54px, 8vw, 108px) 0;
+}
+
+.project-audience__grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.project-info-card {
+  min-height: 210px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid rgba(22, 22, 22, .16);
+  padding: 18px;
+  color: inherit;
+  text-decoration: none;
+  transition: background .2s ease, color .2s ease;
+}
+
+.project-info-card:hover {
+  background: #161616;
+  color: #f7f2e8;
+}
+
+.project-info-card span {
+  color: rgba(22, 22, 22, .48);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.project-info-card:hover span {
+  color: rgba(247, 242, 232, .6);
+}
+
+.project-info-card h3 {
+  margin: 0;
+  font-size: clamp(20px, 2.4vw, 30px);
+  line-height: 1;
+}
+
+.project-related {
+  background: #101010;
+  color: #f7f2e8;
+  padding: clamp(64px, 9vw, 124px) 0;
+}
+
+.project-related__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.project-related-card {
+  position: relative;
+  min-height: 360px;
+  overflow: hidden;
+  color: #fff;
+  text-decoration: none;
+  background: #050505;
+}
+
+.project-related-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 28%, rgba(0, 0, 0, .74));
+}
+
+.project-related-card__content {
+  position: absolute;
+  inset: auto 18px 18px;
+  z-index: 1;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.project-related-card span {
+  color: rgba(255, 255, 255, .62);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.project-related-card strong {
+  display: block;
+  margin-top: 6px;
+  font-size: clamp(22px, 2.4vw, 34px);
+}
+
+@media (max-width: 900px) {
+  .project-statement__foot,
+  .project-system__grid,
+  .project-system__head,
+  .project-gallery__head,
+  .project-audience__head,
+  .project-related__head {
+    grid-template-columns: 1fr;
+    display: grid;
+  }
+
+  .project-audience__grid,
+  .project-related__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  .project-statement__inner,
+  .project-system__inner,
+  .project-audience__inner,
+  .project-related__inner {
+    width: min(100% - 28px, 1180px);
+  }
+
+  .project-audience__grid,
+  .project-related__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-related-card {
+    min-height: 280px;
+  }
+}

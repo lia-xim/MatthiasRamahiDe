@@ -55,6 +55,8 @@ const heroSlides = cmsHeroSlides.length ? cmsHeroSlides : fallbackHeroSlides
 const firstHeroSlide = heroSlides[0]
 const projectPage = doc.projectPage || {}
 const galleryEyebrow = hasText(projectPage.galleryEyebrow) ? projectPage.galleryEyebrow! : 'Bildstrecke'
+const statement = projectPage.statement || {}
+const statementStats = (statement.stats || []).filter((item) => hasText(item.label) || hasText(item.text))
 const context = projectPage.context || {}
 const contextKicker = hasText(context.kicker) ? context.kicker! : 'Einordnung'
 const contextHeadline = hasText(context.headline) ? context.headline! : 'Serie, Einsatz und Bildsprache'
@@ -64,6 +66,12 @@ const defaultContextBody = [
   'Entscheidend ist die Lesbarkeit der Bildstrecke. Farbe, Abstand, Perspektive und Reihenfolge sollen schnell zeigen, ob eine aehnliche Produktion fuer Marke, Verkauf, Portfolio, Print oder digitale Praesentation funktioniert. So bekommt jedes Portfolio-Motiv einen klaren Kontext statt nur einen isolierten Galerieplatz.',
 ]
 const resolvedContextBody = contextBody.length ? contextBody : defaultContextBody
+const perspectives = (projectPage.perspectives || []).filter((item) => hasText(item.title) || hasText(item.text))
+const firstPerspectiveImage = perspectives
+  .map((item) => imageDisplayUrl(item.image, 'wide', { allowOriginal: true }))
+  .find(hasText)
+const infoCards = (projectPage.infoCards || []).filter((item) => hasText(item.title))
+const relatedCards = (projectPage.relatedCards || []).filter((item) => hasText(item.title) && hasText(item.href))
 const projectCta = projectPage.contact || doc.cta
 const rawDescription = doc.seo?.description || doc.excerpt || ''
 const description =
@@ -92,22 +100,139 @@ if (gallerySchema) jsonLdItems.push(gallerySchema)
   noIndex={doc.seo?.noIndex}
   ogImage={doc.seo?.ogImage || doc.coverImage}
   jsonLd={jsonLdItems}
-  stylesheets={['/assets/native-home.css']}
+  stylesheets={['/assets/native-home.css', '/assets/native-portfolio-project.css']}
   preloadImages={firstHeroSlide ? [firstHeroSlide.image] : []}
 >
   {heroSlides.length > 0 && <NativeShaderHero id="top" label={doc.title || 'Portfolio'} slides={heroSlides} headerTheme="dark" />}
 
-  <LoadMoreGallery id="bilder" items={gallery} eyebrow={galleryEyebrow} fallback="Portfolio-Bild" />
+  {(hasText(statement.quote) || statementStats.length > 0) && (
+    <section class="project-statement" data-header-theme="light">
+      <div class="project-statement__inner">
+        {hasText(statement.quote) && (
+          <blockquote class="project-statement__quote">
+            <strong>
+              {statement.quote}
+              {hasText(statement.accent) && <> <em>{statement.accent}</em></>}
+            </strong>
+          </blockquote>
+        )}
+        <div class="project-statement__foot">
+          {statementStats.map((item) => (
+            <div class="project-stat">
+              {hasText(item.label) && <span>{item.label}</span>}
+              {hasText(item.text) && <strong>{item.text}</strong>}
+            </div>
+          ))}
+          {hasText(statement.buttonLabel) && (
+            <a class="project-btn" href={statement.buttonHref || '#anfrage'}>{statement.buttonLabel}</a>
+          )}
+        </div>
+      </div>
+    </section>
+  )}
 
-  <section class="container section-pad">
-    <p class="eyebrow">{contextKicker}</p>
-    <div class="stack-list">
-      <article class="stack-item">
-        <h2>{contextHeadline}</h2>
-        {resolvedContextBody.map((paragraph) => <p class="copy">{paragraph}</p>)}
-      </article>
+  {(perspectives.length > 0 || resolvedContextBody.length > 0) && (
+    <section class="project-system" data-header-theme="dark">
+      <div class="project-system__inner">
+        <div class="project-system__head">
+          <div>
+            <span class="project-system__kicker">{contextKicker}</span>
+            <h2>{contextHeadline}</h2>
+          </div>
+          <div class="project-context">
+            {resolvedContextBody.map((paragraph) => <p>{paragraph}</p>)}
+          </div>
+        </div>
+        {perspectives.length > 0 && (
+          <div class="project-system__grid">
+            {firstPerspectiveImage && (
+              <figure class="project-system__visual">
+                <img src={firstPerspectiveImage} alt="" loading="lazy" decoding="async" />
+              </figure>
+            )}
+            <div class="project-system__list">
+              {perspectives.map((item, index) => (
+                <article class="project-perspective">
+                  <span>{item.label || String(index + 1).padStart(2, '0')}</span>
+                  <h3>{item.title}</h3>
+                  {hasText(item.text) && <p>{item.text}</p>}
+                  {(item.bullets || []).length > 0 && (
+                    <ul>
+                      {(item.bullets || []).filter((bullet) => hasText(bullet.text)).map((bullet) => (
+                        <li>{bullet.text}</li>
+                      ))}
+                    </ul>
+                  )}
+                </article>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+  )}
+
+  <section class="project-gallery" data-header-theme="light">
+    <div class="project-statement__inner project-gallery__head">
+      <div>
+        <span class="project-gallery__kicker">{galleryEyebrow}</span>
+        <h2>Aktuelle <em>Arbeiten.</em></h2>
+      </div>
     </div>
+    <LoadMoreGallery id="bilder" items={gallery} eyebrow="" fallback="Portfolio-Bild" />
   </section>
+
+  {infoCards.length > 0 && (
+    <section class="project-audience" data-header-theme="light">
+      <div class="project-audience__inner">
+        <div class="project-audience__head">
+          <div>
+            <span class="project-audience__kicker">Zielgruppen</span>
+            <h2>Fuer <em>wen</em> ich arbeite.</h2>
+          </div>
+        </div>
+        <div class="project-audience__grid">
+          {infoCards.map((card, index) => (
+            <a class="project-info-card" href={card.href || '#anfrage'}>
+              <span>{card.number || String(index + 1).padStart(2, '0')}</span>
+              <h3>{card.title}</h3>
+              {hasText(card.label) && <span>{card.label}</span>}
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {relatedCards.length > 0 && (
+    <section class="project-related" data-header-theme="dark">
+      <div class="project-related__inner">
+        <div class="project-related__head">
+          <div>
+            <span class="project-related__kicker">Navigation</span>
+            <h2>Verwandte <em>Bereiche</em>.</h2>
+          </div>
+        </div>
+        <div class="project-related__grid">
+          {relatedCards.map((card) => {
+            const cardImage = imageDisplayUrl(card.image, 'card', { allowOriginal: true })
+            return (
+              <a class="project-related-card" href={card.href}>
+                {cardImage && <img src={cardImage} alt="" loading="lazy" decoding="async" />}
+                <div class="project-related-card__content">
+                  <div>
+                    {hasText(card.label) && <span>{card.label}</span>}
+                    <strong>{card.title}</strong>
+                  </div>
+                  <span>-></span>
+                </div>
+              </a>
+            )
+          })}
+        </div>
+      </div>
+    </section>
+  )}
 
   <ContentBlocks blocks={doc.blocks} />
   <ContactCta cta={projectCta} />

@@ -45,6 +45,25 @@ export const journalIndexSectionsTab: Tab = {
           fields: [{ name: 'text', label: 'Text', type: 'text', required: true }],
         },
         {
+          name: 'featured',
+          label: 'Ausgewaehlter Beitrag',
+          type: 'group',
+          fields: [
+            { name: 'kicker', label: 'Kicker', type: 'text' },
+            { name: 'headline', label: 'Headline', type: 'text' },
+            { name: 'text', label: 'Text', type: 'textarea' },
+            { name: 'buttonLabel', label: 'Button-Text', type: 'text' },
+            optionalHrefField('buttonHref', 'Button-Link'),
+            {
+              name: 'image',
+              label: 'Bild',
+              type: 'relationship',
+              relationTo: 'media',
+              admin: { appearance: 'drawer' },
+            },
+          ],
+        },
+        {
           type: 'row',
           fields: [
             { name: 'indexHeadline', label: 'Artikelbereich - Headline', type: 'text', admin: { width: '55%' } },

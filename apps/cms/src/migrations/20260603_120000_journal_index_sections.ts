@@ -36,6 +36,12 @@ export async function up({ db }: MigrateUpArgs): Promise<void> {
     );
 
     ALTER TABLE "site_pages" ADD COLUMN IF NOT EXISTS "journal_index_index_headline" varchar;
+    ALTER TABLE "site_pages" ADD COLUMN IF NOT EXISTS "journal_index_featured_kicker" varchar;
+    ALTER TABLE "site_pages" ADD COLUMN IF NOT EXISTS "journal_index_featured_headline" varchar;
+    ALTER TABLE "site_pages" ADD COLUMN IF NOT EXISTS "journal_index_featured_text" varchar;
+    ALTER TABLE "site_pages" ADD COLUMN IF NOT EXISTS "journal_index_featured_button_label" varchar;
+    ALTER TABLE "site_pages" ADD COLUMN IF NOT EXISTS "journal_index_featured_button_href" varchar;
+    ALTER TABLE "site_pages" ADD COLUMN IF NOT EXISTS "journal_index_featured_image_id" integer;
     ALTER TABLE "site_pages" ADD COLUMN IF NOT EXISTS "journal_index_initial_visible_post_count" numeric DEFAULT 6;
     ALTER TABLE "site_pages" ADD COLUMN IF NOT EXISTS "journal_index_load_more_label" varchar;
     ALTER TABLE "site_pages" ADD COLUMN IF NOT EXISTS "journal_index_load_status_template" varchar;
@@ -48,6 +54,12 @@ export async function up({ db }: MigrateUpArgs): Promise<void> {
     ALTER TABLE "site_pages" ADD COLUMN IF NOT EXISTS "journal_index_final_cta_secondary_href" varchar;
 
     ALTER TABLE "_site_pages_v" ADD COLUMN IF NOT EXISTS "version_journal_index_index_headline" varchar;
+    ALTER TABLE "_site_pages_v" ADD COLUMN IF NOT EXISTS "version_journal_index_featured_kicker" varchar;
+    ALTER TABLE "_site_pages_v" ADD COLUMN IF NOT EXISTS "version_journal_index_featured_headline" varchar;
+    ALTER TABLE "_site_pages_v" ADD COLUMN IF NOT EXISTS "version_journal_index_featured_text" varchar;
+    ALTER TABLE "_site_pages_v" ADD COLUMN IF NOT EXISTS "version_journal_index_featured_button_label" varchar;
+    ALTER TABLE "_site_pages_v" ADD COLUMN IF NOT EXISTS "version_journal_index_featured_button_href" varchar;
+    ALTER TABLE "_site_pages_v" ADD COLUMN IF NOT EXISTS "version_journal_index_featured_image_id" integer;
     ALTER TABLE "_site_pages_v" ADD COLUMN IF NOT EXISTS "version_journal_index_initial_visible_post_count" numeric DEFAULT 6;
     ALTER TABLE "_site_pages_v" ADD COLUMN IF NOT EXISTS "version_journal_index_load_more_label" varchar;
     ALTER TABLE "_site_pages_v" ADD COLUMN IF NOT EXISTS "version_journal_index_load_status_template" varchar;
@@ -61,17 +73,21 @@ export async function up({ db }: MigrateUpArgs): Promise<void> {
 
     DO $$ BEGIN ALTER TABLE "site_pages_journal_index_ticker_items" ADD CONSTRAINT "sp_journal_ticker_items_parent_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."site_pages"("id") ON DELETE cascade ON UPDATE no action; EXCEPTION WHEN duplicate_object THEN null; END $$;
     DO $$ BEGIN ALTER TABLE "site_pages_journal_index_filters" ADD CONSTRAINT "sp_journal_filters_parent_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."site_pages"("id") ON DELETE cascade ON UPDATE no action; EXCEPTION WHEN duplicate_object THEN null; END $$;
+    DO $$ BEGIN ALTER TABLE "site_pages" ADD CONSTRAINT "site_pages_journal_featured_image_fk" FOREIGN KEY ("journal_index_featured_image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action; EXCEPTION WHEN duplicate_object THEN null; END $$;
     DO $$ BEGIN ALTER TABLE "_site_pages_v_version_journal_index_ticker_items" ADD CONSTRAINT "_spv_journal_ticker_items_parent_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_site_pages_v"("id") ON DELETE cascade ON UPDATE no action; EXCEPTION WHEN duplicate_object THEN null; END $$;
     DO $$ BEGIN ALTER TABLE "_site_pages_v_version_journal_index_filters" ADD CONSTRAINT "_spv_journal_filters_parent_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_site_pages_v"("id") ON DELETE cascade ON UPDATE no action; EXCEPTION WHEN duplicate_object THEN null; END $$;
+    DO $$ BEGIN ALTER TABLE "_site_pages_v" ADD CONSTRAINT "_site_pages_v_journal_featured_image_fk" FOREIGN KEY ("version_journal_index_featured_image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action; EXCEPTION WHEN duplicate_object THEN null; END $$;
 
     CREATE INDEX IF NOT EXISTS "sp_journal_ticker_items_order_idx" ON "site_pages_journal_index_ticker_items" USING btree ("_order");
     CREATE INDEX IF NOT EXISTS "sp_journal_ticker_items_parent_idx" ON "site_pages_journal_index_ticker_items" USING btree ("_parent_id");
     CREATE INDEX IF NOT EXISTS "sp_journal_filters_order_idx" ON "site_pages_journal_index_filters" USING btree ("_order");
     CREATE INDEX IF NOT EXISTS "sp_journal_filters_parent_idx" ON "site_pages_journal_index_filters" USING btree ("_parent_id");
+    CREATE INDEX IF NOT EXISTS "site_pages_journal_featured_image_idx" ON "site_pages" USING btree ("journal_index_featured_image_id");
     CREATE INDEX IF NOT EXISTS "_spv_journal_ticker_items_order_idx" ON "_site_pages_v_version_journal_index_ticker_items" USING btree ("_order");
     CREATE INDEX IF NOT EXISTS "_spv_journal_ticker_items_parent_idx" ON "_site_pages_v_version_journal_index_ticker_items" USING btree ("_parent_id");
     CREATE INDEX IF NOT EXISTS "_spv_journal_filters_order_idx" ON "_site_pages_v_version_journal_index_filters" USING btree ("_order");
     CREATE INDEX IF NOT EXISTS "_spv_journal_filters_parent_idx" ON "_site_pages_v_version_journal_index_filters" USING btree ("_parent_id");
+    CREATE INDEX IF NOT EXISTS "_site_pages_v_journal_featured_image_idx" ON "_site_pages_v" USING btree ("version_journal_index_featured_image_id");
   `)
 }
 
@@ -83,6 +99,12 @@ export async function down({ db }: MigrateDownArgs): Promise<void> {
     DROP TABLE IF EXISTS "site_pages_journal_index_ticker_items" CASCADE;
 
     ALTER TABLE "site_pages" DROP COLUMN IF EXISTS "journal_index_index_headline";
+    ALTER TABLE "site_pages" DROP COLUMN IF EXISTS "journal_index_featured_kicker";
+    ALTER TABLE "site_pages" DROP COLUMN IF EXISTS "journal_index_featured_headline";
+    ALTER TABLE "site_pages" DROP COLUMN IF EXISTS "journal_index_featured_text";
+    ALTER TABLE "site_pages" DROP COLUMN IF EXISTS "journal_index_featured_button_label";
+    ALTER TABLE "site_pages" DROP COLUMN IF EXISTS "journal_index_featured_button_href";
+    ALTER TABLE "site_pages" DROP COLUMN IF EXISTS "journal_index_featured_image_id";
     ALTER TABLE "site_pages" DROP COLUMN IF EXISTS "journal_index_initial_visible_post_count";
     ALTER TABLE "site_pages" DROP COLUMN IF EXISTS "journal_index_load_more_label";
     ALTER TABLE "site_pages" DROP COLUMN IF EXISTS "journal_index_load_status_template";
@@ -95,6 +117,12 @@ export async function down({ db }: MigrateDownArgs): Promise<void> {
     ALTER TABLE "site_pages" DROP COLUMN IF EXISTS "journal_index_final_cta_secondary_href";
 
     ALTER TABLE "_site_pages_v" DROP COLUMN IF EXISTS "version_journal_index_index_headline";
+    ALTER TABLE "_site_pages_v" DROP COLUMN IF EXISTS "version_journal_index_featured_kicker";
+    ALTER TABLE "_site_pages_v" DROP COLUMN IF EXISTS "version_journal_index_featured_headline";
+    ALTER TABLE "_site_pages_v" DROP COLUMN IF EXISTS "version_journal_index_featured_text";
+    ALTER TABLE "_site_pages_v" DROP COLUMN IF EXISTS "version_journal_index_featured_button_label";
+    ALTER TABLE "_site_pages_v" DROP COLUMN IF EXISTS "version_journal_index_featured_button_href";
+    ALTER TABLE "_site_pages_v" DROP COLUMN IF EXISTS "version_journal_index_featured_image_id";
     ALTER TABLE "_site_pages_v" DROP COLUMN IF EXISTS "version_journal_index_initial_visible_post_count";
     ALTER TABLE "_site_pages_v" DROP COLUMN IF EXISTS "version_journal_index_load_more_label";
     ALTER TABLE "_site_pages_v" DROP COLUMN IF EXISTS "version_journal_index_load_status_template";

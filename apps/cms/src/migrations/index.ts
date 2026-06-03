@@ -12,6 +12,7 @@ import * as migration_20260603_100000_about_sections from './20260603_100000_abo
 import * as migration_20260603_110000_portfolio_index_sections from './20260603_110000_portfolio_index_sections';
 import * as migration_20260603_120000_journal_index_sections from './20260603_120000_journal_index_sections';
 import * as migration_20260603_130000_portfolio_project_sections from './20260603_130000_portfolio_project_sections';
+import * as migration_20260603_140000_portfolio_project_full_sections from './20260603_140000_portfolio_project_full_sections';
 
 export const migrations = [
   {
@@ -83,5 +84,10 @@ export const migrations = [
     up: migration_20260603_130000_portfolio_project_sections.up,
     down: migration_20260603_130000_portfolio_project_sections.down,
     name: '20260603_130000_portfolio_project_sections'
+  },
+  {
+    up: migration_20260603_140000_portfolio_project_full_sections.up,
+    down: migration_20260603_140000_portfolio_project_full_sections.down,
+    name: '20260603_140000_portfolio_project_full_sections'
   },
 ];
