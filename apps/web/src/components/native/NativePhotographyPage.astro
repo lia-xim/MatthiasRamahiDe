@@ -1,6 +1,6 @@
 ---
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
-import { blockParagraphs, photographyTopics as fallbackTopics } from '../../lib/nativeContent'
+import { blockParagraphs, homeHeroSlidesFor, photographyTopics as fallbackTopics } from '../../lib/nativeContent'
 import {
   getSitePageByType,
   imageAlt,
@@ -98,7 +98,8 @@ const overviewHeroSlides = topics.map((topic, index) => ({
   secondaryHref: '/portfolio.html',
   secondaryLabel: 'Portfolio ansehen',
 }))
-const heroSlides = overviewHeroSlides
+const cmsHeroSlides = (doc?.heroSlides || []).length > 0 ? homeHeroSlidesFor(doc) : []
+const heroSlides = cmsHeroSlides.length ? cmsHeroSlides : overviewHeroSlides
 const firstHeroSlide = heroSlides[0]
 const heroImages = heroSlides.map((slide) => slide.image)
 const heroSlidesJson = JSON.stringify(heroSlides)

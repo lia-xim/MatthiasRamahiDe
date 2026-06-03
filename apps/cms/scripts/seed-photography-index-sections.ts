@@ -68,12 +68,37 @@ const topicSeeds = [
   { img: IMG.landschaft, title: 'Landschaft.', emphasis: 'Fotografie.', linkLabel: 'Zur Landschaftsfotografie →', href: '/landschaftsfotografie.html', text: 'Landschaftsfotografie steht weniger für lokales Shooting als für kuratierten Bildkauf: Fine-Art-Prints, Wandbilder, Editionen und große Formate werden nach Raum, Material und Wirkung ausgewählt.' },
 ]
 
+const heroSlideSeeds = [
+  { img: IMG.neon, headlineLine1: 'Fotografie-', headlineLine2: 'Bereiche.', lead: 'Sechs Fotografie-Bereiche - Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft. Jede Kategorie mit eigener Bildsprache und eigenem Einstieg.' },
+  { img: IMG.sunset, headlineLine1: 'Automobil.', headlineLine2: 'Bildserien.', lead: 'Fahrzeuge, Marken, Haendler und private Verkaeufe bekommen eine Bildserie, die Motiv, Nutzung und Ausgabeformat zusammen denkt.' },
+  { img: IMG.oldtimer, headlineLine1: 'Material.', headlineLine2: 'Geschichte.', lead: 'Oldtimer, Sportwagen und Sammlerfahrzeuge werden ruhig dokumentiert: Lack, Chrom, Leder, Patina und Linie bleiben lesbar.' },
+  { img: IMG.portraitBlue, headlineLine1: 'Portrait.', headlineLine2: 'Haltung.', lead: 'Portraits, Personal Branding und Editorial-Serien folgen Licht, Distanz und Wirkung - nicht einer Pose von der Stange.' },
+  { img: IMG.landschaft, headlineLine1: 'Landschaft.', headlineLine2: 'Prints.', lead: 'Fine-Art-Landschaften, Editionen und Wandbilder werden nach Raum, Material und Wirkung kuratiert.' },
+]
+
 const clusterIntro = [
   'Die Übersicht ist der Einstiegspunkt. Von hier aus führen die sechs Bereiche auf eigene Hauptseiten — und von dort weiter in lokale Varianten, NRW- und Deutschland-Hubs sowie die jeweiligen Keyword-Seiten.',
   'Nutzer wählen nicht aus einem generischen Portfolio, sondern steigen direkt in Automobil, Sportwagen, Oldtimer, Motorrad, Portrait oder Landschaft ein. Jede Kategorie zeigt auf ihrer Hauptseite die zugehörigen Städte und Regionen.',
 ]
 
 const isFilledArray = (value: unknown) => Array.isArray(value) && value.length > 0
+
+const heroSlideSeed = async (seed: (typeof heroSlideSeeds)[number]) => {
+  const image = await resolveMediaId(seed.img)
+  if (!image) return undefined
+
+  return {
+    image,
+    headlineLine1: seed.headlineLine1,
+    headlineLine2: seed.headlineLine2,
+    lead: seed.lead,
+    primaryLabel: 'Projekt anfragen',
+    primaryHref: '#anfrage',
+    secondaryLabel: 'Portfolio ansehen',
+    secondaryHref: '/portfolio.html',
+    durationSec: 7,
+  }
+}
 
 try {
   const found = await payload.find({
@@ -91,6 +116,14 @@ try {
   const next: Record<string, unknown> = { ...group }
   const filled: string[] = []
   const skipped: string[] = []
+
+  if (!isFilledArray(doc.heroSlides)) {
+    const heroSlides = (await Promise.all(heroSlideSeeds.map(heroSlideSeed))).filter(Boolean)
+    if (heroSlides.length > 0) {
+      data.heroSlides = heroSlides
+      filled.push('Hero-Slides')
+    }
+  } else skipped.push('Hero-Slides')
 
   if (!isFilledArray(group.topics)) {
     const topics = []
