@@ -45,6 +45,19 @@ async function resolveMediaId(candidates: string[]): Promise<RelationId | undefi
     const id = found.docs[0]?.id
     if (typeof id === 'string' || typeof id === 'number') return id
   }
+  for (const candidate of candidates) {
+    const stem = path.basename(candidate.replace(/^\/+/, '')).replace(/\.[^.]+$/, '')
+    if (!stem) continue
+    const found = await payload.find({
+      collection: 'media',
+      depth: 0,
+      limit: 1,
+      overrideAccess: true,
+      where: { filename: { like: stem } } as never,
+    })
+    const id = found.docs[0]?.id
+    if (typeof id === 'string' || typeof id === 'number') return id
+  }
   return undefined
 }
 
@@ -147,6 +160,10 @@ const whyCards = [
 
 const isFilledArray = (value: unknown) => Array.isArray(value) && value.length > 0
 const isFilledText = (value: unknown) => typeof value === 'string' && value.trim().length > 0
+const oldOverviewIntro =
+  'Vom einzelnen Fine-Art-Print bis zur kompletten Markenfläche, Website, Filmproduktion oder Eventbegleitung. Sechs ergänzende Bereiche, ein gemeinsamer visueller Anspruch.'
+const defaultOverviewIntro =
+  'Vom einzelnen Fine-Art-Print bis zur kompletten Markenfläche, Website, Filmproduktion oder Eventbegleitung. Sieben ergänzende Bereiche, ein gemeinsamer visueller Anspruch.'
 
 const heroSlideSeed = async (seed: (typeof heroSlideSeeds)[number]) => {
   const image = await resolveMediaId(seed.img)
@@ -218,10 +235,14 @@ try {
   if (!isFilledText(group.overviewHeadline)) {
     next.overviewHeadline = 'Dienstleistungen im Überblick.'
     next.overviewEmphasis = 'im Überblick.'
-    next.overviewIntro =
-      'Vom einzelnen Fine-Art-Print bis zur kompletten Markenfläche, Website, Filmproduktion oder Eventbegleitung. Sieben ergänzende Bereiche, ein gemeinsamer visueller Anspruch.'
+    next.overviewIntro = defaultOverviewIntro
     filled.push('Überblick-Kopf')
   } else skipped.push('Überblick-Kopf')
+
+  if (typeof group.overviewIntro === 'string' && group.overviewIntro.trim() === oldOverviewIntro) {
+    next.overviewIntro = defaultOverviewIntro
+    filled.push('Überblick-Intro auf sieben Bereiche aktualisiert')
+  }
 
   if (!isFilledArray(group.whyCards)) {
     next.whyKicker = 'Projektablauf'
