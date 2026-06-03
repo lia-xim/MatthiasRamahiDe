@@ -19,13 +19,13 @@ import { breadcrumbJsonLd, imageGalleryJsonLd, type JsonLd } from '../../lib/seo
 export const prerender = false
 
 const { slug } = Astro.params
-const doc = (Astro.props.doc ?? (slug ? await getBySlug('portfolio-projects', slug, liveCmsFetchOptions({ depth: 2 })) : null)) as PayloadDoc | null
+const doc = (Astro.props.doc ?? (slug ? await getBySlug('portfolio-projects', slug, liveCmsFetchOptions({ depth: 2, cacheMs: 0 })) : null)) as PayloadDoc | null
 
 if (!doc) {
   return Astro.redirect('/portfolio.html', 308)
 }
 
-Astro.response.headers.set('cache-control', 'public, max-age=300, stale-while-revalidate=86400')
+Astro.response.headers.set('cache-control', 'no-store, max-age=0')
 
 const hero = imageDisplayUrl(doc.coverImage, 'wide')
 const gallery = doc.gallery ?? []
