@@ -1,0 +1,68 @@
+---
+type HeroSlide = {
+  image: string
+  titleLines: string[]
+  lead?: string
+  primaryHref?: string
+  primaryLabel?: string
+  secondaryHref?: string
+  secondaryLabel?: string
+  durationSec?: number
+}
+
+type Props = {
+  id?: string
+  label: string
+  slides: HeroSlide[]
+  theme?: 'dark' | 'light'
+  headerTheme?: 'dark' | 'light'
+}
+
+const { id, label, slides, theme = 'dark', headerTheme } = Astro.props as Props
+const firstSlide = slides[0]
+const heroImages = slides.map((slide) => slide.image)
+const heroSlidesJson = JSON.stringify(slides)
+const heroCssImage = firstSlide.image.replace(/'/g, "\\'")
+---
+
+<section
+  class="hero"
+  id={id}
+  data-theme={theme}
+  data-header-theme={headerTheme}
+  aria-label={label}
+  style={`--hero-bg:url('${heroCssImage}');background-image:url('${heroCssImage}')`}
+>
+  <div class="hero-bg" aria-hidden="true"></div>
+  <img
+    class="hero-shader-preload"
+    data-hero-shader-preload
+    src={firstSlide.image}
+    alt=""
+    width="1"
+    height="1"
+    loading="eager"
+    decoding="async"
+    fetchpriority="high"
+    crossorigin="anonymous"
+    aria-hidden="true"
+  />
+  <canvas id="hero-shader" aria-hidden="true" data-imgs={heroImages.join(',')} data-slides={heroSlidesJson}></canvas>
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-aperture" aria-hidden="true"></div>
+  <div class="hero-grid">
+    <div class="hero-stage">
+      <h1 class="hero-title" id="hero-title" data-text-idx="0">
+        {firstSlide.titleLines.map((line) => (
+          <span class="line"><span class="word">{line}</span></span>
+        ))}
+      </h1>
+      <p class="hero-lead" id="hero-lead">{firstSlide.lead}</p>
+      <div class="hero-actions" aria-label="Direkte Aktionen">
+        <a class="btn dark" href={firstSlide.primaryHref} data-hero-primary hidden={!firstSlide.primaryHref || !firstSlide.primaryLabel}>{firstSlide.primaryLabel}</a>
+        <a class="btn" href={firstSlide.secondaryHref} data-hero-secondary hidden={!firstSlide.secondaryHref || !firstSlide.secondaryLabel}>{firstSlide.secondaryLabel}</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-cursor" id="hero-cursor" aria-hidden="true"><span class="ring"></span></div>
+</section>

@@ -1,6 +1,7 @@
 ---
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import PreviewToolbar from '../PreviewToolbar.astro'
+import NativeShaderHero from './NativeShaderHero.astro'
 import {
   blockParagraphs,
   homeChapters as fallbackChapters,
@@ -37,9 +38,6 @@ const doc = providedDoc || (await getSitePageByType('home', liveCmsFetchOptions(
 
 const heroSlides = homeHeroSlidesFor(doc)
 const firstHeroSlide = heroSlides[0]
-const heroImages = heroSlides.map((slide) => slide.image)
-const heroSlidesJson = JSON.stringify(heroSlides)
-const heroCssImage = firstHeroSlide.image.replace(/'/g, "\\'")
 
 const hasText = (value?: string): value is string => typeof value === 'string' && value.trim().length > 0
 
@@ -180,28 +178,7 @@ const journalCards = cmsJournalCards.length ? cmsJournalCards : fallbackJournalC
     />
   )}
   <main>
-    <section class="hero" data-theme="dark" aria-label="Intro" style={`--hero-bg:url('${heroCssImage}');background-image:url('${heroCssImage}')`}>
-      <div class="hero-bg" aria-hidden="true"></div>
-      <img class="hero-shader-preload" data-hero-shader-preload src={firstHeroSlide.image} alt="" width="1" height="1" loading="eager" decoding="async" fetchpriority="high" crossorigin="anonymous" aria-hidden="true" />
-      <canvas id="hero-shader" aria-hidden="true" data-imgs={heroImages.join(',')} data-slides={heroSlidesJson}></canvas>
-      <div class="hero-glow" aria-hidden="true"></div>
-      <div class="hero-aperture" aria-hidden="true"></div>
-      <div class="hero-grid">
-        <div class="hero-stage">
-          <h1 class="hero-title" id="hero-title" data-text-idx="0">
-            {firstHeroSlide.titleLines.map((line) => (
-              <span class="line"><span class="word">{line}</span></span>
-            ))}
-          </h1>
-          <p class="hero-lead" id="hero-lead">{firstHeroSlide.lead}</p>
-          <div class="hero-actions" aria-label="Direkte Aktionen">
-            <a class="btn dark" href={firstHeroSlide.primaryHref} data-hero-primary hidden={!firstHeroSlide.primaryHref || !firstHeroSlide.primaryLabel}>{firstHeroSlide.primaryLabel}</a>
-            <a class="btn" href={firstHeroSlide.secondaryHref} data-hero-secondary hidden={!firstHeroSlide.secondaryHref || !firstHeroSlide.secondaryLabel}>{firstHeroSlide.secondaryLabel}</a>
-          </div>
-        </div>
-      </div>
-      <div class="hero-cursor" id="hero-cursor" aria-hidden="true"><span class="ring"></span></div>
-    </section>
+    <NativeShaderHero label="Intro" slides={heroSlides} />
 
     <section class="statement sec-light" data-theme="light" aria-label="Haltung">
       <div class="section-inner">

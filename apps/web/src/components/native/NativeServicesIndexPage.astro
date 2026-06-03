@@ -1,5 +1,6 @@
 ---
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
+import NativeShaderHero from './NativeShaderHero.astro'
 import { homeHeroSlidesFor, servicesHeroSlides, servicesIndexItems as fallbackServices } from '../../lib/nativeContent'
 import {
   getSitePageByType,
@@ -23,8 +24,6 @@ const fallbackHeroSlides = servicesHeroSlides.map((slide, index) =>
 const cmsHeroSlides = (doc?.heroSlides || []).length > 0 ? homeHeroSlidesFor(doc) : []
 const heroSlides = cmsHeroSlides.length ? cmsHeroSlides : fallbackHeroSlides
 const firstHeroSlide = heroSlides[0]
-const heroImages = heroSlides.map((slide) => slide.image)
-const heroSlidesJson = JSON.stringify(heroSlides)
 
 const hasText = (value?: string): value is string => typeof value === 'string' && value.trim().length > 0
 const stripHtml = (value = '') => value.replace(/<[^>]+>/g, '')
@@ -77,7 +76,12 @@ const items = Array.from({ length: baseLength }, (_, index) =>
   mergeService(fallbackServices[index], cmsItems[index], index),
 ).filter((service) => hasText(stripHtml(service.headline)))
 
-const overviewItems = items
+const overviewItems = items.filter(
+  (service) =>
+    service.id !== 'sonder' &&
+    !service.href.includes('/drucke-sonderanfertigungen-duesseldorf.html') &&
+    !service.overviewLabel.toLowerCase().includes('sonder'),
+)
 
 const overviewHead = {
   headlineHtml:
@@ -120,26 +124,7 @@ const why = {
   preloadImages={[firstHeroSlide.image]}
 >
   <main>
-    <section class="hero" id="top" data-theme="dark" data-header-theme="dark" aria-label="Weitere Dienstleistungen" style={`background-image:url('${firstHeroSlide.image}')`}>
-      <canvas id="hero-shader" aria-hidden="true" data-imgs={heroImages.join(',')} data-slides={heroSlidesJson}></canvas>
-      <div class="hero-glow" aria-hidden="true"></div>
-      <div class="hero-aperture" aria-hidden="true"></div>
-      <div class="hero-grid">
-        <div class="hero-stage">
-          <h1 class="hero-title" id="hero-title" data-text-idx="0">
-            {firstHeroSlide.titleLines.map((line) => (
-              <span class="line"><span class="word">{line}</span></span>
-            ))}
-          </h1>
-          <p class="hero-lead" id="hero-lead">{firstHeroSlide.lead}</p>
-          <div class="hero-actions" aria-label="Direkte Aktionen">
-            <a class="btn dark" href={firstHeroSlide.primaryHref} data-hero-primary hidden={!firstHeroSlide.primaryHref || !firstHeroSlide.primaryLabel}>{firstHeroSlide.primaryLabel}</a>
-            <a class="btn" href={firstHeroSlide.secondaryHref} data-hero-secondary hidden={!firstHeroSlide.secondaryHref || !firstHeroSlide.secondaryLabel}>{firstHeroSlide.secondaryLabel}</a>
-          </div>
-        </div>
-      </div>
-      <div class="hero-cursor" id="hero-cursor" aria-hidden="true"><span class="ring"></span></div>
-    </section>
+    <NativeShaderHero id="top" label="Weitere Dienstleistungen" slides={heroSlides} headerTheme="dark" />
 
     <section class="overview" id="overview" data-header-theme="light" aria-label="Unsere Dienstleistungen im Überblick">
       <div class="overview-inner">
