@@ -223,6 +223,22 @@ function findStaticFile(pathname) {
   return staticFileCandidates(pathname).find((candidate) => fsSync.existsSync(candidate) && fsSync.statSync(candidate).isFile()) || ''
 }
 
+function isMetaRefreshRedirectFile(file) {
+  if (path.extname(file).toLowerCase() !== '.html') return false
+  try {
+    const html = fsSync.readFileSync(file, 'utf8')
+    return /<meta\b(?=[^>]*\bhttp-equiv=["']refresh["'])[^>]*>/i.test(html)
+  } catch {
+    return false
+  }
+}
+
+function findAuditableStaticFile(pathname) {
+  const file = findStaticFile(pathname)
+  if (!file || isMetaRefreshRedirectFile(file)) return ''
+  return file
+}
+
 function isFirstPartyRequest(url, baseOrigin) {
   if (url.startsWith(baseOrigin) || url.startsWith('data:')) return true
   try {
@@ -652,8 +668,8 @@ if (!providedBaseUrl && !fsSync.existsSync(targetRoot)) {
 let routes = await collectRoutes()
 if (routeFilter.size > 0) routes = routes.filter((route) => routeFilter.has(route))
 const skippedDynamicRoutes =
-  !providedBaseUrl && routeFilter.size === 0 ? routes.filter((route) => !findStaticFile(route)) : []
-if (skippedDynamicRoutes.length > 0) routes = routes.filter((route) => findStaticFile(route))
+  !providedBaseUrl && routeFilter.size === 0 ? routes.filter((route) => !findAuditableStaticFile(route)) : []
+if (skippedDynamicRoutes.length > 0) routes = routes.filter((route) => findAuditableStaticFile(route))
 if (limit > 0) routes = routes.slice(0, limit)
 
 const viewportNames = selectedViewportNames.filter((name) => viewports[name])
