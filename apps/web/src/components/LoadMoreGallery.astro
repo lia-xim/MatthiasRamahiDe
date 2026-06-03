@@ -13,6 +13,7 @@ type Props = {
   eyebrow?: string
   batchSize?: number
   fallback?: string
+  id?: string
 }
 
 const {
@@ -20,12 +21,13 @@ const {
   eyebrow = 'Bildstrecke',
   batchSize = 12,
   fallback = 'Galerie-Bild',
+  id,
 } = Astro.props as Props
 
 const hasMore = items.length > batchSize
 ---
 {items.length > 0 && (
-  <section class="container section-pad gallery-loadmore">
+  <section class="container section-pad gallery-loadmore" id={id}>
     <p class="eyebrow">{eyebrow}</p>
     <div class="card-grid" data-load-more-gallery data-batch-size={batchSize} style="margin-top: 24px;">
       {items.map((item, index) => (

@@ -5,7 +5,9 @@ import { adminGroups, editorPagination } from '../admin/structure'
 import { advancedSettings } from '../fields/advancedSettings'
 import { contentBlocks } from '../fields/contentBlocks'
 import { mediaRelationshipField, portfolioGalleryField } from '../fields/editorialImages'
+import { homeHeroSlides } from '../fields/homeHeroSlides'
 import { legacyMigrationFields } from '../fields/legacyMigration'
+import { portfolioProjectSectionsTab } from '../fields/portfolioProjectSections'
 import { seoFields } from '../fields/seo'
 import { slugField } from '../fields/slug'
 import { applyEditorialDefaults } from '../hooks/autoDefaults'
@@ -143,23 +145,16 @@ export const PortfolioProjects: CollectionConfig = {
           ],
         },
         {
+          label: 'Hero',
+          description:
+            'Eigener Hero-Slider fuer diese Projektseite: Bilder, Titel, Kurztext und Buttons. Wenn leer, nutzt die Seite Coverbild, Titel und Kurztext.',
+          fields: [homeHeroSlides],
+        },
+        portfolioProjectSectionsTab,
+        {
           label: 'Inhalt',
-          description: 'Optionale Module und Verknuepfungen.',
-          fields: [
-            {
-              name: 'relatedServices',
-              label: 'Passende Leistungen',
-              type: 'relationship',
-              relationTo: 'service-pages',
-              hasMany: true,
-              admin: {
-                allowCreate: false,
-                allowEdit: true,
-                appearance: 'drawer',
-              },
-            },
-            contentBlocks,
-          ],
+          description: 'Optionale Zusatzmodule. Fuer die normale Projektseite bitte den Tab Projektseite nutzen.',
+          fields: [contentBlocks],
         },
         {
           label: 'Advanced',

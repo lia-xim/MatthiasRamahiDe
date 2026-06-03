@@ -632,6 +632,52 @@ export interface SitePage {
         }[]
       | null;
   };
+  journalIndex?: {
+    /**
+     * HTML fuer einfache Hervorhebungen ist erlaubt, z. B. <b>Automotive</b> Lichtfuehrung.
+     */
+    tickerItems?:
+      | {
+          text: string;
+          id?: string | null;
+        }[]
+      | null;
+    indexHeadline?: string | null;
+    initialVisiblePostCount?: number | null;
+    loadMoreLabel?: string | null;
+    /**
+     * Optional. Platzhalter: {visible} und {total}.
+     */
+    loadStatusTemplate?: string | null;
+    /**
+     * Der Wert muss zu den Kategorien der Artikelkarten passen, z. B. all, automotive, portrait, prozess, print.
+     */
+    filters?:
+      | {
+          label: string;
+          value: string;
+          id?: string | null;
+        }[]
+      | null;
+    finalCta?: {
+      kicker?: string | null;
+      /**
+       * HTML fuer <em> ist erlaubt.
+       */
+      headline?: string | null;
+      text?: string | null;
+      primaryLabel?: string | null;
+      /**
+       * Interne Links am besten root-relativ eintragen, z. B. /contact oder #journal.
+       */
+      primaryHref?: string | null;
+      secondaryLabel?: string | null;
+      /**
+       * Interne Links am besten root-relativ eintragen, z. B. /contact oder #journal.
+       */
+      secondaryHref?: string | null;
+    };
+  };
   /**
    * Optionale Inhaltsmodule. Fuer reine Bildwechsel sind die Bildfelder der jeweiligen Seite schneller.
    */
@@ -1348,7 +1394,54 @@ export interface PortfolioProject {
         id?: string | null;
       }[]
     | null;
-  relatedServices?: (number | ServicePage)[] | null;
+  /**
+   * Startseiten-Slideshow: Pro Slide ein Bild, Titel, Kurztext und optionale Buttons. Die Reihenfolge hier ist die sichtbare Reihenfolge im Hero.
+   */
+  heroSlides?:
+    | {
+        /**
+         * Dieses Bild wird fuer den aktuellen Hero-Slide verwendet.
+         */
+        image: number | Media;
+        headlineLine1: string;
+        /**
+         * Optional. Leer lassen, wenn der Slide nur eine Titelzeile braucht.
+         */
+        headlineLine2?: string | null;
+        /**
+         * Optionaler Text unter dem Titel. Kurz halten, damit der Hero ruhig bleibt.
+         */
+        lead?: string | null;
+        /**
+         * Wie lange dieser Slide sichtbar bleibt, bevor automatisch zum naechsten gewechselt wird. Standard: 7 Sekunden.
+         */
+        durationSec?: number | null;
+        primaryLabel?: string | null;
+        primaryHref?: string | null;
+        secondaryLabel?: string | null;
+        secondaryHref?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  projectPage?: {
+    galleryEyebrow?: string | null;
+    context?: {
+      kicker?: string | null;
+      headline?: string | null;
+      body?:
+        | {
+            text: string;
+            id?: string | null;
+          }[]
+        | null;
+    };
+    contact?: {
+      headline?: string | null;
+      text?: string | null;
+      buttonLabel?: string | null;
+      emailSubject?: string | null;
+    };
+  };
   /**
    * Optionale Inhaltsmodule. Fuer reine Bildwechsel sind die Bildfelder der jeweiligen Seite schneller.
    */
@@ -2552,6 +2645,38 @@ export interface SitePagesSelect<T extends boolean = true> {
               id?: T;
             };
       };
+  journalIndex?:
+    | T
+    | {
+        tickerItems?:
+          | T
+          | {
+              text?: T;
+              id?: T;
+            };
+        indexHeadline?: T;
+        initialVisiblePostCount?: T;
+        loadMoreLabel?: T;
+        loadStatusTemplate?: T;
+        filters?:
+          | T
+          | {
+              label?: T;
+              value?: T;
+              id?: T;
+            };
+        finalCta?:
+          | T
+          | {
+              kicker?: T;
+              headline?: T;
+              text?: T;
+              primaryLabel?: T;
+              primaryHref?: T;
+              secondaryLabel?: T;
+              secondaryHref?: T;
+            };
+      };
   blocks?:
     | T
     | {
@@ -2904,7 +3029,45 @@ export interface PortfolioProjectsSelect<T extends boolean = true> {
         role?: T;
         id?: T;
       };
-  relatedServices?: T;
+  heroSlides?:
+    | T
+    | {
+        image?: T;
+        headlineLine1?: T;
+        headlineLine2?: T;
+        lead?: T;
+        durationSec?: T;
+        primaryLabel?: T;
+        primaryHref?: T;
+        secondaryLabel?: T;
+        secondaryHref?: T;
+        id?: T;
+      };
+  projectPage?:
+    | T
+    | {
+        galleryEyebrow?: T;
+        context?:
+          | T
+          | {
+              kicker?: T;
+              headline?: T;
+              body?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+            };
+        contact?:
+          | T
+          | {
+              headline?: T;
+              text?: T;
+              buttonLabel?: T;
+              emailSubject?: T;
+            };
+      };
   blocks?:
     | T
     | {

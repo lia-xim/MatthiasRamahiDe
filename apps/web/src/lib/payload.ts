@@ -76,6 +76,15 @@ export type PayloadDoc = {
     secondaryLabel?: string
     secondaryHref?: string
   }>
+  projectPage?: {
+    galleryEyebrow?: string
+    context?: {
+      kicker?: string
+      headline?: string
+      body?: Array<{ text?: string }>
+    }
+    contact?: PayloadCta
+  }
   proofPoints?: Array<{ label?: string; text?: string }>
   audience?: Array<{ item?: string }>
   // Strukturierte Themen-Seiten-Sektionen (ServicePages -> Tab "Themen-Sektionen"). Alle optional -> Fallback im Component.
@@ -189,6 +198,24 @@ export type PayloadDoc = {
     whyEmphasis?: string
     whyLead?: string
     whyCards?: Array<{ label?: string; headline?: string; emphasis?: string; text?: string }>
+  }
+  // Journal-Uebersicht (SitePages, pageType 'journal-index'). Optional -> Fallback im Component.
+  journalIndex?: {
+    tickerItems?: Array<{ text?: string }>
+    indexHeadline?: string
+    initialVisiblePostCount?: number
+    loadMoreLabel?: string
+    loadStatusTemplate?: string
+    filters?: Array<{ label?: string; value?: string }>
+    finalCta?: {
+      kicker?: string
+      headline?: string
+      text?: string
+      primaryLabel?: string
+      primaryHref?: string
+      secondaryLabel?: string
+      secondaryHref?: string
+    }
   }
   // Ueber-mich-Seite (SitePages, pageType 'about'). Optional -> Fallback im Component.
   aboutHero?: {

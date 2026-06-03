@@ -8,6 +8,7 @@ import { contentBlocks } from '../fields/contentBlocks'
 import { mediaRelationshipField } from '../fields/editorialImages'
 import { homeHeroSlides } from '../fields/homeHeroSlides'
 import { homeSectionsTab } from '../fields/homeSections'
+import { journalIndexSectionsTab } from '../fields/journalIndexSections'
 import { legacyMigrationFields } from '../fields/legacyMigration'
 import { photographyIndexSectionsTab } from '../fields/photographyIndexSections'
 import { portfolioIndexSectionsTab } from '../fields/portfolioIndexSections'
@@ -22,7 +23,7 @@ import { buildPreviewUrl } from '../livePreview'
 
 // Seiten, die den Hero-Slider (mehrere Slides) nutzen statt eines Einzelbildes.
 // Jede dieser Seiten pflegt ihre Slides voellig eigenstaendig (eigene Bilder + Texte).
-const heroSliderPageTypes = ['home', 'portfolio-index', 'photography-index', 'services-index']
+const heroSliderPageTypes = ['home', 'portfolio-index', 'photography-index', 'services-index', 'journal-index']
 const heroSliderPages = (data: Record<string, unknown> | undefined) =>
   heroSliderPageTypes.includes((data?.pageType as string) ?? '')
 const singleImagePages = (data: Record<string, unknown> | undefined) => !heroSliderPages(data)
@@ -34,6 +35,8 @@ const portfolioIndexPage = (data: Record<string, unknown> | undefined) =>
   ((data?.pageType as string) ?? '') === 'portfolio-index'
 const servicesIndexPage = (data: Record<string, unknown> | undefined) =>
   ((data?.pageType as string) ?? '') === 'services-index'
+const journalIndexPage = (data: Record<string, unknown> | undefined) =>
+  ((data?.pageType as string) ?? '') === 'journal-index'
 
 export const SitePages: CollectionConfig = {
   slug: 'site-pages',
@@ -155,6 +158,10 @@ export const SitePages: CollectionConfig = {
         {
           ...servicesIndexSectionsTab,
           admin: { condition: servicesIndexPage },
+        },
+        {
+          ...journalIndexSectionsTab,
+          admin: { condition: journalIndexPage },
         },
         {
           label: 'Inhalt',

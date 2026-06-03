@@ -2,7 +2,10 @@
 import ContentBlocks from '../../components/ContentBlocks.astro'
 import ContactCta from '../../components/ContactCta.astro'
 import LoadMoreGallery from '../../components/LoadMoreGallery.astro'
+import NativeShaderHero from '../../components/native/NativeShaderHero.astro'
 import BaseLayout from '../../layouts/BaseLayout.astro'
+import { versionStaticAssetUrl } from '../../lib/cache'
+import { homeHeroSlidesFor } from '../../lib/nativeContent'
 import { getBySlug, imageDisplayUrl, listDocuments, routeForDoc, toAbsoluteSiteUrl, type PayloadDoc } from '../../lib/payload'
 import { breadcrumbJsonLd, imageGalleryJsonLd, type JsonLd } from '../../lib/seo'
 
@@ -31,6 +34,37 @@ Astro.response.headers.set('cache-control', 'public, max-age=300, stale-while-re
 const hero = imageDisplayUrl(doc.coverImage, 'wide')
 const gallery = doc.gallery ?? []
 const portfolioFocus = doc.category || doc.presentationMode || doc.title || 'Portfolio-Serie'
+const hasText = (value?: string): value is string => typeof value === 'string' && value.trim().length > 0
+const cmsHeroSlides = (doc.heroSlides || []).length > 0 ? homeHeroSlidesFor(doc) : []
+const fallbackHeroImage = hero || imageDisplayUrl(doc.coverImage, 'hero') || imageDisplayUrl(doc.gallery?.[0]?.image, 'wide')
+const fallbackHeroSlides = fallbackHeroImage
+  ? [
+      {
+        image: fallbackHeroImage,
+        titleLines: [doc.title || 'Portfolio', doc.presentationMode || 'Serie'].filter(hasText),
+        lead: doc.excerpt || '',
+        primaryHref: '#bilder',
+        primaryLabel: 'Bilder ansehen',
+        secondaryHref: '#anfrage',
+        secondaryLabel: 'Projekt anfragen',
+        durationSec: 7,
+      },
+    ]
+  : []
+const heroSlides = cmsHeroSlides.length ? cmsHeroSlides : fallbackHeroSlides
+const firstHeroSlide = heroSlides[0]
+const projectPage = doc.projectPage || {}
+const galleryEyebrow = hasText(projectPage.galleryEyebrow) ? projectPage.galleryEyebrow! : 'Bildstrecke'
+const context = projectPage.context || {}
+const contextKicker = hasText(context.kicker) ? context.kicker! : 'Einordnung'
+const contextHeadline = hasText(context.headline) ? context.headline! : 'Serie, Einsatz und Bildsprache'
+const contextBody = (context.body || []).map((paragraph) => paragraph.text).filter(hasText)
+const defaultContextBody = [
+  `Diese Auswahl ist als kuratierter Einstieg in ${portfolioFocus} gedacht: nicht als endlose Galerie, sondern als verdichtete Serie mit Hauptmotiv, Varianten, Details und ruhigen Uebergaengen. Fuer SEO und Nutzerfuehrung bleibt die Seite bewusst eigenstaendig, waehrend sie auf die passenden Leistungs- und Standortseiten verweist.`,
+  'Entscheidend ist die Lesbarkeit der Bildstrecke. Farbe, Abstand, Perspektive und Reihenfolge sollen schnell zeigen, ob eine aehnliche Produktion fuer Marke, Verkauf, Portfolio, Print oder digitale Praesentation funktioniert. So bekommt jedes Portfolio-Motiv einen klaren Kontext statt nur einen isolierten Galerieplatz.',
+]
+const resolvedContextBody = contextBody.length ? contextBody : defaultContextBody
+const projectCta = projectPage.contact || doc.cta
 const rawDescription = doc.seo?.description || doc.excerpt || ''
 const description =
   rawDescription.length >= 70
@@ -58,40 +92,24 @@ if (gallerySchema) jsonLdItems.push(gallerySchema)
   noIndex={doc.seo?.noIndex}
   ogImage={doc.seo?.ogImage || doc.coverImage}
   jsonLd={jsonLdItems}
+  stylesheets={['/assets/native-home.css']}
+  preloadImages={firstHeroSlide ? [firstHeroSlide.image] : []}
 >
-  <section class="hero-stage" style={hero ? `background: linear-gradient(180deg, rgba(2,3,6,.35), rgba(2,3,6,.88)), url('${hero}') center / cover;` : ''}>
-    <div class="hero-stage__grid container">
-      <div>
-        <p class="eyebrow">Portfolio / {doc.presentationMode || 'Serie'}</p>
-        <h1 class="display">{doc.title}</h1>
-      </div>
-      <p class="copy">{doc.excerpt}</p>
-    </div>
-  </section>
+  {heroSlides.length > 0 && <NativeShaderHero id="top" label={doc.title || 'Portfolio'} slides={heroSlides} headerTheme="dark" />}
 
-  <LoadMoreGallery items={gallery} eyebrow="Bildstrecke" fallback="Portfolio-Bild" />
+  <LoadMoreGallery id="bilder" items={gallery} eyebrow={galleryEyebrow} fallback="Portfolio-Bild" />
 
   <section class="container section-pad">
-    <p class="eyebrow">Einordnung</p>
+    <p class="eyebrow">{contextKicker}</p>
     <div class="stack-list">
       <article class="stack-item">
-        <h2>Serie, Einsatz und Bildsprache</h2>
-        <p class="copy">
-          Diese Auswahl ist als kuratierter Einstieg in {portfolioFocus} gedacht: nicht als endlose Galerie,
-          sondern als verdichtete Serie mit Hauptmotiv, Varianten, Details und ruhigen Uebergaengen. Fuer SEO
-          und Nutzerfuehrung bleibt die Seite bewusst eigenstaendig, waehrend sie auf die passenden Leistungs-
-          und Standortseiten verweist.
-        </p>
-        <p class="copy">
-          Entscheidend ist die Lesbarkeit der Bildstrecke. Farbe, Abstand, Perspektive und Reihenfolge sollen
-          schnell zeigen, ob eine aehnliche Produktion fuer Marke, Verkauf, Portfolio, Print oder digitale
-          Praesentation funktioniert. So bekommt jedes Portfolio-Motiv einen klaren Kontext statt nur einen
-          isolierten Galerieplatz.
-        </p>
+        <h2>{contextHeadline}</h2>
+        {resolvedContextBody.map((paragraph) => <p class="copy">{paragraph}</p>)}
       </article>
     </div>
   </section>
 
   <ContentBlocks blocks={doc.blocks} />
-  <ContactCta cta={doc.cta} />
+  <ContactCta cta={projectCta} />
+  <script is:inline src={versionStaticAssetUrl('/assets/native-home.js')} defer></script>
 </BaseLayout>

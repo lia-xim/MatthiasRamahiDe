@@ -1,20 +1,23 @@
 ---
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
+import NativeShaderHero from './NativeShaderHero.astro'
 import { type JournalPostCard, journalCards, journalFilters, journalHero, journalHeroSlides, journalTicker } from '../../lib/journalIndexContent'
+import { homeHeroSlidesFor } from '../../lib/nativeContent'
 import {
   getSitePageByType,
   imageAlt,
   imageDimensions,
   imageDisplayUrl,
   listDocuments,
+  liveCmsFetchOptions,
   routeForDoc,
+  toRootRelativeHref,
   type PayloadDoc,
 } from '../../lib/payload'
 
 const providedDoc = Astro.props.doc as PayloadDoc | undefined
-const doc = providedDoc || (await getSitePageByType('journal-index', { depth: 2 }))
-const useCmsJournalIndexCards = import.meta.env.ASTRO_ENABLE_CMS_JOURNAL_INDEX_CARDS === 'true'
-const cmsPosts = useCmsJournalIndexCards ? await listDocuments('journal-posts', { limit: 12, sort: '-publishedAt', depth: 2 }) : []
+const doc = providedDoc || (await getSitePageByType('journal-index', liveCmsFetchOptions({ depth: 2 })))
+const cmsPosts = await listDocuments('journal-posts', liveCmsFetchOptions({ limit: 12, sort: '-publishedAt', depth: 2 }))
 const legacyPostBySlug = new Map(journalCards.map((post) => [post.href.replace(/^\//, '').replace(/\.html$/i, ''), post]))
 const categoryToFilter: Record<string, string> = {
   automotive: 'automotive',
@@ -49,45 +52,50 @@ const cmsCards = cmsPosts
     }
   })
   .filter(Boolean) as JournalPostCard[]
-const posts = useCmsJournalIndexCards && cmsCards.length > 0 ? cmsCards : journalCards
-const heroLead = useCmsJournalIndexCards ? doc?.intro || journalHero.lead : journalHero.lead
-// Shader-Hero wie Home/Portfolio: erste Folie übernimmt (falls vorhanden) das CMS-Intro als Lead.
-const heroSlides = journalHeroSlides.map((slide, index) => (index === 0 ? { ...slide, lead: heroLead } : slide))
+const posts = cmsCards.length > 0 ? cmsCards : journalCards
+const hasText = (value?: string): value is string => typeof value === 'string' && value.trim().length > 0
+const journalIndex = doc?.journalIndex
+const heroLead = doc?.intro || journalHero.lead
+const cmsHeroSlides = (doc?.heroSlides || []).length > 0 ? homeHeroSlidesFor(doc) : []
+const fallbackHeroSlides = journalHeroSlides.map((slide, index) => (index === 0 ? { ...slide, lead: heroLead } : slide))
+const heroSlides = cmsHeroSlides.length ? cmsHeroSlides : fallbackHeroSlides
 const firstHeroSlide = heroSlides[0]
-const heroImages = heroSlides.map((slide) => slide.image)
-const heroSlidesJson = JSON.stringify(heroSlides)
-// Der oberste Beitrag wird als „Im Fokus"-Beitrag herausgestellt; das Raster zeigt den Rest.
+const tickerItems = (journalIndex?.tickerItems || []).map((item) => item.text).filter(hasText)
+const resolvedTicker = tickerItems.length ? tickerItems : journalTicker
+const cmsFilters = (journalIndex?.filters || [])
+  .filter((filter) => hasText(filter.label) && hasText(filter.value))
+  .map((filter) => ({ label: filter.label!, value: filter.value! }))
+const resolvedFilters = cmsFilters.length ? cmsFilters : journalFilters
+const indexHeadline = hasText(journalIndex?.indexHeadline) ? journalIndex!.indexHeadline! : 'Journal Index.'
+const initialVisiblePostCount = Math.max(1, Number(journalIndex?.initialVisiblePostCount) || 6)
+const loadMoreLabel = hasText(journalIndex?.loadMoreLabel) ? journalIndex!.loadMoreLabel! : 'Mehr Beitraege laden'
+const loadStatusTemplate = hasText(journalIndex?.loadStatusTemplate)
+  ? journalIndex!.loadStatusTemplate!
+  : '{visible} von {total} Beitraegen sichtbar'
 const featured = posts[0]
 const gridPosts = posts.slice(1)
-const initialVisiblePostCount = 6
+const loadStatus = loadStatusTemplate
+  .replace('{visible}', String(Math.min(initialVisiblePostCount, gridPosts.length)))
+  .replace('{total}', String(gridPosts.length))
+const finalCta = journalIndex?.finalCta || {}
+const finalKicker = hasText(finalCta.kicker) ? finalCta.kicker! : 'Naechster Schritt'
+const finalHeadline = hasText(finalCta.headline) ? finalCta.headline! : 'Fotoauftrag planen.'
+const finalText = hasText(finalCta.text)
+  ? finalCta.text!
+  : 'Wenn Sie Automotive-Aufnahmen, Portraits, eine Bildstrecke oder eine hochwertige visuelle Praesentation benoetigen, schicken Sie kurz Ort, Zeitraum und Ziel des Projekts.'
+const finalPrimaryLabel = hasText(finalCta.primaryLabel) ? finalCta.primaryLabel! : 'Projekt anfragen'
+const finalPrimaryHref = toRootRelativeHref(finalCta.primaryHref) || '/contact.html'
+const finalSecondaryLabel = hasText(finalCta.secondaryLabel) ? finalCta.secondaryLabel! : 'Portfolio ansehen'
+const finalSecondaryHref = toRootRelativeHref(finalCta.secondaryHref) || '/portfolio.html'
 ---
-<AdoptedPageLayout legacyFile="blog.html" current="blog" doc={doc}>
+<AdoptedPageLayout legacyFile="blog.html" current="blog" doc={doc} preloadImages={[firstHeroSlide.image]}>
   <div class="light" aria-hidden="true"></div>
   <main>
-    <section class="hero" id="top" data-theme="dark" data-header-theme="dark" aria-label="Journal Intro" style={`background-image:url('${firstHeroSlide.image}')`}>
-      <canvas id="hero-shader" aria-hidden="true" data-imgs={heroImages.join(',')} data-slides={heroSlidesJson}></canvas>
-      <div class="hero-glow" aria-hidden="true"></div>
-      <div class="hero-aperture" aria-hidden="true"></div>
-      <div class="hero-grid">
-        <div class="hero-stage">
-          <h1 class="hero-title" id="hero-title" data-text-idx="0">
-            {firstHeroSlide.titleLines.map((line) => (
-              <span class="line"><span class="word">{line}</span></span>
-            ))}
-          </h1>
-          <p class="hero-lead" id="hero-lead">{firstHeroSlide.lead}</p>
-          <div class="hero-actions" aria-label="Direkte Aktionen">
-            <a class="btn dark" href={firstHeroSlide.primaryHref} data-hero-primary hidden={!firstHeroSlide.primaryHref || !firstHeroSlide.primaryLabel}>{firstHeroSlide.primaryLabel}</a>
-            <a class="btn" href={firstHeroSlide.secondaryHref} data-hero-secondary hidden={!firstHeroSlide.secondaryHref || !firstHeroSlide.secondaryLabel}>{firstHeroSlide.secondaryLabel}</a>
-          </div>
-        </div>
-      </div>
-      <div class="hero-cursor" id="hero-cursor" aria-hidden="true"><span class="ring"></span></div>
-    </section>
+    <NativeShaderHero id="top" label="Journal Intro" slides={heroSlides} headerTheme="dark" />
 
     <section class="ticker" aria-label="Themenlaufband">
       <div class="ticker-track">
-        {journalTicker.map((item) => <span set:html={item}></span>)}
+        {resolvedTicker.map((item) => <span set:html={item}></span>)}
       </div>
     </section>
 
@@ -116,9 +124,9 @@ const initialVisiblePostCount = 6
 
     <section class="journal" id="journal" aria-label="Journal Artikel">
       <div class="journal-head">
-        <h2>Journal Index.</h2>
+        <h2>{indexHeadline}</h2>
         <div class="filters" aria-label="Artikel filtern">
-          {journalFilters.map((filter, index) => (
+          {resolvedFilters.map((filter, index) => (
             <button class={`filter ${index === 0 ? 'active' : ''}`.trim()} type="button" data-filter={filter.value}>{filter.label}</button>
           ))}
         </div>
@@ -151,18 +159,18 @@ const initialVisiblePostCount = 6
         ))}
       </div>
       <div class="load-panel" id="loadPanel" aria-live="polite">
-        <span class="load-status" id="loadStatus">{Math.min(initialVisiblePostCount, gridPosts.length)} von {gridPosts.length} Beiträgen sichtbar</span>
-        <button class="load-more" id="loadMore" type="button">Mehr Beiträge laden</button>
+        <span class="load-status" id="loadStatus">{loadStatus}</span>
+        <button class="load-more" id="loadMore" type="button">{loadMoreLabel}</button>
       </div>
     </section>
 
     <section class="final" aria-label="Kontakt CTA">
-      <p class="kicker">Nächster Schritt</p>
-      <h2>Fotoauftrag planen.</h2>
-      <p>Wenn Sie Automotive-Aufnahmen, Portraits, eine Bildstrecke oder eine hochwertige visuelle Präsentation benötigen, schicken Sie kurz Ort, Zeitraum und Ziel des Projekts.</p>
+      <p class="kicker">{finalKicker}</p>
+      <h2 set:html={finalHeadline}></h2>
+      <p>{finalText}</p>
       <div class="hero-actions">
-        <a class="btn primary" href="/contact.html">Projekt anfragen</a>
-        <a class="btn" href="/portfolio.html">Portfolio ansehen</a>
+        <a class="btn primary" href={finalPrimaryHref}>{finalPrimaryLabel}</a>
+        <a class="btn" href={finalSecondaryHref}>{finalSecondaryLabel}</a>
       </div>
     </section>
   </main>
