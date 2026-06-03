@@ -140,6 +140,20 @@ const cachedHomeHeroImage = (image: string) => {
   return match ? versionStaticAssetUrl(match[1]) : image
 }
 
+const rawCmsMediaUrl = (media: PayloadMedia | string | undefined, size: 'wide' | 'hero' = 'wide') => {
+  if (!media) return ''
+  if (typeof media === 'string') return media
+
+  const sized = media.sizes?.[size]?.url || media.sizes?.hero?.url || media.url
+  if (!sized) return ''
+
+  const absolute = /^https?:\/\//i.test(sized)
+    ? sized
+    : `https://cms.matthiasramahi.de${sized.startsWith('/') ? '' : '/'}${sized}`
+  const separator = absolute.includes('?') ? '&' : '?'
+  return media.updatedAt ? `${absolute}${separator}m=${encodeURIComponent(media.updatedAt)}` : absolute
+}
+
 const homeChapterSizes =
   '(max-width: 780px) calc((100vw - 52px) / 2), (max-width: 1180px) calc((100vw - 112px) / 2), 437px'
 
@@ -209,12 +223,19 @@ const slideFromImage = (image: string, index: number, lead?: string): HomeHeroSl
   }
 }
 
-const homeHeroSlidesFromCms = (doc: PayloadDoc | null | undefined) => {
+type HeroSlidesOptions = {
+  preferCmsMedia?: boolean
+}
+
+const homeHeroSlidesFromCms = (doc: PayloadDoc | null | undefined, options: HeroSlidesOptions = {}) => {
   const fallback = fallbackHeroText[0]
 
   return (doc?.heroSlides || [])
     .map((slide, index): HomeHeroSlide | undefined => {
-      const image = cachedHomeHeroImage(imageDisplayUrl(slide.image, 'wide', { allowOriginal: true }))
+      const cmsImage = options.preferCmsMedia
+        ? rawCmsMediaUrl(slide.image as PayloadMedia | string | undefined, 'wide')
+        : imageDisplayUrl(slide.image, 'wide', { allowOriginal: true })
+      const image = options.preferCmsMedia ? cmsImage : cachedHomeHeroImage(cmsImage)
       if (!image) return undefined
 
       return {
@@ -251,8 +272,8 @@ export const imageSequenceImages = (
   return images.length > 0 ? images : fallback
 }
 
-export const homeHeroSlidesFor = (doc: PayloadDoc | null | undefined) => {
-  const cmsSlides = homeHeroSlidesFromCms(doc)
+export const homeHeroSlidesFor = (doc: PayloadDoc | null | undefined, options: HeroSlidesOptions = {}) => {
+  const cmsSlides = homeHeroSlidesFromCms(doc, options)
   if (cmsSlides.length > 0) return cmsSlides
 
   const sequenceImages = imageSequenceImages(doc, ['hero', 'intro', 'start'], [])

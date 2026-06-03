@@ -9,7 +9,6 @@ import { homeHeroSlidesFor } from '../../lib/nativeContent'
 import {
   getBySlug,
   imageDisplayUrl,
-  listDocuments,
   liveCmsFetchOptions,
   routeForDoc,
   toAbsoluteSiteUrl,
@@ -17,21 +16,10 @@ import {
 } from '../../lib/payload'
 import { breadcrumbJsonLd, imageGalleryJsonLd, type JsonLd } from '../../lib/seo'
 
-export const prerender = true
-
-export async function getStaticPaths() {
-  const docs = await listDocuments('portfolio-projects', liveCmsFetchOptions({ limit: 1000, depth: 2 }))
-
-  return docs
-    .filter((doc): doc is PayloadDoc & { slug: string } => Boolean(doc.slug) && doc._status !== 'draft' && !doc.seo?.noIndex)
-    .map((doc) => ({
-      params: { slug: doc.slug },
-      props: { doc },
-    }))
-}
+export const prerender = false
 
 const { slug } = Astro.params
-const doc = Astro.props.doc ?? (slug ? await getBySlug('portfolio-projects', slug, liveCmsFetchOptions({ depth: 2 })) : null)
+const doc = (Astro.props.doc ?? (slug ? await getBySlug('portfolio-projects', slug, liveCmsFetchOptions({ depth: 2 })) : null)) as PayloadDoc | null
 
 if (!doc) {
   return Astro.redirect('/portfolio.html', 308)
@@ -43,7 +31,7 @@ const hero = imageDisplayUrl(doc.coverImage, 'wide')
 const gallery = doc.gallery ?? []
 const portfolioFocus = doc.category || doc.presentationMode || doc.title || 'Portfolio-Serie'
 const hasText = (value?: string): value is string => typeof value === 'string' && value.trim().length > 0
-const cmsHeroSlides = (doc.heroSlides || []).length > 0 ? homeHeroSlidesFor(doc) : []
+const cmsHeroSlides = (doc.heroSlides || []).length > 0 ? homeHeroSlidesFor(doc, { preferCmsMedia: true }) : []
 const fallbackHeroImage = hero || imageDisplayUrl(doc.coverImage, 'hero') || imageDisplayUrl(doc.gallery?.[0]?.image, 'wide')
 const fallbackHeroSlides = fallbackHeroImage
   ? [
