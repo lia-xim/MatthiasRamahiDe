@@ -59,6 +59,15 @@ const serviceTypeByFamily: Record<LocalSeoLayoutFamily, string> = {
   sportwagen: 'sportwagen',
 }
 
+const portfolioProjectSlugByFamily: Record<LocalSeoLayoutFamily, string> = {
+  automobil: 'portfolio-auswahl-automobil',
+  landschaft: 'portfolio-auswahl-landschaft',
+  motorrad: 'portfolio-auswahl-motorrad',
+  oldtimer: 'portfolio-auswahl-oldtimer',
+  portrait: 'portfolio-auswahl-portrait',
+  sportwagen: 'portfolio-auswahl-sportwagen',
+}
+
 const isPayloadDoc = (value: unknown): value is PayloadDoc =>
   Boolean(value && typeof value === 'object' && 'id' in (value as Record<string, unknown>))
 
@@ -87,36 +96,27 @@ function cachedCmsMediaUrl(url: string) {
   return match ? match[1] : url
 }
 
-function cachedCmsMediaSrcset(srcset: string) {
-  if (!srcset) return ''
-  return srcset
-    .split(',')
-    .map((candidate) => {
-      const parts = candidate.trim().split(/\s+/)
-      const url = parts.shift()
-      if (!url) return ''
-      return [cachedCmsMediaUrl(url), ...parts].join(' ')
-    })
-    .filter(Boolean)
-    .join(', ')
-}
-
 export async function getFamilyVisualSourceDoc(
   family: LocalSeoLayoutFamily,
   doc: PayloadDoc | null | undefined,
-  legacyFile: string,
-  defaultLegacyFile: string,
+  _legacyFile: string,
+  _defaultLegacyFile: string,
 ) {
-  if (legacyFile === defaultLegacyFile && doc?.serviceType) return doc
-
   const canonical = (doc?.canonicalServicePage || null) as PayloadDoc | number | string | null
-  if (isPayloadDoc(canonical)) return canonical
-
   const slug = serviceSlugByFamily[family]
-  const bySlug = await getBySlug('service-pages', slug, liveCmsFetchOptions({ depth: 2 }))
-  if (bySlug) return bySlug
+  const portfolioSlug = portfolioProjectSlugByFamily[family]
+  const [bySlug, legacyBackedDoc, portfolioProject] = await Promise.all([
+    getBySlug('service-pages', slug, liveCmsFetchOptions({ depth: 2, cacheMs: 0 })),
+    getLegacyBackedDoc(localSeoParentLegacyFiles[family], liveCmsFetchOptions({ depth: 2, cacheMs: 0 })),
+    getBySlug('portfolio-projects', portfolioSlug, liveCmsFetchOptions({ depth: 2, cacheMs: 0 })),
+  ])
+  const pageCandidates = [doc, isPayloadDoc(canonical) ? canonical : null, bySlug, legacyBackedDoc]
+  const richPageCandidate = pageCandidates.find((candidate) => visualCount(candidate) >= 2)
 
-  return getLegacyBackedDoc(localSeoParentLegacyFiles[family], liveCmsFetchOptions({ depth: 2 }))
+  if (richPageCandidate) return richPageCandidate
+  if (visualCount(portfolioProject) >= 2) return portfolioProject
+
+  return pageCandidates.find(Boolean) || portfolioProject
 }
 
 function collectMedia(doc: PayloadDoc | null | undefined) {
@@ -131,8 +131,21 @@ function collectMedia(doc: PayloadDoc | null | undefined) {
     visuals.push({ caption, media })
   }
 
+  for (const slide of doc?.heroSlides || []) {
+    add(slide.image, slide.headlineLine1 || slide.headlineLine2 || slide.lead || doc?.title)
+  }
+
+  for (const panel of doc?.heroPanels || []) add(panel.image, doc?.title)
   add(doc?.heroImage, doc?.title)
+  add(doc?.coverImage, doc?.title)
   add(doc?.teaserImage, doc?.title)
+
+  for (const item of doc?.gallery || []) add(item.image, item.caption || doc?.title)
+  for (const item of doc?.shootingStyles || []) add(item.image, item.title || doc?.title)
+  for (const item of doc?.portfolioTiles || []) add(item.image, item.label || doc?.title)
+  for (const item of doc?.audienceCards || []) add(item.image, item.title || doc?.title)
+  for (const item of doc?.projectPage?.perspectives || []) add(item.image, item.title || doc?.title)
+  for (const item of doc?.projectPage?.relatedCards || []) add(item.image, item.title || doc?.title)
 
   for (const block of (doc?.blocks || []) as ImageSequenceBlock[]) {
     if (block?.blockType !== 'imageSequence') continue
@@ -141,6 +154,8 @@ function collectMedia(doc: PayloadDoc | null | undefined) {
 
   return visuals
 }
+
+const visualCount = (doc: PayloadDoc | null | undefined) => collectMedia(doc).length
 
 const fallbackSlot = (fallback: FamilyVisualFallback): FamilyVisualSlot => {
   const full = toDisplayAssetUrl(fallback.full || fallback.src)
@@ -189,9 +204,9 @@ export function familyVisualSlots(
       }
     }
 
-    const full = cachedCmsMediaUrl(imageDisplayUrl(media, 'wide', { allowOriginal: true }) || fallbackValue.full)
-    const src = cachedCmsMediaUrl(imageDisplayUrl(media, 'card', { allowOriginal: true }) || full)
-    const mobile = cachedCmsMediaUrl(imageDisplayUrl(media, 'mobile', { allowOriginal: true }) || src)
+    const full = imageDisplayUrl(media, 'wide', { allowOriginal: true, mapCachedAssets: false }) || fallbackValue.full
+    const src = imageDisplayUrl(media, 'card', { allowOriginal: true, mapCachedAssets: false }) || full
+    const mobile = imageDisplayUrl(media, 'mobile', { allowOriginal: true, mapCachedAssets: false }) || src
     const dimensions = imageDimensions(media, 'card')
 
     return {
@@ -203,7 +218,7 @@ export function familyVisualSlots(
       height: dimensions.height || media.height || fallbackValue.height,
       mobile,
       src,
-      srcset: cachedCmsMediaSrcset(imageSrcset(media, ['mobile', 'card', 'hero', 'wide']) || ''),
+      srcset: imageSrcset(media, ['mobile', 'card', 'hero', 'wide'], 'raster', { mapCachedAssets: false }) || '',
       width: dimensions.width || media.width || fallbackValue.width,
     }
   })
