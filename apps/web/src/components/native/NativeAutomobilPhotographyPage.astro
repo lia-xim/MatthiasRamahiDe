@@ -274,7 +274,7 @@ const relatedAreas = [
 // shootingStyles[i].image, Galerie-Bilder aus portfolioTiles[i].image. Leer →
 // bisheriges Bild (Hero-/Teaser-/imageSequence bzw. Hardcode-Fallback).
 const sectionImageOverrides = [
-  undefined,
+  doc?.heroPanels?.[0]?.image,
   ...switchFrames.map((_, index) => doc?.shootingStyles?.[index]?.image),
   ...galleryTiles.map((_, index) => doc?.portfolioTiles?.[index]?.image),
   ...relatedAreas.map(() => undefined),

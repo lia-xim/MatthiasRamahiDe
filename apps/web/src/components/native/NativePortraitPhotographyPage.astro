@@ -93,7 +93,7 @@ const contactLead = keywordFocusCopy?.contactLead || defaultContactLead
 // shootingStyles[i].image (Slots 4–8), 9 Galerie-Kacheln aus portfolioTiles[i].image
 // (Slots 9–17). Hero (0–3), Prozess (18–22) und Related (23–26) bleiben Fallback.
 const sectionImageOverrides = [
-  ...Array.from({ length: 4 }, () => undefined),
+  ...Array.from({ length: 4 }, (_, index) => doc?.heroPanels?.[index]?.image),
   // Modul-Karten lesen Text aus shootingStyles[i] || audienceCards[i] — das Bild
   // folgt derselben Karte, damit Text und Bild aus demselben Feld kommen.
   ...Array.from({ length: 5 }, (_, index) => (doc?.shootingStyles?.[index] || doc?.audienceCards?.[index])?.image),

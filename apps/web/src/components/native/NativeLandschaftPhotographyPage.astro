@@ -94,7 +94,7 @@ const contactLead = keywordFocusCopy?.contactLead || defaultContactLead
 // (Fine-Art/Aluminium/Acrylglas/Edition) lesen Text aus audienceCards → Bild ebenso
 // aus audienceCards[i].image (Slots 5–8). Galerie aus portfolioTiles[i].image (9–17).
 const sectionImageOverrides = [
-  ...Array.from({ length: 5 }, () => undefined),
+  ...Array.from({ length: 5 }, (_, index) => doc?.heroPanels?.[index]?.image),
   ...Array.from({ length: 4 }, (_, index) => doc?.audienceCards?.[index]?.image),
   ...Array.from({ length: 9 }, (_, index) => doc?.portfolioTiles?.[index]?.image),
   ...Array.from({ length: 4 }, () => undefined),

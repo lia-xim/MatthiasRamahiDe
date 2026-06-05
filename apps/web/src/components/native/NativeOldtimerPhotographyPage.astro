@@ -13,7 +13,7 @@ import { mergeAuthoredLocalSeoContent } from '../../lib/authoredSeoContent'
 import { splitHeroTitleLines } from '../../lib/heroTitleLines'
 import { keywordFocusCopyForSlug } from '../../lib/localSeoFamilyContent'
 import { familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
-import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
+import { getLegacyBackedDoc, imageDisplayUrl, type PayloadDoc } from '../../lib/payload'
 import { splitTrailingEmphasis } from '../../lib/splitTrailingEmphasis'
 
 type Props = {
@@ -278,8 +278,15 @@ const focusRelatedLead = isParentPage || isKeywordPage
 // --hero-bg-* löst eine RELATIVE url() gegen das Stylesheet (/assets/…) auf →
 // /assets/assets/… (404). Auf Mobile/Touch ist der Canvas aus, dann griff der
 // kaputte CSS-Hintergrund = kein Hero-Bild. Absolut behebt das eindeutig.
-const heroBgDesktop = '/assets/optimized/assets-photos-oldtimer-stage-1920.webp'
-const heroBgMobile = '/assets/optimized/assets-photos-oldtimer-stage-1280.webp'
+// CMS-Hero-Override: erstes Bild aus „Hero-Bilder (Slider)" (heroPanels) ersetzt
+// das feste Bühnenbild. Absolute URL nötig (Shader-Canvas + CSS --hero-bg).
+const heroPanelMedia = doc?.heroPanels?.[0]?.image
+const heroBgDesktop =
+  (heroPanelMedia && imageDisplayUrl(heroPanelMedia, 'wide', { allowOriginal: true })) ||
+  '/assets/optimized/assets-photos-oldtimer-stage-1920.webp'
+const heroBgMobile =
+  (heroPanelMedia && imageDisplayUrl(heroPanelMedia, 'card', { allowOriginal: true })) ||
+  '/assets/optimized/assets-photos-oldtimer-stage-1280.webp'
 const heroSubText = doc?.intro || heroLead
 const heroSlidesJson = JSON.stringify([
   { image: heroBgDesktop, titleLines: heroTitleLines, lead: heroSubText },

@@ -94,9 +94,9 @@ const contactLead = keywordFocusCopy?.contactLead || defaultContactLead
 // shootingStyles[i].image (Slots 3–8), 6 Galerie-Kacheln aus portfolioTiles[i].image
 // (Slots 9–14). Hero-Slots 0–2 bleiben über Hero-/Teaser-Bild. Leer → Fallback.
 const sectionImageOverrides = [
-  undefined,
-  undefined,
-  undefined,
+  doc?.heroPanels?.[0]?.image,
+  doc?.heroPanels?.[1]?.image,
+  doc?.heroPanels?.[2]?.image,
   ...Array.from({ length: 6 }, (_, index) => doc?.shootingStyles?.[index]?.image),
   ...Array.from({ length: 6 }, (_, index) => doc?.portfolioTiles?.[index]?.image),
 ]

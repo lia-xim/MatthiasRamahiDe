@@ -18,12 +18,13 @@ export const serviceSectionsTab: Tab = {
   fields: [
     {
       name: 'heroPanels',
-      label: 'Hero-Panels (Triptychon, max. 3 Bilder)',
+      label: 'Hero-Bilder (Slider)',
       type: 'array',
-      maxRows: 3,
+      maxRows: 6,
       admin: {
         initCollapsed: true,
-        description: 'Die drei Bilder des Hero-Triptychons (Desktop). Auf dem Handy wird das erste Bild groß gezeigt.',
+        description:
+          'Die Hero-Bilder dieser Seite — Reihenfolge = Slider-Reihenfolge. So viele Bilder wie die Seite Slides hat: Automobil & Oldtimer 1, Motorrad & Sportwagen 3, Portrait 4, Landschaft 5. Leer lassen = das aktuelle Hero-Bild bleibt.',
       },
       fields: [mediaRelationshipField({ name: 'image', label: 'Bild', required: true, galleryDefaultOpen: true })],
     },
