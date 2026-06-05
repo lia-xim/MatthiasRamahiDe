@@ -270,12 +270,25 @@ const relatedAreas = [
   },
 ]
 
-const visualSlots = familyVisualSlots(visualDoc, [
-  { alt: 'Automobil Hero', mobile: heroDevelopInitialMobile, src: heroDevelopInitial },
-  ...switchFrames.map(({ image, label }) => ({ alt: `Automobil ${label}`, src: image })),
-  ...galleryTiles.map(({ alt, full, height, src, width }) => ({ alt, full, height, src, width })),
-  ...relatedAreas.map(({ alt, height, image, width }) => ({ alt, height, src: image, width })),
-])
+// CMS-Bild-Overrides pro Sektion (Tab „Themen-Sektionen"): Karussell-Bilder aus
+// shootingStyles[i].image, Galerie-Bilder aus portfolioTiles[i].image. Leer →
+// bisheriges Bild (Hero-/Teaser-/imageSequence bzw. Hardcode-Fallback).
+const sectionImageOverrides = [
+  undefined,
+  ...switchFrames.map((_, index) => doc?.shootingStyles?.[index]?.image),
+  ...galleryTiles.map((_, index) => doc?.portfolioTiles?.[index]?.image),
+  ...relatedAreas.map(() => undefined),
+]
+const visualSlots = familyVisualSlots(
+  visualDoc,
+  [
+    { alt: 'Automobil Hero', mobile: heroDevelopInitialMobile, src: heroDevelopInitial },
+    ...switchFrames.map(({ image, label }) => ({ alt: `Automobil ${label}`, src: image })),
+    ...galleryTiles.map(({ alt, full, height, src, width }) => ({ alt, full, height, src, width })),
+    ...relatedAreas.map(({ alt, height, image, width }) => ({ alt, height, src: image, width })),
+  ],
+  sectionImageOverrides,
+)
 const inheritedHeroDevelopInitial = visualSlots[0].cssFull
 const inheritedHeroDevelopInitialMobile = visualSlots[0].cssMobile
 const inheritedSwitchFrames = switchFrames.map((frame, index) => ({

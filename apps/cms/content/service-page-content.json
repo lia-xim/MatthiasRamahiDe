@@ -38,6 +38,15 @@
         "text": "Motorrad-Fotoshootings für Hersteller, Händler, Fahrer und Magazine — Maschine, Fahrer, Bewegung. Autofotografie-Logik auf zwei Räder übertragen: ruhige Linien, klare Mechanik, kein Motorsport-Klischee."
       }
     ],
+    "shootingStyles": [
+      { "title": "Vollformat, ruhige Linien.", "text": "Aussenaufnahmen mit kontrolliertem Licht und ruhigen Reflexen. Lack, Proportionen und Linienfuehrung wirken stimmig - Showroom, Industrie oder urbanes Setting." },
+      { "title": "Cockpit, Sitz, Material.", "text": "Innenraum mit mobilem Licht inszeniert. Leder, Carbon und Chrom behalten ihren Ton - der Innenraum spricht dieselbe Sprache wie das Exterieur." },
+      { "title": "Emblem, Felge, Naht.", "text": "Sicken, Felgen, Bremsen, Schalter, Logos. Detailaufnahmen erzaehlen die Geschichte eines Fahrzeugs im Kleinen - fuer Haendlerseiten, Landingpages und Magazinstrecken." },
+      { "title": "Architektur, Licht, Dramaturgie.", "text": "Inszenierte Perspektiven mit gesetztem Licht und gewaehlter Architektur. Bilder mit Filmcharakter - fuer Kampagne, Magazin und Bildstrecken, die Stimmung tragen." }
+    ],
+    "portfolioTiles": [
+      { "label": "Automobilfotografie als Bildserie." }
+    ],
     "localFaq": [
       {
         "question": "Wo finden Autofotoshootings in Düsseldorf und NRW statt?",
@@ -99,6 +108,20 @@
         "title": "Motorsport & Events",
         "text": "Rennstrecke, Trackday und Fahrerporträt: wenn Sportwagen in Bewegung dokumentiert werden sollen, verändert sich die Bildsprache grundlegend — Schärfentiefe, Komposition und Timing arbeiten anders als beim statischen Shooting. Dieser Bereich verbindet Sportwagenfotografie und Motorsport zu einem eigenständigen Bildkapitel."
       }
+    ],
+    "shootingStyles": [
+      { "title": "Exterieur", "text": "Vollformatige Außenaufnahmen mit kontrolliertem Licht, ruhigen Reflexen und sauberer Linienführung. Lack, Proportionen und Charakter wirken stimmig — egal ob Showroom, Industrie oder urbanes Setting." },
+      { "title": "Interieur", "text": "Cockpit, Sitze, Materialien, Atmosphäre. Mit mobilem Licht inszeniert, damit Leder, Carbon und Chrom ihren Ton behalten und der Innenraum die gleiche Sprache spricht wie das Exterieur." },
+      { "title": "Details", "text": "Emblem, Sicken, Felgen, Bremse, Naht, Schalter. Detailaufnahmen erzählen die Geschichte eines Fahrzeugs im Kleinen — perfekt für Händlerseiten, Landingpages und redaktionelle Strecken." },
+      { "title": "Cinematic", "text": "Inszenierte Perspektiven mit gesetztem Licht, gewählter Architektur und dramaturgischer Komposition. Bilder mit Filmcharakter — für Kampagne, Magazin und Bildstrecken, die Stimmung tragen." }
+    ],
+    "portfolioTiles": [
+      { "label": "Exterieur" },
+      { "label": "Interieur" },
+      { "label": "Detail" },
+      { "label": "Felge" },
+      { "label": "Profil" },
+      { "label": "Cinematic" }
     ],
     "localFaq": [
       {
@@ -162,6 +185,15 @@
         "text": "Serienbegleitende Dokumentation von Classic-Car-Treffen, Clubausfahrten und Fahrzeugausstellungen — kuratiert, nicht reportageartig. Bildsatz für Website, Vereinsarchiv oder Katalog."
       }
     ],
+    "shootingStyles": [
+      { "title": "Exponat", "text": "Hauptmotiv wie eine Ausstellung — ruhige Proportionen, gesetztes Licht, sauberer Hintergrund. Bereit für Katalog, Sammlungsdokumentation oder Wandbild." },
+      { "title": "Patina", "text": "Material, Chrom, Leder, Lackalterung. Detailaufnahmen, die Zustand und Geschichte ehrlich erzählen — ohne Glättung, ohne falsche Politur." },
+      { "title": "Innenraum", "text": "Cockpit, Sitze, Armaturen, Holzfurnier. Mit mobilem Licht inszeniert, damit Materialcharakter und Bedienelemente die gleiche Sprache sprechen wie die Außenansicht." },
+      { "title": "Provenance", "text": "Embleme, Schriftzüge, Schlüssel, Dokumente. Belege, die einen Oldtimer für Auktion, Versicherung oder seriösen Verkauf nachvollziehbar machen." }
+    ],
+    "portfolioTiles": [
+      { "label": "Aktuelle Arbeiten." }
+    ],
     "localFaq": [
       {
         "question": "Wo in Düsseldorf und NRW finden Oldtimer-Shootings statt?",
@@ -223,6 +255,17 @@
         "title": "Marken, Kampagne & Magazin",
         "text": "Vom Motorrad-Shooting auf Asphalt bis zur kontrollierten Studio-Silhouette: Bildserien, die für Kampagnen, Advertorials und Markenkommunikation technisch sauber weiterverwendet werden können."
       }
+    ],
+    "shootingStyles": [
+      { "title": "Die ruhige Bildbuehne", "text": "Bike pur: Proportionen, Linienfuehrung und Haltung. Gesetztes Licht, klare Winkel, bereit fuer Header, Print und Werkstatt-Wand." },
+      { "title": "Tank, Motor, Felge, Lenker", "text": "Nahaufnahmen, die Material, Verarbeitung und Charakter ehrlich zeigen - fuer Custom-Doku, Haendlerseiten und redaktionelle Strecken." },
+      { "title": "Mensch + Maschine, Haltung", "text": "Fahrer und Bike zusammen: Haltung, Helm, Haende am Lenker. Portrait-Logik trifft Maschine, gerne vor Ort oder am Werkstatttor." },
+      { "title": "On-the-go, Pan-Shots", "text": "Mitziehaufnahmen aus der Kurve, sauber gezogene Pan-Shots - Geschwindigkeit als Bild, nicht als Behauptung. Strecke nach Absprache." },
+      { "title": "Atmosphaere, Licht, Editorial", "text": "Bildserien mit Stimmung: Gegenlicht, Daemmerung, Werkhalle, Asphalt nach Regen. Editorial-Look fuer Magazin und Marken-Kampagne." },
+      { "title": "Reels, Story, 9:16-Cuts", "text": "Hochformat wird von Anfang an mitgeplant - eine Aufnahme, zwei Formate. Reels-, Story- und 9:16-Cuts direkt aus dem Set." }
+    ],
+    "portfolioTiles": [
+      { "label": "Aktuelle Arbeiten." }
     ],
     "localFaq": [
       {
@@ -347,6 +390,9 @@
         "title": "Fotografieprojekte & Auftragsarbeiten",
         "text": "Wer eine konkrete Landschaft, Region oder Lichtstimmung sucht, die bisher nicht im Bestand ist: Auftragsproduktion nach Absprache — Bildraum, Format und Edition gemeinsam definiert."
       }
+    ],
+    "portfolioTiles": [
+      { "label": "Ausgewaehlte Landschaften." }
     ],
     "localFaq": [
       {

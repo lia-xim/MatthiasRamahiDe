@@ -183,12 +183,24 @@ const relatedAreas = [
   },
 ]
 
-const visualSlots = familyVisualSlots(visualDoc, [
-  ...heroSlides.map(([src, mobile]) => ({ alt: 'Oldtimer Hero', mobile, src })),
-  ...storyCards.map(({ alt, height, image, width }) => ({ alt, height, src: image, width })),
-  ...portfolioTiles.map(([, src, alt, width, height, full]) => ({ alt, full, height, src, width })),
-  ...relatedAreas.map(({ alt, height, image, width }) => ({ alt, height, src: image, width })),
-])
+// CMS-Bild-Overrides pro Sektion (Tab „Themen-Sektionen"): Story-Karten aus
+// shootingStyles[i].image, Galerie aus portfolioTiles[i].image. Leer → Fallback.
+const sectionImageOverrides = [
+  ...heroSlides.map(() => undefined),
+  ...storyCards.map((_, index) => doc?.shootingStyles?.[index]?.image),
+  ...portfolioTiles.map((_, index) => doc?.portfolioTiles?.[index]?.image),
+  ...relatedAreas.map(() => undefined),
+]
+const visualSlots = familyVisualSlots(
+  visualDoc,
+  [
+    ...heroSlides.map(([src, mobile]) => ({ alt: 'Oldtimer Hero', mobile, src })),
+    ...storyCards.map(({ alt, height, image, width }) => ({ alt, height, src: image, width })),
+    ...portfolioTiles.map(([, src, alt, width, height, full]) => ({ alt, full, height, src, width })),
+    ...relatedAreas.map(({ alt, height, image, width }) => ({ alt, height, src: image, width })),
+  ],
+  sectionImageOverrides,
+)
 const inheritedStoryCards = storyCards.map((card, index) => {
   const visual = visualSlots[index + heroSlides.length]
   return { ...card, alt: visual.alt, height: visual.height, image: visual.src, width: visual.width }

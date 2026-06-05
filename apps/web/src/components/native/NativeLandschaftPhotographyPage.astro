@@ -90,6 +90,15 @@ const defaultContactLead = isParentPage
 
 const contactLead = keywordFocusCopy?.contactLead || defaultContactLead
 
+// CMS-Bild-Overrides pro Sektion (Tab „Themen-Sektionen"): 4 Ausführungs-Karten
+// (Fine-Art/Aluminium/Acrylglas/Edition) lesen Text aus audienceCards → Bild ebenso
+// aus audienceCards[i].image (Slots 5–8). Galerie aus portfolioTiles[i].image (9–17).
+const sectionImageOverrides = [
+  ...Array.from({ length: 5 }, () => undefined),
+  ...Array.from({ length: 4 }, (_, index) => doc?.audienceCards?.[index]?.image),
+  ...Array.from({ length: 9 }, (_, index) => doc?.portfolioTiles?.[index]?.image),
+  ...Array.from({ length: 4 }, () => undefined),
+]
 const visualSlots = familyVisualSlots(visualDoc, [
   { alt: 'Landschaft Wasser', full: 'assets/optimized/assets-portfolio-wettberwerb-foto5-wunder-der-natur2-1920.webp', src: 'assets/portfolio/thumbs/Wettberwerb_Foto5_Wunder_der_Natur2.webp', width: 1920, height: 1280 },
   { alt: 'Landschaft Wald', full: 'assets/optimized/assets-portfolio-20250605-dsc04020-1920.webp', src: 'assets/portfolio/thumbs/20250605-DSC04020.webp', width: 1707, height: 2560 },
@@ -113,7 +122,7 @@ const visualSlots = familyVisualSlots(visualDoc, [
   { alt: 'Oldtimer', full: 'assets/optimized/assets-photos-oldtimer-stage-1920.webp', src: 'assets/optimized/assets-photos-oldtimer-stage-1920.webp', width: 1920, height: 1280 },
   { alt: 'Drucke', full: 'assets/optimized/assets-portfolio-20250605-dsc03978-1920.webp', src: 'assets/optimized/assets-portfolio-20250605-dsc03978-1920.webp', width: 1707, height: 2560 },
   { alt: 'Portfolio', full: 'assets/optimized/assets-portfolio-wettberwerb-foto10-wunder-der-natur-1920.webp', src: 'assets/optimized/assets-portfolio-wettberwerb-foto10-wunder-der-natur-1920.webp', width: 1920, height: 1194 },
-])
+], sectionImageOverrides)
 const heroImages = visualSlots.slice(0, 5).map((slot) => slot.full).join(',')
 
 const firstSectionTarget = isLocalHeroPage ? `${serviceLabel} ${scope.label}` : isKeywordPage ? serviceLabel : ''

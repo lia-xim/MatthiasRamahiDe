@@ -39,6 +39,10 @@ type Entry = {
   heroLine2?: string
   statement?: { headline?: string; emphasis?: string; body?: string[] }
   audienceCards?: Array<{ number?: string; title: string; text: string }>
+  // Karussell-/Modul-/Story-Karten der Themen-Seite (Titel + Beschreibung).
+  shootingStyles?: Array<{ title: string; text?: string }>
+  // Galerie-Sektion: Eintrag [0].label rendert als Galerie-Überschrift.
+  portfolioTiles?: Array<{ label?: string }>
   localFaq?: Array<{ question: string; answer: string }>
   intro?: string
   seo: { title: string; description: string }
@@ -77,6 +81,12 @@ for (const e of entries) {
     }
     if (e.audienceCards?.length) {
       set('audienceCards', isEmpty(doc.audienceCards), e.audienceCards.map((c, i) => ({ number: c.number || String(i + 1).padStart(2, '0'), title: c.title, text: c.text })))
+    }
+    if (e.shootingStyles?.length) {
+      set('shootingStyles', isEmpty(doc.shootingStyles), e.shootingStyles.filter((s) => s.title).map((s) => ({ title: s.title, text: s.text || '' })))
+    }
+    if (e.portfolioTiles?.length) {
+      set('portfolioTiles', isEmpty(doc.portfolioTiles), e.portfolioTiles.map((t) => ({ label: t.label || '' })))
     }
     // ServicePages expose the FAQ array as `faq` (LocalSeoPages use `localFaq`).
     // The authored JSON keeps everything under `localFaq`, so map across here.
