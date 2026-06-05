@@ -1,0 +1,261 @@
+---
+import { reviews, reviewsAggregate, formattedAverage, hasReviews, googleReviewUrl } from '../../lib/reviewsContent'
+import { reviewsJsonLd } from '../../lib/seo'
+
+type Props = {
+  theme?: 'dark' | 'light'
+  headline?: string
+  emphasis?: string
+  kicker?: string
+  lead?: string
+}
+
+const {
+  theme = 'light',
+  headline = 'Was Kund*innen',
+  emphasis = 'sagen.',
+  kicker = 'Bewertungen',
+  lead = 'Echte Rückmeldungen aus abgeschlossenen Produktionen.',
+} = Astro.props as Props
+
+const schema = reviewsJsonLd()
+
+// "2025-04" / "2025-04-17" -> "04/2025"
+const formatDate = (value: string) => {
+  const match = /^(\d{4})-(\d{2})/.exec(value)
+  return match ? `${match[2]}/${match[1]}` : value
+}
+
+const starCount = 5
+const roundedAverage = reviewsAggregate ? Math.round(reviewsAggregate.ratingValue) : 0
+const reviewCount = reviewsAggregate?.reviewCount ?? 0
+---
+{hasReviews && reviewsAggregate && (
+  <section class="rev" data-rev-theme={theme} data-header-theme={theme} aria-label="Kundenbewertungen">
+    <div class="rev__inner">
+      <div class="rev__head">
+        <p class="rev__kicker">{kicker}</p>
+        <h2 class="rev__title">{headline} <em>{emphasis}</em></h2>
+        {lead && <p class="rev__lead">{lead}</p>}
+        <div class="rev__summary">
+          <span class="rev__avg">{formattedAverage}</span>
+          <span class="rev__stars rev__stars--lg" role="img" aria-label={`${formattedAverage} von 5 Sternen`}>
+            {Array.from({ length: starCount }, (_, i) => (
+              <svg class={i < roundedAverage ? 'is-on' : ''} viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+                <path d="M10 1.6l2.47 5.27 5.78.62-4.32 3.9 1.2 5.68L10 14.9l-5.13 3.07 1.2-5.68L1.75 8.5l5.78-.62z" />
+              </svg>
+            ))}
+          </span>
+          <span class="rev__count">{reviewCount} Bewertungen · Google</span>
+        </div>
+        <a class="rev__cta" href={googleReviewUrl} target="_blank" rel="noopener noreferrer">Auf Google bewerten &nbsp;&rarr;</a>
+      </div>
+
+      <ul class="rev__list" role="list">
+        {reviews.map((review) => (
+          <li class="rev__item">
+            <span class="rev__stars" role="img" aria-label={`${review.rating} von 5 Sternen`}>
+              {Array.from({ length: starCount }, (_, i) => (
+                <svg class={i < review.rating ? 'is-on' : ''} viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+                  <path d="M10 1.6l2.47 5.27 5.78.62-4.32 3.9 1.2 5.68L10 14.9l-5.13 3.07 1.2-5.68L1.75 8.5l5.78-.62z" />
+                </svg>
+              ))}
+            </span>
+            <blockquote class="rev__quote">{review.text}</blockquote>
+            <footer class="rev__meta">
+              <span class="rev__author">{review.author}</span>
+              <span class="rev__sub">
+                {[review.location, formatDate(review.date), review.source || 'Google'].filter(Boolean).join(' · ')}
+              </span>
+            </footer>
+          </li>
+        ))}
+      </ul>
+    </div>
+    {schema && <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />}
+  </section>
+)}
+
+<style>
+  /* Token-Bridging wie NativeFamilyFaq: erst die Legacy-Namen (--line/--mono/
+     --font/--ink), dann die Astro-Globals als Fallback. */
+  .rev {
+    --rev-fg: var(--fg);
+    --rev-bg: var(--bg);
+    --rev-muted: var(--muted, rgba(243, 245, 239, 0.66));
+    --rev-line: var(--line, var(--border, rgba(243, 245, 239, 0.14)));
+    --rev-accent: var(--accent-2, #7a8a86);
+    --rev-star: var(--chrome, #c8ccc6);
+    --rev-ease: var(--ease, cubic-bezier(0.23, 1, 0.32, 1));
+    --rev-mono: var(--mono, var(--font-mono, 'JetBrains Mono', 'IBM Plex Mono', ui-monospace, monospace));
+    --rev-display: var(--font, var(--font-display, 'Neue Haas Grotesk Display', 'Helvetica Neue', Arial, sans-serif));
+    background: var(--rev-bg);
+    color: var(--rev-fg);
+    padding: clamp(72px, 11vw, 160px) 0;
+  }
+  .rev[data-rev-theme='light'] {
+    --rev-fg: var(--ink, var(--paper-ink, #0a0c11));
+    --rev-bg: var(--paper, #f3f5ef);
+    --rev-muted: var(--muted-l, rgba(10, 12, 17, 0.68));
+    --rev-line: var(--line-l, rgba(10, 12, 17, 0.14));
+    --rev-star: #6f7d79;
+  }
+  .rev__inner {
+    width: min(100% - clamp(32px, 8vw, 128px), 1640px);
+    margin-inline: auto;
+  }
+  .rev__head {
+    margin-bottom: clamp(40px, 6vw, 88px);
+  }
+  .rev__kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--rev-mono);
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: var(--rev-muted);
+    margin: 0 0 clamp(16px, 1.6vw, 22px);
+  }
+  .rev__kicker::before {
+    content: '';
+    width: clamp(22px, 2.4vw, 34px);
+    height: 1px;
+    background: var(--accent, #cf392e);
+  }
+  .rev__title {
+    font-family: var(--rev-display);
+    font-weight: 900;
+    font-size: clamp(34px, 5vw, 84px);
+    line-height: 0.9;
+    letter-spacing: -0.055em;
+    margin: 0;
+    text-transform: uppercase;
+    overflow-wrap: break-word;
+  }
+  .rev__title em {
+    font-style: normal;
+    color: var(--rev-accent);
+  }
+  .rev__lead {
+    margin: clamp(16px, 1.8vw, 24px) 0 0;
+    max-width: 52ch;
+    font-family: var(--rev-display);
+    font-size: clamp(15px, 1.1vw, 18px);
+    line-height: 1.6;
+    color: var(--rev-muted);
+  }
+  .rev__summary {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: clamp(12px, 1.6vw, 20px);
+    margin-top: clamp(24px, 2.8vw, 36px);
+  }
+  .rev__avg {
+    font-family: var(--rev-display);
+    font-weight: 900;
+    font-size: clamp(28px, 3vw, 44px);
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+  .rev__count {
+    font-family: var(--rev-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--rev-muted);
+  }
+  .rev__cta {
+    display: inline-flex;
+    align-items: center;
+    margin-top: clamp(18px, 2vw, 26px);
+    font-family: var(--rev-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--rev-fg);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rev-line);
+    padding-bottom: 4px;
+    transition: color 0.3s var(--rev-ease), border-color 0.3s var(--rev-ease);
+  }
+  .rev__cta:hover {
+    color: var(--accent, #cf392e);
+    border-color: var(--accent, #cf392e);
+  }
+  .rev__stars {
+    display: inline-flex;
+    gap: 3px;
+  }
+  .rev__stars svg {
+    width: 16px;
+    height: 16px;
+    fill: var(--rev-line);
+  }
+  .rev__stars svg.is-on {
+    fill: var(--rev-star);
+  }
+  .rev__stars--lg svg {
+    width: 22px;
+    height: 22px;
+  }
+  .rev__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(20px, 3vw, 56px);
+    border-top: 1px solid var(--rev-line);
+  }
+  .rev__item {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(14px, 1.4vw, 18px);
+    padding: clamp(28px, 2.6vw, 40px) 0 0;
+  }
+  .rev__quote {
+    margin: 0;
+    font-family: var(--rev-display);
+    font-size: clamp(16px, 1.2vw, 19px);
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+    color: var(--rev-fg);
+  }
+  .rev__meta {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .rev__author {
+    font-family: var(--rev-display);
+    font-weight: 700;
+    font-size: clamp(14px, 1vw, 16px);
+    letter-spacing: -0.01em;
+  }
+  .rev__sub {
+    font-family: var(--rev-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--rev-muted);
+  }
+  @media (max-width: 900px) {
+    .rev__list {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    .rev__item {
+      padding: clamp(24px, 6vw, 32px) 0;
+      border-bottom: 1px solid var(--rev-line);
+    }
+  }
+</style>

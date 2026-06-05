@@ -1,4 +1,5 @@
 import { imageUrl, toAbsoluteSiteUrl, type PayloadDoc, type SiteSettings } from './payload'
+import { reviews as customerReviews, reviewsAggregate } from './reviewsContent'
 
 export type JsonLd = Record<string, unknown>
 
@@ -87,6 +88,40 @@ export const localBusinessJsonLd = (settings?: SiteSettings | null): JsonLd => j
   priceRange: '$$',
   sameAs: sameAsUrls(settings),
 })
+
+// Echte Kundenrezensionen als Review/aggregateRating-Markup, an denselben
+// #local-business-Knoten gehängt (Merge per @id, kein doppelter Entity).
+// Nur ausgeben, wo das Widget auch sichtbar rendert (Google: Markup == sichtbar).
+// Liefert null, solange keine echten Rezensionen gepflegt sind.
+export const reviewsJsonLd = (settings?: SiteSettings | null): JsonLd | null => {
+  if (!reviewsAggregate || customerReviews.length === 0) return null
+
+  return jsonLd({
+    '@context': 'https://schema.org',
+    '@type': 'ProfessionalService',
+    '@id': `${toAbsoluteSiteUrl('/')}#local-business`,
+    name: settings?.siteName || 'Matthias Ramahi Fotografie',
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: reviewsAggregate.ratingValue,
+      reviewCount: reviewsAggregate.reviewCount,
+      bestRating: reviewsAggregate.bestRating,
+      worstRating: reviewsAggregate.worstRating,
+    },
+    review: customerReviews.map((review) => ({
+      '@type': 'Review',
+      author: { '@type': 'Person', name: review.author },
+      datePublished: review.date,
+      reviewRating: {
+        '@type': 'Rating',
+        ratingValue: review.rating,
+        bestRating: 5,
+        worstRating: 1,
+      },
+      reviewBody: review.text,
+    })),
+  })
+}
 
 export const articleJsonLd = (doc: PayloadDoc, url: string): JsonLd => jsonLd({
   '@context': 'https://schema.org',

@@ -1,6 +1,7 @@
 ---
 import siteChromeContent, { type SiteChromeFooterColumn } from '../data/siteChromeContent'
 import { getFooter, linkAttributes, liveCmsFetchOptions, toRootRelativeHref } from '../lib/payload'
+import { googleReviewUrl } from '../lib/reviewsContent'
 
 type Props = {
   liveCms?: boolean
@@ -89,6 +90,10 @@ const socialContactLink =
           <div class="mr-footer__contact-line">
             <span>Fotograf</span>
             <strong>{locationLabel}</strong>
+          </div>
+          <div class="mr-footer__contact-line">
+            <span>Google</span>
+            <a href={googleReviewUrl} target="_blank" rel="noopener noreferrer">Jetzt bewerten &nbsp;&rarr;</a>
           </div>
           {socialContactLink?.href && (
             <div class="mr-footer__contact-line mr-footer__contact-line--social">

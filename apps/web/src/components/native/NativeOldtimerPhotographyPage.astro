@@ -2,6 +2,7 @@
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import NativeFamilyClusterLinks from './NativeFamilyClusterLinks.astro'
 import NativeFamilyFaq from './NativeFamilyFaq.astro'
+import NativeReviews from './NativeReviews.astro'
 import PreviewToolbar from '../PreviewToolbar.astro'
 import {
   localScopePhrase,
@@ -478,6 +479,8 @@ const searchLinks = [
     </section>
 
     <NativeFamilyFaq faq={faqItems} pageUrl={`https://matthiasramahi.de/${legacyFile}`} theme="dark" />
+
+    <NativeReviews theme="light" />
 
     <section
       id="anfrage"

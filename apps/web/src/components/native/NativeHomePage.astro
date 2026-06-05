@@ -2,6 +2,7 @@
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import PreviewToolbar from '../PreviewToolbar.astro'
 import NativeShaderHero from './NativeShaderHero.astro'
+import NativeReviews from './NativeReviews.astro'
 import {
   blockParagraphs,
   homeChapters as fallbackChapters,
@@ -317,6 +318,8 @@ const journalCards = cmsJournalCards.length ? cmsJournalCards : fallbackJournalC
         </div>
       </div>
     </section>
+
+    <NativeReviews theme="light" />
 
     <section
       id="anfrage"
