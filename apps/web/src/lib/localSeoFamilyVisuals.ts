@@ -181,13 +181,20 @@ const fallbackSlot = (fallback: FamilyVisualFallback): FamilyVisualSlot => {
 export function familyVisualSlots(
   doc: PayloadDoc | null | undefined,
   fallbacks: FamilyVisualFallback[],
+  /**
+   * Pro Slot ein explizites CMS-Medium (z. B. aus shootingStyles[i].image,
+   * portfolioTiles[i].image, audienceCards[i].image). Hat Vorrang vor der
+   * positionalen Hero-/Teaser-/imageSequence-Auflösung. `undefined` an einer
+   * Position lässt den bisherigen Wert (positional bzw. Fallback) unverändert.
+   */
+  overrides?: Array<PayloadMedia | string | undefined>,
 ): FamilyVisualSlot[] {
   const mediaItems = collectMedia(doc)
 
   return fallbacks.map((fallback, index) => {
     const mediaItem = mediaItems[index]
     const fallbackValue = fallbackSlot(fallback)
-    const media = mediaItem?.media
+    const media = overrides?.[index] ?? mediaItem?.media
 
     if (!media) return fallbackValue
 
@@ -210,7 +217,7 @@ export function familyVisualSlots(
     const dimensions = imageDimensions(media, 'card')
 
     return {
-      alt: imageAlt(media, mediaItem.caption || fallback.alt),
+      alt: imageAlt(media, mediaItem?.caption || fallback.alt),
       cssFull: cssUrl(full),
       cssMobile: cssUrl(mobile),
       cssSrc: cssUrl(src),

@@ -88,6 +88,17 @@ const defaultContactLead = isParentPage
     : `Schreibe kurz, wofür die Portraits in ${scope.label} gedacht sind - Personal Branding, Editorial, Team, Presse oder Bewerbung. Wichtig sind Person oder Team, gewünschte Wirkung, Ort und Zeitraum. Stil und Licht klären wir vor dem ersten Klick.`
 const contactLead = keywordFocusCopy?.contactLead || defaultContactLead
 
+// CMS-Bild-Overrides pro Sektion (Tab „Themen-Sektionen"): 5 Modul-Karten aus
+// shootingStyles[i].image (Slots 4–8), 9 Galerie-Kacheln aus portfolioTiles[i].image
+// (Slots 9–17). Hero (0–3), Prozess (18–22) und Related (23–26) bleiben Fallback.
+const sectionImageOverrides = [
+  ...Array.from({ length: 4 }, () => undefined),
+  // Modul-Karten lesen Text aus shootingStyles[i] || audienceCards[i] — das Bild
+  // folgt derselben Karte, damit Text und Bild aus demselben Feld kommen.
+  ...Array.from({ length: 5 }, (_, index) => (doc?.shootingStyles?.[index] || doc?.audienceCards?.[index])?.image),
+  ...Array.from({ length: 9 }, (_, index) => doc?.portfolioTiles?.[index]?.image),
+  ...Array.from({ length: 9 }, () => undefined),
+]
 const visualSlots = familyVisualSlots(visualDoc, [
   { alt: 'Portrait warm', full: 'assets/portraits/_DSC0470-Enhanced-NR.webp', src: 'assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp', width: 1600, height: 2560 },
   { alt: 'Portrait Profil', full: 'assets/portraits/_DSC9301-Enhanced-NR.webp', src: 'assets/portfolio/thumbs/_DSC9301-Enhanced-NR.webp', width: 2048, height: 2560 },
@@ -116,7 +127,7 @@ const visualSlots = familyVisualSlots(visualDoc, [
   { alt: 'Automobil', full: 'assets/optimized/assets-photos-automobil-neon-1920.webp', src: 'assets/optimized/assets-photos-automobil-neon-960.webp', width: 960, height: 640 },
   { alt: 'Videografie', full: 'assets/optimized/assets-portfolio-dsc3032-generase-1-1920.webp', src: 'assets/portfolio/thumbs/_DSC3032_genErase (1).webp', width: 720, height: 480 },
   { alt: 'Portfolio', full: 'assets/portraits/_DSC9321-Enhanced-NR.webp', src: 'assets/portfolio/thumbs/_DSC9321-Enhanced-NR.webp', width: 720, height: 1080 },
-])
+], sectionImageOverrides)
 
 const cityLinks = [
   ['portraitfotografie-duesseldorf.html', 'Düsseldorf'],

@@ -89,6 +89,16 @@ const defaultContactLead = isParentPage
 
 const contactLead = keywordFocusCopy?.contactLead || defaultContactLead
 
+// CMS-Bild-Overrides pro Sektion (Tab „Themen-Sektionen"): 6 Modul-Karten aus
+// shootingStyles[i].image (Slots 3–8), 6 Galerie-Kacheln aus portfolioTiles[i].image
+// (Slots 9–14). Hero-Slots 0–2 bleiben über Hero-/Teaser-Bild. Leer → Fallback.
+const sectionImageOverrides = [
+  undefined,
+  undefined,
+  undefined,
+  ...Array.from({ length: 6 }, (_, index) => doc?.shootingStyles?.[index]?.image),
+  ...Array.from({ length: 6 }, (_, index) => doc?.portfolioTiles?.[index]?.image),
+]
 const visualSlots = familyVisualSlots(visualDoc, [
   { alt: 'Motorrad Stand und Silhouette', full: 'assets/optimized/assets-photos-motorrad-ninja-road-1920.webp', mobile: 'assets/optimized/assets-photos-motorrad-ninja-road-720.webp', src: 'assets/optimized/assets-photos-motorrad-ninja-road-960.webp', width: 960, height: 1440 },
   { alt: 'Motorrad mit Fahrer', full: 'assets/optimized/assets-photos-motorrad-duke-1920.webp', mobile: 'assets/optimized/assets-photos-motorrad-duke-720.webp', src: 'assets/optimized/assets-photos-motorrad-duke-960.webp', width: 960, height: 1706 },
@@ -105,7 +115,7 @@ const visualSlots = familyVisualSlots(visualDoc, [
   { alt: 'Motorrad Vertical', full: 'assets/portfolio/_DSC9301-Enhanced-NR.webp', src: 'assets/portfolio/thumbs/_DSC9301-Enhanced-NR.webp', width: 720, height: 900 },
   { alt: 'Motorrad Profil', full: 'assets/portfolio/_DSC9321-Enhanced-NR.webp', src: 'assets/portfolio/thumbs/_DSC9321-Enhanced-NR.webp', width: 720, height: 1080 },
   { alt: 'Motorrad Cinematic', full: 'assets/optimized/assets-portfolio-dsc3878-1920.webp', src: 'assets/portfolio/thumbs/_DSC3878.webp', width: 720, height: 480 },
-])
+], sectionImageOverrides)
 
 // Hero slides — the brand signature has to stay razor-sharp on retina phones.
 // A full-bleed 100vw hero on a DPR 2-3 screen needs a high-res candidate, so the
