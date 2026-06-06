@@ -11,6 +11,7 @@ import {
   type PayloadMedia,
 } from './payload'
 import { localSeoParentLegacyFiles, type LocalSeoLayoutFamily } from './localSeoLayoutFamilies'
+import { splitHeroTitleLines } from './heroTitleLines'
 
 type ImageSequenceBlock = {
   blockType?: string
@@ -40,6 +41,17 @@ export type FamilyVisualSlot = Required<Pick<FamilyVisualFallback, 'alt' | 'src'
   srcset: string
   width: number
 }
+
+type FamilyHeroCopyFallback = {
+  lead: string
+  primaryHref: string
+  primaryLabel: string
+  secondaryHref: string
+  secondaryLabel: string
+  titleLines: string[]
+}
+
+export type FamilyHeroCopy = FamilyHeroCopyFallback
 
 const serviceSlugByFamily: Record<LocalSeoLayoutFamily, string> = {
   automobil: 'automobil-fotografie',
@@ -82,6 +94,8 @@ const mediaKey = (media: PayloadMedia | string | undefined) => {
 
 const cssUrl = (url: string) => (url.startsWith('http') || url.startsWith('/') ? url : `/${url}`)
 
+const textValue = (value: unknown) => (typeof value === 'string' ? value.trim() : '')
+
 const cachedCmsMedia: Array<[RegExp, string]> = [
   [/assets-portfolio-dsc3879-1920-760x507\.webp$/i, '/assets/portfolio/thumbs/_DSC3879.webp'],
   [/assets-portfolio-dsc3879-1920(?:-1920x1280)?\.webp$/i, '/assets/optimized/assets-portfolio-dsc3879-1920.webp'],
@@ -111,6 +125,9 @@ export async function getFamilyVisualSourceDoc(
     getBySlug('portfolio-projects', portfolioSlug, liveCmsFetchOptions({ depth: 2, cacheMs: 0 })),
   ])
   const pageCandidates = [doc, isPayloadDoc(canonical) ? canonical : null, bySlug, legacyBackedDoc]
+  const authoredHeroCandidate = pageCandidates.find(hasAuthoredHeroVisual)
+  if (authoredHeroCandidate) return authoredHeroCandidate
+
   const richPageCandidate = pageCandidates.find((candidate) => visualCount(candidate) >= 2)
 
   if (richPageCandidate) return richPageCandidate
@@ -156,6 +173,51 @@ function collectMedia(doc: PayloadDoc | null | undefined) {
 }
 
 const visualCount = (doc: PayloadDoc | null | undefined) => collectMedia(doc).length
+
+const hasAuthoredHeroVisual = (doc: PayloadDoc | null | undefined) =>
+  Boolean(doc?.heroSlides?.length || doc?.heroPanels?.length)
+
+const firstHeroSlide = (doc: PayloadDoc | null | undefined, visualDoc: PayloadDoc | null | undefined) => {
+  const candidates = [doc, visualDoc]
+
+  for (const candidate of candidates) {
+    for (const slide of candidate?.heroSlides || []) {
+      if (
+        textValue(slide.headlineLine1) ||
+        textValue(slide.headlineLine2) ||
+        textValue(slide.lead) ||
+        textValue(slide.primaryHref) ||
+        textValue(slide.primaryLabel) ||
+        textValue(slide.secondaryHref) ||
+        textValue(slide.secondaryLabel)
+      ) {
+        return slide
+      }
+    }
+  }
+
+  return null
+}
+
+export function familyHeroCopy(
+  doc: PayloadDoc | null | undefined,
+  visualDoc: PayloadDoc | null | undefined,
+  fallback: FamilyHeroCopyFallback,
+): FamilyHeroCopy {
+  const slide = firstHeroSlide(doc, visualDoc)
+  const authoredTitleLines = [textValue(slide?.headlineLine1), textValue(slide?.headlineLine2)]
+    .filter(Boolean)
+    .flatMap((line) => splitHeroTitleLines(line))
+
+  return {
+    lead: textValue(slide?.lead) || textValue(doc?.intro) || fallback.lead,
+    primaryHref: textValue(slide?.primaryHref) || fallback.primaryHref,
+    primaryLabel: textValue(slide?.primaryLabel) || fallback.primaryLabel,
+    secondaryHref: textValue(slide?.secondaryHref) || fallback.secondaryHref,
+    secondaryLabel: textValue(slide?.secondaryLabel) || fallback.secondaryLabel,
+    titleLines: authoredTitleLines.length ? authoredTitleLines : fallback.titleLines,
+  }
+}
 
 const fallbackSlot = (fallback: FamilyVisualFallback): FamilyVisualSlot => {
   const full = toDisplayAssetUrl(fallback.full || fallback.src)

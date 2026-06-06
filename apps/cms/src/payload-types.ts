@@ -1075,6 +1075,35 @@ export interface ServicePage {
    * Optional. Wenn leer, nutzt das System automatisch das Hero-Bild.
    */
   teaserImage?: (number | null) | Media;
+  /**
+   * Hero-Slider fuer diese Themen-/SEO-Seite. Bilder, Titelzeilen, Kurztext und Buttons steuern den sichtbaren Hero dieser Seite.
+   */
+  heroSlides?:
+    | {
+        /**
+         * Dieses Bild wird fuer den aktuellen Hero-Slide verwendet.
+         */
+        image: number | Media;
+        headlineLine1?: string | null;
+        /**
+         * Optional. Leer lassen, wenn der Slide nur eine Titelzeile braucht.
+         */
+        headlineLine2?: string | null;
+        /**
+         * Optionaler Text unter dem Titel. Kurz halten, damit der Hero ruhig bleibt.
+         */
+        lead?: string | null;
+        /**
+         * Wie lange dieser Slide sichtbar bleibt, bevor automatisch zum naechsten gewechselt wird. Standard: 7 Sekunden.
+         */
+        durationSec?: number | null;
+        primaryLabel?: string | null;
+        primaryHref?: string | null;
+        secondaryLabel?: string | null;
+        secondaryHref?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   audience?:
     | {
         item: string;
@@ -2026,6 +2055,35 @@ export interface LocalSeoPage {
    * Bild aus dem Medienarchiv waehlen. Neue Bilder koennen direkt im Drawer hochgeladen und bearbeitet werden.
    */
   heroImage?: (number | null) | Media;
+  /**
+   * Hero-Slider fuer diese Themen-/SEO-Seite. Bilder, Titelzeilen, Kurztext und Buttons steuern den sichtbaren Hero dieser Seite.
+   */
+  heroSlides?:
+    | {
+        /**
+         * Dieses Bild wird fuer den aktuellen Hero-Slide verwendet.
+         */
+        image: number | Media;
+        headlineLine1?: string | null;
+        /**
+         * Optional. Leer lassen, wenn der Slide nur eine Titelzeile braucht.
+         */
+        headlineLine2?: string | null;
+        /**
+         * Optionaler Text unter dem Titel. Kurz halten, damit der Hero ruhig bleibt.
+         */
+        lead?: string | null;
+        /**
+         * Wie lange dieser Slide sichtbar bleibt, bevor automatisch zum naechsten gewechselt wird. Standard: 7 Sekunden.
+         */
+        durationSec?: number | null;
+        primaryLabel?: string | null;
+        primaryHref?: string | null;
+        secondaryLabel?: string | null;
+        secondaryHref?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   localProof?:
     | {
         label: string;
@@ -2880,6 +2938,20 @@ export interface ServicePagesSelect<T extends boolean = true> {
   intro?: T;
   heroImage?: T;
   teaserImage?: T;
+  heroSlides?:
+    | T
+    | {
+        image?: T;
+        headlineLine1?: T;
+        headlineLine2?: T;
+        lead?: T;
+        durationSec?: T;
+        primaryLabel?: T;
+        primaryHref?: T;
+        secondaryLabel?: T;
+        secondaryHref?: T;
+        id?: T;
+      };
   audience?:
     | T
     | {
@@ -3501,6 +3573,20 @@ export interface LocalSeoPagesSelect<T extends boolean = true> {
   service?: T;
   intro?: T;
   heroImage?: T;
+  heroSlides?:
+    | T
+    | {
+        image?: T;
+        headlineLine1?: T;
+        headlineLine2?: T;
+        lead?: T;
+        durationSec?: T;
+        primaryLabel?: T;
+        primaryHref?: T;
+        secondaryLabel?: T;
+        secondaryHref?: T;
+        id?: T;
+      };
   localProof?:
     | T
     | {

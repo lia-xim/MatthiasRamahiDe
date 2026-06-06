@@ -71,6 +71,7 @@ export type PayloadDoc = {
     headlineLine1?: string
     headlineLine2?: string
     lead?: string
+    durationSec?: number
     primaryLabel?: string
     primaryHref?: string
     secondaryLabel?: string

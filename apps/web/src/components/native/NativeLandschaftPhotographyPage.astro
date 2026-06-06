@@ -12,7 +12,7 @@ import {
 import { mergeAuthoredLocalSeoContent } from '../../lib/authoredSeoContent'
 import { splitHeroTitleLines } from '../../lib/heroTitleLines'
 import { keywordFocusCopyForSlug } from '../../lib/localSeoFamilyContent'
-import { familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
+import { familyHeroCopy, familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
 import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
 import { splitTrailingEmphasis } from '../../lib/splitTrailingEmphasis'
 
@@ -70,6 +70,14 @@ const metaTitle = doc?.seo?.title || fallbackMetaTitle
 const heroLead = keywordFocusCopy?.heroLead
   ? `${keywordFocusCopy.heroLead}${!isParentPage && !isKeywordPage ? ` ${localScopePhrase(scope)}` : ''}`
   : defaultHeroLead
+const heroCopy = familyHeroCopy(doc, visualDoc, {
+  lead: heroLead,
+  primaryHref: '#anfrage',
+  primaryLabel: 'Landschafts-Serie anfragen \u2192',
+  secondaryHref: 'portfolio.html',
+  secondaryLabel: 'Portfolio',
+  titleLines: heroTitleLines,
+})
 const defaultMetaDescription = isParentPage
   ? 'Landschaftsfotografie: Fine-Art-Prints, Wandbilder, Editionen und großformatige Arbeiten für private Räume, Praxen, Hotels und Sammlungen.'
   : isKeywordPage
@@ -271,15 +279,15 @@ const searchLinks = [
 
       <div class="hero-ls__inner">
         <h1 class="hero-ls__title" aria-label={heroLabel}>
-          {heroTitleLines.map((line) => (
+          {heroCopy.titleLines.map((line) => (
             <span class="l"><span class="w">{line}</span></span>
           ))}
         </h1>
         {heroLocalNote && <p class="hero-ls__local-note">{heroLocalNote}</p>}
-        <p class="hero-ls__sub">{doc?.intro || heroLead}</p>
+        <p class="hero-ls__sub">{heroCopy.lead}</p>
         <div class="hero-ls__actions">
-          <a class="btn primary" href="#anfrage">Landschafts-Serie anfragen →</a>
-          <a class="btn" href="portfolio.html">Portfolio</a>
+          <a class="btn primary" href={heroCopy.primaryHref}>{heroCopy.primaryLabel}</a>
+          <a class="btn" href={heroCopy.secondaryHref}>{heroCopy.secondaryLabel}</a>
         </div>
       </div>
 

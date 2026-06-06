@@ -14,7 +14,7 @@ import {
 } from '../../lib/localSeoFamilyContent'
 import { mergeAuthoredLocalSeoContent } from '../../lib/authoredSeoContent'
 import { splitHeroTitleLines } from '../../lib/heroTitleLines'
-import { familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
+import { familyHeroCopy, familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
 import { getLegacyBackedDoc, routeForDoc, type PayloadDoc } from '../../lib/payload'
 
 type PreviewState = {
@@ -101,6 +101,14 @@ const defaultHeroLead = isParentPage
     : `Automobilfotografie in ${scope.label}: Exterieur, Interieur, Details und Cinematic werden als kuratierte Bildserie geplant - für Marke, Showroom, Verkauf, Kampagne und hochwertige private Fahrzeuge. ${cityScopePhrase(scope)}`
 const keywordLocalContext = keywordFocusCopy && !isParentPage && !isKeywordPage ? ` ${cityScopePhrase(scope)}` : ''
 const heroLead = keywordFocusCopy?.heroLead ? `${keywordFocusCopy.heroLead}${keywordLocalContext}` : defaultHeroLead
+const heroCopy = familyHeroCopy(doc, visualDoc, {
+  lead: heroLead,
+  primaryHref: '#anfrage',
+  primaryLabel: 'Shooting buchen \u2192',
+  secondaryHref: 'portfolio.html',
+  secondaryLabel: 'Portfolio',
+  titleLines: heroTitleLines,
+})
 const fallbackMetaTitle = isParentPage
   ? 'Automobilfotografie | Matthias Ramahi'
   : isKeywordPage
@@ -450,15 +458,15 @@ const searchLinks = [
       <div class="pd-overlay">
         <div class="pd-bottom">
           <h1 class={`pd-title${isLocalCityPage ? ' pd-title--local' : ''}`} aria-label={heroLabel}>
-            {heroTitleLines.map((line) => (
+            {heroCopy.titleLines.map((line) => (
               <span class="line"><span class="word">{line}</span></span>
             ))}
           </h1>
           {heroLocalNote && <p class="pd-local-note">{heroLocalNote}</p>}
-          <p class="pd-sub">{doc?.intro || heroLead}</p>
+          <p class="pd-sub">{heroCopy.lead}</p>
           <div class="pd-actions">
-            <a href="#anfrage">Shooting buchen →</a>
-            <a class="ghost" href="portfolio.html">Portfolio</a>
+            <a href={heroCopy.primaryHref}>{heroCopy.primaryLabel}</a>
+            <a class="ghost" href={heroCopy.secondaryHref}>{heroCopy.secondaryLabel}</a>
           </div>
         </div>
       </div>

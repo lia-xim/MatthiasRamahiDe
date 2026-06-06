@@ -5,6 +5,7 @@ import { adminGroups, editorPagination } from '../admin/structure'
 import { advancedSettings } from '../fields/advancedSettings'
 import { contentBlocks } from '../fields/contentBlocks'
 import { mediaRelationshipField } from '../fields/editorialImages'
+import { serviceHeroSlides } from '../fields/homeHeroSlides'
 import { legacyMigrationFields } from '../fields/legacyMigration'
 import { seoFields } from '../fields/seo'
 import { serviceSectionsTab } from '../fields/serviceSections'
@@ -54,6 +55,7 @@ export const LocalSeoPages: CollectionConfig = {
       ]),
       requireMediaAltForPublish([
         { path: 'heroImage', label: 'Hero-Bild' },
+        { path: 'heroSlides.image', label: 'Hero-Slider' },
         { path: 'seo.ogImage', label: 'Social-Bild' },
         { path: 'blocks.items.image', label: 'Bildsequenz' },
       ]),
@@ -98,6 +100,12 @@ export const LocalSeoPages: CollectionConfig = {
           description:
             'Lokale Familienseiten erben die sichtbaren Bilder aus der passenden Hauptseite. Dieses Feld ist nur ein Ausnahme-/Fallback-Motiv fuer Sonderseiten.',
           fields: [mediaRelationshipField({ name: 'heroImage', label: 'Hero-Bild' })],
+        },
+        {
+          label: 'Hero',
+          description:
+            'Optionaler eigener Hero-Slider fuer diese lokale Seite. Leer lassen, wenn die Seite den Hero der kanonischen Hauptseite erben soll.',
+          fields: [serviceHeroSlides],
         },
         {
           label: 'Inhalt',

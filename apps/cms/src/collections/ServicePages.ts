@@ -5,6 +5,7 @@ import { adminGroups, editorPagination } from '../admin/structure'
 import { advancedSettings } from '../fields/advancedSettings'
 import { contentBlocks } from '../fields/contentBlocks'
 import { mediaRelationshipField } from '../fields/editorialImages'
+import { serviceHeroSlides } from '../fields/homeHeroSlides'
 import { legacyMigrationFields } from '../fields/legacyMigration'
 import { linkFields } from '../fields/links'
 import { seoFields } from '../fields/seo'
@@ -56,6 +57,7 @@ export const ServicePages: CollectionConfig = {
       ]),
       requireMediaAltForPublish([
         { path: 'heroImage', label: 'Hero-Bild' },
+        { path: 'heroSlides.image', label: 'Hero-Slider' },
         { path: 'teaserImage', label: 'Teaser-Bild' },
         { path: 'seo.ogImage', label: 'Social-Bild' },
         { path: 'blocks.items.image', label: 'Bildsequenz' },
@@ -130,6 +132,12 @@ export const ServicePages: CollectionConfig = {
               description: 'Optional. Wenn leer, nutzt das System automatisch das Hero-Bild.',
             }),
           ],
+        },
+        {
+          label: 'Hero',
+          description:
+            'Eigener Hero-Slider fuer diese Leistungs-/Fotografie-Seite. Wenn leer, nutzt die Seite Hero-Bild, Themenbilder oder die eingebauten Fallbacks.',
+          fields: [serviceHeroSlides],
         },
         {
           label: 'Inhalt',

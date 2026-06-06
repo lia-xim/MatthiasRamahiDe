@@ -11,9 +11,9 @@ import {
 } from '../../lib/nativeFamilyPageContext'
 import { mergeAuthoredLocalSeoContent } from '../../lib/authoredSeoContent'
 import { splitHeroTitleLines } from '../../lib/heroTitleLines'
+import { familyHeroCopy, familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
+import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
 import { keywordFocusCopyForSlug } from '../../lib/localSeoFamilyContent'
-import { familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
-import { getLegacyBackedDoc, imageDisplayUrl, type PayloadDoc } from '../../lib/payload'
 import { splitTrailingEmphasis } from '../../lib/splitTrailingEmphasis'
 
 type Props = {
@@ -267,29 +267,26 @@ const focusRelatedLead = isParentPage || isKeywordPage
   ? keywordFocusCopy?.relatedLead || 'Oldtimer ist Teil einer groesseren automotive Welt. Schau dir die anderen Disziplinen an - gleicher Anspruch, anderer Bildfokus. Die Links fuehren schnell zu der Bildwelt, die zum Fahrzeug, zur Nutzung und zum geplanten Shooting passt.'
   : `Oldtimer-Fotografie ${scope.label} fuehrt zu Automobil, Sportwagen, Druck und Portfolio, damit Nutzer schnell den passenden Bildbereich finden.`
 
-// Hero = der Landing-Page-Shader-Hero (WebGL/Ken-Burns/Lens-Cursor), 1:1 wie auf
-// der Fotolabor-Seite — nur mit Oldtimer-Bild, -Texten und dem warmen Messing/
-// Patina-Akzent (--hero-accent). Optik aus assets/native-oldtimer.css (.hero),
-// Bewegung aus assets/native-home.js (gated nur auf #hero-shader).
-// Festes, kanonisches Oldtimer-Bühnenbild als Hero (wie Fotolabor ein fixes
-// Bild nutzt). Der CMS-Family-Visual-Slot 0 mappt hier auf ein Portrait —
-// fürs Hero-„Wow" bleibt daher das starke Bühnenmotiv gesetzt.
-// Absolute Pfade (führender /). Wichtig: in der CSS-Custom-Property
-// --hero-bg-* löst eine RELATIVE url() gegen das Stylesheet (/assets/…) auf →
-// /assets/assets/… (404). Auf Mobile/Touch ist der Canvas aus, dann griff der
-// kaputte CSS-Hintergrund = kein Hero-Bild. Absolut behebt das eindeutig.
-// CMS-Hero-Override: erstes Bild aus „Hero-Bilder (Slider)" (heroPanels) ersetzt
-// das feste Bühnenbild. Absolute URL nötig (Shader-Canvas + CSS --hero-bg).
-const heroPanelMedia = doc?.heroPanels?.[0]?.image
-const heroBgDesktop =
-  (heroPanelMedia && imageDisplayUrl(heroPanelMedia, 'wide', { allowOriginal: true })) ||
-  '/assets/optimized/assets-photos-oldtimer-stage-1920.webp'
-const heroBgMobile =
-  (heroPanelMedia && imageDisplayUrl(heroPanelMedia, 'card', { allowOriginal: true })) ||
-  '/assets/optimized/assets-photos-oldtimer-stage-1280.webp'
-const heroSubText = doc?.intro || heroLead
+// Hero = der Landing-Page-Shader-Hero. Das Bild kommt aus dem gemeinsamen
+// Visual-Slot-System, damit Hero-Slider/Service-Hero im CMS den sichtbaren
+// Oldtimer-Hero steuern koennen.
+const hasAuthoredHeroVisual =
+  Boolean(doc?.heroSlides?.length) ||
+  Boolean(doc?.heroPanels?.length) ||
+  Boolean(visualDoc?.heroSlides?.length) ||
+  Boolean(visualDoc?.heroPanels?.length)
+const heroBgDesktop = hasAuthoredHeroVisual ? visualSlots[0].full : '/assets/optimized/assets-photos-oldtimer-stage-1920.webp'
+const heroBgMobile = hasAuthoredHeroVisual ? visualSlots[0].mobile : '/assets/optimized/assets-photos-oldtimer-stage-1280.webp'
+const heroCopy = familyHeroCopy(doc, visualDoc, {
+  lead: heroLead,
+  primaryHref: '#anfrage',
+  primaryLabel: 'Shooting buchen',
+  secondaryHref: 'portfolio.html',
+  secondaryLabel: 'Portfolio',
+  titleLines: heroTitleLines,
+})
 const heroSlidesJson = JSON.stringify([
-  { image: heroBgDesktop, titleLines: heroTitleLines, lead: heroSubText },
+  { image: heroBgDesktop, titleLines: heroCopy.titleLines, lead: heroCopy.lead },
 ])
 
 const cityLinks = [
@@ -366,15 +363,15 @@ const searchLinks = [
       <div class="hero-grid">
         <div class="hero-stage">
           <h1 class="hero-title" id="hero-title" data-text-idx="0" aria-label={heroLabel}>
-            {heroTitleLines.map((line) => (
+            {heroCopy.titleLines.map((line) => (
               <span class="line"><span class="word">{line}</span></span>
             ))}
           </h1>
           {heroLocalNote && <p class="hero-local-note">{heroLocalNote}</p>}
-          <p class="hero-lead" id="hero-lead">{heroSubText}</p>
+          <p class="hero-lead" id="hero-lead">{heroCopy.lead}</p>
           <div class="hero-actions" aria-label="Direkte Aktionen">
-            <a class="btn dark" href="#anfrage" data-hero-primary>Shooting buchen</a>
-            <a class="btn" href="portfolio.html" data-hero-secondary>Portfolio</a>
+            <a class="btn dark" href={heroCopy.primaryHref} data-hero-primary>{heroCopy.primaryLabel}</a>
+            <a class="btn" href={heroCopy.secondaryHref} data-hero-secondary>{heroCopy.secondaryLabel}</a>
           </div>
         </div>
       </div>

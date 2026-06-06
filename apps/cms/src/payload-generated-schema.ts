@@ -18,6 +18,469 @@ import {
 } from "@payloadcms/db-sqlite/drizzle/sqlite-core";
 import { sql, relations } from "@payloadcms/db-sqlite/drizzle";
 
+export const site_pages_hero_slides = sqliteTable(
+  "site_pages_hero_slides",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: text("id").primaryKey(),
+    image: integer("image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    headlineLine1: text("headline_line1").default("Fotografie"),
+    headlineLine2: text("headline_line2"),
+    lead: text("lead"),
+    durationSec: numeric("duration_sec", { mode: "number" }).default(7),
+    primaryLabel: text("primary_label").default("Projekt anfragen"),
+    primaryHref: text("primary_href").default("#anfrage"),
+    secondaryLabel: text("secondary_label").default("Arbeiten ansehen"),
+    secondaryHref: text("secondary_href").default("/portfolio.html"),
+  },
+  (columns) => [
+    index("site_pages_hero_slides_order_idx").on(columns._order),
+    index("site_pages_hero_slides_parent_id_idx").on(columns._parentID),
+    index("site_pages_hero_slides_image_idx").on(columns.image),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [site_pages.id],
+      name: "site_pages_hero_slides_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const site_pages_home_statement_body = sqliteTable(
+  "site_pages_home_statement_body",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: text("id").primaryKey(),
+    text: text("text"),
+  },
+  (columns) => [
+    index("site_pages_home_statement_body_order_idx").on(columns._order),
+    index("site_pages_home_statement_body_parent_id_idx").on(columns._parentID),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [site_pages.id],
+      name: "site_pages_home_statement_body_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const site_pages_home_chapters_items = sqliteTable(
+  "site_pages_home_chapters_items",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: text("id").primaryKey(),
+    image: integer("image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    title: text("title"),
+    href: text("href"),
+  },
+  (columns) => [
+    index("site_pages_home_chapters_items_order_idx").on(columns._order),
+    index("site_pages_home_chapters_items_parent_id_idx").on(columns._parentID),
+    index("site_pages_home_chapters_items_image_idx").on(columns.image),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [site_pages.id],
+      name: "site_pages_home_chapters_items_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const site_pages_home_about_body = sqliteTable(
+  "site_pages_home_about_body",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: text("id").primaryKey(),
+    text: text("text"),
+  },
+  (columns) => [
+    index("site_pages_home_about_body_order_idx").on(columns._order),
+    index("site_pages_home_about_body_parent_id_idx").on(columns._parentID),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [site_pages.id],
+      name: "site_pages_home_about_body_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const site_pages_home_services_items = sqliteTable(
+  "site_pages_home_services_items",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: text("id").primaryKey(),
+    title: text("title"),
+    text: text("text"),
+    href: text("href"),
+  },
+  (columns) => [
+    index("site_pages_home_services_items_order_idx").on(columns._order),
+    index("site_pages_home_services_items_parent_id_idx").on(columns._parentID),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [site_pages.id],
+      name: "site_pages_home_services_items_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const site_pages_home_journal_items = sqliteTable(
+  "site_pages_home_journal_items",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: text("id").primaryKey(),
+    image: integer("image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    title: text("title"),
+    text: text("text"),
+    href: text("href"),
+  },
+  (columns) => [
+    index("site_pages_home_journal_items_order_idx").on(columns._order),
+    index("site_pages_home_journal_items_parent_id_idx").on(columns._parentID),
+    index("site_pages_home_journal_items_image_idx").on(columns.image),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [site_pages.id],
+      name: "site_pages_home_journal_items_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const site_pages_about_chapters_items = sqliteTable(
+  "site_pages_about_chapters_items",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: text("id").primaryKey(),
+    image: integer("image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    title: text("title"),
+    alt: text("alt"),
+    linkLabel: text("link_label").default("Bereich ansehen ->"),
+    href: text("href"),
+  },
+  (columns) => [
+    index("site_pages_about_chapters_items_order_idx").on(columns._order),
+    index("site_pages_about_chapters_items_parent_id_idx").on(
+      columns._parentID,
+    ),
+    index("site_pages_about_chapters_items_image_idx").on(columns.image),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [site_pages.id],
+      name: "site_pages_about_chapters_items_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const site_pages_about_sister_plate_roles = sqliteTable(
+  "site_pages_about_sister_plate_roles",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: text("id").primaryKey(),
+    label: text("label"),
+  },
+  (columns) => [
+    index("site_pages_about_sister_plate_roles_order_idx").on(columns._order),
+    index("site_pages_about_sister_plate_roles_parent_id_idx").on(
+      columns._parentID,
+    ),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [site_pages.id],
+      name: "site_pages_about_sister_plate_roles_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const site_pages_photography_index_cluster_intro = sqliteTable(
+  "site_pages_photography_index_cluster_intro",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: text("id").primaryKey(),
+    text: text("text"),
+  },
+  (columns) => [
+    index("site_pages_photography_index_cluster_intro_order_idx").on(
+      columns._order,
+    ),
+    index("site_pages_photography_index_cluster_intro_parent_id_idx").on(
+      columns._parentID,
+    ),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [site_pages.id],
+      name: "site_pages_photography_index_cluster_intro_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const site_pages_photography_index_topics = sqliteTable(
+  "site_pages_photography_index_topics",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: text("id").primaryKey(),
+    image: integer("image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    title: text("title"),
+    emphasis: text("emphasis"),
+    text: text("text"),
+    linkLabel: text("link_label"),
+    href: text("href"),
+  },
+  (columns) => [
+    index("site_pages_photography_index_topics_order_idx").on(columns._order),
+    index("site_pages_photography_index_topics_parent_id_idx").on(
+      columns._parentID,
+    ),
+    index("site_pages_photography_index_topics_image_idx").on(columns.image),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [site_pages.id],
+      name: "site_pages_photography_index_topics_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const site_pages_portfolio_index_context_body = sqliteTable(
+  "site_pages_portfolio_index_context_body",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: text("id").primaryKey(),
+    text: text("text"),
+  },
+  (columns) => [
+    index("site_pages_portfolio_index_context_body_order_idx").on(
+      columns._order,
+    ),
+    index("site_pages_portfolio_index_context_body_parent_id_idx").on(
+      columns._parentID,
+    ),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [site_pages.id],
+      name: "site_pages_portfolio_index_context_body_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const site_pages_portfolio_index_slices_photos = sqliteTable(
+  "site_pages_portfolio_index_slices_photos",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: text("_parent_id").notNull(),
+    id: text("id").primaryKey(),
+    image: integer("image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    fullImage: integer("full_image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    caption: text("caption"),
+    href: text("href"),
+  },
+  (columns) => [
+    index("site_pages_portfolio_index_slices_photos_order_idx").on(
+      columns._order,
+    ),
+    index("site_pages_portfolio_index_slices_photos_parent_id_idx").on(
+      columns._parentID,
+    ),
+    index("site_pages_portfolio_index_slices_photos_image_idx").on(
+      columns.image,
+    ),
+    index("site_pages_portfolio_index_slices_photos_full_image_idx").on(
+      columns.fullImage,
+    ),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [site_pages_portfolio_index_slices.id],
+      name: "site_pages_portfolio_index_slices_photos_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const site_pages_portfolio_index_slices = sqliteTable(
+  "site_pages_portfolio_index_slices",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: text("id").primaryKey(),
+    anchor: text("anchor"),
+    label: text("label"),
+    heading: text("heading"),
+    theme: text("theme").default("light"),
+    linkLabel: text("link_label"),
+    href: text("href"),
+  },
+  (columns) => [
+    index("site_pages_portfolio_index_slices_order_idx").on(columns._order),
+    index("site_pages_portfolio_index_slices_parent_id_idx").on(
+      columns._parentID,
+    ),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [site_pages.id],
+      name: "site_pages_portfolio_index_slices_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const site_pages_portfolio_index_archive_items = sqliteTable(
+  "site_pages_portfolio_index_archive_items",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: text("id").primaryKey(),
+    image: integer("image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    fullImage: integer("full_image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    caption: text("caption"),
+    href: text("href"),
+  },
+  (columns) => [
+    index("site_pages_portfolio_index_archive_items_order_idx").on(
+      columns._order,
+    ),
+    index("site_pages_portfolio_index_archive_items_parent_id_idx").on(
+      columns._parentID,
+    ),
+    index("site_pages_portfolio_index_archive_items_image_idx").on(
+      columns.image,
+    ),
+    index("site_pages_portfolio_index_archive_items_full_image_idx").on(
+      columns.fullImage,
+    ),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [site_pages.id],
+      name: "site_pages_portfolio_index_archive_items_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const site_pages_services_index_items = sqliteTable(
+  "site_pages_services_index_items",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: text("id").primaryKey(),
+    overviewLabel: text("overview_label"),
+    headline: text("headline"),
+    emphasis: text("emphasis"),
+    text: text("text"),
+    tags: text("tags"),
+    href: text("href"),
+    image1: integer("image1_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    caption1: text("caption1"),
+    image2: integer("image2_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    caption2: text("caption2"),
+  },
+  (columns) => [
+    index("site_pages_services_index_items_order_idx").on(columns._order),
+    index("site_pages_services_index_items_parent_id_idx").on(
+      columns._parentID,
+    ),
+    index("site_pages_services_index_items_image1_idx").on(columns.image1),
+    index("site_pages_services_index_items_image2_idx").on(columns.image2),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [site_pages.id],
+      name: "site_pages_services_index_items_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const site_pages_services_index_why_cards = sqliteTable(
+  "site_pages_services_index_why_cards",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: text("id").primaryKey(),
+    label: text("label"),
+    emphasis: text("emphasis"),
+    headline: text("headline"),
+    text: text("text"),
+  },
+  (columns) => [
+    index("site_pages_services_index_why_cards_order_idx").on(columns._order),
+    index("site_pages_services_index_why_cards_parent_id_idx").on(
+      columns._parentID,
+    ),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [site_pages.id],
+      name: "site_pages_services_index_why_cards_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const site_pages_journal_index_ticker_items = sqliteTable(
+  "site_pages_journal_index_ticker_items",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: text("id").primaryKey(),
+    text: text("text"),
+  },
+  (columns) => [
+    index("site_pages_journal_index_ticker_items_order_idx").on(columns._order),
+    index("site_pages_journal_index_ticker_items_parent_id_idx").on(
+      columns._parentID,
+    ),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [site_pages.id],
+      name: "site_pages_journal_index_ticker_items_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const site_pages_journal_index_filters = sqliteTable(
+  "site_pages_journal_index_filters",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: text("id").primaryKey(),
+    label: text("label"),
+    value: text("value"),
+  },
+  (columns) => [
+    index("site_pages_journal_index_filters_order_idx").on(columns._order),
+    index("site_pages_journal_index_filters_parent_id_idx").on(
+      columns._parentID,
+    ),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [site_pages.id],
+      name: "site_pages_journal_index_filters_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
 export const site_pages_blocks_text_block = sqliteTable(
   "site_pages_blocks_text_block",
   {
@@ -277,6 +740,123 @@ export const site_pages = sqliteTable(
     teaserImage: integer("teaser_image_id").references(() => media.id, {
       onDelete: "set null",
     }),
+    homeStatement_headline: text("home_statement_headline"),
+    homeStatement_headlineEmphasis: text("home_statement_headline_emphasis"),
+    homeChapters_headline: text("home_chapters_headline"),
+    homeChapters_headlineEmphasis: text("home_chapters_headline_emphasis"),
+    homeChapters_intro: text("home_chapters_intro"),
+    homeSelectedWorks_headline: text("home_selected_works_headline"),
+    homeSelectedWorks_headlineEmphasis: text(
+      "home_selected_works_headline_emphasis",
+    ),
+    homeSelectedWorks_intro: text("home_selected_works_intro"),
+    homeAbout_kicker: text("home_about_kicker"),
+    homeAbout_headline: text("home_about_headline"),
+    homeAbout_headlineEmphasis: text("home_about_headline_emphasis"),
+    homeAbout_image: integer("home_about_image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    homeServices_headline: text("home_services_headline"),
+    homeServices_headlineEmphasis: text("home_services_headline_emphasis"),
+    homeServices_intro: text("home_services_intro"),
+    homeJournal_headline: text("home_journal_headline"),
+    homeJournal_headlineEmphasis: text("home_journal_headline_emphasis"),
+    homeJournal_intro: text("home_journal_intro"),
+    aboutHero_kicker: text("about_hero_kicker"),
+    aboutHero_titleLine1: text("about_hero_title_line1"),
+    aboutHero_titleLine2: text("about_hero_title_line2"),
+    aboutHero_lead: text("about_hero_lead"),
+    aboutHero_image: integer("about_hero_image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    aboutHero_primaryLabel: text("about_hero_primary_label"),
+    aboutHero_primaryHref: text("about_hero_primary_href"),
+    aboutHero_secondaryLabel: text("about_hero_secondary_label"),
+    aboutHero_secondaryHref: text("about_hero_secondary_href"),
+    aboutStatement_headline: text("about_statement_headline"),
+    aboutStatement_headlineEmphasis: text("about_statement_headline_emphasis"),
+    aboutStatement_lead: text("about_statement_lead"),
+    aboutStatement_body: text("about_statement_body"),
+    aboutStatement_primaryLabel: text("about_statement_primary_label"),
+    aboutStatement_primaryHref: text("about_statement_primary_href"),
+    aboutStatement_secondaryLabel: text("about_statement_secondary_label"),
+    aboutStatement_secondaryHref: text("about_statement_secondary_href"),
+    aboutChapters_headline: text("about_chapters_headline"),
+    aboutChapters_headlineEmphasis: text("about_chapters_headline_emphasis"),
+    aboutChapters_intro: text("about_chapters_intro"),
+    aboutSister_kicker: text("about_sister_kicker"),
+    aboutSister_headline: text("about_sister_headline"),
+    aboutSister_headlineEmphasis: text("about_sister_headline_emphasis"),
+    aboutSister_lead: text("about_sister_lead"),
+    aboutSister_body: text("about_sister_body"),
+    aboutSister_buttonLabel: text("about_sister_button_label"),
+    aboutSister_href: text("about_sister_href"),
+    aboutSister_plate_tag: text("about_sister_plate_tag"),
+    aboutSister_plate_nameLine1: text("about_sister_plate_name_line1"),
+    aboutSister_plate_nameLine2: text("about_sister_plate_name_line2"),
+    aboutSister_plate_location: text("about_sister_plate_location"),
+    aboutContact_subject: text("about_contact_subject"),
+    aboutContact_headline: text("about_contact_headline"),
+    aboutContact_lead: text("about_contact_lead"),
+    portfolioIndex_contextKicker: text(
+      "portfolio_index_context_kicker",
+    ).default("Einordnung"),
+    portfolioIndex_contextHeadline: text(
+      "portfolio_index_context_headline",
+    ).default("Serien statt Sammelmappe."),
+    portfolioIndex_archive_headline: text(
+      "portfolio_index_archive_headline",
+    ).default("Bildarchiv"),
+    portfolioIndex_archive_batchSize: numeric(
+      "portfolio_index_archive_batch_size",
+      { mode: "number" },
+    ).default(12),
+    portfolioIndex_contact_subject: text("portfolio_index_contact_subject"),
+    portfolioIndex_contact_headline: text("portfolio_index_contact_headline"),
+    portfolioIndex_contact_lead: text("portfolio_index_contact_lead"),
+    servicesIndex_overviewHeadline: text("services_index_overview_headline"),
+    servicesIndex_overviewEmphasis: text("services_index_overview_emphasis"),
+    servicesIndex_overviewIntro: text("services_index_overview_intro"),
+    servicesIndex_whyKicker: text("services_index_why_kicker"),
+    servicesIndex_whyHeadline: text("services_index_why_headline"),
+    servicesIndex_whyEmphasis: text("services_index_why_emphasis"),
+    servicesIndex_whyLead: text("services_index_why_lead"),
+    journalIndex_featured_kicker: text("journal_index_featured_kicker"),
+    journalIndex_featured_headline: text("journal_index_featured_headline"),
+    journalIndex_featured_text: text("journal_index_featured_text"),
+    journalIndex_featured_buttonLabel: text(
+      "journal_index_featured_button_label",
+    ),
+    journalIndex_featured_buttonHref: text(
+      "journal_index_featured_button_href",
+    ),
+    journalIndex_featured_image: integer(
+      "journal_index_featured_image_id",
+    ).references(() => media.id, {
+      onDelete: "set null",
+    }),
+    journalIndex_indexHeadline: text("journal_index_index_headline"),
+    journalIndex_initialVisiblePostCount: numeric(
+      "journal_index_initial_visible_post_count",
+      { mode: "number" },
+    ).default(6),
+    journalIndex_loadMoreLabel: text("journal_index_load_more_label"),
+    journalIndex_loadStatusTemplate: text("journal_index_load_status_template"),
+    journalIndex_finalCta_kicker: text("journal_index_final_cta_kicker"),
+    journalIndex_finalCta_headline: text("journal_index_final_cta_headline"),
+    journalIndex_finalCta_text: text("journal_index_final_cta_text"),
+    journalIndex_finalCta_primaryLabel: text(
+      "journal_index_final_cta_primary_label",
+    ),
+    journalIndex_finalCta_primaryHref: text(
+      "journal_index_final_cta_primary_href",
+    ),
+    journalIndex_finalCta_secondaryLabel: text(
+      "journal_index_final_cta_secondary_label",
+    ),
+    journalIndex_finalCta_secondaryHref: text(
+      "journal_index_final_cta_secondary_href",
+    ),
     contactOverride_headline: text("contact_override_headline"),
     contactOverride_text: text("contact_override_text"),
     contactOverride_emailSubject: text("contact_override_email_subject"),
@@ -304,7 +884,12 @@ export const site_pages = sqliteTable(
       enum: ["seeded", "reviewed", "componentized", "live"],
     }).default("seeded"),
     legacy_renderSource: text("legacy_render_source", {
-      enum: ["legacy-file", "payload-legacy-html", "native-component", "structured-blocks"],
+      enum: [
+        "legacy-file",
+        "payload-legacy-html",
+        "native-component",
+        "structured-blocks",
+      ],
     }).default("legacy-file"),
     legacy_renderedHeadHtml: text("legacy_rendered_head_html"),
     legacy_renderedBodyHtml: text("legacy_rendered_body_html"),
@@ -324,6 +909,15 @@ export const site_pages = sqliteTable(
     uniqueIndex("site_pages_slug_idx").on(columns.slug),
     index("site_pages_hero_image_idx").on(columns.heroImage),
     index("site_pages_teaser_image_idx").on(columns.teaserImage),
+    index("site_pages_home_about_home_about_image_idx").on(
+      columns.homeAbout_image,
+    ),
+    index("site_pages_about_hero_about_hero_image_idx").on(
+      columns.aboutHero_image,
+    ),
+    index("site_pages_journal_index_featured_journal_index_featured_idx").on(
+      columns.journalIndex_featured_image,
+    ),
     index("site_pages_seo_seo_og_image_idx").on(columns.seo_ogImage),
     index("site_pages_updated_at_idx").on(columns.updatedAt),
     index("site_pages_created_at_idx").on(columns.createdAt),
@@ -346,6 +940,536 @@ export const site_pages_texts = sqliteTable(
       columns: [columns["parent"]],
       foreignColumns: [site_pages.id],
       name: "site_pages_texts_parent_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const _site_pages_v_version_hero_slides = sqliteTable(
+  "_site_pages_v_version_hero_slides",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: integer("id").primaryKey(),
+    image: integer("image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    headlineLine1: text("headline_line1").default("Fotografie"),
+    headlineLine2: text("headline_line2"),
+    lead: text("lead"),
+    durationSec: numeric("duration_sec", { mode: "number" }).default(7),
+    primaryLabel: text("primary_label").default("Projekt anfragen"),
+    primaryHref: text("primary_href").default("#anfrage"),
+    secondaryLabel: text("secondary_label").default("Arbeiten ansehen"),
+    secondaryHref: text("secondary_href").default("/portfolio.html"),
+    _uuid: text("_uuid"),
+  },
+  (columns) => [
+    index("_site_pages_v_version_hero_slides_order_idx").on(columns._order),
+    index("_site_pages_v_version_hero_slides_parent_id_idx").on(
+      columns._parentID,
+    ),
+    index("_site_pages_v_version_hero_slides_image_idx").on(columns.image),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [_site_pages_v.id],
+      name: "_site_pages_v_version_hero_slides_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const _site_pages_v_version_home_statement_body = sqliteTable(
+  "_site_pages_v_version_home_statement_body",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: integer("id").primaryKey(),
+    text: text("text"),
+    _uuid: text("_uuid"),
+  },
+  (columns) => [
+    index("_site_pages_v_version_home_statement_body_order_idx").on(
+      columns._order,
+    ),
+    index("_site_pages_v_version_home_statement_body_parent_id_idx").on(
+      columns._parentID,
+    ),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [_site_pages_v.id],
+      name: "_site_pages_v_version_home_statement_body_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const _site_pages_v_version_home_chapters_items = sqliteTable(
+  "_site_pages_v_version_home_chapters_items",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: integer("id").primaryKey(),
+    image: integer("image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    title: text("title"),
+    href: text("href"),
+    _uuid: text("_uuid"),
+  },
+  (columns) => [
+    index("_site_pages_v_version_home_chapters_items_order_idx").on(
+      columns._order,
+    ),
+    index("_site_pages_v_version_home_chapters_items_parent_id_idx").on(
+      columns._parentID,
+    ),
+    index("_site_pages_v_version_home_chapters_items_image_idx").on(
+      columns.image,
+    ),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [_site_pages_v.id],
+      name: "_site_pages_v_version_home_chapters_items_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const _site_pages_v_version_home_about_body = sqliteTable(
+  "_site_pages_v_version_home_about_body",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: integer("id").primaryKey(),
+    text: text("text"),
+    _uuid: text("_uuid"),
+  },
+  (columns) => [
+    index("_site_pages_v_version_home_about_body_order_idx").on(columns._order),
+    index("_site_pages_v_version_home_about_body_parent_id_idx").on(
+      columns._parentID,
+    ),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [_site_pages_v.id],
+      name: "_site_pages_v_version_home_about_body_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const _site_pages_v_version_home_services_items = sqliteTable(
+  "_site_pages_v_version_home_services_items",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: integer("id").primaryKey(),
+    title: text("title"),
+    text: text("text"),
+    href: text("href"),
+    _uuid: text("_uuid"),
+  },
+  (columns) => [
+    index("_site_pages_v_version_home_services_items_order_idx").on(
+      columns._order,
+    ),
+    index("_site_pages_v_version_home_services_items_parent_id_idx").on(
+      columns._parentID,
+    ),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [_site_pages_v.id],
+      name: "_site_pages_v_version_home_services_items_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const _site_pages_v_version_home_journal_items = sqliteTable(
+  "_site_pages_v_version_home_journal_items",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: integer("id").primaryKey(),
+    image: integer("image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    title: text("title"),
+    text: text("text"),
+    href: text("href"),
+    _uuid: text("_uuid"),
+  },
+  (columns) => [
+    index("_site_pages_v_version_home_journal_items_order_idx").on(
+      columns._order,
+    ),
+    index("_site_pages_v_version_home_journal_items_parent_id_idx").on(
+      columns._parentID,
+    ),
+    index("_site_pages_v_version_home_journal_items_image_idx").on(
+      columns.image,
+    ),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [_site_pages_v.id],
+      name: "_site_pages_v_version_home_journal_items_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const _site_pages_v_version_about_chapters_items = sqliteTable(
+  "_site_pages_v_version_about_chapters_items",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: integer("id").primaryKey(),
+    image: integer("image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    title: text("title"),
+    alt: text("alt"),
+    linkLabel: text("link_label").default("Bereich ansehen ->"),
+    href: text("href"),
+    _uuid: text("_uuid"),
+  },
+  (columns) => [
+    index("_site_pages_v_version_about_chapters_items_order_idx").on(
+      columns._order,
+    ),
+    index("_site_pages_v_version_about_chapters_items_parent_id_idx").on(
+      columns._parentID,
+    ),
+    index("_site_pages_v_version_about_chapters_items_image_idx").on(
+      columns.image,
+    ),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [_site_pages_v.id],
+      name: "_site_pages_v_version_about_chapters_items_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const _site_pages_v_version_about_sister_plate_roles = sqliteTable(
+  "_site_pages_v_version_about_sister_plate_roles",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: integer("id").primaryKey(),
+    label: text("label"),
+    _uuid: text("_uuid"),
+  },
+  (columns) => [
+    index("_site_pages_v_version_about_sister_plate_roles_order_idx").on(
+      columns._order,
+    ),
+    index("_site_pages_v_version_about_sister_plate_roles_parent_id_idx").on(
+      columns._parentID,
+    ),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [_site_pages_v.id],
+      name: "_site_pages_v_version_about_sister_plate_roles_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const _site_pages_v_version_photography_index_cluster_intro =
+  sqliteTable(
+    "_site_pages_v_version_photography_index_cluster_intro",
+    {
+      _order: integer("_order").notNull(),
+      _parentID: integer("_parent_id").notNull(),
+      id: integer("id").primaryKey(),
+      text: text("text"),
+      _uuid: text("_uuid"),
+    },
+    (columns) => [
+      index(
+        "_site_pages_v_version_photography_index_cluster_intro_order_idx",
+      ).on(columns._order),
+      index(
+        "_site_pages_v_version_photography_index_cluster_intro_parent_id_idx",
+      ).on(columns._parentID),
+      foreignKey({
+        columns: [columns["_parentID"]],
+        foreignColumns: [_site_pages_v.id],
+        name: "_site_pages_v_version_photography_index_cluster_intro_parent_id_fk",
+      }).onDelete("cascade"),
+    ],
+  );
+
+export const _site_pages_v_version_photography_index_topics = sqliteTable(
+  "_site_pages_v_version_photography_index_topics",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: integer("id").primaryKey(),
+    image: integer("image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    title: text("title"),
+    emphasis: text("emphasis"),
+    text: text("text"),
+    linkLabel: text("link_label"),
+    href: text("href"),
+    _uuid: text("_uuid"),
+  },
+  (columns) => [
+    index("_site_pages_v_version_photography_index_topics_order_idx").on(
+      columns._order,
+    ),
+    index("_site_pages_v_version_photography_index_topics_parent_id_idx").on(
+      columns._parentID,
+    ),
+    index("_site_pages_v_version_photography_index_topics_image_idx").on(
+      columns.image,
+    ),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [_site_pages_v.id],
+      name: "_site_pages_v_version_photography_index_topics_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const _site_pages_v_version_portfolio_index_context_body = sqliteTable(
+  "_site_pages_v_version_portfolio_index_context_body",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: integer("id").primaryKey(),
+    text: text("text"),
+    _uuid: text("_uuid"),
+  },
+  (columns) => [
+    index("_site_pages_v_version_portfolio_index_context_body_order_idx").on(
+      columns._order,
+    ),
+    index(
+      "_site_pages_v_version_portfolio_index_context_body_parent_id_idx",
+    ).on(columns._parentID),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [_site_pages_v.id],
+      name: "_site_pages_v_version_portfolio_index_context_body_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const _site_pages_v_version_portfolio_index_slices_photos = sqliteTable(
+  "_site_pages_v_version_portfolio_index_slices_photos",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: integer("id").primaryKey(),
+    image: integer("image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    fullImage: integer("full_image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    caption: text("caption"),
+    href: text("href"),
+    _uuid: text("_uuid"),
+  },
+  (columns) => [
+    index("_site_pages_v_version_portfolio_index_slices_photos_order_idx").on(
+      columns._order,
+    ),
+    index(
+      "_site_pages_v_version_portfolio_index_slices_photos_parent_id_idx",
+    ).on(columns._parentID),
+    index("_site_pages_v_version_portfolio_index_slices_photos_imag_idx").on(
+      columns.image,
+    ),
+    index("_site_pages_v_version_portfolio_index_slices_photos_full_idx").on(
+      columns.fullImage,
+    ),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [_site_pages_v_version_portfolio_index_slices.id],
+      name: "_site_pages_v_version_portfolio_index_slices_photos_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const _site_pages_v_version_portfolio_index_slices = sqliteTable(
+  "_site_pages_v_version_portfolio_index_slices",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: integer("id").primaryKey(),
+    anchor: text("anchor"),
+    label: text("label"),
+    heading: text("heading"),
+    theme: text("theme").default("light"),
+    linkLabel: text("link_label"),
+    href: text("href"),
+    _uuid: text("_uuid"),
+  },
+  (columns) => [
+    index("_site_pages_v_version_portfolio_index_slices_order_idx").on(
+      columns._order,
+    ),
+    index("_site_pages_v_version_portfolio_index_slices_parent_id_idx").on(
+      columns._parentID,
+    ),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [_site_pages_v.id],
+      name: "_site_pages_v_version_portfolio_index_slices_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const _site_pages_v_version_portfolio_index_archive_items = sqliteTable(
+  "_site_pages_v_version_portfolio_index_archive_items",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: integer("id").primaryKey(),
+    image: integer("image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    fullImage: integer("full_image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    caption: text("caption"),
+    href: text("href"),
+    _uuid: text("_uuid"),
+  },
+  (columns) => [
+    index("_site_pages_v_version_portfolio_index_archive_items_order_idx").on(
+      columns._order,
+    ),
+    index(
+      "_site_pages_v_version_portfolio_index_archive_items_parent_id_idx",
+    ).on(columns._parentID),
+    index("_site_pages_v_version_portfolio_index_archive_items_imag_idx").on(
+      columns.image,
+    ),
+    index("_site_pages_v_version_portfolio_index_archive_items_full_idx").on(
+      columns.fullImage,
+    ),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [_site_pages_v.id],
+      name: "_site_pages_v_version_portfolio_index_archive_items_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const _site_pages_v_version_services_index_items = sqliteTable(
+  "_site_pages_v_version_services_index_items",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: integer("id").primaryKey(),
+    overviewLabel: text("overview_label"),
+    headline: text("headline"),
+    emphasis: text("emphasis"),
+    text: text("text"),
+    tags: text("tags"),
+    href: text("href"),
+    image1: integer("image1_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    caption1: text("caption1"),
+    image2: integer("image2_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    caption2: text("caption2"),
+    _uuid: text("_uuid"),
+  },
+  (columns) => [
+    index("_site_pages_v_version_services_index_items_order_idx").on(
+      columns._order,
+    ),
+    index("_site_pages_v_version_services_index_items_parent_id_idx").on(
+      columns._parentID,
+    ),
+    index("_site_pages_v_version_services_index_items_image1_idx").on(
+      columns.image1,
+    ),
+    index("_site_pages_v_version_services_index_items_image2_idx").on(
+      columns.image2,
+    ),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [_site_pages_v.id],
+      name: "_site_pages_v_version_services_index_items_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const _site_pages_v_version_services_index_why_cards = sqliteTable(
+  "_site_pages_v_version_services_index_why_cards",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: integer("id").primaryKey(),
+    label: text("label"),
+    emphasis: text("emphasis"),
+    headline: text("headline"),
+    text: text("text"),
+    _uuid: text("_uuid"),
+  },
+  (columns) => [
+    index("_site_pages_v_version_services_index_why_cards_order_idx").on(
+      columns._order,
+    ),
+    index("_site_pages_v_version_services_index_why_cards_parent_id_idx").on(
+      columns._parentID,
+    ),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [_site_pages_v.id],
+      name: "_site_pages_v_version_services_index_why_cards_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const _site_pages_v_version_journal_index_ticker_items = sqliteTable(
+  "_site_pages_v_version_journal_index_ticker_items",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: integer("id").primaryKey(),
+    text: text("text"),
+    _uuid: text("_uuid"),
+  },
+  (columns) => [
+    index("_site_pages_v_version_journal_index_ticker_items_order_idx").on(
+      columns._order,
+    ),
+    index("_site_pages_v_version_journal_index_ticker_items_parent_id_idx").on(
+      columns._parentID,
+    ),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [_site_pages_v.id],
+      name: "_site_pages_v_version_journal_index_ticker_items_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const _site_pages_v_version_journal_index_filters = sqliteTable(
+  "_site_pages_v_version_journal_index_filters",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: integer("id").primaryKey(),
+    label: text("label"),
+    value: text("value"),
+    _uuid: text("_uuid"),
+  },
+  (columns) => [
+    index("_site_pages_v_version_journal_index_filters_order_idx").on(
+      columns._order,
+    ),
+    index("_site_pages_v_version_journal_index_filters_parent_id_idx").on(
+      columns._parentID,
+    ),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [_site_pages_v.id],
+      name: "_site_pages_v_version_journal_index_filters_parent_id_fk",
     }).onDelete("cascade"),
   ],
 );
@@ -633,6 +1757,197 @@ export const _site_pages_v = sqliteTable(
         onDelete: "set null",
       },
     ),
+    version_homeStatement_headline: text("version_home_statement_headline"),
+    version_homeStatement_headlineEmphasis: text(
+      "version_home_statement_headline_emphasis",
+    ),
+    version_homeChapters_headline: text("version_home_chapters_headline"),
+    version_homeChapters_headlineEmphasis: text(
+      "version_home_chapters_headline_emphasis",
+    ),
+    version_homeChapters_intro: text("version_home_chapters_intro"),
+    version_homeSelectedWorks_headline: text(
+      "version_home_selected_works_headline",
+    ),
+    version_homeSelectedWorks_headlineEmphasis: text(
+      "version_home_selected_works_headline_emphasis",
+    ),
+    version_homeSelectedWorks_intro: text("version_home_selected_works_intro"),
+    version_homeAbout_kicker: text("version_home_about_kicker"),
+    version_homeAbout_headline: text("version_home_about_headline"),
+    version_homeAbout_headlineEmphasis: text(
+      "version_home_about_headline_emphasis",
+    ),
+    version_homeAbout_image: integer("version_home_about_image_id").references(
+      () => media.id,
+      {
+        onDelete: "set null",
+      },
+    ),
+    version_homeServices_headline: text("version_home_services_headline"),
+    version_homeServices_headlineEmphasis: text(
+      "version_home_services_headline_emphasis",
+    ),
+    version_homeServices_intro: text("version_home_services_intro"),
+    version_homeJournal_headline: text("version_home_journal_headline"),
+    version_homeJournal_headlineEmphasis: text(
+      "version_home_journal_headline_emphasis",
+    ),
+    version_homeJournal_intro: text("version_home_journal_intro"),
+    version_aboutHero_kicker: text("version_about_hero_kicker"),
+    version_aboutHero_titleLine1: text("version_about_hero_title_line1"),
+    version_aboutHero_titleLine2: text("version_about_hero_title_line2"),
+    version_aboutHero_lead: text("version_about_hero_lead"),
+    version_aboutHero_image: integer("version_about_hero_image_id").references(
+      () => media.id,
+      {
+        onDelete: "set null",
+      },
+    ),
+    version_aboutHero_primaryLabel: text("version_about_hero_primary_label"),
+    version_aboutHero_primaryHref: text("version_about_hero_primary_href"),
+    version_aboutHero_secondaryLabel: text(
+      "version_about_hero_secondary_label",
+    ),
+    version_aboutHero_secondaryHref: text("version_about_hero_secondary_href"),
+    version_aboutStatement_headline: text("version_about_statement_headline"),
+    version_aboutStatement_headlineEmphasis: text(
+      "version_about_statement_headline_emphasis",
+    ),
+    version_aboutStatement_lead: text("version_about_statement_lead"),
+    version_aboutStatement_body: text("version_about_statement_body"),
+    version_aboutStatement_primaryLabel: text(
+      "version_about_statement_primary_label",
+    ),
+    version_aboutStatement_primaryHref: text(
+      "version_about_statement_primary_href",
+    ),
+    version_aboutStatement_secondaryLabel: text(
+      "version_about_statement_secondary_label",
+    ),
+    version_aboutStatement_secondaryHref: text(
+      "version_about_statement_secondary_href",
+    ),
+    version_aboutChapters_headline: text("version_about_chapters_headline"),
+    version_aboutChapters_headlineEmphasis: text(
+      "version_about_chapters_headline_emphasis",
+    ),
+    version_aboutChapters_intro: text("version_about_chapters_intro"),
+    version_aboutSister_kicker: text("version_about_sister_kicker"),
+    version_aboutSister_headline: text("version_about_sister_headline"),
+    version_aboutSister_headlineEmphasis: text(
+      "version_about_sister_headline_emphasis",
+    ),
+    version_aboutSister_lead: text("version_about_sister_lead"),
+    version_aboutSister_body: text("version_about_sister_body"),
+    version_aboutSister_buttonLabel: text("version_about_sister_button_label"),
+    version_aboutSister_href: text("version_about_sister_href"),
+    version_aboutSister_plate_tag: text("version_about_sister_plate_tag"),
+    version_aboutSister_plate_nameLine1: text(
+      "version_about_sister_plate_name_line1",
+    ),
+    version_aboutSister_plate_nameLine2: text(
+      "version_about_sister_plate_name_line2",
+    ),
+    version_aboutSister_plate_location: text(
+      "version_about_sister_plate_location",
+    ),
+    version_aboutContact_subject: text("version_about_contact_subject"),
+    version_aboutContact_headline: text("version_about_contact_headline"),
+    version_aboutContact_lead: text("version_about_contact_lead"),
+    version_portfolioIndex_contextKicker: text(
+      "version_portfolio_index_context_kicker",
+    ).default("Einordnung"),
+    version_portfolioIndex_contextHeadline: text(
+      "version_portfolio_index_context_headline",
+    ).default("Serien statt Sammelmappe."),
+    version_portfolioIndex_archive_headline: text(
+      "version_portfolio_index_archive_headline",
+    ).default("Bildarchiv"),
+    version_portfolioIndex_archive_batchSize: numeric(
+      "version_portfolio_index_archive_batch_size",
+      { mode: "number" },
+    ).default(12),
+    version_portfolioIndex_contact_subject: text(
+      "version_portfolio_index_contact_subject",
+    ),
+    version_portfolioIndex_contact_headline: text(
+      "version_portfolio_index_contact_headline",
+    ),
+    version_portfolioIndex_contact_lead: text(
+      "version_portfolio_index_contact_lead",
+    ),
+    version_servicesIndex_overviewHeadline: text(
+      "version_services_index_overview_headline",
+    ),
+    version_servicesIndex_overviewEmphasis: text(
+      "version_services_index_overview_emphasis",
+    ),
+    version_servicesIndex_overviewIntro: text(
+      "version_services_index_overview_intro",
+    ),
+    version_servicesIndex_whyKicker: text("version_services_index_why_kicker"),
+    version_servicesIndex_whyHeadline: text(
+      "version_services_index_why_headline",
+    ),
+    version_servicesIndex_whyEmphasis: text(
+      "version_services_index_why_emphasis",
+    ),
+    version_servicesIndex_whyLead: text("version_services_index_why_lead"),
+    version_journalIndex_featured_kicker: text(
+      "version_journal_index_featured_kicker",
+    ),
+    version_journalIndex_featured_headline: text(
+      "version_journal_index_featured_headline",
+    ),
+    version_journalIndex_featured_text: text(
+      "version_journal_index_featured_text",
+    ),
+    version_journalIndex_featured_buttonLabel: text(
+      "version_journal_index_featured_button_label",
+    ),
+    version_journalIndex_featured_buttonHref: text(
+      "version_journal_index_featured_button_href",
+    ),
+    version_journalIndex_featured_image: integer(
+      "version_journal_index_featured_image_id",
+    ).references(() => media.id, {
+      onDelete: "set null",
+    }),
+    version_journalIndex_indexHeadline: text(
+      "version_journal_index_index_headline",
+    ),
+    version_journalIndex_initialVisiblePostCount: numeric(
+      "version_journal_index_initial_visible_post_count",
+      { mode: "number" },
+    ).default(6),
+    version_journalIndex_loadMoreLabel: text(
+      "version_journal_index_load_more_label",
+    ),
+    version_journalIndex_loadStatusTemplate: text(
+      "version_journal_index_load_status_template",
+    ),
+    version_journalIndex_finalCta_kicker: text(
+      "version_journal_index_final_cta_kicker",
+    ),
+    version_journalIndex_finalCta_headline: text(
+      "version_journal_index_final_cta_headline",
+    ),
+    version_journalIndex_finalCta_text: text(
+      "version_journal_index_final_cta_text",
+    ),
+    version_journalIndex_finalCta_primaryLabel: text(
+      "version_journal_index_final_cta_primary_label",
+    ),
+    version_journalIndex_finalCta_primaryHref: text(
+      "version_journal_index_final_cta_primary_href",
+    ),
+    version_journalIndex_finalCta_secondaryLabel: text(
+      "version_journal_index_final_cta_secondary_label",
+    ),
+    version_journalIndex_finalCta_secondaryHref: text(
+      "version_journal_index_final_cta_secondary_href",
+    ),
     version_contactOverride_headline: text("version_contact_override_headline"),
     version_contactOverride_text: text("version_contact_override_text"),
     version_contactOverride_emailSubject: text(
@@ -667,7 +1982,12 @@ export const _site_pages_v = sqliteTable(
       enum: ["seeded", "reviewed", "componentized", "live"],
     }).default("seeded"),
     version_legacy_renderSource: text("version_legacy_render_source", {
-      enum: ["legacy-file", "payload-legacy-html", "native-component", "structured-blocks"],
+      enum: [
+        "legacy-file",
+        "payload-legacy-html",
+        "native-component",
+        "structured-blocks",
+      ],
     }).default("legacy-file"),
     version_legacy_renderedHeadHtml: text("version_legacy_rendered_head_html"),
     version_legacy_renderedBodyHtml: text("version_legacy_rendered_body_html"),
@@ -701,6 +2021,15 @@ export const _site_pages_v = sqliteTable(
     ),
     index("_site_pages_v_version_version_teaser_image_idx").on(
       columns.version_teaserImage,
+    ),
+    index("_site_pages_v_version_home_about_version_home_about_imag_idx").on(
+      columns.version_homeAbout_image,
+    ),
+    index("_site_pages_v_version_about_hero_version_about_hero_imag_idx").on(
+      columns.version_aboutHero_image,
+    ),
+    index("_site_pages_v_version_journal_index_featured_version_jou_idx").on(
+      columns.version_journalIndex_featured_image,
     ),
     index("_site_pages_v_version_seo_version_seo_og_image_idx").on(
       columns.version_seo_ogImage,
@@ -736,6 +2065,36 @@ export const _site_pages_v_texts = sqliteTable(
       columns: [columns["parent"]],
       foreignColumns: [_site_pages_v.id],
       name: "_site_pages_v_texts_parent_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const service_pages_hero_slides = sqliteTable(
+  "service_pages_hero_slides",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: text("id").primaryKey(),
+    image: integer("image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    headlineLine1: text("headline_line1").default(""),
+    headlineLine2: text("headline_line2"),
+    lead: text("lead"),
+    durationSec: numeric("duration_sec", { mode: "number" }).default(7),
+    primaryLabel: text("primary_label").default("Projekt anfragen"),
+    primaryHref: text("primary_href").default("#anfrage"),
+    secondaryLabel: text("secondary_label").default("Arbeiten ansehen"),
+    secondaryHref: text("secondary_href").default("/portfolio.html"),
+  },
+  (columns) => [
+    index("service_pages_hero_slides_order_idx").on(columns._order),
+    index("service_pages_hero_slides_parent_id_idx").on(columns._parentID),
+    index("service_pages_hero_slides_image_idx").on(columns.image),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [service_pages.id],
+      name: "service_pages_hero_slides_parent_id_fk",
     }).onDelete("cascade"),
   ],
 );
@@ -1039,6 +2398,119 @@ export const service_pages_blocks_cta_block = sqliteTable(
   ],
 );
 
+export const service_pages_hero_panels = sqliteTable(
+  "service_pages_hero_panels",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: text("id").primaryKey(),
+    image: integer("image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+  },
+  (columns) => [
+    index("service_pages_hero_panels_order_idx").on(columns._order),
+    index("service_pages_hero_panels_parent_id_idx").on(columns._parentID),
+    index("service_pages_hero_panels_image_idx").on(columns.image),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [service_pages.id],
+      name: "service_pages_hero_panels_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const service_pages_statement_body = sqliteTable(
+  "service_pages_statement_body",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: text("id").primaryKey(),
+    text: text("text"),
+  },
+  (columns) => [
+    index("service_pages_statement_body_order_idx").on(columns._order),
+    index("service_pages_statement_body_parent_id_idx").on(columns._parentID),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [service_pages.id],
+      name: "service_pages_statement_body_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const service_pages_shooting_styles = sqliteTable(
+  "service_pages_shooting_styles",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: text("id").primaryKey(),
+    image: integer("image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    title: text("title"),
+    text: text("text"),
+  },
+  (columns) => [
+    index("service_pages_shooting_styles_order_idx").on(columns._order),
+    index("service_pages_shooting_styles_parent_id_idx").on(columns._parentID),
+    index("service_pages_shooting_styles_image_idx").on(columns.image),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [service_pages.id],
+      name: "service_pages_shooting_styles_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const service_pages_portfolio_tiles = sqliteTable(
+  "service_pages_portfolio_tiles",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: text("id").primaryKey(),
+    image: integer("image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    label: text("label"),
+  },
+  (columns) => [
+    index("service_pages_portfolio_tiles_order_idx").on(columns._order),
+    index("service_pages_portfolio_tiles_parent_id_idx").on(columns._parentID),
+    index("service_pages_portfolio_tiles_image_idx").on(columns.image),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [service_pages.id],
+      name: "service_pages_portfolio_tiles_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const service_pages_audience_cards = sqliteTable(
+  "service_pages_audience_cards",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: text("id").primaryKey(),
+    image: integer("image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    number: text("number"),
+    title: text("title"),
+    text: text("text"),
+  },
+  (columns) => [
+    index("service_pages_audience_cards_order_idx").on(columns._order),
+    index("service_pages_audience_cards_parent_id_idx").on(columns._parentID),
+    index("service_pages_audience_cards_image_idx").on(columns.image),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [service_pages.id],
+      name: "service_pages_audience_cards_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
 export const service_pages_related_pages = sqliteTable(
   "service_pages_related_pages",
   {
@@ -1106,6 +2578,9 @@ export const service_pages = sqliteTable(
     teaserImage: integer("teaser_image_id").references(() => media.id, {
       onDelete: "set null",
     }),
+    heroLine2: text("hero_line2"),
+    statement_headline: text("statement_headline"),
+    statement_emphasis: text("statement_emphasis"),
     cta_headline: text("cta_headline"),
     cta_text: text("cta_text"),
     cta_buttonLabel: text("cta_button_label"),
@@ -1134,7 +2609,12 @@ export const service_pages = sqliteTable(
       enum: ["seeded", "reviewed", "componentized", "live"],
     }).default("seeded"),
     legacy_renderSource: text("legacy_render_source", {
-      enum: ["legacy-file", "payload-legacy-html", "native-component", "structured-blocks"],
+      enum: [
+        "legacy-file",
+        "payload-legacy-html",
+        "native-component",
+        "structured-blocks",
+      ],
     }).default("legacy-file"),
     legacy_renderedHeadHtml: text("legacy_rendered_head_html"),
     legacy_renderedBodyHtml: text("legacy_rendered_body_html"),
@@ -1176,6 +2656,39 @@ export const service_pages_texts = sqliteTable(
       columns: [columns["parent"]],
       foreignColumns: [service_pages.id],
       name: "service_pages_texts_parent_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const _service_pages_v_version_hero_slides = sqliteTable(
+  "_service_pages_v_version_hero_slides",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: integer("id").primaryKey(),
+    image: integer("image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    headlineLine1: text("headline_line1").default(""),
+    headlineLine2: text("headline_line2"),
+    lead: text("lead"),
+    durationSec: numeric("duration_sec", { mode: "number" }).default(7),
+    primaryLabel: text("primary_label").default("Projekt anfragen"),
+    primaryHref: text("primary_href").default("#anfrage"),
+    secondaryLabel: text("secondary_label").default("Arbeiten ansehen"),
+    secondaryHref: text("secondary_href").default("/portfolio.html"),
+    _uuid: text("_uuid"),
+  },
+  (columns) => [
+    index("_service_pages_v_version_hero_slides_order_idx").on(columns._order),
+    index("_service_pages_v_version_hero_slides_parent_id_idx").on(
+      columns._parentID,
+    ),
+    index("_service_pages_v_version_hero_slides_image_idx").on(columns.image),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [_service_pages_v.id],
+      name: "_service_pages_v_version_hero_slides_parent_id_fk",
     }).onDelete("cascade"),
   ],
 );
@@ -1507,6 +3020,148 @@ export const _service_pages_v_blocks_cta_block = sqliteTable(
   ],
 );
 
+export const _service_pages_v_version_hero_panels = sqliteTable(
+  "_service_pages_v_version_hero_panels",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: integer("id").primaryKey(),
+    image: integer("image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    _uuid: text("_uuid"),
+  },
+  (columns) => [
+    index("_service_pages_v_version_hero_panels_order_idx").on(columns._order),
+    index("_service_pages_v_version_hero_panels_parent_id_idx").on(
+      columns._parentID,
+    ),
+    index("_service_pages_v_version_hero_panels_image_idx").on(columns.image),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [_service_pages_v.id],
+      name: "_service_pages_v_version_hero_panels_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const _service_pages_v_version_statement_body = sqliteTable(
+  "_service_pages_v_version_statement_body",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: integer("id").primaryKey(),
+    text: text("text"),
+    _uuid: text("_uuid"),
+  },
+  (columns) => [
+    index("_service_pages_v_version_statement_body_order_idx").on(
+      columns._order,
+    ),
+    index("_service_pages_v_version_statement_body_parent_id_idx").on(
+      columns._parentID,
+    ),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [_service_pages_v.id],
+      name: "_service_pages_v_version_statement_body_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const _service_pages_v_version_shooting_styles = sqliteTable(
+  "_service_pages_v_version_shooting_styles",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: integer("id").primaryKey(),
+    image: integer("image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    title: text("title"),
+    text: text("text"),
+    _uuid: text("_uuid"),
+  },
+  (columns) => [
+    index("_service_pages_v_version_shooting_styles_order_idx").on(
+      columns._order,
+    ),
+    index("_service_pages_v_version_shooting_styles_parent_id_idx").on(
+      columns._parentID,
+    ),
+    index("_service_pages_v_version_shooting_styles_image_idx").on(
+      columns.image,
+    ),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [_service_pages_v.id],
+      name: "_service_pages_v_version_shooting_styles_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const _service_pages_v_version_portfolio_tiles = sqliteTable(
+  "_service_pages_v_version_portfolio_tiles",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: integer("id").primaryKey(),
+    image: integer("image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    label: text("label"),
+    _uuid: text("_uuid"),
+  },
+  (columns) => [
+    index("_service_pages_v_version_portfolio_tiles_order_idx").on(
+      columns._order,
+    ),
+    index("_service_pages_v_version_portfolio_tiles_parent_id_idx").on(
+      columns._parentID,
+    ),
+    index("_service_pages_v_version_portfolio_tiles_image_idx").on(
+      columns.image,
+    ),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [_service_pages_v.id],
+      name: "_service_pages_v_version_portfolio_tiles_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const _service_pages_v_version_audience_cards = sqliteTable(
+  "_service_pages_v_version_audience_cards",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: integer("id").primaryKey(),
+    image: integer("image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    number: text("number"),
+    title: text("title"),
+    text: text("text"),
+    _uuid: text("_uuid"),
+  },
+  (columns) => [
+    index("_service_pages_v_version_audience_cards_order_idx").on(
+      columns._order,
+    ),
+    index("_service_pages_v_version_audience_cards_parent_id_idx").on(
+      columns._parentID,
+    ),
+    index("_service_pages_v_version_audience_cards_image_idx").on(
+      columns.image,
+    ),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [_service_pages_v.id],
+      name: "_service_pages_v_version_audience_cards_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
 export const _service_pages_v_version_related_pages = sqliteTable(
   "_service_pages_v_version_related_pages",
   {
@@ -1592,6 +3247,9 @@ export const _service_pages_v = sqliteTable(
         onDelete: "set null",
       },
     ),
+    version_heroLine2: text("version_hero_line2"),
+    version_statement_headline: text("version_statement_headline"),
+    version_statement_emphasis: text("version_statement_emphasis"),
     version_cta_headline: text("version_cta_headline"),
     version_cta_text: text("version_cta_text"),
     version_cta_buttonLabel: text("version_cta_button_label"),
@@ -1625,7 +3283,12 @@ export const _service_pages_v = sqliteTable(
       enum: ["seeded", "reviewed", "componentized", "live"],
     }).default("seeded"),
     version_legacy_renderSource: text("version_legacy_render_source", {
-      enum: ["legacy-file", "payload-legacy-html", "native-component", "structured-blocks"],
+      enum: [
+        "legacy-file",
+        "payload-legacy-html",
+        "native-component",
+        "structured-blocks",
+      ],
     }).default("legacy-file"),
     version_legacy_renderedHeadHtml: text("version_legacy_rendered_head_html"),
     version_legacy_renderedBodyHtml: text("version_legacy_rendered_body_html"),
@@ -1723,6 +3386,194 @@ export const portfolio_projects_gallery = sqliteTable(
       columns: [columns["_parentID"]],
       foreignColumns: [portfolio_projects.id],
       name: "portfolio_projects_gallery_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const portfolio_projects_hero_slides = sqliteTable(
+  "portfolio_projects_hero_slides",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: text("id").primaryKey(),
+    image: integer("image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    headlineLine1: text("headline_line1").default("Fotografie"),
+    headlineLine2: text("headline_line2"),
+    lead: text("lead"),
+    durationSec: numeric("duration_sec", { mode: "number" }).default(7),
+    primaryLabel: text("primary_label").default("Projekt anfragen"),
+    primaryHref: text("primary_href").default("#anfrage"),
+    secondaryLabel: text("secondary_label").default("Arbeiten ansehen"),
+    secondaryHref: text("secondary_href").default("/portfolio.html"),
+  },
+  (columns) => [
+    index("portfolio_projects_hero_slides_order_idx").on(columns._order),
+    index("portfolio_projects_hero_slides_parent_id_idx").on(columns._parentID),
+    index("portfolio_projects_hero_slides_image_idx").on(columns.image),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [portfolio_projects.id],
+      name: "portfolio_projects_hero_slides_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const portfolio_projects_project_page_statement_stats = sqliteTable(
+  "portfolio_projects_project_page_statement_stats",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: text("id").primaryKey(),
+    label: text("label"),
+    text: text("text"),
+  },
+  (columns) => [
+    index("portfolio_projects_project_page_statement_stats_order_idx").on(
+      columns._order,
+    ),
+    index("portfolio_projects_project_page_statement_stats_parent_id_idx").on(
+      columns._parentID,
+    ),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [portfolio_projects.id],
+      name: "portfolio_projects_project_page_statement_stats_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const portfolio_projects_project_page_context_body = sqliteTable(
+  "portfolio_projects_project_page_context_body",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: text("id").primaryKey(),
+    text: text("text"),
+  },
+  (columns) => [
+    index("portfolio_projects_project_page_context_body_order_idx").on(
+      columns._order,
+    ),
+    index("portfolio_projects_project_page_context_body_parent_id_idx").on(
+      columns._parentID,
+    ),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [portfolio_projects.id],
+      name: "portfolio_projects_project_page_context_body_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const portfolio_projects_project_page_perspectives_bullets = sqliteTable(
+  "portfolio_projects_project_page_perspectives_bullets",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: text("_parent_id").notNull(),
+    id: text("id").primaryKey(),
+    text: text("text"),
+  },
+  (columns) => [
+    index("portfolio_projects_project_page_perspectives_bullets_order_idx").on(
+      columns._order,
+    ),
+    index(
+      "portfolio_projects_project_page_perspectives_bullets_parent_id_idx",
+    ).on(columns._parentID),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [portfolio_projects_project_page_perspectives.id],
+      name: "portfolio_projects_project_page_perspectives_bullets_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const portfolio_projects_project_page_perspectives = sqliteTable(
+  "portfolio_projects_project_page_perspectives",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: text("id").primaryKey(),
+    label: text("label"),
+    title: text("title"),
+    text: text("text"),
+    image: integer("image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+  },
+  (columns) => [
+    index("portfolio_projects_project_page_perspectives_order_idx").on(
+      columns._order,
+    ),
+    index("portfolio_projects_project_page_perspectives_parent_id_idx").on(
+      columns._parentID,
+    ),
+    index("portfolio_projects_project_page_perspectives_image_idx").on(
+      columns.image,
+    ),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [portfolio_projects.id],
+      name: "portfolio_projects_project_page_perspectives_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const portfolio_projects_project_page_info_cards = sqliteTable(
+  "portfolio_projects_project_page_info_cards",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: text("id").primaryKey(),
+    number: text("number"),
+    title: text("title"),
+    label: text("label"),
+    href: text("href").default("#anfrage"),
+  },
+  (columns) => [
+    index("portfolio_projects_project_page_info_cards_order_idx").on(
+      columns._order,
+    ),
+    index("portfolio_projects_project_page_info_cards_parent_id_idx").on(
+      columns._parentID,
+    ),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [portfolio_projects.id],
+      name: "portfolio_projects_project_page_info_cards_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const portfolio_projects_project_page_related_cards = sqliteTable(
+  "portfolio_projects_project_page_related_cards",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: text("id").primaryKey(),
+    label: text("label"),
+    title: text("title"),
+    href: text("href"),
+    image: integer("image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+  },
+  (columns) => [
+    index("portfolio_projects_project_page_related_cards_order_idx").on(
+      columns._order,
+    ),
+    index("portfolio_projects_project_page_related_cards_parent_id_idx").on(
+      columns._parentID,
+    ),
+    index("portfolio_projects_project_page_related_cards_image_idx").on(
+      columns.image,
+    ),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [portfolio_projects.id],
+      name: "portfolio_projects_project_page_related_cards_parent_id_fk",
     }).onDelete("cascade"),
   ],
 );
@@ -2003,6 +3854,29 @@ export const portfolio_projects = sqliteTable(
     coverImage: integer("cover_image_id").references(() => media.id, {
       onDelete: "set null",
     }),
+    projectPage_galleryEyebrow: text("project_page_gallery_eyebrow").default(
+      "Bildstrecke",
+    ),
+    projectPage_statement_quote: text("project_page_statement_quote"),
+    projectPage_statement_accent: text("project_page_statement_accent"),
+    projectPage_statement_buttonLabel: text(
+      "project_page_statement_button_label",
+    ),
+    projectPage_statement_buttonHref: text(
+      "project_page_statement_button_href",
+    ),
+    projectPage_context_kicker: text("project_page_context_kicker").default(
+      "Einordnung",
+    ),
+    projectPage_context_headline: text("project_page_context_headline").default(
+      "Serie, Einsatz und Bildsprache",
+    ),
+    projectPage_contact_headline: text("project_page_contact_headline"),
+    projectPage_contact_text: text("project_page_contact_text"),
+    projectPage_contact_buttonLabel: text("project_page_contact_button_label"),
+    projectPage_contact_emailSubject: text(
+      "project_page_contact_email_subject",
+    ),
     presentationMode: text("presentation_mode", {
       enum: [
         "floating-archive",
@@ -2039,7 +3913,12 @@ export const portfolio_projects = sqliteTable(
       enum: ["seeded", "reviewed", "componentized", "live"],
     }).default("seeded"),
     legacy_renderSource: text("legacy_render_source", {
-      enum: ["legacy-file", "payload-legacy-html", "native-component", "structured-blocks"],
+      enum: [
+        "legacy-file",
+        "payload-legacy-html",
+        "native-component",
+        "structured-blocks",
+      ],
     }).default("legacy-file"),
     legacy_renderedHeadHtml: text("legacy_rendered_head_html"),
     legacy_renderedBodyHtml: text("legacy_rendered_body_html"),
@@ -2088,35 +3967,6 @@ export const portfolio_projects_texts = sqliteTable(
   ],
 );
 
-export const portfolio_projects_rels = sqliteTable(
-  "portfolio_projects_rels",
-  {
-    id: integer("id").primaryKey(),
-    order: integer("order"),
-    parent: integer("parent_id").notNull(),
-    path: text("path").notNull(),
-    "service-pagesID": integer("service_pages_id"),
-  },
-  (columns) => [
-    index("portfolio_projects_rels_order_idx").on(columns.order),
-    index("portfolio_projects_rels_parent_idx").on(columns.parent),
-    index("portfolio_projects_rels_path_idx").on(columns.path),
-    index("portfolio_projects_rels_service_pages_id_idx").on(
-      columns["service-pagesID"],
-    ),
-    foreignKey({
-      columns: [columns["parent"]],
-      foreignColumns: [portfolio_projects.id],
-      name: "portfolio_projects_rels_parent_fk",
-    }).onDelete("cascade"),
-    foreignKey({
-      columns: [columns["service-pagesID"]],
-      foreignColumns: [service_pages.id],
-      name: "portfolio_projects_rels_service_pages_fk",
-    }).onDelete("cascade"),
-  ],
-);
-
 export const _portfolio_projects_v_version_gallery = sqliteTable(
   "_portfolio_projects_v_version_gallery",
   {
@@ -2145,6 +3995,215 @@ export const _portfolio_projects_v_version_gallery = sqliteTable(
     }).onDelete("cascade"),
   ],
 );
+
+export const _portfolio_projects_v_version_hero_slides = sqliteTable(
+  "_portfolio_projects_v_version_hero_slides",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: integer("id").primaryKey(),
+    image: integer("image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    headlineLine1: text("headline_line1").default("Fotografie"),
+    headlineLine2: text("headline_line2"),
+    lead: text("lead"),
+    durationSec: numeric("duration_sec", { mode: "number" }).default(7),
+    primaryLabel: text("primary_label").default("Projekt anfragen"),
+    primaryHref: text("primary_href").default("#anfrage"),
+    secondaryLabel: text("secondary_label").default("Arbeiten ansehen"),
+    secondaryHref: text("secondary_href").default("/portfolio.html"),
+    _uuid: text("_uuid"),
+  },
+  (columns) => [
+    index("_portfolio_projects_v_version_hero_slides_order_idx").on(
+      columns._order,
+    ),
+    index("_portfolio_projects_v_version_hero_slides_parent_id_idx").on(
+      columns._parentID,
+    ),
+    index("_portfolio_projects_v_version_hero_slides_image_idx").on(
+      columns.image,
+    ),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [_portfolio_projects_v.id],
+      name: "_portfolio_projects_v_version_hero_slides_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const _portfolio_projects_v_version_project_page_statement_stats =
+  sqliteTable(
+    "_portfolio_projects_v_version_project_page_statement_stats",
+    {
+      _order: integer("_order").notNull(),
+      _parentID: integer("_parent_id").notNull(),
+      id: integer("id").primaryKey(),
+      label: text("label"),
+      text: text("text"),
+      _uuid: text("_uuid"),
+    },
+    (columns) => [
+      index(
+        "_portfolio_projects_v_version_project_page_statement_stats_order_idx",
+      ).on(columns._order),
+      index(
+        "_portfolio_projects_v_version_project_page_statement_stats_parent_id_idx",
+      ).on(columns._parentID),
+      foreignKey({
+        columns: [columns["_parentID"]],
+        foreignColumns: [_portfolio_projects_v.id],
+        name: "_portfolio_projects_v_version_project_page_statement_stats_parent_id_fk",
+      }).onDelete("cascade"),
+    ],
+  );
+
+export const _portfolio_projects_v_version_project_page_context_body =
+  sqliteTable(
+    "_portfolio_projects_v_version_project_page_context_body",
+    {
+      _order: integer("_order").notNull(),
+      _parentID: integer("_parent_id").notNull(),
+      id: integer("id").primaryKey(),
+      text: text("text"),
+      _uuid: text("_uuid"),
+    },
+    (columns) => [
+      index(
+        "_portfolio_projects_v_version_project_page_context_body_order_idx",
+      ).on(columns._order),
+      index(
+        "_portfolio_projects_v_version_project_page_context_body_parent_id_idx",
+      ).on(columns._parentID),
+      foreignKey({
+        columns: [columns["_parentID"]],
+        foreignColumns: [_portfolio_projects_v.id],
+        name: "_portfolio_projects_v_version_project_page_context_body_parent_id_fk",
+      }).onDelete("cascade"),
+    ],
+  );
+
+export const _portfolio_projects_v_version_project_page_perspectives_bullets =
+  sqliteTable(
+    "_portfolio_projects_v_version_project_page_perspectives_bullets",
+    {
+      _order: integer("_order").notNull(),
+      _parentID: integer("_parent_id").notNull(),
+      id: integer("id").primaryKey(),
+      text: text("text"),
+      _uuid: text("_uuid"),
+    },
+    (columns) => [
+      index(
+        "_portfolio_projects_v_version_project_page_perspectives_bullets_order_idx",
+      ).on(columns._order),
+      index(
+        "_portfolio_projects_v_version_project_page_perspectives_bullets_parent_id_idx",
+      ).on(columns._parentID),
+      foreignKey({
+        columns: [columns["_parentID"]],
+        foreignColumns: [
+          _portfolio_projects_v_version_project_page_perspectives.id,
+        ],
+        name: "_portfolio_projects_v_version_project_page_perspectives_bullets_parent_id_fk",
+      }).onDelete("cascade"),
+    ],
+  );
+
+export const _portfolio_projects_v_version_project_page_perspectives =
+  sqliteTable(
+    "_portfolio_projects_v_version_project_page_perspectives",
+    {
+      _order: integer("_order").notNull(),
+      _parentID: integer("_parent_id").notNull(),
+      id: integer("id").primaryKey(),
+      label: text("label"),
+      title: text("title"),
+      text: text("text"),
+      image: integer("image_id").references(() => media.id, {
+        onDelete: "set null",
+      }),
+      _uuid: text("_uuid"),
+    },
+    (columns) => [
+      index(
+        "_portfolio_projects_v_version_project_page_perspectives_order_idx",
+      ).on(columns._order),
+      index(
+        "_portfolio_projects_v_version_project_page_perspectives_parent_id_idx",
+      ).on(columns._parentID),
+      index("_portfolio_projects_v_version_project_page_perspectives__idx").on(
+        columns.image,
+      ),
+      foreignKey({
+        columns: [columns["_parentID"]],
+        foreignColumns: [_portfolio_projects_v.id],
+        name: "_portfolio_projects_v_version_project_page_perspectives_parent_id_fk",
+      }).onDelete("cascade"),
+    ],
+  );
+
+export const _portfolio_projects_v_version_project_page_info_cards =
+  sqliteTable(
+    "_portfolio_projects_v_version_project_page_info_cards",
+    {
+      _order: integer("_order").notNull(),
+      _parentID: integer("_parent_id").notNull(),
+      id: integer("id").primaryKey(),
+      number: text("number"),
+      title: text("title"),
+      label: text("label"),
+      href: text("href").default("#anfrage"),
+      _uuid: text("_uuid"),
+    },
+    (columns) => [
+      index(
+        "_portfolio_projects_v_version_project_page_info_cards_order_idx",
+      ).on(columns._order),
+      index(
+        "_portfolio_projects_v_version_project_page_info_cards_parent_id_idx",
+      ).on(columns._parentID),
+      foreignKey({
+        columns: [columns["_parentID"]],
+        foreignColumns: [_portfolio_projects_v.id],
+        name: "_portfolio_projects_v_version_project_page_info_cards_parent_id_fk",
+      }).onDelete("cascade"),
+    ],
+  );
+
+export const _portfolio_projects_v_version_project_page_related_cards =
+  sqliteTable(
+    "_portfolio_projects_v_version_project_page_related_cards",
+    {
+      _order: integer("_order").notNull(),
+      _parentID: integer("_parent_id").notNull(),
+      id: integer("id").primaryKey(),
+      label: text("label"),
+      title: text("title"),
+      href: text("href"),
+      image: integer("image_id").references(() => media.id, {
+        onDelete: "set null",
+      }),
+      _uuid: text("_uuid"),
+    },
+    (columns) => [
+      index(
+        "_portfolio_projects_v_version_project_page_related_cards_order_idx",
+      ).on(columns._order),
+      index(
+        "_portfolio_projects_v_version_project_page_related_cards_parent_id_idx",
+      ).on(columns._parentID),
+      index("_portfolio_projects_v_version_project_page_related_cards_idx").on(
+        columns.image,
+      ),
+      foreignKey({
+        columns: [columns["_parentID"]],
+        foreignColumns: [_portfolio_projects_v.id],
+        name: "_portfolio_projects_v_version_project_page_related_cards_parent_id_fk",
+      }).onDelete("cascade"),
+    ],
+  );
 
 export const _portfolio_projects_v_blocks_text_block = sqliteTable(
   "_portfolio_projects_v_blocks_text_block",
@@ -2456,6 +4515,37 @@ export const _portfolio_projects_v = sqliteTable(
         onDelete: "set null",
       },
     ),
+    version_projectPage_galleryEyebrow: text(
+      "version_project_page_gallery_eyebrow",
+    ).default("Bildstrecke"),
+    version_projectPage_statement_quote: text(
+      "version_project_page_statement_quote",
+    ),
+    version_projectPage_statement_accent: text(
+      "version_project_page_statement_accent",
+    ),
+    version_projectPage_statement_buttonLabel: text(
+      "version_project_page_statement_button_label",
+    ),
+    version_projectPage_statement_buttonHref: text(
+      "version_project_page_statement_button_href",
+    ),
+    version_projectPage_context_kicker: text(
+      "version_project_page_context_kicker",
+    ).default("Einordnung"),
+    version_projectPage_context_headline: text(
+      "version_project_page_context_headline",
+    ).default("Serie, Einsatz und Bildsprache"),
+    version_projectPage_contact_headline: text(
+      "version_project_page_contact_headline",
+    ),
+    version_projectPage_contact_text: text("version_project_page_contact_text"),
+    version_projectPage_contact_buttonLabel: text(
+      "version_project_page_contact_button_label",
+    ),
+    version_projectPage_contact_emailSubject: text(
+      "version_project_page_contact_email_subject",
+    ),
     version_presentationMode: text("version_presentation_mode", {
       enum: [
         "floating-archive",
@@ -2497,7 +4587,12 @@ export const _portfolio_projects_v = sqliteTable(
       enum: ["seeded", "reviewed", "componentized", "live"],
     }).default("seeded"),
     version_legacy_renderSource: text("version_legacy_render_source", {
-      enum: ["legacy-file", "payload-legacy-html", "native-component", "structured-blocks"],
+      enum: [
+        "legacy-file",
+        "payload-legacy-html",
+        "native-component",
+        "structured-blocks",
+      ],
     }).default("legacy-file"),
     version_legacy_renderedHeadHtml: text("version_legacy_rendered_head_html"),
     version_legacy_renderedBodyHtml: text("version_legacy_rendered_body_html"),
@@ -2575,35 +4670,6 @@ export const _portfolio_projects_v_texts = sqliteTable(
   ],
 );
 
-export const _portfolio_projects_v_rels = sqliteTable(
-  "_portfolio_projects_v_rels",
-  {
-    id: integer("id").primaryKey(),
-    order: integer("order"),
-    parent: integer("parent_id").notNull(),
-    path: text("path").notNull(),
-    "service-pagesID": integer("service_pages_id"),
-  },
-  (columns) => [
-    index("_portfolio_projects_v_rels_order_idx").on(columns.order),
-    index("_portfolio_projects_v_rels_parent_idx").on(columns.parent),
-    index("_portfolio_projects_v_rels_path_idx").on(columns.path),
-    index("_portfolio_projects_v_rels_service_pages_id_idx").on(
-      columns["service-pagesID"],
-    ),
-    foreignKey({
-      columns: [columns["parent"]],
-      foreignColumns: [_portfolio_projects_v.id],
-      name: "_portfolio_projects_v_rels_parent_fk",
-    }).onDelete("cascade"),
-    foreignKey({
-      columns: [columns["service-pagesID"]],
-      foreignColumns: [service_pages.id],
-      name: "_portfolio_projects_v_rels_service_pages_fk",
-    }).onDelete("cascade"),
-  ],
-);
-
 export const portfolio_categories = sqliteTable(
   "portfolio_categories",
   {
@@ -2639,7 +4705,12 @@ export const portfolio_categories = sqliteTable(
       enum: ["seeded", "reviewed", "componentized", "live"],
     }).default("seeded"),
     legacy_renderSource: text("legacy_render_source", {
-      enum: ["legacy-file", "payload-legacy-html", "native-component", "structured-blocks"],
+      enum: [
+        "legacy-file",
+        "payload-legacy-html",
+        "native-component",
+        "structured-blocks",
+      ],
     }).default("legacy-file"),
     legacy_renderedHeadHtml: text("legacy_rendered_head_html"),
     legacy_renderedBodyHtml: text("legacy_rendered_body_html"),
@@ -2735,7 +4806,12 @@ export const _portfolio_categories_v = sqliteTable(
       enum: ["seeded", "reviewed", "componentized", "live"],
     }).default("seeded"),
     version_legacy_renderSource: text("version_legacy_render_source", {
-      enum: ["legacy-file", "payload-legacy-html", "native-component", "structured-blocks"],
+      enum: [
+        "legacy-file",
+        "payload-legacy-html",
+        "native-component",
+        "structured-blocks",
+      ],
     }).default("legacy-file"),
     version_legacy_renderedHeadHtml: text("version_legacy_rendered_head_html"),
     version_legacy_renderedBodyHtml: text("version_legacy_rendered_body_html"),
@@ -3132,7 +5208,12 @@ export const journal_posts = sqliteTable(
       enum: ["seeded", "reviewed", "componentized", "live"],
     }).default("seeded"),
     legacy_renderSource: text("legacy_render_source", {
-      enum: ["legacy-file", "payload-legacy-html", "native-component", "structured-blocks"],
+      enum: [
+        "legacy-file",
+        "payload-legacy-html",
+        "native-component",
+        "structured-blocks",
+      ],
     }).default("legacy-file"),
     legacy_renderedHeadHtml: text("legacy_rendered_head_html"),
     legacy_renderedBodyHtml: text("legacy_rendered_body_html"),
@@ -3540,7 +5621,12 @@ export const _journal_posts_v = sqliteTable(
       enum: ["seeded", "reviewed", "componentized", "live"],
     }).default("seeded"),
     version_legacy_renderSource: text("version_legacy_render_source", {
-      enum: ["legacy-file", "payload-legacy-html", "native-component", "structured-blocks"],
+      enum: [
+        "legacy-file",
+        "payload-legacy-html",
+        "native-component",
+        "structured-blocks",
+      ],
     }).default("legacy-file"),
     version_legacy_renderedHeadHtml: text("version_legacy_rendered_head_html"),
     version_legacy_renderedBodyHtml: text("version_legacy_rendered_body_html"),
@@ -3609,6 +5695,36 @@ export const _journal_posts_v_texts = sqliteTable(
       columns: [columns["parent"]],
       foreignColumns: [_journal_posts_v.id],
       name: "_journal_posts_v_texts_parent_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const local_seo_pages_hero_slides = sqliteTable(
+  "local_seo_pages_hero_slides",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: text("id").primaryKey(),
+    image: integer("image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    headlineLine1: text("headline_line1").default(""),
+    headlineLine2: text("headline_line2"),
+    lead: text("lead"),
+    durationSec: numeric("duration_sec", { mode: "number" }).default(7),
+    primaryLabel: text("primary_label").default("Projekt anfragen"),
+    primaryHref: text("primary_href").default("#anfrage"),
+    secondaryLabel: text("secondary_label").default("Arbeiten ansehen"),
+    secondaryHref: text("secondary_href").default("/portfolio.html"),
+  },
+  (columns) => [
+    index("local_seo_pages_hero_slides_order_idx").on(columns._order),
+    index("local_seo_pages_hero_slides_parent_id_idx").on(columns._parentID),
+    index("local_seo_pages_hero_slides_image_idx").on(columns.image),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [local_seo_pages.id],
+      name: "local_seo_pages_hero_slides_parent_id_fk",
     }).onDelete("cascade"),
   ],
 );
@@ -3903,6 +6019,123 @@ export const local_seo_pages_blocks_cta_block = sqliteTable(
   ],
 );
 
+export const local_seo_pages_hero_panels = sqliteTable(
+  "local_seo_pages_hero_panels",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: text("id").primaryKey(),
+    image: integer("image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+  },
+  (columns) => [
+    index("local_seo_pages_hero_panels_order_idx").on(columns._order),
+    index("local_seo_pages_hero_panels_parent_id_idx").on(columns._parentID),
+    index("local_seo_pages_hero_panels_image_idx").on(columns.image),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [local_seo_pages.id],
+      name: "local_seo_pages_hero_panels_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const local_seo_pages_statement_body = sqliteTable(
+  "local_seo_pages_statement_body",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: text("id").primaryKey(),
+    text: text("text"),
+  },
+  (columns) => [
+    index("local_seo_pages_statement_body_order_idx").on(columns._order),
+    index("local_seo_pages_statement_body_parent_id_idx").on(columns._parentID),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [local_seo_pages.id],
+      name: "local_seo_pages_statement_body_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const local_seo_pages_shooting_styles = sqliteTable(
+  "local_seo_pages_shooting_styles",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: text("id").primaryKey(),
+    image: integer("image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    title: text("title"),
+    text: text("text"),
+  },
+  (columns) => [
+    index("local_seo_pages_shooting_styles_order_idx").on(columns._order),
+    index("local_seo_pages_shooting_styles_parent_id_idx").on(
+      columns._parentID,
+    ),
+    index("local_seo_pages_shooting_styles_image_idx").on(columns.image),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [local_seo_pages.id],
+      name: "local_seo_pages_shooting_styles_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const local_seo_pages_portfolio_tiles = sqliteTable(
+  "local_seo_pages_portfolio_tiles",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: text("id").primaryKey(),
+    image: integer("image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    label: text("label"),
+  },
+  (columns) => [
+    index("local_seo_pages_portfolio_tiles_order_idx").on(columns._order),
+    index("local_seo_pages_portfolio_tiles_parent_id_idx").on(
+      columns._parentID,
+    ),
+    index("local_seo_pages_portfolio_tiles_image_idx").on(columns.image),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [local_seo_pages.id],
+      name: "local_seo_pages_portfolio_tiles_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const local_seo_pages_audience_cards = sqliteTable(
+  "local_seo_pages_audience_cards",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: text("id").primaryKey(),
+    image: integer("image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    number: text("number"),
+    title: text("title"),
+    text: text("text"),
+  },
+  (columns) => [
+    index("local_seo_pages_audience_cards_order_idx").on(columns._order),
+    index("local_seo_pages_audience_cards_parent_id_idx").on(columns._parentID),
+    index("local_seo_pages_audience_cards_image_idx").on(columns.image),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [local_seo_pages.id],
+      name: "local_seo_pages_audience_cards_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
 export const local_seo_pages = sqliteTable(
   "local_seo_pages",
   {
@@ -3918,6 +6151,9 @@ export const local_seo_pages = sqliteTable(
     heroImage: integer("hero_image_id").references(() => media.id, {
       onDelete: "set null",
     }),
+    heroLine2: text("hero_line2"),
+    statement_headline: text("statement_headline"),
+    statement_emphasis: text("statement_emphasis"),
     canonicalServicePage: integer("canonical_service_page_id").references(
       () => service_pages.id,
       {
@@ -3949,7 +6185,12 @@ export const local_seo_pages = sqliteTable(
       enum: ["seeded", "reviewed", "componentized", "live"],
     }).default("seeded"),
     legacy_renderSource: text("legacy_render_source", {
-      enum: ["legacy-file", "payload-legacy-html", "native-component", "structured-blocks"],
+      enum: [
+        "legacy-file",
+        "payload-legacy-html",
+        "native-component",
+        "structured-blocks",
+      ],
     }).default("legacy-file"),
     legacy_renderedHeadHtml: text("legacy_rendered_head_html"),
     legacy_renderedBodyHtml: text("legacy_rendered_body_html"),
@@ -3996,6 +6237,41 @@ export const local_seo_pages_texts = sqliteTable(
       columns: [columns["parent"]],
       foreignColumns: [local_seo_pages.id],
       name: "local_seo_pages_texts_parent_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const _local_seo_pages_v_version_hero_slides = sqliteTable(
+  "_local_seo_pages_v_version_hero_slides",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: integer("id").primaryKey(),
+    image: integer("image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    headlineLine1: text("headline_line1").default(""),
+    headlineLine2: text("headline_line2"),
+    lead: text("lead"),
+    durationSec: numeric("duration_sec", { mode: "number" }).default(7),
+    primaryLabel: text("primary_label").default("Projekt anfragen"),
+    primaryHref: text("primary_href").default("#anfrage"),
+    secondaryLabel: text("secondary_label").default("Arbeiten ansehen"),
+    secondaryHref: text("secondary_href").default("/portfolio.html"),
+    _uuid: text("_uuid"),
+  },
+  (columns) => [
+    index("_local_seo_pages_v_version_hero_slides_order_idx").on(
+      columns._order,
+    ),
+    index("_local_seo_pages_v_version_hero_slides_parent_id_idx").on(
+      columns._parentID,
+    ),
+    index("_local_seo_pages_v_version_hero_slides_image_idx").on(columns.image),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [_local_seo_pages_v.id],
+      name: "_local_seo_pages_v_version_hero_slides_parent_id_fk",
     }).onDelete("cascade"),
   ],
 );
@@ -4311,6 +6587,150 @@ export const _local_seo_pages_v_blocks_cta_block = sqliteTable(
   ],
 );
 
+export const _local_seo_pages_v_version_hero_panels = sqliteTable(
+  "_local_seo_pages_v_version_hero_panels",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: integer("id").primaryKey(),
+    image: integer("image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    _uuid: text("_uuid"),
+  },
+  (columns) => [
+    index("_local_seo_pages_v_version_hero_panels_order_idx").on(
+      columns._order,
+    ),
+    index("_local_seo_pages_v_version_hero_panels_parent_id_idx").on(
+      columns._parentID,
+    ),
+    index("_local_seo_pages_v_version_hero_panels_image_idx").on(columns.image),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [_local_seo_pages_v.id],
+      name: "_local_seo_pages_v_version_hero_panels_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const _local_seo_pages_v_version_statement_body = sqliteTable(
+  "_local_seo_pages_v_version_statement_body",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: integer("id").primaryKey(),
+    text: text("text"),
+    _uuid: text("_uuid"),
+  },
+  (columns) => [
+    index("_local_seo_pages_v_version_statement_body_order_idx").on(
+      columns._order,
+    ),
+    index("_local_seo_pages_v_version_statement_body_parent_id_idx").on(
+      columns._parentID,
+    ),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [_local_seo_pages_v.id],
+      name: "_local_seo_pages_v_version_statement_body_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const _local_seo_pages_v_version_shooting_styles = sqliteTable(
+  "_local_seo_pages_v_version_shooting_styles",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: integer("id").primaryKey(),
+    image: integer("image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    title: text("title"),
+    text: text("text"),
+    _uuid: text("_uuid"),
+  },
+  (columns) => [
+    index("_local_seo_pages_v_version_shooting_styles_order_idx").on(
+      columns._order,
+    ),
+    index("_local_seo_pages_v_version_shooting_styles_parent_id_idx").on(
+      columns._parentID,
+    ),
+    index("_local_seo_pages_v_version_shooting_styles_image_idx").on(
+      columns.image,
+    ),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [_local_seo_pages_v.id],
+      name: "_local_seo_pages_v_version_shooting_styles_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const _local_seo_pages_v_version_portfolio_tiles = sqliteTable(
+  "_local_seo_pages_v_version_portfolio_tiles",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: integer("id").primaryKey(),
+    image: integer("image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    label: text("label"),
+    _uuid: text("_uuid"),
+  },
+  (columns) => [
+    index("_local_seo_pages_v_version_portfolio_tiles_order_idx").on(
+      columns._order,
+    ),
+    index("_local_seo_pages_v_version_portfolio_tiles_parent_id_idx").on(
+      columns._parentID,
+    ),
+    index("_local_seo_pages_v_version_portfolio_tiles_image_idx").on(
+      columns.image,
+    ),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [_local_seo_pages_v.id],
+      name: "_local_seo_pages_v_version_portfolio_tiles_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const _local_seo_pages_v_version_audience_cards = sqliteTable(
+  "_local_seo_pages_v_version_audience_cards",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: integer("id").primaryKey(),
+    image: integer("image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    number: text("number"),
+    title: text("title"),
+    text: text("text"),
+    _uuid: text("_uuid"),
+  },
+  (columns) => [
+    index("_local_seo_pages_v_version_audience_cards_order_idx").on(
+      columns._order,
+    ),
+    index("_local_seo_pages_v_version_audience_cards_parent_id_idx").on(
+      columns._parentID,
+    ),
+    index("_local_seo_pages_v_version_audience_cards_image_idx").on(
+      columns.image,
+    ),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [_local_seo_pages_v.id],
+      name: "_local_seo_pages_v_version_audience_cards_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
 export const _local_seo_pages_v = sqliteTable(
   "_local_seo_pages_v",
   {
@@ -4332,6 +6752,9 @@ export const _local_seo_pages_v = sqliteTable(
         onDelete: "set null",
       },
     ),
+    version_heroLine2: text("version_hero_line2"),
+    version_statement_headline: text("version_statement_headline"),
+    version_statement_emphasis: text("version_statement_emphasis"),
     version_canonicalServicePage: integer(
       "version_canonical_service_page_id",
     ).references(() => service_pages.id, {
@@ -4367,7 +6790,12 @@ export const _local_seo_pages_v = sqliteTable(
       enum: ["seeded", "reviewed", "componentized", "live"],
     }).default("seeded"),
     version_legacy_renderSource: text("version_legacy_render_source", {
-      enum: ["legacy-file", "payload-legacy-html", "native-component", "structured-blocks"],
+      enum: [
+        "legacy-file",
+        "payload-legacy-html",
+        "native-component",
+        "structured-blocks",
+      ],
     }).default("legacy-file"),
     version_legacy_renderedHeadHtml: text("version_legacy_rendered_head_html"),
     version_legacy_renderedBodyHtml: text("version_legacy_rendered_body_html"),
@@ -5131,6 +7559,9 @@ export const site_settings = sqliteTable(
     defaultOgImage: integer("default_og_image_id").references(() => media.id, {
       onDelete: "set null",
     }),
+    mediaQualityPreset: text("media_quality_preset", {
+      enum: ["eco", "standard", "maximal"],
+    }).default("standard"),
     footerStatement: text("footer_statement").default(
       "Fotografie, die Raeume oeffnet. Portfolio, Auftraege und visuelle Produktion in Duesseldorf / NRW - klar kuratiert, technisch sauber und bereit fuer Print, Web und Kampagne.",
     ),
@@ -5411,6 +7842,244 @@ export const footer = sqliteTable("footer", {
   ),
 });
 
+export const relations_site_pages_hero_slides = relations(
+  site_pages_hero_slides,
+  ({ one }) => ({
+    _parentID: one(site_pages, {
+      fields: [site_pages_hero_slides._parentID],
+      references: [site_pages.id],
+      relationName: "heroSlides",
+    }),
+    image: one(media, {
+      fields: [site_pages_hero_slides.image],
+      references: [media.id],
+      relationName: "image",
+    }),
+  }),
+);
+export const relations_site_pages_home_statement_body = relations(
+  site_pages_home_statement_body,
+  ({ one }) => ({
+    _parentID: one(site_pages, {
+      fields: [site_pages_home_statement_body._parentID],
+      references: [site_pages.id],
+      relationName: "homeStatement_body",
+    }),
+  }),
+);
+export const relations_site_pages_home_chapters_items = relations(
+  site_pages_home_chapters_items,
+  ({ one }) => ({
+    _parentID: one(site_pages, {
+      fields: [site_pages_home_chapters_items._parentID],
+      references: [site_pages.id],
+      relationName: "homeChapters_items",
+    }),
+    image: one(media, {
+      fields: [site_pages_home_chapters_items.image],
+      references: [media.id],
+      relationName: "image",
+    }),
+  }),
+);
+export const relations_site_pages_home_about_body = relations(
+  site_pages_home_about_body,
+  ({ one }) => ({
+    _parentID: one(site_pages, {
+      fields: [site_pages_home_about_body._parentID],
+      references: [site_pages.id],
+      relationName: "homeAbout_body",
+    }),
+  }),
+);
+export const relations_site_pages_home_services_items = relations(
+  site_pages_home_services_items,
+  ({ one }) => ({
+    _parentID: one(site_pages, {
+      fields: [site_pages_home_services_items._parentID],
+      references: [site_pages.id],
+      relationName: "homeServices_items",
+    }),
+  }),
+);
+export const relations_site_pages_home_journal_items = relations(
+  site_pages_home_journal_items,
+  ({ one }) => ({
+    _parentID: one(site_pages, {
+      fields: [site_pages_home_journal_items._parentID],
+      references: [site_pages.id],
+      relationName: "homeJournal_items",
+    }),
+    image: one(media, {
+      fields: [site_pages_home_journal_items.image],
+      references: [media.id],
+      relationName: "image",
+    }),
+  }),
+);
+export const relations_site_pages_about_chapters_items = relations(
+  site_pages_about_chapters_items,
+  ({ one }) => ({
+    _parentID: one(site_pages, {
+      fields: [site_pages_about_chapters_items._parentID],
+      references: [site_pages.id],
+      relationName: "aboutChapters_items",
+    }),
+    image: one(media, {
+      fields: [site_pages_about_chapters_items.image],
+      references: [media.id],
+      relationName: "image",
+    }),
+  }),
+);
+export const relations_site_pages_about_sister_plate_roles = relations(
+  site_pages_about_sister_plate_roles,
+  ({ one }) => ({
+    _parentID: one(site_pages, {
+      fields: [site_pages_about_sister_plate_roles._parentID],
+      references: [site_pages.id],
+      relationName: "aboutSister_plate_roles",
+    }),
+  }),
+);
+export const relations_site_pages_photography_index_cluster_intro = relations(
+  site_pages_photography_index_cluster_intro,
+  ({ one }) => ({
+    _parentID: one(site_pages, {
+      fields: [site_pages_photography_index_cluster_intro._parentID],
+      references: [site_pages.id],
+      relationName: "photographyIndex_clusterIntro",
+    }),
+  }),
+);
+export const relations_site_pages_photography_index_topics = relations(
+  site_pages_photography_index_topics,
+  ({ one }) => ({
+    _parentID: one(site_pages, {
+      fields: [site_pages_photography_index_topics._parentID],
+      references: [site_pages.id],
+      relationName: "photographyIndex_topics",
+    }),
+    image: one(media, {
+      fields: [site_pages_photography_index_topics.image],
+      references: [media.id],
+      relationName: "image",
+    }),
+  }),
+);
+export const relations_site_pages_portfolio_index_context_body = relations(
+  site_pages_portfolio_index_context_body,
+  ({ one }) => ({
+    _parentID: one(site_pages, {
+      fields: [site_pages_portfolio_index_context_body._parentID],
+      references: [site_pages.id],
+      relationName: "portfolioIndex_contextBody",
+    }),
+  }),
+);
+export const relations_site_pages_portfolio_index_slices_photos = relations(
+  site_pages_portfolio_index_slices_photos,
+  ({ one }) => ({
+    _parentID: one(site_pages_portfolio_index_slices, {
+      fields: [site_pages_portfolio_index_slices_photos._parentID],
+      references: [site_pages_portfolio_index_slices.id],
+      relationName: "photos",
+    }),
+    image: one(media, {
+      fields: [site_pages_portfolio_index_slices_photos.image],
+      references: [media.id],
+      relationName: "image",
+    }),
+    fullImage: one(media, {
+      fields: [site_pages_portfolio_index_slices_photos.fullImage],
+      references: [media.id],
+      relationName: "fullImage",
+    }),
+  }),
+);
+export const relations_site_pages_portfolio_index_slices = relations(
+  site_pages_portfolio_index_slices,
+  ({ one, many }) => ({
+    _parentID: one(site_pages, {
+      fields: [site_pages_portfolio_index_slices._parentID],
+      references: [site_pages.id],
+      relationName: "portfolioIndex_slices",
+    }),
+    photos: many(site_pages_portfolio_index_slices_photos, {
+      relationName: "photos",
+    }),
+  }),
+);
+export const relations_site_pages_portfolio_index_archive_items = relations(
+  site_pages_portfolio_index_archive_items,
+  ({ one }) => ({
+    _parentID: one(site_pages, {
+      fields: [site_pages_portfolio_index_archive_items._parentID],
+      references: [site_pages.id],
+      relationName: "portfolioIndex_archive_items",
+    }),
+    image: one(media, {
+      fields: [site_pages_portfolio_index_archive_items.image],
+      references: [media.id],
+      relationName: "image",
+    }),
+    fullImage: one(media, {
+      fields: [site_pages_portfolio_index_archive_items.fullImage],
+      references: [media.id],
+      relationName: "fullImage",
+    }),
+  }),
+);
+export const relations_site_pages_services_index_items = relations(
+  site_pages_services_index_items,
+  ({ one }) => ({
+    _parentID: one(site_pages, {
+      fields: [site_pages_services_index_items._parentID],
+      references: [site_pages.id],
+      relationName: "servicesIndex_items",
+    }),
+    image1: one(media, {
+      fields: [site_pages_services_index_items.image1],
+      references: [media.id],
+      relationName: "image1",
+    }),
+    image2: one(media, {
+      fields: [site_pages_services_index_items.image2],
+      references: [media.id],
+      relationName: "image2",
+    }),
+  }),
+);
+export const relations_site_pages_services_index_why_cards = relations(
+  site_pages_services_index_why_cards,
+  ({ one }) => ({
+    _parentID: one(site_pages, {
+      fields: [site_pages_services_index_why_cards._parentID],
+      references: [site_pages.id],
+      relationName: "servicesIndex_whyCards",
+    }),
+  }),
+);
+export const relations_site_pages_journal_index_ticker_items = relations(
+  site_pages_journal_index_ticker_items,
+  ({ one }) => ({
+    _parentID: one(site_pages, {
+      fields: [site_pages_journal_index_ticker_items._parentID],
+      references: [site_pages.id],
+      relationName: "journalIndex_tickerItems",
+    }),
+  }),
+);
+export const relations_site_pages_journal_index_filters = relations(
+  site_pages_journal_index_filters,
+  ({ one }) => ({
+    _parentID: one(site_pages, {
+      fields: [site_pages_journal_index_filters._parentID],
+      references: [site_pages.id],
+      relationName: "journalIndex_filters",
+    }),
+  }),
+);
 export const relations_site_pages_blocks_text_block = relations(
   site_pages_blocks_text_block,
   ({ one }) => ({
@@ -5536,6 +8205,75 @@ export const relations_site_pages = relations(site_pages, ({ one, many }) => ({
     references: [media.id],
     relationName: "teaserImage",
   }),
+  heroSlides: many(site_pages_hero_slides, {
+    relationName: "heroSlides",
+  }),
+  homeStatement_body: many(site_pages_home_statement_body, {
+    relationName: "homeStatement_body",
+  }),
+  homeChapters_items: many(site_pages_home_chapters_items, {
+    relationName: "homeChapters_items",
+  }),
+  homeAbout_image: one(media, {
+    fields: [site_pages.homeAbout_image],
+    references: [media.id],
+    relationName: "homeAbout_image",
+  }),
+  homeAbout_body: many(site_pages_home_about_body, {
+    relationName: "homeAbout_body",
+  }),
+  homeServices_items: many(site_pages_home_services_items, {
+    relationName: "homeServices_items",
+  }),
+  homeJournal_items: many(site_pages_home_journal_items, {
+    relationName: "homeJournal_items",
+  }),
+  aboutHero_image: one(media, {
+    fields: [site_pages.aboutHero_image],
+    references: [media.id],
+    relationName: "aboutHero_image",
+  }),
+  aboutChapters_items: many(site_pages_about_chapters_items, {
+    relationName: "aboutChapters_items",
+  }),
+  aboutSister_plate_roles: many(site_pages_about_sister_plate_roles, {
+    relationName: "aboutSister_plate_roles",
+  }),
+  photographyIndex_clusterIntro: many(
+    site_pages_photography_index_cluster_intro,
+    {
+      relationName: "photographyIndex_clusterIntro",
+    },
+  ),
+  photographyIndex_topics: many(site_pages_photography_index_topics, {
+    relationName: "photographyIndex_topics",
+  }),
+  portfolioIndex_contextBody: many(site_pages_portfolio_index_context_body, {
+    relationName: "portfolioIndex_contextBody",
+  }),
+  portfolioIndex_slices: many(site_pages_portfolio_index_slices, {
+    relationName: "portfolioIndex_slices",
+  }),
+  portfolioIndex_archive_items: many(site_pages_portfolio_index_archive_items, {
+    relationName: "portfolioIndex_archive_items",
+  }),
+  servicesIndex_items: many(site_pages_services_index_items, {
+    relationName: "servicesIndex_items",
+  }),
+  servicesIndex_whyCards: many(site_pages_services_index_why_cards, {
+    relationName: "servicesIndex_whyCards",
+  }),
+  journalIndex_tickerItems: many(site_pages_journal_index_ticker_items, {
+    relationName: "journalIndex_tickerItems",
+  }),
+  journalIndex_featured_image: one(media, {
+    fields: [site_pages.journalIndex_featured_image],
+    references: [media.id],
+    relationName: "journalIndex_featured_image",
+  }),
+  journalIndex_filters: many(site_pages_journal_index_filters, {
+    relationName: "journalIndex_filters",
+  }),
   _blocks_textBlock: many(site_pages_blocks_text_block, {
     relationName: "_blocks_textBlock",
   }),
@@ -5563,6 +8301,233 @@ export const relations_site_pages = relations(site_pages, ({ one, many }) => ({
     relationName: "_texts",
   }),
 }));
+export const relations__site_pages_v_version_hero_slides = relations(
+  _site_pages_v_version_hero_slides,
+  ({ one }) => ({
+    _parentID: one(_site_pages_v, {
+      fields: [_site_pages_v_version_hero_slides._parentID],
+      references: [_site_pages_v.id],
+      relationName: "version_heroSlides",
+    }),
+    image: one(media, {
+      fields: [_site_pages_v_version_hero_slides.image],
+      references: [media.id],
+      relationName: "image",
+    }),
+  }),
+);
+export const relations__site_pages_v_version_home_statement_body = relations(
+  _site_pages_v_version_home_statement_body,
+  ({ one }) => ({
+    _parentID: one(_site_pages_v, {
+      fields: [_site_pages_v_version_home_statement_body._parentID],
+      references: [_site_pages_v.id],
+      relationName: "version_homeStatement_body",
+    }),
+  }),
+);
+export const relations__site_pages_v_version_home_chapters_items = relations(
+  _site_pages_v_version_home_chapters_items,
+  ({ one }) => ({
+    _parentID: one(_site_pages_v, {
+      fields: [_site_pages_v_version_home_chapters_items._parentID],
+      references: [_site_pages_v.id],
+      relationName: "version_homeChapters_items",
+    }),
+    image: one(media, {
+      fields: [_site_pages_v_version_home_chapters_items.image],
+      references: [media.id],
+      relationName: "image",
+    }),
+  }),
+);
+export const relations__site_pages_v_version_home_about_body = relations(
+  _site_pages_v_version_home_about_body,
+  ({ one }) => ({
+    _parentID: one(_site_pages_v, {
+      fields: [_site_pages_v_version_home_about_body._parentID],
+      references: [_site_pages_v.id],
+      relationName: "version_homeAbout_body",
+    }),
+  }),
+);
+export const relations__site_pages_v_version_home_services_items = relations(
+  _site_pages_v_version_home_services_items,
+  ({ one }) => ({
+    _parentID: one(_site_pages_v, {
+      fields: [_site_pages_v_version_home_services_items._parentID],
+      references: [_site_pages_v.id],
+      relationName: "version_homeServices_items",
+    }),
+  }),
+);
+export const relations__site_pages_v_version_home_journal_items = relations(
+  _site_pages_v_version_home_journal_items,
+  ({ one }) => ({
+    _parentID: one(_site_pages_v, {
+      fields: [_site_pages_v_version_home_journal_items._parentID],
+      references: [_site_pages_v.id],
+      relationName: "version_homeJournal_items",
+    }),
+    image: one(media, {
+      fields: [_site_pages_v_version_home_journal_items.image],
+      references: [media.id],
+      relationName: "image",
+    }),
+  }),
+);
+export const relations__site_pages_v_version_about_chapters_items = relations(
+  _site_pages_v_version_about_chapters_items,
+  ({ one }) => ({
+    _parentID: one(_site_pages_v, {
+      fields: [_site_pages_v_version_about_chapters_items._parentID],
+      references: [_site_pages_v.id],
+      relationName: "version_aboutChapters_items",
+    }),
+    image: one(media, {
+      fields: [_site_pages_v_version_about_chapters_items.image],
+      references: [media.id],
+      relationName: "image",
+    }),
+  }),
+);
+export const relations__site_pages_v_version_about_sister_plate_roles =
+  relations(_site_pages_v_version_about_sister_plate_roles, ({ one }) => ({
+    _parentID: one(_site_pages_v, {
+      fields: [_site_pages_v_version_about_sister_plate_roles._parentID],
+      references: [_site_pages_v.id],
+      relationName: "version_aboutSister_plate_roles",
+    }),
+  }));
+export const relations__site_pages_v_version_photography_index_cluster_intro =
+  relations(
+    _site_pages_v_version_photography_index_cluster_intro,
+    ({ one }) => ({
+      _parentID: one(_site_pages_v, {
+        fields: [
+          _site_pages_v_version_photography_index_cluster_intro._parentID,
+        ],
+        references: [_site_pages_v.id],
+        relationName: "version_photographyIndex_clusterIntro",
+      }),
+    }),
+  );
+export const relations__site_pages_v_version_photography_index_topics =
+  relations(_site_pages_v_version_photography_index_topics, ({ one }) => ({
+    _parentID: one(_site_pages_v, {
+      fields: [_site_pages_v_version_photography_index_topics._parentID],
+      references: [_site_pages_v.id],
+      relationName: "version_photographyIndex_topics",
+    }),
+    image: one(media, {
+      fields: [_site_pages_v_version_photography_index_topics.image],
+      references: [media.id],
+      relationName: "image",
+    }),
+  }));
+export const relations__site_pages_v_version_portfolio_index_context_body =
+  relations(_site_pages_v_version_portfolio_index_context_body, ({ one }) => ({
+    _parentID: one(_site_pages_v, {
+      fields: [_site_pages_v_version_portfolio_index_context_body._parentID],
+      references: [_site_pages_v.id],
+      relationName: "version_portfolioIndex_contextBody",
+    }),
+  }));
+export const relations__site_pages_v_version_portfolio_index_slices_photos =
+  relations(_site_pages_v_version_portfolio_index_slices_photos, ({ one }) => ({
+    _parentID: one(_site_pages_v_version_portfolio_index_slices, {
+      fields: [_site_pages_v_version_portfolio_index_slices_photos._parentID],
+      references: [_site_pages_v_version_portfolio_index_slices.id],
+      relationName: "photos",
+    }),
+    image: one(media, {
+      fields: [_site_pages_v_version_portfolio_index_slices_photos.image],
+      references: [media.id],
+      relationName: "image",
+    }),
+    fullImage: one(media, {
+      fields: [_site_pages_v_version_portfolio_index_slices_photos.fullImage],
+      references: [media.id],
+      relationName: "fullImage",
+    }),
+  }));
+export const relations__site_pages_v_version_portfolio_index_slices = relations(
+  _site_pages_v_version_portfolio_index_slices,
+  ({ one, many }) => ({
+    _parentID: one(_site_pages_v, {
+      fields: [_site_pages_v_version_portfolio_index_slices._parentID],
+      references: [_site_pages_v.id],
+      relationName: "version_portfolioIndex_slices",
+    }),
+    photos: many(_site_pages_v_version_portfolio_index_slices_photos, {
+      relationName: "photos",
+    }),
+  }),
+);
+export const relations__site_pages_v_version_portfolio_index_archive_items =
+  relations(_site_pages_v_version_portfolio_index_archive_items, ({ one }) => ({
+    _parentID: one(_site_pages_v, {
+      fields: [_site_pages_v_version_portfolio_index_archive_items._parentID],
+      references: [_site_pages_v.id],
+      relationName: "version_portfolioIndex_archive_items",
+    }),
+    image: one(media, {
+      fields: [_site_pages_v_version_portfolio_index_archive_items.image],
+      references: [media.id],
+      relationName: "image",
+    }),
+    fullImage: one(media, {
+      fields: [_site_pages_v_version_portfolio_index_archive_items.fullImage],
+      references: [media.id],
+      relationName: "fullImage",
+    }),
+  }));
+export const relations__site_pages_v_version_services_index_items = relations(
+  _site_pages_v_version_services_index_items,
+  ({ one }) => ({
+    _parentID: one(_site_pages_v, {
+      fields: [_site_pages_v_version_services_index_items._parentID],
+      references: [_site_pages_v.id],
+      relationName: "version_servicesIndex_items",
+    }),
+    image1: one(media, {
+      fields: [_site_pages_v_version_services_index_items.image1],
+      references: [media.id],
+      relationName: "image1",
+    }),
+    image2: one(media, {
+      fields: [_site_pages_v_version_services_index_items.image2],
+      references: [media.id],
+      relationName: "image2",
+    }),
+  }),
+);
+export const relations__site_pages_v_version_services_index_why_cards =
+  relations(_site_pages_v_version_services_index_why_cards, ({ one }) => ({
+    _parentID: one(_site_pages_v, {
+      fields: [_site_pages_v_version_services_index_why_cards._parentID],
+      references: [_site_pages_v.id],
+      relationName: "version_servicesIndex_whyCards",
+    }),
+  }));
+export const relations__site_pages_v_version_journal_index_ticker_items =
+  relations(_site_pages_v_version_journal_index_ticker_items, ({ one }) => ({
+    _parentID: one(_site_pages_v, {
+      fields: [_site_pages_v_version_journal_index_ticker_items._parentID],
+      references: [_site_pages_v.id],
+      relationName: "version_journalIndex_tickerItems",
+    }),
+  }));
+export const relations__site_pages_v_version_journal_index_filters = relations(
+  _site_pages_v_version_journal_index_filters,
+  ({ one }) => ({
+    _parentID: one(_site_pages_v, {
+      fields: [_site_pages_v_version_journal_index_filters._parentID],
+      references: [_site_pages_v.id],
+      relationName: "version_journalIndex_filters",
+    }),
+  }),
+);
 export const relations__site_pages_v_blocks_text_block = relations(
   _site_pages_v_blocks_text_block,
   ({ one }) => ({
@@ -5695,6 +8660,114 @@ export const relations__site_pages_v = relations(
       references: [media.id],
       relationName: "version_teaserImage",
     }),
+    version_heroSlides: many(_site_pages_v_version_hero_slides, {
+      relationName: "version_heroSlides",
+    }),
+    version_homeStatement_body: many(
+      _site_pages_v_version_home_statement_body,
+      {
+        relationName: "version_homeStatement_body",
+      },
+    ),
+    version_homeChapters_items: many(
+      _site_pages_v_version_home_chapters_items,
+      {
+        relationName: "version_homeChapters_items",
+      },
+    ),
+    version_homeAbout_image: one(media, {
+      fields: [_site_pages_v.version_homeAbout_image],
+      references: [media.id],
+      relationName: "version_homeAbout_image",
+    }),
+    version_homeAbout_body: many(_site_pages_v_version_home_about_body, {
+      relationName: "version_homeAbout_body",
+    }),
+    version_homeServices_items: many(
+      _site_pages_v_version_home_services_items,
+      {
+        relationName: "version_homeServices_items",
+      },
+    ),
+    version_homeJournal_items: many(_site_pages_v_version_home_journal_items, {
+      relationName: "version_homeJournal_items",
+    }),
+    version_aboutHero_image: one(media, {
+      fields: [_site_pages_v.version_aboutHero_image],
+      references: [media.id],
+      relationName: "version_aboutHero_image",
+    }),
+    version_aboutChapters_items: many(
+      _site_pages_v_version_about_chapters_items,
+      {
+        relationName: "version_aboutChapters_items",
+      },
+    ),
+    version_aboutSister_plate_roles: many(
+      _site_pages_v_version_about_sister_plate_roles,
+      {
+        relationName: "version_aboutSister_plate_roles",
+      },
+    ),
+    version_photographyIndex_clusterIntro: many(
+      _site_pages_v_version_photography_index_cluster_intro,
+      {
+        relationName: "version_photographyIndex_clusterIntro",
+      },
+    ),
+    version_photographyIndex_topics: many(
+      _site_pages_v_version_photography_index_topics,
+      {
+        relationName: "version_photographyIndex_topics",
+      },
+    ),
+    version_portfolioIndex_contextBody: many(
+      _site_pages_v_version_portfolio_index_context_body,
+      {
+        relationName: "version_portfolioIndex_contextBody",
+      },
+    ),
+    version_portfolioIndex_slices: many(
+      _site_pages_v_version_portfolio_index_slices,
+      {
+        relationName: "version_portfolioIndex_slices",
+      },
+    ),
+    version_portfolioIndex_archive_items: many(
+      _site_pages_v_version_portfolio_index_archive_items,
+      {
+        relationName: "version_portfolioIndex_archive_items",
+      },
+    ),
+    version_servicesIndex_items: many(
+      _site_pages_v_version_services_index_items,
+      {
+        relationName: "version_servicesIndex_items",
+      },
+    ),
+    version_servicesIndex_whyCards: many(
+      _site_pages_v_version_services_index_why_cards,
+      {
+        relationName: "version_servicesIndex_whyCards",
+      },
+    ),
+    version_journalIndex_tickerItems: many(
+      _site_pages_v_version_journal_index_ticker_items,
+      {
+        relationName: "version_journalIndex_tickerItems",
+      },
+    ),
+    version_journalIndex_featured_image: one(media, {
+      fields: [_site_pages_v.version_journalIndex_featured_image],
+      references: [media.id],
+      relationName: "version_journalIndex_featured_image",
+    }),
+    version_journalIndex_filters: many(
+      _site_pages_v_version_journal_index_filters,
+      {
+        relationName: "version_journalIndex_filters",
+      },
+    ),
     _blocks_textBlock: many(_site_pages_v_blocks_text_block, {
       relationName: "_blocks_textBlock",
     }),
@@ -5720,6 +8793,21 @@ export const relations__site_pages_v = relations(
     }),
     _texts: many(_site_pages_v_texts, {
       relationName: "_texts",
+    }),
+  }),
+);
+export const relations_service_pages_hero_slides = relations(
+  service_pages_hero_slides,
+  ({ one }) => ({
+    _parentID: one(service_pages, {
+      fields: [service_pages_hero_slides._parentID],
+      references: [service_pages.id],
+      relationName: "heroSlides",
+    }),
+    image: one(media, {
+      fields: [service_pages_hero_slides.image],
+      references: [media.id],
+      relationName: "image",
     }),
   }),
 );
@@ -5857,6 +8945,76 @@ export const relations_service_pages_blocks_cta_block = relations(
     }),
   }),
 );
+export const relations_service_pages_hero_panels = relations(
+  service_pages_hero_panels,
+  ({ one }) => ({
+    _parentID: one(service_pages, {
+      fields: [service_pages_hero_panels._parentID],
+      references: [service_pages.id],
+      relationName: "heroPanels",
+    }),
+    image: one(media, {
+      fields: [service_pages_hero_panels.image],
+      references: [media.id],
+      relationName: "image",
+    }),
+  }),
+);
+export const relations_service_pages_statement_body = relations(
+  service_pages_statement_body,
+  ({ one }) => ({
+    _parentID: one(service_pages, {
+      fields: [service_pages_statement_body._parentID],
+      references: [service_pages.id],
+      relationName: "statement_body",
+    }),
+  }),
+);
+export const relations_service_pages_shooting_styles = relations(
+  service_pages_shooting_styles,
+  ({ one }) => ({
+    _parentID: one(service_pages, {
+      fields: [service_pages_shooting_styles._parentID],
+      references: [service_pages.id],
+      relationName: "shootingStyles",
+    }),
+    image: one(media, {
+      fields: [service_pages_shooting_styles.image],
+      references: [media.id],
+      relationName: "image",
+    }),
+  }),
+);
+export const relations_service_pages_portfolio_tiles = relations(
+  service_pages_portfolio_tiles,
+  ({ one }) => ({
+    _parentID: one(service_pages, {
+      fields: [service_pages_portfolio_tiles._parentID],
+      references: [service_pages.id],
+      relationName: "portfolioTiles",
+    }),
+    image: one(media, {
+      fields: [service_pages_portfolio_tiles.image],
+      references: [media.id],
+      relationName: "image",
+    }),
+  }),
+);
+export const relations_service_pages_audience_cards = relations(
+  service_pages_audience_cards,
+  ({ one }) => ({
+    _parentID: one(service_pages, {
+      fields: [service_pages_audience_cards._parentID],
+      references: [service_pages.id],
+      relationName: "audienceCards",
+    }),
+    image: one(media, {
+      fields: [service_pages_audience_cards.image],
+      references: [media.id],
+      relationName: "image",
+    }),
+  }),
+);
 export const relations_service_pages_related_pages = relations(
   service_pages_related_pages,
   ({ one }) => ({
@@ -5890,6 +9048,9 @@ export const relations_service_pages = relations(
       references: [media.id],
       relationName: "teaserImage",
     }),
+    heroSlides: many(service_pages_hero_slides, {
+      relationName: "heroSlides",
+    }),
     audience: many(service_pages_audience, {
       relationName: "audience",
     }),
@@ -5917,6 +9078,21 @@ export const relations_service_pages = relations(
     _blocks_ctaBlock: many(service_pages_blocks_cta_block, {
       relationName: "_blocks_ctaBlock",
     }),
+    heroPanels: many(service_pages_hero_panels, {
+      relationName: "heroPanels",
+    }),
+    statement_body: many(service_pages_statement_body, {
+      relationName: "statement_body",
+    }),
+    shootingStyles: many(service_pages_shooting_styles, {
+      relationName: "shootingStyles",
+    }),
+    portfolioTiles: many(service_pages_portfolio_tiles, {
+      relationName: "portfolioTiles",
+    }),
+    audienceCards: many(service_pages_audience_cards, {
+      relationName: "audienceCards",
+    }),
     relatedPages: many(service_pages_related_pages, {
       relationName: "relatedPages",
     }),
@@ -5927,6 +9103,21 @@ export const relations_service_pages = relations(
     }),
     _texts: many(service_pages_texts, {
       relationName: "_texts",
+    }),
+  }),
+);
+export const relations__service_pages_v_version_hero_slides = relations(
+  _service_pages_v_version_hero_slides,
+  ({ one }) => ({
+    _parentID: one(_service_pages_v, {
+      fields: [_service_pages_v_version_hero_slides._parentID],
+      references: [_service_pages_v.id],
+      relationName: "version_heroSlides",
+    }),
+    image: one(media, {
+      fields: [_service_pages_v_version_hero_slides.image],
+      references: [media.id],
+      relationName: "image",
     }),
   }),
 );
@@ -6064,6 +9255,76 @@ export const relations__service_pages_v_blocks_cta_block = relations(
     }),
   }),
 );
+export const relations__service_pages_v_version_hero_panels = relations(
+  _service_pages_v_version_hero_panels,
+  ({ one }) => ({
+    _parentID: one(_service_pages_v, {
+      fields: [_service_pages_v_version_hero_panels._parentID],
+      references: [_service_pages_v.id],
+      relationName: "version_heroPanels",
+    }),
+    image: one(media, {
+      fields: [_service_pages_v_version_hero_panels.image],
+      references: [media.id],
+      relationName: "image",
+    }),
+  }),
+);
+export const relations__service_pages_v_version_statement_body = relations(
+  _service_pages_v_version_statement_body,
+  ({ one }) => ({
+    _parentID: one(_service_pages_v, {
+      fields: [_service_pages_v_version_statement_body._parentID],
+      references: [_service_pages_v.id],
+      relationName: "version_statement_body",
+    }),
+  }),
+);
+export const relations__service_pages_v_version_shooting_styles = relations(
+  _service_pages_v_version_shooting_styles,
+  ({ one }) => ({
+    _parentID: one(_service_pages_v, {
+      fields: [_service_pages_v_version_shooting_styles._parentID],
+      references: [_service_pages_v.id],
+      relationName: "version_shootingStyles",
+    }),
+    image: one(media, {
+      fields: [_service_pages_v_version_shooting_styles.image],
+      references: [media.id],
+      relationName: "image",
+    }),
+  }),
+);
+export const relations__service_pages_v_version_portfolio_tiles = relations(
+  _service_pages_v_version_portfolio_tiles,
+  ({ one }) => ({
+    _parentID: one(_service_pages_v, {
+      fields: [_service_pages_v_version_portfolio_tiles._parentID],
+      references: [_service_pages_v.id],
+      relationName: "version_portfolioTiles",
+    }),
+    image: one(media, {
+      fields: [_service_pages_v_version_portfolio_tiles.image],
+      references: [media.id],
+      relationName: "image",
+    }),
+  }),
+);
+export const relations__service_pages_v_version_audience_cards = relations(
+  _service_pages_v_version_audience_cards,
+  ({ one }) => ({
+    _parentID: one(_service_pages_v, {
+      fields: [_service_pages_v_version_audience_cards._parentID],
+      references: [_service_pages_v.id],
+      relationName: "version_audienceCards",
+    }),
+    image: one(media, {
+      fields: [_service_pages_v_version_audience_cards.image],
+      references: [media.id],
+      relationName: "image",
+    }),
+  }),
+);
 export const relations__service_pages_v_version_related_pages = relations(
   _service_pages_v_version_related_pages,
   ({ one }) => ({
@@ -6102,6 +9363,9 @@ export const relations__service_pages_v = relations(
       references: [media.id],
       relationName: "version_teaserImage",
     }),
+    version_heroSlides: many(_service_pages_v_version_hero_slides, {
+      relationName: "version_heroSlides",
+    }),
     version_audience: many(_service_pages_v_version_audience, {
       relationName: "version_audience",
     }),
@@ -6128,6 +9392,21 @@ export const relations__service_pages_v = relations(
     }),
     _blocks_ctaBlock: many(_service_pages_v_blocks_cta_block, {
       relationName: "_blocks_ctaBlock",
+    }),
+    version_heroPanels: many(_service_pages_v_version_hero_panels, {
+      relationName: "version_heroPanels",
+    }),
+    version_statement_body: many(_service_pages_v_version_statement_body, {
+      relationName: "version_statement_body",
+    }),
+    version_shootingStyles: many(_service_pages_v_version_shooting_styles, {
+      relationName: "version_shootingStyles",
+    }),
+    version_portfolioTiles: many(_service_pages_v_version_portfolio_tiles, {
+      relationName: "version_portfolioTiles",
+    }),
+    version_audienceCards: many(_service_pages_v_version_audience_cards, {
+      relationName: "version_audienceCards",
     }),
     version_relatedPages: many(_service_pages_v_version_related_pages, {
       relationName: "version_relatedPages",
@@ -6157,6 +9436,93 @@ export const relations_portfolio_projects_gallery = relations(
     }),
   }),
 );
+export const relations_portfolio_projects_hero_slides = relations(
+  portfolio_projects_hero_slides,
+  ({ one }) => ({
+    _parentID: one(portfolio_projects, {
+      fields: [portfolio_projects_hero_slides._parentID],
+      references: [portfolio_projects.id],
+      relationName: "heroSlides",
+    }),
+    image: one(media, {
+      fields: [portfolio_projects_hero_slides.image],
+      references: [media.id],
+      relationName: "image",
+    }),
+  }),
+);
+export const relations_portfolio_projects_project_page_statement_stats =
+  relations(portfolio_projects_project_page_statement_stats, ({ one }) => ({
+    _parentID: one(portfolio_projects, {
+      fields: [portfolio_projects_project_page_statement_stats._parentID],
+      references: [portfolio_projects.id],
+      relationName: "projectPage_statement_stats",
+    }),
+  }));
+export const relations_portfolio_projects_project_page_context_body = relations(
+  portfolio_projects_project_page_context_body,
+  ({ one }) => ({
+    _parentID: one(portfolio_projects, {
+      fields: [portfolio_projects_project_page_context_body._parentID],
+      references: [portfolio_projects.id],
+      relationName: "projectPage_context_body",
+    }),
+  }),
+);
+export const relations_portfolio_projects_project_page_perspectives_bullets =
+  relations(
+    portfolio_projects_project_page_perspectives_bullets,
+    ({ one }) => ({
+      _parentID: one(portfolio_projects_project_page_perspectives, {
+        fields: [
+          portfolio_projects_project_page_perspectives_bullets._parentID,
+        ],
+        references: [portfolio_projects_project_page_perspectives.id],
+        relationName: "bullets",
+      }),
+    }),
+  );
+export const relations_portfolio_projects_project_page_perspectives = relations(
+  portfolio_projects_project_page_perspectives,
+  ({ one, many }) => ({
+    _parentID: one(portfolio_projects, {
+      fields: [portfolio_projects_project_page_perspectives._parentID],
+      references: [portfolio_projects.id],
+      relationName: "projectPage_perspectives",
+    }),
+    image: one(media, {
+      fields: [portfolio_projects_project_page_perspectives.image],
+      references: [media.id],
+      relationName: "image",
+    }),
+    bullets: many(portfolio_projects_project_page_perspectives_bullets, {
+      relationName: "bullets",
+    }),
+  }),
+);
+export const relations_portfolio_projects_project_page_info_cards = relations(
+  portfolio_projects_project_page_info_cards,
+  ({ one }) => ({
+    _parentID: one(portfolio_projects, {
+      fields: [portfolio_projects_project_page_info_cards._parentID],
+      references: [portfolio_projects.id],
+      relationName: "projectPage_infoCards",
+    }),
+  }),
+);
+export const relations_portfolio_projects_project_page_related_cards =
+  relations(portfolio_projects_project_page_related_cards, ({ one }) => ({
+    _parentID: one(portfolio_projects, {
+      fields: [portfolio_projects_project_page_related_cards._parentID],
+      references: [portfolio_projects.id],
+      relationName: "projectPage_relatedCards",
+    }),
+    image: one(media, {
+      fields: [portfolio_projects_project_page_related_cards.image],
+      references: [media.id],
+      relationName: "image",
+    }),
+  }));
 export const relations_portfolio_projects_blocks_text_block = relations(
   portfolio_projects_blocks_text_block,
   ({ one }) => ({
@@ -6269,21 +9635,6 @@ export const relations_portfolio_projects_texts = relations(
     }),
   }),
 );
-export const relations_portfolio_projects_rels = relations(
-  portfolio_projects_rels,
-  ({ one }) => ({
-    parent: one(portfolio_projects, {
-      fields: [portfolio_projects_rels.parent],
-      references: [portfolio_projects.id],
-      relationName: "_rels",
-    }),
-    "service-pagesID": one(service_pages, {
-      fields: [portfolio_projects_rels["service-pagesID"]],
-      references: [service_pages.id],
-      relationName: "service-pages",
-    }),
-  }),
-);
 export const relations_portfolio_projects = relations(
   portfolio_projects,
   ({ one, many }) => ({
@@ -6300,6 +9651,36 @@ export const relations_portfolio_projects = relations(
     gallery: many(portfolio_projects_gallery, {
       relationName: "gallery",
     }),
+    heroSlides: many(portfolio_projects_hero_slides, {
+      relationName: "heroSlides",
+    }),
+    projectPage_statement_stats: many(
+      portfolio_projects_project_page_statement_stats,
+      {
+        relationName: "projectPage_statement_stats",
+      },
+    ),
+    projectPage_context_body: many(
+      portfolio_projects_project_page_context_body,
+      {
+        relationName: "projectPage_context_body",
+      },
+    ),
+    projectPage_perspectives: many(
+      portfolio_projects_project_page_perspectives,
+      {
+        relationName: "projectPage_perspectives",
+      },
+    ),
+    projectPage_infoCards: many(portfolio_projects_project_page_info_cards, {
+      relationName: "projectPage_infoCards",
+    }),
+    projectPage_relatedCards: many(
+      portfolio_projects_project_page_related_cards,
+      {
+        relationName: "projectPage_relatedCards",
+      },
+    ),
     _blocks_textBlock: many(portfolio_projects_blocks_text_block, {
       relationName: "_blocks_textBlock",
     }),
@@ -6326,9 +9707,6 @@ export const relations_portfolio_projects = relations(
     _texts: many(portfolio_projects_texts, {
       relationName: "_texts",
     }),
-    _rels: many(portfolio_projects_rels, {
-      relationName: "_rels",
-    }),
   }),
 );
 export const relations__portfolio_projects_v_version_gallery = relations(
@@ -6346,6 +9724,119 @@ export const relations__portfolio_projects_v_version_gallery = relations(
     }),
   }),
 );
+export const relations__portfolio_projects_v_version_hero_slides = relations(
+  _portfolio_projects_v_version_hero_slides,
+  ({ one }) => ({
+    _parentID: one(_portfolio_projects_v, {
+      fields: [_portfolio_projects_v_version_hero_slides._parentID],
+      references: [_portfolio_projects_v.id],
+      relationName: "version_heroSlides",
+    }),
+    image: one(media, {
+      fields: [_portfolio_projects_v_version_hero_slides.image],
+      references: [media.id],
+      relationName: "image",
+    }),
+  }),
+);
+export const relations__portfolio_projects_v_version_project_page_statement_stats =
+  relations(
+    _portfolio_projects_v_version_project_page_statement_stats,
+    ({ one }) => ({
+      _parentID: one(_portfolio_projects_v, {
+        fields: [
+          _portfolio_projects_v_version_project_page_statement_stats._parentID,
+        ],
+        references: [_portfolio_projects_v.id],
+        relationName: "version_projectPage_statement_stats",
+      }),
+    }),
+  );
+export const relations__portfolio_projects_v_version_project_page_context_body =
+  relations(
+    _portfolio_projects_v_version_project_page_context_body,
+    ({ one }) => ({
+      _parentID: one(_portfolio_projects_v, {
+        fields: [
+          _portfolio_projects_v_version_project_page_context_body._parentID,
+        ],
+        references: [_portfolio_projects_v.id],
+        relationName: "version_projectPage_context_body",
+      }),
+    }),
+  );
+export const relations__portfolio_projects_v_version_project_page_perspectives_bullets =
+  relations(
+    _portfolio_projects_v_version_project_page_perspectives_bullets,
+    ({ one }) => ({
+      _parentID: one(_portfolio_projects_v_version_project_page_perspectives, {
+        fields: [
+          _portfolio_projects_v_version_project_page_perspectives_bullets._parentID,
+        ],
+        references: [
+          _portfolio_projects_v_version_project_page_perspectives.id,
+        ],
+        relationName: "bullets",
+      }),
+    }),
+  );
+export const relations__portfolio_projects_v_version_project_page_perspectives =
+  relations(
+    _portfolio_projects_v_version_project_page_perspectives,
+    ({ one, many }) => ({
+      _parentID: one(_portfolio_projects_v, {
+        fields: [
+          _portfolio_projects_v_version_project_page_perspectives._parentID,
+        ],
+        references: [_portfolio_projects_v.id],
+        relationName: "version_projectPage_perspectives",
+      }),
+      image: one(media, {
+        fields: [_portfolio_projects_v_version_project_page_perspectives.image],
+        references: [media.id],
+        relationName: "image",
+      }),
+      bullets: many(
+        _portfolio_projects_v_version_project_page_perspectives_bullets,
+        {
+          relationName: "bullets",
+        },
+      ),
+    }),
+  );
+export const relations__portfolio_projects_v_version_project_page_info_cards =
+  relations(
+    _portfolio_projects_v_version_project_page_info_cards,
+    ({ one }) => ({
+      _parentID: one(_portfolio_projects_v, {
+        fields: [
+          _portfolio_projects_v_version_project_page_info_cards._parentID,
+        ],
+        references: [_portfolio_projects_v.id],
+        relationName: "version_projectPage_infoCards",
+      }),
+    }),
+  );
+export const relations__portfolio_projects_v_version_project_page_related_cards =
+  relations(
+    _portfolio_projects_v_version_project_page_related_cards,
+    ({ one }) => ({
+      _parentID: one(_portfolio_projects_v, {
+        fields: [
+          _portfolio_projects_v_version_project_page_related_cards._parentID,
+        ],
+        references: [_portfolio_projects_v.id],
+        relationName: "version_projectPage_relatedCards",
+      }),
+      image: one(media, {
+        fields: [
+          _portfolio_projects_v_version_project_page_related_cards.image,
+        ],
+        references: [media.id],
+        relationName: "image",
+      }),
+    }),
+  );
 export const relations__portfolio_projects_v_blocks_text_block = relations(
   _portfolio_projects_v_blocks_text_block,
   ({ one }) => ({
@@ -6458,21 +9949,6 @@ export const relations__portfolio_projects_v_texts = relations(
     }),
   }),
 );
-export const relations__portfolio_projects_v_rels = relations(
-  _portfolio_projects_v_rels,
-  ({ one }) => ({
-    parent: one(_portfolio_projects_v, {
-      fields: [_portfolio_projects_v_rels.parent],
-      references: [_portfolio_projects_v.id],
-      relationName: "_rels",
-    }),
-    "service-pagesID": one(service_pages, {
-      fields: [_portfolio_projects_v_rels["service-pagesID"]],
-      references: [service_pages.id],
-      relationName: "service-pages",
-    }),
-  }),
-);
 export const relations__portfolio_projects_v = relations(
   _portfolio_projects_v,
   ({ one, many }) => ({
@@ -6494,6 +9970,39 @@ export const relations__portfolio_projects_v = relations(
     version_gallery: many(_portfolio_projects_v_version_gallery, {
       relationName: "version_gallery",
     }),
+    version_heroSlides: many(_portfolio_projects_v_version_hero_slides, {
+      relationName: "version_heroSlides",
+    }),
+    version_projectPage_statement_stats: many(
+      _portfolio_projects_v_version_project_page_statement_stats,
+      {
+        relationName: "version_projectPage_statement_stats",
+      },
+    ),
+    version_projectPage_context_body: many(
+      _portfolio_projects_v_version_project_page_context_body,
+      {
+        relationName: "version_projectPage_context_body",
+      },
+    ),
+    version_projectPage_perspectives: many(
+      _portfolio_projects_v_version_project_page_perspectives,
+      {
+        relationName: "version_projectPage_perspectives",
+      },
+    ),
+    version_projectPage_infoCards: many(
+      _portfolio_projects_v_version_project_page_info_cards,
+      {
+        relationName: "version_projectPage_infoCards",
+      },
+    ),
+    version_projectPage_relatedCards: many(
+      _portfolio_projects_v_version_project_page_related_cards,
+      {
+        relationName: "version_projectPage_relatedCards",
+      },
+    ),
     _blocks_textBlock: many(_portfolio_projects_v_blocks_text_block, {
       relationName: "_blocks_textBlock",
     }),
@@ -6519,9 +10028,6 @@ export const relations__portfolio_projects_v = relations(
     }),
     _texts: many(_portfolio_projects_v_texts, {
       relationName: "_texts",
-    }),
-    _rels: many(_portfolio_projects_v_rels, {
-      relationName: "_rels",
     }),
   }),
 );
@@ -6917,6 +10423,21 @@ export const relations__journal_posts_v = relations(
     }),
   }),
 );
+export const relations_local_seo_pages_hero_slides = relations(
+  local_seo_pages_hero_slides,
+  ({ one }) => ({
+    _parentID: one(local_seo_pages, {
+      fields: [local_seo_pages_hero_slides._parentID],
+      references: [local_seo_pages.id],
+      relationName: "heroSlides",
+    }),
+    image: one(media, {
+      fields: [local_seo_pages_hero_slides.image],
+      references: [media.id],
+      relationName: "image",
+    }),
+  }),
+);
 export const relations_local_seo_pages_local_proof = relations(
   local_seo_pages_local_proof,
   ({ one }) => ({
@@ -7041,6 +10562,76 @@ export const relations_local_seo_pages_blocks_cta_block = relations(
     }),
   }),
 );
+export const relations_local_seo_pages_hero_panels = relations(
+  local_seo_pages_hero_panels,
+  ({ one }) => ({
+    _parentID: one(local_seo_pages, {
+      fields: [local_seo_pages_hero_panels._parentID],
+      references: [local_seo_pages.id],
+      relationName: "heroPanels",
+    }),
+    image: one(media, {
+      fields: [local_seo_pages_hero_panels.image],
+      references: [media.id],
+      relationName: "image",
+    }),
+  }),
+);
+export const relations_local_seo_pages_statement_body = relations(
+  local_seo_pages_statement_body,
+  ({ one }) => ({
+    _parentID: one(local_seo_pages, {
+      fields: [local_seo_pages_statement_body._parentID],
+      references: [local_seo_pages.id],
+      relationName: "statement_body",
+    }),
+  }),
+);
+export const relations_local_seo_pages_shooting_styles = relations(
+  local_seo_pages_shooting_styles,
+  ({ one }) => ({
+    _parentID: one(local_seo_pages, {
+      fields: [local_seo_pages_shooting_styles._parentID],
+      references: [local_seo_pages.id],
+      relationName: "shootingStyles",
+    }),
+    image: one(media, {
+      fields: [local_seo_pages_shooting_styles.image],
+      references: [media.id],
+      relationName: "image",
+    }),
+  }),
+);
+export const relations_local_seo_pages_portfolio_tiles = relations(
+  local_seo_pages_portfolio_tiles,
+  ({ one }) => ({
+    _parentID: one(local_seo_pages, {
+      fields: [local_seo_pages_portfolio_tiles._parentID],
+      references: [local_seo_pages.id],
+      relationName: "portfolioTiles",
+    }),
+    image: one(media, {
+      fields: [local_seo_pages_portfolio_tiles.image],
+      references: [media.id],
+      relationName: "image",
+    }),
+  }),
+);
+export const relations_local_seo_pages_audience_cards = relations(
+  local_seo_pages_audience_cards,
+  ({ one }) => ({
+    _parentID: one(local_seo_pages, {
+      fields: [local_seo_pages_audience_cards._parentID],
+      references: [local_seo_pages.id],
+      relationName: "audienceCards",
+    }),
+    image: one(media, {
+      fields: [local_seo_pages_audience_cards.image],
+      references: [media.id],
+      relationName: "image",
+    }),
+  }),
+);
 export const relations_local_seo_pages_texts = relations(
   local_seo_pages_texts,
   ({ one }) => ({
@@ -7058,6 +10649,9 @@ export const relations_local_seo_pages = relations(
       fields: [local_seo_pages.heroImage],
       references: [media.id],
       relationName: "heroImage",
+    }),
+    heroSlides: many(local_seo_pages_hero_slides, {
+      relationName: "heroSlides",
     }),
     localProof: many(local_seo_pages_local_proof, {
       relationName: "localProof",
@@ -7083,6 +10677,21 @@ export const relations_local_seo_pages = relations(
     _blocks_ctaBlock: many(local_seo_pages_blocks_cta_block, {
       relationName: "_blocks_ctaBlock",
     }),
+    heroPanels: many(local_seo_pages_hero_panels, {
+      relationName: "heroPanels",
+    }),
+    statement_body: many(local_seo_pages_statement_body, {
+      relationName: "statement_body",
+    }),
+    shootingStyles: many(local_seo_pages_shooting_styles, {
+      relationName: "shootingStyles",
+    }),
+    portfolioTiles: many(local_seo_pages_portfolio_tiles, {
+      relationName: "portfolioTiles",
+    }),
+    audienceCards: many(local_seo_pages_audience_cards, {
+      relationName: "audienceCards",
+    }),
     canonicalServicePage: one(service_pages, {
       fields: [local_seo_pages.canonicalServicePage],
       references: [service_pages.id],
@@ -7095,6 +10704,21 @@ export const relations_local_seo_pages = relations(
     }),
     _texts: many(local_seo_pages_texts, {
       relationName: "_texts",
+    }),
+  }),
+);
+export const relations__local_seo_pages_v_version_hero_slides = relations(
+  _local_seo_pages_v_version_hero_slides,
+  ({ one }) => ({
+    _parentID: one(_local_seo_pages_v, {
+      fields: [_local_seo_pages_v_version_hero_slides._parentID],
+      references: [_local_seo_pages_v.id],
+      relationName: "version_heroSlides",
+    }),
+    image: one(media, {
+      fields: [_local_seo_pages_v_version_hero_slides.image],
+      references: [media.id],
+      relationName: "image",
     }),
   }),
 );
@@ -7220,6 +10844,76 @@ export const relations__local_seo_pages_v_blocks_cta_block = relations(
     }),
   }),
 );
+export const relations__local_seo_pages_v_version_hero_panels = relations(
+  _local_seo_pages_v_version_hero_panels,
+  ({ one }) => ({
+    _parentID: one(_local_seo_pages_v, {
+      fields: [_local_seo_pages_v_version_hero_panels._parentID],
+      references: [_local_seo_pages_v.id],
+      relationName: "version_heroPanels",
+    }),
+    image: one(media, {
+      fields: [_local_seo_pages_v_version_hero_panels.image],
+      references: [media.id],
+      relationName: "image",
+    }),
+  }),
+);
+export const relations__local_seo_pages_v_version_statement_body = relations(
+  _local_seo_pages_v_version_statement_body,
+  ({ one }) => ({
+    _parentID: one(_local_seo_pages_v, {
+      fields: [_local_seo_pages_v_version_statement_body._parentID],
+      references: [_local_seo_pages_v.id],
+      relationName: "version_statement_body",
+    }),
+  }),
+);
+export const relations__local_seo_pages_v_version_shooting_styles = relations(
+  _local_seo_pages_v_version_shooting_styles,
+  ({ one }) => ({
+    _parentID: one(_local_seo_pages_v, {
+      fields: [_local_seo_pages_v_version_shooting_styles._parentID],
+      references: [_local_seo_pages_v.id],
+      relationName: "version_shootingStyles",
+    }),
+    image: one(media, {
+      fields: [_local_seo_pages_v_version_shooting_styles.image],
+      references: [media.id],
+      relationName: "image",
+    }),
+  }),
+);
+export const relations__local_seo_pages_v_version_portfolio_tiles = relations(
+  _local_seo_pages_v_version_portfolio_tiles,
+  ({ one }) => ({
+    _parentID: one(_local_seo_pages_v, {
+      fields: [_local_seo_pages_v_version_portfolio_tiles._parentID],
+      references: [_local_seo_pages_v.id],
+      relationName: "version_portfolioTiles",
+    }),
+    image: one(media, {
+      fields: [_local_seo_pages_v_version_portfolio_tiles.image],
+      references: [media.id],
+      relationName: "image",
+    }),
+  }),
+);
+export const relations__local_seo_pages_v_version_audience_cards = relations(
+  _local_seo_pages_v_version_audience_cards,
+  ({ one }) => ({
+    _parentID: one(_local_seo_pages_v, {
+      fields: [_local_seo_pages_v_version_audience_cards._parentID],
+      references: [_local_seo_pages_v.id],
+      relationName: "version_audienceCards",
+    }),
+    image: one(media, {
+      fields: [_local_seo_pages_v_version_audience_cards.image],
+      references: [media.id],
+      relationName: "image",
+    }),
+  }),
+);
 export const relations__local_seo_pages_v_texts = relations(
   _local_seo_pages_v_texts,
   ({ one }) => ({
@@ -7242,6 +10936,9 @@ export const relations__local_seo_pages_v = relations(
       fields: [_local_seo_pages_v.version_heroImage],
       references: [media.id],
       relationName: "version_heroImage",
+    }),
+    version_heroSlides: many(_local_seo_pages_v_version_hero_slides, {
+      relationName: "version_heroSlides",
     }),
     version_localProof: many(_local_seo_pages_v_version_local_proof, {
       relationName: "version_localProof",
@@ -7266,6 +10963,21 @@ export const relations__local_seo_pages_v = relations(
     }),
     _blocks_ctaBlock: many(_local_seo_pages_v_blocks_cta_block, {
       relationName: "_blocks_ctaBlock",
+    }),
+    version_heroPanels: many(_local_seo_pages_v_version_hero_panels, {
+      relationName: "version_heroPanels",
+    }),
+    version_statement_body: many(_local_seo_pages_v_version_statement_body, {
+      relationName: "version_statement_body",
+    }),
+    version_shootingStyles: many(_local_seo_pages_v_version_shooting_styles, {
+      relationName: "version_shootingStyles",
+    }),
+    version_portfolioTiles: many(_local_seo_pages_v_version_portfolio_tiles, {
+      relationName: "version_portfolioTiles",
+    }),
+    version_audienceCards: many(_local_seo_pages_v_version_audience_cards, {
+      relationName: "version_audienceCards",
     }),
     version_canonicalServicePage: one(service_pages, {
       fields: [_local_seo_pages_v.version_canonicalServicePage],
@@ -7578,6 +11290,24 @@ export const relations_footer = relations(footer, ({ many }) => ({
 }));
 
 type DatabaseSchema = {
+  site_pages_hero_slides: typeof site_pages_hero_slides;
+  site_pages_home_statement_body: typeof site_pages_home_statement_body;
+  site_pages_home_chapters_items: typeof site_pages_home_chapters_items;
+  site_pages_home_about_body: typeof site_pages_home_about_body;
+  site_pages_home_services_items: typeof site_pages_home_services_items;
+  site_pages_home_journal_items: typeof site_pages_home_journal_items;
+  site_pages_about_chapters_items: typeof site_pages_about_chapters_items;
+  site_pages_about_sister_plate_roles: typeof site_pages_about_sister_plate_roles;
+  site_pages_photography_index_cluster_intro: typeof site_pages_photography_index_cluster_intro;
+  site_pages_photography_index_topics: typeof site_pages_photography_index_topics;
+  site_pages_portfolio_index_context_body: typeof site_pages_portfolio_index_context_body;
+  site_pages_portfolio_index_slices_photos: typeof site_pages_portfolio_index_slices_photos;
+  site_pages_portfolio_index_slices: typeof site_pages_portfolio_index_slices;
+  site_pages_portfolio_index_archive_items: typeof site_pages_portfolio_index_archive_items;
+  site_pages_services_index_items: typeof site_pages_services_index_items;
+  site_pages_services_index_why_cards: typeof site_pages_services_index_why_cards;
+  site_pages_journal_index_ticker_items: typeof site_pages_journal_index_ticker_items;
+  site_pages_journal_index_filters: typeof site_pages_journal_index_filters;
   site_pages_blocks_text_block: typeof site_pages_blocks_text_block;
   site_pages_blocks_image_sequence_items: typeof site_pages_blocks_image_sequence_items;
   site_pages_blocks_image_sequence: typeof site_pages_blocks_image_sequence;
@@ -7589,6 +11319,24 @@ type DatabaseSchema = {
   site_pages_blocks_cta_block: typeof site_pages_blocks_cta_block;
   site_pages: typeof site_pages;
   site_pages_texts: typeof site_pages_texts;
+  _site_pages_v_version_hero_slides: typeof _site_pages_v_version_hero_slides;
+  _site_pages_v_version_home_statement_body: typeof _site_pages_v_version_home_statement_body;
+  _site_pages_v_version_home_chapters_items: typeof _site_pages_v_version_home_chapters_items;
+  _site_pages_v_version_home_about_body: typeof _site_pages_v_version_home_about_body;
+  _site_pages_v_version_home_services_items: typeof _site_pages_v_version_home_services_items;
+  _site_pages_v_version_home_journal_items: typeof _site_pages_v_version_home_journal_items;
+  _site_pages_v_version_about_chapters_items: typeof _site_pages_v_version_about_chapters_items;
+  _site_pages_v_version_about_sister_plate_roles: typeof _site_pages_v_version_about_sister_plate_roles;
+  _site_pages_v_version_photography_index_cluster_intro: typeof _site_pages_v_version_photography_index_cluster_intro;
+  _site_pages_v_version_photography_index_topics: typeof _site_pages_v_version_photography_index_topics;
+  _site_pages_v_version_portfolio_index_context_body: typeof _site_pages_v_version_portfolio_index_context_body;
+  _site_pages_v_version_portfolio_index_slices_photos: typeof _site_pages_v_version_portfolio_index_slices_photos;
+  _site_pages_v_version_portfolio_index_slices: typeof _site_pages_v_version_portfolio_index_slices;
+  _site_pages_v_version_portfolio_index_archive_items: typeof _site_pages_v_version_portfolio_index_archive_items;
+  _site_pages_v_version_services_index_items: typeof _site_pages_v_version_services_index_items;
+  _site_pages_v_version_services_index_why_cards: typeof _site_pages_v_version_services_index_why_cards;
+  _site_pages_v_version_journal_index_ticker_items: typeof _site_pages_v_version_journal_index_ticker_items;
+  _site_pages_v_version_journal_index_filters: typeof _site_pages_v_version_journal_index_filters;
   _site_pages_v_blocks_text_block: typeof _site_pages_v_blocks_text_block;
   _site_pages_v_blocks_image_sequence_items: typeof _site_pages_v_blocks_image_sequence_items;
   _site_pages_v_blocks_image_sequence: typeof _site_pages_v_blocks_image_sequence;
@@ -7600,6 +11348,7 @@ type DatabaseSchema = {
   _site_pages_v_blocks_cta_block: typeof _site_pages_v_blocks_cta_block;
   _site_pages_v: typeof _site_pages_v;
   _site_pages_v_texts: typeof _site_pages_v_texts;
+  service_pages_hero_slides: typeof service_pages_hero_slides;
   service_pages_audience: typeof service_pages_audience;
   service_pages_proof_points: typeof service_pages_proof_points;
   service_pages_faq: typeof service_pages_faq;
@@ -7612,9 +11361,15 @@ type DatabaseSchema = {
   service_pages_blocks_link_list_links: typeof service_pages_blocks_link_list_links;
   service_pages_blocks_link_list: typeof service_pages_blocks_link_list;
   service_pages_blocks_cta_block: typeof service_pages_blocks_cta_block;
+  service_pages_hero_panels: typeof service_pages_hero_panels;
+  service_pages_statement_body: typeof service_pages_statement_body;
+  service_pages_shooting_styles: typeof service_pages_shooting_styles;
+  service_pages_portfolio_tiles: typeof service_pages_portfolio_tiles;
+  service_pages_audience_cards: typeof service_pages_audience_cards;
   service_pages_related_pages: typeof service_pages_related_pages;
   service_pages: typeof service_pages;
   service_pages_texts: typeof service_pages_texts;
+  _service_pages_v_version_hero_slides: typeof _service_pages_v_version_hero_slides;
   _service_pages_v_version_audience: typeof _service_pages_v_version_audience;
   _service_pages_v_version_proof_points: typeof _service_pages_v_version_proof_points;
   _service_pages_v_version_faq: typeof _service_pages_v_version_faq;
@@ -7627,10 +11382,22 @@ type DatabaseSchema = {
   _service_pages_v_blocks_link_list_links: typeof _service_pages_v_blocks_link_list_links;
   _service_pages_v_blocks_link_list: typeof _service_pages_v_blocks_link_list;
   _service_pages_v_blocks_cta_block: typeof _service_pages_v_blocks_cta_block;
+  _service_pages_v_version_hero_panels: typeof _service_pages_v_version_hero_panels;
+  _service_pages_v_version_statement_body: typeof _service_pages_v_version_statement_body;
+  _service_pages_v_version_shooting_styles: typeof _service_pages_v_version_shooting_styles;
+  _service_pages_v_version_portfolio_tiles: typeof _service_pages_v_version_portfolio_tiles;
+  _service_pages_v_version_audience_cards: typeof _service_pages_v_version_audience_cards;
   _service_pages_v_version_related_pages: typeof _service_pages_v_version_related_pages;
   _service_pages_v: typeof _service_pages_v;
   _service_pages_v_texts: typeof _service_pages_v_texts;
   portfolio_projects_gallery: typeof portfolio_projects_gallery;
+  portfolio_projects_hero_slides: typeof portfolio_projects_hero_slides;
+  portfolio_projects_project_page_statement_stats: typeof portfolio_projects_project_page_statement_stats;
+  portfolio_projects_project_page_context_body: typeof portfolio_projects_project_page_context_body;
+  portfolio_projects_project_page_perspectives_bullets: typeof portfolio_projects_project_page_perspectives_bullets;
+  portfolio_projects_project_page_perspectives: typeof portfolio_projects_project_page_perspectives;
+  portfolio_projects_project_page_info_cards: typeof portfolio_projects_project_page_info_cards;
+  portfolio_projects_project_page_related_cards: typeof portfolio_projects_project_page_related_cards;
   portfolio_projects_blocks_text_block: typeof portfolio_projects_blocks_text_block;
   portfolio_projects_blocks_image_sequence_items: typeof portfolio_projects_blocks_image_sequence_items;
   portfolio_projects_blocks_image_sequence: typeof portfolio_projects_blocks_image_sequence;
@@ -7642,8 +11409,14 @@ type DatabaseSchema = {
   portfolio_projects_blocks_cta_block: typeof portfolio_projects_blocks_cta_block;
   portfolio_projects: typeof portfolio_projects;
   portfolio_projects_texts: typeof portfolio_projects_texts;
-  portfolio_projects_rels: typeof portfolio_projects_rels;
   _portfolio_projects_v_version_gallery: typeof _portfolio_projects_v_version_gallery;
+  _portfolio_projects_v_version_hero_slides: typeof _portfolio_projects_v_version_hero_slides;
+  _portfolio_projects_v_version_project_page_statement_stats: typeof _portfolio_projects_v_version_project_page_statement_stats;
+  _portfolio_projects_v_version_project_page_context_body: typeof _portfolio_projects_v_version_project_page_context_body;
+  _portfolio_projects_v_version_project_page_perspectives_bullets: typeof _portfolio_projects_v_version_project_page_perspectives_bullets;
+  _portfolio_projects_v_version_project_page_perspectives: typeof _portfolio_projects_v_version_project_page_perspectives;
+  _portfolio_projects_v_version_project_page_info_cards: typeof _portfolio_projects_v_version_project_page_info_cards;
+  _portfolio_projects_v_version_project_page_related_cards: typeof _portfolio_projects_v_version_project_page_related_cards;
   _portfolio_projects_v_blocks_text_block: typeof _portfolio_projects_v_blocks_text_block;
   _portfolio_projects_v_blocks_image_sequence_items: typeof _portfolio_projects_v_blocks_image_sequence_items;
   _portfolio_projects_v_blocks_image_sequence: typeof _portfolio_projects_v_blocks_image_sequence;
@@ -7655,7 +11428,6 @@ type DatabaseSchema = {
   _portfolio_projects_v_blocks_cta_block: typeof _portfolio_projects_v_blocks_cta_block;
   _portfolio_projects_v: typeof _portfolio_projects_v;
   _portfolio_projects_v_texts: typeof _portfolio_projects_v_texts;
-  _portfolio_projects_v_rels: typeof _portfolio_projects_v_rels;
   portfolio_categories: typeof portfolio_categories;
   portfolio_categories_texts: typeof portfolio_categories_texts;
   _portfolio_categories_v: typeof _portfolio_categories_v;
@@ -7684,6 +11456,7 @@ type DatabaseSchema = {
   _journal_posts_v_blocks_cta_block: typeof _journal_posts_v_blocks_cta_block;
   _journal_posts_v: typeof _journal_posts_v;
   _journal_posts_v_texts: typeof _journal_posts_v_texts;
+  local_seo_pages_hero_slides: typeof local_seo_pages_hero_slides;
   local_seo_pages_local_proof: typeof local_seo_pages_local_proof;
   local_seo_pages_local_faq: typeof local_seo_pages_local_faq;
   local_seo_pages_blocks_text_block: typeof local_seo_pages_blocks_text_block;
@@ -7695,8 +11468,14 @@ type DatabaseSchema = {
   local_seo_pages_blocks_link_list_links: typeof local_seo_pages_blocks_link_list_links;
   local_seo_pages_blocks_link_list: typeof local_seo_pages_blocks_link_list;
   local_seo_pages_blocks_cta_block: typeof local_seo_pages_blocks_cta_block;
+  local_seo_pages_hero_panels: typeof local_seo_pages_hero_panels;
+  local_seo_pages_statement_body: typeof local_seo_pages_statement_body;
+  local_seo_pages_shooting_styles: typeof local_seo_pages_shooting_styles;
+  local_seo_pages_portfolio_tiles: typeof local_seo_pages_portfolio_tiles;
+  local_seo_pages_audience_cards: typeof local_seo_pages_audience_cards;
   local_seo_pages: typeof local_seo_pages;
   local_seo_pages_texts: typeof local_seo_pages_texts;
+  _local_seo_pages_v_version_hero_slides: typeof _local_seo_pages_v_version_hero_slides;
   _local_seo_pages_v_version_local_proof: typeof _local_seo_pages_v_version_local_proof;
   _local_seo_pages_v_version_local_faq: typeof _local_seo_pages_v_version_local_faq;
   _local_seo_pages_v_blocks_text_block: typeof _local_seo_pages_v_blocks_text_block;
@@ -7708,6 +11487,11 @@ type DatabaseSchema = {
   _local_seo_pages_v_blocks_link_list_links: typeof _local_seo_pages_v_blocks_link_list_links;
   _local_seo_pages_v_blocks_link_list: typeof _local_seo_pages_v_blocks_link_list;
   _local_seo_pages_v_blocks_cta_block: typeof _local_seo_pages_v_blocks_cta_block;
+  _local_seo_pages_v_version_hero_panels: typeof _local_seo_pages_v_version_hero_panels;
+  _local_seo_pages_v_version_statement_body: typeof _local_seo_pages_v_version_statement_body;
+  _local_seo_pages_v_version_shooting_styles: typeof _local_seo_pages_v_version_shooting_styles;
+  _local_seo_pages_v_version_portfolio_tiles: typeof _local_seo_pages_v_version_portfolio_tiles;
+  _local_seo_pages_v_version_audience_cards: typeof _local_seo_pages_v_version_audience_cards;
   _local_seo_pages_v: typeof _local_seo_pages_v;
   _local_seo_pages_v_texts: typeof _local_seo_pages_v_texts;
   media_image_type: typeof media_image_type;
@@ -7737,6 +11521,24 @@ type DatabaseSchema = {
   footer_social_links: typeof footer_social_links;
   footer_legal_links: typeof footer_legal_links;
   footer: typeof footer;
+  relations_site_pages_hero_slides: typeof relations_site_pages_hero_slides;
+  relations_site_pages_home_statement_body: typeof relations_site_pages_home_statement_body;
+  relations_site_pages_home_chapters_items: typeof relations_site_pages_home_chapters_items;
+  relations_site_pages_home_about_body: typeof relations_site_pages_home_about_body;
+  relations_site_pages_home_services_items: typeof relations_site_pages_home_services_items;
+  relations_site_pages_home_journal_items: typeof relations_site_pages_home_journal_items;
+  relations_site_pages_about_chapters_items: typeof relations_site_pages_about_chapters_items;
+  relations_site_pages_about_sister_plate_roles: typeof relations_site_pages_about_sister_plate_roles;
+  relations_site_pages_photography_index_cluster_intro: typeof relations_site_pages_photography_index_cluster_intro;
+  relations_site_pages_photography_index_topics: typeof relations_site_pages_photography_index_topics;
+  relations_site_pages_portfolio_index_context_body: typeof relations_site_pages_portfolio_index_context_body;
+  relations_site_pages_portfolio_index_slices_photos: typeof relations_site_pages_portfolio_index_slices_photos;
+  relations_site_pages_portfolio_index_slices: typeof relations_site_pages_portfolio_index_slices;
+  relations_site_pages_portfolio_index_archive_items: typeof relations_site_pages_portfolio_index_archive_items;
+  relations_site_pages_services_index_items: typeof relations_site_pages_services_index_items;
+  relations_site_pages_services_index_why_cards: typeof relations_site_pages_services_index_why_cards;
+  relations_site_pages_journal_index_ticker_items: typeof relations_site_pages_journal_index_ticker_items;
+  relations_site_pages_journal_index_filters: typeof relations_site_pages_journal_index_filters;
   relations_site_pages_blocks_text_block: typeof relations_site_pages_blocks_text_block;
   relations_site_pages_blocks_image_sequence_items: typeof relations_site_pages_blocks_image_sequence_items;
   relations_site_pages_blocks_image_sequence: typeof relations_site_pages_blocks_image_sequence;
@@ -7748,6 +11550,24 @@ type DatabaseSchema = {
   relations_site_pages_blocks_cta_block: typeof relations_site_pages_blocks_cta_block;
   relations_site_pages_texts: typeof relations_site_pages_texts;
   relations_site_pages: typeof relations_site_pages;
+  relations__site_pages_v_version_hero_slides: typeof relations__site_pages_v_version_hero_slides;
+  relations__site_pages_v_version_home_statement_body: typeof relations__site_pages_v_version_home_statement_body;
+  relations__site_pages_v_version_home_chapters_items: typeof relations__site_pages_v_version_home_chapters_items;
+  relations__site_pages_v_version_home_about_body: typeof relations__site_pages_v_version_home_about_body;
+  relations__site_pages_v_version_home_services_items: typeof relations__site_pages_v_version_home_services_items;
+  relations__site_pages_v_version_home_journal_items: typeof relations__site_pages_v_version_home_journal_items;
+  relations__site_pages_v_version_about_chapters_items: typeof relations__site_pages_v_version_about_chapters_items;
+  relations__site_pages_v_version_about_sister_plate_roles: typeof relations__site_pages_v_version_about_sister_plate_roles;
+  relations__site_pages_v_version_photography_index_cluster_intro: typeof relations__site_pages_v_version_photography_index_cluster_intro;
+  relations__site_pages_v_version_photography_index_topics: typeof relations__site_pages_v_version_photography_index_topics;
+  relations__site_pages_v_version_portfolio_index_context_body: typeof relations__site_pages_v_version_portfolio_index_context_body;
+  relations__site_pages_v_version_portfolio_index_slices_photos: typeof relations__site_pages_v_version_portfolio_index_slices_photos;
+  relations__site_pages_v_version_portfolio_index_slices: typeof relations__site_pages_v_version_portfolio_index_slices;
+  relations__site_pages_v_version_portfolio_index_archive_items: typeof relations__site_pages_v_version_portfolio_index_archive_items;
+  relations__site_pages_v_version_services_index_items: typeof relations__site_pages_v_version_services_index_items;
+  relations__site_pages_v_version_services_index_why_cards: typeof relations__site_pages_v_version_services_index_why_cards;
+  relations__site_pages_v_version_journal_index_ticker_items: typeof relations__site_pages_v_version_journal_index_ticker_items;
+  relations__site_pages_v_version_journal_index_filters: typeof relations__site_pages_v_version_journal_index_filters;
   relations__site_pages_v_blocks_text_block: typeof relations__site_pages_v_blocks_text_block;
   relations__site_pages_v_blocks_image_sequence_items: typeof relations__site_pages_v_blocks_image_sequence_items;
   relations__site_pages_v_blocks_image_sequence: typeof relations__site_pages_v_blocks_image_sequence;
@@ -7759,6 +11579,7 @@ type DatabaseSchema = {
   relations__site_pages_v_blocks_cta_block: typeof relations__site_pages_v_blocks_cta_block;
   relations__site_pages_v_texts: typeof relations__site_pages_v_texts;
   relations__site_pages_v: typeof relations__site_pages_v;
+  relations_service_pages_hero_slides: typeof relations_service_pages_hero_slides;
   relations_service_pages_audience: typeof relations_service_pages_audience;
   relations_service_pages_proof_points: typeof relations_service_pages_proof_points;
   relations_service_pages_faq: typeof relations_service_pages_faq;
@@ -7771,9 +11592,15 @@ type DatabaseSchema = {
   relations_service_pages_blocks_link_list_links: typeof relations_service_pages_blocks_link_list_links;
   relations_service_pages_blocks_link_list: typeof relations_service_pages_blocks_link_list;
   relations_service_pages_blocks_cta_block: typeof relations_service_pages_blocks_cta_block;
+  relations_service_pages_hero_panels: typeof relations_service_pages_hero_panels;
+  relations_service_pages_statement_body: typeof relations_service_pages_statement_body;
+  relations_service_pages_shooting_styles: typeof relations_service_pages_shooting_styles;
+  relations_service_pages_portfolio_tiles: typeof relations_service_pages_portfolio_tiles;
+  relations_service_pages_audience_cards: typeof relations_service_pages_audience_cards;
   relations_service_pages_related_pages: typeof relations_service_pages_related_pages;
   relations_service_pages_texts: typeof relations_service_pages_texts;
   relations_service_pages: typeof relations_service_pages;
+  relations__service_pages_v_version_hero_slides: typeof relations__service_pages_v_version_hero_slides;
   relations__service_pages_v_version_audience: typeof relations__service_pages_v_version_audience;
   relations__service_pages_v_version_proof_points: typeof relations__service_pages_v_version_proof_points;
   relations__service_pages_v_version_faq: typeof relations__service_pages_v_version_faq;
@@ -7786,10 +11613,22 @@ type DatabaseSchema = {
   relations__service_pages_v_blocks_link_list_links: typeof relations__service_pages_v_blocks_link_list_links;
   relations__service_pages_v_blocks_link_list: typeof relations__service_pages_v_blocks_link_list;
   relations__service_pages_v_blocks_cta_block: typeof relations__service_pages_v_blocks_cta_block;
+  relations__service_pages_v_version_hero_panels: typeof relations__service_pages_v_version_hero_panels;
+  relations__service_pages_v_version_statement_body: typeof relations__service_pages_v_version_statement_body;
+  relations__service_pages_v_version_shooting_styles: typeof relations__service_pages_v_version_shooting_styles;
+  relations__service_pages_v_version_portfolio_tiles: typeof relations__service_pages_v_version_portfolio_tiles;
+  relations__service_pages_v_version_audience_cards: typeof relations__service_pages_v_version_audience_cards;
   relations__service_pages_v_version_related_pages: typeof relations__service_pages_v_version_related_pages;
   relations__service_pages_v_texts: typeof relations__service_pages_v_texts;
   relations__service_pages_v: typeof relations__service_pages_v;
   relations_portfolio_projects_gallery: typeof relations_portfolio_projects_gallery;
+  relations_portfolio_projects_hero_slides: typeof relations_portfolio_projects_hero_slides;
+  relations_portfolio_projects_project_page_statement_stats: typeof relations_portfolio_projects_project_page_statement_stats;
+  relations_portfolio_projects_project_page_context_body: typeof relations_portfolio_projects_project_page_context_body;
+  relations_portfolio_projects_project_page_perspectives_bullets: typeof relations_portfolio_projects_project_page_perspectives_bullets;
+  relations_portfolio_projects_project_page_perspectives: typeof relations_portfolio_projects_project_page_perspectives;
+  relations_portfolio_projects_project_page_info_cards: typeof relations_portfolio_projects_project_page_info_cards;
+  relations_portfolio_projects_project_page_related_cards: typeof relations_portfolio_projects_project_page_related_cards;
   relations_portfolio_projects_blocks_text_block: typeof relations_portfolio_projects_blocks_text_block;
   relations_portfolio_projects_blocks_image_sequence_items: typeof relations_portfolio_projects_blocks_image_sequence_items;
   relations_portfolio_projects_blocks_image_sequence: typeof relations_portfolio_projects_blocks_image_sequence;
@@ -7800,9 +11639,15 @@ type DatabaseSchema = {
   relations_portfolio_projects_blocks_link_list: typeof relations_portfolio_projects_blocks_link_list;
   relations_portfolio_projects_blocks_cta_block: typeof relations_portfolio_projects_blocks_cta_block;
   relations_portfolio_projects_texts: typeof relations_portfolio_projects_texts;
-  relations_portfolio_projects_rels: typeof relations_portfolio_projects_rels;
   relations_portfolio_projects: typeof relations_portfolio_projects;
   relations__portfolio_projects_v_version_gallery: typeof relations__portfolio_projects_v_version_gallery;
+  relations__portfolio_projects_v_version_hero_slides: typeof relations__portfolio_projects_v_version_hero_slides;
+  relations__portfolio_projects_v_version_project_page_statement_stats: typeof relations__portfolio_projects_v_version_project_page_statement_stats;
+  relations__portfolio_projects_v_version_project_page_context_body: typeof relations__portfolio_projects_v_version_project_page_context_body;
+  relations__portfolio_projects_v_version_project_page_perspectives_bullets: typeof relations__portfolio_projects_v_version_project_page_perspectives_bullets;
+  relations__portfolio_projects_v_version_project_page_perspectives: typeof relations__portfolio_projects_v_version_project_page_perspectives;
+  relations__portfolio_projects_v_version_project_page_info_cards: typeof relations__portfolio_projects_v_version_project_page_info_cards;
+  relations__portfolio_projects_v_version_project_page_related_cards: typeof relations__portfolio_projects_v_version_project_page_related_cards;
   relations__portfolio_projects_v_blocks_text_block: typeof relations__portfolio_projects_v_blocks_text_block;
   relations__portfolio_projects_v_blocks_image_sequence_items: typeof relations__portfolio_projects_v_blocks_image_sequence_items;
   relations__portfolio_projects_v_blocks_image_sequence: typeof relations__portfolio_projects_v_blocks_image_sequence;
@@ -7813,7 +11658,6 @@ type DatabaseSchema = {
   relations__portfolio_projects_v_blocks_link_list: typeof relations__portfolio_projects_v_blocks_link_list;
   relations__portfolio_projects_v_blocks_cta_block: typeof relations__portfolio_projects_v_blocks_cta_block;
   relations__portfolio_projects_v_texts: typeof relations__portfolio_projects_v_texts;
-  relations__portfolio_projects_v_rels: typeof relations__portfolio_projects_v_rels;
   relations__portfolio_projects_v: typeof relations__portfolio_projects_v;
   relations_portfolio_categories_texts: typeof relations_portfolio_categories_texts;
   relations_portfolio_categories: typeof relations_portfolio_categories;
@@ -7843,6 +11687,7 @@ type DatabaseSchema = {
   relations__journal_posts_v_blocks_cta_block: typeof relations__journal_posts_v_blocks_cta_block;
   relations__journal_posts_v_texts: typeof relations__journal_posts_v_texts;
   relations__journal_posts_v: typeof relations__journal_posts_v;
+  relations_local_seo_pages_hero_slides: typeof relations_local_seo_pages_hero_slides;
   relations_local_seo_pages_local_proof: typeof relations_local_seo_pages_local_proof;
   relations_local_seo_pages_local_faq: typeof relations_local_seo_pages_local_faq;
   relations_local_seo_pages_blocks_text_block: typeof relations_local_seo_pages_blocks_text_block;
@@ -7854,8 +11699,14 @@ type DatabaseSchema = {
   relations_local_seo_pages_blocks_link_list_links: typeof relations_local_seo_pages_blocks_link_list_links;
   relations_local_seo_pages_blocks_link_list: typeof relations_local_seo_pages_blocks_link_list;
   relations_local_seo_pages_blocks_cta_block: typeof relations_local_seo_pages_blocks_cta_block;
+  relations_local_seo_pages_hero_panels: typeof relations_local_seo_pages_hero_panels;
+  relations_local_seo_pages_statement_body: typeof relations_local_seo_pages_statement_body;
+  relations_local_seo_pages_shooting_styles: typeof relations_local_seo_pages_shooting_styles;
+  relations_local_seo_pages_portfolio_tiles: typeof relations_local_seo_pages_portfolio_tiles;
+  relations_local_seo_pages_audience_cards: typeof relations_local_seo_pages_audience_cards;
   relations_local_seo_pages_texts: typeof relations_local_seo_pages_texts;
   relations_local_seo_pages: typeof relations_local_seo_pages;
+  relations__local_seo_pages_v_version_hero_slides: typeof relations__local_seo_pages_v_version_hero_slides;
   relations__local_seo_pages_v_version_local_proof: typeof relations__local_seo_pages_v_version_local_proof;
   relations__local_seo_pages_v_version_local_faq: typeof relations__local_seo_pages_v_version_local_faq;
   relations__local_seo_pages_v_blocks_text_block: typeof relations__local_seo_pages_v_blocks_text_block;
@@ -7867,6 +11718,11 @@ type DatabaseSchema = {
   relations__local_seo_pages_v_blocks_link_list_links: typeof relations__local_seo_pages_v_blocks_link_list_links;
   relations__local_seo_pages_v_blocks_link_list: typeof relations__local_seo_pages_v_blocks_link_list;
   relations__local_seo_pages_v_blocks_cta_block: typeof relations__local_seo_pages_v_blocks_cta_block;
+  relations__local_seo_pages_v_version_hero_panels: typeof relations__local_seo_pages_v_version_hero_panels;
+  relations__local_seo_pages_v_version_statement_body: typeof relations__local_seo_pages_v_version_statement_body;
+  relations__local_seo_pages_v_version_shooting_styles: typeof relations__local_seo_pages_v_version_shooting_styles;
+  relations__local_seo_pages_v_version_portfolio_tiles: typeof relations__local_seo_pages_v_version_portfolio_tiles;
+  relations__local_seo_pages_v_version_audience_cards: typeof relations__local_seo_pages_v_version_audience_cards;
   relations__local_seo_pages_v_texts: typeof relations__local_seo_pages_v_texts;
   relations__local_seo_pages_v: typeof relations__local_seo_pages_v;
   relations_media_image_type: typeof relations_media_image_type;

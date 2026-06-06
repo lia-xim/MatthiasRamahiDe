@@ -2,9 +2,29 @@ import type { Field } from 'payload'
 
 import { mediaGalleryPickerComponent, mediaRelationshipField } from './editorialImages'
 
-export const homeHeroSlides: Field = {
+type HeroSlidesFieldOptions = {
+  adminDescription: string
+  galleryIntro: string
+  galleryTitle: string
+  headlineDefault?: string
+  headlineRequired?: boolean
+  label?: string
+  pickerButtonLabel: string
+  rowDefaults?: Record<string, string>
+}
+
+export const heroSlidesField = ({
+  adminDescription,
+  galleryIntro,
+  galleryTitle,
+  headlineDefault = 'Fotografie',
+  headlineRequired = true,
+  label = 'Hero-Slider',
+  pickerButtonLabel,
+  rowDefaults = {},
+}: HeroSlidesFieldOptions): Field => ({
   name: 'heroSlides',
-  label: 'Hero-Slider',
+  label,
   type: 'array',
   minRows: 1,
   maxRows: 20,
@@ -16,24 +36,24 @@ export const homeHeroSlides: Field = {
     components: {
       beforeInput: [
         mediaGalleryPickerComponent({
-          buttonLabel: 'Bilder als Slides uebernehmen',
-          intro: 'Mehrere Hero-Bilder in grosser Vorschau auswaehlen. Die Slide-Texte kannst du danach pro Zeile feinziehen.',
+          buttonLabel: pickerButtonLabel,
+          intro: galleryIntro,
           rowDefaults: {
-            headlineLine1: 'Fotografie',
+            headlineLine1: headlineDefault,
             headlineLine2: '',
             lead: '',
             primaryHref: '#anfrage',
             primaryLabel: 'Projekt anfragen',
             secondaryHref: '/portfolio.html',
             secondaryLabel: 'Arbeiten ansehen',
+            ...rowDefaults,
           },
-          title: 'Hero-Slider visuell zusammenstellen',
+          title: galleryTitle,
         }),
       ],
     },
     initCollapsed: true,
-    description:
-      'Startseiten-Slideshow: Pro Slide ein Bild, Titel, Kurztext und optionale Buttons. Die Reihenfolge hier ist die sichtbare Reihenfolge im Hero.',
+    description: adminDescription,
   },
   fields: [
     mediaRelationshipField({
@@ -53,8 +73,8 @@ export const homeHeroSlides: Field = {
           name: 'headlineLine1',
           label: 'Titel Zeile 1',
           type: 'text',
-          required: true,
-          defaultValue: 'Fotografie',
+          required: headlineRequired,
+          defaultValue: headlineDefault,
           admin: {
             width: '50%',
           },
@@ -140,4 +160,28 @@ export const homeHeroSlides: Field = {
       ],
     },
   ],
-}
+})
+
+export const homeHeroSlides: Field = heroSlidesField({
+  adminDescription:
+    'Startseiten-Slideshow: Pro Slide ein Bild, Titel, Kurztext und optionale Buttons. Die Reihenfolge hier ist die sichtbare Reihenfolge im Hero.',
+  galleryIntro:
+    'Mehrere Hero-Bilder in grosser Vorschau auswaehlen. Die Slide-Texte kannst du danach pro Zeile feinziehen.',
+  galleryTitle: 'Hero-Slider visuell zusammenstellen',
+  pickerButtonLabel: 'Bilder als Slides uebernehmen',
+})
+
+export const serviceHeroSlides: Field = heroSlidesField({
+  adminDescription:
+    'Hero-Slider fuer diese Themen-/SEO-Seite. Bilder, Titelzeilen, Kurztext und Buttons steuern den sichtbaren Hero dieser Seite.',
+  galleryIntro:
+    'Mehrere Hero-Bilder fuer diese konkrete Fotografie-Seite auswaehlen. Die Reihenfolge hier ist die Bildreihenfolge im Hero.',
+  galleryTitle: 'Hero-Bilder dieser Seite visuell zusammenstellen',
+  headlineDefault: '',
+  headlineRequired: false,
+  pickerButtonLabel: 'Hero-Bilder als Slides uebernehmen',
+  rowDefaults: {
+    primaryLabel: 'Shooting anfragen',
+    secondaryLabel: 'Portfolio',
+  },
+})
