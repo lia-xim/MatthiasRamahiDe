@@ -107,7 +107,7 @@ setIfEmpty('processSection', {
 
 setIfEmpty('processSteps', [
   {
-    ...(await img('_DSC9301-Enhanced-NR-2.webp')),
+    ...(await img('_DSC9301-Enhanced-NR-1.webp')),
     imageLabel: 'Anfrage',
     title: 'Anfrage',
     text: 'Kurze Nachricht reicht - Anlass, Person oder Team, gewuenschte Wirkung, Zeitraum. Antwort innerhalb von 24 Stunden mit erster Einordnung und naechsten Schritten.',
@@ -181,4 +181,3 @@ if (filled.length) {
 }
 
 process.exit(0)
-
