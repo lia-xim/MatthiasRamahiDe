@@ -187,7 +187,7 @@ const relatedAreas = [
 // shootingStyles[i].image, Galerie aus portfolioTiles[i].image. Leer → Fallback.
 const sectionImageOverrides = [
   ...heroSlides.map(() => undefined),
-  ...storyCards.map((_, index) => doc?.shootingStyles?.[index]?.image),
+  ...storyCards.map((_, index) => index === 0 ? doc?.statement?.image || doc?.shootingStyles?.[index]?.image : doc?.shootingStyles?.[index]?.image),
   ...portfolioTiles.map((_, index) => doc?.portfolioTiles?.[index]?.image),
   ...relatedAreas.map(() => undefined),
 ]

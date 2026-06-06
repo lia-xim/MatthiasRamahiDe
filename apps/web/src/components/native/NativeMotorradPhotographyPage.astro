@@ -105,7 +105,7 @@ const sectionImageOverrides = [
   doc?.heroPanels?.[0]?.image,
   doc?.heroPanels?.[1]?.image,
   doc?.heroPanels?.[2]?.image,
-  ...Array.from({ length: 6 }, (_, index) => doc?.shootingStyles?.[index]?.image),
+  ...Array.from({ length: 6 }, (_, index) => index === 0 ? doc?.statement?.image || doc?.shootingStyles?.[index]?.image : doc?.shootingStyles?.[index]?.image),
   ...Array.from({ length: 6 }, (_, index) => doc?.portfolioTiles?.[index]?.image),
 ]
 const visualSlots = familyVisualSlots(visualDoc, [

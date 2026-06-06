@@ -106,7 +106,7 @@ const sectionImageOverrides = [
   ...Array.from({ length: 4 }, (_, index) => doc?.heroPanels?.[index]?.image),
   // Modul-Karten lesen Text aus shootingStyles[i] || audienceCards[i] — das Bild
   // folgt derselben Karte, damit Text und Bild aus demselben Feld kommen.
-  ...Array.from({ length: 5 }, (_, index) => (doc?.shootingStyles?.[index] || doc?.audienceCards?.[index])?.image),
+  ...Array.from({ length: 5 }, (_, index) => index === 0 ? doc?.statement?.image || (doc?.shootingStyles?.[index] || doc?.audienceCards?.[index])?.image : (doc?.shootingStyles?.[index] || doc?.audienceCards?.[index])?.image),
   ...Array.from({ length: 9 }, (_, index) => doc?.portfolioTiles?.[index]?.image),
   ...Array.from({ length: 9 }, () => undefined),
 ]
