@@ -24,7 +24,9 @@ const isEmpty = (value: unknown) =>
   value == null ||
   (typeof value === 'string' && value.trim() === '') ||
   (Array.isArray(value) && value.length === 0) ||
-  (typeof value === 'object' && !Array.isArray(value) && Object.keys(value as Record<string, unknown>).length === 0)
+  (typeof value === 'object' &&
+    !Array.isArray(value) &&
+    Object.values(value as Record<string, unknown>).every(isEmpty))
 
 async function mediaId(filename: string) {
   const result = await payload.find({
