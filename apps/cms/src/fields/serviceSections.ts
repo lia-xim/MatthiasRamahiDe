@@ -86,12 +86,13 @@ export const serviceSectionsTab: Tab = {
     },
     {
       name: 'shootingStyles',
-      label: 'Aufnahme-Stile / Perspektiven',
+      label: 'Aufnahme-Stile / Perspektiven / Module',
       type: 'array',
       maxRows: 8,
       admin: {
         initCollapsed: true,
-        description: 'Bild-/Aufnahme-Perspektiven wie Exterieur, Interieur, Details oder Cinematic.',
+        description:
+          'Sichtbare Modul-/Kachelsektion. Bei Portrait z. B. Founder & Speaker, Agentur & Kanzlei, Magazin & Strecke.',
       },
       fields: [
         mediaRelationshipField({ name: 'image', label: 'Bild' }),
@@ -120,8 +121,33 @@ export const serviceSectionsTab: Tab = {
       ],
     },
     {
+      name: 'processSection',
+      label: 'Ablauf-Sektion',
+      type: 'group',
+      admin: {
+        description: 'Ueberschrift und Intro der Ablauf-/Schritte-Sektion, z. B. "Ablauf."',
+      },
+      fields: [...sectionHeadingFields, { name: 'lead', label: 'Introtext', type: 'textarea' }],
+    },
+    {
+      name: 'processSteps',
+      label: 'Ablauf-Schritte',
+      type: 'array',
+      maxRows: 8,
+      admin: {
+        initCollapsed: true,
+        description: 'Einzelne Schritte der sichtbaren Ablaufsektion mit Bild, Titel und Beschreibung.',
+      },
+      fields: [
+        mediaRelationshipField({ name: 'image', label: 'Bild' }),
+        { name: 'imageLabel', label: 'Bild-Alt / kurzer Bildname', type: 'text' },
+        { name: 'title', label: 'Titel', type: 'text', required: true },
+        { name: 'text', label: 'Beschreibung', type: 'textarea' },
+      ],
+    },
+    {
       name: 'audienceSection',
-      label: 'Zielgruppen-Sektion',
+      label: 'Zielgruppen-Sektion (falls im Layout sichtbar)',
       type: 'group',
       fields: [
         { name: 'headline', label: 'Headline', type: 'text' },
@@ -130,7 +156,7 @@ export const serviceSectionsTab: Tab = {
     },
     {
       name: 'audienceCards',
-      label: 'Fuer wen / passende Anfragen',
+      label: 'Fuer wen / passende Anfragen (falls im Layout sichtbar)',
       type: 'array',
       maxRows: 8,
       admin: { initCollapsed: true, description: 'Zielgruppen mit Bild, Nummer, Titel und kurzer Beschreibung.' },

@@ -2187,6 +2187,31 @@ export const service_pages_portfolio_tiles = sqliteTable(
   ],
 );
 
+export const service_pages_process_steps = sqliteTable(
+  "service_pages_process_steps",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: text("id").primaryKey(),
+    image: integer("image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    imageLabel: text("image_label"),
+    title: text("title"),
+    text: text("text"),
+  },
+  (columns) => [
+    index("service_pages_process_steps_order_idx").on(columns._order),
+    index("service_pages_process_steps_parent_id_idx").on(columns._parentID),
+    index("service_pages_process_steps_image_idx").on(columns.image),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [service_pages.id],
+      name: "service_pages_process_steps_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
 export const service_pages_audience_cards = sqliteTable(
   "service_pages_audience_cards",
   {
@@ -2663,6 +2688,9 @@ export const service_pages = sqliteTable(
     focusSection_lead: text("focus_section_lead"),
     gallerySection_headline: text("gallery_section_headline"),
     gallerySection_lead: text("gallery_section_lead"),
+    processSection_headline: text("process_section_headline"),
+    processSection_emphasis: text("process_section_emphasis"),
+    processSection_lead: text("process_section_lead"),
     audienceSection_headline: text("audience_section_headline"),
     audienceSection_lead: text("audience_section_lead"),
     relatedSection_headline: text("related_section_headline"),
@@ -2897,6 +2925,36 @@ export const _service_pages_v_version_portfolio_tiles = sqliteTable(
       columns: [columns["_parentID"]],
       foreignColumns: [_service_pages_v.id],
       name: "_service_pages_v_version_portfolio_tiles_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
+export const _service_pages_v_version_process_steps = sqliteTable(
+  "_service_pages_v_version_process_steps",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: integer("id").primaryKey(),
+    image: integer("image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    imageLabel: text("image_label"),
+    title: text("title"),
+    text: text("text"),
+    _uuid: text("_uuid"),
+  },
+  (columns) => [
+    index("_service_pages_v_version_process_steps_order_idx").on(
+      columns._order,
+    ),
+    index("_service_pages_v_version_process_steps_parent_id_idx").on(
+      columns._parentID,
+    ),
+    index("_service_pages_v_version_process_steps_image_idx").on(columns.image),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [_service_pages_v.id],
+      name: "_service_pages_v_version_process_steps_parent_id_fk",
     }).onDelete("cascade"),
   ],
 );
@@ -3441,6 +3499,9 @@ export const _service_pages_v = sqliteTable(
     version_focusSection_lead: text("version_focus_section_lead"),
     version_gallerySection_headline: text("version_gallery_section_headline"),
     version_gallerySection_lead: text("version_gallery_section_lead"),
+    version_processSection_headline: text("version_process_section_headline"),
+    version_processSection_emphasis: text("version_process_section_emphasis"),
+    version_processSection_lead: text("version_process_section_lead"),
     version_audienceSection_headline: text("version_audience_section_headline"),
     version_audienceSection_lead: text("version_audience_section_lead"),
     version_relatedSection_headline: text("version_related_section_headline"),
@@ -6328,6 +6389,31 @@ export const local_seo_pages_portfolio_tiles = sqliteTable(
   ],
 );
 
+export const local_seo_pages_process_steps = sqliteTable(
+  "local_seo_pages_process_steps",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: text("id").primaryKey(),
+    image: integer("image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    imageLabel: text("image_label"),
+    title: text("title"),
+    text: text("text"),
+  },
+  (columns) => [
+    index("local_seo_pages_process_steps_order_idx").on(columns._order),
+    index("local_seo_pages_process_steps_parent_id_idx").on(columns._parentID),
+    index("local_seo_pages_process_steps_image_idx").on(columns.image),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [local_seo_pages.id],
+      name: "local_seo_pages_process_steps_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
 export const local_seo_pages_audience_cards = sqliteTable(
   "local_seo_pages_audience_cards",
   {
@@ -6473,6 +6559,9 @@ export const local_seo_pages = sqliteTable(
     focusSection_lead: text("focus_section_lead"),
     gallerySection_headline: text("gallery_section_headline"),
     gallerySection_lead: text("gallery_section_lead"),
+    processSection_headline: text("process_section_headline"),
+    processSection_emphasis: text("process_section_emphasis"),
+    processSection_lead: text("process_section_lead"),
     audienceSection_headline: text("audience_section_headline"),
     audienceSection_lead: text("audience_section_lead"),
     relatedSection_headline: text("related_section_headline"),
@@ -7034,6 +7123,38 @@ export const _local_seo_pages_v_version_portfolio_tiles = sqliteTable(
   ],
 );
 
+export const _local_seo_pages_v_version_process_steps = sqliteTable(
+  "_local_seo_pages_v_version_process_steps",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: integer("id").primaryKey(),
+    image: integer("image_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    imageLabel: text("image_label"),
+    title: text("title"),
+    text: text("text"),
+    _uuid: text("_uuid"),
+  },
+  (columns) => [
+    index("_local_seo_pages_v_version_process_steps_order_idx").on(
+      columns._order,
+    ),
+    index("_local_seo_pages_v_version_process_steps_parent_id_idx").on(
+      columns._parentID,
+    ),
+    index("_local_seo_pages_v_version_process_steps_image_idx").on(
+      columns.image,
+    ),
+    foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [_local_seo_pages_v.id],
+      name: "_local_seo_pages_v_version_process_steps_parent_id_fk",
+    }).onDelete("cascade"),
+  ],
+);
+
 export const _local_seo_pages_v_version_audience_cards = sqliteTable(
   "_local_seo_pages_v_version_audience_cards",
   {
@@ -7205,6 +7326,9 @@ export const _local_seo_pages_v = sqliteTable(
     version_focusSection_lead: text("version_focus_section_lead"),
     version_gallerySection_headline: text("version_gallery_section_headline"),
     version_gallerySection_lead: text("version_gallery_section_lead"),
+    version_processSection_headline: text("version_process_section_headline"),
+    version_processSection_emphasis: text("version_process_section_emphasis"),
+    version_processSection_lead: text("version_process_section_lead"),
     version_audienceSection_headline: text("version_audience_section_headline"),
     version_audienceSection_lead: text("version_audience_section_lead"),
     version_relatedSection_headline: text("version_related_section_headline"),
@@ -9342,6 +9466,21 @@ export const relations_service_pages_portfolio_tiles = relations(
     }),
   }),
 );
+export const relations_service_pages_process_steps = relations(
+  service_pages_process_steps,
+  ({ one }) => ({
+    _parentID: one(service_pages, {
+      fields: [service_pages_process_steps._parentID],
+      references: [service_pages.id],
+      relationName: "processSteps",
+    }),
+    image: one(media, {
+      fields: [service_pages_process_steps.image],
+      references: [media.id],
+      relationName: "image",
+    }),
+  }),
+);
 export const relations_service_pages_audience_cards = relations(
   service_pages_audience_cards,
   ({ one }) => ({
@@ -9579,6 +9718,9 @@ export const relations_service_pages = relations(
     portfolioTiles: many(service_pages_portfolio_tiles, {
       relationName: "portfolioTiles",
     }),
+    processSteps: many(service_pages_process_steps, {
+      relationName: "processSteps",
+    }),
     audienceCards: many(service_pages_audience_cards, {
       relationName: "audienceCards",
     }),
@@ -9699,6 +9841,21 @@ export const relations__service_pages_v_version_portfolio_tiles = relations(
     }),
     image: one(media, {
       fields: [_service_pages_v_version_portfolio_tiles.image],
+      references: [media.id],
+      relationName: "image",
+    }),
+  }),
+);
+export const relations__service_pages_v_version_process_steps = relations(
+  _service_pages_v_version_process_steps,
+  ({ one }) => ({
+    _parentID: one(_service_pages_v, {
+      fields: [_service_pages_v_version_process_steps._parentID],
+      references: [_service_pages_v.id],
+      relationName: "version_processSteps",
+    }),
+    image: one(media, {
+      fields: [_service_pages_v_version_process_steps.image],
       references: [media.id],
       relationName: "image",
     }),
@@ -9944,6 +10101,9 @@ export const relations__service_pages_v = relations(
     }),
     version_portfolioTiles: many(_service_pages_v_version_portfolio_tiles, {
       relationName: "version_portfolioTiles",
+    }),
+    version_processSteps: many(_service_pages_v_version_process_steps, {
+      relationName: "version_processSteps",
     }),
     version_audienceCards: many(_service_pages_v_version_audience_cards, {
       relationName: "version_audienceCards",
@@ -11202,6 +11362,21 @@ export const relations_local_seo_pages_portfolio_tiles = relations(
     }),
   }),
 );
+export const relations_local_seo_pages_process_steps = relations(
+  local_seo_pages_process_steps,
+  ({ one }) => ({
+    _parentID: one(local_seo_pages, {
+      fields: [local_seo_pages_process_steps._parentID],
+      references: [local_seo_pages.id],
+      relationName: "processSteps",
+    }),
+    image: one(media, {
+      fields: [local_seo_pages_process_steps.image],
+      references: [media.id],
+      relationName: "image",
+    }),
+  }),
+);
 export const relations_local_seo_pages_audience_cards = relations(
   local_seo_pages_audience_cards,
   ({ one }) => ({
@@ -11323,6 +11498,9 @@ export const relations_local_seo_pages = relations(
     }),
     portfolioTiles: many(local_seo_pages_portfolio_tiles, {
       relationName: "portfolioTiles",
+    }),
+    processSteps: many(local_seo_pages_process_steps, {
+      relationName: "processSteps",
     }),
     audienceCards: many(local_seo_pages_audience_cards, {
       relationName: "audienceCards",
@@ -11549,6 +11727,21 @@ export const relations__local_seo_pages_v_version_portfolio_tiles = relations(
     }),
   }),
 );
+export const relations__local_seo_pages_v_version_process_steps = relations(
+  _local_seo_pages_v_version_process_steps,
+  ({ one }) => ({
+    _parentID: one(_local_seo_pages_v, {
+      fields: [_local_seo_pages_v_version_process_steps._parentID],
+      references: [_local_seo_pages_v.id],
+      relationName: "version_processSteps",
+    }),
+    image: one(media, {
+      fields: [_local_seo_pages_v_version_process_steps.image],
+      references: [media.id],
+      relationName: "image",
+    }),
+  }),
+);
 export const relations__local_seo_pages_v_version_audience_cards = relations(
   _local_seo_pages_v_version_audience_cards,
   ({ one }) => ({
@@ -11679,6 +11872,9 @@ export const relations__local_seo_pages_v = relations(
     }),
     version_portfolioTiles: many(_local_seo_pages_v_version_portfolio_tiles, {
       relationName: "version_portfolioTiles",
+    }),
+    version_processSteps: many(_local_seo_pages_v_version_process_steps, {
+      relationName: "version_processSteps",
     }),
     version_audienceCards: many(_local_seo_pages_v_version_audience_cards, {
       relationName: "version_audienceCards",
@@ -12078,6 +12274,7 @@ type DatabaseSchema = {
   service_pages_statement_body: typeof service_pages_statement_body;
   service_pages_shooting_styles: typeof service_pages_shooting_styles;
   service_pages_portfolio_tiles: typeof service_pages_portfolio_tiles;
+  service_pages_process_steps: typeof service_pages_process_steps;
   service_pages_audience_cards: typeof service_pages_audience_cards;
   service_pages_related_section_items: typeof service_pages_related_section_items;
   service_pages_faq: typeof service_pages_faq;
@@ -12102,6 +12299,7 @@ type DatabaseSchema = {
   _service_pages_v_version_statement_body: typeof _service_pages_v_version_statement_body;
   _service_pages_v_version_shooting_styles: typeof _service_pages_v_version_shooting_styles;
   _service_pages_v_version_portfolio_tiles: typeof _service_pages_v_version_portfolio_tiles;
+  _service_pages_v_version_process_steps: typeof _service_pages_v_version_process_steps;
   _service_pages_v_version_audience_cards: typeof _service_pages_v_version_audience_cards;
   _service_pages_v_version_related_section_items: typeof _service_pages_v_version_related_section_items;
   _service_pages_v_version_faq: typeof _service_pages_v_version_faq;
@@ -12203,6 +12401,7 @@ type DatabaseSchema = {
   local_seo_pages_statement_body: typeof local_seo_pages_statement_body;
   local_seo_pages_shooting_styles: typeof local_seo_pages_shooting_styles;
   local_seo_pages_portfolio_tiles: typeof local_seo_pages_portfolio_tiles;
+  local_seo_pages_process_steps: typeof local_seo_pages_process_steps;
   local_seo_pages_audience_cards: typeof local_seo_pages_audience_cards;
   local_seo_pages_related_section_items: typeof local_seo_pages_related_section_items;
   local_seo_pages_faq: typeof local_seo_pages_faq;
@@ -12226,6 +12425,7 @@ type DatabaseSchema = {
   _local_seo_pages_v_version_statement_body: typeof _local_seo_pages_v_version_statement_body;
   _local_seo_pages_v_version_shooting_styles: typeof _local_seo_pages_v_version_shooting_styles;
   _local_seo_pages_v_version_portfolio_tiles: typeof _local_seo_pages_v_version_portfolio_tiles;
+  _local_seo_pages_v_version_process_steps: typeof _local_seo_pages_v_version_process_steps;
   _local_seo_pages_v_version_audience_cards: typeof _local_seo_pages_v_version_audience_cards;
   _local_seo_pages_v_version_related_section_items: typeof _local_seo_pages_v_version_related_section_items;
   _local_seo_pages_v_version_faq: typeof _local_seo_pages_v_version_faq;
@@ -12323,6 +12523,7 @@ type DatabaseSchema = {
   relations_service_pages_statement_body: typeof relations_service_pages_statement_body;
   relations_service_pages_shooting_styles: typeof relations_service_pages_shooting_styles;
   relations_service_pages_portfolio_tiles: typeof relations_service_pages_portfolio_tiles;
+  relations_service_pages_process_steps: typeof relations_service_pages_process_steps;
   relations_service_pages_audience_cards: typeof relations_service_pages_audience_cards;
   relations_service_pages_related_section_items: typeof relations_service_pages_related_section_items;
   relations_service_pages_faq: typeof relations_service_pages_faq;
@@ -12347,6 +12548,7 @@ type DatabaseSchema = {
   relations__service_pages_v_version_statement_body: typeof relations__service_pages_v_version_statement_body;
   relations__service_pages_v_version_shooting_styles: typeof relations__service_pages_v_version_shooting_styles;
   relations__service_pages_v_version_portfolio_tiles: typeof relations__service_pages_v_version_portfolio_tiles;
+  relations__service_pages_v_version_process_steps: typeof relations__service_pages_v_version_process_steps;
   relations__service_pages_v_version_audience_cards: typeof relations__service_pages_v_version_audience_cards;
   relations__service_pages_v_version_related_section_items: typeof relations__service_pages_v_version_related_section_items;
   relations__service_pages_v_version_faq: typeof relations__service_pages_v_version_faq;
@@ -12448,6 +12650,7 @@ type DatabaseSchema = {
   relations_local_seo_pages_statement_body: typeof relations_local_seo_pages_statement_body;
   relations_local_seo_pages_shooting_styles: typeof relations_local_seo_pages_shooting_styles;
   relations_local_seo_pages_portfolio_tiles: typeof relations_local_seo_pages_portfolio_tiles;
+  relations_local_seo_pages_process_steps: typeof relations_local_seo_pages_process_steps;
   relations_local_seo_pages_audience_cards: typeof relations_local_seo_pages_audience_cards;
   relations_local_seo_pages_related_section_items: typeof relations_local_seo_pages_related_section_items;
   relations_local_seo_pages_faq: typeof relations_local_seo_pages_faq;
@@ -12471,6 +12674,7 @@ type DatabaseSchema = {
   relations__local_seo_pages_v_version_statement_body: typeof relations__local_seo_pages_v_version_statement_body;
   relations__local_seo_pages_v_version_shooting_styles: typeof relations__local_seo_pages_v_version_shooting_styles;
   relations__local_seo_pages_v_version_portfolio_tiles: typeof relations__local_seo_pages_v_version_portfolio_tiles;
+  relations__local_seo_pages_v_version_process_steps: typeof relations__local_seo_pages_v_version_process_steps;
   relations__local_seo_pages_v_version_audience_cards: typeof relations__local_seo_pages_v_version_audience_cards;
   relations__local_seo_pages_v_version_related_section_items: typeof relations__local_seo_pages_v_version_related_section_items;
   relations__local_seo_pages_v_version_faq: typeof relations__local_seo_pages_v_version_faq;

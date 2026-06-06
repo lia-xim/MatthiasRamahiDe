@@ -117,6 +117,8 @@ export type PayloadDoc = {
   shootingStyles?: Array<{ image?: PayloadMedia | string; title?: string; text?: string }>
   gallerySection?: { headline?: string; lead?: string }
   portfolioTiles?: Array<{ image?: PayloadMedia | string; label?: string }>
+  processSection?: { headline?: string; emphasis?: string; lead?: string }
+  processSteps?: Array<{ image?: PayloadMedia | string; imageLabel?: string; title?: string; text?: string }>
   audienceSection?: { headline?: string; lead?: string }
   audienceCards?: Array<{ image?: PayloadMedia | string; number?: string; title?: string; text?: string }>
   relatedSection?: {

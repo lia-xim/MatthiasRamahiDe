@@ -17,6 +17,7 @@ import * as migration_20260603_150000_journal_featured_section from './20260603_
 import * as migration_20260606_120000_service_local_hero_slides from './20260606_120000_service_local_hero_slides';
 import * as migration_20260606_142000_service_page_expanded_sections from './20260606_142000_service_page_expanded_sections';
 import * as migration_20260606_151000_service_statement_images from './20260606_151000_service_statement_images';
+import * as migration_20260606_173000_service_process_sections from './20260606_173000_service_process_sections';
 
 export const migrations = [
   {
@@ -113,5 +114,10 @@ export const migrations = [
     up: migration_20260606_151000_service_statement_images.up,
     down: migration_20260606_151000_service_statement_images.down,
     name: '20260606_151000_service_statement_images',
+  },
+  {
+    up: migration_20260606_173000_service_process_sections.up,
+    down: migration_20260606_173000_service_process_sections.down,
+    name: '20260606_173000_service_process_sections',
   },
 ];

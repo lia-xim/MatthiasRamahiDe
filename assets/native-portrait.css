@@ -197,13 +197,13 @@
     .fw-pt__title em{color:var(--accent-2);font-style:italic}
     .fw-pt__lead{max-width:48ch;justify-self:end;color:var(--muted-l);font-size:14.5px;line-height:1.55;padding-bottom:8px}
     .fw-pt__list{list-style:none;padding:0;margin:0}
-    .fw-pt__row{position:relative;display:grid;grid-template-columns:64px 96px 1.2fr 2fr 40px;column-gap:clamp(20px,2.6vw,44px);align-items:center;padding:clamp(20px,2.4vw,32px) clamp(8px,1.2vw,18px);border-bottom:1px solid var(--hair-l);transition:background-color .5s ease,padding-left .5s cubic-bezier(.22,.9,.22,1)}
+    .fw-pt__row{position:relative;display:grid;grid-template-columns:64px 96px minmax(220px,.9fr) minmax(460px,1.9fr) 40px;column-gap:clamp(28px,4vw,72px);align-items:center;padding:clamp(20px,2.4vw,32px) clamp(8px,1.2vw,18px);border-bottom:1px solid var(--hair-l);transition:background-color .5s ease,padding-left .5s cubic-bezier(.22,.9,.22,1)}
     .fw-pt__row:hover{background:rgba(28,28,24,.025);padding-left:clamp(20px,2.4vw,32px)}
     .fw-pt__num{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent-2)}
     .fw-pt__thumb{width:96px;height:120px;background-size:cover;background-position:center 28%;filter:grayscale(.45) contrast(1.02) brightness(.97);transition:filter .55s ease,transform .55s ease}
     .fw-pt__row:hover .fw-pt__thumb{filter:grayscale(0) contrast(1.06);transform:scale(1.04)}
     .fw-pt__name{font-family:var(--font-display);font-weight:600;font-size:clamp(22px,2.2vw,34px);letter-spacing:-.028em;line-height:1.05}
-    .fw-pt__copy{color:var(--muted-l);font-size:14px;line-height:1.55;max-width:46ch}
+    .fw-pt__copy{color:var(--muted-l);font-size:14.5px;line-height:1.58;max-width:72ch}
     .fw-pt__arrow{font-family:var(--font-mono);font-size:20px;color:var(--muted-l);justify-self:end;transition:transform .45s cubic-bezier(.22,.9,.22,1),color .35s ease;opacity:.55}
     .fw-pt__row:hover .fw-pt__arrow{transform:translateX(10px);color:var(--accent-2);opacity:1}
     .fw-pt__cta{margin-top:clamp(32px,3.6vw,52px);padding-top:24px;border-top:1px solid var(--hair-l);display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:18px}

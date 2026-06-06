@@ -108,7 +108,8 @@ const sectionImageOverrides = [
   // folgt derselben Karte, damit Text und Bild aus demselben Feld kommen.
   ...Array.from({ length: 5 }, (_, index) => index === 0 ? doc?.statement?.image || (doc?.shootingStyles?.[index] || doc?.audienceCards?.[index])?.image : (doc?.shootingStyles?.[index] || doc?.audienceCards?.[index])?.image),
   ...Array.from({ length: 9 }, (_, index) => doc?.portfolioTiles?.[index]?.image),
-  ...Array.from({ length: 9 }, () => undefined),
+  ...Array.from({ length: 5 }, (_, index) => doc?.processSteps?.[index]?.image),
+  ...Array.from({ length: 4 }, (_, index) => doc?.relatedSection?.items?.[index]?.image),
 ]
 const visualSlots = familyVisualSlots(visualDoc, [
   { alt: 'Portrait warm', full: 'assets/portraits/_DSC0470-Enhanced-NR.webp', src: 'assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp', width: 1600, height: 2560 },
@@ -209,12 +210,12 @@ const focusIntroBaseParagraphs =
             : `Der lokale Bezug fuer ${scope.label} wird ueber Ort, Anfahrt, Lichtfenster und Ablauf konkretisiert.`,
         ]
 const focusIntroParagraphs = focusIntroSupportLine ? [focusIntroSupportLine, ...focusIntroBaseParagraphs] : focusIntroBaseParagraphs
-const focusModuleHeadline = isLocalHeroPage || isKeywordPage ? serviceLabel : keywordFocusCopy?.sectionHeadline || 'Verschiedene'
-const focusModuleEmphasis = isLocalHeroPage ? `${scope.label}.` : isKeywordPage ? 'klar geplant.' : keywordFocusCopy?.sectionEmphasis || 'Perspektiven.'
+const focusModuleHeadline = isLocalHeroPage || isKeywordPage ? serviceLabel : cmsText(doc?.focusSection?.headline) || keywordFocusCopy?.sectionHeadline || 'Verschiedene'
+const focusModuleEmphasis = isLocalHeroPage ? `${scope.label}.` : isKeywordPage ? 'klar geplant.' : cmsText(doc?.focusSection?.emphasis) || keywordFocusCopy?.sectionEmphasis || 'Perspektiven.'
 const focusModuleLead =
   isLocalHeroPage
     ? `${serviceLabel} in ${scope.label}: Wirkung, Person, Licht und Nutzung werden vor dem Termin zusammen geplant.`
-    : keywordFocusCopy?.sectionLead ||
+    : cmsText(doc?.focusSection?.lead) || keywordFocusCopy?.sectionLead ||
   'Fuenf Felder, in denen ein Portrait konkret etwas verschiebt - vom Personal Brand bis zur redaktionellen Strecke.'
 
 const defaultPortraitFocusCards = [
@@ -253,11 +254,15 @@ const portraitFocusCards = defaultPortraitFocusCards.map((card, index) => {
   return override ? { ...card, title: override.title || card.title, text: override.text || card.text } : card
 })
 
-const focusProcessHeadline = isLocalHeroPage ? `Ablauf ${scope.label}.` : isKeywordPage ? `Ablauf ${serviceLabel}.` : keywordFocusCopy?.processHeadline || 'Ablauf.'
+const focusGalleryHeadline = cmsText(doc?.gallerySection?.headline) || 'Aus dem'
+const focusGalleryEmphasis = isParentPage || isKeywordPage ? 'Portfolio.' : `${scope.label}.`
+const focusGalleryLead = cmsText(doc?.gallerySection?.lead)
+const focusProcessHeadline = isLocalHeroPage ? `Ablauf ${scope.label}.` : isKeywordPage ? `Ablauf ${serviceLabel}.` : cmsText(doc?.processSection?.headline) || keywordFocusCopy?.processHeadline || 'Ablauf.'
+const focusProcessEmphasis = !isLocalHeroPage && !isKeywordPage ? cmsText(doc?.processSection?.emphasis) : ''
 const focusProcessLead =
   isLocalHeroPage
     ? `Vom ersten Kontakt bis zur Bildabgabe bleibt der Ablauf in ${scope.label} klar: Ziel, Ort, Licht, Auswahl und Lieferung werden vorab abgestimmt.`
-    : keywordFocusCopy?.processLead ||
+    : cmsText(doc?.processSection?.lead) || keywordFocusCopy?.processLead ||
   'Vom ersten Kontakt bis zur Bildabgabe - fuenf ruhige Schritte, damit du vor dem Shooting weisst, was passiert und nach dem Shooting weisst, was kommt.'
 const defaultProcessSteps = [
   {
@@ -292,14 +297,55 @@ const defaultProcessSteps = [
   },
 ]
 const portraitProcessSteps = defaultProcessSteps.map((step, index) => {
+  const cmsStep = doc?.processSteps?.[index]
+  if (cmsStep) {
+    return {
+      ...step,
+      imageLabel: cmsText(cmsStep.imageLabel) || cmsText(cmsStep.title) || step.imageLabel,
+      title: cmsText(cmsStep.title) || step.title,
+      text: cmsText(cmsStep.text) || step.text,
+    }
+  }
   const override = keywordFocusCopy?.processSteps?.[index]
   return override ? { ...step, imageLabel: override.label || step.imageLabel, title: override.title, text: override.text } : step
+})
+const defaultRelatedCards = [
+  { href: 'landschaftsfotografie.html', title: 'Landschaft', visualIndex: 23 },
+  { href: 'automobil-fotografie.html', title: 'Automobil', visualIndex: 24 },
+  { href: 'videografie-duesseldorf.html', title: 'Videografie', visualIndex: 25 },
+  { href: 'portfolio.html', title: 'Portfolio', visualIndex: 26 },
+]
+const relatedCards = defaultRelatedCards.map((card, index) => {
+  const item = doc?.relatedSection?.items?.[index]
+  return {
+    ...card,
+    href: cmsText(item?.href) || card.href,
+    title: cmsText(item?.title) || card.title,
+    alt: cmsText(item?.alt) || cmsText(item?.title) || card.title,
+  }
 })
 const focusRelatedLead =
   isLocalHeroPage
     ? `Portraitfotografie ${scope.label} bleibt im Portraitbereich, fuehrt aber sauber zu Fahrzeug-, Landschafts- und Portfolio-Seiten weiter.`
-    : keywordFocusCopy?.relatedLead ||
+    : cmsText(doc?.relatedSection?.lead) || keywordFocusCopy?.relatedLead ||
   'Fahrzeug, Mensch und Raum bleiben eigene Bildbereiche. Die Links fuehren schnell zu der Seite, die zum Motiv, zur Nutzung und zum geplanten Shooting passt.'
+const relatedHeadline = cmsText(doc?.relatedSection?.headline) || 'Verwandte'
+const relatedEmphasis = cmsText(doc?.relatedSection?.emphasis) || 'Bereiche.'
+const locationHeading = cmsText(doc?.locationLinksSection?.headline) || 'Portrait Fotografie'
+const locationEmphasis = cmsText(doc?.locationLinksSection?.emphasis) || 'vor Ort.'
+const locationLinks = doc?.locationLinksSection?.items?.length
+  ? doc.locationLinksSection.items.map((item) => [cmsText(item.href), cmsText(item.label)] as const).filter(([, label]) => label)
+  : cityLinks
+const searchHeading = cmsText(doc?.searchLinksSection?.headline) || 'Portrait Fotografie'
+const searchEmphasis = cmsText(doc?.searchLinksSection?.emphasis) || 'Suchbegriffe.'
+const searchLinkItems = doc?.searchLinksSection?.items?.length
+  ? doc.searchLinksSection.items.map((item) => [cmsText(item.href), cmsText(item.label)] as const).filter(([, label]) => label)
+  : searchLinks
+const contactSubjectFinal = cmsText(doc?.contactSection?.emailSubject) || contactSubject
+const contactHeadlineFinal = cmsText(doc?.contactSection?.headline)
+  ? `${doc?.contactSection?.headline || ''}${cmsText(doc?.contactSection?.emphasis) ? ` <em>${doc?.contactSection?.emphasis}</em>` : ''}`
+  : contactHeadline
+const contactLeadFinal = cmsText(doc?.contactSection?.lead) || contactLead
 ---
 <AdoptedPageLayout
   legacyFile={legacyFile}
@@ -403,7 +449,8 @@ const focusRelatedLead =
 
     <section class="bg-pt" data-header-theme="dark" aria-label="Aus dem Portfolio">
       <div class="bg-pt__head">
-        <h2 class="bg-pt__title">Aus dem <em>Portfolio.</em></h2>
+        <h2 class="bg-pt__title">{focusGalleryHeadline} <em>{focusGalleryEmphasis}</em></h2>
+        {focusGalleryLead && <p class="bg-pt__lead">{focusGalleryLead}</p>}
         <a class="bg-pt__link" href="portfolio.html">Komplettes Portfolio ansehen →</a>
       </div>
       <div class="bg-pt__grid">
@@ -422,7 +469,10 @@ const focusRelatedLead =
     <section class="fw-pt" data-header-theme="light">
       <div class="fw-pt__inner">
         <div class="fw-pt__head">
-          <h2 class="fw-pt__title"><em>{focusProcessHeadline}</em></h2>
+          <h2 class="fw-pt__title">
+            <em>{focusProcessHeadline}</em>
+            {focusProcessEmphasis && ` ${focusProcessEmphasis}`}
+          </h2>
           <p class="fw-pt__lead">{focusProcessLead}</p>
         </div>
         <ul class="fw-pt__list">
@@ -444,13 +494,15 @@ const focusRelatedLead =
 
     <section class="rl-pt" data-header-theme="dark" aria-label="Portrait Fotografie">
       <div class="rl-pt__inner">
-        <h2 class="rl-pt__title">Verwandte <em>Bereiche.</em></h2>
+        <h2 class="rl-pt__title">{relatedHeadline} <em>{relatedEmphasis}</em></h2>
         <p class="rl-pt__intro">{focusRelatedLead}</p>
         <div class="rl-pt__grid">
-          <a class="rl-pt__card" href="landschaftsfotografie.html"><div class="rl-pt__card-img" style={`background-image:url('${visualSlots[23].cssSrc}')`}></div><div class="rl-pt__card-body"><strong>Landschaft</strong><span>→</span></div></a>
-          <a class="rl-pt__card" href="automobil-fotografie.html"><div class="rl-pt__card-img" style={`background-image:url('${visualSlots[24].cssSrc}')`}></div><div class="rl-pt__card-body"><strong>Automobil</strong><span>→</span></div></a>
-          <a class="rl-pt__card" href="videografie-duesseldorf.html"><div class="rl-pt__card-img" style={`background-image:url('${visualSlots[25].cssSrc}')`}></div><div class="rl-pt__card-body"><strong>Videografie</strong><span>→</span></div></a>
-          <a class="rl-pt__card" href="portfolio.html"><div class="rl-pt__card-img" style={`background-image:url('${visualSlots[26].cssSrc}')`}></div><div class="rl-pt__card-body"><strong>Portfolio</strong><span>→</span></div></a>
+          {relatedCards.map((card) => (
+            <a class="rl-pt__card" href={card.href}>
+              <div class="rl-pt__card-img" style={`background-image:url('${visualSlots[card.visualIndex].cssSrc}')`} role="img" aria-label={card.alt}></div>
+              <div class="rl-pt__card-body"><strong>{card.title}</strong><span>→</span></div>
+            </a>
+          ))}
         </div>
       </div>
     </section>
@@ -467,10 +519,10 @@ const focusRelatedLead =
     <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Portrait Fotografie in NRW">
       <div class="mr-cities__inner">
         <div class="mr-cities__head">
-          <h2 class="mr-cities__title">Portrait Fotografie <em>vor Ort.</em></h2>
+          <h2 class="mr-cities__title">{locationHeading} <em>{locationEmphasis}</em></h2>
         </div>
         <nav class="mr-cities__grid" aria-label="Städte">
-          {cityLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
+          {locationLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
         </nav>
       </div>
     </section>
@@ -478,10 +530,10 @@ const focusRelatedLead =
     <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Portrait Fotografie Suchbegriffe">
       <div class="mr-cities__inner">
         <div class="mr-cities__head">
-          <h2>Portrait Fotografie <em>Suchbegriffe.</em></h2>
+          <h2>{searchHeading} <em>{searchEmphasis}</em></h2>
         </div>
         <nav class="mr-cities__grid" aria-label="Suchvarianten">
-          {searchLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
+          {searchLinkItems.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
         </nav>
       </div>
     </section>
@@ -494,9 +546,9 @@ const focusRelatedLead =
       id="anfrage"
       data-contact-section
       data-header-theme="light"
-      data-contact-subject={contactSubject}
-      data-contact-headline={contactHeadline}
-      data-contact-lead={contactLead}
+      data-contact-subject={contactSubjectFinal}
+      data-contact-headline={contactHeadlineFinal}
+      data-contact-lead={contactLeadFinal}
     ></section>
   </main>
 </AdoptedPageLayout>

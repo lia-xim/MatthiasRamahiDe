@@ -1139,7 +1139,7 @@ export interface ServicePage {
     lead?: string | null;
   };
   /**
-   * Bild-/Aufnahme-Perspektiven wie Exterieur, Interieur, Details oder Cinematic.
+   * Sichtbare Modul-/Kachelsektion. Bei Portrait z. B. Founder & Speaker, Agentur & Kanzlei, Magazin & Strecke.
    */
   shootingStyles?:
     | {
@@ -1163,6 +1163,29 @@ export interface ServicePage {
          */
         image?: (number | null) | Media;
         label?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Ueberschrift und Intro der Ablauf-/Schritte-Sektion, z. B. "Ablauf."
+   */
+  processSection?: {
+    headline?: string | null;
+    emphasis?: string | null;
+    lead?: string | null;
+  };
+  /**
+   * Einzelne Schritte der sichtbaren Ablaufsektion mit Bild, Titel und Beschreibung.
+   */
+  processSteps?:
+    | {
+        /**
+         * Bild aus dem Medienarchiv waehlen. Neue Bilder koennen direkt im Drawer hochgeladen und bearbeitet werden.
+         */
+        image?: (number | null) | Media;
+        imageLabel?: string | null;
+        title: string;
+        text?: string | null;
         id?: string | null;
       }[]
     | null;
@@ -2299,7 +2322,7 @@ export interface LocalSeoPage {
     lead?: string | null;
   };
   /**
-   * Bild-/Aufnahme-Perspektiven wie Exterieur, Interieur, Details oder Cinematic.
+   * Sichtbare Modul-/Kachelsektion. Bei Portrait z. B. Founder & Speaker, Agentur & Kanzlei, Magazin & Strecke.
    */
   shootingStyles?:
     | {
@@ -2323,6 +2346,29 @@ export interface LocalSeoPage {
          */
         image?: (number | null) | Media;
         label?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Ueberschrift und Intro der Ablauf-/Schritte-Sektion, z. B. "Ablauf."
+   */
+  processSection?: {
+    headline?: string | null;
+    emphasis?: string | null;
+    lead?: string | null;
+  };
+  /**
+   * Einzelne Schritte der sichtbaren Ablaufsektion mit Bild, Titel und Beschreibung.
+   */
+  processSteps?:
+    | {
+        /**
+         * Bild aus dem Medienarchiv waehlen. Neue Bilder koennen direkt im Drawer hochgeladen und bearbeitet werden.
+         */
+        image?: (number | null) | Media;
+        imageLabel?: string | null;
+        title: string;
+        text?: string | null;
         id?: string | null;
       }[]
     | null;
@@ -3140,6 +3186,22 @@ export interface ServicePagesSelect<T extends boolean = true> {
         label?: T;
         id?: T;
       };
+  processSection?:
+    | T
+    | {
+        headline?: T;
+        emphasis?: T;
+        lead?: T;
+      };
+  processSteps?:
+    | T
+    | {
+        image?: T;
+        imageLabel?: T;
+        title?: T;
+        text?: T;
+        id?: T;
+      };
   audienceSection?:
     | T
     | {
@@ -3935,6 +3997,22 @@ export interface LocalSeoPagesSelect<T extends boolean = true> {
     | {
         image?: T;
         label?: T;
+        id?: T;
+      };
+  processSection?:
+    | T
+    | {
+        headline?: T;
+        emphasis?: T;
+        lead?: T;
+      };
+  processSteps?:
+    | T
+    | {
+        image?: T;
+        imageLabel?: T;
+        title?: T;
+        text?: T;
         id?: T;
       };
   audienceSection?:
