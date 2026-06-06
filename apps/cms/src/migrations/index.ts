@@ -15,91 +15,97 @@ import * as migration_20260603_130000_portfolio_project_sections from './2026060
 import * as migration_20260603_140000_portfolio_project_full_sections from './20260603_140000_portfolio_project_full_sections';
 import * as migration_20260603_150000_journal_featured_section from './20260603_150000_journal_featured_section';
 import * as migration_20260606_120000_service_local_hero_slides from './20260606_120000_service_local_hero_slides';
+import * as migration_20260606_142000_service_page_expanded_sections from './20260606_142000_service_page_expanded_sections';
 
 export const migrations = [
   {
     up: migration_20260528_182951_initial_postgres_schema.up,
     down: migration_20260528_182951_initial_postgres_schema.down,
-    name: '20260528_182951_initial_postgres_schema'
+    name: '20260528_182951_initial_postgres_schema',
   },
   {
     up: migration_20260529_120800_add_native_component_render_source.up,
     down: migration_20260529_120800_add_native_component_render_source.down,
-    name: '20260529_120800_add_native_component_render_source'
+    name: '20260529_120800_add_native_component_render_source',
   },
   {
     up: migration_20260529_153000_add_site_page_hero_slides.up,
     down: migration_20260529_153000_add_site_page_hero_slides.down,
-    name: '20260529_153000_add_site_page_hero_slides'
+    name: '20260529_153000_add_site_page_hero_slides',
   },
   {
     up: migration_20260530_193435_svc_sections.up,
     down: migration_20260530_193435_svc_sections.down,
-    name: '20260530_193435_svc_sections'
+    name: '20260530_193435_svc_sections',
   },
   {
     up: migration_20260531_120000_local_seo_sections.up,
     down: migration_20260531_120000_local_seo_sections.down,
-    name: '20260531_120000_local_seo_sections'
+    name: '20260531_120000_local_seo_sections',
   },
   {
     up: migration_20260601_120000_home_sections.up,
     down: migration_20260601_120000_home_sections.down,
-    name: '20260601_120000_home_sections'
+    name: '20260601_120000_home_sections',
   },
   {
     up: migration_20260601_140000_photography_index_sections.up,
     down: migration_20260601_140000_photography_index_sections.down,
-    name: '20260601_140000_photography_index_sections'
+    name: '20260601_140000_photography_index_sections',
   },
   {
     up: migration_20260602_120000_services_index_sections.up,
     down: migration_20260602_120000_services_index_sections.down,
-    name: '20260602_120000_services_index_sections'
+    name: '20260602_120000_services_index_sections',
   },
   {
     up: migration_20260602_130000_media_quality_preset.up,
     down: migration_20260602_130000_media_quality_preset.down,
-    name: '20260602_130000_media_quality_preset'
+    name: '20260602_130000_media_quality_preset',
   },
   {
     up: migration_20260602_140000_hero_slide_duration.up,
     down: migration_20260602_140000_hero_slide_duration.down,
-    name: '20260602_140000_hero_slide_duration'
+    name: '20260602_140000_hero_slide_duration',
   },
   {
     up: migration_20260603_100000_about_sections.up,
     down: migration_20260603_100000_about_sections.down,
-    name: '20260603_100000_about_sections'
+    name: '20260603_100000_about_sections',
   },
   {
     up: migration_20260603_110000_portfolio_index_sections.up,
     down: migration_20260603_110000_portfolio_index_sections.down,
-    name: '20260603_110000_portfolio_index_sections'
+    name: '20260603_110000_portfolio_index_sections',
   },
   {
     up: migration_20260603_120000_journal_index_sections.up,
     down: migration_20260603_120000_journal_index_sections.down,
-    name: '20260603_120000_journal_index_sections'
+    name: '20260603_120000_journal_index_sections',
   },
   {
     up: migration_20260603_130000_portfolio_project_sections.up,
     down: migration_20260603_130000_portfolio_project_sections.down,
-    name: '20260603_130000_portfolio_project_sections'
+    name: '20260603_130000_portfolio_project_sections',
   },
   {
     up: migration_20260603_140000_portfolio_project_full_sections.up,
     down: migration_20260603_140000_portfolio_project_full_sections.down,
-    name: '20260603_140000_portfolio_project_full_sections'
+    name: '20260603_140000_portfolio_project_full_sections',
   },
   {
     up: migration_20260603_150000_journal_featured_section.up,
     down: migration_20260603_150000_journal_featured_section.down,
-    name: '20260603_150000_journal_featured_section'
+    name: '20260603_150000_journal_featured_section',
   },
   {
     up: migration_20260606_120000_service_local_hero_slides.up,
     down: migration_20260606_120000_service_local_hero_slides.down,
-    name: '20260606_120000_service_local_hero_slides'
+    name: '20260606_120000_service_local_hero_slides',
+  },
+  {
+    up: migration_20260606_142000_service_page_expanded_sections.up,
+    down: migration_20260606_142000_service_page_expanded_sections.down,
+    name: '20260606_142000_service_page_expanded_sections',
   },
 ];

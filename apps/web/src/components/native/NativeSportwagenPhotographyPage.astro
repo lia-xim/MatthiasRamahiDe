@@ -47,6 +47,15 @@ const keywordFocusCopy = keywordFocusCopyForSlug(legacyFile)
 const cmsFaqSource = (doc?.localFaq?.length ? doc.localFaq : doc?.faq) || []
 const cmsFaqItems = cmsFaqSource.map((entry) => ({ q: entry.question || '', a: entry.answer || '' })).filter((entry) => entry.q && entry.a)
 const faqItems = cmsFaqItems.length ? cmsFaqItems : keywordFocusCopy?.faq
+const cmsText = (value: unknown) => (typeof value === 'string' ? value.trim() : '')
+const cmsLinks = (items: Array<{ href?: string; label?: string }> | undefined, fallback: string[][]) => {
+  const links = (items || [])
+    .map((item) => [cmsText(item.href), cmsText(item.label)])
+    .filter(([href, label]) => href && label)
+  return links.length ? links : fallback
+}
+const emphasizedHtml = (headline: string, emphasis: string) =>
+  [headline, emphasis ? `<em>${emphasis}</em>` : ''].filter(Boolean).join(headline && emphasis ? ' ' : '')
 const cmsHeroLine2 = typeof doc?.heroLine2 === 'string' ? doc.heroLine2.trim() : ''
 const isLocalHeroPage = !isParentPage && !isKeywordPage
 const heroTitle = isParentPage ? 'Sportwagenfotografie' : serviceLabel
@@ -81,18 +90,22 @@ const defaultMetaDescription = isParentPage
     ? `${serviceLabel}: hochwertige Serien für Performance Cars, Sammlerfahrzeuge, Händler und Marken.`
     : `${serviceLabel} ${scope.label}: hochwertige Serien für Performance Cars, Sammlerfahrzeuge, Händler und Marken.`
 const metaDescription = doc?.seo?.description || keywordFocusCopy?.metaDescription || defaultMetaDescription
-const contactSubject = isParentPage ? 'Sportwagen Fotografie Anfrage' : `${serviceLabel}${isKeywordPage ? '' : ` ${scope.label}`} Anfrage`
-const contactHeadline = isParentPage
+const defaultContactSubject = isParentPage ? 'Sportwagen Fotografie Anfrage' : `${serviceLabel}${isKeywordPage ? '' : ` ${scope.label}`} Anfrage`
+const contactSubject = cmsText(doc?.contactSection?.emailSubject) || defaultContactSubject
+const defaultContactHeadline = isParentPage
   ? 'Sportwagen <em>anfragen.</em>'
   : isKeywordPage
     ? `${serviceLabel} <em>anfragen.</em>`
     : `Sportwagen ${scope.label} <em>anfragen.</em>`
+const contactHeadline = cmsText(doc?.contactSection?.headline)
+  ? emphasizedHtml(cmsText(doc?.contactSection?.headline), cmsText(doc?.contactSection?.emphasis))
+  : defaultContactHeadline
 const defaultContactLead = isParentPage
   ? 'Schreibe kurz, welcher Sportwagen fotografiert werden soll, ob die Bilder für Verkauf, Sammlung, Marke oder Social genutzt werden und welches Zeitfenster möglich ist. Wir planen Licht, Ort und Ablauf gemeinsam.'
   : isKeywordPage
     ? `Schreibe kurz, wofür ${serviceLabel} gebraucht wird, welches Motiv im Mittelpunkt steht und welche Nutzung geplant ist. Wir klären Stil, Ort, Umfang und Ausgabe gemeinsam.`
     : `Schreibe kurz, welcher Sportwagen in ${scope.label} fotografiert werden soll, ob die Bilder für Verkauf, Sammlung, Marke oder Social genutzt werden und welches Zeitfenster möglich ist. Wir planen Licht, Ort und Ablauf gemeinsam.`
-const contactLead = keywordFocusCopy?.contactLead || defaultContactLead
+const contactLead = cmsText(doc?.contactSection?.lead) || keywordFocusCopy?.contactLead || defaultContactLead
 
 const heroPanels = [
   ['detail', 'assets/optimized/mpixih9c-dsc3982-1920.webp', 'assets/optimized/mpixih9c-dsc3982-720.webp'],
@@ -346,24 +359,28 @@ const baseStatementBody = doc?.statement?.body?.length
     ]
 const statementBody = statementSupportLine ? [statementSupportLine, ...baseStatementBody] : baseStatementBody
 
-const focusSectionHeadline = isLocalHeroPage || isKeywordPage ? serviceLabel : keywordFocusCopy?.sectionHeadline || (isParentPage ? 'Das Auto,' : `${serviceLabel},`)
-const focusSectionEmphasis = isLocalHeroPage ? `${scope.label}.` : isKeywordPage ? 'klar fokussiert.' : keywordFocusCopy?.sectionEmphasis || (isParentPage ? 'aus jedem Winkel.' : `${scope.label}.`)
+const focusSectionHeadline = isLocalHeroPage || isKeywordPage ? serviceLabel : cmsText(doc?.focusSection?.headline) || keywordFocusCopy?.sectionHeadline || (isParentPage ? 'Das Auto,' : `${serviceLabel},`)
+const focusSectionEmphasis = isLocalHeroPage ? `${scope.label}.` : isKeywordPage ? 'klar fokussiert.' : cmsText(doc?.focusSection?.emphasis) || keywordFocusCopy?.sectionEmphasis || (isParentPage ? 'aus jedem Winkel.' : `${scope.label}.`)
 const focusSectionLead =
   isLocalHeroPage
     ? `${serviceLabel} in ${scope.label}: Exterieur, Innenraum, Details und Nutzung werden passend zu Fahrzeug, Ort und Ausgabeformat geplant.`
-    : keywordFocusCopy?.sectionLead ||
+    : cmsText(doc?.focusSection?.lead) || keywordFocusCopy?.sectionLead ||
   (isParentPage
     ? 'Exterieur, Interieur, Details und cineastische Perspektiven greifen ineinander - ein Bildsatz, der Fahrzeug, Atmosphaere und Material gleichermaßen zeigt.'
     : `${serviceLabel} bekommt eine eigene Seite im Sportwagenbereich: Exterieur, Innenraum, Details und Nutzung werden passend zum Motiv geplant.`)
-const focusGalleryHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}: Bildserie.` : isKeywordPage ? `${serviceLabel}: Bildserie.` : keywordFocusCopy?.galleryHeadline || 'Aktuelle Arbeiten.'
-const focusGalleryLead = keywordFocusCopy?.galleryLead || 'Sechs kuratierte Sportwagen-Bilder aus juengeren Serien. Klicken zum Vergroessern.'
-const focusAudienceHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}: passende Anfragen.` : isKeywordPage ? `${serviceLabel}: passende Anfragen.` : keywordFocusCopy?.audienceHeadline || 'Fuer wen ich arbeite.'
+const focusGalleryHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}: Bildserie.` : isKeywordPage ? `${serviceLabel}: Bildserie.` : cmsText(doc?.gallerySection?.headline) || keywordFocusCopy?.galleryHeadline || 'Aktuelle Arbeiten.'
+const focusGalleryLead = cmsText(doc?.gallerySection?.lead) || keywordFocusCopy?.galleryLead || 'Sechs kuratierte Sportwagen-Bilder aus juengeren Serien. Klicken zum Vergroessern.'
+const focusAudienceHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}: passende Anfragen.` : isKeywordPage ? `${serviceLabel}: passende Anfragen.` : cmsText(doc?.audienceSection?.headline) || keywordFocusCopy?.audienceHeadline || 'Fuer wen ich arbeite.'
 const focusAudienceLead =
-  keywordFocusCopy?.audienceLead ||
+  cmsText(doc?.audienceSection?.lead) || keywordFocusCopy?.audienceLead ||
   'Vom privaten Fahrzeug bis zur internationalen Kampagne. Jede Serie wird auf Nutzung, Marke und Zielgruppe zugeschnitten - ein Hero-Motiv oder ein vollstaendiges Launch-Asset-Paket.'
 const focusRelatedLead =
-  keywordFocusCopy?.relatedLead ||
+  cmsText(doc?.relatedSection?.lead) || keywordFocusCopy?.relatedLead ||
   'Sportwagen ist ein Teil der Automobil-Welt. Schau dir die anderen Disziplinen an - gleicher Anspruch, anderer Bildfokus. Die Links fuehren schnell zu der Bildwelt, die zum Fahrzeug, zur Nutzung und zum geplanten Shooting passt.'
+const relatedSectionTitle = splitTrailingEmphasis(
+  cmsText(doc?.relatedSection?.headline) || 'Verwandte',
+  cmsText(doc?.relatedSection?.emphasis) || 'Bereiche.',
+)
 
 const relatedAreas = [
   {
@@ -399,8 +416,29 @@ const relatedAreas = [
     title: 'Portfolio',
   },
 ]
+const finalRelatedAreas = doc?.relatedSection?.items?.length
+  ? doc.relatedSection.items.map((item, index) => {
+      const fallback = relatedAreas[index] || relatedAreas[relatedAreas.length - 1]
+      const resolved = resolveSectionImage(item.image, {
+        alt: item.alt || fallback.alt,
+        height: fallback.height,
+        src: fallback.src || fallback.dataSrc || '',
+        width: fallback.width,
+      })
+      return {
+        ...fallback,
+        alt: cmsText(item.alt) || resolved.alt || fallback.alt,
+        dataSrc: undefined,
+        height: resolved.height,
+        href: cmsText(item.href) || fallback.href,
+        src: resolved.src,
+        title: cmsText(item.title) || fallback.title,
+        width: resolved.width,
+      }
+    })
+  : relatedAreas
 
-const cityLinks = [
+const fallbackCityLinks = [
   ['sportwagen-fotografie-duesseldorf.html', 'Düsseldorf'],
   ['sportwagen-fotografie-erkrath.html', 'Erkrath'],
   ['sportwagen-fotografie-ratingen.html', 'Ratingen'],
@@ -429,7 +467,13 @@ const cityLinks = [
 
 const localSearchHref = (duesseldorfHref: string, fallbackHref?: string) =>
   scope.slug === 'duesseldorf' ? duesseldorfHref : fallbackHref || duesseldorfHref
-const searchLinks = [
+const cityLinks = cmsLinks(doc?.locationLinksSection?.items, fallbackCityLinks)
+const locationLinksTitle = splitTrailingEmphasis(
+  cmsText(doc?.locationLinksSection?.headline) || 'Sportwagen Fotografie',
+  cmsText(doc?.locationLinksSection?.emphasis) || 'vor Ort.',
+)
+
+const fallbackSearchLinks = [
   [localSearchHref('motorsport-sportwagen-fotografie-duesseldorf.html', 'motorsport-sportwagen-fotografie.html'), 'Motorsport & Sportwagen'],
   [localSearchHref('motorsport-fotografie-duesseldorf.html', 'motorsport-fotografie.html'), 'Motorsport Fotografie'],
   ['sportwagen-shooting-duesseldorf.html', 'Sportwagen Shooting'],
@@ -438,6 +482,11 @@ const searchLinks = [
   [localSearchHref('exotic-car-fotografie-duesseldorf.html', 'exotic-car-fotografie.html'), 'Exotic Car Fotografie'],
   [localSearchHref('supersportwagen-fotografie-duesseldorf.html', 'supersportwagen-fotografie.html'), 'Supersportwagen Fotografie'],
 ]
+const searchLinks = cmsLinks(doc?.searchLinksSection?.items, fallbackSearchLinks)
+const searchLinksTitle = splitTrailingEmphasis(
+  cmsText(doc?.searchLinksSection?.headline) || 'Sportwagen Fotografie',
+  cmsText(doc?.searchLinksSection?.emphasis) || 'Suchbegriffe.',
+)
 ---
 <AdoptedPageLayout
   legacyFile={legacyFile}
@@ -593,11 +642,11 @@ const searchLinks = [
     <section class="rl" data-header-theme="dark">
       <div class="section-inner">
         <div class="rl-head">
-          <h2>Verwandte <em>Bereiche</em>.</h2>
+          <h2>{relatedSectionTitle.headline} <em>{relatedSectionTitle.emphasis}</em></h2>
           <p>{focusRelatedLead}</p>
         </div>
         <div class="rl-grid">
-          {relatedAreas.map((area) => (
+          {finalRelatedAreas.map((area) => (
             <a class="rl-card" href={area.href}>
               <img data-src={area.dataSrc} src={area.src || area.dataSrc} loading="lazy" alt={area.alt} width={area.width} height={area.height} decoding="async" />
               <div class="overlay"></div>
@@ -620,7 +669,7 @@ const searchLinks = [
     <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Sportwagen Fotografie in NRW">
       <div class="mr-cities__inner">
         <div class="mr-cities__head">
-          <h2>Sportwagen Fotografie <em>vor Ort.</em></h2>
+          <h2>{locationLinksTitle.headline} <em>{locationLinksTitle.emphasis}</em></h2>
         </div>
         <nav class="mr-cities__grid" aria-label="Städte">
           {cityLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
@@ -631,7 +680,7 @@ const searchLinks = [
     <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Sportwagen Fotografie Suchbegriffe">
       <div class="mr-cities__inner">
         <div class="mr-cities__head">
-          <h2>Sportwagen Fotografie <em>Suchbegriffe.</em></h2>
+          <h2>{searchLinksTitle.headline} <em>{searchLinksTitle.emphasis}</em></h2>
         </div>
         <nav class="mr-cities__grid" aria-label="Suchvarianten">
           {searchLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}

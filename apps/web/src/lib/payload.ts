@@ -113,9 +113,29 @@ export type PayloadDoc = {
   heroLine2?: string
   heroPanels?: Array<{ image?: PayloadMedia | string }>
   statement?: { headline?: string; emphasis?: string; body?: Array<{ text?: string }> }
+  focusSection?: { headline?: string; emphasis?: string; lead?: string }
   shootingStyles?: Array<{ image?: PayloadMedia | string; title?: string; text?: string }>
+  gallerySection?: { headline?: string; lead?: string }
   portfolioTiles?: Array<{ image?: PayloadMedia | string; label?: string }>
+  audienceSection?: { headline?: string; lead?: string }
   audienceCards?: Array<{ image?: PayloadMedia | string; number?: string; title?: string; text?: string }>
+  relatedSection?: {
+    headline?: string
+    emphasis?: string
+    lead?: string
+    items?: Array<{ image?: PayloadMedia | string; title?: string; href?: string; alt?: string }>
+  }
+  locationLinksSection?: {
+    headline?: string
+    emphasis?: string
+    items?: Array<{ label?: string; href?: string }>
+  }
+  searchLinksSection?: {
+    headline?: string
+    emphasis?: string
+    items?: Array<{ label?: string; href?: string }>
+  }
+  contactSection?: { headline?: string; emphasis?: string; lead?: string; emailSubject?: string }
   faq?: Array<{ question?: string; answer?: string }>
   localFaq?: Array<{ question?: string; answer?: string }>
   // Startseiten-Sektionen (SitePages, pageType 'home'). Alle optional -> Fallback im Component.

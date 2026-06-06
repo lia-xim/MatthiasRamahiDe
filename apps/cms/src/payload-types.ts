@@ -1233,7 +1233,7 @@ export interface ServicePage {
       )[]
     | null;
   /**
-   * Z. B. „Fotografie." Leer lassen = automatisch aus dem Seitentyp.
+   * Z. B. "Fotografie." Leer lassen = automatisch aus dem Seitentyp.
    */
   heroLine2?: string | null;
   statement?: {
@@ -1247,7 +1247,15 @@ export interface ServicePage {
       | null;
   };
   /**
-   * Die Bild-/Aufnahme-Perspektiven (Exterieur, Interieur, Detail, Cinematic …).
+   * Ueberschrift und Intro der Perspektiven-/Kachel-Sektion, z. B. "Form, Material, Druckqualitaet."
+   */
+  focusSection?: {
+    headline?: string | null;
+    emphasis?: string | null;
+    lead?: string | null;
+  };
+  /**
+   * Bild-/Aufnahme-Perspektiven wie Exterieur, Interieur, Details oder Cinematic.
    */
   shootingStyles?:
     | {
@@ -1260,6 +1268,10 @@ export interface ServicePage {
         id?: string | null;
       }[]
     | null;
+  gallerySection?: {
+    headline?: string | null;
+    lead?: string | null;
+  };
   portfolioTiles?:
     | {
         /**
@@ -1270,6 +1282,10 @@ export interface ServicePage {
         id?: string | null;
       }[]
     | null;
+  audienceSection?: {
+    headline?: string | null;
+    lead?: string | null;
+  };
   /**
    * Zielgruppen mit Bild, Nummer, Titel und kurzer Beschreibung.
    */
@@ -1285,6 +1301,51 @@ export interface ServicePage {
         id?: string | null;
       }[]
     | null;
+  relatedSection?: {
+    headline?: string | null;
+    emphasis?: string | null;
+    lead?: string | null;
+    items?:
+      | {
+          /**
+           * Bild aus dem Medienarchiv waehlen. Neue Bilder koennen direkt im Drawer hochgeladen und bearbeitet werden.
+           */
+          image?: (number | null) | Media;
+          title: string;
+          href: string;
+          alt?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  locationLinksSection?: {
+    headline?: string | null;
+    emphasis?: string | null;
+    items?:
+      | {
+          label: string;
+          href: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  searchLinksSection?: {
+    headline?: string | null;
+    emphasis?: string | null;
+    items?:
+      | {
+          label: string;
+          href: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  contactSection?: {
+    headline?: string | null;
+    emphasis?: string | null;
+    lead?: string | null;
+    emailSubject?: string | null;
+  };
   relatedPages?:
     | {
         label: string;
@@ -2207,7 +2268,7 @@ export interface LocalSeoPage {
       )[]
     | null;
   /**
-   * Z. B. „Fotografie." Leer lassen = automatisch aus dem Seitentyp.
+   * Z. B. "Fotografie." Leer lassen = automatisch aus dem Seitentyp.
    */
   heroLine2?: string | null;
   statement?: {
@@ -2221,7 +2282,15 @@ export interface LocalSeoPage {
       | null;
   };
   /**
-   * Die Bild-/Aufnahme-Perspektiven (Exterieur, Interieur, Detail, Cinematic …).
+   * Ueberschrift und Intro der Perspektiven-/Kachel-Sektion, z. B. "Form, Material, Druckqualitaet."
+   */
+  focusSection?: {
+    headline?: string | null;
+    emphasis?: string | null;
+    lead?: string | null;
+  };
+  /**
+   * Bild-/Aufnahme-Perspektiven wie Exterieur, Interieur, Details oder Cinematic.
    */
   shootingStyles?:
     | {
@@ -2234,6 +2303,10 @@ export interface LocalSeoPage {
         id?: string | null;
       }[]
     | null;
+  gallerySection?: {
+    headline?: string | null;
+    lead?: string | null;
+  };
   portfolioTiles?:
     | {
         /**
@@ -2244,6 +2317,10 @@ export interface LocalSeoPage {
         id?: string | null;
       }[]
     | null;
+  audienceSection?: {
+    headline?: string | null;
+    lead?: string | null;
+  };
   /**
    * Zielgruppen mit Bild, Nummer, Titel und kurzer Beschreibung.
    */
@@ -2259,6 +2336,51 @@ export interface LocalSeoPage {
         id?: string | null;
       }[]
     | null;
+  relatedSection?: {
+    headline?: string | null;
+    emphasis?: string | null;
+    lead?: string | null;
+    items?:
+      | {
+          /**
+           * Bild aus dem Medienarchiv waehlen. Neue Bilder koennen direkt im Drawer hochgeladen und bearbeitet werden.
+           */
+          image?: (number | null) | Media;
+          title: string;
+          href: string;
+          alt?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  locationLinksSection?: {
+    headline?: string | null;
+    emphasis?: string | null;
+    items?:
+      | {
+          label: string;
+          href: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  searchLinksSection?: {
+    headline?: string | null;
+    emphasis?: string | null;
+    items?:
+      | {
+          label: string;
+          href: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  contactSection?: {
+    headline?: string | null;
+    emphasis?: string | null;
+    lead?: string | null;
+    emailSubject?: string | null;
+  };
   /**
    * Zum Beispiel: Portraitfotografie Duesseldorf als Hauptseite fuer lokale Varianten.
    */
@@ -3070,6 +3192,13 @@ export interface ServicePagesSelect<T extends boolean = true> {
               id?: T;
             };
       };
+  focusSection?:
+    | T
+    | {
+        headline?: T;
+        emphasis?: T;
+        lead?: T;
+      };
   shootingStyles?:
     | T
     | {
@@ -3078,12 +3207,24 @@ export interface ServicePagesSelect<T extends boolean = true> {
         text?: T;
         id?: T;
       };
+  gallerySection?:
+    | T
+    | {
+        headline?: T;
+        lead?: T;
+      };
   portfolioTiles?:
     | T
     | {
         image?: T;
         label?: T;
         id?: T;
+      };
+  audienceSection?:
+    | T
+    | {
+        headline?: T;
+        lead?: T;
       };
   audienceCards?:
     | T
@@ -3093,6 +3234,56 @@ export interface ServicePagesSelect<T extends boolean = true> {
         title?: T;
         text?: T;
         id?: T;
+      };
+  relatedSection?:
+    | T
+    | {
+        headline?: T;
+        emphasis?: T;
+        lead?: T;
+        items?:
+          | T
+          | {
+              image?: T;
+              title?: T;
+              href?: T;
+              alt?: T;
+              id?: T;
+            };
+      };
+  locationLinksSection?:
+    | T
+    | {
+        headline?: T;
+        emphasis?: T;
+        items?:
+          | T
+          | {
+              label?: T;
+              href?: T;
+              id?: T;
+            };
+      };
+  searchLinksSection?:
+    | T
+    | {
+        headline?: T;
+        emphasis?: T;
+        items?:
+          | T
+          | {
+              label?: T;
+              href?: T;
+              id?: T;
+            };
+      };
+  contactSection?:
+    | T
+    | {
+        headline?: T;
+        emphasis?: T;
+        lead?: T;
+        emailSubject?: T;
       };
   relatedPages?:
     | T
@@ -3699,6 +3890,13 @@ export interface LocalSeoPagesSelect<T extends boolean = true> {
               id?: T;
             };
       };
+  focusSection?:
+    | T
+    | {
+        headline?: T;
+        emphasis?: T;
+        lead?: T;
+      };
   shootingStyles?:
     | T
     | {
@@ -3707,12 +3905,24 @@ export interface LocalSeoPagesSelect<T extends boolean = true> {
         text?: T;
         id?: T;
       };
+  gallerySection?:
+    | T
+    | {
+        headline?: T;
+        lead?: T;
+      };
   portfolioTiles?:
     | T
     | {
         image?: T;
         label?: T;
         id?: T;
+      };
+  audienceSection?:
+    | T
+    | {
+        headline?: T;
+        lead?: T;
       };
   audienceCards?:
     | T
@@ -3722,6 +3932,56 @@ export interface LocalSeoPagesSelect<T extends boolean = true> {
         title?: T;
         text?: T;
         id?: T;
+      };
+  relatedSection?:
+    | T
+    | {
+        headline?: T;
+        emphasis?: T;
+        lead?: T;
+        items?:
+          | T
+          | {
+              image?: T;
+              title?: T;
+              href?: T;
+              alt?: T;
+              id?: T;
+            };
+      };
+  locationLinksSection?:
+    | T
+    | {
+        headline?: T;
+        emphasis?: T;
+        items?:
+          | T
+          | {
+              label?: T;
+              href?: T;
+              id?: T;
+            };
+      };
+  searchLinksSection?:
+    | T
+    | {
+        headline?: T;
+        emphasis?: T;
+        items?:
+          | T
+          | {
+              label?: T;
+              href?: T;
+              id?: T;
+            };
+      };
+  contactSection?:
+    | T
+    | {
+        headline?: T;
+        emphasis?: T;
+        lead?: T;
+        emailSubject?: T;
       };
   canonicalServicePage?: T;
   targetKeyword?: T;

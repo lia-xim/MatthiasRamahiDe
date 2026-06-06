@@ -44,6 +44,7 @@
     "cms:seed-home-hero": "corepack pnpm --filter @matthias-ramahi/cms seed:home-hero",
     "cms:seed-about-sections": "corepack pnpm --filter @matthias-ramahi/cms seed:about-sections",
     "cms:seed-service-page-heroes": "corepack pnpm --filter @matthias-ramahi/cms seed:service-page-heroes",
+    "cms:seed-sportwagen-page": "corepack pnpm --filter @matthias-ramahi/cms seed:sportwagen-page",
     "cms:seed-portfolio-index": "corepack pnpm --filter @matthias-ramahi/cms seed:portfolio-index",
     "cms:seed-portfolio-project-pages": "corepack pnpm --filter @matthias-ramahi/cms seed:portfolio-project-pages",
     "cms:seed-journal-index": "corepack pnpm --filter @matthias-ramahi/cms seed:journal-index",
