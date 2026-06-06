@@ -54,16 +54,15 @@ export const serviceSectionsTab: Tab = {
     'Inhalte der Themen-Seite pro Sektion. Jede Sektion ist optional - leer lassen nutzt den eingebauten Standardinhalt.',
   fields: [
     {
-      name: 'heroLine2',
-      label: 'Hero-Titel - zweite Zeile',
-      type: 'text',
-      admin: { description: 'Z. B. "Fotografie." Leer lassen = automatisch aus dem Seitentyp.' },
-    },
-    {
       name: 'statement',
       label: 'Statement-Sektion',
       type: 'group',
       fields: [
+        mediaRelationshipField({
+          name: 'image',
+          label: 'Bild',
+          description: 'Bild der zweiten Sektion neben dem Statement-Text.',
+        }),
         { name: 'headline', label: 'Headline', type: 'text' },
         { name: 'emphasis', label: 'Hervorgehobenes Wort (kursiv)', type: 'text' },
         {
@@ -162,6 +161,16 @@ export const serviceSectionsTab: Tab = {
             { name: 'alt', label: 'Alt-Text', type: 'text' },
           ],
         },
+      ],
+    },
+    {
+      name: 'faq',
+      label: 'FAQ',
+      type: 'array',
+      admin: { initCollapsed: true, description: 'Haeufige Fragen der sichtbaren FAQ-Sektion.' },
+      fields: [
+        { name: 'question', label: 'Frage', type: 'text', required: true },
+        { name: 'answer', label: 'Antwort', type: 'textarea', required: true },
       ],
     },
     linkListField('locationLinksSection', 'Vor-Ort-Links'),

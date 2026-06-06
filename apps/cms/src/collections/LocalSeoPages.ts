@@ -57,6 +57,7 @@ export const LocalSeoPages: CollectionConfig = {
         { path: 'heroImage', label: 'Hero-Bild' },
         { path: 'heroSlides.image', label: 'Hero-Slider' },
         { path: 'heroPanels.image', label: 'Hero-Bilder Seiten-Design' },
+        { path: 'statement.image', label: 'Statement-Sektion' },
         { path: 'shootingStyles.image', label: 'Aufnahme-Stile' },
         { path: 'portfolioTiles.image', label: 'Galerie-Kacheln' },
         { path: 'audienceCards.image', label: 'Zielgruppen' },

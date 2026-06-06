@@ -59,6 +59,7 @@ export const ServicePages: CollectionConfig = {
         { path: 'heroImage', label: 'Hero-Bild' },
         { path: 'heroSlides.image', label: 'Hero-Slider' },
         { path: 'heroPanels.image', label: 'Hero-Bilder Seiten-Design' },
+        { path: 'statement.image', label: 'Statement-Sektion' },
         { path: 'shootingStyles.image', label: 'Aufnahme-Stile' },
         { path: 'portfolioTiles.image', label: 'Galerie-Kacheln' },
         { path: 'audienceCards.image', label: 'Zielgruppen' },
@@ -92,8 +93,9 @@ export const ServicePages: CollectionConfig = {
       type: 'tabs',
       tabs: [
         {
-          label: 'Basis',
-          description: 'Die wenigen Felder, die den Inhalt der Leistungsseite tragen.',
+          label: 'Basis / Fallback',
+          description:
+            'Pflichtdaten fuer URL, Suche und Fallbacks. Die sichtbare Seite pflegst du vor allem in Hero und Themen-Sektionen.',
           fields: [
             {
               name: 'serviceType',
@@ -122,8 +124,9 @@ export const ServicePages: CollectionConfig = {
           ],
         },
         {
-          label: 'Bilder',
-          description: 'Hero und Teaser sind die wichtigsten Austauschpunkte.',
+          label: 'Fallback-Bilder',
+          description:
+            'Technische Fallback-Bilder fuer Listen, SEO und alte Layouts. Die sichtbaren Hero-/Sektionsbilder liegen in Hero und Themen-Sektionen.',
           fields: [
             mediaRelationshipField({
               name: 'heroImage',
@@ -143,42 +146,6 @@ export const ServicePages: CollectionConfig = {
           description:
             'Hero dieser Leistungs-/Fotografie-Seite. Text/CTA/Hauptbild sind gemeinsam, die Anzahl der Hero-Bilder richtet sich nach dem jeweiligen Seiten-Design.',
           fields: [serviceHeroSlides, serviceHeroPanels],
-        },
-        {
-          label: 'Inhalt',
-          description: 'Nutzen, Zielgruppen, FAQ und optionale Module.',
-          fields: [
-            {
-              name: 'audience',
-              label: 'Fuer wen geeignet',
-              type: 'array',
-              maxRows: 8,
-              admin: { initCollapsed: true },
-              fields: [{ name: 'item', label: 'Zielgruppe / Einsatz', type: 'text', required: true }],
-            },
-            {
-              name: 'proofPoints',
-              label: 'Beweispunkte / Nutzen',
-              type: 'array',
-              maxRows: 6,
-              admin: { initCollapsed: true },
-              fields: [
-                { name: 'label', label: 'Label', type: 'text', required: true },
-                { name: 'text', label: 'Text', type: 'textarea', required: true },
-              ],
-            },
-            {
-              name: 'faq',
-              label: 'FAQ',
-              type: 'array',
-              admin: { initCollapsed: true },
-              fields: [
-                { name: 'question', label: 'Frage', type: 'text', required: true },
-                { name: 'answer', label: 'Antwort', type: 'textarea', required: true },
-              ],
-            },
-            contentBlocks,
-          ],
         },
         serviceSectionsTab,
         {
@@ -205,6 +172,32 @@ export const ServicePages: CollectionConfig = {
                   { name: 'emailSubject', label: 'E-Mail-Betreff', type: 'text' },
                 ],
               },
+              {
+                name: 'audience',
+                label: 'Legacy: Fuer wen geeignet',
+                type: 'array',
+                maxRows: 8,
+                admin: {
+                  initCollapsed: true,
+                  description: 'Altes generisches Feld. Fuer die sichtbaren Karten bitte Themen-Sektionen nutzen.',
+                },
+                fields: [{ name: 'item', label: 'Zielgruppe / Einsatz', type: 'text', required: true }],
+              },
+              {
+                name: 'proofPoints',
+                label: 'Legacy: Beweispunkte / Nutzen',
+                type: 'array',
+                maxRows: 6,
+                admin: {
+                  initCollapsed: true,
+                  description: 'Altes generisches Feld. Nur fuer Spezial-/Fallback-Layouts.',
+                },
+                fields: [
+                  { name: 'label', label: 'Label', type: 'text', required: true },
+                  { name: 'text', label: 'Text', type: 'textarea', required: true },
+                ],
+              },
+              contentBlocks,
               seoFields,
               legacyMigrationFields,
             ]),

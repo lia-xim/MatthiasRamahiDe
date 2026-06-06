@@ -226,11 +226,14 @@ try {
     withImage({ title: 'Portfolio', href: 'portfolio.html', alt: 'Vollständiges Portfolio' }, ['assets-portfolio-dsc3879-1920.webp', '_DSC3879.webp']),
   ])
 
+  const statementImage = await image(['assets-portfolio-dsc3879-1920.webp', '_DSC3879.webp'])
+
   await payload.update({
     collection: 'service-pages',
     id: doc.id,
     data: {
       statement: {
+        ...(statementImage ? { image: statementImage } : {}),
         headline: 'Speed.',
         emphasis: 'Klar gezeichnet.',
         body: [

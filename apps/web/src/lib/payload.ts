@@ -112,7 +112,7 @@ export type PayloadDoc = {
   // Strukturierte Themen-Seiten-Sektionen (ServicePages -> Tab "Themen-Sektionen"). Alle optional -> Fallback im Component.
   heroLine2?: string
   heroPanels?: Array<{ image?: PayloadMedia | string }>
-  statement?: { headline?: string; emphasis?: string; body?: Array<{ text?: string }> }
+  statement?: { image?: PayloadMedia | string; headline?: string; emphasis?: string; body?: Array<{ text?: string }> }
   focusSection?: { headline?: string; emphasis?: string; lead?: string }
   shootingStyles?: Array<{ image?: PayloadMedia | string; title?: string; text?: string }>
   gallerySection?: { headline?: string; lead?: string }

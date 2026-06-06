@@ -1116,23 +1116,165 @@ export interface ServicePage {
         id?: string | null;
       }[]
     | null;
+  statement?: {
+    /**
+     * Bild der zweiten Sektion neben dem Statement-Text.
+     */
+    image?: (number | null) | Media;
+    headline?: string | null;
+    emphasis?: string | null;
+    body?:
+      | {
+          text: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  /**
+   * Ueberschrift und Intro der Perspektiven-/Kachel-Sektion, z. B. "Form, Material, Druckqualitaet."
+   */
+  focusSection?: {
+    headline?: string | null;
+    emphasis?: string | null;
+    lead?: string | null;
+  };
+  /**
+   * Bild-/Aufnahme-Perspektiven wie Exterieur, Interieur, Details oder Cinematic.
+   */
+  shootingStyles?:
+    | {
+        /**
+         * Bild aus dem Medienarchiv waehlen. Neue Bilder koennen direkt im Drawer hochgeladen und bearbeitet werden.
+         */
+        image?: (number | null) | Media;
+        title: string;
+        text?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  gallerySection?: {
+    headline?: string | null;
+    lead?: string | null;
+  };
+  portfolioTiles?:
+    | {
+        /**
+         * Bild aus dem Medienarchiv waehlen. Neue Bilder koennen direkt im Drawer hochgeladen und bearbeitet werden.
+         */
+        image?: (number | null) | Media;
+        label?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  audienceSection?: {
+    headline?: string | null;
+    lead?: string | null;
+  };
+  /**
+   * Zielgruppen mit Bild, Nummer, Titel und kurzer Beschreibung.
+   */
+  audienceCards?:
+    | {
+        /**
+         * Bild aus dem Medienarchiv waehlen. Neue Bilder koennen direkt im Drawer hochgeladen und bearbeitet werden.
+         */
+        image?: (number | null) | Media;
+        number?: string | null;
+        title: string;
+        text?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  relatedSection?: {
+    headline?: string | null;
+    emphasis?: string | null;
+    lead?: string | null;
+    items?:
+      | {
+          /**
+           * Bild aus dem Medienarchiv waehlen. Neue Bilder koennen direkt im Drawer hochgeladen und bearbeitet werden.
+           */
+          image?: (number | null) | Media;
+          title: string;
+          href: string;
+          alt?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  /**
+   * Haeufige Fragen der sichtbaren FAQ-Sektion.
+   */
+  faq?:
+    | {
+        question: string;
+        answer: string;
+        id?: string | null;
+      }[]
+    | null;
+  locationLinksSection?: {
+    headline?: string | null;
+    emphasis?: string | null;
+    items?:
+      | {
+          label: string;
+          href: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  searchLinksSection?: {
+    headline?: string | null;
+    emphasis?: string | null;
+    items?:
+      | {
+          label: string;
+          href: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  contactSection?: {
+    headline?: string | null;
+    emphasis?: string | null;
+    lead?: string | null;
+    emailSubject?: string | null;
+  };
+  relatedPages?:
+    | {
+        label: string;
+        /**
+         * Interne Links am besten root-relativ eintragen, z. B. /portfolio. Vollstaendige eigene URLs werden automatisch gekuerzt.
+         */
+        href: string;
+        seoPurpose?: ('contextual' | 'navigation' | 'conversion' | 'citation' | 'legal' | 'social') | null;
+        rel?: ('follow' | 'nofollow' | 'sponsored' | 'ugc') | null;
+        openInNewTab?: boolean | null;
+        id?: string | null;
+      }[]
+    | null;
+  cta?: {
+    headline?: string | null;
+    text?: string | null;
+    buttonLabel?: string | null;
+    emailSubject?: string | null;
+  };
+  /**
+   * Altes generisches Feld. Fuer die sichtbaren Karten bitte Themen-Sektionen nutzen.
+   */
   audience?:
     | {
         item: string;
         id?: string | null;
       }[]
     | null;
+  /**
+   * Altes generisches Feld. Nur fuer Spezial-/Fallback-Layouts.
+   */
   proofPoints?:
     | {
         label: string;
         text: string;
-        id?: string | null;
-      }[]
-    | null;
-  faq?:
-    | {
-        question: string;
-        answer: string;
         id?: string | null;
       }[]
     | null;
@@ -1232,139 +1374,6 @@ export interface ServicePage {
           }
       )[]
     | null;
-  /**
-   * Z. B. "Fotografie." Leer lassen = automatisch aus dem Seitentyp.
-   */
-  heroLine2?: string | null;
-  statement?: {
-    headline?: string | null;
-    emphasis?: string | null;
-    body?:
-      | {
-          text: string;
-          id?: string | null;
-        }[]
-      | null;
-  };
-  /**
-   * Ueberschrift und Intro der Perspektiven-/Kachel-Sektion, z. B. "Form, Material, Druckqualitaet."
-   */
-  focusSection?: {
-    headline?: string | null;
-    emphasis?: string | null;
-    lead?: string | null;
-  };
-  /**
-   * Bild-/Aufnahme-Perspektiven wie Exterieur, Interieur, Details oder Cinematic.
-   */
-  shootingStyles?:
-    | {
-        /**
-         * Bild aus dem Medienarchiv waehlen. Neue Bilder koennen direkt im Drawer hochgeladen und bearbeitet werden.
-         */
-        image?: (number | null) | Media;
-        title: string;
-        text?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  gallerySection?: {
-    headline?: string | null;
-    lead?: string | null;
-  };
-  portfolioTiles?:
-    | {
-        /**
-         * Bild aus dem Medienarchiv waehlen. Neue Bilder koennen direkt im Drawer hochgeladen und bearbeitet werden.
-         */
-        image?: (number | null) | Media;
-        label?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  audienceSection?: {
-    headline?: string | null;
-    lead?: string | null;
-  };
-  /**
-   * Zielgruppen mit Bild, Nummer, Titel und kurzer Beschreibung.
-   */
-  audienceCards?:
-    | {
-        /**
-         * Bild aus dem Medienarchiv waehlen. Neue Bilder koennen direkt im Drawer hochgeladen und bearbeitet werden.
-         */
-        image?: (number | null) | Media;
-        number?: string | null;
-        title: string;
-        text?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  relatedSection?: {
-    headline?: string | null;
-    emphasis?: string | null;
-    lead?: string | null;
-    items?:
-      | {
-          /**
-           * Bild aus dem Medienarchiv waehlen. Neue Bilder koennen direkt im Drawer hochgeladen und bearbeitet werden.
-           */
-          image?: (number | null) | Media;
-          title: string;
-          href: string;
-          alt?: string | null;
-          id?: string | null;
-        }[]
-      | null;
-  };
-  locationLinksSection?: {
-    headline?: string | null;
-    emphasis?: string | null;
-    items?:
-      | {
-          label: string;
-          href: string;
-          id?: string | null;
-        }[]
-      | null;
-  };
-  searchLinksSection?: {
-    headline?: string | null;
-    emphasis?: string | null;
-    items?:
-      | {
-          label: string;
-          href: string;
-          id?: string | null;
-        }[]
-      | null;
-  };
-  contactSection?: {
-    headline?: string | null;
-    emphasis?: string | null;
-    lead?: string | null;
-    emailSubject?: string | null;
-  };
-  relatedPages?:
-    | {
-        label: string;
-        /**
-         * Interne Links am besten root-relativ eintragen, z. B. /portfolio. Vollstaendige eigene URLs werden automatisch gekuerzt.
-         */
-        href: string;
-        seoPurpose?: ('contextual' | 'navigation' | 'conversion' | 'citation' | 'legal' | 'social') | null;
-        rel?: ('follow' | 'nofollow' | 'sponsored' | 'ugc') | null;
-        openInNewTab?: boolean | null;
-        id?: string | null;
-      }[]
-    | null;
-  cta?: {
-    headline?: string | null;
-    text?: string | null;
-    buttonLabel?: string | null;
-    emailSubject?: string | null;
-  };
   /**
    * Wird beim Speichern automatisch aus Titel, Intro/Kurztext und Bildfeldern vorbereitet. Nur fuer bewusste Overrides oeffnen.
    */
@@ -2267,11 +2276,11 @@ export interface LocalSeoPage {
           }
       )[]
     | null;
-  /**
-   * Z. B. "Fotografie." Leer lassen = automatisch aus dem Seitentyp.
-   */
-  heroLine2?: string | null;
   statement?: {
+    /**
+     * Bild der zweiten Sektion neben dem Statement-Text.
+     */
+    image?: (number | null) | Media;
     headline?: string | null;
     emphasis?: string | null;
     body?:
@@ -2353,6 +2362,16 @@ export interface LocalSeoPage {
         }[]
       | null;
   };
+  /**
+   * Haeufige Fragen der sichtbaren FAQ-Sektion.
+   */
+  faq?:
+    | {
+        question: string;
+        answer: string;
+        id?: string | null;
+      }[]
+    | null;
   locationLinksSection?: {
     headline?: string | null;
     emphasis?: string | null;
@@ -3080,6 +3099,137 @@ export interface ServicePagesSelect<T extends boolean = true> {
         image?: T;
         id?: T;
       };
+  statement?:
+    | T
+    | {
+        image?: T;
+        headline?: T;
+        emphasis?: T;
+        body?:
+          | T
+          | {
+              text?: T;
+              id?: T;
+            };
+      };
+  focusSection?:
+    | T
+    | {
+        headline?: T;
+        emphasis?: T;
+        lead?: T;
+      };
+  shootingStyles?:
+    | T
+    | {
+        image?: T;
+        title?: T;
+        text?: T;
+        id?: T;
+      };
+  gallerySection?:
+    | T
+    | {
+        headline?: T;
+        lead?: T;
+      };
+  portfolioTiles?:
+    | T
+    | {
+        image?: T;
+        label?: T;
+        id?: T;
+      };
+  audienceSection?:
+    | T
+    | {
+        headline?: T;
+        lead?: T;
+      };
+  audienceCards?:
+    | T
+    | {
+        image?: T;
+        number?: T;
+        title?: T;
+        text?: T;
+        id?: T;
+      };
+  relatedSection?:
+    | T
+    | {
+        headline?: T;
+        emphasis?: T;
+        lead?: T;
+        items?:
+          | T
+          | {
+              image?: T;
+              title?: T;
+              href?: T;
+              alt?: T;
+              id?: T;
+            };
+      };
+  faq?:
+    | T
+    | {
+        question?: T;
+        answer?: T;
+        id?: T;
+      };
+  locationLinksSection?:
+    | T
+    | {
+        headline?: T;
+        emphasis?: T;
+        items?:
+          | T
+          | {
+              label?: T;
+              href?: T;
+              id?: T;
+            };
+      };
+  searchLinksSection?:
+    | T
+    | {
+        headline?: T;
+        emphasis?: T;
+        items?:
+          | T
+          | {
+              label?: T;
+              href?: T;
+              id?: T;
+            };
+      };
+  contactSection?:
+    | T
+    | {
+        headline?: T;
+        emphasis?: T;
+        lead?: T;
+        emailSubject?: T;
+      };
+  relatedPages?:
+    | T
+    | {
+        label?: T;
+        href?: T;
+        seoPurpose?: T;
+        rel?: T;
+        openInNewTab?: T;
+        id?: T;
+      };
+  cta?:
+    | T
+    | {
+        headline?: T;
+        text?: T;
+        buttonLabel?: T;
+        emailSubject?: T;
+      };
   audience?:
     | T
     | {
@@ -3091,13 +3241,6 @@ export interface ServicePagesSelect<T extends boolean = true> {
     | {
         label?: T;
         text?: T;
-        id?: T;
-      };
-  faq?:
-    | T
-    | {
-        question?: T;
-        answer?: T;
         id?: T;
       };
   blocks?:
@@ -3178,130 +3321,6 @@ export interface ServicePagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-      };
-  heroLine2?: T;
-  statement?:
-    | T
-    | {
-        headline?: T;
-        emphasis?: T;
-        body?:
-          | T
-          | {
-              text?: T;
-              id?: T;
-            };
-      };
-  focusSection?:
-    | T
-    | {
-        headline?: T;
-        emphasis?: T;
-        lead?: T;
-      };
-  shootingStyles?:
-    | T
-    | {
-        image?: T;
-        title?: T;
-        text?: T;
-        id?: T;
-      };
-  gallerySection?:
-    | T
-    | {
-        headline?: T;
-        lead?: T;
-      };
-  portfolioTiles?:
-    | T
-    | {
-        image?: T;
-        label?: T;
-        id?: T;
-      };
-  audienceSection?:
-    | T
-    | {
-        headline?: T;
-        lead?: T;
-      };
-  audienceCards?:
-    | T
-    | {
-        image?: T;
-        number?: T;
-        title?: T;
-        text?: T;
-        id?: T;
-      };
-  relatedSection?:
-    | T
-    | {
-        headline?: T;
-        emphasis?: T;
-        lead?: T;
-        items?:
-          | T
-          | {
-              image?: T;
-              title?: T;
-              href?: T;
-              alt?: T;
-              id?: T;
-            };
-      };
-  locationLinksSection?:
-    | T
-    | {
-        headline?: T;
-        emphasis?: T;
-        items?:
-          | T
-          | {
-              label?: T;
-              href?: T;
-              id?: T;
-            };
-      };
-  searchLinksSection?:
-    | T
-    | {
-        headline?: T;
-        emphasis?: T;
-        items?:
-          | T
-          | {
-              label?: T;
-              href?: T;
-              id?: T;
-            };
-      };
-  contactSection?:
-    | T
-    | {
-        headline?: T;
-        emphasis?: T;
-        lead?: T;
-        emailSubject?: T;
-      };
-  relatedPages?:
-    | T
-    | {
-        label?: T;
-        href?: T;
-        seoPurpose?: T;
-        rel?: T;
-        openInNewTab?: T;
-        id?: T;
-      };
-  cta?:
-    | T
-    | {
-        headline?: T;
-        text?: T;
-        buttonLabel?: T;
-        emailSubject?: T;
       };
   seo?:
     | T
@@ -3877,10 +3896,10 @@ export interface LocalSeoPagesSelect<T extends boolean = true> {
               blockName?: T;
             };
       };
-  heroLine2?: T;
   statement?:
     | T
     | {
+        image?: T;
         headline?: T;
         emphasis?: T;
         body?:
@@ -3948,6 +3967,13 @@ export interface LocalSeoPagesSelect<T extends boolean = true> {
               alt?: T;
               id?: T;
             };
+      };
+  faq?:
+    | T
+    | {
+        question?: T;
+        answer?: T;
+        id?: T;
       };
   locationLinksSection?:
     | T

@@ -340,7 +340,7 @@ const finalAudiences = doc?.audienceCards?.length
     })
   : inheritedAudiences
 
-const finalStatementImage = finalPortfolioTiles[0] || statementImage
+const finalStatementImage = resolveSectionImage(doc?.statement?.image, finalPortfolioTiles[0] || statementImage)
 const firstSectionTarget = isLocalHeroPage ? `${serviceLabel} ${scope.label}` : isKeywordPage ? serviceLabel : ''
 const statementHeadlineSource = (typeof doc?.statement?.headline === 'string' && doc.statement.headline.trim()) || keywordFocusCopy?.statementHeadline || 'Bilder mit'
 const statementEmphasisSource = (typeof doc?.statement?.emphasis === 'string' && doc.statement.emphasis.trim()) || keywordFocusCopy?.statementEmphasis || 'Druckqualität.'
