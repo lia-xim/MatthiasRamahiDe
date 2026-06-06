@@ -1,4 +1,4 @@
-import type { Tab } from 'payload'
+import type { Field, Tab } from 'payload'
 
 import { mediaRelationshipField } from './editorialImages'
 
@@ -11,23 +11,24 @@ import { mediaRelationshipField } from './editorialImages'
  * Dadurch ist das Hinzufügen dieser Felder rückwärtskompatibel — nichts bricht, wenn
  * ein Doc die Felder noch nicht gesetzt hat.
  */
+export const serviceHeroPanels: Field = {
+  name: 'heroPanels',
+  label: 'Hero-Bilder fuer das Seiten-Design',
+  type: 'array',
+  maxRows: 6,
+  admin: {
+    initCollapsed: true,
+    description:
+      'Layout-spezifische Hero-Bilder. Automobil/Oldtimer: 1 Hauptbild. Sportwagen/Motorrad: 3 Bilder. Portrait: 4 Bilder. Landschaft: 5 Bilder. Leer lassen = eingebauter Design-Fallback.',
+  },
+  fields: [mediaRelationshipField({ name: 'image', label: 'Bild', required: true, galleryDefaultOpen: true })],
+}
+
 export const serviceSectionsTab: Tab = {
   label: 'Themen-Sektionen',
   description:
     'Inhalte der Themen-Seite pro Sektion. Jede Sektion ist optional — leer lassen nutzt den eingebauten Standardinhalt.',
   fields: [
-    {
-      name: 'heroPanels',
-      label: 'Hero-Bilder (Slider)',
-      type: 'array',
-      maxRows: 6,
-      admin: {
-        initCollapsed: true,
-        description:
-          'Die Hero-Bilder dieser Seite — Reihenfolge = Slider-Reihenfolge. So viele Bilder wie die Seite Slides hat: Automobil & Oldtimer 1, Motorrad & Sportwagen 3, Portrait 4, Landschaft 5. Leer lassen = das aktuelle Hero-Bild bleibt.',
-      },
-      fields: [mediaRelationshipField({ name: 'image', label: 'Bild', required: true, galleryDefaultOpen: true })],
-    },
     {
       name: 'heroLine2',
       label: 'Hero-Titel — zweite Zeile',

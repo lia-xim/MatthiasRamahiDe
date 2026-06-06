@@ -9,7 +9,7 @@ import { serviceHeroSlides } from '../fields/homeHeroSlides'
 import { legacyMigrationFields } from '../fields/legacyMigration'
 import { linkFields } from '../fields/links'
 import { seoFields } from '../fields/seo'
-import { serviceSectionsTab } from '../fields/serviceSections'
+import { serviceHeroPanels, serviceSectionsTab } from '../fields/serviceSections'
 import { slugField } from '../fields/slug'
 import { applyEditorialDefaults } from '../hooks/autoDefaults'
 import { normalizeLinksBeforeValidate } from '../hooks/normalizeLinks'
@@ -58,6 +58,7 @@ export const ServicePages: CollectionConfig = {
       requireMediaAltForPublish([
         { path: 'heroImage', label: 'Hero-Bild' },
         { path: 'heroSlides.image', label: 'Hero-Slider' },
+        { path: 'heroPanels.image', label: 'Hero-Bilder Seiten-Design' },
         { path: 'teaserImage', label: 'Teaser-Bild' },
         { path: 'seo.ogImage', label: 'Social-Bild' },
         { path: 'blocks.items.image', label: 'Bildsequenz' },
@@ -136,8 +137,8 @@ export const ServicePages: CollectionConfig = {
         {
           label: 'Hero',
           description:
-            'Eigener Hero-Slider fuer diese Leistungs-/Fotografie-Seite. Wenn leer, nutzt die Seite Hero-Bild, Themenbilder oder die eingebauten Fallbacks.',
-          fields: [serviceHeroSlides],
+            'Hero dieser Leistungs-/Fotografie-Seite. Text/CTA/Hauptbild sind gemeinsam, die Anzahl der Hero-Bilder richtet sich nach dem jeweiligen Seiten-Design.',
+          fields: [serviceHeroSlides, serviceHeroPanels],
         },
         {
           label: 'Inhalt',

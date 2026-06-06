@@ -8,7 +8,7 @@ import { mediaRelationshipField } from '../fields/editorialImages'
 import { serviceHeroSlides } from '../fields/homeHeroSlides'
 import { legacyMigrationFields } from '../fields/legacyMigration'
 import { seoFields } from '../fields/seo'
-import { serviceSectionsTab } from '../fields/serviceSections'
+import { serviceHeroPanels, serviceSectionsTab } from '../fields/serviceSections'
 import { slugField } from '../fields/slug'
 import { applyEditorialDefaults } from '../hooks/autoDefaults'
 import { normalizeLinksBeforeValidate } from '../hooks/normalizeLinks'
@@ -56,6 +56,7 @@ export const LocalSeoPages: CollectionConfig = {
       requireMediaAltForPublish([
         { path: 'heroImage', label: 'Hero-Bild' },
         { path: 'heroSlides.image', label: 'Hero-Slider' },
+        { path: 'heroPanels.image', label: 'Hero-Bilder Seiten-Design' },
         { path: 'seo.ogImage', label: 'Social-Bild' },
         { path: 'blocks.items.image', label: 'Bildsequenz' },
       ]),
@@ -104,8 +105,8 @@ export const LocalSeoPages: CollectionConfig = {
         {
           label: 'Hero',
           description:
-            'Optionaler eigener Hero-Slider fuer diese lokale Seite. Leer lassen, wenn die Seite den Hero der kanonischen Hauptseite erben soll.',
-          fields: [serviceHeroSlides],
+            'Optionaler eigener Hero fuer diese lokale Seite. Leer lassen, wenn die Seite Text und Bilder der kanonischen Hauptseite erben soll.',
+          fields: [serviceHeroSlides, serviceHeroPanels],
         },
         {
           label: 'Inhalt',

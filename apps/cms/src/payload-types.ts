@@ -1076,7 +1076,7 @@ export interface ServicePage {
    */
   teaserImage?: (number | null) | Media;
   /**
-   * Hero-Slider fuer diese Themen-/SEO-Seite. Bilder, Titelzeilen, Kurztext und Buttons steuern den sichtbaren Hero dieser Seite.
+   * Hero-Text, CTA und erstes sichtbares Hero-Bild dieser Themen-/SEO-Seite. Weitere design-spezifische Hero-Bilder liegen im Feld "Hero-Bilder fuer das Seiten-Design".
    */
   heroSlides?:
     | {
@@ -1101,6 +1101,18 @@ export interface ServicePage {
         primaryHref?: string | null;
         secondaryLabel?: string | null;
         secondaryHref?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Layout-spezifische Hero-Bilder. Automobil/Oldtimer: 1 Hauptbild. Sportwagen/Motorrad: 3 Bilder. Portrait: 4 Bilder. Landschaft: 5 Bilder. Leer lassen = eingebauter Design-Fallback.
+   */
+  heroPanels?:
+    | {
+        /**
+         * Bild aus dem Medienarchiv waehlen. Neue Bilder koennen direkt im Drawer hochgeladen und bearbeitet werden.
+         */
+        image: number | Media;
         id?: string | null;
       }[]
     | null;
@@ -1219,18 +1231,6 @@ export interface ServicePage {
             blockType: 'ctaBlock';
           }
       )[]
-    | null;
-  /**
-   * Die drei Bilder des Hero-Triptychons (Desktop). Auf dem Handy wird das erste Bild groß gezeigt.
-   */
-  heroPanels?:
-    | {
-        /**
-         * Bild aus dem Medienarchiv waehlen. Neue Bilder koennen direkt im Drawer hochgeladen und bearbeitet werden.
-         */
-        image: number | Media;
-        id?: string | null;
-      }[]
     | null;
   /**
    * Z. B. „Fotografie." Leer lassen = automatisch aus dem Seitentyp.
@@ -2056,7 +2056,7 @@ export interface LocalSeoPage {
    */
   heroImage?: (number | null) | Media;
   /**
-   * Hero-Slider fuer diese Themen-/SEO-Seite. Bilder, Titelzeilen, Kurztext und Buttons steuern den sichtbaren Hero dieser Seite.
+   * Hero-Text, CTA und erstes sichtbares Hero-Bild dieser Themen-/SEO-Seite. Weitere design-spezifische Hero-Bilder liegen im Feld "Hero-Bilder fuer das Seiten-Design".
    */
   heroSlides?:
     | {
@@ -2081,6 +2081,18 @@ export interface LocalSeoPage {
         primaryHref?: string | null;
         secondaryLabel?: string | null;
         secondaryHref?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Layout-spezifische Hero-Bilder. Automobil/Oldtimer: 1 Hauptbild. Sportwagen/Motorrad: 3 Bilder. Portrait: 4 Bilder. Landschaft: 5 Bilder. Leer lassen = eingebauter Design-Fallback.
+   */
+  heroPanels?:
+    | {
+        /**
+         * Bild aus dem Medienarchiv waehlen. Neue Bilder koennen direkt im Drawer hochgeladen und bearbeitet werden.
+         */
+        image: number | Media;
         id?: string | null;
       }[]
     | null;
@@ -2193,18 +2205,6 @@ export interface LocalSeoPage {
             blockType: 'ctaBlock';
           }
       )[]
-    | null;
-  /**
-   * Die drei Bilder des Hero-Triptychons (Desktop). Auf dem Handy wird das erste Bild groß gezeigt.
-   */
-  heroPanels?:
-    | {
-        /**
-         * Bild aus dem Medienarchiv waehlen. Neue Bilder koennen direkt im Drawer hochgeladen und bearbeitet werden.
-         */
-        image: number | Media;
-        id?: string | null;
-      }[]
     | null;
   /**
    * Z. B. „Fotografie." Leer lassen = automatisch aus dem Seitentyp.
@@ -2952,6 +2952,12 @@ export interface ServicePagesSelect<T extends boolean = true> {
         secondaryHref?: T;
         id?: T;
       };
+  heroPanels?:
+    | T
+    | {
+        image?: T;
+        id?: T;
+      };
   audience?:
     | T
     | {
@@ -3050,12 +3056,6 @@ export interface ServicePagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-      };
-  heroPanels?:
-    | T
-    | {
-        image?: T;
-        id?: T;
       };
   heroLine2?: T;
   statement?:
@@ -3587,6 +3587,12 @@ export interface LocalSeoPagesSelect<T extends boolean = true> {
         secondaryHref?: T;
         id?: T;
       };
+  heroPanels?:
+    | T
+    | {
+        image?: T;
+        id?: T;
+      };
   localProof?:
     | T
     | {
@@ -3679,12 +3685,6 @@ export interface LocalSeoPagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-      };
-  heroPanels?:
-    | T
-    | {
-        image?: T;
-        id?: T;
       };
   heroLine2?: T;
   statement?:

@@ -173,12 +173,13 @@ export const homeHeroSlides: Field = heroSlidesField({
 
 export const serviceHeroSlides: Field = heroSlidesField({
   adminDescription:
-    'Hero-Slider fuer diese Themen-/SEO-Seite. Bilder, Titelzeilen, Kurztext und Buttons steuern den sichtbaren Hero dieser Seite.',
+    'Hero-Text, CTA und erstes sichtbares Hero-Bild dieser Themen-/SEO-Seite. Weitere design-spezifische Hero-Bilder liegen im Feld "Hero-Bilder fuer das Seiten-Design".',
   galleryIntro:
-    'Mehrere Hero-Bilder fuer diese konkrete Fotografie-Seite auswaehlen. Die Reihenfolge hier ist die Bildreihenfolge im Hero.',
-  galleryTitle: 'Hero-Bilder dieser Seite visuell zusammenstellen',
+    'Mindestens das erste Hero-Bild dieser konkreten Fotografie-Seite auswaehlen. Titel, Text und Buttons kannst du danach pro Zeile feinziehen.',
+  galleryTitle: 'Hero-Text und Hauptbild visuell zusammenstellen',
   headlineDefault: '',
   headlineRequired: false,
+  label: 'Hero-Text / CTA / Hauptbild',
   pickerButtonLabel: 'Hero-Bilder als Slides uebernehmen',
   rowDefaults: {
     primaryLabel: 'Shooting anfragen',
