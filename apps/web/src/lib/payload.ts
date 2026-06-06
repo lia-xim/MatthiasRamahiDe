@@ -588,7 +588,7 @@ const numberFromEnv = (value: unknown, fallback: number) => {
 }
 
 export const liveCmsCacheMs = () =>
-  numberFromEnv(import.meta.env.ASTRO_LIVE_CMS_CACHE_MS ?? process.env.ASTRO_LIVE_CMS_CACHE_MS, 5_000)
+  numberFromEnv(import.meta.env.ASTRO_LIVE_CMS_CACHE_MS ?? process.env.ASTRO_LIVE_CMS_CACHE_MS, 0)
 
 export const liveCmsFetchOptions = <T extends object>(options: T = {} as T): T & { cacheMs: number; force: true } => ({
   ...options,

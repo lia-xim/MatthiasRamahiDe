@@ -6,7 +6,7 @@ const numberFromEnv = (value: unknown, fallback: number) => {
 export const livePageCacheControl = () => {
   const seconds = numberFromEnv(
     import.meta.env.ASTRO_LIVE_PAGE_CACHE_SECONDS ?? process.env.ASTRO_LIVE_PAGE_CACHE_SECONDS,
-    60,
+    0,
   )
   const staleSeconds = numberFromEnv(
     import.meta.env.ASTRO_LIVE_PAGE_STALE_SECONDS ?? process.env.ASTRO_LIVE_PAGE_STALE_SECONDS,
