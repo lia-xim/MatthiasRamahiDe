@@ -212,3 +212,4 @@ for (const [slug, visualConfig] of Object.entries(configs)) {
   console.log(`UPDATED service-pages/${slug} -> ${filled.join(', ')}`)
 }
 
+process.exit(0)
