@@ -103,9 +103,13 @@ const contactLead = keywordFocusCopy?.contactLead || defaultContactLead
 // aus audienceCards[i].image (Slots 5–8). Galerie aus portfolioTiles[i].image (9–17).
 const sectionImageOverrides = [
   ...Array.from({ length: 5 }, (_, index) => doc?.heroPanels?.[index]?.image),
-  ...Array.from({ length: 4 }, (_, index) => index === 0 ? doc?.statement?.image || doc?.audienceCards?.[index]?.image : doc?.audienceCards?.[index]?.image),
+  ...Array.from({ length: 4 }, (_, index) => {
+    const card = doc?.shootingStyles?.[index] || doc?.audienceCards?.[index]
+    return index === 0 ? doc?.statement?.image || card?.image : card?.image
+  }),
   ...Array.from({ length: 9 }, (_, index) => doc?.portfolioTiles?.[index]?.image),
-  ...Array.from({ length: 4 }, () => undefined),
+  ...Array.from({ length: 4 }, (_, index) => doc?.processSteps?.[index]?.image),
+  ...Array.from({ length: 4 }, (_, index) => doc?.relatedSection?.items?.[index]?.image),
 ]
 const visualSlots = familyVisualSlots(visualDoc, [
   { alt: 'Landschaft Wasser', full: 'assets/optimized/assets-portfolio-wettberwerb-foto5-wunder-der-natur2-1920.webp', src: 'assets/portfolio/thumbs/Wettberwerb_Foto5_Wunder_der_Natur2.webp', width: 1920, height: 1280 },
@@ -126,6 +130,10 @@ const visualSlots = familyVisualSlots(visualDoc, [
   { alt: 'Landschaft', full: 'assets/optimized/assets-portfolio-20250605-dsc03793-1920.webp', src: 'assets/portfolio/thumbs/20250605-DSC03793.webp', width: 720, height: 960 },
   { alt: 'Landschaft', full: 'assets/optimized/assets-portfolio-20250605-dsc03756-1920.webp', src: 'assets/portfolio/thumbs/20250605-DSC03756.webp', width: 720, height: 1080 },
   { alt: 'Landschaft Detail', full: 'assets/optimized/assets-portfolio-20250414-dsc00341-1920.webp', src: 'assets/portfolio/thumbs/20250414-DSC00341.webp', width: 720, height: 1080 },
+  { alt: 'Anfrage', full: 'assets/optimized/assets-portfolio-wettberwerb-foto5-wunder-der-natur2-1920.webp', src: 'assets/portfolio/thumbs/Wettberwerb_Foto5_Wunder_der_Natur2.webp', width: 720, height: 471 },
+  { alt: 'Beratung', full: 'assets/optimized/assets-portfolio-20250605-dsc03978-1920.webp', src: 'assets/portfolio/thumbs/20250605-DSC03978.webp', width: 720, height: 960 },
+  { alt: 'Produktion', full: 'assets/optimized/assets-portfolio-wettberwerb-foto10-wunder-der-natur-1920.webp', src: 'assets/portfolio/thumbs/Wettberwerb_Foto10_Wunder_der_natur.webp', width: 720, height: 448 },
+  { alt: 'Lieferung', full: 'assets/optimized/assets-portfolio-20250414-dsc00341-1920.webp', src: 'assets/portfolio/thumbs/20250414-DSC00341.webp', width: 720, height: 1080 },
   { alt: 'Portrait', full: 'assets/photos/portrait-blue.webp', src: 'assets/photos/portrait-blue.webp', width: 2048, height: 2560 },
   { alt: 'Oldtimer', full: 'assets/optimized/assets-photos-oldtimer-stage-1920.webp', src: 'assets/optimized/assets-photos-oldtimer-stage-1920.webp', width: 1920, height: 1280 },
   { alt: 'Drucke', full: 'assets/optimized/assets-portfolio-20250605-dsc03978-1920.webp', src: 'assets/optimized/assets-portfolio-20250605-dsc03978-1920.webp', width: 1707, height: 2560 },
@@ -155,10 +163,12 @@ const focusIntroBaseParagraphs = cmsStatementBody.length
       `Der lokale Bezug macht die Anfrage konkreter: Menschen in ${scope.label} suchen Wandbilder, Fine-Art-Prints oder ruhige Bildraeume, die zu Wohnung, Praxis, Hotel oder Buero passen.`,
     ]
 const focusIntroParagraphs = focusIntroSupportLine ? [focusIntroSupportLine, ...focusIntroBaseParagraphs] : focusIntroBaseParagraphs
-const focusModuleHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}.` : isKeywordPage ? `${serviceLabel}.` : keywordFocusCopy?.sectionHeadline || (isParentPage ? 'Vier Ausfuehrungen.' : `Ausfuehrungen fuer ${scope.label}.`)
+const focusModuleHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}.` : isKeywordPage ? `${serviceLabel}.` : cmsText(doc?.focusSection?.headline) || keywordFocusCopy?.sectionHeadline || (isParentPage ? 'Vier Ausfuehrungen.' : `Ausfuehrungen fuer ${scope.label}.`)
+const focusModuleEmphasis = !isLocalHeroPage && !isKeywordPage ? cmsText(doc?.focusSection?.emphasis) : ''
+const focusModuleTitle = splitTrailingEmphasis(focusModuleHeadline, focusModuleEmphasis)
 const focusModuleLead = isParentPage || isKeywordPage
-  ? keywordFocusCopy?.sectionLead || 'Jedes Motiv ist als Print erhaeltlich.'
-  : `Jedes Motiv kann fuer Raeume in ${scope.label} nach Format, Material und Wirkung abgestimmt werden.`
+  ? cmsText(doc?.focusSection?.lead) || keywordFocusCopy?.sectionLead || 'Jedes Motiv ist als Print erhaeltlich.'
+  : cmsText(doc?.focusSection?.lead) || `Jedes Motiv kann fuer Raeume in ${scope.label} nach Format, Material und Wirkung abgestimmt werden.`
 const defaultModuleCards = [
   { visualIndex: 5, title: 'Fine-Art', text: 'Papier, Tonwert und Motiv werden passend zum Raum abgestimmt.' },
   { visualIndex: 6, title: 'Aluminium', text: 'Ruhige Wandbilder auf stabilem Traeger fuer klare Raeume und Praxen.' },
@@ -166,7 +176,7 @@ const defaultModuleCards = [
   { visualIndex: 8, title: 'Edition', text: 'Kuratierte Motive als Einzelabzug oder kleine Edition nach Umfang.' },
 ]
 const moduleCards = defaultModuleCards.map((card, index) => {
-  const cmsCard = doc?.audienceCards?.[index]
+  const cmsCard = doc?.shootingStyles?.[index] || doc?.audienceCards?.[index]
   return cmsCard
     ? {
         ...card,
@@ -175,16 +185,49 @@ const moduleCards = defaultModuleCards.map((card, index) => {
       }
     : card
 })
-const focusGalleryHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}: Bildauswahl.` : isKeywordPage ? `${serviceLabel}: Bildauswahl.` : cmsText(doc?.portfolioTiles?.[0]?.label) || keywordFocusCopy?.galleryHeadline || (isParentPage ? 'Ausgewaehlte Landschaften.' : `Auswahl fuer ${scope.label}.`)
-const focusProcessHeadline = isLocalHeroPage ? `Ablauf ${scope.label}` : isKeywordPage ? `Ablauf ${serviceLabel}` : keywordFocusCopy?.processHeadline || (isParentPage ? 'So entsteht' : `So entsteht dein Druck`)
-const focusProcessEmphasis = isLocalHeroPage ? 'und Lieferung.' : isKeywordPage ? 'und Lieferung.' : keywordFocusCopy?.sectionEmphasis || (isParentPage ? 'Ihr Druck.' : `fuer ${scope.label}.`)
+const focusGalleryHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}: Bildauswahl.` : isKeywordPage ? `${serviceLabel}: Bildauswahl.` : cmsText(doc?.gallerySection?.headline) || keywordFocusCopy?.galleryHeadline || (isParentPage ? 'Ausgewaehlte Landschaften.' : `Auswahl fuer ${scope.label}.`)
+const focusGalleryLead = cmsText(doc?.gallerySection?.lead)
+const focusProcessHeadline = isLocalHeroPage ? `Ablauf ${scope.label}` : isKeywordPage ? `Ablauf ${serviceLabel}` : cmsText(doc?.processSection?.headline) || keywordFocusCopy?.processHeadline || (isParentPage ? 'So entsteht' : `So entsteht dein Druck`)
+const focusProcessEmphasis = isLocalHeroPage ? 'und Lieferung.' : isKeywordPage ? 'und Lieferung.' : cmsText(doc?.processSection?.emphasis) || keywordFocusCopy?.sectionEmphasis || (isParentPage ? 'Ihr Druck.' : `fuer ${scope.label}.`)
 const focusProcessLead = isParentPage || isKeywordPage
-  ? keywordFocusCopy?.processLead || 'Jedes Bild aus dem Portfolio, in jedem Format, mit oder ohne Rahmen - auf Anfrage gefertigt und zu Ihnen geliefert.'
-  : `Motiv, Format, Material und Lieferziel werden fuer ${scope.label} abgestimmt, damit der Print im Raum ruhig und hochwertig wirkt.`
+  ? cmsText(doc?.processSection?.lead) || keywordFocusCopy?.processLead || 'Jedes Bild aus dem Portfolio, in jedem Format, mit oder ohne Rahmen - auf Anfrage gefertigt und zu Ihnen geliefert.'
+  : cmsText(doc?.processSection?.lead) || `Motiv, Format, Material und Lieferziel werden fuer ${scope.label} abgestimmt, damit der Print im Raum ruhig und hochwertig wirkt.`
+const defaultProcessSteps = [
+  { visualIndex: 18, imageLabel: 'Anfrage', title: 'Anfrage', text: 'Motiv, Raum, Format und gewuenschte Wirkung werden kurz eingeordnet.' },
+  { visualIndex: 19, imageLabel: 'Beratung', title: 'Beratung', text: 'Material, Groesse, Oberflaeche und Haengung werden passend zum Ort geplant.' },
+  { visualIndex: 20, imageLabel: 'Produktion', title: 'Produktion', text: 'Der Print wird farbverbindlich vorbereitet und auf das gewaehlte Material ausgegeben.' },
+  { visualIndex: 21, imageLabel: 'Lieferung', title: 'Lieferung', text: 'Das fertige Bild wird sicher verpackt und mit den benoetigten Angaben uebergeben.' },
+]
+const processSteps = defaultProcessSteps.map((step, index) => {
+  const cmsStep = doc?.processSteps?.[index]
+  return cmsStep
+    ? {
+        ...step,
+        imageLabel: cmsText(cmsStep.imageLabel) || cmsText(cmsStep.title) || step.imageLabel,
+        title: cmsText(cmsStep.title) || step.title,
+        text: cmsText(cmsStep.text) || step.text,
+      }
+    : step
+})
 const focusRelatedLead = isParentPage || isKeywordPage
-  ? keywordFocusCopy?.relatedLead || 'Fahrzeug, Mensch und Raum bleiben eigene Bildbereiche. Die Links fuehren schnell zu der Seite, die zum Motiv, zur Nutzung und zum geplanten Projekt passt.'
-  : `Landschaftsfotografie ${scope.label} fuehrt zu Portrait, Oldtimer, Druck und Portfolio, ohne den Fokus auf Raum, Print und Motiv zu verwischen.`
-
+  ? cmsText(doc?.relatedSection?.lead) || keywordFocusCopy?.relatedLead || 'Fahrzeug, Mensch und Raum bleiben eigene Bildbereiche. Die Links fuehren schnell zu der Seite, die zum Motiv, zur Nutzung und zum geplanten Projekt passt.'
+  : cmsText(doc?.relatedSection?.lead) || `Landschaftsfotografie ${scope.label} fuehrt zu Portrait, Oldtimer, Druck und Portfolio, ohne den Fokus auf Raum, Print und Motiv zu verwischen.`
+const relatedTitle = splitTrailingEmphasis(cmsText(doc?.relatedSection?.headline) || 'Verwandte', cmsText(doc?.relatedSection?.emphasis) || 'Bereiche.')
+const defaultRelatedCards = [
+  { href: 'portraitfotografie.html', title: 'Portrait', visualIndex: 22 },
+  { href: 'oldtimer-fotografie.html', title: 'Oldtimer', visualIndex: 23 },
+  { href: 'drucke-sonderanfertigungen-duesseldorf.html', title: 'Drucke', visualIndex: 24 },
+  { href: 'portfolio.html', title: 'Portfolio', visualIndex: 25 },
+]
+const relatedCards = defaultRelatedCards.map((card, index) => {
+  const item = doc?.relatedSection?.items?.[index]
+  return {
+    ...card,
+    href: cmsText(item?.href) || card.href,
+    title: cmsText(item?.title) || card.title,
+    alt: cmsText(item?.alt) || cmsText(item?.title) || card.title,
+  }
+})
 const cityLinks = [
   ['landschaftsfotografie-duesseldorf.html', 'Düsseldorf'],
   ['landschaftsfotografie-erkrath.html', 'Erkrath'],
@@ -219,6 +262,23 @@ const searchLinks = [
   ['naturfotografie-prints.html', 'Naturfotografie Prints'],
   ['landschaftsfotografie-print-deutschland.html', 'Landschaftsfotografie Print Deutschland'],
 ] as const
+const locationHeading = cmsText(doc?.locationLinksSection?.headline) || 'Landschaftsfotografie'
+const locationEmphasis = cmsText(doc?.locationLinksSection?.emphasis) || 'vor Ort.'
+const locationLinkItems = doc?.locationLinksSection?.items?.length
+  ? doc.locationLinksSection.items.map((item) => [cmsText(item.href), cmsText(item.label)] as const).filter(([href, label]) => href && label)
+  : cityLinks
+const searchHeading = cmsText(doc?.searchLinksSection?.headline) || 'Landschaftsfotografie'
+const searchEmphasis = cmsText(doc?.searchLinksSection?.emphasis) || 'Suchbegriffe.'
+const searchLinkItems = doc?.searchLinksSection?.items?.length
+  ? doc.searchLinksSection.items.map((item) => [cmsText(item.href), cmsText(item.label)] as const).filter(([href, label]) => href && label)
+  : searchLinks
+const contactSubjectFinal = cmsText(doc?.contactSection?.emailSubject) || contactSubject
+const contactHeadlineBase = cmsText(doc?.contactSection?.headline)
+const contactHeadlineEmphasis = cmsText(doc?.contactSection?.emphasis)
+const contactHeadlineFinal = contactHeadlineBase
+  ? `${contactHeadlineBase}${contactHeadlineEmphasis ? ` <em>${contactHeadlineEmphasis}</em>` : ''}`
+  : contactHeadline
+const contactLeadFinal = cmsText(doc?.contactSection?.lead) || contactLead
 ---
 <AdoptedPageLayout
   legacyFile={legacyFile}
@@ -310,7 +370,11 @@ const searchLinks = [
 
     <section class="mod-ls" data-header-theme="dark">
       <div class="mod-ls__head">
-        <h2 class="mod-ls__title">{focusModuleHeadline}</h2>
+        <h2 class="mod-ls__title">
+          {focusModuleTitle.headline}
+          {focusModuleTitle.headline && focusModuleTitle.emphasis ? ' ' : ''}
+          {focusModuleTitle.emphasis && <em>{focusModuleTitle.emphasis}</em>}
+        </h2>
         <p class="mod-ls__lead">{focusModuleLead}</p>
       </div>
       <div class="mod-ls__grid">
@@ -329,6 +393,7 @@ const searchLinks = [
     <section class="bg-ls" data-header-theme="dark" aria-label="Ausgewählte Landschaftsarbeiten">
       <div class="bg-ls__head">
         <h2 class="bg-ls__title">{focusGalleryHeadline}</h2>
+        {focusGalleryLead && <p class="bg-ls__lead">{focusGalleryLead}</p>}
         <a class="bg-ls__link" href="portfolio.html">Zum Portfolio →</a>
       </div>
       <div class="bg-ls__grid">
@@ -352,18 +417,14 @@ const searchLinks = [
         </div>
 
         <div class="fw-ls__flow">
-          <div class="fw-ls__step">
-            <h3>Anfrage</h3>
-          </div>
-          <div class="fw-ls__step">
-            <h3>Beratung</h3>
-          </div>
-          <div class="fw-ls__step">
-            <h3>Produktion</h3>
-          </div>
-          <div class="fw-ls__step">
-            <h3>Lieferung</h3>
-          </div>
+          {processSteps.map((step, index) => (
+            <article class="fw-ls__step">
+              <div class="fw-ls__step-img" style={`background-image:url('${visualSlots[step.visualIndex].cssSrc}')`} role="img" aria-label={step.imageLabel}></div>
+              <span class="fw-ls__step-num">{String(index + 1).padStart(2, '0')}</span>
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
+            </article>
+          ))}
         </div>
 
         <div class="fw-ls__cta">
@@ -374,13 +435,19 @@ const searchLinks = [
 
     <section class="rl-ls" data-header-theme="dark" aria-label="Landschaftsfotografie">
       <div class="rl-ls__inner">
-        <h2 class="rl-ls__title">Verwandte <em>Bereiche.</em></h2>
+        <h2 class="rl-ls__title">
+          {relatedTitle.headline}
+          {relatedTitle.headline && relatedTitle.emphasis ? ' ' : ''}
+          {relatedTitle.emphasis && <em>{relatedTitle.emphasis}</em>}
+        </h2>
         <p class="rl-ls__intro">{focusRelatedLead}</p>
         <div class="rl-ls__grid">
-          <a class="rl-ls__card" href="portraitfotografie.html"><div class="rl-ls__card-img" style={`background-image:url('${visualSlots[18].cssSrc}')`}></div><div class="rl-ls__card-body"><strong>Portrait</strong><span>→</span></div></a>
-          <a class="rl-ls__card" href="oldtimer-fotografie.html"><div class="rl-ls__card-img" style={`background-image:url('${visualSlots[19].cssSrc}')`}></div><div class="rl-ls__card-body"><strong>Oldtimer</strong><span>→</span></div></a>
-          <a class="rl-ls__card" href="drucke-sonderanfertigungen-duesseldorf.html"><div class="rl-ls__card-img" style={`background-image:url('${visualSlots[20].cssSrc}')`}></div><div class="rl-ls__card-body"><strong>Drucke</strong><span>→</span></div></a>
-          <a class="rl-ls__card" href="portfolio.html"><div class="rl-ls__card-img" style={`background-image:url('${visualSlots[21].cssSrc}')`}></div><div class="rl-ls__card-body"><strong>Portfolio</strong><span>→</span></div></a>
+          {relatedCards.map((card) => (
+            <a class="rl-ls__card" href={card.href}>
+              <div class="rl-ls__card-img" style={`background-image:url('${visualSlots[card.visualIndex].cssSrc}')`} role="img" aria-label={card.alt}></div>
+              <div class="rl-ls__card-body"><strong>{card.title}</strong><span>→</span></div>
+            </a>
+          ))}
         </div>
       </div>
     </section>
@@ -397,10 +464,10 @@ const searchLinks = [
     <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Landschaftsfotografie in NRW">
       <div class="mr-cities__inner">
         <div class="mr-cities__head">
-          <h2 class="mr-cities__title">Landschaftsfotografie <em>vor Ort.</em></h2>
+          <h2 class="mr-cities__title">{locationHeading} <em>{locationEmphasis}</em></h2>
         </div>
         <nav class="mr-cities__grid" aria-label="Städte">
-          {cityLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
+          {locationLinkItems.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
         </nav>
       </div>
     </section>
@@ -408,10 +475,10 @@ const searchLinks = [
     <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Landschaftsfotografie Suchbegriffe">
       <div class="mr-cities__inner">
         <div class="mr-cities__head">
-          <h2>Landschaftsfotografie <em>Suchbegriffe.</em></h2>
+          <h2>{searchHeading} <em>{searchEmphasis}</em></h2>
         </div>
         <nav class="mr-cities__grid" aria-label="Suchvarianten">
-          {searchLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
+          {searchLinkItems.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
         </nav>
       </div>
     </section>
@@ -424,9 +491,9 @@ const searchLinks = [
       id="anfrage"
       data-contact-section
       data-header-theme="light"
-      data-contact-subject={contactSubject}
-      data-contact-headline={contactHeadline}
-      data-contact-lead={contactLead}
+      data-contact-subject={contactSubjectFinal}
+      data-contact-headline={contactHeadlineFinal}
+      data-contact-lead={contactLeadFinal}
     ></section>
   </main>
 </AdoptedPageLayout>

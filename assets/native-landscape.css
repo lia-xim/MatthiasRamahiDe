@@ -131,15 +131,17 @@
     .mod-ls__card:hover{transform:translateY(-4px);border-color:rgba(245,245,241,.28)}
     .mod-ls__img{aspect-ratio:4/5;background-size:cover;background-position:center;filter:grayscale(.18) brightness(.92);transition:filter .6s ease,transform .8s ease}
     .mod-ls__card:hover .mod-ls__img{filter:none;transform:scale(1.04)}
-    .mod-ls__body{padding:22px 22px 26px 22px;display:flex;align-items:baseline;gap:14px}
+    .mod-ls__body{padding:22px 22px 26px 22px;display:block;min-height:178px}
     .mod-ls__num{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-2);min-width:24px}
     .mod-ls__name{font-family:var(--font-display);font-weight:600;font-size:clamp(20px,1.7vw,26px);letter-spacing:-.025em}
+    .mod-ls__body p{margin-top:12px;color:var(--muted);font-size:14px;line-height:1.55;max-width:30ch}
 
     /* MINI PORTFOLIO — Bento mit echten Landscape-Bildern + Lightbox */
     .bg-ls{position:relative;height:150svh;background:#06070a;color:#f6f5f0;padding:clamp(60px,7vw,108px) clamp(24px,4vw,72px) clamp(40px,5vw,72px);display:flex;flex-direction:column}
     .bg-ls__head{max-width:1480px;margin:0 auto;width:100%;display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-bottom:clamp(28px,3vw,48px)}
     .bg-ls__title{font-family:var(--font-display);font-weight:700;font-size:clamp(40px,6.2vw,108px);line-height:.86;letter-spacing:-.058em;max-width:760px;text-transform:uppercase}
     .bg-ls__title em{font-style:normal;font-weight:200;color:#f6f5f0;opacity:.7;letter-spacing:-.04em}
+    .bg-ls__lead{max-width:420px;color:rgba(245,245,241,.66);font-size:14.5px;line-height:1.62}
     .bg-ls__link{min-height:44px;display:inline-flex;align-items:center;font-family:var(--font-mono);text-transform:uppercase;font-size:11px;letter-spacing:.18em;color:#f6f5f0;border-bottom:1px solid rgba(245,245,241,.4);padding-bottom:4px;transition:letter-spacing .35s ease}
     .bg-ls__link:hover{letter-spacing:.24em}
     .bg-ls__grid{flex:1;min-height:0;max-width:1480px;margin:0 auto;width:100%;display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:repeat(10,1fr);gap:14px}
@@ -168,11 +170,13 @@
     .fw-ls__head{margin-bottom:clamp(56px,7vw,96px)}
     .fw-ls__title{font-family:var(--font-display);font-weight:700;font-size:clamp(32px,4.4vw,64px);line-height:.96;letter-spacing:-.035em;text-transform:uppercase;max-width:20ch}
     .fw-ls__title em{font-style:normal;font-weight:200;color:var(--ink);opacity:.55}
-    .fw-ls__lead{display:none}
-    .fw-ls__flow{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(24px,3vw,48px);padding-top:clamp(24px,3vw,40px);border-top:1px solid var(--hair-l)}
-    .fw-ls__step{display:flex;flex-direction:column;gap:14px}
+    .fw-ls__lead{display:block;color:var(--muted-l);font-size:15px;line-height:1.65;max-width:66ch;margin-top:22px}
+    .fw-ls__flow{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(18px,2.2vw,30px);padding-top:clamp(24px,3vw,40px);border-top:1px solid var(--hair-l)}
+    .fw-ls__step{display:grid;grid-template-rows:auto auto auto 1fr;gap:12px;min-height:100%;padding-bottom:4px}
+    .fw-ls__step-img{aspect-ratio:4/3;background-size:cover;background-position:center;filter:grayscale(.16) brightness(.95);border:1px solid var(--hair-l);margin-bottom:4px}
     .fw-ls__step-num{font-family:var(--font-mono);font-size:11px;letter-spacing:.22em;color:var(--muted-l)}
     .fw-ls__step h3{font-family:var(--font-display);font-weight:400;font-size:clamp(20px,1.9vw,28px);letter-spacing:-.02em;line-height:1.1}
+    .fw-ls__step p{color:var(--muted-l);font-size:14px;line-height:1.55;max-width:34ch}
     .fw-ls__cta{margin-top:clamp(48px,6vw,80px)}
     .fw-ls__cta a{min-height:44px;display:inline-flex;align-items:center;font-family:var(--font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;border-bottom:1px solid var(--ink);padding-bottom:4px;transition:letter-spacing .35s ease,color .25s ease}
     .fw-ls__cta a:hover{letter-spacing:.24em;color:var(--accent-2)}
