@@ -34,7 +34,7 @@ services:
       TINA_PUBLISH_SOURCE_DIR: ${TINA_PUBLISH_SOURCE_DIR:-/app}
       TINA_PUBLISH_UID: ${TINA_PUBLISH_UID:-1000}
       TINA_GIT_SSH_KEY: ${TINA_GIT_SSH_KEY:-/home/node/.ssh/tina_publish_github_ed25519}
-      TINA_GIT_WORKTREE: ${TINA_GIT_WORKTREE:-/app/.tina-git-worktree}
+      TINA_GIT_WORKTREE: ${TINA_GIT_WORKTREE:-/tina-git-worktree}
     ports:
       - "${TINA_BIND_ADDRESS:-127.0.0.1}:${TINA_WEB_PORT:-4334}:4321"
       - "${TINA_BIND_ADDRESS:-127.0.0.1}:${TINA_GRAPHQL_PORT:-4001}:4002"
@@ -45,7 +45,7 @@ services:
       - ../apps/web/src/data:/app/apps/web/src/data
       - ../apps/web/tina:/app/apps/web/tina
       - /home/contextter/.ssh/tina_publish_github_ed25519:/home/node/.ssh/tina_publish_github_ed25519:ro
-      - /home/contextter/matthias-ramahi-tina-git:/app/.tina-git-worktree
+      - /home/contextter/matthias-ramahi-tina-git:/tina-git-worktree
 
   tina-site:
     image: matthias-ramahi-tina-staging:latest

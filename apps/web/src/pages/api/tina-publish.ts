@@ -110,7 +110,7 @@ const startPublish = () => {
     env: {
       ...process.env,
       SOURCE_DIR: env('TINA_PUBLISH_SOURCE_DIR', cwd),
-      TINA_GIT_WORKTREE: env('TINA_GIT_WORKTREE', '/app/.tina-git-worktree'),
+      TINA_GIT_WORKTREE: env('TINA_GIT_WORKTREE', '/tina-git-worktree'),
       TINA_GIT_SSH_KEY: env('TINA_GIT_SSH_KEY', '/home/node/.ssh/tina_publish_github_ed25519'),
       TINA_GIT_PUSH: env('TINA_GIT_PUSH', '1'),
     },
