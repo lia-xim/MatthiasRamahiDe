@@ -1,5 +1,6 @@
 ---
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
+import { splitCmsHeroTitleLines } from '../../lib/heroTitleLines'
 import { blockParagraphs, homeHeroSlidesFor, photographyTopics as fallbackTopics } from '../../lib/nativeContent'
 import { tinaAttrs } from '../../lib/tinaFieldAttrs'
 import {
@@ -94,10 +95,14 @@ const cmsTopics = (doc?.photographyIndex?.topics || [])
     }
   })
 const topics = cmsTopics.length ? cmsTopics : fallbackTopics
+const isRootPhotographyOverview = legacyFile === 'fotografie.html'
+const overviewTitleLines = isRootPhotographyOverview
+  ? [...meta.heroLines]
+  : splitCmsHeroTitleLines(doc?.targetKeyword || doc?.title || doc?.seo?.focusKeyword, [...meta.heroLines])
 
 const overviewHeroSlides = topics.map((topic, index) => ({
   image: topic.image,
-  titleLines: [...meta.heroLines],
+  titleLines: overviewTitleLines,
   lead: index === 0 ? doc?.intro || meta.intro : topic.text,
   primaryHref: '#anfrage',
   primaryLabel: 'Projekt anfragen',
@@ -107,6 +112,7 @@ const overviewHeroSlides = topics.map((topic, index) => ({
 const cmsHeroSlides = (doc?.heroSlides || []).length > 0 ? homeHeroSlidesFor(doc) : []
 const heroSlides = cmsHeroSlides.length ? cmsHeroSlides : overviewHeroSlides
 const firstHeroSlide = heroSlides[0]
+const usesCmsOverviewTitle = !cmsHeroSlides.length && !isRootPhotographyOverview
 const heroImages = heroSlides.map((slide) => slide.image)
 const heroSlidesJson = JSON.stringify(heroSlides)
 const clusterIntroCms = (doc?.photographyIndex?.clusterIntro || []).map((paragraph) => paragraph?.text).filter(hasText)
@@ -129,7 +135,7 @@ const clusterParagraphs = clusterIntroCms.length
             {firstHeroSlide.titleLines.map((line, index) => (
               <>
                 {index > 0 && ' '}
-                <span class="line" {...tinaAttrs(doc?.heroSlides?.[0], index === 0 ? 'headlineLine1' : 'headlineLine2')}><span class="word">{line}</span></span>
+                <span class="line" {...(usesCmsOverviewTitle ? tinaAttrs(doc, 'title') : tinaAttrs(doc?.heroSlides?.[0], index === 0 ? 'headlineLine1' : 'headlineLine2'))}><span class="word">{line}</span></span>
               </>
             ))}
           </h1>

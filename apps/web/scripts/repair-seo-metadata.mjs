@@ -145,7 +145,7 @@ function inferKeyword(collectionName, doc) {
   const slug = doc.slug || ''
   if (collectionName === 'pages' && pageKeywordBySlug[slug]) return pageKeywordBySlug[slug]
   if (collectionName === 'localSeoPages') {
-    return cleanKeyword(doc.title || doc.targetKeyword || doc.seo?.focusKeyword || doc.seo?.title || [doc.service, keywordFromSlug(doc.city)].filter(Boolean).join(' '))
+    return cleanKeyword(doc.targetKeyword || doc.title || doc.seo?.focusKeyword || doc.seo?.title || [doc.service, keywordFromSlug(doc.city)].filter(Boolean).join(' '))
   }
   if (collectionName === 'servicePages') return cleanKeyword(doc.seo?.title || doc.title || doc.serviceType || keywordFromSlug(slug))
   if (collectionName === 'journalPosts') return cleanKeyword(doc.seo?.title || doc.title || doc.tags?.[0] || doc.category || keywordFromSlug(slug))
