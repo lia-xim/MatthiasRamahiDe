@@ -32,8 +32,10 @@ const state =
     status: 'idle',
   })
 
-const env = (name: string, fallback = '') =>
-  ((import.meta.env as Record<string, string | undefined>)[name] ?? process.env[name] ?? fallback).trim()
+const env = (name: string, fallback = '') => {
+  const value = (import.meta.env as Record<string, unknown>)[name] ?? process.env[name] ?? fallback
+  return typeof value === 'string' ? value.trim() : String(value).trim()
+}
 
 const json = (body: Record<string, unknown>, status = 200) =>
   new Response(JSON.stringify(body), {
