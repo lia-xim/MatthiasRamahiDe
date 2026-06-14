@@ -1,7 +1,3 @@
-import { requestWithMetadata } from '@tinacms/astro/data'
-import { isEditMode } from '@tinacms/astro/is-edit-mode'
-
-import client from '../../tina/__generated__/client'
 import { getTinaRelativePathByLegacyUrl, getTinaRelativePathBySlug, normalizeTinaDocument } from './tinaContent'
 import type { PayloadDoc } from './payload'
 
@@ -11,6 +7,9 @@ type TinaClientResult = {
   data: QueryResult
   query: string
   variables: Record<string, unknown>
+}
+type TinaQueryClient = {
+  queries: Record<VisualCollection, (args: { relativePath: string }) => Promise<TinaClientResult>>
 }
 
 const collectionAliases: Record<VisualCollection, string> = {
@@ -34,18 +33,18 @@ const payloadCollectionToVisual: Record<string, VisualCollection> = {
   journalPosts: 'journalPosts',
 }
 
-const queryDocument = async (collection: VisualCollection, relativePath: string) => {
+const queryDocument = async (tinaClient: TinaQueryClient, collection: VisualCollection, relativePath: string) => {
   switch (collection) {
     case 'pages':
-      return client.queries.pages({ relativePath })
+      return tinaClient.queries.pages({ relativePath })
     case 'servicePages':
-      return client.queries.servicePages({ relativePath })
+      return tinaClient.queries.servicePages({ relativePath })
     case 'localSeoPages':
-      return client.queries.localSeoPages({ relativePath })
+      return tinaClient.queries.localSeoPages({ relativePath })
     case 'portfolioProjects':
-      return client.queries.portfolioProjects({ relativePath })
+      return tinaClient.queries.portfolioProjects({ relativePath })
     case 'journalPosts':
-      return client.queries.journalPosts({ relativePath })
+      return tinaClient.queries.journalPosts({ relativePath })
   }
 }
 
@@ -55,7 +54,9 @@ export const visualCollectionForPayloadCollection = (collection: string): Visual
   payloadCollectionToVisual[collection] || null
 
 export const isTinaEditRequest = (request: Request) => {
-  if (isEditMode(request)) return true
+  const url = new URL(request.url)
+  if (url.searchParams.get('tina-edit') === '1') return true
+
   if (
     request.headers
       .get('cookie')
@@ -68,11 +69,15 @@ export const isTinaEditRequest = (request: Request) => {
     return true
   }
 
-  const url = new URL(request.url)
+  const destination = request.headers.get('sec-fetch-dest')
   const referer = request.headers.get('referer') || ''
   try {
     const refererUrl = new URL(referer)
-    return refererUrl.host === url.host && refererUrl.pathname.startsWith('/admin/')
+    return (
+      refererUrl.host === url.host &&
+      refererUrl.pathname.startsWith('/admin/') &&
+      (!destination || destination === 'iframe')
+    )
   } catch {
     return false
   }
@@ -82,7 +87,11 @@ export async function getTinaVisualDocument(
   collection: VisualCollection,
   relativePath: string,
 ): Promise<PayloadDoc | null> {
-  const source = queryDocument(collection, relativePath) as Promise<TinaClientResult>
+  const [{ requestWithMetadata }, { default: tinaClient }] = await Promise.all([
+    import('@tinacms/astro/data'),
+    import('../../tina/__generated__/client'),
+  ])
+  const source = queryDocument(tinaClient as TinaQueryClient, collection, relativePath) as Promise<TinaClientResult>
   const result = await requestWithMetadata<QueryResult>(source, { priority: 'primary' })
   const data = result.data as QueryResult
   const doc = data[collection]
