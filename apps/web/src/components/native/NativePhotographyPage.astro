@@ -127,7 +127,10 @@ const clusterParagraphs = clusterIntroCms.length
         <div class="hero-stage">
           <h1 class="hero-title" id="hero-title" data-text-idx="0">
             {firstHeroSlide.titleLines.map((line, index) => (
-              <span class="line" {...tinaAttrs(doc?.heroSlides?.[0], index === 0 ? 'headlineLine1' : 'headlineLine2')}><span class="word">{line}</span></span>
+              <>
+                {index > 0 && ' '}
+                <span class="line" {...tinaAttrs(doc?.heroSlides?.[0], index === 0 ? 'headlineLine1' : 'headlineLine2')}><span class="word">{line}</span></span>
+              </>
             ))}
           </h1>
           <p class="hero-lead" id="hero-lead" {...tinaAttrs(doc?.heroSlides?.[0] || doc, doc?.heroSlides?.[0] ? 'lead' : 'intro')}>{firstHeroSlide.lead}</p>

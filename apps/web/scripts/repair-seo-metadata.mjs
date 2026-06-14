@@ -122,6 +122,7 @@ function isBlank(value) {
 
 function cleanKeyword(value) {
   return String(value || '')
+    .replace(/\s*\|\s*(?:\u00dcbersicht|Uebersicht)\s*$/i, '')
     .replace(/\s*[|—–-]\s*Matthias Ramahi(?:\s+Fotografie)?\s*$/i, '')
     .replace(/\s*\|\s*Matthias Ramahi.*$/i, '')
     .replace(/\s+Fotograf(?:ie)?\s*$/i, (match) => match)
@@ -144,7 +145,7 @@ function inferKeyword(collectionName, doc) {
   const slug = doc.slug || ''
   if (collectionName === 'pages' && pageKeywordBySlug[slug]) return pageKeywordBySlug[slug]
   if (collectionName === 'localSeoPages') {
-    return cleanKeyword(doc.seo?.title || doc.title || doc.targetKeyword || [doc.service, keywordFromSlug(doc.city)].filter(Boolean).join(' '))
+    return cleanKeyword(doc.title || doc.targetKeyword || doc.seo?.focusKeyword || doc.seo?.title || [doc.service, keywordFromSlug(doc.city)].filter(Boolean).join(' '))
   }
   if (collectionName === 'servicePages') return cleanKeyword(doc.seo?.title || doc.title || doc.serviceType || keywordFromSlug(slug))
   if (collectionName === 'journalPosts') return cleanKeyword(doc.seo?.title || doc.title || doc.tags?.[0] || doc.category || keywordFromSlug(slug))

@@ -13,7 +13,7 @@ import {
   siblingFamilyLinks,
 } from '../../lib/localSeoFamilyContent'
 import { mergeAuthoredLocalSeoContent } from '../../lib/authoredSeoContent'
-import { splitCmsHeroTitleLines, splitHeroTitleLines } from '../../lib/heroTitleLines'
+import { cmsHeroTitleFitStyle, splitCmsHeroTitleLines, splitHeroTitleLines } from '../../lib/heroTitleLines'
 import { familyHeroCopy, familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
 import { getLegacyBackedDoc, routeForDoc, type PayloadDoc } from '../../lib/payload'
 import { tinaAttrs } from '../../lib/tinaFieldAttrs'
@@ -49,6 +49,7 @@ const scope = scopeFromSlug(legacyFile)
 const isParentPage = legacyFile === defaultLegacyFile
 const isKeywordPage = scope.generic
 const isLocalCityPage = !isParentPage && !isKeywordPage
+const shouldUseCmsHeroTitle = !isParentPage
 const serviceLabel = serviceLabelFromSlug(legacyFile, familyContent)
 const keywordFocusCopy = keywordFocusCopyForSlug(legacyFile)
 const cmsFaqSource = (doc?.localFaq?.length ? doc.localFaq : doc?.faq) || []
@@ -93,7 +94,7 @@ const localSuffix = !isParentPage && !isKeywordPage ? ` ${scope.label}` : ''
 const heroTitle = isParentPage ? 'Automobil' : serviceLabel
 const heroSecondLine = isParentPage ? 'Fotografie' : isLocalCityPage ? scope.label : ''
 const fallbackHeroTitleLines = [...splitHeroTitleLines(heroTitle), ...splitHeroTitleLines(heroSecondLine)]
-const heroTitleLines = isLocalCityPage
+const heroTitleLines = shouldUseCmsHeroTitle
   ? splitCmsHeroTitleLines(doc?.title || doc?.targetKeyword || doc?.seo?.focusKeyword, fallbackHeroTitleLines)
   : fallbackHeroTitleLines
 const heroLocalNote = isLocalCityPage ? cmsHeroLine2 : isKeywordPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || '' : ''
@@ -113,10 +114,11 @@ const heroCopy = familyHeroCopy(doc, visualDoc, {
   secondaryLabel: 'Portfolio',
   titleLines: heroTitleLines,
 })
+const heroTitleFitStyle = cmsHeroTitleFitStyle(heroCopy.titleLines, shouldUseCmsHeroTitle)
 const heroSourceSlide = doc?.heroSlides?.[0]
 const heroTitleSource = heroSourceSlide || doc
 const heroTitleField = (index: number) =>
-  heroSourceSlide ? (index === 0 ? 'headlineLine1' : 'headlineLine2') : isLocalCityPage ? 'title' : index === 0 ? 'service' : 'city'
+  heroSourceSlide ? (index === 0 ? 'headlineLine1' : 'headlineLine2') : shouldUseCmsHeroTitle ? 'title' : index === 0 ? 'service' : 'city'
 const heroLeadSource = heroSourceSlide || doc
 const heroLeadField = heroSourceSlide ? 'lead' : 'intro'
 const fallbackMetaTitle = isParentPage
@@ -472,9 +474,12 @@ const searchLinks = [
       <div class="pd-grain" aria-hidden="true"></div>
       <div class="pd-overlay">
         <div class="pd-bottom">
-          <h1 class={`pd-title${isLocalCityPage ? ' pd-title--local' : ''}`} aria-label={heroLabel}>
+          <h1 class={`pd-title${isLocalCityPage ? ' pd-title--local' : ''}`} style={heroTitleFitStyle} aria-label={heroLabel}>
             {heroCopy.titleLines.map((line, index) => (
-              <span class="line" {...tinaAttrs(heroTitleSource, heroTitleField(index))}><span class="word">{line}</span></span>
+              <>
+                {index > 0 && ' '}
+                <span class="line" {...tinaAttrs(heroTitleSource, heroTitleField(index))}><span class="word">{line}</span></span>
+              </>
             ))}
           </h1>
           {heroLocalNote && <p class="pd-local-note" {...tinaAttrs(doc, 'heroLine2')}>{heroLocalNote}</p>}

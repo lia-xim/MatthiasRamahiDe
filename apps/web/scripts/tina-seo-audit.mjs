@@ -71,7 +71,7 @@ const familyFor = (doc) => {
   if (/sportwagen|supersportwagen|performance-car|exotic-car|motorsport/.test(text)) return 'sportwagen'
   if (/motorrad|bike/.test(text)) return 'motorrad'
   if (/portrait|headshot|personal-branding|business|bewerbung|people|dating|paarshooting|familienshooting|fotoshooting-gutschein|fotoshooting-preise|pressefoto/.test(text)) return 'portrait'
-  if (/landschaft|wandbilder|landscape/.test(text)) return 'landschaft'
+  if (/landschaft|naturfotografie|wandbilder|prints|landscape/.test(text)) return 'landschaft'
   if (/auto|automobil|automotive|fahrzeug/.test(text)) return 'automobil'
 
   return 'unclassified'

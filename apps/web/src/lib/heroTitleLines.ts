@@ -76,5 +76,19 @@ export const cleanHeroTitleText = (value: string | null | undefined) =>
 
 export const splitCmsHeroTitleLines = (value: string | null | undefined, fallback: string[]) => {
   const clean = cleanHeroTitleText(value)
-  return clean ? splitHeroTitleLines(clean) : fallback
+  return clean ? splitLongPhrase(clean) : fallback
+}
+
+export const cmsHeroTitleFitStyle = (lines: string[], enabled: boolean) => {
+  if (!enabled) return undefined
+
+  const longestWordLength = Math.max(
+    0,
+    ...lines.flatMap((line) => line.split(/\s+/).map((word) => word.replace(/[^\p{L}\p{N}-]/gu, '').length)),
+  )
+
+  if (longestWordLength < 13) return undefined
+
+  const viewportSize = Math.max(5.6, Math.min(10.6, 125 / longestWordLength))
+  return `font-size:clamp(30px,${viewportSize.toFixed(2)}vw,168px)`
 }

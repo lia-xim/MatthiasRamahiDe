@@ -10,7 +10,7 @@ import {
   type NativeFamilyPreviewState,
 } from '../../lib/nativeFamilyPageContext'
 import { mergeAuthoredLocalSeoContent } from '../../lib/authoredSeoContent'
-import { splitCmsHeroTitleLines, splitHeroTitleLines } from '../../lib/heroTitleLines'
+import { cmsHeroTitleFitStyle, splitCmsHeroTitleLines, splitHeroTitleLines } from '../../lib/heroTitleLines'
 import { keywordFocusCopyForSlug } from '../../lib/localSeoFamilyContent'
 import { familyHeroCopy, familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
 import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
@@ -53,10 +53,11 @@ const cmsHeroLine2 = cmsText(doc?.heroLine2)
 const cmsStatementBody = doc?.statement?.body?.map((entry) => cmsText(entry.text)).filter(Boolean) || []
 const heroLabel = isParentPage ? 'Landschaftsfotografie' : isKeywordPage ? serviceLabel : `Landschaftsfotografie ${scope.label}`
 const isLocalHeroPage = !isParentPage && !isKeywordPage
+const shouldUseCmsHeroTitle = !isParentPage
 const heroTitle = isParentPage ? 'Landschaftsfotografie' : serviceLabel
 const heroSecondLine = isLocalHeroPage ? scope.label : ''
 const fallbackHeroTitleLines = [...splitHeroTitleLines(heroTitle), ...splitHeroTitleLines(heroSecondLine)]
-const heroTitleLines = isLocalHeroPage
+const heroTitleLines = shouldUseCmsHeroTitle
   ? splitCmsHeroTitleLines(doc?.title || doc?.targetKeyword || doc?.seo?.focusKeyword, fallbackHeroTitleLines)
   : fallbackHeroTitleLines
 const heroLocalNote = isLocalHeroPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Licht. Raum. Print.' : isKeywordPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || '' : ''
@@ -82,6 +83,7 @@ const heroCopy = familyHeroCopy(doc, visualDoc, {
   secondaryLabel: 'Portfolio',
   titleLines: heroTitleLines,
 })
+const heroTitleFitStyle = cmsHeroTitleFitStyle(heroCopy.titleLines, shouldUseCmsHeroTitle)
 const defaultMetaDescription = isParentPage
   ? 'Landschaftsfotografie: Fine-Art-Prints, Wandbilder, Editionen und großformatige Arbeiten für private Räume, Praxen, Hotels und Sammlungen.'
   : isKeywordPage
@@ -290,7 +292,7 @@ const heroTitleField = (index: number) =>
     ? index === 0
       ? 'headlineLine1'
       : 'headlineLine2'
-    : isLocalHeroPage
+    : shouldUseCmsHeroTitle
       ? 'title'
       : index === 0
       ? 'title'
@@ -356,9 +358,12 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
       <div class="hero-ls__text-scrim" aria-hidden="true"></div>
 
       <div class="hero-ls__inner">
-        <h1 class="hero-ls__title" aria-label={heroLabel}>
+        <h1 class="hero-ls__title" style={heroTitleFitStyle} aria-label={heroLabel}>
           {heroCopy.titleLines.map((line, index) => (
-            <span class="l" {...tinaAttrs(heroTextSource, heroTitleField(index))}><span class="w">{line}</span></span>
+            <>
+              {index > 0 && ' '}
+              <span class="l" {...tinaAttrs(heroTextSource, heroTitleField(index))}><span class="w">{line}</span></span>
+            </>
           ))}
         </h1>
         {heroLocalNote && <p class="hero-ls__local-note" {...tinaAttrs(doc, 'heroLine2')}>{heroLocalNote}</p>}
