@@ -2,6 +2,7 @@
 import NativeJournalPostPage from '../../components/cms/NativeJournalPostPage.astro'
 import { envFlag } from '../../lib/envFlags'
 import { getBySlug } from '../../lib/payload'
+import { getTinaVisualDocumentBySlug, isTinaEditRequest } from '../../lib/tinaVisual'
 
 export const prerender = false
 
@@ -12,7 +13,8 @@ if (!journalRoutesEnabled) {
   return Astro.redirect('/blog.html', 308)
 }
 
-const doc = Astro.props.doc ?? (slug ? await getBySlug('journal-posts', slug) : null)
+const tinaDoc = slug && isTinaEditRequest(Astro.request) ? await getTinaVisualDocumentBySlug('journalPosts', slug) : null
+const doc = tinaDoc ?? Astro.props.doc ?? (slug ? await getBySlug('journal-posts', slug) : null)
 
 if (!doc) {
   return Astro.redirect('/blog.html', 308)

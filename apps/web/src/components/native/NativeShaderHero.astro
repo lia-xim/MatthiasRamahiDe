@@ -1,4 +1,6 @@
 ---
+import { tinaAttrs } from '../../lib/tinaFieldAttrs'
+
 type HeroSlide = {
   image: string
   titleLines: string[]
@@ -14,15 +16,18 @@ type Props = {
   id?: string
   label: string
   slides: HeroSlide[]
+  sourceSlides?: Array<Record<string, unknown>>
   theme?: 'dark' | 'light'
   headerTheme?: 'dark' | 'light'
 }
 
-const { id, label, slides, theme = 'dark', headerTheme } = Astro.props as Props
+const { id, label, slides, sourceSlides = [], theme = 'dark', headerTheme } = Astro.props as Props
 const firstSlide = slides[0]
+const firstSourceSlide = sourceSlides[0]
 const heroImages = slides.map((slide) => slide.image)
 const heroSlidesJson = JSON.stringify(slides)
 const heroCssImage = firstSlide.image.replace(/'/g, "\\'")
+const titleLineField = (index: number) => (index === 0 ? 'headlineLine1' : index === 1 ? 'headlineLine2' : undefined)
 ---
 
 <section
@@ -32,8 +37,9 @@ const heroCssImage = firstSlide.image.replace(/'/g, "\\'")
   data-header-theme={headerTheme}
   aria-label={label}
   style={`--hero-bg:url('${heroCssImage}');background-image:url('${heroCssImage}')`}
+  {...tinaAttrs(firstSourceSlide, 'image')}
 >
-  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-bg" aria-hidden="true" {...tinaAttrs(firstSourceSlide, 'image')}></div>
   <img
     class="hero-shader-preload"
     data-hero-shader-preload
@@ -46,21 +52,22 @@ const heroCssImage = firstSlide.image.replace(/'/g, "\\'")
     fetchpriority="high"
     crossorigin="anonymous"
     aria-hidden="true"
+    {...tinaAttrs(firstSourceSlide, 'image')}
   />
-  <canvas id="hero-shader" aria-hidden="true" data-imgs={heroImages.join(',')} data-slides={heroSlidesJson}></canvas>
+  <canvas id="hero-shader" aria-hidden="true" data-imgs={heroImages.join(',')} data-slides={heroSlidesJson} {...tinaAttrs(firstSourceSlide, 'image')}></canvas>
   <div class="hero-glow" aria-hidden="true"></div>
   <div class="hero-aperture" aria-hidden="true"></div>
   <div class="hero-grid">
     <div class="hero-stage">
       <h1 class="hero-title" id="hero-title" data-text-idx="0">
-        {firstSlide.titleLines.map((line) => (
-          <span class="line"><span class="word">{line}</span></span>
+        {firstSlide.titleLines.map((line, index) => (
+          <span class="line" {...tinaAttrs(firstSourceSlide, titleLineField(index))}><span class="word">{line}</span></span>
         ))}
       </h1>
-      <p class="hero-lead" id="hero-lead">{firstSlide.lead}</p>
+      <p class="hero-lead" id="hero-lead" {...tinaAttrs(firstSourceSlide, 'lead')}>{firstSlide.lead}</p>
       <div class="hero-actions" aria-label="Direkte Aktionen">
-        <a class="btn dark" href={firstSlide.primaryHref} data-hero-primary hidden={!firstSlide.primaryHref || !firstSlide.primaryLabel}>{firstSlide.primaryLabel}</a>
-        <a class="btn" href={firstSlide.secondaryHref} data-hero-secondary hidden={!firstSlide.secondaryHref || !firstSlide.secondaryLabel}>{firstSlide.secondaryLabel}</a>
+        <a class="btn dark" href={firstSlide.primaryHref} data-hero-primary hidden={!firstSlide.primaryHref || !firstSlide.primaryLabel} {...tinaAttrs(firstSourceSlide, 'primaryLabel')}>{firstSlide.primaryLabel}</a>
+        <a class="btn" href={firstSlide.secondaryHref} data-hero-secondary hidden={!firstSlide.secondaryHref || !firstSlide.secondaryLabel} {...tinaAttrs(firstSourceSlide, 'secondaryLabel')}>{firstSlide.secondaryLabel}</a>
       </div>
     </div>
   </div>

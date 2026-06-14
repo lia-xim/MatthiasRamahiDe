@@ -1,0 +1,278 @@
+{
+  "title": "Notizen aus Licht.",
+  "slug": "blog",
+  "pageType": "journal-index",
+  "intro": "Journal · Notizen · Düsseldorf",
+  "heroImage": "/uploads/payload/assets-photos-automobil-sunset-1921.webp",
+  "teaserImage": "/uploads/payload/assets-photos-automobil-sunset-1921.webp",
+  "heroSlides": [
+    {
+      "image": "/uploads/payload/20250418-DSC00660.webp",
+      "headlineLine1": "Notizen",
+      "headlineLine2": "aus Licht.",
+      "lead": "Ein kuratiertes Journal ueber Fotografie, Orte, Bildauswahl und Praesentation - ruhig, persoenlich, ohne Content-Masse.",
+      "durationSec": 7,
+      "primaryLabel": "Artikel ansehen",
+      "primaryHref": "#journal",
+      "secondaryLabel": "Fotoauftrag anfragen",
+      "secondaryHref": "/contact.html"
+    },
+    {
+      "image": "/uploads/payload/20250426-DSC02652.webp",
+      "headlineLine1": "Automotive",
+      "headlineLine2": "Lichtfuehrung.",
+      "lead": "Standort, Lichtkante und Karosserieform entscheiden darueber, ob ein Fahrzeug lebendig wirkt.",
+      "durationSec": 7,
+      "primaryLabel": "Artikel ansehen",
+      "primaryHref": "#journal",
+      "secondaryLabel": "Fotoauftrag anfragen",
+      "secondaryHref": "/contact.html"
+    },
+    {
+      "image": "/uploads/payload/20250418-DSC00635.webp",
+      "headlineLine1": "Serien",
+      "headlineLine2": "kuratieren.",
+      "lead": "Von der ersten Auswahl bis zur Reihenfolge, die beim Betrachten Spannung haelt.",
+      "durationSec": 7,
+      "primaryLabel": "Artikel ansehen",
+      "primaryHref": "#journal",
+      "secondaryLabel": "Fotoauftrag anfragen",
+      "secondaryHref": "/contact.html"
+    }
+  ],
+  "homeStatement": {
+    "body": []
+  },
+  "homeChapters": {
+    "items": []
+  },
+  "homeSelectedWorks": {},
+  "homeAbout": {
+    "body": []
+  },
+  "homeServices": {
+    "items": []
+  },
+  "homeJournal": {
+    "items": []
+  },
+  "aboutHero": {
+    "primaryHref": "",
+    "secondaryHref": ""
+  },
+  "aboutStatement": {
+    "primaryHref": "",
+    "secondaryHref": ""
+  },
+  "aboutChapters": {
+    "items": []
+  },
+  "aboutSister": {
+    "href": "",
+    "plate": {
+      "roles": []
+    }
+  },
+  "aboutContact": {},
+  "photographyIndex": {
+    "clusterIntro": [],
+    "topics": []
+  },
+  "portfolioIndex": {
+    "contextBody": [],
+    "slices": [],
+    "archive": {
+      "batchSize": 12,
+      "items": []
+    },
+    "contact": {}
+  },
+  "servicesIndex": {
+    "items": [],
+    "whyCards": []
+  },
+  "journalIndex": {
+    "tickerItems": [
+      {
+        "text": "<b>Automotive</b> Lichtfuehrung"
+      },
+      {
+        "text": "Portrait ohne Location-Klischee"
+      },
+      {
+        "text": "<b>Duesseldorf</b> Locations"
+      },
+      {
+        "text": "Fine-Art-Druck"
+      },
+      {
+        "text": "Bildauswahl fuer Kunden"
+      },
+      {
+        "text": "<b>Behind the scenes</b>"
+      }
+    ],
+    "featured": {
+      "kicker": "Ausgewaehlter Beitrag",
+      "headline": "Geplant, nicht zufaellig.",
+      "text": "Ein starkes Foto entsteht nicht erst beim Ausloesen - sondern in der Entscheidung fuer Ort, Tageszeit, Bildschnitt und Stimmung.",
+      "buttonLabel": "Beitrag lesen",
+      "buttonHref": "/blog-automotive-fotografie-duesseldorf.html",
+      "image": "/uploads/payload/assets-photos-automobil-sunset-1921.webp"
+    },
+    "indexHeadline": "Journal Index.",
+    "initialVisiblePostCount": 6,
+    "loadMoreLabel": "Mehr Beitraege laden",
+    "loadStatusTemplate": "{visible} von {total} Beitraegen sichtbar",
+    "filters": [
+      {
+        "label": "Alle",
+        "value": "all"
+      },
+      {
+        "label": "Automotive",
+        "value": "automotive"
+      },
+      {
+        "label": "Portrait",
+        "value": "portrait"
+      },
+      {
+        "label": "Prozess",
+        "value": "prozess"
+      },
+      {
+        "label": "Druck",
+        "value": "print"
+      }
+    ],
+    "finalCta": {
+      "kicker": "Naechster Schritt",
+      "headline": "Fotoauftrag planen.",
+      "text": "Wenn Sie Automotive-Aufnahmen, Portraits, eine Bildstrecke oder eine hochwertige visuelle Praesentation benoetigen, schicken Sie kurz Ort, Zeitraum und Ziel des Projekts.",
+      "primaryLabel": "Projekt anfragen",
+      "primaryHref": "/contact.html",
+      "secondaryLabel": "Portfolio ansehen",
+      "secondaryHref": "/portfolio.html"
+    }
+  },
+  "blocks": [
+    {
+      "body": "Journal · Notizen · Düsseldorf",
+      "_template": "textBlock"
+    },
+    {
+      "headline": "Notizen aus Licht.",
+      "body": "Ein kuratiertes Journal über Fotografie, Orte, Bildauswahl und Präsentation — ruhig, persönlich, ohne Content-Masse.",
+      "_template": "textBlock"
+    },
+    {
+      "headline": "Geplant, nicht zufällig.",
+      "body": "Ein starkes Foto entsteht nicht erst beim Auslösen — sondern in der Entscheidung für Ort, Tageszeit, Bildschnitt und Stimmung.",
+      "_template": "textBlock"
+    },
+    {
+      "layout": "single-large",
+      "items": [
+        {
+          "image": "/uploads/payload/assets-photos-automobil-sunset-1921.webp",
+          "caption": "Auto in dramatischem Licht als Beispiel für geplante Bildstimmung",
+          "cropIntent": "auto"
+        }
+      ],
+      "_template": "imageSequence"
+    },
+    {
+      "headline": "Automotive-Fotografie in Düsseldorf.",
+      "body": "Standort, Lichtkante und Karosserieform entscheiden darüber, ob ein Fahrzeug lebendig wirkt.",
+      "_template": "textBlock"
+    },
+    {
+      "headline": "Portraits ohne generische Posen.",
+      "body": "Wie ein ruhiger Bildraum mehr Wirkung erzeugt als ein überinszeniertes Setting.",
+      "_template": "textBlock"
+    },
+    {
+      "headline": "Wie eine Serie kuratiert wird.",
+      "body": "Von der ersten Auswahl bis zur Reihenfolge, die beim Betrachten Spannung hält.",
+      "_template": "textBlock"
+    },
+    {
+      "headline": "Oldtimer als Wertobjekt.",
+      "body": "Warum Zurückhaltung oft hochwertiger wirkt als dramatischer Dauer-Effekt.",
+      "_template": "textBlock"
+    },
+    {
+      "headline": "Vom Bild zum Fine-Art-Druck.",
+      "body": "Warum Material und Farbmanagement Teil der fotografischen Wirkung sind.",
+      "_template": "textBlock"
+    },
+    {
+      "headline": "Location Scouting für starke Motive.",
+      "body": "Wie Orte ausgewählt werden, bevor Kamera und Licht überhaupt aufgebaut sind.",
+      "_template": "textBlock"
+    },
+    {
+      "headline": "Linien, Metall, Haltung.",
+      "body": "Warum Motorradbilder stärker über Spannung und Nähe funktionieren.",
+      "_template": "textBlock"
+    },
+    {
+      "headline": "Fotoauftrag planen.",
+      "body": "Wenn Sie Automotive-Aufnahmen, Portraits, eine Bildstrecke oder eine hochwertige visuelle Präsentation benötigen, schicken Sie kurz Ort, Zeitraum und Ziel des Projekts.",
+      "_template": "textBlock"
+    }
+  ],
+  "contactOverride": {},
+  "seo": {
+    "title": "Journal zu Fotografie, Orten und Bildauswahl | Matthias Ramahi",
+    "description": "Journal von Matthias Ramahi ueber Fotografie, Bildauswahl, Orte, Druck, Serien und visuelle Entscheidungen in Duesseldorf und NRW.",
+    "secondaryKeywords": [],
+    "internalLinkAnchors": [],
+    "canonicalUrl": "https://matthiasramahi.de/blog.html",
+    "legacyUrl": "blog.html",
+    "ogImage": "/uploads/payload/assets-photos-automobil-sunset-1921.webp",
+    "noIndex": false,
+    "focusKeyword": "Fotografie Journal Matthias Ramahi",
+    "searchIntent": "Informationssuche: Nutzer suchen Fachbeiträge, Einblicke und Arbeitsweise."
+  },
+  "legacy": {
+    "sourceFile": "blog.html",
+    "sourceUrl": "https://matthiasramahi.de/blog.html",
+    "migrationStatus": "reviewed",
+    "renderSource": "payload-legacy-html",
+    "renderedHeadHtml": "\n  <meta charset=\"utf-8\" />\n  <meta name=\"viewport\" content=\"width=device-width,initial-scale=1\" />\n  <meta name=\"twitter:image\" content=\"https://matthiasramahi.de/assets/optimized/assets-photos-automobil-sunset-1920.webp\" />\n  <meta name=\"twitter:description\" content=\"Journal von Matthias Ramahi: Einblicke in Automotive-Fotografie, Portraits, Landschaft, Bildauswahl, Druck und visuelle Inszenierung in Düsseldorf.\" />\n  <meta name=\"twitter:title\" content=\"Blog / Journal — Matthias Ramahi\" />\n  <meta name=\"twitter:card\" content=\"summary_large_image\" />\n  <meta property=\"og:image:alt\" content=\"Blog / Journal — Matthias Ramahi\" />\n  <meta property=\"og:image\" content=\"https://matthiasramahi.de/assets/optimized/assets-photos-automobil-sunset-1920.webp\" />\n  <meta property=\"og:url\" content=\"https://matthiasramahi.de/blog.html\" />\n  <meta property=\"og:description\" content=\"Journal von Matthias Ramahi: Einblicke in Automotive-Fotografie, Portraits, Landschaft, Bildauswahl, Druck und visuelle Inszenierung in Düsseldorf.\" />\n  <meta property=\"og:title\" content=\"Blog / Journal — Matthias Ramahi\" />\n  <meta property=\"og:locale\" content=\"de_DE\" />\n  <meta property=\"og:site_name\" content=\"Matthias Ramahi Fotografie\" />\n  <meta property=\"og:type\" content=\"website\" />\n  <meta name=\"robots\" content=\"index,follow,max-image-preview:large,max-snippet:-1\" />\n  <meta name=\"author\" content=\"Matthias Ramahi\" />\n  <title>Blog / Journal — Matthias Ramahi</title>\n  <meta name=\"description\" content=\"Journal von Matthias Ramahi: Einblicke in Automotive-Fotografie, Portraits, Landschaft, Bildauswahl, Druck und visuelle Inszenierung in Düsseldorf.\" />\n  <link rel=\"stylesheet\" href=\"/assets/legacy-blog.css\" />\n  <link rel=\"stylesheet\" href=\"/assets/site-chrome.css\" />\n  <link rel=\"stylesheet\" href=\"/assets/legacy-performance.css\" />\n  <link rel=\"canonical\" href=\"https://matthiasramahi.de/blog.html\" />\n  <script type=\"application/ld+json\" data-seo=\"technical\">{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://matthiasramahi.de/#website\",\"url\":\"https://matthiasramahi.de/\",\"name\":\"Matthias Ramahi Fotografie\",\"inLanguage\":\"de-DE\",\"publisher\":{\"@id\":\"https://matthiasramahi.de/#person\"}},{\"@type\":\"Person\",\"@id\":\"https://matthiasramahi.de/#person\",\"name\":\"Matthias Ramahi\",\"url\":\"https://matthiasramahi.de/\",\"email\":\"info@matthiasramahi.de\",\"jobTitle\":\"Fotograf\"},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://matthiasramahi.de/blog.html#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Startseite\",\"item\":\"https://matthiasramahi.de/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Blog / Journal — Matthias Ramahi\",\"item\":\"https://matthiasramahi.de/blog.html\"}]},{\"@type\":\"Blog\",\"@id\":\"https://matthiasramahi.de/blog.html#webpage\",\"url\":\"https://matthiasramahi.de/blog.html\",\"name\":\"Blog / Journal — Matthias Ramahi\",\"description\":\"Journal von Matthias Ramahi: Einblicke in Automotive-Fotografie, Portraits, Landschaft, Bildauswahl, Druck und visuelle Inszenierung in Düsseldorf.\",\"inLanguage\":\"de-DE\",\"isPartOf\":{\"@id\":\"https://matthiasramahi.de/#website\"},\"breadcrumb\":{\"@id\":\"https://matthiasramahi.de/blog.html#breadcrumb\"},\"primaryImageOfPage\":{\"@type\":\"ImageObject\",\"url\":\"https://matthiasramahi.de/assets/optimized/assets-photos-automobil-sunset-1920.webp\"}}]}</script>\n",
+    "renderedBodyHtml": "<main>\n    <section class=\"hero\" id=\"top\" data-header-theme=\"dark\" aria-label=\"Blog Intro\">\n      <div class=\"hero__bg\" aria-hidden=\"true\"><img src=\"/assets/optimized/assets-photos-automobil-sunset-1920.webp\" alt=\"\" width=\"1920\" height=\"1280\" decoding=\"async\"></div>\n      <div class=\"hero__veil\" aria-hidden=\"true\"></div>\n      <div class=\"hero__inner\">\n        <div class=\"hero__copy\">\n          <p class=\"hero__kicker\">Journal · Notizen · Düsseldorf</p>\n          <h1>Notizen <em>aus Licht.</em></h1>\n          <p class=\"hero__lead\">Ein kuratiertes Journal über Fotografie, Orte, Bildauswahl und Präsentation — ruhig, persönlich, ohne Content-Masse.</p>\n          <div class=\"hero__actions\">\n            <a class=\"hero__btn hero__btn--primary\" href=\"#journal\">Artikel ansehen</a>\n            <a class=\"hero__btn\" href=\"contact.html\">Fotoauftrag anfragen</a>\n          </div>\n        </div>\n        <aside class=\"hero__meta\" aria-label=\"Journal Daten\">\n          <span>Aktualisiert</span><b>2026</b>\n          <span style=\"margin-top:14px\">Beiträge</span><b>07</b>\n          <span style=\"margin-top:14px\">Themen</span><b>Automotive · Portrait · Print</b>\n        </aside>\n      </div>\n    </section>\n\n    <section class=\"ticker\" aria-label=\"Themenlaufband\">\n      <div class=\"ticker-track\"><span><b>Automotive</b> Lichtführung</span><span>Portrait ohne Location-Klischee</span><span><b>Düsseldorf</b> Locations</span><span>Fine-Art-Druck</span><span>Bildauswahl für Kunden</span><span><b>Behind the scenes</b></span><span><b>Automotive</b> Lichtführung</span><span>Portrait ohne Location-Klischee</span><span><b>Düsseldorf</b> Locations</span><span>Fine-Art-Druck</span><span>Bildauswahl für Kunden</span><span><b>Behind the scenes</b></span></div>\n    </section>\n\n    <section class=\"featured\" aria-label=\"Ausgewählter Artikel\">\n      <div class=\"featured-inner\">\n        <div class=\"feature-copy reveal\">\n          <p class=\"kicker\">Ausgewählter Beitrag</p>\n          <h2>Geplant, nicht zufällig.</h2>\n          <p>Ein starkes Foto entsteht nicht erst beim Auslösen — sondern in der Entscheidung für Ort, Tageszeit, Bildschnitt und Stimmung.</p>\n          <div class=\"hero-actions\"><a class=\"btn dark\" href=\"blog-automotive-fotografie-duesseldorf.html\">Beitrag lesen</a></div>\n        </div>\n        <figure class=\"feature-image reveal\"><img data-src=\"/assets/optimized/assets-photos-automobil-sunset-1920.webp\" alt=\"Auto in dramatischem Licht als Beispiel für geplante Bildstimmung\" width=\"1920\" height=\"1280\" decoding=\"async\" loading=\"lazy\"></figure>\n      </div>\n    </section>\n\n    <section class=\"journal\" id=\"journal\" aria-label=\"Journal Artikel\">\n      <div class=\"journal-head\">\n        <h2>Journal Index.</h2>\n        <div class=\"filters\" aria-label=\"Artikel filtern\">\n          <button class=\"filter active\" type=\"button\" data-filter=\"all\">Alle</button>\n          <button class=\"filter\" type=\"button\" data-filter=\"automotive\">Automotive</button>\n          <button class=\"filter\" type=\"button\" data-filter=\"portrait\">Portrait</button>\n          <button class=\"filter\" type=\"button\" data-filter=\"prozess\">Prozess</button>\n          <button class=\"filter\" type=\"button\" data-filter=\"print\">Druck</button>\n        </div>\n      </div>\n      <div class=\"post-grid\">\n        <a class=\"post dark\" href=\"blog-automotive-fotografie-duesseldorf.html\" data-category=\"automotive\">\n          <div class=\"post-media\"><img src=\"/assets/optimized/assets-photos-automobil-neon-1920.webp\" alt=\"Automobil in neonartigem Licht\" width=\"1920\" height=\"1280\" decoding=\"async\" loading=\"lazy\"></div><div class=\"post-body\"><div class=\"post-meta\"><span>Automotive</span><span>5 Min</span></div><h3>Automotive-Fotografie in Düsseldorf.</h3><p>Standort, Lichtkante und Karosserieform entscheiden darüber, ob ein Fahrzeug lebendig wirkt.</p><span class=\"post-go\">Beitrag lesen</span></div>\n        </a>\n        <a class=\"post\" href=\"blog-portraits-ohne-generische-posen.html\" data-category=\"portrait\">\n          <div class=\"post-media\"><img src=\"/assets/photos/portrait-warm.webp\" alt=\"Portrait in warmem Licht\" width=\"1600\" height=\"2560\" decoding=\"async\" loading=\"lazy\"></div><div class=\"post-body\"><div class=\"post-meta\"><span>Portrait</span><span>4 Min</span></div><h3>Portraits ohne generische Posen.</h3><p>Wie ein ruhiger Bildraum mehr Wirkung erzeugt als ein überinszeniertes Setting.</p><span class=\"post-go\">Beitrag lesen</span></div>\n        </a>\n        <a class=\"post\" href=\"blog-serie-kuratieren.html\" data-category=\"prozess\">\n          <div class=\"post-media\"><img src=\"/assets/optimized/assets-photos-oldtimer-stage-1920.webp\" alt=\"Oldtimer Szene in dunklem Licht\" width=\"1920\" height=\"1280\" decoding=\"async\" loading=\"lazy\"></div><div class=\"post-body\"><div class=\"post-meta\"><span>Prozess</span><span>6 Min</span></div><h3>Wie eine Serie kuratiert wird.</h3><p>Von der ersten Auswahl bis zur Reihenfolge, die beim Betrachten Spannung hält.</p><span class=\"post-go\">Beitrag lesen</span></div>\n        </a>\n        <a class=\"post dark\" href=\"blog-oldtimer-wertobjekt.html\" data-category=\"automotive\">\n          <div class=\"post-media\"><img data-src=\"/assets/optimized/assets-photos-oldtimer-stage-1920.webp\" alt=\"Oldtimer in Bühnenlicht\" width=\"1920\" height=\"1280\" decoding=\"async\" loading=\"lazy\"></div><div class=\"post-body\"><div class=\"post-meta\"><span>Oldtimer</span><span>3 Min</span></div><h3>Oldtimer als Wertobjekt.</h3><p>Warum Zurückhaltung oft hochwertiger wirkt als dramatischer Dauer-Effekt.</p><span class=\"post-go\">Beitrag lesen</span></div>\n        </a>\n        <a class=\"post\" href=\"blog-fine-art-druck.html\" data-category=\"print\">\n          <div class=\"post-media\"><img src=\"/assets/services/fea8218e-7546-48ef-8581-2b99bb3cdefe_centered_reduced.webp\" alt=\"Fotobücher und Druckprodukte\" width=\"860\" height=\"603\" decoding=\"async\" loading=\"lazy\"></div><div class=\"post-body\"><div class=\"post-meta\"><span>Druck</span><span>5 Min</span></div><h3>Vom Bild zum Fine-Art-Druck.</h3><p>Warum Material und Farbmanagement Teil der fotografischen Wirkung sind.</p><span class=\"post-go\">Beitrag lesen</span></div>\n        </a>\n        <a class=\"post dark\" href=\"blog-location-scouting-duesseldorf.html\" data-category=\"prozess\">\n          <div class=\"post-media\"><img src=\"/assets/optimized/assets-photos-landschaft-1920.webp\" alt=\"Landschaftsmotiv mit starker Tiefe\" width=\"1707\" height=\"2560\" decoding=\"async\" loading=\"lazy\"></div><div class=\"post-body\"><div class=\"post-meta\"><span>Location</span><span>4 Min</span></div><h3>Location Scouting für starke Motive.</h3><p>Wie Orte ausgewählt werden, bevor Kamera und Licht überhaupt aufgebaut sind.</p><span class=\"post-go\">Beitrag lesen</span></div>\n        </a>\n        <a class=\"post\" href=\"blog-motorradfotografie-linien.html\" data-category=\"automotive\">\n          <div class=\"post-media\"><img src=\"/assets/optimized/assets-photos-motorrad-1920.webp\" alt=\"Motorrad vor Architektur\" width=\"1707\" height=\"2560\" decoding=\"async\" loading=\"lazy\"></div><div class=\"post-body\"><div class=\"post-meta\"><span>Motorrad</span><span>4 Min</span></div><h3>Linien, Metall, Haltung.</h3><p>Warum Motorradbilder stärker über Spannung und Nähe funktionieren.</p><span class=\"post-go\">Beitrag lesen</span></div>\n        </a>\n      </div>\n      <div class=\"load-panel\" id=\"loadPanel\" aria-live=\"polite\">\n        <span class=\"load-status\" id=\"loadStatus\">6 von 7 Beiträgen sichtbar</span>\n        <button class=\"load-more\" id=\"loadMore\" type=\"button\">Mehr Beiträge laden</button>\n      </div>\n    </section>\n\n    <section class=\"final\" aria-label=\"Kontakt CTA\">\n      <p class=\"kicker\">Nächster Schritt</p><h2>Fotoauftrag planen.</h2><p>Wenn Sie Automotive-Aufnahmen, Portraits, eine Bildstrecke oder eine hochwertige visuelle Präsentation benötigen, schicken Sie kurz Ort, Zeitraum und Ziel des Projekts.</p><div class=\"hero-actions\"><a class=\"btn primary\" href=\"contact.html\">Projekt anfragen</a><a class=\"btn\" href=\"portfolio.html\">Portfolio ansehen</a></div>\n    </section>\n  </main>\n\n  ",
+    "afterFooterHtml": "\n\n\n<script>\n    const root=document.documentElement;\n    window.addEventListener('pointermove',ev=>{root.style.setProperty('--mx',`${(ev.clientX/innerWidth*100).toFixed(1)}%`);root.style.setProperty('--my',`${(ev.clientY/innerHeight*100).toFixed(1)}%`);},{passive:true});\n    const topbar=document.getElementById('topbar');const toggle=document.querySelector('.menu-toggle');\n    toggle?.addEventListener('click',()=>{const open=topbar.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));});\n    topbar?.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>{topbar.classList.remove('open');toggle?.setAttribute('aria-expanded','false');}));\n\n    const reveal=[...document.querySelectorAll('.post,.note,.reveal')];\n    const io=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('visible');});},{threshold:.12});\n    reveal.forEach(el=>io.observe(el));\n\n    let ticking=false;\n    function updateScroll(){ticking=false;const vh=innerHeight||1;document.querySelectorAll('.feature-image').forEach(card=>{const r=card.getBoundingClientRect();const p=Math.max(0,Math.min(1,(vh-r.top)/(vh+r.height)));card.style.setProperty('--imgY',`${(p-.5)*-28}px`);card.style.setProperty('--shineX',`${-110+p*220}%`);});}\n    addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(updateScroll);}}, {passive:true});updateScroll();\n\n    const filters=[...document.querySelectorAll('.filter')];const posts=[...document.querySelectorAll('.post')];\n    const loadMore=document.getElementById('loadMore');const loadPanel=document.getElementById('loadPanel');const loadStatus=document.getElementById('loadStatus');\n    let activeFilter='all';let visibleLimit=6;const pageSize=6;\n    function matchingPosts(){return posts.filter(post=>activeFilter==='all'||post.dataset.category===activeFilter);}\n    function layoutSpans(count){if(count<=0)return[];if(count===1)return[12];if(count===2)return[6,6];if(count===4)return[6,6,6,6];if(count===5)return[6,6,4,4,4];return Array.from({length:count},()=>4);}\n    function applyPostState(){const matches=matchingPosts();posts.forEach(post=>{post.classList.toggle('hidden',!(activeFilter==='all'||post.dataset.category===activeFilter));post.classList.remove('not-loaded');post.style.gridColumn='';});matches.forEach((post,index)=>post.classList.toggle('not-loaded',index>=visibleLimit));const visible=matches.slice(0,visibleLimit);if(innerWidth>760){const spans=layoutSpans(visible.length);visible.forEach((post,index)=>{post.style.gridColumn='span '+spans[index];});}const total=matches.length;const shown=Math.min(visibleLimit,total);if(loadPanel&&loadStatus&&loadMore){loadStatus.textContent=`${shown} von ${total} Beiträgen sichtbar`;loadPanel.hidden=total<=pageSize;loadMore.hidden=shown>=total;}}\n    filters.forEach(btn=>btn.addEventListener('click',()=>{activeFilter=btn.dataset.filter||'all';visibleLimit=pageSize;filters.forEach(b=>b.classList.toggle('active',b===btn));applyPostState();}));\n    loadMore?.addEventListener('click',()=>{visibleLimit+=pageSize;applyPostState();});\n    addEventListener('resize',applyPostState,{passive:true});applyPostState();\n\n  </script>\n\n  <script>\n    (() => {\n      const header = document.querySelector('.topbar, .top');\n      if (!header) return;\n      const parseColor = (value) => {\n        if (!value) return null;\n        const match = value.match(/rgba?\\(([^)]+)\\)/i);\n        if (!match) return null;\n        const parts = match[1].trim().split(/[\\s,\\/]+/).filter(Boolean).map(Number);\n        if (parts.length < 3 || parts.slice(0, 3).some(Number.isNaN)) return null;\n        return { r: parts[0], g: parts[1], b: parts[2], a: Number.isFinite(parts[3]) ? parts[3] : 1 };\n      };\n      const luma = ({ r, g, b }) => (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;\n      const themeFromStyle = (el) => {\n        const style = getComputedStyle(el);\n        const solid = parseColor(style.backgroundColor);\n        if (solid && solid.a > 0.45) return luma(solid) > 0.62 ? 'light' : 'dark';\n        const colors = style.backgroundImage.match(/rgba?\\([^)]+\\)/gi) || [];\n        for (const color of colors) {\n          const parsed = parseColor(color);\n          if (parsed && parsed.a > 0.45) return luma(parsed) > 0.62 ? 'light' : 'dark';\n        }\n        return null;\n      };\n      const themeForPoint = (x, y) => {\n        const stack = document.elementsFromPoint(x, y).filter((el) => !header.contains(el));\n        for (const el of stack) {\n          const marker = el.closest?.('[data-header-theme]');\n          if (marker) return marker.dataset.headerTheme;\n        }\n        for (const el of stack) {\n          let node = el;\n          while (node && node !== document.documentElement) {\n            if (!header.contains(node)) {\n              const theme = themeFromStyle(node);\n              if (theme) return theme;\n            }\n            node = node.parentElement;\n          }\n        }\n        return 'dark';\n      };\n      let ticking = false;\n      const updateHeaderTheme = () => {\n        ticking = false;\n        const rect = header.getBoundingClientRect();\n        const y = Math.max(8, Math.min(innerHeight - 8, rect.top + Math.min(34, Math.max(18, rect.height * .42))));\n        const points = [\n          [Math.min(innerWidth - 8, Math.max(8, rect.left + rect.width / 2)), y],\n          [Math.min(innerWidth - 8, Math.max(8, rect.left + 42)), y],\n          [Math.min(innerWidth - 8, Math.max(8, rect.right - 42)), y]\n        ];\n        let lightVotes = 0;\n        let total = 0;\n        points.forEach(([xPoint, yPoint]) => {\n          const theme = themeForPoint(xPoint, yPoint);\n          if (theme) {\n            total += 1;\n            if (theme === 'light') lightVotes += 1;\n          }\n        });\n        const onLight = total > 0 && lightVotes >= Math.ceil(total / 2);\n        header.classList.toggle('header-on-light', onLight);\n        header.classList.toggle('header-on-dark', !onLight);\n      };\n      const queueHeaderTheme = () => {\n        if (!ticking) {\n          ticking = true;\n          requestAnimationFrame(updateHeaderTheme);\n        }\n      };\n      addEventListener('scroll', queueHeaderTheme, { passive: true });\n      addEventListener('resize', queueHeaderTheme, { passive: true });\n      updateHeaderTheme();\n    })();\n  </script>\n<script src=\"/assets/site-chrome.js\" defer></script>\n",
+    "bodyClass": "has-mr-footer",
+    "extractedHeadings": [
+      "Notizen aus Licht.",
+      "Geplant, nicht zufällig.",
+      "Journal Index.",
+      "Automotive-Fotografie in Düsseldorf.",
+      "Portraits ohne generische Posen.",
+      "Wie eine Serie kuratiert wird.",
+      "Oldtimer als Wertobjekt.",
+      "Vom Bild zum Fine-Art-Druck.",
+      "Location Scouting für starke Motive.",
+      "Linien, Metall, Haltung.",
+      "Fotoauftrag planen."
+    ],
+    "extractedImagePaths": [
+      "assets/optimized/assets-photos-automobil-sunset-1920.webp",
+      "assets/optimized/assets-photos-automobil-sunset-1920.webp",
+      "assets/optimized/assets-photos-automobil-neon-1920.webp",
+      "assets/photos/portrait-warm.webp",
+      "assets/optimized/assets-photos-oldtimer-stage-1920.webp",
+      "assets/optimized/assets-photos-oldtimer-stage-1920.webp",
+      "assets/services/fea8218e-7546-48ef-8581-2b99bb3cdefe_centered_reduced.webp",
+      "assets/optimized/assets-photos-landschaft-1920.webp",
+      "assets/optimized/assets-photos-motorrad-1920.webp"
+    ],
+    "extractedText": "Journal · Notizen · Düsseldorf\n\nEin kuratiertes Journal über Fotografie, Orte, Bildauswahl und Präsentation — ruhig, persönlich, ohne Content-Masse.\n\nEin starkes Foto entsteht nicht erst beim Auslösen — sondern in der Entscheidung für Ort, Tageszeit, Bildschnitt und Stimmung.\n\nStandort, Lichtkante und Karosserieform entscheiden darüber, ob ein Fahrzeug lebendig wirkt.\n\nWie ein ruhiger Bildraum mehr Wirkung erzeugt als ein überinszeniertes Setting.\n\nVon der ersten Auswahl bis zur Reihenfolge, die beim Betrachten Spannung hält.\n\nWarum Zurückhaltung oft hochwertiger wirkt als dramatischer Dauer-Effekt.\n\nWarum Material und Farbmanagement Teil der fotografischen Wirkung sind.\n\nWie Orte ausgewählt werden, bevor Kamera und Licht überhaupt aufgebaut sind.\n\nWarum Motorradbilder stärker über Spannung und Nähe funktionieren.\n\nWenn Sie Automotive-Aufnahmen, Portraits, eine Bildstrecke oder eine hochwertige visuelle Präsentation benötigen, schicken Sie kurz Ort, Zeitraum und Ziel des Projekts."
+  },
+  "updatedAt": "2026-06-03T17:26:51.811Z",
+  "createdAt": "2026-05-28T19:07:30.991Z",
+  "status": "published",
+  "payloadId": "1"
+}

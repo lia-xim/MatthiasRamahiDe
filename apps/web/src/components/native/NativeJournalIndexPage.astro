@@ -3,6 +3,7 @@ import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import NativeShaderHero from './NativeShaderHero.astro'
 import { type JournalPostCard, journalCards, journalFilters, journalHero, journalHeroSlides, journalTicker } from '../../lib/journalIndexContent'
 import { homeHeroSlidesFor } from '../../lib/nativeContent'
+import { tinaAttrs } from '../../lib/tinaFieldAttrs'
 import {
   getSitePageByType,
   imageAlt,
@@ -14,6 +15,8 @@ import {
   toRootRelativeHref,
   type PayloadDoc,
 } from '../../lib/payload'
+
+type EditableJournalPostCard = JournalPostCard & { source?: PayloadDoc }
 
 const providedDoc = Astro.props.doc as PayloadDoc | undefined
 const doc = providedDoc || (await getSitePageByType('journal-index', liveCmsFetchOptions({ depth: 2 })))
@@ -27,7 +30,7 @@ const categoryToFilter: Record<string, string> = {
   'landscape-print': 'print',
 }
 const cmsCards = cmsPosts
-  .map((post, index): JournalPostCard | null => {
+  .map((post, index): EditableJournalPostCard | null => {
     const slug = post.slug || ''
     if (!slug) return null
 
@@ -46,12 +49,13 @@ const cmsCards = cmsPosts
       image,
       imageAlt: imageAlt(post.coverImage, post.title || fallback?.imageAlt || 'Journal-Bild'),
       readTime: typeof post.readingTime === 'number' ? `${post.readingTime} Min` : fallback?.readTime || '5 Min',
+      source: post,
       text: post.excerpt || fallback?.text || '',
       title: post.title || fallback?.title || 'Journal-Beitrag',
       width: dimensions.width || fallback?.width || 1920,
     }
   })
-  .filter(Boolean) as JournalPostCard[]
+  .filter(Boolean) as EditableJournalPostCard[]
 const posts = cmsCards.length > 0 ? cmsCards : journalCards
 const hasText = (value?: string): value is string => typeof value === 'string' && value.trim().length > 0
 const journalIndex = doc?.journalIndex
@@ -101,11 +105,11 @@ const finalSecondaryHref = toRootRelativeHref(finalCta.secondaryHref) || '/portf
 <AdoptedPageLayout legacyFile="blog.html" current="blog" doc={doc} preloadImages={[firstHeroSlide.image]}>
   <div class="light" aria-hidden="true"></div>
   <main>
-    <NativeShaderHero id="top" label="Journal Intro" slides={heroSlides} headerTheme="dark" />
+    <NativeShaderHero id="top" label="Journal Intro" slides={heroSlides} sourceSlides={doc?.heroSlides || []} headerTheme="dark" />
 
     <section class="ticker" aria-label="Themenlaufband">
       <div class="ticker-track">
-        {resolvedTicker.map((item) => <span set:html={item}></span>)}
+        {resolvedTicker.map((item, index) => <span set:html={item} {...tinaAttrs(journalIndex?.tickerItems?.[index], 'text')}></span>)}
       </div>
     </section>
 
@@ -121,13 +125,14 @@ const finalSecondaryHref = toRootRelativeHref(finalCta.secondaryHref) || '/portf
               height={featuredImageDimensions.height || featured.height}
               decoding="async"
               loading="eager"
+              {...tinaAttrs(featuredSettings, 'image')}
             />
           </figure>
           <div class="featured__copy">
-            <p class="featured__meta"><span>{featuredKicker}</span></p>
-            <h2 class="featured__title">{featuredHeadline}</h2>
-            <p class="featured__excerpt">{featuredText}</p>
-            <span class="featured__go">{featuredButtonLabel}</span>
+            <p class="featured__meta"><span {...tinaAttrs(featuredSettings, 'kicker')}>{featuredKicker}</span></p>
+            <h2 class="featured__title" {...tinaAttrs(featuredSettings, 'headline')}>{featuredHeadline}</h2>
+            <p class="featured__excerpt" {...tinaAttrs(featuredSettings, 'text')}>{featuredText}</p>
+            <span class="featured__go" {...tinaAttrs(featuredSettings, 'buttonLabel')}>{featuredButtonLabel}</span>
           </div>
         </div>
       </section>
@@ -135,10 +140,10 @@ const finalSecondaryHref = toRootRelativeHref(finalCta.secondaryHref) || '/portf
 
     <section class="journal" id="journal" aria-label="Journal Artikel">
       <div class="journal-head">
-        <h2>{indexHeadline}</h2>
+        <h2 {...tinaAttrs(journalIndex, 'indexHeadline')}>{indexHeadline}</h2>
         <div class="filters" aria-label="Artikel filtern">
           {resolvedFilters.map((filter, index) => (
-            <button class={`filter ${index === 0 ? 'active' : ''}`.trim()} type="button" data-filter={filter.value}>{filter.label}</button>
+            <button class={`filter ${index === 0 ? 'active' : ''}`.trim()} type="button" data-filter={filter.value} {...tinaAttrs(journalIndex?.filters?.[index], 'label')}>{filter.label}</button>
           ))}
         </div>
       </div>
@@ -159,11 +164,12 @@ const finalSecondaryHref = toRootRelativeHref(finalCta.secondaryHref) || '/portf
                 height={post.height}
                 decoding="async"
                 loading="lazy"
+                {...tinaAttrs((post as EditableJournalPostCard).source, 'coverImage')}
               />
             </div>
             <div class="post-body">
-              <h3>{post.title}</h3>
-              <p>{post.text}</p>
+              <h3 {...tinaAttrs((post as EditableJournalPostCard).source, 'title')}>{post.title}</h3>
+              <p {...tinaAttrs((post as EditableJournalPostCard).source, 'excerpt')}>{post.text}</p>
               <span class="post-go">Beitrag lesen</span>
             </div>
           </a>
@@ -171,17 +177,17 @@ const finalSecondaryHref = toRootRelativeHref(finalCta.secondaryHref) || '/portf
       </div>
       <div class="load-panel" id="loadPanel" aria-live="polite">
         <span class="load-status" id="loadStatus">{loadStatus}</span>
-        <button class="load-more" id="loadMore" type="button">{loadMoreLabel}</button>
+        <button class="load-more" id="loadMore" type="button" {...tinaAttrs(journalIndex, 'loadMoreLabel')}>{loadMoreLabel}</button>
       </div>
     </section>
 
     <section class="final" aria-label="Kontakt CTA">
-      <p class="kicker">{finalKicker}</p>
-      <h2 set:html={finalHeadline}></h2>
-      <p>{finalText}</p>
+      <p class="kicker" {...tinaAttrs(finalCta, 'kicker')}>{finalKicker}</p>
+      <h2 set:html={finalHeadline} {...tinaAttrs(finalCta, 'headline')}></h2>
+      <p {...tinaAttrs(finalCta, 'text')}>{finalText}</p>
       <div class="hero-actions">
-        <a class="btn primary" href={finalPrimaryHref}>{finalPrimaryLabel}</a>
-        <a class="btn" href={finalSecondaryHref}>{finalSecondaryLabel}</a>
+        <a class="btn primary" href={finalPrimaryHref} {...tinaAttrs(finalCta, 'primaryLabel')}>{finalPrimaryLabel}</a>
+        <a class="btn" href={finalSecondaryHref} {...tinaAttrs(finalCta, 'secondaryLabel')}>{finalSecondaryLabel}</a>
       </div>
     </section>
   </main>

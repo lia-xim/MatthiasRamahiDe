@@ -13,6 +13,7 @@ const strict = args.has('--strict')
 const htmlExtensions = new Set(['.html', ''])
 const assetExtensions = new Set(['.jpg', '.jpeg', '.png', '.webp', '.avif', '.gif', '.mp4', '.webm'])
 const adoptedRoutesPath = path.join(ROOT, 'apps', 'web', 'src', 'lib', 'adoptedRoutes.ts')
+const technicalHtmlPathRe = /^(?:admin\/|google[a-z0-9_-]+\.html$)/i
 
 function stringLiteralsFromArray(source, name) {
   const match = source.match(new RegExp(`(?:export\\s+)?const\\s+${name}\\s*=\\s*\\[([\\s\\S]*?)\\]\\s+as\\s+const`))
@@ -48,6 +49,8 @@ function walk(dir, files = []) {
 function htmlFiles() {
   return walk(target).filter((file) => {
     const rel = path.relative(target, file)
+    const posixRel = rel.replace(/\\/g, '/')
+    if (technicalHtmlPathRe.test(posixRel)) return false
     if (rel.includes(`${path.sep}dist${path.sep}server${path.sep}`)) return false
     if (path.extname(file) === '.html') return true
     if (htmlExtensions.has(path.extname(file))) {

@@ -1,0 +1,37 @@
+{
+  "title": "Automobil",
+  "slug": "automobil",
+  "sortOrder": 100,
+  "intro": "Linie, Lack, Licht.",
+  "coverImage": "/uploads/payload/assets-photos-automobil-neon-1921.webp",
+  "seo": {
+    "title": "Automobil Portfolio Fotografie | Matthias Ramahi",
+    "description": "Kuratierte Automobil-Fotografie von Matthias Ramahi: Serien, Motive und Bildauswahl fuer Portfolio, Web, Print und visuelle Projekte in Duesseldorf / NRW.",
+    "secondaryKeywords": [],
+    "internalLinkAnchors": [],
+    "canonicalUrl": "https://matthiasramahi.de/portfolio",
+    "legacyUrl": "portfolio.html",
+    "ogImage": "/uploads/payload/assets-photos-automobil-neon-1921.webp",
+    "noIndex": false
+  },
+  "legacy": {
+    "sourceFile": "portfolio.html",
+    "sourceUrl": "https://matthiasramahi.de/portfolio.html",
+    "migrationStatus": "reviewed",
+    "renderSource": "structured-blocks",
+    "extractedHeadings": [
+      "Linie, Lack, Licht."
+    ],
+    "extractedImagePaths": [
+      "assets/optimized/assets-photos-automobil-neon-1920.webp",
+      "assets/portfolio/thumbs/_DSC3982.webp",
+      "assets/portfolio/thumbs/_DSC3878.webp",
+      "assets/portfolio/thumbs/_DSC3908.webp"
+    ],
+    "extractedText": "02 / Automobil Linie, Lack, Licht. Zur Automobilfotografie →"
+  },
+  "updatedAt": "2026-05-28T19:45:26.182Z",
+  "createdAt": "2026-05-28T19:07:35.736Z",
+  "status": "published",
+  "payloadId": "2"
+}

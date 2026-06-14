@@ -1,0 +1,37 @@
+{
+  "title": "Oldtimer",
+  "slug": "oldtimer",
+  "sortOrder": 100,
+  "intro": "Charakter mit Nostalgie.",
+  "coverImage": "/uploads/payload/_DSC3892-2.webp",
+  "seo": {
+    "title": "Oldtimer Portfolio Fotografie | Matthias Ramahi",
+    "description": "Kuratierte Oldtimer-Fotografie von Matthias Ramahi: Serien, Motive und Bildauswahl fuer Portfolio, Web, Print und visuelle Projekte in Duesseldorf / NRW.",
+    "secondaryKeywords": [],
+    "internalLinkAnchors": [],
+    "canonicalUrl": "https://matthiasramahi.de/portfolio",
+    "legacyUrl": "portfolio.html",
+    "ogImage": "/uploads/payload/_DSC3892-2.webp",
+    "noIndex": false
+  },
+  "legacy": {
+    "sourceFile": "portfolio.html",
+    "sourceUrl": "https://matthiasramahi.de/portfolio.html",
+    "migrationStatus": "reviewed",
+    "renderSource": "structured-blocks",
+    "extractedHeadings": [
+      "Charakter mit Nostalgie."
+    ],
+    "extractedImagePaths": [
+      "assets/portfolio/thumbs/_DSC3892.webp",
+      "assets/portfolio/thumbs/_DSC2986.webp",
+      "assets/portfolio/thumbs/_DSC3032_genErase (1).webp",
+      "assets/portfolio/thumbs/_DSC3032_genErase (2).webp"
+    ],
+    "extractedText": "04 / Oldtimer Charakter mit Nostalgie. Zur Oldtimerfotografie →"
+  },
+  "updatedAt": "2026-05-28T19:45:26.156Z",
+  "createdAt": "2026-05-28T19:07:35.877Z",
+  "status": "published",
+  "payloadId": "4"
+}

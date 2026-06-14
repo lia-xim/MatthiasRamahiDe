@@ -1,0 +1,37 @@
+{
+  "title": "Portrait",
+  "slug": "portrait",
+  "sortOrder": 100,
+  "intro": "Die Person, im Licht.",
+  "coverImage": "/uploads/payload/_DSC0470-Enhanced-NR-2.webp",
+  "seo": {
+    "title": "Portrait Portfolio Fotografie | Matthias Ramahi",
+    "description": "Kuratierte Portrait-Fotografie von Matthias Ramahi: Serien, Motive und Bildauswahl fuer Portfolio, Web, Print und visuelle Projekte in Duesseldorf / NRW.",
+    "secondaryKeywords": [],
+    "internalLinkAnchors": [],
+    "canonicalUrl": "https://matthiasramahi.de/portfolio",
+    "legacyUrl": "portfolio.html",
+    "ogImage": "/uploads/payload/_DSC0470-Enhanced-NR-2.webp",
+    "noIndex": false
+  },
+  "legacy": {
+    "sourceFile": "portfolio.html",
+    "sourceUrl": "https://matthiasramahi.de/portfolio.html",
+    "migrationStatus": "reviewed",
+    "renderSource": "structured-blocks",
+    "extractedHeadings": [
+      "Die Person, im Licht."
+    ],
+    "extractedImagePaths": [
+      "assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp",
+      "assets/portfolio/thumbs/_DSC9301-Enhanced-NR.webp",
+      "assets/portfolio/thumbs/20250327-DSC01550.webp",
+      "assets/portfolio/thumbs/_DSC9321-Enhanced-NR.webp"
+    ],
+    "extractedText": "01 / Portrait Die Person, im Licht. Zur Portraitfotografie →"
+  },
+  "updatedAt": "2026-05-28T19:45:26.196Z",
+  "createdAt": "2026-05-28T19:07:35.630Z",
+  "status": "published",
+  "payloadId": "1"
+}

@@ -1,10 +1,13 @@
 ---
 import NativeHomePage from '../components/native/NativeHomePage.astro'
 import { livePageCacheControl } from '../lib/liveCache'
+import { getTinaVisualDocument, isTinaEditRequest } from '../lib/tinaVisual'
 
 export const prerender = false
+
+const tinaDoc = isTinaEditRequest(Astro.request) ? await getTinaVisualDocument('pages', 'home.json') : null
 
 Astro.response.headers.set('cache-control', livePageCacheControl())
 Astro.response.headers.set('x-cms-live-route', 'home')
 ---
-<NativeHomePage />
+<NativeHomePage doc={tinaDoc || undefined} />

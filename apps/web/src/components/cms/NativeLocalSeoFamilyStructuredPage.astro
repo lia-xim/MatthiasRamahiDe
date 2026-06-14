@@ -39,6 +39,9 @@ const serviceLabel = doc?.service || serviceLabelFromSlug(legacyFile || doc?.slu
 const pageTitle = titleForLocalSeoPage(doc, serviceLabel, scope)
 const heroCopy = heroCopyForLocalSeoPage(doc, familyContent, serviceLabel, scope)
 const heroImage = familyContent.heroImages[0]
+const metaTitle = doc?.seo?.title || pageTitle
+const metaDescription = doc?.seo?.description || heroCopy
+const metaOgImage = doc?.seo?.ogImage || heroImage.image
 const moduleItems = familyContent.modules.map(localSeoPreviewVisual)
 const galleryItems = familyContent.gallery.map(localSeoPreviewVisual)
 const relatedItems = familyContent.related.map(localSeoPreviewVisual)
@@ -91,9 +94,9 @@ Astro.response.headers.set('x-cms-layout-parent', familyContent.parentLegacyFile
   current="fotografie"
   doc={doc}
   noIndex={Boolean(preview)}
-  title={pageTitle}
-  description={heroCopy}
-  ogImage={heroImage.image}
+  title={metaTitle}
+  description={metaDescription}
+  ogImage={metaOgImage}
 >
   {preview && (
     <PreviewToolbar

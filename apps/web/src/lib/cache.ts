@@ -34,11 +34,14 @@ export function addUrlVersion(url: string, version: unknown, param = 'v') {
 export function isLocalStaticAsset(url: string) {
   if (!url || /^(data:|mailto:|tel:|#)/i.test(url)) return false
 
-  if (/^\/assets\//i.test(url) || /^assets\//i.test(url)) return true
+  if (/^\/?(?:assets|uploads)\//i.test(url)) return true
 
   try {
     const parsed = new URL(url)
-    return ['matthiasramahi.de', 'www.matthiasramahi.de', 'localhost', '127.0.0.1'].includes(parsed.hostname) && parsed.pathname.startsWith('/assets/')
+    return (
+      ['matthiasramahi.de', 'www.matthiasramahi.de', 'localhost', '127.0.0.1'].includes(parsed.hostname) &&
+      /^\/(?:assets|uploads)\//i.test(parsed.pathname)
+    )
   } catch {
     return false
   }

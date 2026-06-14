@@ -1,0 +1,80 @@
+{
+  "title": "Portfolio-Auswahl Sportwagen",
+  "slug": "portfolio-auswahl-sportwagen",
+  "featured": false,
+  "sortOrder": 100,
+  "publishedAt": "2026-05-28T19:07:35.824Z",
+  "category": "content/portfolio-categories/sportwagen.json",
+  "excerpt": "Performance, stillgestellt.",
+  "coverImage": "/uploads/payload/_DSC2310-2.webp",
+  "gallery": [
+    {
+      "image": "/uploads/payload/_DSC2310-2.webp",
+      "caption": "Sportwagen",
+      "role": "sequence"
+    },
+    {
+      "image": "/uploads/payload/_DSC2316-2.webp",
+      "caption": "Sportwagen",
+      "role": "sequence"
+    },
+    {
+      "image": "/uploads/payload/_DSC2345-2.webp",
+      "caption": "Sportwagen",
+      "role": "sequence"
+    },
+    {
+      "image": "/uploads/payload/_DSC2358-2.webp",
+      "caption": "Sportwagen",
+      "role": "sequence"
+    }
+  ],
+  "heroSlides": [],
+  "projectPage": {
+    "statement": {
+      "stats": []
+    },
+    "context": {
+      "body": []
+    },
+    "perspectives": [],
+    "infoCards": [],
+    "relatedCards": [],
+    "contact": {}
+  },
+  "presentationMode": "floating-archive",
+  "cta": {},
+  "seo": {
+    "title": "Sportwagen Portfolio-Auswahl | Matthias Ramahi Fotografie",
+    "description": "Portfolio-Auswahl Sportwagen: kuratierte Bildstrecke mit Licht, Details, Perspektive und visueller Produktion von Matthias Ramahi in Duesseldorf / NRW.",
+    "secondaryKeywords": [],
+    "internalLinkAnchors": [],
+    "canonicalUrl": "https://matthiasramahi.de/portfolio/portfolio-auswahl-sportwagen",
+    "legacyUrl": "portfolio.html",
+    "ogImage": "/uploads/payload/_DSC2310-2.webp",
+    "noIndex": false,
+    "focusKeyword": "Sportwagen Portfolio-Auswahl",
+    "searchIntent": "Referenzprüfung: Nutzer möchten Bildstil, Qualität und Einsatzmöglichkeiten der Serie Sportwagen Portfolio-Auswahl einschätzen."
+  },
+  "legacy": {
+    "sourceFile": "portfolio.html",
+    "sourceUrl": "https://matthiasramahi.de/portfolio.html",
+    "migrationStatus": "reviewed",
+    "renderSource": "structured-blocks",
+    "extractedHeadings": [
+      "Performance, stillgestellt."
+    ],
+    "extractedImagePaths": [
+      "assets/portfolio/thumbs/_DSC2310.webp",
+      "assets/portfolio/thumbs/_DSC2316.webp",
+      "assets/portfolio/thumbs/_DSC2345.webp",
+      "assets/portfolio/thumbs/_DSC2358.webp"
+    ],
+    "extractedText": "03 / Sportwagen Performance, stillgestellt. Zur Sportwagenfotografie →"
+  },
+  "updatedAt": "2026-05-28T19:45:26.022Z",
+  "createdAt": "2026-05-28T19:07:35.840Z",
+  "status": "published",
+  "blocks": [],
+  "payloadId": "3"
+}

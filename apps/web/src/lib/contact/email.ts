@@ -8,6 +8,7 @@ type ContactPayload = {
   name: string
   contact: string
   message: string
+  projectType?: string
   project?: string
   date?: string
   use?: string
@@ -229,6 +230,7 @@ export function parseContactPayload(input: unknown, request: Request): ContactRe
     name: clean(payload.name, 160),
     contact: clean(payload.contact || payload.email, 240),
     message: clean(payload.message, maxMessageLength),
+    projectType: clean(payload.projectType || payload.service || payload.leistung, 160),
     project: clean(payload.project || payload.motiv, 240),
     date: clean(payload.date, 160),
     use: clean(payload.use, 160),
@@ -250,8 +252,8 @@ export function parseContactPayload(input: unknown, request: Request): ContactRe
 export function validateContactRequest(request: ContactRequest) {
   if (request.website) return { ok: true, spam: true }
   if (/(?:https?:\/\/|www\.)/i.test(`${request.name} ${request.contact}`)) return { ok: true, spam: true }
-  if (countUrls(`${request.message} ${request.project}`) > 2) return { ok: true, spam: true }
-  if (containsMarkup(`${request.message} ${request.project}`)) return { ok: true, spam: true }
+  if (countUrls(`${request.message} ${request.projectType} ${request.project}`) > 2) return { ok: true, spam: true }
+  if (containsMarkup(`${request.message} ${request.projectType} ${request.project}`)) return { ok: true, spam: true }
 
   // Nachricht ist optional: viele geben nur Name + E-Mail an und wollen bewusst
   // keinen Text schreiben. Fuer die Eingangsbestätigung ist aber eine echte

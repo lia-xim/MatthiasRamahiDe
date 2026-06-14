@@ -6,6 +6,7 @@ import { getNativeHtmlFileForPath } from '../lib/adoptedRoutes'
 import { envFlagNotFalse } from '../lib/envFlags'
 import { livePageCacheControl } from '../lib/liveCache'
 import { getBySlug, liveCmsFetchOptions, type PayloadDoc } from '../lib/payload'
+import { getTinaVisualDocumentBySlug, isTinaEditRequest } from '../lib/tinaVisual'
 
 export const prerender = false
 
@@ -21,11 +22,20 @@ if (legacyFile) {
 }
 
 if (enableCmsDynamicRoutes && slug) {
-  for (const collection of ['site-pages', 'service-pages', 'local-seo-pages'] as const) {
-    const doc = await getBySlug(collection, normalizedSlug, liveCmsFetchOptions({ depth: 2 }))
+  const dynamicCollections = [
+    { payload: 'site-pages', visual: 'pages' },
+    { payload: 'service-pages', visual: 'servicePages' },
+    { payload: 'local-seo-pages', visual: 'localSeoPages' },
+  ] as const
+  const isEditing = isTinaEditRequest(Astro.request)
+
+  for (const collection of dynamicCollections) {
+    const doc = isEditing
+      ? await getTinaVisualDocumentBySlug(collection.visual, normalizedSlug, { requireExisting: true })
+      : await getBySlug(collection.payload, normalizedSlug, liveCmsFetchOptions({ depth: 2 }))
     if (doc) {
       cmsDoc = doc
-      cmsCollection = collection
+      cmsCollection = collection.payload
       break
     }
   }

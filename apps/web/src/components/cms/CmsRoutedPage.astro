@@ -5,6 +5,7 @@ import LoadMoreGallery from '../LoadMoreGallery.astro'
 import PreviewToolbar from '../PreviewToolbar.astro'
 import ResponsiveImage from '../ResponsiveImage.astro'
 import BaseLayout from '../../layouts/BaseLayout.astro'
+import { tinaAttrs } from '../../lib/tinaFieldAttrs'
 import {
   imageDisplayUrl,
   internalSitePath,
@@ -36,6 +37,16 @@ const canonicalUrl = toAbsoluteSiteUrl(doc.seo?.canonicalUrl || routeForDoc(coll
 const routePath = internalSitePath(routeForDoc(collection, doc))
 const canonicalPath = internalSitePath(canonicalUrl)
 const heroImage = doc.heroImage || doc.coverImage || doc.teaserImage || doc.seo?.ogImage
+const heroFieldSource = doc.heroImage || doc.coverImage || doc.teaserImage ? doc : doc.seo
+const heroFieldName = doc.heroImage
+  ? 'heroImage'
+  : doc.coverImage
+    ? 'coverImage'
+    : doc.teaserImage
+      ? 'teaserImage'
+      : doc.seo?.ogImage
+        ? 'ogImage'
+        : undefined
 const hero = imageDisplayUrl(heroImage, 'wide')
 const gallery = doc.gallery ?? []
 const proofPoints = (doc.proofPoints ?? doc.localProof ?? []) as Array<{ label?: string; text?: string }>
@@ -89,15 +100,15 @@ if (faqSchema) jsonLdItems.push(faqSchema)
     />
   )}
 
-  <section class="hero-stage" style={hero ? `background: linear-gradient(180deg, rgba(2,3,6,.34), rgba(2,3,6,.9)), url('${hero}') center / cover;` : ''}>
+  <section class="hero-stage" style={hero ? `background: linear-gradient(180deg, rgba(2,3,6,.34), rgba(2,3,6,.9)), url('${hero}') center / cover;` : ''} {...tinaAttrs(heroFieldSource, heroFieldName)}>
     <div class="hero-stage__grid container">
       <div>
         <p class="eyebrow">{preview ? `Preview / ${eyebrow}` : eyebrow}</p>
-        <h1 class="display">{doc.title}</h1>
+        <h1 class="display" {...tinaAttrs(doc, 'title')}>{doc.title}</h1>
       </div>
       <div>
-        {!hero && <ResponsiveImage media={heroImage} size="card" fallback={doc.title || 'CMS-Bild'} loading="eager" />}
-        <p class="copy" style="margin-top: 22px;">{doc.excerpt || doc.intro}</p>
+        {!hero && <ResponsiveImage media={heroImage} size="card" fallback={doc.title || 'CMS-Bild'} loading="eager" tinaFieldSource={heroFieldSource} tinaFieldName={heroFieldName} />}
+        <p class="copy" style="margin-top: 22px;" {...tinaAttrs(doc, doc.excerpt ? 'excerpt' : 'intro')}>{doc.excerpt || doc.intro}</p>
       </div>
     </div>
   </section>
@@ -110,8 +121,8 @@ if (faqSchema) jsonLdItems.push(faqSchema)
       <div class="card-grid" style="margin-top: 24px;">
         {proofPoints.map((point) => (
           <article class="card">
-            <h3>{point.label}</h3>
-            <p class="copy">{point.text}</p>
+            <h3 {...tinaAttrs(point, 'label')}>{point.label}</h3>
+            <p class="copy" {...tinaAttrs(point, 'text')}>{point.text}</p>
           </article>
         ))}
       </div>
@@ -122,7 +133,7 @@ if (faqSchema) jsonLdItems.push(faqSchema)
     <section class="container section-pad is-compact">
       <p class="eyebrow">Geeignet fuer</p>
       <div class="filter-row">
-        {audience.map((entry) => entry.item && <span>{entry.item}</span>)}
+        {audience.map((entry) => entry.item && <span {...tinaAttrs(entry, 'item')}>{entry.item}</span>)}
       </div>
     </section>
   )}
@@ -135,8 +146,8 @@ if (faqSchema) jsonLdItems.push(faqSchema)
       <div class="stack-list">
         {faq.map((item) => (
           <article class="stack-item">
-            <h3>{item.question}</h3>
-            <p class="copy">{item.answer}</p>
+            <h3 {...tinaAttrs(item, 'question')}>{item.question}</h3>
+            <p class="copy" {...tinaAttrs(item, 'answer')}>{item.answer}</p>
           </article>
         ))}
       </div>
@@ -147,7 +158,7 @@ if (faqSchema) jsonLdItems.push(faqSchema)
     <section class="container section-pad is-compact">
       <p class="eyebrow">Weiterfuehren</p>
       <div class="filter-row">
-        {relatedPages.map((link) => link.href && <a {...linkAttributes(link)}>{link.label}</a>)}
+        {relatedPages.map((link) => link.href && <a {...linkAttributes(link)} {...tinaAttrs(link, 'label')}>{link.label}</a>)}
       </div>
     </section>
   )}

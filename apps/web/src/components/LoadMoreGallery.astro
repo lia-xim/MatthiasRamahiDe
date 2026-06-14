@@ -2,6 +2,7 @@
 import ResponsiveImage from './ResponsiveImage.astro'
 import { imageAlt, type PayloadMedia } from '../lib/payload'
 import { versionStaticAssetUrl } from '../lib/cache'
+import { tinaAttrs } from '../lib/tinaFieldAttrs'
 
 type GalleryItem = {
   image?: PayloadMedia | string
@@ -34,8 +35,8 @@ const hasMore = items.length > batchSize
     <div class="card-grid" data-load-more-gallery data-batch-size={batchSize} style="margin-top: 24px;">
       {items.map((item, index) => (
         <article class="card" style="padding: 0; min-height: 0;" data-gallery-item hidden={index >= batchSize}>
-          <ResponsiveImage media={item.image} size="card" fallback={imageAlt(item.image, fallback)} mapCachedAssets={mapCachedAssets} />
-          {item.caption && <p class="copy" style="padding: 18px;">{item.caption}</p>}
+          <ResponsiveImage media={item.image} size="card" fallback={imageAlt(item.image, fallback)} mapCachedAssets={mapCachedAssets} tinaFieldSource={item} tinaFieldName="image" />
+          {item.caption && <p class="copy" style="padding: 18px;" {...tinaAttrs(item, 'caption')}>{item.caption}</p>}
         </article>
       ))}
     </div>

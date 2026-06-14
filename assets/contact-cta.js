@@ -56,6 +56,7 @@ document.addEventListener('submit', function (event) {
   const durationSeconds = startedAt ? Math.max(0, Math.round((Date.now() - startedAt) / 1000)) : 0
   trackContactEvent('form_submit_attempt', {
     subject: form.dataset.subject || 'Projektanfrage',
+    projectType: data.get('projectType') || 'Noch offen',
     hasProject: Boolean(String(data.get('project') || '').trim()),
     hasDate: Boolean(String(data.get('date') || '').trim()),
     use: data.get('use') || 'Noch offen',
@@ -90,6 +91,7 @@ document.addEventListener('submit', function (event) {
     ['URL', location.href],
     ['Name', name],
     ['E-Mail', contact],
+    ['Leistung', data.get('projectType') || 'Noch offen'],
     ['Projekt / Motiv', data.get('project') || 'Noch offen'],
     ['Zeitraum', data.get('date') || 'Noch offen'],
     ['Nutzung', data.get('use') || 'Noch offen'],
@@ -136,6 +138,7 @@ document.addEventListener('submit', function (event) {
       name,
       contact,
       message,
+      projectType: data.get('projectType') || '',
       project: data.get('project') || '',
       date: data.get('date') || '',
       use: data.get('use') || '',

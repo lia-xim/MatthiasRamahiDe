@@ -1,0 +1,98 @@
+{
+  "title": "Kontakt Matthias Ramahi Fotografie Düsseldorf",
+  "slug": "contact",
+  "pageType": "contact",
+  "intro": "Fuer eine erste Einschaetzung sind Projektart, Ort, Zeitraum und geplanter Einsatz am wichtigsten. Es macht einen Unterschied, ob Bilder fuer Verkauf, Website, Kampagne, Print, Portfolio oder eine interne Praesentation entstehen sollen.",
+  "heroSlides": [],
+  "homeStatement": {
+    "body": []
+  },
+  "homeChapters": {
+    "items": []
+  },
+  "homeSelectedWorks": {},
+  "homeAbout": {
+    "body": []
+  },
+  "homeServices": {
+    "items": []
+  },
+  "homeJournal": {
+    "items": []
+  },
+  "aboutHero": {},
+  "aboutStatement": {},
+  "aboutChapters": {
+    "items": []
+  },
+  "aboutSister": {
+    "plate": {
+      "roles": []
+    }
+  },
+  "aboutContact": {},
+  "photographyIndex": {
+    "clusterIntro": [],
+    "topics": []
+  },
+  "portfolioIndex": {
+    "contextBody": [],
+    "slices": [],
+    "archive": {
+      "batchSize": 12,
+      "items": []
+    },
+    "contact": {}
+  },
+  "servicesIndex": {
+    "items": [],
+    "whyCards": []
+  },
+  "journalIndex": {
+    "tickerItems": [],
+    "featured": {},
+    "initialVisiblePostCount": 6,
+    "filters": [],
+    "finalCta": {}
+  },
+  "blocks": [
+    {
+      "headline": "Ein paar klare Angaben reichen.",
+      "body": "Fuer eine erste Einschaetzung sind Projektart, Ort, Zeitraum und geplanter Einsatz am wichtigsten. Es macht einen Unterschied, ob Bilder fuer Verkauf, Website, Kampagne, Print, Portfolio oder eine interne Praesentation entstehen sollen.\n\nWenn noch nicht alles feststeht, ist das kein Problem. Aus wenigen Stichpunkten laesst sich klaeren, welche Bildsprache, welcher Umfang und welche Vorbereitung sinnvoll sind. So startet die Anfrage direkt mit einem brauchbaren Rahmen statt mit einem generischen Formular und die naechsten Schritte bleiben fuer beide Seiten klar.",
+      "_template": "textBlock"
+    }
+  ],
+  "contactOverride": {},
+  "seo": {
+    "title": "Kontakt — Matthias Ramahi · Fotografie aus Düsseldorf",
+    "description": "Direkt anfragen: Projektart, Ort und Zeitraum reichen für den ersten Schritt. Antwort innerhalb von 24 Stunden, Düsseldorf & NRW.",
+    "secondaryKeywords": [],
+    "internalLinkAnchors": [],
+    "canonicalUrl": "https://matthiasramahi.de/contact.html",
+    "legacyUrl": "contact.html",
+    "noIndex": false,
+    "focusKeyword": "Kontakt Matthias Ramahi Fotografie Düsseldorf",
+    "searchIntent": "Kontaktanfrage: Nutzer wollen ein Projekt anfragen oder Kontaktdaten finden.",
+    "ogImage": "/assets/optimized/assets-photos-automobil-sunset-1920.webp"
+  },
+  "legacy": {
+    "sourceFile": "contact.html",
+    "sourceUrl": "https://matthiasramahi.de/contact.html",
+    "migrationStatus": "reviewed",
+    "renderSource": "payload-legacy-html",
+    "renderedHeadHtml": "\n  <meta charset=\"utf-8\" />\n  <meta name=\"viewport\" content=\"width=device-width,initial-scale=1\" />\n  <meta name=\"twitter:image\" content=\"https://matthiasramahi.de/assets/portraits/_DSC9301-Enhanced-NR.webp\" />\n  <meta name=\"twitter:description\" content=\"Direkt anfragen: Projektart, Ort und Zeitraum reichen für den ersten Schritt. Antwort innerhalb von 24 Stunden, Düsseldorf &amp; NRW.\" />\n  <meta name=\"twitter:title\" content=\"Kontakt — Matthias Ramahi · Fotografie aus Düsseldorf\" />\n  <meta property=\"og:image:alt\" content=\"Kontakt — Matthias Ramahi · Fotografie aus Düsseldorf\" />\n  <meta property=\"og:url\" content=\"https://matthiasramahi.de/contact.html\" />\n  <meta property=\"og:site_name\" content=\"Matthias Ramahi Fotografie\" />\n  <meta name=\"robots\" content=\"index,follow,max-image-preview:large,max-snippet:-1\" />\n  <meta name=\"author\" content=\"Matthias Ramahi\" />\n  <title>Kontakt — Matthias Ramahi · Fotografie aus Düsseldorf</title>\n  <meta name=\"description\" content=\"Direkt anfragen: Projektart, Ort und Zeitraum reichen für den ersten Schritt. Antwort innerhalb von 24 Stunden, Düsseldorf &amp; NRW.\" />\n  <meta name=\"theme-color\" content=\"#f3f1ea\" />\n  <link rel=\"canonical\" href=\"https://matthiasramahi.de/contact.html\" />\n  <meta property=\"og:type\" content=\"website\" />\n  <meta property=\"og:title\" content=\"Kontakt — Matthias Ramahi · Fotografie aus Düsseldorf\" />\n  <meta property=\"og:description\" content=\"Direkt anfragen: Projektart, Ort und Zeitraum reichen für den ersten Schritt. Antwort innerhalb von 24 Stunden, Düsseldorf &amp; NRW.\" />\n  <meta property=\"og:locale\" content=\"de_DE\" />\n  <meta property=\"og:image\" content=\"https://matthiasramahi.de/assets/portraits/_DSC9301-Enhanced-NR.webp\" />\n  <meta name=\"twitter:card\" content=\"summary_large_image\" />\n  <script type=\"application/ld+json\">\n  {\n    \"@context\": \"https://schema.org\",\n    \"@type\": \"ContactPage\",\n    \"name\": \"Kontakt Matthias Ramahi Fotografie\",\n    \"url\": \"https://matthiasramahi.de/contact.html\",\n    \"inLanguage\": \"de-DE\",\n    \"mainEntity\": {\n      \"@type\": \"Person\",\n      \"name\": \"Matthias Ramahi\",\n      \"jobTitle\": \"Fotograf\",\n      \"email\": \"info@matthiasramahi.de\",\n      \"telephone\": \"+49 176 42449858\",\n      \"address\": {\n        \"@type\": \"PostalAddress\",\n        \"addressLocality\": \"Düsseldorf\",\n        \"addressRegion\": \"NRW\",\n        \"addressCountry\": \"DE\"\n      }\n    }\n  }\n  </script>\n  <style>\n    :root{\n      --paper:#f3f1ea;\n      --ink:#0a0c11;\n      --muted:rgba(10,12,17,.62);\n      --quiet:rgba(10,12,17,.42);\n      --line:rgba(10,12,17,.14);\n      --accent-warm:#b08862;\n      --font:'Inter Tight','Söhne','Avenir Next','Helvetica Neue',Arial,system-ui,sans-serif;\n      --serif:'Iowan Old Style','Charter','Georgia',serif;\n      --mono:'JetBrains Mono','IBM Plex Mono','SFMono-Regular',ui-monospace,Menlo,monospace;\n      --ease:cubic-bezier(.23,1,.32,1);\n    }\n    *{box-sizing:border-box}\n    html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);font-family:var(--font);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}\n    body{min-height:100svh;display:flex;flex-direction:column}\n    a{color:inherit;text-decoration:none}\n    ::selection{background:var(--ink);color:var(--paper)}\n\n    main{flex:1 0 auto;display:flex;flex-direction:column;padding-top:clamp(96px,12vw,140px)}\n\n    /* Direct contact strip (dark) */\n    .kc-direct{background:#0a0c11;color:var(--paper);position:relative}\n    .kc-direct__inner{max-width:1240px;margin:0 auto;padding:clamp(64px,7vw,112px) clamp(22px,5vw,76px);display:grid;grid-template-columns:repeat(3,1fr);gap:0}\n    .kc-card{position:relative;padding:0 clamp(14px,2vw,32px);border-left:1px solid rgba(243,245,239,.16)}\n    .kc-card:first-child{padding-left:0;border-left:none}\n    .kc-card:last-child{padding-right:0}\n    .kc-card__label{margin:0 0 14px;font:10px var(--mono);letter-spacing:.22em;text-transform:uppercase;color:rgba(243,245,239,.52)}\n    .kc-card__value{display:block;font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(22px,2.4vw,34px);line-height:1.08;letter-spacing:-.018em;color:var(--paper);transition:color .35s var(--ease)}\n    .kc-card__value:hover{color:color-mix(in oklch,var(--paper) 60%,var(--accent-warm) 40%)}\n    .kc-card__sub{display:block;margin-top:14px;font:11px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:rgba(243,245,239,.42)}\n    .kc-copy{margin-top:18px;display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid rgba(243,245,239,.22);background:transparent;color:rgba(243,245,239,.72);font:10px var(--mono);letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:.25s var(--ease)}\n    .kc-copy:hover{border-color:rgba(243,245,239,.6);color:var(--paper)}\n    .kc-copy.is-done{border-color:color-mix(in oklch,var(--paper) 30%,var(--accent-warm) 70%);color:color-mix(in oklch,var(--paper) 30%,var(--accent-warm) 70%)}\n\n    /* Override the canonical contact-form paper tone to match the\n       über-mich intro background (#f3f1ea), per request. */\n    .mr-contact{--mrc-paper:#f3f1ea}\n    .kc-context{background:#f3f1ea;color:#11131a;border-top:1px solid rgba(17,19,26,.08)}\n    .kc-context__inner{max-width:1120px;margin:0 auto;padding:clamp(54px,7vw,96px) clamp(22px,5vw,76px);display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,5vw,72px);align-items:start}\n    .kc-context__kicker{margin:0 0 14px;font:10px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:rgba(17,19,26,.48)}\n    .kc-context h2{margin:0;font-size:clamp(34px,5vw,78px);line-height:.92;letter-spacing:-.045em}\n    .kc-context p{margin:0;color:rgba(17,19,26,.68);font-size:clamp(16px,1.1vw,19px);line-height:1.62}\n    .kc-context p + p{margin-top:16px}\n\n    @media(max-width:1080px){\n      .kc-direct__inner{grid-template-columns:1fr;gap:0}\n      .kc-card{padding:28px 0;border-left:none;border-top:1px solid rgba(243,245,239,.16)}\n      .kc-card:first-child{padding-top:0;border-top:none}\n      .kc-context__inner{grid-template-columns:1fr}\n    }\n    @media(max-width:720px){\n      .kc-card__value{font-size:24px}\n    }\n    @media(prefers-reduced-motion:reduce){\n      *,*::before,*::after{animation:none!important;transition:none!important}\n    }\n  </style>\n  <link rel=\"stylesheet\" href=\"/assets/site-chrome.css\" />\n  <link rel=\"stylesheet\" href=\"/assets/legacy-performance.css\" />\n  <script type=\"application/ld+json\" data-seo=\"technical\">{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://matthiasramahi.de/#website\",\"url\":\"https://matthiasramahi.de/\",\"name\":\"Matthias Ramahi Fotografie\",\"inLanguage\":\"de-DE\",\"publisher\":{\"@id\":\"https://matthiasramahi.de/#person\"}},{\"@type\":\"Person\",\"@id\":\"https://matthiasramahi.de/#person\",\"name\":\"Matthias Ramahi\",\"url\":\"https://matthiasramahi.de/\",\"email\":\"info@matthiasramahi.de\",\"jobTitle\":\"Fotograf\"},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://matthiasramahi.de/contact.html#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Startseite\",\"item\":\"https://matthiasramahi.de/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Kontakt — Matthias Ramahi · Fotografie aus Düsseldorf\",\"item\":\"https://matthiasramahi.de/contact.html\"}]},{\"@type\":\"ContactPage\",\"@id\":\"https://matthiasramahi.de/contact.html#webpage\",\"url\":\"https://matthiasramahi.de/contact.html\",\"name\":\"Kontakt — Matthias Ramahi · Fotografie aus Düsseldorf\",\"description\":\"Direkt anfragen: Projektart, Ort und Zeitraum reichen für den ersten Schritt. Antwort innerhalb von 24 Stunden, Düsseldorf & NRW.\",\"inLanguage\":\"de-DE\",\"isPartOf\":{\"@id\":\"https://matthiasramahi.de/#website\"},\"breadcrumb\":{\"@id\":\"https://matthiasramahi.de/contact.html#breadcrumb\"},\"primaryImageOfPage\":{\"@type\":\"ImageObject\",\"url\":\"https://matthiasramahi.de/assets/portraits/_DSC9301-Enhanced-NR.webp\"}}]}</script>\n",
+    "renderedBodyHtml": "<main>\n    <h1 style=\"position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;\">Kontakt Matthias Ramahi Fotografie Düsseldorf</h1>\n    <section\n      id=\"anfrage\"\n      data-contact-section\n      data-header-theme=\"light\"\n      data-contact-subject=\"Projektanfrage\"\n      data-contact-headline=\"Projekt <em>anfragen.</em>\"\n      data-contact-lead=\"Name, Kontaktweg und ein paar Stichpunkte reichen fuer den ersten Schritt. Wenn du magst, ergaenze Leistung, Ort, Zeitraum und gewuenschte Wirkung.\"\n    ></section>\n\n    <section class=\"kc-context\" data-header-theme=\"light\" aria-label=\"Anfrage richtig einordnen\">\n      <div class=\"kc-context__inner\">\n        <div>\n          <p class=\"kc-context__kicker\">Briefing</p>\n          <h2>Ein paar klare Angaben reichen.</h2>\n        </div>\n        <div>\n          <p>Fuer eine erste Einschaetzung sind Projektart, Ort, Zeitraum und geplanter Einsatz am wichtigsten. Es macht einen Unterschied, ob Bilder fuer Verkauf, Website, Kampagne, Print, Portfolio oder eine interne Praesentation entstehen sollen.</p>\n          <p>Wenn noch nicht alles feststeht, ist das kein Problem. Aus wenigen Stichpunkten laesst sich klaeren, welche Bildsprache, welcher Umfang und welche Vorbereitung sinnvoll sind. So startet die Anfrage direkt mit einem brauchbaren Rahmen statt mit einem generischen Formular und die naechsten Schritte bleiben fuer beide Seiten klar.</p>\n        </div>\n      </div>\n    </section>\n\n    <section class=\"kc-direct\" data-header-theme=\"dark\" aria-label=\"Direkter Kontakt\">\n      <div class=\"kc-direct__inner\">\n        <div class=\"kc-card\">\n          <p class=\"kc-card__label\">E-Mail</p>\n          <a class=\"kc-card__value\" href=\"mailto:info@matthiasramahi.de\">info@matthiasramahi.de</a>\n          <span class=\"kc-card__sub\">Für Anfragen, Briefings, Angebote</span>\n          <button class=\"kc-copy\" type=\"button\" data-copy=\"info@matthiasramahi.de\">Kopieren</button>\n        </div>\n        <div class=\"kc-card\">\n          <p class=\"kc-card__label\">Telefon</p>\n          <a class=\"kc-card__value\" href=\"tel:+4917642449858\">+49 176 42449858</a>\n          <span class=\"kc-card__sub\">Mo – Sa · 10 – 19 Uhr</span>\n          <button class=\"kc-copy\" type=\"button\" data-copy=\"+49 176 42449858\">Kopieren</button>\n        </div>\n        <div class=\"kc-card\">\n          <p class=\"kc-card__label\">Standort</p>\n          <span class=\"kc-card__value\">Düsseldorf · NRW</span>\n          <span class=\"kc-card__sub\">Termine nach Vereinbarung</span>\n        </div>\n      </div>\n    </section>\n  </main>\n\n  ",
+    "afterFooterHtml": "\n\n  <script>\n    /* Copy-to-clipboard for the dark info-strip cards. Falls back to\n       window.location handlers if Clipboard API is unavailable. */\n    document.querySelectorAll('.kc-copy').forEach(function (btn) {\n      btn.addEventListener('click', async function () {\n        var value = btn.dataset.copy || '';\n        try {\n          await navigator.clipboard.writeText(value);\n          var prev = btn.textContent;\n          btn.textContent = 'Kopiert ✓';\n          btn.classList.add('is-done');\n          setTimeout(function () {\n            btn.textContent = prev || 'Kopieren';\n            btn.classList.remove('is-done');\n          }, 1600);\n        } catch (err) {\n          window.location.href = value.indexOf('@') > -1 ? 'mailto:' + value : 'tel:' + value.replace(/\\s+/g, '');\n        }\n      });\n    });\n  </script>\n  <script src=\"/assets/site-chrome.js\" defer></script>\n",
+    "bodyClass": "has-mr-footer",
+    "extractedHeadings": [
+      "Kontakt Matthias Ramahi Fotografie Düsseldorf",
+      "Ein paar klare Angaben reichen."
+    ],
+    "extractedImagePaths": [],
+    "extractedText": "Fuer eine erste Einschaetzung sind Projektart, Ort, Zeitraum und geplanter Einsatz am wichtigsten. Es macht einen Unterschied, ob Bilder fuer Verkauf, Website, Kampagne, Print, Portfolio oder eine interne Praesentation entstehen sollen.\n\nWenn noch nicht alles feststeht, ist das kein Problem. Aus wenigen Stichpunkten laesst sich klaeren, welche Bildsprache, welcher Umfang und welche Vorbereitung sinnvoll sind. So startet die Anfrage direkt mit einem brauchbaren Rahmen statt mit einem generischen Formular und die naechsten Schritte bleiben fuer beide Seiten klar."
+  },
+  "updatedAt": "2026-05-28T19:07:53.012Z",
+  "createdAt": "2026-05-28T19:07:31.075Z",
+  "status": "published",
+  "payloadId": "2"
+}

@@ -15,6 +15,7 @@ import { familyHeroCopy, familyVisualSlots, getFamilyVisualSourceDoc } from '../
 import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
 import { keywordFocusCopyForSlug } from '../../lib/localSeoFamilyContent'
 import { splitTrailingEmphasis } from '../../lib/splitTrailingEmphasis'
+import { tinaAttrs } from '../../lib/tinaFieldAttrs'
 
 type Props = {
   doc?: PayloadDoc | null
@@ -288,6 +289,17 @@ const heroCopy = familyHeroCopy(doc, visualDoc, {
 const heroSlidesJson = JSON.stringify([
   { image: heroBgDesktop, titleLines: heroCopy.titleLines, lead: heroCopy.lead },
 ])
+const heroVisualSource = doc?.heroPanels?.[0] || doc?.heroSlides?.[0] || visualDoc?.heroPanels?.[0] || visualDoc?.heroSlides?.[0]
+const heroTextSource = doc?.heroSlides?.[0] || visualDoc?.heroSlides?.[0] || doc
+const heroTitleField = (index: number) =>
+  heroTextSource === doc?.heroSlides?.[0] || heroTextSource === visualDoc?.heroSlides?.[0]
+    ? index === 0
+      ? 'headlineLine1'
+      : 'headlineLine2'
+    : index === 0
+      ? 'title'
+      : 'heroLine2'
+const heroLeadField = heroTextSource === doc?.heroSlides?.[0] || heroTextSource === visualDoc?.heroSlides?.[0] ? 'lead' : 'intro'
 
 const cityLinks = [
   ['oldtimer-fotografie-duesseldorf.html', 'Düsseldorf'],
@@ -333,7 +345,7 @@ const searchLinks = [
   noIndex={Boolean(preview)}
   title={metaTitle}
   description={metaDescription}
-  ogImage={heroBgDesktop}
+  ogImage={doc?.seo?.ogImage || heroBgDesktop}
   preloadImages={[
     { href: heroBgMobile, media: '(max-width: 900px)' },
     { href: heroBgDesktop, media: '(min-width: 901px)' },
@@ -355,23 +367,24 @@ const searchLinks = [
       data-header-theme="dark"
       aria-label={heroLabel}
       style={`--hero-bg-desktop:url('${heroBgDesktop}');--hero-bg-mobile:url('${heroBgMobile}')`}
+      {...tinaAttrs(heroVisualSource, 'image')}
     >
-      <div class="hero-bg" aria-hidden="true"></div>
-      <canvas id="hero-shader" aria-hidden="true" data-imgs={heroBgDesktop} data-slides={heroSlidesJson}></canvas>
+      <div class="hero-bg" aria-hidden="true" {...tinaAttrs(heroVisualSource, 'image')}></div>
+      <canvas id="hero-shader" aria-hidden="true" data-imgs={heroBgDesktop} data-slides={heroSlidesJson} {...tinaAttrs(heroVisualSource, 'image')}></canvas>
       <div class="hero-glow" aria-hidden="true"></div>
       <div class="hero-aperture" aria-hidden="true"></div>
       <div class="hero-grid">
         <div class="hero-stage">
           <h1 class="hero-title" id="hero-title" data-text-idx="0" aria-label={heroLabel}>
-            {heroCopy.titleLines.map((line) => (
-              <span class="line"><span class="word">{line}</span></span>
+            {heroCopy.titleLines.map((line, index) => (
+              <span class="line" {...tinaAttrs(heroTextSource, heroTitleField(index))}><span class="word">{line}</span></span>
             ))}
           </h1>
-          {heroLocalNote && <p class="hero-local-note">{heroLocalNote}</p>}
-          <p class="hero-lead" id="hero-lead">{heroCopy.lead}</p>
+          {heroLocalNote && <p class="hero-local-note" {...tinaAttrs(doc, 'heroLine2')}>{heroLocalNote}</p>}
+          <p class="hero-lead" id="hero-lead" {...tinaAttrs(heroTextSource, heroLeadField)}>{heroCopy.lead}</p>
           <div class="hero-actions" aria-label="Direkte Aktionen">
-            <a class="btn dark" href={heroCopy.primaryHref} data-hero-primary>{heroCopy.primaryLabel}</a>
-            <a class="btn" href={heroCopy.secondaryHref} data-hero-secondary>{heroCopy.secondaryLabel}</a>
+            <a class="btn dark" href={heroCopy.primaryHref} data-hero-primary {...tinaAttrs(heroTextSource, 'primaryLabel')}>{heroCopy.primaryLabel}</a>
+            <a class="btn" href={heroCopy.secondaryHref} data-hero-secondary {...tinaAttrs(heroTextSource, 'secondaryLabel')}>{heroCopy.secondaryLabel}</a>
           </div>
         </div>
       </div>
@@ -382,13 +395,13 @@ const searchLinks = [
       <div class="section-inner">
         <div>
           <h2>
-            {focusIntroTitle.headline}
+            <span {...tinaAttrs(doc?.statement, 'headline')}>{focusIntroTitle.headline}</span>
             {focusIntroTitle.headline && focusIntroTitle.emphasis ? ' ' : ''}
-            {focusIntroTitle.emphasis && <em>{focusIntroTitle.emphasis}</em>}
+            {focusIntroTitle.emphasis && <em {...tinaAttrs(doc?.statement, 'emphasis')}>{focusIntroTitle.emphasis}</em>}
           </h2>
         </div>
         <div class="st-body">
-          {focusIntroParagraphs.map((paragraph) => <p>{paragraph}</p>)}
+          {focusIntroParagraphs.map((paragraph, index) => <p {...tinaAttrs(doc?.statement?.body?.[index], 'text')}>{paragraph}</p>)}
           <a class="st-cta" href="#anfrage">Shooting buchen →</a>
         </div>
       </div>
@@ -397,15 +410,15 @@ const searchLinks = [
     <section class="pv" data-header-theme="dark">
       <div class="section-inner">
         <div class="pv-head">
-          <h2>{focusStoryHeadline} <em>{focusStoryEmphasis}</em></h2>
-          <p>{focusStoryLead}</p>
+          <h2><span {...tinaAttrs(doc?.focusSection, 'headline')}>{focusStoryHeadline}</span> <em {...tinaAttrs(doc?.focusSection, 'emphasis')}>{focusStoryEmphasis}</em></h2>
+          <p {...tinaAttrs(doc?.focusSection, 'lead')}>{focusStoryLead}</p>
         </div>
         <div class="pv-grid">
-          {focusStoryCards.map((card) => (
+          {focusStoryCards.map((card, index) => (
             <article class="pv-card">
-              <figure class="pv-img"><img loading="lazy" src={card.image} alt={card.alt} width={card.width} height={card.height} decoding="async" /></figure>
-              <h3>{card.title}</h3>
-              <p>{card.text}</p>
+              <figure class="pv-img"><img loading="lazy" src={card.image} alt={card.alt} width={card.width} height={card.height} decoding="async" {...tinaAttrs(doc?.shootingStyles?.[index], 'image')} /></figure>
+              <h3 {...tinaAttrs(doc?.shootingStyles?.[index], 'title')}>{card.title}</h3>
+              <p {...tinaAttrs(doc?.shootingStyles?.[index], 'text')}>{card.text}</p>
             </article>
           ))}
         </div>
@@ -415,12 +428,12 @@ const searchLinks = [
     <section class="po" data-header-theme="dark" aria-label="Ausgewählte Oldtimer-Arbeiten">
       <div class="po-grid" id="poGrid">
         <header class="po-head">
-          <h2>{focusPortfolioHeadline}</h2>
-          <p>{focusPortfolioLead}</p>
+          <h2 {...tinaAttrs(doc?.gallerySection, 'headline')}>{focusPortfolioHeadline}</h2>
+          <p {...tinaAttrs(doc?.gallerySection, 'lead')}>{focusPortfolioLead}</p>
         </header>
         {inheritedPortfolioTiles.map(([className, image, alt, width, height, full], index) => (
           <button type="button" class={`po-tile ${className}`} data-i={index} data-full={full} aria-label={`Bild ${index + 1} vergrößern`}>
-            <img data-src={image} src={image} data-full={full} loading="lazy" alt={alt} width={width} height={height} decoding="async" />
+            <img data-src={image} src={image} data-full={full} loading="lazy" alt={alt} width={width} height={height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[index], 'image')} />
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
           </button>
         ))}
@@ -430,12 +443,12 @@ const searchLinks = [
     <section class="fw" data-header-theme="light">
       <div class="section-inner">
         <div class="fw-head">
-          <h2>{focusAudienceHeadline}</h2>
-          <p class="lead">{focusAudienceLead}</p>
+          <h2 {...tinaAttrs(doc?.audienceSection, 'headline')}>{focusAudienceHeadline}</h2>
+          <p class="lead" {...tinaAttrs(doc?.audienceSection, 'lead')}>{focusAudienceLead}</p>
         </div>
         <div class="fw-grid">
-          {focusAudiences.map(([title, label]) => (
-            <a class="fw-card" href="#anfrage"><strong>{title}</strong><span class="lbl">{label}</span><span class="arrow" aria-hidden="true">→</span></a>
+          {focusAudiences.map(([title, label], index) => (
+            <a class="fw-card" href="#anfrage"><strong {...tinaAttrs(doc?.audienceCards?.[index], 'title')}>{title}</strong><span class="lbl" {...tinaAttrs(doc?.audienceCards?.[index], 'text')}>{label}</span><span class="arrow" aria-hidden="true">→</span></a>
           ))}
         </div>
         <div class="fw-foot">
@@ -449,14 +462,14 @@ const searchLinks = [
       <div class="section-inner">
         <div class="rl-head">
           <h2>Verwandte <em>Bereiche</em>.</h2>
-          <p>{focusRelatedLead}</p>
+          <p {...tinaAttrs(doc?.relatedSection, 'lead')}>{focusRelatedLead}</p>
         </div>
         <div class="rl-grid">
-          {inheritedRelatedAreas.map((area) => (
+          {inheritedRelatedAreas.map((area, index) => (
             <a class="rl-card" href={area.href}>
-              <img data-src={area.image} src={area.image} loading="lazy" alt={area.alt} width={area.width} height={area.height} decoding="async" />
+              <img data-src={area.image} src={area.image} loading="lazy" alt={area.alt} width={area.width} height={area.height} decoding="async" {...tinaAttrs(doc?.relatedSection?.items?.[index], 'image')} />
               <div class="overlay"></div>
-              <div class="content"><div><strong>{area.title}</strong></div><span class="arrow">→</span></div>
+              <div class="content"><div><strong {...tinaAttrs(doc?.relatedSection?.items?.[index], 'title')}>{area.title}</strong></div><span class="arrow">→</span></div>
             </a>
           ))}
         </div>
@@ -478,7 +491,7 @@ const searchLinks = [
           <h2>Oldtimer Fotografie <em>vor Ort.</em></h2>
         </div>
         <nav class="mr-cities__grid" aria-label="Städte">
-          {cityLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
+          {cityLinks.map(([href, label], index) => <a class="mr-cities__cell" href={href} {...tinaAttrs(doc?.locationLinksSection?.items?.[index], 'label')}>{label}</a>)}
         </nav>
       </div>
     </section>
@@ -489,7 +502,7 @@ const searchLinks = [
           <h2>Oldtimer Fotografie <em>Suchbegriffe.</em></h2>
         </div>
         <nav class="mr-cities__grid" aria-label="Suchvarianten">
-          {searchLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
+          {searchLinks.map(([href, label], index) => <a class="mr-cities__cell" href={href} {...tinaAttrs(doc?.searchLinksSection?.items?.[index], 'label')}>{label}</a>)}
         </nav>
       </div>
     </section>

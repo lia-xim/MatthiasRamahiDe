@@ -1,14 +1,17 @@
 ---
 import ResponsiveImage from './ResponsiveImage.astro'
 import { linkAttributes, type PayloadMedia } from '../lib/payload'
+import { tinaAttrs } from '../lib/tinaFieldAttrs'
 
-type RichText = {
-  root?: {
-    children?: Array<{
-      children?: Array<{ text?: string }>
-    }>
-  }
-}
+type RichText =
+  | string
+  | {
+      root?: {
+        children?: Array<{
+          children?: Array<{ text?: string }>
+        }>
+      }
+    }
 
 type ImageSequenceItem = {
   image?: PayloadMedia | string
@@ -29,20 +32,25 @@ type ContentBlock =
 
 const { blocks = [] } = Astro.props as { blocks?: ContentBlock[] }
 
-const richTextToPlainText = (body?: RichText) =>
-  body?.root?.children
+const richTextToPlainText = (body?: RichText) => {
+  if (typeof body === 'string') return body
+
+  return (
+    body?.root?.children
     ?.map((node) => node.children?.map((child) => child.text).filter(Boolean).join(' ') || '')
     .filter(Boolean)
     .join('\n\n') || ''
+  )
+}
 ---
 {
   blocks.map((block: ContentBlock) => {
     if (block.blockType === 'textBlock') {
       return (
         <section class="container" style="padding: clamp(58px, 8vw, 120px) 0;">
-          {block.eyebrow && <p class="eyebrow">{block.eyebrow}</p>}
-          {block.headline && <h2 class="display" style="font-size: clamp(42px, 8vw, 124px); margin: 14px 0 24px;">{block.headline}</h2>}
-          <p class="copy" style="max-width: 62rem; font-size: clamp(18px, 1.8vw, 24px); white-space: pre-line;">{richTextToPlainText(block.body)}</p>
+          {block.eyebrow && <p class="eyebrow" {...tinaAttrs(block, 'eyebrow')}>{block.eyebrow}</p>}
+          {block.headline && <h2 class="display" style="font-size: clamp(42px, 8vw, 124px); margin: 14px 0 24px;" {...tinaAttrs(block, 'headline')}>{block.headline}</h2>}
+          <p class="copy" style="max-width: 62rem; font-size: clamp(18px, 1.8vw, 24px); white-space: pre-line;" {...tinaAttrs(block, 'body')}>{richTextToPlainText(block.body)}</p>
         </section>
       )
     }
@@ -50,12 +58,12 @@ const richTextToPlainText = (body?: RichText) =>
     if (block.blockType === 'imageSequence') {
       return (
         <section class="container" style="padding: clamp(42px, 6vw, 96px) 0;">
-          {block.headline && <p class="eyebrow" style="margin-bottom: 18px;">{block.headline}</p>}
+          {block.headline && <p class="eyebrow" style="margin-bottom: 18px;" {...tinaAttrs(block, 'headline')}>{block.headline}</p>}
           <div class="card-grid">
             {(block.items ?? []).map((item: ImageSequenceItem) => (
               <article class="card" style="padding: 0; min-height: 0;">
-                <ResponsiveImage media={item.image} size="card" fallback="Bild aus CMS" />
-                {item.caption && <p class="copy" style="padding: 18px;">{item.caption}</p>}
+                <ResponsiveImage media={item.image} size="card" fallback="Bild aus CMS" tinaFieldSource={item} tinaFieldName="image" />
+                {item.caption && <p class="copy" style="padding: 18px;" {...tinaAttrs(item, 'caption')}>{item.caption}</p>}
               </article>
             ))}
           </div>
@@ -66,8 +74,8 @@ const richTextToPlainText = (body?: RichText) =>
     if (block.blockType === 'quoteBlock') {
       return (
         <section class="container" style="padding: clamp(64px, 10vw, 150px) 0;">
-          <blockquote class="display" style="font-size: clamp(40px, 7vw, 112px); margin: 0;">„{block.quote}“</blockquote>
-          {block.attribution && <p class="eyebrow" style="margin-top: 20px;">{block.attribution}</p>}
+          <blockquote class="display" style="font-size: clamp(40px, 7vw, 112px); margin: 0;" {...tinaAttrs(block, 'quote')}>„{block.quote}“</blockquote>
+          {block.attribution && <p class="eyebrow" style="margin-top: 20px;" {...tinaAttrs(block, 'attribution')}>{block.attribution}</p>}
         </section>
       )
     }
@@ -75,12 +83,12 @@ const richTextToPlainText = (body?: RichText) =>
     if (block.blockType === 'faqBlock') {
       return (
         <section class="container" style="padding: clamp(54px, 8vw, 120px) 0;">
-          {block.headline && <h2 class="display" style="font-size: clamp(38px, 6vw, 96px); margin: 0 0 28px;">{block.headline}</h2>}
+          {block.headline && <h2 class="display" style="font-size: clamp(38px, 6vw, 96px); margin: 0 0 28px;" {...tinaAttrs(block, 'headline')}>{block.headline}</h2>}
           <div class="stack-list">
             {(block.items ?? []).map((item: FaqItem) => (
               <article class="stack-item">
-                <h3>{item.question}</h3>
-                <p class="copy">{item.answer}</p>
+                <h3 {...tinaAttrs(item, 'question')}>{item.question}</h3>
+                <p class="copy" {...tinaAttrs(item, 'answer')}>{item.answer}</p>
               </article>
             ))}
           </div>
@@ -91,12 +99,12 @@ const richTextToPlainText = (body?: RichText) =>
     if (block.blockType === 'linkList') {
       return (
         <section class="container" style="padding: clamp(54px, 8vw, 120px) 0;">
-          {block.headline && <p class="eyebrow" style="margin-bottom: 18px;">{block.headline}</p>}
+          {block.headline && <p class="eyebrow" style="margin-bottom: 18px;" {...tinaAttrs(block, 'headline')}>{block.headline}</p>}
           <div class="stack-list">
             {(block.links ?? []).map((link: LinkItem) => (
               <a class="stack-item" {...linkAttributes(link)}>
-                <h3>{link.label}</h3>
-                {link.description && <p class="copy">{link.description}</p>}
+                <h3 {...tinaAttrs(link, 'label')}>{link.label}</h3>
+                {link.description && <p class="copy" {...tinaAttrs(link, 'description')}>{link.description}</p>}
               </a>
             ))}
           </div>
@@ -109,9 +117,9 @@ const richTextToPlainText = (body?: RichText) =>
         <section class="container" style="padding: clamp(54px, 8vw, 120px) 0;">
           <div class="card" style="background: var(--paper); color: var(--paper-ink); min-height: 320px;">
             <p class="eyebrow" style="color: color-mix(in oklch, var(--paper-ink) 58%, transparent);">Anfrage</p>
-            <h2 class="display" style="font-size: clamp(42px, 7vw, 116px); margin: 12px 0 24px;">{block.headline}</h2>
-            {block.text && <p class="copy" style="color: color-mix(in oklch, var(--paper-ink) 64%, transparent); max-width: 48rem;">{block.text}</p>}
-            <a class="button is-accent" style="width: max-content; margin-top: 28px;" href="/contact.html#anfrage">{block.buttonLabel || 'Projekt anfragen'}</a>
+            <h2 class="display" style="font-size: clamp(42px, 7vw, 116px); margin: 12px 0 24px;" {...tinaAttrs(block, 'headline')}>{block.headline}</h2>
+            {block.text && <p class="copy" style="color: color-mix(in oklch, var(--paper-ink) 64%, transparent); max-width: 48rem;" {...tinaAttrs(block, 'text')}>{block.text}</p>}
+            <a class="button is-accent" style="width: max-content; margin-top: 28px;" href="/contact.html#anfrage" {...tinaAttrs(block, 'buttonLabel')}>{block.buttonLabel || 'Projekt anfragen'}</a>
             <p class="copy" style="margin-top: 14px; color: color-mix(in oklch, var(--paper-ink) 58%, transparent);">Unverbindlich. Antwort meist innerhalb von 24 Stunden.</p>
           </div>
         </section>

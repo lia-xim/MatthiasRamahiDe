@@ -1,5 +1,6 @@
 ---
 import { imageAlt, imageDimensions, imageDisplayUrl, imageObjectPosition, imageSrcset } from '../lib/payload'
+import { tinaAttrs } from '../lib/tinaFieldAttrs'
 
 const {
   media,
@@ -9,6 +10,9 @@ const {
   sizes = '(max-width: 760px) 100vw, 50vw',
   loading = 'lazy',
   mapCachedAssets = true,
+  tinaFieldSource,
+  tinaFieldName,
+  tinaFieldIndex,
 } = Astro.props
 const mediaOptions = { mapCachedAssets }
 const src = imageDisplayUrl(media, size, mediaOptions)
@@ -27,6 +31,7 @@ const imageStyle = [
 ]
   .filter(Boolean)
   .join('; ')
+const editorAttrs = tinaAttrs(tinaFieldSource, tinaFieldName, tinaFieldIndex)
 ---
 {src ? (
   <picture>
@@ -45,8 +50,9 @@ const imageStyle = [
       decoding="async"
       fetchpriority={loading === 'eager' ? 'high' : undefined}
       style={imageStyle || undefined}
+      {...editorAttrs}
     />
   </picture>
 ) : (
-  <div class={`image-placeholder ${className}`}>{fallback}</div>
+  <div class={`image-placeholder ${className}`} {...editorAttrs}>{fallback}</div>
 )}

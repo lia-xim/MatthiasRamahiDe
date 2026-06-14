@@ -1,12 +1,16 @@
 ---
 import { getFooter, getGlobalCtas, liveCmsFetchOptions, type PayloadCta } from '../lib/payload'
 import { versionStaticAssetUrl } from '../lib/cache'
+import { tinaAttrs } from '../lib/tinaFieldAttrs'
 
 const { cta, liveCms = false } = Astro.props as { cta?: PayloadCta; liveCms?: boolean }
 const fetchOptions = liveCms ? liveCmsFetchOptions() : {}
 const [globalCtas, footer] = await Promise.all([getGlobalCtas(fetchOptions), getFooter(fetchOptions)])
 const module = globalCtas?.contactModule || {}
 const email = footer?.email || 'info@matthiasramahi.de'
+const headlineSource = cta?.headline ? cta : module
+const textSource = cta?.text ? cta : module
+const buttonSource = cta?.buttonLabel ? cta : module
 const headline = cta?.headline || module.headline || 'Projekt anfragen.'
 const text =
   cta?.text ||
@@ -18,16 +22,16 @@ const subject = cta?.emailSubject || module.emailSubject || 'Projektanfrage'
 <section class="contact-cta" id="anfrage">
   <div class="container contact-cta__inner">
     <div>
-      <p class="eyebrow">{module.eyebrow || 'Anfrage'}</p>
-      <h2 class="display">{headline}</h2>
-      <p class="copy">{text}</p>
+      <p class="eyebrow" {...tinaAttrs(module, 'eyebrow')}>{module.eyebrow || 'Anfrage'}</p>
+      <h2 class="display" {...tinaAttrs(headlineSource, 'headline')}>{headline}</h2>
+      <p class="copy" {...tinaAttrs(textSource, 'text')}>{text}</p>
       <ul class="contact-cta__proof" aria-label="Anfrage Vorteile">
         <li>Unverbindliche Erstklaerung</li>
         <li>Kein Paket-Zwang</li>
         <li>Direkt mit Matthias</li>
       </ul>
       {/* Briefing cards (Was reicht / Was klaeren wir / Naechster Schritt) removed 2026-05-27 */}
-      <a class="contact-cta__mail" href={`mailto:${email}?subject=${encodeURIComponent(subject)}`}>{email}</a>
+      <a class="contact-cta__mail" href={`mailto:${email}?subject=${encodeURIComponent(subject)}`} {...tinaAttrs(footer, 'email')}>{email}</a>
     </div>
     <form class="contact-cta__form" data-mailto={email} data-subject={subject} data-endpoint="/api/contact" novalidate>
       <div class="contact-cta__trap" aria-hidden="true">
@@ -46,6 +50,22 @@ const subject = cta?.emailSubject || module.emailSubject || 'Projektanfrage'
           <input name="contact" type="email" autocomplete="email" inputmode="email" required />
         </label>
       </div>
+      <label>
+        <span>Leistung <em>Optional</em></span>
+        <select name="projectType">
+          <option value="">Noch offen</option>
+          <option>Automobil-Fotografie</option>
+          <option>Sportwagen-Fotografie</option>
+          <option>Oldtimer-Fotografie</option>
+          <option>Motorrad-Fotografie</option>
+          <option>Portrait-Fotografie</option>
+          <option>Landschaft / Fine Art Print</option>
+          <option>Videografie</option>
+          <option>Webdesign / SEO</option>
+          <option>Werbetechnik / Druck</option>
+          <option>Sonstiges</option>
+        </select>
+      </label>
       <label>
         <span>Projekt kurz beschreiben <em>Optional</em></span>
         <textarea name="message" placeholder="Leistung, Ort, Zeitraum und gewuenschte Wirkung — optional, ein, zwei Stichpunkte reichen."></textarea>
@@ -89,7 +109,7 @@ const subject = cta?.emailSubject || module.emailSubject || 'Projektanfrage'
         </span>
       </label>
       <div class="contact-cta__actions">
-        <button class="button is-accent" type="submit">{buttonLabel}</button>
+        <button class="button is-accent" type="submit" {...tinaAttrs(buttonSource, 'buttonLabel')}>{buttonLabel}</button>
         <p class="contact-cta__reassurance">Unverbindlich. Antwort meist innerhalb von 24 Stunden.</p>
         <p class="contact-cta__status" role="status" aria-live="polite"></p>
       </div>

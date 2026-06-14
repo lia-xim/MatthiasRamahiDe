@@ -1,0 +1,80 @@
+{
+  "title": "Portfolio-Auswahl Portrait",
+  "slug": "portfolio-auswahl-portrait",
+  "featured": false,
+  "sortOrder": 100,
+  "publishedAt": "2026-05-28T19:07:35.665Z",
+  "category": "content/portfolio-categories/portrait.json",
+  "excerpt": "Die Person, im Licht.",
+  "coverImage": "/uploads/payload/_DSC0470-Enhanced-NR-2.webp",
+  "gallery": [
+    {
+      "image": "/uploads/payload/_DSC0470-Enhanced-NR-2.webp",
+      "caption": "Portrait",
+      "role": "sequence"
+    },
+    {
+      "image": "/uploads/payload/_DSC9301-Enhanced-NR.webp",
+      "caption": "Portrait",
+      "role": "sequence"
+    },
+    {
+      "image": "/uploads/payload/20250327-DSC01550-2.webp",
+      "caption": "Portrait",
+      "role": "sequence"
+    },
+    {
+      "image": "/uploads/payload/_DSC9321-Enhanced-NR-2.webp",
+      "caption": "Portrait",
+      "role": "sequence"
+    }
+  ],
+  "heroSlides": [],
+  "projectPage": {
+    "statement": {
+      "stats": []
+    },
+    "context": {
+      "body": []
+    },
+    "perspectives": [],
+    "infoCards": [],
+    "relatedCards": [],
+    "contact": {}
+  },
+  "presentationMode": "floating-archive",
+  "cta": {},
+  "seo": {
+    "title": "Portrait Portfolio-Auswahl | Matthias Ramahi Fotografie",
+    "description": "Portfolio-Auswahl Portrait: kuratierte Bildstrecke mit Licht, Details, Perspektive und visueller Produktion von Matthias Ramahi in Duesseldorf / NRW.",
+    "secondaryKeywords": [],
+    "internalLinkAnchors": [],
+    "canonicalUrl": "https://matthiasramahi.de/portfolio/portfolio-auswahl-portrait",
+    "legacyUrl": "portfolio.html",
+    "ogImage": "/uploads/payload/_DSC0470-Enhanced-NR-2.webp",
+    "noIndex": false,
+    "focusKeyword": "Portrait Portfolio-Auswahl",
+    "searchIntent": "Referenzprüfung: Nutzer möchten Bildstil, Qualität und Einsatzmöglichkeiten der Serie Portrait Portfolio-Auswahl einschätzen."
+  },
+  "legacy": {
+    "sourceFile": "portfolio.html",
+    "sourceUrl": "https://matthiasramahi.de/portfolio.html",
+    "migrationStatus": "reviewed",
+    "renderSource": "structured-blocks",
+    "extractedHeadings": [
+      "Die Person, im Licht."
+    ],
+    "extractedImagePaths": [
+      "assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp",
+      "assets/portfolio/thumbs/_DSC9301-Enhanced-NR.webp",
+      "assets/portfolio/thumbs/20250327-DSC01550.webp",
+      "assets/portfolio/thumbs/_DSC9321-Enhanced-NR.webp"
+    ],
+    "extractedText": "01 / Portrait Die Person, im Licht. Zur Portraitfotografie →"
+  },
+  "updatedAt": "2026-05-28T19:45:26.097Z",
+  "createdAt": "2026-05-28T19:07:35.678Z",
+  "status": "published",
+  "blocks": [],
+  "payloadId": "1"
+}

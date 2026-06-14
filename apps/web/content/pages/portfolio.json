@@ -1,0 +1,656 @@
+{
+  "title": "Portfolio Bildarchiv.",
+  "slug": "portfolio",
+  "pageType": "portfolio-index",
+  "intro": "Sechs Genres — kuratiert, nicht gefiltert.",
+  "heroImage": "/uploads/payload/assets-portfolio-dsc3879-1920.webp",
+  "teaserImage": "/uploads/payload/assets-portfolio-dsc3879-1920.webp",
+  "heroSlides": [
+    {
+      "image": "/uploads/payload/_DSC2766%20(1).webp",
+      "headlineLine1": "Portfolio",
+      "headlineLine2": "Bildarchiv",
+      "lead": "Serien aus Portrait, Automobil, Sportwagen, Oldtimer, Motorrad und Landschaft als eigener Einstieg ins Bildarchiv.",
+      "durationSec": 7,
+      "primaryLabel": "Archiv ansehen",
+      "primaryHref": "#archive",
+      "secondaryLabel": "Projekt anfragen",
+      "secondaryHref": "#anfrage"
+    },
+    {
+      "image": "/uploads/payload/_DSC2110.webp",
+      "headlineLine1": "Sportwagen",
+      "headlineLine2": "Details",
+      "lead": "Form, Reflexion und Linie in ruhigen Serien fuer Marke, Verkauf und Sammlung.",
+      "durationSec": 7,
+      "primaryLabel": "Serie ansehen",
+      "primaryHref": "#sport",
+      "secondaryLabel": "Zum Archiv",
+      "secondaryHref": "#archive"
+    },
+    {
+      "image": "/uploads/payload/_DSC2587.webp",
+      "headlineLine1": "Oldtimer",
+      "headlineLine2": "Charakter",
+      "lead": "Material, Patina und Geschichte als Bildstrecke mit kontrolliertem Licht.",
+      "durationSec": 7,
+      "primaryLabel": "Serie ansehen",
+      "primaryHref": "#classic",
+      "secondaryLabel": "Anfragen",
+      "secondaryHref": "#anfrage"
+    },
+    {
+      "image": "/uploads/payload/assets-photos-motorrad-ninja-road-1921.webp",
+      "headlineLine1": "Motorrad",
+      "headlineLine2": "Mechanik",
+      "lead": "Die Leidenschaft auf Bildern. In Seitenlage oder beim Posen. Alles ist möglich.",
+      "durationSec": 7,
+      "primaryLabel": "Serie ansehen",
+      "primaryHref": "#moto",
+      "secondaryLabel": "Zum Archiv",
+      "secondaryHref": "#archive"
+    },
+    {
+      "image": "/uploads/payload/20250424-DSC023872.webp",
+      "headlineLine1": "Landschaft",
+      "headlineLine2": "Edition",
+      "lead": "Ruhige Landschaftsmotive fuer Fine-Art, Wandbild und grossformatige Praesentation.",
+      "durationSec": 7,
+      "primaryLabel": "Serie ansehen",
+      "primaryHref": "#land",
+      "secondaryLabel": "Zum Archiv",
+      "secondaryHref": "#archive"
+    }
+  ],
+  "homeStatement": {
+    "body": []
+  },
+  "homeChapters": {
+    "items": []
+  },
+  "homeSelectedWorks": {},
+  "homeAbout": {
+    "body": []
+  },
+  "homeServices": {
+    "items": []
+  },
+  "homeJournal": {
+    "items": []
+  },
+  "aboutHero": {
+    "primaryHref": "",
+    "secondaryHref": ""
+  },
+  "aboutStatement": {
+    "primaryHref": "",
+    "secondaryHref": ""
+  },
+  "aboutChapters": {
+    "items": []
+  },
+  "aboutSister": {
+    "href": "",
+    "plate": {
+      "roles": []
+    }
+  },
+  "aboutContact": {},
+  "photographyIndex": {
+    "clusterIntro": [],
+    "topics": []
+  },
+  "portfolioIndex": {
+    "contextKicker": "Einordnung",
+    "contextHeadline": "Fotografie Themen",
+    "contextBody": [
+      {
+        "text": "Das Portfolio ist nach Themen aufgebaut: Portrait, Automobil, Sportwagen, Oldtimer, Motorrad und Landschaft. Jede Strecke zeigt nicht nur ein einzelnes Motiv, sondern die visuelle Geschichte dahinter: Einstieg, Detail, Material, Atmosphaere und ein ruhiges Schlussbild."
+      },
+      {
+        "text": "So wird schneller sichtbar, welche Bildsprache fuer Verkauf, Marke, Sammlung, Website, Print oder redaktionelle Nutzung passt."
+      }
+    ],
+    "slices": [
+      {
+        "anchor": "portrait",
+        "label": "Portrait",
+        "heading": "Portrait",
+        "theme": "light",
+        "linkLabel": "Zur Portraitfotografie →",
+        "href": "/portraitfotografie-duesseldorf.html",
+        "photos": [
+          {
+            "image": "/uploads/payload/_DSC9301-Enhanced-NR.webp",
+            "fullImage": "/uploads/payload/_DSC9301-Enhanced-NR.webp",
+            "caption": "Portrait",
+            "href": "/assets/portfolio/_DSC9301-Enhanced-NR.webp"
+          },
+          {
+            "image": "/uploads/payload/20250327-DSC01550-2.webp",
+            "fullImage": "/uploads/payload/20250327-DSC01550-2.webp",
+            "caption": "Portrait",
+            "href": "/assets/optimized/assets-portfolio-20250327-dsc01550-1920.webp"
+          },
+          {
+            "image": "/uploads/payload/_DSC9321-Enhanced-NR-2.webp",
+            "fullImage": "/uploads/payload/_DSC9321-Enhanced-NR-2.webp",
+            "caption": "Portrait",
+            "href": "/assets/portfolio/_DSC9321-Enhanced-NR.webp"
+          },
+          {
+            "image": "/uploads/payload/_DSC0470-Enhanced-NR-2.webp",
+            "fullImage": "/uploads/payload/_DSC0470-Enhanced-NR-2.webp",
+            "caption": "Portrait",
+            "href": "/assets/portfolio/_DSC0470-Enhanced-NR.webp"
+          }
+        ]
+      },
+      {
+        "anchor": "auto",
+        "label": "Automobil",
+        "heading": "Automobil",
+        "theme": "dark",
+        "linkLabel": "Zur Automobilfotografie →",
+        "href": "/automobil-fotografie-duesseldorf.html",
+        "photos": [
+          {
+            "image": "/uploads/payload/_DSC2788%20(1)-1.webp",
+            "fullImage": "/uploads/payload/_DSC2788%20(1)-1.webp",
+            "caption": "Automobil",
+            "href": "/assets/optimized/assets-photos-automobil-neon-1920.webp"
+          },
+          {
+            "image": "/uploads/payload/_DSC3982.webp",
+            "fullImage": "/uploads/payload/assets-portfolio-dsc3982-1920.webp",
+            "caption": "Automobil",
+            "href": "/assets/optimized/assets-portfolio-dsc3982-1920.webp"
+          },
+          {
+            "image": "/uploads/payload/_DSC2983.webp",
+            "fullImage": "/uploads/payload/_DSC2983.webp",
+            "caption": "Automobil",
+            "href": "/assets/optimized/assets-portfolio-dsc3878-1920.webp"
+          },
+          {
+            "image": "/uploads/payload/20250312-DSC00743.webp",
+            "fullImage": "/uploads/payload/20250312-DSC00743.webp",
+            "caption": "Automobil",
+            "href": "/assets/optimized/assets-portfolio-dsc3908-1920.webp"
+          }
+        ]
+      },
+      {
+        "anchor": "sport",
+        "label": "Sportwagen",
+        "heading": "Sportwagen",
+        "theme": "light",
+        "linkLabel": "Zur Sportwagenfotografie →",
+        "href": "/sportwagen-fotografie-duesseldorf.html",
+        "photos": [
+          {
+            "image": "/uploads/payload/_DSC2108.webp",
+            "fullImage": "/uploads/payload/_DSC2108.webp",
+            "caption": "Sportwagen",
+            "href": "/assets/optimized/assets-portfolio-dsc2310-1920.webp"
+          },
+          {
+            "image": "/uploads/payload/_DSC2316-2.webp",
+            "fullImage": "/uploads/payload/assets-portfolio-dsc2316-1920.webp",
+            "caption": "Sportwagen",
+            "href": "/assets/optimized/assets-portfolio-dsc2316-1920.webp"
+          },
+          {
+            "image": "/uploads/payload/20250423-DSC02252.webp",
+            "fullImage": "/uploads/payload/20250423-DSC02252.webp",
+            "caption": "Sportwagen",
+            "href": "/assets/optimized/assets-portfolio-dsc2345-1920.webp"
+          },
+          {
+            "image": "/uploads/payload/_DSC2358-2.webp",
+            "fullImage": "/uploads/payload/_DSC2358-2.webp",
+            "caption": "Sportwagen",
+            "href": "/assets/optimized/assets-portfolio-dsc2358-1920.webp"
+          }
+        ]
+      },
+      {
+        "anchor": "classic",
+        "label": "Oldtimer",
+        "heading": "Oldtimer",
+        "theme": "dark",
+        "linkLabel": "Zur Oldtimerfotografie →",
+        "href": "/oldtimer-fotografie-duesseldorf.html",
+        "photos": [
+          {
+            "image": "/uploads/payload/_DSC2310-1.webp",
+            "fullImage": "/uploads/payload/_DSC2310-1.webp",
+            "caption": "Oldtimer",
+            "href": "/assets/optimized/assets-portfolio-dsc3892-1920.webp"
+          },
+          {
+            "image": "/uploads/payload/_DSC3804.webp",
+            "fullImage": "/uploads/payload/_DSC3804.webp",
+            "caption": "Oldtimer",
+            "href": "/assets/optimized/assets-portfolio-dsc2986-1920.webp"
+          },
+          {
+            "image": "/uploads/payload/_DSC3840.webp",
+            "fullImage": "/uploads/payload/_DSC3840.webp",
+            "caption": "Karosserie",
+            "href": "/assets/optimized/assets-portfolio-dsc3032-generase-1-1920.webp"
+          },
+          {
+            "image": "/uploads/payload/20250423-DSC021802%20-%20Kopie%20-%20Kopie.webp",
+            "fullImage": "/uploads/payload/20250423-DSC02180.webp",
+            "caption": "Karosserie",
+            "href": "/assets/optimized/assets-portfolio-dsc3032-generase-2-1920.webp"
+          }
+        ]
+      },
+      {
+        "anchor": "moto",
+        "label": "Motorrad",
+        "heading": "Motorrad",
+        "theme": "light",
+        "linkLabel": "Zur Motorradfotografie →",
+        "href": "/motorrad-fotografie-duesseldorf.html",
+        "photos": [
+          {
+            "image": "/uploads/payload/assets-photos-motorrad-duke-1921.webp",
+            "fullImage": "/uploads/payload/assets-photos-motorrad-duke-1921.webp",
+            "caption": "Motorrad",
+            "href": "/assets/optimized/assets-photos-motorrad-duke-1920.webp"
+          },
+          {
+            "image": "/uploads/payload/assets-photos-motorrad-ninja-road-1921.webp",
+            "fullImage": "/uploads/payload/assets-photos-motorrad-ninja-road-1921.webp",
+            "caption": "Motorrad",
+            "href": "/assets/optimized/assets-photos-motorrad-ninja-road-1920.webp"
+          },
+          {
+            "image": "/uploads/payload/assets-photos-motorrad-960.webp",
+            "fullImage": "/uploads/payload/assets-photos-motorrad-960.webp",
+            "caption": "Detail",
+            "href": "/assets/optimized/assets-portfolio-dsc6982-1920.webp"
+          },
+          {
+            "image": "/uploads/payload/20250209-DSC00706.webp",
+            "fullImage": "/uploads/payload/20250209-DSC00706.webp",
+            "caption": "Detail",
+            "href": "/assets/optimized/assets-portfolio-dsc8032-1920.webp"
+          }
+        ]
+      },
+      {
+        "anchor": "land",
+        "label": "Landschaft",
+        "heading": "Landschaft",
+        "theme": "dark",
+        "linkLabel": "Zur Landschaftsfotografie →",
+        "href": "/landschaftsfotografie-duesseldorf.html",
+        "photos": [
+          {
+            "image": "/uploads/payload/Wettberwerb_Foto5_Wunder_der_Natur2-1.webp",
+            "fullImage": "/uploads/payload/Wettberwerb_Foto5_Wunder_der_Natur2-1.webp",
+            "caption": "Landschaft",
+            "href": "/assets/optimized/assets-portfolio-wettberwerb-foto5-wunder-der-natur2-1920.webp"
+          },
+          {
+            "image": "/uploads/payload/Wettberwerb_Foto6_Wunder_der_Natur-1.webp",
+            "fullImage": "/uploads/payload/Wettberwerb_Foto6_Wunder_der_Natur-1.webp",
+            "caption": "Landschaft",
+            "href": "/assets/optimized/assets-portfolio-wettberwerb-foto6-wunder-der-natur-1920.webp"
+          },
+          {
+            "image": "/uploads/payload/20250605-DSC03756-2.webp",
+            "fullImage": "/uploads/payload/20250605-DSC03756-2.webp",
+            "caption": "Landschaft",
+            "href": "/assets/optimized/assets-portfolio-20250605-dsc03756-1920.webp"
+          },
+          {
+            "image": "/uploads/payload/20250605-DSC04020-2.webp",
+            "fullImage": "/uploads/payload/20250605-DSC04020-2.webp",
+            "caption": "Landschaft",
+            "href": "/assets/optimized/assets-portfolio-20250605-dsc04020-1920.webp"
+          }
+        ]
+      }
+    ],
+    "archive": {
+      "headline": "Bildarchiv",
+      "batchSize": 12,
+      "items": [
+        {
+          "image": "/uploads/payload/_DSC9321-Enhanced-NR-2.webp",
+          "fullImage": "/uploads/payload/_DSC9321-Enhanced-NR-2.webp",
+          "caption": "Portrait",
+          "href": "/assets/portfolio/_DSC9321-Enhanced-NR.webp"
+        },
+        {
+          "image": "/uploads/payload/_DSC3879.webp",
+          "fullImage": "/uploads/payload/assets-portfolio-dsc3879-1920.webp",
+          "caption": "Detail",
+          "href": "/assets/optimized/assets-portfolio-dsc3879-1920.webp"
+        },
+        {
+          "image": "/uploads/payload/20250605-DSC03978-2.webp",
+          "fullImage": "/uploads/payload/20250605-DSC03978-2.webp",
+          "caption": "Panorama",
+          "href": "/assets/optimized/assets-portfolio-20250605-dsc03978-1920.webp"
+        },
+        {
+          "image": "/uploads/payload/_DSC3982.webp",
+          "fullImage": "/uploads/payload/assets-portfolio-dsc3982-1920.webp",
+          "caption": "Detail",
+          "href": "/assets/optimized/assets-portfolio-dsc3982-1920.webp"
+        },
+        {
+          "image": "/uploads/payload/_DSC9301-Enhanced-NR.webp",
+          "fullImage": "/uploads/payload/_DSC9301-Enhanced-NR.webp",
+          "caption": "Portrait",
+          "href": "/assets/portfolio/_DSC9301-Enhanced-NR.webp"
+        },
+        {
+          "image": "/uploads/payload/_DSC2310-2.webp",
+          "fullImage": "/uploads/payload/assets-portfolio-dsc2310-1920.webp",
+          "caption": "Sportwagen",
+          "href": "/assets/optimized/assets-portfolio-dsc2310-1920.webp"
+        },
+        {
+          "image": "/uploads/payload/_DSC2316-2.webp",
+          "fullImage": "/uploads/payload/assets-portfolio-dsc2316-1920.webp",
+          "caption": "Sportwagen",
+          "href": "/assets/optimized/assets-portfolio-dsc2316-1920.webp"
+        },
+        {
+          "image": "/uploads/payload/_DSC2329-2.webp",
+          "fullImage": "/uploads/payload/_DSC2329-2.webp",
+          "caption": "Sportwagen",
+          "href": "/assets/optimized/assets-portfolio-dsc2329-1920.webp"
+        },
+        {
+          "image": "/uploads/payload/_DSC2345-2.webp",
+          "fullImage": "/uploads/payload/_DSC2345-2.webp",
+          "caption": "Sportwagen",
+          "href": "/assets/optimized/assets-portfolio-dsc2345-1920.webp"
+        },
+        {
+          "image": "/uploads/payload/_DSC2358-2.webp",
+          "fullImage": "/uploads/payload/_DSC2358-2.webp",
+          "caption": "Sportwagen",
+          "href": "/assets/optimized/assets-portfolio-dsc2358-1920.webp"
+        },
+        {
+          "image": "/uploads/payload/assets-photos-oldtimer-stage-1920.webp",
+          "fullImage": "/uploads/payload/assets-photos-oldtimer-stage-1920.webp",
+          "caption": "Oldtimer",
+          "href": "/assets/optimized/assets-photos-oldtimer-stage-1920.webp"
+        },
+        {
+          "image": "/uploads/payload/_DSC3892-2.webp",
+          "fullImage": "/uploads/payload/assets-portfolio-dsc3892-1920.webp",
+          "caption": "Oldtimer",
+          "href": "/assets/optimized/assets-portfolio-dsc3892-1920.webp"
+        },
+        {
+          "image": "/uploads/payload/_DSC2986-2.webp",
+          "fullImage": "/uploads/payload/assets-portfolio-dsc2986-1921.webp",
+          "caption": "Oldtimer",
+          "href": "/assets/optimized/assets-portfolio-dsc2986-1920.webp"
+        },
+        {
+          "image": "/uploads/payload/_DSC3032_genErase%20(2)-2.webp",
+          "fullImage": "/uploads/payload/_DSC3032_genErase%20(2)-2.webp",
+          "caption": "Karosserie",
+          "href": "/assets/optimized/assets-portfolio-dsc3032-generase-2-1920.webp"
+        },
+        {
+          "image": "/uploads/payload/_DSC2876_genErase%20(1)-2.webp",
+          "fullImage": "/uploads/payload/_DSC2876_genErase%20(1)-2.webp",
+          "caption": "Detail",
+          "href": "/assets/optimized/assets-portfolio-dsc2876-generase-1-1920.webp"
+        },
+        {
+          "image": "/uploads/payload/_DSC2861%20(1)-2.webp",
+          "fullImage": "/uploads/payload/_DSC2861%20(1)-2.webp",
+          "caption": "Detail",
+          "href": "/assets/optimized/assets-portfolio-dsc2861-1-1920.webp"
+        },
+        {
+          "image": "/uploads/payload/_DSC2788%20(1)-2.webp",
+          "fullImage": "/uploads/payload/_DSC2788%20(1)-2.webp",
+          "caption": "Detail",
+          "href": "/assets/optimized/assets-portfolio-dsc2788-1-1920.webp"
+        },
+        {
+          "image": "/uploads/payload/assets-photos-motorrad-ninja-road-1921.webp",
+          "fullImage": "/uploads/payload/assets-photos-motorrad-ninja-road-1921.webp",
+          "caption": "Motorrad",
+          "href": "/assets/optimized/assets-photos-motorrad-ninja-road-1920.webp"
+        },
+        {
+          "image": "/uploads/payload/assets-photos-motorrad-duke-1921.webp",
+          "fullImage": "/uploads/payload/assets-photos-motorrad-duke-1921.webp",
+          "caption": "Motorrad",
+          "href": "/assets/optimized/assets-photos-motorrad-duke-1920.webp"
+        },
+        {
+          "image": "/uploads/payload/_DSC8032-2.webp",
+          "fullImage": "/uploads/payload/assets-portfolio-dsc8032-1920.webp",
+          "caption": "Detail",
+          "href": "/assets/optimized/assets-portfolio-dsc8032-1920.webp"
+        },
+        {
+          "image": "/uploads/payload/_DSC3908-2.webp",
+          "fullImage": "/uploads/payload/assets-portfolio-dsc3908-1921.webp",
+          "caption": "Detail",
+          "href": "/assets/optimized/assets-portfolio-dsc3908-1920.webp"
+        },
+        {
+          "image": "/uploads/payload/Wettberwerb_Foto10_Wunder_der_natur-1.webp",
+          "fullImage": "/uploads/payload/Wettberwerb_Foto10_Wunder_der_natur-1.webp",
+          "caption": "Landschaft",
+          "href": "/assets/optimized/assets-portfolio-wettberwerb-foto10-wunder-der-natur-1920.webp"
+        },
+        {
+          "image": "/uploads/payload/Wettberwerb_Foto5_Wunder_der_Natur2-1.webp",
+          "fullImage": "/uploads/payload/Wettberwerb_Foto5_Wunder_der_Natur2-1.webp",
+          "caption": "Landschaft",
+          "href": "/assets/optimized/assets-portfolio-wettberwerb-foto5-wunder-der-natur2-1920.webp"
+        },
+        {
+          "image": "/uploads/payload/Wettberwerb_Foto6_Wunder_der_Natur-1.webp",
+          "fullImage": "/uploads/payload/Wettberwerb_Foto6_Wunder_der_Natur-1.webp",
+          "caption": "Landschaft",
+          "href": "/assets/optimized/assets-portfolio-wettberwerb-foto6-wunder-der-natur-1920.webp"
+        },
+        {
+          "image": "/uploads/payload/20250605-DSC03756-2.webp",
+          "fullImage": "/uploads/payload/20250605-DSC03756-2.webp",
+          "caption": "Landschaft",
+          "href": "/assets/optimized/assets-portfolio-20250605-dsc03756-1920.webp"
+        },
+        {
+          "image": "/uploads/payload/20250605-DSC03793-2.webp",
+          "fullImage": "/uploads/payload/20250605-DSC03793-2.webp",
+          "caption": "Landschaft",
+          "href": "/assets/optimized/assets-portfolio-20250605-dsc03793-1920.webp"
+        },
+        {
+          "image": "/uploads/payload/20250605-DSC03816-2.webp",
+          "fullImage": "/uploads/payload/20250605-DSC03816-2.webp",
+          "caption": "Landschaft",
+          "href": "/assets/optimized/assets-portfolio-20250605-dsc03816-1920.webp"
+        },
+        {
+          "image": "/uploads/payload/20250605-DSC04020-2.webp",
+          "fullImage": "/uploads/payload/20250605-DSC04020-2.webp",
+          "caption": "Landschaft",
+          "href": "/assets/optimized/assets-portfolio-20250605-dsc04020-1920.webp"
+        },
+        {
+          "image": "/uploads/payload/20250327-DSC01550-2.webp",
+          "fullImage": "/uploads/payload/20250327-DSC01550-2.webp",
+          "caption": "Portrait",
+          "href": "/assets/optimized/assets-portfolio-20250327-dsc01550-1920.webp"
+        },
+        {
+          "image": "/uploads/payload/20250414-DSC00341-2.webp",
+          "fullImage": "/uploads/payload/20250414-DSC00341-2.webp",
+          "caption": "Landschaft",
+          "href": "/assets/optimized/assets-portfolio-20250414-dsc00341-1920.webp"
+        },
+        {
+          "image": "/uploads/payload/_DSC2744-2.webp",
+          "fullImage": "/uploads/payload/_DSC2744-2.webp",
+          "caption": "Landschaft",
+          "href": "/assets/optimized/assets-portfolio-dsc2744-1920.webp"
+        },
+        {
+          "image": "/uploads/payload/_DSC2762-2.webp",
+          "fullImage": "/uploads/payload/_DSC2762-2.webp",
+          "caption": "Landschaft",
+          "href": "/assets/optimized/assets-portfolio-dsc2762-1920.webp"
+        },
+        {
+          "image": "/uploads/payload/_DSC0470-Enhanced-NR-2.webp",
+          "fullImage": "/uploads/payload/_DSC0470-Enhanced-NR-2.webp",
+          "caption": "Portrait",
+          "href": "/assets/portfolio/_DSC0470-Enhanced-NR.webp"
+        }
+      ]
+    },
+    "contact": {
+      "subject": "Shooting Anfrage",
+      "headline": "Shooting <em>anfragen.</em>",
+      "lead": "Schreiben Sie kurz, welche Bildsprache Sie interessiert, wofuer die Aufnahmen genutzt werden und welchen Zeitraum Sie planen. Dann klaeren wir Motiv, Umfang, Rechte und Ausgabe sauber gemeinsam."
+    }
+  },
+  "servicesIndex": {
+    "items": [],
+    "whyCards": []
+  },
+  "journalIndex": {
+    "tickerItems": [],
+    "featured": {},
+    "initialVisiblePostCount": 6,
+    "filters": [],
+    "finalCta": {}
+  },
+  "blocks": [
+    {
+      "headline": "Portfolio Bildarchiv.",
+      "body": "Sechs Genres — kuratiert, nicht gefiltert.",
+      "_template": "textBlock"
+    },
+    {
+      "headline": "Serien statt Sammelmappe.",
+      "body": "Das Portfolio ist nach Bildfunktionen und Themenclustern aufgebaut: Portrait, Automobil, Sportwagen, Oldtimer, Motorrad und Landschaft. Jede Strecke zeigt nicht nur ein einzelnes Motiv, sondern die visuelle Logik dahinter: Einstieg, Detail, Material, Atmosphaere und ein ruhiges Schlussbild.\n\nSo wird schneller sichtbar, welche Bildsprache fuer Verkauf, Marke, Sammlung, Website, Print oder redaktionelle Nutzung passt. Die Galerie fuehrt bewusst in die passenden Leistungsseiten weiter, damit Portfolio, lokale SEO-Seiten und konkrete Anfragen dieselbe Struktur sprechen.",
+      "_template": "textBlock"
+    }
+  ],
+  "contactOverride": {},
+  "seo": {
+    "title": "Portfolio Fotografie Duesseldorf & NRW | Matthias Ramahi",
+    "description": "Portfolio von Matthias Ramahi mit kuratierten Serien aus Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft.",
+    "secondaryKeywords": [],
+    "internalLinkAnchors": [],
+    "canonicalUrl": "https://matthiasramahi.de/portfolio.html",
+    "legacyUrl": "portfolio.html",
+    "ogImage": "/uploads/payload/assets-portfolio-dsc3879-1920.webp",
+    "noIndex": false,
+    "focusKeyword": "Portfolio Matthias Ramahi Fotografie",
+    "searchIntent": "Portfolio-Prüfung: Nutzer möchten Bildstil, Referenzen und Projektbeispiele sehen."
+  },
+  "legacy": {
+    "sourceFile": "portfolio.html",
+    "sourceUrl": "https://matthiasramahi.de/portfolio.html",
+    "migrationStatus": "reviewed",
+    "renderSource": "payload-legacy-html",
+    "renderedHeadHtml": "\n  <meta charset=\"utf-8\" />\n  <meta name=\"viewport\" content=\"width=device-width,initial-scale=1\" />\n  <meta name=\"twitter:image\" content=\"https://matthiasramahi.de/assets/optimized/assets-portfolio-dsc3879-1920.webp\" />\n  <meta name=\"twitter:description\" content=\"Bildarchiv von Matthias Ramahi — Portrait, Automobil, Sportwagen, Oldtimer, Motorrad und Landschaft aus Düsseldorf und NRW.\" />\n  <meta name=\"twitter:title\" content=\"Portfolio — Matthias Ramahi\" />\n  <meta name=\"twitter:card\" content=\"summary_large_image\" />\n  <meta property=\"og:image:alt\" content=\"Portfolio — Matthias Ramahi\" />\n  <meta property=\"og:image\" content=\"https://matthiasramahi.de/assets/optimized/assets-portfolio-dsc3879-1920.webp\" />\n  <meta property=\"og:url\" content=\"https://matthiasramahi.de/portfolio.html\" />\n  <meta property=\"og:locale\" content=\"de_DE\" />\n  <meta property=\"og:site_name\" content=\"Matthias Ramahi Fotografie\" />\n  <meta name=\"robots\" content=\"index,follow,max-image-preview:large,max-snippet:-1\" />\n  <meta name=\"author\" content=\"Matthias Ramahi\" />\n  <title>Portfolio — Matthias Ramahi</title>\n  <meta name=\"description\" content=\"Bildarchiv von Matthias Ramahi — Portrait, Automobil, Sportwagen, Oldtimer, Motorrad und Landschaft aus Düsseldorf und NRW.\" />\n  <link rel=\"canonical\" href=\"https://matthiasramahi.de/portfolio.html\" />\n  <meta name=\"theme-color\" content=\"#0d0c0a\" />\n  <meta property=\"og:title\" content=\"Portfolio — Matthias Ramahi\" />\n  <meta property=\"og:description\" content=\"Bildarchiv von Matthias Ramahi — Portrait, Automobil, Sportwagen, Oldtimer, Motorrad und Landschaft aus Düsseldorf und NRW.\" />\n  <meta property=\"og:type\" content=\"website\" />\n  <link rel=\"stylesheet\" href=\"/assets/site-chrome.css\" />\n  <link rel=\"stylesheet\" href=\"/assets/legacy-performance.css\" />\n  <link rel=\"stylesheet\" href=\"/assets/portfolio-page.css\" />\n  <script type=\"application/ld+json\" data-seo=\"technical\">{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://matthiasramahi.de/#website\",\"url\":\"https://matthiasramahi.de/\",\"name\":\"Matthias Ramahi Fotografie\",\"inLanguage\":\"de-DE\",\"publisher\":{\"@id\":\"https://matthiasramahi.de/#person\"}},{\"@type\":\"Person\",\"@id\":\"https://matthiasramahi.de/#person\",\"name\":\"Matthias Ramahi\",\"url\":\"https://matthiasramahi.de/\",\"email\":\"info@matthiasramahi.de\",\"jobTitle\":\"Fotograf\"},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://matthiasramahi.de/portfolio.html#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Startseite\",\"item\":\"https://matthiasramahi.de/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Portfolio — Matthias Ramahi\",\"item\":\"https://matthiasramahi.de/portfolio.html\"}]},{\"@type\":\"CollectionPage\",\"@id\":\"https://matthiasramahi.de/portfolio.html#webpage\",\"url\":\"https://matthiasramahi.de/portfolio.html\",\"name\":\"Portfolio — Matthias Ramahi\",\"description\":\"Bildarchiv von Matthias Ramahi — Portrait, Automobil, Sportwagen, Oldtimer, Motorrad und Landschaft aus Düsseldorf und NRW.\",\"inLanguage\":\"de-DE\",\"isPartOf\":{\"@id\":\"https://matthiasramahi.de/#website\"},\"breadcrumb\":{\"@id\":\"https://matthiasramahi.de/portfolio.html#breadcrumb\"},\"primaryImageOfPage\":{\"@type\":\"ImageObject\",\"url\":\"https://matthiasramahi.de/assets/optimized/assets-portfolio-dsc3879-1920.webp\"}}]}</script>\n",
+    "renderedBodyHtml": "<section class=\"pf-hero\" data-header-theme=\"dark\" aria-label=\"Portfolio\">\n  <div class=\"pf-hero__photo\" aria-hidden=\"true\">\n    <img src=\"/assets/optimized/assets-portfolio-dsc3879-1920.webp\" alt=\"\" loading=\"eager\" decoding=\"async\" fetchpriority=\"high\" width=\"1920\" height=\"1280\">\n  </div>\n  <div class=\"pf-hero__veil\" aria-hidden=\"true\"></div>\n  <div class=\"pf-hero__inner\">\n    <div>\n      <div class=\"pf-hero__kicker\">Portfolio · 2026</div>\n      <h1>Portfolio Bildarchiv.</h1>\n    </div>\n    <p class=\"pf-hero__sub\">Sechs Genres — kuratiert, nicht gefiltert.</p>\n  </div>\n</section>\n\n<!-- ============ INDEX STRIP ============ -->\n<nav class=\"pf-index\" id=\"pfIndex\" aria-label=\"Kategorien\">\n  <ol>\n    <li><a href=\"#portrait\"><b>01</b>Portrait</a></li>\n    <li><a href=\"#auto\"><b>02</b>Automobil</a></li>\n    <li><a href=\"#sport\"><b>03</b>Sportwagen</a></li>\n    <li><a href=\"#classic\"><b>04</b>Oldtimer</a></li>\n    <li><a href=\"#moto\"><b>05</b>Motorrad</a></li>\n    <li><a href=\"#land\"><b>06</b>Landschaft</a></li>\n    <li><a href=\"#archive\"><b>∞</b>Archiv</a></li>\n  </ol>\n</nav>\n\n<section class=\"pf-context\" data-header-theme=\"light\" aria-label=\"Portfolio einordnen\">\n  <div class=\"pf-context__inner\">\n    <div>\n      <div class=\"pf-context__kicker\">Einordnung</div>\n      <h2>Serien statt Sammelmappe.</h2>\n    </div>\n    <div>\n      <p>Das Portfolio ist nach Bildfunktionen und Themenclustern aufgebaut: Portrait, Automobil, Sportwagen, Oldtimer, Motorrad und Landschaft. Jede Strecke zeigt nicht nur ein einzelnes Motiv, sondern die visuelle Logik dahinter: Einstieg, Detail, Material, Atmosphaere und ein ruhiges Schlussbild.</p>\n      <p>So wird schneller sichtbar, welche Bildsprache fuer Verkauf, Marke, Sammlung, Website, Print oder redaktionelle Nutzung passt. Die Galerie fuehrt bewusst in die passenden Leistungsseiten weiter, damit Portfolio, lokale SEO-Seiten und konkrete Anfragen dieselbe Struktur sprechen.</p>\n    </div>\n  </div>\n</section>\n\n<!-- ============ 01 PORTRAIT ============ -->\n<section class=\"pf-spread is-light\" id=\"portrait\" data-header-theme=\"light\" aria-label=\"Portrait\">\n  <div class=\"pf-spread__head\">\n    <div>\n      <div class=\"pf-spread__kicker\">01 / Portrait</div>\n      <h2>Die Person, im Licht.</h2>\n    </div>\n    <a class=\"pf-spread__link\" href=\"portraitfotografie-duesseldorf.html\">Zur Portraitfotografie →</a>\n  </div>\n  <div class=\"pf-spread__strip\">\n    <a class=\"pf-photo\" data-caption=\"Portrait\" href=\"/assets/portfolio/_DSC0470-Enhanced-NR.webp\"><img src=\"/assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"1152\"></a>\n    <a class=\"pf-photo\" data-caption=\"Portrait\" href=\"/assets/portfolio/_DSC9301-Enhanced-NR.webp\"><img src=\"/assets/portfolio/thumbs/_DSC9301-Enhanced-NR.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"900\"></a>\n    <a class=\"pf-photo\" data-caption=\"Portrait\" href=\"/assets/optimized/assets-portfolio-20250327-dsc01550-1920.webp\"><img src=\"/assets/portfolio/thumbs/20250327-DSC01550.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"1090\"></a>\n    <a class=\"pf-photo\" data-caption=\"Portrait\" href=\"/assets/portfolio/_DSC9321-Enhanced-NR.webp\"><img src=\"/assets/portfolio/thumbs/_DSC9321-Enhanced-NR.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"1080\"></a>\n  </div>\n</section>\n\n<!-- ============ 02 AUTOMOBIL ============ -->\n<section class=\"pf-spread\" id=\"auto\" data-header-theme=\"dark\" aria-label=\"Automobil\">\n  <div class=\"pf-spread__head\">\n    <div>\n      <div class=\"pf-spread__kicker\">02 / Automobil</div>\n      <h2>Linie, Lack, Licht.</h2>\n    </div>\n    <a class=\"pf-spread__link\" href=\"automobil-fotografie-duesseldorf.html\">Zur Automobilfotografie →</a>\n  </div>\n  <div class=\"pf-spread__strip\">\n    <a class=\"pf-photo\" data-caption=\"Automobil\" href=\"/assets/optimized/assets-photos-automobil-neon-1920.webp\"><img src=\"/assets/optimized/assets-photos-automobil-neon-1920.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"1920\" height=\"1280\"></a>\n    <a class=\"pf-photo\" data-caption=\"Automobil\" href=\"/assets/optimized/assets-portfolio-dsc3982-1920.webp\"><img src=\"/assets/portfolio/thumbs/_DSC3982.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"480\"></a>\n    <a class=\"pf-photo\" data-caption=\"Automobil\" href=\"/assets/optimized/assets-portfolio-dsc3878-1920.webp\"><img src=\"/assets/portfolio/thumbs/_DSC3878.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"480\"></a>\n    <a class=\"pf-photo\" data-caption=\"Automobil\" href=\"/assets/optimized/assets-portfolio-dsc3908-1920.webp\"><img src=\"/assets/portfolio/thumbs/_DSC3908.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"480\"></a>\n  </div>\n</section>\n\n<!-- ============ 03 SPORTWAGEN ============ -->\n<section class=\"pf-spread is-light\" id=\"sport\" data-header-theme=\"light\" aria-label=\"Sportwagen\">\n  <div class=\"pf-spread__head\">\n    <div>\n      <div class=\"pf-spread__kicker\">03 / Sportwagen</div>\n      <h2>Performance, stillgestellt.</h2>\n    </div>\n    <a class=\"pf-spread__link\" href=\"sportwagen-fotografie-duesseldorf.html\">Zur Sportwagenfotografie →</a>\n  </div>\n  <div class=\"pf-spread__strip\">\n    <a class=\"pf-photo\" data-caption=\"Sportwagen\" href=\"/assets/optimized/assets-portfolio-dsc2310-1920.webp\"><img src=\"/assets/portfolio/thumbs/_DSC2310.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"480\"></a>\n    <a class=\"pf-photo\" data-caption=\"Sportwagen\" href=\"/assets/optimized/assets-portfolio-dsc2316-1920.webp\"><img src=\"/assets/portfolio/thumbs/_DSC2316.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"450\"></a>\n    <a class=\"pf-photo\" data-caption=\"Sportwagen\" href=\"/assets/optimized/assets-portfolio-dsc2345-1920.webp\"><img src=\"/assets/portfolio/thumbs/_DSC2345.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"576\"></a>\n    <a class=\"pf-photo\" data-caption=\"Sportwagen\" href=\"/assets/optimized/assets-portfolio-dsc2358-1920.webp\"><img src=\"/assets/portfolio/thumbs/_DSC2358.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"1080\"></a>\n  </div>\n</section>\n\n<!-- ============ 04 OLDTIMER ============ -->\n<section class=\"pf-spread\" id=\"classic\" data-header-theme=\"dark\" aria-label=\"Oldtimer\">\n  <div class=\"pf-spread__head\">\n    <div>\n      <div class=\"pf-spread__kicker\">04 / Oldtimer</div>\n      <h2>Charakter mit Nostalgie.</h2>\n    </div>\n    <a class=\"pf-spread__link\" href=\"oldtimer-fotografie-duesseldorf.html\">Zur Oldtimerfotografie →</a>\n  </div>\n  <div class=\"pf-spread__strip\">\n    <a class=\"pf-photo\" data-caption=\"Oldtimer\" href=\"/assets/optimized/assets-portfolio-dsc3892-1920.webp\"><img src=\"/assets/portfolio/thumbs/_DSC3892.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"480\"></a>\n    <a class=\"pf-photo\" data-caption=\"Oldtimer\" href=\"/assets/optimized/assets-portfolio-dsc2986-1920.webp\"><img src=\"/assets/portfolio/thumbs/_DSC2986.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"1080\"></a>\n    <a class=\"pf-photo\" data-caption=\"Oldtimer\" href=\"/assets/optimized/assets-portfolio-dsc3032-generase-1-1920.webp\"><img src=\"/assets/portfolio/thumbs/_DSC3032_genErase (1).webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"480\"></a>\n    <a class=\"pf-photo\" data-caption=\"Oldtimer\" href=\"/assets/optimized/assets-portfolio-dsc3032-generase-2-1920.webp\"><img src=\"/assets/portfolio/thumbs/_DSC3032_genErase (2).webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"480\"></a>\n  </div>\n</section>\n\n<!-- ============ 05 MOTORRAD ============ -->\n<section class=\"pf-spread is-light\" id=\"moto\" data-header-theme=\"light\" aria-label=\"Motorrad\">\n  <div class=\"pf-spread__head\">\n    <div>\n      <div class=\"pf-spread__kicker\">05 / Motorrad</div>\n      <h2>Kraft im Schnitt.</h2>\n    </div>\n    <a class=\"pf-spread__link\" href=\"motorrad-fotografie-duesseldorf.html\">Zur Motorradfotografie →</a>\n  </div>\n  <div class=\"pf-spread__strip\">\n    <a class=\"pf-photo\" data-caption=\"Motorrad\" href=\"/assets/optimized/assets-photos-motorrad-duke-1920.webp\"><img src=\"/assets/optimized/assets-photos-motorrad-duke-1920.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"1920\" height=\"3413\"></a>\n    <a class=\"pf-photo\" data-caption=\"Motorrad\" href=\"/assets/optimized/assets-photos-motorrad-ninja-road-1920.webp\"><img src=\"/assets/optimized/assets-photos-motorrad-ninja-road-1920.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"1920\" height=\"2880\"></a>\n    <a class=\"pf-photo\" data-caption=\"Motorrad\" href=\"/assets/optimized/assets-portfolio-dsc6982-1920.webp\"><img src=\"/assets/portfolio/thumbs/_DSC6982.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"1080\"></a>\n    <a class=\"pf-photo\" data-caption=\"Motorrad\" href=\"/assets/optimized/assets-portfolio-dsc8032-1920.webp\"><img src=\"/assets/portfolio/thumbs/_DSC8032.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"900\"></a>\n  </div>\n</section>\n\n<!-- ============ 06 LANDSCHAFT ============ -->\n<section class=\"pf-spread\" id=\"land\" data-header-theme=\"dark\" aria-label=\"Landschaft\">\n  <div class=\"pf-spread__head\">\n    <div>\n      <div class=\"pf-spread__kicker\">06 / Landschaft</div>\n      <h2>Weite, als Print.</h2>\n    </div>\n    <a class=\"pf-spread__link\" href=\"landschaftsfotografie-duesseldorf.html\">Zur Landschaftsfotografie →</a>\n  </div>\n  <div class=\"pf-spread__strip\">\n    <a class=\"pf-photo\" data-caption=\"Landschaft\" href=\"/assets/optimized/assets-portfolio-wettberwerb-foto5-wunder-der-natur2-1920.webp\"><img src=\"/assets/portfolio/thumbs/Wettberwerb_Foto5_Wunder_der_Natur2.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"471\"></a>\n    <a class=\"pf-photo\" data-caption=\"Landschaft\" href=\"/assets/optimized/assets-portfolio-wettberwerb-foto6-wunder-der-natur-1920.webp\"><img src=\"/assets/portfolio/thumbs/Wettberwerb_Foto6_Wunder_der_Natur.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"520\"></a>\n    <a class=\"pf-photo\" data-caption=\"Landschaft\" href=\"/assets/optimized/assets-portfolio-20250605-dsc03756-1920.webp\"><img src=\"/assets/portfolio/thumbs/20250605-DSC03756.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"1080\"></a>\n    <a class=\"pf-photo\" data-caption=\"Landschaft\" href=\"/assets/optimized/assets-portfolio-20250605-dsc04020-1920.webp\"><img src=\"/assets/portfolio/thumbs/20250605-DSC04020.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"1080\"></a>\n  </div>\n</section>\n\n<!-- ============ ARCHIVE WALL ============ -->\n<section class=\"pf-archive\" id=\"archive\" data-header-theme=\"light\" aria-label=\"Archiv\">\n  <div class=\"pf-archive__head\">\n    <div class=\"pf-archive__kicker\">∞ / Archiv</div>\n    <h2>Bildarchiv, vollständig.</h2>\n  </div>\n  <div class=\"pf-archive__grid\" id=\"pfArchiveGrid\">\n    <a class=\"pf-photo\" data-caption=\"Portrait\" href=\"/assets/portfolio/_DSC9321-Enhanced-NR.webp\"><img data-src=\"/assets/portfolio/thumbs/_DSC9321-Enhanced-NR.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"1080\"></a>\n    <a class=\"pf-photo\" data-caption=\"Detail\" href=\"/assets/optimized/assets-portfolio-dsc3879-1920.webp\"><img src=\"/assets/portfolio/thumbs/_DSC3879.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"480\"></a>\n    <a class=\"pf-photo\" data-caption=\"Panorama\" href=\"/assets/optimized/assets-portfolio-20250605-dsc03978-1920.webp\"><img src=\"/assets/portfolio/thumbs/20250605-DSC03978.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"960\"></a>\n    <a class=\"pf-photo\" data-caption=\"Detail\" href=\"/assets/optimized/assets-portfolio-dsc3982-1920.webp\"><img data-src=\"/assets/portfolio/thumbs/_DSC3982.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"480\"></a>\n    <a class=\"pf-photo\" data-caption=\"Portrait\" href=\"/assets/portfolio/_DSC9301-Enhanced-NR.webp\"><img data-src=\"/assets/portfolio/thumbs/_DSC9301-Enhanced-NR.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"900\"></a>\n    <a class=\"pf-photo\" data-caption=\"Portrait\" href=\"/assets/portfolio/_DSC0470-Enhanced-NR.webp\"><img data-src=\"/assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"1152\"></a>\n    <a class=\"pf-photo\" data-caption=\"Sportwagen\" href=\"/assets/optimized/assets-portfolio-dsc2310-1920.webp\"><img data-src=\"/assets/portfolio/thumbs/_DSC2310.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"480\"></a>\n    <a class=\"pf-photo\" data-caption=\"Sportwagen\" href=\"/assets/optimized/assets-portfolio-dsc2316-1920.webp\"><img data-src=\"/assets/portfolio/thumbs/_DSC2316.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"450\"></a>\n    <a class=\"pf-photo\" data-caption=\"Sportwagen\" href=\"/assets/optimized/assets-portfolio-dsc2329-1920.webp\"><img src=\"/assets/portfolio/thumbs/_DSC2329.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"1080\"></a>\n    <a class=\"pf-photo\" data-caption=\"Sportwagen\" href=\"/assets/optimized/assets-portfolio-dsc2345-1920.webp\"><img data-src=\"/assets/portfolio/thumbs/_DSC2345.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"576\"></a>\n    <a class=\"pf-photo\" data-caption=\"Sportwagen\" href=\"/assets/optimized/assets-portfolio-dsc2358-1920.webp\"><img data-src=\"/assets/portfolio/thumbs/_DSC2358.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"1080\"></a>\n    <a class=\"pf-photo\" data-caption=\"Oldtimer\" href=\"/assets/optimized/assets-photos-oldtimer-stage-1920.webp\"><img src=\"/assets/optimized/assets-photos-oldtimer-stage-1920.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"1920\" height=\"1280\"></a>\n    <a class=\"pf-photo\" data-caption=\"Oldtimer\" href=\"/assets/optimized/assets-portfolio-dsc3892-1920.webp\"><img data-src=\"/assets/portfolio/thumbs/_DSC3892.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"480\"></a>\n    <a class=\"pf-photo\" data-caption=\"Oldtimer\" href=\"/assets/optimized/assets-portfolio-dsc2986-1920.webp\"><img data-src=\"/assets/portfolio/thumbs/_DSC2986.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"1080\"></a>\n    <a class=\"pf-photo\" data-caption=\"Karosserie\" href=\"/assets/optimized/assets-portfolio-dsc3032-generase-1-1920.webp\"><img data-src=\"/assets/portfolio/thumbs/_DSC3032_genErase (1).webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"480\"></a>\n    <a class=\"pf-photo\" data-caption=\"Karosserie\" href=\"/assets/optimized/assets-portfolio-dsc3032-generase-2-1920.webp\"><img data-src=\"/assets/portfolio/thumbs/_DSC3032_genErase (2).webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"480\"></a>\n    <a class=\"pf-photo\" data-caption=\"Detail\" href=\"/assets/optimized/assets-portfolio-dsc2876-generase-1-1920.webp\"><img src=\"/assets/portfolio/thumbs/_DSC2876_genErase (1).webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"480\"></a>\n    <a class=\"pf-photo\" data-caption=\"Detail\" href=\"/assets/optimized/assets-portfolio-dsc2861-1-1920.webp\"><img src=\"/assets/portfolio/thumbs/_DSC2861 (1).webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"480\"></a>\n    <a class=\"pf-photo\" data-caption=\"Detail\" href=\"/assets/optimized/assets-portfolio-dsc2788-1-1920.webp\"><img src=\"/assets/portfolio/thumbs/_DSC2788 (1).webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"1080\"></a>\n    <a class=\"pf-photo\" data-caption=\"Motorrad\" href=\"/assets/optimized/assets-photos-motorrad-ninja-road-1920.webp\"><img src=\"/assets/optimized/assets-photos-motorrad-ninja-road-1920.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"1920\" height=\"2880\"></a>\n    <a class=\"pf-photo\" data-caption=\"Motorrad\" href=\"/assets/optimized/assets-photos-motorrad-duke-1920.webp\"><img data-src=\"/assets/optimized/assets-photos-motorrad-duke-1920.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"1920\" height=\"3413\"></a>\n    <a class=\"pf-photo\" data-caption=\"Motorrad\" href=\"/assets/optimized/assets-photos-motorrad-ninja-road-1920.webp\"><img data-src=\"/assets/optimized/assets-photos-motorrad-ninja-road-1920.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"1920\" height=\"2880\"></a>\n    <a class=\"pf-photo\" data-caption=\"Detail\" href=\"/assets/optimized/assets-portfolio-dsc6982-1920.webp\"><img data-src=\"/assets/portfolio/thumbs/_DSC6982.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"1080\"></a>\n    <a class=\"pf-photo\" data-caption=\"Detail\" href=\"/assets/optimized/assets-portfolio-dsc8032-1920.webp\"><img data-src=\"/assets/portfolio/thumbs/_DSC8032.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"900\"></a>\n    <a class=\"pf-photo\" data-caption=\"Detail\" href=\"/assets/optimized/assets-portfolio-dsc3908-1920.webp\"><img data-src=\"/assets/portfolio/thumbs/_DSC3908.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"480\"></a>\n    <a class=\"pf-photo\" data-caption=\"Detail\" href=\"/assets/optimized/assets-portfolio-dsc3878-1920.webp\"><img data-src=\"/assets/portfolio/thumbs/_DSC3878.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"480\"></a>\n    <a class=\"pf-photo\" data-caption=\"Landschaft\" href=\"/assets/optimized/assets-portfolio-wettberwerb-foto10-wunder-der-natur-1920.webp\"><img src=\"/assets/portfolio/thumbs/Wettberwerb_Foto10_Wunder_der_natur.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"448\"></a>\n    <a class=\"pf-photo\" data-caption=\"Landschaft\" href=\"/assets/optimized/assets-portfolio-wettberwerb-foto5-wunder-der-natur2-1920.webp\"><img data-src=\"/assets/portfolio/thumbs/Wettberwerb_Foto5_Wunder_der_Natur2.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"471\"></a>\n    <a class=\"pf-photo\" data-caption=\"Landschaft\" href=\"/assets/optimized/assets-portfolio-wettberwerb-foto6-wunder-der-natur-1920.webp\"><img data-src=\"/assets/portfolio/thumbs/Wettberwerb_Foto6_Wunder_der_Natur.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"520\"></a>\n    <a class=\"pf-photo\" data-caption=\"Landschaft\" href=\"/assets/optimized/assets-portfolio-20250605-dsc03756-1920.webp\"><img data-src=\"/assets/portfolio/thumbs/20250605-DSC03756.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"1080\"></a>\n    <a class=\"pf-photo\" data-caption=\"Landschaft\" href=\"/assets/optimized/assets-portfolio-20250605-dsc03793-1920.webp\"><img src=\"/assets/portfolio/thumbs/20250605-DSC03793.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"960\"></a>\n    <a class=\"pf-photo\" data-caption=\"Landschaft\" href=\"/assets/optimized/assets-portfolio-20250605-dsc03816-1920.webp\"><img src=\"/assets/portfolio/thumbs/20250605-DSC03816.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"960\"></a>\n    <a class=\"pf-photo\" data-caption=\"Landschaft\" href=\"/assets/optimized/assets-portfolio-20250605-dsc04020-1920.webp\"><img data-src=\"/assets/portfolio/thumbs/20250605-DSC04020.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"1080\"></a>\n    <a class=\"pf-photo\" data-caption=\"Portrait\" href=\"/assets/optimized/assets-portfolio-20250327-dsc01550-1920.webp\"><img data-src=\"/assets/portfolio/thumbs/20250327-DSC01550.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"1090\"></a>\n    <a class=\"pf-photo\" data-caption=\"Landschaft\" href=\"/assets/optimized/assets-portfolio-20250414-dsc00341-1920.webp\"><img src=\"/assets/portfolio/thumbs/20250414-DSC00341.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"1080\"></a>\n    <a class=\"pf-photo\" data-caption=\"Landschaft\" href=\"/assets/optimized/assets-portfolio-dsc2744-1920.webp\"><img src=\"/assets/portfolio/thumbs/_DSC2744.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"1080\"></a>\n    <a class=\"pf-photo\" data-caption=\"Landschaft\" href=\"/assets/optimized/assets-portfolio-dsc2762-1920.webp\"><img src=\"/assets/portfolio/thumbs/_DSC2762.webp\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"720\" height=\"480\"></a>\n  </div>\n  <div class=\"pf-archive__foot\">\n    <span>Aktualisierter Bestand · 2026</span>\n    <a href=\"contact.html\">Anfrage stellen ↗</a>\n  </div>\n</section>\n\n<section\n  id=\"anfrage\"\n  data-contact-section\n  data-theme=\"light\"\n  data-contact-subject=\"Portfolio Anfrage\"\n  data-contact-headline=\"Portfolio <em>anfragen.</em>\"\n  data-contact-lead=\"Schreiben Sie kurz, welche Bildsprache Sie interessiert, wofür die Aufnahmen genutzt werden und welchen Zeitraum Sie planen. Dann klären wir Motiv, Umfang, Rechte und Ausgabe sauber gemeinsam.\"\n></section>\n\n<!-- ============ FOOTER ============ -->\n",
+    "afterFooterHtml": "\n\n<!-- ============ LIGHTBOX ============ -->\n<div class=\"pf-viewer\" id=\"pfViewer\" aria-hidden=\"true\" role=\"dialog\" aria-label=\"Bildansicht\">\n  <button class=\"pf-viewer__close\" type=\"button\" id=\"pfClose\">Schließen</button>\n  <button class=\"pf-viewer__prev\" type=\"button\" id=\"pfPrev\" aria-label=\"Vorheriges Bild\">‹</button>\n  <button class=\"pf-viewer__next\" type=\"button\" id=\"pfNext\" aria-label=\"Nächstes Bild\">›</button>\n  <figure class=\"pf-viewer__figure\">\n    <img id=\"pfViewerImg\" alt=\"\" decoding=\"async\" loading=\"lazy\">\n  </figure>\n  <span class=\"pf-viewer__cap\" id=\"pfViewerCap\"></span>\n</div>\n\n<script src=\"/assets/site-chrome.js\" defer></script>\n\n<script src=\"/assets/portfolio-page.js\" defer></script>\n\n",
+    "bodyClass": "has-mr-footer",
+    "extractedHeadings": [
+      "Portfolio Bildarchiv.",
+      "Serien statt Sammelmappe.",
+      "Die Person, im Licht.",
+      "Linie, Lack, Licht.",
+      "Performance, stillgestellt.",
+      "Charakter mit Nostalgie.",
+      "Kraft im Schnitt.",
+      "Weite, als Print.",
+      "Bildarchiv, vollständig."
+    ],
+    "extractedImagePaths": [
+      "assets/optimized/assets-portfolio-dsc3879-1920.webp",
+      "assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp",
+      "assets/portfolio/thumbs/_DSC9301-Enhanced-NR.webp",
+      "assets/portfolio/thumbs/20250327-DSC01550.webp",
+      "assets/portfolio/thumbs/_DSC9321-Enhanced-NR.webp",
+      "assets/optimized/assets-photos-automobil-neon-1920.webp",
+      "assets/portfolio/thumbs/_DSC3982.webp",
+      "assets/portfolio/thumbs/_DSC3878.webp",
+      "assets/portfolio/thumbs/_DSC3908.webp",
+      "assets/portfolio/thumbs/_DSC2310.webp",
+      "assets/portfolio/thumbs/_DSC2316.webp",
+      "assets/portfolio/thumbs/_DSC2345.webp",
+      "assets/portfolio/thumbs/_DSC2358.webp",
+      "assets/portfolio/thumbs/_DSC3892.webp",
+      "assets/portfolio/thumbs/_DSC2986.webp",
+      "assets/portfolio/thumbs/_DSC3032_genErase (1).webp",
+      "assets/portfolio/thumbs/_DSC3032_genErase (2).webp",
+      "assets/optimized/assets-photos-motorrad-duke-1920.webp",
+      "assets/optimized/assets-photos-motorrad-ninja-road-1920.webp",
+      "assets/portfolio/thumbs/_DSC6982.webp",
+      "assets/portfolio/thumbs/_DSC8032.webp",
+      "assets/portfolio/thumbs/Wettberwerb_Foto5_Wunder_der_Natur2.webp",
+      "assets/portfolio/thumbs/Wettberwerb_Foto6_Wunder_der_Natur.webp",
+      "assets/portfolio/thumbs/20250605-DSC03756.webp",
+      "assets/portfolio/thumbs/20250605-DSC04020.webp",
+      "assets/portfolio/thumbs/_DSC9321-Enhanced-NR.webp",
+      "assets/portfolio/thumbs/_DSC3879.webp",
+      "assets/portfolio/thumbs/20250605-DSC03978.webp",
+      "assets/portfolio/thumbs/_DSC3982.webp",
+      "assets/portfolio/thumbs/_DSC9301-Enhanced-NR.webp",
+      "assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp",
+      "assets/portfolio/thumbs/_DSC2310.webp",
+      "assets/portfolio/thumbs/_DSC2316.webp",
+      "assets/portfolio/thumbs/_DSC2329.webp",
+      "assets/portfolio/thumbs/_DSC2345.webp",
+      "assets/portfolio/thumbs/_DSC2358.webp",
+      "assets/optimized/assets-photos-oldtimer-stage-1920.webp",
+      "assets/portfolio/thumbs/_DSC3892.webp",
+      "assets/portfolio/thumbs/_DSC2986.webp",
+      "assets/portfolio/thumbs/_DSC3032_genErase (1).webp",
+      "assets/portfolio/thumbs/_DSC3032_genErase (2).webp",
+      "assets/portfolio/thumbs/_DSC2876_genErase (1).webp",
+      "assets/portfolio/thumbs/_DSC2861 (1).webp",
+      "assets/portfolio/thumbs/_DSC2788 (1).webp",
+      "assets/optimized/assets-photos-motorrad-ninja-road-1920.webp",
+      "assets/optimized/assets-photos-motorrad-duke-1920.webp",
+      "assets/optimized/assets-photos-motorrad-ninja-road-1920.webp",
+      "assets/portfolio/thumbs/_DSC6982.webp",
+      "assets/portfolio/thumbs/_DSC8032.webp",
+      "assets/portfolio/thumbs/_DSC3908.webp",
+      "assets/portfolio/thumbs/_DSC3878.webp",
+      "assets/portfolio/thumbs/Wettberwerb_Foto10_Wunder_der_natur.webp",
+      "assets/portfolio/thumbs/Wettberwerb_Foto5_Wunder_der_Natur2.webp",
+      "assets/portfolio/thumbs/Wettberwerb_Foto6_Wunder_der_Natur.webp",
+      "assets/portfolio/thumbs/20250605-DSC03756.webp",
+      "assets/portfolio/thumbs/20250605-DSC03793.webp",
+      "assets/portfolio/thumbs/20250605-DSC03816.webp",
+      "assets/portfolio/thumbs/20250605-DSC04020.webp",
+      "assets/portfolio/thumbs/20250327-DSC01550.webp",
+      "assets/portfolio/thumbs/20250414-DSC00341.webp",
+      "assets/portfolio/thumbs/_DSC2744.webp",
+      "assets/portfolio/thumbs/_DSC2762.webp"
+    ],
+    "extractedText": "Sechs Genres — kuratiert, nicht gefiltert.\n\nDas Portfolio ist nach Bildfunktionen und Themenclustern aufgebaut: Portrait, Automobil, Sportwagen, Oldtimer, Motorrad und Landschaft. Jede Strecke zeigt nicht nur ein einzelnes Motiv, sondern die visuelle Logik dahinter: Einstieg, Detail, Material, Atmosphaere und ein ruhiges Schlussbild.\n\nSo wird schneller sichtbar, welche Bildsprache fuer Verkauf, Marke, Sammlung, Website, Print oder redaktionelle Nutzung passt. Die Galerie fuehrt bewusst in die passenden Leistungsseiten weiter, damit Portfolio, lokale SEO-Seiten und konkrete Anfragen dieselbe Struktur sprechen."
+  },
+  "updatedAt": "2026-06-03T11:12:41.924Z",
+  "createdAt": "2026-05-28T19:07:33.720Z",
+  "status": "published",
+  "payloadId": "8"
+}

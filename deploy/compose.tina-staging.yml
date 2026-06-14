@@ -1,0 +1,58 @@
+name: matthias-ramahi-tina-staging
+
+services:
+  tina-web:
+    build:
+      context: ..
+      dockerfile: apps/web/Dockerfile
+      args:
+        ASTRO_CONTENT_SOURCE: tina
+    image: matthias-ramahi-tina-staging:latest
+    restart: unless-stopped
+    working_dir: /app
+    command:
+      - sh
+      - -lc
+      - |
+        pnpm --filter @matthias-ramahi/web tina:dev &
+        TINA_PID=$$!
+        node apps/web/scripts/tina-graphql-proxy.mjs --listen-host=0.0.0.0 --listen-port=4002 --target-host=::1 --target-port=4001 &
+        PROXY_PID=$$!
+        wait "$$TINA_PID"
+        kill "$$PROXY_PID" 2>/dev/null || true
+    environment:
+      ASTRO_CONTENT_SOURCE: tina
+      ASTRO_PUBLIC_SITE_URL: https://matthiasramahi.de
+      NO_COLOR: "1"
+      TINA_BRANCH: ${TINA_BRANCH:-main}
+      TINA_ALLOWED_HOSTS: ${TINA_ALLOWED_HOSTS:-cms.matthiasramahi.de}
+      TINA_CONTENT_API_URL: ${TINA_CONTENT_API_URL:-http://[::1]:4001/graphql}
+    ports:
+      - "${TINA_BIND_ADDRESS:-127.0.0.1}:${TINA_WEB_PORT:-4334}:4321"
+      - "${TINA_BIND_ADDRESS:-127.0.0.1}:${TINA_GRAPHQL_PORT:-4001}:4002"
+    volumes:
+      - ../apps/web/content:/app/apps/web/content
+      - ../apps/web/public/admin:/app/apps/web/public/admin
+      - ../apps/web/public/uploads:/app/apps/web/public/uploads
+      - ../apps/web/src/data:/app/apps/web/src/data
+      - ../apps/web/tina:/app/apps/web/tina
+
+  tina-site:
+    image: matthias-ramahi-tina-staging:latest
+    restart: unless-stopped
+    working_dir: /app
+    command:
+      - node
+      - apps/web/dist/server/entry.mjs
+    environment:
+      ASTRO_CONTENT_SOURCE: tina
+      ASTRO_PUBLIC_SITE_URL: https://matthiasramahi.de
+      HOST: 0.0.0.0
+      NODE_ENV: production
+      NO_COLOR: "1"
+      PORT: "4321"
+    ports:
+      - "${TINA_BIND_ADDRESS:-127.0.0.1}:${TINA_SITE_PORT:-4335}:4321"
+    volumes:
+      - ../apps/web/public/uploads:/app/apps/web/public/uploads:ro
+      - ../apps/web/public/uploads:/app/apps/web/dist/client/uploads:ro

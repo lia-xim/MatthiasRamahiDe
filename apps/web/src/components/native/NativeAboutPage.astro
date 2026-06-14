@@ -1,6 +1,7 @@
 ---
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import { getLegacyBackedDoc, imageAlt, imageDisplayUrl, type PayloadDoc, type PayloadMedia } from '../../lib/payload'
+import { tinaAttrs } from '../../lib/tinaFieldAttrs'
 
 const legacyFile = 'ueber-mich.html'
 const providedDoc = Astro.props.doc as PayloadDoc | undefined
@@ -127,6 +128,11 @@ const aboutHero = { ...fallback.hero, ...((doc?.aboutHero as Record<string, unkn
 const aboutStatement = { ...fallback.statement, ...((doc?.aboutStatement as Record<string, unknown> | undefined) || {}) }
 const aboutChapters = { ...fallback.chapters, ...((doc?.aboutChapters as Record<string, unknown> | undefined) || {}) }
 const aboutSister = { ...fallback.sister, ...((doc?.aboutSister as Record<string, unknown> | undefined) || {}) }
+const aboutHeroSource = doc?.aboutHero
+const aboutStatementSource = doc?.aboutStatement
+const aboutChaptersSource = doc?.aboutChapters
+const aboutSisterSource = doc?.aboutSister
+const sisterPlateSource = doc?.aboutSister?.plate
 const sisterPlate = {
   ...fallback.sister.plate,
   ...((aboutSister.plate as Record<string, unknown> | undefined) || {}),
@@ -141,21 +147,21 @@ const heroImage = imageDisplayUrl(aboutHero.image as PayloadMedia | string | und
 ---
 <AdoptedPageLayout legacyFile={legacyFile} current="ueber-mich" doc={doc}>
   <main>
-    <section class="ovh ovh--ueber" data-theme="dark" data-header-theme="dark" aria-label="Matthias Ramahi — Fotograf aus Düsseldorf">
-      <img class="ovh__photo" src={heroImage} alt="" width="1920" height="1280" fetchpriority="high" decoding="async" aria-hidden="true" />
+    <section class="ovh ovh--ueber" data-theme="dark" data-header-theme="dark" aria-label="Matthias Ramahi — Fotograf aus Düsseldorf" {...tinaAttrs(aboutHeroSource, 'image')}>
+      <img class="ovh__photo" src={heroImage} alt="" width="1920" height="1280" fetchpriority="high" decoding="async" aria-hidden="true" {...tinaAttrs(aboutHeroSource, 'image')} />
       <div class="ovh__glow" aria-hidden="true"></div>
       <div class="ovh__aperture" aria-hidden="true"></div>
       <div class="ovh__grid">
         <div class="ovh__beam" aria-hidden="true"></div>
-        <p class="ovh__kicker">{aboutHero.kicker}</p>
+        <p class="ovh__kicker" {...tinaAttrs(aboutHeroSource, 'kicker')}>{aboutHero.kicker}</p>
         <h1 class="ovh__title">
-          <span class="line"><span class="word">{aboutHero.titleLine1}</span></span>
-          <span class="line"><span class="word">{aboutHero.titleLine2}</span></span>
+          <span class="line" {...tinaAttrs(aboutHeroSource, 'titleLine1')}><span class="word">{aboutHero.titleLine1}</span></span>
+          <span class="line" {...tinaAttrs(aboutHeroSource, 'titleLine2')}><span class="word">{aboutHero.titleLine2}</span></span>
         </h1>
-        <p class="ovh__lead">{aboutHero.lead}</p>
+        <p class="ovh__lead" {...tinaAttrs(aboutHeroSource, 'lead')}>{aboutHero.lead}</p>
         <div class="ovh__actions">
-          <a class="ovh__btn" href={aboutHero.primaryHref as string}>{aboutHero.primaryLabel}</a>
-          <a class="ovh__btn ovh__btn--ghost" href={aboutHero.secondaryHref as string}>{aboutHero.secondaryLabel}</a>
+          <a class="ovh__btn" href={aboutHero.primaryHref as string} {...tinaAttrs(aboutHeroSource, 'primaryLabel')}>{aboutHero.primaryLabel}</a>
+          <a class="ovh__btn ovh__btn--ghost" href={aboutHero.secondaryHref as string} {...tinaAttrs(aboutHeroSource, 'secondaryLabel')}>{aboutHero.secondaryLabel}</a>
         </div>
       </div>
     </section>
@@ -163,14 +169,14 @@ const heroImage = imageDisplayUrl(aboutHero.image as PayloadMedia | string | und
     <section class="statement sec-light" data-theme="light" data-header-theme="light" aria-label="Haltung">
       <div class="section-inner">
         <div>
-          <h2>{aboutStatement.headline}<br /> <em>{aboutStatement.headlineEmphasis}</em>.</h2>
+          <h2 {...tinaAttrs(aboutStatementSource, 'headline')}>{aboutStatement.headline}<br /> <em {...tinaAttrs(aboutStatementSource, 'headlineEmphasis')}>{aboutStatement.headlineEmphasis}</em>.</h2>
         </div>
         <div class="body">
-          <p class="lead">{aboutStatement.lead}</p>
-          <p>{aboutStatement.body}</p>
+          <p class="lead" {...tinaAttrs(aboutStatementSource, 'lead')}>{aboutStatement.lead}</p>
+          <p {...tinaAttrs(aboutStatementSource, 'body')}>{aboutStatement.body}</p>
           <div class="actions">
-            <a class="btn dark" href={aboutStatement.primaryHref as string}>{aboutStatement.primaryLabel}</a>
-            <a class="btn" href={aboutStatement.secondaryHref as string} style="color:var(--ink);border-color:var(--ink)">{aboutStatement.secondaryLabel}</a>
+            <a class="btn dark" href={aboutStatement.primaryHref as string} {...tinaAttrs(aboutStatementSource, 'primaryLabel')}>{aboutStatement.primaryLabel}</a>
+            <a class="btn" href={aboutStatement.secondaryHref as string} style="color:var(--ink);border-color:var(--ink)" {...tinaAttrs(aboutStatementSource, 'secondaryLabel')}>{aboutStatement.secondaryLabel}</a>
           </div>
         </div>
       </div>
@@ -179,8 +185,8 @@ const heroImage = imageDisplayUrl(aboutHero.image as PayloadMedia | string | und
     <section class="chapters sec-dark" id="schwerpunkte" data-theme="dark" data-header-theme="dark" aria-label="Schwerpunkte">
       <div class="section-inner">
         <div class="chapters-head">
-          <h2>{aboutChapters.headline}<br /> <em>{aboutChapters.headlineEmphasis}</em>.</h2>
-          <p class="lead">{aboutChapters.intro}</p>
+          <h2 {...tinaAttrs(aboutChaptersSource, 'headline')}>{aboutChapters.headline}<br /> <em {...tinaAttrs(aboutChaptersSource, 'headlineEmphasis')}>{aboutChapters.headlineEmphasis}</em>.</h2>
+          <p class="lead" {...tinaAttrs(aboutChaptersSource, 'intro')}>{aboutChapters.intro}</p>
         </div>
         <div class="chapter-grid">
           {chapters.map((chapter) => (
@@ -193,10 +199,11 @@ const heroImage = imageDisplayUrl(aboutHero.image as PayloadMedia | string | und
                   width={chapter.width}
                   height={chapter.height}
                   decoding="async"
+                  {...tinaAttrs(chapter, 'image')}
                 />
               </div>
-              <div class="head"><h3>{chapter.title}</h3></div>
-              <span class="meta"><span class="arr">{chapter.linkLabel || 'Bereich ansehen →'}</span></span>
+              <div class="head"><h3 {...tinaAttrs(chapter, 'title')}>{chapter.title}</h3></div>
+              <span class="meta"><span class="arr" {...tinaAttrs(chapter, 'linkLabel')}>{chapter.linkLabel || 'Bereich ansehen →'}</span></span>
             </a>
           ))}
         </div>
@@ -206,23 +213,23 @@ const heroImage = imageDisplayUrl(aboutHero.image as PayloadMedia | string | und
     <section class="sister sec-light" data-theme="light" data-header-theme="light" aria-label="Sophia Ramahi — Videografin">
       <div class="section-inner sister-grid">
         <div class="sister-copy">
-          <p class="kicker dark">{aboutSister.kicker}</p>
-          <h2>{aboutSister.headline} <em>{aboutSister.headlineEmphasis}</em> sein soll.</h2>
-          <p class="lead">{aboutSister.lead}</p>
-          <p>{aboutSister.body}</p>
+          <p class="kicker dark" {...tinaAttrs(aboutSisterSource, 'kicker')}>{aboutSister.kicker}</p>
+          <h2 {...tinaAttrs(aboutSisterSource, 'headline')}>{aboutSister.headline} <em {...tinaAttrs(aboutSisterSource, 'headlineEmphasis')}>{aboutSister.headlineEmphasis}</em> sein soll.</h2>
+          <p class="lead" {...tinaAttrs(aboutSisterSource, 'lead')}>{aboutSister.lead}</p>
+          <p {...tinaAttrs(aboutSisterSource, 'body')}>{aboutSister.body}</p>
           <div class="actions">
-            <a class="btn dark" href={aboutSister.href as string}>{aboutSister.buttonLabel}</a>
+            <a class="btn dark" href={aboutSister.href as string} {...tinaAttrs(aboutSisterSource, 'buttonLabel')}>{aboutSister.buttonLabel}</a>
           </div>
         </div>
         <aside class="sister-plate" aria-label="Visitentafel Sophia Ramahi">
-          <p class="sister-plate__tag">{sisterPlate.tag}</p>
-          <p class="sister-plate__name">{sisterPlate.nameLine1}<br /><em>{sisterPlate.nameLine2}</em>.</p>
+          <p class="sister-plate__tag" {...tinaAttrs(sisterPlateSource, 'tag')}>{sisterPlate.tag}</p>
+          <p class="sister-plate__name" {...tinaAttrs(sisterPlateSource, 'nameLine1')}>{sisterPlate.nameLine1}<br /><em {...tinaAttrs(sisterPlateSource, 'nameLine2')}>{sisterPlate.nameLine2}</em>.</p>
           <ul class="sister-plate__roles">
             {sisterRoles.map((role) => (
-              <li>{role.label}</li>
+              <li {...tinaAttrs(role, 'label')}>{role.label}</li>
             ))}
           </ul>
-          <p class="sister-plate__loc">{sisterPlate.location}</p>
+          <p class="sister-plate__loc" {...tinaAttrs(sisterPlateSource, 'location')}>{sisterPlate.location}</p>
         </aside>
       </div>
     </section>

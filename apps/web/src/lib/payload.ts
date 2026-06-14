@@ -1,51 +1,19 @@
 import { fallbackPortfolioProjects } from '../data/fallbackPortfolio'
-import { versionCmsMediaUrl, versionStaticAssetUrl } from './cache'
+import { addUrlVersion, staticAssetVersion, versionCmsMediaUrl, versionStaticAssetUrl } from './cache'
+import type { CmsCta, CmsLegacyInfo, CmsLink, CmsMedia, CmsMediaSize, CmsSeo } from './cmsContentContract'
+import {
+  getTinaByLegacyUrl,
+  getTinaBySlug,
+  getTinaGlobal,
+  getTinaLegacyUrlIndex,
+  getTinaSitePageByType,
+  listTinaDocuments,
+} from './tinaContent'
 
-export type PayloadMediaSize = {
-  filename?: string
-  url?: string
-  width?: number
-  height?: number
-  mimeType?: string
-  filesize?: number
-}
-
-export type PayloadMedia = {
-  id: string
-  filename?: string
-  title?: string
-  alt?: string
-  caption?: string
-  url?: string
-  width?: number
-  height?: number
-  filesize?: number
-  focalX?: number
-  focalY?: number
-  dominantColor?: string
-  blurDataUrl?: string
-  updatedAt?: string
-  sizes?: Record<string, PayloadMediaSize>
-}
-
-export type PayloadLink = {
-  label?: string
-  href?: string
-  description?: string
-  platform?: string
-  openInNewTab?: boolean
-  rel?: string
-  seoPurpose?: string
-}
-
-export type PayloadCta = {
-  label?: string
-  href?: string
-  headline?: string
-  text?: string
-  buttonLabel?: string
-  emailSubject?: string
-}
+export type PayloadMediaSize = CmsMediaSize
+export type PayloadMedia = CmsMedia
+export type PayloadLink = CmsLink
+export type PayloadCta = CmsCta
 
 export type PayloadDoc = {
   id: string
@@ -324,25 +292,8 @@ export type PayloadDoc = {
   blocks?: unknown[]
   cta?: PayloadCta
   contactOverride?: PayloadCta
-  seo?: {
-    title?: string
-    description?: string
-    canonicalUrl?: string
-    legacyUrl?: string
-    noIndex?: boolean
-    ogImage?: PayloadMedia | string
-  }
-  legacy?: {
-    sourceFile?: string
-    sourceUrl?: string
-    migrationStatus?: string
-    renderSource?: string
-    renderedHeadHtml?: string
-    renderedBodyHtml?: string
-    afterFooterHtml?: string
-    bodyClass?: string
-    headerCurrent?: string
-  }
+  seo?: CmsSeo
+  legacy?: CmsLegacyInfo
   [key: string]: unknown
 }
 
@@ -414,6 +365,7 @@ type FetchOptions = {
 
 const productionSiteUrl = 'https://matthiasramahi.de'
 const productionPayloadUrl = 'https://cms.matthiasramahi.de'
+const productionMediaUrl = 'https://cms.matthiasramahi.de'
 
 const cachedCmsAssetMap: Array<[RegExp, string]> = [
   [/^mpissxxj-portfolio_webp_full_063-[12]-\d+x\d+\.webp$/i, '/assets/optimized/mpissxxj-portrait-480.webp'],
@@ -583,6 +535,14 @@ const payloadCacheTtlMs = Number(
 )
 const payloadTimeoutMs = Number(process.env.PAYLOAD_FETCH_TIMEOUT_MS ?? import.meta.env.PAYLOAD_FETCH_TIMEOUT_MS ?? 1_500)
 const disablePayloadFetch = process.env.ASTRO_DISABLE_PAYLOAD_FETCH === 'true'
+const localStaticAssetRe = /^\/?(?:assets|uploads)\//i
+const localUploadAssetRe = /^\/?uploads\//i
+
+export const cmsContentSource = () =>
+  String(process.env.ASTRO_CONTENT_SOURCE ?? import.meta.env.ASTRO_CONTENT_SOURCE ?? 'tina').trim().toLowerCase()
+
+const shouldReadTinaContent = () => ['tina', 'auto'].includes(cmsContentSource())
+const shouldFallbackToPayload = () => cmsContentSource() === 'auto'
 
 const numberFromEnv = (value: unknown, fallback: number) => {
   const parsed = Number(value)
@@ -699,10 +659,58 @@ type MediaUrlOptions = {
 
 const shouldMapCachedAssets = (options?: Pick<MediaUrlOptions, 'mapCachedAssets'>) => options?.mapCachedAssets !== false
 
+const mediaPublicBase = () => {
+  const configured =
+    process.env.ASTRO_PUBLIC_MEDIA_BASE_URL ||
+    process.env.PUBLIC_MEDIA_BASE_URL ||
+    import.meta.env.ASTRO_PUBLIC_MEDIA_BASE_URL ||
+    import.meta.env.PUBLIC_MEDIA_BASE_URL ||
+    (import.meta.env.PROD ? productionMediaUrl : '')
+  const clean = String(configured || '').trim().replace(/\/+$/, '')
+
+  if (!clean) return ''
+  if (import.meta.env.PROD && /https?:\/\/(?:localhost|127\.0\.0\.1)(?::\d+)?/i.test(clean)) return productionMediaUrl
+  return clean
+}
+
+const uploadPath = (url: string) => `/${url.replace(/^\/+/, '')}`
+
+export const toPublicMediaUrl = (url?: string) => {
+  if (!url) return ''
+  const cleanUrl = String(url)
+
+  if (/^https?:\/\//i.test(cleanUrl)) {
+    try {
+      const parsed = new URL(cleanUrl)
+      if (/^\/uploads\//i.test(parsed.pathname)) {
+        const base = mediaPublicBase()
+        const knownSiteHost = ['localhost', '127.0.0.1', 'matthiasramahi.de', 'www.matthiasramahi.de'].includes(
+          parsed.hostname,
+        )
+        if (base && knownSiteHost) {
+          return addUrlVersion(`${base}${parsed.pathname}${parsed.search}${parsed.hash}`, staticAssetVersion)
+        }
+      }
+    } catch {
+      return cleanUrl
+    }
+
+    return cleanUrl
+  }
+
+  if (!localUploadAssetRe.test(cleanUrl)) return cleanUrl
+
+  const path = uploadPath(cleanUrl)
+  const base = mediaPublicBase()
+  return base ? addUrlVersion(`${base}${path}`, staticAssetVersion) : versionStaticAssetUrl(path)
+}
+
 export const toAbsolutePayloadUrl = (url?: string, options: Pick<MediaUrlOptions, 'mapCachedAssets'> = {}) => {
   if (!url) return ''
   const cachedAsset = shouldMapCachedAssets(options) ? cachedCmsAssetPath(url) : ''
   if (cachedAsset) return toAbsoluteSiteUrl(versionStaticAssetUrl(cachedAsset))
+  if (localUploadAssetRe.test(url)) return toPublicMediaUrl(url)
+  if (localStaticAssetRe.test(url)) return toAbsoluteSiteUrl(versionStaticAssetUrl(`/${url.replace(/^\/+/, '')}`))
   if (/^https?:\/\//i.test(url)) {
     try {
       const parsed = new URL(url)
@@ -790,12 +798,16 @@ export const toDisplayAssetUrl = (url?: string, options: Pick<MediaUrlOptions, '
   if (!url) return ''
   const cachedAsset = shouldMapCachedAssets(options) ? cachedCmsAssetPath(url) : ''
   if (cachedAsset) return versionStaticAssetUrl(cachedAsset)
+  if (localUploadAssetRe.test(url)) return toPublicMediaUrl(url)
   if (/^https?:\/\//i.test(url)) {
     try {
       const parsed = new URL(url)
       const isKnownSiteHost = ['localhost', '127.0.0.1', 'www.matthiasramahi.de', 'matthiasramahi.de'].includes(
         parsed.hostname,
       )
+      if (isKnownSiteHost && /^\/uploads\//i.test(parsed.pathname)) {
+        return toPublicMediaUrl(`${parsed.pathname}${parsed.search}${parsed.hash}`)
+      }
       if (isKnownSiteHost && /^\/assets\//i.test(parsed.pathname)) {
         return versionStaticAssetUrl(`${parsed.pathname}${parsed.search}${parsed.hash}`)
       }
@@ -804,7 +816,7 @@ export const toDisplayAssetUrl = (url?: string, options: Pick<MediaUrlOptions, '
     }
     return url
   }
-  if (/^\/?assets\//i.test(url)) return versionStaticAssetUrl(`/${url.replace(/^\/+/, '')}`)
+  if (localStaticAssetRe.test(url)) return versionStaticAssetUrl(`/${url.replace(/^\/+/, '')}`)
   return toAbsolutePayloadUrl(url)
 }
 
@@ -872,8 +884,17 @@ export const imageUrl = (
 ) => {
   if (!media) return ''
   if (typeof media === 'string') {
-    if (/^https?:\/\//i.test(media)) return toAbsoluteSiteUrl(versionStaticAssetUrl(media))
-    if (/^\/?assets\//i.test(media)) return toAbsoluteSiteUrl(versionStaticAssetUrl(media))
+    if (/^https?:\/\//i.test(media)) {
+      try {
+        const parsed = new URL(media)
+        if (/^\/uploads\//i.test(parsed.pathname)) return toPublicMediaUrl(media)
+      } catch {
+        return media
+      }
+      return toAbsoluteSiteUrl(versionStaticAssetUrl(media))
+    }
+    if (localUploadAssetRe.test(media)) return toPublicMediaUrl(media)
+    if (localStaticAssetRe.test(media)) return toAbsoluteSiteUrl(versionStaticAssetUrl(media))
     return toAbsolutePayloadUrl(media, options)
   }
   const selected = bestSize(media, size, options.format || 'raster')
@@ -955,10 +976,16 @@ export async function payloadFetch<T>(
   draft = false,
   options: FetchOptions = {},
 ): Promise<T | null> {
+  if (shouldReadTinaContent() && !shouldFallbackToPayload()) return null
   return apiGet<T>(`/api/${collection}`, params, draft, options)
 }
 
 export async function getGlobal<T>(slug: string, options: GlobalOptions = {}): Promise<T | null> {
+  if (shouldReadTinaContent()) {
+    const tinaGlobal = getTinaGlobal<T>(slug)
+    if (tinaGlobal || !shouldFallbackToPayload()) return tinaGlobal
+  }
+
   return apiGet<T>(
     `/api/globals/${slug}`,
     {
@@ -975,6 +1002,11 @@ export const getFooter = (options: GlobalOptions = {}) => getGlobal<FooterGlobal
 export const getGlobalCtas = (options: GlobalOptions = {}) => getGlobal<GlobalCtas>('global-ctas', options)
 
 export async function listDocuments(collection: string, options: ListOptions = {}): Promise<PayloadDoc[]> {
+  if (shouldReadTinaContent()) {
+    const tinaDocs = listTinaDocuments(collection, options)
+    if (tinaDocs.length > 0 || !shouldFallbackToPayload()) return tinaDocs
+  }
+
   const data = await payloadFetch<{ docs?: PayloadDoc[] }>(
     collection,
     {
@@ -997,6 +1029,11 @@ export async function listDocuments(collection: string, options: ListOptions = {
 }
 
 export async function getBySlug(collection: string, slug: string, options: ListOptions = {}): Promise<PayloadDoc | null> {
+  if (shouldReadTinaContent()) {
+    const tinaDoc = getTinaBySlug(collection, slug, options)
+    if (tinaDoc || !shouldFallbackToPayload()) return tinaDoc
+  }
+
   const data = await payloadFetch<{ docs?: PayloadDoc[] }>(
     collection,
     {
@@ -1019,6 +1056,11 @@ export async function getBySlug(collection: string, slug: string, options: ListO
 }
 
 export async function getByLegacyUrl(collection: string, legacyUrl: string, options: ListOptions = {}): Promise<PayloadDoc | null> {
+  if (shouldReadTinaContent()) {
+    const tinaDoc = getTinaByLegacyUrl(collection, legacyUrl, options)
+    if (tinaDoc || !shouldFallbackToPayload()) return tinaDoc
+  }
+
   const data = await payloadFetch<{ docs?: PayloadDoc[] }>(
     collection,
     {
@@ -1059,6 +1101,11 @@ function indexLegacyDoc(map: Map<string, PayloadDoc>, doc: PayloadDoc) {
 }
 
 export async function getLegacyUrlIndex(collection: string, options: ListOptions = {}): Promise<Map<string, PayloadDoc>> {
+  if (shouldReadTinaContent()) {
+    const tinaIndex = getTinaLegacyUrlIndex(collection, options)
+    if (tinaIndex.size > 0 || !shouldFallbackToPayload()) return tinaIndex
+  }
+
   const cacheKey = `${collection}:${options.depth ?? 2}:${options.limit ?? 500}:${options.draft ? 'draft' : 'published'}:${options.force ? 'force' : 'default'}:${options.cacheMs ?? payloadCacheTtlMs}`
   const cached = legacyUrlIndexCache.get(cacheKey)
   if (cached) return cached
@@ -1094,6 +1141,11 @@ export async function getByLegacyUrlFromIndex(
 }
 
 export async function getSitePageByType(pageType: string, options: ListOptions = {}): Promise<PayloadDoc | null> {
+  if (shouldReadTinaContent()) {
+    const tinaDoc = getTinaSitePageByType(pageType, options)
+    if (tinaDoc || !shouldFallbackToPayload()) return tinaDoc
+  }
+
   const data = await payloadFetch<{ docs?: PayloadDoc[] }>(
     'site-pages',
     {

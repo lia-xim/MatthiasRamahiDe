@@ -25,6 +25,7 @@ export function InquiryConfirmationEmail({ data }: { data: InquiryEmailData }) {
     ['Referenz', refCode(data.id)],
     ['Themenbereich', data.intentLabel || 'Allgemein'],
   ]
+  if (data.projectType) rows.push(['Leistung', data.projectType])
   if (data.project) rows.push(['Projekt / Motiv', data.project])
   if (data.date) rows.push(['Zeitraum', data.date])
   if (data.use) rows.push(['Nutzung', data.use])
@@ -108,6 +109,7 @@ InquiryConfirmationEmail.PreviewProps = {
     contact: 'marie@example.com',
     message: 'Hallo, ich suche eine Bildserie für meinen 911 — Showroom und Social. Zeitraum ist flexibel.',
     intentLabel: 'Sportwagen',
+    projectType: 'Sportwagen-Fotografie',
     createdAt: '2026-06-01T09:30:00.000Z',
   } satisfies InquiryEmailData,
 } as { data: InquiryEmailData }

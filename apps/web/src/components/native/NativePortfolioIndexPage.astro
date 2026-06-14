@@ -18,11 +18,13 @@ import {
   toRootRelativeHref,
   type PayloadDoc,
 } from '../../lib/payload'
+import { tinaAttrs } from '../../lib/tinaFieldAttrs'
 
 const providedDoc = Astro.props.doc as PayloadDoc | undefined
 const doc = providedDoc || (await getSitePageByType('portfolio-index', liveCmsFetchOptions({ depth: 2 })))
 const heroSlides = (doc?.heroSlides || []).length > 0 ? homeHeroSlidesFor(doc) : portfolioHeroSlidesFallback
 const firstHeroSlide = heroSlides[0]
+const firstHeroSlideSource = doc?.heroSlides?.[0]
 const heroImages = heroSlides.map((slide) => slide.image)
 const heroSlidesJson = JSON.stringify(heroSlides)
 const emptyImage =
@@ -35,11 +37,22 @@ type CmsPortfolioPhoto = {
   href?: string
 }
 
+type EditablePortfolioPhoto = PortfolioPhoto & {
+  source?: CmsPortfolioPhoto
+}
+
+type CmsPortfolioSlice = NonNullable<NonNullable<PayloadDoc['portfolioIndex']>['slices']>[number]
+
+type EditablePortfolioSpread = PortfolioSpread & {
+  source?: CmsPortfolioSlice
+  photos: EditablePortfolioPhoto[]
+}
+
 const portfolioIndex = doc?.portfolioIndex
 const cleanText = (value?: string) => (typeof value === 'string' ? value.trim() : '')
 const filledTextRows = (rows?: Array<{ text?: string }>) => rows?.map((row) => cleanText(row.text)).filter(Boolean) || []
-const isPortfolioPhoto = (value: PortfolioPhoto | undefined): value is PortfolioPhoto => Boolean(value)
-const isPortfolioSpread = (value: PortfolioSpread | undefined): value is PortfolioSpread => Boolean(value)
+const isEditablePortfolioPhoto = (value: EditablePortfolioPhoto | undefined): value is EditablePortfolioPhoto => Boolean(value)
+const isEditablePortfolioSpread = (value: EditablePortfolioSpread | undefined): value is EditablePortfolioSpread => Boolean(value)
 const dimensionsFor = (media: CmsPortfolioPhoto['image'], fallbackWidth: number, fallbackHeight: number) => {
   const dims = imageDimensions(media, 'card')
   return {
@@ -47,7 +60,7 @@ const dimensionsFor = (media: CmsPortfolioPhoto['image'], fallbackWidth: number,
     height: dims.height || fallbackHeight,
   }
 }
-const portfolioPhotoFromCms = (item?: CmsPortfolioPhoto) => {
+const portfolioPhotoFromCms = (item?: CmsPortfolioPhoto): EditablePortfolioPhoto | undefined => {
   if (!item) return undefined
   const displayMedia = item.image || item.fullImage
   const fullMedia = item.fullImage || item.image
@@ -60,6 +73,7 @@ const portfolioPhotoFromCms = (item?: CmsPortfolioPhoto) => {
     caption: cleanText(item.caption) || imageAlt(displayMedia, 'Portfolio-Bild'),
     height: dims.height,
     href,
+    source: item,
     src,
     width: dims.width,
   }
@@ -73,7 +87,7 @@ const contextHeadline = cleanText(portfolioIndex?.contextHeadline) || 'Serien st
 const cmsSpreads =
   portfolioIndex?.slices
     ?.map((slice, index) => {
-      const photos = (slice.photos || []).map(portfolioPhotoFromCms).filter(isPortfolioPhoto)
+      const photos = (slice.photos || []).map(portfolioPhotoFromCms).filter(isEditablePortfolioPhoto)
       if (photos.length === 0) return undefined
 
       return {
@@ -82,15 +96,16 @@ const cmsSpreads =
         heading: cleanText(slice.heading) || cleanText(slice.label) || `Portfolio Slice ${index + 1}`,
         href: toRootRelativeHref(slice.href) || '#archive',
         linkLabel: cleanText(slice.linkLabel) || 'Zur Seite ->',
+        source: slice,
         theme: slice.theme === 'dark' ? 'dark' : 'light',
         photos,
-      } satisfies PortfolioSpread
+      } satisfies EditablePortfolioSpread
     })
-    .filter(isPortfolioSpread) || []
-const displaySpreads = cmsSpreads.length > 0 ? cmsSpreads : portfolioSpreads
+    .filter(isEditablePortfolioSpread) || []
+const displaySpreads = (cmsSpreads.length > 0 ? cmsSpreads : portfolioSpreads) as EditablePortfolioSpread[]
 
-const cmsArchivePhotos = (portfolioIndex?.archive?.items || []).map(portfolioPhotoFromCms).filter(isPortfolioPhoto)
-const archivePhotos = cmsArchivePhotos.length > 0 ? cmsArchivePhotos : portfolioArchivePhotos
+const cmsArchivePhotos = (portfolioIndex?.archive?.items || []).map(portfolioPhotoFromCms).filter(isEditablePortfolioPhoto)
+const archivePhotos = (cmsArchivePhotos.length > 0 ? cmsArchivePhotos : portfolioArchivePhotos) as EditablePortfolioPhoto[]
 const archiveBatchSize = Math.max(1, Math.min(Number(portfolioIndex?.archive?.batchSize) || 12, archivePhotos.length || 12))
 const archiveHeadline = cleanText(portfolioIndex?.archive?.headline) || 'Bildarchiv'
 const contactSubject = cleanText(portfolioIndex?.contact?.subject) || 'Shooting Anfrage'
@@ -108,21 +123,21 @@ const contactLead =
   liveCms
 >
   <main>
-    <section class="hero" data-theme="dark" data-header-theme="dark" aria-label="Portfolio" style={`background-image:url('${firstHeroSlide.image}')`}>
-      <canvas id="hero-shader" aria-hidden="true" data-imgs={heroImages.join(',')} data-slides={heroSlidesJson}></canvas>
+    <section class="hero" data-theme="dark" data-header-theme="dark" aria-label="Portfolio" style={`background-image:url('${firstHeroSlide.image}')`} {...tinaAttrs(firstHeroSlideSource, 'image')}>
+      <canvas id="hero-shader" aria-hidden="true" data-imgs={heroImages.join(',')} data-slides={heroSlidesJson} {...tinaAttrs(firstHeroSlideSource, 'image')}></canvas>
       <div class="hero-glow" aria-hidden="true"></div>
       <div class="hero-aperture" aria-hidden="true"></div>
       <div class="hero-grid">
         <div class="hero-stage">
           <h1 class="hero-title" id="hero-title" data-text-idx="0">
-            {firstHeroSlide.titleLines.map((line) => (
-              <span class="line"><span class="word">{line}</span></span>
+            {firstHeroSlide.titleLines.map((line, index) => (
+              <span class="line" {...tinaAttrs(firstHeroSlideSource, index === 0 ? 'headlineLine1' : 'headlineLine2')}><span class="word">{line}</span></span>
             ))}
           </h1>
-          <p class="hero-lead" id="hero-lead">{firstHeroSlide.lead}</p>
+          <p class="hero-lead" id="hero-lead" {...tinaAttrs(firstHeroSlideSource, 'lead')}>{firstHeroSlide.lead}</p>
           <div class="hero-actions" aria-label="Direkte Aktionen">
-            <a class="btn dark" href={firstHeroSlide.primaryHref} data-hero-primary hidden={!firstHeroSlide.primaryHref || !firstHeroSlide.primaryLabel}>{firstHeroSlide.primaryLabel}</a>
-            <a class="btn" href={firstHeroSlide.secondaryHref} data-hero-secondary hidden={!firstHeroSlide.secondaryHref || !firstHeroSlide.secondaryLabel}>{firstHeroSlide.secondaryLabel}</a>
+            <a class="btn dark" href={firstHeroSlide.primaryHref} data-hero-primary hidden={!firstHeroSlide.primaryHref || !firstHeroSlide.primaryLabel} {...tinaAttrs(firstHeroSlideSource, 'primaryLabel')}>{firstHeroSlide.primaryLabel}</a>
+            <a class="btn" href={firstHeroSlide.secondaryHref} data-hero-secondary hidden={!firstHeroSlide.secondaryHref || !firstHeroSlide.secondaryLabel} {...tinaAttrs(firstHeroSlideSource, 'secondaryLabel')}>{firstHeroSlide.secondaryLabel}</a>
           </div>
         </div>
       </div>
@@ -132,11 +147,11 @@ const contactLead =
     <section class="pf-context" data-header-theme="light" aria-label="Portfolio einordnen">
       <div class="pf-context__inner">
         <div>
-          <div class="pf-context__kicker">{contextKicker}</div>
-          <h2>{contextHeadline}</h2>
+          <div class="pf-context__kicker" {...tinaAttrs(portfolioIndex, 'contextKicker')}>{contextKicker}</div>
+          <h2 {...tinaAttrs(portfolioIndex, 'contextHeadline')}>{contextHeadline}</h2>
         </div>
         <div>
-          {contextParagraphs.map((paragraph) => <p>{paragraph}</p>)}
+          {contextParagraphs.map((paragraph, index) => <p {...tinaAttrs(portfolioIndex?.contextBody?.[index], 'text')}>{paragraph}</p>)}
         </div>
       </div>
     </section>
@@ -149,16 +164,16 @@ const contactLead =
         aria-label={spread.label}
       >
         <div class="pf-spread__head">
-          <h2>{spread.heading}</h2>
+          <h2 {...tinaAttrs(spread.source, 'heading')}>{spread.heading}</h2>
         </div>
         <div class="pf-spread__strip">
-          {spread.photos.map((photo) => (
+          {(spread.photos as EditablePortfolioPhoto[]).map((photo) => (
             <figure class="pf-photo">
-              <img src={photo.src} alt="" loading="lazy" decoding="async" width={photo.width} height={photo.height} />
+              <img src={photo.src} alt="" loading="lazy" decoding="async" width={photo.width} height={photo.height} {...tinaAttrs(photo.source, 'image')} />
             </figure>
           ))}
         </div>
-        <a class="pf-spread__cta" href={spread.href}>
+        <a class="pf-spread__cta" href={spread.href} {...tinaAttrs(spread.source, 'linkLabel')}>
           <span>{spread.linkLabel}</span>
         </a>
       </section>
@@ -166,7 +181,7 @@ const contactLead =
 
     <section class="pf-archive" id="archive" data-header-theme="light" aria-label="Archiv">
       <div class="pf-archive__head">
-        <h2>{archiveHeadline}</h2>
+        <h2 {...tinaAttrs(portfolioIndex?.archive, 'headline')}>{archiveHeadline}</h2>
       </div>
       <div class="pf-archive__grid" id="pfArchiveGrid" data-archive-batch={String(archiveBatchSize)}>
         {archivePhotos.map((photo, i) => (
@@ -179,6 +194,7 @@ const contactLead =
               decoding="async"
               width={photo.width}
               height={photo.height}
+              {...tinaAttrs(photo.source, 'image')}
             />
           </a>
         ))}

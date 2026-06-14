@@ -141,17 +141,7 @@ const cachedHomeHeroImage = (image: string) => {
 }
 
 const rawCmsMediaUrl = (media: PayloadMedia | string | undefined, size: 'wide' | 'hero' = 'wide') => {
-  if (!media) return ''
-  if (typeof media === 'string') return media
-
-  const sized = media.sizes?.[size]?.url || media.sizes?.hero?.url || media.url
-  if (!sized) return ''
-
-  const absolute = /^https?:\/\//i.test(sized)
-    ? sized
-    : `https://cms.matthiasramahi.de${sized.startsWith('/') ? '' : '/'}${sized}`
-  const separator = absolute.includes('?') ? '&' : '?'
-  return media.updatedAt ? `${absolute}${separator}m=${encodeURIComponent(media.updatedAt)}` : absolute
+  return imageDisplayUrl(media, size, { allowOriginal: true, mapCachedAssets: false })
 }
 
 const homeChapterSizes =

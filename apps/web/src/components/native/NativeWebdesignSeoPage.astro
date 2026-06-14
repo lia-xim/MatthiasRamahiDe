@@ -52,7 +52,7 @@ const heroSlidesJson = JSON.stringify(heroSlides)
   legacyFile={legacyFile}
   current="leistungen"
   doc={doc}
-  ogImage={heroImage}
+  ogImage={doc?.seo?.ogImage || heroImage}
   preloadImages={[heroImage]}
 >
   <main>

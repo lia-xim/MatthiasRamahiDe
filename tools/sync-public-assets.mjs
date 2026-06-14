@@ -91,10 +91,15 @@ async function removePublicRootHtml() {
   for (const entry of publicEntries) {
     if (!entry.isFile()) continue
     if (path.extname(entry.name).toLowerCase() !== '.html') continue
+    if (isGoogleSiteVerificationHtml(entry.name)) continue
     await fs.rm(path.join(publicRoot, entry.name), { force: true })
     removed += 1
     removedHtml += 1
   }
+}
+
+function isGoogleSiteVerificationHtml(fileName) {
+  return /^google[a-z0-9_-]+\.html$/i.test(fileName)
 }
 
 async function copyDirectory(sourceDir, targetDir, referencedAssets = null) {

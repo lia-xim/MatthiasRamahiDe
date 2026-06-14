@@ -3,6 +3,7 @@ import ContentBlocks from '../../components/ContentBlocks.astro'
 import ContactCta from '../../components/ContactCta.astro'
 import BaseLayout from '../../layouts/BaseLayout.astro'
 import { envFlag } from '../../lib/envFlags'
+import { tinaAttrs } from '../../lib/tinaFieldAttrs'
 import {
   getBySlug,
   imageDisplayUrl,
@@ -12,6 +13,7 @@ import {
   toAbsoluteSiteUrl,
 } from '../../lib/payload'
 import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd, type JsonLd } from '../../lib/seo'
+import { getTinaVisualDocumentBySlug, isTinaEditRequest } from '../../lib/tinaVisual'
 
 export const prerender = false
 
@@ -23,7 +25,8 @@ if (!cmsServiceRoutesEnabled) {
   return Astro.redirect(slug ? `/${slug}.html` : '/leistungen.html', 308)
 }
 
-const doc = Astro.props.doc ?? (slug ? await getBySlug('service-pages', slug) : null)
+const tinaDoc = slug && isTinaEditRequest(Astro.request) ? await getTinaVisualDocumentBySlug('servicePages', slug) : null
+const doc = tinaDoc ?? Astro.props.doc ?? (slug ? await getBySlug('service-pages', slug) : null)
 
 if (!doc) {
   return Astro.redirect('/services')
@@ -61,13 +64,13 @@ if (faqSchema) jsonLdItems.push(faqSchema)
   ogImage={doc.seo?.ogImage || doc.heroImage}
   jsonLd={jsonLdItems}
 >
-  <section class="hero-stage" style={hero ? `background: linear-gradient(180deg, rgba(2,3,6,.32), rgba(2,3,6,.9)), url('${hero}') center / cover;` : ''}>
+  <section class="hero-stage" style={hero ? `background: linear-gradient(180deg, rgba(2,3,6,.32), rgba(2,3,6,.9)), url('${hero}') center / cover;` : ''} {...tinaAttrs(doc, 'heroImage')}>
     <div class="hero-stage__grid container">
       <div>
         <p class="eyebrow">Leistung</p>
-        <h1 class="display">{doc.title}</h1>
+        <h1 class="display" {...tinaAttrs(doc, 'title')}>{doc.title}</h1>
       </div>
-      <p class="copy">{doc.intro}</p>
+      <p class="copy" {...tinaAttrs(doc, 'intro')}>{doc.intro}</p>
     </div>
   </section>
 
@@ -77,8 +80,8 @@ if (faqSchema) jsonLdItems.push(faqSchema)
       <div class="card-grid" style="margin-top: 24px;">
         {proofPoints.map((point) => (
           <article class="card">
-            <h3>{point.label}</h3>
-            <p class="copy">{point.text}</p>
+            <h3 {...tinaAttrs(point, 'label')}>{point.label}</h3>
+            <p class="copy" {...tinaAttrs(point, 'text')}>{point.text}</p>
           </article>
         ))}
       </div>
@@ -89,7 +92,7 @@ if (faqSchema) jsonLdItems.push(faqSchema)
     <section class="container section-pad is-compact">
       <p class="eyebrow">Geeignet fuer</p>
       <div class="filter-row">
-        {audience.map((entry) => entry.item && <span>{entry.item}</span>)}
+        {audience.map((entry) => entry.item && <span {...tinaAttrs(entry, 'item')}>{entry.item}</span>)}
       </div>
     </section>
   )}
@@ -102,8 +105,8 @@ if (faqSchema) jsonLdItems.push(faqSchema)
       <div class="stack-list">
         {faq.map((item) => (
           <article class="stack-item">
-            <h3>{item.question}</h3>
-            <p class="copy">{item.answer}</p>
+            <h3 {...tinaAttrs(item, 'question')}>{item.question}</h3>
+            <p class="copy" {...tinaAttrs(item, 'answer')}>{item.answer}</p>
           </article>
         ))}
       </div>
@@ -114,7 +117,7 @@ if (faqSchema) jsonLdItems.push(faqSchema)
     <section class="container section-pad is-compact">
       <p class="eyebrow">Verwandte Seiten</p>
       <div class="filter-row">
-        {relatedPages.map((link) => link.href && <a {...linkAttributes(link)}>{link.label}</a>)}
+        {relatedPages.map((link) => link.href && <a {...linkAttributes(link)} {...tinaAttrs(link, 'label')}>{link.label}</a>)}
       </div>
     </section>
   )}

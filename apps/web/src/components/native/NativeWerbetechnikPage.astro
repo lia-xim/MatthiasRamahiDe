@@ -47,7 +47,13 @@ const heroSlides = [
 ]
 const heroSlidesJson = JSON.stringify(heroSlides)
 ---
-<AdoptedPageLayout legacyFile={legacyFile} current="leistungen" doc={doc} description={metaDescription}>
+<AdoptedPageLayout
+  legacyFile={legacyFile}
+  current="leistungen"
+  doc={doc}
+  description={doc?.seo?.description || metaDescription}
+  ogImage={doc?.seo?.ogImage || heroImage}
+>
   <main>
     <section class="hero" data-theme="dark" data-header-theme="dark" aria-label="Werbetechnik Düsseldorf" style={`background-image:url('${heroImage}')`}>
       <canvas id="hero-shader" aria-hidden="true" data-imgs={heroImage} data-slides={heroSlidesJson}></canvas>

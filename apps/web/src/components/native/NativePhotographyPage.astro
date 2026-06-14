@@ -1,6 +1,7 @@
 ---
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import { blockParagraphs, homeHeroSlidesFor, photographyTopics as fallbackTopics } from '../../lib/nativeContent'
+import { tinaAttrs } from '../../lib/tinaFieldAttrs'
 import {
   getSitePageByType,
   imageAlt,
@@ -56,6 +57,9 @@ const meta = overviewMeta[legacyFile] || overviewMeta['fotografie.html']
 const canonicalPath = `/${legacyFile}`
 const providedDoc = (Astro.props as Props).doc
 const doc = providedDoc || (await getSitePageByType('photography-index', liveCmsFetchOptions({ depth: 2 })))
+const pageMetaTitle = doc?.seo?.title || meta.title
+const pageMetaDescription = doc?.seo?.description || meta.description
+const pageCanonicalUrl = doc?.seo?.canonicalUrl || canonicalPath
 // Übersichts-Hero: Titel = Bereichs-Lockup der jeweiligen Übersicht (z. B.
 // „Fotografie-Bereiche.“), die Slides zeigen die angebotenen Fotografie-Bereiche mit
 // eigenem Bild + Kurztext. Bewusst NICHT der Auto-/Düsseldorf-lastige Startseiten-Hero —
@@ -63,6 +67,7 @@ const doc = providedDoc || (await getSitePageByType('photography-index', liveCms
 // (Bewusst code-definiert statt CMS-heroSlides: die Prod-CMS-Slides der Übersicht trugen
 // den Auto-/Düsseldorf-Startseiten-Hero und sollen die Übersicht nicht mehr überschreiben.)
 const hasText = (value?: string): value is string => typeof value === 'string' && value.trim().length > 0
+const editableSource = (item: unknown) => (item as { source?: unknown } | null | undefined)?.source
 const topicSlug = (value = '') =>
   value.toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')
 
@@ -73,6 +78,7 @@ const cmsTopics = (doc?.photographyIndex?.topics || [])
     const id = topicSlug(topic.title) || `bereich-${index + 1}`
     const dimensions = imageDimensions(topic.image, 'card')
     return {
+      source: topic,
       id,
       theme: index % 2 === 0 ? 'dark' : 'light',
       className: `topic--${id}`,
@@ -111,20 +117,20 @@ const clusterParagraphs = clusterIntroCms.length
       'Nutzer wählen nicht aus einem generischen Portfolio, sondern steigen direkt in Automobil, Sportwagen, Oldtimer, Motorrad, Portrait oder Landschaft ein. Jede Kategorie zeigt auf ihrer Hauptseite die zugehörigen Städte und Regionen.',
     ])
 ---
-<AdoptedPageLayout legacyFile={legacyFile} current="fotografie" doc={doc} title={meta.title} description={meta.description} canonicalUrl={canonicalPath} ctaHref="#anfrage" preloadImages={[firstHeroSlide.image]} liveCms>
+<AdoptedPageLayout legacyFile={legacyFile} current="fotografie" doc={doc} title={pageMetaTitle} description={pageMetaDescription} canonicalUrl={pageCanonicalUrl} ctaHref="#anfrage" preloadImages={[firstHeroSlide.image]} liveCms>
   <main>
-    <section class="hero" data-theme="dark" aria-label="Intro" style={`background-image:url('${firstHeroSlide.image}')`}>
-      <canvas id="hero-shader" aria-hidden="true" data-imgs={heroImages.join(',')} data-slides={heroSlidesJson}></canvas>
+    <section class="hero" data-theme="dark" aria-label="Intro" style={`background-image:url('${firstHeroSlide.image}')`} {...tinaAttrs(doc?.heroSlides?.[0] || editableSource(topics[0]), doc?.heroSlides?.[0] ? 'image' : 'image')}>
+      <canvas id="hero-shader" aria-hidden="true" data-imgs={heroImages.join(',')} data-slides={heroSlidesJson} {...tinaAttrs(doc?.heroSlides?.[0] || editableSource(topics[0]), 'image')}></canvas>
       <div class="hero-glow" aria-hidden="true"></div>
       <div class="hero-aperture" aria-hidden="true"></div>
       <div class="hero-grid">
         <div class="hero-stage">
           <h1 class="hero-title" id="hero-title" data-text-idx="0">
-            {firstHeroSlide.titleLines.map((line) => (
-              <span class="line"><span class="word">{line}</span></span>
+            {firstHeroSlide.titleLines.map((line, index) => (
+              <span class="line" {...tinaAttrs(doc?.heroSlides?.[0], index === 0 ? 'headlineLine1' : 'headlineLine2')}><span class="word">{line}</span></span>
             ))}
           </h1>
-          <p class="hero-lead" id="hero-lead">{firstHeroSlide.lead}</p>
+          <p class="hero-lead" id="hero-lead" {...tinaAttrs(doc?.heroSlides?.[0] || doc, doc?.heroSlides?.[0] ? 'lead' : 'intro')}>{firstHeroSlide.lead}</p>
           <div class="hero-actions" aria-label="Direkte Aktionen">
             <a class="btn dark" href={firstHeroSlide.primaryHref} data-hero-primary hidden={!firstHeroSlide.primaryHref || !firstHeroSlide.primaryLabel}>{firstHeroSlide.primaryLabel}</a>
             <a class="btn" href={firstHeroSlide.secondaryHref} data-hero-secondary hidden={!firstHeroSlide.secondaryHref || !firstHeroSlide.secondaryLabel}>{firstHeroSlide.secondaryLabel}</a>
@@ -138,13 +144,13 @@ const clusterParagraphs = clusterIntroCms.length
       <section class={`topic ${topic.theme} ${topic.className}`} id={topic.id} data-theme={topic.theme}>
         <div class="topic-grid">
           <div class="topic-copy">
-            <h2><span>{topic.title}</span><em>{topic.emphasis}</em></h2>
-            <p>{topic.text}</p>
-            <a class="topic-link" href={topic.href}>{topic.linkLabel}</a>
+            <h2><span {...tinaAttrs(editableSource(topic), 'title')}>{topic.title}</span><em {...tinaAttrs(editableSource(topic), 'emphasis')}>{topic.emphasis}</em></h2>
+            <p {...tinaAttrs(editableSource(topic), 'text')}>{topic.text}</p>
+            <a class="topic-link" href={topic.href} {...tinaAttrs(editableSource(topic), 'linkLabel')}>{topic.linkLabel}</a>
           </div>
           <div class="topic-media" aria-hidden="true">
             <figure class="topic-frame" style={`--topic-ar:${topic.width}/${topic.height}`}>
-              <img src={topic.image} alt={topic.alt} loading="lazy" width={topic.width} height={topic.height} decoding="async" />
+              <img src={topic.image} alt={topic.alt} loading="lazy" width={topic.width} height={topic.height} decoding="async" {...tinaAttrs(editableSource(topic), 'image')} />
             </figure>
           </div>
         </div>
@@ -155,7 +161,7 @@ const clusterParagraphs = clusterIntroCms.length
       <div class="section-inner cluster-grid">
         <div><p class="kicker dark">Bereiche</p><h2>Ein Einstieg, <em>sechs Bereiche.</em></h2></div>
         <div class="cluster-copy">
-          {clusterParagraphs.map((paragraph) => <p>{paragraph}</p>)}
+          {clusterParagraphs.map((paragraph, index) => <p {...tinaAttrs(doc?.photographyIndex?.clusterIntro?.[index], 'text')}>{paragraph}</p>)}
           <div class="cluster-links">
             {topics.map((topic) => <a href={topic.href}>{topic.title.replace('.', '')}</a>)}
           </div>

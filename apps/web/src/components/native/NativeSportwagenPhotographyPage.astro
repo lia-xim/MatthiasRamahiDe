@@ -15,6 +15,7 @@ import { keywordFocusCopyForSlug } from '../../lib/localSeoFamilyContent'
 import { familyHeroCopy, familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
 import { getLegacyBackedDoc, imageAlt, imageDimensions, imageDisplayUrl, imageSrcset, type PayloadDoc, type PayloadMedia } from '../../lib/payload'
 import { splitTrailingEmphasis } from '../../lib/splitTrailingEmphasis'
+import { tinaAttrs } from '../../lib/tinaFieldAttrs'
 
 type Props = {
   doc?: PayloadDoc | null
@@ -487,6 +488,18 @@ const searchLinksTitle = splitTrailingEmphasis(
   cmsText(doc?.searchLinksSection?.headline) || 'Sportwagen Fotografie',
   cmsText(doc?.searchLinksSection?.emphasis) || 'Suchbegriffe.',
 )
+const heroPanelSource = (index: number) =>
+  doc?.heroPanels?.[index] || doc?.heroSlides?.[index] || visualDoc?.heroPanels?.[index] || visualDoc?.heroSlides?.[index]
+const heroTextSource = doc?.heroSlides?.[0] || visualDoc?.heroSlides?.[0] || doc
+const heroTitleField = (index: number) =>
+  heroTextSource === doc?.heroSlides?.[0] || heroTextSource === visualDoc?.heroSlides?.[0]
+    ? index === 0
+      ? 'headlineLine1'
+      : 'headlineLine2'
+    : index === 0
+      ? 'title'
+      : 'heroLine2'
+const heroLeadField = heroTextSource === doc?.heroSlides?.[0] || heroTextSource === visualDoc?.heroSlides?.[0] ? 'lead' : 'intro'
 ---
 <AdoptedPageLayout
   legacyFile={legacyFile}
@@ -495,7 +508,7 @@ const searchLinksTitle = splitTrailingEmphasis(
   noIndex={Boolean(preview)}
   title={metaTitle}
   description={metaDescription}
-  ogImage={visualSlots[1].full}
+  ogImage={doc?.seo?.ogImage || visualSlots[1].full}
   preloadImages={[
     { href: mobileHeroPreload, media: '(max-width: 720px)' },
     { href: desktopHeroPreload, media: '(min-width: 721px)' },
@@ -510,7 +523,7 @@ const searchLinksTitle = splitTrailingEmphasis(
     />
   )}
   <main>
-    <section class="hero-tri" id="top" data-header-theme="dark" aria-label={heroLabel}>
+    <section class="hero-tri" id="top" data-header-theme="dark" aria-label={heroLabel} {...tinaAttrs(heroPanelSource(0), 'image')}>
       <div class="tri-stage" aria-hidden="true">
         {finalHeroPanels.map(([name, image, mobileImage, visual], index) => (
           <div class="tri-col" data-tri={name}>
@@ -527,6 +540,7 @@ const searchLinksTitle = splitTrailingEmphasis(
                   width={visual.width}
                   height={visual.height}
                   decoding="async"
+                  {...tinaAttrs(heroPanelSource(index), 'image')}
                 />
               </picture>
             </div>
@@ -536,15 +550,15 @@ const searchLinksTitle = splitTrailingEmphasis(
 
       <div class="tri-overlay">
         <h1 class="tri-title" aria-label={heroLabel}>
-          {heroCopy.titleLines.map((line) => (
-            <span class="line"><span class="word">{line}</span></span>
+          {heroCopy.titleLines.map((line, index) => (
+            <span class="line" {...tinaAttrs(heroTextSource, heroTitleField(index))}><span class="word">{line}</span></span>
           ))}
         </h1>
-        {heroLocalNote && <p class="tri-local-note">{heroLocalNote}</p>}
-        <p class="tri-sub">{heroCopy.lead}</p>
+        {heroLocalNote && <p class="tri-local-note" {...tinaAttrs(doc, 'heroLine2')}>{heroLocalNote}</p>}
+        <p class="tri-sub" {...tinaAttrs(heroTextSource, heroLeadField)}>{heroCopy.lead}</p>
         <div class="tri-actions">
-          <a href={heroCopy.primaryHref}>{heroCopy.primaryLabel}</a>
-          <a class="ghost" href={heroCopy.secondaryHref}>{heroCopy.secondaryLabel}</a>
+          <a href={heroCopy.primaryHref} {...tinaAttrs(heroTextSource, 'primaryLabel')}>{heroCopy.primaryLabel}</a>
+          <a class="ghost" href={heroCopy.secondaryHref} {...tinaAttrs(heroTextSource, 'secondaryLabel')}>{heroCopy.secondaryLabel}</a>
         </div>
       </div>
     </section>
@@ -553,16 +567,16 @@ const searchLinksTitle = splitTrailingEmphasis(
       <div class="section-inner">
         <div class="st-copy">
           <h2>
-            {statementTitle.headline}
+            <span {...tinaAttrs(doc?.statement, 'headline')}>{statementTitle.headline}</span>
             {statementTitle.headline && statementTitle.emphasis ? ' ' : ''}
-            {statementTitle.emphasis && <em>{statementTitle.emphasis}</em>}
+            {statementTitle.emphasis && <em {...tinaAttrs(doc?.statement, 'emphasis')}>{statementTitle.emphasis}</em>}
           </h2>
           <div class="st-body">
-            {statementBody.map((paragraph) => <p>{paragraph}</p>)}
+            {statementBody.map((paragraph, index) => <p {...tinaAttrs(doc?.statement?.body?.[index], 'text')}>{paragraph}</p>)}
           </div>
         </div>
         <figure class="st-image">
-          <img loading="lazy" src={finalStatementImage.src} alt={finalStatementImage.alt} width={finalStatementImage.width} height={finalStatementImage.height} decoding="async" />
+          <img loading="lazy" src={finalStatementImage.src} alt={finalStatementImage.alt} width={finalStatementImage.width} height={finalStatementImage.height} decoding="async" {...tinaAttrs(doc?.statement, 'image')} />
         </figure>
       </div>
     </section>
@@ -570,16 +584,16 @@ const searchLinksTitle = splitTrailingEmphasis(
     <section class="sh" data-header-theme="dark">
       <div class="section-inner">
         <div class="sh-head">
-          <h2>{focusSectionHeadline} <em>{focusSectionEmphasis}</em></h2>
-          <p>{focusSectionLead}</p>
+          <h2><span {...tinaAttrs(doc?.focusSection, 'headline')}>{focusSectionHeadline}</span> <em {...tinaAttrs(doc?.focusSection, 'emphasis')}>{focusSectionEmphasis}</em></h2>
+          <p {...tinaAttrs(doc?.focusSection, 'lead')}>{focusSectionLead}</p>
         </div>
         <div class="sh-grid">
-          {finalShootingStyles.map((style) => (
+          {finalShootingStyles.map((style, index) => (
             <article class="sh-card">
-              <figure class="sh-img"><img loading="lazy" src={style.image} alt={style.alt} width={style.width} height={style.height} decoding="async" /></figure>
+              <figure class="sh-img"><img loading="lazy" src={style.image} alt={style.alt} width={style.width} height={style.height} decoding="async" {...tinaAttrs(doc?.shootingStyles?.[index], 'image')} /></figure>
               <div class="sh-text">
-                <h3>{style.title}</h3>
-                <p>{style.text}</p>
+                <h3 {...tinaAttrs(doc?.shootingStyles?.[index], 'title')}>{style.title}</h3>
+                <p {...tinaAttrs(doc?.shootingStyles?.[index], 'text')}>{style.text}</p>
               </div>
             </article>
           ))}
@@ -590,9 +604,9 @@ const searchLinksTitle = splitTrailingEmphasis(
     <section class="po" data-header-theme="dark" aria-label="Ausgewählte Sportwagen-Arbeiten">
       <div class="po-grid" id="poGrid">
         <header class="po-head">
-            <h2>{focusGalleryHeadline}</h2>
+            <h2 {...tinaAttrs(doc?.gallerySection, 'headline')}>{focusGalleryHeadline}</h2>
             <div class="head-foot">
-            <p>{focusGalleryLead}</p>
+            <p {...tinaAttrs(doc?.gallerySection, 'lead')}>{focusGalleryLead}</p>
           </div>
         </header>
 
@@ -606,13 +620,14 @@ const searchLinksTitle = splitTrailingEmphasis(
               width={tile.width}
               height={tile.height}
               decoding="async"
+              {...tinaAttrs(doc?.portfolioTiles?.[index], 'image')}
             />
             <span class="corner tl" aria-hidden="true"></span>
             <span class="corner tr" aria-hidden="true"></span>
             <span class="corner bl" aria-hidden="true"></span>
             <span class="corner br" aria-hidden="true"></span>
             <span class="zoom">Zoom</span>
-            <span class="lbl">{tile.label}</span>
+            <span class="lbl" {...tinaAttrs(doc?.portfolioTiles?.[index], 'label')}>{tile.label}</span>
           </button>
         ))}
       </div>
@@ -621,17 +636,17 @@ const searchLinksTitle = splitTrailingEmphasis(
     <section class="fw" data-header-theme="light">
       <div class="section-inner">
         <div class="fw-head">
-          <h2>{focusAudienceHeadline}</h2>
-          <p>{focusAudienceLead}</p>
+          <h2 {...tinaAttrs(doc?.audienceSection, 'headline')}>{focusAudienceHeadline}</h2>
+          <p {...tinaAttrs(doc?.audienceSection, 'lead')}>{focusAudienceLead}</p>
         </div>
         <div class="fw-grid">
-          {finalAudiences.map((audience) => (
+          {finalAudiences.map((audience, index) => (
             <article class="fw-card">
-              <img loading="lazy" src={audience.image} alt={audience.alt} width={audience.width} height={audience.height} decoding="async" />
+              <img loading="lazy" src={audience.image} alt={audience.alt} width={audience.width} height={audience.height} decoding="async" {...tinaAttrs(doc?.audienceCards?.[index], 'image')} />
               <div class="overlay"></div>
               <div class="content">
-                <strong>{audience.title}</strong>
-                <p>{audience.text}</p>
+                <strong {...tinaAttrs(doc?.audienceCards?.[index], 'title')}>{audience.title}</strong>
+                <p {...tinaAttrs(doc?.audienceCards?.[index], 'text')}>{audience.text}</p>
               </div>
             </article>
           ))}
@@ -642,15 +657,15 @@ const searchLinksTitle = splitTrailingEmphasis(
     <section class="rl" data-header-theme="dark">
       <div class="section-inner">
         <div class="rl-head">
-          <h2>{relatedSectionTitle.headline} <em>{relatedSectionTitle.emphasis}</em></h2>
-          <p>{focusRelatedLead}</p>
+          <h2><span {...tinaAttrs(doc?.relatedSection, 'headline')}>{relatedSectionTitle.headline}</span> <em {...tinaAttrs(doc?.relatedSection, 'emphasis')}>{relatedSectionTitle.emphasis}</em></h2>
+          <p {...tinaAttrs(doc?.relatedSection, 'lead')}>{focusRelatedLead}</p>
         </div>
         <div class="rl-grid">
-          {finalRelatedAreas.map((area) => (
+          {finalRelatedAreas.map((area, index) => (
             <a class="rl-card" href={area.href}>
-              <img data-src={area.dataSrc} src={area.src || area.dataSrc} loading="lazy" alt={area.alt} width={area.width} height={area.height} decoding="async" />
+              <img data-src={area.dataSrc} src={area.src || area.dataSrc} loading="lazy" alt={area.alt} width={area.width} height={area.height} decoding="async" {...tinaAttrs(doc?.relatedSection?.items?.[index], 'image')} />
               <div class="overlay"></div>
-              <div class="content"><div><strong>{area.title}</strong></div><span class="arrow">→</span></div>
+              <div class="content"><div><strong {...tinaAttrs(doc?.relatedSection?.items?.[index], 'title')}>{area.title}</strong></div><span class="arrow">→</span></div>
             </a>
           ))}
         </div>
@@ -669,10 +684,10 @@ const searchLinksTitle = splitTrailingEmphasis(
     <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Sportwagen Fotografie in NRW">
       <div class="mr-cities__inner">
         <div class="mr-cities__head">
-          <h2>{locationLinksTitle.headline} <em>{locationLinksTitle.emphasis}</em></h2>
+          <h2><span {...tinaAttrs(doc?.locationLinksSection, 'headline')}>{locationLinksTitle.headline}</span> <em {...tinaAttrs(doc?.locationLinksSection, 'emphasis')}>{locationLinksTitle.emphasis}</em></h2>
         </div>
         <nav class="mr-cities__grid" aria-label="Städte">
-          {cityLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
+          {cityLinks.map(([href, label], index) => <a class="mr-cities__cell" href={href} {...tinaAttrs(doc?.locationLinksSection?.items?.[index], 'label')}>{label}</a>)}
         </nav>
       </div>
     </section>
@@ -680,10 +695,10 @@ const searchLinksTitle = splitTrailingEmphasis(
     <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Sportwagen Fotografie Suchbegriffe">
       <div class="mr-cities__inner">
         <div class="mr-cities__head">
-          <h2>{searchLinksTitle.headline} <em>{searchLinksTitle.emphasis}</em></h2>
+          <h2><span {...tinaAttrs(doc?.searchLinksSection, 'headline')}>{searchLinksTitle.headline}</span> <em {...tinaAttrs(doc?.searchLinksSection, 'emphasis')}>{searchLinksTitle.emphasis}</em></h2>
         </div>
         <nav class="mr-cities__grid" aria-label="Suchvarianten">
-          {searchLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
+          {searchLinks.map(([href, label], index) => <a class="mr-cities__cell" href={href} {...tinaAttrs(doc?.searchLinksSection?.items?.[index], 'label')}>{label}</a>)}
         </nav>
       </div>
     </section>

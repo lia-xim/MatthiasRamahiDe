@@ -32,6 +32,7 @@ apps/web/.site-quality/
 .lighthouse/
 apps/web/.contact-queue/
 apps/web/public/*.html
+!apps/web/public/google*.html
 apps/web/public/assets/
 apps/web/public/*.avif
 apps/web/public/*.gif
@@ -44,9 +45,12 @@ apps/web/public/*.svg
 apps/web/public/*.webm
 apps/web/public/*.webmanifest
 apps/web/public/*.webp
+apps/web/public/uploads/payload/
+apps/web/public/uploads/generated/
 apps/cms/.next/
 apps/cms/media/
 apps/cms/payload-dev.db*
+apps/web/tina/__generated__/
 
 *.log
 *.tsbuildinfo

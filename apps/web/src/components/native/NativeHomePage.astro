@@ -21,6 +21,7 @@ import {
   type PayloadDoc,
   type PayloadMedia,
 } from '../../lib/payload'
+import { tinaAttrs } from '../../lib/tinaFieldAttrs'
 
 type PreviewState = {
   collection: string
@@ -41,6 +42,7 @@ const heroSlides = homeHeroSlidesFor(doc)
 const firstHeroSlide = heroSlides[0]
 
 const hasText = (value?: string): value is string => typeof value === 'string' && value.trim().length > 0
+const editableSource = (item: unknown) => (item as { source?: unknown } | null | undefined)?.source
 
 // Bildgroessen (technische Moeblierung, bleibt Code — wird nicht im CMS gepflegt)
 const chapterSizes = '(max-width: 780px) calc((100vw - 52px) / 2), (max-width: 1180px) calc((100vw - 112px) / 2), 437px'
@@ -77,6 +79,7 @@ const chaptersIntro = hasText(chaptersGroup?.intro)
 const cmsChapters = (chaptersGroup?.items || [])
   .filter((item) => item?.image)
   .map((item) => ({
+    source: item,
     href: toRootRelativeHref(item.href) || '#',
     image: imageDisplayUrl(item.image, 'card', { allowOriginal: true }),
     srcset: cmsSrcset(item.image),
@@ -134,6 +137,7 @@ const servicesIntro = hasText(servicesGroup?.intro)
 const cmsServices = (servicesGroup?.items || [])
   .filter((item) => hasText(item?.title))
   .map((item) => ({
+    source: item,
     href: toRootRelativeHref(item.href) || '#',
     title: item.title || '',
     text: item.text || '',
@@ -150,6 +154,7 @@ const journalIntro = hasText(journalGroup?.intro)
 const cmsJournalCards = (journalGroup?.items || [])
   .filter((item) => item?.image)
   .map((item) => ({
+    source: item,
     href: toRootRelativeHref(item.href) || '#',
     image: imageDisplayUrl(item.image, 'card', { allowOriginal: true }),
     dataSrcset: cmsSrcset(item.image),
@@ -179,18 +184,18 @@ const journalCards = cmsJournalCards.length ? cmsJournalCards : fallbackJournalC
     />
   )}
   <main>
-    <NativeShaderHero label="Intro" slides={heroSlides} />
+    <NativeShaderHero label="Intro" slides={heroSlides} sourceSlides={doc?.heroSlides || []} />
 
     <section class="statement sec-light" data-theme="light" aria-label="Haltung">
       <div class="section-inner">
         <div>
           {statementHeadline
-            ? <h2>{statementHeadline}{statementEmphasis ? <Fragment> <em>{statementEmphasis}</em></Fragment> : null}</h2>
+            ? <h2 {...tinaAttrs(statement, 'headline')}>{statementHeadline}{statementEmphasis ? <Fragment> <em {...tinaAttrs(statement, 'headlineEmphasis')}>{statementEmphasis}</em></Fragment> : null}</h2>
             : <h2>Bilder, die einen Raum<br /><em>verändern</em>.</h2>}
         </div>
         <div class="body">
-          <p class="lead">{statementParagraphs[0]}</p>
-          {statementParagraphs[1] && <p>{statementParagraphs[1]}</p>}
+          <p class="lead" {...tinaAttrs(statement?.body?.[0], 'text')}>{statementParagraphs[0]}</p>
+          {statementParagraphs[1] && <p {...tinaAttrs(statement?.body?.[1], 'text')}>{statementParagraphs[1]}</p>}
           <div class="actions">
             <a class="btn dark" href="/ueber-mich.html">Mehr über mich</a>
             <a class="btn" href="#chapters" style="color:var(--ink);border-color:var(--ink)">Bereiche ansehen</a>
@@ -203,17 +208,17 @@ const journalCards = cmsJournalCards.length ? cmsJournalCards : fallbackJournalC
       <div class="section-inner">
         <div class="chapters-head">
           {chaptersHeadline
-            ? <h2>{chaptersHeadline}{chaptersEmphasis ? <Fragment> <em>{chaptersEmphasis}</em></Fragment> : null}</h2>
+            ? <h2 {...tinaAttrs(chaptersGroup, 'headline')}>{chaptersHeadline}{chaptersEmphasis ? <Fragment> <em {...tinaAttrs(chaptersGroup, 'headlineEmphasis')}>{chaptersEmphasis}</em></Fragment> : null}</h2>
             : <h2>Sechs Bereiche.<br />Eine <em>Linse</em>.</h2>}
-          <p class="lead">{chaptersIntro}</p>
+          <p class="lead" {...tinaAttrs(chaptersGroup, 'intro')}>{chaptersIntro}</p>
         </div>
         <div class="chapter-grid">
           {chapters.map((chapter) => (
             <a class="chapter" href={chapter.href}>
               <div class="img">
-                <img src={chapter.image} srcset={chapter.srcset} sizes={chapter.sizes} alt={chapter.alt} loading="lazy" width={chapter.width} height={chapter.height} decoding="async" />
+                <img src={chapter.image} srcset={chapter.srcset} sizes={chapter.sizes} alt={chapter.alt} loading="lazy" width={chapter.width} height={chapter.height} decoding="async" {...tinaAttrs(editableSource(chapter), 'image')} />
               </div>
-              <div class="head"><h3>{chapter.title}</h3></div>
+              <div class="head"><h3 {...tinaAttrs(editableSource(chapter), 'title')}>{chapter.title}</h3></div>
               <span class="meta"><span class="arr">Bereich ansehen →</span></span>
             </a>
           ))}
@@ -225,9 +230,9 @@ const journalCards = cmsJournalCards.length ? cmsJournalCards : fallbackJournalC
       <div class="section-inner">
         <div class="pf-head">
           {selectedWorksHeadline
-            ? <h2>{selectedWorksHeadline}{selectedWorksEmphasis ? <Fragment> <em>{selectedWorksEmphasis}</em></Fragment> : null}</h2>
+            ? <h2 {...tinaAttrs(selectedWorks, 'headline')}>{selectedWorksHeadline}{selectedWorksEmphasis ? <Fragment> <em {...tinaAttrs(selectedWorks, 'headlineEmphasis')}>{selectedWorksEmphasis}</em></Fragment> : null}</h2>
             : <h2>Ausgewählte<br /><em>Arbeiten</em>.</h2>}
-          <p class="lead">{portfolioIntro}</p>
+          <p class="lead" {...tinaAttrs(selectedWorks, 'intro')}>{portfolioIntro}</p>
         </div>
         <div class="pf-marquee" id="pfMarquee">
           <div class="pf-row row-1">
@@ -246,15 +251,15 @@ const journalCards = cmsJournalCards.length ? cmsJournalCards : fallbackJournalC
     <section class="about sec-dark" data-theme="dark" aria-label="Über mich">
       <div class="section-inner">
         <div class="about-img">
-          <img src={aboutImage} srcset={resolvedAboutImageSrcset} sizes={aboutSizes} alt={aboutImageAlt} loading="lazy" width={aboutImageDimensions.width} height={aboutImageDimensions.height} decoding="async" />
+          <img src={aboutImage} srcset={resolvedAboutImageSrcset} sizes={aboutSizes} alt={aboutImageAlt} loading="lazy" width={aboutImageDimensions.width} height={aboutImageDimensions.height} decoding="async" {...tinaAttrs(about, 'image')} />
         </div>
         <div class="about-copy">
-          <p class="kicker">{aboutKicker}</p>
+          <p class="kicker" {...tinaAttrs(about, 'kicker')}>{aboutKicker}</p>
           {aboutHeadline
-            ? <h2>{aboutHeadline}{aboutEmphasis ? <Fragment> <em>{aboutEmphasis}</em></Fragment> : null}</h2>
+            ? <h2 {...tinaAttrs(about, 'headline')}>{aboutHeadline}{aboutEmphasis ? <Fragment> <em {...tinaAttrs(about, 'headlineEmphasis')}>{aboutEmphasis}</em></Fragment> : null}</h2>
             : <h2>Hinter der<br /><em>Kamera</em>.</h2>}
-          <p class="lead">{aboutParagraphs[0]}</p>
-          {aboutParagraphs[1] && <p>{aboutParagraphs[1]}</p>}
+          <p class="lead" {...tinaAttrs(about?.body?.[0], 'text')}>{aboutParagraphs[0]}</p>
+          {aboutParagraphs[1] && <p {...tinaAttrs(about?.body?.[1], 'text')}>{aboutParagraphs[1]}</p>}
           <div class="actions">
             <a class="btn primary" href="/ueber-mich.html">Mehr über mich</a>
             <a class="btn" href="#anfrage" style="color:#f3f5ef;border-color:rgba(243,245,239,.4)">Projekt anfragen</a>
@@ -267,14 +272,14 @@ const journalCards = cmsJournalCards.length ? cmsJournalCards : fallbackJournalC
       <div class="section-inner">
         <div class="services-head">
           {servicesHeadline
-            ? <h2>{servicesHeadline}{servicesEmphasis ? <Fragment> <em>{servicesEmphasis}</em></Fragment> : null}</h2>
+            ? <h2 {...tinaAttrs(servicesGroup, 'headline')}>{servicesHeadline}{servicesEmphasis ? <Fragment> <em {...tinaAttrs(servicesGroup, 'headlineEmphasis')}>{servicesEmphasis}</em></Fragment> : null}</h2>
             : <h2>Weitere Leistungen<br /><em>im&nbsp;Überblick</em>.</h2>}
-          <p class="lead">{servicesIntro}</p>
+          <p class="lead" {...tinaAttrs(servicesGroup, 'intro')}>{servicesIntro}</p>
         </div>
         <div class="services-list">
           {services.map((service) => (
             <a class="service-row" href={service.href}>
-              <h3>{service.title}</h3><p>{service.text}</p><span class="arr">Detail →</span>
+              <h3 {...tinaAttrs(editableSource(service), 'title')}>{service.title}</h3><p {...tinaAttrs(editableSource(service), 'text')}>{service.text}</p><span class="arr">Detail →</span>
             </a>
           ))}
         </div>
@@ -288,9 +293,9 @@ const journalCards = cmsJournalCards.length ? cmsJournalCards : fallbackJournalC
       <div class="section-inner">
         <div class="blog-head">
           {journalHeadline
-            ? <h2>{journalHeadline}{journalEmphasis ? <Fragment> <em>{journalEmphasis}</em></Fragment> : null}</h2>
+            ? <h2 {...tinaAttrs(journalGroup, 'headline')}>{journalHeadline}{journalEmphasis ? <Fragment> <em {...tinaAttrs(journalGroup, 'headlineEmphasis')}>{journalEmphasis}</em></Fragment> : null}</h2>
             : <h2>Journal.</h2>}
-          <p class="lead">{journalIntro}</p>
+          <p class="lead" {...tinaAttrs(journalGroup, 'intro')}>{journalIntro}</p>
         </div>
         <div class="blog-grid">
           {journalCards.map((post) => (
@@ -305,10 +310,11 @@ const journalCards = cmsJournalCards.length ? cmsJournalCards : fallbackJournalC
                   width={post.width}
                   height={post.height}
                   decoding="async"
+                  {...tinaAttrs(editableSource(post), 'image')}
                 />
               </div>
-              <h3>{post.title}</h3>
-              <p>{post.text}</p>
+              <h3 {...tinaAttrs(editableSource(post), 'title')}>{post.title}</h3>
+              <p {...tinaAttrs(editableSource(post), 'text')}>{post.text}</p>
               <span class="read">Lesen →</span>
             </a>
           ))}

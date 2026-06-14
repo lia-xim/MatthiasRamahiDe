@@ -1,0 +1,47 @@
+{
+  "generatedAt": "2026-06-13T09:22:55.992Z",
+  "source": "outputs/payload-tina-migration-20260613-002033/payload-export",
+  "contentRoot": "apps/web/content",
+  "summary": {
+    "pages": {
+      "documents": 9,
+      "outDir": "apps/web/content/pages"
+    },
+    "servicePages": {
+      "documents": 13,
+      "outDir": "apps/web/content/service-pages"
+    },
+    "localSeoPages": {
+      "documents": 216,
+      "outDir": "apps/web/content/local-seo-pages"
+    },
+    "portfolioCategories": {
+      "documents": 6,
+      "outDir": "apps/web/content/portfolio-categories"
+    },
+    "portfolioProjects": {
+      "documents": 6,
+      "outDir": "apps/web/content/portfolio-projects"
+    },
+    "journalPosts": {
+      "documents": 7,
+      "outDir": "apps/web/content/journal-posts"
+    },
+    "siteSettings": {
+      "documents": 1,
+      "outDir": "apps/web/content/globals/site-settings"
+    },
+    "navigation": {
+      "documents": 1,
+      "outDir": "apps/web/content/globals/navigation"
+    },
+    "globalCtas": {
+      "documents": 1,
+      "outDir": "apps/web/content/globals/global-ctas"
+    },
+    "footer": {
+      "documents": 1,
+      "outDir": "apps/web/content/globals/footer"
+    }
+  }
+}

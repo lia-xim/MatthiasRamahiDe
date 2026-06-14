@@ -1,0 +1,162 @@
+{
+  "title": "Datenschutz",
+  "slug": "datenschutz",
+  "pageType": "legal",
+  "intro": "Rechtliches / Matthias Ramahi",
+  "heroSlides": [],
+  "homeStatement": {
+    "body": []
+  },
+  "homeChapters": {
+    "items": []
+  },
+  "homeSelectedWorks": {},
+  "homeAbout": {
+    "body": []
+  },
+  "homeServices": {
+    "items": []
+  },
+  "homeJournal": {
+    "items": []
+  },
+  "aboutHero": {},
+  "aboutStatement": {},
+  "aboutChapters": {
+    "items": []
+  },
+  "aboutSister": {
+    "plate": {
+      "roles": []
+    }
+  },
+  "aboutContact": {},
+  "photographyIndex": {
+    "clusterIntro": [],
+    "topics": []
+  },
+  "portfolioIndex": {
+    "contextBody": [],
+    "slices": [],
+    "archive": {
+      "batchSize": 12,
+      "items": []
+    },
+    "contact": {}
+  },
+  "servicesIndex": {
+    "items": [],
+    "whyCards": []
+  },
+  "journalIndex": {
+    "tickerItems": [],
+    "featured": {},
+    "initialVisiblePostCount": 6,
+    "filters": [],
+    "finalCta": {}
+  },
+  "blocks": [
+    {
+      "body": "Rechtliches / Matthias Ramahi",
+      "_template": "textBlock"
+    },
+    {
+      "headline": "Datenschutz",
+      "body": "Informationen darüber, welche personenbezogenen Daten verarbeitet werden, zu welchen Zwecken dies geschieht und welche Rechte betroffene Personen haben.",
+      "_template": "textBlock"
+    },
+    {
+      "headline": "Präambel",
+      "body": "Mit dieser Datenschutzerklärung informieren wir darüber, welche Arten personenbezogener Daten zu welchen Zwecken und in welchem Umfang verarbeitet werden. Die Erklärung gilt für alle Verarbeitungen im Rahmen unserer Leistungen, auf unseren Webseiten sowie innerhalb externer Onlinepräsenzen.",
+      "_template": "textBlock"
+    },
+    {
+      "headline": "Verantwortlicher",
+      "body": "Kempener Straße 44 40699 Erkrath\n\nE-Mail: info@matthiasramahi.de",
+      "_template": "textBlock"
+    },
+    {
+      "headline": "Maßgebliche Rechtsgrundlagen",
+      "body": "Die Verarbeitung personenbezogener Daten erfolgt insbesondere auf Grundlage der DSGVO:\n\nZusätzlich können nationale Datenschutzregelungen in Deutschland, insbesondere das BDSG, Anwendung finden.",
+      "_template": "textBlock"
+    },
+    {
+      "headline": "Sicherheitsmaßnahmen",
+      "body": "Wir treffen nach Maßgabe der gesetzlichen Vorgaben geeignete technische und organisatorische Maßnahmen, um ein dem Risiko angemessenes Schutzniveau zu gewährleisten. Hierzu gehören Maßnahmen zur Sicherung von Vertraulichkeit, Integrität und Verfügbarkeit der Daten.\n\nOnline-Verbindungen werden – soweit technisch verfügbar – durch TLS-/SSL-Verschlüsselung geschützt. Eine verschlüsselte Verbindung ist in der Regel an „HTTPS“ in der Adresszeile des Browsers erkennbar.",
+      "_template": "textBlock"
+    },
+    {
+      "headline": "Übermittlung, internationale Transfers und Löschung",
+      "body": "Im Rahmen der Verarbeitung kann es vorkommen, dass Daten an Dienstleister oder andere Stellen übermittelt werden, soweit dies zur Bereitstellung des Onlineangebotes, zur Kommunikation oder zur Bearbeitung von Anfragen erforderlich ist.\n\nDaten werden gelöscht, sobald sie für die jeweiligen Zwecke nicht mehr erforderlich sind und keine gesetzlichen Aufbewahrungspflichten entgegenstehen.",
+      "_template": "textBlock"
+    },
+    {
+      "headline": "Rechte der betroffenen Personen",
+      "body": "Betroffene Personen haben nach Maßgabe der gesetzlichen Vorgaben insbesondere Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit sowie Widerspruch gegen bestimmte Verarbeitungen. Soweit eine Verarbeitung auf Einwilligung beruht, kann diese Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen werden.\n\nAußerdem besteht ein Beschwerderecht bei einer zuständigen Datenschutzaufsichtsbehörde.",
+      "_template": "textBlock"
+    },
+    {
+      "headline": "Webhosting und Server-Logs",
+      "body": "Beim Aufruf dieser Website werden technisch notwendige Daten verarbeitet, damit die Seite ausgeliefert und sicher betrieben werden kann. Dazu können IP-Adresse, Datum und Uhrzeit, aufgerufene Seiten, Browserinformationen, Betriebssystem und Referrer-URL gehören.",
+      "_template": "textBlock"
+    },
+    {
+      "headline": "Cookies, Blog und Kontakt",
+      "body": "Cookies können eingesetzt werden, um das Onlineangebot nutzerfreundlich, sicher und technisch stabil bereitzustellen. Nutzer können die Speicherung von Cookies in ihren Browser-Einstellungen einschränken.\n\nWenn Sie uns per E-Mail oder Kontaktformular kontaktieren, verarbeiten wir die übermittelten Angaben zur Bearbeitung der Anfrage und für mögliche Anschlussfragen. Blog- und Publikationsinhalte können verarbeitet werden, wenn Nutzer mit entsprechenden Funktionen interagieren.",
+      "_template": "textBlock"
+    },
+    {
+      "headline": "Webanalyse, Monitoring und Social Media",
+      "body": "Soweit Webanalyse- oder Monitoring-Dienste eingesetzt werden, geschieht dies zur Reichweitenmessung, Optimierung und Sicherheit des Onlineangebotes. Präsenzen in sozialen Netzwerken dienen der Außendarstellung und Kommunikation mit Interessenten.\n\nWenn Google Analytics eingesetzt wird, verwendet der Dienst Cookies zur Analyse der Nutzung. Die durch Cookies erzeugten Informationen können an Server von Google übertragen werden. Nutzer können die Installation von Cookies durch entsprechende Browser-Einstellungen verhindern.",
+      "_template": "textBlock"
+    },
+    {
+      "headline": "Änderung und Aktualisierung",
+      "body": "Wir bitten darum, sich regelmäßig über den Inhalt dieser Datenschutzerklärung zu informieren. Die Datenschutzerklärung wird angepasst, sobald Änderungen der von uns durchgeführten Datenverarbeitungen dies erforderlich machen.",
+      "_template": "textBlock"
+    }
+  ],
+  "contactOverride": {},
+  "seo": {
+    "title": "Datenschutzerklärung — Matthias Ramahi",
+    "description": "Datenschutzerklärung von Matthias Ramahi: Informationen zur Verarbeitung personenbezogener Daten, Kontakt, Webhosting, Cookies und Betroffenenrechten.",
+    "secondaryKeywords": [],
+    "internalLinkAnchors": [],
+    "canonicalUrl": "https://matthiasramahi.de/datenschutz.html",
+    "legacyUrl": "datenschutz.html",
+    "noIndex": false,
+    "focusKeyword": "Datenschutz Matthias Ramahi Fotografie",
+    "searchIntent": "Rechtliche Navigation: Nutzer suchen Datenschutzinformationen.",
+    "ogImage": "/assets/optimized/assets-photos-automobil-sunset-1920.webp"
+  },
+  "legacy": {
+    "sourceFile": "datenschutz.html",
+    "sourceUrl": "https://matthiasramahi.de/datenschutz.html",
+    "migrationStatus": "reviewed",
+    "renderSource": "payload-legacy-html",
+    "renderedHeadHtml": "\n  <meta charset=\"utf-8\" />\n  <meta name=\"viewport\" content=\"width=device-width,initial-scale=1\" />\n  <meta name=\"twitter:image\" content=\"https://matthiasramahi.de/assets/optimized/assets-photos-automobil-sunset-1920.webp\" />\n  <meta name=\"twitter:description\" content=\"Datenschutzerklärung von Matthias Ramahi: Informationen zur Verarbeitung personenbezogener Daten, Kontakt, Webhosting, Cookies und Betroffenenrechten.\" />\n  <meta name=\"twitter:title\" content=\"Datenschutzerklärung — Matthias Ramahi\" />\n  <meta name=\"twitter:card\" content=\"summary_large_image\" />\n  <meta property=\"og:image:alt\" content=\"Datenschutzerklärung — Matthias Ramahi\" />\n  <meta property=\"og:image\" content=\"https://matthiasramahi.de/assets/optimized/assets-photos-automobil-sunset-1920.webp\" />\n  <meta property=\"og:url\" content=\"https://matthiasramahi.de/datenschutz.html\" />\n  <meta property=\"og:description\" content=\"Datenschutzerklärung von Matthias Ramahi: Informationen zur Verarbeitung personenbezogener Daten, Kontakt, Webhosting, Cookies und Betroffenenrechten.\" />\n  <meta property=\"og:title\" content=\"Datenschutzerklärung — Matthias Ramahi\" />\n  <meta property=\"og:locale\" content=\"de_DE\" />\n  <meta property=\"og:site_name\" content=\"Matthias Ramahi Fotografie\" />\n  <meta property=\"og:type\" content=\"website\" />\n  <meta name=\"robots\" content=\"index,follow,max-image-preview:large,max-snippet:-1\" />\n  <meta name=\"author\" content=\"Matthias Ramahi\" />\n  <title>Datenschutzerklärung — Matthias Ramahi</title>\n  <meta name=\"description\" content=\"Datenschutzerklärung von Matthias Ramahi: Informationen zur Verarbeitung personenbezogener Daten, Kontakt, Webhosting, Cookies und Betroffenenrechten.\" />\n  <link rel=\"stylesheet\" href=\"/assets/legacy-inline-84252c323262.css\" />\n  <link rel=\"stylesheet\" href=\"/assets/site-chrome.css\" />\n  <link rel=\"stylesheet\" href=\"/assets/legacy-performance.css\" />\n  <link rel=\"canonical\" href=\"https://matthiasramahi.de/datenschutz.html\" />\n  <script type=\"application/ld+json\" data-seo=\"technical\">{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://matthiasramahi.de/#website\",\"url\":\"https://matthiasramahi.de/\",\"name\":\"Matthias Ramahi Fotografie\",\"inLanguage\":\"de-DE\",\"publisher\":{\"@id\":\"https://matthiasramahi.de/#person\"}},{\"@type\":\"Person\",\"@id\":\"https://matthiasramahi.de/#person\",\"name\":\"Matthias Ramahi\",\"url\":\"https://matthiasramahi.de/\",\"email\":\"info@matthiasramahi.de\",\"jobTitle\":\"Fotograf\"},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://matthiasramahi.de/datenschutz.html#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Startseite\",\"item\":\"https://matthiasramahi.de/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Datenschutzerklärung — Matthias Ramahi\",\"item\":\"https://matthiasramahi.de/datenschutz.html\"}]},{\"@type\":\"WebPage\",\"@id\":\"https://matthiasramahi.de/datenschutz.html#webpage\",\"url\":\"https://matthiasramahi.de/datenschutz.html\",\"name\":\"Datenschutzerklärung — Matthias Ramahi\",\"description\":\"Datenschutzerklärung von Matthias Ramahi: Informationen zur Verarbeitung personenbezogener Daten, Kontakt, Webhosting, Cookies und Betroffenenrechten.\",\"inLanguage\":\"de-DE\",\"isPartOf\":{\"@id\":\"https://matthiasramahi.de/#website\"},\"breadcrumb\":{\"@id\":\"https://matthiasramahi.de/datenschutz.html#breadcrumb\"},\"primaryImageOfPage\":{\"@type\":\"ImageObject\",\"url\":\"https://matthiasramahi.de/assets/optimized/assets-photos-automobil-sunset-1920.webp\"}}]}</script>\n",
+    "renderedBodyHtml": "<main>\n    <section class=\"legal-hero\" data-header-theme=\"dark\">\n      <div><p class=\"kicker\">Rechtliches / Matthias Ramahi</p><h1>Datenschutz</h1><p>Informationen darüber, welche personenbezogenen Daten verarbeitet werden, zu welchen Zwecken dies geschieht und welche Rechte betroffene Personen haben.</p></div>\n    </section>\n    <section class=\"legal-doc\" data-header-theme=\"light\">\n      <div class=\"legal-shell\">\n        <nav class=\"toc\" aria-label=\"Inhaltsübersicht\"><a href=\"#praeambel\">Präambel</a><a href=\"#verantwortlicher\">Verantwortlicher</a><a href=\"#daten\">Verarbeitungen</a><a href=\"#rechtsgrundlagen\">Rechtsgrundlagen</a><a href=\"#sicherheit\">Sicherheit</a><a href=\"#rechte\">Rechte</a><a href=\"#cookies\">Cookies / Kontakt</a></nav>\n        <div class=\"legal-content\">\n  <section class=\"legal-block\" id=\"praeambel\"><h2>Präambel</h2><p>Mit dieser Datenschutzerklärung informieren wir darüber, welche Arten personenbezogener Daten zu welchen Zwecken und in welchem Umfang verarbeitet werden. Die Erklärung gilt für alle Verarbeitungen im Rahmen unserer Leistungen, auf unseren Webseiten sowie innerhalb externer Onlinepräsenzen.</p><p class=\"small\">Stand: 20. Mai 2025</p></section>\n  <section class=\"legal-block\" id=\"verantwortlicher\"><h2>Verantwortlicher</h2><div class=\"legal-card\"><strong>Matthias Ramahi</strong><p>Kempener Straße 44<br>40699 Erkrath</p><p><b>E-Mail:</b> <a href=\"mailto:info@matthiasramahi.de\">info@matthiasramahi.de</a></p></div></section>\n  <section class=\"legal-block\" id=\"daten\"><h2>Übersicht der Verarbeitungen</h2><div class=\"meta-row\"><div class=\"mini\"><span>Datenarten</span><b>Bestands-, Kontakt-, Inhalts-, Nutzungs-, Meta- und Protokolldaten</b></div><div class=\"mini\"><span>Betroffene Personen</span><b>Nutzer, Kommunikationspartner und Interessenten</b></div><div class=\"mini\"><span>Zwecke</span><b>Kommunikation, Sicherheit, Reichweitenmessung, Verwaltung, Onlineangebot</b></div><div class=\"mini\"><span>Infrastruktur</span><b>Webhosting, technische Bereitstellung, Anfrageverwaltung</b></div></div></section>\n  <section class=\"legal-block\" id=\"rechtsgrundlagen\"><h2>Maßgebliche Rechtsgrundlagen</h2><p>Die Verarbeitung personenbezogener Daten erfolgt insbesondere auf Grundlage der DSGVO:</p><ul><li><b>Einwilligung</b> (Art. 6 Abs. 1 S. 1 lit. a DSGVO), wenn eine Einwilligung für einen bestimmten Zweck erteilt wurde.</li><li><b>Vertragserfüllung und vorvertragliche Anfragen</b> (Art. 6 Abs. 1 S. 1 lit. b DSGVO), soweit die Verarbeitung für Leistungen oder Anfragen erforderlich ist.</li><li><b>Berechtigte Interessen</b> (Art. 6 Abs. 1 S. 1 lit. f DSGVO), sofern unsere Interessen nicht durch die Rechte und Freiheiten der betroffenen Personen überwogen werden.</li></ul><p>Zusätzlich können nationale Datenschutzregelungen in Deutschland, insbesondere das BDSG, Anwendung finden.</p></section>\n  <section class=\"legal-block\" id=\"sicherheit\"><h2>Sicherheitsmaßnahmen</h2><p>Wir treffen nach Maßgabe der gesetzlichen Vorgaben geeignete technische und organisatorische Maßnahmen, um ein dem Risiko angemessenes Schutzniveau zu gewährleisten. Hierzu gehören Maßnahmen zur Sicherung von Vertraulichkeit, Integrität und Verfügbarkeit der Daten.</p><p>Online-Verbindungen werden – soweit technisch verfügbar – durch TLS-/SSL-Verschlüsselung geschützt. Eine verschlüsselte Verbindung ist in der Regel an „HTTPS“ in der Adresszeile des Browsers erkennbar.</p></section>\n  <section class=\"legal-block\"><h2>Übermittlung, internationale Transfers und Löschung</h2><p>Im Rahmen der Verarbeitung kann es vorkommen, dass Daten an Dienstleister oder andere Stellen übermittelt werden, soweit dies zur Bereitstellung des Onlineangebotes, zur Kommunikation oder zur Bearbeitung von Anfragen erforderlich ist.</p><p>Daten werden gelöscht, sobald sie für die jeweiligen Zwecke nicht mehr erforderlich sind und keine gesetzlichen Aufbewahrungspflichten entgegenstehen.</p></section>\n  <section class=\"legal-block\" id=\"rechte\"><h2>Rechte der betroffenen Personen</h2><p>Betroffene Personen haben nach Maßgabe der gesetzlichen Vorgaben insbesondere Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit sowie Widerspruch gegen bestimmte Verarbeitungen. Soweit eine Verarbeitung auf Einwilligung beruht, kann diese Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen werden.</p><p>Außerdem besteht ein Beschwerderecht bei einer zuständigen Datenschutzaufsichtsbehörde.</p></section>\n  <section class=\"legal-block\"><h2>Webhosting und Server-Logs</h2><p>Beim Aufruf dieser Website werden technisch notwendige Daten verarbeitet, damit die Seite ausgeliefert und sicher betrieben werden kann. Dazu können IP-Adresse, Datum und Uhrzeit, aufgerufene Seiten, Browserinformationen, Betriebssystem und Referrer-URL gehören.</p></section>\n  <section class=\"legal-block\" id=\"cookies\"><h2>Cookies, Blog und Kontakt</h2><p>Cookies können eingesetzt werden, um das Onlineangebot nutzerfreundlich, sicher und technisch stabil bereitzustellen. Nutzer können die Speicherung von Cookies in ihren Browser-Einstellungen einschränken.</p><p>Wenn Sie uns per E-Mail oder Kontaktformular kontaktieren, verarbeiten wir die übermittelten Angaben zur Bearbeitung der Anfrage und für mögliche Anschlussfragen. Blog- und Publikationsinhalte können verarbeitet werden, wenn Nutzer mit entsprechenden Funktionen interagieren.</p></section>\n  <section class=\"legal-block\"><h2>Webanalyse, Monitoring und Social Media</h2><p>Soweit Webanalyse- oder Monitoring-Dienste eingesetzt werden, geschieht dies zur Reichweitenmessung, Optimierung und Sicherheit des Onlineangebotes. Präsenzen in sozialen Netzwerken dienen der Außendarstellung und Kommunikation mit Interessenten.</p><p>Wenn Google Analytics eingesetzt wird, verwendet der Dienst Cookies zur Analyse der Nutzung. Die durch Cookies erzeugten Informationen können an Server von Google übertragen werden. Nutzer können die Installation von Cookies durch entsprechende Browser-Einstellungen verhindern.</p></section>\n  <section class=\"legal-block\"><h2>Änderung und Aktualisierung</h2><p>Wir bitten darum, sich regelmäßig über den Inhalt dieser Datenschutzerklärung zu informieren. Die Datenschutzerklärung wird angepasst, sobald Änderungen der von uns durchgeführten Datenverarbeitungen dies erforderlich machen.</p></section>\n</div>\n      </div>\n    </section>\n  </main>\n  ",
+    "afterFooterHtml": "\n\n\n<script src=\"/assets/site-chrome.js\" defer></script>\n",
+    "bodyClass": "has-mr-footer",
+    "extractedHeadings": [
+      "Datenschutz",
+      "Präambel",
+      "Verantwortlicher",
+      "Übersicht der Verarbeitungen",
+      "Maßgebliche Rechtsgrundlagen",
+      "Sicherheitsmaßnahmen",
+      "Übermittlung, internationale Transfers und Löschung",
+      "Rechte der betroffenen Personen",
+      "Webhosting und Server-Logs",
+      "Cookies, Blog und Kontakt",
+      "Webanalyse, Monitoring und Social Media",
+      "Änderung und Aktualisierung"
+    ],
+    "extractedImagePaths": [],
+    "extractedText": "Rechtliches / Matthias Ramahi\n\nInformationen darüber, welche personenbezogenen Daten verarbeitet werden, zu welchen Zwecken dies geschieht und welche Rechte betroffene Personen haben.\n\nMit dieser Datenschutzerklärung informieren wir darüber, welche Arten personenbezogener Daten zu welchen Zwecken und in welchem Umfang verarbeitet werden. Die Erklärung gilt für alle Verarbeitungen im Rahmen unserer Leistungen, auf unseren Webseiten sowie innerhalb externer Onlinepräsenzen.\n\nKempener Straße 44 40699 Erkrath\n\nE-Mail: info@matthiasramahi.de\n\nDie Verarbeitung personenbezogener Daten erfolgt insbesondere auf Grundlage der DSGVO:\n\nZusätzlich können nationale Datenschutzregelungen in Deutschland, insbesondere das BDSG, Anwendung finden.\n\nWir treffen nach Maßgabe der gesetzlichen Vorgaben geeignete technische und organisatorische Maßnahmen, um ein dem Risiko angemessenes Schutzniveau zu gewährleisten. Hierzu gehören Maßnahmen zur Sicherung von Vertraulichkeit, Integrität und Verfügbarkeit der Daten.\n\nOnline-Verbindungen werden – soweit technisch verfügbar – durch TLS-/SSL-Verschlüsselung geschützt. Eine verschlüsselte Verbindung ist in der Regel an „HTTPS“ in der Adresszeile des Browsers erkennbar.\n\nIm Rahmen der Verarbeitung kann es vorkommen, dass Daten an Dienstleister oder andere Stellen übermittelt werden, soweit dies zur Bereitstellung des Onlineangebotes, zur Kommunikation oder zur Bearbeitung von Anfragen erforderlich ist.\n\nDaten werden gelöscht, sobald sie für die jeweiligen Zwecke nicht mehr erforderlich sind und keine gesetzlichen Aufbewahrungspflichten entgegenstehen.\n\nBetroffene Personen haben nach Maßgabe der gesetzlichen Vorgaben insbesondere Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit sowie Widerspruch gegen bestimmte Verarbeitungen. Soweit eine Verarbeitung auf Einwilligung beruht, kann diese Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen werden.\n\nAußerdem besteht ein Beschwerderecht bei einer zuständigen Datenschutzaufsichtsbehörde.\n\nBeim Aufruf dieser Website werden technisch notwendige Daten verarbeitet, damit die Seite ausgeliefert und sicher betrieben werden kann. Dazu können IP-Adresse, Datum und Uhrzeit, aufgerufene Seiten, Browserinformationen, Betriebssystem und Referrer-URL gehören.\n\nCookies können eingesetzt werden, um das Onlineangebot nutzerfreundlich, sicher und technisch stabil bereitzustellen. Nutzer können die Speicherung von Cookies in ihren Browser-Einstellungen einschränken.\n\nWenn Sie uns per E-Mail oder Kontaktformular kontaktieren, verarbeiten wir die übermittelten Angaben zur Bearbeitung der Anfrage und für mögliche Anschlussfragen. Blog- und Publikationsinhalte können verarbeitet werden, wenn Nutzer mit entsprechenden Funktionen interagieren.\n\nSoweit Webanalyse- oder Monitoring-Dienste eingesetzt werden, geschieht dies zur Reichweitenmessung, Optimierung und Sicherheit des Onlineangebotes. Präsenzen in sozialen Netzwerken dienen der Außendarstellung und Kommunikation mit Interessenten.\n\nWenn Google Analytics eingesetzt wird, verwendet der Dienst Cookies zur Analyse der Nutzung. Die durch Cookies erzeugten Informationen können an Server von Google übertragen werden. Nutzer können die Installation von Cookies durch entsprechende Browser-Einstellungen verhindern.\n\nWir bitten darum, sich regelmäßig über den Inhalt dieser Datenschutzerklärung zu informieren. Die Datenschutzerklärung wird angepasst, sobald Änderungen der von uns durchgeführten Datenverarbeitungen dies erforderlich machen."
+  },
+  "updatedAt": "2026-05-28T19:07:53.136Z",
+  "createdAt": "2026-05-28T19:07:31.125Z",
+  "status": "published",
+  "payloadId": "3"
+}

@@ -6,6 +6,7 @@ import NativeShaderHero from '../../components/native/NativeShaderHero.astro'
 import BaseLayout from '../../layouts/BaseLayout.astro'
 import { versionStaticAssetUrl } from '../../lib/cache'
 import { homeHeroSlidesFor } from '../../lib/nativeContent'
+import { tinaAttrs } from '../../lib/tinaFieldAttrs'
 import {
   getBySlug,
   imageDisplayUrl,
@@ -15,11 +16,13 @@ import {
   type PayloadDoc,
 } from '../../lib/payload'
 import { breadcrumbJsonLd, imageGalleryJsonLd, type JsonLd } from '../../lib/seo'
+import { getTinaVisualDocumentBySlug, isTinaEditRequest } from '../../lib/tinaVisual'
 
 export const prerender = false
 
 const { slug } = Astro.params
-const doc = (Astro.props.doc ?? (slug ? await getBySlug('portfolio-projects', slug, liveCmsFetchOptions({ depth: 2, cacheMs: 0 })) : null)) as PayloadDoc | null
+const tinaDoc = slug && isTinaEditRequest(Astro.request) ? await getTinaVisualDocumentBySlug('portfolioProjects', slug) : null
+const doc = (tinaDoc ?? Astro.props.doc ?? (slug ? await getBySlug('portfolio-projects', slug, liveCmsFetchOptions({ depth: 2, cacheMs: 0 })) : null)) as PayloadDoc | null
 
 if (!doc) {
   return Astro.redirect('/portfolio.html', 308)
@@ -30,7 +33,6 @@ Astro.response.headers.set('cache-control', 'no-store, max-age=0')
 const portfolioImageOptions = { allowOriginal: true, mapCachedAssets: false } as const
 const hero = imageDisplayUrl(doc.coverImage, 'wide', portfolioImageOptions)
 const gallery = doc.gallery ?? []
-const portfolioFocus = doc.category || doc.presentationMode || doc.title || 'Portfolio-Serie'
 const hasText = (value?: string): value is string => typeof value === 'string' && value.trim().length > 0
 const cmsHeroSlides = (doc.heroSlides || []).length > 0 ? homeHeroSlidesFor(doc, { preferCmsMedia: true }) : []
 const fallbackHeroImage =
@@ -61,6 +63,17 @@ const context = projectPage.context || {}
 const contextKicker = hasText(context.kicker) ? context.kicker! : 'Einordnung'
 const contextHeadline = hasText(context.headline) ? context.headline! : 'Serie, Einsatz und Bildsprache'
 const contextBody = (context.body || []).map((paragraph) => paragraph.text).filter(hasText)
+const categoryLabel = (value: unknown): string => {
+  if (typeof value === 'string') return value
+  if (!value || typeof value !== 'object') return ''
+  const record = value as Record<string, unknown>
+  for (const key of ['title', 'name', 'label', 'slug']) {
+    const candidate = record[key]
+    if (typeof candidate === 'string' && candidate.trim()) return candidate
+  }
+  return ''
+}
+const portfolioFocus = categoryLabel(doc.category) || doc.presentationMode || doc.title || 'Portfolio-Serie'
 const defaultContextBody = [
   `Diese Auswahl ist als kuratierter Einstieg in ${portfolioFocus} gedacht: nicht als endlose Galerie, sondern als verdichtete Serie mit Hauptmotiv, Varianten, Details und ruhigen Uebergaengen. Fuer SEO und Nutzerfuehrung bleibt die Seite bewusst eigenstaendig, waehrend sie auf die passenden Leistungs- und Standortseiten verweist.`,
   'Entscheidend ist die Lesbarkeit der Bildstrecke. Farbe, Abstand, Perspektive und Reihenfolge sollen schnell zeigen, ob eine aehnliche Produktion fuer Marke, Verkauf, Portfolio, Print oder digitale Praesentation funktioniert. So bekommt jedes Portfolio-Motiv einen klaren Kontext statt nur einen isolierten Galerieplatz.',
@@ -103,28 +116,28 @@ if (gallerySchema) jsonLdItems.push(gallerySchema)
   stylesheets={['/assets/native-home.css', '/assets/native-portfolio-project.css']}
   preloadImages={firstHeroSlide ? [firstHeroSlide.image] : []}
 >
-  {heroSlides.length > 0 && <NativeShaderHero id="top" label={doc.title || 'Portfolio'} slides={heroSlides} headerTheme="dark" />}
+  {heroSlides.length > 0 && <NativeShaderHero id="top" label={doc.title || 'Portfolio'} slides={heroSlides} sourceSlides={doc.heroSlides || []} headerTheme="dark" />}
 
   {(hasText(statement.quote) || statementStats.length > 0) && (
     <section class="project-statement" data-header-theme="light">
       <div class="project-statement__inner">
         {hasText(statement.quote) && (
-          <blockquote class="project-statement__quote">
+          <blockquote class="project-statement__quote" {...tinaAttrs(statement, 'quote')}>
             <strong>
               {statement.quote}
-              {hasText(statement.accent) && <> <em>{statement.accent}</em></>}
+              {hasText(statement.accent) && <> <em {...tinaAttrs(statement, 'accent')}>{statement.accent}</em></>}
             </strong>
           </blockquote>
         )}
         <div class="project-statement__foot">
           {statementStats.map((item) => (
             <div class="project-stat">
-              {hasText(item.label) && <span>{item.label}</span>}
-              {hasText(item.text) && <strong>{item.text}</strong>}
+              {hasText(item.label) && <span {...tinaAttrs(item, 'label')}>{item.label}</span>}
+              {hasText(item.text) && <strong {...tinaAttrs(item, 'text')}>{item.text}</strong>}
             </div>
           ))}
           {hasText(statement.buttonLabel) && (
-            <a class="project-btn" href={statement.buttonHref || '#anfrage'}>{statement.buttonLabel}</a>
+            <a class="project-btn" href={statement.buttonHref || '#anfrage'} {...tinaAttrs(statement, 'buttonLabel')}>{statement.buttonLabel}</a>
           )}
         </div>
       </div>
@@ -136,30 +149,30 @@ if (gallerySchema) jsonLdItems.push(gallerySchema)
       <div class="project-system__inner">
         <div class="project-system__head">
           <div>
-            <span class="project-system__kicker">{contextKicker}</span>
-            <h2>{contextHeadline}</h2>
+            <span class="project-system__kicker" {...tinaAttrs(context, 'kicker')}>{contextKicker}</span>
+            <h2 {...tinaAttrs(context, 'headline')}>{contextHeadline}</h2>
           </div>
           <div class="project-context">
-            {resolvedContextBody.map((paragraph) => <p>{paragraph}</p>)}
+            {resolvedContextBody.map((paragraph, index) => <p {...tinaAttrs(context.body?.[index], 'text')}>{paragraph}</p>)}
           </div>
         </div>
         {perspectives.length > 0 && (
           <div class="project-system__grid">
             {firstPerspectiveImage && (
               <figure class="project-system__visual">
-                <img src={firstPerspectiveImage} alt="" loading="lazy" decoding="async" />
+                <img src={firstPerspectiveImage} alt="" loading="lazy" decoding="async" {...tinaAttrs(perspectives.find((item) => imageDisplayUrl(item.image, 'wide', portfolioImageOptions) === firstPerspectiveImage), 'image')} />
               </figure>
             )}
             <div class="project-system__list">
               {perspectives.map((item, index) => (
                 <article class="project-perspective">
-                  <span>{item.label || String(index + 1).padStart(2, '0')}</span>
-                  <h3>{item.title}</h3>
-                  {hasText(item.text) && <p>{item.text}</p>}
+                  <span {...tinaAttrs(item, 'label')}>{item.label || String(index + 1).padStart(2, '0')}</span>
+                  <h3 {...tinaAttrs(item, 'title')}>{item.title}</h3>
+                  {hasText(item.text) && <p {...tinaAttrs(item, 'text')}>{item.text}</p>}
                   {(item.bullets || []).length > 0 && (
                     <ul>
                       {(item.bullets || []).filter((bullet) => hasText(bullet.text)).map((bullet) => (
-                        <li>{bullet.text}</li>
+                        <li {...tinaAttrs(bullet, 'text')}>{bullet.text}</li>
                       ))}
                     </ul>
                   )}
@@ -175,7 +188,7 @@ if (gallerySchema) jsonLdItems.push(gallerySchema)
   <section class="project-gallery" data-header-theme="light">
     <div class="project-statement__inner project-gallery__head">
       <div>
-        <span class="project-gallery__kicker">{galleryEyebrow}</span>
+        <span class="project-gallery__kicker" {...tinaAttrs(projectPage, 'galleryEyebrow')}>{galleryEyebrow}</span>
         <h2>Aktuelle <em>Arbeiten.</em></h2>
       </div>
     </div>
@@ -194,9 +207,9 @@ if (gallerySchema) jsonLdItems.push(gallerySchema)
         <div class="project-audience__grid">
           {infoCards.map((card, index) => (
             <a class="project-info-card" href={card.href || '#anfrage'}>
-              <span>{card.number || String(index + 1).padStart(2, '0')}</span>
-              <h3>{card.title}</h3>
-              {hasText(card.label) && <span>{card.label}</span>}
+              <span {...tinaAttrs(card, 'number')}>{card.number || String(index + 1).padStart(2, '0')}</span>
+              <h3 {...tinaAttrs(card, 'title')}>{card.title}</h3>
+              {hasText(card.label) && <span {...tinaAttrs(card, 'label')}>{card.label}</span>}
             </a>
           ))}
         </div>
@@ -218,11 +231,11 @@ if (gallerySchema) jsonLdItems.push(gallerySchema)
             const cardImage = imageDisplayUrl(card.image, 'card', portfolioImageOptions)
             return (
               <a class="project-related-card" href={card.href}>
-                {cardImage && <img src={cardImage} alt="" loading="lazy" decoding="async" />}
+                {cardImage && <img src={cardImage} alt="" loading="lazy" decoding="async" {...tinaAttrs(card, 'image')} />}
                 <div class="project-related-card__content">
                   <div>
-                    {hasText(card.label) && <span>{card.label}</span>}
-                    <strong>{card.title}</strong>
+                    {hasText(card.label) && <span {...tinaAttrs(card, 'label')}>{card.label}</span>}
+                    <strong {...tinaAttrs(card, 'title')}>{card.title}</strong>
                   </div>
                   <span>-></span>
                 </div>

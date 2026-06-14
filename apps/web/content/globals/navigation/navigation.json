@@ -1,0 +1,111 @@
+{
+  "cta": {
+    "label": "Anfrage",
+    "href": "mailto:info@matthiasramahi.de?subject=Projektanfrage"
+  },
+  "footerLinks": [],
+  "primary": [
+    {
+      "label": "Home",
+      "href": "/",
+      "seoPurpose": "contextual",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fotografie",
+      "href": "/fotografie.html",
+      "seoPurpose": "contextual",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Portfolio",
+      "href": "/portfolio.html",
+      "seoPurpose": "contextual",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Ueber mich",
+      "href": "/ueber-mich.html",
+      "seoPurpose": "contextual",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Journal",
+      "href": "/blog.html",
+      "seoPurpose": "contextual",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Kontakt",
+      "href": "/contact.html#anfrage",
+      "seoPurpose": "contextual",
+      "rel": "follow",
+      "openInNewTab": false
+    }
+  ],
+  "photographyLinks": [
+    {
+      "label": "Automobil",
+      "href": "/automobil-fotografie.html",
+      "seoPurpose": "contextual",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Sportwagen",
+      "href": "/sportwagen-fotografie.html",
+      "seoPurpose": "contextual",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Oldtimer",
+      "href": "/oldtimer-fotografie.html",
+      "seoPurpose": "contextual",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Motorrad",
+      "href": "/motorrad-fotografie.html",
+      "seoPurpose": "contextual",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Portrait",
+      "href": "/portraitfotografie.html",
+      "seoPurpose": "contextual",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Landschaft",
+      "href": "/landschaftsfotografie.html",
+      "seoPurpose": "contextual",
+      "rel": "follow",
+      "openInNewTab": false
+    }
+  ],
+  "legalLinks": [
+    {
+      "label": "Impressum",
+      "href": "/impressum.html",
+      "seoPurpose": "contextual",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Datenschutz",
+      "href": "/datenschutz.html",
+      "seoPurpose": "contextual",
+      "rel": "follow",
+      "openInNewTab": false
+    }
+  ]
+}

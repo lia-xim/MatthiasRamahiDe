@@ -27,11 +27,12 @@ import { nativeAdoptedRouteKindForFile } from '../../lib/nativeAdoptedRouteRegis
 import { getByLegacyUrlFromIndex, type PayloadDoc } from '../../lib/payload'
 
 type Props = {
+  doc?: PayloadDoc | null
   legacyFile: string
   localSeoDoc?: PayloadDoc | null
 }
 
-const { legacyFile, localSeoDoc: providedLocalSeoDoc = undefined } = Astro.props as Props
+const { doc: providedDoc = null, legacyFile, localSeoDoc: providedLocalSeoDoc = undefined } = Astro.props as Props
 
 const nativeRouteKind = nativeAdoptedRouteKindForFile(legacyFile)
 
@@ -40,9 +41,24 @@ if (!nativeRouteKind) {
 }
 
 const localSeoDoc =
-  nativeRouteKind === 'local-seo' && providedLocalSeoDoc === undefined
+  (nativeRouteKind === 'local-seo' || nativeRouteKind === 'photography-overview') && providedLocalSeoDoc === undefined
     ? await getByLegacyUrlFromIndex('local-seo-pages', legacyFile, { depth: 2, limit: 500 })
     : providedLocalSeoDoc
+const serviceRouteKinds = new Set([
+  'print-lab',
+  'werbetechnik',
+  'webdesign-seo',
+  'videografie',
+  'viola-musik',
+  'grossformat',
+  'service-detail',
+])
+const serviceDoc =
+  serviceRouteKinds.has(nativeRouteKind) && !providedDoc
+    ? await getByLegacyUrlFromIndex('service-pages', legacyFile, { depth: 2, limit: 100 })
+    : null
+const routedDoc = providedDoc || localSeoDoc || serviceDoc || null
+const routedDocProp = routedDoc || undefined
 
 if (nativeRouteKind === 'legal') {
   Astro.response.headers.set('x-cms-render-source', 'structured-astro')
@@ -56,49 +72,49 @@ if (nativeRouteKind === 'journal-detail') {
 ---
 {
   nativeRouteKind === 'home' ? (
-    <NativeHomePage />
+    <NativeHomePage doc={routedDocProp} />
   ) : nativeRouteKind === 'photography' ? (
-    <NativePhotographyPage />
+    <NativePhotographyPage doc={routedDocProp} />
   ) : nativeRouteKind === 'photography-overview' ? (
-    <NativePhotographyPage legacyFile={legacyFile} />
+    <NativePhotographyPage doc={routedDocProp} legacyFile={legacyFile} />
   ) : nativeRouteKind === 'automobil' ? (
-    <NativeAutomobilPhotographyPage />
+    <NativeAutomobilPhotographyPage doc={routedDoc} legacyFile={legacyFile} />
   ) : nativeRouteKind === 'sportscar' ? (
-    <NativeSportwagenPhotographyPage />
+    <NativeSportwagenPhotographyPage doc={routedDoc} legacyFile={legacyFile} />
   ) : nativeRouteKind === 'oldtimer' ? (
-    <NativeOldtimerPhotographyPage />
+    <NativeOldtimerPhotographyPage doc={routedDoc} legacyFile={legacyFile} />
   ) : nativeRouteKind === 'motorcycle' ? (
-    <NativeMotorradPhotographyPage />
+    <NativeMotorradPhotographyPage doc={routedDoc} legacyFile={legacyFile} />
   ) : nativeRouteKind === 'portrait' ? (
-    <NativePortraitPhotographyPage />
+    <NativePortraitPhotographyPage doc={routedDoc} legacyFile={legacyFile} />
   ) : nativeRouteKind === 'landscape' ? (
-    <NativeLandschaftPhotographyPage />
+    <NativeLandschaftPhotographyPage doc={routedDoc} legacyFile={legacyFile} />
   ) : nativeRouteKind === 'journal-index' ? (
-    <NativeJournalIndexPage />
+    <NativeJournalIndexPage doc={routedDocProp} />
   ) : nativeRouteKind === 'journal-detail' ? (
     <NativeJournalArticleLegacyUrlPage legacyFile={legacyFile} />
   ) : nativeRouteKind === 'portfolio-index' ? (
-    <NativePortfolioIndexPage />
+    <NativePortfolioIndexPage doc={routedDocProp} />
   ) : nativeRouteKind === 'print-lab' ? (
-    <NativePrintLabPage />
+    <NativePrintLabPage doc={routedDocProp} />
   ) : nativeRouteKind === 'werbetechnik' ? (
-    <NativeWerbetechnikPage />
+    <NativeWerbetechnikPage doc={routedDocProp} />
   ) : nativeRouteKind === 'webdesign-seo' ? (
-    <NativeWebdesignSeoPage />
+    <NativeWebdesignSeoPage doc={routedDocProp} />
   ) : nativeRouteKind === 'videografie' ? (
-    <NativeVideografiePage legacyFile={legacyFile} />
+    <NativeVideografiePage doc={routedDocProp} legacyFile={legacyFile} />
   ) : nativeRouteKind === 'viola-musik' ? (
-    <NativeViolaMusikPage />
+    <NativeViolaMusikPage doc={routedDocProp} />
   ) : nativeRouteKind === 'grossformat' ? (
-    <NativeGrossformatdruckPage />
+    <NativeGrossformatdruckPage doc={routedDocProp} />
   ) : nativeRouteKind === 'service-detail' ? (
-    <NativeServiceDetailPage legacyFile={legacyFile} />
+    <NativeServiceDetailPage doc={routedDocProp} legacyFile={legacyFile} />
   ) : nativeRouteKind === 'services-index' ? (
-    <NativeServicesIndexPage />
+    <NativeServicesIndexPage doc={routedDocProp} />
   ) : nativeRouteKind === 'contact' ? (
     <NativeContactPage />
   ) : nativeRouteKind === 'about' ? (
-    <NativeAboutPage />
+    <NativeAboutPage doc={routedDocProp} />
   ) : nativeRouteKind === 'legal' ? (
     <NativeLegalPage legacyFile={legacyFile as 'impressum.html' | 'datenschutz.html'} />
   ) : nativeRouteKind === 'concept' ? (

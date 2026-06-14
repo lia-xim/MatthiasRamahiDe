@@ -15,6 +15,7 @@ import { keywordFocusCopyForSlug } from '../../lib/localSeoFamilyContent'
 import { familyHeroCopy, familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
 import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
 import { splitTrailingEmphasis } from '../../lib/splitTrailingEmphasis'
+import { tinaAttrs } from '../../lib/tinaFieldAttrs'
 
 type Props = {
   doc?: PayloadDoc | null
@@ -255,6 +256,17 @@ const searchLinks = [
   ['motorrad-verkaufsfotos-duesseldorf.html', 'Motorrad Verkaufsfotos'],
   ['biker-portrait-duesseldorf.html', 'Biker Portrait'],
 ] as const
+const heroPanelSource = (index: number) => doc?.heroPanels?.[index] || doc?.heroSlides?.[index] || visualDoc?.heroPanels?.[index] || visualDoc?.heroSlides?.[index]
+const heroTextSource = doc?.heroSlides?.[0] || visualDoc?.heroSlides?.[0] || doc
+const heroTitleField = (index: number) =>
+  heroTextSource === doc?.heroSlides?.[0] || heroTextSource === visualDoc?.heroSlides?.[0]
+    ? index === 0
+      ? 'headlineLine1'
+      : 'headlineLine2'
+    : index === 0
+      ? 'title'
+      : 'heroLine2'
+const heroLeadField = heroTextSource === doc?.heroSlides?.[0] || heroTextSource === visualDoc?.heroSlides?.[0] ? 'lead' : 'intro'
 ---
 <AdoptedPageLayout
   legacyFile={legacyFile}
@@ -263,7 +275,7 @@ const searchLinks = [
   noIndex={Boolean(preview)}
   title={metaTitle}
   description={metaDescription}
-  ogImage={visualSlots[0].full}
+  ogImage={doc?.seo?.ogImage || visualSlots[0].full}
   preloadImages={[visualSlots[0].full]}
 >
   {preview && (
@@ -275,22 +287,22 @@ const searchLinks = [
     />
   )}
   <main>
-    <section class="hero-mr" id="top" data-header-theme="dark" aria-label={heroLabel}>
+    <section class="hero-mr" id="top" data-header-theme="dark" aria-label={heroLabel} {...tinaAttrs(heroPanelSource(0), 'image')}>
       <div class="hero-mr__stage" aria-hidden="true">
         <div class="hero-mr__slides">
           <div class="hero-mr__slide is-active" data-slide="0" style="--pos:50% 52%">
             <div class="hero-mr__zoom">
-              <img class="hero-mr__image" src={heroSlides[0].src} srcset={heroSlides[0].srcset} sizes="100vw" alt="" loading="eager" fetchpriority="high" decoding="async" width={visualSlots[0].width} height={visualSlots[0].height} />
+              <img class="hero-mr__image" src={heroSlides[0].src} srcset={heroSlides[0].srcset} sizes="100vw" alt="" loading="eager" fetchpriority="high" decoding="async" width={visualSlots[0].width} height={visualSlots[0].height} {...tinaAttrs(heroPanelSource(0), 'image')} />
             </div>
           </div>
           <div class="hero-mr__slide" data-slide="1" style="--pos:50% 48%">
             <div class="hero-mr__zoom">
-              <img class="hero-mr__image" src={heroSlides[1].src} srcset={heroSlides[1].srcset} sizes="100vw" alt="" decoding="async" loading="lazy" width={visualSlots[1].width} height={visualSlots[1].height} />
+              <img class="hero-mr__image" src={heroSlides[1].src} srcset={heroSlides[1].srcset} sizes="100vw" alt="" decoding="async" loading="lazy" width={visualSlots[1].width} height={visualSlots[1].height} {...tinaAttrs(heroPanelSource(1), 'image')} />
             </div>
           </div>
           <div class="hero-mr__slide" data-slide="2" style="--pos:50% 50%">
             <div class="hero-mr__zoom">
-              <img class="hero-mr__image" src={heroSlides[2].src} srcset={heroSlides[2].srcset} sizes="100vw" alt="" decoding="async" loading="lazy" width={visualSlots[2].width} height={visualSlots[2].height} />
+              <img class="hero-mr__image" src={heroSlides[2].src} srcset={heroSlides[2].srcset} sizes="100vw" alt="" decoding="async" loading="lazy" width={visualSlots[2].width} height={visualSlots[2].height} {...tinaAttrs(heroPanelSource(2), 'image')} />
             </div>
           </div>
         </div>
@@ -300,16 +312,16 @@ const searchLinks = [
 
       <div class="hero-mr__grid">
         <h1 class="hero-mr__title" id="heroMrTitle" aria-label={heroLabel}>
-          {heroCopy.titleLines.map((line) => (
-            <span class="line"><span class="word">{line}</span></span>
+          {heroCopy.titleLines.map((line, index) => (
+            <span class="line" {...tinaAttrs(heroTextSource, heroTitleField(index))}><span class="word">{line}</span></span>
           ))}
         </h1>
         <div class="hero-mr__lede-block">
-          {heroLocalNote && <p class="hero-mr__local-note">{heroLocalNote}</p>}
-          <p class="hero-mr__lede">{heroCopy.lead}</p>
+          {heroLocalNote && <p class="hero-mr__local-note" {...tinaAttrs(doc, 'heroLine2')}>{heroLocalNote}</p>}
+          <p class="hero-mr__lede" {...tinaAttrs(heroTextSource, heroLeadField)}>{heroCopy.lead}</p>
           <div class="hero-mr__actions">
-            <a href={heroCopy.primaryHref}>{heroCopy.primaryLabel}</a>
-            <a class="ghost" href={heroCopy.secondaryHref}>{heroCopy.secondaryLabel}</a>
+            <a href={heroCopy.primaryHref} {...tinaAttrs(heroTextSource, 'primaryLabel')}>{heroCopy.primaryLabel}</a>
+            <a class="ghost" href={heroCopy.secondaryHref} {...tinaAttrs(heroTextSource, 'secondaryLabel')}>{heroCopy.secondaryLabel}</a>
           </div>
         </div>
       </div>
@@ -327,13 +339,13 @@ const searchLinks = [
       <div class="section-inner">
         <div>
           <h2>
-            {focusIntroTitle.headline}
+            <span {...tinaAttrs(doc?.statement, 'headline')}>{focusIntroTitle.headline}</span>
             {focusIntroTitle.headline && focusIntroTitle.emphasis ? ' ' : ''}
-            {focusIntroTitle.emphasis && <em>{focusIntroTitle.emphasis}</em>}
+            {focusIntroTitle.emphasis && <em {...tinaAttrs(doc?.statement, 'emphasis')}>{focusIntroTitle.emphasis}</em>}
           </h2>
         </div>
         <div class="st-body">
-          {focusIntroParagraphs.map((paragraph) => <p>{paragraph}</p>)}
+          {focusIntroParagraphs.map((paragraph, index) => <p {...tinaAttrs(doc?.statement?.body?.[index], 'text')}>{paragraph}</p>)}
           <a class="st-cta" href="#anfrage">Shooting anfragen →</a>
         </div>
       </div>
@@ -342,50 +354,50 @@ const searchLinks = [
     <section class="mk" data-header-theme="dark">
       <div class="section-inner">
         <div class="mk-head">
-          <h2>{focusModuleHeadline} <em>{focusModuleEmphasis}</em></h2>
-          <p>{focusModuleLead}</p>
+          <h2><span {...tinaAttrs(doc?.focusSection, 'headline')}>{focusModuleHeadline}</span> <em {...tinaAttrs(doc?.focusSection, 'emphasis')}>{focusModuleEmphasis}</em></h2>
+          <p {...tinaAttrs(doc?.focusSection, 'lead')}>{focusModuleLead}</p>
         </div>
         <div class="mk-grid">
           <article class="mk-card">
-            <figure class="mk-img"><img src={visualSlots[3].src} srcset={slotSrcset(visualSlots[3])} sizes="(max-width:720px) 92vw, (max-width:1180px) 47vw, 31vw" data-src={visualSlots[3].src} loading="lazy" alt={visualSlots[3].alt} width={visualSlots[3].width} height={visualSlots[3].height} decoding="async" /></figure>
+            <figure class="mk-img"><img src={visualSlots[3].src} srcset={slotSrcset(visualSlots[3])} sizes="(max-width:720px) 92vw, (max-width:1180px) 47vw, 31vw" data-src={visualSlots[3].src} loading="lazy" alt={visualSlots[3].alt} width={visualSlots[3].width} height={visualSlots[3].height} decoding="async" {...tinaAttrs(doc?.shootingStyles?.[0], 'image')} /></figure>
             <div class="mk-text">
-              <h3>{moduleCards[0].title}</h3>
-              <p>{moduleCards[0].text}</p>
+              <h3 {...tinaAttrs(doc?.shootingStyles?.[0], 'title')}>{moduleCards[0].title}</h3>
+              <p {...tinaAttrs(doc?.shootingStyles?.[0], 'text')}>{moduleCards[0].text}</p>
             </div>
           </article>
           <article class="mk-card">
-            <figure class="mk-img"><img loading="lazy" src={visualSlots[4].src} srcset={slotSrcset(visualSlots[4])} sizes="(max-width:720px) 92vw, (max-width:1180px) 47vw, 31vw" alt={visualSlots[4].alt} width={visualSlots[4].width} height={visualSlots[4].height} decoding="async" /></figure>
+            <figure class="mk-img"><img loading="lazy" src={visualSlots[4].src} srcset={slotSrcset(visualSlots[4])} sizes="(max-width:720px) 92vw, (max-width:1180px) 47vw, 31vw" alt={visualSlots[4].alt} width={visualSlots[4].width} height={visualSlots[4].height} decoding="async" {...tinaAttrs(doc?.shootingStyles?.[1], 'image')} /></figure>
             <div class="mk-text">
-              <h3>{moduleCards[1].title}</h3>
-              <p>{moduleCards[1].text}</p>
+              <h3 {...tinaAttrs(doc?.shootingStyles?.[1], 'title')}>{moduleCards[1].title}</h3>
+              <p {...tinaAttrs(doc?.shootingStyles?.[1], 'text')}>{moduleCards[1].text}</p>
             </div>
           </article>
           <article class="mk-card">
-            <figure class="mk-img"><img src={visualSlots[5].src} srcset={slotSrcset(visualSlots[5])} sizes="(max-width:720px) 92vw, (max-width:1180px) 47vw, 31vw" data-src={visualSlots[5].src} loading="lazy" alt={visualSlots[5].alt} width={visualSlots[5].width} height={visualSlots[5].height} decoding="async" /></figure>
+            <figure class="mk-img"><img src={visualSlots[5].src} srcset={slotSrcset(visualSlots[5])} sizes="(max-width:720px) 92vw, (max-width:1180px) 47vw, 31vw" data-src={visualSlots[5].src} loading="lazy" alt={visualSlots[5].alt} width={visualSlots[5].width} height={visualSlots[5].height} decoding="async" {...tinaAttrs(doc?.shootingStyles?.[2], 'image')} /></figure>
             <div class="mk-text">
-              <h3>{moduleCards[2].title}</h3>
-              <p>{moduleCards[2].text}</p>
+              <h3 {...tinaAttrs(doc?.shootingStyles?.[2], 'title')}>{moduleCards[2].title}</h3>
+              <p {...tinaAttrs(doc?.shootingStyles?.[2], 'text')}>{moduleCards[2].text}</p>
             </div>
           </article>
           <article class="mk-card">
-            <figure class="mk-img"><img src={visualSlots[6].src} srcset={slotSrcset(visualSlots[6])} sizes="(max-width:720px) 92vw, (max-width:1180px) 47vw, 31vw" data-src={visualSlots[6].src} loading="lazy" alt={visualSlots[6].alt} width={visualSlots[6].width} height={visualSlots[6].height} decoding="async" /></figure>
+            <figure class="mk-img"><img src={visualSlots[6].src} srcset={slotSrcset(visualSlots[6])} sizes="(max-width:720px) 92vw, (max-width:1180px) 47vw, 31vw" data-src={visualSlots[6].src} loading="lazy" alt={visualSlots[6].alt} width={visualSlots[6].width} height={visualSlots[6].height} decoding="async" {...tinaAttrs(doc?.shootingStyles?.[3], 'image')} /></figure>
             <div class="mk-text">
-              <h3>{moduleCards[3].title}</h3>
-              <p>{moduleCards[3].text}</p>
+              <h3 {...tinaAttrs(doc?.shootingStyles?.[3], 'title')}>{moduleCards[3].title}</h3>
+              <p {...tinaAttrs(doc?.shootingStyles?.[3], 'text')}>{moduleCards[3].text}</p>
             </div>
           </article>
           <article class="mk-card">
-            <figure class="mk-img"><img loading="lazy" src={visualSlots[7].src} srcset={slotSrcset(visualSlots[7])} sizes="(max-width:720px) 92vw, (max-width:1180px) 47vw, 31vw" alt={visualSlots[7].alt} width={visualSlots[7].width} height={visualSlots[7].height} decoding="async" /></figure>
+            <figure class="mk-img"><img loading="lazy" src={visualSlots[7].src} srcset={slotSrcset(visualSlots[7])} sizes="(max-width:720px) 92vw, (max-width:1180px) 47vw, 31vw" alt={visualSlots[7].alt} width={visualSlots[7].width} height={visualSlots[7].height} decoding="async" {...tinaAttrs(doc?.shootingStyles?.[4], 'image')} /></figure>
             <div class="mk-text">
-              <h3>{moduleCards[4].title}</h3>
-              <p>{moduleCards[4].text}</p>
+              <h3 {...tinaAttrs(doc?.shootingStyles?.[4], 'title')}>{moduleCards[4].title}</h3>
+              <p {...tinaAttrs(doc?.shootingStyles?.[4], 'text')}>{moduleCards[4].text}</p>
             </div>
           </article>
           <article class="mk-card">
-            <figure class="mk-img"><img loading="lazy" src={visualSlots[8].src} srcset={slotSrcset(visualSlots[8])} sizes="(max-width:720px) 92vw, (max-width:1180px) 47vw, 31vw" alt={visualSlots[8].alt} width={visualSlots[8].width} height={visualSlots[8].height} decoding="async" /></figure>
+            <figure class="mk-img"><img loading="lazy" src={visualSlots[8].src} srcset={slotSrcset(visualSlots[8])} sizes="(max-width:720px) 92vw, (max-width:1180px) 47vw, 31vw" alt={visualSlots[8].alt} width={visualSlots[8].width} height={visualSlots[8].height} decoding="async" {...tinaAttrs(doc?.shootingStyles?.[5], 'image')} /></figure>
             <div class="mk-text">
-              <h3>{moduleCards[5].title}</h3>
-              <p>{moduleCards[5].text}</p>
+              <h3 {...tinaAttrs(doc?.shootingStyles?.[5], 'title')}>{moduleCards[5].title}</h3>
+              <p {...tinaAttrs(doc?.shootingStyles?.[5], 'text')}>{moduleCards[5].text}</p>
             </div>
           </article>
         </div>
@@ -395,31 +407,31 @@ const searchLinks = [
     <section class="po" data-header-theme="dark" aria-label="Ausgewählte Motorrad-Arbeiten">
       <div class="po-grid" id="poGrid">
         <header class="po-head">
-          <h2>{focusPortfolioHeadline}</h2>
-          <p>{focusPortfolioLead}</p>
+          <h2 {...tinaAttrs(doc?.gallerySection, 'headline')}>{focusPortfolioHeadline}</h2>
+          <p {...tinaAttrs(doc?.gallerySection, 'lead')}>{focusPortfolioLead}</p>
         </header>
         <button type="button" class="po-tile t1" data-i="0" data-full={visualSlots[9].full} aria-label="Bild 1 vergrößern">
-          <img loading="lazy" src={visualSlots[9].src} srcset={slotSrcset(visualSlots[9])} sizes="(max-width:720px) 48vw, 58vw" data-full={visualSlots[9].full} alt={visualSlots[9].alt} width={visualSlots[9].width} height={visualSlots[9].height} decoding="async" />
+          <img loading="lazy" src={visualSlots[9].src} srcset={slotSrcset(visualSlots[9])} sizes="(max-width:720px) 48vw, 58vw" data-full={visualSlots[9].full} alt={visualSlots[9].alt} width={visualSlots[9].width} height={visualSlots[9].height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[0], 'image')} />
           <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
         </button>
         <button type="button" class="po-tile t2" data-i="1" data-full={visualSlots[10].full} aria-label="Bild 2 vergrößern">
-          <img src={visualSlots[10].src} srcset={slotSrcset(visualSlots[10])} sizes="(max-width:720px) 48vw, 33vw" data-full={visualSlots[10].full} loading="lazy" alt={visualSlots[10].alt} width={visualSlots[10].width} height={visualSlots[10].height} decoding="async" />
+          <img src={visualSlots[10].src} srcset={slotSrcset(visualSlots[10])} sizes="(max-width:720px) 48vw, 33vw" data-full={visualSlots[10].full} loading="lazy" alt={visualSlots[10].alt} width={visualSlots[10].width} height={visualSlots[10].height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[1], 'image')} />
           <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
         </button>
         <button type="button" class="po-tile t3" data-i="2" data-full={visualSlots[11].full} aria-label="Bild 3 vergrößern">
-          <img src={visualSlots[11].src} srcset={slotSrcset(visualSlots[11])} sizes="(max-width:720px) 48vw, 33vw" data-full={visualSlots[11].full} loading="lazy" alt={visualSlots[11].alt} width={visualSlots[11].width} height={visualSlots[11].height} decoding="async" />
+          <img src={visualSlots[11].src} srcset={slotSrcset(visualSlots[11])} sizes="(max-width:720px) 48vw, 33vw" data-full={visualSlots[11].full} loading="lazy" alt={visualSlots[11].alt} width={visualSlots[11].width} height={visualSlots[11].height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[2], 'image')} />
           <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
         </button>
         <button type="button" class="po-tile t4" data-i="3" data-full={visualSlots[12].full} aria-label="Bild 4 vergrößern">
-          <img src={visualSlots[12].src} srcset={slotSrcset(visualSlots[12])} sizes="(max-width:720px) 48vw, 33vw" data-full={visualSlots[12].full} loading="lazy" alt={visualSlots[12].alt} width={visualSlots[12].width} height={visualSlots[12].height} decoding="async" />
+          <img src={visualSlots[12].src} srcset={slotSrcset(visualSlots[12])} sizes="(max-width:720px) 48vw, 33vw" data-full={visualSlots[12].full} loading="lazy" alt={visualSlots[12].alt} width={visualSlots[12].width} height={visualSlots[12].height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[3], 'image')} />
           <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
         </button>
         <button type="button" class="po-tile t5" data-i="4" data-full={visualSlots[13].full} aria-label="Bild 5 vergrößern">
-          <img loading="lazy" src={visualSlots[13].src} srcset={slotSrcset(visualSlots[13])} sizes="(max-width:720px) 48vw, 33vw" data-full={visualSlots[13].full} alt={visualSlots[13].alt} width={visualSlots[13].width} height={visualSlots[13].height} decoding="async" />
+          <img loading="lazy" src={visualSlots[13].src} srcset={slotSrcset(visualSlots[13])} sizes="(max-width:720px) 48vw, 33vw" data-full={visualSlots[13].full} alt={visualSlots[13].alt} width={visualSlots[13].width} height={visualSlots[13].height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[4], 'image')} />
           <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
         </button>
         <button type="button" class="po-tile t6" data-i="5" data-full={visualSlots[14].full} aria-label="Bild 6 vergrößern">
-          <img loading="lazy" src={visualSlots[14].src} srcset={slotSrcset(visualSlots[14])} sizes="(max-width:720px) 48vw, 33vw" data-full={visualSlots[14].full} alt={visualSlots[14].alt} width={visualSlots[14].width} height={visualSlots[14].height} decoding="async" />
+          <img loading="lazy" src={visualSlots[14].src} srcset={slotSrcset(visualSlots[14])} sizes="(max-width:720px) 48vw, 33vw" data-full={visualSlots[14].full} alt={visualSlots[14].alt} width={visualSlots[14].width} height={visualSlots[14].height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[5], 'image')} />
           <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
         </button>
       </div>
@@ -428,14 +440,14 @@ const searchLinks = [
     <section class="fw" data-header-theme="light">
       <div class="section-inner">
         <div class="fw-head">
-          <h2>{focusAudienceHeadline}</h2>
-          <p class="lead">{focusAudienceLead}</p>
+          <h2 {...tinaAttrs(doc?.audienceSection, 'headline')}>{focusAudienceHeadline}</h2>
+          <p class="lead" {...tinaAttrs(doc?.audienceSection, 'lead')}>{focusAudienceLead}</p>
         </div>
         <div class="fw-grid">
-          {focusAudienceCards.map((card) => (
+          {focusAudienceCards.map((card, index) => (
             <article class="fw-card">
-              <strong>{card.title}</strong>
-              <p>{card.text}</p>
+              <strong {...tinaAttrs(doc?.audienceCards?.[index], 'title')}>{card.title}</strong>
+              <p {...tinaAttrs(doc?.audienceCards?.[index], 'text')}>{card.text}</p>
             </article>
           ))}
         </div>
@@ -450,7 +462,7 @@ const searchLinks = [
       <div class="section-inner">
         <div class="rl-head">
           <h2>Verwandte <em>Bereiche</em>.</h2>
-          <p>{focusRelatedLead}</p>
+          <p {...tinaAttrs(doc?.relatedSection, 'lead')}>{focusRelatedLead}</p>
         </div>
         <div class="rl-grid">
           <a class="rl-card" href="automobil-fotografie.html">
@@ -492,7 +504,7 @@ const searchLinks = [
           <h2>Motorrad Fotografie <em>vor Ort.</em></h2>
         </div>
         <nav class="mr-cities__grid" aria-label="Städte">
-          {cityLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
+          {cityLinks.map(([href, label], index) => <a class="mr-cities__cell" href={href} {...tinaAttrs(doc?.locationLinksSection?.items?.[index], 'label')}>{label}</a>)}
         </nav>
       </div>
     </section>
@@ -503,7 +515,7 @@ const searchLinks = [
           <h2>Motorrad Fotografie <em>Suchbegriffe.</em></h2>
         </div>
         <nav class="mr-cities__grid" aria-label="Suchvarianten">
-          {searchLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
+          {searchLinks.map(([href, label], index) => <a class="mr-cities__cell" href={href} {...tinaAttrs(doc?.searchLinksSection?.items?.[index], 'label')}>{label}</a>)}
         </nav>
       </div>
     </section>

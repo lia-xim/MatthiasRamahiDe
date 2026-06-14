@@ -25,6 +25,7 @@ export function InquiryAdminEmail({ data, delayed = false }: { data: InquiryEmai
   const message = (data.message || '').trim()
   const meta: Array<[string, string]> = [
     ['Themenbereich', data.intentLabel || 'Allgemein'],
+    ['Leistung', data.projectType || '—'],
     ['Projekt / Motiv', data.project || '—'],
     ['Zeitraum', data.date || '—'],
     ['Nutzung', data.use || '—'],
@@ -124,6 +125,7 @@ InquiryAdminEmail.PreviewProps = {
     contact: 'marie@example.com',
     message: 'Hallo, ich suche eine Bildserie für meinen 911 — Showroom und Social. Zeitraum ist flexibel.',
     intentLabel: 'Sportwagen',
+    projectType: 'Sportwagen-Fotografie',
     lastCta: 'Hero / Projekt anfragen / #anfrage',
     pageTitle: 'Sportwagen Fotografie',
     pageUrl: 'https://matthiasramahi.de/sportwagen-fotografie.html',

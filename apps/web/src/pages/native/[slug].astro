@@ -6,6 +6,7 @@ import {
   isCmsAdoptedLegacyFile,
 } from '../../lib/adoptedRoutes'
 import { livePageCacheControl } from '../../lib/liveCache'
+import { getTinaVisualDocumentForLegacyRoute, isTinaEditRequest } from '../../lib/tinaVisual'
 
 export const prerender = false
 
@@ -24,5 +25,13 @@ if (redirectTarget) {
 
 Astro.response.headers.set('cache-control', livePageCacheControl())
 Astro.response.headers.set('x-migration-render', 'adopted-astro-payload')
+
+const tinaVisualMatch = isTinaEditRequest(Astro.request)
+  ? await getTinaVisualDocumentForLegacyRoute(legacyFile)
+  : null
 ---
-<NativeAdoptedPage legacyFile={legacyFile} />
+<NativeAdoptedPage
+  legacyFile={legacyFile}
+  doc={tinaVisualMatch?.doc}
+  localSeoDoc={tinaVisualMatch?.collection === 'local-seo-pages' ? tinaVisualMatch.doc : undefined}
+/>

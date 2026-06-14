@@ -1,0 +1,489 @@
+{
+  "title": "Alles aus einer Hand.",
+  "slug": "leistungen",
+  "pageType": "services-index",
+  "intro": "Für Projekte, die über die Fotografie hinausgehen: hochwertige Drucke, Großformat, Werbetechnik, Webdesign, Video und musikalische Begleitung — seriös koordiniert, visuell abgestimmt und über erfahrene Partner in Düsseldorf und NRW umgesetzt.",
+  "heroImage": "/uploads/payload/portfolio_webp_full_057-2.webp",
+  "teaserImage": "/uploads/payload/portfolio_webp_full_057-2.webp",
+  "heroSlides": [
+    {
+      "image": "/uploads/payload/portfolio_webp_full_006-2.webp",
+      "headlineLine1": "Videografie",
+      "headlineLine2": "mit Leidenschaft",
+      "lead": "Bewegtbild mit fotografischem Blick: Image-, Event- und Markenfilme, von der Dramaturgie bis zum finalen Cut.",
+      "durationSec": 7,
+      "primaryLabel": "Projekt anfragen",
+      "primaryHref": "#anfrage",
+      "secondaryLabel": "Arbeiten ansehen",
+      "secondaryHref": "/portfolio.html"
+    },
+    {
+      "image": "/uploads/payload/20250629-DSC05700.webp",
+      "headlineLine1": "Viola Musik",
+      "headlineLine2": "bei ihrem Event",
+      "lead": "Von Klassisch zur Modernen Musik für Hochzeiten, Trauungen und Events. ",
+      "durationSec": 7,
+      "primaryLabel": "Projekt anfragen",
+      "primaryHref": "#anfrage",
+      "secondaryLabel": "Leistungen ansehen",
+      "secondaryHref": "#overview"
+    }
+  ],
+  "homeStatement": {
+    "body": []
+  },
+  "homeChapters": {
+    "items": []
+  },
+  "homeSelectedWorks": {},
+  "homeAbout": {
+    "body": []
+  },
+  "homeServices": {
+    "items": []
+  },
+  "homeJournal": {
+    "items": []
+  },
+  "aboutHero": {
+    "primaryHref": "",
+    "secondaryHref": ""
+  },
+  "aboutStatement": {
+    "primaryHref": "",
+    "secondaryHref": ""
+  },
+  "aboutChapters": {
+    "items": []
+  },
+  "aboutSister": {
+    "href": "",
+    "plate": {
+      "roles": []
+    }
+  },
+  "aboutContact": {},
+  "photographyIndex": {
+    "clusterIntro": [],
+    "topics": []
+  },
+  "portfolioIndex": {
+    "contextBody": [],
+    "slices": [],
+    "archive": {
+      "batchSize": 12,
+      "items": []
+    },
+    "contact": {}
+  },
+  "servicesIndex": {
+    "overviewHeadline": "Dienstleistungen im Überblick.",
+    "overviewEmphasis": "im Überblick.",
+    "overviewIntro": "Vom einzelnen Fine-Art-Print bis zur kompletten Markenfläche, Website, Filmproduktion oder Eventbegleitung. Sieben ergänzende Bereiche, ein gemeinsamer visueller Anspruch.",
+    "items": [
+      {
+        "overviewLabel": "Fotolabor & Druck.",
+        "headline": "Fotolabor & Druck.",
+        "emphasis": "Druck.",
+        "text": "In Zusammenarbeit mit einem Druckpartner in Düsseldorf entstehen hochwertige Fotodrucke, Bücher, Leinwände und Spezialmaterialien — von der Motivprüfung über Papier und Oberfläche bis zur finalen Präsentation an Wand, Tisch oder Portfolio.",
+        "tags": "Fine Art Prints, Fotobücher, Spezialmaterial",
+        "href": "/fotolabor-druck-duesseldorf.html",
+        "image1": 23,
+        "caption1": "Print · Buch",
+        "image2": 21,
+        "caption2": "Motiv · Fine Art"
+      },
+      {
+        "overviewLabel": "Großformatdruck.",
+        "headline": "Großformatdruck.",
+        "emphasis": "druck.",
+        "text": "Für große Auftritte: Poster, Banner, Acrylglasdrucke oder Messesysteme in hochwertiger Qualität — geeignet für Ausstellungen, Autohauspräsentationen, Schaufenster, Messewände und Interior-Lösungen mit klarer Fernwirkung.",
+        "tags": "Poster, Banner, Acrylglas",
+        "href": "/grossformatdruck-duesseldorf.html",
+        "image1": 47,
+        "caption1": "Fassade",
+        "image2": 54,
+        "caption2": "Display"
+      },
+      {
+        "overviewLabel": "Werbetechnik.",
+        "headline": "Werbetechnik.",
+        "emphasis": "technik.",
+        "text": "Schaufensterbeklebung, Firmenschilder, Displaylösungen und Raumgrafiken werden gemeinsam mit einem Werbetechnik-Partner geplant und sauber umgesetzt — inklusive Materialwahl, Visualisierung und Montage vor Ort.",
+        "tags": "Schaufenster, Displays, Beschilderung",
+        "href": "/werbetechnik-duesseldorf.html",
+        "image1": 50,
+        "caption1": "Displaybau",
+        "image2": 55,
+        "caption2": "Window"
+      },
+      {
+        "overviewLabel": "Webdesign & SEO.",
+        "headline": "Webdesign & SEO.",
+        "emphasis": "SEO.",
+        "text": "Gemeinsam mit einer Webagentur entstehen moderne Online-Auftritte, die Bildsprache, Performance und Sichtbarkeit verbinden — mit Struktur für Leistungen, lokale Suchanfragen, Referenzen, Blog und einfache Kontaktaufnahme.",
+        "tags": "Website, SEO, Performance",
+        "href": "/webdesign-seo-duesseldorf.html",
+        "image1": 56,
+        "caption1": "Website",
+        "image2": 51,
+        "caption2": "Technik"
+      },
+      {
+        "overviewLabel": "Viola Musik.",
+        "headline": "Viola Musik.",
+        "emphasis": "Musik.",
+        "text": "Musikalische Begleitung für besondere Momente — ob Hochzeit, Firmenfeier oder Event. Live-Musik schafft Atmosphäre, bleibt aber dezent planbar: passend zu Ablauf, Raum, Gästezahl und gewünschter Stimmung.",
+        "tags": "Hochzeit, Event, Live-Musik",
+        "href": "/viola-musik-duesseldorf.html",
+        "image1": 57,
+        "caption1": "Performance",
+        "image2": 53,
+        "caption2": "Instrument"
+      },
+      {
+        "overviewLabel": "Videografie.",
+        "headline": "Videografie.",
+        "emphasis": "grafie.",
+        "text": "Professionelle Videos für Fahrzeuge, Events, Imagekampagnen und Social Media — konzipiert mit fotografischem Blick, klarer Dramaturgie und passenden Exportformaten für Website, Reels, Kampagnen oder Präsentationen.",
+        "tags": "Imagefilm, Event, Social Media",
+        "href": "/videografie-duesseldorf.html",
+        "image1": 52,
+        "caption1": "Kamera",
+        "image2": 46,
+        "caption2": "Event"
+      },
+      {
+        "overviewLabel": "Drucke & Sonderanfertigungen.",
+        "headline": "Drucke & Sonderanfertigungen.",
+        "emphasis": "Sonderanfertigungen.",
+        "text": "Für Motive, die einen besonderen Ort bekommen sollen: Sonderformate, Materialtests, dekorative Drucklösungen und individuelle Präsentationen werden passend zu Raum, Anlass, Menge, Oberfläche und gewünschter Wirkung geplant.",
+        "tags": "Sonderformate, Materialtest, Interior",
+        "href": "/drucke-sonderanfertigungen-duesseldorf.html",
+        "image1": 22,
+        "caption1": "Motiv",
+        "image2": 20,
+        "caption2": "Format"
+      }
+    ],
+    "whyKicker": "Projektablauf",
+    "whyHeadline": "Ein Bildsystem, mehrere Ausgänge.",
+    "whyEmphasis": "mehrere Ausgänge.",
+    "whyLead": "Der Vorteil liegt nicht in möglichst vielen Leistungen, sondern in einem sauber geführten Prozess: Bildsprache, Material, digitale Präsenz und Präsentation wirken am Ende wie ein zusammenhängender Auftritt.",
+    "whyCards": [
+      {
+        "label": "Koordination",
+        "emphasis": "weniger Reibung.",
+        "headline": "Ein Ansprechpartner, weniger Reibung.",
+        "text": "Abstimmung, Reihenfolge und Partner werden gebündelt, damit das Projekt nicht zwischen Gewerken zerfällt."
+      },
+      {
+        "label": "Qualität",
+        "emphasis": "über alle Medien.",
+        "headline": "Ein visueller Anspruch über alle Medien.",
+        "text": "Druck, Website, Video oder Event-Auftritt werden nicht einzeln gedacht, sondern auf dieselbe Bildsprache ausgerichtet."
+      },
+      {
+        "label": "Netzwerk",
+        "emphasis": "aus Düsseldorf & NRW.",
+        "headline": "Spezialisierte Partner aus Düsseldorf & NRW.",
+        "text": "Kurze Wege, klare Kommunikation und erfahrene Partner für Produktion, Präsentation und digitale Umsetzung."
+      },
+      {
+        "label": "Lösung",
+        "emphasis": "Standardpakete.",
+        "headline": "Keine Standardpakete.",
+        "text": "Format, Material, Umfang und Timing richten sich nach dem Projekt — nicht nach einer festen Schablone."
+      }
+    ]
+  },
+  "journalIndex": {
+    "tickerItems": [],
+    "featured": {},
+    "initialVisiblePostCount": 6,
+    "filters": [],
+    "finalCta": {}
+  },
+  "blocks": [
+    {
+      "body": "Partnernetzwerk · Düsseldorf · NRW",
+      "_template": "textBlock"
+    },
+    {
+      "headline": "Alles aus einer Hand.",
+      "body": "Für Projekte, die über die Fotografie hinausgehen: hochwertige Drucke, Großformat, Werbetechnik, Webdesign, Video und musikalische Begleitung — seriös koordiniert, visuell abgestimmt und über erfahrene Partner in Düsseldorf und NRW umgesetzt.\n\nUnverbindliche Erstklaerung / Antwort meist innerhalb von 24 Stunden / ein Ansprechpartner fuer Ablauf und Partner.",
+      "_template": "textBlock"
+    },
+    {
+      "headline": "Dienstleistungen im Überblick.",
+      "body": "Vom einzelnen Fine-Art-Print bis zur kompletten Markenfläche, Website, Filmproduktion oder Eventbegleitung. Sechs ergänzende Bereiche, ein gemeinsamer visueller Anspruch.",
+      "_template": "textBlock"
+    },
+    {
+      "headline": "Fotolabor & Druck.",
+      "body": "In Zusammenarbeit mit einem Druckpartner in Düsseldorf entstehen hochwertige Fotodrucke, Bücher, Leinwände und Spezialmaterialien — von der Motivprüfung über Papier und Oberfläche bis zur finalen Präsentation an Wand, Tisch oder Portfolio.",
+      "_template": "textBlock"
+    },
+    {
+      "headline": "Print · Buch",
+      "layout": "single-large",
+      "items": [
+        {
+          "image": "/uploads/payload/fea8218e-7546-48ef-8581-2b99bb3cdefe_centered_reduced-1.webp",
+          "caption": "Print · Buch",
+          "cropIntent": "auto"
+        }
+      ],
+      "_template": "imageSequence"
+    },
+    {
+      "headline": "Motiv · Fine Art",
+      "layout": "single-large",
+      "items": [
+        {
+          "image": "/uploads/payload/assets-photos-landschaft-1921.webp",
+          "caption": "Motiv · Fine Art",
+          "cropIntent": "auto"
+        }
+      ],
+      "_template": "imageSequence"
+    },
+    {
+      "headline": "Großformat druck.",
+      "body": "Für große Auftritte: Poster, Banner, Acrylglasdrucke oder Messesysteme in hochwertiger Qualität — geeignet für Ausstellungen, Autohauspräsentationen, Schaufenster, Messewände und Interior-Lösungen mit klarer Fernwirkung.",
+      "_template": "textBlock"
+    },
+    {
+      "headline": "Fassade",
+      "layout": "single-large",
+      "items": [
+        {
+          "image": "/uploads/payload/Catoir_Ramahi-1-106-768x512-2.webp",
+          "caption": "Fassade",
+          "cropIntent": "auto"
+        }
+      ],
+      "_template": "imageSequence"
+    },
+    {
+      "headline": "Display",
+      "layout": "single-large",
+      "items": [
+        {
+          "image": "/uploads/payload/catoir_ramahiinuikiim21-1.webp",
+          "caption": "Display",
+          "cropIntent": "auto"
+        }
+      ],
+      "_template": "imageSequence"
+    },
+    {
+      "headline": "Werbe technik.",
+      "body": "Schaufensterbeklebung, Firmenschilder, Displaylösungen und Raumgrafiken werden gemeinsam mit einem Werbetechnik-Partner geplant und sauber umgesetzt — inklusive Materialwahl, Visualisierung und Montage vor Ort.",
+      "_template": "textBlock"
+    },
+    {
+      "headline": "Displaybau",
+      "layout": "single-large",
+      "items": [
+        {
+          "image": "/uploads/payload/Catoir_Ramahi-1-32-768x512-2.webp",
+          "caption": "Displaybau",
+          "cropIntent": "auto"
+        }
+      ],
+      "_template": "imageSequence"
+    },
+    {
+      "headline": "Window",
+      "layout": "single-large",
+      "items": [
+        {
+          "image": "/uploads/payload/portfolio_webp_full_006-2.webp",
+          "caption": "Window",
+          "cropIntent": "auto"
+        }
+      ],
+      "_template": "imageSequence"
+    },
+    {
+      "headline": "Webdesign & SEO.",
+      "body": "Gemeinsam mit einer Webagentur entstehen moderne Online-Auftritte, die Bildsprache, Performance und Sichtbarkeit verbinden — mit Struktur für Leistungen, lokale Suchanfragen, Referenzen, Blog und einfache Kontaktaufnahme.",
+      "_template": "textBlock"
+    },
+    {
+      "headline": "Website",
+      "layout": "single-large",
+      "items": [
+        {
+          "image": "/uploads/payload/screencapture-gr-knospe-de-2025-10-02-23_10_04-scaled-1.webp",
+          "caption": "Website",
+          "cropIntent": "auto"
+        }
+      ],
+      "_template": "imageSequence"
+    },
+    {
+      "headline": "Technik",
+      "layout": "single-large",
+      "items": [
+        {
+          "image": "/uploads/payload/portfolio_webp_full_001-1.webp",
+          "caption": "Technik",
+          "cropIntent": "auto"
+        }
+      ],
+      "_template": "imageSequence"
+    },
+    {
+      "headline": "Viola Musik.",
+      "body": "Musikalische Begleitung für besondere Momente — ob Hochzeit, Firmenfeier oder Event. Live-Musik schafft Atmosphäre, bleibt aber dezent planbar: passend zu Ablauf, Raum, Gästezahl und gewünschter Stimmung.",
+      "_template": "textBlock"
+    },
+    {
+      "headline": "Performance",
+      "layout": "single-large",
+      "items": [
+        {
+          "image": "/uploads/payload/portfolio_webp_full_254-1.webp",
+          "caption": "Performance",
+          "cropIntent": "auto"
+        }
+      ],
+      "_template": "imageSequence"
+    },
+    {
+      "headline": "Instrument",
+      "layout": "single-large",
+      "items": [
+        {
+          "image": "/uploads/payload/portfolio_webp_full_004-3.webp",
+          "caption": "Instrument",
+          "cropIntent": "auto"
+        }
+      ],
+      "_template": "imageSequence"
+    },
+    {
+      "headline": "Video grafie.",
+      "body": "Professionelle Videos für Fahrzeuge, Events, Imagekampagnen und Social Media — konzipiert mit fotografischem Blick, klarer Dramaturgie und passenden Exportformaten für Website, Reels, Kampagnen oder Präsentationen.",
+      "_template": "textBlock"
+    },
+    {
+      "headline": "Kamera",
+      "layout": "single-large",
+      "items": [
+        {
+          "image": "/uploads/payload/portfolio_webp_full_058-2.webp",
+          "caption": "Kamera",
+          "cropIntent": "auto"
+        }
+      ],
+      "_template": "imageSequence"
+    },
+    {
+      "headline": "Event",
+      "layout": "single-large",
+      "items": [
+        {
+          "image": "/uploads/payload/portfolio_webp_full_057-2.webp",
+          "caption": "Event",
+          "cropIntent": "auto"
+        }
+      ],
+      "_template": "imageSequence"
+    },
+    {
+      "headline": "Drucke & Sonderanfertigungen.",
+      "body": "Für Motive, die einen besonderen Ort bekommen sollen: Sonderformate, Materialtests, dekorative Drucklösungen und individuelle Präsentationen werden passend zu Raum, Anlass, Menge, Oberfläche und gewünschter Wirkung geplant.",
+      "_template": "textBlock"
+    },
+    {
+      "headline": "Motiv",
+      "layout": "single-large",
+      "items": [
+        {
+          "image": "/uploads/payload/portrait-warm-1.webp",
+          "caption": "Motiv",
+          "cropIntent": "auto"
+        }
+      ],
+      "_template": "imageSequence"
+    },
+    {
+      "headline": "Format",
+      "layout": "single-large",
+      "items": [
+        {
+          "image": "/uploads/payload/assets-photos-automobil-sunset-1921.webp",
+          "caption": "Format",
+          "cropIntent": "auto"
+        }
+      ],
+      "_template": "imageSequence"
+    }
+  ],
+  "contactOverride": {},
+  "seo": {
+    "title": "Weitere Dienstleistungen — Matthias Ramahi",
+    "description": "Weitere Dienstleistungen von Matthias Ramahi: Fotografie, Druck, Webdesign, Videografie und visuelle Produktion in Düsseldorf, NRW und Deutschland.",
+    "secondaryKeywords": [],
+    "internalLinkAnchors": [],
+    "canonicalUrl": "https://matthiasramahi.de/leistungen.html",
+    "legacyUrl": "leistungen.html",
+    "ogImage": "/uploads/payload/portfolio_webp_full_057-2.webp",
+    "noIndex": false,
+    "focusKeyword": "Fotografie Leistungen Düsseldorf",
+    "searchIntent": "Leistungsübersicht: Nutzer vergleichen ergänzende Leistungen und suchen den passenden Einstieg."
+  },
+  "legacy": {
+    "sourceFile": "leistungen.html",
+    "sourceUrl": "https://matthiasramahi.de/leistungen.html",
+    "migrationStatus": "reviewed",
+    "renderSource": "payload-legacy-html",
+    "renderedHeadHtml": "\n  <meta charset=\"utf-8\" />\n  <meta name=\"viewport\" content=\"width=device-width,initial-scale=1\" />\n  <meta name=\"twitter:image\" content=\"https://matthiasramahi.de/assets/services/portfolio_webp_full_057-1.webp\" />\n  <meta name=\"twitter:description\" content=\"Weitere Dienstleistungen von Matthias Ramahi: Fotografie, Druck, Webdesign, Videografie und visuelle Produktion in Düsseldorf, NRW und Deutschland.\" />\n  <meta name=\"twitter:title\" content=\"Weitere Dienstleistungen — Matthias Ramahi\" />\n  <meta name=\"twitter:card\" content=\"summary_large_image\" />\n  <meta property=\"og:image:alt\" content=\"Weitere Dienstleistungen — Matthias Ramahi\" />\n  <meta property=\"og:image\" content=\"https://matthiasramahi.de/assets/services/portfolio_webp_full_057-1.webp\" />\n  <meta property=\"og:url\" content=\"https://matthiasramahi.de/leistungen.html\" />\n  <meta property=\"og:description\" content=\"Weitere Dienstleistungen von Matthias Ramahi: Fotografie, Druck, Webdesign, Videografie und visuelle Produktion in Düsseldorf, NRW und Deutschland.\" />\n  <meta property=\"og:title\" content=\"Weitere Dienstleistungen — Matthias Ramahi\" />\n  <meta property=\"og:locale\" content=\"de_DE\" />\n  <meta property=\"og:site_name\" content=\"Matthias Ramahi Fotografie\" />\n  <meta property=\"og:type\" content=\"website\" />\n  <meta name=\"robots\" content=\"index,follow,max-image-preview:large,max-snippet:-1\" />\n  <meta name=\"author\" content=\"Matthias Ramahi\" />\n  <meta name=\"description\" content=\"Weitere Dienstleistungen von Matthias Ramahi: Fotografie, Druck, Webdesign, Videografie und visuelle Produktion in Düsseldorf, NRW und Deutschland.\" />\n  <title>Weitere Dienstleistungen — Matthias Ramahi</title>\n  <link rel=\"stylesheet\" href=\"/assets/legacy-leistungen.css\" />\n  <link rel=\"stylesheet\" href=\"/assets/site-chrome.css\" />\n  <link rel=\"stylesheet\" href=\"/assets/legacy-performance.css\" />\n  <link rel=\"canonical\" href=\"https://matthiasramahi.de/leistungen.html\" />\n  <script type=\"application/ld+json\" data-seo=\"technical\">{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://matthiasramahi.de/#website\",\"url\":\"https://matthiasramahi.de/\",\"name\":\"Matthias Ramahi Fotografie\",\"inLanguage\":\"de-DE\",\"publisher\":{\"@id\":\"https://matthiasramahi.de/#person\"}},{\"@type\":\"Person\",\"@id\":\"https://matthiasramahi.de/#person\",\"name\":\"Matthias Ramahi\",\"url\":\"https://matthiasramahi.de/\",\"email\":\"info@matthiasramahi.de\",\"jobTitle\":\"Fotograf\"},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://matthiasramahi.de/leistungen.html#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Startseite\",\"item\":\"https://matthiasramahi.de/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Weitere Dienstleistungen — Matthias Ramahi\",\"item\":\"https://matthiasramahi.de/leistungen.html\"}]},{\"@type\":\"WebPage\",\"@id\":\"https://matthiasramahi.de/leistungen.html#webpage\",\"url\":\"https://matthiasramahi.de/leistungen.html\",\"name\":\"Weitere Dienstleistungen — Matthias Ramahi\",\"description\":\"Weitere Dienstleistungen von Matthias Ramahi: Fotografie, Druck, Webdesign, Videografie und visuelle Produktion in Düsseldorf, NRW und Deutschland.\",\"inLanguage\":\"de-DE\",\"isPartOf\":{\"@id\":\"https://matthiasramahi.de/#website\"},\"breadcrumb\":{\"@id\":\"https://matthiasramahi.de/leistungen.html#breadcrumb\"},\"primaryImageOfPage\":{\"@type\":\"ImageObject\",\"url\":\"https://matthiasramahi.de/assets/services/portfolio_webp_full_057-1.webp\"}}]}</script>\n",
+    "renderedBodyHtml": "<main>\n    <section class=\"ld-hero\" id=\"top\" data-header-theme=\"dark\" aria-label=\"Weitere Dienstleistungen\">\n      <div class=\"ld-hero__bg\" aria-hidden=\"true\">\n        <img src=\"/assets/services/portfolio_webp_full_057-1.webp\" alt=\"\" loading=\"eager\" decoding=\"async\" fetchpriority=\"high\" width=\"1280\" height=\"1920\">\n      </div>\n      <div class=\"ld-hero__copy\">\n        <p class=\"kicker\">Partnernetzwerk · Düsseldorf · NRW</p>\n        <h1>Alles aus <em>einer Hand.</em></h1>\n        <p class=\"ld-hero__lead\">Für Projekte, die über die Fotografie hinausgehen: hochwertige Drucke, Großformat, Werbetechnik, Webdesign, Video und musikalische Begleitung — seriös koordiniert, visuell abgestimmt und über erfahrene Partner in Düsseldorf und NRW umgesetzt.</p>\n        <div class=\"ld-hero__actions\">\n          <a class=\"ld-btn is-primary\" href=\"#anfrage\">Projekt anfragen</a>\n          <a class=\"ld-btn\" href=\"#overview\">Leistungen ansehen</a>\n        </div>\n        <p class=\"ld-hero__lead\" style=\"font-size:13px;max-width:560px;margin-top:14px\">Unverbindliche Erstklaerung / Antwort meist innerhalb von 24 Stunden / ein Ansprechpartner fuer Ablauf und Partner.</p>\n      </div>\n    </section>\n\n    <section class=\"overview\" id=\"overview\" data-header-theme=\"light\" aria-label=\"Unsere Dienstleistungen im Überblick\">\n      <div class=\"overview-inner\">\n        <div class=\"overview-head\">\n          <h2>Dienstleistungen <em>im Überblick.</em></h2>\n          <p>Vom einzelnen Fine-Art-Print bis zur kompletten Markenfläche, Website, Filmproduktion oder Eventbegleitung. Sechs ergänzende Bereiche, ein gemeinsamer visueller Anspruch.</p>\n        </div>\n        <div class=\"overview-grid\">\n          <a class=\"overview-tile\" href=\"fotolabor-druck-duesseldorf.html\"><img src=\"/assets/services/fea8218e-7546-48ef-8581-2b99bb3cdefe_centered_reduced.webp\" alt=\"Fotobücher und hochwertige Druckprodukte\" loading=\"lazy\" width=\"860\" height=\"603\" decoding=\"async\"><div class=\"label\"><strong>Fotolabor &amp; <em>Druck</em></strong><span>Fine Art</span></div></a>\n          <a class=\"overview-tile\" href=\"werbetechnik-duesseldorf.html\"><img src=\"/assets/services/Catoir_Ramahi-1-32-768x512-1.webp\" alt=\"Präsentationsfläche und Werbetechnik\" loading=\"lazy\" width=\"768\" height=\"512\" decoding=\"async\"><div class=\"label\"><strong>Werbe<em>technik</em></strong><span>Displays</span></div></a>\n          <a class=\"overview-tile\" href=\"webdesign-seo-duesseldorf.html\"><img src=\"/assets/services/portfolio_webp_full_001.webp\" alt=\"Server-Racks als Symbol für Webdesign und SEO\" loading=\"lazy\" width=\"1280\" height=\"800\" decoding=\"async\"><div class=\"label\"><strong>Webdesign &amp; <em>SEO</em></strong><span>Online</span></div></a>\n          <a class=\"overview-tile\" href=\"videografie-duesseldorf.html\"><img src=\"/assets/services/portfolio_webp_full_058-1.webp\" alt=\"Professionelle Videokamera bei einer Veranstaltung\" loading=\"lazy\" width=\"1536\" height=\"1920\" decoding=\"async\"><div class=\"label\"><strong>Video<em>grafie</em></strong><span>Motion</span></div></a>\n          <a class=\"overview-tile\" href=\"viola-musik-duesseldorf.html\"><img src=\"/assets/services/portfolio_webp_full_004-2.webp\" alt=\"Schwarzweiß-Nahaufnahme mehrerer Violinen\" loading=\"lazy\" width=\"853\" height=\"1280\" decoding=\"async\"><div class=\"label\"><strong>Viola <em>Musik</em></strong><span>Live</span></div></a>\n          <a class=\"overview-tile\" href=\"grossformatdruck-duesseldorf.html\"><img src=\"/assets/services/Catoir_Ramahi-1-106-768x512-1.webp\" alt=\"Großformatige Schaufensterpräsentation in Düsseldorf\" loading=\"lazy\" width=\"768\" height=\"512\" decoding=\"async\"><div class=\"label\"><strong>Großformat<em>druck</em></strong><span>Präsentation</span></div></a>\n        </div>\n      </div>\n    </section>\n\n    <section class=\"services\" data-header-theme=\"light\" aria-label=\"Leistungsdetails\">\n      <div class=\"services-list\">\n        <a class=\"service\" id=\"fotolabor\" href=\"fotolabor-druck-duesseldorf.html\" data-header-theme=\"light\">\n          <div class=\"service-copy\"><span class=\"service-num\">01 · Fine Art</span><h3>Fotolabor &amp; <em>Druck.</em></h3><p>In Zusammenarbeit mit einem Druckpartner in Düsseldorf entstehen hochwertige Fotodrucke, Bücher, Leinwände und Spezialmaterialien — von der Motivprüfung über Papier und Oberfläche bis zur finalen Präsentation an Wand, Tisch oder Portfolio.</p><div class=\"tags\"><span class=\"tag\">Fine Art Prints</span><span class=\"tag\">Fotobücher</span><span class=\"tag\">Spezialmaterial</span></div><span class=\"service-go\">Mehr Infos</span></div>\n          <div class=\"image-set\"><figure class=\"image-card tall print\"><img data-src=\"/assets/services/fea8218e-7546-48ef-8581-2b99bb3cdefe_centered_reduced.webp\" alt=\"Fotobücher und Druckprodukte\" loading=\"lazy\" width=\"860\" height=\"603\" decoding=\"async\"><figcaption class=\"image-caption\">Print · Buch</figcaption></figure><figure class=\"image-card small\"><img src=\"/assets/optimized/assets-photos-landschaft-1920.webp\" alt=\"Landschaftsmotiv als möglicher Fine-Art-Druck\" loading=\"lazy\" width=\"1707\" height=\"2560\" decoding=\"async\"><figcaption class=\"image-caption\">Motiv · Fine Art</figcaption></figure></div>\n        </a>\n\n        <a class=\"service\" id=\"grossformat\" href=\"grossformatdruck-duesseldorf.html\" data-header-theme=\"dark\">\n          <div class=\"service-copy\"><span class=\"service-num\">02 · Präsentation</span><h3>Großformat<em>druck.</em></h3><p>Für große Auftritte: Poster, Banner, Acrylglasdrucke oder Messesysteme in hochwertiger Qualität — geeignet für Ausstellungen, Autohauspräsentationen, Schaufenster, Messewände und Interior-Lösungen mit klarer Fernwirkung.</p><div class=\"tags\"><span class=\"tag\">Poster</span><span class=\"tag\">Banner</span><span class=\"tag\">Acrylglas</span></div><span class=\"service-go\">Mehr Infos</span></div>\n          <div class=\"image-set\"><figure class=\"image-card\"><img data-src=\"/assets/services/Catoir_Ramahi-1-106-768x512-1.webp\" alt=\"Großformatige Schaufensterfassade in Düsseldorf\" loading=\"lazy\" width=\"768\" height=\"512\" decoding=\"async\"><figcaption class=\"image-caption\">Fassade</figcaption></figure><figure class=\"image-card small\"><img src=\"/assets/services/catoir_ramahiinuikiim21.webp\" alt=\"Präsentationsfläche mit großem Display\" loading=\"lazy\" width=\"1667\" height=\"2500\" decoding=\"async\"><figcaption class=\"image-caption\">Display</figcaption></figure></div>\n        </a>\n\n        <a class=\"service\" id=\"werbetechnik\" href=\"werbetechnik-duesseldorf.html\" data-header-theme=\"light\">\n          <div class=\"service-copy\"><span class=\"service-num\">03 · Beschriftung</span><h3>Werbe<em>technik.</em></h3><p>Schaufensterbeklebung, Firmenschilder, Displaylösungen und Raumgrafiken werden gemeinsam mit einem Werbetechnik-Partner geplant und sauber umgesetzt — inklusive Materialwahl, Visualisierung und Montage vor Ort.</p><div class=\"tags\"><span class=\"tag\">Schaufenster</span><span class=\"tag\">Displays</span><span class=\"tag\">Beschilderung</span></div><span class=\"service-go\">Mehr Infos</span></div>\n          <div class=\"image-set\"><figure class=\"image-card\"><img data-src=\"/assets/services/Catoir_Ramahi-1-32-768x512-1.webp\" alt=\"Moderne Präsentationsfläche mit Produktdisplay\" loading=\"lazy\" width=\"768\" height=\"512\" decoding=\"async\"><figcaption class=\"image-caption\">Displaybau</figcaption></figure><figure class=\"image-card small\"><img src=\"/assets/services/portfolio_webp_full_006-1.webp\" alt=\"Chanel-Schaufensterbeklebung bei Nacht\" loading=\"lazy\" width=\"1920\" height=\"1280\" decoding=\"async\"><figcaption class=\"image-caption\">Window</figcaption></figure></div>\n        </a>\n\n        <a class=\"service\" id=\"webdesign\" href=\"webdesign-seo-duesseldorf.html\" data-header-theme=\"dark\">\n          <div class=\"service-copy\"><span class=\"service-num\">04 · Online</span><h3>Webdesign &amp; <em>SEO.</em></h3><p>Gemeinsam mit einer Webagentur entstehen moderne Online-Auftritte, die Bildsprache, Performance und Sichtbarkeit verbinden — mit Struktur für Leistungen, lokale Suchanfragen, Referenzen, Blog und einfache Kontaktaufnahme.</p><div class=\"tags\"><span class=\"tag\">Website</span><span class=\"tag\">SEO</span><span class=\"tag\">Performance</span></div><span class=\"service-go\">Mehr Infos</span></div>\n          <div class=\"image-set\"><figure class=\"image-card screen\"><img src=\"/assets/services/screencapture-gr-knospe-de-2025-10-02-23_10_04-scaled.webp\" alt=\"Website-Design mit Reinigungsszene und Kontaktinformationen\" loading=\"lazy\" width=\"1814\" height=\"2560\" decoding=\"async\"><figcaption class=\"image-caption\">Website</figcaption></figure><figure class=\"image-card small\"><img data-src=\"/assets/services/portfolio_webp_full_001.webp\" alt=\"Server-Racks als Symbol für technische Infrastruktur\" loading=\"lazy\" width=\"1280\" height=\"800\" decoding=\"async\"><figcaption class=\"image-caption\">Technik</figcaption></figure></div>\n        </a>\n\n        <a class=\"service\" id=\"viola\" href=\"viola-musik-duesseldorf.html\" data-header-theme=\"light\">\n          <div class=\"service-copy\"><span class=\"service-num\">05 · Event</span><h3>Viola <em>Musik.</em></h3><p>Musikalische Begleitung für besondere Momente — ob Hochzeit, Firmenfeier oder Event. Live-Musik schafft Atmosphäre, bleibt aber dezent planbar: passend zu Ablauf, Raum, Gästezahl und gewünschter Stimmung.</p><div class=\"tags\"><span class=\"tag\">Hochzeit</span><span class=\"tag\">Event</span><span class=\"tag\">Live-Musik</span></div><span class=\"service-go\">Mehr Infos</span></div>\n          <div class=\"image-set\"><figure class=\"image-card viola\"><img src=\"/assets/services/portfolio_webp_full_254.webp\" alt=\"Violinistin in einem Kleid spielt im Freien\" loading=\"lazy\" width=\"1268\" height=\"1920\" decoding=\"async\"><figcaption class=\"image-caption\">Performance</figcaption></figure><figure class=\"image-card small\"><img data-src=\"/assets/services/portfolio_webp_full_004-2.webp\" alt=\"Nahaufnahme von Violinen\" loading=\"lazy\" width=\"853\" height=\"1280\" decoding=\"async\"><figcaption class=\"image-caption\">Instrument</figcaption></figure></div>\n        </a>\n\n        <a class=\"service\" id=\"videografie\" href=\"videografie-duesseldorf.html\" data-header-theme=\"dark\">\n          <div class=\"service-copy\"><span class=\"service-num\">06 · Motion</span><h3>Video<em>grafie.</em></h3><p>Professionelle Videos für Fahrzeuge, Events, Imagekampagnen und Social Media — konzipiert mit fotografischem Blick, klarer Dramaturgie und passenden Exportformaten für Website, Reels, Kampagnen oder Präsentationen.</p><div class=\"tags\"><span class=\"tag\">Imagefilm</span><span class=\"tag\">Event</span><span class=\"tag\">Social Media</span></div><span class=\"service-go\">Mehr Infos</span></div>\n          <div class=\"image-set\"><figure class=\"image-card\"><img data-src=\"/assets/services/portfolio_webp_full_058-1.webp\" alt=\"Professionelle Videokamera bei einer Veranstaltung\" loading=\"lazy\" width=\"1536\" height=\"1920\" decoding=\"async\"><figcaption class=\"image-caption\">Kamera</figcaption></figure><figure class=\"image-card small\"><img data-src=\"/assets/services/portfolio_webp_full_057-1.webp\" alt=\"Performance in rotem Licht\" loading=\"lazy\" width=\"1280\" height=\"1920\" decoding=\"async\"><figcaption class=\"image-caption\">Event</figcaption></figure></div>\n        </a>\n\n        <a class=\"service\" id=\"sonder\" href=\"drucke-sonderanfertigungen-duesseldorf.html\" data-header-theme=\"light\">\n          <div class=\"service-copy\"><span class=\"service-num\">07 · Sonderformat</span><h3>Drucke &amp; <em>Sonderanfertigungen.</em></h3><p>Für Motive, die einen besonderen Ort bekommen sollen: Sonderformate, Materialtests, dekorative Drucklösungen und individuelle Präsentationen werden passend zu Raum, Anlass, Menge, Oberfläche und gewünschter Wirkung geplant.</p><div class=\"tags\"><span class=\"tag\">Sonderformate</span><span class=\"tag\">Materialtest</span><span class=\"tag\">Interior</span></div><span class=\"service-go\">Mehr Infos</span></div>\n          <div class=\"image-set\"><figure class=\"image-card\"><img src=\"/assets/photos/portrait-warm.webp\" alt=\"Portraitmotiv als hochwertiger Druck\" loading=\"lazy\" width=\"1600\" height=\"2560\" decoding=\"async\"><figcaption class=\"image-caption\">Motiv</figcaption></figure><figure class=\"image-card small\"><img src=\"/assets/optimized/assets-photos-automobil-sunset-1920.webp\" alt=\"Automobilmotiv als Präsentationsdruck\" loading=\"lazy\" width=\"1920\" height=\"1280\" decoding=\"async\"><figcaption class=\"image-caption\">Format</figcaption></figure></div>\n        </a>\n      </div>\n    </section>\n\n    <section class=\"why\" data-header-theme=\"dark\" aria-label=\"Warum alles aus einer Hand Sinn ergibt\">\n      <div class=\"why-inner\">\n        <div class=\"why-copy\"><p class=\"kicker\">Projektablauf</p><h2>Ein Bildsystem, <em>mehrere Ausgänge.</em></h2><p class=\"why-lead\">Der Vorteil liegt nicht in möglichst vielen Leistungen, sondern in einem sauber geführten Prozess: Bildsprache, Material, digitale Präsenz und Präsentation wirken am Ende wie ein zusammenhängender Auftritt.</p></div>\n        <div class=\"why-board\">\n          <article class=\"why-card\"><span>Koordination</span><strong>Ein Ansprechpartner, <em>weniger Reibung.</em></strong><p>Abstimmung, Reihenfolge und Partner werden gebündelt, damit das Projekt nicht zwischen Gewerken zerfällt.</p></article>\n          <article class=\"why-card\"><span>Qualität</span><strong>Ein visueller Anspruch <em>über alle Medien.</em></strong><p>Druck, Website, Video oder Event-Auftritt werden nicht einzeln gedacht, sondern auf dieselbe Bildsprache ausgerichtet.</p></article>\n          <article class=\"why-card\"><span>Netzwerk</span><strong>Spezialisierte Partner <em>aus Düsseldorf &amp; NRW.</em></strong><p>Kurze Wege, klare Kommunikation und erfahrene Partner für Produktion, Präsentation und digitale Umsetzung.</p></article>\n          <article class=\"why-card\"><span>Lösung</span><strong>Keine <em>Standardpakete.</em></strong><p>Format, Material, Umfang und Timing richten sich nach dem Projekt — nicht nach einer festen Schablone.</p></article>\n        </div>\n      </div>\n    </section>\n\n    <section\n      id=\"anfrage\"\n      data-contact-section\n      data-header-theme=\"light\"\n      data-contact-subject=\"Anfrage weitere Dienstleistungen\"\n      data-contact-headline=\"Projekt <em>kurz anfragen.</em>\"\n      data-contact-lead=\"Schreiben Sie kurz, welche Leistung Sie interessiert, wo das Projekt stattfindet und welchen Zeitraum Sie planen. Ein grober Rahmen reicht fuer den ersten Schritt.\"\n    ></section>\n  </main>\n\n  ",
+    "afterFooterHtml": "\n\n\n<script src=\"/assets/site-chrome.js\" defer></script>\n",
+    "bodyClass": "has-mr-footer",
+    "extractedHeadings": [
+      "Alles aus einer Hand.",
+      "Dienstleistungen im Überblick.",
+      "Fotolabor & Druck.",
+      "Großformat druck.",
+      "Werbe technik.",
+      "Webdesign & SEO.",
+      "Viola Musik.",
+      "Video grafie.",
+      "Drucke & Sonderanfertigungen.",
+      "Ein Bildsystem, mehrere Ausgänge."
+    ],
+    "extractedImagePaths": [
+      "assets/services/portfolio_webp_full_057-1.webp",
+      "assets/services/fea8218e-7546-48ef-8581-2b99bb3cdefe_centered_reduced.webp",
+      "assets/services/Catoir_Ramahi-1-32-768x512-1.webp",
+      "assets/services/portfolio_webp_full_001.webp",
+      "assets/services/portfolio_webp_full_058-1.webp",
+      "assets/services/portfolio_webp_full_004-2.webp",
+      "assets/services/Catoir_Ramahi-1-106-768x512-1.webp",
+      "assets/services/fea8218e-7546-48ef-8581-2b99bb3cdefe_centered_reduced.webp",
+      "assets/optimized/assets-photos-landschaft-1920.webp",
+      "assets/services/Catoir_Ramahi-1-106-768x512-1.webp",
+      "assets/services/catoir_ramahiinuikiim21.webp",
+      "assets/services/Catoir_Ramahi-1-32-768x512-1.webp",
+      "assets/services/portfolio_webp_full_006-1.webp",
+      "assets/services/screencapture-gr-knospe-de-2025-10-02-23_10_04-scaled.webp",
+      "assets/services/portfolio_webp_full_001.webp",
+      "assets/services/portfolio_webp_full_254.webp",
+      "assets/services/portfolio_webp_full_004-2.webp",
+      "assets/services/portfolio_webp_full_058-1.webp",
+      "assets/services/portfolio_webp_full_057-1.webp",
+      "assets/photos/portrait-warm.webp",
+      "assets/optimized/assets-photos-automobil-sunset-1920.webp"
+    ],
+    "extractedText": "Partnernetzwerk · Düsseldorf · NRW\n\nFür Projekte, die über die Fotografie hinausgehen: hochwertige Drucke, Großformat, Werbetechnik, Webdesign, Video und musikalische Begleitung — seriös koordiniert, visuell abgestimmt und über erfahrene Partner in Düsseldorf und NRW umgesetzt.\n\nUnverbindliche Erstklaerung / Antwort meist innerhalb von 24 Stunden / ein Ansprechpartner fuer Ablauf und Partner.\n\nVom einzelnen Fine-Art-Print bis zur kompletten Markenfläche, Website, Filmproduktion oder Eventbegleitung. Sechs ergänzende Bereiche, ein gemeinsamer visueller Anspruch.\n\nIn Zusammenarbeit mit einem Druckpartner in Düsseldorf entstehen hochwertige Fotodrucke, Bücher, Leinwände und Spezialmaterialien — von der Motivprüfung über Papier und Oberfläche bis zur finalen Präsentation an Wand, Tisch oder Portfolio.\n\nFür große Auftritte: Poster, Banner, Acrylglasdrucke oder Messesysteme in hochwertiger Qualität — geeignet für Ausstellungen, Autohauspräsentationen, Schaufenster, Messewände und Interior-Lösungen mit klarer Fernwirkung.\n\nSchaufensterbeklebung, Firmenschilder, Displaylösungen und Raumgrafiken werden gemeinsam mit einem Werbetechnik-Partner geplant und sauber umgesetzt — inklusive Materialwahl, Visualisierung und Montage vor Ort.\n\nGemeinsam mit einer Webagentur entstehen moderne Online-Auftritte, die Bildsprache, Performance und Sichtbarkeit verbinden — mit Struktur für Leistungen, lokale Suchanfragen, Referenzen, Blog und einfache Kontaktaufnahme.\n\nMusikalische Begleitung für besondere Momente — ob Hochzeit, Firmenfeier oder Event. Live-Musik schafft Atmosphäre, bleibt aber dezent planbar: passend zu Ablauf, Raum, Gästezahl und gewünschter Stimmung.\n\nProfessionelle Videos für Fahrzeuge, Events, Imagekampagnen und Social Media — konzipiert mit fotografischem Blick, klarer Dramaturgie und passenden Exportformaten für Website, Reels, Kampagnen oder Präsentationen.\n\nFür Motive, die einen besonderen Ort bekommen sollen: Sonderformate, Materialtests, dekorative Drucklösungen und individuelle Präsentationen werden passend zu Raum, Anlass, Menge, Oberfläche und gewünschter Wirkung geplant.\n\nDer Vorteil liegt nicht in möglichst vielen Leistungen, sondern in einem sauber geführten Prozess: Bildsprache, Material, digitale Präsenz und Präsentation wirken am Ende wie ein zusammenhängender Auftritt.\n\nAbstimmung, Reihenfolge und Partner werden gebündelt, damit das Projekt nicht zwischen Gewerken zerfällt.\n\nDruck, Website, Video oder Event-Auftritt werden nicht einzeln gedacht, sondern auf dieselbe Bildsprache ausgerichtet.\n\nKurze Wege, klare Kommunikation und erfahrene Partner für Produktion, Präsentation und digitale Umsetzung.\n\nFormat, Material, Umfang und Timing richten sich nach dem Projekt — nicht nach einer festen Schablone."
+  },
+  "updatedAt": "2026-06-03T14:55:00.654Z",
+  "createdAt": "2026-05-28T19:07:32.002Z",
+  "status": "published",
+  "payloadId": "7"
+}

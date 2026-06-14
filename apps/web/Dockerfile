@@ -10,10 +10,12 @@ RUN pnpm install --frozen-lockfile
 
 FROM deps AS build
 COPY . .
+ARG ASTRO_CONTENT_SOURCE=payload
+ENV ASTRO_CONTENT_SOURCE=${ASTRO_CONTENT_SOURCE}
 RUN pnpm --filter @matthias-ramahi/web build
 
 FROM base AS runner
 ENV NODE_ENV=production
 COPY --from=build /app /app
 EXPOSE 4321
-CMD ["pnpm", "--filter", "@matthias-ramahi/web", "preview", "--host", "0.0.0.0", "--port", "4321"]
+CMD ["node", "apps/web/dist/server/entry.mjs"]

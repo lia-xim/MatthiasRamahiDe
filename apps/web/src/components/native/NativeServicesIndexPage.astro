@@ -2,6 +2,7 @@
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import NativeShaderHero from './NativeShaderHero.astro'
 import { homeHeroSlidesFor, servicesHeroSlides, servicesIndexItems as fallbackServices } from '../../lib/nativeContent'
+import { tinaAttrs } from '../../lib/tinaFieldAttrs'
 import {
   getSitePageByType,
   imageAlt,
@@ -26,6 +27,9 @@ const heroSlides = cmsHeroSlides.length ? cmsHeroSlides : fallbackHeroSlides
 const firstHeroSlide = heroSlides[0]
 
 const hasText = (value?: string): value is string => typeof value === 'string' && value.trim().length > 0
+const editableSource = (item: unknown) => (item as { source?: unknown } | null | undefined)?.source
+const imageFieldName = (item: unknown) => (item as { fieldName?: string } | null | undefined)?.fieldName
+const imageCaptionFieldName = (item: unknown) => (item as { captionFieldName?: string } | null | undefined)?.captionFieldName
 const stripHtml = (value = '') => value.replace(/<[^>]+>/g, '')
 // Hebt das Emphasis-Wort als Substring kursiv hervor (funktioniert auch mitten im Wort).
 const emphasize = (headline = '', emphasis = '') =>
@@ -34,7 +38,7 @@ const emphasize = (headline = '', emphasis = '') =>
 const cms = doc?.servicesIndex
 const cmsItems = cms?.items || []
 
-type ServiceImage = { src: string; alt: string; caption: string; className?: string; width?: number; height?: number }
+type ServiceImage = { src: string; alt: string; caption: string; className?: string; fieldName?: string; captionFieldName?: string; source?: unknown; width?: number; height?: number }
 type FallbackService = (typeof fallbackServices)[number]
 
 const buildCmsImages = (item: NonNullable<typeof cmsItems>[number], fb?: FallbackService): ServiceImage[] => {
@@ -50,6 +54,9 @@ const buildCmsImages = (item: NonNullable<typeof cmsItems>[number], fb?: Fallbac
       alt: imageAlt(slot.image, stripHtml(fb?.headline ?? '')),
       caption: slot.caption || fb?.images[idx]?.caption || '',
       className: fb?.images[idx]?.className ?? (idx === 1 ? 'small' : ''),
+      source: item,
+      fieldName: idx === 0 ? 'image1' : 'image2',
+      captionFieldName: idx === 0 ? 'caption1' : 'caption2',
       width: dimensions.width || fb?.images[idx]?.width,
       height: dimensions.height || fb?.images[idx]?.height,
     }
@@ -60,6 +67,7 @@ const mergeService = (fb: FallbackService | undefined, item: NonNullable<typeof 
   const id = fb?.id || `leistung-${index + 1}`
   const headline = item && hasText(item.headline) ? emphasize(item.headline, item.emphasis) : fb?.headline ?? ''
   return {
+    source: item,
     id,
     theme: fb?.theme ?? (index % 2 === 0 ? 'light' : 'dark'),
     href: item && hasText(item.href) ? toRootRelativeHref(item.href) : fb?.href ?? '#',
@@ -109,6 +117,7 @@ const why = {
   cards:
     cms?.whyCards && cms.whyCards.length > 0
       ? cms.whyCards.map((card) => ({
+          source: card,
           label: card.label || '',
           headlineHtml: emphasize(card.headline || '', card.emphasis),
           text: card.text || '',
@@ -124,21 +133,21 @@ const why = {
   preloadImages={[firstHeroSlide.image]}
 >
   <main>
-    <NativeShaderHero id="top" label="Weitere Dienstleistungen" slides={heroSlides} headerTheme="dark" />
+    <NativeShaderHero id="top" label="Weitere Dienstleistungen" slides={heroSlides} sourceSlides={doc?.heroSlides || []} headerTheme="dark" />
 
     <section class="overview" id="overview" data-header-theme="light" aria-label="Unsere Dienstleistungen im Überblick">
       <div class="overview-inner">
         <div class="overview-head">
-          <h2 set:html={overviewHead.headlineHtml}></h2>
-          <p>{overviewHead.intro}</p>
+          <h2 set:html={overviewHead.headlineHtml} {...tinaAttrs(cms, 'overviewHeadline')}></h2>
+          <p {...tinaAttrs(cms, 'overviewIntro')}>{overviewHead.intro}</p>
         </div>
         <div class="overview-grid">
           {overviewItems.map((service) => {
             const image = service.images[0]
             return (
               <a class="overview-tile" href={service.href}>
-                {image && <img src={image.src} alt={image.alt} loading="lazy" width={image.width} height={image.height} decoding="async" />}
-                <div class="label"><strong>{service.overviewLabel}</strong></div>
+                {image && <img src={image.src} alt={image.alt} loading="lazy" width={image.width} height={image.height} decoding="async" {...tinaAttrs(editableSource(image), imageFieldName(image))} />}
+                <div class="label"><strong {...tinaAttrs(service.source, 'overviewLabel')}>{service.overviewLabel}</strong></div>
               </a>
             )
           })}
@@ -151,14 +160,14 @@ const why = {
         {items.map((service) => (
           <a class="service" id={service.id} href={service.href} data-header-theme={service.theme}>
             <div class="service-copy">
-              <h3 set:html={service.headline}></h3>
-              <p>{service.text}</p>
+              <h3 set:html={service.headline} {...tinaAttrs(service.source, 'headline')}></h3>
+              <p {...tinaAttrs(service.source, 'text')}>{service.text}</p>
             </div>
             <div class="image-set">
               {service.images.map((image) => (
                 <figure class={`image-card ${image.className || ''}`.trim()}>
-                  <img src={image.src} alt={image.alt} loading="lazy" width={image.width} height={image.height} decoding="async" />
-                  <figcaption class="image-caption">{image.caption}</figcaption>
+                  <img src={image.src} alt={image.alt} loading="lazy" width={image.width} height={image.height} decoding="async" {...tinaAttrs(editableSource(image), imageFieldName(image))} />
+                  <figcaption class="image-caption" {...tinaAttrs(editableSource(image), imageCaptionFieldName(image))}>{image.caption}</figcaption>
                 </figure>
               ))}
             </div>
@@ -169,10 +178,10 @@ const why = {
 
     <section class="why" data-header-theme="dark" aria-label="Warum alles aus einer Hand Sinn ergibt">
       <div class="why-inner">
-        <div class="why-copy"><p class="kicker">{why.kicker}</p><h2 set:html={why.headlineHtml}></h2><p class="why-lead">{why.lead}</p></div>
+        <div class="why-copy"><p class="kicker" {...tinaAttrs(cms, 'whyKicker')}>{why.kicker}</p><h2 set:html={why.headlineHtml} {...tinaAttrs(cms, 'whyHeadline')}></h2><p class="why-lead" {...tinaAttrs(cms, 'whyLead')}>{why.lead}</p></div>
         <div class="why-board">
           {why.cards.map((card) => (
-            <article class="why-card"><span>{card.label}</span><strong set:html={card.headlineHtml}></strong><p>{card.text}</p></article>
+            <article class="why-card"><span {...tinaAttrs(editableSource(card), 'label')}>{card.label}</span><strong set:html={card.headlineHtml} {...tinaAttrs(editableSource(card), 'headline')}></strong><p {...tinaAttrs(editableSource(card), 'text')}>{card.text}</p></article>
           ))}
         </div>
       </div>

@@ -15,6 +15,7 @@ import { keywordFocusCopyForSlug } from '../../lib/localSeoFamilyContent'
 import { familyHeroCopy, familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
 import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
 import { splitTrailingEmphasis } from '../../lib/splitTrailingEmphasis'
+import { tinaAttrs } from '../../lib/tinaFieldAttrs'
 
 type Props = {
   doc?: PayloadDoc | null
@@ -346,6 +347,17 @@ const contactHeadlineFinal = cmsText(doc?.contactSection?.headline)
   ? `${doc?.contactSection?.headline || ''}${cmsText(doc?.contactSection?.emphasis) ? ` <em>${doc?.contactSection?.emphasis}</em>` : ''}`
   : contactHeadline
 const contactLeadFinal = cmsText(doc?.contactSection?.lead) || contactLead
+const heroPanelSource = (index: number) => doc?.heroPanels?.[index] || doc?.heroSlides?.[index] || visualDoc?.heroPanels?.[index] || visualDoc?.heroSlides?.[index]
+const heroTextSource = doc?.heroSlides?.[0] || visualDoc?.heroSlides?.[0] || doc
+const heroTitleField = (index: number) =>
+  heroTextSource === doc?.heroSlides?.[0] || heroTextSource === visualDoc?.heroSlides?.[0]
+    ? index === 0
+      ? 'headlineLine1'
+      : 'headlineLine2'
+    : index === 0
+      ? 'title'
+      : 'heroLine2'
+const heroLeadField = heroTextSource === doc?.heroSlides?.[0] || heroTextSource === visualDoc?.heroSlides?.[0] ? 'lead' : 'intro'
 ---
 <AdoptedPageLayout
   legacyFile={legacyFile}
@@ -354,7 +366,7 @@ const contactLeadFinal = cmsText(doc?.contactSection?.lead) || contactLead
   noIndex={Boolean(preview)}
   title={metaTitle}
   description={metaDescription}
-  ogImage={visualSlots[0].full}
+  ogImage={doc?.seo?.ogImage || visualSlots[0].full}
   preloadImages={[visualSlots[0].full]}
 >
   {preview && (
@@ -366,27 +378,27 @@ const contactLeadFinal = cmsText(doc?.contactSection?.lead) || contactLead
     />
   )}
   <main>
-    <section class="hero-pt" id="heroPt" data-header-theme="dark" aria-label={heroLabel}>
+    <section class="hero-pt" id="heroPt" data-header-theme="dark" aria-label={heroLabel} {...tinaAttrs(heroPanelSource(0), 'image')}>
       <div class="hero-pt__stage" aria-hidden="true">
         <div class="hero-pt__slides">
           <div class="hero-pt__slide" data-i="0">
             <div class="hero-pt__zoom">
-              <img class="hero-pt__image" src={visualSlots[0].src} srcset={visualSlots[0].srcset} sizes="100vw" alt="" loading="eager" fetchpriority="high" decoding="async" width={visualSlots[0].width} height={visualSlots[0].height} />
+              <img class="hero-pt__image" src={visualSlots[0].src} srcset={visualSlots[0].srcset} sizes="100vw" alt="" loading="eager" fetchpriority="high" decoding="async" width={visualSlots[0].width} height={visualSlots[0].height} {...tinaAttrs(heroPanelSource(0), 'image')} />
             </div>
           </div>
           <div class="hero-pt__slide" data-i="1">
             <div class="hero-pt__zoom">
-              <img class="hero-pt__image" src={visualSlots[1].src} srcset={visualSlots[1].srcset} sizes="100vw" alt="" loading="lazy" decoding="async" width={visualSlots[1].width} height={visualSlots[1].height} />
+              <img class="hero-pt__image" src={visualSlots[1].src} srcset={visualSlots[1].srcset} sizes="100vw" alt="" loading="lazy" decoding="async" width={visualSlots[1].width} height={visualSlots[1].height} {...tinaAttrs(heroPanelSource(1), 'image')} />
             </div>
           </div>
           <div class="hero-pt__slide" data-i="2">
             <div class="hero-pt__zoom">
-              <img class="hero-pt__image" src={visualSlots[2].src} srcset={visualSlots[2].srcset} sizes="100vw" alt="" loading="lazy" decoding="async" width={visualSlots[2].width} height={visualSlots[2].height} />
+              <img class="hero-pt__image" src={visualSlots[2].src} srcset={visualSlots[2].srcset} sizes="100vw" alt="" loading="lazy" decoding="async" width={visualSlots[2].width} height={visualSlots[2].height} {...tinaAttrs(heroPanelSource(2), 'image')} />
             </div>
           </div>
           <div class="hero-pt__slide" data-i="3">
             <div class="hero-pt__zoom">
-              <img class="hero-pt__image" src={visualSlots[3].src} srcset={visualSlots[3].srcset} sizes="100vw" alt="" loading="lazy" decoding="async" width={visualSlots[3].width} height={visualSlots[3].height} />
+              <img class="hero-pt__image" src={visualSlots[3].src} srcset={visualSlots[3].srcset} sizes="100vw" alt="" loading="lazy" decoding="async" width={visualSlots[3].width} height={visualSlots[3].height} {...tinaAttrs(heroPanelSource(3), 'image')} />
             </div>
           </div>
         </div>
@@ -395,22 +407,22 @@ const contactLeadFinal = cmsText(doc?.contactSection?.lead) || contactLead
       </div>
 
       <h1 class={`hero-pt__title${isLocalHeroPage ? ' hero-pt__title--local' : ''}`} aria-label={heroLabel}>
-        {(hasAuthoredHeroTitle ? heroCopy.titleLines : heroTitleLines).map((line) => (
-          <span class="line"><span class="word">{line}</span></span>
+        {(hasAuthoredHeroTitle ? heroCopy.titleLines : heroTitleLines).map((line, index) => (
+          <span class="line" {...tinaAttrs(heroTextSource, heroTitleField(index))}><span class="word">{line}</span></span>
         ))}
         {!hasAuthoredHeroTitle && heroEmphasisLines.map((line) => (
-          <span class="line line--em"><span class="word"><em>{line}</em></span></span>
+          <span class="line line--em" {...tinaAttrs(doc, 'heroLine2')}><span class="word"><em>{line}</em></span></span>
         ))}
       </h1>
 
       <div class="hero-pt__sub-block">
         <div class="hero-pt__copy">
-          {heroLocalNote && <p class="hero-pt__local-note">{heroLocalNote}</p>}
-          <p class="hero-pt__sub">{heroCopy.lead}</p>
+          {heroLocalNote && <p class="hero-pt__local-note" {...tinaAttrs(doc, 'heroLine2')}>{heroLocalNote}</p>}
+          <p class="hero-pt__sub" {...tinaAttrs(heroTextSource, heroLeadField)}>{heroCopy.lead}</p>
         </div>
         <div class="hero-pt__actions">
-          <a href={heroCopy.primaryHref}>{heroCopy.primaryLabel}</a>
-          <a class="ghost" href={heroCopy.secondaryHref}>{heroCopy.secondaryLabel}</a>
+          <a href={heroCopy.primaryHref} {...tinaAttrs(heroTextSource, 'primaryLabel')}>{heroCopy.primaryLabel}</a>
+          <a class="ghost" href={heroCopy.secondaryHref} {...tinaAttrs(heroTextSource, 'secondaryLabel')}>{heroCopy.secondaryLabel}</a>
         </div>
       </div>
     </section>
@@ -418,12 +430,12 @@ const contactLeadFinal = cmsText(doc?.contactSection?.lead) || contactLead
     <section class="st-pt" data-header-theme="light">
       <div class="st-pt__inner">
         <h2 class="st-pt__title">
-          {focusIntroTitle.headline}
+          <span {...tinaAttrs(doc?.statement, 'headline')}>{focusIntroTitle.headline}</span>
           {focusIntroTitle.headline && focusIntroTitle.emphasis ? ' ' : ''}
-          {focusIntroTitle.emphasis && <em>{focusIntroTitle.emphasis}</em>}
+          {focusIntroTitle.emphasis && <em {...tinaAttrs(doc?.statement, 'emphasis')}>{focusIntroTitle.emphasis}</em>}
         </h2>
         <div class="st-pt__body">
-          {focusIntroParagraphs.map((paragraph) => <p>{paragraph}</p>)}
+          {focusIntroParagraphs.map((paragraph, index) => <p {...tinaAttrs(doc?.statement?.body?.[index], 'text')}>{paragraph}</p>)}
           <a class="st-pt__cta" href="#anfrage">Jetzt anfragen →</a>
         </div>
       </div>
@@ -431,16 +443,16 @@ const contactLeadFinal = cmsText(doc?.contactSection?.lead) || contactLead
 
     <section class="mod-pt" data-header-theme="dark">
       <div class="mod-pt__head">
-        <h2 class="mod-pt__title">{focusModuleHeadline} <em>{focusModuleEmphasis}</em></h2>
-        <p class="mod-pt__lead">{focusModuleLead}</p>
+        <h2 class="mod-pt__title"><span {...tinaAttrs(doc?.focusSection, 'headline')}>{focusModuleHeadline}</span> <em {...tinaAttrs(doc?.focusSection, 'emphasis')}>{focusModuleEmphasis}</em></h2>
+        <p class="mod-pt__lead" {...tinaAttrs(doc?.focusSection, 'lead')}>{focusModuleLead}</p>
       </div>
       <div class="mod-pt__grid">
-        {portraitFocusCards.map((card) => (
+        {portraitFocusCards.map((card, index) => (
           <article class="mod-pt__card">
-            <div class="mod-pt__img" style={`background-image:url('${visualSlots[card.visualIndex].cssSrc}')`}></div>
+            <div class="mod-pt__img" style={`background-image:url('${visualSlots[card.visualIndex].cssSrc}')`} {...tinaAttrs(doc?.shootingStyles?.[index] || doc?.audienceCards?.[index], 'image')}></div>
             <div class="mod-pt__body">
-              <h3 class="mod-pt__name">{card.title}</h3>
-              <p class="mod-pt__desc">{card.text}</p>
+              <h3 class="mod-pt__name" {...tinaAttrs(doc?.shootingStyles?.[index] || doc?.audienceCards?.[index], 'title')}>{card.title}</h3>
+              <p class="mod-pt__desc" {...tinaAttrs(doc?.shootingStyles?.[index] || doc?.audienceCards?.[index], 'text')}>{card.text}</p>
             </div>
           </article>
         ))}
@@ -449,20 +461,20 @@ const contactLeadFinal = cmsText(doc?.contactSection?.lead) || contactLead
 
     <section class="bg-pt" data-header-theme="dark" aria-label="Aus dem Portfolio">
       <div class="bg-pt__head">
-        <h2 class="bg-pt__title">{focusGalleryHeadline} <em>{focusGalleryEmphasis}</em></h2>
-        {focusGalleryLead && <p class="bg-pt__lead">{focusGalleryLead}</p>}
+        <h2 class="bg-pt__title"><span {...tinaAttrs(doc?.gallerySection, 'headline')}>{focusGalleryHeadline}</span> <em>{focusGalleryEmphasis}</em></h2>
+        {focusGalleryLead && <p class="bg-pt__lead" {...tinaAttrs(doc?.gallerySection, 'lead')}>{focusGalleryLead}</p>}
         <a class="bg-pt__link" href="portfolio.html">Komplettes Portfolio ansehen →</a>
       </div>
       <div class="bg-pt__grid">
-        <button class="bg-pt__tile t-hero" data-full={visualSlots[9].full}><img src={visualSlots[9].src} data-full={visualSlots[9].full} alt={visualSlots[9].alt} width={visualSlots[9].width} height={visualSlots[9].height} decoding="async" loading="lazy" /></button>
-        <button class="bg-pt__tile t-a" data-full={visualSlots[10].full}><img src={visualSlots[10].src} data-full={visualSlots[10].full} loading="lazy" alt={visualSlots[10].alt} width={visualSlots[10].width} height={visualSlots[10].height} decoding="async" /></button>
-        <button class="bg-pt__tile t-b" data-full={visualSlots[11].full}><img loading="lazy" src={visualSlots[11].src} data-full={visualSlots[11].full} alt={visualSlots[11].alt} width={visualSlots[11].width} height={visualSlots[11].height} decoding="async" /></button>
-        <button class="bg-pt__tile t-c" data-full={visualSlots[12].full}><img loading="lazy" src={visualSlots[12].src} data-full={visualSlots[12].full} alt={visualSlots[12].alt} width={visualSlots[12].width} height={visualSlots[12].height} decoding="async" /></button>
-        <button class="bg-pt__tile t-d" data-full={visualSlots[13].full}><img loading="lazy" src={visualSlots[13].src} data-full={visualSlots[13].full} alt={visualSlots[13].alt} width={visualSlots[13].width} height={visualSlots[13].height} decoding="async" /></button>
-        <button class="bg-pt__tile t-e" data-full={visualSlots[14].full}><img loading="lazy" src={visualSlots[14].src} data-full={visualSlots[14].full} alt={visualSlots[14].alt} width={visualSlots[14].width} height={visualSlots[14].height} decoding="async" /></button>
-        <button class="bg-pt__tile t-f" data-full={visualSlots[15].full}><img loading="lazy" src={visualSlots[15].src} data-full={visualSlots[15].full} alt={visualSlots[15].alt} width={visualSlots[15].width} height={visualSlots[15].height} decoding="async" /></button>
-        <button class="bg-pt__tile t-g" data-full={visualSlots[16].full}><img loading="lazy" src={visualSlots[16].src} data-full={visualSlots[16].full} alt={visualSlots[16].alt} width={visualSlots[16].width} height={visualSlots[16].height} decoding="async" /></button>
-        <button class="bg-pt__tile t-h" data-full={visualSlots[17].full}><img loading="lazy" src={visualSlots[17].src} data-full={visualSlots[17].full} alt={visualSlots[17].alt} width={visualSlots[17].width} height={visualSlots[17].height} decoding="async" /></button>
+        <button class="bg-pt__tile t-hero" data-full={visualSlots[9].full}><img src={visualSlots[9].src} data-full={visualSlots[9].full} alt={visualSlots[9].alt} width={visualSlots[9].width} height={visualSlots[9].height} decoding="async" loading="lazy" {...tinaAttrs(doc?.portfolioTiles?.[0], 'image')} /></button>
+        <button class="bg-pt__tile t-a" data-full={visualSlots[10].full}><img src={visualSlots[10].src} data-full={visualSlots[10].full} loading="lazy" alt={visualSlots[10].alt} width={visualSlots[10].width} height={visualSlots[10].height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[1], 'image')} /></button>
+        <button class="bg-pt__tile t-b" data-full={visualSlots[11].full}><img loading="lazy" src={visualSlots[11].src} data-full={visualSlots[11].full} alt={visualSlots[11].alt} width={visualSlots[11].width} height={visualSlots[11].height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[2], 'image')} /></button>
+        <button class="bg-pt__tile t-c" data-full={visualSlots[12].full}><img loading="lazy" src={visualSlots[12].src} data-full={visualSlots[12].full} alt={visualSlots[12].alt} width={visualSlots[12].width} height={visualSlots[12].height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[3], 'image')} /></button>
+        <button class="bg-pt__tile t-d" data-full={visualSlots[13].full}><img loading="lazy" src={visualSlots[13].src} data-full={visualSlots[13].full} alt={visualSlots[13].alt} width={visualSlots[13].width} height={visualSlots[13].height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[4], 'image')} /></button>
+        <button class="bg-pt__tile t-e" data-full={visualSlots[14].full}><img loading="lazy" src={visualSlots[14].src} data-full={visualSlots[14].full} alt={visualSlots[14].alt} width={visualSlots[14].width} height={visualSlots[14].height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[5], 'image')} /></button>
+        <button class="bg-pt__tile t-f" data-full={visualSlots[15].full}><img loading="lazy" src={visualSlots[15].src} data-full={visualSlots[15].full} alt={visualSlots[15].alt} width={visualSlots[15].width} height={visualSlots[15].height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[6], 'image')} /></button>
+        <button class="bg-pt__tile t-g" data-full={visualSlots[16].full}><img loading="lazy" src={visualSlots[16].src} data-full={visualSlots[16].full} alt={visualSlots[16].alt} width={visualSlots[16].width} height={visualSlots[16].height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[7], 'image')} /></button>
+        <button class="bg-pt__tile t-h" data-full={visualSlots[17].full}><img loading="lazy" src={visualSlots[17].src} data-full={visualSlots[17].full} alt={visualSlots[17].alt} width={visualSlots[17].width} height={visualSlots[17].height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[8], 'image')} /></button>
       </div>
     </section>
 

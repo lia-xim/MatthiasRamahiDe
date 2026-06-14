@@ -7,6 +7,7 @@ export type InquiryEmailData = {
   name: string
   contact: string
   message?: string
+  projectType?: string
   project?: string
   date?: string
   use?: string

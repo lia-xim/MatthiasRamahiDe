@@ -1,0 +1,80 @@
+{
+  "title": "Portfolio-Auswahl Landschaft",
+  "slug": "portfolio-auswahl-landschaft",
+  "featured": false,
+  "sortOrder": 100,
+  "publishedAt": "2026-05-28T19:07:36.061Z",
+  "category": "content/portfolio-categories/landschaft.json",
+  "excerpt": "Weite, als Print.",
+  "coverImage": "/uploads/payload/Wettberwerb_Foto5_Wunder_der_Natur2-1.webp",
+  "gallery": [
+    {
+      "image": "/uploads/payload/Wettberwerb_Foto5_Wunder_der_Natur2-1.webp",
+      "caption": "Landschaft",
+      "role": "sequence"
+    },
+    {
+      "image": "/uploads/payload/Wettberwerb_Foto6_Wunder_der_Natur-1.webp",
+      "caption": "Landschaft",
+      "role": "sequence"
+    },
+    {
+      "image": "/uploads/payload/20250605-DSC03756-2.webp",
+      "caption": "Landschaft",
+      "role": "sequence"
+    },
+    {
+      "image": "/uploads/payload/20250605-DSC04020-2.webp",
+      "caption": "Landschaft",
+      "role": "sequence"
+    }
+  ],
+  "heroSlides": [],
+  "projectPage": {
+    "statement": {
+      "stats": []
+    },
+    "context": {
+      "body": []
+    },
+    "perspectives": [],
+    "infoCards": [],
+    "relatedCards": [],
+    "contact": {}
+  },
+  "presentationMode": "floating-archive",
+  "cta": {},
+  "seo": {
+    "title": "Landschaft Portfolio-Auswahl | Matthias Ramahi Fotografie",
+    "description": "Portfolio-Auswahl Landschaft: kuratierte Bildstrecke mit Licht, Details, Perspektive und visueller Produktion von Matthias Ramahi in Duesseldorf / NRW.",
+    "secondaryKeywords": [],
+    "internalLinkAnchors": [],
+    "canonicalUrl": "https://matthiasramahi.de/portfolio/portfolio-auswahl-landschaft",
+    "legacyUrl": "portfolio.html",
+    "ogImage": "/uploads/payload/Wettberwerb_Foto5_Wunder_der_Natur2-1.webp",
+    "noIndex": false,
+    "focusKeyword": "Landschaft Portfolio-Auswahl",
+    "searchIntent": "Referenzprüfung: Nutzer möchten Bildstil, Qualität und Einsatzmöglichkeiten der Serie Landschaft Portfolio-Auswahl einschätzen."
+  },
+  "legacy": {
+    "sourceFile": "portfolio.html",
+    "sourceUrl": "https://matthiasramahi.de/portfolio.html",
+    "migrationStatus": "reviewed",
+    "renderSource": "structured-blocks",
+    "extractedHeadings": [
+      "Weite, als Print."
+    ],
+    "extractedImagePaths": [
+      "assets/portfolio/thumbs/Wettberwerb_Foto5_Wunder_der_Natur2.webp",
+      "assets/portfolio/thumbs/Wettberwerb_Foto6_Wunder_der_Natur.webp",
+      "assets/portfolio/thumbs/20250605-DSC03756.webp",
+      "assets/portfolio/thumbs/20250605-DSC04020.webp"
+    ],
+    "extractedText": "06 / Landschaft Weite, als Print. Zur Landschaftsfotografie →"
+  },
+  "updatedAt": "2026-05-28T19:45:25.897Z",
+  "createdAt": "2026-05-28T19:07:36.069Z",
+  "status": "published",
+  "blocks": [],
+  "payloadId": "6"
+}

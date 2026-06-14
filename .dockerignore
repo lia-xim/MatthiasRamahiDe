@@ -21,6 +21,8 @@ apps/web/dist/
 apps/web/.vercel/
 apps/web/.visual-regression/
 apps/web/.contact-queue/
+apps/web/public/uploads/generated/
+apps/web/public/uploads/payload/
 
 *.log
 

@@ -737,7 +737,19 @@
                 '<div class="mr-contact__field"><label for="' + uid + '-name">Name <span>Pflicht</span></label><input id="' + uid + '-name" name="name" autocomplete="name" required></div>' +
                 '<div class="mr-contact__field"><label for="' + uid + '-contact">E-Mail <span>Pflicht</span></label><input id="' + uid + '-contact" name="contact" type="email" autocomplete="email" inputmode="email" required></div>' +
               '</div>' +
+              '<div class="mr-contact__field"><label for="' + uid + '-type">Leistung <span>Optional</span></label><select id="' + uid + '-type" name="projectType"><option value="">Noch offen</option><option>Automobil-Fotografie</option><option>Sportwagen-Fotografie</option><option>Oldtimer-Fotografie</option><option>Motorrad-Fotografie</option><option>Portrait-Fotografie</option><option>Landschaft / Fine Art Print</option><option>Videografie</option><option>Webdesign / SEO</option><option>Werbetechnik / Druck</option><option>Sonstiges</option></select></div>' +
               '<div class="mr-contact__field"><label for="' + uid + '-msg">Projekt kurz beschreiben <span>Optional</span></label><textarea id="' + uid + '-msg" name="message" placeholder="Worum geht es? Ein paar Stichpunkte reichen — optional."></textarea></div>' +
+              '<details class="mr-contact__details">' +
+                '<summary>Projektangaben ergaenzen <span>Optional</span></summary>' +
+                '<div class="mr-contact__row">' +
+                  '<div class="mr-contact__field"><label for="' + uid + '-project">Projekt / Motiv <span>Optional</span></label><input id="' + uid + '-project" name="project" autocomplete="off"></div>' +
+                  '<div class="mr-contact__field"><label for="' + uid + '-date">Zeitraum <span>Optional</span></label><input id="' + uid + '-date" name="date" autocomplete="off" placeholder="z. B. KW 24, Juni, offen"></div>' +
+                '</div>' +
+                '<div class="mr-contact__row">' +
+                  '<div class="mr-contact__field"><label for="' + uid + '-use">Nutzung <span>Optional</span></label><select id="' + uid + '-use" name="use"><option value="">Noch offen</option><option>Privat</option><option>Kommerziell</option><option>Kampagne</option><option>Editorial</option><option>Sonstiges</option></select></div>' +
+                  '<div class="mr-contact__field"><label for="' + uid + '-phone">Telefon fuer Rueckfragen <span>Optional</span></label><input id="' + uid + '-phone" name="phone" autocomplete="tel"></div>' +
+                '</div>' +
+              '</details>' +
               '<label class="mr-contact__consent">' +
                 '<input type="checkbox" name="consent" value="1" required>' +
                 '<span>Ich willige ein, dass meine angegebenen Daten zur Bearbeitung der Anfrage verarbeitet werden. Hinweise dazu in der <a href="/datenschutz.html" target="_blank" rel="noopener noreferrer">Datenschutzerklaerung</a>. <em>Pflicht</em></span>' +
@@ -773,7 +785,12 @@
           const data = {
             name: form.elements['name'].value.trim(),
             contact: form.elements['contact'].value.trim(),
+            projectType: form.elements['projectType'].value.trim(),
             message: form.elements['message'].value.trim(),
+            project: form.elements['project'].value.trim(),
+            date: form.elements['date'].value.trim(),
+            use: form.elements['use'].value.trim(),
+            phone: form.elements['phone'].value.trim(),
             consent: !!(form.elements['consent'] && form.elements['consent'].checked)
           };
           const intent = pageIntent();
@@ -789,6 +806,7 @@
           trackConversionEvent('form_submit_attempt', {
             form: 'mr-contact',
             subject: subject,
+            projectType: data.projectType || 'Noch offen',
             lastCta: lastCta,
             lastCtaRole: lastCtaRole,
             durationSeconds: durationSeconds
@@ -855,6 +873,11 @@
                 'CTA: ' + (lastCta || 'Direkt / unbekannt') + '\n\n' +
                 'Name: ' + data.name + '\n' +
                 'E-Mail: ' + data.contact + '\n\n' +
+                'Leistung: ' + (data.projectType || 'Noch offen') + '\n' +
+                'Projekt / Motiv: ' + (data.project || 'Noch offen') + '\n' +
+                'Zeitraum: ' + (data.date || 'Noch offen') + '\n' +
+                'Nutzung: ' + (data.use || 'Noch offen') + '\n' +
+                'Telefon: ' + (data.phone || 'Noch offen') + '\n\n' +
                 'Nachricht:\n' + data.message;
               window.location.href = 'mailto:info@matthiasramahi.de?subject=' +
                 encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
@@ -876,6 +899,11 @@
               'CTA: ' + (lastCta || 'Direkt / unbekannt') + '\n\n' +
               'Name: ' + data.name + '\n' +
               'E-Mail: ' + data.contact + '\n\n' +
+              'Leistung: ' + (data.projectType || 'Noch offen') + '\n' +
+              'Projekt / Motiv: ' + (data.project || 'Noch offen') + '\n' +
+              'Zeitraum: ' + (data.date || 'Noch offen') + '\n' +
+              'Nutzung: ' + (data.use || 'Noch offen') + '\n' +
+              'Telefon: ' + (data.phone || 'Noch offen') + '\n\n' +
               'Nachricht:\n' + data.message;
             setStatus('Mail-App wird geöffnet …', 'ok');
             window.location.href = 'mailto:info@matthiasramahi.de?subject=' +

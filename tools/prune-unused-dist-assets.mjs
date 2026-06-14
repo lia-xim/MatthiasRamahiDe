@@ -8,7 +8,7 @@ const textExtensions = new Set(['.cjs', '.css', '.html', '.js', '.json', '.mjs',
 // Path prefixes (relative to a prune target root) that must never be removed,
 // regardless of static reference detection. Curated responsive image variants
 // live here and are referenced via runtime-rendered srcset on SSR routes.
-const keepPrefixes = ['assets/optimized/']
+const keepPrefixes = ['assets/optimized/', 'uploads/payload/', 'uploads/generated/']
 const appDistClient = path.join(repoRoot, 'apps', 'web', 'dist', 'client')
 const appDistServer = path.join(repoRoot, 'apps', 'web', 'dist', 'server')
 const appVercelOutput = path.join(repoRoot, 'apps', 'web', '.vercel', 'output')
@@ -78,7 +78,7 @@ function normalizeReference(value, sourceFile, targetRoot) {
 
   clean = decodePath(clean)
   if (clean.startsWith('/')) return toPosix(path.posix.normalize(clean.replace(/^\/+/, '')))
-  if (/^(?:assets|_astro)\//.test(clean)) return toPosix(path.posix.normalize(clean))
+  if (/^(?:assets|uploads|_astro)\//.test(clean)) return toPosix(path.posix.normalize(clean))
 
   const resolved = path.resolve(path.dirname(sourceFile), clean)
   if (resolved === targetRoot || !resolved.startsWith(`${targetRoot}${path.sep}`)) return ''
@@ -108,7 +108,7 @@ function extractReferences(text, sourceFile, targetRoot) {
   // wrongly treated as unused and pruned -> 404 for responsive srcset variants.
   // Over-matching here only keeps extra files (safe); a miss deletes a used one.
   const directAssetPattern =
-    /(\/?(?:assets|_astro)\/[^"'`,>?#\r\n]+?\.(?:avif|gif|jpe?g|mp4|png|svg|webm|webp|css|js|json|txt|webmanifest|xml))/gi
+    /(\/?(?:assets|uploads|_astro)\/[^"'`,>?#\r\n]+?\.(?:avif|gif|jpe?g|mp4|png|svg|webm|webp|css|js|json|txt|webmanifest|xml))/gi
   while ((match = directAssetPattern.exec(text))) add(match[1])
 
   const urlPattern = /url\(\s*(?:"([^"]+)"|'([^']+)'|([^'")]+))\s*\)/g

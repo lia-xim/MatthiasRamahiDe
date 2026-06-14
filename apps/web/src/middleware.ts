@@ -1,4 +1,5 @@
 import { defineMiddleware } from 'astro:middleware'
+import tinaMiddleware from '@tinacms/astro/middleware'
 
 import {
   getLegacyPathRedirectTarget,
@@ -21,9 +22,42 @@ const permanentRedirect = (location: string) =>
 const enableAdoptedRouteRewrite = envFlagNotFalse('ASTRO_ENABLE_ADOPTED_ROUTES')
 const enableLocalSeoAdoptedRouteRewrite = envFlagNotFalse('ASTRO_ENABLE_LOCAL_SEO_ADOPTED_ROUTES')
 
-export const onRequest = defineMiddleware(async (context, next) => {
+const tinaEditContext = (context: Parameters<typeof tinaMiddleware>[0]) => {
+  if (context.isPrerendered) return context
+  const referer = context.request.headers.get('referer') || ''
+  const hasTinaEditCookie = context.request.headers.get('cookie')?.split(';').some((cookie) => {
+    const [name, value] = cookie.trim().split('=')
+    return name === '__tina_edit' && value === '1'
+  })
+  const isAdminPreviewRequest = (() => {
+    try {
+      const refererUrl = new URL(referer)
+      return refererUrl.host === context.url.host && refererUrl.pathname.startsWith('/admin/')
+    } catch {
+      return false
+    }
+  })()
+
+  if ((!isAdminPreviewRequest && !hasTinaEditCookie) || context.url.searchParams.get('tina-edit') === '1') {
+    return context
+  }
+
+  const url = new URL(context.url)
+  url.searchParams.set('tina-edit', '1')
+  return {
+    ...context,
+    request: new Request(url, context.request),
+    url,
+  } as typeof context
+}
+
+const siteMiddleware = defineMiddleware(async (context, next) => {
   const pathname = context.url.pathname
   const noindexPrefixes = ['/preview/']
+
+  if (pathname === '/admin' || pathname === '/admin/') {
+    return permanentRedirect(`/admin/index.html${context.url.search}`)
+  }
 
   const legacyPathRedirectTarget = getLegacyPathRedirectTarget(pathname)
   if (legacyPathRedirectTarget) {
@@ -74,4 +108,12 @@ export const onRequest = defineMiddleware(async (context, next) => {
   }
 
   return next()
+})
+
+export const onRequest = defineMiddleware((context, next) => {
+  const contextForTina = tinaEditContext(context)
+  return tinaMiddleware(contextForTina, async () => {
+    const response = await siteMiddleware(contextForTina, next)
+    return response || next()
+  })
 })
