@@ -6,6 +6,7 @@ COMPOSE_FILE="${COMPOSE_FILE:-deploy/compose.tina-staging.yml}"
 SITE_PORT="${TINA_SITE_PORT:-4335}"
 SKIP_PREFLIGHT="${SKIP_PREFLIGHT:-0}"
 PUBLISH_TO_GIT="${PUBLISH_TO_GIT:-0}"
+PUBLISH_ADMIN_STATIC="${PUBLISH_ADMIN_STATIC:-1}"
 
 cd "$APP_DIR"
 
@@ -30,6 +31,31 @@ if [ "$attempt" -gt 60 ]; then
   docker compose -f "$COMPOSE_FILE" ps
   docker compose -f "$COMPOSE_FILE" logs --tail=120 tina-site
   exit 1
+fi
+
+if [ "$PUBLISH_ADMIN_STATIC" = "1" ]; then
+  admin_attempt=1
+  while [ "$admin_attempt" -le 90 ]; do
+    if [ -f apps/web/public/admin/index.html ]; then
+      break
+    fi
+    admin_attempt=$((admin_attempt + 1))
+    sleep 1
+  done
+
+  if [ "$admin_attempt" -gt 90 ]; then
+    echo "Tina admin static files were not generated in apps/web/public/admin" >&2
+    docker compose -f "$COMPOSE_FILE" logs --tail=120 tina-web
+    exit 1
+  fi
+
+  docker compose -f "$COMPOSE_FILE" exec -T tina-web sh -lc \
+    'node tools/patch-tina-admin-static.mjs apps/web/public/admin'
+
+  mkdir -p .tmp
+  tar -czf .tmp/tina-admin-static.tar.gz -C apps/web/public admin
+  docker run --rm --pid=host --privileged -v /:/host alpine:3.20 sh \
+    /host/home/contextter/matthias-ramahi-tina-staging/deploy/publish-tina-admin-static.sh
 fi
 
 if [ "$SKIP_PREFLIGHT" != "1" ]; then

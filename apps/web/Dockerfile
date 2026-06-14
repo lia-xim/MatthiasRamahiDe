@@ -1,5 +1,6 @@
 FROM node:22-alpine AS base
 WORKDIR /app
+RUN apk add --no-cache git openssh-client rsync
 RUN corepack enable && corepack prepare pnpm@10.33.2 --activate
 
 FROM base AS deps

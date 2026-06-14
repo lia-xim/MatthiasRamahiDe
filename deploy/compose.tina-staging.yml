@@ -27,6 +27,14 @@ services:
       TINA_BRANCH: ${TINA_BRANCH:-main}
       TINA_ALLOWED_HOSTS: ${TINA_ALLOWED_HOSTS:-cms.matthiasramahi.de}
       TINA_CONTENT_API_URL: ${TINA_CONTENT_API_URL:-http://[::1]:4001/graphql}
+      TINA_PUBLISH_COMMAND: ${TINA_PUBLISH_COMMAND:-deploy/publish-tina-to-git.sh}
+      TINA_PUBLISH_CWD: ${TINA_PUBLISH_CWD:-/app}
+      TINA_PUBLISH_ENABLED: ${TINA_PUBLISH_ENABLED:-1}
+      TINA_PUBLISH_GID: ${TINA_PUBLISH_GID:-1000}
+      TINA_PUBLISH_SOURCE_DIR: ${TINA_PUBLISH_SOURCE_DIR:-/app}
+      TINA_PUBLISH_UID: ${TINA_PUBLISH_UID:-1000}
+      TINA_GIT_SSH_KEY: ${TINA_GIT_SSH_KEY:-/home/node/.ssh/tina_publish_github_ed25519}
+      TINA_GIT_WORKTREE: ${TINA_GIT_WORKTREE:-/app/.tina-git-worktree}
     ports:
       - "${TINA_BIND_ADDRESS:-127.0.0.1}:${TINA_WEB_PORT:-4334}:4321"
       - "${TINA_BIND_ADDRESS:-127.0.0.1}:${TINA_GRAPHQL_PORT:-4001}:4002"
@@ -36,6 +44,8 @@ services:
       - ../apps/web/public/uploads:/app/apps/web/public/uploads
       - ../apps/web/src/data:/app/apps/web/src/data
       - ../apps/web/tina:/app/apps/web/tina
+      - /home/contextter/.ssh/tina_publish_github_ed25519:/home/node/.ssh/tina_publish_github_ed25519:ro
+      - /home/contextter/matthias-ramahi-tina-git:/app/.tina-git-worktree
 
   tina-site:
     image: matthias-ramahi-tina-staging:latest

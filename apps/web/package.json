@@ -7,7 +7,7 @@
     "predev": "node ../../tools/sync-public-assets.mjs",
     "dev": "astro dev --host 0.0.0.0 --port 4321",
     "tina:dev": "tinacms dev -c \"astro dev --host 0.0.0.0 --port 4321\"",
-    "tina:build": "tinacms build --local --skip-cloud-checks --noTelemetry",
+    "tina:build": "tinacms build --local --skip-cloud-checks --noTelemetry && node ../../tools/patch-tina-admin-static.mjs",
     "prebuild": "node ../../tools/sync-public-assets.mjs",
     "build": "node ../../tools/run-web-build.mjs",
     "prepreview": "node ../../tools/sync-public-assets.mjs",
