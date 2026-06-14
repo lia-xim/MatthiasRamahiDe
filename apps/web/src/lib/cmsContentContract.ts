@@ -50,6 +50,8 @@ export type CmsCta = {
 export type CmsSeo = {
   title?: string
   description?: string
+  focusKeyword?: string
+  searchIntent?: string
   canonicalUrl?: string
   legacyUrl?: string
   noIndex?: boolean

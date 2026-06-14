@@ -10,7 +10,7 @@ import {
   type NativeFamilyPreviewState,
 } from '../../lib/nativeFamilyPageContext'
 import { mergeAuthoredLocalSeoContent } from '../../lib/authoredSeoContent'
-import { splitHeroTitleLines } from '../../lib/heroTitleLines'
+import { splitCmsHeroTitleLines, splitHeroTitleLines } from '../../lib/heroTitleLines'
 import { keywordFocusCopyForSlug } from '../../lib/localSeoFamilyContent'
 import { familyHeroCopy, familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
 import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
@@ -57,7 +57,9 @@ const heroTitle = isParentPage ? 'Porträtfotografie' : serviceLabel
 const heroEmphasis = isLocalHeroPage ? scope.label : ''
 const heroTitleLines = splitHeroTitleLines(heroTitle)
 const heroEmphasisLines = splitHeroTitleLines(heroEmphasis)
-const fallbackHeroTitleLines = [...heroTitleLines, ...heroEmphasisLines]
+const fallbackHeroTitleLines = isLocalHeroPage
+  ? splitCmsHeroTitleLines(doc?.title || doc?.targetKeyword || doc?.seo?.focusKeyword, [...heroTitleLines, ...heroEmphasisLines])
+  : [...heroTitleLines, ...heroEmphasisLines]
 const heroLocalNote = isLocalHeroPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Portrait vor Ort.' : isKeywordPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || '' : ''
 const defaultHeroLead = isParentPage
   ? 'Portraitfotografie: Blick, Licht, Distanz und Haltung werden auf Nutzung und Persönlichkeit abgestimmt — für Personal Branding, Business Portraits, Team, Presse und Editorial. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant — in ganz NRW.'
@@ -74,7 +76,6 @@ const heroCopy = familyHeroCopy(doc, visualDoc, {
   secondaryLabel: 'Portfolio',
   titleLines: fallbackHeroTitleLines,
 })
-const hasAuthoredHeroTitle = heroCopy.titleLines !== fallbackHeroTitleLines
 const fallbackMetaTitle = isParentPage
   ? 'Portraitfotografie - Matthias Ramahi'
   : isKeywordPage
@@ -348,16 +349,18 @@ const contactHeadlineFinal = cmsText(doc?.contactSection?.headline)
   : contactHeadline
 const contactLeadFinal = cmsText(doc?.contactSection?.lead) || contactLead
 const heroPanelSource = (index: number) => doc?.heroPanels?.[index] || doc?.heroSlides?.[index] || visualDoc?.heroPanels?.[index] || visualDoc?.heroSlides?.[index]
-const heroTextSource = doc?.heroSlides?.[0] || visualDoc?.heroSlides?.[0] || doc
+const heroTextSource = doc?.heroSlides?.[0] || doc
 const heroTitleField = (index: number) =>
-  heroTextSource === doc?.heroSlides?.[0] || heroTextSource === visualDoc?.heroSlides?.[0]
+  heroTextSource === doc?.heroSlides?.[0]
     ? index === 0
       ? 'headlineLine1'
       : 'headlineLine2'
-    : index === 0
+    : isLocalHeroPage
+      ? 'title'
+      : index === 0
       ? 'title'
       : 'heroLine2'
-const heroLeadField = heroTextSource === doc?.heroSlides?.[0] || heroTextSource === visualDoc?.heroSlides?.[0] ? 'lead' : 'intro'
+const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
 ---
 <AdoptedPageLayout
   legacyFile={legacyFile}
@@ -407,11 +410,8 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] || heroTextSource 
       </div>
 
       <h1 class={`hero-pt__title${isLocalHeroPage ? ' hero-pt__title--local' : ''}`} aria-label={heroLabel}>
-        {(hasAuthoredHeroTitle ? heroCopy.titleLines : heroTitleLines).map((line, index) => (
+        {heroCopy.titleLines.map((line, index) => (
           <span class="line" {...tinaAttrs(heroTextSource, heroTitleField(index))}><span class="word">{line}</span></span>
-        ))}
-        {!hasAuthoredHeroTitle && heroEmphasisLines.map((line) => (
-          <span class="line line--em" {...tinaAttrs(doc, 'heroLine2')}><span class="word"><em>{line}</em></span></span>
         ))}
       </h1>
 

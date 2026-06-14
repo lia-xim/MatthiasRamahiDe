@@ -201,10 +201,10 @@ const firstHeroSlide = (doc: PayloadDoc | null | undefined, visualDoc: PayloadDo
 
 export function familyHeroCopy(
   doc: PayloadDoc | null | undefined,
-  visualDoc: PayloadDoc | null | undefined,
+  _visualDoc: PayloadDoc | null | undefined,
   fallback: FamilyHeroCopyFallback,
 ): FamilyHeroCopy {
-  const slide = firstHeroSlide(doc, visualDoc)
+  const slide = firstHeroSlide(doc, null)
   const authoredTitleLines = [textValue(slide?.headlineLine1), textValue(slide?.headlineLine2)]
     .filter(Boolean)
     .flatMap((line) => splitHeroTitleLines(line))

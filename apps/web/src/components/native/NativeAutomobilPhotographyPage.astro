@@ -13,7 +13,7 @@ import {
   siblingFamilyLinks,
 } from '../../lib/localSeoFamilyContent'
 import { mergeAuthoredLocalSeoContent } from '../../lib/authoredSeoContent'
-import { splitHeroTitleLines } from '../../lib/heroTitleLines'
+import { splitCmsHeroTitleLines, splitHeroTitleLines } from '../../lib/heroTitleLines'
 import { familyHeroCopy, familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
 import { getLegacyBackedDoc, routeForDoc, type PayloadDoc } from '../../lib/payload'
 import { tinaAttrs } from '../../lib/tinaFieldAttrs'
@@ -92,7 +92,10 @@ const cmsStatementBody = doc?.statement?.body?.map((entry) => cmsText(entry.text
 const localSuffix = !isParentPage && !isKeywordPage ? ` ${scope.label}` : ''
 const heroTitle = isParentPage ? 'Automobil' : serviceLabel
 const heroSecondLine = isParentPage ? 'Fotografie' : isLocalCityPage ? scope.label : ''
-const heroTitleLines = [...splitHeroTitleLines(heroTitle), ...splitHeroTitleLines(heroSecondLine)]
+const fallbackHeroTitleLines = [...splitHeroTitleLines(heroTitle), ...splitHeroTitleLines(heroSecondLine)]
+const heroTitleLines = isLocalCityPage
+  ? splitCmsHeroTitleLines(doc?.title || doc?.targetKeyword || doc?.seo?.focusKeyword, fallbackHeroTitleLines)
+  : fallbackHeroTitleLines
 const heroLocalNote = isLocalCityPage ? cmsHeroLine2 : isKeywordPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || '' : ''
 const heroLabel = isParentPage ? 'Automobilfotografie' : isKeywordPage ? serviceLabel : `Automobilfotografie${localSuffix}`
 const defaultHeroLead = isParentPage
@@ -110,10 +113,10 @@ const heroCopy = familyHeroCopy(doc, visualDoc, {
   secondaryLabel: 'Portfolio',
   titleLines: heroTitleLines,
 })
-const heroSourceSlide = doc?.heroSlides?.[0] || visualDoc?.heroSlides?.[0]
+const heroSourceSlide = doc?.heroSlides?.[0]
 const heroTitleSource = heroSourceSlide || doc
 const heroTitleField = (index: number) =>
-  heroSourceSlide ? (index === 0 ? 'headlineLine1' : 'headlineLine2') : index === 0 ? 'service' : 'city'
+  heroSourceSlide ? (index === 0 ? 'headlineLine1' : 'headlineLine2') : isLocalCityPage ? 'title' : index === 0 ? 'service' : 'city'
 const heroLeadSource = heroSourceSlide || doc
 const heroLeadField = heroSourceSlide ? 'lead' : 'intro'
 const fallbackMetaTitle = isParentPage

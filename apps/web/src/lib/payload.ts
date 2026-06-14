@@ -24,6 +24,7 @@ export type PayloadDoc = {
   category?: string
   city?: string
   service?: string
+  targetKeyword?: string
   serviceType?: string
   pageType?: string
   presentationMode?: string

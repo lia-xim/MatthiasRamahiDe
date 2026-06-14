@@ -64,3 +64,17 @@ export const splitHeroTitleLines = (value: string | null | undefined) => {
 
   return splitLongPhrase(clean)
 }
+
+export const cleanHeroTitleText = (value: string | null | undefined) =>
+  typeof value === 'string'
+    ? value
+        .replace(/\s+/g, ' ')
+        .trim()
+        .replace(/[.。]+$/u, '')
+        .trim()
+    : ''
+
+export const splitCmsHeroTitleLines = (value: string | null | undefined, fallback: string[]) => {
+  const clean = cleanHeroTitleText(value)
+  return clean ? splitHeroTitleLines(clean) : fallback
+}

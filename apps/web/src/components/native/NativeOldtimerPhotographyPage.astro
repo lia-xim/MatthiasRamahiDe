@@ -10,7 +10,7 @@ import {
   type NativeFamilyPreviewState,
 } from '../../lib/nativeFamilyPageContext'
 import { mergeAuthoredLocalSeoContent } from '../../lib/authoredSeoContent'
-import { splitHeroTitleLines } from '../../lib/heroTitleLines'
+import { splitCmsHeroTitleLines, splitHeroTitleLines } from '../../lib/heroTitleLines'
 import { familyHeroCopy, familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
 import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
 import { keywordFocusCopyForSlug } from '../../lib/localSeoFamilyContent'
@@ -55,7 +55,10 @@ const heroLabel = isParentPage ? 'Oldtimer-Fotografie' : isKeywordPage ? service
 const isLocalHeroPage = !isParentPage && !isKeywordPage
 const heroTitlePrefix = isParentPage ? 'Oldtimerfotografie' : serviceLabel
 const heroTitleSuffix = isLocalHeroPage ? scope.label : ''
-const heroTitleLines = [...splitHeroTitleLines(heroTitlePrefix), ...splitHeroTitleLines(heroTitleSuffix)]
+const fallbackHeroTitleLines = [...splitHeroTitleLines(heroTitlePrefix), ...splitHeroTitleLines(heroTitleSuffix)]
+const heroTitleLines = isLocalHeroPage
+  ? splitCmsHeroTitleLines(doc?.title || doc?.targetKeyword || doc?.seo?.focusKeyword, fallbackHeroTitleLines)
+  : fallbackHeroTitleLines
 const heroLocalNote = isLocalHeroPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Charakter vor Ort.' : isKeywordPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || '' : ''
 const defaultHeroLead = isParentPage
   ? 'Oldtimer-Fotografie: Herkunft, Material, Lack, Chrom, Leder und Patina werden ruhig dokumentiert — für Sammlung, Verkauf, Auktion, Ausstellung und Fahrzeuge mit Geschichte. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant — in ganz NRW.'
@@ -290,16 +293,18 @@ const heroSlidesJson = JSON.stringify([
   { image: heroBgDesktop, titleLines: heroCopy.titleLines, lead: heroCopy.lead },
 ])
 const heroVisualSource = doc?.heroPanels?.[0] || doc?.heroSlides?.[0] || visualDoc?.heroPanels?.[0] || visualDoc?.heroSlides?.[0]
-const heroTextSource = doc?.heroSlides?.[0] || visualDoc?.heroSlides?.[0] || doc
+const heroTextSource = doc?.heroSlides?.[0] || doc
 const heroTitleField = (index: number) =>
-  heroTextSource === doc?.heroSlides?.[0] || heroTextSource === visualDoc?.heroSlides?.[0]
+  heroTextSource === doc?.heroSlides?.[0]
     ? index === 0
       ? 'headlineLine1'
       : 'headlineLine2'
-    : index === 0
+    : isLocalHeroPage
+      ? 'title'
+      : index === 0
       ? 'title'
       : 'heroLine2'
-const heroLeadField = heroTextSource === doc?.heroSlides?.[0] || heroTextSource === visualDoc?.heroSlides?.[0] ? 'lead' : 'intro'
+const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
 
 const cityLinks = [
   ['oldtimer-fotografie-duesseldorf.html', 'Düsseldorf'],

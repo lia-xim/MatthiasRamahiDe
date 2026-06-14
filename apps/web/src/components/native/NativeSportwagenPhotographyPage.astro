@@ -10,7 +10,7 @@ import {
   type NativeFamilyPreviewState,
 } from '../../lib/nativeFamilyPageContext'
 import { mergeAuthoredLocalSeoContent } from '../../lib/authoredSeoContent'
-import { splitHeroTitleLines } from '../../lib/heroTitleLines'
+import { splitCmsHeroTitleLines, splitHeroTitleLines } from '../../lib/heroTitleLines'
 import { keywordFocusCopyForSlug } from '../../lib/localSeoFamilyContent'
 import { familyHeroCopy, familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
 import { getLegacyBackedDoc, imageAlt, imageDimensions, imageDisplayUrl, imageSrcset, type PayloadDoc, type PayloadMedia } from '../../lib/payload'
@@ -61,7 +61,10 @@ const cmsHeroLine2 = typeof doc?.heroLine2 === 'string' ? doc.heroLine2.trim() :
 const isLocalHeroPage = !isParentPage && !isKeywordPage
 const heroTitle = isParentPage ? 'Sportwagenfotografie' : serviceLabel
 const heroSecondLine = isLocalHeroPage ? scope.label : ''
-const heroTitleLines = [...splitHeroTitleLines(heroTitle), ...splitHeroTitleLines(heroSecondLine)]
+const fallbackHeroTitleLines = [...splitHeroTitleLines(heroTitle), ...splitHeroTitleLines(heroSecondLine)]
+const heroTitleLines = isLocalHeroPage
+  ? splitCmsHeroTitleLines(doc?.title || doc?.targetKeyword || doc?.seo?.focusKeyword, fallbackHeroTitleLines)
+  : fallbackHeroTitleLines
 const heroLocalNote = isLocalHeroPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Performance. Linie. Detail.' : isKeywordPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || '' : ''
 const heroLabel = isParentPage ? 'Sportwagenfotografie' : isKeywordPage ? serviceLabel : `Sportwagenfotografie ${scope.label}`
 const defaultHeroLead = isParentPage
@@ -490,16 +493,18 @@ const searchLinksTitle = splitTrailingEmphasis(
 )
 const heroPanelSource = (index: number) =>
   doc?.heroPanels?.[index] || doc?.heroSlides?.[index] || visualDoc?.heroPanels?.[index] || visualDoc?.heroSlides?.[index]
-const heroTextSource = doc?.heroSlides?.[0] || visualDoc?.heroSlides?.[0] || doc
+const heroTextSource = doc?.heroSlides?.[0] || doc
 const heroTitleField = (index: number) =>
-  heroTextSource === doc?.heroSlides?.[0] || heroTextSource === visualDoc?.heroSlides?.[0]
+  heroTextSource === doc?.heroSlides?.[0]
     ? index === 0
       ? 'headlineLine1'
       : 'headlineLine2'
-    : index === 0
+    : isLocalHeroPage
+      ? 'title'
+      : index === 0
       ? 'title'
       : 'heroLine2'
-const heroLeadField = heroTextSource === doc?.heroSlides?.[0] || heroTextSource === visualDoc?.heroSlides?.[0] ? 'lead' : 'intro'
+const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
 ---
 <AdoptedPageLayout
   legacyFile={legacyFile}
