@@ -5,13 +5,12 @@ RUN corepack enable && corepack prepare pnpm@10.33.2 --activate
 
 FROM base AS deps
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
-COPY apps/cms/package.json apps/cms/package.json
 COPY apps/web/package.json apps/web/package.json
 RUN pnpm install --frozen-lockfile
 
 FROM deps AS build
 COPY . .
-ARG ASTRO_CONTENT_SOURCE=payload
+ARG ASTRO_CONTENT_SOURCE=tina
 ENV ASTRO_CONTENT_SOURCE=${ASTRO_CONTENT_SOURCE}
 RUN pnpm --filter @matthias-ramahi/web build
 

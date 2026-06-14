@@ -5,7 +5,7 @@ if (!allowed) {
     [
       'Legacy reference write blocked.',
       '',
-      'These tools mutate archived legacy HTML reference files and are no longer part of the Astro/Payload production workflow.',
+      'These tools mutate archived legacy HTML reference files and are no longer part of the Astro/Tina production workflow.',
       'Use CMS/native Astro content workflows for production changes.',
       '',
       'If you intentionally need to regenerate the frozen legacy reference, run with:',

@@ -81,7 +81,7 @@ async function buildManifest() {
   return {
     generatedAt: new Date().toISOString(),
     description:
-      'Archived legacy HTML files frozen as the visual reference for the Astro/Payload migration. These files live under legacy-reference/html and must not be served as production routes.',
+      'Archived legacy HTML files frozen as the visual reference for the Astro/Tina migration. These files live under legacy-reference/html and must not be served as production routes.',
     totals: {
       htmlFiles: entries.length,
       byType: entries.reduce((acc, entry) => {

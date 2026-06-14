@@ -1,5 +1,5 @@
 param(
-  [int[]]$Ports = @(3000, 4321)
+  [int[]]$Ports = @(4001, 4321)
 )
 
 $ErrorActionPreference = 'SilentlyContinue'
@@ -8,7 +8,7 @@ $connections = Get-NetTCPConnection -LocalPort $Ports -State Listen -ErrorAction
 $portProcessIds = @($connections | Select-Object -ExpandProperty OwningProcess -Unique)
 $devProcessIds = @(
   Get-CimInstance Win32_Process -Filter "name='powershell.exe'" |
-    Where-Object { $_.CommandLine -match 'corepack pnpm (cms|web):dev' } |
+    Where-Object { $_.CommandLine -match 'corepack pnpm (web:)?tina:dev|corepack pnpm web:dev' } |
     Select-Object -ExpandProperty ProcessId
 )
 $processIds = @($portProcessIds + $devProcessIds | Where-Object { $_ } | Select-Object -Unique)

@@ -15,7 +15,7 @@ import {
 } from '../../lib/payload'
 
 const providedDoc = Astro.props.doc as PayloadDoc | undefined
-// force:true (liveCmsFetchOptions) ist nötig, weil der Vercel-Build ASTRO_DISABLE_PAYLOAD_FETCH=true setzt
+// force:true (liveCmsFetchOptions) keeps the services index aligned with authored Tina content.
 // und nicht-erzwungene Fetches sonst null liefern -> Fallback statt CMS-Inhalt.
 const doc = providedDoc || (await getSitePageByType('services-index', liveCmsFetchOptions({ depth: 2 })))
 

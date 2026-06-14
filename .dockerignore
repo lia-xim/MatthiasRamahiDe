@@ -14,9 +14,6 @@ apps/*/.env
 apps/*/.env.*
 !apps/*/.env.example
 
-apps/cms/.next/
-apps/cms/media/
-apps/cms/payload-dev.db*
 apps/web/dist/
 apps/web/.vercel/
 apps/web/.visual-regression/

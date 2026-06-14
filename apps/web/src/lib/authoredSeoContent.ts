@@ -1,6 +1,3 @@
-import localSeoContent from '../../../cms/content/local-seo-content.json'
-import servicePageContent from '../../../cms/content/service-page-content.json'
-
 import type { PayloadDoc } from './payload'
 
 type AuthoredFaq = { answer?: string; question?: string }
@@ -12,17 +9,30 @@ type AuthoredEntry = {
   intro?: string
   legacyFile?: string
   localFaq?: AuthoredFaq[]
-  seo?: { description?: string; title?: string }
+  seo?: { canonicalUrl?: string; description?: string; legacyUrl?: string; title?: string }
   service?: string
   slug?: string
-  statement?: { body?: string[]; emphasis?: string; headline?: string }
+  statement?: { body?: Array<string | { text?: string }>; emphasis?: string; headline?: string }
   targetKeyword?: string
   title?: string
 }
 
+const localSeoContent = import.meta.glob<AuthoredEntry>('../../content/local-seo-pages/*.json', {
+  eager: true,
+  import: 'default',
+})
+const servicePageContent = import.meta.glob<AuthoredEntry>('../../content/service-pages/*.json', {
+  eager: true,
+  import: 'default',
+})
+
+const slugFromModulePath = (modulePath: string) => modulePath.split('/').pop()?.replace(/\.json$/i, '') || ''
+const legacyFileFor = (entry: AuthoredEntry, modulePath: string) =>
+  entry.legacyFile || entry.seo?.legacyUrl || `${entry.slug || slugFromModulePath(modulePath)}.html`
+
 const entries = [
-  ...(localSeoContent as AuthoredEntry[]),
-  ...(servicePageContent as AuthoredEntry[]).map((entry) => ({ ...entry, legacyFile: `${entry.slug}.html` })),
+  ...Object.entries(localSeoContent).map(([modulePath, entry]) => ({ ...entry, legacyFile: legacyFileFor(entry, modulePath) })),
+  ...Object.entries(servicePageContent).map(([modulePath, entry]) => ({ ...entry, legacyFile: legacyFileFor(entry, modulePath) })),
 ]
 
 const byLegacyFile = new Map(
@@ -36,7 +46,10 @@ const authoredStatement = (entry: AuthoredEntry) =>
     ? {
         headline: entry.statement.headline || '',
         emphasis: entry.statement.emphasis || '',
-        body: (entry.statement.body || []).filter(Boolean).map((text) => ({ text })),
+        body: (entry.statement.body || [])
+          .map((item) => (typeof item === 'string' ? item : item.text || ''))
+          .filter(Boolean)
+          .map((text) => ({ text })),
       }
     : undefined
 
@@ -69,10 +82,8 @@ export function mergeAuthoredLocalSeoContent(legacyFile: string, doc?: PayloadDo
   const authored = getAuthoredLocalSeoContent(legacyFile)
   if (!authored) return doc || null
 
-  // Payload wins: the CMS doc is the base, and authored JSON only fills fields
-  // the CMS left empty. (Inverse of the old behaviour, where authored JSON
-  // overrode published Payload content — so admin FAQ/Statement edits never
-  // reached the live page outside preview.)
+  // Tina wins: the CMS doc is the base, and authored JSON only fills fields
+  // the CMS left empty.
   const targetKeyword = authored.targetKeyword || [authored.service, authored.city].filter(Boolean).join(' ')
   const next: PayloadDoc = {
     id: doc?.id || `authored-${authored.slug || legacyFile.replace(/\.html$/i, '')}`,

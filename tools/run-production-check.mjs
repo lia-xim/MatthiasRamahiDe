@@ -161,11 +161,10 @@ let preview;
 
 try {
   await run('corepack', ['pnpm', 'legacy:freeze:check']);
-  await run('corepack', ['pnpm', 'cms:audit-production', '--', '--strict']);
-  await run('corepack', ['pnpm', 'cms:audit-seo', '--', '--strict']);
+  await run('corepack', ['pnpm', 'web:audit:tina-content']);
+  await run('corepack', ['pnpm', 'web:audit:tina-seo']);
   await run('corepack', ['pnpm', 'web:build']);
   await run('corepack', ['pnpm', 'native:guard']);
-  await run('corepack', ['pnpm', 'cms:build']);
 
   if (shouldStartPreview) {
     const requestedWebPort = webPort;

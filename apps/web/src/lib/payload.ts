@@ -364,7 +364,6 @@ type FetchOptions = {
 }
 
 const productionSiteUrl = 'https://matthiasramahi.de'
-const productionPayloadUrl = 'https://cms.matthiasramahi.de'
 const productionMediaUrl = 'https://cms.matthiasramahi.de'
 
 const cachedCmsAssetMap: Array<[RegExp, string]> = [
@@ -460,54 +459,6 @@ const assetWidthFromUrl = (url: string) => {
   return 0
 }
 
-const apiBase = () => {
-  const configured = import.meta.env.PAYLOAD_PUBLIC_SERVER_URL || (import.meta.env.PROD ? productionPayloadUrl : 'http://localhost:3000')
-  if (import.meta.env.PROD && /https?:\/\/(?:localhost|127\.0\.0\.1)(?::\d+)?/i.test(configured)) return productionPayloadUrl
-  return configured.replace(/\/$/, '')
-}
-
-const payloadPublicBase = () => {
-  const configured = import.meta.env.PAYLOAD_PUBLIC_SERVER_URL || (import.meta.env.PROD ? productionPayloadUrl : 'http://localhost:3000')
-  if (import.meta.env.PROD && /https?:\/\/(?:localhost|127\.0\.0\.1)(?::\d+)?/i.test(configured)) return productionPayloadUrl
-  return configured.replace(/\/$/, '')
-}
-
-const mojibakeReplacements: Array<[RegExp, string]> = [
-  [/\u00C3\u00BC/g, '\u00FC'],
-  [/\u00C3\u0153/g, '\u00DC'],
-  [/\u00C3\u00A4/g, '\u00E4'],
-  [/\u00C3\u201E/g, '\u00C4'],
-  [/\u00C3\u00B6/g, '\u00F6'],
-  [/\u00C3\u2013/g, '\u00D6'],
-  [/\u00C3\u0178/g, '\u00DF'],
-  [/\u00C3\u00A9/g, '\u00E9'],
-  [/\u00E2\u20AC\u201D/g, '\u2014'],
-  [/\u00E2\u20AC\u201C/g, '\u2013'],
-  [/\u00E2\u20AC\u017E/g, '\u201E'],
-  [/\u00E2\u20AC\u0153/g, '\u201C'],
-  [/\u00E2\u20AC\u009D/g, '\u201D'],
-  [/\u00E2\u20AC\u02DC/g, '\u2018'],
-  [/\u00E2\u20AC\u2122/g, '\u2019'],
-  [/\u00E2\u20AC\u0161/g, '\u201A'],
-  [/\u00E2\u20AC\u00A6/g, '\u2026'],
-  [/\u00C2\u00B7/g, '\u00B7'],
-  [/\u00C2\u00A0/g, ' '],
-  [/\u00C2/g, ''],
-]
-
-const cleanCmsText = (value: string) =>
-  mojibakeReplacements.reduce((text, [pattern, replacement]) => text.replace(pattern, replacement), value)
-
-const normalizePayloadValue = <T>(value: T): T => {
-  if (typeof value === 'string') return cleanCmsText(value) as T
-  if (Array.isArray(value)) return value.map((item) => normalizePayloadValue(item)) as T
-  if (!value || typeof value !== 'object') return value
-
-  return Object.fromEntries(
-    Object.entries(value as Record<string, unknown>).map(([key, entry]) => [key, normalizePayloadValue(entry)]),
-  ) as T
-}
-
 export const configuredSiteUrl = () => {
   const configured = import.meta.env.ASTRO_PUBLIC_SITE_URL || productionSiteUrl
   try {
@@ -520,21 +471,7 @@ export const configuredSiteUrl = () => {
   return configured.replace(/\/$/, '')
 }
 
-const headersFor = (draft?: boolean): HeadersInit => {
-  if (!draft || !import.meta.env.PAYLOAD_PREVIEW_API_KEY) return {}
-
-  return {
-    Authorization: `users API-Key ${import.meta.env.PAYLOAD_PREVIEW_API_KEY}`,
-  }
-}
-
-const payloadCache = new Map<string, { expires: number; value?: unknown; promise?: Promise<unknown | null> }>()
 const legacyUrlIndexCache = new Map<string, Promise<Map<string, PayloadDoc>>>()
-const payloadCacheTtlMs = Number(
-  process.env.PAYLOAD_FETCH_CACHE_MS ?? import.meta.env.PAYLOAD_FETCH_CACHE_MS ?? (import.meta.env.DEV ? 0 : 300_000),
-)
-const payloadTimeoutMs = Number(process.env.PAYLOAD_FETCH_TIMEOUT_MS ?? import.meta.env.PAYLOAD_FETCH_TIMEOUT_MS ?? 1_500)
-const disablePayloadFetch = process.env.ASTRO_DISABLE_PAYLOAD_FETCH === 'true'
 const localStaticAssetRe = /^\/?(?:assets|uploads)\//i
 const localUploadAssetRe = /^\/?uploads\//i
 
@@ -542,7 +479,6 @@ export const cmsContentSource = () =>
   String(process.env.ASTRO_CONTENT_SOURCE ?? import.meta.env.ASTRO_CONTENT_SOURCE ?? 'tina').trim().toLowerCase()
 
 const shouldReadTinaContent = () => ['tina', 'auto'].includes(cmsContentSource())
-const shouldFallbackToPayload = () => cmsContentSource() === 'auto'
 
 const numberFromEnv = (value: unknown, fallback: number) => {
   const parsed = Number(value)
@@ -558,69 +494,7 @@ export const liveCmsFetchOptions = <T extends object>(options: T = {} as T): T &
   force: true,
 })
 
-function cacheKeyFor(url: string, draft: boolean, cacheMs: number) {
-  return `${draft ? 'draft' : 'published'}:${cacheMs}:${url}`
-}
-
-function timeoutSignal() {
-  if (payloadTimeoutMs <= 0) return undefined
-  return AbortSignal.timeout(payloadTimeoutMs)
-}
-
-const apiGet = async <T>(
-  path: string,
-  params: Record<string, string | number | boolean | undefined> = {},
-  draft = false,
-  options: FetchOptions = {},
-): Promise<T | null> => {
-  if (disablePayloadFetch && !draft && !options.force) return null
-
-  const search = new URLSearchParams()
-
-  for (const [key, value] of Object.entries(params)) {
-    if (typeof value !== 'undefined') search.set(key, String(value))
-  }
-
-  if (draft) search.set('draft', 'true')
-
-  const query = search.toString()
-  const url = `${apiBase()}${path}${query ? `?${query}` : ''}`
-  const cacheMs = options.cacheMs ?? payloadCacheTtlMs
-  const cacheable = !draft && cacheMs > 0
-  const cacheKey = cacheable ? cacheKeyFor(url, draft, cacheMs) : ''
-
-  if (cacheable) {
-    const cached = payloadCache.get(cacheKey)
-    if (cached && cached.expires > Date.now()) {
-      if (cached.promise) return cached.promise as Promise<T | null>
-      return (cached.value as T | null) ?? null
-    }
-  }
-
-  const request = (async () => {
-    const response = await fetch(url, {
-      headers: headersFor(draft),
-      signal: timeoutSignal(),
-    })
-
-    if (!response.ok) return null
-    return normalizePayloadValue(await response.json()) as T
-  })().catch(() => null)
-
-  if (cacheable) {
-    payloadCache.set(cacheKey, { expires: Date.now() + cacheMs, promise: request })
-  }
-
-  const value = await request
-  if (cacheable) {
-    payloadCache.set(cacheKey, { expires: Date.now() + cacheMs, value })
-  }
-
-  return value
-}
-
 export function clearPayloadRuntimeCache() {
-  payloadCache.clear()
   legacyUrlIndexCache.clear()
 }
 
@@ -715,14 +589,14 @@ export const toAbsolutePayloadUrl = (url?: string, options: Pick<MediaUrlOptions
     try {
       const parsed = new URL(url)
       if (import.meta.env.PROD && ['localhost', '127.0.0.1'].includes(parsed.hostname)) {
-        return `${payloadPublicBase()}${parsed.pathname}${parsed.search}${parsed.hash}`
+        return `${mediaPublicBase() || productionMediaUrl}${parsed.pathname}${parsed.search}${parsed.hash}`
       }
     } catch {
       return url
     }
     return url
   }
-  return `${payloadPublicBase()}${url.startsWith('/') ? '' : '/'}${url}`
+  return `${mediaPublicBase() || productionMediaUrl}${url.startsWith('/') ? '' : '/'}${url}`
 }
 
 export const toAbsoluteSiteUrl = (pathOrUrl?: string) => {
@@ -976,24 +850,21 @@ export async function payloadFetch<T>(
   draft = false,
   options: FetchOptions = {},
 ): Promise<T | null> {
-  if (shouldReadTinaContent() && !shouldFallbackToPayload()) return null
-  return apiGet<T>(`/api/${collection}`, params, draft, options)
+  void collection
+  void params
+  void draft
+  void options
+  return null
 }
 
 export async function getGlobal<T>(slug: string, options: GlobalOptions = {}): Promise<T | null> {
   if (shouldReadTinaContent()) {
     const tinaGlobal = getTinaGlobal<T>(slug)
-    if (tinaGlobal || !shouldFallbackToPayload()) return tinaGlobal
+    return tinaGlobal
   }
 
-  return apiGet<T>(
-    `/api/globals/${slug}`,
-    {
-      depth: options.depth ?? 2,
-    },
-    options.draft,
-    options,
-  )
+  void options
+  return null
 }
 
 export const getSiteSettings = (options: GlobalOptions = {}) => getGlobal<SiteSettings>('site-settings', options)
@@ -1004,22 +875,8 @@ export const getGlobalCtas = (options: GlobalOptions = {}) => getGlobal<GlobalCt
 export async function listDocuments(collection: string, options: ListOptions = {}): Promise<PayloadDoc[]> {
   if (shouldReadTinaContent()) {
     const tinaDocs = listTinaDocuments(collection, options)
-    if (tinaDocs.length > 0 || !shouldFallbackToPayload()) return tinaDocs
+    if (tinaDocs.length > 0) return tinaDocs
   }
-
-  const data = await payloadFetch<{ docs?: PayloadDoc[] }>(
-    collection,
-    {
-      limit: options.limit ?? 12,
-      depth: options.depth ?? 2,
-      sort: options.sort,
-    },
-    options.draft,
-    options,
-  )
-
-  const docs = data?.docs ?? []
-  if (docs.length > 0) return docs
 
   if (collection === 'portfolio-projects') {
     return [...(fallbackPortfolioProjects as unknown as PayloadDoc[])]
@@ -1031,22 +888,8 @@ export async function listDocuments(collection: string, options: ListOptions = {
 export async function getBySlug(collection: string, slug: string, options: ListOptions = {}): Promise<PayloadDoc | null> {
   if (shouldReadTinaContent()) {
     const tinaDoc = getTinaBySlug(collection, slug, options)
-    if (tinaDoc || !shouldFallbackToPayload()) return tinaDoc
+    if (tinaDoc) return tinaDoc
   }
-
-  const data = await payloadFetch<{ docs?: PayloadDoc[] }>(
-    collection,
-    {
-      'where[slug][equals]': slug,
-      limit: 1,
-      depth: options.depth ?? 2,
-    },
-    options.draft,
-    options,
-  )
-
-  const doc = data?.docs?.[0]
-  if (doc) return doc
 
   if (collection === 'portfolio-projects') {
     return (fallbackPortfolioProjects as unknown as readonly PayloadDoc[]).find((project) => project.slug === slug) ?? null
@@ -1058,21 +901,10 @@ export async function getBySlug(collection: string, slug: string, options: ListO
 export async function getByLegacyUrl(collection: string, legacyUrl: string, options: ListOptions = {}): Promise<PayloadDoc | null> {
   if (shouldReadTinaContent()) {
     const tinaDoc = getTinaByLegacyUrl(collection, legacyUrl, options)
-    if (tinaDoc || !shouldFallbackToPayload()) return tinaDoc
+    return tinaDoc
   }
 
-  const data = await payloadFetch<{ docs?: PayloadDoc[] }>(
-    collection,
-    {
-      'where[seo.legacyUrl][equals]': legacyUrl,
-      limit: 1,
-      depth: options.depth ?? 2,
-    },
-    options.draft,
-    options,
-  )
-
-  return data?.docs?.[0] ?? null
+  return null
 }
 
 const normalizeLegacyKey = (value?: string) => {
@@ -1086,46 +918,17 @@ const normalizeLegacyKey = (value?: string) => {
   }
 }
 
-function indexLegacyDoc(map: Map<string, PayloadDoc>, doc: PayloadDoc) {
-  const candidates = [
-    doc.seo?.legacyUrl,
-    doc.legacy?.sourceFile,
-    doc.legacy?.sourceUrl,
-    doc.slug ? `${doc.slug}.html` : '',
-  ]
-
-  for (const candidate of candidates) {
-    const key = normalizeLegacyKey(candidate)
-    if (key && !map.has(key)) map.set(key, doc)
-  }
-}
-
 export async function getLegacyUrlIndex(collection: string, options: ListOptions = {}): Promise<Map<string, PayloadDoc>> {
   if (shouldReadTinaContent()) {
     const tinaIndex = getTinaLegacyUrlIndex(collection, options)
-    if (tinaIndex.size > 0 || !shouldFallbackToPayload()) return tinaIndex
+    return tinaIndex
   }
 
-  const cacheKey = `${collection}:${options.depth ?? 2}:${options.limit ?? 500}:${options.draft ? 'draft' : 'published'}:${options.force ? 'force' : 'default'}:${options.cacheMs ?? payloadCacheTtlMs}`
+  const cacheKey = `${collection}:${options.depth ?? 2}:${options.limit ?? 500}:${options.draft ? 'draft' : 'published'}:${options.force ? 'force' : 'default'}:${options.cacheMs ?? 0}`
   const cached = legacyUrlIndexCache.get(cacheKey)
   if (cached) return cached
 
-  const request = (async () => {
-    const data = await payloadFetch<{ docs?: PayloadDoc[] }>(
-      collection,
-      {
-        limit: options.limit ?? 500,
-        depth: options.depth ?? 2,
-        sort: options.sort,
-      },
-      options.draft,
-      options,
-    )
-
-    const map = new Map<string, PayloadDoc>()
-    for (const doc of data?.docs ?? []) indexLegacyDoc(map, doc)
-    return map
-  })()
+  const request = Promise.resolve(new Map<string, PayloadDoc>())
 
   legacyUrlIndexCache.set(cacheKey, request)
   return request
@@ -1143,21 +946,10 @@ export async function getByLegacyUrlFromIndex(
 export async function getSitePageByType(pageType: string, options: ListOptions = {}): Promise<PayloadDoc | null> {
   if (shouldReadTinaContent()) {
     const tinaDoc = getTinaSitePageByType(pageType, options)
-    if (tinaDoc || !shouldFallbackToPayload()) return tinaDoc
+    return tinaDoc
   }
 
-  const data = await payloadFetch<{ docs?: PayloadDoc[] }>(
-    'site-pages',
-    {
-      'where[pageType][equals]': pageType,
-      limit: 1,
-      depth: options.depth ?? 2,
-    },
-    options.draft,
-    options,
-  )
-
-  return data?.docs?.[0] ?? null
+  return null
 }
 
 export const routeForDoc = (collection: string, doc: Pick<PayloadDoc, 'slug'>) => {

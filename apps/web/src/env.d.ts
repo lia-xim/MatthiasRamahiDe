@@ -1,10 +1,11 @@
 /// <reference types="astro/client" />
 
 interface ImportMetaEnv {
-  readonly PAYLOAD_PUBLIC_SERVER_URL?: string
   readonly PUBLIC_ASSET_VERSION?: string
   readonly ASTRO_ASSET_VERSION?: string
   readonly ASTRO_PUBLIC_SITE_URL?: string
+  readonly ASTRO_PUBLIC_MEDIA_BASE_URL?: string
+  readonly ASTRO_CONTENT_SOURCE?: string
   readonly ASTRO_ENABLE_ADOPTED_ROUTES?: string
   readonly ASTRO_ENABLE_LOCAL_SEO_ADOPTED_ROUTES?: string
   readonly ASTRO_ENABLE_CMS_DYNAMIC_ROUTES?: string
@@ -14,14 +15,9 @@ interface ImportMetaEnv {
   readonly ASTRO_ENABLE_CMS_SERVICE_ROUTES?: string
   readonly ASTRO_DISABLE_LEGACY_CMS_LOOKUP?: string
   readonly ASTRO_DISABLE_CMS_VISUAL_OVERRIDES?: string
-  readonly ASTRO_DISABLE_PAYLOAD_FETCH?: string
   readonly ASTRO_LIVE_CMS_CACHE_MS?: string
   readonly ASTRO_LIVE_PAGE_CACHE_SECONDS?: string
   readonly ASTRO_LIVE_PAGE_STALE_SECONDS?: string
-  readonly PREVIEW_SECRET?: string
-  readonly PAYLOAD_PREVIEW_API_KEY?: string
-  readonly PAYLOAD_FETCH_CACHE_MS?: string
-  readonly PAYLOAD_FETCH_TIMEOUT_MS?: string
   readonly RESEND_API_KEY?: string
   readonly CONTACT_FROM_EMAIL?: string
   readonly CONTACT_TO_EMAIL?: string
