@@ -1,4 +1,6 @@
 import { spawn } from 'node:child_process'
+import fs from 'node:fs/promises'
+import path from 'node:path'
 
 function run(command, args, options = {}) {
   return new Promise((resolve, reject) => {
@@ -18,6 +20,8 @@ function run(command, args, options = {}) {
 const env = {
   ...process.env,
   ASTRO_ADAPTER: 'vercel',
+  ASTRO_CONTENT_SOURCE: process.env.ASTRO_CONTENT_SOURCE ?? 'tina',
+  ASTRO_PUBLIC_MEDIA_BASE_URL: process.env.ASTRO_PUBLIC_MEDIA_BASE_URL ?? 'https://cms.matthiasramahi.de',
   ASTRO_DISABLE_LEGACY_CMS_LOOKUP: process.env.ASTRO_DISABLE_LEGACY_CMS_LOOKUP ?? 'true',
   ASTRO_DISABLE_PAYLOAD_FETCH: process.env.ASTRO_DISABLE_PAYLOAD_FETCH ?? 'true',
   ASTRO_ENABLE_CMS_DYNAMIC_ROUTES: process.env.ASTRO_ENABLE_CMS_DYNAMIC_ROUTES ?? 'false',
@@ -28,5 +32,9 @@ const env = {
   PAYLOAD_FETCH_TIMEOUT_MS: process.env.PAYLOAD_FETCH_TIMEOUT_MS ?? '350',
 }
 
+const webRoot = path.join(process.cwd(), 'apps', 'web')
+
+await run('corepack', ['pnpm', '--filter', '@matthias-ramahi/web', 'tina:build'], { env })
+await fs.rm(path.join(webRoot, 'public', 'admin'), { recursive: true, force: true })
 await run('corepack', ['pnpm', '--filter', '@matthias-ramahi/web', 'build'], { env })
 await run('node', ['tools/copy-vercel-output.mjs'], { env: process.env })
