@@ -9,6 +9,7 @@ GIT_PUSH="${TINA_GIT_PUSH:-1}"
 GIT_COMMIT_NAME="${TINA_GIT_COMMIT_NAME:-Tina Publisher}"
 GIT_COMMIT_EMAIL="${TINA_GIT_COMMIT_EMAIL:-tina-publisher@matthiasramahi.de}"
 GIT_SSH_KEY="${TINA_GIT_SSH_KEY:-$HOME/.ssh/tina_publish_github_ed25519}"
+GIT_KNOWN_HOSTS="${TINA_GIT_KNOWN_HOSTS:-$HOME/.ssh/known_hosts}"
 LOCK_DIR="${TINA_GIT_LOCK_DIR:-/tmp/matthias-ramahi-tina-publish.lock}"
 
 SYNC_PATHS="${TINA_GIT_SYNC_PATHS:-apps/web/content apps/web/src/data/tinaMediaManifest.json apps/web/src/data/tinaGeneratedMediaManifest.json}"
@@ -20,7 +21,7 @@ fi
 
 if [ -f "$GIT_SSH_KEY" ]; then
   if [ -z "${GIT_SSH_COMMAND:-}" ]; then
-    GIT_SSH_COMMAND="ssh -i $GIT_SSH_KEY -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new"
+    GIT_SSH_COMMAND="ssh -i $GIT_SSH_KEY -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new -o UserKnownHostsFile=$GIT_KNOWN_HOSTS"
     export GIT_SSH_COMMAND
   fi
 fi

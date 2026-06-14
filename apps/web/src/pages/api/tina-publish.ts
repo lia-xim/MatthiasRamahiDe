@@ -93,6 +93,7 @@ const responseState = () => ({
 const startPublish = () => {
   const command = env('TINA_PUBLISH_COMMAND', 'deploy/publish-tina-to-git.sh')
   const cwd = env('TINA_PUBLISH_CWD', '/app')
+  const home = env('TINA_PUBLISH_HOME', '/home/node')
   const uid = numericEnv('TINA_PUBLISH_UID')
   const gid = numericEnv('TINA_PUBLISH_GID')
 
@@ -109,10 +110,13 @@ const startPublish = () => {
     cwd,
     env: {
       ...process.env,
+      HOME: home,
       SOURCE_DIR: env('TINA_PUBLISH_SOURCE_DIR', cwd),
       TINA_GIT_WORKTREE: env('TINA_GIT_WORKTREE', '/tina-git-worktree'),
       TINA_GIT_SSH_KEY: env('TINA_GIT_SSH_KEY', '/home/node/.ssh/tina_publish_github_ed25519'),
+      TINA_GIT_KNOWN_HOSTS: env('TINA_GIT_KNOWN_HOSTS', '/tmp/tina_known_hosts'),
       TINA_GIT_PUSH: env('TINA_GIT_PUSH', '1'),
+      XDG_CONFIG_HOME: env('XDG_CONFIG_HOME', `${home}/.config`),
     },
     gid,
     uid,
