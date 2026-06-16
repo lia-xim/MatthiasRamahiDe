@@ -34,23 +34,21 @@ if [ "$attempt" -gt 60 ]; then
 fi
 
 if [ "$PUBLISH_ADMIN_STATIC" = "1" ]; then
-  admin_attempt=1
-  while [ "$admin_attempt" -le 90 ]; do
-    if [ -f apps/web/public/admin/index.html ]; then
-      break
-    fi
-    admin_attempt=$((admin_attempt + 1))
-    sleep 1
-  done
-
-  if [ "$admin_attempt" -gt 90 ]; then
-    echo "Tina admin static files were not generated in apps/web/public/admin" >&2
-    docker compose -f "$COMPOSE_FILE" logs --tail=120 tina-web
-    exit 1
-  fi
+  docker compose -f "$COMPOSE_FILE" exec -T tina-web sh -lc \
+    'pnpm --filter @matthias-ramahi/web tina:build'
 
   docker compose -f "$COMPOSE_FILE" exec -T tina-web sh -lc \
     'node tools/patch-tina-admin-static.mjs apps/web/public/admin'
+
+  if grep -q 'localhost:4001' apps/web/public/admin/index.html; then
+    echo "Tina admin index still points to localhost dev assets." >&2
+    exit 1
+  fi
+
+  if ! grep -q '/admin/assets/' apps/web/public/admin/index.html; then
+    echo "Tina admin index does not reference static /admin/assets bundles." >&2
+    exit 1
+  fi
 
   mkdir -p .tmp
   tar -czf .tmp/tina-admin-static.tar.gz -C apps/web/public admin
