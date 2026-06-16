@@ -4,7 +4,7 @@ RUN apk add --no-cache git openssh-client rsync
 RUN corepack enable && corepack prepare pnpm@10.33.2 --activate
 
 FROM base AS deps
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+COPY .npmrc package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY apps/web/package.json apps/web/package.json
 RUN pnpm install --frozen-lockfile
 
