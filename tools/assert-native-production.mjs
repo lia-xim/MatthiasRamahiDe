@@ -28,6 +28,10 @@ const legacyReferenceMutationScripts = [
 ]
 const textExtensions = new Set(['.astro', '.css', '.html', '.js', '.jsx', '.json', '.mjs', '.ts', '.tsx'])
 const failures = []
+const allowedPublicHtml = [
+  /^apps\/web\/public\/admin\//,
+  /^apps\/web\/public\/google[a-z0-9_-]+\.html$/i,
+]
 const allowedWebRuntimeFsImports = new Map([
   ['apps/web/src/layouts/AdoptedPageLayout.astro', 'CSS-only critical asset inlining for adopted native pages'],
   ['apps/web/src/lib/contact/email.ts', 'contact retry queue persistence'],
@@ -65,7 +69,9 @@ function relative(filePath) {
 }
 
 async function assertNoPublicHtml() {
-  const files = await collectFiles(publicRoot, (file) => path.extname(file).toLowerCase() === '.html')
+  const files = (await collectFiles(publicRoot, (file) => path.extname(file).toLowerCase() === '.html')).filter(
+    (file) => !allowedPublicHtml.some((pattern) => pattern.test(relative(file))),
+  )
   if (files.length === 0) return
   failures.push(`apps/web/public contains HTML files that can shadow Astro routes: ${files.slice(0, 10).map(relative).join(', ')}`)
 }

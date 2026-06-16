@@ -13,6 +13,8 @@ const providedBaseUrl = process.env.LEGACY_AUDIT_BASE_URL?.replace(/\/$/, '')
 const limit = Number(process.env.LEGACY_AUDIT_LIMIT || '0')
 const outputPath = path.resolve(webRoot, '.visual-regression', 'legacy-route-audit.json')
 const legacyManifestPath = path.join(repoRoot, 'docs', 'legacy-reference-manifest.json')
+const productionOrigin = 'https://matthiasramahi.de'
+const cmsMediaOrigin = 'https://cms.matthiasramahi.de'
 const contentTypes = new Map([
   ['.avif', 'image/avif'],
   ['.css', 'text/css; charset=utf-8'],
@@ -89,6 +91,23 @@ function findStaticFile(pathname) {
 
 function pathnameForFile(file) {
   return file === 'index.html' ? '/' : `/${file}`
+}
+
+function isCmsMediaUrl(url) {
+  try {
+    const parsed = new URL(url)
+    return parsed.origin === cmsMediaOrigin && parsed.pathname.startsWith('/uploads/')
+  } catch {
+    return false
+  }
+}
+
+function shouldIgnoreLocalCmsBrokenImage(url, baseUrl) {
+  try {
+    return new URL(baseUrl).origin !== productionOrigin && isCmsMediaUrl(url)
+  } catch {
+    return false
+  }
 }
 
 async function loadLegacyRedirectTargets() {
@@ -282,6 +301,7 @@ try {
       pathname,
       status: response?.status() || 0,
       ...pageResult,
+      brokenImages: pageResult.brokenImages.filter((image) => !shouldIgnoreLocalCmsBrokenImage(image, server.baseUrl)),
     })
   }
 } finally {

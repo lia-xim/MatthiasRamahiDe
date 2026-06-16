@@ -53,6 +53,8 @@ const allowedExternalOrigins = new Set(
     .map((origin) => origin.trim().replace(/\/$/, ''))
     .filter(Boolean),
 )
+const productionOrigin = 'https://matthiasramahi.de'
+const cmsMediaOrigin = 'https://cms.matthiasramahi.de'
 
 const contentTypes = new Map([
   ['.avif', 'image/avif'],
@@ -246,6 +248,27 @@ function isFirstPartyRequest(url, baseOrigin) {
   } catch {
     return false
   }
+}
+
+function isCmsMediaUrl(url) {
+  try {
+    const parsed = new URL(url)
+    return parsed.origin === cmsMediaOrigin && parsed.pathname.startsWith('/uploads/')
+  } catch {
+    return false
+  }
+}
+
+function isExpectedLocalCmsCorsIssue(url, baseOrigin) {
+  return baseOrigin !== productionOrigin && isCmsMediaUrl(url)
+}
+
+function isExpectedLocalCmsCorsConsole(text, baseOrigin) {
+  return (
+    baseOrigin !== productionOrigin &&
+    text.includes(cmsMediaOrigin) &&
+    /blocked by CORS policy|Access-Control-Allow-Origin/i.test(text)
+  )
 }
 
 function startStaticServer() {
@@ -552,7 +575,13 @@ async function auditCheckOnce(context, baseUrl, check) {
 
   page.on('console', (message) => {
     const text = message.text()
-    if (message.type() === 'error' && !/^Failed to load resource:/i.test(text)) consoleErrors.push(text.slice(0, 300))
+    if (
+      message.type() === 'error' &&
+      !/^Failed to load resource:/i.test(text) &&
+      !isExpectedLocalCmsCorsConsole(text, baseOrigin)
+    ) {
+      consoleErrors.push(text.slice(0, 300))
+    }
   })
   page.on('pageerror', (error) => pageErrors.push(error.message.slice(0, 300)))
   page.on('request', (request) => {
@@ -563,6 +592,7 @@ async function auditCheckOnce(context, baseUrl, check) {
     const failure = request.failure()
     const url = request.url()
     if (failure?.errorText === 'net::ERR_ABORTED') return
+    if (isExpectedLocalCmsCorsIssue(url, baseOrigin) && request.resourceType() === 'image') return
     failedRequests.push({
       error: failure?.errorText || 'request failed',
       resourceType: request.resourceType(),
@@ -589,7 +619,7 @@ async function auditCheckOnce(context, baseUrl, check) {
     const settledMetrics = await collectDomMetrics(page)
     const result = {
       ...initialMetrics,
-      brokenImages: settledMetrics.brokenImages,
+      brokenImages: settledMetrics.brokenImages.filter((image) => !isExpectedLocalCmsCorsIssue(image.src, baseOrigin)),
       checkId: `${check.viewport}:${check.route}`,
       consoleErrors,
       failedRequests: failedRequests.slice(0, 20),
