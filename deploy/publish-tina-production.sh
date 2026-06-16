@@ -14,7 +14,7 @@ if [ -x deploy/backup-tina-content.sh ]; then
   deploy/backup-tina-content.sh
 fi
 
-docker compose -f "$COMPOSE_FILE" build tina-web
+docker compose -f "$COMPOSE_FILE" build tina-web tina-site
 docker compose -f "$COMPOSE_FILE" up -d tina-web tina-site
 
 attempt=1
@@ -59,8 +59,8 @@ if [ "$PUBLISH_ADMIN_STATIC" = "1" ]; then
 fi
 
 if [ "$SKIP_PREFLIGHT" != "1" ]; then
-  docker compose -f "$COMPOSE_FILE" exec -T tina-site sh -lc \
-    'node tools/tina-preflight.mjs --base-url=http://127.0.0.1:4321 --skip-build'
+  docker compose -f "$COMPOSE_FILE" exec -T tina-web sh -lc \
+    'node tools/tina-preflight.mjs --base-url=http://tina-site:4321 --skip-build'
 fi
 
 if [ "$PUBLISH_TO_GIT" = "1" ]; then

@@ -5,9 +5,10 @@ services:
     build:
       context: ..
       dockerfile: apps/web/Dockerfile
+      target: cms
       args:
         ASTRO_CONTENT_SOURCE: tina
-    image: matthias-ramahi-tina-staging:latest
+    image: matthias-ramahi-tina-cms:latest
     restart: unless-stopped
     working_dir: /app
     command:
@@ -48,12 +49,18 @@ services:
       - /home/contextter/matthias-ramahi-tina-git:/tina-git-worktree
 
   tina-site:
-    image: matthias-ramahi-tina-staging:latest
+    build:
+      context: ..
+      dockerfile: apps/web/Dockerfile
+      target: runner
+      args:
+        ASTRO_CONTENT_SOURCE: tina
+    image: matthias-ramahi-tina-site:latest
     restart: unless-stopped
     working_dir: /app
     command:
       - node
-      - apps/web/dist/server/entry.mjs
+      - dist/server/entry.mjs
     environment:
       ASTRO_CONTENT_SOURCE: tina
       ASTRO_PUBLIC_SITE_URL: https://matthiasramahi.de
@@ -64,5 +71,5 @@ services:
     ports:
       - "${TINA_BIND_ADDRESS:-127.0.0.1}:${TINA_SITE_PORT:-4335}:4321"
     volumes:
-      - ../apps/web/public/uploads:/app/apps/web/public/uploads:ro
-      - ../apps/web/public/uploads:/app/apps/web/dist/client/uploads:ro
+      - ../apps/web/public/uploads:/app/public/uploads:ro
+      - ../apps/web/public/uploads:/app/dist/client/uploads:ro

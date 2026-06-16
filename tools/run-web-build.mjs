@@ -42,6 +42,7 @@ function run(command, args, options = {}) {
       env: {
         ...process.env,
         ASTRO_ASSET_VERSION: process.env.ASTRO_ASSET_VERSION || assetVersion,
+        ASTRO_TELEMETRY_DISABLED: process.env.ASTRO_TELEMETRY_DISABLED || '1',
         PUBLIC_ASSET_VERSION: process.env.PUBLIC_ASSET_VERSION || assetVersion,
         NODE_OPTIONS: nodeOptions,
         ...options.env,
