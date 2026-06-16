@@ -1,5 +1,9 @@
 /** @jsxImportSource react */
+import * as React from 'react'
 import { render } from '@react-email/render'
+
+// Keep React in scope for direct TSX execution outside Astro's JSX transform.
+void React
 
 import InquiryAdminEmail from './InquiryAdminEmail'
 import InquiryConfirmationEmail from './InquiryConfirmationEmail'

@@ -7,7 +7,7 @@
     "predev": "node ../../tools/sync-public-assets.mjs",
     "dev": "astro dev --host 0.0.0.0 --port 4321",
     "tina:dev": "tinacms dev -c \"astro dev --host 0.0.0.0 --port 4321\"",
-    "tina:build": "tinacms build --local --skip-cloud-checks --noTelemetry && node ../../tools/patch-tina-admin-static.mjs",
+    "tina:build": "tinacms build --local --datalayer-port 9100 --skip-cloud-checks --noTelemetry && node ../../tools/patch-tina-admin-static.mjs",
     "prebuild": "node ../../tools/sync-public-assets.mjs",
     "build": "node ../../tools/run-web-build.mjs",
     "prepreview": "node ../../tools/sync-public-assets.mjs",
@@ -23,26 +23,26 @@
     "test:visual": "node scripts/visual-regression.mjs"
   },
   "dependencies": {
-    "@astrojs/node": "^9.0.0",
-    "@astrojs/react": "^4.4.2",
-    "@astrojs/vercel": "9.0.0",
-    "@react-email/components": "^1.0.12",
-    "@react-email/render": "^2.0.8",
+    "@astrojs/node": "^10.1.4",
+    "@astrojs/react": "^5.0.7",
+    "@astrojs/vercel": "10.0.8",
+    "@react-email/render": "^2.0.9",
     "@tinacms/astro": "0.5.0",
-    "astro": "^5.0.0",
-    "react": "^19.2.6",
-    "react-dom": "^19.2.6",
-    "tinacms": "3.9.1"
+    "astro": "^6.4.7",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tinacms": "3.9.3"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
-    "@tinacms/cli": "2.4.4",
-    "@types/react": "^19.2.15",
-    "@types/react-dom": "^19.2.3",
+    "@codemirror/language": "6.0.0",
+    "@tinacms/cli": "2.5.1",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
     "pixelmatch": "^7.2.0",
     "playwright": "^1.60.0",
     "pngjs": "^7.0.0",
-    "react-email": "^6.5.0",
+    "react-email": "^6.6.3",
     "typescript": "^5.8.0"
   }
 }

@@ -1,7 +1,7 @@
-/** @jsxImportSource react */
-import { Body, Column, Container, Head, Html, Link, Preview, Row, Section, Text } from '@react-email/components'
+import * as React from 'react'
 import type { CSSProperties, ReactNode } from 'react'
 
+import { Body, Column, Container, Head, Html, Link, Preview, Row, Section, Text } from './components'
 import { brand } from './format'
 
 // ---- White page, dark card with light text --------------------------------

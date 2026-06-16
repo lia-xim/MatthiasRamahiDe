@@ -113,6 +113,11 @@ function normalizeRoute(route) {
   return withoutIndex.length > 1 ? withoutIndex.replace(/\/+$/, '') : withoutIndex
 }
 
+function isTechnicalAuditRoute(route) {
+  const normalized = normalizeRoute(route)
+  return normalized === '/admin' || normalized.startsWith('/admin/') || /^\/google[a-z0-9]+\.html$/i.test(normalized)
+}
+
 async function walk(dir) {
   const entries = await fs.readdir(dir, { withFileTypes: true })
   const files = []
@@ -697,6 +702,8 @@ if (!providedBaseUrl && !fsSync.existsSync(targetRoot)) {
 
 let routes = await collectRoutes()
 if (routeFilter.size > 0) routes = routes.filter((route) => routeFilter.has(route))
+const skippedTechnicalRoutes = routeFilter.size === 0 ? routes.filter(isTechnicalAuditRoute) : []
+if (skippedTechnicalRoutes.length > 0) routes = routes.filter((route) => !isTechnicalAuditRoute(route))
 const skippedDynamicRoutes =
   !providedBaseUrl && routeFilter.size === 0 ? routes.filter((route) => !findAuditableStaticFile(route)) : []
 if (skippedDynamicRoutes.length > 0) routes = routes.filter((route) => findAuditableStaticFile(route))
@@ -772,6 +779,7 @@ try {
     routes: routes.length,
     routeSource,
     skippedDynamicRoutes,
+    skippedTechnicalRoutes,
     target: toPosix(path.relative(repoRoot, targetRoot)),
     topFailures: failures.slice(0, 40),
     topWarnings: warnings.slice(0, 40),

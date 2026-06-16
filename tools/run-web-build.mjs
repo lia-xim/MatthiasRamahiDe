@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url'
 
 const buildHeap = process.env.WEB_BUILD_MAX_OLD_SPACE_SIZE || '4096'
 const nodeOptions = [process.env.NODE_OPTIONS, `--max-old-space-size=${buildHeap}`].filter(Boolean).join(' ')
-const astroCli = path.join(process.cwd(), 'node_modules', 'astro', 'astro.js')
+const astroCli = path.join(process.cwd(), 'node_modules', 'astro', 'bin', 'astro.mjs')
 const minifyWebAssets = path.join(path.dirname(fileURLToPath(import.meta.url)), 'minify-web-assets.mjs')
 const pruneUnusedDistAssets = path.join(path.dirname(fileURLToPath(import.meta.url)), 'prune-unused-dist-assets.mjs')
 const assetVersion = resolveAssetVersion()

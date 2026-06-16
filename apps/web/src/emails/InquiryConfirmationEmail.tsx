@@ -1,7 +1,7 @@
-/** @jsxImportSource react */
-import { Heading, Hr, Section, Text } from '@react-email/components'
+import * as React from 'react'
 import type { CSSProperties } from 'react'
 
+import { Heading, Hr, Section, Text } from './components'
 import { brand, firstName, formatDate, refCode } from './format'
 import {
   ContactRows,

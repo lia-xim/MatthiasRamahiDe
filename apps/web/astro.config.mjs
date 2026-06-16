@@ -44,7 +44,7 @@ export default defineConfig({
     ...(isVercel
       ? {
           ssr: {
-            noExternal: ['react', 'react-dom', '@astrojs/react', '@react-email/components', '@react-email/render'],
+            noExternal: ['react', 'react-dom', '@astrojs/react', '@react-email/render'],
           },
         }
       : {}),
