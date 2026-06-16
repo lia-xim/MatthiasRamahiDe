@@ -8,6 +8,7 @@ const targetArg = process.argv.find((arg) => arg.startsWith('--target='))?.slice
 const targetRoot = path.resolve(repoRoot, targetArg || path.join('apps', 'web', 'dist', 'client'))
 const assetExtensions = new Set(['.avif', '.gif', '.ico', '.jpeg', '.jpg', '.mp4', '.png', '.svg', '.webm', '.webp'])
 const textExtensions = new Set(['.css', '.html', '.js', '.json', '.txt', '.xml'])
+const runtimeManagedPrefixes = ['assets/optimized/', 'uploads/payload/', 'uploads/generated/']
 
 function toPosix(value) {
   return value.replaceAll(path.sep, '/').replaceAll('\\', '/')
@@ -183,7 +184,11 @@ for (const item of fileStats) {
 }
 
 const assets = fileStats.filter((item) => assetExtensions.has(path.extname(item.file).toLowerCase()))
-const unusedAssets = assets.filter((item) => !referenced.has(rel(item.file)) && rel(item.file) !== 'favicon.svg')
+const unreferencedAssets = assets.filter((item) => !referenced.has(rel(item.file)) && rel(item.file) !== 'favicon.svg')
+const runtimeManagedUnreferencedAssets = unreferencedAssets.filter((item) =>
+  runtimeManagedPrefixes.some((prefix) => rel(item.file).startsWith(prefix)),
+)
+const unusedAssets = unreferencedAssets.filter((item) => !runtimeManagedPrefixes.some((prefix) => rel(item.file).startsWith(prefix)))
 const repeatedInlineGroups = [...inlineGroups.style.values(), ...inlineGroups.script.values()]
   .filter((group) => group.count > 1 && group.bytes > 512)
   .sort((a, b) => b.bytes * b.count - a.bytes * a.count)
@@ -228,6 +233,16 @@ const report = {
     count: unusedAssets.length,
     mb: mb(unusedAssets.reduce((sum, item) => sum + item.size, 0)),
     largest: unusedAssets
+      .sort((a, b) => b.size - a.size)
+      .slice(0, 15)
+      .map((item) => ({ file: rel(item.file), kb: kb(item.size) })),
+  },
+  runtimeManagedUnreferencedAssets: {
+    count: runtimeManagedUnreferencedAssets.length,
+    mb: mb(runtimeManagedUnreferencedAssets.reduce((sum, item) => sum + item.size, 0)),
+    note: 'Kept out of unusedAssets because these files are referenced by SSR/runtime CMS data or responsive media helpers.',
+    prefixes: runtimeManagedPrefixes,
+    largest: runtimeManagedUnreferencedAssets
       .sort((a, b) => b.size - a.size)
       .slice(0, 15)
       .map((item) => ({ file: rel(item.file), kb: kb(item.size) })),

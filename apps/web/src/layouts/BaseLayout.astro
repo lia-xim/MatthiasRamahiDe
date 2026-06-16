@@ -89,7 +89,12 @@ const versionedStylesheets = stylesheets.map(versionStaticAssetUrl)
     <meta name="author" content={settings?.ownerName || 'Matthias Ramahi'} />
     <meta name="format-detection" content="telephone=no" />
     <meta name="google-site-verification" content="49CiKBCvZoaIIZSo-revYi09ZSb_0VDl9V8D1zrAK_o" />
+    <link rel="preconnect" href="https://cms.matthiasramahi.de" crossorigin />
+    <link rel="dns-prefetch" href="//cms.matthiasramahi.de" />
+    <link rel="dns-prefetch" href="//analytics.contextter.com" />
     <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="de-DE" href={canonical} />
+    <link rel="alternate" hreflang="x-default" href={canonical} />
     {noIndex ? <meta name="robots" content="noindex,nofollow" /> : <meta name="robots" content="index,follow,max-image-preview:large" />}
     <meta name="theme-color" content="#020306" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -105,6 +110,7 @@ const versionedStylesheets = stylesheets.map(versionStaticAssetUrl)
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     {socialImage && <meta property="og:image" content={socialImage} />}
+    {socialImage && <meta property="og:image:secure_url" content={socialImage} />}
     {socialImage && <meta property="og:image:alt" content={title} />}
     {socialImage && socialImageDimensions.width && <meta property="og:image:width" content={String(socialImageDimensions.width)} />}
     {socialImage && socialImageDimensions.height && <meta property="og:image:height" content={String(socialImageDimensions.height)} />}

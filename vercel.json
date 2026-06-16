@@ -23,6 +23,15 @@
       ]
     },
     {
+      "source": "/uploads/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
       "source": "/mpissxxj-portfolio_webp_full_063-1.webp",
       "headers": [
         {

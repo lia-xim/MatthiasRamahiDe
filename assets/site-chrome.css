@@ -823,9 +823,9 @@ body.menu-open{ overflow:hidden; }
   .mr-footer__cols{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 16px}
   .mr-footer__col{gap:2px}
   .mr-footer__col-label{padding-bottom:6px}
-  .mr-footer__col-list a{min-height:38px;font-size:13px}
+  .mr-footer__col-list a{min-height:44px;font-size:13px}
   .mr-footer__contact{gap:10px}
-  .mr-footer__contact-line a,.mr-footer__contact-line strong{min-height:26px;font-size:12px;overflow-wrap:anywhere}
+  .mr-footer__contact-line a,.mr-footer__contact-line strong{min-height:44px;font-size:12px;overflow-wrap:anywhere}
   /* Instagram als Kontaktmöglichkeit nach oben holen; unten ausblenden. */
   .mr-footer__contact-line--social{display:grid}
   .mr-footer__base-center{display:none}
@@ -979,9 +979,9 @@ section[data-contact-section]:empty {
 .mr-contact__details > .mr-contact__row,
 .mr-contact__details > .mr-contact__field{margin-bottom:18px}
 .mr-contact__consent{display:flex;gap:12px;align-items:flex-start;margin:20px 0 4px;font-size:13px;line-height:1.65;color:#4f5b57;cursor:pointer}
-.mr-contact__consent input{margin:0;width:24px;height:24px;flex:0 0 auto;accent-color:var(--mrc-ink);cursor:pointer}
+.mr-contact__consent input{margin:0;width:44px;height:44px;flex:0 0 auto;accent-color:var(--mrc-ink);cursor:pointer}
 .mr-contact__consent input:focus-visible{outline:2px solid var(--mrc-ink);outline-offset:3px}
-.mr-contact__consent a{color:var(--mrc-ink);text-decoration:underline;text-underline-offset:2px;display:inline-flex;align-items:center;min-height:24px}
+.mr-contact__consent a{color:var(--mrc-ink);text-decoration:underline;text-underline-offset:2px;display:inline-flex;align-items:center;min-height:44px}
 .mr-contact__consent a:hover{text-decoration:none}
 .mr-contact__consent em{font:9px var(--mrc-mono);font-style:normal;letter-spacing:.16em;text-transform:uppercase;color:#46524f;margin-left:4px;white-space:nowrap}
 .mr-contact__submit{

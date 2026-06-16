@@ -131,7 +131,10 @@ const contactLead =
         <div class="hero-stage">
           <h1 class="hero-title" id="hero-title" data-text-idx="0">
             {firstHeroSlide.titleLines.map((line, index) => (
-              <span class="line" {...tinaAttrs(firstHeroSlideSource, index === 0 ? 'headlineLine1' : 'headlineLine2')}><span class="word">{line}</span></span>
+              <>
+                {index > 0 && ' '}
+                <span class="line" {...tinaAttrs(firstHeroSlideSource, index === 0 ? 'headlineLine1' : 'headlineLine2')}><span class="word">{line}</span></span>
+              </>
             ))}
           </h1>
           <p class="hero-lead" id="hero-lead" {...tinaAttrs(firstHeroSlideSource, 'lead')}>{firstHeroSlide.lead}</p>

@@ -31,6 +31,9 @@ const pageAssetExtensions = new Set([
   '.ico',
   '.pdf',
 ])
+const technicalRelPathPattern = /^(?:admin\/|google[a-z0-9_-]+\.html$)/i
+const ssrServerRoot = path.resolve(target, '..', 'server')
+const hasSsrServerBundle = fs.existsSync(ssrServerRoot)
 
 const forbiddenUrlPattern = /\bhttps?:\/\/(?:localhost|127\.0\.0\.1)(?::\d+)?|\bhttps?:\/\/www\.matthiasramahi\.de\b/gi
 const insecureSitePattern = /\bhttp:\/\/(?:www\.)?matthiasramahi\.de\b/gi
@@ -55,6 +58,7 @@ function walk(dir, files = []) {
 }
 
 const relPath = (file) => path.relative(target, file).replace(/\\/g, '/')
+const isTechnicalRelPath = (file) => technicalRelPathPattern.test(relPath(file))
 
 const stripTags = (value) => String(value || '').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim()
 
@@ -260,6 +264,8 @@ function auditHtml(files) {
   const brokenAnchorLinks = []
 
   for (const row of rows) {
+    if (row.isRedirect) continue
+
     row.jsonLdBlocks.forEach((block, index) => {
       try {
         JSON.parse(block)
@@ -370,6 +376,7 @@ function auditSitemaps(files, pageRows) {
   for (const item of pageLocs) {
     const localFile = existingLocalFileForUrl(item.loc)
     if (!localFile) {
+      if (hasSsrServerBundle) continue
       brokenLocs.push(item)
       continue
     }
@@ -409,7 +416,7 @@ function auditRobots(file) {
   }
 }
 
-const allFiles = walk(target)
+const allFiles = walk(target).filter((file) => !isTechnicalRelPath(file))
 const textFiles = allFiles.filter((file) => textExtensions.has(path.extname(file).toLowerCase()))
 const htmlFiles = allFiles.filter((file) => htmlExtensions.has(path.extname(file).toLowerCase()))
 const sitemapFiles = allFiles.filter((file) => path.basename(file).startsWith('sitemap') && path.extname(file) === '.xml')

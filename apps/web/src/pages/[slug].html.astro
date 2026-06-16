@@ -11,7 +11,7 @@ import { getTinaVisualDocumentForLegacyRoute, isTinaEditRequest } from '../lib/t
 
 export const prerender = false
 
-const slug = Astro.params.slug || ''
+const slug = (Astro.params.slug || '').replace(/\.html$/i, '')
 const legacyFile = getNativeHtmlFileForPath(`/${slug}.html`)
 
 if (!legacyFile) {
