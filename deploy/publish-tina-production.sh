@@ -15,29 +15,12 @@ if [ -x deploy/backup-tina-content.sh ]; then
 fi
 
 docker compose -f "$COMPOSE_FILE" build tina-web tina-site
-docker compose -f "$COMPOSE_FILE" up -d tina-web tina-site
-
-attempt=1
-while [ "$attempt" -le 60 ]; do
-  if curl -fsS "http://127.0.0.1:$SITE_PORT/" >/dev/null 2>&1; then
-    break
-  fi
-  attempt=$((attempt + 1))
-  sleep 1
-done
-
-if [ "$attempt" -gt 60 ]; then
-  echo "Production site did not become ready on 127.0.0.1:$SITE_PORT" >&2
-  docker compose -f "$COMPOSE_FILE" ps
-  docker compose -f "$COMPOSE_FILE" logs --tail=120 tina-site
-  exit 1
-fi
 
 if [ "$PUBLISH_ADMIN_STATIC" = "1" ]; then
-  docker compose -f "$COMPOSE_FILE" exec -T tina-web sh -lc \
+  docker compose -f "$COMPOSE_FILE" run --rm --no-deps tina-web sh -lc \
     'pnpm --filter @matthias-ramahi/web tina:build'
 
-  docker compose -f "$COMPOSE_FILE" exec -T tina-web sh -lc \
+  docker compose -f "$COMPOSE_FILE" run --rm --no-deps tina-web sh -lc \
     'node tools/patch-tina-admin-static.mjs apps/web/public/admin'
 
   if grep -q 'localhost:4001' apps/web/public/admin/index.html; then
@@ -54,6 +37,24 @@ if [ "$PUBLISH_ADMIN_STATIC" = "1" ]; then
   tar -czf .tmp/tina-admin-static.tar.gz -C apps/web/public admin
   docker run --rm --pid=host --privileged -v /:/host alpine:3.20 sh \
     /host/home/contextter/matthias-ramahi-tina-staging/deploy/publish-tina-admin-static.sh
+fi
+
+docker compose -f "$COMPOSE_FILE" up -d tina-web tina-site
+
+attempt=1
+while [ "$attempt" -le 60 ]; do
+  if curl -fsS "http://127.0.0.1:$SITE_PORT/" >/dev/null 2>&1; then
+    break
+  fi
+  attempt=$((attempt + 1))
+  sleep 1
+done
+
+if [ "$attempt" -gt 60 ]; then
+  echo "Production site did not become ready on 127.0.0.1:$SITE_PORT" >&2
+  docker compose -f "$COMPOSE_FILE" ps
+  docker compose -f "$COMPOSE_FILE" logs --tail=120 tina-site
+  exit 1
 fi
 
 if [ "$SKIP_PREFLIGHT" != "1" ]; then
