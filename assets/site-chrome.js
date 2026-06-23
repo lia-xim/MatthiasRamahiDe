@@ -936,9 +936,15 @@
       function scrollToRequestSlot() {
         const target = document.getElementById('anfrage') || slots[0];
         if (!target) return;
-        window.requestAnimationFrame(function () {
-          target.scrollIntoView({ block: 'start' });
-        });
+        let attempts = 0;
+        function applyScroll() {
+          const top = Math.max(0, target.getBoundingClientRect().top + window.scrollY);
+          window.scrollTo({ top: top, left: 0, behavior: 'auto' });
+          attempts += 1;
+          if (attempts < 3) window.setTimeout(applyScroll, attempts === 1 ? 90 : 240);
+        }
+        if ('requestAnimationFrame' in window) window.requestAnimationFrame(applyScroll);
+        else applyScroll();
       }
 
       function handleRequestHash() {
