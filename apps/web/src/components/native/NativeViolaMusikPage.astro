@@ -8,6 +8,7 @@ const doc = providedDoc || (await getBySlug('service-pages', 'viola-musik-duesse
 
 const metaDescription =
   'Viola und Geigenmusik in Düsseldorf: klassische Begleitung für Hochzeit, Empfang, Trauerfeier und private Anlässe — über ein Netzwerk erfahrener Künstler:innen vermittelt.'
+const musicRequestHref = 'https://kim-marie-borger.com/anfragen/'
 
 // Anlässe: Jede Karte führt direkt zur Musik-Anfrage.
 const occasions = [
@@ -36,9 +37,9 @@ const heroSlides = [
     image: heroImage,
     titleLines: ['Viola', 'Musik'],
     lead: 'Klassische Begleitung für Hochzeit, Empfang, Trauerfeier und private Anlässe — Viola, Geige und Klavier. Über ein Netzwerk erfahrener Künstler:innen aus Düsseldorf vermittelt.',
-    primaryHref: '#anfrage',
+    primaryHref: musicRequestHref,
     primaryLabel: 'Musik anfragen',
-    secondaryHref: '#anlaesse',
+    secondaryHref: musicRequestHref,
     secondaryLabel: 'Anlässe ansehen',
   },
 ]
@@ -48,6 +49,7 @@ const heroSlidesJson = JSON.stringify(heroSlides)
   legacyFile={legacyFile}
   current="leistungen"
   doc={doc}
+  ctaHref={musicRequestHref}
   description={doc?.seo?.description || metaDescription}
   ogImage={doc?.seo?.ogImage || heroImage}
 >
@@ -65,8 +67,8 @@ const heroSlidesJson = JSON.stringify(heroSlides)
           </h1>
           <p class="hero-lead" id="hero-lead">Klassische Begleitung für Hochzeit, Empfang, Trauerfeier und private Anlässe — Viola, Geige und Klavier. Über ein Netzwerk erfahrener Künstler:innen aus Düsseldorf vermittelt.</p>
           <div class="hero-actions" aria-label="Direkte Aktionen">
-            <a class="btn dark" href="#anfrage" data-hero-primary>Musik anfragen</a>
-            <a class="btn" href="#anlaesse" data-hero-secondary>Anlässe ansehen</a>
+            <a class="btn dark" href={musicRequestHref} data-hero-primary>Musik anfragen</a>
+            <a class="btn" href={musicRequestHref} data-hero-secondary>Anlässe ansehen</a>
           </div>
         </div>
       </div>
@@ -87,7 +89,7 @@ const heroSlidesJson = JSON.stringify(heroSlides)
         </div>
         <div class="vm-occ-list">
           {occasions.map((occ) => (
-            <a class="vm-occ" href="#anfrage" aria-label={`${occ.name} anfragen`}>
+            <a class="vm-occ" href={musicRequestHref} aria-label={`${occ.name} anfragen`}>
               <p class="vm-occ__num">{occ.num}</p>
               <h3 class="vm-occ__name">{occ.name}</h3>
               <p class="vm-occ__line">{occ.line}</p>
@@ -123,21 +125,8 @@ const heroSlidesJson = JSON.stringify(heroSlides)
     <section class="sp-cta" data-header-theme="light" aria-label="Anfrage">
       <div class="sp-cta__inner">
         <h2 class="sp-cta__head">Bereit für ein <em>Musik-Briefing.</em></h2>
-        <a class="sp-cta__btn" href="#anfrage">Musik anfragen →</a>
+        <a class="sp-cta__btn" href={musicRequestHref}>Musik anfragen →</a>
       </div>
     </section>
-
-    <section
-      id="anfrage"
-      data-contact-section
-      data-contact-subject="Musikanfrage — Viola Musik Düsseldorf"
-      data-contact-headline="Musik anfragen."
-      data-contact-lead="Schreibe kurz Anlass, Ort, Datum und ungefähre Dauer. Wir vermitteln passende Künstler:innen und melden uns mit Vorschlag und Konditionen."
-      data-contact-project-type="Viola Musik"
-      data-contact-button-label="Musikanfrage senden"
-      data-contact-message-placeholder="Anlass, Ort, Datum, Dauer und Musikwunsch - ein paar Stichpunkte reichen."
-      data-header-theme="dark"
-      aria-label="Anfrage"
-    />
   </main>
 </AdoptedPageLayout>

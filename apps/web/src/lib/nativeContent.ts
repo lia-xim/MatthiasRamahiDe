@@ -373,7 +373,7 @@ export const homeServices: HomeService[] = [
     text: 'Markenseiten, Portfolios und lokale Sichtbarkeit im Rheinland.',
   },
   {
-    href: '/viola-musik-duesseldorf.html#anfrage',
+    href: 'https://kim-marie-borger.com/anfragen/',
     title: 'Viola Musik',
     text: 'Live-Musik und klassische Begleitung für Empfänge und Vernissagen.',
   },
@@ -532,7 +532,7 @@ export const servicesIndexItems: ServicesIndexItem[] = [
   },
   {
     id: 'viola',
-    href: '/viola-musik-duesseldorf.html#anfrage',
+    href: 'https://kim-marie-borger.com/anfragen/',
     headline: 'Viola <em>Musik.</em>',
     text: 'Musikalische Begleitung für besondere Momente — ob Hochzeit, Firmenfeier oder Event. Live-Musik schafft Atmosphäre, bleibt aber dezent planbar: passend zu Ablauf, Raum, Gästezahl und gewünschter Stimmung.',
     tags: ['Hochzeit', 'Event', 'Live-Musik'],
