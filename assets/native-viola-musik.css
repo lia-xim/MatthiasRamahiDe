@@ -72,15 +72,15 @@ img{display:block;max-width:100%;height:auto}
 .vm-occ-sec__title{margin:16px 0 0;font-family:var(--serif);font-weight:600;font-size:clamp(40px,5.2vw,80px);line-height:.96;letter-spacing:-.024em;color:#f7f4ec}
 .vm-occ-sec__title em{font-style:italic;font-weight:500;color:color-mix(in oklch,var(--accent) 78%,#fff 22%)}
 .vm-occ-sec__lead{margin:0;max-width:48ch;font-size:clamp(15px,1.14vw,18px);line-height:1.6;color:rgba(243,241,234,.74)}
-.vm-occ-list{display:flex;flex-direction:column}
-.vm-occ{position:relative;display:grid;grid-template-columns:clamp(58px,6vw,116px) minmax(0,1fr) minmax(0,1.15fr);gap:clamp(18px,3vw,56px);align-items:start;padding:clamp(28px,3vw,48px) 0 clamp(28px,3vw,48px) clamp(14px,1.6vw,24px);border-top:1px solid rgba(243,241,234,.13);transition:background .45s var(--ease)}
+.vm-occ-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:rgba(243,241,234,.13);border:1px solid rgba(243,241,234,.13)}
+.vm-occ{position:relative;display:grid;grid-template-columns:minmax(46px,72px) minmax(0,1fr);grid-template-rows:auto 1fr;column-gap:clamp(14px,2vw,28px);row-gap:8px;align-items:start;min-height:178px;padding:clamp(22px,2.6vw,34px);background:linear-gradient(145deg,rgba(243,241,234,.035),rgba(243,241,234,.015));text-decoration:none;color:inherit;transition:background .45s var(--ease),transform .45s var(--ease)}
 .vm-occ:last-child{border-bottom:1px solid rgba(243,241,234,.13)}
 .vm-occ::before{content:"";position:absolute;left:0;top:-1px;bottom:-1px;width:2px;background:var(--accent);transform:scaleY(0);transform-origin:top;transition:transform .45s var(--ease)}
-.vm-occ__num{margin:0;font-family:var(--serif);font-weight:600;font-size:clamp(42px,4.6vw,92px);line-height:.82;letter-spacing:-.02em;color:color-mix(in oklch,var(--accent) 60%,#241f2e 40%);transition:color .4s var(--ease)}
-.vm-occ__name{margin:0;font-family:var(--serif);font-weight:600;font-size:clamp(26px,2.6vw,42px);line-height:1.02;letter-spacing:-.02em;color:#f7f4ec}
-.vm-occ__line{margin:0;font-size:clamp(15px,1.1vw,17px);line-height:1.55;color:rgba(243,241,234,.72)}
+.vm-occ__num{grid-row:1 / span 2;margin:0;font-family:var(--mono);font-size:11px;line-height:1;letter-spacing:.26em;color:color-mix(in oklch,var(--accent) 72%,#fff 28%);transition:color .4s var(--ease)}
+.vm-occ__name{margin:0;min-width:0;font-family:var(--serif);font-weight:600;font-size:clamp(26px,2.5vw,40px);line-height:1.02;letter-spacing:-.02em;color:#f7f4ec;overflow-wrap:anywhere}
+.vm-occ__line{margin:0;max-width:46ch;min-width:0;font-size:clamp(14px,1.05vw,16px);line-height:1.55;color:rgba(243,241,234,.72)}
 @media (hover:hover){
-  .vm-occ:hover{background:linear-gradient(90deg,color-mix(in oklch,var(--accent) 9%,transparent),transparent 70%)}
+  .vm-occ:hover{background:linear-gradient(145deg,color-mix(in oklch,var(--accent) 12%,transparent),rgba(243,241,234,.018));transform:translateY(-2px)}
   .vm-occ:hover::before{transform:scaleY(1)}
   .vm-occ:hover .vm-occ__num{color:color-mix(in oklch,var(--accent) 82%,#fff 18%)}
 }
@@ -113,9 +113,8 @@ img{display:block;max-width:100%;height:auto}
 /* ===== RESPONSIVE ===== */
 @media (max-width:1080px){
   .vm-occ-sec__head,.vm-flow__head{grid-template-columns:1fr;gap:22px}
-  /* Mobil/Tablet: große Anlass-Nummer als Anker, darunter Name + eine Zeile */
-  .vm-occ{grid-template-columns:1fr;gap:8px}
-  .vm-occ__num{font-size:clamp(40px,11vw,64px);line-height:.9}
+  .vm-occ-list{grid-template-columns:1fr}
+  .vm-occ{min-height:0}
   .vm-occ__line{margin-top:2px}
   .vm-flow__track{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:clamp(34px,5vw,48px)}
   .vm-flow__step:nth-child(2)::after{display:none}
@@ -132,7 +131,8 @@ img{display:block;max-width:100%;height:auto}
   .sp-cta__inner{grid-template-columns:1fr;text-align:left;gap:18px}
 }
 @media (max-width:680px){
-  .vm-occ{padding:22px 0 22px 12px}
+  .vm-occ{grid-template-columns:1fr;gap:10px;padding:22px}
+  .vm-occ__num{grid-row:auto}
   /* Timeline: vertikale Achse */
   .vm-flow__track{display:block;position:relative;margin-left:6px}
   .vm-flow__track::before{content:"";position:absolute;left:5px;top:8px;bottom:10px;width:1px;background:linear-gradient(180deg,color-mix(in oklch,var(--accent) 55%,transparent),var(--rule));z-index:0}

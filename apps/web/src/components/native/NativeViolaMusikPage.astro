@@ -9,12 +9,16 @@ const doc = providedDoc || (await getBySlug('service-pages', 'viola-musik-duesse
 const metaDescription =
   'Viola und Geigenmusik in Düsseldorf: klassische Begleitung für Hochzeit, Empfang, Trauerfeier und private Anlässe — über ein Netzwerk erfahrener Künstler:innen vermittelt.'
 
-// Anlässe — bewusst simpel: große Nummer als visueller Anker, Anlass-Name, eine knappe Zeile.
+// Anlässe: Jede Karte führt direkt zur Musik-Anfrage.
 const occasions = [
-  { num: '01', name: 'Trauung & Empfang', line: 'Klassik oder feine Pop-Arrangements für Trauung und Sektempfang.' },
-  { num: '02', name: 'Trauerfeier', line: 'Würdevolle, ruhige Begleitung — diskret im Hintergrund.' },
-  { num: '03', name: 'Private Anlässe', line: 'Geburtstag, Jubiläum oder Gala — Atmosphäre statt Beschallung.' },
-  { num: '04', name: 'Location-Aufnahmen', line: 'Live- und Location-Aufnahmen für Film und Imagefilm.' },
+  { num: '01', name: 'Hochzeitsmusik', line: 'Live-Musik für Standesamt, freie Trauung, Kirche, Sektempfang oder Dinner.' },
+  { num: '02', name: 'Trauermusik', line: 'Würdevolle Begleitung für Trauerfeier, Beerdigung, Kirche oder Abschied am Grab.' },
+  { num: '03', name: 'Geburtstagsmusik', line: 'Ein persönlicher musikalischer Moment für Geburtstag, Jubiläum oder private Feier.' },
+  { num: '04', name: 'Taufmusik', line: 'Sanfte Musik für Taufe, Segnung, Familienfeier oder Gottesdienst.' },
+  { num: '05', name: 'Konzerte & Events', line: 'Solo-Viola, Geige, Duo oder kleines Ensemble für Kulturabend, Vernissage oder Empfang.' },
+  { num: '06', name: 'Firmenevents', line: 'Dezente Live-Musik für Empfang, Dinner, Messe, Jubiläum oder Kundenevent.' },
+  { num: '07', name: 'Sonstige Anlässe', line: 'Wenn der Anlass nicht in eine Schublade passt, klären wir Besetzung und Rahmen im Briefing.' },
+  { num: '08', name: 'Bratschen- & Geigenunterricht', line: 'Unterrichtsanfragen für Bratsche, Viola oder Geige mit Ziel, Niveau und passendem Rhythmus.' },
 ]
 
 // Ablauf — drei verbundene Stationen vom Anliegen bis zum Auftritt.
@@ -77,16 +81,17 @@ const heroSlidesJson = JSON.stringify(heroSlides)
             <h2 class="vm-occ-sec__title">Für jeden <em>Anlass.</em></h2>
           </div>
           <p class="vm-occ-sec__lead">
-            Eine ruhige musikalische Begleitung verändert einen Raum spürbar. Vermittelte Künstler:innen spielen klassisches
-            Repertoire — sensibel und ohne Show.
+            Musik-Anfragen laufen hier gebündelt ein: Anlass, Ort, Datum und gewünschte Wirkung reichen für den ersten Schritt.
+            Danach wird geklärt, welche Besetzung und welches Repertoire wirklich passt.
           </p>
         </div>
         <div class="vm-occ-list">
           {occasions.map((occ) => (
-            <article class="vm-occ">
+            <a class="vm-occ" href="#anfrage" aria-label={`${occ.name} anfragen`}>
+              <p class="vm-occ__num">{occ.num}</p>
               <h3 class="vm-occ__name">{occ.name}</h3>
               <p class="vm-occ__line">{occ.line}</p>
-            </article>
+            </a>
           ))}
         </div>
       </div>
@@ -125,9 +130,12 @@ const heroSlidesJson = JSON.stringify(heroSlides)
     <section
       id="anfrage"
       data-contact-section
-      data-contact-subject="Musik-Anfrage — Matthias Ramahi"
+      data-contact-subject="Musikanfrage — Viola Musik Düsseldorf"
       data-contact-headline="Musik anfragen."
       data-contact-lead="Schreibe kurz Anlass, Ort, Datum und ungefähre Dauer. Wir vermitteln passende Künstler:innen und melden uns mit Vorschlag und Konditionen."
+      data-contact-project-type="Viola Musik"
+      data-contact-button-label="Musikanfrage senden"
+      data-contact-message-placeholder="Anlass, Ort, Datum, Dauer und Musikwunsch - ein paar Stichpunkte reichen."
       data-header-theme="dark"
       aria-label="Anfrage"
     />

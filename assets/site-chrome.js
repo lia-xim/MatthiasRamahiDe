@@ -714,6 +714,9 @@
         const lead = slot.getAttribute('data-contact-lead') ||
           'Beschreibe kurz dein Projekt: worum es geht, wo es stattfindet, welche Wirkung die Bilder tragen sollen und in welchem Rahmen sie genutzt werden. Wir klären Location, Licht und Ablauf gemeinsam vor dem ersten Klick.';
         const endpoint = slot.getAttribute('data-contact-endpoint') || '/api/contact';
+        const projectTypeDefault = slot.getAttribute('data-contact-project-type') || '';
+        const submitLabel = slot.getAttribute('data-contact-button-label') || 'Projekt anfragen ->';
+        const messagePlaceholder = slot.getAttribute('data-contact-message-placeholder') || 'Worum geht es? Ein paar Stichpunkte reichen - optional.';
         const uid = 'mrc-' + (slotCounter++);
 
         if (!slot.id) slot.id = 'anfrage';
@@ -737,8 +740,8 @@
                 '<div class="mr-contact__field"><label for="' + uid + '-name">Name <span>Pflicht</span></label><input id="' + uid + '-name" name="name" autocomplete="name" required></div>' +
                 '<div class="mr-contact__field"><label for="' + uid + '-contact">E-Mail <span>Pflicht</span></label><input id="' + uid + '-contact" name="contact" type="email" autocomplete="email" inputmode="email" required></div>' +
               '</div>' +
-              '<div class="mr-contact__field"><label for="' + uid + '-type">Leistung <span>Optional</span></label><select id="' + uid + '-type" name="projectType"><option value="">Noch offen</option><option>Automobil-Fotografie</option><option>Sportwagen-Fotografie</option><option>Oldtimer-Fotografie</option><option>Motorrad-Fotografie</option><option>Portrait-Fotografie</option><option>Landschaft / Fine Art Print</option><option>Videografie</option><option>Webdesign / SEO</option><option>Werbetechnik / Druck</option><option>Sonstiges</option></select></div>' +
-              '<div class="mr-contact__field"><label for="' + uid + '-msg">Projekt kurz beschreiben <span>Optional</span></label><textarea id="' + uid + '-msg" name="message" placeholder="Worum geht es? Ein paar Stichpunkte reichen — optional."></textarea></div>' +
+              '<div class="mr-contact__field"><label for="' + uid + '-type">Leistung <span>Optional</span></label><select id="' + uid + '-type" name="projectType"><option value="">Noch offen</option><option>Viola Musik</option><option>Musik für Hochzeit</option><option>Trauermusik</option><option>Geburtstagsmusik</option><option>Taufmusik</option><option>Konzerte / Events</option><option>Firmenevent Musik</option><option>Bratschen- / Geigenunterricht</option><option>Automobil-Fotografie</option><option>Sportwagen-Fotografie</option><option>Oldtimer-Fotografie</option><option>Motorrad-Fotografie</option><option>Portrait-Fotografie</option><option>Landschaft / Fine Art Print</option><option>Videografie</option><option>Webdesign / SEO</option><option>Werbetechnik / Druck</option><option>Sonstiges</option></select></div>' +
+              '<div class="mr-contact__field"><label for="' + uid + '-msg">Anfrage kurz beschreiben <span>Optional</span></label><textarea id="' + uid + '-msg" name="message" placeholder="' + messagePlaceholder + '"></textarea></div>' +
               '<details class="mr-contact__details">' +
                 '<summary>Projektangaben ergaenzen <span>Optional</span></summary>' +
                 '<div class="mr-contact__row">' +
@@ -755,7 +758,7 @@
                 '<span>Ich willige ein, dass meine angegebenen Daten zur Bearbeitung der Anfrage verarbeitet werden. Hinweise dazu in der <a href="/datenschutz.html" target="_blank" rel="noopener noreferrer">Datenschutzerklaerung</a>. <em>Pflicht</em></span>' +
               '</label>' +
               '<div class="mr-contact__actions">' +
-                '<button class="mr-contact__submit" type="submit">Projekt anfragen -></button>' +
+                '<button class="mr-contact__submit" type="submit">' + submitLabel + '</button>' +
                 '<p class="mr-contact__status" role="status" aria-live="polite"></p>' +
               '</div>' +
             '</form>' +
@@ -764,6 +767,8 @@
         const form = slot.querySelector('form.mr-contact__form');
         const submit = slot.querySelector('.mr-contact__submit');
         const status = slot.querySelector('.mr-contact__status');
+        const projectTypeSelect = form && form.elements['projectType'];
+        if (projectTypeDefault && projectTypeSelect) projectTypeSelect.value = projectTypeDefault;
         let formStarted = false;
 
         function setStatus(text, mode) {
@@ -928,8 +933,22 @@
         hydrateContactSlots();
       }
 
-      if (location.hash === '#anfrage') {
+      function scrollToRequestSlot() {
+        const target = document.getElementById('anfrage') || slots[0];
+        if (!target) return;
+        window.requestAnimationFrame(function () {
+          target.scrollIntoView({ block: 'start' });
+        });
+      }
+
+      function handleRequestHash() {
+        if (location.hash !== '#anfrage') return;
         hydrateContactSlotsOnce();
+        scrollToRequestSlot();
+      }
+
+      if (location.hash === '#anfrage') {
+        handleRequestHash();
       } else if ('IntersectionObserver' in window) {
         const observer = new IntersectionObserver(function (entries) {
           if (!entries.some(function (entry) { return entry.isIntersecting; })) return;
@@ -947,6 +966,8 @@
       } else {
         window.setTimeout(hydrateContactSlotsOnce, 1200);
       }
+
+      window.addEventListener('hashchange', handleRequestHash);
     })();
   });
 })();
