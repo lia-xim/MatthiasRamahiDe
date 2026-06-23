@@ -3,7 +3,6 @@
 .env
 .env.*
 !.env.example
-.npmrc
 .netrc
 *.pem
 *.key
