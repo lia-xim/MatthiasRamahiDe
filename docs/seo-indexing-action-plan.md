@@ -80,7 +80,9 @@ Stand: 2026-06-30
 - Live-Gruppen: `Nicht gefunden (404)` = 124 offene 404 und 5 Redirects; `Gecrawlt - zurzeit nicht indexiert` = 209 offene 404 und 11 Redirects; `Gefunden - zurzeit nicht indexiert` = 172 indexierbare 200er.
 - Live-Recheck am 2026-06-30: unveraendert rot. `corepack pnpm seo:audit:gsc-exports -- --origin https://matthiasramahi.de ... --strict` ergibt weiterhin 333 offene 404, 16 Redirects zu indexierbaren Zielseiten und 172 indexierbare 200er.
 - Live-Recheck per Shortcut am 2026-06-30: `corepack pnpm seo:audit:sitemap-live` erfolgreich mit 251 indexierbaren Sitemap-URLs; `corepack pnpm seo:audit:gsc-live` schlaegt erwartbar fehl mit 333 offenen 404.
-- Schlussfolgerung: Die normale Sitemap ist live technisch sauber, aber die Redirect-/Gone-Fixes fuer alte GSC-URLs sind noch nicht auf der Live-Domain aktiv. Nach Deployment muss der Live-GSC-Export-Abgleich erneut gruen laufen.
+- Post-Deployment-Recheck am 2026-06-30: `corepack pnpm seo:audit:gsc-live` erfolgreich. 521 URL-Eintraege, 206 Redirects zu indexierbaren Zielseiten, 143 Gone, 172 indexierbare 200er-Seiten, 0 offene Problemfaelle.
+- Post-Deployment-Recheck am 2026-06-30: `corepack pnpm seo:audit:sitemap-live` erfolgreich. 251 normale Sitemap-URLs, 251 indexierbare 200er, 0 technische Problemfaelle, 0 doppelte Canonicals, 0 doppelte Titles.
+- Schlussfolgerung: Die normale Sitemap und die aus GSC exportierten Problem-URLs sind live technisch sauber. Die naechste Bewegung ist jetzt die Validierung in der Google Search Console.
 
 ## Wiederholbare Audit-Commands
 
