@@ -171,7 +171,7 @@ const journalCards = cmsJournalCards.length ? cmsJournalCards : fallbackJournalC
   current="home"
   doc={doc}
   ctaHref="#anfrage"
-  preloadImages={[{ href: firstHeroSlide.image, crossorigin: 'anonymous' }]}
+  preloadImages={[{ href: firstHeroSlide.image, fetchpriority: 'high' }]}
   noIndex={Boolean(preview)}
   liveCms
 >

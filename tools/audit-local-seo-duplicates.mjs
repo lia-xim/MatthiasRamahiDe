@@ -7,6 +7,7 @@ const srcDir = path.join(root, 'apps/web/src/lib')
 const distDir = path.join(root, 'apps/web/dist/client')
 const reportPath = path.join(root, 'docs/seo-local-seiten-duplicate-audit.md')
 const siteOrigin = 'https://matthiasramahi.de'
+const auditOrigin = (process.env.LOCAL_SEO_AUDIT_ORIGIN || '').replace(/\/+$/, '')
 
 const cityLabels = {
   'bergisch-gladbach': 'Bergisch Gladbach',
@@ -121,6 +122,10 @@ const jaccard = (a, b) => {
   return intersection / (a.size + b.size - intersection)
 }
 
+const wordCountFor = (text) => normalize(text).split(' ').filter(Boolean).length
+
+const hasStrongContentDepth = ({ sectionCount = 0, wordCount = 0 }) => sectionCount >= 6 && wordCount >= 650
+
 const firstMatch = (html, re) => {
   const match = html.match(re)
   return match ? stripHtml(match[1] || match[0]) : ''
@@ -149,6 +154,28 @@ const parseSections = (html) => {
   return sections
 }
 
+const readPageHtml = async (file) => {
+  if (auditOrigin) {
+    const url = `${auditOrigin}/${file}`
+    try {
+      const response = await fetch(url, { redirect: 'manual' })
+      if (!response.ok) {
+        return { html: '', missing: true, status: response.status }
+      }
+      return { html: await response.text(), missing: false, status: response.status }
+    } catch (error) {
+      return { html: '', missing: true, status: `fetch-error: ${error.message}` }
+    }
+  }
+
+  const htmlPath = path.join(distDir, file, 'index.html')
+  try {
+    return { html: await readFile(htmlPath, 'utf8'), missing: false, status: 'file' }
+  } catch {
+    return { html: '', missing: true, status: 'missing-file' }
+  }
+}
+
 const classifyScope = (slug, cityTokens, standaloneFiles) => {
   const city = cityTokens.find((token) => slug.endsWith(`-${token}`) || slug.includes(`-${token}-`))
   if (city) return { city, label: cityLabels[city] || city, kind: 'lokal' }
@@ -161,9 +188,10 @@ const familyForPrefix = (prefix, families) => families.find((entry) => entry.pre
 const prefixForSlug = (slug, prefixes) =>
   [...prefixes].sort((a, b) => b.length - a.length).find((prefix) => slug === prefix || slug.startsWith(`${prefix}-`)) || ''
 
-const riskFor = ({ prefix, scope, family, titleUnique, canonicalOk, h1Unique, sectionSimilarity, sectionPattern }) => {
+const riskFor = ({ prefix, scope, family, titleUnique, canonicalOk, h1Unique, sectionCount, sectionSimilarity, sectionPattern, wordCount }) => {
   if (!canonicalOk || !titleUnique) return 'hoch'
   if (sectionRichPrefixes.has(prefix)) return h1Unique ? 'niedrig' : 'mittel'
+  if (hasStrongContentDepth({ sectionCount, wordCount })) return h1Unique ? 'niedrig' : 'mittel'
   if (scope.kind === 'lokal' && ['automobil-fotografie', 'sportwagen-fotografie', 'oldtimer-fotografie', 'motorrad-fotografie', 'portraitfotografie', 'landschaftsfotografie'].includes(prefix)) {
     return priorityCities.has(scope.city) ? 'mittel' : 'mittel-niedrig'
   }
@@ -173,8 +201,9 @@ const riskFor = ({ prefix, scope, family, titleUnique, canonicalOk, h1Unique, se
   return 'mittel-hoch'
 }
 
-const statusTextFor = ({ prefix, scope, family, sectionSimilarity }) => {
+const statusTextFor = ({ prefix, scope, family, sectionCount, sectionSimilarity, wordCount }) => {
   if (sectionRichPrefixes.has(prefix)) return 'eigene Sektionstexte'
+  if (hasStrongContentDepth({ sectionCount, wordCount })) return 'ausgebaute Mittel- und FAQ-Sektionen'
   if (scope.kind === 'lokal' && ['automobil-fotografie', 'sportwagen-fotografie', 'oldtimer-fotografie', 'motorrad-fotografie', 'portraitfotografie', 'landschaftsfotografie'].includes(prefix)) {
     return 'gleiches Layout, lokale Mitteltexte'
   }
@@ -231,12 +260,9 @@ const main = async () => {
   const pages = []
 
   for (const file of uniqueFiles) {
-    const htmlPath = path.join(distDir, file, 'index.html')
-    let html = ''
-    try {
-      html = await readFile(htmlPath, 'utf8')
-    } catch {
-      pages.push({ file, missing: true })
+    const { html, missing, status } = await readPageHtml(file)
+    if (missing) {
+      pages.push({ file, missing: true, fetchStatus: status })
       continue
     }
 
@@ -263,7 +289,18 @@ const main = async () => {
       shingles: shingles(mainText),
       title: firstMatch(html, /<title>([\s\S]*?)<\/title>/i),
       url: `${siteOrigin}/${file}`,
+      wordCount: wordCountFor(mainText),
     })
+  }
+
+  const missingPages = pages.filter((page) => page.missing).length
+  if (missingPages > Math.floor(uniqueFiles.length * 0.2)) {
+    const sourceHint = auditOrigin
+      ? `from ${auditOrigin}`
+      : `from prerendered HTML in ${distDir}`
+    throw new Error(
+      `Local SEO duplicate audit could not read enough pages ${sourceHint}. Missing ${missingPages}/${uniqueFiles.length} pages; report was not updated.`,
+    )
   }
 
   const titleCounts = new Map()
@@ -359,9 +396,11 @@ const main = async () => {
   const summaryLines = [
     '# Local-SEO Duplicate- und Kannibalisierungs-Audit',
     '',
-    'Stand: 2026-05-31',
+    'Stand: 2026-06-30',
     '',
     'Ziel: Alle lokalen Seiten, Keyword-Zusatzseiten und bereits vorhandenen Local-SEO-Varianten werden darauf geprueft, ob sie nur URL-/Ortsvarianten sind oder ob Title, Canonical, H1, Sektionen und Textsignale klar genug auseinanderlaufen.',
+    '',
+    `Quelle: ${auditOrigin ? `gerenderte SSR-Seiten von \`${auditOrigin}\`` : `prerendered HTML aus \`${distDir}\``}.`,
     '',
     '## Kurzbefund',
     '',
@@ -385,7 +424,7 @@ const main = async () => {
     '',
     '| Seite | Familie | Scope | Status | To-do |',
     '|---|---|---|---|---|',
-    ...highRows.map((row) => `| \`${row.file}\` | ${row.family} | ${row.scope.label || row.scope.kind} | ${row.statusText} | ${row.todo} |`),
+    ...highRows.map((row) => `| \`${row.file}\` | ${row.family} | ${row.scope?.label || row.scope?.kind || 'unbekannt'} | ${row.statusText} | ${row.todo} |`),
     '',
     ...familySections,
   ]

@@ -17,6 +17,20 @@
     var a = document.getElementById('pdFrameA');
     var b = document.getElementById('pdFrameB');
     if(!a || !b) return;
+    var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    var heroModeOverride = (function(){
+      try {
+        var params = new URLSearchParams(location.search);
+        var mode = params.get('automobilHero') || params.get('hero') || localStorage.getItem('mrAutomobilHeroMode') || localStorage.getItem('mrHeroMode') || '';
+        if(/^(static|lite)$/i.test(mode)) return 'static';
+        if(/^(animated|shader|webgl)$/i.test(mode)) return 'animated';
+      } catch(_) {}
+      return '';
+    })();
+    var forceAnimated = heroModeOverride === 'animated';
+    var staticHero = false;
+    var pageVisible = !document.hidden;
+    var heroInView = true;
 
     var desktopPool = [
       'assets/optimized/mpjpgo2b-dsc3032-generase-1-1920.webp',
@@ -31,10 +45,76 @@
       'assets/optimized/mpjpgu5f-dsc3892-1280.webp'
     ];
     var POOL = matchMedia('(max-width:900px)').matches ? mobilePool : desktopPool;
+    var idx = 0;
+    var active = a;
+    var standby = b;
 
     function setFrameImage(frame, src){
       var inner = frame.querySelector('.pd-frame-inner');
-      if(inner) inner.style.backgroundImage = "url('" + src + "')";
+      if(!inner) return;
+      inner.style.backgroundImage = src ? "url('" + src + "')" : "";
+    }
+    function matches(query){
+      return window.matchMedia && window.matchMedia(query).matches;
+    }
+    function webglRenderer(){
+      var canvas;
+      var gl;
+      try {
+        canvas = document.createElement('canvas');
+        gl = canvas.getContext('webgl', { powerPreference: 'low-power' }) || canvas.getContext('experimental-webgl');
+        if(!gl) return '';
+        var info = gl.getExtension('WEBGL_debug_renderer_info');
+        if(!info) return '';
+        return String(gl.getParameter(info.UNMASKED_RENDERER_WEBGL) || '');
+      } catch(_) {
+        return '';
+      } finally {
+        try { if(gl) gl.getExtension('WEBGL_lose_context').loseContext(); } catch(_) {}
+      }
+    }
+    function lowPowerGpuReason(renderer){
+      if(forceAnimated) return '';
+      if(/swiftshader|software rasterizer|llvmpipe/i.test(renderer)) return 'software-renderer';
+      if(/\bintel\b|iris|uhd graphics|hd graphics/i.test(renderer) && !/arc|apple|radeon|nvidia|geforce/i.test(renderer)){
+        return 'integrated-intel-gpu';
+      }
+      return '';
+    }
+    function initialStaticHeroReason(){
+      if(heroModeOverride === 'static') return 'manual';
+      if(forceAnimated) return '';
+      if(reduce) return 'reduced-motion';
+      if(matches('(hover: none), (pointer: coarse), (max-width: 900px)')) return 'touch-or-small';
+      if(connection && connection.saveData) return 'save-data';
+      if(/^(slow-)?2g$/i.test((connection && connection.effectiveType) || '')) return 'slow-network';
+      var memory = Number(navigator.deviceMemory || 0);
+      var cores = Number(navigator.hardwareConcurrency || 0);
+      if(memory && memory <= 4) return 'low-memory';
+      if(cores && cores <= 4) return 'low-core-count';
+      return '';
+    }
+    function canAnimateHero(){
+      return !staticHero && !reduce && pageVisible && heroInView;
+    }
+    function updateHeroPauseClass(){
+      if(staticHero) return;
+      hero.classList.toggle('is-perf-paused', !canAnimateHero());
+    }
+    function useStaticHero(reason){
+      staticHero = true;
+      hero.classList.remove('is-perf-paused');
+      hero.classList.add('is-static-hero');
+      hero.dataset.heroRenderer = 'static';
+      hero.dataset.heroStaticReason = reason || 'static';
+      setFrameImage(a, POOL[idx] || POOL[0]);
+      a.style.zIndex = 2;
+      b.style.zIndex = 1;
+      a.classList.add('is-in');
+      b.classList.remove('is-in');
+      setFrameImage(b, '');
+      active = a;
+      standby = b;
     }
     function warmPool(){
       if(warmPool.done) return;
@@ -62,20 +142,43 @@
       a.classList.add('is-in');
     }
 
-    if(reduce){ return; } // single static frame is enough for reduced-motion
+    var staticReason = initialStaticHeroReason();
+    if(!staticReason){
+      var renderer = webglRenderer();
+      if(renderer) hero.dataset.heroGpu = renderer.slice(0, 96);
+      staticReason = lowPowerGpuReason(renderer);
+    }
+    if(staticReason){
+      useStaticHero(staticReason);
+      return;
+    }
+    hero.dataset.heroRenderer = 'animated';
+
+    if('IntersectionObserver' in window){
+      var heroObserver = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.target === hero){
+            heroInView = entry.isIntersecting;
+            updateHeroPauseClass();
+          }
+        });
+      }, { threshold: 0.01 });
+      heroObserver.observe(hero);
+    }
+    document.addEventListener('visibilitychange', function(){
+      pageVisible = !document.hidden;
+      updateHeroPauseClass();
+    });
 
     // Keep the first render quiet; the next frames are only needed for the later
     // develop cycle, so warming them can wait until after LCP.
     setTimeout(scheduleWarmPool, 6200);
 
-    var idx = 0;             // index of currently-developed frame's image
-    var active = a;          // currently visible / developing frame
-    var standby = b;         // about to develop next
-
     // cycle interval: develop ~5.4s, hold ~7s -> swap every ~12400ms
     var CYCLE_MS = 12400;
 
     function tick(){
+      if(!canAnimateHero()) return;
       idx = (idx + 1) % POOL.length;
       // swap roles
       var tmp = active; active = standby; standby = tmp;
@@ -105,21 +208,49 @@
 
     // gentle "re-develop pulse" — every ~16-22s a tiny secondary develop pass on the active frame
     function rePulse(){
-      if(reduce) return;
+      if(staticHero || reduce) return;
       var delay = 16000 + Math.random()*6000;
       setTimeout(function(){
+        if(!canAnimateHero()){ rePulse(); return; }
         // re-trigger develop on active frame (subtle: filter sweep, no full re-animation)
         var el = active;
         if(!el) { rePulse(); return; }
-        el.animate([
-          { filter: 'brightness(1) saturate(1) sepia(0) contrast(1)' },
-          { filter: 'brightness(1.18) saturate(.55) sepia(.18) contrast(.92)' },
-          { filter: 'brightness(1) saturate(1) sepia(0) contrast(1)' }
-        ], { duration: 1400, easing: 'cubic-bezier(.4,0,.2,1)' });
+        if(el.animate){
+          el.animate([
+            { filter: 'brightness(1) saturate(1) sepia(0) contrast(1)' },
+            { filter: 'brightness(1.18) saturate(.55) sepia(.18) contrast(.92)' },
+            { filter: 'brightness(1) saturate(1) sepia(0) contrast(1)' }
+          ], { duration: 1400, easing: 'cubic-bezier(.4,0,.2,1)' });
+        }
         rePulse();
       }, delay);
     }
     rePulse();
+
+    (function watchFrameBudget(){
+      if(forceAnimated || !('requestAnimationFrame' in window) || !performance || !performance.now) return;
+      var last = performance.now();
+      var samples = 0;
+      var slowScore = 0;
+      function sample(now){
+        if(staticHero) return;
+        if(!canAnimateHero()){
+          last = now;
+          requestAnimationFrame(sample);
+          return;
+        }
+        var delta = now - last;
+        last = now;
+        samples += 1;
+        slowScore = delta > 55 ? slowScore + 1 : Math.max(0, slowScore - 0.25);
+        if(samples > 90 && slowScore >= 10){
+          useStaticHero('slow-frame-budget');
+          return;
+        }
+        if(samples < 360) requestAnimationFrame(sample);
+      }
+      requestAnimationFrame(sample);
+    })();
 
   })();
 

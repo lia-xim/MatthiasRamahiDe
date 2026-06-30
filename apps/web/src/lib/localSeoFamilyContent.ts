@@ -1495,6 +1495,241 @@ const keywordFocusCopies: Record<string, KeywordFocusCopy> = {
     relatedLead:
       'Pressefoto ist die redaktionell ausgerichtete Seite. Fuer reine Profilbilder passt Business Portrait oder Headshot, fuer laufende Marke Personal Branding.',
   },
+  fahrzeugfotografie: {
+    heroLead:
+      'Fahrzeugfotografie ist der Sortierpunkt fuer Auto, Sportwagen, Oldtimer, Motorrad, Haendlerbestand und Verkaufsbilder. Die Seite fuehrt nicht in eine Einheitsleistung, sondern in den passenden Bildansatz nach Fahrzeugart, Zweck und Ausgabeformat.',
+    metaDescription:
+      'Fahrzeugfotografie fuer Auto, Sportwagen, Oldtimer, Motorrad, Haendlerbestand und Verkauf. Saubere Bildserien nach Fahrzeugart und Nutzung.',
+    contactLead:
+      'Schreibe kurz, welches Fahrzeug oder welcher Bestand fotografiert werden soll, ob es um Verkauf, Sammlung, Marke, Portal oder Editorial geht und welche Ausgabeformate gebraucht werden.',
+    pullKicker: 'Fahrzeug-Cluster',
+    pullHeadline: 'Erst Fahrzeugart klaeren,',
+    pullEmphasis: 'dann fotografieren.',
+    statementBody: [
+      'Fahrzeugfotografie ist bewusst der neutrale Einstieg. Ein Motorrad braucht andere Blickachsen als ein Oldtimer, ein Haendlerbestand andere Wiederholbarkeit als ein privates Sammlerfahrzeug.',
+      'Deshalb fuehrt diese Seite frueh in die passenden Unterseiten: Automobil, Sportwagen, Oldtimer, Motorrad, Autohaus-Fotografie und Autoverkauf-Fotos. So bleibt der Suchintent sauber, statt alles unter einem generischen Angebot zu stapeln.',
+    ],
+    sectionHeadline: 'Auto, Bike, Bestand,',
+    sectionEmphasis: 'klar getrennt.',
+    sectionLead:
+      'Die Module beantworten nicht nur, was fotografiert wird, sondern warum der Bildansatz je nach Fahrzeugtyp und Nutzung unterschiedlich sein muss.',
+    featureTitle: 'Keine Sammelseite ohne Richtung.',
+    featureBody:
+      'Der erste Schritt ist die Einordnung: einzelnes Fahrzeug, laufender Bestand, Verkauf, Sammlung, Marke oder redaktionelle Strecke. Daraus ergeben sich Licht, Perspektiven, Bildliste und Lieferformat.',
+    galleryHeadline: 'Fahrzeugarten als Bildlogik.',
+    galleryLead:
+      'Die Beispiele stehen fuer unterschiedliche Aufgaben: Lack und Linie, Innenraum, Detail, Zustand, Bewegung und Material.',
+    audienceHeadline: 'Fahrzeugfotografie fuer klare Faelle.',
+    audienceLead:
+      'Wer noch nicht weiss, welche Spezialseite passt, findet hier die richtige Richtung ohne Umweg ueber ein generisches Portfolio.',
+    cards: [
+      { label: 'Auto', title: 'Automobil', text: 'Fahrzeugserien fuer Privat, Marke, Verkauf und Showroom mit Exterieur, Interieur und Details.' },
+      { label: 'Sport', title: 'Sportwagen', text: 'Praezise Bildsprache fuer Performance, Linien, Innenraum und hochwertige Verkaufs- oder Sammlungsbilder.' },
+      { label: 'Historisch', title: 'Oldtimer', text: 'Ruhige Dokumentation von Herkunft, Patina, Chrom, Leder und Zustand fuer Sammlung, Auktion oder Verkauf.' },
+      { label: 'Bike', title: 'Motorrad', text: 'Silhouette, Mechanik, Fahrerbezug und Custom-Details als eigene Bildwelt statt Auto-Logik.' },
+      { label: 'Bestand', title: 'Haendler & Verkauf', text: 'Wiederholbare Bildsaetze fuer Portal, Inserat, Flotte oder Autohaus mit klarer Dateistruktur.' },
+    ],
+    processHeadline: 'Ablauf fuer Fahrzeugfotografie.',
+    processLead:
+      'Der Ablauf beginnt mit der Einordnung des Fahrzeugs und endet mit Dateien, die zum geplanten Kanal passen.',
+    processSteps: [
+      { title: 'Fahrzeugart klaeren', text: 'Auto, Sportwagen, Oldtimer, Motorrad oder Bestand werden getrennt eingeordnet.' },
+      { title: 'Nutzung bestimmen', text: 'Verkauf, Sammlung, Marke, Editorial oder Portal entscheiden ueber Umfang und Stil.' },
+      { title: 'Bildliste bauen', text: 'Exterieur, Innenraum, Details, Zustand und Spezialmotive werden vorab festgelegt.' },
+      { title: 'Location planen', text: 'Showroom, Aussenort, Industrie, Rheinraum oder Studio werden nach Fahrzeug und Licht gewaehlt.' },
+      { title: 'Formate liefern', text: 'Web, Portal, Social, Print oder Druck bekommen passende Aufloesungen und Beschnitte.' },
+    ],
+    relatedLead:
+      'Fahrzeugfotografie ist der Verteiler im Fahrzeug-Cluster. Die Seite soll Nutzer in Automobil, Sportwagen, Oldtimer, Motorrad, Autohaus-Fotografie oder Autoverkauf-Fotos weiterfuehren.',
+  },
+  'autohaus-fotografie': {
+    heroLead:
+      'Autohaus Fotografie ist auf Bestand, Showroom und Fahrzeugportale ausgelegt: gleiche Perspektiven, gleicher Lichtstandard, klare Dateistruktur und schnelle Ablaufe fuer viele Fahrzeuge.',
+    metaDescription:
+      'Autohaus Fotografie fuer Bestand, Showroom und Fahrzeugportale. Konsistente Bildsaetze fuer Haendler, Gebrauchtwagenzentren und Flotten.',
+    contactLead:
+      'Schreibe kurz, wie viele Fahrzeuge fotografiert werden sollen, wo der Bestand steht, welche Portal- oder Websiteformate gebraucht werden und ob ein wiederkehrender Ablauf geplant ist.',
+    pullKicker: 'Haendlerbestand',
+    pullHeadline: 'Viele Fahrzeuge,',
+    pullEmphasis: 'eine Bildlogik.',
+    statementBody: [
+      'Autohaus Fotografie ist kein einzelnes Auto-Shooting. Entscheidend ist, dass zehn, zwanzig oder fuenfzig Fahrzeuge visuell zusammenpassen und trotzdem jedes Fahrzeug sauber lesbar bleibt.',
+      'Dafuer werden Perspektivenfolge, Stellflaeche, Lichtfenster und Dateibenennung vorab definiert. Das Ergebnis ist ein Bestand, der auf Website, mobile.de, AutoScout24 und im Showroom konsistent wirkt.',
+    ],
+    sectionHeadline: 'Bestand, Showroom,',
+    sectionEmphasis: 'Portal.',
+    sectionLead:
+      'Diese Seite trennt Haendlerbedarf klar von privaten Fahrzeugshootings: Wiederholbarkeit und Geschwindigkeit sind Teil der Leistung.',
+    featureTitle: 'Serienproduktion mit fotografischem Standard.',
+    featureBody:
+      'Aussenansichten, Innenraum, Details und Zustandsbilder folgen einer festen Reihenfolge. So bleibt der Ablauf vor Ort schlank und das Ergebnis vergleichbar.',
+    galleryHeadline: 'Autohaus-Fotografie als Bestandssystem.',
+    galleryLead:
+      'Die Bildtypen zeigen, wie ein Haendlerbestand strukturiert werden kann: Front, Seite, Heck, Innenraum, Ausstattung und Detail.',
+    audienceHeadline: 'Autohaus Fotografie fuer wiederkehrenden Bedarf.',
+    audienceLead:
+      'Geeignet fuer Betriebe, die nicht jedes Fahrzeug neu erfinden, sondern ihren Bestand visuell sauber fuehren wollen.',
+    cards: [
+      { label: 'Bestand', title: 'Autohäuser', text: 'Laufende Bestandsfahrzeuge mit gleicher Perspektive, Lichtstimmung und portalfertiger Ausgabe.' },
+      { label: 'Gebraucht', title: 'Gebrauchtwagenzentren', text: 'Viele Fahrzeuge in kurzer Zeit, mit klarer Reihenfolge und einheitlicher Dateibenennung.' },
+      { label: 'Showroom', title: 'Ausstellung', text: 'Fahrzeuge im Raum, Showroom-Licht und Architektur als Teil der Verkaufswirkung.' },
+      { label: 'Flotte', title: 'Leasing & Ruecklaeufer', text: 'Zustandsnahe Dokumentation fuer Weitervermarktung, Uebergabe und interne Systeme.' },
+      { label: 'Marketing', title: 'Aktionen & Kampagnen', text: 'Highlight-Fahrzeuge als separate Motive fuer Website, Social, Print und saisonale Angebote.' },
+    ],
+    processHeadline: 'Ablauf fuer Autohaus Fotografie.',
+    processLead:
+      'Je klarer die Fahrzeugliste vorbereitet ist, desto konsistenter und schneller entsteht der fertige Bestand.',
+    processSteps: [
+      { title: 'Bestandsliste', text: 'Fahrzeuge, Prioritaeten, Kennzeichen oder interne Codes werden vorab sortiert.' },
+      { title: 'Bildschema', text: 'Exterieur, Interieur, Details und Zustandsbilder bekommen eine feste Reihenfolge.' },
+      { title: 'Stellflaeche', text: 'Showroom, Hof oder neutraler Ort werden nach Licht, Hintergrund und Ablauf gewaehlt.' },
+      { title: 'Produktion', text: 'Die Fahrzeuge laufen seriell durch denselben Bildstandard.' },
+      { title: 'Ausgabe', text: 'Dateien werden web- und portalfertig geliefert, auf Wunsch benannt nach Bestandscode.' },
+    ],
+    relatedLead:
+      'Autohaus Fotografie ist die Haendlerseite im Automobil-Cluster. Private Verkaufsbilder liegen bei Autoverkauf-Fotos, breitere Markenarbeit bei Automotive Fotografie.',
+  },
+  'autoverkauf-fotos': {
+    heroLead:
+      'Autoverkauf Fotos sind auf Vertrauen ausgelegt: Zustand, Ausstattung, Innenraum, Lack, Felgen und relevante Details muessen ehrlich lesbar sein, damit ein Inserat weniger Rueckfragen und bessere Anfragen bekommt.',
+    metaDescription:
+      'Autoverkauf Fotos fuer Inserate, Auktionen und Fahrzeugportale. Ehrliche Bildsaetze fuer Zustand, Ausstattung, Innenraum und Details.',
+    contactLead:
+      'Schreibe kurz, welches Fahrzeug verkauft werden soll, auf welchem Portal oder in welchem Auktionskontext es erscheint und welche Details besonders wichtig sind.',
+    pullKicker: 'Verkaufsbilder',
+    pullHeadline: 'Zeigen, was Kaeufer',
+    pullEmphasis: 'wissen wollen.',
+    statementBody: [
+      'Gute Autoverkauf Fotos sind nicht nur schoen. Sie beantworten Fragen, bevor sie gestellt werden: Zustand, Ausstattung, Pflege, Lack, Innenraum, Reifen, Felgen und besondere Merkmale.',
+      'Die Bildserie bleibt deshalb naeher am Inserat als an der Kampagne. Sie soll Vertrauen schaffen, nicht ein Fahrzeug in eine fremde Luxuswelt verschieben.',
+    ],
+    sectionHeadline: 'Inserat, Auktion,',
+    sectionEmphasis: 'Vertrauen.',
+    sectionLead:
+      'Diese Seite bedient den klaren Verkaufsintent und grenzt sich von Autohaus-Fotografie und privaten Erinnerungs-Shootings ab.',
+    featureTitle: 'Ehrlich statt ueberinszeniert.',
+    featureBody:
+      'Ein Verkaufsbild muss Zustand und Wertigkeit zeigen. Licht, Winkel und Detailauswahl werden so gewaehlt, dass Interessenten das Fahrzeug realistisch einschätzen koennen.',
+    galleryHeadline: 'Bildliste fuer den Verkauf.',
+    galleryLead:
+      'Ein guter Bildsatz umfasst Totale, Seitenansichten, Innenraum, Ausstattung, Kilometerstand, Felgen, Lackdetails und relevante Besonderheiten.',
+    audienceHeadline: 'Autoverkauf Fotos fuer konkrete Verkaufsfaelle.',
+    audienceLead:
+      'Die Seite richtet sich an private Verkaeufer, kleine Haendler und Sammler, die ein Fahrzeug ernsthaft und nachvollziehbar anbieten wollen.',
+    cards: [
+      { label: 'Privat', title: 'Privatverkauf', text: 'Ein Fahrzeug wird als vollstaendiger, sauberer Bildsatz fuer Portal oder Kleinanzeige vorbereitet.' },
+      { label: 'Auktion', title: 'Auktionsfahrzeug', text: 'Zustand, Ausstattung und Details werden fuer Katalog, Plattform oder Expose nachvollziehbar gezeigt.' },
+      { label: 'Sammler', title: 'Oldtimer & Youngtimer', text: 'Patina, Originalteile, Innenraum und besondere Merkmale werden ohne Hochglanz-Verfaelschung dokumentiert.' },
+      { label: 'Flotte', title: 'Rueckgabe & Firmenwagen', text: 'Zustandsbilder helfen bei Uebergabe, Weiterverkauf und interner Dokumentation.' },
+      { label: 'Portal', title: 'mobile.de & AutoScout24', text: 'Beschnitte, Aufloesungen und Dateistruktur werden auf die Plattform vorbereitet.' },
+    ],
+    processHeadline: 'Ablauf fuer Autoverkauf Fotos.',
+    processLead:
+      'Der Ablauf ist kompakt und auf schnelle Nutzbarkeit ausgerichtet.',
+    processSteps: [
+      { title: 'Verkaufsziel klaeren', text: 'Portal, Auktion, Expose oder Direktverkauf bestimmen Bildanzahl und Detailtiefe.' },
+      { title: 'Fahrzeug vorbereiten', text: 'Innenraum, Lack und relevante Dokumentationspunkte werden vorab sortiert.' },
+      { title: 'Bildliste fotografieren', text: 'Exterieur, Innenraum, Details und Zustand entstehen nach klarer Reihenfolge.' },
+      { title: 'Bearbeiten', text: 'Die Bilder werden realistisch korrigiert, ohne Zustand oder Farbe zu verfremden.' },
+      { title: 'Insertbereit liefern', text: 'Die Dateien kommen in passenden Formaten fuer Portal, Web und Weitergabe.' },
+    ],
+    relatedLead:
+      'Autoverkauf Fotos ist die Verkaufsseite. Fuer regelmaessigen Haendlerbestand passt Autohaus Fotografie, fuer emotionale Serien Auto-Fotoshooting.',
+  },
+  landschaftsbilder: {
+    heroLead:
+      'Landschaftsbilder kaufen bedeutet: Motiv, Format, Material und Raumwirkung zusammen entscheiden. Die Seite fuehrt von der Bildauswahl bis zu Fine-Art-Papier, Alu-Dibond, Acrylglas, Edition und Lieferung.',
+    metaDescription:
+      'Landschaftsbilder kaufen als Fine-Art-Print, Wandbild oder Edition. Beratung zu Motiv, Format, Material, Raumwirkung und Lieferung.',
+    contactLead:
+      'Schreibe kurz, fuer welchen Raum das Landschaftsbild gedacht ist, welche Wandgroesse oder Atmosphaere passt und ob Papier, Dibond, Acrylglas oder Beratung offen ist.',
+    pullKicker: 'Bildkauf',
+    pullHeadline: 'Ein Motiv muss',
+    pullEmphasis: 'im Raum tragen.',
+    statementBody: [
+      'Ein Landschaftsbild wirkt nicht allein durch das Motiv. Groesse, Betrachtungsabstand, Wandfarbe, Raumlicht und Material entscheiden, ob ein Print ruhig, schwer, offen oder zu dominant wirkt.',
+      'Deshalb ist diese Seite als Kauf- und Beratungsseite formuliert: Motivauswahl, Format, Material, Edition, Produktion und Lieferung werden gemeinsam betrachtet.',
+    ],
+    sectionHeadline: 'Motiv, Format,',
+    sectionEmphasis: 'Material.',
+    sectionLead:
+      'Die Seite ist keine lokale Shooting-Seite, sondern ein Einstieg in den Kauf fertiger Landschaftsfotografie als Objekt.',
+    featureTitle: 'Vom Bildschirm an die Wand.',
+    featureBody:
+      'Vor dem Druck wird geklaert, wie gross das Bild wirken darf, welches Material zur Oberflaeche passt und ob ein einzelnes Motiv oder eine kleine Serie sinnvoller ist.',
+    galleryHeadline: 'Landschaftsbilder als Raumobjekte.',
+    galleryLead:
+      'Die Motive werden nicht nur nach Schoenheit, sondern nach Ruhe, Tonwert, Tiefe und Materialtauglichkeit ausgewaehlt.',
+    audienceHeadline: 'Landschaftsbilder kaufen fuer konkrete Raeume.',
+    audienceLead:
+      'Wer ein Bild fuer Wohnung, Praxis, Kanzlei, Hotel oder Geschenk sucht, bekommt hier eine klarere Entscheidungshilfe als in einem allgemeinen Portfolio.',
+    cards: [
+      { label: 'Privat', title: 'Wohnraum', text: 'Motiv und Format werden auf Wand, Licht, Abstand und vorhandene Einrichtung abgestimmt.' },
+      { label: 'Praxis', title: 'Praxis & Kanzlei', text: 'Ruhige Naturmotive als hochwertiger Gegenpol zu dichter Arbeitsumgebung.' },
+      { label: 'Hotel', title: 'Objekt & Serie', text: 'Mehrere Prints koennen als zusammenhaengende Ausstattung fuer Flur, Lobby oder Suite geplant werden.' },
+      { label: 'Geschenk', title: 'Edition', text: 'Ein signierter Print mit Motivwahl, Formatberatung und sauberer Ausfuehrung.' },
+      { label: 'Lizenz', title: 'Gewerbliche Nutzung', text: 'Bei Bedarf werden Motivlizenzen fuer Website, Broschuere oder Markenkommunikation geklaert.' },
+    ],
+    processHeadline: 'Ablauf beim Kauf eines Landschaftsbildes.',
+    processLead:
+      'Der Kauf folgt nicht dem Warenkorb-Prinzip, sondern einer kurzen Abstimmung zu Motiv, Raum und Material.',
+    processSteps: [
+      { title: 'Raum beschreiben', text: 'Wandgroesse, Licht, Nutzung und gewuenschte Stimmung werden eingeordnet.' },
+      { title: 'Motiv waehlen', text: 'Passende Landschaften werden nach Tonwert, Ruhe und Wirkung vorgeschlagen.' },
+      { title: 'Material entscheiden', text: 'Fine-Art-Papier, Dibond, Acrylglas oder Rahmung werden nach Raumwirkung gewaehlt.' },
+      { title: 'Produktion freigeben', text: 'Format, Auflage und Ausfuehrung werden vor dem Druck bestaetigt.' },
+      { title: 'Liefern', text: 'Das fertige Bild wird sicher verpackt und mit relevanten Angaben uebergeben.' },
+    ],
+    relatedLead:
+      'Landschaftsbilder kaufen ist die Kaufseite im Landschafts-Cluster. Fine-Art-Prints, Wandbilder und Naturfotografie-Prints vertiefen Material und Nutzung.',
+  },
+  'wandbilder-landschaftsfotografie': {
+    heroLead:
+      'Wandbilder Landschaftsfotografie sind fuer Raeume geplant: Format, Material, Licht, Betrachtungsabstand und Montage entscheiden mehr als ein einzelnes Vorschaubild.',
+    metaDescription:
+      'Wandbilder Landschaftsfotografie fuer Wohnraum, Praxis, Buero und Hotel. Materialberatung fuer Leinwand, Acrylglas, Alu-Dibond und Fine-Art-Print.',
+    contactLead:
+      'Schreibe kurz, welche Wand oder welcher Raum ausgestattet werden soll, ungefaehre Masse, Lichtverhaeltnisse und ob ein einzelnes Wandbild oder eine Serie geplant ist.',
+    pullKicker: 'Wandbild-Planung',
+    pullHeadline: 'Grossformat braucht',
+    pullEmphasis: 'Raumgefuehl.',
+    statementBody: [
+      'Ein Wandbild aus Landschaftsfotografie muss aus mehreren Metern Entfernung funktionieren und aus der Naehe sauber bleiben. Motivruhe, Kanten, Tonwerte und Material werden deshalb vor der Produktion zusammen entschieden.',
+      'Die Seite ist auf Raumwirkung ausgelegt: Wohnraum, Buero, Praxis, Hotel oder Showroom haben unterschiedliche Anforderungen an Groesse, Glanz, Gewicht und Montage.',
+    ],
+    sectionHeadline: 'Wand, Abstand,',
+    sectionEmphasis: 'Material.',
+    sectionLead:
+      'Diese Seite unterscheidet Wandbilder klar von kleineren Fine-Art-Prints und von reiner Bildauswahl.',
+    featureTitle: 'Nicht jedes Motiv gehoert gross an die Wand.',
+    featureBody:
+      'Grossformate brauchen ruhige Kompositionen, saubere Daten, passende Oberflaechen und eine Montage, die zum Raum passt.',
+    galleryHeadline: 'Wandbilder nach Raumwirkung.',
+    galleryLead:
+      'Die Bildauswahl zeigt Motive, die als grossformatige Flaechen funktionieren: Weite, Ruhe, Tiefe und klare Tonwerte.',
+    audienceHeadline: 'Wandbilder fuer Raeume mit Anspruch.',
+    audienceLead:
+      'Die Seite richtet sich an Menschen und Betriebe, die nicht Deko suchen, sondern ein Bildobjekt fuer eine konkrete Flaeche.',
+    cards: [
+      { label: 'Wohnung', title: 'Wohnraum', text: 'Ein Grossformat als ruhiger Mittelpunkt oder Gegenpol zu vorhandener Einrichtung.' },
+      { label: 'Praxis', title: 'Wartebereich', text: 'Naturmotive, die Ruhe schaffen, ohne beliebige Kalenderoptik zu erzeugen.' },
+      { label: 'Buero', title: 'Kanzlei & Agentur', text: 'Wandbilder fuer Empfang, Besprechungsraum oder Arbeitsbereich mit klarer Materialwirkung.' },
+      { label: 'Hotel', title: 'Objektserie', text: 'Mehrere Motive als zusammenhaengende Bildstrecke fuer Lobby, Flur und Zimmer.' },
+      { label: 'Montage', title: 'Ausfuehrung', text: 'Format, Traeger, Gewicht und Haengung werden vor Produktion mitgedacht.' },
+    ],
+    processHeadline: 'Ablauf fuer Landschafts-Wandbilder.',
+    processLead:
+      'Der Prozess beginnt beim Raum, nicht beim Format.',
+    processSteps: [
+      { title: 'Wand pruefen', text: 'Masse, Licht, Abstand und Umgebung werden kurz eingeordnet.' },
+      { title: 'Motiv vorschlagen', text: 'Auswahl nach Ruhe, Bildtiefe, Tonwert und gewuenschter Stimmung.' },
+      { title: 'Material waehlen', text: 'Leinwand, Fine-Art-Papier, Dibond oder Acrylglas werden passend zum Raum verglichen.' },
+      { title: 'Druck vorbereiten', text: 'Daten, Beschnitt und Proof werden fuer das gewaehlte Format kontrolliert.' },
+      { title: 'Lieferung planen', text: 'Verpackung, Montagehinweis und Uebergabe werden nach Format abgestimmt.' },
+    ],
+    relatedLead:
+      'Wandbilder Landschaftsfotografie vertieft die Raum- und Materialfrage. Landschaftsbilder kaufen bleibt der breitere Einstieg, Fine-Art-Prints erklaeren die Papierseite.',
+  },
 }
 
 const keywordFaqs: Record<string, Array<{ q: string; a: string }>> = {

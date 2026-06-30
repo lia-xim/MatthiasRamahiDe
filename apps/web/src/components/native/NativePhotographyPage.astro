@@ -122,6 +122,46 @@ const clusterParagraphs = clusterIntroCms.length
       'Die Übersicht ist der Einstiegspunkt. Von hier aus führen die sechs Bereiche auf eigene Hauptseiten — und von dort weiter in lokale Varianten, NRW- und Deutschland-Hubs sowie die jeweiligen Keyword-Seiten.',
       'Nutzer wählen nicht aus einem generischen Portfolio, sondern steigen direkt in Automobil, Sportwagen, Oldtimer, Motorrad, Portrait oder Landschaft ein. Jede Kategorie zeigt auf ihrer Hauptseite die zugehörigen Städte und Regionen.',
     ])
+const localHubGroups = [
+  {
+    title: 'Düsseldorf',
+    text: 'Die wichtigsten lokalen Einstiege für direkte Anfragen im Kerngebiet.',
+    links: [
+      ['Automobil', '/automobil-fotografie-duesseldorf.html'],
+      ['Sportwagen', '/sportwagen-fotografie-duesseldorf.html'],
+      ['Oldtimer', '/oldtimer-fotografie-duesseldorf.html'],
+      ['Motorrad', '/motorrad-fotografie-duesseldorf.html'],
+      ['Portrait', '/portraitfotografie-duesseldorf.html'],
+      ['Landschaft', '/landschaftsfotografie-duesseldorf.html'],
+    ],
+  },
+  {
+    title: 'NRW',
+    text: 'Regionale Hubs für Rheinland, Ruhrgebiet und angrenzende Städte.',
+    links: [
+      ['Fotografie NRW', '/fotografie-nrw.html'],
+      ['Automobil NRW', '/automobil-fotografie-nrw.html'],
+      ['Sportwagen NRW', '/sportwagen-fotografie-nrw.html'],
+      ['Oldtimer NRW', '/oldtimer-fotografie-nrw.html'],
+      ['Motorrad NRW', '/motorrad-fotografie-nrw.html'],
+      ['Portrait NRW', '/portraitfotografie-nrw.html'],
+      ['Landschaft NRW', '/landschaftsfotografie-nrw.html'],
+    ],
+  },
+  {
+    title: 'Suchintentionen',
+    text: 'Einstiege mit klarer Anfrageabsicht statt reinem Stadtmuster.',
+    links: [
+      ['Auto-Fotoshooting', '/auto-fotoshooting.html'],
+      ['Autohaus Fotografie', '/autohaus-fotografie.html'],
+      ['Autoverkauf Fotos', '/autoverkauf-fotos-duesseldorf.html'],
+      ['Motorrad Shooting', '/motorrad-shooting-duesseldorf.html'],
+      ['Business Portrait', '/business-portrait-duesseldorf.html'],
+      ['Fotoshooting Preise', '/fotoshooting-preise.html'],
+      ['Oldtimer Verkaufsfotos', '/oldtimer-verkaufsfotos-duesseldorf.html'],
+    ],
+  },
+]
 ---
 <AdoptedPageLayout legacyFile={legacyFile} current="fotografie" doc={doc} title={pageMetaTitle} description={pageMetaDescription} canonicalUrl={pageCanonicalUrl} ctaHref="#anfrage" preloadImages={[firstHeroSlide.image]} liveCms>
   <main>
@@ -174,6 +214,23 @@ const clusterParagraphs = clusterIntroCms.length
           <div class="cluster-links">
             {topics.map((topic) => <a href={topic.href}>{topic.title.replace('.', '')}</a>)}
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cluster" data-theme="light" aria-label="Lokale Fotografie-Einstiege">
+      <div class="section-inner cluster-grid">
+        <div><p class="kicker dark">Lokal</p><h2>Direkte Einstiege, <em>klar sortiert.</em></h2></div>
+        <div class="cluster-copy">
+          {localHubGroups.map((group) => (
+            <div>
+              <h3>{group.title}</h3>
+              <p>{group.text}</p>
+              <div class="cluster-links">
+                {group.links.map(([label, href]) => <a href={href}>{label}</a>)}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

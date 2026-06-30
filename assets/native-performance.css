@@ -1,3 +1,176 @@
+/* Performance floor for older laptops: decorative fixed grain overlays force
+   whole-page compositing during scroll, while barely changing the visual read. */
+body::before,
+body:before {
+  animation: none !important;
+  display: none !important;
+}
+
+.hero.is-perf-paused .hero-bg,
+.hero.is-perf-paused .hero-glow,
+.hero.is-perf-paused .hero-aperture,
+.pf-marquee.is-perf-paused .pf-track {
+  animation-play-state: paused !important;
+}
+
+.hero.is-static-hero canvas,
+.hero.is-static-hero .hero-cursor,
+.hero.is-static-hero .hero-glow,
+.hero.is-static-hero .hero-aperture {
+  display: none !important;
+}
+
+.hero.is-static-hero .hero-bg {
+  animation: none !important;
+  transform: translate3d(0, 0, 0) scale(1.025) !important;
+  will-change: auto !important;
+}
+
+.hero.is-static-hero .hero-title .word,
+.hero.is-static-hero .hero-lead {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+.hero.hero--shader:not(.is-animated-hero) canvas {
+  display: none !important;
+}
+
+.hero.hero--shader:not(.is-animated-hero) .hero-glow,
+.hero.hero--shader:not(.is-animated-hero) .hero-aperture {
+  display: none !important;
+}
+
+.hero.hero--shader:not(.is-animated-hero) .hero-bg {
+  animation: none !important;
+  transform: translate3d(0, 0, 0) scale(1.025) !important;
+  will-change: auto !important;
+}
+
+.hero-pd.is-perf-paused .pd-frame,
+.hero-pd.is-perf-paused .pd-frame-inner,
+.hero-pd.is-perf-paused .pd-flare,
+.hero-pd.is-perf-paused .pd-streak,
+.hero-pd.is-perf-paused .pd-glow,
+.hero-pd.is-perf-paused .pd-grain,
+.hero-pt.is-perf-paused .hero-pt__zoom,
+.hero-pt.is-perf-paused .hero-pt__catchlight,
+.hero-ls.is-perf-paused .hero-ls__grain {
+  animation-play-state: paused !important;
+}
+
+.hero-pd.is-static-hero .pd-flare,
+.hero-pd.is-static-hero .pd-streak,
+.hero-pd.is-static-hero .pd-glow,
+.hero-pd.is-static-hero .pd-grain,
+.hero-pd.is-static-hero .pd-paper {
+  display: none !important;
+}
+
+.hero-pd.is-static-hero .pd-frame,
+.hero-pd.is-static-hero .pd-frame.is-in {
+  animation: none !important;
+  clip-path: none !important;
+  filter: none !important;
+  opacity: 1 !important;
+  transition: none !important;
+  will-change: auto !important;
+}
+
+.hero-pd.is-static-hero .pd-frame:not(.is-in) {
+  display: none !important;
+}
+
+.hero-pd.is-static-hero .pd-frame-inner {
+  animation: none !important;
+  transform: scale(1.04) translateZ(0) !important;
+  transition: none !important;
+  will-change: auto !important;
+}
+
+.hero-pd.is-static-hero .pd-local-note,
+.hero-pd.is-static-hero .pd-sub,
+.hero-pd.is-static-hero .pd-actions {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.hero-pt.is-static-hero .hero-pt__stage {
+  clip-path: none !important;
+  transition: none !important;
+}
+
+.hero-pt.is-static-hero .hero-pt__catchlight {
+  display: none !important;
+}
+
+.hero-pt.is-static-hero .hero-pt__slide,
+.hero-pt.is-static-hero .hero-pt__slide.is-active {
+  opacity: 1 !important;
+  transition: none !important;
+  will-change: auto !important;
+}
+
+.hero-pt.is-static-hero .hero-pt__slide:not(.is-active) {
+  display: none !important;
+}
+
+.hero-pt.is-static-hero .hero-pt__zoom,
+.hero-pt.is-static-hero .hero-pt__slide.is-active .hero-pt__zoom {
+  animation: none !important;
+  transform: scale(1.04) !important;
+  will-change: auto !important;
+}
+
+.hero-pt.is-static-hero .hero-pt__title,
+.hero-pt.is-static-hero .hero-pt__local-note,
+.hero-pt.is-static-hero .hero-pt__sub,
+.hero-pt.is-static-hero .hero-pt__actions,
+.hero-pt.is-static-hero .hero-pt__vignette {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+.hero-ls.is-static-hero .hero-ls__stage {
+  transform: none !important;
+  transition: none !important;
+  will-change: auto !important;
+}
+
+.hero-ls.is-static-hero .hero-ls__ripple,
+.hero-ls.is-static-hero .hero-ls__grain {
+  display: none !important;
+}
+
+.hero-ls.is-static-hero .hero-ls__chrome-wash,
+.hero-ls.is-static-hero .hero-ls__bottom-wash,
+.hero-ls.is-static-hero .hero-ls__text-scrim,
+.hero-ls.is-static-hero .hero-ls__counter,
+.hero-ls.is-static-hero .hero-ls__local-note,
+.hero-ls.is-static-hero .hero-ls__sub,
+.hero-ls.is-static-hero .hero-ls__actions,
+.hero-ls.is-static-hero .hero-ls__title {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+.hero-ls.is-static-hero .hero-ls__title .l,
+.hero-ls.is-static-hero .hero-ls__title .w {
+  clip-path: none !important;
+  filter: none !important;
+  transform: none !important;
+  transition: none !important;
+  will-change: auto !important;
+}
+
+img[loading="lazy"].is-loaded {
+  will-change: auto !important;
+}
+
 @media (max-width: 760px), (prefers-reduced-motion: reduce) {
   body::before,
   body:before {

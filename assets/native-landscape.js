@@ -11,18 +11,77 @@
     if(!imgBottom||!imgTop) return;
 
     const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const connection=navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    const heroModeOverride=(()=>{
+      try{
+        const params=new URLSearchParams(location.search);
+        const mode=params.get('landscapeHero') || params.get('landschaftHero') || params.get('hero') || localStorage.getItem('mrLandscapeHeroMode') || localStorage.getItem('mrLandschaftHeroMode') || localStorage.getItem('mrHeroMode') || '';
+        if(/^(static|lite)$/i.test(mode)) return 'static';
+        if(/^(animated|shader|webgl)$/i.test(mode)) return 'animated';
+      }catch(_){}
+      return '';
+    })();
+    const forceAnimated=heroModeOverride==='animated';
+    let staticHero=false;
+    let pageVisible=!document.hidden;
+    let heroInView=true;
 
     const images=(hero.dataset.images||'').split(',').map(s=>s.trim()).filter(Boolean);
     if(!images.length) return;
+
+    function matches(query){
+      return window.matchMedia && window.matchMedia(query).matches;
+    }
+    function webglRenderer(){
+      let canvas;
+      let gl;
+      try{
+        canvas=document.createElement('canvas');
+        gl=canvas.getContext('webgl',{powerPreference:'low-power'}) || canvas.getContext('experimental-webgl');
+        if(!gl) return '';
+        const info=gl.getExtension('WEBGL_debug_renderer_info');
+        if(!info) return '';
+        return String(gl.getParameter(info.UNMASKED_RENDERER_WEBGL) || '');
+      }catch(_){
+        return '';
+      }finally{
+        try{ if(gl) gl.getExtension('WEBGL_lose_context').loseContext(); }catch(_){}
+      }
+    }
+    function lowPowerGpuReason(renderer){
+      if(forceAnimated) return '';
+      if(/swiftshader|software rasterizer|llvmpipe/i.test(renderer)) return 'software-renderer';
+      if(/\bintel\b|iris|uhd graphics|hd graphics/i.test(renderer) && !/arc|apple|radeon|nvidia|geforce/i.test(renderer)){
+        return 'integrated-intel-gpu';
+      }
+      return '';
+    }
+    function initialStaticHeroReason(){
+      if(heroModeOverride==='static') return 'manual';
+      if(forceAnimated) return '';
+      if(reduced) return 'reduced-motion';
+      if(matches('(hover: none), (pointer: coarse), (max-width: 900px)')) return 'touch-or-small';
+      if(connection && connection.saveData) return 'save-data';
+      if(/^(slow-)?2g$/i.test((connection && connection.effectiveType) || '')) return 'slow-network';
+      const memory=Number(navigator.deviceMemory || 0);
+      const cores=Number(navigator.hardwareConcurrency || 0);
+      if(memory && memory<=4) return 'low-memory';
+      if(cores && cores<=4) return 'low-core-count';
+      return '';
+    }
+    function canAnimateHero(){
+      return !staticHero && !reduced && pageVisible && heroInView;
+    }
+    function updateHeroPauseClass(){
+      if(staticHero) return;
+      hero.classList.toggle('is-perf-paused', !canAnimateHero());
+    }
 
     // Counter-Bars
     counterEl.innerHTML='';
     images.forEach(()=>{const i=document.createElement('i');counterEl.appendChild(i);});
     const bars=Array.from(counterEl.children);
     const setActive=(idx)=>bars.forEach((b,i)=>b.classList.toggle('on',i===idx));
-
-    // Bilder vorladen, damit der Wechsel nicht ruckelt
-    images.forEach(src=>{const im=new Image();im.decoding='async';im.src=src;});
 
     // easeInOutCubic — sanftes Beschleunigen + Abklingen, fühlt sich premium an
     const easeInOutCubic=t=>t<.5 ? 4*t*t*t : 1-Math.pow(-2*t+2,3)/2;
@@ -59,7 +118,7 @@
 
     // Synchroner Ripple-Ring der vom Tinten-Ursprung expandiert
     function fireRipple(cx, cy){
-      if(!ripple) return;
+      if(staticHero || !ripple) return;
       ripple.setAttribute('cx', cx.toFixed(0));
       ripple.setAttribute('cy', cy.toFixed(0));
       ripple.setAttribute('r','0');
@@ -68,6 +127,7 @@
       const DUR=1700, MAX_R=DIAG*0.62;
       const ease=t=>1-Math.pow(1-t,3);
       function tick(now){
+        if(staticHero){ripple.style.strokeOpacity='0';return;}
         const t=clamp((now-t0)/DUR,0,1);
         ripple.setAttribute('r',(MAX_R*ease(t)).toFixed(0));
         // sanfter Fade — peak bei ~12%, dann ausklingen
@@ -82,6 +142,7 @@
 
     // Erzeugt 1 Haupt-Blob + 1 sanften Satelliten — keine Splatter, keine Drips
     function buildInkOnMask(blobGroup){
+      if(staticHero) return Promise.resolve();
       clearChildren(blobGroup);
       const seed=pickPoint();
       // Ripple gleichzeitig mit dem Reveal feuern
@@ -109,6 +170,7 @@
         const t0=performance.now();
         const totalDur=REVEAL_MS+260;
         function tick(now){
+          if(staticHero){resolve();return;}
           const t=now-t0;
           const lm=clamp((t-0)/REVEAL_MS,0,1);
           main.setAttribute('r', (FULL_R*easeInOutCubic(lm)).toFixed(0));
@@ -138,6 +200,62 @@
       group.appendChild(c);
     }
 
+    function useStaticHero(reason){
+      staticHero=true;
+      hero.classList.remove('is-perf-paused');
+      hero.classList.add('is-revealed','is-static-hero');
+      hero.dataset.heroRenderer='static';
+      hero.dataset.heroStaticReason=reason || 'static';
+      imgBottom.setAttributeNS('http://www.w3.org/1999/xlink','href', images[0]);
+      imgBottom.setAttribute('href', images[0]);
+      imgBottom.removeAttribute('mask');
+      imgTop.setAttributeNS('http://www.w3.org/1999/xlink','href', '');
+      imgTop.setAttribute('href', '');
+      imgTop.setAttribute('display','none');
+      blobsA.removeAttribute('filter');
+      blobsB.removeAttribute('filter');
+      setFullMask(blobsA);
+      clearChildren(blobsB);
+      setActive(0);
+      if(ripple){
+        ripple.setAttribute('r','0');
+        ripple.style.strokeOpacity='0';
+      }
+      if(stage) stage.style.transform='none';
+    }
+
+    let staticReason=initialStaticHeroReason();
+    if(!staticReason){
+      const renderer=webglRenderer();
+      if(renderer) hero.dataset.heroGpu=renderer.slice(0,96);
+      staticReason=lowPowerGpuReason(renderer);
+    }
+    if(staticReason){
+      useStaticHero(staticReason);
+      return;
+    }
+    hero.dataset.heroRenderer='animated';
+
+    if('IntersectionObserver' in window){
+      const heroObserver=new IntersectionObserver((entries)=>{
+        entries.forEach((entry)=>{
+          if(entry.target===hero){
+            heroInView=entry.isIntersecting;
+            updateHeroPauseClass();
+          }
+        });
+      },{threshold:0.01});
+      heroObserver.observe(hero);
+    }
+    document.addEventListener('visibilitychange',()=>{
+      pageVisible=!document.hidden;
+      updateHeroPauseClass();
+    });
+
+    // Bilder vorladen, damit der Wechsel nicht ruckelt. Im statischen
+    // Performance-Modus bleibt es beim ersten Bild.
+    images.forEach(src=>{const im=new Image();im.decoding='async';im.src=src;});
+
     async function runCycle(){
       // PHASE 0: erstes Bild
       imgBottom.setAttributeNS('http://www.w3.org/1999/xlink','href', images[0]);
@@ -159,11 +277,13 @@
       let nextIdx=1;
       while(true){
         await sleep(HOLD_MS);
+        if(!canAnimateHero()) continue;
         const next=images[nextIdx % images.length];
         imgTop.setAttribute('href', next);
         setActive(nextIdx % images.length);
 
         await buildInkOnMask(blobsB);
+        if(staticHero) return;
 
         // Übernehmen
         imgBottom.setAttribute('href', next);
@@ -180,11 +300,37 @@
       setTimeout(()=>{runCycle().catch(()=>{});}, 320);
     }));
 
+    (function watchFrameBudget(){
+      if(forceAnimated || !('requestAnimationFrame' in window) || !performance || !performance.now) return;
+      let last=performance.now();
+      let samples=0;
+      let slowScore=0;
+      function sample(now){
+        if(staticHero) return;
+        if(!canAnimateHero()){
+          last=now;
+          requestAnimationFrame(sample);
+          return;
+        }
+        const delta=now-last;
+        last=now;
+        samples+=1;
+        slowScore=delta>55 ? slowScore+1 : Math.max(0,slowScore-0.25);
+        if(samples>90 && slowScore>=10){
+          useStaticHero('slow-frame-budget');
+          return;
+        }
+        if(samples<360) requestAnimationFrame(sample);
+      }
+      requestAnimationFrame(sample);
+    })();
+
     // Sanftes Mouse-Parallax auf der Bildbühne — sehr dezent, fühlt sich „lebendig" an
-    if(!reduced && stage){
+    if(!reduced && !staticHero && stage){
       let targetX=0,targetY=0,curX=0,curY=0,rafId=null;
       const RANGE=10; // px in jede Richtung
       hero.addEventListener('mousemove',(e)=>{
+        if(!canAnimateHero()) return;
         const r=hero.getBoundingClientRect();
         const nx=((e.clientX-r.left)/r.width-0.5)*2;
         const ny=((e.clientY-r.top)/r.height-0.5)*2;
@@ -193,6 +339,7 @@
       },{passive:true});
       hero.addEventListener('mouseleave',()=>{targetX=0;targetY=0;if(!rafId) rafId=requestAnimationFrame(loop);});
       function loop(){
+        if(!canAnimateHero()){rafId=null;return;}
         curX+=(targetX-curX)*0.08;
         curY+=(targetY-curY)*0.08;
         stage.style.transform=`translate3d(${curX.toFixed(2)}px,${curY.toFixed(2)}px,0) scale(1.025)`;

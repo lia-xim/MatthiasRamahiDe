@@ -31,7 +31,7 @@ const titleLineField = (index: number) => (index === 0 ? 'headlineLine1' : index
 ---
 
 <section
-  class="hero"
+  class="hero hero--shader"
   id={id}
   data-theme={theme}
   data-header-theme={headerTheme}
@@ -47,10 +47,9 @@ const titleLineField = (index: number) => (index === 0 ? 'headlineLine1' : index
     alt=""
     width="1"
     height="1"
-    loading="eager"
+    loading="lazy"
     decoding="async"
-    fetchpriority="high"
-    crossorigin="anonymous"
+    fetchpriority="low"
     aria-hidden="true"
     {...tinaAttrs(firstSourceSlide, 'image')}
   />

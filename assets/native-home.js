@@ -55,9 +55,48 @@
   if(!canvas) return;
   const hero=canvas.closest('.hero');
   const cursor=document.getElementById('hero-cursor');
-  const useStaticHero = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce), (hover: none), (pointer: coarse), (max-width: 900px)').matches;
-  if(useStaticHero){
+  const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  const heroModeOverride = (() => {
+    try {
+      const mode = new URLSearchParams(location.search).get('hero') || localStorage.getItem('mrHeroMode') || '';
+      if (/^(static|lite)$/i.test(mode)) return 'static';
+      if (/^(shader|webgl)$/i.test(mode)) return 'shader';
+    } catch (_) {}
+    return '';
+  })();
+  const forceShader = heroModeOverride === 'shader';
+  let shaderDisabled = false;
+
+  function useStaticHero(reason) {
+    shaderDisabled = true;
+    if (hero) hero.classList.remove('is-animated-hero');
     canvas.setAttribute('hidden', '');
+    canvas.classList.remove('is-ready');
+    if (cursor) cursor.classList.remove('is-active', 'is-pressed');
+    if (hero) {
+      hero.classList.add('is-static-hero');
+      hero.dataset.heroRenderer = 'static';
+      hero.dataset.heroStaticReason = reason || 'static';
+    }
+  }
+
+  function initialStaticHeroReason() {
+    if (heroModeOverride === 'static') return 'manual';
+    if (forceShader) return '';
+    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return 'reduced-motion';
+    if (window.matchMedia?.('(hover: none), (pointer: coarse), (max-width: 900px)').matches) return 'touch-or-small';
+    if (connection?.saveData) return 'save-data';
+    if (/^(slow-)?2g$/i.test(connection?.effectiveType || '')) return 'slow-network';
+    const cores = Number(navigator.hardwareConcurrency || 0);
+    const memory = Number(navigator.deviceMemory || 0);
+    if (memory && memory <= 4) return 'low-memory';
+    if (cores && cores <= 4) return 'low-core-count';
+    return '';
+  }
+
+  const staticReason = initialStaticHeroReason();
+  if(staticReason){
+    useStaticHero(staticReason);
     return;
   }
 
@@ -105,7 +144,42 @@
   if(!slides.length){return;}
 
   const gl=canvas.getContext('webgl',{antialias:true,premultipliedAlpha:false,powerPreference:'default'});
-  if(!gl){canvas.style.background='radial-gradient(55% 45% at 50% 55%,#1a0a08,#010104 72%)';return;}
+  if(!gl){
+    useStaticHero('webgl-unavailable');
+    return;
+  }
+
+  function webglRenderer() {
+    try {
+      const info = gl.getExtension('WEBGL_debug_renderer_info');
+      if (!info) return '';
+      return String(gl.getParameter(info.UNMASKED_RENDERER_WEBGL) || '');
+    } catch (_) {
+      return '';
+    }
+  }
+
+  function lowPowerGpuReason(renderer) {
+    if (forceShader) return '';
+    if (/swiftshader|software rasterizer|llvmpipe/i.test(renderer)) return 'software-renderer';
+    if (/\bintel\b|iris|uhd graphics|hd graphics/i.test(renderer) && !/arc|apple|radeon|nvidia|geforce/i.test(renderer)) {
+      return 'integrated-intel-gpu';
+    }
+    return '';
+  }
+
+  const renderer = webglRenderer();
+  if (hero) hero.dataset.heroGpu = renderer.slice(0, 96);
+  const gpuReason = lowPowerGpuReason(renderer);
+  if (gpuReason) {
+    try { gl.getExtension('WEBGL_lose_context')?.loseContext(); } catch (_) {}
+    useStaticHero(gpuReason);
+    return;
+  }
+  if (hero) {
+    hero.dataset.heroRenderer = 'shader';
+    hero.classList.add('is-animated-hero');
+  }
 
   const vsrc=`attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}`;
   const fsrc=`
@@ -296,14 +370,10 @@
           cache[idx]={img:preloadImg,w:preloadImg.naturalWidth||preloadImg.width||1,h:preloadImg.naturalHeight||preloadImg.height||1};
           res(cache[idx]);
         };
-        if(preloadImg.complete){
-          if(preloadImg.naturalWidth>0) usePreload();
-          else loadStandaloneImage(idx,res);
+        if(preloadImg.complete && preloadImg.naturalWidth>0){
+          usePreload();
           return;
         }
-        preloadImg.addEventListener('load',usePreload,{once:true});
-        preloadImg.addEventListener('error',()=>loadStandaloneImage(idx,res),{once:true});
-        return;
       }
       loadStandaloneImage(idx,res);
     });
@@ -551,7 +621,12 @@
   function leave(){
     if(cursor) cursor.classList.remove('is-active');
   }
-  function down(){if(cursor) cursor.classList.add('is-pressed'); flash(); cycleNext();}
+  function down(){
+    if(cursor) cursor.classList.add('is-pressed');
+    if(shaderDisabled) return;
+    flash();
+    cycleNext();
+  }
   function up(){if(cursor) cursor.classList.remove('is-pressed');}
   if(hero){
     hero.addEventListener('mousemove',move,{passive:true});
@@ -574,13 +649,105 @@
   const coarsePointer=window.matchMedia&&window.matchMedia('(hover:none), (pointer:coarse)').matches;
   const targetFrameMs=coarsePointer ? 1000/24 : 0;
   let lastDraw=0;
+  let rafId=0;
+  let heroInView=true;
+  let pageVisible=!document.hidden;
+  let perfLastFrame=0;
+  let perfWarmupFrames=0;
+  let perfFrames=0;
+  let perfSlowFrames=0;
+  let perfSevereFrames=0;
+  let perfTotalFrameMs=0;
+  let perfMaxFrameMs=0;
+
+  function downgradeHero(reason){
+    if(shaderDisabled) return;
+    useStaticHero(reason);
+    if(hero){
+      hero.dataset.heroPerfFrames = String(perfFrames);
+      hero.dataset.heroPerfMaxFrame = String(Math.round(perfMaxFrameMs));
+    }
+    try { gl.getExtension('WEBGL_lose_context')?.loseContext(); } catch (_) {}
+  }
+
+  function recordFrameHealth(now){
+    if(!perfLastFrame){
+      perfLastFrame=now;
+      return true;
+    }
+    const delta=now-perfLastFrame;
+    perfLastFrame=now;
+    if(perfWarmupFrames<12){
+      perfWarmupFrames+=1;
+      return true;
+    }
+    perfFrames+=1;
+    perfTotalFrameMs+=delta;
+    perfMaxFrameMs=Math.max(perfMaxFrameMs, delta);
+    if(delta>34) perfSlowFrames+=1;
+    if(delta>80) perfSevereFrames+=1;
+    if(perfFrames<48) return true;
+    const avg=perfTotalFrameMs/perfFrames;
+    const slowRatio=perfSlowFrames/perfFrames;
+    if((slowRatio>.35 && avg>24) || perfSevereFrames>=2 || avg>38){
+      downgradeHero('runtime-frame-budget');
+      return false;
+    }
+    return true;
+  }
+
+  function setHeroPerformancePaused(paused){
+    if(hero) hero.classList.toggle('is-perf-paused', paused);
+  }
+
+  function shouldDraw(){
+    return !shaderDisabled && heroInView && pageVisible;
+  }
+
+  function queueFrame(){
+    if(rafId || !shouldDraw()) return;
+    rafId=requestAnimationFrame(frame);
+  }
+
+  function syncHeroVisibility(active){
+    heroInView=active;
+    setHeroPerformancePaused(!active);
+    if(active){
+      /* Avoid an immediate slide jump after the shader has been paused offscreen. */
+      nextCycleAt=performance.now()+slideDurationMs(currentIdx);
+      queueFrame();
+    }
+  }
+
+  if('IntersectionObserver' in window && hero){
+    const visibilityObserver=new IntersectionObserver(entries=>{
+      for(const entry of entries){
+        if(entry.target===hero){
+          syncHeroVisibility(entry.isIntersecting);
+          break;
+        }
+      }
+    },{rootMargin:'180px 0px',threshold:0});
+    visibilityObserver.observe(hero);
+  }
+
+  document.addEventListener('visibilitychange',()=>{
+    pageVisible=!document.hidden;
+    if(pageVisible){
+      nextCycleAt=performance.now()+slideDurationMs(currentIdx);
+      queueFrame();
+    }
+  });
 
   function frame(){
+    rafId=0;
+    if(!shouldDraw()) return;
     const now=performance.now();
     if(targetFrameMs && now-lastDraw<targetFrameMs){
-      requestAnimationFrame(frame);
+      queueFrame();
       return;
     }
+    if(!recordFrameHealth(now)) return;
     lastDraw=now;
     const t=(now-start)/1000.0;
     const k=reduce?0.06:0.12;
@@ -632,16 +799,30 @@
     gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D, texA);
     gl.activeTexture(gl.TEXTURE1); gl.bindTexture(gl.TEXTURE_2D, texB);
     gl.drawArrays(gl.TRIANGLES, 0, 6);
-    requestAnimationFrame(frame);
+    queueFrame();
   }
-  requestAnimationFrame(frame);
+  queueFrame();
   };
   const bootHeroShader = () => {
+    const mode = (() => {
+      try { return new URLSearchParams(location.search).get('hero') || localStorage.getItem('mrHeroMode') || ''; }
+      catch (_) { return ''; }
+    })();
+    const forceShader = /^(shader|webgl)$/i.test(mode);
     const start = () => {
       if ('requestAnimationFrame' in window) requestAnimationFrame(startHeroShader);
       else setTimeout(startHeroShader, 0);
     };
-    start();
+    const startWhenIdle = () => {
+      if ('requestIdleCallback' in window && !forceShader) requestIdleCallback(start, { timeout: 1800 });
+      else start();
+    };
+    if(forceShader) {
+      start();
+      return;
+    }
+    if(document.readyState === 'complete') setTimeout(startWhenIdle, 900);
+    else window.addEventListener('load', () => setTimeout(startWhenIdle, 900), { once: true });
   };
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', bootHeroShader, { once: true });
@@ -739,6 +920,19 @@
   const saveData = Boolean(connection && connection.saveData);
   const prewarmed = new Set();
   let built = false;
+
+  if ('IntersectionObserver' in window && marquee) {
+    marquee.classList.add('is-perf-paused');
+    const motionObserver = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.target === marquee) {
+          marquee.classList.toggle('is-perf-paused', !entry.isIntersecting);
+          break;
+        }
+      }
+    }, { rootMargin: '240px 0px', threshold: 0 });
+    motionObserver.observe(marquee);
+  }
 
   const scheduleIdle = (fn, timeout) => {
     if ('requestIdleCallback' in window) requestIdleCallback(fn, { timeout });

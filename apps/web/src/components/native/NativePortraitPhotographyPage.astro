@@ -53,6 +53,8 @@ const cmsHeroLine2 = cmsText(doc?.heroLine2)
 const cmsStatementBody = doc?.statement?.body?.map((entry) => cmsText(entry.text)).filter(Boolean) || []
 const heroLabel = isParentPage ? 'Portraitfotografie' : isKeywordPage ? serviceLabel : `Portraitfotografie ${scope.label}`
 const isLocalHeroPage = !isParentPage && !isKeywordPage
+const priorityLocalScopeSlugs = new Set(['duesseldorf', 'erkrath', 'ratingen', 'mettmann', 'koeln', 'essen', 'dortmund'])
+const isPriorityLocalPage = isLocalHeroPage && priorityLocalScopeSlugs.has(scope.slug)
 const shouldUseCmsHeroTitle = !isParentPage
 const heroTitle = isParentPage ? 'Porträtfotografie' : serviceLabel
 const heroEmphasis = isLocalHeroPage ? scope.label : ''
@@ -213,7 +215,15 @@ const focusIntroBaseParagraphs =
             ? 'Der Text ist auf diese konkrete Suche zugeschnitten, ohne ein neues Layout oder eine unpassende Kategorie zu erzwingen.'
             : `Der lokale Bezug fuer ${scope.label} wird ueber Ort, Anfahrt, Lichtfenster und Ablauf konkretisiert.`,
         ]
-const focusIntroParagraphs = focusIntroSupportLine ? [focusIntroSupportLine, ...focusIntroBaseParagraphs] : focusIntroBaseParagraphs
+const portraitLocalDepthParagraphs = isPriorityLocalPage
+  ? [
+      `${localScopePhrase(scope)} Fuer Portraits bedeutet das konkret: Die Location wird nicht nur als Hintergrund benutzt, sondern nach Blickrichtung, Streulicht, Ruhe und spaeterer Nutzung der Bilder ausgewaehlt. Ein LinkedIn-Headshot braucht eine andere Distanz als ein Founder-Portrait, ein Pressebild andere Klarheit als eine Paar- oder Editorialserie.`,
+      `Die Seite bleibt deshalb bewusst eigenstaendig zum allgemeinen Portraitangebot. In ${scope.label} geht es um kurze Wege, realistische Zeitfenster, passende Orte und eine Bildauswahl, die fuer Website, Social Media, Presse, Bewerbung oder Teamseite ohne Umwege funktioniert. So entsteht kein austauschbarer Ortsname, sondern ein konkreter Ablauf fuer Menschen, die in ${scope.label} fotografiert werden wollen.`,
+    ]
+  : []
+const focusIntroParagraphs = focusIntroSupportLine
+  ? [focusIntroSupportLine, ...focusIntroBaseParagraphs, ...portraitLocalDepthParagraphs]
+  : [...focusIntroBaseParagraphs, ...portraitLocalDepthParagraphs]
 const focusModuleHeadline = isLocalHeroPage || isKeywordPage ? serviceLabel : cmsText(doc?.focusSection?.headline) || keywordFocusCopy?.sectionHeadline || 'Verschiedene'
 const focusModuleEmphasis = isLocalHeroPage ? `${scope.label}.` : isKeywordPage ? 'klar geplant.' : cmsText(doc?.focusSection?.emphasis) || keywordFocusCopy?.sectionEmphasis || 'Perspektiven.'
 const focusModuleLead =
@@ -265,7 +275,7 @@ const focusProcessHeadline = isLocalHeroPage ? `Ablauf ${scope.label}.` : isKeyw
 const focusProcessEmphasis = !isLocalHeroPage && !isKeywordPage ? cmsText(doc?.processSection?.emphasis) : ''
 const focusProcessLead =
   isLocalHeroPage
-    ? `Vom ersten Kontakt bis zur Bildabgabe bleibt der Ablauf in ${scope.label} klar: Ziel, Ort, Licht, Auswahl und Lieferung werden vorab abgestimmt.`
+    ? `Vom ersten Kontakt bis zur Bildabgabe bleibt der Ablauf in ${scope.label} klar: Ziel, Ort, Licht, Auswahl und Lieferung werden vorab abgestimmt. Dazu gehoert, ob die Serie eher als LinkedIn-Profil, Website-Portrait, Pressebild, Teamseite, Paarserie oder Editorial funktionieren muss.`
     : cmsText(doc?.processSection?.lead) || keywordFocusCopy?.processLead ||
   'Vom ersten Kontakt bis zur Bildabgabe - fuenf ruhige Schritte, damit du vor dem Shooting weisst, was passiert und nach dem Shooting weisst, was kommt.'
 const defaultProcessSteps = [
@@ -273,31 +283,41 @@ const defaultProcessSteps = [
     visualIndex: 18,
     imageLabel: 'Anfrage',
     title: 'Anfrage',
-    text: 'Kurze Nachricht reicht - Anlass, Person oder Team, gewuenschte Wirkung, Zeitraum. Antwort innerhalb von 24 Stunden mit erster Einordnung und naechsten Schritten.',
+    text: isLocalHeroPage
+      ? `Kurze Nachricht reicht - Anlass, Person oder Team, gewuenschte Wirkung, Zeitraum und grober Ort in ${scope.label}. Antwort innerhalb von 24 Stunden mit erster Einordnung, passendem Rahmen und naechsten Schritten.`
+      : 'Kurze Nachricht reicht - Anlass, Person oder Team, gewuenschte Wirkung, Zeitraum. Antwort innerhalb von 24 Stunden mit erster Einordnung und naechsten Schritten.',
   },
   {
     visualIndex: 19,
     imageLabel: 'Kennenlernen',
     title: 'Kennenlernen',
-    text: 'Ein lockeres Gespraech - telefonisch oder vor Ort. Wir klaeren den Kontext, wer die Bilder sehen wird und welche Tonalitaet dazu passt. Ohne Verkaufsdruck.',
+    text: isLocalHeroPage
+      ? `Ein lockeres Gespraech - telefonisch oder vor Ort. Wir klaeren Kontext, Zielgruppe, Outfit, Nutzungsrechte und welche Umgebung in ${scope.label} die gewuenschte Wirkung unterstuetzt.`
+      : 'Ein lockeres Gespraech - telefonisch oder vor Ort. Wir klaeren den Kontext, wer die Bilder sehen wird und welche Tonalitaet dazu passt. Ohne Verkaufsdruck.',
   },
   {
     visualIndex: 20,
     imageLabel: 'Konzept',
     title: 'Konzept & Briefing',
-    text: 'Wir sammeln Referenzen, definieren Licht, Hintergrund, Outfit und ein paar Schluesselbilder. Du bekommst ein klares Mini-Briefing - keine 30-Seiten-Decks.',
+    text: isLocalHeroPage
+      ? `Wir definieren Licht, Hintergrund, Outfit, Bildformate und eine kleine Shotlist. Bei ${scope.label}-Terminen wird auch geklaert, ob Outdoor, Innenraum oder mobiles Setup die beste Loesung ist.`
+      : 'Wir sammeln Referenzen, definieren Licht, Hintergrund, Outfit und ein paar Schluesselbilder. Du bekommst ein klares Mini-Briefing - keine 30-Seiten-Decks.',
   },
   {
     visualIndex: 21,
     imageLabel: 'Shooting',
     title: 'Shooting',
-    text: 'Location in NRW oder vor Ort. Ruhiges Setup, viel Raum zum Ankommen, klare Regie ohne Pose-Drill. Zwischendurch ein gemeinsamer Blick auf den Monitor.',
+    text: isLocalHeroPage
+      ? `Shooting in ${scope.label} oder am abgestimmten Ort. Ruhiges Setup, klare Regie ohne Pose-Drill und genug Zeit, damit Ausdruck, Haltung und Hintergrund zusammenpassen.`
+      : 'Location in NRW oder vor Ort. Ruhiges Setup, viel Raum zum Ankommen, klare Regie ohne Pose-Drill. Zwischendurch ein gemeinsamer Blick auf den Monitor.',
   },
   {
     visualIndex: 22,
     imageLabel: 'Auswahl und Lieferung',
     title: 'Auswahl & Lieferung',
-    text: 'Eine kuratierte Vorauswahl als Web-Galerie. Du waehlst die finalen Bilder, ich retuschiere zurueckhaltend und liefere in den Formaten, die du brauchst - Web, Print, Social.',
+    text: isLocalHeroPage
+      ? 'Eine kuratierte Vorauswahl als Web-Galerie. Die finalen Portraits werden zurueckhaltend retuschiert und als Web-, Social-, Presse- und Printdateien geliefert, damit sie sofort nutzbar sind.'
+      : 'Eine kuratierte Vorauswahl als Web-Galerie. Du waehlst die finalen Bilder, ich retuschiere zurueckhaltend und liefere in den Formaten, die du brauchst - Web, Print, Social.',
   },
 ]
 const portraitProcessSteps = defaultProcessSteps.map((step, index) => {

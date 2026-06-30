@@ -102,7 +102,7 @@ const servicePrefixes = [
 ]
 
 export const sitemapSections: SitemapSection[] = ['pages', 'local-seo', 'services', 'journal', 'portfolio']
-const nativeRouteLastmod = '2026-06-03'
+const nativeRouteLastmod = '2026-06-30'
 
 export const escapeXml = (value: string) =>
   value

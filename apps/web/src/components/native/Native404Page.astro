@@ -1,6 +1,22 @@
 ---
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 
+type Props = {
+  statusCode?: 404 | 410
+}
+
+const { statusCode = 404 } = Astro.props as Props
+const isGone = statusCode === 410
+const statusLabel = isGone ? 'Fehler 410' : 'Fehler 404'
+const title = isGone ? 'Inhalt entfernt (410) — Matthias Ramahi' : 'Seite nicht gefunden (404) — Matthias Ramahi'
+const description = isGone
+  ? 'Diese alte URL wurde dauerhaft entfernt oder durch eine passendere Seite ersetzt.'
+  : 'Diese Seite existiert nicht oder wurde verschoben. Zurück zur Startseite oder direkt in einen der Fotografie-Bereiche.'
+const headline = isGone ? 'Diese alte URL<br /><em>wurde entfernt</em>.' : 'Diese Seite<br /><em>gibt es nicht</em> (mehr).'
+const lead = isGone
+  ? 'Der frühere Inhalt gehört nicht mehr zur aktuellen Website-Struktur. Hier geht es zurück in die wichtigsten Bereiche.'
+  : 'Vielleicht wurde sie verschoben, umbenannt oder der Link enthält einen Tippfehler. Hier geht es zurück in die Übersicht.'
+
 const links = [
   { href: '/', label: 'Startseite' },
   { href: '/fotografie.html', label: 'Fotografie' },
@@ -12,16 +28,16 @@ const links = [
 ---
 <AdoptedPageLayout
   legacyFile="404.html"
-  title="Seite nicht gefunden (404) — Matthias Ramahi"
-  description="Diese Seite existiert nicht oder wurde verschoben. Zurück zur Startseite oder direkt in einen der Fotografie-Bereiche."
+  title={title}
+  description={description}
   noIndex
 >
   <main>
     <section class="nf" data-theme="dark" data-header-theme="dark" aria-labelledby="nf-title">
       <div class="nf__inner">
-        <p class="nf__kicker">Fehler 404</p>
-        <h1 class="nf__title" id="nf-title">Diese Seite<br /><em>gibt es nicht</em> (mehr).</h1>
-        <p class="nf__lead">Vielleicht wurde sie verschoben, umbenannt oder der Link enthält einen Tippfehler. Hier geht es zurück in die Übersicht.</p>
+        <p class="nf__kicker">{statusLabel}</p>
+        <h1 class="nf__title" id="nf-title" set:html={headline}></h1>
+        <p class="nf__lead">{lead}</p>
         <nav class="nf__links" aria-label="Wichtige Seiten">
           {links.map((link) => <a class="nf__link" href={link.href}>{link.label}</a>)}
         </nav>

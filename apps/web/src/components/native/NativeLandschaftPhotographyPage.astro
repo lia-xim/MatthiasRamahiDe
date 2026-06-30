@@ -53,6 +53,8 @@ const cmsHeroLine2 = cmsText(doc?.heroLine2)
 const cmsStatementBody = doc?.statement?.body?.map((entry) => cmsText(entry.text)).filter(Boolean) || []
 const heroLabel = isParentPage ? 'Landschaftsfotografie' : isKeywordPage ? serviceLabel : `Landschaftsfotografie ${scope.label}`
 const isLocalHeroPage = !isParentPage && !isKeywordPage
+const priorityLocalScopeSlugs = new Set(['duesseldorf', 'erkrath', 'ratingen', 'mettmann', 'koeln', 'essen', 'dortmund'])
+const isPriorityLocalPage = isLocalHeroPage && priorityLocalScopeSlugs.has(scope.slug)
 const shouldUseCmsHeroTitle = !isParentPage
 const heroTitle = isParentPage ? 'Landschaftsfotografie' : serviceLabel
 const heroSecondLine = isLocalHeroPage ? scope.label : ''
@@ -168,7 +170,15 @@ const focusIntroBaseParagraphs = cmsStatementBody.length
       `Landschaftsfotografie fuer ${scope.label} wird nicht als Termin vor Ort verkauft, sondern als kuratierte Bild- und Printauswahl fuer Raeume, Marken und private Sammlungen verstanden.`,
       `Der lokale Bezug macht die Anfrage konkreter: Menschen in ${scope.label} suchen Wandbilder, Fine-Art-Prints oder ruhige Bildraeume, die zu Wohnung, Praxis, Hotel oder Buero passen.`,
     ]
-const focusIntroParagraphs = focusIntroSupportLine ? [focusIntroSupportLine, ...focusIntroBaseParagraphs] : focusIntroBaseParagraphs
+const landscapeLocalDepthParagraphs = isPriorityLocalPage
+  ? [
+      `${localScopePhrase(scope)} Bei Landschaftsfotografie fuer ${scope.label} geht es deshalb weniger um eine beliebige Ortsseite als um die Auswahl passender Motive fuer konkrete Raeume: ruhige Wandbilder fuer Wohnbereiche, reduzierte Naturbilder fuer Praxen, grossformatige Prints fuer Buero, Kanzlei, Hotel oder Sammlung.`,
+      `Vor der Produktion werden Raumgroesse, Licht an der Wand, Betrachtungsabstand, Material und Wirkung geklaert. Ein Motiv fuer einen hellen Empfangsbereich braucht eine andere Dichte als ein ruhiges Schlafzimmerbild, ein Acrylglas-Print andere Kontraste als Hahnemuehle-Papier. So trennt sich Landschaftsfotografie ${scope.label} klar von einer reinen Galerie-Uebersicht.`,
+    ]
+  : []
+const focusIntroParagraphs = focusIntroSupportLine
+  ? [focusIntroSupportLine, ...focusIntroBaseParagraphs, ...landscapeLocalDepthParagraphs]
+  : [...focusIntroBaseParagraphs, ...landscapeLocalDepthParagraphs]
 const focusModuleHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}.` : isKeywordPage ? `${serviceLabel}.` : cmsText(doc?.focusSection?.headline) || keywordFocusCopy?.sectionHeadline || (isParentPage ? 'Vier Ausfuehrungen.' : `Ausfuehrungen fuer ${scope.label}.`)
 const focusModuleEmphasis = !isLocalHeroPage && !isKeywordPage ? cmsText(doc?.focusSection?.emphasis) : ''
 const focusModuleTitle = splitTrailingEmphasis(focusModuleHeadline, focusModuleEmphasis)
@@ -197,12 +207,40 @@ const focusProcessHeadline = isLocalHeroPage ? `Ablauf ${scope.label}` : isKeywo
 const focusProcessEmphasis = isLocalHeroPage ? 'und Lieferung.' : isKeywordPage ? 'und Lieferung.' : cmsText(doc?.processSection?.emphasis) || keywordFocusCopy?.sectionEmphasis || (isParentPage ? 'Ihr Druck.' : `fuer ${scope.label}.`)
 const focusProcessLead = isParentPage || isKeywordPage
   ? cmsText(doc?.processSection?.lead) || keywordFocusCopy?.processLead || 'Jedes Bild aus dem Portfolio, in jedem Format, mit oder ohne Rahmen - auf Anfrage gefertigt und zu Ihnen geliefert.'
-  : cmsText(doc?.processSection?.lead) || `Motiv, Format, Material und Lieferziel werden fuer ${scope.label} abgestimmt, damit der Print im Raum ruhig und hochwertig wirkt.`
+  : cmsText(doc?.processSection?.lead) || `Motiv, Format, Material und Lieferziel werden fuer ${scope.label} abgestimmt, damit der Print im Raum ruhig und hochwertig wirkt. Geplant wird nicht nur das Bild, sondern auch Abstand, Wandlicht, Oberflaeche und die Frage, ob der Raum Ruhe, Weite oder einen starken visuellen Anker braucht.`
 const defaultProcessSteps = [
-  { visualIndex: 18, imageLabel: 'Anfrage', title: 'Anfrage', text: 'Motiv, Raum, Format und gewuenschte Wirkung werden kurz eingeordnet.' },
-  { visualIndex: 19, imageLabel: 'Beratung', title: 'Beratung', text: 'Material, Groesse, Oberflaeche und Haengung werden passend zum Ort geplant.' },
-  { visualIndex: 20, imageLabel: 'Produktion', title: 'Produktion', text: 'Der Print wird farbverbindlich vorbereitet und auf das gewaehlte Material ausgegeben.' },
-  { visualIndex: 21, imageLabel: 'Lieferung', title: 'Lieferung', text: 'Das fertige Bild wird sicher verpackt und mit den benoetigten Angaben uebergeben.' },
+  {
+    visualIndex: 18,
+    imageLabel: 'Anfrage',
+    title: 'Anfrage',
+    text: isLocalHeroPage
+      ? `Motivwunsch, Raum, Format, Wandmass und gewuenschte Wirkung in ${scope.label} werden kurz eingeordnet. Fotos der Wandsituation helfen, Groesse und Material realistisch abzuschaetzen.`
+      : 'Motiv, Raum, Format und gewuenschte Wirkung werden kurz eingeordnet.',
+  },
+  {
+    visualIndex: 19,
+    imageLabel: 'Beratung',
+    title: 'Beratung',
+    text: isLocalHeroPage
+      ? `Material, Groesse, Oberflaeche, Rahmen und Haengung werden passend zum Ort geplant. Dabei zaehlen Licht im Raum, Betrachtungsabstand und ob das Bild beruhigen oder als Hauptmotiv wirken soll.`
+      : 'Material, Groesse, Oberflaeche und Haengung werden passend zum Ort geplant.',
+  },
+  {
+    visualIndex: 20,
+    imageLabel: 'Produktion',
+    title: 'Produktion',
+    text: isLocalHeroPage
+      ? 'Der Print wird farbverbindlich vorbereitet, auf das gewaehlte Material ausgegeben und vor Auslieferung auf Tonwert, Schaerfe, Kanten und Oberflaeche kontrolliert.'
+      : 'Der Print wird farbverbindlich vorbereitet und auf das gewaehlte Material ausgegeben.',
+  },
+  {
+    visualIndex: 21,
+    imageLabel: 'Lieferung',
+    title: 'Lieferung',
+    text: isLocalHeroPage
+      ? `Das fertige Bild wird sicher verpackt und mit Angaben zu Material, Pflege und Haengung uebergeben. Fuer ${scope.label} lassen sich Lieferung und Timing passend zum Raumprojekt abstimmen.`
+      : 'Das fertige Bild wird sicher verpackt und mit den benoetigten Angaben uebergeben.',
+  },
 ]
 const processSteps = defaultProcessSteps.map((step, index) => {
   const cmsStep = doc?.processSteps?.[index]

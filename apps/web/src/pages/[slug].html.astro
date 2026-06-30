@@ -28,7 +28,7 @@ if (!legacyFile) {
 
 const redirectTarget = getLegacyRedirectTarget(legacyFile)
 
-if (redirectTarget) {
+if (redirectTarget !== null) {
   return Astro.redirect(`/${redirectTarget}`, 308)
 }
 

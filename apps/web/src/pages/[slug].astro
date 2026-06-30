@@ -2,7 +2,7 @@
 import CmsRoutedPage from '../components/cms/CmsRoutedPage.astro'
 import NativeLocalSeoFamilyPage from '../components/cms/NativeLocalSeoFamilyPage.astro'
 import Native404Page from '../components/native/Native404Page.astro'
-import { getNativeHtmlFileForPath } from '../lib/adoptedRoutes'
+import { getLegacyPathRedirectTarget, getNativeHtmlFileForPath, isLegacyGonePath } from '../lib/adoptedRoutes'
 import { envFlagNotFalse } from '../lib/envFlags'
 import { livePageCacheControl } from '../lib/liveCache'
 import { getBySlug, liveCmsFetchOptions, type PayloadDoc } from '../lib/payload'
@@ -19,6 +19,12 @@ let cmsCollection = ''
 
 if (legacyFile) {
   return Astro.redirect(`/${legacyFile}`, 308)
+}
+
+const legacyRedirectTarget = getLegacyPathRedirectTarget(Astro.url.pathname)
+
+if (legacyRedirectTarget !== null) {
+  return Astro.redirect(`/${legacyRedirectTarget}${Astro.url.search}`, 308)
 }
 
 if (enableCmsDynamicRoutes && slug) {
@@ -48,9 +54,12 @@ if (enableCmsDynamicRoutes && slug) {
   }
 }
 
+const isGone = !cmsDoc && isLegacyGonePath(Astro.url.pathname)
+
 if (!cmsDoc) {
-  Astro.response.status = 404
+  Astro.response.status = isGone ? 410 : 404
   Astro.response.headers.set('cache-control', 'no-store')
+  Astro.response.headers.set('x-robots-tag', 'noindex')
 } else {
   Astro.response.headers.set('cache-control', livePageCacheControl())
   Astro.response.headers.set('x-migration-render', 'cms-dynamic-structured')
@@ -58,7 +67,7 @@ if (!cmsDoc) {
 ---
 {
   !cmsDoc ? (
-    <Native404Page />
+    <Native404Page statusCode={isGone ? 410 : 404} />
   ) : cmsCollection === 'local-seo-pages' ? (
     <NativeLocalSeoFamilyPage doc={cmsDoc as PayloadDoc} />
   ) : (
