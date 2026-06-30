@@ -4,7 +4,7 @@ Stand: 2026-06-30
 
 Ziel: Alle lokalen Seiten, Keyword-Zusatzseiten und bereits vorhandenen Local-SEO-Varianten werden darauf geprueft, ob sie nur URL-/Ortsvarianten sind oder ob Title, Canonical, H1, Sektionen und Textsignale klar genug auseinanderlaufen.
 
-Quelle: gerenderte SSR-Seiten von `http://127.0.0.1:4321`.
+Quelle: gerenderte SSR-Seiten von `https://matthiasramahi.de`.
 
 ## Kurzbefund
 
