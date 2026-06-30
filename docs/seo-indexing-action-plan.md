@@ -46,6 +46,8 @@ Stand: 2026-06-30
 - Ein neuer Release-Preview-Audit wurde ergaenzt: `tools/run-seo-release-preview-audit.mjs`.
 - Der neue Scriptlauf `corepack pnpm seo:audit:release-preview` baut eine previewfaehige Server-Version, startet `astro preview`, prueft `seo:release-routing`, den Sitemap-Indexability-Audit und den GSC-Export-Audit gegen die Fixtures.
 - Die GitHub-Action `Web Quality` fuehrt den Release-Preview-Audit jetzt als abschliessenden Gate aus. Dadurch bleiben die bestehenden Vercel-/Static-Audits unverfaelscht und CI blockiert kuenftig Deployments, falls alte GSC-URLs wieder als offene 404/403/Canonical-Probleme ausgeliefert werden.
+- Fuer die Post-Deploy-Pruefung gibt es jetzt direkte Live-Befehle:
+  `corepack pnpm seo:audit:sitemap-live` und `corepack pnpm seo:audit:gsc-live`.
 
 ## Verifikation
 
@@ -77,6 +79,7 @@ Stand: 2026-06-30
 - Live-GSC-Ergebnis: 521 URL-Eintraege, 333 offene 404, 16 Redirects zu indexierbaren Zielseiten, 172 indexierbare 200er-Seiten.
 - Live-Gruppen: `Nicht gefunden (404)` = 124 offene 404 und 5 Redirects; `Gecrawlt - zurzeit nicht indexiert` = 209 offene 404 und 11 Redirects; `Gefunden - zurzeit nicht indexiert` = 172 indexierbare 200er.
 - Live-Recheck am 2026-06-30: unveraendert rot. `corepack pnpm seo:audit:gsc-exports -- --origin https://matthiasramahi.de ... --strict` ergibt weiterhin 333 offene 404, 16 Redirects zu indexierbaren Zielseiten und 172 indexierbare 200er.
+- Live-Recheck per Shortcut am 2026-06-30: `corepack pnpm seo:audit:sitemap-live` erfolgreich mit 251 indexierbaren Sitemap-URLs; `corepack pnpm seo:audit:gsc-live` schlaegt erwartbar fehl mit 333 offenen 404.
 - Schlussfolgerung: Die normale Sitemap ist live technisch sauber, aber die Redirect-/Gone-Fixes fuer alte GSC-URLs sind noch nicht auf der Live-Domain aktiv. Nach Deployment muss der Live-GSC-Export-Abgleich erneut gruen laufen.
 
 ## Wiederholbare Audit-Commands
@@ -85,6 +88,8 @@ Stand: 2026-06-30
   `corepack pnpm seo:audit:sitemap-indexability -- --origin <origin> --strict`
 - GSC-Exportdateien lokal oder live:
   `corepack pnpm seo:audit:gsc-exports -- --origin <origin> --not-found <404-export.txt> --crawled <gecrawlt-export.txt> --found <gefunden-export.txt> --strict`
+- Post-Deploy-Live-Shortcuts:
+  `corepack pnpm seo:audit:sitemap-live && corepack pnpm seo:audit:gsc-live`
 - Local-SEO-Duplicate-Audit gegen SSR:
   `LOCAL_SEO_AUDIT_ORIGIN=<origin> node tools/audit-local-seo-duplicates.mjs`
 
