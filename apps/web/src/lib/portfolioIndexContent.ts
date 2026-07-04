@@ -13,6 +13,8 @@ export type PortfolioSpread = {
   heading: string
   href: string
   linkLabel: string
+  portfolioHref?: string
+  portfolioLinkLabel?: string
   theme: 'light' | 'dark'
   photos: PortfolioPhoto[]
 }
@@ -103,6 +105,8 @@ export const portfolioSpreads: PortfolioSpread[] = [
     heading: 'Portrait',
     href: '/portraitfotografie-duesseldorf.html',
     linkLabel: 'Zur Portraitfotografie →',
+    portfolioHref: '/portfolio/portfolio-auswahl-portrait',
+    portfolioLinkLabel: 'Portrait-Auswahl ansehen →',
     theme: 'light',
     photos: [
       photo('Portrait', '/assets/portfolio/_DSC0470-Enhanced-NR.webp', '/assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp', 720, 1152),
@@ -123,6 +127,8 @@ export const portfolioSpreads: PortfolioSpread[] = [
     heading: 'Automobil',
     href: '/automobil-fotografie-duesseldorf.html',
     linkLabel: 'Zur Automobilfotografie →',
+    portfolioHref: '/portfolio/portfolio-auswahl-automobil',
+    portfolioLinkLabel: 'Automobil-Auswahl ansehen →',
     theme: 'dark',
     photos: [
       photo('Automobil', '/assets/optimized/assets-photos-automobil-neon-1920.webp', '/assets/optimized/assets-photos-automobil-neon-960.webp', 960, 640),
@@ -137,6 +143,8 @@ export const portfolioSpreads: PortfolioSpread[] = [
     heading: 'Sportwagen',
     href: '/sportwagen-fotografie-duesseldorf.html',
     linkLabel: 'Zur Sportwagenfotografie →',
+    portfolioHref: '/portfolio/portfolio-auswahl-sportwagen',
+    portfolioLinkLabel: 'Sportwagen-Auswahl ansehen →',
     theme: 'light',
     photos: [
       photo('Sportwagen', '/assets/optimized/assets-portfolio-dsc2310-1920.webp', '/assets/portfolio/thumbs/_DSC2310.webp', 720, 480),
@@ -151,6 +159,8 @@ export const portfolioSpreads: PortfolioSpread[] = [
     heading: 'Oldtimer',
     href: '/oldtimer-fotografie-duesseldorf.html',
     linkLabel: 'Zur Oldtimerfotografie →',
+    portfolioHref: '/portfolio/portfolio-auswahl-oldtimer',
+    portfolioLinkLabel: 'Oldtimer-Auswahl ansehen →',
     theme: 'dark',
     photos: [
       photo('Oldtimer', '/assets/optimized/assets-portfolio-dsc3892-1920.webp', '/assets/portfolio/thumbs/_DSC3892.webp', 720, 480),
@@ -177,6 +187,8 @@ export const portfolioSpreads: PortfolioSpread[] = [
     heading: 'Motorrad',
     href: '/motorrad-fotografie-duesseldorf.html',
     linkLabel: 'Zur Motorradfotografie →',
+    portfolioHref: '/portfolio/portfolio-auswahl-motorrad',
+    portfolioLinkLabel: 'Motorrad-Auswahl ansehen →',
     theme: 'light',
     photos: [
       photo('Motorrad', '/assets/optimized/assets-photos-motorrad-duke-1920.webp', '/assets/optimized/assets-photos-motorrad-duke-720.webp', 720, 1280),
@@ -197,6 +209,8 @@ export const portfolioSpreads: PortfolioSpread[] = [
     heading: 'Landschaft',
     href: '/landschaftsfotografie-duesseldorf.html',
     linkLabel: 'Zur Landschaftsfotografie →',
+    portfolioHref: '/portfolio/portfolio-auswahl-landschaft',
+    portfolioLinkLabel: 'Landschaft-Auswahl ansehen →',
     theme: 'dark',
     photos: [
       photo(

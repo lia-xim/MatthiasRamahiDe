@@ -103,6 +103,30 @@ const cmsSpreads =
     })
     .filter(isEditablePortfolioSpread) || []
 const displaySpreads = (cmsSpreads.length > 0 ? cmsSpreads : portfolioSpreads) as EditablePortfolioSpread[]
+const portfolioSelectionByKey: Record<string, { href: string; label: string }> = {
+  auto: { href: '/portfolio/portfolio-auswahl-automobil', label: 'Automobil-Auswahl ansehen ->' },
+  automobil: { href: '/portfolio/portfolio-auswahl-automobil', label: 'Automobil-Auswahl ansehen ->' },
+  classic: { href: '/portfolio/portfolio-auswahl-oldtimer', label: 'Oldtimer-Auswahl ansehen ->' },
+  land: { href: '/portfolio/portfolio-auswahl-landschaft', label: 'Landschaft-Auswahl ansehen ->' },
+  landschaft: { href: '/portfolio/portfolio-auswahl-landschaft', label: 'Landschaft-Auswahl ansehen ->' },
+  moto: { href: '/portfolio/portfolio-auswahl-motorrad', label: 'Motorrad-Auswahl ansehen ->' },
+  motorrad: { href: '/portfolio/portfolio-auswahl-motorrad', label: 'Motorrad-Auswahl ansehen ->' },
+  oldtimer: { href: '/portfolio/portfolio-auswahl-oldtimer', label: 'Oldtimer-Auswahl ansehen ->' },
+  portrait: { href: '/portfolio/portfolio-auswahl-portrait', label: 'Portrait-Auswahl ansehen ->' },
+  sport: { href: '/portfolio/portfolio-auswahl-sportwagen', label: 'Sportwagen-Auswahl ansehen ->' },
+  sportwagen: { href: '/portfolio/portfolio-auswahl-sportwagen', label: 'Sportwagen-Auswahl ansehen ->' },
+}
+const normalizedPortfolioKey = (value?: string) =>
+  cleanText(value)
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '')
+const portfolioSelectionFor = (spread: EditablePortfolioSpread) =>
+  spread.portfolioHref
+    ? { href: toRootRelativeHref(spread.portfolioHref), label: cleanText(spread.portfolioLinkLabel) || 'Portfolio-Auswahl ansehen ->' }
+    : portfolioSelectionByKey[normalizedPortfolioKey(spread.id)] || portfolioSelectionByKey[normalizedPortfolioKey(spread.label)]
 
 const cmsArchivePhotos = (portfolioIndex?.archive?.items || []).map(portfolioPhotoFromCms).filter(isEditablePortfolioPhoto)
 const archivePhotos = (cmsArchivePhotos.length > 0 ? cmsArchivePhotos : portfolioArchivePhotos) as EditablePortfolioPhoto[]
@@ -176,9 +200,16 @@ const contactLead =
             </figure>
           ))}
         </div>
-        <a class="pf-spread__cta" href={spread.href} {...tinaAttrs(spread.source, 'linkLabel')}>
-          <span>{spread.linkLabel}</span>
-        </a>
+        <div class="pf-spread__links">
+          <a class="pf-spread__cta" href={spread.href} {...tinaAttrs(spread.source, 'linkLabel')}>
+            <span>{spread.linkLabel}</span>
+          </a>
+          {portfolioSelectionFor(spread) && (
+            <a class="pf-spread__cta pf-spread__cta--portfolio" href={portfolioSelectionFor(spread)!.href}>
+              <span>{portfolioSelectionFor(spread)!.label}</span>
+            </a>
+          )}
+        </div>
       </section>
     ))}
 

@@ -233,9 +233,14 @@ async function auditRedirect(sourcePath, targetPath) {
 }
 
 async function auditRedirects(redirectEntries, pathRedirectEntries) {
+  const importantAliasRedirects = [
+    ['/journal', '/blog.html'],
+    ['/journal/', '/blog.html'],
+  ]
   const checks = [
     ...redirectEntries.map(([source, target]) => [`/${source}`, `/${target}`]),
     ...pathRedirectEntries.map(([source, target]) => [`/${source}/`, `/${target}`]),
+    ...importantAliasRedirects,
   ]
   const failures = []
 

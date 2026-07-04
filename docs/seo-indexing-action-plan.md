@@ -84,6 +84,20 @@ Stand: 2026-06-30
 - Post-Deployment-Recheck am 2026-06-30: `corepack pnpm seo:audit:sitemap-live` erfolgreich. 251 normale Sitemap-URLs, 251 indexierbare 200er, 0 technische Problemfaelle, 0 doppelte Canonicals, 0 doppelte Titles.
 - Schlussfolgerung: Die normale Sitemap und die aus GSC exportierten Problem-URLs sind live technisch sauber. Die naechste Bewegung ist jetzt die Validierung in der Google Search Console.
 
+## GSC-Follow-up 2026-07-04
+
+- Google Search Console meldet nach dem Re-Crawl 276 indexierte Seiten statt vorher 126. Das ist die erwartete positive Bewegung nach Redirect-/Gone-Bereinigung und Sitemap-Stabilisierung.
+- `Gefunden - zurzeit nicht indexiert` ist von 172 auf 1 Beispiel gefallen: `/portfolio/portfolio-auswahl-automobil`.
+- `Gecrawlt - zurzeit nicht indexiert` ist von 220 auf 175 gefallen. Die verbliebenen Beispiele sind groesstenteils alte WordPress-/Tag-/Category-/Artikel-URLs, die live bereits redirecten oder Gone liefern.
+- `Nicht gefunden (404)` ist von 129 auf 62 gefallen. Die noch sichtbaren Beispiele enthalten viele bereits bereinigte Alt-URLs; hier muss GSC weiter nachziehen.
+- `Seite mit Weiterleitung` ist von 16 auf 29 gestiegen. Das ist in dieser Phase erwartbar und grundsaetzlich positiv, solange die Ziele indexierbar sind.
+- `Durch noindex-Tag ausgeschlossen`: `/journal` war live eine statisch prerenderte Redirect-Seite mit `200` und `noindex`. Fix: `/journal` und `/journal/` sind jetzt echte Server-Redirects auf `/blog.html`.
+- `Alternative Seite mit richtigem kanonischen Tag`: `/autofotografie-bochum/` und `/autofotografie-dortmund/` leiten live per 308 auf selbstkanonische Automobil-Seiten.
+- `Wegen Zugriffsverbot (403) blockiert`: `/wp-admin/*` liefert live bereits `410 Gone` mit `X-Robots-Tag: noindex`; die GSC-Meldung ist hier ein Altstand.
+- `Duplikat - Google hat andere Canonical bestimmt`: `/fotografie-duesseldorf.html` und `/fotografie-deutschland.html` liefern live `200`, `index,follow` und Self-Canonical. Weiter beobachten, weil diese beiden Uebersichtsseiten bewusst nahe an der Haupt-Fotografie-Struktur liegen.
+- Portfolio-Staerkung: Der Portfolio-Index verlinkt jetzt sichtbar auf die sechs kuratierten Portfolio-Auswahlseiten, inklusive `/portfolio/portfolio-auswahl-automobil`. Das erhoeht die interne Linkkraft fuer den letzten `Gefunden - zurzeit nicht indexiert`-Fall.
+- Release-Gate erweitert: `tools/assert-seo-release-routing.mjs` prueft jetzt `/journal` und `/journal/` explizit als Redirects auf `/blog.html`.
+
 ## Wiederholbare Audit-Commands
 
 - Sitemap/Canonical lokal oder live:
