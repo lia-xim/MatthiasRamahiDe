@@ -35,8 +35,8 @@ const publishButtonScript = String.raw`
   const text = {
     idle: '\u00c4nderungen ver\u00f6ffentlichen',
     running: 'Ver\u00f6ffentliche...',
-    success: 'Ver\u00f6ffentlicht. Vercel baut jetzt.',
-    failed: 'Publish fehlgeschlagen.',
+    success: 'Ver\u00f6ffentlicht. Website ist live.',
+    failed: 'Ver\u00f6ffentlichung nicht live best\u00e4tigt.',
     noChanges: 'Keine neuen \u00c4nderungen.',
     disabled: 'Publish ist auf diesem Server nicht aktiv.',
   }
@@ -74,7 +74,7 @@ const publishButtonScript = String.raw`
 
     if (publishState === 'running') {
       label.textContent = text.running
-      status.textContent = 'Bitte warten. Die Inhalte werden nach GitHub gepusht.'
+      status.textContent = 'Bitte warten. GitHub und die Live-Website werden aktualisiert. Das dauert meist 1 bis 3 Minuten.'
       return
     }
 

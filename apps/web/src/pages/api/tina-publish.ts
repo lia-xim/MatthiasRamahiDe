@@ -1,6 +1,8 @@
 import type { APIContext } from 'astro'
 import { spawn } from 'node:child_process'
 
+import { isTrustedTinaPublishRequest } from '../../lib/tina-publish-request'
+
 export const prerender = false
 
 type PublishState = {
@@ -47,17 +49,6 @@ const json = (body: Record<string, unknown>, status = 200) =>
   })
 
 const publishEnabled = () => env('TINA_PUBLISH_ENABLED') === '1'
-
-const isSameOrigin = (request: Request) => {
-  const origin = request.headers.get('origin')
-  if (!origin) return true
-
-  try {
-    return new URL(origin).origin === new URL(request.url).origin
-  } catch {
-    return false
-  }
-}
 
 const hasPublishHeader = (request: Request) => request.headers.get('x-tina-publish-request') === '1'
 
@@ -147,8 +138,11 @@ export async function GET() {
 
 export async function POST({ request }: APIContext) {
   if (!publishEnabled()) return json({ ok: false, error: 'Tina publish is disabled.' }, 404)
-  if (!isSameOrigin(request) || !hasPublishHeader(request)) {
-    return json({ ok: false, error: 'Publish request was rejected.' }, 403)
+  if (!isTrustedTinaPublishRequest(request)) {
+    return json({ ok: false, error: 'Publish request origin was rejected.' }, 403)
+  }
+  if (!hasPublishHeader(request)) {
+    return json({ ok: false, error: 'Publish request header is missing.' }, 403)
   }
 
   if (state.running) {

@@ -11,6 +11,9 @@ GIT_COMMIT_EMAIL="${TINA_GIT_COMMIT_EMAIL:-tina-publisher@matthiasramahi.de}"
 GIT_SSH_KEY="${TINA_GIT_SSH_KEY:-$HOME/.ssh/tina_publish_github_ed25519}"
 GIT_KNOWN_HOSTS="${TINA_GIT_KNOWN_HOSTS:-$HOME/.ssh/known_hosts}"
 LOCK_DIR="${TINA_GIT_LOCK_DIR:-/tmp/matthias-ramahi-tina-publish.lock}"
+LIVE_VERIFY_URL="${TINA_GIT_VERIFY_URL:-https://matthiasramahi.de/}"
+LIVE_VERIFY_TIMEOUT="${TINA_GIT_VERIFY_TIMEOUT_SECONDS:-600}"
+LIVE_VERIFY_INTERVAL="${TINA_GIT_VERIFY_INTERVAL_SECONDS:-5}"
 
 SYNC_PATHS="${TINA_GIT_SYNC_PATHS:-apps/web/content apps/web/src/data/tinaMediaManifest.json apps/web/src/data/tinaGeneratedMediaManifest.json}"
 
@@ -94,3 +97,45 @@ fi
 
 git push origin "$GIT_BRANCH"
 echo "Tina content pushed to $GIT_REMOTE_URL ($GIT_BRANCH)."
+
+commit_sha="$(git rev-parse HEAD)"
+echo "Waiting for the public website to serve Tina commit $commit_sha."
+
+if [ -n "$LIVE_VERIFY_URL" ]; then
+  node - "$LIVE_VERIFY_URL" "$commit_sha" "$LIVE_VERIFY_TIMEOUT" "$LIVE_VERIFY_INTERVAL" <<'NODE'
+const [url, commitSha, timeoutRaw, intervalRaw] = process.argv.slice(2)
+const timeoutMs = Math.max(1, Number(timeoutRaw) || 600) * 1000
+const intervalMs = Math.max(1, Number(intervalRaw) || 5) * 1000
+const deadline = Date.now() + timeoutMs
+let attempt = 0
+
+while (Date.now() < deadline) {
+  attempt += 1
+  try {
+    const checkUrl = new URL(url)
+    checkUrl.searchParams.set('_tina_publish_check', String(Date.now()))
+    const response = await fetch(checkUrl, {
+      headers: { 'cache-control': 'no-cache' },
+      redirect: 'follow',
+    })
+    const html = await response.text()
+    if (response.ok && html.includes(commitSha)) {
+      console.log(`Public website is live with Tina commit ${commitSha}.`)
+      process.exit(0)
+    }
+    if (attempt === 1 || attempt % 6 === 0) {
+      console.log(`Public website is still deploying (attempt ${attempt}, HTTP ${response.status}).`)
+    }
+  } catch (error) {
+    if (attempt === 1 || attempt % 6 === 0) {
+      console.log(`Public website check is still waiting: ${error.message}`)
+    }
+  }
+
+  await new Promise((resolve) => setTimeout(resolve, intervalMs))
+}
+
+console.error(`Public website did not expose Tina commit ${commitSha} within ${Math.round(timeoutMs / 1000)} seconds.`)
+process.exit(1)
+NODE
+fi
