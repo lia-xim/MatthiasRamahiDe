@@ -531,6 +531,31 @@ export const servicesIndexItems: ServicesIndexItem[] = [
     ],
   },
   {
+    id: 'keyword-datenbank',
+    href: '/keyword-datenbank-seo.html',
+    headline: 'Keyword-<em>Datenbank.</em>',
+    text: 'Für SEO-Recherche, Content-Planung und Wettbewerbsanalyse empfehle ich die Contextter Keyword-Datenbank: ein ruhiger Arbeitsort für Keyword-Ideen, Suchintention, SERP-Daten, Themencluster und Content-Potenziale.',
+    tags: ['Keyword-Recherche', 'SEO-Strategie', 'SERP-Analyse'],
+    theme: 'light',
+    images: [
+      {
+        src: '/assets/services/portfolio_webp_full_001.webp',
+        alt: 'Server-Racks als Symbol für SEO-Daten und Keyword-Recherche',
+        width: 1280,
+        height: 800,
+        caption: 'SEO-Daten',
+      },
+      {
+        className: 'small screen',
+        src: '/assets/services/screencapture-gr-knospe-de-2025-10-02-23_10_04-720.webp',
+        alt: 'Website-Struktur als Ausgangspunkt für Keyword-Recherche',
+        width: 720,
+        height: 1016,
+        caption: 'Recherche',
+      },
+    ],
+  },
+  {
     id: 'viola',
     href: 'https://kim-marie-borger.com/anfragen/',
     headline: 'Viola <em>Musik.</em>',

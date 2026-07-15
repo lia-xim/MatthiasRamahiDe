@@ -134,6 +134,7 @@ export const siteChromeContent = {
           { label: 'Übersicht', href: 'leistungen.html' },
           { label: 'Fotolabor & Druck', href: 'fotolabor-druck-duesseldorf.html' },
           { label: 'Webdesign & SEO', href: 'webdesign-seo-duesseldorf.html' },
+          { label: 'Keyword-Datenbank', href: 'keyword-datenbank-seo.html' },
           { label: 'Videografie', href: 'videografie-duesseldorf.html' },
           { label: 'Drucke & Sonderanfertigungen', href: 'drucke-sonderanfertigungen-duesseldorf.html' },
         ],
@@ -171,11 +172,11 @@ export const siteChromeContent = {
       slug: 'leistungen',
       pageType: 'services-index',
       intro:
-        'Für Projekte, die über die Fotografie hinausgehen: hochwertige Drucke, Großformat, Werbetechnik, Webdesign, Video und musikalische Begleitung — seriös koordiniert, visuell abgestimmt und über erfahrene Partner in Düsseldorf und NRW umgesetzt.',
+        'Für Projekte, die über die Fotografie hinausgehen: hochwertige Drucke, Großformat, Werbetechnik, Webdesign, Keyword-Recherche, Video und musikalische Begleitung — seriös koordiniert, visuell abgestimmt und über erfahrene Partner in Düsseldorf und NRW umgesetzt.',
       seo: {
         title: 'Weitere Dienstleistungen — Matthias Ramahi',
         description:
-          'Fotolabor, Großformatdruck, Werbetechnik, Webdesign, Videografie und ergänzende Leistungen für visuelle Projekte in Düsseldorf und NRW.',
+          'Fotolabor, Großformatdruck, Werbetechnik, Webdesign, Keyword-Recherche, Videografie und ergänzende Leistungen für visuelle Projekte in Düsseldorf und NRW.',
         canonicalUrl: 'https://matthiasramahi.de/leistungen.html',
       },
     },

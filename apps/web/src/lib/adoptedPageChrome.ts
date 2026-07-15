@@ -287,6 +287,20 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
     stylesheets: [...sharedStyles, '/assets/native-webdesign-seo.css'],
     title: 'Webdesign & SEO Düsseldorf - Matthias Ramahi',
   },
+  'keyword-datenbank-seo.html': {
+    bodyClass: 'has-mr-footer',
+    current: 'leistungen',
+    description:
+      'Keyword-Datenbank für SEO-Recherche: Contextter als konkrete Arbeitsbasis für Suchintention, Themencluster, SERP-Analyse und Content-Planung.',
+    ogImage: '/assets/contextter/keyword-database-hero-detail.webp',
+    preloadImages: [
+      '/assets/contextter/keyword-database-hero-detail.webp',
+      '/assets/contextter/keyword-database-hero-list.webp',
+    ],
+    scripts: ['/assets/native-keyword-database.js', ...siteChromeScript],
+    stylesheets: [...sharedStyles, '/assets/native-keyword-database.css'],
+    title: 'Keyword-Datenbank für SEO-Recherche | Matthias Ramahi',
+  },
   'videografie-duesseldorf.html': {
     ...serviceMiniChrome('/assets/services/portfolio_webp_full_058-1.webp'),
     stylesheets: [...sharedStyles, '/assets/native-videografie.css'],

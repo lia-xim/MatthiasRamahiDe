@@ -50,6 +50,12 @@ function isLocalSeoRoute(file, adoptedFiles, localSeoPrefixes) {
   return [...localSeoPrefixes].some((prefix) => slug.startsWith(prefix))
 }
 
+const intentionalNativeOnlyFiles = new Set(['keyword-datenbank-seo.html'])
+
+function isIntentionalNativeOnlyRoute(file) {
+  return intentionalNativeOnlyFiles.has(file)
+}
+
 function generatedLocalSeoFiles(adoptedRoutes, localSeoFamilies) {
   const cityTokens = extractArray(localSeoFamilies, 'localSeoCityTokens')
   const fullScopePrefixes = extractArray(adoptedRoutes, 'fullScopeLocalSeoPrefixes')
@@ -117,6 +123,7 @@ export async function auditNativeRouteCoverage(options = {}) {
   const failures = []
   const nativeCounts = new Map()
   let nativeOnlyLocalSeoCount = 0
+  let nativeOnlyIntentionalCount = 0
   let redirectCount = 0
 
   for (const file of [...frozenFiles].sort((a, b) => a.localeCompare(b))) {
@@ -125,6 +132,10 @@ export async function auditNativeRouteCoverage(options = {}) {
 
   for (const file of [...routeModelFiles].sort((a, b) => a.localeCompare(b))) {
     if (frozenFiles.has(file)) continue
+    if (isIntentionalNativeOnlyRoute(file)) {
+      nativeOnlyIntentionalCount += 1
+      continue
+    }
     if (isLocalSeoRoute(file, adoptedFiles, localSeoPrefixes)) {
       nativeOnlyLocalSeoCount += 1
       continue
@@ -149,7 +160,9 @@ export async function auditNativeRouteCoverage(options = {}) {
   }
 
   for (const file of [...adoptedFiles].sort((a, b) => a.localeCompare(b))) {
-    if (!frozenFiles.has(file)) failures.push(`Adopted route is not present in the frozen legacy manifest: ${file}`)
+    if (!frozenFiles.has(file) && !isIntentionalNativeOnlyRoute(file)) {
+      failures.push(`Adopted route is not present in the frozen legacy manifest: ${file}`)
+    }
     if (!nativeKindFor(file)) failures.push(`Adopted route has no native renderer kind: ${file}`)
   }
 
@@ -164,6 +177,7 @@ export async function auditNativeRouteCoverage(options = {}) {
     frozenFiles: frozenFiles.size,
     nativeFiles: [...nativeCounts.values()].reduce((sum, count) => sum + count, 0),
     nativeOnlyLocalSeoFiles: nativeOnlyLocalSeoCount,
+    nativeOnlyIntentionalFiles: nativeOnlyIntentionalCount,
     redirectFiles: redirectCount,
     routeModelFiles: routeModelFiles.size,
     nativeCounts: Object.fromEntries([...nativeCounts.entries()].sort(([a], [b]) => a.localeCompare(b))),
@@ -182,6 +196,6 @@ if (isDirectRun) {
   }
 
   console.log(
-    `Native route coverage passed: ${result.frozenFiles}/${result.frozenFiles} frozen HTML files covered, ${result.nativeOnlyLocalSeoFiles} native-only local SEO route-model files allowed (${result.nativeFiles} native, ${result.redirectFiles} redirects).`,
+    `Native route coverage passed: ${result.frozenFiles}/${result.frozenFiles} frozen HTML files covered, ${result.nativeOnlyLocalSeoFiles} native-only local SEO route-model files and ${result.nativeOnlyIntentionalFiles} intentional native-only route-model files allowed (${result.nativeFiles} native, ${result.redirectFiles} redirects).`,
   )
 }

@@ -95,6 +95,7 @@ const servicePrefixes = [
   'fotolabor-druck',
   'grossformatdruck',
   'drucke-sonderanfertigungen',
+  'keyword-datenbank',
   'webdesign-seo',
   'videografie',
   'werbetechnik',

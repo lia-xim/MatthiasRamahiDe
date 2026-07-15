@@ -2,6 +2,7 @@
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import { nativeServiceDetailPages } from '../../lib/serviceDetailContent'
 import { getBySlug, type PayloadDoc } from '../../lib/payload'
+import { breadcrumbJsonLd, faqJsonLd, type JsonLd } from '../../lib/seo'
 
 type Props = {
   doc?: PayloadDoc
@@ -13,8 +14,38 @@ const page = nativeServiceDetailPages[legacyFile]
 const slug = legacyFile.replace(/\.html$/i, '')
 const providedDoc = (Astro.props as Props).doc
 const doc = providedDoc || (await getBySlug('service-pages', slug, { depth: 2 }))
+const stripHtml = (value = '') => value.replace(/<[^>]*>/g, '').replace(/&amp;/g, '&').trim()
+const primaryHref = page.hero.primaryHref || '#anfrage'
+const secondaryHref = page.hero.secondaryHref || '#leistungen'
+const ctaHref = page.ctaButton?.href || '#anfrage'
+const ctaLabel = page.ctaButton?.label || 'Projekt anfragen →'
+const isExternalHref = (href = '') => /^https?:\/\//i.test(href)
+const linkAttrs = (href = '') => (isExternalHref(href) ? { target: '_blank', rel: 'noopener noreferrer' } : {})
+const canonicalUrl = `https://matthiasramahi.de/${legacyFile}`
+const faqSchema = faqJsonLd(page.faq)
+const jsonLdItems: JsonLd[] = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': `${canonicalUrl}#service`,
+    name: stripHtml(page.hero.crumb),
+    serviceType: stripHtml(page.hero.side[1]),
+    provider: {
+      '@id': 'https://matthiasramahi.de/#person',
+    },
+    areaServed: ['Düsseldorf', 'NRW', 'Deutschland'],
+    url: canonicalUrl,
+    description: page.hero.lead,
+  },
+  breadcrumbJsonLd([
+    { name: 'Startseite', url: '/' },
+    { name: 'Weitere Dienstleistungen', url: '/leistungen.html' },
+    { name: stripHtml(page.hero.crumb), url: canonicalUrl },
+  ]),
+]
+if (faqSchema) jsonLdItems.push(faqSchema)
 ---
-<AdoptedPageLayout legacyFile={legacyFile} current="leistungen" doc={doc}>
+<AdoptedPageLayout legacyFile={legacyFile} current="leistungen" doc={doc} jsonLd={jsonLdItems}>
   <main>
     <section class="sp-hero" data-header-theme="dark" aria-label={page.hero.crumb.replace(/&amp;/g, '&')}>
       <div class="sp-hero__bg" aria-hidden="true">
@@ -37,8 +68,8 @@ const doc = providedDoc || (await getBySlug('service-pages', slug, { depth: 2 })
           <h1 class="sp-hero__h1" set:html={page.hero.h1}></h1>
           <p class="sp-hero__lead">{page.hero.lead}</p>
           <div class="sp-hero__actions">
-            <a class="sp-btn sp-btn--primary" href="#anfrage">{page.hero.primary}</a>
-            <a class="sp-btn" href="#leistungen">{page.hero.secondary}</a>
+            <a class="sp-btn sp-btn--primary" href={primaryHref} {...linkAttrs(primaryHref)}>{page.hero.primary}</a>
+            <a class="sp-btn" href={secondaryHref} {...linkAttrs(secondaryHref)}>{page.hero.secondary}</a>
           </div>
         </div>
         <dl class="sp-hero__side" aria-label="Eckdaten">
@@ -91,10 +122,63 @@ const doc = providedDoc || (await getBySlug('service-pages', slug, { depth: 2 })
       </div>
     </section>
 
+    {page.narrative && (
+      <section class="sp-text" data-header-theme="light" aria-label={stripHtml(page.narrative.title)}>
+        <div class="sp-text__inner">
+          <div class="sp-text__head">
+            <p class="sp-eyebrow">{page.narrative.eyebrow}</p>
+            <h2 set:html={page.narrative.title}></h2>
+          </div>
+          <div class="sp-text__body">
+            {page.narrative.body.map((paragraph) => <p>{paragraph}</p>)}
+          </div>
+        </div>
+      </section>
+    )}
+
+    {page.links && (
+      <section class="sp-links" data-header-theme="light" aria-label={stripHtml(page.links.title)}>
+        <div class="sp-links__head">
+          <div>
+            <p class="sp-eyebrow">{page.links.eyebrow}</p>
+            <h2 set:html={page.links.title}></h2>
+          </div>
+          <p>{page.links.lead}</p>
+        </div>
+        <div class="sp-links__grid">
+          {page.links.items.map((item) => (
+            <a class="sp-link-card" href={item.href} {...linkAttrs(item.href)}>
+              <h3>{item.label}</h3>
+              <p>{item.body}</p>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {page.faq && page.faq.length > 0 && (
+      <section class="sp-faq" data-header-theme="dark" aria-label="FAQ">
+        <div class="sp-faq__inner">
+          <div class="sp-faq__head">
+            <p class="sp-eyebrow">FAQ</p>
+            <h2>Fragen zur <em>Keyword-Datenbank.</em></h2>
+          </div>
+          <div class="sp-faq__list">
+            {page.faq.map((item) => (
+              <article class="sp-faq__item">
+                <h3>{item.question}</h3>
+                <p>{item.answer}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
     <section class="sp-cta" data-header-theme="light" aria-label="Anfrage">
       <div class="sp-cta__inner">
         <h2 class="sp-cta__head" set:html={page.ctaHead}></h2>
-        <a class="sp-cta__btn" href="#anfrage">Projekt anfragen →</a>
+        <a class="sp-cta__btn" href={ctaHref} {...linkAttrs(ctaHref)}>{ctaLabel}</a>
       </div>
     </section>
 

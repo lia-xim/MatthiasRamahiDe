@@ -294,11 +294,13 @@ if (fs.existsSync(indexPath)) {
     '<script>try{document.cookie="__tina_edit=1; Path=/; SameSite=Strict; Max-Age=3600"}catch(e){}</script>'
   const publishButtonAssets =
     '<link rel="stylesheet" href="/admin/publish-button.css"><script defer src="/admin/publish-button.js"></script>'
-  let next = source.includes('__tina_edit=1')
-    ? source
-    : source.includes('</head>')
-      ? source.replace('</head>', `${editModeCookieScript}</head>`)
-      : `${editModeCookieScript}${source}`
+  let next = source.replaceAll(' type="module" crossorigin src=', ' type="module" src=')
+
+  next = next.includes('__tina_edit=1')
+    ? next
+    : next.includes('</head>')
+      ? next.replace('</head>', `${editModeCookieScript}</head>`)
+      : `${editModeCookieScript}${next}`
 
   if (!next.includes('/admin/publish-button.js')) {
     next = next.includes('</head>') ? next.replace('</head>', `${publishButtonAssets}</head>`) : `${publishButtonAssets}${next}`
@@ -350,8 +352,11 @@ for (const entry of fs.readdirSync(assetsDir, { withFileTypes: true })) {
     'e.api.tina.contentApiUrl||window.location.origin+"/graphql"',
   )
   next = next.replaceAll('"http://localhost:4001/graphql"', sameOriginGraphqlExpression)
+  next = next.replaceAll('"http://[::1]:4001/graphql"', sameOriginGraphqlExpression)
   next = next.replaceAll('"http://localhost:4001/searchIndex"', sameOriginSearchExpression)
+  next = next.replaceAll('"http://[::1]:4001/searchIndex"', sameOriginSearchExpression)
   next = next.replaceAll('"http://localhost:4001/v2/searchIndex"', sameOriginV2SearchExpression)
+  next = next.replaceAll('"http://[::1]:4001/v2/searchIndex"', sameOriginV2SearchExpression)
 
   if (next !== source) {
     fs.writeFileSync(filePath, next)

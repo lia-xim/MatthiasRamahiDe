@@ -8,6 +8,7 @@ import NativeGrossformatdruckPage from './NativeGrossformatdruckPage.astro'
 import NativeHomePage from './NativeHomePage.astro'
 import NativeJournalIndexPage from './NativeJournalIndexPage.astro'
 import NativeJournalArticleLegacyUrlPage from './NativeJournalArticleLegacyUrlPage.astro'
+import NativeKeywordDatabasePage from './NativeKeywordDatabasePage.astro'
 import NativeLandschaftPhotographyPage from './NativeLandschaftPhotographyPage.astro'
 import NativeLegalPage from './NativeLegalPage.astro'
 import NativeMotorradPhotographyPage from './NativeMotorradPhotographyPage.astro'
@@ -51,6 +52,7 @@ const serviceRouteKinds = new Set([
   'videografie',
   'viola-musik',
   'grossformat',
+  'keyword-database',
   'service-detail',
 ])
 const serviceDoc =
@@ -101,6 +103,8 @@ if (nativeRouteKind === 'journal-detail') {
     <NativeWerbetechnikPage doc={routedDocProp} />
   ) : nativeRouteKind === 'webdesign-seo' ? (
     <NativeWebdesignSeoPage doc={routedDocProp} />
+  ) : nativeRouteKind === 'keyword-database' ? (
+    <NativeKeywordDatabasePage doc={routedDocProp} />
   ) : nativeRouteKind === 'videografie' ? (
     <NativeVideografiePage doc={routedDocProp} legacyFile={legacyFile} />
   ) : nativeRouteKind === 'viola-musik' ? (

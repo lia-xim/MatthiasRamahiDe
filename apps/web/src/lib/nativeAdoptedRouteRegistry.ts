@@ -12,6 +12,7 @@ export type NativeAdoptedRouteKind =
   | 'home'
   | 'journal-detail'
   | 'journal-index'
+  | 'keyword-database'
   | 'landscape'
   | 'legal'
   | 'local-seo'
@@ -48,6 +49,7 @@ const exactRouteKinds: Record<string, NativeAdoptedRouteKind> = {
   'grossformatdruck-duesseldorf.html': 'grossformat',
   'werbetechnik-duesseldorf.html': 'werbetechnik',
   'webdesign-seo-duesseldorf.html': 'webdesign-seo',
+  'keyword-datenbank-seo.html': 'keyword-database',
   'videografie-duesseldorf.html': 'videografie',
   'viola-musik-duesseldorf.html': 'viola-musik',
   'leistungen.html': 'services-index',

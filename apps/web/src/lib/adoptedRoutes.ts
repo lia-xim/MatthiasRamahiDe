@@ -22,6 +22,7 @@ export const adoptedLegacyFiles = [
   'grossformatdruck-duesseldorf.html',
   'werbetechnik-duesseldorf.html',
   'webdesign-seo-duesseldorf.html',
+  'keyword-datenbank-seo.html',
   'videografie-duesseldorf.html',
   'viola-musik-duesseldorf.html',
   'drucke-sonderanfertigungen-duesseldorf.html',

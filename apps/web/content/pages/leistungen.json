@@ -79,7 +79,7 @@
   "servicesIndex": {
     "overviewHeadline": "Dienstleistungen im Überblick.",
     "overviewEmphasis": "im Überblick.",
-    "overviewIntro": "Vom einzelnen Fine-Art-Print bis zur kompletten Markenfläche, Website, Filmproduktion oder Eventbegleitung. Sieben ergänzende Bereiche, ein gemeinsamer visueller Anspruch.",
+    "overviewIntro": "Vom einzelnen Fine-Art-Print bis zur kompletten Markenfläche, Website, Keyword-Recherche, Filmproduktion oder Eventbegleitung. Acht ergänzende Bereiche, ein gemeinsamer visueller Anspruch.",
     "items": [
       {
         "overviewLabel": "Fotolabor & Druck.",
@@ -128,6 +128,18 @@
         "caption1": "Website",
         "image2": 51,
         "caption2": "Technik"
+      },
+      {
+        "overviewLabel": "Keyword-Datenbank.",
+        "headline": "Keyword-Datenbank.",
+        "emphasis": "Datenbank.",
+        "text": "Für SEO-Recherche, Content-Planung und Wettbewerbsanalyse empfehle ich die Contextter Keyword-Datenbank: ein ruhiger Arbeitsort für Keyword-Ideen, Suchintention, SERP-Daten, Themencluster und Content-Potenziale.",
+        "tags": "Keyword-Recherche, SEO-Strategie, SERP-Analyse",
+        "href": "/keyword-datenbank-seo.html",
+        "image1": 51,
+        "caption1": "SEO-Daten",
+        "image2": 56,
+        "caption2": "Recherche"
       },
       {
         "overviewLabel": "Viola Musik.",
@@ -216,7 +228,7 @@
     },
     {
       "headline": "Dienstleistungen im Überblick.",
-      "body": "Vom einzelnen Fine-Art-Print bis zur kompletten Markenfläche, Website, Filmproduktion oder Eventbegleitung. Sechs ergänzende Bereiche, ein gemeinsamer visueller Anspruch.",
+      "body": "Vom einzelnen Fine-Art-Print bis zur kompletten Markenfläche, Website, Keyword-Recherche, Filmproduktion oder Eventbegleitung. Acht ergänzende Bereiche, ein gemeinsamer visueller Anspruch.",
       "_template": "textBlock"
     },
     {
@@ -330,6 +342,35 @@
         {
           "image": "/uploads/payload/portfolio_webp_full_001-1.webp",
           "caption": "Technik",
+          "cropIntent": "auto"
+        }
+      ],
+      "_template": "imageSequence"
+    },
+    {
+      "headline": "Keyword-Datenbank.",
+      "body": "Für SEO-Recherche, Content-Planung und Wettbewerbsanalyse empfehle ich die Contextter Keyword-Datenbank: ein ruhiger Arbeitsort für Keyword-Ideen, Suchintention, SERP-Daten, Themencluster und Content-Potenziale.",
+      "_template": "textBlock"
+    },
+    {
+      "headline": "SEO-Daten",
+      "layout": "single-large",
+      "items": [
+        {
+          "image": "/uploads/payload/portfolio_webp_full_001-1.webp",
+          "caption": "SEO-Daten",
+          "cropIntent": "auto"
+        }
+      ],
+      "_template": "imageSequence"
+    },
+    {
+      "headline": "Recherche",
+      "layout": "single-large",
+      "items": [
+        {
+          "image": "/uploads/payload/screencapture-gr-knospe-de-2025-10-02-23_10_04-scaled-1.webp",
+          "caption": "Recherche",
           "cropIntent": "auto"
         }
       ],

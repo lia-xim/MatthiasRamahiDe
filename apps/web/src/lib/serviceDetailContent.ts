@@ -5,13 +5,35 @@ export type ServiceDetailCard = {
   title: string
 }
 
+export type ServiceDetailFaq = {
+  answer: string
+  question: string
+}
+
+export type ServiceDetailLink = {
+  body: string
+  href: string
+  label: string
+}
+
+export type ServiceDetailTextSection = {
+  body: string[]
+  eyebrow: string
+  title: string
+}
+
 export type ServiceDetailPage = {
   contact: {
     headline: string
     lead: string
     subject: string
   }
+  ctaButton?: {
+    href: string
+    label: string
+  }
   ctaHead: string
+  faq?: ServiceDetailFaq[]
   feature: {
     aria: string
     eyebrow: string
@@ -29,10 +51,19 @@ export type ServiceDetailPage = {
     image: string
     lead: string
     primary: string
+    primaryHref?: string
     secondary: string
+    secondaryHref?: string
     side: [string, string, string]
     width: number
   }
+  links?: {
+    eyebrow: string
+    items: ServiceDetailLink[]
+    lead: string
+    title: string
+  }
+  narrative?: ServiceDetailTextSection
   overview: {
     cards: ServiceDetailCard[]
     eyebrow: string
@@ -44,6 +75,135 @@ export type ServiceDetailPage = {
 const asset = (path: string) => (path.startsWith('/') ? path : `/${path}`)
 
 export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
+  'keyword-datenbank-seo.html': {
+    file: 'keyword-datenbank-seo.html',
+    hero: {
+      image: asset('assets/services/portfolio_webp_full_001.webp'),
+      alt: 'Server-Racks als Symbol fuer strukturierte SEO-Daten und Keyword-Recherche',
+      width: 1280,
+      height: 800,
+      crumb: 'Keyword-Datenbank',
+      eyebrow: 'SEO · Keyword-Recherche',
+      h1: 'Keyword-<br><em>Datenbank.</em>',
+      lead: 'Eine fachliche Empfehlung aus meiner SEO- und Webstrategie-Arbeit: Die Contextter Keyword-Datenbank hilft, Keyword-Ideen, Suchintentionen, SERP-Daten und Wettbewerbschancen sauber zu erfassen, statt Recherche in verstreuten Tabellen und Notizen zu verlieren.',
+      primary: 'Keyword-Datenbank ansehen',
+      primaryHref: 'https://contextter.com/features/keyword-database',
+      secondary: 'Keyword-Recherche anfragen',
+      secondaryHref: '#anfrage',
+      side: ['SEO · Content · Analyse', 'Keyword-Datenbank', 'Contextter Empfehlung'],
+    },
+    overview: {
+      eyebrow: 'Leistungen im Überblick',
+      title: 'Struktur für <em>SEO-Recherche.</em>',
+      lead: 'Gute Keyword-Recherche endet nicht bei einer Liste mit Suchvolumen. Entscheidend ist, ob Begriffe, Suchintention, Wettbewerbsumfeld und Content-Potenzial so dokumentiert werden, dass daraus Prioritäten und nächste Schritte entstehen.',
+      cards: [
+        {
+          kicker: 'Recherche',
+          title: 'Keyword-Ideen sauber sammeln',
+          body: 'Neue Begriffe, Varianten und Longtails werden zentral erfasst, statt in einzelnen Tools, Exporten oder Notizen zu verschwinden.',
+          items: ['Keyword-Datenbank als Arbeitsbasis', 'Importierbare Keyword-Listen', 'Themen, Chancen und Prioritäten'],
+        },
+        {
+          kicker: 'Intent',
+          title: 'Suchintention einordnen',
+          body: 'Ein Keyword ist erst dann hilfreich, wenn klar ist, was Nutzer wirklich erwarten: Information, Vergleich, lokale Anfrage, Kaufnähe oder Problemlösung.',
+          items: ['Suchintention dokumentieren', 'Content-Planung ableiten', 'Seitenziele klarer trennen'],
+        },
+        {
+          kicker: 'SERP',
+          title: 'SERP- und Wettbewerbsdaten nutzen',
+          body: 'Wer in den Suchergebnissen bereits sichtbar ist, welche Seitentypen dominieren und wie stark der Wettbewerb wirkt, gehört direkt zur Keyword-Bewertung.',
+          items: ['SERP-Analyse', 'Wettbewerbsanalyse', 'Chancen realistisch bewerten'],
+        },
+        {
+          kicker: 'Planung',
+          title: 'Themencluster priorisieren',
+          body: 'Aus einzelnen Keywords entstehen Cluster, Briefing-Richtungen und Content-Potenziale für Seiten, Artikel, Landingpages oder bestehende Inhalte, damit organischer Traffic gezielter geplant werden kann.',
+          items: ['Themencluster bilden', 'Content-Potenziale sortieren', 'Sichtbarkeit schrittweise ausbauen'],
+        },
+      ],
+    },
+    feature: {
+      aria: 'Empfehlung',
+      eyebrow: 'Empfehlung',
+      title: 'Warum ich Contextter <em>hier empfehle.</em>',
+      lead: 'Contextter startet bewusst mit der Keyword-Datenbank als starkem Produktfokus. Genau das macht die Empfehlung sinnvoll: ein klares Werkzeug für strukturierte Recherche, nicht die Behauptung, SEO komplett zu automatisieren.',
+      items: [
+        { tag: 'Ehrlich', line: 'Die Keyword-Datenbank ersetzt keine SEO-Strategie, sie macht Recherche und Bewertung nachvollziehbarer.' },
+        { tag: 'Praktisch', line: 'Keyword-Ideen, SERP-Signale, Wettbewerber und Themenchancen werden an einem Ort zusammengeführt.' },
+        { tag: 'Strategisch', line: 'Für Content-Teams und Agenturen entsteht eine bessere Grundlage für Briefings, Priorisierung und interne Abstimmung.' },
+        { tag: 'Anschlussfähig', line: 'Die Daten passen zu klassischer SEO-Arbeit: Analyse, Planung, Umsetzung, Monitoring und Anpassung.' },
+      ],
+    },
+    narrative: {
+      eyebrow: 'Einordnung',
+      title: 'Von Keyword-Recherche zu belastbarer <em>SEO-Strategie.</em>',
+      body: [
+        'In meiner Arbeit an Websites, Content-Strukturen und Sichtbarkeit sehe ich immer wieder dasselbe Problem: Keyword-Recherche wird gemacht, aber nicht sauber weitergeführt. Es gibt Exporte, einzelne Ideen, ein paar Favoriten und vielleicht ein Content-Plan. Was oft fehlt, ist ein belastbarer Ort, an dem Suchintention, Wettbewerbsumfeld, SERP-Beobachtungen und Themenchancen zusammenkommen.',
+        'Eine strukturierte Keyword-Datenbank löst nicht automatisch das Ranking-Problem. Sie schafft aber die Grundlage, um bessere Entscheidungen zu treffen: Welche Themen sind wirklich relevant? Wo ist der Wettbewerb stark? Welche Suchanfragen gehören zusammen? Welche Seite braucht eine neue Struktur, welche nur bessere interne Verlinkung, und wo lohnt sich neuer Content?',
+        'Genau dafür ist die Contextter Keyword-Datenbank interessant: nicht als laute Produktbehauptung, sondern als ruhige Arbeitsumgebung für SEO-Verantwortliche, Selbstständige, kleine Unternehmen, Agenturen und Content-Teams, die ihre Recherche nachvollziehbarer und nutzbarer machen wollen.',
+      ],
+    },
+    links: {
+      eyebrow: 'Weiterführende Wege',
+      title: 'Passende <em>Einstiege.</em>',
+      lead: 'Je nach Ausgangslage ist entweder der direkte Blick in die Keyword-Datenbank sinnvoll oder ein gemeinsames Keyword-Recherche-Briefing für Website, Content-Planung und Wettbewerbsanalyse.',
+      items: [
+        {
+          label: 'Contextter Keyword-Datenbank',
+          href: 'https://contextter.com/features/keyword-database',
+          body: 'Direkt zur Produktseite von Contextter: Keyword-Datenbank ansehen und prüfen, ob sie zu deinem Recherche-Workflow passt.',
+        },
+        {
+          label: 'Webdesign & SEO',
+          href: '/webdesign-seo-duesseldorf.html',
+          body: 'Für Projekte, bei denen Keyword-Recherche, Seitenstruktur, Performance und Content-Strategie zusammen gedacht werden sollen.',
+        },
+        {
+          label: 'Weitere Dienstleistungen',
+          href: '/leistungen.html',
+          body: 'Zurück zur Übersicht der ergänzenden Dienstleistungen rund um Website, SEO, Produktion und visuelle Umsetzung.',
+        },
+        {
+          label: 'Keyword-Recherche anfragen',
+          href: '#anfrage',
+          body: 'Für eine konkrete Anfrage: Website, Branche, Zielregion und bestehende Inhalte reichen für den ersten Schritt.',
+        },
+      ],
+    },
+    ctaHead: 'Keyword-Recherche braucht <em>Struktur.</em>',
+    ctaButton: {
+      label: 'Keyword-Datenbank ansehen',
+      href: 'https://contextter.com/features/keyword-database',
+    },
+    faq: [
+      {
+        question: 'Ist die Keyword-Datenbank ein Ersatz für eine SEO-Beratung?',
+        answer: 'Nein. Sie ist ein Werkzeug, um Keyword-Recherche, Suchintention, SERP-Analyse und Wettbewerbsdaten strukturierter zu dokumentieren. Die strategische Bewertung und Umsetzung bleiben fachliche Arbeit.',
+      },
+      {
+        question: 'Für wen ist die Contextter Keyword-Datenbank sinnvoll?',
+        answer: 'Sinnvoll ist sie für Selbstständige, kleine Unternehmen, Agenturen, SEO-Verantwortliche und Content-Teams, die Keywords, Themencluster und Wettbewerbsdaten nicht mehr nur in verstreuten Tabellen verwalten möchten.',
+      },
+      {
+        question: 'Welche Rolle spielt Suchintention in der Keyword-Recherche?',
+        answer: 'Suchintention entscheidet, welche Art von Inhalt ein Keyword braucht. Ein informativer Ratgeber, eine Leistungsseite, ein Vergleich oder eine lokale Landingpage verfolgen unterschiedliche Ziele und sollten nicht gleich geplant werden.',
+      },
+      {
+        question: 'Kann eine Keyword-Datenbank bessere Rankings garantieren?',
+        answer: 'Nein. Rankings lassen sich nicht garantieren. Eine saubere Keyword-Datenbank kann aber helfen, bessere Prioritäten zu setzen, Content gezielter zu planen und SEO-Arbeit nachvollziehbarer zu machen.',
+      },
+      {
+        question: 'Kann ich auch eine Keyword-Recherche anfragen, ohne Contextter selbst zu nutzen?',
+        answer: 'Ja. Wenn du Unterstützung bei Keyword-Recherche, SEO-Strategie, Content-Planung oder Wettbewerbsanalyse brauchst, kann ich die Recherche als Dienstleistung einordnen und daraus konkrete Empfehlungen ableiten.',
+      },
+    ],
+    contact: {
+      subject: 'Keyword-Recherche Anfrage — Matthias Ramahi',
+      headline: 'Keyword-Recherche anfragen.',
+      lead: 'Beschreibe kurz Website, Branche, Zielgruppe und ob es um neue Themen, bessere bestehende Seiten oder Wettbewerbsanalyse geht. Ein grober Rahmen reicht für den ersten Schritt.',
+    },
+  },
   'grossformatdruck-duesseldorf.html': {
     file: 'grossformatdruck-duesseldorf.html',
     hero: {
