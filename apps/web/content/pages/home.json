@@ -1,10 +1,59 @@
 {
+  "teaserImage": "/uploads/payload/assets-photos-automobil-sunset-1921.webp",
+  "homeJournal": {
+    "intro": "Workflow, Material, Auftragsgeschichten. Lange Form, ruhig zum lesen zwischendurch.",
+    "items": [
+      {
+        "image": "/uploads/payload/assets-photos-oldtimer-stage-1920.webp",
+        "title": "Wie ich einen Oldtimer-Shoot vor Ort aufbaue.",
+        "text": "Lichtsetup, Material, Reflexionen — Schritt für Schritt durch einen kompletten Location-Workflow.",
+        "href": "/blog.html"
+      },
+      {
+        "image": "/uploads/payload/_DSC2117.webp",
+        "title": "Vom Sensor bis zur FineArt-Edition.",
+        "text": "Farbprofile, Papiere, Druckpartner — was zwischen Bild und signierter Edition wirklich passiert.",
+        "href": "/blog.html"
+      },
+      {
+        "image": "/uploads/payload/assets-photos-landschaft-1921.webp",
+        "title": "Lokal arbeiten — Düsseldorf, Köln, Essen.",
+        "text": "Wie aus einem Netzwerk im Rheinland ein Workflow für Auflage, Sammlung und Marke entsteht.",
+        "href": "/blog.html"
+      }
+    ]
+  },
+  "contactOverride": {},
+  "payloadId": "6",
+  "status": "published",
+  "createdAt": "2026-05-28T19:07:31.436Z",
+  "updatedAt": "2026-06-03T21:27:14.014Z",
   "title": "Fotografie Düsseldorf",
   "slug": "home",
-  "pageType": "home",
   "intro": "Automobil-, Portrait- und Landschaftsfotografie aus Düsseldorf für Marken, Sammler und Menschen mit Anspruch.",
   "heroImage": "/uploads/payload/_DSC2876_genErase%20(1)-2.webp",
-  "teaserImage": "/uploads/payload/assets-photos-automobil-sunset-1921.webp",
+  "seo": {
+    "title": "Matthias Ramahi — Fotografie Düsseldorf & NRW",
+    "description": "Matthias Ramahi Fotografie in Düsseldorf und NRW: Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft für Marke, Verkauf, Print und Kampagne.",
+    "focusKeyword": "Matthias Ramahi Fotografie",
+    "searchIntent": "Brand- und Leistungsnavigation: Nutzer suchen Matthias Ramahi Fotografie und den Einstieg in Portfolio, Leistungen oder Kontakt.",
+    "canonicalUrl": "https://matthiasramahi.de/",
+    "legacyUrl": "index.html",
+    "ogImage": "/uploads/payload/assets-photos-automobil-sunset-1921.webp",
+    "noIndex": false
+  },
+  "legacy": {
+    "sourceFile": "index.html",
+    "sourceUrl": "https://matthiasramahi.de/",
+    "migrationStatus": "reviewed",
+    "renderSource": "payload-legacy-html",
+    "renderedHeadHtml": "\n<meta charset=\"utf-8\" />\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\" />\n<title>Matthias Ramahi — Fotografie Düsseldorf &amp; NRW</title>\n<meta name=\"description\" content=\"Matthias Ramahi Fotografie in Düsseldorf und NRW: Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft für Marke, Verkauf, Print und Kampagne.\" />\n<meta name=\"author\" content=\"Matthias Ramahi\" />\n<meta name=\"robots\" content=\"index,follow,max-image-preview:large,max-snippet:-1\" />\n<meta name=\"theme-color\" content=\"#020306\" />\n<meta name=\"format-detection\" content=\"telephone=no\" />\n<link rel=\"canonical\" href=\"https://matthiasramahi.de/\" />\n\n<!-- Open Graph -->\n<meta property=\"og:type\" content=\"website\" />\n<meta property=\"og:site_name\" content=\"Matthias Ramahi Fotografie\" />\n<meta property=\"og:locale\" content=\"de_DE\" />\n<meta property=\"og:title\" content=\"Matthias Ramahi — Fotografie Düsseldorf &amp; NRW\" />\n<meta property=\"og:description\" content=\"Matthias Ramahi Fotografie in Düsseldorf und NRW: Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft für Marke, Verkauf, Print und Kampagne.\" />\n<meta property=\"og:url\" content=\"https://matthiasramahi.de/\" />\n<meta property=\"og:image\" content=\"https://matthiasramahi.de/assets/optimized/mpik8b82-dsc3879-1920.webp\" />\n<meta property=\"og:image:alt\" content=\"Matthias Ramahi — Fotografie Düsseldorf &amp; NRW\" />\n<meta property=\"og:image:width\" content=\"1920\" />\n<meta property=\"og:image:height\" content=\"1280\" />\n\n<!-- Twitter Card -->\n<meta name=\"twitter:card\" content=\"summary_large_image\" />\n<meta name=\"twitter:title\" content=\"Matthias Ramahi — Fotografie Düsseldorf &amp; NRW\" />\n<meta name=\"twitter:description\" content=\"Matthias Ramahi Fotografie in Düsseldorf und NRW: Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft für Marke, Verkauf, Print und Kampagne.\" />\n<meta name=\"twitter:image\" content=\"https://matthiasramahi.de/assets/optimized/mpik8b82-dsc3879-1920.webp\" />\n\n<!-- JSON-LD: Person / Photographer -->\n<script type=\"application/ld+json\">{\n  \"@context\":\"https://schema.org\",\n  \"@type\":\"Person\",\n  \"@id\":\"https://matthiasramahi.de/#person\",\n  \"name\":\"Matthias Ramahi\",\n  \"jobTitle\":\"Fotograf\",\n  \"url\":\"https://matthiasramahi.de/\",\n  \"email\":\"info@matthiasramahi.de\",\n  \"telephone\":\"+4917642449858\",\n  \"image\":\"https://matthiasramahi.de/mpissxxj-portfolio_webp_full_063-1.webp\",\n  \"address\":{\"@type\":\"PostalAddress\",\"addressLocality\":\"Düsseldorf\",\"addressRegion\":\"Nordrhein-Westfalen\",\"addressCountry\":\"DE\"},\n  \"areaServed\":[\"Düsseldorf\",\"Köln\",\"Essen\",\"Dortmund\",\"Duisburg\",\"Neuss\",\"Leverkusen\",\"Oberhausen\",\"Krefeld\",\"Wuppertal\",\"Mettmann\"],\n  \"knowsAbout\":[\"Automobilfotografie\",\"Sportwagenfotografie\",\"Oldtimer-Fotografie\",\"Motorrad-Fotografie\",\"Portraitfotografie\",\"Landschaftsfotografie\",\"Fotolabor\",\"Großformatdruck\",\"Werbetechnik\",\"Webdesign\",\"Videografie\"]\n}</script>\n\n<!-- JSON-LD: LocalBusiness / Photography Service -->\n<script type=\"application/ld+json\">{\n  \"@context\":\"https://schema.org\",\n  \"@type\":[\"LocalBusiness\",\"ProfessionalService\"],\n  \"@id\":\"https://matthiasramahi.de/#business\",\n  \"name\":\"Matthias Ramahi — Fotografie\",\n  \"image\":\"https://matthiasramahi.de/assets/optimized/mpik8b82-dsc3879-1920.webp\",\n  \"url\":\"https://matthiasramahi.de/\",\n  \"email\":\"info@matthiasramahi.de\",\n  \"telephone\":\"+4917642449858\",\n  \"priceRange\":\"€€-€€€\",\n  \"founder\":{\"@id\":\"https://matthiasramahi.de/#person\"},\n  \"address\":{\"@type\":\"PostalAddress\",\"addressLocality\":\"Düsseldorf\",\"addressRegion\":\"NRW\",\"addressCountry\":\"DE\"},\n  \"areaServed\":[\"Düsseldorf\",\"Köln\",\"Essen\",\"Dortmund\",\"Duisburg\",\"Neuss\",\"Leverkusen\",\"Oberhausen\",\"Krefeld\",\"Wuppertal\",\"Mettmann\"]\n}</script>\n\n<!-- JSON-LD: WebSite + SearchAction (Sitelinks) -->\n<script type=\"application/ld+json\">{\n  \"@context\":\"https://schema.org\",\n  \"@type\":\"WebSite\",\n  \"@id\":\"https://matthiasramahi.de/#website\",\n  \"url\":\"https://matthiasramahi.de/\",\n  \"name\":\"Matthias Ramahi — Fotografie\",\n  \"inLanguage\":\"de-DE\",\n  \"publisher\":{\"@id\":\"https://matthiasramahi.de/#person\"}\n}</script>\n\n<link rel=\"preload\" as=\"image\" href=\"/assets/optimized/mpik8b82-dsc3879-1920.webp\" fetchpriority=\"high\" crossorigin=\"anonymous\" />\n<link rel=\"stylesheet\" href=\"/assets/site-chrome.css\" />\n  <link rel=\"stylesheet\" href=\"/assets/legacy-performance.css\" />\n<link rel=\"stylesheet\" href=\"/assets/legacy-index.css\" />\n  <script type=\"application/ld+json\" data-seo=\"technical\">{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://matthiasramahi.de/#website\",\"url\":\"https://matthiasramahi.de/\",\"name\":\"Matthias Ramahi Fotografie\",\"inLanguage\":\"de-DE\",\"publisher\":{\"@id\":\"https://matthiasramahi.de/#person\"}},{\"@type\":\"Person\",\"@id\":\"https://matthiasramahi.de/#person\",\"name\":\"Matthias Ramahi\",\"url\":\"https://matthiasramahi.de/\",\"email\":\"info@matthiasramahi.de\",\"jobTitle\":\"Fotograf\"},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://matthiasramahi.de/#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Startseite\",\"item\":\"https://matthiasramahi.de/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Matthias Ramahi — Fotografie Düsseldorf & NRW\",\"item\":\"https://matthiasramahi.de/\"}]},{\"@type\":\"WebPage\",\"@id\":\"https://matthiasramahi.de/#webpage\",\"url\":\"https://matthiasramahi.de/\",\"name\":\"Matthias Ramahi — Fotografie Düsseldorf & NRW\",\"description\":\"Matthias Ramahi Fotografie in Düsseldorf und NRW: Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft für Marke, Verkauf, Print und Kampagne.\",\"inLanguage\":\"de-DE\",\"isPartOf\":{\"@id\":\"https://matthiasramahi.de/#website\"},\"breadcrumb\":{\"@id\":\"https://matthiasramahi.de/#breadcrumb\"},\"primaryImageOfPage\":{\"@type\":\"ImageObject\",\"url\":\"https://matthiasramahi.de/assets/optimized/mpik8b82-dsc3879-1920.webp\"}}]}</script>\n",
+    "renderedBodyHtml": "<main>\n\n  <!-- ===== HERO — full-bleed photo stage + name ===== -->\n  <section class=\"hero\" data-theme=\"dark\" aria-label=\"Intro\">\n    <canvas id=\"hero-shader\" aria-hidden=\"true\"\n      data-imgs=\"/assets/optimized/mpik8b82-dsc3879-1920.webp,/assets/optimized/assets-photos-automobil-neon-1920.webp,/assets/optimized/assets-photos-landschaft-1920.webp,/assets/optimized/assets-photos-oldtimer-stage-1920.webp,/assets/optimized/assets-photos-automobil-sunset-1920.webp,/assets/optimized/assets-photos-motorrad-1920.webp\"></canvas>\n    <div class=\"hero-glow\" aria-hidden=\"true\"></div>\n    <div class=\"hero-aperture\" aria-hidden=\"true\"></div>\n    <div class=\"hero-grid\">\n      <div class=\"hero-stage\">\n        <h1 class=\"hero-title\" id=\"hero-title\" data-text-idx=\"0\">\n          <span class=\"line\"><span class=\"word\">Fotografie</span></span>\n          <span class=\"line\"><span class=\"word\">Düsseldorf</span></span>\n        </h1>\n        <p class=\"hero-lead\" id=\"hero-lead\">Automobil-, Portrait- und Landschaftsfotografie aus Düsseldorf für Marken, Sammler und Menschen mit Anspruch.</p>\n        <div class=\"hero-actions\" aria-label=\"Direkte Aktionen\">\n          <a class=\"btn dark\" href=\"#anfrage\">Projekt anfragen</a>\n          <a class=\"btn\" href=\"portfolio.html\">Arbeiten ansehen</a>\n        </div>\n      </div>\n    </div>\n    <div class=\"hero-cursor\" id=\"hero-cursor\" aria-hidden=\"true\"><span class=\"ring\"></span></div>\n  </section>\n\n  <!-- ===== STATEMENT (light) — editorial pause ===== -->\n  <section class=\"statement sec-light\" data-theme=\"light\" aria-label=\"Haltung\">\n    <div class=\"section-inner\">\n      <div>\n        <h2>Bilder, die einen Raum<br><em>verändern</em>.</h2>\n      </div>\n      <div class=\"body\">\n        <p class=\"lead\">Seit über zehn Jahren entstehen meine Serien im Spannungsfeld von Präzision und Atmosphäre — Automobile, Oldtimer, Sportwagen, Motorräder, Portraits und Landschaften. Jede Arbeit folgt einer ruhigen redaktionellen Logik: Licht, Komposition, Material, Zeit.</p>\n        <p>Auftraggeber sind Marken, Sammler, Manufakturen und private Eigentümer aus Düsseldorf, Köln, Essen, Dortmund und dem gesamten Rheinland — überall dort, wo Bilder über Auflage, Sammlung oder Markenwert mitentscheiden.</p>\n        <div class=\"actions\">\n          <a class=\"btn dark\" href=\"ueber-mich.html\">Mehr über mich</a>\n          <a class=\"btn\" href=\"#chapters\" style=\"color:var(--ink);border-color:var(--ink)\">Bereiche ansehen</a>\n        </div>\n      </div>\n    </div>\n  </section>\n\n  <!-- ===== FOTOGRAFIE KAPITEL (dark) ===== -->\n  <section class=\"chapters sec-dark\" id=\"chapters\" data-theme=\"dark\" aria-label=\"Fotografie\">\n    <div class=\"section-inner\">\n      <div class=\"chapters-head\">\n        <h2>Sechs Bereiche.<br>Eine <em>Linse</em>.</h2>\n        <p class=\"lead\">Jeder Bereich hat eine eigene visuelle Logik — Bewegung, Material, Mensch, Raum. Auswählen, weiterlesen, eine Serie sehen.</p>\n      </div>\n      <div class=\"chapter-grid\">\n        <a class=\"chapter\" href=\"automobil-fotografie-duesseldorf.html\">\n          <div class=\"img\"><img src=\"/assets/optimized/assets-photos-automobil-sunset-1920.webp\" alt=\"Automobilfotografie\" loading=\"lazy\" width=\"1920\" height=\"1280\" decoding=\"async\"></div>\n          <div class=\"head\"><h3>Automobil</h3><span class=\"num\">N° 01</span></div>\n          <span class=\"meta\"><span>Location · Location · Detail</span><span class=\"arr\">→</span></span>\n        </a>\n        <a class=\"chapter\" href=\"sportwagen-fotografie-duesseldorf.html\">\n          <div class=\"img\"><img src=\"/assets/optimized/assets-photos-automobil-neon-1920.webp\" alt=\"Sportwagenfotografie\" loading=\"lazy\" width=\"1920\" height=\"1280\" decoding=\"async\"></div>\n          <div class=\"head\"><h3>Sportwagen</h3><span class=\"num\">N° 02</span></div>\n          <span class=\"meta\"><span>Performance · Editorial</span><span class=\"arr\">→</span></span>\n        </a>\n        <a class=\"chapter\" href=\"oldtimer-fotografie-duesseldorf.html\">\n          <div class=\"img\"><img src=\"/assets/optimized/assets-photos-oldtimer-stage-1920.webp\" alt=\"Oldtimerfotografie\" loading=\"lazy\" width=\"1920\" height=\"1280\" decoding=\"async\"></div>\n          <div class=\"head\"><h3>Oldtimer</h3><span class=\"num\">N° 03</span></div>\n          <span class=\"meta\"><span>Sammlung · Auktion</span><span class=\"arr\">→</span></span>\n        </a>\n        <a class=\"chapter\" href=\"motorrad-fotografie-duesseldorf.html\">\n          <div class=\"img\"><img src=\"/assets/optimized/assets-photos-motorrad-1920.webp\" alt=\"Motorradfotografie\" loading=\"lazy\" width=\"1707\" height=\"2560\" decoding=\"async\"></div>\n          <div class=\"head\"><h3>Motorrad</h3><span class=\"num\">N° 04</span></div>\n          <span class=\"meta\"><span>Manufaktur · Bewegung</span><span class=\"arr\">→</span></span>\n        </a>\n        <a class=\"chapter\" href=\"portraitfotografie-duesseldorf.html\">\n          <div class=\"img\"><img src=\"/assets/photos/portrait-warm.webp\" alt=\"Portraitfotografie\" loading=\"lazy\" width=\"1600\" height=\"2560\" decoding=\"async\"></div>\n          <div class=\"head\"><h3>Portrait</h3><span class=\"num\">N° 05</span></div>\n          <span class=\"meta\"><span>Business · Editorial</span><span class=\"arr\">→</span></span>\n        </a>\n        <a class=\"chapter\" href=\"landschaftsfotografie-duesseldorf.html\">\n          <div class=\"img\"><img src=\"/assets/optimized/assets-photos-landschaft-1920.webp\" alt=\"Landschaftsfotografie\" loading=\"lazy\" width=\"1707\" height=\"2560\" decoding=\"async\"></div>\n          <div class=\"head\"><h3>Landschaft</h3><span class=\"num\">N° 06</span></div>\n          <span class=\"meta\"><span>Edition · Großformat</span><span class=\"arr\">→</span></span>\n        </a>\n      </div>\n    </div>\n  </section>\n\n  <!-- ===== PORTFOLIO TEASER (light) — Strom ===== -->\n  <section class=\"pf-teaser sec-light\" data-theme=\"light\" aria-label=\"Portfolio\">\n    <div class=\"section-inner\">\n      <div class=\"pf-head\">\n        <h2>Ausgewählte<br><em>Arbeiten</em>.</h2>\n        <p class=\"lead\">Ein Strom aus aktuellen Serien — kontinuierlich in Bewegung. Klick auf ein Bild öffnet die Vorschau.</p>\n      </div>\n      <div class=\"pf-marquee\" id=\"pfMarquee\">\n        <div class=\"pf-row row-1\">\n          <div class=\"pf-track\" id=\"pfTrack1\"></div>\n        </div>\n        <div class=\"pf-row row-2\">\n          <div class=\"pf-track\" id=\"pfTrack2\"></div>\n        </div>\n      </div>\n      <div class=\"pf-foot\">\n        <a class=\"btn dark\" href=\"portfolio.html\">Vollständiges Portfolio →</a>\n      </div>\n    </div>\n  </section>\n\n  <!-- ===== ÜBER MICH (dark) ===== -->\n  <section class=\"about sec-dark\" data-theme=\"dark\" aria-label=\"Über mich\">\n    <div class=\"section-inner\">\n      <div class=\"about-img\">\n        <img src=\"/mpissxxj-portfolio_webp_full_063-1.webp\" alt=\"Matthias Ramahi\" loading=\"lazy\" width=\"1628\" height=\"1920\" decoding=\"async\">\n      </div>\n      <div class=\"about-copy\">\n        <p class=\"kicker\">Über mich</p>\n        <h2>Hinter der<br><em>Kamera</em>.</h2>\n        <p class=\"lead\">Ausgebildet im Handwerk, denkend wie ein Editor — ich arbeite ruhig, präzise und in engem Dialog mit dem Auftraggeber. Vom ersten Briefing bis zum finalen Druck.</p>\n        <p>Meine Location steht in Düsseldorf, mein Netzwerk im gesamten Rheinland. Ich begleite Marken, Manufakturen, Sammler und private Eigentümer dort, wo ein Bild über Auflage, Sammlung oder Markenwert mitentscheidet.</p>\n        <div class=\"actions\">\n          <a class=\"btn primary\" href=\"ueber-mich.html\">Mehr über mich</a>\n          <a class=\"btn\" href=\"#anfrage\" style=\"color:#f3f5ef;border-color:rgba(243,245,239,.4)\">Projekt anfragen</a>\n        </div>\n      </div>\n    </div>\n  </section>\n\n  <!-- ===== LEISTUNGEN INDEX (light) — book-like list ===== -->\n  <section class=\"services-sec sec-light\" data-theme=\"light\" aria-label=\"Weitere Dienstleistungen\">\n    <div class=\"section-inner\">\n      <div class=\"services-head\">\n        <h2>Weitere Leistungen<br><em>im&nbsp;Überblick</em>.</h2>\n        <p class=\"lead\">Für Projekte, die über die Fotografie hinausgehen — Druck, Großformat, Werbetechnik, Webdesign, Video, Sonderanfertigungen und Musik. Kuratiert, koordiniert, ein Ansprechpartner.</p>\n      </div>\n      <div class=\"services-list\">\n        <a class=\"service-row\" href=\"fotolabor-druck-duesseldorf.html\">\n          <span class=\"num\">N° 01</span><h3>Fotolabor &amp; Druck</h3><p>FineArt- und Hochwertdruck — von der Datei bis zur signierten Edition.</p><span class=\"arr\">Detail →</span>\n        </a>\n        <a class=\"service-row\" href=\"grossformatdruck-duesseldorf.html\">\n          <span class=\"num\">N° 02</span><h3>Großformatdruck</h3><p>Poster, Banner, Messewände, Acrylglas — kalibrierte Galeriequalität.</p><span class=\"arr\">Detail →</span>\n        </a>\n        <a class=\"service-row\" href=\"werbetechnik-duesseldorf.html\">\n          <span class=\"num\">N° 03</span><h3>Werbetechnik</h3><p>Schaufenster, Beklebungen, Firmenschilder und Displaylösungen für den Raum.</p><span class=\"arr\">Detail →</span>\n        </a>\n        <a class=\"service-row\" href=\"webdesign-seo-duesseldorf.html\">\n          <span class=\"num\">N° 04</span><h3>Webdesign &amp; SEO</h3><p>Markenseiten, Portfolios und lokale Sichtbarkeit im Rheinland.</p><span class=\"arr\">Detail →</span>\n        </a>\n        <a class=\"service-row\" href=\"viola-musik-duesseldorf.html\">\n          <span class=\"num\">N° 05</span><h3>Viola Musik</h3><p>Live-Musik und klassische Begleitung für Empfänge und Vernissagen.</p><span class=\"arr\">Detail →</span>\n        </a>\n        <a class=\"service-row\" href=\"videografie-duesseldorf.html\">\n          <span class=\"num\">N° 06</span><h3>Videografie</h3><p>Marken-, Event- und Imagefilm — vom Konzept bis zum finalen Cut.</p><span class=\"arr\">Detail →</span>\n        </a>\n        <a class=\"service-row\" href=\"drucke-sonderanfertigungen-duesseldorf.html\">\n          <span class=\"num\">N° 07</span><h3>Drucke &amp; Sonderanfertigungen</h3><p>Mappen, Editionen, Geschenke und Interior — von der Idee zum Unikat.</p><span class=\"arr\">Detail →</span>\n        </a>\n      </div>\n      <div style=\"margin-top:32px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center\">\n        <span style=\"font:10px var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--quiet-l)\">07 Bereiche · ein Netzwerk</span>\n        <a class=\"btn dark\" href=\"leistungen.html\">Alle Leistungen</a>\n      </div>\n    </div>\n  </section>\n\n  <!-- ===== BLOG / JOURNAL (dark) ===== -->\n  <section class=\"blog-sec sec-dark\" data-theme=\"dark\" aria-label=\"Journal\">\n    <div class=\"section-inner\">\n      <div class=\"blog-head\">\n        <h2>Journal.</h2>\n        <p class=\"lead\">Notizen aus dem Netzwerk — Workflow, Material, Auftragsgeschichten. Lange Form, ruhig kuratiert.</p>\n      </div>\n      <div class=\"blog-grid\">\n        <a class=\"post\" href=\"blog.html\">\n          <div class=\"pimg\"><img data-src=\"/assets/optimized/assets-photos-oldtimer-stage-1920.webp\" alt=\"Location Setup für Oldtimer\" loading=\"lazy\" width=\"1920\" height=\"1280\" decoding=\"async\"></div>\n          <span class=\"meta\"><span>N° 01</span><span>05 / 2026</span><span>Fotograf</span></span>\n          <h3>Wie ich einen Oldtimer-Shoot vor Ort aufbaue.</h3>\n          <p>Lichtsetup, Material, Reflexionen — Schritt für Schritt durch einen kompletten Location-Workflow.</p>\n          <span class=\"read\">Lesen →</span>\n        </a>\n        <a class=\"post\" href=\"blog.html\">\n          <div class=\"pimg\"><img src=\"/assets/services/portfolio_webp_full_005-2.webp\" alt=\"FineArt Print Edition\" loading=\"lazy\" width=\"1536\" height=\"1920\" decoding=\"async\"></div>\n          <span class=\"meta\"><span>N° 02</span><span>04 / 2026</span><span>Print</span></span>\n          <h3>Vom Sensor bis zur FineArt-Edition.</h3>\n          <p>Farbprofile, Papiere, Druckpartner — was zwischen Bild und signierter Edition wirklich passiert.</p>\n          <span class=\"read\">Lesen →</span>\n        </a>\n        <a class=\"post\" href=\"blog.html\">\n          <div class=\"pimg\"><img data-src=\"/assets/optimized/assets-photos-landschaft-1920.webp\" alt=\"Lokal arbeiten im Rheinland\" loading=\"lazy\" width=\"1707\" height=\"2560\" decoding=\"async\"></div>\n          <span class=\"meta\"><span>N° 03</span><span>03 / 2026</span><span>NRW</span></span>\n          <h3>Lokal arbeiten — Düsseldorf, Köln, Essen.</h3>\n          <p>Wie aus einem Netzwerk im Rheinland ein Workflow für Auflage, Sammlung und Marke entsteht.</p>\n          <span class=\"read\">Lesen →</span>\n        </a>\n      </div>\n      <div style=\"margin-top:36px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center\">\n        <span style=\"font:10px var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--quiet)\">03 aktuelle · Archiv im Journal</span>\n        <a class=\"btn\" style=\"color:#f3f5ef;border-color:rgba(243,245,239,.4)\" href=\"blog.html\">Alle Beiträge</a>\n      </div>\n    </div>\n  </section>\n\n  <!-- ===== ANFRAGE (shared contact form) ===== -->\n  <section\n    id=\"anfrage\"\n    data-contact-section\n    data-theme=\"light\"\n    data-contact-subject=\"Projektanfrage\"\n    data-contact-headline=\"Projekt <em>anfragen.</em>\"\n    data-contact-lead=\"Schreiben Sie kurz, welche Leistung Sie interessiert, wo das Projekt stattfindet und welchen Zeitraum Sie planen. Ich melde mich mit Rückfragen oder einem nächsten Schritt per E-Mail.\"\n  ></section>\n\n</main>\n\n",
+    "afterFooterHtml": "\n\n<!-- ===== LIGHTBOX ===== -->\n<div class=\"lb\" id=\"lightbox\" role=\"dialog\" aria-modal=\"true\" aria-label=\"Bildvorschau\" aria-hidden=\"true\">\n  <div class=\"lb-stage\">\n    <button class=\"lb-close\" id=\"lbClose\" type=\"button\" aria-label=\"Schließen\">×</button>\n    <button class=\"lb-prev\" id=\"lbPrev\" type=\"button\" aria-label=\"Vorheriges Bild\">‹</button>\n    <img class=\"lb-img\" id=\"lbImg\" alt=\"Vergroesserte Portfolioansicht\" decoding=\"async\" loading=\"lazy\">\n    <button class=\"lb-next\" id=\"lbNext\" type=\"button\" aria-label=\"Nächstes Bild\">›</button>\n    <span class=\"lb-counter\" id=\"lbCounter\"></span>\n  </div>\n</div>\n\n<script src=\"/assets/legacy-index.js\" defer></script>\n\n<script src=\"/assets/site-chrome.js\" defer></script>\n",
+    "bodyClass": "has-mr-footer",
+    "extractedText": "Automobil-, Portrait- und Landschaftsfotografie aus Düsseldorf für Marken, Sammler und Menschen mit Anspruch.\n\nSeit über zehn Jahren entstehen meine Serien im Spannungsfeld von Präzision und Atmosphäre — Automobile, Oldtimer, Sportwagen, Motorräder, Portraits und Landschaften. Jede Arbeit folgt einer ruhigen redaktionellen Logik: Licht, Komposition, Material, Zeit.\n\nAuftraggeber sind Marken, Sammler, Manufakturen und private Eigentümer aus Düsseldorf, Köln, Essen, Dortmund und dem gesamten Rheinland — überall dort, wo Bilder über Auflage, Sammlung oder Markenwert mitentscheiden.\n\nJeder Bereich hat eine eigene visuelle Logik — Bewegung, Material, Mensch, Raum. Auswählen, weiterlesen, eine Serie sehen.\n\nEin Strom aus aktuellen Serien — kontinuierlich in Bewegung. Klick auf ein Bild öffnet die Vorschau.\n\nAusgebildet im Handwerk, denkend wie ein Editor — ich arbeite ruhig, präzise und in engem Dialog mit dem Auftraggeber. Vom ersten Briefing bis zum finalen Druck.\n\nMeine Location steht in Düsseldorf, mein Netzwerk im gesamten Rheinland. Ich begleite Marken, Manufakturen, Sammler und private Eigentümer dort, wo ein Bild über Auflage, Sammlung oder Markenwert mitentscheidet.\n\nFür Projekte, die über die Fotografie hinausgehen — Druck, Großformat, Werbetechnik, Webdesign, Video, Sonderanfertigungen und Musik. Kuratiert, koordiniert, ein Ansprechpartner.\n\nFineArt- und Hochwertdruck — von der Datei bis zur signierten Edition.\n\nPoster, Banner, Messewände, Acrylglas — kalibrierte Galeriequalität.\n\nSchaufenster, Beklebungen, Firmenschilder und Displaylösungen für den Raum.\n\nMarkenseiten, Portfolios und lokale Sichtbarkeit im Rheinland.\n\nLive-Musik und klassische Begleitung für Empfänge und Vernissagen.\n\nMarken-, Event- und Imagefilm — vom Konzept bis zum finalen Cut.\n\nMappen, Editionen, Geschenke und Interior — von der Idee zum Unikat.\n\nNotizen aus dem Netzwerk — Workflow, Material, Auftragsgeschichten. Lange Form, ruhig kuratiert.\n\nLichtsetup, Material, Reflexionen — Schritt für Schritt durch einen kompletten Location-Workflow.\n\nFarbprofile, Papiere, Druckpartner — was zwischen Bild und signierter Edition wirklich passiert.\n\nWie aus einem Netzwerk im Rheinland ein Workflow für Auflage, Sammlung und Marke entsteht."
+  },
+  "pageType": "home",
   "heroSlides": [
     {
       "image": "/uploads/payload/_DSC3882.webp",
@@ -84,176 +133,6 @@
       "secondaryHref": "/portfolio.html"
     }
   ],
-  "homeStatement": {
-    "body": [
-      {
-        "text": "Seit über drei Jahren entstehen meine Bilder rund um Automobile, Oldtimer, Sportwagen, Motorräder, Portraits und Landschaften. Jede Arbeit folgt einer perfektem Licht, Komposition, Material, Zeit."
-      },
-      {
-        "text": "Auftraggeber sind Marken, Sammler, Manufakturen und private Eigentümer aus Düsseldorf, Köln, Essen, Dortmund und dem gesamten Rheinland - überall dort, wo Bilder über Auflage, Sammlung oder Markenwert mitentscheiden."
-      }
-    ]
-  },
-  "homeChapters": {
-    "intro": "Von Automobil zu Oldtimer habe ich alles in meinem Portfolio",
-    "items": [
-      {
-        "image": "/uploads/payload/20250312-DSC00743.webp",
-        "title": "Automobil",
-        "href": "/automobil-fotografie-duesseldorf.html"
-      },
-      {
-        "image": "/uploads/payload/_DSC3884.webp",
-        "title": "Sportwagen",
-        "href": "/sportwagen-fotografie-duesseldorf.html"
-      },
-      {
-        "image": "/uploads/payload/_DSC3804.webp",
-        "title": "Oldtimer",
-        "href": "/oldtimer-fotografie-duesseldorf.html"
-      },
-      {
-        "image": "/uploads/payload/assets-photos-motorrad-1920.webp",
-        "title": "Motorrad",
-        "href": "/motorrad-fotografie-duesseldorf.html"
-      },
-      {
-        "image": "/uploads/payload/portrait-warm-1.webp",
-        "title": "Portrait",
-        "href": "/portraitfotografie-duesseldorf.html"
-      },
-      {
-        "image": "/uploads/payload/_DSC8015.webp",
-        "title": "Landschaft",
-        "href": "/landschaftsfotografie-duesseldorf.html"
-      }
-    ]
-  },
-  "homeSelectedWorks": {
-    "intro": "Meine Aktuellen Bilder Serien"
-  },
-  "homeAbout": {
-    "kicker": "Über mich",
-    "image": "/uploads/payload/mpissxxj-portfolio_webp_full_063-2.webp",
-    "body": [
-      {
-        "text": "Von Belichtung zur Präzision an der Kamera - ich arbeite ruhig, präzise und in engem Dialog mit dem Auftraggeber. Vom ersten Briefing bis zum finalen Druck."
-      },
-      {
-        "text": "Meine Location ist in Düsseldorf, mein Netzwerk im gesamten Rheinland. Ich begleite Marken, Manufakturen, Sammler und private Eigentümer dort, wo ein Bild über Auflage, Sammlung oder Markenwert mitentscheidet."
-      }
-    ]
-  },
-  "homeServices": {
-    "intro": "Für Projekte, die über die Fotografie hinausgehen - Druck, Großformat, Werbetechnik, Webdesign, Video, Sonderanfertigungen und Musik. Kuratiert, koordiniert, ein Ansprechpartner.",
-    "items": [
-      {
-        "title": "Fotolabor & Druck",
-        "text": "FineArt- und Hochwertdruck — von der Datei bis zum einrahmen.",
-        "href": "/fotolabor-druck-duesseldorf.html"
-      },
-      {
-        "title": "Großformatdruck",
-        "text": "Poster, Banner, Messewände, Acrylglas — Auf hohem Niveau",
-        "href": "/grossformatdruck-duesseldorf.html"
-      },
-      {
-        "title": "Werbetechnik",
-        "text": "Schaufenster, Beklebungen, Firmenschilder und Displaylösungen für den Raum.",
-        "href": "/werbetechnik-duesseldorf.html"
-      },
-      {
-        "title": "Webdesign & SEO",
-        "text": "Markenseiten, Portfolios und lokale Sichtbarkeit für Ihre Online Präsenz",
-        "href": "/webdesign-seo-duesseldorf.html"
-      },
-      {
-        "title": "Viola Musik",
-        "text": "Live-Musik und klassische Begleitung für Empfänge und Vernissagen, Hochzeiten und Beerdigungen.",
-        "href": "https://kim-marie-borger.com/anfragen/"
-      },
-      {
-        "title": "Videografie",
-        "text": "Marken-, Musikvideo, Event- und Imagefilm — vom Konzept bis zum finalen Cut.",
-        "href": "/videografie-duesseldorf.html"
-      },
-      {
-        "title": "Drucke & Sonderanfertigungen",
-        "text": "Mappen, Editionen, Geschenke und Interior — von der Idee zum Unikat.",
-        "href": "/drucke-sonderanfertigungen-duesseldorf.html"
-      }
-    ]
-  },
-  "homeJournal": {
-    "intro": "Workflow, Material, Auftragsgeschichten. Lange Form, ruhig zum lesen zwischendurch.",
-    "items": [
-      {
-        "image": "/uploads/payload/assets-photos-oldtimer-stage-1920.webp",
-        "title": "Wie ich einen Oldtimer-Shoot vor Ort aufbaue.",
-        "text": "Lichtsetup, Material, Reflexionen — Schritt für Schritt durch einen kompletten Location-Workflow.",
-        "href": "/blog.html"
-      },
-      {
-        "image": "/uploads/payload/_DSC2117.webp",
-        "title": "Vom Sensor bis zur FineArt-Edition.",
-        "text": "Farbprofile, Papiere, Druckpartner — was zwischen Bild und signierter Edition wirklich passiert.",
-        "href": "/blog.html"
-      },
-      {
-        "image": "/uploads/payload/assets-photos-landschaft-1921.webp",
-        "title": "Lokal arbeiten — Düsseldorf, Köln, Essen.",
-        "text": "Wie aus einem Netzwerk im Rheinland ein Workflow für Auflage, Sammlung und Marke entsteht.",
-        "href": "/blog.html"
-      }
-    ]
-  },
-  "aboutHero": {
-    "primaryHref": "",
-    "secondaryHref": ""
-  },
-  "aboutStatement": {
-    "primaryHref": "",
-    "secondaryHref": ""
-  },
-  "aboutChapters": {
-    "items": []
-  },
-  "aboutSister": {
-    "href": "",
-    "plate": {
-      "roles": []
-    }
-  },
-  "aboutContact": {},
-  "photographyIndex": {
-    "clusterIntro": [],
-    "topics": []
-  },
-  "portfolioIndex": {
-    "contextBody": [],
-    "slices": [],
-    "archive": {
-      "batchSize": 12,
-      "items": []
-    },
-    "contact": {}
-  },
-  "servicesIndex": {
-    "items": [],
-    "whyCards": []
-  },
-  "journalIndex": {
-    "tickerItems": [],
-    "featured": {
-      "buttonHref": ""
-    },
-    "initialVisiblePostCount": 6,
-    "filters": [],
-    "finalCta": {
-      "primaryHref": "",
-      "secondaryHref": ""
-    }
-  },
   "blocks": [
     {
       "headline": "Matthias Ramahi Fotografie",
@@ -341,69 +220,143 @@
       "_template": "textBlock"
     }
   ],
-  "contactOverride": {},
-  "seo": {
-    "title": "Matthias Ramahi — Fotografie Düsseldorf & NRW",
-    "description": "Matthias Ramahi Fotografie in Düsseldorf und NRW: Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft für Marke, Verkauf, Print und Kampagne.",
-    "secondaryKeywords": [],
-    "internalLinkAnchors": [],
-    "canonicalUrl": "https://matthiasramahi.de/",
-    "legacyUrl": "index.html",
-    "ogImage": "/uploads/payload/assets-photos-automobil-sunset-1921.webp",
-    "noIndex": false,
-    "focusKeyword": "Matthias Ramahi Fotografie",
-    "searchIntent": "Brand- und Leistungsnavigation: Nutzer suchen Matthias Ramahi Fotografie und den Einstieg in Portfolio, Leistungen oder Kontakt."
+  "homeStatement": {
+    "body": [
+      {
+        "text": "Seit über drei Jahren entstehen meine Bilder rund um Automobile, Oldtimer, Sportwagen, Motorräder, Portraits und Landschaften. Jede Arbeit folgt einer perfektem Licht, Komposition, Material, Zeit."
+      },
+      {
+        "text": "Auftraggeber sind Marken, Sammler, Manufakturen und private Eigentümer aus Düsseldorf, Köln, Essen, Dortmund und dem gesamten Rheinland - überall dort, wo Bilder über Auflage, Sammlung oder Markenwert mitentscheiden."
+      }
+    ]
   },
-  "legacy": {
-    "sourceFile": "index.html",
-    "sourceUrl": "https://matthiasramahi.de/",
-    "migrationStatus": "reviewed",
-    "renderSource": "payload-legacy-html",
-    "renderedHeadHtml": "\n<meta charset=\"utf-8\" />\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\" />\n<title>Matthias Ramahi — Fotografie Düsseldorf &amp; NRW</title>\n<meta name=\"description\" content=\"Matthias Ramahi Fotografie in Düsseldorf und NRW: Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft für Marke, Verkauf, Print und Kampagne.\" />\n<meta name=\"author\" content=\"Matthias Ramahi\" />\n<meta name=\"robots\" content=\"index,follow,max-image-preview:large,max-snippet:-1\" />\n<meta name=\"theme-color\" content=\"#020306\" />\n<meta name=\"format-detection\" content=\"telephone=no\" />\n<link rel=\"canonical\" href=\"https://matthiasramahi.de/\" />\n\n<!-- Open Graph -->\n<meta property=\"og:type\" content=\"website\" />\n<meta property=\"og:site_name\" content=\"Matthias Ramahi Fotografie\" />\n<meta property=\"og:locale\" content=\"de_DE\" />\n<meta property=\"og:title\" content=\"Matthias Ramahi — Fotografie Düsseldorf &amp; NRW\" />\n<meta property=\"og:description\" content=\"Matthias Ramahi Fotografie in Düsseldorf und NRW: Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft für Marke, Verkauf, Print und Kampagne.\" />\n<meta property=\"og:url\" content=\"https://matthiasramahi.de/\" />\n<meta property=\"og:image\" content=\"https://matthiasramahi.de/assets/optimized/mpik8b82-dsc3879-1920.webp\" />\n<meta property=\"og:image:alt\" content=\"Matthias Ramahi — Fotografie Düsseldorf &amp; NRW\" />\n<meta property=\"og:image:width\" content=\"1920\" />\n<meta property=\"og:image:height\" content=\"1280\" />\n\n<!-- Twitter Card -->\n<meta name=\"twitter:card\" content=\"summary_large_image\" />\n<meta name=\"twitter:title\" content=\"Matthias Ramahi — Fotografie Düsseldorf &amp; NRW\" />\n<meta name=\"twitter:description\" content=\"Matthias Ramahi Fotografie in Düsseldorf und NRW: Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft für Marke, Verkauf, Print und Kampagne.\" />\n<meta name=\"twitter:image\" content=\"https://matthiasramahi.de/assets/optimized/mpik8b82-dsc3879-1920.webp\" />\n\n<!-- JSON-LD: Person / Photographer -->\n<script type=\"application/ld+json\">{\n  \"@context\":\"https://schema.org\",\n  \"@type\":\"Person\",\n  \"@id\":\"https://matthiasramahi.de/#person\",\n  \"name\":\"Matthias Ramahi\",\n  \"jobTitle\":\"Fotograf\",\n  \"url\":\"https://matthiasramahi.de/\",\n  \"email\":\"info@matthiasramahi.de\",\n  \"telephone\":\"+4917642449858\",\n  \"image\":\"https://matthiasramahi.de/mpissxxj-portfolio_webp_full_063-1.webp\",\n  \"address\":{\"@type\":\"PostalAddress\",\"addressLocality\":\"Düsseldorf\",\"addressRegion\":\"Nordrhein-Westfalen\",\"addressCountry\":\"DE\"},\n  \"areaServed\":[\"Düsseldorf\",\"Köln\",\"Essen\",\"Dortmund\",\"Duisburg\",\"Neuss\",\"Leverkusen\",\"Oberhausen\",\"Krefeld\",\"Wuppertal\",\"Mettmann\"],\n  \"knowsAbout\":[\"Automobilfotografie\",\"Sportwagenfotografie\",\"Oldtimer-Fotografie\",\"Motorrad-Fotografie\",\"Portraitfotografie\",\"Landschaftsfotografie\",\"Fotolabor\",\"Großformatdruck\",\"Werbetechnik\",\"Webdesign\",\"Videografie\"]\n}</script>\n\n<!-- JSON-LD: LocalBusiness / Photography Service -->\n<script type=\"application/ld+json\">{\n  \"@context\":\"https://schema.org\",\n  \"@type\":[\"LocalBusiness\",\"ProfessionalService\"],\n  \"@id\":\"https://matthiasramahi.de/#business\",\n  \"name\":\"Matthias Ramahi — Fotografie\",\n  \"image\":\"https://matthiasramahi.de/assets/optimized/mpik8b82-dsc3879-1920.webp\",\n  \"url\":\"https://matthiasramahi.de/\",\n  \"email\":\"info@matthiasramahi.de\",\n  \"telephone\":\"+4917642449858\",\n  \"priceRange\":\"€€-€€€\",\n  \"founder\":{\"@id\":\"https://matthiasramahi.de/#person\"},\n  \"address\":{\"@type\":\"PostalAddress\",\"addressLocality\":\"Düsseldorf\",\"addressRegion\":\"NRW\",\"addressCountry\":\"DE\"},\n  \"areaServed\":[\"Düsseldorf\",\"Köln\",\"Essen\",\"Dortmund\",\"Duisburg\",\"Neuss\",\"Leverkusen\",\"Oberhausen\",\"Krefeld\",\"Wuppertal\",\"Mettmann\"]\n}</script>\n\n<!-- JSON-LD: WebSite + SearchAction (Sitelinks) -->\n<script type=\"application/ld+json\">{\n  \"@context\":\"https://schema.org\",\n  \"@type\":\"WebSite\",\n  \"@id\":\"https://matthiasramahi.de/#website\",\n  \"url\":\"https://matthiasramahi.de/\",\n  \"name\":\"Matthias Ramahi — Fotografie\",\n  \"inLanguage\":\"de-DE\",\n  \"publisher\":{\"@id\":\"https://matthiasramahi.de/#person\"}\n}</script>\n\n<link rel=\"preload\" as=\"image\" href=\"/assets/optimized/mpik8b82-dsc3879-1920.webp\" fetchpriority=\"high\" crossorigin=\"anonymous\" />\n<link rel=\"stylesheet\" href=\"/assets/site-chrome.css\" />\n  <link rel=\"stylesheet\" href=\"/assets/legacy-performance.css\" />\n<link rel=\"stylesheet\" href=\"/assets/legacy-index.css\" />\n  <script type=\"application/ld+json\" data-seo=\"technical\">{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://matthiasramahi.de/#website\",\"url\":\"https://matthiasramahi.de/\",\"name\":\"Matthias Ramahi Fotografie\",\"inLanguage\":\"de-DE\",\"publisher\":{\"@id\":\"https://matthiasramahi.de/#person\"}},{\"@type\":\"Person\",\"@id\":\"https://matthiasramahi.de/#person\",\"name\":\"Matthias Ramahi\",\"url\":\"https://matthiasramahi.de/\",\"email\":\"info@matthiasramahi.de\",\"jobTitle\":\"Fotograf\"},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://matthiasramahi.de/#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Startseite\",\"item\":\"https://matthiasramahi.de/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Matthias Ramahi — Fotografie Düsseldorf & NRW\",\"item\":\"https://matthiasramahi.de/\"}]},{\"@type\":\"WebPage\",\"@id\":\"https://matthiasramahi.de/#webpage\",\"url\":\"https://matthiasramahi.de/\",\"name\":\"Matthias Ramahi — Fotografie Düsseldorf & NRW\",\"description\":\"Matthias Ramahi Fotografie in Düsseldorf und NRW: Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft für Marke, Verkauf, Print und Kampagne.\",\"inLanguage\":\"de-DE\",\"isPartOf\":{\"@id\":\"https://matthiasramahi.de/#website\"},\"breadcrumb\":{\"@id\":\"https://matthiasramahi.de/#breadcrumb\"},\"primaryImageOfPage\":{\"@type\":\"ImageObject\",\"url\":\"https://matthiasramahi.de/assets/optimized/mpik8b82-dsc3879-1920.webp\"}}]}</script>\n",
-    "renderedBodyHtml": "<main>\n\n  <!-- ===== HERO — full-bleed photo stage + name ===== -->\n  <section class=\"hero\" data-theme=\"dark\" aria-label=\"Intro\">\n    <canvas id=\"hero-shader\" aria-hidden=\"true\"\n      data-imgs=\"/assets/optimized/mpik8b82-dsc3879-1920.webp,/assets/optimized/assets-photos-automobil-neon-1920.webp,/assets/optimized/assets-photos-landschaft-1920.webp,/assets/optimized/assets-photos-oldtimer-stage-1920.webp,/assets/optimized/assets-photos-automobil-sunset-1920.webp,/assets/optimized/assets-photos-motorrad-1920.webp\"></canvas>\n    <div class=\"hero-glow\" aria-hidden=\"true\"></div>\n    <div class=\"hero-aperture\" aria-hidden=\"true\"></div>\n    <div class=\"hero-grid\">\n      <div class=\"hero-stage\">\n        <h1 class=\"hero-title\" id=\"hero-title\" data-text-idx=\"0\">\n          <span class=\"line\"><span class=\"word\">Fotografie</span></span>\n          <span class=\"line\"><span class=\"word\">Düsseldorf</span></span>\n        </h1>\n        <p class=\"hero-lead\" id=\"hero-lead\">Automobil-, Portrait- und Landschaftsfotografie aus Düsseldorf für Marken, Sammler und Menschen mit Anspruch.</p>\n        <div class=\"hero-actions\" aria-label=\"Direkte Aktionen\">\n          <a class=\"btn dark\" href=\"#anfrage\">Projekt anfragen</a>\n          <a class=\"btn\" href=\"portfolio.html\">Arbeiten ansehen</a>\n        </div>\n      </div>\n    </div>\n    <div class=\"hero-cursor\" id=\"hero-cursor\" aria-hidden=\"true\"><span class=\"ring\"></span></div>\n  </section>\n\n  <!-- ===== STATEMENT (light) — editorial pause ===== -->\n  <section class=\"statement sec-light\" data-theme=\"light\" aria-label=\"Haltung\">\n    <div class=\"section-inner\">\n      <div>\n        <h2>Bilder, die einen Raum<br><em>verändern</em>.</h2>\n      </div>\n      <div class=\"body\">\n        <p class=\"lead\">Seit über zehn Jahren entstehen meine Serien im Spannungsfeld von Präzision und Atmosphäre — Automobile, Oldtimer, Sportwagen, Motorräder, Portraits und Landschaften. Jede Arbeit folgt einer ruhigen redaktionellen Logik: Licht, Komposition, Material, Zeit.</p>\n        <p>Auftraggeber sind Marken, Sammler, Manufakturen und private Eigentümer aus Düsseldorf, Köln, Essen, Dortmund und dem gesamten Rheinland — überall dort, wo Bilder über Auflage, Sammlung oder Markenwert mitentscheiden.</p>\n        <div class=\"actions\">\n          <a class=\"btn dark\" href=\"ueber-mich.html\">Mehr über mich</a>\n          <a class=\"btn\" href=\"#chapters\" style=\"color:var(--ink);border-color:var(--ink)\">Bereiche ansehen</a>\n        </div>\n      </div>\n    </div>\n  </section>\n\n  <!-- ===== FOTOGRAFIE KAPITEL (dark) ===== -->\n  <section class=\"chapters sec-dark\" id=\"chapters\" data-theme=\"dark\" aria-label=\"Fotografie\">\n    <div class=\"section-inner\">\n      <div class=\"chapters-head\">\n        <h2>Sechs Bereiche.<br>Eine <em>Linse</em>.</h2>\n        <p class=\"lead\">Jeder Bereich hat eine eigene visuelle Logik — Bewegung, Material, Mensch, Raum. Auswählen, weiterlesen, eine Serie sehen.</p>\n      </div>\n      <div class=\"chapter-grid\">\n        <a class=\"chapter\" href=\"automobil-fotografie-duesseldorf.html\">\n          <div class=\"img\"><img src=\"/assets/optimized/assets-photos-automobil-sunset-1920.webp\" alt=\"Automobilfotografie\" loading=\"lazy\" width=\"1920\" height=\"1280\" decoding=\"async\"></div>\n          <div class=\"head\"><h3>Automobil</h3><span class=\"num\">N° 01</span></div>\n          <span class=\"meta\"><span>Location · Location · Detail</span><span class=\"arr\">→</span></span>\n        </a>\n        <a class=\"chapter\" href=\"sportwagen-fotografie-duesseldorf.html\">\n          <div class=\"img\"><img src=\"/assets/optimized/assets-photos-automobil-neon-1920.webp\" alt=\"Sportwagenfotografie\" loading=\"lazy\" width=\"1920\" height=\"1280\" decoding=\"async\"></div>\n          <div class=\"head\"><h3>Sportwagen</h3><span class=\"num\">N° 02</span></div>\n          <span class=\"meta\"><span>Performance · Editorial</span><span class=\"arr\">→</span></span>\n        </a>\n        <a class=\"chapter\" href=\"oldtimer-fotografie-duesseldorf.html\">\n          <div class=\"img\"><img src=\"/assets/optimized/assets-photos-oldtimer-stage-1920.webp\" alt=\"Oldtimerfotografie\" loading=\"lazy\" width=\"1920\" height=\"1280\" decoding=\"async\"></div>\n          <div class=\"head\"><h3>Oldtimer</h3><span class=\"num\">N° 03</span></div>\n          <span class=\"meta\"><span>Sammlung · Auktion</span><span class=\"arr\">→</span></span>\n        </a>\n        <a class=\"chapter\" href=\"motorrad-fotografie-duesseldorf.html\">\n          <div class=\"img\"><img src=\"/assets/optimized/assets-photos-motorrad-1920.webp\" alt=\"Motorradfotografie\" loading=\"lazy\" width=\"1707\" height=\"2560\" decoding=\"async\"></div>\n          <div class=\"head\"><h3>Motorrad</h3><span class=\"num\">N° 04</span></div>\n          <span class=\"meta\"><span>Manufaktur · Bewegung</span><span class=\"arr\">→</span></span>\n        </a>\n        <a class=\"chapter\" href=\"portraitfotografie-duesseldorf.html\">\n          <div class=\"img\"><img src=\"/assets/photos/portrait-warm.webp\" alt=\"Portraitfotografie\" loading=\"lazy\" width=\"1600\" height=\"2560\" decoding=\"async\"></div>\n          <div class=\"head\"><h3>Portrait</h3><span class=\"num\">N° 05</span></div>\n          <span class=\"meta\"><span>Business · Editorial</span><span class=\"arr\">→</span></span>\n        </a>\n        <a class=\"chapter\" href=\"landschaftsfotografie-duesseldorf.html\">\n          <div class=\"img\"><img src=\"/assets/optimized/assets-photos-landschaft-1920.webp\" alt=\"Landschaftsfotografie\" loading=\"lazy\" width=\"1707\" height=\"2560\" decoding=\"async\"></div>\n          <div class=\"head\"><h3>Landschaft</h3><span class=\"num\">N° 06</span></div>\n          <span class=\"meta\"><span>Edition · Großformat</span><span class=\"arr\">→</span></span>\n        </a>\n      </div>\n    </div>\n  </section>\n\n  <!-- ===== PORTFOLIO TEASER (light) — Strom ===== -->\n  <section class=\"pf-teaser sec-light\" data-theme=\"light\" aria-label=\"Portfolio\">\n    <div class=\"section-inner\">\n      <div class=\"pf-head\">\n        <h2>Ausgewählte<br><em>Arbeiten</em>.</h2>\n        <p class=\"lead\">Ein Strom aus aktuellen Serien — kontinuierlich in Bewegung. Klick auf ein Bild öffnet die Vorschau.</p>\n      </div>\n      <div class=\"pf-marquee\" id=\"pfMarquee\">\n        <div class=\"pf-row row-1\">\n          <div class=\"pf-track\" id=\"pfTrack1\"></div>\n        </div>\n        <div class=\"pf-row row-2\">\n          <div class=\"pf-track\" id=\"pfTrack2\"></div>\n        </div>\n      </div>\n      <div class=\"pf-foot\">\n        <a class=\"btn dark\" href=\"portfolio.html\">Vollständiges Portfolio →</a>\n      </div>\n    </div>\n  </section>\n\n  <!-- ===== ÜBER MICH (dark) ===== -->\n  <section class=\"about sec-dark\" data-theme=\"dark\" aria-label=\"Über mich\">\n    <div class=\"section-inner\">\n      <div class=\"about-img\">\n        <img src=\"/mpissxxj-portfolio_webp_full_063-1.webp\" alt=\"Matthias Ramahi\" loading=\"lazy\" width=\"1628\" height=\"1920\" decoding=\"async\">\n      </div>\n      <div class=\"about-copy\">\n        <p class=\"kicker\">Über mich</p>\n        <h2>Hinter der<br><em>Kamera</em>.</h2>\n        <p class=\"lead\">Ausgebildet im Handwerk, denkend wie ein Editor — ich arbeite ruhig, präzise und in engem Dialog mit dem Auftraggeber. Vom ersten Briefing bis zum finalen Druck.</p>\n        <p>Meine Location steht in Düsseldorf, mein Netzwerk im gesamten Rheinland. Ich begleite Marken, Manufakturen, Sammler und private Eigentümer dort, wo ein Bild über Auflage, Sammlung oder Markenwert mitentscheidet.</p>\n        <div class=\"actions\">\n          <a class=\"btn primary\" href=\"ueber-mich.html\">Mehr über mich</a>\n          <a class=\"btn\" href=\"#anfrage\" style=\"color:#f3f5ef;border-color:rgba(243,245,239,.4)\">Projekt anfragen</a>\n        </div>\n      </div>\n    </div>\n  </section>\n\n  <!-- ===== LEISTUNGEN INDEX (light) — book-like list ===== -->\n  <section class=\"services-sec sec-light\" data-theme=\"light\" aria-label=\"Weitere Dienstleistungen\">\n    <div class=\"section-inner\">\n      <div class=\"services-head\">\n        <h2>Weitere Leistungen<br><em>im&nbsp;Überblick</em>.</h2>\n        <p class=\"lead\">Für Projekte, die über die Fotografie hinausgehen — Druck, Großformat, Werbetechnik, Webdesign, Video, Sonderanfertigungen und Musik. Kuratiert, koordiniert, ein Ansprechpartner.</p>\n      </div>\n      <div class=\"services-list\">\n        <a class=\"service-row\" href=\"fotolabor-druck-duesseldorf.html\">\n          <span class=\"num\">N° 01</span><h3>Fotolabor &amp; Druck</h3><p>FineArt- und Hochwertdruck — von der Datei bis zur signierten Edition.</p><span class=\"arr\">Detail →</span>\n        </a>\n        <a class=\"service-row\" href=\"grossformatdruck-duesseldorf.html\">\n          <span class=\"num\">N° 02</span><h3>Großformatdruck</h3><p>Poster, Banner, Messewände, Acrylglas — kalibrierte Galeriequalität.</p><span class=\"arr\">Detail →</span>\n        </a>\n        <a class=\"service-row\" href=\"werbetechnik-duesseldorf.html\">\n          <span class=\"num\">N° 03</span><h3>Werbetechnik</h3><p>Schaufenster, Beklebungen, Firmenschilder und Displaylösungen für den Raum.</p><span class=\"arr\">Detail →</span>\n        </a>\n        <a class=\"service-row\" href=\"webdesign-seo-duesseldorf.html\">\n          <span class=\"num\">N° 04</span><h3>Webdesign &amp; SEO</h3><p>Markenseiten, Portfolios und lokale Sichtbarkeit im Rheinland.</p><span class=\"arr\">Detail →</span>\n        </a>\n        <a class=\"service-row\" href=\"viola-musik-duesseldorf.html\">\n          <span class=\"num\">N° 05</span><h3>Viola Musik</h3><p>Live-Musik und klassische Begleitung für Empfänge und Vernissagen.</p><span class=\"arr\">Detail →</span>\n        </a>\n        <a class=\"service-row\" href=\"videografie-duesseldorf.html\">\n          <span class=\"num\">N° 06</span><h3>Videografie</h3><p>Marken-, Event- und Imagefilm — vom Konzept bis zum finalen Cut.</p><span class=\"arr\">Detail →</span>\n        </a>\n        <a class=\"service-row\" href=\"drucke-sonderanfertigungen-duesseldorf.html\">\n          <span class=\"num\">N° 07</span><h3>Drucke &amp; Sonderanfertigungen</h3><p>Mappen, Editionen, Geschenke und Interior — von der Idee zum Unikat.</p><span class=\"arr\">Detail →</span>\n        </a>\n      </div>\n      <div style=\"margin-top:32px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center\">\n        <span style=\"font:10px var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--quiet-l)\">07 Bereiche · ein Netzwerk</span>\n        <a class=\"btn dark\" href=\"leistungen.html\">Alle Leistungen</a>\n      </div>\n    </div>\n  </section>\n\n  <!-- ===== BLOG / JOURNAL (dark) ===== -->\n  <section class=\"blog-sec sec-dark\" data-theme=\"dark\" aria-label=\"Journal\">\n    <div class=\"section-inner\">\n      <div class=\"blog-head\">\n        <h2>Journal.</h2>\n        <p class=\"lead\">Notizen aus dem Netzwerk — Workflow, Material, Auftragsgeschichten. Lange Form, ruhig kuratiert.</p>\n      </div>\n      <div class=\"blog-grid\">\n        <a class=\"post\" href=\"blog.html\">\n          <div class=\"pimg\"><img data-src=\"/assets/optimized/assets-photos-oldtimer-stage-1920.webp\" alt=\"Location Setup für Oldtimer\" loading=\"lazy\" width=\"1920\" height=\"1280\" decoding=\"async\"></div>\n          <span class=\"meta\"><span>N° 01</span><span>05 / 2026</span><span>Fotograf</span></span>\n          <h3>Wie ich einen Oldtimer-Shoot vor Ort aufbaue.</h3>\n          <p>Lichtsetup, Material, Reflexionen — Schritt für Schritt durch einen kompletten Location-Workflow.</p>\n          <span class=\"read\">Lesen →</span>\n        </a>\n        <a class=\"post\" href=\"blog.html\">\n          <div class=\"pimg\"><img src=\"/assets/services/portfolio_webp_full_005-2.webp\" alt=\"FineArt Print Edition\" loading=\"lazy\" width=\"1536\" height=\"1920\" decoding=\"async\"></div>\n          <span class=\"meta\"><span>N° 02</span><span>04 / 2026</span><span>Print</span></span>\n          <h3>Vom Sensor bis zur FineArt-Edition.</h3>\n          <p>Farbprofile, Papiere, Druckpartner — was zwischen Bild und signierter Edition wirklich passiert.</p>\n          <span class=\"read\">Lesen →</span>\n        </a>\n        <a class=\"post\" href=\"blog.html\">\n          <div class=\"pimg\"><img data-src=\"/assets/optimized/assets-photos-landschaft-1920.webp\" alt=\"Lokal arbeiten im Rheinland\" loading=\"lazy\" width=\"1707\" height=\"2560\" decoding=\"async\"></div>\n          <span class=\"meta\"><span>N° 03</span><span>03 / 2026</span><span>NRW</span></span>\n          <h3>Lokal arbeiten — Düsseldorf, Köln, Essen.</h3>\n          <p>Wie aus einem Netzwerk im Rheinland ein Workflow für Auflage, Sammlung und Marke entsteht.</p>\n          <span class=\"read\">Lesen →</span>\n        </a>\n      </div>\n      <div style=\"margin-top:36px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center\">\n        <span style=\"font:10px var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--quiet)\">03 aktuelle · Archiv im Journal</span>\n        <a class=\"btn\" style=\"color:#f3f5ef;border-color:rgba(243,245,239,.4)\" href=\"blog.html\">Alle Beiträge</a>\n      </div>\n    </div>\n  </section>\n\n  <!-- ===== ANFRAGE (shared contact form) ===== -->\n  <section\n    id=\"anfrage\"\n    data-contact-section\n    data-theme=\"light\"\n    data-contact-subject=\"Projektanfrage\"\n    data-contact-headline=\"Projekt <em>anfragen.</em>\"\n    data-contact-lead=\"Schreiben Sie kurz, welche Leistung Sie interessiert, wo das Projekt stattfindet und welchen Zeitraum Sie planen. Ich melde mich mit Rückfragen oder einem nächsten Schritt per E-Mail.\"\n  ></section>\n\n</main>\n\n",
-    "afterFooterHtml": "\n\n<!-- ===== LIGHTBOX ===== -->\n<div class=\"lb\" id=\"lightbox\" role=\"dialog\" aria-modal=\"true\" aria-label=\"Bildvorschau\" aria-hidden=\"true\">\n  <div class=\"lb-stage\">\n    <button class=\"lb-close\" id=\"lbClose\" type=\"button\" aria-label=\"Schließen\">×</button>\n    <button class=\"lb-prev\" id=\"lbPrev\" type=\"button\" aria-label=\"Vorheriges Bild\">‹</button>\n    <img class=\"lb-img\" id=\"lbImg\" alt=\"Vergroesserte Portfolioansicht\" decoding=\"async\" loading=\"lazy\">\n    <button class=\"lb-next\" id=\"lbNext\" type=\"button\" aria-label=\"Nächstes Bild\">›</button>\n    <span class=\"lb-counter\" id=\"lbCounter\"></span>\n  </div>\n</div>\n\n<script src=\"/assets/legacy-index.js\" defer></script>\n\n<script src=\"/assets/site-chrome.js\" defer></script>\n",
-    "bodyClass": "has-mr-footer",
-    "extractedHeadings": [
-      "Fotografie Düsseldorf",
-      "Bilder, die einen Raum verändern .",
-      "Sechs Bereiche. Eine Linse .",
-      "Automobil",
-      "Sportwagen",
-      "Oldtimer",
-      "Motorrad",
-      "Portrait",
-      "Landschaft",
-      "Ausgewählte Arbeiten .",
-      "Hinter der Kamera .",
-      "Weitere Leistungen im Überblick .",
-      "Fotolabor & Druck",
-      "Großformatdruck",
-      "Werbetechnik",
-      "Webdesign & SEO",
-      "Viola Musik",
-      "Videografie",
-      "Drucke & Sonderanfertigungen",
-      "Journal.",
-      "Wie ich einen Oldtimer-Shoot vor Ort aufbaue.",
-      "Vom Sensor bis zur FineArt-Edition.",
-      "Lokal arbeiten — Düsseldorf, Köln, Essen."
-    ],
-    "extractedImagePaths": [
-      "assets/optimized/assets-photos-automobil-sunset-1920.webp",
-      "assets/optimized/assets-photos-automobil-neon-1920.webp",
-      "assets/optimized/assets-photos-oldtimer-stage-1920.webp",
-      "assets/optimized/assets-photos-motorrad-1920.webp",
-      "assets/photos/portrait-warm.webp",
-      "assets/optimized/assets-photos-landschaft-1920.webp",
-      "mpissxxj-portfolio_webp_full_063-1.webp",
-      "assets/optimized/assets-photos-oldtimer-stage-1920.webp",
-      "assets/services/portfolio_webp_full_005-2.webp",
-      "assets/optimized/assets-photos-landschaft-1920.webp"
-    ],
-    "extractedText": "Automobil-, Portrait- und Landschaftsfotografie aus Düsseldorf für Marken, Sammler und Menschen mit Anspruch.\n\nSeit über zehn Jahren entstehen meine Serien im Spannungsfeld von Präzision und Atmosphäre — Automobile, Oldtimer, Sportwagen, Motorräder, Portraits und Landschaften. Jede Arbeit folgt einer ruhigen redaktionellen Logik: Licht, Komposition, Material, Zeit.\n\nAuftraggeber sind Marken, Sammler, Manufakturen und private Eigentümer aus Düsseldorf, Köln, Essen, Dortmund und dem gesamten Rheinland — überall dort, wo Bilder über Auflage, Sammlung oder Markenwert mitentscheiden.\n\nJeder Bereich hat eine eigene visuelle Logik — Bewegung, Material, Mensch, Raum. Auswählen, weiterlesen, eine Serie sehen.\n\nEin Strom aus aktuellen Serien — kontinuierlich in Bewegung. Klick auf ein Bild öffnet die Vorschau.\n\nAusgebildet im Handwerk, denkend wie ein Editor — ich arbeite ruhig, präzise und in engem Dialog mit dem Auftraggeber. Vom ersten Briefing bis zum finalen Druck.\n\nMeine Location steht in Düsseldorf, mein Netzwerk im gesamten Rheinland. Ich begleite Marken, Manufakturen, Sammler und private Eigentümer dort, wo ein Bild über Auflage, Sammlung oder Markenwert mitentscheidet.\n\nFür Projekte, die über die Fotografie hinausgehen — Druck, Großformat, Werbetechnik, Webdesign, Video, Sonderanfertigungen und Musik. Kuratiert, koordiniert, ein Ansprechpartner.\n\nFineArt- und Hochwertdruck — von der Datei bis zur signierten Edition.\n\nPoster, Banner, Messewände, Acrylglas — kalibrierte Galeriequalität.\n\nSchaufenster, Beklebungen, Firmenschilder und Displaylösungen für den Raum.\n\nMarkenseiten, Portfolios und lokale Sichtbarkeit im Rheinland.\n\nLive-Musik und klassische Begleitung für Empfänge und Vernissagen.\n\nMarken-, Event- und Imagefilm — vom Konzept bis zum finalen Cut.\n\nMappen, Editionen, Geschenke und Interior — von der Idee zum Unikat.\n\nNotizen aus dem Netzwerk — Workflow, Material, Auftragsgeschichten. Lange Form, ruhig kuratiert.\n\nLichtsetup, Material, Reflexionen — Schritt für Schritt durch einen kompletten Location-Workflow.\n\nFarbprofile, Papiere, Druckpartner — was zwischen Bild und signierter Edition wirklich passiert.\n\nWie aus einem Netzwerk im Rheinland ein Workflow für Auflage, Sammlung und Marke entsteht."
+  "homeChapters": {
+    "intro": "Von Automobil zu Oldtimer habe ich alles in meinem Portfolio",
+    "items": [
+      {
+        "image": "/uploads/payload/_DSC3878-1.webp",
+        "title": "Automobil",
+        "href": "/automobil-fotografie-duesseldorf.html"
+      },
+      {
+        "image": "/uploads/payload/_DSC2310-2.webp",
+        "title": "Sportwagen",
+        "href": "/sportwagen-fotografie-duesseldorf.html"
+      },
+      {
+        "image": "/uploads/payload/_DSC3804.webp",
+        "title": "Oldtimer",
+        "href": "/oldtimer-fotografie-duesseldorf.html"
+      },
+      {
+        "image": "/uploads/payload/assets-photos-motorrad-1920.webp",
+        "title": "Motorrad",
+        "href": "/motorrad-fotografie-duesseldorf.html"
+      },
+      {
+        "image": "/uploads/payload/portrait-warm-1.webp",
+        "title": "Portrait",
+        "href": "/portraitfotografie-duesseldorf.html"
+      },
+      {
+        "image": "/uploads/payload/_DSC8015.webp",
+        "title": "Landschaft",
+        "href": "/landschaftsfotografie-duesseldorf.html"
+      }
+    ]
   },
-  "updatedAt": "2026-06-03T21:27:14.014Z",
-  "createdAt": "2026-05-28T19:07:31.436Z",
-  "status": "published",
-  "payloadId": "6"
+  "homeSelectedWorks": {
+    "intro": "Meine Aktuellen Bilder Serien"
+  },
+  "homeAbout": {
+    "kicker": "Über mich",
+    "image": "/uploads/payload/mpissxxj-portfolio_webp_full_063-2.webp",
+    "body": [
+      {
+        "text": "Von Belichtung zur Präzision an der Kamera - ich arbeite ruhig, präzise und in engem Dialog mit dem Auftraggeber. Vom ersten Briefing bis zum finalen Druck."
+      },
+      {
+        "text": "Meine Location ist in Düsseldorf, mein Netzwerk im gesamten Rheinland. Ich begleite Marken, Manufakturen, Sammler und private Eigentümer dort, wo ein Bild über Auflage, Sammlung oder Markenwert mitentscheidet."
+      }
+    ]
+  },
+  "homeServices": {
+    "intro": "Für Projekte, die über die Fotografie hinausgehen - Druck, Großformat, Werbetechnik, Webdesign, Video, Sonderanfertigungen und Musik. Kuratiert, koordiniert, ein Ansprechpartner.",
+    "items": [
+      {
+        "title": "Fotolabor & Druck",
+        "text": "FineArt- und Hochwertdruck — von der Datei bis zum einrahmen.",
+        "href": "/fotolabor-druck-duesseldorf.html"
+      },
+      {
+        "title": "Großformatdruck",
+        "text": "Poster, Banner, Messewände, Acrylglas — Auf hohem Niveau",
+        "href": "/grossformatdruck-duesseldorf.html"
+      },
+      {
+        "title": "Werbetechnik",
+        "text": "Schaufenster, Beklebungen, Firmenschilder und Displaylösungen für den Raum.",
+        "href": "/werbetechnik-duesseldorf.html"
+      },
+      {
+        "title": "Webdesign & SEO",
+        "text": "Markenseiten, Portfolios und lokale Sichtbarkeit für Ihre Online Präsenz",
+        "href": "/webdesign-seo-duesseldorf.html"
+      },
+      {
+        "title": "Viola Musik",
+        "text": "Live-Musik und klassische Begleitung für Empfänge und Vernissagen, Hochzeiten und Beerdigungen.",
+        "href": "/viola-musik-duesseldorf.html"
+      },
+      {
+        "title": "Videografie",
+        "text": "Marken-, Musikvideo, Event- und Imagefilm — vom Konzept bis zum finalen Cut.",
+        "href": "/videografie-duesseldorf.html"
+      },
+      {
+        "title": "Drucke & Sonderanfertigungen",
+        "text": "Mappen, Editionen, Geschenke und Interior — von der Idee zum Unikat.",
+        "href": "/drucke-sonderanfertigungen-duesseldorf.html"
+      }
+    ]
+  },
+  "photographyIndex": {
+    "clusterIntro": [],
+    "topics": []
+  },
+  "portfolioIndex": {
+    "contextBody": [],
+    "slices": [],
+    "archive": {
+      "batchSize": 12,
+      "items": []
+    },
+    "contact": {}
+  },
+  "servicesIndex": {
+    "items": [],
+    "whyCards": []
+  },
+  "aboutHero": {
+    "primaryHref": "",
+    "secondaryHref": ""
+  },
+  "aboutStatement": {
+    "primaryHref": "",
+    "secondaryHref": ""
+  },
+  "aboutChapters": {
+    "items": []
+  },
+  "aboutSister": {
+    "href": "",
+    "plate": {
+      "roles": []
+    }
+  },
+  "aboutContact": {},
+  "journalIndex": {
+    "tickerItems": [],
+    "initialVisiblePostCount": 6
+  }
 }
