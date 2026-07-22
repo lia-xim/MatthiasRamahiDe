@@ -546,6 +546,7 @@ const collections = [
             textField('anchor', 'Anchor'),
             textField('label', 'Label'),
             textField('heading', 'Heading'),
+            textAreaField('lead', 'Einleitung zur Serie'),
             textField('theme', 'Theme'),
             textField('href', 'Link'),
             textField('linkLabel', 'Link-Label'),

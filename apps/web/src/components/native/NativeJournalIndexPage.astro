@@ -76,9 +76,18 @@ const loadMoreLabel = hasText(journalIndex?.loadMoreLabel) ? journalIndex!.loadM
 const loadStatusTemplate = hasText(journalIndex?.loadStatusTemplate)
   ? journalIndex!.loadStatusTemplate!
   : '{visible} von {total} Beitraegen sichtbar'
-const featured = posts[0]
 const featuredSettings = journalIndex?.featured || {}
-const featuredHref = toRootRelativeHref(featuredSettings.buttonHref) || featured?.href || '/blog-automotive-fotografie-duesseldorf.html'
+const curatedFeaturedHref = toRootRelativeHref(featuredSettings.buttonHref)
+// Kuratiert das CMS einen bestimmten Beitrag, muss genau dieser den Featured-Slot
+// belegen. Sonst verbraucht posts[0] den Slot, waehrend der Block auf einen anderen
+// Beitrag verlinkt - der Slot-Beitrag faellt dann aus dem Grid und bleibt voellig
+// unverlinkt (so war blog-portraits-ohne-generische-posen.html verwaist).
+const curatedFeaturedIndex = curatedFeaturedHref
+  ? posts.findIndex((post) => post.href === curatedFeaturedHref)
+  : -1
+const featuredIndex = curatedFeaturedIndex >= 0 ? curatedFeaturedIndex : 0
+const featured = posts[featuredIndex]
+const featuredHref = curatedFeaturedHref || featured?.href || '/blog-automotive-fotografie-duesseldorf.html'
 const featuredImage = imageDisplayUrl(featuredSettings.image, 'wide', { allowOriginal: true }) || featured?.image || journalHero.image
 const featuredImageDimensions = imageDimensions(featuredSettings.image, 'wide')
 const featuredKicker = hasText(featuredSettings.kicker) ? featuredSettings.kicker! : 'Ausgewaehlter Beitrag'
@@ -87,7 +96,7 @@ const featuredText = hasText(featuredSettings.text)
   ? featuredSettings.text!
   : featured?.text || 'Ein starkes Foto entsteht nicht erst beim Ausloesen - sondern in der Entscheidung fuer Ort, Tageszeit, Bildschnitt und Stimmung.'
 const featuredButtonLabel = hasText(featuredSettings.buttonLabel) ? featuredSettings.buttonLabel! : 'Beitrag lesen'
-const gridPosts = posts.slice(1)
+const gridPosts = posts.filter((_, index) => index !== featuredIndex)
 const loadStatus = loadStatusTemplate
   .replace('{visible}', String(Math.min(initialVisiblePostCount, gridPosts.length)))
   .replace('{total}', String(gridPosts.length))

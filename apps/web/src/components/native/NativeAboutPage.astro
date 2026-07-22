@@ -1,6 +1,6 @@
 ---
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
-import { getLegacyBackedDoc, imageAlt, imageDisplayUrl, type PayloadDoc, type PayloadMedia } from '../../lib/payload'
+import { getLegacyBackedDoc, imageAlt, imageDimensions, imageDisplayUrl, type PayloadDoc, type PayloadMedia } from '../../lib/payload'
 import { tinaAttrs } from '../../lib/tinaFieldAttrs'
 
 const legacyFile = 'ueber-mich.html'
@@ -189,15 +189,19 @@ const heroImage = imageDisplayUrl(aboutHero.image as PayloadMedia | string | und
           <p class="lead" {...tinaAttrs(aboutChaptersSource, 'intro')}>{aboutChapters.intro}</p>
         </div>
         <div class="chapter-grid">
-          {chapters.map((chapter) => (
+          {chapters.map((chapter) => {
+            // CMS-Chapters pflegen keine eigenen Masse - dann die des Media-Objekts
+            // nutzen, damit das Bild reservierten Platz bekommt (kein Layout-Shift).
+            const chapterDimensions = imageDimensions(chapter.image, 'card')
+            return (
             <a class="chapter" href={chapter.href || '#'}>
               <div class="img">
                 <img
                   src={imageDisplayUrl(chapter.image, 'card') || ''}
                   alt={imageAlt(chapter.image, chapter.alt || chapter.title || '')}
                   loading="lazy"
-                  width={chapter.width}
-                  height={chapter.height}
+                  width={chapter.width || chapterDimensions.width}
+                  height={chapter.height || chapterDimensions.height}
                   decoding="async"
                   {...tinaAttrs(chapter, 'image')}
                 />
@@ -205,7 +209,8 @@ const heroImage = imageDisplayUrl(aboutHero.image as PayloadMedia | string | und
               <div class="head"><h3 {...tinaAttrs(chapter, 'title')}>{chapter.title}</h3></div>
               <span class="meta"><span class="arr" {...tinaAttrs(chapter, 'linkLabel')}>{chapter.linkLabel || 'Bereich ansehen →'}</span></span>
             </a>
-          ))}
+            )
+          })}
         </div>
       </div>
     </section>

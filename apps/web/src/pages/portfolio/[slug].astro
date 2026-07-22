@@ -9,6 +9,7 @@ import { homeHeroSlidesFor } from '../../lib/nativeContent'
 import { tinaAttrs } from '../../lib/tinaFieldAttrs'
 import {
   getBySlug,
+  imageDimensions,
   imageDisplayUrl,
   liveCmsFetchOptions,
   routeForDoc,
@@ -80,9 +81,9 @@ const defaultContextBody = [
 ]
 const resolvedContextBody = contextBody.length ? contextBody : defaultContextBody
 const perspectives = (projectPage.perspectives || []).filter((item) => hasText(item.title) || hasText(item.text))
-const firstPerspectiveImage = perspectives
-  .map((item) => imageDisplayUrl(item.image, 'wide', portfolioImageOptions))
-  .find(hasText)
+const firstPerspective = perspectives.find((item) => hasText(imageDisplayUrl(item.image, 'wide', portfolioImageOptions)))
+const firstPerspectiveImage = firstPerspective ? imageDisplayUrl(firstPerspective.image, 'wide', portfolioImageOptions) : ''
+const firstPerspectiveDimensions = imageDimensions(firstPerspective?.image, 'wide')
 const infoCards = (projectPage.infoCards || []).filter((item) => hasText(item.title))
 const relatedCards = (projectPage.relatedCards || []).filter((item) => hasText(item.title) && hasText(item.href))
 const projectCta = projectPage.contact || doc.cta
@@ -160,7 +161,7 @@ if (gallerySchema) jsonLdItems.push(gallerySchema)
           <div class="project-system__grid">
             {firstPerspectiveImage && (
               <figure class="project-system__visual">
-                <img src={firstPerspectiveImage} alt="" loading="lazy" decoding="async" {...tinaAttrs(perspectives.find((item) => imageDisplayUrl(item.image, 'wide', portfolioImageOptions) === firstPerspectiveImage), 'image')} />
+                <img src={firstPerspectiveImage} alt="" loading="lazy" decoding="async" width={firstPerspectiveDimensions.width} height={firstPerspectiveDimensions.height} {...tinaAttrs(firstPerspective, 'image')} />
               </figure>
             )}
             <div class="project-system__list">
@@ -229,9 +230,10 @@ if (gallerySchema) jsonLdItems.push(gallerySchema)
         <div class="project-related__grid">
           {relatedCards.map((card) => {
             const cardImage = imageDisplayUrl(card.image, 'card', portfolioImageOptions)
+            const cardDimensions = imageDimensions(card.image, 'card')
             return (
               <a class="project-related-card" href={card.href}>
-                {cardImage && <img src={cardImage} alt="" loading="lazy" decoding="async" {...tinaAttrs(card, 'image')} />}
+                {cardImage && <img src={cardImage} alt="" loading="lazy" decoding="async" width={cardDimensions.width} height={cardDimensions.height} {...tinaAttrs(card, 'image')} />}
                 <div class="project-related-card__content">
                   <div>
                     {hasText(card.label) && <span {...tinaAttrs(card, 'label')}>{card.label}</span>}

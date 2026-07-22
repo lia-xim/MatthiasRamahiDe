@@ -78,6 +78,8 @@ button{font:inherit;color:inherit;border:0;background:transparent;cursor:pointer
 .pf-spread{position:relative;min-height:auto;display:flex;flex-direction:column;justify-content:space-between;gap:clamp(32px,5vh,56px);padding:clamp(72px,9vh,120px) 5vw clamp(72px,9vh,120px);background:var(--ink);color:var(--paper);overflow:hidden;isolation:isolate;content-visibility:auto;contain-intrinsic-size:900px}
 .pf-spread__head{position:relative;z-index:2;max-width:1640px;width:100%;margin:0 auto}
 .pf-spread h2{font-family:var(--sans);font-weight:900;text-transform:uppercase;font-size:clamp(46px,7.2vw,116px);line-height:.92;letter-spacing:-.05em;color:var(--paper);max-width:16ch;text-wrap:balance}
+/* Einordnung der Serie unter der Ueberschrift — Fliesstext statt nur Bildstreifen. */
+.pf-spread__lead{margin:clamp(16px,1.6vw,24px) 0 0;max-width:62ch;color:rgba(241,237,228,.7);font-size:clamp(16px,1.08vw,19px);line-height:1.62;text-wrap:pretty}
 .pf-spread__strip{position:relative;z-index:2;max-width:1640px;width:100%;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
 .pf-spread__strip .pf-photo{aspect-ratio:1;width:100%}
 
@@ -91,6 +93,7 @@ button{font:inherit;color:inherit;border:0;background:transparent;cursor:pointer
 
 /* Light variant — alternating sections */
 .pf-spread.is-light{background:var(--paper);color:var(--ink)}
+.pf-spread.is-light .pf-spread__lead{color:rgba(13,12,10,.68)}
 .pf-spread.is-light h2{color:var(--ink)}
 .pf-spread.is-light .pf-spread__cta{color:var(--muted)}
 .pf-spread.is-light:hover .pf-spread__cta,.pf-spread.is-light:focus-within .pf-spread__cta{color:var(--ink)}

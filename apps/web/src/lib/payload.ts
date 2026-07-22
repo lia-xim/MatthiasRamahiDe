@@ -166,6 +166,7 @@ export type PayloadDoc = {
       anchor?: string
       label?: string
       heading?: string
+      lead?: string
       theme?: string
       href?: string
       linkLabel?: string

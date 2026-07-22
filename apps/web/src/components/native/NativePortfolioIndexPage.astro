@@ -94,6 +94,7 @@ const cmsSpreads =
         id: cleanText(slice.anchor) || `portfolio-slice-${index + 1}`,
         label: cleanText(slice.label) || cleanText(slice.heading) || `Portfolio Slice ${index + 1}`,
         heading: cleanText(slice.heading) || cleanText(slice.label) || `Portfolio Slice ${index + 1}`,
+        lead: cleanText(slice.lead),
         href: toRootRelativeHref(slice.href) || '#archive',
         linkLabel: cleanText(slice.linkLabel) || 'Zur Seite ->',
         source: slice,
@@ -192,11 +193,12 @@ const contactLead =
       >
         <div class="pf-spread__head">
           <h2 {...tinaAttrs(spread.source, 'heading')}>{spread.heading}</h2>
+          {spread.lead && <p class="pf-spread__lead" {...tinaAttrs(spread.source, 'lead')}>{spread.lead}</p>}
         </div>
         <div class="pf-spread__strip">
           {(spread.photos as EditablePortfolioPhoto[]).map((photo) => (
             <figure class="pf-photo">
-              <img src={photo.src} alt="" loading="lazy" decoding="async" width={photo.width} height={photo.height} {...tinaAttrs(photo.source, 'image')} />
+              <img src={photo.src} alt={photo.caption || ''} loading="lazy" decoding="async" width={photo.width} height={photo.height} {...tinaAttrs(photo.source, 'image')} />
             </figure>
           ))}
         </div>
@@ -219,11 +221,11 @@ const contactLead =
       </div>
       <div class="pf-archive__grid" id="pfArchiveGrid" data-archive-batch={String(archiveBatchSize)}>
         {archivePhotos.map((photo, i) => (
-          <a class="pf-photo" data-archive-item hidden={i >= archiveBatchSize} data-caption={photo.caption} href={photo.href} aria-label={photo.caption || 'Bild im Grossformat ansehen'}>
+          <a class="pf-photo" data-archive-item hidden={i >= archiveBatchSize} data-caption={photo.caption} href={photo.href} aria-label={photo.caption ? `${photo.caption} — Großansicht öffnen` : 'Bild im Großformat ansehen'}>
             <img
               src={photo.src}
               data-src={photo.src}
-              alt=""
+              alt={photo.caption || ''}
               loading="lazy"
               decoding="async"
               width={photo.width}

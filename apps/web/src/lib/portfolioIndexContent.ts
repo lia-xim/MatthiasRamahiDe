@@ -11,6 +11,8 @@ export type PortfolioSpread = {
   id: string
   label: string
   heading: string
+  /** Kurze Einordnung der Serie — was sie zeigt und wofür die Bilder gedacht sind. */
+  lead?: string
   href: string
   linkLabel: string
   portfolioHref?: string
@@ -103,6 +105,7 @@ export const portfolioSpreads: PortfolioSpread[] = [
     id: 'portrait',
     label: 'Portrait',
     heading: 'Portrait',
+    lead: 'Bewegung, Licht und Haltung: Tanzserien im Bühnenlicht, Musikerinnen an offenen Orten, ruhige Einzelstudien. Die Führung ist Teil der Arbeit — Blick, Abstand und Körperspannung werden gesetzt, nicht abgewartet.',
     href: '/portraitfotografie-duesseldorf.html',
     linkLabel: 'Zur Portraitfotografie →',
     portfolioHref: '/portfolio/portfolio-auswahl-portrait',
@@ -125,6 +128,7 @@ export const portfolioSpreads: PortfolioSpread[] = [
     id: 'auto',
     label: 'Automobil',
     heading: 'Automobil',
+    lead: 'Fahrzeuge im Abendlicht, auf dem Messestand und in der Halle — Exterieur, Interieur und Detail als zusammenhängende Serie. Licht und Standort stehen vor dem Termin fest, damit Lack, Linie und Innenraum dieselbe Bildsprache tragen.',
     href: '/automobil-fotografie-duesseldorf.html',
     linkLabel: 'Zur Automobilfotografie →',
     portfolioHref: '/portfolio/portfolio-auswahl-automobil',
@@ -141,6 +145,7 @@ export const portfolioSpreads: PortfolioSpread[] = [
     id: 'sport',
     label: 'Sportwagen',
     heading: 'Sportwagen',
+    lead: 'Renn- und Straßensportwagen aus Messehallen, Showräumen und Tiefgaragen. Der Bildaufbau folgt der Form: tiefe Perspektive, kontrollierte Reflexionen, klare Kanten statt Effekt.',
     href: '/sportwagen-fotografie-duesseldorf.html',
     linkLabel: 'Zur Sportwagenfotografie →',
     portfolioHref: '/portfolio/portfolio-auswahl-sportwagen',
@@ -157,6 +162,7 @@ export const portfolioSpreads: PortfolioSpread[] = [
     id: 'classic',
     label: 'Oldtimer',
     heading: 'Oldtimer',
+    lead: 'Vorkriegsrennwagen, Klassiker auf der Bühne und Cockpits mit Patina. Material und Gebrauchsspuren bleiben sichtbar — Speichen, Leder und Rundinstrumente werden nicht weggeglättet.',
     href: '/oldtimer-fotografie-duesseldorf.html',
     linkLabel: 'Zur Oldtimerfotografie →',
     portfolioHref: '/portfolio/portfolio-auswahl-oldtimer',
@@ -185,6 +191,7 @@ export const portfolioSpreads: PortfolioSpread[] = [
     id: 'moto',
     label: 'Motorrad',
     heading: 'Motorrad',
+    lead: 'Maschinen im Stand, aber nie statisch: Detailschnitte an Gabel und Lenker, Silhouetten vor Glasfassaden, Nachtaufnahmen mit gesetztem Farblicht. Jede Serie deckt Gesamtansicht, Detail und Atmosphäre ab.',
     href: '/motorrad-fotografie-duesseldorf.html',
     linkLabel: 'Zur Motorradfotografie →',
     portfolioHref: '/portfolio/portfolio-auswahl-motorrad',
@@ -207,6 +214,7 @@ export const portfolioSpreads: PortfolioSpread[] = [
     id: 'land',
     label: 'Landschaft',
     heading: 'Landschaft',
+    lead: 'Ruhige Landschaften von der Alpenkante bis zur Atlantikküste — Felsinseln, Steilküsten, weite Strände und ein Steinbock im Gegenlicht. Die Motive sind auf großes Format gerechnet und als Fine-Art-Print erhältlich.',
     href: '/landschaftsfotografie-duesseldorf.html',
     linkLabel: 'Zur Landschaftsfotografie →',
     portfolioHref: '/portfolio/portfolio-auswahl-landschaft',

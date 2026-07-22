@@ -107,7 +107,7 @@ export const siteChromeContent = {
         id: 'foto',
         label: 'Fotografie',
         links: [
-          { label: 'Übersicht', href: 'fotografie.html' },
+          { label: 'Alle Fotografie-Bereiche', href: 'fotografie.html' },
           { label: 'Automobil', href: 'automobil-fotografie.html' },
           { label: 'Sportwagen', href: 'sportwagen-fotografie.html' },
           { label: 'Oldtimer', href: 'oldtimer-fotografie.html' },
@@ -131,7 +131,7 @@ export const siteChromeContent = {
         id: 'services',
         label: 'Weitere Dienstleistungen',
         links: [
-          { label: 'Übersicht', href: 'leistungen.html' },
+          { label: 'Alle Leistungen', href: 'leistungen.html' },
           { label: 'Fotolabor & Druck', href: 'fotolabor-druck-duesseldorf.html' },
           { label: 'Webdesign & SEO', href: 'webdesign-seo-duesseldorf.html' },
           { label: 'Keyword-Datenbank', href: 'keyword-datenbank-seo.html' },

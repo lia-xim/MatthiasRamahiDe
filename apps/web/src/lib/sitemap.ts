@@ -379,12 +379,28 @@ ${imageXml}` : ''}
 </urlset>`
 }
 
-export function sitemapIndexXml() {
+/** Juengstes lastmod einer Sektion — undefined, wenn keine Seite eines traegt. */
+const latestLastmod = (entries: SitemapEntry[]): string | undefined =>
+  entries.reduce<string | undefined>(
+    (latest, entry) => (entry.lastmod && (!latest || entry.lastmod > latest) ? entry.lastmod : latest),
+    undefined,
+  )
+
+export async function sitemapIndexXml() {
   const siteUrl = configuredSiteUrl()
-  const generatedAt = new Date().toISOString()
+
+  // Das lastmod je Sektion stammt aus den Seiten selbst, nicht aus der Bauzeit.
+  // Sonst meldet jeder Deploy jede Sektion als geaendert und das Signal wird wertlos.
+  const sections = await Promise.all(
+    sitemapSections.map(async (section) => ({
+      file: `sitemap-${section}.xml`,
+      lastmod: latestLastmod(await sitemapEntries(section)),
+    })),
+  )
+
   const files = [
-    ...sitemapSections.map((section) => `sitemap-${section}.xml`),
-    'sitemap-images.xml',
+    ...sections,
+    { file: 'sitemap-images.xml', lastmod: latestLastmod(await imageSitemapEntries()) },
   ]
 
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -392,9 +408,9 @@ export function sitemapIndexXml() {
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${files
   .map(
-    (file) => `  <sitemap>
-    <loc>${escapeXml(`${siteUrl}/${file}`)}</loc>
-    <lastmod>${generatedAt}</lastmod>
+    ({ file, lastmod }) => `  <sitemap>
+    <loc>${escapeXml(`${siteUrl}/${file}`)}</loc>${lastmod ? `
+    <lastmod>${escapeXml(lastmod)}</lastmod>` : ''}
   </sitemap>`,
   )
   .join('\n')}
