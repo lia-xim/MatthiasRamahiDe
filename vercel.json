@@ -3,6 +3,12 @@
   "buildCommand": "corepack pnpm vercel:build",
   "installCommand": "corepack pnpm install --frozen-lockfile",
   "framework": "astro",
+  "crons": [
+    {
+      "path": "/api/indexnow",
+      "schedule": "0 5 * * *"
+    }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",
