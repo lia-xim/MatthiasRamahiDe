@@ -1,8 +1,9 @@
 # SEO Indexing Action Plan
 
-Stand: 2026-06-30
+Erstfassung: 2026-06-30
+Letzte Aktualisierung: 2026-07-28
 
-## Aktueller Befund
+## Ausgangsbefund 2026-06-30
 
 - Die live ausgelieferte Seiten-Sitemap umfasst 251 normale Seiten-URL-Eintraege.
 - Die Search-Console-Zahl 493 entsteht aus 251 Seiten-URLs plus 242 URL-Eintraegen in der Bild-Sitemap.
@@ -97,6 +98,34 @@ Stand: 2026-06-30
 - `Duplikat - Google hat andere Canonical bestimmt`: `/fotografie-duesseldorf.html` und `/fotografie-deutschland.html` liefern live `200`, `index,follow` und Self-Canonical. Weiter beobachten, weil diese beiden Uebersichtsseiten bewusst nahe an der Haupt-Fotografie-Struktur liegen.
 - Portfolio-Staerkung: Der Portfolio-Index verlinkt jetzt sichtbar auf die sechs kuratierten Portfolio-Auswahlseiten, inklusive `/portfolio/portfolio-auswahl-automobil`. Das erhoeht die interne Linkkraft fuer den letzten `Gefunden - zurzeit nicht indexiert`-Fall.
 - Release-Gate erweitert: `tools/assert-seo-release-routing.mjs` prueft jetzt `/journal` und `/journal/` explizit als Redirects auf `/blog.html`.
+
+## GSC-Follow-up 2026-07-28
+
+- Der aktuelle Export `Indexierte Seiten` meldet 266 Seiten und enthaelt 265 eindeutige URLs.
+- Von den 252 normalen URLs der Live-Sitemap sind 249 bereits im Export der indexierten Seiten enthalten.
+- Die drei noch nicht im Index-Export sichtbaren Sitemap-URLs sind `/fotografie-duesseldorf.html`, `/fotografie-deutschland.html` und `/keyword-datenbank-seo.html`. Alle drei liefern live `200`, `index,follow` und einen Self-Canonical.
+- Der aktuelle Export `Gecrawlt - zurzeit nicht indexiert` enthaelt 172 eindeutige URLs: 84 Tag-Archive, 22 Kategorie-Archive, 33 alte WordPress-Artikelpfade und keine einzige aktuelle `.html`-URL.
+- Die fehlgeschlagene GSC-Validierung fuer `Nicht gefunden (404)` bedeutet daher nicht, dass die neue Website technisch 34 kaputte Zielseiten hat. Relevante Alt-URLs leiten live per `308` weiter; absichtlich entfernte Archive, Shopreste und WordPress-Probes liefern `410 Gone`.
+- Alle 34 am 2026-07-28 genannten Beispiel-URLs wurden live einzeln geprueft: 26 liefern `308`, 8 liefern `410`, keine liefert weiterhin `404`.
+- Der Live-Sitemap-Audit prueft 252 normale URLs: 252 indexierbare `200`-Antworten, 0 technische Problemfaelle, 0 doppelte Canonicals und 0 doppelte Titles.
+- Der Live-Abgleich der bisherigen 521 GSC-Fixture-URLs ergibt 206 Redirects zu indexierbaren Zielen, 143 `410 Gone`, 172 indexierbare `200`-Seiten und 0 offene technische Problemfaelle.
+- Der Export-Audit arbeitet jetzt parallel und mit einem Request-Timeout. Dadurch koennen grosse GSC-Exporte regelmaessig geprueft werden, ohne dass ein einzelner langsamer Altpfad den gesamten Lauf blockiert.
+
+## Wachstumsprioritaeten ab 2026-07-28
+
+Der verbindliche Seitenrollen-, Hub-/Cluster- und 90-Tage-Plan steht in
+`docs/seo-hub-cluster-strategy.md`. Dieses Dokument bleibt die Quelle fuer technische
+Indexierung, GSC-Altbestand, Redirects und Gone-Entscheidungen.
+
+1. Die bestehenden kanonischen URLs stabil halten. Keine Massen-Relaunches oder Slug-Wechsel fuer bereits indexierte Seiten.
+2. `/fotografie-deutschland.html` wird dauerhaft auf `/fotografie-duesseldorf.html` konsolidiert. Die alte URL bleibt aus Sitemap und interner Navigation entfernt; `/fotografie.html`, `/fotografie-duesseldorf.html` und `/fotografie-nrw.html` behalten getrennte Rollen.
+3. `/keyword-datenbank-seo.html` bleibt als transparente Contextter-Fallstudie indexierbar. Sie dokumentiert reale Produktentscheidungen, verlinkt gefolgt auf die deutsche Contextter-Produktseite und wird nicht als konkurrierende SEO-Dienstleistungsseite ausgebaut.
+4. Zuerst Bottom-of-Funnel-Seiten mit realer Nachfrage und Umsatznaehe ausbauen: konkrete Shooting-Art, Zielgruppe, Ort, Ablauf, Nutzung und Preis-/Anfragefragen.
+5. Pro Kerncluster wenige starke, erfahrungsbasierte Ratgeber priorisieren. Jeder Ratgeber verlinkt kontextuell auf die passende Leistungsseite; jede Leistungsseite verlinkt auf die wirklich hilfreichen Ratgeber.
+6. Echte Belege verstaerken: reale Serien, Kundenstimmen mit Einwilligung, nachvollziehbare Fallstudien, lokale Partner, Fachbeitraege, Interviews und Branchenverzeichnisse mit konsistentem NAP.
+7. Bilder und Video als eigenes Suchinventar behandeln: aussagekraeftige Dateinamen, konkrete Alt-Texte, Bildunterschriften, passende Zielseiten und Auswertung der Bild-/Video-Suche in GSC.
+8. Neue Seiten nur aus Search-Console-, Anfrage- oder Kundenfragen ableiten. Seiten ohne Impressionen, Links, klare Intent-Rolle oder belegbaren Mehrwert werden zusammengelegt, weitergeleitet oder auf `410` gesetzt.
+9. Alle vier Wochen messen: indexierte Sitemap-URLs, nicht indexierte aktuelle Canonicals, Impressionen/Klicks je Cluster, Anfragen je Landingpage, neue verweisende Domains und Marken-/Entity-Nennungen.
 
 ## Wiederholbare Audit-Commands
 

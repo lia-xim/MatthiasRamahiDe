@@ -29,6 +29,7 @@ apps/web/.vercel/
 .vercel/
 apps/web/.visual-regression/
 apps/web/.site-quality/
+apps/web/.cms-parity/20*/
 .lighthouse/
 apps/web/.contact-queue/
 apps/web/public/*.html

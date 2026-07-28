@@ -30,6 +30,15 @@ const sitemapPaths = [
 ]
 
 const overviewSlugs = new Set(['fotografie-deutschland', 'fotografie-duesseldorf', 'fotografie-nrw'])
+const intentionallyRedirectedSlugs = new Set([
+  'automobil-fotografie-deutschland',
+  'fotografie-deutschland',
+  'landschaftsfotografie-deutschland',
+  'motorrad-fotografie-deutschland',
+  'oldtimer-fotografie-deutschland',
+  'portraitfotografie-deutschland',
+  'sportwagen-fotografie-deutschland',
+])
 const overviewFamilyEntryLinks = [
   '/automobil-fotografie.html',
   '/sportwagen-fotografie.html',
@@ -38,8 +47,48 @@ const overviewFamilyEntryLinks = [
   '/portraitfotografie.html',
   '/landschaftsfotografie.html',
 ]
+const familyRoutes = {
+  automobil: {
+    parent: '/automobil-fotografie.html',
+    duesseldorf: '/automobil-fotografie-duesseldorf.html',
+    nrw: '/automobil-fotografie-nrw.html',
+    proof: '/portfolio/portfolio-auswahl-automobil',
+  },
+  sportwagen: {
+    parent: '/sportwagen-fotografie.html',
+    duesseldorf: '/sportwagen-fotografie-duesseldorf.html',
+    nrw: '/sportwagen-fotografie-nrw.html',
+    proof: '/portfolio/portfolio-auswahl-sportwagen',
+  },
+  oldtimer: {
+    parent: '/oldtimer-fotografie.html',
+    duesseldorf: '/oldtimer-fotografie-duesseldorf.html',
+    nrw: '/oldtimer-fotografie-nrw.html',
+    proof: '/portfolio/portfolio-auswahl-oldtimer',
+  },
+  motorrad: {
+    parent: '/motorrad-fotografie.html',
+    duesseldorf: '/motorrad-fotografie-duesseldorf.html',
+    nrw: '/motorrad-fotografie-nrw.html',
+    proof: '/portfolio/portfolio-auswahl-motorrad',
+  },
+  portrait: {
+    parent: '/portraitfotografie.html',
+    duesseldorf: '/portraitfotografie-duesseldorf.html',
+    nrw: '/portraitfotografie-nrw.html',
+    proof: '/portfolio/portfolio-auswahl-portrait',
+  },
+  landschaft: {
+    parent: '/landschaftsfotografie.html',
+    duesseldorf: '/landschaftsfotografie-duesseldorf.html',
+    nrw: '/landschaftsfotografie-nrw.html',
+    proof: '/portfolio/portfolio-auswahl-landschaft',
+  },
+}
 
 const clean = (value) => String(value || '').trim()
+const hasEncodingArtifact = (value) =>
+  /\uFFFD|[\p{L}]\?[\p{L}]|Ã.|Â.|â€|ðŸ/u.test(clean(value))
 
 const decodeHtml = (value = '') =>
   value
@@ -61,6 +110,8 @@ const normalizeUrl = (value) => {
 const routePath = (canonical) => new URL(canonical).pathname || '/'
 
 const extract = (html, pattern) => decodeHtml(html.match(pattern)?.[1] || '')
+const hasHref = (html, href) =>
+  html.includes(`href="${href}"`) || html.includes(`href="${href.replace(/^\//, '')}"`)
 
 const familyFor = (doc) => {
   const slug = clean(doc.slug).toLowerCase()
@@ -115,6 +166,15 @@ function auditContent(docs) {
     for (const field of ['title', 'description', 'focusKeyword', 'searchIntent', 'canonicalUrl', 'ogImage']) {
       if (!clean(seo[field])) issues.push({ type: 'missing-seo-field', label, field })
     }
+    for (const [field, value] of [
+      ['title', seo.title],
+      ['description', seo.description],
+      ['documentTitle', doc.title],
+    ]) {
+      if (hasEncodingArtifact(value)) {
+        issues.push({ type: 'metadata-encoding-artifact', label, field, sample: clean(value).slice(0, 240) })
+      }
+    }
 
     if (collection === 'local-seo-pages' && !clean(doc.targetKeyword)) {
       issues.push({ type: 'missing-targetKeyword', label })
@@ -165,8 +225,16 @@ function auditContent(docs) {
 
 async function auditLiveMeta(docs) {
   const issues = []
+  let checked = 0
+  let redirectedDocuments = 0
 
   for (const { collection, file, doc, label } of docs) {
+    if (intentionallyRedirectedSlugs.has(doc.slug)) {
+      redirectedDocuments += 1
+      continue
+    }
+
+    checked += 1
     const canonical = doc.seo?.canonicalUrl
     const response = await fetch(`${baseUrl}${routePath(canonical)}`)
     const html = await response.text()
@@ -202,15 +270,31 @@ async function auditLiveMeta(docs) {
     if (!rendered.ogImage) issues.push({ type: 'missing-og-image', label })
   }
 
-  return { checked: docs.length, issueCount: issues.length, issues: issues.slice(0, 100) }
+  return { checked, redirectedDocuments, issueCount: issues.length, issues: issues.slice(0, 100) }
 }
 
 async function auditLiveClusterLinks(docs) {
   const issues = []
-  const localDocs = docs.filter((item) => item.collection === 'local-seo-pages')
-  const summary = { familyPages: 0, overviewPages: 0 }
+  const clusterDocs = docs.filter((item) => ['local-seo-pages', 'service-pages'].includes(item.collection))
+  let checked = 0
+  let redirectedPages = 0
+  const summary = {
+    childPages: 0,
+    duesseldorfHubs: 0,
+    familyPages: 0,
+    nrwHubs: 0,
+    overviewPages: 0,
+    pillarPages: 0,
+    unclassifiedPages: 0,
+  }
 
-  for (const { file, doc } of localDocs) {
+  for (const { file, doc } of clusterDocs) {
+    if (intentionallyRedirectedSlugs.has(doc.slug)) {
+      redirectedPages += 1
+      continue
+    }
+
+    checked += 1
     const pathName = routePath(doc.seo?.canonicalUrl)
     const response = await fetch(`${baseUrl}${pathName}`)
     const html = await response.text()
@@ -222,21 +306,68 @@ async function auditLiveClusterLinks(docs) {
 
     if (overviewSlugs.has(doc.slug)) {
       summary.overviewPages += 1
-      const missingTopics = overviewFamilyEntryLinks.filter((href) => !html.includes(`href="${href}"`) && !html.includes(`href="${href.slice(1)}"`))
+
+      const missingTopics = overviewFamilyEntryLinks.filter((href) => !hasHref(html, href))
       if (missingTopics.length) issues.push({ file, path: pathName, type: 'overview-missing-family-entry-links', missingTopics })
       continue
     }
 
+    const family = familyFor(doc)
+    const routes = familyRoutes[family]
+    if (!routes) {
+      summary.unclassifiedPages += 1
+      continue
+    }
+
     summary.familyPages += 1
+    const isPillar = pathName === routes.parent
+    const isDuesseldorfHub = pathName === routes.duesseldorf
+    const isNrwHub = pathName === routes.nrw
+    const isCrossFamilyHub = isDuesseldorfHub || isNrwHub
+    if (isPillar) summary.pillarPages += 1
+    else if (isDuesseldorfHub) summary.duesseldorfHubs += 1
+    else if (isNrwHub) summary.nrwHubs += 1
+    else summary.childPages += 1
+
     const section = html.match(/<section[^>]*mr-photo-cluster[\s\S]*?<\/section>/)?.[0] || ''
     const linkCount = [...section.matchAll(/class="mr-cities__cell"/g)].length
     const hasOverview = /fotografie-(duesseldorf|nrw|deutschland)\.html/.test(section)
-    if (!section || linkCount < 6 || !hasOverview) {
-      issues.push({ file, path: pathName, type: 'family-cluster-links', hasClusterSection: Boolean(section), linkCount, hasOverview })
+    if (isCrossFamilyHub && (!section || linkCount < 6 || !hasOverview)) {
+      issues.push({ file, path: pathName, type: 'hub-cross-family-links', hasClusterSection: Boolean(section), linkCount, hasOverview })
+    }
+    if (!isCrossFamilyHub && section) {
+      issues.push({ file, path: pathName, type: 'unexpected-cross-family-links' })
+    }
+
+    const requiredLinks = [
+      routes.proof,
+      ...[routes.parent, routes.duesseldorf, routes.nrw].filter((href) => href !== pathName),
+    ]
+    const missingLinks = requiredLinks.filter((href) => !hasHref(html, href))
+    if (missingLinks.length) {
+      issues.push({ file, path: pathName, type: 'missing-role-links', missingLinks })
+    }
+
+    const curatedLinkCount = [...html.matchAll(/class="mr-cities__cell"/g)].length
+    if (curatedLinkCount < 6) {
+      issues.push({ file, path: pathName, type: 'insufficient-curated-links', curatedLinkCount })
+    }
+    if (!html.includes('data-contact-section')) {
+      issues.push({ file, path: pathName, type: 'missing-conversion-section' })
+    }
+    const deprioritizedLocationHref = routes.duesseldorf.replace('-duesseldorf.html', '-deutschland.html')
+    const anchorHrefs = [...html.matchAll(/<a\b[^>]*href="([^"]+)"/g)].map((match) => match[1])
+    if (anchorHrefs.some((href) => href === deprioritizedLocationHref || href === deprioritizedLocationHref.slice(1))) {
+      issues.push({
+        file,
+        path: pathName,
+        type: 'links-to-deprioritized-deutschland-child',
+        href: deprioritizedLocationHref,
+      })
     }
   }
 
-  return { checked: localDocs.length, ...summary, issueCount: issues.length, issues: issues.slice(0, 100) }
+  return { checked, redirectedPages, ...summary, issueCount: issues.length, issues: issues.slice(0, 100) }
 }
 
 async function auditLiveSitemaps(docs) {
@@ -244,6 +375,7 @@ async function auditLiveSitemaps(docs) {
   const sitemapStatus = []
   const sitemapUrls = new Map()
   const expected = docs
+    .filter(({ doc }) => !intentionallyRedirectedSlugs.has(doc.slug))
     .map(({ collection, file, doc }) => ({ collection, file, url: doc.seo?.canonicalUrl ? normalizeUrl(doc.seo.canonicalUrl) : '' }))
     .filter((entry) => entry.url)
 

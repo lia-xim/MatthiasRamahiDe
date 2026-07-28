@@ -2,6 +2,7 @@
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import NativeFamilyClusterLinks from './NativeFamilyClusterLinks.astro'
 import NativeFamilyFaq from './NativeFamilyFaq.astro'
+import NativePracticalGuide from './NativePracticalGuide.astro'
 import NativeReviews from './NativeReviews.astro'
 import PreviewToolbar from '../PreviewToolbar.astro'
 import {
@@ -15,7 +16,9 @@ import {
 import { mergeAuthoredLocalSeoContent } from '../../lib/authoredSeoContent'
 import { cmsHeroTitleFitStyle, splitCmsHeroTitleLines, splitHeroTitleLines } from '../../lib/heroTitleLines'
 import { familyHeroCopy, familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
+import { isCurrentPageHref } from '../../lib/pageLinks'
 import { getLegacyBackedDoc, routeForDoc, type PayloadDoc } from '../../lib/payload'
+import { articleJsonLd } from '../../lib/seo'
 import { tinaAttrs } from '../../lib/tinaFieldAttrs'
 
 type PreviewState = {
@@ -110,8 +113,8 @@ const heroCopy = familyHeroCopy(doc, visualDoc, {
   lead: heroLead,
   primaryHref: '#anfrage',
   primaryLabel: 'Shooting buchen \u2192',
-  secondaryHref: 'portfolio.html',
-  secondaryLabel: 'Portfolio',
+  secondaryHref: '/portfolio/portfolio-auswahl-automobil',
+  secondaryLabel: 'Automobil-Auswahl',
   titleLines: heroTitleLines,
 })
 const heroTitleFitStyle = cmsHeroTitleFitStyle(heroCopy.titleLines, shouldUseCmsHeroTitle)
@@ -150,6 +153,30 @@ const clusterHeading = isKeywordPage ? 'Weitere Fotografie-Bereiche.' : `Weitere
 const clusterLinks = siblingFamilyLinks(scope, 'automobil')
 const overviewHref = 'fotografie-duesseldorf.html'
 const publishedHref = preview?.publishedHref || (doc ? routeForDoc('local-seo-pages', doc) : `/${legacyFile}`)
+const isPracticalGuide = legacyFile === 'auto-fotografieren-tipps.html'
+const guideJsonLd = isPracticalGuide && doc ? articleJsonLd(doc, `/${legacyFile}`) : undefined
+const practicalGuideItems = [
+  {
+    title: 'Nutzung vor der Aufnahme festlegen',
+    text: 'Ein Verkaufsbild braucht nachvollziehbare Ansichten, ein Editorial mehr Dramaturgie. Erst der spätere Einsatz entscheidet, welche Motive in die Serie gehören.',
+  },
+  {
+    title: 'Fahrzeug und Hintergrund vorbereiten',
+    text: 'Saubere Flächen, ausgerichtete Räder und ein ruhiger Hintergrund vermeiden Korrekturen, die sich vor Ort leichter lösen lassen.',
+  },
+  {
+    title: 'Ein kontrollierbares Lichtfenster wählen',
+    text: 'Weiches Morgen- oder Abendlicht und bedeckter Himmel halten Kontraste beherrschbar. Harte Mittagssonne legt störende Reflexe auf Dach und Haube.',
+  },
+  {
+    title: 'Standpunkt über die Reflexe prüfen',
+    text: 'Lack spiegelt die Umgebung. Kamerahöhe und Winkel werden deshalb nicht nur nach Perspektive, sondern auch nach Linien, Gebäuden und Horizont im Lack gewählt.',
+  },
+  {
+    title: 'Eine Serie statt eines Einzelbilds bauen',
+    text: 'Gesamtansicht, Front, Heck, Seite, Innenraum und Details ergeben zusammen einen nutzbaren Bildsatz. Erst die Reihenfolge macht die fotografische Aufgabe vollständig.',
+  },
+]
 const heroDevelopInitial = 'assets/optimized/mpjpgo2b-dsc3032-generase-1-1920.webp'
 const heroDevelopInitialMobile = 'assets/optimized/mpjpgo2b-dsc3032-generase-1-1280.webp'
 
@@ -281,12 +308,12 @@ const relatedAreas = [
     title: 'Motorrad',
   },
   {
-    href: 'portfolio.html',
+    href: '/portfolio/portfolio-auswahl-automobil',
     image: 'assets/portfolio/thumbs/_DSC3879.webp',
     alt: 'Vollständiges Portfolio',
     width: 720,
     height: 480,
-    title: 'Portfolio',
+    title: 'Automobil-Auswahl',
   },
 ]
 
@@ -392,7 +419,9 @@ const focusRelatedLead =
     : keywordFocusCopy?.relatedLead ||
       'Automobil ist die Klammer. Schau dir die spezialisierten Disziplinen an - gleicher Anspruch, anderer Bildfokus. Die Links fuehren schnell zu der Bildwelt, die zum Fahrzeug, zur Nutzung und zum geplanten Shooting passt.'
 
-const cityLinks = [
+type LinkTuple = readonly [href: string, label: string]
+
+const allCityLinks: LinkTuple[] = [
   ['automobil-fotografie-duesseldorf.html', 'Düsseldorf'],
   ['automobil-fotografie-erkrath.html', 'Erkrath'],
   ['automobil-fotografie-ratingen.html', 'Ratingen'],
@@ -416,22 +445,149 @@ const cityLinks = [
   ['automobil-fotografie-dormagen.html', 'Dormagen'],
   ['automobil-fotografie-neuss.html', 'Neuss'],
   ['automobil-fotografie-nrw.html', 'NRW'],
-  ['automobil-fotografie-deutschland.html', 'Deutschland'],
 ]
 
-const localSearchHref = (duesseldorfHref: string, fallbackHref?: string) =>
-  scope.slug === 'duesseldorf' ? duesseldorfHref : fallbackHref || duesseldorfHref
-const searchLinks = [
-  [localSearchHref('auto-fotoshooting-duesseldorf.html', 'auto-fotoshooting.html'), 'Auto-Fotoshooting'],
-  [localSearchHref('bilder-mit-auto-duesseldorf.html', 'bilder-mit-auto.html'), 'Bilder mit Auto'],
-  [localSearchHref('fotoshooting-mit-auto-duesseldorf.html', 'fotoshooting-mit-auto.html'), 'Fotoshooting mit Auto'],
-  [localSearchHref('automotive-fotografie-duesseldorf.html', 'automotive-fotografie.html'), 'Automotive Fotografie'],
-  [localSearchHref('autofotografie-duesseldorf.html', 'autofotografie.html'), 'Autofotografie'],
-  [localSearchHref('fahrzeugfotografie-duesseldorf.html', 'fahrzeugfotografie.html'), 'Fahrzeugfotografie'],
-  [localSearchHref('auto-fotografieren-tipps-duesseldorf.html', 'auto-fotografieren-tipps.html'), 'Auto fotografieren Tipps'],
-  [localSearchHref('autohaus-fotografie-duesseldorf.html', 'autohaus-fotografie.html'), 'Autohaus Fotografie'],
-  [localSearchHref('autoverkauf-fotos-duesseldorf.html'), 'Autoverkauf Fotos'],
+const parentLink: LinkTuple = [defaultLegacyFile, 'Automobilfotografie Übersicht']
+const allLocationLinks = [parentLink, ...allCityLinks]
+const locationLinkByHref = new Map(allLocationLinks.map((link) => [link[0], link]))
+const pickLocationLinks = (hrefs: string[]) =>
+  hrefs.flatMap((href) => {
+    const link = locationLinkByHref.get(href)
+    return link ? [link] : []
+  })
+const isFamilyLocationPage = isParentPage || allCityLinks.some(([href]) => isCurrentPageHref(href, legacyFile))
+const isDuesseldorfFamilyPage = legacyFile === 'automobil-fotografie-duesseldorf.html'
+const isNrwFamilyPage = legacyFile === 'automobil-fotografie-nrw.html'
+const priorityLocationHrefs = [
+  'automobil-fotografie-duesseldorf.html',
+  'automobil-fotografie-nrw.html',
+  'automobil-fotografie-erkrath.html',
+  'automobil-fotografie-mettmann.html',
+  'automobil-fotografie-ratingen.html',
+  'automobil-fotografie-neuss.html',
 ]
+const cityLinks = (
+  isNrwFamilyPage
+    ? allLocationLinks
+    : isParentPage
+      ? pickLocationLinks(priorityLocationHrefs)
+      : isDuesseldorfFamilyPage
+        ? pickLocationLinks([
+            defaultLegacyFile,
+            'automobil-fotografie-nrw.html',
+            'automobil-fotografie-erkrath.html',
+            'automobil-fotografie-mettmann.html',
+            'automobil-fotografie-ratingen.html',
+            'automobil-fotografie-neuss.html',
+          ])
+        : pickLocationLinks([
+            defaultLegacyFile,
+            'automobil-fotografie-duesseldorf.html',
+            'automobil-fotografie-nrw.html',
+          ])
+).filter(([href]) => !isCurrentPageHref(href, legacyFile))
+
+const intentLinks = [
+  {
+    key: 'auto-fotoshooting',
+    label: 'Auto-Fotoshooting',
+    genericHref: 'auto-fotoshooting.html',
+    duesseldorfHref: 'auto-fotoshooting-duesseldorf.html',
+  },
+  {
+    key: 'bilder-mit-auto',
+    label: 'Bilder mit Auto',
+    genericHref: 'bilder-mit-auto.html',
+    duesseldorfHref: 'bilder-mit-auto-duesseldorf.html',
+  },
+  {
+    key: 'fotoshooting-mit-auto',
+    label: 'Fotoshooting mit Auto',
+    genericHref: 'fotoshooting-mit-auto.html',
+    duesseldorfHref: 'fotoshooting-mit-auto-duesseldorf.html',
+  },
+  {
+    key: 'automotive-fotografie',
+    label: 'Automotive Fotografie',
+    genericHref: 'automotive-fotografie.html',
+    duesseldorfHref: 'automotive-fotografie-duesseldorf.html',
+  },
+  {
+    key: 'autofotografie',
+    label: 'Autofotografie',
+    genericHref: 'autofotografie.html',
+    duesseldorfHref: 'autofotografie-duesseldorf.html',
+  },
+  {
+    key: 'fahrzeugfotografie',
+    label: 'Fahrzeugfotografie',
+    genericHref: 'fahrzeugfotografie.html',
+    duesseldorfHref: 'fahrzeugfotografie-duesseldorf.html',
+  },
+  {
+    key: 'auto-fotografieren-tipps',
+    label: 'Auto fotografieren Tipps',
+    genericHref: 'auto-fotografieren-tipps.html',
+    duesseldorfHref: 'auto-fotografieren-tipps-duesseldorf.html',
+  },
+  {
+    key: 'autohaus-fotografie',
+    label: 'Autohaus Fotografie',
+    genericHref: 'autohaus-fotografie.html',
+    duesseldorfHref: 'autohaus-fotografie-duesseldorf.html',
+  },
+  {
+    key: 'autoverkauf-fotos',
+    label: 'Autoverkauf Fotos',
+    genericHref: 'autoverkauf-fotos-duesseldorf.html',
+    duesseldorfHref: 'autoverkauf-fotos-duesseldorf.html',
+  },
+] as const
+type IntentKey = (typeof intentLinks)[number]['key']
+const intentLinkByKey = new Map(intentLinks.map((link) => [link.key, link]))
+const primaryIntentKeys: IntentKey[] = [
+  'auto-fotoshooting',
+  'automotive-fotografie',
+  'autohaus-fotografie',
+  'autoverkauf-fotos',
+  'bilder-mit-auto',
+  'auto-fotografieren-tipps',
+]
+const intentNeighbors: Partial<Record<IntentKey, IntentKey[]>> = {
+  'auto-fotoshooting': ['bilder-mit-auto', 'fotoshooting-mit-auto', 'auto-fotografieren-tipps'],
+  'bilder-mit-auto': ['auto-fotoshooting', 'fotoshooting-mit-auto', 'automotive-fotografie'],
+  'fotoshooting-mit-auto': ['auto-fotoshooting', 'bilder-mit-auto', 'autofotografie'],
+  'automotive-fotografie': ['autohaus-fotografie', 'autoverkauf-fotos', 'fahrzeugfotografie'],
+  autofotografie: ['fahrzeugfotografie', 'automotive-fotografie', 'auto-fotoshooting'],
+  fahrzeugfotografie: ['autofotografie', 'automotive-fotografie', 'autoverkauf-fotos'],
+  'auto-fotografieren-tipps': ['auto-fotoshooting', 'autofotografie', 'automotive-fotografie'],
+  'autohaus-fotografie': ['autoverkauf-fotos', 'automotive-fotografie', 'fahrzeugfotografie'],
+  'autoverkauf-fotos': ['autohaus-fotografie', 'fahrzeugfotografie', 'auto-fotoshooting'],
+}
+const currentIntentKey = legacyFile
+  .replace(/\.html$/, '')
+  .replace(/-duesseldorf$/, '') as IntentKey
+const selectedIntentKeys = isParentPage
+  ? intentLinks.map((link) => link.key)
+  : isDuesseldorfFamilyPage || isNrwFamilyPage
+    ? primaryIntentKeys
+    : !isFamilyLocationPage && intentNeighbors[currentIntentKey]
+      ? intentNeighbors[currentIntentKey]!
+      : primaryIntentKeys.slice(0, 3)
+const searchLinks: LinkTuple[] = selectedIntentKeys
+  .flatMap((key) => {
+    const link = intentLinkByKey.get(key)
+    if (!link) return []
+    const href = !isParentPage && scope.slug === 'duesseldorf' ? link.duesseldorfHref : link.genericHref
+    return [[href, link.label] as LinkTuple]
+  })
+  .filter(([href]) => !isCurrentPageHref(href, legacyFile))
+const showCrossFamilyCluster = isDuesseldorfFamilyPage || isNrwFamilyPage
+const curatedCityHeading =
+  isParentPage || isNrwFamilyPage ? cityHeading : 'Automobilfotografie <em>im Cluster.</em>'
+const curatedIntentHeading = isParentPage
+  ? 'Automobilfotografie <em>nach Anliegen.</em>'
+  : 'Passende Automobilfotografie <em>nach Anliegen.</em>'
 ---
 <AdoptedPageLayout
   legacyFile={legacyFile}
@@ -440,6 +596,7 @@ const searchLinks = [
   noIndex={Boolean(preview)}
   title={metaTitle}
   description={metaDescription}
+  jsonLd={guideJsonLd}
   ogImage={doc?.seo?.ogImage || visualSlots[0].full}
   preloadImages={[
     { href: inheritedHeroDevelopInitialMobile, media: '(max-width: 900px)' },
@@ -512,6 +669,19 @@ const searchLinks = [
       </div>
     </section>
 
+    {isPracticalGuide && (
+      <NativePracticalGuide
+        eyebrow="Praxisleitfaden"
+        title="Auto fotografieren: die Reihenfolge vor Ort."
+        intro="Die Checkliste ordnet die wichtigsten Entscheidungen so, wie sie bei einer Fahrzeugserie tatsächlich anfallen. Sie ergänzt die Bildbeispiele und führt bei höherem Qualitäts- oder Nutzungsanspruch direkt zur passenden Leistung."
+        items={practicalGuideItems}
+        links={[
+          { href: '/automobil-fotografie-duesseldorf.html', label: 'Automobilfotografie Düsseldorf' },
+          { href: '/portfolio/portfolio-auswahl-automobil', label: 'Automobil-Projektbeleg' },
+        ]}
+      />
+    )}
+
     <section class="sw" id="sichten" data-header-theme="dark">
       <header class="sw-head">
         <div class="ttl">
@@ -557,7 +727,7 @@ const searchLinks = [
           <h2 {...tinaAttrs(doc?.portfolioTiles?.[0], 'label')}>{focusGalleryHeadline}</h2>
         </div>
         <div class="meta">
-          <a href="portfolio.html">Zum Portfolio →</a>
+          <a href="/portfolio/portfolio-auswahl-automobil">Automobil-Auswahl ansehen →</a>
         </div>
       </div>
 
@@ -609,7 +779,7 @@ const searchLinks = [
       </div>
     </section>
 
-    {!isParentPage && (
+    {showCrossFamilyCluster && (
       <NativeFamilyClusterLinks
         clusterHeading={clusterHeading}
         clusterLinks={clusterLinks}
@@ -621,7 +791,7 @@ const searchLinks = [
     <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Automobil Fotografie in NRW">
       <div class="mr-cities__inner">
         <div class="mr-cities__head">
-          <h2 set:html={cityHeading}></h2>
+          <h2 set:html={curatedCityHeading}></h2>
         </div>
         <nav class="mr-cities__grid" aria-label="Städte">
           {cityLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
@@ -632,7 +802,7 @@ const searchLinks = [
     <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Automobil Fotografie Suchbegriffe">
       <div class="mr-cities__inner">
         <div class="mr-cities__head">
-          <h2>Automobil Fotografie <em>Suchbegriffe.</em></h2>
+          <h2 set:html={curatedIntentHeading}></h2>
         </div>
         <nav class="mr-cities__grid" aria-label="Suchvarianten">
           {searchLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}

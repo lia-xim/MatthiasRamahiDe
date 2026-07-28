@@ -17,6 +17,19 @@ const readArg = (name) => {
 const origin = (readArg('--origin') || process.env.GSC_AUDIT_ORIGIN || '').replace(/\/+$/, '')
 const reportPath = readArg('--report') || defaultReportPath
 const strict = args.includes('--strict') || process.env.GSC_AUDIT_STRICT === '1'
+const auditDate = new Date().toISOString().slice(0, 10)
+
+const readPositiveInteger = (name, envName, fallback, maximum) => {
+  const raw = readArg(name) || process.env[envName] || String(fallback)
+  const value = Number(raw)
+  if (!Number.isInteger(value) || value < 1 || value > maximum) {
+    throw new Error(`${name} must be an integer between 1 and ${maximum}`)
+  }
+  return value
+}
+
+const concurrency = readPositiveInteger('--concurrency', 'GSC_AUDIT_CONCURRENCY', 8, 32)
+const requestTimeoutMs = readPositiveInteger('--request-timeout-ms', 'GSC_AUDIT_REQUEST_TIMEOUT_MS', 15_000, 120_000)
 
 const exportsConfig = [
   ['Nicht gefunden (404)', readArg('--not-found')],
@@ -68,6 +81,11 @@ const stripHtml = (html) =>
     .trim()
 
 const firstMatch = (value, re) => value.match(re)?.[1] || ''
+const fetchManual = (url) =>
+  fetch(url, {
+    redirect: 'manual',
+    signal: AbortSignal.timeout(requestTimeoutMs),
+  })
 
 const parseExportUrls = async (label, file) => {
   const text = await readFile(file, 'utf8')
@@ -80,7 +98,7 @@ const parseExportUrls = async (label, file) => {
 
 const inspectUrl = async (productionUrl) => {
   const localUrl = localUrlForProductionUrl(productionUrl)
-  const response = await fetch(localUrl, { redirect: 'manual' })
+  const response = await fetchManual(localUrl)
   const status = response.status
   const location = relativeOrAbsoluteTarget(response.headers.get('location') || '', productionUrl)
   const xRobots = response.headers.get('x-robots-tag') || ''
@@ -101,8 +119,8 @@ const inspectUrl = async (productionUrl) => {
     result.classification = 'redirect'
     if (location) {
       try {
-        const targetPath = new URL(location).pathname
-        const finalResponse = await fetch(`${origin}${targetPath}`, { redirect: 'manual' })
+        const targetUrl = new URL(location)
+        const finalResponse = await fetchManual(`${origin}${targetUrl.pathname}${targetUrl.search}`)
         result.finalStatus = finalResponse.status
         result.finalUrl = location
         const finalXRobots = finalResponse.headers.get('x-robots-tag') || ''
@@ -160,6 +178,44 @@ const inspectUrl = async (productionUrl) => {
   return result
 }
 
+const inspectEntries = async (entries) => {
+  const rows = new Array(entries.length)
+  let nextIndex = 0
+
+  const worker = async () => {
+    while (nextIndex < entries.length) {
+      const index = nextIndex
+      nextIndex += 1
+      const entry = entries[index]
+
+      try {
+        rows[index] = {
+          ...entry,
+          ...(await inspectUrl(entry.url)),
+        }
+      } catch (error) {
+        rows[index] = {
+          ...entry,
+          canonical: '',
+          classification: 'fetch-error',
+          error: error instanceof Error ? error.message : String(error),
+          finalCanonical: '',
+          finalStatus: '',
+          finalUrl: '',
+          location: '',
+          noindex: false,
+          status: '',
+          title: '',
+          xRobots: '',
+        }
+      }
+    }
+  }
+
+  await Promise.all(Array.from({ length: Math.min(concurrency, entries.length) }, () => worker()))
+  return rows
+}
+
 const countBy = (items, key) =>
   items.reduce((acc, item) => {
     const value = item[key] || 'unknown'
@@ -178,27 +234,20 @@ const markdownTable = (rows, columns) => {
 
 const main = async () => {
   const entries = (await Promise.all(exportsConfig.map(([label, file]) => parseExportUrls(label, file)))).flat()
-  const rows = []
-
-  for (const entry of entries) {
-    rows.push({
-      ...entry,
-      ...(await inspectUrl(entry.url)),
-    })
-  }
+  const rows = await inspectEntries(entries)
 
   const byGroup = Object.groupBy(rows, (row) => row.group)
-  const problematic = rows.filter((row) =>
-    ['open-404', 'blocked-403', 'canonical-other', 'redirect-to-404', 'status-500'].includes(row.classification),
-  )
+  const acceptableClassifications = new Set(['gone-410', 'indexable-200', 'redirect-to-indexable'])
+  const problematic = rows.filter((row) => !acceptableClassifications.has(row.classification))
   const currentIndexableFromFound = rows.filter((row) => row.group.startsWith('Gefunden') && row.classification === 'indexable-200')
 
   const lines = [
     '# GSC Export URL Audit',
     '',
-    'Stand: 2026-06-30',
+    `Stand: ${auditDate}`,
     '',
     `Quelle: HTTP-Antworten von \`${origin}\` fuer exportierte Search-Console-URLs.`,
+    `Pruefung: ${concurrency} parallele Requests, ${requestTimeoutMs} ms Timeout pro Request.`,
     '',
     '## Kurzbefund',
     '',
@@ -223,7 +272,7 @@ const main = async () => {
       ['URL', (row) => row.url],
       ['Status', (row) => row.status],
       ['Klasse', (row) => row.classification],
-      ['Location/Canonical', (row) => row.location || row.canonical],
+      ['Location/Canonical/Fehler', (row) => row.location || row.canonical || row.error],
     ]),
     '',
     '## Redirect-Beispiele',
@@ -251,8 +300,10 @@ const main = async () => {
   console.log(JSON.stringify({
     byClassification: countBy(rows, 'classification'),
     byGroup: Object.fromEntries(Object.entries(byGroup).map(([group, groupRows]) => [group, countBy(groupRows, 'classification')])),
+    concurrency,
     problematic: problematic.length,
     reportPath,
+    requestTimeoutMs,
     rows: rows.length,
     strict,
   }, null, 2))

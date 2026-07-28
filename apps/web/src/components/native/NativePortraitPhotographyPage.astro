@@ -2,6 +2,7 @@
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import NativeFamilyClusterLinks from './NativeFamilyClusterLinks.astro'
 import NativeFamilyFaq from './NativeFamilyFaq.astro'
+import NativePracticalGuide from './NativePracticalGuide.astro'
 import NativeReviews from './NativeReviews.astro'
 import PreviewToolbar from '../PreviewToolbar.astro'
 import {
@@ -10,10 +11,12 @@ import {
   type NativeFamilyPreviewState,
 } from '../../lib/nativeFamilyPageContext'
 import { mergeAuthoredLocalSeoContent } from '../../lib/authoredSeoContent'
+import { curateFamilyClusterLinks } from '../../lib/familyClusterLinks'
 import { cmsHeroTitleFitStyle, splitCmsHeroTitleLines, splitHeroTitleLines } from '../../lib/heroTitleLines'
 import { keywordFocusCopyForSlug } from '../../lib/localSeoFamilyContent'
 import { familyHeroCopy, familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
 import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
+import { articleJsonLd } from '../../lib/seo'
 import { splitTrailingEmphasis } from '../../lib/splitTrailingEmphasis'
 import { tinaAttrs } from '../../lib/tinaFieldAttrs'
 
@@ -75,8 +78,8 @@ const heroCopy = familyHeroCopy(doc, visualDoc, {
   lead: heroLead,
   primaryHref: '#anfrage',
   primaryLabel: 'Portraitshooting anfragen \u2192',
-  secondaryHref: 'portfolio.html',
-  secondaryLabel: 'Portfolio',
+  secondaryHref: '/portfolio/portfolio-auswahl-portrait',
+  secondaryLabel: 'Portrait-Auswahl',
   titleLines: fallbackHeroTitleLines,
 })
 const heroTitleFitStyle = cmsHeroTitleFitStyle(heroCopy.titleLines, shouldUseCmsHeroTitle)
@@ -147,7 +150,7 @@ const visualSlots = familyVisualSlots(visualDoc, [
   { alt: 'Portfolio', full: 'assets/portraits/_DSC9321-Enhanced-NR.webp', src: 'assets/portfolio/thumbs/_DSC9321-Enhanced-NR.webp', width: 720, height: 1080 },
 ], sectionImageOverrides)
 
-const cityLinks = [
+const allCityLinks = [
   ['portraitfotografie-duesseldorf.html', 'Düsseldorf'],
   ['portraitfotografie-erkrath.html', 'Erkrath'],
   ['portraitfotografie-ratingen.html', 'Ratingen'],
@@ -174,22 +177,75 @@ const cityLinks = [
   ['portraitfotografie-deutschland.html', 'Deutschland'],
 ] as const
 
-const localSearchHref = (duesseldorfHref: string, fallbackHref?: string) =>
-  scope.slug === 'duesseldorf' ? duesseldorfHref : fallbackHref || duesseldorfHref
-const searchLinks = [
-  [localSearchHref('portrait-fotoshooting-duesseldorf.html', 'portrait-fotoshooting.html'), 'Portrait Fotoshooting'],
-  [localSearchHref('fotoshooting-gutschein-duesseldorf.html', 'fotoshooting-gutschein.html'), 'Fotoshooting Gutschein'],
-  [localSearchHref('fotoshooting-preise-duesseldorf.html', 'fotoshooting-preise.html'), 'Fotoshooting Preise'],
-  [localSearchHref('dating-fotoshooting-duesseldorf.html', 'dating-fotoshooting.html'), 'Dating Fotoshooting'],
-  ['business-portrait-duesseldorf.html', 'Business Portrait'],
-  ['headshot-fotograf-duesseldorf.html', 'Headshot Fotograf'],
-  [localSearchHref('personal-branding-fotografie-duesseldorf.html', 'personal-branding-fotografie.html'), 'Personal Branding Fotografie'],
-  [localSearchHref('schwarz-weiss-portrait-fotografie-duesseldorf.html', 'schwarz-weiss-portrait-fotografie.html'), 'Schwarz-Weiss Portrait'],
-  [localSearchHref('portraitfotografie-beleuchtung-duesseldorf.html', 'portraitfotografie-beleuchtung.html'), 'Portrait Beleuchtung'],
-  [localSearchHref('paarshooting-familienshooting-duesseldorf.html', 'paarshooting-familienshooting.html'), 'Paar & Familie'],
-  ['unternehmensportrait-duesseldorf.html', 'Unternehmensportrait'],
-  ['pressefoto-duesseldorf.html', 'Pressefoto'],
+const intentLinks = [
+  { key: 'fotoshooting', label: 'Portrait Fotoshooting', genericHref: 'portrait-fotoshooting.html', duesseldorfHref: 'portrait-fotoshooting-duesseldorf.html' },
+  { key: 'gutschein', label: 'Fotoshooting Gutschein', genericHref: 'fotoshooting-gutschein.html', duesseldorfHref: 'fotoshooting-gutschein-duesseldorf.html' },
+  { key: 'preise', label: 'Fotoshooting Preise', genericHref: 'fotoshooting-preise.html', duesseldorfHref: 'fotoshooting-preise-duesseldorf.html' },
+  { key: 'dating', label: 'Dating Fotoshooting', genericHref: 'dating-fotoshooting.html', duesseldorfHref: 'dating-fotoshooting-duesseldorf.html' },
+  { key: 'business', label: 'Business Portrait', genericHref: 'business-portrait-duesseldorf.html', duesseldorfHref: 'business-portrait-duesseldorf.html' },
+  { key: 'headshot', label: 'Headshot Fotograf', genericHref: 'headshot-fotograf-duesseldorf.html', duesseldorfHref: 'headshot-fotograf-duesseldorf.html' },
+  { key: 'personal-branding', label: 'Personal Branding Fotografie', genericHref: 'personal-branding-fotografie.html', duesseldorfHref: 'personal-branding-fotografie-duesseldorf.html' },
+  { key: 'schwarz-weiss', label: 'Schwarz-Weiss Portrait', genericHref: 'schwarz-weiss-portrait-fotografie.html', duesseldorfHref: 'schwarz-weiss-portrait-fotografie-duesseldorf.html' },
+  { key: 'beleuchtung', label: 'Portrait Beleuchtung', genericHref: 'portraitfotografie-beleuchtung.html', duesseldorfHref: 'portraitfotografie-beleuchtung-duesseldorf.html' },
+  { key: 'paar-familie', label: 'Paar & Familie', genericHref: 'paarshooting-familienshooting.html', duesseldorfHref: 'paarshooting-familienshooting-duesseldorf.html' },
+  { key: 'unternehmen', label: 'Unternehmensportrait', genericHref: 'unternehmensportrait-duesseldorf.html', duesseldorfHref: 'unternehmensportrait-duesseldorf.html' },
+  { key: 'presse', label: 'Pressefoto', genericHref: 'pressefoto-duesseldorf.html', duesseldorfHref: 'pressefoto-duesseldorf.html' },
 ] as const
+const clusterCuration = curateFamilyClusterLinks({
+  allCityLinks,
+  currentPage: legacyFile,
+  defaultLegacyFile,
+  familyLabel: 'Portrait Fotografie',
+  intentLinks,
+  intentNeighbors: {
+    fotoshooting: ['preise', 'gutschein', 'dating'],
+    gutschein: ['fotoshooting', 'preise', 'paar-familie'],
+    preise: ['fotoshooting', 'business', 'personal-branding'],
+    dating: ['fotoshooting', 'schwarz-weiss', 'personal-branding'],
+    business: ['headshot', 'personal-branding', 'unternehmen'],
+    headshot: ['business', 'presse', 'personal-branding'],
+    'personal-branding': ['business', 'headshot', 'presse'],
+    'schwarz-weiss': ['beleuchtung', 'dating', 'fotoshooting'],
+    beleuchtung: ['business', 'headshot', 'schwarz-weiss'],
+    'paar-familie': ['fotoshooting', 'gutschein', 'schwarz-weiss'],
+    unternehmen: ['business', 'headshot', 'presse'],
+    presse: ['headshot', 'business', 'unternehmen'],
+  },
+  isParentPage,
+  primaryIntentKeys: ['fotoshooting', 'business', 'headshot', 'personal-branding', 'beleuchtung', 'paar-familie', 'presse'],
+  scopeSlug: scope.slug,
+})
+const {
+  cityHeading,
+  cityLinks,
+  intentHeading,
+  searchLinks,
+  showCrossFamilyCluster,
+} = clusterCuration
+const isPracticalGuide = legacyFile === 'portraitfotografie-beleuchtung.html'
+const guideJsonLd = isPracticalGuide && doc ? articleJsonLd(doc, `/${legacyFile}`) : undefined
+const practicalGuideItems = [
+  {
+    title: 'Gewünschte Wirkung benennen',
+    text: 'Nahbar, sachlich, markant oder editorial sind unterschiedliche Ziele. Die beabsichtigte Wirkung entscheidet über Lichtgröße, Richtung und Kontrast.',
+  },
+  {
+    title: 'Vorhandenes Licht prüfen',
+    text: 'Fenster, Tageszeit, Wandfarben und Hintergrund verändern Hauttöne und Schatten. Erst danach steht fest, ob natürliches Licht ausreicht.',
+  },
+  {
+    title: 'Lichtquelle und Abstand wählen',
+    text: 'Eine große, nahe Lichtquelle erzeugt weiche Übergänge. Kleinere oder weiter entfernte Quellen zeichnen Kanten und Textur deutlich härter.',
+  },
+  {
+    title: 'Augen und Kontur kontrollieren',
+    text: 'Catchlight, Schattenkante und die Trennung vom Hintergrund werden gemeinsam geprüft. Aufheller oder Kantenlicht kommen nur hinzu, wenn sie die Aussage stärken.',
+  },
+  {
+    title: 'Varianten mit derselben Bildsprache aufnehmen',
+    text: 'Halbnah, Close-up und Hochformat dürfen unterschiedlich wirken, müssen aber Lichtfarbe, Kontrast und Bearbeitung als zusammengehörige Serie tragen.',
+  },
+]
 
 const firstSectionTarget = isLocalHeroPage ? `${serviceLabel} ${scope.label}` : isKeywordPage ? serviceLabel : ''
 const focusIntroHeadlineSource = cmsText(doc?.statement?.headline) || keywordFocusCopy?.pullHeadline || (isParentPage ? 'Naehe ohne' : `${serviceLabel}:`)
@@ -337,7 +393,7 @@ const defaultRelatedCards = [
   { href: 'landschaftsfotografie.html', title: 'Landschaft', visualIndex: 23 },
   { href: 'automobil-fotografie.html', title: 'Automobil', visualIndex: 24 },
   { href: 'videografie-duesseldorf.html', title: 'Videografie', visualIndex: 25 },
-  { href: 'portfolio.html', title: 'Portfolio', visualIndex: 26 },
+  { href: '/portfolio/portfolio-auswahl-portrait', title: 'Portrait-Auswahl', visualIndex: 26 },
 ]
 const relatedCards = defaultRelatedCards.map((card, index) => {
   const item = doc?.relatedSection?.items?.[index]
@@ -355,16 +411,6 @@ const focusRelatedLead =
   'Fahrzeug, Mensch und Raum bleiben eigene Bildbereiche. Die Links fuehren schnell zu der Seite, die zum Motiv, zur Nutzung und zum geplanten Shooting passt.'
 const relatedHeadline = cmsText(doc?.relatedSection?.headline) || 'Verwandte'
 const relatedEmphasis = cmsText(doc?.relatedSection?.emphasis) || 'Bereiche.'
-const locationHeading = cmsText(doc?.locationLinksSection?.headline) || 'Portrait Fotografie'
-const locationEmphasis = cmsText(doc?.locationLinksSection?.emphasis) || 'vor Ort.'
-const locationLinks = doc?.locationLinksSection?.items?.length
-  ? doc.locationLinksSection.items.map((item) => [cmsText(item.href), cmsText(item.label)] as const).filter(([, label]) => label)
-  : cityLinks
-const searchHeading = cmsText(doc?.searchLinksSection?.headline) || 'Portrait Fotografie'
-const searchEmphasis = cmsText(doc?.searchLinksSection?.emphasis) || 'Suchbegriffe.'
-const searchLinkItems = doc?.searchLinksSection?.items?.length
-  ? doc.searchLinksSection.items.map((item) => [cmsText(item.href), cmsText(item.label)] as const).filter(([, label]) => label)
-  : searchLinks
 const contactSubjectFinal = cmsText(doc?.contactSection?.emailSubject) || contactSubject
 const contactHeadlineFinal = cmsText(doc?.contactSection?.headline)
   ? `${doc?.contactSection?.headline || ''}${cmsText(doc?.contactSection?.emphasis) ? ` <em>${doc?.contactSection?.emphasis}</em>` : ''}`
@@ -391,6 +437,7 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
   noIndex={Boolean(preview)}
   title={metaTitle}
   description={metaDescription}
+  jsonLd={guideJsonLd}
   ogImage={doc?.seo?.ogImage || visualSlots[0].full}
   preloadImages={[visualSlots[0].full]}
 >
@@ -466,6 +513,19 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
       </div>
     </section>
 
+    {isPracticalGuide && (
+      <NativePracticalGuide
+        eyebrow="Lichtleitfaden"
+        title="Portraitlicht in fünf Entscheidungen."
+        intro="Die Reihenfolge trennt Bildwirkung von bloßer Technik. Sie zeigt, welche Entscheidungen vor und während eines Portrait-Shootings getroffen werden und wann ein kontrolliertes Setup sinnvoll ist."
+        items={practicalGuideItems}
+        links={[
+          { href: '/portraitfotografie-duesseldorf.html', label: 'Portraitfotografie Düsseldorf' },
+          { href: '/portfolio/portfolio-auswahl-portrait', label: 'Portrait-Projektbeleg' },
+        ]}
+      />
+    )}
+
     <section class="mod-pt" data-header-theme="dark">
       <div class="mod-pt__head">
         <h2 class="mod-pt__title"><span {...tinaAttrs(doc?.focusSection, 'headline')}>{focusModuleHeadline}</span> <em {...tinaAttrs(doc?.focusSection, 'emphasis')}>{focusModuleEmphasis}</em></h2>
@@ -488,7 +548,7 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
       <div class="bg-pt__head">
         <h2 class="bg-pt__title"><span {...tinaAttrs(doc?.gallerySection, 'headline')}>{focusGalleryHeadline}</span> <em>{focusGalleryEmphasis}</em></h2>
         {focusGalleryLead && <p class="bg-pt__lead" {...tinaAttrs(doc?.gallerySection, 'lead')}>{focusGalleryLead}</p>}
-        <a class="bg-pt__link" href="portfolio.html">Komplettes Portfolio ansehen →</a>
+        <a class="bg-pt__link" href="/portfolio/portfolio-auswahl-portrait">Portrait-Auswahl ansehen →</a>
       </div>
       <div class="bg-pt__grid">
         <button class="bg-pt__tile t-hero" data-full={visualSlots[9].full}><img src={visualSlots[9].src} data-full={visualSlots[9].full} alt={visualSlots[9].alt} width={visualSlots[9].width} height={visualSlots[9].height} decoding="async" loading="lazy" {...tinaAttrs(doc?.portfolioTiles?.[0], 'image')} /></button>
@@ -544,7 +604,7 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
       </div>
     </section>
 
-    {!isParentPage && (
+    {showCrossFamilyCluster && (
       <NativeFamilyClusterLinks
         clusterHeading={clusterHeading}
         clusterLinks={clusterLinks}
@@ -556,10 +616,10 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
     <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Portrait Fotografie in NRW">
       <div class="mr-cities__inner">
         <div class="mr-cities__head">
-          <h2 class="mr-cities__title">{locationHeading} <em>{locationEmphasis}</em></h2>
+          <h2 class="mr-cities__title" set:html={cityHeading}></h2>
         </div>
         <nav class="mr-cities__grid" aria-label="Städte">
-          {locationLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
+          {cityLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
         </nav>
       </div>
     </section>
@@ -567,10 +627,10 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
     <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Portrait Fotografie Suchbegriffe">
       <div class="mr-cities__inner">
         <div class="mr-cities__head">
-          <h2>{searchHeading} <em>{searchEmphasis}</em></h2>
+          <h2 set:html={intentHeading}></h2>
         </div>
         <nav class="mr-cities__grid" aria-label="Suchvarianten">
-          {searchLinkItems.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
+          {searchLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
         </nav>
       </div>
     </section>

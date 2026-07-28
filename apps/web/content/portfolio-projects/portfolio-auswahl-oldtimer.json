@@ -31,15 +31,55 @@
   ],
   "heroSlides": [],
   "projectPage": {
+    "galleryEyebrow": "Projektbeleg",
     "statement": {
-      "stats": []
+      "quote": "Material, Patina und",
+      "accent": "Geschichte.",
+      "stats": [
+        {
+          "label": "Bildtypen",
+          "text": "Karosserie, Cockpit, Detail"
+        },
+        {
+          "label": "Fokus",
+          "text": "Speichen, Leder, Instrumente"
+        },
+        {
+          "label": "Region",
+          "text": "Düsseldorf / NRW"
+        }
+      ],
+      "buttonLabel": "Oldtimerfotografie ansehen",
+      "buttonHref": "/oldtimer-fotografie-duesseldorf.html"
     },
     "context": {
-      "body": []
+      "kicker": "Einordnung",
+      "headline": "Was die Auswahl sichtbar macht.",
+      "body": [
+        {
+          "text": "Die Bildstrecke verbindet Gesamtansichten mit Cockpit- und Karosseriedetails. Gebrauchsspuren, Rundinstrumente, Leder und Metall bleiben als Teil des Fahrzeugcharakters sichtbar."
+        },
+        {
+          "text": "Die vier Motive dienen als visueller Projektbeleg. Sie zeigen Bildsprache und Bearbeitung, ohne einen Auftraggeber, eine Veröffentlichung oder Ergebnisse zu behaupten, die nicht dokumentiert sind."
+        }
+      ]
     },
     "perspectives": [],
     "infoCards": [],
-    "relatedCards": [],
+    "relatedCards": [
+      {
+        "label": "Leistung",
+        "title": "Oldtimerfotografie Düsseldorf",
+        "href": "/oldtimer-fotografie-duesseldorf.html",
+        "image": "/uploads/payload/_DSC3892-2.webp"
+      },
+      {
+        "label": "Übersicht",
+        "title": "Portfolio",
+        "href": "/portfolio.html",
+        "image": "/uploads/payload/_DSC2986-2.webp"
+      }
+    ],
     "contact": {}
   },
   "presentationMode": "floating-archive",

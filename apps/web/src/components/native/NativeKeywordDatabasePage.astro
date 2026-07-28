@@ -11,10 +11,10 @@ const legacyFile = 'keyword-datenbank-seo.html'
 const providedDoc = (Astro.props as Props).doc
 const doc = providedDoc || (await getBySlug('service-pages', 'keyword-datenbank-seo', { depth: 2 }))
 const canonicalUrl = `https://matthiasramahi.de/${legacyFile}`
-const contextterUrl = 'https://contextter.com/features/keyword-database'
-const title = 'Keyword-Datenbank für SEO-Recherche | Matthias Ramahi'
+const contextterUrl = 'https://contextter.com/de/features/keyword-database'
+const title = 'Contextter Keyword-Datenbank: Fallstudie | Matthias Ramahi'
 const description =
-  'Keyword-Datenbank für SEO-Recherche: Contextter als konkrete Arbeitsbasis für Keyword-Recherche, Suchintention, Themencluster, SERP-Analyse und Content-Planung.'
+  'Fallstudie zur Contextter Keyword-Datenbank: Wie aus verstreuter SEO-Recherche ein System für Suchintention, Themencluster, Wettbewerb und Priorisierung wurde.'
 
 const heroShots = [
   {
@@ -49,17 +49,17 @@ const heroShots = [
 
 const productSections = [
   {
-    eyebrow: 'Keyword-Recherche',
-    title: 'Keywords, Suchintention und Kennzahlen bleiben in einer Arbeitsansicht.',
+    eyebrow: 'Produktentscheidung 01',
+    title: 'Ein gemeinsamer Datenraum statt weiterer Einzelexporte.',
     body:
-      'Statt Keyword-Ideen in mehreren Tabellen, Tools und Notizen zu verteilen, zeigt die Keyword-Datenbank die wichtigsten Signale dort, wo sie bewertet werden: Keyword, Intent, Volumen, CPC, Entwicklung und Datenqualität.',
+      'Die erste Entscheidung war, Keyword, Intent, Volumen, CPC, Entwicklung und Datenqualität nicht mehr in getrennten Tabellen zu bewerten. Die Listen- und Detailansicht hält diese Signale dort zusammen, wo eine Priorität festgelegt wird.',
     image: heroShots[0],
   },
   {
-    eyebrow: 'Themenchancen',
-    title: 'Neue Themen entstehen aus echten Erweiterungen, nicht aus Bauchgefühl.',
+    eyebrow: 'Produktentscheidung 02',
+    title: 'Discovery erweitert eine Recherche, ohne ihren Kontext zu verlieren.',
     body:
-      'Discovery hilft dabei, Start-Keywords semantisch zu erweitern und verwandte Begriffe strukturiert in die Datenbank zu übernehmen. Das ist besonders hilfreich für Themencluster, Longtails und Content-Planung.',
+      'Neue Vorschläge sollten nicht als zweite, unverbundene Liste enden. Discovery erweitert Start-Keywords um verwandte Begriffe und führt geeignete Kandidaten direkt in die bestehende Themen- und Bewertungsstruktur zurück.',
     image: {
       src: '/assets/contextter/keyword-database-discovery.webp',
       alt: 'Contextter Discovery-Oberfläche mit semantischer Erweiterung und Google-Vorschlägen',
@@ -68,10 +68,10 @@ const productSections = [
     },
   },
   {
-    eyebrow: 'Wettbewerbsanalyse',
-    title: 'SERP- und Wettbewerbsdaten werden Teil der Entscheidung.',
+    eyebrow: 'Produktentscheidung 03',
+    title: 'SERP und Wettbewerb gehören zur Keyword-Bewertung.',
     body:
-      'Bei SEO reicht es selten, nur ein Suchvolumen zu sehen. Die Wettbewerber-Ansicht macht sichtbar, welche Domains in den Suchergebnissen auftauchen, wo Keyword-Lücken liegen und welche Themen fachlich nachgezogen werden können.',
+      'Suchvolumen allein sagt wenig darüber aus, welche Seite gebraucht wird und wie realistisch ein Thema ist. Deshalb zeigt die Wettbewerber-Ansicht Domains, Keyword-Lücken und SERP-Positionen im selben Recherchekontext.',
     image: {
       src: '/assets/contextter/keyword-database-competition.webp',
       alt: 'Contextter Wettbewerber-Ansicht mit Keyword-Lücken und Domainvergleich',
@@ -82,61 +82,70 @@ const productSections = [
 ] as const
 
 const workflow = [
-  ['01', 'Datenbasis aufbauen', 'Seed-Keywords, Longtails, Fragen und bestehende Listen an einem Ort erfassen.'],
-  ['02', 'Suchintention einordnen', 'Keywords nach Informations-, Vergleichs-, Navigations- oder Kaufnähe bewerten.'],
-  ['03', 'SERP und Wettbewerb prüfen', 'Top-Ergebnisse, Domainmuster, Keyword-Lücken und Content-Formate einbeziehen.'],
-  ['04', 'Content planen', 'Themencluster, Prioritäten, Briefings und interne Verlinkung aus der Recherche ableiten.'],
+  ['01', 'Problem abgrenzen', 'Verstreute Listen, fehlender Kontext und unklare Prioritäten als Kernproblem definieren.'],
+  ['02', 'Datenmodell ordnen', 'Keywords, Intent, Kennzahlen, Themen und Zielseiten in einer Struktur zusammenführen.'],
+  ['03', 'Entscheidungen sichtbar machen', 'Discovery, SERP, Wettbewerb und Matrix direkt an die Recherche anbinden.'],
+  ['04', 'Weiterarbeit ermöglichen', 'Cluster, Exporte und nachvollziehbare Prioritäten für Content und Seiten nutzen.'],
 ] as const
 
 const focusCards = [
   {
-    title: 'Keyword-Ideen strukturiert erfassen',
-    text: 'Contextter bündelt Seed-Keywords, Longtails, Fragen und neue Vorschläge so, dass daraus eine auswertbare Recherchebasis entsteht.',
+    title: 'Ausgangslage',
+    text: 'Keyword-Ideen lagen in Tools, Tabellen und Notizen. Bei der späteren Content-Entscheidung fehlten Suchintention, SERP-Kontext und eine gemeinsame Priorität.',
   },
   {
-    title: 'Suchintention und Themencluster bewerten',
-    text: 'Unsere Keyword-Datenbank hilft dabei, Keywords nicht nur zu sammeln, sondern nach Intent, Thema, Potenzial und nächstem Schritt einzuordnen.',
+    title: 'Produktziel',
+    text: 'Aus der Recherche sollte ein dauerhaft nutzbares System werden, das Keywords, Themencluster, Zielseiten und Wettbewerbsdaten zusammen bewertet.',
   },
   {
-    title: 'SERPs und Wettbewerber einbeziehen',
-    text: 'Wettbewerbsdaten, SERP-Signale und Keyword-Lücken bleiben im Recherchekontext sichtbar und werden Teil der SEO-Entscheidung.',
+    title: 'Bewusste Grenze',
+    text: 'Contextter soll Entscheidungen besser vorbereiten. Das Produkt ersetzt weder fachliche SEO-Strategie noch gute Inhalte und verspricht keine Rankings.',
   },
 ] as const
 
 const faqs = [
   {
-    question: 'Ist die Keyword-Datenbank ein Ersatz für SEO-Beratung?',
+    question: 'Was zeigt diese Fallstudie?',
     answer:
-      'Nein. Die Keyword-Datenbank ist eine Arbeitsbasis für Recherche, Suchintention, SERP-Analyse und Wettbewerbsdaten. Strategie, Bewertung und Umsetzung bleiben fachliche Arbeit.',
+      'Sie dokumentiert die Ausgangslage, die wichtigsten Produktentscheidungen und den aktuellen Stand der Contextter Keyword-Datenbank. Die gezeigten Screenshots stammen aus der tatsächlichen Oberfläche.',
   },
   {
-    question: 'Für wen eignet sich die Contextter Keyword-Datenbank?',
+    question: 'Wie ist Matthias Ramahi mit Contextter verbunden?',
     answer:
-      'Sie eignet sich für Selbstständige, kleine Unternehmen, Agenturen, SEO-Verantwortliche und Content-Teams, die Keywords, Themencluster und Wettbewerbsdaten nicht mehr in verstreuten Tabellen verwalten möchten.',
+      'Contextter ist ein Softwareprojekt, an dessen Produkt- und SEO-Struktur ich arbeite. Diese Seite ist deshalb keine unabhängige Bewertung, sondern eine persönliche Fallstudie aus der Produktentwicklung.',
   },
   {
-    question: 'Warum ist Suchintention so wichtig?',
+    question: 'Ist die gezeigte Keyword-Datenbank nur ein Konzept?',
     answer:
-      'Suchintention entscheidet, welche Art von Seite ein Keyword braucht. Ein Ratgeber, eine Leistungsseite, ein Vergleich oder eine lokale Landingpage erfüllen unterschiedliche Erwartungen.',
+      'Nein. Die Screenshots zeigen reale Produktbereiche wie Keyword-Liste, Detailpanel, Discovery, Wettbewerb, Matrix und Export. Den aktuellen Produktstand findest du direkt auf Contextter.',
   },
   {
-    question: 'Garantiert eine Keyword-Datenbank bessere Rankings?',
+    question: 'Garantiert Contextter bessere Rankings?',
     answer:
       'Nein. Rankings lassen sich nicht garantieren. Eine strukturierte Keyword-Datenbank kann aber helfen, bessere Prioritäten zu setzen und SEO-Arbeit nachvollziehbarer zu machen.',
   },
   {
-    question: 'Kann ich Keyword-Recherche als Dienstleistung anfragen?',
+    question: 'Wo kann ich die Keyword-Datenbank ansehen?',
     answer:
-      'Ja. Wenn du Unterstützung bei Keyword-Recherche, SEO-Strategie, Content-Planung oder Wettbewerbsanalyse brauchst, kann ich die Recherche einordnen und konkrete nächste Schritte ableiten.',
+      'Die deutsche Produktseite auf Contextter zeigt die Keyword-Datenbank, ihren aktuellen Funktionsumfang und den Zugang zum Produkt.',
   },
 ]
+
+const softwareApplication = {
+  '@type': 'SoftwareApplication',
+  name: 'Contextter Keyword-Datenbank',
+  url: contextterUrl,
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web',
+}
 
 const jsonLdItems: JsonLd[] = [
   {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
     '@id': `${canonicalUrl}#webpage`,
-    name: 'Keyword-Datenbank für SEO-Recherche',
+    name: 'Contextter Keyword-Datenbank: Fallstudie',
+    description,
     url: canonicalUrl,
     inLanguage: 'de-DE',
     isPartOf: { '@id': 'https://matthiasramahi.de/#website' },
@@ -144,39 +153,31 @@ const jsonLdItems: JsonLd[] = [
       '@type': 'ImageObject',
       url: `https://matthiasramahi.de${heroShots[0].src}`,
     },
-    about: [
-      'Keyword-Datenbank',
-      'Keyword-Recherche',
-      'SEO-Strategie',
-      'Content-Planung',
-      'Wettbewerbsanalyse',
-      'Suchintention',
-      'Themencluster',
-      'SERP-Analyse',
-      'Sichtbarkeit',
-      'organischer Traffic',
-    ],
+    about: softwareApplication,
+    keywords: 'Keyword-Datenbank, Keyword-Recherche, Suchintention, Themencluster, SERP-Analyse',
   },
   {
     '@context': 'https://schema.org',
-    '@type': 'Service',
-    '@id': `${canonicalUrl}#service`,
-    name: 'Keyword-Recherche und SEO-Strategie mit Keyword-Datenbank',
-    serviceType: 'SEO- und Keyword-Recherche',
-    provider: { '@id': 'https://matthiasramahi.de/#person' },
-    areaServed: ['Düsseldorf', 'NRW', 'Deutschland'],
-    url: canonicalUrl,
-    description:
-      'Strukturierte Keyword-Recherche mit Keyword-Datenbank, Suchintention, SERP-Analyse, Wettbewerbsdaten, Themenclustern und Content-Planung.',
+    '@type': 'Article',
+    '@id': `${canonicalUrl}#article`,
+    headline: 'Contextter Keyword-Datenbank: Fallstudie',
+    description,
+    image: `https://matthiasramahi.de${heroShots[0].src}`,
+    datePublished: '2026-06-25',
+    dateModified: '2026-07-28',
+    author: { '@id': 'https://matthiasramahi.de/#person' },
+    publisher: { '@id': 'https://matthiasramahi.de/#local-business' },
+    mainEntityOfPage: { '@id': `${canonicalUrl}#webpage` },
+    about: softwareApplication,
   },
   breadcrumbJsonLd([
     { name: 'Startseite', url: '/' },
     { name: 'Weitere Dienstleistungen', url: '/leistungen.html' },
-    { name: 'Keyword-Datenbank', url: canonicalUrl },
+    { name: 'Contextter Fallstudie', url: canonicalUrl },
   ]),
   itemListJsonLd(
     workflow.map(([, name]) => ({ name, url: canonicalUrl })),
-    { name: 'SEO-Workflow mit Keyword-Datenbank', url: canonicalUrl },
+    { name: 'Produktentscheidungen der Contextter Keyword-Datenbank', url: canonicalUrl },
   ),
 ]
 
@@ -189,14 +190,14 @@ if (faqSchema) jsonLdItems.push(faqSchema)
   current="leistungen"
   doc={doc}
   title={title}
-  description={description}
+  description={doc?.seo?.description || description}
   canonicalUrl={canonicalUrl}
   ogImage={heroShots[0].src}
   preloadImages={[heroShots[0].src, heroShots[1].src]}
   jsonLd={jsonLdItems}
 >
   <main class="kd-page">
-    <section class="kd-hero" data-header-theme="dark" aria-label="Keyword-Datenbank für SEO-Recherche">
+    <section class="kd-hero" data-header-theme="dark" aria-label="Fallstudie zur Contextter Keyword-Datenbank">
       <div class="kd-hero__backdrop" aria-hidden="true">
         {heroShots.map((shot, index) => (
           <img
@@ -222,45 +223,44 @@ if (faqSchema) jsonLdItems.push(faqSchema)
         <div class="kd-hero__copy">
           <h1>Contextter Keyword-Datenbank.</h1>
           <p class="kd-hero__lead">
-            Unsere Arbeitsbasis für Keyword-Recherche, Suchintention, Wettbewerbsanalyse, SERP-Daten,
-            Themencluster und Content-Planung. Klar fokussiert auf strukturierte SEO-Entscheidungen,
-            nicht auf Ranking-Versprechen.
+            Fallstudie: Wie ich aus verstreuter Keyword-Recherche ein nachvollziehbares System für
+            Suchintention, Themencluster, SERP- und Wettbewerbsdaten sowie Content-Prioritäten entwickelt habe.
           </p>
           <div class="kd-actions" aria-label="Nächste Schritte">
-            <a class="kd-btn kd-btn--primary" href={contextterUrl} target="_blank" rel="noopener noreferrer">
-              Keyword-Datenbank ansehen
+            <a class="kd-btn kd-btn--primary" href={contextterUrl}>
+              Auf Contextter ansehen
               <span aria-hidden="true">+</span>
             </a>
-            <a class="kd-btn" href="#anfrage">
-              Keyword-Recherche anfragen
+            <a class="kd-btn" href="#fallstudie">
+              Fallstudie lesen
               <span aria-hidden="true">+</span>
             </a>
           </div>
         </div>
 
         <div class="kd-hero__bottom" aria-label="Aktiver Produktbereich">
-          <p>Keyword-Recherche · Suchintention · SERP-Analyse · Wettbewerbsdaten</p>
+          <p>Fallstudie · Produktentwicklung · SEO-Arbeitsprozess</p>
           <span data-kd-hero-label>{heroShots[0].label}</span>
         </div>
       </div>
     </section>
 
-    <section class="kd-intro" data-header-theme="light" aria-labelledby="kd-intro-title">
+    <section id="fallstudie" class="kd-intro" data-header-theme="light" aria-labelledby="kd-intro-title">
       <div class="kd-section-head">
-        <p>Contextter Keyword-Datenbank</p>
-        <h2 id="kd-intro-title">Unsere Keyword-Datenbank macht SEO-Recherche als System nutzbar.</h2>
+        <p>Ausgangslage</p>
+        <h2 id="kd-intro-title">Warum aus SEO-Recherche ein eigenes System werden musste.</h2>
       </div>
       <div class="kd-intro__grid">
         <div class="kd-intro__copy">
           <p>
-            Contextter startet bewusst mit einem klaren Produktfokus: einer Keyword-Datenbank, die Recherche,
-            Suchintention, Wettbewerbsanalyse und Content-Planung zusammenführt. Sie soll SEO-Arbeit nicht
-            ersetzen, sondern die Datengrundlage für bessere Entscheidungen sauberer machen.
+            Beim Ausbau von Websites wie dieser entsteht schnell dasselbe Problem: Keyword-Ideen kommen aus
+            mehreren Quellen, Exporte altern und wichtige Entscheidungen verschwinden zwischen Tabellen,
+            Tool-Tabs und Notizen. Später ist kaum noch nachvollziehbar, warum ein Thema priorisiert wurde.
           </p>
           <p>
-            Der Nutzen entsteht vor allem dann, wenn Keywords nicht als lose Liste enden. In der Datenbank lassen
-            sich Themencluster, Zielseiten, SERP-Kontext, Prioritäten und Content-Potenziale nachvollziehbar
-            erfassen - für Selbstständige, kleine Unternehmen, Agenturen und Content-Teams.
+            Für Contextter habe ich daraus ein klares Produktziel abgeleitet: Eine Keyword-Datenbank soll nicht
+            möglichst viele Zahlen zeigen, sondern Recherche in eine belastbare Arbeitsgrundlage übersetzen.
+            Suchintention, Themencluster, Zielseiten, SERP-Kontext und Prioritäten müssen zusammenbleiben.
           </p>
         </div>
         <div class="kd-focus">
@@ -277,12 +277,12 @@ if (faqSchema) jsonLdItems.push(faqSchema)
     <section class="kd-showcase" data-header-theme="dark" aria-labelledby="kd-showcase-title">
       <div class="kd-showcase__inner">
         <div class="kd-showcase__copy">
-          <p>Produktansicht</p>
-          <h2 id="kd-showcase-title">Echte Oberfläche, echte Recherche-Signale.</h2>
+          <p>Beleg statt Behauptung</p>
+          <h2 id="kd-showcase-title">Die Fallstudie zeigt den tatsächlich gebauten Stand.</h2>
           <p>
             Die Screenshots zeigen reale Bereiche der Contextter Keyword-Datenbank: Listenansicht, Detailpanel,
-            Discovery, Matrix, Wettbewerber und Export. Die Seite arbeitet bewusst mit diesen echten Ansichten
-            statt mit nachgebauten Demo-Tabellen.
+            Discovery, Matrix, Wettbewerber und Export. Dadurch bleibt nachvollziehbar, welche Entscheidungen
+            bereits im Produkt umgesetzt sind und worüber diese Fallstudie konkret spricht.
           </p>
         </div>
         <figure class="kd-wide-shot">
@@ -301,8 +301,8 @@ if (faqSchema) jsonLdItems.push(faqSchema)
 
     <section class="kd-product" data-header-theme="light" aria-labelledby="kd-product-title">
       <div class="kd-section-head">
-        <p>SEO-Workflow</p>
-        <h2 id="kd-product-title">Keyword-Recherche wird belastbarer, wenn die Daten zusammenbleiben.</h2>
+        <p>Produktentscheidungen</p>
+        <h2 id="kd-product-title">Drei Entscheidungen prägen die Keyword-Datenbank.</h2>
       </div>
       <div class="kd-product__list">
         {productSections.map((section, index) => (
@@ -330,12 +330,12 @@ if (faqSchema) jsonLdItems.push(faqSchema)
     <section class="kd-matrix-section" data-header-theme="light" aria-labelledby="kd-matrix-title">
       <div class="kd-matrix-section__inner">
         <div class="kd-matrix-copy">
-          <p>Themencluster und Priorität</p>
-          <h2 id="kd-matrix-title">Themenchancen priorisieren, bevor Content produziert wird.</h2>
+          <p>Produktentscheidung 04</p>
+          <h2 id="kd-matrix-title">Priorisieren, bevor Content produziert wird.</h2>
           <p>
-            Eine gute Keyword-Datenbank trennt zwischen rohen Ideen und belastbaren Themenchancen. Matrix-Ansichten
-            helfen dabei, Suchvolumen, Keyword-Schwierigkeit, Suchintention und Content-Potenzial gegeneinander zu
-            halten, ohne daraus eine automatische Ranking-Zusage abzuleiten.
+            Die Matrix trennt rohe Ideen von belastbaren Themenchancen. Suchvolumen, Schwierigkeit,
+            Suchintention und Content-Potenzial werden gegeneinander gehalten. Das Ergebnis ist keine automatische
+            Freigabe, sondern eine verständliche Grundlage für die nächste fachliche Entscheidung.
           </p>
         </div>
         <figure class="kd-media-card">
@@ -353,8 +353,8 @@ if (faqSchema) jsonLdItems.push(faqSchema)
 
     <section class="kd-flow" data-header-theme="dark" aria-labelledby="kd-flow-title">
       <div class="kd-flow__intro">
-        <p>Vorgehen</p>
-        <h2 id="kd-flow-title">So wird aus Recherche eine belastbare SEO-Arbeitsgrundlage.</h2>
+        <p>Entwicklungsweg</p>
+        <h2 id="kd-flow-title">So wurde aus der Recherche ein klarer Ablauf.</h2>
       </div>
       <div class="kd-flow__steps">
         {workflow.map(([number, stepTitle, body]) => (
@@ -379,30 +379,28 @@ if (faqSchema) jsonLdItems.push(faqSchema)
         />
       </figure>
       <div>
-        <p>Weiterarbeit</p>
-        <h2 id="kd-export-title">Recherche muss auswertbar bleiben.</h2>
+        <p>Produktentscheidung 05</p>
+        <h2 id="kd-export-title">Daten müssen nutzbar bleiben.</h2>
         <p>
-          Für Agenturen, interne SEO-Teams und kleine Unternehmen ist wichtig, dass Keyword-Daten nicht in einer
-          reinen Ansicht gefangen bleiben. Exporte und nachvollziehbare Listen machen Recherche anschlussfähig für
-          Briefings, Redaktionspläne, Kundenabstimmung und technische SEO-Aufgaben.
+          Eine Datenbank darf nicht zum neuen Datensilo werden. Exporte und nachvollziehbare Listen machen die
+          Recherche anschlussfähig für Briefings, Redaktionspläne, Abstimmung und technische SEO-Aufgaben.
         </p>
-        <a class="kd-text-link" href={contextterUrl} target="_blank" rel="noopener noreferrer">
-          Contextter Keyword-Datenbank ansehen
+        <a class="kd-text-link" href={contextterUrl}>
+          Aktuellen Produktstand auf Contextter ansehen
         </a>
       </div>
     </section>
 
     <section class="kd-seo" data-header-theme="dark" aria-labelledby="kd-seo-title">
       <div class="kd-seo__inner">
-        <h2 id="kd-seo-title">SEO-stark, weil Recherche und Umsetzung zusammenfinden.</h2>
+        <h2 id="kd-seo-title">Was diese Fallstudie nicht behauptet.</h2>
         <p>
-          Eine Keyword-Datenbank wird erst dann wertvoll, wenn aus Keyword-Recherche konkrete SEO-Strategie wird:
-          passende Suchintention erkennen, Themencluster bilden, SERP-Analyse einbeziehen, Wettbewerbsanalyse
-          nutzen und daraus Content-Planung ableiten. Genau an dieser Stelle hilft Contextter dabei, Sichtbarkeit
-          und organischen Traffic systematischer zu bearbeiten.
+          Eine Keyword-Datenbank garantiert keine Rankings und ersetzt weder Erfahrung noch originelle Inhalte.
+          Sie kann aber den Weg von der Recherche zur Entscheidung nachvollziehbar machen. Genau diesen begrenzten,
+          praktischen Nutzen soll Contextter liefern.
         </p>
-        <a class="kd-btn kd-btn--light" href={contextterUrl} target="_blank" rel="noopener noreferrer">
-          Keyword-Datenbank ansehen
+        <a class="kd-btn kd-btn--light" href={contextterUrl}>
+          Auf Contextter ansehen
           <span aria-hidden="true">+</span>
         </a>
       </div>
@@ -411,7 +409,7 @@ if (faqSchema) jsonLdItems.push(faqSchema)
     <section class="kd-faq" data-header-theme="light" aria-labelledby="kd-faq-title">
       <div class="kd-faq__head">
         <p>FAQ</p>
-        <h2 id="kd-faq-title">Fragen zur Keyword-Datenbank.</h2>
+        <h2 id="kd-faq-title">Fragen zur Fallstudie und zu Contextter.</h2>
       </div>
       <div class="kd-faq__list">
         {faqs.map((item) => (
@@ -423,34 +421,19 @@ if (faqSchema) jsonLdItems.push(faqSchema)
       </div>
     </section>
 
-    <section class="kd-final" data-header-theme="light" aria-label="Keyword-Recherche Anfrage">
+    <section class="kd-final" data-header-theme="light" aria-label="Contextter Keyword-Datenbank">
       <div>
-        <h2>Bessere SEO-Entscheidungen brauchen eine bessere Datenbasis.</h2>
+        <h2>Die Keyword-Datenbank direkt bei Contextter ansehen.</h2>
         <p>
-          Sieh dir die Contextter Keyword-Datenbank an oder frag eine konkrete Keyword-Recherche für Website,
-          Content-Strategie und Wettbewerbsanalyse an.
+          Die Contextter-Produktseite zeigt den aktuellen Funktionsumfang und den Zugang zur Keyword-Datenbank.
         </p>
       </div>
       <div class="kd-actions">
-        <a class="kd-btn kd-btn--primary" href={contextterUrl} target="_blank" rel="noopener noreferrer">
-          Keyword-Datenbank ansehen
-          <span aria-hidden="true">+</span>
-        </a>
-        <a class="kd-btn" href="#anfrage">
-          Keyword-Recherche anfragen
+        <a class="kd-btn kd-btn--primary" href={contextterUrl}>
+          Zu Contextter
           <span aria-hidden="true">+</span>
         </a>
       </div>
     </section>
-
-    <section
-      id="anfrage"
-      data-contact-section
-      data-contact-subject="Keyword-Recherche Anfrage - Matthias Ramahi"
-      data-contact-headline="Keyword-Recherche anfragen."
-      data-contact-lead="Beschreibe kurz Website, Branche, Zielgruppe und ob es um neue Themen, bessere bestehende Seiten oder Wettbewerbsanalyse geht. Ein grober Rahmen reicht für den ersten Schritt."
-      data-header-theme="dark"
-      aria-label="Anfrage"
-    />
   </main>
 </AdoptedPageLayout>

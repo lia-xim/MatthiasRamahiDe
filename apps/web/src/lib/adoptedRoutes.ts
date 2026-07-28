@@ -44,12 +44,19 @@ export type AdoptedLegacyFile = (typeof adoptedLegacyFiles)[number]
 const adoptedLegacyFileSet = new Set<string>(adoptedLegacyFiles)
 
 export const legacyRedirectTargets = {
+  'automobil-fotografie-deutschland.html': 'automobil-fotografie-duesseldorf.html',
   'blog-journal.html': 'blog.html',
+  'fotografie-deutschland.html': 'fotografie-duesseldorf.html',
   'fotografie-landing-experience.html': 'fotografie-duesseldorf.html',
   'index.html': '',
+  'landschaftsfotografie-deutschland.html': 'landschaftsfotografie-duesseldorf.html',
   'matthias-ramahi-portfolio.html': 'portfolio.html',
+  'motorrad-fotografie-deutschland.html': 'motorrad-fotografie-duesseldorf.html',
+  'oldtimer-fotografie-deutschland.html': 'oldtimer-fotografie-duesseldorf.html',
   'portfolio-1-tunnel.html': 'portfolio.html',
+  'portraitfotografie-deutschland.html': 'portraitfotografie-duesseldorf.html',
   'portraitfotografie-experience.html': 'portraitfotografie-duesseldorf.html',
+  'sportwagen-fotografie-deutschland.html': 'sportwagen-fotografie-duesseldorf.html',
   'weitere-dienstleistungen.html': 'leistungen.html',
 } as const
 

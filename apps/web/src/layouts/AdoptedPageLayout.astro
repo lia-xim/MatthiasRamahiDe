@@ -7,6 +7,7 @@ import SiteChromeHeader from '../components/SiteChromeHeader.astro'
 import { getAdoptedPageChrome, mergeAssetLists } from '../lib/adoptedPageChrome'
 import { versionStaticAssetUrl } from '../lib/cache'
 import { localSeoLayoutFamilyForSlug } from '../lib/localSeoLayoutFamilies'
+import { pageAnalyticsDimensions } from '../lib/pageAnalyticsDimensions'
 // Bundle the critical CSS as a string at build time. The home page is SSR
 // (prerender=false), so reading public/ from the filesystem at request time
 // fails on Vercel (public/ isn't in the function cwd) — which silently disabled
@@ -96,6 +97,7 @@ const socialImage = typeof socialImageSource === 'string'
 const socialImageDimensions = typeof socialImageSource === 'string' ? {} : imageDimensions(socialImageSource as PayloadMedia | undefined, 'hero')
 const robots = noIndex || doc?.seo?.noIndex ? 'noindex,nofollow' : 'index,follow,max-image-preview:large,max-snippet:-1'
 const bodyClass = providedBodyClass || doc?.legacy?.bodyClass || chrome.bodyClass || 'has-mr-footer'
+const analyticsDimensions = pageAnalyticsDimensions(fallbackPath)
 const current = providedCurrent || doc?.legacy?.headerCurrent || chrome.current
 const headerTheme = providedHeaderTheme || chrome.headerTheme
 const allStylesheets = mergeAssetLists(chrome.stylesheets, stylesheets)
@@ -118,7 +120,7 @@ const isServicePageDoc = Boolean(
   doc && (localSeoLayoutFamilyForSlug(legacyFile) || doc.city || doc.service || doc.targetKeyword),
 )
 const derivedJsonLd: JsonLd[] = []
-if (doc && isServicePageDoc && !providedTypes.has('Service')) {
+if (doc && isServicePageDoc && !providedTypes.has('Article') && !providedTypes.has('Service')) {
   derivedJsonLd.push(serviceJsonLd(doc, canonical))
 }
 if (doc && isServicePageDoc && !providedTypes.has('BreadcrumbList')) {
@@ -278,7 +280,12 @@ async function readPublicAsset(href: string) {
       data-domains="matthiasramahi.de,www.matthiasramahi.de"
     ></script>
   </head>
-  <body class={bodyClass} data-cms-layout-source="native-adopted-chrome">
+  <body
+    class={bodyClass}
+    data-cms-layout-source="native-adopted-chrome"
+    data-page-family={analyticsDimensions.pageFamily}
+    data-page-role={analyticsDimensions.pageRole}
+  >
     <SiteChromeHeader current={current} ctaHref={ctaHref} headerTheme={headerTheme} liveCms={liveCms} />
     <div id="mr-content" tabindex="-1">
       <slot />

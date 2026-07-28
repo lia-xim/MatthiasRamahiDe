@@ -31,15 +31,55 @@
   ],
   "heroSlides": [],
   "projectPage": {
+    "galleryEyebrow": "Projektbeleg",
     "statement": {
-      "stats": []
+      "quote": "Weite, Licht und",
+      "accent": "Raumwirkung.",
+      "stats": [
+        {
+          "label": "Bildtypen",
+          "text": "Küste, Fels, Tiermotiv"
+        },
+        {
+          "label": "Ausgabe",
+          "text": "Fine-Art-Print und Wandbild"
+        },
+        {
+          "label": "Auswahl",
+          "text": "Vier kuratierte Motive"
+        }
+      ],
+      "buttonLabel": "Landschaftsfotografie ansehen",
+      "buttonHref": "/landschaftsfotografie-duesseldorf.html"
     },
     "context": {
-      "body": []
+      "kicker": "Einordnung",
+      "headline": "Was die Auswahl sichtbar macht.",
+      "body": [
+        {
+          "text": "Die Bildstrecke verbindet Küsten, Felsformationen und ein Tiermotiv im Gegenlicht. Komposition und Tonwerte sind auf eine ruhige Betrachtung und eine mögliche Ausgabe als Print ausgerichtet."
+        },
+        {
+          "text": "Die vier Motive dienen als visueller Projektbeleg. Sie zeigen die verfügbare Bildsprache und Auswahl, ohne Editionen, Verkäufe oder Kundenprojekte zu behaupten, die nicht dokumentiert sind."
+        }
+      ]
     },
     "perspectives": [],
     "infoCards": [],
-    "relatedCards": [],
+    "relatedCards": [
+      {
+        "label": "Leistung",
+        "title": "Landschaftsfotografie Düsseldorf",
+        "href": "/landschaftsfotografie-duesseldorf.html",
+        "image": "/uploads/payload/Wettberwerb_Foto5_Wunder_der_Natur2-1.webp"
+      },
+      {
+        "label": "Übersicht",
+        "title": "Portfolio",
+        "href": "/portfolio.html",
+        "image": "/uploads/payload/Wettberwerb_Foto6_Wunder_der_Natur-1.webp"
+      }
+    ],
     "contact": {}
   },
   "presentationMode": "floating-archive",

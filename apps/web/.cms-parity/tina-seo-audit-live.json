@@ -1,0 +1,77 @@
+{
+  "baseUrl": "http://127.0.0.1:4323",
+  "documents": 252,
+  "content": {
+    "clusters": {
+      "automobil": 41,
+      "fotografie-overview": 3,
+      "landschaft": 29,
+      "motorrad": 31,
+      "oldtimer": 32,
+      "portrait": 44,
+      "sportwagen": 36
+    },
+    "issueCount": 0,
+    "issues": [],
+    "lengthIssues": {
+      "longDescriptions": 0,
+      "shortDescriptions": 0,
+      "longTitles": 0,
+      "samples": {
+        "longDescriptions": [],
+        "shortDescriptions": [],
+        "longTitles": []
+      }
+    }
+  },
+  "live": {
+    "clusters": {
+      "checked": 230,
+      "childPages": 201,
+      "duesseldorfHubs": 6,
+      "familyPages": 219,
+      "nrwHubs": 6,
+      "overviewPages": 3,
+      "pillarPages": 6,
+      "unclassifiedPages": 8,
+      "issueCount": 0,
+      "issues": []
+    },
+    "meta": {
+      "checked": 251,
+      "redirectedDocuments": 1,
+      "issueCount": 0,
+      "issues": []
+    },
+    "sitemaps": {
+      "duplicateCount": 0,
+      "expectedCanonicals": 251,
+      "issueCount": 0,
+      "issues": [],
+      "missingCount": 0,
+      "sitemapStatus": [
+        {
+          "sitemapPath": "/sitemap-pages.xml",
+          "status": 200
+        },
+        {
+          "sitemapPath": "/sitemap-services.xml",
+          "status": 200
+        },
+        {
+          "sitemapPath": "/sitemap-local-seo.xml",
+          "status": 200
+        },
+        {
+          "sitemapPath": "/sitemap-portfolio.xml",
+          "status": 200
+        },
+        {
+          "sitemapPath": "/sitemap-journal.xml",
+          "status": 200
+        }
+      ],
+      "sitemapUrls": 251
+    }
+  }
+}

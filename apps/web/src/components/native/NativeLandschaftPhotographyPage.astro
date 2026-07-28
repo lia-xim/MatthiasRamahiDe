@@ -10,6 +10,7 @@ import {
   type NativeFamilyPreviewState,
 } from '../../lib/nativeFamilyPageContext'
 import { mergeAuthoredLocalSeoContent } from '../../lib/authoredSeoContent'
+import { curateFamilyClusterLinks } from '../../lib/familyClusterLinks'
 import { cmsHeroTitleFitStyle, splitCmsHeroTitleLines, splitHeroTitleLines } from '../../lib/heroTitleLines'
 import { keywordFocusCopyForSlug } from '../../lib/localSeoFamilyContent'
 import { familyHeroCopy, familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
@@ -81,8 +82,8 @@ const heroCopy = familyHeroCopy(doc, visualDoc, {
   lead: heroLead,
   primaryHref: '#anfrage',
   primaryLabel: 'Landschafts-Serie anfragen \u2192',
-  secondaryHref: 'portfolio.html',
-  secondaryLabel: 'Portfolio',
+  secondaryHref: '/portfolio/portfolio-auswahl-landschaft',
+  secondaryLabel: 'Landschaft-Auswahl',
   titleLines: heroTitleLines,
 })
 const heroTitleFitStyle = cmsHeroTitleFitStyle(heroCopy.titleLines, shouldUseCmsHeroTitle)
@@ -261,7 +262,7 @@ const defaultRelatedCards = [
   { href: 'portraitfotografie.html', title: 'Portrait', visualIndex: 22 },
   { href: 'oldtimer-fotografie.html', title: 'Oldtimer', visualIndex: 23 },
   { href: 'drucke-sonderanfertigungen-duesseldorf.html', title: 'Drucke', visualIndex: 24 },
-  { href: 'portfolio.html', title: 'Portfolio', visualIndex: 25 },
+  { href: '/portfolio/portfolio-auswahl-landschaft', title: 'Landschaft-Auswahl', visualIndex: 25 },
 ]
 const relatedCards = defaultRelatedCards.map((card, index) => {
   const item = doc?.relatedSection?.items?.[index]
@@ -272,7 +273,7 @@ const relatedCards = defaultRelatedCards.map((card, index) => {
     alt: cmsText(item?.alt) || cmsText(item?.title) || card.title,
   }
 })
-const cityLinks = [
+const allCityLinks = [
   ['landschaftsfotografie-duesseldorf.html', 'Düsseldorf'],
   ['landschaftsfotografie-erkrath.html', 'Erkrath'],
   ['landschaftsfotografie-ratingen.html', 'Ratingen'],
@@ -299,23 +300,37 @@ const cityLinks = [
   ['landschaftsfotografie-deutschland.html', 'Deutschland'],
 ] as const
 
-const searchLinks = [
-  ['landschaftsbilder-kaufen.html', 'Landschaftsbilder kaufen'],
-  ['fine-art-prints-landschaft.html', 'Fine Art Prints Landschaft'],
-  ['wandbilder-landschaftsfotografie.html', 'Wandbilder Landschaftsfotografie'],
-  ['naturfotografie-prints.html', 'Naturfotografie Prints'],
-  ['landschaftsfotografie-print-deutschland.html', 'Landschaftsfotografie Print Deutschland'],
+const intentLinks = [
+  { key: 'landschaftsbilder', label: 'Landschaftsbilder kaufen', genericHref: 'landschaftsbilder-kaufen.html', duesseldorfHref: 'landschaftsbilder-kaufen.html' },
+  { key: 'fine-art', label: 'Fine Art Prints Landschaft', genericHref: 'fine-art-prints-landschaft.html', duesseldorfHref: 'fine-art-prints-landschaft.html' },
+  { key: 'wandbilder', label: 'Wandbilder Landschaftsfotografie', genericHref: 'wandbilder-landschaftsfotografie.html', duesseldorfHref: 'wandbilder-landschaftsfotografie.html' },
+  { key: 'naturfotografie', label: 'Naturfotografie Prints', genericHref: 'naturfotografie-prints.html', duesseldorfHref: 'naturfotografie-prints.html' },
+  { key: 'print-deutschland', label: 'Landschaftsfotografie Print Deutschland', genericHref: 'landschaftsfotografie-print-deutschland.html', duesseldorfHref: 'landschaftsfotografie-print-deutschland.html' },
 ] as const
-const locationHeading = cmsText(doc?.locationLinksSection?.headline) || 'Landschaftsfotografie'
-const locationEmphasis = cmsText(doc?.locationLinksSection?.emphasis) || 'vor Ort.'
-const locationLinkItems = doc?.locationLinksSection?.items?.length
-  ? doc.locationLinksSection.items.map((item) => [cmsText(item.href), cmsText(item.label)] as const).filter(([href, label]) => href && label)
-  : cityLinks
-const searchHeading = cmsText(doc?.searchLinksSection?.headline) || 'Landschaftsfotografie'
-const searchEmphasis = cmsText(doc?.searchLinksSection?.emphasis) || 'Suchbegriffe.'
-const searchLinkItems = doc?.searchLinksSection?.items?.length
-  ? doc.searchLinksSection.items.map((item) => [cmsText(item.href), cmsText(item.label)] as const).filter(([href, label]) => href && label)
-  : searchLinks
+const clusterCuration = curateFamilyClusterLinks({
+  allCityLinks,
+  currentPage: legacyFile,
+  defaultLegacyFile,
+  familyLabel: 'Landschaftsfotografie',
+  intentLinks,
+  intentNeighbors: {
+    landschaftsbilder: ['fine-art', 'wandbilder', 'naturfotografie'],
+    'fine-art': ['landschaftsbilder', 'wandbilder', 'naturfotografie'],
+    wandbilder: ['landschaftsbilder', 'fine-art', 'naturfotografie'],
+    naturfotografie: ['landschaftsbilder', 'fine-art', 'wandbilder'],
+    'print-deutschland': ['landschaftsbilder', 'fine-art', 'wandbilder'],
+  },
+  isParentPage,
+  primaryIntentKeys: ['landschaftsbilder', 'fine-art', 'wandbilder', 'naturfotografie'],
+  scopeSlug: scope.slug,
+})
+const {
+  cityHeading,
+  cityLinks,
+  intentHeading,
+  searchLinks,
+  showCrossFamilyCluster,
+} = clusterCuration
 const contactSubjectFinal = cmsText(doc?.contactSection?.emailSubject) || contactSubject
 const contactHeadlineBase = cmsText(doc?.contactSection?.headline)
 const contactHeadlineEmphasis = cmsText(doc?.contactSection?.emphasis)
@@ -455,7 +470,7 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
       <div class="bg-ls__head">
         <h2 class="bg-ls__title" {...tinaAttrs(doc?.gallerySection, 'headline')}>{focusGalleryHeadline}</h2>
         {focusGalleryLead && <p class="bg-ls__lead" {...tinaAttrs(doc?.gallerySection, 'lead')}>{focusGalleryLead}</p>}
-        <a class="bg-ls__link" href="portfolio.html">Zum Portfolio →</a>
+        <a class="bg-ls__link" href="/portfolio/portfolio-auswahl-landschaft">Landschaft-Auswahl ansehen →</a>
       </div>
       <div class="bg-ls__grid">
         <button class="bg-ls__tile t-hero" data-full={visualSlots[9].full}><img loading="lazy" src={visualSlots[9].src} alt={visualSlots[9].alt} width={visualSlots[9].width} height={visualSlots[9].height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[0], 'image')} /></button>
@@ -513,7 +528,7 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
       </div>
     </section>
 
-    {!isParentPage && (
+    {showCrossFamilyCluster && (
       <NativeFamilyClusterLinks
         clusterHeading={clusterHeading}
         clusterLinks={clusterLinks}
@@ -525,10 +540,10 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
     <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Landschaftsfotografie in NRW">
       <div class="mr-cities__inner">
         <div class="mr-cities__head">
-          <h2 class="mr-cities__title">{locationHeading} <em>{locationEmphasis}</em></h2>
+          <h2 class="mr-cities__title" set:html={cityHeading}></h2>
         </div>
         <nav class="mr-cities__grid" aria-label="Städte">
-          {locationLinkItems.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
+          {cityLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
         </nav>
       </div>
     </section>
@@ -536,10 +551,10 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
     <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Landschaftsfotografie Suchbegriffe">
       <div class="mr-cities__inner">
         <div class="mr-cities__head">
-          <h2>{searchHeading} <em>{searchEmphasis}</em></h2>
+          <h2 set:html={intentHeading}></h2>
         </div>
         <nav class="mr-cities__grid" aria-label="Suchvarianten">
-          {searchLinkItems.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
+          {searchLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
         </nav>
       </div>
     </section>

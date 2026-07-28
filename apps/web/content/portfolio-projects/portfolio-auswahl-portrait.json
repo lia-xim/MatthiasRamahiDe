@@ -31,15 +31,55 @@
   ],
   "heroSlides": [],
   "projectPage": {
+    "galleryEyebrow": "Projektbeleg",
     "statement": {
-      "stats": []
+      "quote": "Person, Licht und",
+      "accent": "Haltung.",
+      "stats": [
+        {
+          "label": "Bildtypen",
+          "text": "Einzelportrait, Bewegung, Close-up"
+        },
+        {
+          "label": "Fokus",
+          "text": "Blick, Abstand, Körperspannung"
+        },
+        {
+          "label": "Region",
+          "text": "Düsseldorf / NRW"
+        }
+      ],
+      "buttonLabel": "Portraitfotografie ansehen",
+      "buttonHref": "/portraitfotografie-duesseldorf.html"
     },
     "context": {
-      "body": []
+      "kicker": "Einordnung",
+      "headline": "Was die Auswahl sichtbar macht.",
+      "body": [
+        {
+          "text": "Die Bildstrecke zeigt Portraits mit unterschiedlicher Nähe, Bewegung und Lichtführung. Blick, Abstand und Körperspannung werden als Teil der Aufnahme geführt."
+        },
+        {
+          "text": "Die vier Motive dienen als visueller Projektbeleg. Sie zeigen den fotografischen Stil, behaupten aber keine Nutzung, Veröffentlichung oder Wirkung, die nicht dokumentiert ist."
+        }
+      ]
     },
     "perspectives": [],
     "infoCards": [],
-    "relatedCards": [],
+    "relatedCards": [
+      {
+        "label": "Leistung",
+        "title": "Portraitfotografie Düsseldorf",
+        "href": "/portraitfotografie-duesseldorf.html",
+        "image": "/uploads/payload/_DSC0470-Enhanced-NR-2.webp"
+      },
+      {
+        "label": "Übersicht",
+        "title": "Portfolio",
+        "href": "/portfolio.html",
+        "image": "/uploads/payload/_DSC9301-Enhanced-NR.webp"
+      }
+    ],
     "contact": {}
   },
   "presentationMode": "floating-archive",

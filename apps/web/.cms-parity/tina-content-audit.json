@@ -1,13 +1,13 @@
 {
   "summary": {
-    "adminReady": false,
+    "adminReady": true,
     "checks": {
       "collections": 10,
       "documents": 262,
-      "localAssetRefs": 1339,
+      "localAssetRefs": 1349,
       "references": 6
     },
-    "failures": 2,
+    "failures": 0,
     "media": {
       "mediaDocuments": 446,
       "generatedUploads": 0,
@@ -30,7 +30,7 @@
       },
       "servicePages": {
         "documents": 14,
-        "expected": 13,
+        "expected": 14,
         "seoReady": 14
       },
       "localSeoPages": {
@@ -70,21 +70,10 @@
       }
     },
     "documents": 262,
-    "localAssetRefs": 1339,
+    "localAssetRefs": 1349,
     "oldPayloadUrlRefs": 0,
     "references": 6
   },
-  "failures": [
-    {
-      "type": "missing-tina-admin",
-      "file": "apps/web/public/admin/index.html"
-    },
-    {
-      "type": "collection-count-mismatch",
-      "collection": "servicePages",
-      "expected": 13,
-      "actual": 14
-    }
-  ],
+  "failures": [],
   "warnings": []
 }

@@ -19,8 +19,8 @@ const { hero, overview, feature, contact } = page
   <main>
     {/* ===== HERO (dark) — Ken-Burns static, image-led ===== */}
     <section class="vg-hero" data-theme="dark" data-header-theme="dark" aria-label="Videografie Düsseldorf">
-      <div class="vg-hero__media" aria-hidden="true">
-        <img src={hero.image} alt="" width={hero.width} height={hero.height} fetchpriority="high" decoding="async" />
+      <div class="vg-hero__media">
+        <img src={hero.image} alt={hero.alt} width={hero.width} height={hero.height} fetchpriority="high" decoding="async" />
       </div>
       <div class="vg-hero__veil" aria-hidden="true"></div>
       <div class="vg-hero__beam" aria-hidden="true"></div>
@@ -45,7 +45,7 @@ const { hero, overview, feature, contact } = page
         </div>
         <div class="vg-statement__body">
           <p class="vg-lead">Für bewegtes Bild arbeite ich mit meiner Schwester Sophia Ramahi — Videografin aus dem Rheinland. Wir denken Sets gemeinsam: dieselbe Bildsprache, derselbe ruhige, editoriale Anspruch.</p>
-          <p>Imagefilm, Musikvideo, Eventfilm und redaktionelles Bewegtbild — geplant mit echtem Bildmaterial statt Stock. Wenn Foto und Video parallel laufen, gibt es weniger Termine, weniger Doppelarbeit und ein Ergebnis, das zusammengehört.</p>
+          <p>Imagefilm, Musikvideo, Eventfilm und redaktionelles Bewegtbild — geplant mit echtem Bildmaterial statt Stock. Wenn Foto und Video parallel laufen, gibt es weniger Termine, weniger Doppelarbeit und ein Ergebnis, das zusammengehört. Die <a href="/leistungen.html">Übersicht weiterer Dienstleistungen</a> zeigt die angrenzenden Angebote.</p>
           <div class="vg-actions">
             <a class="vg-btn vg-btn--ink" href="#leistungen">Leistungen ansehen</a>
             <a class="vg-btn vg-btn--ghost-ink" href="#anfrage">Projekt anfragen</a>

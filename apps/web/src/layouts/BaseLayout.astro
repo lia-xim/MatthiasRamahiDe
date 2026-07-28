@@ -3,6 +3,7 @@ import '../styles/tokens.css'
 import SiteChromeFooter from '../components/SiteChromeFooter.astro'
 import SiteChromeHeader from '../components/SiteChromeHeader.astro'
 import { versionStaticAssetUrl } from '../lib/cache'
+import { pageAnalyticsDimensions } from '../lib/pageAnalyticsDimensions'
 import {
   getSiteSettings,
   imageDimensions,
@@ -51,6 +52,7 @@ const title = providedTitle || settings?.defaultMetaTitle || 'Matthias Ramahi Fo
 const siteName = settings?.siteName || 'Matthias Ramahi Fotografie'
 const pathname = Astro.url.pathname === '/' ? '/' : Astro.url.pathname.replace(/\/$/, '')
 const canonical = toAbsoluteSiteUrl(canonicalUrl || pathname)
+const analyticsDimensions = pageAnalyticsDimensions(pathname)
 const socialImage = typeof ogImage === 'string' ? toAbsoluteSiteUrl(versionStaticAssetUrl(ogImage)) : imageUrl(ogImage || settings?.defaultOgImage, 'hero')
 const socialImageDimensions = typeof ogImage === 'string' ? {} : imageDimensions(ogImage || settings?.defaultOgImage, 'hero')
 const jsonLdItems = [
@@ -132,7 +134,12 @@ const versionedStylesheets = stylesheets.map(versionStaticAssetUrl)
       data-domains="matthiasramahi.de,www.matthiasramahi.de"
     ></script>
   </head>
-  <body class={bodyClass} data-cms-layout-source="base-layout">
+  <body
+    class={bodyClass}
+    data-cms-layout-source="base-layout"
+    data-page-family={analyticsDimensions.pageFamily}
+    data-page-role={analyticsDimensions.pageRole}
+  >
     <div class="site-shell">
       <SiteChromeHeader current={activeNav} liveCms={liveCms} />
       <main class="site-main">

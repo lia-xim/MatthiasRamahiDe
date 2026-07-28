@@ -161,7 +161,15 @@ if (gallerySchema) jsonLdItems.push(gallerySchema)
           <div class="project-system__grid">
             {firstPerspectiveImage && (
               <figure class="project-system__visual">
-                <img src={firstPerspectiveImage} alt="" loading="lazy" decoding="async" width={firstPerspectiveDimensions.width} height={firstPerspectiveDimensions.height} {...tinaAttrs(firstPerspective, 'image')} />
+                <img
+                  src={firstPerspectiveImage}
+                  alt={firstPerspective?.title || `${doc.title || 'Portfolio'} – ausgewählte Perspektive`}
+                  loading="lazy"
+                  decoding="async"
+                  width={firstPerspectiveDimensions.width}
+                  height={firstPerspectiveDimensions.height}
+                  {...tinaAttrs(firstPerspective, 'image')}
+                />
               </figure>
             )}
             <div class="project-system__list">
@@ -233,7 +241,7 @@ if (gallerySchema) jsonLdItems.push(gallerySchema)
             const cardDimensions = imageDimensions(card.image, 'card')
             return (
               <a class="project-related-card" href={card.href}>
-                {cardImage && <img src={cardImage} alt="" loading="lazy" decoding="async" width={cardDimensions.width} height={cardDimensions.height} {...tinaAttrs(card, 'image')} />}
+                {cardImage && <img src={cardImage} alt="" aria-hidden="true" loading="lazy" decoding="async" width={cardDimensions.width} height={cardDimensions.height} {...tinaAttrs(card, 'image')} />}
                 <div class="project-related-card__content">
                   <div>
                     {hasText(card.label) && <span {...tinaAttrs(card, 'label')}>{card.label}</span>}

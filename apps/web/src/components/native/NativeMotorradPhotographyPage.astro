@@ -10,6 +10,7 @@ import {
   type NativeFamilyPreviewState,
 } from '../../lib/nativeFamilyPageContext'
 import { mergeAuthoredLocalSeoContent } from '../../lib/authoredSeoContent'
+import { curateFamilyClusterLinks } from '../../lib/familyClusterLinks'
 import { cmsHeroTitleFitStyle, splitCmsHeroTitleLines, splitHeroTitleLines } from '../../lib/heroTitleLines'
 import { keywordFocusCopyForSlug } from '../../lib/localSeoFamilyContent'
 import { familyHeroCopy, familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
@@ -79,8 +80,8 @@ const heroCopy = familyHeroCopy(doc, visualDoc, {
   lead: heroLead,
   primaryHref: '#anfrage',
   primaryLabel: 'Shooting buchen \u2192',
-  secondaryHref: 'portfolio.html',
-  secondaryLabel: 'Portfolio',
+  secondaryHref: '/portfolio/portfolio-auswahl-motorrad',
+  secondaryLabel: 'Motorrad-Auswahl',
   titleLines: heroTitleLines,
 })
 const heroTitleFitStyle = cmsHeroTitleFitStyle(heroCopy.titleLines, shouldUseCmsHeroTitle)
@@ -225,7 +226,7 @@ const moduleCards = cleanDefaultModuleCards.map((cleanCard, index) => {
   return override ? { ...cleanCard, title: override.title || cleanCard.title, text: override.text || cleanCard.text } : cleanCard
 })
 
-const cityLinks = [
+const allCityLinks = [
   ['motorrad-fotografie-duesseldorf.html', 'Düsseldorf'],
   ['motorrad-fotografie-erkrath.html', 'Erkrath'],
   ['motorrad-fotografie-ratingen.html', 'Ratingen'],
@@ -252,15 +253,68 @@ const cityLinks = [
   ['motorrad-fotografie-deutschland.html', 'Deutschland'],
 ] as const
 
-const localSearchHref = (duesseldorfHref: string, fallbackHref?: string) =>
-  scope.slug === 'duesseldorf' ? duesseldorfHref : fallbackHref || duesseldorfHref
-const searchLinks = [
-  ['motorrad-shooting-duesseldorf.html', 'Motorrad Shooting'],
-  [localSearchHref('bike-fotografie-duesseldorf.html', 'bike-fotografie.html'), 'Bike Fotografie'],
-  [localSearchHref('custom-bike-fotografie-duesseldorf.html', 'custom-bike-fotografie.html'), 'Custom Bike Fotografie'],
-  ['motorrad-verkaufsfotos-duesseldorf.html', 'Motorrad Verkaufsfotos'],
-  ['biker-portrait-duesseldorf.html', 'Biker Portrait'],
+const intentLinks = [
+  {
+    key: 'motorrad-shooting',
+    label: 'Motorrad Shooting',
+    genericHref: 'motorrad-shooting-duesseldorf.html',
+    duesseldorfHref: 'motorrad-shooting-duesseldorf.html',
+  },
+  {
+    key: 'bike-fotografie',
+    label: 'Bike Fotografie',
+    genericHref: 'bike-fotografie.html',
+    duesseldorfHref: 'bike-fotografie-duesseldorf.html',
+  },
+  {
+    key: 'custom-bike',
+    label: 'Custom Bike Fotografie',
+    genericHref: 'custom-bike-fotografie.html',
+    duesseldorfHref: 'custom-bike-fotografie-duesseldorf.html',
+  },
+  {
+    key: 'verkaufsfotos',
+    label: 'Motorrad Verkaufsfotos',
+    genericHref: 'motorrad-verkaufsfotos-duesseldorf.html',
+    duesseldorfHref: 'motorrad-verkaufsfotos-duesseldorf.html',
+  },
+  {
+    key: 'biker-portrait',
+    label: 'Biker Portrait',
+    genericHref: 'biker-portrait-duesseldorf.html',
+    duesseldorfHref: 'biker-portrait-duesseldorf.html',
+  },
 ] as const
+const clusterCuration = curateFamilyClusterLinks({
+  allCityLinks,
+  currentPage: legacyFile,
+  defaultLegacyFile,
+  familyLabel: 'Motorrad Fotografie',
+  intentLinks,
+  intentNeighbors: {
+    'motorrad-shooting': ['bike-fotografie', 'custom-bike', 'biker-portrait'],
+    'bike-fotografie': ['motorrad-shooting', 'custom-bike', 'verkaufsfotos'],
+    'custom-bike': ['bike-fotografie', 'biker-portrait', 'motorrad-shooting'],
+    verkaufsfotos: ['motorrad-shooting', 'bike-fotografie', 'custom-bike'],
+    'biker-portrait': ['motorrad-shooting', 'custom-bike', 'bike-fotografie'],
+  },
+  isParentPage,
+  primaryIntentKeys: [
+    'motorrad-shooting',
+    'bike-fotografie',
+    'custom-bike',
+    'verkaufsfotos',
+    'biker-portrait',
+  ],
+  scopeSlug: scope.slug,
+})
+const {
+  cityHeading,
+  cityLinks,
+  intentHeading,
+  searchLinks,
+  showCrossFamilyCluster,
+} = clusterCuration
 const heroPanelSource = (index: number) => doc?.heroPanels?.[index] || doc?.heroSlides?.[index] || visualDoc?.heroPanels?.[index] || visualDoc?.heroSlides?.[index]
 const heroTextSource = doc?.heroSlides?.[0] || doc
 const heroTitleField = (index: number) =>
@@ -490,16 +544,16 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
             <div class="overlay"></div>
             <div class="content"><div><strong>Videografie</strong></div><span class="arrow">→</span></div>
           </a>
-          <a class="rl-card" href="portfolio.html">
+          <a class="rl-card" href="/portfolio/portfolio-auswahl-motorrad">
             <img loading="lazy" src="assets/portfolio/thumbs/_DSC3879.webp" alt="Vollständiges Portfolio" width="720" height="480" decoding="async" />
             <div class="overlay"></div>
-            <div class="content"><div><strong>Portfolio</strong></div><span class="arrow">→</span></div>
+            <div class="content"><div><strong>Motorrad-Auswahl</strong></div><span class="arrow">→</span></div>
           </a>
         </div>
       </div>
     </section>
 
-    {!isParentPage && (
+    {showCrossFamilyCluster && (
       <NativeFamilyClusterLinks
         clusterHeading={clusterHeading}
         clusterLinks={clusterLinks}
@@ -511,10 +565,10 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
     <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Motorrad Fotografie in NRW">
       <div class="mr-cities__inner">
         <div class="mr-cities__head">
-          <h2>Motorrad Fotografie <em>vor Ort.</em></h2>
+          <h2 set:html={cityHeading}></h2>
         </div>
         <nav class="mr-cities__grid" aria-label="Städte">
-          {cityLinks.map(([href, label], index) => <a class="mr-cities__cell" href={href} {...tinaAttrs(doc?.locationLinksSection?.items?.[index], 'label')}>{label}</a>)}
+          {cityLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
         </nav>
       </div>
     </section>
@@ -522,10 +576,10 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
     <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Motorrad Fotografie Suchbegriffe">
       <div class="mr-cities__inner">
         <div class="mr-cities__head">
-          <h2>Motorrad Fotografie <em>Suchbegriffe.</em></h2>
+          <h2 set:html={intentHeading}></h2>
         </div>
         <nav class="mr-cities__grid" aria-label="Suchvarianten">
-          {searchLinks.map(([href, label], index) => <a class="mr-cities__cell" href={href} {...tinaAttrs(doc?.searchLinksSection?.items?.[index], 'label')}>{label}</a>)}
+          {searchLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
         </nav>
       </div>
     </section>

@@ -152,6 +152,18 @@ const normalizePageLoc = (loc?: string) => {
   }
 }
 
+const isRedirectPageLoc = (loc?: string) => {
+  try {
+    const pathname = decodeURIComponent(new URL(toAbsoluteSiteUrl(loc)).pathname)
+      .replace(/^\/+/, '')
+      .replace(/\/+$/, '')
+
+    return Boolean(pathname && !pathname.includes('/') && getLegacyRedirectTarget(pathname))
+  } catch {
+    return false
+  }
+}
+
 const sectionForLegacyFile = (file: string): SitemapSection => {
   const slug = file.replace(/\.html$/, '')
   if (file.startsWith('blog')) return 'journal'
@@ -282,6 +294,7 @@ export async function cmsSitemapEntries(section?: SitemapSection): Promise<Sitem
       .filter((doc) => doc._status !== 'draft' && !doc.seo?.noIndex)
       .forEach((doc: PayloadDoc) => {
         const loc = doc.seo?.canonicalUrl || routeForDoc(collection, doc)
+        if (isRedirectPageLoc(loc)) return
         if (section && sectionForSitemapLoc(loc, collectionSection) !== section) return
 
         entries.push({

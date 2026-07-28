@@ -533,9 +533,9 @@ export const servicesIndexItems: ServicesIndexItem[] = [
   {
     id: 'keyword-datenbank',
     href: '/keyword-datenbank-seo.html',
-    headline: 'Keyword-<em>Datenbank.</em>',
-    text: 'Für SEO-Recherche, Content-Planung und Wettbewerbsanalyse empfehle ich die Contextter Keyword-Datenbank: ein ruhiger Arbeitsort für Keyword-Ideen, Suchintention, SERP-Daten, Themencluster und Content-Potenziale.',
-    tags: ['Keyword-Recherche', 'SEO-Strategie', 'SERP-Analyse'],
+    headline: 'Contextter-<em>Fallstudie.</em>',
+    text: 'Wie aus verstreuter Keyword-Recherche die Contextter Keyword-Datenbank wurde: eine persönliche Fallstudie zu Suchintention, Themenclustern, SERP-Daten, Wettbewerb und Produktentscheidungen.',
+    tags: ['Fallstudie', 'Keyword-Datenbank', 'Produktentwicklung'],
     theme: 'light',
     images: [
       {

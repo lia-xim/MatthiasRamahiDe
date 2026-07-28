@@ -1,5 +1,5 @@
 {
-  "baseUrl": "http://127.0.0.1:4321",
+  "baseUrl": "http://127.0.0.1:4325",
   "documents": 252,
   "content": {
     "clusters": {
@@ -26,20 +26,27 @@
   },
   "live": {
     "clusters": {
-      "checked": 216,
+      "checked": 223,
+      "redirectedPages": 7,
+      "childPages": 195,
+      "duesseldorfHubs": 6,
       "familyPages": 213,
-      "overviewPages": 3,
+      "nrwHubs": 6,
+      "overviewPages": 2,
+      "pillarPages": 6,
+      "unclassifiedPages": 8,
       "issueCount": 0,
       "issues": []
     },
     "meta": {
-      "checked": 252,
+      "checked": 245,
+      "redirectedDocuments": 7,
       "issueCount": 0,
       "issues": []
     },
     "sitemaps": {
       "duplicateCount": 0,
-      "expectedCanonicals": 252,
+      "expectedCanonicals": 245,
       "issueCount": 0,
       "issues": [],
       "missingCount": 0,
@@ -65,7 +72,7 @@
           "status": 200
         }
       ],
-      "sitemapUrls": 252
+      "sitemapUrls": 245
     }
   }
 }

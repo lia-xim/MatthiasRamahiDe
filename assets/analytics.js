@@ -56,10 +56,21 @@
     }
   }
 
+  function routeDimensions() {
+    var body = document.body;
+    return {
+      page: location.pathname,
+      pageFamily: (body && body.getAttribute('data-page-family')) || 'other',
+      pageRole: (body && body.getAttribute('data-page-role')) || 'other'
+    };
+  }
+
   function track(name, data) {
     if (!name) return;
     if (queue.length >= MAX_QUEUE) return;
-    queue.push({ name: String(name).slice(0, 50), data: clean(data) });
+    var dimensions = routeDimensions();
+    var eventData = Object.assign(dimensions, data || {});
+    queue.push({ name: String(name).slice(0, 50), data: clean(eventData) });
     if (umamiReady()) flush();
     else if (!flushTimer) flushTimer = window.setTimeout(flush, 300);
   }
@@ -99,7 +110,7 @@
   };
   var CONVERSION_PROPS = [
     'form', 'subject', 'transport', 'role', 'placement', 'text', 'href',
-    'intent', 'use', 'reason', 'requestId',
+    'intent', 'projectType', 'use', 'reason', 'requestId',
     'lastCta', 'lastCtaRole', 'durationSeconds', 'lastField',
     'badPath', 'referrer'
   ];
@@ -143,14 +154,12 @@
     if (!href || href.charAt(0) === '#') return;
 
     var lower = href.toLowerCase();
-    var label = (link.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 80);
-
     if (lower.indexOf('tel:') === 0) {
-      track('contact-phone', { href: href, label: label });
+      track('contact-phone', { channel: 'phone' });
       return;
     }
     if (lower.indexOf('mailto:') === 0) {
-      track('contact-email', { href: href, label: label });
+      track('contact-email', { channel: 'email' });
       return;
     }
 
@@ -158,7 +167,7 @@
     if (!host) return; // relativ / interne Sprungmarke ohne Host
 
     if (host.indexOf('wa.me') !== -1 || host.indexOf('whatsapp.com') !== -1) {
-      track('contact-whatsapp', { href: href });
+      track('contact-whatsapp', { channel: 'whatsapp' });
       return;
     }
 
@@ -170,13 +179,13 @@
       }
     });
     if (network) {
-      track('social-click', { network: network, href: href });
+      track('social-click', { network: network });
       return;
     }
 
     // Restliche externe Links
     if (host !== location.hostname.replace(/^www\./, '')) {
-      track('outbound-link', { domain: host, href: href.slice(0, 180) });
+      track('outbound-link', { domain: host });
     }
   }, { capture: true });
 

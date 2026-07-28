@@ -28,6 +28,7 @@ export type PayloadDoc = {
   serviceType?: string
   pageType?: string
   presentationMode?: string
+  createdAt?: string
   publishedAt?: string
   updatedAt?: string
   _status?: 'draft' | 'published'

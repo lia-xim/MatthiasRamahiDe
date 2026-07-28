@@ -1,0 +1,151 @@
+---
+type GuideItem = {
+  title: string
+  text: string
+}
+
+type GuideLink = {
+  href: string
+  label: string
+}
+
+type Props = {
+  eyebrow: string
+  intro: string
+  items: GuideItem[]
+  links: GuideLink[]
+  title: string
+}
+
+const { eyebrow, intro, items, links, title } = Astro.props as Props
+---
+
+<section class="mr-guide" data-header-theme="light" data-theme="light" aria-labelledby="mr-guide-title">
+  <div class="mr-guide__inner">
+    <div class="mr-guide__intro">
+      <span>{eyebrow}</span>
+      <h2 id="mr-guide-title">{title}</h2>
+      <p>{intro}</p>
+      <nav aria-label="Passende Vertiefungen">
+        {links.map((link) => <a href={link.href}>{link.label} <span aria-hidden="true">-&gt;</span></a>)}
+      </nav>
+    </div>
+    <ol class="mr-guide__steps">
+      {items.map((item, index) => (
+        <li>
+          <span>{String(index + 1).padStart(2, '0')}</span>
+          <div>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .mr-guide {
+    background: #f3f0e9;
+    color: #171717;
+    padding: clamp(4rem, 8vw, 8rem) 0;
+  }
+
+  .mr-guide__inner {
+    display: grid;
+    gap: clamp(2.5rem, 6vw, 6rem);
+    grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+    margin: 0 auto;
+    max-width: 1220px;
+    padding: 0 clamp(1.25rem, 4vw, 3.5rem);
+  }
+
+  .mr-guide__intro {
+    align-self: start;
+    position: sticky;
+    top: 7rem;
+  }
+
+  .mr-guide__intro > span {
+    color: #9b3326;
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+
+  .mr-guide h2 {
+    font-size: clamp(2.15rem, 4vw, 4.3rem);
+    font-weight: 500;
+    line-height: 0.98;
+    margin: 0;
+  }
+
+  .mr-guide__intro > p {
+    color: #4e4b46;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin: 1.5rem 0 2rem;
+    max-width: 34rem;
+  }
+
+  .mr-guide nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.25rem;
+  }
+
+  .mr-guide nav a {
+    border-bottom: 1px solid currentColor;
+    color: #171717;
+    font-weight: 700;
+    padding-bottom: 0.2rem;
+    text-decoration: none;
+  }
+
+  .mr-guide__steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .mr-guide__steps li {
+    align-items: start;
+    border-top: 1px solid rgb(23 23 23 / 18%);
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: 2.5rem minmax(0, 1fr);
+    padding: 1.65rem 0;
+  }
+
+  .mr-guide__steps li:last-child {
+    border-bottom: 1px solid rgb(23 23 23 / 18%);
+  }
+
+  .mr-guide__steps > li > span {
+    color: #9b3326;
+    font: 700 0.8rem/1.4 ui-monospace, SFMono-Regular, Consolas, monospace;
+  }
+
+  .mr-guide__steps h3 {
+    font-size: 1.25rem;
+    margin: 0 0 0.45rem;
+  }
+
+  .mr-guide__steps p {
+    color: #4e4b46;
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  @media (max-width: 780px) {
+    .mr-guide__inner {
+      grid-template-columns: 1fr;
+    }
+
+    .mr-guide__intro {
+      position: static;
+    }
+  }
+</style>

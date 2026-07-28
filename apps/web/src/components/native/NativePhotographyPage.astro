@@ -2,6 +2,7 @@
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import { splitCmsHeroTitleLines } from '../../lib/heroTitleLines'
 import { blockParagraphs, homeHeroSlidesFor, photographyTopics as fallbackTopics } from '../../lib/nativeContent'
+import { isCurrentPageHref } from '../../lib/pageLinks'
 import { tinaAttrs } from '../../lib/tinaFieldAttrs'
 import {
   getSitePageByType,
@@ -71,6 +72,10 @@ const hasText = (value?: string): value is string => typeof value === 'string' &
 const editableSource = (item: unknown) => (item as { source?: unknown } | null | undefined)?.source
 const topicSlug = (value = '') =>
   value.toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')
+const topicLinkLabel = (label: string, href: string): string => {
+  if (!href.includes('-duesseldorf.html')) return label
+  return `${label.replace(/\s*→\s*$/, '')} Düsseldorf →`
+}
 
 // Themen-Bereiche: CMS bevorzugt, sonst eingebaute Defaults. Theme-Wechsel + CSS-Klasse + Maße abgeleitet.
 const cmsTopics = (doc?.photographyIndex?.topics || [])
@@ -78,6 +83,7 @@ const cmsTopics = (doc?.photographyIndex?.topics || [])
   .map((topic, index) => {
     const id = topicSlug(topic.title) || `bereich-${index + 1}`
     const dimensions = imageDimensions(topic.image, 'card')
+    const href = toRootRelativeHref(topic.href) || '#'
     return {
       source: topic,
       id,
@@ -86,8 +92,8 @@ const cmsTopics = (doc?.photographyIndex?.topics || [])
       title: topic.title || '',
       emphasis: topic.emphasis || '',
       text: topic.text || '',
-      href: toRootRelativeHref(topic.href) || '#',
-      linkLabel: topic.linkLabel || '',
+      href,
+      linkLabel: topicLinkLabel(topic.linkLabel || '', href),
       image: imageDisplayUrl(topic.image, 'card', { allowOriginal: true }),
       alt: imageAlt(topic.image, topic.title || ''),
       width: dimensions.width || 960,
@@ -215,6 +221,7 @@ const localHubGroups = [
         <div class="cluster-copy">
           {clusterParagraphs.map((paragraph, index) => <p {...tinaAttrs(doc?.photographyIndex?.clusterIntro?.[index], 'text')}>{paragraph}</p>)}
           <div class="cluster-links">
+            {!isRootPhotographyOverview && <a href="/fotografie.html">Alle Fotografie-Bereiche</a>}
             {topics.map((topic) => <a href={topic.href}>{topic.title.replace('.', '')}</a>)}
           </div>
         </div>
@@ -230,7 +237,7 @@ const localHubGroups = [
               <h3>{group.title}</h3>
               <p>{group.text}</p>
               <div class="cluster-links">
-                {group.links.map(([label, href]) => <a href={href}>{label}</a>)}
+                {group.links.map(([label, href]) => isCurrentPageHref(href, legacyFile) ? null : <a href={href}>{label}</a>)}
               </div>
             </div>
           ))}

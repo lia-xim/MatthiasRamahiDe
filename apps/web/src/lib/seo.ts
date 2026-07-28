@@ -25,6 +25,18 @@ const compactJsonLd = (value: unknown): unknown => {
 
 const jsonLd = (value: JsonLd): JsonLd => compactJsonLd(value) as JsonLd
 
+export const isoDateTime = (value?: string | null): string | undefined => {
+  if (!value) return undefined
+
+  const normalized = value
+    .trim()
+    .replace(/^(\d{4}-\d{2}-\d{2})\s+/, '$1T')
+    .replace(/([+-]\d{2})$/, '$1:00')
+  const parsed = new Date(normalized)
+
+  return Number.isNaN(parsed.getTime()) ? undefined : parsed.toISOString()
+}
+
 const sameAsUrls = (settings?: SiteSettings | null) =>
   [settings?.instagramUrl].filter((url): url is string => {
     if (!url || !/^https?:\/\//i.test(url)) return false
@@ -71,9 +83,17 @@ export const localBusinessJsonLd = (settings?: SiteSettings | null): JsonLd => j
   '@type': 'ProfessionalService',
   '@id': `${toAbsoluteSiteUrl('/')}#local-business`,
   name: settings?.siteName || 'Matthias Ramahi Fotografie',
+  legalName: settings?.ownerName || 'Matthias Ramahi',
   url: toAbsoluteSiteUrl('/'),
   email: settings?.email,
   telephone: settings?.phone,
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'project enquiries',
+    email: settings?.email,
+    telephone: settings?.phone,
+    availableLanguage: ['de', 'en'],
+  },
   image: imageUrl(settings?.defaultOgImage, 'hero') || toAbsoluteSiteUrl(defaultBusinessImage),
   address: {
     '@type': 'PostalAddress',
@@ -129,8 +149,8 @@ export const articleJsonLd = (doc: PayloadDoc, url: string): JsonLd => jsonLd({
   headline: doc.seo?.title || doc.title,
   description: doc.seo?.description || doc.excerpt,
   image: imageUrl(doc.seo?.ogImage || doc.coverImage, 'hero'),
-  datePublished: doc.publishedAt,
-  dateModified: doc.updatedAt,
+  datePublished: isoDateTime(doc.publishedAt || doc.createdAt),
+  dateModified: isoDateTime(doc.updatedAt || doc.publishedAt || doc.createdAt),
   author: {
     '@id': `${toAbsoluteSiteUrl('/')}#person`,
   },

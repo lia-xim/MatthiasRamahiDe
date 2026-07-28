@@ -10,6 +10,7 @@ import {
   type NativeFamilyPreviewState,
 } from '../../lib/nativeFamilyPageContext'
 import { mergeAuthoredLocalSeoContent } from '../../lib/authoredSeoContent'
+import { curateFamilyClusterLinks } from '../../lib/familyClusterLinks'
 import { cmsHeroTitleFitStyle, splitCmsHeroTitleLines, splitHeroTitleLines } from '../../lib/heroTitleLines'
 import { familyHeroCopy, familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
 import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
@@ -179,12 +180,12 @@ const relatedAreas = [
     title: 'Drucke',
   },
   {
-    href: 'portfolio.html',
+    href: '/portfolio/portfolio-auswahl-oldtimer',
     image: 'assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp',
     alt: 'Vollständiges Portfolio',
     width: 720,
     height: 1152,
-    title: 'Portfolio',
+    title: 'Oldtimer-Auswahl',
   },
 ]
 
@@ -286,8 +287,8 @@ const heroCopy = familyHeroCopy(doc, visualDoc, {
   lead: heroLead,
   primaryHref: '#anfrage',
   primaryLabel: 'Shooting buchen',
-  secondaryHref: 'portfolio.html',
-  secondaryLabel: 'Portfolio',
+  secondaryHref: '/portfolio/portfolio-auswahl-oldtimer',
+  secondaryLabel: 'Oldtimer-Auswahl',
   titleLines: heroTitleLines,
 })
 const heroTitleFitStyle = cmsHeroTitleFitStyle(heroCopy.titleLines, shouldUseCmsHeroTitle)
@@ -308,7 +309,7 @@ const heroTitleField = (index: number) =>
       : 'heroLine2'
 const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
 
-const cityLinks = [
+const allCityLinks = [
   ['oldtimer-fotografie-duesseldorf.html', 'Düsseldorf'],
   ['oldtimer-fotografie-erkrath.html', 'Erkrath'],
   ['oldtimer-fotografie-ratingen.html', 'Ratingen'],
@@ -333,17 +334,70 @@ const cityLinks = [
   ['oldtimer-fotografie-neuss.html', 'Neuss'],
   ['oldtimer-fotografie-nrw.html', 'NRW'],
   ['oldtimer-fotografie-deutschland.html', 'Deutschland'],
-]
+] as const
 
-const localSearchHref = (duesseldorfHref: string, fallbackHref?: string) =>
-  scope.slug === 'duesseldorf' ? duesseldorfHref : fallbackHref || duesseldorfHref
-const searchLinks = [
-  [localSearchHref('classic-car-fotografie-duesseldorf.html', 'classic-car-fotografie.html'), 'Classic Car Fotografie'],
-  ['oldtimer-shooting-duesseldorf.html', 'Oldtimer Shooting'],
-  [localSearchHref('youngtimer-fotografie-duesseldorf.html', 'youngtimer-fotografie.html'), 'Youngtimer Fotografie'],
-  [localSearchHref('sammlerfahrzeug-fotografie-duesseldorf.html', 'sammlerfahrzeug-fotografie.html'), 'Sammlerfahrzeug Fotografie'],
-  ['oldtimer-verkaufsfotos-duesseldorf.html', 'Oldtimer Verkaufsfotos'],
-]
+const intentLinks = [
+  {
+    key: 'classic-car',
+    label: 'Classic Car Fotografie',
+    genericHref: 'classic-car-fotografie.html',
+    duesseldorfHref: 'classic-car-fotografie-duesseldorf.html',
+  },
+  {
+    key: 'oldtimer-shooting',
+    label: 'Oldtimer Shooting',
+    genericHref: 'oldtimer-shooting-duesseldorf.html',
+    duesseldorfHref: 'oldtimer-shooting-duesseldorf.html',
+  },
+  {
+    key: 'youngtimer',
+    label: 'Youngtimer Fotografie',
+    genericHref: 'youngtimer-fotografie.html',
+    duesseldorfHref: 'youngtimer-fotografie-duesseldorf.html',
+  },
+  {
+    key: 'sammlerfahrzeug',
+    label: 'Sammlerfahrzeug Fotografie',
+    genericHref: 'sammlerfahrzeug-fotografie.html',
+    duesseldorfHref: 'sammlerfahrzeug-fotografie-duesseldorf.html',
+  },
+  {
+    key: 'verkaufsfotos',
+    label: 'Oldtimer Verkaufsfotos',
+    genericHref: 'oldtimer-verkaufsfotos-duesseldorf.html',
+    duesseldorfHref: 'oldtimer-verkaufsfotos-duesseldorf.html',
+  },
+] as const
+const clusterCuration = curateFamilyClusterLinks({
+  allCityLinks,
+  currentPage: legacyFile,
+  defaultLegacyFile,
+  familyLabel: 'Oldtimer Fotografie',
+  intentLinks,
+  intentNeighbors: {
+    'classic-car': ['oldtimer-shooting', 'youngtimer', 'sammlerfahrzeug'],
+    'oldtimer-shooting': ['classic-car', 'youngtimer', 'verkaufsfotos'],
+    youngtimer: ['classic-car', 'sammlerfahrzeug', 'oldtimer-shooting'],
+    sammlerfahrzeug: ['classic-car', 'youngtimer', 'verkaufsfotos'],
+    verkaufsfotos: ['sammlerfahrzeug', 'oldtimer-shooting', 'classic-car'],
+  },
+  isParentPage,
+  primaryIntentKeys: [
+    'oldtimer-shooting',
+    'classic-car',
+    'youngtimer',
+    'sammlerfahrzeug',
+    'verkaufsfotos',
+  ],
+  scopeSlug: scope.slug,
+})
+const {
+  cityHeading,
+  cityLinks,
+  intentHeading,
+  searchLinks,
+  showCrossFamilyCluster,
+} = clusterCuration
 ---
 <AdoptedPageLayout
   legacyFile={legacyFile}
@@ -486,7 +540,7 @@ const searchLinks = [
       </div>
     </section>
 
-    {!isParentPage && (
+    {showCrossFamilyCluster && (
       <NativeFamilyClusterLinks
         clusterHeading={clusterHeading}
         clusterLinks={clusterLinks}
@@ -498,10 +552,10 @@ const searchLinks = [
     <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Oldtimer Fotografie in NRW">
       <div class="mr-cities__inner">
         <div class="mr-cities__head">
-          <h2>Oldtimer Fotografie <em>vor Ort.</em></h2>
+          <h2 set:html={cityHeading}></h2>
         </div>
         <nav class="mr-cities__grid" aria-label="Städte">
-          {cityLinks.map(([href, label], index) => <a class="mr-cities__cell" href={href} {...tinaAttrs(doc?.locationLinksSection?.items?.[index], 'label')}>{label}</a>)}
+          {cityLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
         </nav>
       </div>
     </section>
@@ -509,10 +563,10 @@ const searchLinks = [
     <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Oldtimer Fotografie Suchbegriffe">
       <div class="mr-cities__inner">
         <div class="mr-cities__head">
-          <h2>Oldtimer Fotografie <em>Suchbegriffe.</em></h2>
+          <h2 set:html={intentHeading}></h2>
         </div>
         <nav class="mr-cities__grid" aria-label="Suchvarianten">
-          {searchLinks.map(([href, label], index) => <a class="mr-cities__cell" href={href} {...tinaAttrs(doc?.searchLinksSection?.items?.[index], 'label')}>{label}</a>)}
+          {searchLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
         </nav>
       </div>
     </section>

@@ -10,6 +10,7 @@ import {
   type NativeFamilyPreviewState,
 } from '../../lib/nativeFamilyPageContext'
 import { mergeAuthoredLocalSeoContent } from '../../lib/authoredSeoContent'
+import { curateFamilyClusterLinks } from '../../lib/familyClusterLinks'
 import { cmsHeroTitleFitStyle, splitCmsHeroTitleLines, splitHeroTitleLines } from '../../lib/heroTitleLines'
 import { keywordFocusCopyForSlug } from '../../lib/localSeoFamilyContent'
 import { familyHeroCopy, familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
@@ -49,12 +50,6 @@ const cmsFaqSource = (doc?.localFaq?.length ? doc.localFaq : doc?.faq) || []
 const cmsFaqItems = cmsFaqSource.map((entry) => ({ q: entry.question || '', a: entry.answer || '' })).filter((entry) => entry.q && entry.a)
 const faqItems = cmsFaqItems.length ? cmsFaqItems : keywordFocusCopy?.faq
 const cmsText = (value: unknown) => (typeof value === 'string' ? value.trim() : '')
-const cmsLinks = (items: Array<{ href?: string; label?: string }> | undefined, fallback: string[][]) => {
-  const links = (items || [])
-    .map((item) => [cmsText(item.href), cmsText(item.label)])
-    .filter(([href, label]) => href && label)
-  return links.length ? links : fallback
-}
 const emphasizedHtml = (headline: string, emphasis: string) =>
   [headline, emphasis ? `<em>${emphasis}</em>` : ''].filter(Boolean).join(headline && emphasis ? ' ' : '')
 const cmsHeroLine2 = typeof doc?.heroLine2 === 'string' ? doc.heroLine2.trim() : ''
@@ -79,8 +74,8 @@ const heroCopy = familyHeroCopy(doc, visualDoc, {
   lead: heroLead,
   primaryHref: '#anfrage',
   primaryLabel: 'Shooting buchen \u2192',
-  secondaryHref: 'portfolio.html',
-  secondaryLabel: 'Portfolio',
+  secondaryHref: '/portfolio/portfolio-auswahl-sportwagen',
+  secondaryLabel: 'Sportwagen-Auswahl',
   titleLines: heroTitleLines,
 })
 const heroTitleFitStyle = cmsHeroTitleFitStyle(heroCopy.titleLines, shouldUseCmsHeroTitle)
@@ -414,15 +409,15 @@ const relatedAreas = [
     title: 'Motorrad',
   },
   {
-    href: 'portfolio.html',
+    href: '/portfolio/portfolio-auswahl-sportwagen',
     dataSrc: 'assets/portfolio/thumbs/_DSC3879.webp',
     alt: 'Vollständiges Portfolio',
     width: 720,
     height: 480,
-    title: 'Portfolio',
+    title: 'Sportwagen-Auswahl',
   },
 ]
-const finalRelatedAreas = doc?.relatedSection?.items?.length
+const resolvedRelatedAreas = doc?.relatedSection?.items?.length
   ? doc.relatedSection.items.map((item, index) => {
       const fallback = relatedAreas[index] || relatedAreas[relatedAreas.length - 1]
       const resolved = resolveSectionImage(item.image, {
@@ -443,8 +438,12 @@ const finalRelatedAreas = doc?.relatedSection?.items?.length
       }
     })
   : relatedAreas
+const sportwagenProofArea = relatedAreas[relatedAreas.length - 1]
+const finalRelatedAreas = resolvedRelatedAreas.some((area) => area.href === sportwagenProofArea.href)
+  ? resolvedRelatedAreas
+  : [...resolvedRelatedAreas, sportwagenProofArea]
 
-const fallbackCityLinks = [
+const allCityLinks = [
   ['sportwagen-fotografie-duesseldorf.html', 'Düsseldorf'],
   ['sportwagen-fotografie-erkrath.html', 'Erkrath'],
   ['sportwagen-fotografie-ratingen.html', 'Ratingen'],
@@ -469,30 +468,84 @@ const fallbackCityLinks = [
   ['sportwagen-fotografie-neuss.html', 'Neuss'],
   ['sportwagen-fotografie-nrw.html', 'NRW'],
   ['sportwagen-fotografie-deutschland.html', 'Deutschland'],
-]
-
-const localSearchHref = (duesseldorfHref: string, fallbackHref?: string) =>
-  scope.slug === 'duesseldorf' ? duesseldorfHref : fallbackHref || duesseldorfHref
-const cityLinks = cmsLinks(doc?.locationLinksSection?.items, fallbackCityLinks)
-const locationLinksTitle = splitTrailingEmphasis(
-  cmsText(doc?.locationLinksSection?.headline) || 'Sportwagen Fotografie',
-  cmsText(doc?.locationLinksSection?.emphasis) || 'vor Ort.',
-)
-
-const fallbackSearchLinks = [
-  [localSearchHref('motorsport-sportwagen-fotografie-duesseldorf.html', 'motorsport-sportwagen-fotografie.html'), 'Motorsport & Sportwagen'],
-  [localSearchHref('motorsport-fotografie-duesseldorf.html', 'motorsport-fotografie.html'), 'Motorsport Fotografie'],
-  ['sportwagen-shooting-duesseldorf.html', 'Sportwagen Shooting'],
-  ['sportwagen-fotoshooting-duesseldorf.html', 'Sportwagen Fotoshooting'],
-  [localSearchHref('performance-car-fotografie-duesseldorf.html', 'performance-car-fotografie.html'), 'Performance Car Fotografie'],
-  [localSearchHref('exotic-car-fotografie-duesseldorf.html', 'exotic-car-fotografie.html'), 'Exotic Car Fotografie'],
-  [localSearchHref('supersportwagen-fotografie-duesseldorf.html', 'supersportwagen-fotografie.html'), 'Supersportwagen Fotografie'],
-]
-const searchLinks = cmsLinks(doc?.searchLinksSection?.items, fallbackSearchLinks)
-const searchLinksTitle = splitTrailingEmphasis(
-  cmsText(doc?.searchLinksSection?.headline) || 'Sportwagen Fotografie',
-  cmsText(doc?.searchLinksSection?.emphasis) || 'Suchbegriffe.',
-)
+] as const
+const intentLinks = [
+  {
+    key: 'motorsport-sportwagen',
+    label: 'Motorsport & Sportwagen',
+    genericHref: 'motorsport-sportwagen-fotografie.html',
+    duesseldorfHref: 'motorsport-sportwagen-fotografie-duesseldorf.html',
+  },
+  {
+    key: 'motorsport',
+    label: 'Motorsport Fotografie',
+    genericHref: 'motorsport-fotografie.html',
+    duesseldorfHref: 'motorsport-fotografie-duesseldorf.html',
+  },
+  {
+    key: 'sportwagen-shooting',
+    label: 'Sportwagen Shooting',
+    genericHref: 'sportwagen-shooting-duesseldorf.html',
+    duesseldorfHref: 'sportwagen-shooting-duesseldorf.html',
+  },
+  {
+    key: 'sportwagen-fotoshooting',
+    label: 'Sportwagen Fotoshooting',
+    genericHref: 'sportwagen-fotoshooting-duesseldorf.html',
+    duesseldorfHref: 'sportwagen-fotoshooting-duesseldorf.html',
+  },
+  {
+    key: 'performance-car',
+    label: 'Performance Car Fotografie',
+    genericHref: 'performance-car-fotografie.html',
+    duesseldorfHref: 'performance-car-fotografie-duesseldorf.html',
+  },
+  {
+    key: 'exotic-car',
+    label: 'Exotic Car Fotografie',
+    genericHref: 'exotic-car-fotografie.html',
+    duesseldorfHref: 'exotic-car-fotografie-duesseldorf.html',
+  },
+  {
+    key: 'supersportwagen',
+    label: 'Supersportwagen Fotografie',
+    genericHref: 'supersportwagen-fotografie.html',
+    duesseldorfHref: 'supersportwagen-fotografie-duesseldorf.html',
+  },
+] as const
+const clusterCuration = curateFamilyClusterLinks({
+  allCityLinks,
+  currentPage: legacyFile,
+  defaultLegacyFile,
+  familyLabel: 'Sportwagen Fotografie',
+  intentLinks,
+  intentNeighbors: {
+    'motorsport-sportwagen': ['motorsport', 'sportwagen-shooting', 'performance-car'],
+    motorsport: ['motorsport-sportwagen', 'sportwagen-shooting', 'sportwagen-fotoshooting'],
+    'sportwagen-shooting': ['sportwagen-fotoshooting', 'performance-car', 'exotic-car'],
+    'sportwagen-fotoshooting': ['sportwagen-shooting', 'supersportwagen', 'exotic-car'],
+    'performance-car': ['exotic-car', 'supersportwagen', 'motorsport-sportwagen'],
+    'exotic-car': ['performance-car', 'supersportwagen', 'sportwagen-fotoshooting'],
+    supersportwagen: ['exotic-car', 'performance-car', 'motorsport-sportwagen'],
+  },
+  isParentPage,
+  primaryIntentKeys: [
+    'sportwagen-shooting',
+    'motorsport-sportwagen',
+    'performance-car',
+    'exotic-car',
+    'supersportwagen',
+    'sportwagen-fotoshooting',
+  ],
+  scopeSlug: scope.slug,
+})
+const {
+  cityHeading,
+  cityLinks,
+  intentHeading,
+  searchLinks,
+  showCrossFamilyCluster,
+} = clusterCuration
 const heroPanelSource = (index: number) =>
   doc?.heroPanels?.[index] || doc?.heroSlides?.[index] || visualDoc?.heroPanels?.[index] || visualDoc?.heroSlides?.[index]
 const heroTextSource = doc?.heroSlides?.[0] || doc
@@ -682,7 +735,7 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
       </div>
     </section>
 
-    {!isParentPage && (
+    {showCrossFamilyCluster && (
       <NativeFamilyClusterLinks
         clusterHeading={clusterHeading}
         clusterLinks={clusterLinks}
@@ -694,10 +747,10 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
     <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Sportwagen Fotografie in NRW">
       <div class="mr-cities__inner">
         <div class="mr-cities__head">
-          <h2><span {...tinaAttrs(doc?.locationLinksSection, 'headline')}>{locationLinksTitle.headline}</span> <em {...tinaAttrs(doc?.locationLinksSection, 'emphasis')}>{locationLinksTitle.emphasis}</em></h2>
+          <h2 set:html={cityHeading}></h2>
         </div>
         <nav class="mr-cities__grid" aria-label="Städte">
-          {cityLinks.map(([href, label], index) => <a class="mr-cities__cell" href={href} {...tinaAttrs(doc?.locationLinksSection?.items?.[index], 'label')}>{label}</a>)}
+          {cityLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
         </nav>
       </div>
     </section>
@@ -705,10 +758,10 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
     <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Sportwagen Fotografie Suchbegriffe">
       <div class="mr-cities__inner">
         <div class="mr-cities__head">
-          <h2><span {...tinaAttrs(doc?.searchLinksSection, 'headline')}>{searchLinksTitle.headline}</span> <em {...tinaAttrs(doc?.searchLinksSection, 'emphasis')}>{searchLinksTitle.emphasis}</em></h2>
+          <h2 set:html={intentHeading}></h2>
         </div>
         <nav class="mr-cities__grid" aria-label="Suchvarianten">
-          {searchLinks.map(([href, label], index) => <a class="mr-cities__cell" href={href} {...tinaAttrs(doc?.searchLinksSection?.items?.[index], 'label')}>{label}</a>)}
+          {searchLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
         </nav>
       </div>
     </section>

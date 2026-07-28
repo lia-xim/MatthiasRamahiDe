@@ -291,7 +291,7 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
     bodyClass: 'has-mr-footer',
     current: 'leistungen',
     description:
-      'Keyword-Datenbank für SEO-Recherche: Contextter als konkrete Arbeitsbasis für Suchintention, Themencluster, SERP-Analyse und Content-Planung.',
+      'Fallstudie zur Contextter Keyword-Datenbank: Wie aus verstreuter SEO-Recherche ein System für Suchintention, Themencluster, Wettbewerb und Priorisierung wurde.',
     ogImage: '/assets/contextter/keyword-database-hero-detail.webp',
     preloadImages: [
       '/assets/contextter/keyword-database-hero-detail.webp',
@@ -299,7 +299,7 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
     ],
     scripts: ['/assets/native-keyword-database.js', ...siteChromeScript],
     stylesheets: [...sharedStyles, '/assets/native-keyword-database.css'],
-    title: 'Keyword-Datenbank für SEO-Recherche | Matthias Ramahi',
+    title: 'Contextter Keyword-Datenbank: Fallstudie | Matthias Ramahi',
   },
   'videografie-duesseldorf.html': {
     ...serviceMiniChrome('/assets/services/portfolio_webp_full_058-1.webp'),

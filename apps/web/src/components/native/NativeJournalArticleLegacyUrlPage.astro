@@ -21,10 +21,22 @@ const secondaryParagraphs = articleVariant === 'feature' ? article.sections[0]?.
 const supportSections = articleVariant === 'support' ? article.sections : []
 const featureSections = articleVariant === 'feature' ? article.sections : []
 const primaryRelatedLink = article.links[0]
+const articleHref = (href?: string) => toRootRelativeHref(href || 'blog.html')
+const journalArticles = Object.values(journalArticleByLegacyFile)
+const currentArticleIndex = journalArticles.findIndex((item) => item.legacyFile === article.legacyFile)
+const existingArticleTargets = new Set(article.links.map((link) => articleHref(link.href)))
+const relatedJournalLinks = [1, 2]
+  .map((offset) => journalArticles[(currentArticleIndex + offset) % journalArticles.length])
+  .filter(
+    (item): item is JournalArticle =>
+      Boolean(item) &&
+      item.legacyFile !== article.legacyFile &&
+      !existingArticleTargets.has(articleHref(item.legacyFile)),
+  )
+  .map((item) => ({ href: item.legacyFile, label: item.title.replace(/<[^>]+>/g, '') }))
 const plainTitle = article.title.replace(/<[^>]+>/g, '')
 const seoTitle = article.seoTitle || `${plainTitle} | Matthias Ramahi`
 const canonicalUrl = `/${article.legacyFile}`
-const articleHref = (href?: string) => toRootRelativeHref(href || 'blog.html')
 const jsonLd = [
   breadcrumbJsonLd([
     { name: 'Home', url: '/' },
@@ -375,6 +387,7 @@ function sectionHtml(section: JournalArticle['sections'][number]) {
             <h2>Verwandte Beiträge.</h2>
             <nav>
               {article.links.map((link) => <a href={articleHref(link.href)}>{link.label}</a>)}
+              {relatedJournalLinks.map((link) => <a href={articleHref(link.href)}>{link.label}</a>)}
             </nav>
           </section>
         )}
