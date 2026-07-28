@@ -147,6 +147,7 @@ function inferKeyword(collectionName, doc) {
   if (collectionName === 'localSeoPages') {
     return cleanKeyword(doc.targetKeyword || doc.title || doc.seo?.focusKeyword || doc.seo?.title || [doc.service, keywordFromSlug(doc.city)].filter(Boolean).join(' '))
   }
+  if (collectionName === 'servicePages' && slug === 'keyword-datenbank-seo') return 'Keyword-Datenbank'
   if (collectionName === 'servicePages') return cleanKeyword(doc.seo?.title || doc.title || doc.serviceType || keywordFromSlug(slug))
   if (collectionName === 'journalPosts') return cleanKeyword(doc.seo?.title || doc.title || doc.tags?.[0] || doc.category || keywordFromSlug(slug))
   if (collectionName === 'portfolioProjects') return cleanKeyword(doc.seo?.title || doc.title || doc.excerpt || keywordFromSlug(slug))
@@ -163,6 +164,9 @@ function intentFor(collectionName, doc, keyword) {
   }
 
   if (collectionName === 'servicePages') {
+    if (slug === 'keyword-datenbank-seo') {
+      return 'Fallstudie und Produktinformation: Nutzer möchten verstehen, wie die Contextter Keyword-Datenbank entstanden ist und zum aktuellen Produkt wechseln.'
+    }
     return `Dienstleistungsvergleich und Anfrage: Nutzer prüfen Angebot, Ablauf, Bildstil und Kontaktmöglichkeit für ${keyword}.`
   }
 
