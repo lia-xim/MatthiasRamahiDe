@@ -114,7 +114,7 @@ body{margin:0;background:var(--kd-paper);color:var(--kd-ink);font-family:var(--k
 .kd-export{padding:112px 5vw;background:var(--kd-paper);display:grid;grid-template-columns:minmax(0,.82fr) minmax(360px,.44fr);gap:60px;align-items:center;max-width:calc(var(--kd-max) + 10vw);margin:0 auto}
 .kd-export>div>p:last-of-type{margin-top:20px;font-size:1.05rem;line-height:1.66;color:var(--kd-muted);max-width:58ch}
 .kd-export h2{font-size:3.4rem;line-height:1.04}
-.kd-text-link{display:inline-flex;margin-top:26px;padding-bottom:5px;border-bottom:1px solid currentColor;font:10px var(--kd-mono);letter-spacing:0;text-transform:uppercase;color:var(--kd-ink)}
+.kd-text-link{display:inline-flex;align-items:center;min-height:44px;margin-top:26px;padding:12px 0 10px;border-bottom:1px solid currentColor;font:10px var(--kd-mono);letter-spacing:0;text-transform:uppercase;color:var(--kd-ink)}
 .kd-text-link:hover{color:var(--kd-teal)}
 
 .kd-seo{position:relative;padding:104px 5vw;background:linear-gradient(180deg,#0b0d12,#020306);color:var(--kd-paper);overflow:hidden}
