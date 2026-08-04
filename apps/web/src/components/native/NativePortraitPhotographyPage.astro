@@ -108,9 +108,9 @@ const defaultContactLead = isParentPage
     : `Schreibe kurz, wofür die Portraits in ${scope.label} gedacht sind - Personal Branding, Editorial, Team, Presse oder Bewerbung. Wichtig sind Person oder Team, gewünschte Wirkung, Ort und Zeitraum. Stil und Licht klären wir vor dem ersten Klick.`
 const contactLead = keywordFocusCopy?.contactLead || defaultContactLead
 
-// CMS-Bild-Overrides pro Sektion (Tab „Themen-Sektionen"): 5 Modul-Karten aus
-// shootingStyles[i].image (Slots 4–8), 9 Galerie-Kacheln aus portfolioTiles[i].image
-// (Slots 9–17). Hero (0–3), Prozess (18–22) und Related (23–26) bleiben Fallback.
+// Alle sichtbaren Bilder werden aus den Bildfeldern des Tina-Portraitdokuments
+// gelesen. Die lokalen Portrait-Fallbacks verhindern fachfremde Motive, falls
+// ein einzelnes CMS-Feld voruebergehend leer ist.
 const sectionImageOverrides = [
   ...Array.from({ length: 4 }, (_, index) => doc?.heroPanels?.[index]?.image),
   // Modul-Karten lesen Text aus shootingStyles[i] || audienceCards[i] — das Bild
@@ -120,35 +120,41 @@ const sectionImageOverrides = [
   ...Array.from({ length: 5 }, (_, index) => doc?.processSteps?.[index]?.image),
   ...Array.from({ length: 4 }, (_, index) => doc?.relatedSection?.items?.[index]?.image),
 ]
-const visualSlots = familyVisualSlots(visualDoc, [
+const portraitVisualFallbacks = [
   { alt: 'Portrait warm', full: 'assets/portraits/_DSC0470-Enhanced-NR.webp', src: 'assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp', width: 1600, height: 2560 },
   { alt: 'Portrait Profil', full: 'assets/portraits/_DSC9301-Enhanced-NR.webp', src: 'assets/portfolio/thumbs/_DSC9301-Enhanced-NR.webp', width: 2048, height: 2560 },
   { alt: 'Portrait Editorial', full: 'assets/portraits/_DSC9321-Enhanced-NR.webp', src: 'assets/portfolio/thumbs/_DSC9321-Enhanced-NR.webp', width: 1707, height: 2560 },
   { alt: 'Portrait Konzept', full: 'assets/optimized/assets-portraits-20250327-dsc01550-1920.webp', src: 'assets/portfolio/thumbs/20250327-DSC01550.webp', width: 1691, height: 2560 },
   { alt: 'Portrait Modul', full: 'assets/portraits/_DSC0470-Enhanced-NR.webp', src: 'assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp', width: 720, height: 1152 },
-  { alt: 'Portrait Team', full: 'assets/optimized/assets-portraits-dsc3908-1920.webp', src: 'assets/portfolio/thumbs/_DSC3908.webp', width: 720, height: 480 },
-  { alt: 'Portrait Konzept', full: 'assets/optimized/assets-portraits-20250605-dsc04020-1920.webp', src: 'assets/portfolio/thumbs/20250605-DSC04020.webp', width: 720, height: 1080 },
+  { alt: 'Portrait Team', full: 'assets/portraits/_DSC9301-Enhanced-NR.webp', src: 'assets/portfolio/thumbs/_DSC9301-Enhanced-NR.webp', width: 720, height: 900 },
+  { alt: 'Portrait Konzept', full: 'assets/optimized/assets-portraits-20250327-dsc01550-1920.webp', src: 'assets/portfolio/thumbs/20250327-DSC01550.webp', width: 720, height: 1090 },
   { alt: 'Portrait Headshot', full: 'assets/portraits/_DSC9321-Enhanced-NR.webp', src: 'assets/portfolio/thumbs/_DSC9321-Enhanced-NR.webp', width: 720, height: 1080 },
-  { alt: 'Portrait Stimmung', full: 'assets/optimized/assets-portraits-dsc2986-1920.webp', src: 'assets/portfolio/thumbs/_DSC2986.webp', width: 720, height: 1080 },
+  { alt: 'Portrait Stimmung', full: 'assets/portraits/_DSC0470-Enhanced-NR.webp', src: 'assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp', width: 720, height: 1152 },
   { alt: 'Portrait', full: 'assets/portraits/_DSC0470-Enhanced-NR.webp', src: 'assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp', width: 720, height: 1152 },
   { alt: 'Portrait', full: 'assets/portraits/_DSC9321-Enhanced-NR.webp', src: 'assets/portfolio/thumbs/_DSC9321-Enhanced-NR.webp', width: 720, height: 1080 },
-  { alt: 'Portrait', full: 'assets/optimized/assets-portraits-dsc3908-1920.webp', src: 'assets/portfolio/thumbs/_DSC3908.webp', width: 720, height: 480 },
-  { alt: 'Portrait', full: 'assets/optimized/assets-portraits-dsc3878-1920.webp', src: 'assets/portfolio/thumbs/_DSC3878.webp', width: 720, height: 480 },
-  { alt: 'Portrait', full: 'assets/optimized/assets-portraits-dsc2986-1920.webp', src: 'assets/portfolio/thumbs/_DSC2986.webp', width: 720, height: 1080 },
-  { alt: 'Portrait', full: 'assets/optimized/assets-portraits-dsc2744-1920.webp', src: 'assets/portfolio/thumbs/_DSC2744.webp', width: 720, height: 1080 },
-  { alt: 'Portrait', full: 'assets/optimized/assets-portraits-20250605-dsc04020-1920.webp', src: 'assets/portfolio/thumbs/20250605-DSC04020.webp', width: 720, height: 1080 },
-  { alt: 'Portrait', full: 'assets/optimized/assets-portraits-dsc2358-1920.webp', src: 'assets/portfolio/thumbs/_DSC2358.webp', width: 720, height: 1080 },
-  { alt: 'Portrait', full: 'assets/optimized/assets-portraits-dsc2310-1920.webp', src: 'assets/portfolio/thumbs/_DSC2310.webp', width: 720, height: 480 },
+  { alt: 'Portrait', full: 'assets/portraits/_DSC9301-Enhanced-NR.webp', src: 'assets/portfolio/thumbs/_DSC9301-Enhanced-NR.webp', width: 720, height: 900 },
+  { alt: 'Portrait', full: 'assets/optimized/assets-portraits-20250327-dsc01550-1920.webp', src: 'assets/portfolio/thumbs/20250327-DSC01550.webp', width: 720, height: 1090 },
+  { alt: 'Portrait', full: 'assets/portraits/_DSC9321-Enhanced-NR.webp', src: 'assets/portfolio/thumbs/_DSC9321-Enhanced-NR.webp', width: 720, height: 1080 },
+  { alt: 'Portrait', full: 'assets/portraits/_DSC0470-Enhanced-NR.webp', src: 'assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp', width: 720, height: 1152 },
+  { alt: 'Portrait', full: 'assets/portraits/_DSC9301-Enhanced-NR.webp', src: 'assets/portfolio/thumbs/_DSC9301-Enhanced-NR.webp', width: 720, height: 900 },
+  { alt: 'Portrait', full: 'assets/optimized/assets-portraits-20250327-dsc01550-1920.webp', src: 'assets/portfolio/thumbs/20250327-DSC01550.webp', width: 720, height: 1090 },
+  { alt: 'Portrait', full: 'assets/portraits/_DSC9321-Enhanced-NR.webp', src: 'assets/portfolio/thumbs/_DSC9321-Enhanced-NR.webp', width: 720, height: 1080 },
   { alt: 'Anfrage', full: 'assets/portraits/_DSC9301-Enhanced-NR.webp', src: 'assets/portfolio/thumbs/_DSC9301-Enhanced-NR.webp', width: 720, height: 900 },
-  { alt: 'Kennenlernen', full: 'assets/optimized/assets-portfolio-dsc3032-generase-1-1920.webp', src: 'assets/portfolio/thumbs/_DSC3032_genErase (1).webp', width: 720, height: 480 },
-  { alt: 'Konzept', full: 'assets/optimized/assets-portfolio-20250605-dsc03756-1920.webp', src: 'assets/portfolio/thumbs/20250605-DSC03756.webp', width: 720, height: 1080 },
-  { alt: 'Shooting', full: 'assets/optimized/assets-portraits-dsc2310-1920.webp', src: 'assets/portfolio/thumbs/_DSC2310.webp', width: 720, height: 480 },
+  { alt: 'Kennenlernen', full: 'assets/portraits/_DSC0470-Enhanced-NR.webp', src: 'assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp', width: 720, height: 1152 },
+  { alt: 'Konzept', full: 'assets/optimized/assets-portraits-20250327-dsc01550-1920.webp', src: 'assets/portfolio/thumbs/20250327-DSC01550.webp', width: 720, height: 1090 },
+  { alt: 'Shooting', full: 'assets/portraits/_DSC9321-Enhanced-NR.webp', src: 'assets/portfolio/thumbs/_DSC9321-Enhanced-NR.webp', width: 720, height: 1080 },
   { alt: 'Auswahl und Lieferung', full: 'assets/portraits/_DSC0470-Enhanced-NR.webp', src: 'assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp', width: 720, height: 1152 },
-  { alt: 'Landschaft', full: 'assets/optimized/assets-portfolio-wettberwerb-foto5-wunder-der-natur2-1920.webp', src: 'assets/portfolio/thumbs/Wettberwerb_Foto5_Wunder_der_Natur2.webp', width: 720, height: 471 },
-  { alt: 'Automobil', full: 'assets/optimized/assets-photos-automobil-neon-1920.webp', src: 'assets/optimized/assets-photos-automobil-neon-960.webp', width: 960, height: 640 },
-  { alt: 'Videografie', full: 'assets/optimized/assets-portfolio-dsc3032-generase-1-1920.webp', src: 'assets/portfolio/thumbs/_DSC3032_genErase (1).webp', width: 720, height: 480 },
+  { alt: 'Landschaft', full: 'assets/portraits/_DSC0470-Enhanced-NR.webp', src: 'assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp', width: 720, height: 1152 },
+  { alt: 'Automobil', full: 'assets/portraits/_DSC9301-Enhanced-NR.webp', src: 'assets/portfolio/thumbs/_DSC9301-Enhanced-NR.webp', width: 720, height: 900 },
+  { alt: 'Videografie', full: 'assets/optimized/assets-portraits-20250327-dsc01550-1920.webp', src: 'assets/portfolio/thumbs/20250327-DSC01550.webp', width: 720, height: 1090 },
   { alt: 'Portfolio', full: 'assets/portraits/_DSC9321-Enhanced-NR.webp', src: 'assets/portfolio/thumbs/_DSC9321-Enhanced-NR.webp', width: 720, height: 1080 },
-], sectionImageOverrides)
+]
+const visualSlots = familyVisualSlots(visualDoc, portraitVisualFallbacks, sectionImageOverrides).map((slot, index) => ({
+  ...slot,
+  // Einige historische Medien wurden mit fachfremden Alt-Texten importiert.
+  // Auf der Portraitseite gilt deshalb der kontextuelle Slot-Text.
+  alt: portraitVisualFallbacks[index]?.alt || slot.alt,
+}))
 
 const allCityLinks = [
   ['portraitfotografie-duesseldorf.html', 'Düsseldorf'],
