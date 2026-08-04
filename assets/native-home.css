@@ -61,7 +61,7 @@
 
   /* ============ HERO — full-bleed name over photo, mouse-reveal shader ============ */
   .hero{position:relative;height:100svh;min-height:600px;max-height:100svh;display:grid;align-items:end;padding:clamp(120px,14vw,180px) clamp(22px,5vw,76px) clamp(48px,7vw,96px);overflow:hidden;isolation:isolate;background:#05070b url('optimized/mpik8b82-dsc3879-1280.webp') center/cover no-repeat;cursor:auto;color:#f3f5ef}
-  .hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none;background:var(--hero-bg,url('optimized/mpik8b82-dsc3879-1280.webp')) center/cover no-repeat;transform:translate3d(0,0,0) scale(1);will-change:transform;animation:heroBgKenBurns 38s var(--ease) infinite alternate}
+  .hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none;background:var(--hero-bg,url('optimized/mpik8b82-dsc3879-1280.webp')) center/cover no-repeat;transform:translate3d(0,0,0) scale(1)}
   .hero-shader-preload{position:absolute;left:0;top:0;width:0;height:0;opacity:0;overflow:hidden;pointer-events:none}
   .hero canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;display:block;opacity:0;transition:opacity .18s linear}
   .hero canvas.is-ready{opacity:1}
@@ -69,10 +69,10 @@
   .hero:before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(2,3,6,.32) 0%,rgba(2,3,6,0) 22%,rgba(2,3,6,0) 52%,rgba(2,3,6,.55) 86%,rgba(2,3,6,.78) 100%)}
   .hero:after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(95% 60% at 50% 100%,rgba(2,3,6,.42) 0%,rgba(2,3,6,0) 60%)}
   /* aperture scanning line, like the services footer */
-  .hero-aperture{position:absolute;z-index:2;left:-15vw;right:-15vw;top:42%;height:96px;pointer-events:none;opacity:.28;transform:rotate(-4deg) translateX(-18vw);background:linear-gradient(90deg,transparent 0%,rgba(243,245,239,.08) 36%,rgba(220,226,223,.44) 49%,rgba(220,226,223,.16) 55%,rgba(42,78,118,.16) 62%,transparent 82%);filter:blur(.2px);mask-image:linear-gradient(180deg,transparent,black 44%,black 56%,transparent);animation:heroAperture 11s var(--ease) infinite}
+  .hero-aperture{position:absolute;z-index:2;left:-15vw;right:-15vw;top:42%;height:96px;pointer-events:none;opacity:.18;transform:rotate(-4deg) translateX(10vw);background:linear-gradient(90deg,transparent 0%,rgba(243,245,239,.08) 36%,rgba(220,226,223,.44) 49%,rgba(220,226,223,.16) 55%,rgba(42,78,118,.16) 62%,transparent 82%);filter:blur(.2px);mask-image:linear-gradient(180deg,transparent,black 44%,black 56%,transparent)}
   @keyframes heroAperture{0%,10%{transform:rotate(-4deg) translateX(-30vw);opacity:0}28%{opacity:.42}58%{transform:rotate(-4deg) translateX(22vw);opacity:.24}100%{transform:rotate(-4deg) translateX(30vw);opacity:0}}
   /* soft moving glow */
-  .hero-glow{position:absolute;inset:-30% -18%;z-index:2;pointer-events:none;background:radial-gradient(circle at 22% 28%,rgba(220,226,223,.07),transparent 30%),radial-gradient(circle at 84% 70%,rgba(42,78,118,.16),transparent 36%);filter:blur(38px);opacity:.55;animation:heroGlow 18s var(--ease) infinite alternate}
+  .hero-glow{position:absolute;inset:-30% -18%;z-index:2;pointer-events:none;background:radial-gradient(circle at 22% 28%,rgba(220,226,223,.07),transparent 30%),radial-gradient(circle at 84% 70%,rgba(42,78,118,.16),transparent 36%);filter:blur(38px);opacity:.55}
   @keyframes heroGlow{0%{transform:translate3d(-1.6%,1.2%,0) scale(1)}100%{transform:translate3d(2.2%,-1.2%,0) scale(1.04)}}
   @keyframes heroBgKenBurns{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(1.3%,0,0) scale(1.055)}}
 
@@ -130,7 +130,7 @@
   /* Mobile/touch: shader is off, so give the static hero image a gentle, cheap
      pan so it is not "deader" than desktop. Horizontal-only = no edge reveal on
      portrait screens (landscape image overflows on the x-axis under cover). */
-  @media (hover:none), (pointer:coarse), (max-width:900px){.hero{cursor:auto}.hero-bg{transform:translate3d(0,0,0) scale(1.055);animation:heroPanMobile 34s var(--ease) infinite alternate}.hero canvas{display:none}.hero-cursor{display:none}}
+  @media (hover:none), (pointer:coarse), (max-width:900px){.hero{cursor:auto}.hero-bg{transform:translate3d(0,0,0) scale(1.025);animation:none}.hero canvas{display:none}.hero-cursor{display:none}}
   @keyframes heroPanMobile{from{transform:translate3d(0,0,0) scale(1.055)}to{transform:translate3d(1.3%,0,0) scale(1.055)}}
   @media(max-width:780px){.hero{padding:120px 20px 88px}.hero-title{font-size:clamp(46px,13vw,82px);letter-spacing:-.05em}.hero-lead{max-width:34rem;margin-top:18px;font-size:16px}.hero-actions{gap:10px;margin-top:22px}.hero-actions .btn{width:auto;min-height:46px;padding:12px 16px;letter-spacing:.14em}}
 
@@ -178,9 +178,11 @@
   .pf-marquee:before{left:0;background:linear-gradient(90deg,var(--paper) 0%,rgba(243,245,239,0) 100%)}
   .pf-marquee:after{right:0;background:linear-gradient(270deg,var(--paper) 0%,rgba(243,245,239,0) 100%)}
   .pf-row{position:relative;overflow:hidden;min-height:clamp(292px,24vw,430px)}
-  .pf-track{display:flex;gap:clamp(14px,1.6vw,28px);width:max-content;will-change:transform;padding:6px 0}
+  .pf-track{display:flex;gap:clamp(14px,1.6vw,28px);width:max-content;padding:6px 0}
   .pf-row.row-1 .pf-track{animation:pfScrollA 115s linear infinite}
   .pf-row.row-2 .pf-track{animation:pfScrollB 138s linear infinite}
+  .pf-marquee:not(.is-perf-paused) .pf-track{will-change:transform}
+  .pf-marquee.is-perf-paused .pf-track{animation-play-state:paused;will-change:auto}
 
   @keyframes pfScrollA{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
   @keyframes pfScrollB{from{transform:translate3d(-50%,0,0)}to{transform:translate3d(0,0,0)}}
@@ -356,7 +358,7 @@
     .pf-tile.--t{width:48vw}
     .pf-tile.--s{width:54vw}
     .pf-row{min-height:64vw}
-    .pf-row.row-1 .pf-track{animation-duration:77s}
+    .pf-row.row-1 .pf-track{animation:none}
     .pf-head h2 .num{position:static;display:block;margin-top:14px}
     /* Leistungen: kompakte Liste — Beschreibungstext aus, nur Nr · Titel · Detail in einer Zeile */
     .service-row{grid-template-columns:1fr auto;align-items:center;gap:12px 14px;padding:16px 0}

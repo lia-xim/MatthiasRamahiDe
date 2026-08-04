@@ -91,7 +91,10 @@
     const memory = Number(navigator.deviceMemory || 0);
     if (memory && memory <= 4) return 'low-memory';
     if (cores && cores <= 4) return 'low-core-count';
-    return '';
+    /* The fullscreen shader is intentionally opt-in. Even short-lived WebGL
+       startup work caused visible stalls before the runtime fallback could
+       react on software and integrated renderers. */
+    return 'performance-default';
   }
 
   const staticReason = initialStaticHeroReason();
@@ -143,7 +146,7 @@
   }).filter(slide=>slide.url);
   if(!slides.length){return;}
 
-  const gl=canvas.getContext('webgl',{antialias:true,premultipliedAlpha:false,powerPreference:'default'});
+  const gl=canvas.getContext('webgl',{antialias:false,premultipliedAlpha:false,powerPreference:'high-performance'});
   if(!gl){
     useStaticHero('webgl-unavailable');
     return;
@@ -161,7 +164,7 @@
 
   function lowPowerGpuReason(renderer) {
     if (forceShader) return '';
-    if (/swiftshader|software rasterizer|llvmpipe/i.test(renderer)) return 'software-renderer';
+    if (/swiftshader|software rasterizer|llvmpipe|microsoft basic render driver|basic render driver/i.test(renderer)) return 'software-renderer';
     if (/\bintel\b|iris|uhd graphics|hd graphics/i.test(renderer) && !/arc|apple|radeon|nvidia|geforce/i.test(renderer)) {
       return 'integrated-intel-gpu';
     }
@@ -593,7 +596,7 @@
 
   let canvasRect={left:0,top:0,width:1,height:1};
   function resize(entry){
-    const dpr=Math.min(window.devicePixelRatio||1,1.5);
+    const dpr=Math.min(window.devicePixelRatio||1,1);
     const box=entry?.contentBoxSize?.[0] || entry?.contentRect;
     const w=Math.max(1,Math.floor(box?.inlineSize || box?.width || window.innerWidth || 1));
     const h=Math.max(1,Math.floor(box?.blockSize || box?.height || window.innerHeight || 1));
@@ -647,7 +650,7 @@
   const start=performance.now();
   const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
   const coarsePointer=window.matchMedia&&window.matchMedia('(hover:none), (pointer:coarse)').matches;
-  const targetFrameMs=coarsePointer ? 1000/24 : 0;
+  const targetFrameMs=coarsePointer ? 1000/24 : 1000/30;
   let lastDraw=0;
   let rafId=0;
   let heroInView=true;
