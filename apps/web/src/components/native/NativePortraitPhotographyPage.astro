@@ -112,13 +112,17 @@ const contactLead = keywordFocusCopy?.contactLead || defaultContactLead
 // gelesen. Die lokalen Portrait-Fallbacks verhindern fachfremde Motive, falls
 // ein einzelnes CMS-Feld voruebergehend leer ist.
 const sectionImageOverrides = [
-  ...Array.from({ length: 4 }, (_, index) => doc?.heroPanels?.[index]?.image),
+  ...Array.from({ length: 4 }, (_, index) =>
+    doc?.heroPanels?.[index]?.image ||
+    (index === 0 ? doc?.heroImage : undefined) ||
+    visualDoc?.heroPanels?.[index]?.image ||
+    (index === 0 ? visualDoc?.heroImage : undefined)),
   // Modul-Karten lesen Text aus shootingStyles[i] || audienceCards[i] — das Bild
   // folgt derselben Karte, damit Text und Bild aus demselben Feld kommen.
-  ...Array.from({ length: 5 }, (_, index) => index === 0 ? doc?.statement?.image || (doc?.shootingStyles?.[index] || doc?.audienceCards?.[index])?.image : (doc?.shootingStyles?.[index] || doc?.audienceCards?.[index])?.image),
-  ...Array.from({ length: 9 }, (_, index) => doc?.portfolioTiles?.[index]?.image),
-  ...Array.from({ length: 5 }, (_, index) => doc?.processSteps?.[index]?.image),
-  ...Array.from({ length: 4 }, (_, index) => doc?.relatedSection?.items?.[index]?.image),
+  ...Array.from({ length: 5 }, (_, index) => (index === 0 ? doc?.statement?.image : undefined) || (doc?.shootingStyles?.[index] || doc?.audienceCards?.[index])?.image || (index === 0 ? visualDoc?.statement?.image : undefined) || (visualDoc?.shootingStyles?.[index] || visualDoc?.audienceCards?.[index])?.image),
+  ...Array.from({ length: 9 }, (_, index) => doc?.portfolioTiles?.[index]?.image || visualDoc?.portfolioTiles?.[index]?.image),
+  ...Array.from({ length: 5 }, (_, index) => doc?.processSteps?.[index]?.image || visualDoc?.processSteps?.[index]?.image),
+  ...Array.from({ length: 4 }, (_, index) => doc?.relatedSection?.items?.[index]?.image || visualDoc?.relatedSection?.items?.[index]?.image),
 ]
 const portraitVisualFallbacks = [
   { alt: 'Urbanes Editorial-Porträt vor moderner Architektur', full: 'assets/portraits/20260823-khan-levi-dsc8557.webp', src: 'assets/portraits/20260823-khan-levi-dsc8557.webp', width: 1920, height: 3072 },
