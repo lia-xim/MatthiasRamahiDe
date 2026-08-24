@@ -111,14 +111,14 @@ const contactLead = keywordFocusCopy?.contactLead || defaultContactLead
 // (Fine-Art/Aluminium/Acrylglas/Edition) lesen Text aus audienceCards → Bild ebenso
 // aus audienceCards[i].image (Slots 5–8). Galerie aus portfolioTiles[i].image (9–17).
 const sectionImageOverrides = [
-  ...Array.from({ length: 5 }, (_, index) => doc?.heroPanels?.[index]?.image),
+  ...Array.from({ length: 5 }, (_, index) => doc?.heroPanels?.[index]?.image || visualDoc?.heroPanels?.[index]?.image),
   ...Array.from({ length: 4 }, (_, index) => {
-    const card = doc?.shootingStyles?.[index] || doc?.audienceCards?.[index]
-    return index === 0 ? doc?.statement?.image || card?.image : card?.image
+    const card = doc?.shootingStyles?.[index] || doc?.audienceCards?.[index] || visualDoc?.shootingStyles?.[index] || visualDoc?.audienceCards?.[index]
+    return index === 0 ? doc?.statement?.image || visualDoc?.statement?.image || card?.image : card?.image
   }),
-  ...Array.from({ length: 9 }, (_, index) => doc?.portfolioTiles?.[index]?.image),
-  ...Array.from({ length: 4 }, (_, index) => doc?.processSteps?.[index]?.image),
-  ...Array.from({ length: 4 }, (_, index) => doc?.relatedSection?.items?.[index]?.image),
+  ...Array.from({ length: 9 }, (_, index) => doc?.portfolioTiles?.[index]?.image || visualDoc?.portfolioTiles?.[index]?.image),
+  ...Array.from({ length: 4 }, (_, index) => doc?.processSteps?.[index]?.image || visualDoc?.processSteps?.[index]?.image),
+  ...Array.from({ length: 4 }, (_, index) => doc?.relatedSection?.items?.[index]?.image || visualDoc?.relatedSection?.items?.[index]?.image),
 ]
 const visualSlots = familyVisualSlots(visualDoc, [
   { alt: 'Landschaft Wasser', full: 'assets/optimized/assets-portfolio-wettberwerb-foto5-wunder-der-natur2-1920.webp', src: 'assets/portfolio/thumbs/Wettberwerb_Foto5_Wunder_der_Natur2.webp', width: 1920, height: 1280 },

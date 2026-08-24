@@ -32,18 +32,25 @@
     var pageVisible = !document.hidden;
     var heroInView = true;
 
-    var desktopPool = [
+    function parseHeroPool(value){
+      return String(value || '').split('|').map(function(src){ return src.trim(); }).filter(Boolean);
+    }
+    var desktopPool = parseHeroPool(hero.dataset.heroImagesDesktop);
+    var mobilePool = parseHeroPool(hero.dataset.heroImagesMobile);
+    var fallbackDesktopPool = [
       'assets/optimized/mpjpgo2b-dsc3032-generase-1-1920.webp',
       'assets/optimized/mpjpgq5s-dsc2316-1920.webp',
       'assets/optimized/mpjpgsdt-dsc2310-1920.webp',
       'assets/optimized/mpjpgu5f-dsc3892-1920.webp'
     ];
-    var mobilePool = [
+    var fallbackMobilePool = [
       'assets/optimized/mpjpgo2b-dsc3032-generase-1-1280.webp',
       'assets/optimized/mpjpgq5s-dsc2316-1280.webp',
       'assets/optimized/mpjpgsdt-dsc2310-1280.webp',
       'assets/optimized/mpjpgu5f-dsc3892-1280.webp'
     ];
+    if(!desktopPool.length) desktopPool = fallbackDesktopPool;
+    if(!mobilePool.length) mobilePool = desktopPool.length ? desktopPool : fallbackMobilePool;
     var POOL = matchMedia('(max-width:900px)').matches ? mobilePool : desktopPool;
     var idx = 0;
     var active = a;

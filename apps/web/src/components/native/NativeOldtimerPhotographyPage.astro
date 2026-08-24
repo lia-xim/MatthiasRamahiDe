@@ -157,7 +157,7 @@ const audiences = [
 const relatedAreas = [
   {
     href: 'automobil-fotografie.html',
-    image: 'assets/optimized/assets-photos-automobil-neon-960.webp',
+    image: '/uploads/payload/_DSC3032_genErase.webp',
     alt: 'Automobilfotografie',
     width: 960,
     height: 640,
@@ -165,7 +165,7 @@ const relatedAreas = [
   },
   {
     href: 'sportwagen-fotografie.html',
-    image: 'assets/portfolio/thumbs/_DSC3032_genErase (1).webp',
+    image: '/uploads/payload/_DSC3982.webp',
     alt: 'Sportwagenfotografie',
     width: 720,
     height: 480,
@@ -181,7 +181,7 @@ const relatedAreas = [
   },
   {
     href: '/portfolio/portfolio-auswahl-oldtimer',
-    image: 'assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp',
+    image: '/uploads/payload/20250418-DSC00660.webp',
     alt: 'Vollständiges Portfolio',
     width: 720,
     height: 1152,
@@ -192,10 +192,12 @@ const relatedAreas = [
 // CMS-Bild-Overrides pro Sektion (Tab „Themen-Sektionen"): Story-Karten aus
 // shootingStyles[i].image, Galerie aus portfolioTiles[i].image. Leer → Fallback.
 const sectionImageOverrides = [
-  ...heroSlides.map(() => undefined),
-  ...storyCards.map((_, index) => index === 0 ? doc?.statement?.image || doc?.shootingStyles?.[index]?.image : doc?.shootingStyles?.[index]?.image),
-  ...portfolioTiles.map((_, index) => doc?.portfolioTiles?.[index]?.image),
-  ...relatedAreas.map(() => undefined),
+  ...heroSlides.map((_, index) => doc?.heroPanels?.[index]?.image || visualDoc?.heroPanels?.[index]?.image || (index === 0 ? doc?.heroImage || visualDoc?.heroImage : undefined)),
+  ...storyCards.map((_, index) => index === 0
+    ? doc?.statement?.image || visualDoc?.statement?.image || doc?.shootingStyles?.[index]?.image || visualDoc?.shootingStyles?.[index]?.image
+    : doc?.shootingStyles?.[index]?.image || visualDoc?.shootingStyles?.[index]?.image),
+  ...portfolioTiles.map((_, index) => doc?.portfolioTiles?.[index]?.image || visualDoc?.portfolioTiles?.[index]?.image),
+  ...relatedAreas.map((_, index) => doc?.relatedSection?.items?.[index]?.image || visualDoc?.relatedSection?.items?.[index]?.image),
 ]
 const visualSlots = familyVisualSlots(
   visualDoc,

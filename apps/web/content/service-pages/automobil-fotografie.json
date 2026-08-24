@@ -5,11 +5,11 @@
   "sortOrder": 100,
   "serviceType": "automotive",
   "intro": "Automobilfotografie in NRW — von Exterieur und Interieur über präzise Detailaufnahmen bis zur cinematic Fahrserie. Fahrzeugfotografie, die Lack, Linie und Charakter eines Autos sauber auf den Sensor bringt: als Verkaufsserie, Markenbild oder kuratierte Bildsprache für Kampagne und Druck. Autofotografie im Rhein-Ruhr-Gebiet und ganz NRW, geplant statt improvisiert.",
-  "heroImage": "/uploads/payload/assets-portfolio-dsc3879-1920.webp",
-  "teaserImage": "/uploads/payload/assets-portfolio-dsc3879-1920.webp",
+  "heroImage": "/uploads/payload/_DSC2831%20(1).webp",
+  "teaserImage": "/uploads/payload/_DSC2831%20(1).webp",
   "heroSlides": [
     {
-      "image": "/uploads/payload/_DSC2321.webp",
+      "image": "/uploads/payload/_DSC2831%20(1).webp",
       "headlineLine1": "Automobil",
       "headlineLine2": "Fotografie",
       "lead": "Kuratierte Fahrzeugserie mit Exterieur, Interieur, Details und Cinematic - als Bildsatz fuer Marke, Verkauf, Sammlung, Print und digitale Praesentation.",
@@ -22,11 +22,11 @@
   ],
   "heroPanels": [
     {
-      "image": "/uploads/payload/_DSC2321.webp"
+      "image": "/uploads/payload/_DSC2831%20(1).webp"
     }
   ],
   "statement": {
-    "image": "/uploads/payload/assets-portfolio-dsc3879-1920.webp",
+    "image": "/uploads/payload/_DSC3032_genErase.webp",
     "headline": "Das Fahrzeug als ",
     "emphasis": "Bildsystem.",
     "body": [
@@ -41,22 +41,22 @@
   "focusSection": {},
   "shootingStyles": [
     {
-      "image": "/uploads/payload/assets-portfolio-dsc3879-1920.webp",
+      "image": "/uploads/payload/_DSC3032_genErase.webp",
       "title": "Vollformat, ruhige Linien.",
       "text": "Aussenaufnahmen mit kontrolliertem Licht und ruhigen Reflexen. Lack, Proportionen und Linienfuehrung wirken stimmig - Showroom, Industrie oder urbanes Setting."
     },
     {
-      "image": "/uploads/payload/_DSC9301-Enhanced-NR.webp",
+      "image": "/uploads/payload/_DSC2983.webp",
       "title": "Cockpit, Sitz, Material.",
       "text": "Innenraum mit mobilem Licht inszeniert. Leder, Carbon und Chrom behalten ihren Ton - der Innenraum spricht dieselbe Sprache wie das Exterieur."
     },
     {
-      "image": "/uploads/payload/assets-portfolio-dsc3892-1920.webp",
+      "image": "/uploads/payload/_DSC3023.webp",
       "title": "Emblem, Felge, Naht.",
       "text": "Sicken, Felgen, Bremsen, Schalter, Logos. Detailaufnahmen erzaehlen die Geschichte eines Fahrzeugs im Kleinen - fuer Haendlerseiten, Landingpages und Magazinstrecken."
     },
     {
-      "image": "/uploads/payload/assets-portfolio-dsc3982-1920.webp",
+      "image": "/uploads/payload/_DSC3086.webp",
       "title": "Architektur, Licht, Dramaturgie.",
       "text": "Inszenierte Perspektiven mit gesetztem Licht und gewaehlter Architektur. Bilder mit Filmcharakter - fuer Kampagne, Magazin und Bildstrecken, die Stimmung tragen."
     }
@@ -64,32 +64,32 @@
   "gallerySection": {},
   "portfolioTiles": [
     {
-      "image": "/uploads/payload/assets-portfolio-dsc3879-1920.webp",
+      "image": "/uploads/payload/_DSC3072.webp",
       "label": "Automobilfotografie als Bildserie."
     },
     {
-      "image": "/uploads/payload/_DSC9301-Enhanced-NR.webp"
+      "image": "/uploads/payload/_DSC3058.webp"
     },
     {
-      "image": "/uploads/payload/assets-portfolio-dsc3892-1920.webp"
+      "image": "/uploads/payload/_DSC3046_genErase%20(1).webp"
     },
     {
-      "image": "/uploads/payload/assets-portfolio-dsc3982-1920.webp"
+      "image": "/uploads/payload/_DSC3017.webp"
     },
     {
-      "image": "/uploads/payload/assets-portfolio-dsc2316-1920.webp"
+      "image": "/uploads/payload/_DSC3004.webp"
     },
     {
-      "image": "/uploads/payload/assets-portfolio-dsc2310-1920.webp"
+      "image": "/uploads/payload/_DSC2999_genErase.webp"
     },
     {
-      "image": "/uploads/payload/assets-portfolio-dsc3032-generase-1-1920.webp"
+      "image": "/uploads/payload/_DSC2924.webp"
     },
     {
-      "image": "/uploads/payload/assets-portfolio-dsc6982-1920.webp"
+      "image": "/uploads/payload/_DSC2841.webp"
     },
     {
-      "image": "/uploads/payload/assets-portfolio-dsc8032-1920.webp"
+      "image": "/uploads/payload/_DSC2776.webp"
     }
   ],
   "processSection": {},
@@ -123,7 +123,32 @@
     }
   ],
   "relatedSection": {
-    "items": []
+    "items": [
+      {
+        "image": "/uploads/payload/_DSC3982.webp",
+        "title": "Sportwagen",
+        "href": "/sportwagen-fotografie.html",
+        "alt": "Sportwagenfotografie"
+      },
+      {
+        "image": "/uploads/payload/20250418-DSC00660.webp",
+        "title": "Oldtimer",
+        "href": "/oldtimer-fotografie.html",
+        "alt": "Oldtimerfotografie"
+      },
+      {
+        "image": "/uploads/payload/_DSC6968.webp",
+        "title": "Motorrad",
+        "href": "/motorrad-fotografie.html",
+        "alt": "Motorradfotografie"
+      },
+      {
+        "image": "/uploads/payload/_DSC2831%20(1).webp",
+        "title": "Automobil-Auswahl",
+        "href": "/portfolio/portfolio-auswahl-automobil",
+        "alt": "Kuratierte Automobil-Auswahl"
+      }
+    ]
   },
   "faq": [
     {
@@ -200,7 +225,7 @@
     "internalLinkAnchors": [],
     "canonicalUrl": "https://matthiasramahi.de/automobil-fotografie.html",
     "legacyUrl": "automobil-fotografie.html",
-    "ogImage": "/uploads/payload/assets-portfolio-dsc3879-1920.webp",
+    "ogImage": "/uploads/payload/_DSC2831%20(1).webp",
     "noIndex": false,
     "focusKeyword": "Automobilfotografie in NRW · Matthias Ramahi",
     "searchIntent": "Dienstleistungsvergleich und Anfrage: Nutzer prüfen Angebot, Ablauf, Bildstil und Kontaktmöglichkeit für Automobilfotografie in NRW · Matthias Ramahi."

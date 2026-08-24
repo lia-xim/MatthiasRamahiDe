@@ -109,11 +109,13 @@ const contactLead = keywordFocusCopy?.contactLead || defaultContactLead
 // shootingStyles[i].image (Slots 3–8), 6 Galerie-Kacheln aus portfolioTiles[i].image
 // (Slots 9–14). Hero-Slots 0–2 bleiben über Hero-/Teaser-Bild. Leer → Fallback.
 const sectionImageOverrides = [
-  doc?.heroPanels?.[0]?.image,
-  doc?.heroPanels?.[1]?.image,
-  doc?.heroPanels?.[2]?.image,
-  ...Array.from({ length: 6 }, (_, index) => index === 0 ? doc?.statement?.image || doc?.shootingStyles?.[index]?.image : doc?.shootingStyles?.[index]?.image),
-  ...Array.from({ length: 6 }, (_, index) => doc?.portfolioTiles?.[index]?.image),
+  doc?.heroPanels?.[0]?.image || visualDoc?.heroPanels?.[0]?.image,
+  doc?.heroPanels?.[1]?.image || visualDoc?.heroPanels?.[1]?.image,
+  doc?.heroPanels?.[2]?.image || visualDoc?.heroPanels?.[2]?.image,
+  ...Array.from({ length: 6 }, (_, index) => index === 0
+    ? doc?.statement?.image || visualDoc?.statement?.image || doc?.shootingStyles?.[index]?.image || visualDoc?.shootingStyles?.[index]?.image
+    : doc?.shootingStyles?.[index]?.image || visualDoc?.shootingStyles?.[index]?.image),
+  ...Array.from({ length: 6 }, (_, index) => doc?.portfolioTiles?.[index]?.image || visualDoc?.portfolioTiles?.[index]?.image),
 ]
 const visualSlots = familyVisualSlots(visualDoc, [
   { alt: 'Motorrad Stand und Silhouette', full: 'assets/optimized/assets-photos-motorrad-ninja-road-1920.webp', mobile: 'assets/optimized/assets-photos-motorrad-ninja-road-720.webp', src: 'assets/optimized/assets-photos-motorrad-ninja-road-960.webp', width: 960, height: 1440 },
@@ -530,22 +532,22 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
         </div>
         <div class="rl-grid">
           <a class="rl-card" href="automobil-fotografie.html">
-            <img loading="lazy" src="assets/optimized/assets-photos-automobil-neon-960.webp" alt="Automobilfotografie" width="960" height="640" decoding="async" />
+            <img loading="lazy" src="https://cms.matthiasramahi.de/uploads/payload/_DSC3032_genErase.webp" alt="Automobilfotografie" width="960" height="640" decoding="async" />
             <div class="overlay"></div>
             <div class="content"><div><strong>Automobil</strong></div><span class="arrow">→</span></div>
           </a>
           <a class="rl-card" href="sportwagen-fotografie.html">
-            <img loading="lazy" src="assets/portfolio/thumbs/_DSC3032_genErase (1).webp" alt="Sportwagenfotografie" width="720" height="480" decoding="async" />
+            <img loading="lazy" src="https://cms.matthiasramahi.de/uploads/payload/_DSC3982.webp" alt="Sportwagenfotografie" width="720" height="480" decoding="async" />
             <div class="overlay"></div>
             <div class="content"><div><strong>Sportwagen</strong></div><span class="arrow">→</span></div>
           </a>
           <a class="rl-card" href="videografie-duesseldorf.html">
-            <img loading="lazy" src="assets/portfolio/thumbs/_DSC8032.webp" alt="Videografie" width="720" height="900" decoding="async" />
+            <img loading="lazy" src="https://cms.matthiasramahi.de/uploads/payload/_DSC6979.webp" alt="Videografie mit Motorrad" width="720" height="900" decoding="async" />
             <div class="overlay"></div>
             <div class="content"><div><strong>Videografie</strong></div><span class="arrow">→</span></div>
           </a>
           <a class="rl-card" href="/portfolio/portfolio-auswahl-motorrad">
-            <img loading="lazy" src="assets/portfolio/thumbs/_DSC3879.webp" alt="Vollständiges Portfolio" width="720" height="480" decoding="async" />
+            <img loading="lazy" src="https://cms.matthiasramahi.de/uploads/payload/_DSC6968.webp" alt="Kuratierte Motorrad-Auswahl" width="720" height="1080" decoding="async" />
             <div class="overlay"></div>
             <div class="content"><div><strong>Motorrad-Auswahl</strong></div><span class="arrow">→</span></div>
           </a>

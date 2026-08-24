@@ -5,8 +5,8 @@
   "sortOrder": 100,
   "serviceType": "sportwagen",
   "intro": "Sportwagenfotografie ordnet ein, was Supercar-Fotografie, Performance-Car-Aufnahmen und Exotic-Car-Serien gemeinsam haben: Fahrzeuge, die bildlich nicht zufällig funktionieren, sondern geplant. Exterieur, Interieur, Lichtkanten und Reflexe werden in einer kontrollierten Komposition sichtbar — als Bildserie für Sammlung, Marke, Handel und Kampagne. Dieser Bereich ist der Ausgangspunkt des Sportwagen-Clusters; er verteilt auf Shooting-Anlässe, Fahrzeugklassen und Motiv-Schwerpunkte.",
-  "heroImage": "/uploads/payload/assets-portfolio-dsc3879-1920.webp",
-  "teaserImage": "/uploads/payload/assets-portfolio-dsc3879-1920.webp",
+  "heroImage": "/uploads/payload/_DSC3982.webp",
+  "teaserImage": "/uploads/payload/_DSC3982.webp",
   "heroSlides": [
     {
       "image": "/uploads/payload/_DSC3982-1.webp",
@@ -22,17 +22,17 @@
   ],
   "heroPanels": [
     {
-      "image": "/uploads/payload/_DSC2744-1.webp"
+      "image": "/uploads/payload/_DSC3982.webp"
     },
     {
-      "image": "/uploads/payload/_DSC3982-1.webp"
+      "image": "/uploads/payload/_DSC2345-2.webp"
     },
     {
-      "image": "/uploads/payload/_DSC2117.webp"
+      "image": "/uploads/payload/_DSC2316-2.webp"
     }
   ],
   "statement": {
-    "image": "/uploads/payload/_DSC2167.webp",
+    "image": "/uploads/payload/_DSC3878-2.webp",
     "headline": "Speed.",
     "emphasis": "Klar gezeichnet.",
     "body": [
@@ -56,17 +56,17 @@
       "text": "Vollformatige Außenaufnahmen mit kontrolliertem Licht, ruhigen Reflexen und sauberer Linienführung. Lack, Proportionen und Charakter wirken stimmig - egal ob Showroom, Industrie oder urbanes Setting."
     },
     {
-      "image": "/uploads/payload/_DSC2983.webp",
+      "image": "/uploads/payload/_DSC3908-1.webp",
       "title": "Interieur",
       "text": "Cockpit, Sitze, Materialien, Atmosphäre. Mit mobilem Licht inszeniert, damit Leder, Carbon und Chrom ihren Ton behalten und der Innenraum die gleiche Sprache spricht wie das Exterieur."
     },
     {
-      "image": "/uploads/payload/_DSC2678.webp",
+      "image": "/uploads/payload/_DSC3892-1.webp",
       "title": "Details",
       "text": "Emblem, Sicken, Felgen, Bremse, Naht, Schalter. Detailaufnahmen erzählen die Geschichte eines Fahrzeugs im Kleinen - perfekt für Händlerseiten, Landingpages und redaktionelle Strecken."
     },
     {
-      "image": "/uploads/payload/_DSC2117.webp",
+      "image": "/uploads/payload/_DSC2110.webp",
       "title": "Cinematic",
       "text": "Inszenierte Perspektiven mit gesetztem Licht, gewählter Architektur und dramaturgischer Komposition. Bilder mit Filmcharakter - für Kampagne, Magazin und Bildstrecken, die Stimmung tragen."
     }
@@ -77,11 +77,11 @@
   },
   "portfolioTiles": [
     {
-      "image": "/uploads/payload/_DSC2110.webp",
+      "image": "/uploads/payload/_DSC3982.webp",
       "label": "Exterieur"
     },
     {
-      "image": "/uploads/payload/_DSC2321.webp",
+      "image": "/uploads/payload/_DSC3908-1.webp",
       "label": "Interieur"
     },
     {
@@ -89,15 +89,15 @@
       "label": "Detail"
     },
     {
-      "image": "/uploads/payload/_DSC3963.webp",
+      "image": "/uploads/payload/_DSC3878-2.webp",
       "label": "Felge"
     },
     {
-      "image": "/uploads/payload/_DSC2986-1.webp",
+      "image": "/uploads/payload/_DSC3963.webp",
       "label": "Profil"
     },
     {
-      "image": "/uploads/payload/20250312-DSC00729.webp",
+      "image": "/uploads/payload/_DSC2110.webp",
       "label": "Cinematic"
     }
   ],
@@ -145,7 +145,7 @@
     "lead": "Die Hauptseite führt zu Motorsport, Performance Car, Exotic Car und Supersportwagen.",
     "items": [
       {
-        "image": "/uploads/payload/_DSC2310-2.webp",
+        "image": "/uploads/payload/_DSC3032_genErase.webp",
         "title": "Automobil",
         "href": "/automobil-fotografie.html",
         "alt": "Automobilfotografie"
@@ -163,10 +163,10 @@
         "alt": "Motorradfotografie"
       },
       {
-        "image": "/uploads/payload/_DSC0456-Enhanced-NR.webp",
-        "title": "Portfolio",
-        "href": "/portfolio.html",
-        "alt": "Vollständiges Portfolio"
+        "image": "/uploads/payload/_DSC2345-2.webp",
+        "title": "Sportwagen-Auswahl",
+        "href": "/portfolio/portfolio-auswahl-sportwagen",
+        "alt": "Kuratierte Sportwagen-Auswahl"
       }
     ]
   },
@@ -465,7 +465,7 @@
     "internalLinkAnchors": [],
     "canonicalUrl": "https://matthiasramahi.de/sportwagen-fotografie.html",
     "legacyUrl": "sportwagen-fotografie.html",
-    "ogImage": "/uploads/payload/assets-portfolio-dsc3879-1920.webp",
+    "ogImage": "/uploads/payload/_DSC3982.webp",
     "noIndex": false,
     "focusKeyword": "Sportwagenfotografie",
     "searchIntent": "Dienstleistungsvergleich und Anfrage: Nutzer prüfen Angebot, Ablauf, Bildstil und Kontaktmöglichkeit für Sportwagenfotografie."

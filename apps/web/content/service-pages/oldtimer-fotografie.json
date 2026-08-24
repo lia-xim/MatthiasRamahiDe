@@ -5,11 +5,11 @@
   "sortOrder": 100,
   "serviceType": "oldtimer",
   "intro": "Oldtimerfotografie und Classic-Car-Fotografie in NRW — Bildserien für Sammlung, Auktion, Verkauf und Ausstellung. Lack, Chrom, Patina und Herkunft werden präzise dokumentiert, ob Sammlerfahrzeug, Youngtimer oder Fahrzeug mit Museumscharakter. Location und Lichtfenster werden in ganz NRW gewählt; der Ausgangspunkt ist immer das Fahrzeug selbst.",
-  "heroImage": "/uploads/payload/_DSC0470-Enhanced-NR-2.webp",
-  "teaserImage": "/uploads/payload/_DSC0470-Enhanced-NR-2.webp",
+  "heroImage": "/uploads/payload/20250418-DSC006552.webp",
+  "teaserImage": "/uploads/payload/20250418-DSC006552.webp",
   "heroSlides": [
     {
-      "image": "/uploads/payload/assets-photos-oldtimer-stage-1920.webp",
+      "image": "/uploads/payload/20250418-DSC006552.webp",
       "headlineLine1": "Oldtimer",
       "headlineLine2": "Fotografie",
       "lead": "Oldtimerfotografie und Classic-Car-Fotografie in NRW - Bildserien für Sammlung, Auktion, Verkauf und Ausstellung. Lack, Chrom, Patina und Herkunft werden präzise dokumentiert, ob Sammlerfahrzeug, Youngtimer oder Fahrzeug mit Museumscharakter. Location und Lichtfenster werden in ganz NRW gewählt; der Ausgangspunkt ist immer das Fahrzeug selbst.",
@@ -22,11 +22,17 @@
   ],
   "heroPanels": [
     {
-      "image": "/uploads/payload/assets-photos-oldtimer-stage-1920.webp"
+      "image": "/uploads/payload/20250418-DSC006552.webp"
+    },
+    {
+      "image": "/uploads/payload/20250423-DSC021802.webp"
+    },
+    {
+      "image": "/uploads/payload/20250426-DSC02648.webp"
     }
   ],
   "statement": {
-    "image": "/uploads/payload/assets-photos-oldtimer-stage-1920.webp",
+    "image": "/uploads/payload/20250418-DSC00638.webp",
     "headline": "Der Oldtimer als",
     "emphasis": "Exponat.",
     "body": [
@@ -41,22 +47,22 @@
   "focusSection": {},
   "shootingStyles": [
     {
-      "image": "/uploads/payload/assets-photos-oldtimer-stage-1920.webp",
+      "image": "/uploads/payload/20250423-DSC021802.webp",
       "title": "Exponat",
       "text": "Hauptmotiv wie eine Ausstellung — ruhige Proportionen, gesetztes Licht, sauberer Hintergrund. Bereit für Katalog, Sammlungsdokumentation oder Wandbild."
     },
     {
-      "image": "/uploads/payload/_DSC3892-2.webp",
+      "image": "/uploads/payload/20250426-DSC02653.webp",
       "title": "Patina",
       "text": "Material, Chrom, Leder, Lackalterung. Detailaufnahmen, die Zustand und Geschichte ehrlich erzählen — ohne Glättung, ohne falsche Politur."
     },
     {
-      "image": "/uploads/payload/_DSC2986-2.webp",
+      "image": "/uploads/payload/20250423-DSC02271.webp",
       "title": "Innenraum",
       "text": "Cockpit, Sitze, Armaturen, Holzfurnier. Mit mobilem Licht inszeniert, damit Materialcharakter und Bedienelemente die gleiche Sprache sprechen wie die Außenansicht."
     },
     {
-      "image": "/uploads/payload/_DSC3032_genErase%20(1)-2.webp",
+      "image": "/uploads/payload/20250426-DSC02651.webp",
       "title": "Provenance",
       "text": "Embleme, Schriftzüge, Schlüssel, Dokumente. Belege, die einen Oldtimer für Auktion, Versicherung oder seriösen Verkauf nachvollziehbar machen."
     }
@@ -64,23 +70,23 @@
   "gallerySection": {},
   "portfolioTiles": [
     {
-      "image": "/uploads/payload/_DSC0470-Enhanced-NR-2.webp",
+      "image": "/uploads/payload/20250418-DSC00660.webp",
       "label": "Aktuelle Arbeiten."
     },
     {
-      "image": "/uploads/payload/_DSC3032_genErase%20(2)-2.webp"
+      "image": "/uploads/payload/20250418-DSC00657.webp"
     },
     {
-      "image": "/uploads/payload/_DSC3892-2.webp"
+      "image": "/uploads/payload/20250418-DSC00637.webp"
     },
     {
-      "image": "/uploads/payload/_DSC2986-2.webp"
+      "image": "/uploads/payload/20250423-DSC021702.webp"
     },
     {
-      "image": "/uploads/payload/_DSC3032_genErase%20(1)-2.webp"
+      "image": "/uploads/payload/20250423-DSC02178.webp"
     },
     {
-      "image": "/uploads/payload/assets-photos-oldtimer-stage-1920.webp"
+      "image": "/uploads/payload/20250426-DSC02648.webp"
     }
   ],
   "processSection": {},
@@ -114,7 +120,32 @@
     }
   ],
   "relatedSection": {
-    "items": []
+    "items": [
+      {
+        "image": "/uploads/payload/_DSC3032_genErase.webp",
+        "title": "Automobil",
+        "href": "/automobil-fotografie.html",
+        "alt": "Automobilfotografie"
+      },
+      {
+        "image": "/uploads/payload/_DSC3982.webp",
+        "title": "Sportwagen",
+        "href": "/sportwagen-fotografie.html",
+        "alt": "Sportwagenfotografie"
+      },
+      {
+        "image": "/uploads/payload/_DSC8032-2.webp",
+        "title": "Drucke",
+        "href": "/drucke-sonderanfertigungen-duesseldorf.html",
+        "alt": "Drucke und Sonderanfertigungen"
+      },
+      {
+        "image": "/uploads/payload/20250418-DSC006552.webp",
+        "title": "Oldtimer-Auswahl",
+        "href": "/portfolio/portfolio-auswahl-oldtimer",
+        "alt": "Kuratierte Oldtimer-Auswahl"
+      }
+    ]
   },
   "faq": [
     {
@@ -265,7 +296,7 @@
     "internalLinkAnchors": [],
     "canonicalUrl": "https://matthiasramahi.de/oldtimer-fotografie.html",
     "legacyUrl": "oldtimer-fotografie.html",
-    "ogImage": "/uploads/payload/_DSC0470-Enhanced-NR-2.webp",
+    "ogImage": "/uploads/payload/20250418-DSC006552.webp",
     "noIndex": false,
     "focusKeyword": "Oldtimer Fotografie",
     "searchIntent": "Dienstleistungsvergleich und Anfrage: Nutzer prüfen Angebot, Ablauf, Bildstil und Kontaktmöglichkeit für Oldtimer Fotografie."

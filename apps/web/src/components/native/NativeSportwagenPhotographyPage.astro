@@ -306,8 +306,14 @@ const resolveSectionImage = <T extends { src?: string; full?: string; image?: st
   }
 }
 
-const finalHeroPanels = doc?.heroPanels?.length
-  ? doc.heroPanels.map((panel, index) => {
+const heroPanelsSource = doc?.heroPanels?.length ? doc.heroPanels : visualDoc?.heroPanels || []
+const shootingStyleSource = doc?.shootingStyles?.length ? doc.shootingStyles : visualDoc?.shootingStyles || []
+const portfolioTileSource = doc?.portfolioTiles?.length ? doc.portfolioTiles : visualDoc?.portfolioTiles || []
+const audienceCardSource = doc?.audienceCards?.length ? doc.audienceCards : visualDoc?.audienceCards || []
+const relatedItemSource = doc?.relatedSection?.items?.length ? doc.relatedSection.items : visualDoc?.relatedSection?.items || []
+
+const finalHeroPanels = heroPanelsSource.length
+  ? heroPanelsSource.map((panel, index) => {
       const fbTuple = inheritedHeroPanels[index % inheritedHeroPanels.length]
       const resolved = resolveSectionImage(panel.image, fbTuple[3])
       return [fbTuple[0], resolved.full, resolved.mobile, resolved] as const
@@ -317,31 +323,31 @@ const transparentHeroPixel = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywA
 const mobileHeroPreload = finalHeroPanels[1]?.[2] || finalHeroPanels[0]?.[2] || ''
 const desktopHeroPreload = finalHeroPanels[0]?.[3]?.full || ''
 
-const finalShootingStyles = doc?.shootingStyles?.length
-  ? doc.shootingStyles.map((style, index) => {
+const finalShootingStyles = shootingStyleSource.length
+  ? shootingStyleSource.map((style, index) => {
       const fb = keywordShootingStyles[index] || keywordShootingStyles[keywordShootingStyles.length - 1]
       const resolved = resolveSectionImage(style.image, fb)
       return { ...resolved, title: style.title || fb.title, text: style.text || fb.text }
     })
   : keywordShootingStyles
 
-const finalPortfolioTiles = doc?.portfolioTiles?.length
-  ? doc.portfolioTiles.map((tile, index) => {
+const finalPortfolioTiles = portfolioTileSource.length
+  ? portfolioTileSource.map((tile, index) => {
       const fb = inheritedPortfolioTiles[index] || inheritedPortfolioTiles[inheritedPortfolioTiles.length - 1]
       const resolved = resolveSectionImage(tile.image, fb)
       return { ...resolved, className: fb.className, label: tile.label || fb.label }
     })
   : inheritedPortfolioTiles
 
-const finalAudiences = doc?.audienceCards?.length
-  ? doc.audienceCards.map((card, index) => {
+const finalAudiences = audienceCardSource.length
+  ? audienceCardSource.map((card, index) => {
       const fb = inheritedAudiences[index] || inheritedAudiences[inheritedAudiences.length - 1]
       const resolved = resolveSectionImage(card.image, fb)
       return { ...resolved, title: card.title || fb.title, text: card.text || fb.text }
     })
   : inheritedAudiences
 
-const finalStatementImage = resolveSectionImage(doc?.statement?.image, finalPortfolioTiles[0] || statementImage)
+const finalStatementImage = resolveSectionImage(doc?.statement?.image || visualDoc?.statement?.image, finalPortfolioTiles[0] || statementImage)
 const firstSectionTarget = isLocalHeroPage ? `${serviceLabel} ${scope.label}` : isKeywordPage ? serviceLabel : ''
 const statementHeadlineSource = (typeof doc?.statement?.headline === 'string' && doc.statement.headline.trim()) || keywordFocusCopy?.statementHeadline || 'Bilder mit'
 const statementEmphasisSource = (typeof doc?.statement?.emphasis === 'string' && doc.statement.emphasis.trim()) || keywordFocusCopy?.statementEmphasis || 'Druckqualität.'
@@ -417,8 +423,8 @@ const relatedAreas = [
     title: 'Sportwagen-Auswahl',
   },
 ]
-const resolvedRelatedAreas = doc?.relatedSection?.items?.length
-  ? doc.relatedSection.items.map((item, index) => {
+const resolvedRelatedAreas = relatedItemSource.length
+  ? relatedItemSource.map((item, index) => {
       const fallback = relatedAreas[index] || relatedAreas[relatedAreas.length - 1]
       const resolved = resolveSectionImage(item.image, {
         alt: item.alt || fallback.alt,
@@ -438,10 +444,8 @@ const resolvedRelatedAreas = doc?.relatedSection?.items?.length
       }
     })
   : relatedAreas
-const sportwagenProofArea = relatedAreas[relatedAreas.length - 1]
-const finalRelatedAreas = resolvedRelatedAreas.some((area) => area.href === sportwagenProofArea.href)
-  ? resolvedRelatedAreas
-  : [...resolvedRelatedAreas, sportwagenProofArea]
+// Verwandte Bereiche sind auf allen Familienseiten bewusst ein Vierer-Raster.
+const finalRelatedAreas = resolvedRelatedAreas.slice(0, 4)
 
 const allCityLinks = [
   ['sportwagen-fotografie-duesseldorf.html', 'Düsseldorf'],
