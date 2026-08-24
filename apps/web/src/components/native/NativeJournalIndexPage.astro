@@ -65,6 +65,7 @@ const cmsCards = cmsPosts
       imageAlt: imageAlt(post.coverImage, post.title || fallback?.imageAlt || 'Journal-Bild'),
       readTime: typeof post.readingTime === 'number' ? `${post.readingTime} Min` : fallback?.readTime || '5 Min',
       source: post,
+      tags: Array.isArray(post.tags) ? post.tags.filter((tag): tag is string => typeof tag === 'string') : fallback?.tags || [],
       text: post.excerpt || fallback?.text || '',
       title: post.title || fallback?.title || 'Journal-Beitrag',
       width: dimensions.width || fallback?.width || 1920,
@@ -186,6 +187,7 @@ const finalSecondaryHref = toRootRelativeHref(finalCta.secondaryHref) || '/portf
             class={`post ${post.dark ? 'dark' : ''} ${index >= initialVisiblePostCount ? 'not-loaded' : ''}`.trim()}
             href={post.href}
             data-category={post.category}
+            data-tags={post.tags.map((tag) => tag.toLocaleLowerCase('de-DE')).join('|')}
             style={index < initialVisiblePostCount ? 'grid-column:span 4' : undefined}
           >
             <div class="post-media">

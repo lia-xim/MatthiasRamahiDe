@@ -11,7 +11,10 @@
   const filters = Array.prototype.slice.call(document.querySelectorAll('.filter'))
   const STEP = 6
 
-  let activeFilter = 'all'
+  const params = new URLSearchParams(location.search)
+  const requestedCategory = params.get('category') || 'all'
+  let activeFilter = filters.some(function (btn) { return btn.getAttribute('data-filter') === requestedCategory }) ? requestedCategory : 'all'
+  let activeTag = (params.get('tag') || '').toLocaleLowerCase('de-DE')
   let loadedCount = STEP
 
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -31,7 +34,10 @@
   }
 
   function matches(post) {
-    return activeFilter === 'all' || post.getAttribute('data-category') === activeFilter
+    const categoryMatches = activeFilter === 'all' || post.getAttribute('data-category') === activeFilter
+    const tags = (post.getAttribute('data-tags') || '').split('|')
+    const tagMatches = !activeTag || tags.indexOf(activeTag) >= 0
+    return categoryMatches && tagMatches
   }
 
   function render() {
@@ -51,7 +57,8 @@
     })
 
     if (loadStatus) {
-      loadStatus.textContent = Math.min(shown, matched.length) + ' von ' + matched.length + ' Beiträgen sichtbar'
+      const suffix = activeTag ? ' zum Thema „' + activeTag + '“' : ''
+      loadStatus.textContent = Math.min(shown, matched.length) + ' von ' + matched.length + ' Beiträgen sichtbar' + suffix
     }
     if (loadPanel) {
       if (matched.length > loadedCount) loadPanel.removeAttribute('hidden')
@@ -67,11 +74,19 @@
   }
 
   filters.forEach(function (btn) {
+    if (btn.getAttribute('data-filter') === activeFilter && !activeTag) btn.classList.add('active')
+    else btn.classList.remove('active')
     btn.addEventListener('click', function () {
       filters.forEach(function (b) { b.classList.remove('active') })
       btn.classList.add('active')
       activeFilter = btn.getAttribute('data-filter') || 'all'
+      activeTag = ''
       loadedCount = STEP
+      const nextUrl = new URL(location.href)
+      nextUrl.searchParams.delete('tag')
+      if (activeFilter === 'all') nextUrl.searchParams.delete('category')
+      else nextUrl.searchParams.set('category', activeFilter)
+      history.replaceState(null, '', nextUrl.pathname + nextUrl.search + '#journal')
       render()
       const head = document.querySelector('.journal-head')
       if (head) head.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' })

@@ -10,6 +10,7 @@ export type JournalPostCard = {
   imageAlt: string
   height: number
   readTime: string
+  tags: string[]
   text: string
   title: string
   width: number
@@ -99,6 +100,7 @@ export const journalCards: JournalPostCard[] = journalArticles.map((article, ind
     image: `/${article.heroImage.replace(/^\//, '')}`,
     imageAlt: article.heroImageAlt,
     readTime: article.minutes,
+    tags: article.tags,
     text: article.description,
     title: article.title.replace(/<[^>]+>/g, ''),
     width: portraitFormat ? 1600 : 1920,

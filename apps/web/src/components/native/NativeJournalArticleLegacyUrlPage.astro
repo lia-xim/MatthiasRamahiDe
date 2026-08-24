@@ -2,6 +2,7 @@
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import {
   getRelatedJournalArticles,
+  journalClusterProfiles,
   type JournalArticleBlock,
   journalArticleByLegacyFile,
 } from '../../lib/journalArticleContent'
@@ -68,7 +69,11 @@ function imagePreview(image?: string) {
 }
 
 const displayHero = imagePreview(article.heroImage)
-const heroStyle = `background-image:linear-gradient(180deg,rgba(2,3,6,.24),rgba(2,3,6,.91)),url('/${displayHero.image}')`
+const isPortraitHero = displayHero.height > displayHero.width
+const heroStyle = `--article-hero-image:url('/${displayHero.image}')`
+const clusterProfile = journalClusterProfiles[article.cluster]
+const journalFilterHref = (value: string, kind: 'category' | 'tag' = 'tag') =>
+  `/blog.html?${kind}=${encodeURIComponent(value.toLocaleLowerCase('de-DE'))}#journal`
 const paragraphs = (body?: string) => (body || '').split(/\n\s*\n/).map((value) => value.trim()).filter(Boolean)
 const blockId = (headline: string, index: number) =>
   headline
@@ -95,11 +100,19 @@ Astro.response.headers.set('x-cms-page-kind', 'journal-tina-source')
 >
   <main>
     <article class="journal-support journal-editorial">
-      <header class="article-hero" style={heroStyle} data-header-theme="dark">
+      <header class:list={['article-hero', { 'article-hero--portrait': isPortraitHero }]} style={heroStyle} data-header-theme="dark">
+        <div class="article-hero__visual" aria-hidden="true">
+          <img
+            src={`/${displayHero.image}`}
+            alt=""
+            width={displayHero.width}
+            height={displayHero.height}
+            fetchpriority="high"
+            decoding="async"
+          />
+        </div>
+        <div class="article-hero__blur" aria-hidden="true"></div>
         <div class="article-hero__inner">
-          <nav class="breadcrumb" aria-label="Breadcrumb">
-            <a href="/">Home</a><span>/</span><a href="/blog.html">Journal</a><span>/</span><span>{article.category}</span>
-          </nav>
           <p class="kicker">{article.category} · {article.minutes}</p>
           <h1>{article.title}</h1>
           <p class="lead">{article.description}</p>
@@ -109,11 +122,17 @@ Astro.response.headers.set('x-cms-page-kind', 'journal-tina-source')
           </div>
           {article.tags.length > 0 && (
             <ul class="journal-tags" aria-label="Beitragsthemen">
-              {article.tags.map((tag) => <li>{tag}</li>)}
+              {article.tags.map((tag) => <li><a href={journalFilterHref(tag)}>{tag}</a></li>)}
             </ul>
           )}
         </div>
       </header>
+
+      <div class="article-breadcrumb-bar" data-header-theme="light">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="/">Home</a><span aria-hidden="true">/</span><a href="/blog.html">Journal</a><span aria-hidden="true">/</span><a href={journalFilterHref(clusterProfile.filter, 'category')}>{article.category}</a>
+        </nav>
+      </div>
 
       <div class="article-body" data-header-theme="light">
         <div class="article-grid">
