@@ -160,7 +160,7 @@ if (gallerySchema) jsonLdItems.push(gallerySchema)
         {perspectives.length > 0 && (
           <div class="project-system__grid">
             {firstPerspectiveImage && (
-              <figure class="project-system__visual">
+              <figure class="project-system__visual" data-site-lightbox-single>
                 <img
                   src={firstPerspectiveImage}
                   alt={firstPerspective?.title || `${doc.title || 'Portfolio'} – ausgewählte Perspektive`}

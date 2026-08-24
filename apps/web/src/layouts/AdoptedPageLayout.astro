@@ -100,9 +100,9 @@ const bodyClass = providedBodyClass || doc?.legacy?.bodyClass || chrome.bodyClas
 const analyticsDimensions = pageAnalyticsDimensions(fallbackPath)
 const current = providedCurrent || doc?.legacy?.headerCurrent || chrome.current
 const headerTheme = providedHeaderTheme || chrome.headerTheme
-const allStylesheets = mergeAssetLists(chrome.stylesheets, stylesheets)
+const allStylesheets = mergeAssetLists(chrome.stylesheets, stylesheets, ['/assets/site-lightbox.css'])
 const allPreloadImages = normalizePreloadImages(preloadImages.length > 0 ? preloadImages : chrome.preloadImages || [])
-const allScripts = mergeAssetLists(chrome.scripts, scripts)
+const allScripts = mergeAssetLists(chrome.scripts, scripts, ['/assets/site-lightbox.js'])
 const versionedStylesheets = allStylesheets.map(versionStaticAssetUrl)
 const versionedPreloadImages = allPreloadImages.map((image) => ({
   ...image,

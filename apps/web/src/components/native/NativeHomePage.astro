@@ -250,7 +250,7 @@ const journalCards = cmsJournalCards.length ? cmsJournalCards : fallbackJournalC
 
     <section class="about sec-dark" data-theme="dark" aria-label="Über mich">
       <div class="section-inner">
-        <div class="about-img">
+        <div class="about-img" data-site-lightbox-single>
           <img src={aboutImage} srcset={resolvedAboutImageSrcset} sizes={aboutSizes} alt={aboutImageAlt} loading="lazy" width={aboutImageDimensions.width} height={aboutImageDimensions.height} decoding="async" {...tinaAttrs(about, 'image')} />
         </div>
         <div class="about-copy">

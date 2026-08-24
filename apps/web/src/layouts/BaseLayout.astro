@@ -124,6 +124,7 @@ const versionedStylesheets = stylesheets.map(versionStaticAssetUrl)
     {versionedPreloadImages.map((href) => <link rel="preload" as="image" href={href} fetchpriority="high" />)}
     <link rel="stylesheet" href={versionStaticAssetUrl('/assets/site-chrome.css')} />
     <link rel="stylesheet" href={versionStaticAssetUrl('/assets/load-more-gallery.css')} />
+    <link rel="stylesheet" href={versionStaticAssetUrl('/assets/site-lightbox.css')} />
     {versionedStylesheets.map((href) => <link rel="stylesheet" href={href} />)}
     {jsonLdItems.map((item) => <script is:inline type="application/ld+json" set:html={JSON.stringify(item)} />)}
     <script
@@ -148,6 +149,7 @@ const versionedStylesheets = stylesheets.map(versionStaticAssetUrl)
       <SiteChromeFooter liveCms={liveCms} />
     </div>
     <script is:inline src={versionStaticAssetUrl('/assets/site-chrome.js')} defer></script>
+    <script is:inline src={versionStaticAssetUrl('/assets/site-lightbox.js')} defer></script>
     <script is:inline src={versionStaticAssetUrl('/assets/analytics.js')} defer></script>
   </body>
 </html>

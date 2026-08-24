@@ -59,7 +59,7 @@ const richTextToPlainText = (body?: RichText) => {
       return (
         <section class="container" style="padding: clamp(42px, 6vw, 96px) 0;">
           {block.headline && <p class="eyebrow" style="margin-bottom: 18px;" {...tinaAttrs(block, 'headline')}>{block.headline}</p>}
-          <div class="card-grid">
+          <div class="card-grid" data-site-lightbox-gallery>
             {(block.items ?? []).map((item: ImageSequenceItem) => (
               <article class="card" style="padding: 0; min-height: 0;">
                 <ResponsiveImage media={item.image} size="card" fallback="Bild aus CMS" tinaFieldSource={item} tinaFieldName="image" />
