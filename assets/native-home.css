@@ -216,6 +216,10 @@
   .lb-next{right:-78px}
   .lb-prev:hover,.lb-next:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.55)}
   .lb-counter{position:absolute;bottom:-44px;left:0;font:10px var(--mono);letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+  @media (max-width: 1680px){
+    .lb-prev{left:12px;background:rgba(0,0,0,.5)}
+    .lb-next{right:12px;background:rgba(0,0,0,.5)}
+  }
   @media (max-width: 720px){
     .lb-stage{width:96vw;height:80vh}
     .lb-close{top:-48px;width:40px;height:40px}

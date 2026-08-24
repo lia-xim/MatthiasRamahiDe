@@ -336,4 +336,14 @@ const journalCards = cmsJournalCards.length ? cmsJournalCards : fallbackJournalC
       data-contact-lead="Erzähl kurz, worum es geht: Motiv, Ort, Zeitrahmen, Nutzung. Ich antworte persönlich und sortiere mit dir den nächsten sinnvollen Schritt."
     />
   </main>
+
+  <div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="Bildvorschau" aria-hidden="true">
+    <div class="lb-stage">
+      <button class="lb-close" id="lbClose" type="button" aria-label="Schließen">×</button>
+      <button class="lb-prev" id="lbPrev" type="button" aria-label="Vorheriges Bild">‹</button>
+      <img class="lb-img" id="lbImg" alt="Vergrößerte Portfolioansicht" decoding="async" />
+      <button class="lb-next" id="lbNext" type="button" aria-label="Nächstes Bild">›</button>
+      <span class="lb-counter" id="lbCounter"></span>
+    </div>
+  </div>
 </AdoptedPageLayout>

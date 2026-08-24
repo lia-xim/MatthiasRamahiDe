@@ -836,35 +836,38 @@
 
 /* ============ PORTFOLIO MARQUEE + LIGHTBOX ============ */
 (function(){
+  // Keep both marquee rows deliberately interleaved. Grouping this list by shoot
+  // or filename makes the homepage look like a single-category portfolio.
   const PORTFOLIO_IMAGES = [
-    { full: 'assets/optimized/assets-portfolio-dsc3879-1920.webp', teaser: 'assets/portfolio/marquee/_DSC3879.webp', thumb: 'assets/portfolio/thumbs/_DSC3879.webp', width: 720, height: 480 },
-    { full: 'assets/optimized/assets-portfolio-dsc3878-1920.webp', teaser: 'assets/portfolio/marquee/_DSC3878.webp', thumb: 'assets/portfolio/thumbs/_DSC3878.webp', width: 720, height: 480 },
-    { full: 'assets/optimized/assets-portfolio-dsc3892-1920.webp', teaser: 'assets/portfolio/marquee/_DSC3892.webp', thumb: 'assets/portfolio/thumbs/_DSC3892.webp', width: 720, height: 480 },
-    { full: 'assets/optimized/assets-portfolio-dsc3908-1920.webp', teaser: 'assets/portfolio/marquee/_DSC3908.webp', thumb: 'assets/portfolio/thumbs/_DSC3908.webp', width: 720, height: 480 },
-    { full: 'assets/optimized/assets-portfolio-dsc3982-1920.webp', teaser: 'assets/portfolio/marquee/_DSC3982.webp', thumb: 'assets/portfolio/thumbs/_DSC3982.webp', width: 720, height: 480 },
-    { full: 'assets/optimized/assets-portfolio-20250605-dsc04020-1920.webp', teaser: 'assets/portfolio/marquee/20250605-DSC04020.webp', thumb: 'assets/portfolio/thumbs/20250605-DSC04020.webp', width: 720, height: 1080 },
-    { full: 'assets/optimized/assets-portfolio-20250605-dsc03978-1920.webp', teaser: 'assets/portfolio/marquee/20250605-DSC03978.webp', thumb: 'assets/portfolio/thumbs/20250605-DSC03978.webp', width: 720, height: 1080 },
-    { full: 'assets/optimized/assets-portfolio-20250605-dsc03816-1920.webp', teaser: 'assets/portfolio/marquee/20250605-DSC03816.webp', thumb: 'assets/portfolio/thumbs/20250605-DSC03816.webp', width: 720, height: 1080 },
-    { full: 'assets/optimized/assets-portfolio-20250605-dsc03793-1920.webp', teaser: 'assets/portfolio/marquee/20250605-DSC03793.webp', thumb: 'assets/portfolio/thumbs/20250605-DSC03793.webp', width: 720, height: 960 },
-    { full: 'assets/optimized/assets-portfolio-20250605-dsc03756-1920.webp', teaser: 'assets/portfolio/marquee/20250605-DSC03756.webp', thumb: 'assets/portfolio/thumbs/20250605-DSC03756.webp', width: 720, height: 1080 },
-    { full: 'assets/portfolio/_DSC0470-Enhanced-NR.webp', teaser: 'assets/portfolio/marquee/_DSC0470-Enhanced-NR.webp', thumb: 'assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp', width: 720, height: 1152 },
-    { full: 'assets/portfolio/_DSC9321-Enhanced-NR.webp', teaser: 'assets/portfolio/marquee/_DSC9321-Enhanced-NR.webp', thumb: 'assets/portfolio/thumbs/_DSC9321-Enhanced-NR.webp', width: 720, height: 1080 },
-    { full: 'assets/portfolio/_DSC9301-Enhanced-NR.webp', teaser: 'assets/portfolio/marquee/_DSC9301-Enhanced-NR.webp', thumb: 'assets/portfolio/thumbs/_DSC9301-Enhanced-NR.webp', width: 720, height: 900 },
-    { full: 'assets/optimized/assets-portfolio-dsc2310-1920.webp', teaser: 'assets/portfolio/marquee/_DSC2310.webp', thumb: 'assets/portfolio/thumbs/_DSC2310.webp', width: 720, height: 480 },
-    { full: 'assets/optimized/assets-portfolio-dsc2316-1920.webp', teaser: 'assets/portfolio/marquee/_DSC2316.webp', thumb: 'assets/portfolio/thumbs/_DSC2316.webp', width: 720, height: 450 },
-    { full: 'assets/optimized/assets-portfolio-dsc2329-1920.webp', teaser: 'assets/portfolio/marquee/_DSC2329.webp', thumb: 'assets/portfolio/thumbs/_DSC2329.webp', width: 720, height: 1080 },
-    { full: 'assets/optimized/assets-portfolio-dsc2345-1920.webp', teaser: 'assets/portfolio/marquee/_DSC2345.webp', thumb: 'assets/portfolio/thumbs/_DSC2345.webp', width: 720, height: 1080 },
-    { full: 'assets/optimized/assets-portfolio-dsc2358-1920.webp', teaser: 'assets/portfolio/marquee/_DSC2358.webp', thumb: 'assets/portfolio/thumbs/_DSC2358.webp', width: 720, height: 1080 },
-    { full: 'assets/optimized/assets-portfolio-dsc2744-1920.webp', teaser: 'assets/portfolio/marquee/_DSC2744.webp', thumb: 'assets/portfolio/thumbs/_DSC2744.webp', width: 720, height: 1080 },
-    { full: 'assets/optimized/assets-portfolio-dsc2762-1920.webp', teaser: 'assets/portfolio/marquee/_DSC2762.webp', thumb: 'assets/portfolio/thumbs/_DSC2762.webp', width: 720, height: 1080 },
-    { full: 'assets/optimized/assets-portfolio-dsc2986-1920.webp', teaser: 'assets/portfolio/marquee/_DSC2986.webp', thumb: 'assets/portfolio/thumbs/_DSC2986.webp', width: 720, height: 1080 },
-    { full: 'assets/optimized/assets-portfolio-dsc6982-1920.webp', teaser: 'assets/portfolio/marquee/_DSC6982.webp', thumb: 'assets/portfolio/thumbs/_DSC6982.webp', width: 720, height: 1080 },
-    { full: 'assets/optimized/assets-portfolio-dsc8032-1920.webp', teaser: 'assets/portfolio/marquee/_DSC8032.webp', thumb: 'assets/portfolio/thumbs/_DSC8032.webp', width: 720, height: 900 },
-    { full: 'assets/optimized/assets-portfolio-wettberwerb-foto5-wunder-der-natur2-1920.webp', teaser: 'assets/portfolio/marquee/Wettberwerb_Foto5_Wunder_der_Natur2.webp', thumb: 'assets/portfolio/thumbs/Wettberwerb_Foto5_Wunder_der_Natur2.webp', width: 720, height: 471 },
-    { full: 'assets/optimized/assets-portfolio-wettberwerb-foto6-wunder-der-natur-1920.webp', teaser: 'assets/portfolio/marquee/Wettberwerb_Foto6_Wunder_der_Natur.webp', thumb: 'assets/portfolio/thumbs/Wettberwerb_Foto6_Wunder_der_Natur.webp', width: 720, height: 1080 },
-    { full: 'assets/optimized/assets-portfolio-wettberwerb-foto10-wunder-der-natur-1920.webp', teaser: 'assets/portfolio/marquee/Wettberwerb_Foto10_Wunder_der_natur.webp', thumb: 'assets/portfolio/thumbs/Wettberwerb_Foto10_Wunder_der_natur.webp', width: 720, height: 448 },
-    { full: 'assets/optimized/assets-portfolio-20250327-dsc01550-1920.webp', teaser: 'assets/portfolio/marquee/20250327-DSC01550.webp', thumb: 'assets/portfolio/thumbs/20250327-DSC01550.webp', width: 720, height: 1090 },
-    { full: 'assets/optimized/assets-portfolio-20250414-dsc00341-1920.webp', teaser: 'assets/portfolio/marquee/20250414-DSC00341.webp', thumb: 'assets/portfolio/thumbs/20250414-DSC00341.webp', width: 720, height: 1080 }
+    { category: 'Sportwagen', full: 'assets/optimized/assets-portfolio-dsc3879-1920.webp', teaser: 'assets/portfolio/marquee/_DSC3879.webp', thumb: 'assets/portfolio/thumbs/_DSC3879.webp', width: 720, height: 480 },
+    { category: 'Landschaft', full: 'assets/optimized/assets-portfolio-20250605-dsc04020-1920.webp', teaser: 'assets/portfolio/marquee/20250605-DSC04020.webp', thumb: 'assets/portfolio/thumbs/20250605-DSC04020.webp', width: 720, height: 1080 },
+    { category: 'Motorrad', full: 'assets/optimized/assets-portfolio-dsc6982-1920.webp', teaser: 'assets/portfolio/marquee/_DSC6982.webp', thumb: 'assets/portfolio/thumbs/_DSC6982.webp', width: 720, height: 1080 },
+    { category: 'Portrait', full: 'assets/portfolio/_DSC0470-Enhanced-NR.webp', teaser: 'assets/portfolio/marquee/_DSC0470-Enhanced-NR.webp', thumb: 'assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp', width: 720, height: 1152 },
+    { category: 'Oldtimer', full: 'assets/optimized/assets-portfolio-dsc2310-1920.webp', teaser: 'assets/portfolio/marquee/_DSC2310.webp', thumb: 'assets/portfolio/thumbs/_DSC2310.webp', width: 720, height: 480 },
+    { category: 'Landschaft', full: 'assets/optimized/assets-portfolio-wettberwerb-foto5-wunder-der-natur2-1920.webp', teaser: 'assets/portfolio/marquee/Wettberwerb_Foto5_Wunder_der_Natur2.webp', thumb: 'assets/portfolio/thumbs/Wettberwerb_Foto5_Wunder_der_Natur2.webp', width: 720, height: 471 },
+    { category: 'Automobil', full: 'assets/optimized/assets-portfolio-dsc2744-1920.webp', teaser: 'assets/portfolio/marquee/_DSC2744.webp', thumb: 'assets/portfolio/thumbs/_DSC2744.webp', width: 720, height: 1080 },
+    { category: 'Portrait', full: 'assets/portfolio/_DSC9321-Enhanced-NR.webp', teaser: 'assets/portfolio/marquee/_DSC9321-Enhanced-NR.webp', thumb: 'assets/portfolio/thumbs/_DSC9321-Enhanced-NR.webp', width: 720, height: 1080 },
+    { category: 'Sportwagen', full: 'assets/optimized/assets-portfolio-dsc3878-1920.webp', teaser: 'assets/portfolio/marquee/_DSC3878.webp', thumb: 'assets/portfolio/thumbs/_DSC3878.webp', width: 720, height: 480 },
+    { category: 'Landschaft', full: 'assets/optimized/assets-portfolio-20250605-dsc03978-1920.webp', teaser: 'assets/portfolio/marquee/20250605-DSC03978.webp', thumb: 'assets/portfolio/thumbs/20250605-DSC03978.webp', width: 720, height: 1080 },
+    { category: 'Oldtimer', full: 'assets/optimized/assets-portfolio-dsc2316-1920.webp', teaser: 'assets/portfolio/marquee/_DSC2316.webp', thumb: 'assets/portfolio/thumbs/_DSC2316.webp', width: 720, height: 450 },
+    { category: 'Portrait', full: 'assets/portfolio/_DSC9301-Enhanced-NR.webp', teaser: 'assets/portfolio/marquee/_DSC9301-Enhanced-NR.webp', thumb: 'assets/portfolio/thumbs/_DSC9301-Enhanced-NR.webp', width: 720, height: 900 },
+    { category: 'Automobil', full: 'assets/optimized/assets-portfolio-dsc2762-1920.webp', teaser: 'assets/portfolio/marquee/_DSC2762.webp', thumb: 'assets/portfolio/thumbs/_DSC2762.webp', width: 720, height: 1080 },
+    { category: 'Landschaft', full: 'assets/optimized/assets-portfolio-wettberwerb-foto6-wunder-der-natur-1920.webp', teaser: 'assets/portfolio/marquee/Wettberwerb_Foto6_Wunder_der_Natur.webp', thumb: 'assets/portfolio/thumbs/Wettberwerb_Foto6_Wunder_der_Natur.webp', width: 720, height: 1080 },
+
+    { category: 'Portrait', full: 'assets/optimized/assets-portfolio-dsc8032-1920.webp', teaser: 'assets/portfolio/marquee/_DSC8032.webp', thumb: 'assets/portfolio/thumbs/_DSC8032.webp', width: 720, height: 900 },
+    { category: 'Oldtimer', full: 'assets/optimized/assets-portfolio-dsc2329-1920.webp', teaser: 'assets/portfolio/marquee/_DSC2329.webp', thumb: 'assets/portfolio/thumbs/_DSC2329.webp', width: 720, height: 1080 },
+    { category: 'Landschaft', full: 'assets/optimized/assets-portfolio-20250605-dsc03816-1920.webp', teaser: 'assets/portfolio/marquee/20250605-DSC03816.webp', thumb: 'assets/portfolio/thumbs/20250605-DSC03816.webp', width: 720, height: 1080 },
+    { category: 'Automobil', full: 'assets/optimized/assets-portfolio-dsc2986-1920.webp', teaser: 'assets/portfolio/marquee/_DSC2986.webp', thumb: 'assets/portfolio/thumbs/_DSC2986.webp', width: 720, height: 1080 },
+    { category: 'Motorrad', full: 'assets/optimized/assets-portfolio-20250414-dsc00341-1920.webp', teaser: 'assets/portfolio/marquee/20250414-DSC00341.webp', thumb: 'assets/portfolio/thumbs/20250414-DSC00341.webp', width: 720, height: 1080 },
+    { category: 'Portrait', full: 'assets/optimized/assets-portfolio-20250327-dsc01550-1920.webp', teaser: 'assets/portfolio/marquee/20250327-DSC01550.webp', thumb: 'assets/portfolio/thumbs/20250327-DSC01550.webp', width: 720, height: 1090 },
+    { category: 'Sportwagen', full: 'assets/optimized/assets-portfolio-dsc3908-1920.webp', teaser: 'assets/portfolio/marquee/_DSC3908.webp', thumb: 'assets/portfolio/thumbs/_DSC3908.webp', width: 720, height: 480 },
+    { category: 'Landschaft', full: 'assets/optimized/assets-portfolio-20250605-dsc03793-1920.webp', teaser: 'assets/portfolio/marquee/20250605-DSC03793.webp', thumb: 'assets/portfolio/thumbs/20250605-DSC03793.webp', width: 720, height: 960 },
+    { category: 'Oldtimer', full: 'assets/optimized/assets-portfolio-dsc2345-1920.webp', teaser: 'assets/portfolio/marquee/_DSC2345.webp', thumb: 'assets/portfolio/thumbs/_DSC2345.webp', width: 720, height: 1080 },
+    { category: 'Landschaft', full: 'assets/optimized/assets-portfolio-wettberwerb-foto10-wunder-der-natur-1920.webp', teaser: 'assets/portfolio/marquee/Wettberwerb_Foto10_Wunder_der_natur.webp', thumb: 'assets/portfolio/thumbs/Wettberwerb_Foto10_Wunder_der_natur.webp', width: 720, height: 448 },
+    { category: 'Sportwagen', full: 'assets/optimized/assets-portfolio-dsc3982-1920.webp', teaser: 'assets/portfolio/marquee/_DSC3982.webp', thumb: 'assets/portfolio/thumbs/_DSC3982.webp', width: 720, height: 480 },
+    { category: 'Landschaft', full: 'assets/optimized/assets-portfolio-20250605-dsc03756-1920.webp', teaser: 'assets/portfolio/marquee/20250605-DSC03756.webp', thumb: 'assets/portfolio/thumbs/20250605-DSC03756.webp', width: 720, height: 1080 },
+    { category: 'Oldtimer', full: 'assets/optimized/assets-portfolio-dsc2358-1920.webp', teaser: 'assets/portfolio/marquee/_DSC2358.webp', thumb: 'assets/portfolio/thumbs/_DSC2358.webp', width: 720, height: 1080 },
+    { category: 'Sportwagen', full: 'assets/optimized/assets-portfolio-dsc3892-1920.webp', teaser: 'assets/portfolio/marquee/_DSC3892.webp', thumb: 'assets/portfolio/thumbs/_DSC3892.webp', width: 720, height: 480 }
   ];
 
   const SIZES = ['--ww','--w','--t','--s','--w','--ww','--t','--s'];
@@ -887,7 +890,8 @@
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'pf-tile ' + sizeCls;
-    btn.setAttribute('aria-label','Bild vergroessern');
+    btn.setAttribute('aria-label', item.category + ' vergroessern');
+    btn.dataset.category = item.category;
     btn.dataset.idx = String(item.index);
     const img = document.createElement('img');
     img.src = item.teaser || item.thumb;
