@@ -8,6 +8,7 @@ export const restoredJournalArticles: JournalArticle[] = [
     description:
       'Ein praxisnaher Leitfaden für Businessportraits draußen: Nutzung, Location, Licht, Kleidung, Bildvarianten und Wetterreserve sinnvoll planen.',
     category: 'Portrait',
+    tags: ['Portrait', 'Location', 'Briefing'],
     minutes: '8 Min',
     dateLabel: '24. August 2026',
     dateTime: '2026-08-24',
@@ -109,9 +110,10 @@ export const restoredJournalArticles: JournalArticle[] = [
     description:
       'Sicherheitsplanung für Motorrad-Fotoshootings: Location, Rollen, Standaufnahmen, bewegte Motive, Technik und klare Abbruchkriterien.',
     category: 'Motorrad',
+    tags: ['Motorrad', 'Sicherheit', 'Briefing'],
     minutes: '8 Min',
-    dateLabel: '24. August 2026',
-    dateTime: '2026-08-24',
+    dateLabel: '23. August 2026',
+    dateTime: '2026-08-23',
     heroImage: 'uploads/payload/_DSC6968-1707x2560.webp',
     heroImageAlt: 'Stehendes schwarzes Motorrad am Rand einer ruhigen Straße im Abendlicht',
     links: [
@@ -212,9 +214,10 @@ export const restoredJournalArticles: JournalArticle[] = [
     description:
       'Wie Fahrzeugbilder im Autohaus konsistent werden: Raumlicht, Reflexe, Fahrzeugvorbereitung, Perspektiven und ein wiederholbarer Aufnahmeplan.',
     category: 'Automotive',
+    tags: ['Automotive', 'Licht', 'Verkauf'],
     minutes: '8 Min',
-    dateLabel: '24. August 2026',
-    dateTime: '2026-08-24',
+    dateLabel: '22. August 2026',
+    dateTime: '2026-08-22',
     heroImage: 'uploads/payload/assets-portfolio-dsc3879-1920-1920x1280.webp',
     heroImageAlt: 'Dunkler Sportwagen unter farbigem Showroomlicht',
     links: [
@@ -313,9 +316,10 @@ export const restoredJournalArticles: JournalArticle[] = [
     description:
       'Regen bei einem Auto-Shooting kontrolliert nutzen: Sicherheit, Location, Lack, Reflexionen, Belichtung und eine belastbare Schlechtwetterplanung.',
     category: 'Automotive',
+    tags: ['Automotive', 'Wetter', 'Licht'],
     minutes: '8 Min',
-    dateLabel: '24. August 2026',
-    dateTime: '2026-08-24',
+    dateLabel: '21. August 2026',
+    dateTime: '2026-08-21',
     heroImage: 'assets/optimized/assets-photos-automobil-sunset-1920.webp',
     heroImageAlt: 'Schwarzes Fahrzeug neben einer Pfütze nach einem Regenschauer',
     links: [
@@ -414,9 +418,10 @@ export const restoredJournalArticles: JournalArticle[] = [
     description:
       'Ein ruhiger Ansatz für Oldtimer-Treffen und Sammlungen: Zugang, Bildfolge, Menschen, Material, Patina und eine nachvollziehbare Dokumentation.',
     category: 'Oldtimer',
+    tags: ['Oldtimer', 'Bildserie', 'Location'],
     minutes: '8 Min',
-    dateLabel: '24. August 2026',
-    dateTime: '2026-08-24',
+    dateLabel: '20. August 2026',
+    dateTime: '2026-08-20',
     heroImage: 'uploads/payload/20250418-DSC006552-1920x1280.webp',
     heroImageAlt: 'Historischer roter Rennwagen in einer Sammlung',
     links: [

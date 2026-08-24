@@ -1,4 +1,16 @@
 import { restoredJournalArticles } from './restoredJournalArticleContent'
+import { automotiveJournalArticles } from './journalBatchAutomotive'
+import { motorcycleJournalArticles } from './journalBatchMotorcycle'
+import { portraitJournalArticles } from './journalBatchPortrait'
+
+export type JournalCluster =
+  | 'automotive'
+  | 'sports-car'
+  | 'classic-car'
+  | 'motorcycle'
+  | 'portrait'
+  | 'landscape-print'
+  | 'process'
 
 export type JournalArticleLink = {
   href: string
@@ -45,6 +57,8 @@ export type JournalArticle = {
   }
   category: string
   categoryHref?: string
+  cluster?: JournalCluster
+  commercialHref?: string
   cta?: {
     primaryHref: string
     primaryLabel: string
@@ -67,6 +81,7 @@ export type JournalArticle = {
   seoTitle?: string
   title: string
   titleHtml?: string
+  tags?: string[]
   variant?: 'feature' | 'support'
 }
 
@@ -564,7 +579,111 @@ const featureArticle: JournalArticle = {
   },
 }
 
-export const journalArticles: JournalArticle[] = [featureArticle, ...restoredJournalArticles, ...supportArticles]
+export const journalClusterProfiles: Record<
+  JournalCluster,
+  { filter: string; href: string; label: string; tags: string[] }
+> = {
+  automotive: {
+    filter: 'automotive',
+    href: 'automobil-fotografie.html',
+    label: 'Automotive',
+    tags: ['Automotive', 'Licht', 'Bildserie'],
+  },
+  'sports-car': {
+    filter: 'sportwagen',
+    href: 'sportwagen-fotografie.html',
+    label: 'Sportwagen',
+    tags: ['Sportwagen', 'Licht', 'Bildserie'],
+  },
+  'classic-car': {
+    filter: 'oldtimer',
+    href: 'oldtimer-fotografie.html',
+    label: 'Oldtimer',
+    tags: ['Oldtimer', 'Verkauf', 'Bildserie'],
+  },
+  motorcycle: {
+    filter: 'motorrad',
+    href: 'motorrad-fotografie.html',
+    label: 'Motorrad',
+    tags: ['Motorrad', 'Sicherheit', 'Bildserie'],
+  },
+  portrait: {
+    filter: 'portrait',
+    href: 'portraitfotografie.html',
+    label: 'Portrait',
+    tags: ['Portrait', 'Licht', 'Bildserie'],
+  },
+  'landscape-print': {
+    filter: 'print',
+    href: 'landschaftsfotografie.html',
+    label: 'Landschaft & Print',
+    tags: ['Fine Art', 'Print', 'Kuration'],
+  },
+  process: {
+    filter: 'prozess',
+    href: 'fotografie.html',
+    label: 'Prozess',
+    tags: ['Briefing', 'Kuration', 'Bildserie'],
+  },
+}
+
+export function journalClusterFor(article: JournalArticle): JournalCluster {
+  if (article.cluster) return article.cluster
+
+  const haystack = `${article.category} ${article.legacyFile} ${article.commercialHref || ''}`.toLowerCase()
+  if (haystack.includes('sportwagen')) return 'sports-car'
+  if (haystack.includes('oldtimer') || haystack.includes('classic')) return 'classic-car'
+  if (haystack.includes('motorrad') || haystack.includes('bike')) return 'motorcycle'
+  if (haystack.includes('portrait') || haystack.includes('musiker')) return 'portrait'
+  if (haystack.includes('druck') || haystack.includes('print') || haystack.includes('landschaft')) return 'landscape-print'
+  if (haystack.includes('prozess') || haystack.includes('location') || haystack.includes('kurati')) return 'process'
+  return 'automotive'
+}
+
+function enrichJournalArticle(article: JournalArticle): JournalArticle {
+  const cluster = journalClusterFor(article)
+  const profile = journalClusterProfiles[cluster]
+  return {
+    ...article,
+    categoryHref: article.categoryHref || article.commercialHref || profile.href,
+    cluster,
+    commercialHref: article.commercialHref || article.categoryHref || profile.href,
+    tags: Array.from(new Set([...(article.tags || []), ...profile.tags])).slice(0, 6),
+  }
+}
+
+export const journalArticles: JournalArticle[] = [
+  featureArticle,
+  ...restoredJournalArticles,
+  ...automotiveJournalArticles,
+  ...motorcycleJournalArticles,
+  ...portraitJournalArticles,
+  ...supportArticles,
+]
+  .map(enrichJournalArticle)
+  .sort((left, right) => right.dateTime.localeCompare(left.dateTime))
+
+export function getRelatedJournalArticles(article: JournalArticle, limit = 3): JournalArticle[] {
+  const currentCluster = journalClusterFor(article)
+  const currentTags = new Set((article.tags || []).map((tag) => tag.toLocaleLowerCase('de-DE')))
+  const existingTargets = new Set(article.links.map((link) => link.href.replace(/^\//, '')))
+
+  return journalArticles
+    .filter(
+      (candidate) =>
+        candidate.legacyFile !== article.legacyFile && !existingTargets.has(candidate.legacyFile.replace(/^\//, '')),
+    )
+    .map((candidate) => {
+      const candidateCluster = journalClusterFor(candidate)
+      const tagOverlap = (candidate.tags || []).filter((tag) => currentTags.has(tag.toLocaleLowerCase('de-DE'))).length
+      const sameCommercialPath = candidate.commercialHref === article.commercialHref ? 1 : 0
+      const score = (candidateCluster === currentCluster ? 100 : 0) + tagOverlap * 15 + sameCommercialPath * 20
+      return { candidate, score }
+    })
+    .sort((left, right) => right.score - left.score || right.candidate.dateTime.localeCompare(left.candidate.dateTime))
+    .slice(0, limit)
+    .map(({ candidate }) => candidate)
+}
 
 export const journalArticleByLegacyFile = Object.fromEntries(
   journalArticles.map((article) => [article.legacyFile, article]),

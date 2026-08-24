@@ -1,6 +1,6 @@
 ---
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
-import { type JournalArticle, journalArticleByLegacyFile } from '../../lib/journalArticleContent'
+import { getRelatedJournalArticles, type JournalArticle, journalArticleByLegacyFile } from '../../lib/journalArticleContent'
 import { toAbsoluteSiteUrl, toRootRelativeHref } from '../../lib/payload'
 import { breadcrumbJsonLd, faqJsonLd, type JsonLd } from '../../lib/seo'
 
@@ -22,18 +22,9 @@ const supportSections = articleVariant === 'support' ? article.sections : []
 const featureSections = articleVariant === 'feature' ? article.sections : []
 const primaryRelatedLink = article.links[0]
 const articleHref = (href?: string) => toRootRelativeHref(href || 'blog.html')
-const journalArticles = Object.values(journalArticleByLegacyFile)
-const currentArticleIndex = journalArticles.findIndex((item) => item.legacyFile === article.legacyFile)
-const existingArticleTargets = new Set(article.links.map((link) => articleHref(link.href)))
-const relatedJournalLinks = [1, 2]
-  .map((offset) => journalArticles[(currentArticleIndex + offset) % journalArticles.length])
-  .filter(
-    (item): item is JournalArticle =>
-      Boolean(item) &&
-      item.legacyFile !== article.legacyFile &&
-      !existingArticleTargets.has(articleHref(item.legacyFile)),
-  )
+const relatedJournalLinks = getRelatedJournalArticles(article, 3)
   .map((item) => ({ href: item.legacyFile, label: item.title.replace(/<[^>]+>/g, '') }))
+const articleTags = article.tags || []
 const plainTitle = article.title.replace(/<[^>]+>/g, '')
 const seoTitle = article.seoTitle || `${plainTitle} | Matthias Ramahi`
 const canonicalUrl = `/${article.legacyFile}`
@@ -58,6 +49,7 @@ const jsonLd = [
     dateModified: `${article.dateTime}T09:00:00+02:00`,
     inLanguage: 'de-DE',
     articleSection: article.category,
+    keywords: articleTags,
     author: {
       '@id': `${toAbsoluteSiteUrl('/')}#person`,
     },
@@ -167,6 +159,11 @@ function sectionHtml(section: JournalArticle['sections'][number]) {
                 </dd>
               </dl>
             </div>
+            {articleTags.length > 0 && (
+              <ul class="journal-tags" aria-label="Beitragsthemen">
+                {articleTags.map((tag) => <li>{tag}</li>)}
+              </ul>
+            )}
           </div>
         </header>
 
@@ -346,6 +343,11 @@ function sectionHtml(section: JournalArticle['sections'][number]) {
             <h1>{article.title}</h1>
             <p class="lead">{article.description}</p>
             <div class="meta"><span>Matthias Ramahi</span><span>{article.dateLabel}</span></div>
+            {articleTags.length > 0 && (
+              <ul class="journal-tags" aria-label="Beitragsthemen">
+                {articleTags.map((tag) => <li>{tag}</li>)}
+              </ul>
+            )}
           </div>
         </header>
 

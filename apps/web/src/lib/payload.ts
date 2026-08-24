@@ -22,6 +22,7 @@ export type PayloadDoc = {
   excerpt?: string
   intro?: string
   category?: string
+  tags?: string[]
   city?: string
   service?: string
   targetKeyword?: string

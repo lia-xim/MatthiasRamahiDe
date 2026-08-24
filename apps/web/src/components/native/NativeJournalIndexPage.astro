@@ -20,10 +20,24 @@ type EditableJournalPostCard = JournalPostCard & { source?: PayloadDoc }
 
 const providedDoc = Astro.props.doc as PayloadDoc | undefined
 const doc = providedDoc || (await getSitePageByType('journal-index', liveCmsFetchOptions({ depth: 2 })))
-const cmsPosts = await listDocuments('journal-posts', liveCmsFetchOptions({ limit: 12, sort: '-publishedAt', depth: 2 }))
-const legacyPostBySlug = new Map(journalCards.map((post) => [post.href.replace(/^\//, '').replace(/\.html$/i, ''), post]))
+const cmsPosts = await listDocuments('journal-posts', liveCmsFetchOptions({ limit: 100, sort: '-publishedAt', depth: 2 }))
+const legacyPostBySlug = new Map(
+  journalCards.flatMap((post) => {
+    const routeSlug = post.href.replace(/^\//, '').replace(/\.html$/i, '')
+    return [
+      [routeSlug, post],
+      [routeSlug.replace(/^blog-/, ''), post],
+    ] as Array<[string, JournalPostCard]>
+  }),
+)
 const categoryToFilter: Record<string, string> = {
   automotive: 'automotive',
+  'sports-car': 'sportwagen',
+  sportwagen: 'sportwagen',
+  'classic-car': 'oldtimer',
+  oldtimer: 'oldtimer',
+  motorcycle: 'motorrad',
+  motorrad: 'motorrad',
   portrait: 'portrait',
   process: 'prozess',
   'behind-the-scenes': 'prozess',
@@ -37,11 +51,12 @@ const cmsCards = cmsPosts
     const fallback = legacyPostBySlug.get(slug) || journalCards[index]
     const image = imageDisplayUrl(post.coverImage, 'card') || fallback?.image || journalHero.image
     const dimensions = imageDimensions(post.coverImage, 'card')
-    const category = categoryToFilter[String(post.category || '')] || fallback?.category || 'prozess'
+    const category = fallback?.category || categoryToFilter[String(post.category || '')] || 'prozess'
     const legacyHref = typeof post.seo?.legacyUrl === 'string' && post.seo.legacyUrl ? `/${post.seo.legacyUrl}` : ''
 
     return {
       category,
+      dateTime: typeof post.publishedAt === 'string' ? post.publishedAt : fallback?.dateTime,
       dark: fallback?.dark ?? index % 3 === 0,
       eager: index < 3,
       height: dimensions.height || fallback?.height || 1280,
@@ -56,7 +71,12 @@ const cmsCards = cmsPosts
     }
   })
   .filter(Boolean) as EditableJournalPostCard[]
-const posts = cmsCards.length > 0 ? cmsCards : journalCards
+const cmsCardByHref = new Map(cmsCards.map((post) => [post.href, post]))
+const fallbackHrefs = new Set(journalCards.map((post) => post.href))
+const posts = [
+  ...journalCards.map((post) => cmsCardByHref.get(post.href) || post),
+  ...cmsCards.filter((post) => !fallbackHrefs.has(post.href)),
+].sort((left, right) => (right.dateTime || '').localeCompare(left.dateTime || ''))
 const hasText = (value?: string): value is string => typeof value === 'string' && value.trim().length > 0
 const journalIndex = doc?.journalIndex
 const heroLead = doc?.intro || journalHero.lead
@@ -69,7 +89,11 @@ const resolvedTicker = tickerItems.length ? tickerItems : journalTicker
 const cmsFilters = (journalIndex?.filters || [])
   .filter((filter) => hasText(filter.label) && hasText(filter.value))
   .map((filter) => ({ label: filter.label!, value: filter.value! }))
-const resolvedFilters = cmsFilters.length ? cmsFilters : journalFilters
+const cmsFilterByValue = new Map(cmsFilters.map((filter) => [filter.value, filter]))
+const resolvedFilters = [
+  ...journalFilters.map((filter) => cmsFilterByValue.get(filter.value) || filter),
+  ...cmsFilters.filter((filter) => !journalFilters.some((fallback) => fallback.value === filter.value)),
+]
 const indexHeadline = hasText(journalIndex?.indexHeadline) ? journalIndex!.indexHeadline! : 'Journal Index.'
 const initialVisiblePostCount = Math.max(1, Number(journalIndex?.initialVisiblePostCount) || 6)
 const loadMoreLabel = hasText(journalIndex?.loadMoreLabel) ? journalIndex!.loadMoreLabel! : 'Mehr Beitraege laden'
