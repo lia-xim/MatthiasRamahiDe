@@ -25,6 +25,7 @@ const textBlocks = article.blocks.filter(
 const faqBlocks = article.blocks.filter(
   (block): block is Extract<JournalArticleBlock, { _template: 'faqBlock' }> => block._template === 'faqBlock',
 )
+const faqItems = faqBlocks.flatMap((block) => block.items || [])
 const jsonLd = [
   breadcrumbJsonLd([
     { name: 'Home', url: '/' },
@@ -90,7 +91,7 @@ Astro.response.headers.set('x-cms-page-kind', 'journal-tina-source')
   preloadImages={[`/${displayHero.image}`]}
   stylesheets={['/assets/journal-support.css']}
   jsonLd={jsonLd}
-  bodyClass="has-mr-footer"
+  bodyClass="has-mr-footer journal-article-page"
 >
   <main>
     <article class="journal-support journal-editorial">
@@ -210,8 +211,15 @@ Astro.response.headers.set('x-cms-page-kind', 'journal-tina-source')
         <section class="faq" aria-label="Häufige Fragen" data-header-theme="light">
           <h2>{faqBlocks[0]?.headline || 'Kurze Fragen.'}</h2>
           <div class="faq-grid">
-            {faqBlocks.flatMap((block) => block.items || []).map((item) => (
-              <article><h3>{item.question}</h3><p>{item.answer}</p></article>
+            {faqItems.map((item, index) => (
+              <details class="faq-item" open={index === 0}>
+                <summary>
+                  <span class="faq-item__number">{String(index + 1).padStart(2, '0')}</span>
+                  <span class="faq-item__question">{item.question}</span>
+                  <span class="faq-item__icon" aria-hidden="true"></span>
+                </summary>
+                <div class="faq-item__answer"><p>{item.answer}</p></div>
+              </details>
             ))}
           </div>
         </section>
