@@ -212,6 +212,22 @@ async function assetsReferencedBySite(entries) {
     }
   }
 
+  // Tina documents may choose media paths at runtime (for example article cover
+  // images) without repeating the literal path in an Astro/TypeScript module.
+  // Scan JSON documents for media only; unlike app source, their CSS/JS references
+  // must not recursively turn example comments inside bundled assets into media.
+  const contentFiles = await collectTextFiles(path.join(repoRoot, 'apps', 'web', 'content'), new Set(['.json']))
+  for (const file of contentFiles) {
+    try {
+      const text = await fs.readFile(file, 'utf8')
+      for (const assetPath of extractAssetReferences(text, file)) {
+        if (mediaExtensions.has(path.extname(assetPath).toLowerCase())) referenced.add(assetPath)
+      }
+    } catch {
+      // Ignore unreadable documents; the Tina content audit reports missing media.
+    }
+  }
+
   return referenced
 }
 
