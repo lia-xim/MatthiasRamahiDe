@@ -541,10 +541,27 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
         <h2 class="mod-pt__title"><span {...tinaAttrs(doc?.focusSection, 'headline')}>{focusModuleHeadline}</span> <em {...tinaAttrs(doc?.focusSection, 'emphasis')}>{focusModuleEmphasis}</em></h2>
         <p class="mod-pt__lead" {...tinaAttrs(doc?.focusSection, 'lead')}>{focusModuleLead}</p>
       </div>
-      <div class="mod-pt__grid">
+      <div class="mod-pt__grid" data-site-lightbox-gallery>
         {portraitFocusCards.map((card, index) => (
           <article class="mod-pt__card">
-            <div class="mod-pt__img" style={`background-image:url('${visualSlots[card.visualIndex].cssSrc}')`} {...tinaAttrs(doc?.shootingStyles?.[index] || doc?.audienceCards?.[index], 'image')}></div>
+            <button
+              type="button"
+              class="mod-pt__img"
+              data-full={visualSlots[card.visualIndex].full}
+              aria-label={`${card.title} vergrößern`}
+            >
+              <img
+                src={visualSlots[card.visualIndex].src}
+                srcset={visualSlots[card.visualIndex].srcset}
+                sizes="(max-width: 720px) 100vw, (max-width: 1080px) 50vw, 20vw"
+                alt={visualSlots[card.visualIndex].alt || card.title}
+                width={visualSlots[card.visualIndex].width}
+                height={visualSlots[card.visualIndex].height}
+                loading="lazy"
+                decoding="async"
+                {...tinaAttrs(doc?.shootingStyles?.[index] || doc?.audienceCards?.[index], 'image')}
+              />
+            </button>
             <div class="mod-pt__body">
               <h3 class="mod-pt__name" {...tinaAttrs(doc?.shootingStyles?.[index] || doc?.audienceCards?.[index], 'title')}>{card.title}</h3>
               <p class="mod-pt__desc" {...tinaAttrs(doc?.shootingStyles?.[index] || doc?.audienceCards?.[index], 'text')}>{card.text}</p>
@@ -582,10 +599,26 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
           </h2>
           <p class="fw-pt__lead">{focusProcessLead}</p>
         </div>
-        <ul class="fw-pt__list">
+        <ul class="fw-pt__list" data-site-lightbox-gallery>
           {portraitProcessSteps.map((step) => (
             <li class="fw-pt__row">
-              <div class="fw-pt__thumb" style={`background-image:url('${visualSlots[step.visualIndex].cssSrc}')`} role="img" aria-label={step.imageLabel}></div>
+              <button
+                type="button"
+                class="fw-pt__thumb"
+                data-full={visualSlots[step.visualIndex].full}
+                aria-label={`${step.imageLabel} vergrößern`}
+              >
+                <img
+                  src={visualSlots[step.visualIndex].src}
+                  srcset={visualSlots[step.visualIndex].srcset}
+                  sizes="96px"
+                  alt={visualSlots[step.visualIndex].alt || step.imageLabel}
+                  width={visualSlots[step.visualIndex].width}
+                  height={visualSlots[step.visualIndex].height}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </button>
               <h3 class="fw-pt__name">{step.title}</h3>
               <p class="fw-pt__copy">{step.text}</p>
               <span class="fw-pt__arrow" aria-hidden="true">→</span>

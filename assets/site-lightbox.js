@@ -57,7 +57,7 @@
     if (element.matches('button[data-full]')) return Boolean(element.querySelector('img'));
     if (element.matches(singleSelector)) return Boolean(element.matches('img') || element.querySelector('img'));
     if (element.matches('img') && element.closest(gallerySelector)) {
-      return !element.closest('a[href], button:not([data-full])');
+      return !element.closest('a[href], button');
     }
     return false;
   }
@@ -108,10 +108,12 @@
     element.setAttribute('aria-label', 'Bildvorschau');
     element.setAttribute('aria-hidden', 'true');
     element.innerHTML = '<div class="site-lightbox__stage">' +
+      '<div class="site-lightbox__media">' +
       '<button class="site-lightbox__close" type="button" aria-label="Bildvorschau schließen">×</button>' +
       '<button class="site-lightbox__prev" type="button" aria-label="Vorheriges Bild">‹</button>' +
       '<img class="site-lightbox__image" alt="" decoding="async">' +
       '<button class="site-lightbox__next" type="button" aria-label="Nächstes Bild">›</button>' +
+      '</div>' +
       '<div class="site-lightbox__meta"><span class="site-lightbox__caption"></span><span class="site-lightbox__counter" aria-live="polite"></span></div>' +
       '</div>';
     document.body.appendChild(element);
@@ -155,6 +157,7 @@
     setItem(triggerIndex < 0 ? 0 : triggerIndex);
     lightbox.classList.add('is-open');
     lightbox.setAttribute('aria-hidden', 'false');
+    document.documentElement.classList.add('site-lightbox-open');
     document.body.classList.add('site-lightbox-open');
     closeButton.focus({ preventScroll: true });
   }
@@ -162,6 +165,7 @@
   function close() {
     lightbox.classList.remove('is-open');
     lightbox.setAttribute('aria-hidden', 'true');
+    document.documentElement.classList.remove('site-lightbox-open');
     document.body.classList.remove('site-lightbox-open');
     image.classList.remove('is-ready');
     if (lastTrigger && document.contains(lastTrigger)) lastTrigger.focus({ preventScroll: true });
