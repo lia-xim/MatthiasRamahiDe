@@ -131,7 +131,6 @@ const portfolioSelectionFor = (spread: EditablePortfolioSpread) =>
 
 const cmsArchivePhotos = (portfolioIndex?.archive?.items || []).map(portfolioPhotoFromCms).filter(isEditablePortfolioPhoto)
 const archivePhotos = (cmsArchivePhotos.length > 0 ? cmsArchivePhotos : portfolioArchivePhotos) as EditablePortfolioPhoto[]
-const archiveBatchSize = Math.max(1, Math.min(Number(portfolioIndex?.archive?.batchSize) || 12, archivePhotos.length || 12))
 const archiveHeadline = cleanText(portfolioIndex?.archive?.headline) || 'Bildarchiv'
 const contactSubject = cleanText(portfolioIndex?.contact?.subject) || 'Shooting Anfrage'
 const contactHeadline = cleanText(portfolioIndex?.contact?.headline) || 'Shooting <em>anfragen.</em>'
@@ -219,9 +218,9 @@ const contactLead =
       <div class="pf-archive__head">
         <h2 {...tinaAttrs(portfolioIndex?.archive, 'headline')}>{archiveHeadline}</h2>
       </div>
-      <div class="pf-archive__grid" id="pfArchiveGrid" data-archive-batch={String(archiveBatchSize)}>
-        {archivePhotos.map((photo, i) => (
-          <a class="pf-photo" data-archive-item hidden={i >= archiveBatchSize} data-caption={photo.caption} href={photo.href} aria-label={photo.caption ? `${photo.caption} — Großansicht öffnen` : 'Bild im Großformat ansehen'}>
+      <div class="pf-archive__grid" id="pfArchiveGrid">
+        {archivePhotos.map((photo) => (
+          <a class="pf-photo" data-archive-item data-caption={photo.caption} href={photo.href} aria-label={photo.caption ? `${photo.caption} — Großansicht öffnen` : 'Bild im Großformat ansehen'}>
             <img
               src={photo.src}
               data-src={photo.src}

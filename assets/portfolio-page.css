@@ -75,7 +75,7 @@ button{font:inherit;color:inherit;border:0;background:transparent;cursor:pointer
 .pf-context p + p{margin-top:16px}
 
 /* ---------- SPREAD (canonical pattern, used by all 6 genres) ---------- */
-.pf-spread{position:relative;min-height:auto;display:flex;flex-direction:column;justify-content:space-between;gap:clamp(32px,5vh,56px);padding:clamp(72px,9vh,120px) 5vw clamp(72px,9vh,120px);background:var(--ink);color:var(--paper);overflow:hidden;isolation:isolate;content-visibility:auto;contain-intrinsic-size:900px}
+.pf-spread{position:relative;min-height:auto;display:flex;flex-direction:column;justify-content:space-between;gap:clamp(32px,5vh,56px);padding:clamp(72px,9vh,120px) 5vw clamp(72px,9vh,120px);background:var(--ink);color:var(--paper);overflow:hidden;isolation:isolate}
 .pf-spread__head{position:relative;z-index:2;max-width:1640px;width:100%;margin:0 auto}
 .pf-spread h2{font-family:var(--sans);font-weight:900;text-transform:uppercase;font-size:clamp(46px,7.2vw,116px);line-height:.92;letter-spacing:-.05em;color:var(--paper);max-width:16ch;text-wrap:balance}
 /* Einordnung der Serie unter der Ueberschrift — Fliesstext statt nur Bildstreifen. */
@@ -106,21 +106,13 @@ button{font:inherit;color:inherit;border:0;background:transparent;cursor:pointer
 .pf-spread:hover .pf-spread__strip .pf-photo img{transform:scale(1.03)}
 .pf-archive__grid .pf-photo{cursor:zoom-in}
 .pf-archive__grid .pf-photo:hover img{transform:scale(1.04)}
-.pf-photo:nth-child(2){transition-delay:.06s}
-.pf-photo:nth-child(3){transition-delay:.12s}
-.pf-photo:nth-child(4){transition-delay:.18s}
-
 /* ---------- ARCHIVE WALL — column-count masonry, gap-free ---------- */
 .pf-archive{padding:clamp(80px,12vh,140px) 5vw clamp(80px,10vh,120px);background:var(--paper);color:var(--ink)}
 .pf-archive__head{max-width:1640px;margin:0 auto clamp(40px,6vh,72px)}
 .pf-archive__head h2{font-family:var(--sans);font-weight:900;text-transform:uppercase;font-size:clamp(48px,7.4vw,118px);line-height:.92;letter-spacing:-.05em;max-width:18ch;text-wrap:balance}
 .pf-archive__grid{max-width:1640px;margin:0 auto;column-count:4;column-gap:4px}
-.pf-archive__grid .pf-photo{width:100%;break-inside:avoid;margin:0 0 4px;display:block;cursor:zoom-in;transform:translateY(10px);opacity:0;transition:transform .6s var(--ease),opacity .6s var(--ease)}
-/* Noch nicht nachgeladene Archiv-Bilder: ausblenden (höhere Spezifität schlägt display:block) */
-.pf-archive__grid .pf-photo[hidden]{display:none}
+.pf-archive__grid .pf-photo{width:100%;break-inside:avoid;margin:0 0 4px;display:block;cursor:zoom-in;transform:none;opacity:1;transition:none}
 .pf-archive__grid .pf-photo img{width:100%;height:auto;display:block}
-.pf-archive__grid .pf-photo.is-shown{transform:none;opacity:1}
-.pf-archive__sentinel{width:100%;height:1px}
 
 /* ---------- LIGHTBOX ---------- */
 .pf-viewer{position:fixed;inset:0;z-index:240;display:grid;place-items:center;padding:clamp(20px,4vw,60px);background:rgba(8,7,5,.94);backdrop-filter:blur(20px);opacity:0;pointer-events:none;transition:opacity .3s var(--ease)}
