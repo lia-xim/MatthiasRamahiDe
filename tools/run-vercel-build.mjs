@@ -32,7 +32,11 @@ const env = {
 
 const webRoot = path.join(process.cwd(), 'apps', 'web')
 
-await run('corepack', ['pnpm', '--filter', '@matthias-ramahi/web', 'tina:build'], { env })
+// Vercel only needs Tina's generated client for the Astro bundle. The public
+// admin is removed immediately below and production editing runs on the
+// separate Tina server, so rebuilding the full local content/search index here
+// adds minutes without producing a deploy artifact.
+await run('corepack', ['pnpm', '--filter', '@matthias-ramahi/web', 'tina:build:vercel'], { env })
 await fs.rm(path.join(webRoot, 'public', 'admin'), { recursive: true, force: true })
 await run('corepack', ['pnpm', '--filter', '@matthias-ramahi/web', 'build'], { env })
 await run('node', ['tools/copy-vercel-output.mjs'], { env: process.env })
