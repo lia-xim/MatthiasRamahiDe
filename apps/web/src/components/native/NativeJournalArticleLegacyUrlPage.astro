@@ -37,7 +37,7 @@ const jsonLd = [
     '@id': `${toAbsoluteSiteUrl(canonicalUrl)}#article`,
     mainEntityOfPage: { '@type': 'WebPage', '@id': toAbsoluteSiteUrl(canonicalUrl) },
     headline: plainTitle,
-    description: article.description,
+    description: article.seoDescription,
     image: [toAbsoluteSiteUrl(article.heroImage)],
     datePublished: `${article.dateTime}T09:00:00+02:00`,
     dateModified: `${article.dateTime}T09:00:00+02:00`,
@@ -82,7 +82,7 @@ Astro.response.headers.set('x-cms-page-kind', 'journal-tina-source')
 <AdoptedPageLayout
   legacyFile={legacyFile}
   title={article.seoTitle || `${plainTitle} | Matthias Ramahi`}
-  description={article.description}
+  description={article.seoDescription}
   canonicalUrl={canonicalUrl}
   current="blog"
   ogImage={article.heroImage}

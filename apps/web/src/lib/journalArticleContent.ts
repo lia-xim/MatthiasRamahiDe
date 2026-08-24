@@ -27,7 +27,7 @@ type JournalSourceDocument = {
   publishedAt?: string
   readingTime?: number
   relatedPages?: JournalSourceLink[]
-  seo?: { legacyUrl?: string; title?: string }
+  seo?: { description?: string; legacyUrl?: string; title?: string }
   slug?: string
   status?: string
   tags?: string[]
@@ -86,6 +86,7 @@ export type JournalArticle = {
   links: JournalArticleLink[]
   minutes: string
   sections: JournalArticleSection[]
+  seoDescription: string
   seoTitle?: string
   title: string
   tags: string[]
@@ -228,6 +229,7 @@ function articleFromDocument(document: JournalSourceDocument, modulePath: string
     links: usefulLinks(document, profile),
     minutes: `${Math.max(1, Number(document.readingTime) || 5)} Min`,
     sections,
+    seoDescription: document.seo?.description || document.excerpt || '',
     seoTitle: document.seo?.title,
     tags: Array.from(new Set([...(document.tags || []), ...profile.tags])).slice(0, 6),
     title: document.title,
