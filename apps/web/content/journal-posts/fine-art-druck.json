@@ -6,7 +6,11 @@
   "publishedAt": "2026-05-27T18:22:56.000Z",
   "excerpt": "Warum Material, Papier, Farbmanagement und Format Teil der fotografischen Wirkung sind, wenn Bilder als Fine-Art-Print oder Wandbild funktionieren sollen.",
   "coverImage": "/uploads/payload/fea8218e-7546-48ef-8581-2b99bb3cdefe_centered_reduced-1.webp",
-  "tags": ["Fine Art", "Print", "Kuration"],
+  "tags": [
+    "Fine Art",
+    "Print",
+    "Kuration"
+  ],
   "relatedPages": [
     {
       "label": "Home",
@@ -65,6 +69,23 @@
       "_template": "textBlock"
     },
     {
+      "headline": "Bildnotizen aus dem Portfolio",
+      "layout": "editorial-pair",
+      "items": [
+        {
+          "image": "/assets/optimized/assets-photos-landschaft-1920.webp",
+          "caption": "Landschaftsmotiv als Ausgangspunkt für einen Fine-Art-Print",
+          "cropIntent": "editorial"
+        },
+        {
+          "image": "/assets/services/fea8218e-7546-48ef-8581-2b99bb3cdefe_centered_reduced.webp",
+          "caption": "Fotobücher und Druckprodukte als unterschiedliche Ausgabeformen",
+          "cropIntent": "editorial"
+        }
+      ],
+      "_template": "imageSequence"
+    },
+    {
       "headline": "Format ist Wirkung",
       "body": "Ein kleines Format fordert Naehe. Ein grosses Format veraendert einen Raum. Vor dem Druck sollte klar sein, ob das Bild Blickfang, Ruhepunkt oder Teil einer Serie sein soll.",
       "_template": "textBlock"
@@ -111,8 +132,9 @@
     "extractedImagePaths": [],
     "extractedText": "Home / Journal / Druck Druck · 5 Min Vom Bild zum Fine-Art-Druck Warum Material, Papier, Farbmanagement und Format Teil der fotografischen Wirkung sind, wenn Bilder als Fine-Art-Print oder Wandbild funktionieren sollen. Matthias Ramahi Aktualisiert 27.05.2026 Dieser Beitrag stuetzt die SEO-Cluster der Fotografie-Seiten und fuehrt zu passenden Leistungs- und Standortseiten weiter. Fotolabor und Druck Landschaftsbilder kaufen Wandbilder Landschaftsfotografie 01 Druck ist kein Export-Klick Ein Bild veraendert sich, sobald es den Bildschirm verlaesst. Papierstruktur, Format, Betrachtungsabstand und Licht im Raum bestimmen, ob ein Motiv ruhig, dicht oder flach wirkt. Deshalb gehoert Druckplanung zur fotografischen Entscheidung. 02 Material traegt die Stimmung Matte Papiere nehmen Glanz zurueck und betonen Flaeche und Tiefe. Glattere Oberflaechen koennen Details und Kontrast praesenter machen. Die Wahl des Materials sollte zur Stimmung des Motivs und zum Raum passen. 03 Farbmanagement schafft Verlaesslichkeit Fine-Art-Druck braucht kontrollierte Daten: Profil, Tonwerte, Schaerfung und Probedrucke. Ein starker Print entsteht nicht durch maximale Saettigung, sondern durch eine stimmige Uebersetzung des Bildes in Material. 04 Format ist Wirkung Ein kleines Format fordert Naehe. Ein grosses Format veraendert einen Raum. Vor dem Druck sollte klar sein, ob das Bild Blickfang, Ruhepunkt oder Teil einer Serie sein soll. Kurze Fragen. Welche Groesse ist sinnvoll? Das haengt vom Raum und Betrachtungsabstand ab. Ein groesseres Bild braucht nicht immer mehr Motiv, sondern mehr Ruhe in der Komposition."
   },
-  "updatedAt": "2026-05-28T19:07:53.461Z",
+  "updatedAt": "2026-08-24T20:44:39.158Z",
   "createdAt": "2026-05-28T19:07:35.484Z",
   "status": "published",
-  "payloadId": "2"
+  "payloadId": "2",
+  "coverAlt": "Fotobuecher und Druckprodukte"
 }

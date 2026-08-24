@@ -1,7 +1,43 @@
-import { restoredJournalArticles } from './restoredJournalArticleContent'
-import { automotiveJournalArticles } from './journalBatchAutomotive'
-import { motorcycleJournalArticles } from './journalBatchMotorcycle'
-import { portraitJournalArticles } from './journalBatchPortrait'
+type JournalSourceLink = {
+  description?: string
+  href?: string
+  label?: string
+}
+
+export type JournalArticleImage = {
+  caption?: string
+  cropIntent?: string
+  image?: string
+}
+
+export type JournalArticleBlock =
+  | { _template: 'textBlock'; body?: string; eyebrow?: string; headline?: string; style?: 'section' | 'bridge' }
+  | { _template: 'imageSequence'; headline?: string; items?: JournalArticleImage[]; layout?: string }
+  | { _template: 'quoteBlock'; attribution?: string; quote?: string }
+  | { _template: 'faqBlock'; headline?: string; items?: Array<{ answer?: string; question?: string }> }
+  | { _template: 'linkList'; headline?: string; links?: JournalSourceLink[] }
+  | { _template: 'ctaBlock'; buttonLabel?: string; emailSubject?: string; headline?: string; text?: string }
+
+type JournalSourceDocument = {
+  blocks?: JournalArticleBlock[]
+  category?: string
+  coverAlt?: string
+  coverImage?: string
+  excerpt?: string
+  publishedAt?: string
+  readingTime?: number
+  relatedPages?: JournalSourceLink[]
+  seo?: { legacyUrl?: string; title?: string }
+  slug?: string
+  status?: string
+  tags?: string[]
+  title?: string
+}
+
+const journalModules = import.meta.glob('../../content/journal-posts/*.json', {
+  eager: true,
+  import: 'default',
+}) as Record<string, JournalSourceDocument>
 
 export type JournalCluster =
   | 'automotive'
@@ -13,6 +49,7 @@ export type JournalCluster =
   | 'process'
 
 export type JournalArticleLink = {
+  description?: string
   href: string
   label: string
 }
@@ -29,44 +66,16 @@ export type JournalArticleCard = JournalArticleLink & {
 export type JournalArticleSection = {
   id: string
   kicker?: string
-  subheading?: string
   title: string
   paragraphs?: string[]
-  paragraphsHtml?: string[]
-  list?: Array<{ label?: string; text: string }>
-  quote?: { text: string; cite?: string }
-  figure?: {
-    alt: string
-    caption: string
-    height: number
-    image: string
-    width: number
-  }
-  inlineCta?: {
-    href: string
-    label: string
-    text: string
-    title: string
-  }
 }
 
 export type JournalArticle = {
-  author?: {
-    image: string
-    text: string
-  }
+  blocks: JournalArticleBlock[]
   category: string
   categoryHref?: string
-  cluster?: JournalCluster
-  commercialHref?: string
-  cta?: {
-    primaryHref: string
-    primaryLabel: string
-    secondaryHref?: string
-    secondaryLabel?: string
-    text: string
-    title: string
-  }
+  cluster: JournalCluster
+  commercialHref: string
   dateLabel: string
   dateTime: string
   description: string
@@ -76,507 +85,10 @@ export type JournalArticle = {
   legacyFile: string
   links: JournalArticleLink[]
   minutes: string
-  relatedCards?: JournalArticleCard[]
   sections: JournalArticleSection[]
   seoTitle?: string
   title: string
-  titleHtml?: string
-  tags?: string[]
-  variant?: 'feature' | 'support'
-}
-
-const supportArticles: JournalArticle[] = [
-  {
-    legacyFile: 'blog-portraits-ohne-generische-posen.html',
-    title: 'Portraits ohne generische Posen',
-    description:
-      'Wie ruhige Portraitfotografie in Duesseldorf mehr Wirkung erzeugt als ueberinszenierte Posen: Licht, Distanz, Haltung und Bildauswahl bewusst fuehren.',
-    category: 'Portrait',
-    minutes: '4 Min',
-    dateLabel: 'Aktualisiert 27.05.2026',
-    dateTime: '2026-05-27',
-    heroImage: 'assets/photos/portrait-warm.webp',
-    heroImageAlt: 'Portrait in warmem Licht',
-    links: [
-      { label: 'Portraitfotografie Duesseldorf', href: 'portraitfotografie-duesseldorf.html' },
-      { label: 'Business Portrait', href: 'business-portrait-duesseldorf.html' },
-      { label: 'Headshot Fotograf', href: 'headshot-fotograf-duesseldorf.html' },
-    ],
-    sections: [
-      {
-        id: 'abschnitt-1',
-        kicker: '01',
-        title: 'Der ruhige Raum wirkt staerker',
-        paragraphs: [
-          'Gute Portraits muessen nicht laut sein. Entscheidend ist, ob der Bildraum der Person hilft, praesent zu bleiben. Wenn Pose, Licht und Hintergrund zu viel erklaeren, verschwindet oft genau das, was ein Portrait tragen soll: Haltung, Blick und eine glaubwuerdige Naehe.',
-        ],
-      },
-      {
-        id: 'abschnitt-2',
-        kicker: '02',
-        title: 'Fuehrung statt Posing-Katalog',
-        paragraphs: [
-          'Im Shooting geht es nicht darum, eine Liste bekannter Posen abzuhaken. Sinnvoller ist eine klare Fuehrung: kleine Veraenderungen in Schulterlinie, Blickrichtung, Abstand zur Kamera und Atemtempo. Dadurch entsteht Varianz, ohne dass die Person in eine Rolle gedrueckt wird.',
-        ],
-      },
-      {
-        id: 'abschnitt-3',
-        kicker: '03',
-        title: 'Licht als Tonfall',
-        paragraphs: [
-          'Portraitlicht darf praezise sein, ohne steril zu wirken. Weiches Seitenlicht, kontrollierte Schatten und ein ruhiger Hintergrund geben dem Gesicht Struktur. Fuer Business, Editorial und Personal Branding ist diese Balance wichtiger als ein Effekt, der nur auf den ersten Blick auffaellt.',
-        ],
-      },
-      {
-        id: 'abschnitt-4',
-        kicker: '04',
-        title: 'Auswahl ist Teil der Fotografie',
-        paragraphs: [
-          'Die finale Serie entsteht in der Auswahl. Ein gutes Set braucht nicht moeglichst viele Motive, sondern eine nachvollziehbare Reihenfolge: ein starkes Hauptportrait, Varianten fuer Website und Social, Details fuer redaktionische Nutzung und Bilder, die auch in kleiner Groesse funktionieren.',
-        ],
-      },
-    ],
-    faq: [
-      {
-        question: 'Wie viele Portraits braucht man wirklich?',
-        answer: 'Fuer die meisten Anwendungen reichen wenige starke Motive mit klarer Variation. Wichtiger als Menge ist, dass jedes Bild eine eigene Funktion erfuellt.',
-      },
-      {
-        question: 'Ist eine bestimmte Location notwendig?',
-        answer: 'Nicht zwingend. Ein ruhiger Raum, gutes Fensterlicht oder ein passender Arbeitskontext koennen oft glaubwuerdiger wirken als ein neutraler Hintergrund.',
-      },
-    ],
-  },
-  {
-    legacyFile: 'blog-serie-kuratieren.html',
-    title: 'Wie eine fotografische Serie kuratiert wird',
-    description:
-      'Von der ersten Bildauswahl bis zur finalen Reihenfolge: Warum kuratierte Fotografie-Serien staerker wirken als lose Einzelbilder.',
-    category: 'Prozess',
-    minutes: '6 Min',
-    dateLabel: 'Aktualisiert 27.05.2026',
-    dateTime: '2026-05-27',
-    heroImage: 'assets/optimized/assets-photos-oldtimer-stage-1920.webp',
-    heroImageAlt: 'Oldtimer Szene in dunklem Licht',
-    links: [
-      { label: 'Portfolio ansehen', href: 'portfolio.html' },
-      { label: 'Automobil Fotografie', href: 'automobil-fotografie-duesseldorf.html' },
-      { label: 'Oldtimer Fotografie', href: 'oldtimer-fotografie-duesseldorf.html' },
-    ],
-    sections: [
-      {
-        id: 'abschnitt-1',
-        kicker: '01',
-        title: 'Eine Serie braucht Richtung',
-        paragraphs: [
-          'Einzelbilder koennen stark sein, aber eine Serie muss fuehren. Sie braucht Anfang, Verdichtung und Abschluss. Gerade bei Fahrzeugen, Portraits oder Landschaften entscheidet die Reihenfolge darueber, ob ein Betrachter bleibt oder nur schnell durchscrollt.',
-        ],
-      },
-      {
-        id: 'abschnitt-2',
-        kicker: '02',
-        title: 'Erst Funktion, dann Geschmack',
-        paragraphs: [
-          'Vor der Auswahl steht die Frage nach der Nutzung: Verkauf, Portfolio, Website, Print, Kampagne oder interne Praesentation. Erst wenn diese Funktion klar ist, laesst sich entscheiden, welche Bilder tragen und welche nur Varianten sind.',
-        ],
-      },
-      {
-        id: 'abschnitt-3',
-        kicker: '03',
-        title: 'Reduktion macht wertiger',
-        paragraphs: [
-          'Eine gute Auswahl laesst Luft. Aehnliche Motive konkurrieren miteinander und schwaechen oft den Eindruck. Besser ist eine knappe Serie mit klaren Rollen: Einstieg, Totale, Detail, Atmosphaere, Mensch oder Kontext und ein starkes Schlussbild.',
-        ],
-      },
-      {
-        id: 'abschnitt-4',
-        kicker: '04',
-        title: 'Technische Konsistenz zaehlt',
-        paragraphs: [
-          'Farbe, Kontrast, Beschnitt und Helligkeit muessen zusammenarbeiten. Eine Serie wirkt hochwertig, wenn jedes Bild eigenstaendig bleibt und trotzdem dieselbe visuelle Sprache spricht.',
-        ],
-      },
-    ],
-    faq: [
-      {
-        question: 'Wie viele Bilder gehoeren in eine Serie?',
-        answer: 'Das haengt vom Einsatz ab. Fuer eine Website reichen oft 8 bis 16 Bilder, fuer eine Kampagne oder ein Portfolio koennen mehr Varianten sinnvoll sein.',
-      },
-      {
-        question: 'Wer entscheidet die finale Auswahl?',
-        answer: 'Die Auswahl entsteht idealerweise gemeinsam: fotografische Kuratierung trifft auf den realen Einsatz der Bilder.',
-      },
-    ],
-  },
-  {
-    legacyFile: 'blog-oldtimer-wertobjekt.html',
-    title: 'Oldtimer als Wertobjekt fotografieren',
-    description:
-      'Warum Oldtimer-Fotografie fuer Verkauf, Sammlung und Auktion von Zurueckhaltung, Materialtreue und klarer Dokumentation profitiert.',
-    category: 'Oldtimer',
-    minutes: '3 Min',
-    dateLabel: 'Aktualisiert 27.05.2026',
-    dateTime: '2026-05-27',
-    heroImage: 'assets/optimized/assets-photos-oldtimer-stage-1920.webp',
-    heroImageAlt: 'Oldtimer in Buehnenlicht',
-    links: [
-      { label: 'Oldtimer Fotografie Duesseldorf', href: 'oldtimer-fotografie-duesseldorf.html' },
-      { label: 'Classic Car Fotografie', href: 'classic-car-fotografie-duesseldorf.html' },
-      { label: 'Oldtimer Verkaufsfotos', href: 'oldtimer-verkaufsfotos-duesseldorf.html' },
-    ],
-    sections: [
-      {
-        id: 'abschnitt-1',
-        kicker: '01',
-        title: 'Wert braucht Ruhe',
-        paragraphs: [
-          'Ein Oldtimer ist selten nur ein Fahrzeug. Zustand, Herkunft, Material und Pflegegeschichte sind Teil des Bildes. Zu viel Drama kann diesen Wert verdecken. Ruhige Perspektiven, kontrollierte Reflexe und ehrliche Details wirken oft hochwertiger.',
-        ],
-      },
-      {
-        id: 'abschnitt-2',
-        kicker: '02',
-        title: 'Dokumentation und Atmosphaere verbinden',
-        paragraphs: [
-          'Fuer Verkauf oder Auktion muss Fotografie klar zeigen, was vorhanden ist: Karosserie, Innenraum, Lack, Chrom, Leder, Instrumente und Gebrauchsspuren. Gleichzeitig darf die Serie nicht wie ein technischer Zustandsbericht wirken.',
-        ],
-      },
-      {
-        id: 'abschnitt-3',
-        kicker: '03',
-        title: 'Patina nicht verstecken',
-        paragraphs: [
-          'Patina kann Charakter sein. Sie sollte nicht platt retuschiert werden, sondern sauber sichtbar bleiben. Entscheidend ist, ob Gebrauchsspuren als Mangel oder als Geschichte gelesen werden. Die Bildfuehrung hilft bei dieser Einordnung.',
-        ],
-      },
-      {
-        id: 'abschnitt-4',
-        kicker: '04',
-        title: 'Kontext macht Vertrauen',
-        paragraphs: [
-          'Ein neutraler, ordentlicher Standort, nachvollziehbare Details und konsistente Farbe schaffen Vertrauen. Gerade bei hochwertigen Fahrzeugen sind Bilder Teil der Verkaufsargumentation.',
-        ],
-      },
-    ],
-    faq: [
-      { question: 'Sind Detailbilder wichtig?', answer: 'Ja. Details wie Leder, Instrumente, Chrom, Felgen und Lack geben Kaeufern und Sammlern Orientierung.' },
-      { question: 'Soll ein Oldtimer dramatisch inszeniert werden?', answer: 'Nur wenn es zur Nutzung passt. Fuer Verkauf und Sammlung ist eine kontrollierte, ruhige Bildsprache meist staerker.' },
-    ],
-  },
-  {
-    legacyFile: 'blog-fine-art-druck.html',
-    title: 'Vom Bild zum Fine-Art-Druck',
-    description:
-      'Warum Material, Papier, Farbmanagement und Format Teil der fotografischen Wirkung sind, wenn Bilder als Fine-Art-Print oder Wandbild funktionieren sollen.',
-    category: 'Druck',
-    minutes: '5 Min',
-    dateLabel: 'Aktualisiert 27.05.2026',
-    dateTime: '2026-05-27',
-    heroImage: 'assets/services/fea8218e-7546-48ef-8581-2b99bb3cdefe_centered_reduced.webp',
-    heroImageAlt: 'Fotobuecher und Druckprodukte',
-    links: [
-      { label: 'Fotolabor und Druck', href: 'fotolabor-druck-duesseldorf.html' },
-      { label: 'Landschaftsbilder kaufen', href: 'landschaftsbilder-kaufen.html' },
-      { label: 'Wandbilder Landschaftsfotografie', href: 'wandbilder-landschaftsfotografie.html' },
-    ],
-    sections: [
-      {
-        id: 'abschnitt-1',
-        kicker: '01',
-        title: 'Druck ist kein Export-Klick',
-        paragraphs: [
-          'Ein Bild veraendert sich, sobald es den Bildschirm verlaesst. Papierstruktur, Format, Betrachtungsabstand und Licht im Raum bestimmen, ob ein Motiv ruhig, dicht oder flach wirkt. Deshalb gehoert Druckplanung zur fotografischen Entscheidung.',
-        ],
-      },
-      {
-        id: 'abschnitt-2',
-        kicker: '02',
-        title: 'Material traegt die Stimmung',
-        paragraphs: [
-          'Matte Papiere nehmen Glanz zurueck und betonen Flaeche und Tiefe. Glattere Oberflaechen koennen Details und Kontrast praesenter machen. Die Wahl des Materials sollte zur Stimmung des Motivs und zum Raum passen.',
-        ],
-      },
-      {
-        id: 'abschnitt-3',
-        kicker: '03',
-        title: 'Farbmanagement schafft Verlaesslichkeit',
-        paragraphs: [
-          'Fine-Art-Druck braucht kontrollierte Daten: Profil, Tonwerte, Schaerfung und Probedrucke. Ein starker Print entsteht nicht durch maximale Saettigung, sondern durch eine stimmige Uebersetzung des Bildes in Material.',
-        ],
-      },
-      {
-        id: 'abschnitt-4',
-        kicker: '04',
-        title: 'Format ist Wirkung',
-        paragraphs: [
-          'Ein kleines Format fordert Naehe. Ein grosses Format veraendert einen Raum. Vor dem Druck sollte klar sein, ob das Bild Blickfang, Ruhepunkt oder Teil einer Serie sein soll.',
-        ],
-      },
-    ],
-    faq: [
-      { question: 'Welche Groesse ist sinnvoll?', answer: 'Das haengt vom Raum und Betrachtungsabstand ab. Ein groesseres Bild braucht nicht immer mehr Motiv, sondern mehr Ruhe in der Komposition.' },
-      { question: 'Kann jedes Foto als Fine-Art-Print funktionieren?', answer: 'Nicht jedes. Aufloesung, Tonwerte, Motivruhe und Material muessen zusammenpassen.' },
-    ],
-  },
-  {
-    legacyFile: 'blog-location-scouting-duesseldorf.html',
-    title: 'Location Scouting fuer starke Motive',
-    description:
-      'Wie Orte fuer Automotive-, Portrait- und Landschaftsfotografie ausgewaehlt werden: Licht, Zugang, Hintergrund, Ruhe und Nutzungsziel.',
-    category: 'Location',
-    minutes: '4 Min',
-    dateLabel: 'Aktualisiert 27.05.2026',
-    dateTime: '2026-05-27',
-    heroImage: 'assets/optimized/assets-photos-landschaft-1920.webp',
-    heroImageAlt: 'Landschaftsmotiv mit starker Tiefe',
-    links: [
-      { label: 'Fotografie Duesseldorf', href: 'fotografie-duesseldorf.html' },
-      { label: 'Automobil Fotografie Duesseldorf', href: 'automobil-fotografie-duesseldorf.html' },
-      { label: 'Portraitfotografie Duesseldorf', href: 'portraitfotografie-duesseldorf.html' },
-    ],
-    sections: [
-      {
-        id: 'abschnitt-1',
-        kicker: '01',
-        title: 'Ein Ort muss arbeiten',
-        paragraphs: [
-          'Eine Location ist nicht nur Kulisse. Sie bestimmt Licht, Linien, Abstand, Ruhe und organisatorischen Ablauf. Gute Orte helfen dem Motiv, statt sich davorzudraengen.',
-        ],
-      },
-      {
-        id: 'abschnitt-2',
-        kicker: '02',
-        title: 'Lichtfenster zuerst',
-        paragraphs: [
-          'Der gleiche Ort kann morgens weich, mittags flach und abends cineastisch wirken. Deshalb beginnt Scouting mit Sonnenstand, Schatten, Reflexionsflaechen und der Frage, wann ein Motiv wirklich atmen kann.',
-        ],
-      },
-      {
-        id: 'abschnitt-3',
-        kicker: '03',
-        title: 'Zugang und Stoerungen planen',
-        paragraphs: [
-          'Parken, Publikumsverkehr, Genehmigungen und Wetteroptionen sind organisatorische, aber fotografisch entscheidende Faktoren. Eine starke Serie entsteht leichter, wenn diese Reibung vorher geloest ist.',
-        ],
-      },
-      {
-        id: 'abschnitt-4',
-        kicker: '04',
-        title: 'Ort und Auftrag verbinden',
-        paragraphs: [
-          'Eine Location ist nicht nur ein Name auf der Karte. Sie muss zeigen, warum ein Auftrag in Duesseldorf, NRW oder einer konkreten Stadt sinnvoll geplant werden kann. Ein guter Ort unterstuetzt die Bildaufgabe: Verkauf, Markenwirkung, persoenliche Praesenz oder eine ruhige redaktionelle Serie.',
-        ],
-      },
-    ],
-    faq: [
-      { question: 'Wird die Location vorab festgelegt?', answer: 'Ja, zumindest die Richtung. Je nach Wetter und Motiv koennen Alternativen vorbereitet werden.' },
-      { question: 'Sind urbane Orte immer besser?', answer: 'Nein. Ein ruhiger, reduzierter Ort kann fuer Portraits oder Fahrzeuge oft hochwertiger wirken als ein auffaelliger Hintergrund.' },
-    ],
-  },
-  {
-    legacyFile: 'blog-motorradfotografie-linien.html',
-    title: 'Linien, Metall, Haltung',
-    description:
-      'Warum starke Motorradfotografie ueber Silhouette, Naehe, Material, Fahrerhaltung und klare Linien funktioniert.',
-    category: 'Motorrad',
-    minutes: '4 Min',
-    dateLabel: 'Aktualisiert 27.05.2026',
-    dateTime: '2026-05-27',
-    heroImage: 'assets/optimized/assets-photos-motorrad-1920.webp',
-    heroImageAlt: 'Motorrad vor Architektur',
-    links: [
-      { label: 'Motorrad Fotografie Duesseldorf', href: 'motorrad-fotografie-duesseldorf.html' },
-      { label: 'Custom Bike Fotografie', href: 'custom-bike-fotografie-duesseldorf.html' },
-      { label: 'Motorrad Verkaufsfotos', href: 'motorrad-verkaufsfotos-duesseldorf.html' },
-    ],
-    sections: [
-      {
-        id: 'abschnitt-1',
-        kicker: '01',
-        title: 'Motorradbilder brauchen Spannung',
-        paragraphs: [
-          'Bei Motorraedern geht es um Linien, Material und Haltung. Ein gutes Bild zeigt nicht nur ein Objekt, sondern Energie: Tanklinie, Lenker, Reifen, Stand, Details und die Beziehung zum Fahrer oder zur Werkstatt.',
-        ],
-      },
-      {
-        id: 'abschnitt-2',
-        kicker: '02',
-        title: 'Silhouette vor Detailflut',
-        paragraphs: [
-          'Wenn alles gleich wichtig ist, verliert das Bike seine Form. Erst die klare Silhouette, dann die Details. Eine Serie sollte zeigen, wie die Maschine steht, wie sie gebaut ist und welche Stimmung sie traegt.',
-        ],
-      },
-      {
-        id: 'abschnitt-3',
-        kicker: '03',
-        title: 'Metall und Lack kontrollieren',
-        paragraphs: [
-          'Reflexe sind bei Motorraedern besonders sensibel. Chrom, Lack, Carbon und Gummi brauchen Lichtfuehrung, die Material zeigt, ohne alles zu ueberstrahlen.',
-        ],
-      },
-      {
-        id: 'abschnitt-4',
-        kicker: '04',
-        title: 'Fahrerbilder sparsam einsetzen',
-        paragraphs: [
-          'Mit Fahrer entsteht Haltung. Ohne Fahrer entsteht Objektpraesenz. Beide Varianten koennen stark sein, wenn sie bewusst getrennt und nicht zufaellig gemischt werden.',
-        ],
-      },
-    ],
-    faq: [
-      { question: 'Sind Fahrerportraits sinnvoll?', answer: 'Ja, wenn die Person Teil der Geschichte ist. Fuer reine Verkaufsbilder kann das Motorrad allein klarer sein.' },
-      { question: 'Welche Location passt zu einem Custom Bike?', answer: 'Das haengt von Material und Stil ab. Werkstatt, Architektur oder ruhige Strassenkante funktionieren besser als beliebige Kulissen.' },
-    ],
-  },
-]
-
-const featureArticle: JournalArticle = {
-  legacyFile: 'blog-automotive-fotografie-duesseldorf.html',
-  seoTitle: 'Automotive-Fotografie Düsseldorf | Matthias Ramahi',
-  title: 'Automotive-Fotografie in Düsseldorf: Licht, Standort, Karosserie.',
-  titleHtml: 'Automotive-Fotografie in Düsseldorf: <em>Licht, Standort, Karosserie.</em>',
-  description:
-    'Automotive-Fotografie in Düsseldorf: Licht, Standort und Karosserie bewusst planen, damit Fahrzeugbilder für Verkauf, Marke und Kampagne funktionieren.',
-  category: 'Automotive',
-  categoryHref: 'automobil-fotografie-duesseldorf.html',
-  minutes: '5 Minuten',
-  dateLabel: '12. Mai 2026',
-  dateTime: '2026-05-12',
-  heroImage: 'assets/optimized/assets-photos-automobil-neon-1920.webp',
-  heroImageAlt: 'Automobil in neonartigem Licht',
-  variant: 'feature',
-  links: [
-    { label: 'Automobil-Fotografie Düsseldorf — Leistungen und Pakete', href: 'automobil-fotografie-duesseldorf.html' },
-    { label: 'Wie eine Bildserie kuratiert wird', href: 'blog-serie-kuratieren.html' },
-    { label: 'Location Scouting für starke Motive', href: 'blog-location-scouting-duesseldorf.html' },
-  ],
-  sections: [
-    {
-      id: 'standort',
-      kicker: '01',
-      title: 'Der Standort kommt zuerst',
-      subheading: 'Drei Düsseldorfer Standortkategorien',
-      paragraphs: [
-        'Ein gutes Automobil-Bild entsteht nicht beim Auslösen. Es entsteht in vier Entscheidungen, die zwei Tage vorher getroffen werden müssen — Standort, Lichtquelle, Perspektive zur Karosserie, Tageszeit. Wer diese vier richtig setzt, hat ein Bild. Wer sie offen lässt, hat ein Produktfoto.',
-        'Düsseldorf hat als Stadt eine eigene Lichtsignatur. Die Wasserflächen am Hafen, die Glasflächen in Derendorf, der dunkle Asphalt am Rheinufer und die Tunnel- und Brückenkanten am Medienhafen liefern alle eine andere Art von Licht. Das ist kein Zufall, das ist Material — und der erste Teil jeder Bildplanung ist die Frage, welches dieser Materialien das Fahrzeug am besten trägt.',
-        'Der häufigste Fehler in der Automobil-Fotografie ist die Reihenfolge: erst Auto, dann Location suchen. Richtig ist umgekehrt — der Charakter des Fahrzeugs entscheidet, welche Stadtarchitektur ihn trägt. Ein 911er der 80er Jahre will warmes Schmiedeisen, Backstein und urbane Schmalheit. Ein moderner GT will Glasfront, gerade Linien und kühle Beton-Tiefe. Ein Oldtimer-Cabrio braucht ein offenes Bild — Wasserkante, Allee, kein Hintergrundlärm.',
-      ],
-      list: [
-        { label: 'Industriekante', text: 'Hafenbecken, Werften, Lagergebäude. Liefert raue Texturen und gerichtetes Reflexlicht von Wasserflächen.' },
-        { label: 'Glas und Beton', text: 'Medienhafen, Kö-Bogen, Düsseldorfer Stadttor. Liefert kühle Reflexe und klare geometrische Hintergründe.' },
-        { label: 'Allee und Park', text: 'Hofgarten, Nordpark, Schlossufer Benrath. Liefert weiches Streulicht und einen ruhigen, unaufgeräumten Hintergrund.' },
-      ],
-    },
-    {
-      id: 'licht',
-      kicker: '02',
-      title: 'Lichtkante schlägt Lichtwand',
-      paragraphsHtml: [
-        'Karosserie ist eine Spiegelfläche. Was sie zeigt, ist nicht das Fahrzeug, sondern die Lichtquelle. Eine Lichtwand — also flaches, gleichmäßiges Licht von vorne — erzeugt ein technisch sauberes Bild, aber kein lebendiges. Eine <strong>Lichtkante</strong> erzeugt Volumen: Sie zeichnet die Sicke an der Tür, die Schulter über dem Radlauf, den Übergang von Dach zu Heck.',
-        'Bei Tageslicht heißt das: 60–80 Minuten vor Sonnenuntergang, Fahrzeug quer zum Sonnenstand, die Lichtkante läuft von oben links nach unten rechts über die Karosserie. Bei Nacht: eine einzige starke Reflexquelle (Stadtlicht, Tankstelle, Glasfassade) und Position so wählen, dass diese Quelle sich nicht zentral, sondern entlang der Schulter spiegelt.',
-      ],
-      figure: {
-        image: 'assets/optimized/assets-photos-automobil-sunset-1920.webp',
-        alt: 'Automobil im warmen Streiflicht der Goldenen Stunde - Düsseldorf',
-        caption: 'Goldene Stunde · Streiflicht entlang Schulter und Heck · Düsseldorf',
-        width: 1920,
-        height: 1280,
-      },
-    },
-    {
-      id: 'karosserie',
-      kicker: '03',
-      title: 'Karosserieform liest sich nur aus einer Richtung',
-      paragraphsHtml: [
-        'Jede Karosserie hat eine Leserichtung. Bei manchen Fahrzeugen — typischerweise Sportwagen mit starkem Sicken-Spiel — entsteht diese Leserichtung aus der Dreiviertel-Front, weil dort Motorhaube, Schweller und Radlauf gleichzeitig sichtbar sind. Bei anderen — etwa GT-Coupés mit langem Dachbogen — liest sich die Form besser aus der Dreiviertel-Heck. Bei Cabrios meistens nur aus tieferer Augenhöhe.',
-        'Praktisch heißt das: Vor dem ersten Auslöser einmal um das Fahrzeug gehen, an drei Standardpositionen (Front-DV, reine Seite, Heck-DV) jeweils kurz ins Sucherbild schauen — und sich entscheiden, welche dieser drei dem Fahrzeug die meiste Form gibt. Dann diese als <strong>Hero-Achse</strong> festhalten und nur Variationen davon fotografieren.',
-      ],
-      quote: {
-        text: 'Ein Fahrzeug fotografisch zu verstehen heißt, seine Hero-Achse zu finden. Alles andere ist Variation.',
-        cite: 'Werkstattnotiz',
-      },
-    },
-    {
-      id: 'tageszeit',
-      kicker: '04',
-      title: 'Tageszeit ist eine Entscheidung',
-      paragraphs: [
-        'Es gibt für jedes Automobil-Bild ein 30-Minuten-Fenster, in dem das Licht, der Verkehr, die Reflexionen und die Stimmung zusammenpassen. Außerhalb dieses Fensters sind die einzelnen Faktoren technisch ähnlich gut, das Bild wirkt aber nicht. Das Fenster ist meistens:',
-      ],
-      list: [
-        { label: 'Goldene Stunde', text: '60 Minuten vor Sonnenuntergang, für warme Schulter-Streiflichter' },
-        { label: 'Blaue Stunde', text: '15 Minuten nach Sonnenuntergang, für Wechselspiel aus Tageslicht und Stadtbeleuchtung' },
-        { label: 'Tiefe Nacht', text: 'Wenn Verkehr weg ist und Reflexquellen sich isoliert auf der Karosserie zeichnen lassen' },
-        { label: 'Bewölkter Vormittag', text: 'Wenn die Karosseriefarbe matt und gedämpft erscheinen soll (Editorial-Look)' },
-      ],
-      inlineCta: {
-        title: 'Automotive-Shooting planen',
-        text: 'Standort-Scouting, Tageszeitfenster und Hero-Achse vorab im Briefing definiert.',
-        href: 'contact.html',
-        label: 'Projekt anfragen →',
-      },
-    },
-    {
-      id: 'auswahl',
-      kicker: '05',
-      title: 'Auswahl ist Teil des Bildes',
-      paragraphs: [
-        'Nach dem Shooting liegen typischerweise 60–120 Frames vor. Davon werden 8–14 für die Auslieferung kuratiert — nicht die zehn technisch besten, sondern eine Sequenz, die einer Dramaturgie folgt: Hero · Detail · Stimmung · Zeichnung der Linie · ein Bruch · Schluss. Das ist nicht Bildbearbeitung im engeren Sinn, sondern Kuration. Der Unterschied zwischen einer Automobil-Bildstrecke und einem Produktfoto liegt zu 40 % in dieser Reihenfolge.',
-      ],
-    },
-    {
-      id: 'fazit',
-      kicker: '06',
-      title: 'Fazit',
-      paragraphs: [
-        'Automotive-Fotografie ist nicht eine Frage der Ausrüstung. Sie ist eine Frage von Reihenfolge: Standort, Lichtquelle, Hero-Achse, Tageszeitfenster, Kuration. Wer diese fünf Entscheidungen vor dem Auslöser trifft, kommt mit weniger Frames, aber stärkeren Bildern zurück. In Düsseldorf hilft die Stadt selbst dabei — sie liefert pro Stadtteil ein anderes Material. Man muss nur entscheiden, welches dem Fahrzeug gehört.',
-      ],
-    },
-  ],
-  author: {
-    image: 'assets/portraits/_DSC9301-Enhanced-NR.webp',
-    text: 'Fotograf mit Schwerpunkt Automobil und Portrait. Arbeitet aus Düsseldorf für Kunden in NRW und deutschlandweit: Editorial, Marken-Shootings, Sammlerfahrzeuge, Auktionskataloge.',
-  },
-  relatedCards: [
-    {
-      href: 'blog-serie-kuratieren.html',
-      label: 'Wie eine Serie kuratiert wird',
-      image: 'assets/optimized/assets-photos-oldtimer-stage-1920.webp',
-      imageAlt: 'Oldtimer Szene in dunklem Licht',
-      category: 'Prozess',
-      minutes: '6 Min',
-      title: 'Wie eine Serie kuratiert wird.',
-      text: 'Von der ersten Auswahl bis zur Reihenfolge, die beim Betrachten Spannung hält.',
-    },
-    {
-      href: 'blog-location-scouting-duesseldorf.html',
-      label: 'Location Scouting fuer starke Motive',
-      image: 'assets/optimized/assets-photos-landschaft-1920.webp',
-      imageAlt: 'Landschaftsmotiv mit starker Tiefe',
-      category: 'Location',
-      minutes: '4 Min',
-      title: 'Location Scouting für starke Motive.',
-      text: 'Wie Orte ausgewählt werden, bevor Kamera und Licht überhaupt aufgebaut sind.',
-    },
-    {
-      href: 'blog-oldtimer-wertobjekt.html',
-      label: 'Oldtimer als Wertobjekt',
-      image: 'assets/optimized/assets-photos-oldtimer-stage-1920.webp',
-      imageAlt: 'Oldtimer in Bühnenlicht',
-      category: 'Oldtimer',
-      minutes: '3 Min',
-      title: 'Oldtimer als Wertobjekt.',
-      text: 'Warum Zurückhaltung oft hochwertiger wirkt als dramatischer Dauer-Effekt.',
-    },
-  ],
-  cta: {
-    title: 'Automotive-Shooting planen.',
-    text: 'Briefing mit Fahrzeug, Wunschstandort und Zeitraum — Standort-Scouting und Tageszeitfenster werden vorab abgestimmt.',
-    primaryHref: 'contact.html',
-    primaryLabel: 'Projekt anfragen',
-    secondaryHref: 'automobil-fotografie-duesseldorf.html',
-    secondaryLabel: 'Leistungen ansehen',
-  },
+  tags: string[]
 }
 
 export const journalClusterProfiles: Record<
@@ -627,10 +139,14 @@ export const journalClusterProfiles: Record<
   },
 }
 
-export function journalClusterFor(article: JournalArticle): JournalCluster {
-  if (article.cluster) return article.cluster
+const clusterValues = new Set<JournalCluster>(Object.keys(journalClusterProfiles) as JournalCluster[])
 
-  const haystack = `${article.category} ${article.legacyFile} ${article.commercialHref || ''}`.toLowerCase()
+function clusterForDocument(document: JournalSourceDocument): JournalCluster {
+  if (document.category && clusterValues.has(document.category as JournalCluster)) {
+    return document.category as JournalCluster
+  }
+
+  const haystack = `${document.category || ''} ${document.slug || ''}`.toLowerCase()
   if (haystack.includes('sportwagen')) return 'sports-car'
   if (haystack.includes('oldtimer') || haystack.includes('classic')) return 'classic-car'
   if (haystack.includes('motorrad') || haystack.includes('bike')) return 'motorcycle'
@@ -640,44 +156,103 @@ export function journalClusterFor(article: JournalArticle): JournalCluster {
   return 'automotive'
 }
 
-function enrichJournalArticle(article: JournalArticle): JournalArticle {
-  const cluster = journalClusterFor(article)
+const normalizeHref = (href?: string) => (href || '').replace(/^\//, '')
+
+function usefulLinks(document: JournalSourceDocument, profile: (typeof journalClusterProfiles)[JournalCluster]) {
+  const links: JournalArticleLink[] = (document.relatedPages || [])
+    .filter((link) => Boolean(link.href && link.label))
+    .map((link) => ({ description: link.description, href: normalizeHref(link.href), label: link.label || '' }))
+    .filter((link) => !['', 'index.html', 'blog.html', 'ueber-mich.html'].includes(link.href))
+
+  if (!links.some((link) => link.href === profile.href)) {
+    links.unshift({ href: profile.href, label: `${profile.label}-Fotografie` })
+  }
+
+  return links.slice(0, 5)
+}
+
+function slugify(value: string, fallback: string) {
+  const slug = value
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '')
+  return slug || fallback
+}
+
+function dateLabel(value?: string) {
+  if (!value) return ''
+  const date = new Date(value)
+  if (Number.isNaN(date.getTime())) return value
+  return new Intl.DateTimeFormat('de-DE', { day: 'numeric', month: 'long', year: 'numeric' }).format(date)
+}
+
+function articleFromDocument(document: JournalSourceDocument, modulePath: string): JournalArticle | null {
+  if (document.status === 'draft' || !document.slug || !document.title || !document.coverImage) return null
+
+  const cluster = clusterForDocument(document)
   const profile = journalClusterProfiles[cluster]
+  const blocks = document.blocks || []
+  const sections = blocks.flatMap((block, index): JournalArticleSection[] => {
+    if (block._template !== 'textBlock' || !block.headline || !block.body) return []
+    return [{
+      id: slugify(block.headline, `abschnitt-${index + 1}`),
+      kicker: block.eyebrow,
+      title: block.headline,
+      paragraphs: block.body.split(/\n\s*\n/).map((paragraph) => paragraph.trim()).filter(Boolean),
+    }]
+  })
+  const faqBlock = blocks.find((block) => block._template === 'faqBlock')
+  const faq = faqBlock?._template === 'faqBlock'
+    ? (faqBlock.items || [])
+        .filter((item) => Boolean(item.answer && item.question))
+        .map((item) => ({ answer: item.answer || '', question: item.question || '' }))
+    : undefined
+  const filename = modulePath.split('/').pop()?.replace(/\.json$/i, '') || document.slug
+  const legacyFile = normalizeHref(document.seo?.legacyUrl) || `blog-${filename}.html`
+
   return {
-    ...article,
-    categoryHref: article.categoryHref || article.commercialHref || profile.href,
+    blocks,
+    category: profile.label,
+    categoryHref: profile.href,
     cluster,
-    commercialHref: article.commercialHref || article.categoryHref || profile.href,
-    tags: Array.from(new Set([...(article.tags || []), ...profile.tags])).slice(0, 6),
+    commercialHref: profile.href,
+    dateLabel: dateLabel(document.publishedAt),
+    dateTime: (document.publishedAt || '').slice(0, 10),
+    description: document.excerpt || '',
+    faq,
+    heroImage: document.coverImage.replace(/^\//, ''),
+    heroImageAlt: document.coverAlt || `${document.title} – Fotografie von Matthias Ramahi`,
+    legacyFile,
+    links: usefulLinks(document, profile),
+    minutes: `${Math.max(1, Number(document.readingTime) || 5)} Min`,
+    sections,
+    seoTitle: document.seo?.title,
+    tags: Array.from(new Set([...(document.tags || []), ...profile.tags])).slice(0, 6),
+    title: document.title,
   }
 }
 
-export const journalArticles: JournalArticle[] = [
-  featureArticle,
-  ...restoredJournalArticles,
-  ...automotiveJournalArticles,
-  ...motorcycleJournalArticles,
-  ...portraitJournalArticles,
-  ...supportArticles,
-]
-  .map(enrichJournalArticle)
+export const journalArticles: JournalArticle[] = Object.entries(journalModules)
+  .map(([modulePath, document]) => articleFromDocument(document, modulePath))
+  .filter((article): article is JournalArticle => Boolean(article))
   .sort((left, right) => right.dateTime.localeCompare(left.dateTime))
 
+export function journalClusterFor(article: JournalArticle): JournalCluster {
+  return article.cluster
+}
+
 export function getRelatedJournalArticles(article: JournalArticle, limit = 3): JournalArticle[] {
-  const currentCluster = journalClusterFor(article)
-  const currentTags = new Set((article.tags || []).map((tag) => tag.toLocaleLowerCase('de-DE')))
-  const existingTargets = new Set(article.links.map((link) => link.href.replace(/^\//, '')))
+  const currentTags = new Set(article.tags.map((tag) => tag.toLocaleLowerCase('de-DE')))
+  const existingTargets = new Set(article.links.map((link) => normalizeHref(link.href)))
 
   return journalArticles
-    .filter(
-      (candidate) =>
-        candidate.legacyFile !== article.legacyFile && !existingTargets.has(candidate.legacyFile.replace(/^\//, '')),
-    )
+    .filter((candidate) => candidate.legacyFile !== article.legacyFile && !existingTargets.has(candidate.legacyFile))
     .map((candidate) => {
-      const candidateCluster = journalClusterFor(candidate)
-      const tagOverlap = (candidate.tags || []).filter((tag) => currentTags.has(tag.toLocaleLowerCase('de-DE'))).length
+      const tagOverlap = candidate.tags.filter((tag) => currentTags.has(tag.toLocaleLowerCase('de-DE'))).length
       const sameCommercialPath = candidate.commercialHref === article.commercialHref ? 1 : 0
-      const score = (candidateCluster === currentCluster ? 100 : 0) + tagOverlap * 15 + sameCommercialPath * 20
+      const score = (candidate.cluster === article.cluster ? 100 : 0) + tagOverlap * 15 + sameCommercialPath * 20
       return { candidate, score }
     })
     .sort((left, right) => right.score - left.score || right.candidate.dateTime.localeCompare(left.candidate.dateTime))

@@ -14,43 +14,55 @@
   "readingTime": 8,
   "blocks": [
     {
-      "eyebrow": "01",
       "headline": "Lightpainting beginnt mit einer Bildidee, nicht mit einer Lampe",
       "body": "Eine lange Belichtung und eine bewegte Lichtquelle können nahezu jede Fläche sichtbar machen. Das bedeutet noch nicht, dass ein gutes Fahrzeugbild entsteht. Vor dem Aufbau wird festgelegt, welche Linien wichtig sind: Dachbogen, Schulter, Front, Felge oder Innenraum. Das Licht soll diese Form erklären und nicht bloß beweisen, dass die Technik funktioniert.\n\nAuch die spätere Nutzung entscheidet über die Bildsprache. Ein einzelnes dramatisches Hero-Motiv darf stärker verdichtet sein als eine Serie für Marke oder Händler. Für mehrere Formate braucht es Platz, saubere Kanten und Varianten. Lightpainting ist dann ein kontrollierter Produktionsbaustein, kein Effekt, der alle anderen Entscheidungen ersetzt.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "02",
       "headline": "Die Location muss bei Dunkelheit beherrschbar bleiben",
       "body": "Öffentlicher Verkehr, unklare Zufahrten und frei zugängliche Wege passen nicht zu Personen, die sich während langer Belichtungen um ein dunkles Fahrzeug bewegen. Geeignet ist eine genehmigte oder private Fläche mit klaren Grenzen, sicherem Untergrund und kontrollierbarer Beleuchtung. Der Ort wird bei Tageslicht besichtigt, nicht erst beim Aufbau entdeckt.\n\nStolperkanten, Kabel, Stative und niedrige Fahrzeugteile werden sichtbar markiert, ohne ins Bild zu leuchten. Das Team kennt Arbeitsbereich und Tabuzonen. Eine Person behält Umgebung und Ablauf im Blick, während fotografiert wird. Sobald sich die Fläche nicht mehr kontrollieren lässt, endet der Lightpainting-Teil – unabhängig davon, wie viele Varianten noch geplant waren.",
-      "_template": "textBlock"
+      "_template": "textBlock",
+      "style": "bridge"
     },
     {
-      "eyebrow": "03",
       "headline": "Eine saubere Basisbelichtung hält das Ergebnis glaubwürdig",
       "body": "Kamera und Fahrzeug bleiben während der Serie unverändert positioniert. Fokus, Brennweite und Stativ werden nach dem ersten scharfen Test nicht beiläufig angepasst. Zuerst entsteht eine neutrale Grundaufnahme für Umgebung, Räder und vorhandenes Licht. Sie bietet später einen verlässlichen Rahmen, selbst wenn einzelne Lichtzüge verworfen werden müssen.\n\nBelichtungszeit, Blende und ISO richten sich nicht nur nach der Taschenlampe. Auch Straßenleuchten, Fenster und Himmel müssen Zeichnung behalten. Zu helle Umgebungslichter begrenzen den Spielraum und erzeugen schwer kontrollierbare Farbflecken. Manchmal ist ein dunklerer Zeitpunkt oder eine andere Blickrichtung wirkungsvoller als eine leistungsstärkere Lichtquelle.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "04",
       "headline": "Lichtwege werden in kleine Aufgaben zerlegt",
       "body": "Statt das gesamte Fahrzeug in einem Durchlauf auszuleuchten, werden klare Bereiche geplant: Seite, Dach, Front, Felgen und gegebenenfalls Innenraum. Die Lichtquelle bewegt sich gleichmäßig und bleibt außerhalb direkter Spiegelungen. Abstand und Winkel bestimmen, ob eine breite weiche Fläche oder eine schmale harte Kante entsteht. Beides kann sinnvoll sein, aber nicht zufällig gemischt.\n\nJeder Durchlauf wird direkt kontrolliert. Sichtbare Lichtquelle, unruhige Helligkeit oder Körperreflexe sind Gründe für eine Wiederholung, nicht für spätere Rettungsversuche. Kleine, nachvollziehbare Ebenen beschleunigen die Auswahl und halten das Compositing transparent. Eine endlose Sammlung ähnlicher Belichtungen macht die Nachbearbeitung nicht flexibler, sondern unübersichtlich.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "05",
+      "headline": "Bildnotizen aus dem Portfolio",
+      "layout": "editorial-pair",
+      "items": [
+        {
+          "image": "/uploads/payload/_DSC3046_genErase%20(1).webp",
+          "caption": "Nachtaufnahme mit gezielt gesetzten Lichtkanten",
+          "cropIntent": "editorial"
+        },
+        {
+          "image": "/uploads/payload/_DSC3017.webp",
+          "caption": "Karosserielinien als Grundlage für einen kontrollierten Lichtaufbau",
+          "cropIntent": "editorial"
+        }
+      ],
+      "_template": "imageSequence"
+    },
+    {
       "headline": "Lack, Glas und Carbon brauchen unterschiedliche Winkel",
       "body": "Eine Lichtbewegung, die auf mattem Lack eine ruhige Fläche erzeugt, kann in Glas als harter Streifen erscheinen. Carbon und poliertes Metall reagieren wiederum kleinteiliger. Deshalb wird nicht versucht, alle Materialien mit einem einzigen Weg zu bedienen. Der Kamerawinkel bleibt fest, die Lichtposition verändert sich gezielt für die jeweilige Oberfläche.\n\nBesondere Vorsicht gilt Kennzeichen, Reflektoren und Chrom. Sie können so hell zurückwerfen, dass angrenzende Bereiche kaum noch Zeichnung besitzen. Ein separater, schwächerer Durchlauf ist meist sauberer. Wenn Materialstruktur für die Geschichte unwichtig ist, darf ein Bereich auch zurückhaltend bleiben. Vollständige Sichtbarkeit ist nicht dasselbe wie gute Blickführung.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "06",
       "headline": "Compositing ordnet echte Belichtungen, es erfindet kein anderes Fahrzeug",
       "body": "Beim Zusammensetzen werden ausgewählte Lichtflächen aus identischer Kameraposition kombiniert. Übergänge, Schatten und Reflexe müssen physikalisch nachvollziehbar bleiben. Wenn jede Karosserieseite aus einer anderen Lichtrichtung leuchtet, wirkt das Ergebnis trotz sauberer Masken unecht. Weniger Ebenen mit klarer Aufgabe ergeben häufig das stärkere Bild.\n\nFarbe wird ebenfalls begrenzt eingesetzt. Unterschiedliche Gel- oder LED-Farben können Akzente setzen, sollten Lack und Material aber nicht unbeabsichtigt verfälschen. Für dokumentarische oder verkaufsnahe Motive bleibt eine neutrale Variante erhalten. So lässt sich die inszenierte Aufnahme neben Bildern nutzen, die Ausstattung und Zustand verlässlich zeigen.",
-      "_template": "textBlock"
+      "_template": "textBlock",
+      "style": "bridge"
     },
     {
-      "eyebrow": "07",
       "headline": "Der Produktionsplan schützt Zeit und Pflichtmotive",
       "body": "Aufbau, Abdunklung, Test und mehrere Belichtungen benötigen mehr Zeit als eine klassische Standaufnahme. Die Shotlist trennt deshalb Pflichtmotiv, optionale Details und experimentelle Idee. Zuerst entstehen eine sichere Basis und die wichtigsten Lichtzüge. Erst danach folgen Farbvarianten oder komplexe Perspektiven. Ein vereinbartes Zeitlimit verhindert, dass ein Einzelbild die gesamte Produktion aufzehrt.\n\nZusätzlich braucht es eine normale Bildserie vor oder nach dem Lightpainting. Auftraggeber erhalten dadurch verwertbare Exterieur- und Detailbilder, auch wenn Wetter, Fremdlicht oder Zugang den Nachteffekt begrenzen. Gute Planung macht Lightpainting nicht weniger spektakulär. Sie sorgt dafür, dass das spektakuläre Bild Teil eines vollständigen Auftrags bleibt.",
       "_template": "textBlock"
@@ -92,5 +104,15 @@
   },
   "status": "published",
   "createdAt": "2026-08-17T06:00:00Z",
-  "updatedAt": "2026-08-17T06:00:00Z"
+  "updatedAt": "2026-08-24T20:51:37.603Z",
+  "relatedPages": [
+    {
+      "label": "Automobilfotografie",
+      "href": "/automobil-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    }
+  ],
+  "coverAlt": "Automobil mit kontrolliertem farbigem Licht in einer dunklen Umgebung"
 }

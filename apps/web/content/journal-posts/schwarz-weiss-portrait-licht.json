@@ -14,43 +14,54 @@
   "readingTime": 8,
   "blocks": [
     {
-      "eyebrow": "01",
       "headline": "Schwarz-Weiß braucht einen eigenen Bildgrund",
       "body": "Farbe wegzunehmen ist technisch einfach. Ein überzeugendes Schwarz-Weiß-Portrait verlangt trotzdem mehr als eine spätere Umwandlung. Farbe kann Flächen trennen, Stimmung setzen und den Blick führen. Fällt sie weg, übernehmen Helligkeit, Kontrast, Textur und Form diese Aufgaben. Ein rotes Oberteil vor einer grünen Wand kann farbig klar getrennt sein und in Graustufen nahezu denselben Tonwert bekommen.\n\nVor dem Shooting sollte deshalb feststehen, warum Schwarz-Weiß zur Nutzung passt. Für Presse, Editorial, Künstlerkommunikation oder eine persönliche Serie kann die Reduktion sehr präzise wirken. Wird sie nur als zusätzliche Exportvariante bestellt, ohne Kleidung und Hintergrund mitzudenken, bleibt häufig ein korrektes, aber austauschbares Nebenprodukt.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "02",
       "headline": "Tonwerttrennung ersetzt den Farbkontrast",
       "body": "Die wichtigste Kontrolle ist nicht, ob eine Fläche dunkel oder hell ist, sondern ob benachbarte Flächen voneinander lesbar bleiben. Dunkles Haar vor einem schwarzen Hintergrund kann verschwinden; ein helles Hemd kann mit einer hellen Wand zu einer einzigen Form werden. Kleine Veränderungen in Abstand, Perspektive oder Hintergrundhelligkeit schaffen mehr Trennung als eine aggressive Bearbeitung.\n\nEin monochromes Vorschaubild an der Kamera kann helfen, diese Beziehungen früh zu sehen. Die Rohdatei darf weiterhin Farbe enthalten. Entscheidend ist, dass am Set geprüft wird, wie Gesicht, Haare, Kleidung und Umgebung als Helligkeiten zusammenwirken. So wird Schwarz-Weiß nicht nachträglich über eine farbig gedachte Aufnahme gelegt, sondern ist Teil der Komposition.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "03",
       "headline": "Weiches Licht ist nicht automatisch flach",
       "body": "Eine große Lichtquelle kann Haut ruhig wiedergeben und trotzdem klare Form erzeugen, wenn sie seitlich genug steht. Wird sie direkt an der Kamera platziert, gleichen sich beide Gesichtshälften an. Das kann für einen sachlichen Headshot passen, nimmt einem charakterorientierten Schwarz-Weiß-Portrait aber schnell Tiefe.\n\nDer Übergang zwischen Licht und Schatten sollte zur Person und zum Medium passen. Für kleine Profilbilder dürfen wichtige Gesichtspartien nicht in einer dunklen Fläche verschwinden. Ein groß gedrucktes Editorial verträgt feinere Abstufungen und deutlich tiefere Schatten. Kontrast ist daher keine feste Stilzutat. Er wird so gesetzt, dass das Bild in seiner tatsächlichen Größe funktioniert.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "04",
-      "headline": "Hartes Licht zeigt Struktur und verlangt Präzision",
-      "body": "Eine kleinere oder weiter entfernte Quelle erzeugt klarere Schattenkanten. Das kann Gesicht, Hände und Kleidung grafisch ordnen und passt zu einer entschiedenen, redaktionellen Bildsprache. Gleichzeitig werden Hautstruktur, Glanz und kleine Positionsänderungen sichtbarer. Hartes Licht ist nicht ehrlicher als weiches; es betont lediglich andere Informationen.\n\nDie Position muss genauer geführt werden. Schon eine leichte Drehung verändert den Schatten der Nase oder lässt ein Auge deutlich dunkler werden. Deshalb sollte die Person nicht in einer starren Pose festgehalten werden, sondern innerhalb eines verständlichen Bereichs arbeiten. Markierungen am Boden und eine klare Blickrichtung erhalten Beweglichkeit, ohne die Lichtwirkung bei jedem Bild neu aufzubauen.",
-      "_template": "textBlock"
+      "headline": "Bildnotizen aus dem Portfolio",
+      "layout": "editorial-pair",
+      "items": [
+        {
+          "image": "/assets/portfolio/_DSC9321-Enhanced-NR.webp",
+          "caption": "Nahes Portrait mit klarer grafischer Wirkung",
+          "cropIntent": "editorial"
+        },
+        {
+          "image": "/assets/portfolio/_DSC9301-Enhanced-NR.webp",
+          "caption": "Reduziertes Portrait, das über Licht und Ausdruck funktioniert",
+          "cropIntent": "editorial"
+        }
+      ],
+      "_template": "imageSequence"
     },
     {
-      "eyebrow": "05",
+      "headline": "Hartes Licht zeigt Struktur und verlangt Präzision",
+      "body": "Eine kleinere oder weiter entfernte Quelle erzeugt klarere Schattenkanten. Das kann Gesicht, Hände und Kleidung grafisch ordnen und passt zu einer entschiedenen, redaktionellen Bildsprache. Gleichzeitig werden Hautstruktur, Glanz und kleine Positionsänderungen sichtbarer. Hartes Licht ist nicht ehrlicher als weiches; es betont lediglich andere Informationen.\n\nDie Position muss genauer geführt werden. Schon eine leichte Drehung verändert den Schatten der Nase oder lässt ein Auge deutlich dunkler werden. Deshalb sollte die Person nicht in einer starren Pose festgehalten werden, sondern innerhalb eines verständlichen Bereichs arbeiten. Markierungen am Boden und eine klare Blickrichtung erhalten Beweglichkeit, ohne die Lichtwirkung bei jedem Bild neu aufzubauen.",
+      "_template": "textBlock",
+      "style": "bridge"
+    },
+    {
       "headline": "Haut und Kleidung reagieren in Graustufen anders",
       "body": "Unterschiedliche Hauttöne brauchen keine pauschal andere Lichtidee, aber eine sorgfältige Belichtung und Kontrolle der Spitzlichter. Glanzstellen auf Stirn, Nase oder Wange können monochrom stärker auffallen, weil Farbe sie nicht mehr einordnet. Mattierung, Winkel und Größe der Quelle sind dabei oft wirksamer als spätere lokale Korrekturen.\n\nBei Kleidung zählen Material und Helligkeit. Schwarzer Samt schluckt Licht anders als schwarzes Leder; ein weißes Hemd kann noch Zeichnung behalten oder als geschlossene helle Fläche erscheinen. Eine Testaufnahme sollte deshalb nicht nur am Gesicht beurteilt werden. Das gesamte Outfit muss im vorgesehenen Schwarz-Weiß-Look Struktur zeigen, ohne mit dem Gesicht um Aufmerksamkeit zu konkurrieren.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "06",
       "headline": "Die Umwandlung legt eine Interpretation fest",
       "body": "Bei der Bearbeitung lassen sich ursprüngliche Farben unterschiedlich hell übersetzen. Dadurch kann Haut ruhiger, ein Hintergrund dunkler oder ein Kleidungsstück deutlicher getrennt werden. Diese Freiheit ersetzt keine saubere Aufnahme, sie präzisiert sie. Extreme Regler erzeugen schnell ungleichmäßige Haut oder sichtbare Übergänge an Haaren und Kanten.\n\nEine konsistente Serie braucht einen gemeinsamen Tonwertcharakter. Wenn jedes Bild einzeln auf maximalen Effekt bearbeitet wird, springen Schwarzwert, Hauthelligkeit und Körnung. Besser ist ein definierter Grundlook, der anschließend pro Motiv vorsichtig angepasst wird. Die Bilder dürfen unterschiedliche Kontraste haben, sollten aber erkennbar aus derselben visuellen Entscheidung stammen.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "07",
       "headline": "Farbe und Schwarz-Weiß sollten nicht um dieselbe Rolle konkurrieren",
       "body": "Wer beide Fassungen benötigt, sollte vorab klären, ob sie gleichwertig eingesetzt werden oder unterschiedliche Aufgaben übernehmen. Für eine Website kann Farbe die Hauptserie tragen, während Schwarz-Weiß als ruhige Editorial-Auswahl erscheint. Für ein Album oder eine Pressemeldung kann es genau umgekehrt sein. Ohne Hierarchie landen oft zwei ähnliche Serien nebeneinander, von denen keine konsequent kuratiert ist.\n\nDie finale Auswahl sollte daher nicht automatisch jedes Motiv doppelt enthalten. Manche Bilder leben von Farbflächen, andere werden durch die Reduktion stärker. Schwarz-Weiß ist dann überzeugend, wenn Licht, Tonwerte und Ausdruck eine eigenständige Bildaussage bilden. Die Entscheidung fällt bei Aufnahme und Auswahl – nicht erst beim Klick auf eine Vorgabe im Entwicklungsprogramm.",
       "_template": "textBlock"
@@ -92,5 +103,15 @@
   },
   "status": "published",
   "createdAt": "2026-08-07T09:00:00.000Z",
-  "updatedAt": "2026-08-07T09:00:00.000Z"
+  "updatedAt": "2026-08-24T20:51:37.613Z",
+  "relatedPages": [
+    {
+      "label": "Portraitfotografie",
+      "href": "/portraitfotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    }
+  ],
+  "coverAlt": "Enges Portrait eines laechelnden Mannes vor einem zurueckhaltenden Hintergrund"
 }

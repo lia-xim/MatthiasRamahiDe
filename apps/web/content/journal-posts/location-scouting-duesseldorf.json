@@ -6,7 +6,11 @@
   "publishedAt": "2026-05-27T18:22:56.000Z",
   "excerpt": "Wie Orte fuer Automotive-, Portrait- und Landschaftsfotografie ausgewaehlt werden: Licht, Zugang, Hintergrund, Ruhe und Nutzungsziel.",
   "coverImage": "/uploads/payload/assets-photos-landschaft-1921.webp",
-  "tags": ["Location", "Briefing", "Wetter"],
+  "tags": [
+    "Location",
+    "Briefing",
+    "Wetter"
+  ],
   "relatedPages": [
     {
       "label": "Home",
@@ -65,6 +69,23 @@
       "_template": "textBlock"
     },
     {
+      "headline": "Bildnotizen aus dem Portfolio",
+      "layout": "editorial-pair",
+      "items": [
+        {
+          "image": "/assets/optimized/assets-photos-landschaft-1920.webp",
+          "caption": "Offene Landschaft mit Tiefe und ruhigem Horizont",
+          "cropIntent": "editorial"
+        },
+        {
+          "image": "/assets/optimized/assets-photos-automobil-sunset-1920.webp",
+          "caption": "Fahrzeuglocation mit gerichtetem Abendlicht",
+          "cropIntent": "editorial"
+        }
+      ],
+      "_template": "imageSequence"
+    },
+    {
       "headline": "Ort und Suchintention verbinden",
       "body": "Fuer lokale SEO-Seiten ist Location nicht nur ein Keyword. Sie muss zeigen, warum ein Auftrag in Duesseldorf, NRW oder einer konkreten Stadt sinnvoll geplant werden kann. Ein guter Ort ergaenzt deshalb die Suchintention: Er macht sichtbar, ob es um Verkauf, Markenwirkung, persoenliche Praesenz oder eine ruhige redaktionelle Serie geht.",
       "_template": "textBlock"
@@ -111,8 +132,9 @@
     "extractedImagePaths": [],
     "extractedText": "Home / Journal / Location Location · 4 Min Location Scouting fuer starke Motive Wie Orte fuer Automotive-, Portrait- und Landschaftsfotografie ausgewaehlt werden: Licht, Zugang, Hintergrund, Ruhe und Nutzungsziel. Matthias Ramahi Aktualisiert 27.05.2026 Dieser Beitrag stuetzt die SEO-Cluster der Fotografie-Seiten und fuehrt zu passenden Leistungs- und Standortseiten weiter. Fotografie Duesseldorf Automobil Fotografie Duesseldorf Portraitfotografie Duesseldorf 01 Ein Ort muss arbeiten Eine Location ist nicht nur Kulisse. Sie bestimmt Licht, Linien, Abstand, Ruhe und organisatorischen Ablauf. Gute Orte helfen dem Motiv, statt sich davorzudraengen. 02 Lichtfenster zuerst Der gleiche Ort kann morgens weich, mittags flach und abends cineastisch wirken. Deshalb beginnt Scouting mit Sonnenstand, Schatten, Reflexionsflaechen und der Frage, wann ein Motiv wirklich atmen kann. 03 Zugang und Stoerungen planen Parken, Publikumsverkehr, Genehmigungen und Wetteroptionen sind technische SEO-fremde, aber fotografisch entscheidende Faktoren. Eine starke Serie entsteht leichter, wenn diese Reibung vorher geloest ist. 04 Ort und Suchintention verbinden Fuer lokale SEO-Seiten ist Location nicht nur ein Keyword. Sie muss zeigen, warum ein Auftrag in Duesseldorf, NRW oder einer konkreten Stadt sinnvoll geplant werden kann. Ein guter Ort ergaenzt deshalb die Suchintention: Er macht sichtbar, ob es um Verkauf, Markenwirkung, persoenliche Praesenz oder eine ruhige redaktionelle Serie geht. Kurze Fragen. Wird die Location vorab festgelegt? Ja, zumindest die Richtung. Je nach Wetter und Motiv koennen Alternativen vorbereitet werden."
   },
-  "updatedAt": "2026-05-28T19:07:53.492Z",
+  "updatedAt": "2026-08-24T20:44:39.161Z",
   "createdAt": "2026-05-28T19:07:35.507Z",
   "status": "published",
-  "payloadId": "3"
+  "payloadId": "3",
+  "coverAlt": "Landschaftsmotiv mit starker Tiefe"
 }

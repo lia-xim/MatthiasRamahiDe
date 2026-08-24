@@ -14,43 +14,55 @@
   "readingTime": 8,
   "blocks": [
     {
-      "eyebrow": "01",
       "headline": "Regen ist keine Kulisse, sondern verändert jede Oberfläche",
       "body": "Nasser Asphalt spiegelt Himmel, Straßenlicht und Konturen deutlich stärker als trockener Boden. Lack wirkt satter, Chrom bekommt lange Lichtzüge und dunkle Bauteile lösen sich besser vom Untergrund. Diese Wirkung entsteht aber nicht durch möglichst starken Regen. Oft reicht eine bereits nasse Fläche bei nachlassendem Niederschlag, weil dann Motiv, Kamera und Beteiligte kontrollierter arbeiten können.\n\nVor dem Termin sollte klar sein, welche Art von Wetterbild gesucht wird: sachlich-kühl, urban mit punktuellen Reflexen oder ruhig und fast monochrom. Ohne diese Entscheidung wird jede Pfütze zur vermeintlichen Idee. Eine definierte Farbrichtung hilft bei Location, Uhrzeit und Lichtwahl und verhindert, dass das Motorrad in einem unruhigen Gemisch aus Warnleuchten und Reklamen verschwindet.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "02",
       "headline": "Das stärkste Regenbild kann ein stehendes Motorrad zeigen",
       "body": "Nässe reduziert Haftung, verlängert Bremswege und macht Markierungen, Laub, Metall und Kopfsteinpflaster problematisch. Für ein Foto gibt es keinen Grund, diese Bedingungen durch schnelle oder enge Fahrmanöver zusätzlich zu belasten. Ein stehendes Bike lässt sich mit tiefem Blickwinkel, Lichtspur und sichtbarer Straße dynamisch erzählen, ohne eine Fahrsituation zu inszenieren.\n\nDer Standort braucht einen sicheren Stellplatz außerhalb laufender Verkehrsflächen. Fahrer, Fotograf und Assistenz müssen sich bewegen können, ohne auf rutschige Kanten auszuweichen. Wenn Wasser steigt, Sicht schlechter wird oder Wind die Kontrolle über Ausrüstung beeinträchtigt, wird abgebrochen. Regenästhetik ist austauschbar; Sicherheit nicht.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "03",
-      "headline": "Seitliches Licht zeichnet Tropfen und Karosserie zugleich",
-      "body": "Frontales Licht flacht Tropfen und Lack oft ab. Eine seitliche oder leicht rückwärtige Quelle erzeugt dagegen Kanten an Tank, Verkleidung und Wasserfilm. Vorhandene Straßenbeleuchtung kann dafür reichen, wenn ihre Farbe und Position bewusst gelesen werden. Ein zusätzliches Licht sollte nicht einfach Helligkeit liefern, sondern eine bestimmte Linie auf dem Motorrad erklären.\n\nGroße Lichtformer sind bei Wind und Nässe schwer zu kontrollieren. Ein kleiner, sicher positionierter Aufbau oder geschütztes vorhandenes Licht ist oft sinnvoller. Kabel, Stative und Taschen liegen nicht in Gehwegen oder Wasserläufen. Die fotografische Entscheidung lautet nicht „mehr Technik“, sondern: Welche eine Reflexkante trennt das Motorrad sauber von der Umgebung?",
-      "_template": "textBlock"
+      "headline": "Bildnotizen aus dem Portfolio",
+      "layout": "editorial-pair",
+      "items": [
+        {
+          "image": "/assets/optimized/assets-photos-motorrad-ninja-road-1920.webp",
+          "caption": "Motorradmotiv mit kühler, wetterbetonter Lichtstimmung",
+          "cropIntent": "editorial"
+        },
+        {
+          "image": "/uploads/payload/_DSC6979.webp",
+          "caption": "Nahes Motorradmotiv, bei dem Oberflächen und Reflexe sichtbar werden",
+          "cropIntent": "editorial"
+        }
+      ],
+      "_template": "imageSequence"
     },
     {
-      "eyebrow": "04",
+      "headline": "Seitliches Licht zeichnet Tropfen und Karosserie zugleich",
+      "body": "Frontales Licht flacht Tropfen und Lack oft ab. Eine seitliche oder leicht rückwärtige Quelle erzeugt dagegen Kanten an Tank, Verkleidung und Wasserfilm. Vorhandene Straßenbeleuchtung kann dafür reichen, wenn ihre Farbe und Position bewusst gelesen werden. Ein zusätzliches Licht sollte nicht einfach Helligkeit liefern, sondern eine bestimmte Linie auf dem Motorrad erklären.\n\nGroße Lichtformer sind bei Wind und Nässe schwer zu kontrollieren. Ein kleiner, sicher positionierter Aufbau oder geschütztes vorhandenes Licht ist oft sinnvoller. Kabel, Stative und Taschen liegen nicht in Gehwegen oder Wasserläufen. Die fotografische Entscheidung lautet nicht „mehr Technik“, sondern: Welche eine Reflexkante trennt das Motorrad sauber von der Umgebung?",
+      "_template": "textBlock",
+      "style": "bridge"
+    },
+    {
       "headline": "Wetterschutz muss den Arbeitsfluss vereinfachen",
       "body": "Eine geeignete Regenhülle, trockene Tücher und ein klarer Platz für Wechselobjektive verhindern improvisierte Rettungsaktionen. Objektive werden möglichst nicht im offenen Regen gewechselt. Tropfen auf der Frontlinse sind nicht grundsätzlich kreativ; häufig erzeugen sie nur matte Flecken und unkontrollierbare Lichthöfe. Ein kurzer Sichtcheck vor jeder neuen Bildrolle spart später unrettbare Motive.\n\nAkkus und Speicherkarten bleiben trocken und körpernah. Nach dem Termin kommt die Kamera nicht direkt aus kalter Nässe in sehr warme Luft, ohne Kondensation mitzudenken. Diese Routine hat wenig mit spektakulärer Fototechnik zu tun, schützt aber Daten und Ausrüstung – und lässt am Set mehr Konzentration für Perspektive und Timing.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "05",
       "headline": "Wasser zeigt Material – und jeden unbeabsichtigten Fleck",
       "body": "Ein gleichmäßiger Wasserfilm kann Lack und Tankform betonen. Fettige Schlieren, schmutzige Spritzer oder Rückstände von Reinigungsmitteln werden dagegen im Gegenlicht deutlich. Vor Beginn werden die bildwichtigen Flächen vorbereitet, ohne sicherheitsrelevante Komponenten oder Reifen mit ungeeigneten Pflegemitteln zu behandeln. Die Verantwortung für den technischen Zustand bleibt beim Halter.\n\nNicht jedes Motorrad profitiert von derselben Nässe. Mattlack reagiert anders als Hochglanz, offen liegende Mechanik anders als eine voll verkleidete Maschine. Statt alles permanent nass zu halten, wird beobachtet, welche Fläche die Form tatsächlich unterstützt. Nach einzelnen Einstellungen darf das Motiv neu beurteilt werden, bevor unnötig weitergearbeitet wird.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "06",
       "headline": "Mischlicht braucht eine klare Hierarchie",
       "body": "Regenabende bringen oft warmes Kunstlicht, blauen Himmel und farbige Reflexe gleichzeitig zusammen. Das kann Tiefe erzeugen, wird aber schnell beliebig. Eine Lichtfarbe sollte führen; die anderen bleiben Akzent. Bei einer grünen oder roten Maschine kann eine weitere gesättigte Farbe den Lack entwerten, während neutrales Seitenlicht Material und Farbton sauber hält.\n\nIn der Bearbeitung werden Tropfen, Kontrast und Farbsäume nicht bis zur Unwirklichkeit verstärkt. Der Betrachter soll nasses Material erkennen, nicht einen Filter. Eine konsistente Serie wechselt zwischen Gesamtansicht, Detail, Umgebung und gegebenenfalls Fahrerportrait, behält aber denselben Weißabgleich und dieselbe Dichte in den Schatten.",
-      "_template": "textBlock"
+      "_template": "textBlock",
+      "style": "bridge"
     },
     {
-      "eyebrow": "07",
       "headline": "Ein Regenkonzept braucht immer eine trockene Alternative",
       "body": "Ein Vordach, eine offene Halle oder ein Parkdeck kann die nasse Umgebung erhalten und gleichzeitig Personen sowie Technik schützen. Diese Alternative wird vorher geprüft; spontane Zuflucht auf privatem Grund ist keine Produktionsplanung. Dort entstehen zunächst die sicheren Pflichtmotive. Nur wenn Bedingungen stabil bleiben, wird der offene Teil umgesetzt.\n\nDie Entscheidung für oder gegen Regen fällt nicht aus Stolz auf das Konzept. Sie folgt Untergrund, Sicht, Wind und Arbeitsfläche. Eine starke Bildserie darf ihre Wetteridee verändern. Vielleicht bleiben nur Spiegelungen am Rand oder Tropfen auf dem Tank. Wenn diese Reduktion ehrlich geplant ist, wirkt sie meist überzeugender als ein erzwungenes Unwetterbild. Ein vorher vereinbartes Ersatzmotiv nimmt dabei den Druck aus der Situation und hält die visuelle Richtung auch unter veränderten Bedingungen zusammen.",
       "_template": "textBlock"
@@ -92,5 +104,15 @@
   },
   "status": "published",
   "createdAt": "2026-08-11T08:00:00.000Z",
-  "updatedAt": "2026-08-11T08:00:00.000Z"
+  "updatedAt": "2026-08-24T20:51:37.608Z",
+  "relatedPages": [
+    {
+      "label": "Motorradfotografie",
+      "href": "/motorrad-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    }
+  ],
+  "coverAlt": "Motorrad an einer Strasse mit kuehler, wetterbetonter Lichtstimmung"
 }

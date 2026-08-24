@@ -6,7 +6,11 @@
   "publishedAt": "2026-05-28T07:37:31.000Z",
   "excerpt": "Wie ruhige Portraitfotografie in Duesseldorf mehr Wirkung erzeugt als ueberinszenierte Posen: Licht, Distanz, Haltung und Bildauswahl bewusst fuehren.",
   "coverImage": "/uploads/payload/portrait-warm-1.webp",
-  "tags": ["Portrait", "Licht", "Bildserie"],
+  "tags": [
+    "Portrait",
+    "Licht",
+    "Bildserie"
+  ],
   "relatedPages": [
     {
       "label": "Home",
@@ -60,6 +64,23 @@
       "_template": "textBlock"
     },
     {
+      "headline": "Bildnotizen aus dem Portfolio",
+      "layout": "editorial-pair",
+      "items": [
+        {
+          "image": "/assets/portraits/20260823-khan-levi-dsc8797.webp",
+          "caption": "Ganzkörperportrait mit bewusst gewählter Rahmung",
+          "cropIntent": "editorial"
+        },
+        {
+          "image": "/assets/portraits/20260823-khan-levi-dsc8585.webp",
+          "caption": "Portrait mit natürlicher Haltung statt festem Posing-Schema",
+          "cropIntent": "editorial"
+        }
+      ],
+      "_template": "imageSequence"
+    },
+    {
       "headline": "Licht als Tonfall",
       "body": "Portraitlicht darf praezise sein, ohne steril zu wirken. Weiches Seitenlicht, kontrollierte Schatten und ein ruhiger Hintergrund geben dem Gesicht Struktur. Fuer Business, Editorial und Personal Branding ist diese Balance wichtiger als ein Effekt, der nur auf den ersten Blick auffaellt.\n\n04",
       "_template": "textBlock"
@@ -111,8 +132,9 @@
     "extractedImagePaths": [],
     "extractedText": "Home / Journal / Portrait Portrait · 4 Min Portraits ohne generische Posen Wie ruhige Portraitfotografie in Duesseldorf mehr Wirkung erzeugt als ueberinszenierte Posen: Licht, Distanz, Haltung und Bildauswahl bewusst fuehren. Matthias Ramahi Aktualisiert 27.05.2026 Dieser Beitrag stuetzt die SEO-Cluster der Fotografie-Seiten und fuehrt zu passenden Leistungs- und Standortseiten weiter. Portraitfotografie Duesseldorf Business Portrait Headshot Fotograf 01 Der ruhige Raum wirkt staerker Gute Portraits muessen nicht laut sein. Entscheidend ist, ob der Bildraum der Person hilft, praesent zu bleiben. Wenn Pose, Licht und Hintergrund zu viel erklaeren, verschwindet oft genau das, was ein Portrait tragen soll: Haltung, Blick und eine glaubwuerdige Naehe. 02 Fuehrung statt Posing-Katalog Im Shooting geht es nicht darum, eine Liste bekannter Posen abzuhaken. Sinnvoller ist eine klare Fuehrung: kleine Veraenderungen in Schulterlinie, Blickrichtung, Abstand zur Kamera und Atemtempo. Dadurch entsteht Varianz, ohne dass die Person in eine Rolle gedrueckt wird. 03 Licht als Tonfall Portraitlicht darf praezise sein, ohne steril zu wirken. Weiches Seitenlicht, kontrollierte Schatten und ein ruhiger Hintergrund geben dem Gesicht Struktur. Fuer Business, Editorial und Personal Branding ist diese Balance wichtiger als ein Effekt, der nur auf den ersten Blick auffaellt. 04 Auswahl ist Teil der Fotografie Die finale Serie entsteht in der Auswahl. Ein gutes Set braucht nicht moeglichst viele Motive, sondern eine nachvollziehbare Reihenfolge: ein starkes Hauptportrait, Varianten fuer Website und Social, Details fuer redaktionische Nutzung und Bilder, die auch in kleiner Groesse funktionieren. Kurze Fragen. Wie viele Portraits braucht man wirklich? Fuer die meisten Anwendungen reichen wenige starke Motive mit klarer Variation. Wichtiger als Menge ist, dass jedes Bild eine eigene Funktion erfuellt."
   },
-  "updatedAt": "2026-05-28T19:07:53.594Z",
+  "updatedAt": "2026-08-24T20:44:39.173Z",
   "createdAt": "2026-05-28T19:07:35.569Z",
   "status": "published",
-  "payloadId": "6"
+  "payloadId": "6",
+  "coverAlt": "Portrait in warmem Licht"
 }

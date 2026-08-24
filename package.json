@@ -40,6 +40,7 @@
     "local:start": "node tools/assert-node-22.mjs --warn && powershell -NoProfile -ExecutionPolicy Bypass -File scripts/start-local.ps1",
     "local:stop": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/stop-local.ps1",
     "stack:dev": "corepack pnpm web:tina:dev",
+    "journal:audit": "node tools/audit-journal-source.mjs",
     "tina:rescue-local-seo": "node tools/convert-local-seo-sql-dump.mjs",
     "tina:media-manifest": "node tools/build-tina-media-manifest.mjs",
     "tina:media-optimize": "node tools/optimize-tina-uploads.mjs && node tools/build-tina-media-manifest.mjs",

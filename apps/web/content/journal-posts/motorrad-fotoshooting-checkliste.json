@@ -14,43 +14,54 @@
   "readingTime": 8,
   "blocks": [
     {
-      "eyebrow": "01",
       "headline": "Der Bildzweck entscheidet über den ganzen Termin",
       "body": "Ein privates Erinnerungsbild, eine Verkaufsserie und Material für eine Werkstatt-Website brauchen nicht dieselben Motive. Bevor eine Location gesucht wird, sollte deshalb feststehen, wo die Fotos erscheinen und welche Fragen sie beantworten müssen. Ein Besitzer möchte vielleicht die Verbindung zu seinem Bike zeigen. Ein Käufer braucht dagegen klare Ansichten von Zustand, Ausstattung und Details.\n\nAus dem Zweck folgt das Format. Für eine Website sind Querformate mit freier Fläche wertvoll, während Reels und Stories Hochformate verlangen. Druck benötigt ausreichend Auflösung und eine ruhige Komposition. Wer diese Anforderungen erst nach dem Shooting entdeckt, verliert beim Zuschneiden oft genau die Linien, für die das Motorrad sorgfältig positioniert wurde.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "02",
       "headline": "Das Motorrad wird für die Kamera, nicht nur für die Straße vorbereitet",
       "body": "Sauber bedeutet nicht automatisch steril. Staub, Fingerabdrücke und Insekten auf Tank, Scheinwerfer und Spiegel fallen im gerichteten Licht stärker auf als im Alltag. Gleichzeitig darf ein gebrauchtes oder umgebautes Bike seine Materialgeschichte behalten. Patina, Anlassfarben am Auspuff oder Arbeitsspuren können dazugehören, wenn sie bewusst gezeigt werden und nicht wie übersehene Vorbereitung wirken.\n\nVor dem Termin werden Reifendruck, Beleuchtung, Ständer und lose Anbauteile vom Halter geprüft. Für das Bild helfen ein sauberes Kennzeichen oder eine vorab geklärte Anonymisierung, ein leerer Stauraum und die Entscheidung, welche Zubehörteile sichtbar bleiben. Während des Shootings liegen Mikrofasertuch und eine kleine Bürste griffbereit; große Pflegearbeiten gehören nicht in das Lichtfenster.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "03",
       "headline": "Eine gute Location bietet mehr als eine schöne Wand",
       "body": "Entscheidend sind Zufahrt, legaler Stellplatz, Untergrund und mehrere nutzbare Blickrichtungen. Eine Industriehalle kann auf einem Scout-Foto stark aussehen und vor Ort durch Lieferverkehr, Poller oder fremde Fahrzeuge unbrauchbar werden. Der Standort sollte deshalb zur geplanten Uhrzeit geprüft werden. Schattenverlauf und Verkehr ändern sich über den Tag erheblich.\n\nMotorrad und Hintergrund brauchen einen nachvollziehbaren Zusammenhang. Ein reduziertes Naked Bike verträgt klare Architektur; ein klassisches Motorrad kann mit Werkstattmaterial oder zurückhaltendem Backstein funktionieren. Kulisse bleibt trotzdem Kulisse. Wenn Beschilderung, Graffiti oder starke Farbfelder lauter werden als Tank, Rahmen und Fahrer, ist der Ort fotografisch nicht gelöst.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "04",
       "headline": "Kleidung und Fahrerrolle werden vorher entschieden",
       "body": "Ist die Person Teil der Serie, sollte ihre Rolle klar sein: Besitzerportrait, fahrbereite Szene oder nur ein kurzer Größenbezug neben dem Bike. Helm, Handschuhe und Jacke müssen nicht in jedem Bild auftauchen, sollten aber zur Geschichte und zur tatsächlichen Nutzung passen. Ein künstlich zusammengestelltes Outfit wirkt schnell wie Kostüm.\n\nFür Portraits helfen zwei kombinierbare Ebenen statt vieler Wechsel: eine vollständige Fahrerausstattung und eine ruhigere Variante für nähere Bilder. Große Logos, Neonflächen und sehr feine Muster konkurrieren mit Details am Motorrad. Sicherheit bleibt unabhängig vom Bildstil gesetzt; für Fahrsituationen wird Schutzkleidung nicht zugunsten einer vermeintlich saubereren Silhouette reduziert.",
-      "_template": "textBlock"
+      "_template": "textBlock",
+      "style": "bridge"
     },
     {
-      "eyebrow": "05",
+      "headline": "Bildnotizen aus dem Portfolio",
+      "layout": "editorial-pair",
+      "items": [
+        {
+          "image": "/uploads/payload/_DSC6982-1.webp",
+          "caption": "Gesamtansicht eines Motorrads als Pflichtmotiv der Shotlist",
+          "cropIntent": "editorial"
+        },
+        {
+          "image": "/uploads/payload/_DSC6979.webp",
+          "caption": "Engere Perspektive für Material und charakteristische Details",
+          "cropIntent": "editorial"
+        }
+      ],
+      "_template": "imageSequence"
+    },
+    {
       "headline": "Eine kurze Shotlist verhindert fünf Varianten desselben Bildes",
       "body": "Eine belastbare Liste beginnt mit Pflichtmotiven: Dreiviertelansicht, reine Seite, Front oder Heck, Cockpit, Tank, Motor und ein charakteristisches Detail. Dazu kommen je nach Nutzung Fahrerportrait, Werkstattkontext oder ein breites Hero-Motiv. Diese Rollen sind wichtiger als starre Brennweiten oder Kameraeinstellungen. Sie sorgen dafür, dass die Serie später eine Geschichte und praktische Auswahl bietet.\n\nNach den Pflichtmotiven bleibt Raum für Lichtwechsel und spontane Beobachtungen. Die Reihenfolge sollte dem Aufwand folgen: zuerst sichere Standbilder, dann Umbauten am Licht und zuletzt aufwendige oder wetterabhängige Ideen. So existiert auch dann ein vollständiger Kernsatz, wenn Wind, Publikumsverkehr oder ein kürzeres Lichtfenster den Termin begrenzen.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "06",
       "headline": "Zeitplan und Wetterreserve gehören in dieselbe Nachricht",
       "body": "Die beste Startzeit hängt von Ausrichtung und Umgebung ab, nicht von einer pauschalen Empfehlung zur goldenen Stunde. Hohe Gebäude können das gewünschte Streiflicht früh abschneiden, während offene Flächen lange hell bleiben. Ein realistischer Plan enthält Ankunft, kurze Begehung, Fahrzeugvorbereitung, Pflichtserie und ein definiertes Lichtfenster. Dadurch beginnt der Termin nicht mit hektischem Rangieren.\n\nLeichter Regen oder geschlossene Wolken können gestalterisch funktionieren. Nasser, rutschiger Untergrund, starker Wind oder Gewitter verändern dagegen die Sicherheit und sind Abbruchgründe. Eine geschützte Alternative oder ein Ersatztermin wird vorab vereinbart. Die Reserve ist kein Zeichen schlechter Planung, sondern verhindert, dass eine Bildidee gegen ungeeignete Bedingungen erzwungen wird.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "07",
       "headline": "Vor der Abfahrt muss die spätere Ausgabe feststehen",
       "body": "Zur Checkliste gehören Auswahlweg, ungefähre Bildzahl, Hoch- und Querformate sowie die geplanten Medien. Für Verkaufsportale werden sachliche Motive anders priorisiert als für eine redaktionelle Strecke. Social-Media-Dateien profitieren von passenden Zuschnitten, ersetzen aber keine hochauflösenden Masterdateien für Druck oder Archiv. Auch die Frage, ob Kennzeichen sichtbar bleiben dürfen, wird nicht erst bei der Retusche gestellt.\n\nEin gutes Briefing passt auf eine Seite: Zweck, Motive, Location, Beteiligte, Kleidung, Termin, Wetterregel und Ausgabe. Es nimmt dem Shooting nicht die Spontaneität. Es sorgt dafür, dass spontane Bilder zusätzlich entstehen, statt Pflichtmotive zu verdrängen. Genau darin liegt der praktische Wert einer Checkliste: weniger Organisation im entscheidenden Licht und mehr Aufmerksamkeit für das Motorrad.",
       "_template": "textBlock"
@@ -92,5 +103,15 @@
   },
   "status": "published",
   "createdAt": "2026-08-10T08:00:00.000Z",
-  "updatedAt": "2026-08-10T08:00:00.000Z"
+  "updatedAt": "2026-08-24T20:51:37.605Z",
+  "relatedPages": [
+    {
+      "label": "Motorradfotografie",
+      "href": "/motorrad-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    }
+  ],
+  "coverAlt": "Schwarzes Motorrad bei einem geplanten Fotoshooting im Abendlicht"
 }

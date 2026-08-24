@@ -14,43 +14,54 @@
   "readingTime": 8,
   "blocks": [
     {
-      "eyebrow": "01",
       "headline": "Ein Event braucht Bildrollen statt einer endlosen Motivliste",
       "body": "Veranstalter, Werkstatt, Club und Sponsor erwarten oft unterschiedliche Ergebnisse. Der Veranstalter braucht Übersicht und Atmosphäre, ein Aussteller Produkte und Gespräche, Teilnehmende möchten sich und ihre Motorräder wiederfinden. Vorab werden diese Erwartungen in wenige Bildrollen übersetzt: Eröffnung, Ort, Menschen, Maschinen, Details, Aktion und Abschluss. So bleibt die Reportage vollständig, ohne jedes Programmdetail gleich zu gewichten.\n\nZusätzlich wird geklärt, wo die Bilder erscheinen, wie schnell eine erste Auswahl gebraucht wird und welche Formate wichtig sind. Ein Pressebild muss Namen und Anlass nachvollziehbar zeigen; eine Story braucht vertikale Nähe; ein Rückblick auf der Website verträgt breite Szenen. Diese Nutzung bestimmt bereits beim Fotografieren Abstand und Komposition.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "02",
       "headline": "Der Zeitplan wird nach unwiederholbaren Momenten gelesen",
       "body": "Ankunft, Eröffnung, gemeinsame Ausfahrt, Präsentation oder Preisvergabe lassen sich nicht beliebig wiederholen. Sie werden im Ablauf markiert und mit ausreichend Wechselzeit verbunden. Dazwischen entstehen Details, Portraits und ruhige Fahrzeugbilder. Wer jede Minute gleich behandelt, steht beim entscheidenden Moment häufig am falschen Ende des Geländes.\n\nVor Beginn werden Wege, Bühnenzugang, Sicherheitsbereiche und Ansprechpartner geprüft. Für fahrende Programmpunkte gelten die Regeln des Veranstalters und der verantwortlichen Absicherung. Der Fotograf sucht keine eigene Sonderposition außerhalb dieser Struktur. Ein ungewöhnlicher Winkel ist wertlos, wenn er Ablauf oder Sicherheit stört.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "03",
-      "headline": "Menschen machen aus einer Fahrzeugschau ein Ereignis",
-      "body": "Reine Motorradansichten zeigen Bestand, aber keine Atmosphäre. Hände am Lenker, Gespräche über einen Umbau, das Ankommen oder ein ruhiger Blick des Besitzers geben der Serie Maßstab und Bedeutung. Dabei werden Menschen nicht wahllos aus nächster Nähe gesammelt. Ein beobachteter Moment braucht Kontext und eine respektvolle Distanz.\n\nFür erkennbare Portraits, Kinder oder sensible Situationen müssen Veranstaltungsregeln und Einwilligungen beachtet werden. Armbänder, Aushänge oder pauschale Annahmen ersetzen keine klare Absprache für hervorgehobene Einzelmotive. Wenn eine Person nicht fotografiert werden möchte, wird das akzeptiert. Gute Reportage entsteht durch Zugang und Aufmerksamkeit, nicht durch Überrumpelung.",
-      "_template": "textBlock"
+      "headline": "Bildnotizen aus dem Portfolio",
+      "layout": "editorial-pair",
+      "items": [
+        {
+          "image": "/uploads/payload/_DSC6968.webp",
+          "caption": "Motorrad als klares Hauptmotiv innerhalb einer Veranstaltung",
+          "cropIntent": "editorial"
+        },
+        {
+          "image": "/uploads/payload/_DSC7026.webp",
+          "caption": "Zweite Perspektive für eine abwechslungsreiche Eventserie",
+          "cropIntent": "editorial"
+        }
+      ],
+      "_template": "imageSequence"
     },
     {
-      "eyebrow": "04",
+      "headline": "Menschen machen aus einer Fahrzeugschau ein Ereignis",
+      "body": "Reine Motorradansichten zeigen Bestand, aber keine Atmosphäre. Hände am Lenker, Gespräche über einen Umbau, das Ankommen oder ein ruhiger Blick des Besitzers geben der Serie Maßstab und Bedeutung. Dabei werden Menschen nicht wahllos aus nächster Nähe gesammelt. Ein beobachteter Moment braucht Kontext und eine respektvolle Distanz.\n\nFür erkennbare Portraits, Kinder oder sensible Situationen müssen Veranstaltungsregeln und Einwilligungen beachtet werden. Armbänder, Aushänge oder pauschale Annahmen ersetzen keine klare Absprache für hervorgehobene Einzelmotive. Wenn eine Person nicht fotografiert werden möchte, wird das akzeptiert. Gute Reportage entsteht durch Zugang und Aufmerksamkeit, nicht durch Überrumpelung.",
+      "_template": "textBlock",
+      "style": "bridge"
+    },
+    {
       "headline": "Logos und Sponsoren werden dokumentiert, nicht zufällig verteilt",
       "body": "Bei einem kommerziellen Event können Markenpräsenz und Partnerleistungen wichtige Bildrollen sein. Dafür braucht es eine Prioritätenliste: Welche Logos müssen lesbar vorkommen, welche Produkte brauchen eine eigene Szene und welche Kombinationen dürfen nicht erscheinen? Ohne Briefing führt der Zufall zu vielen Hintergründen mit halben Logos, aber keinem verlässlich nutzbaren Partnerbild.\n\nDie Lösung ist nicht, jedes Motiv vor einer Sponsorenwand aufzunehmen. Marken werden dort gezeigt, wo ihr Beitrag verständlich ist: am Stand, im Gespräch, an einem relevanten Bauteil oder in einer geplanten Übersichtsaufnahme. Danach darf der Rest der Reportage wieder atmen. So bleibt sie glaubwürdig und erfüllt trotzdem Kommunikationspflichten.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "05",
       "headline": "Lichtwechsel werden als Kapitel genutzt",
       "body": "Motorrad-Events wechseln zwischen Hallen, Zelten, offenen Flächen und Abendlicht. Statt jeden Ort auf denselben Look zu zwingen, kann die Serie diese Übergänge bewusst nutzen. Die Halle zeigt konzentrierte Details, draußen entstehen Übersicht und Portraits, am Abend tragen Scheinwerfer und Arbeitslicht die Atmosphäre. Wichtig ist eine konsistente Farbhierarchie innerhalb jedes Kapitels.\n\nKleine mobile Technik ist oft sinnvoller als ein großer Aufbau, der Wege blockiert. Für geplante Portraits kann eine feste, abgesprochene Zone eingerichtet werden. Reportagemomente werden mit vorhandenem Licht aufgenommen, wenn zusätzliche Technik den Ablauf verändern würde. Das Bild soll Nähe schaffen, nicht beweisen, dass überall Licht gesetzt wurde.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "06",
       "headline": "Die Auswahl folgt der Veranstaltung, nicht der Aufnahmezeit",
       "body": "Eine chronologische Ablage ist noch keine Geschichte. In der finalen Serie wechseln Überblick, mittlere Szene, Portrait und Detail. Wiederholungen werden reduziert, auch wenn verschiedene Motorräder auf den ersten Blick jeweils interessant sind. Der Betrachter soll Ort, Größenordnung, Menschen und Schwerpunkt verstehen. Ein starkes Schlussbild gibt dem Tag einen Abschluss statt einfach beim letzten Auslöser zu enden.\n\nFür Veranstalter kann eine schnelle Vorauswahl am selben oder nächsten Tag wichtig sein. Dafür werden vorab Umfang, Dateiformat und Übertragungsweg festgelegt. Eine kleine, sauber bearbeitete Presseauswahl ist wertvoller als Hunderte unfertige Dateien. Die ausführliche Reportage folgt mit eigener Qualitätskontrolle und konsistenter Benennung.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "07",
       "headline": "Eine Eventserie sollte länger leben als der Rückblick",
       "body": "Neben aktuellen Motiven werden bewusst Bilder produziert, die später funktionieren: neutrale Details, Gastgeberportrait, Werkstatt- oder Standortansichten und breite Headerformate. Sie können kommende Termine, Presseinformationen oder die allgemeine Darstellung des Veranstalters tragen. Dafür müssen Nutzungsumfang, Rechte und dargestellte Marken von Beginn an berücksichtigt werden.\n\nNach der Lieferung hilft eine Struktur nach Bildrollen statt nach Speicherkarten. Ein kurzer Index zu Presse, Social, Partnern, Portraits und Archiv erleichtert die Weitergabe im Team. So wird Eventfotografie nicht nur zur Dokumentation eines Tages, sondern zu einem geordneten Bildbestand – ohne so zu tun, als sei jedes Foto für jeden Zweck freigegeben. Dateinamen, Bildunterschriften und Ansprechpartner sollten so dokumentiert sein, dass auch Monate später niemand Personen, Motorradmodelle oder Partner aus dem Gedächtnis erraten muss. Diese redaktionelle Ordnung entscheidet oft stärker über den langfristigen Nutzen als einige zusätzliche, nahezu identische Aufnahmen vom Veranstaltungstag.",
       "_template": "textBlock"
@@ -92,5 +103,15 @@
   },
   "status": "published",
   "createdAt": "2026-08-14T08:00:00.000Z",
-  "updatedAt": "2026-08-14T08:00:00.000Z"
+  "updatedAt": "2026-08-24T20:51:37.604Z",
+  "relatedPages": [
+    {
+      "label": "Motorradfotografie",
+      "href": "/motorrad-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    }
+  ],
+  "coverAlt": "Motorrad als Teil einer atmosphaerischen Eventreportage"
 }

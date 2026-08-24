@@ -14,43 +14,55 @@
   "readingTime": 8,
   "blocks": [
     {
-      "eyebrow": "01",
       "headline": "Der benötigte Raum ist größer als der Bildausschnitt",
       "body": "Ein Motorrad wirkt kompakt, braucht für Licht und Kamera aber überraschend viel Fläche. Neben der Maschine liegen Bewegungswege, Abstand für längere Brennweiten und Raum für große Reflexflächen. Eine Werkstatt kann visuell passen und trotzdem zu eng sein, wenn Hebebühne, Regale oder Kundenfahrzeuge jede Perspektive blockieren. Vorab werden Maße und mögliche Kamerapositionen geprüft.\n\nEbenso wichtig sind Zufahrt, Türen, Rampen und Bodenlast. Das Motorrad muss ohne riskantes Rangieren an seinen Platz gelangen. Kraftstoff, Abgase und laufender Motor unterliegen den Regeln des jeweiligen Raums; für reine Standaufnahmen bleibt der Motor aus. Kabelwege und Lichtstative werden so geplant, dass niemand beim Bewegen der Maschine darüber steigen muss.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "02",
       "headline": "Studio und Werkstatt erzählen unterschiedliche Geschichten",
       "body": "Ein neutraler Studiohintergrund isoliert Form, Material und Umbauten. Er eignet sich für eine präzise Hero-Aufnahme, Details und freigestellte Kommunikation. Eine echte Werkstatt liefert dagegen Werkzeuge, Oberflächen und Arbeitskontext. Dieser Kontext ist stark, wenn er zur Maschine oder zum Betrieb gehört; zufällige Unordnung wird nicht automatisch authentisch.\n\nVor dem Aufbau wird entschieden, welche Geschichte führt. Im Studio darf die Linie nahezu grafisch werden. In der Werkstatt braucht das Motorrad eine klare Zone, während ausgewählte Elemente wie Werkbank, Teile oder Lichtquellen den Rahmen erklären. Alles andere wird entfernt oder in Dunkelheit gehalten. Authentizität entsteht durch relevante Spuren, nicht durch visuelles Chaos.",
-      "_template": "textBlock"
+      "_template": "textBlock",
+      "style": "bridge"
     },
     {
-      "eyebrow": "03",
       "headline": "Motorräder bestehen aus vielen kleinen Spiegeln",
       "body": "Tank, Verkleidung, Chrom, Display und lackierter Rahmen spiegeln jeweils andere Bereiche des Raums. Eine Lampe, die den Tank sauber zeichnet, kann auf dem Windschild als störender Punkt erscheinen. Deshalb wird nicht nur das Licht auf dem Objekt betrachtet, sondern die Form seiner Spiegelung. Große, ruhige Flächen erzeugen lange Kanten; kleine Quellen setzen gezielte Akzente.\n\nDas Motorrad wird zunächst mit ausgeschaltetem Zusatzlicht aus Kameraposition geprüft. Helle Türen, Deckenraster und Kleidung können bereits sichtbar sein. Schwarze Abschattung nimmt ungewollte Reflexe heraus, helle Flächen setzen kontrollierte Linien. Ziel ist nicht, jede Spiegelung zu löschen. Ohne Reflex verliert glänzendes Material seine Form; entscheidend ist, welche Spiegelung etwas erklärt.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "04",
+      "headline": "Bildnotizen aus dem Portfolio",
+      "layout": "editorial-pair",
+      "items": [
+        {
+          "image": "/assets/optimized/assets-photos-motorrad-ninja-studio-1920.webp",
+          "caption": "Motorrad unter kontrolliertem Licht im Studio",
+          "cropIntent": "editorial"
+        },
+        {
+          "image": "/uploads/payload/_DSC6982-1.webp",
+          "caption": "Material und Silhouette als zwei Ebenen einer Studioserie",
+          "cropIntent": "editorial"
+        }
+      ],
+      "_template": "imageSequence"
+    },
+    {
       "headline": "Der Aufbau beginnt mit einer einzigen erklärenden Lichtkante",
       "body": "Statt alle Flächen gleichzeitig aufzuhellen, wird zuerst die Hero-Achse festgelegt. Eine seitliche oder obere Lichtfläche soll Tank, Schulter und Front in einer zusammenhängenden Linie lesbar machen. Erst wenn diese Hauptkante funktioniert, kommen kleine Akzente für Motor, Felge oder Cockpit hinzu. So bleibt die Hierarchie des Bildes nachvollziehbar.\n\nIn einer Werkstatt kann vorhandenes Licht Teil der Atmosphäre bleiben, wenn Farbtemperatur und Richtung zur Hauptquelle passen. Grünliche Deckenleuchten oder sehr warme Arbeitslampen werden entweder bewusst integriert oder ausgeschaltet. Beliebiges Mischlicht macht Materialfarben unzuverlässig. Für eine Serie werden Positionen markiert, damit Varianten konsistent bleiben.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "05",
       "headline": "Vorbereitung betrifft auch den Boden und den Hintergrund",
       "body": "Staub und Schlieren auf Lack sind sichtbar, aber ein ungepflegter Studioboden spiegelt sie gleich mit. Boden, Reifenbereich und bildwichtige Flächen werden vor dem Lichtaufbau kontrolliert. Bei matten Oberflächen werden ungeeignete Pflegemittel vermieden. Technischer Zustand und sichere Aufstellung liegen weiterhin beim Halter oder verantwortlichen Betrieb.\n\nKennzeichen, Kabel, Ladegeräte und Werkstattetiketten werden bewusst behandelt. Manche Informationen gehören zur Dokumentation, andere lenken ab oder sind nicht für Veröffentlichung bestimmt. Diese Entscheidung fällt vor der Aufnahme. Spätere Retusche ist kein Ersatz für Datenschutz, Markenfreigaben oder eine ordentliche Bühne.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "06",
       "headline": "Die Serie wechselt zwischen Form, Funktion und Material",
       "body": "Eine Studioaufnahme allein erklärt selten das ganze Motorrad. Nach dem Hero-Bild folgen Seite oder Dreiviertelansicht, Cockpit, Tank, Motor, Fahrwerk und ein Detail, das den individuellen Charakter trägt. Bei einem Custom Bike können Fertigungsspuren oder besondere Komponenten wichtiger sein als eine weitere Gesamtansicht. Für Werkstätten kommt ein ruhiges Arbeitsmotiv hinzu, sofern es tatsächlich zur Leistung passt.\n\nJede Einstellung bekommt eine Rolle. Zwei nahezu identische Frontansichten schwächen die Auswahl, während ein bewusst enger Materialausschnitt Rhythmus schafft. Hoch- und Querformat werden am Set komponiert, nicht nur nachträglich geschnitten. So funktioniert dieselbe Produktion für Website, Presse, Social und großformatige Darstellung.",
-      "_template": "textBlock"
+      "_template": "textBlock",
+      "style": "bridge"
     },
     {
-      "eyebrow": "07",
       "headline": "Ein markierter Workflow macht das Setup wiederholbar",
       "body": "Für Händler, Builder oder Werkstätten ist Wiederholbarkeit oft wichtiger als ein einmaliger Effekt. Kamerahöhe, Motorradposition, Hauptlicht und Hintergrundabstand werden dokumentiert. Das ermöglicht später weitere Maschinen in derselben Bildsprache. Kleine Unterschiede im Fahrzeug dürfen sichtbar bleiben; der Rahmen bleibt konstant und macht das Portfolio als Serie lesbar.\n\nDer Ablauf lautet deshalb: Raum klären, Maschine sicher positionieren, Hero-Achse wählen, Hauptreflex bauen, störende Spiegelungen kontrollieren, Pflichtserie aufnehmen und erst danach freie Details suchen. Diese Reihenfolge spart Umbauten und verhindert, dass ein aufwendiges Spezialbild entsteht, während die praktisch benötigte Gesamtansicht fehlt. Eine kurze Testauswahl am Monitor zeigt außerdem früh, ob dunkle Bauteile im geplanten Ausgabemedium noch ausreichend getrennt und lesbar bleiben. Bei Serienproduktionen wird diese Referenz gespeichert, damit spätere Termine nicht nur technisch ähnlich, sondern auch in Kontrast und Materialwirkung wirklich anschlussfähig sind.",
       "_template": "textBlock"
@@ -92,5 +104,15 @@
   },
   "status": "published",
   "createdAt": "2026-08-13T08:00:00.000Z",
-  "updatedAt": "2026-08-13T08:00:00.000Z"
+  "updatedAt": "2026-08-24T20:51:37.607Z",
+  "relatedPages": [
+    {
+      "label": "Motorradfotografie",
+      "href": "/motorrad-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    }
+  ],
+  "coverAlt": "Motorrad mit kontrollierter Lichtsetzung in einer dunklen Studioumgebung"
 }

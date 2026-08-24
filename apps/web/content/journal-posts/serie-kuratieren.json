@@ -5,8 +5,12 @@
   "category": "process",
   "publishedAt": "2026-05-27T18:22:56.000Z",
   "excerpt": "Von der ersten Bildauswahl bis zur finalen Reihenfolge: Warum kuratierte Fotografie-Serien staerker wirken als lose Einzelbilder.",
-  "coverImage": "/uploads/payload/assets-photos-oldtimer-stage-1920.webp",
-  "tags": ["Kuration", "Bildserie", "Briefing"],
+  "coverImage": "/uploads/payload/_DSC3032_genErase.webp",
+  "tags": [
+    "Kuration",
+    "Bildserie",
+    "Briefing"
+  ],
   "relatedPages": [
     {
       "label": "Home",
@@ -60,6 +64,28 @@
       "_template": "textBlock"
     },
     {
+      "headline": "Bildnotizen aus dem Portfolio",
+      "layout": "triptych",
+      "items": [
+        {
+          "image": "/uploads/payload/_DSC3032_genErase.webp",
+          "caption": "Breites Fahrzeugmotiv als möglicher Einstieg einer Serie",
+          "cropIntent": "editorial"
+        },
+        {
+          "image": "/uploads/payload/_DSC2983.webp",
+          "caption": "Innenraumdetail als bewusster Rhythmuswechsel",
+          "cropIntent": "editorial"
+        },
+        {
+          "image": "/assets/portraits/20260823-khan-levi-dsc8733.webp",
+          "caption": "Portraitmotiv als Beispiel für eine andere Bildrolle",
+          "cropIntent": "editorial"
+        }
+      ],
+      "_template": "imageSequence"
+    },
+    {
       "headline": "Reduktion macht wertiger",
       "body": "Eine gute Auswahl laesst Luft. Aehnliche Motive konkurrieren miteinander und schwaechen oft den Eindruck. Besser ist eine knappe Serie mit klaren Rollen: Einstieg, Totale, Detail, Atmosphaere, Mensch oder Kontext und ein starkes Schlussbild.\n\n04",
       "_template": "textBlock"
@@ -83,7 +109,7 @@
     "internalLinkAnchors": [],
     "canonicalUrl": "https://matthiasramahi.de/blog-serie-kuratieren.html",
     "legacyUrl": "blog-serie-kuratieren.html",
-    "ogImage": "/uploads/payload/assets-photos-oldtimer-stage-1920.webp",
+    "ogImage": "/uploads/payload/_DSC3032_genErase.webp",
     "noIndex": false,
     "focusKeyword": "Wie eine fotografische Serie kuratiert wird",
     "searchIntent": "Informationssuche: Nutzer suchen Fachwissen, Beispiele und Einordnung zu Wie eine fotografische Serie kuratiert wird."
@@ -111,8 +137,9 @@
     "extractedImagePaths": [],
     "extractedText": "Home / Journal / Prozess Prozess · 6 Min Wie eine fotografische Serie kuratiert wird Von der ersten Bildauswahl bis zur finalen Reihenfolge: Warum kuratierte Fotografie-Serien staerker wirken als lose Einzelbilder. Matthias Ramahi Aktualisiert 27.05.2026 Dieser Beitrag stuetzt die SEO-Cluster der Fotografie-Seiten und fuehrt zu passenden Leistungs- und Standortseiten weiter. Portfolio ansehen Automobil Fotografie Oldtimer Fotografie 01 Eine Serie braucht Richtung Einzelbilder koennen stark sein, aber eine Serie muss fuehren. Sie braucht Anfang, Verdichtung und Abschluss. Gerade bei Fahrzeugen, Portraits oder Landschaften entscheidet die Reihenfolge darueber, ob ein Betrachter bleibt oder nur schnell durchscrollt. 02 Erst Funktion, dann Geschmack Vor der Auswahl steht die Frage nach der Nutzung: Verkauf, Portfolio, Website, Print, Kampagne oder interne Praesentation. Erst wenn diese Funktion klar ist, laesst sich entscheiden, welche Bilder tragen und welche nur Varianten sind. 03 Reduktion macht wertiger Eine gute Auswahl laesst Luft. Aehnliche Motive konkurrieren miteinander und schwaechen oft den Eindruck. Besser ist eine knappe Serie mit klaren Rollen: Einstieg, Totale, Detail, Atmosphaere, Mensch oder Kontext und ein starkes Schlussbild. 04 Technische Konsistenz zaehlt Farbe, Kontrast, Beschnitt und Helligkeit muessen zusammenarbeiten. Eine Serie wirkt hochwertig, wenn jedes Bild eigenstaendig bleibt und trotzdem dieselbe visuelle Sprache spricht. Kurze Fragen. Wie viele Bilder gehoeren in eine Serie? Das haengt vom Einsatz ab. Fuer eine Website reichen oft 8 bis 16 Bilder, fuer eine Kampagne oder ein Portfolio koennen mehr Varianten sinnvoll sein."
   },
-  "updatedAt": "2026-05-28T19:07:53.627Z",
+  "updatedAt": "2026-08-24T20:44:39.177Z",
   "createdAt": "2026-05-28T19:07:35.589Z",
   "status": "published",
-  "payloadId": "7"
+  "payloadId": "7",
+  "coverAlt": "Breites Fahrzeugmotiv als Auftakt einer kuratierten Bildserie"
 }

@@ -6,7 +6,11 @@
   "publishedAt": "2026-05-27T18:22:56.000Z",
   "excerpt": "Warum Oldtimer-Fotografie fuer Verkauf, Sammlung und Auktion von Zurueckhaltung, Materialtreue und klarer Dokumentation profitiert.",
   "coverImage": "/uploads/payload/assets-photos-oldtimer-stage-1920.webp",
-  "tags": ["Oldtimer", "Verkauf", "Bildserie"],
+  "tags": [
+    "Oldtimer",
+    "Verkauf",
+    "Bildserie"
+  ],
   "relatedPages": [
     {
       "label": "Home",
@@ -60,6 +64,23 @@
       "_template": "textBlock"
     },
     {
+      "headline": "Bildnotizen aus dem Portfolio",
+      "layout": "editorial-pair",
+      "items": [
+        {
+          "image": "/uploads/payload/20250418-DSC006552-1920x1280.webp",
+          "caption": "Klassisches Fahrzeug mit sichtbarer Form und Materialwirkung",
+          "cropIntent": "editorial"
+        },
+        {
+          "image": "/assets/optimized/assets-photos-oldtimer-stage-1920.webp",
+          "caption": "Inszenierte Oldtimeraufnahme als Ergänzung zur sachlichen Dokumentation",
+          "cropIntent": "editorial"
+        }
+      ],
+      "_template": "imageSequence"
+    },
+    {
       "headline": "Patina nicht verstecken",
       "body": "Patina kann Charakter sein. Sie sollte nicht platt retuschiert werden, sondern sauber sichtbar bleiben. Entscheidend ist, ob Gebrauchsspuren als Mangel oder als Geschichte gelesen werden. Die Bildfuehrung hilft bei dieser Einordnung.\n\n04",
       "_template": "textBlock"
@@ -111,8 +132,9 @@
     "extractedImagePaths": [],
     "extractedText": "Home / Journal / Oldtimer Oldtimer · 3 Min Oldtimer als Wertobjekt fotografieren Warum Oldtimer-Fotografie fuer Verkauf, Sammlung und Auktion von Zurueckhaltung, Materialtreue und klarer Dokumentation profitiert. Matthias Ramahi Aktualisiert 27.05.2026 Dieser Beitrag stuetzt die SEO-Cluster der Fotografie-Seiten und fuehrt zu passenden Leistungs- und Standortseiten weiter. Oldtimer Fotografie Duesseldorf Classic Car Fotografie Oldtimer Verkaufsfotos 01 Wert braucht Ruhe Ein Oldtimer ist selten nur ein Fahrzeug. Zustand, Herkunft, Material und Pflegegeschichte sind Teil des Bildes. Zu viel Drama kann diesen Wert verdecken. Ruhige Perspektiven, kontrollierte Reflexe und ehrliche Details wirken oft hochwertiger. 02 Dokumentation und Atmosphaere verbinden Fuer Verkauf oder Auktion muss Fotografie klar zeigen, was vorhanden ist: Karosserie, Innenraum, Lack, Chrom, Leder, Instrumente und Gebrauchsspuren. Gleichzeitig darf die Serie nicht wie ein technischer Zustandsbericht wirken. 03 Patina nicht verstecken Patina kann Charakter sein. Sie sollte nicht platt retuschiert werden, sondern sauber sichtbar bleiben. Entscheidend ist, ob Gebrauchsspuren als Mangel oder als Geschichte gelesen werden. Die Bildfuehrung hilft bei dieser Einordnung. 04 Kontext macht Vertrauen Ein neutraler, ordentlicher Standort, nachvollziehbare Details und konsistente Farbe schaffen Vertrauen. Gerade bei hochwertigen Fahrzeugen sind Bilder Teil der Verkaufsargumentation. Kurze Fragen. Sind Detailbilder wichtig? Ja. Details wie Leder, Instrumente, Chrom, Felgen und Lack geben Kauefern und Sammlern Orientierung."
   },
-  "updatedAt": "2026-05-28T19:07:53.556Z",
+  "updatedAt": "2026-08-24T20:44:39.171Z",
   "createdAt": "2026-05-28T19:07:35.549Z",
   "status": "published",
-  "payloadId": "5"
+  "payloadId": "5",
+  "coverAlt": "Oldtimer in Buehnenlicht"
 }

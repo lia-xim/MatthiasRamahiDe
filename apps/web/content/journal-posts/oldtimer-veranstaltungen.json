@@ -2,50 +2,65 @@
   "title": "Oldtimer-Veranstaltungen fotografieren: Nähe ohne Unruhe",
   "slug": "oldtimer-veranstaltungen",
   "category": "classic-car",
-  "tags": ["Oldtimer", "Bildserie", "Location"],
+  "tags": [
+    "Oldtimer",
+    "Bildserie",
+    "Location"
+  ],
   "publishedAt": "2026-08-20T09:00:00.000Z",
   "excerpt": "Ein ruhiger Ansatz für Oldtimer-Treffen und Sammlungen: Zugang, Bildfolge, Menschen, Material, Patina und eine nachvollziehbare Dokumentation.",
   "coverImage": "/uploads/payload/20250418-DSC006552-1920x1280.webp",
   "readingTime": 8,
   "blocks": [
     {
-      "eyebrow": "01",
       "headline": "Vor dem ersten Bild braucht die Reportage eine Aufgabe",
       "body": "Ein Oldtimer-Treffen kann als Veranstaltung, als Sammlung, als Markenwelt oder als Geschichte einzelner Besitzer fotografiert werden. Wer alles gleichzeitig abbilden will, sammelt meist viele ähnliche Fahrzeuge und wenig Zusammenhang. Eine klare Aufgabe entscheidet, welche Motive wichtig sind und welche nur schön aussehen.\n\nFür eine Veranstaltungsreportage braucht es Orientierung, Atmosphäre und Menschen. Eine Sammlerdokumentation verlangt dagegen kontrollierte Ansichten, Details und verlässliche Farben. Beides kann am selben Ort entstehen, sollte aber als getrennte Bildfolge geplant werden.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "02",
       "headline": "Zugang und Rücksicht bestimmen die Perspektive",
       "body": "Absperrungen, empfindliche Oberflächen und enge Ausstellungsbereiche sind keine Hindernisse, die für ein besseres Bild umgangen werden. Sie definieren den Arbeitsraum. Vor einer beauftragten Reportage wird geklärt, welche Bereiche betreten werden dürfen, wann Fahrzeuge bewegt werden und welche Personen nicht erkennbar erscheinen sollen.\n\nAuch ohne formelle Sperre bleibt Abstand wichtig. Gurte, Taschen und lose Ausrüstung gehören nicht in die Nähe von Lack und Karosserie. Eine längere Brennweite kann Details isolieren, ohne sich über ein Fahrzeug zu lehnen. Respekt ist hier nicht nur Umgangsform, sondern Teil der fotografischen Qualität.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "03",
+      "headline": "Bildnotizen aus dem Portfolio",
+      "layout": "editorial-pair",
+      "items": [
+        {
+          "image": "/uploads/payload/20250418-DSC00660.webp",
+          "caption": "Klassisches Fahrzeug als Motiv einer zusammenhängenden Veranstaltungsserie",
+          "cropIntent": "editorial"
+        },
+        {
+          "image": "/assets/optimized/assets-photos-oldtimer-stage-1920.webp",
+          "caption": "Oldtimer in einer kontrollierten, dunklen Lichtsituation",
+          "cropIntent": "editorial"
+        }
+      ],
+      "_template": "imageSequence"
+    },
+    {
       "headline": "Eine Bildfolge beginnt nicht mit zwanzig Frontansichten",
       "body": "Der Einstieg zeigt den Ort und seine Größenordnung. Danach folgen Beziehungen: Fahrzeuge in Reihen, ein Modell im Kontext seiner Epoche, Hände bei einer Erklärung, ein Blick in den Innenraum. Erst dann tragen enge Details die Geschichte weiter. Ohne diese Ebenen bleibt eine Galerie ein Katalog zufälliger Lieblingsautos.\n\nFür jedes wichtige Fahrzeug hilft eine einfache Reihenfolge: Gesamtform, charakteristische Perspektive, Material, Innenraum und ein Detail mit echter Bedeutung. Das kann ein Instrument, eine Reparaturspur, ein Emblem oder eine besondere Konstruktion sein. Nicht jedes Chromteil braucht ein eigenes Bild.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "04",
       "headline": "Licht soll Material erklären, nicht übermalen",
       "body": "Oldtimer verbinden Lack, Chrom, Glas, Leder, Holz und gealterte Oberflächen. Jede davon reagiert anders auf Spots, Fenster und dunkle Hallen. Statt alle Reflexe zu entfernen, wird entschieden, welche Kante die Form verständlich macht und welche Spiegelung nur stört.\n\nGemischtes Licht darf Atmosphäre zeigen, sollte aber Lackfarbe und Innenraum nicht beliebig verschieben. Bei dokumentarischen Bildern ist eine glaubwürdige Materialwiedergabe wichtiger als ein extremer Farblook. Dramatische Einzelbilder können ergänzen; sie sollten nicht die gesamte Serie dominieren.",
-      "_template": "textBlock"
+      "_template": "textBlock",
+      "style": "bridge"
     },
     {
-      "eyebrow": "05",
       "headline": "Menschen geben Maßstab und Bedeutung",
       "body": "Eine Hand am Lenkrad, ein Gespräch am geöffneten Motorraum oder ein stiller Blick auf ein Detail erklärt, warum das Fahrzeug mehr als ein Objekt ist. Solche Bilder funktionieren, wenn sie beobachtet und nicht künstlich nachgestellt wirken. Gleichzeitig brauchen erkennbare Personen einen bewussten und rechtlich passenden Umgang mit Veröffentlichung und Einwilligung.\n\nFür die Auswahl gilt Zurückhaltung. Nicht jede Besucherin und jeder Besucher gehört in die finale Serie. Menschen werden dort eingesetzt, wo sie Maßstab, Nutzung oder Beziehung sichtbar machen. Das Fahrzeug bleibt Teil einer Kultur, ohne zur bloßen Kulisse für Eventbilder zu werden.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "06",
       "headline": "Eine gute Dokumentation bleibt später verständlich",
       "body": "Dateien mit Uhrzeit allein erzählen nach Monaten nichts mehr. Veranstaltung, Ort, Datum, Fahrzeugbezeichnung und – soweit sicher bekannt – Modell oder Baujahr sollten in Auswahl und Metadaten nachvollziehbar bleiben. Unsichere Angaben werden nicht aus einem Emblem geraten, sondern offen gelassen oder geprüft.\n\nDie finale Galerie wird nach Geschichte und Nutzung kuratiert: Presse, Rückblick, Archiv, Social Media oder Dokumentation für Eigentümer brauchen unterschiedliche Längen und Ausschnitte. Eine knappe, sauber beschriftete Serie besitzt langfristig mehr Wert als ein ungefilterter Ordner mit jeder ausgelösten Variante.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "07",
       "headline": "Die Auswahl trennt Erinnerung von Wiederholung",
       "body": "Bei Veranstaltungen entstehen schnell viele Varianten derselben Situation. Für Beteiligte kann jedes Fahrzeug oder jede Begegnung persönlich wichtig sein; für eine öffentliche Reportage wirken fünf ähnliche Ansichten trotzdem redundant. Deshalb wird die erste Auswahl nach Vollständigkeit getroffen und die zweite nach Rhythmus. Erst dann zeigt sich, welche Bilder tatsächlich eine neue Information hinzufügen.\n\nEin ruhiger Schnitt wechselt zwischen Übersicht, Fahrzeug, Mensch und Detail. Zwei technisch perfekte Bilder können direkt nebeneinander schwächer sein als eines davon allein. Umgekehrt darf eine kleine Unregelmäßigkeit bleiben, wenn ein Bild einen Moment erklärt, der sich nicht wiederholen lässt. Kuratierung ist hier keine Rangliste der schönsten Autos, sondern eine Entscheidung über Erzählfluss.\n\nFür Eigentümer oder Veranstalter kann parallel eine umfangreichere Dokumentationsauswahl entstehen. Sie erfüllt einen anderen Zweck und muss nicht dieselbe Kürze haben. Beide Ausgaben sollten klar benannt werden, damit eine interne Archivserie nicht ungefiltert als öffentliche Galerie endet – und die redaktionelle Auswahl nicht fälschlich als unvollständige Dokumentation verstanden wird.",
       "_template": "textBlock"
@@ -87,5 +102,15 @@
   },
   "status": "published",
   "createdAt": "2026-08-24T05:00:00.000Z",
-  "updatedAt": "2026-08-24T05:00:00.000Z"
+  "updatedAt": "2026-08-24T20:51:37.609Z",
+  "relatedPages": [
+    {
+      "label": "Oldtimerfotografie",
+      "href": "/oldtimer-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    }
+  ],
+  "coverAlt": "Historischer roter Rennwagen in einer Sammlung"
 }

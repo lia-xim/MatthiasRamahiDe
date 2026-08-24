@@ -14,43 +14,54 @@
   "readingTime": 8,
   "blocks": [
     {
-      "eyebrow": "01",
       "headline": "Eine Serie braucht zuerst einen überprüfbaren Satz",
       "body": "„Dynamisch, hochwertig und emotional“ beschreibt fast jede Automotive-Produktion und trifft deshalb keine Entscheidung. Hilfreicher ist ein Satz, der Auswahl ermöglicht: Das Fahrzeug soll als präzises Werkzeug für lange Strecken erscheinen. Oder: Die Manufaktur soll über Material, Handarbeit und ruhige Konzentration sichtbar werden. Jede Bildidee muss gegen diesen Satz bestehen können.\n\nDer Satz benennt nicht nur Wirkung, sondern auch Adressat und Nutzung. Eine Händlerserie spricht andere Fragen an als ein Markenlaunch oder ein redaktionelles Porträt eines Builders. Wenn drei Zielgruppen gleichzeitig bedient werden sollen, wird festgelegt, welche führt. Sonst entsteht eine Ansammlung schöner Motive ohne klare Reihenfolge und ohne wiedererkennbare Perspektive.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "02",
       "headline": "Totale, Nähe und Kontext erzählen verschiedene Teile",
       "body": "Ein Hero zeigt Fahrzeug und Haltung auf einen Blick. Eine mittlere Perspektive erklärt Proportion und Material. Details belegen, worauf die Aussage beruht. Kontextbilder zeigen Ort, Nutzung oder Prozess. Erst ihr Zusammenspiel macht aus einer Galerie eine Geschichte. Zehn ähnliche Dreiviertelansichten liefern Auswahl, aber keine zusätzliche Bedeutung.\n\nDie Shotlist wird daher nach Motivebenen aufgebaut, nicht nur nach Fahrzeugseiten. Für jede Ebene steht eine konkrete Aufgabe: eröffnen, erklären, vertiefen, verbinden oder abschließen. Ein Detail ohne Funktion wird gestrichen. Diese Disziplin verhindert auch, dass spektakuläre Umgebung oder Technik die eigentliche Marke überlagert.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "03",
       "headline": "Wiederholung schafft Identität, Variation hält Aufmerksamkeit",
       "body": "Zusammenhalt entsteht durch wiederkehrende Entscheidungen: Kamerahöhe, Lichtcharakter, Farbpalette, Negativraum oder eine bestimmte Nähe zum Material. Diese Elemente müssen nicht in jedem Bild identisch sein. Sie bilden ein visuelles Vokabular, das verschiedene Motive als Teil derselben Produktion lesbar macht.\n\nVariation entsteht durch Rhythmus. Auf ein breites ruhiges Motiv kann ein enger technischer Ausschnitt folgen, danach ein menschlicher Moment oder eine Bewegung. Werden nur Perspektiven gewechselt, bleibt die Serie trotz vieler Dateien monoton. Wird dagegen jede Aufnahme völlig anders inszeniert, verliert die Marke ihre erkennbare Haltung.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "04",
       "headline": "Menschen geben Maßstab und Verantwortung",
       "body": "Hände am Material, eine Person im Cockpit oder ein Team in der Werkstatt können Funktion und Maßstab zeigen. Sie sollten nicht als austauschbare Lifestyle-Dekoration eingesetzt werden. Relevant ist, welche Beziehung zwischen Mensch, Fahrzeug und Marke tatsächlich erzählt werden darf: Nutzung, Entwicklung, Pflege, Verkauf oder persönliche Begeisterung.\n\nVor der Produktion werden Einwilligung, Rollen und vorgesehene Nutzung geklärt. Kleidung und Handlung folgen der realen Situation. Wenn keine glaubwürdige Personengeschichte vorhanden ist, bleibt das Fahrzeug der alleinige Träger der Serie. Ein inszenierter Blick in die Ferne ersetzt keine belegbare Markengeschichte und kann ein präzises Konzept unnötig verwässern.",
-      "_template": "textBlock"
+      "_template": "textBlock",
+      "style": "bridge"
     },
     {
-      "eyebrow": "05",
+      "headline": "Bildnotizen aus dem Portfolio",
+      "layout": "editorial-pair",
+      "items": [
+        {
+          "image": "/uploads/payload/_DSC3032_genErase.webp",
+          "caption": "Exterieuraufnahme als ruhiges Leitmotiv einer Automotive-Serie",
+          "cropIntent": "editorial"
+        },
+        {
+          "image": "/uploads/payload/_DSC2983.webp",
+          "caption": "Innenraumaufnahme als zweite Erzählebene der Bildstrecke",
+          "cropIntent": "editorial"
+        }
+      ],
+      "_template": "imageSequence"
+    },
+    {
       "headline": "Der Ort darf Bedeutung tragen, aber nicht die Hauptrolle stehlen",
       "body": "Architektur, Straße, Werkstatt oder Landschaft verändern die Lesart eines Fahrzeugs. Ein industrieller Raum kann Präzision und Material betonen, ein offener Horizont Reise und Freiheit. Die Wahl muss aus der Aussage folgen. Ein bekannter Standort ist kein Qualitätsbeweis, wenn seine Formen, Farben und Zugänge nicht zur geplanten Serie passen.\n\nIm Scouting werden deshalb nicht nur Hero-Perspektiven gesucht. Benötigt werden mehrere Motivebenen in erreichbarer Nähe, verlässliches Licht, sichere Bewegungswege und Flächen für Quer-, Hoch- und Detailformate. Ein Ort, der nur aus einem Winkel funktioniert, erzeugt schnell visuelle Wiederholung oder kostspielige Standortwechsel.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "06",
       "headline": "Website, Presse und Social brauchen dieselbe Geschichte in anderen Schnitten",
       "body": "Eine Website benötigt häufig breite Motive mit Textfläche, Pressearbeit klare Einzelbilder und Social Media vertikale Sequenzen. Diese Anforderungen werden am Set fotografisch gelöst, nicht ausschließlich durch spätere Crops. Das Hauptmotiv entsteht in Varianten, während Details und Übergangsbilder bereits für eine konkrete Reihenfolge gedacht werden.\n\nDabei bleibt die Aussage konstant. Ein Hochformat darf näher und direkter sein, ohne plötzlich eine andere Marke zu zeigen. Dateinamen, Auswahl und Ausspielung werden nach Kanal geordnet. So kann ein Team die Serie nutzen, ohne jedes Mal aus hunderten Bildern neu zu erraten, welche Kombination zusammengehört.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "07",
       "headline": "Die finale Kuratierung entscheidet, ob eine Geschichte sichtbar wird",
       "body": "Bei der Auswahl gewinnt nicht automatisch das technisch spektakulärste Bild. Zuerst werden Pflichtmotive und die stärkste Eröffnung gesichert. Danach folgt eine Reihenfolge aus Kontext, Nähe, Handlung und Abschluss. Doppelte Aussagen werden entfernt, selbst wenn beide Aufnahmen gelungen sind. Eine kompakte Serie wirkt klarer und lässt sich leichter wiederverwenden.\n\nZum Abschluss wird geprüft, ob Fahrzeugfarbe, Markenmerkmale und reale Umgebung konsistent bleiben. Außerdem braucht jede geplante Platzierung eine geeignete Datei. Erst wenn Inhalt und Format zusammenpassen, ist das Storytelling produktionsfähig. Die Bildserie erzählt dann keine erfundene Geschichte – sie ordnet reale Merkmale so, dass Zielgruppe und Marke sie verstehen können.",
       "_template": "textBlock"
@@ -92,5 +103,15 @@
   },
   "status": "published",
   "createdAt": "2026-08-18T06:00:00Z",
-  "updatedAt": "2026-08-18T06:00:00Z"
+  "updatedAt": "2026-08-24T20:51:37.599Z",
+  "relatedPages": [
+    {
+      "label": "Automobilfotografie",
+      "href": "/automobil-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    }
+  ],
+  "coverAlt": "Sportwagenprofil als ruhiges Leitmotiv einer zusammenhaengenden Automotive-Bildserie"
 }

@@ -14,43 +14,54 @@
   "readingTime": 8,
   "blocks": [
     {
-      "eyebrow": "01",
       "headline": "Nicht jedes bewegte Bild braucht einen Rolling Shot",
       "body": "Der Begriff beschreibt häufig mehr als das eigentliche Bildziel. Gewünscht sind meist Geschwindigkeit, Nähe zur Straße und ein klarer Fokus auf Fahrer und Motorrad. Diese Wirkung kann durch einen kontrollierten Mitzieher von sicherem Standort, eine dynamische Standkomposition oder eine Sequenz aus Start, Detail und Ankunft entstehen. Erst wenn diese Alternativen die Aufgabe nicht erfüllen, muss eine komplexere Produktion geprüft werden.\n\nFür Werbung oder Editorial kann echte Bewegung erforderlich sein. Dann ist sie kein spontaner Zusatz, sondern ein eigener Produktionsblock mit Genehmigung, professioneller Absicherung und klaren Rollen. Ein schöner Straßenabschnitt und wenig Verkehr reichen nicht. Die Frage lautet: Ist die Umgebung tatsächlich kontrollierbar, und gibt es einen belastbaren Grund, warum das Motiv bewegt werden muss?",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "02",
       "headline": "Kontrolle entsteht durch die Fläche, nicht durch Mut",
       "body": "Öffentlicher Verkehr bleibt unvorhersehbar. Kreuzungen, Grundstückszufahrten, Radfahrer und Fußgänger können selbst bei geringer Auslastung auftauchen. Für geplante Bewegungsbilder sind freigegebene, abgesperrte oder professionell organisierte Flächen die sinnvolle Grundlage. Zuständigkeiten und Nutzungsrechte werden vor dem Termin geklärt, nicht durch Zuruf am Rand.\n\nAuch eine kontrollierte Fläche braucht eine Begehung. Untergrund, Auslaufzonen, Sichtlinien, Lichtwechsel und sichere Positionen für das Team werden geprüft. Bereiche, die niemand betritt oder befährt, werden eindeutig festgelegt. Wenn diese Voraussetzungen fehlen, wird das Konzept auf Standbilder oder einen sicheren, ortsfesten Mitzieher reduziert.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "03",
       "headline": "Fahren, fotografieren und absichern bleiben getrennte Aufgaben",
       "body": "Die fahrende Person konzentriert sich ausschließlich auf das Motorrad und folgt einem vorher vereinbarten Ablauf. Die Kamera wird von einer eigenen Person bedient; eine verantwortliche Produktionsleitung hält Überblick und kann stoppen. Niemand improvisiert während einer laufenden Bewegung neue Positionen. Änderungen werden erst nach vollständigem Stillstand besprochen.\n\nSignale müssen kurz, eindeutig und unter Motorgeräusch verständlich sein. Ein Start erfolgt nur nach gemeinsamer Freigabe, ein Stoppsignal beendet den Durchlauf ohne Diskussion. Jede beteiligte Person darf abbrechen. Diese Regel schützt nicht nur körperlich, sondern verhindert auch den psychologischen Druck, einen fragwürdigen Versuch „noch einmal schnell“ zu wiederholen.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "04",
+      "headline": "Bildnotizen aus dem Portfolio",
+      "layout": "editorial-pair",
+      "items": [
+        {
+          "image": "/assets/optimized/assets-photos-motorrad-ninja-road-1920.webp",
+          "caption": "Motorrad auf der Straße als Vorbereitung einer Bewegungsszene",
+          "cropIntent": "editorial"
+        },
+        {
+          "image": "/uploads/payload/_DSC6968.webp",
+          "caption": "Ruhige Referenzaufnahme für Form und Fahrzeugzustand",
+          "cropIntent": "editorial"
+        }
+      ],
+      "_template": "imageSequence"
+    },
+    {
       "headline": "Geschwindigkeit wird über Relation sichtbar",
       "body": "Bewegung liest sich an ruhigem Motiv und fließender Umgebung. Dafür braucht es keine extreme Geschwindigkeit. Entscheidend sind Hintergrundstruktur, Abstand und eine nachvollziehbare Richtung. Eine zu leere Fläche kann trotz Bewegung statisch wirken; ein überladener Hintergrund wird zum unruhigen Muster. Die Location wird daher nach Bildlesbarkeit und Sicherheit ausgewählt, nicht nach spektakulärer Kurve.\n\nDie Serie braucht neben dem dynamischen Motiv klare Ruhepunkte: ein stehendes Hero-Bild, Details von Reifen oder Cockpit und ein Fahrerportrait. Dadurch muss ein einzelner Rolling Shot nicht alle Informationen tragen. Er wird zum Akzent in einer vollständigen Geschichte statt zum riskanten Selbstzweck, von dem die gesamte Produktion abhängt.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "05",
       "headline": "Technik darf keine gefährliche Kameraposition erzwingen",
       "body": "Eine gewünschte Perspektive rechtfertigt keine ungesicherte Position in einer Fahrspur, keine Bedienung aus einem ungeeigneten Fahrzeug und keine Ablenkung der Fahrenden. Befestigungen, Kamerafahrzeuge oder Funktechnik gehören in professionelle Hände und in ein freigegebenes Setup. Dieser Artikel liefert bewusst keine Anleitung für improvisierte Konstruktionen.\n\nOft ist die bessere Entscheidung eine längere Brennweite aus einer festen, sicheren Position. Auch ein Mitzieher lässt sich unter kontrollierten Bedingungen ortsfest aufnehmen. Wenn Kamera oder Licht am Motiv befestigt werden sollen, braucht es fachkundige Prüfung, Redundanz und klare Verantwortung. Der mögliche Bildgewinn steht nie über technischer und rechtlicher Belastbarkeit.",
-      "_template": "textBlock"
+      "_template": "textBlock",
+      "style": "bridge"
     },
     {
-      "eyebrow": "06",
       "headline": "Der erste Durchlauf ist eine Ablaufprüfung, kein Heldenschuss",
       "body": "Vor jeder Aufnahme wird der geplante Weg ohne Produktionsdruck geprüft. Positionen, Sichtkontakt und Stopppunkte müssen für alle verständlich sein. Erst danach kann ein langsamer, kontrollierter Durchlauf zeigen, ob Bildachse und Hintergrund funktionieren. Wenn nicht, wird die Kamera versetzt oder die Idee gestrichen – nicht das Risiko erhöht.\n\nZwischen den Durchläufen bleiben Fahrzeug und Team vollständig stehen. Bildkontrolle und Anweisungen finden nicht während der Bewegung statt. Wetter, Licht und Untergrund werden erneut bewertet. Eine klare maximale Zahl von Durchläufen verhindert Ermüdung und die Tendenz, mit jeder Wiederholung unvorsichtiger oder ehrgeiziger zu werden.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "07",
       "headline": "Eine gute Alternative ist Teil des Konzepts, kein Trostpreis",
       "body": "Ein stehendes Motorrad kann über Lenkeinschlag, tiefe Perspektive, diagonale Architektur und eine offen geführte Straße deutlich Bewegung andeuten. Ein Fahrer, der gerade aufsteigt oder den Helm schließt, erzeugt Handlung ohne Fahrt. In einer Sequenz wirken solche Motive oft glaubwürdiger als ein isolierter Geschwindigkeitseffekt.\n\nVor Produktionsbeginn wird festgelegt, wann auf diese Alternative gewechselt wird: fehlende Genehmigung, ungeklärte Fläche, schlechter Untergrund, Wetter, technische Zweifel oder Kommunikationsprobleme. Dadurch ist der Abbruch keine Niederlage. Die Bildaufgabe bleibt lösbar, während die Grenze klar bleibt: Kein Rolling Shot ist wichtiger als ein kontrollierbarer Ablauf. Für Auftraggeber ist diese Doppelplanung ebenfalls wertvoll, weil Budget und Termin nicht an einem einzigen schwer kontrollierbaren Motiv hängen. Schon im Moodboard sollten deshalb beide Varianten sichtbar sein, damit die sichere Ersatzlösung gestalterisch gewollt und nicht wie eine nachträgliche Notlösung behandelt wird.",
       "_template": "textBlock"
@@ -92,5 +103,15 @@
   },
   "status": "published",
   "createdAt": "2026-08-12T08:00:00.000Z",
-  "updatedAt": "2026-08-12T08:00:00.000Z"
+  "updatedAt": "2026-08-24T20:51:37.612Z",
+  "relatedPages": [
+    {
+      "label": "Motorradfotografie",
+      "href": "/motorrad-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    }
+  ],
+  "coverAlt": "Motorrad in dynamischer Perspektive als sichere Alternative zum Rolling Shot"
 }

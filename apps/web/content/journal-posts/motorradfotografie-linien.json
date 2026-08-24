@@ -6,7 +6,11 @@
   "publishedAt": "2026-05-27T18:22:56.000Z",
   "excerpt": "Warum starke Motorradfotografie ueber Silhouette, Naehe, Material, Fahrerhaltung und klare Linien funktioniert.",
   "coverImage": "/uploads/payload/assets-photos-motorrad-1920.webp",
-  "tags": ["Motorrad", "Licht", "Bildserie"],
+  "tags": [
+    "Motorrad",
+    "Licht",
+    "Bildserie"
+  ],
   "relatedPages": [
     {
       "label": "Home",
@@ -60,6 +64,23 @@
       "_template": "textBlock"
     },
     {
+      "headline": "Bildnotizen aus dem Portfolio",
+      "layout": "editorial-pair",
+      "items": [
+        {
+          "image": "/assets/optimized/assets-photos-motorrad-duke-1920.webp",
+          "caption": "Motorrad vor klarer Architektur und geraden Linien",
+          "cropIntent": "editorial"
+        },
+        {
+          "image": "/uploads/payload/_DSC7026.webp",
+          "caption": "Silhouette und Haltung aus einer zweiten Perspektive",
+          "cropIntent": "editorial"
+        }
+      ],
+      "_template": "imageSequence"
+    },
+    {
       "headline": "Metall und Lack kontrollieren",
       "body": "Reflexe sind bei Motorradern besonders sensibel. Chrom, Lack, Carbon und Gummi brauchen Lichtfuehrung, die Material zeigt, ohne alles zu ueberstrahlen.\n\n04",
       "_template": "textBlock"
@@ -111,8 +132,9 @@
     "extractedImagePaths": [],
     "extractedText": "Home / Journal / Motorrad Motorrad · 4 Min Linien, Metall, Haltung Warum starke Motorradfotografie ueber Silhouette, Naehe, Material, Fahrerhaltung und klare Linien funktioniert. Matthias Ramahi Aktualisiert 27.05.2026 Dieser Beitrag stuetzt die SEO-Cluster der Fotografie-Seiten und fuehrt zu passenden Leistungs- und Standortseiten weiter. Motorrad Fotografie Duesseldorf Custom Bike Fotografie Motorrad Verkaufsfotos 01 Motorradbilder brauchen Spannung Bei Motorradern geht es um Linien, Material und Haltung. Ein gutes Bild zeigt nicht nur ein Objekt, sondern Energie: Tanklinie, Lenker, Reifen, Stand, Details und die Beziehung zum Fahrer oder zur Werkstatt. 02 Silhouette vor Detailflut Wenn alles gleich wichtig ist, verliert das Bike seine Form. Erst die klare Silhouette, dann die Details. Eine Serie sollte zeigen, wie die Maschine steht, wie sie gebaut ist und welche Stimmung sie traegt. 03 Metall und Lack kontrollieren Reflexe sind bei Motorradern besonders sensibel. Chrom, Lack, Carbon und Gummi brauchen Lichtfuehrung, die Material zeigt, ohne alles zu ueberstrahlen. 04 Fahrerbilder sparsam einsetzen Mit Fahrer entsteht Haltung. Ohne Fahrer entsteht Objektpraesenz. Beide Varianten koennen stark sein, wenn sie bewusst getrennt und nicht zufaellig gemischt werden. Kurze Fragen. Sind Fahrerportraits sinnvoll? Ja, wenn die Person Teil der Geschichte ist. Fuer reine Verkaufsbilder kann das Motorrad allein klarer sein."
   },
-  "updatedAt": "2026-05-28T19:07:53.524Z",
+  "updatedAt": "2026-08-24T20:44:39.168Z",
   "createdAt": "2026-05-28T19:07:35.528Z",
   "status": "published",
-  "payloadId": "4"
+  "payloadId": "4",
+  "coverAlt": "Motorrad vor Architektur"
 }

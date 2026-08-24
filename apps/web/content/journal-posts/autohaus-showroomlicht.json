@@ -2,50 +2,65 @@
   "title": "Autohaus-Fotografie: Showroomlicht ohne Reflexchaos",
   "slug": "autohaus-showroomlicht",
   "category": "automotive",
-  "tags": ["Automotive", "Licht", "Verkauf"],
+  "tags": [
+    "Automotive",
+    "Licht",
+    "Verkauf"
+  ],
   "publishedAt": "2026-08-22T09:00:00.000Z",
   "excerpt": "Wie Fahrzeugbilder im Autohaus konsistent werden: Raumlicht, Reflexe, Fahrzeugvorbereitung, Perspektiven und ein wiederholbarer Aufnahmeplan.",
   "coverImage": "/uploads/payload/assets-portfolio-dsc3879-1920-1920x1280.webp",
   "readingTime": 8,
   "blocks": [
     {
-      "eyebrow": "01",
       "headline": "Der Showroom ist eine große Spiegelung",
       "body": "Lack, Scheiben, Chrom und Displays spiegeln nicht nur Lampen, sondern den gesamten Raum. Helle Türen, Fensterfronten, Deckenraster und andere Fahrzeuge erscheinen als Linien auf der Karosserie. Wer nur das Auto betrachtet, übersieht deshalb den eigentlichen Lichtformer: den Showroom selbst.\n\nVor der ersten Aufnahme lohnt ein langsamer Rundgang um das Fahrzeug. Dabei wird nicht nach dem schönsten Hintergrund gesucht, sondern nach ruhigen Reflexverläufen. Oft reicht eine Drehung um wenige Grad, damit eine harte Deckenlinie über die Haube wandert oder ganz aus der Seitenfläche verschwindet.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "02",
       "headline": "Vorbereitung spart mehr Zeit als Retusche",
       "body": "Fingerabdrücke auf Displays, Staub auf schwarzem Lack, schiefe Räder und ein unruhiger Innenraum werden in hochauflösenden Bildern deutlicher als vor Ort. Eine feste Vorbereitungsliste gehört deshalb zum Prozess: Außenflächen, Scheiben, Felgen, Einstiege, Fußraum, Sitze und Displays werden vor der Serie geprüft.\n\nEbenso wichtig ist der Raum. Preisschilder, Aufsteller, Kabel und fremde Fahrzeuge sollten nur dann im Bild bleiben, wenn sie bewusst Kontext liefern. Retusche kann kleine Störungen entfernen. Sie ist aber kein sinnvoller Ersatz für zwanzig Minuten Ordnung, besonders wenn ein ganzer Fahrzeugbestand nach demselben Standard fotografiert werden soll.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "03",
       "headline": "Vorhandenes Licht ist ein Ausgangspunkt, kein Dogma",
       "body": "Moderne Showrooms mischen häufig Tageslicht, Spots, LED-Flächen und Displays. Diese Quellen können eine attraktive Atmosphäre erzeugen, haben aber nicht immer dieselbe Farbtemperatur oder Farbwiedergabe. Ein neutraler Weißabgleich für das gesamte Bild ist dann kaum möglich. Besser ist eine bewusste Entscheidung: Welche Lichtquelle soll den Lack bestimmen, welche darf als farbiger Akzent sichtbar bleiben?\n\nOhne zusätzliches Blitzlicht zu arbeiten kann schnell und unauffällig sein. Es funktioniert, wenn Form und Innenraum bereits sauber lesbar sind. Fehlen Trennung oder Zeichnung, ist kontrolliertes Zusatzlicht sinnvoller als eine aggressive Aufhellung in der Nachbearbeitung. Entscheidend ist nicht „Blitz oder kein Blitz“, sondern ein reproduzierbares Ergebnis ohne fremde Reflexe.",
-      "_template": "textBlock"
+      "_template": "textBlock",
+      "style": "bridge"
     },
     {
-      "eyebrow": "04",
+      "headline": "Bildnotizen aus dem Portfolio",
+      "layout": "editorial-pair",
+      "items": [
+        {
+          "image": "/uploads/payload/_DSC3086.webp",
+          "caption": "Fahrzeugaufnahme im Showroom mit kontrollierter Umgebung",
+          "cropIntent": "editorial"
+        },
+        {
+          "image": "/uploads/payload/_DSC3072.webp",
+          "caption": "Cockpit und Innenraum als Teil einer vollständigen Händler-Serie",
+          "cropIntent": "editorial"
+        }
+      ],
+      "_template": "imageSequence"
+    },
+    {
       "headline": "Eine feste Perspektivlogik macht Bestände vergleichbar",
       "body": "Für Verkaufsplattformen und Fahrzeuglisten braucht die Serie einen konstanten Rahmen. Kamerahöhe, Abstand, Lenkeinschlag und Brennweitenbereich werden festgelegt, bevor zehn Fahrzeuge unterschiedlich interpretiert wurden. So können Käufer Modelle vergleichen, ohne dass jedes Bild eine neue visuelle Regel einführt.\n\nDas bedeutet nicht, dass alle Aufnahmen identisch aussehen müssen. Die Standards sichern die Pflichtmotive: vorne schräg, hinten schräg, Seitenansicht, Cockpit, Sitze, Kofferraum und relevante Details. Darüber hinaus können einzelne Hero-Bilder stärker inszeniert werden. Pflicht und Kür sollten nur nicht verwechselt werden.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "05",
       "headline": "Interieur braucht einen eigenen Lichtplan",
       "body": "Ein Innenraum ist kein kleineres Exterieur. Helle Displays, dunkle Fußräume, glänzende Zierleisten und die Fensterfront liegen dicht beieinander. Türen und Sitze werden vorab so positioniert, dass Linien und Materialien lesbar bleiben. Eine Kamera auf Sitzhöhe wirkt meist nachvollziehbarer als ein extrem weiter Blick aus der Türöffnung.\n\nFür Details gilt dieselbe Regel wie für das Gesamtfahrzeug: Sie müssen eine Information transportieren. Lenkrad, Naht, Instrument, Bedienelement oder besondere Ausstattung verdienen ein Bild, wenn sie für Modell, Zustand oder Kaufentscheidung relevant sind. Zufällige Nahaufnahmen verlängern nur die Galerie.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "06",
       "headline": "Der Wert liegt im wiederholbaren Workflow",
       "body": "Ein einzelnes spektakuläres Fahrzeugbild ist für ein Autohaus weniger wertvoll als eine Serie, die auch beim nächsten Liefertermin funktioniert. Deshalb werden Positionen markiert, Dateinamen vereinheitlicht, Pflichtmotive dokumentiert und Exportformate vorab definiert. Dieser Standard reduziert Rückfragen und Fehlbestände.\n\nDie Bildbearbeitung hält Lackfarbe und Innenraummaterial glaubwürdig. Kontrast und Stimmung dürfen die Präsentation unterstützen, sollten aber Kratzer, Farbton oder Ausstattung nicht verfälschen. Gute Autohaus-Fotografie macht Fahrzeuge begehrenswert, ohne die Informationsfunktion der Bilder zu opfern.",
       "_template": "textBlock"
     },
     {
-      "eyebrow": "07",
       "headline": "Abnahmekriterien werden vor dem ersten Fahrzeug definiert",
       "body": "Eine Serie gilt nicht schon dann als vollständig, wenn die vereinbarte Bildzahl erreicht ist. Für jedes Fahrzeug werden Pflichtansichten, zulässige Beschnitte und kritische Merkmale festgelegt. Bei einem Gebrauchtwagen können das sichtbare Ausstattungsdetails und nachvollziehbare Gebrauchsspuren sein; bei einer Markenserie stehen eher Modelllinie, Farbe und konsistente Raumwirkung im Vordergrund.\n\nAm Set hilft eine kurze Kontrollrunde nach dem ersten vollständig fotografierten Fahrzeug. Stimmen Lackfarbe, Frontscheibe, Displays und Innenraum? Funktionieren Hoch- und Querformat in den vorgesehenen Plattformen? Diese frühe Abnahme ist günstiger als die Erkenntnis am Ende des Tages, dass eine Reflexlinie oder ein zu enger Beschnitt durch den gesamten Bestand läuft.\n\nAuch die Übergabe folgt einem festen Muster. Dateinamen, Reihenfolge und Exportgrößen müssen ohne fotografisches Vorwissen verständlich sein. Ein Autohaus sollte die Bilder einem Fahrzeug zuordnen und direkt in seinen Systemen verwenden können. Der eigentliche Qualitätsgewinn liegt damit nicht nur im einzelnen Foto, sondern in einer Produktion, die vom Aufbau bis zur Veröffentlichung keine neue Übersetzung verlangt.",
       "_template": "textBlock"
@@ -87,5 +102,15 @@
   },
   "status": "published",
   "createdAt": "2026-08-24T07:00:00.000Z",
-  "updatedAt": "2026-08-24T07:00:00.000Z"
+  "updatedAt": "2026-08-24T20:51:37.597Z",
+  "relatedPages": [
+    {
+      "label": "Automobilfotografie",
+      "href": "/automobil-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    }
+  ],
+  "coverAlt": "Dunkler Sportwagen unter farbigem Showroomlicht"
 }

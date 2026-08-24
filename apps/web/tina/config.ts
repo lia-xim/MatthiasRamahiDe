@@ -325,7 +325,18 @@ const contentBlocksField = {
     {
       name: 'textBlock',
       label: 'Textblock',
-      fields: [textField('eyebrow', 'Kicker'), textField('headline', 'Headline'), textAreaField('body', 'Text')],
+      fields: [
+        textField('eyebrow', 'Kicker'),
+        textField('headline', 'Headline'),
+        textField('style', 'Darstellung', {
+          description: 'Abschnitt erscheint im Inhaltsverzeichnis; Uebergang fliesst kleiner im Artikeltext.',
+          options: [
+            { label: 'Abschnitt', value: 'section' },
+            { label: 'Uebergang', value: 'bridge' },
+          ],
+        }),
+        textAreaField('body', 'Text'),
+      ],
     },
     {
       name: 'imageSequence',
@@ -729,7 +740,11 @@ const collections = [
       }),
       datetimeField('publishedAt', 'Veroeffentlicht am'),
       imageField('coverImage', 'Cover-Bild'),
+      textField('coverAlt', 'Cover Alt-Text', {
+        description: 'Beschreibt das konkrete Motiv fuer Barrierefreiheit und Bildsuche, nicht das Artikelkeyword.',
+      }),
       contentBlocksField,
+      objectField('relatedPages', 'Passende Leistungsseiten', linkFields, { list: true }),
     ],
   },
   {
