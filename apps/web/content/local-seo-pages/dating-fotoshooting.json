@@ -5,9 +5,23 @@
   "city": "Überregional",
   "service": "Dating Fotoshooting",
   "intro": "Wer sich auf Dating-Apps vorstellt, braucht Bilder, die Sympathie erzeugen bevor ein Gespräch beginnt. Ich fotografiere Profilbilder, die echt wirken — entspannt, nahbar, mit Persönlichkeit. Verschiedene Looks, klares Licht, keine gestellten Posen. Was entsteht: ein Bild, das so wirkt wie man wirklich ist.",
+  "heroImage": "/assets/portraits/20260823-khan-levi-dsc8557.webp",
   "heroLine2": "PROFILBILD MIT HALTUNG.",
   "heroSlides": [],
-  "heroPanels": [],
+  "heroPanels": [
+    {
+      "image": "/assets/portraits/20260823-khan-levi-dsc8557.webp"
+    },
+    {
+      "image": "/assets/portraits/20260823-khan-levi-dsc8571.webp"
+    },
+    {
+      "image": "/assets/portraits/20260823-khan-levi-dsc8759.webp"
+    },
+    {
+      "image": "/assets/portraits/20260823-khan-levi-dsc8797.webp"
+    }
+  ],
   "localProof": [],
   "localFaq": [
     {
@@ -29,6 +43,7 @@
   ],
   "blocks": [],
   "statement": {
+    "image": "/assets/portraits/20260823-khan-levi-dsc8733.webp",
     "headline": "Dating-Fotos,",
     "emphasis": "nahbar, nicht gestellt.",
     "body": [
@@ -43,32 +58,81 @@
   "focusSection": {},
   "shootingStyles": [],
   "gallerySection": {},
-  "portfolioTiles": [],
+  "portfolioTiles": [
+    {
+      "image": "/assets/portraits/20260823-khan-levi-dsc8557.webp"
+    },
+    {
+      "image": "/assets/portraits/20260823-khan-levi-dsc8571.webp"
+    },
+    {
+      "image": "/assets/portraits/20260823-khan-levi-dsc8759.webp"
+    },
+    {
+      "image": "/assets/portraits/20260823-khan-levi-dsc8797.webp"
+    },
+    {
+      "image": "/assets/portraits/20260823-khan-levi-dsc8733.webp"
+    },
+    {
+      "image": "/assets/portraits/20260823-khan-levi-dsc8549.webp"
+    },
+    {
+      "image": "/assets/portraits/20260823-khan-levi-dsc8481.webp"
+    },
+    {
+      "image": "/assets/portraits/20260823-khan-levi-dsc8585.webp"
+    },
+    {
+      "image": "/assets/portraits/20260823-khan-levi-dsc8762.webp"
+    }
+  ],
   "processSection": {},
-  "processSteps": [],
+  "processSteps": [
+    {
+      "image": "/assets/portraits/20260823-khan-levi-dsc8481.webp"
+    },
+    {
+      "image": "/assets/portraits/20260823-khan-levi-dsc8762.webp"
+    },
+    {
+      "image": "/assets/portraits/20260823-khan-levi-dsc8797.webp"
+    },
+    {
+      "image": "/assets/portraits/20260823-khan-levi-dsc8557.webp"
+    },
+    {
+      "image": "/assets/portraits/20260823-khan-levi-dsc8733.webp"
+    }
+  ],
   "audienceSection": {},
   "audienceCards": [
     {
+      "image": "/assets/portraits/20260823-khan-levi-dsc8481.webp",
       "number": "01",
       "title": "Dating App — Profil neu aufgesetzt",
       "text": "Wer nach einem Neustart ein Profil bei Tinder, Bumble oder Hinge anlegt und merkt, dass der beste vorhandene Schnappschuss trotzdem nicht trägt. Bilder aus dem Archiv wirken im Vergleich sofort."
     },
     {
+      "image": "/assets/portraits/20260823-khan-levi-dsc8549.webp",
       "number": "02",
       "title": "Erste Bilder nach einer Pause",
       "text": "Nach einer längeren Beziehung fehlt oft ein aktuelles Bild, das die eigene Haltung und Ausstrahlung heute zeigt — ohne dass es nach Selbstinszenierung aussieht."
     },
     {
+      "image": "/assets/portraits/20260823-khan-levi-dsc8585.webp",
       "number": "03",
       "title": "Qualität als Differenz im Feed",
       "text": "Wer ernsthaft nach einer Verbindung sucht, investiert einmalig in ein Porträt, das in Komposition, Licht und Bildtiefe aus dem Strom der Profilbilder heraussticht — ohne Übertreibung."
     },
     {
+      "image": "/assets/portraits/20260823-khan-levi-dsc8762.webp",
       "number": "04",
       "title": "Begleitung vor erstem Treffen",
       "text": "Ein geplantes erstes Date oder ein bewusstes Auffrischen des Auftritts: ein aktuelles, ruhiges Bild schafft Vertrauen, bevor die erste Nachricht beantwortet wird."
     },
     {
+      "image": "/assets/portraits/20260823-khan-levi-dsc8571.webp",
       "number": "05",
       "title": "Männer ab 30 — wenig Bildmaterial",
       "text": "Männer haben selten Porträts, die für Dating App Fotos taugen. Kein Selfie, kein Gruppenausschnitt — ein Bild mit Blick, Distanz und klarer Lichtführung, das die Person zeigt."
@@ -94,7 +158,7 @@
     "noIndex": false,
     "focusKeyword": "Dating Fotoshooting",
     "searchIntent": "Lokale Dienstleistungsanfrage: Nutzer suchen einen passenden Fotografen, Ablauf und Kontaktmöglichkeit für Dating Fotoshooting.",
-    "ogImage": "/assets/optimized/assets-photos-automobil-sunset-1920.webp"
+    "ogImage": "/assets/portraits/20260823-khan-levi-dsc8759.webp"
   },
   "legacy": {
     "sourceFile": "dating-fotoshooting.html",
