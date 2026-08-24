@@ -1,3 +1,5 @@
+import { restoredJournalArticles } from './restoredJournalArticleContent'
+
 export type JournalArticleLink = {
   href: string
   label: string
@@ -562,7 +564,7 @@ const featureArticle: JournalArticle = {
   },
 }
 
-export const journalArticles: JournalArticle[] = [featureArticle, ...supportArticles]
+export const journalArticles: JournalArticle[] = [featureArticle, ...restoredJournalArticles, ...supportArticles]
 
 export const journalArticleByLegacyFile = Object.fromEntries(
   journalArticles.map((article) => [article.legacyFile, article]),
