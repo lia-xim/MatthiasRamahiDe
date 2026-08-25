@@ -366,12 +366,12 @@ const automotiveArchiveImages = [
     height: 1280,
   },
   {
-    className: 'auto-archive-card--portrait',
-    src: '/assets/portfolio/automobil-mercedes-interieur-tilt.webp',
-    alt: 'Fahrzeugcockpit mit Leder, Carbon und Display in schräger Perspektive',
-    label: 'Interieur · Cockpit',
-    width: 1707,
-    height: 2560,
+    className: '',
+    src: '/assets/optimized/assets-portfolio-dsc3892-1920.webp',
+    alt: 'Carbon-Sportwagen frontal im farbigen Showroomlicht',
+    label: 'Hypercar · Frontansicht',
+    width: 1920,
+    height: 1280,
   },
   {
     className: 'auto-archive-card--wide',
@@ -845,24 +845,26 @@ const curatedIntentHeading = isParentPage
       <div class="sw-progress" id="swProgress"><div class="rail"><div class="fill" id="swFill"></div></div></div>
     </section>
 
-    <section class="bg" data-header-theme="dark" aria-label="Ausgewählte Automobil-Arbeiten" id="bgSec">
-      <div class="bg-head">
-        <div class="ttl">
-          <h2 {...tinaAttrs(doc?.portfolioTiles?.[0], 'label')}>{focusGalleryHeadline}</h2>
+    {!isParentPage && (
+      <section class="bg" data-header-theme="dark" aria-label="Ausgewählte Automobil-Arbeiten" id="bgSec">
+        <div class="bg-head">
+          <div class="ttl">
+            <h2 {...tinaAttrs(doc?.portfolioTiles?.[0], 'label')}>{focusGalleryHeadline}</h2>
+          </div>
+          <div class="meta">
+            <a href="/portfolio/portfolio-auswahl-automobil">Automobil-Auswahl ansehen →</a>
+          </div>
         </div>
-        <div class="meta">
-          <a href="/portfolio/portfolio-auswahl-automobil">Automobil-Auswahl ansehen →</a>
-        </div>
-      </div>
 
-      <div class="bg-grid" id="bgGrid">
-        {inheritedGalleryTiles.map((tile, index) => (
-          <button type="button" class={`bg-tile ${tile.className}`} data-i={index} data-full={tile.full} aria-label={`Frame ${index + 1} vergrößern`}>
-            <img loading="lazy" src={tile.src} alt={tile.alt} width={tile.width} height={tile.height} decoding="async" {...tinaAttrs(galleryImageSource(index), 'image')} />
-          </button>
-        ))}
-      </div>
-    </section>
+        <div class="bg-grid" id="bgGrid">
+          {inheritedGalleryTiles.map((tile, index) => (
+            <button type="button" class={`bg-tile ${tile.className}`} data-i={index} data-full={tile.full} aria-label={`Frame ${index + 1} vergrößern`}>
+              <img loading="lazy" src={tile.src} alt={tile.alt} width={tile.width} height={tile.height} decoding="async" {...tinaAttrs(galleryImageSource(index), 'image')} />
+            </button>
+          ))}
+        </div>
+      </section>
+    )}
 
     {isParentPage && (
       <section class="auto-archive" data-header-theme="dark" aria-labelledby="auto-archive-title">
