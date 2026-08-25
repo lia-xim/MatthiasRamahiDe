@@ -284,6 +284,27 @@
   }
 
   /* ============ KLIENT-INDEX (Für wen) — compact ~50svh ============ */
+  .auto-archive{background:#0b0c10;color:#f3f1ea;padding:clamp(76px,9vw,142px) clamp(18px,2.4vw,38px)}
+  .auto-archive__inner{width:min(100%,1640px);margin:0 auto}
+  .auto-archive__head{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(280px,.55fr);gap:clamp(32px,6vw,96px);align-items:end;margin-bottom:clamp(38px,5vw,72px)}
+  .auto-archive__kicker{display:block;margin-bottom:18px;font:700 10px/1.2 var(--font-mono);letter-spacing:.12em;text-transform:uppercase;color:rgba(243,241,234,.58)}
+  .auto-archive__head h2{max-width:12ch;margin:0;font-size:clamp(42px,6.4vw,110px);line-height:.86;letter-spacing:-.06em;text-wrap:balance}
+  .auto-archive__head h2 em{display:block;color:#c84f3d;font-family:var(--font-serif);font-weight:400}
+  .auto-archive__head p{max-width:46ch;margin:0;color:rgba(243,241,234,.72);font-size:clamp(16px,1.35vw,21px);line-height:1.58}
+  .auto-archive__grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(8px,.9vw,14px)}
+  .auto-archive-card{grid-column:span 4;min-width:0;margin:0}
+  .auto-archive-card--wide{grid-column:span 8}
+  .auto-archive-card button{display:block;width:100%;aspect-ratio:4/3;padding:0;border:0;background:#050609;overflow:hidden;cursor:zoom-in}
+  .auto-archive-card--wide button{aspect-ratio:16/9}
+  .auto-archive-card--portrait button{aspect-ratio:4/5}
+  .auto-archive-card img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .65s cubic-bezier(.2,.7,.2,1)}
+  .auto-archive-card button:hover img,.auto-archive-card button:focus-visible img{transform:scale(1.025)}
+  .auto-archive-card figcaption{padding:10px 2px 4px;font:700 10px/1.3 var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:rgba(243,241,234,.54)}
+  .auto-archive__footer{display:flex;justify-content:space-between;gap:32px;align-items:flex-end;margin-top:clamp(30px,4vw,54px);padding-top:24px;border-top:1px solid rgba(243,241,234,.16)}
+  .auto-archive__footer p{max-width:58ch;margin:0;color:rgba(243,241,234,.62);line-height:1.55}
+  .auto-archive__footer a{flex:0 0 auto;color:#f3f1ea;font:700 11px/1.2 var(--font-mono);letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid rgba(243,241,234,.34);padding-bottom:8px}
+  .auto-archive__footer a:hover{color:#c84f3d;border-color:#c84f3d}
+
   .ki{background:var(--paper);color:var(--ink);position:relative;overflow:hidden;min-height:50svh;display:flex;align-items:center}
   .ki .section-inner{padding-top:clamp(36px,4vw,60px);padding-bottom:clamp(36px,4vw,60px);width:100%}
   .ki-head{display:flex;align-items:end;justify-content:space-between;gap:clamp(20px,3vw,48px);flex-wrap:wrap;margin-bottom:clamp(20px,2.4vw,36px);padding-bottom:clamp(14px,1.6vw,22px);border-bottom:1px solid var(--line-l)}
@@ -372,6 +393,12 @@
     .bg-t-hero,.bg-t-a,.bg-t-b,.bg-t-c,.bg-t-d,.bg-t-e,.bg-t-f,.bg-t-g,.bg-t-h{grid-column:auto;grid-row:auto;aspect-ratio:4/3}
     .bg-t-hero{grid-column:1/-1;aspect-ratio:16/10}
     .bg-tile:before,.bg-tile:after{display:none}
+    .auto-archive__head{grid-template-columns:1fr;align-items:start}
+    .auto-archive__head h2{max-width:14ch}
+    .auto-archive__grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .auto-archive-card{grid-column:span 1}
+    .auto-archive-card--wide{grid-column:span 2}
+    .auto-archive__footer{align-items:flex-start;flex-direction:column}
     .ki{min-height:auto}
     .ki .section-inner{padding-top:44px;padding-bottom:44px}
     .ki-head{margin-bottom:8px;padding-bottom:16px}
@@ -394,6 +421,11 @@
     .rl-card img{filter:brightness(.82) grayscale(.1)}
   }
   @media (max-width:600px){
+    .auto-archive{padding-inline:18px}
+    .auto-archive__grid{grid-template-columns:1fr}
+    .auto-archive-card,.auto-archive-card--wide{grid-column:span 1}
+    .auto-archive-card button,.auto-archive-card--wide button{aspect-ratio:4/3}
+    .auto-archive-card--portrait button{aspect-ratio:4/5}
     .rl-card{flex:0 0 82%}
   }
   @media (prefers-reduced-motion:reduce){

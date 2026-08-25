@@ -348,6 +348,104 @@ const inheritedGalleryTiles = galleryTiles.map((tile, index) => {
   const visual = visualSlots[index + 1 + switchFrames.length]
   return { ...tile, alt: visual.alt, full: visual.full, height: visual.height, src: visual.src, width: visual.width }
 })
+const automotiveArchiveImages = [
+  {
+    className: 'auto-archive-card--wide',
+    src: '/assets/optimized/assets-portfolio-dsc3879-1920.webp',
+    alt: 'Carbon-Sportwagen im farbigen Showroomlicht',
+    label: 'Showroom · Hypercar',
+    width: 1920,
+    height: 1280,
+  },
+  {
+    className: 'auto-archive-card--portrait',
+    src: '/assets/optimized/assets-portfolio-dsc3908-1920.webp',
+    alt: 'Lenkrad und Cockpit eines Carbon-Sportwagens',
+    label: 'Interieur · Material',
+    width: 1920,
+    height: 1280,
+  },
+  {
+    className: '',
+    src: '/assets/optimized/assets-portfolio-dsc3982-1920.webp',
+    alt: 'Sportwagen in einer dunklen Ausstellung',
+    label: 'Exterieur · Showroom',
+    width: 1920,
+    height: 1280,
+  },
+  {
+    className: 'auto-archive-card--portrait',
+    src: '/assets/optimized/assets-portfolio-dsc2329-1920.webp',
+    alt: 'Umgebautes Fahrzeug als Hochformat auf einer Messe',
+    label: 'Messe · Tuning',
+    width: 1707,
+    height: 2560,
+  },
+  {
+    className: '',
+    src: '/assets/optimized/assets-portfolio-dsc2345-1920.webp',
+    alt: 'Orangefarbenes Fahrzeugheck mit großem Flügel',
+    label: 'Heck · Formdetail',
+    width: 1920,
+    height: 1536,
+  },
+  {
+    className: 'auto-archive-card--portrait',
+    src: '/assets/optimized/assets-portfolio-dsc2358-1920.webp',
+    alt: 'Frontdetail eines orangefarbenen Fahrzeugs',
+    label: 'Front · Lichtkante',
+    width: 1707,
+    height: 2560,
+  },
+  {
+    className: 'auto-archive-card--portrait',
+    src: '/assets/optimized/assets-portfolio-dsc2744-1920.webp',
+    alt: 'Weißes Ausstellungsfahrzeug in dynamischer Perspektive',
+    label: 'Messe · Perspektive',
+    width: 1707,
+    height: 2560,
+  },
+  {
+    className: 'auto-archive-card--wide',
+    src: '/assets/optimized/assets-portfolio-dsc2762-1920.webp',
+    alt: 'Dunkles Coupé in einer industriellen Außenkulisse',
+    label: 'Location · Exterieur',
+    width: 1920,
+    height: 1280,
+  },
+  {
+    className: 'auto-archive-card--portrait',
+    src: '/assets/optimized/assets-portfolio-dsc2788-1-1920.webp',
+    alt: 'Frontdetail eines Coupés vor Abendhimmel',
+    label: 'Detail · Abendlicht',
+    width: 1707,
+    height: 2560,
+  },
+  {
+    className: '',
+    src: '/assets/optimized/assets-portfolio-dsc2861-1-1920.webp',
+    alt: 'Coupé im Seitenprofil vor Industriekulisse',
+    label: 'Profil · Location',
+    width: 1920,
+    height: 1280,
+  },
+  {
+    className: 'auto-archive-card--wide',
+    src: '/assets/optimized/assets-portfolio-dsc2876-generase-1-1920.webp',
+    alt: 'SUV in der Dämmerung als Front-Dreiviertelansicht',
+    label: 'SUV · Dämmerung',
+    width: 1920,
+    height: 1280,
+  },
+  {
+    className: 'auto-archive-card--portrait',
+    src: '/assets/optimized/assets-portfolio-dsc2986-1920.webp',
+    alt: 'Cockpit eines SUV mit Blick auf eine Brücke',
+    label: 'Cockpit · Location',
+    width: 1707,
+    height: 2560,
+  },
+]
 const inheritedRelatedAreas = relatedAreas.map((area, index) => {
   const visual = visualSlots[index + 1 + switchFrames.length + galleryTiles.length]
   return { ...area, alt: visual.alt, height: visual.height, image: visual.src, width: visual.width }
@@ -749,6 +847,37 @@ const curatedIntentHeading = isParentPage
         ))}
       </div>
     </section>
+
+    {isParentPage && (
+      <section class="auto-archive" data-header-theme="dark" aria-labelledby="auto-archive-title">
+        <div class="auto-archive__inner">
+          <header class="auto-archive__head">
+            <div>
+              <span class="auto-archive__kicker">Mehr als eine Serie</span>
+              <h2 id="auto-archive-title">Verschiedene Fahrzeuge. <em>Verschiedene Bildwelten.</em></h2>
+            </div>
+            <p>
+              Diese Auswahl verbindet Location-Shootings, Messebilder, Interieur und Details aus mehreren Produktionen.
+              So wird auf einen Blick sichtbar, wie unterschiedlich Fahrzeug, Umgebung und späterer Einsatz die Bildsprache prägen.
+            </p>
+          </header>
+          <div class="auto-archive__grid" data-site-lightbox-gallery>
+            {automotiveArchiveImages.map((image) => (
+              <figure class={`auto-archive-card ${image.className}`}>
+                <button type="button" data-full={image.src} aria-label={`${image.label} vergrößern`}>
+                  <img src={image.src} alt={image.alt} width={image.width} height={image.height} loading="lazy" decoding="async" />
+                </button>
+                <figcaption>{image.label}</figcaption>
+              </figure>
+            ))}
+          </div>
+          <div class="auto-archive__footer">
+            <p>Ein Shooting wird als zusammenhängender Bildsatz geplant – die Seite zeigt bewusst mehr als nur ein einzelnes Projekt.</p>
+            <a href="#anfrage">Eigenes Fahrzeug anfragen <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </section>
+    )}
 
     <section class="ki" data-header-theme="light" aria-label="Für wen ich arbeite">
       <div class="section-inner">
