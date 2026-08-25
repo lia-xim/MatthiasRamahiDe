@@ -4,7 +4,7 @@
   "priority": "later",
   "city": "Überregional",
   "service": "Fahrzeugfotografie",
-  "intro": "Ob Händlerbestand, Privatinserat, Kampagnenmotiv oder Motorrad — ich fotografiere Fahrzeuge aller Art mit kontrollierten Reflexen, mobilem Licht und sauberem Bildaufbau. Jedes Projekt landet aufbereitet in dem Format, das Web, Portal oder Druck braucht. Den richtigen Ausgangspunkt geben Fahrzeugart und Verwendungszweck vor.",
+  "intro": "Fahrzeugfotografie ist hier als vollständige Dokumentation gedacht: festgelegte Ansichten, nachvollziehbare Details und ein Bildsatz, der für Verkauf, Bestand oder Archiv wirklich brauchbar ist. Vor dem Termin klären wir deshalb nicht zuerst den Look, sondern die Bildliste und den späteren Einsatz.",
   "heroLine2": "Automobil · Sportwagen · Oldtimer · Motorrad.",
   "heroSlides": [],
   "heroPanels": [],
@@ -12,31 +12,52 @@
   "localFaq": [
     {
       "question": "Wie läuft ein Fahrzeug-Shooting ab?",
-      "answer": "Vor dem Termin werden Verwendungszweck, gewünschte Einstellungen (Exterieur, Interieur, Details, Cinematic) und Location abgestimmt. Das Shooting selbst findet im Studio, auf einer vereinbarten Location oder im Showroom statt — Licht und Aufbau richten sich nach Fahrzeugtyp und Bildformat. Die fertig retuschierten Dateien folgen innerhalb weniger Werktage."
+      "answer": "Vor dem Termin werden Verwendungszweck, Pflichtansichten, wichtige Ausstattungs- oder Zustandsdetails und die benötigten Formate festgelegt. Danach klären wir Standort und Licht. Vor Ort arbeite ich die Bildliste strukturiert ab und ergänze nur Motive, die für den späteren Einsatz einen echten Mehrwert haben."
     },
     {
       "question": "Welche Fahrzeugtypen werden fotografiert?",
-      "answer": "Automobile, Sportwagen, Oldtimer und Motorräder — jede Klasse hat einen eigenen Bildansatz, der dem Charakter des Fahrzeugs entspricht. Für spezialisierte Anfragen wie Sammlerfahrzeuge oder historische Exponate stehen eigene Serien zur Verfügung."
+      "answer": "Automobile, Sportwagen, Oldtimer und Motorräder. Entscheidend ist auf dieser Seite weniger die Klasse als die Aufgabe: Ein Händlerbestand verlangt wiederholbare Ansichten, ein Verkauf nachvollziehbare Zustandsbilder und eine Sammlung eine ruhige, langfristig verständliche Dokumentation."
     },
     {
       "question": "Kann ich die Bilder für Verkauf, Druck und Social gleichzeitig nutzen?",
-      "answer": "Ja. Die Dateien werden in den benötigten Formaten und Auflösungen übergeben — querformatig für Inserate und Print, hochformatig für Social-Kanäle und Stories. Alle Formate entstehen innerhalb derselben Licht- und Bildatmosphäre."
+      "answer": "Ja, wenn die benötigten Ausgaben vorher bekannt sind. Dann lassen sich Hauptmotive so planen, dass Querformat, Hochformat und engere Ausschnitte sinnvoll aus derselben Serie entwickelt werden können. Welche Nutzungsrechte und Dateivarianten gebraucht werden, gehört ins Briefing."
     },
     {
       "question": "Was kostet ein Fahrzeug-Shooting?",
       "answer": "Ein Shooting beginnt bei 250 € inkl. MwSt. Drucke und Sonderwünsche werden separat abgerechnet. Der Preis richtet sich nach Umfang: Anzahl der Fahrzeuge, gewünschte Einstellungskategorien, Location-Aufwand und Verwendungszweck (Privat, Inserat, Kampagne). Eine kurze Beschreibung des Projekts genügt für ein konkretes Angebot."
     }
   ],
-  "blocks": [],
+  "blocks": [
+    {
+      "headline": "Dokumentation oder Inszenierung?",
+      "body": "Eine Fahrzeugdokumentation soll vollständig und vergleichbar sein. Eine Kampagne darf verdichten, weglassen und dramatisieren. Beides kann hochwertig aussehen, erfüllt aber nicht dieselbe Aufgabe. Wer Markenkommunikation oder eine freie Editorial-Serie plant, findet unter Automotive Fotografie den passenderen Einstieg.",
+      "_template": "textBlock"
+    },
+    {
+      "headline": "Reflexionen bleiben lesbar.",
+      "body": "Lack zeigt immer auch seine Umgebung. Kamerahöhe, Standpunkt und Licht werden deshalb so gewählt, dass Karosserielinien, Spaltmaße, Oberflächen und Farbe verständlich bleiben. Nicht jede Spiegelung muss verschwinden; sie muss dem Fahrzeug eine Form geben statt Details zu verdecken.",
+      "_template": "textBlock"
+    },
+    {
+      "headline": "Eine Serie muss wiederholbar sein.",
+      "body": "Bei mehreren Fahrzeugen zählen konstante Perspektiven, Abstände und Ausschnitte. Das macht Bestände vergleichbar und spart später Zeit in Website, Portal oder Archiv. Besondere Fahrzeuge dürfen zusätzliche Motive bekommen, ohne dass die Grundstruktur der Serie verloren geht.",
+      "_template": "textBlock"
+    },
+    {
+      "headline": "Der Ausgabekanal entscheidet mit.",
+      "body": "Ein Verkaufsportal, eine Bestandsseite, ein gedrucktes Exposé und ein internes Archiv stellen andere Anforderungen an Auflösung, Beschnitt und Reihenfolge. Diese Vorgaben gehören vor das Shooting. So werden Bilder nicht nachträglich in Formate gezwungen, für die sie nie gedacht waren.",
+      "_template": "textBlock"
+    }
+  ],
   "statement": {
-    "headline": "Fahrzeug nach Art,",
-    "emphasis": "nicht nach Schema.",
+    "headline": "Erst die Bildliste,",
+    "emphasis": "dann die Kamera.",
     "body": [
       {
-        "text": "Ein Alltagsfahrzeug braucht andere Entscheidungen als ein Sportwagen, ein Oldtimer andere als ein Motorrad. Ich arbeite nicht mit einer Einheitslösung, sondern stimme Licht, Standort und Ausschnitt auf das jeweilige Fahrzeug und seinen Verwendungszweck ab — Händlerportfolio, Privatverkauf, Markenauftritt oder redaktionelle Nutzung."
+        "text": "Gesamtansicht, Front, Heck und Seite bilden den Rahmen. Innenraum, Bedienelemente, Räder, Ausstattung und Zustandsdetails kommen nur dazu, wenn sie für den Auftrag relevant sind. So entsteht keine lange Galerie ähnlicher Winkel, sondern eine Serie, in der jedes Bild eine Aufgabe erfüllt."
       },
       {
-        "text": "Die Seiten unterhalb sortieren nach Auto, Sportwagen, Oldtimer und Motorrad. Dort stehen Ansatz, Lieferumfang und typische Einsatzbereiche für jede Kategorie. Wer bereits weiß, was fotografiert werden soll, kommt über die entsprechende Spezialseite direkt zum Wesentlichen."
+        "text": "Für eine Kampagne oder eine bewusst inszenierte Markenserie ist Automotive Fotografie der passendere Einstieg. Auf dieser Seite geht es um Konsistenz, Lesbarkeit und Vollständigkeit — etwa für Händlerbestand, Verkauf, Sammlung, Werkstatt oder eine sachliche redaktionelle Dokumentation."
       }
     ]
   },
@@ -50,28 +71,28 @@
   "audienceCards": [
     {
       "number": "01",
-      "title": "Privatbesitzer",
-      "text": "Ein Fahrzeug, das Charakter hat, verdient Bilder mit dem gleichen Anspruch — als Erinnerung, für ein hochwertiges Inserat oder als kuratiertes Archiv für die eigene Sammlung."
+      "title": "Verkauf & Vermittlung",
+      "text": "Ein klarer Bildsatz zeigt das Fahrzeug vollständig, ohne seinen Zustand schöner oder schlechter zu erzählen als er ist. Pflichtansichten und relevante Details werden vorab festgelegt."
     },
     {
       "number": "02",
-      "title": "Händler & Showrooms",
-      "text": "Bildserien für Bestand und Neuzugänge: repräsentative Exterieur- und Interieuraufnahmen, die Zustand und Qualität klar zeigen — web- und portalfertig, konsistent im Stil."
+      "title": "Händlerbestand",
+      "text": "Wiederholbare Exterieur-, Interieur- und Detailansichten für Bestand und Neuzugänge. Perspektive und Ausgabe bleiben über mehrere Fahrzeuge hinweg konsistent."
     },
     {
       "number": "03",
-      "title": "Auktionen & Vermittler",
-      "text": "Vor einer Auktion oder einer privaten Vermittlung entscheidet die Bildqualität über die erste Wahrnehmung. Detailaufnahmen von Lack, Mechanik und Innenraum dokumentieren Zustand und Wert präzise."
+      "title": "Sammlung & Archiv",
+      "text": "Ruhige Gesamtansichten und nachvollziehbare Details halten Ausstattung, Material und Zustand langfristig fest — auch dann, wenn das Fahrzeug später restauriert, verkauft oder neu bewertet wird."
     },
     {
       "number": "04",
-      "title": "Hersteller & Agenturen",
-      "text": "Kampagnenfähige Fahrzeugaufnahmen für Markenauftritt, Print und Digital — mit einheitlicher Licht-Atmosphäre über die gesamte Serie und direkt einsatzbereit für CI-Systeme."
+      "title": "Werkstatt & Aufbau",
+      "text": "Arbeitsschritte, Bauteile und der fertige Zustand lassen sich als verständliche Folge dokumentieren. Welche Details wichtig sind, bestimmt der technische oder redaktionelle Zweck."
     },
     {
       "number": "05",
-      "title": "Redaktionen & Clubs",
-      "text": "Editorial-Bildserien für Fachmagazine, Vereinsmedien und Online-Publikationen — Fahrzeugporträts mit Bildsprache statt mit Katalogansicht."
+      "title": "Redaktion & Sachbeleg",
+      "text": "Für Beiträge, Kataloge oder Dokumentationen entstehen Bilder, die Merkmale erklären und trotzdem als zusammenhängende Serie funktionieren."
     }
   ],
   "relatedSection": {
@@ -87,8 +108,8 @@
   "contactSection": {},
   "targetKeyword": "Fahrzeugfotografie",
   "seo": {
-    "title": "Fahrzeugfotografie — Matthias Ramahi",
-    "description": "Fahrzeugfotografie für Automobil, Sportwagen, Oldtimer und Motorrad — kuratierte Bildserien für Verkauf, Sammlung, Editorial und Kampagne. Aus Düsseldorf / NRW.",
+    "title": "Fahrzeugfotografie für Verkauf, Bestand & Archiv",
+    "description": "Strukturierte Fahrzeugfotografie mit Exterieur, Interieur und relevanten Details – für Verkauf, Händlerbestand, Sammlung, Werkstatt und Archiv.",
     "canonicalUrl": "https://matthiasramahi.de/fahrzeugfotografie.html",
     "legacyUrl": "fahrzeugfotografie.html",
     "noIndex": false,
@@ -102,7 +123,7 @@
     "migrationStatus": "reviewed",
     "renderSource": "legacy-file"
   },
-  "updatedAt": "2026-07-21 22:35:09.413+00",
+  "updatedAt": "2026-08-25T12:00:00.000Z",
   "createdAt": "2026-05-31 18:09:46.636+00",
   "status": "published",
   "payloadId": "191"

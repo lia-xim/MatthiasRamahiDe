@@ -4,7 +4,7 @@
   "priority": "later",
   "city": "Überregional",
   "service": "Landschaftsbilder kaufen",
-  "intro": "Ein Landschaftsbild kaufen heißt: ein Motiv wählen, das im Raum funktioniert — nicht nur auf dem Bildschirm. Ich berate zu Größe, Material und Ausführung, damit das Bild so ankommt, wie es entstanden ist: mit Tiefe, Stimmung und dem richtigen Licht.",
+  "intro": "Ein Landschaftsbild wird nicht für einen Bildschirm gekauft, sondern für eine konkrete Wand. Deshalb beginnt die Auswahl mit Raum, Wandmaß, Betrachtungsabstand und vorhandenem Licht. Erst danach entscheiden wir, welches Motiv, Format und Material dort wirklich funktioniert.",
   "heroLine2": "Fine Art. Wandbild.",
   "heroSlides": [],
   "heroPanels": [],
@@ -12,31 +12,52 @@
   "localFaq": [
     {
       "question": "In welchen Formaten und Materialien sind die Landschaftsbilder erhältlich?",
-      "answer": "Die Drucke sind auf Hahnemühle-Barytpapier (matt, hoher Tonwertumfang), Dibond-Aluminium (flach, sehr langlebig) und Acrylglas (brillant, tiefer Schwarzwert) verfügbar. Formate beginnen bei 60 × 40 cm und reichen bis zu Großformaten über 150 cm Breite. Welches Material passt, klären wir im Beratungsgespräch anhand Ihrer Raumsituation."
+      "answer": "Je nach Motiv kommen Fine-Art-Papier, Alu-Dibond, Acrylglas oder eine gerahmte Ausführung infrage. Nicht jeder Beschnitt und nicht jede Größe passt zu jedem Bild. Schicke am besten Wandmaß, ein Foto der Raumsituation und den ungefähren Betrachtungsabstand mit; dann lässt sich die Auswahl sinnvoll eingrenzen."
     },
     {
       "question": "Wie läuft der Kauf eines Fine-Art-Prints ab?",
-      "answer": "Sie wählen ein Motiv aus der aktuellen Edition, wir besprechen kurz Format, Material und Aufhängesituation. Nach Auftragsbestätigung wird der Print in einer zertifizierten Druckerei ausgeführt, signiert, nummeriert und versandfertig verpackt. Lieferzeit liegt je nach Material bei etwa 10–14 Werktagen."
+      "answer": "Du nennst ein bevorzugtes Motiv oder beschreibst, welche Stimmung der Raum braucht. Danach klären wir verfügbare Ausführung, Format, Beschnitt und Aufhängesituation. Vor einer Bestellung erhältst du ein konkretes Angebot mit Produktions- und Lieferangaben für genau diese Variante."
     },
     {
       "question": "Sind die Auflagen wirklich limitiert, und wie ist das dokumentiert?",
-      "answer": "Ja. Jede Bildserie erscheint in einer fest definierten Auflage, die nicht nachgedruckt wird. Jeder Print trägt eine handschriftliche Nummerierung (z. B. 3/25), Signatur und optional ein Echtheitszertifikat auf Büttenpapier. Nach Ausschöpfung der Auflage wird das Motiv aus dem Verkauf genommen."
+      "answer": "Ein Teil des Bestands ist als limitierte Edition vorgesehen, andere Motive sind als Einzelabzug oder Motivlizenz verfügbar. Auflage, Kennzeichnung und Verfügbarkeit werden deshalb immer für das konkrete Motiv angegeben und nicht pauschal für das gesamte Landschaftsportfolio versprochen."
     },
     {
       "question": "Was kostet ein Landschaftsbild als Fine-Art-Print?",
-      "answer": "Die Preise richten sich nach Motiv, Auflage, Format und Material — eine Pauschalangabe wäre hier nicht seriös. Papierarbeiten in kleineren Formaten starten deutlich unter dreistelligen Beträgen; Großformat auf Dibond oder Acrylglas ist entsprechend höher kalkuliert. Detaillierte Preisangaben auf Anfrage."
+      "answer": "Der Preis hängt von Motiv, Format, Material, Rahmung und gegebenenfalls der Edition ab. Weil diese Seite keine festen Produktvarianten mit identischer Kalkulation zeigt, nenne ich den Endpreis im konkreten Angebot statt mit einer Lockzahl, die für die gewünschte Ausführung nicht gilt."
     }
   ],
-  "blocks": [],
+  "blocks": [
+    {
+      "headline": "Die Wand gibt das Format vor.",
+      "body": "Ein Querformat über einem breiten Möbelstück braucht andere Proportionen als ein ruhiger Solitär im Flur. Wandbreite, freie Fläche und Betrachtungsabstand entscheiden darüber, ob ein Bild Präsenz bekommt oder den Raum überfordert. Ein schnelles Foto der Wand ist für die Auswahl oft hilfreicher als eine lange Stilbeschreibung.",
+      "_template": "textBlock"
+    },
+    {
+      "headline": "Nicht jedes Motiv lässt sich beliebig beschneiden.",
+      "body": "Bei Landschaften tragen Horizont, Leerräume und die Verteilung von Hell und Dunkel die Komposition. Ein vorhandenes Motiv wird deshalb nicht automatisch auf jedes Wunschmaß gezogen. Wenn ein engerer Beschnitt die Bildidee beschädigt, empfehle ich ein anderes Format oder ein anderes Motiv.",
+      "_template": "textBlock"
+    },
+    {
+      "headline": "Material verändert die Wirkung.",
+      "body": "Papier wirkt zurückhaltend und lebt von Oberfläche und Tonwert. Alu-Dibond erscheint direkter und eignet sich für eine klare, rahmenlose Präsentation. Acrylglas verstärkt Tiefe und Kontrast, kann in hellen Räumen aber auch stärker spiegeln. Die Entscheidung folgt dem Raum, nicht einer pauschalen Rangfolge.",
+      "_template": "textBlock"
+    },
+    {
+      "headline": "Erst freigeben, dann produzieren.",
+      "body": "Vor der Bestellung werden Motiv, sichtbarer Ausschnitt, Endmaß und Ausführung eindeutig festgehalten. Danach folgt ein Angebot mit den Angaben, die für genau diese Variante gelten. So bleibt nachvollziehbar, was geliefert wird und welche Punkte vor der Produktion noch offen sind.",
+      "_template": "textBlock"
+    }
+  ],
   "statement": {
-    "headline": "Motiv wählen, das wirkt,",
-    "emphasis": "fertig geliefert.",
+    "headline": "Nicht das schönste Bild,",
+    "emphasis": "das richtige für den Raum.",
     "body": [
       {
-        "text": "Die Motive kommen aus NRW und darüber hinaus — Rheinauen im Winterlicht, ruhige Talsperrenpanoramiken, Wälder im Morgennebel, die weite Niederrhein-Ebene unter schwerem Himmel. Jedes Bild entsteht mit Geduld und Blick für Komposition und Tonwert; was ich anbiete, ist sorgfältig ausgewählt und in hoher Auflage für den Druck freigegeben."
+        "text": "Ein Motiv kann auf dem Laptop sofort überzeugen und an einer großen Wand trotzdem verloren wirken. Umgekehrt braucht ein kleines, ruhiges Bild nicht automatisch mehr Farbe, sondern den passenden Abstand und eine Ausführung, die mit dem vorhandenen Licht arbeitet."
       },
       {
-        "text": "Zur Auswahl stehen Fine-Art-Papier (Hahnemühle), Alu-Dibond, Acrylglas und gerahmte Ausführungen in verschiedenen Größen — vom kleinen Format bis zum großformatigen Wandbild für Büro, Praxis oder Wohnraum. Bestellung und Lieferung laufen unkompliziert; auf Anfrage sind auch Lizenzdateien verfügbar."
+        "text": "Zur Auswahl stehen Motive aus dem Landschaftsbestand als Fine-Art-Print, Wandbild, Edition oder — wenn die Nutzung keine physische Arbeit verlangt — als Lizenz. Welche Varianten tatsächlich verfügbar sind, klären wir am konkreten Bild."
       }
     ]
   },
@@ -51,27 +72,27 @@
     {
       "number": "01",
       "title": "Private Wohnräume",
-      "text": "Wohnzimmer, Schlafzimmer, Flur: ein ruhiges Naturmotiv als Fine-Art-Print gibt einem Raum Tiefe ohne Unruhe. Die Beratung klärt, welches Format zur Deckenhöhe passt und welches Material im vorhandenen Licht wirkt."
+      "text": "Für Wohnzimmer, Schlafzimmer oder Flur wird das Motiv auf Wandmaß, Betrachtungsabstand und vorhandenes Licht abgestimmt — nicht nur auf eine bevorzugte Farbe."
     },
     {
       "number": "02",
       "title": "Büro & Arbeitsumfeld",
-      "text": "Repräsentative Flächen in Kanzleien, Agenturen oder Arztpraxen: ein kuratierter Naturfotografie-Print setzt einen ruhigen Gegenpol zur Arbeitsverdichtung — ohne dekorativ zu wirken. Urheber- und Lizenznachweis inklusive."
+      "text": "Für Büro, Praxis oder Empfang zählen Fernwirkung, Reflexionen und eine Ausführung, die dem täglichen Umfeld standhält. Bei mehreren Flächen wird die Auswahl als zusammenhängende Gruppe geplant."
     },
     {
       "number": "03",
-      "title": "Geschenk mit Bestand",
-      "text": "Ein nummerierter Landschaftsdruck als Geschenk für Menschen, die Räume bewusst gestalten. Keine Massenware, keine verfallende Aktualität — ein Bild, das in zehn Jahren noch dasselbe Gewicht hat."
+      "title": "Ein einzelner Akzent",
+      "text": "Für schmale oder bewusst ruhige Wände kann ein kleinerer Print stärker sein als ein übergroßes Format. Motiv und Ausführung werden auf diese eine Fläche konzentriert."
     },
     {
       "number": "04",
       "title": "Innenarchitektur & Objektausstattung",
-      "text": "Für Planer, die ein Hotel, ein Foyer oder ein Privatprojekt mit originalen Prints ausstatten: Mehrfachbestellungen gleicher Motive sind möglich, abgestimmt auf Auflagengrenzen. Anfrage nach Umfang."
+      "text": "Für Hotel, Foyer oder Privatprojekt lassen sich mehrere Motive nach Rhythmus, Format und Farbigkeit kuratieren. Verfügbarkeit und mögliche Mehrfachausführung werden je Motiv geprüft."
     },
     {
       "number": "05",
       "title": "Sammelinteresse Fine Art",
-      "text": "Wer Fotografie als Sammelgegenstand betrachtet, findet hier limitierte Editionen aus der Landschafts- und Naturfotografie — mit dokumentierter Auflage, klarer Provenienz und direktem Kontakt zum Fotografen."
+      "text": "Bei limitierten Arbeiten werden Edition, Ausführung und Verfügbarkeit für das jeweilige Motiv transparent benannt. Der direkte Kontakt führt zur konkreten Arbeit statt zu einer anonymen Produktvariante."
     }
   ],
   "relatedSection": {
@@ -84,11 +105,16 @@
   "searchLinksSection": {
     "items": []
   },
-  "contactSection": {},
+  "contactSection": {
+    "headline": "Landschaftsbild",
+    "emphasis": "auswählen.",
+    "lead": "Schicke ein Foto der Wand, die ungefähren Maße und ein bis drei Motive, die dich ansprechen. Wenn noch kein Favorit feststeht, reichen Raum, gewünschte Stimmung und ein realistischer Budgetrahmen für eine erste Auswahl.",
+    "emailSubject": "Landschaftsbild kaufen"
+  },
   "targetKeyword": "Landschaftsbilder kaufen",
   "seo": {
     "title": "Landschaftsbilder kaufen – Fine Art Print & Wandbild",
-    "description": "Limitierte Fine-Art-Prints aus der Landschafts- und Naturfotografie — Wandbild auf Baryt, Dibond oder Acrylglas. Beratung zu Format & Material inklusive.",
+    "description": "Landschaftsbilder als Fine-Art-Print oder Wandbild auswählen: Motiv, Wandmaß, Format, Material und verfügbare Ausführung vor der Bestellung klären.",
     "canonicalUrl": "https://matthiasramahi.de/landschaftsbilder-kaufen.html",
     "legacyUrl": "landschaftsbilder-kaufen.html",
     "noIndex": false,
@@ -102,7 +128,7 @@
     "migrationStatus": "reviewed",
     "renderSource": "legacy-file"
   },
-  "updatedAt": "2026-06-01 20:26:49.32+00",
+  "updatedAt": "2026-08-25T12:00:00.000Z",
   "createdAt": "2026-05-31 17:32:41.612+00",
   "status": "published",
   "payloadId": "165"

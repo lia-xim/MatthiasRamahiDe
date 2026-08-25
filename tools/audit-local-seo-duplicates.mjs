@@ -51,6 +51,9 @@ let sectionRichPrefixes = new Set([
   'fotoshooting-preise',
   'paarshooting-familienshooting',
   'schwarz-weiss-portrait-fotografie',
+  'fahrzeugfotografie',
+  'landschaftsfotografie',
+  'landschaftsbilder',
 ])
 
 const plannedButNotDeepPrefixes = new Set([

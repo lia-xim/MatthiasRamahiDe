@@ -222,6 +222,7 @@
       .hero-ls__counter{left:18px;bottom:18px}
       .hero-ls__title{font-size:clamp(54px,13vw,84px);letter-spacing:-.045em}
       .hero-ls__local-note{font-size:10px;letter-spacing:.18em}
+      .mod-ls__title,.bg-ls__title{min-width:0;max-width:100%;overflow-wrap:anywhere}
       .mod-ls__grid{grid-template-columns:1fr}
       .fw-ls__flow{grid-template-columns:1fr;gap:28px}
       .lb{padding:16px}
