@@ -10,6 +10,7 @@
   const loadStatus = document.getElementById('loadStatus')
   const filters = Array.prototype.slice.call(document.querySelectorAll('.filter'))
   const STEP = 6
+  const desktopGrid = matchMedia('(min-width: 1121px)')
 
   const params = new URLSearchParams(location.search)
   const requestedCategory = params.get('category') || 'all'
@@ -42,19 +43,35 @@
 
   function render() {
     const matched = posts.filter(matches)
+    const visiblePosts = []
     let shown = 0
     posts.forEach(function (post) {
+      post.style.removeProperty('grid-column')
       const visible = matches(post) && matched.indexOf(post) < loadedCount
       if (visible) {
         post.classList.remove('hidden', 'not-loaded')
         if (io) io.observe(post)
         else post.classList.add('visible')
+        visiblePosts.push(post)
         shown += 1
       } else {
         post.classList.add('hidden')
         post.classList.remove('visible')
       }
     })
+
+    // Das Desktop-Raster hat zwoelf Spalten. Eine unvollstaendige letzte Reihe
+    // verteilt den freien Platz gleichmaessig statt eine grosse und eine kleine
+    // Karte nebeneinander stehen zu lassen.
+    if (desktopGrid.matches && visiblePosts.length > 0) {
+      visiblePosts.forEach(function (post) { post.style.gridColumn = 'span 4' })
+      const remainder = visiblePosts.length % 3
+      if (remainder === 2) {
+        visiblePosts.slice(-2).forEach(function (post) { post.style.gridColumn = 'span 6' })
+      } else if (remainder === 1) {
+        visiblePosts[visiblePosts.length - 1].style.gridColumn = 'span 12'
+      }
+    }
 
     if (loadStatus) {
       const suffix = activeTag ? ' zum Thema „' + activeTag + '“' : ''
@@ -92,6 +109,8 @@
       if (head) head.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' })
     })
   })
+
+  if (desktopGrid.addEventListener) desktopGrid.addEventListener('change', render)
 
   render()
 })()

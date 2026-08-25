@@ -6,7 +6,7 @@ import {
   type JournalArticleBlock,
   journalArticleByLegacyFile,
 } from '../../lib/journalArticleContent'
-import { toAbsoluteSiteUrl, toRootRelativeHref } from '../../lib/payload'
+import { imageDisplayUrl, toAbsoluteSiteUrl, toRootRelativeHref } from '../../lib/payload'
 import { breadcrumbJsonLd, faqJsonLd, type JsonLd } from '../../lib/seo'
 
 type Props = { legacyFile: string }
@@ -40,7 +40,7 @@ const jsonLd = [
     mainEntityOfPage: { '@type': 'WebPage', '@id': toAbsoluteSiteUrl(canonicalUrl) },
     headline: plainTitle,
     description: article.seoDescription,
-    image: [toAbsoluteSiteUrl(article.heroImage)],
+    image: [imageDisplayUrl(article.heroImage, 'wide', { allowOriginal: true })],
     datePublished: `${article.dateTime}T09:00:00+02:00`,
     dateModified: `${article.dateTime}T09:00:00+02:00`,
     inLanguage: 'de-DE',
@@ -63,14 +63,25 @@ const previewMap: Record<string, { height: number; image: string; width: number 
 
 function imagePreview(image?: string) {
   const normalized = (image || '').replace(/^\//, '')
-  if (previewMap[normalized]) return previewMap[normalized]
+  const preview = previewMap[normalized]
+  if (preview) {
+    return {
+      ...preview,
+      url: imageDisplayUrl(`/${preview.image}`, 'card', { allowOriginal: true }),
+    }
+  }
   const portrait = /portrait|khan|levi|dsc6968|dsc9301|landschaft/i.test(normalized)
-  return { image: normalized, width: portrait ? 1200 : 1600, height: portrait ? 1600 : 1067 }
+  return {
+    image: normalized,
+    url: imageDisplayUrl(`/${normalized}`, 'card', { allowOriginal: true }),
+    width: portrait ? 1200 : 1600,
+    height: portrait ? 1600 : 1067,
+  }
 }
 
 const displayHero = imagePreview(article.heroImage)
 const isPortraitHero = displayHero.height > displayHero.width
-const heroStyle = `--article-hero-image:url('/${displayHero.image}')`
+const heroStyle = `--article-hero-image:url('${displayHero.url}')`
 const clusterProfile = journalClusterProfiles[article.cluster]
 const journalFilterHref = (value: string, kind: 'category' | 'tag' = 'tag') =>
   `/blog.html?${kind}=${encodeURIComponent(value.toLocaleLowerCase('de-DE'))}#journal`
@@ -91,9 +102,9 @@ Astro.response.headers.set('x-cms-page-kind', 'journal-tina-source')
   description={article.seoDescription}
   canonicalUrl={canonicalUrl}
   current="blog"
-  ogImage={article.heroImage}
+  ogImage={displayHero.url}
   ogType="article"
-  preloadImages={[`/${displayHero.image}`]}
+  preloadImages={[displayHero.url]}
   stylesheets={['/assets/journal-support.css']}
   jsonLd={jsonLd}
   bodyClass="has-mr-footer journal-article-page"
@@ -103,7 +114,7 @@ Astro.response.headers.set('x-cms-page-kind', 'journal-tina-source')
       <header class:list={['article-hero', { 'article-hero--portrait': isPortraitHero }]} style={heroStyle} data-header-theme="dark">
         <div class="article-hero__visual" aria-hidden="true">
           <img
-            src={`/${displayHero.image}`}
+            src={displayHero.url}
             alt=""
             width={displayHero.width}
             height={displayHero.height}
@@ -181,8 +192,8 @@ Astro.response.headers.set('x-cms-page-kind', 'journal-tina-source')
                       {images.map((item) => {
                         const preview = imagePreview(item.image)
                         return (
-                          <button type="button" data-full={`/${(item.image || preview.image).replace(/^\//, '')}`}>
-                            <img src={`/${preview.image}`} alt={item.caption || article.heroImageAlt} width={preview.width} height={preview.height} loading="lazy" decoding="async" />
+                          <button type="button" data-full={imageDisplayUrl(item.image || `/${preview.image}`, 'wide', { allowOriginal: true })}>
+                            <img src={preview.url} alt={item.caption || article.heroImageAlt} width={preview.width} height={preview.height} loading="lazy" decoding="async" />
                           </button>
                         )
                       })}
@@ -251,7 +262,7 @@ Astro.response.headers.set('x-cms-page-kind', 'journal-tina-source')
             const preview = imagePreview(related.heroImage)
             return (
               <a href={articleHref(related.legacyFile)}>
-                <img src={`/${preview.image}`} alt={related.heroImageAlt} width={preview.width} height={preview.height} loading="lazy" decoding="async" />
+                <img src={preview.url} alt={related.heroImageAlt} width={preview.width} height={preview.height} loading="lazy" decoding="async" />
                 <span>{related.category}</span>
                 <strong>{related.title}</strong>
               </a>

@@ -121,7 +121,9 @@ const featuredText = hasText(featuredSettings.text)
   ? featuredSettings.text!
   : featured?.text || 'Ein starkes Foto entsteht nicht erst beim Ausloesen - sondern in der Entscheidung fuer Ort, Tageszeit, Bildschnitt und Stimmung.'
 const featuredButtonLabel = hasText(featuredSettings.buttonLabel) ? featuredSettings.buttonLabel! : 'Beitrag lesen'
-const gridPosts = posts.filter((_, index) => index !== featuredIndex)
+// Der Fokus-Beitrag ist eine redaktionelle Hervorhebung, kein Ersatz fuer den
+// vollstaendigen Index. Deshalb bleibt er zusaetzlich in der Gesamtliste.
+const gridPosts = posts
 const loadStatus = loadStatusTemplate
   .replace('{visible}', String(Math.min(initialVisiblePostCount, gridPosts.length)))
   .replace('{total}', String(gridPosts.length))
@@ -188,7 +190,6 @@ const finalSecondaryHref = toRootRelativeHref(finalCta.secondaryHref) || '/portf
             href={post.href}
             data-category={post.category}
             data-tags={post.tags.map((tag) => tag.toLocaleLowerCase('de-DE')).join('|')}
-            style={index < initialVisiblePostCount ? 'grid-column:span 4' : undefined}
           >
             <div class="post-media">
               <img
