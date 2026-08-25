@@ -10,7 +10,7 @@
   "gallery": [
     {
       "image": "/uploads/payload/_DSC0470-Enhanced-NR-2.webp",
-      "caption": "Warm inszeniertes Portrait mit ruhiger PrÑsenz",
+      "caption": "Warm inszeniertes Portrait mit ruhiger Pr√§senz",
       "role": "sequence"
     },
     {
@@ -30,7 +30,7 @@
     },
     {
       "image": "/uploads/payload/20250327-DSC01550-2.webp",
-      "caption": "Editorial-Portrait mit konzeptioneller LichtfÅhrung",
+      "caption": "Editorial-Portrait mit konzeptioneller Lichtf√ºhrung",
       "role": "sequence"
     },
     {
@@ -103,6 +103,12 @@
         "title": "Portfolio",
         "href": "/portfolio.html",
         "image": "/assets/portraits/20260823-khan-levi-dsc8571.webp"
+      },
+      {
+        "label": "Neue Serie",
+        "title": "Viola-Portrait am See",
+        "href": "/portfolio/viola-portrait-am-see",
+        "image": "/assets/portraits/20260609-viola-dsc7346.webp"
       }
     ],
     "contact": {}

@@ -1,0 +1,42 @@
+{
+  "title": "Dresden & Sächsische Schweiz",
+  "slug": "dresden-saechsische-schweiz",
+  "status": "published",
+  "createdAt": "2026-08-25T12:00:00.000Z",
+  "updatedAt": "2026-08-25T12:00:00.000Z",
+  "intro": "Architektur und Felslandschaft zwischen Dresden und der Sächsischen Schweiz.",
+  "excerpt": "Barocke Innenarchitektur und die Felslandschaft rund um die Bastei.",
+  "category": "content/portfolio-categories/landschaft.json",
+  "coverImage": "/assets/landscape/202608-dresden-dsc8441.webp",
+  "gallery": [
+    {
+      "image": "/assets/landscape/202608-dresden-dsc8441.webp",
+      "caption": "Basteibrücke zwischen Felsen und weitem Wolkenhimmel",
+      "role": "sequence"
+    },
+    {
+      "image": "/assets/landscape/202608-dresden-dsc8426.webp",
+      "caption": "Basteibrücke und Sandsteinfelsen in der Sächsischen Schweiz",
+      "role": "sequence"
+    },
+    {
+      "image": "/assets/landscape/202608-dresden-dsc8458.webp",
+      "caption": "Barocker Kirchenraum mit Orgel und symmetrischer Architektur",
+      "role": "sequence"
+    }
+  ],
+  "presentationMode": "Reiseserie",
+  "seo": {
+    "title": "Dresden & Sächsische Schweiz | Fotografie",
+    "description": "Fotografische Serie aus Dresden und der Sächsischen Schweiz: Basteibrücke, Sandsteinfelsen und barocke Innenarchitektur in drei Motiven.",
+    "secondaryKeywords": [],
+    "internalLinkAnchors": [],
+    "canonicalUrl": "https://matthiasramahi.de/portfolio/dresden-saechsische-schweiz",
+    "legacyUrl": "",
+    "ogImage": "/assets/landscape/202608-dresden-dsc8441.webp",
+    "noIndex": false,
+    "focusKeyword": "Dresden Sächsische Schweiz Fotografie",
+    "searchIntent": "Referenzprüfung: Nutzer möchten Bildstil und Qualität einer Landschafts- und Architekturserie einschätzen."
+  },
+  "blocks": []
+}
