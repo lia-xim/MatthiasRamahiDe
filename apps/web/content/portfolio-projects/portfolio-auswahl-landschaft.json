@@ -9,23 +9,63 @@
   "coverImage": "/uploads/payload/Wettberwerb_Foto5_Wunder_der_Natur2-1.webp",
   "gallery": [
     {
+      "image": "/assets/landscape/202608-dresden-dsc8441.webp",
+      "caption": "Sächsische Schweiz · Basteibrücke",
+      "role": "sequence"
+    },
+    {
+      "image": "/assets/landscape/202608-dresden-dsc8426.webp",
+      "caption": "Elbsandsteingebirge · Felslandschaft",
+      "role": "sequence"
+    },
+    {
       "image": "/uploads/payload/Wettberwerb_Foto5_Wunder_der_Natur2-1.webp",
-      "caption": "Landschaft",
+      "caption": "Wunder der Natur · Weite",
       "role": "sequence"
     },
     {
       "image": "/uploads/payload/Wettberwerb_Foto6_Wunder_der_Natur-1.webp",
-      "caption": "Landschaft",
+      "caption": "Wunder der Natur · Licht",
+      "role": "sequence"
+    },
+    {
+      "image": "/uploads/payload/Wettberwerb_Foto10_Wunder_der_natur-1.webp",
+      "caption": "Küste · Panorama",
+      "role": "sequence"
+    },
+    {
+      "image": "/uploads/payload/20250605-DSC03696.webp",
+      "caption": "Küste · Sonnenuntergang",
       "role": "sequence"
     },
     {
       "image": "/uploads/payload/20250605-DSC03756-2.webp",
-      "caption": "Landschaft",
+      "caption": "Felsküste · Tiefe",
+      "role": "sequence"
+    },
+    {
+      "image": "/uploads/payload/20250605-DSC03785.webp",
+      "caption": "Küste · Schwarzweiß",
+      "role": "sequence"
+    },
+    {
+      "image": "/uploads/payload/20250605-DSC03792.webp",
+      "caption": "Mensch und Landschaft",
+      "role": "sequence"
+    },
+    {
+      "image": "/uploads/payload/20250605-DSC03795.webp",
+      "caption": "Küstenweg · Perspektive",
+      "role": "sequence"
+    },
+    {
+      "image": "/uploads/payload/20250605-DSC03814.webp",
+      "caption": "Fels und Meer",
       "role": "sequence"
     },
     {
       "image": "/uploads/payload/20250605-DSC04020-2.webp",
-      "caption": "Landschaft",
+      "caption": "Strand · Brandung",
       "role": "sequence"
     }
   ],
@@ -38,7 +78,7 @@
       "stats": [
         {
           "label": "Bildtypen",
-          "text": "Küste, Fels, Tiermotiv"
+          "text": "Küste, Fels, Berglandschaft"
         },
         {
           "label": "Ausgabe",
@@ -46,7 +86,7 @@
         },
         {
           "label": "Auswahl",
-          "text": "Vier kuratierte Motive"
+          "text": "Zwölf kuratierte Motive"
         }
       ],
       "buttonLabel": "Landschaftsfotografie ansehen",
@@ -57,10 +97,10 @@
       "headline": "Was die Auswahl sichtbar macht.",
       "body": [
         {
-          "text": "Die Bildstrecke verbindet Küsten, Felsformationen und ein Tiermotiv im Gegenlicht. Komposition und Tonwerte sind auf eine ruhige Betrachtung und eine mögliche Ausgabe als Print ausgerichtet."
+          "text": "Die Bildstrecke verbindet Küsten, Felsformationen und die Sächsische Schweiz. Komposition und Tonwerte sind auf eine ruhige Betrachtung und eine mögliche Ausgabe als Print ausgerichtet."
         },
         {
-          "text": "Die vier Motive dienen als visueller Projektbeleg. Sie zeigen die verfügbare Bildsprache und Auswahl, ohne Editionen, Verkäufe oder Kundenprojekte zu behaupten, die nicht dokumentiert sind."
+          "text": "Die erweiterte Auswahl verbindet verschiedene Orte, Wetterlagen und Formate. Sie zeigt die verfügbare Bildsprache, ohne Editionen, Verkäufe oder Kundenprojekte zu behaupten, die nicht dokumentiert sind."
         }
       ]
     },
@@ -118,7 +158,7 @@
     ],
     "extractedText": "06 / Landschaft Weite, als Print. Zur Landschaftsfotografie →"
   },
-  "updatedAt": "2026-05-28T19:45:25.897Z",
+  "updatedAt": "2026-08-25T12:00:00.000Z",
   "createdAt": "2026-05-28T19:07:36.069Z",
   "status": "published",
   "blocks": [],
