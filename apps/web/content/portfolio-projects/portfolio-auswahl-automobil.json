@@ -6,77 +6,82 @@
   "publishedAt": "2026-05-28T19:07:35.758Z",
   "category": "content/portfolio-categories/automobil.json",
   "excerpt": "Linie, Lack, Licht.",
-  "coverImage": "/uploads/payload/_DSC2831%20(1).webp",
+  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
   "gallery": [
     {
-      "image": "/uploads/payload/_DSC2831%20(1).webp",
-      "caption": "Automobil",
+      "image": "/assets/portfolio/automobil-brabus-sunset.webp",
+      "caption": "Exterieur · Abendlicht",
       "role": "sequence"
     },
     {
-      "image": "/uploads/payload/_DSC3032_genErase.webp",
-      "caption": "Automobil",
+      "image": "/assets/optimized/assets-portfolio-dsc3879-1920.webp",
+      "caption": "Hypercar · Showroom",
       "role": "sequence"
     },
     {
-      "image": "/uploads/payload/_DSC2983.webp",
-      "caption": "Automobil",
+      "image": "/assets/portfolio/automobil-mercedes-interieur-tilt.webp",
+      "caption": "Interieur · Cockpit",
       "role": "sequence"
     },
     {
-      "image": "/uploads/payload/_DSC3023.webp",
-      "caption": "Automobil",
+      "image": "/assets/portfolio/automobil-bmw-widebody.webp",
+      "caption": "Showcar · Widebody",
       "role": "sequence"
     },
     {
-      "image": "/uploads/payload/_DSC3086.webp",
-      "caption": "01 - Showroom",
+      "image": "/assets/optimized/assets-portfolio-dsc2744-1920.webp",
+      "caption": "Showcar · Perspektive",
       "role": "sequence"
     },
     {
-      "image": "/uploads/payload/_DSC3072.webp",
-      "caption": "02 - Cockpit",
+      "image": "/assets/portfolio/automobil-bentley-oldtimer.webp",
+      "caption": "Oldtimer · Formdetail",
       "role": "sequence"
     },
     {
-      "image": "/uploads/payload/_DSC3058.webp",
-      "caption": "03 - Detail",
+      "image": "/assets/optimized/assets-portfolio-dsc2329-1920.webp",
+      "caption": "Tuning · Messe",
       "role": "sequence"
     },
     {
-      "image": "/uploads/payload/_DSC3046_genErase%20(1).webp",
-      "caption": "04 - Night",
+      "image": "/assets/portfolio/automobil-bmw-klassiker.webp",
+      "caption": "Klassiker · Showroom",
       "role": "sequence"
     },
     {
-      "image": "/uploads/payload/_DSC3017.webp",
-      "caption": "05 - Lines",
+      "image": "/assets/optimized/assets-portfolio-dsc3982-1920.webp",
+      "caption": "Hypercar · Exterieur",
       "role": "sequence"
     },
     {
-      "image": "/uploads/payload/_DSC3004.webp",
-      "caption": "06 - Black",
+      "image": "/assets/portfolio/automobil-bmw-m3-showcar.webp",
+      "caption": "Klassiker · Messe",
       "role": "sequence"
     },
     {
-      "image": "/uploads/payload/_DSC2999_genErase.webp",
-      "caption": "07 - Motion",
+      "image": "/assets/optimized/assets-portfolio-dsc3908-1920.webp",
+      "caption": "Interieur · Material",
       "role": "sequence"
     },
     {
-      "image": "/uploads/payload/_DSC2924.webp",
-      "caption": "08 - Daylight",
+      "image": "/assets/optimized/assets-portfolio-dsc2345-1920.webp",
+      "caption": "Heck · Formdetail",
       "role": "sequence"
     },
     {
-      "image": "/uploads/payload/_DSC2841.webp",
-      "caption": "09 - Frame",
+      "image": "/assets/optimized/assets-portfolio-dsc2788-1-1920.webp",
+      "caption": "Exterieur · Dämmerung",
+      "role": "sequence"
+    },
+    {
+      "image": "/assets/optimized/assets-portfolio-dsc2986-1920.webp",
+      "caption": "Interieur · Location",
       "role": "sequence"
     }
   ],
   "heroSlides": [
     {
-      "image": "/uploads/payload/_DSC2831%20(1).webp",
+      "image": "/assets/portfolio/automobil-brabus-sunset.webp",
       "headlineLine1": "Automobil",
       "headlineLine2": "Auswahl.",
       "lead": "Kuratierte Fahrzeugserie mit Exterieur, Interieur, Details und Cinematic — als Bildsatz für Marke, Verkauf, Sammlung, Print und digitale Präsentation.",
@@ -87,7 +92,7 @@
       "secondaryHref": "#anfrage"
     },
     {
-      "image": "/uploads/payload/_DSC3032_genErase.webp",
+      "image": "/assets/optimized/assets-portfolio-dsc3879-1920.webp",
       "headlineLine1": "Linie,",
       "headlineLine2": "Lack, Licht.",
       "lead": "Automobilbilder mit kontrollierten Reflexen, ruhiger Form und klarer Reihenfolge statt einzelner Zufallstreffer.",
@@ -98,7 +103,7 @@
       "secondaryHref": "#anfrage"
     },
     {
-      "image": "/uploads/payload/_DSC2983.webp",
+      "image": "/assets/portfolio/automobil-mercedes-interieur-tilt.webp",
       "headlineLine1": "Fahrzeug",
       "headlineLine2": "als Serie.",
       "lead": "Vom Hero-Motiv über Details und Innenraum bis zum atmosphärischen Abschluss wird die Strecke als zusammenhängendes Bildsystem geplant.",
@@ -147,7 +152,7 @@
         "label": "Exterieur",
         "title": "Vollformat, ruhige Linien.",
         "text": "Außenaufnahmen mit kontrolliertem Licht und ruhigen Reflexen. Lack, Proportionen und Linienführung wirken stimmig – im Showroom, in der Industrie oder im urbanen Umfeld.",
-        "image": "/uploads/payload/_DSC3032_genErase.webp",
+        "image": "/assets/portfolio/automobil-brabus-sunset.webp",
         "bullets": [
           {
             "text": "Showroom & Location"
@@ -164,7 +169,7 @@
         "label": "Interieur",
         "title": "Innenraum, Material und Bedienung.",
         "text": "Cockpit, Leder, Carbon, Instrumente und Details werden nicht nur dokumentiert, sondern als nutzbare Motive für Inserat, Editorial und Markenpräsentation kuratiert.",
-        "image": "/uploads/payload/_DSC2983.webp",
+        "image": "/assets/portfolio/automobil-mercedes-interieur-tilt.webp",
         "bullets": [
           {
             "text": "Cockpit & Sitze"
@@ -181,7 +186,7 @@
         "label": "Details",
         "title": "Lack, Sicke, Zeichen.",
         "text": "Detailbilder geben der Serie Rhythmus. Embleme, Sicken, Felgen, Oberflächen und mechanische Formen schaffen Nähe, ohne das Fahrzeug aus dem Kontext zu reißen.",
-        "image": "/uploads/payload/_DSC3023.webp",
+        "image": "/assets/optimized/assets-portfolio-dsc2345-1920.webp",
         "bullets": [
           {
             "text": "Lack & Chrom"
@@ -198,7 +203,7 @@
         "label": "Cinematic",
         "title": "Atmosphäre als Abschluss.",
         "text": "Cineastische Frames, Bewegungsgefühl und Nachtaufnahmen geben der Serie Dramaturgie – nutzbar für Social Media, Web, Kampagne und Print.",
-        "image": "/uploads/payload/_DSC3086.webp",
+        "image": "/assets/optimized/assets-portfolio-dsc3879-1920.webp",
         "bullets": [
           {
             "text": "Motion & Stimmung"
@@ -249,7 +254,7 @@
         "label": "01 / Leistung",
         "title": "Automobilfotografie",
         "href": "/automobil-fotografie-duesseldorf.html",
-        "image": "/uploads/payload/_DSC3982.webp"
+        "image": "/assets/optimized/assets-portfolio-dsc3982-1920.webp"
       },
       {
         "label": "02 / Verwandt",
@@ -267,7 +272,7 @@
         "label": "04 / Uebersicht",
         "title": "Portfolio",
         "href": "/portfolio.html",
-        "image": "/uploads/payload/_DSC2831%20(1).webp"
+        "image": "/assets/portfolio/automobil-brabus-sunset.webp"
       }
     ],
     "contact": {
@@ -286,7 +291,7 @@
     "internalLinkAnchors": [],
     "canonicalUrl": "https://matthiasramahi.de/portfolio/portfolio-auswahl-automobil",
     "legacyUrl": "portfolio.html",
-    "ogImage": "/uploads/payload/_DSC2831%20(1).webp",
+    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
     "noIndex": false,
     "focusKeyword": "Automobil Portfolio-Auswahl",
     "searchIntent": "Referenzprüfung: Nutzer möchten Bildstil, Qualität und Einsatzmöglichkeiten der Serie Automobil Portfolio-Auswahl einschätzen."
