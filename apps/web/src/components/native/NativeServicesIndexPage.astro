@@ -87,6 +87,8 @@ const items = Array.from({ length: baseLength }, (_, index) =>
 const overviewItems = items.filter(
   (service) =>
     service.id !== 'sonder' &&
+    service.id !== 'keyword-datenbank' &&
+    !service.href.includes('/keyword-datenbank-seo.html') &&
     !service.href.includes('/drucke-sonderanfertigungen-duesseldorf.html') &&
     !service.overviewLabel.toLowerCase().includes('sonder'),
 )
