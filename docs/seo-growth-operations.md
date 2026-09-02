@@ -59,7 +59,7 @@ stabilen Dimensionen:
 
 - `page`: kanonischer Pfad der Landingpage
 - `pageFamily`: `automobil`, `sportwagen`, `oldtimer`, `motorrad`, `portrait`,
-  `landschaft`, `contextter` oder `other`
+  `landschaft`, `crawl-foundry` oder `other`
 - `pageRole`: `pillar`, `local-hub`, `regional-hub`, `child`, `guide`,
   `proof`, `case-study` oder `other`
 
@@ -74,7 +74,7 @@ Wichtige Ereignisse:
 | `form-submit` | Anfrage wurde erfolgreich angenommen |
 | `form-submit-mailto` | Mailprogramm-Fallback wurde geöffnet |
 | `form-abandon` | Formular begonnen, aber nicht abgeschlossen |
-| `outbound-link` | externer Link, unter anderem Contextter |
+| `outbound-link` | externer Link, unter anderem Crawl Foundry |
 | `gallery-load-more` | vertiefte Portfolio-Nutzung |
 | `faq-open` | fachliche Detailfrage geöffnet |
 

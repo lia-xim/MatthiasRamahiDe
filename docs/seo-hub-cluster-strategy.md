@@ -55,7 +55,7 @@ Der lokale Render-Crawl über 251 Sitemap-Seiten zeigt:
 ├── /blog.html
 └── /leistungen.html
     ├── Webdesign & SEO
-    └── Contextter Keyword-Datenbank-Fallstudie
+    └── Crawl Foundry Keyword-Datenbank-Fallstudie
 ```
 
 Jede indexierbare Seite erhält genau eine primäre Rolle. Ein anderes Keyword oder ein anderer Ort reicht nicht als eigenständige Rolle.
@@ -171,7 +171,7 @@ Die vielen Stadtvarianten sind für einen lieferbaren Print weniger plausibel al
 4. Ratgeber und Leistungsseite verlinken in beide Richtungen, wenn der Ratgeber eine echte Kauf- oder Planungsfrage beantwortet.
 5. Portfolio und Case Study verlinken auf die Leistung, die sie belegen.
 6. `/fotografie.html` muss aus den Düsseldorfer und NRW-Hubs im Hauptinhalt erreichbar sein.
-7. Die Contextter-Fallstudie erhält Links aus `/leistungen.html` und/oder `/webdesign-seo-duesseldorf.html`, nicht aus Fotografie-Artikeln.
+7. Die Crawl-Foundry-Fallstudie erhält Links aus `/leistungen.html` und/oder `/webdesign-seo-duesseldorf.html`, nicht aus Fotografie-Artikeln.
 
 ## Content- und Proof-Plan
 
@@ -213,7 +213,7 @@ Jede Zusammenarbeit braucht einen realen Nutzen: Projektbericht, Bildstrecke, te
 ### Tage 1-30: Rollen und Linkfluss
 
 - Düsseldorfer CMS-Hub bereinigen
-- Kontextuelle Links zu `/fotografie.html` und der Contextter-Fallstudie ergänzen
+- Kontextuelle Links zu `/fotografie.html` und der Crawl-Foundry-Fallstudie ergänzen
 - Pro Cluster Parent und Kinder verbindlich markieren
 - Linklisten auf Pillars und Kindern kuratieren
 - GSC-Seiten-/Query-Export für die vier Überlappungsgruppen sichern

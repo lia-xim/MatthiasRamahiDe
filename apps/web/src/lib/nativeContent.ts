@@ -533,14 +533,14 @@ export const servicesIndexItems: ServicesIndexItem[] = [
   {
     id: 'keyword-datenbank',
     href: '/keyword-datenbank-seo.html',
-    headline: 'Contextter-<em>Fallstudie.</em>',
-    text: 'Contextter wird auch für die Suchmaschinenoptimierung dieser Website eingesetzt. Die Keyword-Datenbank bündelt Keyword-Recherche, Suchintentionen, Themencluster und Prioritäten; die Fallstudie zeigt den Einsatz im laufenden Projekt.',
+    headline: 'Crawl-Foundry-<em>Fallstudie.</em>',
+    text: 'Crawl Foundry wird auch für die Suchmaschinenoptimierung dieser Website eingesetzt. Die Keyword-Datenbank bündelt Keyword-Recherche, Suchintentionen, Themencluster und Prioritäten; die Fallstudie zeigt den Einsatz im laufenden Projekt.',
     tags: ['Keyword-Recherche', 'Suchintention', 'SEO-Struktur'],
     theme: 'light',
     images: [
       {
         src: '/assets/contextter/keyword-database-hero-detail.webp',
-        alt: 'Contextter Keyword-Datenbank mit Keyword-Liste und geöffnetem Detailpanel',
+        alt: 'Crawl Foundry Keyword-Datenbank mit Keyword-Liste und geöffnetem Detailpanel',
         width: 1920,
         height: 1081,
         caption: 'Keyword-Details',
@@ -548,7 +548,7 @@ export const servicesIndexItems: ServicesIndexItem[] = [
       {
         className: 'small screen',
         src: '/assets/contextter/keyword-database-hero-list.webp',
-        alt: 'Contextter Keyword-Datenbank in der Listenansicht mit Suchintention und Kennzahlen',
+        alt: 'Crawl Foundry Keyword-Datenbank in der Listenansicht mit Suchintention und Kennzahlen',
         width: 1920,
         height: 1080,
         caption: 'Keyword-Liste',

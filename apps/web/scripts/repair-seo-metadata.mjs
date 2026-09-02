@@ -165,7 +165,7 @@ function intentFor(collectionName, doc, keyword) {
 
   if (collectionName === 'servicePages') {
     if (slug === 'keyword-datenbank-seo') {
-      return 'Fallstudie und Produktinformation: Nutzer möchten verstehen, wie die Contextter Keyword-Datenbank entstanden ist und zum aktuellen Produkt wechseln.'
+      return 'Fallstudie und Produktinformation: Nutzer möchten verstehen, wie die Crawl Foundry Keyword-Datenbank entstanden ist und zum aktuellen Produkt wechseln.'
     }
     return `Dienstleistungsvergleich und Anfrage: Nutzer prüfen Angebot, Ablauf, Bildstil und Kontaktmöglichkeit für ${keyword}.`
   }

@@ -36,7 +36,7 @@ test('classifies all intent prefixes through the central family taxonomy', () =>
   }
 })
 
-test('keeps guides, proof and the Contextter case study distinct', () => {
+test('keeps guides, proof and the Crawl Foundry case study distinct', () => {
   assert.deepEqual(pageAnalyticsDimensions('/auto-fotografieren-tipps.html'), {
     pageFamily: 'automobil',
     pageRole: 'guide',
@@ -46,7 +46,7 @@ test('keeps guides, proof and the Contextter case study distinct', () => {
     pageRole: 'proof',
   })
   assert.deepEqual(pageAnalyticsDimensions('/keyword-datenbank-seo.html'), {
-    pageFamily: 'contextter',
+    pageFamily: 'crawl-foundry',
     pageRole: 'case-study',
   })
 })

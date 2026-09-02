@@ -6,7 +6,7 @@ import {
 } from './localSeoLayoutFamilies.ts'
 
 export type PageAnalyticsDimensions = {
-  pageFamily: LocalSeoLayoutFamily | 'contextter' | 'other' | 'portfolio'
+  pageFamily: LocalSeoLayoutFamily | 'crawl-foundry' | 'other' | 'portfolio'
   pageRole:
     | 'case-study'
     | 'child'
@@ -39,7 +39,7 @@ export function pageAnalyticsDimensions(value?: string | null): PageAnalyticsDim
   const slug = normalizeLocalSeoSlug(path)
 
   if (slug === 'keyword-datenbank-seo') {
-    return { pageFamily: 'contextter', pageRole: 'case-study' }
+    return { pageFamily: 'crawl-foundry', pageRole: 'case-study' }
   }
 
   const portfolioMatch = path.match(/^portfolio\/portfolio-auswahl-([^/]+)$/)

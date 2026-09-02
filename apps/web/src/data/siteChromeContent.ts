@@ -134,7 +134,7 @@ export const siteChromeContent = {
           { label: 'Alle Leistungen', href: 'leistungen.html' },
           { label: 'Fotolabor & Druck', href: 'fotolabor-druck-duesseldorf.html' },
           { label: 'Webdesign & SEO', href: 'webdesign-seo-duesseldorf.html' },
-          { label: 'Contextter Fallstudie', href: 'keyword-datenbank-seo.html' },
+          { label: 'Crawl Foundry Fallstudie', href: 'keyword-datenbank-seo.html' },
           { label: 'Videografie', href: 'videografie-duesseldorf.html' },
           { label: 'Drucke & Sonderanfertigungen', href: 'drucke-sonderanfertigungen-duesseldorf.html' },
         ],

@@ -119,7 +119,7 @@ Indexierung, GSC-Altbestand, Redirects und Gone-Entscheidungen.
 
 1. Die bestehenden kanonischen URLs stabil halten. Keine Massen-Relaunches oder Slug-Wechsel fuer bereits indexierte Seiten.
 2. `/fotografie-deutschland.html` wird dauerhaft auf `/fotografie-duesseldorf.html` konsolidiert. Die alte URL bleibt aus Sitemap und interner Navigation entfernt; `/fotografie.html`, `/fotografie-duesseldorf.html` und `/fotografie-nrw.html` behalten getrennte Rollen.
-3. `/keyword-datenbank-seo.html` bleibt als transparente Contextter-Fallstudie indexierbar. Sie dokumentiert reale Produktentscheidungen, verlinkt gefolgt auf die deutsche Contextter-Produktseite und wird nicht als konkurrierende SEO-Dienstleistungsseite ausgebaut.
+3. `/keyword-datenbank-seo.html` bleibt als transparente Crawl-Foundry-Fallstudie indexierbar. Sie dokumentiert reale Produktentscheidungen, verlinkt gefolgt auf die deutsche Crawl-Foundry-Produktseite und wird nicht als konkurrierende SEO-Dienstleistungsseite ausgebaut.
 4. Zuerst Bottom-of-Funnel-Seiten mit realer Nachfrage und Umsatznaehe ausbauen: konkrete Shooting-Art, Zielgruppe, Ort, Ablauf, Nutzung und Preis-/Anfragefragen.
 5. Pro Kerncluster wenige starke, erfahrungsbasierte Ratgeber priorisieren. Jeder Ratgeber verlinkt kontextuell auf die passende Leistungsseite; jede Leistungsseite verlinkt auf die wirklich hilfreichen Ratgeber.
 6. Echte Belege verstaerken: reale Serien, Kundenstimmen mit Einwilligung, nachvollziehbare Fallstudien, lokale Partner, Fachbeitraege, Interviews und Branchenverzeichnisse mit konsistentem NAP.

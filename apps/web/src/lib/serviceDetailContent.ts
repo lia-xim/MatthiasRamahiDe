@@ -85,12 +85,12 @@ export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
       crumb: 'Keyword-Datenbank',
       eyebrow: 'SEO · Keyword-Recherche',
       h1: 'Keyword-<br><em>Datenbank.</em>',
-      lead: 'Eine fachliche Empfehlung aus meiner SEO- und Webstrategie-Arbeit: Die Contextter Keyword-Datenbank hilft, Keyword-Ideen, Suchintentionen, SERP-Daten und Wettbewerbschancen sauber zu erfassen, statt Recherche in verstreuten Tabellen und Notizen zu verlieren.',
+      lead: 'Eine fachliche Empfehlung aus meiner SEO- und Webstrategie-Arbeit: Die Crawl Foundry Keyword-Datenbank hilft, Keyword-Ideen, Suchintentionen, SERP-Daten und Wettbewerbschancen sauber zu erfassen, statt Recherche in verstreuten Tabellen und Notizen zu verlieren.',
       primary: 'Keyword-Datenbank ansehen',
-      primaryHref: 'https://contextter.com/features/keyword-database',
+      primaryHref: 'https://crawlfoundry.com/features/keyword-database',
       secondary: 'Keyword-Recherche anfragen',
       secondaryHref: '#anfrage',
-      side: ['SEO · Content · Analyse', 'Keyword-Datenbank', 'Contextter Empfehlung'],
+      side: ['SEO · Content · Analyse', 'Keyword-Datenbank', 'Crawl Foundry Empfehlung'],
     },
     overview: {
       eyebrow: 'Leistungen im Überblick',
@@ -126,8 +126,8 @@ export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
     feature: {
       aria: 'Empfehlung',
       eyebrow: 'Empfehlung',
-      title: 'Warum ich Contextter <em>hier empfehle.</em>',
-      lead: 'Contextter startet bewusst mit der Keyword-Datenbank als starkem Produktfokus. Genau das macht die Empfehlung sinnvoll: ein klares Werkzeug für strukturierte Recherche, nicht die Behauptung, SEO komplett zu automatisieren.',
+      title: 'Warum ich Crawl Foundry <em>hier empfehle.</em>',
+      lead: 'Crawl Foundry startet bewusst mit der Keyword-Datenbank als starkem Produktfokus. Genau das macht die Empfehlung sinnvoll: ein klares Werkzeug für strukturierte Recherche, nicht die Behauptung, SEO komplett zu automatisieren.',
       items: [
         { tag: 'Ehrlich', line: 'Die Keyword-Datenbank ersetzt keine SEO-Strategie, sie macht Recherche und Bewertung nachvollziehbarer.' },
         { tag: 'Praktisch', line: 'Keyword-Ideen, SERP-Signale, Wettbewerber und Themenchancen werden an einem Ort zusammengeführt.' },
@@ -141,7 +141,7 @@ export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
       body: [
         'In meiner Arbeit an Websites, Content-Strukturen und Sichtbarkeit sehe ich immer wieder dasselbe Problem: Keyword-Recherche wird gemacht, aber nicht sauber weitergeführt. Es gibt Exporte, einzelne Ideen, ein paar Favoriten und vielleicht ein Content-Plan. Was oft fehlt, ist ein belastbarer Ort, an dem Suchintention, Wettbewerbsumfeld, SERP-Beobachtungen und Themenchancen zusammenkommen.',
         'Eine strukturierte Keyword-Datenbank löst nicht automatisch das Ranking-Problem. Sie schafft aber die Grundlage, um bessere Entscheidungen zu treffen: Welche Themen sind wirklich relevant? Wo ist der Wettbewerb stark? Welche Suchanfragen gehören zusammen? Welche Seite braucht eine neue Struktur, welche nur bessere interne Verlinkung, und wo lohnt sich neuer Content?',
-        'Genau dafür ist die Contextter Keyword-Datenbank interessant: nicht als laute Produktbehauptung, sondern als ruhige Arbeitsumgebung für SEO-Verantwortliche, Selbstständige, kleine Unternehmen, Agenturen und Content-Teams, die ihre Recherche nachvollziehbarer und nutzbarer machen wollen.',
+        'Genau dafür ist die Crawl Foundry Keyword-Datenbank interessant: nicht als laute Produktbehauptung, sondern als ruhige Arbeitsumgebung für SEO-Verantwortliche, Selbstständige, kleine Unternehmen, Agenturen und Content-Teams, die ihre Recherche nachvollziehbarer und nutzbarer machen wollen.',
       ],
     },
     links: {
@@ -150,9 +150,9 @@ export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
       lead: 'Je nach Ausgangslage ist entweder der direkte Blick in die Keyword-Datenbank sinnvoll oder ein gemeinsames Keyword-Recherche-Briefing für Website, Content-Planung und Wettbewerbsanalyse.',
       items: [
         {
-          label: 'Contextter Keyword-Datenbank',
-          href: 'https://contextter.com/features/keyword-database',
-          body: 'Direkt zur Produktseite von Contextter: Keyword-Datenbank ansehen und prüfen, ob sie zu deinem Recherche-Workflow passt.',
+          label: 'Crawl Foundry Keyword-Datenbank',
+          href: 'https://crawlfoundry.com/features/keyword-database',
+          body: 'Direkt zur Produktseite von Crawl Foundry: Keyword-Datenbank ansehen und prüfen, ob sie zu deinem Recherche-Workflow passt.',
         },
         {
           label: 'Webdesign & SEO',
@@ -174,7 +174,7 @@ export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
     ctaHead: 'Keyword-Recherche braucht <em>Struktur.</em>',
     ctaButton: {
       label: 'Keyword-Datenbank ansehen',
-      href: 'https://contextter.com/features/keyword-database',
+      href: 'https://crawlfoundry.com/features/keyword-database',
     },
     faq: [
       {
@@ -182,7 +182,7 @@ export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
         answer: 'Nein. Sie ist ein Werkzeug, um Keyword-Recherche, Suchintention, SERP-Analyse und Wettbewerbsdaten strukturierter zu dokumentieren. Die strategische Bewertung und Umsetzung bleiben fachliche Arbeit.',
       },
       {
-        question: 'Für wen ist die Contextter Keyword-Datenbank sinnvoll?',
+        question: 'Für wen ist die Crawl Foundry Keyword-Datenbank sinnvoll?',
         answer: 'Sinnvoll ist sie für Selbstständige, kleine Unternehmen, Agenturen, SEO-Verantwortliche und Content-Teams, die Keywords, Themencluster und Wettbewerbsdaten nicht mehr nur in verstreuten Tabellen verwalten möchten.',
       },
       {
@@ -194,7 +194,7 @@ export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
         answer: 'Nein. Rankings lassen sich nicht garantieren. Eine saubere Keyword-Datenbank kann aber helfen, bessere Prioritäten zu setzen, Content gezielter zu planen und SEO-Arbeit nachvollziehbarer zu machen.',
       },
       {
-        question: 'Kann ich auch eine Keyword-Recherche anfragen, ohne Contextter selbst zu nutzen?',
+        question: 'Kann ich auch eine Keyword-Recherche anfragen, ohne Crawl Foundry selbst zu nutzen?',
         answer: 'Ja. Wenn du Unterstützung bei Keyword-Recherche, SEO-Strategie, Content-Planung oder Wettbewerbsanalyse brauchst, kann ich die Recherche als Dienstleistung einordnen und daraus konkrete Empfehlungen ableiten.',
       },
     ],
