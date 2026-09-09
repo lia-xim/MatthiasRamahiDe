@@ -615,6 +615,33 @@
     groups.forEach(function (group) {
       const toggle = group.querySelector('.topbar__group-toggle');
       if (!toggle) return;
+      group.addEventListener('pointerenter', function () { group.classList.remove('is-dismissed'); });
+      group.addEventListener('focusout', function (e) {
+        if (!group.contains(e.relatedTarget)) {
+          group.classList.remove('is-open', 'is-dismissed');
+        }
+      });
+      // Direct keyboard access also works when Safari skips links in Tab order.
+      group.addEventListener('keydown', function (e) {
+        const links = Array.from(group.querySelectorAll('.topbar__submenu a'));
+        if (!links.length) return;
+        const index = links.indexOf(document.activeElement);
+        if (e.key === 'Escape') {
+          e.preventDefault();
+          group.classList.remove('is-open');
+          group.classList.add('is-dismissed');
+          toggle.focus({ preventScroll: true });
+        }
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+          e.preventDefault();
+          group.classList.remove('is-dismissed');
+          group.classList.add('is-open');
+          const next = e.key === 'ArrowDown'
+            ? (index + 1) % links.length
+            : (index <= 0 ? links.length - 1 : index - 1);
+          links[next].focus();
+        }
+      });
       if (toggle.tagName === 'A') return;
       toggle.addEventListener('click', function (e) {
         e.preventDefault();

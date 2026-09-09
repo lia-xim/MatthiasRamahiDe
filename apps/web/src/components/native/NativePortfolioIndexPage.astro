@@ -131,6 +131,25 @@ const portfolioSelectionFor = (spread: EditablePortfolioSpread) =>
 
 const cmsArchivePhotos = (portfolioIndex?.archive?.items || []).map(portfolioPhotoFromCms).filter(isEditablePortfolioPhoto)
 const archivePhotos = (cmsArchivePhotos.length > 0 ? cmsArchivePhotos : portfolioArchivePhotos) as EditablePortfolioPhoto[]
+// Preserve CMS order within each orientation and keep visual and keyboard order identical.
+const portraits = archivePhotos.filter((photo) => photo.height > photo.width)
+const landscapes = archivePhotos.filter((photo) => photo.height <= photo.width)
+const archiveGroups: { format: 'portrait' | 'landscape' | 'closing'; photos: EditablePortfolioPhoto[] }[] = []
+for (let p = 0, l = 0; p < portraits.length || l < landscapes.length; p += 8, l += 4) {
+  if (p < portraits.length) archiveGroups.push({ format: 'portrait', photos: portraits.slice(p, p + 8) })
+  if (l < landscapes.length) archiveGroups.push({ format: 'landscape', photos: landscapes.slice(l, l + 4) })
+}
+// Close a three-portrait remainder with two stacked landscapes in column four.
+// Other CMS selections retain the regular format groups without losing images.
+const lastPortraitGroup = archiveGroups.at(-2)
+const lastLandscapeGroup = archiveGroups.at(-1)
+if (lastPortraitGroup?.format === 'portrait' && lastPortraitGroup.photos.length === 3 &&
+    lastLandscapeGroup?.format === 'landscape' && lastLandscapeGroup.photos.length === 2) {
+  archiveGroups.splice(-2, 2, {
+    format: 'closing',
+    photos: [...lastPortraitGroup.photos, ...lastLandscapeGroup.photos],
+  })
+}
 const archiveHeadline = cleanText(portfolioIndex?.archive?.headline) || 'Bildarchiv'
 const contactSubject = cleanText(portfolioIndex?.contact?.subject) || 'Shooting Anfrage'
 const contactHeadline = cleanText(portfolioIndex?.contact?.headline) || 'Shooting <em>anfragen.</em>'
@@ -219,19 +238,23 @@ const contactLead =
         <h2 {...tinaAttrs(portfolioIndex?.archive, 'headline')}>{archiveHeadline}</h2>
       </div>
       <div class="pf-archive__grid" id="pfArchiveGrid">
-        {archivePhotos.map((photo) => (
-          <a class="pf-photo" data-archive-item data-caption={photo.caption} href={photo.href} aria-label={photo.caption ? `${photo.caption} — Großansicht öffnen` : 'Bild im Großformat ansehen'}>
-            <img
-              src={photo.src}
-              data-src={photo.src}
-              alt={photo.caption || ''}
-              loading="lazy"
-              decoding="async"
-              width={photo.width}
-              height={photo.height}
-              {...tinaAttrs(photo.source, 'image')}
-            />
-          </a>
+        {archiveGroups.map((group) => (
+          <div class={`pf-archive__group pf-archive__group--${group.format}`}>
+            {group.photos.map((photo) => (
+              <a class="pf-photo" data-archive-item data-caption={photo.caption} href={photo.href} aria-label={photo.caption ? `${photo.caption} — Großansicht öffnen` : 'Bild im Großformat ansehen'}>
+                <img
+                  src={photo.src}
+                  data-src={photo.src}
+                  alt={photo.caption || ''}
+                  loading="lazy"
+                  decoding="async"
+                  width={photo.width}
+                  height={photo.height}
+                  {...tinaAttrs(photo.source, 'image')}
+                />
+              </a>
+            ))}
+          </div>
         ))}
       </div>
     </section>
@@ -245,7 +268,7 @@ const contactLead =
       data-contact-lead={contactLead}
     />
 
-    <div class="pf-viewer" id="pfViewer" aria-hidden="true" inert role="dialog" aria-label="Bildansicht">
+    <div class="pf-viewer" id="pfViewer" aria-hidden="true" inert role="dialog" aria-modal="true" aria-label="Bildansicht">
       <button class="pf-viewer__close" type="button" id="pfClose">Schliessen</button>
       <button class="pf-viewer__prev" type="button" id="pfPrev" aria-label="Vorheriges Bild">&lsaquo;</button>
       <button class="pf-viewer__next" type="button" id="pfNext" aria-label="Naechstes Bild">&rsaquo;</button>

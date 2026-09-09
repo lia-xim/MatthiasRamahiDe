@@ -1,3 +1,8 @@
+/* Keep pointing usable before JS, in static mode and after a WebGL failure.
+   The OS cursor does not depend on compositing a fixed element inside the hero. */
+.hero { cursor: auto !important; }
+.hero .hero-cursor { display: none !important; }
+
 /* Performance floor for older laptops: decorative fixed grain overlays force
    whole-page compositing during scroll, while barely changing the visual read. */
 body::before,

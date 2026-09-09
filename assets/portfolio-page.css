@@ -106,13 +106,21 @@ button{font:inherit;color:inherit;border:0;background:transparent;cursor:pointer
 .pf-spread:hover .pf-spread__strip .pf-photo img{transform:scale(1.03)}
 .pf-archive__grid .pf-photo{cursor:zoom-in}
 .pf-archive__grid .pf-photo:hover img{transform:scale(1.04)}
-/* ---------- ARCHIVE WALL — column-count masonry, gap-free ---------- */
+/* ---------- ARCHIVE — aligned portrait and landscape series ---------- */
 .pf-archive{padding:clamp(80px,12vh,140px) 5vw clamp(80px,10vh,120px);background:var(--paper);color:var(--ink)}
 .pf-archive__head{max-width:1640px;margin:0 auto clamp(40px,6vh,72px)}
 .pf-archive__head h2{font-family:var(--sans);font-weight:900;text-transform:uppercase;font-size:clamp(48px,7.4vw,118px);line-height:.92;letter-spacing:-.05em;max-width:18ch;text-wrap:balance}
-.pf-archive__grid{max-width:1640px;margin:0 auto;column-count:4;column-gap:4px}
-.pf-archive__grid .pf-photo{width:100%;break-inside:avoid;margin:0 0 4px;display:block;cursor:zoom-in;transform:none;opacity:1;transition:none}
-.pf-archive__grid .pf-photo img{width:100%;height:auto;display:block}
+.pf-archive__grid{--archive-gap:clamp(16px,2vw,36px);max-width:1640px;margin:0 auto;display:grid;gap:calc(var(--archive-gap) * 2)}
+.pf-archive__group{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--archive-gap);align-items:start}
+.pf-archive__grid .pf-photo{width:100%;min-width:0;aspect-ratio:2/3;margin:0;display:block;cursor:zoom-in;transform:none;opacity:1;transition:none}
+.pf-archive__group--landscape .pf-photo{aspect-ratio:3/2}
+.pf-archive__group--closing{grid-template-rows:repeat(2,minmax(0,1fr))}
+.pf-archive__group--closing .pf-photo:nth-child(-n+3){grid-row:1 / span 2}
+.pf-archive__group--closing .pf-photo:nth-child(n+4){grid-column:4;aspect-ratio:auto;height:100%}
+.pf-archive__group--closing .pf-photo:nth-child(4){grid-row:1}
+.pf-archive__group--closing .pf-photo:nth-child(5){grid-row:2}
+.pf-archive__grid .pf-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.pf-archive__grid .pf-photo:focus-visible{outline:3px solid var(--ink);outline-offset:6px}
 
 /* ---------- LIGHTBOX ---------- */
 .pf-viewer{position:fixed;inset:0;z-index:240;display:grid;place-items:center;padding:clamp(20px,4vw,60px);background:rgba(8,7,5,.94);backdrop-filter:blur(20px);opacity:0;pointer-events:none;transition:opacity .3s var(--ease)}
@@ -124,11 +132,17 @@ button{font:inherit;color:inherit;border:0;background:transparent;cursor:pointer
 .pf-viewer__close{top:20px;right:20px}
 .pf-viewer__prev{left:20px;top:50%;transform:translateY(-50%)}
 .pf-viewer__next{right:20px;top:50%;transform:translateY(-50%)}
-.pf-viewer__cap{position:absolute;left:50%;bottom:-30px;transform:translateX(-50%);font:10px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:rgba(241,237,228,.7);white-space:nowrap}
+.pf-viewer__cap{position:absolute;left:50%;bottom:12px;width:calc(100% - 40px);transform:translateX(-50%);font:10px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:rgba(241,237,228,.7);text-align:center;overflow-wrap:anywhere}
+.pf-viewer__close,.pf-viewer__prev,.pf-viewer__next{z-index:2}
 
 /* ---------- RESPONSIVE ---------- */
 @media (max-width:1080px){
-  .pf-archive__grid{column-count:3}
+  .pf-archive__group{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pf-archive__group--closing{grid-template-rows:repeat(4,minmax(0,1fr))}
+  .pf-archive__group--closing .pf-photo:nth-child(3){grid-column:1;grid-row:3 / span 2}
+  .pf-archive__group--closing .pf-photo:nth-child(n+4){grid-column:2}
+  .pf-archive__group--closing .pf-photo:nth-child(4){grid-row:3}
+  .pf-archive__group--closing .pf-photo:nth-child(5){grid-row:4}
   .pf-spread__strip{grid-template-columns:repeat(3,1fr)}
   .pf-spread__strip .pf-photo:nth-child(4){display:none}
 }
@@ -148,8 +162,6 @@ button{font:inherit;color:inherit;border:0;background:transparent;cursor:pointer
   .pf-archive{padding:clamp(56px,15vw,84px) 22px clamp(48px,12vw,72px)}
   .pf-archive__head{margin-bottom:clamp(28px,8vw,40px)}
   .pf-archive__head h2{font-size:clamp(36px,11vw,60px)}
-  .pf-archive__grid{column-count:2;column-gap:4px}
-  .pf-archive__grid .pf-photo{margin-bottom:4px}
 
   /* Lightbox-Steuerung näher an die Daumenzone */
   .pf-viewer__close{top:14px;right:14px;padding:10px 12px}
@@ -159,8 +171,6 @@ button{font:inherit;color:inherit;border:0;background:transparent;cursor:pointer
 @media (max-width:430px){
   .pf-context h2,.pf-spread h2,.pf-archive__head h2{letter-spacing:-.03em}
   .pf-spread__strip{gap:3px}
-  .pf-archive__grid{column-gap:3px}
-  .pf-archive__grid .pf-photo{margin-bottom:3px}
 }
 @media (prefers-reduced-motion:reduce){
   .hero{animation:none!important}

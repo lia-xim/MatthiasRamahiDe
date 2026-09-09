@@ -28,6 +28,8 @@
     const fullImageCache = new Map();
     let idx = 0;
     let loadToken = 0;
+    let returnFocus = null;
+    let previousOverflow = '';
     if (!viewer || !photos.length) return;
 
     function preloadFullImage(src){
@@ -70,10 +72,16 @@
       cap.textContent = a.dataset.caption || '';
       if(img.decode){ try { await img.decode(); } catch(e){} }
       if(request !== loadToken) return;
+      const wasOpen = viewer.classList.contains('is-open');
+      if (!wasOpen) {
+        returnFocus = document.activeElement;
+        previousOverflow = document.body.style.overflow;
+      }
       viewer.classList.add('is-open');
       viewer.setAttribute('aria-hidden', 'false');
       viewer.removeAttribute('inert');
       document.body.style.overflow = 'hidden';
+      if (!wasOpen) close.focus({ preventScroll: true });
     }
     function closeViewer(){
       loadToken += 1;
@@ -84,7 +92,8 @@
       img.src = emptySrc;
       img.alt = '';
       cap.textContent = '';
-      document.body.style.overflow = '';
+      document.body.style.overflow = previousOverflow;
+      if (returnFocus instanceof HTMLElement) returnFocus.focus({ preventScroll: true });
     }
     photos.forEach(function(a, i){
       a.addEventListener('click', function(e){ e.preventDefault(); open(i); });
@@ -97,6 +106,12 @@
     viewer.addEventListener('click', function(e){ if(e.target === viewer) closeViewer(); });
     addEventListener('keydown', function(e){
       if(!viewer.classList.contains('is-open')) return;
+      if(e.key === 'Tab') {
+        const controls = [close, prev, next];
+        const current = controls.indexOf(document.activeElement);
+        e.preventDefault();
+        controls[(current + (e.shiftKey ? 2 : 1)) % controls.length].focus();
+      }
       if(e.key === 'Escape') closeViewer();
       else if(e.key === 'ArrowRight') open(idx + 1);
       else if(e.key === 'ArrowLeft') open(idx - 1);

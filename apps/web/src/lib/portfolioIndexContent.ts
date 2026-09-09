@@ -348,5 +348,4 @@ export const portfolioArchivePhotos: PortfolioPhoto[] = [
     true,
   ),
   photo('Landschaft', '/assets/optimized/assets-portfolio-dsc2744-1920.webp', '/assets/portfolio/thumbs/_DSC2744.webp', 720, 1080, true),
-  photo('Landschaft', '/assets/optimized/assets-portfolio-dsc2762-1920.webp', '/assets/portfolio/thumbs/_DSC2762.webp', 720, 480, true),
 ]
