@@ -23,6 +23,7 @@ type Props = {
 
 const { id, label, slides, sourceSlides = [], theme = 'dark', headerTheme } = Astro.props as Props
 const firstSlide = slides[0]
+const accessibleHeading = firstSlide.titleLines.join(' ')
 const firstSourceSlide = sourceSlides[0]
 const heroImages = slides.map((slide) => slide.image)
 const heroSlidesJson = JSON.stringify(slides)
@@ -58,14 +59,15 @@ const titleLineField = (index: number) => (index === 0 ? 'headlineLine1' : index
   <div class="hero-aperture" aria-hidden="true"></div>
   <div class="hero-grid">
     <div class="hero-stage">
-      <h1 class="hero-title" id="hero-title" data-text-idx="0">
+      <h1 class="sr-only">{accessibleHeading}</h1>
+      <div class="hero-title" id="hero-title" data-text-idx="0" aria-hidden="true">
         {firstSlide.titleLines.map((line, index) => (
           <>
             {index > 0 && ' '}
             <span class="line" {...tinaAttrs(firstSourceSlide, titleLineField(index))}><span class="word">{line}</span></span>
           </>
         ))}
-      </h1>
+      </div>
       <p class="hero-lead" id="hero-lead" {...tinaAttrs(firstSourceSlide, 'lead')}>{firstSlide.lead}</p>
       <div class="hero-actions" aria-label="Direkte Aktionen">
         <a class="btn dark" href={firstSlide.primaryHref} data-hero-primary hidden={!firstSlide.primaryHref || !firstSlide.primaryLabel} {...tinaAttrs(firstSourceSlide, 'primaryLabel')}>{firstSlide.primaryLabel}</a>

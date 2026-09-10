@@ -271,6 +271,7 @@ async function readPublicAsset(href: string) {
     ) : (
       versionedStylesheets.map((href) => <link rel="stylesheet" href={href} />)
     )}
+    <link rel="stylesheet" href={versionStaticAssetUrl('/assets/site-readability.css')} />
     {jsonLdItems.map((item) => <script is:inline type="application/ld+json" set:html={JSON.stringify(item)} />)}
     <script
       is:inline
