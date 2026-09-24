@@ -12,7 +12,53 @@ Fortsetzung von `docs/seo-hub-cluster-strategy.md` (28.07.) und `docs/seo-fahrze
 | Live-Prüfung einzelner Seiten | 24.09.2026 | Titel, H1, Weiterleitungen |
 | Lokale Content-Dateien (`apps/web/content`) | Stand Rechner 24.09. | Abgleich lokal ↔ live |
 
-**Nicht verfügbar:** Google Search Console ist im Crawl-Foundry-Workspace nicht verbunden, und es gibt kein Rank-Tracking. Ein frischer Snapshot wurde angefragt (Freigabe `arq_fc4y899o1ebr`, max. 5 €), aber nicht freigegeben. Alle Ranking-Zahlen stammen deshalb vom 31.08. Suchvolumen und Traffic sind Schätzungen des Datenanbieters, keine GSC-Werte.
+**Nicht verfügbar:** Google Search Console ist im Crawl-Foundry-Workspace nicht verbunden, und es gibt kein Rank-Tracking. Suchvolumen und Traffic sind Schätzungen des Datenanbieters, keine GSC-Werte. Die Abschnitte 1–7 beruhen auf dem Snapshot vom 31.08.; der frische Snapshot vom 24.09. steht im Nachtrag direkt darunter. „Nicht mehr gelistet“ heißt: im Snapshot vom 24.09. nicht mehr unter den rankenden Keywords.
+
+## Nachtrag 24.09., 17:00 – frischer Snapshot (`snap_bd2znq0zc8ui`, 0,13 €)
+
+| Kennzahl | 31.08. | 24.09. |
+|---|---:|---:|
+| Organische Keywords | 62 | **43** |
+| Geschätzte Klicks/Monat gesamt | ~125 | ~127 |
+| davon Startseite (v. a. Em Pöötzke) | ~96 | ~107 |
+| davon Fotografie-Keywords (grob) | ~29 | **~20** |
+
+**Weggefallen seit 31.08.** (bestätigt die Befürchtung aus Abschnitt 2):
+
+| Keyword | Volumen | Position 31.08. | 24.09. |
+|---|---:|---:|---|
+| lowkey fotografie | 590 | 27 | nicht mehr gelistet |
+| high-key fotos / high key fotos | 50 / 50 | 21 / 31 | nicht mehr gelistet |
+| actioncam für motorrad | 590 | 24 | nicht mehr gelistet |
+| bilder farben | 390 | 18 | nicht mehr gelistet |
+| professioneller fotodruck | 210 | 24 | nicht mehr gelistet |
+| **fahrzeugfotografie** | 50 | **9** | nicht mehr gelistet |
+| fotografieren in düsseldorf | 50 | 7 | nicht mehr gelistet |
+
+**Veränderte Positionen:**
+
+| Keyword | Volumen | 31.08. | 24.09. |
+|---|---:|---:|---:|
+| fotoshooting mit auto | 260 | 14 | **38** ↓ |
+| fotolabor düsseldorf | 110 | 15 | 21 ↓ |
+| motorrad fotoshooting | 210 | 21 | 28 ↓ |
+| fotoshooting motorrad | 210 | 22 | 18 ↑ |
+| fotoshooting mit motorrad | 210 | 23 | 19 ↑ |
+| motorrad fotograf / fotograf motorrad | 110 | 6 / 5 | 7 / 6 |
+| auto fotoshooting | 260 | 23 | 23 |
+| fotospots für autos in der nähe | 110 | 11 | 11 |
+| neu: fotografie autos | 260 | – | 39 |
+| neu: keyword datenbanken | 170 | – | 23 |
+
+**Folgerungen:**
+
+1. Die drei Ratgeber-Rankings (Low-/High-Key, Actioncam, Farben) sind nach den Weiterleitungen **komplett verschwunden**. Die neuen Journal-Beiträge aus Abschnitt 2 sind damit die wichtigste Blog-Maßnahme. Die alten URLs sollten auf die neuen Beiträge zeigen, sobald diese online sind.
+2. **Fahrzeugfotografie ist aus den Top 10 gefallen.** Das ist die einzige Seite aus dem Fahrzeug-Plan, die nachweislich live umgestellt wurde (Title „Fahrzeugfotografie für Verkauf, Bestand & Archiv“). Mögliche Ursache: Der Title beginnt zwar mit dem Keyword, die Seite wurde aber inhaltlich auf Dokumentation/Bestand verengt. Vor dem Deploy der übrigen Plan-Änderungen die Fahrzeugfotografie-Seite prüfen. Bei 50 Suchen/Monat und einer einzelnen Messung ist das noch kein Beweis, aber ein Warnsignal.
+3. „Fotoshooting mit auto“ ist von 14 auf 38 gefallen, obwohl die lokale Neufassung noch nicht live ist. Die Rolle zwischen `/fotoshooting-mit-auto.html` und `/auto-fotoshooting.html` ist live offenbar weiter unscharf. Das spricht dafür, den Plan vom 31.08. zügig zu deployen.
+4. Die Motorrad-Shooting-Varianten schwanken zwischen 18 und 28. Den Abschnitt „Motorrad-Fotoshooting“ auf dem Pillar (Abschnitt 3) weiter priorisieren.
+5. **Update 17:15:** Die Fahrzeug-Änderungen wurden um 17:10 als Commit `e921bef` gepusht und von Vercel deployt (`dpl_7jDGixQqNuCp4unfcyzXNap76oX8`). Live geprüft: `/auto-fotoshooting.html` → „Auto-Fotoshooting NRW: Ablauf & Kosten“, `/motorrad-fotografie.html` → „Motorradfotografie NRW“. Abschnitt 1 ist damit erledigt; der 6-Wochen-Review zählt ab dem 24.09. (frühestens 05.11.2026).
+6. Der Beitrag `journal-posts/low-key-high-key-portraits.json` liegt als Entwurf (`status: draft`) im Repo. Bei der Veröffentlichung in `apps/web/src/lib/adoptedRoutes.ts` die Ziele von `low-key-fotografie-beleuchtung-und-high-key-fotografie`, `portraitfotografie/low-key-fotografie-beleuchtung-und-high-key-fotografie`, `portraitfotografie/moody-portrait-fotografie`, `portraitfotografie/moody-portrait-look-mit-flat-profile-sanft-unterbelichtet` und `portraitfotografie/kreative-schattenfotografie-tipps-guide` auf `blog-low-key-high-key-portraits.html` umstellen. Die Mikrogesten-URL leitet bereits auf `blog-portraits-ohne-generische-posen.html`.
+7. Keyword-Recherche für Blog-Themen: Der Lauf (`aop_dqihfwrcg9l0`, 0,51 €) wurde angenommen, war um 17:10 aber noch nicht gestartet. Die Ergebnisse werden nachgereicht.
 
 **Korrektur zum Audit:** Die Audit-Werte „63 Seiten blockiert/nicht indexierbar“ und „0 eingehende Links“ auf Stadtseiten sind Effekte des Crawl-Limits. 163 − 100 = 63. Außerdem verlinkt z. B. `/motorrad-fotografie-nrw.html` live alle 22 Motorrad-Stadtseiten. Das ist **kein** Indexierungs- oder Verlinkungsproblem.
 

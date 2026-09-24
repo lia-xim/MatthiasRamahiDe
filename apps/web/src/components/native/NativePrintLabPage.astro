@@ -2,6 +2,7 @@
 import ContactSlot from '../ContactSlot.astro'
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import { getBySlug, type PayloadDoc } from '../../lib/payload'
+import { faqJsonLd } from '../../lib/seo'
 
 const legacyFile = 'fotolabor-druck-duesseldorf.html'
 const providedDoc = Astro.props.doc as PayloadDoc | undefined
@@ -39,8 +40,8 @@ const heroImage = '/assets/services/portfolio_webp_full_057-1.webp'
 const heroSlides = [
   {
     image: heroImage,
-    titleLines: ['Fotolabor', '& Druck'],
-    lead: 'FineArt-Papiere, Acrylglas, Alu-Dibond und Leinwand — gedruckt aus Düsseldorf, geliefert deutschlandweit.',
+    titleLines: ['Fotolabor', 'Düsseldorf'],
+    lead: 'Professioneller Fotodruck auf FineArt-Papieren, Acrylglas, Alu-Dibond und Leinwand — gedruckt in Düsseldorf, geliefert deutschlandweit.',
     primaryHref: '#anfrage',
     primaryLabel: 'Druck anfragen',
     secondaryHref: '#format',
@@ -48,10 +49,44 @@ const heroSlides = [
   },
 ]
 const heroSlidesJson = JSON.stringify(heroSlides)
+
+const printFaq = [
+  {
+    question: 'Welche Materialien stehen für den Fotodruck zur Auswahl?',
+    answer:
+      'FineArt-Papiere von Hahnemühle, Canson und Ilford sowie Acrylglas, Alu-Dibond und Leinwand. Welches Material passt, hängt von Motiv, Raum, Licht und Betrachtungsabstand ab.',
+  },
+  {
+    question: 'Welche Formate sind möglich?',
+    answer:
+      'Die Standardstufen reichen von 10 × 15 cm bis 100 × 150 cm. Panoramen, Triptychen und Sonderformate sind auf Anfrage bis 300 × 150 cm möglich.',
+  },
+  {
+    question: 'Welche Auflösung braucht die Bilddatei?',
+    answer:
+      'Ideal sind 240–300 dpi auf der finalen Druckgröße; bei Wandformaten über 70 × 100 cm reichen meist 180 dpi, weil das Bild aus größerem Abstand betrachtet wird. Als Datei eignet sich ein 16-bit-TIFF in Adobe RGB oder ProPhoto.',
+  },
+  {
+    question: 'Wie wird sichergestellt, dass die Farben im Druck stimmen?',
+    answer:
+      'Vor dem Druck wird die Datei mit dem ICC-Profil des Zielpapiers am Monitor simuliert (Soft-Proof). Farb- und Helligkeitskorrekturen werden dadurch vor dem Druck eingesteuert, nicht erst nach einem Fehldruck.',
+  },
+  {
+    question: 'Welche Angaben braucht eine Druck-Anfrage?',
+    answer:
+      'Für den Anfang genügen das Motiv, der spätere Ort des Prints und das ungefähr geplante Format. Wenn Material oder Größe noch offen sind, reicht eine grobe Idee – die Details klären wir gemeinsam.',
+  },
+  {
+    question: 'Wie werden die Prints verschickt?',
+    answer:
+      'Prints bis 70 cm werden gerollt im Rohr geliefert, größere Formate flach verpackt und Arbeiten auf Träger als Sperrgut – jeweils säurefrei verpackt und deutschlandweit.',
+  },
+]
+const printFaqSchema = faqJsonLd(printFaq)
 ---
-<AdoptedPageLayout legacyFile={legacyFile} current="leistungen" doc={doc}>
+<AdoptedPageLayout legacyFile={legacyFile} current="leistungen" doc={doc} jsonLd={printFaqSchema ? [printFaqSchema] : undefined}>
   <main>
-    <section class="hero" data-theme="dark" data-header-theme="dark" aria-label="Fotolabor &amp; Druck" style={`background-image:url('${heroImage}')`}>
+    <section class="hero" data-theme="dark" data-header-theme="dark" aria-label="Fotolabor Düsseldorf" style={`background-image:url('${heroImage}')`}>
       <canvas id="hero-shader" aria-hidden="true" data-imgs={heroImage} data-slides={heroSlidesJson}></canvas>
       <div class="hero-glow" aria-hidden="true"></div>
       <div class="hero-aperture" aria-hidden="true"></div>
@@ -60,9 +95,9 @@ const heroSlidesJson = JSON.stringify(heroSlides)
           <h1 class="hero-title" id="hero-title" data-text-idx="0">
             <span class="line"><span class="word">Fotolabor</span></span>
             {' '}
-            <span class="line"><span class="word">&amp; Druck</span></span>
+            <span class="line"><span class="word">Düsseldorf</span></span>
           </h1>
-          <p class="hero-lead" id="hero-lead">FineArt-Papiere, Acrylglas, Alu-Dibond und Leinwand — gedruckt aus Düsseldorf, geliefert deutschlandweit.</p>
+          <p class="hero-lead" id="hero-lead">Professioneller Fotodruck auf FineArt-Papieren, Acrylglas, Alu-Dibond und Leinwand — gedruckt in Düsseldorf, geliefert deutschlandweit.</p>
           <div class="hero-actions" aria-label="Direkte Aktionen">
             <a class="btn dark" href="#anfrage" data-hero-primary>Druck anfragen</a>
             <a class="btn" href="#format" data-hero-secondary>Formate ansehen</a>
@@ -124,6 +159,28 @@ const heroSlidesJson = JSON.stringify(heroSlides)
             </li>
           ))}
         </ol>
+      </div>
+    </section>
+
+    <section class="lab-proof lab-faq" data-header-theme="light" aria-label="Häufige Fragen zum Fotodruck">
+      <div class="lab-proof__inner">
+        <div class="lab-proof__head">
+          <div>
+            <p class="sp-eyebrow">FAQ</p>
+            <h2 class="lab-proof__title">Professioneller <em>Fotodruck.</em></h2>
+          </div>
+          <p class="lab-proof__lead">
+            Die häufigsten Fragen vor einem Druckauftrag: Material, Format, Datei, Farbe und Versand.
+          </p>
+        </div>
+        <div class="lab-proof__track">
+          {printFaq.map((item) => (
+            <article class="lab-proof__stage">
+              <h3 class="lab-proof__stage-title">{item.question}</h3>
+              <p class="lab-proof__stage-body">{item.answer}</p>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
 

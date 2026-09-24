@@ -100,6 +100,11 @@ img{display:block;max-width:100%;height:auto}
 .lab-proof__track{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
 .lab-proof__stage{padding:clamp(36px,4vw,56px) clamp(20px,2vw,32px);display:flex;flex-direction:column;gap:14px;border-right:1px solid var(--rule);position:relative;min-height:clamp(220px,22vw,280px)}
 .lab-proof__stage:last-child{border-right:0}
+.lab-faq{background:var(--paper-2,var(--paper))}
+.lab-faq .lab-proof__track{border-bottom:0}
+.lab-faq .lab-proof__stage{border-bottom:1px solid var(--rule);min-height:0}
+.lab-faq .lab-proof__stage:nth-child(3n){border-right:0}
+.lab-faq .lab-proof__stage-title{font-size:clamp(20px,1.6vw,24px)}
 .lab-proof__stage-num{font:10px var(--mono);letter-spacing:.28em;text-transform:uppercase;color:color-mix(in oklch,var(--accent) 75%,var(--ink) 25%);margin:0}
 .lab-proof__stage-title{margin:6px 0 0;font-family:var(--serif);font-weight:600;font-size:clamp(22px,2vw,30px);line-height:1.1;letter-spacing:-.018em;color:var(--ink)}
 .lab-proof__stage-body{margin:8px 0 0;font-size:14.5px;line-height:1.55;color:color-mix(in oklch,var(--ink) 68%,#fff 32%)}

@@ -337,12 +337,12 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
   'fotolabor-druck-duesseldorf.html': {
     current: 'leistungen',
     description:
-      'Fotolabor und Druck in Düsseldorf - FineArt-Prints auf Hahnemühle, Canson und Ilford, Acrylglas, Alu-Dibond, Leinwand.',
+      'Fotolabor Düsseldorf für professionellen Fotodruck: Fine-Art-Prints auf Hahnemühle, Canson und Ilford, Acrylglas, Alu-Dibond und Leinwand - mit Soft-Proof.',
     ogImage: '/assets/services/portfolio_webp_full_057-1.webp',
     preloadImages: ['/assets/services/portfolio_webp_full_057-1.webp'],
     scripts: ['/assets/native-home.js', ...siteChromeScript],
     stylesheets: [...sharedStyles, '/assets/native-fotolabor.css'],
-    title: 'Fotolabor & Druck Düsseldorf - Matthias Ramahi',
+    title: 'Fotolabor Düsseldorf: Professioneller Fotodruck & Fine-Art',
   },
   'viola-musik-duesseldorf.html': {
     current: 'leistungen',
