@@ -1,4 +1,5 @@
 ---
+import ContactSlot from '../ContactSlot.astro'
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
 
@@ -26,7 +27,7 @@ const directContacts = [
 <AdoptedPageLayout legacyFile={legacyFile} current="kontakt" doc={doc} bodyClass="has-mr-footer contact-page">
   <main>
     <h1 class="sr-only">Kontakt Matthias Ramahi Fotografie Düsseldorf</h1>
-    <section
+    <ContactSlot
       id="anfrage"
       data-contact-section
       data-header-theme="light"

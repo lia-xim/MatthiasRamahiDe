@@ -1,4 +1,5 @@
 ---
+import ContactSlot from '../ContactSlot.astro'
 import PreviewToolbar from '../PreviewToolbar.astro'
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import NativeAutomobilPhotographyPage from '../native/NativeAutomobilPhotographyPage.astro'
@@ -232,14 +233,14 @@ Astro.response.headers.set('x-cms-layout-parent', familyContent.parentLegacyFile
       </div>
     </section>
 
-    <section
+    <ContactSlot
       id="anfrage"
       data-contact-section
       data-header-theme="light"
       data-contact-subject={contactSubject}
       data-contact-headline={contactHeadline}
       data-contact-lead={contactLead}
-    ></section>
+    />
   </main>
 </AdoptedPageLayout>
 )}
@@ -290,7 +291,7 @@ Astro.response.headers.set('x-cms-layout-parent', familyContent.parentLegacyFile
 
   .local-native__eyebrow {
     margin: 0 0 16px;
-    font: 700 0.72rem/1.2 ui-sans-serif, system-ui, sans-serif;
+    font: 700 0.72rem/1.2 'MR Sans','MR Sans Fallback',Arial,system-ui,sans-serif;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     opacity: 0.7;
@@ -300,7 +301,7 @@ Astro.response.headers.set('x-cms-layout-parent', familyContent.parentLegacyFile
   .local-native__intro h2,
   .local-native__section-head h2 {
     margin: 0;
-    font-family: var(--font-display, ui-serif, Georgia, serif);
+    font-family: var(--font-display, 'MR Serif','MR Serif Fallback',Georgia,serif);
     font-size: clamp(48px, 10vw, 168px);
     line-height: 0.9;
     letter-spacing: 0;
@@ -422,7 +423,7 @@ Astro.response.headers.set('x-cms-layout-parent', familyContent.parentLegacyFile
   .local-native__module-card span {
     display: block;
     margin-bottom: 10px;
-    font: 700 0.72rem/1.2 ui-sans-serif, system-ui, sans-serif;
+    font: 700 0.72rem/1.2 'MR Sans','MR Sans Fallback',Arial,system-ui,sans-serif;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     opacity: 0.6;
@@ -463,7 +464,7 @@ Astro.response.headers.set('x-cms-layout-parent', familyContent.parentLegacyFile
     bottom: 16px;
     z-index: 2;
     color: #fffaf0;
-    font: 700 0.78rem/1.2 ui-sans-serif, system-ui, sans-serif;
+    font: 700 0.78rem/1.2 'MR Sans','MR Sans Fallback',Arial,system-ui,sans-serif;
     letter-spacing: 0.06em;
     text-transform: uppercase;
   }

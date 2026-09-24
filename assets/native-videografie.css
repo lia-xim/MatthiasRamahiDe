@@ -18,8 +18,8 @@
   --vg-muted-l: rgba(10, 12, 17, .66);
   --vg-quiet-l: rgba(10, 12, 17, .46);
   --vg-line-l: rgba(10, 12, 17, .14);
-  --vg-font: 'Neue Haas Grotesk Display', 'Söhne', 'Avenir Next', 'Helvetica Neue', Arial, system-ui, sans-serif;
-  --vg-mono: 'JetBrains Mono', 'IBM Plex Mono', 'SFMono-Regular', ui-monospace, Menlo, monospace;
+  --vg-font: 'MR Sans','MR Sans Fallback',Arial,system-ui,sans-serif;
+  --vg-mono: 'MR Mono','MR Mono Fallback',ui-monospace,Menlo,Consolas,monospace;
   --vg-ease: cubic-bezier(.23, 1, .32, 1);
   --vg-maxw: 1540px;
 }

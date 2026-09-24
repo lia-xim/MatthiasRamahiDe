@@ -1,4 +1,5 @@
 ---
+import ContactSlot from '../ContactSlot.astro'
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import { splitCmsHeroTitleLines } from '../../lib/heroTitleLines'
 import { blockParagraphs, homeHeroSlidesFor, photographyTopics as fallbackTopics } from '../../lib/nativeContent'
@@ -245,7 +246,7 @@ const localHubGroups = [
       </div>
     </section>
 
-    <section
+    <ContactSlot
       id="anfrage"
       data-contact-section
       data-theme="light"

@@ -62,8 +62,8 @@ const jsonLd = items.length
     --faq-line: var(--line, var(--border, rgba(243, 245, 239, 0.14)));
     --faq-accent: var(--accent-2, #7a8a86);
     --faq-ease: var(--ease, cubic-bezier(0.23, 1, 0.32, 1));
-    --faq-mono: var(--mono, var(--font-mono, 'JetBrains Mono', 'IBM Plex Mono', ui-monospace, monospace));
-    --faq-display: var(--font, var(--font-display, 'Neue Haas Grotesk Display', 'Helvetica Neue', Arial, sans-serif));
+    --faq-mono: var(--mono, var(--font-mono, 'MR Mono','MR Mono Fallback',ui-monospace,Menlo,Consolas,monospace));
+    --faq-display: var(--font, var(--font-display, 'MR Sans','MR Sans Fallback',Arial,system-ui,sans-serif));
     background: var(--faq-bg);
     color: var(--faq-fg);
     padding: clamp(72px, 11vw, 160px) 0;

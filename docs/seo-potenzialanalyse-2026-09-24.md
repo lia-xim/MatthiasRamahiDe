@@ -1,0 +1,125 @@
+# SEO-Potenzialanalyse matthiasramahi.de – 24. September 2026
+
+Fortsetzung von `docs/seo-hub-cluster-strategy.md` (28.07.) und `docs/seo-fahrzeug-cluster-plan-2026-08-31.md`. Ziel: mehr Klicks aus der Google-Suche. Ergebnis: wo Potenzial liegt, welche Seiten neu entstehen, welche verbessert und welche aktualisiert werden sollten.
+
+## Datenbasis und Grenzen
+
+| Quelle | Stand | Hinweis |
+|---|---|---|
+| Crawl Foundry Domain-Snapshot matthiasramahi.de | 31.08.2026 | 62 Keywords, ~125 geschätzte Klicks/Monat, 80 verweisende Domains |
+| Crawl Foundry Site-Audit `aud_13gqa26hx51t` | 08.09.2026 | **nur 100 von 163 gefundenen URLs gecrawlt** (URL-Limit) |
+| Crawl Foundry Domain-Snapshot oldtimerphotography.de | 09.09.2026 | Wettbewerbervergleich |
+| Live-Prüfung einzelner Seiten | 24.09.2026 | Titel, H1, Weiterleitungen |
+| Lokale Content-Dateien (`apps/web/content`) | Stand Rechner 24.09. | Abgleich lokal ↔ live |
+
+**Nicht verfügbar:** Google Search Console ist im Crawl-Foundry-Workspace nicht verbunden, und es gibt kein Rank-Tracking. Ein frischer Snapshot wurde angefragt (Freigabe `arq_fc4y899o1ebr`, max. 5 €), aber nicht freigegeben. Alle Ranking-Zahlen stammen deshalb vom 31.08. Suchvolumen und Traffic sind Schätzungen des Datenanbieters, keine GSC-Werte.
+
+**Korrektur zum Audit:** Die Audit-Werte „63 Seiten blockiert/nicht indexierbar“ und „0 eingehende Links“ auf Stadtseiten sind Effekte des Crawl-Limits. 163 − 100 = 63. Außerdem verlinkt z. B. `/motorrad-fotografie-nrw.html` live alle 22 Motorrad-Stadtseiten. Das ist **kein** Indexierungs- oder Verlinkungsproblem.
+
+## Kurzfazit
+
+1. **Die Optimierungen vom 31.08. sind live nur teilweise angekommen.** Bei 3 von 4 geprüften Kernseiten weichen Title und Description live von den lokalen Content-Dateien ab. Das kommt zuerst, weil der geplante Review am 12.10. sonst den falschen Stand misst.
+2. **77 % des geschätzten Traffics sind themenfremd.** Die Startseite rankt für Düsseldorfer Bar- und Clubnamen (Em Pöötzke, Mahiki usw.). Fotografie-Keywords bringen nur rund 30 Klicks im Monat.
+3. **Drei alte Ratgeber mit echtem Suchvolumen wurden auf Leistungsseiten umgeleitet.** Anfragen wie „lowkey fotografie“ (590/Monat) oder „actioncam für motorrad“ (590) landen auf Seiten, die die Frage nicht beantworten. Hier liegen die günstigsten **neuen Seiten**.
+4. **Viele Fotografie-Keywords stehen auf Position 11–30.** Sie sind mit bestehenden Seiten erreichbar. Grob geschätzt bringt Position 5 für alle Suchgruppen rund **+150 Klicks/Monat**, Position 3 rund +330 (heute ~30).
+5. **Die Messung fehlt.** Ohne GSC-Anbindung und Rank-Tracking lässt sich keine der Maßnahmen bewerten.
+
+## 1. Sofort: Deploy-Stand prüfen
+
+| Seite | Lokal (Content-Datei) | Live am 24.09. |
+|---|---|---|
+| `/auto-fotoshooting.html` | „Auto-Fotoshooting NRW: Ablauf & Kosten \| Matthias Ramahi“, H1 „Auto-Fotoshooting NRW“ | „Auto Fotoshooting — Matthias Ramahi“, H1 „Auto-Fotoshooting“, alte Description |
+| `/motorrad-fotografie.html` | „Motorradfotografie NRW \| Matthias Ramahi“ | „Motorradfotografie — Matthias Ramahi“ |
+| `/automobil-fotografie.html` | „Automobilfotografie NRW \| Matthias Ramahi“ | „Automobilfotografie in NRW · Matthias Ramahi“ |
+| `/fahrzeugfotografie.html` | „Fahrzeugfotografie für Verkauf, Bestand & Archiv“ | identisch ✔ |
+
+Die Dateien wurden am 31.08. geändert. Die letzten Commits (02.–10.09.) betreffen Crawl-Foundry-Umbenennung, Hero und Lesbarkeit. Wahrscheinlich sind die Änderungen am Fahrzeug-Cluster also noch nicht committet oder deployt. Laut `docs/browser-readability-2026-09-10.md` enthält der lokale Checkout außerdem weitere, nicht zugeordnete Änderungen.
+
+**Aktion:** `git status` für `apps/web/content/local-seo-pages` und `service-pages` prüfen, die Fahrzeug-Plan-Änderungen gezielt committen und deployen und danach `seo:audit:sitemap-live` laufen lassen. Den Review-Termin 12.10. auf 6 Wochen **nach** dem tatsächlichen Deploy verschieben.
+
+## 2. Neue Seiten: verlorene Ratgeber-Rankings zurückholen
+
+Im Snapshot vom 31.08. rankten noch alte WordPress-Artikel. Diese URLs leiten heute per Redirect auf Leistungsseiten (live geprüft). Google ersetzt eine Ratgeber-URL durch eine Leistungsseite in der Regel nicht im selben Ranking, weil die Suchabsicht nicht passt. Die Rankings werden also verschwinden.
+
+| Alte URL (heute Redirect auf) | Keyword | Volumen/Monat | Position 31.08. | Vorschlag |
+|---|---|---:|---:|---|
+| `/portraitfotografie/low-key-fotografie-beleuchtung-und-high-key-fotografie/` → `/portraitfotografie.html` | lowkey fotografie · high-key fotos · high key fotos | 590 · 50 · 50 | 27 · 21 · 31 | **Neuer Journal-Beitrag „Low-Key- und High-Key-Portraits: Licht, Hintergrund, Belichtung“** mit eigenen Beispielbildern; alte URL auf diesen Beitrag umleiten; Links von `/portraitfotografie-beleuchtung.html` (erwähnt Low-/High-Key heute gar nicht) und vom Portrait-Pillar |
+| `/motorradfotografie/motorrad-fotografie-mit-gopros/` → `/motorrad-fotografie.html` | actioncam für motorrad | 590 | 24 | **Journal-Beitrag „Actioncam am Motorrad: Halterung, Perspektive, Sicherheit“**, nur mit echter eigener Erfahrung oder eigenem Material; Link zu Motorrad-Pillar und `motorrad-fotoshooting-sicherheit` |
+| `/portraitfotografie/farbtheorie-in-der-fotografie/` → `/portraitfotografie.html` | bilder farben | 390 | 18 | **Journal-Beitrag „Farbwirkung in der Fotografie“**; mit dem vorhandenen Beitrag `farbharmonie-fahrzeugfotografie` gegenseitig verlinken |
+| `/portraitfotografie/mikrogesten-und-haende-im-charakterportraet…/` | handtypen | 50 | 17 | niedrige Priorität; als Abschnitt in `portraits-ohne-generische-posen` aufnehmen und die alte URL dorthin umleiten |
+
+Das sind Informationsanfragen: Sie bringen Klicks und thematische Autorität, aber wenige direkte Anfragen. Deshalb verweist jeder Beitrag laut `JOURNAL_WORKFLOW.md` auf genau eine passende Leistungsseite.
+
+## 3. Bestehende Seiten verbessern: Keywords auf Position 5–30
+
+Varianten mit identischem Suchvolumen sind beim Datenanbieter meist dieselbe Suchgruppe. Ihr Volumen wird deshalb **nicht** addiert.
+
+| Suchgruppe | Volumen | Beste Position | Zielseite | Maßnahme |
+|---|---:|---:|---|---|
+| motorrad fotograf / fotograf motorrad / motorrad fotografie | 110–140 | 5–9 | `/motorrad-fotografie.html` | **Schützen.** Keine URL-, H1- oder Rollenänderung; nur Title-Update aus Abschnitt 1 deployen |
+| motorrad fotoshooting / fotoshooting motorrad / fotoshooting mit motorrad (+ motorrad shooting 70) | 210 | 21 | `/motorrad-fotografie.html` | Auf dem Pillar einen eigenen Abschnitt „Motorrad-Fotoshooting: Ablauf, Location & Kosten“ mit Preis und FAQ ergänzen. **Kandidat für eine neue Seite** `/motorrad-fotoshooting.html` nach dem Muster `/auto-fotoshooting.html`: Die Düsseldorf-Variante `motorrad-shooting-duesseldorf` existiert schon, eine allgemeine NRW-Seite fehlt. Entscheiden, sobald GSC zeigt, ob der Pillar für „fotoshooting“-Anfragen Impressionen, aber keine Klicks bekommt |
+| fotoshooting mit auto / auto fotoshooting / fotoshooting auto | 260 | 14 | `/fotoshooting-mit-auto.html` · `/auto-fotoshooting.html` | Ist im Plan vom 31.08. schon gelöst. **Nur deployen** (Abschnitt 1) |
+| autofotografie / autofoto | 210 / 90 | 25 / 17 | `/autofotografie.html` | wie Plan 31.08.; nach dem Deploy messen |
+| automotive fotografie | 90 | 31 | `/automotive-fotografie.html` | B2B-Belege ergänzen, sobald freigegeben |
+| professioneller fotodruck · fotolabor düsseldorf | 210 · 110 | 24 · 15 | `/fotolabor-druck-duesseldorf.html` | **Quick Win:** Title und H1 auf „Fotolabor Düsseldorf“, Abschnitt „Professioneller Fotodruck: Papiere, Formate, Preise“, FAQ. Die Seite rankt bereits |
+| fotospots für autos in der nähe (+ auto fotospots nrw 40) | 90 | 11 | Journal `location-scouting-duesseldorf` · `/auto-fotografieren-tipps.html` | Position 11 ist fast Seite 1. Den Location-Scouting-Beitrag um **selbst geprüfte** Fahrzeug-Spots mit Zufahrt, Erlaubnis, Licht und eigenem Bild erweitern. Keine ungeprüfte Ortsliste |
+| motorrad fotografieren | 110 | 13 | Journal `motorrad-fotoshooting-checkliste` bzw. `motorradfotografie-linien` | Einen Beitrag zum Hauptziel für „Motorrad fotografieren (Tipps)“ machen und Title/H1 anpassen |
+| fahrzeugfotografie | 50 | 9 | `/fahrzeugfotografie.html` | ist live aktuell; beobachten |
+| dating fotograf | 90 | 41 | `/dating-fotoshooting.html` | den Begriff „Dating-Fotograf“ in Einstieg und FAQ aufnehmen |
+
+## 4. Traffic-Qualität: themenfremde Rankings der Startseite
+
+31 von 62 Keywords (~96 von ~125 geschätzten Klicks) sind themenfremd, vor allem Bar-, Club- und Lokalnamen: Em Pöötzke (1.600/Monat, Position 5), Mahiki, Tipsy Country Club, Jazz-Bars, Papidoux, Nilsson u. a. Sie ranken auf der Startseite. em-pöötzke.de verlinkt die Seite mehrfach. Das schadet nicht, verfälscht aber jede Traffic-Kennzahl.
+
+- **Messung:** Diese Klicks in allen Reports getrennt von den Fotografie-Clustern führen.
+- **Frage an dich:** Diese Rankings deuten auf frühere Gastro- und Eventfotografie hin. Falls das ein aktuelles Angebot ist (mit Bildrechten), wäre eine Seite „Gastronomie- & Eventfotografie Düsseldorf“ die einzige neue Leistungsseite, die aus vorhandener Sichtbarkeit sofort Nachfrage machen könnte. Falls nicht, einfach ignorieren.
+
+## 5. Wettbewerber: oldtimerphotography.de
+
+| | matthiasramahi.de (31.08.) | oldtimerphotography.de (09.09.) |
+|---|---:|---:|
+| Organische Keywords | 62 | 2.301 |
+| Geschätzte Klicks/Monat | ~125 | ~9.947 |
+| Verweisende Domains | 80 | 123 |
+
+Dessen Traffic kommt aus **fahrzeugspezifischen Seiten mit eigenen Fotos**: Shelby GT500 „Eleanor“ (~1.221), General Motors (~2.758), Jaguar (~430). Dazu kommen „[Marke] Logo alt“-Seiten und Oldtimertreffen-Berichte, z. B. Kressbronn und Bodensee auf Position 1. Das ist ein Hobby- und Lexikonmodell, kein Dienstleister, und soll **nicht** kopiert werden. Übertragbar sind zwei Hebel:
+
+1. **Modellnamen sichtbar machen (Aktualisierung, geringer Aufwand).** Die Bildbeschriftungen in den Portfolio-Auswahlen sind generisch („Hypercar · Exterieur“, „Klassiker · Messe“, „Showcar · Widebody“). Wo Modell, Baujahr oder Veranstaltung bekannt und freigegeben sind, gehören sie in Alt-Text, Bildunterschrift und Dateinamen. Das bringt Bildersuche-Traffic ohne neue URLs.
+2. **Veranstaltungsberichte (neue Seiten, nur mit echtem Material).** Der Beitrag `oldtimer-veranstaltungen` ist ein allgemeiner Ansatz. Echte Berichte zu NRW-Treffen oder -Messen, die du fotografiert hast (Name, Datum, eigene Serie, Freigaben), treffen Event-Suchanfragen und passen zur Outreach-Liste (Classic Remise, Oldtimer Markt).
+
+## 6. Technik (niedrigere Priorität)
+
+Keine kritischen oder hohen Befunde auf den 100 gecrawlten URLs. Offene Punkte:
+
+- **Performance:** Mobile-Lighthouse 73–86 in einer Stichprobe von 20 Seiten; kritische Netzwerkketten und render-blockierende Ressourcen auf allen 100 URLs, Cache-Policy auf 92, Bildauslieferung auf 55. Am niedrigsten liegen Dating (73/75), Landschaft Köln (73), Landschaft Oberhausen (74) und Gutschein (75).
+- **Snippets:** 19 zu lange Meta-Descriptions, 3 zu lange Titles, 16 Seiten mit Title = H1.
+- **Entity-Klarheit** im AI-Readiness-Score: Ø 54, keine Seite „ready“. `Person`/`LocalBusiness`-Schema mit `sameAs`, gleicher NAP-Angabe und Autorenhinweis im Journal ergänzen.
+- **Backlinks:** Der Snapshot meldet 8 defekte Backlinks. Die Ziel-URLs mit einem Backlink-Snapshot ermitteln und per Redirect auffangen. Viele verweisende Domains sind Shortener oder Linklisten; Disavow ist nicht nötig, Hauptsache kein Linkkauf.
+- **Vollständiger Audit:** Der nächste Crawl sollte mindestens 300 URLs abdecken (die Sitemap hat ~251 Seiten), damit Linkfluss und Indexierbarkeit belastbar sind.
+
+## 7. Messung einrichten
+
+1. **GSC mit Crawl Foundry verbinden** (Site `sit_rgqyhoj4p65k`). Ohne Page-Query-Daten sind die offenen Punkte aus dem Hub-Plan (Überlappung Auto/Fahrzeug, Sportwagen-Shooting/-Fotoshooting) nicht entscheidbar.
+2. **Rank-Tracking** für eine Liste von ~25 Zielkeywords aus Abschnitt 2 und 3, wöchentlich, mobil, Budget ab 5 €/Monat. Baseline direkt nach dem Deploy aus Abschnitt 1 setzen.
+3. Bar- und Clubrankings als eigene Gruppe „themenfremd“ führen.
+
+## Priorisierte Reihenfolge
+
+| # | Maßnahme | Art | Aufwand | Wirkung |
+|---:|---|---|---|---|
+| 1 | Fahrzeug-Plan-Änderungen vom 31.08. committen und deployen, live prüfen | Aktualisieren | klein | hoch (Voraussetzung) |
+| 2 | GSC in Crawl Foundry verbinden, Tracking-Liste und Baseline | Messen | klein | hoch (Voraussetzung) |
+| 3 | Low-/High-Key-Beitrag, alte URL umleiten | Neu | mittel | ~690 Suchen/Monat |
+| 4 | Fotolabor-Seite auf „Fotolabor Düsseldorf“/„professioneller Fotodruck“ | Verbessern | klein | 320 Suchen/Monat, Position 15/24 |
+| 5 | Actioncam-Motorrad-Beitrag (nur mit echtem Material), alte URL umleiten | Neu | mittel | 590 Suchen/Monat |
+| 6 | Farbwirkungs-Beitrag, alte URL umleiten | Neu | mittel | 390 Suchen/Monat |
+| 7 | Motorrad-Fotoshooting-Abschnitt auf dem Pillar; neue Seite nach GSC-Befund | Verbessern → ggf. neu | klein/mittel | 210 Suchen/Monat, Position 21 |
+| 8 | Location-Scouting-Beitrag um geprüfte Auto-Spots erweitern | Verbessern | mittel | 130 Suchen/Monat, Position 11 |
+| 9 | Modellnamen in Portfolio-Alt-Texten und Bildunterschriften | Aktualisieren | klein | Bildersuche |
+| 10 | Performance (render-blocking, Bildauslieferung), Meta-Längen, Entity-Schema | Technik | mittel | indirekt |
+
+**Bewusst nicht empfohlen:** keine weiteren Stadt- oder Synonymseiten (siehe Hub-Strategie), keine Logo- oder Lexikonseiten nach Wettbewerbervorbild, keine erfundenen Projekte oder Kundenstimmen.
+
+## Potenzial grob geschätzt
+
+Die 21 Fotografie-Suchgruppen, für die die Domain am 31.08. rankte (dedupliziert ~3.600 Suchen/Monat), bringen heute geschätzt ~30 Klicks/Monat. Erreichen alle Position 5, sind es grob **+150 Klicks/Monat**, bei Position 3 grob +330. Die neuen Ratgeber aus Abschnitt 2 sind darin enthalten, weil ihre Keywords schon ranken. Die Schätzung nutzt ein einfaches CTR-Modell ohne GSC-Daten und ist nur eine Größenordnung. Erst die GSC-Anbindung liefert echte Werte.

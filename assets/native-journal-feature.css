@@ -4,8 +4,8 @@
       --muted-l:rgba(16,18,23,.66);--quiet-l:rgba(16,18,23,.42);
       --line-d:rgba(248,250,244,.14);--line-l:rgba(16,18,23,.12);
       --red:#c93a31;
-      --font:'Neue Haas Grotesk Display','Söhne','Inter Tight','Avenir Next','Helvetica Neue',Arial,system-ui,sans-serif;
-      --mono:'JetBrains Mono','IBM Plex Mono','SFMono-Regular',ui-monospace,Menlo,monospace;
+      --font:'MR Sans','MR Sans Fallback',Arial,system-ui,sans-serif;
+      --mono:'MR Mono','MR Mono Fallback',ui-monospace,Menlo,Consolas,monospace;
       --ease:cubic-bezier(.23,1,.32,1);
     }
     *{box-sizing:border-box}

@@ -1,0 +1,111 @@
+---
+// Shared inquiry section ("Projekt anfragen"), rendered on the server.
+//
+// Previously every page shipped an empty <section data-contact-section> and
+// site-chrome.js built the whole form via innerHTML once the section came
+// near the viewport (or after up to 4.2 s). That caused a visible layout jump
+// (especially when jumping to #anfrage, which then had to be corrected with
+// repeated scrollTo() calls) and left visitors without JavaScript without a
+// form. The markup below mirrors the former client template 1:1;
+// site-chrome.js now only attaches behaviour (validation, submit, tracking).
+//
+// Accepts the same data-contact-* attributes as before, so call sites only
+// swap the tag name. All other attributes (id, data-theme, ...) pass through.
+type Props = Record<string, unknown> & {
+  id?: string
+  class?: string
+  'data-contact-subject'?: string
+  'data-contact-headline'?: string
+  'data-contact-lead'?: string
+  'data-contact-endpoint'?: string
+  'data-contact-project-type'?: string
+  'data-contact-button-label'?: string
+  'data-contact-message-placeholder'?: string
+}
+
+const props = Astro.props as Props
+const { class: className, id, 'aria-label': _ariaLabel, ...rest } = props
+const text = (value: unknown, fallback: string) => (typeof value === 'string' && value.trim() ? value : fallback)
+
+const subject = text(props['data-contact-subject'], 'Projekt-Anfrage')
+const headline = text(props['data-contact-headline'], 'Projekt <em>anfragen.</em>')
+const lead = text(
+  props['data-contact-lead'],
+  'Beschreibe kurz dein Projekt: worum es geht, wo es stattfindet, welche Wirkung die Bilder tragen sollen und in welchem Rahmen sie genutzt werden. Wir klären Location, Licht und Ablauf gemeinsam vor dem ersten Klick.',
+)
+const projectTypeDefault = text(props['data-contact-project-type'], '')
+const submitLabel = text(props['data-contact-button-label'], 'Projekt anfragen ->')
+const messagePlaceholder = text(props['data-contact-message-placeholder'], 'Worum geht es? Ein paar Stichpunkte reichen - optional.')
+// Real POST target so the form also works without JavaScript (or before the
+// deferred script has bound): /api/contact accepts url-encoded form data.
+// With JS, site-chrome.js intercepts submit and sends JSON instead.
+const endpoint = text(props['data-contact-endpoint'], '/api/contact')
+const uid = `mrc-${Math.random().toString(36).slice(2, 8)}`
+
+const projectTypes = [
+  'Automobil-Fotografie',
+  'Sportwagen-Fotografie',
+  'Oldtimer-Fotografie',
+  'Motorrad-Fotografie',
+  'Portrait-Fotografie',
+  'Landschaft / Fine Art Print',
+  'Videografie',
+  'Webdesign / SEO',
+  'Werbetechnik / Druck',
+  'Sonstiges',
+]
+const usages = ['Privat', 'Kommerziell', 'Kampagne', 'Editorial', 'Sonstiges']
+---
+<section {...rest} id={id || 'anfrage'} class:list={['mr-contact', className]} aria-label="Anfrage" data-contact-ready>
+  <div class="mr-contact__inner">
+    <div class="mr-contact__head">
+      <h2 set:html={headline} />
+      <p class="mr-contact__lead" set:html={lead} />
+      <div class="mr-contact__direct" aria-label="Direkter Kontakt">
+        <a class="mr-contact__direct-link" href={`mailto:info@matthiasramahi.de?subject=${encodeURIComponent(subject)}`} data-cta-role="contact-direct-mail"><span>E-Mail</span><strong>info@matthiasramahi.de</strong></a>
+        <a class="mr-contact__direct-link" href="tel:+4917642449858" data-cta-role="contact-direct-phone"><span>Telefon</span><strong>+49 176 42 44 98 58</strong></a>
+        <a class="mr-contact__direct-link" href="https://www.instagram.com/mathewspictures/" target="_blank" rel="noopener" data-cta-role="contact-direct-instagram"><span>Instagram</span><strong>@mathewspictures &#8599;</strong></a>
+      </div>
+    </div>
+    <form class="mr-contact__form" method="post" action={endpoint} novalidate>
+      <div class="mr-contact__trap" aria-hidden="true"><label for={`${uid}-site`}>Website</label><input id={`${uid}-site`} name="website" tabindex="-1" autocomplete="off" /></div>
+      <div class="mr-contact__row">
+        <div class="mr-contact__field"><label for={`${uid}-name`}>Name <span>Pflicht</span></label><input id={`${uid}-name`} name="name" autocomplete="name" required /></div>
+        <div class="mr-contact__field"><label for={`${uid}-contact`}>E-Mail <span>Pflicht</span></label><input id={`${uid}-contact`} name="contact" type="email" autocomplete="email" inputmode="email" required /></div>
+      </div>
+      <div class="mr-contact__field">
+        <label for={`${uid}-type`}>Leistung <span>Optional</span></label>
+        <select id={`${uid}-type`} name="projectType">
+          <option value="" selected={!projectTypes.includes(projectTypeDefault)}>Noch offen</option>
+          {projectTypes.map((type) => <option selected={type === projectTypeDefault}>{type}</option>)}
+        </select>
+      </div>
+      <div class="mr-contact__field"><label for={`${uid}-msg`}>Anfrage kurz beschreiben <span>Optional</span></label><textarea id={`${uid}-msg`} name="message" placeholder={messagePlaceholder}></textarea></div>
+      <details class="mr-contact__details">
+        <summary>Projektangaben ergaenzen <span>Optional</span></summary>
+        <div class="mr-contact__row">
+          <div class="mr-contact__field"><label for={`${uid}-project`}>Projekt / Motiv <span>Optional</span></label><input id={`${uid}-project`} name="project" autocomplete="off" /></div>
+          <div class="mr-contact__field"><label for={`${uid}-date`}>Zeitraum <span>Optional</span></label><input id={`${uid}-date`} name="date" autocomplete="off" placeholder="z. B. KW 24, Juni, offen" /></div>
+        </div>
+        <div class="mr-contact__row">
+          <div class="mr-contact__field">
+            <label for={`${uid}-use`}>Nutzung <span>Optional</span></label>
+            <select id={`${uid}-use`} name="use">
+              <option value="">Noch offen</option>
+              {usages.map((usage) => <option>{usage}</option>)}
+            </select>
+          </div>
+          <div class="mr-contact__field"><label for={`${uid}-phone`}>Telefon fuer Rueckfragen <span>Optional</span></label><input id={`${uid}-phone`} name="phone" autocomplete="tel" /></div>
+        </div>
+      </details>
+      <label class="mr-contact__consent">
+        <input type="checkbox" name="consent" value="1" required />
+        <span>Ich willige ein, dass meine angegebenen Daten zur Bearbeitung der Anfrage verarbeitet werden. Hinweise dazu in der <a href="/datenschutz.html" target="_blank" rel="noopener noreferrer">Datenschutzerklaerung</a>. <em>Pflicht</em></span>
+      </label>
+      <div class="mr-contact__actions">
+        <button class="mr-contact__submit" type="submit">{submitLabel}</button>
+        <p class="mr-contact__status" role="status" aria-live="polite"></p>
+      </div>
+    </form>
+  </div>
+</section>

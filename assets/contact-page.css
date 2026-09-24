@@ -5,9 +5,9 @@ body.contact-page {
   --quiet: rgba(10, 12, 17, .42);
   --line: rgba(10, 12, 17, .14);
   --accent-warm: #b08862;
-  --font: 'Inter Tight', 'Söhne', 'Avenir Next', 'Helvetica Neue', Arial, system-ui, sans-serif;
-  --serif: 'Iowan Old Style', Charter, Georgia, serif;
-  --mono: 'JetBrains Mono', 'IBM Plex Mono', 'SFMono-Regular', ui-monospace, Menlo, monospace;
+  --font: 'MR Sans','MR Sans Fallback',Arial,system-ui,sans-serif;
+  --serif: 'MR Serif','MR Serif Fallback',Georgia,serif;
+  --mono: 'MR Mono','MR Mono Fallback',ui-monospace,Menlo,Consolas,monospace;
   --ease: cubic-bezier(.23, 1, .32, 1);
   min-height: 100svh;
   margin: 0;
@@ -81,7 +81,7 @@ body.contact-page ::selection {
 
 .contact-page .kc-card__label {
   margin: 0 0 14px;
-  font: 10px var(--sc-mono, ui-monospace, Menlo, monospace);
+  font: 10px var(--sc-mono, 'MR Mono','MR Mono Fallback',ui-monospace,Menlo,Consolas,monospace);
   letter-spacing: .22em;
   text-transform: uppercase;
   color: rgba(243, 245, 239, .52);
@@ -92,10 +92,10 @@ body.contact-page ::selection {
   align-items: center;
   min-width: 44px;
   min-height: 44px;
-  font-family: Iowan Old Style, Charter, Georgia, serif;
+  font-family: 'MR Serif','MR Serif Fallback',Georgia,serif;
   font-style: italic;
   font-weight: 500;
-  font-size: clamp(22px, 2.4vw, 34px);
+  font-size: clamp(20px, 2.1vw, 30px);
   line-height: 1.08;
   letter-spacing: -.018em;
   color: #f3f1ea;
@@ -109,7 +109,7 @@ body.contact-page ::selection {
 .contact-page .kc-card__sub {
   display: block;
   margin-top: 14px;
-  font: 11px var(--sc-mono, ui-monospace, Menlo, monospace);
+  font: 11px var(--sc-mono, 'MR Mono','MR Mono Fallback',ui-monospace,Menlo,Consolas,monospace);
   letter-spacing: .18em;
   text-transform: uppercase;
   color: rgba(243, 245, 239, .42);
@@ -127,7 +127,7 @@ body.contact-page ::selection {
   border: 1px solid rgba(243, 245, 239, .22);
   background: transparent;
   color: rgba(243, 245, 239, .72);
-  font: 10px var(--sc-mono, ui-monospace, Menlo, monospace);
+  font: 10px var(--sc-mono, 'MR Mono','MR Mono Fallback',ui-monospace,Menlo,Consolas,monospace);
   letter-spacing: .18em;
   text-transform: uppercase;
   cursor: pointer;

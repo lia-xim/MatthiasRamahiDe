@@ -156,7 +156,7 @@ Astro.response.headers.set('x-cms-page-kind', 'concept-archive-native')
   .concept-panels article > p,
   .stage-tabs button,
   .stage-scenes p {
-    font: 11px var(--mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+    font: 11px var(--mono, 'MR Mono','MR Mono Fallback',ui-monospace,Menlo,Consolas,monospace);
     text-transform: uppercase;
     letter-spacing: 0;
   }
@@ -180,7 +180,7 @@ Astro.response.headers.set('x-cms-page-kind', 'concept-archive-native')
   .concept-hero h1 {
     max-width: 12ch;
     margin: 0;
-    font-family: var(--serif, Georgia, serif);
+    font-family: var(--serif, 'MR Serif','MR Serif Fallback',Georgia,serif);
     font-size: clamp(54px, 9vw, 148px);
     font-weight: 600;
     line-height: .9;
@@ -235,7 +235,7 @@ Astro.response.headers.set('x-cms-page-kind', 'concept-archive-native')
   .concept-panels h2,
   .stage-scenes h2 {
     margin: 0;
-    font-family: var(--serif, Georgia, serif);
+    font-family: var(--serif, 'MR Serif','MR Serif Fallback',Georgia,serif);
     font-size: clamp(28px, 3vw, 48px);
     line-height: 1;
   }
@@ -404,7 +404,7 @@ Astro.response.headers.set('x-cms-page-kind', 'concept-archive-native')
     position: absolute;
     left: 26px;
     bottom: 26px;
-    font: 12px var(--mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+    font: 12px var(--mono, 'MR Mono','MR Mono Fallback',ui-monospace,Menlo,Consolas,monospace);
     color: rgba(255, 255, 255, .78);
   }
 

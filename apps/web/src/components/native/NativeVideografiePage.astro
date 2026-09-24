@@ -1,4 +1,5 @@
 ---
+import ContactSlot from '../ContactSlot.astro'
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import { nativeServiceDetailPages } from '../../lib/serviceDetailContent'
 import type { PayloadDoc } from '../../lib/payload'
@@ -94,7 +95,7 @@ const { hero, overview, feature, contact } = page
     </section>
 
     {/* ===== CONTACT (dark) ===== */}
-    <section
+    <ContactSlot
       id="anfrage"
       data-contact-section
       data-theme="dark"

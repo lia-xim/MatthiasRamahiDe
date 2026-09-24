@@ -337,7 +337,7 @@
     }
 
     function inquiryHref() {
-      return hasInlineInquiry ? '#anfrage' : 'contact.html#anfrage';
+      return hasInlineInquiry ? '#anfrage' : '/contact.html#anfrage';
     }
 
     function trackConversionEvent(name, detail) {
@@ -376,7 +376,7 @@
       if (!source || document.querySelector('.mr-sticky-cta')) return;
       const sticky = document.createElement('a');
       sticky.className = 'mr-sticky-cta';
-      sticky.href = source.getAttribute('href') || 'contact.html#anfrage';
+      sticky.href = source.getAttribute('href') || '/contact.html#anfrage';
       sticky.textContent = source.textContent || 'Projekt anfragen';
       sticky.setAttribute('aria-label', sticky.textContent);
       sticky.setAttribute('data-cta-role', 'mobile-sticky');
@@ -478,8 +478,8 @@
           '<h2>' + intent.title + '</h2>' +
           '<p>' + intent.lead + '</p>' +
           '<div class="mr-exit-cta__actions">' +
-            '<a class="mr-exit-cta__primary" data-cta-role="exit-cta-primary" href="contact.html#anfrage">Projekt anfragen</a>' +
-            '<a class="mr-exit-cta__secondary" data-cta-role="exit-cta-secondary" href="portfolio.html">Arbeiten ansehen</a>' +
+            '<a class="mr-exit-cta__primary" data-cta-role="exit-cta-primary" href="/contact.html#anfrage">Projekt anfragen</a>' +
+            '<a class="mr-exit-cta__secondary" data-cta-role="exit-cta-secondary" href="/portfolio.html">Arbeiten ansehen</a>' +
           '</div>' +
         '</div>';
       footer.insertAdjacentElement('beforebegin', section);
@@ -746,6 +746,10 @@
         const messagePlaceholder = slot.getAttribute('data-contact-message-placeholder') || 'Worum geht es? Ein paar Stichpunkte reichen - optional.';
         const uid = 'mrc-' + (slotCounter++);
 
+        // The form is normally rendered on the server (ContactSlot.astro,
+        // data-contact-ready). Only build it client-side for legacy markup that
+        // still ships an empty slot; either way the behaviour below is bound.
+        if (!slot.querySelector('form.mr-contact__form')) {
         if (!slot.id) slot.id = 'anfrage';
         slot.classList.add('mr-contact');
         slot.setAttribute('aria-label', 'Anfrage');
@@ -790,6 +794,7 @@
               '</div>' +
             '</form>' +
           '</div>';
+        }
 
         const form = slot.querySelector('form.mr-contact__form');
         const submit = slot.querySelector('.mr-contact__submit');
@@ -974,13 +979,21 @@
         else applyScroll();
       }
 
+      // Server-rendered slots already have their final height, so the browser's
+      // own anchor jump is correct and no scroll correction is needed.
+      const allSlotsPrerendered = Array.prototype.every.call(slots, function (slot) {
+        return slot.hasAttribute('data-contact-ready');
+      });
+
       function handleRequestHash() {
         if (location.hash !== '#anfrage') return;
         hydrateContactSlotsOnce();
-        scrollToRequestSlot();
+        if (!allSlotsPrerendered) scrollToRequestSlot();
       }
 
-      if (location.hash === '#anfrage') {
+      if (allSlotsPrerendered) {
+        hydrateContactSlotsOnce();
+      } else if (location.hash === '#anfrage') {
         handleRequestHash();
       } else if ('IntersectionObserver' in window) {
         const observer = new IntersectionObserver(function (entries) {

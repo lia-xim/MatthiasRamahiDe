@@ -1,4 +1,5 @@
 ---
+import ContactSlot from '../ContactSlot.astro'
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import NativeShaderHero from './NativeShaderHero.astro'
 import { homeHeroSlidesFor, servicesHeroSlides, servicesIndexItems as fallbackServices } from '../../lib/nativeContent'
@@ -135,7 +136,15 @@ const why = {
   preloadImages={[firstHeroSlide.image]}
 >
   <main>
-    <NativeShaderHero id="top" label="Weitere Dienstleistungen" slides={heroSlides} sourceSlides={doc?.heroSlides || []} headerTheme="dark" />
+    <NativeShaderHero
+      id="top"
+      label="Weitere Dienstleistungen"
+      semanticHeading="Weitere Dienstleistungen"
+      eyebrow="Weitere Dienstleistungen · sechs Bereiche"
+      slides={heroSlides}
+      sourceSlides={doc?.heroSlides || []}
+      headerTheme="dark"
+    />
 
     <section class="overview" id="overview" data-header-theme="light" aria-label="Unsere Dienstleistungen im Überblick">
       <div class="overview-inner">
@@ -189,7 +198,7 @@ const why = {
       </div>
     </section>
 
-    <section
+    <ContactSlot
       id="anfrage"
       data-contact-section
       data-header-theme="light"

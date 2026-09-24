@@ -1,4 +1,5 @@
 ---
+import ContactSlot from '../ContactSlot.astro'
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import { getBySlug, imageUrl, type PayloadDoc } from '../../lib/payload'
 
@@ -172,7 +173,7 @@ const heroSlidesJson = JSON.stringify(heroSlides)
     </section>
 
     {/* ===== CONTACT (dark) ===== */}
-    <section
+    <ContactSlot
       id="anfrage"
       data-contact-section
       data-header-theme="dark"

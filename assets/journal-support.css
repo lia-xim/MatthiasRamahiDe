@@ -5,8 +5,8 @@
   --white: #f8faf4;
   --red: #c93a31;
   --line: rgba(16, 18, 23, .13);
-  --font: 'Neue Haas Grotesk Display', 'Inter Tight', 'Avenir Next', 'Helvetica Neue', Arial, system-ui, sans-serif;
-  --mono: 'JetBrains Mono', 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+  --font: 'MR Sans','MR Sans Fallback',Arial,system-ui,sans-serif;
+  --mono: 'MR Mono','MR Mono Fallback',ui-monospace,Menlo,Consolas,monospace;
 }
 
 .journal-support {

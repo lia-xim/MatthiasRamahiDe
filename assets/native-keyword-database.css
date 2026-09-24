@@ -10,16 +10,16 @@
   --kd-teal:#22c7c5;
   --kd-teal-soft:#9af0e7;
   --kd-rust:#c75d45;
-  --kd-mono:'JetBrains Mono','IBM Plex Mono','SFMono-Regular',ui-monospace,Menlo,monospace;
-  --kd-serif:'Iowan Old Style','Charter','Iowan',Georgia,'Times New Roman',serif;
-  --kd-sans:'Inter Tight','Inter','Söhne','Avenir Next','Helvetica Neue',Arial,system-ui,sans-serif;
+  --kd-mono:'MR Mono','MR Mono Fallback',ui-monospace,Menlo,Consolas,monospace;
+  --kd-serif:'MR Serif','MR Serif Fallback',Georgia,serif;
+  --kd-sans:'MR Sans','MR Sans Fallback',Arial,system-ui,sans-serif;
   --kd-ease:cubic-bezier(.23,1,.32,1);
   --kd-max:1540px;
   --kd-mx:.66;
   --kd-my:.42;
 }
 html{overflow-x:hidden;background:var(--kd-bg)}
-body{margin:0;background:var(--kd-paper);color:var(--kd-ink);font-family:var(--kd-sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+body{margin:0;background:var(--kd-paper);color:var(--kd-ink);font-family:var(--kd-sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
 .kd-page{position:relative;background:var(--kd-paper);color:var(--kd-ink)}
 .kd-page *{box-sizing:border-box}
 .kd-page a{color:inherit;text-decoration:none}

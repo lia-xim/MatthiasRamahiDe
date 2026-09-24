@@ -3,6 +3,8 @@ import fs from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
+import { makeCssCompatible } from './css-compat.mjs'
+
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const publicRoot = path.join(repoRoot, 'apps', 'web', 'public')
 const assetSource = path.join(repoRoot, 'assets')
@@ -66,7 +68,33 @@ async function shouldCopy(source, target) {
   }
 }
 
+// Stylesheets are not copied verbatim: they get vendor prefixes and syntax
+// fallbacks for the supported browsers (see tools/css-compat.mjs). The target
+// is only rewritten when the processed output actually changed.
+async function copyStylesheet(source, target) {
+  const sourceText = await fs.readFile(source, 'utf8')
+  const processed = await makeCssCompatible(sourceText, { sourcefile: toPosix(path.relative(repoRoot, source)) })
+  let current = null
+  try {
+    current = await fs.readFile(target, 'utf8')
+  } catch {
+    current = null
+  }
+  if (current === processed) {
+    skipped += 1
+    return
+  }
+  await fs.mkdir(path.dirname(target), { recursive: true })
+  await fs.writeFile(target, processed)
+  copied += 1
+  bytes += Buffer.byteLength(processed)
+}
+
 async function copyFile(source, target) {
+  if (path.extname(source).toLowerCase() === '.css') {
+    await copyStylesheet(source, target)
+    return
+  }
   if (!(await shouldCopy(source, target))) {
     skipped += 1
     return

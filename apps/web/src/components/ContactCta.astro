@@ -33,7 +33,7 @@ const subject = cta?.emailSubject || module.emailSubject || 'Projektanfrage'
       {/* Briefing cards (Was reicht / Was klaeren wir / Naechster Schritt) removed 2026-05-27 */}
       <a class="contact-cta__mail" href={`mailto:${email}?subject=${encodeURIComponent(subject)}`} {...tinaAttrs(footer, 'email')}>{email}</a>
     </div>
-    <form class="contact-cta__form" data-mailto={email} data-subject={subject} data-endpoint="/api/contact" novalidate>
+    <form class="contact-cta__form" method="post" action="/api/contact" data-mailto={email} data-subject={subject} data-endpoint="/api/contact" novalidate>
       <div class="contact-cta__trap" aria-hidden="true">
         <label>
           Website

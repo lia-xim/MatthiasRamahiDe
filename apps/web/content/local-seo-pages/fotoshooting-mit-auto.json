@@ -87,13 +87,25 @@
   "contactSection": {},
   "targetKeyword": "Fotoshooting mit Auto",
   "seo": {
-    "title": "Fotoshooting mit Auto — Professionelle Automobilfotografie NRW",
-    "description": "Fotoshooting mit Auto für Sportwagen, Oldtimer, Lieblingsfahrzeuge und Content-Serien. Geplanter Bildsatz mit Licht, Standort und Nutzungsziel. Düsseldorf, NRW.",
+    "title": "Fotoshooting mit Auto | Automobilfotografie NRW",
+    "description": "Fotoshooting mit Auto für Sportwagen, Oldtimer und Lieblingsfahrzeuge: Mensch und Fahrzeug als geplanter Bildsatz. Location und Licht in Düsseldorf/NRW.",
     "canonicalUrl": "https://matthiasramahi.de/fotoshooting-mit-auto.html",
     "legacyUrl": "fotoshooting-mit-auto.html",
     "noIndex": false,
     "focusKeyword": "Fotoshooting mit Auto",
-    "searchIntent": "Lokale Dienstleistungsanfrage: Nutzer suchen einen passenden Fotografen, Ablauf und Kontaktmöglichkeit für Fotoshooting mit Auto.",
+    "secondaryKeywords": [
+      "Fotoshooting mit eigenem Auto",
+      "Auto Fotoshooting mit Person",
+      "Bilder mit Auto",
+      "Car Shooting mit Fahrer"
+    ],
+    "internalLinkAnchors": [
+      "Auto-Fotoshooting in NRW",
+      "Sportwagen-Fotoshooting",
+      "Oldtimer-Fotoshooting",
+      "Automobilfotografie in NRW"
+    ],
+    "searchIntent": "Kommerzielle Anfrage für ein persönliches Shooting: Fahrzeugbesitzer suchen Bilder, auf denen Mensch und eigenes Auto gemeinsam natürlich inszeniert werden, sowie Informationen zu Ablauf, Location, Umfang und Preis.",
     "ogImage": "/assets/optimized/assets-photos-automobil-sunset-1920.webp"
   },
   "legacy": {

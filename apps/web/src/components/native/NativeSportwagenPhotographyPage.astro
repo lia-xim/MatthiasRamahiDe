@@ -1,4 +1,5 @@
 ---
+import ContactSlot from '../ContactSlot.astro'
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import NativeFamilyClusterLinks from './NativeFamilyClusterLinks.astro'
 import NativeFamilyFaq from './NativeFamilyFaq.astro'
@@ -774,7 +775,7 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
 
     <NativeReviews theme="light" />
 
-    <section
+    <ContactSlot
       id="anfrage"
       data-contact-section
       data-header-theme="light"

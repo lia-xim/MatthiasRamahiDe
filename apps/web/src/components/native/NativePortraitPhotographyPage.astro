@@ -1,4 +1,5 @@
 ---
+import ContactSlot from '../ContactSlot.astro'
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import NativeFamilyClusterLinks from './NativeFamilyClusterLinks.astro'
 import NativeFamilyFaq from './NativeFamilyFaq.astro'
@@ -222,7 +223,7 @@ const clusterCuration = curateFamilyClusterLinks({
     presse: ['headshot', 'business', 'unternehmen'],
   },
   isParentPage,
-  primaryIntentKeys: ['fotoshooting', 'business', 'headshot', 'personal-branding', 'beleuchtung', 'paar-familie', 'presse'],
+  primaryIntentKeys: ['fotoshooting', 'business', 'headshot', 'dating', 'personal-branding', 'beleuchtung', 'paar-familie', 'presse'],
   scopeSlug: scope.slug,
 })
 const {
@@ -682,13 +683,13 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
 
     <NativeReviews theme="light" />
 
-    <section
+    <ContactSlot
       id="anfrage"
       data-contact-section
       data-header-theme="light"
       data-contact-subject={contactSubjectFinal}
       data-contact-headline={contactHeadlineFinal}
       data-contact-lead={contactLeadFinal}
-    ></section>
+    />
   </main>
 </AdoptedPageLayout>

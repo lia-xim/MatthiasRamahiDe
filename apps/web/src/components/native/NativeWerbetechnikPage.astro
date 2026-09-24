@@ -1,4 +1,5 @@
 ---
+import ContactSlot from '../ContactSlot.astro'
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import { getBySlug, type PayloadDoc } from '../../lib/payload'
 
@@ -139,7 +140,7 @@ const heroSlidesJson = JSON.stringify(heroSlides)
       </div>
     </section>
 
-    <section
+    <ContactSlot
       id="anfrage"
       data-contact-section
       data-contact-subject="Werbetechnik-Anfrage — Matthias Ramahi"

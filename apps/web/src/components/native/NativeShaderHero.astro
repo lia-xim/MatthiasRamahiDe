@@ -19,11 +19,13 @@ type Props = {
   sourceSlides?: Array<Record<string, unknown>>
   theme?: 'dark' | 'light'
   headerTheme?: 'dark' | 'light'
+  eyebrow?: string
+  semanticHeading?: string
 }
 
-const { id, label, slides, sourceSlides = [], theme = 'dark', headerTheme } = Astro.props as Props
+const { id, label, slides, sourceSlides = [], theme = 'dark', headerTheme, eyebrow, semanticHeading } = Astro.props as Props
 const firstSlide = slides[0]
-const accessibleHeading = firstSlide.titleLines.join(' ')
+const accessibleHeading = semanticHeading || firstSlide.titleLines.join(' ')
 const firstSourceSlide = sourceSlides[0]
 const heroImages = slides.map((slide) => slide.image)
 const heroSlidesJson = JSON.stringify(slides)
@@ -60,6 +62,7 @@ const titleLineField = (index: number) => (index === 0 ? 'headlineLine1' : index
   <div class="hero-grid">
     <div class="hero-stage">
       <h1 class="sr-only">{accessibleHeading}</h1>
+      {eyebrow && <p class="hero-hub-kicker">{eyebrow}</p>}
       <div class="hero-title" id="hero-title" data-text-idx="0" aria-hidden="true">
         {firstSlide.titleLines.map((line, index) => (
           <>

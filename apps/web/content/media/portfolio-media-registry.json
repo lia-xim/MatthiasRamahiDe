@@ -1,0 +1,1544 @@
+{
+  "version": 1,
+  "updatedAt": "2026-08-25T20:42:28.865Z",
+  "description": "Verbindliche Medienzuordnung fuer kuratierte Portfolio-Serien. Manuelle Felder bleiben beim Synchronisieren erhalten.",
+  "items": [
+    {
+      "image": "/assets/landscape/202608-dresden-dsc8426.webp",
+      "assignedCategory": "landschaft",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "unknown",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "landschaft"
+      ],
+      "sourceProjects": [
+        "dresden-saechsische-schweiz",
+        "portfolio-auswahl-landschaft"
+      ],
+      "usageSummary": "dresden-saechsische-schweiz:gallery:2 | portfolio-auswahl-landschaft:gallery:2",
+      "width": null,
+      "height": null
+    },
+    {
+      "image": "/assets/landscape/202608-dresden-dsc8441.webp",
+      "assignedCategory": "landschaft",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "unknown",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "cover",
+        "gallery",
+        "related"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "landschaft"
+      ],
+      "sourceProjects": [
+        "dresden-saechsische-schweiz",
+        "portfolio-auswahl-landschaft"
+      ],
+      "usageSummary": "dresden-saechsische-schweiz:cover | dresden-saechsische-schweiz:gallery:1 | portfolio-auswahl-landschaft:gallery:1 | portfolio-auswahl-landschaft:related:3",
+      "width": null,
+      "height": null
+    },
+    {
+      "image": "/assets/landscape/202608-dresden-dsc8458.webp",
+      "assignedCategory": "landschaft",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "unknown",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "landschaft"
+      ],
+      "sourceProjects": [
+        "dresden-saechsische-schweiz"
+      ],
+      "usageSummary": "dresden-saechsische-schweiz:gallery:3",
+      "width": null,
+      "height": null
+    },
+    {
+      "image": "/assets/optimized/assets-portfolio-dsc2329-1920.webp",
+      "assignedCategory": "automobil",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "unknown",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "automobil",
+        "sportwagen"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-automobil",
+        "portfolio-auswahl-sportwagen"
+      ],
+      "usageSummary": "portfolio-auswahl-automobil:gallery:7 | portfolio-auswahl-sportwagen:gallery:3",
+      "width": null,
+      "height": null
+    },
+    {
+      "image": "/assets/optimized/assets-portfolio-dsc2345-1920.webp",
+      "assignedCategory": "automobil",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "unknown",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "automobil",
+        "sportwagen"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-automobil",
+        "portfolio-auswahl-sportwagen"
+      ],
+      "usageSummary": "portfolio-auswahl-automobil:gallery:12 | portfolio-auswahl-sportwagen:gallery:4",
+      "width": null,
+      "height": null
+    },
+    {
+      "image": "/assets/optimized/assets-portfolio-dsc2358-1920.webp",
+      "assignedCategory": "sportwagen",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "unknown",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "sportwagen"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-sportwagen"
+      ],
+      "usageSummary": "portfolio-auswahl-sportwagen:gallery:5",
+      "width": null,
+      "height": null
+    },
+    {
+      "image": "/assets/optimized/assets-portfolio-dsc2744-1920.webp",
+      "assignedCategory": "automobil",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "unknown",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "automobil"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-automobil"
+      ],
+      "usageSummary": "portfolio-auswahl-automobil:gallery:5",
+      "width": null,
+      "height": null
+    },
+    {
+      "image": "/assets/optimized/assets-portfolio-dsc2788-1-1920.webp",
+      "assignedCategory": "automobil",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "unknown",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "automobil"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-automobil"
+      ],
+      "usageSummary": "portfolio-auswahl-automobil:gallery:13",
+      "width": null,
+      "height": null
+    },
+    {
+      "image": "/assets/optimized/assets-portfolio-dsc2986-1920.webp",
+      "assignedCategory": "automobil",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "unknown",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "automobil"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-automobil"
+      ],
+      "usageSummary": "portfolio-auswahl-automobil:gallery:14",
+      "width": null,
+      "height": null
+    },
+    {
+      "image": "/assets/optimized/assets-portfolio-dsc3878-1920.webp",
+      "assignedCategory": "sportwagen",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "unknown",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "sportwagen"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-sportwagen"
+      ],
+      "usageSummary": "portfolio-auswahl-sportwagen:gallery:6",
+      "width": null,
+      "height": null
+    },
+    {
+      "image": "/assets/optimized/assets-portfolio-dsc3908-1920.webp",
+      "assignedCategory": "automobil",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "unknown",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "automobil",
+        "sportwagen"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-automobil",
+        "portfolio-auswahl-sportwagen"
+      ],
+      "usageSummary": "portfolio-auswahl-automobil:gallery:11 | portfolio-auswahl-sportwagen:gallery:9",
+      "width": null,
+      "height": null
+    },
+    {
+      "image": "/assets/portfolio/automobil-bentley-oldtimer.webp",
+      "assignedCategory": "automobil",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "unknown",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "automobil"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-automobil"
+      ],
+      "usageSummary": "portfolio-auswahl-automobil:gallery:6",
+      "width": null,
+      "height": null
+    },
+    {
+      "image": "/assets/portfolio/automobil-bmw-klassiker.webp",
+      "assignedCategory": "automobil",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "unknown",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "automobil"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-automobil"
+      ],
+      "usageSummary": "portfolio-auswahl-automobil:gallery:8",
+      "width": null,
+      "height": null
+    },
+    {
+      "image": "/assets/portfolio/automobil-bmw-m3-showcar.webp",
+      "assignedCategory": "automobil",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "unknown",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "automobil",
+        "sportwagen"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-automobil",
+        "portfolio-auswahl-sportwagen"
+      ],
+      "usageSummary": "portfolio-auswahl-automobil:gallery:10 | portfolio-auswahl-sportwagen:gallery:12",
+      "width": null,
+      "height": null
+    },
+    {
+      "image": "/assets/portfolio/automobil-bmw-widebody.webp",
+      "assignedCategory": "automobil",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "unknown",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "automobil",
+        "sportwagen"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-automobil",
+        "portfolio-auswahl-sportwagen"
+      ],
+      "usageSummary": "portfolio-auswahl-automobil:gallery:4 | portfolio-auswahl-sportwagen:gallery:11",
+      "width": null,
+      "height": null
+    },
+    {
+      "image": "/assets/portfolio/automobil-brabus-sunset.webp",
+      "assignedCategory": "automobil",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "unknown",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "cover",
+        "gallery",
+        "hero",
+        "related"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "automobil"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-automobil"
+      ],
+      "usageSummary": "portfolio-auswahl-automobil:cover | portfolio-auswahl-automobil:gallery:1 | portfolio-auswahl-automobil:hero:1 | portfolio-auswahl-automobil:related:4",
+      "width": null,
+      "height": null
+    },
+    {
+      "image": "/assets/portfolio/automobil-mercedes-interieur-tilt.webp",
+      "assignedCategory": "automobil",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "unknown",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery",
+        "hero"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "automobil"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-automobil"
+      ],
+      "usageSummary": "portfolio-auswahl-automobil:gallery:3 | portfolio-auswahl-automobil:hero:3",
+      "width": null,
+      "height": null
+    },
+    {
+      "image": "/assets/portraits/20260609-viola-dsc7273.webp",
+      "assignedCategory": "portrait",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "unknown",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "portrait"
+      ],
+      "sourceProjects": [
+        "viola-portrait-am-see"
+      ],
+      "usageSummary": "viola-portrait-am-see:gallery:3",
+      "width": null,
+      "height": null
+    },
+    {
+      "image": "/assets/portraits/20260609-viola-dsc7302.webp",
+      "assignedCategory": "portrait",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "unknown",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "portrait"
+      ],
+      "sourceProjects": [
+        "viola-portrait-am-see"
+      ],
+      "usageSummary": "viola-portrait-am-see:gallery:4",
+      "width": null,
+      "height": null
+    },
+    {
+      "image": "/assets/portraits/20260609-viola-dsc7346.webp",
+      "assignedCategory": "portrait",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "unknown",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "cover",
+        "gallery",
+        "related"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "portrait"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-portrait",
+        "viola-portrait-am-see"
+      ],
+      "usageSummary": "portfolio-auswahl-portrait:related:3 | viola-portrait-am-see:cover | viola-portrait-am-see:gallery:1",
+      "width": null,
+      "height": null
+    },
+    {
+      "image": "/assets/portraits/20260609-viola-dsc7353.webp",
+      "assignedCategory": "portrait",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "unknown",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "portrait"
+      ],
+      "sourceProjects": [
+        "viola-portrait-am-see"
+      ],
+      "usageSummary": "viola-portrait-am-see:gallery:2",
+      "width": null,
+      "height": null
+    },
+    {
+      "image": "/assets/portraits/20260609-viola-dsc7402.webp",
+      "assignedCategory": "portrait",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "unknown",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "portrait"
+      ],
+      "sourceProjects": [
+        "viola-portrait-am-see"
+      ],
+      "usageSummary": "viola-portrait-am-see:gallery:5",
+      "width": null,
+      "height": null
+    },
+    {
+      "image": "/assets/portraits/20260609-viola-dsc7458.webp",
+      "assignedCategory": "portrait",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "unknown",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "portrait"
+      ],
+      "sourceProjects": [
+        "viola-portrait-am-see"
+      ],
+      "usageSummary": "viola-portrait-am-see:gallery:6",
+      "width": null,
+      "height": null
+    },
+    {
+      "image": "/assets/portraits/20260823-khan-levi-dsc8557.webp",
+      "assignedCategory": "portrait",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "unknown",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "portrait"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-portrait"
+      ],
+      "usageSummary": "portfolio-auswahl-portrait:gallery:8",
+      "width": null,
+      "height": null
+    },
+    {
+      "image": "/assets/portraits/20260823-khan-levi-dsc8571.webp",
+      "assignedCategory": "portrait",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "unknown",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery",
+        "related"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "portrait"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-portrait"
+      ],
+      "usageSummary": "portfolio-auswahl-portrait:gallery:2 | portfolio-auswahl-portrait:related:2",
+      "width": null,
+      "height": null
+    },
+    {
+      "image": "/assets/portraits/20260823-khan-levi-dsc8733.webp",
+      "assignedCategory": "portrait",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "unknown",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "portrait"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-portrait"
+      ],
+      "usageSummary": "portfolio-auswahl-portrait:gallery:4",
+      "width": null,
+      "height": null
+    },
+    {
+      "image": "/assets/portraits/20260823-khan-levi-dsc8759.webp",
+      "assignedCategory": "portrait",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "unknown",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "portrait"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-portrait"
+      ],
+      "usageSummary": "portfolio-auswahl-portrait:gallery:9",
+      "width": null,
+      "height": null
+    },
+    {
+      "image": "/assets/portraits/20260823-khan-levi-dsc8797.webp",
+      "assignedCategory": "portrait",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "unknown",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "portrait"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-portrait"
+      ],
+      "usageSummary": "portfolio-auswahl-portrait:gallery:6",
+      "width": null,
+      "height": null
+    },
+    {
+      "image": "/uploads/payload/_DSC0470-Enhanced-NR-2.webp",
+      "assignedCategory": "portrait",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "portrait",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "cover",
+        "gallery",
+        "related"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "portrait"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-portrait"
+      ],
+      "usageSummary": "portfolio-auswahl-portrait:cover | portfolio-auswahl-portrait:gallery:1 | portfolio-auswahl-portrait:related:1",
+      "width": 1600,
+      "height": 2560
+    },
+    {
+      "image": "/uploads/payload/_DSC2310-2.webp",
+      "assignedCategory": "sportwagen",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "landscape",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "cover",
+        "related"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "sportwagen"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-sportwagen"
+      ],
+      "usageSummary": "portfolio-auswahl-sportwagen:cover | portfolio-auswahl-sportwagen:related:1",
+      "width": 720,
+      "height": 480
+    },
+    {
+      "image": "/uploads/payload/_DSC2316-2.webp",
+      "assignedCategory": "sportwagen",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "landscape",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "related"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "sportwagen"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-sportwagen"
+      ],
+      "usageSummary": "portfolio-auswahl-sportwagen:related:2",
+      "width": 720,
+      "height": 450
+    },
+    {
+      "image": "/uploads/payload/_DSC6968.webp",
+      "assignedCategory": "automobil",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "portrait",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "cover",
+        "gallery",
+        "related"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "automobil",
+        "motorrad"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-automobil",
+        "portfolio-auswahl-motorrad"
+      ],
+      "usageSummary": "portfolio-auswahl-automobil:related:3 | portfolio-auswahl-motorrad:cover | portfolio-auswahl-motorrad:gallery:1",
+      "width": 1707,
+      "height": 2560
+    },
+    {
+      "image": "/uploads/payload/_DSC6979.webp",
+      "assignedCategory": "motorrad",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "portrait",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "motorrad"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-motorrad"
+      ],
+      "usageSummary": "portfolio-auswahl-motorrad:gallery:4",
+      "width": 1707,
+      "height": 2560
+    },
+    {
+      "image": "/uploads/payload/_DSC6982-1.webp",
+      "assignedCategory": "motorrad",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "portrait",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "motorrad"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-motorrad"
+      ],
+      "usageSummary": "portfolio-auswahl-motorrad:gallery:3",
+      "width": 1707,
+      "height": 2560
+    },
+    {
+      "image": "/uploads/payload/_DSC7025.webp",
+      "assignedCategory": "motorrad",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "portrait",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery",
+        "related"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "motorrad"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-motorrad"
+      ],
+      "usageSummary": "portfolio-auswahl-motorrad:gallery:5 | portfolio-auswahl-motorrad:related:1",
+      "width": 1440,
+      "height": 2560
+    },
+    {
+      "image": "/uploads/payload/_DSC7026.webp",
+      "assignedCategory": "motorrad",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "portrait",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "motorrad"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-motorrad"
+      ],
+      "usageSummary": "portfolio-auswahl-motorrad:gallery:2",
+      "width": 2048,
+      "height": 2560
+    },
+    {
+      "image": "/uploads/payload/_DSC7039.webp",
+      "assignedCategory": "motorrad",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "portrait",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery",
+        "related"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "motorrad"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-motorrad"
+      ],
+      "usageSummary": "portfolio-auswahl-motorrad:gallery:6 | portfolio-auswahl-motorrad:related:2",
+      "width": 1440,
+      "height": 2560
+    },
+    {
+      "image": "/uploads/payload/_DSC9301-Enhanced-NR.webp",
+      "assignedCategory": "portrait",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "portrait",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "portrait"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-portrait"
+      ],
+      "usageSummary": "portfolio-auswahl-portrait:gallery:3",
+      "width": 2048,
+      "height": 2560
+    },
+    {
+      "image": "/uploads/payload/_DSC9321-Enhanced-NR-2.webp",
+      "assignedCategory": "portrait",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "portrait",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "portrait"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-portrait"
+      ],
+      "usageSummary": "portfolio-auswahl-portrait:gallery:7",
+      "width": 1707,
+      "height": 2560
+    },
+    {
+      "image": "/uploads/payload/20250209-DSC00612.webp",
+      "assignedCategory": "motorrad",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "landscape",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "motorrad"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-motorrad"
+      ],
+      "usageSummary": "portfolio-auswahl-motorrad:gallery:7",
+      "width": 3838,
+      "height": 2560
+    },
+    {
+      "image": "/uploads/payload/20250209-DSC00687.webp",
+      "assignedCategory": "motorrad",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "landscape",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "motorrad"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-motorrad"
+      ],
+      "usageSummary": "portfolio-auswahl-motorrad:gallery:8",
+      "width": 3838,
+      "height": 2560
+    },
+    {
+      "image": "/uploads/payload/20250209-DSC00694.webp",
+      "assignedCategory": "motorrad",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "landscape",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "motorrad"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-motorrad"
+      ],
+      "usageSummary": "portfolio-auswahl-motorrad:gallery:9",
+      "width": 3838,
+      "height": 2560
+    },
+    {
+      "image": "/uploads/payload/20250209-DSC00697.webp",
+      "assignedCategory": "motorrad",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "landscape",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "motorrad"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-motorrad"
+      ],
+      "usageSummary": "portfolio-auswahl-motorrad:gallery:10",
+      "width": 3838,
+      "height": 2560
+    },
+    {
+      "image": "/uploads/payload/20250209-DSC00699.webp",
+      "assignedCategory": "motorrad",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "landscape",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "motorrad"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-motorrad"
+      ],
+      "usageSummary": "portfolio-auswahl-motorrad:gallery:11",
+      "width": 3838,
+      "height": 2560
+    },
+    {
+      "image": "/uploads/payload/20250209-DSC00706.webp",
+      "assignedCategory": "motorrad",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "portrait",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "motorrad"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-motorrad"
+      ],
+      "usageSummary": "portfolio-auswahl-motorrad:gallery:12",
+      "width": 1708,
+      "height": 2560
+    },
+    {
+      "image": "/uploads/payload/20250327-DSC01550-2.webp",
+      "assignedCategory": "portrait",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "portrait",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "portrait"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-portrait"
+      ],
+      "usageSummary": "portfolio-auswahl-portrait:gallery:5",
+      "width": 720,
+      "height": 1090
+    },
+    {
+      "image": "/uploads/payload/20250418-DSC00638.webp",
+      "assignedCategory": "oldtimer",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "landscape",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "oldtimer"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-oldtimer"
+      ],
+      "usageSummary": "portfolio-auswahl-oldtimer:gallery:2",
+      "width": 3757,
+      "height": 2560
+    },
+    {
+      "image": "/uploads/payload/20250418-DSC006552.webp",
+      "assignedCategory": "oldtimer",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "landscape",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "cover",
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "oldtimer"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-oldtimer"
+      ],
+      "usageSummary": "portfolio-auswahl-oldtimer:cover | portfolio-auswahl-oldtimer:gallery:1",
+      "width": 3840,
+      "height": 2560
+    },
+    {
+      "image": "/uploads/payload/20250418-DSC00660.webp",
+      "assignedCategory": "automobil",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "portrait",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "related"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "automobil"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-automobil"
+      ],
+      "usageSummary": "portfolio-auswahl-automobil:related:2",
+      "width": 1894,
+      "height": 2560
+    },
+    {
+      "image": "/uploads/payload/20250423-DSC021802.webp",
+      "assignedCategory": "oldtimer",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "portrait",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "related"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "oldtimer"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-oldtimer"
+      ],
+      "usageSummary": "portfolio-auswahl-oldtimer:related:1",
+      "width": 1600,
+      "height": 2560
+    },
+    {
+      "image": "/uploads/payload/20250423-DSC02271.webp",
+      "assignedCategory": "oldtimer",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "landscape",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "oldtimer"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-oldtimer"
+      ],
+      "usageSummary": "portfolio-auswahl-oldtimer:gallery:3",
+      "width": 3840,
+      "height": 2560
+    },
+    {
+      "image": "/uploads/payload/20250426-DSC02648.webp",
+      "assignedCategory": "oldtimer",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "landscape",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "related"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "oldtimer"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-oldtimer"
+      ],
+      "usageSummary": "portfolio-auswahl-oldtimer:related:2",
+      "width": 4099,
+      "height": 2560
+    },
+    {
+      "image": "/uploads/payload/20250426-DSC02651.webp",
+      "assignedCategory": "oldtimer",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "landscape",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "oldtimer"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-oldtimer"
+      ],
+      "usageSummary": "portfolio-auswahl-oldtimer:gallery:4",
+      "width": 4275,
+      "height": 2560
+    },
+    {
+      "image": "/uploads/payload/20250605-DSC03696.webp",
+      "assignedCategory": "landschaft",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "portrait",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "landschaft"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-landschaft"
+      ],
+      "usageSummary": "portfolio-auswahl-landschaft:gallery:6",
+      "width": 1707,
+      "height": 2560
+    },
+    {
+      "image": "/uploads/payload/20250605-DSC03756-2.webp",
+      "assignedCategory": "landschaft",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "portrait",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "landschaft"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-landschaft"
+      ],
+      "usageSummary": "portfolio-auswahl-landschaft:gallery:7",
+      "width": 720,
+      "height": 1080
+    },
+    {
+      "image": "/uploads/payload/20250605-DSC03785.webp",
+      "assignedCategory": "landschaft",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "portrait",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "landschaft"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-landschaft"
+      ],
+      "usageSummary": "portfolio-auswahl-landschaft:gallery:8",
+      "width": 1707,
+      "height": 2560
+    },
+    {
+      "image": "/uploads/payload/20250605-DSC03792.webp",
+      "assignedCategory": "landschaft",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "portrait",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "landschaft"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-landschaft"
+      ],
+      "usageSummary": "portfolio-auswahl-landschaft:gallery:9",
+      "width": 1920,
+      "height": 2560
+    },
+    {
+      "image": "/uploads/payload/20250605-DSC03795.webp",
+      "assignedCategory": "landschaft",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "portrait",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "landschaft"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-landschaft"
+      ],
+      "usageSummary": "portfolio-auswahl-landschaft:gallery:10",
+      "width": 1707,
+      "height": 2560
+    },
+    {
+      "image": "/uploads/payload/20250605-DSC03814.webp",
+      "assignedCategory": "landschaft",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "portrait",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "landschaft"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-landschaft"
+      ],
+      "usageSummary": "portfolio-auswahl-landschaft:gallery:11",
+      "width": 1920,
+      "height": 2560
+    },
+    {
+      "image": "/uploads/payload/20250605-DSC04020-2.webp",
+      "assignedCategory": "landschaft",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "portrait",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "landschaft"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-landschaft"
+      ],
+      "usageSummary": "portfolio-auswahl-landschaft:gallery:12",
+      "width": 720,
+      "height": 1080
+    },
+    {
+      "image": "/uploads/payload/assets-portfolio-dsc2310-1920.webp",
+      "assignedCategory": "sportwagen",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "landscape",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "sportwagen"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-sportwagen"
+      ],
+      "usageSummary": "portfolio-auswahl-sportwagen:gallery:1",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "image": "/uploads/payload/assets-portfolio-dsc2316-1920.webp",
+      "assignedCategory": "sportwagen",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "landscape",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "sportwagen"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-sportwagen"
+      ],
+      "usageSummary": "portfolio-auswahl-sportwagen:gallery:2",
+      "width": 1920,
+      "height": 1200
+    },
+    {
+      "image": "/uploads/payload/assets-portfolio-dsc3879-1920.webp",
+      "assignedCategory": "automobil",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "landscape",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery",
+        "hero"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "automobil",
+        "sportwagen"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-automobil",
+        "portfolio-auswahl-sportwagen"
+      ],
+      "usageSummary": "portfolio-auswahl-automobil:gallery:2 | portfolio-auswahl-automobil:hero:2 | portfolio-auswahl-sportwagen:gallery:7",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "image": "/uploads/payload/assets-portfolio-dsc3892-1920.webp",
+      "assignedCategory": "sportwagen",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "landscape",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "sportwagen"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-sportwagen"
+      ],
+      "usageSummary": "portfolio-auswahl-sportwagen:gallery:8",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "image": "/uploads/payload/assets-portfolio-dsc3982-1920.webp",
+      "assignedCategory": "automobil",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "landscape",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery",
+        "related"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "automobil",
+        "sportwagen"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-automobil",
+        "portfolio-auswahl-sportwagen"
+      ],
+      "usageSummary": "portfolio-auswahl-automobil:gallery:9 | portfolio-auswahl-automobil:related:1 | portfolio-auswahl-sportwagen:gallery:10",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "image": "/uploads/payload/Wettberwerb_Foto10_Wunder_der_natur-1.webp",
+      "assignedCategory": "landschaft",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "landscape",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "landschaft"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-landschaft"
+      ],
+      "usageSummary": "portfolio-auswahl-landschaft:gallery:5",
+      "width": 720,
+      "height": 448
+    },
+    {
+      "image": "/uploads/payload/Wettberwerb_Foto5_Wunder_der_Natur2-1.webp",
+      "assignedCategory": "landschaft",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "landscape",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "cover",
+        "gallery",
+        "related"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "landschaft"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-landschaft"
+      ],
+      "usageSummary": "portfolio-auswahl-landschaft:cover | portfolio-auswahl-landschaft:gallery:3 | portfolio-auswahl-landschaft:related:1",
+      "width": 720,
+      "height": 471
+    },
+    {
+      "image": "/uploads/payload/Wettberwerb_Foto6_Wunder_der_Natur-1.webp",
+      "assignedCategory": "landschaft",
+      "seriesId": "unassigned",
+      "subject": "",
+      "orientation": "landscape",
+      "rightsStatus": "review-required",
+      "rightsNotes": "",
+      "allowedSurfaces": [
+        "gallery",
+        "related"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "landschaft"
+      ],
+      "sourceProjects": [
+        "portfolio-auswahl-landschaft"
+      ],
+      "usageSummary": "portfolio-auswahl-landschaft:gallery:4 | portfolio-auswahl-landschaft:related:2",
+      "width": 720,
+      "height": 520
+    }
+  ]
+}

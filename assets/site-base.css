@@ -1,0 +1,220 @@
+/* =====================================================================
+   Site Base: wird auf JEDER Seite als erstes Stylesheet geladen
+   (BaseLayout + AdoptedPageLayout).
+
+   1. Selbst gehostete Schriften: jedes Geraet zeigt dieselbe Schrift.
+      Vorher gab es keine Webfonts; macOS/iOS zeigten Avenir Next,
+      Windows Arial und Android Roboto.
+      Schriften (alle SIL Open Font License, Dateien in /fonts/v1/):
+        MR Sans  = Inter (variabel 100-900, mit optischen Groessen:
+                   grosse Headlines nutzen automatisch den engeren
+                   Display-Schnitt, Fliesstext den lesbaren Text-Schnitt)
+        MR Mono  = JetBrains Mono (variabel 100-800)
+        MR Serif = Source Serif 4 (variabel 200-900)
+      Die "Fallback"-Familien sind lokales Arial/Courier/Georgia mit
+      angepassten Metriken, damit der Wechsel auf die Webfont kaum
+      Layout-Verschiebung erzeugt.
+   2. Globale Robustheits-Regeln, die fuer alle Seiten gelten.
+   ===================================================================== */
+
+/* ---------- MR Sans (Inter, wght + opsz) ---------- */
+@font-face {
+  font-family: 'MR Sans';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/v1/mr-sans-latin-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'MR Sans';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/v1/mr-sans-latin-ext-normal.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'MR Sans';
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/v1/mr-sans-latin-italic.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'MR Sans';
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/v1/mr-sans-latin-ext-italic.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* Pfeile (→ ← ↗ …) fehlen in den Latin-Subsets, werden auf der Seite aber
+   hundertfach genutzt (Buttons, Links). Eigenes kleines Subset, damit auch
+   die Pfeile ueberall in derselben Schrift erscheinen. */
+@font-face {
+  font-family: 'MR Sans';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/v1/mr-sans-arrows-normal.woff2') format('woff2');
+  unicode-range: U+2190-21FF;
+}
+@font-face {
+  font-family: 'MR Sans';
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/v1/mr-sans-arrows-italic.woff2') format('woff2');
+  unicode-range: U+2190-21FF;
+}
+
+/* ---------- MR Mono (JetBrains Mono) ---------- */
+@font-face {
+  font-family: 'MR Mono';
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url('/fonts/v1/mr-mono-latin-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'MR Mono';
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url('/fonts/v1/mr-mono-latin-ext-normal.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'MR Mono';
+  font-style: italic;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url('/fonts/v1/mr-mono-latin-italic.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'MR Mono';
+  font-style: italic;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url('/fonts/v1/mr-mono-latin-ext-italic.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'MR Mono';
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url('/fonts/v1/mr-mono-arrows.woff2') format('woff2');
+  unicode-range: U+2190-21FF;
+}
+
+/* ---------- MR Serif (Source Serif 4) ---------- */
+@font-face {
+  font-family: 'MR Serif';
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url('/fonts/v1/mr-serif-latin-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'MR Serif';
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url('/fonts/v1/mr-serif-latin-ext-normal.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'MR Serif';
+  font-style: italic;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url('/fonts/v1/mr-serif-latin-italic.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'MR Serif';
+  font-style: italic;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url('/fonts/v1/mr-serif-latin-ext-italic.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* ---------- Metrisch angeglichene Fallbacks (Capsize-Formel) ---------- */
+@font-face {
+  font-family: 'MR Sans Fallback';
+  src: local('Arial'), local('ArialMT'), local('Liberation Sans');
+  size-adjust: 107.12%;
+  ascent-override: 90.44%;
+  descent-override: 22.52%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'MR Mono Fallback';
+  src: local('Courier New'), local('CourierNewPSMT'), local('Liberation Mono');
+  size-adjust: 99.98%;
+  ascent-override: 102.02%;
+  descent-override: 30%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'MR Serif Fallback';
+  src: local('Georgia');
+  size-adjust: 107.45%;
+  ascent-override: 96.42%;
+  descent-override: 31.18%;
+  line-gap-override: 0%;
+}
+
+:root {
+  --mr-font-sans: 'MR Sans', 'MR Sans Fallback', Arial, system-ui, sans-serif;
+  --mr-font-mono: 'MR Mono', 'MR Mono Fallback', ui-monospace, Menlo, Consolas, monospace;
+  --mr-font-serif: 'MR Serif', 'MR Serif Fallback', Georgia, serif;
+}
+
+/* Basis-Schrift fuer alles, was keine eigene Schrift setzt (sonst zeigte
+   z. B. der Journal-Artikel stellenweise Times New Roman). Seiten-CSS
+   ueberschreibt das wie gewohnt. */
+html { font-family: var(--mr-font-sans); font-optical-sizing: auto; }
+button, input, select, textarea { font-family: inherit; }
+
+/* ---------- Globale Robustheit ---------- */
+
+/* Das hidden-Attribut muss immer gewinnen. Vorher haben Regeln wie
+   .card{display:flex} oder .hero-actions .btn{display:inline-flex}
+   versteckte Elemente wieder sichtbar gemacht (u. a. "Mehr Bilder laden"). */
+[hidden] { display: none !important; }
+
+/* Seitliches Ueberlaufen verhindern, OHNE body zum Scroll-Container zu
+   machen: overflow-x nur auf html (wird zum Viewport) und zusaetzlich
+   overflow-x:clip am Inhalts-Wrapper (iOS Safari ignoriert overflow am
+   Viewport teilweise). clip erzeugt keinen Scroll-Container, dadurch
+   funktioniert position:sticky weiterhin. body bekommt bewusst KEIN overflow. */
+html { overflow-x: hidden; }
+@supports (overflow: clip) {
+  #mr-content,
+  .site-shell { overflow-x: clip; }
+}
+
+/* Animierte Hero-Headlines setzen jedes Wort in ein inline-block. Ohne
+   Begrenzung wird ein Wort, das breiter als die Zeile ist (z. B.
+   "LEIDENSCHAFT" auf einem 390px-Handy), einfach abgeschnitten. So wird es
+   an einer Silbengrenze getrennt. */
+[class*="title"] .word,
+[class*="title"] .w { max-width: 100%; overflow-wrap: break-word; hyphens: auto; }
+
+/* Ohne JavaScript (oder wenn ein Script abbricht, bevor es die Klasse setzt)
+   duerfen Lazy-Bilder nie unsichtbar bleiben. Die Layouts setzen die Klasse
+   "js" per Inline-Script im <head>. */
+html:not(.js) img[loading="lazy"] {
+  opacity: 1 !important;
+  transform: none !important;
+}

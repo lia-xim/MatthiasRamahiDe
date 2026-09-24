@@ -693,6 +693,48 @@ const collections = [
     ],
   },
   {
+    name: 'mediaRegistry',
+    label: 'Medien-Registry',
+    path: 'content/media',
+    format: 'json',
+    fields: [
+      numberField('version', 'Version'),
+      datetimeField('updatedAt', 'Zuletzt synchronisiert'),
+      textAreaField('description', 'Beschreibung'),
+      objectField(
+        'items',
+        'Medien',
+        [
+          imageField('image', 'Bild', { required: true }),
+          textField('assignedCategory', 'Verbindliche Kategorie', { required: true }),
+          textField('seriesId', 'Shooting / Serien-ID', {
+            description: 'Mehrere starke Bilder desselben Shootings erhalten dieselbe kurze ID.',
+            required: true,
+          }),
+          textField('subject', 'Motiv / Fahrzeug / Person'),
+          textField('orientation', 'Ausrichtung'),
+          textField('rightsStatus', 'Rechtestatus', {
+            options: [
+              { value: 'review-required', label: 'Pruefung erforderlich' },
+              { value: 'owned', label: 'Eigene Aufnahme / freigegeben' },
+              { value: 'licensed', label: 'Lizenziert' },
+              { value: 'restricted', label: 'Eingeschraenkt' },
+            ],
+          }),
+          textAreaField('rightsNotes', 'Rechtehinweis'),
+          textField('allowedSurfaces', 'Erlaubte Bereiche', { list: true }),
+          booleanField('allowCrossCategory', 'Kategorienuebergreifende Verwendung erlaubt'),
+          textField('usageCategories', 'Aktuelle Kategorien', { list: true }),
+          textField('sourceProjects', 'Aktuelle Portfolio-Seiten', { list: true }),
+          textAreaField('usageSummary', 'Automatisch erkannte Verwendung'),
+          numberField('width', 'Breite'),
+          numberField('height', 'Hoehe'),
+        ],
+        { list: true },
+      ),
+    ],
+  },
+  {
     name: 'journalPosts',
     label: 'Journal',
     path: 'content/journal-posts',

@@ -1,4 +1,5 @@
 ---
+import ContactSlot from '../ContactSlot.astro'
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import { getLegacyBackedDoc, imageAlt, imageDimensions, imageDisplayUrl, type PayloadDoc, type PayloadMedia } from '../../lib/payload'
 import { tinaAttrs } from '../../lib/tinaFieldAttrs'
@@ -239,7 +240,7 @@ const heroImage = imageDisplayUrl(aboutHero.image as PayloadMedia | string | und
       </div>
     </section>
 
-    <section
+    <ContactSlot
       id="anfrage"
       data-contact-section
       data-theme="light"

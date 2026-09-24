@@ -7,18 +7,17 @@
   --line:rgba(13,12,10,.14);
   --line-dark:rgba(241,237,228,.16);
   --accent:oklch(54% 0.13 36);
-  /* Exakt derselbe Schriftstack wie die ganze Website (native-home.css / tokens.css):
-     'Söhne' mit Umlaut (NICHT 'Soehne'), keine Inter-spezifischen OpenType-Features.
-     So rendert das Portfolio typografisch identisch zu Startseite & Co. */
-  --display:'Neue Haas Grotesk Display','Söhne','Avenir Next','Helvetica Neue',Arial,system-ui,sans-serif;
+  /* Exakt derselbe Schriftstack wie die ganze Website: selbst gehostete
+     'MR Sans' (siehe site-base.css), damit jedes Geraet dieselbe Schrift zeigt. */
+  --display:'MR Sans','MR Sans Fallback',Arial,system-ui,sans-serif;
   --sans:var(--display);
-  --serif:'Iowan Old Style','Charter',Georgia,serif;
-  --mono:'JetBrains Mono','IBM Plex Mono','SFMono-Regular',ui-monospace,Menlo,monospace;
+  --serif:'MR Serif','MR Serif Fallback',Georgia,serif;
+  --mono:'MR Mono','MR Mono Fallback',ui-monospace,Menlo,Consolas,monospace;
   --ease:cubic-bezier(.23,1,.32,1);
   --maxw:1540px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{background:var(--paper);color:var(--ink);font-family:var(--sans);overflow-x:hidden}
+html,body{background:var(--paper);color:var(--ink);font-family:var(--sans);}html{overflow-x:hidden}
 body{-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision}
 img{display:block;max-width:100%;height:auto}
 a{color:inherit;text-decoration:none}
@@ -82,6 +81,10 @@ button{font:inherit;color:inherit;border:0;background:transparent;cursor:pointer
 .pf-spread__lead{margin:clamp(16px,1.6vw,24px) 0 0;max-width:62ch;color:rgba(241,237,228,.7);font-size:clamp(16px,1.08vw,19px);line-height:1.62;text-wrap:pretty}
 .pf-spread__strip{position:relative;z-index:2;max-width:1640px;width:100%;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
 .pf-spread__strip .pf-photo{aspect-ratio:1;width:100%}
+/* Bild absolut in die quadratische Kachel legen: eine Prozent-Hoehe im Fluss
+   wird in WebKit je nach Version nicht als definit behandelt (anderer
+   Ausschnitt, Hoehe springt beim Laden). */
+.pf-spread__strip .pf-photo img{position:absolute;inset:0}
 
 /* Sichtbare Linkgruppe: Leistungsseite plus kuratierte Portfolio-Auswahl. */
 .pf-spread__links{position:relative;z-index:2;max-width:1640px;width:100%;margin:0 auto;display:flex;align-items:center;flex-wrap:wrap;gap:8px 22px}
@@ -114,11 +117,8 @@ button{font:inherit;color:inherit;border:0;background:transparent;cursor:pointer
 .pf-archive__group{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--archive-gap);align-items:start}
 .pf-archive__grid .pf-photo{width:100%;min-width:0;aspect-ratio:2/3;margin:0;display:block;cursor:zoom-in;transform:none;opacity:1;transition:none}
 .pf-archive__group--landscape .pf-photo{aspect-ratio:3/2}
-.pf-archive__group--closing{grid-template-rows:repeat(2,minmax(0,1fr))}
-.pf-archive__group--closing .pf-photo:nth-child(-n+3){grid-row:1 / span 2}
-.pf-archive__group--closing .pf-photo:nth-child(n+4){grid-column:4;aspect-ratio:auto;height:100%}
-.pf-archive__group--closing .pf-photo:nth-child(4){grid-row:1}
-.pf-archive__group--closing .pf-photo:nth-child(5){grid-row:2}
+.pf-archive__stack{display:flex;flex-direction:column;gap:var(--archive-gap);min-width:0;align-self:stretch}
+.pf-archive__grid .pf-archive__stack .pf-photo{flex:1 1 0;min-height:0;aspect-ratio:auto}
 .pf-archive__grid .pf-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .pf-archive__grid .pf-photo:focus-visible{outline:3px solid var(--ink);outline-offset:6px}
 
@@ -138,11 +138,6 @@ button{font:inherit;color:inherit;border:0;background:transparent;cursor:pointer
 /* ---------- RESPONSIVE ---------- */
 @media (max-width:1080px){
   .pf-archive__group{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .pf-archive__group--closing{grid-template-rows:repeat(4,minmax(0,1fr))}
-  .pf-archive__group--closing .pf-photo:nth-child(3){grid-column:1;grid-row:3 / span 2}
-  .pf-archive__group--closing .pf-photo:nth-child(n+4){grid-column:2}
-  .pf-archive__group--closing .pf-photo:nth-child(4){grid-row:3}
-  .pf-archive__group--closing .pf-photo:nth-child(5){grid-row:4}
   .pf-spread__strip{grid-template-columns:repeat(3,1fr)}
   .pf-spread__strip .pf-photo:nth-child(4){display:none}
 }

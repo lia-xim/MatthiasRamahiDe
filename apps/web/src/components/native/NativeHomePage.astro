@@ -1,4 +1,5 @@
 ---
+import ContactSlot from '../ContactSlot.astro'
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import PreviewToolbar from '../PreviewToolbar.astro'
 import NativeShaderHero from './NativeShaderHero.astro'
@@ -327,7 +328,7 @@ const journalCards = cmsJournalCards.length ? cmsJournalCards : fallbackJournalC
 
     <NativeReviews theme="light" />
 
-    <section
+    <ContactSlot
       id="anfrage"
       data-contact-section
       data-theme="light"
@@ -341,7 +342,7 @@ const journalCards = cmsJournalCards.length ? cmsJournalCards : fallbackJournalC
     <div class="lb-stage">
       <button class="lb-close" id="lbClose" type="button" aria-label="Schließen">×</button>
       <button class="lb-prev" id="lbPrev" type="button" aria-label="Vorheriges Bild">‹</button>
-      <img class="lb-img" id="lbImg" alt="Vergrößerte Portfolioansicht" decoding="async" />
+      <img class="lb-img" id="lbImg" alt="Vergrößerte Portfolioansicht" width="1600" height="1200" decoding="async" />
       <button class="lb-next" id="lbNext" type="button" aria-label="Nächstes Bild">›</button>
       <span class="lb-counter" id="lbCounter"></span>
     </div>

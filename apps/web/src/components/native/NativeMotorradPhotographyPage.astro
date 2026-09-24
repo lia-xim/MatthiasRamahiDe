@@ -1,4 +1,5 @@
 ---
+import ContactSlot from '../ContactSlot.astro'
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import NativeFamilyClusterLinks from './NativeFamilyClusterLinks.astro'
 import NativeFamilyFaq from './NativeFamilyFaq.astro'
@@ -532,7 +533,7 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
         </div>
         <div class="rl-grid">
           <a class="rl-card" href="automobil-fotografie.html">
-            <img loading="lazy" src="https://cms.matthiasramahi.de/uploads/payload/_DSC3032_genErase.webp" alt="Automobilfotografie" width="960" height="640" decoding="async" />
+            <img loading="lazy" src="/assets/optimized/mpjpgo2b-dsc3032-generase-1-1280.webp" alt="Automobilfotografie" width="1280" height="853" decoding="async" />
             <div class="overlay"></div>
             <div class="content"><div><strong>Automobil</strong></div><span class="arrow">→</span></div>
           </a>
@@ -590,13 +591,13 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
 
     <NativeReviews theme="light" />
 
-    <section
+    <ContactSlot
       id="anfrage"
       data-contact-section
       data-header-theme="light"
       data-contact-subject={contactSubject}
       data-contact-headline={contactHeadline}
       data-contact-lead={contactLead}
-    ></section>
+    />
   </main>
 </AdoptedPageLayout>

@@ -91,6 +91,10 @@ const versionedStylesheets = stylesheets.map(versionStaticAssetUrl)
     <meta name="author" content={settings?.ownerName || 'Matthias Ramahi'} />
     <meta name="format-detection" content="telephone=no" />
     <meta name="google-site-verification" content="49CiKBCvZoaIIZSo-revYi09ZSb_0VDl9V8D1zrAK_o" />
+    <meta
+      name="contextter-site-audit-verification"
+      content="ctxsa_mthme1o7_e98frv4yh153m7rt3psbqdhm4pqybz4j"
+    />
     <link rel="preconnect" href="https://cms.matthiasramahi.de" crossorigin />
     <link rel="dns-prefetch" href="//cms.matthiasramahi.de" />
     <link rel="dns-prefetch" href="//analytics.crawlfoundry.com" />
@@ -121,6 +125,10 @@ const versionedStylesheets = stylesheets.map(versionStaticAssetUrl)
     <meta name="twitter:description" content={description} />
     {socialImage && <meta name="twitter:image" content={socialImage} />}
     {socialImage && <meta name="twitter:image:alt" content={title} />}
+    <script is:inline>document.documentElement.classList.add('js')</script>
+    <link rel="preload" href="/fonts/v1/mr-sans-latin-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/v1/mr-mono-latin-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href={versionStaticAssetUrl('/assets/site-base.css')} />
     {versionedPreloadImages.map((href) => <link rel="preload" as="image" href={href} fetchpriority="high" />)}
     <link rel="stylesheet" href={versionStaticAssetUrl('/assets/site-chrome.css')} />
     <link rel="stylesheet" href={versionStaticAssetUrl('/assets/load-more-gallery.css')} />

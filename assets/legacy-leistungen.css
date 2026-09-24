@@ -4,14 +4,14 @@
       --rule:rgba(10,12,17,.14);
       --accent:#b08862;
       --muted:rgba(10,12,17,.62);--quiet:rgba(10,12,17,.42);
-      --serif:'Iowan Old Style','Charter','Georgia',serif;
-      --sans:'Inter Tight','Söhne','Avenir Next','Helvetica Neue',Arial,system-ui,sans-serif;
-      --mono:'JetBrains Mono','IBM Plex Mono','SFMono-Regular',ui-monospace,Menlo,monospace;
+      --serif:'MR Serif','MR Serif Fallback',Georgia,serif;
+      --sans:'MR Sans','MR Sans Fallback',Arial,system-ui,sans-serif;
+      --mono:'MR Mono','MR Mono Fallback',ui-monospace,Menlo,Consolas,monospace;
       --ease:cubic-bezier(.23,1,.32,1);
     }
     *{box-sizing:border-box}
     html{background:var(--paper);scroll-behavior:smooth;overflow-x:hidden}
-    body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
     img{display:block;width:100%;height:100%;object-fit:cover}
     a,button{font:inherit;color:inherit}a{text-decoration:none}button{border:0;background:transparent;cursor:pointer}::selection{background:var(--ink);color:var(--paper)}
     main{position:relative;z-index:2}

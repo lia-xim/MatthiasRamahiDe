@@ -1,4 +1,5 @@
 ---
+import ContactSlot from '../ContactSlot.astro'
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import {
   portfolioArchivePhotos,
@@ -140,6 +141,9 @@ for (let p = 0, l = 0; p < portraits.length || l < landscapes.length; p += 8, l 
   if (l < landscapes.length) archiveGroups.push({ format: 'landscape', photos: landscapes.slice(l, l + 4) })
 }
 // Close a three-portrait remainder with two stacked landscapes in column four.
+// They are rendered inside .pf-archive__stack (a flex column stretched to the
+// row height), which sizes identically in every engine; the former
+// grid-row/height:100% construction depended on engine-specific track sizing.
 // Other CMS selections retain the regular format groups without losing images.
 const lastPortraitGroup = archiveGroups.at(-2)
 const lastLandscapeGroup = archiveGroups.at(-1)
@@ -240,7 +244,7 @@ const contactLead =
       <div class="pf-archive__grid" id="pfArchiveGrid">
         {archiveGroups.map((group) => (
           <div class={`pf-archive__group pf-archive__group--${group.format}`}>
-            {group.photos.map((photo) => (
+            {(group.format === 'closing' ? group.photos.slice(0, 3) : group.photos).map((photo) => (
               <a class="pf-photo" data-archive-item data-caption={photo.caption} href={photo.href} aria-label={photo.caption ? `${photo.caption} — Großansicht öffnen` : 'Bild im Großformat ansehen'}>
                 <img
                   src={photo.src}
@@ -254,12 +258,30 @@ const contactLead =
                 />
               </a>
             ))}
+            {group.format === 'closing' && (
+              <div class="pf-archive__stack">
+                {group.photos.slice(3).map((photo) => (
+                  <a class="pf-photo" data-archive-item data-caption={photo.caption} href={photo.href} aria-label={photo.caption ? `${photo.caption} — Großansicht öffnen` : 'Bild im Großformat ansehen'}>
+                    <img
+                      src={photo.src}
+                      data-src={photo.src}
+                      alt={photo.caption || ''}
+                      loading="lazy"
+                      decoding="async"
+                      width={photo.width}
+                      height={photo.height}
+                      {...tinaAttrs(photo.source, 'image')}
+                    />
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
         ))}
       </div>
     </section>
 
-    <section
+    <ContactSlot
       id="anfrage"
       data-contact-section
       data-theme="light"

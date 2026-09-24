@@ -10,13 +10,13 @@
     --accent-2:#8c7757;
     --chrome:#d5cdb8;
     --ease:cubic-bezier(.23,1,.32,1);
-    --font:'Neue Haas Grotesk Display','Söhne','Avenir Next','Helvetica Neue',Arial,system-ui,sans-serif;
-    --mono:'JetBrains Mono','IBM Plex Mono','SFMono-Regular',ui-monospace,Menlo,monospace;
+    --font:'MR Sans','MR Sans Fallback',Arial,system-ui,sans-serif;
+    --mono:'MR Mono','MR Mono Fallback',ui-monospace,Menlo,Consolas,monospace;
     --maxw:1540px;
   }
   *{box-sizing:border-box}
   html{background:var(--bg);scroll-behavior:smooth;overflow-x:hidden}
-  body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font);-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision;overflow-x:hidden}
+  body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font);-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision;}
   img{display:block;max-width:100%;height:auto}
   a,button{font:inherit;color:inherit}
   a{text-decoration:none}
@@ -195,7 +195,7 @@
 
   /* Letterpress title — Iowan Old Style serif, 7-layer engraving */
   .hero-mp__title{
-    font-family:'Iowan Old Style','Charter','Hoefler Text','Georgia',serif;
+    font-family:'MR Serif','MR Serif Fallback',Georgia,serif;
     font-size:clamp(58px,12.4vw,206px);line-height:.84;letter-spacing:-.025em;
     max-width:1500px;font-weight:600;
     color:color-mix(in oklch, #f4f1ea 88%, var(--accent) 12%);

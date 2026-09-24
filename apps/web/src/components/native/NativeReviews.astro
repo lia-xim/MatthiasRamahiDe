@@ -87,8 +87,8 @@ const reviewCount = reviewsAggregate?.reviewCount ?? 0
     --rev-accent: var(--accent-2, #7a8a86);
     --rev-star: var(--chrome, #c8ccc6);
     --rev-ease: var(--ease, cubic-bezier(0.23, 1, 0.32, 1));
-    --rev-mono: var(--mono, var(--font-mono, 'JetBrains Mono', 'IBM Plex Mono', ui-monospace, monospace));
-    --rev-display: var(--font, var(--font-display, 'Neue Haas Grotesk Display', 'Helvetica Neue', Arial, sans-serif));
+    --rev-mono: var(--mono, var(--font-mono, 'MR Mono','MR Mono Fallback',ui-monospace,Menlo,Consolas,monospace));
+    --rev-display: var(--font, var(--font-display, 'MR Sans','MR Sans Fallback',Arial,system-ui,sans-serif));
     background: var(--rev-bg);
     color: var(--rev-fg);
     padding: clamp(72px, 11vw, 160px) 0;

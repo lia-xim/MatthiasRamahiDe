@@ -15,7 +15,7 @@
 .project-statement__quote {
   max-width: 980px;
   margin: 0;
-  font-family: var(--font-display, Georgia, serif);
+  font-family: var(--font-display, 'MR Serif','MR Serif Fallback',Georgia,serif);
   font-size: clamp(36px, 7vw, 92px);
   line-height: .92;
 }
@@ -95,7 +95,7 @@
 .project-related h2 {
   max-width: 760px;
   margin: 8px 0 0;
-  font-family: var(--font-display, Georgia, serif);
+  font-family: var(--font-display, 'MR Serif','MR Serif Fallback',Georgia,serif);
   font-size: clamp(34px, 6vw, 82px);
   line-height: .95;
 }
@@ -134,6 +134,7 @@
 }
 
 .project-perspective-row__visual {
+  position: relative;
   aspect-ratio: 16 / 11;
   margin: 0;
   overflow: hidden;
@@ -146,6 +147,13 @@
   height: 100%;
   display: block;
   object-fit: cover;
+}
+
+/* absolut statt Prozent-Hoehe im Fluss: in WebKit ist height:100% in einer
+   aspect-ratio-Box nicht zuverlaessig definit (anderer Ausschnitt). */
+.project-perspective-row__visual img {
+  position: absolute;
+  inset: 0;
 }
 
 .project-perspective-row__content {

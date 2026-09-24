@@ -2,6 +2,8 @@ import fs from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 
+import { makeCssCompatible } from './css-compat.mjs'
+
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const defaultTargets = [
   path.join(repoRoot, 'apps', 'web', 'dist', 'client'),
@@ -51,10 +53,7 @@ async function importDependency(name, fallbackRelativePath) {
   }
 }
 
-const [{ minify: minifyCss }, esbuild] = await Promise.all([
-  importDependency('csso', ['csso', 'lib', 'index.js']),
-  importDependency('esbuild', ['esbuild', 'lib', 'main.js']),
-])
+const esbuild = await importDependency('esbuild', ['esbuild', 'lib', 'main.js'])
 
 async function minifyFile(file) {
   const ext = path.extname(file).toLowerCase()
@@ -62,7 +61,9 @@ async function minifyFile(file) {
   let after = before
 
   if (ext === '.css') {
-    after = minifyCss(before, { comments: false, restructure: false }).css
+    // Minify and (again) apply vendor prefixes / fallbacks for the supported
+    // browsers, so production CSS is compatible even if a file skipped the sync.
+    after = (await makeCssCompatible(before, { minify: true, sourcefile: toPosix(path.relative(repoRoot, file)) })).trimEnd()
   } else if (ext === '.js') {
     const result = await esbuild.transform(before, {
       legalComments: 'none',
@@ -73,7 +74,10 @@ async function minifyFile(file) {
     after = result.code.trimEnd()
   }
 
-  if (!after || after.length >= before.length) return { before: before.length, after: before.length, changed: false }
+  // CSS is always rewritten when it changed (prefixes can make it slightly
+  // longer); JS only when minification actually saved bytes.
+  const keep = ext === '.css' ? !after || after === before : !after || after.length >= before.length
+  if (keep) return { before: before.length, after: before.length, changed: false }
 
   await fs.writeFile(file, after)
   return { before: before.length, after: after.length, changed: true }

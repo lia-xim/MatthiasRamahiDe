@@ -1,4 +1,5 @@
 ---
+import ContactSlot from '../ContactSlot.astro'
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import { nativeServiceDetailPages } from '../../lib/serviceDetailContent'
 import { getBySlug, type PayloadDoc } from '../../lib/payload'
@@ -182,7 +183,7 @@ if (faqSchema) jsonLdItems.push(faqSchema)
       </div>
     </section>
 
-    <section
+    <ContactSlot
       id="anfrage"
       data-contact-section
       data-contact-subject={page.contact.subject}

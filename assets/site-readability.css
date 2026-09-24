@@ -36,8 +36,13 @@ body .mr-contact__submit, body .mr-contact__details summary,
 body .mr-contact__direct-link span { font-size: var(--read-small) !important; }
 body .mobile-menu__inner { min-height: 0; }
 body .mobile-menu { overflow-y: auto; overscroll-behavior: contain; }
-body p, body li, body dd, body h1, body h2, body h3,
+body p, body li, body dd,
 body label, body a, body summary { overflow-wrap: anywhere; }
+/* Ueberschriften: an Silbengrenzen trennen (lang="de") statt mitten im Wort.
+   overflow-wrap:anywhere hat grosse Versal-Headlines ("FAHRZEUGFOTOGRAFIE")
+   je nach Schriftbreite an beliebiger Stelle umbrochen. break-word greift nur
+   noch, wenn ein Wort trotz Silbentrennung nicht in die Zeile passt. */
+body h1, body h2, body h3 { overflow-wrap: break-word; hyphens: auto; hyphenate-limit-chars: 8 4 4; }
 body input, body textarea, body select { max-width: 100%; min-width: 0; }
 body .mr-footer__contact-line a { overflow-wrap: anywhere; }
 /* Intrinsic grid/flex widths differ between engines, especially with long
@@ -63,10 +68,11 @@ body .pv-img img, body .sh-img img { position: absolute; inset: 0; }
 body .pd-bottom > *, body .st-ls__inner > *, body .st-pt__inner > *,
 body .fw-pt__row > *, body .mod-pt__grid > * { min-width: 0; }
 body .st-pull-inner > *, body .st-pull-copy { min-width: 0; }
-body .pd-title .word, body .hero-mr__title .word { overflow-wrap: anywhere; }
-body .journal-support .article-hero h1 { overflow-wrap: anywhere; }
+body .pd-title .word, body .hero-mr__title .word { overflow-wrap: break-word; hyphens: auto; }
+body .journal-support .article-hero h1 { overflow-wrap: break-word; hyphens: auto; }
 @media (max-width: 480px) {
-  body .legal-hero h1 { font-size: clamp(42px, 12vw, 56px); }
+  /* 10.5vw: "DATENSCHUTZ" passt auch ohne Silbentrennung auf 320-480px. */
+  body .legal-hero h1 { font-size: clamp(34px, 10.5vw, 56px); }
 }
 /* Navigation changes mode before enlarged labels can collide. */
 @media (min-width: 1241px) and (max-width: 1599px) {

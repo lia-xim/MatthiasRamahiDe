@@ -81,7 +81,7 @@
   border: 1px solid rgba(255, 255, 255, 0.34);
   color: inherit;
   background: rgba(5, 7, 10, 0.58);
-  font: 400 24px/1 ui-monospace, SFMono-Regular, Consolas, monospace;
+  font: 400 24px/1 'MR Mono','MR Mono Fallback',ui-monospace,Menlo,Consolas,monospace;
   cursor: pointer;
   transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
 }
@@ -132,7 +132,7 @@
   min-width: 0;
   padding: 0 2px;
   color: rgba(255, 255, 255, 0.68);
-  font: 500 10px/1.5 ui-monospace, SFMono-Regular, Consolas, monospace;
+  font: 500 10px/1.5 'MR Mono','MR Mono Fallback',ui-monospace,Menlo,Consolas,monospace;
   letter-spacing: 0.18em;
   text-transform: uppercase;
 }

@@ -12,9 +12,9 @@ body[data-cms-layout-source="base-layout"] {
   --warning: oklch(72% 0.14 78);
   --danger: oklch(57% 0.185 31);
 
-  --font-display: 'Neue Haas Grotesk Display', 'Söhne', 'Avenir Next', 'Helvetica Neue', Arial, system-ui, sans-serif;
-  --font-body: 'Neue Haas Grotesk Display', 'Söhne', 'Avenir Next', 'Helvetica Neue', Arial, system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', 'IBM Plex Mono', 'SFMono-Regular', ui-monospace, Menlo, monospace;
+  --font-display: 'MR Sans','MR Sans Fallback',Arial,system-ui,sans-serif;
+  --font-body: 'MR Sans','MR Sans Fallback',Arial,system-ui,sans-serif;
+  --font-mono: 'MR Mono','MR Mono Fallback',ui-monospace,Menlo,Consolas,monospace;
   --ease: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
@@ -107,7 +107,7 @@ body[data-cms-layout-source="base-layout"] ::selection { background: var(--accen
 .contact-cta__mail:hover { border-color: var(--accent); color: var(--accent); }
 .contact-cta__form { display: grid; gap: 20px; }
 .contact-cta__form > * { min-width: 0; }
-.contact-cta__row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.contact-cta__row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
 .contact-cta__form label { display: grid; gap: 8px; }
 .contact-cta__form span { font: 700 10px/1 var(--font-mono); letter-spacing: 0; text-transform: uppercase; color: color-mix(in oklch, var(--paper-ink) 58%, transparent); }
 .contact-cta__form span em { margin-left: 7px; font-style: normal; color: color-mix(in oklch, var(--paper-ink) 38%, transparent); }
