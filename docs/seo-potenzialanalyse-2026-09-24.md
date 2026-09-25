@@ -78,6 +78,8 @@ Eigener Crawl (kostenlos, ohne Crawl Foundry):
 | Journal-Beiträge < 300 Wörter im Hauptinhalt | 5 (u. a. `location-scouting-duesseldorf`, Position 11 für „fotospots für autos in der nähe“) | Ausbau nur mit eigenen, geprüften Inhalten |
 | `/fahrzeugfotografie.html` nur 4 interne Links | 1 | aus Oldtimer- und Motorrad-Kontext verlinken |
 
+**Alte URLs mit 404 (Wayback-Abgleich):** 405 archivierte HTML-URLs der Domain live geprüft. 14 frühere Inhaltsseiten lieferten 404 ohne Weiterleitung (u. a. `/autofotografie/motorsport-fotografie/`, `/gutschein-fotoshooting/`, `/oldtimerfotograf-dortmund/`, fünf `/motorradfotografie/…`-Artikel). **Behoben:** 308 auf das jeweils passendste aktuelle Ziel in `legacyPathRedirectTargets`. Die 410-Antworten für alte Kategorie-, AGB- und Cookie-Seiten sind beabsichtigt. Backlink-Snapshot `snap_mf8e07uyo28l`: 176 Backlinks, 73 verweisende Domains, 8 als defekt gemeldet (Ziel-URLs liefert der Datenanbieter nicht); Spam-Score 21 durch PBN-/Shortener-Links, kein Handlungsbedarf außer keinem Linkkauf.
+
 Crawl Foundry: Der Keyword-Lauf `aop_dqihfwrcg9l0` ist fehlgeschlagen (`KEYWORD_RESEARCH_SOURCE_RESERVATION_INVALID`, 0 € berechnet). GSC, Backlinks und Rank-Tracking fehlen weiterhin.
 
 ## Kurzfazit
