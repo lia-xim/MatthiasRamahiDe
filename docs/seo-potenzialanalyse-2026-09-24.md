@@ -84,6 +84,32 @@ Eigener Crawl (kostenlos, ohne Crawl Foundry):
 
 Crawl Foundry: Der Keyword-Lauf `aop_dqihfwrcg9l0` ist fehlgeschlagen (`KEYWORD_RESEARCH_SOURCE_RESERVATION_INVALID`, 0 € berechnet). GSC, Backlinks und Rank-Tracking fehlen weiterhin.
 
+## Nachtrag 25.09. – Google Search Console (Export, 12 Monate)
+
+Erstmals echte GSC-Daten (Export vom 25.09.; Web, letzte 12 Monate: 1.538 Klicks, 92.906 Impressionen).
+
+| Zeitraum | Klicks/Tag | Impressionen/Tag | Ø Position |
+|---|---:|---:|---:|
+| 24.09.–31.12.2025 | 2,9 | 200 | 17,2 |
+| 01.01.–15.03.2026 | 4,5 | 308 | 15,6 |
+| 16.03.–13.06.2026 | **6,1** | **375** | 12,4 |
+| 14.06.–31.07.2026 (Relaunch) | 3,8 | 194 | 16,4 |
+| 01.08.–23.09.2026 | **3,5** | **132** | 17,2 |
+
+**Der Relaunch Mitte Juni hat rund 43 % der Klicks und 65 % der Impressionen gekostet.** Die meisten Klicks der letzten 12 Monate liefen noch über alte WordPress-URLs, die heute weiterleiten (u. a. `/autofotografie/autofotografie-duesseldorf/` 131, `/autofotografie-duesseldorf/` 91, `/motorradfotografie/motorrad-fotografie-mit-gopros/` 84, `/vintage-portraets-fotografie/` 49, `/portraitfotografie/retro-looks-in-der-digitalen-fotografie/` 44 Klicks). Die alten Seiten waren lange Ratgeber; die heutigen Ziele sind kürzere Leistungsseiten oder allgemeine Pillars.
+
+**Behoben (25.09.):** 24 weitere alte URLs mit GSC-Impressionen lieferten 404 (u. a. `/motorrad-fotoshooting/`, `/fotografie-motorrad/`, `/schwarz-weiss-portraitfotografie/`, `/automobilfotografie-im-regen/`, `/kreative-schattenfotografie-tipps-guide/`) und leiten jetzt per 308 weiter. Die 410 für Tags, Kategorien, `wp-content`-Bilder, `/live-fotograf/` und `/stills/` sind beabsichtigt. Abdeckung laut GSC: 271 indexiert, 108 „gecrawlt – zurzeit nicht indexiert“, 32 × 404 (Validierung fehlgeschlagen, sollte nach den Weiterleitungen neu gestartet werden).
+
+**Größte offene Hebel laut GSC:**
+
+| Suchanfragen | Impressionen | Ø Pos. | Befund |
+|---|---:|---:|---|
+| auto fotoshooting bochum / dortmund / ruhrgebiet / nrw, carshooting bochum / ruhrgebiet / nrw | je 280–700 | 2–10 | Rankten mit den alten, langen Stadtratgebern; heutige Stadtseiten („Automobilfotografie Bochum“, ~700 Wörter) ranken für die Stadt-Seite selbst auf Ø 22–26 |
+| vintage fotoshooting nrw, vintage fotograf, retro fotografie | 165 / 210 / 89 | 6–17 | Zweitstärkste Suchanfrage nach Klicks; Vintage-/Retro-Portrait-Inhalte wurden auf den allgemeinen Portrait-Pillar umgeleitet |
+| motorrad nachts fotografieren, nachtfotografie motorrad u. ä. | je 20–50 | 4–7 | alter Low-Light-Ratgeber → heute Motorrad-Pillar |
+| fahrzeugfotografie, automobilfotografie, portraitfotografie düsseldorf | 1.268 / 956 / 687 | 23–27 | Striking Distance für die Pillars |
+| low key bedeutung | 518 | 1 | 0 Klicks – Google beantwortet die Frage direkt; kein Hebel |
+
 ## Kurzfazit
 
 1. **Die Optimierungen vom 31.08. sind live nur teilweise angekommen.** Bei 3 von 4 geprüften Kernseiten weichen Title und Description live von den lokalen Content-Dateien ab. Das kommt zuerst, weil der geplante Review am 12.10. sonst den falschen Stand misst.
