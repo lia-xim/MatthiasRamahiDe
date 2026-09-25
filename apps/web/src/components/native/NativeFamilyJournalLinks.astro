@@ -1,0 +1,55 @@
+---
+import { journalArticles, type JournalCluster } from '../../lib/journalArticleContent'
+
+type Props = {
+  /** Journal-Cluster, deren Beiträge zu dieser Fotografie-Familie gehören. */
+  clusters: JournalCluster[]
+  /** Pillar-Seite der Familie; Beiträge anderer Cluster, die explizit dorthin verlinken, werden ergänzt. */
+  familyHref: string
+  limit?: number
+  scopeLabel: string
+}
+
+const { clusters, familyHref, limit = 6, scopeLabel } = Astro.props as Props
+const normalizedFamilyHref = familyHref.replace(/^\//, '')
+
+// Cluster in der übergebenen Reihenfolge, danach themenübergreifende Beiträge, die auf diese Familie verweisen.
+const articles = journalArticles
+  .map((article) => ({
+    article,
+    rank: clusters.includes(article.cluster)
+      ? clusters.indexOf(article.cluster)
+      : article.links.some((link) => link.href === normalizedFamilyHref)
+        ? clusters.length
+        : -1,
+  }))
+  .filter(({ rank }) => rank >= 0)
+  .sort((left, right) => left.rank - right.rank || right.article.dateTime.localeCompare(left.article.dateTime))
+  .slice(0, limit)
+  .map(({ article }) => article)
+
+const shortTitle = (title: string) => title.split(':')[0].trim()
+---
+
+{articles.length > 0 && (
+  <section
+    class="mr-cities mr-cities--journal"
+    data-header-theme="light"
+    data-theme="light"
+    aria-label={`Journal-Beiträge ${scopeLabel}`}
+  >
+    <div class="mr-cities__inner">
+      <div class="mr-cities__head">
+        <h2>Aus dem <em>Journal</em></h2>
+        <p class="mr-cities__copy">
+          Hintergrund zu Licht, Planung und Bildgestaltung: Beiträge, die Fragen rund um dieses Thema ausführlicher beantworten.
+        </p>
+      </div>
+      <nav class="mr-cities__grid" aria-label={`Journal ${scopeLabel}`}>
+        {articles.map((article) => (
+          <a class="mr-cities__cell" href={`/${article.legacyFile}`}>{shortTitle(article.title)}</a>
+        ))}
+      </nav>
+    </div>
+  </section>
+)}

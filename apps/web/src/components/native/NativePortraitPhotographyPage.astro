@@ -2,6 +2,7 @@
 import ContactSlot from '../ContactSlot.astro'
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import NativeFamilyClusterLinks from './NativeFamilyClusterLinks.astro'
+import NativeFamilyJournalLinks from './NativeFamilyJournalLinks.astro'
 import NativeFamilyFaq from './NativeFamilyFaq.astro'
 import NativePracticalGuide from './NativePracticalGuide.astro'
 import NativeReviews from './NativeReviews.astro'
@@ -656,6 +657,8 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
         scopeLabel={scope.label}
       />
     )}
+
+    <NativeFamilyJournalLinks clusters={['portrait']} familyHref={defaultLegacyFile} scopeLabel={scope.label} />
 
     <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Portrait Fotografie in NRW">
       <div class="mr-cities__inner">

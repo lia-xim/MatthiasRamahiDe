@@ -62,6 +62,24 @@ Fortsetzung von `docs/seo-hub-cluster-strategy.md` (28.07.) und `docs/seo-fahrze
 
 **Korrektur zum Audit:** Die Audit-Werte „63 Seiten blockiert/nicht indexierbar“ und „0 eingehende Links“ auf Stadtseiten sind Effekte des Crawl-Limits. 163 − 100 = 63. Außerdem verlinkt z. B. `/motorrad-fotografie-nrw.html` live alle 22 Motorrad-Stadtseiten. Das ist **kein** Indexierungs- oder Verlinkungsproblem.
 
+## Nachtrag 25.09. – Live-Crawl aller 270 Sitemap-URLs
+
+Commit `cca3e15` ist live (Vercel Production, Status success); alle drei Beiträge, die Fotolabor-FAQ, der Fahrzeugfotografie-Title und die 308-Weiterleitungen sind live geprüft. `seo:audit:sitemap-live --strict`: 270/270 URLs 200 und indexierbar, keine Duplikate.
+
+Eigener Crawl (kostenlos, ohne Crawl Foundry):
+
+| Befund | Umfang | Einordnung |
+|---|---:|---|
+| **Keine Leistungsseite verlinkt einen Journal-Beitrag.** Die 30 Beiträge hängen nur an `/blog.html` und untereinander; die drei neuen Ratgeber haben 4–7 interne Links | alle 6 Fotografie-Familien | **behoben:** Block „Aus dem Journal“ (`NativeFamilyJournalLinks.astro`) auf allen Seiten der sechs Familien, Beiträge nach Journal-Cluster |
+| Meta-Description > 160 Zeichen | 40 Seiten, v. a. Stadtseiten (161–167) | 3 neue/geänderte Seiten gekürzt; Rest kosmetisch |
+| Title > 60 Zeichen (inkl. „\| Matthias Ramahi“) | 13 | niedrig; Keyword steht jeweils vorne |
+| Title = H1 | 17 | niedrig |
+| Hero-Bilder mit `alt=""` | Pillar- und Stadtseiten, 3–4 je Seite | für eine Fotografie-Seite Bildersuche-Potenzial; Alt-Texte nur mit geprüften Motivangaben |
+| Journal-Beiträge < 300 Wörter im Hauptinhalt | 5 (u. a. `location-scouting-duesseldorf`, Position 11 für „fotospots für autos in der nähe“) | Ausbau nur mit eigenen, geprüften Inhalten |
+| `/fahrzeugfotografie.html` nur 4 interne Links | 1 | aus Oldtimer- und Motorrad-Kontext verlinken |
+
+Crawl Foundry: Der Keyword-Lauf `aop_dqihfwrcg9l0` ist fehlgeschlagen (`KEYWORD_RESEARCH_SOURCE_RESERVATION_INVALID`, 0 € berechnet). GSC, Backlinks und Rank-Tracking fehlen weiterhin.
+
 ## Kurzfazit
 
 1. **Die Optimierungen vom 31.08. sind live nur teilweise angekommen.** Bei 3 von 4 geprüften Kernseiten weichen Title und Description live von den lokalen Content-Dateien ab. Das kommt zuerst, weil der geplante Review am 12.10. sonst den falschen Stand misst.

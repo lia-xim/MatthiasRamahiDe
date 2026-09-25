@@ -1108,6 +1108,11 @@ section[data-contact-section]:empty {
   .mr-cities__grid{grid-template-columns:repeat(2,1fr);gap:0 18px}
   .mr-cities__cell{font-size:15px;padding:13px 0 13px 16px}
 }
+/* Journal-Links: Beitragstitel sind länger als Ortsnamen, daher breitere Spalten */
+.mr-cities--journal .mr-cities__grid{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+@media(max-width:780px){
+  .mr-cities--journal .mr-cities__grid{grid-template-columns:1fr}
+}
 @media (prefers-reduced-motion:reduce){
   .mr-cities__cell,.mr-cities__cell::before{transition:none}
   .mr-cities__cell:hover{padding-left:18px}
