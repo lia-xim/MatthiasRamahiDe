@@ -219,7 +219,7 @@
     }
   ],
   "seo": {
-    "title": "Automobilfotografie NRW | Matthias Ramahi",
+    "title": "Automobilfotografie NRW & Autofotograf | Matthias Ramahi",
     "description": "Automobilfotografie in NRW für Sportwagen, Oldtimer und Händler: Exterieur, Interieur, Details und Fahrbilder für Web, Print und Verkauf.",
     "secondaryKeywords": [
       "Autofotografie",
@@ -238,7 +238,7 @@
     "legacyUrl": "automobil-fotografie.html",
     "ogImage": "/uploads/payload/_DSC2831%20(1).webp",
     "noIndex": false,
-    "focusKeyword": "Automobilfotografie NRW",
+    "focusKeyword": "Automobilfotografie",
     "searchIntent": "Kommerzielle Dienstleistungsanfrage: Nutzer suchen einen Automobilfotografen in NRW und vergleichen Bildstil, Leistungsumfang, Preisrahmen und Kontaktmöglichkeit."
   },
   "legacy": {
@@ -257,5 +257,55 @@
   "updatedAt": "2026-07-21 22:35:09.413+00",
   "createdAt": "2026-05-28T19:07:30.798Z",
   "status": "published",
-  "payloadId": "1"
+  "payloadId": "1",
+  "targetKeyword": "Automobilfotografie",
+  "guideSection": {
+    "eyebrow": "Automobilfotografie",
+    "headline": "Vom Inserat bis zur Kampagne.",
+    "intro": "Automobilfotografie ist kein einzelner Stil, sondern eine Frage des Anlasses. So unterscheide ich die Aufträge – und so wirkt sich das auf Ort, Licht und Bildsatz aus.",
+    "items": [
+      {
+        "title": "Privatfahrzeug und Auto-Fotoshooting",
+        "text": "Beim privaten Auto-Fotoshooting geht es um das Lieblingsfahrzeug: Bilder für Erinnerung, Social Media oder einen Druck an der Wand. Der Ort darf Charakter haben, du kannst selbst mit ins Bild. Wichtig ist, dass die Serie trotzdem vollständig ist – Gesamtansichten, Innenraum und Details."
+      },
+      {
+        "title": "Verkauf und Händlerbestand",
+        "text": "Verkaufsbilder müssen Zustand, Ausstattung und Proportionen ehrlich zeigen. Dafür arbeite ich mit festen Ansichten, ruhigem Hintergrund und gleichmäßigem Licht. Für Autohäuser komme ich auf den Hof, in den Showroom oder die Halle; bei laufendem Bestand bleibt die Bildsprache über alle Fahrzeuge gleich."
+      },
+      {
+        "title": "Marke, Kampagne und Editorial",
+        "text": "Für Marken, Agenturen und Redaktionen wird aus dem Bildsatz eine inszenierte Serie mit Dramaturgie: gewählte Orte, Fahrbilder, Detailstrecken und Hochformate für Social Media. Nutzungsrechte und Ausgabeformate klären wir vor der Produktion."
+      },
+      {
+        "title": "Licht, Reflexe und Standpunkt",
+        "text": "Lack spiegelt alles – Himmel, Gebäude, den Fotografen. Ich arbeite deshalb mit mobilem Licht und wähle Kamerahöhe und Winkel nach den Linien, die im Lack erscheinen. Weiches Morgen- und Abendlicht hält Kontraste beherrschbar; harte Mittagssonne legt störende Reflexe auf Dach und Haube."
+      },
+      {
+        "title": "Orte in NRW",
+        "text": "In Düsseldorf fotografiere ich im Medienhafen, am Rheinufer und an der Kö. Im Ruhrgebiet liefern die Jahrhunderthalle in Bochum, der Phoenix-See in Dortmund, die Zeche Zollverein in Essen und der Landschaftspark Nord in Duisburg starke Kulissen. Welcher Ort passt, hängt von Fahrzeug, Lackfarbe und Nutzung ab."
+      },
+      {
+        "title": "Kosten",
+        "text": "Ein Auto-Fotoshooting beginnt bei 250 € inkl. MwSt. Der Preis richtet sich nach Anzahl der Fahrzeuge und Orte, Umfang des Bildsatzes, Fahrtweg und Nutzung. Drucke und Sonderwünsche werden separat abgerechnet."
+      }
+    ],
+    "links": [
+      {
+        "label": "Auto-Fotoshooting NRW",
+        "href": "/auto-fotoshooting.html"
+      },
+      {
+        "label": "Fahrzeugfotografie",
+        "href": "/fahrzeugfotografie.html"
+      },
+      {
+        "label": "Autofotografie Düsseldorf",
+        "href": "/autofotografie-duesseldorf.html"
+      },
+      {
+        "label": "Autohaus-Fotografie",
+        "href": "/autohaus-fotografie.html"
+      }
+    ]
+  }
 }

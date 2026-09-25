@@ -3,6 +3,7 @@ import ContactSlot from '../ContactSlot.astro'
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import NativeFamilyClusterLinks from './NativeFamilyClusterLinks.astro'
 import NativeFamilyJournalLinks from './NativeFamilyJournalLinks.astro'
+import NativeGuideSection from './NativeGuideSection.astro'
 import NativeFamilyFaq from './NativeFamilyFaq.astro'
 import NativePracticalGuide from './NativePracticalGuide.astro'
 import NativeReviews from './NativeReviews.astro'
@@ -807,6 +808,8 @@ const curatedIntentHeading = isParentPage
         ]}
       />
     )}
+
+    <NativeGuideSection doc={doc} disabled={isPracticalGuide} />
 
     <section class="sw" id="sichten" data-header-theme="dark">
       <header class="sw-head">

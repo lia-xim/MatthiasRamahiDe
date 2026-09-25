@@ -1,5 +1,5 @@
 {
-  "title": "Portrait Fotografie Düsseldorf",
+  "title": "Portraitfotografie Düsseldorf",
   "slug": "portraitfotografie-duesseldorf",
   "priority": "later",
   "city": "duesseldorf",
@@ -39,6 +39,14 @@
     {
       "question": "Was kostet ein Portrait Fotoshooting in Düsseldorf?",
       "answer": "Ein Shooting beginnt bei 250 € inkl. MwSt. Drucke und Sonderwünsche werden separat abgerechnet. Der Preis richtet sich nach Umfang: Anzahl der Personen, Shooting-Dauer, Anzahl fertig retuschierter Bilder und Nutzungsrahmen. Eine erste Einschätzung kommt mit der Antwort auf die Anfrage — nach dem Gespräch gibt es ein schriftliches Angebot ohne Überraschungen."
+    },
+    {
+      "question": "Wie bereite ich mich auf ein Portraitshooting vor?",
+      "answer": "Plane zwei bis drei Outfits, die zu Anlass und Bildidee passen, und bring Accessoires mit, die zu dir gehören. Im Vorgespräch gebe ich Tipps zu Farben und Schnitt. Das Wichtigste ist, ausgeruht und ohne Zeitdruck zu kommen."
+    },
+    {
+      "question": "Wie lange dauert ein Portraitshooting in Düsseldorf?",
+      "answer": "In der Regel zwischen einer und drei Stunden. Ein kompakter Headshot-Termin ist schneller erledigt, mehrere Outfits oder Orte brauchen entsprechend mehr Zeit."
     }
   ],
   "blocks": [
@@ -175,15 +183,15 @@
     "items": []
   },
   "contactSection": {},
-  "targetKeyword": "Portrait Fotografie Düsseldorf",
+  "targetKeyword": "Portraitfotografie Düsseldorf",
   "seo": {
-    "title": "Portrait Fotografie Düsseldorf | Matthias Ramahi",
-    "description": "Portraitfotografie Düsseldorf: Business Portrait, Personal Branding, outdoor portrait, schwarz weiß portrait — Medienhafen, Kö, Rheinufer.",
+    "title": "Portraitfotografie Düsseldorf & Portraitfotograf | Matthias Ramahi",
+    "description": "Portraitfotografie in Düsseldorf: Business-Portraits, Headshots und private Portraits im Studio, im Medienhafen oder am Rheinufer. Ablauf und Preis ab 250 €.",
     "canonicalUrl": "https://matthiasramahi.de/portraitfotografie-duesseldorf.html",
     "legacyUrl": "portraitfotografie-duesseldorf.html",
     "ogImage": "/uploads/payload/_DSC0470-Enhanced-NR-2.webp",
     "noIndex": false,
-    "focusKeyword": "Portrait Fotografie Düsseldorf",
+    "focusKeyword": "Portraitfotografie Düsseldorf",
     "searchIntent": "Lokale Dienstleistungsanfrage: Nutzer suchen einen passenden Fotografen, Ablauf und Kontaktmöglichkeit für Portrait Fotografie Düsseldorf."
   },
   "legacy": {
@@ -200,5 +208,50 @@
   "updatedAt": "2026-07-21 22:35:09.413+00",
   "createdAt": "2026-05-28 19:07:33.846+00",
   "status": "published",
-  "payloadId": "118"
+  "payloadId": "118",
+  "guideSection": {
+    "eyebrow": "Portraitfotograf Düsseldorf",
+    "headline": "Welches Portrait zu welchem Anlass passt.",
+    "intro": "Portraitfotografie in Düsseldorf reicht vom schnellen Headshot für LinkedIn bis zur persönlichen Serie mit Retro-Look. Hier steht, wie ich die Anlässe unterscheide, welche Orte in der Stadt dafür passen und wie ein Termin abläuft.",
+    "items": [
+      {
+        "title": "Business-Portraits und Headshots",
+        "text": "Für Website, LinkedIn, Pressemappe oder Bewerbung zählen Klarheit und Wiedererkennbarkeit. Der Hintergrund bleibt ruhig, das Licht kontrolliert, der Ausdruck nahbar oder sachlich – je nachdem, wie du wirken möchtest.\n\nFür Teams lege ich Licht, Ausschnitt und Hintergrund so fest, dass die Bilder auch mit Wochen Abstand zusammenpassen. Wer mehr als ein Profilbild braucht, ist bei Personal Branding richtig: Dort entsteht eine Serie für Website und Social Media."
+      },
+      {
+        "title": "Private Portraits",
+        "text": "Bei privaten Portraits steht die Person im Mittelpunkt, nicht die Funktion. Das kann ein Paar- oder Familienshooting sein, ein Dating-Profilbild, ein Portrait in Schwarz-Weiß oder ein Vintage-Fotoshooting mit Retro-Charme. Ort, Licht und Bearbeitung richten sich nach dem, was das Bild erzählen soll."
+      },
+      {
+        "title": "Orte in Düsseldorf",
+        "text": "Im Studio in Düsseldorf ist das Licht vollständig kontrollierbar – ideal für Headshots und Business-Portraits. Draußen bieten der Medienhafen mit seiner Architektur, das Rheinufer mit Weite und Abendlicht, der Hofgarten mit weichem Licht unter Bäumen und die Königsallee mit urbanem Flair sehr unterschiedliche Stimmungen.\n\nDen Ort wähle ich nach dem Charakter des Bildes, nicht aus Gewohnheit. Bei Außenterminen plane ich das Lichtfenster mit ein; bei Regen weichen wir ins Studio oder auf überdachte Orte aus."
+      },
+      {
+        "title": "So läuft ein Portraitshooting ab",
+        "text": "Nach deiner Anfrage klären wir im Vorgespräch Ziel, Look und Nutzung. Am Termin nehmen wir uns Zeit; ich gebe Hinweise zu Haltung und Blick, lasse aber Raum für natürliche Momente. Danach wählst du aus einer Vorauswahl deine Favoriten, die ich individuell bearbeite – Licht, Farben, Kontraste und kleine Details."
+      },
+      {
+        "title": "Kosten und Nutzungsrechte",
+        "text": "Ein Portraitshooting beginnt bei 250 € inkl. MwSt. Drucke und Sonderwünsche werden separat abgerechnet. Private Nutzung ist enthalten; für Website, Presse oder Werbung eines Unternehmens besprechen wir die Nutzungsrechte vorab."
+      }
+    ],
+    "links": [
+      {
+        "label": "Business Portrait Düsseldorf",
+        "href": "/business-portrait-duesseldorf.html"
+      },
+      {
+        "label": "Headshot Fotograf Düsseldorf",
+        "href": "/headshot-fotograf-duesseldorf.html"
+      },
+      {
+        "label": "Vintage Fotoshooting",
+        "href": "/vintage-fotoshooting.html"
+      },
+      {
+        "label": "Dating Fotoshooting Düsseldorf",
+        "href": "/dating-fotoshooting-duesseldorf.html"
+      }
+    ]
+  }
 }

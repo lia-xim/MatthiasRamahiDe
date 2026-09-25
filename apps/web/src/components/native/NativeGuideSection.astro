@@ -1,0 +1,30 @@
+---
+import type { PayloadDoc } from '../../lib/payload'
+import NativePracticalGuide from './NativePracticalGuide.astro'
+
+type Props = {
+  doc?: PayloadDoc | null
+  /** Seiten mit fest verdrahtetem Praxisleitfaden zeigen keinen zweiten Ratgeber. */
+  disabled?: boolean
+}
+
+const { doc, disabled = false } = Astro.props as Props
+const guide = doc?.guideSection
+const items = (guide?.items || [])
+  .map((item) => ({ title: item?.title?.trim() || '', text: item?.text?.trim() || '' }))
+  .filter((item) => item.title && item.text)
+const links = (guide?.links || [])
+  .map((link) => ({ label: link?.label?.trim() || '', href: link?.href?.trim() || '' }))
+  .filter((link) => link.label && link.href)
+const show = !disabled && Boolean(guide?.headline) && items.length > 0
+---
+
+{show && (
+  <NativePracticalGuide
+    eyebrow={guide?.eyebrow || 'Ratgeber'}
+    title={guide?.headline || ''}
+    intro={guide?.intro || ''}
+    items={items}
+    links={links}
+  />
+)}

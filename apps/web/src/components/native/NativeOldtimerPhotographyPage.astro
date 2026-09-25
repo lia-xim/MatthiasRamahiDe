@@ -3,6 +3,7 @@ import ContactSlot from '../ContactSlot.astro'
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import NativeFamilyClusterLinks from './NativeFamilyClusterLinks.astro'
 import NativeFamilyJournalLinks from './NativeFamilyJournalLinks.astro'
+import NativeGuideSection from './NativeGuideSection.astro'
 import NativeFamilyFaq from './NativeFamilyFaq.astro'
 import NativeReviews from './NativeReviews.astro'
 import PreviewToolbar from '../PreviewToolbar.astro'
@@ -474,6 +475,8 @@ const {
         </div>
       </div>
     </section>
+
+    <NativeGuideSection doc={doc} />
 
     <section class="pv" data-header-theme="dark">
       <div class="section-inner">

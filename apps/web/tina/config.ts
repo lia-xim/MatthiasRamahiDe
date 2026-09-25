@@ -263,6 +263,15 @@ const serviceSectionFields = [
   heroSlidesField,
   heroPanelsField,
   statementField,
+  objectField('guideSection', 'Ratgeber-Sektion', [
+    textField('eyebrow', 'Eyebrow'),
+    textField('headline', 'Headline'),
+    textAreaField('intro', 'Einleitung'),
+    objectField('items', 'Abschnitte', [textField('title', 'Titel'), textAreaField('text', 'Text (Absätze mit Leerzeile trennen)')], {
+      list: true,
+    }),
+    objectField('links', 'Links', [textField('label', 'Label'), textField('href', 'Link')], { list: true }),
+  ]),
   objectField('focusSection', 'Fokus-Sektion', sectionHeadingFields),
   objectField(
     'shootingStyles',

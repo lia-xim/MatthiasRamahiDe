@@ -3,6 +3,7 @@ import ContactSlot from '../ContactSlot.astro'
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import NativeFamilyClusterLinks from './NativeFamilyClusterLinks.astro'
 import NativeFamilyJournalLinks from './NativeFamilyJournalLinks.astro'
+import NativeGuideSection from './NativeGuideSection.astro'
 import NativeFamilyFaq from './NativeFamilyFaq.astro'
 import NativePracticalGuide from './NativePracticalGuide.astro'
 import NativeReviews from './NativeReviews.astro'
@@ -198,6 +199,7 @@ const intentLinks = [
   { key: 'headshot', label: 'Headshot Fotograf', genericHref: 'headshot-fotograf-duesseldorf.html', duesseldorfHref: 'headshot-fotograf-duesseldorf.html' },
   { key: 'personal-branding', label: 'Personal Branding Fotografie', genericHref: 'personal-branding-fotografie.html', duesseldorfHref: 'personal-branding-fotografie-duesseldorf.html' },
   { key: 'schwarz-weiss', label: 'Schwarz-Weiss Portrait', genericHref: 'schwarz-weiss-portrait-fotografie.html', duesseldorfHref: 'schwarz-weiss-portrait-fotografie-duesseldorf.html' },
+  { key: 'vintage', label: 'Vintage Fotoshooting', genericHref: 'vintage-fotoshooting.html', duesseldorfHref: 'vintage-fotoshooting.html' },
   { key: 'beleuchtung', label: 'Portrait Beleuchtung', genericHref: 'portraitfotografie-beleuchtung.html', duesseldorfHref: 'portraitfotografie-beleuchtung-duesseldorf.html' },
   { key: 'paar-familie', label: 'Paar & Familie', genericHref: 'paarshooting-familienshooting.html', duesseldorfHref: 'paarshooting-familienshooting-duesseldorf.html' },
   { key: 'unternehmen', label: 'Unternehmensportrait', genericHref: 'unternehmensportrait-duesseldorf.html', duesseldorfHref: 'unternehmensportrait-duesseldorf.html' },
@@ -537,6 +539,8 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
         ]}
       />
     )}
+
+    <NativeGuideSection doc={doc} disabled={isPracticalGuide} />
 
     <section class="mod-pt" data-header-theme="dark">
       <div class="mod-pt__head">

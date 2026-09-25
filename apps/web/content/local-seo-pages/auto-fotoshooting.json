@@ -25,6 +25,14 @@
     {
       "question": "Was kostet ein Auto-Fotoshooting?",
       "answer": "Ein Shooting beginnt bei 250 € inkl. MwSt. Drucke und Sonderwünsche werden separat abgerechnet. Der Preis richtet sich nach Umfang, Anzahl der Motive, Fahrtweg und gewünschtem Bildumfang. Eine grobe Einschätzung ist nach einer kurzen Anfrage mit Fahrzeugtyp und Nutzungszweck möglich."
+    },
+    {
+      "question": "Machst du auch Carshootings im Ruhrgebiet?",
+      "answer": "Ja. Neben Düsseldorf fotografiere ich regelmäßig in Bochum, Dortmund, Essen und Duisburg. Die Industriekultur dort – Jahrhunderthalle, Phoenix-West, Zollverein oder Landschaftspark Nord – ist eine starke Kulisse für Fahrzeuge."
+    },
+    {
+      "question": "Wie lange dauert ein Auto-Fotoshooting?",
+      "answer": "Je nach Umfang zwischen einer und drei Stunden. Mehrere Orte oder Aufnahmen zur blauen Stunde planen wir mit mehr Zeit ein."
     }
   ],
   "blocks": [],
@@ -87,8 +95,8 @@
   "contactSection": {},
   "targetKeyword": "Auto-Fotoshooting NRW",
   "seo": {
-    "title": "Auto-Fotoshooting NRW: Ablauf & Kosten | Matthias Ramahi",
-    "description": "Auto-Fotoshooting in NRW ab 250 €: geplante Fahrzeugbilder für Erinnerung, Verkauf, Social Media und Druck. Location, Licht und Bildumfang nach Zweck.",
+    "title": "Auto-Fotoshooting NRW & Ruhrgebiet | Matthias Ramahi",
+    "description": "Auto-Fotoshooting und Carshooting in NRW ab 250 €: Düsseldorf, Bochum, Dortmund, Essen und Duisburg. Location, Licht und Bildumfang nach Zweck.",
     "canonicalUrl": "https://matthiasramahi.de/auto-fotoshooting.html",
     "legacyUrl": "auto-fotoshooting.html",
     "noIndex": false,
@@ -120,5 +128,54 @@
   "updatedAt": "2026-07-21 22:35:09.413+00",
   "createdAt": "2026-05-31 17:32:41.43+00",
   "status": "published",
-  "payloadId": "164"
+  "payloadId": "164",
+  "guideSection": {
+    "eyebrow": "Carshooting NRW",
+    "headline": "Carshooting in NRW und im Ruhrgebiet.",
+    "intro": "Wo das Shooting stattfindet, hängt vom Fahrzeug und vom Zweck ab. Diese Regionen und Orte schlage ich am häufigsten vor.",
+    "items": [
+      {
+        "title": "Ruhrgebiet: Industriekultur als Kulisse",
+        "text": "Im Ruhrgebiet liefert die Industriegeschichte Hintergründe, die kein Studio nachbaut: die Jahrhunderthalle in Bochum, Phoenix-West und der Phoenix-See in Dortmund, die Zeche Zollverein in Essen und der Landschaftspark Nord in Duisburg. Stahl, Backstein und Beton geben Lack und Linien Kontrast.\n\nFür jede dieser Städte gibt es eine eigene Seite mit konkreten Spots, Licht und Ablauf."
+      },
+      {
+        "title": "Düsseldorf und Rheinland: Architektur und Rhein",
+        "text": "In Düsseldorf arbeite ich mit dem Medienhafen, dem Rheinufer und der Königsallee – urban, modern und mit Sonnenuntergängen am Wasser. Ruhige Areale in Ratingen und Neuss eignen sich für Serien ohne Ablenkung."
+      },
+      {
+        "title": "Fahrzeug und Ort zusammenbringen",
+        "text": "Ein dunkler Sportwagen braucht andere Flächen und Reflexe als ein heller Oldtimer oder ein Fahrzeug, das für den Verkauf dokumentiert wird. Deshalb schlage ich den Ort erst vor, wenn ich Fahrzeug, Lackfarbe und Nutzung kenne."
+      },
+      {
+        "title": "Dein Auto vorbereiten",
+        "text": "Ein gewaschenes Fahrzeug spart Retusche. Innenraum ausräumen, Kennzeichenfrage klären und Räder ausrichten – vieles davon lässt sich vor Ort leichter lösen als später am Bildschirm. Den Rest besprechen wir vor dem Termin."
+      },
+      {
+        "title": "Kosten",
+        "text": "Ein Auto-Fotoshooting beginnt bei 250 € inkl. MwSt. Der Preis richtet sich nach Umfang, Anzahl der Motive, Fahrtweg und gewünschtem Bildumfang. Drucke und Sonderwünsche werden separat abgerechnet."
+      }
+    ],
+    "links": [
+      {
+        "label": "Autofotografie Düsseldorf",
+        "href": "/autofotografie-duesseldorf.html"
+      },
+      {
+        "label": "Autofotografie Bochum",
+        "href": "/automobil-fotografie-bochum.html"
+      },
+      {
+        "label": "Autofotografie Dortmund",
+        "href": "/automobil-fotografie-dortmund.html"
+      },
+      {
+        "label": "Autofotografie Essen",
+        "href": "/automobil-fotografie-essen.html"
+      },
+      {
+        "label": "Autofotografie Duisburg",
+        "href": "/automobil-fotografie-duisburg.html"
+      }
+    ]
+  }
 }

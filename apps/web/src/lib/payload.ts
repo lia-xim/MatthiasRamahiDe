@@ -84,6 +84,13 @@ export type PayloadDoc = {
   heroLine2?: string
   heroPanels?: Array<{ image?: PayloadMedia | string }>
   statement?: { image?: PayloadMedia | string; headline?: string; emphasis?: string; body?: Array<{ text?: string }> }
+  guideSection?: {
+    eyebrow?: string
+    headline?: string
+    intro?: string
+    items?: Array<{ title?: string; text?: string }>
+    links?: Array<{ label?: string; href?: string }>
+  }
   focusSection?: { headline?: string; emphasis?: string; lead?: string }
   shootingStyles?: Array<{ image?: PayloadMedia | string; title?: string; text?: string }>
   gallerySection?: { headline?: string; lead?: string }

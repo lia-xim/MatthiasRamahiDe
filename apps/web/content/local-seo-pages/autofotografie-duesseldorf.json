@@ -4,7 +4,7 @@
   "priority": "later",
   "city": "duesseldorf",
   "service": "Automobil Fotografie",
-  "intro": "Autofotografie bedeutet für mich: das richtige Bild für den richtigen Zweck. Ob Händlerbestand, Privatverkauf, Kampagne oder Portfolio — ich fotografiere Fahrzeuge aller Klassen in Düsseldorf und Umgebung, mit mobilem Licht, kontrollierter Reflexarbeit und klarer Bildsprache, die auf Web, Portal und Druck funktioniert.",
+  "intro": "Autofotografie bedeutet für mich: das richtige Bild für den richtigen Zweck. Ob Händlerbestand, Privatverkauf, Kampagne oder ein Auto-Fotoshooting für dein Lieblingsfahrzeug – ich fotografiere Fahrzeuge in Düsseldorf und Umgebung mit mobilem Licht, kontrollierter Reflexarbeit und einer Bildsprache, die auf Web, Portal und Druck funktioniert.",
   "heroImage": "/uploads/payload/assets-portfolio-dsc3879-1920.webp",
   "heroLine2": "Fahrzeug. Licht. Bild.",
   "heroSlides": [],
@@ -39,6 +39,14 @@
     {
       "question": "Was kostet Autofotografie in Düsseldorf?",
       "answer": "Ein Shooting beginnt bei 250 € inkl. MwSt. Drucke und Sonderwünsche werden separat abgerechnet. Der Preis richtet sich nach Umfang: Anzahl der Fahrzeuge, Bildtypen (Exterieur, Interieur, Details), Location, Produktionsdauer und Nachbearbeitung. Kurze Anfrage genügt — Umfang und Honorar werden transparent abgestimmt."
+    },
+    {
+      "question": "Wie lange dauert ein Auto-Fotoshooting in Düsseldorf?",
+      "answer": "Je nach Umfang und Fahrzeug zwischen einer und drei Stunden. Mehrere Orte oder Aufnahmen bei Sonnenuntergang und zur blauen Stunde planen wir entsprechend ein."
+    },
+    {
+      "question": "Kommst du auch zum Kunden?",
+      "answer": "Ja. Ich fotografiere Fahrzeuge auch direkt vor Ort – im Autohaus, in der Werkstatt oder am privaten Stellplatz."
     }
   ],
   "blocks": [
@@ -122,8 +130,8 @@
   "contactSection": {},
   "targetKeyword": "Autofotografie Düsseldorf",
   "seo": {
-    "title": "Autofotografie Düsseldorf — Matthias Ramahi",
-    "description": "Autofotografie Düsseldorf: Fahrzeugserien für Inserat, Marke, Sammlung und Social Media. Exterieur, Interieur und Details, bereit für Print und Web.",
+    "title": "Autofotografie Düsseldorf & Auto-Fotoshooting | Matthias Ramahi",
+    "description": "Autofotografie in Düsseldorf: Auto-Fotoshooting im Medienhafen, am Rheinufer oder an der Kö. Fotospots für Autos, Licht, Ablauf und Kosten ab 250 €.",
     "canonicalUrl": "https://matthiasramahi.de/autofotografie-duesseldorf.html",
     "legacyUrl": "autofotografie-duesseldorf.html",
     "ogImage": "/uploads/payload/assets-portfolio-dsc3879-1920.webp",
@@ -145,5 +153,46 @@
   "updatedAt": "2026-07-21 22:35:09.413+00",
   "createdAt": "2026-05-28 19:07:30.242+00",
   "status": "published",
-  "payloadId": "1"
+  "payloadId": "1",
+  "guideSection": {
+    "eyebrow": "Fotospots für Autos",
+    "headline": "Fotospots für Autos in Düsseldorf.",
+    "intro": "Düsseldorf verbindet Großstadt-Architektur mit dem Rhein. Diese Orte schlage ich für ein Auto-Fotoshooting vor – mit dem Licht, das an ihnen am besten funktioniert.",
+    "items": [
+      {
+        "title": "Medienhafen: Glas, Linien und Abendlicht",
+        "text": "Die Fassaden im Medienhafen geben modernen Fahrzeugen einen klaren, architektonischen Rahmen. Im warmen Abendlicht entstehen stimmungsvolle Motive, bei denen Design und Umgebung zusammenpassen.\n\nWeil Glas und Lack sich gegenseitig spiegeln, entscheidet hier der Standpunkt besonders stark darüber, ob das Bild ruhig oder unruhig wirkt."
+      },
+      {
+        "title": "Rheinufer und Rheinkniebrücke: Weite und Sonnenuntergang",
+        "text": "Am Rheinufer gibt es Weite und einen offenen Himmel – bei Sonnenuntergang eine der schönsten Kulissen der Stadt. Die Rheinkniebrücke setzt dazu eine markante Linie in den Hintergrund. Das passt zu Seitenansichten und zu Bildern, bei denen du mit deinem Auto im Bild stehst."
+      },
+      {
+        "title": "Königsallee: urbanes Flair",
+        "text": "Die Kö steht für Stil und Großstadt. Für ein Fahrzeug mit Anspruch ist das ein naheliegender Rahmen. Weil dort tagsüber viel Verkehr herrscht, plane ich solche Motive in ruhigeren Zeitfenstern."
+      },
+      {
+        "title": "Industriekante im Süden: rau und kontrastreich",
+        "text": "Für kontrastreiche Exterieur-Aufnahmen nutze ich industrielle Hintergründe im Düsseldorfer Süden, etwa in Reisholz. Für saubere Produktionsbedingungen ohne Ablenkung bieten sich ruhige Areale in Ratingen und Neuss an."
+      },
+      {
+        "title": "Ablauf und Kosten",
+        "text": "Vorab klären wir Fahrzeugtyp, Stil, Ort und den Zweck der Bilder – Verkauf, Social Media oder Portfolio. Am Termin arbeite ich mit mobilem Licht und gezielten Perspektiven. Danach bekommst du die bearbeitete Serie in Größen für Web und Druck.\n\nEin Auto-Fotoshooting beginnt bei 250 € inkl. MwSt. Der Preis richtet sich nach Anzahl der Fahrzeuge, Bildtypen, Ort und Produktionsdauer."
+      }
+    ],
+    "links": [
+      {
+        "label": "Auto-Fotoshooting NRW",
+        "href": "/auto-fotoshooting.html"
+      },
+      {
+        "label": "Location-Scouting in Düsseldorf",
+        "href": "/blog-location-scouting-duesseldorf.html"
+      },
+      {
+        "label": "Automobilfotografie Düsseldorf",
+        "href": "/automobil-fotografie-duesseldorf.html"
+      }
+    ]
+  }
 }

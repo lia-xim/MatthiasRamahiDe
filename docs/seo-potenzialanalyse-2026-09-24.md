@@ -110,6 +110,21 @@ Erstmals echte GSC-Daten (Export vom 25.09.; Web, letzte 12 Monate: 1.538 Klicks
 | fahrzeugfotografie, automobilfotografie, portraitfotografie düsseldorf | 1.268 / 956 / 687 | 23–27 | Striking Distance für die Pillars |
 | low key bedeutung | 518 | 1 | 0 Klicks – Google beantwortet die Frage direkt; kein Hebel |
 
+### Umsetzung 25.09. (Content)
+
+Neues CMS-Feld `guideSection` („Ratgeber-Sektion“, Tina-Schema `serviceSectionFields`), gerendert über `NativeGuideSection` → `NativePracticalGuide` direkt nach dem Statement in allen sechs Fotografie-Vorlagen. Faktenbasis: die archivierten eigenen Seiten (Wayback) und die heutigen Angaben (ab 250 € inkl. MwSt., Studio Düsseldorf); alte Preise (99–199 €) bewusst nicht übernommen.
+
+| Hebel | Umsetzung | Wörter vorher → nachher |
+|---|---|---|
+| Auto-Fotoshooting Ruhrgebiet/NRW | Bochum, Dortmund, Essen, Duisburg: H1 „Autofotografie &lt;Stadt&gt;“, Title „Auto-Fotoshooting &lt;Stadt&gt; & Autofotografie“, Ratgeber mit echten Spots (Jahrhunderthalle, Kemnader See, Phoenix-See/-West, Zollverein, Landschaftspark Nord …), Ablauf, Kosten, 2 FAQ mehr. Dazu `autofotografie-duesseldorf.html` (Fotospots für Autos) und `auto-fotoshooting.html` (Title „Auto-Fotoshooting NRW & Ruhrgebiet“, Carshooting) | ~700 → 1.030–1.170 |
+| Vintage-/Retro-Portraits | neue Seite `vintage-fotoshooting.html` (Portrait-Familie, eigene Bilder, FAQ, Ratgeber „Wie ein Vintage-Look entsteht“); `/vintage-portraets-fotografie/`, `…-in-duesseldorf-matthias-ramahi/` und beide Retro-Looks-URLs leiten jetzt dorthin | neu: ~1.210 |
+| Motorrad nachts fotografieren | Journal-Beitrag `blog-motorrad-nachts-fotografieren.html` mit eigener Ninja-650-Nachtserie; `/motorradfotografie/low-light-motorrad-fotografie/` leitet dorthin | neu: ~1.120 |
+| Pillars | `portraitfotografie-duesseldorf.html` (H1 „Portraitfotografie Düsseldorf“, Title mit „Portraitfotograf“), `fahrzeugfotografie.html` (Ratgeber nach Fahrzeugtyp), `automobil-fotografie.html` (Title „Automobilfotografie NRW & Autofotograf“, Ratgeber Anlass → Bildsatz; zweizeiliger Hero bleibt aus Designgründen) | 1.096 → 1.510 / 689 → 1.034 / 784 → 1.085 |
+
+Prüfung: `astro check` 0/0/0, `journal:audit` ohne Befund, Build ok, `seo:audit:strict` ohne Befund, `seo:release-routing` 165 Weiterleitungen / 0 Fehler, 272 Sitemap-URLs, mobil ohne horizontales Scrollen. `web:audit:tina-content --strict` meldet nur Zählabweichungen gegenüber dem alten Import-Manifest (Journal und Portfolio schon vorher, lokale Seiten jetzt 217 statt 216).
+
+**Review:** frühestens 6 Wochen nach Deploy (ab 06.11.2026) mit neuem GSC-Export – Positionen für „auto fotoshooting bochum/dortmund/ruhrgebiet“, „vintage fotoshooting nrw“, „motorrad nachts fotografieren“, „fahrzeugfotografie“, „automobilfotografie“, „portraitfotografie düsseldorf“.
+
 ## Kurzfazit
 
 1. **Die Optimierungen vom 31.08. sind live nur teilweise angekommen.** Bei 3 von 4 geprüften Kernseiten weichen Title und Description live von den lokalen Content-Dateien ab. Das kommt zuerst, weil der geplante Review am 12.10. sonst den falschen Stand misst.

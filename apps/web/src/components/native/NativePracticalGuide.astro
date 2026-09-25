@@ -18,6 +18,8 @@ type Props = {
 }
 
 const { eyebrow, intro, items, links, title } = Astro.props as Props
+// Längere Ratgeber-Abschnitte trennen Absätze mit einer Leerzeile.
+const paragraphsOf = (text: string) => text.split(/\n\s*\n/).map((paragraph) => paragraph.trim()).filter(Boolean)
 ---
 
 <section class="mr-guide" data-header-theme="light" data-theme="light" aria-labelledby="mr-guide-title">
@@ -25,10 +27,12 @@ const { eyebrow, intro, items, links, title } = Astro.props as Props
     <div class="mr-guide__intro">
       <span>{eyebrow}</span>
       <h2 id="mr-guide-title">{title}</h2>
-      <p>{intro}</p>
-      <nav aria-label="Passende Vertiefungen">
-        {links.map((link) => <a href={link.href}>{link.label} <span aria-hidden="true">-&gt;</span></a>)}
-      </nav>
+      {intro && <p>{intro}</p>}
+      {links.length > 0 && (
+        <nav aria-label="Passende Vertiefungen">
+          {links.map((link) => <a href={link.href}>{link.label} <span aria-hidden="true">-&gt;</span></a>)}
+        </nav>
+      )}
     </div>
     <ol class="mr-guide__steps">
       {items.map((item, index) => (
@@ -36,7 +40,7 @@ const { eyebrow, intro, items, links, title } = Astro.props as Props
           <span>{String(index + 1).padStart(2, '0')}</span>
           <div>
             <h3>{item.title}</h3>
-            <p>{item.text}</p>
+            {paragraphsOf(item.text).map((paragraph) => <p>{paragraph}</p>)}
           </div>
         </li>
       ))}
@@ -137,6 +141,10 @@ const { eyebrow, intro, items, links, title } = Astro.props as Props
     color: #4e4b46;
     line-height: 1.65;
     margin: 0;
+  }
+
+  .mr-guide__steps p + p {
+    margin-top: 0.85rem;
   }
 
   @media (max-width: 780px) {

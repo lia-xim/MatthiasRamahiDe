@@ -25,6 +25,14 @@
     {
       "question": "Was kostet ein Fahrzeug-Shooting?",
       "answer": "Ein Shooting beginnt bei 250 € inkl. MwSt. Drucke und Sonderwünsche werden separat abgerechnet. Der Preis richtet sich nach Umfang: Anzahl der Fahrzeuge, gewünschte Einstellungskategorien, Location-Aufwand und Verwendungszweck (Privat, Inserat, Kampagne). Eine kurze Beschreibung des Projekts genügt für ein konkretes Angebot."
+    },
+    {
+      "question": "Welche Ansichten gehören in einen Verkaufsbildsatz?",
+      "answer": "Gesamtansicht vorn und hinten schräg, Front, Heck und beide Seiten, dazu Innenraum mit Armaturenbrett, Sitzen und Kofferraum sowie Räder und relevante Zustandsdetails. Bei Motorrädern kommen Cockpit, Antrieb und die Seitenprofile dazu."
+    },
+    {
+      "question": "Kommst du zum Fahrzeug?",
+      "answer": "Ja. Ich fotografiere Fahrzeuge in NRW auch direkt beim Autohaus, in der Werkstatt, in der Halle oder am privaten Stellplatz – wenn dort genug Platz für Standpunkt und Licht ist."
     }
   ],
   "blocks": [
@@ -139,5 +147,50 @@
   "updatedAt": "2026-08-25T12:00:00.000Z",
   "createdAt": "2026-05-31 18:09:46.636+00",
   "status": "published",
-  "payloadId": "191"
+  "payloadId": "191",
+  "guideSection": {
+    "eyebrow": "Fahrzeugfotografie",
+    "headline": "Fahrzeugfotografie nach Fahrzeugtyp.",
+    "intro": "Auto, Oldtimer und Motorrad verlangen unterschiedliche Bilder. Was bei welchem Fahrzeug in den Bildsatz gehört und wie Ort und Licht gewählt werden, steht hier im Überblick.",
+    "items": [
+      {
+        "title": "Auto und Sportwagen: Lack, Linien, Reflexe",
+        "text": "Bei Autos entscheidet der Lack über den Standpunkt. Glatte Flächen spiegeln Umgebung, Himmel und Fotograf; deshalb wähle ich Winkel und Kamerahöhe danach, welche Linien auf Motorhaube und Türen liegen. Für Verkaufsbilder bleibt der Hintergrund ruhig, für Sportwagen darf der Ort mehr Charakter haben."
+      },
+      {
+        "title": "Oldtimer und Youngtimer: Zustand und Geschichte",
+        "text": "Bei Klassikern zählen Originalität, Patina und Zustand. Neben den Standardansichten gehören Typenschild, Motorraum, Details von Chrom und Leder und gegebenenfalls Restaurierungsspuren in die Serie. Für Verkauf, Auktion oder Versicherung müssen diese Bilder nachvollziehbar statt geschönt sein."
+      },
+      {
+        "title": "Motorrad: Profil, Technik, Details",
+        "text": "Ein Motorrad lebt vom Seitenprofil. Dazu kommen Front und Heck, Cockpit, Antrieb, Auspuff und Umbauten – bei Custom Bikes oft das eigentliche Thema. Weil Motorräder kleiner und filigraner sind, arbeite ich näher und mit mehr Detailaufnahmen als beim Auto."
+      },
+      {
+        "title": "Ort und Licht passend zum Zweck",
+        "text": "Für Bestand und Verkauf brauche ich gleichmäßiges Licht und einen neutralen Ort: Halle, Showroom oder eine ruhige Fläche bei bedecktem Himmel. Für eine Sammlung oder ein Lieblingsfahrzeug darf der Ort mitspielen, etwa Industriekulisse im Ruhrgebiet oder der Rhein in Düsseldorf. Mobiles Licht gleicht aus, was die Umgebung nicht liefert."
+      },
+      {
+        "title": "Kosten und Umfang",
+        "text": "Ein Fahrzeug-Shooting beginnt bei 250 € inkl. MwSt. Den Preis bestimmen Zahl der Fahrzeuge, Umfang der Bildliste, Ort und Fahrtweg sowie die spätere Nutzung. Für Händler mit laufendem Bestand lässt sich ein wiederkehrender Ablauf mit gleichbleibender Bildliste vereinbaren."
+      }
+    ],
+    "links": [
+      {
+        "label": "Autofotografie Düsseldorf",
+        "href": "/autofotografie-duesseldorf.html"
+      },
+      {
+        "label": "Oldtimer-Fotografie",
+        "href": "/oldtimer-fotografie.html"
+      },
+      {
+        "label": "Motorradfotografie",
+        "href": "/motorrad-fotografie.html"
+      },
+      {
+        "label": "Autoverkauf-Fotos",
+        "href": "/autoverkauf-fotos-duesseldorf.html"
+      }
+    ]
+  }
 }

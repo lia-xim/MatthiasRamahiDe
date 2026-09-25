@@ -80,6 +80,7 @@ const photoClusterPrefixes = [
   'paarshooting-familienshooting',
   'personal-branding-fotografie',
   'schwarz-weiss-portrait-fotografie',
+  'vintage-fotoshooting',
   'unternehmensportrait',
   'pressefoto',
   'landschaftsfotografie',
