@@ -80,6 +80,8 @@ Eigener Crawl (kostenlos, ohne Crawl Foundry):
 
 **Alte URLs mit 404 (Wayback-Abgleich):** 405 archivierte HTML-URLs der Domain live geprüft. 14 frühere Inhaltsseiten lieferten 404 ohne Weiterleitung (u. a. `/autofotografie/motorsport-fotografie/`, `/gutschein-fotoshooting/`, `/oldtimerfotograf-dortmund/`, fünf `/motorradfotografie/…`-Artikel). **Behoben:** 308 auf das jeweils passendste aktuelle Ziel in `legacyPathRedirectTargets`. Die 410-Antworten für alte Kategorie-, AGB- und Cookie-Seiten sind beabsichtigt. Backlink-Snapshot `snap_mf8e07uyo28l`: 176 Backlinks, 73 verweisende Domains, 8 als defekt gemeldet (Ziel-URLs liefert der Datenanbieter nicht); Spam-Score 21 durch PBN-/Shortener-Links, kein Handlungsbedarf außer keinem Linkkauf.
 
+**Vollständiger Site-Audit `aud_v7959wd3okh6` (25.09., 301 URLs, 0,08 €):** 0 Fehler, 0 kritische Befunde, 0 fehlgeschlagene Abrufe. Die zusätzlich gefundenen ~31 URLs sind Journal-Filter (`/blog.html?tag=…`, `?category=…`); ihre Canonical-Abweichung auf `/blog.html` ist beabsichtigt. Übrige Hinweise (Title-Länge, empfohlene Rich-Result-Properties) haben Info-Level. Keyword-Recherche `aop_jkp3827aa1uu` (max. 2,76 €) gestartet; Ergebnis noch offen.
+
 Crawl Foundry: Der Keyword-Lauf `aop_dqihfwrcg9l0` ist fehlgeschlagen (`KEYWORD_RESEARCH_SOURCE_RESERVATION_INVALID`, 0 € berechnet). GSC, Backlinks und Rank-Tracking fehlen weiterhin.
 
 ## Kurzfazit
