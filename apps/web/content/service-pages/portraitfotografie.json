@@ -346,7 +346,7 @@
     }
   ],
   "seo": {
-    "title": "Portraitfotografie in NRW — Matthias Ramahi",
+    "title": "Portraitfotografie NRW: Business, privat & kreativ | Matthias Ramahi",
     "description": "Portraitfotografie in NRW: Business Portrait, Personal Branding, Headshot & outdoor portrait fotoshooting — präzise, ruhig, kuratiert. Jetzt anfragen.",
     "secondaryKeywords": [],
     "internalLinkAnchors": [],
@@ -373,5 +373,54 @@
   "updatedAt": "2026-07-21 22:35:09.413+00",
   "createdAt": "2026-05-28T19:07:34.363Z",
   "status": "published",
-  "payloadId": "8"
+  "payloadId": "8",
+  "guideSection": {
+    "eyebrow": "Kreative Portraitfotografie",
+    "headline": "Kreative Portraits mit Konzept.",
+    "intro": "Kreativ heißt nicht beliebig. Ein ungewöhnliches Portrait entsteht, wenn Licht, Ort, Farbe und Bearbeitung dieselbe Idee erzählen. Diese Bausteine setze ich dafür ein.",
+    "items": [
+      {
+        "title": "Licht als Idee",
+        "text": "Harte Schatten, ein einzelnes Kantenlicht, tiefes Gegenlicht oder ein Low-Key-Aufbau verändern die Wirkung eines Gesichts stärker als jede Pose. Oft ist die Lichtentscheidung die eigentliche kreative Idee eines Portraits."
+      },
+      {
+        "title": "Ort und Umgebung",
+        "text": "Architektur im Medienhafen, weiches Licht im Hofgarten, die Weite am Rhein oder der Waldrand im Neandertal: Die Umgebung darf mitsprechen, wenn sie zur Person passt. Für konzentrierte Portraits bleibt das Studio in Düsseldorf die kontrollierte Alternative."
+      },
+      {
+        "title": "Farbe und Styling",
+        "text": "Kleidung, Hintergrund und Licht bilden zusammen eine Farbwelt. Komplementärkontraste wirken lebendig, Ton-in-Ton-Paletten ruhig und edel. Im Vorgespräch stimmen wir Outfits und Farben auf die Bildidee ab."
+      },
+      {
+        "title": "Instrument, Requisit, Bewegung",
+        "text": "Ein Instrument, ein Werkzeug oder eine Bewegung erzählt, was die Person tut. Bei Musikerinnen und Musikern bilden Bogen, Hals oder Hände starke Linien in der Komposition – sie gehören zum Bild, ohne zum bloßen Requisit zu werden."
+      },
+      {
+        "title": "Bearbeitung und Look",
+        "text": "Schwarz-Weiß reduziert auf Form und Ausdruck, ein Vintage-Look erinnert an Film, eine zurückhaltende Farbbearbeitung bleibt zeitlos. Der Look wird vorher festgelegt und am Set vorbereitet, nicht erst am Bildschirm erfunden."
+      },
+      {
+        "title": "Ablauf und Kosten",
+        "text": "Nach einem Vorgespräch zu Idee, Nutzung und Ort folgt das Shooting in Ruhe, meist ein bis drei Stunden. Danach wählst du deine Favoriten, die ich individuell bearbeite. Ein Portraitshooting beginnt bei 250 € inkl. MwSt."
+      }
+    ],
+    "links": [
+      {
+        "label": "Vintage Fotoshooting",
+        "href": "/vintage-fotoshooting.html"
+      },
+      {
+        "label": "Schwarz-Weiß-Portraits",
+        "href": "/schwarz-weiss-portrait-fotografie.html"
+      },
+      {
+        "label": "Musikerfotografie",
+        "href": "/musikerfotografie.html"
+      },
+      {
+        "label": "Portrait-Beleuchtung",
+        "href": "/portraitfotografie-beleuchtung.html"
+      }
+    ]
+  }
 }

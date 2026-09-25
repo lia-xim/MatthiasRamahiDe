@@ -84,7 +84,7 @@
     },
     {
       "headline": "Final & Versand.",
-      "body": "Druck in Endgröße, säurefreie Verpackung. Versand als Rohr oder Flachpaket, deutschlandweit innerhalb 48 h.",
+      "body": "Druck in Endgröße, säurefreie Verpackung. Versand als Rohr oder Flachpaket meist innerhalb von 48 h, Zustellung deutschlandweit in der Regel innerhalb von 5 Werktagen.",
       "_template": "textBlock"
     }
   ],
@@ -133,5 +133,46 @@
   "updatedAt": "2026-05-28T19:07:53.167Z",
   "createdAt": "2026-05-28T19:07:31.347Z",
   "status": "published",
-  "payloadId": "3"
+  "payloadId": "3",
+  "guideSection": {
+    "eyebrow": "Material & Preis",
+    "headline": "Welches Material zu welchem Motiv passt.",
+    "intro": "Das Material verändert, wie ein Foto an der Wand wirkt – Tiefe, Glanz, Farbe und Detail. So unterscheiden sich die Optionen im Fotolabor, und so setzt sich der Preis zusammen.",
+    "items": [
+      {
+        "title": "Matte FineArt-Papiere",
+        "text": "FineArt-Papiere von Hahnemühle, Canson und Ilford haben eine samtige, reflexarme Oberfläche. Sie wirken ruhig und hochwertig und passen zu Landschaften, Portraits und Schwarz-Weiß-Motiven. Weil sie kaum spiegeln, lassen sie sich auch in hellen Räumen gut betrachten."
+      },
+      {
+        "title": "Glänzende Oberflächen und Baryt-Anmutung",
+        "text": "Neben matten Papieren gibt es FineArt-Papiere mit leichtem Glanz oder Barytoberfläche. Sie zeigen tiefere Schwarztöne und mehr Kontrast, spiegeln dafür etwas stärker. Welche Sorte zum Motiv passt, klären wir beim Soft-Proof."
+      },
+      {
+        "title": "Acrylglas",
+        "text": "Unter Acrylglas bekommen Farben Tiefe und Brillanz – ideal für kräftige Motive und Nachtaufnahmen. Die Oberfläche spiegelt allerdings; der Print sollte deshalb nicht direkt gegenüber einem Fenster hängen."
+      },
+      {
+        "title": "Alu-Dibond",
+        "text": "Beim Druck auf Alu-Dibond sitzt das Bild direkt auf einer stabilen, leichten Platte. Die Wirkung ist matt und modern, ohne Rahmen und ohne Spiegelung – gut für große Formate, Büros und Praxen."
+      },
+      {
+        "title": "Leinwand",
+        "text": "Leinwand bringt eine sichtbare Struktur und eine weiche, wohnliche Wirkung. Sehr feine Details treten dabei etwas zurück; dafür eignet sie sich gut für großflächige Motive ohne Glas."
+      },
+      {
+        "title": "Wie sich der Preis zusammensetzt",
+        "text": "Der Preis ergibt sich aus Format, Material, Kaschierung oder Rahmung, Auflage und Versandart – vom Rohr über das Flachpaket bis zum Sperrgut bei Arbeiten auf Träger. Nach einer kurzen Anfrage mit Motiv, Format und gewünschtem Material bekommst du ein konkretes Angebot."
+      }
+    ],
+    "links": [
+      {
+        "label": "Fine-Art-Druck im Journal",
+        "href": "/blog-fine-art-druck.html"
+      },
+      {
+        "label": "Großformatdruck Düsseldorf",
+        "href": "/grossformatdruck-duesseldorf.html"
+      }
+    ]
+  }
 }

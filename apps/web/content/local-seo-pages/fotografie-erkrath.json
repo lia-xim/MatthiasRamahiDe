@@ -1,0 +1,230 @@
+{
+  "title": "Fotograf Erkrath",
+  "slug": "fotografie-erkrath",
+  "priority": "later",
+  "city": "erkrath",
+  "service": "Fotografie",
+  "intro": "Erkrath ist meine Basis – zwischen Düsseldorf und dem Neandertal. Von hier aus fotografiere ich Fahrzeuge, Motorräder, Menschen und Landschaften: in Erkrath selbst, im Studio in Düsseldorf und in ganz NRW.",
+  "heroImage": "/uploads/payload/assets-photos-automobil-neon-1921.webp",
+  "heroSlides": [],
+  "heroPanels": [],
+  "localProof": [
+    {
+      "label": "Automobil. Fotografie.",
+      "text": "Sechs Fotografie-Bereiche für ganz NRW — Rheinland, Ruhrgebiet, Niederrhein und Bergisches Land. Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Fine-Art-Landschaft auf einer Adresse."
+    },
+    {
+      "label": "Sportwagen. Fotografie.",
+      "text": "Sechs Fotografie-Bereiche für ganz NRW — Rheinland, Ruhrgebiet, Niederrhein und Bergisches Land. Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Fine-Art-Landschaft auf einer Adresse."
+    },
+    {
+      "label": "Oldtimer. Fotografie.",
+      "text": "Sechs Fotografie-Bereiche für ganz NRW — Rheinland, Ruhrgebiet, Niederrhein und Bergisches Land. Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Fine-Art-Landschaft auf einer Adresse."
+    }
+  ],
+  "localFaq": [
+    {
+      "question": "Hast du dein Studio in Erkrath?",
+      "answer": "Meine Basis ist Erkrath, das Studio für kontrollierte Lichtsetups liegt in Düsseldorf. Viele Shootings finden draußen statt – im Neandertal, in den Düssel-Auen oder an Orten in Düsseldorf und NRW."
+    },
+    {
+      "question": "Was fotografierst du in Erkrath?",
+      "answer": "Fahrzeuge vom Privatwagen bis zum Oldtimer, Motorräder, Business- und private Portraits sowie Landschaften für Fine-Art-Prints. Jeder Bereich hat eine eigene Seite mit Ablauf und Beispielen."
+    },
+    {
+      "question": "Was kostet ein Fotoshooting in Erkrath?",
+      "answer": "Ein Shooting beginnt bei 250 € inkl. MwSt. Drucke und Sonderwünsche werden separat abgerechnet. Nach einer kurzen Anfrage bekommst du eine konkrete Einschätzung."
+    }
+  ],
+  "blocks": [
+    {
+      "headline": "Fotografie NRW. Sechs Bereiche.",
+      "body": "Sechs Fotografie-Bereiche für ganz NRW — Rheinland, Ruhrgebiet, Niederrhein und Bergisches Land. Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Fine-Art-Landschaft auf einer Adresse.",
+      "_template": "textBlock"
+    },
+    {
+      "headline": "Automobil. Fotografie.",
+      "body": "Für Fahrzeuge, Marken, Händler und private Verkäufe in NRW: Exterieur, Interieur, Details und Lichtführung werden so geplant, dass aus einem Auto eine verwertbare Bildserie wird — für Website, Inserat, Social, Print und Kampagne.\n\nKeine generischen Fahrzeugbilder: kontrollierte Reflexe, ruhige Linien und ein Bildsatz, der technisch sauber weiterverwendet werden kann.",
+      "_template": "textBlock"
+    },
+    {
+      "layout": "single-large",
+      "items": [
+        {
+          "image": "/uploads/payload/assets-photos-automobil-neon-1921.webp",
+          "caption": "Automobil im kontrollierten Neonlicht",
+          "cropIntent": "auto"
+        }
+      ],
+      "_template": "imageSequence"
+    },
+    {
+      "headline": "Sportwagen. Fotografie.",
+      "body": "Sportwagen in NRW brauchen Präzision statt Effektfeuerwerk: niedrige Blickachsen, saubere Spiegelungen, Innenraumdetails und eine Dramaturgie, die Leistung sichtbar macht, ohne ins Plakative zu kippen.\n\nFür Sammler, Händler, Performance-Projekte und hochwertige Verkaufsserien mit Bildwirkung über den ersten Blick hinaus.",
+      "_template": "textBlock"
+    },
+    {
+      "layout": "single-large",
+      "items": [
+        {
+          "image": "/uploads/payload/assets-photos-automobil-sunset-1921.webp",
+          "caption": "Sportwagen im warmen Streiflicht",
+          "cropIntent": "auto"
+        }
+      ],
+      "_template": "imageSequence"
+    },
+    {
+      "headline": "Oldtimer. Fotografie.",
+      "body": "Oldtimer Fotografie in NRW erzählt Wert, Herkunft und Material. Lack, Chrom, Leder und Patina werden nicht nostalgisch überhöht, sondern mit Charakter und Nostalgie präzise dokumentiert.\n\nIdeal für Sammlung, Auktion, Verkauf, Ausstellung und Fahrzeuge, deren Geschichte sichtbar bleiben soll.",
+      "_template": "textBlock"
+    },
+    {
+      "layout": "single-large",
+      "items": [
+        {
+          "image": "/uploads/payload/assets-photos-oldtimer-stage-1920.webp",
+          "caption": "Oldtimer als ruhige ruhige Inszenierung",
+          "cropIntent": "auto"
+        }
+      ],
+      "_template": "imageSequence"
+    },
+    {
+      "headline": "Motorrad. Fotografie.",
+      "body": "Motorräder in NRW funktionieren über Haltung, Mechanik und Silhouette. Die Serie kann Maschine, Details, Fahrer und Werkstattbezug verbinden — stärker als ein einzelnes Verkaufsfoto.\n\nFür Custom Bikes, Händler, private Maschinen, Werkstätten und dokumentarische Serien mit Druck.",
+      "_template": "textBlock"
+    },
+    {
+      "layout": "single-large",
+      "items": [
+        {
+          "image": "/uploads/payload/assets-photos-motorrad-1920.webp",
+          "caption": "Motorrad mit dunkler Location-Atmosphäre",
+          "cropIntent": "auto"
+        }
+      ],
+      "_template": "imageSequence"
+    },
+    {
+      "headline": "Portrait. Fotografie.",
+      "body": "Portraits in NRW sollen professionell wirken, ohne Menschen glattzubügeln. Licht, Distanz und Blickführung werden auf Nutzung und Persönlichkeit abgestimmt — für Branding, Presse, Team und Editorial.\n\nKein Passbild-Look, kein austauschbares LinkedIn-Template — sondern klare Bilder mit Haltung und Wiedererkennung.",
+      "_template": "textBlock"
+    },
+    {
+      "layout": "single-large",
+      "items": [
+        {
+          "image": "/uploads/payload/portrait-blue-1.webp",
+          "caption": "Editoriales Portrait mit blauem Licht",
+          "cropIntent": "auto"
+        }
+      ],
+      "_template": "imageSequence"
+    },
+    {
+      "headline": "Landschaft. Fotografie.",
+      "body": "Landschaftsfotografie ist für NRW weniger lokales Shooting als kuratierter Bildkauf: Fine-Art-Prints, Wandbilder, Editionen und große Formate werden nach Raum, Material und Wirkung ausgewählt.\n\nDeutschlandweit sinnvoll für private Räume, Praxen, Hotels, Büros und Sammlungen, die Ruhe statt Dekoration suchen.",
+      "_template": "textBlock"
+    },
+    {
+      "layout": "single-large",
+      "items": [
+        {
+          "image": "/uploads/payload/assets-photos-landschaft-1921.webp",
+          "caption": "Atmosphärische Landschaftsfotografie",
+          "cropIntent": "auto"
+        }
+      ],
+      "_template": "imageSequence"
+    },
+    {
+      "headline": "Ein Einstieg, sechs Bereiche.",
+      "body": "NRW bündelt Rheinland, Ruhrgebiet, Niederrhein und Bergisches Land. Die Seite führt nicht in eine generische Galerie, sondern in die passende Kategorie mit regionalem Bezug.\n\nDie Übersicht dient als zentrale Landingpage: Nutzer wählen nicht aus einem generischen Portfolio, sondern steigen direkt in Automobil, Sportwagen, Oldtimer, Motorrad, Portrait oder Landschaft ein. Jede Kategorie führt weiter in lokale Varianten, NRW-/Deutschland-Hubs und die jeweiligen Keyword-Seiten.",
+      "_template": "textBlock"
+    }
+  ],
+  "statement": {
+    "body": []
+  },
+  "focusSection": {},
+  "shootingStyles": [],
+  "gallerySection": {},
+  "portfolioTiles": [],
+  "processSection": {},
+  "processSteps": [],
+  "audienceSection": {},
+  "audienceCards": [],
+  "relatedSection": {
+    "items": []
+  },
+  "faq": [],
+  "locationLinksSection": {
+    "items": []
+  },
+  "searchLinksSection": {
+    "items": []
+  },
+  "contactSection": {},
+  "targetKeyword": "Fotograf Erkrath",
+  "seo": {
+    "title": "Fotograf Erkrath: Fahrzeug- & Portraitfotografie | Matthias Ramahi",
+    "description": "Fotograf in Erkrath: Autos, Motorräder, Oldtimer, Portraits und Landschaft – mit Orten im Neandertal, Studio in Düsseldorf und Shooting ab 250 €.",
+    "canonicalUrl": "https://matthiasramahi.de/fotografie-erkrath.html",
+    "legacyUrl": "fotografie-erkrath.html",
+    "ogImage": "/uploads/payload/assets-photos-automobil-neon-1921.webp",
+    "noIndex": false,
+    "focusKeyword": "Fotograf Erkrath",
+    "searchIntent": "Lokale Dienstleistungsanfrage: Nutzer suchen einen Fotografen in Erkrath und wollen Bereiche, Orte, Ablauf und Preis sehen."
+  },
+  "legacy": {
+    "sourceFile": "fotografie-erkrath.html",
+    "sourceUrl": "https://matthiasramahi.de/fotografie-erkrath.html",
+    "migrationStatus": "new",
+    "renderSource": "structured-astro"
+  },
+  "updatedAt": "2026-09-25T14:00:00.000Z",
+  "createdAt": "2026-09-25T14:00:00.000Z",
+  "status": "published",
+  "guideSection": {
+    "eyebrow": "Fotograf in Erkrath",
+    "headline": "Fotografie aus Erkrath: Orte, Bereiche, Ablauf.",
+    "intro": "Wer einen Fotografen in Erkrath sucht, hat kurze Wege: zu Terminen in Alt-Erkrath und Hochdal, ins Neandertal und nach Düsseldorf. So arbeite ich von hier aus.",
+    "items": [
+      {
+        "title": "Sechs Bereiche, ein Ansprechpartner",
+        "text": "Ich fotografiere Automobile, Sportwagen, Oldtimer und Motorräder, dazu Portraits für geschäftliche und private Zwecke sowie Landschaften als Fine-Art-Print. Jeder Bereich hat eine eigene Seite mit Ablauf, Beispielen und Preisen – die Links unten führen direkt zu den Erkrath-Varianten."
+      },
+      {
+        "title": "Orte in und um Erkrath",
+        "text": "Das Neandertal beginnt praktisch an der Stadtgrenze. Am Waldrand fällt das Licht weich durch die Kronen – gut für ruhige Outdoor-Portraits. Die Düssel-Auen zwischen Alt-Erkrath und Hochdal bieten diffuses Licht und klare Hintergründe, Feldwege und ruhige Gewerbeflächen eignen sich für Fahrzeug- und Motorradbilder ohne Stadtkulisse."
+      },
+      {
+        "title": "Studio und Stadt in Düsseldorf",
+        "text": "Für kontrolliertes Licht, Headshots und Business-Portraits gibt es das Studio in Düsseldorf. Wer eine urbane Kulisse sucht – Medienhafen, Rheinufer, Königsallee –, ist von Erkrath aus in kurzer Zeit dort. Beide Settings lassen sich an einem Termin kombinieren."
+      },
+      {
+        "title": "So läuft eine Anfrage ab",
+        "text": "Du beschreibst kurz, was fotografiert werden soll und wofür die Bilder gedacht sind. Danach klären wir Ort, Lichtfenster und Umfang. Ein Shooting beginnt bei 250 € inkl. MwSt.; der genaue Preis richtet sich nach Motiv, Dauer, Ort und Nutzung."
+      }
+    ],
+    "links": [
+      {
+        "label": "Portraitfotografie Erkrath",
+        "href": "/portraitfotografie-erkrath.html"
+      },
+      {
+        "label": "Automobilfotografie Erkrath",
+        "href": "/automobil-fotografie-erkrath.html"
+      },
+      {
+        "label": "Motorradfotografie Erkrath",
+        "href": "/motorrad-fotografie-erkrath.html"
+      },
+      {
+        "label": "Landschaftsfotografie Erkrath",
+        "href": "/landschaftsfotografie-erkrath.html"
+      }
+    ]
+  }
+}

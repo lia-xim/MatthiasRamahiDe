@@ -25,6 +25,14 @@
     {
       "question": "Was kostet ein Portrait-Shooting mit definiertem Lichtkonzept?",
       "answer": "Ein Shooting beginnt bei 250 € inkl. MwSt. Drucke und Sonderwünsche werden separat abgerechnet. Der Preis richtet sich nach Umfang — Anzahl der Personen, Shooting-Dauer, Locations und Nachbearbeitung. Konkrete Informationen dazu gibt es auf Anfrage."
+    },
+    {
+      "question": "Welche Kamera-Einstellungen eignen sich für Portraits?",
+      "answer": "Mit Blitz im Studio etwa f/5.6 bis f/8, 1/125 bis 1/200 Sekunde und ISO 100. Mit natürlichem Licht und weichem Hintergrund eher f/2 bis f/2.8 und eine Verschlusszeit, die Verwacklung sicher verhindert. Eine Brennweite um 85 Millimeter (Kleinbild) gibt natürliche Proportionen; scharfgestellt wird auf das nähere Auge."
+    },
+    {
+      "question": "Softbox oder Beauty Dish – was ist besser?",
+      "answer": "Keines ist grundsätzlich besser. Eine große Softbox liefert weiche, gleichmäßige Übergänge und verzeiht viel. Ein Beauty Dish zeichnet knackiger, mit mehr Glanz auf der Haut und klareren Schatten. Die Wahl hängt davon ab, wie markant das Portrait wirken soll."
     }
   ],
   "blocks": [],
@@ -87,8 +95,8 @@
   "contactSection": {},
   "targetKeyword": "Portraitfotografie Beleuchtung",
   "seo": {
-    "title": "Portraitfotografie Beleuchtung | Matthias Ramahi",
-    "description": "Wie Licht Portraits formt: Fensterlicht, Studioblitz, Rembrandt und Diffuslicht gezielt eingesetzt — für Personal Branding, Editorial und Print. Matthias Ramahi.",
+    "title": "Portraitfotografie Beleuchtung: Setups & Einstellungen | Matthias Ramahi",
+    "description": "Portraitfotografie Beleuchtung: Fensterlicht, Rembrandt-, Loop- und Butterfly-Licht, Softbox oder Beauty Dish und Kamera-Einstellungen – aus der Praxis erklärt.",
     "canonicalUrl": "https://matthiasramahi.de/portraitfotografie-beleuchtung.html",
     "legacyUrl": "portraitfotografie-beleuchtung.html",
     "noIndex": false,
@@ -105,5 +113,54 @@
   "updatedAt": "2026-07-28T18:00:00.000+02:00",
   "createdAt": "2026-05-31 18:09:47.738+00",
   "status": "published",
-  "payloadId": "214"
+  "payloadId": "214",
+  "guideSection": {
+    "eyebrow": "Lichtleitfaden",
+    "headline": "Portraitlicht: Setups, Lichtformer, Einstellungen.",
+    "intro": "Die Reihenfolge trennt Bildwirkung von bloßer Technik. Sie zeigt, welche Entscheidungen vor und während eines Portrait-Shootings getroffen werden – vom Fensterlicht bis zum Studioblitz.",
+    "items": [
+      {
+        "title": "Gewünschte Wirkung benennen",
+        "text": "Nahbar, sachlich, markant oder editorial sind unterschiedliche Ziele. Die beabsichtigte Wirkung entscheidet über Lichtgröße, Richtung und Kontrast – und damit über alles, was folgt."
+      },
+      {
+        "title": "Natürliches Licht nutzen",
+        "text": "Fensterlicht von der Seite zeichnet Struktur, ohne hart zu sein. Im offenen Schatten, etwa unter einem Vordach oder am Rand eines Gebäudes, fällt das Licht weich und gleichmäßig. Gegenlicht lässt Haare und Kontur leuchten; ein Reflektor hellt das Gesicht dann gezielt auf."
+      },
+      {
+        "title": "Klassische Lichtsetups",
+        "text": "Beim Rembrandt-Licht steht die Lichtquelle seitlich und etwas höher, auf der Schattenseite entsteht ein kleines Lichtdreieck unter dem Auge. Loop-Licht ist ähnlich, aber flacher und freundlicher. Butterfly-Licht kommt von vorn oben und erzeugt einen kleinen Schatten unter der Nase – beliebt für Beauty und Headshots. Split-Licht teilt das Gesicht in Hell und Dunkel und wirkt entsprechend hart.\n\nEin zusätzliches Kantenlicht von hinten trennt die Person vom Hintergrund, besonders bei dunkler Kleidung."
+      },
+      {
+        "title": "Lichtformer: Softbox, Beauty Dish, Striplight",
+        "text": "Die Weichheit des Lichts hängt von der Größe der Lichtquelle im Verhältnis zur Person ab: Je größer und näher, desto weicher. Eine große Softbox oder Oktabox gibt sanfte Übergänge, ein Beauty Dish zeichnet knackiger mit mehr Glanz, ein Striplight setzt schmale Kanten. Reflektoren und schwarze Flächen formen die Schatten nach."
+      },
+      {
+        "title": "Kamera-Einstellungen für Portraits",
+        "text": "Mit Studioblitz arbeite ich meist mit Blende f/5.6 bis f/8, 1/125 bis 1/200 Sekunde und ISO 100 – so bestimmt allein der Blitz die Belichtung. Bei natürlichem Licht und gewünschter Unschärfe im Hintergrund öffnet sich die Blende auf f/2 bis f/2.8. Eine Brennweite um 85 Millimeter (Kleinbild) gibt natürliche Proportionen; scharfgestellt wird immer auf das nähere Auge."
+      },
+      {
+        "title": "Low-Key und High-Key",
+        "text": "Low-Key-Portraits leben von viel Schatten und wenig, gezielt gesetztem Licht. High-Key-Portraits sind hell, kontrastarm und brauchen einen gleichmäßig ausgeleuchteten Hintergrund. Beide Stile beginnen beim Licht, nicht in der Bearbeitung."
+      },
+      {
+        "title": "Augen und Kontur prüfen, Serie sichern",
+        "text": "Catchlight, Schattenkante und die Trennung vom Hintergrund werden gemeinsam geprüft. Halbnah, Close-up und Hochformat dürfen unterschiedlich wirken, müssen aber Lichtfarbe, Kontrast und Bearbeitung als zusammengehörige Serie tragen."
+      }
+    ],
+    "links": [
+      {
+        "label": "Low-Key und High-Key im Portrait",
+        "href": "/blog-low-key-high-key-portraits.html"
+      },
+      {
+        "label": "Lichtformer für Portraitfotografie",
+        "href": "/blog-lichtformer-portraitfotografie.html"
+      },
+      {
+        "label": "Portraitfotografie Düsseldorf",
+        "href": "/portraitfotografie-duesseldorf.html"
+      }
+    ]
+  }
 }

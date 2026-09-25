@@ -1,0 +1,132 @@
+{
+  "title": "Fotospots für Autos in NRW: Orte fürs Auto-Fotoshooting",
+  "slug": "fotospots-autos-nrw",
+  "category": "automotive",
+  "tags": [
+    "Automotive",
+    "Location",
+    "Fotospots",
+    "NRW"
+  ],
+  "publishedAt": "2026-09-25T14:00:00.000Z",
+  "excerpt": "Welche Orte sich in NRW für Autofotos eignen – von Düsseldorf über Bochum, Dortmund, Essen und Duisburg bis Erkrath – und wie du gute Fotospots für Autos in deiner Nähe findest.",
+  "coverImage": "/assets/optimized/assets-photos-automobil-sunset-1920.webp",
+  "coverAlt": "Schwarzer SUV bei Sonnenuntergang, gespiegelt in einer Pfütze vor Industriekulisse",
+  "readingTime": 8,
+  "seo": {
+    "title": "Fotospots für Autos in NRW: Orte fürs Auto-Shooting | Matthias Ramahi",
+    "description": "Fotospots für Autos in NRW: Orte in Düsseldorf, Bochum, Dortmund, Essen, Duisburg und Erkrath – mit Licht, Zugang und Tipps für Spots in deiner Nähe.",
+    "focusKeyword": "Fotospots für Autos",
+    "searchIntent": "Informationssuche: Autofahrer und Fotografen suchen geeignete Orte für Autofotos in NRW und wollen wissen, wie sie Fotospots in ihrer Nähe finden.",
+    "canonicalUrl": "https://matthiasramahi.de/blog-fotospots-autos-nrw.html",
+    "legacyUrl": "blog-fotospots-autos-nrw.html",
+    "ogImage": "/assets/optimized/assets-photos-automobil-sunset-1920.webp",
+    "noIndex": false
+  },
+  "legacy": {
+    "sourceFile": "blog-fotospots-autos-nrw.html",
+    "sourceUrl": "https://matthiasramahi.de/blog-fotospots-autos-nrw.html",
+    "migrationStatus": "new",
+    "renderSource": "structured-astro"
+  },
+  "status": "published",
+  "createdAt": "2026-09-25T14:00:00.000Z",
+  "updatedAt": "2026-09-25T14:00:00.000Z",
+  "relatedPages": [
+    {
+      "label": "Auto-Fotoshooting NRW",
+      "href": "/auto-fotoshooting.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Auto fotografieren: Tipps",
+      "href": "/auto-fotografieren-tipps.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    }
+  ],
+  "blocks": [
+    {
+      "_template": "textBlock",
+      "headline": "Was einen guten Fotospot für Autos ausmacht",
+      "body": "Ein schöner Ort ist noch kein guter Fotospot. Für Autofotos braucht es eine ebene Fläche, auf der das Fahrzeug frei stehen kann, genug Abstand für eine längere Brennweite und einen Hintergrund, der nichts aus dem Dach wachsen lässt – keine Laterne, kein Schild, kein Mülleimer.\n\nDazu kommen Licht und Ruhe. Ein Ort, der morgens im weichen Licht liegt, kann mittags voller harter Schatten sein. Und wo ständig Verkehr oder Passanten durchs Bild laufen, wird aus einem Shooting schnell Stückwerk. Die besten Spots verbinden Fläche, Hintergrund, Licht und Zugang."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Düsseldorf: Medienhafen, Rhein und Kö",
+      "body": "Im Medienhafen geben Glasfassaden und klare Linien modernen Fahrzeugen einen architektonischen Rahmen; im Abendlicht wirkt das besonders stimmungsvoll. Am Rheinufer gibt es Weite und offenen Himmel, die Rheinkniebrücke setzt eine markante Linie in den Hintergrund. Die Königsallee steht für Großstadt und Stil, ist tagsüber aber stark befahren – dort lohnen sich ruhige Zeitfenster.\n\nFür rauere, kontrastreiche Bilder bieten sich industrielle Hintergründe im Düsseldorfer Süden an, etwa in Reisholz."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Bochum und Dortmund: Industriekultur und Wasser",
+      "body": "In Bochum ist die Jahrhunderthalle mit dem Westpark die bekannteste Kulisse: Stahl, Backstein und grafische Träger. Am Kemnader See entstehen ruhigere Motive mit Spiegelungen, rund um das Bermuda3eck und die Innenstadt urbane Nachtbilder mit Leuchtreklamen.\n\nDortmund verbindet beides auf engem Raum. Der Phoenix-See liefert klare Linien und Wasserspiegelungen, Phoenix-West als ehemalige Hochofenanlage Stahl und Beton, das Dortmunder U und die Hafenkante urbane Motive."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Essen und Duisburg: Zollverein und Landschaftspark",
+      "body": "Die Zeche Zollverein in Essen ist die wohl berühmteste Industriekulisse des Ruhrgebiets – glänzender Lack vor rostfarbenem Stahl und Ziegel. Für kommerzielle Produktionen auf dem Gelände sollte die Genehmigung vorher geklärt sein. Die Innenstadt und Rüttenscheid bieten urbane Motive für die blaue Stunde.\n\nIn Duisburg geben Hochöfen und Stahl im Landschaftspark Nord einem Bild Schwere; in der Dämmerung kommt die Beleuchtung der Anlage dazu. Der Innenhafen mit Glasfassaden und Wasser sowie der Rheinpark und der Ruhrorter Hafen bieten ruhigere, weite Motive."
+    },
+    {
+      "_template": "imageSequence",
+      "headline": "Was ein Spot leisten kann",
+      "layout": "editorial-pair",
+      "items": [
+        {
+          "image": "/assets/optimized/assets-photos-automobil-sunset-1920.webp",
+          "caption": "Pfütze als Spiegel: Abendhimmel und Industriekulisse erscheinen doppelt, das Fahrzeug steht frei",
+          "cropIntent": "editorial"
+        },
+        {
+          "image": "/assets/optimized/assets-portfolio-dsc2762-1920.webp",
+          "caption": "Offene Asphaltfläche mit viel Himmel – ein ruhiger Hintergrund lässt Linien und Proportionen wirken",
+          "cropIntent": "editorial"
+        }
+      ]
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Erkrath und Neandertal: Natur statt Stadt",
+      "body": "Zwischen Düsseldorf und dem Bergischen Land liegen ruhigere Alternativen. Rund um Erkrath bieten die Düssel-Auen und die Außenbereiche am Neandertal weiches, diffuses Licht und Hintergründe ohne Stadtkulisse. Die Hänge des Tals streuen das Licht – gut für helle Lacke, die ohne harte Reflexe wirken sollen."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "So findest du Fotospots für Autos in deiner Nähe",
+      "body": "Die Satellitenansicht in Kartendiensten zeigt große, freie Flächen, die man vom Auto aus leicht übersieht: Gewerbegebiete, Industriebrachen, Parkplätze am Rand von Sportanlagen, Wege an Flüssen und Seen. Mit der Straßenansicht lässt sich vorab prüfen, wie der Hintergrund aussieht.\n\nVor Ort lohnt ein Blick zur geplanten Uhrzeit: Wo steht die Sonne, wo fallen Schatten, wie viel Betrieb ist? Viele Gewerbeflächen sind am Wochenende leer und dann ideal – sofern sie öffentlich zugänglich sind."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Genehmigung, Zugang und Rücksicht",
+      "body": "Parkplätze von Supermärkten, Parkhäuser, Tankstellen und Firmengelände sind Privatgelände. Für ein kurzes privates Foto wird oft niemand etwas sagen; für ein geplantes Shooting oder kommerzielle Aufnahmen gehört die Erlaubnis des Eigentümers dazu. Auf öffentlichen Straßen darf das Fahrzeug nicht den Verkehr behindern, und für Aufnahmen auf Fahrbahnen braucht es in der Regel eine Genehmigung.\n\nRücksicht zahlt sich aus: Wer Anwohner und Passanten nicht stört und den Ort sauber verlässt, darf meist wiederkommen."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Wenn der Spot schon gefunden sein soll",
+      "body": "Bei einem Auto-Fotoshooting schlage ich den Ort erst vor, wenn ich Fahrzeug, Lackfarbe und Nutzung kenne – und prüfe Zufahrt, Hintergrund und Lichtfenster vorher. Für die Städte im Ruhrgebiet und Düsseldorf gibt es eigene Seiten mit konkreten Spots, Ablauf und Kosten."
+    },
+    {
+      "_template": "faqBlock",
+      "headline": "Kurze Fragen",
+      "items": [
+        {
+          "question": "Wo finde ich gute Fotospots für Autos in der Nähe?",
+          "answer": "Große, freie Flächen findest du am schnellsten über die Satellitenansicht von Kartendiensten: Gewerbegebiete, Industriebrachen, Wege an Flüssen und Seen. Mit der Straßenansicht prüfst du den Hintergrund, vor Ort dann Licht und Betrieb zur geplanten Uhrzeit."
+        },
+        {
+          "question": "Welche Fotospots für Autos gibt es in NRW?",
+          "answer": "Beliebt sind der Medienhafen und das Rheinufer in Düsseldorf, die Jahrhunderthalle in Bochum, der Phoenix-See und Phoenix-West in Dortmund, die Zeche Zollverein in Essen und der Landschaftspark Nord in Duisburg. Ruhigere Motive bietet das Neandertal bei Erkrath."
+        },
+        {
+          "question": "Darf ich auf Parkplätzen und in Parkhäusern Autos fotografieren?",
+          "answer": "Parkplätze und Parkhäuser sind meist Privatgelände. Für ein geplantes Shooting oder kommerzielle Aufnahmen brauchst du die Erlaubnis des Eigentümers."
+        },
+        {
+          "question": "Welche Tageszeit ist am besten für Autofotos?",
+          "answer": "Früher Morgen und Abend, weil das Licht dann weich ist und Reflexe auf dem Lack kontrollierbar bleiben. Zur blauen Stunde kommen Scheinwerfer und Stadtlicht als Bildelement dazu."
+        }
+      ]
+    }
+  ]
+}

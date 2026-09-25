@@ -134,6 +134,16 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
     stylesheets: [...sharedStyles, '/assets/fotografie-overview.css'],
     title: 'Fotografie NRW | Übersicht | Matthias Ramahi',
   },
+  'fotografie-erkrath.html': {
+    current: 'fotografie',
+    description:
+      'Fotograf in Erkrath: Autos, Motorräder, Oldtimer, Portraits und Landschaft – mit Orten im Neandertal, Studio in Düsseldorf und Shooting ab 250 €.',
+    ogImage: '/assets/optimized/mpik8b82-dsc3879-1920.webp',
+    preloadImages: ['/assets/optimized/mpik8b82-dsc3879-1920.webp'],
+    scripts: ['/assets/native-home.js', ...siteChromeScript],
+    stylesheets: [...sharedStyles, '/assets/fotografie-overview.css'],
+    title: 'Fotograf Erkrath: Fahrzeug- & Portraitfotografie | Matthias Ramahi',
+  },
   'fotografie-deutschland.html': {
     current: 'fotografie',
     description:

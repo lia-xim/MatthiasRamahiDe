@@ -158,6 +158,8 @@ const overviewHref = 'fotografie-duesseldorf.html'
 const publishedHref = preview?.publishedHref || (doc ? routeForDoc('local-seo-pages', doc) : `/${legacyFile}`)
 const isPracticalGuide = legacyFile === 'auto-fotografieren-tipps.html'
 const guideJsonLd = isPracticalGuide && doc ? articleJsonLd(doc, `/${legacyFile}`) : undefined
+// Ein gepflegter Ratgeber (guideSection) ersetzt den fest verdrahteten Praxisleitfaden.
+const hasCmsGuide = Boolean(doc?.guideSection?.headline && doc.guideSection.items?.length)
 const practicalGuideItems = [
   {
     title: 'Nutzung vor der Aufnahme festlegen',
@@ -796,7 +798,7 @@ const curatedIntentHeading = isParentPage
       </div>
     </section>
 
-    {isPracticalGuide && (
+    {isPracticalGuide && !hasCmsGuide && (
       <NativePracticalGuide
         eyebrow="Praxisleitfaden"
         title="Auto fotografieren: die Reihenfolge vor Ort."
@@ -809,7 +811,7 @@ const curatedIntentHeading = isParentPage
       />
     )}
 
-    <NativeGuideSection doc={doc} disabled={isPracticalGuide} />
+    <NativeGuideSection doc={doc} />
 
     <section class="sw" id="sichten" data-header-theme="dark">
       <header class="sw-head">

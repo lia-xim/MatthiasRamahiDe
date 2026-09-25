@@ -1,5 +1,7 @@
 ---
 import ContactSlot from '../ContactSlot.astro'
+import NativeFamilyFaq from './NativeFamilyFaq.astro'
+import NativeGuideSection from './NativeGuideSection.astro'
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import { splitCmsHeroTitleLines } from '../../lib/heroTitleLines'
 import { blockParagraphs, homeHeroSlidesFor, photographyTopics as fallbackTopics } from '../../lib/nativeContent'
@@ -44,6 +46,14 @@ const overviewMeta: Record<string, { description: string; heroLines: [string, st
     intro:
       'Fotografie in NRW als klare Übersicht für Rheinland, Ruhrgebiet und angrenzende Regionen - mit sechs Bereichen und direkten Einstiegen in lokale Seiten.',
     title: 'Fotografie NRW | Übersicht | Matthias Ramahi',
+  },
+  'fotografie-erkrath.html': {
+    description:
+      'Fotograf in Erkrath: Autos, Motorräder, Oldtimer, Portraits und Landschaft – mit Orten im Neandertal, Studio in Düsseldorf und Shooting ab 250 €.',
+    heroLines: ['Fotograf', 'Erkrath.'],
+    intro:
+      'Erkrath ist meine Basis – zwischen Düsseldorf und dem Neandertal. Von hier aus fotografiere ich Fahrzeuge, Motorräder, Menschen und Landschaften: in Erkrath selbst, im Studio in Düsseldorf und in ganz NRW.',
+    title: 'Fotograf Erkrath: Fahrzeug- & Portraitfotografie | Matthias Ramahi',
   },
   'fotografie-deutschland.html': {
     description:
@@ -129,7 +139,19 @@ const clusterParagraphs = clusterIntroCms.length
       'Die Übersicht ist der Einstiegspunkt. Von hier aus führen die sechs Bereiche auf eigene Hauptseiten — und von dort weiter in lokale Varianten, NRW- und Deutschland-Hubs sowie die jeweiligen Keyword-Seiten.',
       'Nutzer wählen nicht aus einem generischen Portfolio, sondern steigen direkt in Automobil, Sportwagen, Oldtimer, Motorrad, Portrait oder Landschaft ein. Jede Kategorie zeigt auf ihrer Hauptseite die zugehörigen Städte und Regionen.',
     ])
-const localHubGroups = [
+const erkrathHubGroup = {
+  title: 'Erkrath',
+  text: 'Die sechs Fotografie-Bereiche mit Orten und Ablauf in Erkrath.',
+  links: [
+    ['Automobil Erkrath', '/automobil-fotografie-erkrath.html'],
+    ['Sportwagen Erkrath', '/sportwagen-fotografie-erkrath.html'],
+    ['Oldtimer Erkrath', '/oldtimer-fotografie-erkrath.html'],
+    ['Motorrad Erkrath', '/motorrad-fotografie-erkrath.html'],
+    ['Portrait Erkrath', '/portraitfotografie-erkrath.html'],
+    ['Landschaft Erkrath', '/landschaftsfotografie-erkrath.html'],
+  ],
+}
+const baseHubGroups = [
   {
     title: 'Düsseldorf',
     text: 'Die wichtigsten lokalen Einstiege für direkte Anfragen im Kerngebiet.',
@@ -172,6 +194,10 @@ const localHubGroups = [
     ],
   },
 ]
+const localHubGroups = legacyFile === 'fotografie-erkrath.html' ? [erkrathHubGroup, ...baseHubGroups] : baseHubGroups
+const overviewFaq = (providedDoc?.localFaq || [])
+  .map((item) => ({ q: item?.question || '', a: item?.answer || '' }))
+  .filter((item) => item.q && item.a)
 ---
 <AdoptedPageLayout legacyFile={legacyFile} current="fotografie" doc={doc} title={pageMetaTitle} description={pageMetaDescription} canonicalUrl={pageCanonicalUrl} ctaHref="#anfrage" preloadImages={[firstHeroSlide.image]} liveCms>
   <main>
@@ -198,6 +224,8 @@ const localHubGroups = [
       </div>
       <div class="hero-cursor" id="hero-cursor" aria-hidden="true"><span class="ring"></span></div>
     </section>
+
+    <NativeGuideSection doc={providedDoc} />
 
     {topics.map((topic) => (
       <section class={`topic ${topic.theme} ${topic.className}`} id={topic.id} data-theme={topic.theme}>
@@ -245,6 +273,8 @@ const localHubGroups = [
         </div>
       </div>
     </section>
+
+    <NativeFamilyFaq faq={overviewFaq} pageUrl={`https://matthiasramahi.de/${legacyFile}`} theme="light" />
 
     <ContactSlot
       id="anfrage"

@@ -1,0 +1,127 @@
+{
+  "title": "Rolling Shots mit dem Auto: Ablauf, Technik und Sicherheit",
+  "slug": "rolling-shots-auto",
+  "category": "automotive",
+  "tags": [
+    "Automotive",
+    "Rolling Shots",
+    "Bewegung",
+    "Sicherheit"
+  ],
+  "publishedAt": "2026-09-25T14:00:00.000Z",
+  "excerpt": "Wie Rolling Shots mit dem Auto entstehen: Car-to-Car-Aufnahmen mit Begleitfahrzeug, passende Verschlusszeiten, Rollen im Team, Strecke, Genehmigung – und sichere Alternativen.",
+  "coverImage": "/assets/optimized/assets-portfolio-dsc2358-1920.webp",
+  "coverAlt": "Orangefarbener Sportwagen in einem Parkdeck mit Lichtreihen an der Decke",
+  "readingTime": 8,
+  "seo": {
+    "title": "Rolling Shots Auto: Ablauf, Technik & Sicherheit | Matthias Ramahi",
+    "description": "Rolling Shots mit dem Auto: wie Car-to-Car-Aufnahmen entstehen – Begleitfahrzeug, Verschlusszeit, Strecke, Kommunikation, Sicherheit und Alternativen.",
+    "focusKeyword": "Rolling Shots Auto",
+    "searchIntent": "Informationssuche: Autofahrer und Fotografen wollen wissen, wie Rolling Shots mit dem Auto technisch und sicher entstehen.",
+    "canonicalUrl": "https://matthiasramahi.de/blog-rolling-shots-auto.html",
+    "legacyUrl": "blog-rolling-shots-auto.html",
+    "ogImage": "/assets/optimized/assets-portfolio-dsc2358-1920.webp",
+    "noIndex": false
+  },
+  "legacy": {
+    "sourceFile": "blog-rolling-shots-auto.html",
+    "sourceUrl": "https://matthiasramahi.de/blog-rolling-shots-auto.html",
+    "migrationStatus": "new",
+    "renderSource": "structured-astro"
+  },
+  "status": "published",
+  "createdAt": "2026-09-25T14:00:00.000Z",
+  "updatedAt": "2026-09-25T14:00:00.000Z",
+  "relatedPages": [
+    {
+      "label": "Sportwagen-Fotografie",
+      "href": "/sportwagen-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Automobilfotografie",
+      "href": "/automobil-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    }
+  ],
+  "blocks": [
+    {
+      "_template": "textBlock",
+      "headline": "Was ein Rolling Shot ist",
+      "body": "Bei einem Rolling Shot fahren zwei Fahrzeuge mit gleicher Geschwindigkeit nebeneinander oder hintereinander. Aus dem Begleitfahrzeug wird das Zielauto mit einer vergleichsweise langen Verschlusszeit fotografiert. Weil sich Kamera und Auto gleich schnell bewegen, bleibt das Fahrzeug scharf, während Straße und Umgebung verwischen – die Räder drehen sichtbar, das Bild bekommt Tempo.\n\nDer Effekt entsteht nicht durch hohe Geschwindigkeit. Schon bei 30 bis 50 km/h wirkt ein Rolling Shot dynamisch, wenn Hintergrund und Verschlusszeit stimmen."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Die Strecke: ruhig, übersichtlich, abgesichert",
+      "body": "Ideal ist eine gerade oder weit geschwungene Strecke mit wenig Verkehr, ohne Einmündungen und mit strukturiertem Hintergrund – Bäume, Leitplanken, Fassaden. Eine leere Fläche wirkt trotz Bewegung schnell statisch.\n\nFür geplante Produktionen sind abgesperrte Strecken, Testgelände oder genehmigte Sperrungen die sichere Wahl. Wer aus einem Kofferraum oder einer offenen Heckklappe fotografiert, ist nicht angeschnallt – auf öffentlichen Straßen ist das nicht zulässig und gefährlich."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Rollen im Team",
+      "body": "Ein Rolling Shot braucht mindestens drei Personen mit klaren Aufgaben: die Fahrerin oder den Fahrer des Zielautos, die Fahrerin oder den Fahrer des Kamerafahrzeugs und die Person an der Kamera. Niemand fotografiert und fährt gleichzeitig.\n\nVor dem ersten Durchgang werden Tempo, Abstand, Fahrspur, Handzeichen und ein Abbruchsignal abgesprochen; Funkgeräte oder eine Freisprechverbindung halten alle auf dem gleichen Stand. Der erste Durchlauf ist eine Probefahrt ohne Bilddruck."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Kamera-Einstellungen",
+      "body": "Die Verschlusszeit bestimmt den Effekt: Mit 1/60 bis 1/125 Sekunde bleibt das Bild sicher scharf, die Bewegung ist dezent. 1/30 Sekunde und länger lässt den Hintergrund stark verwischen, erfordert aber eine ruhige Hand und viele Aufnahmen. Bei Tageslicht reicht die Blende dafür oft nicht – ein ND-Filter oder eine kleine Blende wie f/11 bis f/16 hilft.\n\nSerienbild, Bildstabilisator und ein Fokuspunkt auf der Fahrzeugfront erhöhen die Trefferquote. Brennweiten zwischen 24 und 50 Millimetern (Kleinbild) funktionieren aus dem Begleitfahrzeug meist am besten."
+    },
+    {
+      "_template": "imageSequence",
+      "headline": "Bewegung auch ohne Fahrt",
+      "layout": "editorial-pair",
+      "items": [
+        {
+          "image": "/assets/optimized/assets-portfolio-dsc2358-1920.webp",
+          "caption": "Standbild im Parkdeck: Deckenlichter und Fluchtlinien erzeugen Tempo, ohne dass das Auto fährt",
+          "cropIntent": "editorial"
+        },
+        {
+          "image": "/assets/optimized/assets-portfolio-dsc2345-1920.webp",
+          "caption": "Heckansicht mit Flügel und Rückleuchten – tiefe Perspektive statt Fahrtaufnahme",
+          "cropIntent": "editorial"
+        }
+      ]
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Perspektiven im Rolling Shot",
+      "body": "Die klassische Ansicht ist die Dreiviertelansicht von vorn aus der Nachbarspur. Das Seitenprofil zeigt Proportionen und drehende Räder am deutlichsten, eine Ansicht schräg von hinten betont Heck und Auspuff. Eine niedrige Kameraposition wirkt dynamischer, darf aber nie eine ungesicherte Körperhaltung erzwingen."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Sichere Alternativen mit ähnlicher Wirkung",
+      "body": "Nicht jede Produktion braucht einen echten Rolling Shot. Ein Mitzieher von einem sicheren Standort am Rand – das Auto fährt vorbei, die Kamera schwenkt mit, 1/30 bis 1/60 Sekunde – erzeugt einen ähnlichen Effekt ohne zweites Fahrzeug. Im Standbild deuten tiefe Perspektive, Lenkeinschlag und Fluchtlinien Bewegung an. Rig-Aufnahmen mit einer am Auto montierten Kamera gehören in professionelle Hände und auf abgesperrte Flächen."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Fahrbilder im Auto-Shooting",
+      "body": "Fahrbilder planen wir bei einem Sportwagen- oder Auto-Shooting nur, wenn Strecke, Begleitfahrzeug und Absicherung stimmen. Sonst entstehen die dynamischen Motive über Mitzieher und Perspektive. Welche Variante passt, klären wir vor dem Termin. Für Motorräder gibt es einen eigenen Beitrag zu Rolling Shots."
+    },
+    {
+      "_template": "faqBlock",
+      "headline": "Kurze Fragen",
+      "items": [
+        {
+          "question": "Welche Verschlusszeit brauche ich für Rolling Shots mit dem Auto?",
+          "answer": "Zwischen 1/30 und 1/125 Sekunde. Kürzere Zeiten sind sicherer, längere verwischen den Hintergrund stärker. Bei Tageslicht helfen ein ND-Filter oder eine kleine Blende."
+        },
+        {
+          "question": "Wie schnell müssen die Autos für Rolling Shots fahren?",
+          "answer": "Nicht schnell. Schon 30 bis 50 km/h reichen für einen dynamischen Effekt, wenn Hintergrund und Verschlusszeit passen."
+        },
+        {
+          "question": "Darf man Rolling Shots auf öffentlichen Straßen machen?",
+          "answer": "Aus einem Kofferraum oder einer offenen Heckklappe ohne Gurt zu fotografieren, ist auf öffentlichen Straßen nicht zulässig. Für geplante Produktionen sind abgesperrte Strecken, Testgelände oder genehmigte Sperrungen die sichere Wahl."
+        },
+        {
+          "question": "Gibt es eine Alternative ohne zweites Fahrzeug?",
+          "answer": "Ja: Mitzieher von einem sicheren Standort am Straßenrand mit 1/30 bis 1/60 Sekunde oder Standbilder, die Bewegung über Perspektive und Lenkeinschlag andeuten."
+        }
+      ]
+    }
+  ]
+}

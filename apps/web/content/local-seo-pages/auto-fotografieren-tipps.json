@@ -1,5 +1,5 @@
 {
-  "title": "Auto fotografieren: Tipps, Location & Reflexe",
+  "title": "Auto fotografieren: Tipps, Einstellungen & Perspektiven",
   "slug": "auto-fotografieren-tipps",
   "priority": "later",
   "city": "Überregional",
@@ -25,6 +25,14 @@
     {
       "question": "Ab wann lohnt sich statt eigener Versuche ein professionelles Auto-Fotoshooting?",
       "answer": "Wenn ein vollständiger Bildsatz für Verkauf, Markenauftritt, Print, Autohaus, redaktionelle Nutzung oder eine Sammlung gebraucht wird, sollte die Produktion vorab geplant werden. Dann werden Location, Lichtfenster, Gesamtansichten, Innenraum, Details und Ausgabeformate gemeinsam festgelegt. Für einzelne Erinnerungsbilder reichen eigene Versuche oft aus; für konsistente Serien spart ein geplanter Ablauf Zeit und vermeidet Lücken."
+    },
+    {
+      "question": "Welche Kameraeinstellungen eignen sich zum Auto fotografieren?",
+      "answer": "Für Gesamtansichten Blende f/5.6 bis f/8, damit das ganze Fahrzeug scharf ist, ISO so niedrig wie möglich und bei wenig Licht ein Stativ. Für Details darf die Blende offener sein, etwa f/2.8 bis f/4. In RAW fotografieren lässt Spielraum für Farbe und Kontrast."
+    },
+    {
+      "question": "Kann ich ein Auto auch mit dem Smartphone gut fotografieren?",
+      "answer": "Ja, mit Einschränkungen. Vermeide die Ultraweitwinkel-Kamera, weil sie Front und Räder verzerrt, und nutze lieber den 2x- oder Tele-Modus mit etwas Abstand. Halte das Telefon auf Scheinwerferhöhe und achte auf einen ruhigen Hintergrund."
     }
   ],
   "blocks": [],
@@ -87,8 +95,8 @@
   "contactSection": {},
   "targetKeyword": "Auto fotografieren Tipps",
   "seo": {
-    "title": "Auto fotografieren: Tipps, Location & Reflexe",
-    "description": "Auto fotografieren: Tipps für Location, Licht, Perspektive und Reflexe. So wählst du Auto-Fotospots in NRW und bereitest Lack und Details vor.",
+    "title": "Auto fotografieren: Tipps, Einstellungen & Perspektiven | Matthias Ramahi",
+    "description": "Auto fotografieren wie ein Profi: Einstellungen für Blende und Brennweite, Polfilter gegen Reflexe, die besten Perspektiven, Licht und typische Fehler.",
     "canonicalUrl": "https://matthiasramahi.de/auto-fotografieren-tipps.html",
     "legacyUrl": "auto-fotografieren-tipps.html",
     "noIndex": false,
@@ -118,5 +126,58 @@
   "updatedAt": "2026-07-28T18:00:00.000+02:00",
   "createdAt": "2026-05-31 18:09:46.435+00",
   "status": "published",
-  "payloadId": "183"
+  "payloadId": "183",
+  "guideSection": {
+    "eyebrow": "Praxisleitfaden",
+    "headline": "Auto fotografieren: Schritt für Schritt.",
+    "intro": "Die Reihenfolge folgt dem, was bei einer Fahrzeugserie tatsächlich anfällt – von der Nutzung über Einstellungen und Perspektiven bis zu den Fehlern, die man am häufigsten sieht.",
+    "items": [
+      {
+        "title": "Nutzung vor der Aufnahme festlegen",
+        "text": "Ein Verkaufsbild braucht nachvollziehbare Ansichten, ein Editorial mehr Dramaturgie. Erst der spätere Einsatz entscheidet, welche Motive in die Serie gehören: Inserat, Social Media, Druck oder Portfolio."
+      },
+      {
+        "title": "Fahrzeug und Hintergrund vorbereiten",
+        "text": "Ein gewaschenes Auto spart Retusche. Innenraum ausräumen, Kennzeichenfrage klären und die Räder so ausrichten, dass die Felge zur Kamera zeigt – bei der Dreiviertelansicht mit leicht eingeschlagener Lenkung. Hinter dem Fahrzeug sollte nichts aus dem Dach wachsen: keine Laterne, kein Schild, kein Baum."
+      },
+      {
+        "title": "Kamera-Einstellungen",
+        "text": "Für Gesamtansichten eignet sich Blende f/5.6 bis f/8, damit Front und Heck scharf sind. Für Details wie Emblem, Felge oder Lenkrad darf sie offener sein, etwa f/2.8 bis f/4. ISO bleibt so niedrig wie möglich; bei wenig Licht hilft ein Stativ statt hoher ISO-Werte.\n\nRAW-Dateien lassen Spielraum für Weißabgleich und Kontrast, besonders bei dunklen Lacken und hellem Himmel."
+      },
+      {
+        "title": "Brennweite und Verzerrung",
+        "text": "Ein Weitwinkel nah am Auto macht die Front riesig und das Heck klein. Natürliche Proportionen entstehen mit 50 bis 85 Millimetern (Kleinbild) und etwas Abstand; Sportwagen wirken mit längeren Brennweiten noch gestreckter. Mit dem Smartphone lieber den 2x- oder Tele-Modus nutzen als die Ultraweitwinkel-Kamera."
+      },
+      {
+        "title": "Polfilter und Reflexe",
+        "text": "Lack und Scheiben spiegeln Himmel, Gebäude und den Fotografen. Ein zirkularer Polfilter reduziert diese Spiegelungen, wenn man ihn langsam dreht und dabei die Wirkung im Sucher prüft. Er ersetzt aber nicht den richtigen Standpunkt: Kamerahöhe und Winkel entscheiden, welche Linien im Lack liegen."
+      },
+      {
+        "title": "Perspektiven, die funktionieren",
+        "text": "Die Dreiviertelansicht von vorn ist der Klassiker, weil sie Front und Seite zugleich zeigt. Eine Kamerahöhe etwa auf Scheinwerferhöhe wirkt dynamisch, ohne zu übertreiben. Dazu kommen Seitenprofil, Heck-Dreiviertel, Details und Innenraum – aus der offenen Fahrertür und von der Rückbank."
+      },
+      {
+        "title": "Licht und Tageszeit",
+        "text": "Weiches Morgen- und Abendlicht oder ein bedeckter Himmel halten Kontraste beherrschbar. Harte Mittagssonne legt störende Reflexe auf Dach und Haube. Zur blauen Stunde lohnt es sich, Scheinwerfer und Rückleuchten einzuschalten und mit Stativ länger zu belichten."
+      },
+      {
+        "title": "Typische Fehler",
+        "text": "Abgeschnittene Räder, schiefer Horizont, das eigene Spiegelbild im Lack, schmutzige Felgen, ein unruhiger Hintergrund und eine zu kräftige Bearbeitung sind die häufigsten Gründe, warum Autofotos nicht wirken. Eine Serie aus wenigen sauberen Ansichten ist stärker als viele ähnliche Varianten."
+      }
+    ],
+    "links": [
+      {
+        "label": "Fotospots für Autos in NRW",
+        "href": "/blog-fotospots-autos-nrw.html"
+      },
+      {
+        "label": "Auto-Fotoshooting NRW",
+        "href": "/auto-fotoshooting.html"
+      },
+      {
+        "label": "Autofotografie Düsseldorf",
+        "href": "/autofotografie-duesseldorf.html"
+      }
+    ]
+  }
 }

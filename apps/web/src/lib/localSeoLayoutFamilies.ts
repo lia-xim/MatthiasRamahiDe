@@ -66,6 +66,8 @@ export const localSeoFamilyPrefixMap: Array<{ family: LocalSeoLayoutFamily; pref
       'personal-branding-fotografie',
       'schwarz-weiss-portrait-fotografie',
       'vintage-fotoshooting',
+      'fotoshooting-maenner',
+      'musikerfotografie',
       'unternehmensportrait',
       'pressefoto',
     ],

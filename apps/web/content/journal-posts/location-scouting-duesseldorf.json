@@ -1,48 +1,35 @@
 {
-  "title": "Location Scouting fuer starke Motive",
+  "title": "Fotospots Düsseldorf: Location-Scouting für dein Fotoshooting",
   "slug": "location-scouting-duesseldorf",
   "featured": false,
   "category": "process",
   "publishedAt": "2026-05-27T18:22:56.000Z",
-  "excerpt": "Wie Orte fuer Automotive-, Portrait- und Landschaftsfotografie ausgewaehlt werden: Licht, Zugang, Hintergrund, Ruhe und Nutzungsziel.",
+  "excerpt": "Die besten Fotospots in Düsseldorf für Portraits und Autos – Medienhafen, Rheinufer, Hofgarten, Königsallee und mehr – und worauf es beim Location-Scouting ankommt: Licht, Zugang, Ruhe und Genehmigung.",
   "coverImage": "/uploads/payload/assets-photos-landschaft-1921.webp",
   "tags": [
     "Location",
-    "Briefing",
-    "Wetter"
+    "Fotospots",
+    "Düsseldorf",
+    "Licht"
   ],
   "relatedPages": [
     {
-      "label": "Home",
-      "href": "/index.html",
-      "seoPurpose": "contextual",
-      "rel": "follow",
-      "openInNewTab": false
-    },
-    {
-      "label": "Journal",
-      "href": "/blog.html",
-      "seoPurpose": "contextual",
-      "rel": "follow",
-      "openInNewTab": false
-    },
-    {
-      "label": "Fotografie Duesseldorf",
-      "href": "/fotografie-duesseldorf.html",
-      "seoPurpose": "contextual",
-      "rel": "follow",
-      "openInNewTab": false
-    },
-    {
-      "label": "Automobil Fotografie Duesseldorf",
-      "href": "/automobil-fotografie-duesseldorf.html",
-      "seoPurpose": "contextual",
-      "rel": "follow",
-      "openInNewTab": false
-    },
-    {
-      "label": "Portraitfotografie Duesseldorf",
+      "label": "Portraitfotografie Düsseldorf",
       "href": "/portraitfotografie-duesseldorf.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Autofotografie Düsseldorf",
+      "href": "/autofotografie-duesseldorf.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fotografie Düsseldorf",
+      "href": "/fotografie-duesseldorf.html",
       "seoPurpose": "contextual",
       "rel": "follow",
       "openInNewTab": false
@@ -50,23 +37,34 @@
   ],
   "blocks": [
     {
-      "body": "Location · 4 Min\n\nWie Orte fuer Automotive-, Portrait- und Landschaftsfotografie ausgewaehlt werden: Licht, Zugang, Hintergrund, Ruhe und Nutzungsziel.\n\nDieser Beitrag stuetzt die SEO-Cluster der Fotografie-Seiten und fuehrt zu passenden Leistungs- und Standortseiten weiter.\n\n01",
-      "_template": "textBlock"
-    },
-    {
+      "_template": "textBlock",
       "headline": "Ein Ort muss arbeiten",
-      "body": "Eine Location ist nicht nur Kulisse. Sie bestimmt Licht, Linien, Abstand, Ruhe und organisatorischen Ablauf. Gute Orte helfen dem Motiv, statt sich davorzudraengen.\n\n02",
-      "_template": "textBlock"
+      "body": "Ein Fotospot ist mehr als eine schöne Kulisse. Er bestimmt Licht, Linien, Abstand und Ruhe – und damit, wie entspannt ein Shooting abläuft. Gute Orte helfen dem Motiv, statt sich davorzudrängen. Deshalb beginnt jede Location-Suche mit der Frage, was fotografiert wird: Ein Portrait braucht andere Flächen und anderes Licht als ein Auto."
     },
     {
-      "headline": "Lichtfenster zuerst",
-      "body": "Der gleiche Ort kann morgens weich, mittags flach und abends cineastisch wirken. Deshalb beginnt Scouting mit Sonnenstand, Schatten, Reflexionsflaechen und der Frage, wann ein Motiv wirklich atmen kann.\n\n03",
-      "_template": "textBlock"
+      "_template": "textBlock",
+      "headline": "Medienhafen: Architektur und Abendlicht",
+      "body": "Die Fassaden im Medienhafen gehören zu den bekanntesten Fotospots in Düsseldorf. Glas, Metall und ungewöhnliche Formen geben Business-Portraits und modernen Fahrzeugen einen klaren, urbanen Rahmen. Im warmen Abendlicht wirken die Gebäude besonders stimmungsvoll.\n\nWeil Glas stark spiegelt, entscheidet der Standpunkt darüber, ob das Bild ruhig oder unruhig wird. Am Wochenende ist es tagsüber oft ruhiger als unter der Woche."
     },
     {
-      "headline": "Zugang und Stoerungen planen",
-      "body": "Parken, Publikumsverkehr, Genehmigungen und Wetteroptionen sind technische SEO-fremde, aber fotografisch entscheidende Faktoren. Eine starke Serie entsteht leichter, wenn diese Reibung vorher geloest ist.\n\n04",
-      "_template": "textBlock"
+      "_template": "textBlock",
+      "headline": "Rheinufer und Rheinkniebrücke: Weite und Sonnenuntergang",
+      "body": "Am Rheinufer gibt es, was in der Innenstadt fehlt: Weite und offenen Himmel. Bei Sonnenuntergang ist das einer der schönsten Orte zum Fotografieren in Düsseldorf – für Portraits im Gegenlicht ebenso wie für Seitenansichten von Fahrzeugen. Die Rheinkniebrücke setzt eine markante Linie in den Hintergrund."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Hofgarten: weiches Licht für Portraits",
+      "body": "Unter den Bäumen im Hofgarten fällt das Licht weich und gefiltert. Das ist ideal für natürliche Portraits, bei denen Haut und Ausdruck im Vordergrund stehen sollen. Der Park ist allerdings kein Ort für Fahrzeuge – hier geht es um Menschen."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Königsallee und Innenstadt: urbanes Flair",
+      "body": "Die Kö steht für Stil und Großstadt. Für Portraits mit Anspruch und für Fahrzeuge, die elegant wirken sollen, ist das ein naheliegender Rahmen. Weil dort tagsüber viel los ist, lohnen sich frühe Morgenstunden oder die blaue Stunde, wenn Schaufenster und Straßenlicht leuchten."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Industrie im Süden: rau und kontrastreich",
+      "body": "Wer Kontrast sucht, findet ihn in den Industrie- und Gewerbegebieten im Düsseldorfer Süden, etwa in Reisholz. Beton, Stahl und Hallen passen zu Autos mit Charakter und zu Portraits mit Kante. Viele dieser Flächen sind Privatgelände – die Erlaubnis gehört vorher geklärt."
     },
     {
       "headline": "Bildnotizen aus dem Portfolio",
@@ -86,28 +84,50 @@
       "_template": "imageSequence"
     },
     {
-      "headline": "Ort und Suchintention verbinden",
-      "body": "Fuer lokale SEO-Seiten ist Location nicht nur ein Keyword. Sie muss zeigen, warum ein Auftrag in Duesseldorf, NRW oder einer konkreten Stadt sinnvoll geplant werden kann. Ein guter Ort ergaenzt deshalb die Suchintention: Er macht sichtbar, ob es um Verkauf, Markenwirkung, persoenliche Praesenz oder eine ruhige redaktionelle Serie geht.",
-      "_template": "textBlock"
+      "_template": "textBlock",
+      "headline": "Lichtfenster zuerst",
+      "body": "Der gleiche Ort kann morgens weich, mittags flach und abends cineastisch wirken. Beim Scouting prüfe ich deshalb Sonnenstand, Schatten und Spiegelflächen zu der Uhrzeit, zu der fotografiert werden soll. Kartendienste mit Satelliten- und Straßenansicht helfen bei der Vorauswahl, ersetzen den Blick vor Ort aber nicht."
     },
     {
-      "headline": "Kurze Fragen.",
-      "body": "Ja, zumindest die Richtung. Je nach Wetter und Motiv koennen Alternativen vorbereitet werden.",
-      "_template": "textBlock"
+      "_template": "textBlock",
+      "headline": "Zugang, Genehmigung und Wetter",
+      "body": "Parken, Publikumsverkehr, Genehmigungen und ein Plan für schlechtes Wetter entscheiden oft mehr über ein Shooting als die Kulisse. Für kommerzielle Aufnahmen auf Privatgelände braucht es die Zustimmung des Eigentümers. Und weil das Wetter in Düsseldorf nicht planbar ist, gehört zu jedem Außentermin eine überdachte Alternative – oder das Studio."
+    },
+    {
+      "_template": "faqBlock",
+      "headline": "Kurze Fragen",
+      "items": [
+        {
+          "question": "Wo kann man in Düsseldorf gut fotografieren?",
+          "answer": "Beliebte Fotospots sind der Medienhafen mit seiner Architektur, das Rheinufer mit Blick auf die Rheinkniebrücke, der Hofgarten für Portraits in weichem Licht und die Königsallee für urbane Motive. Für rauere Bilder eignen sich Industriegebiete im Süden."
+        },
+        {
+          "question": "Welche Fotospots in Düsseldorf eignen sich für Autos?",
+          "answer": "Der Medienhafen, das Rheinufer und – zu ruhigen Zeiten – die Königsallee. Für kontrastreiche Bilder bieten sich Industrieflächen im Süden an, sofern der Zugang geklärt ist."
+        },
+        {
+          "question": "Braucht man eine Genehmigung zum Fotografieren in Düsseldorf?",
+          "answer": "Für private Fotos im öffentlichen Raum meist nicht. Für kommerzielle Aufnahmen, Aufbauten oder Fotos auf Privatgelände wie Parkplätzen und Firmengeländen braucht es eine Erlaubnis."
+        },
+        {
+          "question": "Wird die Location vor dem Shooting festgelegt?",
+          "answer": "Ja, zumindest die Richtung. Je nach Wetter und Motiv bereite ich eine Alternative vor."
+        }
+      ]
     }
   ],
-  "readingTime": 2,
+  "readingTime": 7,
   "seo": {
-    "title": "Location Scouting fuer starke Motive | Matthias Ramahi",
-    "description": "Wie Orte fuer Automotive-, Portrait- und Landschaftsfotografie ausgewaehlt werden: Licht, Zugang, Hintergrund, Ruhe und Nutzungsziel.",
+    "title": "Fotospots Düsseldorf: Orte fürs Fotoshooting | Matthias Ramahi",
+    "description": "Fotospots in Düsseldorf: Medienhafen, Rheinufer, Hofgarten und Königsallee – mit Licht, Zugang und Tipps zum Location-Scouting für Portrait- und Autofotos.",
     "secondaryKeywords": [],
     "internalLinkAnchors": [],
     "canonicalUrl": "https://matthiasramahi.de/blog-location-scouting-duesseldorf.html",
     "legacyUrl": "blog-location-scouting-duesseldorf.html",
     "ogImage": "/uploads/payload/assets-photos-landschaft-1921.webp",
     "noIndex": false,
-    "focusKeyword": "Location Scouting fuer starke Motive",
-    "searchIntent": "Informationssuche: Nutzer suchen Fachwissen, Beispiele und Einordnung zu Location Scouting fuer starke Motive."
+    "focusKeyword": "Fotospots Düsseldorf",
+    "searchIntent": "Informationssuche: Nutzer suchen schöne Orte zum Fotografieren in Düsseldorf und wollen wissen, welcher Spot zu Portrait- oder Autofotos passt."
   },
   "legacy": {
     "sourceFile": "blog-location-scouting-duesseldorf.html",
@@ -132,9 +152,9 @@
     "extractedImagePaths": [],
     "extractedText": "Home / Journal / Location Location · 4 Min Location Scouting fuer starke Motive Wie Orte fuer Automotive-, Portrait- und Landschaftsfotografie ausgewaehlt werden: Licht, Zugang, Hintergrund, Ruhe und Nutzungsziel. Matthias Ramahi Aktualisiert 27.05.2026 Dieser Beitrag stuetzt die SEO-Cluster der Fotografie-Seiten und fuehrt zu passenden Leistungs- und Standortseiten weiter. Fotografie Duesseldorf Automobil Fotografie Duesseldorf Portraitfotografie Duesseldorf 01 Ein Ort muss arbeiten Eine Location ist nicht nur Kulisse. Sie bestimmt Licht, Linien, Abstand, Ruhe und organisatorischen Ablauf. Gute Orte helfen dem Motiv, statt sich davorzudraengen. 02 Lichtfenster zuerst Der gleiche Ort kann morgens weich, mittags flach und abends cineastisch wirken. Deshalb beginnt Scouting mit Sonnenstand, Schatten, Reflexionsflaechen und der Frage, wann ein Motiv wirklich atmen kann. 03 Zugang und Stoerungen planen Parken, Publikumsverkehr, Genehmigungen und Wetteroptionen sind technische SEO-fremde, aber fotografisch entscheidende Faktoren. Eine starke Serie entsteht leichter, wenn diese Reibung vorher geloest ist. 04 Ort und Suchintention verbinden Fuer lokale SEO-Seiten ist Location nicht nur ein Keyword. Sie muss zeigen, warum ein Auftrag in Duesseldorf, NRW oder einer konkreten Stadt sinnvoll geplant werden kann. Ein guter Ort ergaenzt deshalb die Suchintention: Er macht sichtbar, ob es um Verkauf, Markenwirkung, persoenliche Praesenz oder eine ruhige redaktionelle Serie geht. Kurze Fragen. Wird die Location vorab festgelegt? Ja, zumindest die Richtung. Je nach Wetter und Motiv koennen Alternativen vorbereitet werden."
   },
-  "updatedAt": "2026-08-24T20:44:39.161Z",
+  "updatedAt": "2026-09-25T14:00:00.000Z",
   "createdAt": "2026-05-28T19:07:35.507Z",
   "status": "published",
   "payloadId": "3",
-  "coverAlt": "Landschaftsmotiv mit starker Tiefe"
+  "coverAlt": "Offene Landschaft mit Tiefe und ruhigem Horizont"
 }

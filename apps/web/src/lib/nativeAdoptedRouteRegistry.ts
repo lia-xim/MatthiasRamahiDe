@@ -31,7 +31,12 @@ export type NativeAdoptedRouteKind =
   | 'viola-musik'
   | 'werbetechnik'
 
-const photographyOverviewFiles = new Set(['fotografie-duesseldorf.html', 'fotografie-nrw.html', 'fotografie-deutschland.html'])
+const photographyOverviewFiles = new Set([
+  'fotografie-duesseldorf.html',
+  'fotografie-nrw.html',
+  'fotografie-erkrath.html',
+  'fotografie-deutschland.html',
+])
 const legalFiles = new Set(['impressum.html', 'datenschutz.html'])
 
 const exactRouteKinds: Record<string, NativeAdoptedRouteKind> = {

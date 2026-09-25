@@ -1,5 +1,6 @@
 ---
 import ContactSlot from '../ContactSlot.astro'
+import NativeGuideSection from './NativeGuideSection.astro'
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import { getBySlug, type PayloadDoc } from '../../lib/payload'
 import { faqJsonLd } from '../../lib/seo'
@@ -28,7 +29,7 @@ const proofStages = [
   },
   {
     title: 'Final &amp; Versand.',
-    body: 'Druck in Endgröße, säurefreie Verpackung. Versand als Rohr oder Flachpaket, deutschlandweit innerhalb 48 h.',
+    body: 'Druck in Endgröße, säurefreie Verpackung. Versand als Rohr oder Flachpaket meist innerhalb von 48 h, Zustellung deutschlandweit in der Regel innerhalb von 5 Werktagen.',
   },
 ]
 
@@ -134,7 +135,7 @@ const printFaqSchema = faqJsonLd(printFaq)
         <dl class="lab-scale__note">
           <div class="lab-scale__note-item"><dt>Auflösung</dt><dd>240–300 dpi auf der finalen Druckgröße — bei Wandformaten über 70 × 100 cm reichen 180 dpi.</dd></div>
           <div class="lab-scale__note-item"><dt>Sonderformat</dt><dd>Panoramen, Triptychen und Reihen jenseits dieser Stufen — auf Anfrage bis 300 × 150 cm.</dd></div>
-          <div class="lab-scale__note-item"><dt>Versand</dt><dd>Rohrlieferung bis 70 cm, Flachpaket darüber, Sperrgut auf Träger. Versandbereit innerhalb 5 Werktagen.</dd></div>
+          <div class="lab-scale__note-item"><dt>Versand</dt><dd>Rohrlieferung bis 70 cm, Flachpaket darüber, Sperrgut auf Träger. Versand meist innerhalb von 48 h, Zustellung in der Regel innerhalb von 5 Werktagen.</dd></div>
         </dl>
       </div>
     </section>
@@ -161,6 +162,8 @@ const printFaqSchema = faqJsonLd(printFaq)
         </ol>
       </div>
     </section>
+
+    <NativeGuideSection doc={doc} />
 
     <section class="lab-proof lab-faq" data-header-theme="light" aria-label="Häufige Fragen zum Fotodruck">
       <div class="lab-proof__inner">

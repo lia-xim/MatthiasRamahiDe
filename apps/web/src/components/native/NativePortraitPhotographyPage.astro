@@ -200,6 +200,8 @@ const intentLinks = [
   { key: 'personal-branding', label: 'Personal Branding Fotografie', genericHref: 'personal-branding-fotografie.html', duesseldorfHref: 'personal-branding-fotografie-duesseldorf.html' },
   { key: 'schwarz-weiss', label: 'Schwarz-Weiss Portrait', genericHref: 'schwarz-weiss-portrait-fotografie.html', duesseldorfHref: 'schwarz-weiss-portrait-fotografie-duesseldorf.html' },
   { key: 'vintage', label: 'Vintage Fotoshooting', genericHref: 'vintage-fotoshooting.html', duesseldorfHref: 'vintage-fotoshooting.html' },
+  { key: 'maenner', label: 'Fotoshooting für Männer', genericHref: 'fotoshooting-maenner.html', duesseldorfHref: 'fotoshooting-maenner.html' },
+  { key: 'musiker', label: 'Musikerfotografie', genericHref: 'musikerfotografie.html', duesseldorfHref: 'musikerfotografie.html' },
   { key: 'beleuchtung', label: 'Portrait Beleuchtung', genericHref: 'portraitfotografie-beleuchtung.html', duesseldorfHref: 'portraitfotografie-beleuchtung-duesseldorf.html' },
   { key: 'paar-familie', label: 'Paar & Familie', genericHref: 'paarshooting-familienshooting.html', duesseldorfHref: 'paarshooting-familienshooting-duesseldorf.html' },
   { key: 'unternehmen', label: 'Unternehmensportrait', genericHref: 'unternehmensportrait-duesseldorf.html', duesseldorfHref: 'unternehmensportrait-duesseldorf.html' },
@@ -238,6 +240,8 @@ const {
 } = clusterCuration
 const isPracticalGuide = legacyFile === 'portraitfotografie-beleuchtung.html'
 const guideJsonLd = isPracticalGuide && doc ? articleJsonLd(doc, `/${legacyFile}`) : undefined
+// Ein gepflegter Ratgeber (guideSection) ersetzt den fest verdrahteten Praxisleitfaden.
+const hasCmsGuide = Boolean(doc?.guideSection?.headline && doc.guideSection.items?.length)
 const practicalGuideItems = [
   {
     title: 'Gewünschte Wirkung benennen',
@@ -527,7 +531,7 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
       </div>
     </section>
 
-    {isPracticalGuide && (
+    {isPracticalGuide && !hasCmsGuide && (
       <NativePracticalGuide
         eyebrow="Lichtleitfaden"
         title="Portraitlicht in fünf Entscheidungen."
@@ -540,7 +544,7 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
       />
     )}
 
-    <NativeGuideSection doc={doc} disabled={isPracticalGuide} />
+    <NativeGuideSection doc={doc} />
 
     <section class="mod-pt" data-header-theme="dark">
       <div class="mod-pt__head">

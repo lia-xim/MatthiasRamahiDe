@@ -123,6 +123,17 @@ Neues CMS-Feld `guideSection` („Ratgeber-Sektion“, Tina-Schema `serviceSecti
 
 Prüfung: `astro check` 0/0/0, `journal:audit` ohne Befund, Build ok, `seo:audit:strict` ohne Befund, `seo:release-routing` 165 Weiterleitungen / 0 Fehler, 272 Sitemap-URLs, mobil ohne horizontales Scrollen. `web:audit:tina-content --strict` meldet nur Zählabweichungen gegenüber dem alten Import-Manifest (Journal und Portfolio schon vorher, lokale Seiten jetzt 217 statt 216).
 
+### Umsetzung 25.09. – Runde 2 (CTR, Ausbau, neue Seiten)
+
+| Bereich | Umsetzung |
+|---|---|
+| CTR-Titles | Sportwagen („Sportwagen-Fotografie NRW: Shooting ab 250 €“), Rolling Shots Motorrad, Musiker-Beitrag, Portrait-Hub („Business, privat & kreativ“) |
+| Ausbau | `auto-fotografieren-tipps.html` (Einstellungen, Brennweite, Polfilter, Perspektiven, Fehler; ersetzt den festen Leitfaden), `portraitfotografie-beleuchtung.html` (Lichtsetups, Lichtformer, Kamera-Einstellungen), `portraitfotografie.html` (kreative Portraitfotografie), `fotolabor-druck-duesseldorf.html` (Materialvergleich, Preislogik; Versandangabe vereinheitlicht: Versand meist 48 h, Zustellung i. d. R. 5 Werktage) |
+| Neue Seiten | `fotografie-erkrath.html` (Übersicht mit Erkrath-Hub, Ratgeber, FAQ), `fotoshooting-maenner.html`, `musikerfotografie.html`, `blog-fotospots-autos-nrw.html`, `blog-rolling-shots-auto.html`; Location-Scouting-Beitrag neu als „Fotospots Düsseldorf“ |
+| Weiterleitungen | `/fotografie-mann/` → Männer-Seite, `/fotograf-erkrath/` → Erkrath, `/fotografie-musiker/` und `/musiker-fotografie/` → Musikerfotografie |
+| Tracking | Crawl Foundry lehnt Tracking und Keyword-Listen ab (Verbindung ohne `tracking:*`/`keywords:write`); Freigabe-Anfrage `arq_8ori5uj944vg` für Keyword-Listen gestellt. Offen: Tracking-Berechtigung und GSC-Verbindung im Crawl-Foundry-Workspace |
+| Nebenbefund | JSON-LD `addressLocality: Duesseldorf`, Impressum: Kempener Straße 44, 40699 Erkrath – NAP vereinheitlichen (Entscheidung Inhaber) |
+
 **Review:** frühestens 6 Wochen nach Deploy (ab 06.11.2026) mit neuem GSC-Export – Positionen für „auto fotoshooting bochum/dortmund/ruhrgebiet“, „vintage fotoshooting nrw“, „motorrad nachts fotografieren“, „fahrzeugfotografie“, „automobilfotografie“, „portraitfotografie düsseldorf“.
 
 ## Kurzfazit
