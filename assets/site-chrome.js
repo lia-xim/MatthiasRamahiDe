@@ -380,7 +380,12 @@
       sticky.textContent = source.textContent || 'Projekt anfragen';
       sticky.setAttribute('aria-label', sticky.textContent);
       sticky.setAttribute('data-cta-role', 'mobile-sticky');
-      document.body.appendChild(sticky);
+      // Eigene Landmark, damit der fixe Button nicht außerhalb jeder Region liegt (axe: region).
+      const stickyRegion = document.createElement('div');
+      stickyRegion.setAttribute('role', 'region');
+      stickyRegion.setAttribute('aria-label', 'Schnellkontakt');
+      stickyRegion.appendChild(sticky);
+      document.body.appendChild(stickyRegion);
 
       let stickyThreshold = window.innerHeight * 0.62;
       let stickyRaf = 0;
@@ -774,7 +779,7 @@
               '<div class="mr-contact__field"><label for="' + uid + '-type">Leistung <span>Optional</span></label><select id="' + uid + '-type" name="projectType"><option value="">Noch offen</option><option>Automobil-Fotografie</option><option>Sportwagen-Fotografie</option><option>Oldtimer-Fotografie</option><option>Motorrad-Fotografie</option><option>Portrait-Fotografie</option><option>Landschaft / Fine Art Print</option><option>Videografie</option><option>Webdesign / SEO</option><option>Werbetechnik / Druck</option><option>Sonstiges</option></select></div>' +
               '<div class="mr-contact__field"><label for="' + uid + '-msg">Anfrage kurz beschreiben <span>Optional</span></label><textarea id="' + uid + '-msg" name="message" placeholder="' + messagePlaceholder + '"></textarea></div>' +
               '<details class="mr-contact__details">' +
-                '<summary>Projektangaben ergaenzen <span>Optional</span></summary>' +
+                '<summary>Projektangaben ergänzen <span>Optional</span></summary>' +
                 '<div class="mr-contact__row">' +
                   '<div class="mr-contact__field"><label for="' + uid + '-project">Projekt / Motiv <span>Optional</span></label><input id="' + uid + '-project" name="project" autocomplete="off"></div>' +
                   '<div class="mr-contact__field"><label for="' + uid + '-date">Zeitraum <span>Optional</span></label><input id="' + uid + '-date" name="date" autocomplete="off" placeholder="z. B. KW 24, Juni, offen"></div>' +
@@ -786,7 +791,7 @@
               '</details>' +
               '<label class="mr-contact__consent">' +
                 '<input type="checkbox" name="consent" value="1" required>' +
-                '<span>Ich willige ein, dass meine angegebenen Daten zur Bearbeitung der Anfrage verarbeitet werden. Hinweise dazu in der <a href="/datenschutz.html" target="_blank" rel="noopener noreferrer">Datenschutzerklaerung</a>. <em>Pflicht</em></span>' +
+                '<span>Ich willige ein, dass meine angegebenen Daten zur Bearbeitung der Anfrage verarbeitet werden. Hinweise dazu in der <a href="/datenschutz.html" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a>. <em>Pflicht</em></span>' +
               '</label>' +
               '<div class="mr-contact__actions">' +
                 '<button class="mr-contact__submit" type="submit">' + submitLabel + '</button>' +

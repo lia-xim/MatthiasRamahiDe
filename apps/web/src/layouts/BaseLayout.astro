@@ -143,6 +143,7 @@ const versionedStylesheets = stylesheets.map(versionStaticAssetUrl)
       data-website-id="be66c314-29d1-4d96-8a3e-9c842d472210"
       data-domains="matthiasramahi.de,www.matthiasramahi.de"
     ></script>
+    <style>.mr-skip{position:fixed;left:12px;top:12px;z-index:1000;padding:12px 18px;background:#f3f5ef;color:#0a0c11;font:600 14px/1.2 'MR Sans',Arial,sans-serif;text-decoration:none;outline:2px solid #cf392e;outline-offset:2px;transform:translateY(-200%)}.mr-skip:focus{transform:none}#mr-content:focus{outline:none}</style>
   </head>
   <body
     class={bodyClass}
@@ -151,8 +152,9 @@ const versionedStylesheets = stylesheets.map(versionStaticAssetUrl)
     data-page-role={analyticsDimensions.pageRole}
   >
     <div class="site-shell">
+      <a class="mr-skip" href="#mr-content">Zum Inhalt springen</a>
       <SiteChromeHeader current={activeNav} liveCms={liveCms} />
-      <main class="site-main">
+      <main class="site-main" id="mr-content" tabindex="-1">
         <slot />
       </main>
       <SiteChromeFooter liveCms={liveCms} />

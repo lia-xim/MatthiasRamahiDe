@@ -101,7 +101,7 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
     ogImage: '/assets/optimized/mpik8b82-dsc3879-1920.webp',
     preloadImages: ['/assets/optimized/mpik8b82-dsc3879-1280.webp'],
     scripts: ['/assets/native-home.js', ...siteChromeScript],
-    stylesheets: [...sharedStyles, '/assets/native-home.css'],
+    stylesheets: [...sharedStyles, '/assets/native-home.css', '/assets/native-home-landing.css'],
     title: 'Matthias Ramahi - Fotografie Düsseldorf & NRW',
   },
   'fotografie.html': {

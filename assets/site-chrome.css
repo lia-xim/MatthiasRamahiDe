@@ -997,7 +997,7 @@ section[data-contact-section]:empty {
 .mr-contact__consent input:focus-visible{outline:2px solid var(--mrc-ink);outline-offset:3px}
 .mr-contact__consent a{color:var(--mrc-ink);text-decoration:underline;text-underline-offset:2px;display:inline-flex;align-items:center;min-height:44px}
 .mr-contact__consent a:hover{text-decoration:none}
-.mr-contact__consent em{font:9px var(--mrc-mono);font-style:normal;letter-spacing:.16em;text-transform:uppercase;color:#46524f;margin-left:4px;white-space:nowrap}
+.mr-contact__consent em{font:11px var(--mrc-mono);font-style:normal;letter-spacing:.14em;text-transform:uppercase;color:#46524f;margin-left:4px;white-space:nowrap}
 .mr-contact__submit{
   align-self:flex-start;margin-top:12px;min-height:44px;padding:14px 28px;
   background:var(--mrc-ink);color:var(--mrc-paper);

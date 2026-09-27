@@ -8,10 +8,10 @@ import {
   blockParagraphs,
   homeChapters as fallbackChapters,
   homeHeroSlidesFor,
-  homeJournalCards as fallbackJournalCards,
   homeServices as fallbackServices,
 } from '../../lib/nativeContent'
 import {
+  getBySlug,
   getSitePageByType,
   imageAlt,
   imageDimensions,
@@ -22,6 +22,19 @@ import {
   type PayloadDoc,
   type PayloadMedia,
 } from '../../lib/payload'
+import { resolveTinaMediaRef } from '../../lib/tinaMedia'
+import { journalCards } from '../../lib/journalIndexContent'
+import {
+  buildContactStrip,
+  contactSheetJsonLd,
+  contactSheetSeries,
+  homeFaq,
+  homeFaqJsonLd,
+  homeIntents,
+  homeProcess,
+  localVariantImage,
+  type ContactStrip,
+} from '../../lib/homeLandingContent'
 import { tinaAttrs } from '../../lib/tinaFieldAttrs'
 
 type PreviewState = {
@@ -44,11 +57,12 @@ const firstHeroSlide = heroSlides[0]
 
 const hasText = (value?: string): value is string => typeof value === 'string' && value.trim().length > 0
 const editableSource = (item: unknown) => (item as { source?: unknown } | null | undefined)?.source
+const pad = (value: number) => String(value).padStart(2, '0')
 
 // Bildgroessen (technische Moeblierung, bleibt Code — wird nicht im CMS gepflegt)
-const chapterSizes = '(max-width: 780px) calc((100vw - 52px) / 2), (max-width: 1180px) calc((100vw - 112px) / 2), 437px'
-const journalSizes = '(max-width: 780px) calc(100vw - 44px), (max-width: 1180px) calc((100vw - 112px) / 2), 437px'
-const aboutSizes = '(max-width: 780px) calc(100vw - 44px), (max-width: 1180px) calc(100vw - 112px), 560px'
+const chapterSizes = '(max-width: 780px) calc((100vw - 52px) / 2), (max-width: 1180px) calc((100vw - 112px) / 2), 440px'
+const journalSizes = '(max-width: 780px) calc(100vw - 44px), (max-width: 1180px) calc(100vw - 112px), 460px'
+const aboutSizes = '(max-width: 780px) calc(100vw - 44px), (max-width: 1180px) calc(100vw - 112px), 680px'
 const defaultAboutImage = '/assets/optimized/mpissxxj-portrait-960.webp'
 const defaultAboutImageSrcset =
   '/assets/optimized/mpissxxj-portrait-480.webp 480w, /assets/optimized/mpissxxj-portrait-720.webp 720w, /assets/optimized/mpissxxj-portrait-960.webp 960w, /assets/optimized/mpissxxj-portrait-1280.webp 1280w'
@@ -64,8 +78,8 @@ const statementBody = (statement?.body || []).map((paragraph) => paragraph?.text
 const statementParagraphs = statementBody.length
   ? statementBody
   : blockParagraphs(doc, 'Bilder', [
-      'Seit über zehn Jahren entstehen meine Serien im Spannungsfeld von Präzision und Atmosphäre - Automobile, Oldtimer, Sportwagen, Motorräder, Portraits und Landschaften. Jede Arbeit folgt einer ruhigen redaktionellen Logik: Licht, Komposition, Material, Zeit.',
-      'Auftraggeber sind Marken, Sammler, Manufakturen und private Eigentümer aus Düsseldorf, Köln, Essen, Dortmund und dem gesamten Rheinland - überall dort, wo Bilder über Auflage, Sammlung oder Markenwert mitentscheiden.',
+      'Meine Bilder entstehen rund um Automobile, Oldtimer, Sportwagen, Motorräder, Portraits und Landschaften. Jede Arbeit folgt derselben ruhigen Logik: Licht, Komposition, Material, Zeit.',
+      'Auftraggeber sind Marken, Sammler, Manufakturen und private Eigentümer aus Düsseldorf, Köln, Essen, Dortmund und dem gesamten Rheinland.',
     ])
 
 // --- „Sechs Bereiche. Eine Linse." ---
@@ -75,32 +89,49 @@ const chaptersEmphasis = chaptersGroup?.headlineEmphasis || ''
 const chaptersIntro = hasText(chaptersGroup?.intro)
   ? chaptersGroup!.intro!
   : blockParagraphs(doc, 'Sechs Bereiche', [
-      'Jeder Bereich hat eine eigene visuelle Logik - Bewegung, Material, Mensch, Raum. Auswählen, weiterlesen, eine Serie sehen.',
+      'Jeder Bereich hat eine eigene visuelle Logik: Bewegung, Material, Mensch, Raum.',
     ])[0]
 const cmsChapters = (chaptersGroup?.items || [])
   .filter((item) => item?.image)
-  .map((item) => ({
-    source: item,
-    href: toRootRelativeHref(item.href) || '#',
-    image: imageDisplayUrl(item.image, 'card', { allowOriginal: true }),
-    srcset: cmsSrcset(item.image),
+  .map((item) => {
+    const local = typeof item.image === 'string' ? localVariantImage(item.image) : null
+    return {
+      source: item,
+      href: toRootRelativeHref(item.href) || '#',
+      image: local?.src || imageDisplayUrl(item.image, 'card', { allowOriginal: true }),
+      srcset: local?.srcset || cmsSrcset(item.image),
+      sizes: chapterSizes,
+      alt: imageAlt(item.image, item.title || ''),
+      title: item.title || '',
+      meta: item.meta || '',
+      ...(local ? { width: local.width, height: local.height } : imageDimensions(item.image, 'card')),
+    }
+  })
+const chapters = (cmsChapters.length ? cmsChapters : fallbackChapters).map((chapter) => {
+  const genericAlt = !chapter.alt || /^(_?dsc|img|\d)/i.test(chapter.alt) || chapter.alt === chapter.title
+  return {
+    ...chapter,
     sizes: chapterSizes,
-    alt: imageAlt(item.image, item.title || ''),
-    title: item.title || '',
-    meta: item.meta || '',
-    ...imageDimensions(item.image, 'card'),
-  }))
-const chapters = cmsChapters.length ? cmsChapters : fallbackChapters
+    alt: genericAlt ? `${chapter.title}fotografie von Matthias Ramahi` : chapter.alt,
+  }
+})
 
-// --- „Ausgewählte Arbeiten" (Portfolio-Teaser, Bilder laufen automatisch) ---
+// --- Kontaktbogen (ersetzt den JS-Marquee: Bilder jetzt serverseitig im HTML, mit Alt-Texten) ---
 const selectedWorks = doc?.homeSelectedWorks
 const selectedWorksHeadline = hasText(selectedWorks?.headline) ? selectedWorks!.headline! : ''
 const selectedWorksEmphasis = selectedWorks?.headlineEmphasis || ''
 const portfolioIntro = hasText(selectedWorks?.intro)
   ? selectedWorks!.intro!
-  : blockParagraphs(doc, 'Ausgewählte', [
-      'Ein Strom aus aktuellen Serien - kontinuierlich in Bewegung. Klick auf ein Bild öffnet die Vorschau.',
-    ])[0]
+  : 'Sechs Serien auf einem Kontaktbogen. Rot markiert: das Bild, das es in die Auswahl geschafft hat.'
+const seriesDocs = await Promise.all(
+  contactSheetSeries.map((series) => getBySlug('portfolio-projects', series.slug, liveCmsFetchOptions({ depth: 2 }))),
+)
+const strips = contactSheetSeries
+  .map((series, index) => buildContactStrip(series, seriesDocs[index]))
+  .filter((strip): strip is ContactStrip => Boolean(strip))
+const stripRatio = (strip: ContactStrip) => strip.frames.reduce((sum, frame) => sum + frame.ratio, 0)
+const frameSizes = (ratio: number, total: number) =>
+  `(max-width: 780px) ${Math.round(200 * ratio)}px, (max-width: 1180px) ${Math.round((820 * ratio) / total)}px, ${Math.round((1080 * ratio) / total)}px`
 
 // --- „Hinter der Kamera" ---
 const about = doc?.homeAbout
@@ -111,8 +142,8 @@ const aboutBody = (about?.body || []).map((paragraph) => paragraph?.text).filter
 const aboutParagraphs = aboutBody.length
   ? aboutBody
   : blockParagraphs(doc, 'Hinter der Kamera', [
-      'Ausgebildet im Handwerk, denkend wie ein Editor - ich arbeite ruhig, präzise und in engem Dialog mit dem Auftraggeber. Vom ersten Briefing bis zum finalen Druck.',
-      'Meine Location steht in Düsseldorf, mein Netzwerk im gesamten Rheinland. Ich begleite Marken, Manufakturen, Sammler und private Eigentümer dort, wo ein Bild über Auflage, Sammlung oder Markenwert mitentscheidet.',
+      'Ich arbeite ruhig, präzise und im engen Dialog mit dem Auftraggeber, vom ersten Briefing bis zum finalen Druck.',
+      'Meine Basis ist Düsseldorf, mein Netzwerk reicht durch das gesamte Rheinland.',
     ])
 const aboutImage = about?.image
   ? imageDisplayUrl(about.image, 'card', { allowOriginal: true })
@@ -126,15 +157,11 @@ const aboutImageDimensions = aboutImage.includes('mpissxxj-portrait')
     ? imageDimensions(about.image, 'card')
     : { width: 960, height: 1132 }
 
-// --- „Weitere Leistungen" ---
+// --- Zusatzleistungen (kompakt im Journal-Block) ---
 const servicesGroup = doc?.homeServices
-const servicesHeadline = hasText(servicesGroup?.headline) ? servicesGroup!.headline! : ''
-const servicesEmphasis = servicesGroup?.headlineEmphasis || ''
 const servicesIntro = hasText(servicesGroup?.intro)
   ? servicesGroup!.intro!
-  : blockParagraphs(doc, 'Weitere Leistungen', [
-      'Für Projekte, die über die Fotografie hinausgehen - Druck, Großformat, Werbetechnik, Webdesign, Video, Sonderanfertigungen und Musik. Kuratiert, koordiniert, ein Ansprechpartner.',
-    ])[0]
+  : 'Druck, Großformat, Werbetechnik, Webdesign, Video und mehr über ein kuratiertes Netzwerk, mit einem Ansprechpartner.'
 const cmsServices = (servicesGroup?.items || [])
   .filter((item) => hasText(item?.title))
   .map((item) => ({
@@ -145,27 +172,35 @@ const cmsServices = (servicesGroup?.items || [])
   }))
 const services = cmsServices.length ? cmsServices : fallbackServices
 
-// --- „Journal" ---
+// --- Journal: CMS-Auswahl nur, wenn sie auf echte Artikel zeigt; sonst die drei neuesten Beiträge ---
 const journalGroup = doc?.homeJournal
 const journalHeadline = hasText(journalGroup?.headline) ? journalGroup!.headline! : ''
 const journalEmphasis = journalGroup?.headlineEmphasis || ''
 const journalIntro = hasText(journalGroup?.intro)
   ? journalGroup!.intro!
-  : 'Notizen aus dem Netzwerk - Workflow, Material, Auftragsgeschichten. Lange Form, ruhig kuratiert.'
-const cmsJournalCards = (journalGroup?.items || [])
-  .filter((item) => item?.image)
-  .map((item) => ({
-    source: item,
-    href: toRootRelativeHref(item.href) || '#',
-    image: imageDisplayUrl(item.image, 'card', { allowOriginal: true }),
-    dataSrcset: cmsSrcset(item.image),
-    sizes: journalSizes,
-    alt: imageAlt(item.image, item.title || ''),
-    title: item.title || '',
-    text: item.text || '',
-    ...imageDimensions(item.image, 'card'),
-  }))
-const journalCards = cmsJournalCards.length ? cmsJournalCards : fallbackJournalCards
+  : 'Workflow, Material, Auftragsgeschichten. Lange Form, ruhig zum Lesen zwischendurch.'
+const monthFormat = new Intl.DateTimeFormat('de-DE', { month: 'long', year: 'numeric' })
+const journalByHref = new Map(journalCards.map((card) => [card.href, card]))
+const cmsJournalItems = (journalGroup?.items || []).filter((item) => {
+  const href = toRootRelativeHref(item?.href)
+  return Boolean(item?.image && href && journalByHref.has(href))
+})
+const journalPosts = (cmsJournalItems.length === 3
+  ? cmsJournalItems.map((item) => {
+      const card = journalByHref.get(toRootRelativeHref(item.href) || '')!
+      return { ...card, title: item.title || card.title, text: item.text || card.text, image: item.image as PayloadMedia | string, source: item }
+    })
+  : journalCards.slice(0, 3).map((card) => ({ ...card, image: card.image as PayloadMedia | string, source: undefined }))
+).map((post) => {
+  const media = typeof post.image === 'string' ? resolveTinaMediaRef(post.image) || post.image : post.image
+  return {
+    ...post,
+    src: imageDisplayUrl(media, 'card', { allowOriginal: true }),
+    srcset: typeof media === 'string' ? undefined : imageSrcset(media, ['mobile', 'card']) || undefined,
+    date: post.dateTime ? monthFormat.format(new Date(post.dateTime)) : '',
+    ...(typeof media === 'string' ? {} : imageDimensions(media, 'card')),
+  }
+})
 ---
 <AdoptedPageLayout
   legacyFile="index.html"
@@ -174,6 +209,7 @@ const journalCards = cmsJournalCards.length ? cmsJournalCards : fallbackJournalC
   ctaHref="#anfrage"
   preloadImages={[{ href: firstHeroSlide.image, fetchpriority: 'high' }]}
   noIndex={Boolean(preview)}
+  jsonLd={[homeFaqJsonLd, contactSheetJsonLd(strips)].filter((item): item is NonNullable<typeof item> => Boolean(item))}
   liveCms
 >
   {preview && (
@@ -184,33 +220,35 @@ const journalCards = cmsJournalCards.length ? cmsJournalCards : fallbackJournalC
       publishedHref={preview.publishedHref}
     />
   )}
-  <main>
+  <main class="lp">
     <NativeShaderHero label="Intro" slides={heroSlides} sourceSlides={doc?.heroSlides || []} />
 
-    <section class="statement sec-light" data-theme="light" aria-label="Haltung">
+    {/* 01 · Statement (light) — gleiches Muster wie „Über mich“ */}
+    <section class="statement sec-light" data-theme="light" aria-labelledby="lp-statement-title">
       <div class="section-inner">
         <div>
           {statementHeadline
-            ? <h2 {...tinaAttrs(statement, 'headline')}>{statementHeadline}{statementEmphasis ? <Fragment> <em {...tinaAttrs(statement, 'headlineEmphasis')}>{statementEmphasis}</em></Fragment> : null}</h2>
-            : <h2>Bilder, die einen Raum<br /><em>verändern</em>.</h2>}
+            ? <h2 id="lp-statement-title" {...tinaAttrs(statement, 'headline')}>{statementHeadline}{statementEmphasis ? <Fragment><br /> <em {...tinaAttrs(statement, 'headlineEmphasis')}>{statementEmphasis}</em></Fragment> : null}</h2>
+            : <h2 id="lp-statement-title">Bilder, die einen Raum<br /> <em>verändern</em>.</h2>}
         </div>
         <div class="body">
           <p class="lead" {...tinaAttrs(statement?.body?.[0], 'text')}>{statementParagraphs[0]}</p>
           {statementParagraphs[1] && <p {...tinaAttrs(statement?.body?.[1], 'text')}>{statementParagraphs[1]}</p>}
           <div class="actions">
-            <a class="btn dark" href="/ueber-mich.html">Mehr über mich</a>
+            <a class="btn dark" href="#arbeiten">Serien ansehen</a>
             <a class="btn" href="#chapters" style="color:var(--ink);border-color:var(--ink)">Bereiche ansehen</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="chapters sec-dark" id="chapters" data-theme="dark" aria-label="Fotografie">
+    {/* 02 · Sechs Bereiche (dark) — gleiches Muster wie „Über mich“ */}
+    <section class="chapters sec-dark" id="chapters" data-theme="dark" aria-labelledby="lp-chapters-title">
       <div class="section-inner">
         <div class="chapters-head">
           {chaptersHeadline
-            ? <h2 {...tinaAttrs(chaptersGroup, 'headline')}>{chaptersHeadline}{chaptersEmphasis ? <Fragment> <em {...tinaAttrs(chaptersGroup, 'headlineEmphasis')}>{chaptersEmphasis}</em></Fragment> : null}</h2>
-            : <h2>Sechs Bereiche.<br />Eine <em>Linse</em>.</h2>}
+            ? <h2 id="lp-chapters-title" {...tinaAttrs(chaptersGroup, 'headline')}>{chaptersHeadline}{chaptersEmphasis ? <Fragment><br /> <em {...tinaAttrs(chaptersGroup, 'headlineEmphasis')}>{chaptersEmphasis}</em></Fragment> : null}</h2>
+            : <h2 id="lp-chapters-title">Sechs Bereiche.<br /> Eine <em>Linse</em>.</h2>}
           <p class="lead" {...tinaAttrs(chaptersGroup, 'intro')}>{chaptersIntro}</p>
         </div>
         <div class="chapter-grid">
@@ -220,108 +258,203 @@ const journalCards = cmsJournalCards.length ? cmsJournalCards : fallbackJournalC
                 <img src={chapter.image} srcset={chapter.srcset} sizes={chapter.sizes} alt={chapter.alt} loading="lazy" width={chapter.width} height={chapter.height} decoding="async" {...tinaAttrs(editableSource(chapter), 'image')} />
               </div>
               <div class="head"><h3 {...tinaAttrs(editableSource(chapter), 'title')}>{chapter.title}</h3></div>
-              <span class="meta"><span class="arr">Bereich ansehen →</span></span>
+              <span class="meta"><span class="arr">Bereich ansehen&nbsp;→</span></span>
             </a>
           ))}
         </div>
       </div>
     </section>
 
-    <section class="pf-teaser sec-light" data-theme="light" aria-label="Portfolio">
+    {/* 03 · Kontaktbogen (light) */}
+    <section class="lp-sheet sec-light" id="arbeiten" data-theme="light" aria-labelledby="lp-sheet-title">
       <div class="section-inner">
-        <div class="pf-head">
+        <div class="lp-head">
           {selectedWorksHeadline
-            ? <h2 {...tinaAttrs(selectedWorks, 'headline')}>{selectedWorksHeadline}{selectedWorksEmphasis ? <Fragment> <em {...tinaAttrs(selectedWorks, 'headlineEmphasis')}>{selectedWorksEmphasis}</em></Fragment> : null}</h2>
-            : <h2>Ausgewählte<br /><em>Arbeiten</em>.</h2>}
+            ? <h2 id="lp-sheet-title" class="lp-display" {...tinaAttrs(selectedWorks, 'headline')}>{selectedWorksHeadline}{selectedWorksEmphasis ? <Fragment> <em {...tinaAttrs(selectedWorks, 'headlineEmphasis')}>{selectedWorksEmphasis}</em></Fragment> : null}</h2>
+            : <h2 id="lp-sheet-title" class="lp-display">Ausgewählte <em>Arbeiten.</em></h2>}
           <p class="lead" {...tinaAttrs(selectedWorks, 'intro')}>{portfolioIntro}</p>
         </div>
-        <div class="pf-marquee" id="pfMarquee">
-          <div class="pf-row row-1">
-            <div class="pf-track" id="pfTrack1"></div>
-          </div>
-          <div class="pf-row row-2">
-            <div class="pf-track" id="pfTrack2"></div>
-          </div>
+        <div class="lp-sheet__board" data-site-lightbox-gallery>
+          {strips.map((strip, stripIndex) => {
+            const total = stripRatio(strip)
+            return (
+              <article class="lp-strip" aria-labelledby={`lp-strip-${strip.topic}`}>
+                <header class="lp-strip__label">
+                  <span class="lp-num">N° {pad(stripIndex + 1)}</span>
+                  <h3 id={`lp-strip-${strip.topic}`}>{strip.label}</h3>
+                  {strip.excerpt && <p>{strip.excerpt}</p>}
+                  <a class="lp-link" href={strip.href}>Serie ansehen<span class="sr-only"> {strip.label}</span> <span>· {pad(strip.count)} Bilder</span></a>
+                </header>
+                <div class="lp-strip__frames" style={`--total:${total.toFixed(3)}`}>
+                  {strip.frames.map((frame, frameIndex) => (
+                    <figure class:list={['lp-frame', { 'is-pick': frameIndex === 0 }]} style={`--r:${frame.ratio.toFixed(4)}`}>
+                      <div class="lp-frame__img">
+                        <img
+                          src={frame.src}
+                          srcset={frame.srcset}
+                          sizes={frameSizes(frame.ratio, total)}
+                          alt={frame.alt}
+                          data-full={frame.full}
+                          loading="lazy"
+                          decoding="async"
+                          width={frame.width}
+                          height={frame.height}
+                        />
+                        {frameIndex === 0 && <span class="lp-pick" aria-hidden="true"></span>}
+                      </div>
+                      <figcaption>
+                        <span class="lp-frame__no" data-no={`${pad(stripIndex + 1)}·${pad(frameIndex + 1)}${frameIndex === 0 ? 'A' : ''}`} aria-hidden="true"></span>
+                        {frame.caption && <span class="lp-frame__cap">{frame.caption}</span>}
+                      </figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </article>
+            )
+          })}
         </div>
-        <div class="pf-foot">
+        <div class="lp-sheet__foot">
+          <div class="lp-legend"><span class="lp-legend__mark" aria-hidden="true"></span>Rot markiert: die Auswahl der Serie. Klick auf ein Bild öffnet die Großansicht.</div>
           <a class="btn dark" href="/portfolio.html">Vollständiges Portfolio →</a>
         </div>
       </div>
     </section>
 
-    <section class="about sec-dark" data-theme="dark" aria-label="Über mich">
+    {/* 04 · Wofür brauchst du Bilder? (dark) */}
+    <section class="lp-intents sec-dark" data-theme="dark" aria-labelledby="lp-intents-title">
+      <div class="section-inner">
+        <div class="lp-head">
+          <h2 id="lp-intents-title" class="lp-display">Wofür brauchst du <em>Bilder?</em></h2>
+          <p class="lead">Sieben typische Anlässe, jeder mit eigener Seite, Ablauf und Beispielen. Wähle den, der passt.</p>
+        </div>
+        <ol class="lp-intent-list">
+          {homeIntents.map((intent, index) => (
+            <li>
+              <a class="lp-intent" href={intent.href}>
+                <span class="lp-num">{pad(index + 1)}</span>
+                <span class="lp-intent__title">{intent.title}</span>
+                <span class="lp-intent__text">{intent.text}</span>
+                <span class="lp-arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    {/* 05 · Ablauf (light) */}
+    <section class="lp-process sec-light" data-theme="light" aria-labelledby="lp-process-title">
+      <div class="section-inner">
+        <div class="lp-head">
+          <h2 id="lp-process-title" class="lp-display">Vom Briefing <em>bis zum Print.</em></h2>
+          <p class="lead">Fünf Schritte, ein Ansprechpartner. So läuft ein Auftrag ab.</p>
+        </div>
+        <ol class="lp-steps">
+          {homeProcess.map((step, index) => (
+            <li class="lp-step">
+              <span class="lp-step__no" aria-hidden="true">{pad(index + 1)}</span>
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    {/* 06 · Hinter der Kamera (dark) */}
+    <section class="about lp-about sec-dark" data-theme="dark" aria-labelledby="lp-about-title">
       <div class="section-inner">
         <div class="about-img" data-site-lightbox-single>
           <img src={aboutImage} srcset={resolvedAboutImageSrcset} sizes={aboutSizes} alt={aboutImageAlt} loading="lazy" width={aboutImageDimensions.width} height={aboutImageDimensions.height} decoding="async" {...tinaAttrs(about, 'image')} />
+          <span class="lp-viewfinder" aria-hidden="true"></span>
         </div>
         <div class="about-copy">
-          <p class="kicker" {...tinaAttrs(about, 'kicker')}>{aboutKicker}</p>
+          <p class="lp-eyebrow" {...tinaAttrs(about, 'kicker')}>{aboutKicker}</p>
           {aboutHeadline
-            ? <h2 {...tinaAttrs(about, 'headline')}>{aboutHeadline}{aboutEmphasis ? <Fragment> <em {...tinaAttrs(about, 'headlineEmphasis')}>{aboutEmphasis}</em></Fragment> : null}</h2>
-            : <h2>Hinter der<br /><em>Kamera</em>.</h2>}
+            ? <h2 id="lp-about-title" class="lp-display" {...tinaAttrs(about, 'headline')}>{aboutHeadline}{aboutEmphasis ? <Fragment> <em {...tinaAttrs(about, 'headlineEmphasis')}>{aboutEmphasis}</em></Fragment> : null}</h2>
+            : <h2 id="lp-about-title" class="lp-display">Hinter der <em>Kamera.</em></h2>}
           <p class="lead" {...tinaAttrs(about?.body?.[0], 'text')}>{aboutParagraphs[0]}</p>
           {aboutParagraphs[1] && <p {...tinaAttrs(about?.body?.[1], 'text')}>{aboutParagraphs[1]}</p>}
           <div class="actions">
             <a class="btn primary" href="/ueber-mich.html">Mehr über mich</a>
-            <a class="btn" href="#anfrage" style="color:#f3f5ef;border-color:rgba(243,245,239,.4)">Projekt anfragen</a>
+            <a class="btn lp-btn-ghost-paper" href="#anfrage">Projekt anfragen</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="services-sec sec-light" data-theme="light" aria-label="Weitere Dienstleistungen">
+    {/* 07 · FAQ (light) */}
+    <section class="lp-faq sec-light" data-theme="light" aria-labelledby="lp-faq-title">
       <div class="section-inner">
-        <div class="services-head">
-          {servicesHeadline
-            ? <h2 {...tinaAttrs(servicesGroup, 'headline')}>{servicesHeadline}{servicesEmphasis ? <Fragment> <em {...tinaAttrs(servicesGroup, 'headlineEmphasis')}>{servicesEmphasis}</em></Fragment> : null}</h2>
-            : <h2>Weitere Leistungen<br /><em>im&nbsp;Überblick</em>.</h2>}
-          <p class="lead" {...tinaAttrs(servicesGroup, 'intro')}>{servicesIntro}</p>
+        <div class="lp-faq__intro">
+          <h2 id="lp-faq-title" class="lp-display">Häufige <em>Fragen.</em></h2>
+          <p class="lead">Kurz beantwortet. Alles Weitere klären wir im Briefing.</p>
+          <a class="btn dark" href="#anfrage">Frage stellen</a>
         </div>
-        <div class="services-list">
-          {services.map((service) => (
-            <a class="service-row" href={service.href}>
-              <h3 {...tinaAttrs(editableSource(service), 'title')}>{service.title}</h3><p {...tinaAttrs(editableSource(service), 'text')}>{service.text}</p><span class="arr">Detail →</span>
-            </a>
+        <div class="lp-faq__list">
+          {homeFaq.map((item, index) => (
+            <details class="lp-q" open={index === 0}>
+              <summary>
+                <span class="lp-num">{pad(index + 1)}</span>
+                <h3>{item.question}</h3>
+                <span class="lp-q__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="lp-q__a">
+                <p>{item.answer}</p>
+                {item.link && <a class="lp-link" href={item.link.href}>{item.link.label} →</a>}
+              </div>
+            </details>
           ))}
-        </div>
-        <div style="margin-top:32px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center">
-          <a class="btn dark" href="/leistungen.html">Alle Leistungen</a>
         </div>
       </div>
     </section>
 
-    <section class="blog-sec sec-dark" data-theme="dark" aria-label="Journal">
+    {/* 08 · Journal + Zusatzleistungen (dark) */}
+    <section class="blog-sec lp-journal sec-dark" data-theme="dark" aria-labelledby="lp-journal-title">
       <div class="section-inner">
-        <div class="blog-head">
+        <div class="lp-head">
           {journalHeadline
-            ? <h2 {...tinaAttrs(journalGroup, 'headline')}>{journalHeadline}{journalEmphasis ? <Fragment> <em {...tinaAttrs(journalGroup, 'headlineEmphasis')}>{journalEmphasis}</em></Fragment> : null}</h2>
-            : <h2>Journal.</h2>}
+            ? <h2 id="lp-journal-title" class="lp-display" {...tinaAttrs(journalGroup, 'headline')}>{journalHeadline}{journalEmphasis ? <Fragment> <em {...tinaAttrs(journalGroup, 'headlineEmphasis')}>{journalEmphasis}</em></Fragment> : null}</h2>
+            : <h2 id="lp-journal-title" class="lp-display">Journal.</h2>}
           <p class="lead" {...tinaAttrs(journalGroup, 'intro')}>{journalIntro}</p>
         </div>
-        <div class="blog-grid">
-          {journalCards.map((post) => (
-            <a class="post" href={post.href}>
-              <div class="pimg">
-                <img
-                  src={post.image}
-                  srcset={post.dataSrcset}
-                  sizes={post.sizes}
-                  alt={post.alt}
-                  loading="lazy"
-                  width={post.width}
-                  height={post.height}
-                  decoding="async"
-                  {...tinaAttrs(editableSource(post), 'image')}
-                />
+        <div class="lp-journal__grid">
+          {journalPosts.map((post) => (
+            <a class="lp-post" href={post.href}>
+              <div class="lp-post__img">
+                <img src={post.src} srcset={post.srcset} sizes={journalSizes} alt={post.imageAlt} loading="lazy" decoding="async" width={post.width} height={post.height} {...tinaAttrs(post.source, 'image')} />
               </div>
-              <h3 {...tinaAttrs(editableSource(post), 'title')}>{post.title}</h3>
-              <p {...tinaAttrs(editableSource(post), 'text')}>{post.text}</p>
-              <span class="read">Lesen →</span>
+              <p class="lp-post__meta">
+                {post.date && <time datetime={post.dateTime}>{post.date}</time>}
+                <span>{post.readTime} Lesezeit</span>
+              </p>
+              <h3 {...tinaAttrs(post.source, 'title')}>{post.title}</h3>
+              <p class="lp-post__text" {...tinaAttrs(post.source, 'text')}>{post.text}</p>
+              <span class="lp-post__read">Lesen →</span>
             </a>
           ))}
         </div>
-        <div style="margin-top:36px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center">
-          <a class="btn" style="color:#f3f5ef;border-color:rgba(243,245,239,.4)" href="/blog.html">Alle Beiträge</a>
+        <div class="lp-journal__all">
+          <a class="btn lp-btn-ghost-paper" href="/blog.html">Alle Beiträge</a>
+        </div>
+
+        <div class="lp-extras" aria-labelledby="lp-extras-title">
+          <div class="lp-extras__head">
+            <p class="lp-eyebrow">Über die Fotografie hinaus</p>
+            <h3 id="lp-extras-title">Zusatzleistungen</h3>
+            <p {...tinaAttrs(servicesGroup, 'intro')}>{servicesIntro}</p>
+            <a class="lp-link" href="/leistungen.html">Alle Leistungen →</a>
+          </div>
+          <ul class="lp-extras__list">
+            {services.map((service) => (
+              <li>
+                <a href={service.href}>
+                  <span class="lp-extras__title" {...tinaAttrs(editableSource(service), 'title')}>{service.title}</span>
+                  <span class="lp-extras__text" {...tinaAttrs(editableSource(service), 'text')}>{service.text}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
@@ -337,14 +470,4 @@ const journalCards = cmsJournalCards.length ? cmsJournalCards : fallbackJournalC
       data-contact-lead="Erzähl kurz, worum es geht: Motiv, Ort, Zeitrahmen, Nutzung. Ich antworte persönlich und sortiere mit dir den nächsten sinnvollen Schritt."
     />
   </main>
-
-  <div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="Bildvorschau" aria-hidden="true">
-    <div class="lb-stage">
-      <button class="lb-close" id="lbClose" type="button" aria-label="Schließen">×</button>
-      <button class="lb-prev" id="lbPrev" type="button" aria-label="Vorheriges Bild">‹</button>
-      <img class="lb-img" id="lbImg" alt="Vergrößerte Portfolioansicht" width="1600" height="1200" decoding="async" />
-      <button class="lb-next" id="lbNext" type="button" aria-label="Nächstes Bild">›</button>
-      <span class="lb-counter" id="lbCounter"></span>
-    </div>
-  </div>
 </AdoptedPageLayout>
