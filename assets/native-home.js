@@ -50,7 +50,7 @@
    Shader, keine externen Libs.
 */
 (()=>{
-  const startHeroShader = () => {
+  const startHeroShader = async () => {
   const canvas=document.getElementById('hero-shader');
   if(!canvas) return;
   const hero=canvas.closest('.hero');
@@ -83,18 +83,10 @@
   function initialStaticHeroReason() {
     if (heroModeOverride === 'static') return 'manual';
     if (forceShader) return '';
-    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return 'reduced-motion';
-    if (window.matchMedia?.('(hover: none), (pointer: coarse), (max-width: 900px)').matches) return 'touch-or-small';
-    if (connection?.saveData) return 'save-data';
-    if (/^(slow-)?2g$/i.test(connection?.effectiveType || '')) return 'slow-network';
-    const cores = Number(navigator.hardwareConcurrency || 0);
-    const memory = Number(navigator.deviceMemory || 0);
-    if (memory && memory <= 4) return 'low-memory';
-    if (cores && cores <= 4) return 'low-core-count';
-    /* The fullscreen shader is intentionally opt-in. Even short-lived WebGL
-       startup work caused visible stalls before the runtime fallback could
-       react on software and integrated renderers. */
-    return 'performance-default';
+    /* Gemeinsame Regeln (reduzierte Bewegung, Touch, Datensparen, schwache
+       Geräte, gemerkte Rückfälle) – siehe mrHeroGate in site-chrome.js. */
+    if (!window.mrHeroGate) return 'gate-unavailable';
+    return window.mrHeroGate.staticReason();
   }
 
   const staticReason = initialStaticHeroReason();
@@ -146,8 +138,11 @@
   }).filter(slide=>slide.url);
   if(!slides.length){return;}
 
-  const gl=canvas.getContext('webgl',{antialias:false,premultipliedAlpha:false,powerPreference:'high-performance'});
+  /* 'high-performance' zwang Laptops mit zwei GPUs zum Umschalten auf die
+     dedizierte Grafik – das allein erzeugte einen sichtbaren Hänger. */
+  const gl=canvas.getContext('webgl',{antialias:false,premultipliedAlpha:false,depth:false,stencil:false,powerPreference:'default',failIfMajorPerformanceCaveat:!forceShader});
   if(!gl){
+    if(!forceShader) window.mrHeroGate?.demote('webgl-unavailable');
     useStaticHero('webgl-unavailable');
     return;
   }
@@ -164,10 +159,7 @@
 
   function lowPowerGpuReason(renderer) {
     if (forceShader) return '';
-    if (/swiftshader|software rasterizer|llvmpipe|microsoft basic render driver|basic render driver/i.test(renderer)) return 'software-renderer';
-    if (/\bintel\b|iris|uhd graphics|hd graphics/i.test(renderer) && !/arc|apple|radeon|nvidia|geforce/i.test(renderer)) {
-      return 'integrated-intel-gpu';
-    }
+    if (window.mrHeroGate ? window.mrHeroGate.isSoftwareRenderer(renderer) : /swiftshader|llvmpipe|basic render/i.test(renderer)) return 'software-renderer';
     return '';
   }
 
@@ -176,6 +168,7 @@
   const gpuReason = lowPowerGpuReason(renderer);
   if (gpuReason) {
     try { gl.getExtension('WEBGL_lose_context')?.loseContext(); } catch (_) {}
+    window.mrHeroGate?.demote(gpuReason);
     useStaticHero(gpuReason);
     return;
   }
@@ -200,6 +193,7 @@
   uniform float uReady;
   uniform float uShutter; /* 0..1 pulse on click */
   uniform float uKB;      /* ken-burns phase per slide 0..1 */
+  uniform float uFx;      /* 0 = unbearbeitetes Foto (wie das statische Bild), 1 = volle Lichtführung */
 
   float hash(vec2 p){ p=fract(p*vec2(123.34,456.21)); p+=dot(p,p+45.32); return fract(p.x*p.y); }
 
@@ -216,9 +210,15 @@
     vec2 scale=(canvasRatio>imgRatio) ? vec2(1.0, imgRatio/canvasRatio) : vec2(canvasRatio/imgRatio, 1.0);
     /* Start pixel-aligned with the CSS background, then grow into motion.
        That keeps reloads from snapping when the canvas takes over. */
-    float kbScale=1.0 + 0.075*(1.0-exp(-kb*0.095));
+    /* Start bei 1.025 = exakt der Zoom des statischen Hintergrundbilds, damit die
+       Übergabe an den Shader keinen Sprung macht. */
+    float kbScale=1.025 + 0.055*(1.0-exp(-kb*0.095));
     float panReady=smoothstep(0.0, 6.0, kb);
     vec2 kbPan=panReady*vec2(sin(kb*0.22)*0.052, sin(kb*0.17)*0.040);
+    /* Schwenk nie weiter als die Zoom-Reserve – sonst liest der Shader über den
+       Bildrand hinaus und der Rand verschmiert zu Streifen. */
+    vec2 room=max(vec2(0.0), 0.5*(1.0-scale/kbScale));
+    kbPan=clamp(kbPan, -room, room);
     vec2 q=(uv-0.5) * scale / kbScale + kbPan;
     q+=0.5;
     q.y=1.0-q.y;
@@ -258,6 +258,7 @@
     vec3 baseA=texture2D(uA, clamp(uvA, 0.0, 1.0)).rgb;
     vec3 baseB=texture2D(uB, clamp(uvB, 0.0, 1.0)).rgb;
     vec3 col=mix(baseA, baseB, uMix);
+    vec3 plain=col;
 
     /* gentle filmic grade - split-tone + light contrast lift */
     col=pow(max(col, 0.0), vec3(0.97));
@@ -324,19 +325,42 @@
     float gmask=smoothstep(0.05, 0.55, gl) * (1.0 - smoothstep(0.55, 0.95, gl));
     col+=(g-0.5)*0.024*gmask;
 
+    /* Lichtführung weich einblenden: beim Übernehmen zeigt der Shader zuerst
+       dasselbe Bild wie der statische Hintergrund, dann entwickelt sich das Licht. */
+    col=mix(plain, col, uFx);
     col*=uReady;
     gl_FragColor=vec4(col, 1.0);
   }`;
 
+  /* Kompilieren ohne sofortige Status-Abfrage: getShaderParameter/getProgramParameter
+     direkt nach compile/link blockieren den Hauptthread, bis der Treiber fertig ist
+     (unter Windows/ANGLE oft 50–200 ms). Mit KHR_parallel_shader_compile warten
+     wir stattdessen frame-weise auf COMPLETION_STATUS. */
   function compile(type,src){
-    const s=gl.createShader(type); gl.shaderSource(s,src); gl.compileShader(s);
-    if(!gl.getShaderParameter(s,gl.COMPILE_STATUS)){console.warn(gl.getShaderInfoLog(s));return null;}
-    return s;
+    const sh=gl.createShader(type); gl.shaderSource(sh,src); gl.compileShader(sh);
+    return sh;
   }
   const vs=compile(gl.VERTEX_SHADER,vsrc);
   const fs=compile(gl.FRAGMENT_SHADER,fsrc);
   const prog=gl.createProgram(); gl.attachShader(prog,vs); gl.attachShader(prog,fs); gl.linkProgram(prog);
-  if(!gl.getProgramParameter(prog,gl.LINK_STATUS)){console.warn(gl.getProgramInfoLog(prog));return;}
+  const parallelCompile=gl.getExtension('KHR_parallel_shader_compile');
+  if(parallelCompile){
+    await new Promise(resolve=>{
+      /* Nicht zu früh fragen: solange der Treiber noch kompiliert, wartet auch die
+         COMPLETION_STATUS-Abfrage synchron auf den GPU-Prozess (gemessen ~60 ms).
+         Mit Abstand gefragt ist der Compile fertig und die Abfrage kostet nichts. */
+      const poll=()=>{
+        if(gl.isContextLost() || gl.getProgramParameter(prog, parallelCompile.COMPLETION_STATUS_KHR)) resolve();
+        else setTimeout(poll, 120);
+      };
+      setTimeout(poll, 200);
+    });
+  }
+  if(gl.isContextLost() || !gl.getProgramParameter(prog,gl.LINK_STATUS)){
+    console.warn(gl.getShaderInfoLog(vs) || gl.getShaderInfoLog(fs) || gl.getProgramInfoLog(prog));
+    useStaticHero('shader-compile');
+    return;
+  }
   gl.useProgram(prog);
 
   const buf=gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER,buf);
@@ -344,7 +368,7 @@
   const a=gl.getAttribLocation(prog,'p'); gl.enableVertexAttribArray(a); gl.vertexAttribPointer(a,2,gl.FLOAT,false,0,0);
 
   const U={};
-  ['uT','uR','uIRA','uIRB','uM','uMA','uVel','uMix','uReady','uShutter','uKB'].forEach(n=>{U[n]=gl.getUniformLocation(prog,n);});
+  ['uT','uR','uIRA','uIRB','uM','uMA','uVel','uMix','uReady','uShutter','uKB','uFx'].forEach(n=>{U[n]=gl.getUniformLocation(prog,n);});
   const uA=gl.getUniformLocation(prog,'uA');
   const uB=gl.getUniformLocation(prog,'uB');
   gl.uniform1i(uA,0); gl.uniform1i(uB,1);
@@ -359,40 +383,72 @@
     gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);
     return t;
   }
-  const texA=placeholderTex();
-  const texB=placeholderTex();
+  let texA=placeholderTex();
+  let texB=placeholderTex();
+  let slotBIdx=-1; /* welcher Slide liegt gerade in texB */
 
-  /* preload all images */
-  const cache=slides.map(()=>null);
-  function loadImage(idx){
-    return new Promise(res=>{
-      if(cache[idx]){res(cache[idx]);return;}
-      const preloadImg=idx===0 ? hero?.querySelector('[data-hero-shader-preload]') : null;
-      if(preloadImg){
-        const usePreload=()=>{
-          cache[idx]={img:preloadImg,w:preloadImg.naturalWidth||preloadImg.width||1,h:preloadImg.naturalHeight||preloadImg.height||1};
-          res(cache[idx]);
-        };
-        if(preloadImg.complete && preloadImg.naturalWidth>0){
-          usePreload();
-          return;
-        }
-      }
-      loadStandaloneImage(idx,res);
-    });
+  /* Bilder vorbereiten: createImageBitmap dekodiert außerhalb des Hauptthreads und
+     skaliert auf das, was der Canvas wirklich braucht. Vorher wurden 2560px-Bilder
+     (4,4 MP) erst beim texImage2D synchron dekodiert – der größte Ruckler. */
+  const maxTextureSize=Math.min(Number(gl.getParameter(gl.MAX_TEXTURE_SIZE))||4096, 2048);
+  /* Bild als Blob holen und daraus dekodieren: createImageBitmap(Blob) läuft in
+     Chrome im Hintergrund-Thread, createImageBitmap(<img>) dagegen gemessen
+     70–90 ms synchron auf dem Hauptthread. Die Zielbreite wird direkt mitgegeben. */
+  const targetWidth=()=>Math.max(1280, Math.ceil((canvas.clientWidth||window.innerWidth||1440)*1.12));
+  const knownWidth=(url, img)=>{
+    if(img && img.naturalWidth) return img.naturalWidth;
+    const m=/-(\d{3,5})x(\d{3,5})\.[a-z]+(?:[?#]|$)/i.exec(url||'');
+    return m ? Number(m[1]) : 0;
+  };
+  async function bitmapFromUrl(url, img){
+    if(!('createImageBitmap' in window) || !window.fetch) return null;
+    try{
+      const res=await fetch(url,{mode:'cors'});
+      if(!res.ok) return null;
+      const blob=await res.blob();
+      const natural=knownWidth(url, img);
+      const width=Math.min(maxTextureSize, natural ? Math.min(natural, targetWidth()) : targetWidth());
+      const bmp=await createImageBitmap(blob,{resizeWidth:width,resizeQuality:'high'});
+      return {img:bmp,w:bmp.width,h:bmp.height};
+    }catch(_){ return null; }
   }
-  function loadStandaloneImage(idx,res){
-    const im=new Image(); im.crossOrigin='anonymous';
-    im.decoding='async';
-    im.fetchPriority=idx===0?'high':'low';
-    im.onload=()=>{cache[idx]={img:im,w:im.naturalWidth||im.width,h:im.naturalHeight||im.height};res(cache[idx]);};
-    im.onerror=()=>{cache[idx]={img:null,w:1,h:1};res(cache[idx]);};
-    im.src=slides[idx].url;
+  async function toTextureSource(img){
+    const w=img.naturalWidth||img.width||1, h=img.naturalHeight||img.height||1;
+    try{ await img.decode(); }catch(_){}
+    return {img,w,h};
+  }
+  const cache=slides.map(()=>null);
+  const pending=slides.map(()=>null);
+  function loadImage(idx){
+    if(cache[idx]) return Promise.resolve(cache[idx]);
+    if(pending[idx]) return pending[idx];
+    pending[idx]=new Promise(res=>{
+      const done=(img)=>{
+        if(!img){ cache[idx]={img:null,w:1,h:1}; res(cache[idx]); return; }
+        toTextureSource(img).then(entry=>{ cache[idx]=entry; res(entry); });
+      };
+      const preloadImg=idx===0 ? hero?.querySelector('[data-hero-shader-preload]') : null;
+      const url=(preloadImg && (preloadImg.currentSrc || preloadImg.src)) || slides[idx].url;
+      bitmapFromUrl(url, preloadImg && preloadImg.naturalWidth ? preloadImg : null).then(entry=>{
+        if(entry){ cache[idx]=entry; res(entry); return; }
+        loadViaImage();
+      });
+      function loadViaImage(){
+      if(preloadImg && preloadImg.complete && preloadImg.naturalWidth>0){ done(preloadImg); return; }
+      const im=new Image(); im.crossOrigin='anonymous';
+      im.decoding='async';
+      im.fetchPriority=idx===0?'high':'low';
+      im.onload=()=>done(im);
+      im.onerror=()=>done(null);
+      im.src=slides[idx].url;
+      }
+    });
+    return pending[idx];
   }
   function uploadInto(tex, entry){
     if(!entry || !entry.img) return false;
     gl.bindTexture(gl.TEXTURE_2D, tex);
-    try{ gl.texImage2D(gl.TEXTURE_2D,0,gl.RGB,gl.RGB,gl.UNSIGNED_BYTE,entry.img); }
+    try{ gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,entry.img); }
     catch(e){ console.warn('tex upload failed',e); return false; }
     gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);
     gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);
@@ -408,9 +464,13 @@
   let heroStartT=performance.now();
   let shaderVisible=false;
 
+  let revealAt=0;
   function revealShaderCanvas(){
     if(shaderVisible) return;
     shaderVisible=true;
+    revealAt=performance.now();
+    heroStartT=revealAt;
+    if(hero) setTimeout(()=>hero.classList.add('is-shader-live'), 250);
     ready=1;
     targetReady=1;
     requestAnimationFrame(()=>{
@@ -434,10 +494,12 @@
     else setTimeout(loadNextSlot, 1200);
   });
   const loadNextSlot = () => {
-    loadImage(1%slides.length).then(entry=>{
-      if(!entry) return;
+    const idx=1%slides.length;
+    loadImage(idx).then(entry=>{
+      if(!entry || transitioning) return;
       irB={w:entry.w,h:entry.h};
-      gl.activeTexture(gl.TEXTURE1); uploadInto(texB, entry);
+      gl.activeTexture(gl.TEXTURE1);
+      if(uploadInto(texB, entry)) slotBIdx=idx;
     });
   };
 
@@ -456,11 +518,12 @@
     const target=toIdx;
     /* load target into the inactive slot (slot B) */
     const entry=await loadImage(target);
-    let uploaded=false;
-    if(entry){
+    let uploaded=slotBIdx===target && !!entry;
+    if(entry && !uploaded){
       irB={w:entry.w,h:entry.h};
       gl.activeTexture(gl.TEXTURE1);
       uploaded=uploadInto(texB, entry);
+      if(uploaded) slotBIdx=target;
     }
     if(!shaderVisible && uploaded && entry){
       irA={w:entry.w,h:entry.h};
@@ -469,10 +532,12 @@
       currentIdx=target;
       nextIdx=(target+1)%slides.length;
       revealShaderCanvas();
-      loadImage(nextIdx).then(e=>{
+      const preloadIdx=nextIdx;
+      loadImage(preloadIdx).then(e=>{
         if(e){
           irB={w:e.w,h:e.h};
-          gl.activeTexture(gl.TEXTURE1); uploadInto(texB, e);
+          gl.activeTexture(gl.TEXTURE1);
+          if(uploadInto(texB, e)) slotBIdx=preloadIdx;
         }
       });
       transitioning=false;
@@ -484,20 +549,20 @@
 
     /* after the mix completes, promote B->A and reset */
     setTimeout(()=>{
-      /* copy: now slot A should hold the "target" image, slot B can hold whatever comes next */
-      const promote=cache[target];
-      if(promote){
-        irA={w:promote.w,h:promote.h};
-        gl.activeTexture(gl.TEXTURE0); uploadInto(texA, promote);
-      }
+      /* texB zeigt bereits das Ziel: Texturen tauschen statt erneut hochzuladen */
+      const swapTex=texA; texA=texB; texB=swapTex;
+      const swapIr=irA; irA=irB; irB=swapIr;
+      slotBIdx=currentIdx;
       mix=0; targetMix=0;
       currentIdx=target;
       nextIdx=(target+1)%slides.length;
-      /* preload the one after into slot B */
-      loadImage(nextIdx).then(e=>{
-        if(e){
+      /* den übernächsten Slide in Leerlaufzeit nach texB laden */
+      const preloadIdx=nextIdx;
+      loadImage(preloadIdx).then(e=>{
+        if(e && !transitioning){
           irB={w:e.w,h:e.h};
-          gl.activeTexture(gl.TEXTURE1); uploadInto(texB, e);
+          gl.activeTexture(gl.TEXTURE1);
+          if(uploadInto(texB, e)) slotBIdx=preloadIdx;
         }
       });
       /* motion is continuous and identical for both slots - no kb reset
@@ -663,15 +728,24 @@
   let perfTotalFrameMs=0;
   let perfMaxFrameMs=0;
 
-  function downgradeHero(reason){
+  function downgradeHero(reason, remember=true){
     if(shaderDisabled) return;
-    useStaticHero(reason);
+    shaderDisabled=true;
+    if(remember && !forceShader) window.mrHeroGate?.demote(reason);
     if(hero){
       hero.dataset.heroPerfFrames = String(perfFrames);
       hero.dataset.heroPerfMaxFrame = String(Math.round(perfMaxFrameMs));
     }
-    try { gl.getExtension('WEBGL_lose_context')?.loseContext(); } catch (_) {}
+    /* sanft ausblenden statt hart abschalten */
+    canvas.style.transition='opacity .6s linear';
+    canvas.classList.remove('is-ready');
+    setTimeout(()=>{
+      useStaticHero(reason);
+      canvas.style.transition='';
+      try { gl.getExtension('WEBGL_lose_context')?.loseContext(); } catch (_) {}
+    }, 650);
   }
+  canvas.addEventListener('webglcontextlost', (event)=>{ event.preventDefault(); downgradeHero('context-lost', false); });
 
   function recordFrameHealth(now){
     if(!perfLastFrame){
@@ -746,11 +820,16 @@
     rafId=0;
     if(!shouldDraw()) return;
     const now=performance.now();
-    if(targetFrameMs && now-lastDraw<targetFrameMs){
+    /* Frame-Gesundheit an JEDEM Browser-Frame messen, nicht an den gedrosselten
+       Zeichen-Frames: bei 30-fps-Drosselung liegen deren Abstände systembedingt
+       bei 33–50 ms, der Wächter hielt dadurch jedes Gerät (auch schnelle GPUs)
+       für zu langsam und schaltete den Shader ab. */
+    if(!recordFrameHealth(now)) return;
+    /* kleine Toleranz, sonst kippt die 30-fps-Drosselung durch rAF-Jitter auf 20 fps */
+    if(targetFrameMs && now-lastDraw<targetFrameMs-4){
       queueFrame();
       return;
     }
-    if(!recordFrameHealth(now)) return;
     lastDraw=now;
     const t=(now-start)/1000.0;
     const k=reduce?0.06:0.12;
@@ -798,6 +877,8 @@
     gl.uniform1f(U.uReady, ready);
     gl.uniform1f(U.uShutter, shutter);
     gl.uniform1f(U.uKB, reduce?0.0:kbT);
+    const fxT=revealAt ? Math.min(1,(now-revealAt)/1600) : 0;
+    gl.uniform1f(U.uFx, fxT*fxT*(3.0-2.0*fxT));
 
     gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D, texA);
     gl.activeTexture(gl.TEXTURE1); gl.bindTexture(gl.TEXTURE_2D, texB);

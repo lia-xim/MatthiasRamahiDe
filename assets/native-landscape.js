@@ -32,30 +32,6 @@
     function matches(query){
       return window.matchMedia && window.matchMedia(query).matches;
     }
-    function webglRenderer(){
-      let canvas;
-      let gl;
-      try{
-        canvas=document.createElement('canvas');
-        gl=canvas.getContext('webgl',{powerPreference:'low-power'}) || canvas.getContext('experimental-webgl');
-        if(!gl) return '';
-        const info=gl.getExtension('WEBGL_debug_renderer_info');
-        if(!info) return '';
-        return String(gl.getParameter(info.UNMASKED_RENDERER_WEBGL) || '');
-      }catch(_){
-        return '';
-      }finally{
-        try{ if(gl) gl.getExtension('WEBGL_lose_context').loseContext(); }catch(_){}
-      }
-    }
-    function lowPowerGpuReason(renderer){
-      if(forceAnimated) return '';
-      if(/swiftshader|software rasterizer|llvmpipe/i.test(renderer)) return 'software-renderer';
-      if(/\bintel\b|iris|uhd graphics|hd graphics/i.test(renderer) && !/arc|apple|radeon|nvidia|geforce/i.test(renderer)){
-        return 'integrated-intel-gpu';
-      }
-      return '';
-    }
     function initialStaticHeroReason(){
       if(heroModeOverride==='static') return 'manual';
       if(forceAnimated) return '';
@@ -224,17 +200,29 @@
       if(stage) stage.style.transform='none';
     }
 
-    let staticReason=initialStaticHeroReason();
-    if(!staticReason){
-      const renderer=webglRenderer();
-      if(renderer) hero.dataset.heroGpu=renderer.slice(0,96);
-      staticReason=lowPowerGpuReason(renderer);
-    }
+    let staticReason=initialStaticHeroReason() || (!forceAnimated && window.mrHeroGate ? window.mrHeroGate.staticReason() : '');
     if(staticReason){
       useStaticHero(staticReason);
       return;
     }
     hero.dataset.heroRenderer='animated';
+var gpuChecked=forceAnimated;
+    /* Zyklus erst nach dem GPU-Check (WebGL-Probe nach dem Laden im Leerlauf,
+       Ergebnis gemerkt – siehe mrHeroGate in site-chrome.js). Die erste
+       Einblendung läuft unabhängig davon sofort. */
+    function canCycle(){ return gpuChecked && canAnimateHero(); }
+    if(!gpuChecked){
+      if(window.mrHeroGate){
+        window.mrHeroGate.afterLoad(function(){
+          var gate=window.mrHeroGate.probe();
+          if(gate.renderer) hero.dataset.heroGpu=gate.renderer;
+          if(!gate.ok){ useStaticHero(gate.reason); return; }
+          gpuChecked=true;
+        });
+      } else {
+        gpuChecked=true;
+      }
+    }
 
     if('IntersectionObserver' in window){
       const heroObserver=new IntersectionObserver((entries)=>{
@@ -277,7 +265,7 @@
       let nextIdx=1;
       while(true){
         await sleep(HOLD_MS);
-        if(!canAnimateHero()) continue;
+        if(!canCycle()) continue;
         const next=images[nextIdx % images.length];
         imgTop.setAttribute('href', next);
         setActive(nextIdx % images.length);
@@ -307,7 +295,7 @@
       let slowScore=0;
       function sample(now){
         if(staticHero) return;
-        if(!canAnimateHero()){
+        if(!canCycle()){
           last=now;
           requestAnimationFrame(sample);
           return;
@@ -317,6 +305,7 @@
         samples+=1;
         slowScore=delta>55 ? slowScore+1 : Math.max(0,slowScore-0.25);
         if(samples>90 && slowScore>=10){
+          if(window.mrHeroGate) window.mrHeroGate.demote('slow-frame-budget');
           useStaticHero('slow-frame-budget');
           return;
         }

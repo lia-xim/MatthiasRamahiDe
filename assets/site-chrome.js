@@ -1022,3 +1022,206 @@
     })();
   });
 })();
+
+/* ====== Hero-Gate: gemeinsame, sichere Entscheidung "animiert oder statisch" ======
+   Genutzt von den animierten Heroes (native-home.js Shader, Automobil, Portrait,
+   Landschaft). Früher erzeugte jede Seite beim Laden synchron einen WebGL-Test-
+   kontext – genau in der LCP-Phase – und prüfte bei jedem Seitenaufruf neu.
+   Jetzt: WebGL-Probe nur nach dem Laden im Leerlauf, Ergebnis wird gemerkt, und
+   ein Gerät, das einmal zu langsam war, startet danach sofort statisch.
+   Debug: ?hero=shader erzwingt Animation, ?hero=static erzwingt Standbild,
+   ?hero=reset löscht die gemerkte Entscheidung. */
+(function(){
+  if (window.mrHeroGate) return;
+  var KEY = 'mrHeroGate:v1';
+  var TTL = 14 * 24 * 60 * 60 * 1000;
+  var memo = null;
+  try { if (/^reset$/i.test(new URLSearchParams(location.search).get('hero') || '')) localStorage.removeItem(KEY); } catch (_) {}
+
+  function read(){
+    if (memo) return memo;
+    try {
+      var value = JSON.parse(localStorage.getItem(KEY) || 'null');
+      if (value && typeof value.ok === 'boolean' && Date.now() - (value.t || 0) < TTL) return (memo = value);
+    } catch (_) {}
+    return null;
+  }
+  function write(value){
+    value.t = Date.now();
+    memo = value;
+    try { localStorage.setItem(KEY, JSON.stringify(value)); } catch (_) {}
+    return value;
+  }
+  function softwareRenderer(renderer){
+    return /swiftshader|software rasterizer|llvmpipe|basic render driver/i.test(renderer || '');
+  }
+
+  window.mrHeroGate = {
+    /* Günstige Checks ohne WebGL – dürfen sofort beim Seitenstart laufen. */
+    staticReason: function(){
+      var mm = function(q){ return !!(window.matchMedia && window.matchMedia(q).matches); };
+      var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+      if (mm('(prefers-reduced-motion: reduce)')) return 'reduced-motion';
+      if (mm('(hover: none), (pointer: coarse), (max-width: 900px)')) return 'touch-or-small';
+      if (connection && connection.saveData) return 'save-data';
+      if (/^(slow-)?2g$/i.test((connection && connection.effectiveType) || '')) return 'slow-network';
+      var memory = Number(navigator.deviceMemory || 0);
+      var cores = Number(navigator.hardwareConcurrency || 0);
+      if (memory && memory <= 4) return 'low-memory';
+      if (cores && cores <= 4) return 'low-core-count';
+      var known = read();
+      if (known && !known.ok) return known.reason || 'remembered-static';
+      return '';
+    },
+    /* Einmalige WebGL-Probe (Ergebnis gemerkt). Software-Rendering wird über
+       failIfMajorPerformanceCaveat direkt vom Browser abgelehnt. */
+    probe: function(){
+      var known = read();
+      if (known) return known;
+      var result = { ok: false, renderer: '', reason: '' };
+      var gl = null;
+      try {
+        var canvas = document.createElement('canvas');
+        gl = canvas.getContext('webgl', { failIfMajorPerformanceCaveat: true, powerPreference: 'default', antialias: false, depth: false, stencil: false });
+        if (!gl) {
+          result.reason = 'webgl-unavailable';
+        } else {
+          var info = gl.getExtension('WEBGL_debug_renderer_info');
+          result.renderer = info ? String(gl.getParameter(info.UNMASKED_RENDERER_WEBGL) || '').slice(0, 96) : '';
+          if (softwareRenderer(result.renderer)) result.reason = 'software-renderer';
+          else result.ok = true;
+        }
+      } catch (_) {
+        result.reason = 'webgl-error';
+      } finally {
+        try { var lose = gl && gl.getExtension('WEBGL_lose_context'); if (lose) lose.loseContext(); } catch (_) {}
+      }
+      return write(result);
+    },
+    /* Laufzeit-Wächter hat ruckelnde Frames gemessen: für dieses Gerät merken. */
+    demote: function(reason){
+      var known = read() || {};
+      write({ ok: false, renderer: known.renderer || '', reason: reason || 'runtime-frame-budget' });
+    },
+    isSoftwareRenderer: softwareRenderer,
+    /* Erst nach dem load-Event und im Leerlauf – nie in der LCP-Phase. */
+    afterLoad: function(fn, delay){
+      var run = function(){
+        if ('requestIdleCallback' in window) window.requestIdleCallback(fn, { timeout: 2000 });
+        else setTimeout(fn, 200);
+      };
+      var wait = typeof delay === 'number' ? delay : 600;
+      if (document.readyState === 'complete') setTimeout(run, wait);
+      else window.addEventListener('load', function(){ setTimeout(run, wait); }, { once: true });
+    }
+  };
+})();
+
+/* ====== Hero-Linse: Licht-Ebene über den eigenen Heroes der Leistungsseiten ======
+   Bildet die Linse des Startseiten-Shaders nach (Lichtkegel am Cursor, warmer Kern,
+   Abdunklung nach außen, ruhige Drift ohne Maus) – ohne zweiten WebGL-Shader: zwei
+   vorgerenderte Verlaufs-Ebenen werden nur per transform verschoben (Compositor,
+   kein Neuzeichnen). Sitzt in der Bild-Bühne, also über den Fotos, unter den Texten.
+   Läuft nur, wenn mrHeroGate animierte Heroes erlaubt und die Seite selbst nicht
+   auf statisch geschaltet hat. */
+(function(){
+  var STAGES = [
+    ['.hero-pd', '.pd-stage'],
+    ['.hero-tri', '.tri-stage'],
+    ['.hero-mr', '.hero-mr__stage'],
+    ['.hero-pt', '.hero-pt__stage'],
+    ['.hero-ls', '.hero-ls__stage']
+  ];
+  var hero = null, stage = null;
+  for (var i = 0; i < STAGES.length && !hero; i++) {
+    var h = document.querySelector(STAGES[i][0]);
+    var s = h && h.querySelector(STAGES[i][1]);
+    if (h && s) { hero = h; stage = s; }
+  }
+  if (!hero || !window.mrHeroGate) return;
+  if (window.mrHeroGate.staticReason()) return;
+
+  window.mrHeroGate.afterLoad(function(){
+    if (hero.classList.contains('is-static-hero')) return;
+    if (!window.mrHeroGate.probe().ok) return;
+    start();
+  }, 900);
+
+  function start(){
+    var css = document.createElement('style');
+    css.textContent =
+      '.mr-lens{position:absolute;inset:0;z-index:40;overflow:hidden;pointer-events:none;opacity:0;transition:opacity 1.6s ease;contain:strict}' +
+      '.mr-lens.is-on{opacity:1}' +
+      '.mr-lens i{position:absolute;left:0;top:0;width:200%;height:200%;will-change:transform}' +
+      '.mr-lens__shade{background:radial-gradient(circle calc(var(--r)*2) at 50% 50%,rgba(2,3,6,0) 0,rgba(2,3,6,0) calc(var(--r)*.22),rgba(2,3,6,.2) var(--r),rgba(2,3,6,.26) calc(var(--r)*2))}' +
+      '.mr-lens__light{mix-blend-mode:soft-light;background:radial-gradient(circle var(--r) at 50% 50%,rgba(255,226,192,.95) 0,rgba(255,226,192,.4) calc(var(--r)*.32),rgba(255,226,192,0) var(--r))}';
+    document.head.appendChild(css);
+
+    var lens = document.createElement('div');
+    lens.className = 'mr-lens';
+    lens.setAttribute('aria-hidden', 'true');
+    var shade = document.createElement('i'); shade.className = 'mr-lens__shade';
+    var light = document.createElement('i'); light.className = 'mr-lens__light';
+    lens.appendChild(shade); lens.appendChild(light);
+    stage.appendChild(lens);
+
+    var w = 1, hgt = 1;
+    function measure(){
+      var r = hero.getBoundingClientRect();
+      w = Math.max(1, r.width); hgt = Math.max(1, r.height);
+      lens.style.setProperty('--r', Math.round(hgt * 0.5) + 'px');
+    }
+    measure();
+    if ('ResizeObserver' in window) new ResizeObserver(measure).observe(hero);
+
+    var mx = 0.62, my = 0.45, tx = mx, ty = my, act = 0, lastMove = 0;
+    hero.addEventListener('pointermove', function(e){
+      if (e.pointerType && e.pointerType !== 'mouse') return;
+      var r = hero.getBoundingClientRect();
+      tx = (e.clientX - r.left) / Math.max(1, r.width);
+      ty = (e.clientY - r.top) / Math.max(1, r.height);
+      lastMove = performance.now();
+    }, { passive: true });
+
+    var inView = true, visible = !document.hidden, raf = 0, t0 = performance.now();
+    var frames = 0, slow = 0, last = 0, stopped = false;
+    function stop(){
+      stopped = true;
+      if (raf) cancelAnimationFrame(raf);
+      lens.classList.remove('is-on');
+      setTimeout(function(){ if (lens.parentNode) lens.parentNode.removeChild(lens); }, 1700);
+    }
+    function frame(now){
+      raf = 0;
+      if (stopped || !inView || !visible) return;
+      if (hero.classList.contains('is-static-hero')) { stop(); return; }
+      /* Wächter: die Ebene selbst darf nie ruckeln – sonst still entfernen */
+      if (last) {
+        var d = now - last;
+        frames += 1;
+        if (d > 34) slow += 1;
+        if (frames > 90 && slow / frames > 0.3) { stop(); return; }
+      }
+      last = now;
+      var t = (now - t0) / 1000;
+      var aspect = w / hgt;
+      var dx = 0.5 + Math.sin(t * 0.13) * 0.28 / (2 * aspect);
+      var dy = 0.5 + Math.cos(t * 0.10) * 0.16 / 2;
+      var idle = Math.min(1, (now - lastMove) / 1500);
+      act += ((1 - idle) - act) * 0.07;
+      mx += (tx - mx) * 0.12; my += (ty - my) * 0.12;
+      var lx = (dx + (mx - dx) * act) * w, ly = (dy + (my - dy) * act) * hgt;
+      var tf = 'translate3d(' + (lx - w).toFixed(1) + 'px,' + (ly - hgt).toFixed(1) + 'px,0)';
+      shade.style.transform = tf;
+      light.style.transform = tf;
+      light.style.opacity = (0.35 + 0.5 * act).toFixed(3);
+      raf = requestAnimationFrame(frame);
+    }
+    function kick(){ if (!raf && !stopped && inView && visible) { last = 0; raf = requestAnimationFrame(frame); } }
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function(entries){ inView = entries[0].isIntersecting; kick(); }).observe(hero);
+    }
+    document.addEventListener('visibilitychange', function(){ visible = !document.hidden; kick(); });
+    requestAnimationFrame(function(){ lens.classList.add('is-on'); kick(); });
+  }
+})();

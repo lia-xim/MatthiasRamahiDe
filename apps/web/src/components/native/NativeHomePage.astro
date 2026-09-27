@@ -122,7 +122,7 @@ const selectedWorksHeadline = hasText(selectedWorks?.headline) ? selectedWorks!.
 const selectedWorksEmphasis = selectedWorks?.headlineEmphasis || ''
 const portfolioIntro = hasText(selectedWorks?.intro)
   ? selectedWorks!.intro!
-  : 'Sechs Serien auf einem Kontaktbogen. Rot markiert: das Bild, das es in die Auswahl geschafft hat.'
+  : 'Aktuelle Serien aus allen sechs Bereichen. Ein Klick auf ein Bild öffnet die Großansicht.'
 const seriesDocs = await Promise.all(
   contactSheetSeries.map((series) => getBySlug('portfolio-projects', series.slug, liveCmsFetchOptions({ depth: 2 }))),
 )
@@ -280,14 +280,13 @@ const journalPosts = (cmsJournalItems.length === 3
             return (
               <article class="lp-strip" aria-labelledby={`lp-strip-${strip.topic}`}>
                 <header class="lp-strip__label">
-                  <span class="lp-num">N° {pad(stripIndex + 1)}</span>
                   <h3 id={`lp-strip-${strip.topic}`}>{strip.label}</h3>
                   {strip.excerpt && <p>{strip.excerpt}</p>}
                   <a class="lp-link" href={strip.href}>Serie ansehen<span class="sr-only"> {strip.label}</span> <span>· {pad(strip.count)} Bilder</span></a>
                 </header>
                 <div class="lp-strip__frames" style={`--total:${total.toFixed(3)}`}>
                   {strip.frames.map((frame, frameIndex) => (
-                    <figure class:list={['lp-frame', { 'is-pick': frameIndex === 0 }]} style={`--r:${frame.ratio.toFixed(4)}`}>
+                    <figure class="lp-frame" style={`--r:${frame.ratio.toFixed(4)}`}>
                       <div class="lp-frame__img">
                         <img
                           src={frame.src}
@@ -300,12 +299,8 @@ const journalPosts = (cmsJournalItems.length === 3
                           width={frame.width}
                           height={frame.height}
                         />
-                        {frameIndex === 0 && <span class="lp-pick" aria-hidden="true"></span>}
                       </div>
-                      <figcaption>
-                        <span class="lp-frame__no" data-no={`${pad(stripIndex + 1)}·${pad(frameIndex + 1)}${frameIndex === 0 ? 'A' : ''}`} aria-hidden="true"></span>
-                        {frame.caption && <span class="lp-frame__cap">{frame.caption}</span>}
-                      </figcaption>
+                      {frame.caption && <figcaption>{frame.caption}</figcaption>}
                     </figure>
                   ))}
                 </div>
@@ -314,7 +309,6 @@ const journalPosts = (cmsJournalItems.length === 3
           })}
         </div>
         <div class="lp-sheet__foot">
-          <div class="lp-legend"><span class="lp-legend__mark" aria-hidden="true"></span>Rot markiert: die Auswahl der Serie. Klick auf ein Bild öffnet die Großansicht.</div>
           <a class="btn dark" href="/portfolio.html">Vollständiges Portfolio →</a>
         </div>
       </div>
@@ -331,7 +325,6 @@ const journalPosts = (cmsJournalItems.length === 3
           {homeIntents.map((intent, index) => (
             <li>
               <a class="lp-intent" href={intent.href}>
-                <span class="lp-num">{pad(index + 1)}</span>
                 <span class="lp-intent__title">{intent.title}</span>
                 <span class="lp-intent__text">{intent.text}</span>
                 <span class="lp-arrow" aria-hidden="true">→</span>
@@ -352,8 +345,7 @@ const journalPosts = (cmsJournalItems.length === 3
         <ol class="lp-steps">
           {homeProcess.map((step, index) => (
             <li class="lp-step">
-              <span class="lp-step__no" aria-hidden="true">{pad(index + 1)}</span>
-              <h3>{step.title}</h3>
+              <h3><span class="lp-step__no">{pad(index + 1)}</span> {step.title}</h3>
               <p>{step.text}</p>
             </li>
           ))}
@@ -366,7 +358,6 @@ const journalPosts = (cmsJournalItems.length === 3
       <div class="section-inner">
         <div class="about-img" data-site-lightbox-single>
           <img src={aboutImage} srcset={resolvedAboutImageSrcset} sizes={aboutSizes} alt={aboutImageAlt} loading="lazy" width={aboutImageDimensions.width} height={aboutImageDimensions.height} decoding="async" {...tinaAttrs(about, 'image')} />
-          <span class="lp-viewfinder" aria-hidden="true"></span>
         </div>
         <div class="about-copy">
           <p class="lp-eyebrow" {...tinaAttrs(about, 'kicker')}>{aboutKicker}</p>
@@ -395,7 +386,6 @@ const journalPosts = (cmsJournalItems.length === 3
           {homeFaq.map((item, index) => (
             <details class="lp-q" open={index === 0}>
               <summary>
-                <span class="lp-num">{pad(index + 1)}</span>
                 <h3>{item.question}</h3>
                 <span class="lp-q__icon" aria-hidden="true"></span>
               </summary>
@@ -440,7 +430,6 @@ const journalPosts = (cmsJournalItems.length === 3
 
         <div class="lp-extras" aria-labelledby="lp-extras-title">
           <div class="lp-extras__head">
-            <p class="lp-eyebrow">Über die Fotografie hinaus</p>
             <h3 id="lp-extras-title">Zusatzleistungen</h3>
             <p {...tinaAttrs(servicesGroup, 'intro')}>{servicesIntro}</p>
             <a class="lp-link" href="/leistungen.html">Alle Leistungen →</a>

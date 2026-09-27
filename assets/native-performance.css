@@ -53,6 +53,24 @@ body:before {
   will-change: auto !important;
 }
 
+/* Übergabe statisch -> Shader ohne Sprung: das Hintergrundbild behält beim
+   Umschalten denselben Zoom, Glow/Scan-Linie und Canvas blenden weich ein. */
+.hero.hero--shader.is-animated-hero .hero-bg {
+  animation: none !important;
+  transform: translate3d(0, 0, 0) scale(1.025) !important;
+}
+.hero.hero--shader .hero-glow,
+.hero.hero--shader .hero-aperture {
+  transition: opacity 1.4s ease;
+}
+.hero.hero--shader.is-animated-hero:not(.is-shader-live) .hero-glow,
+.hero.hero--shader.is-animated-hero:not(.is-shader-live) .hero-aperture {
+  opacity: 0 !important;
+}
+.hero.hero--shader canvas {
+  transition: opacity .5s ease !important;
+}
+
 .hero-pd.is-perf-paused .pd-frame,
 .hero-pd.is-perf-paused .pd-frame-inner,
 .hero-pd.is-perf-paused .pd-flare,

@@ -64,30 +64,6 @@
     function matches(query){
       return window.matchMedia && window.matchMedia(query).matches;
     }
-    function webglRenderer(){
-      var canvas;
-      var gl;
-      try {
-        canvas = document.createElement('canvas');
-        gl = canvas.getContext('webgl', { powerPreference: 'low-power' }) || canvas.getContext('experimental-webgl');
-        if(!gl) return '';
-        var info = gl.getExtension('WEBGL_debug_renderer_info');
-        if(!info) return '';
-        return String(gl.getParameter(info.UNMASKED_RENDERER_WEBGL) || '');
-      } catch(_) {
-        return '';
-      } finally {
-        try { if(gl) gl.getExtension('WEBGL_lose_context').loseContext(); } catch(_) {}
-      }
-    }
-    function lowPowerGpuReason(renderer){
-      if(forceAnimated) return '';
-      if(/swiftshader|software rasterizer|llvmpipe/i.test(renderer)) return 'software-renderer';
-      if(/\bintel\b|iris|uhd graphics|hd graphics/i.test(renderer) && !/arc|apple|radeon|nvidia|geforce/i.test(renderer)){
-        return 'integrated-intel-gpu';
-      }
-      return '';
-    }
     function initialStaticHeroReason(){
       if(heroModeOverride === 'static') return 'manual';
       if(forceAnimated) return '';
@@ -149,17 +125,29 @@
       a.classList.add('is-in');
     }
 
-    var staticReason = initialStaticHeroReason();
-    if(!staticReason){
-      var renderer = webglRenderer();
-      if(renderer) hero.dataset.heroGpu = renderer.slice(0, 96);
-      staticReason = lowPowerGpuReason(renderer);
-    }
+    var staticReason = initialStaticHeroReason() || (!forceAnimated && window.mrHeroGate ? window.mrHeroGate.staticReason() : '');
     if(staticReason){
       useStaticHero(staticReason);
       return;
     }
     hero.dataset.heroRenderer = 'animated';
+var gpuChecked=forceAnimated;
+    /* Zyklus erst nach dem GPU-Check (WebGL-Probe nach dem Laden im Leerlauf,
+       Ergebnis gemerkt – siehe mrHeroGate in site-chrome.js). Die erste
+       Einblendung läuft unabhängig davon sofort. */
+    function canCycle(){ return gpuChecked && canAnimateHero(); }
+    if(!gpuChecked){
+      if(window.mrHeroGate){
+        window.mrHeroGate.afterLoad(function(){
+          var gate=window.mrHeroGate.probe();
+          if(gate.renderer) hero.dataset.heroGpu=gate.renderer;
+          if(!gate.ok){ useStaticHero(gate.reason); return; }
+          gpuChecked=true;
+        });
+      } else {
+        gpuChecked=true;
+      }
+    }
 
     if('IntersectionObserver' in window){
       var heroObserver = new IntersectionObserver(function(entries){
@@ -185,7 +173,7 @@
     var CYCLE_MS = 12400;
 
     function tick(){
-      if(!canAnimateHero()) return;
+      if(!canCycle()) return;
       idx = (idx + 1) % POOL.length;
       // swap roles
       var tmp = active; active = standby; standby = tmp;
@@ -218,7 +206,7 @@
       if(staticHero || reduce) return;
       var delay = 16000 + Math.random()*6000;
       setTimeout(function(){
-        if(!canAnimateHero()){ rePulse(); return; }
+        if(!canCycle()){ rePulse(); return; }
         // re-trigger develop on active frame (subtle: filter sweep, no full re-animation)
         var el = active;
         if(!el) { rePulse(); return; }
@@ -241,7 +229,7 @@
       var slowScore = 0;
       function sample(now){
         if(staticHero) return;
-        if(!canAnimateHero()){
+        if(!canCycle()){
           last = now;
           requestAnimationFrame(sample);
           return;
@@ -251,6 +239,7 @@
         samples += 1;
         slowScore = delta > 55 ? slowScore + 1 : Math.max(0, slowScore - 0.25);
         if(samples > 90 && slowScore >= 10){
+          if(window.mrHeroGate) window.mrHeroGate.demote('slow-frame-budget');
           useStaticHero('slow-frame-budget');
           return;
         }
