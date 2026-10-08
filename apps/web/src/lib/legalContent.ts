@@ -303,6 +303,10 @@ export const legalContentByFile: Record<LegalLegacyFile, LegalContent> = {
             type: 'paragraph',
             html: 'Wenn Sie uns per E-Mail oder Kontaktformular kontaktieren, verarbeiten wir die übermittelten Angaben zur Bearbeitung der Anfrage und für mögliche Anschlussfragen. Blog- und Publikationsinhalte können verarbeitet werden, wenn Nutzer mit entsprechenden Funktionen interagieren.',
           },
+          {
+            type: 'paragraph',
+            html: 'Zum Schutz des Anfrageformulars vor automatisierten Spam-Anfragen nutzen wir Cloudflare Turnstile (Cloudflare, Inc., USA). Die Sicherheitsprüfung verarbeitet technische Verbindungs- und Browserdaten, insbesondere die IP-Adresse und Informationen über den Browser. Unser Server prüft den dabei erzeugten Nachweis vor dem Versand einer Anfrage; die Inhalte des Anfrageformulars werden für diese Prüfung nicht an Cloudflare übermittelt. Weitere Informationen: <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Datenschutzerklärung von Cloudflare</a> und <a href="https://www.cloudflare.com/turnstile-privacy-policy/" target="_blank" rel="noopener noreferrer">Datenschutzhinweise zu Turnstile</a>.',
+          },
         ],
       },
       {

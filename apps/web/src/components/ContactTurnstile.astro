@@ -1,0 +1,14 @@
+---
+import { versionStaticAssetUrl } from '../lib/cache'
+const sitekey = process.env.PUBLIC_TURNSTILE_SITE_KEY || import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || ''
+---
+<div class="contact-security" data-contact-turnstile data-sitekey={sitekey}>
+  <div data-turnstile-widget></div>
+  <p data-turnstile-status role="status" aria-live="polite"></p>
+  <noscript>Bitte JavaScript für die Sicherheitsprüfung aktivieren oder per E-Mail bzw. Telefon Kontakt aufnehmen.</noscript>
+</div>
+<script is:inline src={versionStaticAssetUrl('/assets/contact-turnstile.js')} defer></script>
+<style>
+  .contact-security { flex-basis: 100%; width: 100%; min-width: 0; }
+  .contact-security p { margin: 0; font-size: .85rem; }
+</style>

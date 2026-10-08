@@ -824,6 +824,7 @@
 
         form.addEventListener('submit', async function (e) {
           e.preventDefault();
+          if (submit.disabled) return;
           const data = {
             name: form.elements['name'].value.trim(),
             contact: form.elements['contact'].value.trim(),
@@ -879,6 +880,13 @@
           }
           if (endpoint) {
             try {
+              if (!window.mrContactTurnstile) throw new Error('Sicherheitsprüfung wird geladen. Bitte kurz warten und erneut senden.');
+              data['cf-turnstile-response'] = window.mrContactTurnstile.getToken(form);
+            } catch (err) {
+              setStatus(err.message, 'error');
+              return;
+            }
+            try {
               submit.disabled = true;
               setStatus('Wird sicher uebertragen ...', 'busy');
               const res = await fetch(endpoint, {
@@ -895,7 +903,9 @@
                 }, data))
               });
               const result = await res.json().catch(function () { return {}; });
-              if (!res.ok || !result.ok) throw new Error(result.error || ('HTTP ' + res.status));
+              if (!res.ok || !result.ok) throw Object.assign(new Error(result.error || ('HTTP ' + res.status)), {
+                securityRejection: res.status < 500 || result.code === 'CONTACT_SECURITY_CHECK'
+              });
               setStatus(result.queued ? 'Danke. Die Anfrage ist gesichert und wird automatisch zugestellt.' : 'Danke. Die Anfrage wurde versendet. Antwort meist innerhalb von 24 Stunden.', 'ok');
               trackConversionEvent('form_submit_success', {
                 form: 'mr-contact',
@@ -907,6 +917,10 @@
               });
               form.reset();
             } catch (err) {
+              if (err.securityRejection) {
+                setStatus(err.message, 'error');
+                return;
+              }
               setStatus('Direktversand nicht moeglich. Mail-App wird als Fallback geoeffnet.', 'error');
               const body =
                 'Seite: ' + document.title + '\n' +
@@ -931,6 +945,7 @@
                 lastCtaRole: lastCtaRole
               });
             } finally {
+              window.mrContactTurnstile.reset(form);
               submit.disabled = false;
             }
           } else {

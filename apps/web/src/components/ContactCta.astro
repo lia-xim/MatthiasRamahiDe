@@ -2,6 +2,7 @@
 import { getFooter, getGlobalCtas, liveCmsFetchOptions, type PayloadCta } from '../lib/payload'
 import { versionStaticAssetUrl } from '../lib/cache'
 import { tinaAttrs } from '../lib/tinaFieldAttrs'
+import ContactTurnstile from './ContactTurnstile.astro'
 
 const { cta, liveCms = false } = Astro.props as { cta?: PayloadCta; liveCms?: boolean }
 const fetchOptions = liveCms ? liveCmsFetchOptions() : {}
@@ -109,6 +110,7 @@ const subject = cta?.emailSubject || module.emailSubject || 'Projektanfrage'
         </span>
       </label>
       <div class="contact-cta__actions">
+        <ContactTurnstile />
         <button class="button is-accent" type="submit" {...tinaAttrs(buttonSource, 'buttonLabel')}>{buttonLabel}</button>
         <p class="contact-cta__reassurance">Unverbindlich. Antwort meist innerhalb von 24 Stunden.</p>
         <p class="contact-cta__status" role="status" aria-live="polite"></p>

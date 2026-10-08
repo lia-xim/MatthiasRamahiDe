@@ -1,4 +1,5 @@
 ---
+import ContactTurnstile from './ContactTurnstile.astro'
 // Shared inquiry section ("Projekt anfragen"), rendered on the server.
 //
 // Previously every page shipped an empty <section data-contact-section> and
@@ -36,8 +37,7 @@ const lead = text(
 const projectTypeDefault = text(props['data-contact-project-type'], '')
 const submitLabel = text(props['data-contact-button-label'], 'Projekt anfragen ->')
 const messagePlaceholder = text(props['data-contact-message-placeholder'], 'Worum geht es? Ein paar Stichpunkte reichen - optional.')
-// Real POST target so the form also works without JavaScript (or before the
-// deferred script has bound): /api/contact accepts url-encoded form data.
+// /api/contact accepts JSON and native form data, both requiring Turnstile.
 // With JS, site-chrome.js intercepts submit and sends JSON instead.
 const endpoint = text(props['data-contact-endpoint'], '/api/contact')
 const uid = `mrc-${Math.random().toString(36).slice(2, 8)}`
@@ -103,6 +103,7 @@ const usages = ['Privat', 'Kommerziell', 'Kampagne', 'Editorial', 'Sonstiges']
         <span>Ich willige ein, dass meine angegebenen Daten zur Bearbeitung der Anfrage verarbeitet werden. Hinweise dazu in der <a href="/datenschutz.html" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a>. <em>Pflicht</em></span>
       </label>
       <div class="mr-contact__actions">
+        <ContactTurnstile />
         <button class="mr-contact__submit" type="submit">{submitLabel}</button>
         <p class="mr-contact__status" role="status" aria-live="polite"></p>
       </div>

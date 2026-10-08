@@ -26,6 +26,10 @@ interface ImportMetaEnv {
   readonly CONTACT_RETRY_SECRET?: string
   readonly CONTACT_IP_HASH_SALT?: string
   readonly CONTACT_ALLOWED_ORIGINS?: string
+  readonly PUBLIC_TURNSTILE_SITE_KEY?: string
+  readonly TURNSTILE_SECRET_KEY?: string
+  readonly CONTACT_BLOCKED_EMAILS?: string
+  readonly CONTACT_BLOCKED_PHONES?: string
 }
 
 interface ImportMeta {

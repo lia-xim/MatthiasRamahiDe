@@ -37,6 +37,8 @@ document.addEventListener('submit', function (event) {
   const form = event.target
   if (!(form instanceof HTMLFormElement) || !form.matches('.contact-cta__form')) return
   event.preventDefault()
+  const submit = form.querySelector('button[type="submit"]')
+  if (submit && submit.disabled) return
 
   const status = form.querySelector('.contact-cta__status')
   const data = new FormData(form)
@@ -105,7 +107,14 @@ document.addEventListener('submit', function (event) {
     .join(String.fromCharCode(10))
 
   const endpoint = form.dataset.endpoint || '/api/contact'
-  const submit = form.querySelector('button[type="submit"]')
+  let turnstileToken
+  try {
+    if (!window.mrContactTurnstile) throw new Error('Sicherheitsprüfung wird geladen. Bitte kurz warten und erneut senden.')
+    turnstileToken = window.mrContactTurnstile.getToken(form)
+  } catch (err) {
+    if (status) status.textContent = err.message
+    return
+  }
 
   function openMailFallback(reason) {
     window.location.href =
@@ -145,13 +154,16 @@ document.addEventListener('submit', function (event) {
       phone: data.get('phone') || '',
       consent: consent ? '1' : '',
       website: data.get('website') || '',
+      'cf-turnstile-response': turnstileToken,
     }),
   })
     .then(function (response) {
       return response.json().catch(function () {
         return {}
       }).then(function (result) {
-        if (!response.ok || !result.ok) throw new Error(result.error || 'HTTP ' + response.status)
+        if (!response.ok || !result.ok) throw Object.assign(new Error(result.error || 'HTTP ' + response.status), {
+          securityRejection: response.status < 500 || result.code === 'CONTACT_SECURITY_CHECK',
+        })
         if (status) {
           status.textContent = result.queued
             ? 'Danke. Die Anfrage ist gesichert und wird automatisch zugestellt.'
@@ -169,10 +181,15 @@ document.addEventListener('submit', function (event) {
       })
     })
     .catch(function (err) {
+      if (err.securityRejection) {
+        if (status) status.textContent = err.message
+        return
+      }
       if (status) status.textContent = 'Direktversand nicht moeglich. Mail-App wird als Fallback geoeffnet.'
       openMailFallback(err && err.message)
     })
     .finally(function () {
+      window.mrContactTurnstile.reset(form)
       if (submit) submit.disabled = false
     })
 })

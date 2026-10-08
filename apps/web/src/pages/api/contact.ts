@@ -2,6 +2,7 @@ import type { APIContext } from 'astro'
 import { createHash } from 'node:crypto'
 
 import { trackServerEvent } from '../../lib/analytics/umamiServer'
+import { isBlockedContact, verifyContactTurnstile } from '../../lib/contact/protection'
 import {
   type ContactRequest,
   parseContactPayload,
@@ -167,6 +168,9 @@ export async function POST({ request }: APIContext) {
 
   const payload = await readJson(request).catch(() => null)
   const contactRequest = parseContactPayload(payload, request)
+  if (isBlockedContact(contactRequest.contact, contactRequest.phone)) {
+    return json({ ok: false, error: 'Die Anfrage wurde aus Sicherheitsgründen abgelehnt.' }, 403)
+  }
   const contactLimit = checkRateLimit(request, contactRequest, false)
   if (contactLimit.limited) {
     return json(
@@ -184,6 +188,11 @@ export async function POST({ request }: APIContext) {
 
   if (validation.spam) {
     return json({ ok: true, id: contactRequest.id, spam: true })
+  }
+
+  const verification = await verifyContactTurnstile(payload)
+  if (!verification.ok) {
+    return json({ ok: false, error: verification.error, code: 'CONTACT_SECURITY_CHECK' }, verification.status)
   }
 
   const result = await sendOrQueueContactRequest(contactRequest)
