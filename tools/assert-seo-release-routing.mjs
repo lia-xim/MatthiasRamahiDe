@@ -111,6 +111,44 @@ function sitemapLocs(xml) {
   return [...xml.matchAll(/<loc>\s*([^<]+?)\s*<\/loc>/gi)].map((match) => match[1].trim())
 }
 
+// Zeitgesteuerte Journal-Artikel stehen in adoptedLegacyFiles, erscheinen aber
+// erst ab publishedAt in der Sitemap (siehe apps/web/src/lib/journalPublication.ts).
+// Dieselbe Regel hier, damit das Audit nicht auf noch nicht veroeffentlichte
+// Beitraege wartet.
+function isJournalDocumentPublic(document, now = Date.now()) {
+  if (document._status === 'draft' || document.status === 'draft') return false
+  const status = typeof document.status === 'string' ? document.status : ''
+  const publishedAt = typeof document.publishedAt === 'string' ? document.publishedAt.trim() : ''
+  if (!publishedAt) return status !== 'scheduled'
+  const publishedAtMs = Date.parse(publishedAt)
+  if (!Number.isFinite(publishedAtMs)) return status !== 'scheduled'
+  return publishedAtMs <= now
+}
+
+async function collectUnpublishedJournalFiles() {
+  const dir = path.join(repoRoot, 'apps/web/content/journal-posts')
+  const unpublished = new Set()
+  let entries = []
+  try {
+    entries = await fs.readdir(dir)
+  } catch {
+    return unpublished
+  }
+  for (const entry of entries) {
+    if (!entry.endsWith('.json')) continue
+    let document
+    try {
+      document = JSON.parse(await fs.readFile(path.join(dir, entry), 'utf8'))
+    } catch {
+      continue
+    }
+    if (isJournalDocumentPublic(document)) continue
+    const legacyUrl = typeof document.seo?.legacyUrl === 'string' ? document.seo.legacyUrl.replace(/^\/+/, '').trim() : ''
+    unpublished.add(legacyUrl || `blog-${entry.replace(/\.json$/i, '')}.html`)
+  }
+  return unpublished
+}
+
 async function collectRouteModel() {
   const [adoptedRoutes, localSeoFamilies, conceptContent] = await Promise.all([
     read('apps/web/src/lib/adoptedRoutes.ts'),
@@ -131,8 +169,10 @@ async function collectRouteModel() {
     ...generatedLocalSeoFiles(adoptedRoutes, localSeoFamilies),
   ])
 
+  const unpublishedJournalFiles = await collectUnpublishedJournalFiles()
   const expectedSitemapPaths = [...routeModelFiles]
     .filter((file) => !redirectFiles.has(file))
+    .filter((file) => !unpublishedJournalFiles.has(file))
     .filter((file) => !conceptFiles.has(file))
     .filter((file) => file === 'index.html' || !isLocalSeoRoute(file, adoptedFiles, localSeoPrefixes) || file.endsWith('.html'))
     .map(routeForFile)

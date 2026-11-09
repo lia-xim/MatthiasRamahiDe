@@ -8,7 +8,7 @@ import {
   type JournalArticleBlock,
   journalArticleByLegacyFile,
 } from '../../lib/journalArticleContent'
-import { imageDisplayUrl, toAbsoluteSiteUrl, toRootRelativeHref } from '../../lib/payload'
+import { imageDisplayUrl, toAbsoluteSiteUrl, toDisplayAssetUrl, toRootRelativeHref } from '../../lib/payload'
 import { breadcrumbJsonLd, faqJsonLd, type JsonLd } from '../../lib/seo'
 import { journalIndexPath, journalTopics } from '../../lib/journalIndexRoutes'
 
@@ -89,7 +89,7 @@ const displayHero = imagePreview(article.heroImage)
 // Das Titelbild laeuft jetzt randlos und scharf ueber die volle Breite, daher
 // die grosse Variante statt der Karten-Vorschau.
 const heroWideUrl = imageDisplayUrl(article.heroImage, 'wide', { allowOriginal: true }) || displayHero.url
-const authorImage = '/uploads/payload/mpissxxj-portfolio_webp_full_063-2-360x360.webp'
+const authorImage = toDisplayAssetUrl('/uploads/payload/mpissxxj-portfolio_webp_full_063-2-360x360.webp')
 const isPortraitHero = displayHero.height > displayHero.width
 const heroStyle = `--article-hero-image:url('${heroWideUrl}')`
 const clusterProfile = journalClusterProfiles[article.cluster]

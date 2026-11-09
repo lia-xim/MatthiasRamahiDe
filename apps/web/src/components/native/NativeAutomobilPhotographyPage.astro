@@ -20,7 +20,7 @@ import { mergeAuthoredLocalSeoContent } from '../../lib/authoredSeoContent'
 import { cmsHeroTitleFitStyle, splitCmsHeroTitleLines, splitHeroTitleLines } from '../../lib/heroTitleLines'
 import { familyHeroCopy, familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
 import { isCurrentPageHref } from '../../lib/pageLinks'
-import { getLegacyBackedDoc, routeForDoc, type PayloadDoc } from '../../lib/payload'
+import { getLegacyBackedDoc, routeForDoc, toDisplayAssetUrl, type PayloadDoc } from '../../lib/payload'
 import { articleJsonLd } from '../../lib/seo'
 import { tinaAttrs } from '../../lib/tinaFieldAttrs'
 import HeroMotion from './HeroMotion.astro'
@@ -347,11 +347,13 @@ const visualSlots = familyVisualSlots(
 // Hero-Serie (2026-11): Alpina B8 am Medienhafen und am Rhein, Kennzeichen
 // unkenntlich gemacht, abwechselnd mit M4 und Koenigsegg aus dem Bestand.
 // Keine Ueberschneidung mit der Startseite (die nutzt alpina-b8-front).
+// Upload-Bilder laufen ueber toDisplayAssetUrl: in Produktion liegen sie auf
+// cms.matthiasramahi.de, nicht unter /uploads der Website.
 const automobilHeroSlides = [
   { src: '/assets/optimized/automobil-alpina-b8-medienhafen-1920.webp', mobile: '/assets/optimized/automobil-alpina-b8-medienhafen-960.webp' },
-  { src: '/uploads/payload/_DSC2831%20(1)-1920x1280.webp', mobile: '/uploads/payload/_DSC2831%20(1)-760x507.webp' },
+  { src: toDisplayAssetUrl('/uploads/payload/_DSC2831%20(1)-1920x1280.webp'), mobile: toDisplayAssetUrl('/uploads/payload/_DSC2831%20(1)-760x507.webp') },
   { src: '/assets/optimized/automobil-alpina-b8-rheinbruecke-1920.webp', mobile: '/assets/optimized/automobil-alpina-b8-rheinbruecke-960.webp' },
-  { src: '/uploads/payload/_DSC3892-1-1920x1280.webp', mobile: '/uploads/payload/_DSC3892-1-760x507.webp' },
+  { src: toDisplayAssetUrl('/uploads/payload/_DSC3892-1-1920x1280.webp'), mobile: toDisplayAssetUrl('/uploads/payload/_DSC3892-1-760x507.webp') },
   { src: '/assets/optimized/automobil-alpina-b8-rheinufer-1920.webp', mobile: '/assets/optimized/automobil-alpina-b8-rheinufer-960.webp' },
 ]
 const inheritedHeroDevelopInitial = visualSlots[0].cssFull
