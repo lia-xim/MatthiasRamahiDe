@@ -1,0 +1,156 @@
+{
+  "title": "Lichtdiagramm erstellen: Lichtaufbau fürs Fotoshooting planen",
+  "slug": "lichtdiagramm-fotografie-setup-planen",
+  "category": "process",
+  "tags": [
+    "Licht",
+    "Lichttheorie",
+    "Fotoproduktion",
+    "Studiofotografie",
+    "Autofotografie"
+  ],
+  "publishedAt": "2027-10-25T07:00:00.000Z",
+  "excerpt": "Ein Lichtdiagramm hält fest, wo Kamera, Motiv, Lichtquellen und Reflektoren stehen. So lässt sich ein Aufbau planen, am Set anpassen und später nachvollziehen.",
+  "coverImage": "/assets/journal/lichtdiagramm-fotografie.webp",
+  "coverAlt": "Bewaldete Felswände rahmen das Wasser eines Sees unter hellem Himmel.",
+  "readingTime": 7,
+  "seo": {
+    "title": "Lichtdiagramm erstellen: Lichtaufbau planen und notieren",
+    "description": "So erstellst du ein Lichtdiagramm für ein Fotoshooting: Kamera, Motiv, Lichtquellen, Abstände und Höhen einzeichnen und Änderungen am Set festhalten.",
+    "focusKeyword": "Lichtdiagramm Fotografie",
+    "secondaryKeywords": [
+      "Lichtaufbau planen",
+      "Lichtskizze erstellen",
+      "Lichtsetup Fotografie",
+      "Lichtdiagramm Fotoshooting"
+    ],
+    "searchIntent": "Qualitative Longtail-Hypothese: Fotograf:innen möchten ein Lichtsetup vor dem Shooting planen oder einen funktionierenden Aufbau nachvollziehbar dokumentieren. Die gespeicherten Crawl-Foundry-Keywords enthalten keinen passenden Begriff; es liegen keine aktuellen Volumen-, Search-Console- oder AI-Fanout-Daten für diese Anfrage vor.",
+    "canonicalUrl": "https://matthiasramahi.de/blog-lichtdiagramm-fotografie-setup-planen.html",
+    "legacyUrl": "blog-lichtdiagramm-fotografie-setup-planen.html",
+    "ogImage": "/assets/journal/lichtdiagramm-fotografie.webp",
+    "noIndex": false
+  },
+  "legacy": {
+    "sourceFile": "blog-lichtdiagramm-fotografie-setup-planen.html",
+    "sourceUrl": "https://matthiasramahi.de/blog-lichtdiagramm-fotografie-setup-planen.html",
+    "migrationStatus": "new",
+    "renderSource": "structured-astro"
+  },
+  "status": "scheduled",
+  "createdAt": "2026-11-07T12:46:55.000Z",
+  "updatedAt": "2027-10-25T07:00:00.000Z",
+  "relatedPages": [
+    {
+      "label": "Automobilfotografie",
+      "href": "/automobil-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Portraitfotografie",
+      "href": "/portraitfotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Auto-Shooting-Briefing",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "related-editorial",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Lichtformer für Portraitfotografie",
+      "href": "/blog-lichtformer-portraitfotografie.html",
+      "seoPurpose": "related-editorial",
+      "rel": "follow",
+      "openInNewTab": false
+    }
+  ],
+  "blocks": [
+    {
+      "_template": "textBlock",
+      "body": "Ein Lichtdiagramm ist eine einfache Skizze des Aufnahmeaufbaus. Es zeigt aus welcher Richtung Kamera und Motiv zueinander stehen und wo Lichtquellen oder Reflektoren platziert sind. So lässt sich ein Setup vorab besprechen und nach dem Shooting nachvollziehen. Die Skizze zeigt jedoch nicht exakt, wie das fertige Foto aussehen wird: Raum, Oberflächen, Abstände und Winkel verändern die Wirkung.\n\nFür eine kleine Aufnahme kann eine Draufsicht mit wenigen Symbolen genügen. Bei einem Fahrzeug oder einem mehrteiligen Portrait-Setup hilft eine zusätzliche Seitenansicht, weil sie Höhe und Neigung der Lichtquelle sichtbar macht."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Diese Angaben gehören in eine Lichtskizze",
+      "body": "Beginne mit vier Elementen: Kamera, Motiv, Hauptlicht und Licht-Richtung. Ergänze anschließend nur, was für das Setup einen Unterschied macht: Aufheller oder Reflektor, weitere Lichtquellen, Abschatter, Hintergrund, Fenster oder eine relevante helle Fläche im Raum. Pfeile zeigen, wohin das Licht gerichtet ist. Unterschiedliche Zeichen oder Kürzel helfen, Blitze, Dauerlicht und passive Reflektoren auseinanderzuhalten.\n\nEine Draufsicht zeigt die seitliche Position der Quellen und ihre Richtung zum Motiv. In einer kleinen Seitenansicht hältst du Höhe, Neigung und vertikale Abstände fest. Das Fashion Institute of Technology zeigt in seinem Tutorial zu flachen Kunstaufnahmen beide Perspektiven: einen Blick von oben für die Lichtwinkel und eine Seitenansicht für die Höhe von Kamera und Motiv. Die dort gezeigten 45 Grad sind ein Beispiel für diese konkrete Dokumentationsaufgabe, keine feste Regel für jedes Motiv. Das Tutorial weist selbst darauf hin, dass Oberfläche und Reflexionsgrad eine Anpassung verlangen."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Eine Symbollegende für dein Diagramm",
+      "body": "Es gibt keine allgemeingültige Symbolnorm für Lichtdiagramme. Lege deshalb eine kurze Legende an den Rand und verwende die Zeichen in jeder Version gleich:\n\n- **K** = Kamera; ein eigener Pfeil zeigt Blickrichtung und Bildausschnitt.\n- **M** = Motiv; bei einem Auto markierst du zusätzlich Front und Ausrichtung.\n- **L1, L2** = aktive Lichtquellen; ein Pfeil zeigt die Lichtrichtung. Daneben stehen Blitz oder Dauerlicht, Lichtformer und die für den Aufbau relevante Leistungsstufe.\n- **R** = Reflektor; markiere die verwendete Seite und die Richtung, in die er Licht zurückwirft.\n- **N** = schwarzer Abschatter oder Negative Fill; er nimmt reflektiertes Umgebungslicht weg und ist keine zusätzliche Leuchte.\n- **F** = Fenster, **S** = Sonne, **H** = Hintergrund; Pfeile markieren Richtung oder relevante Fläche.\n\nUnterscheide Lichtpfeile sichtbar von der Blickrichtung der Kamera oder beschrifte sie. Bei einem Fahrzeug kannst du zusätzlich Fenster, helle Wände, Decke und Boden einzeichnen, wenn diese Flächen in Lack oder Glas auftauchen. Die Zeichen bleiben deine eigene Legende: Ergänze Versionsnummer und Datum, damit andere sie nicht als festgelegten Standard lesen."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Abstand und Lichtformer mitnotieren",
+      "body": "Eine Lampe auf der Skizze ist erst dann hilfreich, wenn auch ihre Ausrichtung verständlich ist. Notiere bei einem kontrollierten Setup den Abstand zwischen einem klar benannten Punkt am Lichtformer und dem Zielbereich am Motiv, ungefähr die Höhe ab Boden und den Neigungswinkel. Bei Blitzlicht können Leistung oder Leistungsstufe dazukommen. Bei Dauerlicht sind Modell, Helligkeitseinstellung und gegebenenfalls Farbtemperatur sinnvoll. Verwende eine einheitliche Maßeinheit und benenne die Bezugspunkte, damit der Abstand beim Wiederaufbau vergleichbar bleibt.\n\nEine grobe Skala genügt, zum Beispiel ein Kästchen für einen halben Meter; wenn du keine Skala zeichnest, schreibe die wichtigsten Abstände direkt in die Skizze. Auch die Kamera-Motiv-Beziehung ist wichtig: Standpunkt, Höhe und Blickrichtung können im fertigen Bild ebenso sichtbar sein wie die Lichtposition. Ein Lehrbuchkapitel von Elsevier zum Studio-Recordbook führt deshalb neben dem Lichtdiagramm auch Kamera-Motiv-Skizze, Kamerawinkel, Höhe, Messwerte und Farbeinstellung als Angaben auf, mit denen sich eine Aufnahme besser dokumentieren lässt. Für einen einfachen eigenen Plan musst du nicht alles davon übernehmen. Wähle die Werte, die beim Wiederaufbau oder bei einer Variante tatsächlich eine Entscheidung ändern."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Vom leeren Blatt zum prüfbaren Aufbau",
+      "body": "Nutze diese Folge, um aus der Skizze einen Aufbau zu machen, den du später nachstellen kannst:\n\n1. **Bildziel festlegen:** Bestimme Motiv, Bildausschnitt und Kamerastandpunkt. Zeichne in der Draufsicht Kamera und Motiv ein; markiere bei einem Auto Front und Ausrichtung.\n2. **Grundriss und Maßstab ergänzen:** Zeichne Seitenansicht oder markiere wichtige Höhen. Trage Maßstab oder benannte Abstände ein. Plane Stative, Kabel und Laufwege so, dass Flucht- und Gehwege frei bleiben und niemand beim Umstellen durch den Aufbau muss. Sichere Stative und Kabel nach den Bedingungen am Set; bewege das Fahrzeug nicht, solange Personen oder Ausrüstung im Weg stehen.\n3. **Lichtquellen einzeln ergänzen:** Nummeriere Hauptlicht und weitere Quellen nach ihrer Funktion, zeichne ihre Richtung ein und ergänze Reflektoren, schwarze Abschatter oder Negative Fill. Markiere beim Auto die Reflexionsflächen, die für Lack, Glas oder Chrom wichtig sind.\n4. **Ausgangsbild aufnehmen:** Stelle die gezeichneten Positionen ungefähr nach, notiere Kameraeinstellungen und fotografiere eine Basisversion. Beurteile die Reflexion, Schattenkante und Spitzlichter am Motiv.\n5. **Nur eine Variable ändern:** Verschiebe zum Beispiel erst die Lichtposition oder ändere nur ihre Höhe. Schreibe den Unterschied in eine neue Diagrammversion und notiere, was im Testbild sichtbar besser oder schlechter wird.\n\nAm Set kann eine Quelle wegen Platz, Sicherheit oder sichtbarer Reflexion anders stehen als geplant. Zeichne die tatsächliche Position ein, statt die Abweichung zu verschweigen. Bewahre die finale Skizze mit Testbild, Bilddatei und wichtigsten Parametern auf. So bleibt nachvollziehbar, welcher Aufbau tatsächlich funktioniert hat."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Bei Fahrzeugen auch die reflektierte Umgebung einzeichnen",
+      "body": "Bei einem Fahrzeug zeigt ein Lichtdiagramm nicht nur, wo ein Blitz steht. Lack, Chrom und Glas spiegeln auch Fenster, helle Wände, Himmel, Boden und andere große Flächen. Eine solche Umgebung kann im Bild stärker erscheinen als die mobile Lichtquelle. Markiere deshalb in der Skizze, wo sich wichtige Reflexionsflächen befinden und aus welchem Kamerawinkel du sie beurteilst.\n\nDas Titelbild zeigt eine Uferlandschaft und dient als Beispiel für eine natürliche Location. Bei solchen Aufnahmen kannst du im Diagramm etwa Sonnenrichtung, Kamerastandpunkt und Schattenseite markieren. Bei einem Fahrzeug kommt hinzu, dass Lack, Chrom und Glas Himmel, Fenster, Boden und andere große Flächen spiegeln. Zeichne solche Reflexionsflächen zusammen mit Kamera und Auto ein. Der [Leitfaden zur Positionierung von Softboxen am Autolack](/blog-lichtstreifen-autolack-softboxen-positionieren.html) erklärt ergänzend, wie sich eine Lichtfläche entlang der Karosserie verschieben lässt."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Ein Diagramm ist eine Gedächtnisstütze, keine Simulation",
+      "body": "Zwei Lichtskizzen mit derselben Anzahl an Lampen können zu sehr unterschiedlichen Fotos führen. Eine glänzende Karosserie reagiert anders als eine matte Wand; schon ein kleiner Wechsel des Kamerastandpunkts kann die reflektierte Umgebung verschieben. Auch Raumgröße, Wandfarbe, vorhandenes Licht und die tatsächliche Größe des Lichtformers beeinflussen das Ergebnis. Die Zeichnung ersetzt deshalb weder ein Testbild noch die Beurteilung am Motiv.\n\nDer Nutzen liegt in der klaren Absicht und in den notierten Änderungen: Wer steht wo, wohin zeigt die Quelle, und welche Variante wurde geprüft? Für einen einzelnen spontanen Schnappschuss wäre eine Skizze meist unnötig. Bei einem wiederholbaren Studioaufbau, einer Serie mit mehreren Motiven oder einer Produktion mit Team kann sie dagegen Missverständnisse vermeiden. Das [Auto-Shooting-Briefing](/blog-auto-shooting-briefing.html) hält zusätzlich Zweck, Pflichtmotive und Formate fest; das Lichtdiagramm beschreibt den Aufbau für eine konkrete Szene."
+    },
+    {
+      "_template": "faqBlock",
+      "headline": "Häufige Fragen zum Lichtdiagramm",
+      "items": [
+        {
+          "question": "Was zeigt ein Lichtdiagramm in der Fotografie?",
+          "answer": "Es skizziert die Position und Richtung von Kamera, Motiv, Lichtquellen und Reflektoren. Eine Draufsicht erklärt die Seitenpositionen; eine Seitenansicht kann Höhe und Neigung zeigen."
+        },
+        {
+          "question": "Welche Symbole brauche ich für ein Lichtdiagramm?",
+          "answer": "Es gibt keine Pflichtsymbole. Nutze eine Legende für Kamera, Motiv, Licht, Reflektor und Abschatter und beschrifte Pfeile, Abstände sowie wichtige Höhen so, dass du sie später wieder verstehst."
+        },
+        {
+          "question": "Ist ein Lichtdiagramm eine Anleitung zum exakten Nachbauen?",
+          "answer": "Es hilft, Positionen und Entscheidungen zu dokumentieren. Die Skizze simuliert jedoch weder Reflexionen noch Raumlicht; deshalb sollte ein Testbild Teil des Arbeitsablaufs bleiben."
+        },
+        {
+          "question": "Sollte ich bei Autofotos den Raum einzeichnen?",
+          "answer": "Ja, wenn Fenster, helle Wände oder andere große Flächen als Spiegelung im Lack oder Glas sichtbar werden. Sie können die Bildwirkung stärker prägen als eine zusätzliche Leuchte."
+        }
+      ]
+    },
+    {
+      "_template": "linkList",
+      "headline": "Fachquellen",
+      "links": [
+        {
+          "label": "Fashion Institute of Technology: Lighting Setup for Photography",
+          "href": "https://www.fitnyc.edu/academics/library/technology/makerminds-space/tutorials/lighting-tutorial.php",
+          "description": "Institutionelles Tutorial mit Draufsicht, Seitenansicht und dem Hinweis, Lichtwinkel an Oberfläche und Reflexionsgrad anzupassen."
+        },
+        {
+          "label": "Elsevier: Studio Photography: Essential Skills – Leseprobe",
+          "href": "https://booksite.elsevier.com/samplechapters/9780240520964/9780240520964.pdf",
+          "description": "Leseprobe zur fotografischen Produktionsdokumentation; das Recordbook-Beispiel nennt Lichtdiagramm, Kamera-Motiv-Skizze, Winkel, Höhe und Messwerte."
+        },
+        {
+          "label": "Profoto: Negative Fill und Rücklicht beim Ein-Licht-Setup",
+          "href": "https://www.profoto.com/us/en/still-photography/tips-tricks/create-an-iconic-one-light-silhouette/",
+          "description": "Praxisbeispiel dafür, wie schwarze Abschatter unerwünschtes zurückgeworfenes Licht blocken; die konkrete Anwendung im Beitrag ist auf Fahrzeugreflexionen übertragen."
+        },
+        {
+          "label": "Lichtstreifen auf Autolack: Softboxen richtig positionieren",
+          "href": "/blog-lichtstreifen-autolack-softboxen-positionieren.html",
+          "description": "Praxisbeitrag zu Lichtflächen und Reflexlinien auf Fahrzeugoberflächen."
+        }
+      ]
+    }
+  ]
+}

@@ -1,20 +1,23 @@
 ---
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
+import GooglePreferredSource from './GooglePreferredSource.astro'
 import {
   getRelatedJournalArticles,
+  isJournalArticlePublic,
   journalClusterProfiles,
   type JournalArticleBlock,
   journalArticleByLegacyFile,
 } from '../../lib/journalArticleContent'
 import { imageDisplayUrl, toAbsoluteSiteUrl, toRootRelativeHref } from '../../lib/payload'
 import { breadcrumbJsonLd, faqJsonLd, type JsonLd } from '../../lib/seo'
+import { journalIndexPath, journalTopics } from '../../lib/journalIndexRoutes'
 
 type Props = { legacyFile: string }
 
 const { legacyFile } = Astro.props as Props
 const article = journalArticleByLegacyFile[legacyFile]
 
-if (!article) return new Response('Not found', { status: 404 })
+if (!article || !isJournalArticlePublic(article)) return new Response('Not found', { status: 404 })
 
 const articleHref = (href?: string) => toRootRelativeHref(href || 'blog.html')
 const relatedArticles = getRelatedJournalArticles(article, 3)
@@ -27,10 +30,13 @@ const faqBlocks = article.blocks.filter(
   (block): block is Extract<JournalArticleBlock, { _template: 'faqBlock' }> => block._template === 'faqBlock',
 )
 const faqItems = faqBlocks.flatMap((block) => block.items || [])
+const breadcrumbTopicEntry = journalTopics.find((topic) => topic.filter === journalClusterProfiles[article.cluster].filter)
+const breadcrumbTopic = breadcrumbTopicEntry ? [{ name: breadcrumbTopicEntry.label, url: journalIndexPath(breadcrumbTopicEntry) }] : []
 const jsonLd = [
   breadcrumbJsonLd([
     { name: 'Home', url: '/' },
     { name: 'Journal', url: '/blog.html' },
+    ...breadcrumbTopic,
     { name: plainTitle, url: canonicalUrl },
   ]),
   {
@@ -41,8 +47,8 @@ const jsonLd = [
     headline: plainTitle,
     description: article.seoDescription,
     image: [imageDisplayUrl(article.heroImage, 'wide', { allowOriginal: true })],
-    datePublished: `${article.dateTime}T09:00:00+02:00`,
-    dateModified: `${article.dateTime}T09:00:00+02:00`,
+    datePublished: article.publishedAt || `${article.dateTime}T09:00:00+02:00`,
+    dateModified: article.updatedAt || article.publishedAt || `${article.dateTime}T09:00:00+02:00`,
     inLanguage: 'de-DE',
     articleSection: article.category,
     keywords: article.tags,
@@ -80,11 +86,19 @@ function imagePreview(image?: string) {
 }
 
 const displayHero = imagePreview(article.heroImage)
+// Das Titelbild laeuft jetzt randlos und scharf ueber die volle Breite, daher
+// die grosse Variante statt der Karten-Vorschau.
+const heroWideUrl = imageDisplayUrl(article.heroImage, 'wide', { allowOriginal: true }) || displayHero.url
+const authorImage = '/uploads/payload/mpissxxj-portfolio_webp_full_063-2-360x360.webp'
 const isPortraitHero = displayHero.height > displayHero.width
-const heroStyle = `--article-hero-image:url('${displayHero.url}')`
+const heroStyle = `--article-hero-image:url('${heroWideUrl}')`
 const clusterProfile = journalClusterProfiles[article.cluster]
-const journalFilterHref = (value: string, kind: 'category' | 'tag' = 'tag') =>
-  `/blog.html?${kind}=${encodeURIComponent(value.toLocaleLowerCase('de-DE'))}#journal`
+// Kategorie verlinkt auf die crawlbare Themen-Uebersicht statt auf einen
+// JS-Filter mit Query-Parameter.
+const articleTopic = journalTopics.find((topic) => topic.filter === clusterProfile.filter)
+const topicHref = journalIndexPath(articleTopic)
+const topicLabel = articleTopic?.label || article.category
+const normalizeText = (value = '') => value.replace(/\s+/g, ' ').trim()
 const paragraphs = (body?: string) => (body || '').split(/\n\s*\n/).map((value) => value.trim()).filter(Boolean)
 const blockId = (headline: string, index: number) =>
   headline
@@ -104,7 +118,7 @@ Astro.response.headers.set('x-cms-page-kind', 'journal-tina-source')
   current="blog"
   ogImage={displayHero.url}
   ogType="article"
-  preloadImages={[displayHero.url]}
+  preloadImages={[heroWideUrl]}
   stylesheets={['/assets/journal-support.css']}
   jsonLd={jsonLd}
   bodyClass="has-mr-footer journal-article-page"
@@ -114,7 +128,7 @@ Astro.response.headers.set('x-cms-page-kind', 'journal-tina-source')
       <header class:list={['article-hero', { 'article-hero--portrait': isPortraitHero }]} style={heroStyle} data-header-theme="dark">
         <div class="article-hero__visual" aria-hidden="true">
           <img
-            src={displayHero.url}
+            src={heroWideUrl}
             alt=""
             width={displayHero.width}
             height={displayHero.height}
@@ -124,24 +138,24 @@ Astro.response.headers.set('x-cms-page-kind', 'journal-tina-source')
         </div>
         <div class="article-hero__blur" aria-hidden="true"></div>
         <div class="article-hero__inner">
-          <p class="kicker">{article.category} · {article.minutes}</p>
+          <a class="article-hero__topic" href={topicHref}>{topicLabel}</a>
           <h1>{article.title}</h1>
           <p class="lead">{article.description}</p>
-          <div class="meta">
-            <a href="/ueber-mich.html">Matthias Ramahi</a>
-            <time datetime={article.dateTime}>{article.dateLabel}</time>
+          <div class="article-hero__meta">
+            <a class="article-hero__author" href="/ueber-mich.html">
+              <img src={authorImage} alt="" width="40" height="40" loading="eager" decoding="async" />
+              <span>Matthias Ramahi</span>
+            </a>
+            <span class="article-hero__facts">
+              <time datetime={article.dateTime}>{article.dateLabel}</time><span aria-hidden="true">·</span><span>{article.minutes} Lesezeit</span>
+            </span>
           </div>
-          {article.tags.length > 0 && (
-            <ul class="journal-tags" aria-label="Beitragsthemen">
-              {article.tags.map((tag) => <li><a href={journalFilterHref(tag)}>{tag}</a></li>)}
-            </ul>
-          )}
         </div>
       </header>
 
       <div class="article-breadcrumb-bar" data-header-theme="light">
         <nav class="breadcrumb" aria-label="Breadcrumb">
-          <a href="/">Home</a><span aria-hidden="true">/</span><a href="/blog.html">Journal</a><span aria-hidden="true">/</span><a href={journalFilterHref(clusterProfile.filter, 'category')}>{article.category}</a>
+          <a href="/">Startseite</a><span aria-hidden="true">›</span><a href="/blog.html">Journal</a><span aria-hidden="true">›</span><a href={topicHref}>{topicLabel}</a><span aria-hidden="true">›</span><span class="breadcrumb__current" aria-current="page">{plainTitle}</span>
         </nav>
       </div>
 
@@ -165,7 +179,10 @@ Astro.response.headers.set('x-cms-page-kind', 'journal-tina-source')
               if (block._template === 'textBlock') {
                 const body = paragraphs(block.body)
                 if (!block.headline) {
-                  return <div class="journal-prose__opening">{body.map((paragraph) => <p>{paragraph}</p>)}</div>
+                  // Der Lead steht bereits im Hero; wortgleiche Absaetze nicht doppeln.
+                  const opening = body.filter((paragraph) => normalizeText(paragraph) !== normalizeText(article.description))
+                  if (opening.length === 0) return null
+                  return <div class="journal-prose__opening">{opening.map((paragraph) => <p>{paragraph}</p>)}</div>
                 }
                 if (block.style === 'bridge') {
                   return (
@@ -255,15 +272,26 @@ Astro.response.headers.set('x-cms-page-kind', 'journal-tina-source')
         </section>
       )}
 
+      <GooglePreferredSource theme="light" />
+
+      <aside class="journal-author" aria-label="Über den Autor" data-header-theme="light">
+        <img src={authorImage} alt="Matthias Ramahi" width="96" height="96" loading="lazy" decoding="async" />
+        <div>
+          <p class="journal-author__name">Matthias Ramahi</p>
+          <p class="journal-author__text">Fotograf aus Erkrath bei Düsseldorf für Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft. Die Beiträge im Journal entstehen aus eigenen Produktionen.</p>
+          <p class="journal-author__links"><a href="/ueber-mich.html">Über mich</a><a href={topicHref}>Mehr zu {topicLabel}</a></p>
+        </div>
+      </aside>
+
       <section class="related journal-related" aria-label="Verwandte Beiträge" data-header-theme="light">
-        <h2>Passend zum Thema.</h2>
+        <h2>Passend zum <em>Thema.</em></h2>
         <div class="journal-related__grid">
           {relatedArticles.map((related) => {
             const preview = imagePreview(related.heroImage)
             return (
               <a href={articleHref(related.legacyFile)}>
                 <img src={preview.url} alt={related.heroImageAlt} width={preview.width} height={preview.height} loading="lazy" decoding="async" />
-                <span>{related.category}</span>
+                <span>{related.category} · {related.minutes}</span>
                 <strong>{related.title}</strong>
               </a>
             )

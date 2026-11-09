@@ -1,0 +1,47 @@
+{
+  "summary": {
+    "mode": "dry-run",
+    "documents": 272,
+    "changedDocuments": 0,
+    "changesByField": {},
+    "missingAfter": {
+      "pages": {
+        "documents": 9,
+        "seoFocusKeyword": 0,
+        "seoSearchIntent": 0,
+        "seoCanonicalUrl": 0,
+        "seoOgImage": 0
+      },
+      "servicePages": {
+        "documents": 14,
+        "seoFocusKeyword": 0,
+        "seoSearchIntent": 0,
+        "seoCanonicalUrl": 0,
+        "seoOgImage": 0
+      },
+      "localSeoPages": {
+        "documents": 216,
+        "seoFocusKeyword": 0,
+        "seoSearchIntent": 0,
+        "seoCanonicalUrl": 0,
+        "seoOgImage": 0,
+        "targetKeyword": 0
+      },
+      "portfolioProjects": {
+        "documents": 6,
+        "seoFocusKeyword": 0,
+        "seoSearchIntent": 0,
+        "seoCanonicalUrl": 0,
+        "seoOgImage": 0
+      },
+      "journalPosts": {
+        "documents": 27,
+        "seoFocusKeyword": 0,
+        "seoSearchIntent": 0,
+        "seoCanonicalUrl": 0,
+        "seoOgImage": 0
+      }
+    }
+  },
+  "changed": []
+}

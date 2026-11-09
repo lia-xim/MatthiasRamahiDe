@@ -23,7 +23,10 @@ in den Git-Branch `main`; der anschliessende Vercel-Deploy veroeffentlicht sie.
    `imageSequence`; Bildunterschriften beschreiben das konkrete Motiv.
 4. `relatedPages` verbindet den Beitrag mit der passenden Leistung. Weitere
    Journal-Empfehlungen berechnet die Website automatisch aus Kategorie und Tags.
-5. Pruefen:
+5. Den Wert aus `seo.legacyUrl` in `apps/web/src/lib/adoptedRoutes.ts` unter
+   `adoptedLegacyFiles` registrieren. Erst dadurch wird die `.html`-URL von der
+   nativen Journal-Route erkannt und in die Sitemap aufgenommen.
+6. Pruefen:
 
    ```powershell
    corepack pnpm journal:audit
@@ -35,11 +38,27 @@ in den Git-Branch `main`; der anschliessende Vercel-Deploy veroeffentlicht sie.
 ## Publikationsstatus und Datum
 
 - `status: "draft"` blendet einen Beitrag aus.
-- `status: "published"` macht ihn beim naechsten Deploy sofort sichtbar.
-- `publishedAt` sortiert die Ausgabe und wird als Publikationsdatum ausgegeben.
-  Es ist derzeit kein Scheduler. Ein Datum in der Zukunft wartet nicht automatisch
-  auf diesen Zeitpunkt; fuer echte Terminpublikation bleibt der Status bis zum
-  gewuenschten Deploy auf `draft`.
+- `status: "scheduled"` plant eine automatische Freischaltung. Setze `publishedAt`
+  auf den genauen Zeitpunkt mit Zeitzone, zum Beispiel `2026-11-09T08:00:00Z`.
+  Der Beitrag bleibt bis dahin aus Journal, Startseite, internen Empfehlungen,
+  Artikelroute und Sitemap ausgeblendet. Nach dem Zeitpunkt wird er beim naechsten
+  Seitenaufruf sichtbar; ein eigener Deploy pro Beitrag ist nicht erforderlich.
+- `status: "published"` macht einen Beitrag sofort sichtbar, sofern `publishedAt`
+  nicht in der Zukunft liegt.
+- `publishedAt` bestimmt Reihenfolge und sichtbares Publikationsdatum. Fuer geplante
+  Beitraege sollte `updatedAt` ebenfalls auf den geplanten Zeitpunkt gesetzt werden,
+  damit Sitemap und IndexNow die Freischaltung als aktuelle Aenderung erkennen.
+- Der geplante Redaktionsrhythmus ist alle zwei Tage um 09:00 Uhr Europe/Berlin.
+  Im Winter entspricht das 08:00 UTC; speichere daher den eindeutigen UTC-Zeitpunkt
+  im JSON statt einer zeitzonenlosen Uhrzeit. Der konkrete Abstand zwischen zwei
+  Beitraegen ergibt sich aus `publishedAt`.
+- Tina verwaltet und speichert die Terminfelder `status` und `publishedAt`; die
+  Website prueft `publishedAt` bei der Anfrage und blendet den Beitrag erst ab
+  diesem Zeitpunkt ein. Tina selbst fuehrt in diesem Projekt keinen separaten
+  Publishing-Cron aus.
+- Tina Publish synchronisiert die JSON-Datei in den Git-Branch `main`; der Deploy
+  muss die geplanten Inhalte und die Datumsfreigabe einmal enthalten. Danach reicht
+  der serverseitige Zeitvergleich fuer die woechentliche Freischaltung.
 - Rueckdatierung aendert nicht, wann Google eine URL erstmals crawlt.
 
 ## Redaktioneller Standard

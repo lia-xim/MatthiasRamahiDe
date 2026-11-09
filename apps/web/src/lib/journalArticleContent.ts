@@ -1,3 +1,5 @@
+import { isJournalDocumentPublic } from './journalPublication'
+
 type JournalSourceLink = {
   description?: string
   href?: string
@@ -32,6 +34,7 @@ type JournalSourceDocument = {
   status?: string
   tags?: string[]
   title?: string
+  updatedAt?: string
 }
 
 const journalModules = import.meta.glob('../../content/journal-posts/*.json', {
@@ -85,11 +88,14 @@ export type JournalArticle = {
   legacyFile: string
   links: JournalArticleLink[]
   minutes: string
+  publishedAt?: string
   sections: JournalArticleSection[]
   seoDescription: string
   seoTitle?: string
+  status?: string
   title: string
   tags: string[]
+  updatedAt?: string
 }
 
 export const journalClusterProfiles: Record<
@@ -228,11 +234,14 @@ function articleFromDocument(document: JournalSourceDocument, modulePath: string
     legacyFile,
     links: usefulLinks(document, profile),
     minutes: `${Math.max(1, Number(document.readingTime) || 5)} Min`,
+    publishedAt: document.publishedAt,
     sections,
     seoDescription: document.seo?.description || document.excerpt || '',
     seoTitle: document.seo?.title,
+    status: document.status,
     tags: Array.from(new Set([...(document.tags || []), ...profile.tags])).slice(0, 6),
     title: document.title,
+    updatedAt: document.updatedAt,
   }
 }
 
@@ -240,6 +249,13 @@ export const journalArticles: JournalArticle[] = Object.entries(journalModules)
   .map(([modulePath, document]) => articleFromDocument(document, modulePath))
   .filter((article): article is JournalArticle => Boolean(article))
   .sort((left, right) => right.dateTime.localeCompare(left.dateTime))
+
+export const isJournalArticlePublic = (article: Pick<JournalArticle, 'publishedAt' | 'status'>, now: Date | number = Date.now()) =>
+  isJournalDocumentPublic(article, now)
+
+export function getPublicJournalArticles(now: Date | number = Date.now()) {
+  return journalArticles.filter((article) => isJournalArticlePublic(article, now))
+}
 
 export function journalClusterFor(article: JournalArticle): JournalCluster {
   return article.cluster
@@ -249,7 +265,7 @@ export function getRelatedJournalArticles(article: JournalArticle, limit = 3): J
   const currentTags = new Set(article.tags.map((tag) => tag.toLocaleLowerCase('de-DE')))
   const existingTargets = new Set(article.links.map((link) => normalizeHref(link.href)))
 
-  return journalArticles
+  return getPublicJournalArticles()
     .filter((candidate) => candidate.legacyFile !== article.legacyFile && !existingTargets.has(candidate.legacyFile))
     .map((candidate) => {
       const tagOverlap = candidate.tags.filter((tag) => currentTags.has(tag.toLocaleLowerCase('de-DE'))).length

@@ -1,4 +1,5 @@
 ---
+import HeroMotion from './HeroMotion.astro'
 import ContactSlot from '../ContactSlot.astro'
 import NativeFamilyFaq from './NativeFamilyFaq.astro'
 import NativeGuideSection from './NativeGuideSection.astro'
@@ -202,9 +203,7 @@ const overviewFaq = (providedDoc?.localFaq || [])
 <AdoptedPageLayout legacyFile={legacyFile} current="fotografie" doc={doc} title={pageMetaTitle} description={pageMetaDescription} canonicalUrl={pageCanonicalUrl} ctaHref="#anfrage" preloadImages={[firstHeroSlide.image]} liveCms>
   <main>
     <section class="hero" data-theme="dark" aria-label="Intro" style={`background-image:url('${firstHeroSlide.image}')`} {...tinaAttrs(doc?.heroSlides?.[0] || editableSource(topics[0]), doc?.heroSlides?.[0] ? 'image' : 'image')}>
-      <canvas id="hero-shader" aria-hidden="true" data-imgs={heroImages.join(',')} data-slides={heroSlidesJson} {...tinaAttrs(doc?.heroSlides?.[0] || editableSource(topics[0]), 'image')}></canvas>
-      <div class="hero-glow" aria-hidden="true"></div>
-      <div class="hero-aperture" aria-hidden="true"></div>
+      <HeroMotion variant="pan" slidesJson={heroSlidesJson} />
       <div class="hero-grid">
         <div class="hero-stage">
           <h1 class="hero-title" id="hero-title" data-text-idx="0">
@@ -222,7 +221,6 @@ const overviewFaq = (providedDoc?.localFaq || [])
           </div>
         </div>
       </div>
-      <div class="hero-cursor" id="hero-cursor" aria-hidden="true"><span class="ring"></span></div>
     </section>
 
     <NativeGuideSection doc={providedDoc} />

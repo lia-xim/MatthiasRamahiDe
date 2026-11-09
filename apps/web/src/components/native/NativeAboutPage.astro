@@ -1,4 +1,5 @@
 ---
+import HeroMotion from './HeroMotion.astro'
 import ContactSlot from '../ContactSlot.astro'
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import { getLegacyBackedDoc, imageAlt, imageDimensions, imageDisplayUrl, type PayloadDoc, type PayloadMedia } from '../../lib/payload'
@@ -149,11 +150,8 @@ const heroImage = imageDisplayUrl(aboutHero.image as PayloadMedia | string | und
 <AdoptedPageLayout legacyFile={legacyFile} current="ueber-mich" doc={doc}>
   <main>
     <section class="ovh ovh--ueber" data-theme="dark" data-header-theme="dark" aria-label="Matthias Ramahi — Fotograf aus Düsseldorf" {...tinaAttrs(aboutHeroSource, 'image')}>
-      <img class="ovh__photo" src={heroImage} alt="" width="1920" height="1280" fetchpriority="high" decoding="async" aria-hidden="true" {...tinaAttrs(aboutHeroSource, 'image')} />
-      <div class="ovh__glow" aria-hidden="true"></div>
-      <div class="ovh__aperture" aria-hidden="true"></div>
+      <HeroMotion variant="pan" slides={[{ src: heroImage }]} />
       <div class="ovh__grid">
-        <div class="ovh__beam" aria-hidden="true"></div>
         <p class="ovh__kicker" {...tinaAttrs(aboutHeroSource, 'kicker')}>{aboutHero.kicker}</p>
         <h1 class="ovh__title">
           <span class="line" {...tinaAttrs(aboutHeroSource, 'titleLine1')}><span class="word">{aboutHero.titleLine1}</span></span>
@@ -216,27 +214,22 @@ const heroImage = imageDisplayUrl(aboutHero.image as PayloadMedia | string | und
       </div>
     </section>
 
-    <section class="sister sec-light" data-theme="light" data-header-theme="light" aria-label="Sophia Ramahi — Videografin">
+    <section class="sister sister--v2" data-theme="light" data-header-theme="light" aria-label="Sophia Ramahi — Videografie">
       <div class="section-inner sister-grid">
         <div class="sister-copy">
-          <p class="kicker dark" {...tinaAttrs(aboutSisterSource, 'kicker')}>{aboutSister.kicker}</p>
           <h2 {...tinaAttrs(aboutSisterSource, 'headline')}>{aboutSister.headline} <em {...tinaAttrs(aboutSisterSource, 'headlineEmphasis')}>{aboutSister.headlineEmphasis}</em> sein soll.</h2>
           <p class="lead" {...tinaAttrs(aboutSisterSource, 'lead')}>{aboutSister.lead}</p>
           <p {...tinaAttrs(aboutSisterSource, 'body')}>{aboutSister.body}</p>
           <div class="actions">
-            <a class="btn dark" href={aboutSister.href as string} {...tinaAttrs(aboutSisterSource, 'buttonLabel')}>{aboutSister.buttonLabel}</a>
+            <a class="btn" href={aboutSister.href as string} {...tinaAttrs(aboutSisterSource, 'buttonLabel')}>{aboutSister.buttonLabel}</a>
           </div>
         </div>
-        <aside class="sister-plate" aria-label="Visitentafel Sophia Ramahi">
-          <p class="sister-plate__tag" {...tinaAttrs(sisterPlateSource, 'tag')}>{sisterPlate.tag}</p>
-          <p class="sister-plate__name" {...tinaAttrs(sisterPlateSource, 'nameLine1')}>{sisterPlate.nameLine1}<br /><em {...tinaAttrs(sisterPlateSource, 'nameLine2')}>{sisterPlate.nameLine2}</em>.</p>
-          <ul class="sister-plate__roles">
-            {sisterRoles.map((role) => (
-              <li {...tinaAttrs(role, 'label')}>{role.label}</li>
-            ))}
-          </ul>
-          <p class="sister-plate__loc" {...tinaAttrs(sisterPlateSource, 'location')}>{sisterPlate.location}</p>
-        </aside>
+        <a class="sister-card" href="https://sophiaramahi.de/" target="_blank" rel="noopener">
+          <span class="sister-card__label">sophiaramahi.de</span>
+          <span class="sister-card__name" {...tinaAttrs(sisterPlateSource, 'nameLine1')}>{sisterPlate.nameLine1} <em {...tinaAttrs(sisterPlateSource, 'nameLine2')}>{sisterPlate.nameLine2}</em></span>
+          <span class="sister-card__roles">{sisterRoles.map((role) => role.label).filter(Boolean).join(' · ')}</span>
+          <span class="sister-card__go">Zur Website <span aria-hidden="true">↗</span></span>
+        </a>
       </div>
     </section>
 

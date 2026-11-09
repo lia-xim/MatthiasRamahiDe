@@ -1,4 +1,5 @@
 ---
+import HeroMotion from './HeroMotion.astro'
 import ContactSlot from '../ContactSlot.astro'
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import NativeFamilyClusterLinks from './NativeFamilyClusterLinks.astro'
@@ -354,27 +355,11 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
   )}
   <main>
     <section class="hero-mr" id="top" data-header-theme="dark" aria-label={heroLabel} {...tinaAttrs(heroPanelSource(0), 'image')}>
-      <div class="hero-mr__stage" aria-hidden="true">
-        <div class="hero-mr__slides">
-          <div class="hero-mr__slide is-active" data-slide="0" style="--pos:50% 52%">
-            <div class="hero-mr__zoom">
-              <img class="hero-mr__image" src={heroSlides[0].src} srcset={heroSlides[0].srcset} sizes="100vw" alt="" loading="eager" fetchpriority="high" decoding="async" width={visualSlots[0].width} height={visualSlots[0].height} {...tinaAttrs(heroPanelSource(0), 'image')} />
-            </div>
-          </div>
-          <div class="hero-mr__slide" data-slide="1" style="--pos:50% 48%">
-            <div class="hero-mr__zoom">
-              <img class="hero-mr__image" src={heroSlides[1].src} srcset={heroSlides[1].srcset} sizes="100vw" alt="" decoding="async" loading="lazy" width={visualSlots[1].width} height={visualSlots[1].height} {...tinaAttrs(heroPanelSource(1), 'image')} />
-            </div>
-          </div>
-          <div class="hero-mr__slide" data-slide="2" style="--pos:50% 50%">
-            <div class="hero-mr__zoom">
-              <img class="hero-mr__image" src={heroSlides[2].src} srcset={heroSlides[2].srcset} sizes="100vw" alt="" decoding="async" loading="lazy" width={visualSlots[2].width} height={visualSlots[2].height} {...tinaAttrs(heroPanelSource(2), 'image')} />
-            </div>
-          </div>
-        </div>
-        <span class="hero-mr__edge" id="heroMrEdge"></span>
-        <span class="hero-mr__vignette"></span>
-      </div>
+      <HeroMotion
+        variant="pan"
+        slides={heroSlides.slice(0, 3).map((slide) => ({ src: slide.src, srcset: slide.srcset }))}
+      />
+      <div class="hm-veil" aria-hidden="true"></div>
 
       <div class="hero-mr__grid">
         <h1 class="hero-mr__title" id="heroMrTitle" style={heroTitleFitStyle} aria-label={heroLabel}>
@@ -394,14 +379,6 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
           </div>
         </div>
       </div>
-
-      <aside class="hero-mr__rail" aria-label="Bildauswahl">
-        <nav class="hero-mr__rail-dots" id="heroMrDots" aria-label="Bildauswahl">
-          <button type="button" data-slide="0" aria-current="true" aria-label="Bild 1"><span></span></button>
-          <button type="button" data-slide="1" aria-label="Bild 2"><span></span></button>
-          <button type="button" data-slide="2" aria-label="Bild 3"><span></span></button>
-        </nav>
-      </aside>
     </section>
 
     <section class="st" data-header-theme="light">

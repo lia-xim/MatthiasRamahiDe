@@ -3,11 +3,11 @@
     "adminReady": true,
     "checks": {
       "collections": 10,
-      "documents": 262,
-      "localAssetRefs": 1349,
-      "references": 6
+      "documents": 412,
+      "localAssetRefs": 2092,
+      "references": 8
     },
-    "failures": 0,
+    "failures": 4,
     "media": {
       "mediaDocuments": 446,
       "generatedUploads": 0,
@@ -34,23 +34,23 @@
         "seoReady": 14
       },
       "localSeoPages": {
-        "documents": 216,
+        "documents": 220,
         "expected": 216,
-        "seoReady": 216
+        "seoReady": 220
       },
       "portfolioCategories": {
         "documents": 6,
         "expected": 6
       },
       "portfolioProjects": {
-        "documents": 6,
+        "documents": 8,
         "expected": 6,
-        "seoReady": 6
+        "seoReady": 8
       },
       "journalPosts": {
-        "documents": 7,
-        "expected": 7,
-        "seoReady": 7
+        "documents": 151,
+        "expected": 27,
+        "seoReady": 150
       },
       "siteSettings": {
         "documents": 1,
@@ -69,11 +69,35 @@
         "expected": 1
       }
     },
-    "documents": 262,
-    "localAssetRefs": 1349,
+    "documents": 412,
+    "localAssetRefs": 2092,
     "oldPayloadUrlRefs": 0,
-    "references": 6
+    "references": 8
   },
-  "failures": [],
+  "failures": [
+    {
+      "type": "collection-count-mismatch",
+      "collection": "localSeoPages",
+      "expected": 216,
+      "actual": 220
+    },
+    {
+      "type": "collection-count-mismatch",
+      "collection": "portfolioProjects",
+      "expected": 6,
+      "actual": 8
+    },
+    {
+      "type": "collection-count-mismatch",
+      "collection": "journalPosts",
+      "expected": 27,
+      "actual": 151
+    },
+    {
+      "type": "invalid-json",
+      "file": "apps/web/content/journal-posts/fahrzeugfotos-webseite-ladezeit-optimieren.json",
+      "error": "Unexpected end of JSON input"
+    }
+  ],
   "warnings": []
 }

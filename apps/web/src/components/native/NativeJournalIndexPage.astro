@@ -1,229 +1,277 @@
 ---
+// Journal-Uebersicht mit crawlbarer Paginierung und Themen-Seiten.
+// Rendert /blog.html (Seite 1), /journal/seite/N und /journal/thema/<thema>[/seite/N].
+// Jede Seite zeigt JOURNAL_PAGE_SIZE Beitraege als echte Links und verlinkt alle
+// Nachbarseiten, damit Google jeden Artikel ohne JavaScript erreicht.
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
-import NativeShaderHero from './NativeShaderHero.astro'
-import { type JournalPostCard, journalCards, journalFilters, journalHero, journalHeroSlides, journalTicker } from '../../lib/journalIndexContent'
-import { homeHeroSlidesFor } from '../../lib/nativeContent'
+import GooglePreferredSource from './GooglePreferredSource.astro'
 import { tinaAttrs } from '../../lib/tinaFieldAttrs'
+import { imageAlt, imageDimensions, imageDisplayUrl, getSitePageByType, liveCmsFetchOptions, toAbsoluteSiteUrl, toRootRelativeHref, type PayloadDoc } from '../../lib/payload'
+import { countJournalTopics, getJournalIndexPosts, sliceJournalPosts, type EditableJournalPostCard } from '../../lib/journalIndexPosts'
 import {
-  getSitePageByType,
-  imageAlt,
-  imageDimensions,
-  imageDisplayUrl,
-  listDocuments,
-  liveCmsFetchOptions,
-  routeForDoc,
-  toRootRelativeHref,
-  type PayloadDoc,
-} from '../../lib/payload'
+  JOURNAL_PAGE_SIZE,
+  formatJournalDate,
+  journalIndexPath,
+  journalPageWindow,
+  journalTopicBySlug,
+  journalTopics,
+} from '../../lib/journalIndexRoutes'
 
-type EditableJournalPostCard = JournalPostCard & { source?: PayloadDoc }
+type Props = { doc?: PayloadDoc | null; topicSlug?: string; page?: number }
 
+const { topicSlug, page: requestedPage = 1 } = Astro.props as Props
 const providedDoc = Astro.props.doc as PayloadDoc | undefined
 const doc = providedDoc || (await getSitePageByType('journal-index', liveCmsFetchOptions({ depth: 2 })))
-const cmsPosts = await listDocuments('journal-posts', liveCmsFetchOptions({ limit: 100, sort: '-publishedAt', depth: 2 }))
-const legacyPostBySlug = new Map(
-  journalCards.flatMap((post) => {
-    const routeSlug = post.href.replace(/^\//, '').replace(/\.html$/i, '')
-    return [
-      [routeSlug, post],
-      [routeSlug.replace(/^blog-/, ''), post],
-    ] as Array<[string, JournalPostCard]>
-  }),
-)
-const categoryToFilter: Record<string, string> = {
-  automotive: 'automotive',
-  'sports-car': 'sportwagen',
-  sportwagen: 'sportwagen',
-  'classic-car': 'oldtimer',
-  oldtimer: 'oldtimer',
-  motorcycle: 'motorrad',
-  motorrad: 'motorrad',
-  portrait: 'portrait',
-  process: 'prozess',
-  'behind-the-scenes': 'prozess',
-  'landscape-print': 'print',
-}
-const cmsCards = cmsPosts
-  .map((post, index): EditableJournalPostCard | null => {
-    const slug = post.slug || ''
-    if (!slug) return null
+const topic = journalTopicBySlug(topicSlug) ?? null
+const allPosts = await getJournalIndexPosts()
+const slice = sliceJournalPosts(allPosts, topic, Math.max(1, requestedPage))
+const { page, totalPages } = slice
+const topicCounts = countJournalTopics(allPosts)
+const hasText = (value?: string | null): value is string => typeof value === 'string' && value.trim().length > 0
 
-    const fallback = legacyPostBySlug.get(slug) || journalCards[index]
-    const image = imageDisplayUrl(post.coverImage, 'card') || fallback?.image || journalHero.image
-    const dimensions = imageDimensions(post.coverImage, 'card')
-    const category = fallback?.category || categoryToFilter[String(post.category || '')] || 'prozess'
-    const legacyHref = typeof post.seo?.legacyUrl === 'string' && post.seo.legacyUrl ? `/${post.seo.legacyUrl}` : ''
-
-    return {
-      category,
-      dateTime: typeof post.publishedAt === 'string' ? post.publishedAt : fallback?.dateTime,
-      dark: fallback?.dark ?? index % 3 === 0,
-      eager: index < 3,
-      height: dimensions.height || fallback?.height || 1280,
-      href: legacyHref || routeForDoc('journal-posts', post),
-      image,
-      imageAlt: imageAlt(post.coverImage, post.title || fallback?.imageAlt || 'Journal-Bild'),
-      readTime: typeof post.readingTime === 'number' ? `${post.readingTime} Min` : fallback?.readTime || '5 Min',
-      source: post,
-      tags: Array.isArray(post.tags) ? post.tags.filter((tag): tag is string => typeof tag === 'string') : fallback?.tags || [],
-      text: post.excerpt || fallback?.text || '',
-      title: post.title || fallback?.title || 'Journal-Beitrag',
-      width: dimensions.width || fallback?.width || 1920,
-    }
-  })
-  .filter(Boolean) as EditableJournalPostCard[]
-const cmsCardByHref = new Map(cmsCards.map((post) => [post.href, post]))
-const fallbackHrefs = new Set(journalCards.map((post) => post.href))
-const posts = [
-  ...journalCards.map((post) => cmsCardByHref.get(post.href) || post),
-  ...cmsCards.filter((post) => !fallbackHrefs.has(post.href)),
-].sort((left, right) => (right.dateTime || '').localeCompare(left.dateTime || ''))
-const hasText = (value?: string): value is string => typeof value === 'string' && value.trim().length > 0
 const journalIndex = doc?.journalIndex
-const heroLead = doc?.intro || journalHero.lead
-const cmsHeroSlides = (doc?.heroSlides || []).length > 0 ? homeHeroSlidesFor(doc) : []
-const fallbackHeroSlides = journalHeroSlides.map((slide, index) => (index === 0 ? { ...slide, lead: heroLead } : slide))
-const heroSlides = cmsHeroSlides.length ? cmsHeroSlides : fallbackHeroSlides
-const firstHeroSlide = heroSlides[0]
-const tickerItems = (journalIndex?.tickerItems || []).map((item) => item.text).filter(hasText)
-const resolvedTicker = tickerItems.length ? tickerItems : journalTicker
-const cmsFilters = (journalIndex?.filters || [])
-  .filter((filter) => hasText(filter.label) && hasText(filter.value))
-  .map((filter) => ({ label: filter.label!, value: filter.value! }))
-const cmsFilterByValue = new Map(cmsFilters.map((filter) => [filter.value, filter]))
-const resolvedFilters = [
-  ...journalFilters.map((filter) => cmsFilterByValue.get(filter.value) || filter),
-  ...cmsFilters.filter((filter) => !journalFilters.some((fallback) => fallback.value === filter.value)),
-]
-const indexHeadline = hasText(journalIndex?.indexHeadline) ? journalIndex!.indexHeadline! : 'Journal Index.'
-const initialVisiblePostCount = Math.max(1, Number(journalIndex?.initialVisiblePostCount) || 6)
-const loadMoreLabel = hasText(journalIndex?.loadMoreLabel) ? journalIndex!.loadMoreLabel! : 'Mehr Beitraege laden'
-const loadStatusTemplate = hasText(journalIndex?.loadStatusTemplate)
-  ? journalIndex!.loadStatusTemplate!
-  : '{visible} von {total} Beitraegen sichtbar'
+const isHome = !topic && page === 1
+const labelForCategory = (category: string) => journalTopics.find((entry) => entry.filter === category)?.label || 'Journal'
+
+// ---------- Kopf ----------
+const headline = topic ? topic.label : 'Journal'
+const lead = topic
+  ? topic.intro
+  : 'Notizen aus der Praxis: Licht, Orte, Bildauswahl und Druck – geschrieben aus echten Produktionen für Automobil, Motorrad, Portrait und Landschaft.'
+
+// ---------- Fokus-Beitrag (nur Seite 1 ohne Thema) ----------
 const featuredSettings = journalIndex?.featured || {}
 const curatedFeaturedHref = toRootRelativeHref(featuredSettings.buttonHref)
-// Kuratiert das CMS einen bestimmten Beitrag, muss genau dieser den Featured-Slot
-// belegen. Sonst verbraucht posts[0] den Slot, waehrend der Block auf einen anderen
-// Beitrag verlinkt - der Slot-Beitrag faellt dann aus dem Grid und bleibt voellig
-// unverlinkt (so war blog-portraits-ohne-generische-posen.html verwaist).
-const curatedFeaturedIndex = curatedFeaturedHref
-  ? posts.findIndex((post) => post.href === curatedFeaturedHref)
-  : -1
-const featuredIndex = curatedFeaturedIndex >= 0 ? curatedFeaturedIndex : 0
-const featured = posts[featuredIndex]
-const featuredHref = curatedFeaturedHref || featured?.href || '/blog-automotive-fotografie-duesseldorf.html'
-const featuredImage = imageDisplayUrl(featuredSettings.image, 'wide', { allowOriginal: true }) || featured?.image || journalHero.image
-const featuredImageDimensions = imageDimensions(featuredSettings.image, 'wide')
-const featuredKicker = hasText(featuredSettings.kicker) ? featuredSettings.kicker! : 'Ausgewaehlter Beitrag'
-const featuredHeadline = hasText(featuredSettings.headline) ? featuredSettings.headline! : featured?.title || 'Geplant, nicht zufaellig.'
-const featuredText = hasText(featuredSettings.text)
-  ? featuredSettings.text!
-  : featured?.text || 'Ein starkes Foto entsteht nicht erst beim Ausloesen - sondern in der Entscheidung fuer Ort, Tageszeit, Bildschnitt und Stimmung.'
-const featuredButtonLabel = hasText(featuredSettings.buttonLabel) ? featuredSettings.buttonLabel! : 'Beitrag lesen'
-// Der Fokus-Beitrag ist eine redaktionelle Hervorhebung, kein Ersatz fuer den
-// vollstaendigen Index. Deshalb bleibt er zusaetzlich in der Gesamtliste.
-const gridPosts = posts
-const loadStatus = loadStatusTemplate
-  .replace('{visible}', String(Math.min(initialVisiblePostCount, gridPosts.length)))
-  .replace('{total}', String(gridPosts.length))
+const featured: EditableJournalPostCard | undefined = isHome
+  ? slice.posts.find((post) => post.href === curatedFeaturedHref) || slice.posts[0]
+  : undefined
+const featuredUsesCms = Boolean(featured && curatedFeaturedHref && featured.href === curatedFeaturedHref)
+const featuredImage = (featuredUsesCms && imageDisplayUrl(featuredSettings.image, 'wide', { allowOriginal: true })) || featured?.image
+const featuredDimensions = featuredUsesCms ? imageDimensions(featuredSettings.image, 'wide') : {}
+const featuredTitle = (featuredUsesCms && hasText(featuredSettings.headline) && featuredSettings.headline) || featured?.title || ''
+const featuredText = (featuredUsesCms && hasText(featuredSettings.text) && featuredSettings.text) || featured?.text || ''
+// Seite 1: Fokus-Beitrag + die vier naechsten als Liste daneben, der Rest im
+// Raster. Zusammen sind das genau die JOURNAL_PAGE_SIZE Beitraege der Seite,
+// damit Seite 2 nahtlos anschliesst.
+const sidePosts = featured ? slice.posts.filter((post) => post !== featured).slice(0, 4) : []
+const gridPosts = slice.posts.filter((post) => post !== featured && !sidePosts.includes(post))
+
+// ---------- SEO ----------
+const pageSuffix = page > 1 ? ` – Seite ${page}` : ''
+const seoTitle = topic
+  ? `${topic.title}: Artikel im Journal${pageSuffix} | Matthias Ramahi`
+  : page > 1
+    ? `Journal${pageSuffix} | Matthias Ramahi`
+    : undefined
+const seoDescription = topic
+  ? `${topic.intro} ${slice.total} Artikel im Journal von Matthias Ramahi${page > 1 ? `, Seite ${page} von ${totalPages}` : ''}.`
+  : page > 1
+    ? `Alle Artikel im Journal von Matthias Ramahi, Seite ${page} von ${totalPages}: Fotografie, Licht, Orte, Bildauswahl und Druck.`
+    : undefined
+const canonicalPath = journalIndexPath(topic, page)
+const breadcrumb = [
+  { name: 'Startseite', url: '/' },
+  { name: 'Journal', url: '/blog.html' },
+  ...(topic ? [{ name: topic.label, url: journalIndexPath(topic) }] : []),
+  ...(page > 1 ? [{ name: `Seite ${page}`, url: canonicalPath }] : []),
+]
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: seoTitle || 'Journal | Matthias Ramahi',
+    url: toAbsoluteSiteUrl(canonicalPath),
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: slice.posts.map((post, index) => ({
+        '@type': 'ListItem',
+        position: (page - 1) * JOURNAL_PAGE_SIZE + index + 1,
+        url: toAbsoluteSiteUrl(post.href),
+        name: post.title,
+      })),
+    },
+  },
+  ...(breadcrumb.length > 2
+    ? [
+        {
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: breadcrumb.map((item, index) => ({
+            '@type': 'ListItem',
+            position: index + 1,
+            name: item.name,
+            item: toAbsoluteSiteUrl(item.url),
+          })),
+        },
+      ]
+    : []),
+]
+
+// ---------- Paginierung ----------
+const pageWindow = journalPageWindow(page, totalPages)
+const prevHref = page > 1 ? journalIndexPath(topic, page - 1) : null
+const nextHref = page < totalPages ? journalIndexPath(topic, page + 1) : null
+
+// ---------- Abschluss ----------
 const finalCta = journalIndex?.finalCta || {}
-const finalKicker = hasText(finalCta.kicker) ? finalCta.kicker! : 'Naechster Schritt'
-const finalHeadline = hasText(finalCta.headline) ? finalCta.headline! : 'Fotoauftrag planen.'
+const finalHeadline = hasText(finalCta.headline) ? finalCta.headline : 'Fotoauftrag <em>planen.</em>'
 const finalText = hasText(finalCta.text)
-  ? finalCta.text!
-  : 'Wenn Sie Automotive-Aufnahmen, Portraits, eine Bildstrecke oder eine hochwertige visuelle Praesentation benoetigen, schicken Sie kurz Ort, Zeitraum und Ziel des Projekts.'
-const finalPrimaryLabel = hasText(finalCta.primaryLabel) ? finalCta.primaryLabel! : 'Projekt anfragen'
+  ? finalCta.text
+  : 'Schicken Sie kurz Ort, Zeitraum und Ziel des Projekts. Sie bekommen eine ehrliche Einschätzung, was sinnvoll ist.'
+const finalPrimaryLabel = hasText(finalCta.primaryLabel) ? finalCta.primaryLabel : 'Projekt anfragen'
 const finalPrimaryHref = toRootRelativeHref(finalCta.primaryHref) || '/contact.html'
-const finalSecondaryLabel = hasText(finalCta.secondaryLabel) ? finalCta.secondaryLabel! : 'Portfolio ansehen'
+const finalSecondaryLabel = hasText(finalCta.secondaryLabel) ? finalCta.secondaryLabel : 'Portfolio ansehen'
 const finalSecondaryHref = toRootRelativeHref(finalCta.secondaryHref) || '/portfolio.html'
 ---
-<AdoptedPageLayout legacyFile="blog.html" current="blog" doc={doc} preloadImages={[firstHeroSlide.image]}>
-  <div class="light" aria-hidden="true"></div>
-  <main>
-    <NativeShaderHero id="top" label="Journal Intro" slides={heroSlides} sourceSlides={doc?.heroSlides || []} headerTheme="dark" />
+<AdoptedPageLayout
+  legacyFile="blog.html"
+  current="blog"
+  doc={doc}
+  title={seoTitle}
+  description={seoDescription}
+  canonicalUrl={canonicalPath}
+  jsonLd={jsonLd}
+  preloadImages={featuredImage ? [featuredImage] : gridPosts[0] ? [gridPosts[0].image] : []}
+>
+  <main class="jx">
+    <header class="jx-head" data-header-theme="dark">
+      <div class="jx-wrap">
+        <div class="jx-head__top">
+          <div>
+            {(topic || page > 1) && (
+              <nav class="jx-crumbs" aria-label="Brotkrumen">
+                <a href="/blog.html">Journal</a>
+                {topic && page > 1 && <><span aria-hidden="true">/</span><a href={journalIndexPath(topic)}>{topic.label}</a></>}
+              </nav>
+            )}
+            <h1>{headline}<em>.</em>{page > 1 && <span class="jx-head__page"> Seite {page}</span>}</h1>
+          </div>
+          <p class="jx-lead">{lead}</p>
+        </div>
+        <nav class="jx-topics" aria-label="Themen im Journal">
+          <a href="/blog.html" aria-current={!topic ? 'page' : undefined}>Alle <span>{allPosts.length}</span></a>
+          {journalTopics
+            .filter((entry) => (topicCounts[entry.filter] || 0) > 0)
+            .map((entry) => (
+              <a href={journalIndexPath(entry)} aria-current={topic?.slug === entry.slug ? 'page' : undefined}>
+                {entry.label} <span>{topicCounts[entry.filter]}</span>
+              </a>
+            ))}
+        </nav>
 
-    <section class="ticker" aria-label="Themenlaufband">
-      <div class="ticker-track">
-        {resolvedTicker.map((item, index) => <span set:html={item} {...tinaAttrs(journalIndex?.tickerItems?.[index], 'text')}></span>)}
+        {featured && featuredImage && (
+          <div class="jx-cover">
+            <a class="jx-cover__main" href={featured.href}>
+              <figure class="jx-cover__media">
+                <img
+                  src={featuredImage}
+                  alt={featuredUsesCms ? imageAlt(featuredSettings.image, featured.imageAlt) : featured.imageAlt}
+                  width={featuredDimensions.width || featured.width}
+                  height={featuredDimensions.height || featured.height}
+                  decoding="async"
+                  loading="eager"
+                  fetchpriority="high"
+                  {...(featuredUsesCms ? tinaAttrs(featuredSettings, 'image') : {})}
+                />
+              </figure>
+              <p class="jx-meta">
+                <span>{labelForCategory(featured.category)}</span>
+                {featured.dateTime && <time datetime={featured.dateTime}>{formatJournalDate(featured.dateTime)}</time>}
+                <span>{featured.readTime}</span>
+              </p>
+              <h2 {...(featuredUsesCms ? tinaAttrs(featuredSettings, 'headline') : {})}>{featuredTitle}</h2>
+              <p class="jx-cover__text" {...(featuredUsesCms ? tinaAttrs(featuredSettings, 'text') : {})}>{featuredText}</p>
+            </a>
+            {sidePosts.length > 0 && (
+              <ol class="jx-cover__side" aria-label="Neu im Journal">
+                {sidePosts.map((post) => (
+                  <li>
+                    <a href={post.href}>
+                      <img src={post.image} alt={post.imageAlt} width={post.width} height={post.height} decoding="async" loading="eager" />
+                      <span class="jx-cover__side-copy">
+                        <span class="jx-meta"><span>{labelForCategory(post.category)}</span><span>{post.readTime}</span></span>
+                        <span class="jx-cover__side-title" {...tinaAttrs(post.source, 'title')}>{post.title}</span>
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            )}
+          </div>
+        )}
+      </div>
+    </header>
+
+    <section class="jx-list" id="journal" data-header-theme="light" aria-labelledby="jx-list-title">
+      <div class="jx-wrap">
+        <div class="jx-list__head">
+          <h2 id="jx-list-title">{topic ? `Alle Artikel: ${topic.label}` : page > 1 ? 'Ältere Artikel' : 'Weitere Artikel'}</h2>
+          <p>{slice.total} Artikel{totalPages > 1 && ` · Seite ${page} von ${totalPages}`}</p>
+        </div>
+
+        {gridPosts.length > 0 ? (
+          <ol class="jx-grid" start={(page - 1) * JOURNAL_PAGE_SIZE + 1}>
+            {gridPosts.map((post, index) => (
+              <li class="jx-card">
+                <a href={post.href}>
+                  <figure class="jx-card__media">
+                    <img
+                      src={post.image}
+                      alt={post.imageAlt}
+                      width={post.width}
+                      height={post.height}
+                      decoding="async"
+                      loading={index < 3 && !featured ? 'eager' : 'lazy'}
+                      {...tinaAttrs(post.source, 'coverImage')}
+                    />
+                  </figure>
+                  <p class="jx-meta">
+                    <span>{labelForCategory(post.category)}</span>
+                    {post.dateTime && <time datetime={post.dateTime}>{formatJournalDate(post.dateTime)}</time>}
+                    <span>{post.readTime}</span>
+                  </p>
+                  <h3 {...tinaAttrs(post.source, 'title')}>{post.title}</h3>
+                  {post.text && <p class="jx-card__text" {...tinaAttrs(post.source, 'excerpt')}>{post.text}</p>}
+                </a>
+              </li>
+            ))}
+          </ol>
+        ) : (
+          <p class="jx-empty">In diesem Thema sind noch keine Artikel veröffentlicht.</p>
+        )}
+
+        {totalPages > 1 && (
+          <nav class="jx-pager" aria-label="Seiten">
+            {prevHref ? <a class="jx-pager__step" href={prevHref} rel="prev">← Neuere</a> : <span class="jx-pager__step is-off" aria-hidden="true">← Neuere</span>}
+            <ol class="jx-pager__pages">
+              {pageWindow.map((entry) =>
+                entry === 'gap' ? (
+                  <li class="jx-pager__gap" aria-hidden="true">…</li>
+                ) : (
+                  <li>
+                    <a href={journalIndexPath(topic, entry)} aria-current={entry === page ? 'page' : undefined} aria-label={`Seite ${entry}`}>{entry}</a>
+                  </li>
+                ),
+              )}
+            </ol>
+            {nextHref ? <a class="jx-pager__step" href={nextHref} rel="next">Ältere →</a> : <span class="jx-pager__step is-off" aria-hidden="true">Ältere →</span>}
+          </nav>
+        )}
       </div>
     </section>
 
-    {featured && (
-      <section class="featured" aria-label="Im Fokus">
-        <a class="featured__link" href={featuredHref} aria-label={`Beitrag lesen: ${featuredHeadline}`}></a>
-        <div class="featured__inner">
-          <figure class="featured__media">
-            <img
-              src={featuredImage}
-              alt={imageAlt(featuredSettings.image, featured.imageAlt || featuredHeadline)}
-              width={featuredImageDimensions.width || featured.width}
-              height={featuredImageDimensions.height || featured.height}
-              decoding="async"
-              loading="eager"
-              {...tinaAttrs(featuredSettings, 'image')}
-            />
-          </figure>
-          <div class="featured__copy">
-            <p class="featured__meta"><span {...tinaAttrs(featuredSettings, 'kicker')}>{featuredKicker}</span></p>
-            <h2 class="featured__title" {...tinaAttrs(featuredSettings, 'headline')}>{featuredHeadline}</h2>
-            <p class="featured__excerpt" {...tinaAttrs(featuredSettings, 'text')}>{featuredText}</p>
-            <span class="featured__go" {...tinaAttrs(featuredSettings, 'buttonLabel')}>{featuredButtonLabel}</span>
+    <div class="jx-gps" data-header-theme="light"><GooglePreferredSource theme="light" /></div>
+
+    <section class="jx-final" data-header-theme="dark" aria-label="Projekt anfragen">
+      <div class="jx-wrap">
+        <h2 set:html={finalHeadline} {...tinaAttrs(finalCta, 'headline')}></h2>
+        <div>
+          <p {...tinaAttrs(finalCta, 'text')}>{finalText}</p>
+          <div class="jx-actions">
+            <a class="jx-btn is-primary" href={finalPrimaryHref} {...tinaAttrs(finalCta, 'primaryLabel')}>{finalPrimaryLabel}</a>
+            <a class="jx-btn" href={finalSecondaryHref} {...tinaAttrs(finalCta, 'secondaryLabel')}>{finalSecondaryLabel}</a>
           </div>
         </div>
-      </section>
-    )}
-
-    <section class="journal" id="journal" aria-label="Journal Artikel">
-      <div class="journal-head">
-        <h2 {...tinaAttrs(journalIndex, 'indexHeadline')}>{indexHeadline}</h2>
-        <div class="filters" aria-label="Artikel filtern">
-          {resolvedFilters.map((filter, index) => (
-            <button class={`filter ${index === 0 ? 'active' : ''}`.trim()} type="button" data-filter={filter.value} {...tinaAttrs(journalIndex?.filters?.[index], 'label')}>{filter.label}</button>
-          ))}
-        </div>
-      </div>
-      <div class="post-grid">
-        {gridPosts.map((post, index) => (
-          <a
-            class={`post ${post.dark ? 'dark' : ''} ${index >= initialVisiblePostCount ? 'not-loaded' : ''}`.trim()}
-            href={post.href}
-            data-category={post.category}
-            data-tags={post.tags.map((tag) => tag.toLocaleLowerCase('de-DE')).join('|')}
-          >
-            <div class="post-media">
-              <img
-                src={post.image}
-                data-src={post.image}
-                alt={post.imageAlt}
-                width={post.width}
-                height={post.height}
-                decoding="async"
-                loading="lazy"
-                {...tinaAttrs((post as EditableJournalPostCard).source, 'coverImage')}
-              />
-            </div>
-            <div class="post-body">
-              <h3 {...tinaAttrs((post as EditableJournalPostCard).source, 'title')}>{post.title}</h3>
-              <p {...tinaAttrs((post as EditableJournalPostCard).source, 'excerpt')}>{post.text}</p>
-              <span class="post-go">Beitrag lesen</span>
-            </div>
-          </a>
-        ))}
-      </div>
-      <div class="load-panel" id="loadPanel" aria-live="polite">
-        <span class="load-status" id="loadStatus">{loadStatus}</span>
-        <button class="load-more" id="loadMore" type="button" {...tinaAttrs(journalIndex, 'loadMoreLabel')}>{loadMoreLabel}</button>
-      </div>
-    </section>
-
-    <section class="final" aria-label="Kontakt CTA">
-      <p class="kicker" {...tinaAttrs(finalCta, 'kicker')}>{finalKicker}</p>
-      <h2 set:html={finalHeadline} {...tinaAttrs(finalCta, 'headline')}></h2>
-      <p {...tinaAttrs(finalCta, 'text')}>{finalText}</p>
-      <div class="hero-actions">
-        <a class="btn primary" href={finalPrimaryHref} {...tinaAttrs(finalCta, 'primaryLabel')}>{finalPrimaryLabel}</a>
-        <a class="btn" href={finalSecondaryHref} {...tinaAttrs(finalCta, 'secondaryLabel')}>{finalSecondaryLabel}</a>
       </div>
     </section>
   </main>

@@ -4,6 +4,7 @@ import { tinaAttrs } from '../lib/tinaFieldAttrs'
 
 const {
   media,
+  altText = '',
   size = 'hero',
   class: className = '',
   fallback = 'Bild folgt',
@@ -16,7 +17,7 @@ const {
 } = Astro.props
 const mediaOptions = { mapCachedAssets }
 const src = imageDisplayUrl(media, size, mediaOptions)
-const alt = imageAlt(media, fallback)
+const alt = typeof altText === 'string' && altText.trim() ? altText.trim() : imageAlt(media, fallback)
 const dimensions = imageDimensions(media, size)
 const rasterSrcset = imageSrcset(media, ['mobile', 'card', 'hero', 'wide'], 'raster', mediaOptions)
 const avifSrcset = imageSrcset(media, ['mobile', 'card', 'hero', 'wide'], 'avif', mediaOptions)

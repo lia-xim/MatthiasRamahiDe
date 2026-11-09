@@ -5,6 +5,8 @@ import {
 } from './adoptedRoutes'
 import { getAdoptedPageChrome } from './adoptedPageChrome'
 import { getConceptArchivePage } from './conceptArchiveContent'
+import { isJournalArticlePublic, journalArticleByLegacyFile } from './journalArticleContent'
+import { isJournalDocumentPublic } from './journalPublication'
 import {
   configuredSiteUrl,
   imageAlt,
@@ -266,6 +268,9 @@ export async function nativeRouteSitemapEntries(section?: SitemapSection): Promi
     if (isLegacyRedirectFile(file) || getLegacyRedirectTarget(file) || getConceptArchivePage(file)) continue
     if (section && sectionForLegacyFile(file) !== section) continue
 
+    const journalArticle = journalArticleByLegacyFile[file.toLowerCase()]
+    if (journalArticle && !isJournalArticlePublic(journalArticle)) continue
+
     const chrome = getAdoptedPageChrome(file)
     const images = [...(chrome.ogImage ? [chrome.ogImage] : []), ...(chrome.preloadImages || [])]
       .filter(Boolean)
@@ -277,7 +282,7 @@ export async function nativeRouteSitemapEntries(section?: SitemapSection): Promi
 
     entries.push({
       loc: toAbsoluteSiteUrl(legacyUrlForFile(file)),
-      lastmod: nativeRouteLastmod,
+      lastmod: journalArticle ? dateOnly(journalArticle.updatedAt || journalArticle.publishedAt) : nativeRouteLastmod,
       images,
     })
   }
@@ -294,7 +299,12 @@ export async function cmsSitemapEntries(section?: SitemapSection): Promise<Sitem
 
     const docs = await listSitemapDocuments(collection)
     docs
-      .filter((doc) => doc._status !== 'draft' && !doc.seo?.noIndex)
+      .filter(
+        (doc) =>
+          doc._status !== 'draft' &&
+          !doc.seo?.noIndex &&
+          (collection !== 'journal-posts' || isJournalDocumentPublic(doc)),
+      )
       .forEach((doc: PayloadDoc) => {
         const loc = doc.seo?.canonicalUrl || routeForDoc(collection, doc)
         if (isRedirectPageLoc(loc)) return

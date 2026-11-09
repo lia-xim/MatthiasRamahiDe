@@ -1,0 +1,19 @@
+---
+// /journal/seite/N – Seite N der Journal-Uebersicht (alle Themen).
+import NativeJournalIndexPage from '../../../components/native/NativeJournalIndexPage.astro'
+import { getJournalIndexPosts, sliceJournalPosts } from '../../../lib/journalIndexPosts'
+import { parseJournalPage } from '../../../lib/journalIndexRoutes'
+
+export const prerender = false
+
+const page = parseJournalPage(Astro.params.page)
+if (page === null) return new Response('Not found', { status: 404 })
+if (page === 1) return Astro.redirect('/blog.html', 301)
+
+const { totalPages } = sliceJournalPosts(await getJournalIndexPosts(), null, page)
+if (page > totalPages) return new Response('Not found', { status: 404 })
+
+// Wie /blog.html: Veroeffentlichungen sind zeitgesteuert, daher kein Cache.
+Astro.response.headers.set('cache-control', 'no-store')
+---
+<NativeJournalIndexPage page={page} />

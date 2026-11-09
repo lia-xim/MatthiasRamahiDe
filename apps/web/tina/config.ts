@@ -356,7 +356,12 @@ const contentBlocksField = {
         objectField(
           'items',
           'Bilder',
-          [imageField('image', 'Bild'), textField('caption', 'Bildunterschrift'), textField('cropIntent', 'Crop-Hinweis')],
+          [
+            imageField('image', 'Bild'),
+            textField('alt', 'Alt-Text', { description: 'Beschreibt das sichtbare Motiv knapp und konkret; Bildunterschriften werden nicht als Alt-Text verwendet.' }),
+            textField('caption', 'Bildunterschrift'),
+            textField('cropIntent', 'Crop-Hinweis'),
+          ],
           { list: true },
         ),
       ],

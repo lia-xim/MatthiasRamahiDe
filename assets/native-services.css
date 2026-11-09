@@ -227,3 +227,75 @@
       *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
       .image-card img{transform:none!important}
     }
+
+/* =====================================================================
+   Konsolidierung 2026-11
+   - Ramahi Webdesign und Crawl Foundry als eigene, grosse Sektionen.
+   - Bildsprache wie der Rest der Seite: Versal-Headlines, zweites Wort
+     in Stahlgrau statt kursivem Braun, keine Karten-Schatten, kein
+     Anheben beim Hover.
+   ===================================================================== */
+:root{ --steel:#7a8a86; --steel-light:#a9b4b0; }
+.overview h2,.service h3,.studio h2,.foundry h2,.overview-tile strong{ text-transform:uppercase; }
+.overview h2 em,.service h3 em,.overview-tile strong em,.studio h2 em{ font-style:normal; font-weight:inherit; color:var(--steel); }
+.service:nth-child(2n) h3 em,.foundry h2 em{ font-style:normal; color:var(--steel-light); }
+.overview h2{ font-size:clamp(44px,6.4vw,108px); line-height:.9; }
+.overview-tile strong{ font-size:clamp(20px,1.7vw,28px); line-height:1; }
+.service,.service:hover,.service:nth-child(2n):hover{ transform:none; box-shadow:none; }
+.service:hover{ border-color:rgba(10,12,17,.28); }
+.service:hover .image-card img{ transform:scale(1.03); }
+.image-card{ box-shadow:none; }
+.service h3{ font-size:clamp(36px,4.6vw,80px); line-height:.92; }
+
+/* ---------- Ramahi Webdesign ---------- */
+.studio{ background:var(--paper); color:var(--ink); padding:clamp(88px,11vw,168px) clamp(22px,5vw,84px); border-top:1px solid var(--rule); }
+.studio-inner{ max-width:1520px; margin:0 auto; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.05fr); gap:clamp(40px,6vw,112px); align-items:center; }
+.studio-copy,.foundry-copy{ min-width:0; }
+.studio-label{ margin:0 0 22px; font:500 12px/1 var(--mono); letter-spacing:.18em; text-transform:lowercase; color:var(--quiet); }
+.foundry .studio-label{ color:rgba(243,241,234,.5); }
+.studio h2,.foundry h2{ margin:0; font-size:clamp(56px,8.6vw,148px); line-height:.88; color:inherit; }
+.studio-lead{ margin:clamp(24px,2.4vw,36px) 0 0; max-width:52ch; color:var(--muted); line-height:1.6; }
+.foundry .studio-lead{ color:rgba(243,241,234,.72); }
+.studio-facts{ margin:clamp(32px,3.4vw,48px) 0 0; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); border-top:1px solid var(--rule); max-width:620px; }
+.studio-facts div{ padding:18px 0 16px; border-bottom:1px solid var(--rule); }
+.studio-facts div:nth-child(odd){ padding-right:18px; }
+.studio-facts dt{ font:500 11px/1.4 var(--mono); letter-spacing:.14em; text-transform:uppercase; color:var(--quiet); }
+.studio-facts dd{ margin:6px 0 0; font-weight:650; font-stretch:87.5%; font-size:clamp(22px,2vw,32px); line-height:1.05; color:var(--ink); }
+.studio-actions{ display:flex; flex-wrap:wrap; gap:12px; margin-top:clamp(32px,3.4vw,48px); }
+.studio-btn{ display:inline-flex; align-items:center; gap:10px; min-height:52px; padding:0 24px; border:1px solid currentColor; font:600 12px/1 var(--mono); letter-spacing:.14em; text-transform:uppercase; transition:background-color .3s var(--ease),color .3s var(--ease),border-color .3s var(--ease); }
+.studio-btn.is-primary{ background:var(--ink); border-color:var(--ink); color:var(--paper); }
+.studio-btn:hover{ background:var(--ink); border-color:var(--ink); color:var(--paper); }
+.studio-btn.is-primary:hover{ background:transparent; color:var(--ink); }
+.studio-btn:focus-visible{ outline:2px solid #cf392e; outline-offset:3px; }
+.studio-media{ position:relative; display:block; min-width:0; aspect-ratio:5/4; }
+.studio-shot{ position:absolute; top:0; right:0; width:72% !important; height:100% !important; object-fit:cover; object-position:top center; border:1px solid var(--rule); }
+.studio-detail{ position:absolute; left:0; bottom:8%; width:46% !important; height:auto !important; aspect-ratio:4/3; object-fit:cover; border:1px solid var(--rule); }
+
+/* ---------- Crawl Foundry ---------- */
+.foundry{ background:var(--ink); color:#f3f1ea; padding:clamp(88px,11vw,168px) clamp(22px,5vw,84px); }
+.foundry-inner{ max-width:1520px; margin:0 auto; display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); gap:clamp(40px,6vw,112px); align-items:center; }
+.foundry-copy{ order:2; }
+.foundry-media{ order:1; margin:0; min-width:0; border:1px solid rgba(243,241,234,.14); background:#121418; }
+.foundry-media img{ width:100%; height:auto; object-fit:contain; }
+.foundry-list{ list-style:none; margin:clamp(32px,3.4vw,48px) 0 0; padding:0; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); border-top:1px solid rgba(243,241,234,.14); max-width:620px; }
+.foundry-list li{ padding:16px 0; border-bottom:1px solid rgba(243,241,234,.14); font-weight:650; font-stretch:87.5%; font-size:clamp(18px,1.5vw,24px); }
+.foundry .studio-btn{ color:#f3f1ea; }
+.foundry .studio-btn.is-primary{ background:#f3f1ea; border-color:#f3f1ea; color:var(--ink); }
+.foundry .studio-btn:hover{ background:#f3f1ea; border-color:#f3f1ea; color:var(--ink); }
+.foundry .studio-btn.is-primary:hover{ background:transparent; color:#f3f1ea; }
+
+@media (max-width: 900px){
+  .studio-inner,.foundry-inner{ grid-template-columns:1fr; }
+  .foundry-copy{ order:1; } .foundry-media{ order:2; }
+  .studio-media{ aspect-ratio:4/3; }
+}
+@media (max-width: 520px){
+  .studio-facts,.foundry-list{ grid-template-columns:1fr; }
+  .studio-facts div:nth-child(odd){ padding-right:0; }
+  .studio-btn{ width:100%; justify-content:center; }
+}
+.overview h2{ max-width:none; hyphens:manual; font-size:clamp(44px,5.6vw,96px); }
+.overview-tile strong{ font-family:var(--sans); font-weight:700; font-stretch:75%; letter-spacing:0; }
+.studio h2,.foundry h2{ font-size:clamp(52px,7vw,128px); hyphens:manual; overflow-wrap:normal; }
+.studio-facts dd span{ display:block; font-weight:650; font-stretch:87.5%; font-size:clamp(22px,2vw,32px); line-height:1.05; }
+.foundry-list li span{ font-size:clamp(18px,1.5vw,24px); line-height:1.2; }

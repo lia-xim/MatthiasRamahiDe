@@ -21,7 +21,7 @@ const rootRelative = (href: string) => {
 const unique = (items: string[] = []) => [...new Set(items.filter(Boolean).map(rootRelative))]
 
 const siteChromeScript = ['/assets/site-chrome.js']
-const sharedStyles = ['/assets/site-chrome.css', '/assets/native-performance.css']
+const sharedStyles = ['/assets/site-chrome.css', '/assets/native-performance.css', '/assets/hero-motion.css']
 
 const automotiveChrome: AdoptedPageChrome = {
   current: 'fotografie',
@@ -88,7 +88,7 @@ const serviceMiniChrome = (ogImage: string): AdoptedPageChrome => ({
   ogImage,
   preloadImages: [ogImage],
   scripts: siteChromeScript,
-  stylesheets: [...sharedStyles, '/assets/native-service-mini.css'],
+  stylesheets: [...sharedStyles, '/assets/native-service-mini.css', '/assets/service-extras.css'],
 })
 
 const exactChrome: Record<string, AdoptedPageChrome> = {
@@ -243,8 +243,10 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
       'Journal von Matthias Ramahi: Einblicke in Automotive-Fotografie, Portraits, Landschaft, Bildauswahl, Druck und visuelle Inszenierung in Düsseldorf.',
     ogImage: '/assets/optimized/assets-photos-automobil-sunset-1920.webp',
     preloadImages: ['/assets/optimized/assets-photos-automobil-sunset-1280.webp'],
-    scripts: ['/assets/native-home.js', ...siteChromeScript, '/assets/native-journal.js'],
-    stylesheets: ['/assets/native-journal.css', ...sharedStyles],
+    // Journal-Uebersicht ohne Shader-Hero und ohne Filter-/Nachlade-JS: alle
+    // Beitraege sind echte Links auf paginierten Seiten (siehe journalIndexRoutes).
+    scripts: [...siteChromeScript],
+    stylesheets: ['/assets/journal-index.css', ...sharedStyles],
     title: 'Blog / Journal - Matthias Ramahi',
   },
   'radikale-fotografie-portfolio-konzepte.html': {
@@ -294,7 +296,7 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
     ogImage: '/assets/optimized/assets-photos-automobil-sunset-1920.webp',
     preloadImages: ['/assets/optimized/assets-photos-automobil-sunset-1920.webp'],
     scripts: ['/assets/native-home.js', ...siteChromeScript],
-    stylesheets: [...sharedStyles, '/assets/native-webdesign-seo.css'],
+    stylesheets: [...sharedStyles, '/assets/native-webdesign-seo.css', '/assets/service-extras.css'],
     title: 'Webdesign & SEO Düsseldorf - Matthias Ramahi',
   },
   'keyword-datenbank-seo.html': {
@@ -313,7 +315,7 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
   },
   'videografie-duesseldorf.html': {
     ...serviceMiniChrome('/assets/services/portfolio_webp_full_058-1.webp'),
-    stylesheets: [...sharedStyles, '/assets/native-videografie.css'],
+    stylesheets: [...sharedStyles, '/assets/native-videografie.css', '/assets/service-extras.css'],
     description:
       'Videografie in Düsseldorf: Imagefilm, Musikvideo, Eventfilm und redaktionelles Bewegtbild - über Sophia Ramahi und das Kreativnetzwerk aus dem Rheinland.',
     title: 'Videografie Düsseldorf - Matthias Ramahi',
@@ -325,7 +327,7 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
     ogImage: '/assets/services/Catoir_Ramahi-1-32-768x512-1.webp',
     preloadImages: ['/assets/services/Catoir_Ramahi-1-32-768x512-1.webp'],
     scripts: ['/assets/native-home.js', ...siteChromeScript],
-    stylesheets: [...sharedStyles, '/assets/native-werbetechnik.css'],
+    stylesheets: [...sharedStyles, '/assets/native-werbetechnik.css', '/assets/service-extras.css'],
     title: 'Werbetechnik Düsseldorf - Matthias Ramahi',
   },
   'grossformatdruck-duesseldorf.html': {
@@ -335,7 +337,7 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
     ogImage: '/assets/services/Catoir_Ramahi-1-106-768x512-1.webp',
     preloadImages: ['/assets/services/Catoir_Ramahi-1-106-768x512-1.webp'],
     scripts: ['/assets/native-home.js', ...siteChromeScript],
-    stylesheets: [...sharedStyles, '/assets/native-grossformatdruck.css'],
+    stylesheets: [...sharedStyles, '/assets/native-grossformatdruck.css', '/assets/service-extras.css'],
     title: 'Großformatdruck Düsseldorf - Matthias Ramahi',
   },
   'drucke-sonderanfertigungen-duesseldorf.html': {
@@ -351,7 +353,7 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
     ogImage: '/assets/services/portfolio_webp_full_057-1.webp',
     preloadImages: ['/assets/services/portfolio_webp_full_057-1.webp'],
     scripts: ['/assets/native-home.js', ...siteChromeScript],
-    stylesheets: [...sharedStyles, '/assets/native-fotolabor.css'],
+    stylesheets: [...sharedStyles, '/assets/native-fotolabor.css', '/assets/service-extras.css'],
     title: 'Fotolabor Düsseldorf: Professioneller Fotodruck & Fine-Art',
   },
   'viola-musik-duesseldorf.html': {
@@ -361,7 +363,7 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
     ogImage: '/assets/services/portfolio_webp_full_004-2.webp',
     preloadImages: ['/assets/services/portfolio_webp_full_004-2.webp'],
     scripts: ['/assets/native-home.js', ...siteChromeScript],
-    stylesheets: [...sharedStyles, '/assets/native-viola-musik.css'],
+    stylesheets: [...sharedStyles, '/assets/native-viola-musik.css', '/assets/service-extras.css'],
     title: 'Viola Musik Düsseldorf - Matthias Ramahi',
   },
 }

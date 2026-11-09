@@ -56,10 +56,21 @@
   "pageType": "home",
   "heroSlides": [
     {
-      "image": "/uploads/payload/_DSC3882.webp",
+      "image": "/assets/optimized/automobil-alpina-b8-front-1920.webp",
       "headlineLine1": "Matthias Ramahi",
       "headlineLine2": "Fotografie",
       "lead": "Automobil-, Portrait- und Landschaftsfotografie aus Düsseldorf für Marken, Sammler und Menschen mit Anspruch.",
+      "durationSec": 7,
+      "primaryLabel": "Projekt anfragen",
+      "primaryHref": "#anfrage",
+      "secondaryLabel": "Arbeiten ansehen",
+      "secondaryHref": "/portfolio.html"
+    },
+    {
+      "image": "/assets/optimized/architektur-wien-parlament-1920.webp",
+      "headlineLine1": "Landschafts",
+      "headlineLine2": "Fotografie",
+      "lead": "Landschaft und Stadt bei Nacht – kuratierte Motive für Print, Editorial und Lizenz.",
       "durationSec": 7,
       "primaryLabel": "Projekt anfragen",
       "primaryHref": "#anfrage",
@@ -78,6 +89,17 @@
       "secondaryHref": "/portfolio.html"
     },
     {
+      "image": "/assets/optimized/architektur-wien-staatsoper-nacht-1920.webp",
+      "headlineLine1": "Fine-Art",
+      "headlineLine2": "Prints",
+      "lead": "Fine-Art-Motive, Wandbilder und Editionen mit Raumwirkung.",
+      "durationSec": 7,
+      "primaryLabel": "Projekt anfragen",
+      "primaryHref": "#anfrage",
+      "secondaryLabel": "Arbeiten ansehen",
+      "secondaryHref": "/portfolio.html"
+    },
+    {
       "image": "/uploads/payload/20250327-DSC01550-1.webp",
       "headlineLine1": "Portrait",
       "headlineLine2": "Fotografie",
@@ -89,18 +111,7 @@
       "secondaryHref": "/portfolio.html"
     },
     {
-      "image": "/uploads/payload/_DSC8024.webp",
-      "headlineLine1": "Landschafts",
-      "headlineLine2": "Fotografie",
-      "lead": "Fine-Art-Motive, Wandbilder und Editionen mit Raumwirkung.",
-      "durationSec": 7,
-      "primaryLabel": "Projekt anfragen",
-      "primaryHref": "#anfrage",
-      "secondaryLabel": "Arbeiten ansehen",
-      "secondaryHref": "/portfolio.html"
-    },
-    {
-      "image": "/uploads/payload/_DSC3811.webp",
+      "image": "/assets/optimized/oldtimer-mercedes-w196-dreiviertel-1920.webp",
       "headlineLine1": "Oldtimer",
       "headlineLine2": "Fotografie",
       "lead": "Material, Geschichte und Charakter in präzisen Serien.",

@@ -1,0 +1,189 @@
+{
+  "title": "Fahrzeugfotos für mobile.de und AutoScout24 vorbereiten",
+  "slug": "fahrzeugfotos-mobile-de-autoscout24-aufbereiten",
+  "category": "automotive",
+  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+  "coverAlt": "Schwarzer SUV vor Industrieanlagen im Abendlicht, gespiegelt in einer flachen Wasserfläche; Portfolioaufnahme.",
+  "status": "scheduled",
+  "publishedAt": "2027-06-13T07:00:00.000Z",
+  "createdAt": "2026-11-04T14:59:42Z",
+      "updatedAt": "2027-06-13T07:00:00.000Z",
+  "excerpt": "Bildmengen und Uploadwege unterscheiden sich je nach Portal und Kontotyp. So bereitest du eine Fahrzeugserie für mobile.de und AutoScout24 vor, prüfst Hauptmotiv und Zuschnitt und ordnest Dateien sauber zu.",
+  "readingTime": 8,
+  "relatedPages": [
+    {
+      "label": "Automobilfotografie",
+      "href": "/automobil-fotografie.html",
+      "seoPurpose": "topic-parent",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Gebrauchtwagen für ein Online-Inserat fotografieren",
+      "href": "/blog-gebrauchtwagen-fuer-online-inserat-fotografieren.html",
+      "seoPurpose": "related-editorial",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "mobile.de KI-Qualitätscheck für Fahrzeugfotos",
+      "href": "/blog-mobile-de-ki-qualitaetscheck-fahrzeugfotos.html",
+      "seoPurpose": "related-editorial",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "RAW, JPEG oder TIFF: Dateiformate für Fahrzeugfotografie",
+      "href": "/blog-dateiformate-fahrzeugfotografie-raw-jpeg-tiff.html",
+      "seoPurpose": "related-editorial",
+      "rel": "follow",
+      "openInNewTab": false
+    }
+  ],
+  "seo": {
+    "title": "Fahrzeugfotos für mobile.de und AutoScout24 vorbereiten",
+    "description": "So bereitest du eine Fahrzeug-Fotoserie für mobile.de und AutoScout24 vor: Bildmengen, Hauptmotiv, Zuschnitt, Upload und Bildzuordnung.",
+    "focusKeyword": "Fahrzeugfotos mobile.de AutoScout24",
+    "secondaryKeywords": [
+      "AutoScout24 Fahrzeugbilder hochladen",
+      "mobile.de Bilder hochladen",
+      "Fahrzeugfotos für Inserate zuschneiden",
+      "mobile.de Bild-ID CSV",
+      "Hauptbild Auto-Inserat"
+    ],
+    "internalLinkAnchors": [
+      "Automobilfotografie",
+      "Gebrauchtwagen für ein Online-Inserat fotografieren",
+      "mobile.de KI-Qualitätscheck für Fahrzeugfotos",
+      "RAW, JPEG oder TIFF"
+    ],
+    "searchIntent": "Informationssuche von Autohäusern, Bestandsteams und Fotografen, die eine vorhandene Fahrzeug-Fotoserie auf mobile.de und AutoScout24 veröffentlichen möchten. Im Mittelpunkt stehen portalabhängige Bildmengen, Hauptbild, Vorschaubeschnitt und die Zuordnung von Dateien über eine mobile.de-Schnittstelle. Die offiziellen Angaben unterscheiden nach Privatkunden-FAQ, Händlerprodukt und API. Relevanzsignal: aktuelle offizielle Hilfen und Händlerdokumentationen behandeln Bildmengen, Upload und Reihenfolge. Suchvolumen und nativer Crawl-Foundry-AI-Fanout wurden nicht gemessen.",
+    "canonicalUrl": "https://matthiasramahi.de/blog-fahrzeugfotos-mobile-de-autoscout24-aufbereiten.html",
+    "legacyUrl": "blog-fahrzeugfotos-mobile-de-autoscout24-aufbereiten.html",
+    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "noIndex": false
+  },
+  "blocks": [
+    {
+      "_template": "textBlock",
+      "headline": "Ein Fotosatz, mehrere Uploadwege",
+      "body": "Wer Fahrzeugbilder für mehrere Anzeigenportale vorbereitet, braucht nicht noch einmal eine allgemeine Shotlist. Entscheidend ist der Schritt nach dem Shooting: Welche Bildmengen und Dateizuordnungen gelten für den konkreten Uploadweg, welches Foto wird zum Titelbild, und wie sieht die Serie nach dem Beschnitt in der Vorschau aus? Eine gute Quelle sollte sich auf beiden Portalen nutzen lassen, ohne die Originaldateien zu überschreiben oder beim Export unbemerkt wichtige Fahrzeugteile zu verlieren.\n\nDie passende Grundfolge aus Außenansichten, Innenraum, Ausstattung und Zustandsdetails steht im Ratgeber zum Fotografieren eines Gebrauchtwagens fürs Online-Inserat. Hier geht es um die Übergabe dieser Serie in die Portale und in Händler- oder Datenpartner-Schnittstellen."
+    },
+    {
+      "_template": "imageSequence",
+      "headline": "Beispiele für unterschiedliche Bildausschnitte",
+      "layout": "editorial-pair",
+      "items": [
+        {
+          "image": "/assets/portfolio/automobil-brabus-sunset.webp",
+          "caption": "Schwarzer SUV im Abendlicht; eine Portfolioaufnahme, kein Inserat auf einem Fahrzeugportal.",
+          "cropIntent": "editorial",
+          "alt": "Schwarzer SUV vor Industrieanlagen im Abendlicht, mit Spiegelung auf einer flachen Wasserfläche."
+        },
+        {
+          "image": "/uploads/payload/_DSC2310-2.webp",
+          "caption": "Weißer BMW in einer Ausstellungshalle unter farbigem Licht; Portfolioaufnahme, kein Inserat auf einem Fahrzeugportal.",
+          "cropIntent": "editorial",
+          "alt": "Weißer klassischer BMW auf einer Ausstellungsfläche unter rotem Hallenlicht."
+        }
+      ]
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Wie viele Bilder passen in ein Inserat?",
+      "body": "Eine allgemeingültige Bildgrenze lässt sich aus den offiziellen Unterlagen nicht ableiten; sie hängt von Portal, Konto, Tarif und Uploadweg ab. Stand 8. November 2026 nennt die mobile.de-CSV-Dokumentation für genau diese Schnittstelle Dateien von _01.jpg bis _15.jpg je Bild-ID. Der aktuelle AutoScout24-Foto-Guide nennt bis zu 50 Fotos, während das Händler-Infoportal bis zu 30 XXL-Bilder aufführt. Das sind unterschiedliche Dokumente und Angebote, keine übertragbare Einheitsgrenze. Die API kann eigene Vorgaben haben.\n\nPrüfe deshalb vor dem Export die Oberfläche, den Tarif und die Integration, die das Autohaus tatsächlich nutzt. Eine Zahl aus einem Foto-Guide muss nicht die Grenze eines Händlerkontos beschreiben; eine Schnittstellen-Obergrenze ist kein Versprechen, dass jedes Inserat oder jeder Tarif dieselbe Bildmenge freischaltet. Kontrolliere die aktuelle Portalmaske und die passende Dokumentation noch einmal, wenn du den Bestand übergibst."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Das erste Bild bewusst auswählen",
+      "body": "Das Titelmotiv sollte genau das angebotene Fahrzeug zeigen und auch als kleines Vorschaubild erkennbar bleiben. Der AutoScout24-Foto-Guide beschreibt das zuerst hochgeladene Bild als Hauptbild (Stand 8. November 2026). Wähle dafür eine scharfe Dreiviertelansicht mit etwas Rand um Dach, Räder und Spiegel. Ein ruhiger Hintergrund und gleichmäßiges Licht helfen, die Form zu lesen; andere Fahrzeuge im Vordergrund oder eine enge Detailaufnahme lenken ab.\n\nLege die Reihenfolge fest, bevor du die Dateien hochlädst. Bei einem Einzel-Upload lässt sich die Sortierung möglicherweise in der Oberfläche verändern; bei einer Warenwirtschaft oder Schnittstelle kann sie aus Reihenfolge- oder Dateinamensregeln entstehen. Kontrolliere nach dem Upload, ob dein Titelmotiv tatsächlich zuerst in der Trefferliste und auf der Detailseite erscheint. Verlass dich nicht allein auf die Reihenfolge im lokalen Ordner."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Zuschnitt prüfen, Pixelmaße nicht erraten",
+      "body": "Die offiziellen Unterlagen, die ich hier verlinke, nennen kein einheitliches Seitenverhältnis und keine universelle Pixelgröße für jeden Uploadweg. Verwende daher keine vermeintliche Standardzahl, nur weil sie in einem älteren Ratgeber oder einer fremden Software steht. Portale können Vorschaubilder unterschiedlich beschneiden, verkleinern oder in verschiedene Ansichten einpassen.\n\nArbeite mit einer unveränderten Masterdatei und erstelle bei Bedarf separate Exportkopien. Lass um Fahrzeug, Räder, Spiegel und Dachlinie etwas Rand, damit ein enger Vorschaubeschnitt nicht ausgerechnet die Teile abschneidet, an denen sich das Modell erkennen lässt. Lade das Bild hoch und prüfe danach sowohl die Trefferlisten-Kachel als auch die große Detailansicht. Wenn die Plattform einen anderen Ausschnitt zeigt, verschiebe den Bildausschnitt in einer Exportkopie oder wähle eine alternative Aufnahme aus derselben Serie. Eine pauschale Kompression oder ein Wechsel ins Hochformat löst ein Zuschneideproblem nicht automatisch."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Für Schnittstellen: Bild-ID und vollständige Serie",
+      "body": "Beim mobilen.de-CSV-Upload werden die Bilder über eine Bild-ID dem Fahrzeug zugeordnet. Die Dokumentation nennt Dateinamen nach dem Muster Bild-ID plus laufender Nummer, etwa 84QX21_01.jpg. Für diese Schnittstelle führt sie bis zu 15 Bilddateien je Fahrzeug auf. Halte die Bild-ID in Fahrzeugdaten, Dateinamen und Bestandsverwaltung identisch. Laut Dokumentation sind Zahlen, lateinische Buchstaben, Leerzeichen und Bindestriche zulässig; ein Unterstrich ist möglich, aber nicht empfohlen. Umlaute und andere Sonderzeichen gehören nicht in die ID.\n\nWichtig für Updates: Die mobile.de-CSV-Hilfe weist darauf hin, dass beim Ergänzen oder Ersetzen von Bildern der gesamte Bildersatz für das Fahrzeug erneut gesendet werden muss. Wird nur eine einzelne neue Datei übertragen, können nicht mitgesendete Bilder aus dem bestehenden Satz entfernt werden. Das gilt für den beschriebenen Schnittstellenweg, nicht automatisch für jeden manuellen Upload. Prüfe deshalb vor dem Versand, ob alle zu diesem Fahrzeug gehörenden Dateien enthalten sind und ob keine Aufnahmen eines anderen Bestandsfahrzeugs in den Satz geraten sind."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Motivfolge: Fahrzeug und Zustand klar zeigen",
+      "body": "Ordne die Serie so, dass jedes Bild eine neue Information liefert: zuerst eine Dreiviertelansicht, danach die zweite Fahrzeugseite sowie Front und Heck. Ergänze anschließend Innenraum, Kofferraum und Ausstattungsdetails, die für dieses Angebot wichtig sind. Ein Foto von Kilometerstand oder eingeschaltetem Display kann einen aktuellen Anzeigestand zeigen, ersetzt aber keine Fahrzeugunterlagen oder Zustandsprüfung. Sichtbare Gebrauchsspuren oder Schäden bekommen eine kontextgebende Aufnahme und bei Bedarf ein nahes Detail.\n\nFotografiere auf einem ruhigen, möglichst neutralen Hintergrund und halte Licht sowie Weißabgleich über die Serie ähnlich. Passe Helligkeit und Farbe so an, dass sie dem Fahrzeug entsprechen; retuschiere keine Mängel weg und verwende keine Aufnahme eines ähnlichen Modells als Bild des konkreten Bestandsfahrzeugs. Prüfe vor dem Export auch Spiegelungen mit erkennbaren Personen, Kundendokumente und andere unnötige persönliche Details. Kläre Bildherkunft, Nutzungsrechte und die aktuell geltenden Portalregeln separat: Ein erfolgreicher Upload bestätigt keine Freigabe."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Eine kurze Übergabeprüfung für beide Portale",
+      "body": "Arbeite die Übergabe in dieser Reihenfolge ab: (1) Gleiche interne Fahrzeug-ID, Kennzeichen/Bestandsnummer und Dateiliste ab. (2) Prüfe die Serie: vollständige Außenansichten, danach Innenraum und relevante Ausstattung, zum Schluss ehrliche Zustandsdetails. (3) Entferne Dubletten und wähle das Titelbild; kontrolliere in der Vorschau, dass Räder, Dachlinie und wichtige Merkmale nicht abgeschnitten sind. (4) Erstelle separate Exportkopien und prüfe Dateiformat, Reihenfolge und Benennung nach den Regeln des konkreten Uploadwegs. (5) Kontrolliere nach dem Upload Titelmotiv und Ausschnitte in Trefferliste und Detailansicht auf beiden Portalen.\n\nBewahre die unveränderten Masterdateien getrennt von komprimierten oder beschnittenen Exporten auf; eine kurze Zuordnungstabelle mit Fahrzeug-ID, Dateiname und Motiv hilft, Verwechslungen beim Bestand zu vermeiden. So kannst du einen neuen Export erstellen, ohne ein bereits beschnittenes Portalbild weiterzubearbeiten. Ein KI-Qualitätscheck kann technische Fehler sichtbar machen, ersetzt aber weder die Prüfung des richtigen Fahrzeugs noch den Abgleich mit dessen tatsächlichem Zustand."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Nicht jede Portalgrenze ist ein Fotostandard",
+      "body": "Die Zahl zulässiger Bilder, Dateibenennung, Format und sichtbarer Ausschnitt sind verschiedene Fragen. Eine hohe Upload-Grenze sagt nicht, dass du jede mögliche Position mit einem ähnlichen Motiv füllen solltest. Umgekehrt ist eine kleinere Grenze kein Grund, die Serie auf ein einziges Außenbild zu reduzieren. Wähle Motive, die jeweils eine neue Information liefern, und ordne sie für die Zielgruppe des Inserats.\n\nFür die Aufnahmen selbst ist eine vollständige und nachvollziehbare Bildfolge wichtiger als eine einzelne spektakuläre Perspektive. Für den Plattform-Upload sind aktuelle Kontovorgaben und eine Sichtkontrolle nach der Übermittlung entscheidend. Wenn Portale ihre Grenzen oder Anzeigenlayouts ändern, aktualisierst du Export- und Feed-Regeln anhand der offiziellen Hinweise statt an einer alten Pixelvorgabe."
+    },
+    {
+      "_template": "linkList",
+      "headline": "Offizielle Portalhinweise und Schnittstellendokumentation",
+      "links": [
+        {
+          "label": "mobile.de: Hilfe zum Inserieren und zu Fahrzeugfotos",
+          "href": "https://www.mobile.de/magazin/artikel/verkaufen-40898",
+          "description": "Öffentliche Hilfe; konkrete Bildoptionen vor dem Upload in der aktuellen Inseriermaske prüfen."
+        },
+        {
+          "label": "mobile.de: CSV-Upload-Schnittstelle",
+          "href": "https://services.mobile.de/manual/upload-interface-csv_de.html",
+          "description": "Dokumentiert Bild-ID, Dateinamensschema bis _15.jpg und das erneute Senden des vollständigen Bildersatzes bei Änderungen."
+        },
+        {
+          "label": "mobile.de: Verhaltenskodex für den Fahrzeughandel",
+          "href": "https://www.mobile.de/service/onlineVehicleTradingCode",
+          "description": "Der öffentlich abrufbare Kodex nennt als Textstand den 30. April 2013; aktive Portalbedingungen vor Nutzung separat prüfen."
+        },
+        {
+          "label": "AutoScout24: Foto-Guide für Inserate",
+          "href": "https://www.autoscout24.de/cms-content-assets/7qhnYYVYTmNU2w6RvsBlaX-b3c0c0cc5d3c162b55c78110bd2c119d-AS24_Fotoguide_online.pdf",
+          "description": "Stand 8. November 2026: Der Foto-Guide nennt bis zu 50 Fotos in JPG oder PNG; das erste hochgeladene Foto ist das Hauptbild."
+        },
+        {
+          "label": "AutoScout24: Händlerportal für Fahrzeuganzeigen",
+          "href": "https://www.autoscout24.de/partner-infoportal/inserieren/",
+          "description": "Das aktuelle Händlerportal nennt bis zu 30 XXL-Bilder."
+        },
+        {
+          "label": "AutoScout24: API für Händler und Datenpartner",
+          "href": "https://www.autoscout24.de/haendlerportal/api/",
+          "description": "Einstieg für Händler und Datenpartner; die für das eigene Konto geltenden Bildgrenzen stehen in der zugehörigen API-Dokumentation."
+        }
+      ]
+    },
+    {
+      "_template": "faqBlock",
+      "headline": "Häufige Fragen zu Fahrzeugfotos für Anzeigenportale",
+      "items": [
+        {
+          "question": "Wie viele Fotos kann ich bei mobile.de hochladen?",
+          "answer": "Für die CSV-Schnittstelle nennt mobile.de eine Bild-ID-Zuordnung bis _15.jpg. Das bezieht sich auf diesen Uploadweg; bei manuellem Upload oder anderen Produkten prüfst du die aktuelle Oberfläche und die passende Dokumentation."
+        },
+        {
+          "question": "Wie viele Bilder sind bei AutoScout24 möglich?",
+          "answer": "Stand 8. November 2026 nennt der AutoScout24-Foto-Guide bis zu 50 Fotos; das Händler-Infoportal führt bis zu 30 XXL-Bilder auf. Das sind unterschiedliche Angebotsbeschreibungen. Prüfe die für dein Konto und deinen Übermittlungsweg geltende Grenze vor dem Export."
+        },
+        {
+          "question": "Welches Bild sollte zuerst hochgeladen werden?",
+          "answer": "Wähle eine scharfe Gesamtansicht, die das konkrete Fahrzeug vollständig erkennen lässt. Der AutoScout24-Foto-Guide benennt das erste hochgeladene Bild als Hauptbild (Stand 8. November 2026); kontrolliere nach dem Upload, was in deiner Vorschau tatsächlich erscheint."
+        },
+        {
+          "question": "Gibt es ein festes Seitenverhältnis für beide Portale?",
+          "answer": "In den hier verlinkten offiziellen Unterlagen findet sich kein universelles Seitenverhältnis für alle Kontotypen und Integrationen. Prüfe den Ausschnitt in der echten Portalvorschau und halte eine unveränderte Masterdatei."
+        },
+        {
+          "question": "Kann ich dieselben Fotos auf mehreren Portalen verwenden?",
+          "answer": "Eine gemeinsame Masterserie kann als Ausgangspunkt dienen. Erstelle bei Bedarf getrennte Exportkopien, prüfe Hauptbild und Zuschnitt je Portal und stelle sicher, dass jedes Bild zum tatsächlich angebotenen Fahrzeug passt und genutzt werden darf."
+        }
+      ]
+    }
+  ]
+}

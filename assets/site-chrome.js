@@ -18,6 +18,56 @@
     } else { fn(); }
   }
 
+  /* ---------- Headlines: nie mitten im Wort umbrechen ----------------
+     Grosse Versal-Headlines duerfen nicht "GROSSFORM / AT" umbrechen. CSS
+     trennt Headlines nicht mehr automatisch (site-readability.css). Passt ein
+     einzelnes Wort trotzdem nicht in die Spalte, wird nur diese Headline
+     schrittweise verkleinert, bis es passt (maximal auf 55 %). Gemessen wird
+     erst nach dem Laden der Schriften und erneut bei Groessenaenderungen. */
+  (function () {
+    const selector = 'h1:not(.sr-only), h2, h3, .hero-title, .local-title, .pd-title, .hero-mr__title, .lp-display, .display';
+    function fit(el) {
+      if (el.dataset.fitSize) { el.style.fontSize = ''; el.style.maxWidth = ''; delete el.dataset.fitSize; }
+      if (!el.isConnected || el.offsetWidth === 0) return;
+      el.classList.add('mr-fit-measure');
+      const overflow = function () { return el.scrollWidth / Math.max(1, el.clientWidth); };
+      if (overflow() <= 1.002) { el.classList.remove('mr-fit-measure'); return; }
+      el.dataset.fitSize = '1';
+      const base = parseFloat(getComputedStyle(el).fontSize);
+      /* Maximalbreite in ch/em schrumpft mit der Schrift mit: dann hilft
+         Verkleinern nicht – stattdessen die Maximalbreite aufheben. */
+      const before = overflow();
+      el.style.fontSize = (base * 0.9).toFixed(2) + 'px';
+      if (overflow() >= before - 0.004) {
+        el.style.fontSize = '';
+        el.style.maxWidth = 'none';
+      }
+      let size = parseFloat(getComputedStyle(el).fontSize);
+      const min = base * 0.55;
+      let steps = 0;
+      while (overflow() > 1.002 && size > min && steps < 16) {
+        size *= 0.94;
+        el.style.fontSize = size.toFixed(2) + 'px';
+        steps++;
+      }
+      el.classList.remove('mr-fit-measure');
+    }
+    function fitAll() {
+      document.querySelectorAll(selector).forEach(fit);
+    }
+    window.mrFitHeadlines = fitAll;
+    let timer = 0;
+    function queue() {
+      clearTimeout(timer);
+      timer = setTimeout(fitAll, 120);
+    }
+    ready(function () {
+      fitAll();
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitAll);
+      window.addEventListener('resize', queue, { passive: true });
+    });
+  })();
+
   function parseSrcset(srcset) {
     if (!srcset) return [];
     return srcset
@@ -825,15 +875,21 @@
         form.addEventListener('submit', async function (e) {
           e.preventDefault();
           if (submit.disabled) return;
+          // Das Formular ist auf Name, E-Mail und Nachricht reduziert; fehlende
+          // Zusatzfelder (Leistung, Zeitraum, Nutzung, Telefon) liefern leer.
+          const field = function (name) {
+            const el = form.elements[name];
+            return el && typeof el.value === 'string' ? el.value.trim() : '';
+          };
           const data = {
-            name: form.elements['name'].value.trim(),
-            contact: form.elements['contact'].value.trim(),
-            projectType: form.elements['projectType'].value.trim(),
-            message: form.elements['message'].value.trim(),
-            project: form.elements['project'].value.trim(),
-            date: form.elements['date'].value.trim(),
-            use: form.elements['use'].value.trim(),
-            phone: form.elements['phone'].value.trim(),
+            name: field('name'),
+            contact: field('contact'),
+            projectType: field('projectType'),
+            message: field('message'),
+            project: field('project'),
+            date: field('date'),
+            use: field('use'),
+            phone: field('phone'),
             consent: !!(form.elements['consent'] && form.elements['consent'].checked)
           };
           const intent = pageIntent();
@@ -1074,6 +1130,13 @@
   window.mrHeroGate = {
     /* Günstige Checks ohne WebGL – dürfen sofort beim Seitenstart laufen. */
     staticReason: function(){
+      /* Seit 2026-11 Standard: die schweren Effekte (WebGL-Shader, Clip-Path-
+         Reveals, Linse) bleiben aus. Stattdessen laeuft die leichte Cine-Ebene
+         (siehe "Cine-Hero" unten). ?hero=shader bzw. localStorage
+         mrHeroMode=shader schaltet die alten Effekte zum Testen wieder ein. */
+      var override = '';
+      try { override = new URLSearchParams(location.search).get('hero') || localStorage.getItem('mrHeroMode') || ''; } catch (_) {}
+      if (!/^(shader|webgl|animated)$/i.test(override)) return 'lite';
       var mm = function(q){ return !!(window.matchMedia && window.matchMedia(q).matches); };
       var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
       if (mm('(prefers-reduced-motion: reduce)')) return 'reduced-motion';
@@ -1132,6 +1195,7 @@
   };
 })();
 
+/* (Cine-Hero-Overlay entfernt 2026-11: alle Heroes nutzen HeroMotion.astro) */
 /* ====== Hero-Linse: Licht-Ebene über den eigenen Heroes der Leistungsseiten ======
    Bildet die Linse des Startseiten-Shaders nach (Lichtkegel am Cursor, warmer Kern,
    Abdunklung nach außen, ruhige Drift ohne Maus) – ohne zweiten WebGL-Shader: zwei

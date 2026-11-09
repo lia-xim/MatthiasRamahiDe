@@ -1,4 +1,5 @@
 ---
+import HeroMotion from './HeroMotion.astro'
 import { tinaAttrs } from '../../lib/tinaFieldAttrs'
 
 type HeroSlide = {
@@ -42,23 +43,7 @@ const titleLineField = (index: number) => (index === 0 ? 'headlineLine1' : index
   style={`--hero-bg:url('${heroCssImage}');background-image:url('${heroCssImage}')`}
   {...tinaAttrs(firstSourceSlide, 'image')}
 >
-  <div class="hero-bg" aria-hidden="true" {...tinaAttrs(firstSourceSlide, 'image')}></div>
-  <img
-    class="hero-shader-preload"
-    data-hero-shader-preload
-    src={firstSlide.image}
-    alt=""
-    width="1"
-    height="1"
-    loading="lazy"
-    decoding="async"
-    fetchpriority="low"
-    aria-hidden="true"
-    {...tinaAttrs(firstSourceSlide, 'image')}
-  />
-  <canvas id="hero-shader" aria-hidden="true" data-imgs={heroImages.join(',')} data-slides={heroSlidesJson} {...tinaAttrs(firstSourceSlide, 'image')}></canvas>
-  <div class="hero-glow" aria-hidden="true"></div>
-  <div class="hero-aperture" aria-hidden="true"></div>
+  <HeroMotion variant="pan" slidesJson={heroSlidesJson} />
   <div class="hero-grid">
     <div class="hero-stage">
       <h1 class="sr-only">{accessibleHeading}</h1>
@@ -78,5 +63,4 @@ const titleLineField = (index: number) => (index === 0 ? 'headlineLine1' : index
       </div>
     </div>
   </div>
-  <div class="hero-cursor" id="hero-cursor" aria-hidden="true"><span class="ring"></span></div>
 </section>

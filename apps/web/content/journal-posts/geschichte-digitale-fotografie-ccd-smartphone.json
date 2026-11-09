@@ -1,0 +1,205 @@
+{
+  "title": "Geschichte der digitalen Fotografie: Vom CCD-Sensor zur Smartphonekamera",
+  "slug": "geschichte-digitale-fotografie-ccd-smartphone",
+  "category": "process",
+  "tags": [
+    "Fotografiegeschichte",
+    "Digitale Fotografie",
+    "CCD",
+    "CMOS",
+    "Smartphonekamera"
+  ],
+  "publishedAt": "2027-11-30T08:00:00.000Z",
+  "excerpt": "Wie wurde aus einem lichtempfindlichen CCD-Bauteil die Kamera im Smartphone? Die Entwicklung führt von Bell Labs und Kodaks frühem Digitalkameraprototyp über professionelle Digitalsysteme bis zu CMOS-Sensoren und rechnergestützter Bildverarbeitung.",
+  "coverImage": "/assets/optimized/assets-portfolio-wettberwerb-foto5-wunder-der-natur2-1920.webp",
+  "coverAlt": "Felsiger Uferstreifen mit einem Baum, ruhigem See und schneebedeckten Bergen unter hellem Himmel.",
+  "readingTime": 9,
+  "seo": {
+    "title": "Geschichte der digitalen Fotografie: CCD bis Smartphone",
+    "description": "Von der CCD-Erfindung 1969 über Kodaks Digitalkamera von 1975 bis zu CMOS und Smartphone: die wichtigsten technischen Etappen verständlich erklärt.",
+    "focusKeyword": "Geschichte der Digitalfotografie",
+    "secondaryKeywords": [
+      "Geschichte der digitalen Fotografie",
+      "CCD Sensor Fotografie Geschichte",
+      "CMOS Sensor Smartphonekamera",
+      "erste Digitalkamera 1975",
+      "Entwicklung der Smartphonekamera",
+      "CCD und CMOS Unterschied Fotografie"
+    ],
+    "searchIntent": "Kostenlose qualitative deutschsprachige Suchstichproben vom 07.11.2026 zu „Geschichte der Digitalfotografie“ und „Geschichte der digitalen Fotografie“ zeigen eigenständige Zeitstrahl- und Kamerageschichte-Seiten. Ergänzende Suchanfragen zu CCD, CMOS und Handyfotografie führen zu technischen Erklärungen und Hersteller- oder Museumsquellen. Daraus ergibt sich eine Informationsaufgabe: die Entwicklung des digitalen Bildsensors und ihre Folgen für Kamera und Smartphone verständlich verbinden. Der vorhandene Beitrag zu Paul Lowes „Die Geschichte der Fotografie: Von der Camera obscura bis Instagram“ bespricht ein Buch und bietet einen breiten chronologischen Überblick; er erklärt diese technische Entwicklung nicht im Detail. Es liegen für diesen Beitrag keine aktuellen Suchvolumina, GSC-Messwerte oder gemessenen Crawl-Foundry-/AI-Fanout-Daten vor. „CCD und CMOS Unterschied“, „Wie wurde die Kamera im Handy möglich?“ und „Was verändert rechnergestützte Fotografie?“ sind redaktionelle Fanout-Hypothesen, keine gemessenen Suchanfragen.",
+    "internalLinkAnchors": [
+      "Paul Lowes Überblick zur Geschichte der Fotografie",
+      "Auto mit dem Smartphone fotografieren",
+      "Automobilfotografie",
+      "Fotografie"
+    ],
+    "canonicalUrl": "https://matthiasramahi.de/blog-geschichte-digitale-fotografie-ccd-smartphone.html",
+    "legacyUrl": "blog-geschichte-digitale-fotografie-ccd-smartphone.html",
+    "noIndex": false,
+    "ogImage": "/assets/optimized/assets-portfolio-wettberwerb-foto5-wunder-der-natur2-1920.webp"
+  },
+  "legacy": {
+    "sourceFile": "blog-geschichte-digitale-fotografie-ccd-smartphone.html",
+    "sourceUrl": "https://matthiasramahi.de/blog-geschichte-digitale-fotografie-ccd-smartphone.html",
+    "migrationStatus": "new",
+    "renderSource": "structured-astro"
+  },
+  "status": "scheduled",
+  "createdAt": "2026-11-07T00:00:00Z",
+  "updatedAt": "2027-11-30T08:00:00.000Z",
+  "relatedPages": [
+    {
+      "label": "Paul Lowes Überblick zur Geschichte der Fotografie",
+      "href": "/blog-geschichte-der-fotografie-camera-obscura-bis-instagram.html",
+      "seoPurpose": "related-editorial",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Auto mit dem Smartphone fotografieren",
+      "href": "/blog-auto-mit-smartphone-fotografieren.html",
+      "seoPurpose": "related-editorial",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Automobilfotografie",
+      "href": "/automobil-fotografie.html",
+      "seoPurpose": "service-pillar",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fotografie",
+      "href": "/fotografie.html",
+      "seoPurpose": "topic-hub",
+      "rel": "follow",
+      "openInNewTab": false
+    }
+  ],
+  "blocks": [
+    {
+      "_template": "textBlock",
+      "headline": "Vom CCD-Sensor zur Kamera im Alltag",
+      "body": "Die digitale Fotografie entstand in mehreren Etappen. 1969 entwarfen die Bell-Labs-Forscher Willard Boyle und George Smith das CCD-Prinzip. 1975 baute Kodak-Entwickler Steven Sasson einen Prototyp, der ein digitalisiertes Bild auf Magnetband speicherte. Kodak nennt 1986 den ersten praktischen CCD-Bildsensor mit einer Megapixel-Auflösung; 1991 folgte ein professionelles Digitalsystem für Fotojournalisten, 1995 eine Point-and-Shoot-Kamera für Verbraucher. Das CMOS-Aktivpixelsystem von Eric Fossums JPL-Team erleichterte später kompakte, stromsparende Kameramodule. Im Sharp J-SH04 verband 2000 ein Kamerahandy Aufnahme und Versand per E-Mail. Heute können Smartphone-Pipelines mehrere Aufnahmen zu einem Bild kombinieren.\n\nDiese Schritte waren kein einfacher Wettlauf, bei dem ein Sensortyp den anderen sofort ersetzte. Entscheidend waren Sensorentwurf, Kameraelektronik, Speicherung und zunehmend auch Software. Der technische Strang ergänzt Paul Lowes breiten Überblick [„Die Geschichte der Fotografie: Von der Camera obscura bis Instagram“](/blog-geschichte-der-fotografie-camera-obscura-bis-instagram.html). Hier geht es enger darum, wie ein Sensor Lichtsignale in ein speicherbares Bild übersetzt und welche weiteren Bausteine daraus eine alltagstaugliche Kamera machten."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Was ein Bildsensor mit Licht macht",
+      "body": "Ein Bildsensor ist ein Raster lichtempfindlicher Elemente. Trifft Licht auf ein Pixel, entstehen elektrische Ladungen. Die Kamera liest diese Signale aus, verstärkt sie und wandelt sie über einen Analog-Digital-Wandler in Zahlen um. Erst durch die weitere Verarbeitung werden daraus Helligkeits- und Farbwerte für ein Bild. Anders als beim Film entsteht die Aufnahme damit nicht durch eine chemische Reaktion in einer lichtempfindlichen Schicht.\n\nBei einem CCD, einem „charge-coupled device“, werden die angesammelten Ladungen schrittweise über den Sensor weitergegeben und am Rand ausgelesen. [NASA beschreibt diesen Transfer Pixel für Pixel](https://spinoff.nasa.gov/Spinoff2017/cg_1.html); die [Bell-Labs-Geschichte des CCD](https://www.nokia.com/bell-labs/about/history/innovation-stories/charge-coupled-device/) erklärt, wie aus lichtempfindlichem Silizium ein Bildsensor wurde. Zum vollständigen Kamerasystem gehören auch Objektiv, Belichtung, Ausleseelektronik, Digitalisierung, Speicherung und Bilddarstellung."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "1969: Das CCD wurde zunächst als Bauteil für Speicher gedacht",
+      "body": "Boyle und Smith entwarfen 1969 bei Bell Labs das CCD-Prinzip als elektronische Speichertechnik. Wie [Nokia Bell Labs darstellt](https://www.nokia.com/bell-labs/about/history/innovation-stories/charge-coupled-device/), sollte das Bauteil Ladungen speichern und weitergeben; die Lichtempfindlichkeit des Siliziums machte später auch eine elektronische Bilderfassung möglich. Michael Tompsett entwickelte das CCD in den 1970er-Jahren gezielt zum Bildsensor weiter.\n\n1969 markiert den Entwurf des CCD-Prinzips; fertige Digitalkameras für den Alltag kamen später. Zwischen einer funktionierenden Sensoridee und einem handlichen Fotoapparat lagen weitere Fragen: Wie viele Bildpunkte lassen sich zuverlässig erfassen? Wie wird das Signal in ein speicherbares Bild umgewandelt? Wie werden Kamera, Stromversorgung und Speichermedium praktisch genug für einen bestimmten Einsatz?"
+    },
+    {
+      "_template": "textBlock",
+      "headline": "1975: Kodaks Prototyp machte das digitale Einzelbild greifbar",
+      "body": "[Kodak datiert seine erste Digitalkamera auf 1975](https://www.kodak.com/en/company/page/photography-history/). Das [Schweizer Kameramuseum beschreibt Steven Sassons Versuchsaufbau genauer](https://www.cameramuseum.ch/en/discover/permanent-exhibition/the-digital-revolution/1975-the-invention/): Eine Kodak-Kamera, ein Fairchild-CCD-Sensor und ein Motorola-Wandler bildeten zusammen das System. Das Schwarzweißbild hatte 100 × 100 Bildpunkte. Die Speicherung auf einer Magnetbandkassette dauerte 23 Sekunden; ebenso lange dauerte das Auslesen und Übertragen zum Fernseher.\n\nDas Museum erwähnt auch frühere CCD-Kameraprojekte von Texas Instruments und Fairchild, bei denen die Bilder noch analog verarbeitet wurden. Deshalb ist die Bezeichnung „erste Digitalkamera“ definitionsabhängig. Hier meint sie Sassons Prototyp, der ein elektronisches Standbild digitalisierte und speicherte – keine Kamera für den Fotoalltag. Kodak folgt derselben Einordnung; andere Begriffe wie „früheste elektronische Kamera“ können weitere, anders aufgebaute Systeme einschließen."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Von der Demonstration zur professionellen Digitalkamera",
+      "body": "Ein Prototyp mit 10.000 Bildpunkten war noch weit von den Anforderungen an Presse- oder Kundenbilder entfernt. Sensoren mussten empfindlicher und höher auflösend werden; außerdem brauchten Fotografen ein verlässliches Verfahren für Bildspeicherung, Übertragung und Ausgabe. [Kodak nennt 1986 als Jahr des ersten praxistauglichen CCD-Megapixelsensors](https://www.kodak.com/en/company/page/photography-history/). 1991 folgte das Kodak Professional Digital Camera System: Eine Nikon F-3 wurde mit einem Kodak-Sensor mit 1,3 Megapixeln für Fotojournalisten ausgerüstet.\n\nSolche Systeme waren zunächst Spezialtechnik. Mit der steigenden Auflösung wurde auch der Arbeitsablauf wichtig. Bilder ließen sich ohne Entwicklung eines Films auslesen und weitergeben, sofern passende Speicher- und Computersysteme verfügbar waren. Für private Käufer führte Kodak 1995 die DC40 als Point-and-Shoot-Digitalkamera ein. Daran lässt sich die Verschiebung erkennen: vom Labor- und Pressewerkzeug zu einem Gerät, das für den alltäglichen Gebrauch verkauft wurde."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "CMOS: weniger Energie und kompaktere Kameramodule",
+      "body": "CCD und CMOS sind unterschiedliche Bauweisen von Bildsensoren. CMOS steht für „complementary metal-oxide-semiconductor“. Beim CCD werden Ladungen gesammelt und über den Sensor weitergeschoben; CMOS-Active-Pixel-Sensoren integrieren Teile der Ausleseschaltung näher an den Pixeln. Dadurch lassen sich Kameraelektronik kompakter aufbauen und Energie sparen. Frühe CMOS-Bildsensoren litten laut NASA unter Signalrauschen. In den 1990er-Jahren entwickelte Eric Fossum am Jet Propulsion Laboratory einen CMOS-Aktivpixelsensor mit verbesserter Rauschunterdrückung; 1995 gründete er mit Kollegen Photobit, um die Technologie weiterzuentwickeln und zu lizenzieren. NASA beschreibt außerdem die hohe Bildqualität damaliger CCDs und ihren im Vergleich höheren Strombedarf. Der Sensortyp allein bestimmt dennoch nicht die Bildqualität: Auch Sensorentwurf, Lichtempfindlichkeit, Auslesegeschwindigkeit, Bildrauschen und Einsatz sind entscheidend.\n\nEin konkretes Beispiel ist das Sharp J-SH04 aus dem Jahr 2000. Sharp beschreibt in seiner [Produktgeschichte zum J-SH04](https://global.sharp/corporate/info/his/only_one/i_c/subwin/i_c31.html) ein integriertes Kameramodul mit 110.000-Pixel-CMOS-Sensor, dessen Bilder per E-Mail verschickt werden konnten. Im [englischen Unternehmensgeschichtskapitel](https://global.sharp/corporate/img/info/his/h_company/pdf_en/chapter09.pdf) nennt Sharp den geringeren Energiebedarf und die reduzierte Bauhöhe des Moduls. Diese Kombination war für ein Telefon wichtig: Die Kamera musste nicht nur Bilder aufnehmen, sondern in ein dünnes, akkubetriebenes Kommunikationsgerät passen."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Die Handykamera veränderte, wann und wo fotografiert wird",
+      "body": "Ein eingebautes Kameramodul senkte die Hürde für spontane Aufnahmen. Beim J-SH04 war das Verschicken des Fotos Teil der Produktidee. Die Aufnahme konnte unmittelbar in eine Nachricht übergehen. Damit änderte sich die Rolle der Kamera im Alltag: Das Telefon war zugleich Aufnahmegerät, kleiner Bildschirm und Verbindung zum Empfänger. Die Entwicklung hing also nicht nur an einem Bildsensor, sondern auch an Mobilfunk, Speicher, Display und einer Bedienoberfläche, die das Betrachten und Versenden unterstützte.\n\nAls Apple das iPhone 2007 vorstellte, nannte die [Pressemitteilung](https://www.apple.com/newsroom/2007/01/09Apple-Reinvents-the-Phone-with-iPhone/) eine 2-Megapixel-Kamera, eine Fotoverwaltung und das Einfügen von Bildern in E-Mails. Kamerahandys gab es bereits vor dem iPhone. Apple bündelte 2007 Kamera, Bildschirm, Software und Internetzugang in einem späteren Integrationsschritt. Für eine praktische Gegenüberstellung mit heutigen Motiven eignet sich der Beitrag [Auto mit dem Smartphone fotografieren](/blog-auto-mit-smartphone-fotografieren.html)."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Mehrbildverarbeitung in Smartphonekameras",
+      "body": "Eine [2016 veröffentlichte Forschungsarbeit von Google Research](https://research.google/pubs/burst-photography-for-high-dynamic-range-and-low-light-imaging-on-mobile-cameras/) beschreibt zwei Grenzen kleiner Mobilkameras: Kleine Blendenöffnungen erfassen bei wenig Licht weniger Photonen, kleine Pixel speichern weniger Elektronen und begrenzen so den Dynamikumfang. Die Arbeit zeigt zugleich eine konkrete rechnergestützte Pipeline: Mehrere Aufnahmen werden ausgerichtet und kombiniert, um Rauschen zu mindern und den Dynamikumfang zu erweitern. Geräte und Aufnahmemodi setzen Bildverarbeitung unterschiedlich um.\n\nDamit ist ein heutiges Foto nicht zwingend die direkte Wiedergabe eines einzigen Sensorbildes. Software kann Belichtung, Schärfung, Rauschminderung und Farbwiedergabe weiterverarbeiten. Das Ergebnis hängt deshalb von Optik und Sensor, aber auch von Aufnahmemodus und Bildpipeline ab. Beim Fotografieren eines Autos bleiben Lichtführung und Umgebung dennoch entscheidend: Glatte Lackflächen spiegeln, was um das Fahrzeug herum steht. Auch mit Sensor und Algorithmus bleiben Reflexkontrolle und Lichtführung Teil der Aufnahme."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Ein kleiner Vergleich am sicher abgestellten Auto",
+      "body": "Halte Ausschnitt und Licht möglichst gleich und fotografiere dasselbe geparkte Auto mit einem Smartphone einmal im normalen Fotomodus und einmal im HDR- oder Nachtmodus, sofern dein Gerät diese Modi anbietet. Vergleiche helle Reflexe auf Lack und Scheiben, Rauschen in dunklen Flächen und mögliche Doppelkonturen an bewegten Personen oder Spiegelungen. Speichere beide Originale.\n\nDer Versuch zeigt Unterschiede zwischen den kompletten Aufnahme-Pipelines. Er isoliert nicht den Sensor: Objektiv, Belichtung, Sensor und Software ändern sich gemeinsam. So wird sichtbar, warum ein heutiges Smartphonefoto nicht einfach die direkte Wiedergabe eines einzelnen Sensorbildes ist."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Was sich für Fotografen wirklich verschoben hat",
+      "body": "Die Entwicklung vom CCD zur Smartphonekamera lässt sich als Wechsel von knapp verfügbarer Elektronik zu ständig verfügbarer Bildproduktion lesen. Diese Einordnung beschreibt einen Verlauf mit mehreren entscheidenden Entwicklungsschritten. Digitale Bilder können direkt geprüft, kopiert und weiterbearbeitet werden. Im Smartphone kommen Aufnahme, Verarbeitung und Versand zusammen. Zugleich werden Entscheidungen, die früher stärker in Entwicklung und Labor lagen, zum Teil in die Kamera-Software verlagert.\n\nFür die Fahrzeugfotografie bleibt die Sensorfrage nur ein Teil der Aufnahme. Ein Smartphone eignet sich für schnelle Dokumentation und viele unkomplizierte Bilder. Eine geplante Serie verlangt zusätzlich eine bewusste Perspektive, nachvollziehbares Licht und kontrollierte Spiegelungen. Wer eine Bildfolge für Verkauf, Marke oder Portfolio benötigt, findet den passenden Überblick auf der Seite [Automobilfotografie](/automobil-fotografie.html); die übrigen fotografischen Schwerpunkte stehen im [Fotografie-Hub](/fotografie.html)."
+    },
+    {
+      "_template": "faqBlock",
+      "headline": "Häufige Fragen zur digitalen Fotografie",
+      "items": [
+        {
+          "question": "Wann wurde der CCD-Sensor erfunden?",
+          "answer": "Boyle und Smith entwarfen das CCD-Prinzip 1969 bei Bell Labs. Das Sensorprinzip war ein Baustein; für eine Kamera brauchte es weitere Komponenten zur Aufnahme, Digitalisierung und Speicherung."
+        },
+        {
+          "question": "War Kodaks Kamera von 1975 schon eine Digitalkamera?",
+          "answer": "Kodak führt den Prototyp von 1975 als erste Digitalkamera. Er nahm ein digitales Schwarzweißbild mit 100 × 100 Bildpunkten auf und speicherte es auf einer Magnetbandkassette. Der Prototyp war ein Versuchsaufbau; alltagstaugliche Kameras folgten später."
+        },
+        {
+          "question": "Was ist der Unterschied zwischen CCD und CMOS?",
+          "answer": "Beide sind elektronische Bildsensoren. Ein CCD transportiert die angesammelten Ladungen zur Auslesung weiter. Bei CMOS-Active-Pixel-Sensoren sind Ausleseschaltungen enger mit den Pixeln integriert; kompaktere Bauformen und geringerer Energiebedarf machten sie für kleine mobile Kameras attraktiv. Die Bezeichnung allein sagt noch nichts über die Bildqualität eines konkreten Sensors aus."
+        },
+        {
+          "question": "Warum verarbeitet ein Smartphone mehrere Aufnahmen?",
+          "answer": "Eine kurze Bildserie kann ausgerichtet und kombiniert werden, um etwa Bildrauschen zu verringern oder den Dynamikumfang zu erweitern. Welche Schritte stattfinden, hängt von Gerät, App und Aufnahmemodus ab."
+        }
+      ]
+    },
+    {
+      "_template": "linkList",
+      "headline": "Quellen und technische Einordnung",
+      "links": [
+        {
+          "label": "Nokia Bell Labs: Entstehung und Entwicklung des CCD",
+          "href": "https://www.nokia.com/bell-labs/about/history/innovation-stories/charge-coupled-device/",
+          "description": "Historische Bell-Labs-Einordnung: Boyle und Smith entwarfen das CCD 1969; Tompsett entwickelte es in den 1970er-Jahren für Bildaufnahmen. Abgerufen am 8. November 2026."
+        },
+        {
+          "label": "Kodak: Meilensteine der digitalen Fotografie",
+          "href": "https://www.kodak.com/en/company/page/photography-history/",
+          "description": "Kodaks Herstellerchronik zu Prototyp, CCD-Megapixelsensor und Digitalsystemen; der Zeitstrahl wurde am 8. November 2026 geprüft."
+        },
+        {
+          "label": "Schweizer Kameramuseum: Sassons Prototyp von 1975",
+          "href": "https://www.cameramuseum.ch/en/discover/permanent-exhibition/the-digital-revolution/1975-the-invention/",
+          "description": "Museumsdarstellung zu Sassons 1975er-Prototyp, früheren analog verarbeiteten CCD-Kameraprojekten und den Bild-/Speicherdaten. Abgerufen am 8. November 2026."
+        },
+        {
+          "label": "NASA Spinoff: CMOS-Sensoren und Telefonkameras",
+          "href": "https://spinoff.nasa.gov/Spinoff2017/cg_1.html",
+          "description": "NASA-Spinoff-Artikel, ursprünglich 2017 veröffentlicht: JPL-Entwicklung des CMOS-Aktivpixelsensors, frühe Rauschprobleme und Technologietransfer."
+        },
+        {
+          "label": "NASA Science: CCD und CMOS im JPL-Entwicklungsweg (2026)",
+          "href": "https://science.nasa.gov/science-research/science-enabling-technology/technology-highlights/technology-originally-developed-for-space-missions-now-integral-to-everyday-life/",
+          "description": "NASA-Beitrag vom 24. Februar 2026 zu Fossums JPL-Arbeit, Ladungstransfer im CCD und Ausleseverstärkern im CMOS-Aktivpixel."
+        },
+        {
+          "label": "Sharp Global: J-SH04-Kamerahandy (2000)",
+          "href": "https://global.sharp/corporate/info/his/only_one/i_c/subwin/i_c31.html",
+          "description": "Sharp-Unternehmensgeschichte zum J-SH04: Verkauf ab 2000, integrierter CMOS-Kamerasensor und Versand von Bildern per E-Mail; abgerufen am 8. November 2026."
+        },
+        {
+          "label": "Sharp: J-SH04-Kameramodul, Kapitel 9 (englisch)",
+          "href": "https://global.sharp/corporate/img/info/his/h_company/pdf_en/chapter09.pdf",
+          "description": "Sharp-Firmenchronik für 1998–2003: Sensordaten, integrierte Linse, Energiebedarf und verringerte Bauhöhe des J-SH04-Kameramoduls."
+        },
+        {
+          "label": "Apple Newsroom: iPhone-Ankündigung von 2007",
+          "href": "https://www.apple.com/newsroom/2007/01/09Apple-Reinvents-the-Phone-with-iPhone/",
+          "description": "Zeitgenössische Apple-Pressemitteilung vom 9. Januar 2007 zu Kamera, Fotoverwaltung und E-Mail-Funktion des iPhones."
+        },
+        {
+          "label": "Google Research: Mehrbildverarbeitung für Mobilkameras",
+          "href": "https://research.google/pubs/burst-photography-for-high-dynamic-range-and-low-light-imaging-on-mobile-cameras/",
+          "description": "Forschungsarbeit für SIGGRAPH Asia 2016: ausgerichtete Bildserien zur Verringerung von Rauschen und Erweiterung des Dynamikumfangs in Mobilkameras."
+        }
+      ]
+    }
+  ]
+}

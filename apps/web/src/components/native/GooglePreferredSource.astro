@@ -1,0 +1,55 @@
+---
+// "Bei Google als bevorzugte Quelle festlegen" (Google Preferred Sources).
+// Bewusst der Deeplink aus der Google-Doku statt des JS-Buttons: kein
+// Drittanbieter-Skript beim Seitenaufruf (Datenschutz, CSP), volle Gestaltung.
+// https://developers.google.com/search/docs/appearance/preferred-sources
+type Props = { theme?: 'light' | 'dark'; class?: string }
+const { theme = 'light', class: className } = Astro.props as Props
+const domain = 'matthiasramahi.de'
+const href = `https://www.google.com/preferences/source?q=${domain}`
+---
+<aside class:list={['gps', `gps--${theme}`, className]} aria-label="Bei Google als bevorzugte Quelle festlegen">
+  <div class="gps__mark" aria-hidden="true">
+    <svg viewBox="0 0 48 48" width="40" height="40" focusable="false">
+      <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+      <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+      <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+      <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+    </svg>
+  </div>
+  <div class="gps__body">
+    <p class="gps__title">Matthias Ramahi bei Google bevorzugt anzeigen</p>
+    <p class="gps__text">Legen Sie {domain} in Ihrem Google-Konto als bevorzugte Quelle fest. Dann zeigt Google Artikel aus diesem Journal bei passenden Suchen häufiger an. Freiwillig und jederzeit widerrufbar.</p>
+    <a class="gps__btn" href={href} target="_blank" rel="noopener" data-cta-role="google-preferred-source">Als bevorzugte Quelle festlegen <span aria-hidden="true">↗</span></a>
+  </div>
+</aside>
+<style is:global>
+  .gps{
+    display:grid; grid-template-columns:clamp(88px,9vw,140px) minmax(0,1fr); box-sizing:border-box;
+    width:min(1180px, calc(100% - 2 * clamp(16px,5vw,84px))); margin:clamp(48px,5vw,80px) auto 0;
+    border:1px solid var(--gps-line); background:var(--gps-bg); color:var(--gps-fg);
+    font-family:'MR Sans','MR Sans Fallback',Arial,system-ui,sans-serif;
+  }
+  .gps--light{ --gps-bg:#e9eae4; --gps-fg:#0a0c11; --gps-muted:rgba(10,12,17,.66); --gps-line:rgba(10,12,17,.12); --gps-side:rgba(10,12,17,.04); }
+  .gps--dark{ --gps-bg:#0c0e12; --gps-fg:#f3f5ef; --gps-muted:rgba(243,245,239,.68); --gps-line:rgba(243,245,239,.14); --gps-side:rgba(243,245,239,.03); }
+  .gps__mark{
+    display:grid; place-items:center; border-right:1px solid var(--gps-line);
+    background:repeating-linear-gradient(135deg, var(--gps-side) 0 2px, transparent 2px 9px);
+  }
+  .gps__body{ padding:clamp(22px,2.6vw,36px) clamp(20px,3vw,44px); min-width:0; }
+  body .gps .gps__title{ margin:0; font-weight:700; font-stretch:87.5%; font-size:clamp(19px,1.5vw,24px) !important; line-height:1.15; }
+  body .gps .gps__text{ margin:10px 0 0; max-width:64ch; color:var(--gps-muted); font-size:clamp(.9375rem,.9rem + .12vw,1.0625rem) !important; line-height:1.55; }
+  .gps__btn{
+    display:inline-flex; align-items:center; gap:10px; min-height:50px; margin-top:20px; padding:0 24px;
+    border:1px solid currentColor; color:var(--gps-fg); text-decoration:none;
+    font:600 12px/1 'MR Mono','MR Mono Fallback',ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase;
+    transition:background-color .25s ease, color .25s ease;
+  }
+  .gps__btn:hover{ background:var(--gps-fg); color:var(--gps-bg); }
+  .gps__btn:focus-visible{ outline:2px solid #cf392e; outline-offset:3px; }
+  @media (max-width:620px){
+    .gps{ grid-template-columns:1fr; }
+    .gps__mark{ border-right:0; border-bottom:1px solid var(--gps-line); padding:18px; justify-items:start; }
+    .gps__btn{ width:100%; justify-content:center; }
+  }
+</style>

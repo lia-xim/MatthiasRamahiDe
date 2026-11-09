@@ -1,0 +1,268 @@
+---
+// Leichte Hero-Bildbuehne (2026-11). Varianten:
+//   pan     – "Kamerafahrt" (Standard fuer alle Heroes): jedes Bild gleitet
+//             seitlich wie ein Mitzieher, das naechste schiebt sich von rechts
+//             herein. Mit nur einem Bild driftet es dauerhaft langsam hin und her.
+//   develop – "Dunkelkammer" (Oldtimer): jedes Bild erscheint warm-monochrom
+//             und entwickelt sich zu Farbe, mit weichem Lichteinfall.
+//   contact – "Kontaktbogen": Ueberblendung + Zoom + Filmstreifen (derzeit
+//             nicht eingesetzt, bleibt als Option).
+// Gegen das fruehere Ruckeln: Das erste Bild steht serverseitig im HTML in
+// seinem Endzustand; nichts wird nachtraeglich darueber gelegt. Animiert
+// werden nur opacity und transform (Compositor). Folgebilder laden erst nach
+// dem load-Event, der Wechsel pausiert ausserhalb des Sichtbereichs.
+//
+// Slides kommen entweder als `slides` oder als `slidesJson` (das bisherige
+// Datenformat der Shader-Heroes: image, titleLines, lead, primary*/secondary*).
+// Haben die Slides eigene Texte, wechseln Titel (#hero-title), Lead
+// (#hero-lead) und Buttons ([data-hero-primary]/[data-hero-secondary]) mit.
+type Slide = { src: string; mobile?: string; srcset?: string }
+type SlideText = {
+  titleLines?: string[]
+  lead?: string
+  primaryLabel?: string
+  primaryHref?: string
+  secondaryLabel?: string
+  secondaryHref?: string
+}
+type Props = {
+  variant: 'contact' | 'pan' | 'develop'
+  slides?: Slide[]
+  slidesJson?: string
+  seconds?: number
+}
+const { variant, slides: givenSlides = [], slidesJson, seconds = 7 } = Astro.props as Props
+
+let parsed: Array<Record<string, unknown>> = []
+if (slidesJson) {
+  try {
+    const value = JSON.parse(slidesJson)
+    if (Array.isArray(value)) parsed = value
+  } catch {
+    parsed = []
+  }
+}
+const fromJson: Array<Slide & { text?: SlideText }> = parsed
+  .filter((entry) => typeof entry?.image === 'string' && entry.image)
+  .map((entry) => ({
+    src: entry.image as string,
+    text: {
+      titleLines: Array.isArray(entry.titleLines) ? (entry.titleLines as string[]) : undefined,
+      lead: typeof entry.lead === 'string' ? entry.lead : undefined,
+      primaryLabel: typeof entry.primaryLabel === 'string' ? entry.primaryLabel : undefined,
+      primaryHref: typeof entry.primaryHref === 'string' ? entry.primaryHref : undefined,
+      secondaryLabel: typeof entry.secondaryLabel === 'string' ? entry.secondaryLabel : undefined,
+      secondaryHref: typeof entry.secondaryHref === 'string' ? entry.secondaryHref : undefined,
+    },
+  }))
+const seen = new Set<string>()
+const slides = [...givenSlides, ...fromJson]
+  .filter((slide) => {
+    if (!slide?.src || seen.has(slide.src)) return false
+    seen.add(slide.src)
+    return true
+  })
+  .slice(0, 8) as Array<Slide & { text?: SlideText }>
+// Fuer die 2026-11 aufbereiteten Bildserien liegt neben -1920/-2560 immer eine
+// -960-Variante: die bekommen Handys automatisch.
+// Pfade bewusst ausgeschrieben: tools/sync-public-assets.mjs liefert nur
+// Dateien aus, die woertlich im Quelltext stehen.
+const mobileVariants: Record<string, string> = {
+  '/assets/optimized/automobil-alpina-b8-front-1920.webp': '/assets/optimized/automobil-alpina-b8-front-960.webp',
+  '/assets/optimized/automobil-alpina-b8-medienhafen-1920.webp': '/assets/optimized/automobil-alpina-b8-medienhafen-960.webp',
+  '/assets/optimized/oldtimer-mercedes-w196-dreiviertel-1920.webp': '/assets/optimized/oldtimer-mercedes-w196-dreiviertel-960.webp',
+  '/assets/optimized/architektur-wien-staatsoper-nacht-1920.webp': '/assets/optimized/architektur-wien-staatsoper-nacht-960.webp',
+  '/assets/optimized/architektur-wien-staatsoper-tram-1920.webp': '/assets/optimized/architektur-wien-staatsoper-tram-960.webp',
+  '/assets/optimized/architektur-wien-parlament-1920.webp': '/assets/optimized/architektur-wien-parlament-960.webp',
+}
+const mobileFor = (src: string) => mobileVariants[src.split('?')[0]]
+for (const slide of slides) {
+  if (!slide.mobile && !slide.srcset) slide.mobile = mobileFor(slide.src)
+}
+const texts = slides.map((slide) => slide.text || {})
+const hasTexts = slides.length > 1 && texts.some((text, index) => index > 0 && text.titleLines?.length)
+const single = slides.length === 1
+const first = slides[0]
+---
+{first && (
+  <>
+    <div
+      class={`hm hm--${variant}`}
+      data-hm
+      data-hm-seconds={seconds}
+      data-hm-single={single ? '' : undefined}
+      data-hm-texts={hasTexts ? JSON.stringify(texts) : undefined}
+      style={`--hm-d:${seconds}s`}
+      aria-hidden="true"
+    >
+      {slides.map((slide, index) => (
+        <div class:list={['hm-slide', { 'is-active': index === 0 }]}>
+          {index === 0 ? (
+            <picture>
+              {slide.mobile && !slide.srcset && <source media="(max-width: 900px)" srcset={slide.mobile} />}
+              <img class="hm-img" src={slide.src} srcset={slide.srcset} sizes={slide.srcset ? '100vw' : undefined} alt="" decoding="async" fetchpriority="high" data-hm-loaded="1" />
+            </picture>
+          ) : (
+            <img class="hm-img" alt="" decoding="async" data-hm-src={slide.src} data-hm-mobile={slide.mobile || slide.src} data-hm-srcset={slide.srcset} />
+          )}
+          {variant === 'develop' && (
+            index === 0 ? (
+              <picture>
+                {slide.mobile && !slide.srcset && <source media="(max-width: 900px)" srcset={slide.mobile} />}
+                <img class="hm-img hm-tone" src={slide.src} srcset={slide.srcset} sizes={slide.srcset ? '100vw' : undefined} alt="" decoding="async" data-hm-loaded="1" />
+              </picture>
+            ) : (
+              <img class="hm-img hm-tone" alt="" decoding="async" data-hm-src={slide.src} data-hm-mobile={slide.mobile || slide.src} data-hm-srcset={slide.srcset} />
+            )
+          )}
+        </div>
+      ))}
+      {variant === 'develop' && <div class="hm-leak"></div>}
+      {variant === 'pan' && !single && <div class="hm-speed"></div>}
+    </div>
+    {variant === 'contact' && slides.length > 1 && (
+      <div class="hm-strip" data-hm-strip>
+        <span class="hm-count"><b data-hm-current>01</b> / {String(slides.length).padStart(2, '0')}</span>
+        <div class="hm-thumbs">
+          {slides.map((slide, index) => (
+            <button type="button" class:list={['hm-thumb', { 'is-active': index === 0 }]} data-hm-go={index} aria-label={`Bild ${index + 1} zeigen`}>
+              <img src={slide.mobile || slide.src} alt="" loading="lazy" decoding="async" />
+              <i aria-hidden="true"></i>
+            </button>
+          ))}
+        </div>
+      </div>
+    )}
+  </>
+)}
+<script is:inline>
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var small = window.matchMedia && window.matchMedia('(max-width: 900px)').matches;
+  document.querySelectorAll('[data-hm]:not([data-hm-ready])').forEach(function (root) {
+    root.setAttribute('data-hm-ready', '');
+    var slides = Array.prototype.slice.call(root.querySelectorAll('.hm-slide'));
+    var hero = root.closest('section') || root.parentElement;
+    var strip = hero && hero.querySelector('[data-hm-strip]');
+    var thumbs = strip ? Array.prototype.slice.call(strip.querySelectorAll('[data-hm-go]')) : [];
+    var counter = strip && strip.querySelector('[data-hm-current]');
+    var texts = null;
+    try { texts = JSON.parse(root.getAttribute('data-hm-texts') || 'null'); } catch (_) { texts = null; }
+    if (slides.length < 2) return;
+    if (reduce) { if (strip) strip.hidden = true; return; }
+    var ms = (Number(root.getAttribute('data-hm-seconds')) || 7) * 1000;
+    var index = 0, timer = 0, busy = false, inView = true, started = false;
+
+    var title = hero && hero.querySelector('#hero-title');
+    var lead = hero && hero.querySelector('#hero-lead');
+    var primary = hero && hero.querySelector('[data-hero-primary]');
+    var secondary = hero && hero.querySelector('[data-hero-secondary]');
+    function cta(el, label, href) {
+      if (!el) return;
+      if (label && href) { el.hidden = false; el.textContent = label; el.setAttribute('href', href); }
+      else el.hidden = true;
+    }
+    function swapText(i) {
+      var text = texts && texts[i];
+      if (!text || !title || !text.titleLines || !text.titleLines.length) return;
+      title.classList.remove('is-in');
+      title.classList.add('is-out');
+      if (lead) lead.style.opacity = '0';
+      setTimeout(function () {
+        title.classList.add('no-anim');
+        title.classList.remove('is-out');
+        title.replaceChildren();
+        text.titleLines.forEach(function (value, n) {
+          if (n > 0) title.appendChild(document.createTextNode(' '));
+          var line = document.createElement('span'); line.className = 'line';
+          var word = document.createElement('span'); word.className = 'word'; word.textContent = String(value || '');
+          line.appendChild(word); title.appendChild(line);
+        });
+        if (lead) { lead.textContent = text.lead || ''; lead.style.opacity = ''; }
+        cta(primary, text.primaryLabel, text.primaryHref);
+        cta(secondary, text.secondaryLabel, text.secondaryHref);
+        if (window.mrFitHeadlines) window.mrFitHeadlines();
+        requestAnimationFrame(function () {
+          title.classList.remove('no-anim');
+          requestAnimationFrame(function () { title.classList.add('is-in'); });
+        });
+      }, 650);
+    }
+
+    function load(slide, done) {
+      var imgs = Array.prototype.slice.call(slide.querySelectorAll('img[data-hm-src]:not([data-hm-loaded])'));
+      var pending = imgs.length;
+      if (!pending) { done(); return; }
+      imgs.forEach(function (img) {
+        var finished = false;
+        var finish = function () {
+          if (finished) return;
+          finished = true;
+          img.setAttribute('data-hm-loaded', '1');
+          if (--pending === 0) done();
+        };
+        var decoded = function () {
+          if (!img.decode) { finish(); return; }
+          /* decode() vermeidet einen Ruckler beim ersten Zeichnen; nie laenger als 1,2 s warten */
+          Promise.race([img.decode(), new Promise(function (r) { setTimeout(r, 1200); })]).then(finish, finish);
+        };
+        if (img.getAttribute('src') && img.complete && img.naturalWidth > 0) { decoded(); return; }
+        img.addEventListener('load', decoded, { once: true });
+        img.addEventListener('error', finish, { once: true });
+        if (!img.getAttribute('src')) {
+          var srcset = img.getAttribute('data-hm-srcset');
+          if (srcset) { img.sizes = '100vw'; img.srcset = srcset; }
+          img.src = small ? img.getAttribute('data-hm-mobile') : img.getAttribute('data-hm-src');
+        }
+      });
+    }
+    function go(next) {
+      if (busy || next === index) return;
+      busy = true;
+      clearTimeout(timer);
+      var prev = slides[index], cur = slides[next];
+      load(cur, function () {
+        prev.classList.remove('is-active');
+        prev.classList.add('is-leaving');
+        cur.classList.add('is-active');
+        root.classList.add('is-moving');
+        thumbs.forEach(function (thumb, n) { thumb.classList.toggle('is-active', n === next); });
+        if (counter) counter.textContent = String(next + 1).padStart(2, '0');
+        swapText(next);
+        index = next;
+        setTimeout(function () {
+          prev.classList.remove('is-leaving');
+          root.classList.remove('is-moving');
+          busy = false;
+          load(slides[(index + 1) % slides.length], function () {});
+        }, 1700);
+        schedule();
+      });
+    }
+    function schedule() {
+      clearTimeout(timer);
+      if (!started || !inView || document.hidden) return;
+      timer = setTimeout(function () { go((index + 1) % slides.length); }, ms);
+    }
+    thumbs.forEach(function (thumb, n) { thumb.addEventListener('click', function () { go(n); }); });
+    function begin() {
+      started = true;
+      load(slides[1], function () {});
+      schedule();
+    }
+    if (document.readyState === 'complete') setTimeout(begin, 400);
+    else window.addEventListener('load', function () { setTimeout(begin, 400); }, { once: true });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        inView = entries[0].isIntersecting;
+        root.classList.toggle('is-paused', !inView);
+        if (inView) schedule(); else clearTimeout(timer);
+      }, { threshold: 0.05 }).observe(hero || root);
+    }
+    document.addEventListener('visibilitychange', function () {
+      root.classList.toggle('is-paused', document.hidden);
+      if (document.hidden) clearTimeout(timer); else schedule();
+    });
+  });
+})();
+</script>

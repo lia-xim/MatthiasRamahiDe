@@ -15,6 +15,7 @@ type RichText =
 
 type ImageSequenceItem = {
   image?: PayloadMedia | string
+  alt?: string
   caption?: string
   cropIntent?: string
 }
@@ -62,7 +63,7 @@ const richTextToPlainText = (body?: RichText) => {
           <div class="card-grid" data-site-lightbox-gallery>
             {(block.items ?? []).map((item: ImageSequenceItem) => (
               <article class="card" style="padding: 0; min-height: 0;">
-                <ResponsiveImage media={item.image} size="card" fallback="Bild aus CMS" tinaFieldSource={item} tinaFieldName="image" />
+                <ResponsiveImage media={item.image} altText={item.alt} size="card" fallback="Bild aus CMS" tinaFieldSource={item} tinaFieldName="image" />
                 {item.caption && <p class="copy" style="padding: 18px;" {...tinaAttrs(item, 'caption')}>{item.caption}</p>}
               </article>
             ))}

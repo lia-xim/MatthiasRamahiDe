@@ -1,0 +1,180 @@
+{
+  "title": "Lightroom Classic Kontaktbogen: Fotos sichten und vergleichen",
+  "slug": "lightroom-kontaktbogen-fotos-auswaehlen",
+  "category": "Fotografie",
+  "tags": [
+    "Lightroom Classic",
+    "Kontaktbogen",
+    "Fotografie-Workflow",
+    "Bilder auswählen",
+    "Autofotografie"
+  ],
+  "publishedAt": "2027-11-28T08:00:00.000Z",
+  "status": "scheduled",
+  "excerpt": "Mit Raster-, Vergleichs- und Übersichtsansicht ähnliche Aufnahmen sortieren und in Lightroom Classic bei Bedarf einen druckbaren Kontaktbogen anlegen.",
+  "coverImage": "/assets/journal/lightroom-kontaktbogen-fotos-auswaehlen-cover.webp",
+  "coverAlt": "Dunkle Alpina-Limousine vor einer großen Brücke im Abendlicht; das Kennzeichen ist unkenntlich gemacht",
+  "readingTime": 8,
+  "blocks": [
+    {
+      "_template": "textBlock",
+      "headline": "",
+      "body": "Nach einem Shooting liegen oft viele fast gleiche Aufnahmen im Katalog. Eine Rasteransicht zeigt die ganze Auswahl, eine Vergleichsansicht hilft bei zwei ähnlichen Bildern, und die Übersichtsansicht (Survey) stellt zwei oder mehr Kandidaten nebeneinander. In Lightroom Classic kannst du daraus zusätzlich einen druckbaren Kontaktbogen anlegen. Die Ansichten erfüllen unterschiedliche Aufgaben: Eine kleine Übersicht hilft beim Sortieren, sie ersetzt aber nicht die Prüfung von Schärfe und feinen Details in einer größeren Vorschau."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Originale und Sicherung vor der Sichtung prüfen",
+      "body": "Lege zuerst fest, wo die Originaldateien dauerhaft liegen, und importiere sie in Lightroom Classic. Prüfe danach, ob die erwarteten Dateien im Katalog erscheinen und ob der Import nicht auf einen versehentlich leeren oder falschen Ordner zeigt. Halte eine unabhängige Sicherung der Originale auf einem getrennten Datenträger oder in deinem normalen Backup bereit. Die Katalogsicherung von Lightroom Classic sichert nicht automatisch die damit verknüpften Fotodateien. Formatiere die Speicherkarte deshalb erst, wenn du die Kopien geprüft hast und deine Sicherungsroutine abgeschlossen ist. Für die spätere Auswahl genügt eine Sammlung oder die Schnellsammlung; so kannst du Kandidaten eingrenzen, ohne die Originaldateien zu verschieben."
+    },
+    {
+      "_template": "imageSequence",
+      "headline": "Vier Bilder einer Fahrzeugserie als Kontaktübersicht",
+      "items": [
+        {
+          "image": "/assets/journal/lightroom-kontaktbogen-fotos-auswaehlen-kontaktuebersicht.webp",
+          "alt": "Kontaktübersicht aus vier Fotos einer Alpina-Limousine: Seitenansicht vor Stadtgebäuden, Abendansicht an einer Brücke und zwei Heckansichten am Wasser.",
+          "caption": "Vier gerenderte Aufnahmen derselben Alpina-Serie als kontaktbogenartige Übersicht. Die Varianten zeigen, wie Perspektive, Umgebung und Abendlicht die Bildwirkung verändern. Die Collage ist eigens für diesen Beitrag gesetzt und zeigt keine Lightroom-Bedienoberfläche."
+        }
+      ]
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Raster, Vergleich und Kontaktbogen haben verschiedene Aufgaben",
+      "body": "Die Rasteransicht ist der schnelle Überblick über einen Ordner oder eine Sammlung. Du siehst Bildfolge, wiederholte Motive und grobe Unterschiede im Bildaufbau. Wenn zwei Aufnahmen beinahe gleich sind, wechselst du in die Vergleichsansicht und prüfst sie nebeneinander. Für zwei oder mehr Kandidaten eignet sich die Übersichtsansicht (Survey): Sie hält mehrere ausgewählte Bilder gleichzeitig im Blick und lässt dich die Auswahl Schritt für Schritt verengen.\n\nEin Kontaktbogen ist ein Drucklayout mit mehreren Bildfeldern; eine größere Auswahl kann sich dabei über mehrere Seiten erstrecken. In Lightroom Classic entsteht er im Druckmodul aus einer Auswahl, die du zuvor im Bibliotheksmodul getroffen hast. Er eignet sich, wenn du eine größere Auswahl auf Papier überblicken, eine Bildfolge besprechen oder eine kompakte Arbeitsübersicht ablegen möchtest. Die folgenden Schritte beziehen sich auf Lightroom Classic; ähnliche Namen in anderen Lightroom-Apps bedeuten nicht automatisch dieselben Funktionen."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Vor dem Sichten den Zweck der Auswahl festlegen",
+      "body": "Beginne mit einem klar begrenzten Ordner oder einer Sammlung und frage zuerst, wofür die Bilder gebraucht werden: für eine einzelne Webgalerie, eine Fahrzeugdokumentation, einen Beitrag oder eine zusammenhängende Serie. Der Zweck beeinflusst, welche Unterschiede wichtig sind. Bei drei Aufnahmen derselben Frontansicht können Blickwinkel, Reflexe auf dem Lack und die Lesbarkeit von Scheinwerfern entscheidend sein. Für eine Serie kommen zusätzlich Abwechslung und eine sinnvolle Reihenfolge hinzu.\n\nNutze für jeden Kandidaten dieselbe kurze Prüfreihenfolge: Erfüllt das Bild eine eigene Aufgabe in der Serie? Sind Form, Blickwinkel und Reflexe gelungen? Liegt die wichtige Stelle scharf genug für den vorgesehenen Ausschnitt? Ergänzt die Aufnahme eine Variante oder wiederholt sie nur eine schon vorhandene Ansicht? Beurteile Details in der Größe, in der das Bild später verwendet wird.\n\nLege vor dem Durchgang eine einfache Markierregel fest. Zum Beispiel: P für eine mögliche Auswahl, X für einen klaren Ausschluss und unmarkiert für Bilder, bei denen du noch unsicher bist. Bewertungen kannst du für eine spätere Rangfolge reservieren. So vermischst du die erste Sichtung nicht mit der endgültigen Auswahl und kannst später nach Markierungen filtern. Ein markiertes Bild bleibt im Katalog; die Kennzeichnung ist keine automatische Löschaktion."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Erster Durchgang in der Rasteransicht",
+      "body": "Wechsle im Bibliotheksmodul in die Rasteransicht und gehe die Aufnahmefolge zunächst zügig durch. Markiere nur eindeutige Kandidaten und Ausschlüsse. Bei einer Autofotoserie kannst du beispielsweise verwackelte Bilder, geschlossene Augen bei einer Person am Fahrzeug oder eine klar ungünstige Reflexion aussortieren. Bewahre Grenzfälle als unmarkierte Bilder für den zweiten Durchgang auf.\n\nAdobe nennt P als Tastenkürzel für die Auswahlmarkierung und X für die Ablehnungsmarkierung. Mit den Filtern der Bibliothek kannst du anschließend nur markierte oder bewertete Bilder anzeigen. Achte darauf, ob du in der Rasteransicht mehrere Bilder gleichzeitig ausgewählt hast: Änderungen an Bewertungen, Labels oder Metadaten können dann auf die gesamte Auswahl wirken. Wenn du nur eine Aufnahme markieren willst, prüfe, welches Bild aktiv ist, bevor du eine Aktion auslöst."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Zwei ähnliche Aufnahmen direkt vergleichen",
+      "body": "Wähle in der Rasteransicht zwei Bilder aus und öffne die Vergleichsansicht. Sie ist für kleine Unterschiede gedacht: Sitzt der Blickwinkel sauberer? Ist die Karosseriekante frei? Bleibt eine Spiegelung ruhig, ohne die Form des Wagens zu verlieren? Bei Porträts können Ausdruck und Augen wichtig sein, bei Landschaften etwa die Stellung eines Astes oder die Wolkenform.\n\nZoome in beide Vorschauen, wenn es um Schärfe, Bewegungsunschärfe oder einen wichtigen Detailbereich geht. Lightroom Classic kann den Zoom beider Bilder koppeln oder getrennt steuern. Vergleiche Ausschnitte, die für den vorgesehenen Einsatz wirklich relevant sind. Eine leicht weichere Ecke muss nicht ausschlaggebend sein, wenn die Aufnahme als kleine Webansicht dient; bei einem engen Beschnitt oder großem Druck kann sie wichtiger werden. Wenn du mehr als zwei Kandidaten prüfen willst, kannst du das bessere Bild als neue Referenz verwenden und es mit der nächsten Aufnahme vergleichen."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Mehrere Kandidaten in der Übersichtsansicht (Survey) reduzieren",
+      "body": "Wähle zwei oder mehr Bilder aus und öffne die Übersichtsansicht (Survey). Sie ordnet die ausgewählten Vorschauen nebeneinander an. Entferne einen schwächeren Kandidaten aus der Ansicht, wenn er im direkten Vergleich nicht mehr überzeugt. Das entfernt ihn nur aus dieser Vergleichsrunde, nicht aus dem Katalog.\n\nJe mehr Bilder du gleichzeitig auswählst, desto kleiner werden die einzelnen Vorschauen. Nutze die Übersichtsansicht deshalb für Bildaufbau, Ausdruck und die Wirkung einer kleinen Gruppe; für eine endgültige Schärfeprüfung kehrst du zur Vergleichsansicht oder zur Einzelansicht zurück. Wähle nach Bildaufgabe und Nutzen, nicht allein nach der höchsten Sternzahl: Eine starke Titelaufnahme, eine Seitenansicht und ein aussagekräftiges Detail können zusammen sinnvoller sein als drei fast gleiche Fünf-Sterne-Aufnahmen. Sterne helfen dir, Kandidaten zu ordnen; sie entscheiden nicht, welche Bilder die Serie vollständig erzählen. Der Beitrag [Wie eine fotografische Serie kuratiert wird](/blog-serie-kuratieren.html) behandelt Auswahl und Reihenfolge ausführlicher."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Im Druckmodul einen Kontaktbogen anlegen",
+      "body": "Wenn du die Vorauswahl auch als Seitenübersicht sehen möchtest, sammle die Kandidaten zuerst in einer Sammlung oder der Schnellsammlung. So bleibt nachvollziehbar, welche Bilder in den Kontaktbogen eingehen. Wechsle dann in Lightroom Classic zum Druckmodul und wähle im Vorlagenbrowser eine Vorlage für Einzelbild/Kontaktabzug. Wähle Papierformat und Drucker, sofern du tatsächlich drucken willst, und passe im Layoutbereich Seitenränder, Zeilen, Spalten und Bildfeldgröße an.\n\nViele kleine Felder zeigen die gesamte Folge auf wenigen Seiten; größere Felder erleichtern den Vergleich von Bildaufbau und Details. Prüfe die Vorschau auf Beschnitt und Reihenfolge, bevor du druckst. Ein Kontaktbogen ersetzt keine Farbverbindlichkeit oder technische Schärfeprüfung: Papier, Drucker und Betrachtungslicht beeinflussen den Eindruck. Für eine digitale PDF-Ausgabe hängt der Weg von deinem Druckdialog und der verfügbaren PDF-Druckfunktion ab; die Adobe-Anleitung beschreibt die Druckausgabe und garantiert nicht für jede Systemkonfiguration denselben PDF-Schritt. Wenn du nur am Bildschirm vergleichst, ist das Druckmodul nicht nötig."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Die Auswahl sichern und erst danach weiterarbeiten",
+      "body": "Am Ende solltest du eine überschaubare Sammlung mit den tatsächlich benötigten Bildern haben. Kontrolliere bei den Finalisten noch einmal den Fokus an wichtigen Stellen, störende Überschneidungen, Reflexe und den Bildrand. Prüfe außerdem, ob die Auswahl den vorgesehenen Zweck abdeckt: Eine Bildgeschichte braucht meist andere Varianten als eine einzelne Titelaufnahme.\n\nLösche abgelehnte Dateien nicht allein deshalb, weil sie im Kontaktbogen fehlen oder mit X markiert sind. Entscheide erst nach einer gesicherten Auswahl und entsprechend deiner Archiv- und Sicherungsroutine über das Löschen. Für den anschließenden Entwicklungsschritt bei Autofotos beschreibt [Autofotos in Lightroom bearbeiten](/blog-autofotos-in-lightroom-bearbeiten.html) einen getrennten Workflow für Farb- und Tonwertkorrekturen."
+    },
+    {
+      "_template": "faqBlock",
+      "headline": "Häufige Fragen",
+      "items": [
+        {
+          "question": "Kann ich in Lightroom Classic einen Kontaktbogen erstellen?",
+          "answer": "Ja. Wähle die Bilder im Bibliotheksmodul aus, wechsle in das Druckmodul und wähle im Vorlagenbrowser eine Vorlage für Einzelbild/Kontaktabzug. Seitenformat und Raster lassen sich in der Vorlage anpassen."
+        },
+        {
+          "question": "Was ist der Unterschied zwischen der Übersichtsansicht (Survey) und einem Kontaktbogen?",
+          "answer": "Die Übersichtsansicht ist eine Bildschirmansicht in der Bibliothek, in der du mehrere ausgewählte Bilder direkt vergleichst und Kandidaten aus der Ansicht entfernst. Der Kontaktbogen ist ein Seitenlayout im Druckmodul, das du für die Druckausgabe verwendest."
+        },
+        {
+          "question": "Wie viele Bilder sollten auf einen Kontaktbogen passen?",
+          "answer": "Es gibt keine feste Zahl. Viele kleine Felder helfen beim Überblick über eine lange Serie; größere Felder sind nützlicher, wenn Bildaufbau und wichtige Details noch erkennbar sein sollen. Passe Zeilen, Spalten und Bildfeldgröße an deinen Vergleichszweck an."
+        },
+        {
+          "question": "Werden mit X markierte Fotos automatisch gelöscht?",
+          "answer": "Nein. X setzt eine Ablehnungsmarkierung in Lightroom Classic. Das Foto bleibt im Katalog und auf dem Datenträger, bis du es gesondert löschst. Prüfe deshalb eine Auswahl und deine Sicherungen, bevor du Dateien entfernst."
+        },
+        {
+          "question": "Kann ein Kontaktbogen Schärfe und Farbe zuverlässig beurteilen?",
+          "answer": "Nur eingeschränkt. Kleine Bildfelder eignen sich für Übersicht und Bildaufbau. Prüfe kritische Details in einer größeren Vorschau; beim Druck kommen Papier, Drucker und Licht als zusätzliche Einflüsse auf die Farbwahrnehmung hinzu."
+        }
+      ]
+    },
+    {
+      "_template": "linkList",
+      "headline": "Quellen und weiterführende Informationen",
+      "links": [
+        {
+          "label": "Adobe Lightroom Classic: Importoptionen für Fotos",
+          "href": "https://helpx.adobe.com/de/lightroom-classic/desktop/import-photos/photo-video-import-options.html",
+          "description": "Zeigt Importoptionen wie den Dateispeicherort und das Anlegen einer zweiten Kopie während des Imports."
+        },
+        {
+          "label": "Adobe Lightroom Classic: Katalog sichern",
+          "href": "https://helpx.adobe.com/de/lightroom-classic/desktop/manage-catalogs-and-files/back-catalog.html",
+          "description": "Beschreibt die Katalogsicherung und erklärt, dass die referenzierten Originalfotos separat gesichert werden müssen."
+        },
+        {
+          "label": "Adobe Lightroom Classic: Fotos durchsuchen und vergleichen",
+          "href": "https://helpx.adobe.com/de/lightroom-classic/desktop/viewing-photos/browse-compare-photos.html",
+          "description": "Offizielle Hilfe zur Raster-, Vergleichs- und Übersichtsansicht sowie zum Vergleichen ausgewählter Fotos."
+        },
+        {
+          "label": "Adobe Lightroom Classic: Fotos markieren, beschriften und bewerten",
+          "href": "https://helpx.adobe.com/de/lightroom-classic/desktop/organize-photos-in-lightroom-classic/flag-label-rate-photos.html",
+          "description": "Erklärt Auswahl- und Ablehnungsmarkierungen, Sternebewertungen und Filter im Bibliotheksmodul."
+        },
+        {
+          "label": "Adobe Lightroom Classic: Layouts und Vorlagen des Druckmoduls",
+          "href": "https://helpx.adobe.com/de/lightroom-classic/desktop/print-photos/print-module-layouts-templates.html",
+          "description": "Offizielle Anleitung zu Kontaktabzugsvorlagen, Bildfeldern, Rändern und Seitenraster."
+        },
+        {
+          "label": "Adobe Lightroom Classic: Fotos drucken",
+          "href": "https://helpx.adobe.com/de/lightroom-classic/desktop/help/printing-photos-basic-workflow.html",
+          "description": "Beschreibt die Auswahl von Fotos, Papierformat, Druckvorlage und Ausgabe im Druckmodul."
+        }
+      ]
+    }
+  ],
+  "seo": {
+    "title": "Lightroom Classic Kontaktbogen: Fotos vergleichen und auswählen",
+    "description": "So sichtest du Fotos in Lightroom Classic: Raster-, Vergleichs- und Übersichtsansicht für den Vergleich nutzen und bei Bedarf einen Kontaktbogen im Druckmodul anlegen.",
+    "focusKeyword": "Lightroom Classic Kontaktbogen",
+    "secondaryKeywords": [
+      "Kontaktabzug Lightroom Classic",
+      "Lightroom Fotos vergleichen",
+      "Fotos in Lightroom Classic auswählen",
+      "Lightroom Rasteransicht",
+      "Lightroom Survey-Ansicht"
+    ],
+    "searchIntent": "Praktische Informationssuche: Fotografierende möchten viele ähnliche Bilder in Lightroom Classic sichten, direkt vergleichen, eine engere Auswahl markieren und bei Bedarf einen druckbaren Kontaktbogen erstellen. Die Keyword-Auswahl beruht auf einer qualitativen Prüfung aktueller deutscher Suchergebnisse und offizieller Adobe-Hilfe; Suchvolumen- oder AI-Fanout-Daten wurden nicht erhoben.",
+    "canonicalUrl": "https://matthiasramahi.de/blog-lightroom-kontaktbogen-fotos-auswaehlen.html",
+    "legacyUrl": "blog-lightroom-kontaktbogen-fotos-auswaehlen.html",
+    "ogImage": "/assets/journal/lightroom-kontaktbogen-fotos-auswaehlen-cover.webp",
+    "noIndex": false
+  },
+  "createdAt": "2026-11-07T00:00:00Z",
+  "updatedAt": "2027-11-28T08:00:00.000Z",
+  "relatedPages": [
+    {
+      "label": "Autofotografie",
+      "href": "/automobil-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Wie eine fotografische Serie kuratiert wird",
+      "href": "/blog-serie-kuratieren.html",
+      "seoPurpose": "related-editorial",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Autofotos in Lightroom bearbeiten: Farbtreu vom RAW bis zum Export",
+      "href": "/blog-autofotos-in-lightroom-bearbeiten.html",
+      "seoPurpose": "related-editorial",
+      "rel": "follow",
+      "openInNewTab": false
+    }
+  ]
+}

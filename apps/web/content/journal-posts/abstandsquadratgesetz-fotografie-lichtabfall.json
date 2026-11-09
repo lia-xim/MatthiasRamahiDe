@@ -1,0 +1,141 @@
+{
+  "title": "Abstandsquadratgesetz in der Fotografie: Lichtabfall verstehen",
+  "slug": "abstandsquadratgesetz-fotografie-lichtabfall",
+  "category": "process",
+  "tags": [
+    "Licht",
+    "Lichttheorie",
+    "Beleuchtung",
+    "Fotografie lernen",
+    "Automobilfotografie"
+  ],
+  "publishedAt": "2027-10-19T07:00:00Z",
+  "excerpt": "Verdoppelst du bei einer kleinen Lichtquelle den Abstand zum Motiv, kommt dort nur ein Viertel der Beleuchtungsstärke an. So hilft dir das Abstandsquadratgesetz, Lichtabfall und Hintergrund zu planen.",
+  "coverImage": "/assets/journal/abstandsquadratgesetz-fotografie-render-2026.webp",
+  "coverAlt": "Silberner Sportwagen im Profil vor einer hellen, klassizistischen Fassade an einem bedeckten Tag.",
+  "readingTime": 8,
+  "seo": {
+    "title": "Abstandsquadratgesetz in der Fotografie: Lichtabfall",
+    "description": "Wie verändert der Abstand zur Lichtquelle die Beleuchtung? Das Abstandsquadratgesetz einfach erklärt, mit Beispielrechnung und Grenzen für große Lichtformer.",
+    "focusKeyword": "Abstandsquadratgesetz Fotografie",
+    "secondaryKeywords": [
+      "Lichtabfall Fotografie",
+      "Lichtabfall Blitz Abstand",
+      "Abstandsquadratgesetz Licht",
+      "Beleuchtungsstärke Abstand"
+    ],
+    "searchIntent": "Qualitative Informationssuche: Fotografierende möchten verstehen, wie der Abstand einer Lichtquelle die Beleuchtungsstärke am Motiv und das Verhältnis zum Hintergrund beeinflusst. Crawl Foundry enthält derzeit keine passende frische Keywordmessung; die gespeicherten Werte sind gealtert, ein GSC-Snapshot und gemessener AI-Fanout fehlen. Die Begriffe sind Hypothesen, keine Volumen- oder Rankingprognose.",
+    "canonicalUrl": "https://matthiasramahi.de/blog-abstandsquadratgesetz-fotografie-lichtabfall.html",
+    "legacyUrl": "blog-abstandsquadratgesetz-fotografie-lichtabfall.html",
+    "ogImage": "/assets/journal/abstandsquadratgesetz-fotografie-render-2026.webp",
+    "noIndex": false
+  },
+  "legacy": {
+    "sourceFile": "blog-abstandsquadratgesetz-fotografie-lichtabfall.html",
+    "sourceUrl": "https://matthiasramahi.de/blog-abstandsquadratgesetz-fotografie-lichtabfall.html",
+    "migrationStatus": "new",
+    "renderSource": "structured-astro"
+  },
+  "status": "scheduled",
+  "createdAt": "2026-11-07T12:48:06Z",
+  "updatedAt": "2027-10-19T07:00:00Z",
+  "relatedPages": [
+    {
+      "label": "Automobilfotografie",
+      "href": "/automobil-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Auto mit Blitz fotografieren: Lackreflexe und Umgebungslicht abstimmen",
+      "href": "/blog-auto-mit-blitz-fotografieren.html",
+      "seoPurpose": "related-editorial",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Light—Science & Magic: Warum dieses Fotobuch über Licht mein Favorit ist",
+      "href": "/blog-light-science-magic-buchreview.html",
+      "seoPurpose": "related-editorial",
+      "rel": "follow",
+      "openInNewTab": false
+    }
+  ],
+  "blocks": [
+    {
+      "_template": "textBlock",
+      "headline": "Warum Licht mit dem Abstand abnimmt",
+      "body": "Eine kleine Lichtquelle steht einen Meter vom Motiv entfernt. Wird sie auf zwei Meter zurückgestellt, empfängt eine gleich ausgerichtete Fläche von einer idealisierten Punktquelle nur noch ein Viertel der Beleuchtungsstärke. Das entspricht zwei Belichtungsstufen weniger, wenn Blende, Zeit und ISO gleich bleiben.\n\nFür eine Punktquelle gilt an einer Fläche vereinfacht E = I · cos(θ) / r². E ist die Beleuchtungsstärke in Lux am betrachteten Punkt, I die Lichtstärke der Quelle in Candela und in Richtung dieses Punkts, r der Abstand in Metern von der leuchtenden Fläche bis zu diesem Punkt und θ der Winkel zwischen einfallendem Licht und der Flächennormalen. Trifft das Licht senkrecht auf die Fläche, ist cos(0°) = 1. Die Formel setzt voraus, dass sich Richtung und Lichtstärke der Quelle nicht ändern. Das Abstandsquadratgesetz beschreibt, wie sich das Licht mit wachsender Entfernung über eine größere Fläche verteilt.\n\nFür die Fotografie ist diese Beziehung ein Planungswerkzeug: Ein naher Blitz kann Vorder- und Hintergrund unterschiedlich stark beleuchten; eine weit entfernte Lichtquelle verteilt die Helligkeit über die Szene gleichmäßiger. Das Gesetz sagt nicht allein voraus, wie hell ein fertiges Pixel wirkt. Oberfläche, Reflexionswinkel, Kameraeinstellung und Umgebungslicht verändern das Ergebnis ebenfalls."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Die Rechnung in einem Beispiel",
+      "body": "Für zwei Abstände derselben kleinen Quelle vergleichst du die Beleuchtungsstärke mit E₂ / E₁ = (r₁ / r₂)², sofern Richtung und Flächenausrichtung gleich bleiben. Wenn sich der Einfallswinkel ändert, gehört auch der Cosinusfaktor cos(θ₂) / cos(θ₁) in den Vergleich. Für eine senkrecht getroffene Fläche ist θ = 0° und der Faktor gleich 1.\n\nSetze den Messwert bei einem Meter als 100-Prozent-Referenz: Bei zwei Metern bleiben 25 Prozent, bei drei Metern rund 11 Prozent des Werts übrig. Das sind bei gleicher Kameraeinstellung zwei beziehungsweise etwa 3,2 Belichtungsstufen weniger. Beispiel: Misst du bei zwei Metern 800 Lux, wären es bei vier Metern unter den gleichen Bedingungen ungefähr 200 Lux. Eine große, nahe Softbox kann deutlich davon abweichen; dazu folgt ein Praxistest weiter unten."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Der Abstand verändert auch den Hintergrund",
+      "body": "Stell dir einen Blitz zwei Meter vor dem Motiv und eine Wand zwei Meter dahinter vor. Die Wand ist dann vier Meter von der Quelle entfernt. Wenn die beleuchteten Flächen ähnlich zum Licht stehen, beträgt die Beleuchtungsstärke auf der Wand nach der Punktquellen-Näherung ein Viertel der Beleuchtungsstärke am Motiv: (2/4)² = 0,25.\n\nSkizze entlang der Lichtachse:\n\nLichtquelle ── 2 m ── Auto ── 2 m ── Wand (Lichtquelle bis Wand: 4 m)\nLichtquelle ── 6 m ── Auto ── 2 m ── Wand (Lichtquelle bis Wand: 8 m)\n\nRückst du dieselbe Lichtquelle auf sechs Meter vom Motiv weg, liegt die Wand acht Meter entfernt. Ihr Verhältnis zum Motiv beträgt dann (6/8)², also rund 0,56. Erhöhst du die Leistung, bis das Motiv wieder gleich beleuchtet ist, wird der Helligkeitsunterschied zum Hintergrund geringer. Die sichtbare Helligkeit hängt zusätzlich von der Oberfläche, Farbe und Ausrichtung der Wand ab; die Rechnung vergleicht zunächst nur die einfallende Beleuchtungsstärke.\n\nAm Auto kann ein nahes Licht auch zwischen Vorder- und Heckpartie einen deutlichen Abfall erzeugen. Miss oder vergleiche zuerst an zwei markierten Positionen. Die Flächen eines Autos stehen aber in unterschiedlichen Winkeln zum Licht. Deshalb zeigt die Rechnung nur den Abstandseffekt; die Kurve und der Glanz des Lacks kommen durch Reflexionen dazu. Eine kleine Änderung von Licht- oder Kamerawinkel kann die sichtbare Lichtlinie stärker verändern als die Belichtung."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Was die Formel nicht erklärt",
+      "body": "Das Gesetz beschreibt die Beleuchtungsstärke, die eine Quelle an einem Punkt auf einer Fläche erzeugt. Es ist keine Regel für die gesamte Bildhelligkeit und sagt Reflexe auf Autolack nicht exakt voraus. Auf einer glänzenden Karosserie siehst du die Umgebung als Spiegelung. Eine kleine Änderung von Kamerahöhe oder Lichtwinkel kann die Reflexform stärker verändern als eine Belichtungsänderung. Für diese Lichtkontrolle hilft der [Beitrag zum Fotografieren von Autos mit Blitz](/blog-auto-mit-blitz-fotografieren.html).\n\nDie Punktquellenformel ist eine Näherung, wenn die leuchtende Fläche im Verhältnis zum Abstand klein erscheint. Eine große Softbox oder ein naher Diffusor ist eine ausgedehnte Quelle; ihr Licht fällt im Nahbereich nicht wie von einem einzelnen Punkt ab. Für gleichmäßig leuchtende, ausgedehnte Quellen nennt die Illuminating Engineering Society als photometrische Bedingung einen Abstand von mindestens dem Fünffachen der größten Quellenabmessung, die vom Messpunkt aus sichtbar ist; unter dieser Bedingung liegt die Punktquellen-Näherung innerhalb von 1 Prozent. Das ist keine Garantie für jeden Softbox-Aufbau: Miss die tatsächliche Beleuchtung und vergleiche Testbilder. Miss den Abstand von der leuchtenden Diffusorfläche, nicht vom Blitzgehäuse.\n\nTageslicht verhält sich bei einer normalen Fotoszene anders als ein naher Blitz: Die Sonne ist so weit entfernt, dass ein Schritt nach vorn oder hinten den Helligkeitsunterschied zwischen Motivteilen kaum verändert. Im Studio können schon wenige Meter am Aufbau sichtbar sein."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "So prüfst du den Lichtabfall am Set",
+      "body": "Fixiere zuerst Kamera, Motiv, Winkel und Belichtung. Markiere den Lichtabstand und miss die Beleuchtungsstärke mit einem einfallenden Lichtmessgerät; richte dessen Messkalotte bei jeder Messung gleich zur Quelle aus. Bei einer kleinen Quelle sollte die Messung nach Verdopplung des Abstands ungefähr auf ein Viertel sinken. Als Rechenbeispiel: 800 Lux bei zwei Metern werden etwa 200 Lux bei vier Metern. Notiere auch das vorhandene Raumlicht, denn Streulicht und Reflexionen im Raum verändern den Messwert.\n\nWiederhole denselben Test mit einer großen Softbox aus kurzer Distanz und danach weiter entfernt. Weicht die Messung von der Viertel-Regel ab, ist das bei einer ausgedehnten Quelle im Nahbereich erwartbar. Für einen Vergleich an der Karosserie kannst du an Front und Heck eine matte Graukarte an derselben markierten Position und mit gleicher Ausrichtung zum Licht messen. Fotografiere danach den Lack separat: Der Kameratest zeigt zusätzlich die Spiegelung und ist keine Luxmessung.\n\nFür den Hintergrund prüfst du zwei Varianten: Quelle nah am Motiv und Quelle weiter entfernt. Erhöhe bei der zweiten Variante die Leistung so, dass das Motiv wieder gleich belichtet ist. Vergleiche anschließend die Helligkeit des Hintergrunds relativ zum Motiv. So wird aus der Formel eine Set-Entscheidung statt einer Zahl ohne Bildbezug."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Wann der Abstand eine gute Stellschraube ist",
+      "body": "Ein näher gesetztes Licht kann den Hintergrund schneller abdunkeln und mit weniger Leistung auskommen, wenn die Quelle klein genug für die Punktquellen-Näherung ist. Es reagiert dafür empfindlicher auf kleine Positionsänderungen im Motiv. Eine weiter entfernte Quelle kann die Helligkeit über ein Set gleichmäßiger verteilen, braucht aber mehr Leistung, wenn das Motiv gleich hell bleiben soll. Bei einem großen Lichtformer musst du zudem Platz für Stativ, Diffusor und Aufnahmeweg einplanen.\n\nDie passende Position hängt daher davon ab, was im Bild gleichmäßig sein soll und welche Teile bewusst dunkler werden dürfen. Für eine kontrollierte Fahrzeugserie zählen neben dem Lichtabfall auch Karosserieform und Reflexe. Der [Überblick zur Automobilfotografie](/automobil-fotografie.html) führt zu den praktischen Fahrzeugthemen; im [Review zu Light—Science & Magic](/blog-light-science-magic-buchreview.html) ordne ich die physikalischen Lichtgrundlagen und ihre Anwendung ein."
+    },
+    {
+      "_template": "faqBlock",
+      "headline": "Häufige Fragen zum Abstandsquadratgesetz",
+      "items": [
+        {
+          "question": "Was passiert mit dem Licht, wenn ich den Abstand verdopple?",
+          "answer": "Bei einer idealisierten Punktquelle und gleicher Flächenausrichtung sinkt die Beleuchtungsstärke bei doppeltem Abstand auf ein Viertel. Das sind zwei Belichtungsstufen weniger, wenn die Kameraeinstellungen gleich bleiben."
+        },
+        {
+          "question": "Gilt das Abstandsquadratgesetz auch für eine Softbox?",
+          "answer": "Nur näherungsweise, wenn die leuchtende Fläche im Verhältnis zum Abstand klein erscheint. Die IES nennt für gleichmäßig leuchtende Quellen als photometrische Bedingung mindestens das Fünffache der größten Quellenabmessung, die vom Messpunkt aus sichtbar ist. Bei einer großen Softbox aus kurzer Distanz misst und prüfst du besser den konkreten Aufbau."
+        },
+        {
+          "question": "Wie beeinflusst der Lichtabstand den Hintergrund?",
+          "answer": "Bei einer nahen Quelle fällt die Beleuchtungsstärke zwischen Motiv und weiter entferntem Hintergrund stärker ab. Bewegst du die Quelle weiter zurück und erhöhst die Leistung, um das Motiv gleich hell zu halten, wird der Hintergrund relativ gleichmäßiger beleuchtet."
+        }
+      ]
+    },
+    {
+      "_template": "linkList",
+      "headline": "Weiterführende Quellen",
+      "links": [
+        {
+          "label": "NASA: The Inverse Square Law of Light",
+          "href": "https://www.nasa.gov/wp-content/uploads/2021/07/583137main_Inverse_Square_Law_of_Light.pdf?emrc=ea0a8f",
+          "description": "NASA-Lernmaterial zur Abnahme der Beleuchtungsstärke mit der Entfernung, mit Demonstration und Beispielrechnung."
+        },
+        {
+          "label": "MIT Computational Photography: Light and Physics",
+          "href": "https://people.csail.mit.edu/fredo/comp-photo-book/02-fundamentals-01-light-and-physics.html",
+          "description": "Lehrmaterial zur Unterscheidung zwischen Beleuchtung durch eine Quelle und der Leuchtdichte einer sichtbaren Oberfläche."
+        },
+        {
+          "label": "University of Wyoming: Physics 2310 Lab 7",
+          "href": "https://physics.uwyo.edu/~mpierce/P2310/Lab_07.pdf",
+          "description": "Physik-Laborblatt zur Messung der Beleuchtungsstärke eines punktförmigen Lichtquellenmodells."
+        },
+        {
+          "label": "Illuminating Engineering Society: Inverse-square law",
+          "href": "https://ies.org/definitions/inverse-square-law/",
+          "description": "Definition der Beleuchtungsstärke einer Punktquelle auf einer Fläche sowie photometrischer Hinweis zur Näherung bei ausgedehnten Quellen."
+        }
+      ]
+    }
+  ]
+}

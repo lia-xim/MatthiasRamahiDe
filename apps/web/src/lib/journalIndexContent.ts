@@ -1,5 +1,5 @@
 import type { HomeHeroSlide } from './nativeContent'
-import { journalArticles, journalClusterFor, journalClusterProfiles } from './journalArticleContent'
+import { isJournalArticlePublic, journalArticles, journalClusterFor, journalClusterProfiles } from './journalArticleContent'
 
 export type JournalPostCard = {
   category: string
@@ -10,6 +10,8 @@ export type JournalPostCard = {
   imageAlt: string
   height: number
   readTime: string
+  publishedAt?: string
+  status?: string
   tags: string[]
   text: string
   title: string
@@ -99,10 +101,16 @@ export const journalCards: JournalPostCard[] = journalArticles.map((article, ind
     href: `/${article.legacyFile}`,
     image: `/${article.heroImage.replace(/^\//, '')}`,
     imageAlt: article.heroImageAlt,
+    publishedAt: article.publishedAt,
     readTime: article.minutes,
+    status: article.status,
     tags: article.tags,
     text: article.description,
     title: article.title.replace(/<[^>]+>/g, ''),
     width: portraitFormat ? 1600 : 1920,
   }
 })
+
+export function getPublicJournalCards(now: Date | number = Date.now()) {
+  return journalCards.filter((card) => isJournalArticlePublic(card, now))
+}

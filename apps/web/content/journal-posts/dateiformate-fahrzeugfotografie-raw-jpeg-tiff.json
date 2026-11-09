@@ -1,0 +1,163 @@
+{
+  "title": "RAW, JPEG oder TIFF: Welche Dateien sollte ein Autofotograf liefern?",
+  "slug": "dateiformate-fahrzeugfotografie-raw-jpeg-tiff",
+  "category": "automotive",
+  "tags": [
+    "Automotive",
+    "Bildserie",
+    "Briefing",
+    "Marke"
+  ],
+  "excerpt": "RAW, JPEG oder TIFF? Welche Fahrzeugfotos du für Website, Inserat, Presse und Druck brauchst – und welche Dateiwünsche du vor dem Shooting klären solltest.",
+  "publishedAt": "2027-05-26T07:00:00.000Z",
+  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+  "coverAlt": "Schwarzer SUV vor Industrieanlagen im Abendlicht, gespiegelt in einer Pfütze",
+  "readingTime": 9,
+  "blocks": [
+    {
+      "_template": "textBlock",
+      "headline": "Für die Veröffentlichung brauchst du fertige Bilder, nicht automatisch RAW-Dateien",
+      "body": "Wenn ein Autofotograf Fahrzeugbilder für Website, Inserat oder Kampagne aufnimmt, ist die übliche Frage am Ende nicht nur „RAW oder JPEG?“, sondern: Welche Dateien lassen sich mit dem vereinbarten Zweck direkt verwenden? Für die meisten Veröffentlichungen sind fertig bearbeitete JPEGs die passende Hauptlieferung. RAW-Dateien können als zusätzlicher Arbeitsstand oder Archivmaterial sinnvoll sein, sind aber keine fertige Bildserie, die auf jeder Plattform einfach funktioniert.\n\nHilfreich ist, drei Ebenen auseinanderzuhalten: die Kameraaufnahme, die bearbeitete Masterdatei und die exportierte Ausgabedatei. Die Kamera kann RAW, JPEG oder beide Formate gleichzeitig speichern. Bei der Bearbeitung entsteht daraus eine abgestimmte Bildfassung. Für Website, Druck oder Social Media werden anschließend Dateien mit den passenden Abmessungen und Einstellungen exportiert. Wer diese Ebenen im Briefing trennt, kann gezielt bestellen, statt am Ende einen großen Ordner mit unklaren Dateien zu erhalten."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "RAW bewahrt Spielraum für die Bearbeitung",
+      "body": "RAW-Dateien enthalten weitgehend unbearbeitete Sensordaten. Das Kameraformat ist oft herstellerspezifisch, zum Beispiel ARW, CR3 oder NEF. Ein RAW wird deshalb in einer geeigneten Anwendung interpretiert und entwickelt, bevor es als fertiges Bild angezeigt oder weitergegeben wird. Adobe beschreibt RAW als Daten, die im Entwicklungsprogramm zu einem vollfarbigen Foto verarbeitet werden.\n\nDieser Spielraum ist bei Autofotos nützlich, wenn helle Lackreflexe und dunkle Karosseriepartien gleichzeitig kontrolliert werden müssen oder mehrere Bilder einer Serie aufeinander abgestimmt werden. Er macht ein misslungenes Foto aber nicht automatisch richtig: Ausgefressene Lichtflächen, verwackelte Details oder eine ungünstige Reflexion lassen sich auch aus RAW nur begrenzt korrigieren. Der Zweck ist, bei der Entwicklung mehr Entscheidungen treffen zu können, nicht jede Aufnahme nachträglich zu retten.\n\nRAW-Dateien sind größer und brauchen Software, die das konkrete Kameramodell lesen kann. Eine Vorschau im Dateibrowser kann zudem anders aussehen als die spätere Entwicklung. Wenn du RAWs erhalten möchtest, kläre deshalb, ob die Originale unverändert übergeben werden, ob Anpassungen in Begleitdateien enthalten sind und welche Software zum Öffnen benötigt wird. Das offene DNG-Format kann eine Alternative für ein Archiv sein; es ersetzt jedoch weder eine abgestimmte Endfassung noch eine Vereinbarung über den Umgang mit den Dateien."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "JPEG ist für eine fertige Fahrzeugserie meist die praktische Wahl",
+      "body": "Ein JPEG ist bereits entwickelt und komprimiert. Du kannst es direkt in ein Inserat hochladen, in eine Präsentation ziehen oder an eine Redaktion schicken. Das Format wird von üblichen Browsern, Bildprogrammen und Plattformen breit unterstützt und bleibt deutlich kleiner als eine unkomprimierte Arbeitsdatei. Für viele digitale Einsätze reicht ein qualitativ hochwertiger JPEG-Export aus der bearbeiteten Masterfassung.\n\nDie Kompression verwirft Bildinformationen. Adobe weist darauf hin, dass ein JPEG dadurch weniger Spielraum für starke spätere Korrekturen bietet als RAW. Für die finale Veröffentlichung ist das kein grundsätzliches Problem: Wenn Belichtung, Farbe, Schärfe und Ausschnitt bereits abgestimmt sind, geht es beim Export darum, eine passende Datei für den konkreten Kanal zu erzeugen. Vermeide es, ein JPEG mehrfach zu öffnen, stark zu bearbeiten und wieder zu speichern; wiederholte verlustbehaftete Exporte können sichtbare Qualität kosten.\n\nBei einer Website zählt neben der Pixelzahl auch die tatsächliche Dateigröße. Ein großer Master-JPEG kann für die Archivierung sinnvoll sein, muss aber nicht unverändert als jede Webansicht eingebunden werden. Besprich, ob du eine hochauflösende Hauptdatei und zusätzlich kleinere oder anders zugeschnittene Fassungen erhältst. Die Webumsetzung kann geeignete Varianten später selbst erzeugen. Wie das Bildziel schon vor dem Termin die Auswahl beeinflusst, erläutert der Beitrag über [Fahrzeugfotos für eine Website planen](/blog-autofotos-fuer-website-planen.html)."
+    },
+    {
+      "_template": "imageSequence",
+      "headline": "Eine Bildserie hat mehrere Aufgaben – und kann mehrere Ausgaben brauchen",
+      "layout": "editorial-pair",
+      "items": [
+        {
+          "image": "/assets/optimized/assets-portfolio-dsc2345-1920.webp",
+          "alt": "Nahaufnahme des Hecks eines orangefarbenen Sportwagens mit großem Heckflügel, Rückleuchten und Lackreflexen.",
+          "caption": "Rückansicht eines orangefarbenen Sportwagens; die Lackfarbe und Form prägen den fertigen Bildeindruck.",
+          "cropIntent": "editorial"
+        },
+        {
+          "image": "/assets/portfolio/automobil-mercedes-interieur-tilt.webp",
+          "alt": "Schräg fotografiertes Cockpit eines Mercedes mit Lenkrad, digitalen Anzeigen und dunklem Innenraum.",
+          "caption": "Cockpit und Innenraum eines Mercedes; auch solche Motive können Teil der vereinbarten Bildserie sein.",
+          "cropIntent": "editorial"
+        }
+      ]
+    },
+    {
+      "_template": "textBlock",
+      "headline": "TIFF ist eine Übergabedatei für besondere Weiterverarbeitung",
+      "body": "TIFF passt, wenn Druckerei, Agentur oder ein weiterer Bearbeitungsschritt ein gerendertes Rasterbild mit festgelegter Farbtiefe, Kompression, Profil oder Ebenen benötigt. TIFF ist kein unbearbeitetes Kameranegativ: Der gewählte Look ist bereits enthalten. Je nach Einstellung kann TIFF unkomprimiert, verlustfrei oder mit JPEG-Kompression gespeichert werden. Bestelle deshalb nicht nur die Endung, sondern kläre die konkreten Exportwerte.\n\nEine TIFF-Datei kann Ebenen und Transparenz enthalten, muss es aber nicht. Viele Lieferdateien sind flach. Vereinbare ausdrücklich, ob du ein flaches Bild oder bearbeitbare Ebenen brauchst; die Dateiendung allein enthält keine einzelnen Retusche-Schritte. Wenn eine Agentur Ebenen benötigt, nenne das Zielprogramm und die erforderlichen Ebenen, Masken oder Transparenzen und lass eine Beispieldatei testen.\n\nFrage deshalb konkret nach, weshalb TIFF benötigt wird. Für eine normale Fahrzeugseite oder ein digitales Inserat ist es oft unnötig; für Print richten sich Profil, Farbtiefe, Abmessungen und Kompression nach den Vorgaben der Druckerei. Allgemeine Exportempfehlungen ersetzen diese Vorgabe nicht."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Welche Ausgabe passt zu Website, Verkauf, Presse und Druck?",
+      "body": "Für eine Fahrzeugseite, einen Onlineshop oder ein Inserat solltest du eine fertig bearbeitete JPEG-Serie in einer vereinbarten Größe erhalten. Frage nach einem Hauptformat in voller, sinnvoll nutzbarer Auflösung und nach kleineren Varianten nur dann, wenn dein Portal oder Redaktionssystem feste Limits hat. Eine zweite Datei mit einer anderen Bildkomposition ist wertvoller als dieselbe Aufnahme bloß in mehreren beliebig großen Exporten.\n\nFür Social Media sind eigene Ausschnitte nützlich, wenn die Plattform ein bestimmtes Hoch- oder Querformat verlangt. Ein quadratischer Crop kann die Fahrzeugform ungünstig beschneiden; plane den Ausschnitt deshalb mit dem Motiv und nicht erst beim Hochladen. Bei Pressebildern helfen klare Dateinamen und eine kurze Bildinformation. Metadaten sollten nur die Angaben enthalten, die für den Einsatz vereinbart sind. Sensible Ortsdaten gehören nicht automatisch in jede veröffentlichte Datei; hierzu gibt es den Ratgeber [GPS-Daten aus Autofotos entfernen](/blog-gps-daten-aus-autofotos-entfernen.html).\n\nFür Print oder eine umfangreiche Nachbearbeitung klärst du vorab Pixelmaße, Farbraum, Profil und Dateityp mit dem Empfänger. Eine RAW-Datei kann zusätzlich für spätere eigene Entwicklung relevant sein, wenn du sie bearbeiten kannst und dieser Zugriff ausdrücklich vereinbart ist. Ein Master-JPEG oder TIFF ist dagegen bereits eine gerenderte Version mit dem gewählten Look. Es gibt keine universelle Dateiliste für alle Aufträge. Entscheidend ist, was der nächste Schritt im Workflow benötigt."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Was du vor dem Shooting zur Dateilieferung vereinbaren solltest",
+      "body": "Nimm die Übergabe in das Briefing auf, bevor fotografiert wird. Halte fest, wer die Bildauswahl trifft, wie viele bearbeitete Motive vorgesehen sind, welche Formate und Abmessungen gebraucht werden und ob offene RAW-Dateien Teil des Auftrags sind. Bei mehreren Einsatzbereichen ist eine kleine Ausgabeliste hilfreich: etwa JPEG für Website und Inserat, ein zusätzlicher Ausschnitt für Social Media und TIFF nur nach Spezifikation der Druckproduktion.\n\nKlärt auch Dateinamen und Ordnerstruktur. Bei mehreren Fahrzeugen sollte auf den ersten Blick erkennbar sein, zu welchem Modell und Motiv eine Datei gehört. Ein Kontaktbogen oder eine nummerierte Auswahl erleichtert Feedback, während die finale Datei weiterhin eindeutig benannt bleibt. Wenn eine Agentur weitere Retuschen übernimmt, vereinbart, welche Bildfassung sie erhält und welche Arbeitsschritte noch offen sind.\n\nFrage bei RAW-Dateien nach dem praktischen Nutzen. Möchtest du selbst neu entwickeln, braucht dein Team passende Software und einen definierten Archivweg. Geht es nur darum, die fertigen Bilder in zwei Größen zu bekommen, reichen abgeleitete Exporte. Auch die Speicherung muss geklärt sein: Wie lange bleibt die Auswahl verfügbar, und wer bewahrt die Kameraoriginale auf? Dafür gibt es keine allgemeine Frist, die für jeden Auftrag gilt. Schreibe die vereinbarte Lösung in das Angebot oder Briefing.\n\nBriefingzeile zum Anpassen: „Für Website und Inserat bitte [Anzahl] final bearbeitete JPEGs in [vereinbartem Profil und Pixelmaß] liefern; Social-Crops nur für [Kanäle/Motive]. TIFF bitte ausschließlich nach den schriftlichen Vorgaben der Druckerei anbieten. RAW-Originale [sind nicht Teil der Lieferung / bitte als Zusatz mit Preis, benötigten XMP-Begleitdateien und Archivweg ausweisen]. Dateinamen: [Fahrzeug_Motiv_Variante].“\n\nBei der Abnahme prüfe die Motivanzahl und Dateinamen gegen die Shotlist, öffne stichprobenartig jede vereinbarte Dateisorte und vergleiche Pixelmaß, Ausschnitt und eingebettetes Farbprofil mit dem Briefing. Bei TIFF kontrolliere zusätzlich, ob Datei flach oder mit Ebenen geliefert wurde und ob Profil/Farbtiefe der Druckereivorgabe entsprechen. Bei RAWs prüfe, ob die nötigen Begleitdateien mitgeliefert wurden und sich eine Beispieldatei in der vereinbarten Software öffnen lässt."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Dateiformat und Nutzungsrecht sind zwei getrennte Vereinbarungen",
+      "body": "Eine RAW-Datei zu erhalten bedeutet nicht automatisch, dass du sie beliebig veröffentlichen, verändern oder an Dritte weitergeben darfst. Umgekehrt kann ein Nutzungsrecht für fertige JPEGs vereinbart sein, ohne dass die Aufnahmeoriginale übergeben werden. Dateibesitz, Bearbeitungszugang und Nutzungsumfang sollten deshalb getrennt benannt werden. Die Seite zu [Nutzungsrechten für Fahrzeugfotos](/blog-nutzungsrechte-fahrzeugfotos.html) behandelt die Fragen, die zum Einsatz der Bilder gehören. Bei rechtlichen Zweifeln sollte die Vereinbarung fachlich geprüft werden.\n\nFür die Farbdarstellung gelten ähnliche Grenzen: Ein TIFF oder JPEG garantiert nicht, dass Lackfarbe auf jedem Bildschirm identisch erscheint. Profil, Anzeige und Export gehören zum Farbworkflow. Der separate Beitrag über [Farbmanagement für Autofotos](/blog-autofotos-farbmanagement-monitor-export.html) erklärt diese technische Kette."
+    },
+    {
+      "_template": "faqBlock",
+      "headline": "Häufige Fragen zu Dateiformaten für Fahrzeugfotos",
+      "items": [
+        {
+          "question": "Soll ich meinen Autofotografen nach RAW-Dateien fragen?",
+          "answer": "Nur wenn du die Kameraoriginale selbst weiterentwickeln oder für ein vereinbartes Archiv übernehmen möchtest. Für eine fertige Website, ein Inserat oder Social Media sind bearbeitete JPEGs meist praktischer. Kläre Format, Aufwand, Zugriff und Nutzungsumfang vor dem Auftrag."
+        },
+        {
+          "question": "Ist TIFF bei Fahrzeugfotos immer besser als JPEG?",
+          "answer": "Nein. TIFF kann bei Druck oder weiterer Bearbeitung passend sein, ist aber größer und bleibt eine bereits entwickelte Rasterdatei. Wenn der Empfänger JPEG akzeptiert und keine weitere Bearbeitung braucht, bringt TIFF oft keinen praktischen Vorteil."
+        },
+        {
+          "question": "Kann ich ein RAW direkt auf meine Website hochladen?",
+          "answer": "RAW-Dateien sind herstellerspezifisch und normalerweise keine fertigen Webbilder. Lass daraus eine geeignete Ausgabedatei entwickeln und exportieren; die Website kann zusätzlich passende Größen für verschiedene Ansichten bereitstellen."
+        },
+        {
+          "question": "Bekomme ich mit dem RAW automatisch mehr Bildqualität?",
+          "answer": "RAW bewahrt mehr Möglichkeiten für die Entwicklung, ist aber nicht automatisch die bessere veröffentlichte Datei. Entscheidend sind Aufnahme, Bearbeitung und der Export für den jeweiligen Einsatz."
+        }
+      ]
+    },
+    {
+      "_template": "linkList",
+      "headline": "Quellen und verwandte Beiträge",
+      "links": [
+        {
+          "label": "Adobe: Camera-Raw-Dateien entwickeln und verwalten",
+          "href": "https://helpx.adobe.com/camera-raw/desktop/get-started/overview-and-setup/introduction-camera-raw.html",
+          "description": "Erklärt, wie Camera Raw Sensordaten verarbeitet, JPEGs bereits kameraintern entwickelt werden und RAW-Anpassungen mit XMP-Begleitdateien gespeichert werden können."
+        },
+        {
+          "label": "Adobe Photoshop: TIFF mit Kompression, Farbtiefe und Ebenen speichern",
+          "href": "https://helpx.adobe.com/photoshop/desktop/save-and-export/save-files/save-in-tiff-format.html",
+          "description": "Zeigt, dass TIFF je nach Export flach oder mit Ebenen, Transparenz und unterschiedlichen Kompressionsarten gespeichert werden kann."
+        },
+        {
+          "label": "Adobe Lightroom Classic: Exportdateien und Farbraum wählen",
+          "href": "https://helpx.adobe.com/lightroom-classic/desktop/export-photos/export-files-disk-or-cd.html",
+          "description": "Dokumentiert Dateiformate, Farbprofile, Pixelmaße, JPEG-Kompression, TIFF-Farbtiefe und verlustfreie TIFF-Kompression beim Export."
+        },
+        {
+          "label": "Adobe Photoshop: Kompressionsarten vergleichen",
+          "href": "https://helpx.adobe.com/photoshop/desktop/save-and-export/export-files-to-different-formats/file-compression-in-photoshop.html",
+          "description": "Unterscheidet verlustbehaftete JPEG-Kompression von verlustfreien Kompressionsarten und erklärt die Abwägung zwischen Dateigröße und Datenverlust."
+        }
+      ]
+    }
+  ],
+  "seo": {
+    "title": "RAW, JPEG oder TIFF für Fahrzeugfotos?",
+    "description": "RAW, JPEG und TIFF für Fahrzeugfotos erklärt: Welche Dateien für Website, Verkauf, Presse und Druck sinnvoll sind und was du vor dem Shooting klärst.",
+    "focusKeyword": "Dateiformate für Fahrzeugfotos",
+    "searchIntent": "Informative Entscheidungssuche von Auftraggebern und Autofotografen: Welche finalen Bilddateien je nach digitalem Einsatz, Druck oder weiterer Bearbeitung übergeben werden sollten.",
+    "canonicalUrl": "https://matthiasramahi.de/blog-dateiformate-fahrzeugfotografie-raw-jpeg-tiff.html",
+    "legacyUrl": "blog-dateiformate-fahrzeugfotografie-raw-jpeg-tiff.html",
+    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "noIndex": false
+  },
+  "createdAt": "2026-11-03T17:00:00Z",
+  "updatedAt": "2027-05-26T07:00:00Z",
+  "relatedPages": [
+    {
+      "label": "Automobilfotografie",
+      "href": "/automobil-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fahrzeugfotos für eine Website planen",
+      "href": "/blog-autofotos-fuer-website-planen.html",
+      "seoPurpose": "related-editorial",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Nutzungsrechte für Fahrzeugfotos",
+      "href": "/blog-nutzungsrechte-fahrzeugfotos.html",
+      "seoPurpose": "related-editorial",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Farbmanagement für Autofotos",
+      "href": "/blog-autofotos-farbmanagement-monitor-export.html",
+      "seoPurpose": "related-editorial",
+      "rel": "follow",
+      "openInNewTab": false
+    }
+  ],
+  "status": "scheduled"
+}

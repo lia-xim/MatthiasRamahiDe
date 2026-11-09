@@ -255,7 +255,7 @@ async function readPublicAsset(href: string) {
     {socialImage && <meta name="twitter:image" content={socialImage} />}
     {socialImage && <meta name="twitter:image:alt" content={title} />}
     <script is:inline>document.documentElement.classList.add('js')</script>
-    <link rel="preload" href="/fonts/v1/mr-sans-latin-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/v1/mr-display-latin-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/v1/mr-mono-latin-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href={versionStaticAssetUrl('/assets/site-base.css')} />
     {criticalCss && <style data-critical="home" set:html={criticalCss} />}
@@ -284,9 +284,10 @@ async function readPublicAsset(href: string) {
     <script
       is:inline
       defer
-      src="https://analytics.crawlfoundry.com/script.js"
-      data-website-id="be66c314-29d1-4d96-8a3e-9c842d472210"
-      data-domains="matthiasramahi.de,www.matthiasramahi.de"
+      src="https://app.crawlfoundry.com/api/website-analytics/script"
+      data-website-id="56ef8f9e-2547-4ac0-a7b7-6a6ea3ad6e01"
+      data-cf-host="matthiasramahi.de"
+      data-crawl-foundry-verification="2d179ccd5ad94a4ebc6c0b31faf5a23cb76ff95be04651edacfda501456e8593"
     ></script>
     <style>.mr-skip{position:fixed;left:12px;top:12px;z-index:1000;padding:12px 18px;background:#f3f5ef;color:#0a0c11;font:600 14px/1.2 'MR Sans',Arial,sans-serif;text-decoration:none;outline:2px solid #cf392e;outline-offset:2px;transform:translateY(-200%)}.mr-skip:focus{transform:none}#mr-content:focus{outline:none}</style>
   </head>

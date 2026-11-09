@@ -1,4 +1,5 @@
 import { resolveTinaMediaRef } from './tinaMedia'
+import { isJournalDocumentPublic } from './journalPublication'
 import type { PayloadDoc } from './payload'
 
 type RawDoc = Record<string, unknown>
@@ -145,7 +146,12 @@ function documents(collection: string, options: ListOptions = {}) {
   if (!modules) return []
 
   const docs = Object.entries(modules).map(([modulePath, raw]) => normalizeDoc(raw, canonicalCollection(collection), modulePath))
-  const visibleDocs = options.draft ? docs : docs.filter((doc) => doc._status !== 'draft')
+  const canonical = canonicalCollection(collection)
+  const visibleDocs = options.draft
+    ? docs
+    : docs.filter((doc) =>
+        doc._status !== 'draft' && (canonical !== 'journal-posts' || isJournalDocumentPublic(doc)),
+      )
   return sortDocuments(visibleDocs, options.sort)
 }
 
@@ -168,9 +174,10 @@ export function getTinaRelativePathBySlug(collection: string, slug: string, opti
   if (!modules) return null
 
   const normalizedSlug = slug.replace(/\.html$/i, '')
+  const canonical = canonicalCollection(collection)
   for (const [modulePath, raw] of Object.entries(modules)) {
     const doc = normalizeDoc(raw, canonicalCollection(collection), modulePath)
-    if (doc._status === 'draft' && !options.draft) continue
+    if (!options.draft && (doc._status === 'draft' || (canonical === 'journal-posts' && !isJournalDocumentPublic(doc)))) continue
     if (doc.slug === normalizedSlug || moduleFilename(modulePath) === normalizedSlug) return moduleRelativePath(modulePath)
   }
 
@@ -182,9 +189,10 @@ export function getTinaRelativePathByLegacyUrl(collection: string, legacyUrl: st
   if (!modules) return null
 
   const normalizedLegacyUrl = normalizeLegacyKey(legacyUrl)
+  const canonical = canonicalCollection(collection)
   for (const [modulePath, raw] of Object.entries(modules)) {
     const doc = normalizeDoc(raw, canonicalCollection(collection), modulePath)
-    if (doc._status === 'draft' && !options.draft) continue
+    if (!options.draft && (doc._status === 'draft' || (canonical === 'journal-posts' && !isJournalDocumentPublic(doc)))) continue
 
     const candidates = [doc.seo?.legacyUrl, doc.legacy?.sourceFile, doc.legacy?.sourceUrl, doc.slug ? `${doc.slug}.html` : '']
     if (candidates.some((candidate) => normalizeLegacyKey(candidate) === normalizedLegacyUrl)) {

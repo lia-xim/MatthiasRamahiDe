@@ -540,3 +540,31 @@
 
 /* Kopfzeilen-Abstände straffen. */
 .chapters-head { margin-bottom: clamp(26px, 3.4vw, 48px); }
+
+/* ---------- "Wenn es bewegt sein soll" (2026-11) ----------
+   Statt der Mono-"Visitentafel": Text links, rechts ein grosser, ruhiger
+   Link zu Sophias Website. Leicht abgesetzter Papierton, damit die Sektion
+   nicht mit der folgenden Anfrage-Sektion verschmilzt. */
+.sister.sister--v2{ background:#e9eae4; color:#0a0c11; border-top:1px solid rgba(10,12,17,.08); }
+.sister--v2 .section-inner{ padding-block:clamp(80px,9vw,140px) !important; }
+.sister--v2 .sister-grid{ grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:clamp(40px,6vw,112px); align-items:center; }
+.sister--v2 .sister-copy h2{ text-transform:uppercase; font-size:clamp(44px,5.4vw,92px); line-height:.9; margin:0 0 24px; }
+.sister--v2 .sister-copy h2 em{ color:#7a8a86; }
+.sister--v2 .sister-copy .lead{ margin:0 0 14px; color:#0a0c11; font-weight:500; }
+.sister--v2 .sister-copy p:not(.lead){ color:rgba(10,12,17,.66); }
+.sister--v2 .actions{ margin-top:28px; }
+.sister--v2 .actions .btn{ border:1px solid #0a0c11; color:#0a0c11; background:transparent; }
+.sister--v2 .actions .btn:hover{ background:#0a0c11; color:#f3f5ef; }
+.sister-card{
+  display:flex; flex-direction:column; gap:18px; min-width:0;
+  padding:clamp(28px,3.4vw,52px); background:#0a0c11; color:#f3f5ef; text-decoration:none;
+  transition:background-color .3s cubic-bezier(.23,1,.32,1);
+}
+.sister-card:hover{ background:#14171d; }
+.sister-card:focus-visible{ outline:2px solid #cf392e; outline-offset:4px; }
+.sister-card__label{ font:500 12px/1 'MR Mono','MR Mono Fallback',ui-monospace,monospace; letter-spacing:.14em; color:rgba(243,245,239,.56); }
+.sister-card__name{ font-weight:700; font-stretch:75%; text-transform:uppercase; font-size:clamp(48px,6vw,104px); line-height:.88; }
+.sister-card__name em{ font-style:normal; color:#a9b4b0; }
+.sister-card__roles{ color:rgba(243,245,239,.72); line-height:1.5; font-size:clamp(15px,1.1vw,18px); }
+.sister-card__go{ margin-top:clamp(12px,2vw,28px); padding-top:18px; border-top:1px solid rgba(243,245,239,.16); font:600 12px/1 'MR Mono','MR Mono Fallback',ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; }
+@media (max-width:900px){ .sister--v2 .sister-grid{ grid-template-columns:1fr; } }

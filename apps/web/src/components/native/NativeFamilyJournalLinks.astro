@@ -1,5 +1,5 @@
 ---
-import { journalArticles, type JournalCluster } from '../../lib/journalArticleContent'
+import { getPublicJournalArticles, type JournalCluster } from '../../lib/journalArticleContent'
 
 type Props = {
   /** Journal-Cluster, deren Beiträge zu dieser Fotografie-Familie gehören. */
@@ -14,7 +14,7 @@ const { clusters, familyHref, limit = 6, scopeLabel } = Astro.props as Props
 const normalizedFamilyHref = familyHref.replace(/^\//, '')
 
 // Cluster in der übergebenen Reihenfolge, danach themenübergreifende Beiträge, die auf diese Familie verweisen.
-const articles = journalArticles
+const articles = getPublicJournalArticles()
   .map((article) => ({
     article,
     rank: clusters.includes(article.cluster)

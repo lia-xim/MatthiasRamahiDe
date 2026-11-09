@@ -20,6 +20,7 @@ import { familyHeroCopy, familyVisualSlots, getFamilyVisualSourceDoc } from '../
 import { getLegacyBackedDoc, imageAlt, imageDimensions, imageDisplayUrl, imageSrcset, type PayloadDoc, type PayloadMedia } from '../../lib/payload'
 import { splitTrailingEmphasis } from '../../lib/splitTrailingEmphasis'
 import { tinaAttrs } from '../../lib/tinaFieldAttrs'
+import HeroMotion from './HeroMotion.astro'
 
 type Props = {
   doc?: PayloadDoc | null
@@ -322,6 +323,22 @@ const finalHeroPanels = heroPanelsSource.length
       return [fbTuple[0], resolved.full, resolved.mobile, resolved] as const
     })
   : inheritedHeroPanels
+// Der Kamerafahrt-Hero zeigt die Bilder randlos: groesste Variante aus dem srcset.
+const largestFromSrcset = (srcset?: string) =>
+  (srcset || '')
+    .split(',')
+    .map((entry) => entry.trim().split(/\s+/))
+    .filter(([url, size]) => url && /^\d+w$/.test(size || ''))
+    .sort((left, right) => parseInt(right[1], 10) - parseInt(left[1], 10))[0]?.[0]
+// Randloser Hero braucht grosse Dateien: bevorzugt die hochaufgeloesten
+// Bildslots (>= 1920 px), sonst die frueheren Triptychon-Panels.
+const isLargeVisual = (url?: string) => /-(19[2-9]\d|2\d{3})x\d+\.(webp|avif|jpe?g)/i.test(url || '')
+const largeVisualSlides = visualSlots
+  .filter((slot) => isLargeVisual(slot.full))
+  .map((slot) => ({ src: slot.full, mobile: slot.mobile }))
+const panHeroSlides = largeVisualSlides.length >= 2
+  ? largeVisualSlides.slice(0, 4)
+  : [finalHeroPanels[1], finalHeroPanels[0], finalHeroPanels[2]].filter(Boolean).map((panel) => ({ src: largestFromSrcset(panel[3]?.srcset) || panel[1], mobile: panel[2] }))
 const transparentHeroPixel = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=='
 const mobileHeroPreload = finalHeroPanels[1]?.[2] || finalHeroPanels[0]?.[2] || ''
 const desktopHeroPreload = finalHeroPanels[0]?.[3]?.full || ''
@@ -577,8 +594,8 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
   description={metaDescription}
   ogImage={doc?.seo?.ogImage || visualSlots[1].full}
   preloadImages={[
-    { href: mobileHeroPreload, media: '(max-width: 720px)' },
-    { href: desktopHeroPreload, media: '(min-width: 721px)' },
+    { href: panHeroSlides[0]?.mobile || mobileHeroPreload, media: '(max-width: 900px)' },
+    { href: panHeroSlides[0]?.src || desktopHeroPreload, media: '(min-width: 901px)' },
   ]}
 >
   {preview && (
@@ -591,29 +608,11 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
   )}
   <main>
     <section class="hero-tri" id="top" data-header-theme="dark" aria-label={heroLabel} {...tinaAttrs(heroPanelSource(0), 'image')}>
-      <div class="tri-stage" aria-hidden="true">
-        {finalHeroPanels.map(([name, image, mobileImage, visual], index) => (
-          <div class="tri-col" data-tri={name}>
-            <div class="tri-img">
-              <picture>
-                <source media="(max-width: 720px)" srcset={index === 1 ? mobileImage : transparentHeroPixel} />
-                <img
-                  src={image}
-                  srcset={visual.srcset || undefined}
-                  sizes="(max-width: 720px) 100vw, 34vw"
-                  alt=""
-                  loading="eager"
-                  fetchpriority={index === 1 ? 'high' : 'auto'}
-                  width={visual.width}
-                  height={visual.height}
-                  decoding="async"
-                  {...tinaAttrs(heroPanelSource(index), 'image')}
-                />
-              </picture>
-            </div>
-          </div>
-        ))}
-      </div>
+      <HeroMotion
+        variant="pan"
+        slides={panHeroSlides}
+      />
+      <div class="hm-veil" aria-hidden="true"></div>
 
       <div class="tri-overlay">
         <h1 class="tri-title" style={heroTitleFitStyle} aria-label={heroLabel}>

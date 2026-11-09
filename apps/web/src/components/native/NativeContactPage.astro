@@ -7,22 +7,6 @@ const legacyFile = 'contact.html'
 const providedDoc = Astro.props.doc as PayloadDoc | undefined
 const doc = providedDoc || (await getLegacyBackedDoc(legacyFile, { depth: 2 }))
 
-const directContacts = [
-  {
-    label: 'E-Mail',
-    href: 'mailto:info@matthiasramahi.de',
-    value: 'info@matthiasramahi.de',
-    sub: 'Für Anfragen, Briefings, Angebote',
-    copy: 'info@matthiasramahi.de',
-  },
-  {
-    label: 'Telefon',
-    href: 'tel:+4917642449858',
-    value: '+49 176 42449858',
-    sub: 'Mo – Sa · 10 – 19 Uhr',
-    copy: '+49 176 42449858',
-  },
-]
 ---
 <AdoptedPageLayout legacyFile={legacyFile} current="kontakt" doc={doc} bodyClass="has-mr-footer contact-page">
   <main>
@@ -33,25 +17,7 @@ const directContacts = [
       data-header-theme="light"
       data-contact-subject="Projektanfrage"
       data-contact-headline="Projekt <em>anfragen.</em>"
-      data-contact-lead="Name, E-Mail und ein paar Stichpunkte zu deinem Projekt reichen fuer den ersten Schritt."
+      data-contact-lead="Name, E-Mail und ein paar Stichpunkte zu deinem Projekt reichen für den ersten Schritt."
     />
-
-    <section class="kc-direct" data-header-theme="dark" aria-label="Direkter Kontakt">
-      <div class="kc-direct__inner">
-        {directContacts.map((item) => (
-          <div class="kc-card">
-            <p class="kc-card__label">{item.label}</p>
-            <a class="kc-card__value" href={item.href}>{item.value}</a>
-            <span class="kc-card__sub">{item.sub}</span>
-            <button class="kc-copy" type="button" data-copy={item.copy}>Kopieren</button>
-          </div>
-        ))}
-        <div class="kc-card">
-          <p class="kc-card__label">Standort</p>
-          <span class="kc-card__value">Düsseldorf · NRW</span>
-          <span class="kc-card__sub">Termine nach Vereinbarung</span>
-        </div>
-      </div>
-    </section>
   </main>
 </AdoptedPageLayout>

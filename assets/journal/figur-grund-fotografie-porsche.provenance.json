@@ -1,0 +1,33 @@
+{
+  "assetPath": "/assets/journal/figur-grund-fotografie-porsche.webp",
+  "repositorySourcePath": "assets/journal/figur-grund-fotografie-porsche.webp",
+  "articleSlug": "figur-grund-fotografie",
+  "createdAt": "2026-11-07T19:10:25Z",
+  "source": {
+    "sourceBase": "The user-authorized Lightroom render folder: Pictures/Lightroom/Images/SonyA7/2026",
+    "relativePath": "12.03.2026/Render_1/_DSC5746.jpg",
+    "format": "Rendered JPEG; not a RAW file",
+    "dimensionsPx": [9325, 6202],
+    "sizeBytes": 26983587,
+    "sha256": "ABA3E4A5C158A962372A357D7EF19B62DB0F5B90A63C03962B9A67DAA8458018",
+    "sourceMutated": false
+  },
+  "derivative": {
+    "format": "WebP",
+    "dimensionsPx": [1920, 1276],
+    "sizeBytes": 224100,
+    "sha256": "A7CFC1F101857C9767985C404D09DF1C5693D5F5DA1A2E343528DDDDA54272A6",
+    "encoder": "ffmpeg libwebp",
+    "quality": 78,
+    "compressionLevel": 6,
+    "metadataStripped": true
+  },
+  "rightsAndPrivacy": {
+    "authorization": "The account owner explicitly directed use of rendered JPEGs from this Lightroom folder for website articles and approved compression of the rendered outputs. This source was read-only.",
+    "photographerCopyrightOwner": "Not separately documented in this sidecar.",
+    "visiblePeople": false,
+    "readableRegistrationPlate": false,
+    "thirdPartyContext": "A Porsche vehicle and a building facade are visible. No separate vehicle, trademark, or location release is recorded here. Use is limited to an editorial photography guide; do not imply endorsement.",
+    "status": "owner-authorized-editorial-use; third-party permissions not independently documented"
+  }
+}

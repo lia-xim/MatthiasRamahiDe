@@ -85,7 +85,17 @@ const items = Array.from({ length: baseLength }, (_, index) =>
   mergeService(fallbackServices[index], cmsItems[index], index),
 ).filter((service) => hasText(stripHtml(service.headline)))
 
-const overviewItems = items.filter(
+// Ramahi Webdesign und Crawl Foundry sind eigene, grosse Sektionen (siehe
+// unten) und tauchen deshalb nicht noch einmal in Uebersicht und Liste auf.
+const isWebdesign = (service: (typeof items)[number]) => service.id === 'webdesign' || service.href.includes('/webdesign-seo-duesseldorf.html')
+const isCrawlFoundry = (service: (typeof items)[number]) => service.id === 'keyword-datenbank' || service.href.includes('/keyword-datenbank-seo.html')
+const webdesignService = items.find(isWebdesign)
+const crawlFoundryService = items.find(isCrawlFoundry)
+const listItems = items.filter((service) => !isWebdesign(service) && !isCrawlFoundry(service))
+const webdesignImages = webdesignService?.images ?? []
+const crawlFoundryImages = crawlFoundryService?.images ?? []
+
+const overviewItems = listItems.filter(
   (service) =>
     service.id !== 'sonder' &&
     service.id !== 'keyword-datenbank' &&
@@ -101,32 +111,9 @@ const overviewHead = {
       : 'Dienstleistungen <em>im Überblick.</em>',
   intro: hasText(cms?.overviewIntro)
     ? cms!.overviewIntro!
-    : 'Vom einzelnen Fine-Art-Print bis zur kompletten Markenfläche, Website, Filmproduktion oder Eventbegleitung. Sieben ergänzende Bereiche, ein gemeinsamer visueller Anspruch.',
+    : 'Vom einzelnen Fine-Art-Print bis zur Markenfläche, Filmproduktion oder Eventbegleitung – über erfahrene Partner aus Düsseldorf und NRW.',
 }
 
-const fallbackWhyCards = [
-  { label: 'Koordination', headlineHtml: 'Ein Ansprechpartner, <em>weniger Reibung.</em>', text: 'Abstimmung, Reihenfolge und Partner werden gebündelt, damit das Projekt nicht zwischen Gewerken zerfällt.' },
-  { label: 'Qualität', headlineHtml: 'Ein visueller Anspruch <em>über alle Medien.</em>', text: 'Druck, Website, Video oder Event-Auftritt werden nicht einzeln gedacht, sondern auf dieselbe Bildsprache ausgerichtet.' },
-  { label: 'Netzwerk', headlineHtml: 'Spezialisierte Partner <em>aus Düsseldorf &amp; NRW.</em>', text: 'Kurze Wege, klare Kommunikation und erfahrene Partner für Produktion, Präsentation und digitale Umsetzung.' },
-  { label: 'Lösung', headlineHtml: 'Keine <em>Standardpakete.</em>', text: 'Format, Material, Umfang und Timing richten sich nach dem Projekt — nicht nach einer festen Schablone.' },
-]
-const why = {
-  kicker: hasText(cms?.whyKicker) ? cms!.whyKicker! : 'Projektablauf',
-  headlineHtml:
-    cms && hasText(cms.whyHeadline) ? emphasize(cms.whyHeadline, cms.whyEmphasis) : 'Ein Bildsystem, <em>mehrere Ausgänge.</em>',
-  lead: hasText(cms?.whyLead)
-    ? cms!.whyLead!
-    : 'Der Vorteil liegt nicht in möglichst vielen Leistungen, sondern in einem sauber geführten Prozess: Bildsprache, Material, digitale Präsenz und Präsentation wirken am Ende wie ein zusammenhängender Auftritt.',
-  cards:
-    cms?.whyCards && cms.whyCards.length > 0
-      ? cms.whyCards.map((card) => ({
-          source: card,
-          label: card.label || '',
-          headlineHtml: emphasize(card.headline || '', card.emphasis),
-          text: card.text || '',
-        }))
-      : fallbackWhyCards,
-}
 ---
 <AdoptedPageLayout
   legacyFile="leistungen.html"
@@ -140,11 +127,57 @@ const why = {
       id="top"
       label="Weitere Dienstleistungen"
       semanticHeading="Weitere Dienstleistungen"
-      eyebrow="Weitere Dienstleistungen · sechs Bereiche"
       slides={heroSlides}
       sourceSlides={doc?.heroSlides || []}
       headerTheme="dark"
     />
+
+    <section class="studio" id="webdesign" data-header-theme="light" aria-labelledby="studio-title">
+      <div class="studio-inner">
+        <div class="studio-copy">
+          <p class="studio-label">ramahi-webdesign.de</p>
+          <h2 id="studio-title">Ramahi <em>Webdesign.</em></h2>
+          <p class="studio-lead">Websites für kleine Unternehmen, Selbstständige und Privatpersonen in Düsseldorf und NRW. Gestaltet und programmiert ohne Baukasten, von der Struktur bis zum Eintrag bei Google. Auch diese Website ist dort entstanden.</p>
+          <dl class="studio-facts">
+            <div><dt>Website</dt><dd><span>ab 399 €</span></dd></div>
+            <div><dt>Hosting &amp; Wartung</dt><dd><span>50 € / Monat</span></dd></div>
+            <div><dt>SEO</dt><dd><span>ab 19,99 €</span></dd></div>
+            <div><dt>Erstgespräch</dt><dd><span>kostenlos</span></dd></div>
+          </dl>
+          <div class="studio-actions">
+            <a class="studio-btn is-primary" href="https://ramahi-webdesign.de/" target="_blank" rel="noopener">Zu Ramahi Webdesign <span aria-hidden="true">↗</span></a>
+            <a class="studio-btn" href="/webdesign-seo-duesseldorf.html">Webdesign in Düsseldorf</a>
+          </div>
+        </div>
+        <a class="studio-media" href="https://ramahi-webdesign.de/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+          {webdesignImages[0] && <img class="studio-shot" src={webdesignImages[0].src} alt="" loading="lazy" width={webdesignImages[0].width} height={webdesignImages[0].height} decoding="async" />}
+          {webdesignImages[1] && <img class="studio-detail" src={webdesignImages[1].src} alt="" loading="lazy" width={webdesignImages[1].width} height={webdesignImages[1].height} decoding="async" />}
+        </a>
+      </div>
+    </section>
+
+    <section class="foundry" id="crawl-foundry" data-header-theme="dark" aria-labelledby="foundry-title">
+      <div class="foundry-inner">
+        <div class="foundry-copy">
+          <p class="studio-label">crawlfoundry.com</p>
+          <h2 id="foundry-title">Crawl <em>Foundry.</em></h2>
+          <p class="studio-lead">Eigene SEO-Software für Keyword-Recherche, technische Site Audits, Priorisierung und Ranking-Tracking. Sie läuft auch für die Suchmaschinenoptimierung dieser Website.</p>
+          <ul class="foundry-list">
+            <li><span>Keyword-Recherche</span></li>
+            <li><span>Site Audits</span></li>
+            <li><span>Priorisierung</span></li>
+            <li><span>Ranking-Tracking</span></li>
+          </ul>
+          <div class="studio-actions">
+            <a class="studio-btn is-primary" href="https://crawlfoundry.com/" target="_blank" rel="noopener">Zu Crawl Foundry <span aria-hidden="true">↗</span></a>
+            <a class="studio-btn" href="/keyword-datenbank-seo.html">Fallstudie lesen</a>
+          </div>
+        </div>
+        <figure class="foundry-media">
+          {crawlFoundryImages[0] && <img src={crawlFoundryImages[0].src} alt={crawlFoundryImages[0].alt || 'Keyword-Datenbank in Crawl Foundry'} loading="lazy" width={crawlFoundryImages[0].width} height={crawlFoundryImages[0].height} decoding="async" />}
+        </figure>
+      </div>
+    </section>
 
     <section class="overview" id="overview" data-header-theme="light" aria-label="Unsere Dienstleistungen im Überblick">
       <div class="overview-inner">
@@ -168,7 +201,7 @@ const why = {
 
     <section class="services" data-header-theme="light" aria-label="Leistungsdetails">
       <div class="services-list">
-        {items.map((service) => (
+        {listItems.map((service) => (
           <a class="service" id={service.id} href={service.href} data-header-theme={service.theme}>
             <div class="service-copy">
               <h3 set:html={service.headline} {...tinaAttrs(service.source, 'headline')}></h3>
@@ -187,16 +220,6 @@ const why = {
       </div>
     </section>
 
-    <section class="why" data-header-theme="dark" aria-label="Warum alles aus einer Hand Sinn ergibt">
-      <div class="why-inner">
-        <div class="why-copy"><p class="kicker" {...tinaAttrs(cms, 'whyKicker')}>{why.kicker}</p><h2 set:html={why.headlineHtml} {...tinaAttrs(cms, 'whyHeadline')}></h2><p class="why-lead" {...tinaAttrs(cms, 'whyLead')}>{why.lead}</p></div>
-        <div class="why-board">
-          {why.cards.map((card) => (
-            <article class="why-card"><span {...tinaAttrs(editableSource(card), 'label')}>{card.label}</span><strong set:html={card.headlineHtml} {...tinaAttrs(editableSource(card), 'headline')}></strong><p {...tinaAttrs(editableSource(card), 'text')}>{card.text}</p></article>
-          ))}
-        </div>
-      </div>
-    </section>
 
     <ContactSlot
       id="anfrage"

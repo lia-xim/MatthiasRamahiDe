@@ -23,6 +23,7 @@ import { isCurrentPageHref } from '../../lib/pageLinks'
 import { getLegacyBackedDoc, routeForDoc, type PayloadDoc } from '../../lib/payload'
 import { articleJsonLd } from '../../lib/seo'
 import { tinaAttrs } from '../../lib/tinaFieldAttrs'
+import HeroMotion from './HeroMotion.astro'
 
 type PreviewState = {
   collection: string
@@ -343,6 +344,16 @@ const visualSlots = familyVisualSlots(
   ],
   sectionImageOverrides,
 )
+// Hero-Serie (2026-11): Alpina B8 am Medienhafen und am Rhein, Kennzeichen
+// unkenntlich gemacht, abwechselnd mit M4 und Koenigsegg aus dem Bestand.
+// Keine Ueberschneidung mit der Startseite (die nutzt alpina-b8-front).
+const automobilHeroSlides = [
+  { src: '/assets/optimized/automobil-alpina-b8-medienhafen-1920.webp', mobile: '/assets/optimized/automobil-alpina-b8-medienhafen-960.webp' },
+  { src: '/uploads/payload/_DSC2831%20(1)-1920x1280.webp', mobile: '/uploads/payload/_DSC2831%20(1)-760x507.webp' },
+  { src: '/assets/optimized/automobil-alpina-b8-rheinbruecke-1920.webp', mobile: '/assets/optimized/automobil-alpina-b8-rheinbruecke-960.webp' },
+  { src: '/uploads/payload/_DSC3892-1-1920x1280.webp', mobile: '/uploads/payload/_DSC3892-1-760x507.webp' },
+  { src: '/assets/optimized/automobil-alpina-b8-rheinufer-1920.webp', mobile: '/assets/optimized/automobil-alpina-b8-rheinufer-960.webp' },
+]
 const inheritedHeroDevelopInitial = visualSlots[0].cssFull
 const inheritedHeroDevelopInitialMobile = visualSlots[0].cssMobile
 const inheritedSwitchFrames = switchFrames.map((frame, index) => ({
@@ -720,8 +731,8 @@ const curatedIntentHeading = isParentPage
   jsonLd={guideJsonLd}
   ogImage={doc?.seo?.ogImage || visualSlots[0].full}
   preloadImages={[
-    { href: inheritedHeroDevelopInitialMobile, media: '(max-width: 900px)' },
-    { href: inheritedHeroDevelopInitial, media: '(min-width: 901px)' },
+    { href: automobilHeroSlides[0].mobile, media: '(max-width: 900px)' },
+    { href: automobilHeroSlides[0].src, media: '(min-width: 901px)' },
   ]}
 >
   {preview && (
@@ -742,22 +753,11 @@ const curatedIntentHeading = isParentPage
       aria-label={heroLabel}
       {...tinaAttrs(heroImageSource, 'image')}
     >
-      <div class="pd-stage" aria-hidden="true">
-        <div class="pd-frame is-in" id="pdFrameA" style="--cx:50%;--cy:50%">
-          <div
-            class="pd-frame-inner"
-            style={`--pd-bg-mobile:url('${inheritedHeroDevelopInitialMobile}');--pd-bg-desktop:url('${inheritedHeroDevelopInitial}')`}
-            {...tinaAttrs(heroImageSource, 'image')}
-          ></div>
-        </div>
-        <div class="pd-frame" id="pdFrameB"><div class="pd-frame-inner"></div></div>
-      </div>
-      <div class="pd-paper" aria-hidden="true"></div>
-      <div class="pd-glow" aria-hidden="true"></div>
-      <div class="pd-streak" aria-hidden="true"></div>
-      <div class="pd-flare pd-flare-2" aria-hidden="true"></div>
+      <HeroMotion
+        variant="pan"
+        slides={automobilHeroSlides}
+      />
       <div class="pd-vignette" aria-hidden="true"></div>
-      <div class="pd-grain" aria-hidden="true"></div>
       <div class="pd-overlay">
         <div class="pd-bottom">
           <h1 class={`pd-title${isLocalCityPage ? ' pd-title--local' : ''}`} style={heroTitleFitStyle} aria-label={heroLabel}>

@@ -1,0 +1,200 @@
+{
+  "title": "LED-Banding im Autohaus: Streifen aus der Hallenbeleuchtung erkennen",
+  "slug": "led-banding-autohaus-hallenlicht",
+  "category": "automotive",
+  "tags": [
+    "Automobilfotografie",
+    "Autohaus",
+    "LED-Licht",
+    "Kameraeinstellungen",
+    "Banding"
+  ],
+  "publishedAt": "2027-09-03T07:00:00.000Z",
+  "excerpt": "Dunkle Streifen oder wechselnde Helligkeit auf Autohausfotos? So prüfst du LED-Hallenlicht, Verschlussart und Anti-Flicker-Funktionen, ohne eine pauschale Belichtungszeit zu übernehmen.",
+  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+  "coverAlt": "Schwarzes Brabus-Fahrzeug vor einer Industrieanlage im Abendlicht",
+  "readingTime": 9,
+  "blocks": [
+    {
+      "_template": "textBlock",
+      "headline": "Wenn das Auto gleichmäßig beleuchtet wirkt, das Foto aber Bänder zeigt",
+      "body": "Ein Showroom oder eine Messehalle kann für das Auge ruhig und gleichmäßig beleuchtet erscheinen. Auf der Aufnahme tauchen trotzdem dunkle oder helle Querstreifen auf, Flächen ändern von Bild zu Bild ihre Helligkeit oder die Farbe wirkt in verschiedenen Bildbereichen unterschiedlich. Das muss weder ein Fehler am Fahrzeug noch ein Defekt der Kamera sein. Eine zeitlich wechselnde Lichtleistung kann sich mit dem Moment und der Art überschneiden, in der die Kamera den Sensor belichtet oder ausliest.\n\nDieser Leitfaden behandelt Streifen, die von Hallenleuchten, LED-Spots, Lichtbändern oder Displays stammen können. Er zeigt, wie du die Ursache eingrenzt und Testbilder sicher vergleichst. Die konkrete Funktion deiner Kamera hängt vom Modell ab; die Anleitung des Herstellers hat Vorrang. Für Banding, das direkt an einem Fahrzeug-Scheinwerfer oder Rücklicht erscheint, gibt es den separaten Beitrag zu [LED-Streifen an Fahrzeugleuchten](/blog-led-banding-auto-scheinwerfer-fotografieren.html)."
+    },
+    {
+      "_template": "imageSequence",
+      "headline": "Hallenmotiv als Kontext, nicht als Banding-Nachweis",
+      "layout": "editorial-pair",
+      "items": [
+        {
+          "image": "/assets/portfolio/automobil-bmw-m3-showcar.webp",
+          "caption": "Ein Ausstellungsfahrzeug auf einer beleuchteten Präsentationsfläche. Das Bild dient als Kontext für die Situation in einer Halle; Banding oder das konkrete Licht- und Kamera-Setup sind in dieser Aufnahme nicht nachgewiesen.",
+          "alt": "Weißes BMW-Coupé auf einer rot und blau beleuchteten Präsentationsfläche; farbige Lichtreflexe liegen auf dem Lack.",
+          "cropIntent": "editorial"
+        }
+      ]
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Zuerst Streifen durch Licht von Reflexen auf dem Lack unterscheiden",
+      "body": "Nicht jede helle oder dunkle Linie auf einer Motorhaube ist ein digitales Band. Autos spiegeln ihre Umgebung. Deckenleuchten, Leuchtkästen, Displays und Fenster können als feste Formen über Türen, Haube oder Scheiben laufen. Solche Reflexe folgen der Karosseriefläche und verändern sich, wenn du den Kamerastandpunkt oder den Winkel des Fahrzeugs änderst. Hinweise zum gezielten Umgang mit diesen Flächen bietet der [Showroom-Licht-Ratgeber](/blog-autohaus-showroomlicht.html).\n\nBanding durch zeitlich moduliertes Licht sieht anders aus: Ein Helligkeitsunterschied kann über einen größeren Bildbereich laufen, mehrere Flächen betreffen oder sich in einer kurzen Bildserie verändern. Auch Farbe kann zwischen Bildbereichen oder Aufnahmen wechseln. Fotografiere eine Testserie mit gleichem Ausschnitt und gleicher Belichtung. Prüfe die Dateien vergrößert und vergleiche, ob die Linie an derselben Karosseriestelle bleibt oder sich ihr Muster zwischen Bildern verschiebt. Eine einzelne Aufnahme reicht für eine sichere Diagnose nicht immer aus.\n\nAchte außerdem darauf, ob das Muster nur auf einem Monitor oder schon in der gespeicherten Datei erscheint. Vergleiche bei Bedarf die RAW-Datei mit dem kamerainternen JPEG und exportiere eine unveränderte Testdatei. So trennst du einen Aufnahmeeffekt von einer nachträglichen Skalierung, Kompression oder Anzeige."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Warum manche Hallenleuchten auf Fotos unruhig werden",
+      "body": "Die Kamera zeichnet Licht während einer begrenzten Belichtungszeit auf. Manche Leuchten ändern ihre Helligkeit sehr schnell, obwohl diese Änderung für das Auge nicht sichtbar ist. Wird der Sensor zeilenweise ausgelesen, können unterschiedliche Bildzeilen zu unterschiedlichen Momenten erfasst werden. Trifft die zeitliche Lichtänderung auf diesen Ablauf, können Streifen oder örtliche Helligkeitsunterschiede entstehen. Ein Fachbeitrag des IS&T Electronic Imaging Symposium beschreibt LED-Flicker als zeitliches Abtastproblem und erläutert, wie es bei Rolling-Shutter-Sensoren als Banding sichtbar werden kann.\n\nDie Ursache lässt sich nicht allein aus der Beschriftung „LED“ ableiten. Bauart, Treiber, Dimmstufe, Lichtfarbe und Kameramodus können eine Rolle spielen. In einer Halle können mehrere Lichtquellen mit verschiedenem Verhalten zusammentreffen: Deckenleuchten, einzelne Spots, dekorative Lichtflächen und Bildschirme. Der Effekt kann deshalb an einem Platz auftreten und wenige Meter weiter verschwinden. Auch die gewählte Belichtungszeit und die Verschlussart beeinflussen, wie das Licht aufgezeichnet wird.\n\nEin gewöhnlicher Weißabgleich behebt keine Helligkeitsstreifen. Er kann einen Farbstich ausgleichen, aber nicht nachträglich gleichmäßiges Licht erzeugen, wenn die Aufnahme Zeilen oder Bildbereiche unterschiedlich erfasst hat."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Eine Testreihe aufbauen, die Licht und Kamera getrennt prüft",
+      "body": "Beginne mit einem stehenden, gesicherten Fahrzeug und einer Perspektive, die du ohne Behinderung einrichten darfst. Halte Bildausschnitt, Fokus, ISO, Blende und Weißabgleich konstant. Fotografiere zunächst eine Referenzaufnahme, in der die auffälligen Leuchten oder ihre Reflexe sichtbar sind. Wenn es die Hausregeln erlauben, mache anschließend eine Aufnahme mit veränderter Position oder einem leicht geänderten Blickwinkel. Bitte Personal um Hilfe, wenn Leuchten oder Bereiche geschaltet werden sollen; verändere keine Anlagen eigenmächtig.\n\nPrüfe dann nur eine Variable auf einmal. Nimm eine kurze Serie mit derselben Einstellung auf und kontrolliere die Originaldateien. Ändere danach die Verschlusszeit in kleinen Schritten und wiederhole die Aufnahme. Notiere, ob die Streifen schmaler, heller, dunkler oder an einer anderen Stelle sichtbar werden. Diese Vergleichbarkeit hilft, den Auslöser einzugrenzen, statt Kamera und Licht gleichzeitig umzubauen.\n\nWenn mehrere Leuchten in der Szene sind, kannst du den Bildausschnitt schrittweise so verändern, dass jeweils nur ein Teil der Halle auf Lack oder Scheibe reflektiert. Bitte erwarte dabei keine perfekte Zuordnung aus einem Einzelbild: Eine andere Reflexfläche kann gleichzeitig Helligkeit und Farbe im Bild verändern. Schreibe deshalb zu jeder Variante kurz dazu, welche Leuchte oder welcher Kameraschritt geändert wurde."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Verschlussart und Anti-Flicker-Funktion modellbezogen testen",
+      "body": "Vergleiche die Verschlussarten, die deine Kamera anbietet. Ein elektronischer Verschluss liest bei vielen Kameras den Sensor zeilenweise aus; unter flimmerndem Licht kann das Banding begünstigen. Ein mechanischer Verschluss kann eine Verbesserung bringen, ist aber kein universeller Schutz. Prüfe die Herstelleranleitung und speichere Testbilder aus jeder tatsächlich verfügbaren Betriebsart. Beachte auch den elektronischen ersten Vorhang, falls deine Kamera diese Option kennt.\n\nAnti-Flicker-Funktionen arbeiten je nach Kamera unterschiedlich. Nikon beschreibt eine herkömmliche Flimmerreduzierung, die bei bestimmten Modellen auf 100 oder 120 Hz ausgelegt ist und bei dekorativer oder nicht standardisierter Beleuchtung möglicherweise keine Wirkung erzielt. Eine andere Funktion zur Hochfrequenz-Flimmerreduzierung erlaubt bei der Nikon Z8 eine feinere Anpassung der Verschlusszeit, während du die Vorschau beobachtest. Nikon weist trotzdem darauf hin, dass die gespeicherte Aufnahme anders aussehen kann und Testbilder nötig bleiben.\n\nSony beschreibt ähnliche Modellgrenzen: Die dort dokumentierte Anti-Flicker-Aufnahme ist nicht für jedes LED-Licht geeignet; eine fein abgestimmte Verschlusszeit kann bei unterstützten Kameras eine weitere Testmöglichkeit sein. Menünamen und Funktionen unterscheiden sich. Übertrage keine Einstellung aus einem anderen Kameramodell, ohne sie in der eigenen Bedienungsanleitung zu prüfen."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Keine feste Verschlusszeit für jede Halle voraussetzen",
+      "body": "Eine oft genannte Zahl wie 1/50 oder 1/100 Sekunde ist kein allgemeines Rezept für LED-Spots, LED-Wände und Dekorationslicht. Nikon unterscheidet in seinen Handbüchern zwischen der Erkennung bestimmter 100- oder 120-Hz-Lichtschwankungen und einer feineren Anpassung für hochfrequente Quellen. Das zeigt, warum eine feste Zeit am nächsten Standort wirkungslos sein kann. Entscheidend sind die konkrete Lichtquelle und die Reaktion der Kamera.\n\nWenn das Fahrzeug steht, kannst du mit Stativ und einer längeren Belichtungszeit testen, sofern Bewegung im Umfeld keine Bildteile verwischt. Bei einer Kampagne oder einer Serie für den Fahrzeugbestand muss die Belichtungszeit zugleich zu den nötigen Pflichtmotiven passen. Ändere Verschlusszeit, Blende oder ISO nur mit Blick auf Schärfentiefe, Rauschen und Helligkeit. Prüfe nach jedem Schritt die gespeicherte Datei und nicht nur das Sucherbild.\n\nWenn die Kamera eine Hochfrequenz-Abstimmung anbietet, justiere schrittweise und vergrößere eine relevante Fläche in der Vorschau. Bleibt das Muster bestehen, nimm eine Testaufnahme auf. Ein Balken kann in der Anzeige schwächer wirken und in der Datei noch sichtbar sein. Die [Kameraeinstellungen für Autofotografie](/blog-autofotografie-kameraeinstellungen.html) helfen dabei, den Belichtungstest mit der gewünschten Schärfe des Fahrzeugs zu verbinden."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Für eine Fahrzeugserie Farbe, Reflexe und Lichtwechsel mitprotokollieren",
+      "body": "Bei mehreren Fahrzeugen oder Blickwinkeln ist eine gleichmäßige Serie oft wichtiger als eine einzelne gelungene Aufnahme. Wenn sich Licht oder Dimmstufe während des Termins verändern, wiederhole die Testaufnahme und markiere den Wechsel in deiner Shotlist. Halte außerdem den Weißabgleich, die Bildqualität und den gewählten Verschlussmodus nachvollziehbar fest. So wird später sichtbar, ob ein Farbstich mit dem Licht zusammenhängt oder nur in einer einzelnen Entwicklung entstanden ist.\n\nBanding und gemischte Farbtemperaturen sind zwei verschiedene Probleme. Eine Halle kann zugleich einen roten Farbstich auf dem Lack und ein zeitliches Helligkeitsmuster erzeugen. Eine Farbkorrektur macht die Lichtreihe nicht automatisch gleichmäßig; umgekehrt entfernt die passende Verschlusszeit keinen unerwünschten Farbstich. Prüfe beide Eigenschaften getrennt. Für farbige Hallenbeleuchtung und Reflexe bei einer Veranstaltung kannst du den [Messefoto-Leitfaden](/blog-auto-auf-messe-fotografieren.html) ergänzen.\n\nWenn du mit zusätzlichem Dauerlicht arbeitest, teste auch diese Leuchte in der tatsächlich verwendeten Helligkeitsstufe. Der Beitrag zu [LED-Dauerlicht am Fahrzeug](/blog-dauerlicht-autofotografie.html) behandelt die Auswahl und Positionierung der eigenen Lichtquelle. Sie sollte nicht stillschweigend als gleichmäßige Referenz angenommen werden."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Foto und Video getrennt testen",
+      "body": "Ein sauberes Testfoto sagt noch nicht voraus, wie ein Clip aus derselben Halle aussieht. Stelle für jedes Endformat die tatsächlich geplante Bildrate, Verschlusszeit beziehungsweise den vorgesehenen Verschlusswinkel ein. Halte Lichtstufe, Kameraposition und Ausschnitt konstant und filme einen kurzen Clip. Prüfe danach die gespeicherte Datei in normaler Wiedergabe: Ein Streifen kann sich von Bild zu Bild bewegen oder im Clip deutlicher auffallen als in einem einzelnen Standbild.\n\nAnti-Flicker-Funktionen sind modellabhängig; manche gelten nur für Fotos, andere lassen sich auch bei Video nutzen. Eine feinere Verschlusszeit- oder Frequenzanpassung verwendest du nur, wenn Handbuch und gewählter Videomodus sie ausdrücklich unterstützen. Verändere eine Einstellung nach der anderen und beurteile die Aufnahme, nicht nur die Vorschau. Sony beschreibt diese Unterschiede etwa in der modellbezogenen FX30-Hilfe zu „Var. Shutter“; das ist kein pauschaler Einstellwert für andere Kameras."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Die nächste Maßnahme nach dem Testergebnis wählen",
+      "body": "Wenn das Muster mit der Verschlusszeit wandert oder schwächer wird, notiere die geprüften Werte und wiederhole den Test im endgültigen Foto- oder Videomodus. Wenn es nur bei einer Leuchte oder Dimmstufe auftritt, frage das Autohaus nach einer anderen freigegebenen Lichtstufe oder einem anderen Stellplatz; schalte Anlagen nicht selbst. Wenn nur Video betroffen ist, teste Bildrate und unterstützten Verschlusswinkel beziehungsweise die Variable-Shutter-Funktion separat. Bleibt das Banding bestehen, wechsle zu einem gleichmäßigeren Ort oder vereinbare einen anderen Termin. Retusche ist kein verlässlicher Ersatz, wenn die Streifen Lackfarbe, Ausstattung oder Fahrzeugform verfälschen könnten."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Wenn der Test keine saubere Lösung zeigt",
+      "body": "Bleibt das Banding sichtbar, frage nach einer anderen Aufnahmeposition oder einem kurzen Termin bei gleichmäßigerem Licht. Für Fahrzeugbestände oder Produktbilder kann eine kontrollierte Aufnahmesituation besser passen als die dekorative Beleuchtung des Showrooms. Ein Blitz kann eine Option sein, wenn Nutzung, Synchronisation und Umgebungslicht dazu passen; er bringt eigene Reflexe und Belichtungsfragen mit. Ein vorhandenes Lichtsystem sollte nur nach Freigabe verändert werden.\n\nBei einer Veröffentlichung ist eine sichtbare Streifenbildung meist kein Problem, das sich zuverlässig durch gewöhnliche Farb- oder Kontrastkorrektur beheben lässt. Eine Retusche der Karosserie kann Details verfälschen. Wiederhole die Aufnahme, wenn die Streifen die Farbe, Ausstattung oder Form des Autos stören. Für eine überzeugende Fahrzeugdarstellung sind ein ehrliches Lichtbild und ein dokumentierter Kameratest hilfreicher als eine pauschale Nachbearbeitung. Hinweise zum Abgleich zwischen Blitz und Raumlicht stehen im Beitrag [Auto mit Blitz fotografieren](/blog-auto-mit-blitz-fotografieren.html)."
+    },
+    {
+      "_template": "faqBlock",
+      "headline": "Häufige Fragen zu LED-Banding bei Autohausfotos",
+      "items": [
+        {
+          "question": "Warum sehe ich Streifen auf dem Autohausfoto, obwohl das Licht gleichmäßig wirkt?",
+          "answer": "Eine Leuchte kann ihre Helligkeit sehr schnell verändern, ohne dass das Auge es bemerkt. Trifft diese zeitliche Schwankung auf Belichtungszeit und Sensorauslesung, kann die Kamera Bereiche unterschiedlich erfassen. Eine Testreihe hilft, die Ursache einzugrenzen."
+        },
+        {
+          "question": "Verschwinden LED-Streifen immer mit dem mechanischen Verschluss?",
+          "answer": "Nein. Die Wirkung hängt von Lichtquelle, Kamera und Aufnahmebedingungen ab. Vergleiche verfügbare Verschlussarten mit gespeicherten Testbildern und verwende die Bedienungsanleitung deines Modells."
+        },
+        {
+          "question": "Hilft die Anti-Flicker-Funktion bei jeder LED-Halle?",
+          "answer": "Nicht unbedingt. Die unterstützte Frequenz und die Grenzen unterscheiden sich nach Kameramodell. Nikon weist zum Beispiel darauf hin, dass dekorative und nicht standardisierte Beleuchtung von einer herkömmlichen Flicker-Reduktion verfehlt werden kann."
+        },
+        {
+          "question": "Soll ich einfach 1/50 Sekunde einstellen?",
+          "answer": "Nein, eine feste Verschlusszeit passt nicht zu allen Leuchten. Teste die konkrete Hallenbeleuchtung in kleinen Schritten und kontrolliere die gespeicherten Aufnahmen."
+        },
+        {
+          "question": "Wie unterscheide ich Banding von einem Reflex auf dem Lack?",
+          "answer": "Ein Reflex bleibt an die spiegelnde Fläche und den Blickwinkel gebunden. Banding kann mehrere Bildbereiche oder Aufnahmen unterschiedlich betreffen. Vergleiche denselben Ausschnitt in mehreren Testbildern und ändere danach nur eine Variable."
+        },
+        {
+          "question": "Warum sieht ein Video anders aus als ein einzelnes Foto?",
+          "answer": "Video verwendet eine festgelegte Bildrate und Verschlusseinstellung; das Licht wird über viele aufeinanderfolgende Bilder erfasst. Prüfe deshalb einen Testclip im geplanten Videomodus. Eine pausierte Einzelaufnahme oder Kameravorschau reicht nicht für die Beurteilung des ganzen Clips."
+        }
+      ]
+    },
+    {
+      "_template": "linkList",
+      "headline": "Technische Quellen und Kameradokumentation",
+      "links": [
+        {
+          "label": "Sony Support: Kameraflimmern und horizontale Streifen",
+          "href": "https://www.sony.com/electronics/support/camcorders-and-video-cameras-hard-drive-camcorders/articles/00122281",
+          "description": "Herstellerdokumentation mit modellbezogenen Beispielen. Zuletzt geprüft am 8. November 2026; Funktionen vor dem Termin anhand der eigenen Kamera-Anleitung abgleichen."
+        },
+        {
+          "label": "Sony FX30 Help Guide: Anti-flicker Set.",
+          "href": "https://helpguide.sony.net/ilc/2220/v1/en/contents/TP1000886836.html",
+          "description": "Modellbeispiel dafür, dass fein abgestimmtes „Var. Shutter“ Fotos und Videos unterstützen kann und die gespeicherte Datei trotz Vorschauprüfung kontrolliert werden muss."
+        },
+        {
+          "label": "Nikon Z 8 Online-Handbuch: Hochfrequenz-Flimmerreduzierung",
+          "href": "https://onlinemanual.nikonimglib.com/z8/en/psm_high_frequency_flicker_reduction_140.html",
+          "description": "Erklärt die feinere Verschlusszeit-Anpassung, die Vorschauprüfung und die Notwendigkeit von Testaufnahmen unter LED-Licht und LED-Displays."
+        },
+        {
+          "label": "Nikon Z 50II Online-Handbuch: Foto-Flimmerreduzierung",
+          "href": "https://onlinemanual.nikonimglib.com/z50II/en/09-03-40.html",
+          "description": "Dokumentiert Grenzen der Erkennung von 100-/120-Hz-Flicker sowie mögliche Schwierigkeiten bei dekorativer oder nicht standardisierter Beleuchtung."
+        },
+        {
+          "label": "IS&T Electronic Imaging Symposium: LED flicker in automotive imaging",
+          "href": "https://library.imaging.org/admin/apis/public/api/ist/website/downloadArticle/ei/30/17/art00003",
+          "description": "Fachbeitrag zum zeitlichen Zusammenspiel von moduliertem LED-Licht und Sensorauslesung sowie zu Banding bei Rolling-Shutter-Sensoren."
+        }
+      ]
+    }
+  ],
+  "seo": {
+    "title": "LED-Banding im Autohaus: Streifen durch Hallenlicht testen",
+    "description": "Streifen durch LED-Hallenlicht auf Autohausfotos? So unterscheidest du Banding von Lackreflexen und testest Verschlussart, Verschlusszeit und Anti-Flicker-Funktionen.",
+    "focusKeyword": "LED-Banding Autohaus",
+    "secondaryKeywords": [
+      "Streifen im Auto-Foto durch LED-Licht",
+      "LED-Flimmern im Showroom fotografieren",
+      "Banding durch Hallenbeleuchtung",
+      "Auto unter LED-Licht fotografieren",
+      "Anti-Flicker-Funktion bei Autofotos"
+    ],
+    "searchIntent": "Qualitative Longtail-Informationssuche: Fotograf:innen und Fahrzeugteams möchten horizontale Streifen, flackernde Helligkeit oder Farbabweichungen durch Hallenbeleuchtung, LED-Spots und Displays bei Autohaus- oder Veranstaltungsfotos diagnostizieren und modellgerecht testen. Suchvolumen, GSC-Nachfrage und gemessener AI-Fanout sind nicht belegt.",
+    "canonicalUrl": "https://matthiasramahi.de/blog-led-banding-autohaus-hallenlicht.html",
+    "legacyUrl": "blog-led-banding-autohaus-hallenlicht.html",
+    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "noIndex": false
+  },
+  "legacy": {
+    "sourceFile": "blog-led-banding-autohaus-hallenlicht.html",
+    "sourceUrl": "https://matthiasramahi.de/blog-led-banding-autohaus-hallenlicht.html",
+    "migrationStatus": "new",
+    "renderSource": "structured-astro"
+  },
+  "createdAt": "2026-11-06T00:00:00Z",
+  "updatedAt": "2027-09-03T07:00:00Z",
+  "relatedPages": [
+    {
+      "label": "Automobilfotografie",
+      "href": "/automobil-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Autohaus-Fotografie: Showroomlicht ohne Reflexchaos",
+      "href": "/blog-autohaus-showroomlicht.html",
+      "seoPurpose": "related-editorial",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "LED-Dauerlicht in der Autofotografie",
+      "href": "/blog-dauerlicht-autofotografie.html",
+      "seoPurpose": "related-editorial",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "LED-Banding an Fahrzeugscheinwerfern",
+      "href": "/blog-led-banding-auto-scheinwerfer-fotografieren.html",
+      "seoPurpose": "related-editorial",
+      "rel": "follow",
+      "openInNewTab": false
+    }
+  ],
+  "status": "scheduled"
+}
+

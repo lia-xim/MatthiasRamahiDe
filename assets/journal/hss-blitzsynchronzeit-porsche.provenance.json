@@ -1,0 +1,32 @@
+{
+  "assetPath": "/assets/journal/hss-blitzsynchronzeit-porsche.webp",
+  "articleSlug": "blitzsynchronzeit-hss-high-speed-sync",
+  "createdAt": "2026-11-07T19:23:50Z",
+  "source": {
+    "sourceBase": "The user-authorized Lightroom render folder: Pictures/Lightroom/Images/SonyA7/2026",
+    "relativePath": "12.03.2026/Render_1/_DSC5740.jpg",
+    "format": "Rendered JPEG; not a RAW file",
+    "dimensionsPx": [9504, 6336],
+    "sizeBytes": 28748718,
+    "sha256": "9D74E70A8BA5E1DCC0EFEE6F7A617EB18DAAADC4BD6E0DDA52EDCC94A623E22D",
+    "sourceMutated": false
+  },
+  "derivative": {
+    "format": "WebP",
+    "dimensionsPx": [1920, 1280],
+    "sizeBytes": 229698,
+    "sha256": "F033A51A309245A85DB98BEFCE2D792F180CCC3517211506CA66C302A970839A",
+    "encoder": "ffmpeg libwebp",
+    "quality": 78,
+    "compressionLevel": 6,
+    "metadataStripped": true
+  },
+  "rightsAndPrivacy": {
+    "authorization": "The account owner explicitly directed use of rendered JPEGs from this Lightroom folder for website articles and approved compression of rendered outputs. This source was read-only.",
+    "photographerCopyrightOwner": "Not separately documented in this sidecar.",
+    "visiblePeople": false,
+    "readableRegistrationPlate": false,
+    "thirdPartyContext": "A Porsche vehicle and a building facade are visible. No separate vehicle, trademark, or location release is recorded here. Use is limited to an editorial photography guide; do not imply endorsement.",
+    "status": "owner-authorized-editorial-use; third-party permissions not independently documented"
+  }
+}

@@ -20,6 +20,7 @@ import { getLegacyBackedDoc, type PayloadDoc } from '../../lib/payload'
 import { keywordFocusCopyForSlug } from '../../lib/localSeoFamilyContent'
 import { splitTrailingEmphasis } from '../../lib/splitTrailingEmphasis'
 import { tinaAttrs } from '../../lib/tinaFieldAttrs'
+import HeroMotion from './HeroMotion.astro'
 
 type Props = {
   doc?: PayloadDoc | null
@@ -297,6 +298,13 @@ const heroCopy = familyHeroCopy(doc, visualDoc, {
   titleLines: heroTitleLines,
 })
 const heroTitleFitStyle = cmsHeroTitleFitStyle(heroCopy.titleLines, shouldUseCmsHeroTitle)
+// Hero (2026-11): Mercedes W196 Silberpfeil (Wien) im Wechsel mit dem Bestand.
+const oldtimerHeroSlides = [
+  { src: '/assets/optimized/oldtimer-mercedes-w196-profil-1920.webp', mobile: '/assets/optimized/oldtimer-mercedes-w196-profil-960.webp' },
+  { src: heroBgDesktop, mobile: heroBgMobile },
+  { src: '/assets/optimized/oldtimer-mercedes-w196-scheinwerfer-1920.webp', mobile: '/assets/optimized/oldtimer-mercedes-w196-scheinwerfer-960.webp' },
+  ...visualSlots.slice(1, 3).map((slot) => ({ src: slot.full, mobile: slot.mobile })),
+]
 const heroSlidesJson = JSON.stringify([
   { image: heroBgDesktop, titleLines: heroCopy.titleLines, lead: heroCopy.lead },
 ])
@@ -413,8 +421,8 @@ const {
   description={metaDescription}
   ogImage={doc?.seo?.ogImage || heroBgDesktop}
   preloadImages={[
-    { href: heroBgMobile, media: '(max-width: 900px)' },
-    { href: heroBgDesktop, media: '(min-width: 901px)' },
+    { href: oldtimerHeroSlides[0].mobile, media: '(max-width: 900px)' },
+    { href: oldtimerHeroSlides[0].src, media: '(min-width: 901px)' },
   ]}
 >
   {preview && (
@@ -435,10 +443,11 @@ const {
       style={`--hero-bg-desktop:url('${heroBgDesktop}');--hero-bg-mobile:url('${heroBgMobile}')`}
       {...tinaAttrs(heroVisualSource, 'image')}
     >
-      <div class="hero-bg" aria-hidden="true" {...tinaAttrs(heroVisualSource, 'image')}></div>
-      <canvas id="hero-shader" aria-hidden="true" data-imgs={heroBgDesktop} data-slides={heroSlidesJson} {...tinaAttrs(heroVisualSource, 'image')}></canvas>
-      <div class="hero-glow" aria-hidden="true"></div>
-      <div class="hero-aperture" aria-hidden="true"></div>
+      <HeroMotion
+        variant="develop"
+        seconds={8}
+        slides={oldtimerHeroSlides}
+      />
       <div class="hero-grid">
         <div class="hero-stage">
           <h1 class="hero-title" id="hero-title" data-text-idx="0" style={heroTitleFitStyle} aria-label={heroLabel}>
@@ -457,7 +466,6 @@ const {
           </div>
         </div>
       </div>
-      <div class="hero-cursor" id="hero-cursor" aria-hidden="true"><span class="ring"></span></div>
     </section>
 
     <section class="st" data-header-theme="light">

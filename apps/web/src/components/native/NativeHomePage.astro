@@ -23,7 +23,7 @@ import {
   type PayloadMedia,
 } from '../../lib/payload'
 import { resolveTinaMediaRef } from '../../lib/tinaMedia'
-import { journalCards } from '../../lib/journalIndexContent'
+import { getPublicJournalCards } from '../../lib/journalIndexContent'
 import {
   buildContactStrip,
   contactSheetJsonLd,
@@ -54,6 +54,10 @@ const doc = providedDoc || (await getSitePageByType('home', liveCmsFetchOptions(
 
 const heroSlides = homeHeroSlidesFor(doc)
 const firstHeroSlide = heroSlides[0]
+// Neue Hero-Serien liegen auch als -960 vor (siehe HeroMotion): Handys laden nur die.
+const heroMobileImage = /\/assets\/optimized\/(automobil-alpina|oldtimer-mercedes-w196|architektur-wien)-[a-z0-9-]+-(1920|2560)\.webp/.test(firstHeroSlide.image)
+  ? firstHeroSlide.image.replace(/-(1920|2560)\.webp/, '-960.webp')
+  : ''
 
 const hasText = (value?: string): value is string => typeof value === 'string' && value.trim().length > 0
 const editableSource = (item: unknown) => (item as { source?: unknown } | null | undefined)?.source
@@ -180,6 +184,7 @@ const journalIntro = hasText(journalGroup?.intro)
   ? journalGroup!.intro!
   : 'Workflow, Material, Auftragsgeschichten. Lange Form, ruhig zum Lesen zwischendurch.'
 const monthFormat = new Intl.DateTimeFormat('de-DE', { month: 'long', year: 'numeric' })
+const journalCards = getPublicJournalCards()
 const journalByHref = new Map(journalCards.map((card) => [card.href, card]))
 const cmsJournalItems = (journalGroup?.items || []).filter((item) => {
   const href = toRootRelativeHref(item?.href)
@@ -207,7 +212,12 @@ const journalPosts = (cmsJournalItems.length === 3
   current="home"
   doc={doc}
   ctaHref="#anfrage"
-  preloadImages={[{ href: firstHeroSlide.image, fetchpriority: 'high' }]}
+  preloadImages={heroMobileImage
+    ? [
+        { href: heroMobileImage, media: '(max-width: 900px)', fetchpriority: 'high' },
+        { href: firstHeroSlide.image, media: '(min-width: 901px)', fetchpriority: 'high' },
+      ]
+    : [{ href: firstHeroSlide.image, fetchpriority: 'high' }]}
   noIndex={Boolean(preview)}
   jsonLd={[homeFaqJsonLd, contactSheetJsonLd(strips)].filter((item): item is NonNullable<typeof item> => Boolean(item))}
   liveCms

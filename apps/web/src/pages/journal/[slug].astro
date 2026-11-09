@@ -2,9 +2,11 @@
 import NativeJournalPostPage from '../../components/cms/NativeJournalPostPage.astro'
 import { envFlag } from '../../lib/envFlags'
 import { getBySlug } from '../../lib/payload'
+import { isJournalDocumentPublic } from '../../lib/journalPublication'
 import { getTinaVisualDocumentBySlug, isTinaEditRequest } from '../../lib/tinaVisual'
 
 export const prerender = false
+Astro.response.headers.set('cache-control', 'no-store')
 
 const { slug } = Astro.params
 const journalRoutesEnabled = envFlag('ASTRO_ENABLE_CMS_JOURNAL_ROUTES') || envFlag('ASTRO_ENABLE_JOURNAL_ROUTES')
@@ -16,7 +18,7 @@ if (!journalRoutesEnabled) {
 const tinaDoc = slug && isTinaEditRequest(Astro.request) ? await getTinaVisualDocumentBySlug('journalPosts', slug) : null
 const doc = tinaDoc ?? Astro.props.doc ?? (slug ? await getBySlug('journal-posts', slug) : null)
 
-if (!doc) {
+if (!doc || (!isTinaEditRequest(Astro.request) && !isJournalDocumentPublic(doc))) {
   return Astro.redirect('/blog.html', 308)
 }
 ---

@@ -1,4 +1,5 @@
 ---
+import HeroMotion from './HeroMotion.astro'
 import ContactSlot from '../ContactSlot.astro'
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import {
@@ -171,9 +172,7 @@ const contactLead =
 >
   <main>
     <section class="hero" data-theme="dark" data-header-theme="dark" aria-label="Portfolio" style={`background-image:url('${firstHeroSlide.image}')`} {...tinaAttrs(firstHeroSlideSource, 'image')}>
-      <canvas id="hero-shader" aria-hidden="true" data-imgs={heroImages.join(',')} data-slides={heroSlidesJson} {...tinaAttrs(firstHeroSlideSource, 'image')}></canvas>
-      <div class="hero-glow" aria-hidden="true"></div>
-      <div class="hero-aperture" aria-hidden="true"></div>
+      <HeroMotion variant="pan" slidesJson={heroSlidesJson} />
       <div class="hero-grid">
         <div class="hero-stage">
           <h1 class="hero-title" id="hero-title" data-text-idx="0">
@@ -191,7 +190,6 @@ const contactLead =
           </div>
         </div>
       </div>
-      <div class="hero-cursor" id="hero-cursor" aria-hidden="true"><span class="ring"></span></div>
     </section>
 
     <section class="pf-context" data-header-theme="light" aria-label="Portfolio einordnen">

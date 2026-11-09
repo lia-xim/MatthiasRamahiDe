@@ -1,0 +1,13 @@
+---
+// /journal/thema/<thema> – Seite 1 eines Journal-Themas.
+import NativeJournalIndexPage from '../../../../components/native/NativeJournalIndexPage.astro'
+import { journalTopicBySlug } from '../../../../lib/journalIndexRoutes'
+
+export const prerender = false
+
+const topic = journalTopicBySlug(Astro.params.topic)
+if (!topic) return new Response('Not found', { status: 404 })
+
+Astro.response.headers.set('cache-control', 'no-store')
+---
+<NativeJournalIndexPage topicSlug={topic.slug} page={1} />

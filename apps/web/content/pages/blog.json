@@ -10,7 +10,7 @@
       "image": "/uploads/payload/20250418-DSC00660.webp",
       "headlineLine1": "Notizen",
       "headlineLine2": "aus Licht.",
-      "lead": "Ein kuratiertes Journal ueber Fotografie, Orte, Bildauswahl und Praesentation - ruhig, persoenlich, ohne Content-Masse.",
+      "lead": "Ein kuratiertes Journal ueber Fotografie, Orte, Bildauswahl und Präsentation - ruhig, persoenlich, ohne Content-Masse.",
       "durationSec": 7,
       "primaryLabel": "Artikel ansehen",
       "primaryHref": "#journal",
@@ -20,7 +20,7 @@
     {
       "image": "/uploads/payload/20250426-DSC02652.webp",
       "headlineLine1": "Automotive",
-      "headlineLine2": "Lichtfuehrung.",
+      "headlineLine2": "Lichtführung.",
       "lead": "Standort, Lichtkante und Karosserieform entscheiden darueber, ob ein Fahrzeug lebendig wirkt.",
       "durationSec": 7,
       "primaryLabel": "Artikel ansehen",
@@ -94,36 +94,36 @@
   "journalIndex": {
     "tickerItems": [
       {
-        "text": "<b>Automotive</b> Lichtfuehrung"
+        "text": "<b>Automotive</b> Lichtführung"
       },
       {
         "text": "Portrait ohne Location-Klischee"
       },
       {
-        "text": "<b>Duesseldorf</b> Locations"
+        "text": "<b>Düsseldorf</b> Locations"
       },
       {
         "text": "Fine-Art-Druck"
       },
       {
-        "text": "Bildauswahl fuer Kunden"
+        "text": "Bildauswahl für Kunden"
       },
       {
         "text": "<b>Behind the scenes</b>"
       }
     ],
     "featured": {
-      "kicker": "Ausgewaehlter Beitrag",
-      "headline": "Geplant, nicht zufaellig.",
-      "text": "Ein starkes Foto entsteht nicht erst beim Ausloesen - sondern in der Entscheidung fuer Ort, Tageszeit, Bildschnitt und Stimmung.",
+      "kicker": "Ausgewählter Beitrag",
+      "headline": "Geplant, nicht zufällig.",
+      "text": "Ein starkes Foto entsteht nicht erst beim Auslösen – sondern in der Entscheidung für Ort, Tageszeit, Bildschnitt und Stimmung.",
       "buttonLabel": "Beitrag lesen",
       "buttonHref": "/blog-automotive-fotografie-duesseldorf.html",
       "image": "/uploads/payload/assets-photos-automobil-sunset-1921.webp"
     },
     "indexHeadline": "Journal Index.",
     "initialVisiblePostCount": 6,
-    "loadMoreLabel": "Mehr Beitraege laden",
-    "loadStatusTemplate": "{visible} von {total} Beitraegen sichtbar",
+    "loadMoreLabel": "Mehr Beiträge laden",
+    "loadStatusTemplate": "{visible} von {total} Beiträgen sichtbar",
     "filters": [
       {
         "label": "Alle",
@@ -147,9 +147,9 @@
       }
     ],
     "finalCta": {
-      "kicker": "Naechster Schritt",
+      "kicker": "Nächster Schritt",
       "headline": "Fotoauftrag planen.",
-      "text": "Wenn Sie Automotive-Aufnahmen, Portraits, eine Bildstrecke oder eine hochwertige visuelle Praesentation benoetigen, schicken Sie kurz Ort, Zeitraum und Ziel des Projekts.",
+      "text": "Wenn Sie Automotive-Aufnahmen, Portraits, eine Bildstrecke oder eine hochwertige visuelle Präsentation benötigen, schicken Sie kurz Ort, Zeitraum und Ziel des Projekts.",
       "primaryLabel": "Projekt anfragen",
       "primaryHref": "/contact.html",
       "secondaryLabel": "Portfolio ansehen",
@@ -226,7 +226,7 @@
   "contactOverride": {},
   "seo": {
     "title": "Journal zu Fotografie, Orten und Bildauswahl | Matthias Ramahi",
-    "description": "Journal von Matthias Ramahi ueber Fotografie, Bildauswahl, Orte, Druck, Serien und visuelle Entscheidungen in Duesseldorf und NRW.",
+    "description": "Journal von Matthias Ramahi ueber Fotografie, Bildauswahl, Orte, Druck, Serien und visuelle Entscheidungen in Düsseldorf und NRW.",
     "secondaryKeywords": [],
     "internalLinkAnchors": [],
     "canonicalUrl": "https://matthiasramahi.de/blog.html",

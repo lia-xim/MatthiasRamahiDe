@@ -1,9 +1,12 @@
 /* Shared by both public layouts. rem preserves browser text preferences;
    viewport growth also covers large displays used without OS scaling. */
 :root {
-  --read-copy: clamp(1.125rem, .94rem + .3vw, 2rem);
-  --read-small: clamp(.875rem, .72rem + .25vw, 1.625rem);
-  --read-nav: clamp(.875rem, .7rem + .25vw, 1.375rem);
+  /* 1440px ~ 17.5px Fliesstext, 2560px ~ 20px, Deckel 22px. Vorher wuchs
+     der Fliesstext bis 32px und machte auf grossen Monitoren jede Karte,
+     jede Bildunterschrift und jeden Absatz gleich laut. */
+  --read-copy: clamp(1rem, .9rem + .22vw, 1.375rem);
+  --read-small: clamp(.8125rem, .74rem + .14vw, 1.0625rem);
+  --read-nav: clamp(.75rem, .68rem + .12vw, .9375rem);
 }
 body { font-size: var(--read-copy); }
 body p, body li, body dd, body blockquote,
@@ -83,3 +86,106 @@ body .journal-support .article-hero h1 { overflow-wrap: break-word; hyphens: aut
 @media (max-width: 480px) {
   header.topbar a.topbar__cta { font-size: .875rem !important; padding: 10px !important; }
 }
+
+/* ---------- Display-Typografie (Archivo, schmal) ----------
+   Eine Headline-Schrift fuer die ganze Seite: die frueheren Serif-Headlines
+   (Zusatzleistungen, Portrait, Stadtseiten) laufen jetzt ebenfalls ueber
+   MR Sans, damit kein Bereich wie eine andere Website wirkt.
+   Alle Headlines laufen ueber dieselbe Familie wie der Fliesstext, nur
+   schmal geschnitten. Das ersetzt das schwere Inter Black mit -0.055em
+   Laufweite, das je nach Seite unterschiedlich gestaucht war. Gewicht und
+   Laufweite werden hier zentral vereinheitlicht, damit kein Seiten-CSS
+   wieder eigene Varianten einschleust. */
+body :is(h1, h2, h3, h4),
+body :is(h1, h2, h3, h4) :where(span, em, strong, b, i, a),
+body .hero-title, body .hero-title :where(span, em, strong, b, i),
+body .hero-mr__title, body .hero-mr__title :where(span, em, strong, b, i),
+body .hero-ls__title, body .hero-ls__title :where(span, em, strong, b, i),
+body .hero-pt__title, body .hero-pt__title :where(span, em, strong, b, i),
+body .local-title, body .local-title :where(span, em, strong, b, i),
+body .pd-title, body .pd-title :where(span, em, strong, b, i),
+body .display, body .display :where(span, em, strong, b, i),
+body .display-md, body .display-md :where(span, em, strong, b, i),
+body .lp-display, body .lp-display :where(span, em, strong, b, i),
+body .sp-hero__h1, body .sp-hero__h1 :where(span, em, strong, b, i),
+body .ovh__title, body .ovh__title :where(span, em, strong, b, i),
+body .scene-title, body .scene-title :where(span, em, strong, b, i),
+body .tri-title, body .tri-title :where(span, em, strong, b, i),
+body .chamber__title, body .chamber__title :where(span, em, strong, b, i),
+body .bg-ls__title, body .bg-ls__title :where(span, em, strong, b, i),
+body .bg-pt__title, body .bg-pt__title :where(span, em, strong, b, i),
+body .st-ls__title, body .st-ls__title :where(span, em, strong, b, i),
+body .st-pt__title, body .st-pt__title :where(span, em, strong, b, i),
+body .mod-ls__title, body .mod-ls__title :where(span, em, strong, b, i),
+body .mod-pt__title, body .mod-pt__title :where(span, em, strong, b, i),
+body .fw-pt__title, body .fw-pt__title :where(span, em, strong, b, i) { font-family: var(--mr-font-sans) !important; }
+body h1, body h2,
+body h1 :where(span, em, strong, b, i, a),
+body h2 :where(span, em, strong, b, i, a),
+body .hero-title, body .hero-title :where(span, em, strong, b, i),
+body .hero-mr__title, body .hero-mr__title :where(span, em, strong, b, i),
+body .hero-ls__title, body .hero-ls__title :where(span, em, strong, b, i),
+body .hero-pt__title, body .hero-pt__title :where(span, em, strong, b, i),
+body .local-title, body .local-title :where(span, em, strong, b, i),
+body .pd-title, body .pd-title :where(span, em, strong, b, i),
+body .display, body .display :where(span, em, strong, b, i),
+body .display-md, body .display-md :where(span, em, strong, b, i),
+body .lp-display, body .lp-display :where(span, em, strong, b, i),
+body .sp-hero__h1, body .sp-hero__h1 :where(span, em, strong, b, i),
+body .ovh__title, body .ovh__title :where(span, em, strong, b, i),
+body .scene-title, body .scene-title :where(span, em, strong, b, i),
+body .tri-title, body .tri-title :where(span, em, strong, b, i),
+body .chamber__title, body .chamber__title :where(span, em, strong, b, i),
+body .bg-ls__title, body .bg-ls__title :where(span, em, strong, b, i),
+body .bg-pt__title, body .bg-pt__title :where(span, em, strong, b, i),
+body .st-ls__title, body .st-ls__title :where(span, em, strong, b, i),
+body .st-pt__title, body .st-pt__title :where(span, em, strong, b, i),
+body .mod-ls__title, body .mod-ls__title :where(span, em, strong, b, i),
+body .mod-pt__title, body .mod-pt__title :where(span, em, strong, b, i),
+body .fw-pt__title, body .fw-pt__title :where(span, em, strong, b, i),
+header.topbar .brand, .mr-footer .brand, .mr-footer__mark, .mr-footer__mark *, .mobile-menu .brand {
+  font-stretch: 75% !important;
+  font-weight: 700 !important;
+  letter-spacing: -.005em !important;
+  font-style: normal !important;
+}
+body h1, body h2 { line-height: .92; text-wrap: balance; }
+body h3, body h4 {
+  font-stretch: 87.5%;
+  letter-spacing: -.005em !important;
+  text-wrap: balance;
+}
+body h3 { font-weight: 650; }
+/* Fliesstext: ruhige Laufweite, keine Silbentrennung im Lesetext. */
+body p, body li { letter-spacing: 0; text-wrap: pretty; }
+
+/* ---------- Kein Wortbruch in Headlines (2026-11) ----------
+   Keine automatische Silbentrennung in Display-Headlines ("DUESSEL-DORF",
+   "GROSSFORM-AT"). Passt ein Wort nicht, verkleinert site-chrome.js die
+   Headline. .mr-fit-measure schaltet waehrend der Messung den Notumbruch ab. */
+body h1, body h2, body h3, body .hero-title, body .local-title, body .pd-title, body .hero-mr__title {
+  hyphens: manual !important;
+  -webkit-hyphens: manual !important;
+}
+body .mr-fit-measure, body .mr-fit-measure * { overflow-wrap: normal !important; word-break: normal !important; }
+
+/* ---------- Anfrage-Sektion: ueberall gleich ---------- */
+body section.mr-contact h2 {
+  font-size: clamp(40px, 4.6vw, 80px) !important;
+  line-height: .9 !important;
+  margin: 0 0 22px !important;
+  text-transform: uppercase;
+  color: var(--mrc-ink) !important;
+}
+body section.mr-contact h2 em { font-style: normal !important; color: var(--mrc-accent) !important; }
+body section.mr-contact { background: var(--mrc-paper) !important; color: var(--mrc-ink) !important; }
+
+/* ---------- Header-CTA: ueberall gleich (Ghost, keine Seitenfarbe) ---------- */
+header.topbar a.topbar__cta {
+  background: transparent !important;
+  color: inherit !important;
+  border: 1px solid currentColor !important;
+  box-shadow: none !important;
+}
+header.topbar a.topbar__cta:hover { background: #f3f5ef !important; border-color: #f3f5ef !important; color: #0a0c11 !important; }
+header.topbar.theme-light a.topbar__cta:hover { background: #0a0c11 !important; border-color: #0a0c11 !important; color: #f3f5ef !important; }

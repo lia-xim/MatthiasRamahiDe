@@ -1,0 +1,35 @@
+/* =====================================================================
+   Zusatzleistungs-Detailseiten (Fotolabor, Grossformat, Werbetechnik,
+   Webdesign, Videografie, Viola, Sonderanfertigungen) – vereinheitlicht
+   (2026-11). Wird NACH dem jeweiligen Seiten-CSS geladen.
+   - Eine Akzentfarbe fuer alle (Stahlgrau), keine Orange/Blau/Lila-Toene.
+   - Versal-Headlines wie auf den Fotografie-Seiten.
+   - Keine "— Anwendungen"-Kicker ueber jeder Headline.
+   - Das "Bereit fuer ein ...-Briefing"-Band entfaellt, wenn direkt danach
+     ohnehin das Anfrageformular folgt.
+   ===================================================================== */
+:root{
+  --accent:#7a8a86 !important;
+  --accent-2:#a9b4b0 !important;
+  --accent-soft:#c8ccc6 !important;
+  --hero-accent:#a9b4b0 !important;
+}
+main section [style*="--hero-accent"]{ --hero-accent:#a9b4b0 !important; }
+
+/* Headlines */
+main section:not(.mr-contact):not(.mr-cities) h2{ text-transform:uppercase; }
+main section:not(.mr-contact) :is(h1,h2) em{ font-style:normal !important; color:#7a8a86 !important; }
+main section[data-header-theme="dark"]:not(.mr-contact) :is(h1,h2) em,
+main section.hero :is(h1,h2) em,
+main .hero-title .line:nth-child(2){ color:#a9b4b0 !important; }
+
+/* Kicker ueber Headlines raus */
+main :is(.sp-eyebrow,.ws-eyebrow){ display:none !important; }
+
+/* Redundantes CTA-Band direkt vor dem Formular */
+main section.sp-cta:has(~ section.mr-contact){ display:none !important; }
+
+/* Ruhigere Tabellen-/Listenlabels: keine weit gesperrten Mono-Versalien */
+main :is(dt,th,[class*="__label"],[class*="-label"]):not(.mr-contact *){
+  letter-spacing:.08em !important;
+}

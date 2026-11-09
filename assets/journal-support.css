@@ -721,3 +721,83 @@
     hyphens: none;
   }
 }
+
+/* =====================================================================
+   Artikel-Hero (2026-11): breites, scharfes Titelbild als Banner
+   Titel, Lead und eine Meta-Zeile (Autor, Datum, Lesezeit) unten auf dem
+   Bild, Brotkrumen schlank darunter. Keine Tag-Pillen, kein Kicker. Die
+   frueheren Blur-Ebenen (filter + backdrop-filter ueber die volle Flaeche)
+   entfallen: sie kosteten auf schwachen Geraeten spuerbar Scroll-Leistung.
+   ===================================================================== */
+.journal-support .article-hero{
+  min-height:clamp(520px,72svh,820px);
+  padding:clamp(120px,12vw,168px) clamp(16px,5vw,84px) clamp(40px,4.4vw,72px);
+  align-items:end;
+}
+.journal-support .article-hero::before,
+.journal-support .article-hero__blur{ display:none; }
+.journal-support .article-hero__visual,
+.journal-support .article-hero--portrait .article-hero__visual{ left:0; z-index:-2; }
+.journal-support .article-hero__visual img,
+.journal-support .article-hero--portrait .article-hero__visual img{ object-fit:cover; object-position:center 40%; }
+.journal-support .article-hero::after{
+  background:
+    linear-gradient(180deg, rgba(2,3,6,.55) 0%, rgba(2,3,6,0) 26%),
+    linear-gradient(180deg, rgba(2,3,6,0) 30%, rgba(2,3,6,.64) 58%, rgba(2,3,6,.94) 100%),
+    linear-gradient(90deg, rgba(2,3,6,.5) 0%, rgba(2,3,6,0) 70%);
+}
+.journal-support .article-hero__inner{ width:min(1180px,100%); }
+.journal-support .article-hero__topic{
+  display:inline-flex; align-items:center; min-height:30px; padding:0 12px; margin:0 0 clamp(16px,1.6vw,22px);
+  border:1px solid rgba(255,255,255,.34); color:#fff; text-decoration:none;
+  font:500 11px/1 var(--mono); letter-spacing:.14em; text-transform:uppercase;
+  transition:background-color .25s ease, color .25s ease;
+}
+.journal-support .article-hero__topic:hover{ background:#fff; color:#0b0d10; }
+.journal-support .article-hero h1{ margin:0; max-width:22ch; font-size:clamp(38px,4.8vw,84px); line-height:.95; }
+.journal-support .article-hero p.lead{
+  max-width:62ch; margin-top:clamp(18px,1.8vw,24px); color:rgba(255,255,255,.8);
+  font-size:clamp(1.0625rem,.96rem + .26vw,1.3125rem) !important; line-height:1.5;
+}
+.journal-support .article-hero__meta{
+  display:flex; flex-wrap:wrap; align-items:center; gap:12px 24px; margin-top:clamp(22px,2.2vw,32px);
+  padding-top:clamp(18px,1.8vw,24px); border-top:1px solid rgba(255,255,255,.16);
+}
+.journal-support .article-hero__author{ display:inline-flex; align-items:center; gap:12px; color:#fff; text-decoration:none; font-weight:600; font-size:clamp(.9375rem,.9rem + .1vw,1.0625rem); }
+.journal-support .article-hero__author img{ width:40px; height:40px; border-radius:50%; object-fit:cover; flex:0 0 auto; }
+.journal-support .article-hero__author:hover span{ text-decoration:underline; text-underline-offset:.2em; }
+.journal-support .article-hero__facts{ display:inline-flex; flex-wrap:wrap; gap:10px; font:500 12px/1.4 var(--mono); letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.66); }
+
+/* Brotkrumen unter dem Bild */
+.journal-support .article-breadcrumb-bar .breadcrumb{ align-items:center; gap:6px 10px; font:500 12px/1.4 var(--mono); letter-spacing:.06em; text-transform:none; }
+.journal-support .article-breadcrumb-bar .breadcrumb a{ min-width:0; min-height:36px; }
+.journal-support .breadcrumb__current{ max-width:48ch; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; opacity:.7; }
+
+@media (max-width:720px){
+  .journal-support .article-hero{ min-height:clamp(480px,86svh,680px); padding-top:104px; }
+  .journal-support .article-hero h1{ font-size:clamp(32px,8.6vw,46px); }
+  .journal-support .breadcrumb__current{ display:none; }
+}
+
+/* ---------- Autor-Block + verwandte Beitraege (2026-11) ---------- */
+.journal-support .journal-author{
+  display:flex; gap:clamp(18px,2vw,28px); align-items:flex-start;
+  width:min(1180px, calc(100% - 2 * clamp(16px,5vw,84px))); margin:clamp(56px,6vw,96px) auto 0; box-sizing:border-box;
+  padding:clamp(24px,2.6vw,36px) 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+}
+.journal-support .journal-author img{ width:clamp(64px,6vw,96px); height:clamp(64px,6vw,96px); border-radius:50%; object-fit:cover; flex:0 0 auto; }
+.journal-support .journal-author__name{ margin:0; font-weight:700; font-stretch:87.5%; font-size:clamp(20px,1.6vw,26px) !important; line-height:1.1; }
+.journal-support .journal-author__text{ margin:8px 0 0; max-width:62ch; color:var(--muted, rgba(16,18,23,.66)); }
+.journal-support .journal-author__links{ display:flex; flex-wrap:wrap; gap:8px 22px; margin:14px 0 0; font:500 12px/1.4 var(--mono) !important; letter-spacing:.12em; text-transform:uppercase; }
+.journal-support .journal-author__links a{ color:inherit; text-decoration:underline; text-decoration-color:transparent; text-underline-offset:.24em; transition:text-decoration-color .25s ease; }
+.journal-support .journal-author__links a:hover{ text-decoration-color:currentColor; }
+
+.journal-support .journal-related h2 em{ font-style:normal; color:#7a8a86; }
+.journal-support .journal-related__grid{ gap:clamp(24px,2.4vw,36px); }
+.journal-support .journal-related .journal-related__grid > a,
+.journal-support .journal-related .journal-related__grid > a:hover{ padding:0; border:0; background:transparent; box-shadow:none; transform:none; gap:12px; }
+.journal-support .journal-related .journal-related__grid > a > img{ height:auto !important; aspect-ratio:3/2; transition:transform .9s cubic-bezier(.23,1,.32,1); }
+.journal-support .journal-related__grid span{ margin:6px 0 0; color:rgba(16,18,23,.62); font:500 11px/1.4 var(--mono); }
+.journal-support .journal-related__grid strong{ margin:0; font-size:clamp(20px,1.6vw,26px); font-stretch:87.5%; line-height:1.1; text-decoration:underline; text-decoration-color:transparent; text-underline-offset:.16em; text-decoration-thickness:1px; transition:text-decoration-color .25s ease; }
+.journal-support .journal-related__grid > a:hover strong{ text-decoration-color:currentColor; }
+@media (max-width:620px){ .journal-support .journal-author{ flex-direction:column; } }

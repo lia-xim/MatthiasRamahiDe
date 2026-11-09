@@ -20,7 +20,7 @@ function env(name: string, fallback = '') {
 }
 
 const UMAMI_HOST = env('UMAMI_HOST', 'https://analytics.crawlfoundry.com').replace(/\/+$/, '')
-const UMAMI_WEBSITE_ID = env('UMAMI_WEBSITE_ID', 'be66c314-29d1-4d96-8a3e-9c842d472210')
+const UMAMI_WEBSITE_ID = env('UMAMI_WEBSITE_ID', '56ef8f9e-2547-4ac0-a7b7-6a6ea3ad6e01')
 const TRACKED_HOSTS = env('UMAMI_TRACKED_HOSTS', 'matthiasramahi.de,www.matthiasramahi.de')
   .split(',')
   .map((host) => host.trim().toLowerCase())

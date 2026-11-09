@@ -1,0 +1,144 @@
+{
+  "title": "mobile.de KI-Qualitätscheck: Fahrzeugfotos für Inserate sinnvoll verbessern",
+  "slug": "mobile-de-ki-qualitaetscheck-fahrzeugfotos",
+  "category": "automotive",
+  "tags": [
+    "mobile.de",
+    "Fahrzeugfotos",
+    "Autohaus",
+    "Online-Inserat",
+    "KI-Qualitätscheck"
+  ],
+  "publishedAt": "2026-12-19T08:00:00.000Z",
+  "excerpt": "Was bewertet der KI-Qualitätscheck von mobile.de an Fahrzeugbildern? Einordnung der veröffentlichten Score-Anteile, der Bildkriterien und ein konkreter Ablauf, mit dem Autohäuser Fotos gezielt prüfen und verbessern können.",
+  "coverImage": "/assets/optimized/assets-portfolio-dsc2744-1920.webp",
+  "readingTime": 8,
+  "blocks": [
+    {
+      "_template": "textBlock",
+      "body": "Der KI-Qualitätscheck von mobile.de ist ein Hinweis darauf, wo ein Inserat aus Sicht der Plattform noch unvollständig oder visuell schwer auswertbar ist. Für Händler ist er am nützlichsten als Prüfliste: einzelne Bildmängel nachvollziehen, gezielt beheben und anschließend den Check erneut ansehen. Ein hoher Score ist weder ein unabhängiges Gutachten über das Fahrzeug noch eine Zusage für bessere Platzierungen oder mehr Verkäufe.\n\nStand dieser Einordnung ist der 3. November 2026. Geprüft wurden die offizielle mobile.de-Mitteilung vom 28. Januar 2026 und die aktuelle öffentliche Seller-API-Dokumentation. Die dort genannten Gewichte und Kriterien können sich ändern; prüfen Sie deshalb vor konkreten Anpassungen die Werte und Hinweise im eigenen Händlerbereich."
+    },
+    {
+      "_template": "imageSequence",
+      "headline": "Ansichten aus einer Fahrzeugserie",
+      "layout": "editorial-pair",
+      "items": [
+        {
+          "image": "/assets/optimized/assets-portfolio-dsc2358-1920.webp",
+          "caption": "Frontansicht eines orangefarbenen Sportwagens in einer Parkgarage.",
+          "alt": "Nahaufnahme von Scheinwerfer und Kühlergrill unter punktförmigen Deckenleuchten einer Parkhalle.",
+          "cropIntent": "editorial"
+        },
+        {
+          "image": "/assets/portfolio/automobil-brabus-sunset.webp",
+          "caption": "Schwarzer SUV auf befestigter Fläche im Abendlicht.",
+          "alt": "Das Fahrzeug mit roten Grillakzenten spiegelt sich in einer Pfütze; dahinter stehen helle Industrietanks unter Abendwolken.",
+          "cropIntent": "editorial"
+        }
+      ]
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Was der Score tatsächlich zusammenfasst",
+      "body": "mobile.de beschreibt den Qualitäts-Check als KI-gestützte Bewertung von vier Bestandteilen: Anzahl der Bilder, Bildqualität, Fahrzeugattribute und Länge der Beschreibung. In der Mitteilung vom 28. Januar 2026 entfallen 20 Prozent des Gesamtscores auf die Bildanzahl und 40 Prozent auf die Bildqualität. Attribute machen 30 Prozent und die Textlänge 10 Prozent aus. Das ist ein von mobile.de veröffentlichtes Gewichtungsschema, keine allgemeine Formel für Suchmaschinen oder andere Fahrzeugportale.\n\nDie aktuelle öffentliche Seller-API-Dokumentation bestätigt dieselben vier Komponenten. Sie zeigt außerdem, dass die Bildqualität für einzelne Fotos ausgewertet werden kann. Sie wiederholt die Prozentgewichte jedoch nicht. Behandeln Sie daher die Zahlen als die in der Pressemitteilung veröffentlichten Gewichte und gleichen Sie sie mit der aktuellen Anzeige im Händlerbereich ab."
+    },
+    {
+      "_template": "linkList",
+      "headline": "Offizielle mobile.de-Quellen",
+      "links": [
+        {
+          "label": "mobile.de: Pressemitteilung zum KI-gestützten Inserats-Check, 28. Januar 2026",
+          "href": "https://newsroom.mobile.de/download/26728/?tmstv=1777721477",
+          "description": "Veröffentlichte Zusammensetzung des Gesamtscores und Einführungszeitpunkt im Händlerbereich."
+        },
+        {
+          "label": "mobile.de Seller API: Quality Check und Score-Komponenten",
+          "href": "https://services.mobile.de/docs/seller-api.html",
+          "description": "Öffentliche technische Dokumentation zu den vier Komponenten, Bildkriterien, Verarbeitungsstatus und API-Zugang."
+        }
+      ]
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Welche Bildsignale Händler prüfen können",
+      "body": "Die API-Dokumentation beschreibt drei Kriterien für einzelne Fotos. Erstens: Ist das tatsächlich angebotene Fahrzeug sichtbar, statt etwa ein allgemeines Autohaus- oder Symbolbild? Zweitens: Steht dieses Fahrzeug im Fokus, ohne dass ein ähnlich großes anderes Auto die Aufnahme mitbestimmt? Drittens: Liegen Text, Banner oder andere überlagerte Elemente auf dem Bild? Für jedes Kriterium dokumentiert die API ein Ergebnis und, wenn ein Kriterium nicht erfüllt wurde, einen Grund.\n\nDas sind technische Prüfsignale, keine vollständige redaktionelle Beurteilung eines Fotos. Ein bestandenes Bild kann trotzdem schwer lesbar, unvorteilhaft beschnitten oder als Teil der Gesamtserie wenig hilfreich sein. Umgekehrt sollte ein Händler eine plausible Aufnahme nicht blind verändern, nur weil ein automatischer Hinweis auftaucht: Prüfen Sie das konkrete Bild, den angezeigten Grund und den Zustand des Fahrzeugs gemeinsam."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Mehr Fotos helfen nur, wenn jedes etwas zeigt",
+      "body": "Bildanzahl und Bildqualität sind getrennte Anteile. Zusätzliche Fotos können die Menge erhöhen, beheben aber keinen unscharfen oder vom falschen Fahrzeug dominierten Bilddatensatz. Eine sinnvolle Serie zeigt deshalb unterschiedliche, für Interessenten relevante Ansichten: zum Beispiel Fahrzeug von vorn und hinten, beide Seiten, Innenraum, Kilometerstand oder Kofferraum, sofern die jeweiligen Aufnahmen zum Inserat passen. Wiederholen Sie nicht dieselbe Perspektive, nur um eine Zahl zu erreichen.\n\nDie API-Beispiele, die mobile.de aktuell öffentlich dokumentiert, führen bei der Bildanzahl unter anderem einen Mindestwert von 10 und einen Optimalwert von 25. Das sind dokumentierte Beispielwerte der Schnittstelle, keine sichere Vorgabe für jedes Fahrzeug, jeden Kontotyp oder die Oberfläche im Händlerbereich. Prüfen Sie die dort sichtbare Empfehlung und die für Ihr Inserat geltenden Bildlimits. Zusätzliche Bilder sollten Informationslücken schließen, nicht nur den Zähler füllen."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Der Score ist kein Urteil über Verkaufschancen",
+      "body": "Laut der Pressemitteilung haben Inserate mit hohem Qualitäts-Score eine bessere Chance, in Suchergebnissen sichtbarer platziert zu werden. Das ist die Aussage von mobile.de zum Produkt. Daraus folgt keine Garantie für eine bestimmte Position, Reichweite, Anfragezahl oder einen Verkauf. Die Dokumentation erklärt außerdem, welche Anzeigeelemente in den Check einfließen; sie belegt nicht, dass der Score sämtliche Faktoren der Suche, der Nachfrage oder der Kaufentscheidung abbildet.\n\nDer Check ersetzt weder die sachliche Prüfung von Fahrzeugangaben noch die nachvollziehbare Darstellung von Gebrauchsspuren. Eine sauber fokussierte Aufnahme sagt nicht, ob ein Ausstattungsmerkmal korrekt eingetragen wurde. Und eine fehlende Abbildung beweist nicht, dass ein Teil fehlt. Lesen Sie den Score als einen begrenzten Plattformindikator für Inseratsqualität – nicht als Zustandsprüfung oder vollständige Erfolgsmessung."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Ein gezielter Ablauf für die Bildkorrektur",
+      "body": "1. Notieren Sie beim einzelnen Inserat den Gesamtstatus und die Aufteilung der Komponenten. Wenn die Bildqualität auffällt, konzentrieren Sie sich zunächst auf die betroffenen Fotos, statt Beschreibung, Attribute und Bildserie gleichzeitig umzubauen.\n\n2. Ordnen Sie jeden Hinweis einem konkreten Bild zu. Bei „Fahrzeug nicht im Fokus“ kontrollieren Sie, ob das angebotene Auto scharf und als Hauptmotiv erkennbar ist. Bei einem Sichtbarkeitshinweis prüfen Sie, ob die Aufnahme wirklich dieses Exemplar zeigt. Bei einer beanstandeten Überlagerung suchen Sie nach Text, Bannern oder eingeblendeten Gestaltungselementen.\n\n3. Entscheiden Sie über die passende Korrektur. Ein echtes Fokusproblem löst eine neue, scharfe Aufnahme; fehlende Ansichten ergänzt eine neue Perspektive. Ein störender Text im Bild ist meist Anlass, eine saubere Exportdatei aus dem Original zu erstellen. Entfernen oder retuschieren Sie keine Gebrauchsspur, Ausstattung oder Information, die für den Eindruck des Fahrzeugs relevant ist.\n\n4. Prüfen Sie die ganze Serie auf Vollständigkeit und Vergleichbarkeit. Ein Foto von einem weiteren Winkel ist sinnvoll, wenn es einen neuen Blick auf Karosserie, Innenraum oder Zustand eröffnet. Wiederholungen ohne zusätzlichen Informationswert helfen dem Käufer wenig und sollten nicht nur für einen besseren Mengenwert ergänzt werden.\n\n5. Warten Sie nach einer Änderung auf die Verarbeitung und lesen Sie den Check erneut. Die API kennt den Status „IN_PROGRESS“; in diesem Zustand können Scores oder Bildbewertungen noch fehlen. Ein nicht verfügbarer Teilwert ist daher nicht automatisch ein negatives Bildurteil. Vergleichen Sie erst, wenn die Berechnung abgeschlossen ist."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Beispiel: zwei Bildhinweise, zwei unterschiedliche Maßnahmen",
+      "body": "Angenommen, ein Inserat zeigt zwar genügend Fotos, aber bei einer Aufnahme meldet der Check einen Fokusfehler und bei einer anderen eine Überlagerung. Eine pauschale Erhöhung der Bildanzahl adressiert keinen der beiden Hinweise. Prüfen Sie zuerst die konkrete Fokusaufnahme am Original: Ist das Fahrzeug leicht verwackelt, wählen Sie ein scharfes Bild aus der Serie oder fotografieren die Ansicht neu. Enthält die zweite Datei einen eingeblendeten Preis oder ein Werbebanner, exportieren Sie eine unveränderte Variante ohne diese Grafik.\n\nDanach kontrollieren Sie, ob die Serie wichtige Ansichten des konkreten Fahrzeugs abdeckt, und warten auf die abgeschlossene Neubewertung. Wenn der Score steigt, belegt das nur eine Änderung des dokumentierten Inseratschecks. Daraus lässt sich noch nicht ablesen, ob sich Platzierung, Aufrufe oder Anfragen verändert haben."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Eine kurze Fotoprüfung vor dem erneuten Check",
+      "body": "Gehen Sie die Serie einmal aus Käufersicht durch: Ist auf jedem Bild das angebotene Fahrzeug zu erkennen? Ist es scharf genug und das eindeutige Hauptmotiv? Gibt es eingeblendete Texte, Rahmen oder Werbebanner? Zeigen die zusätzlichen Aufnahmen tatsächlich neue Details? Sind Zustand und Ausstattung ehrlich wiedergegeben?\n\nBei einer kleinen Ursache reicht oft eine gezielte Korrektur. Wenn dagegen bei vielen Fahrzeugen regelmäßig dieselben Bildprobleme auftreten, liegt die Ursache möglicherweise im wiederkehrenden Aufnahme- oder Uploadablauf: etwa wechselnde Hintergründe, uneinheitliche Ausschnitte oder ein Export mit eingeblendeten Grafiken. Dann hilft eine feste Bildprüfung vor dem Einstellen. Für eine konsistente Fahrzeugserie kann ein abgestimmter Ablauf mit einem spezialisierten Automobilfotografen sinnvoll sein."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Was Händler aus der Dokumentation ableiten können",
+      "body": "Die öffentlich zugängliche technische Dokumentation beschreibt detaillierte Score- und Bildfelder für API-Nutzer. Den Quality-Check-API-Zugang führt mobile.de derzeit als exklusiv für Teilnehmende des Data Partner Programms. Händler sollten daher nicht davon ausgehen, dass sie diese technischen Felder selbst über eine direkte API abrufen können; der praktische Einstieg ist der Händlerbereich oder das jeweils eingesetzte, angebundene Händlersystem.\n\nAuch bei einer technischen Auswertung ist der Status wichtig: Nach einer neuen oder geänderten Anzeige kann die Berechnung noch laufen. Erst ein abgeschlossener Check erlaubt den Vergleich der verfügbaren Werte. Wenn ein einzelnes Bild automatisiert beanstandet wird, obwohl es aus Ihrer Sicht den Kriterien entspricht, dokumentieren Sie das Bild und prüfen Sie, ob der Händlerbereich einen Feedbackweg anbietet. Die API-Dokumentation beschreibt ein Händlerfeedback, das API-Berechtigung voraussetzt; das ist kein Versprechen, dass derselbe Weg in jeder Oberfläche verfügbar ist.\n\nFür mehrere Inserate hilft ein knappes Änderungsprotokoll: Inserat, betroffener Score- oder Bildpunkt, konkrete Maßnahme und Status des nächsten Checks. So kann das Team wiederkehrende Aufnahme- oder Exportfehler erkennen. Reichweite, Aufrufe und Anfragen sollten getrennt erfasst werden; aus einer Scoreänderung allein lässt sich keine Veränderung dieser Ergebnisse ableiten."
+    },
+    {
+      "_template": "faqBlock",
+      "headline": "Häufige Fragen",
+      "items": [
+        {
+          "question": "Verbessert ein höherer Score garantiert die Platzierung?",
+          "answer": "Nein. mobile.de schreibt, dass ein hoher Score die Chance auf sichtbarere Platzierung verbessern kann. Die Mitteilung gibt keine Garantie für ein Ranking, mehr Anfragen oder einen Verkauf."
+        },
+        {
+          "question": "Wie viele Bilder sollte ein Inserat enthalten?",
+          "answer": "Die aktuellen API-Beispiele von mobile.de zeigen unter anderem 10 als Mindest- und 25 als Optimalwert. Diese Beispiele sind keine universelle Empfehlung für jedes Inserat. Orientieren Sie sich an den aktuellen Vorgaben im eigenen Händlerbereich und veröffentlichen Sie nur Bilder mit zusätzlichem Informationswert."
+        },
+        {
+          "question": "Was tun, wenn ein gutes Foto vom Check abgewertet wird?",
+          "answer": "Prüfen Sie zuerst das konkrete Bild und den dokumentierten Grund, etwa Fokus, Sichtbarkeit oder eingeblendete Elemente. Wenn die automatische Bewertung aus Ihrer Sicht nicht passt, nutzen Sie einen verfügbaren Feedbackweg im Händlerbereich oder wenden Sie sich an den zuständigen Support. Die technische Feedbackfunktion der API erfordert eine entsprechende Berechtigung."
+        }
+      ]
+    }
+  ],
+  "seo": {
+    "title": "mobile.de KI-Qualitätscheck für Fahrzeugfotos",
+    "description": "Was bewertet mobile.de bei Fahrzeugfotos? Gewichtung, Bildkriterien, Grenzen des KI-Scores und ein praktischer Prüfablauf für Autohäuser.",
+    "focusKeyword": "mobile.de KI-Qualitätscheck Fahrzeugfotos",
+    "searchIntent": "Informationssuche von Autohäusern und professionellen Fahrzeughändlern, die den aktuellen mobile.de Qualitäts-Check verstehen und Bildhinweise gezielt in bessere Fahrzeugfotos übersetzen wollen.",
+    "canonicalUrl": "https://matthiasramahi.de/blog-mobile-de-ki-qualitaetscheck-fahrzeugfotos.html",
+    "legacyUrl": "blog-mobile-de-ki-qualitaetscheck-fahrzeugfotos.html",
+    "ogImage": "/assets/optimized/assets-portfolio-dsc2744-1920.webp",
+    "noIndex": false
+  },
+  "legacy": {
+    "sourceFile": "blog-mobile-de-ki-qualitaetscheck-fahrzeugfotos.html",
+    "sourceUrl": "https://matthiasramahi.de/blog-mobile-de-ki-qualitaetscheck-fahrzeugfotos.html",
+    "migrationStatus": "draft",
+    "renderSource": "structured-astro"
+  },
+  "status": "scheduled",
+  "createdAt": "2026-11-03T15:19:34Z",
+  "updatedAt": "2026-12-19T08:00:00.000Z",
+  "relatedPages": [
+    {
+      "label": "Automobilfotografie",
+      "href": "/automobil-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    }
+  ],
+  "coverAlt": "Weißes Showcar in einer Messehalle"
+}

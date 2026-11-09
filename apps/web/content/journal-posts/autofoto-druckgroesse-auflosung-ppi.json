@@ -1,0 +1,188 @@
+{
+  "title": "Autofoto drucken: Pixel, PPI und Ausgabegröße berechnen",
+  "slug": "autofoto-druckgroesse-auflosung-ppi",
+  "category": "automotive",
+  "tags": [
+    "Automobilfotografie",
+    "Fine-Art-Druck",
+    "Druckauflösung",
+    "PPI",
+    "Großformatdruck"
+  ],
+  "publishedAt": "2027-10-01T07:00:00.000Z",
+  "excerpt": "Wie groß lässt sich ein Autofoto drucken? Mit Pixelmaß, Seitenverhältnis und PPI kannst du die Ausgabegröße berechnen. So planst du einen großen Fahrzeugprint ohne starre 300-PPI-Regel.",
+  "coverImage": "/assets/optimized/autofoto-aufloesung-beispiel-1920.webp",
+  "coverAlt": "Dunkler Porsche 911 mit geöffneter Tür in einer nächtlichen Szene; Portfolioaufnahme, kein Beispiel eines tatsächlichen Drucks.",
+  "readingTime": 9,
+  "blocks": [
+    {
+      "_template": "textBlock",
+      "headline": "Wie groß kann ein Autofoto gedruckt werden?",
+      "body": "Die mögliche Druckgröße hängt zunächst von den Pixelmaßen des fertigen Bildes ab. Danach kommen der gewünschte Betrachtungsabstand, der Bildausschnitt und das Druckmaterial hinzu. 300 PPI sind eine verbreitete Orientierung für Prints, die aus der Nähe betrachtet werden. Für ein großes Wandbild kann eine geringere Pixeldichte passen; sie ist aber keine pauschale Qualitätszusage. Entscheidend ist, wie die konkrete Datei im vorgesehenen Format und Medium wirkt.\n\nDieser Beitrag beantwortet einen konkreten Informationsschritt: Wie lässt sich die Pixelzahl einer vorhandenen Autofoto-Datei für ein Wunschmaß in effektive PPI umrechnen? Die lokale [Leistungsseite für Großformatdruck in Düsseldorf](/grossformatdruck-duesseldorf.html) informiert ergänzend über Angebot, Materialberatung und Anfrage zur Produktion. Das Titelbild ist eine Portfolioaufnahme eines Fahrzeugs und zeigt keinen tatsächlich produzierten Print."
+    },
+    {
+      "_template": "imageSequence",
+      "headline": "Portfolioaufnahme als Motivbeispiel",
+      "layout": "editorial-single",
+      "items": [
+        {
+          "image": "/assets/optimized/autofoto-aufloesung-beispiel-1920.webp",
+          "alt": "Dunkler Porsche 911 mit geöffneter Tür in einer nächtlichen Szene.",
+          "caption": "Dunkler Porsche 911 mit geöffneter Tür. Das Bild ist eine Portfolioaufnahme, kein physischer Druck und kein Nachweis einer getesteten Druckqualität.",
+          "cropIntent": "editorial"
+        }
+      ]
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Mit den Pixelmaßen der finalen Datei beginnen",
+      "body": "Notiere zuerst Breite und Höhe der Datei, die du wirklich an den Druckdienst übergeben willst. Megapixel sind dafür nur eine grobe Kurzform: Zwei Fotos mit ähnlich vielen Megapixeln können unterschiedliche Seitenverhältnisse haben, und ein späterer Beschnitt reduziert die Pixelzahl in einer Richtung. Relevant ist der Ausschnitt nach dem Beschneiden und einer eventuellen Größenänderung.\n\nBei einem Fahrzeugmotiv kann der Beschnitt bewusst Platz um Stoßfänger, Dach oder Räder lassen. Prüfe deshalb nicht nur die Originaldatei, sondern auch den vorgesehenen Bildausschnitt. Wenn das Druckformat ein anderes Seitenverhältnis hat, muss das Labor entweder beschneiden, einen Rand stehen lassen oder die Fläche anders füllen. Kläre vorab, welche Variante gemeint ist, damit kein wichtiges Fahrzeugdetail unbemerkt an der Kante verschwindet.\n\nDie in Bilddateien eingetragene Auflösungszahl, etwa 72 oder 300, vergrößert die Pixel nicht von selbst. Sie beschreibt nur, auf welcher Fläche die vorhandenen Pixel ausgegeben werden sollen. Für den Druck zählt das Verhältnis zwischen finaler Pixelzahl und physischer Größe."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "PPI und Druckformat selbst berechnen",
+      "body": "PPI bedeutet Pixel pro Zoll (pixels per inch) und beschreibt, wie dicht die Bildpixel auf der gedruckten Fläche liegen. Ein Zoll entspricht 2,54 Zentimetern. Für eine schnelle Abschätzung teilst du die Pixelzahl je Seite durch die Länge dieser Seite in Zoll.\n\n**Druckgröße in Zoll = Pixelmaß ÷ gewünschte PPI**\n\n**Druckgröße in Zentimetern = (Pixelmaß ÷ PPI) × 2,54**\n\nWenn du schon ein Wunschformat hast, rechnest du umgekehrt:\n\n**Benötigte Pixel = (Format in Zentimetern ÷ 2,54) × Ziel-PPI**\n\nBerechne Breite und Höhe getrennt. Verwende die Pixelmaße nach dem geplanten Beschnitt. Bei einem 3:2-Original und einem 4:3-Druckformat entscheidest du daher zuerst zwischen randlosem Zuschnitt und einem Rand; ein Rand erhält das ganze Bild, verkleinert aber die bedruckte Fläche.\n\nDas Feld „Auflösung“ in einer Datei ändert die Pixelmaße nicht automatisch. Ohne Neuberechnung (Resampling) bleiben die Pixel gleich; die eingetragene PPI-Zahl und das rechnerische Druckmaß verändern sich gemeinsam. Mit Neuberechnung fügt oder entfernt die Software Pixel durch Interpolation. Das ändert die Pixelmaße, erzeugt beim Hochskalieren aber keine zuverlässig aufgenommenen Details. Adobe erklärt diesen Unterschied im Abschnitt zu Bildgröße und Resampling. Für die erste Prüfung brauchst du keine Angebotsseite: Nimm die finalen Bildmaße nach dem Ausschnitt, das geplante Endmaß und die Vorgabe des konkreten Druckdienstes."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Rechenbeispiel mit einem 9504 × 6336-Pixel-Autofoto",
+      "body": "Nehmen wir ein gerendertes Autofoto mit **9504 × 6336 Pixeln** und einem Seitenverhältnis von 3:2. Die folgenden Maße sind reine Geometrie: Sie zeigen, welche Pixeldichte sich bei einer bestimmten Ausgabegröße ergäbe. Sie bewerten weder die tatsächliche Schärfe der Aufnahme noch ein physisches Druckergebnis.\n\n- Bei **300 PPI** entspricht die volle Datei rechnerisch etwa **80,5 × 53,6 cm**.\n- Bei **240 PPI** ergibt sie etwa **100,6 × 67,1 cm**.\n- Bei **200 PPI** ergibt sie etwa **120,7 × 80,5 cm**.\n- Bei **150 PPI** ergibt sie etwa **160,9 × 107,3 cm**.\n\nFür die umgekehrte Frage: Ein Print von **90 × 60 cm** im gleichen Seitenverhältnis benötigt bei 240 PPI rechnerisch rund **8504 × 5669 Pixel**. Die vollständige Beispiel-Datei enthält dafür genug Pixel; das sagt noch nichts über Schärfe, Kontrast, Bearbeitung oder das spätere Material aus.\n\n**Beschnitt-Beispiel:** Ein randloses Format von **60 × 45 cm** hat ein Seitenverhältnis von 4:3 statt 3:2. Wenn du den ganzen Bildhöhenbereich von 6336 Pixeln behältst, musst du die Breite auf **8448 Pixel** kürzen (6336 × 4 ÷ 3); bei einem mittigen Ausschnitt sind das rund **528 Pixel pro Seite**. Im Endformat bleiben so rechnerisch etwa **358 PPI**. Ein anderer Ausschnitt verschiebt diesen Wert. Lass das Labor den Beschnitt nicht stillschweigend wählen: Bestätige Vorschau und Rand- oder Zuschnittvariante, bevor du bestellst."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "300 PPI ist ein Richtwert, keine universelle Mindestgrenze",
+      "body": "Ein kleinformatiger Print wird oft aus kurzer Distanz angesehen; dort hilft eine höhere Pixeldichte, feine Details sauber abzubilden. Ein großes Wandbild wird dagegen meist weiter weg betrachtet. Sinkt der Abstand, wird sichtbarer, wie gut Kanten und feine Strukturen aufgelöst sind. Adobe beschreibt 300 PPI als gängigen Qualitätsrichtwert für hochwertige Drucke aus der Nähe und weist zugleich darauf hin, dass großformatige Bilder bei größerem Abstand mit weniger PPI auskommen können.\n\nEs gibt deshalb keine eine Zahl, die für jedes Automotiv, Papier, Labor und Format passt. Das SAIC Service Bureau nennt als eigene Orientierung beispielsweise 300 PPI bei etwa 60 Zentimetern und 90 PPI bei zwei Metern Betrachtungsabstand. Das sind Richtwerte eines Anbieters, keine verbindliche Norm für jeden Druckdienst. WhiteWall beschreibt ebenfalls, dass für ein größeres Wandbild bei größerem Betrachtungsabstand ein niedrigerer PPI-Wert ausreichen kann.\n\nMiss den Abstand dort, wo das Bild später betrachtet wird: ein Print im Flur wird oft aus wenigen Schritten gesehen, ein großes Motiv über einer Sitzgruppe auch aus dem Raum heraus. Plane außerdem mit ein, dass jemand nahe herantreten kann. Frage bei besonders großen oder detailreichen Motiven nach der Empfehlung des konkreten Labors."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Drucker-DPI und Bild-PPI auseinanderhalten",
+      "body": "PPI beschreibt die Pixel der Bilddatei je Zoll der Ausgabe. DPI (dots per inch) bezeichnet Druckpunkte, die das Ausgabegerät auf das Material setzt. Ein Drucker kann für die Wiedergabe eines Bildpixels mehrere Tintenpunkte verwenden; die DPI-Zahl des Druckers ist daher nicht die Pixelzahl, die du in deiner Fotodatei brauchst.\n\nWenn ein Bestellformular umgangssprachlich „300 dpi“ verlangt, frag nach, ob damit tatsächlich 300 PPI in der Bilddatei gemeint sind und für welches Endformat. Adobe trennt Bildauflösung in PPI von der Druckerauflösung in DPI. Auch WhiteWall weist darauf hin, dass PPI die passende Größe für die Pixeldichte der Bilddaten ist. Verlass dich bei einer konkreten Bestellung auf die technischen Vorgaben des Labors, nicht allein auf die Bezeichnung im Dialogfeld deines Bildbearbeitungsprogramms."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Beschnitt, Papier und Motivdetails mitprüfen",
+      "body": "Eine Rechnung mit dem Originalseitenverhältnis passt nur, wenn dein gewünschtes Endformat dieses Verhältnis übernimmt. Für ein anderes Verhältnis brauchst du einen Rand, einen Beschnitt oder eine angepasste Platzierung. Bei einem Auto kann schon ein kleiner Zuschnitt die Bildwirkung verändern: Eine angeschnittene Felge, wenig Raum vor der Fahrtrichtung oder ein knappes Dach kann stärker auffallen als eine moderate Abweichung vom Richtwert.\n\nAuch das Material spielt mit. Eine glatte, glänzende Oberfläche kann feine Details anders zeigen als eine matte oder strukturierte Oberfläche; Canvas und andere Texturen können die wahrgenommene Schärfe verändern. Dunkler Lack, feine Speichen, Kühlergrill und Spiegelungen sind gute Stellen, um die Datei in der geplanten Ausgabegröße zu kontrollieren. Eine sehr hohe Pixeldichte rettet keinen verfehlten Fokus, Verwacklung oder Bewegungsunschärfe. Der Anbieter myposter weist ebenfalls darauf hin, dass Auflösung allein keine Schärfe garantiert.\n\nWenn du noch zwischen Motiv, Oberfläche, Format und Raumwirkung abwägst, hilft der separate [Guide zur Auswahl eines Autofotos als Fine-Art-Print](/blog-autofoto-fine-art-print-auswaehlen.html). Für Farbprofil und Softproof geht es im [Beitrag zum Farbmanagement von Autofotos](/blog-autofotos-farbmanagement-monitor-export.html) weiter."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Was Hochskalieren kann und was nicht",
+      "body": "Beim Hochskalieren berechnet eine Software zusätzliche Pixel. Das kann Kanten glätten und eine Datei auf ein gewünschtes Ausgabeformat bringen, liefert aber keine zusätzlich aufgenommenen Details. Beim Herunterskalieren werden Pixel entfernt; auch das ist eine Neuberechnung und kann feine Strukturen verändern. Speichere daher ein unverändertes Original und arbeite ausgehend von einer Kopie. Vermeide wiederholtes Skalieren und Komprimieren derselben Exportdatei. Prüfe Kühlergrill, Speichen, Schriftzüge und Lackkanten bei 100 Prozent sowie in der geplanten Druckgröße.\n\nWenn das Labor Pixelmaße, ICC-Profil oder Dateiformat nennt, gelten diese Angaben für das konkrete Produkt vor allgemeinen Richtwerten. Nutze den Upload-Proof oder bestelle bei einem großen Auftrag einen Testausschnitt, wenn Unsicherheit zu Auflösung, Beschnitt oder Material bleibt. Für allgemeine Fragen zu RAW, JPEG und TIFF gibt es den [Guide zu Dateiformaten in der Fahrzeugfotografie](/blog-dateiformate-fahrzeugfotografie-raw-jpeg-tiff.html). Beurteile einen Testprint unter dem Licht und aus der Entfernung, für die das Bild gedacht ist."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Diese Angaben vor der Bestellung mit dem Labor klären",
+      "body": "Schicke nicht nur die gewünschte Zentimeterzahl. Halte vor der Bestellung fest:\n\n1. **Endmaß und Seitenverhältnis:** Bezieht sich das Maß auf die bedruckte Fläche oder auf das fertige Objekt mit Rand und Rahmen?\n2. **Ausschnitt und Beschnitt:** Soll die Datei vollständig sichtbar bleiben, randlos gedruckt oder auf das Seitenverhältnis zugeschnitten werden?\n3. **Empfohlene Bildauflösung:** Welche PPI- oder Pixelvorgabe gilt für genau dieses Material und Format?\n4. **Dateiübergabe:** Welcher Farbraum, welches Profil, Dateiformat und welche maximale Dateigröße werden erwartet?\n5. **Kontrolle:** Kann das Labor einen kritischen Ausschnitt prüfen oder ein Muster im gewünschten Material anbieten?\n\nEin Upload-Check zeigt meist, ob die Datei zum konfigurierten Produkt passt; er ersetzt aber nicht die Sichtprüfung von Fokus, Detailzeichnung und Beschnitt. Die [Leistungsseite für Großformatdruck in Düsseldorf](/grossformatdruck-duesseldorf.html) ist der nächste Schritt, wenn du Angebot, Produktion und Material mit einem konkreten Fahrzeugmotiv abstimmen möchtest."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Großformat schon beim Autofoto-Shooting mitdenken",
+      "body": "Wenn ein Wandbild geplant ist, erwähne Format und späteren Betrachtungsabstand bereits im Briefing für die Aufnahme. So lassen sich Bildausschnitt, Umgebung und wichtige Details passend vorbereiten. Bei einem Fahrzeug, das als großes Motiv wirken soll, ist es hilfreich, nicht erst am Ende zu entscheiden, dass plötzlich ein enger Zuschnitt oder ein ungewöhnliches Format gebraucht wird.\n\nDie Rechnung gibt dir eine belastbare erste Orientierung, aber keine Garantie für ein bestimmtes Druckergebnis. Pixelmaß, Schärfe, Ausschnitt, Material, Druckverfahren und Betrachtungsabstand müssen zusammenpassen. Wenn du für ein eigenes Fahrzeug oder eine Marke eine Bildserie mit möglichem Print planst, kann ein [Autofotograf](/blog-autofotograf-finden.html) die spätere Ausgabe bereits bei der Motivplanung berücksichtigen."
+    },
+    {
+      "_template": "faqBlock",
+      "headline": "Häufige Fragen zu Autofotos im Großformat",
+      "items": [
+        {
+          "question": "Wie groß kann ich ein Autofoto drucken?",
+          "answer": "Eine einzelne Maximalgröße gibt es nicht. Teile die finale Pixelbreite und -höhe durch die gewünschte PPI-Zahl und wandle Zoll mit 2,54 in Zentimeter um. Beziehe Beschnitt, Betrachtungsabstand, Schärfe und Druckmaterial ein und lass die Datei für das konkrete Produkt prüfen."
+        },
+        {
+          "question": "Reichen 150 PPI für ein großes Wandbild?",
+          "answer": "Das kann bei einem großen Print, der aus Abstand betrachtet wird, passend sein, ist aber kein allgemeiner Qualitätsstandard. Motivdetails, Fokus, Oberfläche, Drucksystem und Nähe der Betrachtenden verändern den Eindruck. Frag das Labor nach seiner Vorgabe für das konkrete Produkt."
+        },
+        {
+          "question": "Brauche ich für den Fotodruck 300 DPI?",
+          "answer": "Für die Bilddatei ist meist PPI die präzisere Bezeichnung: Pixel pro Zoll der Ausgabe. DPI beschreibt Druckpunkte des Geräts. Wenn ein Anbieter „300 dpi“ schreibt, kläre, ob er 300 PPI in der Datei für dein gewünschtes Format meint."
+        },
+        {
+          "question": "Wie viele Pixel braucht ein Bild für 90 × 60 cm bei 240 PPI?",
+          "answer": "Die reine Rechnung ergibt rund 8504 × 5669 Pixel: Zentimeter zuerst durch 2,54 teilen und dann mit 240 multiplizieren. Bei diesem 3:2-Format passt ein 3:2-Ausschnitt ohne zusätzlichen Beschnitt; bei anderen Seitenverhältnissen kann das finale Pixelmaß kleiner ausfallen."
+        },
+        {
+          "question": "Macht Hochskalieren ein Foto druckfertig?",
+          "answer": "Hochskalieren fügt berechnete Pixel hinzu, aber keine sicher aufgenommenen Details. Es kann für eine Ausgabe helfen, sollte bei feinen Fahrzeugdetails jedoch geprüft werden. Eine unscharfe oder verwackelte Ausgangsdatei wird dadurch nicht zuverlässig scharf."
+        }
+      ]
+    },
+    {
+      "_template": "linkList",
+      "headline": "Quellen zur Druckauflösung",
+      "links": [
+        {
+        "label": "Adobe: Pixelmaße und Resampling in Photoshop",
+        "href": "https://helpx.adobe.com/de/photoshop/desktop/crop-resize-transform/resize-adjust-resolution/image-size-resolution-and-resampling.html",
+        "description": "Erklärt, wie Pixelmaße, physische Größe und PPI zusammenhängen und wie Neuberechnung Pixel hinzufügt oder entfernt."
+      },
+      {
+          "label": "Adobe: Druckauflösung und Betrachtungsabstand",
+          "href": "https://helpx.adobe.com/de/photoshop/desktop/crop-resize-transform/resize-adjust-resolution/resolution-specs-for-printing-images.html",
+          "description": "Einordnung von 300 PPI als Richtwert und davon, weshalb große Prints mit größerem Betrachtungsabstand anders beurteilt werden."
+        },
+        {
+          "label": "Adobe: Druckerauflösung in DPI",
+          "href": "https://helpx.adobe.com/uk/photoshop/desktop/crop-resize-transform/resize-adjust-resolution/printer-resolution.html",
+          "description": "Adobe unterscheidet die Bildauflösung in PPI von der Druckerauflösung in DPI."
+        },
+        {
+          "label": "WhiteWall: Bildqualität, PPI und Ausgabegröße",
+          "href": "https://www.whitewall.com/ch/magazin/guides/digitale-bild/bildqualitaet-anforderungen-fuer-den-druck",
+          "description": "Beispiele zu Pixelmaßen, PPI, Druckformat und Betrachtungsabstand."
+        },
+        {
+          "label": "myposter: Auflösung und Schärfe im Druck",
+          "href": "https://help.myposter.com/hc/de/articles/5463402361873-Welche-Qualit%C3%A4t-bzw-Aufl%C3%B6sung-muss-mein-Bild-f%C3%BCr-den-Druck-haben",
+          "description": "Der Anbieter erklärt, warum Pixelzahl und tatsächliche Schärfe getrennt geprüft werden sollten."
+        },
+        {
+          "label": "SAIC Service Bureau: PPI und Betrachtungsdistanz",
+          "href": "https://sites.saic.edu/servicebureau/home/help_center/resolution-viewing-distance/",
+          "description": "Eine institutionelle Druckerei zeigt eigene Orientierungswerte für Pixeldichte und Betrachtungsabstand."
+        }
+      ]
+    }
+  ],
+  "seo": {
+    "title": "Autofoto drucken: Pixelmaß und PPI berechnen",
+    "description": "Pixelmaß und Beschnitt eines Autofotos für dein Wunschformat in PPI umrechnen. Mit Rechenbeispielen und Prüfschritten für die finale Druckdatei.",
+    "focusKeyword": "Autofoto Druckauflösung berechnen",
+    "secondaryKeywords": [
+      "Auflösung für Fotodruck berechnen",
+      "Pixelmaß für Autofoto-Druck",
+      "Fotoauflösung für Wunschformat berechnen",
+      "PPI für Fotodruck",
+      "DPI und PPI beim Drucken",
+      "Druckauflösung Betrachtungsabstand"
+    ],
+    "searchIntent": "Qualitative SERP-Stichprobe am 06.11.2026: öffentliche Hilfen und Ratgeber von Adobe, WhiteWall, myposter und dem SAIC Service Bureau behandeln wiederkehrend die Fragen nach Pixelzahl, Endformat, PPI, Drucker-DPI, Material und Betrachtungsabstand. Das stützt einen praktischen Informationsintent, die Pixelzahl einer vorhandenen Datei für ein Wunschformat zu prüfen; es belegt weder Suchvolumen noch Nachfrage speziell für Autofotos bei MatthiasRamahi.de. Die lokale Service-Seite grossformatdruck-duesseldorf zielt auf ein Angebot und eine Anfrage und enthält nur kurze Richtwerte (150 dpi beziehungsweise oft 120 dpi bei Wandabstand), aber keine pixelbasierte Umrechnung eines konkreten Fotos. Der neue Guide rechnet Quellpixel, Beschnitt, Format und effektive PPI durch und verlinkt die Produktionsseite ergänzend. CFF-Evidenzgrenze: Keyword-Datenbank stale (07.10.2026), kein GSC/Search-Performance-Snapshot, aktuelle Keyword-Recherche nicht verfügbar. Zwei bezahlte Fanout-Läufe für diesen Auftrag scheiterten terminal mit KEYWORD_RESEARCH_FAILED und reconciliationRequired; eine dritte Abfrage scheiterte vor Execution an Source Capacity. Keine Volumina oder gemessenen AI-Fanout-Ergebnisse werden behauptet. Ergänzende Fragen zu Pixelbedarf, PPI, DPI/PPI und Hochskalierung sind redaktionelle AI-Fanout-Hypothesen, keine beobachteten Messwerte. Lokaler Dedupe: autofoto-fine-art-print-auswaehlen behandelt Motiv, Oberfläche, Format, Raumlicht und Probedruck, aber keine durchgerechnete Zuordnung zwischen Pixelmaßen, PPI und Ausgabemaß; farbmanagement-monitor-export behandelt Softproof/Farbe; dateiformate-fahrzeugfotografie behandelt Übergabeformate; landschaftsbild-fine-art-print-auswaehlen behandelt Motiv-/Raumwahl.",
+    "canonicalUrl": "https://matthiasramahi.de/blog-autofoto-druckgroesse-auflosung-ppi.html",
+    "legacyUrl": "blog-autofoto-druckgroesse-auflosung-ppi.html",
+    "ogImage": "/assets/optimized/autofoto-aufloesung-beispiel-1920.webp",
+    "noIndex": false
+  },
+  "createdAt": "2026-11-06T14:21:51Z",
+  "updatedAt": "2027-10-01T07:00:00Z",
+  "relatedPages": [
+    {
+      "label": "Großformatdruck in Düsseldorf",
+      "href": "/grossformatdruck-duesseldorf.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Autofoto als Fine-Art-Print auswählen",
+      "href": "/blog-autofoto-fine-art-print-auswaehlen.html",
+      "seoPurpose": "supporting-guide",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Autofotograf finden",
+      "href": "/blog-autofotograf-finden.html",
+      "seoPurpose": "supporting-guide",
+      "rel": "follow",
+      "openInNewTab": false
+    }
+  ],
+  "status": "scheduled"
+}

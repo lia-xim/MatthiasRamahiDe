@@ -1,4 +1,5 @@
 ---
+import HeroMotion from './HeroMotion.astro'
 import ContactSlot from '../ContactSlot.astro'
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import NativeFamilyClusterLinks from './NativeFamilyClusterLinks.astro'
@@ -151,6 +152,14 @@ const visualSlots = familyVisualSlots(visualDoc, [
   { alt: 'Drucke', full: 'assets/optimized/assets-portfolio-20250605-dsc03978-1920.webp', src: 'assets/optimized/assets-portfolio-20250605-dsc03978-1920.webp', width: 1707, height: 2560 },
   { alt: 'Portfolio', full: 'assets/optimized/assets-portfolio-wettberwerb-foto10-wunder-der-natur-1920.webp', src: 'assets/optimized/assets-portfolio-wettberwerb-foto10-wunder-der-natur-1920.webp', width: 1920, height: 1194 },
 ], sectionImageOverrides)
+// Hero (2026-11): Wien bei Nacht als Stadtlandschaft / Fine-Art-Motive.
+// Parlament und Staatsoper bei Nacht laufen auf der Startseite und werden hier
+// bewusst nicht doppelt gezeigt.
+const landschaftHeroSlides = [
+  { src: '/assets/optimized/architektur-wien-staatsoper-tram-1920.webp', mobile: '/assets/optimized/architektur-wien-staatsoper-tram-960.webp' },
+  { src: '/assets/optimized/architektur-wien-innenstadt-1920.webp', mobile: '/assets/optimized/architektur-wien-innenstadt-960.webp' },
+  { src: '/assets/optimized/architektur-wien-oper-ringstrasse-1920.webp', mobile: '/assets/optimized/architektur-wien-oper-ringstrasse-960.webp' },
+]
 const heroImages = visualSlots.slice(0, 5).map((slot) => slot.full).join(',')
 
 const firstSectionTarget = isLocalHeroPage ? `${serviceLabel} ${scope.label}` : isKeywordPage ? serviceLabel : ''
@@ -363,7 +372,10 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
   title={metaTitle}
   description={metaDescription}
   ogImage={doc?.seo?.ogImage || visualSlots[0].full}
-  preloadImages={[visualSlots[0].full]}
+  preloadImages={[
+    { href: landschaftHeroSlides[0].mobile, media: '(max-width: 900px)' },
+    { href: landschaftHeroSlides[0].src, media: '(min-width: 901px)' },
+  ]}
 >
   {preview && (
     <PreviewToolbar
@@ -375,7 +387,7 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
   )}
   <main>
     <section
-      class="hero-ls"
+      class="hero-ls is-revealed"
       data-header-theme="dark"
       aria-label={heroLabel}
       data-images={heroImages}
@@ -383,32 +395,11 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
     >
       <div class="hero-ls__paper" aria-hidden="true"></div>
 
-      <svg class="hero-ls__stage" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-        <defs>
-          <filter id="liquidEdge" x="-20%" y="-20%" width="140%" height="140%" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse">
-            <feTurbulence type="fractalNoise" baseFrequency="0.0055 0.0042" numOctaves="3" seed="11" result="noise" />
-            <feDisplacementMap in="SourceGraphic" in2="noise" scale="180" xChannelSelector="R" yChannelSelector="G" result="displaced" />
-            <feGaussianBlur in="displaced" stdDeviation="6" />
-          </filter>
-          <mask id="maskA" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
-            <rect width="1920" height="1080" fill="black" />
-            <g id="blobsA" filter="url(#liquidEdge)"></g>
-          </mask>
-          <mask id="maskB" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
-            <rect width="1920" height="1080" fill="black" />
-            <g id="blobsB" filter="url(#liquidEdge)"></g>
-          </mask>
-        </defs>
+      <HeroMotion
+        variant="pan"
+        slides={landschaftHeroSlides}
+      />
 
-        <image id="lsImgBottom" width="1920" height="1080" x="0" y="0" preserveAspectRatio="xMidYMid slice" mask="url(#maskA)" href="" />
-        <image id="lsImgTop" width="1920" height="1080" x="0" y="0" preserveAspectRatio="xMidYMid slice" mask="url(#maskB)" href="" />
-      </svg>
-
-      <svg class="hero-ls__ripple" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-        <circle id="lsRipple" cx="960" cy="540" r="0"></circle>
-      </svg>
-
-      <div class="hero-ls__grain" aria-hidden="true"></div>
       <div class="hero-ls__chrome-wash" aria-hidden="true"></div>
       <div class="hero-ls__bottom-wash" aria-hidden="true"></div>
       <div class="hero-ls__text-scrim" aria-hidden="true"></div>
@@ -430,7 +421,6 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
         </div>
       </div>
 
-      <div class="hero-ls__counter" id="lsCounter" aria-hidden="true"></div>
     </section>
 
     <section class="st-ls" data-header-theme="light">

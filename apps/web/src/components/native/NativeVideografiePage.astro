@@ -1,4 +1,5 @@
 ---
+import HeroMotion from './HeroMotion.astro'
 import ContactSlot from '../ContactSlot.astro'
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import { nativeServiceDetailPages } from '../../lib/serviceDetailContent'
@@ -20,11 +21,8 @@ const { hero, overview, feature, contact } = page
   <main>
     {/* ===== HERO (dark) — Ken-Burns static, image-led ===== */}
     <section class="vg-hero" data-theme="dark" data-header-theme="dark" aria-label="Videografie Düsseldorf">
-      <div class="vg-hero__media">
-        <img src={hero.image} alt={hero.alt} width={hero.width} height={hero.height} fetchpriority="high" decoding="async" />
-      </div>
+      <HeroMotion variant="pan" slides={[{ src: hero.image }]} />
       <div class="vg-hero__veil" aria-hidden="true"></div>
-      <div class="vg-hero__beam" aria-hidden="true"></div>
       <div class="vg-hero__inner">
         <h1 class="vg-hero__title">
           <span class="line">Bewegtes</span>

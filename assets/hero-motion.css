@@ -1,0 +1,94 @@
+/* =====================================================================
+   HeroMotion (2026-11) – drei leichte Hero-Ideen, siehe HeroMotion.astro
+   Nur opacity + transform werden animiert. Statische Filter (Tonung) werden
+   einmal gerastert und danach nur noch ueberblendet.
+   ===================================================================== */
+.hm{ position:absolute; inset:0; z-index:1; overflow:hidden; background:#050608; pointer-events:none; contain:strict; }
+.hm-slide{ position:absolute; inset:0; opacity:0; }
+.hm-slide.is-active{ opacity:1; z-index:2; }
+.hm-slide.is-leaving{ z-index:1; }
+.hm-slide picture{ display:contents; }
+.hm-img{
+  position:absolute; inset:0; width:100%; height:100%; max-width:none;
+  object-fit:cover; object-position:center 45%;
+  backface-visibility:hidden; transform:translateZ(0);
+}
+.hm.is-paused *{ animation-play-state:paused !important; }
+
+/* ---------- 1 · Kontaktbogen (Automobil) ---------- */
+.hm--contact .hm-slide{ transition:opacity 1.4s cubic-bezier(.4,0,.2,1); }
+.hm--contact .hm-slide.is-leaving{ opacity:1; transition:none; }
+.hm--contact .hm-slide.is-active .hm-img{ animation:hmZoom calc(var(--hm-d) + 3s) cubic-bezier(.25,.1,.25,1) both; }
+@keyframes hmZoom{ from{ transform:scale(1) translateZ(0); } to{ transform:scale(1.07) translateZ(0); } }
+
+.hm-strip{
+  position:absolute; z-index:12; right:clamp(16px,4vw,68px); bottom:clamp(40px,5vw,72px);
+  display:flex; flex-direction:column; align-items:flex-end; gap:12px; pointer-events:auto;
+}
+.hm-count{ font:500 12px/1 'MR Mono','MR Mono Fallback',ui-monospace,monospace; letter-spacing:.14em; color:rgba(243,245,239,.6); }
+.hm-count b{ color:#f3f5ef; font-weight:600; }
+.hm-thumbs{ display:flex; gap:6px; }
+.hm-thumb{
+  position:relative; width:clamp(64px,5.4vw,92px); aspect-ratio:3/2; padding:0; border:0; cursor:pointer;
+  background:#111; overflow:hidden; opacity:.5; transition:opacity .3s ease;
+}
+.hm-thumb img{ width:100%; height:100%; object-fit:cover; display:block; }
+.hm-thumb:hover,.hm-thumb.is-active{ opacity:1; }
+.hm-thumb i{ position:absolute; left:0; right:0; bottom:0; height:2px; background:#f3f5ef; transform:scaleX(0); transform-origin:left; }
+.hm-thumb.is-active i{ animation:hmProgress var(--hm-d, 7s) linear both; }
+.hm-thumb:focus-visible{ outline:2px solid #f3f5ef; outline-offset:2px; }
+@keyframes hmProgress{ from{ transform:scaleX(0); } to{ transform:scaleX(1); } }
+
+/* ---------- 2 · Kamerafahrt (Sportwagen) ---------- */
+.hm--pan .hm-slide{ opacity:1; transform:translate3d(100%,0,0); overflow:hidden; }
+.hm--pan .hm-slide.is-active{ transform:translate3d(0,0,0); transition:transform 1.05s cubic-bezier(.75,0,.12,1); }
+.hm--pan .hm-slide.is-leaving{ transform:translate3d(-24%,0,0); transition:transform 1.05s cubic-bezier(.75,0,.12,1); }
+.hm--pan .hm-img{ width:110%; right:auto; }
+.hm--pan .hm-slide.is-active .hm-img{ animation:hmDrift calc(var(--hm-d) + 2s) linear both; }
+@keyframes hmDrift{ from{ transform:translate3d(0,0,0); } to{ transform:translate3d(-8%,0,0); } }
+.hm-speed{
+  position:absolute; inset:-10% 0; z-index:3; opacity:0;
+  background:repeating-linear-gradient(180deg, rgba(243,245,239,0) 0 22px, rgba(243,245,239,.07) 22px 23px, rgba(243,245,239,0) 23px 61px);
+  transform:translate3d(30%,0,0);
+}
+.hm--pan.is-moving .hm-speed{ animation:hmSpeed 1.05s cubic-bezier(.75,0,.12,1) both; }
+@keyframes hmSpeed{ 0%{ opacity:0; transform:translate3d(30%,0,0); } 45%{ opacity:1; } 100%{ opacity:0; transform:translate3d(-30%,0,0); } }
+
+/* ---------- 3 · Dunkelkammer (Oldtimer) ---------- */
+.hm--develop{ background:#0a0806; }
+.hm--develop .hm-slide{ transition:opacity 1.6s cubic-bezier(.4,0,.2,1); }
+.hm--develop .hm-slide.is-leaving{ opacity:0; }
+.hm--develop .hm-tone{ filter:grayscale(1) sepia(.6) contrast(1.12) brightness(.82); opacity:0; }
+.hm--develop .hm-slide.is-active .hm-tone{ animation:hmDevelop 4.2s cubic-bezier(.5,0,.3,1) .2s both; }
+.hm--develop .hm-slide.is-active .hm-img:not(.hm-tone){ animation:hmZoomSoft calc(var(--hm-d) + 3s) linear both; }
+.hm--develop .hm-slide.is-active .hm-tone{ animation:hmDevelop 4.2s cubic-bezier(.5,0,.3,1) .2s both, hmZoomSoft calc(var(--hm-d) + 3s) linear both; }
+@keyframes hmDevelop{ from{ opacity:1; } to{ opacity:0; } }
+@keyframes hmZoomSoft{ from{ transform:scale(1.04) translateZ(0); } to{ transform:scale(1) translateZ(0); } }
+.hm-leak{
+  position:absolute; inset:-20% -40%; z-index:3; opacity:0;
+  background:radial-gradient(40% 55% at 50% 50%, rgba(255,176,96,.22), rgba(255,176,96,0) 70%);
+  transform:translate3d(-35%,0,0);
+}
+.hm--develop.is-moving .hm-leak{ animation:hmLeak 3.4s cubic-bezier(.4,0,.2,1) both; }
+@keyframes hmLeak{ 0%{ opacity:0; transform:translate3d(-35%,0,0); } 40%{ opacity:1; } 100%{ opacity:0; transform:translate3d(30%,0,0); } }
+
+@media (max-width:760px){
+  .hm-strip{ right:16px; bottom:auto; top:max(84px, calc(env(safe-area-inset-top) + 76px)); }
+  .hm-thumbs{ display:none; }
+}
+@media (prefers-reduced-motion: reduce){
+  .hm *{ animation:none !important; transition:none !important; }
+  .hm--develop .hm-tone{ opacity:0; }
+}
+
+/* Einbettung in die bestehenden Hero-Huellen */
+.hero > .hm{ z-index:0; }
+.hm-veil{
+  position:absolute; inset:0; z-index:4; pointer-events:none;
+  background:linear-gradient(180deg, rgba(2,3,6,.45) 0%, rgba(2,3,6,0) 24%, rgba(2,3,6,0) 46%, rgba(2,3,6,.62) 80%, rgba(2,3,6,.86) 100%),
+             linear-gradient(90deg, rgba(2,3,6,.45) 0%, rgba(2,3,6,0) 62%);
+}
+
+/* Nur ein Bild: dauerhaft langsame Kamerafahrt hin und her */
+.hm--pan[data-hm-single] .hm-slide.is-active .hm-img{ animation:hmDriftLoop 26s ease-in-out infinite alternate; }
+@keyframes hmDriftLoop{ from{ transform:translate3d(0,0,0); } to{ transform:translate3d(-8%,0,0); } }
