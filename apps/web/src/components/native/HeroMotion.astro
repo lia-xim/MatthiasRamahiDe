@@ -1,14 +1,14 @@
 ---
 // Leichte Hero-Bildbuehne (2026-11). Varianten:
-//   pan     – "Kamerafahrt" (Standard fuer alle Heroes): jedes Bild gleitet
-//             seitlich wie ein Mitzieher, das naechste schiebt sich von rechts
+//   pan     – "Kamerafahrt" (Standard für alle Heroes): jedes Bild gleitet
+//             seitlich wie ein Mitzieher, das nächste schiebt sich von rechts
 //             herein. Mit nur einem Bild driftet es dauerhaft langsam hin und her.
 //   develop – "Dunkelkammer" (Oldtimer): jedes Bild erscheint warm-monochrom
 //             und entwickelt sich zu Farbe, mit weichem Lichteinfall.
-//   contact – "Kontaktbogen": Ueberblendung + Zoom + Filmstreifen (derzeit
+//   contact – "Kontaktbogen": Überblendung + Zoom + Filmstreifen (derzeit
 //             nicht eingesetzt, bleibt als Option).
-// Gegen das fruehere Ruckeln: Das erste Bild steht serverseitig im HTML in
-// seinem Endzustand; nichts wird nachtraeglich darueber gelegt. Animiert
+// Gegen das frühere Ruckeln: Das erste Bild steht serverseitig im HTML in
+// seinem Endzustand; nichts wird nachträglich darüber gelegt. Animiert
 // werden nur opacity und transform (Compositor). Folgebilder laden erst nach
 // dem load-Event, der Wechsel pausiert ausserhalb des Sichtbereichs.
 //
@@ -63,10 +63,10 @@ const slides = [...givenSlides, ...fromJson]
     return true
   })
   .slice(0, 8) as Array<Slide & { text?: SlideText }>
-// Fuer die 2026-11 aufbereiteten Bildserien liegt neben -1920/-2560 immer eine
+// Für die 2026-11 aufbereiteten Bildserien liegt neben -1920/-2560 immer eine
 // -960-Variante: die bekommen Handys automatisch.
 // Pfade bewusst ausgeschrieben: tools/sync-public-assets.mjs liefert nur
-// Dateien aus, die woertlich im Quelltext stehen.
+// Dateien aus, die wörtlich im Quelltext stehen.
 const mobileVariants: Record<string, string> = {
   '/assets/optimized/automobil-alpina-b8-front-1920.webp': '/assets/optimized/automobil-alpina-b8-front-960.webp',
   '/assets/optimized/automobil-alpina-b8-medienhafen-1920.webp': '/assets/optimized/automobil-alpina-b8-medienhafen-960.webp',
@@ -203,7 +203,7 @@ const first = slides[0]
         };
         var decoded = function () {
           if (!img.decode) { finish(); return; }
-          /* decode() vermeidet einen Ruckler beim ersten Zeichnen; nie laenger als 1,2 s warten */
+          /* decode() vermeidet einen Ruckler beim ersten Zeichnen; nie länger als 1,2 s warten */
           Promise.race([img.decode(), new Promise(function (r) { setTimeout(r, 1200); })]).then(finish, finish);
         };
         if (img.getAttribute('src') && img.complete && img.naturalWidth > 0) { decoded(); return; }

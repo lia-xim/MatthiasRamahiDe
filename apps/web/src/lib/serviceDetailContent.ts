@@ -79,7 +79,7 @@ export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
     file: 'keyword-datenbank-seo.html',
     hero: {
       image: asset('assets/services/portfolio_webp_full_001.webp'),
-      alt: 'Server-Racks als Symbol fuer strukturierte SEO-Daten und Keyword-Recherche',
+      alt: 'Server-Racks als Symbol für strukturierte SEO-Daten und Keyword-Recherche',
       width: 1280,
       height: 800,
       crumb: 'Keyword-Datenbank',

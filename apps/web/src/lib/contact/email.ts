@@ -120,14 +120,14 @@ function subjectFor(request: ContactRequest) {
 }
 
 // Interne Queue-Warnung an den Betreiber. Bleibt als schlankes String-Template
-// (kein Marken-Mailing) - die kundenseitigen Mails laufen ueber src/emails (react-email).
+// (kein Marken-Mailing) - die kundenseitigen Mails laufen über src/emails (react-email).
 function renderAlertHtml(request: ContactRequest, error: string) {
   return `<!doctype html><html lang="de"><body style="margin:0;background:#fff7f5;color:#1b1b1b;font-family:Arial,sans-serif;">
     <div style="max-width:680px;margin:0 auto;padding:32px 18px;">
       <div style="border:1px solid #efc7bd;background:#fff;padding:28px;">
         <p style="margin:0 0 10px;font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:#b04432;font-weight:700;">Kontaktformular Warnung</p>
         <h1 style="margin:0 0 14px;font-size:28px;line-height:1.1;">Anfrage wurde zwischengespeichert</h1>
-        <p style="margin:0 0 18px;line-height:1.5;">Resend konnte die Anfrage nicht sofort verschicken. Sie liegt in der lokalen Queue und wird beim naechsten Retry erneut versendet.</p>
+        <p style="margin:0 0 18px;line-height:1.5;">Resend konnte die Anfrage nicht sofort verschicken. Sie liegt in der lokalen Queue und wird beim nächsten Retry erneut versendet.</p>
         <pre style="white-space:pre-wrap;background:#f7f2ef;padding:16px;border:1px solid #eadbd5;">${stripTags(error)}</pre>
         <p style="margin:18px 0 0;">Referenz: <strong>${stripTags(request.id)}</strong></p>
       </div>
@@ -193,8 +193,8 @@ async function sendFailureAlert(request: ContactRequest, error: string) {
   return resendSend(payload, `${request.id}-alert`)
 }
 
-// Bestaetigung an den Absender. Nur moeglich, wenn der Kontaktweg eine E-Mail
-// enthaelt (bei reiner Telefonnummer wird uebersprungen). reply_to zeigt auf
+// Bestätigung an den Absender. Nur möglich, wenn der Kontaktweg eine E-Mail
+// enthält (bei reiner Telefonnummer wird übersprungen). reply_to zeigt auf
 // das Admin-Postfach, damit Antworten direkt bei Matthias landen.
 async function sendSenderConfirmation(request: ContactRequest) {
   const to = firstEmail(request.contact)
@@ -256,13 +256,13 @@ export function validateContactRequest(request: ContactRequest) {
   if (containsMarkup(`${request.message} ${request.projectType} ${request.project}`)) return { ok: true, spam: true }
 
   // Nachricht ist optional: viele geben nur Name + E-Mail an und wollen bewusst
-  // keinen Text schreiben. Fuer die Eingangsbestätigung ist aber eine echte
+  // keinen Text schreiben. Für die Eingangsbestätigung ist aber eine echte
   // E-Mail-Adresse Pflicht; Telefon bleibt ein optionales Zusatzfeld.
   if (!request.name || !request.contact) {
     return { ok: false, error: 'Bitte Name und E-Mail-Adresse angeben.' }
   }
   if (!isSingleEmail(request.contact)) {
-    return { ok: false, error: 'Bitte eine gueltige E-Mail-Adresse angeben.' }
+    return { ok: false, error: 'Bitte eine gültige E-Mail-Adresse angeben.' }
   }
   if (!request.consent) {
     return { ok: false, error: 'Bitte der Verarbeitung deiner Angaben zustimmen.' }
@@ -288,8 +288,8 @@ async function removeQueuedRequest(filePath: string) {
 export async function sendOrQueueContactRequest(request: ContactRequest): Promise<SendResult> {
   try {
     const id = await sendAdminEmail(request)
-    // Eingangsbestaetigung an den Absender. Awaited, damit der Versand auch in
-    // serverless Umgebungen abgeschlossen wird, aber nie die Anfrage scheitern laesst.
+    // Eingangsbestätigung an den Absender. Awaited, damit der Versand auch in
+    // serverless Umgebungen abgeschlossen wird, aber nie die Anfrage scheitern lässt.
     try {
       await sendSenderConfirmation(request)
     } catch (confirmError) {

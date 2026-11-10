@@ -34,7 +34,7 @@ export const portfolioHeroSlidesFallback = [
   {
     image: '/assets/optimized/assets-portfolio-dsc2310-1920.webp',
     titleLines: ['Sportwagen', 'Details'],
-    lead: 'Form, Reflexion und Linie in ruhigen Serien fuer Marke, Verkauf und Sammlung.',
+    lead: 'Form, Reflexion und Linie in ruhigen Serien für Marke, Verkauf und Sammlung.',
     primaryHref: '#sport',
     primaryLabel: 'Serie ansehen',
     secondaryHref: '#archive',
@@ -52,7 +52,7 @@ export const portfolioHeroSlidesFallback = [
   {
     image: '/assets/optimized/assets-photos-motorrad-ninja-road-1920.webp',
     titleLines: ['Motorrad', 'Mechanik'],
-    lead: 'Maschine, Haltung und Details fuer konzentrierte Editorial- und Verkaufsbilder.',
+    lead: 'Maschine, Haltung und Details für konzentrierte Editorial- und Verkaufsbilder.',
     primaryHref: '#moto',
     primaryLabel: 'Serie ansehen',
     secondaryHref: '#archive',
@@ -61,7 +61,7 @@ export const portfolioHeroSlidesFallback = [
   {
     image: '/assets/optimized/assets-portfolio-wettberwerb-foto5-wunder-der-natur2-1920.webp',
     titleLines: ['Landschaft', 'Edition'],
-    lead: 'Ruhige Landschaftsmotive fuer Fine-Art, Wandbild und grossformatige Praesentation.',
+    lead: 'Ruhige Landschaftsmotive für Fine-Art, Wandbild und grossformatige Präsentation.',
     primaryHref: '#land',
     primaryLabel: 'Serie ansehen',
     secondaryHref: '#archive',
@@ -70,8 +70,8 @@ export const portfolioHeroSlidesFallback = [
 ]
 
 export const portfolioContext = [
-  'Das Portfolio ist nach Bildfunktionen und Themenclustern aufgebaut: Portrait, Automobil, Sportwagen, Oldtimer, Motorrad und Landschaft. Jede Strecke zeigt nicht nur ein einzelnes Motiv, sondern die visuelle Logik dahinter: Einstieg, Detail, Material, Atmosphaere und ein ruhiges Schlussbild.',
-  'So wird schneller sichtbar, welche Bildsprache fuer Verkauf, Marke, Sammlung, Website, Print oder redaktionelle Nutzung passt. Die Galerie fuehrt bewusst in die passenden Leistungs- und Standortseiten weiter, damit Portfolio und konkrete Anfragen dieselbe Struktur sprechen.',
+  'Das Portfolio ist nach Bildfunktionen und Themenclustern aufgebaut: Portrait, Automobil, Sportwagen, Oldtimer, Motorrad und Landschaft. Jede Strecke zeigt nicht nur ein einzelnes Motiv, sondern die visuelle Logik dahinter: Einstieg, Detail, Material, Atmosphäre und ein ruhiges Schlussbild.',
+  'So wird schneller sichtbar, welche Bildsprache für Verkauf, Marke, Sammlung, Website, Print oder redaktionelle Nutzung passt. Die Galerie führt bewusst in die passenden Leistungs- und Standortseiten weiter, damit Portfolio und konkrete Anfragen dieselbe Struktur sprechen.',
 ]
 
 export const portfolioIndexLinks = [

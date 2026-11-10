@@ -405,7 +405,7 @@ ${imageXml}` : ''}
 </urlset>`
 }
 
-/** Juengstes lastmod einer Sektion — undefined, wenn keine Seite eines traegt. */
+/** Jüngstes lastmod einer Sektion — undefined, wenn keine Seite eines trägt. */
 const latestLastmod = (entries: SitemapEntry[]): string | undefined =>
   entries.reduce<string | undefined>(
     (latest, entry) => (entry.lastmod && (!latest || entry.lastmod > latest) ? entry.lastmod : latest),
@@ -416,7 +416,7 @@ export async function sitemapIndexXml() {
   const siteUrl = configuredSiteUrl()
 
   // Das lastmod je Sektion stammt aus den Seiten selbst, nicht aus der Bauzeit.
-  // Sonst meldet jeder Deploy jede Sektion als geaendert und das Signal wird wertlos.
+  // Sonst meldet jeder Deploy jede Sektion als geändert und das Signal wird wertlos.
   const sections = await Promise.all(
     sitemapSections.map(async (section) => ({
       file: `sitemap-${section}.xml`,

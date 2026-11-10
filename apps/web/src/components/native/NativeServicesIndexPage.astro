@@ -79,14 +79,14 @@ const mergeService = (fb: FallbackService | undefined, item: NonNullable<typeof 
   }
 }
 
-// Positioneller Merge: Code-Defaults sind die Basis, CMS ueberschreibt pro Position.
+// Positioneller Merge: Code-Defaults sind die Basis, CMS überschreibt pro Position.
 const baseLength = Math.max(fallbackServices.length, cmsItems.length)
 const items = Array.from({ length: baseLength }, (_, index) =>
   mergeService(fallbackServices[index], cmsItems[index], index),
 ).filter((service) => hasText(stripHtml(service.headline)))
 
 // Ramahi Webdesign und Crawl Foundry sind eigene, grosse Sektionen (siehe
-// unten) und tauchen deshalb nicht noch einmal in Uebersicht und Liste auf.
+// unten) und tauchen deshalb nicht noch einmal in Übersicht und Liste auf.
 const isWebdesign = (service: (typeof items)[number]) => service.id === 'webdesign' || service.href.includes('/webdesign-seo-duesseldorf.html')
 const isCrawlFoundry = (service: (typeof items)[number]) => service.id === 'keyword-datenbank' || service.href.includes('/keyword-datenbank-seo.html')
 const webdesignService = items.find(isWebdesign)

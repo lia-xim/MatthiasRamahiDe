@@ -131,7 +131,7 @@ if (faqSchema) jsonLdItems.push(faqSchema)
 
   {audience.length > 0 && (
     <section class="container section-pad is-compact">
-      <p class="eyebrow">Geeignet fuer</p>
+      <p class="eyebrow">Geeignet für</p>
       <div class="filter-row">
         {audience.map((entry) => entry.item && <span {...tinaAttrs(entry, 'item')}>{entry.item}</span>)}
       </div>
@@ -156,7 +156,7 @@ if (faqSchema) jsonLdItems.push(faqSchema)
 
   {relatedPages.length > 0 && (
     <section class="container section-pad is-compact">
-      <p class="eyebrow">Weiterfuehren</p>
+      <p class="eyebrow">Weiterführen</p>
       <div class="filter-row">
         {relatedPages.map((link) => link.href && <a {...linkAttributes(link)} {...tinaAttrs(link, 'label')}>{link.label}</a>)}
       </div>

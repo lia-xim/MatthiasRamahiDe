@@ -148,7 +148,7 @@ const homeChapterSizes =
   '(max-width: 780px) calc((100vw - 52px) / 2), (max-width: 1180px) calc((100vw - 112px) / 2), 437px'
 
 const defaultHomeHeroLead =
-  'Automobil-, Portrait- und Landschaftsfotografie aus Duesseldorf fuer Marken, Sammler und Menschen mit Anspruch.'
+  'Automobil-, Portrait- und Landschaftsfotografie aus Düsseldorf für Marken, Sammler und Menschen mit Anspruch.'
 
 const defaultHeroCtas = {
   primaryHref: '#anfrage',
@@ -159,12 +159,12 @@ const defaultHeroCtas = {
 
 const fallbackHeroText: Array<{ lead?: string; titleLines: string[] }> = [
   {
-    titleLines: ['Fotografie', 'Duesseldorf'],
+    titleLines: ['Fotografie', 'Düsseldorf'],
     lead: defaultHomeHeroLead,
   },
   {
     titleLines: ['Automobil'],
-    lead: 'Ruhige Linien, kontrolliertes Licht und Bildserien fuer Fahrzeuge mit Wert.',
+    lead: 'Ruhige Linien, kontrolliertes Licht und Bildserien für Fahrzeuge mit Wert.',
   },
   {
     titleLines: ['Landschaft'],
@@ -172,7 +172,7 @@ const fallbackHeroText: Array<{ lead?: string; titleLines: string[] }> = [
   },
   {
     titleLines: ['Oldtimer'],
-    lead: 'Material, Geschichte und Charakter in praezisen Serien.',
+    lead: 'Material, Geschichte und Charakter in präzisen Serien.',
   },
   {
     titleLines: ['Sportwagen'],

@@ -1,6 +1,6 @@
 // Crawlbare Journal-Uebersicht: feste Seiten- und Themen-URLs statt eines
-// "Mehr laden"-Buttons. Jede Uebersichtsseite verlinkt ihre Beitraege als echte
-// <a href>-Links, damit Suchmaschinen alle Artikel ueber hoechstens wenige
+// "Mehr laden"-Buttons. Jede Übersichtsseite verlinkt ihre Beiträge als echte
+// <a href>-Links, damit Suchmaschinen alle Artikel über höchstens wenige
 // Klicks erreichen:
 //   /blog.html                       Seite 1, alle Themen
 //   /journal/seite/2                 Seite 2, alle Themen

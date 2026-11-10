@@ -135,10 +135,10 @@ const fallbackMetaTitle = isParentPage
     : `${serviceLabel} ${scope.label} | Matthias Ramahi`
 const metaTitle = doc?.seo?.title || fallbackMetaTitle
 const defaultMetaDescription = isParentPage
-  ? 'Automobilfotografie fuer Exterieur, Interieur, Details und Kampagne in ganz NRW. Bildserien fuer Verkauf, Marke, Showroom und hochwertige private Fahrzeuge.'
+  ? 'Automobilfotografie für Exterieur, Interieur, Details und Kampagne in ganz NRW. Bildserien für Verkauf, Marke, Showroom und hochwertige private Fahrzeuge.'
   : isKeywordPage
-    ? `${serviceLabel} fuer Fahrzeuge, Marken, Showrooms und Verkauf. Exterieur, Interieur, Details und Cinematic werden als nutzbare Bildserie geplant.`
-    : `${serviceLabel} in ${scope.label}: Exterieur, Interieur, Details und Cinematic als kuratierte Bildserie fuer Verkauf, Marke, Showroom und Kampagne.`
+    ? `${serviceLabel} für Fahrzeuge, Marken, Showrooms und Verkauf. Exterieur, Interieur, Details und Cinematic werden als nutzbare Bildserie geplant.`
+    : `${serviceLabel} in ${scope.label}: Exterieur, Interieur, Details und Cinematic als kuratierte Bildserie für Verkauf, Marke, Showroom und Kampagne.`
 const metaDescription = doc?.seo?.description || keywordFocusCopy?.metaDescription || defaultMetaDescription
 const contactSubject = isParentPage ? 'Automobil Fotografie Anfrage' : `${serviceLabel}${isKeywordPage ? '' : ` ${scope.label}`} Anfrage`
 const contactHeadline = isParentPage
@@ -346,8 +346,8 @@ const visualSlots = familyVisualSlots(
 )
 // Hero-Serie (2026-11): Alpina B8 am Medienhafen und am Rhein, Kennzeichen
 // unkenntlich gemacht, abwechselnd mit M4 und Koenigsegg aus dem Bestand.
-// Keine Ueberschneidung mit der Startseite (die nutzt alpina-b8-front).
-// Upload-Bilder laufen ueber toDisplayAssetUrl: in Produktion liegen sie auf
+// Keine Überschneidung mit der Startseite (die nutzt alpina-b8-front).
+// Upload-Bilder laufen über toDisplayAssetUrl: in Produktion liegen sie auf
 // cms.matthiasramahi.de, nicht unter /uploads der Website.
 const automobilHeroSlides = [
   { src: '/assets/optimized/automobil-alpina-b8-medienhafen-1920.webp', mobile: '/assets/optimized/automobil-alpina-b8-medienhafen-960.webp' },
@@ -492,7 +492,7 @@ const galleryImageSource = (index: number) => doc?.portfolioTiles?.[index] || vi
 const defaultSwitchCopy = [
   {
     title: 'Vollformat, ruhige Linien.',
-    body: 'Aussenaufnahmen mit kontrolliertem Licht und ruhigen Reflexen. Lack, Proportionen und Linienfuehrung wirken stimmig - Showroom, Industrie oder urbanes Setting.',
+    body: 'Aussenaufnahmen mit kontrolliertem Licht und ruhigen Reflexen. Lack, Proportionen und Linienführung wirken stimmig - Showroom, Industrie oder urbanes Setting.',
   },
   {
     title: 'Cockpit, Sitz, Material.',
@@ -500,11 +500,11 @@ const defaultSwitchCopy = [
   },
   {
     title: 'Emblem, Felge, Naht.',
-    body: 'Sicken, Felgen, Bremsen, Schalter, Logos. Detailaufnahmen erzaehlen die Geschichte eines Fahrzeugs im Kleinen - fuer Haendlerseiten, Landingpages und Magazinstrecken.',
+    body: 'Sicken, Felgen, Bremsen, Schalter, Logos. Detailaufnahmen erzählen die Geschichte eines Fahrzeugs im Kleinen - für Händlerseiten, Landingpages und Magazinstrecken.',
   },
   {
     title: 'Architektur, Licht, Dramaturgie.',
-    body: 'Inszenierte Perspektiven mit gesetztem Licht und gewaehlter Architektur. Bilder mit Filmcharakter - fuer Kampagne, Magazin und Bildstrecken, die Stimmung tragen.',
+    body: 'Inszenierte Perspektiven mit gesetztem Licht und gewählter Architektur. Bilder mit Filmcharakter - für Kampagne, Magazin und Bildstrecken, die Stimmung tragen.',
   },
 ]
 const localAudienceCards = doc?.audienceCards?.map((card) => ({
@@ -530,7 +530,7 @@ const focusPullLead =
   cmsStatementBody[0] ||
   keywordFocusCopy?.pullLead ||
   (isParentPage
-    ? 'Vom ehrlichen Verkaufsbild bis zur inszenierten Kampagne - eine konsistente Bildserie, sauber belichtet und sofort einsatzbereit fuer Inserat, Magazin, Social und Print.'
+    ? 'Vom ehrlichen Verkaufsbild bis zur inszenierten Kampagne - eine konsistente Bildserie, sauber belichtet und sofort einsatzbereit für Inserat, Magazin, Social und Print.'
     : `${serviceLabel} bekommt eine eigene Seite in der Automobil-Struktur: Fahrzeug, Licht, Nutzung und Ausgabe werden vor dem Shooting sauber geplant.`)
 const focusPullRest = cmsStatementBody.slice(1)
 const focusSectionHeadline = isLocalCityPage ? `${serviceLabel} in ${scope.label},` : isKeywordPage ? serviceLabel : keywordFocusCopy?.sectionHeadline || (isParentPage ? 'Ein Bildsatz,' : `${serviceLabel},`)
@@ -549,9 +549,9 @@ const focusAudiences = localAudienceCards.length
   : audiences
 const focusRelatedLead =
   isLocalCityPage
-    ? `Automobil Fotografie ${scope.label} bleibt der Einstieg fuer Fahrzeugbilder vor Ort. Sportwagen, Oldtimer, Motorrad und Auto-Fotoshooting werden als eigene Bereiche verlinkt, damit Nutzer schneller zum passenden Angebot finden.`
+    ? `Automobil Fotografie ${scope.label} bleibt der Einstieg für Fahrzeugbilder vor Ort. Sportwagen, Oldtimer, Motorrad und Auto-Fotoshooting werden als eigene Bereiche verlinkt, damit Nutzer schneller zum passenden Angebot finden.`
     : keywordFocusCopy?.relatedLead ||
-      'Automobil ist die Klammer. Schau dir die spezialisierten Disziplinen an - gleicher Anspruch, anderer Bildfokus. Die Links fuehren schnell zu der Bildwelt, die zum Fahrzeug, zur Nutzung und zum geplanten Shooting passt.'
+      'Automobil ist die Klammer. Schau dir die spezialisierten Disziplinen an - gleicher Anspruch, anderer Bildfokus. Die Links führen schnell zu der Bildwelt, die zum Fahrzeug, zur Nutzung und zum geplanten Shooting passt.'
 
 type LinkTuple = readonly [href: string, label: string]
 
@@ -897,10 +897,11 @@ const curatedIntentHeading = isParentPage
                 <figcaption>{image.label}</figcaption>
               </figure>
             ))}
-          </div>
-          <div class="auto-archive__footer">
-            <p>Ein Shooting wird als zusammenhängender Bildsatz geplant – die Seite zeigt bewusst mehr als nur ein einzelnes Projekt.</p>
-            <a href="#anfrage">Eigenes Fahrzeug anfragen <span aria-hidden="true">→</span></a>
+            <div class="auto-archive__cta">
+              <span class="auto-archive__cta-kicker">Projekt anfragen</span>
+              <p>Ein Shooting wird als zusammenhängender Bildsatz geplant – die Seite zeigt bewusst mehr als nur ein einzelnes Projekt.</p>
+              <a href="#anfrage">Eigenes Fahrzeug anfragen <span aria-hidden="true">→</span></a>
+            </div>
           </div>
         </div>
       </section>

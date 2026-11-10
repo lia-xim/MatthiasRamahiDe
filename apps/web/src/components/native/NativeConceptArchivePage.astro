@@ -27,7 +27,7 @@ Astro.response.headers.set('x-cms-page-kind', 'concept-archive-native')
   <main class={`concept-archive concept-archive--${page.kind}`} data-concept-kind={page.kind}>
     <section class="concept-hero" data-header-theme="dark">
       <div class="concept-hero__copy">
-        {page.backHref && <a class="concept-back" href={page.backHref}>Zurueck zu {page.backLabel || 'Konzepte'}</a>}
+        {page.backHref && <a class="concept-back" href={page.backHref}>Zurück zu {page.backLabel || 'Konzepte'}</a>}
         <p class="concept-eyebrow">{page.eyebrow}</p>
         <h1>{page.heroTitle}</h1>
         <p>{page.heroBody}</p>
@@ -85,7 +85,7 @@ Astro.response.headers.set('x-cms-page-kind', 'concept-archive-native')
             <span>{card.label}</span>
             <h2>{card.title}</h2>
             <p>{card.body}</p>
-            <strong>Experience oeffnen</strong>
+            <strong>Experience öffnen</strong>
           </a>
         ))}
       </section>

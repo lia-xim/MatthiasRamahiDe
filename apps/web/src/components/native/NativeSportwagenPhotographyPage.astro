@@ -323,15 +323,15 @@ const finalHeroPanels = heroPanelsSource.length
       return [fbTuple[0], resolved.full, resolved.mobile, resolved] as const
     })
   : inheritedHeroPanels
-// Der Kamerafahrt-Hero zeigt die Bilder randlos: groesste Variante aus dem srcset.
+// Der Kamerafahrt-Hero zeigt die Bilder randlos: größte Variante aus dem srcset.
 const largestFromSrcset = (srcset?: string) =>
   (srcset || '')
     .split(',')
     .map((entry) => entry.trim().split(/\s+/))
     .filter(([url, size]) => url && /^\d+w$/.test(size || ''))
     .sort((left, right) => parseInt(right[1], 10) - parseInt(left[1], 10))[0]?.[0]
-// Randloser Hero braucht grosse Dateien: bevorzugt die hochaufgeloesten
-// Bildslots (>= 1920 px), sonst die frueheren Triptychon-Panels.
+// Randloser Hero braucht grosse Dateien: bevorzugt die hochaufgelösten
+// Bildslots (>= 1920 px), sonst die früheren Triptychon-Panels.
 const isLargeVisual = (url?: string) => /-(19[2-9]\d|2\d{3})x\d+\.(webp|avif|jpe?g)/i.test(url || '')
 const largeVisualSlides = visualSlots
   .filter((slot) => isLargeVisual(slot.full))
@@ -393,17 +393,17 @@ const focusSectionLead =
     ? `${serviceLabel} in ${scope.label}: Exterieur, Innenraum, Details und Nutzung werden passend zu Fahrzeug, Ort und Ausgabeformat geplant.`
     : cmsText(doc?.focusSection?.lead) || keywordFocusCopy?.sectionLead ||
   (isParentPage
-    ? 'Exterieur, Interieur, Details und cineastische Perspektiven greifen ineinander - ein Bildsatz, der Fahrzeug, Atmosphaere und Material gleichermaßen zeigt.'
+    ? 'Exterieur, Interieur, Details und cineastische Perspektiven greifen ineinander - ein Bildsatz, der Fahrzeug, Atmosphäre und Material gleichermaßen zeigt.'
     : `${serviceLabel} bekommt eine eigene Seite im Sportwagenbereich: Exterieur, Innenraum, Details und Nutzung werden passend zum Motiv geplant.`)
 const focusGalleryHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}: Bildserie.` : isKeywordPage ? `${serviceLabel}: Bildserie.` : cmsText(doc?.gallerySection?.headline) || keywordFocusCopy?.galleryHeadline || 'Aktuelle Arbeiten.'
-const focusGalleryLead = cmsText(doc?.gallerySection?.lead) || keywordFocusCopy?.galleryLead || 'Sechs kuratierte Sportwagen-Bilder aus juengeren Serien. Klicken zum Vergroessern.'
-const focusAudienceHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}: passende Anfragen.` : isKeywordPage ? `${serviceLabel}: passende Anfragen.` : cmsText(doc?.audienceSection?.headline) || keywordFocusCopy?.audienceHeadline || 'Fuer wen ich arbeite.'
+const focusGalleryLead = cmsText(doc?.gallerySection?.lead) || keywordFocusCopy?.galleryLead || 'Sechs kuratierte Sportwagen-Bilder aus jüngeren Serien. Klicken zum Vergrößern.'
+const focusAudienceHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}: passende Anfragen.` : isKeywordPage ? `${serviceLabel}: passende Anfragen.` : cmsText(doc?.audienceSection?.headline) || keywordFocusCopy?.audienceHeadline || 'Für wen ich arbeite.'
 const focusAudienceLead =
   cmsText(doc?.audienceSection?.lead) || keywordFocusCopy?.audienceLead ||
-  'Vom privaten Fahrzeug bis zur internationalen Kampagne. Jede Serie wird auf Nutzung, Marke und Zielgruppe zugeschnitten - ein Hero-Motiv oder ein vollstaendiges Launch-Asset-Paket.'
+  'Vom privaten Fahrzeug bis zur internationalen Kampagne. Jede Serie wird auf Nutzung, Marke und Zielgruppe zugeschnitten - ein Hero-Motiv oder ein vollständiges Launch-Asset-Paket.'
 const focusRelatedLead =
   cmsText(doc?.relatedSection?.lead) || keywordFocusCopy?.relatedLead ||
-  'Sportwagen ist ein Teil der Automobil-Welt. Schau dir die anderen Disziplinen an - gleicher Anspruch, anderer Bildfokus. Die Links fuehren schnell zu der Bildwelt, die zum Fahrzeug, zur Nutzung und zum geplanten Shooting passt.'
+  'Sportwagen ist ein Teil der Automobil-Welt. Schau dir die anderen Disziplinen an - gleicher Anspruch, anderer Bildfokus. Die Links führen schnell zu der Bildwelt, die zum Fahrzeug, zur Nutzung und zum geplanten Shooting passt.'
 const relatedSectionTitle = splitTrailingEmphasis(
   cmsText(doc?.relatedSection?.headline) || 'Verwandte',
   cmsText(doc?.relatedSection?.emphasis) || 'Bereiche.',

@@ -128,7 +128,7 @@ const visualSlots = familyVisualSlots(visualDoc, [
   { alt: 'Motorrad Stand & Silhouette', full: 'assets/optimized/assets-photos-motorrad-ninja-road-1920.webp', src: 'assets/optimized/assets-photos-motorrad-ninja-road-720.webp', width: 720, height: 1080 },
   { alt: 'Motorrad Detail', full: 'assets/optimized/assets-portfolio-dsc3892-1920.webp', src: 'assets/portfolio/thumbs/_DSC3892.webp', width: 720, height: 480 },
   { alt: 'Motorrad mit Fahrer', full: 'assets/optimized/assets-photos-motorrad-duke-1920.webp', src: 'assets/optimized/assets-photos-motorrad-duke-720.webp', width: 720, height: 1280 },
-  { alt: 'Motorrad Schraeglage und Kurve', full: 'assets/optimized/assets-photos-motorrad-ninja-road-1920.webp', src: 'assets/optimized/assets-photos-motorrad-ninja-road-720.webp', width: 720, height: 1080 },
+  { alt: 'Motorrad Schräglage und Kurve', full: 'assets/optimized/assets-photos-motorrad-ninja-road-1920.webp', src: 'assets/optimized/assets-photos-motorrad-ninja-road-720.webp', width: 720, height: 1080 },
   { alt: 'Motorrad Cinematic', full: 'assets/optimized/assets-portfolio-dsc2986-1920.webp', src: 'assets/portfolio/thumbs/_DSC2986.webp', width: 720, height: 1080 },
   { alt: 'Motorrad Social & Vertical', full: 'assets/portfolio/_DSC9301-Enhanced-NR.webp', src: 'assets/portfolio/thumbs/_DSC9301-Enhanced-NR.webp', width: 720, height: 900 },
   { alt: 'Motorrad Hero-Motiv', full: 'assets/optimized/assets-photos-motorrad-1920.webp', src: 'assets/optimized/assets-photos-motorrad-720.webp', width: 720, height: 1080 },
@@ -176,31 +176,31 @@ const focusIntroBaseParagraphs = cmsStatementBody.length
     : isParentPage || isKeywordPage
       ? [
       'Ein Motorrad muss auch im Stand Spannung tragen. Ich arbeite mit gesetzten Winkeln, kontrolliertem Licht und einer ruhigen Bildsprache - Mechanik, Material und Haltung wirken sofort, ohne Effektpose.',
-      'Einsatz: Social, Website, Verkauf, Werkstatt, Kampagne. Sie erhalten Dateien fuer Web und Druck - bereit fuer Reels, Story, Magazin und Print, im einheitlichen Bild-Look.',
+      'Einsatz: Social, Website, Verkauf, Werkstatt, Kampagne. Sie erhalten Dateien für Web und Druck - bereit für Reels, Story, Magazin und Print, im einheitlichen Bild-Look.',
     ]
       : [
       `Motorradfotografie in ${scope.label} wird auf Maschine, Fahrerbezug, Standort und Nutzung geplant. Das Bike soll kraftvoll wirken, ohne dass die Serie nach Zufall oder Parkplatzbild aussieht.`,
-      `Fuer ${scope.label} werden Treffpunkt, Lichtfenster und Bildtypen vorab geklaert: Standbild, Detail, Fahrerportrait, Social-Crop oder Verkaufsserie.`,
+      `Für ${scope.label} werden Treffpunkt, Lichtfenster und Bildtypen vorab geklärt: Standbild, Detail, Fahrerportrait, Social-Crop oder Verkaufsserie.`,
     ]
 const focusIntroParagraphs = focusIntroSupportLine ? [focusIntroSupportLine, ...focusIntroBaseParagraphs] : focusIntroBaseParagraphs
 const focusModuleHeadline = isLocalHeroPage || isKeywordPage ? serviceLabel : keywordFocusCopy?.sectionHeadline || (isParentPage ? 'Vom Detail' : `Vom Detail in ${scope.label}`)
 const focusModuleEmphasis = isLocalHeroPage ? `${scope.label}.` : isKeywordPage ? 'klar geplant.' : keywordFocusCopy?.sectionEmphasis || (isParentPage ? 'bis zur Kurve.' : 'bis zum Fahrerbild.')
 const focusModuleLead = isParentPage || isKeywordPage
-  ? keywordFocusCopy?.sectionLead || 'Sechs Bildtypen, die ich anbiete - vom ruhigen Standschuss bis zum Pan-Shot in der Schraeglage. Jede Serie wird aus diesen Modulen zusammengestellt, je nach Bike, Anlass und Verwendung.'
-  : `Die Serie fuer ${scope.label} kann ruhig oder dynamisch gebaut werden: Silhouette, Mechanik, Fahrerbezug, Detail und Hochformat werden nach Nutzung kombiniert.`
+  ? keywordFocusCopy?.sectionLead || 'Sechs Bildtypen, die ich anbiete - vom ruhigen Standschuss bis zum Pan-Shot in der Schräglage. Jede Serie wird aus diesen Modulen zusammengestellt, je nach Bike, Anlass und Verwendung.'
+  : `Die Serie für ${scope.label} kann ruhig oder dynamisch gebaut werden: Silhouette, Mechanik, Fahrerbezug, Detail und Hochformat werden nach Nutzung kombiniert.`
 const focusPortfolioHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}: Bildserie.` : isKeywordPage ? `${serviceLabel}: Bildserie.` : cmsText(doc?.portfolioTiles?.[0]?.label) || keywordFocusCopy?.galleryHeadline || (isParentPage ? 'Aktuelle Arbeiten.' : `Motorrad-Arbeiten ${scope.label}.`)
 const focusPortfolioLead = isParentPage || isKeywordPage
-  ? keywordFocusCopy?.galleryLead || 'Sechs kuratierte Motorrad-Bilder aus juengeren Serien. Klicken zum Vergroessern.'
-  : `Beispielhafte Bildtypen fuer ein Motorrad-Shooting in ${scope.label}: Standmotiv, Detail, Werkstatt, Vertical und Profil.`
-const focusAudienceHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}: passende Anfragen.` : isKeywordPage ? `${serviceLabel}: passende Anfragen.` : keywordFocusCopy?.audienceHeadline || (isParentPage ? 'Fuer wen ich arbeite.' : `Fuer Bikes in ${scope.label}.`)
+  ? keywordFocusCopy?.galleryLead || 'Sechs kuratierte Motorrad-Bilder aus jüngeren Serien. Klicken zum Vergrößern.'
+  : `Beispielhafte Bildtypen für ein Motorrad-Shooting in ${scope.label}: Standmotiv, Detail, Werkstatt, Vertical und Profil.`
+const focusAudienceHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}: passende Anfragen.` : isKeywordPage ? `${serviceLabel}: passende Anfragen.` : keywordFocusCopy?.audienceHeadline || (isParentPage ? 'Für wen ich arbeite.' : `Für Bikes in ${scope.label}.`)
 const focusAudienceLead = isParentPage || isKeywordPage
   ? keywordFocusCopy?.audienceLead || 'Vom ersten eigenen Bike bis zur Kampagne - jede Serie wird auf Maschine, Marke und Nutzung zugeschnitten.'
-  : `Fuer Besitzer, Custom-Bikes, Werkstaetten und Haendler in ${scope.label}, die mehr brauchen als schnelle Handyfotos.`
+  : `Für Besitzer, Custom-Bikes, Werkstätten und Händler in ${scope.label}, die mehr brauchen als schnelle Handyfotos.`
 const defaultAudienceCards = [
-  { title: 'Motorradfahrer mit eigener Maschine', text: 'Persoenliche Bildserien fuer ein Bike, das nicht nur dokumentiert, sondern mit Haltung gezeigt werden soll.' },
+  { title: 'Motorradfahrer mit eigener Maschine', text: 'Persönliche Bildserien für ein Bike, das nicht nur dokumentiert, sondern mit Haltung gezeigt werden soll.' },
   { title: 'Custom Builder & Manufakturen', text: 'Umbauten, Details und Handwerk werden so fotografiert, dass Material, Linie und Werkstattarbeit nachvollziehbar bleiben.' },
-  { title: 'Werkstaetten & Haendler', text: 'Serien fuer Website, Verkauf und Social Media, bei denen jedes Motorrad wiedererkennbar und sauber aufbereitet wird.' },
-  { title: 'Marken, Magazin & Kampagne', text: 'Editoriale Motive fuer Launches, redaktionelle Strecken und Kampagnen mit klarer Bildsprache.' },
+  { title: 'Werkstätten & Händler', text: 'Serien für Website, Verkauf und Social Media, bei denen jedes Motorrad wiedererkennbar und sauber aufbereitet wird.' },
+  { title: 'Marken, Magazin & Kampagne', text: 'Editoriale Motive für Launches, redaktionelle Strecken und Kampagnen mit klarer Bildsprache.' },
 ]
 const focusAudienceCards = defaultAudienceCards.map((card, index) => {
   const cmsCard = doc?.audienceCards?.[index]
@@ -212,15 +212,15 @@ const focusAudienceCards = defaultAudienceCards.map((card, index) => {
     : card
 })
 const focusRelatedLead = isParentPage || isKeywordPage
-  ? keywordFocusCopy?.relatedLead || 'Motorrad steht selten allein. Schau dir die anderen Disziplinen an - gleicher Anspruch, anderer Bildfokus. Die Links fuehren schnell zu der Bildwelt, die zum Fahrzeug, zur Nutzung und zum geplanten Shooting passt.'
+  ? keywordFocusCopy?.relatedLead || 'Motorrad steht selten allein. Schau dir die anderen Disziplinen an - gleicher Anspruch, anderer Bildfokus. Die Links führen schnell zu der Bildwelt, die zum Fahrzeug, zur Nutzung und zum geplanten Shooting passt.'
   : `Motorradfotografie ${scope.label} verlinkt bewusst zu Automobil, Sportwagen, Oldtimer und Portfolio, damit Nutzer schnell den passenden Bildbereich finden.`
 
 const cleanDefaultModuleCards = [
-  { visualIndex: 3, title: 'Die ruhige Bildbuehne', text: 'Bike pur: Proportionen, Linienfuehrung und Haltung. Gesetztes Licht, klare Winkel, bereit fuer Header, Print und Werkstatt-Wand.' },
-  { visualIndex: 4, title: 'Tank, Motor, Felge, Lenker', text: 'Nahaufnahmen, die Material, Verarbeitung und Charakter ehrlich zeigen - fuer Custom-Doku, Haendlerseiten und redaktionelle Strecken.' },
-  { visualIndex: 5, title: 'Mensch + Maschine, Haltung', text: 'Fahrer und Bike zusammen: Haltung, Helm, Haende am Lenker. Portrait-Logik trifft Maschine, gerne vor Ort oder am Werkstatttor.' },
+  { visualIndex: 3, title: 'Die ruhige Bildbühne', text: 'Bike pur: Proportionen, Linienführung und Haltung. Gesetztes Licht, klare Winkel, bereit für Header, Print und Werkstatt-Wand.' },
+  { visualIndex: 4, title: 'Tank, Motor, Felge, Lenker', text: 'Nahaufnahmen, die Material, Verarbeitung und Charakter ehrlich zeigen - für Custom-Doku, Händlerseiten und redaktionelle Strecken.' },
+  { visualIndex: 5, title: 'Mensch + Maschine, Haltung', text: 'Fahrer und Bike zusammen: Haltung, Helm, Hände am Lenker. Portrait-Logik trifft Maschine, gerne vor Ort oder am Werkstatttor.' },
   { visualIndex: 6, title: 'On-the-go, Pan-Shots', text: 'Mitziehaufnahmen aus der Kurve, sauber gezogene Pan-Shots - Geschwindigkeit als Bild, nicht als Behauptung. Strecke nach Absprache.' },
-  { visualIndex: 7, title: 'Atmosphaere, Licht, Editorial', text: 'Bildserien mit Stimmung: Gegenlicht, Daemmerung, Werkhalle, Asphalt nach Regen. Editorial-Look fuer Magazin und Marken-Kampagne.' },
+  { visualIndex: 7, title: 'Atmosphäre, Licht, Editorial', text: 'Bildserien mit Stimmung: Gegenlicht, Dämmerung, Werkhalle, Asphalt nach Regen. Editorial-Look für Magazin und Marken-Kampagne.' },
   { visualIndex: 8, title: 'Reels, Story, 9:16-Cuts', text: 'Hochformat wird von Anfang an mitgeplant - eine Aufnahme, zwei Formate. Reels-, Story- und 9:16-Cuts direkt aus dem Set.' },
 ]
 const moduleCards = cleanDefaultModuleCards.map((cleanCard, index) => {

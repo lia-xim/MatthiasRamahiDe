@@ -113,9 +113,9 @@ const siteName = settings?.siteName || 'Matthias Ramahi Fotografie'
 const providedJsonLd = (Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : []).filter(Boolean)
 const providedTypes = new Set(providedJsonLd.map((item) => String(item?.['@type'] ?? '')))
 
-// Die kanonischen .html-Routen der Local-SEO-Familien rendern ueber dieses
+// Die kanonischen .html-Routen der Local-SEO-Familien rendern über dieses
 // Layout und blieben deshalb ohne Service-/Breadcrumb-Markup — beides existierte
-// nur auf den Nicht-.html-Routen. Hier zentral ergaenzt, ohne zu duplizieren.
+// nur auf den Nicht-.html-Routen. Hier zentral ergänzt, ohne zu duplizieren.
 const isServicePageDoc = Boolean(
   doc && (localSeoLayoutFamilyForSlug(legacyFile) || doc.city || doc.service || doc.targetKeyword),
 )

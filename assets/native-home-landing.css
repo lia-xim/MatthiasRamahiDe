@@ -19,10 +19,12 @@
 .lp-eyebrow{margin:0;display:inline-flex;align-items:center;gap:14px;font:10px/1 var(--mono);letter-spacing:.26em;text-transform:uppercase;color:var(--quiet)}
 .lp-eyebrow:before{content:"";width:24px;height:1px;background:currentColor}
 .sec-light .lp-eyebrow{color:var(--quiet-l)}
-.lp-arrow{font:12px/1 var(--mono);transition:transform .45s var(--ease),color .3s var(--ease)}
-.lp-link{display:inline-flex;align-items:center;gap:8px;min-height:28px;font:12px/1.4 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:inherit;text-decoration:none;padding:6px 0 4px;border-bottom:1px solid currentColor;transition:color .3s var(--ease),border-color .3s var(--ease)}
+/* Mono-Labels auf der Lesegröße für Kleintext (--read-small, 13–17px) statt fix 12px:
+   „Serie ansehen“, „Lesen“, Pfeile und Schrittnummern waren auf Screenshots kaum lesbar. */
+.lp-arrow{font:var(--read-small,14px)/1 var(--mono);transition:transform .45s var(--ease),color .3s var(--ease)}
+.lp-link{display:inline-flex;align-items:center;gap:8px;min-height:32px;font:var(--read-small,14px)/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:inherit;text-decoration:none;padding:6px 0 4px;border-bottom:1px solid currentColor;transition:color .3s var(--ease),border-color .3s var(--ease)}
 .lp-link:hover{color:var(--lp-red);border-color:var(--lp-red)}
-.lp-link span{opacity:.6}
+.lp-link span{opacity:.72}
 .lp-btn-ghost-ink{color:var(--ink);border-color:var(--ink)}
 .lp-btn-ghost-paper{color:var(--fg);border-color:rgba(243,245,239,.4)}
 .lp a:focus-visible,.lp summary:focus-visible{outline:1px solid var(--lp-red);outline-offset:4px}
@@ -38,12 +40,17 @@
 .lp .chapter,.lp .chapter:hover{transform:none}
 .lp .chapter .img img[loading]{transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform 1.6s cubic-bezier(.22,.61,.36,1),filter .6s var(--ease)}
 .lp .chapter:hover .img img[loading]{transform:none}
+/* Bereichs-Labels: gleicher schmaler Schnitt wie die Headlines, Link-Zeile in Lesegröße und klar hell */
+.lp .chapter h3{font-weight:750;font-stretch:75%;font-size:clamp(26px,2.4vw,38px);line-height:.96}
+.lp .chapter .meta{font-size:var(--read-small,14px);letter-spacing:.14em;color:var(--fg)}
+.lp .chapter .meta .arr{color:inherit;opacity:.82}
+.lp .chapter:hover .meta .arr{opacity:1}
 
 /* ---------- 03 Kontaktbogen ---------- */
 .lp-sheet__board{border-top:1px solid var(--ink)}
 .lp-strip{display:grid;grid-template-columns:minmax(180px,250px) minmax(0,1fr);gap:clamp(20px,3vw,52px);padding:clamp(26px,2.8vw,40px) 0;border-bottom:1px solid var(--lp-hair-l)}
 .lp-strip__label{display:flex;flex-direction:column;align-items:flex-start;gap:12px}
-.lp-strip__label h3{margin:4px 0 0;font-size:clamp(24px,2.3vw,38px);line-height:.96;letter-spacing:-.035em;text-transform:uppercase;font-weight:900;color:var(--ink)}
+.lp-strip__label h3{margin:4px 0 0;font-size:clamp(28px,2.6vw,44px);line-height:.94;text-transform:uppercase;font-weight:750;font-stretch:75%;color:var(--ink)}
 .lp-strip__label p{margin:0;font-size:clamp(15px,1.1vw,17px);line-height:1.4;color:var(--muted-l)}
 .lp-strip__label .lp-link{margin-top:auto;color:var(--ink)}
 .lp-strip__frames{display:flex;align-items:flex-start;gap:clamp(6px,.6vw,10px);min-width:0}
@@ -66,7 +73,8 @@
 .lp-intent-list li{border-bottom:1px solid var(--lp-hair)}
 .lp-intent{position:relative;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr) 32px;align-items:center;gap:clamp(14px,2vw,32px);padding:clamp(20px,2.2vw,32px) 0;color:var(--fg);text-decoration:none;transition:opacity .45s var(--ease)}
 .lp-intent:before{content:"";position:absolute;left:0;right:0;top:-1px;height:1px;background:var(--lp-red);transform:scaleX(0);transform-origin:left;transition:transform .7s var(--ease)}
-.lp-intent__title{font-size:clamp(24px,2.7vw,46px);line-height:.98;letter-spacing:-.035em;text-transform:uppercase;font-weight:900;transition:transform .6s var(--ease)}
+/* Schmal wie die Headlines (vorher Breitschnitt 900, wirkte wie eine zweite Schrift) */
+.lp-intent__title{font-size:clamp(28px,3.2vw,54px);line-height:.94;letter-spacing:-.005em;text-transform:uppercase;font-weight:750;font-stretch:75%;transition:transform .6s var(--ease)}
 .lp-intent__text{font-size:var(--read-copy,17px);line-height:1.55;color:var(--muted);max-width:44ch;transition:opacity .35s var(--ease)}
 .lp-intent .lp-arrow{justify-self:end;color:var(--quiet)}
 @media (hover:hover){
@@ -74,7 +82,7 @@
   .lp-intent:hover:before{transform:scaleX(1)}
   .lp-intent:hover .lp-intent__title{transform:translateX(14px)}
   .lp-intent:hover .lp-intent__text{opacity:.18}
-  .lp-intent:hover   .lp-intent:hover .lp-arrow{transform:translateX(6px);color:var(--fg)}
+  .lp-intent:hover .lp-arrow{transform:translateX(6px);color:var(--fg)}
 }
 
 /* ---------- 05 Ablauf ---------- */
@@ -89,10 +97,11 @@
 }
 @keyframes lp-line{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 .lp-step{position:relative;display:flex;flex-direction:column;gap:12px}
-.lp-step__no{font:12px/1 var(--mono);letter-spacing:.16em;color:var(--quiet-l);margin-right:10px;vertical-align:.18em}
-.lp-step h3{margin:6px 0 0;font-size:clamp(18px,1.5vw,24px);line-height:1.05;letter-spacing:-.03em;text-transform:uppercase;font-weight:850;color:var(--ink)}
+/* Schrittnummer als eigene Zeile über dem Titel (vorher 12px grau inline, ging unter) */
+.lp-step__no{display:block;margin:6px 0 0;font:var(--read-small,14px)/1 var(--mono);letter-spacing:.16em;color:var(--muted-l)}
+.lp-step h3{margin:0;font-size:clamp(22px,1.9vw,30px);line-height:1;text-transform:uppercase;font-weight:750;font-stretch:75%;color:var(--ink)}
 .lp-step p{margin:0;font-size:clamp(14px,.98vw,15.5px);line-height:1.6;color:var(--muted-l);text-wrap:pretty}
-
+.lp-process__foot{display:flex;align-items:center;gap:16px 28px;flex-wrap:wrap;margin-top:clamp(36px,4vw,60px);padding-top:clamp(28px,3vw,40px);border-top:1px solid var(--lp-hair-l)}
 /* ---------- 06 Über mich ---------- */
 .lp-about .section-inner{grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(36px,6vw,110px)}
 .lp-about .about-img{aspect-ratio:4/5}
@@ -128,7 +137,7 @@
 .lp-post__meta{margin:0;display:flex;flex-wrap:wrap;gap:6px 16px;font-family:var(--mono);line-height:1.2;letter-spacing:.08em;text-transform:uppercase;color:var(--quiet)}
 .lp-post h3{margin:0;font-size:clamp(20px,1.75vw,27px);line-height:1.1;letter-spacing:-.03em;font-weight:800;text-wrap:balance}
 .lp-post__text{margin:0;font-size:14.5px;line-height:1.55;color:var(--muted);text-wrap:pretty;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.lp-post__read{font:12px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-top:4px;transition:transform .35s var(--ease)}
+.lp-post__read{font:var(--read-small,14px)/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-top:4px;transition:transform .35s var(--ease)}
 @media (hover:hover){
   .lp-journal__grid:has(.lp-post:hover) .lp-post:not(:hover){opacity:.45;transition-delay:0s}
   .lp-post:hover{transition-delay:0s}
@@ -138,14 +147,14 @@
 .lp-journal__all{margin-top:clamp(28px,3vw,44px)}
 .lp-extras{margin-top:clamp(80px,9vw,140px);padding-top:clamp(34px,3.4vw,52px);border-top:1px solid var(--lp-hair);display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(28px,5vw,96px)}
 .lp-extras__head{display:flex;flex-direction:column;align-items:flex-start;gap:16px}
-.lp-extras__head h3{margin:4px 0 0;font-size:clamp(28px,2.6vw,44px);line-height:.92;letter-spacing:-.04em;hyphens:manual;text-transform:uppercase;font-weight:900}
+.lp-extras__head h3{margin:4px 0 0;font-size:clamp(32px,3vw,52px);line-height:.92;hyphens:manual;text-transform:uppercase;font-weight:750;font-stretch:75%}
 .lp-extras__head p{margin:0;font-size:14.5px;line-height:1.6;color:var(--muted);max-width:40ch}
 .lp-extras__list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(24px,3vw,48px);border-top:1px solid var(--lp-hair)}
 .lp-extras__list li{border-bottom:1px solid var(--lp-hair)}
 .lp-extras__list a{position:relative;display:grid;gap:6px;padding:18px 28px 18px 0;color:var(--fg);text-decoration:none}
-.lp-extras__list a:after{content:"→";position:absolute;right:0;top:19px;font:12px/1 var(--mono);color:var(--quiet);transition:transform .35s var(--ease),color .3s var(--ease)}
-.lp-extras__title{font-size:15px;line-height:1.2;letter-spacing:.01em;text-transform:uppercase;font-weight:800}
-.lp-extras__text{font-size:var(--read-small,14px);line-height:1.5;color:var(--muted)}
+.lp-extras__list a:after{content:"→";position:absolute;right:0;top:20px;font:var(--read-small,14px)/1 var(--mono);color:var(--quiet);transition:transform .35s var(--ease),color .3s var(--ease)}
+.lp-extras__title{font-size:clamp(18px,1.4vw,22px);line-height:1.1;letter-spacing:0;text-transform:uppercase;font-weight:750;font-stretch:75%}
+.lp-extras__text{font-size:clamp(14.5px,1.02vw,16px);line-height:1.5;color:var(--muted)}
 .lp-extras__list a:hover:after{transform:translateX(6px);color:var(--lp-red)}
 
 /* ---------- Anfrage: auf der Startseite großzügiger ---------- */
@@ -165,8 +174,7 @@
   .lp-steps:before,.lp-steps:after{left:0;right:auto;top:0;bottom:0;width:1px;height:auto}
   .lp-steps:after{transform-origin:top}
   @keyframes lp-line{from{transform:scaleY(0)}to{transform:scaleY(1)}}
-  .lp-step{padding:0 0 30px}
-  .lp-step__no{font:12px/1 var(--mono);letter-spacing:.16em;color:var(--quiet-l);margin-right:10px;vertical-align:.18em}
+  .lp-step{padding:0 0 30px;gap:8px}
   .lp-about .section-inner{grid-template-columns:1fr}
   .lp-about .about-img{max-width:620px}
   .lp-faq .section-inner{grid-template-columns:1fr}
@@ -179,6 +187,9 @@
 @media (max-width:780px){
   .lp .chapter{min-width:0}
   .lp .chapter .meta .arr{letter-spacing:.06em}
+  .lp .chapter h3{font-size:clamp(22px,6.4vw,28px)}
+  .lp-process__foot{flex-direction:column;align-items:stretch}
+  .lp-process__foot .btn,.lp-faq__intro .btn{align-self:stretch;text-align:center;justify-content:center}
   .lp-head{grid-template-columns:1fr;gap:14px;margin-bottom:clamp(28px,8vw,40px)}
   .lp-head .lead{justify-self:start;text-align:left}
   .lp-display{font-size:clamp(38px,11vw,62px);letter-spacing:-.06em}
@@ -192,7 +203,7 @@
   .lp-frame__img{height:200px;width:calc(200px * var(--r))}
   .lp-sheet__foot{flex-direction:column;align-items:stretch}
   .lp-intent{grid-template-columns:minmax(0,1fr) 20px;gap:8px 12px;padding:20px 0}
-  .lp-intent__title{font-size:clamp(22px,6.6vw,30px)}
+  .lp-intent__title{font-size:clamp(26px,7.6vw,34px)}
   .lp-q summary{grid-template-columns:minmax(0,1fr) 18px}
   .lp-q__a{padding:0 0 22px}
   .lp-journal__grid{grid-template-columns:1fr;gap:28px}

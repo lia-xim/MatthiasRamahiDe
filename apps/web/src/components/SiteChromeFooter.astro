@@ -15,7 +15,7 @@ const replaceStudioLanguage = (value: unknown) => {
   return text
     .replace(/\bStudio\b/g, 'Fotograf')
     .replace(/\bstudio\b/g, 'Fotograf')
-    .replace(/^\s*Fotograf\s*$/i, 'Ueber mich')
+    .replace(/^\s*Fotograf\s*$/i, 'Über mich')
 }
 const sanitizeLink = <T extends Record<string, unknown>>(link: T) => ({
   ...link,
@@ -55,7 +55,7 @@ const socialContactLink =
   <div class="mr-footer__hairline" aria-hidden="true"></div>
   <div class="mr-footer__inner">
     <section class="mr-footer__top" aria-label="Fotograf">
-      <a class="mr-footer__mark" href={toRootRelativeHref(brand.href)} aria-label="Matthias Ramahi - Zurueck zur Startseite">
+      <a class="mr-footer__mark" href={toRootRelativeHref(brand.href)} aria-label="Matthias Ramahi - Zurück zur Startseite">
         {brand.lines[0]}<span>{brand.lines[1]}</span>
       </a>
       <div class="mr-footer__claim">

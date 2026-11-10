@@ -244,7 +244,7 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
     ogImage: '/assets/optimized/assets-photos-automobil-sunset-1920.webp',
     preloadImages: ['/assets/optimized/assets-photos-automobil-sunset-1280.webp'],
     // Journal-Uebersicht ohne Shader-Hero und ohne Filter-/Nachlade-JS: alle
-    // Beitraege sind echte Links auf paginierten Seiten (siehe journalIndexRoutes).
+    // Beiträge sind echte Links auf paginierten Seiten (siehe journalIndexRoutes).
     scripts: [...siteChromeScript],
     stylesheets: ['/assets/journal-index.css', ...sharedStyles],
     title: 'Blog / Journal - Matthias Ramahi',
@@ -253,7 +253,7 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
     bodyClass: 'has-mr-footer',
     current: 'portfolio',
     description:
-      'Portfolio als kuratierter Erlebnisraum: kuratierte Fotografie-Serien von Matthias Ramahi aus Duesseldorf fuer Portfolio, Marke, Print und digitale Nutzung.',
+      'Portfolio als kuratierter Erlebnisraum: kuratierte Fotografie-Serien von Matthias Ramahi aus Düsseldorf für Portfolio, Marke, Print und digitale Nutzung.',
     ogImage: '/assets/optimized/assets-photos-automobil-sunset-1920.webp',
     scripts: siteChromeScript,
     stylesheets: sharedStyles,
@@ -263,7 +263,7 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
     bodyClass: 'has-mr-footer',
     current: 'portfolio',
     description:
-      'Das Gedaechtnis des Fotografen als begehbarer Raum: Fotografie und visuelle Produktion von Matthias Ramahi in Duesseldorf, NRW und Deutschland.',
+      'Das Gedächtnis des Fotografen als begehbarer Raum: Fotografie und visuelle Produktion von Matthias Ramahi in Düsseldorf, NRW und Deutschland.',
     ogImage: '/assets/optimized/assets-photos-automobil-sunset-1920.webp',
     scripts: siteChromeScript,
     stylesheets: sharedStyles,
@@ -273,7 +273,7 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
     bodyClass: 'has-mr-footer',
     current: 'portfolio',
     description:
-      'Jede Serie betritt die Buehne anders: Fotografie und visuelle Produktion von Matthias Ramahi in Duesseldorf, NRW und Deutschland.',
+      'Jede Serie betritt die Bühne anders: Fotografie und visuelle Produktion von Matthias Ramahi in Düsseldorf, NRW und Deutschland.',
     ogImage: '/assets/optimized/assets-photos-automobil-sunset-1920.webp',
     scripts: siteChromeScript,
     stylesheets: sharedStyles,
@@ -283,7 +283,7 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
     bodyClass: 'has-mr-footer',
     current: 'portfolio',
     description:
-      'Das Werk wird optisch untersucht: Fotografie und visuelle Produktion von Matthias Ramahi in Duesseldorf, NRW und Deutschland.',
+      'Das Werk wird optisch untersucht: Fotografie und visuelle Produktion von Matthias Ramahi in Düsseldorf, NRW und Deutschland.',
     ogImage: '/assets/optimized/assets-photos-automobil-sunset-1920.webp',
     scripts: siteChromeScript,
     stylesheets: sharedStyles,

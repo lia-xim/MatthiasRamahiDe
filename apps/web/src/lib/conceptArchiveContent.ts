@@ -36,23 +36,23 @@ export const conceptArchivePages: Record<string, ConceptArchivePage> = {
     eyebrow: 'Konzeptsystem / responsive web / drei Experiences',
     heroTitle: 'Portfolio als kuratierter Erlebnisraum.',
     heroBody:
-      'Keine Galerie, kein Masonry, kein Slider. Drei eigenstaendige Art-Directions fuer dieselbe Fotografie-Marke: ruhig, theatralisch und optisch-experimentell.',
+      'Keine Galerie, kein Masonry, kein Slider. Drei eigenständige Art-Directions für dieselbe Fotografie-Marke: ruhig, theatralisch und optisch-experimentell.',
     metaTitle: 'Radikale Fotografie Portfolio Konzepte | Matthias Ramahi',
     description:
-      'Portfolio als kuratierter Erlebnisraum: kuratierte Fotografie-Serien von Matthias Ramahi aus Duesseldorf fuer Portfolio, Marke, Print und digitale Nutzung.',
+      'Portfolio als kuratierter Erlebnisraum: kuratierte Fotografie-Serien von Matthias Ramahi aus Düsseldorf für Portfolio, Marke, Print und digitale Nutzung.',
     ogImage: '/assets/optimized/assets-photos-automobil-sunset-1920.webp',
     cards: [
       {
         label: 'Floating Archive',
         title: 'The Floating Archive',
-        body: 'Ein raeumliches Gedaechtnis aus Bildern, Kontaktspuren, Koordinaten und Fragmenten. Navigation ueber Naehe, Fokus und Tiefenebenen.',
+        body: 'Ein räumliches Gedächtnis aus Bildern, Kontaktspuren, Koordinaten und Fragmenten. Navigation über Nähe, Fokus und Tiefenebenen.',
         href: 'floating-archive.html',
         variant: 'archive',
       },
       {
         label: 'Narrative Stage',
         title: 'The Narrative Stage',
-        body: 'Fotoserien treten wie Akte auf: Enthuellung, Gegenueberstellung, Licht/Schatten, dramaturgische Kapitel statt Standardseiten.',
+        body: 'Fotoserien treten wie Akte auf: Enthuellung, Gegenüberstellung, Licht/Schatten, dramaturgische Kapitel statt Standardseiten.',
         href: 'narrative-stage.html',
         variant: 'stage',
       },
@@ -71,18 +71,18 @@ export const conceptArchivePages: Record<string, ConceptArchivePage> = {
     backHref: 'radikale-fotografie-portfolio-konzepte.html',
     backLabel: 'Konzepte',
     eyebrow: 'Floating Archive',
-    heroTitle: 'Das Gedaechtnis des Fotografen als begehbarer Raum.',
+    heroTitle: 'Das Gedächtnis des Fotografen als begehbarer Raum.',
     heroBody:
-      'Startseite: kein Hero, sondern ein kontrolliertes Schweben. Serien, Notizen und Bildfragmente organisieren sich durch Scrolltiefe und Mausnaehe.',
+      'Startseite: kein Hero, sondern ein kontrolliertes Schweben. Serien, Notizen und Bildfragmente organisieren sich durch Scrolltiefe und Mausnähe.',
     metaTitle: 'Floating Archive | Matthias Ramahi',
     description:
-      'Das Gedaechtnis des Fotografen als begehbarer Raum: Fotografie und visuelle Produktion von Matthias Ramahi in Duesseldorf, NRW und Deutschland.',
+      'Das Gedächtnis des Fotografen als begehbarer Raum: Fotografie und visuelle Produktion von Matthias Ramahi in Düsseldorf, NRW und Deutschland.',
     ogImage: '/assets/optimized/assets-photos-automobil-sunset-1920.webp',
     panels: [
       {
         label: 'Navigation',
-        title: 'Visuelle Spuren statt Menues.',
-        body: 'Nutzer naehern sich visuellen Spuren; Fokus oeffnet Kapitel statt Menues. Auf Mobile werden die Fundstuecke zu vertikalen Karten in einer Archivbox.',
+        title: 'Visuelle Spuren statt Menüs.',
+        body: 'Nutzer nähern sich visuellen Spuren; Fokus öffnet Kapitel statt Menüs. Auf Mobile werden die Fundstücke zu vertikalen Karten in einer Archivbox.',
       },
       {
         label: 'Projektseite',
@@ -97,31 +97,31 @@ export const conceptArchivePages: Record<string, ConceptArchivePage> = {
     backHref: 'radikale-fotografie-portfolio-konzepte.html',
     backLabel: 'Konzepte',
     eyebrow: 'Narrative Stage',
-    heroTitle: 'Jede Serie betritt die Buehne anders.',
+    heroTitle: 'Jede Serie betritt die Bühne anders.',
     heroBody:
-      'Startseite: keine Galerie. Drei Akte fuehren in die Bildwelt ein, mit Licht, Gegenlicht und choreografierten Enthuellungen.',
+      'Startseite: keine Galerie. Drei Akte führen in die Bildwelt ein, mit Licht, Gegenlicht und choreografierten Enthuellungen.',
     metaTitle: 'Narrative Stage | Matthias Ramahi',
     description:
-      'Jede Serie betritt die Buehne anders: Fotografie und visuelle Produktion von Matthias Ramahi in Duesseldorf, NRW und Deutschland.',
+      'Jede Serie betritt die Bühne anders: Fotografie und visuelle Produktion von Matthias Ramahi in Düsseldorf, NRW und Deutschland.',
     ogImage: '/assets/optimized/assets-photos-automobil-sunset-1920.webp',
     scenes: [
       {
         id: 'arrival',
         label: 'Akt I / Arrival',
-        title: 'Navigation ueber Akte, nicht ueber Seiten.',
-        body: 'Die Startseite fuehrt wie ein Auftaktbild in die Bildwelt: Oeffnung, Gegenbild und Nachhall ersetzen den Standard-Slider.',
+        title: 'Navigation über Akte, nicht über Seiten.',
+        body: 'Die Startseite führt wie ein Auftaktbild in die Bildwelt: Öffnung, Gegenbild und Nachhall ersetzen den Standard-Slider.',
       },
       {
         id: 'friction',
         label: 'Akt II / Friction',
         title: 'Serien sind performative Momente.',
-        body: 'Jede Serie erhaelt eine eigene Buehnensprache: Duett, Solo, Chor, Blackout. Das System bleibt kohaerent, die Praesentation nie schematisch.',
+        body: 'Jede Serie erhält eine eigene Bühnensprache: Duett, Solo, Chor, Blackout. Das System bleibt kohärent, die Präsentation nie schematisch.',
       },
       {
         id: 'afterimage',
         label: 'Akt III / Afterimage',
         title: 'Ein Kapitel wie eine Szene im Theater.',
-        body: 'Projektseiten arbeiten mit Auftaktbild, Gegenbild, Sequenz und Nachhall. About, Clients und Kontakt erscheinen als Rollen im Stueck.',
+        body: 'Projektseiten arbeiten mit Auftaktbild, Gegenbild, Sequenz und Nachhall. About, Clients und Kontakt erscheinen als Rollen im Stück.',
       },
     ],
   },
@@ -133,21 +133,21 @@ export const conceptArchivePages: Record<string, ConceptArchivePage> = {
     eyebrow: 'Experimental Lens',
     heroTitle: 'Das Werk wird optisch untersucht.',
     heroBody:
-      'Startseite: ein lebender Sucher statt Hero. Fokus, Belichtung und Ausschnitt werden zur Navigation: praezise, mutig, aber benutzbar.',
+      'Startseite: ein lebender Sucher statt Hero. Fokus, Belichtung und Ausschnitt werden zur Navigation: präzise, mutig, aber benutzbar.',
     metaTitle: 'Experimental Lens | Matthias Ramahi',
     description:
-      'Das Werk wird optisch untersucht: Fotografie und visuelle Produktion von Matthias Ramahi in Duesseldorf, NRW und Deutschland.',
+      'Das Werk wird optisch untersucht: Fotografie und visuelle Produktion von Matthias Ramahi in Düsseldorf, NRW und Deutschland.',
     ogImage: '/assets/optimized/assets-photos-automobil-sunset-1920.webp',
     panels: [
       {
         label: 'Projektseite',
         title: 'Kontaktbogen als dekonstruierter Leuchttisch.',
-        body: 'Seriendetails oeffnen wie Glasplatten: Vordergrundbild, Negativraum, Notizlayer und technische Mikrodetails. Mobile uebersetzt die Linse in vertikale Inspect-Cards.',
+        body: 'Seriendetails öffnen wie Glasplatten: Vordergrundbild, Negativraum, Notizlayer und technische Mikrodetails. Mobile übersetzt die Linse in vertikale Inspect-Cards.',
       },
       {
         label: 'About / Clients / Kontakt',
         title: 'Reduziert auf Haltung und Arbeitsweise.',
-        body: 'Keine Bio-Wand und keine Logo-Wand: Arbeitsweise, Auftrag und Kontakt werden als klare Pruefstreifen sichtbar.',
+        body: 'Keine Bio-Wand und keine Logo-Wand: Arbeitsweise, Auftrag und Kontakt werden als klare Prüfstreifen sichtbar.',
       },
     ],
   },

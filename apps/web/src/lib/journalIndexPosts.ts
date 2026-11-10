@@ -19,9 +19,9 @@ const categoryToFilter: Record<string, string> = {
 }
 
 /**
- * Alle oeffentlichen Journal-Beitraege, neueste zuerst. Code-Karten aus
- * journalArticleContent sind die Basis; CMS-Dokumente ueberschreiben pro URL
- * (Titel, Auszug, Bild) und ergaenzen reine CMS-Beitraege.
+ * Alle öffentlichen Journal-Beitraege, neueste zuerst. Code-Karten aus
+ * journalArticleContent sind die Basis; CMS-Dokumente überschreiben pro URL
+ * (Titel, Auszug, Bild) und ergänzen reine CMS-Beitraege.
  */
 export async function getJournalIndexPosts(): Promise<EditableJournalPostCard[]> {
   const journalCards = getPublicJournalCards()

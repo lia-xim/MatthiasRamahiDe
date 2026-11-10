@@ -94,7 +94,7 @@ const fallbackMetaTitle = isParentPage
     : `${serviceLabel} ${scope.label} | Matthias Ramahi`
 const metaTitle = doc?.seo?.title || fallbackMetaTitle
 const defaultMetaDescription = isParentPage
-  ? 'Portraitfotografie: Personal Branding, Business Portraits, Editorial, Team und Presse - professionell, ruhig, nahbar und nicht glattgebuegelt.'
+  ? 'Portraitfotografie: Personal Branding, Business Portraits, Editorial, Team und Presse - professionell, ruhig, nahbar und nicht glattgebügelt.'
   : isKeywordPage
     ? `${serviceLabel}: Personal Branding, Business Portraits, Editorial, Team und Presse.`
     : `${serviceLabel} ${scope.label}: Personal Branding, Business Portraits, Editorial, Team und Presse.`
@@ -114,7 +114,7 @@ const contactLead = keywordFocusCopy?.contactLead || defaultContactLead
 
 // Alle sichtbaren Bilder werden aus den Bildfeldern des Tina-Portraitdokuments
 // gelesen. Die lokalen Portrait-Fallbacks verhindern fachfremde Motive, falls
-// ein einzelnes CMS-Feld voruebergehend leer ist.
+// ein einzelnes CMS-Feld vorübergehend leer ist.
 const sectionImageOverrides = [
   ...Array.from({ length: 4 }, (_, index) =>
     doc?.heroPanels?.[index]?.image ||
@@ -267,7 +267,7 @@ const practicalGuideItems = [
 ]
 
 const firstSectionTarget = isLocalHeroPage ? `${serviceLabel} ${scope.label}` : isKeywordPage ? serviceLabel : ''
-const focusIntroHeadlineSource = cmsText(doc?.statement?.headline) || keywordFocusCopy?.pullHeadline || (isParentPage ? 'Naehe ohne' : `${serviceLabel}:`)
+const focusIntroHeadlineSource = cmsText(doc?.statement?.headline) || keywordFocusCopy?.pullHeadline || (isParentPage ? 'Nähe ohne' : `${serviceLabel}:`)
 const focusIntroEmphasisSource = cmsText(doc?.statement?.emphasis) || keywordFocusCopy?.pullEmphasis || (isParentPage ? 'Beliebigkeit.' : isKeywordPage ? 'klar geplant.' : `${scope.label}.`)
 const focusIntroHeadline = firstSectionTarget || focusIntroHeadlineSource
 const focusIntroEmphasis = firstSectionTarget ? '' : focusIntroEmphasisSource
@@ -282,18 +282,18 @@ const focusIntroBaseParagraphs =
     : isParentPage
       ? [
           'Ein gutes Portrait entsteht nicht durch Requisiten, sondern durch Haltung, Timing und ein Licht, das zur Person passt. Die Bilder sollen eindeutig wirken - nicht inszeniert.',
-          'Fuer Personal Branding, Founder, Teams, Editorials und Kampagnen, die mehr Persoenlichkeit tragen sollen als ein Standard-Headshot.',
+          'Für Personal Branding, Founder, Teams, Editorials und Kampagnen, die mehr Persönlichkeit tragen sollen als ein Standard-Headshot.',
         ]
       : [
-          `${serviceLabel} bekommt eine eigene Seite im Portraitbereich. Entscheidend sind Wirkung, Person, Licht und eine Bildauswahl, die spaeter wirklich genutzt wird.`,
+          `${serviceLabel} bekommt eine eigene Seite im Portraitbereich. Entscheidend sind Wirkung, Person, Licht und eine Bildauswahl, die später wirklich genutzt wird.`,
           isKeywordPage
             ? 'Der Text ist auf diese konkrete Suche zugeschnitten, ohne ein neues Layout oder eine unpassende Kategorie zu erzwingen.'
-            : `Der lokale Bezug fuer ${scope.label} wird ueber Ort, Anfahrt, Lichtfenster und Ablauf konkretisiert.`,
+            : `Der lokale Bezug für ${scope.label} wird über Ort, Anfahrt, Lichtfenster und Ablauf konkretisiert.`,
         ]
 const portraitLocalDepthParagraphs = isPriorityLocalPage
   ? [
-      `${localScopePhrase(scope)} Fuer Portraits bedeutet das konkret: Die Location wird nicht nur als Hintergrund benutzt, sondern nach Blickrichtung, Streulicht, Ruhe und spaeterer Nutzung der Bilder ausgewaehlt. Ein LinkedIn-Headshot braucht eine andere Distanz als ein Founder-Portrait, ein Pressebild andere Klarheit als eine Paar- oder Editorialserie.`,
-      `Die Seite bleibt deshalb bewusst eigenstaendig zum allgemeinen Portraitangebot. In ${scope.label} geht es um kurze Wege, realistische Zeitfenster, passende Orte und eine Bildauswahl, die fuer Website, Social Media, Presse, Bewerbung oder Teamseite ohne Umwege funktioniert. So entsteht kein austauschbarer Ortsname, sondern ein konkreter Ablauf fuer Menschen, die in ${scope.label} fotografiert werden wollen.`,
+      `${localScopePhrase(scope)} Für Portraits bedeutet das konkret: Die Location wird nicht nur als Hintergrund benutzt, sondern nach Blickrichtung, Streulicht, Ruhe und späterer Nutzung der Bilder ausgewählt. Ein LinkedIn-Headshot braucht eine andere Distanz als ein Founder-Portrait, ein Pressebild andere Klarheit als eine Paar- oder Editorialserie.`,
+      `Die Seite bleibt deshalb bewusst eigenständig zum allgemeinen Portraitangebot. In ${scope.label} geht es um kurze Wege, realistische Zeitfenster, passende Orte und eine Bildauswahl, die für Website, Social Media, Presse, Bewerbung oder Teamseite ohne Umwege funktioniert. So entsteht kein austauschbarer Ortsname, sondern ein konkreter Ablauf für Menschen, die in ${scope.label} fotografiert werden wollen.`,
     ]
   : []
 const focusIntroParagraphs = focusIntroSupportLine
@@ -305,28 +305,28 @@ const focusModuleLead =
   isLocalHeroPage
     ? `${serviceLabel} in ${scope.label}: Wirkung, Person, Licht und Nutzung werden vor dem Termin zusammen geplant.`
     : cmsText(doc?.focusSection?.lead) || keywordFocusCopy?.sectionLead ||
-  'Fuenf Felder, in denen ein Portrait konkret etwas verschiebt - vom Personal Brand bis zur redaktionellen Strecke.'
+  'Fünf Felder, in denen ein Portrait konkret etwas verschiebt - vom Personal Brand bis zur redaktionellen Strecke.'
 
 const defaultPortraitFocusCards = [
   {
     visualIndex: 4,
     title: 'Founder & Speaker',
-    text: 'Selbststaendige, Coaches, Speaker, Founder - ein Bild, das wirkt, ohne sich aufzudraengen.',
+    text: 'Selbstständige, Coaches, Speaker, Founder - ein Bild, das wirkt, ohne sich aufzudrängen.',
   },
   {
     visualIndex: 5,
     title: 'Agentur & Kanzlei',
-    text: 'Agenturen, Kanzleien, Praxen, Marken - eine konsistente Bildsprache, ohne jeden Charakter zu glaetten.',
+    text: 'Agenturen, Kanzleien, Praxen, Marken - eine konsistente Bildsprache, ohne jeden Charakter zu glätten.',
   },
   {
     visualIndex: 6,
     title: 'Magazin & Strecke',
-    text: 'Magazine, Bildstrecken, Kuenstler-Features - Portraits mit Haltung und Erzaehlung statt Pose.',
+    text: 'Magazine, Bildstrecken, Kuenstler-Features - Portraits mit Haltung und Erzählung statt Pose.',
   },
   {
     visualIndex: 7,
     title: 'Headshot & Profil',
-    text: 'Pressefotos, Headshots, Bewerbung, Profil - klare, ruhige Bilder fuer den professionellen Auftritt.',
+    text: 'Pressefotos, Headshots, Bewerbung, Profil - klare, ruhige Bilder für den professionellen Auftritt.',
   },
   {
     visualIndex: 8,
@@ -350,33 +350,33 @@ const focusProcessHeadline = isLocalHeroPage ? `Ablauf ${scope.label}.` : isKeyw
 const focusProcessEmphasis = !isLocalHeroPage && !isKeywordPage ? cmsText(doc?.processSection?.emphasis) : ''
 const focusProcessLead =
   isLocalHeroPage
-    ? `Vom ersten Kontakt bis zur Bildabgabe bleibt der Ablauf in ${scope.label} klar: Ziel, Ort, Licht, Auswahl und Lieferung werden vorab abgestimmt. Dazu gehoert, ob die Serie eher als LinkedIn-Profil, Website-Portrait, Pressebild, Teamseite, Paarserie oder Editorial funktionieren muss.`
+    ? `Vom ersten Kontakt bis zur Bildabgabe bleibt der Ablauf in ${scope.label} klar: Ziel, Ort, Licht, Auswahl und Lieferung werden vorab abgestimmt. Dazu gehört, ob die Serie eher als LinkedIn-Profil, Website-Portrait, Pressebild, Teamseite, Paarserie oder Editorial funktionieren muss.`
     : cmsText(doc?.processSection?.lead) || keywordFocusCopy?.processLead ||
-  'Vom ersten Kontakt bis zur Bildabgabe - fuenf ruhige Schritte, damit du vor dem Shooting weisst, was passiert und nach dem Shooting weisst, was kommt.'
+  'Vom ersten Kontakt bis zur Bildabgabe - fünf ruhige Schritte, damit du vor dem Shooting weisst, was passiert und nach dem Shooting weisst, was kommt.'
 const defaultProcessSteps = [
   {
     visualIndex: 18,
     imageLabel: 'Anfrage',
     title: 'Anfrage',
     text: isLocalHeroPage
-      ? `Kurze Nachricht reicht - Anlass, Person oder Team, gewuenschte Wirkung, Zeitraum und grober Ort in ${scope.label}. Antwort innerhalb von 24 Stunden mit erster Einordnung, passendem Rahmen und naechsten Schritten.`
-      : 'Kurze Nachricht reicht - Anlass, Person oder Team, gewuenschte Wirkung, Zeitraum. Antwort innerhalb von 24 Stunden mit erster Einordnung und naechsten Schritten.',
+      ? `Kurze Nachricht reicht - Anlass, Person oder Team, gewünschte Wirkung, Zeitraum und grober Ort in ${scope.label}. Antwort innerhalb von 24 Stunden mit erster Einordnung, passendem Rahmen und nächsten Schritten.`
+      : 'Kurze Nachricht reicht - Anlass, Person oder Team, gewünschte Wirkung, Zeitraum. Antwort innerhalb von 24 Stunden mit erster Einordnung und nächsten Schritten.',
   },
   {
     visualIndex: 19,
     imageLabel: 'Kennenlernen',
     title: 'Kennenlernen',
     text: isLocalHeroPage
-      ? `Ein lockeres Gespraech - telefonisch oder vor Ort. Wir klaeren Kontext, Zielgruppe, Outfit, Nutzungsrechte und welche Umgebung in ${scope.label} die gewuenschte Wirkung unterstuetzt.`
-      : 'Ein lockeres Gespraech - telefonisch oder vor Ort. Wir klaeren den Kontext, wer die Bilder sehen wird und welche Tonalitaet dazu passt. Ohne Verkaufsdruck.',
+      ? `Ein lockeres Gespräch - telefonisch oder vor Ort. Wir klären Kontext, Zielgruppe, Outfit, Nutzungsrechte und welche Umgebung in ${scope.label} die gewünschte Wirkung unterstützt.`
+      : 'Ein lockeres Gespräch - telefonisch oder vor Ort. Wir klären den Kontext, wer die Bilder sehen wird und welche Tonalität dazu passt. Ohne Verkaufsdruck.',
   },
   {
     visualIndex: 20,
     imageLabel: 'Konzept',
     title: 'Konzept & Briefing',
     text: isLocalHeroPage
-      ? `Wir definieren Licht, Hintergrund, Outfit, Bildformate und eine kleine Shotlist. Bei ${scope.label}-Terminen wird auch geklaert, ob Outdoor, Innenraum oder mobiles Setup die beste Loesung ist.`
-      : 'Wir sammeln Referenzen, definieren Licht, Hintergrund, Outfit und ein paar Schluesselbilder. Du bekommst ein klares Mini-Briefing - keine 30-Seiten-Decks.',
+      ? `Wir definieren Licht, Hintergrund, Outfit, Bildformate und eine kleine Shotlist. Bei ${scope.label}-Terminen wird auch geklärt, ob Outdoor, Innenraum oder mobiles Setup die beste Lösung ist.`
+      : 'Wir sammeln Referenzen, definieren Licht, Hintergrund, Outfit und ein paar Schlüsselbilder. Du bekommst ein klares Mini-Briefing - keine 30-Seiten-Decks.',
   },
   {
     visualIndex: 21,
@@ -391,8 +391,8 @@ const defaultProcessSteps = [
     imageLabel: 'Auswahl und Lieferung',
     title: 'Auswahl & Lieferung',
     text: isLocalHeroPage
-      ? 'Eine kuratierte Vorauswahl als Web-Galerie. Die finalen Portraits werden zurueckhaltend retuschiert und als Web-, Social-, Presse- und Printdateien geliefert, damit sie sofort nutzbar sind.'
-      : 'Eine kuratierte Vorauswahl als Web-Galerie. Du waehlst die finalen Bilder, ich retuschiere zurueckhaltend und liefere in den Formaten, die du brauchst - Web, Print, Social.',
+      ? 'Eine kuratierte Vorauswahl als Web-Galerie. Die finalen Portraits werden zurückhaltend retuschiert und als Web-, Social-, Presse- und Printdateien geliefert, damit sie sofort nutzbar sind.'
+      : 'Eine kuratierte Vorauswahl als Web-Galerie. Du wählst die finalen Bilder, ich retuschiere zurückhaltend und liefere in den Formaten, die du brauchst - Web, Print, Social.',
   },
 ]
 const portraitProcessSteps = defaultProcessSteps.map((step, index) => {
@@ -425,9 +425,9 @@ const relatedCards = defaultRelatedCards.map((card, index) => {
 })
 const focusRelatedLead =
   isLocalHeroPage
-    ? `Portraitfotografie ${scope.label} bleibt im Portraitbereich, fuehrt aber sauber zu Fahrzeug-, Landschafts- und Portfolio-Seiten weiter.`
+    ? `Portraitfotografie ${scope.label} bleibt im Portraitbereich, führt aber sauber zu Fahrzeug-, Landschafts- und Portfolio-Seiten weiter.`
     : cmsText(doc?.relatedSection?.lead) || keywordFocusCopy?.relatedLead ||
-  'Fahrzeug, Mensch und Raum bleiben eigene Bildbereiche. Die Links fuehren schnell zu der Seite, die zum Motiv, zur Nutzung und zum geplanten Shooting passt.'
+  'Fahrzeug, Mensch und Raum bleiben eigene Bildbereiche. Die Links führen schnell zu der Seite, die zum Motiv, zur Nutzung und zum geplanten Shooting passt.'
 const relatedHeadline = cmsText(doc?.relatedSection?.headline) || 'Verwandte'
 const relatedEmphasis = cmsText(doc?.relatedSection?.emphasis) || 'Bereiche.'
 const contactSubjectFinal = cmsText(doc?.contactSection?.emailSubject) || contactSubject

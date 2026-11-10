@@ -1,7 +1,7 @@
 ---
 // Journal-Uebersicht mit crawlbarer Paginierung und Themen-Seiten.
 // Rendert /blog.html (Seite 1), /journal/seite/N und /journal/thema/<thema>[/seite/N].
-// Jede Seite zeigt JOURNAL_PAGE_SIZE Beitraege als echte Links und verlinkt alle
+// Jede Seite zeigt JOURNAL_PAGE_SIZE Beiträge als echte Links und verlinkt alle
 // Nachbarseiten, damit Google jeden Artikel ohne JavaScript erreicht.
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import GooglePreferredSource from './GooglePreferredSource.astro'
@@ -50,8 +50,8 @@ const featuredImage = (featuredUsesCms && imageDisplayUrl(featuredSettings.image
 const featuredDimensions = featuredUsesCms ? imageDimensions(featuredSettings.image, 'wide') : {}
 const featuredTitle = (featuredUsesCms && hasText(featuredSettings.headline) && featuredSettings.headline) || featured?.title || ''
 const featuredText = (featuredUsesCms && hasText(featuredSettings.text) && featuredSettings.text) || featured?.text || ''
-// Seite 1: Fokus-Beitrag + die vier naechsten als Liste daneben, der Rest im
-// Raster. Zusammen sind das genau die JOURNAL_PAGE_SIZE Beitraege der Seite,
+// Seite 1: Fokus-Beitrag + die vier nächsten als Liste daneben, der Rest im
+// Raster. Zusammen sind das genau die JOURNAL_PAGE_SIZE Beiträge der Seite,
 // damit Seite 2 nahtlos anschliesst.
 const sidePosts = featured ? slice.posts.filter((post) => post !== featured).slice(0, 4) : []
 const gridPosts = slice.posts.filter((post) => post !== featured && !sidePosts.includes(post))

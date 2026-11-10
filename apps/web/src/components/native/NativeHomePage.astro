@@ -63,7 +63,7 @@ const hasText = (value?: string): value is string => typeof value === 'string' &
 const editableSource = (item: unknown) => (item as { source?: unknown } | null | undefined)?.source
 const pad = (value: number) => String(value).padStart(2, '0')
 
-// Bildgroessen (technische Moeblierung, bleibt Code — wird nicht im CMS gepflegt)
+// Bildgrößen (technische Möblierung, bleibt Code — wird nicht im CMS gepflegt)
 const chapterSizes = '(max-width: 780px) calc((100vw - 52px) / 2), (max-width: 1180px) calc((100vw - 112px) / 2), 440px'
 const journalSizes = '(max-width: 780px) calc(100vw - 44px), (max-width: 1180px) calc(100vw - 112px), 460px'
 const aboutSizes = '(max-width: 780px) calc(100vw - 44px), (max-width: 1180px) calc(100vw - 112px), 680px'
@@ -246,7 +246,7 @@ const journalPosts = (cmsJournalItems.length === 3
           {statementParagraphs[1] && <p {...tinaAttrs(statement?.body?.[1], 'text')}>{statementParagraphs[1]}</p>}
           <div class="actions">
             <a class="btn dark" href="#arbeiten">Serien ansehen</a>
-            <a class="btn" href="#chapters" style="color:var(--ink);border-color:var(--ink)">Bereiche ansehen</a>
+            <a class="btn lp-btn-ghost-ink" href="#chapters">Bereiche ansehen</a>
           </div>
         </div>
       </div>
@@ -355,11 +355,15 @@ const journalPosts = (cmsJournalItems.length === 3
         <ol class="lp-steps">
           {homeProcess.map((step, index) => (
             <li class="lp-step">
-              <h3><span class="lp-step__no">{pad(index + 1)}</span> {step.title}</h3>
+              <span class="lp-step__no" aria-hidden="true">{pad(index + 1)}</span>
+              <h3>{step.title}</h3>
               <p>{step.text}</p>
             </li>
           ))}
         </ol>
+        <div class="lp-process__foot">
+          <a class="btn dark" href="#anfrage">Projekt anfragen</a>
+        </div>
       </div>
     </section>
 

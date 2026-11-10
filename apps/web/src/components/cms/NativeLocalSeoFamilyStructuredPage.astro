@@ -51,7 +51,7 @@ const siblingLinks = siblingFamilyLinks(scope, familyContent.family)
 const publishedHref = preview?.publishedHref || (doc ? routeForDoc('local-seo-pages', doc) : `/${legacyFile}`)
 const contactHeadline = scope.generic ? `${serviceLabel} <em>anfragen.</em>` : `${familyContent.contactNoun} ${scope.label} <em>anfragen.</em>`
 const contactLead = scope.generic
-  ? `Schreibe kurz, welche Bildserie fuer ${serviceLabel} geplant ist, wo das Projekt stattfindet, welche Wirkung die Bilder tragen sollen und ob die Nutzung privat, kommerziell, redaktionell oder fuer Verkauf und Kampagne gedacht ist.`
+  ? `Schreibe kurz, welche Bildserie für ${serviceLabel} geplant ist, wo das Projekt stattfindet, welche Wirkung die Bilder tragen sollen und ob die Nutzung privat, kommerziell, redaktionell oder für Verkauf und Kampagne gedacht ist.`
   : familyContent.contactLead(scope, serviceLabel)
 const contactSubject = scope.generic ? `${serviceLabel} Anfrage` : `${serviceLabel} ${scope.label} Anfrage`
 const overviewHref =

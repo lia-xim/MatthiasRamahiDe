@@ -43,7 +43,7 @@ const navAttrs = {
     {mainLinks.map((link) => link.href && <a {...linkAttributes(link)} data-nav={(link as { navKey?: string }).navKey}>{link.label}</a>)}
   </nav>
   <a class="topbar__cta" {...linkAttributes(cta)}>{cta.label}</a>
-  <button class="topbar__menu" type="button" aria-label="Menue oeffnen" aria-expanded="false" aria-controls="mobile-menu">
+  <button class="topbar__menu" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu">
     <span aria-hidden="true"></span><span aria-hidden="true"></span>
   </button>
 </header>

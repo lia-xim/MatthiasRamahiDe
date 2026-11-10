@@ -47,7 +47,7 @@ const {
 const liveCmsOptions = liveCms ? liveCmsFetchOptions() : {}
 const settings = await getSiteSettings(liveCmsOptions)
 const description =
-  providedDescription || settings?.defaultMetaDescription || 'Portfolio, Fotografie und visuelle Produktion in Duesseldorf / NRW.'
+  providedDescription || settings?.defaultMetaDescription || 'Portfolio, Fotografie und visuelle Produktion in Düsseldorf / NRW.'
 const title = providedTitle || settings?.defaultMetaTitle || 'Matthias Ramahi Fotografie'
 const siteName = settings?.siteName || 'Matthias Ramahi Fotografie'
 const pathname = Astro.url.pathname === '/' ? '/' : Astro.url.pathname.replace(/\/$/, '')

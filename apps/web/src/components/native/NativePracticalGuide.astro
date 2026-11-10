@@ -29,8 +29,9 @@ const paragraphsOf = (text: string) => text.split(/\n\s*\n/).map((paragraph) => 
       <h2 id="mr-guide-title">{title}</h2>
       {intro && <p>{intro}</p>}
       {links.length > 0 && (
-        <nav aria-label="Passende Vertiefungen">
-          {links.map((link) => <a href={link.href}>{link.label} <span aria-hidden="true">-&gt;</span></a>)}
+        <nav aria-labelledby="mr-guide-links-label">
+          <span class="mr-guide__links-label" id="mr-guide-links-label">Passende Vertiefungen</span>
+          {links.map((link) => <a href={link.href}><span>{link.label}</span> <span aria-hidden="true">→</span></a>)}
         </nav>
       )}
     </div>
@@ -49,19 +50,26 @@ const paragraphsOf = (text: string) => text.split(/\n\s*\n/).map((paragraph) => 
 </section>
 
 <style>
+  /* Ratgeber-Abschnitt: links Titel + Vertiefungen (sticky), rechts nummerierte
+     Schritte. Gleiche Satzbreite wie die übrigen Sektionen, Schrittitel als
+     kleine Display-Zeile, Mono-Nummern als redaktionelle Marke. */
   .mr-guide {
+    --mrg-ink: #0a0c11;
+    --mrg-muted: rgb(10 12 17 / 70%);
+    --mrg-line: rgb(10 12 17 / 14%);
+    --mrg-mono: 'MR Mono', 'MR Mono Fallback', ui-monospace, Menlo, Consolas, monospace;
     background: #f3f0e9;
-    color: #171717;
-    padding: clamp(4rem, 8vw, 8rem) 0;
+    color: var(--mrg-ink);
+    padding: clamp(4.5rem, 8vw, 8.5rem) 0;
   }
 
   .mr-guide__inner {
     display: grid;
-    gap: clamp(2.5rem, 6vw, 6rem);
-    grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+    gap: clamp(2.5rem, 6vw, 7rem);
+    grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
     margin: 0 auto;
-    max-width: 1220px;
-    padding: 0 clamp(1.25rem, 4vw, 3.5rem);
+    max-width: 1472px;
+    padding: 0 clamp(1.25rem, 5vw, 5.25rem);
   }
 
   .mr-guide__intro {
@@ -71,89 +79,152 @@ const paragraphsOf = (text: string) => text.split(/\n\s*\n/).map((paragraph) => 
   }
 
   .mr-guide__intro > span {
-    color: #9b3326;
-    display: block;
-    font-size: 0.75rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
+    align-items: center;
+    color: var(--mrg-muted);
+    display: flex;
+    font: 700 0.6875rem/1.2 var(--mrg-mono);
+    gap: 0.75rem;
+    letter-spacing: 0.22em;
+    margin-bottom: 1.25rem;
     text-transform: uppercase;
   }
 
+  .mr-guide__intro > span::before {
+    background: #cf392e;
+    content: '';
+    display: inline-block;
+    height: 1px;
+    width: 1.75rem;
+  }
+
   .mr-guide h2 {
-    font-size: clamp(2.15rem, 4vw, 4.3rem);
-    font-weight: 500;
-    line-height: 0.98;
+    font-size: clamp(2.4rem, 4.4vw, 4.6rem);
+    line-height: 0.94;
     margin: 0;
+    max-width: 12ch;
   }
 
   .mr-guide__intro > p {
-    color: #4e4b46;
-    font-size: 1.05rem;
-    line-height: 1.7;
-    margin: 1.5rem 0 2rem;
-    max-width: 34rem;
+    color: var(--mrg-muted);
+    font-size: clamp(1.0625rem, 1rem + 0.25vw, 1.25rem);
+    line-height: 1.6;
+    margin: 1.5rem 0 2.25rem;
+    max-width: 36ch;
   }
 
   .mr-guide nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem 1.25rem;
+    border-bottom: 1px solid var(--mrg-line);
+    display: grid;
+    max-width: 30rem;
+  }
+
+  .mr-guide__links-label {
+    color: var(--mrg-muted);
+    font: 700 0.6875rem/1.2 var(--mrg-mono);
+    letter-spacing: 0.2em;
+    padding-bottom: 0.85rem;
+    text-transform: uppercase;
   }
 
   .mr-guide nav a {
-    border-bottom: 1px solid currentColor;
-    color: #171717;
-    font-weight: 700;
-    padding-bottom: 0.2rem;
+    align-items: center;
+    border-top: 1px solid var(--mrg-line);
+    color: var(--mrg-ink);
+    display: flex;
+    font-size: clamp(1rem, 0.96rem + 0.15vw, 1.0625rem);
+    font-weight: 600;
+    gap: 1rem;
+    justify-content: space-between;
+    min-height: 48px;
+    padding: 0.7rem 0;
     text-decoration: none;
+    transition: color 0.25s cubic-bezier(0.23, 1, 0.32, 1), padding 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .mr-guide nav a > span[aria-hidden] {
+    color: #7a8a86;
+    font-family: var(--mrg-mono);
+    transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1), color 0.25s ease;
+  }
+
+  .mr-guide nav a:hover,
+  .mr-guide nav a:focus-visible {
+    padding-left: 0.35rem;
+  }
+
+  .mr-guide nav a:hover > span[aria-hidden],
+  .mr-guide nav a:focus-visible > span[aria-hidden] {
+    color: #cf392e;
+    transform: translateX(3px);
   }
 
   .mr-guide__steps {
+    border-bottom: 1px solid var(--mrg-line);
+    counter-reset: none;
     list-style: none;
     margin: 0;
     padding: 0;
   }
 
   .mr-guide__steps li {
-    align-items: start;
-    border-top: 1px solid rgb(23 23 23 / 18%);
+    align-items: baseline;
+    border-top: 1px solid var(--mrg-line);
     display: grid;
-    gap: 1.25rem;
-    grid-template-columns: 2.5rem minmax(0, 1fr);
-    padding: 1.65rem 0;
-  }
-
-  .mr-guide__steps li:last-child {
-    border-bottom: 1px solid rgb(23 23 23 / 18%);
+    gap: clamp(1rem, 2vw, 2rem);
+    grid-template-columns: 3rem minmax(0, 1fr);
+    padding: clamp(1.75rem, 2.6vw, 2.5rem) 0;
   }
 
   .mr-guide__steps > li > span {
-    color: #9b3326;
-    font: 700 0.8rem/1.4 'MR Mono','MR Mono Fallback',ui-monospace,Menlo,Consolas,monospace;
+    color: #7a8a86;
+    font: 700 0.8125rem/1.4 var(--mrg-mono);
+    letter-spacing: 0.12em;
   }
 
   .mr-guide__steps h3 {
-    font-size: 1.25rem;
-    margin: 0 0 0.45rem;
+    font-size: clamp(1.35rem, 1.1rem + 0.8vw, 1.9rem);
+    line-height: 1.08;
+    margin: 0 0 0.75rem;
+    max-width: 28ch;
   }
 
   .mr-guide__steps p {
-    color: #4e4b46;
+    color: var(--mrg-muted);
+    font-size: clamp(1rem, 0.95rem + 0.2vw, 1.125rem);
     line-height: 1.65;
     margin: 0;
+    max-width: 64ch;
   }
 
   .mr-guide__steps p + p {
     margin-top: 0.85rem;
   }
 
-  @media (max-width: 780px) {
+  @media (max-width: 860px) {
     .mr-guide__inner {
       grid-template-columns: 1fr;
     }
 
     .mr-guide__intro {
       position: static;
+    }
+
+    .mr-guide nav {
+      max-width: none;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .mr-guide__steps li {
+      gap: 0.6rem;
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mr-guide nav a,
+    .mr-guide nav a > span[aria-hidden] {
+      transition: none;
     }
   }
 </style>

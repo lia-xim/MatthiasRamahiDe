@@ -136,7 +136,7 @@ const visualSlots = familyVisualSlots(visualDoc, [
   { alt: 'Landschaft Edition', full: 'assets/optimized/assets-portfolio-20250327-dsc01550-1920.webp', src: 'assets/portfolio/thumbs/20250327-DSC01550.webp', width: 720, height: 1090 },
   { alt: 'Landschaft Hauptmotiv', full: 'assets/optimized/assets-portfolio-wettberwerb-foto5-wunder-der-natur2-1920.webp', src: 'assets/portfolio/thumbs/Wettberwerb_Foto5_Wunder_der_Natur2.webp', width: 720, height: 471 },
   { alt: 'Landschaft', full: 'assets/optimized/assets-portfolio-wettberwerb-foto6-wunder-der-natur-1920.webp', src: 'assets/portfolio/thumbs/Wettberwerb_Foto6_Wunder_der_Natur.webp', width: 720, height: 520 },
-  { alt: 'Landschaft Atmosphaere', full: 'assets/optimized/assets-portfolio-wettberwerb-foto10-wunder-der-natur-1920.webp', src: 'assets/portfolio/thumbs/Wettberwerb_Foto10_Wunder_der_natur.webp', width: 720, height: 448 },
+  { alt: 'Landschaft Atmosphäre', full: 'assets/optimized/assets-portfolio-wettberwerb-foto10-wunder-der-natur-1920.webp', src: 'assets/portfolio/thumbs/Wettberwerb_Foto10_Wunder_der_natur.webp', width: 720, height: 448 },
   { alt: 'Landschaft Cinema', full: 'assets/optimized/assets-portfolio-20250605-dsc04020-1920.webp', src: 'assets/portfolio/thumbs/20250605-DSC04020.webp', width: 720, height: 1080 },
   { alt: 'Landschaft', full: 'assets/optimized/assets-portfolio-20250605-dsc03978-1920.webp', src: 'assets/portfolio/thumbs/20250605-DSC03978.webp', width: 720, height: 960 },
   { alt: 'Landschaft', full: 'assets/optimized/assets-portfolio-20250605-dsc03816-1920.webp', src: 'assets/portfolio/thumbs/20250605-DSC03816.webp', width: 720, height: 960 },
@@ -163,8 +163,8 @@ const landschaftHeroSlides = [
 const heroImages = visualSlots.slice(0, 5).map((slot) => slot.full).join(',')
 
 const firstSectionTarget = isLocalHeroPage ? `${serviceLabel} ${scope.label}` : isKeywordPage ? serviceLabel : ''
-const focusIntroHeadlineSource = cmsText(doc?.statement?.headline) || keywordFocusCopy?.pullHeadline || (isParentPage || isKeywordPage ? 'Bilder, die einen' : `Landschaft fuer ${scope.label}`)
-const focusIntroEmphasisSource = cmsText(doc?.statement?.emphasis) || keywordFocusCopy?.pullEmphasis || (isParentPage || isKeywordPage ? 'Raum veraendern.' : 'als Raumwirkung.')
+const focusIntroHeadlineSource = cmsText(doc?.statement?.headline) || keywordFocusCopy?.pullHeadline || (isParentPage || isKeywordPage ? 'Bilder, die einen' : `Landschaft für ${scope.label}`)
+const focusIntroEmphasisSource = cmsText(doc?.statement?.emphasis) || keywordFocusCopy?.pullEmphasis || (isParentPage || isKeywordPage ? 'Raum verändern.' : 'als Raumwirkung.')
 const focusIntroHeadline = firstSectionTarget || focusIntroHeadlineSource
 const focusIntroEmphasis = firstSectionTarget ? '' : focusIntroEmphasisSource
 const focusIntroTitle = splitTrailingEmphasis(focusIntroHeadline, focusIntroEmphasis)
@@ -177,31 +177,31 @@ const focusIntroBaseParagraphs = cmsStatementBody.length
     : isParentPage || isKeywordPage
       ? [
       'Landschaft entsteht aus Geduld - aus der Entscheidung, was im Bild bleiben darf und was nicht. Aus Wetter, das man nicht herstellen kann, und aus dem richtigen Moment, in dem alles zusammenkommt.',
-      'Jede Aufnahme ist als grossformatiger Print gedacht - fuer Wand, Wohnraum, Praxis, Hotel oder Sammlung. Alle Motive werden farbecht auf Fine-Art-Papier, Aluminium-Dibond oder hinter Acrylglas gefertigt und gedruckt.',
+      'Jede Aufnahme ist als grossformatiger Print gedacht - für Wand, Wohnraum, Praxis, Hotel oder Sammlung. Alle Motive werden farbecht auf Fine-Art-Papier, Aluminium-Dibond oder hinter Acrylglas gefertigt und gedruckt.',
     ]
       : [
-      `Landschaftsfotografie fuer ${scope.label} wird nicht als Termin vor Ort verkauft, sondern als kuratierte Bild- und Printauswahl fuer Raeume, Marken und private Sammlungen verstanden.`,
-      `Der lokale Bezug macht die Anfrage konkreter: Menschen in ${scope.label} suchen Wandbilder, Fine-Art-Prints oder ruhige Bildraeume, die zu Wohnung, Praxis, Hotel oder Buero passen.`,
+      `Landschaftsfotografie für ${scope.label} wird nicht als Termin vor Ort verkauft, sondern als kuratierte Bild- und Printauswahl für Räume, Marken und private Sammlungen verstanden.`,
+      `Der lokale Bezug macht die Anfrage konkreter: Menschen in ${scope.label} suchen Wandbilder, Fine-Art-Prints oder ruhige Bildräume, die zu Wohnung, Praxis, Hotel oder Büro passen.`,
     ]
 const landscapeLocalDepthParagraphs = isPriorityLocalPage
   ? [
-      `${localScopePhrase(scope)} Bei Landschaftsfotografie fuer ${scope.label} geht es deshalb weniger um eine beliebige Ortsseite als um die Auswahl passender Motive fuer konkrete Raeume: ruhige Wandbilder fuer Wohnbereiche, reduzierte Naturbilder fuer Praxen, grossformatige Prints fuer Buero, Kanzlei, Hotel oder Sammlung.`,
-      `Vor der Produktion werden Raumgroesse, Licht an der Wand, Betrachtungsabstand, Material und Wirkung geklaert. Ein Motiv fuer einen hellen Empfangsbereich braucht eine andere Dichte als ein ruhiges Schlafzimmerbild, ein Acrylglas-Print andere Kontraste als Hahnemuehle-Papier. So trennt sich Landschaftsfotografie ${scope.label} klar von einer reinen Galerie-Uebersicht.`,
+      `${localScopePhrase(scope)} Bei Landschaftsfotografie für ${scope.label} geht es deshalb weniger um eine beliebige Ortsseite als um die Auswahl passender Motive für konkrete Räume: ruhige Wandbilder für Wohnbereiche, reduzierte Naturbilder für Praxen, grossformatige Prints für Büro, Kanzlei, Hotel oder Sammlung.`,
+      `Vor der Produktion werden Raumgröße, Licht an der Wand, Betrachtungsabstand, Material und Wirkung geklärt. Ein Motiv für einen hellen Empfangsbereich braucht eine andere Dichte als ein ruhiges Schlafzimmerbild, ein Acrylglas-Print andere Kontraste als Hahnemuehle-Papier. So trennt sich Landschaftsfotografie ${scope.label} klar von einer reinen Galerie-Uebersicht.`,
     ]
   : []
 const focusIntroParagraphs = focusIntroSupportLine
   ? [focusIntroSupportLine, ...focusIntroBaseParagraphs, ...landscapeLocalDepthParagraphs]
   : [...focusIntroBaseParagraphs, ...landscapeLocalDepthParagraphs]
-const focusModuleHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}.` : isKeywordPage ? `${serviceLabel}.` : cmsText(doc?.focusSection?.headline) || keywordFocusCopy?.sectionHeadline || (isParentPage ? 'Vier Ausfuehrungen.' : `Ausfuehrungen fuer ${scope.label}.`)
+const focusModuleHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}.` : isKeywordPage ? `${serviceLabel}.` : cmsText(doc?.focusSection?.headline) || keywordFocusCopy?.sectionHeadline || (isParentPage ? 'Vier Ausführungen.' : `Ausführungen für ${scope.label}.`)
 const focusModuleEmphasis = !isLocalHeroPage && !isKeywordPage ? cmsText(doc?.focusSection?.emphasis) : ''
 const focusModuleTitle = splitTrailingEmphasis(focusModuleHeadline, focusModuleEmphasis)
 const focusModuleLead = isParentPage || isKeywordPage
-  ? cmsText(doc?.focusSection?.lead) || keywordFocusCopy?.sectionLead || 'Jedes Motiv ist als Print erhaeltlich.'
-  : cmsText(doc?.focusSection?.lead) || `Jedes Motiv kann fuer Raeume in ${scope.label} nach Format, Material und Wirkung abgestimmt werden.`
+  ? cmsText(doc?.focusSection?.lead) || keywordFocusCopy?.sectionLead || 'Jedes Motiv ist als Print erhältlich.'
+  : cmsText(doc?.focusSection?.lead) || `Jedes Motiv kann für Räume in ${scope.label} nach Format, Material und Wirkung abgestimmt werden.`
 const defaultModuleCards = [
   { visualIndex: 5, title: 'Fine-Art', text: 'Papier, Tonwert und Motiv werden passend zum Raum abgestimmt.' },
-  { visualIndex: 6, title: 'Aluminium', text: 'Ruhige Wandbilder auf stabilem Traeger fuer klare Raeume und Praxen.' },
-  { visualIndex: 7, title: 'Acrylglas', text: 'Tiefe, Glanz und klare Kanten fuer Motive mit Licht und Struktur.' },
+  { visualIndex: 6, title: 'Aluminium', text: 'Ruhige Wandbilder auf stabilem Träger für klare Räume und Praxen.' },
+  { visualIndex: 7, title: 'Acrylglas', text: 'Tiefe, Glanz und klare Kanten für Motive mit Licht und Struktur.' },
   { visualIndex: 8, title: 'Edition', text: 'Kuratierte Motive als Einzelabzug oder kleine Edition nach Umfang.' },
 ]
 const moduleCards = defaultModuleCards.map((card, index) => {
@@ -214,45 +214,45 @@ const moduleCards = defaultModuleCards.map((card, index) => {
       }
     : card
 })
-const focusGalleryHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}: Bildauswahl.` : isKeywordPage ? `${serviceLabel}: Bildauswahl.` : cmsText(doc?.gallerySection?.headline) || keywordFocusCopy?.galleryHeadline || (isParentPage ? 'Ausgewaehlte Landschaften.' : `Auswahl fuer ${scope.label}.`)
+const focusGalleryHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}: Bildauswahl.` : isKeywordPage ? `${serviceLabel}: Bildauswahl.` : cmsText(doc?.gallerySection?.headline) || keywordFocusCopy?.galleryHeadline || (isParentPage ? 'Ausgewählte Landschaften.' : `Auswahl für ${scope.label}.`)
 const focusGalleryLead = cmsText(doc?.gallerySection?.lead)
 const focusProcessHeadline = isLocalHeroPage ? `Ablauf ${scope.label}` : isKeywordPage ? `Ablauf ${serviceLabel}` : cmsText(doc?.processSection?.headline) || keywordFocusCopy?.processHeadline || (isParentPage ? 'So entsteht' : `So entsteht dein Druck`)
-const focusProcessEmphasis = isLocalHeroPage ? 'und Lieferung.' : isKeywordPage ? 'und Lieferung.' : cmsText(doc?.processSection?.emphasis) || keywordFocusCopy?.sectionEmphasis || (isParentPage ? 'Ihr Druck.' : `fuer ${scope.label}.`)
+const focusProcessEmphasis = isLocalHeroPage ? 'und Lieferung.' : isKeywordPage ? 'und Lieferung.' : cmsText(doc?.processSection?.emphasis) || keywordFocusCopy?.sectionEmphasis || (isParentPage ? 'Ihr Druck.' : `für ${scope.label}.`)
 const focusProcessLead = isParentPage || isKeywordPage
   ? cmsText(doc?.processSection?.lead) || keywordFocusCopy?.processLead || 'Jedes Bild aus dem Portfolio, in jedem Format, mit oder ohne Rahmen - auf Anfrage gefertigt und zu Ihnen geliefert.'
-  : cmsText(doc?.processSection?.lead) || `Motiv, Format, Material und Lieferziel werden fuer ${scope.label} abgestimmt, damit der Print im Raum ruhig und hochwertig wirkt. Geplant wird nicht nur das Bild, sondern auch Abstand, Wandlicht, Oberflaeche und die Frage, ob der Raum Ruhe, Weite oder einen starken visuellen Anker braucht.`
+  : cmsText(doc?.processSection?.lead) || `Motiv, Format, Material und Lieferziel werden für ${scope.label} abgestimmt, damit der Print im Raum ruhig und hochwertig wirkt. Geplant wird nicht nur das Bild, sondern auch Abstand, Wandlicht, Oberfläche und die Frage, ob der Raum Ruhe, Weite oder einen starken visuellen Anker braucht.`
 const defaultProcessSteps = [
   {
     visualIndex: 18,
     imageLabel: 'Anfrage',
     title: 'Anfrage',
     text: isLocalHeroPage
-      ? `Motivwunsch, Raum, Format, Wandmass und gewuenschte Wirkung in ${scope.label} werden kurz eingeordnet. Fotos der Wandsituation helfen, Groesse und Material realistisch abzuschaetzen.`
-      : 'Motiv, Raum, Format und gewuenschte Wirkung werden kurz eingeordnet.',
+      ? `Motivwunsch, Raum, Format, Wandmass und gewünschte Wirkung in ${scope.label} werden kurz eingeordnet. Fotos der Wandsituation helfen, Größe und Material realistisch abzuschätzen.`
+      : 'Motiv, Raum, Format und gewünschte Wirkung werden kurz eingeordnet.',
   },
   {
     visualIndex: 19,
     imageLabel: 'Beratung',
     title: 'Beratung',
     text: isLocalHeroPage
-      ? `Material, Groesse, Oberflaeche, Rahmen und Haengung werden passend zum Ort geplant. Dabei zaehlen Licht im Raum, Betrachtungsabstand und ob das Bild beruhigen oder als Hauptmotiv wirken soll.`
-      : 'Material, Groesse, Oberflaeche und Haengung werden passend zum Ort geplant.',
+      ? `Material, Größe, Oberfläche, Rahmen und Hängung werden passend zum Ort geplant. Dabei zählen Licht im Raum, Betrachtungsabstand und ob das Bild beruhigen oder als Hauptmotiv wirken soll.`
+      : 'Material, Größe, Oberfläche und Hängung werden passend zum Ort geplant.',
   },
   {
     visualIndex: 20,
     imageLabel: 'Produktion',
     title: 'Produktion',
     text: isLocalHeroPage
-      ? 'Der Print wird farbverbindlich vorbereitet, auf das gewaehlte Material ausgegeben und vor Auslieferung auf Tonwert, Schaerfe, Kanten und Oberflaeche kontrolliert.'
-      : 'Der Print wird farbverbindlich vorbereitet und auf das gewaehlte Material ausgegeben.',
+      ? 'Der Print wird farbverbindlich vorbereitet, auf das gewählte Material ausgegeben und vor Auslieferung auf Tonwert, Schärfe, Kanten und Oberfläche kontrolliert.'
+      : 'Der Print wird farbverbindlich vorbereitet und auf das gewählte Material ausgegeben.',
   },
   {
     visualIndex: 21,
     imageLabel: 'Lieferung',
     title: 'Lieferung',
     text: isLocalHeroPage
-      ? `Das fertige Bild wird sicher verpackt und mit Angaben zu Material, Pflege und Haengung uebergeben. Fuer ${scope.label} lassen sich Lieferung und Timing passend zum Raumprojekt abstimmen.`
-      : 'Das fertige Bild wird sicher verpackt und mit den benoetigten Angaben uebergeben.',
+      ? `Das fertige Bild wird sicher verpackt und mit Angaben zu Material, Pflege und Hängung übergeben. Für ${scope.label} lassen sich Lieferung und Timing passend zum Raumprojekt abstimmen.`
+      : 'Das fertige Bild wird sicher verpackt und mit den benötigten Angaben übergeben.',
   },
 ]
 const processSteps = defaultProcessSteps.map((step, index) => {
@@ -267,8 +267,8 @@ const processSteps = defaultProcessSteps.map((step, index) => {
     : step
 })
 const focusRelatedLead = isParentPage || isKeywordPage
-  ? cmsText(doc?.relatedSection?.lead) || keywordFocusCopy?.relatedLead || 'Fahrzeug, Mensch und Raum bleiben eigene Bildbereiche. Die Links fuehren schnell zu der Seite, die zum Motiv, zur Nutzung und zum geplanten Projekt passt.'
-  : cmsText(doc?.relatedSection?.lead) || `Landschaftsfotografie ${scope.label} fuehrt zu Portrait, Oldtimer, Druck und Portfolio, ohne den Fokus auf Raum, Print und Motiv zu verwischen.`
+  ? cmsText(doc?.relatedSection?.lead) || keywordFocusCopy?.relatedLead || 'Fahrzeug, Mensch und Raum bleiben eigene Bildbereiche. Die Links führen schnell zu der Seite, die zum Motiv, zur Nutzung und zum geplanten Projekt passt.'
+  : cmsText(doc?.relatedSection?.lead) || `Landschaftsfotografie ${scope.label} führt zu Portrait, Oldtimer, Druck und Portfolio, ohne den Fokus auf Raum, Print und Motiv zu verwischen.`
 const relatedTitle = splitTrailingEmphasis(cmsText(doc?.relatedSection?.headline) || 'Verwandte', cmsText(doc?.relatedSection?.emphasis) || 'Bereiche.')
 const defaultRelatedCards = [
   { href: 'portraitfotografie.html', title: 'Portrait', visualIndex: 22 },

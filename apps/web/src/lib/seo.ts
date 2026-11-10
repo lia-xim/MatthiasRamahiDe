@@ -97,11 +97,11 @@ export const localBusinessJsonLd = (settings?: SiteSettings | null): JsonLd => j
   image: imageUrl(settings?.defaultOgImage, 'hero') || toAbsoluteSiteUrl(defaultBusinessImage),
   address: {
     '@type': 'PostalAddress',
-    addressLocality: 'Duesseldorf',
+    addressLocality: 'Düsseldorf',
     addressRegion: 'NRW',
     addressCountry: 'DE',
   },
-  areaServed: ['Duesseldorf', 'NRW', 'Deutschland'],
+  areaServed: ['Düsseldorf', 'NRW', 'Deutschland'],
   founder: {
     '@id': `${toAbsoluteSiteUrl('/')}#person`,
   },
@@ -160,12 +160,12 @@ export const articleJsonLd = (doc: PayloadDoc, url: string): JsonLd => jsonLd({
   mainEntityOfPage: toAbsoluteSiteUrl(url),
 })
 
-/** Einstiegspreis eines Shootings — Quelle der Wahrheit fuer Text und Markup. */
+/** Einstiegspreis eines Shootings — Quelle der Wahrheit für Text und Markup. */
 export const SHOOTING_ENTRY_PRICE_EUR = 250
 
 /**
  * Der Preis wird nur ausgezeichnet, wo er auch sichtbar auf der Seite steht
- * (Google-Vorgabe: Markup und sichtbarer Inhalt muessen deckungsgleich sein).
+ * (Google-Vorgabe: Markup und sichtbarer Inhalt müssen deckungsgleich sein).
  * Damit bleiben Druck-, Webdesign- und Werbetechnik-Seiten automatisch aussen vor.
  */
 const statesEntryPrice = (doc: PayloadDoc): boolean =>
@@ -183,7 +183,7 @@ export const serviceJsonLd = (doc: PayloadDoc, url: string): JsonLd => jsonLd({
     '@id': `${toAbsoluteSiteUrl('/')}#local-business`,
     name: 'Matthias Ramahi Fotografie',
   },
-  areaServed: doc.city || 'Duesseldorf / NRW',
+  areaServed: doc.city || 'Düsseldorf / NRW',
   offers: statesEntryPrice(doc)
     ? {
       '@type': 'Offer',

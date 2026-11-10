@@ -439,6 +439,7 @@ export const legacyPathRedirectTargets = {
     'blog-portraits-ohne-generische-posen.html',
   'portraitfotografie-guide': 'portraitfotografie.html',
   portratifotografie: 'portraitfotografie.html',
+  'oldtimer-koeln': 'oldtimer-fotografie-koeln.html',
   project: 'portfolio.html',
   projects: 'portfolio.html',
   'retro-looks-in-der-digitalen-fotografie': 'vintage-fotoshooting.html',

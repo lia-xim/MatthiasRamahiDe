@@ -1,16 +1,16 @@
 /* =====================================================================
    Server-seitiges Umami-Tracking
    ---------------------------------------------------------------------
-   Sendet ein Event direkt an die Umami-Collect-API (/api/send) — fuer
-   verlaessliche Conversions, die NICHT vom Browser-JS/Beacon abhaengen
-   (z. B. bestaetigter Mailversand im Kontakt-Endpoint).
+   Sendet ein Event direkt an die Umami-Collect-API (/api/send) — für
+   verlässliche Conversions, die NICHT vom Browser-JS/Beacon abhängen
+   (z. B. bestätigter Mailversand im Kontakt-Endpoint).
 
    - Original-User-Agent + Client-IP (X-Forwarded-For) werden weitergereicht,
      damit Umami das Event demselben Besucher/derselben Sitzung zuordnet wie
      die clientseitigen Events.
-   - Nur fuer die Produktionsdomain aktiv (analog zu data-domains im Tracker),
-     damit lokale/Preview-Aufrufe die Statistik nicht verfaelschen.
-   - Schlaegt nie auf die eigentliche Anfrage durch: Fehler/Timeout werden
+   - Nur für die Produktionsdomain aktiv (analog zu data-domains im Tracker),
+     damit lokale/Preview-Aufrufe die Statistik nicht verfälschen.
+   - Schlägt nie auf die eigentliche Anfrage durch: Fehler/Timeout werden
      verschluckt; 2,5s-Cap.
    ===================================================================== */
 
