@@ -67,9 +67,11 @@ const pad = (value: number) => String(value).padStart(2, '0')
 const chapterSizes = '(max-width: 780px) calc((100vw - 52px) / 2), (max-width: 1180px) calc((100vw - 112px) / 2), 440px'
 const journalSizes = '(max-width: 780px) calc(100vw - 44px), (max-width: 1180px) calc(100vw - 112px), 460px'
 const aboutSizes = '(max-width: 780px) calc(100vw - 44px), (max-width: 1180px) calc(100vw - 112px), 680px'
-const defaultAboutImage = '/assets/optimized/mpissxxj-portrait-960.webp'
+// Porträt aus dem Original (4090×4825) neu gerechnet, 2026-11.
+const defaultAboutImage = '/assets/optimized/matthias-ramahi-portrait-1080.webp'
 const defaultAboutImageSrcset =
-  '/assets/optimized/mpissxxj-portrait-480.webp 480w, /assets/optimized/mpissxxj-portrait-720.webp 720w, /assets/optimized/mpissxxj-portrait-960.webp 960w, /assets/optimized/mpissxxj-portrait-1280.webp 1280w'
+  '/assets/optimized/matthias-ramahi-portrait-720.webp 720w, /assets/optimized/matthias-ramahi-portrait-1080.webp 1080w, /assets/optimized/matthias-ramahi-portrait-1440.webp 1440w'
+const isOwnPortrait = (src: string) => /mpissxxj-portrait|matthias-ramahi-portrait/.test(src)
 
 const cmsSrcset = (image?: PayloadMedia | string) =>
   image && typeof image !== 'string' ? imageSrcset(image, ['mobile', 'card', 'hero']) || undefined : undefined
@@ -153,13 +155,13 @@ const aboutImage = about?.image
   ? imageDisplayUrl(about.image, 'card', { allowOriginal: true })
   : defaultAboutImage
 const aboutImageSrcset = about?.image ? cmsSrcset(about.image) : defaultAboutImageSrcset
-const resolvedAboutImageSrcset = aboutImage.includes('mpissxxj-portrait') ? defaultAboutImageSrcset : aboutImageSrcset
+const resolvedAboutImageSrcset = isOwnPortrait(aboutImage) ? defaultAboutImageSrcset : aboutImageSrcset
 const aboutImageAlt = about?.image ? imageAlt(about.image, 'Matthias Ramahi') : 'Matthias Ramahi'
-const aboutImageDimensions = aboutImage.includes('mpissxxj-portrait')
-  ? { width: 960, height: 1132 }
+const aboutImageDimensions = isOwnPortrait(aboutImage)
+  ? { width: 1080, height: 1274 }
   : about?.image
     ? imageDimensions(about.image, 'card')
-    : { width: 960, height: 1132 }
+    : { width: 1080, height: 1274 }
 
 // --- Zusatzleistungen (kompakt im Journal-Block) ---
 const servicesGroup = doc?.homeServices
@@ -371,7 +373,7 @@ const journalPosts = (cmsJournalItems.length === 3
     <section class="about lp-about sec-dark" data-theme="dark" aria-labelledby="lp-about-title">
       <div class="section-inner">
         <div class="about-img" data-site-lightbox-single>
-          <img src={aboutImage} srcset={resolvedAboutImageSrcset} sizes={aboutSizes} alt={aboutImageAlt} loading="lazy" width={aboutImageDimensions.width} height={aboutImageDimensions.height} decoding="async" {...tinaAttrs(about, 'image')} />
+          <img src={isOwnPortrait(aboutImage) ? defaultAboutImage : aboutImage} srcset={resolvedAboutImageSrcset} sizes={aboutSizes} alt={aboutImageAlt} loading="lazy" width={aboutImageDimensions.width} height={aboutImageDimensions.height} decoding="async" {...tinaAttrs(about, 'image')} />
         </div>
         <div class="about-copy">
           <p class="lp-eyebrow" {...tinaAttrs(about, 'kicker')}>{aboutKicker}</p>

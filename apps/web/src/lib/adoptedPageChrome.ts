@@ -226,7 +226,7 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
     description:
       'Editorial geführte Bildserien für Automobile, Oldtimer, Sportwagen, Motorräder, Portraits und Landschaften.',
     ogImage: '/mpissxxj-portfolio_webp_full_063-1.webp',
-    preloadImages: ['/mpissxxj-portfolio_webp_full_063-1.webp'],
+    preloadImages: [],
     scripts: siteChromeScript,
     stylesheets: [
       ...sharedStyles,

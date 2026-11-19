@@ -1,216 +1,37 @@
-/* =========================================================
-   ueber-mich.html — page-specific overrides
-   Canonical patterns (.ovh, .statement, .chapters, .chapter,
-   .services-sec, .service-row, .about, footer chrome) come
-   from site-chrome.css + native-about-inline.css +
-   native-home.css. This file ONLY defines the two patterns
-   unique to this page: WERTE (was nicht passiert) and SISTER
-   (Sophia Ramahi colophon). Plus a few light tweaks.
-   ========================================================= */
-
-/* -----------------------------------------------------------
-   OVH hero — small page-specific framing tweaks only.
-   The base .ovh comes from native-about-inline.css.
-   ----------------------------------------------------------- */
-.ovh--ueber .ovh__photo {
-  /* Center the location portrait around the face area. object-fit:cover is
-     required because this is an <img> (the base .ovh__photo rule targets a
-     background-div); without it the portrait stretches when the column box
-     ratio changes (e.g. tablet widths). */
-  background-position: center 28%;
-  object-fit: cover;
-  object-position: center 28%;
-}
+/* Über-mich-Hero (2026-11): Vollbild wie die übrigen Seiten. Basis-.ovh
+   kommt aus native-about-inline.css, Bildbühne aus hero-motion.css. */
 .ovh--ueber .ovh__title .line:nth-child(2) .word {
-  /* canonical em-color (steel/sage) for the accent word */
   color: #c8ccc6;
 }
-
-/* ---------------------------------------------------------
-   Split-Hero: image on the right (~50%), copy on the left.
-   The portrait source (1628×1920) was being over-stretched
-   when used as a full-bleed background. Splitting the canvas
-   keeps the cinematic motion (Ken-Burns, aperture, glow) but
-   only on the photo column.
-   --------------------------------------------------------- */
-@media (min-width: 881px) {
-  .ovh--ueber {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    grid-template-rows: 1fr;
-    padding: 0;
-    align-items: stretch;
-    overflow: hidden;
-    background:
-      radial-gradient(130% 120% at 6% 94%, rgba(42,78,118,.14), transparent 55%),
-      linear-gradient(180deg, #090d13 0%, #05070b 52%, #020306 100%);
-  }
-  /* Title scaled for the narrower 50% copy column so the display
-     lockup never overflows the seam into the photo. */
-  .ovh--ueber .ovh__title {
-    font-size: clamp(52px, 7.4vw, 112px);
-    letter-spacing: -.05em;
-  }
-  .ovh--ueber .ovh__lead { max-width: 46ch; }
-  .ovh--ueber > .ovh__photo,
-  .ovh--ueber > .ovh__glow,
-  .ovh--ueber > .ovh__aperture {
-    grid-column: 2;
-    grid-row: 1;
-  }
-  .ovh--ueber > .ovh__photo {
-    position: relative;
-    inset: auto;
-    width: 100%;
-    height: 100%;
-    background-position: center 28%;
-    object-position: center 28%;
-  }
-  .ovh--ueber > .ovh__glow {
-    position: relative;
-    inset: auto;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-  }
-  .ovh--ueber > .ovh__aperture {
-    position: relative;
-    top: 42%;
-    left: -10%;
-    right: -10%;
-    width: 120%;
-    margin-top: -48px;
-    pointer-events: none;
-  }
-  .ovh--ueber > .ovh__grid {
-    grid-column: 1;
-    grid-row: 1;
-    position: relative;
-    z-index: 4;
-    overflow: hidden;
-    max-width: none;
-    margin: 0;
-    padding: clamp(104px, 12vw, 150px) clamp(28px, 4vw, 72px) clamp(96px, 11vw, 140px);
-    /* Vertically centred — the copy sits beside the portrait's mass instead of
-       clinging to the bottom, so there is no empty void above it. */
-    justify-content: center;
-    /* Layered cinematic ground — a veil + steel lift instead of flat black,
-       so the copy column reads as the same frame as the photo. */
-    background:
-      linear-gradient(180deg, rgba(2,3,6,0) 0%, rgba(2,3,6,.5) 76%, rgba(2,3,6,.92) 100%),
-      radial-gradient(120% 85% at 16% 22%, rgba(220,226,223,.09), transparent 52%),
-      linear-gradient(180deg, #0a0e15 0%, #06090e 50%, #03050a 100%);
-  }
-  /* Soft gradient transition so the copy column dissolves into the photo */
-  .ovh--ueber > .ovh__grid::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    width: clamp(40px, 5vw, 96px);
-    pointer-events: none;
-    background: linear-gradient(90deg, rgba(2,3,6,0) 0%, rgba(2,3,6,.5) 60%, rgba(2,3,6,.88) 100%);
-    z-index: 1;
-  }
+.ovh--ueber .ovh__grid {
+  position: relative;
+  z-index: 3;
 }
-
-/* Drifting atmosphere on the copy column — steel + cool-blue glow that slowly
-   breathes, mirroring the landing hero's .ovh__glow. Sits above the column
-   background (z-index:-1) but below the text, so it textures the dark ground
-   without washing out the copy. Applies on both desktop and stacked mobile. */
-.ovh--ueber > .ovh__grid::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
+.ovh--ueber::before {
+  z-index: 2;
   background:
-    radial-gradient(72% 56% at 16% 18%, rgba(220,226,223,.22), transparent 52%),
-    radial-gradient(140% 120% at -8% 106%, rgba(48,86,130,.55), transparent 60%),
-    radial-gradient(82% 62% at 84% 56%, rgba(122,138,134,.20), transparent 58%),
-    radial-gradient(120% 100% at 32% 52%, rgba(60,80,110,.12), transparent 72%);
-  animation: ovhUeberAtmos 20s cubic-bezier(.23,1,.32,1) infinite alternate;
+    linear-gradient(90deg, rgba(2, 3, 6, .78) 0%, rgba(2, 3, 6, .46) 34%, rgba(2, 3, 6, 0) 62%),
+    linear-gradient(180deg, rgba(2, 3, 6, .42) 0%, rgba(2, 3, 6, 0) 22%, rgba(2, 3, 6, 0) 52%, rgba(2, 3, 6, .62) 84%, rgba(2, 3, 6, .86) 100%);
 }
-@keyframes ovhUeberAtmos {
-  0%   { transform: translate3d(-2.4%, 1.8%, 0) scale(1);    opacity: .72; }
-  100% { transform: translate3d(3.2%, -2.2%, 0) scale(1.08); opacity: 1; }
+.ovh--ueber::after {
+  z-index: 2;
 }
-
-/* Aperture light-beam on the copy side — the landing hero's signature steel
-   sweep, scoped to the text column. Sits above the ground but below the copy
-   (z-index:-1, like the atmosphere). Same look/timing as .ovh__aperture. */
-.ovh--ueber .ovh__beam {
-  position: absolute;
-  z-index: -1;
-  left: -10%;
-  right: -10%;
-  top: 46%;
-  height: 88px;
-  pointer-events: none;
-  opacity: .28;
-  transform: rotate(-4deg) translateX(-46%);
-  background: linear-gradient(90deg, transparent 0%, rgba(243,245,239,.06) 34%, rgba(220,226,223,.40) 49%, rgba(220,226,223,.14) 56%, rgba(42,78,118,.14) 64%, transparent 84%);
-  filter: blur(.3px);
-  -webkit-mask-image: linear-gradient(180deg, transparent, #000 44%, #000 56%, transparent);
-  mask-image: linear-gradient(180deg, transparent, #000 44%, #000 56%, transparent);
-  animation: ovhUeberBeam 11s cubic-bezier(.23,1,.32,1) infinite;
+/* Porträt (Hochformat): Gesicht im oberen Bilddrittel halten. */
+.ovh--ueber .hm-img {
+  object-position: 34% 12%;
 }
-@keyframes ovhUeberBeam {
-  0%, 10% { transform: rotate(-4deg) translateX(-46%); opacity: 0; }
-  30%     { opacity: .30; }
-  60%     { transform: rotate(-4deg) translateX(30%);  opacity: .16; }
-  100%    { transform: rotate(-4deg) translateX(46%);  opacity: 0; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .ovh--ueber > .ovh__grid::before { animation: none; }
-  .ovh--ueber .ovh__beam { animation: none; opacity: .12; }
-}
-
-/* Mobile/tablet: stack photo on top, copy below. Keeps the
-   portrait readable without stretching, and avoids a tiny
-   image trying to fill 100svh on a phone. */
-@media (max-width: 880px) {
-  .ovh--ueber {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr;
-    padding: 0;
-    /* Let the hero grow with its content on mobile. The base .ovh is locked to
-       height:100svh + overflow:hidden, which clipped the second CTA below the
-       fold. min-height keeps it filling the screen when content is short. */
-    height: auto;
-    max-height: none;
-    min-height: 100svh;
-    background:
-      radial-gradient(120% 80% at 10% 96%, rgba(42,78,118,.14), transparent 60%),
-      linear-gradient(180deg, #090d13 0%, #05070b 55%, #020306 100%);
+@media (min-width: 881px) {
+  .ovh--ueber .ovh__lead {
+    max-width: 46ch;
   }
-  .ovh--ueber > .ovh__photo,
-  .ovh--ueber > .ovh__glow,
-  .ovh--ueber > .ovh__aperture {
-    grid-column: 1;
-    grid-row: 1;
+  /* Desktop: Porträt rechts, links weich in den dunklen Grund auslaufend. */
+  .ovh--ueber .hm {
+    left: 40%;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 30%);
+    mask-image: linear-gradient(90deg, transparent 0%, #000 30%);
   }
-  .ovh--ueber > .ovh__photo {
-    position: relative;
-    inset: auto;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 4 / 5;
-    max-height: 56svh;
-  }
-  .ovh--ueber > .ovh__glow,
-  .ovh--ueber > .ovh__aperture {
-    pointer-events: none;
-  }
-  .ovh--ueber > .ovh__grid {
-    grid-column: 1;
-    grid-row: 2;
-    max-width: none;
-    margin: 0;
-    padding: clamp(40px, 8vw, 72px) 22px clamp(56px, 9vw, 96px);
-    justify-content: flex-start;
+  .ovh--ueber .hm-img {
+    object-position: center 0%;
   }
 }
 
