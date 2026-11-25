@@ -104,6 +104,16 @@
     prev.addEventListener('click', function(){ open(idx - 1); });
     next.addEventListener('click', function(){ open(idx + 1); });
     viewer.addEventListener('click', function(e){ if(e.target === viewer) closeViewer(); });
+    (function(){
+      var tx = 0, ty = 0;
+      viewer.style.touchAction = 'pan-y';
+      viewer.addEventListener('touchstart', function(e){ if(e.touches && e.touches[0]){ tx = e.touches[0].clientX; ty = e.touches[0].clientY; } }, { passive: true });
+      viewer.addEventListener('touchend', function(e){
+        if(!viewer.classList.contains('is-open') || !e.changedTouches || !e.changedTouches[0]) return;
+        var dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty;
+        if(Math.abs(dx) >= 42 && Math.abs(dx) > Math.abs(dy) * 1.2){ dx < 0 ? open(idx + 1) : open(idx - 1); }
+      }, { passive: true });
+    })();
     addEventListener('keydown', function(e){
       if(!viewer.classList.contains('is-open')) return;
       if(e.key === 'Tab') {

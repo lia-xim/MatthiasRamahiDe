@@ -198,6 +198,7 @@
   /* Stage — large cinematic image */
   .sw-stage{position:relative;overflow:hidden;background:#0c0e13;min-height:0;height:100%}
   .sw-stage .frame{position:absolute;inset:0;background-size:cover;background-position:50% 50%;opacity:0;filter:saturate(.7) brightness(.78) sepia(.1);transform:scale(1.06);transition:opacity 1s var(--ease),filter 1.6s var(--ease),transform 9s linear}
+.sw-stage .frame .sw-stage__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
   .sw-stage .frame.is-active{opacity:1;filter:saturate(1) brightness(1) sepia(0);transform:scale(1.0)}
   .sw-stage .vignette{position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 50%,rgba(0,0,0,0) 32%,rgba(0,0,0,.5) 100%);pointer-events:none}
   .sw-stage .grain{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1.5px);background-size:3px 3px;mix-blend-mode:overlay;opacity:.18;pointer-events:none}

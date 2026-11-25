@@ -5,8 +5,9 @@
 // Nachbarseiten, damit Google jeden Artikel ohne JavaScript erreicht.
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import GooglePreferredSource from './GooglePreferredSource.astro'
+import { localResponsiveImage } from '../../data/localResponsiveThumbs'
 import { tinaAttrs } from '../../lib/tinaFieldAttrs'
-import { imageAlt, imageDimensions, imageDisplayUrl, getSitePageByType, liveCmsFetchOptions, toAbsoluteSiteUrl, toRootRelativeHref, type PayloadDoc } from '../../lib/payload'
+import { imageAlt, imageDimensions, imageDisplayUrl, imageSrcset, getSitePageByType, liveCmsFetchOptions, toAbsoluteSiteUrl, toRootRelativeHref, type PayloadDoc } from '../../lib/payload'
 import { countJournalTopics, getJournalIndexPosts, sliceJournalPosts, type EditableJournalPostCard } from '../../lib/journalIndexPosts'
 import {
   JOURNAL_PAGE_SIZE,
@@ -46,7 +47,12 @@ const featured: EditableJournalPostCard | undefined = isHome
   ? slice.posts.find((post) => post.href === curatedFeaturedHref) || slice.posts[0]
   : undefined
 const featuredUsesCms = Boolean(featured && curatedFeaturedHref && featured.href === curatedFeaturedHref)
-const featuredImage = (featuredUsesCms && imageDisplayUrl(featuredSettings.image, 'wide', { allowOriginal: true })) || featured?.image
+const rawFeaturedImage = (featuredUsesCms && imageDisplayUrl(featuredSettings.image, 'mobile', { allowOriginal: true })) || (featuredUsesCms && imageDisplayUrl(featuredSettings.image, 'wide', { allowOriginal: true })) || featured?.image
+const featuredLocal = rawFeaturedImage && !featuredUsesCms && !/^https?:\/\//i.test(rawFeaturedImage) ? localResponsiveImage(rawFeaturedImage, featured?.width || 1200, featured?.height || 800) : null
+const featuredAvifSrcset = featuredUsesCms && featuredSettings.image && typeof featuredSettings.image === 'object' ? imageSrcset(featuredSettings.image, ['mobile', 'card', 'hero'], 'avif') || undefined : undefined
+const featuredSrcset = featuredUsesCms && featuredSettings.image && typeof featuredSettings.image === 'object' ? imageSrcset(featuredSettings.image, ['mobile', 'card', 'hero'], 'raster') || undefined : featuredLocal?.srcset || featured?.srcset || undefined
+const featuredImage = featuredLocal?.src || rawFeaturedImage
+const featuredPreloadSrc = (featuredUsesCms && imageDisplayUrl(featuredSettings.image, 'wide', { allowOriginal: true })) || rawFeaturedImage
 const featuredDimensions = featuredUsesCms ? imageDimensions(featuredSettings.image, 'wide') : {}
 const featuredTitle = (featuredUsesCms && hasText(featuredSettings.headline) && featuredSettings.headline) || featured?.title || ''
 const featuredText = (featuredUsesCms && hasText(featuredSettings.text) && featuredSettings.text) || featured?.text || ''
@@ -133,7 +139,7 @@ const finalSecondaryHref = toRootRelativeHref(finalCta.secondaryHref) || '/portf
   description={seoDescription}
   canonicalUrl={canonicalPath}
   jsonLd={jsonLd}
-  preloadImages={featuredImage ? [featuredImage] : gridPosts[0] ? [gridPosts[0].image] : []}
+  preloadImages={featuredPreloadSrc ? [featuredPreloadSrc] : gridPosts[0] ? [gridPosts[0].image] : []}
 >
   <main class="jx">
     <header class="jx-head" data-header-theme="dark">
@@ -165,16 +171,36 @@ const finalSecondaryHref = toRootRelativeHref(finalCta.secondaryHref) || '/portf
           <div class="jx-cover">
             <a class="jx-cover__main" href={featured.href}>
               <figure class="jx-cover__media">
-                <img
-                  src={featuredImage}
-                  alt={featuredUsesCms ? imageAlt(featuredSettings.image, featured.imageAlt) : featured.imageAlt}
-                  width={featuredDimensions.width || featured.width}
-                  height={featuredDimensions.height || featured.height}
-                  decoding="async"
-                  loading="eager"
-                  fetchpriority="high"
-                  {...(featuredUsesCms ? tinaAttrs(featuredSettings, 'image') : {})}
-                />
+                {featuredAvifSrcset ? (
+                  <picture>
+                    <source type="image/avif" srcset={featuredAvifSrcset} sizes="(max-width: 900px) 94vw, 58vw" />
+                    <img
+                      src={featuredImage}
+                      srcset={featuredSrcset}
+                      sizes={featuredSrcset ? '(max-width: 900px) 94vw, 58vw' : undefined}
+                      alt={featuredUsesCms ? imageAlt(featuredSettings.image, featured.imageAlt) : featured.imageAlt}
+                      width={featuredDimensions.width || featured.width}
+                      height={featuredDimensions.height || featured.height}
+                      decoding="async"
+                      loading="eager"
+                      fetchpriority="high"
+                      {...(featuredUsesCms ? tinaAttrs(featuredSettings, 'image') : {})}
+                    />
+                  </picture>
+                ) : (
+                  <img
+                    src={featuredImage}
+                    srcset={featuredSrcset}
+                    sizes={featuredSrcset ? '(max-width: 900px) 94vw, 58vw' : undefined}
+                    alt={featuredUsesCms ? imageAlt(featuredSettings.image, featured.imageAlt) : featured.imageAlt}
+                    width={featuredDimensions.width || featured.width}
+                    height={featuredDimensions.height || featured.height}
+                    decoding="async"
+                    loading="eager"
+                    fetchpriority="high"
+                    {...(featuredUsesCms ? tinaAttrs(featuredSettings, 'image') : {})}
+                  />
+                )}
               </figure>
               <p class="jx-meta">
                 <span>{labelForCategory(featured.category)}</span>
@@ -189,7 +215,14 @@ const finalSecondaryHref = toRootRelativeHref(finalCta.secondaryHref) || '/portf
                 {sidePosts.map((post) => (
                   <li>
                     <a href={post.href}>
-                      <img src={post.image} alt={post.imageAlt} width={post.width} height={post.height} decoding="async" loading="eager" />
+                      {post.avifSrcset ? (
+                        <picture>
+                          <source type="image/avif" srcset={post.avifSrcset} sizes="(max-width: 900px) 26vw, 120px" />
+                          <img src={post.image} srcset={post.srcset} sizes={post.srcset ? '(max-width: 900px) 26vw, 120px' : undefined} alt={post.imageAlt} width={post.width} height={post.height} decoding="async" loading="eager" />
+                        </picture>
+                      ) : (
+                        <img src={post.image} srcset={post.srcset} sizes={post.srcset ? '(max-width: 900px) 26vw, 120px' : undefined} alt={post.imageAlt} width={post.width} height={post.height} decoding="async" loading="eager" />
+                      )}
                       <span class="jx-cover__side-copy">
                         <span class="jx-meta"><span>{labelForCategory(post.category)}</span><span>{post.readTime}</span></span>
                         <span class="jx-cover__side-title" {...tinaAttrs(post.source, 'title')}>{post.title}</span>
@@ -217,15 +250,34 @@ const finalSecondaryHref = toRootRelativeHref(finalCta.secondaryHref) || '/portf
               <li class="jx-card">
                 <a href={post.href}>
                   <figure class="jx-card__media">
-                    <img
-                      src={post.image}
-                      alt={post.imageAlt}
-                      width={post.width}
-                      height={post.height}
-                      decoding="async"
-                      loading={index < 3 && !featured ? 'eager' : 'lazy'}
-                      {...tinaAttrs(post.source, 'coverImage')}
-                    />
+                    {post.avifSrcset ? (
+                      <picture>
+                        <source type="image/avif" srcset={post.avifSrcset} sizes="(max-width: 900px) 94vw, 32vw" />
+                        <img
+                          src={post.image}
+                          srcset={post.srcset}
+                          sizes={post.srcset ? '(max-width: 900px) 94vw, 32vw' : undefined}
+                          alt={post.imageAlt}
+                          width={post.width}
+                          height={post.height}
+                          decoding="async"
+                          loading={index < 3 && !featured ? 'eager' : 'lazy'}
+                          {...tinaAttrs(post.source, 'coverImage')}
+                        />
+                      </picture>
+                    ) : (
+                      <img
+                        src={post.image}
+                        srcset={post.srcset}
+                        sizes={post.srcset ? '(max-width: 900px) 94vw, 32vw' : undefined}
+                        alt={post.imageAlt}
+                        width={post.width}
+                        height={post.height}
+                        decoding="async"
+                        loading={index < 3 && !featured ? 'eager' : 'lazy'}
+                        {...tinaAttrs(post.source, 'coverImage')}
+                      />
+                    )}
                   </figure>
                   <p class="jx-meta">
                     <span>{labelForCategory(post.category)}</span>

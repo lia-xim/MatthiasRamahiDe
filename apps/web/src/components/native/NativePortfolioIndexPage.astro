@@ -10,12 +10,14 @@ import {
   type PortfolioPhoto,
   type PortfolioSpread,
 } from '../../lib/portfolioIndexContent'
+import { localResponsiveImage } from '../../data/localResponsiveThumbs'
 import { homeHeroSlidesFor } from '../../lib/nativeContent'
 import {
   getSitePageByType,
   imageAlt,
   imageDimensions,
   imageDisplayUrl,
+  imageSrcset,
   liveCmsFetchOptions,
   toRootRelativeHref,
   type PayloadDoc,
@@ -39,7 +41,7 @@ type CmsPortfolioPhoto = {
   href?: string
 }
 
-type EditablePortfolioPhoto = PortfolioPhoto & {
+type EditablePortfolioPhoto = PortfolioPhoto & { srcset?: string; avifSrcset?: string;
   source?: CmsPortfolioPhoto
 }
 
@@ -66,19 +68,36 @@ const portfolioPhotoFromCms = (item?: CmsPortfolioPhoto): EditablePortfolioPhoto
   if (!item) return undefined
   const displayMedia = item.image || item.fullImage
   const fullMedia = item.fullImage || item.image
-  const src = imageDisplayUrl(displayMedia, 'card', { allowOriginal: true })
-  if (!src) return undefined
-  const href = toRootRelativeHref(item.href) || imageDisplayUrl(fullMedia, 'wide', { allowOriginal: true }) || src
+  const rawSrc = imageDisplayUrl(displayMedia, 'mobile', { allowOriginal: true }) || imageDisplayUrl(displayMedia, 'card', { allowOriginal: true })
+  if (!rawSrc) return undefined
+  const href = toRootRelativeHref(item.href) || imageDisplayUrl(fullMedia, 'wide', { allowOriginal: true }) || rawSrc
   const dims = dimensionsFor(displayMedia, 720, 900)
-
+  let srcset = typeof displayMedia === 'object' && displayMedia ? imageSrcset(displayMedia, ['mobile', 'card'], 'raster') || undefined : undefined
+  const avifSrcset = typeof displayMedia === 'object' && displayMedia ? imageSrcset(displayMedia, ['mobile', 'card'], 'avif') || undefined : undefined
+  let src = rawSrc
+  if (!srcset && !/^https?:\/\//i.test(rawSrc) && !rawSrc.startsWith('data:')) {
+    const local = localResponsiveImage(rawSrc, dims.width, dims.height)
+    if (local.srcset) {
+      src = local.mobile
+      srcset = local.srcset
+    }
+  }
   return {
+    avifSrcset,
     caption: cleanText(item.caption) || imageAlt(displayMedia, 'Portfolio-Bild'),
     height: dims.height,
     href,
     source: item,
     src,
+    srcset,
     width: dims.width,
   }
+}
+const enhanceFallbackPhoto = (photo: EditablePortfolioPhoto): EditablePortfolioPhoto => {
+  if (photo.srcset || /^https?:\/\//i.test(photo.src) || photo.src.startsWith('data:')) return photo
+  const local = localResponsiveImage(photo.src, photo.width, photo.height)
+  if (!local.srcset) return photo
+  return { ...photo, src: local.mobile, srcset: local.srcset }
 }
 
 const contextBody = filledTextRows(portfolioIndex?.contextBody)
@@ -105,7 +124,7 @@ const cmsSpreads =
       } satisfies EditablePortfolioSpread
     })
     .filter(isEditablePortfolioSpread) || []
-const displaySpreads = (cmsSpreads.length > 0 ? cmsSpreads : portfolioSpreads) as EditablePortfolioSpread[]
+const displaySpreads = (cmsSpreads.length > 0 ? cmsSpreads : portfolioSpreads.map((spread) => ({ ...spread, photos: spread.photos.map(enhanceFallbackPhoto) }))) as EditablePortfolioSpread[]
 const portfolioSelectionByKey: Record<string, { href: string; label: string }> = {
   auto: { href: '/portfolio/portfolio-auswahl-automobil', label: 'Automobil-Auswahl ansehen ->' },
   automobil: { href: '/portfolio/portfolio-auswahl-automobil', label: 'Automobil-Auswahl ansehen ->' },
@@ -132,7 +151,7 @@ const portfolioSelectionFor = (spread: EditablePortfolioSpread) =>
     : portfolioSelectionByKey[normalizedPortfolioKey(spread.id)] || portfolioSelectionByKey[normalizedPortfolioKey(spread.label)]
 
 const cmsArchivePhotos = (portfolioIndex?.archive?.items || []).map(portfolioPhotoFromCms).filter(isEditablePortfolioPhoto)
-const archivePhotos = (cmsArchivePhotos.length > 0 ? cmsArchivePhotos : portfolioArchivePhotos) as EditablePortfolioPhoto[]
+const archivePhotos = (cmsArchivePhotos.length > 0 ? cmsArchivePhotos : portfolioArchivePhotos.map(enhanceFallbackPhoto)) as EditablePortfolioPhoto[]
 // Preserve CMS order within each orientation and keep visual and keyboard order identical.
 const portraits = archivePhotos.filter((photo) => photo.height > photo.width)
 const landscapes = archivePhotos.filter((photo) => photo.height <= photo.width)
@@ -218,7 +237,14 @@ const contactLead =
         <div class="pf-spread__strip">
           {(spread.photos as EditablePortfolioPhoto[]).map((photo) => (
             <figure class="pf-photo">
-              <img src={photo.src} alt={photo.caption || ''} loading="lazy" decoding="async" width={photo.width} height={photo.height} {...tinaAttrs(photo.source, 'image')} />
+              {photo.avifSrcset ? (
+                <picture>
+                  <source type="image/avif" srcset={photo.avifSrcset} sizes="(max-width: 900px) 48vw, 25vw" />
+                  <img src={photo.src} srcset={photo.srcset} sizes={photo.srcset ? '(max-width: 900px) 48vw, 25vw' : undefined} alt={photo.caption || ''} loading="lazy" decoding="async" width={photo.width} height={photo.height} {...tinaAttrs(photo.source, 'image')} />
+                </picture>
+              ) : (
+                <img src={photo.src} srcset={photo.srcset} sizes={photo.srcset ? '(max-width: 900px) 48vw, 25vw' : undefined} alt={photo.caption || ''} loading="lazy" decoding="async" width={photo.width} height={photo.height} {...tinaAttrs(photo.source, 'image')} />
+              )}
             </figure>
           ))}
         </div>
@@ -244,24 +270,13 @@ const contactLead =
           <div class={`pf-archive__group pf-archive__group--${group.format}`}>
             {(group.format === 'closing' ? group.photos.slice(0, 3) : group.photos).map((photo) => (
               <a class="pf-photo" data-archive-item data-caption={photo.caption} href={photo.href} aria-label={photo.caption ? `${photo.caption} — Großansicht öffnen` : 'Bild im Großformat ansehen'}>
-                <img
-                  src={photo.src}
-                  data-src={photo.src}
-                  alt={photo.caption || ''}
-                  loading="lazy"
-                  decoding="async"
-                  width={photo.width}
-                  height={photo.height}
-                  {...tinaAttrs(photo.source, 'image')}
-                />
-              </a>
-            ))}
-            {group.format === 'closing' && (
-              <div class="pf-archive__stack">
-                {group.photos.slice(3).map((photo) => (
-                  <a class="pf-photo" data-archive-item data-caption={photo.caption} href={photo.href} aria-label={photo.caption ? `${photo.caption} — Großansicht öffnen` : 'Bild im Großformat ansehen'}>
+                {photo.avifSrcset ? (
+                  <picture>
+                    <source type="image/avif" srcset={photo.avifSrcset} sizes="(max-width: 900px) 48vw, 25vw" />
                     <img
                       src={photo.src}
+                      srcset={photo.srcset}
+                      sizes={photo.srcset ? '(max-width: 900px) 48vw, 25vw' : undefined}
                       data-src={photo.src}
                       alt={photo.caption || ''}
                       loading="lazy"
@@ -270,6 +285,57 @@ const contactLead =
                       height={photo.height}
                       {...tinaAttrs(photo.source, 'image')}
                     />
+                  </picture>
+                ) : (
+                  <img
+                    src={photo.src}
+                    srcset={photo.srcset}
+                    sizes={photo.srcset ? '(max-width: 900px) 48vw, 25vw' : undefined}
+                    data-src={photo.src}
+                    alt={photo.caption || ''}
+                    loading="lazy"
+                    decoding="async"
+                    width={photo.width}
+                    height={photo.height}
+                    {...tinaAttrs(photo.source, 'image')}
+                  />
+                )}
+              </a>
+            ))}
+            {group.format === 'closing' && (
+              <div class="pf-archive__stack">
+                {group.photos.slice(3).map((photo) => (
+                  <a class="pf-photo" data-archive-item data-caption={photo.caption} href={photo.href} aria-label={photo.caption ? `${photo.caption} — Großansicht öffnen` : 'Bild im Großformat ansehen'}>
+                    {photo.avifSrcset ? (
+                      <picture>
+                        <source type="image/avif" srcset={photo.avifSrcset} sizes="(max-width: 900px) 48vw, 25vw" />
+                        <img
+                          src={photo.src}
+                          srcset={photo.srcset}
+                          sizes={photo.srcset ? '(max-width: 900px) 48vw, 25vw' : undefined}
+                          data-src={photo.src}
+                          alt={photo.caption || ''}
+                          loading="lazy"
+                          decoding="async"
+                          width={photo.width}
+                          height={photo.height}
+                          {...tinaAttrs(photo.source, 'image')}
+                        />
+                      </picture>
+                    ) : (
+                      <img
+                        src={photo.src}
+                        srcset={photo.srcset}
+                        sizes={photo.srcset ? '(max-width: 900px) 48vw, 25vw' : undefined}
+                        data-src={photo.src}
+                        alt={photo.caption || ''}
+                        loading="lazy"
+                        decoding="async"
+                        width={photo.width}
+                        height={photo.height}
+                        {...tinaAttrs(photo.source, 'image')}
+                      />
+                    )}
                   </a>
                 ))}
               </div>

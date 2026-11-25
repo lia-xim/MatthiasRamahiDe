@@ -21,6 +21,15 @@ const scanFiles = [
   'apps/web/src/components/native/NativePortraitPhotographyPage.astro',
   'apps/web/src/components/native/NativeLandschaftPhotographyPage.astro',
   'apps/web/src/components/native/NativeHomePage.astro',
+  'apps/web/src/components/native/NativePortfolioIndexPage.astro',
+  'apps/web/src/components/native/NativePhotographyPage.astro',
+  'apps/web/src/components/native/NativeJournalIndexPage.astro',
+  'apps/web/src/components/native/NativeJournalArticleLegacyUrlPage.astro',
+  'apps/web/src/pages/portfolio/[slug].astro',
+  'apps/web/src/lib/portfolioIndexContent.ts',
+  'apps/web/src/lib/nativeContent.ts',
+  'apps/web/src/lib/journalIndexContent.ts',
+  'apps/web/src/lib/journalArticleContent.ts',
 ]
 
 function toPosix(value) {

@@ -7,12 +7,14 @@ import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import { splitCmsHeroTitleLines } from '../../lib/heroTitleLines'
 import { blockParagraphs, homeHeroSlidesFor, photographyTopics as fallbackTopics } from '../../lib/nativeContent'
 import { isCurrentPageHref } from '../../lib/pageLinks'
+import { localResponsiveImage } from '../../data/localResponsiveThumbs'
 import { tinaAttrs } from '../../lib/tinaFieldAttrs'
 import {
   getSitePageByType,
   imageAlt,
   imageDimensions,
   imageDisplayUrl,
+  imageSrcset,
   liveCmsFetchOptions,
   toRootRelativeHref,
   type PayloadDoc,
@@ -112,7 +114,23 @@ const cmsTopics = (doc?.photographyIndex?.topics || [])
       height: dimensions.height || 640,
     }
   })
-const topics = cmsTopics.length ? cmsTopics : fallbackTopics
+const resolveTopicVisual = (media: PayloadDoc['heroImage'], fallbackUrl: string, width: number, height: number) => {
+  const cmsRaster = typeof media === 'object' && media ? imageSrcset(media, ['mobile', 'card'], 'raster') || undefined : undefined
+  const cmsAvif = typeof media === 'object' && media ? imageSrcset(media, ['mobile', 'card'], 'avif') || undefined : undefined
+  const raw = (typeof media === 'object' && media ? imageDisplayUrl(media, 'mobile', { allowOriginal: true }) : '') || fallbackUrl
+  const local = !cmsRaster && raw && !/^https?:\/\//i.test(raw) && !raw.startsWith('data:') ? localResponsiveImage(raw, width, height) : null
+  return {
+    avifSrcset: cmsAvif,
+    image: local?.srcset ? local.mobile : raw,
+    srcset: cmsRaster || local?.srcset || undefined,
+  }
+}
+const rawTopics = cmsTopics.length ? cmsTopics : fallbackTopics
+const topics = rawTopics.map((topic) => {
+  const media = 'source' in topic ? (topic.source as { image?: PayloadDoc['heroImage'] })?.image : undefined
+  const vis = resolveTopicVisual(media, topic.image, topic.width, topic.height)
+  return { ...topic, ...vis }
+})
 const isRootPhotographyOverview = legacyFile === 'fotografie.html'
 const overviewTitleLines = isRootPhotographyOverview
   ? [...meta.heroLines]
@@ -256,7 +274,14 @@ const overviewFaq = authoredOverviewFaq.length > 0 ? authoredOverviewFaq : defau
           </div>
           <div class="topic-media" aria-hidden="true">
             <figure class="topic-frame" style={`--topic-ar:${topic.width}/${topic.height}`}>
-              <img src={topic.image} alt={topic.alt} loading="lazy" width={topic.width} height={topic.height} decoding="async" {...tinaAttrs(editableSource(topic), 'image')} />
+              {topic.avifSrcset ? (
+                <picture>
+                  <source type="image/avif" srcset={topic.avifSrcset} sizes="(max-width: 900px) 94vw, 50vw" />
+                  <img src={topic.image} srcset={topic.srcset} sizes={topic.srcset ? '(max-width: 900px) 94vw, 50vw' : undefined} alt={topic.alt} loading="lazy" width={topic.width} height={topic.height} decoding="async" {...tinaAttrs(editableSource(topic), 'image')} />
+                </picture>
+              ) : (
+                <img src={topic.image} srcset={topic.srcset} sizes={topic.srcset ? '(max-width: 900px) 94vw, 50vw' : undefined} alt={topic.alt} loading="lazy" width={topic.width} height={topic.height} decoding="async" {...tinaAttrs(editableSource(topic), 'image')} />
+              )}
             </figure>
           </div>
         </div>

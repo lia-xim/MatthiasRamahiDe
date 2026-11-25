@@ -63,6 +63,24 @@ export const localResponsiveThumbs: Record<string, LocalThumbEntry> = {
     "width": 1920,
     "height": 1080
   },
+  "/assets/optimized/_DSC3882-1280.webp": {
+    "w480": "/assets/optimized/grid/optimized-dsc3882-480.webp",
+    "w760": "/assets/optimized/grid/optimized-dsc3882-760.webp",
+    "width": 1280,
+    "height": 854
+  },
+  "/assets/optimized/grid/optimized-dsc3882-480.webp": {
+    "w480": "/assets/optimized/grid/optimized-dsc3882-480.webp",
+    "w760": "/assets/optimized/grid/optimized-dsc3882-760.webp",
+    "width": 1280,
+    "height": 854
+  },
+  "/assets/optimized/grid/optimized-dsc3882-760.webp": {
+    "w480": "/assets/optimized/grid/optimized-dsc3882-480.webp",
+    "w760": "/assets/optimized/grid/optimized-dsc3882-760.webp",
+    "width": 1280,
+    "height": 854
+  },
   "/assets/optimized/architektur-wien-innenstadt-1920.webp": {
     "w480": "/assets/optimized/grid/optimized-architektur-wien-innenstadt-480.webp",
     "w760": "/assets/optimized/grid/optimized-architektur-wien-innenstadt-760.webp",
@@ -135,11 +153,11 @@ export const localResponsiveThumbs: Record<string, LocalThumbEntry> = {
     "width": 960,
     "height": 640
   },
-  "/assets/optimized/assets-photos-automobil-neon-1920.webp": {
+  "/assets/optimized/assets-photos-automobil-neon-1280.webp": {
     "w480": "/assets/optimized/grid/optimized-assets-photos-automobil-neon-480.webp",
     "w760": "/assets/optimized/grid/optimized-assets-photos-automobil-neon-760.webp",
-    "width": 1920,
-    "height": 1280
+    "width": 1280,
+    "height": 853
   },
   "/assets/optimized/grid/optimized-assets-photos-automobil-neon-480.webp": {
     "w480": "/assets/optimized/grid/optimized-assets-photos-automobil-neon-480.webp",
@@ -153,17 +171,35 @@ export const localResponsiveThumbs: Record<string, LocalThumbEntry> = {
     "width": 960,
     "height": 640
   },
+  "/assets/optimized/assets-photos-automobil-neon-1920.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-photos-automobil-neon-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-photos-automobil-neon-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/assets-photos-automobil-neon-480.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-photos-automobil-neon-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-photos-automobil-neon-760.webp",
+    "width": 480,
+    "height": 320
+  },
+  "/assets/optimized/assets-photos-automobil-neon-640.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-photos-automobil-neon-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-photos-automobil-neon-760.webp",
+    "width": 640,
+    "height": 427
+  },
   "/assets/optimized/assets-photos-automobil-neon-960.webp": {
     "w480": "/assets/optimized/grid/optimized-assets-photos-automobil-neon-480.webp",
     "w760": "/assets/optimized/grid/optimized-assets-photos-automobil-neon-760.webp",
     "width": 960,
     "height": 640
   },
-  "/assets/optimized/assets-photos-automobil-sunset-1920.webp": {
+  "/assets/optimized/assets-photos-automobil-sunset-1280.webp": {
     "w480": "/assets/optimized/grid/optimized-assets-photos-automobil-sunset-480.webp",
     "w760": "/assets/optimized/grid/optimized-assets-photos-automobil-sunset-760.webp",
-    "width": 1920,
-    "height": 1280
+    "width": 1280,
+    "height": 853
   },
   "/assets/optimized/grid/optimized-assets-photos-automobil-sunset-480.webp": {
     "w480": "/assets/optimized/grid/optimized-assets-photos-automobil-sunset-480.webp",
@@ -177,11 +213,65 @@ export const localResponsiveThumbs: Record<string, LocalThumbEntry> = {
     "width": 960,
     "height": 640
   },
+  "/assets/optimized/assets-photos-automobil-sunset-1920.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-photos-automobil-sunset-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-photos-automobil-sunset-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/assets-photos-automobil-sunset-480.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-photos-automobil-sunset-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-photos-automobil-sunset-760.webp",
+    "width": 480,
+    "height": 320
+  },
+  "/assets/optimized/assets-photos-automobil-sunset-640.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-photos-automobil-sunset-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-photos-automobil-sunset-760.webp",
+    "width": 640,
+    "height": 427
+  },
   "/assets/optimized/assets-photos-automobil-sunset-960.webp": {
     "w480": "/assets/optimized/grid/optimized-assets-photos-automobil-sunset-480.webp",
     "w760": "/assets/optimized/grid/optimized-assets-photos-automobil-sunset-760.webp",
     "width": 960,
     "height": 640
+  },
+  "/assets/optimized/assets-photos-landschaft-1920.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-photos-landschaft-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-photos-landschaft-760.webp",
+    "width": 1707,
+    "height": 2560
+  },
+  "/assets/optimized/grid/optimized-assets-photos-landschaft-480.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-photos-landschaft-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-photos-landschaft-760.webp",
+    "width": 960,
+    "height": 1440
+  },
+  "/assets/optimized/grid/optimized-assets-photos-landschaft-760.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-photos-landschaft-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-photos-landschaft-760.webp",
+    "width": 960,
+    "height": 1440
+  },
+  "/assets/optimized/assets-photos-landschaft-480.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-photos-landschaft-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-photos-landschaft-760.webp",
+    "width": 480,
+    "height": 720
+  },
+  "/assets/optimized/assets-photos-landschaft-720.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-photos-landschaft-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-photos-landschaft-760.webp",
+    "width": 720,
+    "height": 1080
+  },
+  "/assets/optimized/assets-photos-landschaft-960.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-photos-landschaft-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-photos-landschaft-760.webp",
+    "width": 960,
+    "height": 1440
   },
   "/assets/optimized/assets-photos-motorrad-1920.webp": {
     "w480": "/assets/optimized/grid/optimized-assets-photos-motorrad-480.webp",
@@ -192,20 +282,32 @@ export const localResponsiveThumbs: Record<string, LocalThumbEntry> = {
   "/assets/optimized/grid/optimized-assets-photos-motorrad-480.webp": {
     "w480": "/assets/optimized/grid/optimized-assets-photos-motorrad-480.webp",
     "w760": "/assets/optimized/grid/optimized-assets-photos-motorrad-760.webp",
-    "width": 720,
-    "height": 1080
+    "width": 960,
+    "height": 1440
   },
   "/assets/optimized/grid/optimized-assets-photos-motorrad-760.webp": {
     "w480": "/assets/optimized/grid/optimized-assets-photos-motorrad-480.webp",
     "w760": "/assets/optimized/grid/optimized-assets-photos-motorrad-760.webp",
-    "width": 720,
-    "height": 1080
+    "width": 960,
+    "height": 1440
+  },
+  "/assets/optimized/assets-photos-motorrad-480.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-photos-motorrad-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-photos-motorrad-760.webp",
+    "width": 480,
+    "height": 720
   },
   "/assets/optimized/assets-photos-motorrad-720.webp": {
     "w480": "/assets/optimized/grid/optimized-assets-photos-motorrad-480.webp",
     "w760": "/assets/optimized/grid/optimized-assets-photos-motorrad-760.webp",
     "width": 720,
     "height": 1080
+  },
+  "/assets/optimized/assets-photos-motorrad-960.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-photos-motorrad-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-photos-motorrad-760.webp",
+    "width": 960,
+    "height": 1440
   },
   "/assets/optimized/assets-photos-motorrad-duke-1920.webp": {
     "w480": "/assets/optimized/grid/optimized-assets-photos-motorrad-duke-480.webp",
@@ -309,11 +411,71 @@ export const localResponsiveThumbs: Record<string, LocalThumbEntry> = {
     "width": 1920,
     "height": 1280
   },
+  "/assets/optimized/assets-photos-oldtimer-stage-480.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-photos-oldtimer-stage-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-photos-oldtimer-stage-760.webp",
+    "width": 480,
+    "height": 320
+  },
+  "/assets/optimized/assets-photos-oldtimer-stage-640.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-photos-oldtimer-stage-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-photos-oldtimer-stage-760.webp",
+    "width": 640,
+    "height": 427
+  },
   "/assets/optimized/assets-photos-oldtimer-stage-960.webp": {
     "w480": "/assets/optimized/grid/optimized-assets-photos-oldtimer-stage-480.webp",
     "w760": "/assets/optimized/grid/optimized-assets-photos-oldtimer-stage-760.webp",
     "width": 960,
     "height": 640
+  },
+  "/assets/optimized/assets-photos-portrait-blue-720.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-photos-portrait-blue-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-photos-portrait-blue-760.webp",
+    "width": 720,
+    "height": 900
+  },
+  "/assets/optimized/grid/optimized-assets-photos-portrait-blue-480.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-photos-portrait-blue-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-photos-portrait-blue-760.webp",
+    "width": 720,
+    "height": 900
+  },
+  "/assets/optimized/grid/optimized-assets-photos-portrait-blue-760.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-photos-portrait-blue-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-photos-portrait-blue-760.webp",
+    "width": 720,
+    "height": 900
+  },
+  "/assets/optimized/assets-photos-portrait-warm-480.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-photos-portrait-warm-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-photos-portrait-warm-760.webp",
+    "width": 480,
+    "height": 768
+  },
+  "/assets/optimized/grid/optimized-assets-photos-portrait-warm-480.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-photos-portrait-warm-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-photos-portrait-warm-760.webp",
+    "width": 960,
+    "height": 1536
+  },
+  "/assets/optimized/grid/optimized-assets-photos-portrait-warm-760.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-photos-portrait-warm-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-photos-portrait-warm-760.webp",
+    "width": 960,
+    "height": 1536
+  },
+  "/assets/optimized/assets-photos-portrait-warm-720.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-photos-portrait-warm-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-photos-portrait-warm-760.webp",
+    "width": 720,
+    "height": 1152
+  },
+  "/assets/optimized/assets-photos-portrait-warm-960.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-photos-portrait-warm-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-photos-portrait-warm-760.webp",
+    "width": 960,
+    "height": 1536
   },
   "/assets/optimized/assets-portfolio-20250327-dsc01550-1920.webp": {
     "w480": "/assets/optimized/grid/optimized-assets-portfolio-20250327-dsc01550-480.webp",
@@ -441,6 +603,42 @@ export const localResponsiveThumbs: Record<string, LocalThumbEntry> = {
     "width": 1707,
     "height": 2560
   },
+  "/assets/optimized/assets-portfolio-dsc2310-1920.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-portfolio-dsc2310-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-portfolio-dsc2310-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/optimized-assets-portfolio-dsc2310-480.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-portfolio-dsc2310-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-portfolio-dsc2310-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/optimized-assets-portfolio-dsc2310-760.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-portfolio-dsc2310-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-portfolio-dsc2310-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/assets-portfolio-dsc2316-1920.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-portfolio-dsc2316-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-portfolio-dsc2316-760.webp",
+    "width": 1920,
+    "height": 1200
+  },
+  "/assets/optimized/grid/optimized-assets-portfolio-dsc2316-480.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-portfolio-dsc2316-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-portfolio-dsc2316-760.webp",
+    "width": 1920,
+    "height": 1200
+  },
+  "/assets/optimized/grid/optimized-assets-portfolio-dsc2316-760.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-portfolio-dsc2316-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-portfolio-dsc2316-760.webp",
+    "width": 1920,
+    "height": 1200
+  },
   "/assets/optimized/assets-portfolio-dsc2329-1280.webp": {
     "w480": "/assets/optimized/grid/optimized-assets-portfolio-dsc2329-480.webp",
     "w760": "/assets/optimized/grid/optimized-assets-portfolio-dsc2329-760.webp",
@@ -450,14 +648,20 @@ export const localResponsiveThumbs: Record<string, LocalThumbEntry> = {
   "/assets/optimized/grid/optimized-assets-portfolio-dsc2329-480.webp": {
     "w480": "/assets/optimized/grid/optimized-assets-portfolio-dsc2329-480.webp",
     "w760": "/assets/optimized/grid/optimized-assets-portfolio-dsc2329-760.webp",
-    "width": 1280,
-    "height": 1920
+    "width": 1707,
+    "height": 2560
   },
   "/assets/optimized/grid/optimized-assets-portfolio-dsc2329-760.webp": {
     "w480": "/assets/optimized/grid/optimized-assets-portfolio-dsc2329-480.webp",
     "w760": "/assets/optimized/grid/optimized-assets-portfolio-dsc2329-760.webp",
-    "width": 1280,
-    "height": 1920
+    "width": 1707,
+    "height": 2560
+  },
+  "/assets/optimized/assets-portfolio-dsc2329-1920.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-portfolio-dsc2329-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-portfolio-dsc2329-760.webp",
+    "width": 1707,
+    "height": 2560
   },
   "/assets/optimized/assets-portfolio-dsc2345-1920.webp": {
     "w480": "/assets/optimized/grid/optimized-assets-portfolio-dsc2345-480.webp",
@@ -476,6 +680,24 @@ export const localResponsiveThumbs: Record<string, LocalThumbEntry> = {
     "w760": "/assets/optimized/grid/optimized-assets-portfolio-dsc2345-760.webp",
     "width": 1920,
     "height": 1536
+  },
+  "/assets/optimized/assets-portfolio-dsc2358-1920.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-portfolio-dsc2358-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-portfolio-dsc2358-760.webp",
+    "width": 1707,
+    "height": 2560
+  },
+  "/assets/optimized/grid/optimized-assets-portfolio-dsc2358-480.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-portfolio-dsc2358-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-portfolio-dsc2358-760.webp",
+    "width": 1707,
+    "height": 2560
+  },
+  "/assets/optimized/grid/optimized-assets-portfolio-dsc2358-760.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-portfolio-dsc2358-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-portfolio-dsc2358-760.webp",
+    "width": 1707,
+    "height": 2560
   },
   "/assets/optimized/assets-portfolio-dsc2744-1920.webp": {
     "w480": "/assets/optimized/grid/optimized-assets-portfolio-dsc2744-480.webp",
@@ -513,6 +735,42 @@ export const localResponsiveThumbs: Record<string, LocalThumbEntry> = {
     "width": 1707,
     "height": 2560
   },
+  "/assets/optimized/assets-portfolio-dsc2861-1-1920.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-portfolio-dsc2861-1-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-portfolio-dsc2861-1-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/optimized-assets-portfolio-dsc2861-1-480.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-portfolio-dsc2861-1-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-portfolio-dsc2861-1-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/optimized-assets-portfolio-dsc2861-1-760.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-portfolio-dsc2861-1-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-portfolio-dsc2861-1-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/assets-portfolio-dsc2876-generase-1-1920.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-portfolio-dsc2876-generase-1-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-portfolio-dsc2876-generase-1-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/optimized-assets-portfolio-dsc2876-generase-1-480.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-portfolio-dsc2876-generase-1-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-portfolio-dsc2876-generase-1-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/optimized-assets-portfolio-dsc2876-generase-1-760.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-portfolio-dsc2876-generase-1-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-portfolio-dsc2876-generase-1-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
   "/assets/optimized/assets-portfolio-dsc2986-1920.webp": {
     "w480": "/assets/optimized/grid/optimized-assets-portfolio-dsc2986-480.webp",
     "w760": "/assets/optimized/grid/optimized-assets-portfolio-dsc2986-760.webp",
@@ -530,6 +788,42 @@ export const localResponsiveThumbs: Record<string, LocalThumbEntry> = {
     "w760": "/assets/optimized/grid/optimized-assets-portfolio-dsc2986-760.webp",
     "width": 1707,
     "height": 2560
+  },
+  "/assets/optimized/assets-portfolio-dsc3032-generase-1-1920.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-portfolio-dsc3032-generase-1-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-portfolio-dsc3032-generase-1-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/optimized-assets-portfolio-dsc3032-generase-1-480.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-portfolio-dsc3032-generase-1-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-portfolio-dsc3032-generase-1-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/optimized-assets-portfolio-dsc3032-generase-1-760.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-portfolio-dsc3032-generase-1-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-portfolio-dsc3032-generase-1-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/assets-portfolio-dsc3032-generase-2-1920.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-portfolio-dsc3032-generase-2-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-portfolio-dsc3032-generase-2-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/optimized-assets-portfolio-dsc3032-generase-2-480.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-portfolio-dsc3032-generase-2-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-portfolio-dsc3032-generase-2-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/optimized-assets-portfolio-dsc3032-generase-2-760.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-portfolio-dsc3032-generase-2-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-portfolio-dsc3032-generase-2-760.webp",
+    "width": 1920,
+    "height": 1280
   },
   "/assets/optimized/assets-portfolio-dsc3878-1920.webp": {
     "w480": "/assets/optimized/grid/optimized-assets-portfolio-dsc3878-480.webp",
@@ -620,6 +914,24 @@ export const localResponsiveThumbs: Record<string, LocalThumbEntry> = {
     "w760": "/assets/optimized/grid/optimized-assets-portfolio-dsc3982-760.webp",
     "width": 1920,
     "height": 1280
+  },
+  "/assets/optimized/assets-portfolio-dsc6982-1920.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-portfolio-dsc6982-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-portfolio-dsc6982-760.webp",
+    "width": 1707,
+    "height": 2560
+  },
+  "/assets/optimized/grid/optimized-assets-portfolio-dsc6982-480.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-portfolio-dsc6982-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-portfolio-dsc6982-760.webp",
+    "width": 1707,
+    "height": 2560
+  },
+  "/assets/optimized/grid/optimized-assets-portfolio-dsc6982-760.webp": {
+    "w480": "/assets/optimized/grid/optimized-assets-portfolio-dsc6982-480.webp",
+    "w760": "/assets/optimized/grid/optimized-assets-portfolio-dsc6982-760.webp",
+    "width": 1707,
+    "height": 2560
   },
   "/assets/optimized/assets-portfolio-dsc8032-1920.webp": {
     "w480": "/assets/optimized/grid/optimized-assets-portfolio-dsc8032-480.webp",
@@ -794,6 +1106,24 @@ export const localResponsiveThumbs: Record<string, LocalThumbEntry> = {
     "w760": "/assets/optimized/grid/optimized-matthias-ramahi-portrait-760.webp",
     "width": 720,
     "height": 850
+  },
+  "/assets/optimized/mpik8b82-dsc3879-1280.webp": {
+    "w480": "/assets/optimized/grid/optimized-mpik8b82-dsc3879-480.webp",
+    "w760": "/assets/optimized/grid/optimized-mpik8b82-dsc3879-760.webp",
+    "width": 1280,
+    "height": 853
+  },
+  "/assets/optimized/grid/optimized-mpik8b82-dsc3879-480.webp": {
+    "w480": "/assets/optimized/grid/optimized-mpik8b82-dsc3879-480.webp",
+    "w760": "/assets/optimized/grid/optimized-mpik8b82-dsc3879-760.webp",
+    "width": 1280,
+    "height": 853
+  },
+  "/assets/optimized/grid/optimized-mpik8b82-dsc3879-760.webp": {
+    "w480": "/assets/optimized/grid/optimized-mpik8b82-dsc3879-480.webp",
+    "w760": "/assets/optimized/grid/optimized-mpik8b82-dsc3879-760.webp",
+    "width": 1280,
+    "height": 853
   },
   "/assets/optimized/mpixhlgk-dsc2986-1920.webp": {
     "w480": "/assets/optimized/grid/optimized-mpixhlgk-dsc2986-480.webp",

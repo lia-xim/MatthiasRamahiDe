@@ -364,5 +364,15 @@ var gpuChecked=forceAnimated;
     next.addEventListener('click',()=>{idx=(idx+1)%tiles.length;show()});
     close.addEventListener('click',shut);
     lb.addEventListener('click',e=>{if(e.target===lb)shut()});
+    (function(){
+      var tx=0,ty=0;
+      lb.style.touchAction='pan-y';
+      lb.addEventListener('touchstart',function(e){if(e.touches&&e.touches[0]){tx=e.touches[0].clientX;ty=e.touches[0].clientY;}},{passive:true});
+      lb.addEventListener('touchend',function(e){
+        if(!lb.classList.contains('is-open')||!e.changedTouches||!e.changedTouches[0])return;
+        var dx=e.changedTouches[0].clientX-tx,dy=e.changedTouches[0].clientY-ty;
+        if(Math.abs(dx)>=42&&Math.abs(dx)>Math.abs(dy)*1.2){dx<0?next.click():prev.click();}
+      },{passive:true});
+    })();
     document.addEventListener('keydown',e=>{if(!lb.classList.contains('is-open'))return;if(e.key==='Escape')shut();if(e.key==='ArrowLeft')prev.click();if(e.key==='ArrowRight')next.click()});
   })();

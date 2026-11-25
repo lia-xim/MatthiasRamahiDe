@@ -362,10 +362,18 @@ const automobilHeroSlides = [
 ]
 const inheritedHeroDevelopInitial = visualSlots[0].cssFull
 const inheritedHeroDevelopInitialMobile = visualSlots[0].cssMobile
-const inheritedSwitchFrames = switchFrames.map((frame, index) => ({
-  ...frame,
-  image: visualSlots[index + 1].full,
-}))
+const inheritedSwitchFrames = switchFrames.map((frame, index) => {
+  const visual = visualSlots[index + 1]
+  return {
+    ...frame,
+    alt: visual.alt,
+    avifSrcset: visual.avifSrcset,
+    height: visual.height,
+    image: visual.mobile || visual.src,
+    srcset: visual.srcset,
+    width: visual.width,
+  }
+})
 const inheritedGalleryTiles = galleryTiles.map((tile, index) => {
   const visual = visualSlots[index + 1 + switchFrames.length]
   return { ...tile, alt: visual.alt, avifSrcset: visual.avifSrcset, full: visual.full, height: visual.height, mobile: visual.mobile, src: visual.src, srcset: visual.srcset, width: visual.width }
@@ -807,9 +815,17 @@ const curatedCityHeading =
             <div
               class={`frame${index === 0 ? ' is-active' : ''}`}
               data-frame={index}
-              style={`background-image:url('${frame.image}')`}
               {...tinaAttrs(switchImageSource(index), 'image')}
-            />
+            >
+              {frame.avifSrcset ? (
+                <picture>
+                  <source type="image/avif" srcset={frame.avifSrcset} sizes="(max-width: 900px) 100vw, 60vw" />
+                  <img class="sw-stage__img" src={frame.image} srcset={frame.srcset || undefined} sizes={frame.srcset ? '(max-width: 900px) 100vw, 60vw' : undefined} alt="" aria-hidden="true" loading={index === 0 ? 'eager' : 'lazy'} decoding="async" width={frame.width} height={frame.height} />
+                </picture>
+              ) : (
+                <img class="sw-stage__img" src={frame.image} srcset={frame.srcset || undefined} sizes={frame.srcset ? '(max-width: 900px) 100vw, 60vw' : undefined} alt="" aria-hidden="true" loading={index === 0 ? 'eager' : 'lazy'} decoding="async" width={frame.width} height={frame.height} />
+              )}
+            </div>
           ))}
           <div class="vignette"></div>
           <div class="grain"></div>

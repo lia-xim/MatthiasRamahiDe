@@ -1,6 +1,8 @@
 ---
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
+import ContactSlot from '../ContactSlot.astro'
 import GooglePreferredSource from './GooglePreferredSource.astro'
+import { localResponsiveImage } from '../../data/localResponsiveThumbs'
 import {
   getRelatedJournalArticles,
   isJournalArticlePublic,
@@ -69,20 +71,21 @@ const previewMap: Record<string, { height: number; image: string; width: number 
 function imagePreview(image?: string) {
   const normalized = (image || '').replace(/^\//, '')
   const preview = previewMap[normalized]
-  if (preview) {
-    return {
-      ...preview,
-      url: imageDisplayUrl(`/${preview.image}`, 'card', { allowOriginal: true }),
-    }
-  }
-  const resolvedUrl = imageDisplayUrl(`/${normalized}`, 'card', { allowOriginal: true })
+  const raw = preview ? `/${preview.image}` : `/${normalized}`
+  const resolvedUrl = imageDisplayUrl(raw, 'card', { allowOriginal: true })
   const dims = imageDimensions(`/${normalized}`, 'card')
   const portrait = /portrait|khan|levi|dsc6968|dsc9301|landschaft/i.test(normalized)
+  const width = preview?.width || dims.width || (portrait ? 1200 : 1600)
+  const height = preview?.height || dims.height || (portrait ? 1600 : 1067)
+  const local = !/^https?:\/\//i.test(normalized) ? localResponsiveImage(`/${normalized}`, width, height) : null
   return {
     image: normalized,
-    url: resolvedUrl,
-    width: dims.width || (portrait ? 1200 : 1600),
-    height: dims.height || (portrait ? 1600 : 1067),
+    url: local?.srcset ? local.src : resolvedUrl,
+    mobile: local?.srcset ? local.mobile : resolvedUrl,
+    srcset: local?.srcset || '',
+    full: local?.full || imageDisplayUrl(`/${normalized}`, 'wide', { allowOriginal: true }),
+    width,
+    height,
   }
 }
 
@@ -90,6 +93,8 @@ const displayHero = imagePreview(article.heroImage)
 // Das Titelbild läuft jetzt randlos und scharf über die volle Breite, daher
 // die grosse Variante statt der Karten-Vorschau.
 const heroWideUrl = imageDisplayUrl(article.heroImage, 'wide', { allowOriginal: true }) || displayHero.url
+const heroLocalResponsive = article.heroImage && !/^https?:\/\//i.test(article.heroImage) ? localResponsiveImage(article.heroImage, displayHero.width, displayHero.height) : null
+const heroSrcset = heroLocalResponsive?.srcset ? `${heroLocalResponsive.srcset}, ${versionStaticAssetUrl(heroWideUrl)} 1920w` : ''
 const heroWideDims = imageDimensions(article.heroImage, 'wide')
 const jsonLd = [
   breadcrumbJsonLd([
@@ -131,6 +136,18 @@ const clusterProfile = journalClusterProfiles[article.cluster]
 const articleTopic = journalTopics.find((topic) => topic.filter === clusterProfile.filter)
 const topicHref = journalIndexPath(articleTopic)
 const topicLabel = articleTopic?.label || article.category
+const contactSubjectByCluster: Record<string, string> = {
+  automotive: 'Automobil Fotografie Anfrage',
+  'sports-car': 'Sportwagen Fotografie Anfrage',
+  'classic-car': 'Oldtimer Fotografie Anfrage',
+  motorcycle: 'Motorrad Fotografie Anfrage',
+  portrait: 'Portrait Fotografie Anfrage',
+  'landscape-print': 'Fine-Art-Print Anfrage',
+  process: 'Shooting Anfrage',
+}
+const articleContactSubject = contactSubjectByCluster[article.cluster] || 'Shooting Anfrage'
+const articleContactHeadline = `${topicLabel} <em>anfragen.</em>`
+const articleContactLead = `Du planst ein Shooting oder Projekt im Bereich ${topicLabel}? Schreibe kurz Motiv, Ort und gewünschten Zeitraum — wir klären Licht, Ablauf und Ausgabe direkt.`
 const normalizeText = (value = '') => value.replace(/\s+/g, ' ').trim()
 const paragraphs = (body?: string) => (body || '').split(/\n\s*\n/).map((value) => value.trim()).filter(Boolean)
 const blockId = (headline: string, index: number) =>
@@ -156,9 +173,9 @@ Astro.response.headers.set('x-cms-page-kind', 'journal-tina-source')
   jsonLd={jsonLd}
   bodyClass="has-mr-footer journal-article-page"
   mobileCta={{
-    secondaryHref: articleHref(article.links?.[0]?.href || '/automobil-fotografie.html'),
+    secondaryHref: articleHref(article.links?.[0]?.href || article.commercialHref || '/automobil-fotografie.html'),
     secondaryLabel: 'Leistung',
-    href: '/contact.html#anfrage',
+    href: '#anfrage',
     label: 'Shooting anfragen',
   }}
 >
@@ -168,6 +185,8 @@ Astro.response.headers.set('x-cms-page-kind', 'journal-tina-source')
         <div class="article-hero__visual" aria-hidden="true">
           <img
             src={versionStaticAssetUrl(heroWideUrl)}
+            srcset={heroSrcset || undefined}
+            sizes={heroSrcset ? '100vw' : undefined}
             alt=""
             width={displayHero.width}
             height={displayHero.height}
@@ -258,8 +277,8 @@ Astro.response.headers.set('x-cms-page-kind', 'journal-tina-source')
                       {images.map((item) => {
                         const preview = imagePreview(item.image)
                         return (
-                          <button type="button" data-full={imageDisplayUrl(item.image || `/${preview.image}`, 'wide', { allowOriginal: true })}>
-                            <img src={preview.url} alt={item.caption || article.heroImageAlt} width={preview.width} height={preview.height} loading="lazy" decoding="async" />
+                          <button type="button" data-full={preview.full}>
+                            <img src={preview.mobile} srcset={preview.srcset || undefined} sizes={preview.srcset ? '(max-width: 900px) 94vw, 45vw' : undefined} alt={item.caption || article.heroImageAlt} width={preview.width} height={preview.height} loading="lazy" decoding="async" />
                           </button>
                         )
                       })}
@@ -292,7 +311,7 @@ Astro.response.headers.set('x-cms-page-kind', 'journal-tina-source')
                   <aside class="journal-inline-cta">
                     <h2>{block.headline}</h2>
                     {block.text && <p>{block.text}</p>}
-                    <a href="/contact.html#anfrage">{block.buttonLabel || 'Projekt anfragen'}</a>
+                    <a href="#anfrage">{block.buttonLabel || 'Projekt anfragen'}</a>
                   </aside>
                 )
               }
@@ -339,7 +358,7 @@ Astro.response.headers.set('x-cms-page-kind', 'journal-tina-source')
             const preview = imagePreview(related.heroImage)
             return (
               <a href={articleHref(related.legacyFile)}>
-                <img src={preview.url} alt={related.heroImageAlt} width={preview.width} height={preview.height} loading="lazy" decoding="async" />
+                <img src={preview.mobile} srcset={preview.srcset || undefined} sizes={preview.srcset ? '(max-width: 900px) 94vw, 32vw' : undefined} alt={related.heroImageAlt} width={preview.width} height={preview.height} loading="lazy" decoding="async" />
                 <span>{related.category} · {related.minutes}</span>
                 <strong>{related.title}</strong>
               </a>
@@ -348,5 +367,14 @@ Astro.response.headers.set('x-cms-page-kind', 'journal-tina-source')
         </div>
       </section>
     </article>
+
+    <ContactSlot
+      id="anfrage"
+      data-contact-section
+      data-theme="light"
+      data-contact-subject={articleContactSubject}
+      data-contact-headline={articleContactHeadline}
+      data-contact-lead={articleContactLead}
+    />
   </main>
 </AdoptedPageLayout>

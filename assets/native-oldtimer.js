@@ -126,6 +126,16 @@
     lbPrev.addEventListener('click', function(){ setImg(cur-1); });
     lbNext.addEventListener('click', function(){ setImg(cur+1); });
     lb.addEventListener('click', function(e){ if(e.target===lb) close(); });
+    (function(){
+      var tx=0, ty=0;
+      lb.style.touchAction='pan-y';
+      lb.addEventListener('touchstart', function(e){ if(e.touches&&e.touches[0]){ tx=e.touches[0].clientX; ty=e.touches[0].clientY; } }, {passive:true});
+      lb.addEventListener('touchend', function(e){
+        if(!lb.classList.contains('open')||!e.changedTouches||!e.changedTouches[0]) return;
+        var dx=e.changedTouches[0].clientX-tx, dy=e.changedTouches[0].clientY-ty;
+        if(Math.abs(dx)>=42&&Math.abs(dx)>Math.abs(dy)*1.2){ dx<0?setImg(cur+1):setImg(cur-1); }
+      }, {passive:true});
+    })();
     document.addEventListener('keydown', function(e){
       if(!lb.classList.contains('open')) return;
       if(e.key==='Escape') close();

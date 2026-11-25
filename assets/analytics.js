@@ -210,11 +210,26 @@
   })();
 
   /* =====================================================================
-     2b) Galerie "Mehr laden" + FAQ aufklappen
+     2b) Galerie "Mehr laden", Lightbox-Oeffnungen, Hero-CTAs & FAQ
      ===================================================================== */
   document.addEventListener('click', function (e) {
     var btn = e.target && e.target.closest && e.target.closest('[data-load-more-button]');
     if (btn) track('gallery-load-more', { page: location.pathname });
+
+    var heroCta = e.target && e.target.closest && e.target.closest('.hero-actions a, .hero-ctas a, .pd-actions a, .tri-actions a, .hero-mr__actions a, .hero-pt__actions a, .hero-ls__actions a, .ovh__actions a, .sp-hero__actions a, .vg-hero__actions a, [data-hero-primary], [data-hero-secondary], .hero-cta');
+    if (heroCta) {
+      var role = (heroCta.hasAttribute('data-hero-secondary') || heroCta.classList.contains('ghost') || heroCta.classList.contains('secondary') || /--ghost/.test(heroCta.className)) ? 'secondary' : 'primary';
+      track('hero-cta-click', {
+        role: role,
+        href: heroCta.getAttribute('href') || '',
+        text: (heroCta.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 80)
+      });
+    }
+
+    var lbTrigger = e.target && e.target.closest && e.target.closest('.bg-tile, .po-tile, .ga-tile, .bg-pt__tile, .bg-ls__tile, .auto-archive-card button, .pf-archive__grid .pf-photo, [data-site-lightbox-gallery] button, [data-site-lightbox-gallery] img');
+    if (lbTrigger) {
+      track('gallery-open', { page: location.pathname });
+    }
   });
 
   // FAQ: native <details> oder Akkordeons mit aria-expanded

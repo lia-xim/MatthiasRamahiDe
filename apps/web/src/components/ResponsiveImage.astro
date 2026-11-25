@@ -1,4 +1,5 @@
 ---
+import { localResponsiveImage } from '../data/localResponsiveThumbs'
 import { imageAlt, imageDimensions, imageDisplayUrl, imageObjectPosition, imageSrcset } from '../lib/payload'
 import { tinaAttrs } from '../lib/tinaFieldAttrs'
 
@@ -16,12 +17,27 @@ const {
   tinaFieldIndex,
 } = Astro.props
 const mediaOptions = { mapCachedAssets }
-const src = imageDisplayUrl(media, size, mediaOptions)
+const isCard = size === 'card'
+const variantNames = isCard ? ['mobile', 'card'] : ['mobile', 'card', 'hero', 'wide']
+const baseSrc = (isCard ? imageDisplayUrl(media, 'mobile', mediaOptions) : '') || imageDisplayUrl(media, size, mediaOptions)
 const alt = typeof altText === 'string' && altText.trim() ? altText.trim() : imageAlt(media, fallback)
 const dimensions = imageDimensions(media, size)
-const rasterSrcset = imageSrcset(media, ['mobile', 'card', 'hero', 'wide'], 'raster', mediaOptions)
-const avifSrcset = imageSrcset(media, ['mobile', 'card', 'hero', 'wide'], 'avif', mediaOptions)
-const fallbackSrc = typeof media === 'object' && media ? imageDisplayUrl(media, 'wide', { allowOriginal: true, mapCachedAssets }) || src : src
+let width = dimensions.width
+let height = dimensions.height
+let src = baseSrc
+let rasterSrcset = imageSrcset(media, variantNames, 'raster', mediaOptions)
+const avifSrcset = imageSrcset(media, variantNames, 'avif', mediaOptions)
+let fallbackSrc = typeof media === 'object' && media ? imageDisplayUrl(media, 'wide', { allowOriginal: true, mapCachedAssets }) || baseSrc : baseSrc
+if (!rasterSrcset && baseSrc && !/^https?:\/\//i.test(baseSrc) && !baseSrc.startsWith('data:')) {
+  const local = localResponsiveImage(baseSrc, width || 1200, height || 800)
+  if (local.srcset) {
+    src = isCard ? local.mobile : local.src
+    rasterSrcset = local.srcset
+    fallbackSrc = local.full
+    width = width || local.width
+    height = height || local.height
+  }
+}
 const blurDataUrl = typeof media === 'object' && media ? media.blurDataUrl : ''
 const dominantColor = typeof media === 'object' && media ? media.dominantColor : ''
 const objectPosition = imageObjectPosition(media)
@@ -44,9 +60,10 @@ const editorAttrs = tinaAttrs(tinaFieldSource, tinaFieldName, tinaFieldIndex)
       srcset={rasterSrcset || undefined}
       sizes={sizes}
       data-img-fallback={fallbackSrc}
+      data-full={fallbackSrc || undefined}
       alt={alt}
-      width={dimensions.width}
-      height={dimensions.height}
+      width={width}
+      height={height}
       loading={loading}
       decoding="async"
       fetchpriority={loading === 'eager' ? 'high' : undefined}

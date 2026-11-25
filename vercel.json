@@ -3,6 +3,18 @@
   "buildCommand": "corepack pnpm vercel:build",
   "installCommand": "corepack pnpm install --frozen-lockfile",
   "framework": "astro",
+  "redirects": [
+    {
+      "source": "/portfolio",
+      "destination": "/portfolio.html",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/",
+      "destination": "/portfolio.html",
+      "permanent": true
+    }
+  ],
   "crons": [
     {
       "path": "/api/indexnow",

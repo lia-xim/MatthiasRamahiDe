@@ -4,6 +4,7 @@ import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import PreviewToolbar from '../PreviewToolbar.astro'
 import NativeShaderHero from './NativeShaderHero.astro'
 import NativeReviews from './NativeReviews.astro'
+import { localResponsiveImage } from '../../data/localResponsiveThumbs'
 import {
   blockParagraphs,
   homeChapters as fallbackChapters,
@@ -74,7 +75,9 @@ const defaultAboutImageSrcset =
 const isOwnPortrait = (src: string) => /mpissxxj-portrait|matthias-ramahi-portrait/.test(src)
 
 const cmsSrcset = (image?: PayloadMedia | string) =>
-  image && typeof image !== 'string' ? imageSrcset(image, ['mobile', 'card', 'hero']) || undefined : undefined
+  image && typeof image !== 'string' ? imageSrcset(image, ['mobile', 'card']) || undefined : undefined
+const cmsAvifSrcset = (image?: PayloadMedia | string) =>
+  image && typeof image !== 'string' ? imageSrcset(image, ['mobile', 'card'], 'avif') || undefined : undefined
 
 // --- Statement: „Bilder, die einen Raum verändern." ---
 const statement = doc?.homeStatement
@@ -101,22 +104,29 @@ const cmsChapters = (chaptersGroup?.items || [])
   .filter((item) => item?.image)
   .map((item) => {
     const local = typeof item.image === 'string' ? localVariantImage(item.image) : null
+    const raw = local?.src || imageDisplayUrl(item.image, 'mobile', { allowOriginal: true }) || imageDisplayUrl(item.image, 'card', { allowOriginal: true })
+    const responsive = typeof item.image === 'string' && !local && !/^https?:\/\//i.test(raw) ? localResponsiveImage(raw) : null
     return {
       source: item,
       href: toRootRelativeHref(item.href) || '#',
-      image: local?.src || imageDisplayUrl(item.image, 'card', { allowOriginal: true }),
-      srcset: local?.srcset || cmsSrcset(item.image),
+      image: responsive?.mobile || raw,
+      srcset: local?.srcset || responsive?.srcset || cmsSrcset(item.image),
+      avifSrcset: cmsAvifSrcset(item.image),
       sizes: chapterSizes,
       alt: imageAlt(item.image, item.title || ''),
       title: item.title || '',
       meta: item.meta || '',
-      ...(local ? { width: local.width, height: local.height } : imageDimensions(item.image, 'card')),
+      ...(local ? { width: local.width, height: local.height } : responsive?.srcset ? { width: responsive.width, height: responsive.height } : imageDimensions(item.image, 'card')),
     }
   })
 const chapters = (cmsChapters.length ? cmsChapters : fallbackChapters).map((chapter) => {
   const genericAlt = !chapter.alt || /^(_?dsc|img|\d)/i.test(chapter.alt) || chapter.alt === chapter.title
+  const fallbackLocal = !chapter.srcset && !/^https?:\/\//i.test(chapter.image) ? localResponsiveImage(chapter.image, chapter.width, chapter.height) : null
   return {
     ...chapter,
+    avifSrcset: 'avifSrcset' in chapter ? chapter.avifSrcset : undefined,
+    image: fallbackLocal?.mobile || chapter.image,
+    srcset: fallbackLocal?.srcset || chapter.srcset,
     sizes: chapterSizes,
     alt: genericAlt ? `${chapter.title}fotografie von Matthias Ramahi` : chapter.alt,
   }
@@ -200,12 +210,19 @@ const journalPosts = (cmsJournalItems.length === 3
   : journalCards.slice(0, 3).map((card) => ({ ...card, image: card.image as PayloadMedia | string, source: undefined }))
 ).map((post) => {
   const media = typeof post.image === 'string' ? resolveTinaMediaRef(post.image) || post.image : post.image
+  const rawSrc = imageDisplayUrl(media, 'mobile', { allowOriginal: true }) || imageDisplayUrl(media, 'card', { allowOriginal: true })
+  const cmsRaster = typeof media === 'string' ? undefined : imageSrcset(media, ['mobile', 'card']) || undefined
+  const cmsAvif = typeof media === 'string' ? undefined : imageSrcset(media, ['mobile', 'card'], 'avif') || undefined
+  const local = !cmsRaster && !/^https?:\/\//i.test(rawSrc) ? localResponsiveImage(rawSrc) : null
+  const dims = typeof media === 'string' ? {} : imageDimensions(media, 'card')
   return {
     ...post,
-    src: imageDisplayUrl(media, 'card', { allowOriginal: true }),
-    srcset: typeof media === 'string' ? undefined : imageSrcset(media, ['mobile', 'card']) || undefined,
+    src: local?.srcset ? local.mobile : rawSrc,
+    srcset: cmsRaster || local?.srcset || undefined,
+    avifSrcset: cmsAvif,
     date: post.dateTime ? monthFormat.format(new Date(post.dateTime)) : '',
-    ...(typeof media === 'string' ? {} : imageDimensions(media, 'card')),
+    ...dims,
+    ...(local?.srcset && !dims.width ? { width: local.width, height: local.height } : {}),
   }
 })
 ---
@@ -254,7 +271,14 @@ const journalPosts = (cmsJournalItems.length === 3
           {chapters.map((chapter) => (
             <a class="chapter" href={chapter.href}>
               <div class="img">
-                <img src={chapter.image} srcset={chapter.srcset} sizes={chapter.sizes} alt={chapter.alt} loading="lazy" width={chapter.width} height={chapter.height} decoding="async" {...tinaAttrs(editableSource(chapter), 'image')} />
+                {chapter.avifSrcset ? (
+                  <picture>
+                    <source type="image/avif" srcset={chapter.avifSrcset} sizes={chapter.sizes} />
+                    <img src={chapter.image} srcset={chapter.srcset} sizes={chapter.sizes} alt={chapter.alt} loading="lazy" width={chapter.width} height={chapter.height} decoding="async" {...tinaAttrs(editableSource(chapter), 'image')} />
+                  </picture>
+                ) : (
+                  <img src={chapter.image} srcset={chapter.srcset} sizes={chapter.sizes} alt={chapter.alt} loading="lazy" width={chapter.width} height={chapter.height} decoding="async" {...tinaAttrs(editableSource(chapter), 'image')} />
+                )}
               </div>
               <div class="head"><h3 {...tinaAttrs(editableSource(chapter), 'title')}>{chapter.title}</h3></div>
               <span class="meta"><span class="arr">Bereich ansehen&nbsp;→</span></span>
@@ -432,7 +456,14 @@ const journalPosts = (cmsJournalItems.length === 3
           {journalPosts.map((post) => (
             <a class="lp-post" href={post.href}>
               <div class="lp-post__img">
-                <img src={post.src} srcset={post.srcset} sizes={journalSizes} alt={post.imageAlt} loading="lazy" decoding="async" width={post.width} height={post.height} {...tinaAttrs(post.source, 'image')} />
+                {post.avifSrcset ? (
+                  <picture>
+                    <source type="image/avif" srcset={post.avifSrcset} sizes={journalSizes} />
+                    <img src={post.src} srcset={post.srcset} sizes={journalSizes} alt={post.imageAlt} loading="lazy" decoding="async" width={post.width} height={post.height} {...tinaAttrs(post.source, 'image')} />
+                  </picture>
+                ) : (
+                  <img src={post.src} srcset={post.srcset} sizes={journalSizes} alt={post.imageAlt} loading="lazy" decoding="async" width={post.width} height={post.height} {...tinaAttrs(post.source, 'image')} />
+                )}
               </div>
               <p class="lp-post__meta">
                 {post.date && <time datetime={post.dateTime}>{post.date}</time>}

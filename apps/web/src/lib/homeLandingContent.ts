@@ -5,6 +5,7 @@
 // bzw. dem Projektprofil — keine erfundenen Kennzahlen, Kunden oder Preise.
 
 import contactSheetData from '../data/homeContactSheet.json'
+import { localResponsiveImage } from '../data/localResponsiveThumbs'
 import { imageDisplayUrl, imageSrcset, type PayloadDoc, type PayloadMedia } from './payload'
 import { resolveTinaMediaRef } from './tinaMedia'
 
@@ -208,11 +209,12 @@ export function buildContactStrip(
     const ratio = width / height
 
     const small = sheet?.variants?.[0]?.url
-    const src = small || imageDisplayUrl(media as PayloadMedia | string, 'mobile', { allowOriginal: true, mapCachedAssets: false })
+    const localThumb = !sheet && typeof media === 'string' && !/^https?:\/\//i.test(url) ? localResponsiveImage(url, width, height) : null
+    const src = small || localThumb?.mobile || imageDisplayUrl(media as PayloadMedia | string, 'mobile', { allowOriginal: true, mapCachedAssets: false })
     const srcset = sheet
       ? sheet.variants.map((variant) => `${variant.url} ${variant.width}w`).join(', ')
-      : imageSrcset(media as PayloadMedia | string, ['thumb', 'mobile', 'card'], 'raster', { mapCachedAssets: false }) || undefined
-    const full = imageDisplayUrl(media as PayloadMedia | string, 'hero', { allowOriginal: true, mapCachedAssets: false })
+      : localThumb?.srcset || imageSrcset(media as PayloadMedia | string, ['thumb', 'mobile', 'card'], 'raster', { mapCachedAssets: false }) || undefined
+    const full = localThumb?.full || imageDisplayUrl(media as PayloadMedia | string, 'hero', { allowOriginal: true, mapCachedAssets: false })
 
     const rawCaption = (item.caption || '').trim()
     const caption = rawCaption && rawCaption.toLowerCase() !== series.label.toLowerCase() ? rawCaption : ''
