@@ -30,8 +30,8 @@
   body:before{content:"";position:fixed;inset:-18%;z-index:80;pointer-events:none;opacity:.04;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.72' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");mix-blend-mode:screen}
   @keyframes grain{50%{transform:translate3d(1.2%,-1%,0)}}
 
-  img[loading="lazy"]{opacity:0;transform:scale(1.018);transition:opacity .9s var(--ease),transform 1.6s var(--ease)}
-  img[loading="lazy"].is-loaded{opacity:1;transform:scale(1)}
+  img[loading="lazy"]{opacity:1;transform:none;transition:none}
+  img[loading="lazy"].is-loaded{opacity:1;transform:none}
   @media (prefers-reduced-motion:reduce){
     img[loading="lazy"]{transition:opacity .3s linear;transform:none}
   }

@@ -11,6 +11,7 @@ import {
   type PayloadMedia,
 } from './payload'
 import { localSeoParentLegacyFiles, type LocalSeoLayoutFamily } from './localSeoLayoutFamilies'
+import { localResponsiveImage } from '../data/localResponsiveThumbs'
 import { splitHeroTitleLines } from './heroTitleLines'
 
 type ImageSequenceBlock = {
@@ -32,6 +33,7 @@ export type FamilyVisualFallback = {
 }
 
 export type FamilyVisualSlot = Required<Pick<FamilyVisualFallback, 'alt' | 'src'>> & {
+  avifSrcset: string
   cssFull: string
   cssMobile: string
   cssSrc: string
@@ -220,14 +222,17 @@ export function familyHeroCopy(
 }
 
 const fallbackSlot = (fallback: FamilyVisualFallback): FamilyVisualSlot => {
+  const responsiveSrc = localResponsiveImage(fallback.src, fallback.width || 1600, fallback.height || 1067)
+  const responsiveFull = localResponsiveImage(fallback.full || fallback.src, fallback.width || 1600, fallback.height || 1067)
   const full = toDisplayAssetUrl(fallback.full || fallback.src)
-  const mobile = toDisplayAssetUrl(fallback.mobile || fallback.src)
-  const src = toDisplayAssetUrl(fallback.src)
-  const width = fallback.width || 1600
-  const height = fallback.height || 1067
+  const mobile = fallback.mobile ? toDisplayAssetUrl(fallback.mobile) : responsiveSrc.mobile
+  const src = responsiveSrc.srcset ? responsiveSrc.src : toDisplayAssetUrl(fallback.src)
+  const width = fallback.width || responsiveFull.width || 1600
+  const height = fallback.height || responsiveFull.height || 1067
 
   return {
     alt: fallback.alt,
+    avifSrcset: '',
     cssFull: cssUrl(full),
     cssMobile: cssUrl(mobile),
     cssSrc: cssUrl(src),
@@ -235,7 +240,7 @@ const fallbackSlot = (fallback: FamilyVisualFallback): FamilyVisualSlot => {
     height,
     mobile,
     src,
-    srcset: '',
+    srcset: responsiveSrc.srcset,
     width,
   }
 }
@@ -262,14 +267,19 @@ export function familyVisualSlots(
 
     if (!isPayloadMedia(media)) {
       const mediaUrl = cachedCmsMediaUrl(toDisplayAssetUrl(media))
+      const responsive = localResponsiveImage(mediaUrl, fallbackValue.width, fallbackValue.height)
+      const mobileUrl = responsive.srcset ? responsive.mobile : mediaUrl
+      const srcUrl = responsive.srcset ? responsive.src : mediaUrl
       return {
         ...fallbackValue,
+        avifSrcset: '',
         cssFull: cssUrl(mediaUrl),
-        cssMobile: cssUrl(mediaUrl),
-        cssSrc: cssUrl(mediaUrl),
+        cssMobile: cssUrl(mobileUrl),
+        cssSrc: cssUrl(srcUrl),
         full: mediaUrl,
-        mobile: mediaUrl,
-        src: mediaUrl,
+        mobile: mobileUrl,
+        src: srcUrl,
+        srcset: responsive.srcset || fallbackValue.srcset,
       }
     }
 
@@ -280,6 +290,7 @@ export function familyVisualSlots(
 
     return {
       alt: imageAlt(media, mediaItem?.caption || fallback.alt),
+      avifSrcset: imageSrcset(media, ['mobile', 'card'], 'avif', { mapCachedAssets: false }) || '',
       cssFull: cssUrl(full),
       cssMobile: cssUrl(mobile),
       cssSrc: cssUrl(src),
@@ -287,7 +298,7 @@ export function familyVisualSlots(
       height: dimensions.height || media.height || fallbackValue.height,
       mobile,
       src,
-      srcset: imageSrcset(media, ['mobile', 'card', 'hero', 'wide'], 'raster', { mapCachedAssets: false }) || '',
+      srcset: imageSrcset(media, ['mobile', 'card'], 'raster', { mapCachedAssets: false }) || '',
       width: dimensions.width || media.width || fallbackValue.width,
     }
   })

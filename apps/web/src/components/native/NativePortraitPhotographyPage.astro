@@ -488,7 +488,7 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
     <section class="hero-pt" id="heroPt" data-header-theme="dark" aria-label={heroLabel} {...tinaAttrs(heroPanelSource(0), 'image')}>
       <HeroMotion
         variant="pan"
-        slides={visualSlots.slice(0, 8).map((slot) => ({ src: slot.src, srcset: slot.srcset }))}
+        slides={visualSlots.slice(0, 8).map((slot) => ({ src: slot.src, mobile: slot.mobile, srcset: slot.srcset, width: slot.width, height: slot.height }))}
       />
       <div class="hm-veil" aria-hidden="true"></div>
 
@@ -519,15 +519,33 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
         <a class="bg-pt__link" href="/portfolio/portfolio-auswahl-portrait">Portrait-Auswahl ansehen →</a>
       </div>
       <div class="bg-pt__grid">
-        <button class="bg-pt__tile t-hero" data-full={visualSlots[9].full}><img src={visualSlots[9].src} data-full={visualSlots[9].full} alt={visualSlots[9].alt} width={visualSlots[9].width} height={visualSlots[9].height} decoding="async" loading="lazy" {...tinaAttrs(doc?.portfolioTiles?.[0], 'image')} /></button>
-        <button class="bg-pt__tile t-a" data-full={visualSlots[10].full}><img src={visualSlots[10].src} data-full={visualSlots[10].full} loading="lazy" alt={visualSlots[10].alt} width={visualSlots[10].width} height={visualSlots[10].height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[1], 'image')} /></button>
-        <button class="bg-pt__tile t-b" data-full={visualSlots[11].full}><img loading="lazy" src={visualSlots[11].src} data-full={visualSlots[11].full} alt={visualSlots[11].alt} width={visualSlots[11].width} height={visualSlots[11].height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[2], 'image')} /></button>
-        <button class="bg-pt__tile t-c" data-full={visualSlots[12].full}><img loading="lazy" src={visualSlots[12].src} data-full={visualSlots[12].full} alt={visualSlots[12].alt} width={visualSlots[12].width} height={visualSlots[12].height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[3], 'image')} /></button>
-        <button class="bg-pt__tile t-d" data-full={visualSlots[13].full}><img loading="lazy" src={visualSlots[13].src} data-full={visualSlots[13].full} alt={visualSlots[13].alt} width={visualSlots[13].width} height={visualSlots[13].height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[4], 'image')} /></button>
-        <button class="bg-pt__tile t-e" data-full={visualSlots[14].full}><img loading="lazy" src={visualSlots[14].src} data-full={visualSlots[14].full} alt={visualSlots[14].alt} width={visualSlots[14].width} height={visualSlots[14].height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[5], 'image')} /></button>
-        <button class="bg-pt__tile t-f" data-full={visualSlots[15].full}><img loading="lazy" src={visualSlots[15].src} data-full={visualSlots[15].full} alt={visualSlots[15].alt} width={visualSlots[15].width} height={visualSlots[15].height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[6], 'image')} /></button>
-        <button class="bg-pt__tile t-g" data-full={visualSlots[16].full}><img loading="lazy" src={visualSlots[16].src} data-full={visualSlots[16].full} alt={visualSlots[16].alt} width={visualSlots[16].width} height={visualSlots[16].height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[7], 'image')} /></button>
-        <button class="bg-pt__tile t-h" data-full={visualSlots[17].full}><img loading="lazy" src={visualSlots[17].src} data-full={visualSlots[17].full} alt={visualSlots[17].alt} width={visualSlots[17].width} height={visualSlots[17].height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[8], 'image')} /></button>
+        <button class="bg-pt__tile t-hero" data-full={visualSlots[9].full}>
+          <picture>{visualSlots[9].avifSrcset && <source type="image/avif" srcset={visualSlots[9].avifSrcset} sizes="(max-width: 900px) 94vw, 42vw" />}<img src={visualSlots[9].mobile} srcset={visualSlots[9].srcset || undefined} sizes={visualSlots[9].srcset ? '(max-width: 900px) 94vw, 42vw' : undefined} data-full={visualSlots[9].full} alt={visualSlots[9].alt} width={visualSlots[9].width} height={visualSlots[9].height} decoding="async" loading="eager" fetchpriority="low" {...tinaAttrs(doc?.portfolioTiles?.[0], 'image')} /></picture>
+        </button>
+        <button class="bg-pt__tile t-a" data-full={visualSlots[10].full}>
+          <picture>{visualSlots[10].avifSrcset && <source type="image/avif" srcset={visualSlots[10].avifSrcset} sizes="(max-width: 900px) 48vw, 25vw" />}<img src={visualSlots[10].mobile} srcset={visualSlots[10].srcset || undefined} sizes={visualSlots[10].srcset ? '(max-width: 900px) 48vw, 25vw' : undefined} data-full={visualSlots[10].full} loading="eager" fetchpriority="low" alt={visualSlots[10].alt} width={visualSlots[10].width} height={visualSlots[10].height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[1], 'image')} /></picture>
+        </button>
+        <button class="bg-pt__tile t-b" data-full={visualSlots[11].full}>
+          <picture>{visualSlots[11].avifSrcset && <source type="image/avif" srcset={visualSlots[11].avifSrcset} sizes="(max-width: 900px) 48vw, 25vw" />}<img loading="eager" fetchpriority="low" src={visualSlots[11].mobile} srcset={visualSlots[11].srcset || undefined} sizes={visualSlots[11].srcset ? '(max-width: 900px) 48vw, 25vw' : undefined} data-full={visualSlots[11].full} alt={visualSlots[11].alt} width={visualSlots[11].width} height={visualSlots[11].height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[2], 'image')} /></picture>
+        </button>
+        <button class="bg-pt__tile t-c" data-full={visualSlots[12].full}>
+          <picture>{visualSlots[12].avifSrcset && <source type="image/avif" srcset={visualSlots[12].avifSrcset} sizes="(max-width: 900px) 48vw, 25vw" />}<img loading="eager" fetchpriority="low" src={visualSlots[12].mobile} srcset={visualSlots[12].srcset || undefined} sizes={visualSlots[12].srcset ? '(max-width: 900px) 48vw, 25vw' : undefined} data-full={visualSlots[12].full} alt={visualSlots[12].alt} width={visualSlots[12].width} height={visualSlots[12].height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[3], 'image')} /></picture>
+        </button>
+        <button class="bg-pt__tile t-d" data-full={visualSlots[13].full}>
+          <picture>{visualSlots[13].avifSrcset && <source type="image/avif" srcset={visualSlots[13].avifSrcset} sizes="(max-width: 900px) 48vw, 25vw" />}<img loading="lazy" src={visualSlots[13].mobile} srcset={visualSlots[13].srcset || undefined} sizes={visualSlots[13].srcset ? '(max-width: 900px) 48vw, 25vw' : undefined} data-full={visualSlots[13].full} alt={visualSlots[13].alt} width={visualSlots[13].width} height={visualSlots[13].height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[4], 'image')} /></picture>
+        </button>
+        <button class="bg-pt__tile t-e" data-full={visualSlots[14].full}>
+          <picture>{visualSlots[14].avifSrcset && <source type="image/avif" srcset={visualSlots[14].avifSrcset} sizes="(max-width: 900px) 48vw, 25vw" />}<img loading="lazy" src={visualSlots[14].mobile} srcset={visualSlots[14].srcset || undefined} sizes={visualSlots[14].srcset ? '(max-width: 900px) 48vw, 25vw' : undefined} data-full={visualSlots[14].full} alt={visualSlots[14].alt} width={visualSlots[14].width} height={visualSlots[14].height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[5], 'image')} /></picture>
+        </button>
+        <button class="bg-pt__tile t-f" data-full={visualSlots[15].full}>
+          <picture>{visualSlots[15].avifSrcset && <source type="image/avif" srcset={visualSlots[15].avifSrcset} sizes="(max-width: 900px) 48vw, 25vw" />}<img loading="lazy" src={visualSlots[15].mobile} srcset={visualSlots[15].srcset || undefined} sizes={visualSlots[15].srcset ? '(max-width: 900px) 48vw, 25vw' : undefined} data-full={visualSlots[15].full} alt={visualSlots[15].alt} width={visualSlots[15].width} height={visualSlots[15].height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[6], 'image')} /></picture>
+        </button>
+        <button class="bg-pt__tile t-g" data-full={visualSlots[16].full}>
+          <picture>{visualSlots[16].avifSrcset && <source type="image/avif" srcset={visualSlots[16].avifSrcset} sizes="(max-width: 900px) 48vw, 25vw" />}<img loading="lazy" src={visualSlots[16].mobile} srcset={visualSlots[16].srcset || undefined} sizes={visualSlots[16].srcset ? '(max-width: 900px) 48vw, 25vw' : undefined} data-full={visualSlots[16].full} alt={visualSlots[16].alt} width={visualSlots[16].width} height={visualSlots[16].height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[7], 'image')} /></picture>
+        </button>
+        <button class="bg-pt__tile t-h" data-full={visualSlots[17].full}>
+          <picture>{visualSlots[17].avifSrcset && <source type="image/avif" srcset={visualSlots[17].avifSrcset} sizes="(max-width: 900px) 48vw, 25vw" />}<img loading="lazy" src={visualSlots[17].mobile} srcset={visualSlots[17].srcset || undefined} sizes={visualSlots[17].srcset ? '(max-width: 900px) 48vw, 25vw' : undefined} data-full={visualSlots[17].full} alt={visualSlots[17].alt} width={visualSlots[17].width} height={visualSlots[17].height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[8], 'image')} /></picture>
+        </button>
       </div>
     </section>
 
@@ -552,9 +570,9 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
               aria-label={`${card.title} vergrößern`}
             >
               <img
-                src={visualSlots[card.visualIndex].src}
-                srcset={visualSlots[card.visualIndex].srcset}
-                sizes="(max-width: 720px) 100vw, (max-width: 1080px) 50vw, 20vw"
+                src={visualSlots[card.visualIndex].mobile}
+                srcset={visualSlots[card.visualIndex].srcset || undefined}
+                sizes="(max-width: 900px) 80vw, (max-width: 1080px) 50vw, 20vw"
                 alt={visualSlots[card.visualIndex].alt || card.title}
                 width={visualSlots[card.visualIndex].width}
                 height={visualSlots[card.visualIndex].height}
@@ -616,7 +634,7 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
         <div class="rl-pt__grid">
           {relatedCards.map((card) => (
             <a class="rl-pt__card" href={card.href}>
-              <div class="rl-pt__card-img" style={`background-image:url('${visualSlots[card.visualIndex].cssSrc}')`} role="img" aria-label={card.alt}></div>
+              <div class="rl-pt__card-img" style={`background-image:url('${visualSlots[card.visualIndex].cssMobile}')`} role="img" aria-label={card.alt}></div>
               <div class="rl-pt__card-body"><strong>{card.title}</strong><span>→</span></div>
             </a>
           ))}

@@ -224,3 +224,4 @@ html:not(.js) img[loading="lazy"] {
   opacity: 1 !important;
   transform: none !important;
 }
+picture { display: contents; }

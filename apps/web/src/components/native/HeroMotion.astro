@@ -17,6 +17,7 @@
 // Haben die Slides eigene Texte, wechseln Titel (#hero-title), Lead
 // (#hero-lead) und Buttons ([data-hero-primary]/[data-hero-secondary]) mit.
 import { versionStaticAssetSrcset, versionStaticAssetUrl } from '../../lib/cache'
+import { lookupLocalThumb } from '../../data/localResponsiveThumbs'
 import { imageDimensions } from '../../lib/payload'
 
 type Slide = { src: string; mobile?: string; srcset?: string; width?: number; height?: number }
@@ -99,11 +100,15 @@ const mobileVariants: Record<string, string> = {
   '/assets/optimized/assets-photos-motorrad-duke-1920.webp': '/assets/optimized/assets-photos-motorrad-duke-960.webp',
   '/assets/optimized/assets-photos-motorrad-ninja-road-1920.webp': '/assets/optimized/assets-photos-motorrad-ninja-road-960.webp',
 }
-const mobileFor = (src: string) => mobileVariants[src.split('?')[0]]
-for (const slide of slides) {
-  if (!slide.mobile && !slide.srcset) slide.mobile = mobileFor(slide.src)
+const mobileFor = (src: string, index: number) => {
+  const clean = src.split('?')[0]
+  return mobileVariants[clean] || (index > 0 ? lookupLocalThumb(clean)?.w760 : undefined)
+}
+for (const [index, slide] of slides.entries()) {
+  if (!slide.mobile && !slide.srcset) slide.mobile = mobileFor(slide.src, index)
   if (!slide.width || !slide.height) {
-    const dims = imageDimensions(slide.src, 'wide')
+    const thumb = lookupLocalThumb(slide.src)
+    const dims = thumb ? { width: thumb.width, height: thumb.height } : imageDimensions(slide.src, 'wide')
     if (dims.width && dims.height) {
       slide.width = dims.width
       slide.height = dims.height

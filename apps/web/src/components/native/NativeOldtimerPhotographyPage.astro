@@ -215,15 +215,15 @@ const visualSlots = familyVisualSlots(
 )
 const inheritedStoryCards = storyCards.map((card, index) => {
   const visual = visualSlots[index + heroSlides.length]
-  return { ...card, alt: visual.alt, height: visual.height, image: visual.src, width: visual.width }
+  return { ...card, alt: visual.alt, avifSrcset: visual.avifSrcset, height: visual.height, image: visual.mobile || visual.src, srcset: visual.srcset, width: visual.width }
 })
 const inheritedPortfolioTiles = portfolioTiles.map(([className], index) => {
   const visual = visualSlots[index + heroSlides.length + storyCards.length]
-  return [className, visual.src, visual.alt, visual.width, visual.height, visual.full] as const
+  return [className, visual.mobile || visual.src, visual.alt, visual.width, visual.height, visual.full, visual.srcset, visual.avifSrcset] as const
 })
 const inheritedRelatedAreas = relatedAreas.map((area, index) => {
   const visual = visualSlots[index + heroSlides.length + storyCards.length + portfolioTiles.length]
-  return { ...area, alt: visual.alt, height: visual.height, image: visual.src, width: visual.width }
+  return { ...area, alt: visual.alt, avifSrcset: visual.avifSrcset, height: visual.height, image: visual.mobile || visual.src, srcset: visual.srcset, width: visual.width }
 })
 
 const focusStoryCards = inheritedStoryCards.map((card, index) => {
@@ -484,9 +484,16 @@ const {
         <header class="po-head">
           <h2 {...tinaAttrs(doc?.gallerySection, 'headline')}>{focusPortfolioHeadline}</h2>
         </header>
-        {inheritedPortfolioTiles.map(([className, image, alt, width, height, full], index) => (
+        {inheritedPortfolioTiles.map(([className, image, alt, width, height, full, srcset, avifSrcset], index) => (
           <button type="button" class={`po-tile ${className}`} data-i={index} data-full={full} aria-label={`Bild ${index + 1} vergrößern`}>
-            <img data-src={image} src={image} data-full={full} loading="lazy" alt={alt} width={width} height={height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[index], 'image')} />
+            {avifSrcset ? (
+              <picture>
+                <source type="image/avif" srcset={avifSrcset} sizes={index === 0 || index === 5 ? '(max-width: 900px) 94vw, 58vw' : '(max-width: 900px) 48vw, 33vw'} />
+                <img data-src={image} src={image} srcset={srcset || undefined} sizes={srcset ? (index === 0 || index === 5 ? '(max-width: 900px) 94vw, 58vw' : '(max-width: 900px) 48vw, 33vw') : undefined} data-full={full} loading={index < 4 ? 'eager' : 'lazy'} fetchpriority={index < 4 ? 'low' : undefined} alt={alt} width={width} height={height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[index], 'image')} />
+              </picture>
+            ) : (
+              <img data-src={image} src={image} srcset={srcset || undefined} sizes={srcset ? (index === 0 || index === 5 ? '(max-width: 900px) 94vw, 58vw' : '(max-width: 900px) 48vw, 33vw') : undefined} data-full={full} loading={index < 4 ? 'eager' : 'lazy'} fetchpriority={index < 4 ? 'low' : undefined} alt={alt} width={width} height={height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[index], 'image')} />
+            )}
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
           </button>
         ))}
@@ -508,7 +515,7 @@ const {
         <div class="pv-grid">
           {focusStoryCards.map((card, index) => (
             <article class="pv-card">
-              <figure class="pv-img"><img loading="lazy" src={card.image} alt={card.alt} width={card.width} height={card.height} decoding="async" {...tinaAttrs(doc?.shootingStyles?.[index], 'image')} /></figure>
+              <figure class="pv-img"><img loading="lazy" src={card.image} srcset={card.srcset || undefined} sizes={card.srcset ? '(max-width: 900px) 82vw, 24vw' : undefined} alt={card.alt} width={card.width} height={card.height} decoding="async" {...tinaAttrs(doc?.shootingStyles?.[index], 'image')} /></figure>
               <h3 {...tinaAttrs(doc?.shootingStyles?.[index], 'title')}>{card.title}</h3>
               <p {...tinaAttrs(doc?.shootingStyles?.[index], 'text')}>{card.text}</p>
             </article>
@@ -539,7 +546,7 @@ const {
         <div class="rl-grid">
           {inheritedRelatedAreas.map((area, index) => (
             <a class="rl-card" href={area.href}>
-              <img data-src={area.image} src={area.image} loading="lazy" alt={area.alt} width={area.width} height={area.height} decoding="async" {...tinaAttrs(doc?.relatedSection?.items?.[index], 'image')} />
+              <img data-src={area.image} src={area.image} srcset={area.srcset || undefined} sizes={area.srcset ? '(max-width: 900px) 82vw, 24vw' : undefined} loading="lazy" alt={area.alt} width={area.width} height={area.height} decoding="async" {...tinaAttrs(doc?.relatedSection?.items?.[index], 'image')} />
               <div class="overlay"></div>
               <div class="content"><div><strong {...tinaAttrs(doc?.relatedSection?.items?.[index], 'title')}>{area.title}</strong></div><span class="arrow">→</span></div>
             </a>

@@ -14,6 +14,7 @@ import {
 } from '../../lib/nativeFamilyPageContext'
 import { mergeAuthoredLocalSeoContent } from '../../lib/authoredSeoContent'
 import { curateFamilyClusterLinks } from '../../lib/familyClusterLinks'
+import { localResponsiveImage } from '../../data/localResponsiveThumbs'
 import { cmsHeroTitleFitStyle, splitCmsHeroTitleLines, splitHeroTitleLines } from '../../lib/heroTitleLines'
 import { keywordFocusCopyForSlug } from '../../lib/localSeoFamilyContent'
 import { familyHeroCopy, familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
@@ -265,7 +266,7 @@ const inheritedHeroPanels = heroPanels.map(([name], index) => {
 })
 const inheritedShootingStyles = shootingStyles.map((style, index) => {
   const visual = visualSlots[index + heroPanels.length]
-  return { ...style, alt: visual.alt, height: visual.height, image: visual.src, width: visual.width }
+  return { ...style, alt: visual.alt, height: visual.height, image: visual.src, mobile: visual.mobile, srcset: visual.srcset, width: visual.width }
 })
 const keywordShootingStyles = keywordFocusCopy?.cards?.length
   ? inheritedShootingStyles.map((style, index) => {
@@ -275,12 +276,12 @@ const keywordShootingStyles = keywordFocusCopy?.cards?.length
   : inheritedShootingStyles
 const inheritedPortfolioTiles = portfolioTiles.map((tile, index) => {
   const visual = visualSlots[index + heroPanels.length + shootingStyles.length]
-  return { ...tile, alt: visual.alt, full: visual.full, height: visual.height, src: visual.src, width: visual.width }
+  return { ...tile, alt: visual.alt, avifSrcset: visual.avifSrcset, full: visual.full, height: visual.height, mobile: visual.mobile, src: visual.src, srcset: visual.srcset, width: visual.width }
 })
 const statementImage = inheritedPortfolioTiles[0] || visualSlots[0]
 const inheritedAudiences = audiences.map((audience, index) => {
   const visual = visualSlots[index + heroPanels.length + shootingStyles.length + portfolioTiles.length]
-  return { ...audience, alt: visual.alt, height: visual.height, image: visual.src, width: visual.width }
+  return { ...audience, alt: visual.alt, height: visual.height, image: visual.src, mobile: visual.mobile, srcset: visual.srcset, width: visual.width }
 })
 
 // ===== CMS-Overrides der Themen-Sektionen =====
@@ -288,25 +289,45 @@ const inheritedAudiences = audiences.map((audience, index) => {
 // greift der bisherige Wert (inherited*/Hardcode) als Fallback. So bricht nichts,
 // solange das CMS-Feld nicht gepflegt ist.
 type SectionMedia = PayloadMedia | string | undefined
-const resolveSectionImage = <T extends { src?: string; full?: string; image?: string; mobile?: string; srcset?: string; width?: number; height?: number; alt?: string }>(
+const resolveSectionImage = <T extends { src?: string; full?: string; image?: string; mobile?: string; srcset?: string; avifSrcset?: string; width?: number; height?: number; alt?: string }>(
   media: SectionMedia,
   fallback: T,
 ) => {
-  const full = imageDisplayUrl(media as PayloadMedia | string | undefined, 'wide', { allowOriginal: true })
+  if (!media) return fallback
+  if (typeof media === 'string') {
+    const responsive = localResponsiveImage(media, fallback.width || 1600, fallback.height || 1067)
+    const resolvedFull = responsive.srcset ? responsive.full : imageDisplayUrl(media, 'wide', { allowOriginal: true })
+    if (!resolvedFull) return fallback
+    const resolvedSrc = responsive.srcset ? responsive.src : resolvedFull
+    const resolvedMobile = responsive.srcset ? responsive.mobile : resolvedSrc
+    return {
+      ...fallback,
+      avifSrcset: '',
+      full: resolvedFull,
+      height: responsive.height || fallback.height,
+      image: resolvedSrc,
+      mobile: resolvedMobile,
+      src: resolvedSrc,
+      srcset: responsive.srcset || fallback.srcset || '',
+      width: responsive.width || fallback.width,
+    }
+  }
+  const full = imageDisplayUrl(media, 'wide', { allowOriginal: true })
   if (!full) return fallback
-  const src = imageDisplayUrl(media as PayloadMedia | string | undefined, 'card', { allowOriginal: true }) || full
-  const mobile = imageDisplayUrl(media as PayloadMedia | string | undefined, 'mobile', { allowOriginal: true }) || src
-  const dim = imageDimensions(media as PayloadMedia | undefined, 'card')
+  const src = imageDisplayUrl(media, 'card', { allowOriginal: true }) || full
+  const mobile = imageDisplayUrl(media, 'mobile', { allowOriginal: true }) || src
+  const dim = imageDimensions(media, 'card')
   return {
     ...fallback,
+    avifSrcset: imageSrcset(media, ['mobile', 'card'], 'avif') || fallback.avifSrcset || '',
     src,
     full,
     image: src,
     mobile,
-    srcset: imageSrcset(media as PayloadMedia | undefined, ['mobile', 'card', 'hero', 'wide']) || fallback.srcset || '',
+    srcset: imageSrcset(media, ['mobile', 'card']) || fallback.srcset || '',
     width: dim.width || fallback.width,
     height: dim.height || fallback.height,
-    alt: imageAlt(media as PayloadMedia | undefined, fallback.alt || ''),
+    alt: imageAlt(media, fallback.alt || ''),
   }
 }
 
@@ -461,22 +482,39 @@ const relatedAreas = [
     title: 'Sportwagen-Auswahl',
   },
 ]
-const resolvedRelatedAreas = relatedItemSource.length
+const resolvedRelatedAreas: Array<{
+  href: string
+  src?: string
+  dataSrc?: string
+  alt: string
+  width: number
+  height: number
+  title: string
+  mobile?: string
+  srcset?: string
+  avifSrcset?: string
+}> = relatedItemSource.length
   ? relatedItemSource.map((item, index) => {
       const fallback = relatedAreas[index] || relatedAreas[relatedAreas.length - 1]
       const resolved = resolveSectionImage(item.image, {
         alt: item.alt || fallback.alt,
+        avifSrcset: '',
         height: fallback.height,
+        mobile: fallback.src || fallback.dataSrc || '',
         src: fallback.src || fallback.dataSrc || '',
+        srcset: '',
         width: fallback.width,
       })
       return {
         ...fallback,
         alt: cmsText(item.alt) || resolved.alt || fallback.alt,
+        avifSrcset: resolved.avifSrcset || '',
         dataSrc: undefined,
         height: resolved.height,
         href: cmsText(item.href) || fallback.href,
+        mobile: resolved.mobile,
         src: resolved.src,
+        srcset: resolved.srcset || '',
         title: cmsText(item.title) || fallback.title,
         width: resolved.width,
       }
@@ -665,16 +703,38 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
 
         {finalPortfolioTiles.map((tile, index) => (
           <button type="button" class={`po-tile ${tile.className}`} data-i={index} data-full={tile.full} aria-label={`Bild ${index + 1} vergrößern`}>
-            <img
-              src={tile.src}
-              data-full={tile.full}
-              loading="lazy"
-              alt={tile.alt}
-              width={tile.width}
-              height={tile.height}
-              decoding="async"
-              {...tinaAttrs(doc?.portfolioTiles?.[index], 'image')}
-            />
+            {tile.avifSrcset ? (
+              <picture>
+                <source type="image/avif" srcset={tile.avifSrcset} sizes={index === 0 || index === 5 ? '(max-width: 900px) 94vw, 58vw' : '(max-width: 900px) 48vw, 33vw'} />
+                <img
+                  src={tile.mobile || tile.src}
+                  srcset={tile.srcset || undefined}
+                  sizes={tile.srcset ? (index === 0 || index === 5 ? '(max-width: 900px) 94vw, 58vw' : '(max-width: 900px) 48vw, 33vw') : undefined}
+                  data-full={tile.full}
+                  loading={index < 4 ? 'eager' : 'lazy'}
+                  fetchpriority={index < 4 ? 'low' : undefined}
+                  alt={tile.alt}
+                  width={tile.width}
+                  height={tile.height}
+                  decoding="async"
+                  {...tinaAttrs(doc?.portfolioTiles?.[index], 'image')}
+                />
+              </picture>
+            ) : (
+              <img
+                src={tile.mobile || tile.src}
+                srcset={tile.srcset || undefined}
+                sizes={tile.srcset ? (index === 0 || index === 5 ? '(max-width: 900px) 94vw, 58vw' : '(max-width: 900px) 48vw, 33vw') : undefined}
+                data-full={tile.full}
+                loading={index < 4 ? 'eager' : 'lazy'}
+                fetchpriority={index < 4 ? 'low' : undefined}
+                alt={tile.alt}
+                width={tile.width}
+                height={tile.height}
+                decoding="async"
+                {...tinaAttrs(doc?.portfolioTiles?.[index], 'image')}
+              />
+            )}
             <span class="corner tl" aria-hidden="true"></span>
             <span class="corner tr" aria-hidden="true"></span>
             <span class="corner bl" aria-hidden="true"></span>
@@ -700,7 +760,7 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
         <div class="sh-grid">
           {finalShootingStyles.map((style, index) => (
             <article class="sh-card">
-              <figure class="sh-img"><img loading="lazy" src={style.image} alt={style.alt} width={style.width} height={style.height} decoding="async" {...tinaAttrs(doc?.shootingStyles?.[index], 'image')} /></figure>
+              <figure class="sh-img"><img loading="lazy" src={style.mobile || style.image} srcset={style.srcset || undefined} sizes={style.srcset ? '(max-width: 900px) 82vw, 24vw' : undefined} alt={style.alt} width={style.width} height={style.height} decoding="async" {...tinaAttrs(doc?.shootingStyles?.[index], 'image')} /></figure>
               <div class="sh-text">
                 <h3 {...tinaAttrs(doc?.shootingStyles?.[index], 'title')}>{style.title}</h3>
                 <p {...tinaAttrs(doc?.shootingStyles?.[index], 'text')}>{style.text}</p>
@@ -719,7 +779,7 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
         <div class="fw-grid">
           {finalAudiences.map((audience, index) => (
             <article class="fw-card">
-              <img loading="lazy" src={audience.image} alt={audience.alt} width={audience.width} height={audience.height} decoding="async" {...tinaAttrs(doc?.audienceCards?.[index], 'image')} />
+              <img loading="lazy" src={audience.mobile || audience.image} srcset={audience.srcset || undefined} sizes={audience.srcset ? '(max-width: 900px) 1px, 16vw' : undefined} alt={audience.alt} width={audience.width} height={audience.height} decoding="async" {...tinaAttrs(doc?.audienceCards?.[index], 'image')} />
               <div class="overlay"></div>
               <div class="content">
                 <strong {...tinaAttrs(doc?.audienceCards?.[index], 'title')}>{audience.title}</strong>
@@ -739,7 +799,7 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
         <div class="rl-grid">
           {finalRelatedAreas.map((area, index) => (
             <a class="rl-card" href={area.href}>
-              <img data-src={area.dataSrc} src={area.src || area.dataSrc} loading="lazy" alt={area.alt} width={area.width} height={area.height} decoding="async" {...tinaAttrs(doc?.relatedSection?.items?.[index], 'image')} />
+              <img data-src={area.dataSrc} src={area.mobile || area.src || area.dataSrc} srcset={area.srcset || undefined} sizes={area.srcset ? '(max-width: 900px) 80vw, 24vw' : undefined} loading="lazy" alt={area.alt} width={area.width} height={area.height} decoding="async" {...tinaAttrs(doc?.relatedSection?.items?.[index], 'image')} />
               <div class="overlay"></div>
               <div class="content"><div><strong {...tinaAttrs(doc?.relatedSection?.items?.[index], 'title')}>{area.title}</strong></div><span class="arrow">→</span></div>
             </a>

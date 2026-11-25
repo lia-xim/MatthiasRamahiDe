@@ -29,8 +29,8 @@
   body:before{content:"";position:fixed;inset:-18%;z-index:80;pointer-events:none;opacity:.045;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.72' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");mix-blend-mode:screen}
   @keyframes grain{50%{transform:translate3d(1.2%,-1%,0)}}
 
-  img[loading="lazy"]{opacity:0;transform:scale(1.018);transition:opacity .9s var(--ease),transform 1.6s var(--ease)}
-  img[loading="lazy"].is-loaded{opacity:1;transform:scale(1)}
+  img[loading="lazy"]{opacity:1;transform:none;transition:none}
+  img[loading="lazy"].is-loaded{opacity:1;transform:none}
   @media (prefers-reduced-motion:reduce){
     img[loading="lazy"]{transition:opacity .3s linear;transform:none}
   }
@@ -310,9 +310,9 @@
     .fw-head p,.rl-head p{justify-self:start}
     .fw-head h2,.rl-head h2{font-size:clamp(32px,8.5vw,50px)}
     .fw-grid{grid-template-columns:1fr;gap:0}
-    .fw-card{grid-template-columns:clamp(84px,24vw,110px) 1fr;gap:clamp(12px,3.5vw,16px);padding:14px 0;align-items:center}
-    .fw-card:last-child:nth-child(odd){grid-column:auto;grid-template-columns:clamp(84px,24vw,110px) 1fr;gap:clamp(12px,3.5vw,16px)}
-    .fw-card > img{width:100%;aspect-ratio:1/1;height:auto}
+    .fw-card{grid-template-columns:1fr;gap:0;padding:16px 0;align-items:start}
+    .fw-card:last-child:nth-child(odd){grid-column:auto;grid-template-columns:1fr;gap:0}
+    .fw-card > img{display:none}
     .fw-card .content{max-width:none;min-width:0}
     .fw-card .num{margin-bottom:4px}
     .fw-card strong{font-size:clamp(16.5px,4.5vw,20px);margin-bottom:4px}

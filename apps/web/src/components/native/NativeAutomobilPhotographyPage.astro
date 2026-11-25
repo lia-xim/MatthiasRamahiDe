@@ -18,6 +18,7 @@ import {
 } from '../../lib/localSeoFamilyContent'
 import { mergeAuthoredLocalSeoContent } from '../../lib/authoredSeoContent'
 import { curateFamilyClusterLinks } from '../../lib/familyClusterLinks'
+import { localResponsiveImage } from '../../data/localResponsiveThumbs'
 import { cmsHeroTitleFitStyle, splitCmsHeroTitleLines, splitHeroTitleLines } from '../../lib/heroTitleLines'
 import { familyHeroCopy, familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
 import { getLegacyBackedDoc, routeForDoc, toDisplayAssetUrl, type PayloadDoc } from '../../lib/payload'
@@ -367,7 +368,7 @@ const inheritedSwitchFrames = switchFrames.map((frame, index) => ({
 }))
 const inheritedGalleryTiles = galleryTiles.map((tile, index) => {
   const visual = visualSlots[index + 1 + switchFrames.length]
-  return { ...tile, alt: visual.alt, full: visual.full, height: visual.height, src: visual.src, width: visual.width }
+  return { ...tile, alt: visual.alt, avifSrcset: visual.avifSrcset, full: visual.full, height: visual.height, mobile: visual.mobile, src: visual.src, srcset: visual.srcset, width: visual.width }
 })
 const automotiveArchiveImages = [
   {
@@ -485,7 +486,7 @@ const automotiveArchiveImages = [
 ]
 const inheritedRelatedAreas = relatedAreas.map((area, index) => {
   const visual = visualSlots[index + 1 + switchFrames.length + galleryTiles.length]
-  return { ...area, alt: visual.alt, height: visual.height, image: visual.src, width: visual.width }
+  return { ...area, alt: visual.alt, avifSrcset: visual.avifSrcset, height: visual.height, image: visual.mobile || visual.src, srcset: visual.srcset, width: visual.width }
 })
 const heroImageSource = doc?.heroPanels?.[0] || visualDoc?.heroPanels?.[0]
 const switchImageSource = (index: number) =>
@@ -730,7 +731,14 @@ const curatedCityHeading =
           <div class="bg-grid" id="bgGrid">
             {inheritedGalleryTiles.map((tile, index) => (
               <button type="button" class={`bg-tile ${tile.className}`} data-i={index} data-full={tile.full} aria-label={`Frame ${index + 1} vergrößern`}>
-                <img loading="lazy" src={tile.src} alt={tile.alt} width={tile.width} height={tile.height} decoding="async" {...tinaAttrs(galleryImageSource(index), 'image')} />
+                {tile.avifSrcset ? (
+                  <picture>
+                    <source type="image/avif" srcset={tile.avifSrcset} sizes={index === 0 ? '(max-width: 900px) 94vw, 58vw' : '(max-width: 900px) 48vw, 33vw'} />
+                    <img loading={index < 4 ? 'eager' : 'lazy'} fetchpriority={index < 4 ? 'low' : undefined} src={tile.mobile || tile.src} srcset={tile.srcset || undefined} sizes={tile.srcset ? (index === 0 ? '(max-width: 900px) 94vw, 58vw' : '(max-width: 900px) 48vw, 33vw') : undefined} alt={tile.alt} width={tile.width} height={tile.height} decoding="async" {...tinaAttrs(galleryImageSource(index), 'image')} />
+                  </picture>
+                ) : (
+                  <img loading={index < 4 ? 'eager' : 'lazy'} fetchpriority={index < 4 ? 'low' : undefined} src={tile.mobile || tile.src} srcset={tile.srcset || undefined} sizes={tile.srcset ? (index === 0 ? '(max-width: 900px) 94vw, 58vw' : '(max-width: 900px) 48vw, 33vw') : undefined} alt={tile.alt} width={tile.width} height={tile.height} decoding="async" {...tinaAttrs(galleryImageSource(index), 'image')} />
+                )}
               </button>
             ))}
           </div>
@@ -755,13 +763,16 @@ const curatedCityHeading =
               </div>
             </header>
             <div class="auto-archive__grid" data-site-lightbox-gallery>
-              {automotiveArchiveImages.map((image) => (
-                <figure class={`auto-archive-card ${image.className}`}>
-                  <button type="button" data-full={image.src} aria-label={`${image.label} vergrößern`}>
-                    <img src={image.src} alt={image.alt} width={image.width} height={image.height} loading="lazy" decoding="async" />
-                  </button>
-                </figure>
-              ))}
+              {automotiveArchiveImages.map((image, index) => {
+                const responsive = localResponsiveImage(image.src, image.width, image.height)
+                return (
+                  <figure class={`auto-archive-card ${image.className}`}>
+                    <button type="button" data-full={responsive.full} aria-label={`${image.label} vergrößern`}>
+                      <img src={responsive.mobile} srcset={responsive.srcset || undefined} sizes={responsive.srcset ? '(max-width: 900px) 48vw, 33vw' : undefined} alt={image.alt} width={image.width} height={image.height} loading={index < 4 ? 'eager' : 'lazy'} fetchpriority={index < 4 ? 'low' : undefined} decoding="async" />
+                    </button>
+                  </figure>
+                )
+              })}
             </div>
           </div>
         </section>
@@ -840,7 +851,14 @@ const curatedCityHeading =
         <div class="rl-grid">
           {inheritedRelatedAreas.map((area) => (
             <a class="rl-card" href={area.href}>
-              <img loading="lazy" src={area.image} alt={area.alt} width={area.width} height={area.height} decoding="async" />
+              {area.avifSrcset ? (
+                <picture>
+                  <source type="image/avif" srcset={area.avifSrcset} sizes="(max-width: 900px) 80vw, 24vw" />
+                  <img loading="lazy" src={area.image} srcset={area.srcset || undefined} sizes={area.srcset ? '(max-width: 900px) 80vw, 24vw' : undefined} alt={area.alt} width={area.width} height={area.height} decoding="async" />
+                </picture>
+              ) : (
+                <img loading="lazy" src={area.image} srcset={area.srcset || undefined} sizes={area.srcset ? '(max-width: 900px) 80vw, 24vw' : undefined} alt={area.alt} width={area.width} height={area.height} decoding="async" />
+              )}
               <div class="overlay"></div>
               <div class="content"><div><strong>{area.title}</strong></div><span class="arrow">→</span></div>
             </a>

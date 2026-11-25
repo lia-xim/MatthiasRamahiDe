@@ -13,8 +13,8 @@
     em{font-style:normal;font-weight:300;color:var(--fg)}
     h1,h2,h3{font-family:var(--font-display);font-weight:700;line-height:.92;letter-spacing:-.052em}
     ::selection{background:var(--accent);color:#0a0c11}
-    img[loading=lazy]{opacity:0;transform:scale(1.018);transition:opacity .9s ease,transform 1.6s ease}
-    img[loading=lazy].is-loaded{opacity:1;transform:scale(1)}
+    img[loading=lazy]{opacity:1;transform:none;transition:none}
+    img[loading=lazy].is-loaded{opacity:1;transform:none}
     @media (prefers-reduced-motion:reduce){img[loading=lazy]{transition:opacity .3s ease;transform:none}}
     .section-inner{max-width:1480px;margin:0 auto;padding:clamp(56px,7vw,128px) clamp(24px,4vw,72px)}
 

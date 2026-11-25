@@ -13,8 +13,8 @@
     em{font-style:italic;color:var(--accent)}
     h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:.92;letter-spacing:-.062em}
     ::selection{background:var(--accent);color:#0a0c11}
-    img[loading=lazy]{opacity:0;transform:scale(1.018);transition:opacity .9s ease,transform 1.6s ease}
-    img[loading=lazy].is-loaded{opacity:1;transform:scale(1)}
+    img[loading=lazy]{opacity:1;transform:none;transition:none}
+    img[loading=lazy].is-loaded{opacity:1;transform:none}
     @media (prefers-reduced-motion:reduce){img[loading=lazy]{transition:opacity .3s ease;transform:none}}
 
     /* HERO — Catchlight × perpetuierlicher Ken-Burns × Soft-Focus-Iris
@@ -274,13 +274,14 @@
       .bg-pt__tile{aspect-ratio:3/4}
       .bg-pt__tile.t-hero{grid-column:1 / 3 !important;aspect-ratio:16/10}
       .bg-pt__tile.t-f{grid-column:auto !important}
-      .fw-pt{padding:42px 20px}
-      .fw-pt__head{margin-bottom:18px;padding-bottom:14px}
-      .fw-pt__row{grid-template-columns:58px 1fr;column-gap:14px;padding:14px 4px}
-      .fw-pt__row .fw-pt__arrow{display:none}
-      .fw-pt__row .fw-pt__copy{grid-column:2 / 3;margin-top:6px}
-      .fw-pt__thumb{width:58px;height:74px}
-      .fw-pt__name{font-size:clamp(19px,5.4vw,24px)}
+      .fw-pt{padding:40px 20px}
+      .fw-pt__head{margin-bottom:16px;padding-bottom:14px}
+      .fw-pt__list{counter-reset:fwpt}
+      .fw-pt__row{grid-template-columns:32px 1fr;column-gap:12px;row-gap:6px;align-items:baseline;padding:18px 0}
+      .fw-pt__row::before{counter-increment:fwpt;content:"0" counter(fwpt);grid-column:1;grid-row:1;font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;color:var(--accent-2)}
+      .fw-pt__thumb,.fw-pt__row .fw-pt__arrow{display:none}
+      .fw-pt__name{grid-column:2;grid-row:1;font-size:clamp(20px,5.4vw,24px)}
+      .fw-pt__row .fw-pt__copy{grid-column:2;grid-row:2;margin-top:0;font-size:14.5px;line-height:1.58}
       .rl-pt{padding:44px 20px}
       .rl-pt__title{margin-bottom:14px}
       .rl-pt__intro{margin-top:0;margin-bottom:20px}
