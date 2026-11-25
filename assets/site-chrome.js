@@ -429,7 +429,7 @@
        --------------------------------------------------------------------- */
     (function () {
       const source = bar.querySelector('.topbar__cta');
-      if (!source || document.querySelector('.mr-sticky-cta')) return;
+      if (!source || document.querySelector('.mr-sticky-cta') || document.querySelector('[data-mobile-cta]')) return;
       const sticky = document.createElement('a');
       sticky.className = 'mr-sticky-cta';
       sticky.href = source.getAttribute('href') || '/contact.html#anfrage';

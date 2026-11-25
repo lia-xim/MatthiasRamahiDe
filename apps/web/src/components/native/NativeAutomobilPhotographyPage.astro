@@ -849,6 +849,15 @@ const curatedCityHeading =
       </div>
     </section>
 
+    <ContactSlot
+      id="anfrage"
+      data-contact-section
+      data-header-theme="light"
+      data-contact-subject={contactSubject}
+      data-contact-headline={contactHeadline}
+      data-contact-lead={contactLead}
+    />
+
     <section class="st-pull" data-header-theme="light">
       <div class="st-pull-inner">
         <blockquote class="st-pull-quote" {...tinaAttrs(doc?.statement, 'headline')}>
@@ -915,14 +924,5 @@ const curatedCityHeading =
     <NativeFamilyFaq faq={faqItems} pageUrl={`https://matthiasramahi.de/${legacyFile}`} theme="dark" />
 
     <NativeReviews theme="light" />
-
-    <ContactSlot
-      id="anfrage"
-      data-contact-section
-      data-header-theme="light"
-      data-contact-subject={contactSubject}
-      data-contact-headline={contactHeadline}
-      data-contact-lead={contactLead}
-    />
   </main>
 </AdoptedPageLayout>

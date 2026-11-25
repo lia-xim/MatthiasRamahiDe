@@ -128,18 +128,18 @@ const shootingStyles = [
     text: 'Vollformatige Außenaufnahmen mit kontrolliertem Licht, ruhigen Reflexen und sauberer Linienführung. Lack, Proportionen und Charakter wirken stimmig — egal ob Showroom, Industrie oder urbanes Setting.',
   },
   {
-    image: 'assets/portfolio/thumbs/_DSC9321-Enhanced-NR.webp',
+    image: 'assets/portfolio/thumbs/_DSC3908.webp',
     alt: 'Sportwagen Interieur — Cockpit und Material',
     width: 720,
-    height: 1080,
+    height: 480,
     title: 'Interieur',
     text: 'Cockpit, Sitze, Materialien, Atmosphäre. Mit mobilem Licht inszeniert, damit Leder, Carbon und Chrom ihren Ton behalten und der Innenraum die gleiche Sprache spricht wie das Exterieur.',
   },
   {
-    image: 'assets/portfolio/thumbs/_DSC9301-Enhanced-NR.webp',
-    alt: 'Sportwagen Detail — Emblem und Felge',
+    image: 'assets/portfolio/thumbs/_DSC3892.webp',
+    alt: 'Sportwagen Detail — Front und Aerodynamik',
     width: 720,
-    height: 900,
+    height: 480,
     title: 'Details',
     text: 'Emblem, Sicken, Felgen, Bremse, Naht, Schalter. Detailaufnahmen erzählen die Geschichte eines Fahrzeugs im Kleinen — perfekt für Händlerseiten, Landingpages und redaktionelle Strecken.',
   },
@@ -165,39 +165,39 @@ const portfolioTiles = [
   },
   {
     className: 't2',
-    src: 'assets/portfolio/thumbs/_DSC9321-Enhanced-NR.webp',
-    full: 'assets/portfolio/_DSC9321-Enhanced-NR.webp',
+    src: 'assets/portfolio/thumbs/_DSC3908.webp',
+    full: 'assets/optimized/assets-portfolio-dsc3908-1920.webp',
     alt: 'Sportwagen Interieur — Cockpit',
     width: 720,
-    height: 1080,
+    height: 480,
     label: 'Interieur',
   },
   {
     className: 't3',
     src: 'assets/portfolio/thumbs/_DSC3982.webp',
     full: 'assets/optimized/assets-portfolio-dsc3982-1920.webp',
-    alt: 'Sportwagen Detail — Emblem',
+    alt: 'Sportwagen Exterieur — Pagani Huayra',
     width: 720,
     height: 480,
     label: 'Detail',
   },
   {
     className: 't4',
-    src: 'assets/portfolio/thumbs/_DSC9301-Enhanced-NR.webp',
-    full: 'assets/portfolio/_DSC9301-Enhanced-NR.webp',
-    alt: 'Sportwagen Detail — Felge',
+    src: 'assets/portfolio/thumbs/_DSC2345.webp',
+    full: 'assets/optimized/assets-portfolio-dsc2345-1920.webp',
+    alt: 'Sportwagen Heckpartie — Carbon-Flügel',
     width: 720,
-    height: 900,
-    label: 'Felge',
+    height: 576,
+    label: 'Heck & Flügel',
   },
   {
     className: 't5',
-    src: 'assets/portfolio/thumbs/_DSC3908.webp',
-    full: 'assets/optimized/assets-portfolio-dsc3908-1920.webp',
-    alt: 'Sportwagen Profil — Linienführung',
+    src: 'assets/portfolio/thumbs/_DSC3892.webp',
+    full: 'assets/optimized/assets-portfolio-dsc3892-1920.webp',
+    alt: 'Sportwagen Front — Aerodynamik und Reflexe',
     width: 720,
     height: 480,
-    label: 'Profil',
+    label: 'Front',
   },
   {
     className: 't6',
@@ -236,18 +236,18 @@ const audiences = [
     text: 'Konsistente Serien für Website und Portale — Außen, Innen, Details.',
   },
   {
-    image: 'assets/portfolio/thumbs/_DSC6982.webp',
-    alt: 'Club-Shooting und Redaktion',
+    image: 'assets/portfolio/thumbs/_DSC2345.webp',
+    alt: 'Club-Shooting und Redaktion mit Sportwagen',
     width: 720,
-    height: 1080,
+    height: 576,
     title: 'Clubs & Redaktionen',
     text: 'Automotive Fotografie mit Fokus auf Design, Historie und Atmosphäre.',
   },
   {
-    image: 'assets/portfolio/thumbs/_DSC0470-Enhanced-NR.webp',
-    alt: 'Oldtimer-Besitzer Fotoshooting',
+    image: 'assets/portfolio/thumbs/_DSC3892.webp',
+    alt: 'Sammler und Sportwagen-Besitzer Fotoshooting',
     width: 720,
-    height: 1152,
+    height: 480,
     title: 'Sammler & Besitzer',
     text: 'Ruhige Kulissen mit Charakter — für die persönliche Sammlung oder den Verkauf.',
   },
@@ -342,9 +342,9 @@ const sportwagenExtraSlides: Array<{ src: string; mobile?: string }> = [
   { src: '/assets/optimized/assets-portfolio-dsc3982-1920.webp' },
   { src: '/assets/optimized/assets-portfolio-dsc3908-1920.webp' },
   { src: '/assets/portfolio/automobil-bmw-widebody.webp' },
-  { src: '/assets/portfolio/automobil-bmw-m3-showcar.webp' },
+  { src: '/assets/optimized/assets-portfolio-dsc3878-1920.webp' },
   { src: '/assets/optimized/assets-portfolio-dsc2345-1920.webp' },
-  { src: '/assets/optimized/assets-portfolio-dsc2788-1-1920.webp' },
+  { src: '/assets/optimized/automobil-alpina-b8-medienhafen-1920.webp', mobile: '/assets/optimized/automobil-alpina-b8-medienhafen-960.webp' },
 ]
 const basePanHeroSlides = largeVisualSlides.length >= 2
   ? largeVisualSlides.slice(0, 4)
@@ -748,6 +748,15 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
       </div>
     </section>
 
+    <ContactSlot
+      id="anfrage"
+      data-contact-section
+      data-header-theme="light"
+      data-contact-subject={contactSubject}
+      data-contact-headline={contactHeadline}
+      data-contact-lead={contactLead}
+    />
+
     <section class="st" data-header-theme="light">
       <div class="section-inner">
         <div class="st-copy">
@@ -804,14 +813,5 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
     <NativeFamilyFaq faq={faqItems} pageUrl={`https://matthiasramahi.de/${legacyFile}`} theme="dark" />
 
     <NativeReviews theme="light" />
-
-    <ContactSlot
-      id="anfrage"
-      data-contact-section
-      data-header-theme="light"
-      data-contact-subject={contactSubject}
-      data-contact-headline={contactHeadline}
-      data-contact-lead={contactLead}
-    />
   </main>
 </AdoptedPageLayout>

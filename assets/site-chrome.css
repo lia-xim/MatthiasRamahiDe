@@ -1307,6 +1307,9 @@ section.mr-cities .mr-cities__cell[aria-disabled="true"]{ color:rgba(10,12,17,.4
   padding:8px 0 6px;
   margin:10px 0 8px;
   min-height:44px;
+  width:fit-content;
+  justify-self:start;
+  align-self:flex-start;
   font-family:var(--mrc-mono);
   font-size:11px;
   letter-spacing:.2em;
@@ -1406,3 +1409,26 @@ section.mr-cities .mr-cities__cell[aria-disabled="true"]{ color:rgba(10,12,17,.4
 }
 .mr-contact .mr-contact__consent input:focus-visible{ outline:2px solid var(--mrc-ink); outline-offset:3px; }
 .mr-contact .mr-contact__consent input:focus:not(:focus-visible){ outline:none; }
+
+/* Hairline zwischen Kontaktformular und folgendem Statement + kompaktes Mobile-Kontaktformular */
+section[data-contact-section] + section[data-header-theme="light"]{
+  border-top:1px solid rgba(10,12,17,.12);
+}
+@media(max-width:900px){
+  .mr-contact__inner{padding:34px 20px 40px;gap:20px}
+  .mr-contact h2{font-size:clamp(32px,8.6vw,44px);line-height:.94;margin:0 0 12px}
+  .mr-contact__lead{display:none}
+  .mr-contact__direct{margin-top:0;margin-bottom:2px}
+  .mr-contact__direct-link{min-height:44px;padding:9px 0}
+  .mr-contact__direct-link strong{font-size:15px}
+  .mr-contact__form{gap:14px}
+  .mr-contact__row{grid-template-columns:1fr;gap:14px}
+  .mr-contact__field{gap:4px}
+  .mr-contact__field input,
+  .mr-contact__field textarea,
+  .mr-contact__field select{padding:8px 0 10px;font-size:16px !important}
+  .mr-contact__field textarea{min-height:82px}
+  .mr-contact__consent{margin:4px 0 0;font-size:13px !important;line-height:1.45}
+  .mr-contact__consent span{font-size:13px !important;line-height:1.45 !important}
+  .mr-contact__submit{width:100%;min-height:50px;justify-content:center;text-align:center}
+}

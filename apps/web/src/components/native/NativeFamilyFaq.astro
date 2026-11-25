@@ -191,9 +191,85 @@ const jsonLd = items.length
     to { opacity: 1; transform: translateY(0); }
   }
   @media (max-width: 860px) {
-    .fam-faq { padding: 36px 0; }
-    .fam-faq__inner { grid-template-columns: 1fr; gap: clamp(22px, 6vw, 36px); }
-    .fam-faq__head { position: static; top: auto; }
+    .fam-faq {
+      padding: 40px 0 44px;
+    }
+    .fam-faq__inner {
+      width: calc(100% - 36px);
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+    .fam-faq__head {
+      position: static;
+      top: auto;
+    }
+    .fam-faq__title {
+      font-size: clamp(28px, 7.8vw, 38px);
+      line-height: 0.98;
+      letter-spacing: -0.035em;
+      text-transform: none;
+    }
+    .fam-faq__title em {
+      display: inline;
+      margin-left: 0.22em;
+      font-style: italic;
+      font-weight: 400;
+    }
+    .fam-faq__list {
+      border-top: 0;
+      display: grid;
+      gap: 8px;
+    }
+    .fam-faq__item {
+      border: 1px solid var(--faq-line);
+      border-radius: 3px;
+      background: rgba(255, 255, 255, 0.025);
+      transition: background 0.25s ease, border-color 0.25s ease;
+    }
+    .fam-faq[data-faq-theme='light'] .fam-faq__item {
+      background: rgba(255, 255, 255, 0.65);
+    }
+    .fam-faq__item[open] {
+      background: rgba(255, 255, 255, 0.055);
+      border-color: color-mix(in oklab, var(--faq-fg) 26%, transparent);
+    }
+    .fam-faq[data-faq-theme='light'] .fam-faq__item[open] {
+      background: #ffffff;
+      border-color: color-mix(in oklab, var(--faq-fg) 24%, transparent);
+    }
+    .fam-faq__q {
+      padding: 15px 16px;
+      gap: 14px;
+      font-size: 15.5px;
+      font-weight: 600;
+      line-height: 1.35;
+      letter-spacing: -0.01em;
+      align-items: center;
+    }
+    .fam-faq__mark {
+      width: 28px;
+      height: 28px;
+      margin-top: 0;
+      border-radius: 50%;
+      border: 1px solid var(--faq-line);
+    }
+    .fam-faq__mark::before {
+      width: 11px;
+      height: 1.5px;
+    }
+    .fam-faq__mark::after {
+      width: 1.5px;
+      height: 11px;
+    }
+    .fam-faq__a {
+      padding: 0 16px 16px;
+      max-width: none;
+    }
+    .fam-faq__a p {
+      font-size: 14px;
+      line-height: 1.58;
+      color: color-mix(in oklab, var(--faq-fg) 76%, transparent);
+    }
   }
   @media (prefers-reduced-motion: reduce) {
     .fam-faq__mark::before,

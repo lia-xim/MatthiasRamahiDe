@@ -624,6 +624,15 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
       </div>
     </section>
 
+    <ContactSlot
+      id="anfrage"
+      data-contact-section
+      data-header-theme="light"
+      data-contact-subject={contactSubjectFinal}
+      data-contact-headline={contactHeadlineFinal}
+      data-contact-lead={contactLeadFinal}
+    />
+
     <section class="st-pt" data-header-theme="light">
       <div class="st-pt__inner">
         <h2 class="st-pt__title">
@@ -688,14 +697,5 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
     <NativeFamilyFaq faq={faqItems} pageUrl={`https://matthiasramahi.de/${legacyFile}`} theme="dark" />
 
     <NativeReviews theme="light" />
-
-    <ContactSlot
-      id="anfrage"
-      data-contact-section
-      data-header-theme="light"
-      data-contact-subject={contactSubjectFinal}
-      data-contact-headline={contactHeadlineFinal}
-      data-contact-lead={contactLeadFinal}
-    />
   </main>
 </AdoptedPageLayout>

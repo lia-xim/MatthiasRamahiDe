@@ -25,6 +25,7 @@
   ::selection{background:var(--accent);color:var(--ink)}
   h1,h2,h3,h4{margin:0;font-weight:900;letter-spacing:-.055em}
   p{margin:0}
+  figure{margin:0}
 
   body:before{content:"";position:fixed;inset:-18%;z-index:80;pointer-events:none;opacity:.04;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.72' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");mix-blend-mode:screen}
   @keyframes grain{50%{transform:translate3d(1.2%,-1%,0)}}
@@ -173,8 +174,8 @@
   .fw-card:hover:before{opacity:1;width:2px;top:6%;bottom:6%;background:var(--accent-2)}
   .fw-card .no{font-family:var(--font);font-size:clamp(34px,3vw,52px);line-height:.86;letter-spacing:-.05em;color:rgba(22,20,15,.16);font-weight:900;font-feature-settings:"tnum" 1;transition:color .35s var(--ease)}
   .fw-card:hover .no{color:rgba(140,119,87,.5)}
-  .fw-card strong{display:block;font-size:clamp(15px,1.1vw,18px);font-weight:800;letter-spacing:-.02em;color:var(--ink);line-height:1.14}
-  .fw-card .lbl{font:9.5px var(--mono);letter-spacing:.28em;text-transform:uppercase;color:var(--quiet-l);margin-top:auto}
+  .fw-card strong{display:block;font-size:clamp(16px,1.25vw,20px);font-weight:800;letter-spacing:-.02em;color:var(--ink);line-height:1.18}
+  .fw-card .lbl{font-family:var(--font);font-size:clamp(13.5px,.95vw,15px);line-height:1.52;letter-spacing:0;text-transform:none;color:var(--muted-l);margin-top:0}
   .fw-card .arrow{position:absolute;right:14px;bottom:14px;font-size:16px;line-height:1;color:var(--accent-2);opacity:0;transform:translateX(-4px);transition:opacity .35s var(--ease),transform .35s var(--ease)}
   .fw-card:hover .arrow{opacity:1;transform:translateX(0)}
   .fw-foot{margin-top:clamp(8px,1.4vw,20px);padding-top:clamp(20px,2.4vw,32px);border-top:1px solid var(--line-l);display:flex;align-items:baseline;justify-content:space-between;gap:32px;flex-wrap:wrap}
@@ -216,47 +217,50 @@
   @media (max-width:900px){
     .hero{height:78svh;min-height:500px;max-height:680px;padding:clamp(76px,12vw,108px) 20px clamp(26px,5vw,42px)}
     .hero-lead{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;font-size:14.5px;margin-top:14px}
-    .hero-actions{margin-top:16px;gap:8px}
-    .hero-actions .btn{flex:1 1 auto;padding:13px 16px}
+    .hero-actions{display:flex;flex-direction:row;flex-wrap:nowrap;align-items:stretch;width:100%;margin-top:16px;gap:8px}
+    .hero-actions .btn{flex:1 1 auto;min-width:0;width:auto;min-height:44px;justify-content:center;text-align:center;white-space:nowrap;padding:11px 10px;font-size:clamp(8.5px,2.3vw,10px);letter-spacing:.06em}
     .section-inner{padding:40px 20px}
 
     /* STATEMENT */
     .st{height:auto;max-height:none;min-height:auto}
-    .st .section-inner{grid-template-columns:1fr;gap:18px;padding:40px 20px}
-    .st h2{font-size:clamp(38px,10.5vw,58px)}
-    .st-body{justify-self:start}
+    .st .section-inner{grid-template-columns:1fr;gap:16px;padding:36px 20px}
+    .st h2{font-size:clamp(32px,8.6vw,46px);line-height:.96;letter-spacing:-.038em}
+    .st h2 em{font-weight:400;letter-spacing:-.02em}
+    .st-body{justify-self:start;gap:14px}
+    .st-body p{font-size:15px;line-height:1.62}
 
     /* PROVENANCE -> horizontaler Swipe-Carousel */
-    .pv-head{margin-bottom:20px}
-    .pv-head h2{font-size:clamp(34px,9vw,58px);margin-bottom:12px}
+    .pv-head{margin-bottom:18px}
+    .pv-head h2{font-size:clamp(30px,8.4vw,44px);line-height:.96;letter-spacing:-.038em;margin-bottom:0}
     .pv-grid{display:flex;grid-template-columns:none;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;scroll-padding-left:0;padding:0 0 6px}
     .pv-grid::-webkit-scrollbar{display:none}
-    .pv-card{flex:0 0 78%;scroll-snap-align:start;gap:12px}
-    .pv-img{aspect-ratio:4/5}
-    .pv-card h3{font-size:clamp(20px,5.5vw,26px)}
+    .pv-card{flex:0 0 82%;scroll-snap-align:start;gap:10px}
+    .pv-img{aspect-ratio:4/3}
+    .pv-card h3{font-size:20px;letter-spacing:-.02em}
+    .pv-card p{font-size:14px;line-height:1.52}
 
     /* MINI PORTFOLIO -> kompaktes 2-Spalten-Contact-Sheet direkt nach dem Hero */
     .po{height:auto;max-height:none}
-    .po-grid{position:relative;grid-template-columns:repeat(2,1fr);grid-template-rows:none;grid-auto-rows:22vh;padding:6px;gap:6px}
-    .po-head{grid-column:1 / 3;grid-row:auto;min-height:0;padding:24px 8px 14px;background:none}
-    .po-head h2{font-size:clamp(30px,8.5vw,48px)}
-    .po-tile{opacity:1;transform:none}
+    .po-grid{position:relative;grid-template-columns:1fr 1fr;grid-template-rows:none;grid-auto-rows:auto;padding:0 14px 24px;gap:6px}
+    .po-head{grid-column:1 / 3;grid-row:auto;min-height:0;padding:24px 0 12px;background:none}
+    .po-head h2{font-size:clamp(28px,8vw,42px);line-height:.96;letter-spacing:-.035em}
+    .po-tile{aspect-ratio:4/5;opacity:1;transform:none}
     .po-tile.t1,.po-tile.t2,.po-tile.t3,.po-tile.t4,.po-tile.t5,.po-tile.t6{grid-column:auto;grid-row:auto}
-    .po-tile.t1,.po-tile.t6{grid-column:1 / 3}
+    .po-tile.t1,.po-tile.t6{grid-column:1 / 3;aspect-ratio:16/10}
 
-    /* FUER WEN -> kompakte Zeilen */
+    /* FUER WEN -> kompakte, sauber lesbare Zeilen */
     .fw{min-height:auto}
     .fw .section-inner{gap:18px;padding:38px 20px}
     .fw-head{flex-direction:column;align-items:flex-start;gap:10px;padding-bottom:14px}
+    .fw-head h2{font-size:clamp(28px,8vw,42px);line-height:.98;letter-spacing:-.035em}
     .fw-grid{grid-template-columns:1fr;gap:0}
-    .fw-card{display:grid;grid-template-columns:auto 1fr auto;grid-template-rows:auto auto;column-gap:16px;row-gap:3px;align-items:center;min-height:0;padding:14px 4px;background:transparent;border-top:1px solid var(--line-l)}
+    .fw-card{display:grid;grid-template-columns:1fr auto;grid-template-rows:auto auto;column-gap:14px;row-gap:6px;align-items:center;min-height:0;padding:16px 0;background:transparent;border-top:1px solid var(--line-l)}
     .fw-card:first-child{border-top:0}
     .fw-card:before{display:none}
     .fw-card:hover{transform:none;box-shadow:none;background:transparent}
-    .fw-card .no{grid-column:1;grid-row:1/3;align-self:center;font-size:30px;line-height:1;color:rgba(22,20,15,.2)}
-    .fw-card strong{grid-column:2;grid-row:1;font-size:16.5px;line-height:1.12}
-    .fw-card .lbl{grid-column:2;grid-row:2;margin-top:0}
-    .fw-card .arrow{grid-column:3;grid-row:1/3;position:static;align-self:center;opacity:.55;transform:none;color:var(--accent-2);font-size:18px}
+    .fw-card strong{grid-column:1;grid-row:1;font-size:17px;font-weight:700;line-height:1.18;color:var(--ink)}
+    .fw-card .lbl{grid-column:1;grid-row:2;margin-top:0;font-size:14.5px;line-height:1.52;color:var(--muted-l)}
+    .fw-card .arrow{grid-column:2;grid-row:1/3;position:static;align-self:center;opacity:.65;transform:none;color:var(--accent-2);font-size:18px}
 
     /* RELATED -> horizontaler Swipe-Carousel */
     .rl-head{grid-template-columns:1fr;gap:14px;margin-bottom:22px}

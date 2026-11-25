@@ -395,8 +395,8 @@
     .pd-bottom{gap:12px}
     .pd-title{font-size:clamp(44px,12.5vw,80px);letter-spacing:-.05em}
     .pd-sub{font-size:14px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-    .pd-actions{gap:8px;margin-top:6px}
-    .pd-actions a{flex:1 1 auto;justify-content:center;padding:13px 16px}
+    .pd-actions{display:flex;flex-direction:row;flex-wrap:nowrap;align-items:stretch;gap:8px;width:100%;margin-top:6px}
+    .pd-actions a{flex:1 1 auto;min-width:0;width:auto;min-height:44px;justify-content:center;text-align:center;white-space:nowrap;padding:11px 10px;font-size:clamp(8.5px,2.3vw,10px);letter-spacing:.06em}
     .pd-streak{height:62px;top:26%}
     .pd-flare-2{height:50px;opacity:.6}
     .st-pull{height:auto;max-height:none;padding:42px 0}
