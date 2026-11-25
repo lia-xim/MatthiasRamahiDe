@@ -44,7 +44,7 @@ const titleLineField = (index: number) => (index === 0 ? 'headlineLine1' : index
   style={`--hero-bg:url('${heroCssImage}');background-image:url('${heroCssImage}')`}
   {...tinaAttrs(firstSourceSlide, 'image')}
 >
-  <HeroMotion variant="pan" slidesJson={heroSlidesJson} />
+  <HeroMotion variant="pan" slidesJson={heroSlidesJson} seconds={4.5} />
   <div class="hero-grid">
     <div class="hero-stage">
       <h1 class="sr-only">{accessibleHeading}</h1>

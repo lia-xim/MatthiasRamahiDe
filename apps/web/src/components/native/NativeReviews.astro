@@ -14,8 +14,6 @@ const {
   theme = 'light',
   headline = 'Was Kund*innen',
   emphasis = 'sagen.',
-  kicker = 'Bewertungen',
-  lead = 'Echte Rückmeldungen aus abgeschlossenen Produktionen.',
 } = Astro.props as Props
 
 const schema = reviewsJsonLd()
@@ -34,9 +32,7 @@ const reviewCount = reviewsAggregate?.reviewCount ?? 0
   <section class="rev" data-rev-theme={theme} data-header-theme={theme} aria-label="Kundenbewertungen">
     <div class="rev__inner">
       <div class="rev__head">
-        <p class="rev__kicker">{kicker}</p>
         <h2 class="rev__title">{headline} <em>{emphasis}</em></h2>
-        {lead && <p class="rev__lead">{lead}</p>}
         <div class="rev__summary">
           <span class="rev__avg">{formattedAverage}</span>
           <span class="rev__stars rev__stars--lg" role="img" aria-label={`${formattedAverage} von 5 Sternen`}>
@@ -91,7 +87,7 @@ const reviewCount = reviewsAggregate?.reviewCount ?? 0
     --rev-display: var(--font, var(--font-display, 'MR Sans','MR Sans Fallback',Arial,system-ui,sans-serif));
     background: var(--rev-bg);
     color: var(--rev-fg);
-    padding: clamp(72px, 11vw, 160px) 0;
+    padding: clamp(44px, 6vw, 84px) 0;
   }
   .rev[data-rev-theme='light'] {
     --rev-fg: var(--ink, var(--paper-ink, #0a0c11));
@@ -249,13 +245,27 @@ const reviewCount = reviewsAggregate?.reviewCount ?? 0
     color: var(--rev-muted);
   }
   @media (max-width: 900px) {
+    .rev {
+      padding: 36px 0;
+    }
     .rev__list {
-      grid-template-columns: 1fr;
-      gap: 0;
+      display: flex;
+      grid-template-columns: none;
+      gap: 12px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding: 20px 0 6px;
+    }
+    .rev__list::-webkit-scrollbar {
+      display: none;
     }
     .rev__item {
-      padding: clamp(24px, 6vw, 32px) 0;
-      border-bottom: 1px solid var(--rev-line);
+      flex: 0 0 84%;
+      scroll-snap-align: start;
+      padding: 18px;
+      border: 1px solid var(--rev-line);
     }
   }
 </style>

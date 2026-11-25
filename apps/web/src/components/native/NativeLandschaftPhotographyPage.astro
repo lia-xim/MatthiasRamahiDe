@@ -157,7 +157,11 @@ const visualSlots = familyVisualSlots(visualDoc, [
 // bewusst nicht doppelt gezeigt.
 const landschaftHeroSlides = [
   { src: '/assets/optimized/architektur-wien-staatsoper-tram-1920.webp', mobile: '/assets/optimized/architektur-wien-staatsoper-tram-960.webp' },
+  { src: '/assets/landscape/202608-dresden-dsc8441.webp' },
+  { src: '/assets/optimized/assets-portfolio-wettberwerb-foto5-wunder-der-natur2-1920.webp' },
   { src: '/assets/optimized/architektur-wien-innenstadt-1920.webp', mobile: '/assets/optimized/architektur-wien-innenstadt-960.webp' },
+  { src: '/assets/landscape/202608-dresden-dsc8426.webp' },
+  { src: '/assets/optimized/assets-portfolio-wettberwerb-foto6-wunder-der-natur-1920.webp' },
   { src: '/assets/optimized/architektur-wien-oper-ringstrasse-1920.webp', mobile: '/assets/optimized/architektur-wien-oper-ringstrasse-960.webp' },
 ]
 const heroImages = visualSlots.slice(0, 5).map((slot) => slot.full).join(',')
@@ -373,7 +377,7 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
   description={metaDescription}
   ogImage={doc?.seo?.ogImage || visualSlots[0].full}
   preloadImages={[
-    { href: landschaftHeroSlides[0].mobile, media: '(max-width: 900px)' },
+    { href: landschaftHeroSlides[0].mobile || landschaftHeroSlides[0].src, media: '(max-width: 900px)' },
     { href: landschaftHeroSlides[0].src, media: '(min-width: 901px)' },
   ]}
   mobileCta={{
@@ -433,7 +437,6 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
     <section class="bg-ls" id="galerie" data-header-theme="dark" aria-label="Ausgewählte Landschaftsarbeiten">
       <div class="bg-ls__head">
         <h2 class="bg-ls__title" {...tinaAttrs(doc?.gallerySection, 'headline')}>{focusGalleryHeadline}</h2>
-        {focusGalleryLead && <p class="bg-ls__lead" {...tinaAttrs(doc?.gallerySection, 'lead')}>{focusGalleryLead}</p>}
         <a class="bg-ls__link" href="/portfolio/portfolio-auswahl-landschaft">Landschaft-Auswahl ansehen →</a>
       </div>
       <div class="bg-ls__grid">
@@ -451,7 +454,7 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
 
     <div class="mr-gallery-cta-band" data-header-theme="dark">
       <div class="mr-gallery-cta">
-        <span>Fine-Art Prints &amp; Großformate — Signierte Editionen auf Anfrage</span>
+        <span>Fine-Art Prints &amp; Großformate auf Anfrage</span>
         <a href="#anfrage">Fine-Art Print anfragen <span aria-hidden="true">→</span></a>
       </div>
     </div>
@@ -463,7 +466,6 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
           {focusModuleTitle.headline && focusModuleTitle.emphasis ? ' ' : ''}
           {focusModuleTitle.emphasis && <em {...tinaAttrs(doc?.focusSection, 'emphasis')}>{focusModuleTitle.emphasis}</em>}
         </h2>
-        <p class="mod-ls__lead" {...tinaAttrs(doc?.focusSection, 'lead')}>{focusModuleLead}</p>
       </div>
       <div class="mod-ls__grid">
         {moduleCards.map((card, index) => (
@@ -482,7 +484,6 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
       <div class="fw-ls__inner">
         <div class="fw-ls__head">
           <h2 class="fw-ls__title">{focusProcessHeadline} <em>{focusProcessEmphasis}</em></h2>
-          <p class="fw-ls__lead">{focusProcessLead}</p>
         </div>
 
         <div class="fw-ls__flow">
@@ -495,10 +496,6 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
             </article>
           ))}
         </div>
-
-        <div class="fw-ls__cta">
-          <a href="contact.html">Projekt anfragen →</a>
-        </div>
       </div>
     </section>
 
@@ -509,7 +506,6 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
           {relatedTitle.headline && relatedTitle.emphasis ? ' ' : ''}
           {relatedTitle.emphasis && <em>{relatedTitle.emphasis}</em>}
         </h2>
-        <p class="rl-ls__intro">{focusRelatedLead}</p>
         <div class="rl-ls__grid">
           {relatedCards.map((card) => (
             <a class="rl-ls__card" href={card.href}>
@@ -530,7 +526,6 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
         </h2>
         <div class="st-ls__body">
           {focusIntroParagraphs.map((paragraph, index) => <p {...tinaAttrs(doc?.statement?.body?.[index], 'text')}>{paragraph}</p>)}
-          <a class="st-ls__cta" href="#anfrage">Projekt anfragen →</a>
         </div>
       </div>
     </section>

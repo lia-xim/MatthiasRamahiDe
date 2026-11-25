@@ -301,9 +301,13 @@ const heroTitleFitStyle = cmsHeroTitleFitStyle(heroCopy.titleLines, shouldUseCms
 // Hero (2026-11): Mercedes W196 Silberpfeil (Wien) im Wechsel mit dem Bestand.
 const oldtimerHeroSlides = [
   { src: '/assets/optimized/oldtimer-mercedes-w196-profil-1920.webp', mobile: '/assets/optimized/oldtimer-mercedes-w196-profil-960.webp' },
-  { src: heroBgDesktop, mobile: heroBgMobile },
+  { src: '/assets/optimized/oldtimer-mercedes-w196-dreiviertel-1920.webp', mobile: '/assets/optimized/oldtimer-mercedes-w196-dreiviertel-960.webp' },
+  { src: '/assets/portfolio/automobil-bentley-oldtimer.webp' },
   { src: '/assets/optimized/oldtimer-mercedes-w196-scheinwerfer-1920.webp', mobile: '/assets/optimized/oldtimer-mercedes-w196-scheinwerfer-960.webp' },
-  ...visualSlots.slice(1, 3).map((slot) => ({ src: slot.full, mobile: slot.mobile })),
+  { src: '/assets/portfolio/automobil-bmw-klassiker.webp' },
+  { src: '/assets/optimized/oldtimer-mercedes-w196-front-1920.webp', mobile: '/assets/optimized/oldtimer-mercedes-w196-front-960.webp' },
+  { src: '/assets/optimized/oldtimer-mercedes-w196-heckpartie-1920.webp', mobile: '/assets/optimized/oldtimer-mercedes-w196-heckpartie-960.webp' },
+  { src: '/assets/optimized/assets-photos-oldtimer-stage-1920.webp', mobile: '/assets/optimized/assets-photos-oldtimer-stage-960.webp' },
 ]
 const heroSlidesJson = JSON.stringify([
   { image: heroBgDesktop, titleLines: heroCopy.titleLines, lead: heroCopy.lead },
@@ -428,7 +432,7 @@ const {
     label: 'Shooting anfragen',
   }}
   preloadImages={[
-    { href: oldtimerHeroSlides[0].mobile, media: '(max-width: 900px)' },
+    { href: oldtimerHeroSlides[0].mobile || oldtimerHeroSlides[0].src, media: '(max-width: 900px)' },
     { href: oldtimerHeroSlides[0].src, media: '(min-width: 901px)' },
   ]}
 >
@@ -479,7 +483,6 @@ const {
       <div class="po-grid" id="poGrid">
         <header class="po-head">
           <h2 {...tinaAttrs(doc?.gallerySection, 'headline')}>{focusPortfolioHeadline}</h2>
-          <p {...tinaAttrs(doc?.gallerySection, 'lead')}>{focusPortfolioLead}</p>
         </header>
         {inheritedPortfolioTiles.map(([className, image, alt, width, height, full], index) => (
           <button type="button" class={`po-tile ${className}`} data-i={index} data-full={full} aria-label={`Bild ${index + 1} vergrößern`}>
@@ -492,8 +495,8 @@ const {
 
     <div class="mr-gallery-cta-band" data-header-theme="dark">
       <div class="mr-gallery-cta">
-        <span>Shooting-Pakete ab 250 € inkl. MwSt. — H-Kennzeichen &amp; Sammlerfahrzeuge</span>
-        <a href="#anfrage">Oldtimer-Shooting anfragen <span aria-hidden="true">→</span></a>
+        <span>Shooting ab 250 € inkl. MwSt.</span>
+        <a href="#anfrage">Oldtimer anfragen <span aria-hidden="true">→</span></a>
       </div>
     </div>
 
@@ -501,7 +504,6 @@ const {
       <div class="section-inner">
         <div class="pv-head">
           <h2><span {...tinaAttrs(doc?.focusSection, 'headline')}>{focusStoryHeadline}</span> <em {...tinaAttrs(doc?.focusSection, 'emphasis')}>{focusStoryEmphasis}</em></h2>
-          <p {...tinaAttrs(doc?.focusSection, 'lead')}>{focusStoryLead}</p>
         </div>
         <div class="pv-grid">
           {focusStoryCards.map((card, index) => (
@@ -519,17 +521,13 @@ const {
       <div class="section-inner">
         <div class="fw-head">
           <h2 {...tinaAttrs(doc?.audienceSection, 'headline')}>{focusAudienceHeadline}</h2>
-          <p class="lead" {...tinaAttrs(doc?.audienceSection, 'lead')}>{focusAudienceLead}</p>
         </div>
         <div class="fw-grid">
           {focusAudiences.map(([title, label], index) => (
             <a class="fw-card" href="#anfrage"><strong {...tinaAttrs(doc?.audienceCards?.[index], 'title')}>{title}</strong><span class="lbl" {...tinaAttrs(doc?.audienceCards?.[index], 'text')}>{label}</span><span class="arrow" aria-hidden="true">→</span></a>
           ))}
         </div>
-        <div class="fw-foot">
-          <p>Du erkennst dein Anliegen wieder? <em>Lass uns sprechen.</em></p>
-          <a href="#anfrage">Projekt anfragen →</a>
-        </div>
+
       </div>
     </section>
 
@@ -537,7 +535,6 @@ const {
       <div class="section-inner">
         <div class="rl-head">
           <h2>Verwandte <em>Bereiche</em>.</h2>
-          <p {...tinaAttrs(doc?.relatedSection, 'lead')}>{focusRelatedLead}</p>
         </div>
         <div class="rl-grid">
           {inheritedRelatedAreas.map((area, index) => (
@@ -562,7 +559,6 @@ const {
         </div>
         <div class="st-body">
           {focusIntroParagraphs.map((paragraph, index) => <p {...tinaAttrs(doc?.statement?.body?.[index], 'text')}>{paragraph}</p>)}
-          <a class="st-cta" href="#anfrage">Shooting buchen →</a>
         </div>
       </div>
     </section>

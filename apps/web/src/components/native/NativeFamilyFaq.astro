@@ -29,7 +29,6 @@ const jsonLd = items.length
   <section class="fam-faq" data-faq-theme={theme} data-header-theme={theme} aria-label="Häufige Fragen">
     <div class="fam-faq__inner">
       <div class="fam-faq__head">
-        <p class="fam-faq__kicker">F · A · Q</p>
         <h2 class="fam-faq__title">{headline} <em>{emphasis}</em></h2>
       </div>
       <div class="fam-faq__list">
@@ -66,7 +65,7 @@ const jsonLd = items.length
     --faq-display: var(--font, var(--font-display, 'MR Sans','MR Sans Fallback',Arial,system-ui,sans-serif));
     background: var(--faq-bg);
     color: var(--faq-fg);
-    padding: clamp(72px, 11vw, 160px) 0;
+    padding: clamp(44px, 6vw, 84px) 0;
   }
   .fam-faq[data-faq-theme='light'] {
     --faq-fg: var(--ink, var(--paper-ink, #0a0c11));
@@ -192,7 +191,8 @@ const jsonLd = items.length
     to { opacity: 1; transform: translateY(0); }
   }
   @media (max-width: 860px) {
-    .fam-faq__inner { grid-template-columns: 1fr; gap: clamp(28px, 7vw, 44px); }
+    .fam-faq { padding: 36px 0; }
+    .fam-faq__inner { grid-template-columns: 1fr; gap: clamp(22px, 6vw, 36px); }
     .fam-faq__head { position: static; top: auto; }
   }
   @media (prefers-reduced-motion: reduce) {

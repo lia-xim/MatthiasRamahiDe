@@ -336,9 +336,27 @@ const isLargeVisual = (url?: string) => /-(19[2-9]\d|2\d{3})x\d+\.(webp|avif|jpe
 const largeVisualSlides = visualSlots
   .filter((slot) => isLargeVisual(slot.full))
   .map((slot) => ({ src: slot.full, mobile: slot.mobile }))
-const panHeroSlides = largeVisualSlides.length >= 2
+const sportwagenExtraSlides: Array<{ src: string; mobile?: string }> = [
+  { src: '/assets/optimized/assets-portfolio-dsc3879-1920.webp' },
+  { src: '/assets/optimized/assets-portfolio-dsc3892-1920.webp' },
+  { src: '/assets/optimized/assets-portfolio-dsc3982-1920.webp' },
+  { src: '/assets/optimized/assets-portfolio-dsc3908-1920.webp' },
+  { src: '/assets/portfolio/automobil-bmw-widebody.webp' },
+  { src: '/assets/portfolio/automobil-bmw-m3-showcar.webp' },
+  { src: '/assets/optimized/assets-portfolio-dsc2345-1920.webp' },
+  { src: '/assets/optimized/assets-portfolio-dsc2788-1-1920.webp' },
+]
+const basePanHeroSlides = largeVisualSlides.length >= 2
   ? largeVisualSlides.slice(0, 4)
   : [finalHeroPanels[1], finalHeroPanels[0], finalHeroPanels[2]].filter(Boolean).map((panel) => ({ src: largestFromSrcset(panel[3]?.srcset) || panel[1], mobile: panel[2] }))
+const seenPanSrc = new Set<string>()
+const panHeroSlides = [...basePanHeroSlides, ...sportwagenExtraSlides]
+  .filter((slide) => {
+    if (!slide?.src || seenPanSrc.has(slide.src)) return false
+    seenPanSrc.add(slide.src)
+    return true
+  })
+  .slice(0, 8)
 const transparentHeroPixel = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=='
 const mobileHeroPreload = finalHeroPanels[1]?.[2] || finalHeroPanels[0]?.[2] || ''
 const desktopHeroPreload = finalHeroPanels[0]?.[3]?.full || ''
@@ -642,10 +660,7 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
     <section class="po" id="galerie" data-header-theme="dark" aria-label="Ausgewählte Sportwagen-Arbeiten">
       <div class="po-grid" id="poGrid">
         <header class="po-head">
-            <h2 {...tinaAttrs(doc?.gallerySection, 'headline')}>{focusGalleryHeadline}</h2>
-            <div class="head-foot">
-            <p {...tinaAttrs(doc?.gallerySection, 'lead')}>{focusGalleryLead}</p>
-          </div>
+          <h2 {...tinaAttrs(doc?.gallerySection, 'headline')}>{focusGalleryHeadline}</h2>
         </header>
 
         {finalPortfolioTiles.map((tile, index) => (
@@ -664,8 +679,7 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
             <span class="corner tr" aria-hidden="true"></span>
             <span class="corner bl" aria-hidden="true"></span>
             <span class="corner br" aria-hidden="true"></span>
-            <span class="zoom">Zoom</span>
-            <span class="lbl" {...tinaAttrs(doc?.portfolioTiles?.[index], 'label')}>{tile.label}</span>
+
           </button>
         ))}
       </div>
@@ -673,8 +687,8 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
 
     <div class="mr-gallery-cta-band" data-header-theme="dark">
       <div class="mr-gallery-cta">
-        <span>Shooting-Pakete ab 250 € inkl. MwSt. — Sportwagen &amp; Performance in NRW</span>
-        <a href="#anfrage">Sportwagen-Shooting anfragen <span aria-hidden="true">→</span></a>
+        <span>Shooting ab 250 € inkl. MwSt.</span>
+        <a href="#anfrage">Sportwagen anfragen <span aria-hidden="true">→</span></a>
       </div>
     </div>
 
@@ -682,7 +696,6 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
       <div class="section-inner">
         <div class="sh-head">
           <h2><span {...tinaAttrs(doc?.focusSection, 'headline')}>{focusSectionHeadline}</span> <em {...tinaAttrs(doc?.focusSection, 'emphasis')}>{focusSectionEmphasis}</em></h2>
-          <p {...tinaAttrs(doc?.focusSection, 'lead')}>{focusSectionLead}</p>
         </div>
         <div class="sh-grid">
           {finalShootingStyles.map((style, index) => (
@@ -702,7 +715,6 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
       <div class="section-inner">
         <div class="fw-head">
           <h2 {...tinaAttrs(doc?.audienceSection, 'headline')}>{focusAudienceHeadline}</h2>
-          <p {...tinaAttrs(doc?.audienceSection, 'lead')}>{focusAudienceLead}</p>
         </div>
         <div class="fw-grid">
           {finalAudiences.map((audience, index) => (
@@ -723,7 +735,6 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
       <div class="section-inner">
         <div class="rl-head">
           <h2><span {...tinaAttrs(doc?.relatedSection, 'headline')}>{relatedSectionTitle.headline}</span> <em {...tinaAttrs(doc?.relatedSection, 'emphasis')}>{relatedSectionTitle.emphasis}</em></h2>
-          <p {...tinaAttrs(doc?.relatedSection, 'lead')}>{focusRelatedLead}</p>
         </div>
         <div class="rl-grid">
           {finalRelatedAreas.map((area, index) => (

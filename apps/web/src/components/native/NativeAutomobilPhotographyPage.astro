@@ -351,10 +351,13 @@ const visualSlots = familyVisualSlots(
 // cms.matthiasramahi.de, nicht unter /uploads der Website.
 const automobilHeroSlides = [
   { src: '/assets/optimized/automobil-alpina-b8-medienhafen-1920.webp', mobile: '/assets/optimized/automobil-alpina-b8-medienhafen-960.webp' },
-  { src: toDisplayAssetUrl('/uploads/payload/_DSC2831%20(1)-1920x1280.webp'), mobile: toDisplayAssetUrl('/uploads/payload/_DSC2831%20(1)-760x507.webp') },
+  { src: '/assets/portfolio/automobil-brabus-sunset.webp' },
+  { src: '/assets/optimized/assets-portfolio-dsc3879-1920.webp' },
+  { src: '/assets/portfolio/automobil-bmw-widebody.webp' },
   { src: '/assets/optimized/automobil-alpina-b8-rheinbruecke-1920.webp', mobile: '/assets/optimized/automobil-alpina-b8-rheinbruecke-960.webp' },
-  { src: toDisplayAssetUrl('/uploads/payload/_DSC3892-1-1920x1280.webp'), mobile: toDisplayAssetUrl('/uploads/payload/_DSC3892-1-760x507.webp') },
-  { src: '/assets/optimized/automobil-alpina-b8-rheinufer-1920.webp', mobile: '/assets/optimized/automobil-alpina-b8-rheinufer-960.webp' },
+  { src: '/assets/optimized/assets-portfolio-dsc3892-1920.webp' },
+  { src: '/assets/portfolio/automobil-bmw-m3-showcar.webp' },
+  { src: '/assets/optimized/assets-photos-automobil-sunset-1920.webp', mobile: '/assets/optimized/assets-photos-automobil-sunset-960.webp' },
 ]
 const inheritedHeroDevelopInitial = visualSlots[0].cssFull
 const inheritedHeroDevelopInitialMobile = visualSlots[0].cssMobile
@@ -658,7 +661,7 @@ const curatedCityHeading =
   jsonLd={guideJsonLd}
   ogImage={doc?.seo?.ogImage || visualSlots[0].full}
   preloadImages={[
-    { href: automobilHeroSlides[0].mobile, media: '(max-width: 900px)' },
+    { href: automobilHeroSlides[0].mobile || automobilHeroSlides[0].src, media: '(max-width: 900px)' },
     { href: automobilHeroSlides[0].src, media: '(min-width: 901px)' },
   ]}
   mobileCta={{
@@ -735,43 +738,41 @@ const curatedCityHeading =
 
         <div class="mr-gallery-cta-band" data-header-theme="dark">
           <div class="mr-gallery-cta">
-            <span>Shooting-Pakete ab 250 € inkl. MwSt. — Location, Licht &amp; Bildsatz in NRW</span>
-            <a href="#anfrage">Eigenes Fahrzeug anfragen <span aria-hidden="true">→</span></a>
+            <span>Shooting ab 250 € inkl. MwSt.</span>
+            <a href="#anfrage">Fahrzeug anfragen <span aria-hidden="true">→</span></a>
           </div>
         </div>
       </>
     )}
 
     {isParentPage && (
-      <section class="auto-archive" id="galerie" data-header-theme="dark" aria-labelledby="auto-archive-title">
-        <div class="auto-archive__inner">
-          <header class="auto-archive__head">
-            <div>
-              <span class="auto-archive__kicker">Mehr als eine Serie</span>
-              <h2 id="auto-archive-title">Verschiedene Fahrzeuge. <em>Verschiedene Bildwelten.</em></h2>
-            </div>
-            <p>
-              Diese Auswahl verbindet Location-Shootings, Messebilder, Interieur und Details aus mehreren Produktionen.
-              So wird auf einen Blick sichtbar, wie unterschiedlich Fahrzeug, Umgebung und späterer Einsatz die Bildsprache prägen.
-            </p>
-          </header>
-          <div class="auto-archive__grid" data-site-lightbox-gallery>
-            {automotiveArchiveImages.map((image) => (
-              <figure class={`auto-archive-card ${image.className}`}>
-                <button type="button" data-full={image.src} aria-label={`${image.label} vergrößern`}>
-                  <img src={image.src} alt={image.alt} width={image.width} height={image.height} loading="lazy" decoding="async" />
-                </button>
-                <figcaption>{image.label}</figcaption>
-              </figure>
-            ))}
-            <div class="auto-archive__cta">
-              <span class="auto-archive__cta-kicker">Projekt anfragen</span>
-              <p>Ein Shooting wird als zusammenhängender Bildsatz geplant – die Seite zeigt bewusst mehr als nur ein einzelnes Projekt.</p>
-              <a href="#anfrage">Eigenes Fahrzeug anfragen <span aria-hidden="true">→</span></a>
+      <>
+        <section class="auto-archive" id="galerie" data-header-theme="dark" aria-labelledby="auto-archive-title">
+          <div class="auto-archive__inner">
+            <header class="auto-archive__head">
+              <div>
+                <h2 id="auto-archive-title">Verschiedene Fahrzeuge. <em>Verschiedene Bildwelten.</em></h2>
+              </div>
+            </header>
+            <div class="auto-archive__grid" data-site-lightbox-gallery>
+              {automotiveArchiveImages.map((image) => (
+                <figure class={`auto-archive-card ${image.className}`}>
+                  <button type="button" data-full={image.src} aria-label={`${image.label} vergrößern`}>
+                    <img src={image.src} alt={image.alt} width={image.width} height={image.height} loading="lazy" decoding="async" />
+                  </button>
+                </figure>
+              ))}
             </div>
           </div>
+        </section>
+
+        <div class="mr-gallery-cta-band" data-header-theme="dark">
+          <div class="mr-gallery-cta">
+            <span>Shooting ab 250 € inkl. MwSt.</span>
+            <a href="#anfrage">Fahrzeug anfragen <span aria-hidden="true">→</span></a>
+          </div>
         </div>
-      </section>
+      </>
     )}
 
     <section class="sw" id="sichten" data-header-theme="dark">
@@ -828,9 +829,6 @@ const curatedCityHeading =
             </a>
           ))}
         </div>
-        <div class="ki-cta">
-          <p>{focusAudienceLead} <a href="#anfrage">Lass uns sprechen <span aria-hidden="true">→</span></a></p>
-        </div>
       </div>
     </section>
 
@@ -838,7 +836,6 @@ const curatedCityHeading =
       <div class="section-inner">
         <div class="rl-head">
           <h2>Verwandte <em>Bereiche</em>.</h2>
-          <p>{focusRelatedLead}</p>
         </div>
         <div class="rl-grid">
           {inheritedRelatedAreas.map((area) => (
@@ -854,7 +851,6 @@ const curatedCityHeading =
 
     <section class="st-pull" data-header-theme="light">
       <div class="st-pull-inner">
-        <span class="st-pull-kicker">{focusPullKicker}</span>
         <blockquote class="st-pull-quote" {...tinaAttrs(doc?.statement, 'headline')}>
           <strong>
             {focusPullTitle.headline}
@@ -866,17 +862,13 @@ const curatedCityHeading =
           <p class="st-pull-lead" {...tinaAttrs(doc?.statement?.body?.[0], 'text')}>{focusPullLead}</p>
           {focusPullRest.map((paragraph, index) => <p class="st-pull-lead" {...tinaAttrs(doc?.statement?.body?.[index + 1], 'text')}>{paragraph}</p>)}
         </div>
-        <div class="st-pull-cta">
-          <a href="#anfrage">Shooting buchen <span aria-hidden="true">→</span></a>
-        </div>
       </div>
     </section>
 
     {isPracticalGuide && !hasCmsGuide && (
       <NativePracticalGuide
-        eyebrow="Praxisleitfaden"
         title="Auto fotografieren: die Reihenfolge vor Ort."
-        intro="Die Checkliste ordnet die wichtigsten Entscheidungen so, wie sie bei einer Fahrzeugserie tatsächlich anfallen. Sie ergänzt die Bildbeispiele und führt bei höherem Qualitäts- oder Nutzungsanspruch direkt zur passenden Leistung."
+        intro=""
         items={practicalGuideItems}
         links={[
           { href: '/automobil-fotografie-duesseldorf.html', label: 'Automobilfotografie Düsseldorf' },

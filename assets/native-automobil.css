@@ -294,9 +294,9 @@
   }
 
   /* ============ KLIENT-INDEX (Für wen) — compact ~50svh ============ */
-  .auto-archive{background:#0b0c10;color:#f3f1ea;padding:clamp(76px,9vw,142px) clamp(18px,2.4vw,38px)}
+  .auto-archive{background:#0b0c10;color:#f3f1ea;padding:clamp(48px,6vw,84px) clamp(18px,2.4vw,38px)}
   .auto-archive__inner{width:min(100%,1640px);margin:0 auto}
-  .auto-archive__head{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(280px,.55fr);gap:clamp(32px,6vw,96px);align-items:end;margin-bottom:clamp(38px,5vw,72px)}
+  .auto-archive__head{display:grid;grid-template-columns:1fr;gap:14px;align-items:end;margin-bottom:clamp(24px,3vw,42px)}
   .auto-archive__kicker{display:block;margin-bottom:18px;font:700 10px/1.2 var(--font-mono);letter-spacing:.12em;text-transform:uppercase;color:rgba(243,241,234,.58)}
   .auto-archive__head h2{max-width:12ch;margin:0;font-size:clamp(42px,6.4vw,110px);line-height:.86;letter-spacing:-.06em;text-wrap:balance}
   .auto-archive__head h2 em{display:block;color:var(--accent-2);font-style:normal}

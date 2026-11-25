@@ -150,11 +150,25 @@ const heroSlide = (slot: (typeof visualSlots)[number], base: string, widths: num
   heroHasHiRes(slot.srcset)
     ? { src: slot.src, srcset: slot.srcset }
     : { src: optimizedAsset(`${base}-${fallbackWidth}.webp`), srcset: heroLadder(base, widths) }
+const motorradExtraSlides: Array<{ src: string; srcset?: string }> = [
+  { src: '/assets/optimized/assets-photos-motorrad-1920.webp', srcset: heroLadder('assets-photos-motorrad', [720, 960, 1920]) },
+  { src: '/assets/optimized/assets-photos-motorrad-ninja-studio-1920.webp' },
+  { src: '/assets/optimized/assets-portfolio-dsc3892-1920.webp' },
+  { src: '/assets/optimized/assets-portfolio-dsc2986-1920.webp' },
+  { src: '/assets/portfolio/_DSC9321-Enhanced-NR.webp' },
+]
+const heroSlidesSeen = new Set<string>()
 const heroSlides = [
   heroSlide(visualSlots[0], 'assets-photos-motorrad-ninja-road', [720, 960, 1920]),
   heroSlide(visualSlots[1], 'assets-photos-motorrad-duke', [720, 960, 1920]),
-  heroSlide(visualSlots[2], 'assets-photos-motorrad-ninja-road', [720, 960, 1920]),
+  ...motorradExtraSlides,
 ]
+  .filter((slide) => {
+    if (!slide?.src || heroSlidesSeen.has(slide.src)) return false
+    heroSlidesSeen.add(slide.src)
+    return true
+  })
+  .slice(0, 7)
 
 // Module/gallery images carried no srcset/sizes before, so they always loaded the
 // single (often thumbnail) `src` and went soft when scaled up. Emit the CMS srcset
@@ -370,7 +384,7 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
     <section class="hero-mr" id="top" data-header-theme="dark" aria-label={heroLabel} {...tinaAttrs(heroPanelSource(0), 'image')}>
       <HeroMotion
         variant="pan"
-        slides={heroSlides.slice(0, 3).map((slide) => ({ src: slide.src, srcset: slide.srcset }))}
+        slides={heroSlides.map((slide) => ({ src: slide.src, srcset: slide.srcset }))}
       />
       <div class="hm-veil" aria-hidden="true"></div>
 
@@ -398,7 +412,6 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
       <div class="po-grid" id="poGrid">
         <header class="po-head">
           <h2 {...tinaAttrs(doc?.gallerySection, 'headline')}>{focusPortfolioHeadline}</h2>
-          <p {...tinaAttrs(doc?.gallerySection, 'lead')}>{focusPortfolioLead}</p>
         </header>
         <button type="button" class="po-tile t1" data-i="0" data-full={visualSlots[9].full} aria-label="Bild 1 vergrößern">
           <img loading="lazy" src={visualSlots[9].src} srcset={slotSrcset(visualSlots[9])} sizes="(max-width:720px) 48vw, 58vw" data-full={visualSlots[9].full} alt={visualSlots[9].alt} width={visualSlots[9].width} height={visualSlots[9].height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[0], 'image')} />
@@ -429,8 +442,8 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
 
     <div class="mr-gallery-cta-band" data-header-theme="dark">
       <div class="mr-gallery-cta">
-        <span>Shooting-Pakete ab 250 € inkl. MwSt. — Location, Rolling &amp; Details</span>
-        <a href="#anfrage">Motorrad-Shooting anfragen <span aria-hidden="true">→</span></a>
+        <span>Shooting ab 250 € inkl. MwSt.</span>
+        <a href="#anfrage">Motorrad anfragen <span aria-hidden="true">→</span></a>
       </div>
     </div>
 
@@ -438,7 +451,6 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
       <div class="section-inner">
         <div class="mk-head">
           <h2><span {...tinaAttrs(doc?.focusSection, 'headline')}>{focusModuleHeadline}</span> <em {...tinaAttrs(doc?.focusSection, 'emphasis')}>{focusModuleEmphasis}</em></h2>
-          <p {...tinaAttrs(doc?.focusSection, 'lead')}>{focusModuleLead}</p>
         </div>
         <div class="mk-grid">
           <article class="mk-card">
@@ -491,7 +503,6 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
       <div class="section-inner">
         <div class="fw-head">
           <h2 {...tinaAttrs(doc?.audienceSection, 'headline')}>{focusAudienceHeadline}</h2>
-          <p class="lead" {...tinaAttrs(doc?.audienceSection, 'lead')}>{focusAudienceLead}</p>
         </div>
         <div class="fw-grid">
           {focusAudienceCards.map((card, index) => (
@@ -501,10 +512,7 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
             </article>
           ))}
         </div>
-        <div class="fw-foot">
-          <p>Du erkennst dein Setting wieder? <em>Lass uns sprechen.</em></p>
-          <a href="#anfrage">Projekt anfragen →</a>
-        </div>
+
       </div>
     </section>
 
@@ -512,7 +520,6 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
       <div class="section-inner">
         <div class="rl-head">
           <h2>Verwandte <em>Bereiche</em>.</h2>
-          <p {...tinaAttrs(doc?.relatedSection, 'lead')}>{focusRelatedLead}</p>
         </div>
         <div class="rl-grid">
           <a class="rl-card" href="automobil-fotografie.html">
@@ -550,7 +557,6 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
         </div>
         <div class="st-body">
           {focusIntroParagraphs.map((paragraph, index) => <p {...tinaAttrs(doc?.statement?.body?.[index], 'text')}>{paragraph}</p>)}
-          <a class="st-cta" href="#anfrage">Shooting anfragen →</a>
         </div>
       </div>
     </section>

@@ -10,14 +10,14 @@ type GuideLink = {
 }
 
 type Props = {
-  eyebrow: string
+  eyebrow?: string
   intro: string
   items: GuideItem[]
   links: GuideLink[]
   title: string
 }
 
-const { eyebrow, intro, items, links, title } = Astro.props as Props
+const { intro, items, links, title } = Astro.props as Props
 // Längere Ratgeber-Abschnitte trennen Absätze mit einer Leerzeile.
 const paragraphsOf = (text: string) => text.split(/\n\s*\n/).map((paragraph) => paragraph.trim()).filter(Boolean)
 ---
@@ -25,7 +25,6 @@ const paragraphsOf = (text: string) => text.split(/\n\s*\n/).map((paragraph) => 
 <section class="mr-guide" data-header-theme="light" data-theme="light" aria-labelledby="mr-guide-title">
   <div class="mr-guide__inner">
     <div class="mr-guide__intro">
-      <span>{eyebrow}</span>
       <h2 id="mr-guide-title">{title}</h2>
       {intro && <p>{intro}</p>}
       {links.length > 0 && (

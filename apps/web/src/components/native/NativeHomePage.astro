@@ -299,7 +299,6 @@ const journalPosts = (cmsJournalItems.length === 3
                           height={frame.height}
                         />
                       </div>
-                      {frame.caption && <figcaption>{frame.caption}</figcaption>}
                     </figure>
                   ))}
                 </div>
@@ -382,7 +381,6 @@ const journalPosts = (cmsJournalItems.length === 3
           <img src={isOwnPortrait(aboutImage) ? defaultAboutImage : aboutImage} srcset={resolvedAboutImageSrcset} sizes={aboutSizes} alt={aboutImageAlt} loading="lazy" width={aboutImageDimensions.width} height={aboutImageDimensions.height} decoding="async" {...tinaAttrs(about, 'image')} />
         </div>
         <div class="about-copy">
-          <p class="lp-eyebrow" {...tinaAttrs(about, 'kicker')}>{aboutKicker}</p>
           {aboutHeadline
             ? <h2 id="lp-about-title" class="lp-display" {...tinaAttrs(about, 'headline')}>{aboutHeadline}{aboutEmphasis ? <Fragment> <em {...tinaAttrs(about, 'headlineEmphasis')}>{aboutEmphasis}</em></Fragment> : null}</h2>
             : <h2 id="lp-about-title" class="lp-display">Hinter der <em>Kamera.</em></h2>}

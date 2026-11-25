@@ -34,7 +34,7 @@ type Props = {
   slidesJson?: string
   seconds?: number
 }
-const { variant, slides: givenSlides = [], slidesJson, seconds = 7 } = Astro.props as Props
+const { variant, slides: givenSlides = [], slidesJson, seconds = 4.5 } = Astro.props as Props
 
 let parsed: Array<Record<string, unknown>> = []
 if (slidesJson) {
@@ -65,7 +65,7 @@ const slides = [...givenSlides, ...fromJson]
     seen.add(slide.src)
     return true
   })
-  .slice(0, 8) as Array<Slide & { text?: SlideText }>
+  .slice(0, 10) as Array<Slide & { text?: SlideText }>
 // Für die 2026-11 aufbereiteten Bildserien liegt neben -1920/-2560 immer eine
 // -960-Variante: die bekommen Handys automatisch.
 // Pfade bewusst ausgeschrieben: tools/sync-public-assets.mjs liefert nur
@@ -73,10 +73,31 @@ const slides = [...givenSlides, ...fromJson]
 const mobileVariants: Record<string, string> = {
   '/assets/optimized/automobil-alpina-b8-front-1920.webp': '/assets/optimized/automobil-alpina-b8-front-960.webp',
   '/assets/optimized/automobil-alpina-b8-medienhafen-1920.webp': '/assets/optimized/automobil-alpina-b8-medienhafen-960.webp',
+  '/assets/optimized/automobil-alpina-b8-rheinbruecke-1920.webp': '/assets/optimized/automobil-alpina-b8-rheinbruecke-960.webp',
+  '/assets/optimized/automobil-alpina-b8-rheinufer-1920.webp': '/assets/optimized/automobil-alpina-b8-rheinufer-960.webp',
+  '/assets/optimized/automobil-alpina-b8-felge-1920.webp': '/assets/optimized/automobil-alpina-b8-felge-960.webp',
+  '/assets/optimized/automobil-alpina-b8-heck-1920.webp': '/assets/optimized/automobil-alpina-b8-heck-960.webp',
+  '/assets/optimized/assets-photos-automobil-sunset-1920.webp': '/assets/optimized/assets-photos-automobil-sunset-960.webp',
+  '/assets/optimized/assets-photos-automobil-neon-1920.webp': '/assets/optimized/assets-photos-automobil-neon-960.webp',
   '/assets/optimized/oldtimer-mercedes-w196-dreiviertel-1920.webp': '/assets/optimized/oldtimer-mercedes-w196-dreiviertel-960.webp',
+  '/assets/optimized/oldtimer-mercedes-w196-front-1920.webp': '/assets/optimized/oldtimer-mercedes-w196-front-960.webp',
+  '/assets/optimized/oldtimer-mercedes-w196-heckpartie-1920.webp': '/assets/optimized/oldtimer-mercedes-w196-heckpartie-960.webp',
+  '/assets/optimized/oldtimer-mercedes-w196-kuehler-1920.webp': '/assets/optimized/oldtimer-mercedes-w196-kuehler-960.webp',
+  '/assets/optimized/oldtimer-mercedes-w196-profil-1920.webp': '/assets/optimized/oldtimer-mercedes-w196-profil-960.webp',
+  '/assets/optimized/oldtimer-mercedes-w196-scheinwerfer-1920.webp': '/assets/optimized/oldtimer-mercedes-w196-scheinwerfer-960.webp',
+  '/assets/optimized/oldtimer-mercedes-w196-silberpfeil-1920.webp': '/assets/optimized/oldtimer-mercedes-w196-silberpfeil-960.webp',
+  '/assets/optimized/oldtimer-mercedes-w196-tief-1920.webp': '/assets/optimized/oldtimer-mercedes-w196-tief-960.webp',
+  '/assets/optimized/assets-photos-oldtimer-stage-1920.webp': '/assets/optimized/assets-photos-oldtimer-stage-960.webp',
   '/assets/optimized/architektur-wien-staatsoper-nacht-1920.webp': '/assets/optimized/architektur-wien-staatsoper-nacht-960.webp',
   '/assets/optimized/architektur-wien-staatsoper-tram-1920.webp': '/assets/optimized/architektur-wien-staatsoper-tram-960.webp',
   '/assets/optimized/architektur-wien-parlament-1920.webp': '/assets/optimized/architektur-wien-parlament-960.webp',
+  '/assets/optimized/architektur-wien-innenstadt-1920.webp': '/assets/optimized/architektur-wien-innenstadt-960.webp',
+  '/assets/optimized/architektur-wien-oper-ringstrasse-1920.webp': '/assets/optimized/architektur-wien-oper-ringstrasse-960.webp',
+  '/assets/optimized/architektur-wien-peterskirche-1920.webp': '/assets/optimized/architektur-wien-peterskirche-960.webp',
+  '/assets/optimized/assets-photos-landschaft-1920.webp': '/assets/optimized/assets-photos-landschaft-960.webp',
+  '/assets/optimized/assets-photos-motorrad-1920.webp': '/assets/optimized/assets-photos-motorrad-960.webp',
+  '/assets/optimized/assets-photos-motorrad-duke-1920.webp': '/assets/optimized/assets-photos-motorrad-duke-960.webp',
+  '/assets/optimized/assets-photos-motorrad-ninja-road-1920.webp': '/assets/optimized/assets-photos-motorrad-ninja-road-960.webp',
 }
 const mobileFor = (src: string) => mobileVariants[src.split('?')[0]]
 for (const slide of slides) {
