@@ -9,12 +9,19 @@
     "Spiegelungen",
     "Bildgestaltung"
   ],
-  "publishedAt": "2027-06-03T07:00:00.000Z",
+  "publishedAt": "2027-11-05T08:00:00.000Z",
   "excerpt": "So planst du ein Auto-Fotoshooting am See, Fluss oder Meer: Uferlinie, Lackreflexe und Bildfolge bewusst gestalten, ohne die Fahrzeugform in der Kulisse zu verlieren.",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
-  "coverAlt": "Schwarzer Brabus-SUV vor Industrieanlagen im Abendlicht; eine Pfütze spiegelt Fahrzeug und Himmel.",
+  "coverImage": "/assets/optimized/assets-portfolio-dsc3908-1920.webp",
+  "coverAlt": "Cockpit · Licht",
   "readingTime": 8,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Auto am Wasser fotografieren: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Auto am Wasser fotografieren: Uferlinie, Lackreflexe und Bildfolge bewusst gestalten\nWasser gibt dem Auto einen Rahmen: Ein Auto vor einer Wasserfläche wirkt nicht automatisch besser\nWasserspiegelung und Lackreflex getrennt: Eine Spiegelung im Wasser erzählt etwas anderes als ein Reflex auf dem Lack\nEine kurze Bildfolge statt: Beginne mit einer weiten Aufnahme, die Auto und Wasserfläche einordnet"
+    },
     {
       "_template": "textBlock",
       "headline": "Wasser gibt dem Auto einen Rahmen",
@@ -29,6 +36,23 @@
       "_template": "textBlock",
       "headline": "Uferlinie und Fahrzeugform sauber ordnen",
       "body": "Die Uferkante bringt eine starke Linie ins Bild. Sie kann diagonal zum Auto führen, parallel dessen Länge aufnehmen oder als ruhiger Horizont hinter dem Fahrzeug liegen. Kontrolliere im Sucher, wo die Linie die Karosserie schneidet. Läuft sie genau durch Dach, Fenster oder Spiegel, verschiebe die Kamera seitlich oder ändere die Fahrzeugausrichtung ein wenig. Eine kleine Positionsänderung reicht oft, um Auto und Hintergrund voneinander zu lösen.\n\nFür eine weite Aufnahme darf die Umgebung sichtbar sein; lass dem Fahrzeug dabei genug Raum, damit es in der Gesamtfläche nicht untergeht. In einer Dreiviertelansicht kann die Wasserfläche als Hintergrund dienen, ohne dass der Horizont mittig durch die Karosserie läuft. Eine niedrigere Kameraposition nimmt mehr Wasser oder dessen Reflexion auf, während eine etwas höhere Position die Uferform stärker zeigt. Prüfe beide Varianten am Display, bevor du dich festlegst. Achte auch auf den Rand des Ausschnitts: Ein abgeschnittener Poller oder eine helle Boje kann mehr Aufmerksamkeit ziehen als die Fahrzeuglinie."
+    },
+    {
+      "_template": "imageSequence",
+      "headline": "Beispiele für saubere Perspektive und Lichtführung",
+      "layout": "editorial-pair",
+      "items": [
+        {
+          "image": "/assets/optimized/assets-portfolio-dsc2329-1920.webp",
+          "caption": "Präzise Lichtkante auf dunklem Fahrzeuglack in ruhiger Umgebung",
+          "cropIntent": "editorial"
+        },
+        {
+          "image": "/assets/optimized/assets-portfolio-dsc2345-1920.webp",
+          "caption": "Kontrollierte Seitenansicht mit gleichmäßiger Spiegelung über Tür und Schweller",
+          "cropIntent": "editorial"
+        }
+      ]
     },
     {
       "_template": "textBlock",
@@ -49,6 +73,12 @@
       "_template": "textBlock",
       "headline": "Eine kurze Bildfolge statt eines einzelnen Effekts aufnehmen",
       "body": "Beginne mit einer weiten Aufnahme, die Auto und Wasserfläche einordnet. Nimm danach eine klare Dreiviertelansicht und eine Seitenansicht auf, in der die Uferlinie die Fahrzeugform unterstützt. Ergänze zum Schluss ein oder zwei Details: etwa eine Lichtkante auf der Karosserie oder eine Spiegelung im Vordergrund. So entsteht eine kleine Serie mit unterschiedlichen Aufgaben, statt mehrerer beinahe identischer Varianten.\n\nPrüfe die Bilder vor Ort in der Vorschau und danach in der Vergrößerung. Sind Scheinwerfer, Räder und Dach klar? Ist der Horizont gerade? Löst sich das Fahrzeug vom Hintergrund, und zeigt die Spiegelung tatsächlich das, was du beabsichtigt hast? Wenn die Kulisse stark wirkt, gehe einen Schritt zurück und fotografiere eine schlichtere Variante. Eine ruhige Aufnahme ohne große Spiegelung kann das Auto oft besser zeigen als ein Bild, in dem jede Wasserfläche um Aufmerksamkeit konkurriert. Für die passende fotografische Umsetzung und Bildserie findest du weitere Beispiele auf der Seite zur Automobilfotografie."
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
     },
     {
       "_template": "faqBlock",
@@ -113,15 +143,29 @@
     "searchIntent": "Informationssuche mit KI-Fanout: Wie plane ich ein Fahrzeugshooting am Ufer, damit Wasser, Lack und Karosserie im Bild zusammenpassen? Gesucht sind konkrete Hinweise zu sicherem Standort, Uferlinie, Perspektive, Spiegelung, Polfilter, Licht und einer kurzen Fahrzeug-Bildfolge. Die Suchintention unterscheidet sich von regionalem Location-Scouting und allgemeiner Landschaftsfotografie.",
     "canonicalUrl": "https://matthiasramahi.de/blog-auto-am-wasser-fotografieren.html",
     "legacyUrl": "blog-auto-am-wasser-fotografieren.html",
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "ogImage": "/assets/optimized/assets-portfolio-dsc3908-1920.webp",
     "noIndex": false
   },
   "createdAt": "2026-11-04T14:44:22Z",
-  "updatedAt": "2027-06-03T07:00:00Z",
+  "updatedAt": "2027-11-05T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
       "href": "/automobil-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fahrzeugserien konsistent planen",
+      "href": "/blog-fahrzeugserie-konsistent-planen.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

@@ -257,8 +257,8 @@
     .rl-grid{grid-template-columns:repeat(2,1fr)}
   }
   @media (max-width:900px){
-    /* ===== Mobile-Hero: EIN starkes Bild mit Fokus-Pull-Einstieg (Kamera-Signatur) ===== */
-    .hero-tri{height:100svh;max-height:100svh}
+    /* ===== Mobile-Hero: kompakt, damit die Galerie direkt anschliesst ===== */
+    .hero-tri{height:78svh;min-height:500px;max-height:680px}
     .tri-stage{position:absolute;inset:0;grid-template-columns:1fr;grid-template-rows:1fr;gap:0}
     .tri-col:nth-child(1),.tri-col:nth-child(3){display:none}
     .tri-col:nth-child(2){grid-row:1;grid-column:1}
@@ -269,65 +269,62 @@
     /* Grundzustand SCHARF (kein Hängenbleiben auf Blur); Animation liefert nur den Einstieg. */
     .tri-img{filter:saturate(1.03) brightness(.95) contrast(1.05);transform:scale(1.06);animation:none}
     .hero-tri.is-animated .tri-img{animation:swKB 32s ease-in-out infinite alternate}
-    .tri-overlay{position:absolute;inset:0;background:none;padding:clamp(56px,9vw,80px) 22px clamp(34px,7vw,52px)}
+    .tri-overlay{position:absolute;inset:0;background:none;padding:clamp(44px,7vw,64px) 20px clamp(26px,5vw,40px)}
     .tri-title{position:relative;font-size:clamp(36px,10.8vw,72px);line-height:.9;letter-spacing:-.045em;padding-left:14px}
     .tri-title .line{white-space:nowrap}
     .tri-title .word{overflow-wrap:normal;word-break:normal}
     .tri-title::before{content:"";position:absolute;left:0;top:.1em;bottom:.2em;width:3px;background:#cf392e;box-shadow:0 0 14px rgba(207,57,46,.5)}
     .tri-meta,.tri-local-note,.tri-sub,.tri-actions{animation:none;opacity:1;transform:none}
     .tri-local-note{max-width:none;font-size:10px;letter-spacing:.18em}
-    .tri-sub{max-width:none;font-size:14px;line-height:1.55;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-    .tri-actions{flex-direction:column;gap:10px;margin-top:20px}
-    .tri-actions a{width:100%;justify-content:center;white-space:nowrap;padding:15px 18px}
-    /* ===== Globale Sektions-Verdichtung auf dem Handy (Seite war ~17 Screens) ===== */
-    .section-inner{padding:clamp(50px,12vw,76px) clamp(20px,6vw,26px)}
+    .tri-sub{max-width:none;font-size:14px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .tri-actions{flex-direction:column;gap:8px;margin-top:14px}
+    .tri-actions a{width:100%;justify-content:center;white-space:nowrap;padding:13px 16px}
+    /* ===== Globale Sektions-Verdichtung auf dem Handy ===== */
+    .section-inner{padding:clamp(38px,9vw,54px) clamp(18px,5vw,24px)}
     /* Statement kompakt */
     .st{height:auto;max-height:none}
-    .st .section-inner{grid-template-columns:1fr;gap:20px;padding:clamp(46px,11vw,70px) 20px}
-    .st h2{font-size:clamp(40px,11vw,64px)}
-    .st-image{height:auto;aspect-ratio:4/3;max-height:44vh}
-    /* Shooting-Styles: 2-spaltiges Raster, Beschreibung aus → kompakte Karten */
-    .sh-head{margin-bottom:clamp(26px,7vw,40px)}
-    .sh-head h2{font-size:clamp(34px,9vw,52px);margin-bottom:12px}
-    /* Shooting-Styles als wischbares Karussell — große, klar erkennbare Bilder + Beschreibung zurück */
-    .sh-grid{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:6px}
+    .st .section-inner{grid-template-columns:1fr;gap:18px;padding:40px 20px}
+    .st h2{font-size:clamp(38px,10.5vw,60px)}
+    .st-image{height:auto;aspect-ratio:4/3;max-height:38vh}
+    /* Shooting-Styles: als wischbares Karussell */
+    .sh-head{margin-bottom:20px}
+    .sh-head h2{font-size:clamp(32px,9vw,50px);margin-bottom:10px}
+    .sh-grid{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:6px}
     .sh-grid::-webkit-scrollbar{display:none}
-    .sh-card{flex:0 0 76%;scroll-snap-align:start;gap:12px}
+    .sh-card{flex:0 0 78%;scroll-snap-align:start;gap:10px}
     .sh-img{aspect-ratio:4/5}
     .sh-card h3{font-size:19px}
     .sh-card p{display:block;font-size:13.5px;line-height:1.5;color:var(--muted)}
     .sh-meta .num{font-size:10px}
-    /* Mini-Portfolio (Contact-Sheet): kompaktere Kacheln, niedrigerer Kopf */
+    /* Mini-Portfolio (Contact-Sheet): kompakt, sofort sichtbar */
     .po{height:auto;max-height:none}
-    .po-grid{position:relative;grid-template-columns:repeat(2,1fr);grid-template-rows:none;grid-auto-rows:24vh;padding:6px;gap:6px}
-    .po-head{grid-column:1 / 3;grid-row:auto;padding:clamp(24px,7vw,36px) 20px;min-height:auto}
-    .po-head h2{font-size:clamp(32px,8.5vw,50px)}
+    .po-grid{position:relative;grid-template-columns:repeat(2,1fr);grid-template-rows:none;grid-auto-rows:22vh;padding:6px;gap:6px}
+    .po-head{grid-column:1 / 3;grid-row:auto;padding:24px 12px 14px;min-height:auto}
+    .po-head h2{font-size:clamp(30px,8.5vw,48px)}
+    .po-tile{opacity:1;transform:none}
     .po-tile.t1,.po-tile.t2,.po-tile.t3,.po-tile.t4,.po-tile.t5,.po-tile.t6{grid-column:auto;grid-row:auto}
-    /* erste + letzte Kachel volle Breite → gerades Raster, keine leere Zelle am Ende */
     .po-tile.t1{grid-column:1 / 3}
     .po-tile.t6{grid-column:1 / 3}
-    /* Für-wen & Verwandte: kompakte Köpfe + kleinere Headlines */
-    .fw-head,.rl-head{grid-template-columns:1fr;gap:16px;margin-bottom:clamp(26px,7vw,40px)}
+    /* Für-wen & Verwandte */
+    .fw-head,.rl-head{grid-template-columns:1fr;gap:14px;margin-bottom:22px}
     .fw-head p,.rl-head p{justify-self:start}
-    .fw-head h2,.rl-head h2{font-size:clamp(32px,8.5vw,52px)}
-    /* „Für wen" auf dem Handy: EIN-spaltige Liste, Bild links + Text rechts in
-       einer kompakten Zeile. min-width:0 + break-word halten beide Seiten exakt
-       im Padding (kein einseitiger Rand mehr). */
+    .fw-head h2,.rl-head h2{font-size:clamp(32px,8.5vw,50px)}
     .fw-grid{grid-template-columns:1fr;gap:0}
-    .fw-card{grid-template-columns:clamp(96px,28vw,124px) 1fr;gap:clamp(14px,4vw,18px);padding:clamp(18px,4.5vw,24px) 0;align-items:center}
-    /* Mobile: the full-width-last-card treatment is desktop-only. Reset the lone
-       trailing card so it renders identically to the others (single column → no
-       extra full-bleed styling, same image-left/text-right row). */
-    .fw-card:last-child:nth-child(odd){grid-column:auto;grid-template-columns:clamp(96px,28vw,124px) 1fr;gap:clamp(14px,4vw,18px)}
+    .fw-card{grid-template-columns:clamp(84px,24vw,110px) 1fr;gap:clamp(12px,3.5vw,16px);padding:14px 0;align-items:center}
+    .fw-card:last-child:nth-child(odd){grid-column:auto;grid-template-columns:clamp(84px,24vw,110px) 1fr;gap:clamp(12px,3.5vw,16px)}
     .fw-card > img{width:100%;aspect-ratio:1/1;height:auto}
     .fw-card .content{max-width:none;min-width:0}
-    .fw-card .num{margin-bottom:6px}
-    .fw-card strong{font-size:clamp(17px,4.6vw,21px);margin-bottom:5px}
-    .fw-card p{font-size:13.5px;line-height:1.55}
+    .fw-card .num{margin-bottom:4px}
+    .fw-card strong{font-size:clamp(16.5px,4.5vw,20px);margin-bottom:4px}
+    .fw-card p{font-size:13.5px;line-height:1.5}
+    /* Related: horizontaler Swipe-Carousel statt vertikaler Kartenstapel */
+    .rl-grid{display:flex;grid-template-columns:none;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:6px}
+    .rl-grid::-webkit-scrollbar{display:none}
+    .rl-card{flex:0 0 78%;scroll-snap-align:start;aspect-ratio:3/4}
   }
   @media (max-width:600px){
-    /* fw bleibt die editoriale Liste (siehe ≤900); rl 2-spaltig statt 1-spaltig */
-    .rl-grid{grid-template-columns:repeat(2,1fr)}
+    .sh-card{flex-basis:82%}
+    .rl-card{flex-basis:82%}
   }
   @media (prefers-reduced-motion:reduce){
     .tri-img{animation:none !important;transform:scale(1.08) !important;filter:saturate(.92) brightness(.82) contrast(1.05) !important}

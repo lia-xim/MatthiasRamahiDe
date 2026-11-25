@@ -1,7 +1,7 @@
 {
   "title": "Oldtimer auf Film fotografieren: 35 mm, Mittelformat und Bildfolge",
   "slug": "oldtimer-auf-film-fotografieren",
-  "category": "oldtimer",
+  "category": "classic-car",
   "tags": [
     "Oldtimer",
     "Analoge Fotografie",
@@ -9,12 +9,19 @@
     "Fahrzeugfotografie",
     "Bildfolge"
   ],
-  "publishedAt": "2027-09-15T07:00:00.000Z",
+  "publishedAt": "2028-04-28T07:00:00.000Z",
   "excerpt": "Wer einen Oldtimer auf Film fotografiert, sollte Filmformat, Licht und gewünschte Bildfolge vor dem Termin abstimmen. So planst du Aufnahmen ohne Sofortkontrolle und hältst Film, Belichtung und Scan nachvollziehbar fest.",
-  "coverImage": "/uploads/payload/20250418-DSC006552.webp",
-  "coverAlt": "Roter historischer Rennwagen in einer dunklen Halle; digitale Portfolioaufnahme, keine Aufnahme auf Film.",
+  "coverImage": "/uploads/payload/20250423-DSC02271.webp",
+  "coverAlt": "Klassisches Coupé unter freiem Licht mit sichtbar gezeichneter Chromeinfassung",
   "readingTime": 8,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Oldtimer auf Film fotografieren: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: So planst du analoge Oldtimerfotos: 35 mm oder 120, Filmwahl, Belichtung, Bildfolge und Scan\nZuerst die Bildaufgabe festlegen: Ein Oldtimer auf Film verlangt eine Entscheidung vor der Aufnahme: Soll die Serie den Wagen für sich zeigen, den Innenraum und die Materialien dokumentieren\nEine kurze Bildfolge spart: Plane die Serie vor dem ersten Bild\nWann eine digitale Serie: Wenn du viele Varianten, eine vollständige Verkaufsfolge oder schnelle Rückmeldung brauchst, ist digitales Fotografieren meist einfacher zu prüfen und zu"
+    },
     {
       "headline": "Zuerst die Bildaufgabe festlegen",
       "body": "Ein Oldtimer auf Film verlangt eine Entscheidung vor der Aufnahme: Soll die Serie den Wagen für sich zeigen, den Innenraum und die Materialien dokumentieren oder eine bewusst analoge Bildwirkung haben? Film macht ein Motiv nicht automatisch authentischer. Er verändert den Aufnahme- und Auswahlprozess: Die Empfindlichkeit ist an den eingelegten Film gebunden, die Zahl der Bilder hängt vom Format und der Kamera ab, und das Ergebnis ist nicht sofort auf einem Display kontrollierbar.\n\nLege deshalb zuerst fest, wofür die Bilder gedacht sind. Für ein kleines persönliches Porträt des Fahrzeugs kann eine sorgfältig geplante Filmserie passen. Bei einer Verkaufs-, Versicherungs- oder Restaurierungsdokumentation zählen dagegen Vollständigkeit, Vergleichbarkeit und nachvollziehbare Einzelheiten. Eine analoge Aufnahme kann das ergänzen, aber nicht ungeprüft die sachliche Dokumentation ersetzen. Der Leitfaden zum [Oldtimer als Wertobjekt](/blog-oldtimer-wertobjekt.html) erklärt, welche sichtbaren Merkmale eine dokumentierende Bildfolge braucht.",
@@ -75,6 +82,12 @@
       "_template": "textBlock"
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Oldtimer & Klassiker sorgfältig dokumentieren",
+      "text": "Ruhige Bildserien für Sammlung, Auktionsvorbereitung oder privates Wertfahrzeug in NRW ab 250 € inkl. MwSt.",
+      "buttonLabel": "Oldtimer-Shooting anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Häufige Fragen zur analogen Oldtimerfotografie",
       "items": [
@@ -124,6 +137,11 @@
           "label": "Alte Schule: Through the Lens of My Pentax 67",
           "href": "https://www.alteschule.tv/post/through-the-lens-of-my-pentax-67",
           "description": "Beispiel einer analogen Mittelformataufnahme beim Concorso d’Eleganza 2025."
+        },
+        {
+          "label": "Oldtimerfotografie in Düsseldorf & NRW",
+          "href": "/oldtimer-fotografie.html",
+          "description": "Sorgfältige Dokumentation klassischer Fahrzeuge und Sammlungsstücke."
         }
       ]
     }
@@ -148,11 +166,11 @@
     ],
     "canonicalUrl": "https://matthiasramahi.de/blog-oldtimer-auf-film-fotografieren.html",
     "legacyUrl": "blog-oldtimer-auf-film-fotografieren.html",
-    "ogImage": "/uploads/payload/20250418-DSC006552.webp",
+    "ogImage": "/uploads/payload/20250423-DSC02271.webp",
     "noIndex": false
   },
   "createdAt": "2026-11-06T00:00:00Z",
-  "updatedAt": "2027-09-15T07:00:00.000Z",
+  "updatedAt": "2028-04-28T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Oldtimerfotografie",

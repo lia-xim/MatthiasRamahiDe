@@ -14,6 +14,13 @@
   "readingTime": 8,
   "blocks": [
     {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Motorrad-Studiofotografie und Werkstatt: Die wichtigsten Punkte im Ü",
+      "body": "Kernaussage: Nicht zwingend. Eine geeignete Werkstatt oder Halle kann funktionieren, wenn Zufahrt, Arbeitsfläche, Sicherheit und kontrollierbare Reflexe stimmen\nDer benötigte Raum ist: Ein Motorrad wirkt kompakt, braucht für Licht und Kamera aber überraschend viel Fläche\nDer Aufbau beginnt mit: Statt alle Flächen gleichzeitig aufzuhellen, wird zuerst die Hero-Achse festgelegt\nEin markierter Workflow macht: Für Händler, Builder oder Werkstätten ist Wiederholbarkeit oft wichtiger als ein einmaliger Effekt"
+    },
+    {
       "headline": "Der benötigte Raum ist größer als der Bildausschnitt",
       "body": "Ein Motorrad wirkt kompakt, braucht für Licht und Kamera aber überraschend viel Fläche. Neben der Maschine liegen Bewegungswege, Abstand für längere Brennweiten und Raum für große Reflexflächen. Eine Werkstatt kann visuell passen und trotzdem zu eng sein, wenn Hebebühne, Regale oder Kundenfahrzeuge jede Perspektive blockieren. Vorab werden Maße und mögliche Kamerapositionen geprüft.\n\nEbenso wichtig sind Zufahrt, Türen, Rampen und Bodenlast. Das Motorrad muss ohne riskantes Rangieren an seinen Platz gelangen. Kraftstoff, Abgase und laufender Motor unterliegen den Regeln des jeweiligen Raums; für reine Standaufnahmen bleibt der Motor aus. Kabelwege und Lichtstative werden so geplant, dass niemand beim Bewegen der Maschine darüber steigen muss.",
       "_template": "textBlock"
@@ -68,6 +75,39 @@
       "_template": "textBlock"
     },
     {
+      "_template": "linkList",
+      "headline": "Custom-Bike- & Werkstatt-Fotografie",
+      "links": [
+        {
+          "label": "Custom Bike Fotografie",
+          "href": "/custom-bike-fotografie.html"
+        },
+        {
+          "label": "Motorradfotografie Düsseldorf",
+          "href": "/motorrad-fotografie-duesseldorf.html"
+        },
+        {
+          "label": "Motorrad Verkaufsfotos",
+          "href": "/motorrad-verkaufsfotos-duesseldorf.html"
+        },
+        {
+          "label": "Portfolio Motorrad",
+          "href": "/portfolio/portfolio-auswahl-motorrad"
+        },
+        {
+          "label": "Motorradfotografie in NRW",
+          "href": "/motorrad-fotografie.html",
+          "description": "Professionelle Motorradserien für Fahrer, Umbauten und Werkstätten."
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Dein Bike im Studio-Look oder direkt in der Werkstatt",
+      "text": "Kontrollierte Lichtführung für Custom Bikes, Umbauten und Sammlerstücke in Düsseldorf und NRW ab 250 € inkl. MwSt.",
+      "buttonLabel": "Bike-Shooting anfragen"
+    },
+    {
       "headline": "Kurze Fragen",
       "items": [
         {
@@ -104,11 +144,25 @@
   },
   "status": "published",
   "createdAt": "2026-08-13T08:00:00.000Z",
-  "updatedAt": "2026-08-24T20:51:37.607Z",
+  "updatedAt": "2026-11-24T09:15:00.000Z",
   "relatedPages": [
     {
       "label": "Motorradfotografie",
       "href": "/motorrad-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Motorrad-Fotoshooting-Checkliste",
+      "href": "/blog-motorrad-fotoshooting-checkliste.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Motorrad-Fotoshooting sicher planen",
+      "href": "/blog-motorrad-fotoshooting-sicherheit.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

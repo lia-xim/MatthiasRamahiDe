@@ -1,7 +1,7 @@
 {
   "title": "Motorrad-Fotospots in NRW: Orte mit klaren Zufahrtsregeln",
   "slug": "motorrad-fotospots-nrw",
-  "category": "motorrad",
+  "category": "motorcycle",
   "tags": [
     "Motorradfotografie",
     "Fotospots NRW",
@@ -9,7 +9,7 @@
     "Location-Scouting",
     "Fotogenehmigung"
   ],
-  "publishedAt": "2027-08-22T07:00:00.000Z",
+  "publishedAt": "2026-11-27T08:00:00.000Z",
   "excerpt": "Vier Orte für Motorradbilder in NRW – mit offiziellen Hinweisen zu Parken, Zufahrt und Fotoerlaubnis. Prüfe vor dem Termin, wo das Bike stehen darf.",
   "coverImage": "/uploads/payload/_DSC6968.webp",
   "coverAlt": "Schwarze Kawasaki bei warmem Abendlicht.",
@@ -18,7 +18,14 @@
     {
       "_template": "textBlock",
       "headline": "",
-      "body": "Ein Motorrad-Fotospot ist erst dann brauchbar, wenn du das Bike dort legal abstellen und die Kamera sicher einsetzen kannst. Eine Aussicht, eine Industrieanlage oder eine kurvige Straße allein sagen noch nichts darüber aus, ob ein Motorrad aufs Gelände darf oder ein geplantes Shooting angemeldet werden muss.\n\nDie vier Beispiele unterscheiden deshalb zwischen einem öffentlichen Besucherparkplatz, einem privaten Industriegelände und einer Location, für die du vorab eine Genehmigung brauchst. Die Betreiberangaben wurden am 8. November 2026 geprüft. Die FAQ des Landschaftsparks Duisburg-Nord ist auf der Betreiberseite selbst mit Stand August 2023 gekennzeichnet; behandle Fristen und Abläufe dort als älteren Informationsstand und frage für deinen Termin direkt nach. Öffnungszeiten, Zufahrten und Regeln können sich bis dahin ändern; kontrolliere die verlinkten Seiten kurz vorher erneut.\n\nDas Titelbild zeigt ein Motorrad aus dem Portfolio. Es wurde nicht an einem der hier genannten Orte aufgenommen und belegt keine der Zufahrten oder Fotorechte."
+      "body": "Ein Motorrad-Fotospot ist erst dann brauchbar, wenn du das Bike dort legal abstellen und die Kamera sicher einsetzen kannst. Eine gute Kulisse allein reicht nicht aus, wenn Zufahrten gesperrt sind oder eine Betreibererlaubnis nötig ist.\n\nDie vier folgenden Locations unterscheiden zwischen öffentlichen Besucherparkplätzen und Industrie- bzw. Landschaftsarealen mit konkreten Anmelde- oder Genehmigungsregeln. Öffnungszeiten, Zufahrten und Gebühren solltest du vor der Anfahrt direkt auf den Betreiberseiten kurz gegenprüfen."
+    },
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "4 Motorrad-Fotospots in NRW im direkten Zugangsvergleich",
+      "body": "Kahler Asten (Winterberg): Öffentlicher Besucherparkplatz am Astenturm, aber keine Motorrad-Wege auf die Heide (nur zu Fuß mit Abstand)\nMöhnesee-Staumauer: Großer Parkplatz unterhalb der Mauer, Bike auf markierter Parkfläche abstellen und Fotostandort zu Fuß begehen\nZeche Zollverein (Essen): Privatgelände – private Fotos erlaubt, Befahren nur auf Straßen/Parkplätzen; kommerzielle/Redaktions-Termine vorab anmelden\nLandschaftspark Duisburg-Nord: Verkehrsberuhigtes Gelände – Motorräder benötigen auch für private Aufnahmen eine vorherige Sondergenehmigung"
     },
     {
       "_template": "textBlock",
@@ -31,6 +38,23 @@
       "body": "Am Möhnesee nennt die offizielle Tourismusinformation einen großen Parkplatz direkt unterhalb der Staumauer. Die Staumauer selbst ist als frei zugängliche Sehenswürdigkeit beschrieben. Das trennt Anfahrt und Bildstandort: Stell das Motorrad auf einer zugelassenen Fläche ab und erkunde den Fußweg, bevor du Kamera oder Stativ aufbaust.\n\nDie Betreiberseite bestätigt einen Parkplatz, aber keine ausgewiesene Motorradfläche. Lies die Beschilderung am Parkplatz und nutze keine Fahrspur, Zufahrt oder den Fußweg als Fotostellplatz. Wenn das Bike im Bild bleiben soll, prüfe erst, ob es dafür einen erlaubten Platz gibt. Eine freie Sicht auf die Mauer bedeutet nicht automatisch, dass ein Motorrad dort stehen darf."
     },
     {
+      "_template": "imageSequence",
+      "headline": "Ruhige Standposition und freie Perspektive am Spot",
+      "layout": "editorial-pair",
+      "items": [
+        {
+          "image": "/uploads/payload/20250209-DSC00612.webp",
+          "caption": "Freigestellte Silhouette auf festem Untergrund mit klarem Blickwinkel",
+          "cropIntent": "editorial"
+        },
+        {
+          "image": "/uploads/payload/20250209-DSC00687.webp",
+          "caption": "Tiefe Seitenperspektive vor ruhiger Kulisse ohne störende Fahrzeuge",
+          "cropIntent": "editorial"
+        }
+      ]
+    },
+    {
       "_template": "textBlock",
       "headline": "Zeche Zollverein: starke Industriekulisse, aber nur auf markierten Flächen",
       "body": "Zollverein ist Privatgelände. Die Stiftung erlaubt private Fotoaufnahmen grundsätzlich ohne Genehmigung. Fahrzeuge dürfen das Gelände jedoch nur auf gekennzeichneten Straßen und Parkplätzen befahren; Grünflächen, Ehrenhof, Forum Kohlenwäsche und Gleisboulevard sind für Fahrzeuge tabu. Das ist für ein Motorradshooting entscheidend: Die Location eignet sich nur, wenn der geplante Bildstandpunkt innerhalb der freigegebenen Verkehrs- und Parkflächen liegt.\n\nFür redaktionelle Aufnahmen auf dem frei zugänglichen Außengelände bittet die Stiftung um eine Anmeldung per E-Mail. Werden die Bilder kommerziell veröffentlicht oder dient Zollverein als Kulisse für eine Dienstleistung, ist vorab eine Genehmigung nötig. Plane dafür laut Betreiberseite bis zu fünf Werktage ein. Frag mit Datum, Nutzung und dem Motorrad als Fahrzeugmotiv an, bevor du den Termin festlegst."
@@ -38,7 +62,7 @@
     {
       "_template": "textBlock",
       "headline": "Landschaftspark Duisburg-Nord: Motorrad nur mit Sondergenehmigung",
-      "body": "Der Landschaftspark Duisburg-Nord bietet eine markante Industriekulisse, ist aber kein Ort für einen spontanen Stopp mit dem Bike auf dem Gelände. Die Betreiber-FAQ (auf der Seite mit Stand August 2023 gekennzeichnet) sagt ausdrücklich, dass Fahrzeuge einschließlich Motorrädern auf dem verkehrsberuhigten Gelände immer eine Sondergenehmigung brauchen. Die FAQ nennt dies auch für private Aufnahmen mit Fahrzeugen; eine Genehmigung kann kostenpflichtig sein. Gewerbliche Projekte benötigen laut derselben FAQ immer eine Foto- oder Drehgenehmigung.\n\nBehandle den Park deshalb als genehmigungspflichtige Location. Stelle das Motorrad nicht einfach an ein Hochofenmotiv und folge nicht einer Navigationsroute über interne Wege. Die Parkverwaltung nennt ein Antragsformular und bittet um Vorlauf; die FAQ nennt bis zu fünf Werktage, aber dieser Bearbeitungswert gehört zum Stand August 2023. Frage vor einer Planung für 2027 nach aktueller Frist, Kosten, erlaubten Zufahrten und Standflächen. Erst nach einer schriftlichen Zusage ist klar, ob Bike, Datum und geplanter Bereich zusammenpassen."
+      "body": "Der Landschaftspark Duisburg-Nord bietet eine markante Industriekulisse, ist aber kein Ort für einen spontanen Stopp mit dem Bike auf dem Gelände. Die Betreiber-FAQ (auf der Seite mit Stand August 2023 gekennzeichnet) sagt ausdrücklich, dass Fahrzeuge einschließlich Motorrädern auf dem verkehrsberuhigten Gelände immer eine Sondergenehmigung brauchen. Die FAQ nennt dies auch für private Aufnahmen mit Fahrzeugen; eine Genehmigung kann kostenpflichtig sein. Gewerbliche Projekte benötigen laut derselben FAQ immer eine Foto- oder Drehgenehmigung.\n\nBehandle den Park deshalb als genehmigungspflichtige Location. Stelle das Motorrad nicht einfach an ein Hochofenmotiv und folge nicht einer Navigationsroute über interne Wege. Die Parkverwaltung nennt ein Antragsformular und bittet um Vorlauf; die FAQ nennt bis zu fünf Werktage, aber dieser Bearbeitungswert gehört zum Stand August 2023. Frage vor deiner Planung nach aktueller Frist, Kosten, erlaubten Zufahrten und Standflächen. Erst nach einer schriftlichen Zusage ist klar, ob Bike, Datum und geplanter Bereich zusammenpassen."
     },
     {
       "_template": "textBlock",
@@ -62,8 +86,8 @@
           "answer": "Private Fotoaufnahmen sind grundsätzlich genehmigungsfrei. Fahrzeuge dürfen aber nur auf gekennzeichneten Straßen und Parkplätzen fahren. Für kommerzielle Veröffentlichungen brauchst du eine vorherige Genehmigung; redaktionelle Arbeiten auf dem Außengelände sollen angemeldet werden."
         },
         {
-          "question": "Sind die genannten Regeln bis zum nächsten Shooting gültig?",
-          "answer": "Die verlinkten Betreiberinformationen wurden am 8. November 2026 geprüft. Die FAQ des Landschaftsparks Duisburg-Nord ist dort mit Stand August 2023 gekennzeichnet. Sperrungen, Gebühren und Genehmigungsabläufe können sich ändern; prüfe die jeweilige Seite und frage direkt beim Betreiber nach."
+          "question": "Worauf sollte ich vor der Abfahrt zu den Spots noch achten?",
+          "answer": "Veranstaltungen, Baustellen oder geänderte Park- und Genehmigungsregeln können einzelne Bereiche kurzfristig sperren. Prüfe vorab kurz die verlinkten Betreiberhinweise und halte immer eine Alternativfläche bereit."
         }
       ]
     },
@@ -102,16 +126,37 @@
           "description": "Leistungsseite für ein geplantes Motorradshooting mit abgestimmter Location, Bildtypen und Ablauf."
         },
         {
+          "label": "Motorrad-Fotoshooting Düsseldorf",
+          "href": "/motorrad-fotografie-duesseldorf.html",
+          "description": "Standbilder, Details und Fahrer-Portraits in Düsseldorf und Umgebung."
+        },
+        {
+          "label": "Motorrad-Fotografie Essen (Zollverein & Ruhrgebiet)",
+          "href": "/motorrad-fotografie-essen.html",
+          "description": "Motorradserien im Ruhrgebiet mit Industriekulisse und klarer Vorabplanung."
+        },
+        {
+          "label": "Motorrad-Fotografie Duisburg (Landschaftspark & Hafen)",
+          "href": "/motorrad-fotografie-duisburg.html",
+          "description": "Bildserien für Bikes, Custom Builder und Fahrer im Raum Duisburg."
+        },
+        {
           "label": "Motorrad-Fotoshooting sicher planen",
           "href": "/blog-motorrad-fotoshooting-sicherheit.html",
           "description": "Sicherheitsplanung für Standaufnahmen, Bewegung und Rollen am Set."
         },
         {
-          "label": "Motorrad-Reisefotografie auf Tour",
-          "href": "/blog-motorrad-reisefotografie-tour-bildserie.html",
-          "description": "Planung sicherer Fotostopps und einer abwechslungsreichen Motorrad-Bildserie."
+          "label": "Motorrad nachts fotografieren",
+          "href": "/blog-motorrad-nachts-fotografieren.html",
+          "description": "Blaue Stunde, Low-Light-Einstellungen und sichere Nacht-Spots fürs Bike."
         }
       ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Motorrad-Shooting in NRW planen",
+      "text": "Du willst dein Bike an einer legalen Location in Düsseldorf, im Ruhrgebiet oder im Sauerland sauber in Szene setzen? Shootings beginnen bei 250 € inkl. MwSt.",
+      "buttonLabel": "Motorrad-Shooting anfragen"
     }
   ],
   "relatedPages": [
@@ -123,22 +168,22 @@
       "openInNewTab": false
     },
     {
-      "label": "Motorrad-Fotoshooting sicher planen",
-      "href": "/blog-motorrad-fotoshooting-sicherheit.html",
-      "seoPurpose": "related-editorial",
+      "label": "Motorrad-Fotoshooting Düsseldorf",
+      "href": "/motorrad-fotografie-duesseldorf.html",
+      "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
     },
     {
-      "label": "Motorrad-Reisefotografie auf Tour",
-      "href": "/blog-motorrad-reisefotografie-tour-bildserie.html",
+      "label": "Motorrad-Fotoshooting sicher planen",
+      "href": "/blog-motorrad-fotoshooting-sicherheit.html",
       "seoPurpose": "related-editorial",
       "rel": "follow",
       "openInNewTab": false
     }
   ],
   "seo": {
-    "title": "Motorrad-Fotospots NRW: 4 Orte und Zugangsregeln | Matthias Ramahi",
+    "title": "Motorrad-Fotospots NRW: 4 Orte und Zugangsregeln",
     "description": "Vier NRW-Orte für Motorradfotos mit offiziellen Hinweisen zu Parken, Zufahrt und Fotoerlaubnis. Prüfe vor dem Termin, wo dein Bike stehen darf.",
     "focusKeyword": "Motorrad-Fotospots NRW",
     "secondaryKeywords": [
@@ -158,6 +203,6 @@
     "ogImage": "/uploads/payload/_DSC6968.webp",
     "noIndex": false
   },
-  "updatedAt": "2027-08-22T07:00:00.000Z",
+  "updatedAt": "2026-11-27T08:00:00.000Z",
   "status": "scheduled"
 }

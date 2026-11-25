@@ -13,7 +13,7 @@ export type JournalArticleImage = {
 }
 
 export type JournalArticleBlock =
-  | { _template: 'textBlock'; body?: string; eyebrow?: string; headline?: string; style?: 'section' | 'bridge' }
+  | { _template: 'textBlock'; body?: string; eyebrow?: string; headline?: string; style?: 'section' | 'bridge' | 'summary' }
   | { _template: 'imageSequence'; headline?: string; items?: JournalArticleImage[]; layout?: string }
   | { _template: 'quoteBlock'; attribution?: string; quote?: string }
   | { _template: 'faqBlock'; headline?: string; items?: Array<{ answer?: string; question?: string }> }

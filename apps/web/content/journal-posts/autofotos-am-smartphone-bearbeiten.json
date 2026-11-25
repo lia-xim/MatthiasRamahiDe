@@ -9,13 +9,20 @@
     "JPG",
     "Fahrzeugfotos"
   ],
-  "publishedAt": "2027-10-03T07:00:00.000Z",
+  "publishedAt": "2028-05-30T07:00:00.000Z",
   "status": "scheduled",
   "excerpt": "Ein pragmatischer Handy-Workflow für Autofotos: Ausschnitt und Perspektive prüfen, Licht und Lack vorsichtig abstimmen und eine passende Datei für den gewünschten Kanal exportieren.",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+  "coverImage": "/uploads/payload/assets-portfolio-dsc3892-1920.webp",
   "coverAlt": "Schwarzer Brabus-SUV im Abendlicht vor einer Industrieanlage, gespiegelt in einer Wasserfläche.",
   "readingTime": 8,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Autofotos am Smartphone bearbeiten: Die wichtigsten Punkte im Überbl",
+      "body": "Kernaussage: Für Zuschneiden, Drehung sowie einfache Anpassungen an Licht und Farbe reichen die eingebauten Werkzeuge vieler Smartphones aus\nAutofotos am Handy bearbeiten,: Du hast ein Autofoto als JPG oder HEIF auf dem Smartphone und möchtest es vor dem Teilen noch etwas ordnen?\nWeißabgleich und Lackfarbe nicht: Ein Weißabgleich kann einen allgemeinen Farbstich im Bild mildern\nEin kurzer mobiler Prüfablauf: Original sichern und den Zielkanal klären"
+    },
     {
       "_template": "textBlock",
       "headline": "Autofotos am Handy bearbeiten, ohne den Wagen umzuschreiben",
@@ -75,6 +82,12 @@
       "body": "Vor dem Teilen hilft eine feste Reihenfolge:\n\n1. Original sichern und den Zielkanal klären.\n2. Horizont, Drehung und Beschnitt an Fahrzeugform und Seitenverhältnis anpassen.\n3. Gesamthelligkeit prüfen, dann Lichter und Schatten vorsichtig ordnen.\n4. Weißabgleich und Farbe an mehreren Lackflächen beurteilen; Umgebungsreflexe nicht pauschal neutralisieren.\n5. Lokale Korrekturen nur behalten, wenn Kanten und Fahrzeugdetails natürlich aussehen.\n6. Eine neue Datei in der nötigen Größe speichern und den Export vor dem Upload erneut öffnen.\n\nDer Ablauf soll Änderungen begrenzen, nicht möglichst viele Regler nutzen. Ein gutes Autofoto muss auf dem Telefon nicht dramatischer aussehen als die Szene. Wenn die Bearbeitung Fahrzeugform, Lack oder Zustand deutlich anders erscheinen lässt, nimm den letzten Schritt zurück. Bei Inserats- oder Zustandsbildern solltest du keine generative Retusche nutzen, um Fahrzeugdetails oder sichtbare Schäden zu verändern. Kennzeichen kannst du aus Datenschutzgründen gezielt und klar erkennbar maskieren; bewahre dafür immer die unveränderte Originaldatei."
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Häufige Fragen zur mobilen Autofoto-Bearbeitung",
       "items": [
@@ -123,6 +136,11 @@
           "label": "Adobe: Fotos in Lightroom für Mobilgeräte exportieren",
           "href": "https://helpx.adobe.com/de/lightroom/mobile/share-save-and-export/export-photos-in-multiple-formats.html",
           "description": "Der Exportdialog bietet Einstellungen für Format, Abmessungen und Qualität; eine Gerätekopie ohne diesen Dialog verwendet Standardwerte. Prüfe danach die tatsächlich gespeicherte Datei."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]
     }
@@ -141,11 +159,11 @@
     "searchIntent": "Informationssuche: Fotografierende möchten ein bereits aufgenommenes Autofoto als JPG oder HEIF direkt auf dem Smartphone korrigieren. Der Beitrag ordnet Perspektive und Beschnitt, Licht, Lackfarbe und Export; Aufnahmehinweise, Desktop-RAW-Entwicklung, Farbmanagement und Retuschegrenzen bleiben benachbarte, getrennte Aufgaben.",
     "canonicalUrl": "https://matthiasramahi.de/blog-autofotos-am-smartphone-bearbeiten.html",
     "legacyUrl": "blog-autofotos-am-smartphone-bearbeiten.html",
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "ogImage": "/uploads/payload/assets-portfolio-dsc3892-1920.webp",
     "noIndex": false
   },
   "createdAt": "2026-11-06T15:04:30Z",
-  "updatedAt": "2027-10-03T07:00:00.000Z",
+  "updatedAt": "2028-05-30T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Auto mit dem Smartphone fotografieren",

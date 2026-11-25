@@ -14,8 +14,8 @@
   "coverAlt": "Musikerin in warmem Kleid mit Viola vor kühlem, grünblauem Seeufer",
   "readingTime": 8,
   "seo": {
-    "title": "Farbtheorie in der Fotografie: Farbwirkung im Bild | Matthias Ramahi",
-    "description": "Farbtheorie für Fotografen: Farbkreis, Komplementär- und Warm-Kalt-Kontrast und Harmonien – wie Farben im Bild Stimmung erzeugen und den Blick führen.",
+    "title": "Farbtheorie in der Fotografie: Farbwirkung im Bild",
+    "description": "Farbtheorie für Fotografen verständlich erklärt: Farbkreis, Komplementär- & Warm-Kalt-Kontrast und wie Farben im Foto Stimmung und Blickführung steuern.",
     "focusKeyword": "Farbtheorie Fotografie",
     "searchIntent": "Informationssuche: Nutzer wollen verstehen, wie Farben in Fotos wirken und wie Farbkontraste, Harmonien und Farbstimmung bewusst eingesetzt werden.",
     "canonicalUrl": "https://matthiasramahi.de/blog-farbtheorie-fotografie.html",
@@ -31,24 +31,38 @@
   },
   "status": "published",
   "createdAt": "2026-09-24T10:00:00.000Z",
-  "updatedAt": "2026-09-24T10:00:00.000Z",
+  "updatedAt": "2026-11-23T18:30:00.000Z",
   "relatedPages": [
     {
-      "label": "Portraitfotografie",
+      "label": "Vintage-Fotoshooting NRW",
+      "href": "/vintage-fotoshooting.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Portraitfotografie NRW",
       "href": "/portraitfotografie.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
     },
     {
-      "label": "Automobilfotografie",
-      "href": "/automobil-fotografie.html",
-      "seoPurpose": "commercial-support",
+      "label": "Farbharmonie in der Fahrzeugfotografie",
+      "href": "/blog-farbharmonie-fahrzeugfotografie.html",
+      "seoPurpose": "contextual",
       "rel": "follow",
       "openInNewTab": false
     }
   ],
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Drei Farbprinzipien für spürbar ruhigere Fotografien",
+      "body": "Warm-Kalt-Kontrast: Warme Haut- oder Lacktöne vor kühlem Hintergrund schaffen sofortige räumliche Tiefe und klare Motivtrennung\nBlickführung kontrollieren: Gesättigte Störfarben (Schilder, grelle Kleidung am Rand) lenken stärker ab als Helligkeitsunterschiede\nWeißabgleich bewusst setzen: Haut- und Produktfarben über eine neutrale Referenz prüfen und Störfarben in der Serie gezielt entsättigen"
+    },
     {
       "_template": "textBlock",
       "headline": "Farbe entscheidet, bevor Details gelesen werden",
@@ -100,6 +114,39 @@
       "_template": "textBlock",
       "headline": "Farbe in der Bearbeitung und in der Serie",
       "body": "In der Bearbeitung lassen sich Farbton, Sättigung und Helligkeit einzelner Farben getrennt steuern. So kann ein Hintergrund entsättigt, ein Hautton beruhigt oder ein störendes Grün abgeschwächt werden. Solche Eingriffe wirken am besten zurückhaltend: Wird ein Farbbereich stark verschoben, entstehen schnell unnatürliche Kanten und Hauttöne, die nicht mehr zur Person passen.\n\nFür eine Serie ist eine gemeinsame Farbpalette wichtiger als der perfekte Look eines Einzelbildes. Wenn jedes Foto eine andere Stimmung, Temperatur und Sättigung hat, zerfällt die Auswahl. Eine definierte Grundrichtung – etwa warm und gedämpft oder kühl und klar – hält Bilder zusammen, auch wenn Motive und Orte wechseln. Manche Motive tragen ihre Wirkung ohnehin eher über Licht und Form; dann kann eine Schwarz-Weiß-Fassung die stärkere Entscheidung sein."
+    },
+    {
+      "_template": "linkList",
+      "headline": "Farbwirkung in der Praxis",
+      "links": [
+        {
+          "label": "Vintage-Fotoshooting NRW (warme Retro-Farbwelten)",
+          "href": "/vintage-fotoshooting.html"
+        },
+        {
+          "label": "Farbharmonie in der Fahrzeugfotografie",
+          "href": "/blog-farbharmonie-fahrzeugfotografie.html"
+        },
+        {
+          "label": "Portraitfotografie Düsseldorf & NRW",
+          "href": "/portraitfotografie-duesseldorf.html"
+        },
+        {
+          "label": "Fine-Art-Druck im Fotolabor Düsseldorf",
+          "href": "/fotolabor-druck-duesseldorf.html"
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Bildserie mit stimmiger Farbwelt planen",
+      "text": "Ob warmes Vintage-Portrait, prägnantes Personal Branding oder farbtreue Fahrzeugserie: Wir stimmen Location, Kleidung, Lackfarbe und Licht gezielt aufeinander ab.",
+      "buttonLabel": "Shooting besprechen"
     },
     {
       "_template": "faqBlock",

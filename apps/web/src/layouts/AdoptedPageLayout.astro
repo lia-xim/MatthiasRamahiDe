@@ -5,7 +5,7 @@ import path from 'node:path'
 import SiteChromeFooter from '../components/SiteChromeFooter.astro'
 import SiteChromeHeader from '../components/SiteChromeHeader.astro'
 import { getAdoptedPageChrome, mergeAssetLists } from '../lib/adoptedPageChrome'
-import { versionStaticAssetUrl } from '../lib/cache'
+import { versionStaticAssetSrcset, versionStaticAssetUrl } from '../lib/cache'
 import { localSeoLayoutFamilyForSlug } from '../lib/localSeoLayoutFamilies'
 import { pageAnalyticsDimensions } from '../lib/pageAnalyticsDimensions'
 // Bundle the critical CSS as a string at build time. The home page is SSR
@@ -35,6 +35,7 @@ type Props = {
   jsonLd?: JsonLd | JsonLd[]
   legacyFile: string
   liveCms?: boolean
+  mobileCta?: MobileCta
   noIndex?: boolean
   ogImage?: PayloadMedia | string
   ogType?: string
@@ -42,6 +43,14 @@ type Props = {
   scripts?: string[]
   stylesheets?: string[]
   title?: string
+}
+
+type MobileCta = {
+  href: string
+  label: string
+  secondaryHref?: string
+  secondaryLabel?: string
+  priceNote?: string
 }
 
 type PreloadImage =
@@ -66,6 +75,7 @@ const {
   jsonLd,
   legacyFile,
   liveCms = false,
+  mobileCta,
   noIndex = false,
   ogImage,
   ogType = 'website',
@@ -94,8 +104,8 @@ const socialImageSource = ogImage || doc?.seo?.ogImage || doc?.coverImage || doc
 const socialImage = typeof socialImageSource === 'string'
   ? toAbsoluteSiteUrl(versionStaticAssetUrl(socialImageSource))
   : imageUrl(socialImageSource as PayloadMedia | undefined, 'hero', { allowOriginal: true })
-const socialImageDimensions = typeof socialImageSource === 'string' ? {} : imageDimensions(socialImageSource as PayloadMedia | undefined, 'hero')
-const robots = noIndex || doc?.seo?.noIndex ? 'noindex,nofollow' : 'index,follow,max-image-preview:large,max-snippet:-1'
+const socialImageDimensions = imageDimensions(socialImageSource as PayloadMedia | string | undefined, 'hero')
+const robots = noIndex || doc?.seo?.noIndex ? 'noindex,nofollow' : 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1'
 const bodyClass = providedBodyClass || doc?.legacy?.bodyClass || chrome.bodyClass || 'has-mr-footer'
 const analyticsDimensions = pageAnalyticsDimensions(fallbackPath)
 const current = providedCurrent || doc?.legacy?.headerCurrent || chrome.current
@@ -107,30 +117,90 @@ const versionedStylesheets = allStylesheets.map(versionStaticAssetUrl)
 const versionedPreloadImages = allPreloadImages.map((image) => ({
   ...image,
   href: versionStaticAssetUrl(image.href),
+  imagesrcset: image.imagesrcset ? versionStaticAssetSrcset(image.imagesrcset) : undefined,
 }))
 const versionedScripts = allScripts.map(versionStaticAssetUrl)
 const siteName = settings?.siteName || 'Matthias Ramahi Fotografie'
 const providedJsonLd = (Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : []).filter(Boolean)
 const providedTypes = new Set(providedJsonLd.map((item) => String(item?.['@type'] ?? '')))
 
-// Die kanonischen .html-Routen der Local-SEO-Familien rendern über dieses
-// Layout und blieben deshalb ohne Service-/Breadcrumb-Markup — beides existierte
-// nur auf den Nicht-.html-Routen. Hier zentral ergänzt, ohne zu duplizieren.
+const familyPillarBreadcrumb: Record<string, { name: string; url: string }> = {
+  automobil: { name: 'Automobilfotografie', url: '/automobil-fotografie.html' },
+  sportwagen: { name: 'Sportwagenfotografie', url: '/sportwagen-fotografie.html' },
+  oldtimer: { name: 'Oldtimerfotografie', url: '/oldtimer-fotografie.html' },
+  motorrad: { name: 'Motorradfotografie', url: '/motorrad-fotografie.html' },
+  portrait: { name: 'Portraitfotografie', url: '/portraitfotografie.html' },
+  landschaft: { name: 'Landschaftsfotografie', url: '/landschaftsfotografie.html' },
+}
+const nonPhotoServiceFiles = new Set([
+  'fotolabor-druck-duesseldorf.html',
+  'grossformatdruck-duesseldorf.html',
+  'drucke-sonderanfertigungen-duesseldorf.html',
+  'videografie-duesseldorf.html',
+  'viola-musik-duesseldorf.html',
+  'webdesign-seo-duesseldorf.html',
+  'werbetechnik-duesseldorf.html',
+])
+const topLevelBreadcrumbLabels: Record<string, string> = {
+  'fotografie.html': 'Fotografie',
+  'portfolio.html': 'Portfolio',
+  'blog.html': 'Journal',
+  'leistungen.html': 'Leistungen',
+  'ueber-mich.html': 'Über mich',
+  'contact.html': 'Kontakt',
+}
+const normalizedLegacyFile = legacyFile.replace(/^\/+/, '').toLowerCase()
+const photoFamily = localSeoLayoutFamilyForSlug(normalizedLegacyFile)
+const isNonPhotoServicePage = nonPhotoServiceFiles.has(normalizedLegacyFile)
 const isServicePageDoc = Boolean(
-  doc && (localSeoLayoutFamilyForSlug(legacyFile) || doc.city || doc.service || doc.targetKeyword),
+  (doc && (photoFamily || doc.city || doc.service || doc.targetKeyword)) || isNonPhotoServicePage,
 )
 const derivedJsonLd: JsonLd[] = []
-if (doc && isServicePageDoc && !providedTypes.has('Article') && !providedTypes.has('Service')) {
-  derivedJsonLd.push(serviceJsonLd(doc, canonical))
+if (isServicePageDoc && !providedTypes.has('Article') && !providedTypes.has('BlogPosting') && !providedTypes.has('Service')) {
+  const serviceDocForSchema: PayloadDoc = doc || {
+    id: `service-${normalizedLegacyFile}`,
+    title,
+    intro: description,
+    seo: { title, description, ogImage: typeof socialImageSource === 'string' ? socialImageSource : undefined },
+  }
+  derivedJsonLd.push(serviceJsonLd(serviceDocForSchema, canonical))
 }
-if (doc && isServicePageDoc && !providedTypes.has('BreadcrumbList')) {
-  derivedJsonLd.push(
-    breadcrumbJsonLd([
-      { name: 'Startseite', url: '/' },
-      { name: 'Fotografie', url: '/fotografie.html' },
-      { name: doc.title || title, url: canonical },
-    ]),
-  )
+if (normalizedLegacyFile !== 'index.html' && !providedTypes.has('BreadcrumbList')) {
+  if (photoFamily) {
+    const pillar = familyPillarBreadcrumb[photoFamily]
+    const isPillarSelf = pillar && pillar.url.replace(/^\/+/, '') === normalizedLegacyFile
+    derivedJsonLd.push(
+      breadcrumbJsonLd([
+        { name: 'Startseite', url: '/' },
+        { name: 'Fotografie', url: '/fotografie.html' },
+        ...(pillar && !isPillarSelf ? [pillar] : []),
+        { name: doc?.title || title, url: canonical },
+      ]),
+    )
+  } else if (isNonPhotoServicePage) {
+    derivedJsonLd.push(
+      breadcrumbJsonLd([
+        { name: 'Startseite', url: '/' },
+        { name: 'Leistungen', url: '/leistungen.html' },
+        { name: doc?.title || title, url: canonical },
+      ]),
+    )
+  } else if (doc && (doc.city || doc.service || doc.targetKeyword)) {
+    derivedJsonLd.push(
+      breadcrumbJsonLd([
+        { name: 'Startseite', url: '/' },
+        { name: 'Fotografie', url: '/fotografie.html' },
+        { name: doc.title || title, url: canonical },
+      ]),
+    )
+  } else if (topLevelBreadcrumbLabels[normalizedLegacyFile]) {
+    derivedJsonLd.push(
+      breadcrumbJsonLd([
+        { name: 'Startseite', url: '/' },
+        { name: topLevelBreadcrumbLabels[normalizedLegacyFile], url: canonical },
+      ]),
+    )
+  }
 }
 
 const jsonLdItems = [
@@ -284,8 +354,11 @@ async function readPublicAsset(href: string) {
     <script
       is:inline
       defer
-      src="https://app.crawlfoundry.com/api/website-analytics/script"
+      src="https://analytics.crawlfoundry.com/script.js"
       data-website-id="56ef8f9e-2547-4ac0-a7b7-6a6ea3ad6e01"
+      data-domains="matthiasramahi.de"
+      data-do-not-track="true"
+      data-performance="true"
       data-cf-host="matthiasramahi.de"
       data-crawl-foundry-verification="2d179ccd5ad94a4ebc6c0b31faf5a23cb76ff95be04651edacfda501456e8593"
     ></script>
@@ -303,6 +376,19 @@ async function readPublicAsset(href: string) {
       <slot />
     </div>
     <SiteChromeFooter liveCms={liveCms} />
+    {mobileCta && (
+      <nav class="mr-mobile-cta" data-mobile-cta aria-label="Direktaktionen">
+        {mobileCta.secondaryHref && mobileCta.secondaryLabel && (
+          <a class="mr-mobile-cta__sec" href={mobileCta.secondaryHref}>
+            <span>{mobileCta.secondaryLabel}</span>
+            {mobileCta.priceNote && <small>{mobileCta.priceNote}</small>}
+          </a>
+        )}
+        <a class="mr-mobile-cta__prim" href={mobileCta.href}>
+          {mobileCta.label} <span aria-hidden="true">→</span>
+        </a>
+      </nav>
+    )}
     {versionedScripts.map((src) => <script is:inline src={src} defer></script>)}
     <script is:inline src={versionStaticAssetUrl('/assets/analytics.js')} defer></script>
   </body>

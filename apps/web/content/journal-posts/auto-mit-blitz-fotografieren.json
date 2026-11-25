@@ -8,11 +8,18 @@
     "Automobilfotografie",
     "Lichtsetzung"
   ],
-  "publishedAt": "2027-03-21T08:00:00.000Z",
+  "publishedAt": "2027-07-02T07:00:00.000Z",
   "excerpt": "Blitzlicht kann Fahrzeugform und Details betonen. So planst du Lichtquelle, Reflexfläche und Umgebungslicht und erkennst störende Reflexe auf Lack und Glas.",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+  "coverImage": "/assets/portfolio/automobil-bentley-oldtimer.webp",
   "readingTime": 8,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Auto mit Blitz fotografieren: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: So planst du Blitzposition, Lichtfläche und Umgebungslicht bei Autofotos, kontrollierst Reflexe auf Lack und Glas und erkennst, wann Zusatzlicht sinnvoll ist\nEin Blitz macht das: Beim Auto mit Blitz zu fotografieren kann gezielte Akzente setzen, aber ein kurzer Lichtimpuls löst kein Reflexproblem von selbst\nUmgebungslicht und Blitz getrennt: In einer Ausstellung oder Garage gibt es oft mehrere Lichtfarben und Helligkeiten\nWann du den Blitz besser weglässt: Draußen kann ein Blitz eine Umgebung aufhellen, aber er bringt zusätzliche Ausrüstung, Aufbauzeit und mögliche Reflexe mit"
+    },
     {
       "headline": "Ein Blitz macht das Auto nicht automatisch lesbarer",
       "body": "Beim Auto mit Blitz zu fotografieren kann gezielte Akzente setzen, aber ein kurzer Lichtimpuls löst kein Reflexproblem von selbst. Lack, Glas und Chrom zeigen die Form der Umgebung und der Lichtquelle. Sitzt ein kleiner Blitz direkt über der Kamera, erscheint er häufig als kompakter heller Fleck auf großen Karosserieflächen. Das Motiv wird dadurch heller, seine Form aber nicht zwingend klarer.\n\nDieser Beitrag behandelt statische Aufnahmen. Bei einem stehenden Fahrzeug liegt der Nutzen des Blitzes darin, einzelne Details oder Schattenbereiche gezielt aufzuhellen. Vergleiche deshalb ein Bild ohne Zusatzlicht mit einem Bild, in dem der Blitz nur eine konkrete Aufgabe übernimmt.\n\nVor dem Einsatz lohnt eine einfache Frage: Welches Detail soll der Blitz sichtbar machen? Vielleicht braucht der Innenraum etwas mehr Licht, vielleicht soll eine dunkle Seite des Fahrzeugs Kontur bekommen. Wenn das Ziel eine gleichmäßige Zeichnung des ganzen Autos ist, sind Lichtfläche, Position und Verhältnis zum vorhandenen Licht wichtiger als eine hohe Blitzleistung. Erst ein klarer Zweck macht den Blitz zu einem brauchbaren Werkzeug.",
@@ -78,6 +85,12 @@
       "_template": "textBlock"
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "headline": "Kurze Fragen",
       "items": [
         {
@@ -107,6 +120,16 @@
           "label": "Nikon School: Working Notes – Color, Light, Technology",
           "href": "https://static.nikonusa.com/pdf/nikonschool/sun.pdf",
           "description": "Nikon-Schulungsunterlage zu Lichtquellengröße, Abstand, Farbe und Blitz. Sie erläutert Grundlagen; konkrete Synchronzeiten und Menüs hängen von Kamera und Blitzgerät ab."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Motive, Bildformate und Übergabe vor dem Shooting sauber strukturieren."
         }
       ],
       "_template": "linkList"
@@ -119,11 +142,11 @@
     "searchIntent": "Informationssuche von Fotografierenden, die statische Fahrzeuge mit Blitz aufnehmen wollen und Lichtposition, Reflexfläche und vorhandenes Umgebungslicht praktisch planen möchten.",
     "canonicalUrl": "https://matthiasramahi.de/blog-auto-mit-blitz-fotografieren.html",
     "legacyUrl": "blog-auto-mit-blitz-fotografieren.html",
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "ogImage": "/assets/portfolio/automobil-bentley-oldtimer.webp",
     "noIndex": false
   },
   "createdAt": "2026-11-03T17:00:00Z",
-  "updatedAt": "2027-03-21T08:00:00.000Z",
+  "updatedAt": "2027-07-02T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
@@ -131,8 +154,22 @@
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
+    },
+    {
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fahrzeugserien konsistent planen",
+      "href": "/blog-fahrzeugserie-konsistent-planen.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
     }
   ],
-  "coverAlt": "Schwarzer SUV im Abendlicht an einer Wasserfläche; Reflexe der Umgebung liegen auf der Karosserie",
+  "coverAlt": "Oldtimer · Formdetail",
   "status": "scheduled"
 }

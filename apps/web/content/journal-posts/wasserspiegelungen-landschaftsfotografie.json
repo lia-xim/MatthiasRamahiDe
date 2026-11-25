@@ -7,7 +7,7 @@
     "Wetter",
     "Fine Art"
   ],
-  "publishedAt": "2027-04-28T07:00:00.000Z",
+  "publishedAt": "2027-09-03T07:00:00.000Z",
   "excerpt": "Ruhiges Wasser, bewegte Wellen oder ein einzelner Reflex: So wählst du Standpunkt, Horizont und Polfilter für deine Landschaftsfotos.",
   "coverImage": "/uploads/payload/Wettberwerb_Foto5_Wunder_der_Natur2-1.webp",
   "readingTime": 7,
@@ -16,6 +16,13 @@
       "_template": "textBlock",
       "headline": "",
       "body": "Eine Landschaftsspiegelung wird nicht dadurch stark, dass Wasser möglichst glatt ist. Entscheide zuerst, was das Spiegelbild leisten soll: eine zweite, fast symmetrische Bildhälfte, eine gebrochene Struktur oder nur ein paar farbige Linien. Danach wählst du Standpunkt, Horizont und Belichtungszeit so, dass die tatsächliche Wasseroberfläche zur Szene passt.\n\nEine spiegelglatte Fläche eignet sich für eine klare Verdopplung von Bergen oder Uferformen. Auf bewegtem Wasser tragen dagegen Wellenkanten und Lichtflecken durch das Bild. Beides kann funktionieren. Wichtig ist, die Form der Spiegelung bewusst einzusetzen, statt jede Wasserfläche wie einen perfekten Spiegel behandeln zu wollen."
+    },
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Wasserspiegelungen fotografieren: Die wichtigsten Punkte im Überblic",
+      "body": "Kernaussage: Ruhiges Wasser entsteht eher an geschützten Stellen und bei wenig Wind\nZuerst die Oberfläche lesen: Wasser zeigt dir, wie viel Bewegung gerade im Bild steckt\nBelichtungszeit passend zur Wasserbewegung: Bei ruhigem Wasser kannst du mit einer normalen Verschlusszeit starten und die Spiegelung auf feine Linien prüfen\nDie Aufnahme später beurteilen: Vergrößere das Bild nach der Aufnahme und prüfe, ob feine Uferlinien und Reflexe noch lesbar sind"
     },
     {
       "_template": "imageSequence",
@@ -77,6 +84,12 @@
       "body": "Vergrößere das Bild nach der Aufnahme und prüfe, ob feine Uferlinien und Reflexe noch lesbar sind. Sind helle Schaumstellen ohne Zeichnung, kontrolliere zuerst Belichtung und Histogramm; eine andere Filterstellung kann Reflexe verändern, rettet aber keine ausgefressenen Lichter. Wenn Himmel und Wasser beide strukturlos wirken, probiere beim nächsten Bild einen engeren Ausschnitt oder warte auf anderes Licht. Die Bearbeitung darf Kontrast und Farbe ordnen, sollte aber keine Spiegelung vortäuschen, die vor Ort nicht zu sehen war.\n\nFür andere Bedingungen kann ein bedeckter Himmel die Landschaft gleichmäßiger beleuchten. Der Guide [Landschaftsfotografie bei bedecktem Himmel](/blog-landschaftsfotografie-bedeckter-himmel.html) behandelt, wie Wolkenstruktur, Bildausschnitt und Belichtung zusammenwirken. Weitere Landschafts- und Naturmotive findest du auf der Seite [Landschaftsfotografie](/landschaftsfotografie.html)."
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Landschaftsmotive als Fine-Art-Print anfragen",
+      "text": "Ausgewählte Landschaftsaufnahmen erscheinen als hochwertige Fine-Art-Prints auf Archivpapier. Schreib mir Motivwunsch und gewünschtes Wandformat.",
+      "buttonLabel": "Fine-Art-Print anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Häufige Fragen",
       "items": [
@@ -111,12 +124,22 @@
           "label": "Nikon: Leitfaden zu Filtern für Wasser und Landschaft",
           "href": "https://www.nikon.de/de_DE/learn-and-explore/magazine/tips-and-tricks/the-essential-guide-to-filters-what-to-use-for-snow-water-and-effects",
           "description": "Erklärt, wie Polarisationsfilter Reflexe auf Wasser und Glas beeinflussen können."
+        },
+        {
+          "label": "Landschaftsfotografie & Fine-Art-Prints",
+          "href": "/landschaftsfotografie.html",
+          "description": "Kuratierte Landschaftsmotive als Wandbilder und Sammler-Editionen."
+        },
+        {
+          "label": "Fotolabor & Fine-Art-Druck Düsseldorf",
+          "href": "/fotolabor-druck-duesseldorf.html",
+          "description": "Papiere, Farbtreue und Beratung zu Formaten und Raumwirkung."
         }
       ]
     }
   ],
   "seo": {
-    "title": "Wasserspiegelungen fotografieren: Landschaft bewusst gestalten",
+    "title": "Wasserspiegelungen in der Landschaft fotografieren",
     "description": "Wasserspiegelungen in Landschaftsfotos gestalten: Standpunkt, Horizont, Wasserbewegung und Polfilter bewusst wählen – mit ruhigen und bewegten Motiven.",
     "focusKeyword": "Wasserspiegelungen fotografieren",
     "searchIntent": "Praktische Informationssuche: Fotografierende möchten Wasserreflexionen in Landschaften komponieren und entscheiden, wie Standpunkt, Horizont, Bewegung und Polfilter die Spiegelung beeinflussen.",
@@ -126,7 +149,7 @@
     "noIndex": false
   },
   "createdAt": "2026-11-03T17:00:00Z",
-  "updatedAt": "2027-04-28T07:00:00.000Z",
+  "updatedAt": "2027-09-03T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Landschaftsfotografie",
@@ -139,6 +162,13 @@
       "label": "Landschaftsfotografie bei bedecktem Himmel: Konturen und Kontrast",
       "href": "/blog-landschaftsfotografie-bedeckter-himmel.html",
       "seoPurpose": "contextual",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fotolabor & Fine-Art-Druck Düsseldorf",
+      "href": "/fotolabor-druck-duesseldorf.html",
+      "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
     }

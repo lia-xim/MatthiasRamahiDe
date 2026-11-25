@@ -9,12 +9,19 @@
     "Morgenlicht",
     "Lackreflexionen"
   ],
-  "publishedAt": "2027-02-11T08:00:00.000Z",
+  "publishedAt": "2027-04-27T07:00:00.000Z",
   "excerpt": "Wie du das kurze Morgen- oder Abendlicht für Autofotos planst, störende Lackreflexe gestaltest und eine stimmige Bildfolge aufnimmst.",
   "coverImage": "/assets/optimized/assets-portfolio-dsc2788-1-1920.webp",
   "coverAlt": "Dunkler BMW M im Abendlicht vor rosa-violetten Wolken; der Himmel spiegelt sich auf der Motorhaube",
   "readingTime": 8,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Auto zur goldenen Stunde fotografieren: Die wichtigsten Punkte im Üb",
+      "body": "Kernaussage: Beides kann funktionieren\nDas Auto muss nicht: Wenn du ein Auto zur goldenen Stunde fotografieren möchtest, plane zuerst, wohin das Licht fällt und was sich im Lack spiegelt\nDie Bildfolge vor dem: Ordne die Arbeit nach dem Licht, nicht nach einer starren Shotliste\nWenn die Sonne fehlt,: Wolken können das direkte Sonnenlicht dämpfen und Reflexe auf dem Lack ruhiger machen, auch wenn dann der typische warme Sonnenrand ausbleibt"
+    },
     {
       "_template": "textBlock",
       "headline": "Das Auto muss nicht in die Sonne schauen",
@@ -65,6 +72,12 @@
       "body": "Wolken können das direkte Sonnenlicht dämpfen und Reflexe auf dem Lack ruhiger machen, auch wenn dann der typische warme Sonnenrand ausbleibt. Bei gleichmäßig grauem Himmel hast du oft mehr Zeit für saubere Ansichten; nutze die helle Himmelsfläche als große Lichtquelle und halte den Hintergrund schlicht. Wenn die Sonne unvermittelt herauskommt, wiederhole die wichtigsten Motive in der neuen Lichtsituation, statt die bereits fertige Reihe hastig umzubauen.\n\nSobald die Sonne unter dem Horizont steht, wird das Motiv zunehmend von Himmel und Umgebungslicht geprägt. Das kann eine eigene kühle Abendstimmung ergeben, ist aber ein anderes Lichtfenster als die tiefe direkte Morgen- oder Abendsonne. Für den Übergang in spätere Dämmerung findest du den eigenen Beitrag [Auto nachts fotografieren](/blog-auto-nachts-fotografieren.html). Wenn du das Shooting als vollständige Fahrzeugserie vorbereiten möchtest, führt die Seite [Automobilfotografie](/automobil-fotografie.html) zum passenden Leistungsangebot."
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Häufige Fragen zur Autofotografie in der goldenen Stunde",
       "items": [
@@ -99,12 +112,22 @@
           "label": "Nikon: Fotografieren in direktem Sonnenlicht",
           "href": "https://www.nikon.de/de_DE/learn-and-explore/magazine/tips-and-tricks/photographing-in-direct-sunlight",
           "description": "Hinweise zur schnellen Veränderung von Morgenlicht und zum Zusammenspiel von Auskundschaften, Planung und Flexibilität."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Motive, Bildformate und Übergabe vor dem Shooting sauber strukturieren."
         }
       ]
     }
   ],
   "seo": {
-    "title": "Auto zur goldenen Stunde fotografieren: Tipps zu Licht & Lack",
+    "title": "Auto zur goldenen Stunde fotografieren: Licht & Lack",
     "description": "So planst du das kurze Morgen- oder Abendlicht, steuerst Lackreflexe und fotografierst eine stimmige Bildfolge vom Auto.",
     "focusKeyword": "Auto zur goldenen Stunde fotografieren",
     "secondaryKeywords": [
@@ -122,7 +145,7 @@
   },
   "status": "scheduled",
   "createdAt": "2026-11-03T17:00:04Z",
-  "updatedAt": "2027-02-11T08:00:00.000Z",
+  "updatedAt": "2027-04-27T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",

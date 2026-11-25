@@ -9,7 +9,7 @@
     "Online-Inserat",
     "KI-Qualitätscheck"
   ],
-  "publishedAt": "2026-12-19T08:00:00.000Z",
+  "publishedAt": "2026-12-18T08:00:00.000Z",
   "excerpt": "Was bewertet der KI-Qualitätscheck von mobile.de an Fahrzeugbildern? Einordnung der veröffentlichten Score-Anteile, der Bildkriterien und ein konkreter Ablauf, mit dem Autohäuser Fotos gezielt prüfen und verbessern können.",
   "coverImage": "/assets/optimized/assets-portfolio-dsc2744-1920.webp",
   "readingTime": 8,
@@ -17,6 +17,13 @@
     {
       "_template": "textBlock",
       "body": "Der KI-Qualitätscheck von mobile.de ist ein Hinweis darauf, wo ein Inserat aus Sicht der Plattform noch unvollständig oder visuell schwer auswertbar ist. Für Händler ist er am nützlichsten als Prüfliste: einzelne Bildmängel nachvollziehen, gezielt beheben und anschließend den Check erneut ansehen. Ein hoher Score ist weder ein unabhängiges Gutachten über das Fahrzeug noch eine Zusage für bessere Platzierungen oder mehr Verkäufe.\n\nStand dieser Einordnung ist der 3. November 2026. Geprüft wurden die offizielle mobile.de-Mitteilung vom 28. Januar 2026 und die aktuelle öffentliche Seller-API-Dokumentation. Die dort genannten Gewichte und Kriterien können sich ändern; prüfen Sie deshalb vor konkreten Anpassungen die Werte und Hinweise im eigenen Händlerbereich."
+    },
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Worauf der mobile.de KI-Qualitätscheck bei Fotos achtet",
+      "body": "Vier Score-Säulen: Laut mobile.de-Angaben (Stand 2026) zählen Bildanzahl (20 %), Bildqualität, Fahrzeugattribute und Beschreibungslänge\nDrei Foto-Signale: Echtes angebotenes Fahrzeug erkennbar (kein Symbolbild), klar im Fokus ohne dominierende Nebenautos und frei von störenden Banner-Overlays\nRichtig optimieren: Bei Abwertung gezielt schwache Einzelbilder ersetzen und auf eindeutige Detailmotive achten statt dieselbe Perspektive zu duplizieren"
     },
     {
       "_template": "imageSequence",
@@ -55,6 +62,16 @@
           "label": "mobile.de Seller API: Quality Check und Score-Komponenten",
           "href": "https://services.mobile.de/docs/seller-api.html",
           "description": "Öffentliche technische Dokumentation zu den vier Komponenten, Bildkriterien, Verarbeitungsstatus und API-Zugang."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Motive, Bildformate und Übergabe vor dem Shooting sauber strukturieren."
         }
       ]
     },
@@ -94,6 +111,12 @@
       "body": "Die öffentlich zugängliche technische Dokumentation beschreibt detaillierte Score- und Bildfelder für API-Nutzer. Den Quality-Check-API-Zugang führt mobile.de derzeit als exklusiv für Teilnehmende des Data Partner Programms. Händler sollten daher nicht davon ausgehen, dass sie diese technischen Felder selbst über eine direkte API abrufen können; der praktische Einstieg ist der Händlerbereich oder das jeweils eingesetzte, angebundene Händlersystem.\n\nAuch bei einer technischen Auswertung ist der Status wichtig: Nach einer neuen oder geänderten Anzeige kann die Berechnung noch laufen. Erst ein abgeschlossener Check erlaubt den Vergleich der verfügbaren Werte. Wenn ein einzelnes Bild automatisiert beanstandet wird, obwohl es aus Ihrer Sicht den Kriterien entspricht, dokumentieren Sie das Bild und prüfen Sie, ob der Händlerbereich einen Feedbackweg anbietet. Die API-Dokumentation beschreibt ein Händlerfeedback, das API-Berechtigung voraussetzt; das ist kein Versprechen, dass derselbe Weg in jeder Oberfläche verfügbar ist.\n\nFür mehrere Inserate hilft ein knappes Änderungsprotokoll: Inserat, betroffener Score- oder Bildpunkt, konkrete Maßnahme und Status des nächsten Checks. So kann das Team wiederkehrende Aufnahme- oder Exportfehler erkennen. Reichweite, Aufrufe und Anfragen sollten getrennt erfasst werden; aus einer Scoreänderung allein lässt sich keine Veränderung dieser Ergebnisse ableiten."
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Professionelles Auto-Fotoshooting in NRW planen",
+      "text": "Du brauchst stimmige Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto im Raum Düsseldorf, Erkrath und NRW? Shootings starten bei 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Häufige Fragen",
       "items": [
@@ -130,11 +153,25 @@
   },
   "status": "scheduled",
   "createdAt": "2026-11-03T15:19:34Z",
-  "updatedAt": "2026-12-19T08:00:00.000Z",
+  "updatedAt": "2026-12-18T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
       "href": "/automobil-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fahrzeugserien konsistent planen",
+      "href": "/blog-fahrzeugserie-konsistent-planen.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

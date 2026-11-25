@@ -17,19 +17,21 @@ import {
   type PayloadDoc,
 } from '../../lib/payload'
 import { breadcrumbJsonLd, imageGalleryJsonLd, type JsonLd } from '../../lib/seo'
+import { livePageCacheControl } from '../../lib/liveCache'
 import { getTinaVisualDocumentBySlug, isTinaEditRequest } from '../../lib/tinaVisual'
 
 export const prerender = false
 
 const { slug } = Astro.params
-const tinaDoc = slug && isTinaEditRequest(Astro.request) ? await getTinaVisualDocumentBySlug('portfolioProjects', slug) : null
+const isEditing = isTinaEditRequest(Astro.request)
+const tinaDoc = slug && isEditing ? await getTinaVisualDocumentBySlug('portfolioProjects', slug) : null
 const doc = (tinaDoc ?? Astro.props.doc ?? (slug ? await getBySlug('portfolio-projects', slug, liveCmsFetchOptions({ depth: 2, cacheMs: 0 })) : null)) as PayloadDoc | null
 
 if (!doc) {
   return Astro.redirect('/portfolio.html', 308)
 }
 
-Astro.response.headers.set('cache-control', 'no-store, max-age=0')
+Astro.response.headers.set('cache-control', isEditing ? 'no-store, max-age=0' : livePageCacheControl())
 
 const portfolioImageOptions = { allowOriginal: true, mapCachedAssets: false } as const
 const hero = imageDisplayUrl(doc.coverImage, 'wide', portfolioImageOptions)
@@ -76,8 +78,8 @@ const categoryLabel = (value: unknown): string => {
 }
 const portfolioFocus = categoryLabel(doc.category) || doc.presentationMode || doc.title || 'Portfolio-Serie'
 const defaultContextBody = [
-  `Diese Auswahl ist als kuratierter Einstieg in ${portfolioFocus} gedacht: nicht als endlose Galerie, sondern als verdichtete Serie mit Hauptmotiv, Varianten, Details und ruhigen Uebergaengen. Fuer SEO und Nutzerfuehrung bleibt die Seite bewusst eigenstaendig, waehrend sie auf die passenden Leistungs- und Standortseiten verweist.`,
-  'Entscheidend ist die Lesbarkeit der Bildstrecke. Farbe, Abstand, Perspektive und Reihenfolge sollen schnell zeigen, ob eine aehnliche Produktion fuer Marke, Verkauf, Portfolio, Print oder digitale Praesentation funktioniert. So bekommt jedes Portfolio-Motiv einen klaren Kontext statt nur einen isolierten Galerieplatz.',
+  `Diese Auswahl ist als kuratierter Einstieg in ${portfolioFocus} gedacht: nicht als endlose Galerie, sondern als verdichtete Serie mit Hauptmotiv, Varianten, Details und ruhigen Übergängen. Für SEO und Nutzerführung bleibt die Seite bewusst eigenständig, während sie auf die passenden Leistungs- und Standortseiten verweist.`,
+  'Entscheidend ist die Lesbarkeit der Bildstrecke. Farbe, Abstand, Perspektive und Reihenfolge sollen schnell zeigen, ob eine ähnliche Produktion für Marke, Verkauf, Portfolio, Print oder digitale Präsentation funktioniert. So bekommt jedes Portfolio-Motiv einen klaren Kontext statt nur einen isolierten Galerieplatz.',
 ]
 const resolvedContextBody = contextBody.length ? contextBody : defaultContextBody
 const perspectives = (projectPage.perspectives || []).filter((item) => hasText(item.title) || hasText(item.text))
@@ -93,7 +95,7 @@ const rawDescription = doc.seo?.description || doc.excerpt || ''
 const description =
   rawDescription.length >= 70
     ? rawDescription
-    : `${doc.title || 'Portfolio-Serie'}: kuratierte Bildstrecke von Matthias Ramahi mit ausgewaehlten Motiven, Details und visueller Produktion aus Duesseldorf / NRW.`
+    : `${doc.title || 'Portfolio-Serie'}: kuratierte Bildstrecke von Matthias Ramahi mit ausgewählten Motiven, Details und visueller Produktion aus Düsseldorf / NRW.`
 const seoCanonicalUrl = doc.seo?.canonicalUrl ? toAbsoluteSiteUrl(doc.seo.canonicalUrl) : ''
 const canonicalUrl =
   seoCanonicalUrl && new URL(seoCanonicalUrl).pathname !== '/portfolio.html'

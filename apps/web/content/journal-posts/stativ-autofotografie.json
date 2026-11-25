@@ -9,12 +9,19 @@
     "Fahrzeugfotografie",
     "Belichtungsreihe"
   ],
-  "publishedAt": "2027-07-15T07:00:00.000Z",
+  "publishedAt": "2028-01-14T08:00:00.000Z",
   "excerpt": "Ein Stativ lohnt sich bei stehenden Autos, wenn Ausschnitt und Kameraposition fest bleiben sollen. Hier erfährst du, worauf es bei Höhe, Kopf und sicherem Stand ankommt.",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
-  "coverAlt": "Schwarzer SUV vor Industrieanlagen im Abendlicht; Fahrzeug und farbiger Himmel spiegeln sich in einer Pfütze",
+  "coverImage": "/assets/optimized/assets-portfolio-dsc2329-1920.webp",
+  "coverAlt": "Tuning · Perspektive",
   "readingTime": 8,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Stativ für Autofotografie: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Wann ein Stativ beim Auto-Fotoshooting hilft: Arbeitshöhe, Traglast, sicherer Stand und warum dynamische Mitzieher einen freien Schwenk brauchen\nEin Stativ hilft, wenn: Für ein einzelnes Autofoto bei Tageslicht brauchst du nicht automatisch ein Stativ\nStabil aufbauen und den: Stelle die Beine auf einen festen, möglichst ebenen Untergrund\nBei Mitziehern den Kopf: Bei einem Mitzieher von einem festen Standort aus führst du die Kamera in Richtung des fahrenden Autos"
+    },
     {
       "_template": "textBlock",
       "headline": "Ein Stativ hilft, wenn die Kameraposition wichtig ist",
@@ -57,6 +64,12 @@
       "_template": "textBlock",
       "headline": "Bei Mitziehern den Kopf schwenken, den Standplatz sichern",
       "body": "Bei einem Mitzieher von einem festen Standort aus führst du die Kamera in Richtung des fahrenden Autos. Der Hintergrund kann dadurch Bewegungsunschärfe zeigen, während das Fahrzeug vergleichsweise klar bleibt. Ein fest verriegelter Stativkopf kann dieser Bewegung nicht folgen. Ein kompatibler Schwenk- oder Fluidkopf lässt sich mitführen, wenn Kopf und Stativ für die Ausrüstung geeignet sind und sicher stehen. Nikon beschreibt das Mitziehen als Schwenkbewegung, die der Bewegungsrichtung des Motivs folgt; Manfrotto beschreibt bei Fluidköpfen kontrollierbare Schwenkbewegungen.\n\nEin Rolling Shot aus einem Begleitfahrzeug ist ein anderes Aufnahmeverfahren. Die Kamera bewegt sich dabei mit dem Begleitfahrzeug. Ein frei stehendes Dreibein hält die dafür nötige Bewegung nicht; plane Kameraposition, Befestigung und Verkehrssicherheit separat. Der Ratgeber [Rolling Shots mit dem Auto](/blog-rolling-shots-auto.html) behandelt diesen Ablauf.\n\nSicherheit hat Vorrang vor dem Bildausschnitt. Stelle ein Stativ nicht in Fahrbahnen, Rangierflächen oder ungesicherte Publikumsbereiche. Bei einem Shooting auf privatem Gelände, im Showroom oder auf einer Veranstaltung gelten die jeweiligen Zugangs- und Hausregeln. Wenn Personen oder Fahrzeuge unkontrolliert durch den Arbeitsbereich laufen, baue ab oder wähle einen sicheren Platz."
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
     },
     {
       "_template": "faqBlock",
@@ -117,13 +130,18 @@
           "label": "Manfrotto: Fluid Video Head mit gleichmäßiger Schwenkbewegung",
           "href": "https://www.manfrotto.com/global-uk/502-fluid-video-head-flat-base-with-055-video-carbon-fibre-tripod-mvk502055cxprov/",
           "description": "Herstellerbeschreibung eines Fluidkopfs mit kontrollierbarer Schwenk- und Neigebewegung."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]
     }
   ],
   "seo": {
     "title": "Stativ für Autofotografie: Wann es hilft und welches passt",
-    "description": "Wann lohnt ein Stativ für Autofotos? Erfahre, worauf es bei Arbeitshöhe, Kopf, Traglast und sicherem Stand ankommt und wann ein fest verriegelter Kopf bei Mitziehern ungeeignet ist.",
+    "description": "Wann ein Stativ beim Auto-Fotoshooting hilft: Arbeitshöhe, Traglast, sicherer Stand und warum dynamische Mitzieher einen freien Schwenk brauchen.",
     "focusKeyword": "Stativ für Autofotografie",
     "secondaryKeywords": [
       "Stativ für Auto-Fotos",
@@ -134,12 +152,12 @@
     "searchIntent": "Informations- und Ausrüstungswahl: Autofotografen möchten entscheiden, ob sie für ein stehendes Fahrzeug ein Stativ brauchen und welche Merkmale für eine sichere, wiederholbare Kameraposition wichtig sind. Der Beitrag behandelt Stativ-Auswahl und Einsatzgrenzen; Belichtungsreihen, Nachtfotografie, Focus Stacking und Kameraauswahl bleiben vertiefende Einzelthemen.",
     "canonicalUrl": "https://matthiasramahi.de/blog-stativ-autofotografie.html",
     "legacyUrl": "blog-stativ-autofotografie.html",
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "ogImage": "/assets/optimized/assets-portfolio-dsc2329-1920.webp",
     "noIndex": false
   },
   "status": "scheduled",
   "createdAt": "2026-11-05T00:41:15Z",
-  "updatedAt": "2027-07-15T07:00:00Z",
+  "updatedAt": "2028-01-14T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",

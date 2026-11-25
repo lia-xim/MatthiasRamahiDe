@@ -9,11 +9,18 @@
     "Bildplanung",
     "Webdesign"
   ],
-  "publishedAt": "2027-02-25T08:00:00.000Z",
+  "publishedAt": "2027-05-21T07:00:00.000Z",
   "excerpt": "Welche Autofotos braucht eine Website? Plane Hauptmotiv, Detailbilder und passende Zuschnitte anhand der einzelnen Seitenbereiche und stimme die Übergabe mit dem Webteam ab.",
   "coverImage": "/uploads/payload/_DSC2310-2.webp",
   "readingTime": 8,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Autofotos Website: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Das hängt von Seitenstruktur und Bildaufgaben ab\nDas Bildkonzept folgt den: Autofotos für eine Website sollten zu den konkreten Seitenbereichen passen\nZuschnitte auf echten Bildschirmgrößen: Ein breites Foto kann im Desktop-Layout gut funktionieren und auf einem schmalen Bildschirm wichtige Fahrzeugteile verlieren\nVor dem Shooting ein: Für die Planung genügt eine übersichtliche Tabelle"
+    },
     {
       "headline": "Das Bildkonzept folgt den Seiten, auf denen Autos gezeigt werden",
       "body": "Autofotos für eine Website sollten zu den konkreten Seitenbereichen passen. Ein breites Titelmotiv hat eine andere Aufgabe als die Fahrzeugansicht in einem Portfolio oder ein Detailbild neben einer Beschreibung. Wenn erst nach dem Shooting klar wird, wo die Bilder eingesetzt werden, müssen sie oft in ungeeignete Ausschnitte gezwängt werden. Eine kurze Abstimmung mit Webdesign oder Redaktion hilft deshalb schon vor der Motivplanung.\n\nBeginne mit einer einfachen Liste: Welche Seiten existieren, welche Rolle spielt das Fahrzeug dort und welche Bildfläche ist bereits vorgesehen? Auf einer Startseite kann ein Auto die fotografische Handschrift eröffnen. Auf einer Leistungsseite braucht das Bild genug Kontext, um die Arbeit einzuordnen. Eine Portfolioseite soll zeigen, welche Art von Fahrzeugen und Bildaufgaben tatsächlich zum Angebot gehören. Eine Projektseite kann anschließend enger auf Karosserie, Innenraum oder einzelne Merkmale eingehen.\n\nDas ist eine andere Perspektive als die allgemeine Planung einer Fahrzeugserie. Hier geht es nicht darum, mehrere Modelle nach demselben Schema aufzunehmen. Entscheidend ist, dass die Motive den Aufbau der Website unterstützen und sich in den vorgesehenen Bereichen sinnvoll verwenden lassen.",
@@ -70,6 +77,33 @@
       "_template": "textBlock"
     },
     {
+      "_template": "linkList",
+      "headline": "Passende Leistungen & weiterführende Guides",
+      "links": [
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Motive, Bildformate und Übergabe vor dem Shooting sauber strukturieren."
+        },
+        {
+          "label": "Fahrzeugserien konsistent planen",
+          "href": "/blog-fahrzeugserie-konsistent-planen.html",
+          "description": "Wie Perspektiven, Licht und Bearbeitung über mehrere Modelle zusammenhalten."
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "headline": "Kurze Fragen",
       "items": [
         {
@@ -99,11 +133,25 @@
     "noIndex": false
   },
   "createdAt": "2026-11-03T17:00:00Z",
-  "updatedAt": "2027-02-25T08:00:00.000Z",
+  "updatedAt": "2027-05-21T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
       "href": "/automobil-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fahrzeugserien konsistent planen",
+      "href": "/blog-fahrzeugserie-konsistent-planen.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

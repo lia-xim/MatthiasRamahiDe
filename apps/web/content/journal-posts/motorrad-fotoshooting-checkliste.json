@@ -14,6 +14,13 @@
   "readingTime": 8,
   "blocks": [
     {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Die 4-Punkte-Checkliste vor jedem Motorrad-Fotoshooting",
+      "body": "Bildzweck festlegen: Verkaufsinserat, Custom-Portrait oder Werkstatt-Serie bestimmen Perspektiven, Detailgrad und Hintergrundwahl\nMaschine sauber vorbereiten: Tank, Scheinwerfer, Spiegel und Felgen von Insekten und Fingerabdrücken befreien (fallen im Streiflicht sofort auf)\nLocation legal absichern: Zufahrt, sicheren Seitenständer-Untergrund und erlaubte Fläche prüfen – inklusive Alternativspot bei Betrieb oder Regen\nKleidung & Ausgabe abstimmen: Rolle von Helm/Kombi klären und benötigte Hoch- und Querformate vorab in die Shotlist aufnehmen"
+    },
+    {
       "headline": "Der Bildzweck entscheidet über den ganzen Termin",
       "body": "Ein privates Erinnerungsbild, eine Verkaufsserie und Material für eine Werkstatt-Website brauchen nicht dieselben Motive. Bevor eine Location gesucht wird, sollte deshalb feststehen, wo die Fotos erscheinen und welche Fragen sie beantworten müssen. Ein Besitzer möchte vielleicht die Verbindung zu seinem Bike zeigen. Ein Käufer braucht dagegen klare Ansichten von Zustand, Ausstattung und Details.\n\nAus dem Zweck folgt das Format. Für eine Website sind Querformate mit freier Fläche wertvoll, während Reels und Stories Hochformate verlangen. Druck benötigt ausreichend Auflösung und eine ruhige Komposition. Wer diese Anforderungen erst nach dem Shooting entdeckt, verliert beim Zuschneiden oft genau die Linien, für die das Motorrad sorgfältig positioniert wurde.",
       "_template": "textBlock"
@@ -67,6 +74,39 @@
       "_template": "textBlock"
     },
     {
+      "_template": "linkList",
+      "headline": "Motorrad-Shooting buchen & vorbereiten",
+      "links": [
+        {
+          "label": "Motorrad Shooting Düsseldorf",
+          "href": "/motorrad-shooting-duesseldorf.html"
+        },
+        {
+          "label": "Motorradfotografie NRW",
+          "href": "/motorrad-fotografie-nrw.html"
+        },
+        {
+          "label": "Motorrad Verkaufsfotos",
+          "href": "/motorrad-verkaufsfotos-duesseldorf.html"
+        },
+        {
+          "label": "Portfolio Motorrad",
+          "href": "/portfolio/portfolio-auswahl-motorrad"
+        },
+        {
+          "label": "Motorradfotografie in NRW",
+          "href": "/motorrad-fotografie.html",
+          "description": "Professionelle Motorradserien für Fahrer, Umbauten und Werkstätten."
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Bereit für dein Motorrad-Fotoshooting?",
+      "text": "Schreibe kurz Maschine, Wunschregion in NRW und Bildziel – Motorrad-Shootings beginnen bei 250 € inkl. MwSt.",
+      "buttonLabel": "Motorrad-Shooting anfragen"
+    },
+    {
       "headline": "Kurze Fragen",
       "items": [
         {
@@ -103,11 +143,25 @@
   },
   "status": "published",
   "createdAt": "2026-08-10T08:00:00.000Z",
-  "updatedAt": "2026-08-24T20:51:37.605Z",
+  "updatedAt": "2026-11-24T09:15:00.000Z",
   "relatedPages": [
     {
       "label": "Motorradfotografie",
       "href": "/motorrad-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Motorrad-Fotoshooting-Checkliste",
+      "href": "/blog-motorrad-fotoshooting-checkliste.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Motorrad-Fotoshooting sicher planen",
+      "href": "/blog-motorrad-fotoshooting-sicherheit.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

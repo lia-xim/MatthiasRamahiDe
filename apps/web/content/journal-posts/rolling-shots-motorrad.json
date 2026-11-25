@@ -14,6 +14,13 @@
   "readingTime": 8,
   "blocks": [
     {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Dynamische Motorrad-Fahrbilder sicher geplant",
+      "body": "Rollentrennung & Strecke: Bewegte Aufnahmen nur auf übersichtlichen, freigegebenen oder abgesperrten Abschnitten mit getrennten Aufgaben (Fahren / Kamera / Aufsicht)\nMitzieher statt Risiko: Vom sicheren Standpunkt seitlich mit Schwenk entstehen authentische Geschwindigkeitsbilder ohne Begleitfahrzeug\nRuhiger Ablauf: Vor dem eigentlichen Motiv einen langsamen Testdurchlauf mit festen Sichtzeichen und Stopppunkten vereinbaren"
+    },
+    {
       "headline": "Nicht jedes bewegte Bild braucht einen Rolling Shot",
       "body": "Der Begriff beschreibt häufig mehr als das eigentliche Bildziel. Gewünscht sind meist Geschwindigkeit, Nähe zur Straße und ein klarer Fokus auf Fahrer und Motorrad. Diese Wirkung kann durch einen kontrollierten Mitzieher von sicherem Standort, eine dynamische Standkomposition oder eine Sequenz aus Start, Detail und Ankunft entstehen. Erst wenn diese Alternativen die Aufgabe nicht erfüllen, muss eine komplexere Produktion geprüft werden.\n\nFür Werbung oder Editorial kann echte Bewegung erforderlich sein. Dann ist sie kein spontaner Zusatz, sondern ein eigener Produktionsblock mit Genehmigung, professioneller Absicherung und klaren Rollen. Ein schöner Straßenabschnitt und wenig Verkehr reichen nicht. Die Frage lautet: Ist die Umgebung tatsächlich kontrollierbar, und gibt es einen belastbaren Grund, warum das Motiv bewegt werden muss?",
       "_template": "textBlock"
@@ -67,6 +74,34 @@
       "_template": "textBlock"
     },
     {
+      "_template": "linkList",
+      "headline": "Motorradfotografie in Bewegung & im Stand",
+      "links": [
+        {
+          "label": "Motorradfotografie Übersicht",
+          "href": "/motorrad-fotografie.html"
+        },
+        {
+          "label": "Motorradfotografie NRW",
+          "href": "/motorrad-fotografie-nrw.html"
+        },
+        {
+          "label": "Motorradfotografie Wuppertal",
+          "href": "/motorrad-fotografie-wuppertal.html"
+        },
+        {
+          "label": "Portfolio Motorrad",
+          "href": "/portfolio/portfolio-auswahl-motorrad"
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Dynamische Motorrad-Aufnahmen in NRW planen",
+      "text": "Statische Details, Fahrerportraits und sichere Fahraufnahmen im Bergischen Land, Rheinland und Ruhrgebiet ab 250 € inkl. MwSt.",
+      "buttonLabel": "Motorrad-Shooting anfragen"
+    },
+    {
       "headline": "Kurze Fragen",
       "items": [
         {
@@ -86,8 +121,8 @@
     }
   ],
   "seo": {
-    "title": "Rolling Shots Motorrad: Ablauf, Technik & Sicherheit | Matthias Ramahi",
-    "description": "Rolling Shots mit Motorrad professionell einordnen: Bildziel, kontrollierte Flächen, Rollen, Kommunikation, Alternativen und sichere Produktionsgrenzen.",
+    "title": "Rolling Shots Motorrad: Technik, Ablauf & Sicherheit",
+    "description": "Rolling Shots mit dem Motorrad professionell planen: Kamera-Einstellungen, kontrollierte Strecken, Rollen, Kommunikation und sichere Alternativen.",
     "focusKeyword": "Rolling Shots mit Motorrad sicher planen",
     "searchIntent": "Informationssuche: Nutzer suchen Fachwissen, Beispiele und Einordnung zu Rolling Shots mit Motorrad sicher planen.",
     "canonicalUrl": "https://matthiasramahi.de/blog-rolling-shots-motorrad.html",
@@ -103,11 +138,25 @@
   },
   "status": "published",
   "createdAt": "2026-08-12T08:00:00.000Z",
-  "updatedAt": "2026-09-25T14:00:00.000Z",
+  "updatedAt": "2026-11-24T09:15:00.000Z",
   "relatedPages": [
     {
       "label": "Motorradfotografie",
       "href": "/motorrad-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Motorrad-Fotoshooting-Checkliste",
+      "href": "/blog-motorrad-fotoshooting-checkliste.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Motorrad-Fotoshooting sicher planen",
+      "href": "/blog-motorrad-fotoshooting-sicherheit.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

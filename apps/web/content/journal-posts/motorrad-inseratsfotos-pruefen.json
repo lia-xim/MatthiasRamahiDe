@@ -1,7 +1,7 @@
 {
   "title": "Gebrauchtes Motorrad: Inseratsfotos vor dem Kauf prüfen",
   "slug": "motorrad-inseratsfotos-pruefen",
-  "category": "Motorrad",
+  "category": "motorcycle",
   "tags": [
     "Motorrad",
     "Gebrauchtkauf",
@@ -9,13 +9,20 @@
     "Kaufberatung",
     "Fahrzeugfotos"
   ],
-  "publishedAt": "2027-07-25T07:00:00.000Z",
+  "publishedAt": "2028-02-01T08:00:00.000Z",
   "status": "scheduled",
   "excerpt": "Mit guten Inseratsfotos kannst du ein gebrauchtes Motorrad vor der Besichtigung vorsortieren. Erfahre, welche Hinweise an Verkleidung, Gabel, Reifen, Kette und Cockpit sichtbar sein können – und welche Fragen erst vor Ort beantwortet werden.",
-  "coverImage": "/uploads/payload/_DSC6968.webp",
-  "coverAlt": "Schwarze Kawasaki Ninja mit Frontansicht auf einem Feldweg im warmen Abendlicht.",
+  "coverImage": "/uploads/payload/_DSC7026.webp",
+  "coverAlt": "Motorrad-Detailansicht von Tank und Antrieb bei ruhigem Seitenlicht",
   "readingTime": 7,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Motorrad Inseratsfotos prüfen: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Du kannst sichtbare Spuren und fehlende Ansichten erkennen und daraus Rückfragen ableiten\nFotos sind ein Vorfilter,: Inseratsfotos helfen dir, vor einer Besichtigung die offenen Fragen zu sortieren\nGabel, Reifen, Kette und: Ein scharfes Foto der Gabelrohre kann Kratzer, Rostspuren oder sichtbare Ölspuren zeigen\nVor Ort beginnt die: Vergleiche das Motorrad bei der Besichtigung mit Inserat und Antworten"
+    },
     {
       "headline": "Fotos sind ein Vorfilter, keine Zustandsprüfung",
       "body": "Inseratsfotos helfen dir, vor einer Besichtigung die offenen Fragen zu sortieren. Auf klaren Gesamt- und Detailbildern lassen sich sichtbare Gebrauchsspuren, Verkleidungsteile, Reifen, Gabelrohre und Cockpit näher betrachten. Ein Foto beweist jedoch weder einen mängelfreien Zustand noch die technische Funktion. Nutze es, um zu entscheiden, welche Angaben du nachfragen und welche Punkte du vor Ort prüfen möchtest. Der ADAC empfiehlt beim Gebrauchtkauf ausdrücklich eine kritische Besichtigung und eine weitergehende technische Prüfung.",
@@ -70,6 +77,12 @@
       "_template": "textBlock"
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Motorrad-Shooting in NRW planen",
+      "text": "Stimmige Serien für Fahrer, Custom-Umbauten und Werkstätten rund um Düsseldorf und Erkrath ab 250 € inkl. MwSt.",
+      "buttonLabel": "Motorrad-Shooting anfragen"
+    },
+    {
       "headline": "Häufige Fragen zu Motorrad-Inseratsfotos",
       "items": [
         {
@@ -103,13 +116,23 @@
           "label": "ADAC: Checkliste Motorrad-Gebrauchtkauf",
           "href": "https://assets.adac.de/image/upload/v1777465072/ADAC-eV/KOR/Text/PDF/33641_mlmwfr.pdf",
           "description": "Prüfpunkte für Fahrzeugbesichtigung, Probefahrt und Vertragsabschluss."
+        },
+        {
+          "label": "Motorradfotografie in NRW",
+          "href": "/motorrad-fotografie.html",
+          "description": "Professionelle Motorradserien für Fahrer, Umbauten und Werkstätten."
+        },
+        {
+          "label": "Motorrad-Fotoshooting-Checkliste",
+          "href": "/blog-motorrad-fotoshooting-checkliste.html",
+          "description": "Bike, Kleidung, Zufahrt und Shotlist vorab klären."
         }
       ],
       "_template": "linkList"
     }
   ],
   "createdAt": "2026-11-05T03:34:27.000Z",
-  "updatedAt": "2027-07-25T07:00:00.000Z",
+  "updatedAt": "2028-02-01T08:00:00.000Z",
   "seo": {
     "title": "Gebrauchtes Motorrad: Inseratsfotos richtig prüfen",
     "description": "Motorrad-Inseratsfotos helfen beim Vorfilter. Erfahre, was Bilder zu Verkleidung, Gabel, Reifen, Kette und Cockpit zeigen – und was offenbleibt.",
@@ -127,7 +150,7 @@
     ],
     "canonicalUrl": "https://matthiasramahi.de/blog-motorrad-inseratsfotos-pruefen.html",
     "legacyUrl": "blog-motorrad-inseratsfotos-pruefen.html",
-    "ogImage": "/uploads/payload/_DSC6968.webp",
+    "ogImage": "/uploads/payload/_DSC7026.webp",
     "noIndex": false
   },
   "relatedPages": [
@@ -140,6 +163,13 @@
       "label": "Motorrad-Fotografie",
       "href": "/motorrad-fotografie.html",
       "description": "Portfolio und Informationen zur Motorradfotografie. Abgebildete Portfolioarbeiten sind keine Verkaufsangebote oder Zustandsnachweise."
+    },
+    {
+      "label": "Motorrad-Fotoshooting-Checkliste",
+      "href": "/blog-motorrad-fotoshooting-checkliste.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
     }
   ]
 }

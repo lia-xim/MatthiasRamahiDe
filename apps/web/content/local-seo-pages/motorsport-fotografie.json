@@ -87,8 +87,8 @@
   "contactSection": {},
   "targetKeyword": "Motorsport Fotografie",
   "seo": {
-    "title": "Motorsport Fotografie — Trackdays, Clubs, Teams | Matthias Ramahi",
-    "description": "Motorsport Fotografie für Trackdays, Clubs, Teams und Performance Cars. Dynamische Bildserien mit Fahrzeug, Action und Detail — aus NRW, deutschlandweit.",
+    "title": "Motorsport-Fotografie NRW: Trackdays, Clubs & Teams",
+    "description": "Motorsport-Fotografie für Trackdays, Clubs, Teams und Performance Cars: dynamische Bildserien mit Action, Cockpit und Details aus NRW & bundesweit.",
     "canonicalUrl": "https://matthiasramahi.de/motorsport-fotografie.html",
     "legacyUrl": "motorsport-fotografie.html",
     "noIndex": false,
@@ -102,8 +102,49 @@
     "migrationStatus": "reviewed",
     "renderSource": "legacy-file"
   },
-  "updatedAt": "2026-07-21 22:35:09.413+00",
+  "updatedAt": "2026-11-24T09:00:00.000Z",
   "createdAt": "2026-05-31 18:09:46.779+00",
   "status": "published",
-  "payloadId": "194"
+  "payloadId": "194",
+  "guideSection": {
+    "eyebrow": "Motorsport Fotografie",
+    "headline": "Motorsportfotografie: Geschwindigkeit, Boxengasse und Mechanik.",
+    "intro": "Motorsport lebt von Dynamik und Atmosphäre zwischen Startaufstellung, Kurvenscheitelpunkt und Boxengasse. Ziel ist eine Reportage, die Tempo fühlbar macht und Team wie Technik sauber dokumentiert.",
+    "items": [
+      {
+        "title": "Mitzieher und saubere Bewegungsunschärfe",
+        "text": "Statt eingefrorener Räder, die ein fahrendes Fahrzeug wie geparkt wirken lassen, vermitteln kontrollierte Verschlusszeiten echte Geschwindigkeit bei scharfer Karosserie."
+      },
+      {
+        "title": "Boxengasse, Vorbereitung und Details",
+        "text": "Reifentemperatur, Mechanikerhandgriffe, Helm, Fahrerfokus und Materialspuren nach dem Stint erzählen die Geschichte hinter den reinen Streckenbildern."
+      },
+      {
+        "title": "Einsatz für Teams, Sponsoren und Fahrer",
+        "text": "Sponsorenlogos, Fahrzeugdesign und Teamauftritt werden bewusst lesbar ins Bild gesetzt, damit die Serie unmittelbar für Pressearbeit, Social Media und Partnerberichte nutzbar ist."
+      },
+      {
+        "title": "Planung für Trackdays, Events und Einzelserien",
+        "text": "Einsätze in NRW und deutschlandweit – vom einzelnen Fahrzeug-Shooting am Trackday bis zur ganztägigen Eventbegleitung. Einzelserien beginnen bei 250 € inkl. MwSt."
+      }
+    ],
+    "links": [
+      {
+        "label": "Motorsportfotografie Düsseldorf",
+        "href": "/motorsport-fotografie-duesseldorf.html"
+      },
+      {
+        "label": "Sportwagenfotografie",
+        "href": "/sportwagen-fotografie.html"
+      },
+      {
+        "label": "Rolling Shots Auto (Journal)",
+        "href": "/blog-rolling-shots-auto.html"
+      },
+      {
+        "label": "Portfolio Sportwagen",
+        "href": "/portfolio/portfolio-auswahl-sportwagen"
+      }
+    ]
+  }
 }

@@ -1,6 +1,7 @@
 ---
 import HeroMotion from './HeroMotion.astro'
 import ContactSlot from '../ContactSlot.astro'
+import NativeFamilyFaq from './NativeFamilyFaq.astro'
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import { getLegacyBackedDoc, imageAlt, imageDimensions, imageDisplayUrl, type PayloadDoc, type PayloadMedia } from '../../lib/payload'
 import { tinaAttrs } from '../../lib/tinaFieldAttrs'
@@ -160,6 +161,24 @@ const heroSlides =
   cmsHeroPath && !/mpissxxj|portfolio_webp_full_063|matthias-ramahi-portrait/i.test(cmsHeroPath)
     ? [{ src: cmsHeroImage }]
     : [portraitSlide]
+const aboutFaq = [
+  {
+    q: 'Wo hat Matthias Ramahi seinen Standort und in welcher Region finden Shootings statt?',
+    a: 'Meine Basis liegt in Erkrath direkt neben Düsseldorf. Shootings für Fahrzeuge, Motorräder und Portraits finden im gesamten Rheinland, im Ruhrgebiet und in ganz NRW statt, für größere Kampagnen und Serien auch deutschlandweit.',
+  },
+  {
+    q: 'Wie läuft eine Zusammenarbeit von der ersten Anfrage bis zur Bildlieferung ab?',
+    a: 'Nach einer kurzen Nachricht klären wir Motiv, Einsatzbereich, Ort und Lichtfenster. Beim Termin entstehen strukturierte Serien ohne Zeitdruck, anschließend folgen eine kuratierte Vorauswahl, zurückhaltende Bearbeitung und Lieferung für Web und Print.',
+  },
+  {
+    q: 'Was kostet ein Fotoshooting bei Matthias Ramahi?',
+    a: 'Ein Shooting beginnt bei 250 € inkl. MwSt. Der genaue Umfang richtet sich nach Motiv, Dauer, Locationaufwand und gewünschten Nutzungsrechten und wird vorab transparent abgestimmt.',
+  },
+  {
+    q: 'Können Foto und Video für ein Projekt gemeinsam gebucht werden?',
+    a: 'Ja. Für Bewegtbild arbeite ich regelmäßig parallel am Set mit meiner Schwester Sophia Ramahi zusammen, damit Fotografie und Videografie aus einer gemeinsamen Bildsprache entstehen.',
+  },
+]
 ---
 <AdoptedPageLayout legacyFile={legacyFile} current="ueber-mich" doc={doc}>
   <main>
@@ -202,10 +221,11 @@ const heroSlides =
           <p class="lead" {...tinaAttrs(aboutChaptersSource, 'intro')}>{aboutChapters.intro}</p>
         </div>
         <div class="chapter-grid">
-          {chapters.map((chapter) => {
+          {chapters.map((chapter, index) => {
             // CMS-Chapters pflegen keine eigenen Masse - dann die des Media-Objekts
-            // nutzen, damit das Bild reservierten Platz bekommt (kein Layout-Shift).
+            // oder Fallback-Masse nutzen, damit das Bild reservierten Platz bekommt (kein Layout-Shift).
             const chapterDimensions = imageDimensions(chapter.image, 'card')
+            const fallbackChapter = fallbackChapters[index]
             return (
             <a class="chapter" href={chapter.href || '#'}>
               <div class="img">
@@ -213,8 +233,8 @@ const heroSlides =
                   src={imageDisplayUrl(chapter.image, 'card') || ''}
                   alt={imageAlt(chapter.image, chapter.alt || chapter.title || '')}
                   loading="lazy"
-                  width={chapter.width || chapterDimensions.width}
-                  height={chapter.height || chapterDimensions.height}
+                  width={chapter.width || chapterDimensions.width || fallbackChapter?.width || 960}
+                  height={chapter.height || chapterDimensions.height || fallbackChapter?.height || 640}
                   decoding="async"
                   {...tinaAttrs(chapter, 'image')}
                 />
@@ -246,6 +266,8 @@ const heroSlides =
         </a>
       </div>
     </section>
+
+    <NativeFamilyFaq faq={aboutFaq} pageUrl="https://matthiasramahi.de/ueber-mich.html" theme="dark" />
 
     <ContactSlot
       id="anfrage"

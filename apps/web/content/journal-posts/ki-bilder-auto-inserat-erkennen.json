@@ -9,13 +9,20 @@
     "Kaufberatung",
     "Fahrzeugfotografie"
   ],
-  "publishedAt": "2027-08-06T07:00:00.000Z",
+  "publishedAt": "2028-02-22T08:00:00.000Z",
   "status": "scheduled",
   "excerpt": "KI-generierte Hintergründe, wiederverwendete Fotos und echte Retusche sind schwer sicher zu trennen. So prüfst du Herkunft, Angebot und Auto, ohne Bildfehler als Beweis zu werten.",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
-  "coverAlt": "Schwarzer Brabus-SUV vor Industrieanlagen bei rosa-blauem Abendhimmel, gespiegelt in einer Wasserfläche.",
+  "coverImage": "/assets/optimized/assets-portfolio-dsc3908-1920.webp",
+  "coverAlt": "Cockpit · Licht",
   "readingTime": 8,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "KI-Bilder Auto-Inserat erkennen: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Prüfe KI-Verdacht in Auto-Inseraten vorsichtig: Rückwärtssuche, Herkunftsdaten, Verkäuferfragen und Fahrzeugprüfung – ohne Bildfehler als Beweis zu werten\nEin Foto allein kann: Ob ein Autofoto echt, nachbearbeitet oder mit KI verändert wurde, lässt sich aus einer einzelnen Bilddatei oft nicht sicher feststellen\nHerkunftsdaten und KI-Wasserzeichen richtig: Wenn du die Originaldatei erhältst, können Metadaten oder sogenannte Content Credentials Hinweise auf Aufnahme und Bearbeitung geben\nWeiterführende Fahrzeugfotografie: Dieser Beitrag richtet sich an Käufer, die bei einem Online-Inserat die Herkunft und Aussagekraft der Fotos einordnen möchten"
+    },
     {
       "_template": "textBlock",
       "headline": "Ein Foto allein kann Echtheit nicht beweisen",
@@ -79,6 +86,12 @@
       "_template": "textBlock",
       "headline": "Weiterführende Fahrzeugfotografie",
       "body": "Dieser Beitrag richtet sich an Käufer, die bei einem Online-Inserat die Herkunft und Aussagekraft der Fotos einordnen möchten. Für sichtbare Ausstattungshinweise gibt es einen eigenen Leitfaden zu [Gebrauchtwagenfotos und Ausstattungsmerkmalen](/blog-gebrauchtwagen-inseratsfotos-pruefen.html). Wer selbst Fahrzeugbilder für eine Marke oder einen Händler plant, findet die Produzentenperspektive im Artikel [Echte Fahrzeugfotos oder KI-Bilder](/blog-echte-fahrzeugfotos-oder-ki.html)."
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
     },
     {
       "_template": "faqBlock",
@@ -159,7 +172,7 @@
     }
   ],
   "createdAt": "2026-11-05T00:00:00Z",
-  "updatedAt": "2027-08-06T07:00:00.000Z",
+  "updatedAt": "2028-02-22T08:00:00.000Z",
   "seo": {
     "title": "KI-Bilder im Auto-Inserat erkennen? Hinweise und Grenzen",
     "description": "Prüfe KI-Verdacht in Auto-Inseraten vorsichtig: Rückwärtssuche, Herkunftsdaten, Verkäuferfragen und Fahrzeugprüfung – ohne Bildfehler als Beweis zu werten.",
@@ -179,7 +192,7 @@
     ],
     "canonicalUrl": "https://matthiasramahi.de/blog-ki-bilder-auto-inserat-erkennen.html",
     "legacyUrl": "blog-ki-bilder-auto-inserat-erkennen.html",
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "ogImage": "/assets/optimized/assets-portfolio-dsc3908-1920.webp",
     "noIndex": false
   },
   "relatedPages": [

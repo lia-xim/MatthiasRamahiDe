@@ -9,12 +9,19 @@
     "Fotoanlage",
     "Produktionsworkflow"
   ],
-  "publishedAt": "2027-07-17T07:00:00.000Z",
+  "publishedAt": "2028-01-18T08:00:00.000Z",
   "status": "scheduled",
   "excerpt": "Fotoanlage, Foto-App oder externer Fotograf: So vergleichen Autohäuser den passenden Produktionsweg für Bestandsbilder, wiederkehrende Serien und Markenmotive.",
   "coverImage": "/uploads/payload/assets-portfolio-dsc3879-1920-1920x1280.webp",
   "readingTime": 9,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Fotoanlage Autohaus: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Eine allgemeingültige Stückzahl lässt sich nicht seriös nennen\nDie eigentliche Frage lautet: Ein Autohaus, das regelmäßig Fahrzeuge online stellt, kann Bestandsbilder intern mit Smartphone oder Kamera aufnehmen, eine Foto-App oder feste Fotoanlage\nDen passenden Weg nach: Menge und Schwankung: Wie viele Fahrzeuge sollen in einer normalen und in einer besonders vollen Woche online gehen?\nDie Abnahme entscheidet, ob: Legen Sie vor dem Start ein kurzes Abnahmeraster fest"
+    },
     {
       "headline": "Die eigentliche Frage lautet: Wer trägt welchen Teil des Bildprozesses?",
       "body": "Ein Autohaus, das regelmäßig Fahrzeuge online stellt, kann Bestandsbilder intern mit Smartphone oder Kamera aufnehmen, eine Foto-App oder feste Fotoanlage einsetzen oder einen externen Fotografen beauftragen. Diese Optionen werden oft als reine Geräte- oder Preisfrage behandelt. In der Praxis unterscheiden sie sich vor allem darin, wer für Licht, Bildstandard, Fahrzeugzuordnung, Kontrolle und Übergabe verantwortlich ist.\n\nEine Fotoanlage ist dabei kein einheitlicher Produkttyp. Gemeint sein kann ein fester Aufnahmeplatz mit definiertem Hintergrund und Licht, eine digital geführte Fotostation oder ein System mit Drehteller und automatisiertem Rundgang. Eine App kann Mitarbeitende durch eine Motivfolge führen und Bilder an ein Zielsystem übergeben; sie schafft allein jedoch weder eine ruhige Umgebung noch passende Lichtführung. Ein externer Fotograf bringt die fotografische Umsetzung mit, braucht aber ebenfalls einen abgestimmten Ablauf für Bereitstellung, Auswahl und Lieferung.\n\nDeshalb gibt es keine pauschale Antwort „Anlage oder Fotograf“. Zuerst sollte feststehen, welche Bilder täglich gebraucht werden und welche Aufgaben darüber hinaus anfallen.",
@@ -70,6 +77,12 @@
       "_template": "textBlock"
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "headline": "Häufige Fragen",
       "items": [
         {
@@ -100,11 +113,6 @@
           "description": "Produktinformation zu einer geführten Lösung für Fahrzeugfotografie. Die Anbieterbeschreibung dient hier als Beispiel für einen möglichen Workflow, nicht als unabhängiger Qualitäts- oder Kostenvergleich."
         },
         {
-          "label": "Digital35: Autohaus Foto-App",
-          "href": "https://digital35.de/autohaus-foto-app/",
-          "description": "Anbieterbeispiel für einen App-gestützten Aufnahme- und Übergabeprozess."
-        },
-        {
           "label": "UKT360: Photographic Studio Booths",
           "href": "https://ukt360.co.uk/photographic-studio-booths/",
           "description": "Produktseite mit einer Booth-Konfiguration für standardisierte Fahrzeugaufnahmen; die Angaben beschreiben das Angebot des Herstellers."
@@ -128,6 +136,11 @@
           "label": "Showroomlicht für Fahrzeugbilder kontrollieren",
           "href": "/blog-autohaus-showroomlicht.html",
           "description": "Hinweise zu Licht, Reflexen und Bildwirkung bei Fahrzeugaufnahmen im Autohaus."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ],
       "_template": "linkList"
@@ -151,7 +164,7 @@
     "noIndex": false
   },
   "createdAt": "2026-11-05T09:00:00Z",
-  "updatedAt": "2027-07-17T07:00:00Z",
+  "updatedAt": "2028-01-18T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",

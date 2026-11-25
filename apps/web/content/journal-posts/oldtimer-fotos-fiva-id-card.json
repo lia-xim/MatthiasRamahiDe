@@ -8,13 +8,20 @@
     "Fotodokumentation",
     "ADAC Klassik"
   ],
-  "publishedAt": "2027-06-29T07:00:00.000Z",
+  "publishedAt": "2027-12-21T08:00:00.000Z",
   "status": "scheduled",
   "excerpt": "Welche Oldtimer-Fotos braucht der FIVA-ID-Card-Antrag? So planst du die geforderten Ansichten und lesbare Detailbilder nach den aktuellen ADAC-Unterlagen.",
-  "coverImage": "/uploads/payload/20250418-DSC006552.webp",
-  "coverAlt": "Orange-roter historischer Rennsportwagen in einer Ausstellungshalle, tief von vorn aufgenommen; Bildbeispiel, kein FIVA-Antragsfoto.",
+  "coverImage": "/assets/optimized/assets-portfolio-dsc2358-1920.webp",
+  "coverAlt": "Heckpartie eines dunklen klassischen Sportwagens mit klarer Linienführung",
   "readingTime": 8,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "FIVA ID Card Fotos: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Die aktuelle ADAC-Unterlagenliste nennt zwei schräge Dreiviertelansichten, Bilder von Fahrgestellnummer, Typenschild und Motornummer, zwei Ansichten des Motorraums,\nDie Antragsfotos zeigen das: Für den FIVA-ID-Card-Antrag braucht es mehr als ein schönes Oldtimerfoto\nFahrgestellnummern und Schilder müssen: Bei Nummern und Typenschildern ist Lesbarkeit wichtiger als ein dekorativer Bildaufbau\nFotos ersetzen weder Fahrzeugprüfung: Die FIVA beschreibt die ID Card als möglichst vollständige und zutreffende Beschreibung des beantragten und vom zuständigen Prüfer begutachteten Fahrzeugs"
+    },
     {
       "_template": "textBlock",
       "headline": "Die Antragsfotos zeigen das Fahrzeug im heutigen Zustand",
@@ -66,6 +73,12 @@
       "_template": "textBlock",
       "headline": "Fotos ersetzen weder Fahrzeugprüfung noch Gutachten",
       "body": "Die FIVA beschreibt die ID Card als möglichst vollständige und zutreffende Beschreibung des beantragten und vom zuständigen Prüfer begutachteten Fahrzeugs. Laut den aktuellen FIVA-Antragsbedingungen kann die Prüfung vor Ort oder aus der Ferne mit technischen Mitteln erfolgen; die konkrete Vorgehensweise klärst du mit dem zuständigen ADAC-Prüfer. Auch die ausgestellte Karte ist laut FIVA keine rechtsverbindliche Garantie für die Echtheit oder Richtigkeit sämtlicher Angaben. Ein Foto allein belegt daher weder Matching Numbers noch Originalität, technische Sicherheit oder lückenlose Provenienz.\n\nBeschreibe in den Unterlagen, was auf den Fotos sichtbar ist, und überlasse die Einordnung von Identität, Historie und Modifikationen dem zuständigen Prüfer. Wenn du eine Oldtimer-Serie für Archiv, Verkauf oder Restaurierungsdokumentation brauchst, gelten andere Bildziele und gegebenenfalls andere Freigaben als beim Antrag."
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
     },
     {
       "_template": "faqBlock",
@@ -125,12 +138,17 @@
         {
           "label": "Oldtimer-Fotografie",
           "href": "/oldtimer-fotografie.html"
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]
     }
   ],
   "createdAt": "2026-11-04T17:00:00.000Z",
-  "updatedAt": "2027-06-29T07:00:00Z",
+  "updatedAt": "2027-12-21T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Oldtimer-Fotografie",
@@ -172,7 +190,7 @@
     "searchIntent": "Informationssuche mit eindeutigem Antragsbezug: Oldtimer-Eigentümer in Deutschland wollen wissen, welche aktuellen Fahrzeugansichten und Detailfotos der ADAC für die FIVA Identity Card verlangt und wie diese klar aufgenommen werden. Die aktuelle ADAC-Unterlagenseite und ein kostenloser SERP-Stichprobenlauf zeigen passende offizielle Ergebnisse. Suchvolumen, GSC-Nachfrage und AI-Fanout wurden nicht gemessen; mögliche Folgefragen sind redaktionelle Hypothesen. Abgrenzung: formale FIVA-ID-Card-Fotoliste und sachliche Aufnahme der geforderten Ansichten, nicht allgemeines Sammlungsarchiv, Restaurierungsverlauf, Originallack, Verkaufs- oder Auktionsbilder.",
     "canonicalUrl": "https://matthiasramahi.de/blog-oldtimer-fotos-fiva-id-card.html",
     "legacyUrl": "blog-oldtimer-fotos-fiva-id-card.html",
-    "ogImage": "/uploads/payload/20250418-DSC006552.webp",
+    "ogImage": "/assets/optimized/assets-portfolio-dsc2358-1920.webp",
     "noIndex": false
   }
 }

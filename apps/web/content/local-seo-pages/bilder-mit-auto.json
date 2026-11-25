@@ -102,8 +102,49 @@
     "migrationStatus": "reviewed",
     "renderSource": "legacy-file"
   },
-  "updatedAt": "2026-07-21 22:35:09.413+00",
+  "updatedAt": "2026-11-24T09:00:00.000Z",
   "createdAt": "2026-05-31 18:09:46.605+00",
   "status": "published",
-  "payloadId": "189"
+  "payloadId": "189",
+  "guideSection": {
+    "eyebrow": "Bilder mit Auto",
+    "headline": "Bilder mit dem eigenen Auto: Fahrer und Fahrzeug im Einklang.",
+    "intro": "Ob als Erinnerung vor einem Fahrzeugwechsel, für Social Media oder als Print an der Wand: Wenn du selbst mit deinem Auto fotografiert wirst, müssen Haltung, Kleidung und Fahrzeug als gemeinsame Szene wirken.",
+    "items": [
+      {
+        "title": "Entspannte Regie statt gestellter Posen",
+        "text": "Niemand muss vor der Kamera schauspielern. Ich leite Position, Blickrichtung und kleine Bewegungen wie Einsteigen, Anlehnen oder den Blick über die Haube ruhig an, sodass natürliche Bilder entstehen."
+      },
+      {
+        "title": "Farbabstimmung zwischen Outfit, Lack und Location",
+        "text": "Kleidung und Hintergrund sollten das Fahrzeug ergänzen statt mit ihm zu konkurrieren. Vor dem Termin besprechen wir kurz Lackfarbe, Stil und ein bis zwei passende Outfit-Varianten."
+      },
+      {
+        "title": "Mischung aus Fahrzeug-Solos und gemeinsamen Portraits",
+        "text": "In einem Termin kombinieren wir reine Fahrzeugansichten, Details und gemeinsame Motive mit dir am oder im Auto. So bekommst du eine abwechslungsreiche Serie für Profilbilder, Feeds und Wanddrucke."
+      },
+      {
+        "title": "Buchung und Einstieg ab 250 €",
+        "text": "Ein Shooting mit deinem Auto in Düsseldorf, im Ruhrgebiet oder in ganz NRW beginnt bei 250 € inkl. MwSt. und dauert je nach Locationwahl ein bis drei Stunden."
+      }
+    ],
+    "links": [
+      {
+        "label": "Fotoshooting mit Auto NRW",
+        "href": "/fotoshooting-mit-auto.html"
+      },
+      {
+        "label": "Fotoshooting für Männer",
+        "href": "/fotoshooting-maenner.html"
+      },
+      {
+        "label": "Fotospots für Autos in NRW",
+        "href": "/blog-fotospots-autos-nrw.html"
+      },
+      {
+        "label": "Portfolio Automobil",
+        "href": "/portfolio/portfolio-auswahl-automobil"
+      }
+    ]
+  }
 }

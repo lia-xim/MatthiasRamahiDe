@@ -9,12 +9,19 @@
     "Projektfotografie",
     "Bilddokumentation"
   ],
-  "publishedAt": "2027-02-15T08:00:00.000Z",
+  "publishedAt": "2027-05-04T07:00:00.000Z",
   "excerpt": "Eine Tuning-Fotostrecke wird nachvollziehbar, wenn Ausgangszustand, Umbau und fertiges Fahrzeug zusammenpassen. So planst du vergleichbare Ansichten und aussagekräftige Details.",
   "coverImage": "/assets/portfolio/automobil-bmw-widebody.webp",
   "coverAlt": "Schwarzer BMW mit breiten Kotflügeln und großem Heckflügel, von vorn in einer hellen Halle fotografiert",
   "readingTime": 7,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Tuning-Umbau fotografisch dokumentieren: Die wichtigsten Punkte im Ü",
+      "body": "Kernaussage: Ein Ausgangsbild, vergleichbare Ansichten des fertigen Fahrzeugs und ausgewählte Details sind ein guter Kern\nEin Umbau wird verständlich,: Für eine fotografische Tuning-Dokumentation brauchst du eine klare Ausgangsansicht, wiederholbare Perspektiven und ausgewählte Bilder vom fertigen Fahrzeug\nDas fertige Fahrzeug als: Nach dem Umbau braucht die Bildfolge zunächst eine klare Gesamtansicht\nFotos beschreiben, ohne mehr: Eine Bildunterschrift kann den sichtbaren Teil des Projekts knapp einordnen: welcher Blickwinkel, welche Fahrzeugseite oder welches vereinbarte Bauteil zu"
+    },
     {
       "headline": "Ein Umbau wird verständlich, wenn Ausgangslage und Ergebnis zusammenpassen",
       "body": "Für eine fotografische Tuning-Dokumentation brauchst du eine klare Ausgangsansicht, wiederholbare Perspektiven und ausgewählte Bilder vom fertigen Fahrzeug. Wenn der Auftrag es vorsieht, kommen wenige freigegebene Aufnahmen aus den Umbauphasen hinzu. So kann eine Werkstatt zeigen, was sie sichtbar verändert hat, und der Fahrzeughalter erhält eine geordnete Erinnerung an sein Projekt.\n\nLege vor dem Termin fest, wer die Bilder später nutzt. Für ein Werkstattportfolio zählt eine nachvollziehbare Darstellung einzelner Arbeiten; für den privaten Besitzer kann die Entwicklung des eigenen Fahrzeugs im Mittelpunkt stehen. Eine Community oder Redaktion kann wiederum eine kurze Beschreibung der Arbeiten zusammen mit der Bildfolge erwarten. Solche unterschiedlichen Projektgalerien finden sich bei Tuningbetrieben und Fahrzeugcommunities. Die [Automobilfotografie](/automobil-fotografie.html) lässt sich deshalb nicht mit einem einzigen Titelbild erledigen: Bildliste und Freigaben sollten aus dem Zweck des Auftrags entstehen.",
@@ -75,6 +82,12 @@
       "_template": "textBlock"
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "headline": "Häufige Fragen zur fotografischen Tuning-Dokumentation",
       "items": [
         {
@@ -114,9 +127,14 @@
           "description": "Ein Tuningbetrieb zeigt eine eigene Bilderstrecke mit Vorher-Nachher-Motiven und Beispielen verschiedener Umbauarbeiten."
         },
         {
-          "label": "Deep Movement: Projekte und Einsendung",
-          "href": "https://www.deep-movement.de/projekte",
-          "description": "Die Community bittet für Fahrzeugprojekte um aussagekräftige Bilder, idealerweise Vorher-Nachher-Aufnahmen, sowie eine Beschreibung der Arbeiten."
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Motive, Bildformate und Übergabe vor dem Shooting sauber strukturieren."
         }
       ],
       "_template": "linkList"
@@ -140,7 +158,7 @@
   },
   "status": "scheduled",
   "createdAt": "2026-11-03T17:01:01Z",
-  "updatedAt": "2027-02-15T08:00:00.000Z",
+  "updatedAt": "2027-05-04T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",

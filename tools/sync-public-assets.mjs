@@ -203,7 +203,7 @@ async function collectTextFiles(dir, extensions = assetTextReferenceExtensions) 
       if (['.git', 'dist', 'node_modules'].includes(entry.name)) continue
       files.push(...(await collectTextFiles(fullPath, extensions)))
     } else if (entry.isFile() && extensions.has(path.extname(entry.name).toLowerCase())) {
-      files.push(fullPath)
+      if (entry.name !== 'staticAssetDimensions.json') files.push(fullPath)
     }
   }
   return files

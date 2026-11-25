@@ -9,12 +9,19 @@
     "PPI",
     "Großformatdruck"
   ],
-  "publishedAt": "2027-10-01T07:00:00.000Z",
+  "publishedAt": "2028-05-26T07:00:00.000Z",
   "excerpt": "Wie groß lässt sich ein Autofoto drucken? Mit Pixelmaß, Seitenverhältnis und PPI kannst du die Ausgabegröße berechnen. So planst du einen großen Fahrzeugprint ohne starre 300-PPI-Regel.",
   "coverImage": "/assets/optimized/autofoto-aufloesung-beispiel-1920.webp",
   "coverAlt": "Dunkler Porsche 911 mit geöffneter Tür in einer nächtlichen Szene; Portfolioaufnahme, kein Beispiel eines tatsächlichen Drucks.",
   "readingTime": 9,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Autofoto Druckauflösung berechnen: Die wichtigsten Punkte im Überbli",
+      "body": "Kernaussage: Eine einzelne Maximalgröße gibt es nicht\nWie groß kann ein: Die mögliche Druckgröße hängt zunächst von den Pixelmaßen des fertigen Bildes ab\nDrucker-DPI und Bild-PPI auseinanderhalten: PPI beschreibt die Pixel der Bilddatei je Zoll der Ausgabe\nGroßformat schon beim Autofoto-Shooting: Wenn ein Wandbild geplant ist, erwähne Format und späteren Betrachtungsabstand bereits im Briefing für die Aufnahme"
+    },
     {
       "_template": "textBlock",
       "headline": "Wie groß kann ein Autofoto gedruckt werden?",
@@ -79,6 +86,12 @@
       "body": "Wenn ein Wandbild geplant ist, erwähne Format und späteren Betrachtungsabstand bereits im Briefing für die Aufnahme. So lassen sich Bildausschnitt, Umgebung und wichtige Details passend vorbereiten. Bei einem Fahrzeug, das als großes Motiv wirken soll, ist es hilfreich, nicht erst am Ende zu entscheiden, dass plötzlich ein enger Zuschnitt oder ein ungewöhnliches Format gebraucht wird.\n\nDie Rechnung gibt dir eine belastbare erste Orientierung, aber keine Garantie für ein bestimmtes Druckergebnis. Pixelmaß, Schärfe, Ausschnitt, Material, Druckverfahren und Betrachtungsabstand müssen zusammenpassen. Wenn du für ein eigenes Fahrzeug oder eine Marke eine Bildserie mit möglichem Print planst, kann ein [Autofotograf](/blog-autofotograf-finden.html) die spätere Ausgabe bereits bei der Motivplanung berücksichtigen."
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Häufige Fragen zu Autofotos im Großformat",
       "items": [
@@ -109,11 +122,11 @@
       "headline": "Quellen zur Druckauflösung",
       "links": [
         {
-        "label": "Adobe: Pixelmaße und Resampling in Photoshop",
-        "href": "https://helpx.adobe.com/de/photoshop/desktop/crop-resize-transform/resize-adjust-resolution/image-size-resolution-and-resampling.html",
-        "description": "Erklärt, wie Pixelmaße, physische Größe und PPI zusammenhängen und wie Neuberechnung Pixel hinzufügt oder entfernt."
-      },
-      {
+          "label": "Adobe: Pixelmaße und Resampling in Photoshop",
+          "href": "https://helpx.adobe.com/de/photoshop/desktop/crop-resize-transform/resize-adjust-resolution/image-size-resolution-and-resampling.html",
+          "description": "Erklärt, wie Pixelmaße, physische Größe und PPI zusammenhängen und wie Neuberechnung Pixel hinzufügt oder entfernt."
+        },
+        {
           "label": "Adobe: Druckauflösung und Betrachtungsabstand",
           "href": "https://helpx.adobe.com/de/photoshop/desktop/crop-resize-transform/resize-adjust-resolution/resolution-specs-for-printing-images.html",
           "description": "Einordnung von 300 PPI als Richtwert und davon, weshalb große Prints mit größerem Betrachtungsabstand anders beurteilt werden."
@@ -137,6 +150,11 @@
           "label": "SAIC Service Bureau: PPI und Betrachtungsdistanz",
           "href": "https://sites.saic.edu/servicebureau/home/help_center/resolution-viewing-distance/",
           "description": "Eine institutionelle Druckerei zeigt eigene Orientierungswerte für Pixeldichte und Betrachtungsabstand."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]
     }
@@ -160,7 +178,7 @@
     "noIndex": false
   },
   "createdAt": "2026-11-06T14:21:51Z",
-  "updatedAt": "2027-10-01T07:00:00Z",
+  "updatedAt": "2028-05-26T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Großformatdruck in Düsseldorf",

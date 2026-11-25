@@ -102,8 +102,45 @@
     "migrationStatus": "reviewed",
     "renderSource": "legacy-file"
   },
-  "updatedAt": "2026-07-21 22:35:09.413+00",
+  "updatedAt": "2026-11-24T09:00:00.000Z",
   "createdAt": "2026-05-31 18:09:46.802+00",
   "status": "published",
-  "payloadId": "195"
+  "payloadId": "195",
+  "guideSection": {
+    "eyebrow": "Motorsport Düsseldorf",
+    "headline": "Motorsport- & Tracktool-Fotografie ab Düsseldorf und NRW.",
+    "intro": "Ob rennfertiges Tracktool in der Werkstatt, Vorbereitung im Rheinland oder Begleitung zum Trackday: Hier verbinden wir technische Dokumentation mit dynamischer Bildsprache.",
+    "items": [
+      {
+        "title": "Tracktools, Umbauten und Sponsoren-Liveries",
+        "text": "Überrollkäfig, Semislicks, Aerodynamikteile und Folierungen werden so inszeniert, dass Technik und Design klar lesbar bleiben – on Location in Düsseldorf oder direkt in der Halle."
+      },
+      {
+        "title": "Vorher-Nachher & Werkstatt-Atmosphäre",
+        "text": "Auch vor dem ersten Rollout entstehen starke Serien in der Garage oder am Transporter – mit gezieltem mobilem Licht für kontrollierte Schatten und Metall-Texturen."
+      },
+      {
+        "title": "Begleitung zu Trackdays und Fahrevents ab NRW",
+        "text": "Von Düsseldorf aus sind bekannte Strecken im Westen und angrenzenden Ausland gut erreichbar. Zeitplan, Akkreditierung und gewünschte Perspektiven klären wir vorab."
+      },
+      {
+        "title": "Klare Konditionen für Fahrer und Teams",
+        "text": "Einzelserien starten bei 250 € inkl. MwSt., Event- und Trackday-Begleitungen werden transparent nach Dauer, Anfahrt und Nutzungsrechten vereinbart."
+      }
+    ],
+    "links": [
+      {
+        "label": "Motorsportfotografie Übersicht",
+        "href": "/motorsport-fotografie.html"
+      },
+      {
+        "label": "Performance Car Fotografie",
+        "href": "/performance-car-fotografie-duesseldorf.html"
+      },
+      {
+        "label": "Portfolio Sportwagen",
+        "href": "/portfolio/portfolio-auswahl-sportwagen"
+      }
+    ]
+  }
 }

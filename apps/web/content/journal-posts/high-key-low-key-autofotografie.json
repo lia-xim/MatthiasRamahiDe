@@ -9,16 +9,23 @@
     "Licht",
     "Bildgestaltung"
   ],
-  "publishedAt": "2027-07-29T07:00:00.000Z",
+  "publishedAt": "2028-02-08T08:00:00.000Z",
   "excerpt": "High-Key und Low-Key sind Tonwertentscheidungen. So planst du helle oder dunkle Fahrzeugbilder, erhältst Karosseriekonturen und prüfst den Lack.",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
-  "coverAlt": "Dunkler SUV vor einem hellen Abendhimmel; öffentliches Portfoliofoto als Beispiel für ausgeprägte helle und dunkle Bildflächen.",
+  "coverImage": "/assets/optimized/assets-portfolio-dsc2788-1-1920.webp",
+  "coverAlt": "Exterieur · Dämmerung",
   "readingTime": 8,
   "blocks": [
     {
       "_template": "textBlock",
       "headline": "",
       "body": "High-Key und Low-Key beschreiben, welche Tonwerte ein Bild prägen. Beim Auto verändert diese Entscheidung nicht nur die Stimmung: Sie beeinflusst, ob die Karosserie als helle Fläche, dunkle Form oder Folge kontrollierter Reflexe erscheint. Ein heller Lack macht ein Bild nicht automatisch zu High-Key, und ein schwarzes Auto ist nicht automatisch Low-Key.\n\nPlane zuerst, wie viel der Szene hell oder dunkel bleiben soll. Danach richtest du Hintergrund, Licht und Kamerabelichtung auf diese Bildidee aus. Der Leitfaden zeigt, wie du die zwei Richtungen für ganze Fahrzeuge gestaltest und dabei erkennbare Form, Lackfarbe und wichtige Details erhältst. Die Fotos im Beitrag sind bereits veröffentlichte Portfolio-Beispiele; sie dokumentieren keine bestimmten High-Key- oder Low-Key-Beleuchtungssetups."
+    },
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "High-Key und Low-Key Autofotografie: Die wichtigsten Punkte im Überb",
+      "body": "Kernaussage: High-Key und Low-Key bei Autofotos: Bildziel, Hintergrund, Reflexe und Belichtung planen, ohne Karosseriekonturen oder Lackzeichnung zu verlieren\nMit Bildziel und Einsatz entscheiden: Überlege vor dem Aufbau, welche Rolle das Foto erfüllen soll\nBelichtung messen, statt den: Eine Kameraautomatik versucht, eine Szene in Richtung eines mittleren Tonwerts auszugleichen\nEin kurzer Ablauf für: Entscheide, ob das Bild insgesamt hell oder dunkel wirken soll und wofür es verwendet wird"
     },
     {
       "_template": "textBlock",
@@ -75,6 +82,12 @@
       ]
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Häufige Fragen zu High-Key und Low-Key bei Autos",
       "items": [
@@ -119,6 +132,11 @@
           "label": "Digital Camera World: Car photography tips",
           "href": "https://www.digitalcameraworld.com/photography/photo-technique/car-photography-tips",
           "description": "Breiter Autofotografie-Leitfaden mit kurzen Hinweisen zu hellen und dunklen Bildwirkungen."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]
     }
@@ -137,12 +155,12 @@
     "searchIntent": "Informations- und Produktionsabsicht: Fotografierende und Automotive-Marken wählen eine helle oder dunkle Tonwertgestaltung für ein Fahrzeugbild. Der Beitrag erklärt Bildziel, Hintergrund, Reflexkontrolle, Belichtung und den Unterschied zu neutralen Verkaufsbildern; keine allgemeine Studio-, Lackfarben- oder Schwarz-Weiß-Anleitung.",
     "canonicalUrl": "https://matthiasramahi.de/blog-high-key-low-key-autofotografie.html",
     "legacyUrl": "blog-high-key-low-key-autofotografie.html",
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "ogImage": "/assets/optimized/assets-portfolio-dsc2788-1-1920.webp",
     "noIndex": false
   },
   "status": "scheduled",
   "createdAt": "2026-11-05T07:00:00Z",
-  "updatedAt": "2027-07-29T07:00:00Z",
+  "updatedAt": "2028-02-08T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",

@@ -102,8 +102,45 @@
     "migrationStatus": "reviewed",
     "renderSource": "legacy-file"
   },
-  "updatedAt": "2026-07-21 22:35:09.413+00",
+  "updatedAt": "2026-11-24T09:00:00.000Z",
   "createdAt": "2026-05-31 17:44:12.643+00",
   "status": "published",
-  "payloadId": "167"
+  "payloadId": "167",
+  "guideSection": {
+    "eyebrow": "Exotic Cars",
+    "headline": "Exotic-Car-Fotografie: Diskret, kuratiert, auf Sammlerniveau.",
+    "intro": "Seltene Supersportwagen und Kleinserien brauchen eine ruhige Inszenierung, verlässliche Diskretion und eine Bildsprache, die dem Wert des Fahrzeugs gerecht wird.",
+    "items": [
+      {
+        "title": "Diskretion und geschützte Abläufe",
+        "text": "Auf Wunsch fotografieren wir in privaten Hallen, abgeschlossenen Höfen oder zu ruhigen Randzeiten ohne Publikum. Standortdetails und Kennzeichen bleiben auf Wunsch komplett anonym."
+      },
+      {
+        "title": "Skulpturale Lichtführung für komplexe Karosserien",
+        "text": "Scharfe Luftkanäle, tiefe Diffusoren und geschwungene Kotflügel brauchen ruhige Lichtkanten, damit die Form lesbar bleibt statt in unruhigen Reflexen unterzugehen."
+      },
+      {
+        "title": "Archiv, Verkauf, Auktionskatalog oder Wand-Edition",
+        "text": "Die hochauflösenden Dateien eignen sich sowohl für internationale Verkaufs- und Auktionsplattformen als auch für großformatige Fine-Art-Prints auf Acrylglas oder Büttenpapier."
+      },
+      {
+        "title": "Individuelle Planung in NRW und deutschlandweit",
+        "text": "Einstieg ab 250 € inkl. MwSt. für Einzelserien; Sammlungsdokumentationen und mehrtägige Produktionen werden individuell geplant."
+      }
+    ],
+    "links": [
+      {
+        "label": "Sportwagenfotografie",
+        "href": "/sportwagen-fotografie.html"
+      },
+      {
+        "label": "Sammlerfahrzeug Fotografie",
+        "href": "/sammlerfahrzeug-fotografie-duesseldorf.html"
+      },
+      {
+        "label": "Portfolio Sportwagen",
+        "href": "/portfolio/portfolio-auswahl-sportwagen"
+      }
+    ]
+  }
 }

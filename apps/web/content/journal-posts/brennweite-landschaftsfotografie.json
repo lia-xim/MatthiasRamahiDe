@@ -9,12 +9,19 @@
     "Bildgestaltung",
     "Bildwinkel"
   ],
-  "publishedAt": "2027-09-29T07:00:00.000Z",
+  "publishedAt": "2028-05-23T07:00:00.000Z",
   "excerpt": "Welche Brennweite passt zur Landschaft? Entscheide nach Bildwinkel, Standpunkt und Motiv: So setzt du Weitwinkel, Normalbereich und Tele bewusst ein.",
   "coverImage": "/assets/landscape/202608-dresden-dsc8441.webp",
   "coverAlt": "Basteibrücke zwischen Sandsteinfelsen und bewaldeten Hängen unter bewölktem Himmel",
   "readingTime": 8,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Brennweite Landschaftsfotografie: Die wichtigsten Punkte im Überblic",
+      "body": "Kernaussage: Es gibt keine einzelne beste Brennweite\nDie richtige Frage beginnt: Welche Brennweite ist die beste für Landschaftsfotos?\nTele: Eine längere Brennweite hilft, aus einer großen Landschaft einen klaren Teil herauszulösen\nObjektivwahl auch an Weg: Für eine Wanderung zählt neben dem Bildwinkel auch, welches Gewicht du tragen möchtest und wie oft du den Bildausschnitt wechseln willst"
+    },
     {
       "_template": "textBlock",
       "headline": "Die richtige Frage beginnt bei der Bildidee",
@@ -66,6 +73,12 @@
       "_template": "textBlock",
       "headline": "Objektivwahl auch an Weg und Ausgabe ausrichten",
       "body": "Für eine Wanderung zählt neben dem Bildwinkel auch, welches Gewicht du tragen möchtest und wie oft du den Bildausschnitt wechseln willst. Ein Zoom kann mehrere Bildwinkel abdecken und Objektivwechsel reduzieren. Eine Festbrennweite kann eine bewusste Begrenzung sein, wenn sie zu den Motiven und zum eigenen Arbeitsstil passt. Für eine einzelne Landschaftsaufnahme ist kein bestimmter Objektivtyp zwingend.\n\nDenk außerdem an das spätere Format. Ein sehr breiter Ausschnitt kann als Panorama oder Querformat wirken, während eine kompaktere Ansicht vielleicht besser in ein anderes Seitenverhältnis passt. Wenn du ein Bild als Wandmotiv planst, beurteile Auswahl und Format zusammen mit Betrachtungsabstand und Raum. Dazu passt der Beitrag [Landschaftsbild als Fine-Art-Print auswählen](/blog-landschaftsbild-fine-art-print-auswaehlen.html). Für eine mehrteilige weite Ansicht erklärt [Landschaftspanorama fotografieren](/blog-landschaftspanorama-fotografieren.html) den Aufnahme- und Stitching-Workflow."
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Landschaftsmotive als Fine-Art-Print anfragen",
+      "text": "Ausgewählte Landschaftsaufnahmen erscheinen als hochwertige Fine-Art-Prints auf Archivpapier. Schreib mir Motivwunsch und gewünschtes Wandformat.",
+      "buttonLabel": "Fine-Art-Print anfragen"
     },
     {
       "_template": "faqBlock",
@@ -121,6 +134,11 @@
           "label": "Sony Deutschland: Objektive für unterschiedliche Landschaftsbilder",
           "href": "https://www.sony.de/lenses/lenses-by-subject",
           "description": "Sony zeigt unterschiedliche Bildwirkungen von Ultraweitwinkel bis Tele in der Landschaftsfotografie."
+        },
+        {
+          "label": "Landschaftsfotografie & Fine-Art-Prints",
+          "href": "/landschaftsfotografie.html",
+          "description": "Kuratierte Landschaftsmotive als Wandbilder und Sammler-Editionen."
         }
       ]
     }
@@ -150,7 +168,7 @@
   },
   "status": "scheduled",
   "createdAt": "2026-11-06T11:25:51Z",
-  "updatedAt": "2027-09-29T07:00:00.000Z",
+  "updatedAt": "2028-05-23T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Landschaftsfotografie",
@@ -176,13 +194,6 @@
     {
       "label": "Landschaftsbild als Fine-Art-Print auswählen",
       "href": "/blog-landschaftsbild-fine-art-print-auswaehlen.html",
-      "seoPurpose": "related-editorial",
-      "rel": "follow",
-      "openInNewTab": false
-    },
-    {
-      "label": "Basteibrücke fotografieren",
-      "href": "/blog-basteibruecke-fotografieren-bildaufbau-standpunkt.html",
       "seoPurpose": "related-editorial",
       "rel": "follow",
       "openInNewTab": false

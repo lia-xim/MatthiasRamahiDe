@@ -10,9 +10,16 @@
   ],
   "excerpt": "Welche Bilder eine Oldtimer-Versicherung verlangt, hängt vom Anbieter und Tarif ab. So stellst du den geforderten Fotoordner zusammen und erkennst, wann ein Gutachten dazukommt.",
   "coverImage": "/uploads/payload/20250418-DSC006552.webp",
-  "coverAlt": "Roter klassischer Rennwagen in einer Ausstellung; Portfolioaufnahme als Themenbild, kein Versicherungsnachweis.",
+  "coverAlt": "Roter klassischer Rennwagen in sauberer Dreiviertelansicht in einer Halle",
   "readingTime": 7,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Welche Fotos Oldtimer-Versicherungen typischerweise verlangen",
+      "body": "Tarifvorgabe entscheidet: Es gibt keinen einheitlichen Foto-Standard – immer die konkrete Checkliste des gewünschten Haftpflicht- oder Kaskotarifs anfordern\nTypischer Standard-Satz: Alle vier Außenseiten (oft schräg/gerade), Innenraum, Tacho/Kilometerstand, Motorraum und Kofferraum bei gleichmäßiger Höhe\nAbgrenzung zum Gutachten: Fotos belegen sichtbaren Zustand zum Stichtag, ersetzen bei höheren Werten oder speziellen Kasko-Tarifen aber kein Wertgutachten"
+    },
     {
       "_template": "textBlock",
       "headline": "Die Fotoliste hängt von Versicherer und Tarif ab",
@@ -61,6 +68,12 @@
       "body": "Mit dieser Anfrage klärst du die wichtigsten Punkte vor dem Fotografieren:\n\n\"Ich möchte für meinen Oldtimer [Marke, Modell, Baujahr] den Tarif [Tarif/Haftpflicht/Kasko] beantragen. Welche Ansichten und Unterlagen benötigen Sie für genau diesen Antrag? Reichen aktuelle Smartphone-Fotos oder ist eine Kurzbewertung beziehungsweise ein Wertgutachten nötig? Sollen Kilometerstand, FIN, Fahrzeugschein, Umbauten oder vorhandene Schäden aufgenommen werden? Welche Dateiformate und Höchstgrößen akzeptiert der Upload, und über welchen Weg soll ich die Bilder einreichen?\"\n\nNotiere die Antwort zusammen mit Tarif und Antragsdatum. So kannst du später nachvollziehen, welche Fotoliste für diesen Antrag galt."
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Professionelles Auto-Fotoshooting in NRW planen",
+      "text": "Du brauchst stimmige Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto im Raum Düsseldorf, Erkrath und NRW? Shootings starten bei 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Häufige Fragen zu Oldtimer-Versicherungsfotos",
       "items": [
@@ -107,25 +120,21 @@
           "description": "Vorgaben zur Kurzbewertung und zu den darin enthaltenen Fahrzeugbildern."
         },
         {
-          "label": "FIVA ID Card: Oldtimer-Fotos für den ADAC-Antrag",
-          "href": "/blog-oldtimer-fotos-fiva-id-card.html",
-          "description": "Die Fotoliste für das gesonderte FIVA-Identitätsverfahren."
-        },
-        {
-          "label": "Oldtimer-Sammlung fotografisch dokumentieren",
-          "href": "/blog-oldtimer-sammlung-fotografisch-dokumentieren.html"
-        },
-        {
           "label": "Oldtimer-Fotografie",
           "href": "/oldtimer-fotografie.html"
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]
     }
   ],
-  "publishedAt": "2027-07-01T07:00:00.000Z",
+  "publishedAt": "2026-12-25T08:00:00.000Z",
   "status": "scheduled",
   "createdAt": "2026-11-04T17:00:00Z",
-  "updatedAt": "2027-07-01T07:00:00.000Z",
+  "updatedAt": "2026-12-25T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Oldtimer-Fotografie",
@@ -135,16 +144,16 @@
       "openInNewTab": false
     },
     {
-      "label": "FIVA ID Card: Oldtimer-Fotos für den ADAC-Antrag",
-      "href": "/blog-oldtimer-fotos-fiva-id-card.html",
-      "seoPurpose": "supporting-article",
+      "label": "Automobilfotografie in Düsseldorf & NRW",
+      "href": "/automobil-fotografie.html",
+      "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
     },
     {
-      "label": "Oldtimer-Sammlung fotografisch dokumentieren",
-      "href": "/blog-oldtimer-sammlung-fotografisch-dokumentieren.html",
-      "seoPurpose": "supporting-article",
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
     }

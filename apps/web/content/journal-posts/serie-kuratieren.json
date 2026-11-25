@@ -14,7 +14,7 @@
   "relatedPages": [
     {
       "label": "Home",
-      "href": "/index.html",
+      "href": "/",
       "seoPurpose": "contextual",
       "rel": "follow",
       "openInNewTab": false
@@ -50,20 +50,28 @@
   ],
   "blocks": [
     {
-      "body": "Prozess · 6 Min\n\nVon der ersten Bildauswahl bis zur finalen Reihenfolge: Warum kuratierte Fotografie-Serien stärker wirken als lose Einzelbilder.\n\nDieser Beitrag stützt die SEO-Cluster der Fotografie-Seiten und führt zu passenden Leistungs- und Standortseiten weiter.\n\n01",
-      "_template": "textBlock"
+      "_template": "textBlock",
+      "body": "Nach einem Shooting liegen oft hunderte Frames auf der Speicherkarte. Die eigentliche Qualität entsteht erst danach: durch konsequente Reduktion, klare Bildrollen und eine stimmige Reihenfolge."
     },
     {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Wie eine fotografische Serie kuratiert wird: Die wichtigsten Punkte ",
+      "body": "Kernaussage: Das hängt vom Einsatz ab. Für eine Website oder ein Inserat reichen oft 8 bis 16 gezielt gewählte Bilder, für eine Kampagne oder ein umfangreiches Portfolio können\nEine Serie braucht Richtung: Einzelbilder können stark sein, aber eine Serie muss führen\nReduktion macht wertiger: Eine gute Auswahl lässt Luft\nTechnische Konsistenz zählt: Farbe, Kontrast, Weißabgleich, Beschnitt und Helligkeit müssen zusammenarbeiten"
+    },
+    {
+      "_template": "textBlock",
       "headline": "Eine Serie braucht Richtung",
-      "body": "Einzelbilder können stark sein, aber eine Serie muss führen. Sie braucht Anfang, Verdichtung und Abschluss. Gerade bei Fahrzeugen, Portraits oder Landschaften entscheidet die Reihenfolge darüber, ob ein Betrachter bleibt oder nur schnell durchscrollt.\n\n02",
-      "_template": "textBlock"
+      "body": "Einzelbilder können stark sein, aber eine Serie muss führen. Sie braucht Einstieg, Verdichtung und Abschluss. Gerade bei Fahrzeugen, Portraits oder Landschaften entscheidet die Reihenfolge darüber, ob ein Betrachter bleibt oder nur flüchtig weiterscrollt."
     },
     {
+      "_template": "textBlock",
       "headline": "Erst Funktion, dann Geschmack",
-      "body": "Vor der Auswahl steht die Frage nach der Nutzung: Verkauf, Portfolio, Website, Print, Kampagne oder interne Präsentation. Erst wenn diese Funktion klar ist, lässt sich entscheiden, welche Bilder tragen und welche nur Varianten sind.\n\n03",
-      "_template": "textBlock"
+      "body": "Vor der Auswahl steht immer die Frage nach dem Einsatz: Verkauf, Portfolio, Website, Print, Kampagne oder interne Präsentation. Erst wenn diese Funktion feststeht, lässt sich objektiv entscheiden, welche Bilder wirklich tragen und welche nur redundante Varianten sind."
     },
     {
+      "_template": "imageSequence",
       "headline": "Bildnotizen aus dem Portfolio",
       "layout": "triptych",
       "items": [
@@ -82,28 +90,69 @@
           "caption": "Portraitmotiv als Beispiel für eine andere Bildrolle",
           "cropIntent": "editorial"
         }
-      ],
-      "_template": "imageSequence"
+      ]
     },
     {
+      "_template": "textBlock",
       "headline": "Reduktion macht wertiger",
-      "body": "Eine gute Auswahl lässt Luft. Ähnliche Motive konkurrieren miteinander und schwächen oft den Eindruck. Besser ist eine knappe Serie mit klaren Rollen: Einstieg, Totale, Detail, Atmosphäre, Mensch oder Kontext und ein starkes Schlussbild.\n\n04",
-      "_template": "textBlock"
+      "body": "Eine gute Auswahl lässt Luft. Zu ähnliche Motive konkurrieren miteinander und verwässern den Eindruck. Besser ist eine konzentrierte Serie mit klaren Rollen: Einstieg, Totale, Detail, Atmosphäre, Mensch oder Kontext und ein starkes Schlussbild."
     },
     {
+      "_template": "textBlock",
       "headline": "Technische Konsistenz zählt",
-      "body": "Farbe, Kontrast, Beschnitt und Helligkeit müssen zusammenarbeiten. Eine Serie wirkt hochwertig, wenn jedes Bild eigenständig bleibt und trotzdem dieselbe visuelle Sprache spricht.",
-      "_template": "textBlock"
+      "body": "Farbe, Kontrast, Weißabgleich, Beschnitt und Helligkeit müssen zusammenarbeiten. Eine Serie wirkt hochwertig, wenn jedes Bild für sich bestehen kann und trotzdem dieselbe visuelle Handschrift trägt."
     },
     {
-      "headline": "Kurze Fragen.",
-      "body": "Das hängt vom Einsatz ab. Für eine Website reichen oft 8 bis 16 Bilder, für eine Kampagne oder ein Portfolio können mehr Varianten sinnvoll sein.",
-      "_template": "textBlock"
+      "_template": "linkList",
+      "headline": "Kuratierte Portfolios & Fotografie-Bereiche",
+      "links": [
+        {
+          "label": "Portfolio Übersicht",
+          "href": "/portfolio.html"
+        },
+        {
+          "label": "Automobilfotografie Düsseldorf",
+          "href": "/automobil-fotografie-duesseldorf.html"
+        },
+        {
+          "label": "Portraitfotografie Düsseldorf",
+          "href": "/portraitfotografie-duesseldorf.html"
+        },
+        {
+          "label": "Alle Fotografie-Bereiche",
+          "href": "/fotografie.html"
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Eine durchdachte Bildserie für dein Projekt planen",
+      "text": "Von der ersten Shotlist bis zur fertig kuratierten Auswahl in Düsseldorf und NRW – transparent kalkuliert ab 250 € inkl. MwSt.",
+      "buttonLabel": "Projekt anfragen"
+    },
+    {
+      "_template": "faqBlock",
+      "headline": "Häufige Fragen zum Kuratieren von Fotoserien",
+      "items": [
+        {
+          "question": "Wie viele Bilder gehören in eine starke Serie?",
+          "answer": "Das hängt vom Einsatz ab. Für eine Website oder ein Inserat reichen oft 8 bis 16 gezielt gewählte Bilder, für eine Kampagne oder ein umfangreiches Portfolio können mehr Varianten mit klaren Rollen sinnvoll sein."
+        },
+        {
+          "question": "Warum sollte man fast identische Winkel aussortieren?",
+          "answer": "Zwei fast gleiche Aufnahmen nehmen sich gegenseitig die Spannung. Entscheide dich immer für den einen stärkeren Frame – so wirkt die gesamte Serie deutlich professioneller."
+        }
+      ]
     }
   ],
-  "readingTime": 2,
+  "readingTime": 4,
   "seo": {
-    "title": "Wie eine fotografische Serie kuratiert wird | Matthias Ramahi",
+    "title": "Fotoserie kuratieren: Bildauswahl & Reihenfolge",
     "description": "Von der ersten Bildauswahl bis zur finalen Reihenfolge: Warum kuratierte Fotografie-Serien stärker wirken als lose Einzelbilder.",
     "secondaryKeywords": [],
     "internalLinkAnchors": [],
@@ -137,7 +186,7 @@
     "extractedImagePaths": [],
     "extractedText": "Home / Journal / Prozess Prozess · 6 Min Wie eine fotografische Serie kuratiert wird Von der ersten Bildauswahl bis zur finalen Reihenfolge: Warum kuratierte Fotografie-Serien stärker wirken als lose Einzelbilder. Matthias Ramahi Aktualisiert 27.05.2026 Dieser Beitrag stützt die SEO-Cluster der Fotografie-Seiten und führt zu passenden Leistungs- und Standortseiten weiter. Portfolio ansehen Automobil Fotografie Oldtimer Fotografie 01 Eine Serie braucht Richtung Einzelbilder können stark sein, aber eine Serie muss führen. Sie braucht Anfang, Verdichtung und Abschluss. Gerade bei Fahrzeugen, Portraits oder Landschaften entscheidet die Reihenfolge darüber, ob ein Betrachter bleibt oder nur schnell durchscrollt. 02 Erst Funktion, dann Geschmack Vor der Auswahl steht die Frage nach der Nutzung: Verkauf, Portfolio, Website, Print, Kampagne oder interne Präsentation. Erst wenn diese Funktion klar ist, lässt sich entscheiden, welche Bilder tragen und welche nur Varianten sind. 03 Reduktion macht wertiger Eine gute Auswahl lässt Luft. Ähnliche Motive konkurrieren miteinander und schwächen oft den Eindruck. Besser ist eine knappe Serie mit klaren Rollen: Einstieg, Totale, Detail, Atmosphäre, Mensch oder Kontext und ein starkes Schlussbild. 04 Technische Konsistenz zählt Farbe, Kontrast, Beschnitt und Helligkeit müssen zusammenarbeiten. Eine Serie wirkt hochwertig, wenn jedes Bild eigenständig bleibt und trotzdem dieselbe visuelle Sprache spricht. Kurze Fragen. Wie viele Bilder gehören in eine Serie? Das hängt vom Einsatz ab. Für eine Website reichen oft 8 bis 16 Bilder, für eine Kampagne oder ein Portfolio können mehr Varianten sinnvoll sein."
   },
-  "updatedAt": "2026-08-24T20:44:39.177Z",
+  "updatedAt": "2026-11-24T09:15:00.000Z",
   "createdAt": "2026-05-28T19:07:35.589Z",
   "status": "published",
   "payloadId": "7",

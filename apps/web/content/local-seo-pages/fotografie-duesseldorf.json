@@ -8,7 +8,20 @@
   "heroSlides": [],
   "heroPanels": [],
   "localProof": [],
-  "localFaq": [],
+  "localFaq": [
+    {
+      "question": "Welche Fotografie-Bereiche bietest du in Düsseldorf an?",
+      "answer": "Ich arbeite in sechs spezialisierten Bereichen: Automobilfotografie, Sportwagenfotografie, Oldtimerfotografie, Motorradfotografie, Portraitfotografie (Business, Personal Branding, Dating & privat) sowie Landschaftsfotografie als Fine-Art-Prints."
+    },
+    {
+      "question": "Wo finden Shootings in Düsseldorf statt?",
+      "answer": "Je nach Motiv und Nutzung im Studio in Düsseldorf, on location im Medienhafen, am Rheinufer, im Nordpark, direkt beim Fahrzeug im Autohaus oder im nahegelegenen Neandertal bei Erkrath."
+    },
+    {
+      "question": "Was kostet ein Fotoshooting in Düsseldorf?",
+      "answer": "Ein Shooting beginnt bei 250 € inkl. MwSt. Der konkrete Preis richtet sich nach Motiv, Dauer, Bildumfang, Location und geplanter Nutzung – du erhältst vorab ein transparentes Angebot."
+    }
+  ],
   "blocks": [
     {
       "headline": "Ein Einstieg, sechs Bereiche.",
@@ -40,8 +53,8 @@
   "contactSection": {},
   "targetKeyword": "Fotografie Düsseldorf",
   "seo": {
-    "title": "Fotografie Düsseldorf | Matthias Ramahi",
-    "description": "Fotografie Düsseldorf: Übersicht für Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft mit direkten Einstiegen in passende Bildbereiche.",
+    "title": "Fotograf Düsseldorf: Auto, Motorrad & Portrait ab 250 €",
+    "description": "Fotograf in Düsseldorf & NRW: Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Fine-Art-Landschaft. Klare Planung, Studio & Locations ab 250 €.",
     "canonicalUrl": "https://matthiasramahi.de/fotografie-duesseldorf.html",
     "legacyUrl": "fotografie-duesseldorf.html",
     "noIndex": false,
@@ -53,15 +66,61 @@
     "sourceFile": "fotografie-duesseldorf.html",
     "sourceUrl": "https://matthiasramahi.de/fotografie-duesseldorf.html",
     "migrationStatus": "reviewed",
-    "renderSource": "payload-legacy-html",
-    "renderedHeadHtml": "\n  <meta charset=\"utf-8\" />\n  <meta name=\"viewport\" content=\"width=device-width,initial-scale=1\" />\n  <title>Fotografie | Übersicht der Bereiche | Matthias Ramahi</title>\n  <meta name=\"robots\" content=\"noindex,follow\" />\n  <link rel=\"canonical\" href=\"https://matthiasramahi.de/fotografie.html\" />\n  <meta http-equiv=\"refresh\" content=\"0; url=/fotografie.html\" />\n  <script>window.location.replace('/fotografie.html');</script>\n  <style>body{font:14px/1.5 system-ui,sans-serif;color:#1a1815;background:#f1ede4;margin:0;padding:48px;text-align:center}</style>\n",
-    "renderedBodyHtml": "\n  <p>Diese Seite wurde verschoben. Weiter zu <a href=\"/fotografie.html\">/fotografie.html</a>.</p>\n",
+    "renderSource": "structured-astro",
     "afterFooterHtml": "",
-    "bodyClass": "",
-    "extractedText": "Diese Seite wurde verschoben. Weiter zu /fotografie.html ."
+    "bodyClass": ""
   },
-  "updatedAt": "2026-05-28 19:45:25.685+00",
+  "updatedAt": "2026-11-23T18:30:00.000Z",
   "createdAt": "2026-05-28 19:07:31.254+00",
   "status": "published",
-  "payloadId": "37"
+  "payloadId": "37",
+  "guideSection": {
+    "eyebrow": "Fotografie in Düsseldorf",
+    "headline": "Sechs Fotografie-Bereiche in Düsseldorf.",
+    "intro": "Düsseldorf verbindet moderne Architektur, Rheinufer, Medienhafen und gewachsene Industrie-Kulissen auf kurzen Wegen. Jeder Bereich hat seinen eigenen Ablauf.",
+    "items": [
+      {
+        "title": "Fahrzeuge: Medienhafen, Rhein und Industrie",
+        "text": "Für Automobil-, Sportwagen-, Oldtimer- und Motorradserien bietet Düsseldorf klare Linien am Medienhafen, weiten Himmel am Rheinufer und ruhige Gewerbe- oder Industrieflächen im Süden."
+      },
+      {
+        "title": "Portraits: Business, Personal Branding & privat",
+        "text": "Business-Portraits, Headshots, Männerportraits und Dating-Shootings entstehen im Studio in Düsseldorf, vor urbaner Architektur oder draußen am Rhein und im Neandertal."
+      },
+      {
+        "title": "Fine-Art-Landschaft & Druck aus einer Hand",
+        "text": "Für Wohnräume, Praxen und Büros entstehen limitierte Landschafts-Editionen inklusive Beratung zu Format, Hahnemühle-Papier, Alu-Dibond oder Acrylglas."
+      },
+      {
+        "title": "Ablauf & Kosten",
+        "text": "Nach deiner kurzen Anfrage klären wir Motiv, Location, Lichtfenster und Nutzungszweck. Shootings beginnen bei 250 € inkl. MwSt. – klar kalkuliert vor dem Termin."
+      }
+    ],
+    "links": [
+      {
+        "label": "Autofotografie Düsseldorf",
+        "href": "/autofotografie-duesseldorf.html"
+      },
+      {
+        "label": "Motorradfotografie Düsseldorf",
+        "href": "/motorrad-fotografie-duesseldorf.html"
+      },
+      {
+        "label": "Portraitfotografie Düsseldorf",
+        "href": "/portraitfotografie-duesseldorf.html"
+      },
+      {
+        "label": "Personal Branding Düsseldorf",
+        "href": "/personal-branding-fotografie-duesseldorf.html"
+      },
+      {
+        "label": "Dating-Fotoshooting Düsseldorf",
+        "href": "/dating-fotoshooting-duesseldorf.html"
+      },
+      {
+        "label": "Fotoshooting Preise",
+        "href": "/fotoshooting-preise-duesseldorf.html"
+      }
+    ]
+  }
 }

@@ -9,12 +9,19 @@
     "Lichtführung",
     "Farbwiedergabe"
   ],
-  "publishedAt": "2027-02-17T08:00:00.000Z",
+  "publishedAt": "2027-05-07T07:00:00.000Z",
   "excerpt": "So fotografierst du Metalliclack am Auto: Reflexe ordnen, den tatsächlichen Farbton bewahren und eine nachvollziehbare Bildserie planen.",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+  "coverImage": "/uploads/payload/20250418-DSC00660.webp",
   "coverAlt": "Schwarzer SUV im Abendlicht an einer Wasserfläche; Reflexe liegen auf der Karosserie.",
   "readingTime": 8,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Metalliclack Auto fotografieren: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Achte auf geordnete Reflexflächen, die der Karosserieform folgen\nDer Lack zeigt Licht: Bei einem metallic lackierten Auto soll das Bild meist zwei Dinge zugleich zeigen: den Farbton und die Form der Karosserie\nTageslicht und Showroomlicht unterscheiden: Tageslicht bietet große Reflexflächen, verändert aber seine Farbe und Richtung im Laufe des Tages\nDie Bildserie nach ihrem: Eine starke Metallicaufnahme ist nicht automatisch eine vollständige Fahrzeugserie"
+    },
     {
       "headline": "Der Lack zeigt Licht und Form zugleich",
       "body": "Bei einem metallic lackierten Auto soll das Bild meist zwei Dinge zugleich zeigen: den Farbton und die Form der Karosserie. Das ist schwieriger, als nur den Lack möglichst glänzend erscheinen zu lassen. In der Oberfläche spiegeln sich Himmel, Gebäude, Fenster oder Leuchten. Je nach Standpunkt laufen diese Reflexe als breite Flächen über Türen und Haube oder zerschneiden wichtige Konturen. Eine gute Aufnahme ordnet das Umfeld so, dass die Lackwirkung lesbar bleibt.\n\nDer folgende Ablauf hilft bei einer Bildserie für ein privates Fahrzeug, ein Portfolio oder eine Markenkommunikation. Wenn Bilder den Zustand eines Verkaufsfahrzeugs darstellen sollen, bleibt eine nachvollziehbare Wiedergabe wichtiger als ein dramatischer Farbeffekt.",
@@ -91,9 +98,20 @@
           "description": "Erklärung des winkelabhängigen Flops bei Metallic- und Perleffektlacken.",
           "href": "https://www.axalta.com/content/dam/NA/HQ/Public/Axalta/Documents/Brochures/AX-Color-Improvement-Guide.pdf",
           "label": "Axalta: Color Improvement Guide – Flop"
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ],
       "_template": "linkList"
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
     },
     {
       "headline": "Kurze Fragen",
@@ -131,12 +149,12 @@
     "searchIntent": "Informationssuche: Wie lassen sich Metalliclack und seine Lichtreflexe so fotografieren, dass Farbe und Karosserieform in der Serie plausibel bleiben?",
     "canonicalUrl": "https://matthiasramahi.de/blog-metalliclack-am-auto-fotografieren.html",
     "legacyUrl": "blog-metalliclack-am-auto-fotografieren.html",
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "ogImage": "/uploads/payload/20250418-DSC00660.webp",
     "noIndex": false
   },
   "status": "scheduled",
   "createdAt": "2026-11-03T17:00:00Z",
-  "updatedAt": "2027-02-17T08:00:00.000Z",
+  "updatedAt": "2027-05-07T07:00:00.000Z",
   "relatedPages": [
     {
       "rel": "follow",
@@ -144,6 +162,20 @@
       "seoPurpose": "commercial-support",
       "href": "/automobil-fotografie.html",
       "label": "Automobilfotografie"
+    },
+    {
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fahrzeugserien konsistent planen",
+      "href": "/blog-fahrzeugserie-konsistent-planen.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
     }
   ]
 }

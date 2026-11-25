@@ -8,12 +8,19 @@
     "Ladeinfrastruktur",
     "Bildproduktion"
   ],
-  "publishedAt": "2027-06-19T07:00:00.000Z",
+  "publishedAt": "2027-12-03T08:00:00.000Z",
   "status": "scheduled",
   "excerpt": "Wie eine Bildserie Elektroauto, Ladepunkt und Nutzung zusammenbringt: von der Motivhierarchie über die Ortswahl bis zu sicheren, glaubwürdigen Aufnahmen.",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+  "coverImage": "/assets/portfolio/automobil-mercedes-interieur-tilt.webp",
   "readingTime": 9,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Ladeinfrastruktur fotografieren: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Das Bild sollte Fahrzeug und Ladelösung in der Gewichtung zeigen, die zur Kampagne passt\nNicht nur das Auto,: Eine Bildserie für Elektromobilität sollte zeigen, wie Fahrzeug und Ladeangebot zusammengehören\nKarosserie und Ladestation teilen: Auto und Station reagieren unterschiedlich auf Licht\nEin kurzes Briefing für: Was ist das Hauptprodukt: Fahrzeug, Wallbox, öffentliche Station, Lade-App oder das Zusammenspiel?"
+    },
     {
       "headline": "Nicht nur das Auto, auch die Ladelösung muss lesbar sein",
       "_template": "textBlock",
@@ -70,6 +77,21 @@
         {
           "label": "Nutzungsrechten für Fahrzeugfotos",
           "href": "/blog-nutzungsrechte-fahrzeugfotos.html"
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Motive, Bildformate und Übergabe vor dem Shooting sauber strukturieren."
+        },
+        {
+          "label": "Fahrzeugserien konsistent planen",
+          "href": "/blog-fahrzeugserie-konsistent-planen.html",
+          "description": "Wie Perspektiven, Licht und Bearbeitung über mehrere Modelle zusammenhalten."
         }
       ]
     },
@@ -89,6 +111,11 @@
         {
           "label": "Auto-Shooting-Briefing",
           "href": "/blog-auto-shooting-briefing.html"
+        },
+        {
+          "label": "Fahrzeugserien konsistent planen",
+          "href": "/blog-fahrzeugserie-konsistent-planen.html",
+          "description": "Wie Perspektiven, Licht und Bearbeitung über mehrere Modelle zusammenhalten."
         }
       ]
     },
@@ -96,6 +123,12 @@
       "headline": "Ein kurzes Briefing für Ladeinfrastruktur-Fotos",
       "_template": "textBlock",
       "body": "Vor dem Angebot oder Produktionstermin sollten Auftraggeber diese Fragen beantworten:\n\n• Was ist das Hauptprodukt: Fahrzeug, Wallbox, öffentliche Station, Lade-App oder das Zusammenspiel?\n• Wo soll die Ladesituation stattfinden: zu Hause, am Arbeitsplatz, an einem Zielort oder öffentlich?\n• Welche konkrete Kombination aus Fahrzeug, Station, Kabel und Bedienung ist freigegeben?\n• Welche Aussagen sollen die Bilder belegen, und welche technischen Angaben müssen getrennt als Text geprüft werden?\n• Welche Motive sind Pflicht: Übersicht, Anschluss, Detail, Nutzung oder Umgebung?\n• Welche Seitenverhältnisse und Kanäle werden benötigt?\n• Wer organisiert Zugang, Bedienung, Parkplatz und Freigabe von Marken oder Personen?\n• Wer nimmt Produktversion, Statusanzeige, Beschriftung und Bildunterschrift fachlich ab?\n\nMit diesen Antworten lässt sich entscheiden, ob ein einzelner Standort reicht oder mehrere Ladesituationen gebraucht werden. Erst dann wird sichtbar, wie groß die Produktion sein muss."
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
     },
     {
       "headline": "Häufige Fragen",
@@ -142,6 +175,11 @@
           "label": "GL Charge: Beispiel einer Fotoproduktion für Ladeinfrastruktur (2022)",
           "href": "https://webzone.si/en/work/gl-charge/",
           "description": "Projektbeispiel mit Fahrzeugen an privaten, dedizierten und öffentlichen Ladeorten."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]
     }
@@ -159,11 +197,11 @@
     "searchIntent": "Informations- und kommerzielle Recherche: Anbieter von Ladeinfrastruktur und Automotive-Marken planen Bilder, die Elektrofahrzeug, Ladepunkt und Nutzung gemeinsam verständlich zeigen.",
     "canonicalUrl": "https://matthiasramahi.de/blog-elektroauto-ladeinfrastruktur-fotografieren.html",
     "legacyUrl": "blog-elektroauto-ladeinfrastruktur-fotografieren.html",
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "ogImage": "/assets/portfolio/automobil-mercedes-interieur-tilt.webp",
     "noIndex": false
   },
   "createdAt": "2026-11-03T15:00:00Z",
-  "updatedAt": "2026-12-09T08:00:00.000Z",
+  "updatedAt": "2027-12-03T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
@@ -171,7 +209,21 @@
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
+    },
+    {
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fahrzeugserien konsistent planen",
+      "href": "/blog-fahrzeugserie-konsistent-planen.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
     }
   ],
-  "coverAlt": "Schwarzer SUV im Abendlicht neben einer Wasserfläche"
+  "coverAlt": "Interieur · Cockpit"
 }

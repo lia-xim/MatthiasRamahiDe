@@ -9,12 +9,19 @@
     "Farbprofil",
     "Druckvorbereitung"
   ],
-  "publishedAt": "2027-05-22T07:00:00Z",
+  "publishedAt": "2027-10-15T07:00:00.000Z",
   "excerpt": "Wie Fahrzeugfarben vom Bearbeitungsmonitor bis zu Web und Druck nachvollziehbar bleiben: Displayprofil, Softproof und passender Export in einem klaren Workflow.",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
-  "coverAlt": "Dunkler SUV vor einem farbigen Abendhimmel; Himmel und Umgebung spiegeln sich auf der Karosserie.",
+  "coverImage": "/assets/optimized/assets-portfolio-dsc2329-1920.webp",
+  "coverAlt": "Tuning · Perspektive",
   "readingTime": 8,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Farbmanagement Autofotos: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Für private Webbilder ist eine aufwendige Einrichtung nicht immer nötig\nDie Lackfarbe endet nicht: Ein Fahrzeugfoto kann in Lightroom stimmig aussehen und nach dem Export auf einer Website deutlich kühler, blasser oder kräftiger wirken\nFür Drucke mit einem: Ein Druck gibt nicht alle Monitorfarben wieder\nFarbmanagement macht Unterschiede sichtbar,: Auch eine sorgfältig exportierte Datei sieht auf verschiedenen Geräten unterschiedlich aus"
+    },
     {
       "_template": "textBlock",
       "headline": "Die Lackfarbe endet nicht am Bearbeitungsmonitor",
@@ -75,6 +82,12 @@
       "body": "Auch eine sorgfältig exportierte Datei sieht auf verschiedenen Geräten unterschiedlich aus. Displays unterscheiden sich in Farbumfang und Helligkeit; manche Anwendungen beachten eingebettete Profile nicht zuverlässig. Farbmanagement verringert vermeidbare Abweichungen in der eigenen Arbeitskette, kontrolliert aber keine fremden Geräte oder Plattformoptimierungen.\n\nFür Onlinebilder ist ein plausibler sRGB-Export ein gutes Ziel. Wenn Farbe eine Verkaufsentscheidung beeinflusst, sollte das Foto nicht die einzige Grundlage sein: Eine Besichtigung zeigt den Lack unter anderem Licht. Ein Bild vermittelt den Charakter des Fahrzeugs, ist aber kein Farbmessgerät."
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Häufige Fragen",
       "items": [
@@ -115,6 +128,11 @@
           "label": "Adobe: Farbprofile zuweisen oder konvertieren",
           "href": "https://helpx.adobe.com/photoshop/desktop/adjust-color/color-profiles/change-a-documents-color-profile.html",
           "description": "Erklärt den Unterschied zwischen unverändertem Farbwert mit neu zugewiesenem Profil und der Umwandlung in einen anderen Farbraum."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]
     }
@@ -131,11 +149,11 @@
     "searchIntent": "Workflow-Suche: Fahrzeugfarben am profilierten Monitor beurteilen und Autofotos für Web oder Druck passend exportieren.",
     "canonicalUrl": "https://matthiasramahi.de/blog-autofotos-farbmanagement-monitor-export.html",
     "legacyUrl": "blog-autofotos-farbmanagement-monitor-export.html",
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "ogImage": "/assets/optimized/assets-portfolio-dsc2329-1920.webp",
     "noIndex": false
   },
   "createdAt": "2026-11-03T17:00:00Z",
-  "updatedAt": "2027-05-22T07:00:00Z",
+  "updatedAt": "2027-10-15T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",

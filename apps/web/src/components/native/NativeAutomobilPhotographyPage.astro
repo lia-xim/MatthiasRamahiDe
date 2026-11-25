@@ -17,9 +17,9 @@ import {
   siblingFamilyLinks,
 } from '../../lib/localSeoFamilyContent'
 import { mergeAuthoredLocalSeoContent } from '../../lib/authoredSeoContent'
+import { curateFamilyClusterLinks } from '../../lib/familyClusterLinks'
 import { cmsHeroTitleFitStyle, splitCmsHeroTitleLines, splitHeroTitleLines } from '../../lib/heroTitleLines'
 import { familyHeroCopy, familyVisualSlots, getFamilyVisualSourceDoc } from '../../lib/localSeoFamilyVisuals'
-import { isCurrentPageHref } from '../../lib/pageLinks'
 import { getLegacyBackedDoc, routeForDoc, toDisplayAssetUrl, type PayloadDoc } from '../../lib/payload'
 import { articleJsonLd } from '../../lib/seo'
 import { tinaAttrs } from '../../lib/tinaFieldAttrs'
@@ -553,98 +553,31 @@ const focusRelatedLead =
     : keywordFocusCopy?.relatedLead ||
       'Automobil ist die Klammer. Schau dir die spezialisierten Disziplinen an - gleicher Anspruch, anderer Bildfokus. Die Links führen schnell zu der Bildwelt, die zum Fahrzeug, zur Nutzung und zum geplanten Shooting passt.'
 
-type LinkTuple = readonly [href: string, label: string]
-
-const allCityLinks: LinkTuple[] = [
+const allCityLinks = [
   ['automobil-fotografie-duesseldorf.html', 'Düsseldorf'],
-  ['automobil-fotografie-erkrath.html', 'Erkrath'],
-  ['automobil-fotografie-ratingen.html', 'Ratingen'],
   ['automobil-fotografie-koeln.html', 'Köln'],
   ['automobil-fotografie-essen.html', 'Essen'],
   ['automobil-fotografie-dortmund.html', 'Dortmund'],
   ['automobil-fotografie-duisburg.html', 'Duisburg'],
   ['automobil-fotografie-bochum.html', 'Bochum'],
   ['automobil-fotografie-wuppertal.html', 'Wuppertal'],
-  ['automobil-fotografie-leverkusen.html', 'Leverkusen'],
-  ['automobil-fotografie-oberhausen.html', 'Oberhausen'],
   ['automobil-fotografie-krefeld.html', 'Krefeld'],
   ['automobil-fotografie-moenchengladbach.html', 'Mönchengladbach'],
-  ['automobil-fotografie-moers.html', 'Moers'],
-  ['automobil-fotografie-gelsenkirchen.html', 'Gelsenkirchen'],
-  ['automobil-fotografie-bergisch-gladbach.html', 'Bergisch Gladbach'],
-  ['automobil-fotografie-solingen.html', 'Solingen'],
-  ['automobil-fotografie-remscheid.html', 'Remscheid'],
-  ['automobil-fotografie-mettmann.html', 'Mettmann'],
-  ['automobil-fotografie-hilden.html', 'Hilden'],
-  ['automobil-fotografie-dormagen.html', 'Dormagen'],
-  ['automobil-fotografie-neuss.html', 'Neuss'],
   ['automobil-fotografie-nrw.html', 'NRW'],
-]
-
-const parentLink: LinkTuple = [defaultLegacyFile, 'Automobilfotografie Übersicht']
-const allLocationLinks = [parentLink, ...allCityLinks]
-const locationLinkByHref = new Map(allLocationLinks.map((link) => [link[0], link]))
-const pickLocationLinks = (hrefs: string[]) =>
-  hrefs.flatMap((href) => {
-    const link = locationLinkByHref.get(href)
-    return link ? [link] : []
-  })
-const isFamilyLocationPage = isParentPage || allCityLinks.some(([href]) => isCurrentPageHref(href, legacyFile))
-const isDuesseldorfFamilyPage = legacyFile === 'automobil-fotografie-duesseldorf.html'
-const isNrwFamilyPage = legacyFile === 'automobil-fotografie-nrw.html'
-const priorityLocationHrefs = [
-  'automobil-fotografie-duesseldorf.html',
-  'automobil-fotografie-nrw.html',
-  'automobil-fotografie-erkrath.html',
-  'automobil-fotografie-mettmann.html',
-  'automobil-fotografie-ratingen.html',
-  'automobil-fotografie-neuss.html',
-]
-const cityLinks = (
-  isNrwFamilyPage
-    ? allLocationLinks
-    : isParentPage
-      ? pickLocationLinks(priorityLocationHrefs)
-      : isDuesseldorfFamilyPage
-        ? pickLocationLinks([
-            defaultLegacyFile,
-            'automobil-fotografie-nrw.html',
-            'automobil-fotografie-erkrath.html',
-            'automobil-fotografie-mettmann.html',
-            'automobil-fotografie-ratingen.html',
-            'automobil-fotografie-neuss.html',
-          ])
-        : pickLocationLinks([
-            defaultLegacyFile,
-            'automobil-fotografie-duesseldorf.html',
-            'automobil-fotografie-nrw.html',
-          ])
-).filter(([href]) => !isCurrentPageHref(href, legacyFile))
+] as const
 
 const intentLinks = [
   {
-    key: 'auto-fotoshooting',
-    label: 'Auto-Fotoshooting',
-    genericHref: 'auto-fotoshooting.html',
-    duesseldorfHref: 'auto-fotoshooting-duesseldorf.html',
+    key: 'fotoshooting-mit-auto',
+    label: 'Fotoshooting mit Auto',
+    genericHref: 'fotoshooting-mit-auto.html',
+    duesseldorfHref: 'autofotografie-duesseldorf.html',
   },
   {
     key: 'bilder-mit-auto',
     label: 'Bilder mit Auto',
     genericHref: 'bilder-mit-auto.html',
-    duesseldorfHref: 'bilder-mit-auto-duesseldorf.html',
-  },
-  {
-    key: 'fotoshooting-mit-auto',
-    label: 'Fotoshooting mit Auto',
-    genericHref: 'fotoshooting-mit-auto.html',
-    duesseldorfHref: 'fotoshooting-mit-auto-duesseldorf.html',
-  },
-  {
-    key: 'automotive-fotografie',
-    label: 'Automotive Fotografie',
-    genericHref: 'automotive-fotografie.html',
-    duesseldorfHref: 'automotive-fotografie-duesseldorf.html',
+    duesseldorfHref: 'bilder-mit-auto.html',
   },
   {
     key: 'autofotografie',
@@ -656,19 +589,19 @@ const intentLinks = [
     key: 'fahrzeugfotografie',
     label: 'Fahrzeugfotografie',
     genericHref: 'fahrzeugfotografie.html',
-    duesseldorfHref: 'fahrzeugfotografie-duesseldorf.html',
+    duesseldorfHref: 'autofotografie-duesseldorf.html',
   },
   {
     key: 'auto-fotografieren-tipps',
     label: 'Auto-Fotospots & Tipps',
     genericHref: 'auto-fotografieren-tipps.html',
-    duesseldorfHref: 'auto-fotografieren-tipps-duesseldorf.html',
+    duesseldorfHref: 'auto-fotografieren-tipps.html',
   },
   {
     key: 'autohaus-fotografie',
     label: 'Autohaus Fotografie',
     genericHref: 'autohaus-fotografie.html',
-    duesseldorfHref: 'autohaus-fotografie-duesseldorf.html',
+    duesseldorfHref: 'autohaus-fotografie.html',
   },
   {
     key: 'autoverkauf-fotos',
@@ -677,51 +610,43 @@ const intentLinks = [
     duesseldorfHref: 'autoverkauf-fotos-duesseldorf.html',
   },
 ] as const
-type IntentKey = (typeof intentLinks)[number]['key']
-const intentLinkByKey = new Map(intentLinks.map((link) => [link.key, link]))
-const primaryIntentKeys: IntentKey[] = [
-  'auto-fotoshooting',
-  'automotive-fotografie',
-  'autohaus-fotografie',
-  'autoverkauf-fotos',
-  'bilder-mit-auto',
-  'auto-fotografieren-tipps',
-]
-const intentNeighbors: Partial<Record<IntentKey, IntentKey[]>> = {
-  'auto-fotoshooting': ['bilder-mit-auto', 'fotoshooting-mit-auto', 'auto-fotografieren-tipps'],
-  'bilder-mit-auto': ['auto-fotoshooting', 'fotoshooting-mit-auto', 'automotive-fotografie'],
-  'fotoshooting-mit-auto': ['auto-fotoshooting', 'bilder-mit-auto', 'autofotografie'],
-  'automotive-fotografie': ['autohaus-fotografie', 'autoverkauf-fotos', 'fahrzeugfotografie'],
-  autofotografie: ['fahrzeugfotografie', 'automotive-fotografie', 'auto-fotoshooting'],
-  fahrzeugfotografie: ['autofotografie', 'automotive-fotografie', 'autoverkauf-fotos'],
-  'auto-fotografieren-tipps': ['auto-fotoshooting', 'autofotografie', 'automotive-fotografie'],
-  'autohaus-fotografie': ['autoverkauf-fotos', 'automotive-fotografie', 'fahrzeugfotografie'],
-  'autoverkauf-fotos': ['autohaus-fotografie', 'fahrzeugfotografie', 'auto-fotoshooting'],
-}
-const currentIntentKey = legacyFile
-  .replace(/\.html$/, '')
-  .replace(/-duesseldorf$/, '') as IntentKey
-const selectedIntentKeys = isParentPage
-  ? intentLinks.map((link) => link.key)
-  : isDuesseldorfFamilyPage || isNrwFamilyPage
-    ? primaryIntentKeys
-    : !isFamilyLocationPage && intentNeighbors[currentIntentKey]
-      ? intentNeighbors[currentIntentKey]!
-      : primaryIntentKeys.slice(0, 3)
-const searchLinks: LinkTuple[] = selectedIntentKeys
-  .flatMap((key) => {
-    const link = intentLinkByKey.get(key)
-    if (!link) return []
-    const href = !isParentPage && scope.slug === 'duesseldorf' ? link.duesseldorfHref : link.genericHref
-    return [[href, link.label] as LinkTuple]
-  })
-  .filter(([href]) => !isCurrentPageHref(href, legacyFile))
-const showCrossFamilyCluster = isDuesseldorfFamilyPage || isNrwFamilyPage
+
+const clusterCuration = curateFamilyClusterLinks({
+  allCityLinks,
+  currentPage: legacyFile,
+  defaultLegacyFile,
+  familyLabel: 'Automobilfotografie',
+  intentLinks,
+  intentNeighbors: {
+    'fotoshooting-mit-auto': ['bilder-mit-auto', 'autofotografie', 'auto-fotografieren-tipps'],
+    'bilder-mit-auto': ['fotoshooting-mit-auto', 'autofotografie', 'auto-fotografieren-tipps'],
+    autofotografie: ['fahrzeugfotografie', 'fotoshooting-mit-auto', 'autohaus-fotografie'],
+    fahrzeugfotografie: ['autofotografie', 'autohaus-fotografie', 'autoverkauf-fotos'],
+    'auto-fotografieren-tipps': ['fotoshooting-mit-auto', 'autofotografie', 'bilder-mit-auto'],
+    'autohaus-fotografie': ['autoverkauf-fotos', 'fahrzeugfotografie', 'autofotografie'],
+    'autoverkauf-fotos': ['autohaus-fotografie', 'fahrzeugfotografie', 'fotoshooting-mit-auto'],
+  },
+  isParentPage,
+  primaryIntentKeys: [
+    'fotoshooting-mit-auto',
+    'autofotografie',
+    'fahrzeugfotografie',
+    'autohaus-fotografie',
+    'autoverkauf-fotos',
+    'bilder-mit-auto',
+    'auto-fotografieren-tipps',
+  ],
+  scopeSlug: scope.slug,
+})
+const {
+  cityLinks,
+  intentHeading: curatedIntentHeading,
+  isNrwFamilyPage,
+  searchLinks,
+  showCrossFamilyCluster,
+} = clusterCuration
 const curatedCityHeading =
   isParentPage || isNrwFamilyPage ? cityHeading : 'Automobilfotografie <em>im Cluster.</em>'
-const curatedIntentHeading = isParentPage
-  ? 'Automobilfotografie <em>nach Anliegen.</em>'
-  : 'Passende Automobilfotografie <em>nach Anliegen.</em>'
 ---
 <AdoptedPageLayout
   legacyFile={legacyFile}
@@ -736,6 +661,13 @@ const curatedIntentHeading = isParentPage
     { href: automobilHeroSlides[0].mobile, media: '(max-width: 900px)' },
     { href: automobilHeroSlides[0].src, media: '(min-width: 901px)' },
   ]}
+  mobileCta={{
+    secondaryHref: '#galerie',
+    secondaryLabel: 'Galerie',
+    priceNote: 'ab 250 €',
+    href: '#anfrage',
+    label: 'Shooting anfragen',
+  }}
 >
   {preview && (
     <PreviewToolbar
@@ -780,40 +712,67 @@ const curatedIntentHeading = isParentPage
       </div>
     </section>
 
-    <section class="st-pull" data-header-theme="light">
-      <div class="st-pull-inner">
-        <span class="st-pull-kicker">{focusPullKicker}</span>
-        <blockquote class="st-pull-quote" {...tinaAttrs(doc?.statement, 'headline')}>
-          <strong>
-            {focusPullTitle.headline}
-            {focusPullTitle.headline && focusPullTitle.emphasis ? ' ' : ''}
-            {focusPullTitle.emphasis && <span class="accent" {...tinaAttrs(doc?.statement, 'emphasis')}>{focusPullTitle.emphasis}</span>}
-          </strong>
-        </blockquote>
-        <div class="st-pull-copy">
-          <p class="st-pull-lead" {...tinaAttrs(doc?.statement?.body?.[0], 'text')}>{focusPullLead}</p>
-          {focusPullRest.map((paragraph, index) => <p class="st-pull-lead" {...tinaAttrs(doc?.statement?.body?.[index + 1], 'text')}>{paragraph}</p>)}
-        </div>
-        <div class="st-pull-cta">
-          <a href="#anfrage">Shooting buchen <span aria-hidden="true">→</span></a>
-        </div>
-      </div>
-    </section>
+    {!isParentPage && (
+      <>
+        <section class="bg" data-header-theme="dark" aria-label="Ausgewählte Automobil-Arbeiten" id="bgSec">
+          <div class="bg-head" id="galerie">
+            <div class="ttl">
+              <h2 {...tinaAttrs(doc?.portfolioTiles?.[0], 'label')}>{focusGalleryHeadline}</h2>
+            </div>
+            <div class="meta">
+              <a href="/portfolio/portfolio-auswahl-automobil">Automobil-Auswahl ansehen →</a>
+            </div>
+          </div>
 
-    {isPracticalGuide && !hasCmsGuide && (
-      <NativePracticalGuide
-        eyebrow="Praxisleitfaden"
-        title="Auto fotografieren: die Reihenfolge vor Ort."
-        intro="Die Checkliste ordnet die wichtigsten Entscheidungen so, wie sie bei einer Fahrzeugserie tatsächlich anfallen. Sie ergänzt die Bildbeispiele und führt bei höherem Qualitäts- oder Nutzungsanspruch direkt zur passenden Leistung."
-        items={practicalGuideItems}
-        links={[
-          { href: '/automobil-fotografie-duesseldorf.html', label: 'Automobilfotografie Düsseldorf' },
-          { href: '/portfolio/portfolio-auswahl-automobil', label: 'Automobil-Projektbeleg' },
-        ]}
-      />
+          <div class="bg-grid" id="bgGrid">
+            {inheritedGalleryTiles.map((tile, index) => (
+              <button type="button" class={`bg-tile ${tile.className}`} data-i={index} data-full={tile.full} aria-label={`Frame ${index + 1} vergrößern`}>
+                <img loading="lazy" src={tile.src} alt={tile.alt} width={tile.width} height={tile.height} decoding="async" {...tinaAttrs(galleryImageSource(index), 'image')} />
+              </button>
+            ))}
+          </div>
+        </section>
+
+        <div class="mr-gallery-cta-band" data-header-theme="dark">
+          <div class="mr-gallery-cta">
+            <span>Shooting-Pakete ab 250 € inkl. MwSt. — Location, Licht &amp; Bildsatz in NRW</span>
+            <a href="#anfrage">Eigenes Fahrzeug anfragen <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </>
     )}
 
-    <NativeGuideSection doc={doc} />
+    {isParentPage && (
+      <section class="auto-archive" id="galerie" data-header-theme="dark" aria-labelledby="auto-archive-title">
+        <div class="auto-archive__inner">
+          <header class="auto-archive__head">
+            <div>
+              <span class="auto-archive__kicker">Mehr als eine Serie</span>
+              <h2 id="auto-archive-title">Verschiedene Fahrzeuge. <em>Verschiedene Bildwelten.</em></h2>
+            </div>
+            <p>
+              Diese Auswahl verbindet Location-Shootings, Messebilder, Interieur und Details aus mehreren Produktionen.
+              So wird auf einen Blick sichtbar, wie unterschiedlich Fahrzeug, Umgebung und späterer Einsatz die Bildsprache prägen.
+            </p>
+          </header>
+          <div class="auto-archive__grid" data-site-lightbox-gallery>
+            {automotiveArchiveImages.map((image) => (
+              <figure class={`auto-archive-card ${image.className}`}>
+                <button type="button" data-full={image.src} aria-label={`${image.label} vergrößern`}>
+                  <img src={image.src} alt={image.alt} width={image.width} height={image.height} loading="lazy" decoding="async" />
+                </button>
+                <figcaption>{image.label}</figcaption>
+              </figure>
+            ))}
+            <div class="auto-archive__cta">
+              <span class="auto-archive__cta-kicker">Projekt anfragen</span>
+              <p>Ein Shooting wird als zusammenhängender Bildsatz geplant – die Seite zeigt bewusst mehr als nur ein einzelnes Projekt.</p>
+              <a href="#anfrage">Eigenes Fahrzeug anfragen <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
 
     <section class="sw" id="sichten" data-header-theme="dark">
       <header class="sw-head">
@@ -854,59 +813,6 @@ const curatedIntentHeading = isParentPage
       <div class="sw-progress" id="swProgress"><div class="rail"><div class="fill" id="swFill"></div></div></div>
     </section>
 
-    {!isParentPage && (
-      <section class="bg" data-header-theme="dark" aria-label="Ausgewählte Automobil-Arbeiten" id="bgSec">
-        <div class="bg-head">
-          <div class="ttl">
-            <h2 {...tinaAttrs(doc?.portfolioTiles?.[0], 'label')}>{focusGalleryHeadline}</h2>
-          </div>
-          <div class="meta">
-            <a href="/portfolio/portfolio-auswahl-automobil">Automobil-Auswahl ansehen →</a>
-          </div>
-        </div>
-
-        <div class="bg-grid" id="bgGrid">
-          {inheritedGalleryTiles.map((tile, index) => (
-            <button type="button" class={`bg-tile ${tile.className}`} data-i={index} data-full={tile.full} aria-label={`Frame ${index + 1} vergrößern`}>
-              <img loading="lazy" src={tile.src} alt={tile.alt} width={tile.width} height={tile.height} decoding="async" {...tinaAttrs(galleryImageSource(index), 'image')} />
-            </button>
-          ))}
-        </div>
-      </section>
-    )}
-
-    {isParentPage && (
-      <section class="auto-archive" data-header-theme="dark" aria-labelledby="auto-archive-title">
-        <div class="auto-archive__inner">
-          <header class="auto-archive__head">
-            <div>
-              <span class="auto-archive__kicker">Mehr als eine Serie</span>
-              <h2 id="auto-archive-title">Verschiedene Fahrzeuge. <em>Verschiedene Bildwelten.</em></h2>
-            </div>
-            <p>
-              Diese Auswahl verbindet Location-Shootings, Messebilder, Interieur und Details aus mehreren Produktionen.
-              So wird auf einen Blick sichtbar, wie unterschiedlich Fahrzeug, Umgebung und späterer Einsatz die Bildsprache prägen.
-            </p>
-          </header>
-          <div class="auto-archive__grid" data-site-lightbox-gallery>
-            {automotiveArchiveImages.map((image) => (
-              <figure class={`auto-archive-card ${image.className}`}>
-                <button type="button" data-full={image.src} aria-label={`${image.label} vergrößern`}>
-                  <img src={image.src} alt={image.alt} width={image.width} height={image.height} loading="lazy" decoding="async" />
-                </button>
-                <figcaption>{image.label}</figcaption>
-              </figure>
-            ))}
-            <div class="auto-archive__cta">
-              <span class="auto-archive__cta-kicker">Projekt anfragen</span>
-              <p>Ein Shooting wird als zusammenhängender Bildsatz geplant – die Seite zeigt bewusst mehr als nur ein einzelnes Projekt.</p>
-              <a href="#anfrage">Eigenes Fahrzeug anfragen <span aria-hidden="true">→</span></a>
-            </div>
-          </div>
-        </div>
-      </section>
-    )}
-
     <section class="ki" data-header-theme="light" aria-label="Für wen ich arbeite">
       <div class="section-inner">
         <div class="ki-head">
@@ -945,6 +851,41 @@ const curatedIntentHeading = isParentPage
         </div>
       </div>
     </section>
+
+    <section class="st-pull" data-header-theme="light">
+      <div class="st-pull-inner">
+        <span class="st-pull-kicker">{focusPullKicker}</span>
+        <blockquote class="st-pull-quote" {...tinaAttrs(doc?.statement, 'headline')}>
+          <strong>
+            {focusPullTitle.headline}
+            {focusPullTitle.headline && focusPullTitle.emphasis ? ' ' : ''}
+            {focusPullTitle.emphasis && <span class="accent" {...tinaAttrs(doc?.statement, 'emphasis')}>{focusPullTitle.emphasis}</span>}
+          </strong>
+        </blockquote>
+        <div class="st-pull-copy">
+          <p class="st-pull-lead" {...tinaAttrs(doc?.statement?.body?.[0], 'text')}>{focusPullLead}</p>
+          {focusPullRest.map((paragraph, index) => <p class="st-pull-lead" {...tinaAttrs(doc?.statement?.body?.[index + 1], 'text')}>{paragraph}</p>)}
+        </div>
+        <div class="st-pull-cta">
+          <a href="#anfrage">Shooting buchen <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    {isPracticalGuide && !hasCmsGuide && (
+      <NativePracticalGuide
+        eyebrow="Praxisleitfaden"
+        title="Auto fotografieren: die Reihenfolge vor Ort."
+        intro="Die Checkliste ordnet die wichtigsten Entscheidungen so, wie sie bei einer Fahrzeugserie tatsächlich anfallen. Sie ergänzt die Bildbeispiele und führt bei höherem Qualitäts- oder Nutzungsanspruch direkt zur passenden Leistung."
+        items={practicalGuideItems}
+        links={[
+          { href: '/automobil-fotografie-duesseldorf.html', label: 'Automobilfotografie Düsseldorf' },
+          { href: '/portfolio/portfolio-auswahl-automobil', label: 'Automobil-Projektbeleg' },
+        ]}
+      />
+    )}
+
+    <NativeGuideSection doc={doc} />
 
     {showCrossFamilyCluster && (
       <NativeFamilyClusterLinks

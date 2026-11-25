@@ -8,12 +8,19 @@
     "Available Light",
     "Fahrzeugshooting"
   ],
-  "publishedAt": "2026-12-03T08:00:00.000Z",
+  "publishedAt": "2026-12-04T08:00:00.000Z",
   "excerpt": "Auto nachts fotografieren beginnt mit dem vorhandenen Licht. So planst du Standort, Fokus, Belichtung und eine ruhige Bildserie für stehende Fahrzeuge.",
   "coverImage": "/uploads/payload/assets-photos-automobil-sunset-1921-1920x1280.webp",
   "coverAlt": "Dunkles Fahrzeug bei der blauen Stunde vor einem farbigen Abendhimmel",
   "readingTime": 9,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Richtwerte & Lichtstrategie für Auto-Nachtaufnahmen",
+      "body": "Zeitfenster: Blaue Stunde direkt nach Sonnenuntergang hält Himmelzeichnung und verhindert abgesoffene Schatten rund um dunklen Lack\nSetup für stehende Fahrzeuge: Stativ, RAW, niedrige Basis-ISO (100–400), moderate Blende für Konturschärfe und ruhige Belichtungszeit auf geradem Untergrund\nLichtqualität: Breite beleuchtete Fassaden und ruhige Leuchtflächen erzeugen weiche Reflexe über der Seite statt punktueller Lichtflecken von einzelnen Laternen"
+    },
     {
       "headline": "Das Licht der Umgebung trägt das Nachtbild",
       "body": "Für ein gutes Nachtfoto brauchst du zuerst eine klare Vorstellung davon, was am Auto sichtbar bleiben soll. Eine Straßenlaterne kann eine Dachlinie zeichnen, eine beleuchtete Fassade die Seitenfläche weich aufhellen und der Himmel in der Dämmerung noch Farbe geben. Das vorhandene Licht wird zum Ausgangspunkt für Standpunkt und Bildaufbau. Eine zusätzliche Lampe ist nicht automatisch die beste Lösung.\n\nDieser Leitfaden dreht sich um ein stehendes Fahrzeug und Available Light: also um Licht, das am Ort bereits vorhanden ist. Das unterscheidet die Aufgabe von einer geplanten Lightpainting-Serie mit gezielten Lichtzügen und zusammengesetzten Einzelbelichtungen. Wenn genau dieser Look gesucht ist, ist ein eigener Ablauf nötig. Hier geht es darum, wie sich ein Auto mit Abendlicht, Straßenbeleuchtung oder Architekturlicht fotografieren lässt, ohne die Szene durch zusätzliche Effekte zu überladen.\n\nVor dem Termin hilft eine einfache Frage: Welche Teile des Fahrzeugs sollen im Bild zuerst lesbar sein? Bei einer dunklen Karosserie können Kontur und Fenster wichtiger sein als der Lackglanz. Bei einer hellen Lackfarbe braucht es oft weniger Licht, damit Flächen nicht flach wirken. Erst wenn die Bildaufgabe klar ist, lohnt sich die Suche nach einem passenden Ort.",
@@ -79,6 +86,38 @@
       "_template": "textBlock"
     },
     {
+      "_template": "linkList",
+      "headline": "Weiterführende Beiträge & Leistungen",
+      "links": [
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Geplante Fahrzeugshootings bei Nacht, blauer Stunde oder kontrolliertem Licht."
+        },
+        {
+          "label": "Lightpainting bei Fahrzeugen",
+          "href": "/blog-lightpainting-fahrzeuge.html",
+          "description": "Wie gezielte Lichtwege auf abgedunkelten Flächen zu einer Serie kombiniert werden."
+        },
+        {
+          "label": "Rolling Shots mit dem Auto",
+          "href": "/blog-rolling-shots-auto.html",
+          "description": "Ablauf und sichere Umsetzung für dynamische Fahrbilder."
+        },
+        {
+          "label": "Motorrad nachts fotografieren",
+          "href": "/blog-motorrad-nachts-fotografieren.html",
+          "description": "Einstellungen für blaue Stunde, Lichtquellen und Light Trails."
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Professionelles Auto-Fotoshooting in NRW planen",
+      "text": "Du brauchst stimmige Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto im Raum Düsseldorf, Erkrath und NRW? Shootings starten bei 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "headline": "Häufige Fragen zur Autofotografie bei Nacht",
       "items": [
         {
@@ -112,7 +151,7 @@
     "noIndex": false
   },
   "createdAt": "2026-11-03T12:00:00.000Z",
-  "updatedAt": "2026-12-03T08:00:00.000Z",
+  "updatedAt": "2026-12-04T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
@@ -125,6 +164,13 @@
       "label": "Lightpainting bei Fahrzeugen",
       "href": "/blog-lightpainting-fahrzeuge.html",
       "seoPurpose": "editorial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
     }

@@ -8,11 +8,18 @@
     "Hallenlicht",
     "Autofotografie"
   ],
-  "publishedAt": "2027-04-04T07:00:00.000Z",
+  "publishedAt": "2027-07-27T07:00:00.000Z",
   "excerpt": "Wie gelingen Autofotos auf einer Messe? Mit passendem Timing, kontrolliertem Hallenlicht und bewusst gesetzten Spiegelungen entstehen klarere Bilder, auch wenn die Halle voll ist.",
-  "coverImage": "/uploads/payload/_DSC2310-2.webp",
+  "coverImage": "/uploads/payload/_DSC2316-2.webp",
   "readingTime": 8,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Auto auf Messe fotografieren: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Das hängt vom Event und dem Tagesprogramm ab\nEin Messefoto entsteht aus: Auf einer Automesse stehen Fahrzeuge unter wechselnden Spots, farbigen LED-Flächen und vielen Spiegelungen\nSpiegelungen auf Lack und: Autolack und Scheiben spiegeln die Halle mit\nKurze Shotlist für ein: Kontextbild: ganzes Fahrzeug plus genug vom Stand, damit die Messeumgebung erkennbar ist"
+    },
     {
       "headline": "Ein Messefoto entsteht aus Timing, Blickwinkel und Licht",
       "body": "Auf einer Automesse stehen Fahrzeuge unter wechselnden Spots, farbigen LED-Flächen und vielen Spiegelungen. Besucher bewegen sich durch den Bildrand, und rund um ein Auto sind oft weitere Fahrzeuge oder Messestände zu sehen. Gute Fotos entstehen, wenn du vor dem Auslösen kurz entscheidest, was das Bild zeigen soll: das vollständige Fahrzeug, ein einzelnes Detail oder die Atmosphäre der Präsentation. Danach kannst du Position, Ausschnitt und Moment gezielter wählen.\n\nDieser Beitrag richtet sich an Besucher und Fotografen, die ein ausgestelltes Auto fotografieren möchten. Er behandelt die Bildgestaltung unter den Bedingungen einer Halle. Wenn du eine Messeproduktion für eine Marke oder einen Aussteller planst, sind Briefing, Nutzung und Ablauf die wichtigeren Fragen; dafür gibt es den separaten Leitfaden zur Automotive-Messefotografie.",
@@ -82,6 +89,12 @@
       "_template": "textBlock"
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "headline": "Häufige Fragen",
       "items": [
         {
@@ -115,6 +128,16 @@
           "label": "How to Take Better Photos at Car Shows — Eastwood",
           "href": "https://www.eastwood.com/garage/how-to-take-better-photos-at-car-shows/",
           "description": "Praxisartikel über Perspektiven, Bilddetails und den passenden Moment bei Fahrzeugveranstaltungen."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Motive, Bildformate und Übergabe vor dem Shooting sauber strukturieren."
         }
       ],
       "_template": "linkList"
@@ -127,11 +150,11 @@
     "searchIntent": "Informationssuche: Messebesucher und Automotive-Fotografen möchten ausgestellte Autos trotz Hallenlicht, Spiegelungen und Publikum klar fotografieren und Regeln für Aufnahmen einhalten.",
     "canonicalUrl": "https://matthiasramahi.de/blog-auto-auf-messe-fotografieren.html",
     "legacyUrl": "blog-auto-auf-messe-fotografieren.html",
-    "ogImage": "/uploads/payload/_DSC2310-2.webp",
+    "ogImage": "/uploads/payload/_DSC2316-2.webp",
     "noIndex": false
   },
   "createdAt": "2026-11-03T17:00:00Z",
-  "updatedAt": "2027-04-04T07:00:00.000Z",
+  "updatedAt": "2027-07-27T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
@@ -146,8 +169,15 @@
       "seoPurpose": "related-editorial",
       "rel": "follow",
       "openInNewTab": false
+    },
+    {
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
     }
   ],
-  "coverAlt": "Silberner Sportwagen auf einer erhöhten Messefläche, von vorn seitlich unter rotem Hallenlicht fotografiert",
+  "coverAlt": "Widebody-Coupé von hinten, Messehalle bei Nacht",
   "status": "scheduled"
 }

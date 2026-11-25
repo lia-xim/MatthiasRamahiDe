@@ -9,12 +9,19 @@
     "KI-Suche",
     "Bild-SEO"
   ],
-  "publishedAt": "2026-12-21T08:00:00.000Z",
+  "publishedAt": "2027-01-15T08:00:00.000Z",
   "status": "scheduled",
   "excerpt": "Wie werden eigene Fahrzeugfotos für Suchmaschinen verständlich? Ein praxisnaher Leitfaden zu Bilddateien, Alt-Text, Seitenkontext, Ladezeit und den Grenzen von KI-Suchoptimierung.",
   "coverImage": "/uploads/payload/assets-portfolio-dsc3892-1920.webp",
   "readingTime": 8,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "So verstehen Google Bilder & KI-Suche deine Fahrzeugfotos",
+      "body": "Saubere Einbindung: Standard-HTML-`<img>`-Tags (oder `<picture>`) mit stabilen URLs, passenden Abmessungen und optimierter Dateigröße verwenden statt reiner CSS-Hintergründe\nSichtbarer Kontext: Aussagekräftiger Dateiname, präziser Alt-Text und unmittelbar umgebender Seitentext benennen Modell, Perspektive und Bildaufgabe ohne Keyword-Stopfen\nSuchintention treffen: Jede Seite beantwortet ein klares Thema samt eigenem Query-Fan-out rund um das gezeigte Motiv und lässt sich in der Search Console unter Bildsuche messen"
+    },
     {
       "headline": "Ein gutes Motiv braucht eine verständliche Seite",
       "body": "Ein starkes Autofoto kann in der Bildersuche gefunden werden – aber das Motiv allein erklärt einer Suchmaschine noch nicht, was darauf zu sehen ist und warum es auf dieser Seite steht. Entscheidend ist das Zusammenspiel aus zugänglicher Bilddatei, passendem Alternativtext und einer Seite, die das Fahrzeug oder die fotografische Aufgabe wirklich beschreibt. Das hilft Menschen beim Einordnen und schafft eine bessere Grundlage für die Suche. Eine Platzierung, ein Klick oder eine Erwähnung in einer KI-Antwort lässt sich damit nicht versprechen.",
@@ -101,9 +108,20 @@
           "label": "Search Console: Bericht zu generativen KI-Funktionen",
           "href": "https://support.google.com/webmasters/answer/16984139?hl=de",
           "description": "Beschreibt Impressionen nach Seite für AI Overviews und KI-Modus sowie die Einschränkung bei fehlenden Mindestimpressionen."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ],
       "_template": "linkList"
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Professionelles Auto-Fotoshooting in NRW planen",
+      "text": "Du brauchst stimmige Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto im Raum Düsseldorf, Erkrath und NRW? Shootings starten bei 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
     },
     {
       "headline": "Häufige Fragen",
@@ -139,13 +157,23 @@
         {
           "label": "Abgrenzung echter Fahrzeugfotos von KI-Bildern",
           "href": "/blog-echte-fahrzeugfotos-oder-ki.html"
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Motive, Bildformate und Übergabe vor dem Shooting sauber strukturieren."
+        },
+        {
+          "label": "Fahrzeugserien konsistent planen",
+          "href": "/blog-fahrzeugserie-konsistent-planen.html",
+          "description": "Wie Perspektiven, Licht und Bearbeitung über mehrere Modelle zusammenhalten."
         }
       ]
     }
   ],
   "seo": {
     "title": "Fahrzeugfotos für Google Bilder und KI-Suche",
-    "description": "Fahrzeugfotos für die Suche verständlich machen: offizielle Google-Hinweise zu Bilddateien, Alt-Text, Seitenkontext, Ladezeit und KI-Fanout – ohne Rankingversprechen.",
+    "description": "Fahrzeugfotos für Google Bilder & KI-Suche optimieren: saubere Bilddateien, präzise Alt-Texte, Seitenkontext und schnelle Auslieferung ohne Floskeln.",
     "focusKeyword": "Fahrzeugfotos Google Bilder",
     "searchIntent": "Informationssuche: Fotografen und Unternehmen möchten eigene Fahrzeugfotos in Google Bilder und generativen Suchfunktionen zugänglich und verständlich präsentieren.",
     "canonicalUrl": "https://matthiasramahi.de/blog-fahrzeugfotos-google-bildersuche-ai-suche.html",
@@ -154,7 +182,7 @@
     "noIndex": false
   },
   "createdAt": "2026-11-03T16:00:00Z",
-  "updatedAt": "2026-12-21T08:00:00.000Z",
+  "updatedAt": "2027-01-15T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
@@ -167,6 +195,13 @@
       "label": "Echte Fahrzeugfotos oder KI-Bilder",
       "href": "/blog-echte-fahrzeugfotos-oder-ki.html",
       "seoPurpose": "supporting-article",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
     }

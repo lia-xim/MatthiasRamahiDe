@@ -8,11 +8,18 @@
     "Inserat",
     "Motorradfotografie"
   ],
-  "publishedAt": "2026-11-29T08:00:00.000Z",
+  "publishedAt": "2026-12-11T08:00:00.000Z",
   "excerpt": "Gute Verkaufsfotos zeigen ein Motorrad vollständig und nachvollziehbar. Mit dieser Bildfolge planst du Ansichten, Details und ehrliche Zustandsbilder für dein Inserat.",
   "coverImage": "/uploads/payload/_DSC6968.webp",
   "readingTime": 9,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Pflicht-Bildfolge für ein glaubwürdiges Motorrad-Inserat",
+      "body": "Titelmotiv & Seiten: Klare Dreiviertelansicht vorn bei ruhigem Licht (bedeckter Himmel/offener Schatten) plus volle rechte Seite, linke Seite, Front und Heck\nAusstattung & Cockpit: Instrumente mit deutlich lesbarem Kilometerstand (spiegelungsfrei) sowie Umbauten und mitverkauftes Zubehör sauber dokumentieren\nEhrliche Zustandsbilder: Kratzer, Steinschläge und Verschleiß einmal im Überblick und einmal als Detail zeigen – schafft Vertrauen vor der Besichtigung"
+    },
     {
       "headline": "Ein Verkaufsfoto muss eine Frage beantworten",
       "body": "Wer ein Motorrad online anbietet, kann Besichtigung und Probefahrt nicht durch Bilder ersetzen. Gute Fotos helfen Interessenten aber dabei, das konkrete Bike einzuordnen: Welche Ausführung ist es? Wie stehen Teile, Lack und Zubehör da? Was sollte man bei einer Besichtigung genauer ansehen? Eine Verkaufsserie erfüllt deshalb eine andere Aufgabe als ein Erinnerungsbild oder ein atmosphärisches Shooting. Sie soll vollständig, ruhig und glaubwürdig sein.\n\nBeginne nicht mit der Frage, welches Bild am dramatischsten wirkt. Überlege zuerst, welche Ansichten ein ernsthafter Interessent braucht, bevor er Kontakt aufnimmt. Aus dieser Liste ergibt sich eine sinnvolle Bildfolge. Ein prägnantes Titelbild darf Interesse wecken; die folgenden Aufnahmen müssen dann die offenen Fragen nach und nach beantworten. Wenn das Motorrad Umbauten, Zubehör oder sichtbare Gebrauchsspuren hat, gehören sie zur Beschreibung des angebotenen Zustands.",
@@ -94,6 +101,33 @@
       "_template": "textBlock"
     },
     {
+      "_template": "linkList",
+      "headline": "Passende Leistungen & weiterführende Guides",
+      "links": [
+        {
+          "label": "Motorradfotografie in NRW",
+          "href": "/motorrad-fotografie.html",
+          "description": "Bildserien für Fahrer, Custom-Umbauten und Werkstätten."
+        },
+        {
+          "label": "Motorrad-Fotoshooting-Checkliste",
+          "href": "/blog-motorrad-fotoshooting-checkliste.html",
+          "description": "Vorbereitung von Bike, Location und Kleidung vor dem Termin."
+        },
+        {
+          "label": "Motorrad-Fotoshooting sicher planen",
+          "href": "/blog-motorrad-fotoshooting-sicherheit.html",
+          "description": "Klare Abläufe für Stand- und Fahrbilder ohne Risiko."
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Motorrad-Shooting in Düsseldorf & NRW planen",
+      "text": "Klare Linien, saubere Details und sichere Locations für dein Bike oder deine Werkstatt: Individuelle Shootings beginnen ab 250 € inkl. MwSt.",
+      "buttonLabel": "Motorrad-Shooting anfragen"
+    },
+    {
       "headline": "Kurze Fragen",
       "items": [
         {
@@ -117,7 +151,7 @@
     }
   ],
   "seo": {
-    "title": "Motorrad für den Verkauf fotografieren: Bildfolge fürs Inserat",
+    "title": "Motorrad für Verkauf fotografieren: Inserat-Folge",
     "description": "Welche Fotos braucht ein Motorrad-Inserat? Plane Außenansichten, Cockpit, Details und ehrliche Zustandsbilder in einer klaren Bildfolge.",
     "focusKeyword": "Motorrad für den Verkauf fotografieren",
     "searchIntent": "Informationssuche mit konkretem Verkaufsbezug: Motorradbesitzer möchten ihr Bike für ein Online-Inserat vollständig und glaubwürdig fotografieren.",
@@ -127,7 +161,7 @@
     "noIndex": false
   },
   "createdAt": "2026-11-03T12:30:00Z",
-  "updatedAt": "2026-11-29T08:00:00.000Z",
+  "updatedAt": "2026-12-11T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Motorradfotografie",
@@ -140,6 +174,13 @@
       "label": "Motorrad-Fotoshooting planen",
       "href": "/blog-motorrad-fotoshooting-checkliste.html",
       "seoPurpose": "related-editorial",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Motorrad-Fotoshooting sicher planen",
+      "href": "/blog-motorrad-fotoshooting-sicherheit.html",
+      "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
     }

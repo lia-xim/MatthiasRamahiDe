@@ -15,7 +15,7 @@
   "relatedPages": [
     {
       "label": "Home",
-      "href": "/index.html",
+      "href": "/",
       "seoPurpose": "contextual",
       "rel": "follow",
       "openInNewTab": false
@@ -47,19 +47,19 @@
       "seoPurpose": "contextual",
       "rel": "follow",
       "openInNewTab": false
-    },
-    {
-      "label": "Automobil-Fotografie Düsseldorf — Leistungen und Pakete",
-      "href": "/automobil-fotografie-duesseldorf.html",
-      "seoPurpose": "contextual",
-      "rel": "follow",
-      "openInNewTab": false
     }
   ],
   "blocks": [
     {
       "body": "Ein gutes Automobil-Bild entsteht nicht beim Auslösen. Es entsteht in vier Entscheidungen, die zwei Tage vorher getroffen werden müssen — Standort, Lichtquelle, Perspektive zur Karosserie, Tageszeit. Wer diese vier richtig setzt, hat ein Bild. Wer sie offen lässt, hat ein Produktfoto.\n\nDüsseldorf hat als Stadt eine eigene Lichtsignatur. Die Wasserflächen am Hafen, die Glasflächen in Derendorf, der dunkle Asphalt am Rheinufer und die Tunnel- und Brückenkanten am Medienhafen liefern alle eine andere Art von Licht. Das ist kein Zufall, das ist Material — und der erste Teil jeder Bildplanung ist die Frage, welches dieser Materialien das Fahrzeug am besten trägt.",
       "_template": "textBlock"
+    },
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Vier Entscheidungen vor jedem Auto-Shooting in Düsseldorf",
+      "body": "Standort zum Auto wählen: Architektur von Medienhafen bis Rheinkniebrücke gezielt nach Fahrzeugcharakter und Lackfarbe aussuchen\nLichtkante vor Lichtwand: Seitliche Streif- und Kantenreflexe zeichnen Sicken deutlicher als flaches Frontallicht\nDreiviertel-Front & Timing: Knappes 30-Minuten-Lichtfenster nutzen und 8–14 Motive als konsistente Sequenz statt Doppelungen liefern ([Übersicht Autofotografie Düsseldorf](/autofotografie-duesseldorf.html))"
     },
     {
       "headline": "Der Standort kommt zuerst",
@@ -90,7 +90,7 @@
     },
     {
       "headline": "Tageszeit ist eine Entscheidung",
-      "body": "Es gibt für jedes Automobil-Bild ein 30-Minuten-Fenster, in dem das Licht, der Verkehr, die Reflexionen und die Stimmung zusammenpassen. Außerhalb dieses Fensters sind die einzelnen Faktoren technisch ähnlich gut, das Bild wirkt aber nicht. Das Fenster ist meistens:\n\nStandort-Scouting, Tageszeitfenster und Hero-Achse vorab im Briefing definiert.",
+      "body": "Es gibt für jedes Automobil-Bild ein knappes 30-Minuten-Fenster, in dem Licht, Verkehr, Reflexionen und Stimmung zusammenpassen. Außerhalb dieses Fensters sind die Einzelfaktoren technisch ähnlich gut, das Bild wirkt aber spürbar flacher.\n\nIn der Praxis sind das frühe Morgenstunden am Wochenende (leere Flächen, weiches Licht), die letzte Stunde vor Sonnenuntergang (warme Lichtkanten entlang der Sicken) und die blaue Stunde kurz nach Sonnenuntergang (ausgewogenes Verhältnis zwischen Restlicht am Himmel und Scheinwerfern). Standort-Scouting, Tageszeitfenster und Hero-Achse werden deshalb vorab im Briefing definiert.",
       "_template": "textBlock"
     },
     {
@@ -102,6 +102,49 @@
       "headline": "Fazit",
       "body": "Automotive-Fotografie ist nicht eine Frage der Ausrüstung. Sie ist eine Frage von Reihenfolge: Standort, Lichtquelle, Hero-Achse, Tageszeitfenster, Kuration. Wer diese fünf Entscheidungen vor dem Auslöser trifft, kommt mit weniger Frames, aber stärkeren Bildern zurück. In Düsseldorf hilft die Stadt selbst dabei — sie liefert pro Stadtteil ein anderes Material. Man muss nur entscheiden, welches dem Fahrzeug gehört.",
       "_template": "textBlock"
+    },
+    {
+      "_template": "linkList",
+      "headline": "Automobilfotografie in Düsseldorf & NRW",
+      "links": [
+        {
+          "label": "Autofotografie Düsseldorf",
+          "href": "/autofotografie-duesseldorf.html"
+        },
+        {
+          "label": "Automobilfotografie Düsseldorf",
+          "href": "/automobil-fotografie-duesseldorf.html"
+        },
+        {
+          "label": "Portfolio Automobil",
+          "href": "/portfolio/portfolio-auswahl-automobil"
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Fahrzeug-Shooting in Düsseldorf anfragen",
+      "text": "Standort, Lichtfenster und Bildserie passend zu Lack und Nutzung geplant – Automobilfotografie in Düsseldorf ab 250 € inkl. MwSt.",
+      "buttonLabel": "Shooting anfragen"
+    },
+    {
+      "_template": "faqBlock",
+      "headline": "Häufige Fragen zur Automotive-Fotografie in Düsseldorf",
+      "items": [
+        {
+          "question": "Welche Tageszeit ist für Autofotos in Düsseldorf am besten?",
+          "answer": "Die letzten 60 bis 80 Minuten vor Sonnenuntergang sowie die anschließende blaue Stunde bieten die plastischsten Lichtkanten und weiche Reflexionen. Am Wochenende liefern auch frühe Morgenstunden ruhige, freie Flächen."
+        },
+        {
+          "question": "Welche Düsseldorfer Locations passen zu welchem Fahrzeug?",
+          "answer": "Moderne Glas- und Betonarchitektur im Medienhafen trägt Sportwagen und aktuelle Modelle, ruhige Rheinufer-Perspektiven passen zu zeitlosen Coupés und Cabrios, industrielle Flächen im Süden liefern rauen Kontrast."
+        }
+      ]
     }
   ],
   "readingTime": 4,
@@ -153,7 +196,7 @@
     ],
     "extractedText": "Ein gutes Automobil-Bild entsteht nicht beim Auslösen. Es entsteht in vier Entscheidungen, die zwei Tage vorher getroffen werden müssen — Standort, Lichtquelle, Perspektive zur Karosserie, Tageszeit. Wer diese vier richtig setzt, hat ein Bild. Wer sie offen lässt, hat ein Produktfoto. Düsseldorf hat als Stadt eine eigene Lichtsignatur. Die Wasserflächen am Hafen, die Glasflächen in Derendorf, der dunkle Asphalt am Rheinufer und die Tunnel- und Brückenkanten am Medienhafen liefern alle eine andere Art von Licht. Das ist kein Zufall, das ist Material — und der erste Teil jeder Bildplanung ist die Frage, welches dieser Materialien das Fahrzeug am besten trägt. Der Standort kommt zuerst Der häufigste Fehler in der Automobil-Fotografie ist die Reihenfolge: erst Auto, dann Location suchen. Richtig ist umgekehrt — der Charakter des Fahrzeugs entscheidet, welche Stadtarchitektur ihn trägt. Ein 911er der 80er Jahre will warmes Schmiedeisen, Backstein und urbane Schmalheit. Ein moderner GT will Glasfront, gerade Linien und kühle Beton-Tiefe. Ein Oldtimer-Cabrio braucht ein offenes Bild — Wasserkante, Allee, kein Hintergrundlärm. Drei Düsseldorfer Standortkategorien Industriekante — Hafenbecken, Werften, Lagergebäude. Liefert raue Texturen und gerichtetes Reflexlicht von Wasserflächen. Glas und Beton — Medienhafen, Kö-Bogen, Düsseldorfer Stadttor. Liefert kühle Reflexe und klare geometrische Hintergründe. Allee und Park — Hofgarten, Nordpark, Schlossufer Benrath. Liefert weiches Streulicht und einen ruhigen, unaufgeräumten Hintergrund. Lichtkante schlägt Lichtwand Karosserie ist eine Spiegelfläche. Was sie zeigt, ist nicht das Fahrzeug, sondern die Lichtquelle. Eine Lichtwand — also flaches, gleichmäßiges Licht von vorne — erzeugt ein technisch sauberes Bild, aber kein lebendiges. Eine Lichtkante erzeugt Volumen: Sie zeichnet die Sicke an der Tür, die Schulter über dem Radlauf, den Übergang von Dach zu Heck. Bei Tageslicht heißt das: 60–80 Minuten vor Sonnenuntergang, Fahrzeug quer zum Sonnenstand, die Lichtkante läuft von oben links nach unten rechts über die Karosserie. Bei Nacht: eine einzige starke Reflexquelle (Stadtlicht, Tankstelle, Glasfassade) und Position so wählen, dass diese Quelle sich nicht zentral, sondern entlang der Schulter spiegelt. Goldene Stunde · Streiflicht entlang Schulter und Heck · Düsseldorf Karosserieform liest sich nur aus einer Richtung Jede Karosserie hat eine Leserichtung. Bei manchen Fahrzeugen — typischerweise Sportwagen mit starkem Sicken-Spiel — entsteht diese Leserichtung aus der Dreiviertel-Front, weil dort Motorhaube, Schweller und Radlauf gleichzeitig sichtbar sind. Bei anderen — etwa GT-Coupés mit langem Dachbogen — liest sich die Form besser aus der Dreiviertel-Heck. Bei Cabrios meistens nur aus tieferer Augenhöhe. Praktisch heißt das: Vor dem ersten Auslöser einmal um das Fahrzeug gehen, an drei Standardpositionen (Front-DV, reine Seite, Heck-DV) jeweils kurz ins Sucherbild schauen — und sich entscheiden, welche dieser drei dem Fahrzeug die meiste Form gibt. Dann diese als Hero-Achse festhalten und nur Variationen davon fotografieren. Ein Fahrzeug fotografisch zu verstehen heißt, seine Hero-Achse zu finden. Alles andere ist Variation. — Werkstattnotiz Tageszeit ist eine Entscheidung Es gibt für jedes Automobil-Bild ein 30-Minuten-Fenster, in dem das Licht, der Verkehr, die Reflexionen und die Stimmung zusammenpassen. Außerhalb dieses Fensters sind die einzelnen Faktoren technisch ähnlich gut, das Bild wirkt aber nicht. Das Fenster ist meistens: Goldene Stunde — 60 Minuten vor Sonnenuntergang, für warme Schulter-Streiflichter Blaue Stunde — 15 Minuten nach Sonnenuntergang, für Wechselspiel aus Tageslicht und Stadtbeleuchtung Tiefe Nacht — wenn Verkehr weg ist und Reflexquellen sich isoliert auf der Karosserie zeichnen lassen Bewölkter Vormittag — wenn die Karosseriefarbe matt und gedämpft erscheinen soll (Editorial-Look) Automotive-Shooting planen Standort-Scouting, Tageszeitfenster und Hero-Achse vorab im Briefing definiert. Projekt anfragen → Auswahl ist Teil des Bildes Nach dem Shooting liegen typischerweise 60–120 Frames vor. Davon werden 8–14 für die Auslieferung kuratiert — nicht die zehn technisch besten, sondern eine Sequenz, die einer Dramaturgie folgt: Hero · Detail · Stimmung · Zeichnung der Linie · ein Bruch · Schluss. Das ist nicht Bildbearbeitung im engeren Sinn, sondern Kuration. Der Unterschied zwischen einer Automobil-Bildstrecke und einem Produktfoto liegt zu 40 % in dieser Reihenfolge. Fazit Automotive-Fotografie ist nicht eine Frage der Ausrüstung. Sie ist eine Frage von Reihenfolge: Standort, Lichtquelle, Hero-Achse, Tageszeitfenster, Kuration. Wer diese fünf Entscheidungen vor dem Auslöser trifft, kommt mit weniger Frames, aber stärkeren Bildern zurück. In Düsseldorf hilft die Stadt selbst dabei — sie liefert pro Stadtteil ein anderes Material. Man muss nur entscheiden, welches dem Fahrzeug gehört. Weiterlesen: Automobil-Fotografie Düsseldorf — Leistungen und Pakete · Wie eine Bildserie kuratiert wird · Location Scouting für starke Motive"
   },
-  "updatedAt": "2026-08-24T20:44:39.154Z",
+  "updatedAt": "2026-11-24T09:15:00.000Z",
   "createdAt": "2026-05-28T19:07:35.449Z",
   "status": "published",
   "payloadId": "1",

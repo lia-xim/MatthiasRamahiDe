@@ -9,13 +9,20 @@
     "Kaufberatung",
     "Fahrzeugfotografie"
   ],
-  "publishedAt": "2027-07-19T07:00:00.000Z",
+  "publishedAt": "2028-01-21T08:00:00.000Z",
   "status": "scheduled",
   "excerpt": "Welche Ausstattungsmerkmale lassen sich auf Gebrauchtwagenfotos erkennen? Vergleiche sichtbare Details mit dem Inserat und frage gezielt nach, was Bilder nicht bestätigen.",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
-  "coverAlt": "Schwarzer SUV in Dreiviertelansicht vor einer Industrieanlage bei Abendlicht; eine Pfütze spiegelt den Wagen.",
+  "coverImage": "/assets/optimized/assets-portfolio-dsc2345-1920.webp",
+  "coverAlt": "Karosserie · Linie",
   "readingTime": 7,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Gebrauchtwagen Ausstattung Fotos prüfen: Die wichtigsten Punkte im Ü",
+      "body": "Kernaussage: Einige sichtbare Details können Hinweise geben\nFotos können Ausstattungsmerkmale zeigen,: Wenn ein Inserat eine bestimmte Ausstattung oder Modellvariante nennt, können Fotos sichtbare Hinweise dazu liefern\nInnenraumfotos: Ein Innenraumfoto kann Sitzmaterial, Lenkrad, Mittelkonsole, Display und einzelne Schalter zeigen\nFotos unterstützen die Vorauswahl,: Wenn eine Ausstattung für deine Entscheidung wichtig ist, gleiche Foto, Inseratstext und Fahrzeugangaben miteinander ab"
+    },
     {
       "_template": "textBlock",
       "headline": "Fotos können Ausstattungsmerkmale zeigen, aber keine Ausstattungsliste ersetzen",
@@ -71,6 +78,12 @@
       "body": "Wenn eine Ausstattung für deine Entscheidung wichtig ist, gleiche Foto, Inseratstext und Fahrzeugangaben miteinander ab. Lass Unklarheiten vor dem Termin beantworten und prüfe die betreffende Funktion dann am Auto. Der ADAC empfiehlt, ein gebrauchtes Fahrzeug vor dem Kauf zu besichtigen und nicht ungesehen zu kaufen. Für eine vollständige Prüfung von Unterlagen und Technik reichen Inseratsbilder nicht aus.\n\nDiese Seite behandelt die Käuferfrage, was vorhandene Fotos über Ausstattung und Variante erkennen lassen. Wenn du selbst Ausstattungsunterschiede fotografisch klar zeigen möchtest, erklärt der [Leitfaden zu Fahrzeugvarianten und Gebrauchtwagenfotos](/blog-fahrzeugvarianten-fotografisch-unterscheiden.html) die Verkäufer- und Fotografenperspektive. Bei klassischen Fahrzeugen mit Fragen zu Historie und Originalität passt der separate Beitrag zu [Oldtimer-Inseratsfotos vor dem Kauf](/blog-oldtimer-inseratsfotos-pruefen.html)."
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Häufige Fragen zur Gebrauchtwagen-Ausstattung auf Fotos",
       "items": [
@@ -124,7 +137,7 @@
     }
   ],
   "createdAt": "2026-11-05T00:00:00Z",
-  "updatedAt": "2027-07-19T07:00:00.000Z",
+  "updatedAt": "2028-01-21T08:00:00.000Z",
   "seo": {
     "title": "Gebrauchtwagen-Ausstattung auf Fotos prüfen",
     "description": "Prüfe sichtbare Ausstattungsmerkmale und Modellhinweise auf Gebrauchtwagenfotos. Erfahre, was eine Aufnahme zeigen kann und wann du gezielt nachfragen solltest.",
@@ -144,7 +157,7 @@
     ],
     "canonicalUrl": "https://matthiasramahi.de/blog-gebrauchtwagen-inseratsfotos-pruefen.html",
     "legacyUrl": "blog-gebrauchtwagen-inseratsfotos-pruefen.html",
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "ogImage": "/assets/optimized/assets-portfolio-dsc2345-1920.webp",
     "noIndex": false
   },
   "relatedPages": [

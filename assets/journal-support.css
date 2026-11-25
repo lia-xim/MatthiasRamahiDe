@@ -305,6 +305,105 @@
   line-height: 1.65;
 }
 
+.journal-editorial .journal-prose a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: rgba(201, 58, 49, .55);
+  text-underline-offset: .18em;
+  text-decoration-thickness: 1.5px;
+  transition: color .2s ease, text-decoration-color .2s ease;
+}
+
+.journal-editorial .journal-prose a:hover {
+  color: var(--red);
+  text-decoration-color: var(--red);
+}
+
+.journal-editorial .journal-prose code {
+  padding: 1px 6px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: rgba(16, 18, 23, .045);
+  color: var(--ink);
+  font: 500 .88em/1.4 var(--mono);
+}
+
+.journal-editorial .journal-prose .journal-list {
+  max-width: 66ch;
+  margin: 18px 0 22px;
+  padding-left: 22px;
+  color: rgba(16, 18, 23, .76);
+  font-size: 18px;
+  line-height: 1.62;
+}
+
+.journal-editorial .journal-prose .journal-list li + li {
+  margin-top: 8px;
+}
+
+.journal-editorial .journal-prose .journal-list strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.journal-editorial .journal-prose .journal-list--kv {
+  list-style: none;
+  padding: 16px 20px;
+  border: 1px solid var(--line);
+  background: rgba(248, 250, 244, .82);
+}
+
+.journal-editorial .journal-prose .journal-list--kv li + li {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+
+.journal-editorial .journal-quick-answer {
+  margin: 0 0 clamp(36px, 5vw, 56px);
+  padding: clamp(20px, 2.8vw, 30px);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--red);
+  background: var(--white);
+}
+
+.journal-editorial .journal-quick-answer .kicker {
+  margin: 0 0 8px;
+  color: var(--red);
+  font: 700 10px/1.4 var(--mono);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.journal-editorial .journal-quick-answer h2 {
+  margin: 0 0 12px;
+  color: var(--ink);
+  font-size: clamp(21px, 2.2vw, 28px);
+  line-height: 1.15;
+  letter-spacing: -.025em;
+}
+
+.journal-editorial .journal-quick-answer p {
+  max-width: 64ch;
+  margin: 0;
+  color: rgba(16, 18, 23, .82);
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.journal-editorial .journal-quick-answer p + p {
+  margin-top: 12px;
+}
+
+.journal-editorial .journal-quick-answer .journal-list {
+  margin: 14px 0 0;
+  font-size: 16.5px;
+}
+
+.journal-editorial .journal-quick-answer .journal-list--kv {
+  background: rgba(242, 243, 238, .65);
+}
+
 .journal-editorial .journal-bridge {
   margin: clamp(30px, 5vw, 64px) 0 clamp(54px, 8vw, 96px);
   padding: 0 0 0 clamp(18px, 3vw, 38px);

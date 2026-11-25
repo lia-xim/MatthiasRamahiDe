@@ -8,11 +8,18 @@
     "Automotive",
     "Fotograf beauftragen"
   ],
-  "publishedAt": "2026-12-01T08:00:00.000Z",
+  "publishedAt": "2026-12-22T08:00:00.000Z",
   "excerpt": "Welche Nutzungsrechte braucht dein Autohaus oder deine Marke für Fahrzeugfotos? Kläre Kanäle, Laufzeit, Bearbeitung, Weitergabe und Portfolioverwendung vor dem Auftrag.",
   "coverImage": "/uploads/payload/_DSC2831%20(1).webp",
   "readingTime": 9,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Diese 5 Rechtepunkte müssen vor dem Auto-Shooting stehen",
+      "body": "Kanäle exakt benennen: Website, Online-Inserate, bezahlte Anzeigen (Ads), Social Media, Messe und Print klar im Angebot auflisten (§ 31 UrhG)\nUmfang & Exklusivität: Zwischen einfachem Nutzungsrecht (Standard) und zeitlich/räumlich exklusiver Bindung klar unterscheiden\nBearbeitung & Dritte: Zuschnitt-/Overlay-Erlaubnis, Weitergabe an Partner oder Händler sowie Personen- und Standortfreigaben getrennt klären"
+    },
     {
       "_template": "textBlock",
       "headline": "Nutzungsrechte gehören zum Bildauftrag",
@@ -100,8 +107,19 @@
           "label": "IHK Frankfurt am Main: Fotos von Beschäftigten",
           "href": "https://www.frankfurt-main.ihk.de/recht/frage-der-woche/neuer-inhalt36-7177726",
           "description": "Hinweis, dass betrieblicher Zweck nicht automatisch jedes spätere oder unbegrenzte Nutzungsrecht umfasst."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Professionelles Auto-Fotoshooting in NRW planen",
+      "text": "Du brauchst stimmige Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto im Raum Düsseldorf, Erkrath und NRW? Shootings starten bei 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
     },
     {
       "_template": "faqBlock",
@@ -133,7 +151,7 @@
     "noIndex": false
   },
   "createdAt": "2026-11-03T12:00:00Z",
-  "updatedAt": "2026-12-01T08:00:00.000Z",
+  "updatedAt": "2026-12-22T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
@@ -146,6 +164,13 @@
       "label": "Auto-Shooting-Briefing",
       "href": "/blog-auto-shooting-briefing.html",
       "seoPurpose": "contextual-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fahrzeugserien konsistent planen",
+      "href": "/blog-fahrzeugserie-konsistent-planen.html",
+      "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
     }

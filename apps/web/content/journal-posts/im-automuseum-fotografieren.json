@@ -8,19 +8,19 @@
     "Ausstellung",
     "Bildgestaltung"
   ],
-  "publishedAt": "2027-06-17T07:00:00Z",
+  "publishedAt": "2027-11-30T08:00:00.000Z",
   "excerpt": "Im Automuseum zu fotografieren hängt von Hausregeln und Nutzungsziel ab. So planst du eine ruhige Bildserie und klärst, was du veröffentlichen darfst.",
-  "coverImage": "/uploads/payload/20250418-DSC006552.webp",
+  "coverImage": "/uploads/payload/20250426-DSC02648.webp",
   "coverAlt": "Roter historischer Rennwagen in einer steinernen Ausstellungshalle, aus niedriger Perspektive.",
   "readingTime": 8,
   "seo": {
-    "title": "Im Automuseum fotografieren: Regeln und Bildideen | Matthias Ramahi",
-    "description": "Darfst du im Automuseum fotografieren und Bilder veröffentlichen? Prüfe Hausregeln, Nutzungsziel und Ausrüstung, bevor du Oldtimer als klare Bildserie festhältst.",
+    "title": "Im Automuseum fotografieren: Regeln und Bildideen",
+    "description": "Im Automuseum fotografieren: Hausregeln, Bildrechte und passende Ausrüstung klären, um klassische Fahrzeuge respektvoll in ruhigen Serien festzuhalten.",
     "focusKeyword": "im Automuseum fotografieren",
     "searchIntent": "Informationssuche: Besucherinnen, Besucher und Fotografierende möchten wissen, ob sie Oldtimer im Automuseum fotografieren dürfen, welche Hausregeln für Blitz und Stativ gelten und ob die Bilder veröffentlicht oder kommerziell genutzt werden dürfen.",
     "canonicalUrl": "https://matthiasramahi.de/blog-im-automuseum-fotografieren.html",
     "legacyUrl": "blog-im-automuseum-fotografieren.html",
-    "ogImage": "/uploads/payload/20250418-DSC006552.webp",
+    "ogImage": "/uploads/payload/20250426-DSC02648.webp",
     "noIndex": false
   },
   "legacy": {
@@ -31,7 +31,7 @@
   },
   "status": "scheduled",
   "createdAt": "2026-11-04T14:45:00Z",
-  "updatedAt": "2027-06-17T07:00:00.000Z",
+  "updatedAt": "2027-11-30T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Oldtimerfotografie",
@@ -39,9 +39,30 @@
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
+    },
+    {
+      "label": "Oldtimer als Wertobjekt fotografieren",
+      "href": "/blog-oldtimer-wertobjekt.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Oldtimer-Veranstaltungen fotografieren",
+      "href": "/blog-oldtimer-veranstaltungen.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
     }
   ],
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "im Automuseum fotografieren: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Das hängt vom Haus und vom Bereich ab\nIm Museum entscheidet die: Ob du im Automuseum fotografieren darfst, entscheidet die Hausordnung des jeweiligen Hauses\nWähle den Standpunkt, ohne: Museumsräume sind Besucherräume, keine freien Sets\nEine kleine, überprüfte Auswahl: Nach dem Besuch lohnt sich eine kurze Sichtung nach Bildaufgabe"
+    },
     {
       "headline": "Im Museum entscheidet die Hausordnung",
       "body": "Ob du im Automuseum fotografieren darfst, entscheidet die Hausordnung des jeweiligen Hauses. Selbst wenn Besucherfotos erlaubt sind, können Veröffentlichung und kommerzielle Nutzung anders geregelt sein. Die BMW Besucherinformationen erlauben Fotos und Videos im BMW Museum, in der BMW Welt und bei BMW Group Classic für private Zwecke; wenn Aufnahmen veröffentlicht werden sollen, ist dort eine besondere Genehmigung vorgesehen. Die Hausordnung des Mercedes-Benz Museums untersagt gewerbliche Foto- und Filmaufnahmen von Ausstellungsgegenständen; Ausnahmen brauchen eine vorherige schriftliche Erlaubnis. Das sind Regeln konkreter Häuser, keine allgemeine Museumsregel.\n\nKläre vor dem Auslösen drei Dinge: Darfst du in diesem Bereich fotografieren? Welche Regeln gelten für Blitz, Stativ und größere Ausrüstung? Und darfst du die Bilder später genau für deinen Zweck veröffentlichen? Eine persönliche Erinnerung im privaten Album, ein öffentlicher Social-Post und eine kommerzielle Kampagne sind nicht automatisch dieselbe Nutzung. Wenn deine geplante Veröffentlichung nicht ausdrücklich abgedeckt ist, frag beim Museum nach und lass die Antwort schriftlich bestätigen.",
@@ -105,6 +126,12 @@
       "headline": "Eine kleine, überprüfte Auswahl wirkt länger",
       "body": "Nach dem Besuch lohnt sich eine kurze Sichtung nach Bildaufgabe. Behalte nicht jede Variante, sondern wähle Bilder, die unterschiedliche Informationen tragen: den Raum, das Fahrzeug, eine besondere Form und ein Detail. Prüfe Schärfe, Farbstich und störende Spiegelungen, aber retuschiere keine Kennzeichnung oder Ausstellungselemente so weg, dass das Bild eine andere Situation behauptet.\n\nNotiere, was sicher bekannt ist: Museumsname, Ausstellungsbereich und – wenn geprüft – Fahrzeugbezeichnung. Trenne gesicherte Angaben von Vermutungen. Für eine persönliche Sammlung reicht eine knappe Beschriftung; eine öffentliche Serie braucht eine klarere Auswahl und die vorher geklärte Veröffentlichungserlaubnis. So bleibt das Bild auch später verständlich, ohne mehr zu behaupten, als es zeigt.",
       "_template": "textBlock"
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Oldtimer & Klassiker sorgfältig dokumentieren",
+      "text": "Ruhige Bildserien für Sammlung, Auktionsvorbereitung oder privates Wertfahrzeug in NRW ab 250 € inkl. MwSt.",
+      "buttonLabel": "Oldtimer-Shooting anfragen"
     },
     {
       "headline": "Häufige Fragen zum Fotografieren im Automuseum",

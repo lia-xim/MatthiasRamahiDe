@@ -9,12 +9,12 @@
     "Fahrzeugfotos"
   ],
   "excerpt": "Für eine erste Online-Einordnung helfen klare Außen-, Innen- und Detailbilder. Diese Bildfolge bereitet den Autoankauf vor und zeigt, wo Fotos keine Besichtigung ersetzen.",
-  "coverImage": "/uploads/payload/assets-portfolio-dsc3879-1920.webp",
-  "coverAlt": "Ferrari in einem Ausstellungsraum als Hauptmotiv einer Fahrzeugserie.",
+  "coverImage": "/assets/optimized/assets-portfolio-dsc2986-1920.webp",
+  "coverAlt": "Übersichtlicher Fahrzeuginnenraum mit Cockpit, Lenkrad und sauberem Materialdetail",
   "status": "scheduled",
-  "publishedAt": "2027-06-01T07:00:00.000Z",
+  "publishedAt": "2027-11-02T08:00:00.000Z",
   "createdAt": "2026-11-04T14:32:13Z",
-  "updatedAt": "2027-06-01T07:00:00.000Z",
+  "updatedAt": "2027-11-02T08:00:00.000Z",
   "readingTime": 8,
   "relatedPages": [
     {
@@ -57,10 +57,17 @@
     "searchIntent": "Kommerzielle Informationssuche mit Vorbereitungsschritt: Fahrzeughalter möchten einem Händler aussagekräftige Fotos für eine erste, unverbindliche Online-Einordnung übermitteln. Sie suchen eine passende Bildfolge, Hinweise zu sichtbaren Mängeln und eine klare Abgrenzung dazu, was Fotos nicht über den technischen Zustand beweisen. Aktuelle Ankauf-Formulare fragen Fahrzeugbilder ab; Suchvolumen wurde in dieser Recherche nicht gemessen.",
     "canonicalUrl": "https://matthiasramahi.de/blog-autoankauf-fotos-fernbewertung.html",
     "legacyUrl": "blog-autoankauf-fotos-fernbewertung.html",
-    "ogImage": "/uploads/payload/assets-portfolio-dsc3879-1920.webp",
+    "ogImage": "/assets/optimized/assets-portfolio-dsc2986-1920.webp",
     "noIndex": false
   },
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Autoankauf Fotos Fahrzeugzustand: Die wichtigsten Punkte im Überblic",
+      "body": "Kernaussage: Das hängt vom Anbieter ab\nFotos bereiten den Autoankauf: Wer ein Auto online zum Ankauf anbietet, wird oft um Bilder gebeten\nBekannte Schäden als Kontext: Lass bekannte Mängel nicht aus\nDie Aufnahmen an den: Nach dem Upload sollten die Bilder zu den Angaben im Formular passen"
+    },
     {
       "_template": "textBlock",
       "headline": "Fotos bereiten den Autoankauf vor, sie schließen ihn nicht ab",
@@ -160,16 +167,17 @@
           "description": "Fotografische Prozesse und Fahrzeugbilder für Autohäuser."
         },
         {
-          "label": "Fahrzeugübergabe fotografisch dokumentieren",
-          "href": "/blog-fahrzeuguebergabe-fotodokumentation-fuhrpark.html",
-          "description": "Wiederholbare Bildfolgen für Übernahme und Rückgabe im Fuhrpark."
-        },
-        {
           "label": "Automobilfotografie",
           "href": "/automobil-fotografie.html",
           "description": "Leistungsseite für geplante Fahrzeugserien und Automobilaufnahmen."
         }
       ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
     },
     {
       "_template": "faqBlock",

@@ -8,12 +8,19 @@
     "Fotograf auswählen",
     "Bike Shooting"
   ],
-  "publishedAt": "2027-03-03T08:00:00.000Z",
+  "publishedAt": "2027-06-01T07:00:00.000Z",
   "excerpt": "So findest du einen Motorradfotografen, dessen Portfolio, Umgang mit deinem Bike und Ablauf zu deinem privaten oder markenbezogenen Auftrag passen.",
-  "coverImage": "/uploads/payload/_DSC6968.webp",
-  "coverAlt": "Schwarze Kawasaki Ninja mit Frontverkleidung und Spiegeln im warmen Abendlicht",
+  "coverImage": "/uploads/payload/_DSC6979.webp",
+  "coverAlt": "Ninja · Abendlicht",
   "readingTime": 8,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Motorradfotograf finden: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Finde einen Motorradfotografen, dessen Portfolio und Arbeitsweise zu deinem Bike passen\nEin Motorradfotograf muss zu: Wenn du einen Motorradfotografen finden möchtest, reicht ein einzelnes starkes Bild als Auswahlgrundlage nicht aus\nDen Umgang mit deinem: Ein Motorrad ist nicht nur ein Motiv, sondern ein Gegenstand, dessen Zustand und Grenzen du als Eigentümer kennst\nMit einem präzisen Briefing anfragen: Für eine erste Nachricht reichen die wichtigsten Eckdaten"
+    },
     {
       "_template": "textBlock",
       "headline": "Ein Motorradfotograf muss zu deinem Bike und Auftrag passen",
@@ -79,6 +86,33 @@
       "body": "Für eine erste Nachricht reichen die wichtigsten Eckdaten. Nenne Marke und Modell, Baujahr wenn relevant, Farbe, Umbauten und sichtbare Besonderheiten. Ergänze, wofür die Bilder gebraucht werden, ob nur das Motorrad oder auch eine Person vorkommen soll, wo es stehen kann und ob es bewegt werden darf. Schreibe dazu, welche Portfolioarbeit dir gefällt und was genau daran zu deinem Bike passt.\n\nEine Anfrage könnte so beginnen: „Ich möchte meine [Marke/Modell] für [privaten Gebrauch/Website/Markeninhalt] fotografieren lassen. Wichtig sind mir [Details oder Eindruck]. Das Motorrad steht in [Ort] und soll [nicht bewegt werden/kann nach Absprache versetzt werden]. Ich habe in deinem Portfolio [Beispiel] gesehen; daran gefällt mir [konkreter Punkt]. Kannst du mir eine passende Serie zeigen und erklären, wie Vorbereitung, Termin und Lieferung aussehen würden?“\n\nMit dieser Grundlage kann der Fotograf einschätzen, ob das Thema und die Arbeitsweise zusammenpassen. Das Gespräch darf danach noch Bildideen entwickeln; die Anfrage muss nicht schon das fertige Konzept enthalten."
     },
     {
+      "_template": "linkList",
+      "headline": "Passende Leistungen & weiterführende Guides",
+      "links": [
+        {
+          "label": "Motorradfotografie in NRW",
+          "href": "/motorrad-fotografie.html",
+          "description": "Professionelle Motorradserien für Fahrer, Umbauten und Werkstätten."
+        },
+        {
+          "label": "Motorrad-Fotoshooting-Checkliste",
+          "href": "/blog-motorrad-fotoshooting-checkliste.html",
+          "description": "Bike, Kleidung, Zufahrt und Shotlist vorab klären."
+        },
+        {
+          "label": "Motorrad-Fotoshooting sicher planen",
+          "href": "/blog-motorrad-fotoshooting-sicherheit.html",
+          "description": "Klare Abläufe für Stand- und Fahrmotive."
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Motorrad-Shooting in NRW planen",
+      "text": "Stimmige Serien für Fahrer, Custom-Umbauten und Werkstätten rund um Düsseldorf und Erkrath ab 250 € inkl. MwSt.",
+      "buttonLabel": "Motorrad-Shooting anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Kurze Fragen",
       "items": [
@@ -104,16 +138,30 @@
     "searchIntent": "Kommerzielle Suche: Motorradbesitzer und Marken vergleichen Portfolio, Umgang mit dem Bike und Auftragsablauf für ein konkretes Motorradprojekt.",
     "canonicalUrl": "https://matthiasramahi.de/blog-motorradfotograf-finden.html",
     "legacyUrl": "blog-motorradfotograf-finden.html",
-    "ogImage": "/uploads/payload/_DSC6968.webp",
+    "ogImage": "/uploads/payload/_DSC6979.webp",
     "noIndex": false
   },
   "status": "scheduled",
   "createdAt": "2026-11-03T17:00:00Z",
-  "updatedAt": "2027-03-03T08:00:00.000Z",
+  "updatedAt": "2027-06-01T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Motorradfotografie",
       "href": "/motorrad-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Motorrad-Fotoshooting-Checkliste",
+      "href": "/blog-motorrad-fotoshooting-checkliste.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Motorrad-Fotoshooting sicher planen",
+      "href": "/blog-motorrad-fotoshooting-sicherheit.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

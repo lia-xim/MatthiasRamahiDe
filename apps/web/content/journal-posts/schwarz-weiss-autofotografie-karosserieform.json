@@ -9,11 +9,18 @@
     "Bildbearbeitung",
     "Kontrast"
   ],
-  "publishedAt": "2027-04-16T07:00:00.000Z",
+  "publishedAt": "2027-08-13T07:00:00.000Z",
   "excerpt": "Schwarz-Weiß lenkt den Blick auf Karosserieform und Tonwerte. So prüfst du Fahrzeugfarbe, Reflexe und Linien vor der monochromen Ausarbeitung.",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+  "coverImage": "/assets/optimized/assets-portfolio-dsc2788-1-1920.webp",
   "readingTime": 8,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Schwarz-Weiß-Autofotografie: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Für mehr Spielraum fotografierst du in Farbe und behältst die Originaldatei\nSchwarz-Weiß zeigt, ob die: Bei einer Schwarz-Weiß-Autofotografie verschwindet die Lackfarbe als Gestaltungsmittel\nSchon bei der Aufnahme: Fotografiere das Fahrzeug zunächst in Farbe und behalte die farbige Originaldatei\nKurzer Check vor der finalen Auswahl: Vergleiche Farb- und Schwarz-Weiß-Version nebeneinander"
+    },
     {
       "headline": "Schwarz-Weiß zeigt, ob die Form des Autos trägt",
       "body": "Bei einer Schwarz-Weiß-Autofotografie verschwindet die Lackfarbe als Gestaltungsmittel. Was bleibt, sind Helligkeit, Kontrast, Oberflächenstruktur und die Linien des Fahrzeugs. Genau darin liegt der Reiz – und die Schwierigkeit. Eine leuchtend rote Karosserie kann in Farbe den Blick sofort auf sich ziehen. In Graustufen zählt dagegen, ob sie sich vom Hintergrund trennt und ob Haube, Kotflügel, Dach und Räder als zusammenhängende Form lesbar bleiben.\n\nDen monochromen Look solltest du deshalb nicht einfach am Ende über jedes fertige Autofoto legen. Prüfe schon bei der Aufnahme, ob die Bildidee auch ohne Farbe funktioniert. Die folgenden Schritte helfen dir, ein passendes Fahrzeugmotiv zu erkennen, Tonwerte kontrolliert aufzubauen und eine Schwarz-Weiß-Version so zu bearbeiten, dass Lack und Karosserie nicht zu einer flachen Fläche zusammenfallen.",
@@ -74,6 +81,12 @@
       "_template": "textBlock"
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "headline": "Häufige Fragen",
       "items": [
         {
@@ -107,6 +120,16 @@
           "label": "Nikon D500: Monochrome Picture Control",
           "href": "https://imaging.nikon.com/imaging/support/digitutor/d500/techniques/201301_05_03_sl.html",
           "description": "Beispiel für eine kameraspezifische Monochrom-Vorschau. Bedienung und RAW-/JPEG-Verhalten unterscheiden sich je nach Kameramodell; prüfe dafür das passende Handbuch."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Motive, Bildformate und Übergabe vor dem Shooting sauber strukturieren."
         }
       ],
       "_template": "linkList"
@@ -124,11 +147,11 @@
     "searchIntent": "Praktische Suche: Wie wirken Karosserielinien und Reflexe in Schwarz-Weiß, und wie bleiben Fahrzeugdetails bei der Umwandlung erhalten?",
     "canonicalUrl": "https://matthiasramahi.de/blog-schwarz-weiss-autofotografie-karosserieform.html",
     "legacyUrl": "blog-schwarz-weiss-autofotografie-karosserieform.html",
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "ogImage": "/assets/optimized/assets-portfolio-dsc2788-1-1920.webp",
     "noIndex": false
   },
   "createdAt": "2026-11-03T17:00:00Z",
-  "updatedAt": "2027-04-16T07:00:00.000Z",
+  "updatedAt": "2027-08-13T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
@@ -152,6 +175,6 @@
       "openInNewTab": false
     }
   ],
-  "coverAlt": "Dunkler SUV im Abendlicht vor einer Industrieanlage",
+  "coverAlt": "Exterieur · Dämmerung",
   "status": "scheduled"
 }

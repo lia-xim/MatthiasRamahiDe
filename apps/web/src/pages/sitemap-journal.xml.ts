@@ -10,17 +10,20 @@ export const prerender = false
 // (/journal/seite/N) bleiben draussen: Google findet sie ueber die Paginierung.
 function journalTopicEntries(): SitemapEntry[] {
   const cards = getPublicJournalCards()
+  const today = new Date().toISOString().slice(0, 10)
   return journalTopics.flatMap((topic) => {
     const topicCards = cards.filter((card) => card.category === topic.filter)
     if (topicCards.length === 0) return []
     const newest = topicCards.map((card) => card.dateTime || '').sort().at(-1)
-    return [{ loc: toAbsoluteSiteUrl(journalIndexPath(topic)), lastmod: newest ? newest.slice(0, 10) : undefined }]
+    const rawDate = newest ? newest.slice(0, 10) : undefined
+    const lastmod = rawDate && rawDate > today ? today : rawDate
+    return [{ loc: toAbsoluteSiteUrl(journalIndexPath(topic)), lastmod }]
   })
 }
 
 export async function GET() {
   const entries = [...(await sitemapEntries('journal')), ...journalTopicEntries()]
   return new Response(urlsetXml(entries), {
-    headers: { ...sitemapXmlHeaders(), 'cache-control': 'no-store' },
+    headers: sitemapXmlHeaders(),
   })
 }

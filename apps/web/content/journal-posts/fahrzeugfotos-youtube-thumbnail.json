@@ -9,16 +9,23 @@
     "Automotive Content",
     "Bildplanung"
   ],
-  "publishedAt": "2027-07-27T07:00:00.000Z",
+  "publishedAt": "2028-02-04T08:00:00.000Z",
   "excerpt": "So planst du ein Fahrzeugfoto als YouTube-Thumbnail: Motiv, Perspektive, Textfläche, Licht und aktuelle Vorgaben für Videos und Shorts.",
-  "coverImage": "/assets/portfolio/automobil-bmw-m3-showcar.webp",
-  "coverAlt": "Silberner BMW M3 auf einem beleuchteten Messestand, aus breiter Perspektive fotografiert; eine Portfolioaufnahme.",
+  "coverImage": "/assets/optimized/assets-portfolio-dsc2744-1920.webp",
+  "coverAlt": "Showcar · Perspektive",
   "readingTime": 8,
   "blocks": [
     {
       "_template": "textBlock",
       "headline": "",
       "body": "Ein starkes Fahrzeugfoto ist noch nicht automatisch das richtige YouTube-Thumbnail. Das Vorschaubild soll einordnen, worum es im Video geht, und im kleinen Feed-Ausschnitt lesbar bleiben. Dafür lohnt sich eine eigene Bildentscheidung: Welches Detail, welche Perspektive oder welche tatsächliche Situation aus dem Video lässt sich in einem einzigen Motiv klar zeigen?\n\nDieser Leitfaden richtet sich an Auto-Creator, Händler und Marken, die Videos mit eigenen Fahrzeugfotos ergänzen. Er behandelt die fotografische Planung des Covers, nicht allgemeine Kanalstrategie oder Werbeanzeigen. Die Bildbeispiele stammen aus dem öffentlichen Automobilportfolio und wurden nicht als YouTube-Thumbnails oder für ein Videoprojekt produziert."
+    },
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Fahrzeugfoto für YouTube-Thumbnail: Die wichtigsten Punkte im Überbl",
+      "body": "Kernaussage: So planst du ein Fahrzeugfoto als YouTube-Thumbnail: Motiv, Perspektive, Textfläche, Licht und aktuelle Vorgaben für Videos und Shorts\nMit der konkreten Videofrage: Schreibe vor dem Shooting in einem Satz auf, was das Video tatsächlich zeigt: eine erste Fahrt, einen Umbau, eine Kaufentscheidung, einen Vergleich oder ein\nReflexe und Hintergrund schon: Lack und Glas spiegeln die Umgebung\nIm kleinen Vorschaubild gegenprüfen: Verkleinere die Datei auf die ungefähre Feed-Größe und prüfe drei Ansichten: auf einem Smartphone, in einer Desktop-Vorschau und – falls deine Zielgruppe dort"
     },
     {
       "_template": "textBlock",
@@ -75,6 +82,12 @@
       ]
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Häufige Fragen zu Fahrzeugfotos für YouTube",
       "items": [
@@ -109,6 +122,16 @@
           "label": "YouTube Creators: Title and Thumbnail Overview",
           "href": "https://www.youtube.com/watch?v=ubFTkoJkNX4",
           "description": "Offizielles Video von YouTube Creators zur gemeinsamen Planung von Videotitel und Thumbnail."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Motive, Bildformate und Übergabe vor dem Shooting sauber strukturieren."
         }
       ]
     }
@@ -126,12 +149,12 @@
     "searchIntent": "Informations- und Produktionsabsicht: Automotive-Creator, Händler und Marken planen ein glaubwürdiges Fahrzeugfoto als Thumbnail für ein konkretes Video. Der Beitrag behandelt Motivwahl, separates Standbild oder Framegrab, Fahrzeugperspektive, Reflexe, Textfläche sowie aktuelle YouTube-Ausgabevorgaben; er ersetzt weder Kanalstrategie noch Werbeanzeigen- oder Website-Bildplanung.",
     "canonicalUrl": "https://matthiasramahi.de/blog-fahrzeugfotos-youtube-thumbnail.html",
     "legacyUrl": "blog-fahrzeugfotos-youtube-thumbnail.html",
-    "ogImage": "/assets/portfolio/automobil-bmw-m3-showcar.webp",
+    "ogImage": "/assets/optimized/assets-portfolio-dsc2744-1920.webp",
     "noIndex": false
   },
   "status": "scheduled",
   "createdAt": "2026-11-05T04:20:00.000Z",
-  "updatedAt": "2027-07-27T07:00:00.000Z",
+  "updatedAt": "2028-02-04T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",

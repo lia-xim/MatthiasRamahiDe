@@ -1,3 +1,4 @@
+import { getLegacyRedirectTarget } from './adoptedRoutes'
 ﻿import type { PayloadDoc } from './payload'
 import {
   type LocalSeoLayoutFamily,
@@ -2348,17 +2349,25 @@ export function heroCopyForLocalSeoPage(
 }
 
 export function cityLinksForFamily(familyContent: LocalSeoFamilyContent) {
-  return localSeoScopes.map((scope) => ({
-    href: scope.slug === 'duesseldorf' ? `/${familyContent.baseSlug}.html` : `/${familyContent.baseSlug}-${scope.slug}.html`,
-    label: scope.label,
-  }))
+  return localSeoScopes
+    .map((scope) => ({
+      href: scope.slug === 'duesseldorf' ? `/${familyContent.baseSlug}.html` : `/${familyContent.baseSlug}-${scope.slug}.html`,
+      label: scope.label,
+    }))
+    .filter((entry) => getLegacyRedirectTarget(entry.href.replace(/^\/+/, '')) === null)
 }
 
 export function siblingFamilyLinks(scope: LocalSeoScope, currentFamily: LocalSeoLayoutFamily) {
   return Object.values(localSeoFamilyContent)
     .filter((item) => item.family !== currentFamily)
-    .map((item) => ({
-      href: scope.slug === 'duesseldorf' || scope.generic ? `/${item.baseSlug}.html` : `/${item.baseSlug}-${scope.slug}.html`,
-      label: scope.generic ? item.seoTitle : `${item.seoTitle} ${scope.label}`,
-    }))
+    .map((item) => {
+      const candidateFile = scope.slug === 'duesseldorf' || scope.generic ? `${item.baseSlug}.html` : `${item.baseSlug}-${scope.slug}.html`
+      const redirected = getLegacyRedirectTarget(candidateFile)
+      const finalFile = redirected || candidateFile
+      const useScopeLabel = !scope.generic && !redirected
+      return {
+        href: `/${finalFile}`,
+        label: useScopeLabel ? `${item.seoTitle} ${scope.label}` : redirected?.endsWith('-nrw.html') ? `${item.seoTitle} NRW` : item.seoTitle,
+      }
+    })
 }

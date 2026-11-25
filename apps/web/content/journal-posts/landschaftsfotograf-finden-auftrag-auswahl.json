@@ -9,7 +9,7 @@
     "Bildproduktion",
     "Nutzungsumfang"
   ],
-  "publishedAt": "2027-05-04T07:00:00.000Z",
+  "publishedAt": "2027-09-14T07:00:00.000Z",
   "excerpt": "So findest du einen passenden Landschaftsfotografen: Prüfe Bildserien, Stil, Produktionsplanung, Lieferung und Nutzungsumfang vor der Anfrage.",
   "coverImage": "/uploads/payload/Wettberwerb_Foto5_Wunder_der_Natur2-1.webp",
   "coverAlt": "Einzelner Baum auf einer Landzunge am See; dahinter eine ferne Bergkette",
@@ -19,6 +19,13 @@
       "headline": "",
       "body": "Den passenden Landschaftsfotografen findest du, wenn du zuerst die Bildaufgabe und die spätere Nutzung festlegst. Vergleiche anschließend zusammenhängende Bildserien statt nur einzelner Lieblingsmotive. Für ein Editorial, eine Markenproduktion und einen großformatigen Print gelten unterschiedliche Anforderungen an Motiv, Format und Lieferung. Ein Gespräch wird leichter, wenn diese Unterschiede vor der Anfrage klar sind.",
       "_template": "textBlock"
+    },
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Landschaftsfotograf finden: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Vergleiche vollständige Serien, die deiner Bildaufgabe und späteren Nutzung ähneln\nKläre zuerst, wofür du: Beginne mit dem Einsatz: Soll eine Redaktion eine Geschichte bebildern, braucht eine Marke eine neue Bildwelt oder suchst du ein fertiges Motiv für einen Raum?\nLieferung und Nutzungsumfang konkret: Ein Portfolio zeigt den Bildstil, beantwortet aber nicht automatisch, was du am Ende erhältst\nMusteranfrage zum Kopieren: Ich suche [Anzahl oder Art der Motive] für [Zweck und Kanäle]"
     },
     {
       "headline": "Kläre zuerst, wofür du Landschaftsbilder brauchst",
@@ -85,6 +92,33 @@
       "_template": "textBlock"
     },
     {
+      "_template": "linkList",
+      "headline": "Passende Leistungen & weiterführende Guides",
+      "links": [
+        {
+          "label": "Landschaftsfotografie & Fine-Art-Prints",
+          "href": "/landschaftsfotografie.html",
+          "description": "Kuratierte Landschaftsmotive als Wandbilder und Sammler-Editionen."
+        },
+        {
+          "label": "Fotolabor & Fine-Art-Druck Düsseldorf",
+          "href": "/fotolabor-druck-duesseldorf.html",
+          "description": "Papiere, Farbtreue und Beratung zu Formaten und Raumwirkung."
+        },
+        {
+          "label": "Vom Bild zum Fine-Art-Druck",
+          "href": "/blog-fine-art-druck.html",
+          "description": "Wie Tonwertumfang, Papierstruktur und Rahmung zusammenwirken."
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Landschaftsmotive als Fine-Art-Print anfragen",
+      "text": "Ausgewählte Landschaftsaufnahmen erscheinen als hochwertige Fine-Art-Prints auf Archivpapier. Schreib mir Motivwunsch und gewünschtes Wandformat.",
+      "buttonLabel": "Fine-Art-Print anfragen"
+    },
+    {
       "headline": "Häufige Fragen",
       "items": [
         {
@@ -123,11 +157,25 @@
     "noIndex": false
   },
   "createdAt": "2026-11-03T17:00:00Z",
-  "updatedAt": "2027-05-04T07:00:00.000Z",
+  "updatedAt": "2027-09-14T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Landschaftsfotografie",
       "href": "/landschaftsfotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fotolabor & Fine-Art-Druck Düsseldorf",
+      "href": "/fotolabor-druck-duesseldorf.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Vom Bild zum Fine-Art-Druck",
+      "href": "/blog-fine-art-druck.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

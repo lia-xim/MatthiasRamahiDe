@@ -9,15 +9,22 @@
     "Auto fotografieren",
     "Belichtung"
   ],
-  "publishedAt": "2027-04-02T07:00:00.000Z",
+  "publishedAt": "2027-07-23T07:00:00.000Z",
   "excerpt": "Wenn Himmel und Karosserie zu weit auseinanderliegen, kann eine Belichtungsreihe helfen. So fotografierst und kombinierst du sie kontrolliert.",
-  "coverImage": "/uploads/payload/_DSC2310-2.webp",
+  "coverImage": "/assets/optimized/assets-portfolio-dsc3878-1920.webp",
   "readingTime": 8,
   "blocks": [
     {
       "headline": "",
       "body": "Eine Belichtungsreihe beim Auto lohnt sich, wenn eine einzelne Aufnahme entweder den Himmel oder die dunkle Karosserie sauber wiedergibt, aber nicht beides. Die Kamera nimmt dafür dieselbe Szene mit unterschiedlichen Belichtungen auf. Aus diesen Bildern kann später ein HDR entstehen; du kannst sie aber auch einzeln vergleichen und nur die stimmigste Aufnahme auswählen.\n\nDas Verfahren ist vor allem für ein stehendes Fahrzeug gedacht. Bei einem fahrenden Auto oder schnell wechselnden Licht verändern sich die Einzelbilder, bevor die Kamera die Reihe abgeschlossen hat. Dann entstehen leicht Geisterkanten oder eine künstliche Wirkung. HDR ist deshalb kein Pflichtschritt für jedes Fahrzeugfoto, sondern eine gezielte Lösung für Situationen, in denen die vorhandene Helligkeitsspanne die eigentliche Bildidee einschränkt.",
       "_template": "textBlock"
+    },
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Belichtungsreihe Auto fotografieren: Die wichtigsten Punkte im Überb",
+      "body": "Kernaussage: Das hängt vom Kontrast der Szene und der Kamera ab\nPrüfe zuerst, ob eine: Bevor du eine Serie aufnimmst, kontrolliere die hellsten und dunkelsten wichtigen Bildstellen\nBei Bewegung entstehen schnell: Wenn sich zwischen zwei Aufnahmen etwas bewegt, zeigen die Dateien nicht mehr exakt dieselbe Szene\nWann die Reihe mehr: Nutze eine Belichtungsreihe, wenn du bei einem ruhigen Motiv gleichzeitig Zeichnung im hellen Hintergrund und in der dunklen Karosserie brauchst"
     },
     {
       "headline": "Heller Himmel und dunkler Lack im selben Bild",
@@ -69,6 +76,12 @@
       "_template": "textBlock"
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "headline": "Häufige Fragen",
       "items": [
         {
@@ -111,6 +124,11 @@
           "label": "Sony: Fokus-Bracketing und Focus Stacking",
           "href": "https://www.sony.com/electronics/support/articles/00342633",
           "description": "Sony erklärt den Unterschied zwischen Fokusreihen und dem anschließenden Focus Stacking."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ],
       "_template": "linkList"
@@ -129,11 +147,11 @@
     "searchIntent": "Technische Suche: Wie belichtet man ein statisches Auto mit hellem Hintergrund per AEB, vermeidet Geisterbilder und fügt die Aufnahmen natürlich zusammen?",
     "canonicalUrl": "https://matthiasramahi.de/blog-belichtungsreihe-auto-fotografieren.html",
     "legacyUrl": "blog-belichtungsreihe-auto-fotografieren.html",
-    "ogImage": "/uploads/payload/_DSC2310-2.webp",
+    "ogImage": "/assets/optimized/assets-portfolio-dsc3878-1920.webp",
     "noIndex": false
   },
   "createdAt": "2026-11-03T17:00:00Z",
-  "updatedAt": "2027-04-02T07:00:00.000Z",
+  "updatedAt": "2027-07-23T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
@@ -141,8 +159,22 @@
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
+    },
+    {
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fahrzeugserien konsistent planen",
+      "href": "/blog-fahrzeugserie-konsistent-planen.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
     }
   ],
-  "coverAlt": "Weißer Oldtimer unter roten und hellen Hallenlichtern; die Aufnahme enthält deutlich unterschiedliche Helligkeitsbereiche",
+  "coverAlt": "Hypercar · Front",
   "status": "scheduled"
 }

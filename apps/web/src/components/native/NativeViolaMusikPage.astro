@@ -1,5 +1,6 @@
 ---
 import HeroMotion from './HeroMotion.astro'
+import NativeFamilyFaq from './NativeFamilyFaq.astro'
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import { getBySlug, type PayloadDoc } from '../../lib/payload'
 
@@ -28,6 +29,25 @@ const flowSteps = [
   { title: 'Anfrage.', body: 'Du schilderst Anlass, Ort, Datum und ungefähre Dauer — der Rest entsteht im Gespräch, unverbindlich.' },
   { title: 'Auswahl.', body: 'Passende Besetzung (Solo Viola/Geige, Duo mit Klavier, kleines Ensemble) und Repertoire — Klassik, Filmmusik oder Pop-Arrangements, vorab abgestimmt.' },
   { title: 'Auftritt.', body: 'Leiser Auf- und Abbau, sensibles Spiel im richtigen Moment — in Düsseldorf, im Rheinland und auf Anfrage deutschlandweit.' },
+]
+
+const violaFaq = [
+  {
+    q: 'Für welche Anlässe wird klassische Live-Musik mit Viola und Geige vermittelt?',
+    a: 'Für standesamtliche, kirchliche und freie Trauungen, Sektempfänge, Trauerfeiern, Taufen, Geburtstage, Firmenevents, Vernissagen und private Konzerte in Düsseldorf und NRW.',
+  },
+  {
+    q: 'Welche Besetzungen und Musikrichtungen sind möglich?',
+    a: 'Möglich sind Solo-Viola oder Solo-Geige, Duo mit Klavier oder ein kleines Streicher-Ensemble. Das Repertoire reicht von Klassik über Filmmusik bis zu akustischen Pop-Arrangements nach Absprache.',
+  },
+  {
+    q: 'Wie früh sollte eine Anfrage für Hochzeit oder Event gestellt werden?',
+    a: 'Für Hochzeiten in der Hauptsaison empfehlen sich einige Monate Vorlauf. Bei Trauerfeiern oder kleineren Anlässen im Rheinland sind auch kurzfristige Vermittlungen möglich.',
+  },
+  {
+    q: 'Kann die Veranstaltung zusätzlich fotografiert oder gefilmt werden?',
+    a: 'Ja. Über das gemeinsame Netzwerk lassen sich Musikerfotografie, Portraitbegleitung und Videografie sauber auf den Ablauf abstimmen.',
+  },
 ]
 
 // Hero = der Landing-Page-Shader-Hero (WebGL/Ken-Burns/Lens-Cursor) mit dem B&W-Viola-Bild,
@@ -106,8 +126,12 @@ const heroSlidesJson = JSON.stringify(heroSlides)
           </div>
           <p class="vm-flow__lead">
             Wir spielen nicht selbst — wir vermitteln Künstler:innen aus dem direkten Umfeld. Erfahren, zuverlässig und im Rheinland
-            verwurzelt, von der ersten Anfrage bis zum Auftritt. Die <a href="/leistungen.html">Übersicht weiterer Dienstleistungen</a>
-            ordnet die musikalische Vermittlung in das Kreativnetzwerk ein.
+            verwurzelt, von der ersten Anfrage bis zum Auftritt. Wenn Anlass oder Ensemble zusätzlich fotografisch oder filmisch
+            begleitet werden sollen, greifen <a href="/musikerfotografie.html">Musikerfotografie</a>,
+            <a href="/portfolio/viola-portrait-am-see">Editorial-Beispiele mit Viola</a>,
+            <a href="/portraitfotografie-duesseldorf.html">Portraitfotografie in Düsseldorf</a> und
+            <a href="/videografie-duesseldorf.html">Videografie</a> direkt ineinander. Die
+            <a href="/leistungen.html">Übersicht weiterer Dienstleistungen</a> ordnet die musikalische Vermittlung in das Kreativnetzwerk ein.
           </p>
         </div>
         <ol class="vm-flow__track" role="list">
@@ -120,6 +144,8 @@ const heroSlidesJson = JSON.stringify(heroSlides)
         </ol>
       </div>
     </section>
+
+    <NativeFamilyFaq faq={violaFaq} pageUrl={`https://matthiasramahi.de/${legacyFile}`} theme="dark" />
 
     <section class="sp-cta" data-header-theme="light" aria-label="Anfrage">
       <div class="sp-cta__inner">

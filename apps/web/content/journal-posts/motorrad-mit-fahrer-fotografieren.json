@@ -8,7 +8,7 @@
     "Motorrad-Fotoshooting",
     "Bildserie"
   ],
-  "publishedAt": "2027-02-21T08:00:00.000Z",
+  "publishedAt": "2027-05-14T07:00:00.000Z",
   "excerpt": "Ein Motorradportrait zeigt mehr als die Maschine: So planst du eine ruhige Bildserie, in der Fahrer, Motorrad und ihre Verbindung sichtbar werden.",
   "coverImage": "/uploads/payload/_DSC6968.webp",
   "coverAlt": "Schwarzes Motorrad im warmen Abendlicht, frontal und leicht von der Seite gesehen",
@@ -17,7 +17,9 @@
     {
       "_template": "textBlock",
       "headline": "Kurzantwort: Person und Motorrad brauchen je ein eigenes Bildgewicht",
-      "body": "Wenn du dich mit deinem Motorrad fotografieren lassen möchtest, plane eine kleine Portraitserie statt einer einzigen Pose neben dem Bike. Ein Bild darf die ganze Maschine und dich gemeinsam zeigen. Ein zweites kann näher an deine Person herangehen, während das Motorrad den Zusammenhang herstellt. Eine weitere Aufnahme kann dem Bike allein Raum geben. So bleibt erkennbar, worum es dir geht, ohne dass jedes Foto dieselbe Aufgabe erfüllen muss.\n\nDas unterscheidet ein persönliches Motorradportrait von einer Verkaufsserie oder einem Motorsportprofil. Ein Inserat soll Zustand und Ausstattung verständlich zeigen. Ein Teamprofil braucht Wiedererkennbarkeit. Bei einem privaten Shooting geht es eher darum, wie du dein Motorrad nutzt und was dir an ihm wichtig ist. Dieser Zweck entscheidet über Kleidung, Ort, Ausschnitt und darüber, ob der Helm auf jeder Aufnahme getragen wird."
+      "body": "Wenn du dich mit deinem Motorrad fotografieren lassen möchtest, plane eine kleine Portraitserie statt einer einzigen Pose neben dem Bike. Ein Bild darf die ganze Maschine und dich gemeinsam zeigen. Ein zweites kann näher an deine Person herangehen, während das Motorrad den Zusammenhang herstellt. Eine weitere Aufnahme kann dem Bike allein Raum geben. So bleibt erkennbar, worum es dir geht, ohne dass jedes Foto dieselbe Aufgabe erfüllen muss.\n\nDas unterscheidet ein persönliches Motorradportrait von einer Verkaufsserie oder einem Motorsportprofil. Ein Inserat soll Zustand und Ausstattung verständlich zeigen. Ein Teamprofil braucht Wiedererkennbarkeit. Bei einem privaten Shooting geht es eher darum, wie du dein Motorrad nutzt und was dir an ihm wichtig ist. Dieser Zweck entscheidet über Kleidung, Ort, Ausschnitt und darüber, ob der Helm auf jeder Aufnahme getragen wird.",
+      "style": "summary",
+      "eyebrow": "Kurzantwort"
     },
     {
       "_template": "imageSequence",
@@ -74,6 +76,33 @@
       "body": "Wenn nach dem Shooting viele ähnliche Bilder vorliegen, wähle nicht einfach jede kleine Veränderung der Hand oder des Kopfes aus. Behalte Varianten, die sich tatsächlich unterscheiden: ein Bild mit mehr Motorrad, ein engeres Portrait, eine Version mit Helm und eine ohne, falls beide aufgenommen wurden. So entsteht eine verwendbare Auswahl statt einer langen Reihe fast gleicher Fotos.\n\nPrüft vor der Übergabe gemeinsam: Sind Person und Bike im geplanten Ausschnitt vollständig, sitzt der Fokus dort, wo er soll, und lenkt der Hintergrund nicht ab? Achtet auch darauf, ob Kennzeichen oder Ortsdetails zu sehen sind, die nicht veröffentlicht werden sollen. Stimmt die endgültige Auswahl mit den zuvor vereinbarten Kanälen und der Freigabe der abgebildeten Person überein.\n\nAchte bei der Bearbeitung darauf, dass Farben von Motorrad und Kleidung plausibel bleiben. Kleine Anpassungen an Helligkeit, Kontrast oder störenden Fusseln können die Aufnahme ordnen. Wenn das Motorrad ein persönliches Merkmal oder einen bestimmten Zustand zeigt, sollte die Bearbeitung diesen nicht unkenntlich machen. Für die Übergabe kann es hilfreich sein, Webdateien und hochauflösende Dateien getrennt zu benennen. Kläre vorab außerdem, für welche Kanäle du die Fotos verwenden darfst und ob ein Druck geplant ist.\n\nFür den nächsten Termin hilft eine einfache Notiz: welche Pose sich gut angefühlt hat, welche Bildrolle fehlt und welcher Standort funktioniert hat. Damit wird ein späteres Shooting leichter planbar, ohne dass sich die nächste Serie wiederholen muss."
     },
     {
+      "_template": "linkList",
+      "headline": "Passende Leistungen & weiterführende Guides",
+      "links": [
+        {
+          "label": "Motorradfotografie in NRW",
+          "href": "/motorrad-fotografie.html",
+          "description": "Professionelle Motorradserien für Fahrer, Umbauten und Werkstätten."
+        },
+        {
+          "label": "Motorrad-Fotoshooting-Checkliste",
+          "href": "/blog-motorrad-fotoshooting-checkliste.html",
+          "description": "Bike, Kleidung, Zufahrt und Shotlist vorab klären."
+        },
+        {
+          "label": "Motorrad-Fotoshooting sicher planen",
+          "href": "/blog-motorrad-fotoshooting-sicherheit.html",
+          "description": "Klare Abläufe für Stand- und Fahrmotive."
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Motorrad-Shooting in NRW planen",
+      "text": "Stimmige Serien für Fahrer, Custom-Umbauten und Werkstätten rund um Düsseldorf und Erkrath ab 250 € inkl. MwSt.",
+      "buttonLabel": "Motorrad-Shooting anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Kurze Fragen",
       "items": [
@@ -108,11 +137,25 @@
   },
   "status": "scheduled",
   "createdAt": "2026-11-03T17:00:00Z",
-  "updatedAt": "2027-02-21T08:00:00.000Z",
+  "updatedAt": "2027-05-14T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Motorradfotografie",
       "href": "/motorrad-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Motorrad-Fotoshooting-Checkliste",
+      "href": "/blog-motorrad-fotoshooting-checkliste.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Motorrad-Fotoshooting sicher planen",
+      "href": "/blog-motorrad-fotoshooting-sicherheit.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

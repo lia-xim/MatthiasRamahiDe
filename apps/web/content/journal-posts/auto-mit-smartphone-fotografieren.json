@@ -8,12 +8,19 @@
     "Autofotografie",
     "Fahrzeugbilder"
   ],
-  "publishedAt": "2027-01-24T08:00:00.000Z",
+  "publishedAt": "2027-03-26T08:00:00.000Z",
   "excerpt": "Mit dem Smartphone gelingen überzeugende Autofotos, wenn Objektiv, Abstand und Licht zusammenpassen. So planst du Bildidee, Fokus und Bearbeitung ohne Zubehörkauf.",
   "coverImage": "/assets/optimized/assets-portfolio-dsc2358-1920.webp",
   "coverAlt": "Orangefarbener Sportwagen in einer Parkgarage unter Reihenleuchten",
   "readingTime": 8,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Auto mit dem Smartphone fotografieren: Die wichtigsten Punkte im Übe",
+      "body": "Kernaussage: Beginne mit der normalen Hauptkamera\nEin Smartphone reicht für: Mit einem modernen Smartphone kannst du ein stehendes Auto überzeugend fotografieren\nStabilität hilft besonders bei: Halte das Smartphone mit beiden Händen und stütze die Arme, wenn möglich, leicht am eigenen Körper ab\nWann eine Kamera oder: Ein Smartphone passt gut für spontane Bilder, eine private Erinnerung oder eine kleine kreative Reihe, die vor allem auf dem Display betrachtet wird"
+    },
     {
       "_template": "textBlock",
       "headline": "Ein Smartphone reicht für viele Autofotos",
@@ -84,6 +91,12 @@
       "body": "Ein Smartphone passt gut für spontane Bilder, eine private Erinnerung oder eine kleine kreative Reihe, die vor allem auf dem Display betrachtet wird. Bei bewegten Autos, sehr dunklen Szenen, kontrollierten Lichtreflexen, wiederkehrenden Händlerbildern und größeren Drucken wird die Arbeit anspruchsvoller. Dann zählen ein konsistenter Look, präzise Farbwiedergabe, mehr Auswahl bei Brennweiten und eine verlässliche Kontrolle des Lichts.\n\nFür ein einzelnes Foto darf das Telefon die ganze Arbeit erledigen. Wenn mehrere Fahrzeuge in einer Kampagne oder einer Händlerstrecke gleich wirken sollen, ist ein abgestimmtes Briefing und ein fester Aufnahmeablauf wichtiger als ein weiterer Smartphone-Filter. Die Automobilfotografie-Seite zeigt, welche Arten von Fahrzeugserien Matthias Ramahi für private und geschäftliche Zwecke plant. Ein bestehendes Auto-Shooting-Briefing erklärt außerdem, wie Bildziel, Nutzung und Motivfolge vor einem Auftrag festgelegt werden."
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Häufige Fragen zur Smartphone-Autofotografie",
       "items": [
@@ -137,6 +150,11 @@
           "label": "Google Pixel Camera Hilfe: Fotos bei wenig Licht",
           "href": "https://support.google.com/pixelcamera/answer/9708795?hl=en",
           "description": "Offizielle Hinweise zu Night Sight und dazu, das Pixel während der Aufnahme ruhig zu halten."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]
     }
@@ -159,7 +177,7 @@
   },
   "status": "scheduled",
   "createdAt": "2026-11-03T16:29:25Z",
-  "updatedAt": "2027-01-24T08:00:00.000Z",
+  "updatedAt": "2027-03-26T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
@@ -172,6 +190,13 @@
       "label": "Auto-Shooting-Briefing",
       "href": "/blog-auto-shooting-briefing.html",
       "seoPurpose": "related-editorial",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fahrzeugserien konsistent planen",
+      "href": "/blog-fahrzeugserie-konsistent-planen.html",
+      "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
     }

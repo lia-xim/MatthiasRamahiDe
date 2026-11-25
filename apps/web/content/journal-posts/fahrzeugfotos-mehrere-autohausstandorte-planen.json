@@ -9,13 +9,20 @@
     "Bildstandard",
     "Fotoproduktion"
   ],
-  "publishedAt": "2027-09-19T07:00:00.000Z",
+  "publishedAt": "2028-05-05T07:00:00.000Z",
   "status": "scheduled",
   "excerpt": "So stimmt eine Autohausgruppe Fahrzeugbilder über mehrere Filialen hinweg ab: mit klaren Bildstandards, lokalen Spielräumen, Zuständigkeiten und einer verlässlichen Qualitätskontrolle.",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
-  "coverAlt": "Dunkler Brabus-SUV vor Industrieanlagen im Abendlicht mit Spiegelung auf nassem Boden",
+  "coverImage": "/assets/optimized/assets-portfolio-dsc3878-1920.webp",
+  "coverAlt": "Hypercar · Front",
   "readingTime": 8,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Fahrzeugfotos über mehrere Standorte: Die wichtigsten Punkte im Über",
+      "body": "Kernaussage: Nicht zwingend. Ein gemeinsamer Hintergrund kann den Bestand vereinheitlichen, ist aber keine Voraussetzung\nWenn jedes Haus anders: Eine Autohausgruppe kann an mehreren Standorten denselben Fahrzeugtyp anbieten und trotzdem sehr unterschiedliche Bilder zeigen\nVerantwortung zwischen Zentrale, Filiale: Zentrale: Motivliste und Zielkanäle pflegen, Version freigeben, Ausnahmen entscheiden\nKurze Prüfliste für den: Master-Motivliste: Pflichtbilder, bedingte Zusatzbilder, Motivcodes und Musteraufnahmen je Zielkanal"
+    },
     {
       "headline": "Wenn jedes Haus anders fotografiert, wird der Bestand schwer vergleichbar",
       "body": "Eine Autohausgruppe kann an mehreren Standorten denselben Fahrzeugtyp anbieten und trotzdem sehr unterschiedliche Bilder zeigen. In einer Filiale steht das Auto vor einer ruhigen Wand, in der nächsten vor einem vollen Hof. Kamerahöhe, Abstand, Ausschnitt und Bildfolge wechseln mit der Person, die gerade fotografiert. Auf der Website wirkt der Bestand dann wie eine Sammlung einzelner Abläufe statt wie ein zusammengehöriges Angebot.\n\nEin gemeinsamer Bildstandard löst das nicht, indem jedes Fahrzeug gleich aussieht. Er macht vielmehr die wichtigen Gemeinsamkeiten planbar: Welche Ansichten braucht jedes Inserat? Wie groß soll das Fahrzeug im Bild erscheinen? Wie werden Innenraum und Details ergänzt? Und wer entscheidet, wann ein Motiv aus dem Standard herausfällt?\n\nDieser Leitfaden richtet sich an Verantwortliche, die Fahrzeugfotos über mehrere Autohausstandorte hinweg organisieren. Es geht um den Prozess zwischen Zentrale, Filiale und Fotograf, nicht um die Auswahl einer bestimmten Kamera oder Fotoanlage.",
@@ -71,6 +78,12 @@
       "_template": "textBlock"
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Häufige Fragen",
       "items": [
@@ -109,6 +122,16 @@
           "label": "Dealer Strategies: Aufbau einer Fotoabteilung in einer Autohausgruppe",
           "href": "https://news.dealershipguy.com/p/how-titus-will-automotive-group-built-a-photo-department-from-scratch-2026-04-15",
           "description": "Einzelfallbericht über gemeinsame Schulung, wiederkehrende Motive und teamübergreifende Koordination an mehreren Standorten; keine allgemeine Benchmark."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Motive, Bildformate und Übergabe vor dem Shooting sauber strukturieren."
         }
       ]
     }
@@ -132,11 +155,11 @@
     "searchIntent": "Informationssuche mit kommerziellem Bezug: Verantwortliche in Händlergruppen suchen einen praktikablen Weg, Fahrzeugbilder über mehrere Filialen hinweg vergleichbar zu organisieren. Öffentliche Anbieterhinweise und ein unabhängiger Praxisbericht zeigen den konkreten Multi-Standort-Anwendungsfall; sie belegen weder allgemeine Leistungswirkung noch Suchvolumen. Der Beitrag grenzt sich von der bestehenden Wahl zwischen Fotoanlage und Fotograf sowie von der Bildgestaltung einer einzelnen Fahrzeugserie ab, indem er zentrale Regeln, lokale Bedingungen, Verantwortlichkeiten, Pilot und Qualitätskontrolle behandelt. Crawl-Foundry-Daten sind stale/aged; Search Performance hat keinen Snapshot und AI-Visibility-Runs fehlen. Suchvolumen, GSC-Nachfrage und gemessener AI-Fanout sind nicht belegt; Fragen zur Filialsteuerung, Zuständigkeit, Hintergrund, Dateizuordnung und Qualitätssicherung sind ungemessene redaktionelle Fanout-Hypothesen.",
     "canonicalUrl": "https://matthiasramahi.de/blog-fahrzeugfotos-mehrere-autohausstandorte-planen.html",
     "legacyUrl": "blog-fahrzeugfotos-mehrere-autohausstandorte-planen.html",
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "ogImage": "/assets/optimized/assets-portfolio-dsc3878-1920.webp",
     "noIndex": false
   },
   "createdAt": "2026-11-06T05:36:12Z",
-  "updatedAt": "2027-09-19T07:00:00Z",
+  "updatedAt": "2028-05-05T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",

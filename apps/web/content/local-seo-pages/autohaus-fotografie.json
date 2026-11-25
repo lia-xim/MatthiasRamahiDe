@@ -102,8 +102,49 @@
     "migrationStatus": "reviewed",
     "renderSource": "legacy-file"
   },
-  "updatedAt": "2026-07-21 22:35:09.413+00",
+  "updatedAt": "2026-11-24T09:00:00.000Z",
   "createdAt": "2026-05-31 18:09:46.535+00",
   "status": "published",
-  "payloadId": "187"
+  "payloadId": "187",
+  "guideSection": {
+    "eyebrow": "Autohaus Fotografie",
+    "headline": "Autohaus- und Händlerfotografie: Konstante Qualität im Bestand.",
+    "intro": "Kaufinteressenten vergleichen Fahrzeuge online in wenigen Sekunden. Eine einheitliche, ehrliche Bildsprache im Showroom und auf dem Hof steigert Vertrauen und reduziert unnötige Rückfragen.",
+    "items": [
+      {
+        "title": "Reproduzierbare Shotlist für jedes Fahrzeug",
+        "text": "Statt zufälliger Winkel entsteht ein fester Ablauf aus Außenansichten, Interieur, Cockpit, Ausstattungsdetails und Zustandsnachweisen. So wirkt dein gesamter Fahrzeugbestand auf Portalen und der eigenen Website aus einem Guss."
+      },
+      {
+        "title": "Showroom-Mischlicht sauber beherrschen",
+        "text": "Hallenbeleuchtung, Schaufenster und Deckenstrahler erzeugen oft Farbstiche und harte Reflexe auf der Windschutzscheibe. Mit gezieltem Weißabgleich, Polfilter und mobilem Licht bleiben Lackfarben und Materialien verlässlich."
+      },
+      {
+        "title": "Effizienter Ablauf ohne Stillstand im Tagesgeschäft",
+        "text": "Fahrzeuge werden vorab vorbereitet und nacheinander an einem definierten Fotoplatz im oder am Betrieb fotografiert. Mehrere Fahrzeuge lassen sich gebündelt an einem halben oder ganzen Produktionstag umsetzen."
+      },
+      {
+        "title": "Lieferung direkt für Börsen, Website und Social Media",
+        "text": "Alle Serien werden farblich abgestimmt und in den benötigten Seitenverhältnissen für Inseratsportale, Händlerwebsite und Kampagnen übergeben. Einstieg für Einzelproduktionen ab 250 € inkl. MwSt., Serientage nach Umfang."
+      }
+    ],
+    "links": [
+      {
+        "label": "Autoverkauf Fotos Düsseldorf",
+        "href": "/autoverkauf-fotos-duesseldorf.html"
+      },
+      {
+        "label": "Showroomlicht im Autohaus (Journal)",
+        "href": "/blog-autohaus-showroomlicht.html"
+      },
+      {
+        "label": "Automobilfotografie Düsseldorf",
+        "href": "/automobil-fotografie-duesseldorf.html"
+      },
+      {
+        "label": "Portfolio Automobil",
+        "href": "/portfolio/portfolio-auswahl-automobil"
+      }
+    ]
+  }
 }

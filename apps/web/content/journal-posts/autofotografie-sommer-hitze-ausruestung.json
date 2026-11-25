@@ -9,16 +9,23 @@
     "Fahrzeugshooting",
     "Kamera schützen"
   ],
-  "publishedAt": "2027-04-18T07:00:00Z",
+  "publishedAt": "2027-08-17T07:00:00.000Z",
   "excerpt": "So planst du sommerliche Autofotos bei harter Sonne: Lichtfenster, Lackreflexe, sichere Pausen und Schutz für Kamera und Zubehör.",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
-  "coverAlt": "Schwarzer SUV im Außenbereich mit Abendhimmel und Spiegelung auf dem Boden",
+  "coverImage": "/assets/optimized/assets-portfolio-dsc2986-1920.webp",
+  "coverAlt": "Interieur · Location",
   "readingTime": 7,
   "blocks": [
     {
       "_template": "textBlock",
       "headline": "",
       "body": "Im Sommer sind Licht und Hitze zwei verschiedene Aufgaben. Eine glänzende Karosserie nimmt helle Fassaden, Himmel und Sonne als große Reflexe auf; gleichzeitig können Kamera, Laptop und Ersatzakku in einem abgestellten Auto sehr warm werden. Wer beides in einen einzigen Gedanken packt, merkt die Probleme oft erst am fertigen Bild oder an einer Temperaturwarnung der Kamera.\n\nPlane darum zuerst, welche Bilder wirklich entstehen müssen und welches Licht dafür verfügbar ist. Dieser Ratgeber konzentriert sich auf sommerliche Außentermine: von der Wahl des Zeitfensters über den Umgang mit direkter Sonne bis zum sicheren Arbeitsablauf bei hohen Temperaturen. Allgemeine Perspektiven und Kameraeinstellungen findest du im [Ratgeber zum Auto fotografieren](/auto-fotografieren-tipps.html)."
+    },
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Auto im Sommer fotografieren: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Wenn du frei planen kannst, beginne früh oder fotografiere am späteren Nachmittag\nDas Zeitfenster gehört zum: Wenn du Zeitpunkt und Ort wählen kannst, lege das Shooting in die frühen Morgenstunden oder an den späteren Nachmittag\nAusrüstung nicht im geparkten: Die Kamera, der Laptop und zusätzliche Akkus gehören während einer Pause nicht auf das Armaturenbrett oder in einen abgestellten Wagen in der Sonne\nEin kurzer Ablauf für: Prüfe vorab Sonnenstand, aktuelle Wetterlage, Zugänge, Schattenflächen und den Untergrund"
     },
     {
       "_template": "textBlock",
@@ -68,6 +75,12 @@
       "_template": "textBlock",
       "headline": "Ein kurzer Ablauf für heiße Shootingtage",
       "body": "1. Prüfe vorab Sonnenstand, aktuelle Wetterlage, Zugänge, Schattenflächen und den Untergrund. Kläre, ob du auf dem Gelände fotografieren darfst, und lege einen schattigen Pausenplatz fest.\n\n2. Packe Trinkwasser, Kopfbedeckung und Sonnenschutz ein. Plane kurze Pausen im Schatten und unterbrich den Termin, wenn du dich unwohl fühlst. Der Deutsche Wetterdienst empfiehlt, körperliche Aktivitäten in die kühleren Tageszeiten zu verlegen und bei Hitze regelmäßig zu trinken.\n\n3. Bereite Fahrzeug, Motivliste und Kameraeinstellungen vor dem geplanten Lichtfenster vor. Ordne die Pflichtansichten so, dass du wichtige Lackflächen und Karosserielinien bei lesbarem Licht zuerst fotografierst.\n\n4. Fotografiere zuerst die Ansichten, die Lackfarbe, Karosserielinien oder Zustand klar zeigen sollen. Kontrolliere eine Testaufnahme in voller Größe.\n\n5. Nimm anschließend kreative Varianten bei direkter Sonne oder mit bewusst eingesetzten Schatten auf. Bewege dich, statt jede Reflexion sofort in der Bearbeitung zu entfernen.\n\n6. Bewahre Kamera, Ersatzakkus und Rechner während Pausen außerhalb des heißen Fahrzeugs an einem schattigen, belüfteten Platz auf.\n\n7. Wenn sich Wetter, Licht oder Gerätezustand ändern, stoppe und passe den Plan an. Ein verschobenes Detailmotiv kostet weniger als beschädigtes Equipment oder eine Serie, die sich nicht sicher fertigstellen lässt.\n\nIm Winter ändern sich Ausrüstungsschutz und Lichtfenster; dazu passt der [Guide zum Fotografieren eines Autos im Winter](/blog-auto-im-winter-fotografieren.html)."
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
     },
     {
       "_template": "faqBlock",
@@ -127,6 +140,11 @@
           "label": "Deutscher Wetterdienst: Verhaltensempfehlungen bei Hitze",
           "href": "https://www.dwd.de/DE/leistungen/hitzewarnung/verhaltensempfehlungen.pdf?__blob=publicationFile&v=4",
           "description": "Hinweise des DWD zu Aktivitäten in kühleren Tageszeiten, Schatten und regelmäßigem Trinken bei Hitze."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]
     }
@@ -144,12 +162,12 @@
     "searchIntent": "Praktische Suche: Autofotos bei starker Sommersonne planen, Lackreflexe kontrollieren und Kameraausrüstung vor Hitze schützen.",
     "canonicalUrl": "https://matthiasramahi.de/blog-autofotografie-sommer-hitze-ausruestung.html",
     "legacyUrl": "blog-autofotografie-sommer-hitze-ausruestung.html",
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "ogImage": "/assets/optimized/assets-portfolio-dsc2986-1920.webp",
     "noIndex": false
   },
   "status": "scheduled",
   "createdAt": "2026-11-03T17:00:00Z",
-  "updatedAt": "2027-04-18T07:00:00Z",
+  "updatedAt": "2027-08-17T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Auto fotografieren: Tipps und Perspektiven",

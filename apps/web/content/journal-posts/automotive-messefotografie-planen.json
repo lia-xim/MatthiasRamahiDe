@@ -8,7 +8,7 @@
     "Fahrzeugpräsentation",
     "Markenkommunikation"
   ],
-  "publishedAt": "2026-12-29T08:00:00.000Z",
+  "publishedAt": "2027-02-12T08:00:00.000Z",
   "excerpt": "Ein Automotive-Messeshooting braucht eine klare Motivfolge, abgestimmte Pressetermine und geprüfte Freigaben. So planst du Fahrzeug-, Stand- und Launchbilder für die spätere Verwendung.",
   "coverImage": "/assets/optimized/assets-portfolio-dsc2744-1920.webp",
   "readingTime": 9,
@@ -17,6 +17,13 @@
       "headline": "",
       "body": "Für Automotive-Messebilder sollten Aussteller vorab drei Dinge festlegen: Was muss sichtbar werden, wann dürfen die Motive veröffentlicht werden und welche Freigaben gelten am konkreten Stand und Veranstaltungsort? Daraus ergibt sich eine Bildfolge aus Fahrzeug, Technik, Stand und Menschen – mit einem klaren Zeitplan für die Auswahl.\n\nEin allgemeiner Messebericht braucht andere Motive als eine Fahrzeugpremiere oder ein Zulieferer-Launch. Wer Shotlist, Pressetermine, Sperrfristen und die spätere Weitergabe an Händler gemeinsam plant, reduziert Nacharbeit. Die Freigaben sind nicht branchenweit einheitlich: Die IAA-TRANSPORTATION-Regeln 2026 verlangten für kommerzielle Produktionen und das Fotografieren von Ständen oder Exponaten die ausdrückliche Zustimmung des jeweiligen Ausstellers. Die Hausordnung der Messe Frankfurt weist ebenfalls auf Fotobeschränkungen und mögliche Veranstaltervorgaben hin. Diese Regeln gelten für die jeweiligen Veranstaltungen; sie ersetzen keine Prüfung der nächsten Messe.",
       "_template": "textBlock"
+    },
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Messe- und Launchbilder für Fahrzeuge reibungslos umsetzen",
+      "body": "Drei Eckpunkte fixieren: Was muss sichtbar werden (Fahrzeug, Stand, Technik), ab wann greift das Embargo und welche Ausweise/Standregeln gelten vor Ort?\nPressetag vs. Besuchertag: Leere Standansichten, Details und freigegebene Premierenmotive vor Publikumsöffnung aufnehmen; Team- und Gesprächsbilder später ergänzen\nHallenlicht vorab testen: LED-Banding und Farbtemperaturen am Stand über RAW-Testschüsse prüfen und eine schnelle Erstauswahl für Presseabgaben definieren"
     },
     {
       "_template": "imageSequence",
@@ -93,6 +100,12 @@
       "_template": "textBlock"
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Professionelles Auto-Fotoshooting in NRW planen",
+      "text": "Du brauchst stimmige Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto im Raum Düsseldorf, Erkrath und NRW? Shootings starten bei 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "headline": "Häufige Fragen",
       "items": [
         {
@@ -126,6 +139,16 @@
           "label": "Messe Frankfurt: Hausordnung, Stand Juni 2025",
           "href": "https://www.messefrankfurt.com/content/dam/messefrankfurt-redaktion/corporate/documents/de/downloads/hausordnung-messe-frankfurt.pdf",
           "description": "Regeln zu Fotografie, Persönlichkeits- und Schutzrechten sowie möglichen Vorgaben des jeweiligen Veranstalters."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Motive, Bildformate und Übergabe vor dem Shooting sauber strukturieren."
         }
       ],
       "_template": "linkList"
@@ -149,7 +172,7 @@
   },
   "status": "scheduled",
   "createdAt": "2026-11-03T15:29:17.646Z",
-  "updatedAt": "2026-12-29T08:00:00.000Z",
+  "updatedAt": "2027-02-12T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie für Marken und Unternehmen",
@@ -162,6 +185,13 @@
       "label": "Automobil-Eventfotografie planen",
       "href": "/blog-automobil-eventfotografie-beauftragen.html",
       "seoPurpose": "related-editorial",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
     }

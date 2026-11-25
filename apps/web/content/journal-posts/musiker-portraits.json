@@ -14,6 +14,13 @@
   "readingTime": 8,
   "blocks": [
     {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Was ein verwertbares Musiker- & Bandportrait-Set braucht",
+      "body": "Presse- und Coverformate: Immer Querformat (Pressekit/Stage), Hochformat (Plakat/Social) und ruhiges Hauptportrait einplanen\nInstrument organisch einbinden: Bogen, Hals oder Korpus prägen Linien und Körperhaltung bereits in der Lichtplanung statt als nachträgliches Requisit\nLanglebigkeit sichern: Mindestens eine zeitlose Serie ohne kurzfristige Album-Optik für langfristige Bio- und Veranstalterseiten mitdenken"
+    },
+    {
       "headline": "Das Portrait muss eine Veröffentlichung tragen können",
       "body": "Ein Musikerportrait ist selten nur ein Erinnerungsbild. Es erscheint auf einer Künstlerseite, in einem Programmheft, als Pressefoto, Cover, Plakat oder Social-Post. Jede dieser Flächen stellt andere Anforderungen an Ausschnitt und Bildruhe. Ein ausdrucksstarkes Hochformat hilft wenig, wenn die Tourankündigung ein breites Motiv mit freier Fläche für Termine braucht.\n\nVor dem visuellen Konzept sollte deshalb die Veröffentlichungslogik geklärt werden. Welche Bilder werden in den nächsten Monaten tatsächlich gebraucht, welche Formate sind Pflicht und wie lange soll die Serie den aktuellen Auftritt repräsentieren? Daraus entsteht eine Bildliste. Sie verhindert, dass die gesamte Zeit in eine starke Einzelidee fließt und am Ende die sachlichen Pressevarianten fehlen.",
       "_template": "textBlock"
@@ -68,6 +75,39 @@
       "_template": "textBlock"
     },
     {
+      "_template": "linkList",
+      "headline": "Musikerfotografie, Pressefotos & Video",
+      "links": [
+        {
+          "label": "Musikerfotografie NRW",
+          "href": "/musikerfotografie.html"
+        },
+        {
+          "label": "Pressefoto Düsseldorf",
+          "href": "/pressefoto-duesseldorf.html"
+        },
+        {
+          "label": "Viola-Portrait am See (Portfolio)",
+          "href": "/portfolio/viola-portrait-am-see"
+        },
+        {
+          "label": "Videografie & Musikvideo Düsseldorf",
+          "href": "/videografie-duesseldorf.html"
+        },
+        {
+          "label": "Portraitfotografie in Düsseldorf & NRW",
+          "href": "/portraitfotografie.html",
+          "description": "Business-, Künstler- und Charakterportraits mit ruhiger Führung."
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Musiker- oder Bandportraits für Release und Presse planen",
+      "text": "Authentische Einzel- und Bandfotos in Düsseldorf, Köln und ganz NRW ab 250 € inkl. MwSt. – auf Wunsch kombiniert mit Musikvideo.",
+      "buttonLabel": "Musiker-Shooting anfragen"
+    },
+    {
       "headline": "Kurze Fragen",
       "items": [
         {
@@ -87,8 +127,8 @@
     }
   ],
   "seo": {
-    "title": "Musikerfotos & Bandportraits planen | Matthias Ramahi",
-    "description": "Musikerportraits verbinden Person, Klangwelt und Nutzung. Ein Leitfaden für Bildsprache, Instrument, Banddynamik, Licht und eine tragfähige Bildserie.",
+    "title": "Musiker- & Bandportraits: Licht, Look & Pressekit",
+    "description": "Musikerportraits und Bandfotos richtig planen: Licht, Instrument, Location und Formate für Pressekit, Cover und Social Media – mit Praxisbeispielen.",
     "focusKeyword": "Musiker- und Bandportraits planen",
     "searchIntent": "Informationssuche: Nutzer suchen Fachwissen, Beispiele und Einordnung zu Musiker- und Bandportraits planen.",
     "canonicalUrl": "https://matthiasramahi.de/blog-musiker-portraits.html",
@@ -104,7 +144,7 @@
   },
   "status": "published",
   "createdAt": "2026-08-08T09:00:00.000Z",
-  "updatedAt": "2026-09-25T14:00:00.000Z",
+  "updatedAt": "2026-11-24T09:15:00.000Z",
   "relatedPages": [
     {
       "label": "Musikerfotografie",
@@ -116,6 +156,13 @@
     {
       "label": "Portraitfotografie",
       "href": "/portraitfotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Lichtformer in der Portraitfotografie",
+      "href": "/blog-lichtformer-portraitfotografie.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

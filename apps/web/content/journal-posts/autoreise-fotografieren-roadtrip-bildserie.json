@@ -8,11 +8,18 @@
     "Automobilfotografie",
     "Bildgeschichte"
   ],
-  "publishedAt": "2027-07-23T07:00:00.000Z",
+  "publishedAt": "2028-01-28T08:00:00.000Z",
   "excerpt": "Eine Autoreise fotografisch erzählen: Route und Fotostopps planen, das Auto als wiederkehrenden Anker nutzen und aus Landschaft, Zwischenstopps und Ankunft eine stimmige Bildfolge machen.",
   "coverImage": "/uploads/payload/_DSC8178.webp",
   "readingTime": 8,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Roadtrip fotografieren: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Eine Auswahl kann Aufbruch, einzelne Zwischenstopps, Landschaft, das Auto als wiederkehrenden Bezugspunkt und Ankunft zeigen\nEine Autoreise ist mehr: Bei einem Roadtrip soll die spätere Bildauswahl vermitteln, wie sich die Reise entwickelt hat\nDie Bildgeschichte beginnt an: Fotografiere nur an einem Ort, an dem Halten oder Parken nach Beschilderung und Verkehrslage zulässig und sicher ist\nNach der Fahrt eine: Sichte die Bilder zuerst nach Etappen und nicht nach technischer Perfektion"
+    },
     {
       "headline": "Eine Autoreise ist mehr als eine Reihe schöner Parkplätze",
       "body": "Bei einem Roadtrip soll die spätere Bildauswahl vermitteln, wie sich die Reise entwickelt hat. Ein einzelnes Auto vor einer schönen Landschaft kann ein starkes Foto sein. Mehrere ähnliche Ansichten an verschiedenen Haltepunkten erzählen jedoch noch nicht automatisch eine Geschichte. Die Bildfolge braucht einen Anfang, Veränderungen unterwegs und einen Schluss, der zur tatsächlichen Reise passt.\n\nPlane deshalb nicht nur einzelne Motive, sondern auch ihre Aufgabe: Wo wird die Fahrt eröffnet? Welche Bilder geben Orientierung, welche zeigen einen Wechsel der Umgebung und welches Motiv führt zum Ziel? Das Auto verbindet diese Stationen. Es bleibt der wiederkehrende Bezugspunkt, während Licht, Wetter, Landschaft und Bildabstand variieren. So entsteht eine Autoreise-Serie, ohne dass jede Aufnahme wie ein separates Fahrzeugshooting wirkt.",
@@ -65,6 +72,12 @@
       "headline": "Nach der Fahrt eine nachvollziehbare Reihenfolge auswählen",
       "body": "Sichte die Bilder zuerst nach Etappen und nicht nach technischer Perfektion. Frage bei jeder Aufnahme: Gibt sie Orientierung, zeigt sie das Auto in seiner Umgebung, macht sie ein Detail sichtbar oder markiert sie einen Übergang? Wenn mehrere Bilder dieselbe Aufgabe erfüllen, behalte das klarste oder erzählerisch stärkste. Ein gleichbleibender Weißabgleich und eine zurückhaltende Farbkorrektur helfen, die Folge zusammenzuführen; sie sollten unterschiedliche Lichtstimmungen nicht künstlich gleichmachen.\n\nPrüfe vor einer Veröffentlichung Kennzeichen, erkennbare Personen, private Adressen und genaue Ortsangaben. Reisebilder können sensible Informationen über Gewohnheiten oder Abwesenheiten offenbaren. Zeige nur, was du tatsächlich teilen möchtest, und entferne oder anonymisiere Details, die dafür nicht nötig sind. In den Captions beschreibst du, was im Bild zu sehen ist. Behaupte keine Reiseetappe, keinen Aufnahmeort und keine Fahrzeugausstattung, wenn sie nicht verlässlich bekannt sind.",
       "_template": "textBlock"
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
     },
     {
       "headline": "Häufige Fragen zur Roadtrip-Fotografie",
@@ -132,7 +145,7 @@
   ],
   "status": "scheduled",
   "createdAt": "2026-11-05T02:56:16Z",
-  "updatedAt": "2027-07-23T07:00:00Z",
+  "updatedAt": "2028-01-28T08:00:00.000Z",
   "seo": {
     "title": "Roadtrip fotografieren: Eine Bildgeschichte mit dem Auto",
     "description": "Plane eine Autoreise als Bildgeschichte: Fotostopps, abwechslungsreiche Motive, Auto als roter Faden und eine sichere, stimmige Bildfolge.",

@@ -108,7 +108,7 @@ const servicePrefixes = [
 ]
 
 export const sitemapSections: SitemapSection[] = ['pages', 'local-seo', 'services', 'journal', 'portfolio']
-const nativeRouteLastmod = '2026-06-30'
+const nativeRouteLastmod = '2026-11-24'
 
 export const escapeXml = (value: string) =>
   value
@@ -137,7 +137,9 @@ const dateOnly = (value?: string | number | Date) => {
   if (!value) return undefined
   const date = new Date(value)
   if (Number.isNaN(date.getTime())) return undefined
-  return date.toISOString().slice(0, 10)
+  const now = new Date()
+  const clamped = date.getTime() > now.getTime() ? now : date
+  return clamped.toISOString().slice(0, 10)
 }
 
 const legacyUrlForFile = (file: string) => (file === 'index.html' ? '/' : `/${file}`)
@@ -150,7 +152,7 @@ const normalizePageLoc = (loc?: string) => {
     if (url.hostname !== site.hostname || url.protocol !== site.protocol) return ''
 
     url.hash = ''
-    const pathname = url.pathname === '/' ? '' : url.pathname.replace(/\/+$/, '')
+    const pathname = url.pathname === '/' ? '/' : url.pathname.replace(/\/+$/, '')
     return `${site.origin}${pathname}${url.search}`
   } catch {
     return ''
@@ -269,7 +271,7 @@ export async function nativeRouteSitemapEntries(section?: SitemapSection): Promi
     if (section && sectionForLegacyFile(file) !== section) continue
 
     const journalArticle = journalArticleByLegacyFile[file.toLowerCase()]
-    if (journalArticle && !isJournalArticlePublic(journalArticle)) continue
+    if (file.toLowerCase().startsWith('blog-') && (!journalArticle || !isJournalArticlePublic(journalArticle))) continue
 
     const chrome = getAdoptedPageChrome(file)
     const images = [...(chrome.ogImage ? [chrome.ogImage] : []), ...(chrome.preloadImages || [])]

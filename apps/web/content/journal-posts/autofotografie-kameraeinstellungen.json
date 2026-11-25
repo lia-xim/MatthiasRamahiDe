@@ -9,12 +9,19 @@
     "Fahrzeugfotografie",
     "Belichtung"
   ],
-  "publishedAt": "2027-02-01T08:00:00.000Z",
+  "publishedAt": "2027-04-09T07:00:00.000Z",
   "excerpt": "Welche Kameraeinstellungen passen zu Autofotos? Eine Entscheidungshilfe zu Blende, Verschlusszeit, ISO und Fokus für Verkauf, Händlerbestand und Markenbilder.",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
-  "coverAlt": "Schwarzer SUV vor Industrieanlagen und farbigem Abendhimmel, gespiegelt in einer Pfütze",
+  "coverImage": "/assets/portfolio/automobil-bmw-m3-showcar.webp",
+  "coverAlt": "Weißer Sportwagen in kontrolliertem Ausstellungslicht mit klarer Seitenkontur",
   "readingTime": 7,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Kameraeinstellungen Autofotografie: Die wichtigsten Punkte im Überbl",
+      "body": "Kernaussage: Für ein stehendes Auto ist Zeitautomatik (A/Av) ein guter Ausgangspunkt, weil du die Schärfentiefe steuerst\nDie Bildaufgabe bestimmt den: Für Autofotos gibt es keinen Einstellungswert, der bei jeder Kamera und jedem Fahrzeug passt\nISO: Bei hellem Tageslicht lässt sich die ISO-Empfindlichkeit meist niedrig halten\nBelichtung und Schärfe vor: Lack und Glas reflektieren ihre Umgebung"
+    },
     {
       "_template": "textBlock",
       "headline": "Die Bildaufgabe bestimmt den Startpunkt",
@@ -70,6 +77,12 @@
       "body": "Lack und Glas reflektieren ihre Umgebung. Prüfe deshalb nicht nur die Gesamtanzeige, sondern auch helle Karosseriepartien, dunkle Radkästen und wichtige Kanten. Nach einem Testbild hilft das Histogramm, die Verteilung von dunklen und hellen Tonwerten zu sehen: Ein Ausschlag am rechten Rand kann auf ausgefressene Lichter hindeuten, einer am linken Rand auf verlorene Schattendetails. Das Histogramm muss nicht mittig oder gleichmäßig aussehen; entscheide anhand der Details, die im Bild erhalten bleiben sollen. Wenn deine Kamera eine Spitzlichtwarnung bietet, nutze sie zusammen mit der vergrößerten Wiedergabe, um kritische Lackstellen zu prüfen. Bei Bedarf ändere die Belichtung in kleinen Schritten und fotografiere erneut.\n\nKontrolliere die Schärfe ebenfalls in der Wiedergabe: Vergrößere die wichtige Karosseriekante und prüfe die Randbereiche. Bei mehreren Fahrzeugen unter vergleichbarem Licht helfen feste Einstellungen, den Bestand gleichmäßiger wirken zu lassen. Für einen einzelnen Auftrag sollte das Briefing zuerst festlegen, welche Ansichten und Details gebraucht werden. Die Kameraeinstellungen folgen diesem Bildplan, nicht umgekehrt. Eine neutrale Vorschau auf dem Kameradisplay garantiert nicht, dass die spätere Farbwiedergabe stimmt."
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Häufige Fragen zu Kameraeinstellungen bei Autofotos",
       "items": [
@@ -104,11 +117,11 @@
           "href": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/a-basic-look-at-the-basics-of-exposure",
           "description": "Erklärt, wie Blende, Belichtungszeit und ISO zusammenwirken."
         },
-      {
-        "label": "Nikon: Histogramm und Spitzlichtwarnung prüfen",
-        "href": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/learning-how-to-use-your-cameras-histogram",
-        "description": "Zeigt, wie Histogramm und Spitzlichtwarnung helfen, Tonwertverteilung und überbelichtete Bereiche zu kontrollieren."
-      },
+        {
+          "label": "Nikon: Histogramm und Spitzlichtwarnung prüfen",
+          "href": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/learning-how-to-use-your-cameras-histogram",
+          "description": "Zeigt, wie Histogramm und Spitzlichtwarnung helfen, Tonwertverteilung und überbelichtete Bereiche zu kontrollieren."
+        },
         {
           "label": "Nikon: Blende und Schärfentiefe",
           "href": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-maximum-aperture",
@@ -128,6 +141,11 @@
           "label": "Canon EOS R5: One-Shot AF und Servo AF",
           "href": "https://cam.start.canon/en/C003/manual/html/UG-04_AF-Drive_0040.html",
           "description": "Canon ordnet One-Shot AF unbewegten und Servo AF bewegten Motiven zu."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]
     }
@@ -145,12 +163,12 @@
     "searchIntent": "Informationssuche mit praktischem Automotive-Bezug: Fotografen, Fahrzeugbesitzer und Händler möchten passende Kameraeinstellungen für stehende und bewegte Autos wählen und sie an Ganzansicht, Detail, Verkauf, Bestand oder Markenbild anpassen.",
     "canonicalUrl": "https://matthiasramahi.de/blog-autofotografie-kameraeinstellungen.html",
     "legacyUrl": "blog-autofotografie-kameraeinstellungen.html",
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "ogImage": "/assets/portfolio/automobil-bmw-m3-showcar.webp",
     "noIndex": false
   },
   "status": "scheduled",
   "createdAt": "2026-11-03T16:42:17Z",
-  "updatedAt": "2027-02-01T08:00:00.000Z",
+  "updatedAt": "2027-04-09T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",

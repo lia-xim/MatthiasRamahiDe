@@ -7,12 +7,19 @@
     "Lack",
     "Dokumentation"
   ],
-  "publishedAt": "2027-06-21T07:00:00.000Z",
+  "publishedAt": "2027-12-07T08:00:00.000Z",
   "status": "scheduled",
   "excerpt": "Mit einer ruhigen Bildfolge lassen sich sichtbare Lackmerkmale eines Oldtimers nachvollziehbar festhalten. So fotografierst du Übersichten, Farb- und Oberflächenhinweise, ohne mit einem Foto Originalität zu behaupten.",
-  "coverImage": "/uploads/payload/20250418-DSC006552.webp",
+  "coverImage": "/uploads/payload/20250418-DSC00638.webp",
   "readingTime": 6,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Originallack Oldtimer dokumentieren: Die wichtigsten Punkte im Überb",
+      "body": "Kernaussage: Sichtbare Lackmerkmale eines Oldtimers fotografisch sauber festhalten – mit Übersichten, Streiflicht und Farbreferenz ohne übertriebene Retusche\nEin Foto zeigt Lackmerkmale,: Wer den Originallack eines Oldtimers fotografisch dokumentieren möchte, sollte zwei Dinge auseinanderhalten: Das Bild kann den sichtbaren Zustand zu einem\nWeiches Licht für Farbe,: Für eine ruhige Übersicht eignet sich großflächiges, weiches Licht\nWann ein Gutachten oder: Fotos können dokumentieren, was unter bestimmten Licht- und Aufnahmebedingungen sichtbar war"
+    },
     {
       "_template": "textBlock",
       "headline": "Ein Foto zeigt Lackmerkmale, aber keine Lackgeschichte",
@@ -59,6 +66,12 @@
       "_template": "textBlock",
       "headline": "Wann ein Gutachten oder eine Prüfung nötig ist",
       "body": "Fotos können dokumentieren, was unter bestimmten Licht- und Aufnahmebedingungen sichtbar war. Sie beantworten nicht, ob ein Lack original, zeitgenössisch, fachgerecht repariert oder in mehreren Schichten aufgebaut ist. Auch Farbabweichungen zwischen Bauteilen lassen sich aus Bildern allein nicht sicher einer früheren Reparatur zuordnen. Eine Nahaufnahme kann Hinweise festhalten, aber weder Materialmessung noch fachliche Beurteilung ersetzen.\n\nDer ADAC trennt bei der Oldtimerbewertung Zustand, Originalität und Historie voneinander und weist darauf hin, dass die Einordnung Fachkenntnis und eine Bestandsaufnahme vor Ort verlangt. Auch die FIVA beschreibt die Identity Card als Ergebnis einer physischen Prüfung und sagt ausdrücklich, dass die Karte keine Garantie für Authentizität oder ein Beweis der Fahrzeuggeschichte ist. Für eine konkrete Zustands- oder Originalitätsaussage sollten Eigentümer deshalb die zuständige Prüfstelle oder eine qualifizierte Fachperson einbeziehen und die Bilder mit deren Unterlagen abgleichen."
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Oldtimer & Klassiker sorgfältig dokumentieren",
+      "text": "Ruhige Bildserien für Sammlung, Auktionsvorbereitung oder privates Wertfahrzeug in NRW ab 250 € inkl. MwSt.",
+      "buttonLabel": "Oldtimer-Shooting anfragen"
     },
     {
       "_template": "faqBlock",
@@ -118,13 +131,18 @@
           "label": "National Museums Scotland: Lighting, composition, and colour balance",
           "href": "https://www.nms.ac.uk/our-impact/national-work/training-and-guidance-for-museums/photographing-collections/lighting-and-colour",
           "description": "Museumsguidance zu Streiflicht, Graukarte und Farbreferenz in der Objektfotografie."
+        },
+        {
+          "label": "Oldtimerfotografie in Düsseldorf & NRW",
+          "href": "/oldtimer-fotografie.html",
+          "description": "Sorgfältige Dokumentation klassischer Fahrzeuge und Sammlungsstücke."
         }
       ]
     }
   ],
-  "coverAlt": "Rot lackierter klassischer Sportwagen in einer Halle, mit deutlich sichtbaren Reflexen entlang der Karosserie.",
+  "coverAlt": "Roter Oldtimer im gerichteten Streiflicht zur Sichtbarmachung der Lackoberfläche",
   "createdAt": "2026-11-04T15:57:11+01:00",
-  "updatedAt": "2027-06-21T07:00:00Z",
+  "updatedAt": "2027-12-07T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Oldtimer-Fotografie",
@@ -149,8 +167,8 @@
     }
   ],
   "seo": {
-    "title": "Originallack am Oldtimer dokumentieren: Was Fotos zeigen können",
-    "description": "So hältst du sichtbare Lackmerkmale eines Oldtimers fotografisch nachvollziehbar fest – mit Übersichten, Streiflicht und Farbreferenz, ohne Originalität zu behaupten.",
+    "title": "Originallack am Oldtimer sauber fotografieren",
+    "description": "Sichtbare Lackmerkmale eines Oldtimers fotografisch sauber festhalten – mit Übersichten, Streiflicht und Farbreferenz ohne übertriebene Retusche.",
     "focusKeyword": "Originallack Oldtimer dokumentieren",
     "secondaryKeywords": [
       "Oldtimer Lackzustand fotografieren",
@@ -165,7 +183,7 @@
     "searchIntent": "Informationssuche mit kommerziellem Bezug: Oldtimer-Eigentümer, Sammler und Verkäufer möchten sichtbare Lackmerkmale strukturiert festhalten und Bildmaterial für eine Fachprüfung oder Fahrzeugakte vorbereiten. Kostenlose SERP-Stichprobe am 2026-11-04 zeigte für exakte Formulierungen vor allem breitere ADAC-Kauf-/Originalitätsinformationen und fotografische Dokumentationshinweise; kein belegtes Suchvolumen und keine gemessenen AI-Fanout-Daten. Abgrenzung: ein standardisierter fotografischer Oberflächen-Datensatz, nicht Patina-Inszenierung, Fahrzeugwert, Auktion, Sammlungsarchiv oder Restaurierungsablauf.",
     "canonicalUrl": "https://matthiasramahi.de/blog-oldtimer-originallack-dokumentieren.html",
     "legacyUrl": "blog-oldtimer-originallack-dokumentieren.html",
-    "ogImage": "/uploads/payload/20250418-DSC006552.webp",
+    "ogImage": "/uploads/payload/20250418-DSC00638.webp",
     "noIndex": false
   }
 }

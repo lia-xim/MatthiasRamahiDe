@@ -8,12 +8,19 @@
     "Detailfotografie",
     "Fotodokumentation"
   ],
-  "publishedAt": "2027-03-11T08:00:00.000Z",
+  "publishedAt": "2027-06-15T07:00:00.000Z",
   "excerpt": "Mit einer ruhigen Übersicht, verständlichen Detailbildern und klaren Bildnotizen lässt sich der Motorraum eines Oldtimers nachvollziehbar fotografieren, ohne daraus technische oder historische Schlüsse abzuleiten.",
-  "coverImage": "/uploads/payload/20250418-DSC006552.webp",
-  "coverAlt": "Roter klassischer Sportwagen in einer Ausstellung als Gesamtansicht; der Motorraum ist nicht geöffnet.",
+  "coverImage": "/uploads/payload/20250423-DSC02271.webp",
+  "coverAlt": "Klassisches Fahrzeug mit sauber beleuchteter Motorhaube und Kotflügelkontur",
   "readingTime": 9,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Oldtimer Motorraum fotografieren: Die wichtigsten Punkte im Überblic",
+      "body": "Kernaussage: Eine vollständige Ansicht und einige ausgewählte Details\nEin Motorraum braucht Übersicht: Für eine brauchbare Motorraumserie brauchst du zuerst eine vollständige Ansicht bei geöffneter Haube\nLicht auf Oberflächen und: Im Motorraum liegen helle Metallflächen, dunkle Vertiefungen und reflektierende Bauteile dicht nebeneinander\nBildsatz und Nutzung vor: Bevor du die Serie übergibst, prüfe, ob die vereinbarten Ansichten vorhanden und eindeutig benannt sind: Übersicht, ausgewählte Bereiche und die benötigten"
+    },
     {
       "_template": "textBlock",
       "headline": "Ein Motorraum braucht Übersicht und nachvollziehbare Details",
@@ -100,6 +107,12 @@
       ]
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Oldtimer & Klassiker sorgfältig dokumentieren",
+      "text": "Ruhige Bildserien für Sammlung, Auktionsvorbereitung oder privates Wertfahrzeug in NRW ab 250 € inkl. MwSt.",
+      "buttonLabel": "Oldtimer-Shooting anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Kurze Fragen",
       "items": [
@@ -125,15 +138,29 @@
     "searchIntent": "Informative Longtail-Suche: Eigentümer, Fotografierende oder Werkstätten suchen eine praktische Bildfolge für den Motorraum eines klassischen Fahrzeugs und möchten Details nachvollziehbar dokumentieren.",
     "canonicalUrl": "https://matthiasramahi.de/blog-oldtimer-motorraum-fotografieren.html",
     "legacyUrl": "blog-oldtimer-motorraum-fotografieren.html",
-    "ogImage": "/uploads/payload/20250418-DSC006552.webp",
+    "ogImage": "/uploads/payload/20250423-DSC02271.webp",
     "noIndex": false
   },
   "createdAt": "2026-11-03T17:00:00Z",
-  "updatedAt": "2027-03-11T08:00:00.000Z",
+  "updatedAt": "2027-06-15T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Oldtimerfotografie",
       "href": "/oldtimer-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Oldtimer als Wertobjekt fotografieren",
+      "href": "/blog-oldtimer-wertobjekt.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Oldtimer-Veranstaltungen fotografieren",
+      "href": "/blog-oldtimer-veranstaltungen.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

@@ -108,8 +108,8 @@
   "contactSection": {},
   "targetKeyword": "Musikerfotografie",
   "seo": {
-    "title": "Musikerfotografie NRW: Bandfotos & Pressebilder | Matthias Ramahi",
-    "description": "Musikerfotografie in NRW und Düsseldorf: Portraits, Bandfotos, Pressebilder und Cover – mit Instrument, Licht und Look, die zur Musik passen. Ab 250 €.",
+    "title": "Musikerfotografie NRW: Bandfotos & Pressebilder",
+    "description": "Musikerfotografie in NRW & Düsseldorf: Portraits, Bandfotos, Pressebilder und Albumcover – mit Instrument, Licht und Look passend zur Musik. Ab 250 €.",
     "canonicalUrl": "https://matthiasramahi.de/musikerfotografie.html",
     "legacyUrl": "musikerfotografie.html",
     "noIndex": false,
@@ -123,7 +123,7 @@
     "migrationStatus": "new",
     "renderSource": "structured-astro"
   },
-  "updatedAt": "2026-09-25T14:00:00.000Z",
+  "updatedAt": "2026-11-24T09:00:00.000Z",
   "createdAt": "2026-09-25T14:00:00.000Z",
   "status": "published",
   "heroImage": "/assets/portraits/20260609-viola-dsc7402.webp",
@@ -165,6 +165,10 @@
       {
         "label": "Schwarz-Weiß-Portraits",
         "href": "/schwarz-weiss-portrait-fotografie.html"
+      },
+      {
+        "label": "Viola-Portrait am See (Portfolio)",
+        "href": "/portfolio/viola-portrait-am-see"
       }
     ]
   }

@@ -9,11 +9,18 @@
     "Marke"
   ],
   "excerpt": "RAW, JPEG oder TIFF? Welche Fahrzeugfotos du für Website, Inserat, Presse und Druck brauchst – und welche Dateiwünsche du vor dem Shooting klären solltest.",
-  "publishedAt": "2027-05-26T07:00:00.000Z",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
-  "coverAlt": "Schwarzer SUV vor Industrieanlagen im Abendlicht, gespiegelt in einer Pfütze",
+  "publishedAt": "2027-10-22T07:00:00.000Z",
+  "coverImage": "/assets/optimized/assets-portfolio-dsc2744-1920.webp",
+  "coverAlt": "Showcar · Perspektive",
   "readingTime": 9,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Dateiformate für Fahrzeugfotos: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Nur wenn du die Kameraoriginale selbst weiterentwickeln oder für ein vereinbartes Archiv übernehmen möchtest\nFür die Veröffentlichung brauchst: Wenn ein Autofotograf Fahrzeugbilder für Website, Inserat oder Kampagne aufnimmt, ist die übliche Frage am Ende nicht nur „RAW oder JPEG?“, sondern: Welche\nTIFF ist eine Übergabedatei: TIFF passt, wenn Druckerei, Agentur oder ein weiterer Bearbeitungsschritt ein gerendertes Rasterbild mit festgelegter Farbtiefe, Kompression, Profil oder\nDateiformat und Nutzungsrecht sind: Eine RAW-Datei zu erhalten bedeutet nicht automatisch, dass du sie beliebig veröffentlichen, verändern oder an Dritte weitergeben darfst"
+    },
     {
       "_template": "textBlock",
       "headline": "Für die Veröffentlichung brauchst du fertige Bilder, nicht automatisch RAW-Dateien",
@@ -69,6 +76,12 @@
       "body": "Eine RAW-Datei zu erhalten bedeutet nicht automatisch, dass du sie beliebig veröffentlichen, verändern oder an Dritte weitergeben darfst. Umgekehrt kann ein Nutzungsrecht für fertige JPEGs vereinbart sein, ohne dass die Aufnahmeoriginale übergeben werden. Dateibesitz, Bearbeitungszugang und Nutzungsumfang sollten deshalb getrennt benannt werden. Die Seite zu [Nutzungsrechten für Fahrzeugfotos](/blog-nutzungsrechte-fahrzeugfotos.html) behandelt die Fragen, die zum Einsatz der Bilder gehören. Bei rechtlichen Zweifeln sollte die Vereinbarung fachlich geprüft werden.\n\nFür die Farbdarstellung gelten ähnliche Grenzen: Ein TIFF oder JPEG garantiert nicht, dass Lackfarbe auf jedem Bildschirm identisch erscheint. Profil, Anzeige und Export gehören zum Farbworkflow. Der separate Beitrag über [Farbmanagement für Autofotos](/blog-autofotos-farbmanagement-monitor-export.html) erklärt diese technische Kette."
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Häufige Fragen zu Dateiformaten für Fahrzeugfotos",
       "items": [
@@ -113,6 +126,11 @@
           "label": "Adobe Photoshop: Kompressionsarten vergleichen",
           "href": "https://helpx.adobe.com/photoshop/desktop/save-and-export/export-files-to-different-formats/file-compression-in-photoshop.html",
           "description": "Unterscheidet verlustbehaftete JPEG-Kompression von verlustfreien Kompressionsarten und erklärt die Abwägung zwischen Dateigröße und Datenverlust."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]
     }
@@ -124,11 +142,11 @@
     "searchIntent": "Informative Entscheidungssuche von Auftraggebern und Autofotografen: Welche finalen Bilddateien je nach digitalem Einsatz, Druck oder weiterer Bearbeitung übergeben werden sollten.",
     "canonicalUrl": "https://matthiasramahi.de/blog-dateiformate-fahrzeugfotografie-raw-jpeg-tiff.html",
     "legacyUrl": "blog-dateiformate-fahrzeugfotografie-raw-jpeg-tiff.html",
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "ogImage": "/assets/optimized/assets-portfolio-dsc2744-1920.webp",
     "noIndex": false
   },
   "createdAt": "2026-11-03T17:00:00Z",
-  "updatedAt": "2027-05-26T07:00:00Z",
+  "updatedAt": "2027-10-22T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",

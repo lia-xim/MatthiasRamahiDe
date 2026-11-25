@@ -9,11 +9,11 @@
     "Belichtung",
     "Fahrzeugfotografie"
   ],
-  "publishedAt": "2027-10-05T07:00:00.000Z",
+  "publishedAt": "2028-06-02T07:00:00.000Z",
   "status": "scheduled",
   "excerpt": "Gegenlicht zeichnet eine klare Kante um ein Motorrad, lässt Tank und Verkleidung aber schnell im Schatten verschwinden. So entscheidest du zwischen Silhouette und lesbaren Details und planst Belichtung und Fülllicht passend zum Bild.",
-  "coverImage": "/uploads/payload/_DSC6968.webp",
-  "coverAlt": "Dunkles Motorrad mit weißem Ninja-Schriftzug vor einer tief stehenden Abendsonne; Portfolioaufnahme als Beispiel für Gegenlicht und lesbare Konturen.",
+  "coverImage": "/uploads/payload/20250209-DSC00706.webp",
+  "coverAlt": "Kawasaki Ninja 650 bei Nacht in roter Lichtstimmung",
   "readingTime": 8,
   "seo": {
     "title": "Motorrad im Gegenlicht fotografieren: Details erhalten",
@@ -28,11 +28,11 @@
     "searchIntent": "Informationssuche: Motorradfahrer und Fotografen möchten bei tief stehender Sonne entweder eine erkennbare Silhouette oder ein Motorrad mit lesbaren Tank-, Verkleidungs- und Raddetails aufnehmen. Der Beitrag erklärt Standort, Belichtungsentscheidung, begrenztes Fülllicht und zurückhaltende Entwicklung; allgemeine Nachtfotografie, Regenaufnahmen und komplette Kameraeinstellungen bleiben separate Aufgaben.",
     "canonicalUrl": "https://matthiasramahi.de/blog-motorrad-im-gegenlicht-fotografieren.html",
     "legacyUrl": "blog-motorrad-im-gegenlicht-fotografieren.html",
-    "ogImage": "/uploads/payload/_DSC6968.webp",
+    "ogImage": "/uploads/payload/20250209-DSC00706.webp",
     "noIndex": false
   },
   "createdAt": "2026-11-06T00:00:00.000Z",
-  "updatedAt": "2027-10-05T07:00:00.000Z",
+  "updatedAt": "2028-06-02T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Motorradfotografie",
@@ -47,9 +47,23 @@
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
+    },
+    {
+      "label": "Motorrad-Fotoshooting-Checkliste",
+      "href": "/blog-motorrad-fotoshooting-checkliste.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
     }
   ],
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Motorrad im Gegenlicht fotografieren: Die wichtigsten Punkte im Über",
+      "body": "Kernaussage: Entscheide zuerst, ob du eine Silhouette oder sichtbare Fahrzeugdetails willst\nGegenlicht bewusst wählen: Wenn die Sonne hinter dem Motorrad steht, bekommt seine Kontur oft einen hellen Saum\nFülllicht nur dort einsetzen,: Bevor du einen Blitz aufstellst, teste einen hellen Reflektor auf der Schattenseite\nDrei Varianten für eine: Eine kurze Reihe mit klar unterschiedlichen Aufgaben ist nützlicher als zehn fast identische Belichtungen"
+    },
     {
       "_template": "textBlock",
       "headline": "Gegenlicht bewusst wählen: Silhouette oder lesbares Motorrad",
@@ -107,6 +121,12 @@
       "_template": "textBlock",
       "headline": "Drei Varianten für eine brauchbare Bildfolge aufnehmen",
       "body": "Eine kurze Reihe mit klar unterschiedlichen Aufgaben ist nützlicher als zehn fast identische Belichtungen. Nimm zuerst eine Silhouette auf, in der Umriss, Räder und Lenker deutlich bleiben. Fotografiere anschließend eine Variante mit mehr Zeichnung am Motorrad und einem noch strukturierten Himmel. Ergänze zum Schluss eine engere Ansicht, bei der ein Lichtsaum eine bestimmte Form betont, etwa Tankkante, Spiegel oder Heck.\n\nVergleiche die Bilder in einer kleinen Vorschau und in der Vergrößerung. Funktioniert der Umriss schon als Miniatur? Sind Scheibe und Spiegel noch voneinander getrennt? Bleiben helle Lackkanten und Scheinwerfer durchgezeichnet? Falls du mehrere Perspektiven planst, kannst du die Gegenlichtaufnahme als Stimmungsmotiv mit einer klar ausgeleuchteten Seitenansicht kombinieren. Für den übrigen Ablauf und die Pflichtmotive hilft die [Motorrad-Fotoshooting-Checkliste](/blog-motorrad-fotoshooting-checkliste.html)."
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Motorrad-Shooting in NRW planen",
+      "text": "Stimmige Serien für Fahrer, Custom-Umbauten und Werkstätten rund um Düsseldorf und Erkrath ab 250 € inkl. MwSt.",
+      "buttonLabel": "Motorrad-Shooting anfragen"
     },
     {
       "_template": "faqBlock",

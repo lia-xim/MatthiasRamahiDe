@@ -22,8 +22,12 @@
     var form = container.closest('form');
     if (!form || widgets.has(form)) return;
     var status = container.querySelector('[data-turnstile-status]');
-    var state = { id: null, token: '', status: status };
+    var state = { id: null, token: '', status: status, isLocalPreview: false };
     widgets.set(form, state);
+    if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+      state.isLocalPreview = true;
+      return;
+    }
     if (!container.dataset.sitekey) {
       status.textContent = 'Sicherheitsprüfung derzeit nicht verfügbar. Bitte direkt per E-Mail oder Telefon Kontakt aufnehmen.';
       return;
@@ -54,6 +58,10 @@
       var container = form.querySelector('[data-contact-turnstile]');
       if (container) mount(container);
       var state = widgets.get(form);
+      if (state && state.isLocalPreview) {
+        if (state.status) state.status.textContent = 'Sicherheitsprüfung ist in der lokalen Vorschau deaktiviert.';
+        throw new Error('Sicherheitsprüfung ist in der lokalen Vorschau deaktiviert.');
+      }
       if (!state || !state.token) throw new Error('Bitte die Sicherheitsprüfung abschließen und erneut senden.');
       return state.token;
     },

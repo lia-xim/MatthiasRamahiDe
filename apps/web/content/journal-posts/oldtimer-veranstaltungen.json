@@ -13,6 +13,13 @@
   "readingTime": 8,
   "blocks": [
     {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Oldtimer-Veranstaltungen fotografieren: Die wichtigsten Punkte im Üb",
+      "body": "Kernaussage: Die Zahl folgt dem späteren Einsatz\nVor dem ersten Bild: Ein Oldtimer-Treffen kann als Veranstaltung, als Sammlung, als Markenwelt oder als Geschichte einzelner Besitzer fotografiert werden\nLicht soll Material erklären,: Oldtimer verbinden Lack, Chrom, Glas, Leder, Holz und gealterte Oberflächen\nDie Auswahl trennt Erinnerung: Bei Veranstaltungen entstehen schnell viele Varianten derselben Situation"
+    },
+    {
       "headline": "Vor dem ersten Bild braucht die Reportage eine Aufgabe",
       "body": "Ein Oldtimer-Treffen kann als Veranstaltung, als Sammlung, als Markenwelt oder als Geschichte einzelner Besitzer fotografiert werden. Wer alles gleichzeitig abbilden will, sammelt meist viele ähnliche Fahrzeuge und wenig Zusammenhang. Eine klare Aufgabe entscheidet, welche Motive wichtig sind und welche nur schön aussehen.\n\nFür eine Veranstaltungsreportage braucht es Orientierung, Atmosphäre und Menschen. Eine Sammlerdokumentation verlangt dagegen kontrollierte Ansichten, Details und verlässliche Farben. Beides kann am selben Ort entstehen, sollte aber als getrennte Bildfolge geplant werden.",
       "_template": "textBlock"
@@ -66,6 +73,34 @@
       "_template": "textBlock"
     },
     {
+      "_template": "linkList",
+      "headline": "Oldtimer- & Sammlerfahrzeug-Fotografie",
+      "links": [
+        {
+          "label": "Oldtimerfotografie Übersicht",
+          "href": "/oldtimer-fotografie.html"
+        },
+        {
+          "label": "Oldtimerfotografie NRW",
+          "href": "/oldtimer-fotografie-nrw.html"
+        },
+        {
+          "label": "Sammlerfahrzeug Fotografie",
+          "href": "/sammlerfahrzeug-fotografie-duesseldorf.html"
+        },
+        {
+          "label": "Portfolio Oldtimer",
+          "href": "/portfolio/portfolio-auswahl-oldtimer"
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Einzelshooting ohne Trubel oder Eventbegleitung buchen",
+      "text": "Für deinen Klassiker in Ruhe vor passender Kulisse oder als Reportage bei Rallye und Treffen in NRW – Einzelserien ab 250 € inkl. MwSt.",
+      "buttonLabel": "Oldtimer-Shooting anfragen"
+    },
+    {
       "headline": "Kurze Fragen",
       "items": [
         {
@@ -102,11 +137,25 @@
   },
   "status": "published",
   "createdAt": "2026-08-24T05:00:00.000Z",
-  "updatedAt": "2026-08-24T20:51:37.609Z",
+  "updatedAt": "2026-11-24T09:15:00.000Z",
   "relatedPages": [
     {
       "label": "Oldtimerfotografie",
       "href": "/oldtimer-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Oldtimer als Wertobjekt fotografieren",
+      "href": "/blog-oldtimer-wertobjekt.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Oldtimer-Veranstaltungen fotografieren",
+      "href": "/blog-oldtimer-veranstaltungen.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

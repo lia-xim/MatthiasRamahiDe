@@ -9,16 +9,23 @@
     "Kühlergrill",
     "Bildbearbeitung"
   ],
-  "publishedAt": "2027-04-12T07:00:00.000Z",
+  "publishedAt": "2027-08-06T07:00:00.000Z",
   "excerpt": "Feine Raster am Auto können auf Fotos Wellen und Farbmuster erzeugen. So reduzierst du Moiré an Kühlergrill, Sitzstoff und anderen Details schon bei der Aufnahme.",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
-  "coverAlt": "Schwarzer SUV mit regelmäßigem Kühlergrill vor einer Industrielandschaft",
+  "coverImage": "/assets/optimized/assets-portfolio-dsc2345-1920.webp",
+  "coverAlt": "Karosserie · Linie",
   "readingTime": 7,
   "blocks": [
     {
       "_template": "textBlock",
       "headline": "",
       "body": "Ein Kühlergrill sieht vor Ort gleichmäßig aus und zeigt auf dem Foto plötzlich farbige Wellen oder zusätzliche Streifen. Solche Muster können durch Moiré entstehen: Die feine Struktur des Motivs überlagert sich mit dem Pixelraster des Kamerasensors. Besonders auffällig wird das bei regelmäßig wiederholten Details, etwa Grillstäben, gelochten Sitzflächen, eng gewebten Stoffen oder Lüftungsgittern.\n\nDu kannst Moiré nicht für jede Kamera und jedes Motiv mit einer festen Einstellung ausschalten. Häufig helfen schon ein anderer Abstand, ein leicht veränderter Bildwinkel oder eine andere Brennweite. Entscheidend ist, die betroffene Stelle im Foto zu prüfen und mehrere Varianten aufzunehmen. Der Effekt hängt davon ab, wie das Muster auf den Sensor fällt und in welcher Größe das Bild später gezeigt wird."
+    },
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Moiré bei Autofotos vermeiden: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Das regelmäßige Muster des Grills kann mit dem Pixelraster des Sensors interferieren\nMoiré von Flimmern und: Moiré zeigt sich meist als Wellen-, Bogen- oder Farbmuster, das in der echten Oberfläche nicht vorhanden ist\nFokus und Schärfung mit: Stelle auf die Fläche scharf, die du zeigen willst, und kontrolliere das Ergebnis in der vergrößerten Wiedergabe\nEin kurzer Ablauf am Fahrzeug: Nimm eine scharfe Ausgangsaufnahme auf"
     },
     {
       "_template": "imageSequence",
@@ -80,6 +87,12 @@
       "body": "1. Nimm eine scharfe Ausgangsaufnahme auf. Halte Belichtung, Blende, Fokus und Entwicklung fest und markiere die betroffene Stelle.\n2. Verändere zuerst nur den Abstand in kleinen Schritten. Danach teste aus derselben Kameraposition eine andere Brennweite; Abstand verändert auch die Perspektive, der Zoom vor allem Bildausschnitt und Abbildungsmaßstab.\n3. Verschiebe anschließend den Standpunkt seitlich oder in der Höhe. Prüfe dabei, ob Grill, Scheinwerfer und Karosseriekanten weiterhin natürlich wirken.\n4. Vergleiche die Varianten bei 100 Prozent und in der echten Ausgabegröße samt Seitenbeschnitt. Wenn die Struktur wichtig ist, behalte den exakten Fokus. Nur bei rein dekorativen Details kannst du zusätzlich eine minimal veränderte manuelle Fokusebene testen.\n5. Exportiere die beste Variante mit neutraler Schärfung. Bleibt Farbmoiré übrig, probiere eine lokale Korrektur und kontrolliere danach, dass Öffnungen, Nähte und Kanten erhalten bleiben.\n\nBeurteile nie nur das Kameradisplay: Verkleinern und Beschneiden können das Muster sichtbar verändern. Wenn du eine wiederholbare Fahrzeugserie fotografierst, notiere die moiréarme Position und nutze sie für alle Ansichten, in denen das Detail wichtig ist."
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Häufige Fragen zu Moiré bei Autofotos",
       "items": [
@@ -114,6 +127,16 @@
           "label": "Adobe Lightroom: Lokale Anpassungen und Moiré-Korrektur",
           "href": "https://helpx.adobe.com/lightroom/mobile/masks-and-selective-adjustments/local-adjustment-controls.html",
           "description": "Dokumentiert die lokalen Korrekturregler in Lightroom, darunter die Verringerung von Moiré-Artefakten."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Motive, Bildformate und Übergabe vor dem Shooting sauber strukturieren."
         }
       ]
     }
@@ -131,12 +154,12 @@
     "searchIntent": "Praktische Informationssuche: Fotografierende möchten störende Wellen- oder Farbmuster an regelmäßigen Fahrzeugdetails erkennen und durch Aufnahmeabstand, Brennweite, Kamerawinkel, Fokus und Ausgabegröße reduzieren.",
     "canonicalUrl": "https://matthiasramahi.de/blog-moire-autofotos-vermeiden.html",
     "legacyUrl": "blog-moire-autofotos-vermeiden.html",
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "ogImage": "/assets/optimized/assets-portfolio-dsc2345-1920.webp",
     "noIndex": false
   },
   "status": "scheduled",
   "createdAt": "2026-11-03T17:00:00Z",
-  "updatedAt": "2027-04-12T07:00:00.000Z",
+  "updatedAt": "2027-08-06T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",

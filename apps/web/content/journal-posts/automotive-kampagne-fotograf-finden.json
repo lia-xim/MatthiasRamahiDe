@@ -9,12 +9,19 @@
     "Kampagnenproduktion",
     "Agenturabstimmung"
   ],
-  "publishedAt": "2027-05-02T07:00:00.000Z",
+  "publishedAt": "2027-09-10T07:00:00.000Z",
   "excerpt": "Wie findest du den passenden Fotografen für eine Automotive-Kampagne? Prüfe Leitidee, Bildvarianten, Set-Abstimmung und Freigabewege, bevor du den Auftrag vergibst.",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
-  "coverAlt": "Schwarzer BRABUS-SUV vor Industrieanlage bei Abendlicht, mit sichtbarem Moventa-Logo",
+  "coverImage": "/assets/portfolio/automobil-bmw-m3-showcar.webp",
+  "coverAlt": "Sportlich gezeichneter BMW M3 Showcar in ruhiger Dreiviertel-Frontansicht",
   "readingTime": 9,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Fotograf für Automotive-Kampagne finden: Die wichtigsten Punkte im Ü",
+      "body": "Kernaussage: Achte darauf, ob die Person deine Leitidee versteht, einen plausiblen Motivablauf vorschlägt und die Abstimmung mit Agentur und Marke klären kann\nEine Automotive-Kampagne braucht mehr: Wenn du einen Fotografen für eine Automotive-Kampagne suchst, entscheidet nicht allein das stärkste Einzelbild im Portfolio\nProduktionsumfang und Fahrzeug müssen: Ein einzelnes Fahrzeug an einem Ort stellt andere Anforderungen als mehrere Modelle, wechselnde Locations und ein enger Zeitplan\nSo formulierst du die erste Anfrage: das Ziel der Kampagne und die Zielgruppe,"
+    },
     {
       "headline": "Eine Automotive-Kampagne braucht mehr als ein Hero-Motiv",
       "body": "Wenn du einen Fotografen für eine Automotive-Kampagne suchst, entscheidet nicht allein das stärkste Einzelbild im Portfolio. Die Produktion soll eine vereinbarte Leitidee über mehrere Motive hinweg tragen: vielleicht ein prägnantes Key Visual, dazu Kontext, Details und Formate für unterschiedliche Kanäle. Welche Bilder tatsächlich nötig sind, hängt von Kampagnenziel, Fahrzeug, Zielgruppe und Ausspielung ab.\n\nDer Fotograf muss die kreative Vorgabe in einen realistischen Ablauf übersetzen können. Dazu gehören Fragen wie: Welche Fahrzeugversion steht zur Verfügung? Welche Orte und Lichtbedingungen passen? Welche Varianten lassen sich am Set sinnvoll aufnehmen? Und wer gibt Motive frei? Wenn diese Punkte schon im ersten Gespräch geklärt werden, kannst du besser beurteilen, ob die Zusammenarbeit zur Aufgabe passt. Das ist eine engere Auswahlfrage als die allgemeine Suche nach einem Autofotografen für Privatshooting, Verkauf oder Händlerbestand.",
@@ -85,6 +92,12 @@
       "_template": "imageSequence"
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "headline": "Häufige Fragen",
       "items": [
         {
@@ -122,6 +135,16 @@
           "label": "PPA: Teamarbeit in kommerziellen Fotoprojekten",
           "href": "https://www.ppa.com/ppmag/articles/ensemble-approach-teamwork-is-key-to-commercial-projects",
           "description": "Beispiel für die Abstimmung zwischen Fotograf, Auftraggebern und Kreativteam bei einer kommerziellen Produktion."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Motive, Bildformate und Übergabe vor dem Shooting sauber strukturieren."
         }
       ],
       "_template": "linkList"
@@ -139,11 +162,11 @@
     "searchIntent": "Kommerzielle Suche: Marketingteams vergleichen kreative Passung, Produktionsumfang und Abstimmung, bevor sie einen Fotografen für eine Automotive-Kampagne beauftragen.",
     "canonicalUrl": "https://matthiasramahi.de/blog-automotive-kampagne-fotograf-finden.html",
     "legacyUrl": "blog-automotive-kampagne-fotograf-finden.html",
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "ogImage": "/assets/portfolio/automobil-bmw-m3-showcar.webp",
     "noIndex": false
   },
   "createdAt": "2026-11-03T17:00:00Z",
-  "updatedAt": "2027-05-02T07:00:00.000Z",
+  "updatedAt": "2027-09-10T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
@@ -156,6 +179,13 @@
       "label": "Auto-Shooting-Briefing",
       "href": "/blog-auto-shooting-briefing.html",
       "seoPurpose": "supporting-guide",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fahrzeugserien konsistent planen",
+      "href": "/blog-fahrzeugserie-konsistent-planen.html",
+      "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
     }

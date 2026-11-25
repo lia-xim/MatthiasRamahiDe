@@ -14,6 +14,13 @@
   "readingTime": 10,
   "blocks": [
     {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Worauf du bei der Auswahl eines Autofotografen zuerst achten solltest",
+      "body": "Bildaufgabe: Kläre vorab, ob Bilder für Fahrzeugverkauf, privates Sammler-Portrait oder Marken-Kampagne entstehen sollen\nReferenzen prüfen: Verlange eine vollständige Bildserie mit Front, Heck, Innenraum und Details statt einzelner Highlight-Motive\nMaterialbeherrschung: Achte im Portfolio auf schwierige Lacke wie tiefschwarz oder matt sowie saubere Spiegelungen auf Chrom und Glas\nRahmen abgleichen: Halte Fahrzeugmodell, Lackfarbe, Ort und gewünschte Bildnutzung im ersten Briefing fest"
+    },
+    {
       "headline": "Vier Bildaufgaben, vier unterschiedliche Maßstäbe",
       "body": "Autofotografie ist kein einzelnes Format. Vor der Suche solltest du benennen, wofür die Bilder entstehen, denn ein Verkaufsauftrag stellt andere Anforderungen als ein persönliches Shooting oder eine Markenserie. Für den Verkauf sollen Ansichten helfen, genau dieses Fahrzeug einzuordnen. Ein persönliches Hero-Shooting darf stärker über Charakter, Umgebung und Stimmung erzählen. Bei einem Händlerbestand zählt oft, ob die Darstellung über mehrere Fahrzeuge hinweg wiederholbar ist. Für Marke oder Editorial kann eine eigenständige Bildsprache wichtiger sein als eine gleichförmige Bestandsansicht.\n\nDiese Unterscheidung ist der erste Filter für das Portfolio. Ein Fotograf kann starke Autoaufnahmen zeigen, ohne dass die Beispiele zu deinem Auftrag passen. Suche nach Arbeiten, deren Aufgabe mit deiner vergleichbar ist, und frage, welche Teile der gezeigten Serie sich übertragen lassen. Ein einzelnes Bild, das dir gefällt, ist ein guter Gesprächseinstieg. Es beantwortet aber noch nicht, ob die Person den gesamten Auftrag in der gewünschten Richtung umsetzen kann.",
       "_template": "textBlock"
@@ -90,6 +97,33 @@
       "_template": "quoteBlock"
     },
     {
+      "_template": "linkList",
+      "headline": "Passende Leistungen & weiterführende Guides",
+      "links": [
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Bildserien und Ablauf für Marken, Autohäuser und Privatfahrzeuge."
+        },
+        {
+          "label": "Autofotografie in Düsseldorf",
+          "href": "/autofotografie-duesseldorf.html",
+          "description": "Standorte, Lichtfenster und Beispiele aus der Region Düsseldorf."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Wie Motivliste, Formate und Zuständigkeiten vor dem Termin festgehalten werden."
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Professionelles Auto-Fotoshooting in NRW planen",
+      "text": "Du brauchst stimmige Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto im Raum Düsseldorf, Erkrath und NRW? Shootings starten bei 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "headline": "Kurze Fragen",
       "items": [
         {
@@ -131,8 +165,22 @@
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
+    },
+    {
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fahrzeugserien konsistent planen",
+      "href": "/blog-fahrzeugserie-konsistent-planen.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
     }
   ],
   "coverAlt": "Ferrari in einem Ausstellungsraum als Hauptmotiv einer Fahrzeugserie",
-  "status": "scheduled"
+  "status": "published"
 }

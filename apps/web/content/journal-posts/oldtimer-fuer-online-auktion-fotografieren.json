@@ -9,12 +9,19 @@
     "Sammlerfahrzeuge",
     "Bilddokumentation"
   ],
-  "publishedAt": "2027-01-28T08:00:00.000Z",
+  "publishedAt": "2027-04-02T07:00:00.000Z",
   "excerpt": "Wie bereitest du einen Oldtimer für eine Online-Auktion fotografisch vor? Plane Außenansichten, Details, Innenraum und ehrliche Zustandsbilder nach den aktuellen Vorgaben des Auktionshauses.",
-  "coverImage": "/uploads/payload/20250418-DSC006552.webp",
-  "coverAlt": "Klassischer Sportwagen in einer Halle mit sichtbarem Ziegelmauerwerk",
+  "coverImage": "/uploads/payload/20250418-DSC00638.webp",
+  "coverAlt": "Roter klassischer Sportwagen aus tiefer Dreiviertel-Frontansicht auf glattem Hallenboden",
   "readingTime": 9,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Oldtimer für Auktion fotografieren: Die wichtigsten Punkte im Überbl",
+      "body": "Kernaussage: Das hängt vom Auktionshaus ab\nEin Auktionslos braucht eine: Ein Oldtimer wird bei einer Online-Auktion oft zuerst auf dem Bildschirm betrachtet\nBesonderheiten und Gebrauchsspuren getrennt,: Nach den Übersichten kommen die Details, die das Fahrzeug identifizieren: Embleme, Zierleisten, Räder, Leuchten, Innenausstattung oder besondere\nWann professionelle Unterstützung sinnvoll: Wenn eine Plattform viele hochauflösende Bilder fordert oder sich das Fahrzeug nicht sicher bewegen beziehungsweise auf eine Hebebühne bringen lässt, kann ein"
+    },
     {
       "_template": "textBlock",
       "headline": "Ein Auktionslos braucht eine nachvollziehbare Bildfolge",
@@ -97,8 +104,19 @@
           "label": "Classic Trader: Autofotografie-Checkliste",
           "href": "https://www.classic-trader.com/_astro/CT-Auctions-Checklist-Photos-DE.W3-CSqnS.pdf",
           "description": "Motivcheckliste für Außenansichten, Innenraum, Motor, Unterboden, Cabriolet und sichtbare Problemstellen."
+        },
+        {
+          "label": "Oldtimerfotografie in Düsseldorf & NRW",
+          "href": "/oldtimer-fotografie.html",
+          "description": "Sorgfältige Dokumentation klassischer Fahrzeuge und Sammlungsstücke."
         }
       ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Oldtimer & Klassiker sorgfältig dokumentieren",
+      "text": "Ruhige Bildserien für Sammlung, Auktionsvorbereitung oder privates Wertfahrzeug in NRW ab 250 € inkl. MwSt.",
+      "buttonLabel": "Oldtimer-Shooting anfragen"
     },
     {
       "_template": "faqBlock",
@@ -154,7 +172,7 @@
     }
   ],
   "seo": {
-    "title": "Oldtimer für die Online-Auktion fotografieren | Matthias Ramahi",
+    "title": "Oldtimer für die Online-Auktion fotografieren",
     "description": "Plane aktuelle, vollständige Auktionsfotos für deinen Oldtimer: Außenansichten, Details, Innenraum, sichtbarer Zustand und Historie nach Plattformvorgaben.",
     "focusKeyword": "Oldtimer für Auktion fotografieren",
     "secondaryKeywords": [
@@ -173,12 +191,12 @@
     ],
     "canonicalUrl": "https://matthiasramahi.de/blog-oldtimer-fuer-online-auktion-fotografieren.html",
     "legacyUrl": "blog-oldtimer-fuer-online-auktion-fotografieren.html",
-    "ogImage": "/uploads/payload/20250418-DSC006552.webp",
+    "ogImage": "/uploads/payload/20250418-DSC00638.webp",
     "noIndex": false
   },
   "status": "scheduled",
   "createdAt": "2026-11-03T16:31:10Z",
-  "updatedAt": "2027-01-28T08:00:00.000Z",
+  "updatedAt": "2027-04-02T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Oldtimer-Fotografie",

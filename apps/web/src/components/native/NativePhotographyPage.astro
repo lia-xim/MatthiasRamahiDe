@@ -54,7 +54,7 @@ const overviewMeta: Record<string, { description: string; heroLines: [string, st
     heroLines: ['Fotograf', 'Erkrath.'],
     intro:
       'Erkrath ist meine Basis – zwischen Düsseldorf und dem Neandertal. Von hier aus fotografiere ich Fahrzeuge, Motorräder, Menschen und Landschaften: in Erkrath selbst, im Studio in Düsseldorf und in ganz NRW.',
-    title: 'Fotograf Erkrath: Fahrzeug- & Portraitfotografie | Matthias Ramahi',
+    title: 'Fotograf Erkrath: Auto, Motorrad & Portrait ab 250 €',
   },
   'fotografie-deutschland.html': {
     description:
@@ -141,26 +141,24 @@ const clusterParagraphs = clusterIntroCms.length
       'Nutzer wählen nicht aus einem generischen Portfolio, sondern steigen direkt in Automobil, Sportwagen, Oldtimer, Motorrad, Portrait oder Landschaft ein. Jede Kategorie zeigt auf ihrer Hauptseite die zugehörigen Städte und Regionen.',
     ])
 const erkrathHubGroup = {
-  title: 'Erkrath',
-  text: 'Die sechs Fotografie-Bereiche mit Orten und Ablauf in Erkrath.',
+  title: 'Kernbereiche ab Erkrath',
+  text: 'Von meiner Basis in Erkrath aus fotografiere ich alle sechs Bereiche im Neandertal, in Düsseldorf und in ganz NRW.',
   links: [
-    ['Automobil Erkrath', '/automobil-fotografie-erkrath.html'],
-    ['Sportwagen Erkrath', '/sportwagen-fotografie-erkrath.html'],
-    ['Oldtimer Erkrath', '/oldtimer-fotografie-erkrath.html'],
-    ['Motorrad Erkrath', '/motorrad-fotografie-erkrath.html'],
-    ['Portrait Erkrath', '/portraitfotografie-erkrath.html'],
-    ['Landschaft Erkrath', '/landschaftsfotografie-erkrath.html'],
+    ['Automobilfotografie', '/automobil-fotografie.html'],
+    ['Sportwagenfotografie', '/sportwagen-fotografie.html'],
+    ['Oldtimerfotografie', '/oldtimer-fotografie.html'],
+    ['Motorradfotografie', '/motorrad-fotografie.html'],
+    ['Portraitfotografie', '/portraitfotografie.html'],
+    ['Landschaftsfotografie & Prints', '/landschaftsfotografie.html'],
   ],
 }
 const baseHubGroups = [
   {
     title: 'Düsseldorf',
     text: 'Die wichtigsten lokalen Einstiege für direkte Anfragen im Kerngebiet.',
-    // Ortsqualifizierte Labels wie in der NRW-Gruppe: die kurzen Varianten
-    // ("Automobil") zeigen bereits in der Hauptnavigation auf die NRW-weite
-    // Themenseite - identischer Ankertext für zwei Ziele auf derselben Seite.
     links: [
       ['Automobil Düsseldorf', '/automobil-fotografie-duesseldorf.html'],
+      ['Autofotografie Düsseldorf', '/autofotografie-duesseldorf.html'],
       ['Sportwagen Düsseldorf', '/sportwagen-fotografie-duesseldorf.html'],
       ['Oldtimer Düsseldorf', '/oldtimer-fotografie-duesseldorf.html'],
       ['Motorrad Düsseldorf', '/motorrad-fotografie-duesseldorf.html'],
@@ -173,6 +171,7 @@ const baseHubGroups = [
     text: 'Regionale Hubs für Rheinland, Ruhrgebiet und angrenzende Städte.',
     links: [
       ['Fotografie NRW', '/fotografie-nrw.html'],
+      ['Fotograf Erkrath', '/fotografie-erkrath.html'],
       ['Automobil NRW', '/automobil-fotografie-nrw.html'],
       ['Sportwagen NRW', '/sportwagen-fotografie-nrw.html'],
       ['Oldtimer NRW', '/oldtimer-fotografie-nrw.html'],
@@ -185,20 +184,42 @@ const baseHubGroups = [
     title: 'Suchintentionen',
     text: 'Einstiege mit klarer Anfrageabsicht statt reinem Stadtmuster.',
     links: [
-      ['Auto-Fotoshooting', '/auto-fotoshooting.html'],
+      ['Auto-Fotoshooting NRW', '/fotoshooting-mit-auto.html'],
       ['Autohaus Fotografie', '/autohaus-fotografie.html'],
       ['Autoverkauf Fotos', '/autoverkauf-fotos-duesseldorf.html'],
       ['Motorrad Shooting', '/motorrad-shooting-duesseldorf.html'],
       ['Business Portrait', '/business-portrait-duesseldorf.html'],
-      ['Fotoshooting Preise', '/fotoshooting-preise.html'],
+      ['Personal Branding Düsseldorf', '/personal-branding-fotografie-duesseldorf.html'],
+      ['Dating Fotoshooting Düsseldorf', '/dating-fotoshooting-duesseldorf.html'],
+      ['Fotoshooting Preise', '/fotoshooting-preise-duesseldorf.html'],
+      ['Fotoshooting Gutschein', '/fotoshooting-gutschein-duesseldorf.html'],
       ['Oldtimer Verkaufsfotos', '/oldtimer-verkaufsfotos-duesseldorf.html'],
     ],
   },
 ]
 const localHubGroups = legacyFile === 'fotografie-erkrath.html' ? [erkrathHubGroup, ...baseHubGroups] : baseHubGroups
-const overviewFaq = (providedDoc?.localFaq || [])
+const defaultPhotographyOverviewFaq = [
+  {
+    q: 'Welche Fotografie-Bereiche deckt Matthias Ramahi ab?',
+    a: 'Die Arbeit gliedert sich in sechs klar getrennte Bereiche: Automobilfotografie, Sportwagenfotografie, Oldtimerfotografie, Motorradfotografie, Portraitfotografie sowie Fine-Art-Landschaftsfotografie als Print.',
+  },
+  {
+    q: 'In welcher Region finden Fotoshootings statt?',
+    a: 'Von meiner Basis in Erkrath bei Düsseldorf fotografiere ich im gesamten Rheinland, im Ruhrgebiet und in ganz NRW – von Köln und Düsseldorf über Bochum, Dortmund, Essen und Duisburg bis Wuppertal, Krefeld und Mönchengladbach.',
+  },
+  {
+    q: 'Was kostet ein Fotoshooting?',
+    a: 'Ein Shooting beginnt bei 250 € inkl. MwSt. Der endgültige Rahmen richtet sich nach Motiv, Aufwand, Locations und gewünschten Nutzungsrechten. Fine-Art-Landschaftsprints werden je nach Format und Material kalkuliert.',
+  },
+  {
+    q: 'Wie schnell stehen die bearbeiteten Bilder zur Verfügung?',
+    a: 'Nach dem Termin gibt es eine kuratierte Vorauswahl als Web-Galerie. Die final bearbeiteten Dateien werden für Web, Social Media und Print aufbereitet und zeitnah digital übergeben.',
+  },
+]
+const authoredOverviewFaq = (providedDoc?.localFaq || [])
   .map((item) => ({ q: item?.question || '', a: item?.answer || '' }))
   .filter((item) => item.q && item.a)
+const overviewFaq = authoredOverviewFaq.length > 0 ? authoredOverviewFaq : defaultPhotographyOverviewFaq
 ---
 <AdoptedPageLayout legacyFile={legacyFile} current="fotografie" doc={doc} title={pageMetaTitle} description={pageMetaDescription} canonicalUrl={pageCanonicalUrl} ctaHref="#anfrage" preloadImages={[firstHeroSlide.image]} liveCms>
   <main>

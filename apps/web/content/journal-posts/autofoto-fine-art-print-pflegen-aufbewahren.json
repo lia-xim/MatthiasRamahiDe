@@ -10,15 +10,22 @@
     "Pflege"
   ],
   "excerpt": "Wie du ein Autofoto als Fine-Art-Print sicher handhabst, passend rahmst und vor Licht, Feuchtigkeit und Abrieb schützt – abgestimmt auf Druckverfahren und Material.",
-  "publishedAt": "2027-09-21T07:00:00.000Z",
+  "publishedAt": "2028-05-09T07:00:00.000Z",
   "status": "scheduled",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
-  "coverAlt": "Schwarzer Brabus-SUV auf einer nassen Fläche vor Industrieanlagen im Abendlicht.",
+  "coverImage": "/uploads/payload/_DSC2310-2.webp",
+  "coverAlt": "BMW M3 E30 auf der Lichtbühne, Seitenansicht",
   "readingTime": 8,
   "blocks": [
     {
       "_template": "textBlock",
       "body": "Ein Autofoto als Fine-Art-Print braucht keine komplizierte Pflege. Entscheidend sind vier Dinge: das konkrete Druckmaterial kennen, die Bildoberfläche beim Handling schützen, einen geeigneten Platz wählen und beim Rahmen Abstand zwischen Print und Glas halten. Für Reinigung und Lagerung gibt es keine Regel, die für jedes Papier, jede Tinte und jede Kaschierung gleichermaßen passt.\n\nDas Titelbild zeigt ein Fahrzeugmotiv aus dem Portfolio. Es ist eine fotografierte Szene und bildet keinen gedruckten, gerahmten oder tatsächlich ausgeführten Fine-Art-Print ab."
+    },
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Autofoto Fine-Art-Print pflegen: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Arbeite auf einer sauberen Fläche und fasse einen ungerahmten Print an den Rändern an\nErst klären, welcher Print: Fine-Art-Print bezeichnet keine einzelne Drucktechnik\nFeuchte und starke Schwankungen: Wähle für einen Papierprint einen trockenen Innenraum mit möglichst gleichmäßigen Bedingungen\nFür Transport und Aufbewahrung: Bewahre Verpackung und Zwischenlagen auf, wenn sie beim Kauf mitgeliefert wurden"
     },
     {
       "_template": "imageSequence",
@@ -86,8 +93,19 @@
           "label": "Drucke und Sonderanfertigungen",
           "href": "/drucke-sonderanfertigungen-duesseldorf.html",
           "description": "Druck- und Materialfragen für ein konkretes Bildprojekt besprechen."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
     },
     {
       "_template": "faqBlock",
@@ -143,6 +161,11 @@
           "label": "KEK/SPK: Licht in Magazin, Arbeitsraum und Ausstellungen",
           "href": "https://www.kek-spk.de/fachinformation/licht-magazin-arbeitsraum-und-ausstellungen",
           "description": "Konservatorische Einordnung der Licht- und UV-Belastung; konkrete Museumswerte werden nicht als Verbraucher-Benchmarks übertragen."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]
     }
@@ -161,14 +184,28 @@
     "canonicalUrl": "https://matthiasramahi.de/blog-autofoto-fine-art-print-pflegen-aufbewahren.html",
     "legacyUrl": "blog-autofoto-fine-art-print-pflegen-aufbewahren.html",
     "noIndex": false,
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp"
+    "ogImage": "/uploads/payload/_DSC2310-2.webp"
   },
   "createdAt": "2026-11-06T06:40:59.000Z",
-  "updatedAt": "2027-09-21T07:00:00Z",
+  "updatedAt": "2028-05-09T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Drucke und Sonderanfertigungen",
       "href": "/drucke-sonderanfertigungen-duesseldorf.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Automobilfotografie in Düsseldorf & NRW",
+      "href": "/automobil-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

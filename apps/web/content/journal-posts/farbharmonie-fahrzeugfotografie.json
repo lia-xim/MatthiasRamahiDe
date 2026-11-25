@@ -14,6 +14,13 @@
   "readingTime": 8,
   "blocks": [
     {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Farbharmonie in der Fahrzeugfotografie: Die wichtigsten Punkte im Üb",
+      "body": "Kernaussage: Neutrale Grautöne halten den Lack präzise, dunkles Grün erzeugt einen deutlichen Gegenkontrast und warme Architektur kann eine engere Farbharmonie bilden\nFarbe ist keine Dekoration,: Bei einem Fahrzeug fällt Farbe nicht erst im Grading an\nMischlicht wird kontrolliert, nicht: In Parkhäusern, Showrooms und bei Nacht treffen häufig Tageslicht, LEDs, Leuchtstoffröhren und Straßenbeleuchtung aufeinander\nFarbziele gehören in Briefing: Vor dem Termin sollten Markenfarben, Lacktreue, vorgesehene Medien und unerwünschte Farbstimmungen benannt sein"
+    },
+    {
       "headline": "Farbe ist keine Dekoration, sondern eine Produktionsentscheidung",
       "body": "Bei einem Fahrzeug fällt Farbe nicht erst im Grading an. Der Lack reagiert auf Himmel, Boden, Fassaden und jede größere Fläche in seiner Umgebung. Ein roter Sportwagen vor rotem Backstein kann ruhig und dicht wirken; derselbe Wagen vor grüner Vegetation erzeugt einen deutlich stärkeren Kontrast. Keine Variante ist automatisch besser. Entscheidend ist, welche Aufgabe die Bilder erfüllen sollen.\n\nFür einen Verkauf muss der Farbton verlässlich lesbar bleiben. Eine Kampagne darf stärker mit Atmosphäre arbeiten, solange das Fahrzeug nicht zum beliebig eingefärbten Objekt wird. Vor dem Location-Scouting steht deshalb die Frage: Soll die Umgebung die Lackfarbe unterstützen, ihr bewusst widersprechen oder sich nahezu neutral zurücknehmen?",
       "_template": "textBlock"
@@ -68,6 +75,39 @@
       "_template": "textBlock"
     },
     {
+      "_template": "linkList",
+      "headline": "Fahrzeugfotografie & Bildkonzepte",
+      "links": [
+        {
+          "label": "Fahrzeugfotografie Übersicht",
+          "href": "/fahrzeugfotografie.html"
+        },
+        {
+          "label": "Autofotografie Düsseldorf",
+          "href": "/autofotografie-duesseldorf.html"
+        },
+        {
+          "label": "Sportwagenfotografie NRW",
+          "href": "/sportwagen-fotografie-nrw.html"
+        },
+        {
+          "label": "Portfolio Automobil",
+          "href": "/portfolio/portfolio-auswahl-automobil"
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Location und Farbwelt passend zu deinem Lack abstimmen",
+      "text": "Ich schlage dir Spots in Düsseldorf und NRW vor, die exakt zu deiner Lackfarbe passen – ab 250 € inkl. MwSt.",
+      "buttonLabel": "Shooting anfragen"
+    },
+    {
       "headline": "Kurze Fragen",
       "items": [
         {
@@ -104,11 +144,25 @@
   },
   "status": "published",
   "createdAt": "2026-08-15T06:00:00Z",
-  "updatedAt": "2026-08-24T20:51:37.601Z",
+  "updatedAt": "2026-11-24T09:15:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
       "href": "/automobil-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fahrzeugserien konsistent planen",
+      "href": "/blog-fahrzeugserie-konsistent-planen.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

@@ -9,17 +9,24 @@
     "Shift-Objektiv",
     "Fokusebene"
   ],
-  "publishedAt": "2027-08-30T07:00:00.000Z",
+  "publishedAt": "2028-03-31T08:00:00.000Z",
   "status": "scheduled",
   "excerpt": "Shift hält die Kamera bei Industriearchitektur gerade im Bild, Tilt richtet die Schärfeebene aus. So entscheidest du, wann die Bewegungen bei Autofotos helfen und wann eine normale Linse genügt.",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
-  "coverAlt": "Dunkler SUV vor Industrieanlagen im Abendlicht, mit Spiegelung auf einer nassen Fläche",
+  "coverImage": "/assets/portfolio/automobil-mercedes-interieur-tilt.webp",
+  "coverAlt": "Interieur · Cockpit",
   "readingTime": 12,
   "blocks": [
     {
       "_template": "textBlock",
       "headline": "",
       "body": "Ein Auto steht vor einer hohen Halle. Du möchtest das ganze Fahrzeug zeigen und zugleich die senkrechten Gebäudekanten gerade halten. Richtest du die Kamera nach oben, damit mehr Fassade ins Bild kommt, laufen die Vertikalen im Bild zusammen. Ein Shift-Objektiv kann den Bildausschnitt verschieben, während die Kamera gerade ausgerichtet bleibt. Das löst eine andere Aufgabe als Tilt: Tilt verändert die Lage der Schärfeebene und kann bei einer bewusst gewählten Fokusfläche helfen.\n\nDie beiden Bewegungen stecken oft im selben Objektiv, arbeiten aber nicht austauschbar. Für viele Autofotos brauchst du keine von beiden. Entscheidend ist, welches Problem du tatsächlich siehst: Fehlt oben oder unten Bildfläche, obwohl die Kamera gerade steht? Oder sollen nahe und weiter entfernte Teile einer schräg liegenden Fläche zugleich scharf erscheinen? Der folgende Ablauf trennt diese Entscheidungen und zeigt, wo Perspektivkorrektur in der Bearbeitung genügt."
+    },
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Tilt-Shift Autofotografie: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Shift verschiebt den Objektivbildkreis gegenüber dem Sensor und damit den Ausschnitt\nWas Shift und Tilt optisch verändern: Beim Shift wird das Objektiv parallel zur Sensorfläche verschoben\nWie sich dieser Ratgeber: Der Beitrag Weitwinkel in der Autofotografie beantwortet, wie Abstand, Standpunkt, Brennweite und Bildrand Fahrzeugproportionen verändern\nEin kurzer Entscheidungsweg am Set: Prüfe zuerst die Aufgabe, bevor du an einer Objektivbewegung drehst"
     },
     {
       "_template": "textBlock",
@@ -30,6 +37,23 @@
       "_template": "textBlock",
       "headline": "Shift: Architektur einbeziehen, ohne die Kamera nach oben zu neigen",
       "body": "Shift kann sich bei einem Auto vor einer Industriehalle lohnen, wenn die Fassade als klarer Teil der Bildidee sichtbar bleiben soll. Stelle die Kamera zunächst auf ein Stativ und richte sie gerade aus. Richte das Gehäuse so zur Gebäudefläche aus, dass die wichtigen Vertikalen nicht schon durch eine starke Kameraneigung zusammenlaufen. Beginne mit mittlerer oder neutraler Objektivstellung und prüfe, ob Auto und Architektur in den gewünschten Ausschnitt passen.\n\nFehlt der obere Gebäudeteil, kippe die Kamera nicht sofort nach oben. Verschiebe stattdessen das Objektiv in die passende Richtung und kontrolliere den Bildrand. So kannst du etwa mehr Fassade aufnehmen, während die Kamera waagerecht bleibt. Die Verschiebung macht vertikale Kanten nicht automatisch geometrisch perfekt: Sie setzt voraus, dass die Kamera passend ausgerichtet ist und die Linien in der Szene tatsächlich parallel sind. Eine schräg zur Fassade stehende Kamera lässt weiterhin Tiefenlinien konvergieren, wie es der räumlichen Perspektive entspricht.\n\nVor dem Auslösen lohnt sich eine Sichtkontrolle an den Gebäudekanten und am Auto. Große Verschiebungen nutzen einen anderen Rand des Bildkreises und können je nach Objektiv Lichtabfall, Randunschärfe oder einen engeren brauchbaren Ausschnitt sichtbar machen. Prüfe besonders Spiegel, Räder und die äußeren Karosseriekanten. Belichtung, Fokus und die Schärfe über das ganze Bild können sich zwischen Objektiven und Einstellungen unterscheiden. Ein Testbild in der tatsächlichen Arbeitsblende zeigt mehr als eine Vermutung aus der Produktbeschreibung.\n\nShift ist auch keine Lösung für die Form des Autos, wenn du aus kurzer Entfernung fotografierst. Eine nahe Front kann weiter größer erscheinen als das Heck, und ein kurzer Bildwinkel kann die Seitenfläche stark in die Tiefe ziehen. Für solche Proportionen bleibt der Kamerastandpunkt maßgeblich. Der Beitrag [Weitwinkel in der Autofotografie](/blog-weitwinkel-autofotografie-perspektive.html) erklärt, wie Abstand und Bildwinkel die Karosserie wirken lassen. Shift kümmert sich um den Ausschnitt bei aufrechter Kamera, nicht um diese Näheeffekte."
+    },
+    {
+      "_template": "imageSequence",
+      "headline": "Beispiele für saubere Perspektive und Lichtführung",
+      "layout": "editorial-pair",
+      "items": [
+        {
+          "image": "/assets/optimized/assets-portfolio-dsc2329-1920.webp",
+          "caption": "Präzise Lichtkante auf dunklem Fahrzeuglack in ruhiger Umgebung",
+          "cropIntent": "editorial"
+        },
+        {
+          "image": "/assets/optimized/assets-portfolio-dsc2345-1920.webp",
+          "caption": "Kontrollierte Seitenansicht mit gleichmäßiger Spiegelung über Tür und Schweller",
+          "cropIntent": "editorial"
+        }
+      ]
     },
     {
       "_template": "textBlock",
@@ -60,6 +84,12 @@
       "_template": "textBlock",
       "headline": "Ein kurzer Entscheidungsweg am Set",
       "body": "Prüfe zuerst die Aufgabe, bevor du an einer Objektivbewegung drehst. Soll das Foto eine hohe Fassade und das ganze Auto zeigen, während senkrechte Kanten aufrecht bleiben? Richte die Kamera gerade aus und teste Shift. Geht es darum, eine schräge Fläche vom nahen zum weiter entfernten Teil gezielt scharf zu zeichnen? Teste Tilt mit neutralem Shift und kontrolliere die Fokuszone. Fehlt nur ein sauberer Ausschnitt oder wirken die Proportionen zu stark, ändere zuerst Abstand und Standpunkt. Sind die Linien nur moderat konvergent, kann die Korrektur am Rechner reichen.\n\nBei der konkreten Bildidee entscheidet nicht das Etikett des Objektivs. Ein gerader Kamerastandpunkt, ein ruhiger Bildrand und ein nachvollziehbarer Schärfeverlauf tragen meist mehr zum Foto bei als eine maximale Verschiebung. Wenn die Aufnahme das Fahrzeug klar zeigt und die Architektur oder Karosserieform unterstützt, ist die Bewegung nur dann gelungen, wenn sie diese Aufgabe sichtbar erfüllt."
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
     },
     {
       "_template": "faqBlock",
@@ -110,9 +140,13 @@
           "label": "Canon: TS-E 17mm f/4L Produktinformationen",
           "href": "https://sfcc-service.canon-europe.com/3553B005/3553B005.html",
           "description": "Herstellerangaben zu Tilt- und Shiftbereich dieses konkreten Objektivs; Werte und Kompatibilität nicht auf andere Modelle übertragen."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
-      ],
-      "_template": "linkList"
+      ]
     }
   ],
   "seo": {
@@ -129,11 +163,11 @@
     "searchIntent": "Informationssuche: Fotografierende möchten wissen, ob Shift oder Tilt ein konkretes Autofoto-Problem löst, wie sich beide Bewegungen unterscheiden und wann Kamerastandpunkt oder digitale Korrektur ausreichen.",
     "canonicalUrl": "https://matthiasramahi.de/blog-tilt-shift-autofotografie-perspektive-fokus.html",
     "legacyUrl": "blog-tilt-shift-autofotografie-perspektive-fokus.html",
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "ogImage": "/assets/portfolio/automobil-mercedes-interieur-tilt.webp",
     "noIndex": false
   },
   "createdAt": "2026-11-05T00:00:00Z",
-  "updatedAt": "2027-08-30T07:00:00.000Z",
+  "updatedAt": "2028-03-31T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
@@ -170,7 +204,5 @@
       "rel": "follow",
       "openInNewTab": false
     }
-  ],
-  "status": "scheduled",
-  "coverAlt": "Dunkler SUV vor Industrieanlagen im Abendlicht, mit Spiegelung auf einer nassen Fläche"
+  ]
 }

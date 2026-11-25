@@ -8,12 +8,19 @@
     "Farbwiedergabe",
     "Automobilfotografie"
   ],
-  "publishedAt": "2027-03-05T08:00:00.000Z",
+  "publishedAt": "2027-06-04T07:00:00.000Z",
   "excerpt": "So fotografierst du ein rotes Auto mit sichtbarer Lackzeichnung und plausibler Farbe: Licht, Umgebung, Belichtung und Bearbeitung bewusst aufeinander abstimmen.",
-  "coverImage": "/uploads/payload/20250418-DSC006552.webp",
-  "coverAlt": "Roter klassischer Sportwagen in einer Halle mit Ziegelmauerwerk",
+  "coverImage": "/uploads/payload/_DSC2316-2.webp",
+  "coverAlt": "Widebody-Coupé von hinten, Messehalle bei Nacht",
   "readingTime": 8,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "rotes Auto fotografieren: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Lichtfarbe, reflektierte Umgebung, Weißabgleich, Belichtung und Bildschirmdarstellung verändern zusammen den Eindruck\nRot soll als Lackfarbe: Ein rotes Auto kann auf Fotos orange, violett oder fast schwarz aussehen, obwohl du den Lack vor Ort anders wahrgenommen hast\nWeißabgleich und Farbprofil als: Für eine neutrale Referenz fotografierst du eine Graukarte oder Farbkarte dort, wo sie dasselbe Licht erhält wie die relevante Fahrzeugfläche\nKonkreter Testablauf für den: Ziel und Referenz festlegen: Entscheide, ob die Serie den Lack möglichst neutral zeigen oder eine Lichtstimmung betonen soll"
+    },
     {
       "headline": "Rot soll als Lackfarbe erkennbar bleiben",
       "body": "Ein rotes Auto kann auf Fotos orange, violett oder fast schwarz aussehen, obwohl du den Lack vor Ort anders wahrgenommen hast. Die Kamera zeichnet Licht auf, das vom Auto und seiner Umgebung zurückkommt. Lichtfarbe, Spiegelungen, Belichtung, Weißabgleich und Bildschirmdarstellung wirken zusammen. Darum garantiert keine einzelne Einstellung unter jedem Mischlicht absolute Farbtreue. Das sinnvolle Ziel ist ein plausibler Rotton mit erkennbarer Karosseriezeichnung.\n\nLege vor dem Shooting fest, ob die Serie den Lack sachlich und wiedererkennbar zeigen oder eine bestimmte Stimmung vermitteln soll. Bei Verkauf, Bestand oder Dokumentation zählt die nachvollziehbare Farbe; bei einer Kampagne darf ein warmer Gegenlichtlook Teil der Bildidee sein. Notiere, wenn bekannt, Lackname oder Farbcode. Ein Foto ist damit noch keine farbverbindliche Messung, aber du hast einen konkreten Bezugspunkt für Aufnahme und Bearbeitung.",
@@ -68,6 +75,12 @@
       "_template": "textBlock"
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "headline": "Kurze Fragen",
       "items": [
         {
@@ -107,6 +120,11 @@
           "label": "Adobe: Calibrate and profile your monitor (englisch)",
           "href": "https://helpx.adobe.com/photoshop/desktop/get-started/learn-the-basics/calibrate-and-profile-your-monitor.html",
           "description": "Grundlagen zu Monitorprofil, Kalibrierung und gleichbleibenden Lichtbedingungen."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ],
       "_template": "linkList"
@@ -119,15 +137,29 @@
     "searchIntent": "Informationssuche: Wie lässt sich roter Autolack bei wechselndem Licht natürlich und mit sichtbarer Oberflächenzeichnung fotografieren?",
     "canonicalUrl": "https://matthiasramahi.de/blog-rotes-auto-fotografieren-farbtreue.html",
     "legacyUrl": "blog-rotes-auto-fotografieren-farbtreue.html",
-    "ogImage": "/uploads/payload/20250418-DSC006552.webp",
+    "ogImage": "/uploads/payload/_DSC2316-2.webp",
     "noIndex": false
   },
   "createdAt": "2026-11-03T17:00:00Z",
-  "updatedAt": "2027-03-05T08:00:00.000Z",
+  "updatedAt": "2027-06-04T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
       "href": "/automobil-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fahrzeugserien konsistent planen",
+      "href": "/blog-fahrzeugserie-konsistent-planen.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

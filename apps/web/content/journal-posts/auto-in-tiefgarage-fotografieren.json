@@ -9,12 +9,19 @@
     "Fahrzeugfotografie",
     "Reflexionen"
   ],
-  "publishedAt": "2027-02-03T08:00:00.000Z",
+  "publishedAt": "2027-04-13T07:00:00.000Z",
   "excerpt": "Eine Tiefgarage kann Autos klare Linien und farbige Lichtreflexe geben. So planst du Zugang, Bildaufbau, Belichtung und eine ruhige Fahrzeugserie.",
   "coverImage": "/assets/portfolio/automobil-bmw-widebody.webp",
   "coverAlt": "Dunkler BMW-Showcar vor einer hellen Innenraumwand mit Reflexstreifen auf der Karosserie",
   "readingTime": 7,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Auto in der Tiefgarage fotografieren: Die wichtigsten Punkte im Über",
+      "body": "Kernaussage: Das hängt von Betreiber, Eigentümer und den örtlichen Regeln ab\nEine Tiefgarage kann funktionieren,: Ein Auto in der Tiefgarage zu fotografieren lohnt sich, wenn die Architektur dem Bild hilft: Deckenleuchten zeichnen Linien auf dem Lack, Betonpfeiler geben\nEine kleine Bildfolge gibt: Starte mit einer Aufnahme, auf der das ganze Fahrzeug und ein Teil der Garagenarchitektur zu sehen sind\nKurzcheck vor dem ersten Bild: Freigabe: Sind Aufnahmezeit, Stellplatz und Zusatzlicht oder Stativ mit Betreiber beziehungsweise Hausverwaltung geklärt?"
+    },
     {
       "_template": "textBlock",
       "headline": "Eine Tiefgarage kann funktionieren, wenn der Ablauf stimmt",
@@ -80,6 +87,12 @@
       "body": "1. **Freigabe:** Sind Aufnahmezeit, Stellplatz und Zusatzlicht oder Stativ mit Betreiber beziehungsweise Hausverwaltung geklärt? Wenn nicht, plane einen anderen Ort ein.\n2. **Sicherheit:** Steht das Auto sicher, bleiben Fahrwege und Ausgänge frei, und liegt keine Ausrüstung im Verkehrsbereich?\n3. **Bildraum:** Prüfe den Hintergrund aus der vorgesehenen Kamerahöhe. Ändere zuerst Standpunkt oder Fahrzeugausrichtung, bevor du störende Elemente später retuschierst.\n4. **Testbild:** Kontrolliere Schärfe, helle Lampen und die Lackfarbe. Entscheide, ob die Lichtfarbe als Stimmung bleiben darf oder für eine sachliche Serie neutraler wirken soll.\n5. **Bildfolge:** Fotografiere erst die Übersicht, dann die nötigen Außenansichten und Details. Für Verkaufs- oder Zustandsbilder darf die Kulisse keine wichtigen Merkmale verdecken."
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Häufige Fragen zur Autofotografie in der Tiefgarage",
       "items": [
@@ -118,6 +131,16 @@
           "label": "Nikon: Setting White Balance",
           "href": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/setting-white-balance",
           "description": "Erklärt Weißabgleich bei verschiedenen und gemischten Lichtquellen sowie die Nutzung einer neutralen Referenz."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Motive, Bildformate und Übergabe vor dem Shooting sauber strukturieren."
         }
       ]
     }
@@ -140,7 +163,7 @@
   },
   "status": "scheduled",
   "createdAt": "2026-11-03T16:41:23Z",
-  "updatedAt": "2027-02-03T08:00:00.000Z",
+  "updatedAt": "2027-04-13T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",

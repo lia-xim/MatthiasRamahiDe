@@ -9,11 +9,18 @@
     "Rennsportfotografie",
     "Bildauswahl"
   ],
-  "publishedAt": "2026-12-15T08:00:00.000Z",
+  "publishedAt": "2027-01-29T08:00:00.000Z",
   "excerpt": "Wie kleinere Rennteams Bildmotive pro Partner priorisieren, einen realistischen Highlightsatz planen und Motorsportfotos geordnet an Team und Sponsoren ausliefern.",
   "coverImage": "/uploads/payload/assets-photos-automobil-neon-1921.webp",
   "readingTime": 8,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Sponsor-Bildpakete nach dem Rennwochenende gezielt aufbauen",
+      "body": "Partner-Matrix anlegen: Pro Sponsor sichtbare Logos, gewünschte Bildrollen (Action-Fahrbild, Box/Fahrerlager, Aktivierung), Formate und Lieferzeit festlegen\nAbgleich mit Freigaben: Nur Motive einplanen, die laut Eventregeln und Teamfreigaben vor Ort tatsächlich zugänglich sind\nZweistufige Auslieferung: Kompakte Highlight-Auswahl noch am Rennabend für schnelle Partner-Posts und vollständige, sortierte Galerie im Nachgang"
+    },
     {
       "headline": "Vom Rennwochenende zum brauchbaren Sponsorensatz",
       "body": "Ein Motorsport-Wochenende ist noch kein fertiges Sponsorpaket. Ein Team kann viele Aufnahmen erhalten und trotzdem vor der Frage stehen, welche Bilder zu welchem Partner passen, wer sie verwenden darf und welche Dateien zuerst gebraucht werden. Die Lösung beginnt vor dem Start: mit einer kleinen Bildplanung pro Partner, einer realistischen Lieferfolge und einer Person, die offene Entscheidungen treffen kann.\n\nDer Fokus hier liegt auf der eigenen Kommunikation von Team, Fahrer und Partnern. Die Auswahl eines Fotografen und der genaue Auftragsumfang gehören in ein separates Briefing. Auch der Zugang zur Strecke wird hier nicht im Detail geplant: Er richtet sich nach den Regeln des jeweiligen Veranstalters. Im Mittelpunkt stehen Bildrollen, Zuordnung und Übergabe, damit nicht erst am Montag jemand eine Galerie mit hunderten Dateien durchsuchen muss.",
@@ -50,6 +57,21 @@
         {
           "label": "RNT Studio",
           "href": "https://rnt-motorsports.com/rnt-studio/"
+        },
+        {
+          "label": "Sportwagenfotografie in NRW",
+          "href": "/sportwagen-fotografie.html",
+          "description": "Dynamische und ruhige Serien für Sportwagen, Teams und Sammler."
+        },
+        {
+          "label": "Rolling Shots mit dem Auto",
+          "href": "/blog-rolling-shots-auto.html",
+          "description": "Technik, Rollentrennung und sichere Alternativen für bewegte Fahrzeugbilder."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Pflichtmotive und Formate vorab verbindlich abstimmen."
         }
       ]
     },
@@ -70,6 +92,21 @@
         {
           "label": "ADAC-Registrierung für Motorsport-Akkreditierungen",
           "href": "https://akkreditierung.adac-motorsport.de/registrierung.html"
+        },
+        {
+          "label": "Sportwagenfotografie in NRW",
+          "href": "/sportwagen-fotografie.html",
+          "description": "Dynamische und ruhige Serien für Sportwagen, Teams und Sammler."
+        },
+        {
+          "label": "Rolling Shots mit dem Auto",
+          "href": "/blog-rolling-shots-auto.html",
+          "description": "Technik, Rollentrennung und sichere Alternativen für bewegte Fahrzeugbilder."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Pflichtmotive und Formate vorab verbindlich abstimmen."
         }
       ]
     },
@@ -102,14 +139,26 @@
           "href": "https://www.gesetze-im-internet.de/urhg/__31.html"
         },
         {
-          "label": "Nutzungsrechte für Fahrzeugfotos",
-          "href": "https://matthiasramahi.de/blog-nutzungsrechte-fahrzeugfotos.html"
-        },
-        {
           "label": "Motorsport-Fotografie",
           "href": "https://matthiasramahi.de/motorsport-fotografie.html"
+        },
+        {
+          "label": "Sportwagenfotografie in NRW",
+          "href": "/sportwagen-fotografie.html",
+          "description": "Dynamische und ruhige Serien für Sportwagen, Teams und Sammler."
+        },
+        {
+          "label": "Rolling Shots mit dem Auto",
+          "href": "/blog-rolling-shots-auto.html",
+          "description": "Technik, Rollentrennung und sichere Alternativen für bewegte Fahrzeugbilder."
         }
       ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Sportwagen & Performance-Serie anfragen",
+      "text": "Ob Trackday, Launch oder charakterstarkes Einzelshooting im Raum Düsseldorf und NRW: Individuelle Produktionen beginnen bei 250 € inkl. MwSt.",
+      "buttonLabel": "Sportwagen-Shooting anfragen"
     },
     {
       "headline": "Häufige Fragen zur Sponsor-Fotografie",
@@ -142,7 +191,7 @@
   },
   "status": "scheduled",
   "createdAt": "2026-11-03T15:19:01Z",
-  "updatedAt": "2026-12-15T08:00:00.000Z",
+  "updatedAt": "2027-01-29T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Motorsport-Fotografie",
@@ -155,6 +204,13 @@
       "label": "Nutzungsrechte für Fahrzeugfotos",
       "href": "/blog-nutzungsrechte-fahrzeugfotos.html",
       "seoPurpose": "reader-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Sportwagenfotografie in NRW",
+      "href": "/sportwagen-fotografie.html",
+      "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
     }

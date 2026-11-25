@@ -2,12 +2,12 @@
   "title": "Fahrzeugvarianten fotografieren: Ausstattung im Gebrauchtwagen-Inserat klar zeigen",
   "slug": "fahrzeugvarianten-fotografisch-unterscheiden",
   "category": "automotive",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
-  "coverAlt": "Schwarzer SUV in Dreiviertelansicht vor einer Wasserfläche bei Abendlicht.",
+  "coverImage": "/assets/portfolio/automobil-bmw-widebody.webp",
+  "coverAlt": "Widebody · Showroom",
   "status": "scheduled",
-  "publishedAt": "2027-06-15T07:00:00.000Z",
+  "publishedAt": "2027-11-26T08:00:00.000Z",
   "createdAt": "2026-11-04T14:56:00Z",
-  "updatedAt": "2027-06-15T07:00:00.000Z",
+  "updatedAt": "2027-11-26T08:00:00.000Z",
   "readingTime": 8,
   "excerpt": "Wie zeigst du Sonderausstattung und sichtbare Fahrzeugmerkmale in einem Inserat nachvollziehbar? Mit einer geprüften Merkmalliste, passenden Detailfotos und klaren Grenzen dessen, was ein Bild belegen kann.",
   "tags": [
@@ -63,10 +63,17 @@
     "searchIntent": "Praktische Informationssuche von Fahrzeughändlern, privaten Verkäufern und Fotografen, die die tatsächlich sichtbare Ausstattung eines realen Gebrauchtwagens nachvollziehbar abbilden möchten. Ein TÜV-NORD-Fotoguide empfiehlt Detailbilder von Sonderausstattung; ein Marktplatzratgeber nennt Ausstattungsvariante und Sonderedition als relevante Angaben. Der neue Beitrag grenzt sich von der allgemeinen Inserat-Bildfolge und der vorgelagerten Variantenplanung für Fahrzeugkonfiguratoren ab. Exaktes Suchvolumen und AI-Fanout wurden nicht gemessen; die Folgefragen sind redaktionell abgeleitete Hypothesen.",
     "canonicalUrl": "https://matthiasramahi.de/blog-fahrzeugvarianten-fotografisch-unterscheiden.html",
     "legacyUrl": "blog-fahrzeugvarianten-fotografisch-unterscheiden.html",
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "ogImage": "/assets/portfolio/automobil-bmw-widebody.webp",
     "noIndex": false
   },
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Fahrzeugausstattung fotografieren: Die wichtigsten Punkte im Überbli",
+      "body": "Kernaussage: Zeige erst das Fahrzeug und den Einbauort, dann das Merkmal in einer scharfen Detailaufnahme\nEin Foto kann Merkmale: Bei ähnlichen Gebrauchtwagen entscheidet oft ein kleines Merkmal darüber, welche Version vor dem Interessenten steht: ein anderes Rad, ein Glasdach, ein\nÄhnliche Ausstattungen fair miteinander: Wenn zwei Fahrzeuge oder Varianten nebeneinander gezeigt werden, müssen die Fotos vergleichbar sein\nKompakte Prüfliste für Händler: Vor dem Shooting: bestätigte Ausstattungsangaben zusammentragen, Modelljahr von Erstzulassung unterscheiden und offene Punkte markieren"
+    },
     {
       "_template": "textBlock",
       "headline": "Ein Foto kann Merkmale zeigen, aber keine Ausstattungsliste ersetzen",
@@ -127,6 +134,12 @@
       "body": "Vor dem Shooting: bestätigte Ausstattungsangaben zusammentragen, Modelljahr von Erstzulassung unterscheiden und offene Punkte markieren. Für jedes sichtbare Merkmal eine Aufnahmeaufgabe formulieren, statt nur eine lange Ausstattungsliste an die Fotografin oder den Fotografen zu geben. Eine praktische interne Zeile lautet: Merkmal | geprüfte Quelle | am Fahrzeug sichtbar? | Kontextaufnahme | Detailaufnahme | Bildunterschrift geprüft? | offen. Die FIN bleibt dabei in der internen Prüfung und wird nicht mit den Bilddateien veröffentlicht.\n\nBeim Fotografieren: mit der Fahrzeugübersicht beginnen, dann Kontext und Detail aufnehmen. Beschriftungen und Oberflächen lesbar halten, Spiegelungen und angeschnittene Bauteile prüfen. Bei Vergleichen dieselbe Perspektive und einen ähnlichen Maßstab verwenden.\n\nVor der Veröffentlichung: Bild und Fahrzeugkennung abgleichen, sichtbare Merkmale mit der geprüften Liste vergleichen, Funktionen nicht allein aus Symbolen ableiten und Bildunterschriften kontrollieren. Dieses Vorgehen ersetzt weder eine technische Prüfung noch die vertraglich korrekte Fahrzeugbeschreibung. Es sorgt dafür, dass Fotos die vorhandenen Informationen verständlich ergänzen, statt eine Ausstattung zu versprechen, die das Bild nicht zeigen kann."
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Häufige Fragen zu Ausstattung und Fahrzeugfotos",
       "items": [
@@ -180,6 +193,11 @@
           "label": "Fahrzeugkonfigurator-Fotos planen",
           "href": "/blog-fahrzeugkonfigurator-fotos-planen.html",
           "description": "Variantenplanung für eine vorgelagerte Produkt- und Konfiguratorserie."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]
     }

@@ -9,14 +9,21 @@
     "Fahrzeugproportionen",
     "Fahrzeugshooting"
   ],
-  "publishedAt": "2027-02-27T08:00:00.000Z",
+  "publishedAt": "2027-05-25T07:00:00.000Z",
   "excerpt": "Wie lässt sich ein SUV fotografieren, ohne Höhe und Größe künstlich zu übertreiben? Perspektive, Abstand, Umgebung und eine passende Bildfolge im Überblick.",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+  "coverImage": "/assets/optimized/assets-portfolio-dsc3878-1920.webp",
   "readingTime": 8,
   "blocks": [
     {
       "_template": "textBlock",
       "body": "Ein SUV wirkt auf Fotos schnell größer oder gedrungener, als es vor Ort erscheint. Die Kamera steht zu tief, der Weitwinkel sitzt zu nah an der Front oder das Dach verliert sich vor einer unruhigen Kulisse. Ein gutes SUV-Foto macht Aufbau und Proportionen verständlich. Ob das Fahrzeug kraftvoll, zurückhaltend oder alltagstauglich wirken soll, entscheidet die Bildaufgabe; die Perspektive sollte diese Aussage tragen, nicht durch Verzerrung ersetzen.\n\nDieser Beitrag richtet sich an Fahrzeugbesitzer, Autohäuser und Marken, die einen SUV für Portfolio, Website oder eine geplante Serie fotografieren lassen. Der Schwerpunkt liegt auf Form, Höhe und Bildaufbau. Für Geländefahrten oder eine Offroad-Produktion gelten weitere Anforderungen an Ort, Freigabe und Ablauf."
+    },
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "SUV fotografieren: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Das hängt von Bildaufgabe, Fahrzeugform und Kamerastandpunkt ab\nZuerst festlegen, was am: Eine Aufnahme für eine Fahrzeugseite braucht meist eine ruhige Gesamtansicht, in der Front, Aufbau und Räder klar lesbar sind\nBodenfreiheit zeigen, ohne Maße: Wenn die sichtbare Höhe unter dem Fahrzeug zur Bildaussage gehört, wähle eine seitliche oder leicht schräge Ansicht, in der Unterkante, Reifen und ihre\nDen Auftrag und das: Für die Anfrage helfen Fahrzeugmodell, Außenfarbe, besondere Anbauteile, Aufnahmeort, Verwendungszweck und gewünschte Bildauswahl"
     },
     {
       "_template": "imageSequence",
@@ -83,6 +90,33 @@
       "body": "Für die Anfrage helfen Fahrzeugmodell, Außenfarbe, besondere Anbauteile, Aufnahmeort, Verwendungszweck und gewünschte Bildauswahl. Beschreibe, ob der SUV als vollständige Außenansicht, in einer Alltagssituation oder mit bestimmten Ausstattungsdetails gezeigt werden soll. So kann der Fotograf passende Arbeiten aus seinem Portfolio auswählen und Rückfragen zur Location oder zur Serie stellen.\n\nSieh dir mehrere zusammengehörige Bilder an, wenn du wissen möchtest, ob eine Bildsprache über verschiedene Motive hinweg funktioniert. Ein einzelnes dramatisches Foto sagt wenig über eine vollständige Fahrzeugserie aus. Vergleiche daher nicht nur Stil und Licht, sondern auch, ob Gesamtansichten und Details denselben Auftrag unterstützen. Weitere Kriterien für die Suche und Anfrage stehen im Leitfaden [Autofotograf finden](/blog-autofotograf-finden.html)."
     },
     {
+      "_template": "linkList",
+      "headline": "Passende Leistungen & weiterführende Guides",
+      "links": [
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Motive, Bildformate und Übergabe vor dem Shooting sauber strukturieren."
+        },
+        {
+          "label": "Fahrzeugserien konsistent planen",
+          "href": "/blog-fahrzeugserie-konsistent-planen.html",
+          "description": "Wie Perspektiven, Licht und Bearbeitung über mehrere Modelle zusammenhalten."
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Häufige Fragen zum Fotografieren eines SUV",
       "items": [
@@ -113,7 +147,7 @@
     "canonicalUrl": "https://matthiasramahi.de/blog-suv-fotografieren-proportionen.html",
     "legacyUrl": "blog-suv-fotografieren-proportionen.html",
     "noIndex": false,
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp"
+    "ogImage": "/assets/optimized/assets-portfolio-dsc3878-1920.webp"
   },
   "legacy": {
     "sourceFile": "blog-suv-fotografieren-proportionen.html",
@@ -123,7 +157,7 @@
   },
   "status": "scheduled",
   "createdAt": "2026-11-03T17:00:00Z",
-  "updatedAt": "2027-02-27T08:00:00.000Z",
+  "updatedAt": "2027-05-25T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
@@ -147,5 +181,5 @@
       "openInNewTab": false
     }
   ],
-  "coverAlt": "Schwarzer SUV auf befestigter Fläche bei Abendlicht"
+  "coverAlt": "Hypercar · Front"
 }

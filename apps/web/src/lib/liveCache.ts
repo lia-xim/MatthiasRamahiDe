@@ -3,14 +3,14 @@ const numberFromEnv = (value: unknown, fallback: number) => {
   return Number.isFinite(parsed) && parsed >= 0 ? parsed : fallback
 }
 
-export const livePageCacheControl = () => {
+export const livePageCacheControl = (options: { sMaxAge?: number; staleWhileRevalidate?: number } = {}) => {
   const seconds = numberFromEnv(
     import.meta.env.ASTRO_LIVE_PAGE_CACHE_SECONDS ?? process.env.ASTRO_LIVE_PAGE_CACHE_SECONDS,
-    0,
+    options.sMaxAge ?? 3600,
   )
   const staleSeconds = numberFromEnv(
     import.meta.env.ASTRO_LIVE_PAGE_STALE_SECONDS ?? process.env.ASTRO_LIVE_PAGE_STALE_SECONDS,
-    300,
+    options.staleWhileRevalidate ?? 86400,
   )
 
   if (import.meta.env.DEV || seconds <= 0) return 'no-store'

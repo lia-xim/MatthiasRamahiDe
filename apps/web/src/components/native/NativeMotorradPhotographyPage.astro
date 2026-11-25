@@ -343,7 +343,20 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
   title={metaTitle}
   description={metaDescription}
   ogImage={doc?.seo?.ogImage || visualSlots[0].full}
-  preloadImages={[visualSlots[0].full]}
+  preloadImages={[
+    {
+      href: heroSlides[0].src,
+      imagesrcset: heroSlides[0].srcset,
+      imagesizes: heroSlides[0].srcset ? '100vw' : undefined,
+    },
+  ]}
+  mobileCta={{
+    secondaryHref: '#galerie',
+    secondaryLabel: 'Galerie',
+    priceNote: 'ab 250 €',
+    href: '#anfrage',
+    label: 'Shooting anfragen',
+  }}
 >
   {preview && (
     <PreviewToolbar
@@ -381,23 +394,45 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
       </div>
     </section>
 
-    <section class="st" data-header-theme="light">
-      <div class="section-inner">
-        <div>
-          <h2>
-            <span {...tinaAttrs(doc?.statement, 'headline')}>{focusIntroTitle.headline}</span>
-            {focusIntroTitle.headline && focusIntroTitle.emphasis ? ' ' : ''}
-            {focusIntroTitle.emphasis && <em {...tinaAttrs(doc?.statement, 'emphasis')}>{focusIntroTitle.emphasis}</em>}
-          </h2>
-        </div>
-        <div class="st-body">
-          {focusIntroParagraphs.map((paragraph, index) => <p {...tinaAttrs(doc?.statement?.body?.[index], 'text')}>{paragraph}</p>)}
-          <a class="st-cta" href="#anfrage">Shooting anfragen →</a>
-        </div>
+    <section class="po" id="galerie" data-header-theme="dark" aria-label="Ausgewählte Motorrad-Arbeiten">
+      <div class="po-grid" id="poGrid">
+        <header class="po-head">
+          <h2 {...tinaAttrs(doc?.gallerySection, 'headline')}>{focusPortfolioHeadline}</h2>
+          <p {...tinaAttrs(doc?.gallerySection, 'lead')}>{focusPortfolioLead}</p>
+        </header>
+        <button type="button" class="po-tile t1" data-i="0" data-full={visualSlots[9].full} aria-label="Bild 1 vergrößern">
+          <img loading="lazy" src={visualSlots[9].src} srcset={slotSrcset(visualSlots[9])} sizes="(max-width:720px) 48vw, 58vw" data-full={visualSlots[9].full} alt={visualSlots[9].alt} width={visualSlots[9].width} height={visualSlots[9].height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[0], 'image')} />
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        </button>
+        <button type="button" class="po-tile t2" data-i="1" data-full={visualSlots[10].full} aria-label="Bild 2 vergrößern">
+          <img src={visualSlots[10].src} srcset={slotSrcset(visualSlots[10])} sizes="(max-width:720px) 48vw, 33vw" data-full={visualSlots[10].full} loading="lazy" alt={visualSlots[10].alt} width={visualSlots[10].width} height={visualSlots[10].height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[1], 'image')} />
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        </button>
+        <button type="button" class="po-tile t3" data-i="2" data-full={visualSlots[11].full} aria-label="Bild 3 vergrößern">
+          <img src={visualSlots[11].src} srcset={slotSrcset(visualSlots[11])} sizes="(max-width:720px) 48vw, 33vw" data-full={visualSlots[11].full} loading="lazy" alt={visualSlots[11].alt} width={visualSlots[11].width} height={visualSlots[11].height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[2], 'image')} />
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        </button>
+        <button type="button" class="po-tile t4" data-i="3" data-full={visualSlots[12].full} aria-label="Bild 4 vergrößern">
+          <img src={visualSlots[12].src} srcset={slotSrcset(visualSlots[12])} sizes="(max-width:720px) 48vw, 33vw" data-full={visualSlots[12].full} loading="lazy" alt={visualSlots[12].alt} width={visualSlots[12].width} height={visualSlots[12].height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[3], 'image')} />
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        </button>
+        <button type="button" class="po-tile t5" data-i="4" data-full={visualSlots[13].full} aria-label="Bild 5 vergrößern">
+          <img loading="lazy" src={visualSlots[13].src} srcset={slotSrcset(visualSlots[13])} sizes="(max-width:720px) 48vw, 33vw" data-full={visualSlots[13].full} alt={visualSlots[13].alt} width={visualSlots[13].width} height={visualSlots[13].height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[4], 'image')} />
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        </button>
+        <button type="button" class="po-tile t6" data-i="5" data-full={visualSlots[14].full} aria-label="Bild 6 vergrößern">
+          <img loading="lazy" src={visualSlots[14].src} srcset={slotSrcset(visualSlots[14])} sizes="(max-width:720px) 48vw, 33vw" data-full={visualSlots[14].full} alt={visualSlots[14].alt} width={visualSlots[14].width} height={visualSlots[14].height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[5], 'image')} />
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        </button>
       </div>
     </section>
 
-    <NativeGuideSection doc={doc} />
+    <div class="mr-gallery-cta-band" data-header-theme="dark">
+      <div class="mr-gallery-cta">
+        <span>Shooting-Pakete ab 250 € inkl. MwSt. — Location, Rolling &amp; Details</span>
+        <a href="#anfrage">Motorrad-Shooting anfragen <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
 
     <section class="mk" data-header-theme="dark">
       <div class="section-inner">
@@ -452,39 +487,6 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
       </div>
     </section>
 
-    <section class="po" data-header-theme="dark" aria-label="Ausgewählte Motorrad-Arbeiten">
-      <div class="po-grid" id="poGrid">
-        <header class="po-head">
-          <h2 {...tinaAttrs(doc?.gallerySection, 'headline')}>{focusPortfolioHeadline}</h2>
-          <p {...tinaAttrs(doc?.gallerySection, 'lead')}>{focusPortfolioLead}</p>
-        </header>
-        <button type="button" class="po-tile t1" data-i="0" data-full={visualSlots[9].full} aria-label="Bild 1 vergrößern">
-          <img loading="lazy" src={visualSlots[9].src} srcset={slotSrcset(visualSlots[9])} sizes="(max-width:720px) 48vw, 58vw" data-full={visualSlots[9].full} alt={visualSlots[9].alt} width={visualSlots[9].width} height={visualSlots[9].height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[0], 'image')} />
-          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-        </button>
-        <button type="button" class="po-tile t2" data-i="1" data-full={visualSlots[10].full} aria-label="Bild 2 vergrößern">
-          <img src={visualSlots[10].src} srcset={slotSrcset(visualSlots[10])} sizes="(max-width:720px) 48vw, 33vw" data-full={visualSlots[10].full} loading="lazy" alt={visualSlots[10].alt} width={visualSlots[10].width} height={visualSlots[10].height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[1], 'image')} />
-          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-        </button>
-        <button type="button" class="po-tile t3" data-i="2" data-full={visualSlots[11].full} aria-label="Bild 3 vergrößern">
-          <img src={visualSlots[11].src} srcset={slotSrcset(visualSlots[11])} sizes="(max-width:720px) 48vw, 33vw" data-full={visualSlots[11].full} loading="lazy" alt={visualSlots[11].alt} width={visualSlots[11].width} height={visualSlots[11].height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[2], 'image')} />
-          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-        </button>
-        <button type="button" class="po-tile t4" data-i="3" data-full={visualSlots[12].full} aria-label="Bild 4 vergrößern">
-          <img src={visualSlots[12].src} srcset={slotSrcset(visualSlots[12])} sizes="(max-width:720px) 48vw, 33vw" data-full={visualSlots[12].full} loading="lazy" alt={visualSlots[12].alt} width={visualSlots[12].width} height={visualSlots[12].height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[3], 'image')} />
-          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-        </button>
-        <button type="button" class="po-tile t5" data-i="4" data-full={visualSlots[13].full} aria-label="Bild 5 vergrößern">
-          <img loading="lazy" src={visualSlots[13].src} srcset={slotSrcset(visualSlots[13])} sizes="(max-width:720px) 48vw, 33vw" data-full={visualSlots[13].full} alt={visualSlots[13].alt} width={visualSlots[13].width} height={visualSlots[13].height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[4], 'image')} />
-          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-        </button>
-        <button type="button" class="po-tile t6" data-i="5" data-full={visualSlots[14].full} aria-label="Bild 6 vergrößern">
-          <img loading="lazy" src={visualSlots[14].src} srcset={slotSrcset(visualSlots[14])} sizes="(max-width:720px) 48vw, 33vw" data-full={visualSlots[14].full} alt={visualSlots[14].alt} width={visualSlots[14].width} height={visualSlots[14].height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[5], 'image')} />
-          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-        </button>
-      </div>
-    </section>
-
     <section class="fw" data-header-theme="light">
       <div class="section-inner">
         <div class="fw-head">
@@ -536,6 +538,24 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
         </div>
       </div>
     </section>
+
+    <section class="st" data-header-theme="light">
+      <div class="section-inner">
+        <div>
+          <h2>
+            <span {...tinaAttrs(doc?.statement, 'headline')}>{focusIntroTitle.headline}</span>
+            {focusIntroTitle.headline && focusIntroTitle.emphasis ? ' ' : ''}
+            {focusIntroTitle.emphasis && <em {...tinaAttrs(doc?.statement, 'emphasis')}>{focusIntroTitle.emphasis}</em>}
+          </h2>
+        </div>
+        <div class="st-body">
+          {focusIntroParagraphs.map((paragraph, index) => <p {...tinaAttrs(doc?.statement?.body?.[index], 'text')}>{paragraph}</p>)}
+          <a class="st-cta" href="#anfrage">Shooting anfragen →</a>
+        </div>
+      </div>
+    </section>
+
+    <NativeGuideSection doc={doc} />
 
     {showCrossFamilyCluster && (
       <NativeFamilyClusterLinks

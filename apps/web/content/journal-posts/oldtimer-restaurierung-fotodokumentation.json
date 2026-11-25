@@ -8,12 +8,19 @@
     "Fotodokumentation",
     "Fahrzeuggeschichte"
   ],
-  "publishedAt": "2026-12-11T08:00:00.000Z",
+  "publishedAt": "2026-12-29T08:00:00.000Z",
   "excerpt": "Eine Fotodokumentation der Oldtimer-Restaurierung beginnt vor dem ersten Eingriff. So bleiben Ausgangszustand, verdeckte Arbeitsschritte und Veränderungen nachvollziehbar geordnet.",
   "coverImage": "/uploads/payload/assets-photos-oldtimer-stage-1920.webp",
   "coverAlt": "Klassischer Sportwagen unter gezieltem Bühnenlicht",
   "readingTime": 8,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Restaurierungsphasen sauber und lückenlos dokumentieren",
+      "body": "Fixe Etappen-Ordner: Von 00 Eingangszustand über 10 Demontage, 20 Karosserie, 30 Lack, 40 Aggregate bis 60 Fertigstellung durchgängig sortieren\nGleiche Vergleichsachse: Für Ausgangs-, Zwischen- und Endzustand denselben Kamerastandpunkt und -abstand wiederholen\nKontext + Detail: Verdeckte Baugruppen immer zuerst als Totale für die Einordnung und dann nah im Detail plus klarer Datei-Benennung festhalten"
+    },
     {
       "_template": "textBlock",
       "headline": "Dokumentieren, bevor etwas verschwindet",
@@ -100,6 +107,12 @@
       ]
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Oldtimer & Klassiker ruhig fotografieren lassen",
+      "text": "Vom einzelnen Wertfahrzeug bis zur Sammlungsserie in Erkrath, Düsseldorf und NRW: Persönliche Klassiker-Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Oldtimer-Shooting anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Häufige Fragen zur Fotodokumentation",
       "items": [
@@ -123,7 +136,7 @@
     }
   ],
   "status": "scheduled",
-  "updatedAt": "2026-12-11T08:00:00.000Z",
+  "updatedAt": "2026-12-29T08:00:00.000Z",
   "createdAt": "2026-11-03T15:13:46Z",
   "relatedPages": [
     {
@@ -137,6 +150,13 @@
       "label": "Nutzungsrechte für Fahrzeugfotos",
       "href": "/blog-nutzungsrechte-fahrzeugfotos.html",
       "seoPurpose": "editorial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Oldtimer als Wertobjekt fotografieren",
+      "href": "/blog-oldtimer-wertobjekt.html",
+      "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
     }

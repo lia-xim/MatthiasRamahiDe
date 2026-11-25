@@ -9,7 +9,7 @@
     "Farbmanagement",
     "Retusche"
   ],
-  "publishedAt": "2027-08-28T07:00:00Z",
+  "publishedAt": "2028-03-28T08:00:00.000Z",
   "status": "scheduled",
   "excerpt": "Ein nachvollziehbarer Lightroom-Workflow für Autofotos: RAW-Grundentwicklung, gezielte Masken und ein passender Webexport, ohne Lackfarbe oder Fahrzeugdetails umzuschreiben.",
   "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
@@ -22,6 +22,13 @@
     },
     {
       "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Autofotos in Lightroom bearbeiten: Die wichtigsten Punkte im Überbli",
+      "body": "Kernaussage: Lightroom Classic bietet automatische Motiv-, Objekt- und Hintergrundmasken\nWofür Lightroom Classic bei: Lightroom Classic eignet sich für die Entwicklung von RAW-Dateien, globale Farb- und Tonwertkorrekturen, lokale Anpassungen mit Masken sowie eine\nReflexe gezielt behandeln, aber: Autolack spiegelt seine Umgebung\nPrüfen, bevor die Serie fertig ist: Schalte vor dem Abschluss die Bearbeitung mit dem Originalbild hin und her"
+    },
+    {
+      "_template": "textBlock",
       "headline": "Wofür Lightroom Classic bei Autofotos passt",
       "body": "Lightroom Classic eignet sich für die Entwicklung von RAW-Dateien, globale Farb- und Tonwertkorrekturen, lokale Anpassungen mit Masken sowie eine übersichtliche Ausgabe für Web oder Druck. Das macht es zu einem passenden Ort für den Hauptteil eines typischen Autofoto-Workflows. Es ist kein Ersatz für eine saubere Aufnahme: Wenn ein störender Gegenstand als deutliche Spiegelung über mehrere Karosserieteile läuft, lässt er sich vor Ort oft glaubwürdiger vermeiden als später aus jedem Reflex herauszurechnen.\n\nHier geht es um konkrete Entscheidungen in Lightroom Classic, nicht um eine allgemeine Retusche-Anleitung. Für die Grenzen einer glaubwürdigen Korrektur ist der Beitrag [Autofotos retuschieren: Was sichtbar bleiben sollte](/blog-autofotos-retuschieren-fahrzeugtreue.html) die passende Ergänzung. Fragen zu Monitorprofilen, Druckfarben und Ausgabefarbräumen behandelt [Farbmanagement für Autofotos](/blog-autofotos-farbmanagement-monitor-export.html)."
     },
@@ -29,6 +36,23 @@
       "_template": "textBlock",
       "headline": "Mit einer passenden RAW-Datei beginnen",
       "body": "Wähle zuerst ein Bild, dessen Licht und Bildaussage bereits stimmen. Die Bearbeitung kann eine saubere Belichtung verfeinern, aber weder eine ungünstige Perspektive noch eine unklare Fahrzeugform zuverlässig nachträglich lösen. Für eine Serie markierst du zunächst die Aufnahmen, die denselben Zweck erfüllen: eine ruhige Hauptansicht, eine zweite Perspektive und nur die Details, die für diese Geschichte oder Verwendung tatsächlich wichtig sind.\n\nRAW gibt dir Spielraum bei Weißabgleich und Tonwerten, aber es ist keine Garantie für die richtige Farbe. Notiere dir, ob das Licht durch Himmel, Hallenlampen oder gemischte Quellen geprägt war. Bei stark wechselndem Licht sind zwei getrennte Entwicklungsgruppen oft sinnvoller als eine gemeinsame Vorgabe für alle Bilder. Wenn nur JPEG-Dateien vorliegen, kannst du viele Grundkorrekturen weiterhin anwenden; der Spielraum bei Weißabgleich und stark aufgehellten Schatten ist dann kleiner.\n\nSichere vor dem Entwickeln sowohl die Originalfotos als auch den Lightroom-Katalog. Lightroom Classic speichert Entwicklungsschritte als Anweisungen im Katalog und verändert die Kamera-RAW-Dateien nicht; beim Export wird eine neue Datei erzeugt. Nicht-destruktiv heißt aber nicht automatisch gesichert: Wenn Originaldatei oder Katalog verloren gehen, fehlt weiterhin ein Teil des Workflows. Lege deshalb eine Katalogsicherung und eine Kopie der Originaldateien an getrennten Speicherorten ab."
+    },
+    {
+      "_template": "imageSequence",
+      "headline": "Beispiele für saubere Perspektive und Lichtführung",
+      "layout": "editorial-pair",
+      "items": [
+        {
+          "image": "/assets/optimized/assets-portfolio-dsc2329-1920.webp",
+          "caption": "Präzise Lichtkante auf dunklem Fahrzeuglack in ruhiger Umgebung",
+          "cropIntent": "editorial"
+        },
+        {
+          "image": "/assets/optimized/assets-portfolio-dsc2345-1920.webp",
+          "caption": "Kontrollierte Seitenansicht mit gleichmäßiger Spiegelung über Tür und Schweller",
+          "cropIntent": "editorial"
+        }
+      ]
     },
     {
       "_template": "textBlock",
@@ -69,6 +93,12 @@
       "_template": "textBlock",
       "headline": "Prüfen, bevor die Serie fertig ist",
       "body": "Schalte vor dem Abschluss die Bearbeitung mit dem Originalbild hin und her. Frage bei jedem Schritt, ob das Auto klarer lesbar geworden ist oder ob eine Korrektur bloß einen auffälligen Effekt erzeugt. Prüfe Maskenkanten, Reflexe, Farbe und sichtbare Fahrzeugdetails sowohl in der Einzelansicht als auch in der kleinen Serienübersicht. Eine Pause hilft, wenn du lange an einem dunklen Lack oder einer stark farbigen Lichtstimmung gearbeitet hast.\n\nEin brauchbarer Lightroom-Workflow ist keine feste Reglerliste. Er führt vom globalen Bildzustand zu den wenigen lokalen Korrekturen, die wirklich nötig sind, und endet bei einer Ausgabe, die zum Verwendungszweck passt. Wenn die Farben stimmen, die Karosserie ihre Form behält und keine relevante Information verschwunden ist, ist weniger Bearbeitung oft die bessere Entscheidung.\n\n**Kurzer Exportcheck:** Vergleiche Original und Export bei gleicher Ansicht. Prüfe die Lackfarbe und die Form-Reflexe, ausgefressene Spitzlichter auf Dach und Haube, Maskenkanten an Spiegeln, Rädern und Schatten sowie alle retuschierten Details. Kontrolliere das Bild einmal vergrößert auf Artefakte und danach in der vorgesehenen Ausgabegröße. Öffne die exportierte Datei außerhalb des Entwicklungsmoduls und prüfe, ob Format, Abmessungen und Farbprofil zur Empfänger-Vorgabe passen. Bewahre Original, Katalog und finale Exportkopie getrennt auf."
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
     },
     {
       "_template": "faqBlock",
@@ -134,12 +164,17 @@
           "label": "Adobe Lightroom Classic: Fotos exportieren",
           "href": "https://helpx.adobe.com/de/lightroom-classic/desktop/export-photos/exporting-photos-basic-workflow.html",
           "description": "Erklärt Dateiformat, Farbprofil, Abmessungen und Exportkopie für die jeweilige Verwendung."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]
     }
   ],
   "seo": {
-    "title": "Autofotos in Lightroom bearbeiten: Farbtreue vom RAW bis zum Export",
+    "title": "Autofotos in Lightroom bearbeiten: RAW bis Export",
     "description": "Autofotos in Lightroom Classic bearbeiten: RAW-Grundentwicklung, Fahrzeugmasken, Lackfarbe und passender Webexport mit klaren Grenzen für Retusche.",
     "focusKeyword": "Autofotos in Lightroom bearbeiten",
     "secondaryKeywords": [
@@ -156,7 +191,7 @@
     "noIndex": false
   },
   "createdAt": "2026-11-05T00:00:00Z",
-  "updatedAt": "2027-08-28T07:00:00Z",
+  "updatedAt": "2028-03-28T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Autofotografie",

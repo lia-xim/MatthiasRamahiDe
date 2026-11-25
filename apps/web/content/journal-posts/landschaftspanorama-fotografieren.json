@@ -9,12 +9,19 @@
     "Bildgestaltung",
     "Fine-Art-Print"
   ],
-  "publishedAt": "2027-09-17T07:00:00.000Z",
+  "publishedAt": "2028-05-02T07:00:00.000Z",
   "excerpt": "Wenn eine Landschaft nicht in einen Bildausschnitt passt, kann eine überlappende Bildreihe helfen. So planst du das Motiv, hältst die Aufnahmen konstant und prüfst das zusammengesetzte Panorama.",
   "coverImage": "/assets/landscape/202608-dresden-dsc8441.webp",
   "coverAlt": "Weite Ansicht der Basteibrücke zwischen Sandsteinfelsen und bewaldeten Hängen unter Wolken",
   "readingTime": 8,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Landschaftspanorama fotografieren: Die wichtigsten Punkte im Überbli",
+      "body": "Kernaussage: Die Bilder brauchen einen ausreichend großen gemeinsamen Bereich, damit die Software passende Strukturen findet\nWann mehrere Einzelbilder sinnvoll: Ein Panorama kann eine Landschaft zeigen, die sich mit einem einzelnen Bildwinkel nicht vollständig erfassen lässt\nMit gleichmäßiger Überlappung schwenken: Nimm die Bildreihe in einer klaren Richtung auf und halte die Kamera waagrecht und möglichst auf derselben Höhe\nAusgabeformat schon bei der: Wenn das Panorama später als Wandbild oder Fine-Art-Print gedacht ist, kläre vorab, wie breit das Motiv ausgegeben werden soll und ob ein Beschnitt akzeptabel"
+    },
     {
       "_template": "textBlock",
       "headline": "Wann mehrere Einzelbilder sinnvoll sind",
@@ -60,7 +67,13 @@
     {
       "_template": "textBlock",
       "headline": "Ausgabeformat schon bei der Aufnahme bedenken",
-      "body": "Wenn das Panorama später als Wandbild oder Fine-Art-Print gedacht ist, kläre vorab, wie breit das Motiv ausgegeben werden soll und ob ein Beschnitt akzeptabel ist. Ein Panorama kann ein ungewöhnlich langes Seitenverhältnis haben; Rahmen, Passepartout und verfügbare Wandfläche setzen oft andere Grenzen. Nimm deshalb nicht nur möglichst viele Einzelbilder auf, sondern prüfe, ob die spätere Form die Bildidee unterstützt.\n\nFür Auswahl, Format und Wirkung an der Wand hilft der Beitrag zum [Landschaftsbild als Fine-Art-Print](/blog-landschaftsbild-fine-art-print-auswaehlen.html). Hinweise zu Farbe und Tonwerten in der Nachbearbeitung findest du bei [Landschaftsfotos bearbeiten](/blog-landschaftsfotos-bearbeiten.html). Wenn du dagegen zuerst einen Standort und seine Bildwirkung beurteilen möchtest, zeigt der [Bastei-Guide zu Standpunkt und Bildaufbau](/blog-basteibruecke-fotografieren-bildaufbau-standpunkt.html), wie sich eine konkrete Aussicht unterschiedlich ins Bild setzen lässt."
+      "body": "Wenn das Panorama später als Wandbild oder Fine-Art-Print gedacht ist, kläre vorab, wie breit das Motiv ausgegeben werden soll und ob ein Beschnitt akzeptabel ist. Ein Panorama kann ein ungewöhnlich langes Seitenverhältnis haben; Rahmen, Passepartout und verfügbare Wandfläche setzen oft andere Grenzen. Nimm deshalb nicht nur möglichst viele Einzelbilder auf, sondern prüfe, ob die spätere Form die Bildidee unterstützt.\n\nFür Auswahl, Format und Wirkung an der Wand hilft der Beitrag zum [Landschaftsbild als Fine-Art-Print](/blog-landschaftsbild-fine-art-print-auswaehlen.html). Hinweise zu Farbe und Tonwerten in der Nachbearbeitung findest du bei [Landschaftsfotos bearbeiten](/blog-landschaftsfotos-bearbeiten.html). Wenn du dagegen zuerst einen Standort und seine Bildwirkung beurteilen möchtest, zeigt der [Landschaftsserien für Fine-Art-Prints](/landschaftsfotografie.html), wie sich eine konkrete Aussicht unterschiedlich ins Bild setzen lässt."
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Landschaftsmotive als Fine-Art-Print anfragen",
+      "text": "Ausgewählte Landschaftsaufnahmen erscheinen als hochwertige Fine-Art-Prints auf Archivpapier. Schreib mir Motivwunsch und gewünschtes Wandformat.",
+      "buttonLabel": "Fine-Art-Print anfragen"
     },
     {
       "_template": "faqBlock",
@@ -108,9 +121,9 @@
           "description": "Nikon beschreibt die Aufnahme überlappender Landschaftsausschnitte, konstante Einstellungen und die Reihenfolge der Bildserie."
         },
         {
-          "label": "Florian Orth: Panorama fotografieren in der Landschaftsfotografie",
-          "href": "https://www.florianorth.de/panorama-fotografieren-landschaftsfotografie/",
-          "description": "Deutschsprachiger Praxisleitfaden mit Aufnahmeabfolge und Zusammenfügen einer Landschaftsreihe."
+          "label": "Landschaftsfotografie & Fine-Art-Prints",
+          "href": "/landschaftsfotografie.html",
+          "description": "Kuratierte Landschaftsmotive als Wandbilder und Sammler-Editionen."
         }
       ]
     }
@@ -139,7 +152,7 @@
   },
   "status": "scheduled",
   "createdAt": "2026-11-06T05:08:52Z",
-  "updatedAt": "2027-09-17T07:00:00.000Z",
+  "updatedAt": "2028-05-02T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Landschaftsfotografie",
@@ -158,13 +171,6 @@
     {
       "label": "Landschaftsbild als Fine-Art-Print auswählen",
       "href": "/blog-landschaftsbild-fine-art-print-auswaehlen.html",
-      "seoPurpose": "related-editorial",
-      "rel": "follow",
-      "openInNewTab": false
-    },
-    {
-      "label": "Basteibrücke fotografieren",
-      "href": "/blog-basteibruecke-fotografieren-bildaufbau-standpunkt.html",
       "seoPurpose": "related-editorial",
       "rel": "follow",
       "openInNewTab": false

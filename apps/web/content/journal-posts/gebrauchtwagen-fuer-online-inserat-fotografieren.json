@@ -8,12 +8,19 @@
     "Fahrzeugverkauf",
     "Autofotografie"
   ],
-  "publishedAt": "2027-01-20T08:00:00.000Z",
+  "publishedAt": "2026-12-15T08:00:00.000Z",
   "excerpt": "Welche Fotos gehören in ein privates Gebrauchtwagen-Inserat? Plane Außenansichten, Innenraum, Details und bekannte Mängel in einer klaren, glaubwürdigen Reihenfolge.",
   "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
   "coverAlt": "Schwarzer SUV im Abendlicht an einer Wasserfläche",
   "readingTime": 7,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Die optimale Fotoreihenfolge fürs Gebrauchtwagen-Inserat",
+      "body": "Außenrunde zuerst: Dreiviertel-Front mit Luft um Räder und Dach als Titelbild, gefolgt von allen Seiten, Heck und sauber aufgeräumtem Kofferraum\nInnenraum & Tacho: Durchgehende Aufnahme zwischen geöffneten Türen, Sitze, Bedienelemente und klar ablesbarer Gesamtkilometerstand\nZustand ehrlich abbilden: Relevante Gebrauchsspuren erst im Fahrzeugzusammenhang und danach als Detailaufnahme festhalten"
+    },
     {
       "_template": "textBlock",
       "headline": "Eine Bildfolge, die den Zustand nachvollziehbar macht",
@@ -95,6 +102,12 @@
       ]
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Professionelles Auto-Fotoshooting in NRW planen",
+      "text": "Du brauchst stimmige Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto im Raum Düsseldorf, Erkrath und NRW? Shootings starten bei 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Häufige Fragen",
       "items": [
@@ -133,12 +146,22 @@
           "label": "AutoScout24: Foto-Guide für Fahrzeuganzeigen (PDF)",
           "href": "https://www.autoscout24.de/cms-content-assets/7qhnYYVYTmNU2w6RvsBlaX-b3c0c0cc5d3c162b55c78110bd2c119d-AS24_Fotoguide_online.pdf",
           "description": "Beispiel für eine systematische Außen- und Innenansicht. Der Guide ist älter; aktuelle Uploadregeln bitte direkt bei AutoScout24 prüfen."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Motive, Bildformate und Übergabe vor dem Shooting sauber strukturieren."
         }
       ]
     }
   ],
   "seo": {
-    "title": "Gebrauchtwagen für ein Inserat fotografieren | Matthias Ramahi",
+    "title": "Gebrauchtwagen für ein Inserat fotografieren",
     "description": "Gebrauchtwagen für ein Online-Inserat fotografieren: Außenansichten, Innenraum, Schäden und sinnvolle Bildreihenfolge für einen glaubwürdigen Verkauf.",
     "focusKeyword": "Gebrauchtwagen für Inserat fotografieren",
     "secondaryKeywords": [
@@ -155,7 +178,7 @@
   },
   "status": "scheduled",
   "createdAt": "2026-11-03T16:30:00Z",
-  "updatedAt": "2027-01-20T08:00:00.000Z",
+  "updatedAt": "2026-12-15T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie für Marken und Unternehmen",

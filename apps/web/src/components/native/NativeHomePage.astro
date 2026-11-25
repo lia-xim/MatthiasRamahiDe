@@ -214,6 +214,12 @@ const journalPosts = (cmsJournalItems.length === 3
   current="home"
   doc={doc}
   ctaHref="#anfrage"
+  mobileCta={{
+    secondaryHref: '#chapters',
+    secondaryLabel: 'Bereiche',
+    href: '#anfrage',
+    label: 'Projekt anfragen',
+  }}
   preloadImages={heroMobileImage
     ? [
         { href: heroMobileImage, media: '(max-width: 900px)', fetchpriority: 'high' },
@@ -234,25 +240,6 @@ const journalPosts = (cmsJournalItems.length === 3
   )}
   <main class="lp">
     <NativeShaderHero label="Intro" slides={heroSlides} sourceSlides={doc?.heroSlides || []} />
-
-    {/* 01 · Statement (light) — gleiches Muster wie „Über mich“ */}
-    <section class="statement sec-light" data-theme="light" aria-labelledby="lp-statement-title">
-      <div class="section-inner">
-        <div>
-          {statementHeadline
-            ? <h2 id="lp-statement-title" {...tinaAttrs(statement, 'headline')}>{statementHeadline}{statementEmphasis ? <Fragment><br /> <em {...tinaAttrs(statement, 'headlineEmphasis')}>{statementEmphasis}</em></Fragment> : null}</h2>
-            : <h2 id="lp-statement-title">Bilder, die einen Raum<br /> <em>verändern</em>.</h2>}
-        </div>
-        <div class="body">
-          <p class="lead" {...tinaAttrs(statement?.body?.[0], 'text')}>{statementParagraphs[0]}</p>
-          {statementParagraphs[1] && <p {...tinaAttrs(statement?.body?.[1], 'text')}>{statementParagraphs[1]}</p>}
-          <div class="actions">
-            <a class="btn dark" href="#arbeiten">Serien ansehen</a>
-            <a class="btn lp-btn-ghost-ink" href="#chapters">Bereiche ansehen</a>
-          </div>
-        </div>
-      </div>
-    </section>
 
     {/* 02 · Sechs Bereiche (dark) — gleiches Muster wie „Über mich“ */}
     <section class="chapters sec-dark" id="chapters" data-theme="dark" aria-labelledby="lp-chapters-title">
@@ -322,6 +309,25 @@ const journalPosts = (cmsJournalItems.length === 3
         </div>
         <div class="lp-sheet__foot">
           <a class="btn dark" href="/portfolio.html">Vollständiges Portfolio →</a>
+        </div>
+      </div>
+    </section>
+
+    {/* 01 · Statement (light) — gleiches Muster wie „Über mich“ */}
+    <section class="statement sec-light" data-theme="light" aria-labelledby="lp-statement-title">
+      <div class="section-inner">
+        <div>
+          {statementHeadline
+            ? <h2 id="lp-statement-title" {...tinaAttrs(statement, 'headline')}>{statementHeadline}{statementEmphasis ? <Fragment><br /> <em {...tinaAttrs(statement, 'headlineEmphasis')}>{statementEmphasis}</em></Fragment> : null}</h2>
+            : <h2 id="lp-statement-title">Bilder, die einen Raum<br /> <em>verändern</em>.</h2>}
+        </div>
+        <div class="body">
+          <p class="lead" {...tinaAttrs(statement?.body?.[0], 'text')}>{statementParagraphs[0]}</p>
+          {statementParagraphs[1] && <p {...tinaAttrs(statement?.body?.[1], 'text')}>{statementParagraphs[1]}</p>}
+          <div class="actions">
+            <a class="btn dark" href="#arbeiten">Serien ansehen</a>
+            <a class="btn lp-btn-ghost-ink" href="#chapters">Bereiche ansehen</a>
+          </div>
         </div>
       </div>
     </section>

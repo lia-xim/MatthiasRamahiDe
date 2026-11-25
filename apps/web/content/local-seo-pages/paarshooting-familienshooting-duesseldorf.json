@@ -87,8 +87,8 @@
   "contactSection": {},
   "targetKeyword": "Paarshooting & Familienshooting Düsseldorf",
   "seo": {
-    "title": "Paarshooting & Familienshooting Düsseldorf — Matthias Ramahi",
-    "description": "Paarshooting & Familienshooting Düsseldorf: kuratierte Bildserien für Paare, Familien und besondere Momente — Nordpark, Rheinufer, Medienhafen. Anfrage nach Umfang.",
+    "title": "Paarshooting & Familienshooting Düsseldorf ab 250 €",
+    "description": "Paarshooting & Familienshooting in Düsseldorf & NRW: natürliche, ungestellte Serien am Rheinufer, im Nordpark oder Neandertal. Ablauf & Anfrage ab 250 €.",
     "canonicalUrl": "https://matthiasramahi.de/paarshooting-familienshooting-duesseldorf.html",
     "legacyUrl": "paarshooting-familienshooting-duesseldorf.html",
     "noIndex": false,
@@ -102,8 +102,49 @@
     "migrationStatus": "reviewed",
     "renderSource": "legacy-file"
   },
-  "updatedAt": "2026-07-21 22:35:09.413+00",
+  "updatedAt": "2026-11-24T09:00:00.000Z",
   "createdAt": "2026-05-31 18:09:47.657+00",
   "status": "published",
-  "payloadId": "211"
+  "payloadId": "211",
+  "guideSection": {
+    "eyebrow": "Paar- & Familienshooting",
+    "headline": "Paar- und Familienshooting in Düsseldorf: Echte Momente ohne Kitsch.",
+    "intro": "Statt künstlicher Kulissen und einstudierter Standardposen entstehen ruhige, zeitlose Bilder in Bewegung – draußen im weichen Licht rund um Düsseldorf, Erkrath und das Neandertal.",
+    "items": [
+      {
+        "title": "Entspannte Orte im Grünen oder am Rhein",
+        "text": "Hofgarten, Rheinufer, Düssel-Auen oder das Neandertal bieten Raum zum Gehen, Lachen und Ankommen – ideal auch für Kinder, die sich frei bewegen sollen."
+      },
+      {
+        "title": "Ungezwungene Begleitung statt starrem Posieren",
+        "text": "Ich gebe lockere Impulse statt starrer Kommandos. So entstehen echte Blicke, Nähe und spontane Momente, in denen ihr euch selbst wiedererkennt."
+      },
+      {
+        "title": "Kleidung und Lichtzeitpunkt einfach abgestimmt",
+        "text": "Harmonische, ruhige Farbtöne ohne grelle Muster und das weiche Licht am späten Nachmittag sorgen dafür, dass die Serie auch an der Wand langfristig gut aussieht."
+      },
+      {
+        "title": "Ab 250 € inkl. MwSt. – Prints optional",
+        "text": "Ein Paar- oder Familienshooting beginnt bei 250 € inkl. MwSt. Hochwertige Fine-Art-Abzüge oder Wandbilder können direkt über das Fotolabor mitbestellt werden."
+      }
+    ],
+    "links": [
+      {
+        "label": "Portraitfotografie Düsseldorf",
+        "href": "/portraitfotografie-duesseldorf.html"
+      },
+      {
+        "label": "Fotograf Erkrath",
+        "href": "/fotografie-erkrath.html"
+      },
+      {
+        "label": "Fotolabor & Fine-Art-Druck",
+        "href": "/fotolabor-druck-duesseldorf.html"
+      },
+      {
+        "label": "Portfolio Portrait",
+        "href": "/portfolio/portfolio-auswahl-portrait"
+      }
+    ]
+  }
 }

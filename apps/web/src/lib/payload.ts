@@ -1,6 +1,8 @@
 import { fallbackPortfolioProjects } from '../data/fallbackPortfolio'
+import staticAssetDimensionsJson from '../data/staticAssetDimensions.json'
 import { addUrlVersion, staticAssetVersion, versionCmsMediaUrl, versionStaticAssetUrl } from './cache'
 import type { CmsCta, CmsLegacyInfo, CmsLink, CmsMedia, CmsMediaSize, CmsSeo } from './cmsContentContract'
+import { resolveTinaMediaRef } from './tinaMedia'
 import {
   getTinaByLegacyUrl,
   getTinaBySlug,
@@ -805,14 +807,50 @@ export const imageDisplayUrl = (
   return versionCmsMediaUrl(toDisplayAssetUrl(sized || (options.allowOriginal ? media.url : undefined), options), media)
 }
 
+const staticAssetDimensions = staticAssetDimensionsJson as Record<string, readonly number[]>
+
+const lookupStaticAssetDimensions = (raw?: string) => {
+  if (!raw) return {}
+  let pathname = raw.split('#', 1)[0].split('?', 1)[0].trim()
+  if (/^https?:\/\//i.test(pathname)) {
+    try {
+      pathname = new URL(pathname).pathname
+    } catch {
+      return {}
+    }
+  }
+  const normalized = pathname.startsWith('/') ? pathname : `/${pathname}`
+  const pair = staticAssetDimensions[normalized]
+  if (pair && pair.length >= 2) return { width: pair[0], height: pair[1] }
+
+  const suffixMatch = normalized.match(/-(\d{2,4})x(\d{2,4})\.(?:webp|avif|jpe?g|png)$/i)
+  if (suffixMatch) {
+    const width = Number(suffixMatch[1])
+    const height = Number(suffixMatch[2])
+    if (width > 0 && height > 0) return { width, height }
+  }
+  return {}
+}
+
 export const imageDimensions = (media: PayloadMedia | string | undefined, size = 'hero') => {
-  if (!media || typeof media === 'string') return {}
+  if (!media) return {}
+  if (typeof media === 'string') {
+    const resolved = resolveTinaMediaRef(media)
+    if (resolved) {
+      const selected = bestSize(resolved, size)
+      const sized = selected ? resolved.sizes?.[selected] : undefined
+      const width = sized?.width || resolved.width
+      const height = sized?.height || resolved.height
+      if (width && height) return { width, height }
+    }
+    return lookupStaticAssetDimensions(media)
+  }
   const selected = bestSize(media, size)
   const sized = selected ? media.sizes?.[selected] : undefined
-  return {
-    width: sized?.width || media.width,
-    height: sized?.height || media.height,
-  }
+  const width = sized?.width || media.width
+  const height = sized?.height || media.height
+  if (width && height) return { width, height }
+  return lookupStaticAssetDimensions(sized?.url || media.url)
 }
 
 export const imageSrcset = (

@@ -128,8 +128,49 @@
     "migrationStatus": "reviewed",
     "renderSource": "legacy-file"
   },
-  "updatedAt": "2026-08-25T12:00:00.000Z",
+  "updatedAt": "2026-11-24T09:00:00.000Z",
   "createdAt": "2026-05-31 17:32:41.612+00",
   "status": "published",
-  "payloadId": "165"
+  "payloadId": "165",
+  "guideSection": {
+    "eyebrow": "Landschaftsbilder kaufen",
+    "headline": "Landschaftsbilder als Fine-Art-Wandbild kaufen: So findest du das richtige Motiv.",
+    "intro": "Ein großes Landschaftsbild verändert die Atmosphäre eines Raumes nachhaltig. Hier findest du die vier wichtigsten Entscheidungen vor dem Kauf – von Motivwahl bis Oberfläche.",
+    "items": [
+      {
+        "title": "Blickachse und Wandgröße richtig einschätzen",
+        "text": "Wandbilder werden oft zu klein gewählt. Als grobe Richtschnur wirkt ein Bild über Sofa, Sideboard oder Konferenztisch stimmig, wenn es etwa zwei Drittel der Möbelbreite einnimmt."
+      },
+      {
+        "title": "Papier, Alu-Dibond, Acrylglas oder Leinwand?",
+        "text": "Hahnemühle- und Canson-Fine-Art-Papiere bieten feinste Tonwertübergänge hinter Glas; Alu-Dibond bleibt reflexionsarm bei starkem Seitenlicht; Acrylglas verstärkt Kontrast und Tiefenwirkung."
+      },
+      {
+        "title": "Farbverbindlicher Druck nach Soft-Proof",
+        "text": "Statt anonymer Online-Massenproduktion wird jede Datei individuell für das gewählte Format geschärft und über das ICC-Profil des Zielmaterials geprüft."
+      },
+      {
+        "title": "Unkomplizierte Anfrage mit Wunschmotiv und Wandmaß",
+        "text": "Nenne mir einfach das Motiv aus dem Portfolio, das ungefähre Wunschformat und das bevorzugte Material – du erhältst ein klares Angebot inklusive sicherem Versand."
+      }
+    ],
+    "links": [
+      {
+        "label": "Fine-Art-Prints Landschaft",
+        "href": "/fine-art-prints-landschaft.html"
+      },
+      {
+        "label": "Portfolio Landschaft",
+        "href": "/portfolio/portfolio-auswahl-landschaft"
+      },
+      {
+        "label": "Serie Dresden & Sächsische Schweiz",
+        "href": "/portfolio/dresden-saechsische-schweiz"
+      },
+      {
+        "label": "Fine-Art-Druck im Journal",
+        "href": "/blog-fine-art-druck.html"
+      }
+    ]
+  }
 }

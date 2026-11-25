@@ -8,12 +8,19 @@
     "Bildserie",
     "Verkauf"
   ],
-  "publishedAt": "2027-02-05T08:00:00.000Z",
+  "publishedAt": "2027-04-16T07:00:00.000Z",
   "excerpt": "Dunkler Lack schluckt schnell die Karosserieform. So setzt du Reflexe gezielt, prüfst die Belichtung und trennst ehrliche Inseratsbilder von freien Portfolio-Motiven.",
   "coverImage": "/assets/portfolio/automobil-bmw-klassiker.webp",
   "coverAlt": "Dunkler BMW-Klassiker in einem Ausstellungsraum mit hellen Reflexlinien auf der Motorhaube",
   "readingTime": 7,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "schwarzes Auto fotografieren: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Dunkle Karosserieflächen und Schatten können zusammenfallen, wenn kaum helle Reflexe auf dem Lack liegen\nDer Lack zeigt vor: Ein schwarzes Auto wird auf Fotos nicht automatisch als klare schwarze Form sichtbar\nKamera und Fahrzeugwinkel verändern: Auf einer glänzenden Fläche hängt das sichtbare Spiegelbild davon ab, aus welcher Richtung Licht einfällt und wo die Kamera steht\nEine Bildfolge macht dunklen: Für ein Portfolio reichen oft wenige Aufnahmen mit unterschiedlichen Aufgaben: ein klares Gesamtmotiv, eine Ansicht, die die Seitenlinie erklärt, und ein"
+    },
     {
       "_template": "textBlock",
       "headline": "Der Lack zeigt vor allem, was sich in ihm spiegelt",
@@ -67,6 +74,12 @@
       "_template": "textBlock",
       "headline": "Eine Bildfolge macht dunklen Lack aus mehreren Blickwinkeln lesbar",
       "body": "Für ein Portfolio reichen oft wenige Aufnahmen mit unterschiedlichen Aufgaben: ein klares Gesamtmotiv, eine Ansicht, die die Seitenlinie erklärt, und ein Detail, in dem sich Material oder eine bestimmte Lichtkante zeigt. Wiederhole nicht dieselbe Reflexform aus leicht veränderter Perspektive, wenn das Bild keine neue Information bringt. Eine dunkle Fläche darf im Bild stehen bleiben, solange die Fahrzeugform noch lesbar ist.\n\nBei Verkaufsbildern ist die Reihenfolge sachlicher: Beginne mit einer vollständigen Außenansicht, zeige danach die übrigen Seiten und ergänze Innenraum, Ausstattung sowie vorhandene Gebrauchsspuren. Wenn ein schwarzer Lack auf dem Display fast ohne Konturen erscheint, ändere zuerst Standpunkt oder reflektierte Fläche. Mehr Helligkeit in der Nachbearbeitung ist nicht immer die passende Korrektur. Eine kleine Veränderung vor der Aufnahme erhält die natürliche Abstufung im Lack meist besser."
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
     },
     {
       "_template": "faqBlock",
@@ -159,11 +172,25 @@
   },
   "status": "scheduled",
   "createdAt": "2026-11-03T16:50:16Z",
-  "updatedAt": "2027-02-05T08:00:00.000Z",
+  "updatedAt": "2027-04-16T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
       "href": "/automobil-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fahrzeugserien konsistent planen",
+      "href": "/blog-fahrzeugserie-konsistent-planen.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

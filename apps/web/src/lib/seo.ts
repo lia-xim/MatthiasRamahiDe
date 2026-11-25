@@ -1,9 +1,10 @@
-import { imageUrl, toAbsoluteSiteUrl, type PayloadDoc, type SiteSettings } from './payload'
+import { imageDimensions, imageUrl, toAbsoluteSiteUrl, type PayloadDoc, type SiteSettings } from './payload'
 import { reviews as customerReviews, reviewsAggregate } from './reviewsContent'
 
 export type JsonLd = Record<string, unknown>
 
 const defaultBusinessImage = '/assets/optimized/assets-portfolio-20250605-dsc03756-1920.webp'
+const defaultPersonImage = '/assets/optimized/matthias-ramahi-portrait-1440.webp'
 
 const compactJsonLd = (value: unknown): unknown => {
   if (Array.isArray(value)) {
@@ -49,10 +50,28 @@ export const personJsonLd = (settings?: SiteSettings | null): JsonLd => jsonLd({
   '@id': `${toAbsoluteSiteUrl('/')}#person`,
   name: settings?.ownerName || 'Matthias Ramahi',
   url: toAbsoluteSiteUrl('/'),
+  image: toAbsoluteSiteUrl(defaultPersonImage),
   email: settings?.email,
   telephone: settings?.phone,
   sameAs: sameAsUrls(settings),
   jobTitle: 'Fotograf',
+  worksFor: {
+    '@id': `${toAbsoluteSiteUrl('/')}#local-business`,
+  },
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Erkrath',
+    addressRegion: 'NRW',
+    addressCountry: 'DE',
+  },
+  knowsAbout: [
+    'Automobilfotografie',
+    'Sportwagenfotografie',
+    'Oldtimerfotografie',
+    'Motorradfotografie',
+    'Portraitfotografie',
+    'Fine-Art-Landschaftsfotografie',
+  ],
 })
 
 export const webSiteJsonLd = (settings?: SiteSettings | null): JsonLd => jsonLd({
@@ -97,13 +116,27 @@ export const localBusinessJsonLd = (settings?: SiteSettings | null): JsonLd => j
   image: imageUrl(settings?.defaultOgImage, 'hero') || toAbsoluteSiteUrl(defaultBusinessImage),
   address: {
     '@type': 'PostalAddress',
-    addressLocality: 'Düsseldorf',
+    streetAddress: 'Kempener Straße 44',
+    postalCode: '40699',
+    addressLocality: 'Erkrath',
     addressRegion: 'NRW',
     addressCountry: 'DE',
   },
-  areaServed: ['Düsseldorf', 'NRW', 'Deutschland'],
+  areaServed: ['Düsseldorf', 'Erkrath', 'Rheinland', 'Ruhrgebiet', 'NRW', 'Deutschland'],
   founder: {
     '@id': `${toAbsoluteSiteUrl('/')}#person`,
+  },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Fotografie & Produktion',
+    itemListElement: [
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Automobilfotografie', url: toAbsoluteSiteUrl('/automobil-fotografie.html') } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Sportwagenfotografie', url: toAbsoluteSiteUrl('/sportwagen-fotografie.html') } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Oldtimerfotografie', url: toAbsoluteSiteUrl('/oldtimer-fotografie.html') } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Motorradfotografie', url: toAbsoluteSiteUrl('/motorrad-fotografie.html') } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Portraitfotografie', url: toAbsoluteSiteUrl('/portraitfotografie.html') } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Landschaftsfotografie & Fine-Art-Prints', url: toAbsoluteSiteUrl('/landschaftsfotografie.html') } },
+    ],
   },
   priceRange: '$$',
   sameAs: sameAsUrls(settings),
@@ -143,21 +176,46 @@ export const reviewsJsonLd = (settings?: SiteSettings | null): JsonLd | null => 
   })
 }
 
+const clampedIsoDateTime = (value?: string | null): string | undefined => {
+  const parsed = isoDateTime(value)
+  if (!parsed) return undefined
+  const now = new Date()
+  return Date.parse(parsed) > now.getTime() ? now.toISOString() : parsed
+}
+
+const articleImageObject = (media?: PayloadDoc['coverImage']) => {
+  const url = imageUrl(media, 'hero')
+  if (!url) return undefined
+  const dims = imageDimensions(media, 'hero')
+  return {
+    '@type': 'ImageObject',
+    url: toAbsoluteSiteUrl(url),
+    width: dims.width,
+    height: dims.height,
+  }
+}
+
 export const articleJsonLd = (doc: PayloadDoc, url: string): JsonLd => jsonLd({
   '@context': 'https://schema.org',
   '@type': 'Article',
   headline: doc.seo?.title || doc.title,
   description: doc.seo?.description || doc.excerpt,
-  image: imageUrl(doc.seo?.ogImage || doc.coverImage, 'hero'),
-  datePublished: isoDateTime(doc.publishedAt || doc.createdAt),
-  dateModified: isoDateTime(doc.updatedAt || doc.publishedAt || doc.createdAt),
+  inLanguage: 'de-DE',
+  image: articleImageObject(doc.seo?.ogImage || doc.coverImage),
+  datePublished: clampedIsoDateTime(doc.publishedAt || doc.createdAt),
+  dateModified: clampedIsoDateTime(doc.updatedAt || doc.publishedAt || doc.createdAt),
+  articleSection: typeof doc.category === 'string' ? doc.category : undefined,
+  keywords: Array.isArray(doc.tags) && doc.tags.length > 0 ? doc.tags : undefined,
   author: {
     '@id': `${toAbsoluteSiteUrl('/')}#person`,
   },
   publisher: {
     '@id': `${toAbsoluteSiteUrl('/')}#local-business`,
   },
-  mainEntityOfPage: toAbsoluteSiteUrl(url),
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': toAbsoluteSiteUrl(url),
+  },
 })
 
 /** Einstiegspreis eines Shootings — Quelle der Wahrheit für Text und Markup. */
@@ -173,31 +231,35 @@ const statesEntryPrice = (doc: PayloadDoc): boolean =>
     (list) => list?.some((entry) => entry.answer?.includes(`beginnt bei ${SHOOTING_ENTRY_PRICE_EUR} €`)) ?? false,
   )
 
-export const serviceJsonLd = (doc: PayloadDoc, url: string): JsonLd => jsonLd({
-  '@context': 'https://schema.org',
-  '@type': 'Service',
-  name: doc.title,
-  description: doc.seo?.description || doc.intro,
-  provider: {
-    '@type': 'LocalBusiness',
-    '@id': `${toAbsoluteSiteUrl('/')}#local-business`,
-    name: 'Matthias Ramahi Fotografie',
-  },
-  areaServed: doc.city || 'Düsseldorf / NRW',
-  offers: statesEntryPrice(doc)
-    ? {
-      '@type': 'Offer',
-      priceCurrency: 'EUR',
-      priceSpecification: {
-        '@type': 'PriceSpecification',
-        minPrice: SHOOTING_ENTRY_PRICE_EUR,
+export const serviceJsonLd = (doc: PayloadDoc, url: string): JsonLd => {
+  const img = imageUrl(doc.seo?.ogImage || doc.heroImage || doc.coverImage, 'hero')
+  return jsonLd({
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': `${toAbsoluteSiteUrl(url)}#service`,
+    name: doc.title,
+    serviceType: doc.service || doc.serviceType || doc.targetKeyword || doc.title,
+    description: doc.seo?.description || doc.intro,
+    image: img ? toAbsoluteSiteUrl(img) : undefined,
+    provider: {
+      '@id': `${toAbsoluteSiteUrl('/')}#local-business`,
+    },
+    areaServed: doc.city || 'Düsseldorf / NRW',
+    offers: statesEntryPrice(doc)
+      ? {
+        '@type': 'Offer',
         priceCurrency: 'EUR',
-      },
-      url: toAbsoluteSiteUrl(url),
-    }
-    : undefined,
-  url: toAbsoluteSiteUrl(url),
-})
+        priceSpecification: {
+          '@type': 'PriceSpecification',
+          minPrice: SHOOTING_ENTRY_PRICE_EUR,
+          priceCurrency: 'EUR',
+        },
+        url: toAbsoluteSiteUrl(url),
+      }
+      : undefined,
+    url: toAbsoluteSiteUrl(url),
+  })
+}
 
 export const faqJsonLd = (items?: Array<{ question?: string; answer?: string }>): JsonLd | null => {
   const questions = (items ?? []).filter((item) => item.question && item.answer)
@@ -236,10 +298,18 @@ export const imageGalleryJsonLd = (
     '@id': `${toAbsoluteSiteUrl(options.url)}#gallery`,
     name: options.name,
     url: toAbsoluteSiteUrl(options.url),
+    author: {
+      '@id': `${toAbsoluteSiteUrl('/')}#person`,
+    },
     associatedMedia: images.map((item) => ({
       '@type': 'ImageObject',
       contentUrl: item.url,
       caption: item.caption,
+      creator: {
+        '@id': `${toAbsoluteSiteUrl('/')}#person`,
+      },
+      creditText: 'Matthias Ramahi',
+      copyrightNotice: '© Matthias Ramahi',
     })),
   })
 }

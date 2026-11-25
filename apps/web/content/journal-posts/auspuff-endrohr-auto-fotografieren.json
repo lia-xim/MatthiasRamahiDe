@@ -8,12 +8,19 @@
     "Fahrzeugdetails",
     "Fahrzeugverkauf"
   ],
-  "publishedAt": "2027-06-27T07:00:00.000Z",
+  "publishedAt": "2027-12-17T08:00:00.000Z",
   "status": "scheduled",
   "excerpt": "Auspuff und Endrohre wirken am besten, wenn Form, Material und Heckschürze zusammen lesbar bleiben. So planst du Kontext-, Heck- und Detailaufnahmen ohne Reflexchaos oder übertriebene Zustandsbehauptungen.",
   "coverImage": "/uploads/payload/_DSC2316-2.webp",
   "readingTime": 8,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Auspuff fotografieren: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Nutze möglichst diffuses Licht und verschiebe Lichtquelle oder Kamerastandpunkt, bis die Reflexkante ruhig wirkt\nDer Auspuff gehört zum: Endrohre lassen sich selten überzeugend fotografieren, wenn sie nur als glänzender Kreis am unteren Bildrand auftauchen\nChrom und Edelstahl spiegeln: Polierte Endrohre sind kleine Spiegel\nDie Endrohr-Aufnahme als Teil: Ein gutes Detailbild beantwortet eine konkrete Frage: Wie ist das Rohr gestaltet, wo sitzt es und wie passt es zur Hecklinie?"
+    },
     {
       "headline": "Der Auspuff gehört zum Heck – und braucht trotzdem ein eigenes Bild",
       "body": "Endrohre lassen sich selten überzeugend fotografieren, wenn sie nur als glänzender Kreis am unteren Bildrand auftauchen. Ihre Form wirkt zusammen mit Heckschürze, Diffusor, Stoßfänger und Fahrzeuglinie. Für eine Bildserie brauchst du deshalb beides: eine Ansicht, in der das Rohr als Teil des Autos erkennbar ist, und eine nähere Aufnahme, die Material und sichtbare Details zeigt.\n\nDer passende Bildausschnitt hängt vom Zweck ab. Bei einer redaktionellen oder privaten Serie darf das Endrohr die Form des Hecks betonen. In einem Verkaufsinserat zählt zuerst eine ruhige, nachvollziehbare Gesamtansicht; das Detail ergänzt sie. Ein Foto kann zeigen, was außen sichtbar ist. Es belegt weder die innere Abgasanlage noch Originalität, technische Funktion oder Zulässigkeit eines Umbaus.",
@@ -83,6 +90,16 @@
         {
           "label": "Autoteile und Zubehör fotografieren",
           "href": "/blog-autoteile-zubehoer-produktfotografie.html"
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Motive, Bildformate und Übergabe vor dem Shooting sauber strukturieren."
+        },
+        {
+          "label": "Fahrzeugserien konsistent planen",
+          "href": "/blog-fahrzeugserie-konsistent-planen.html",
+          "description": "Wie Perspektiven, Licht und Bearbeitung über mehrere Modelle zusammenhalten."
         }
       ]
     },
@@ -118,6 +135,11 @@
           "label": "Deutscher Feuerwehrverband: Gefahr durch Kohlenmonoxid",
           "href": "https://www.feuerwehrverband.de/feuerwehr-warnt-vor-gefahr-durch-kohlenmonoxid-2/",
           "description": "Hinweis, dass Verbrennungsmotoren Kohlenmonoxid freisetzen und nicht in geschlossenen Garagen betrieben werden sollen."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ],
       "_template": "linkList"
@@ -169,7 +191,7 @@
     "noIndex": false
   },
   "createdAt": "2026-11-04T15:37:25Z",
-  "updatedAt": "2027-06-27T07:00:00.000Z",
+  "updatedAt": "2027-12-17T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
@@ -182,6 +204,13 @@
       "label": "Autoteile und Zubehör fotografieren",
       "href": "/blog-autoteile-zubehoer-produktfotografie.html",
       "seoPurpose": "supporting-article",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
     }

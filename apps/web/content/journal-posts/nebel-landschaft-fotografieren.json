@@ -8,7 +8,7 @@
     "Dunst",
     "Bildgestaltung"
   ],
-  "publishedAt": "2027-08-18T07:00:00.000Z",
+  "publishedAt": "2028-03-14T08:00:00.000Z",
   "excerpt": "Nebel und Dunst verändern Kontrast und Sichtweite. So findest du einen klaren Bildanker, ordnest Landschaftsebenen und kontrollierst Belichtung und Fokus.",
   "coverImage": "/uploads/payload/Wettberwerb_Foto5_Wunder_der_Natur2-1.webp",
   "coverAlt": "Ein einzelner Baum auf felsiger Landzunge am See vor gedämpft sichtbaren Gebirgsketten.",
@@ -18,6 +18,13 @@
       "_template": "textBlock",
       "headline": "",
       "body": "Nebel nimmt einer Landschaft Kontrast und Sichtweite. Dadurch kann ein einzelner Baum, ein dunkler Fels oder ein schmaler Weg stärker ins Auge fallen als bei klarer Luft. Zugleich verschwinden manche Formen so weit, dass das Bild schnell leer oder grau wirkt. Ein guter Ausgangspunkt ist deshalb nicht die Frage, wie viel Nebel zu sehen ist, sondern welche Form dem Bild Halt gibt.\n\nFür die Fotografie ist es hilfreich, zwischen feinem Dunst, einzelnen Nebelschleiern und dichtem Nebel zu unterscheiden. Sie verändern den Bildraum auf unterschiedliche Weise: Dunst dämpft entfernte Kontraste, ein Schleier kann einzelne Flächen trennen, dichter Nebel verkürzt die sichtbare Landschaft deutlich. Dieser Beitrag führt durch Motivwahl, Perspektive, Belichtung und Fokus. Die Bilder sind Portfolio-Beispiele; das Cover zeigt eine gedämpfte Fernsicht am See, keinen dichten Nebel. Für die Landschaftsdisziplin gibt es außerdem den Überblick zur [Landschaftsfotografie](/landschaftsfotografie.html)."
+    },
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Nebel in der Landschaft fotografieren: Die wichtigsten Punkte im Übe",
+      "body": "Kernaussage: Der frühe Morgen ist häufig interessant, weil Bodennebel in der Nacht entstehen kann und das erste Licht seine Formen verändert\nErst die Luft lesen,: Beobachte, wie die Luft die Landschaft staffelt\nWeitwinkel und Teleobjektiv erzählen: Mit einem Weitwinkel beziehst du nahe Strukturen stärker ein: eine Böschung, einen Stein, einen Weg oder einen Ast\nVor Ort arbeiten, ohne: Warte nach der ersten Aufnahme einen Moment"
     },
     {
       "_template": "imageSequence",
@@ -64,6 +71,12 @@
       "body": "Warte nach der ersten Aufnahme einen Moment. Nebel verändert Helligkeit, Abstand und Form; wenige Minuten können aus einer klaren Baumreihe eine fast geschlossene Fläche machen. Fotografiere nach Möglichkeit mehrere Zustände, statt den ersten Ausschnitt für endgültig zu halten. Notiere bei einer geplanten Serie auch die Richtung, aus der das Licht kommt, und welche Konturen in der Vorschau noch erkennbar bleiben.\n\nFeuchtigkeit kann sich auf Filter und Frontlinse legen. Kontrolliere die Glasflächen zwischen den Aufnahmen und schütze Kamera sowie Objektiv nach den Hinweisen des Herstellers vor Nässe. Bewahre ein trockenes Tuch zugänglich auf und wechsle Objektive möglichst nicht in stark feuchter Umgebung. Das hilft, einen Schleier auf der Linse nicht mit dem atmosphärischen Dunst im Motiv zu verwechseln.\n\nIn der Bearbeitung kannst du den Kontrast einer einzelnen Ebene leicht anheben, wenn ihre Form im Ausgangsbild untergeht. Gehe vorsichtig mit globaler Klarheit und Dehaze-Reglern um: Werden alle Fernbereiche gleich stark kontrastiert, verliert die Landschaft ihre Abstufung. Halte helle Nebelflächen hell, ohne sie zu einer strukturfreien weißen Fläche zu machen. Für einen natürlichen Ablauf bei Weißabgleich und Tonwerten hilft der [Beitrag zur Bearbeitung von Landschaftsfotos](/blog-landschaftsfotos-bearbeiten.html). Wer eine Szene mit ruhigem Wasser plant, findet ergänzende Hinweise bei den [Wasserspiegelungen in der Landschaftsfotografie](/blog-wasserspiegelungen-landschaftsfotografie.html)."
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Landschaftsmotive als Fine-Art-Print anfragen",
+      "text": "Ausgewählte Landschaftsaufnahmen erscheinen als hochwertige Fine-Art-Prints auf Archivpapier. Schreib mir Motivwunsch und gewünschtes Wandformat.",
+      "buttonLabel": "Fine-Art-Print anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Häufige Fragen zum Fotografieren von Nebel",
       "items": [
@@ -103,11 +116,16 @@
           "label": "Lüneburger Heide: Nebel in der Landschaft",
           "href": "https://www.lueneburger-heide.de/service/artikel/032874/nebel-lueneburger-heide.html",
           "description": "Qualitative Orientierung zu günstigen Bedingungen und Bildideen für herbstlichen Bodennebel; keine örtliche Fotogarantie."
-      },
-      {
-        "label": "Sony Support: Die Kamera stellt nicht automatisch scharf",
-        "href": "https://www.sony.com/electronics/support/cameras-camcorders/articles/00187908",
-        "description": "Herstellerbeispiel: kontrastarme Flächen können die Autofokussierung erschweren; mögliche Abhilfen hängen vom Kameramodell ab."
+        },
+        {
+          "label": "Sony Support: Die Kamera stellt nicht automatisch scharf",
+          "href": "https://www.sony.com/electronics/support/cameras-camcorders/articles/00187908",
+          "description": "Herstellerbeispiel: kontrastarme Flächen können die Autofokussierung erschweren; mögliche Abhilfen hängen vom Kameramodell ab."
+        },
+        {
+          "label": "Landschaftsfotografie & Fine-Art-Prints",
+          "href": "/landschaftsfotografie.html",
+          "description": "Kuratierte Landschaftsmotive als Wandbilder und Sammler-Editionen."
         }
       ]
     }
@@ -137,7 +155,7 @@
   },
   "status": "scheduled",
   "createdAt": "2026-11-05T14:52:28.000Z",
-  "updatedAt": "2027-08-18T07:00:00.000Z",
+  "updatedAt": "2028-03-14T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Landschaftsfotografie",

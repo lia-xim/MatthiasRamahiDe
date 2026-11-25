@@ -51,6 +51,23 @@ export function versionStaticAssetUrl(url: string) {
   return isLocalStaticAsset(url) ? addUrlVersion(url, staticAssetVersion) : url
 }
 
+export function versionStaticAssetSrcset(srcset?: string) {
+  if (!srcset) return srcset
+  return srcset
+    .split(',')
+    .map((candidate) => {
+      const trimmed = candidate.trim()
+      if (!trimmed) return ''
+      const spaceIdx = trimmed.search(/\s/)
+      if (spaceIdx === -1) return versionStaticAssetUrl(trimmed)
+      const urlPart = trimmed.slice(0, spaceIdx)
+      const descriptorPart = trimmed.slice(spaceIdx)
+      return `${versionStaticAssetUrl(urlPart)}${descriptorPart}`
+    })
+    .filter(Boolean)
+    .join(', ')
+}
+
 export function mediaCacheVersion(media: {
   filename?: string
   filesize?: number

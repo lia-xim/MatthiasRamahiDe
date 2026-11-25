@@ -8,13 +8,20 @@
     "Tageslicht",
     "Bildgestaltung"
   ],
-  "publishedAt": "2027-08-14T07:00:00.000Z",
+  "publishedAt": "2028-03-07T08:00:00.000Z",
   "status": "scheduled",
   "excerpt": "Tank, Reifen und Motor verschwinden bei schwarzen Motorrädern schnell in einer Fläche. So helfen Hintergrund, Tageslicht, Kamerawinkel und eine bewusste Belichtung, draußen Konturen und Details sichtbar zu halten.",
-  "coverImage": "/uploads/payload/_DSC6968.webp",
-  "coverAlt": "Schwarze Kawasaki vor heller Abenddämmerung mit warmen Reflexen an Cockpit und Verkleidung",
+  "coverImage": "/uploads/payload/20250209-DSC00694.webp",
+  "coverAlt": "Ninja · Seitenprofil",
   "readingTime": 8,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "schwarzes Motorrad fotografieren: Die wichtigsten Punkte im Überblic",
+      "body": "Kernaussage: Es gibt keine feste beste Uhrzeit\nWarum schwarze Motorräder draußen: Ein schwarzes Motorrad draußen zu fotografieren scheitert selten an der Kamera\nWinkel und Bauteile getrennt: Gehe bei einem stehenden Bike langsam um das Motorrad, bevor du Einstellungen veränderst\nEin kurzer Ablauf für: Lege fest, ob du eine Silhouette, eine Gesamtansicht oder sichtbare Details wie Tanklinie, Reifen und Motor brauchst"
+    },
     {
       "_template": "textBlock",
       "headline": "Warum schwarze Motorräder draußen schnell an Form verlieren",
@@ -143,7 +150,7 @@
     }
   ],
   "createdAt": "2026-11-05T10:45:44Z",
-  "updatedAt": "2027-08-14T07:00:00Z",
+  "updatedAt": "2028-03-07T08:00:00.000Z",
   "seo": {
     "title": "Schwarzes Motorrad draußen fotografieren: Konturen zeigen",
     "description": "So bleiben Konturen und Details eines schwarzen Motorrads draußen sichtbar: Hintergrund, Tageslicht, Kamerawinkel und Belichtung praktisch beurteilen.",
@@ -165,7 +172,7 @@
     ],
     "canonicalUrl": "https://matthiasramahi.de/blog-schwarzes-motorrad-draussen-fotografieren.html",
     "legacyUrl": "blog-schwarzes-motorrad-draussen-fotografieren.html",
-    "ogImage": "/uploads/payload/_DSC6968.webp",
+    "ogImage": "/uploads/payload/20250209-DSC00694.webp",
     "noIndex": false
   },
   "relatedPages": [
@@ -180,6 +187,13 @@
       "label": "Motorradfotograf finden",
       "href": "/blog-motorradfotograf-finden.html",
       "seoPurpose": "related-editorial",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Motorrad-Fotoshooting-Checkliste",
+      "href": "/blog-motorrad-fotoshooting-checkliste.html",
+      "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
     }

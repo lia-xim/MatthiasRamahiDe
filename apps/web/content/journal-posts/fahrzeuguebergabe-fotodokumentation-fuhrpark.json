@@ -9,11 +9,18 @@
     "Zustandsdokumentation",
     "Fahrzeugübergabe"
   ],
-  "publishedAt": "2027-08-20T07:00:00.000Z",
+  "publishedAt": "2028-03-17T08:00:00.000Z",
   "excerpt": "Für Fahrzeugübergaben im Fuhrpark hilft eine feste Bildfolge: Fahrzeug und Zeitpunkt zuordnen, dieselben Ansichten aufnehmen und Fotos zusammen mit dem Übergabeprotokoll ablegen.",
-  "coverImage": "/uploads/payload/assets-portfolio-dsc3908-1921.webp",
+  "coverImage": "/assets/portfolio/automobil-bmw-m3-showcar.webp",
   "readingTime": 9,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Fahrzeugübergabe fotografisch dokumentieren: Die wichtigsten Punkte ",
+      "body": "Kernaussage: Das hängt vom Fahrzeug, vom Protokoll und vom Zweck der Aufnahme ab\nEine Bildfolge hilft nur,: Bei einer Übergabe oder Rückgabe im Fuhrpark sollen Fotos den Zustand eines konkreten Fahrzeugs zu einem bestimmten Vorgang festhalten\nÜbernahme und Rückgabe mit: Wenn ein Fahrzeug zu Beginn und am Ende eines Zeitraums fotografiert wird, hilft eine möglichst gleiche Bildfolge beim Vergleichen\nKurzer Ablauf zum Übernehmen: Zuordnen: Fahrzeug-ID, Vorgangsnummer, Übernahme oder Rückgabe und Termin im Protokoll festhalten; Geräteuhr prüfen"
+    },
     {
       "headline": "Eine Bildfolge hilft nur, wenn sie zum Übergabeprozess gehört",
       "body": "Bei einer Übergabe oder Rückgabe im Fuhrpark sollen Fotos den Zustand eines konkreten Fahrzeugs zu einem bestimmten Vorgang festhalten. Damit das später nachvollziehbar bleibt, müssen die Bilder dem Fahrzeug und dem jeweiligen Zeitpunkt zugeordnet sein. Eine lose Sammlung in der Handygalerie erfüllt diese Aufgabe nur teilweise. Eine kurze, wiederholbare Bildfolge ist leichter zu prüfen und lässt sich mit dem vorhandenen Übergabeprotokoll verbinden.\n\nLege deshalb zuerst fest, wofür das Bildset gebraucht wird: für die interne Übernahme, eine Rückgabe an die Leasinggesellschaft, einen Wechsel zwischen Nutzern oder die Vorbereitung für das Remarketing. Diese Situationen brauchen nicht dieselben Details. Auch die Vorgaben des Leasinggebers, Autohauses oder internen Systems können voneinander abweichen. Die fotografische Checkliste ergänzt den vereinbarten Prozess; sie ersetzt weder ein Übergabeprotokoll noch eine fachliche Begutachtung.",
@@ -85,6 +92,12 @@
       "_template": "textBlock"
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "headline": "Häufige Fragen zur fotografischen Fahrzeugübergabe",
       "items": [
         {
@@ -123,6 +136,11 @@
           "label": "Avrios: Übergabeprotokoll für Dienstwagen und Fuhrpark",
           "href": "https://www.avrios.com/de/fuhrparkwissen/uebergabeprotokoll-auto",
           "description": "Hintergrund zu Informationen, die bei der Fahrzeugübergabe in einem Fuhrparkprotokoll zusammenlaufen."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ],
       "_template": "linkList"
@@ -135,11 +153,11 @@
     "searchIntent": "Informationssuche von Fuhrpark- und Leasingverantwortlichen: Sie möchten Fahrzeugzustände bei Übernahme und Rückgabe mit einer wiederholbaren Foto- und Ablageroutine dokumentieren.",
     "canonicalUrl": "https://matthiasramahi.de/blog-fahrzeuguebergabe-fotodokumentation-fuhrpark.html",
     "legacyUrl": "blog-fahrzeuguebergabe-fotodokumentation-fuhrpark.html",
-    "ogImage": "/uploads/payload/assets-portfolio-dsc3908-1921.webp",
+    "ogImage": "/assets/portfolio/automobil-bmw-m3-showcar.webp",
     "noIndex": false
   },
   "createdAt": "2026-11-03T00:00:00Z",
-  "updatedAt": "2026-12-07T08:00:00.000Z",
+  "updatedAt": "2028-03-17T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Autohaus- und Fuhrparkfotografie",
@@ -154,8 +172,15 @@
       "seoPurpose": "topic-parent",
       "rel": "follow",
       "openInNewTab": false
+    },
+    {
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
     }
   ],
-  "coverAlt": "Sportwagenprofil als ruhige Fahrzeugansicht für eine wiederholbare Fotodokumentation",
+  "coverAlt": "Fahrzeugfront in schräger Gesamtansicht auf ebener Ausstellungsfläche",
   "status": "scheduled"
 }

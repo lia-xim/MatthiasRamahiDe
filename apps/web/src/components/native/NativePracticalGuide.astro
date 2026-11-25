@@ -37,17 +37,47 @@ const paragraphsOf = (text: string) => text.split(/\n\s*\n/).map((paragraph) => 
     </div>
     <ol class="mr-guide__steps">
       {items.map((item, index) => (
-        <li>
+        <li class={index >= 2 ? 'mr-guide__item is-collapsible' : 'mr-guide__item'}>
           <span>{String(index + 1).padStart(2, '0')}</span>
           <div>
-            <h3>{item.title}</h3>
-            {paragraphsOf(item.text).map((paragraph) => <p>{paragraph}</p>)}
+            {index >= 2 ? (
+              <>
+                <h3 class="mr-guide__step-heading">
+                  <button type="button" class="mr-guide__toggle" aria-expanded="false">
+                    <span>{item.title}</span>
+                    <span class="mr-guide__plus" aria-hidden="true"></span>
+                  </button>
+                </h3>
+                <div class="mr-guide__body">
+                  {paragraphsOf(item.text).map((paragraph) => <p>{paragraph}</p>)}
+                </div>
+              </>
+            ) : (
+              <>
+                <h3>{item.title}</h3>
+                {paragraphsOf(item.text).map((paragraph) => <p>{paragraph}</p>)}
+              </>
+            )}
           </div>
         </li>
       ))}
     </ol>
   </div>
 </section>
+
+<script is:inline>
+  if (!window.__mrGuideAccordionBound) {
+    window.__mrGuideAccordionBound = true;
+    document.addEventListener('click', function (event) {
+      var target = event.target && event.target.closest ? event.target.closest('.mr-guide__toggle') : null;
+      if (!target || window.innerWidth > 860) return;
+      var item = target.closest('.mr-guide__item');
+      if (!item) return;
+      var isOpen = item.classList.toggle('is-open');
+      target.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  }
+</script>
 
 <style>
   /* Ratgeber-Abschnitt: links Titel + Vertiefungen (sticky), rechts nummerierte
@@ -188,6 +218,27 @@ const paragraphsOf = (text: string) => text.split(/\n\s*\n/).map((paragraph) => 
     max-width: 28ch;
   }
 
+  .mr-guide__toggle {
+    appearance: none;
+    background: none;
+    border: 0;
+    color: inherit;
+    cursor: default;
+    display: block;
+    font: inherit;
+    letter-spacing: inherit;
+    line-height: inherit;
+    margin: 0;
+    padding: 0;
+    pointer-events: none;
+    text-align: left;
+    width: 100%;
+  }
+
+  .mr-guide__plus {
+    display: none;
+  }
+
   .mr-guide__steps p {
     color: var(--mrg-muted);
     font-size: clamp(1rem, 0.95rem + 0.2vw, 1.125rem);
@@ -201,6 +252,10 @@ const paragraphsOf = (text: string) => text.split(/\n\s*\n/).map((paragraph) => 
   }
 
   @media (max-width: 860px) {
+    .mr-guide {
+      padding: clamp(2.75rem, 7vw, 4rem) 0;
+    }
+
     .mr-guide__inner {
       grid-template-columns: 1fr;
     }
@@ -211,6 +266,67 @@ const paragraphsOf = (text: string) => text.split(/\n\s*\n/).map((paragraph) => 
 
     .mr-guide nav {
       max-width: none;
+    }
+
+    .mr-guide__steps li {
+      padding: 1.15rem 0;
+    }
+
+    .mr-guide__steps h3 {
+      max-width: none;
+    }
+
+    .mr-guide__toggle {
+      align-items: center;
+      cursor: pointer;
+      display: flex;
+      gap: 0.9rem;
+      justify-content: space-between;
+      min-height: 44px;
+      pointer-events: auto;
+    }
+
+    .mr-guide__toggle:focus-visible {
+      outline: 2px solid #cf392e;
+      outline-offset: 4px;
+    }
+
+    .mr-guide__plus {
+      display: inline-block;
+      flex: 0 0 auto;
+      height: 14px;
+      position: relative;
+      width: 14px;
+    }
+
+    .mr-guide__plus::before,
+    .mr-guide__plus::after {
+      background: currentColor;
+      content: '';
+      height: 1.5px;
+      left: 0;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      width: 100%;
+    }
+
+    .mr-guide__plus::after {
+      transform: translateY(-50%) rotate(90deg);
+    }
+
+    .mr-guide__item.is-open .mr-guide__plus::after {
+      opacity: 0;
+      transform: translateY(-50%) rotate(0deg);
+    }
+
+    :global(html.js) .mr-guide__item.is-collapsible:not(.is-open) .mr-guide__step-heading {
+      margin-bottom: 0;
+    }
+
+    :global(html.js) .mr-guide__item.is-collapsible:not(.is-open) .mr-guide__body {
+      display: none;
     }
   }
 

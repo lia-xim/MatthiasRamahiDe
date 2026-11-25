@@ -9,15 +9,22 @@
     "Carousel",
     "Fahrzeugfotografie"
   ],
-  "publishedAt": "2027-05-06T07:00:00.000Z",
+  "publishedAt": "2027-09-17T07:00:00.000Z",
   "excerpt": "Wie aus einzelnen Autofotos eine klare Instagram-Bildfolge wird: Titelmotiv, Perspektivwechsel, Ausschnitt und ein sinnvoller Abschluss fürs Carousel.",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+  "coverImage": "/assets/portfolio/automobil-bmw-widebody.webp",
   "readingTime": 7,
   "blocks": [
     {
       "headline": "",
       "body": "Mehrere gute Autofotos ergeben noch nicht automatisch einen guten Instagram-Post. Wenn du sie als Carousel zeigst, braucht die Reihenfolge eine eigene Idee: Das erste Bild soll zum Weiterwischen einladen, die nächsten sollen etwas ergänzen, und am Ende sollte der Beitrag vollständig wirken. Dafür brauchst du weder eine große Bildmenge noch eine bestimmte Dramaturgie für jeden Post. Entscheidend ist, dass jede Aufnahme eine erkennbare Aufgabe hat.\n\nDieser Ratgeber hilft dir, vorhandene Autofotos auszuwählen und zu ordnen – aus einer einzelnen Fahrzeugserie oder einer thematisch verbundenen Portfolioauswahl. Es geht um Motivfolge, Titelbild, Ausschnitt und die Entscheidung, wann ein einzelnes Foto besser passt. Konkrete Plattform-Maße oder Aussagen über Reichweite lassen wir bewusst außen vor: Solche Werte können sich ändern und ersetzen keine sorgfältige Bildauswahl.",
       "_template": "textBlock"
+    },
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Autofotos für Instagram: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: So viele, wie für die Aussage nötig sind\nZuerst die Aussage festlegen: Bevor du Bilder sortierst, formuliere in einem Satz, was jemand nach dem Betrachten verstanden oder erinnert haben soll\nAusschnitt und Orientierung zusammen: Eine Folge wirkt unruhig, wenn sich die Bildfelder ohne erkennbaren Grund stark verändern\nWann ein einzelnes Autofoto: Ein Carousel ist keine Pflicht für jede Fahrzeugaufnahme"
     },
     {
       "headline": "Zuerst die Aussage festlegen",
@@ -84,6 +91,33 @@
       "_template": "textBlock"
     },
     {
+      "_template": "linkList",
+      "headline": "Passende Leistungen & weiterführende Guides",
+      "links": [
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Motive, Bildformate und Übergabe vor dem Shooting sauber strukturieren."
+        },
+        {
+          "label": "Fahrzeugserien konsistent planen",
+          "href": "/blog-fahrzeugserie-konsistent-planen.html",
+          "description": "Wie Perspektiven, Licht und Bearbeitung über mehrere Modelle zusammenhalten."
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "headline": "Häufige Fragen zur Planung von Autofotos für Instagram",
       "items": [
         {
@@ -119,7 +153,7 @@
     "searchIntent": "Informationssuche: Nutzer möchten eine Auswahl eigener Autofotos für einen Instagram-Carousel-Beitrag kuratieren und suchen praktische Hilfe für Titelbild, Reihenfolge, Ausschnitt und Profilwirkung.",
     "canonicalUrl": "https://matthiasramahi.de/blog-autofotos-instagram-karussell-bildfolge.html",
     "legacyUrl": "blog-autofotos-instagram-karussell-bildfolge.html",
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "ogImage": "/assets/portfolio/automobil-bmw-widebody.webp",
     "noIndex": false
   },
   "legacy": {
@@ -130,7 +164,7 @@
   },
   "status": "scheduled",
   "createdAt": "2026-11-03T17:00:00Z",
-  "updatedAt": "2027-05-06T07:00:00Z",
+  "updatedAt": "2027-09-17T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
@@ -138,7 +172,21 @@
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
+    },
+    {
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fahrzeugserien konsistent planen",
+      "href": "/blog-fahrzeugserie-konsistent-planen.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
     }
   ],
-  "coverAlt": "Dunkler SUV auf nasser Fläche vor Industrieanlagen unter einem farbigen Abendhimmel"
+  "coverAlt": "Widebody · Showroom"
 }

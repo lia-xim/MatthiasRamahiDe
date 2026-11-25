@@ -8,11 +8,18 @@
     "Kennzeichen",
     "Automotive"
   ],
-  "publishedAt": "2026-12-23T08:00:00.000Z",
+  "publishedAt": "2027-01-19T08:00:00.000Z",
   "excerpt": "Vor dem Veröffentlichen von Fahrzeugfotos: Prüfe erkennbare Personen, Kennzeichen, Displays, Veranstaltungsregeln und den geplanten Einsatz der Bilder.",
   "coverImage": "/assets/optimized/assets-portfolio-dsc2329-1920.webp",
   "readingTime": 8,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Datenschutz-Kurzcheck vor dem Upload von Fahrzeugfotos",
+      "body": "Zweck & Kanal vorab benennen: Eigene Website, Pressebericht, organischer Social-Post und bezahlte Werbung sauber im Briefing abgrenzen\nPersonen & Einwilligung: Erkennbare Mitarbeiter, Fahrer oder Besucher brauchen in der Regel klare Zustimmung für Aufnahme und vorgesehenen Veröffentlichungskanal\nKennzeichen, Displays & Papierkram: Navigationsadressen, Kundendaten und private Unterlagen schon am Set aus dem Sichtbereich nehmen und hochauflösend vor Export prüfen"
+    },
     {
       "_template": "textBlock",
       "headline": "Auf dem Fahrzeugfoto ist oft mehr zu sehen als das Fahrzeug",
@@ -44,6 +51,21 @@
         {
           "label": "Nutzungsrechten für Fahrzeugfotos",
           "href": "/blog-nutzungsrechte-fahrzeugfotos.html"
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Motive, Bildformate und Übergabe vor dem Shooting sauber strukturieren."
+        },
+        {
+          "label": "Fahrzeugserien konsistent planen",
+          "href": "/blog-fahrzeugserie-konsistent-planen.html",
+          "description": "Wie Perspektiven, Licht und Bearbeitung über mehrere Modelle zusammenhalten."
         }
       ]
     },
@@ -71,6 +93,11 @@
         {
           "label": "§ 23 KunstUrhG",
           "href": "https://www.gesetze-im-internet.de/kunsturhg/__23.html"
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]
     },
@@ -107,7 +134,7 @@
     {
       "_template": "textBlock",
       "headline": "Datenschutz ist ein eigener Teil des Fahrzeugbriefings",
-      "body": "Ein Fahrzeugbriefing sollte nicht nur Modell, Licht und Stil benennen. Es hält ebenso fest, ob Menschen ins Bild sollen, welche Fahrzeugdaten sichtbar sein dürfen, welche Bereiche tabu sind und wer Freigaben für den geplanten Kanal organisiert. Das gibt Fotograf, Kunde und Veranstalter einen klaren Ablauf.\n\nFür weitere Informationen zu Fahrzeugkampagnen und Business-Aufträgen findest du die Seite Automobilfotografie. Wenn es um eine konkrete Veröffentlichung geht, brauchst du eine fallbezogene Einschätzung; dieser Beitrag ist eine praktische Orientierung und keine Rechtsberatung."
+      "body": "Ein Fahrzeugbriefing sollte nicht nur Modell, Licht und Stil benennen. Es hält ebenso fest, ob Menschen ins Bild sollen, welche Fahrzeugdaten sichtbar sein dürfen, welche Bereiche tabu sind und wer Freigaben für den geplanten Kanal organisiert. Das gibt Fotograf, Kunde und Veranstalter einen klaren Ablauf.\n\nFür weitere Informationen zu Fahrzeugkampagnen und Business-Aufträgen findest du die Seite Automobilfotografie. Wenn es um eine konkrete Veröffentlichung geht, brauchst du eine fallbezogene Einschätzung;"
     },
     {
       "_template": "linkList",
@@ -116,8 +143,24 @@
         {
           "label": "Automobilfotografie",
           "href": "/automobil-fotografie.html"
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Motive, Bildformate und Übergabe vor dem Shooting sauber strukturieren."
+        },
+        {
+          "label": "Fahrzeugserien konsistent planen",
+          "href": "/blog-fahrzeugserie-konsistent-planen.html",
+          "description": "Wie Perspektiven, Licht und Bearbeitung über mehrere Modelle zusammenhalten."
         }
       ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Professionelles Auto-Fotoshooting in NRW planen",
+      "text": "Du brauchst stimmige Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto im Raum Düsseldorf, Erkrath und NRW? Shootings starten bei 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
     },
     {
       "_template": "faqBlock",
@@ -153,7 +196,7 @@
     "noIndex": false
   },
   "createdAt": "2026-11-03T15:00:00Z",
-  "updatedAt": "2026-12-23T08:00:00.000Z",
+  "updatedAt": "2027-01-19T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
@@ -166,6 +209,13 @@
       "label": "Nutzungsrechte für Fahrzeugfotos",
       "href": "/blog-nutzungsrechte-fahrzeugfotos.html",
       "seoPurpose": "editorial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
     }

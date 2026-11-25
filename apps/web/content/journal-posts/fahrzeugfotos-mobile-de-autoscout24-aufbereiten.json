@@ -2,12 +2,12 @@
   "title": "Fahrzeugfotos für mobile.de und AutoScout24 vorbereiten",
   "slug": "fahrzeugfotos-mobile-de-autoscout24-aufbereiten",
   "category": "automotive",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
-  "coverAlt": "Schwarzer SUV vor Industrieanlagen im Abendlicht, gespiegelt in einer flachen Wasserfläche; Portfolioaufnahme.",
+  "coverImage": "/assets/portfolio/automobil-bmw-m3-showcar.webp",
+  "coverAlt": "Sauber freigestellter weißer BMW M3 vor ruhigem, neutralem Ausstellungsgrund",
   "status": "scheduled",
-  "publishedAt": "2027-06-13T07:00:00.000Z",
+  "publishedAt": "2027-11-23T08:00:00.000Z",
   "createdAt": "2026-11-04T14:59:42Z",
-      "updatedAt": "2027-06-13T07:00:00.000Z",
+  "updatedAt": "2027-11-23T08:00:00.000Z",
   "excerpt": "Bildmengen und Uploadwege unterscheiden sich je nach Portal und Kontotyp. So bereitest du eine Fahrzeugserie für mobile.de und AutoScout24 vor, prüfst Hauptmotiv und Zuschnitt und ordnest Dateien sauber zu.",
   "readingTime": 8,
   "relatedPages": [
@@ -60,10 +60,17 @@
     "searchIntent": "Informationssuche von Autohäusern, Bestandsteams und Fotografen, die eine vorhandene Fahrzeug-Fotoserie auf mobile.de und AutoScout24 veröffentlichen möchten. Im Mittelpunkt stehen portalabhängige Bildmengen, Hauptbild, Vorschaubeschnitt und die Zuordnung von Dateien über eine mobile.de-Schnittstelle. Die offiziellen Angaben unterscheiden nach Privatkunden-FAQ, Händlerprodukt und API. Relevanzsignal: aktuelle offizielle Hilfen und Händlerdokumentationen behandeln Bildmengen, Upload und Reihenfolge. Suchvolumen und nativer Crawl-Foundry-AI-Fanout wurden nicht gemessen.",
     "canonicalUrl": "https://matthiasramahi.de/blog-fahrzeugfotos-mobile-de-autoscout24-aufbereiten.html",
     "legacyUrl": "blog-fahrzeugfotos-mobile-de-autoscout24-aufbereiten.html",
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "ogImage": "/assets/portfolio/automobil-bmw-m3-showcar.webp",
     "noIndex": false
   },
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Fahrzeugfotos mobile.de AutoScout24: Die wichtigsten Punkte im Überb",
+      "body": "Kernaussage: Für die CSV-Schnittstelle nennt mobile.de eine Bild-ID-Zuordnung bis _15.jpg\nEin Fotosatz, mehrere Uploadwege: Wer Fahrzeugbilder für mehrere Anzeigenportale vorbereitet, braucht nicht noch einmal eine allgemeine Shotlist\nFür Schnittstellen: Beim mobilen.de-CSV-Upload werden die Bilder über eine Bild-ID dem Fahrzeug zugeordnet\nNicht jede Portalgrenze ist: Die Zahl zulässiger Bilder, Dateibenennung, Format und sichtbarer Ausschnitt sind verschiedene Fragen"
+    },
     {
       "_template": "textBlock",
       "headline": "Ein Fotosatz, mehrere Uploadwege",
@@ -156,8 +163,19 @@
           "label": "AutoScout24: API für Händler und Datenpartner",
           "href": "https://www.autoscout24.de/haendlerportal/api/",
           "description": "Einstieg für Händler und Datenpartner; die für das eigene Konto geltenden Bildgrenzen stehen in der zugehörigen API-Dokumentation."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
     },
     {
       "_template": "faqBlock",
@@ -185,5 +203,12 @@
         }
       ]
     }
+  ],
+  "tags": [
+    "Fahrzeugfotos",
+    "mobile.de",
+    "AutoScout24",
+    "Online-Inserat",
+    "Autohaus"
   ]
 }

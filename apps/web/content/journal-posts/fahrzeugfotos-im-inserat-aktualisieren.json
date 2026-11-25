@@ -9,13 +9,20 @@
     "Bildaktualisierung",
     "Fahrzeugbestand"
   ],
-  "publishedAt": "2027-09-23T07:00:00.000Z",
+  "publishedAt": "2028-05-12T07:00:00.000Z",
   "status": "scheduled",
   "excerpt": "Wann reichen vorhandene Bilder noch aus, und wann sollte ein Autohaus Fotos eines bereits veröffentlichten Inserats erneuern? Ein Ablauf für Zustandsänderungen, Nachbesserungen und veraltete Motive.",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
-  "coverAlt": "Schwarzer Brabus-SUV im Abendlicht auf einer nassen Fläche vor Industrieanlagen.",
+  "coverImage": "/uploads/payload/_DSC2316-2.webp",
+  "coverAlt": "Widebody-Coupé von hinten, Messehalle bei Nacht",
   "readingTime": 9,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Fahrzeugfotos im Inserat aktualisieren: Die wichtigsten Punkte im Üb",
+      "body": "Kernaussage: Wenn die vorhandenen Bilder den aktuellen Wagen oder seinen sichtbaren Zustand nicht mehr zutreffend zeigen, eine wichtige Ansicht fehlt oder die Serie einen\nEin Inserat braucht neue: Fahrzeugfotos im Inserat solltest du aktualisieren, sobald sie den aktuellen Wagen, seine Ausstattung oder den sichtbaren Zustand nicht mehr verlässlich\nOriginale nutzen und die: Arbeite nach Möglichkeit mit den gespeicherten Originaldateien, nicht mit einem Screenshot oder einer heruntergeladenen, stark verkleinerten Portalvorschau\nEin Prüfrhythmus hilft, ohne: Autohäuser mit wechselndem Bestand können die Galerieprüfung mit ihrer bestehenden Bestandsrunde verbinden"
+    },
     {
       "_template": "textBlock",
       "headline": "Ein Inserat braucht neue Fotos, wenn sie das Auto nicht mehr richtig zeigen",
@@ -58,6 +65,12 @@
           "cropIntent": "editorial"
         }
       ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
     },
     {
       "_template": "faqBlock",
@@ -119,7 +132,7 @@
     }
   ],
   "createdAt": "2026-11-06T07:15:28Z",
-  "updatedAt": "2027-09-23T07:00:00Z",
+  "updatedAt": "2028-05-12T07:00:00.000Z",
   "seo": {
     "title": "Fahrzeugfotos im Inserat aktualisieren | Matthias Ramahi",
     "description": "Wann und wie Autohäuser Fotos eines laufenden Inserats erneuern: Zustandsänderungen prüfen, passende Ansichten neu aufnehmen und den Upload kontrollieren.",
@@ -134,7 +147,7 @@
     "canonicalUrl": "https://matthiasramahi.de/blog-fahrzeugfotos-im-inserat-aktualisieren.html",
     "legacyUrl": "blog-fahrzeugfotos-im-inserat-aktualisieren.html",
     "noIndex": false,
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp"
+    "ogImage": "/uploads/payload/_DSC2316-2.webp"
   },
   "relatedPages": [
     {

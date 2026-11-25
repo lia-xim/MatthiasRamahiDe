@@ -9,13 +9,20 @@
     "Inserat",
     "Fotografie"
   ],
-  "publishedAt": "2027-07-07T07:00:00.000Z",
+  "publishedAt": "2027-12-31T08:00:00.000Z",
   "status": "scheduled",
   "excerpt": "Oldtimer-Inseratsfotos helfen bei der Vorauswahl. So erkennst du fehlende Ansichten, fragst gezielt nach und vermeidest Schlüsse, die ein Foto nicht belegen kann.",
-  "coverImage": "/uploads/payload/20250418-DSC006552.webp",
+  "coverImage": "/uploads/payload/20250423-DSC021802.webp",
   "coverAlt": "Portfolioaufnahme eines roten klassischen Rennwagens in einer Halle; kein Inseratsfoto und keine Zustandsprüfung.",
   "readingTime": 7,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Oldtimer Inserat Fotos prüfen: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Die Fotos helfen bei der Vorauswahl und bei Rückfragen\nFotos helfen bei der: Beim Oldtimerkauf sind Fotos oft der erste Blick auf ein Fahrzeug\nLücken und wechselnde Bildbedingungen: Achte darauf, ob alle Bilder plausibel dasselbe Fahrzeug zeigen und ob der Verkäufer sie als aktuell bezeichnet\nDie Besichtigung bleibt der: Nutze zusätzliche Bilder, um zu entscheiden, ob sich eine Besichtigung lohnt und welche Punkte du dort prüfen lassen möchtest"
+    },
     {
       "_template": "textBlock",
       "headline": "Fotos helfen bei der Vorauswahl, prüfen aber nicht das Fahrzeug",
@@ -71,6 +78,12 @@
       "body": "Nutze zusätzliche Bilder, um zu entscheiden, ob sich eine Besichtigung lohnt und welche Punkte du dort prüfen lassen möchtest. Bitte um Zustimmung zu einer unabhängigen Untersuchung und bringe bei einem seltenen oder hochpreisigen Fahrzeug eine Person mit Erfahrung für genau diese Baureihe mit. Der ADAC verweist auf die Bedeutung der Vor-Ort-Prüfung und bietet eigene Gebrauchtwagenuntersuchungen auch für ältere Fahrzeuge an.\n\nWenn du selbst einen Klassiker für einen Verkauf oder eine Onlineauktion fotografieren lässt, gilt eine andere Aufgabe: Dann geht es darum, für Interessenten eine vollständige und nachvollziehbare Bildfolge zu produzieren. Dafür findest du im Beitrag zur Oldtimerfotografie für Onlineauktionen eine eigene Checkliste."
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Oldtimer & Klassiker sorgfältig dokumentieren",
+      "text": "Ruhige Bildserien für Sammlung, Auktionsvorbereitung oder privates Wertfahrzeug in NRW ab 250 € inkl. MwSt.",
+      "buttonLabel": "Oldtimer-Shooting anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Häufige Fragen zu Oldtimer-Inseratsfotos",
       "items": [
@@ -124,7 +137,7 @@
     }
   ],
   "createdAt": "2026-11-04T19:13:06Z",
-  "updatedAt": "2027-07-07T07:00:00Z",
+  "updatedAt": "2027-12-31T08:00:00.000Z",
   "seo": {
     "title": "Oldtimer-Inseratsfotos prüfen: Bilder vor dem Kauf",
     "description": "Oldtimerfotos im Inserat richtig einordnen: fehlende Ansichten erkennen, gezielt nach aktuellen Bildern fragen und die Grenzen von Fotos kennen.",
@@ -143,7 +156,7 @@
     ],
     "canonicalUrl": "https://matthiasramahi.de/blog-oldtimer-inseratsfotos-pruefen.html",
     "legacyUrl": "blog-oldtimer-inseratsfotos-pruefen.html",
-    "ogImage": "/uploads/payload/20250418-DSC006552.webp",
+    "ogImage": "/uploads/payload/20250423-DSC021802.webp",
     "noIndex": false
   },
   "relatedPages": [
@@ -158,6 +171,13 @@
       "label": "Oldtimer für die Online-Auktion fotografieren",
       "href": "/blog-oldtimer-fuer-online-auktion-fotografieren.html",
       "seoPurpose": "related-editorial",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Oldtimer als Wertobjekt fotografieren",
+      "href": "/blog-oldtimer-wertobjekt.html",
+      "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
     }

@@ -9,12 +9,19 @@
     "Fahrzeugdetails",
     "Oldtimer-Fotografie"
   ],
-  "publishedAt": "2027-03-09T08:00:00.000Z",
+  "publishedAt": "2027-06-11T07:00:00.000Z",
   "excerpt": "Cockpit, Sitze und Bedienflächen eines Oldtimers als eigene Bildstrecke fotografieren: Perspektive, Licht und sichtbare Gebrauchsspuren sorgfältig aufeinander abstimmen.",
-  "coverImage": "/uploads/payload/20250418-DSC006552.webp",
+  "coverImage": "/uploads/payload/20250423-DSC021802.webp",
   "coverAlt": "Roter Rennwagen in einer dunklen Ausstellung",
   "readingTime": 8,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Oldtimer Innenraum fotografieren: Die wichtigsten Punkte im Überblic",
+      "body": "Kernaussage: Probiere zuerst einen geraden Blick aus dem Fond oder eine Position an der Beifahrertür\nDer Innenraum braucht eine: Ein Oldtimer-Innenraum erzählt über Material und Gestaltung: Lenkrad, Instrumente, Sitze und Verkleidungen wirken anders als die Außenansicht\nGlas, Chrom und Anzeigen: Windschutzscheibe, Instrumentenglas und glänzende Zierleisten spiegeln den Raum, Kleidung und helle Fensterflächen\nEine kleine Bildfolge statt: Für eine kompakte Innenraumserie reichen meist wenige klar unterschiedliche Rollen: eine Übersicht aus dem Fond oder von der Beifahrertür, eine zweite"
+    },
     {
       "_template": "textBlock",
       "headline": "Der Innenraum braucht eine eigene Bildaufgabe",
@@ -75,6 +82,33 @@
       "body": "Für eine kompakte Innenraumserie reichen meist wenige klar unterschiedliche Rollen: eine Übersicht aus dem Fond oder von der Beifahrertür, eine zweite Perspektive auf Cockpit und Instrumente sowie ausgewählte Details von Material oder Bedienelementen. Welche Motive sinnvoll sind, hängt vom Auftrag ab. Wenn die Rücksitze, Ablagen oder ein besonderer Innenraumumbau relevant sind, ergänzt du genau diese Ansicht. Eine starre Liste kann eine Besonderheit übersehen oder unnötige Wiederholungen erzeugen.\n\nPrüfe die Serie danach in der Reihenfolge, in der jemand sie ansehen würde. Führt das erste Bild ins Cockpit? Sind die Details danach eindeutig zuordenbar? Deckt jede weitere Aufnahme einen neuen Bereich ab? Sortiere ähnliche Varianten aus, solange sie keinen anderen Zweck erfüllen. Bei einer Zustandsdokumentation kannst du die Dateinamen anschließend mit einer Fahrzeugkennung und dem Bildbereich versehen; vermutete Modellbezeichnungen oder Baujahre gehören nicht ungeprüft in den Dateinamen.\n\nWenn die Bilder öffentlich erscheinen sollen, müssen Bildauswahl und Freigabe separat geklärt sein. Die Tatsache, dass ein Detail fotografiert wurde, macht daraus noch keine bestätigte Aussage über Geschichte, Ausstattung oder Originalität des Fahrzeugs. Schreibe Bildunterschriften so, dass sie Sichtbares benennen und gelieferte Fahrzeugdaten davon unterscheiden."
     },
     {
+      "_template": "linkList",
+      "headline": "Passende Leistungen & weiterführende Guides",
+      "links": [
+        {
+          "label": "Oldtimerfotografie in Düsseldorf & NRW",
+          "href": "/oldtimer-fotografie.html",
+          "description": "Sorgfältige Dokumentation klassischer Fahrzeuge und Sammlungsstücke."
+        },
+        {
+          "label": "Oldtimer als Wertobjekt fotografieren",
+          "href": "/blog-oldtimer-wertobjekt.html",
+          "description": "Warum ruhiges Licht, Vollständigkeit und Detailtreue den Unterschied machen."
+        },
+        {
+          "label": "Oldtimer-Veranstaltungen fotografieren",
+          "href": "/blog-oldtimer-veranstaltungen.html",
+          "description": "Reportage- und Fahrzeugmotive bei Treffen sauber verbinden."
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Oldtimer & Klassiker sorgfältig dokumentieren",
+      "text": "Ruhige Bildserien für Sammlung, Auktionsvorbereitung oder privates Wertfahrzeug in NRW ab 250 € inkl. MwSt.",
+      "buttonLabel": "Oldtimer-Shooting anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Häufige Fragen zur Innenraumfotografie bei Oldtimern",
       "items": [
@@ -101,14 +135,28 @@
     "canonicalUrl": "https://matthiasramahi.de/blog-oldtimer-innenraum-fotografieren.html",
     "legacyUrl": "blog-oldtimer-innenraum-fotografieren.html",
     "noIndex": false,
-    "ogImage": "/uploads/payload/20250418-DSC006552.webp"
+    "ogImage": "/uploads/payload/20250423-DSC021802.webp"
   },
   "createdAt": "2026-11-03T17:00:00Z",
-  "updatedAt": "2027-03-09T08:00:00.000Z",
+  "updatedAt": "2027-06-11T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Oldtimer-Fotografie",
       "href": "/oldtimer-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Oldtimer als Wertobjekt fotografieren",
+      "href": "/blog-oldtimer-wertobjekt.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Oldtimer-Veranstaltungen fotografieren",
+      "href": "/blog-oldtimer-veranstaltungen.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

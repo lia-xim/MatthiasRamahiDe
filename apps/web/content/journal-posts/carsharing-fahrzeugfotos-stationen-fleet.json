@@ -9,12 +9,19 @@
     "Mobilität",
     "Bildkonzept"
   ],
-  "publishedAt": "2027-01-04T08:00:00.000Z",
+  "publishedAt": "2027-02-23T08:00:00.000Z",
   "status": "scheduled",
   "excerpt": "Für Carsharing braucht es mehr als ein Fahrzeugmotiv: Gute Bildserien helfen, Fahrzeugkategorien zu unterscheiden und den reservierten Stellplatz wiederzufinden.",
   "coverImage": "/assets/optimized/assets-portfolio-dsc2329-1920.webp",
   "readingTime": 8,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Carsharing-Flotten und Stationen klar und wiedererkennbar zeigen",
+      "body": "Fahrzeugklassen + Station: Modelle, Logos und Stationsbeschilderung/Ladesäule gemeinsam so abbilden, dass Ausleihende Fahrzeuggröße und Rückgabeort schnell erfassen\nPraxis vor Stock-Look: Reale Park- und Umsteigesituationen vor Ort schlagen austauschbare Hersteller-Renderings in der regionalen App- und Standortkommunikation\nAktuelle Flottendaten einbinden: Fahrzeugtypen, Kennzeichnungen und Stationsregeln vor Drehbeginn sauber mit der aktuellen Bestandsliste abgleichen"
+    },
     {
       "headline": "Bei Carsharing gehören Fahrzeug und Standort zusammen",
       "body": "Ein Carsharing-Anbieter zeigt nicht nur, wie ein Auto aussieht. Vor einer Buchung müssen Nutzerinnen und Nutzer eine Fahrzeugklasse einschätzen können; am Abholtag müssen sie den richtigen Stellplatz finden. Ein gutes Bildkonzept beantwortet deshalb zwei unterschiedliche Fragen: Welches Fahrzeug oder welche Kategorie passt zum Bedarf, und woran erkenne ich den Ort, an dem die Buchung beginnt?",
@@ -76,8 +83,24 @@
         {
           "label": "Automobilfotografie",
           "href": "/automobil-fotografie.html"
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Motive, Bildformate und Übergabe vor dem Shooting sauber strukturieren."
+        },
+        {
+          "label": "Fahrzeugserien konsistent planen",
+          "href": "/blog-fahrzeugserie-konsistent-planen.html",
+          "description": "Wie Perspektiven, Licht und Bearbeitung über mehrere Modelle zusammenhalten."
         }
       ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Professionelles Auto-Fotoshooting in NRW planen",
+      "text": "Du brauchst stimmige Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto im Raum Düsseldorf, Erkrath und NRW? Shootings starten bei 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
     },
     {
       "headline": "Häufige Fragen zu Carsharing-Fahrzeugfotos",
@@ -118,6 +141,11 @@
           "label": "cambio-App: Buchung über Karte und Fahrzeugliste",
           "href": "https://www.cambio-carsharing.de/cambio-app",
           "description": "Aktuelle Anbieterinformation zur Darstellung von Stationen, Fahrzeugen und Kategorien in der Buchungs-App."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ],
       "_template": "linkList"
@@ -139,7 +167,7 @@
     "noIndex": false
   },
   "createdAt": "2026-11-03T16:00:00Z",
-  "updatedAt": "2027-01-04T08:00:00.000Z",
+  "updatedAt": "2027-02-23T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
@@ -149,9 +177,16 @@
       "openInNewTab": false
     },
     {
-      "label": "Fahrzeugübergabe fotografisch dokumentieren",
-      "href": "/blog-fahrzeuguebergabe-fotodokumentation-fuhrpark.html",
-      "seoPurpose": "supporting-article",
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fahrzeugserien konsistent planen",
+      "href": "/blog-fahrzeugserie-konsistent-planen.html",
+      "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
     }

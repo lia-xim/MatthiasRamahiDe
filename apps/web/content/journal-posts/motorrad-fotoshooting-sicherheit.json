@@ -13,6 +13,13 @@
   "readingTime": 8,
   "blocks": [
     {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Motorrad-Fotoshooting sicher planen: Die wichtigsten Punkte im Überb",
+      "body": "Kernaussage: Nur mit einem belastbaren, legalen und professionell abgesicherten Konzept\nStandaufnahme und Fahraufnahme sind: Ein stehendes Motorrad lässt sich präzise positionieren\nDas Motorrad wird vor: Reifen, Bremsen, Beleuchtung, lose Anbauteile und Flüssigkeiten gehören in die Verantwortung des Halters oder Fahrers\nDas Sicherheitsbriefing endet mit: Vor Ort werden Startpunkt, Standpositionen, Wege und Tabuzonen gemeinsam abgelaufen"
+    },
+    {
       "headline": "Standaufnahme und Fahraufnahme sind zwei verschiedene Produktionen",
       "body": "Ein stehendes Motorrad lässt sich präzise positionieren. Perspektive, Lenkeinschlag und Licht können in Ruhe verändert werden. Sobald sich das Bike bewegt, ändern sich Risiko, Kommunikation und Platzbedarf vollständig. Deshalb sollte „ein paar Rolling Shots machen“ nie spontan an einen normalen Fototermin angehängt werden.\n\nDie erste Entscheidung lautet also: Reicht eine dynamisch komponierte Standaufnahme oder braucht die Geschichte tatsächlich Bewegung? Eine niedrige Kameraposition, diagonale Linien und ein nachvollziehbarer Straßenraum können Geschwindigkeit andeuten, ohne dass jemand für das Bild fahren muss. Das ist oft die bessere Lösung.",
       "_template": "textBlock"
@@ -67,6 +74,39 @@
       "_template": "textBlock"
     },
     {
+      "_template": "linkList",
+      "headline": "Sichere Motorrad- & Fahraufnahmen in NRW",
+      "links": [
+        {
+          "label": "Motorradfotografie NRW",
+          "href": "/motorrad-fotografie-nrw.html"
+        },
+        {
+          "label": "Motorrad Shooting Düsseldorf",
+          "href": "/motorrad-shooting-duesseldorf.html"
+        },
+        {
+          "label": "Rolling Shots Motorrad (Journal)",
+          "href": "/blog-rolling-shots-motorrad.html"
+        },
+        {
+          "label": "Portfolio Motorrad",
+          "href": "/portfolio/portfolio-auswahl-motorrad"
+        },
+        {
+          "label": "Motorradfotografie in NRW",
+          "href": "/motorrad-fotografie.html",
+          "description": "Professionelle Motorradserien für Fahrer, Umbauten und Werkstätten."
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Ruhig geplantes Motorrad-Shooting ohne Risiko",
+      "text": "Geprüfte Locations, klare Absprachen und starke Ergebnisse für Bike und Fahrer in Düsseldorf und NRW ab 250 € inkl. MwSt.",
+      "buttonLabel": "Shooting anfragen"
+    },
+    {
       "headline": "Kurze Fragen",
       "items": [
         {
@@ -103,11 +143,25 @@
   },
   "status": "published",
   "createdAt": "2026-08-24T08:00:00.000Z",
-  "updatedAt": "2026-08-24T20:51:37.606Z",
+  "updatedAt": "2026-11-24T09:15:00.000Z",
   "relatedPages": [
     {
       "label": "Motorradfotografie",
       "href": "/motorrad-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Motorrad-Fotoshooting-Checkliste",
+      "href": "/blog-motorrad-fotoshooting-checkliste.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Motorrad-Fotoshooting sicher planen",
+      "href": "/blog-motorrad-fotoshooting-sicherheit.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

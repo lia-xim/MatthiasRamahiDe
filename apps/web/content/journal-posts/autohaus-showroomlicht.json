@@ -13,6 +13,13 @@
   "readingTime": 8,
   "blocks": [
     {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Autohaus-Fotografie im Showroom: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Wie Fahrzeugbilder im Autohaus konsistent werden: Raumlicht, Reflexe, Fahrzeugvorbereitung, Perspektiven und ein wiederholbarer Aufnahmeplan\nDer Showroom ist eine: Lack, Scheiben, Chrom und Displays spiegeln nicht nur Lampen, sondern den gesamten Raum\nEine feste Perspektivlogik macht: Für Verkaufsplattformen und Fahrzeuglisten braucht die Serie einen konstanten Rahmen\nAbnahmekriterien werden vor dem: Eine Serie gilt nicht schon dann als vollständig, wenn die vereinbarte Bildzahl erreicht ist"
+    },
+    {
       "headline": "Der Showroom ist eine große Spiegelung",
       "body": "Lack, Scheiben, Chrom und Displays spiegeln nicht nur Lampen, sondern den gesamten Raum. Helle Türen, Fensterfronten, Deckenraster und andere Fahrzeuge erscheinen als Linien auf der Karosserie. Wer nur das Auto betrachtet, übersieht deshalb den eigentlichen Lichtformer: den Showroom selbst.\n\nVor der ersten Aufnahme lohnt ein langsamer Rundgang um das Fahrzeug. Dabei wird nicht nach dem schönsten Hintergrund gesucht, sondern nach ruhigen Reflexverläufen. Oft reicht eine Drehung um wenige Grad, damit eine harte Deckenlinie über die Haube wandert oder ganz aus der Seitenfläche verschwindet.",
       "_template": "textBlock"
@@ -66,6 +73,39 @@
       "_template": "textBlock"
     },
     {
+      "_template": "linkList",
+      "headline": "Fahrzeugfotografie für Autohäuser & Händler",
+      "links": [
+        {
+          "label": "Autohaus Fotografie",
+          "href": "/autohaus-fotografie.html"
+        },
+        {
+          "label": "Autoverkauf Fotos Düsseldorf",
+          "href": "/autoverkauf-fotos-duesseldorf.html"
+        },
+        {
+          "label": "Automobilfotografie NRW",
+          "href": "/automobil-fotografie-nrw.html"
+        },
+        {
+          "label": "Portfolio Automobil",
+          "href": "/portfolio/portfolio-auswahl-automobil"
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Konstante Bestandsfotos direkt in deinem Autohaus",
+      "text": "Mit mobilem Licht-Setup und fester Shotlist für deinen Showroom oder Hof in Düsseldorf und ganz NRW.",
+      "buttonLabel": "Autohaus-Shooting anfragen"
+    },
+    {
       "headline": "Kurze Fragen",
       "items": [
         {
@@ -102,11 +142,25 @@
   },
   "status": "published",
   "createdAt": "2026-08-24T07:00:00.000Z",
-  "updatedAt": "2026-08-24T20:51:37.597Z",
+  "updatedAt": "2026-11-24T09:15:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
       "href": "/automobil-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fahrzeugserien konsistent planen",
+      "href": "/blog-fahrzeugserie-konsistent-planen.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

@@ -1,10 +1,12 @@
 ---
+import Native404Page from '../../components/native/Native404Page.astro'
 import NativeAdoptedPage from '../../components/native/NativeAdoptedPage.astro'
 import {
   getLegacyRedirectTarget,
   getNativeHtmlFileForPath,
   isCmsAdoptedLegacyFile,
 } from '../../lib/adoptedRoutes'
+import { isJournalArticlePublic, journalArticleByLegacyFile } from '../../lib/journalArticleContent'
 import { livePageCacheControl } from '../../lib/liveCache'
 import { getTinaVisualDocumentForLegacyRoute, isTinaEditRequest } from '../../lib/tinaVisual'
 
@@ -23,15 +25,40 @@ if (redirectTarget) {
   return Astro.redirect(`/${redirectTarget}`, 308)
 }
 
-Astro.response.headers.set('cache-control', livePageCacheControl())
-Astro.response.headers.set('x-migration-render', 'adopted-astro-payload')
+const isEditing = isTinaEditRequest(Astro.request)
+const isJournalArticleFile = legacyFile.toLowerCase().startsWith('blog-')
+const journalArticle = isJournalArticleFile ? journalArticleByLegacyFile[legacyFile.toLowerCase()] : undefined
+const isUnpublishedJournal = isJournalArticleFile && !isEditing && (!journalArticle || !isJournalArticlePublic(journalArticle))
 
-const tinaVisualMatch = isTinaEditRequest(Astro.request)
+if (isUnpublishedJournal) {
+  Astro.response.status = 404
+  Astro.response.headers.set('cache-control', 'no-store')
+  Astro.response.headers.set('x-robots-tag', 'noindex')
+} else {
+  const isJournalSurface = legacyFile === 'blog.html' || isJournalArticleFile
+  Astro.response.headers.set(
+    'cache-control',
+    isEditing
+      ? 'no-store'
+      : isJournalSurface
+        ? livePageCacheControl({ sMaxAge: 300, staleWhileRevalidate: 3600 })
+        : livePageCacheControl(),
+  )
+  Astro.response.headers.set('x-migration-render', 'adopted-astro-payload')
+}
+
+const tinaVisualMatch = isEditing
   ? await getTinaVisualDocumentForLegacyRoute(legacyFile)
   : null
 ---
-<NativeAdoptedPage
-  legacyFile={legacyFile}
-  doc={tinaVisualMatch?.doc}
-  localSeoDoc={tinaVisualMatch?.collection === 'local-seo-pages' ? tinaVisualMatch.doc : undefined}
-/>
+{
+  isUnpublishedJournal ? (
+    <Native404Page statusCode={404} />
+  ) : (
+    <NativeAdoptedPage
+      legacyFile={legacyFile}
+      doc={tinaVisualMatch?.doc}
+      localSeoDoc={tinaVisualMatch?.collection === 'local-seo-pages' ? tinaVisualMatch.doc : undefined}
+    />
+  )
+}

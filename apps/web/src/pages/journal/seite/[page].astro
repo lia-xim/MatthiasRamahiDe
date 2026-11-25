@@ -3,6 +3,7 @@
 import NativeJournalIndexPage from '../../../components/native/NativeJournalIndexPage.astro'
 import { getJournalIndexPosts, sliceJournalPosts } from '../../../lib/journalIndexPosts'
 import { parseJournalPage } from '../../../lib/journalIndexRoutes'
+import { livePageCacheControl } from '../../../lib/liveCache'
 
 export const prerender = false
 
@@ -13,7 +14,7 @@ if (page === 1) return Astro.redirect('/blog.html', 301)
 const { totalPages } = sliceJournalPosts(await getJournalIndexPosts(), null, page)
 if (page > totalPages) return new Response('Not found', { status: 404 })
 
-// Wie /blog.html: Veroeffentlichungen sind zeitgesteuert, daher kein Cache.
-Astro.response.headers.set('cache-control', 'no-store')
+// Kurzer Edge-Cache (5 Min), damit zeitgesteuerte Beiträge zeitnah live sind.
+Astro.response.headers.set('cache-control', livePageCacheControl({ sMaxAge: 300, staleWhileRevalidate: 3600 }))
 ---
 <NativeJournalIndexPage page={page} />

@@ -1,6 +1,7 @@
 ---
 import HeroMotion from './HeroMotion.astro'
 import ContactSlot from '../ContactSlot.astro'
+import NativeFamilyFaq from './NativeFamilyFaq.astro'
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import { nativeServiceDetailPages } from '../../lib/serviceDetailContent'
 import type { PayloadDoc } from '../../lib/payload'
@@ -10,6 +11,24 @@ const legacyFile = (Astro.props as Props).legacyFile || 'videografie-duesseldorf
 const doc = (Astro.props as Props).doc
 const page = nativeServiceDetailPages[legacyFile]
 const { hero, overview, feature, contact } = page
+const videoFaq = [
+  {
+    q: 'Lassen sich Foto und Video am selben Set kombinieren?',
+    a: 'Ja. Sophia Ramahi übernimmt das Bewegtbild und ich die Fotografie. Wir planen Shotlist, Licht und Zeitfenster gemeinsam, sodass beide Ergebnisse aus einer einheitlichen Bildsprache entstehen.',
+  },
+  {
+    q: 'Welche Filmformate werden in Düsseldorf und NRW umgesetzt?',
+    a: 'Imagefilme, Musikvideos, Event- und Konzertbegleitung, Fahrzeug-Clips sowie redaktionelles Bewegtbild in Quer- und Hochformat für Website, Presse und Social Media.',
+  },
+  {
+    q: 'Wie lange dauert die Fertigstellung nach dem Dreh?',
+    a: 'Je nach Umfang und Schnittaufwand liegen die finalen Schnittfassungen meist innerhalb von ein bis drei Wochen vor. Eilige Teaser oder Social-Cuts lassen sich vorab abstimmen.',
+  },
+  {
+    q: 'Wie weit im Voraus sollte ein Videodreh angefragt werden?',
+    a: 'Für größere Produktionen oder kombinierte Foto- und Videotage empfehlen sich zwei bis vier Wochen Vorlauf. Kurzfristige Termine im Rheinland sind nach Verfügbarkeit ebenfalls möglich.',
+  },
+]
 ---
 <AdoptedPageLayout
   legacyFile={legacyFile}
@@ -44,7 +63,7 @@ const { hero, overview, feature, contact } = page
         </div>
         <div class="vg-statement__body">
           <p class="vg-lead">Für bewegtes Bild arbeite ich mit meiner Schwester Sophia Ramahi — Videografin aus dem Rheinland. Wir denken Sets gemeinsam: dieselbe Bildsprache, derselbe ruhige, editoriale Anspruch.</p>
-          <p>Imagefilm, Musikvideo, Eventfilm und redaktionelles Bewegtbild — geplant mit echtem Bildmaterial statt Stock. Wenn Foto und Video parallel laufen, gibt es weniger Termine, weniger Doppelarbeit und ein Ergebnis, das zusammengehört. Die <a href="/leistungen.html">Übersicht weiterer Dienstleistungen</a> zeigt die angrenzenden Angebote.</p>
+          <p>Imagefilm, Musikvideo, Eventfilm und redaktionelles Bewegtbild — geplant mit echtem Bildmaterial statt Stock. Wenn Foto und Video parallel laufen, gibt es weniger Termine, weniger Doppelarbeit und ein Ergebnis, das zusammengehört — ob bei einer <a href="/automobil-fotografie-duesseldorf.html">Automobilfotografie in Düsseldorf</a>, einer <a href="/musikerfotografie.html">Musikerfotografie</a> oder einem redaktionellen Set. Mehr zur gemeinsamen Arbeitsweise steht auf <a href="/ueber-mich.html">Über mich</a>, und die <a href="/leistungen.html">Übersicht weiterer Dienstleistungen</a> zeigt die angrenzenden Angebote.</p>
           <div class="vg-actions">
             <a class="vg-btn vg-btn--ink" href="#leistungen">Leistungen ansehen</a>
             <a class="vg-btn vg-btn--ghost-ink" href="#anfrage">Projekt anfragen</a>
@@ -91,6 +110,8 @@ const { hero, overview, feature, contact } = page
         </dl>
       </div>
     </section>
+
+    <NativeFamilyFaq faq={videoFaq} pageUrl={`https://matthiasramahi.de/${legacyFile}`} theme="dark" />
 
     {/* ===== CONTACT (dark) ===== */}
     <ContactSlot

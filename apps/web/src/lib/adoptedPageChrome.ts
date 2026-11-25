@@ -142,7 +142,7 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
     preloadImages: ['/assets/optimized/mpik8b82-dsc3879-1920.webp'],
     scripts: ['/assets/native-home.js', ...siteChromeScript],
     stylesheets: [...sharedStyles, '/assets/fotografie-overview.css'],
-    title: 'Fotograf Erkrath: Fahrzeug- & Portraitfotografie | Matthias Ramahi',
+    title: 'Fotograf Erkrath: Auto, Motorrad & Portrait ab 250 €',
   },
   'fotografie-deutschland.html': {
     current: 'fotografie',
@@ -303,7 +303,7 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
     bodyClass: 'has-mr-footer',
     current: 'leistungen',
     description:
-      'Fallstudie zur Crawl Foundry Keyword-Datenbank: Wie aus verstreuter SEO-Recherche ein System für Suchintention, Themencluster, Wettbewerb und Priorisierung wurde.',
+      'Fallstudie zur Crawl Foundry Keyword-Datenbank: Wie aus verstreuter SEO-Recherche ein klares System für Suchintention, Cluster und Priorisierung wurde.',
     ogImage: '/assets/contextter/keyword-database-hero-detail.webp',
     preloadImages: [
       '/assets/contextter/keyword-database-hero-detail.webp',
@@ -311,7 +311,7 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
     ],
     scripts: ['/assets/native-keyword-database.js', ...siteChromeScript],
     stylesheets: [...sharedStyles, '/assets/native-keyword-database.css'],
-    title: 'Crawl Foundry Keyword-Datenbank: Fallstudie | Matthias Ramahi',
+    title: 'Crawl Foundry Keyword-Datenbank | Matthias Ramahi',
   },
   'videografie-duesseldorf.html': {
     ...serviceMiniChrome('/assets/services/portfolio_webp_full_058-1.webp'),

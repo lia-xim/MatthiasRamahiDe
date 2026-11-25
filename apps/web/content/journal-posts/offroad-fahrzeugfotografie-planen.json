@@ -9,14 +9,21 @@
     "Automobilfotografie",
     "Fahrzeugshooting"
   ],
-  "publishedAt": "2027-01-16T08:00:00.000Z",
+  "publishedAt": "2027-03-16T08:00:00.000Z",
   "excerpt": "Offroad-Fahrzeugfotografie verbindet Geländewagen und Terrain zu einer klaren Bildgeschichte. So planst du Zweck, geeignetes Gelände, Freigaben und sichere Motive.",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+  "coverImage": "/assets/portfolio/automobil-bentley-oldtimer.webp",
   "readingTime": 8,
   "blocks": [
     {
       "_template": "textBlock",
       "body": "Ein Geländewagen wirkt im Gelände anders als vor einer neutralen Wand: Reifen, Bodenfreiheit und Traktion werden im Zusammenhang sichtbar. Damit die Bilder trotzdem mehr erzählen als „Auto im Schlamm“, braucht das Shooting einen klaren Zweck und einen abgestimmten Ablauf. Das gilt für einen 4x4, ein SUV mit Offroad-Paket, einen Pickup oder ein Expeditionsfahrzeug gleichermaßen.\n\nDieser Leitfaden richtet sich an Fahrzeugbesitzer, Marken und Anbieter, die eine Bildserie auf einem dafür vorgesehenen Offroad-Gelände planen möchten. Im Mittelpunkt stehen Motivplanung, Absprachen mit dem Gelände und sichere Aufnahmebedingungen. Er ist kein Fahrtraining und ersetzt nicht die Einweisung des Betreibers."
+    },
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Offroad-Fahrzeugfotografie: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Wie planst du ein Offroad-Fotoshooting für Geländewagen oder 4x4?\nZuerst klären, wofür die: Einzelne Hero-Motive für eine Website brauchen eine andere Planung als eine Serie für Produktseite, Händlerunterlagen oder eine Reportage\nStatische Motive und Fahraufnahmen: Beginne mit ruhigen Standbildern, solange Karosserie und Scheiben sauber sind\nLieferung und Bildrechte gleich: Vor dem Shooting sollte feststehen, wie viele bearbeitete Motive gebraucht werden, in welchen Größen sie ausgeliefert werden und wer sie auf Website, in"
     },
     {
       "_template": "imageSequence",
@@ -83,6 +90,12 @@
       "body": "Vor dem Shooting sollte feststehen, wie viele bearbeitete Motive gebraucht werden, in welchen Größen sie ausgeliefert werden und wer sie auf Website, in Anzeigen, Presse oder sozialen Netzwerken verwenden darf. Bei Markenaufträgen können Nutzungsdauer, Länder, Partner und bezahlte Kampagnen relevant sein. Halte die Vereinbarung schriftlich fest. Für erkennbare Teilnehmende und Logos klärst du zusätzlich, welche Einwilligungen oder Freigaben für den jeweiligen Einsatz erforderlich sind.\n\nEin sauber benannter Dateisatz hilft anschließend bei der Auswahl: beispielsweise „Hero“, „Seite“, „Detail“, „Fahrspur“ und „Innenraum“. Wenn das Team zunächst eine kleine Vorschau benötigt, vereinbare einen realistischen Auswahltermin. Die Lieferung sollte keine Perspektive versprechen, die wegen der tatsächlichen Platz- oder Sicherheitsregeln am Gelände nicht möglich war."
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Häufige Fragen zur Offroad-Fahrzeugfotografie",
       "items": [
@@ -124,9 +137,9 @@
           "description": "Aktuelles Angebot für Fahrzeug- und Medienproduktionen im Gelände als Relevanzsignal für den Produktionskontext."
         },
         {
-          "label": "GEFLASHT: Fahrzeugfotografie und ein Offroad-Shooting mit vier Fahrzeugen",
-          "href": "https://geflasht.de/fahrzeugfotografie/",
-          "description": "Dienstleisterbeispiel einer Fahrzeugserie auf einem Geländeparcours; kein Beleg für Suchvolumen."
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]
     }
@@ -138,7 +151,7 @@
     "searchIntent": "Informationssuche mit konkretem Shooting-Bezug: Fahrzeugbesitzer, Automotive-Marken und Anbieter planen eine Bildserie mit 4x4, Geländewagen oder SUV auf geeignetem Offroad-Gelände. Aktuelle Dienstleisterangebote belegen einen realen Produktionskontext; Suchvolumen wurde nicht erhoben.",
     "canonicalUrl": "https://matthiasramahi.de/blog-offroad-fahrzeugfotografie-planen.html",
     "legacyUrl": "blog-offroad-fahrzeugfotografie-planen.html",
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "ogImage": "/assets/portfolio/automobil-bentley-oldtimer.webp",
     "noIndex": false
   },
   "legacy": {
@@ -149,7 +162,7 @@
   },
   "status": "scheduled",
   "createdAt": "2026-11-03T15:37:08Z",
-  "updatedAt": "2027-01-16T08:00:00.000Z",
+  "updatedAt": "2027-03-16T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Auto-Shooting-Briefing",
@@ -173,5 +186,5 @@
       "openInNewTab": false
     }
   ],
-  "coverAlt": "Schwarzer SUV auf befestigter Fläche bei Abendlicht"
+  "coverAlt": "Oldtimer · Formdetail"
 }

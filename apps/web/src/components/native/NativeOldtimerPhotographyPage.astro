@@ -420,6 +420,13 @@ const {
   title={metaTitle}
   description={metaDescription}
   ogImage={doc?.seo?.ogImage || heroBgDesktop}
+  mobileCta={{
+    secondaryHref: '#galerie',
+    secondaryLabel: 'Galerie',
+    priceNote: 'ab 250 €',
+    href: '#anfrage',
+    label: 'Shooting anfragen',
+  }}
   preloadImages={[
     { href: oldtimerHeroSlides[0].mobile, media: '(max-width: 900px)' },
     { href: oldtimerHeroSlides[0].src, media: '(min-width: 901px)' },
@@ -468,23 +475,27 @@ const {
       </div>
     </section>
 
-    <section class="st" data-header-theme="light">
-      <div class="section-inner">
-        <div>
-          <h2>
-            <span {...tinaAttrs(doc?.statement, 'headline')}>{focusIntroTitle.headline}</span>
-            {focusIntroTitle.headline && focusIntroTitle.emphasis ? ' ' : ''}
-            {focusIntroTitle.emphasis && <em {...tinaAttrs(doc?.statement, 'emphasis')}>{focusIntroTitle.emphasis}</em>}
-          </h2>
-        </div>
-        <div class="st-body">
-          {focusIntroParagraphs.map((paragraph, index) => <p {...tinaAttrs(doc?.statement?.body?.[index], 'text')}>{paragraph}</p>)}
-          <a class="st-cta" href="#anfrage">Shooting buchen →</a>
-        </div>
+    <section class="po" id="galerie" data-header-theme="dark" aria-label="Ausgewählte Oldtimer-Arbeiten">
+      <div class="po-grid" id="poGrid">
+        <header class="po-head">
+          <h2 {...tinaAttrs(doc?.gallerySection, 'headline')}>{focusPortfolioHeadline}</h2>
+          <p {...tinaAttrs(doc?.gallerySection, 'lead')}>{focusPortfolioLead}</p>
+        </header>
+        {inheritedPortfolioTiles.map(([className, image, alt, width, height, full], index) => (
+          <button type="button" class={`po-tile ${className}`} data-i={index} data-full={full} aria-label={`Bild ${index + 1} vergrößern`}>
+            <img data-src={image} src={image} data-full={full} loading="lazy" alt={alt} width={width} height={height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[index], 'image')} />
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+          </button>
+        ))}
       </div>
     </section>
 
-    <NativeGuideSection doc={doc} />
+    <div class="mr-gallery-cta-band" data-header-theme="dark">
+      <div class="mr-gallery-cta">
+        <span>Shooting-Pakete ab 250 € inkl. MwSt. — H-Kennzeichen &amp; Sammlerfahrzeuge</span>
+        <a href="#anfrage">Oldtimer-Shooting anfragen <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
 
     <section class="pv" data-header-theme="dark">
       <div class="section-inner">
@@ -501,21 +512,6 @@ const {
             </article>
           ))}
         </div>
-      </div>
-    </section>
-
-    <section class="po" data-header-theme="dark" aria-label="Ausgewählte Oldtimer-Arbeiten">
-      <div class="po-grid" id="poGrid">
-        <header class="po-head">
-          <h2 {...tinaAttrs(doc?.gallerySection, 'headline')}>{focusPortfolioHeadline}</h2>
-          <p {...tinaAttrs(doc?.gallerySection, 'lead')}>{focusPortfolioLead}</p>
-        </header>
-        {inheritedPortfolioTiles.map(([className, image, alt, width, height, full], index) => (
-          <button type="button" class={`po-tile ${className}`} data-i={index} data-full={full} aria-label={`Bild ${index + 1} vergrößern`}>
-            <img data-src={image} src={image} data-full={full} loading="lazy" alt={alt} width={width} height={height} decoding="async" {...tinaAttrs(doc?.portfolioTiles?.[index], 'image')} />
-            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-          </button>
-        ))}
       </div>
     </section>
 
@@ -554,6 +550,24 @@ const {
         </div>
       </div>
     </section>
+
+    <section class="st" data-header-theme="light">
+      <div class="section-inner">
+        <div>
+          <h2>
+            <span {...tinaAttrs(doc?.statement, 'headline')}>{focusIntroTitle.headline}</span>
+            {focusIntroTitle.headline && focusIntroTitle.emphasis ? ' ' : ''}
+            {focusIntroTitle.emphasis && <em {...tinaAttrs(doc?.statement, 'emphasis')}>{focusIntroTitle.emphasis}</em>}
+          </h2>
+        </div>
+        <div class="st-body">
+          {focusIntroParagraphs.map((paragraph, index) => <p {...tinaAttrs(doc?.statement?.body?.[index], 'text')}>{paragraph}</p>)}
+          <a class="st-cta" href="#anfrage">Shooting buchen →</a>
+        </div>
+      </div>
+    </section>
+
+    <NativeGuideSection doc={doc} />
 
     {showCrossFamilyCluster && (
       <NativeFamilyClusterLinks

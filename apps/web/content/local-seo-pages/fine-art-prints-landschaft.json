@@ -87,8 +87,8 @@
   "contactSection": {},
   "targetKeyword": "Fine-Art-Prints Landschaft",
   "seo": {
-    "title": "Fine-Art-Prints Landschaft — Matthias Ramahi",
-    "description": "Fine-Art-Prints Landschaft kaufen: Baryt-Print, Aluminium-Dibond, Acrylglas — limitierte Editionen aus der Landschaftsserie, nummeriert, signiert, gefertigt in...",
+    "title": "Fine-Art-Prints Landschaft: Limitierte Editionen",
+    "description": "Fine-Art-Prints Landschaft kaufen: Hahnemühle Baryt, Alu-Dibond oder Acrylglas – limitierte, nummerierte Editionen aus eigener Landschaftsfotografie.",
     "canonicalUrl": "https://matthiasramahi.de/fine-art-prints-landschaft.html",
     "legacyUrl": "fine-art-prints-landschaft.html",
     "noIndex": false,
@@ -102,8 +102,49 @@
     "migrationStatus": "reviewed",
     "renderSource": "legacy-file"
   },
-  "updatedAt": "2026-06-01 20:26:49.724+00",
+  "updatedAt": "2026-11-24T09:00:00.000Z",
   "createdAt": "2026-05-31 17:45:01.763+00",
   "status": "published",
-  "payloadId": "169"
+  "payloadId": "169",
+  "guideSection": {
+    "eyebrow": "Fine-Art-Prints",
+    "headline": "Fine-Art-Prints von Landschaften: Papier, Pigmenttinte und Langlebigkeit.",
+    "intro": "Echter Fine-Art-Druck unterscheidet sich sichtbar von normalem Poster- oder Fotodruck: Haptik, Tiefenschwärze und jahrzehntelange Lichtbeständigkeit prägen die Wirkung an der Wand.",
+    "items": [
+      {
+        "title": "Säurefreie Künstlerpapiere von Hahnemühle, Canson & Ilford",
+        "text": "Schwere Baumwoll- und Barytpapiere ohne optische Aufheller verhindern Vergilben und liefern feine Zeichnung in dunklen Schatten wie in hellen Wolkenstrukturen."
+      },
+      {
+        "title": "Individuelle Druckaufbereitung pro Zielgröße",
+        "text": "Jede Druckdatei wird als 16-Bit-Master auf das finale Maß gebracht und materialabhängig geschärft, damit selbst aus kurzem Betrachtungsabstand keine digitalen Artefakte entstehen."
+      },
+      {
+        "title": "Rahmung, Schattenfuge oder reine Blatt-Lieferung",
+        "text": "Du kannst den losen Print mit weißem Passepartout-Rand für deinen eigenen Rahmen bestellen oder fertig kaschiert auf Alu-Dibond beziehungsweise hinter Acrylglas."
+      },
+      {
+        "title": "Deutschlandweiter Versand aus Düsseldorf",
+        "text": "Jeder Fine-Art-Print wird einzeln geprüft, säurefrei geschützt und versichert versendet."
+      }
+    ],
+    "links": [
+      {
+        "label": "Landschaftsbilder kaufen",
+        "href": "/landschaftsbilder-kaufen.html"
+      },
+      {
+        "label": "Fotolabor & Fine-Art-Druck",
+        "href": "/fotolabor-druck-duesseldorf.html"
+      },
+      {
+        "label": "Fine-Art-Druck erklärt (Journal)",
+        "href": "/blog-fine-art-druck.html"
+      },
+      {
+        "label": "Portfolio Landschaft",
+        "href": "/portfolio/portfolio-auswahl-landschaft"
+      }
+    ]
+  }
 }

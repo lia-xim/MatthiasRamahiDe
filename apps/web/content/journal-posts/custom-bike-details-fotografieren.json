@@ -6,9 +6,9 @@
   "coverImage": "/uploads/payload/20250209-DSC00697.webp",
   "coverAlt": "Nahaufnahme des Tank- und Verkleidungsbereichs einer grünen Kawasaki Ninja mit dunkler, gewebemusterartiger Oberfläche.",
   "status": "scheduled",
-  "publishedAt": "2027-06-07T07:00:00.000Z",
+  "publishedAt": "2027-11-12T08:00:00.000Z",
   "createdAt": "2026-11-04T16:00:00Z",
-  "updatedAt": "2027-06-07T07:00:00.000Z",
+  "updatedAt": "2027-11-12T08:00:00.000Z",
   "readingTime": 8,
   "tags": [
     "Motorradfotografie",
@@ -60,6 +60,13 @@
     }
   ],
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Custom Bike Details fotografieren: Die wichtigsten Punkte im Überbli",
+      "body": "Kernaussage: Eine Ansicht verortet es am Motorrad, eine mittlere Perspektive zeigt die Verbindung zu Nachbarteilen und eine Nahaufnahme macht Form oder Oberfläche sichtbar\nVor der Aufnahme klären,: Bei einem Custom Bike können einzelne Teile handgefertigt, angepasst oder unverändert übernommen sein\nMit kontrolliertem Licht Kanten: Bei kleinen Motorradteilen lohnt sich eine Lichtquelle, deren Form und Abstand du gezielt verändern kannst\nDie Detailserie vor Ort: Übersicht: ganze Maschine oder Dreiviertelansicht, damit die Umbauform erkennbar bleibt"
+    },
     {
       "_template": "textBlock",
       "headline": "Vor der Aufnahme klären, was an einem Bauteil besonders ist",
@@ -118,6 +125,12 @@
       "body": "Vor dem Shooting bestätigt Builder oder Besitzer den Namen des Bauteils, seine Funktion und welche Angaben veröffentlicht werden dürfen. Danach hältst du das Bike sicher und ruhig am vereinbarten Platz und fotografierst in einer festen Folge:\n\n1. Übersicht: ganze Maschine oder Dreiviertelansicht, damit die Umbauform erkennbar bleibt.\n2. Einbaulage: Bauteil mit den angrenzenden Teilen, Befestigung und sichtbarem Anschluss.\n3. Oberfläche: enger Ausschnitt auf Kante, Struktur oder Finish.\n4. Größenbezug: wenn die Größe wichtig ist, zeige ein benachbartes Bauteil mit bekanntem Maßstab oder notiere das bestätigte Maß separat. Eine Perspektive allein ist kein verlässlicher Größenbeleg.\n\nKontrolliere am Ende pro Teil drei Punkte: Ist das Bauteil wiederzuerkennen? Ist seine Verbindung sichtbar? Ist genau das Oberflächenmerkmal scharf und ohne störende Reflexion zu sehen? Wenn nicht, ändere jeweils nur Standpunkt, Licht oder Abstand und wiederhole die betroffene Aufnahme."
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Motorrad-Shooting in NRW planen",
+      "text": "Stimmige Serien für Fahrer, Custom-Umbauten und Werkstätten rund um Düsseldorf und Erkrath ab 250 € inkl. MwSt.",
+      "buttonLabel": "Motorrad-Shooting anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Kurze Fragen zur Custom-Bike-Detailfotografie",
       "items": [
@@ -162,6 +175,11 @@
           "label": "Tuning-Umbau fotografisch dokumentieren",
           "href": "/blog-tuning-umbau-fotografisch-dokumentieren.html",
           "description": "Weiterführender Beitrag zur fotografischen Dokumentation des gesamten Fahrzeugumbaus mit Ausgangs- und Endansichten."
+        },
+        {
+          "label": "Motorradfotografie in NRW",
+          "href": "/motorrad-fotografie.html",
+          "description": "Professionelle Motorradserien für Fahrer, Umbauten und Werkstätten."
         }
       ]
     }

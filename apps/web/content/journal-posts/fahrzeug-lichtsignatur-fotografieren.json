@@ -8,12 +8,19 @@
     "Scheinwerfer",
     "Rückleuchten"
   ],
-  "publishedAt": "2027-03-23T08:00:00.000Z",
+  "publishedAt": "2027-07-06T07:00:00.000Z",
   "excerpt": "Scheinwerfer und Rückleuchten prägen die Fahrzeugform. So fotografierst du Lichtsignatur, Linsen, Reflexe und Einbettung als Detail einer stimmigen Fahrzeugserie.",
-  "coverImage": "/uploads/payload/_DSC2310-2.webp",
-  "coverAlt": "Weißes klassisches Coupé in Front-Dreiviertelansicht auf einer Messebühne; die runden Scheinwerfer und die Kontur der Front sind erkennbar.",
+  "coverImage": "/assets/portfolio/automobil-bmw-m3-showcar.webp",
+  "coverAlt": "Frontansicht eines hellen Sportwagens mit deutlich erkennbarer Lichtsignatur",
   "readingTime": 7,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Scheinwerfer fotografieren Auto: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Fotografiere bei Bedarf eine Variante mit ausgeschaltetem und eine mit eingeschaltetem Licht\nLeuchten als Teil des: Scheinwerfer und Rückleuchten sind mehr als helle Punkte an der Karosserie\nFront- und Heckleuchten unterschiedlich: An der Front erzählt die Leuchte meist gemeinsam mit Haube, Grill, Stoßfänger und Kotflügel von der Fahrzeugidentität\nDesignmotiv und Produktdokumentation auseinanderhalten: Ein gestalterisches Fahrzeugdetail soll Form, Material und Beziehung zur Karosserie vermitteln"
+    },
     {
       "_template": "textBlock",
       "headline": "Leuchten als Teil des Fahrzeugdesigns zeigen",
@@ -84,6 +91,12 @@
       "body": "Ein gestalterisches Fahrzeugdetail soll Form, Material und Beziehung zur Karosserie vermitteln. Bei einer Teile- oder Zubehöraufnahme muss dagegen das konkrete Produkt eindeutig erkennbar sein; Varianten, Anschlüsse, Zustand und Lieferumfang können entscheidend werden. Diese Aufgaben brauchen unterschiedliche Bildfolgen. Eine expressive Frontansicht ersetzt keine sachliche Produktaufnahme, und ein freigestelltes Ersatzteil zeigt nicht, wie die Leuchte in der Fahrzeugform wirkt.\n\nWenn ein Bildset für eine Marke, einen Händler oder eine Veröffentlichung entsteht, kläre vor dem Termin, ob die Leuchten als Designmerkmal, Ausstattungsbeleg oder Produkt abgebildet werden sollen. Daraus folgen Ausschnitt, Bildzahl und Bildbeschriftung. Für eine allgemeine Fahrzeugserie reichen meist ein aussagekräftiger Kontextblick und ein gezieltes Detail, sofern beide dieselbe Form des Fahrzeugs konsistent zeigen."
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Häufige Fragen zu Scheinwerfern und Rückleuchten",
       "items": [
@@ -123,6 +136,11 @@
           "label": "Sony: Zebramuster als Spitzlichtwarnung",
           "href": "https://www.sony.com/electronics/support/e-mount-body-ilce-7-series/ilce-7cr/articles/00077788",
           "description": "Sony erklärt die Zebra-Anzeige als Warnung vor hellen Bereichen nahe der Überbelichtung; Verfügbarkeit und Bedienung hängen vom Kameramodell ab."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]
     }
@@ -134,15 +152,29 @@
     "searchIntent": "Informationssuche: Wie zeigen Autofotografen Form, Material und Lichtgrafik von Scheinwerfern und Rückleuchten als Designmerkmal?",
     "canonicalUrl": "https://matthiasramahi.de/blog-fahrzeug-lichtsignatur-fotografieren.html",
     "legacyUrl": "blog-fahrzeug-lichtsignatur-fotografieren.html",
-    "ogImage": "/uploads/payload/_DSC2310-2.webp",
+    "ogImage": "/assets/portfolio/automobil-bmw-m3-showcar.webp",
     "noIndex": false
   },
   "createdAt": "2026-11-03T17:00:00Z",
-  "updatedAt": "2027-03-23T08:00:00.000Z",
+  "updatedAt": "2027-07-06T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
       "href": "/automobil-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fahrzeugserien konsistent planen",
+      "href": "/blog-fahrzeugserie-konsistent-planen.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

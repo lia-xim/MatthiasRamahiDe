@@ -9,16 +9,18 @@
     "Geozonen",
     "Fahrzeugshooting"
   ],
-  "publishedAt": "2027-01-12T08:00:00.000Z",
+  "publishedAt": "2027-03-09T08:00:00.000Z",
   "excerpt": "Drohnenbilder zeigen Auto und Umgebung in einem Bild. So planst du Perspektive und Standort für ein stehendes Fahrzeug und prüfst vorab Fluggebiet, Sicherheit und Freigaben.",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
-  "coverAlt": "Schwarzer SUV im Abendlicht auf befestigter Fläche",
+  "coverImage": "/assets/optimized/assets-portfolio-dsc3908-1920.webp",
+  "coverAlt": "Cockpit · Licht",
   "readingTime": 8,
   "blocks": [
     {
       "_template": "textBlock",
       "headline": "Kurzantwort: erst den Standort, dann die Drohnenperspektive planen",
-      "body": "Eine Drohne kann ein Auto als Teil seiner Umgebung zeigen: auf einer freien Fläche, an einer klaren Geländekante oder mit einer grafischen Draufsicht. Für ein gutes Ergebnis muss der Flugort aber genauso sorgfältig geprüft werden wie Bildwinkel und Licht. Das Motiv sollte stehen, die Start- und Landefläche frei sein und der geplante Betrieb am konkreten Ort zulässig sein.\n\nPlane diese Aufnahmen als Ergänzung zu Bildern vom Boden. Aus der Luft sind Dachlinie, Fahrzeugposition und Umgebung gut lesbar; Innenraum, Lackdetails und die Form auf Augenhöhe brauchen weiterhin eigene Perspektiven. Dieser Leitfaden behandelt ein stehendes Auto in einer kontrollierten Situation. Er ist keine Anleitung, einer fahrenden Person mit einer Drohne zu folgen."
+      "body": "Eine Drohne kann ein Auto als Teil seiner Umgebung zeigen: auf einer freien Fläche, an einer klaren Geländekante oder mit einer grafischen Draufsicht. Für ein gutes Ergebnis muss der Flugort aber genauso sorgfältig geprüft werden wie Bildwinkel und Licht. Das Motiv sollte stehen, die Start- und Landefläche frei sein und der geplante Betrieb am konkreten Ort zulässig sein.\n\nPlane diese Aufnahmen als Ergänzung zu Bildern vom Boden. Aus der Luft sind Dachlinie, Fahrzeugposition und Umgebung gut lesbar; Innenraum, Lackdetails und die Form auf Augenhöhe brauchen weiterhin eigene Perspektiven. Dieser Leitfaden behandelt ein stehendes Auto in einer kontrollierten Situation. Er ist keine Anleitung, einer fahrenden Person mit einer Drohne zu folgen.",
+      "style": "summary",
+      "eyebrow": "Kurzantwort"
     },
     {
       "_template": "imageSequence",
@@ -51,6 +53,16 @@
         {
           "label": "Auto-Shooting-Briefing",
           "href": "/blog-auto-shooting-briefing.html"
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        },
+        {
+          "label": "Fahrzeugserien konsistent planen",
+          "href": "/blog-fahrzeugserie-konsistent-planen.html",
+          "description": "Wie Perspektiven, Licht und Bearbeitung über mehrere Modelle zusammenhalten."
         }
       ]
     },
@@ -84,6 +96,11 @@
         {
           "label": "UAS.OPEN.040 in den aktuellen EASA-Regeln",
           "href": "https://www.easa.europa.eu/en/document-library/easy-access-rules/online-publications/easy-access-rules-unmanned-aircraft-systems?erules-id=ERULES-1963177438-19528"
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]
     },
@@ -99,6 +116,21 @@
         {
           "label": "dipul-Checkliste für einen sicheren Drohnenbetrieb",
           "href": "https://www.dipul.de/homepage/de/informationen/allgemeines/erste-schritte/schnell-sicher-in-die-luft-version-1.2.pdf?cid=1v8"
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Motive, Bildformate und Übergabe vor dem Shooting sauber strukturieren."
+        },
+        {
+          "label": "Fahrzeugserien konsistent planen",
+          "href": "/blog-fahrzeugserie-konsistent-planen.html",
+          "description": "Wie Perspektiven, Licht und Bearbeitung über mehrere Modelle zusammenhalten."
         }
       ]
     },
@@ -129,8 +161,24 @@
         {
           "label": "Automobilfotografie",
           "href": "/automobil-fotografie.html"
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Motive, Bildformate und Übergabe vor dem Shooting sauber strukturieren."
+        },
+        {
+          "label": "Fahrzeugserien konsistent planen",
+          "href": "/blog-fahrzeugserie-konsistent-planen.html",
+          "description": "Wie Perspektiven, Licht und Bearbeitung über mehrere Modelle zusammenhalten."
         }
       ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
     },
     {
       "_template": "faqBlock",
@@ -166,12 +214,12 @@
     "searchIntent": "Informationssuche mit konkretem Planungsschritt: Fahrzeugbesitzer und Autofotografen möchten Perspektiven für ein stehendes Auto mit einer Drohne planen und vorab Fluggebiet, Abstände, Registrierung, Versicherung, Standortzugang sowie Veröffentlichung klären.",
     "canonicalUrl": "https://matthiasramahi.de/blog-auto-mit-drohne-fotografieren.html",
     "legacyUrl": "blog-auto-mit-drohne-fotografieren.html",
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "ogImage": "/assets/optimized/assets-portfolio-dsc3908-1920.webp",
     "noIndex": false
   },
   "status": "scheduled",
   "createdAt": "2026-11-03T15:37:16Z",
-  "updatedAt": "2027-01-12T08:00:00.000Z",
+  "updatedAt": "2027-03-09T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Auto-Shooting-Briefing",
@@ -183,6 +231,13 @@
     {
       "label": "Automobilfotografie",
       "href": "/automobil-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fahrzeugserien konsistent planen",
+      "href": "/blog-fahrzeugserie-konsistent-planen.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

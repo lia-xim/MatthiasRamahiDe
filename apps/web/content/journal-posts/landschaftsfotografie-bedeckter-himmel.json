@@ -8,7 +8,7 @@
     "Wetter",
     "Kuration"
   ],
-  "publishedAt": "2027-04-20T07:00:00.000Z",
+  "publishedAt": "2027-08-20T07:00:00.000Z",
   "excerpt": "Diffuses Licht kann Landschaftsdetails betonen. So beurteilst du Wolken, Bildausschnitt, Belichtung und Farben, wenn die Sonne fehlt.",
   "coverImage": "/assets/landscape/202608-dresden-dsc8441.webp",
   "readingTime": 8,
@@ -17,6 +17,13 @@
       "_template": "textBlock",
       "headline": "",
       "body": "Ein bedeckter Himmel ist dann hilfreich, wenn deine Landschaft von gleichmäßiger Ausleuchtung, feinen Strukturen oder zurückhaltenden Farben lebt. Felsen, Wald, Wasser und verwitterte Oberflächen zeigen oft mehr Zeichnung, wenn harte Sonnenflecken und tiefe Schlagschatten fehlen. Das diffuse Licht nimmt einer Szene aber auch Richtung und Kontrast. Wirkt der Himmel wie eine glatte graue Fläche, macht ihn ein größerer Bildanteil selten spannender.\n\nBeurteile deshalb zuerst, was an diesem Ort gerade sichtbar wird. Gibt es Wolken mit eigener Struktur, eine klare Vordergrundform oder mehrere Ebenen in der Landschaft? Wenn ja, komponiere darum. Wenn nicht, nimm weniger Himmel auf und suche ein Motiv, das auch ohne dramatisches Sonnenlicht trägt."
+    },
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Landschaftsfotografie bei bedecktem Himmel: Die wichtigsten Punkte i",
+      "body": "Kernaussage: Er kann gleichmäßiges Licht und geringere Schattenkontraste bieten\nWolken lesen, bevor du: Eine geschlossene Decke aus gleichmäßigen Wolken verhält sich anders als ein Himmel mit einzelnen dunklen und hellen Feldern\nFarben neutral halten und: Bewölktes Tageslicht kann kühl wirken; Schatten, feuchte Luft und reflektierende Flächen verändern den Farbeindruck zusätzlich\nWenn das Motiv später: Beurteile eine Landschaft nicht nur danach, ob sie auf dem Kameradisplay sofort kräftig aussieht"
     },
     {
       "_template": "imageSequence",
@@ -78,6 +85,12 @@
       "body": "Beurteile eine Landschaft nicht nur danach, ob sie auf dem Kameradisplay sofort kräftig aussieht. Eine ruhige, diffuse Lichtstimmung kann als Wandbild gut funktionieren, wenn Bildaufbau und Tonwerte auch aus dem vorgesehenen Betrachtungsabstand lesbar bleiben. Prüfe eine bearbeitete Datei auf einem nicht überhellen Bildschirm und achte darauf, dass Wolken und Schatten noch Abstufungen enthalten. Ein kleiner Probedruck beantwortet Fragen zur Wirkung besser als übertriebene Bildschirmhelligkeit.\n\nWenn du ein Motiv als Fine-Art-Print auswählst, sind Format, Wandfläche, Betrachtungsabstand und Papieroberfläche zusätzliche Entscheidungen. Der Beitrag [Landschaftsbild als Fine-Art-Print auswählen](/blog-landschaftsbild-fine-art-print-auswaehlen.html) behandelt diese Auswahl. Eine Übersicht der verfügbaren Landschafts- und Naturmotive findest du auf der Seite [Landschaftsfotografie](/landschaftsfotografie.html)."
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Landschaftsmotive als Fine-Art-Print anfragen",
+      "text": "Ausgewählte Landschaftsaufnahmen erscheinen als hochwertige Fine-Art-Prints auf Archivpapier. Schreib mir Motivwunsch und gewünschtes Wandformat.",
+      "buttonLabel": "Fine-Art-Print anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Häufige Fragen",
       "items": [
@@ -112,11 +125,16 @@
           "label": "WhiteWall: Allgemeine Tipps zur Landschaftsfotografie",
           "href": "https://service.whitewall.com/hc/de/articles/47103556801169-4-11-Allgemeine-Tipps-zur-Landschaftsfotografie",
           "description": "Überblick zu Licht, Bildgestaltung und Motiven bei bedecktem Himmel; einzelne Empfehlungen sind vom Motiv abhängig."
-      },
-      {
-        "label": "Nikon: Fotografieren bei schlechtem Wetter",
-        "href": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/shooting-in-inclement-weather",
-        "description": "Hinweise zum Schutz der Kameraausrüstung bei Regen und zum Vermeiden unnötiger Objektivwechsel im Freien."
+        },
+        {
+          "label": "Nikon: Fotografieren bei schlechtem Wetter",
+          "href": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/shooting-in-inclement-weather",
+          "description": "Hinweise zum Schutz der Kameraausrüstung bei Regen und zum Vermeiden unnötiger Objektivwechsel im Freien."
+        },
+        {
+          "label": "Landschaftsfotografie & Fine-Art-Prints",
+          "href": "/landschaftsfotografie.html",
+          "description": "Kuratierte Landschaftsmotive als Wandbilder und Sammler-Editionen."
         }
       ]
     }
@@ -132,7 +150,7 @@
     "noIndex": false
   },
   "createdAt": "2026-11-03T17:00:00Z",
-  "updatedAt": "2027-04-20T07:00:00Z",
+  "updatedAt": "2027-08-20T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Landschaftsfotografie",
@@ -145,6 +163,13 @@
       "label": "Landschaftsbild als Fine-Art-Print auswählen",
       "href": "/blog-landschaftsbild-fine-art-print-auswaehlen.html",
       "seoPurpose": "contextual",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fotolabor & Fine-Art-Druck Düsseldorf",
+      "href": "/fotolabor-druck-duesseldorf.html",
+      "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
     }

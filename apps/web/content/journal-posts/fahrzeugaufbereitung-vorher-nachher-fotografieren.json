@@ -8,11 +8,18 @@
     "Automotive",
     "Bildserie"
   ],
-  "publishedAt": "2026-12-27T08:00:00.000Z",
+  "publishedAt": "2027-02-09T08:00:00.000Z",
   "excerpt": "Wie Fahrzeugaufbereiter und Folierer Vorher-Nachher-Bilder planen, die Arbeit sichtbar machen und den Zustand eines Fahrzeugs glaubwürdig wiedergeben.",
   "coverImage": "/uploads/payload/assets-portfolio-dsc3892-1920.webp",
   "readingTime": 8,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Vorher-Nachher-Vergleiche für Fahrzeugaufbereitung glaubwürdig umsetzen",
+      "body": "Identische Kameraposition: Stativpunkt, Brennweite, Fahrzeugwinkel und Abstand zwischen Vorher- und Nachher-Aufnahme unverändert festhalten\nGleiche Lichtbedingungen: Gemischtes Deckenlicht und wechselndes Sonnenlicht verzerren Glanz und Defekte stärker als der Polierfortschritt selbst\nFaire Bildbearbeitung & Kundenfreigabe: Beide Bilder identisch entwickeln ohne Retusche des Zustands und Kennzeichen sowie Galerie-Freigabe vorab klären"
+    },
     {
       "_template": "textBlock",
       "headline": "Ein Vergleich muss dieselbe Frage beantworten",
@@ -74,6 +81,21 @@
         {
           "label": "Nutzungsrechten für Fahrzeugfotos",
           "href": "/blog-nutzungsrechte-fahrzeugfotos.html"
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Motive, Bildformate und Übergabe vor dem Shooting sauber strukturieren."
+        },
+        {
+          "label": "Fahrzeugserien konsistent planen",
+          "href": "/blog-fahrzeugserie-konsistent-planen.html",
+          "description": "Wie Perspektiven, Licht und Bearbeitung über mehrere Modelle zusammenhalten."
         }
       ]
     },
@@ -93,6 +115,11 @@
         {
           "label": "Automobilfotografie",
           "href": "/automobil-fotografie.html"
+        },
+        {
+          "label": "Fahrzeugserien konsistent planen",
+          "href": "/blog-fahrzeugserie-konsistent-planen.html",
+          "description": "Wie Perspektiven, Licht und Bearbeitung über mehrere Modelle zusammenhalten."
         }
       ]
     },
@@ -109,8 +136,24 @@
           "label": "First Car: Aufbereitung und Folierung",
           "href": "https://www.firstcarnrw.de/",
           "description": "Der Betrieb zeigt Vorher-Nachher-Paare für Aufbereitung, Folierung und weitere Arbeiten. Das belegt einen praktischen Einsatz der Bildform, keine allgemeine Erfolgsquote."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Motive, Bildformate und Übergabe vor dem Shooting sauber strukturieren."
         }
       ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Professionelles Auto-Fotoshooting in NRW planen",
+      "text": "Du brauchst stimmige Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto im Raum Düsseldorf, Erkrath und NRW? Shootings starten bei 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
     },
     {
       "_template": "faqBlock",
@@ -136,7 +179,7 @@
     }
   ],
   "seo": {
-    "title": "Vorher-Nachher-Fotos für Fahrzeugaufbereitung | Matthias Ramahi",
+    "title": "Vorher-Nachher-Fotos für Fahrzeugaufbereitung",
     "description": "Vorher-Nachher-Bilder für Aufbereitung und Folierung planen: Perspektive, Licht, Detail, ehrliche Bearbeitung, Dateizuordnung und Kundenfreigabe.",
     "focusKeyword": "Vorher-Nachher-Fotos Fahrzeugaufbereitung",
     "secondaryKeywords": [
@@ -151,7 +194,7 @@
     "noIndex": false
   },
   "createdAt": "2026-11-03T15:00:00Z",
-  "updatedAt": "2026-12-27T08:00:00.000Z",
+  "updatedAt": "2027-02-09T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
@@ -164,6 +207,13 @@
       "label": "Auto-Shooting-Briefing",
       "href": "/blog-auto-shooting-briefing.html",
       "seoPurpose": "contextual-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fahrzeugserien konsistent planen",
+      "href": "/blog-fahrzeugserie-konsistent-planen.html",
+      "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
     }

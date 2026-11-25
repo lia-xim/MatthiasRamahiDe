@@ -9,12 +9,19 @@
     "Fahrzeugdetails",
     "Automobilfotografie"
   ],
-  "publishedAt": "2027-01-18T08:00:00.000Z",
+  "publishedAt": "2027-03-19T08:00:00.000Z",
   "excerpt": "Cockpit, Displays und Materialien verständlich fotografieren: Perspektiven, Spiegelungen, Licht und eine klare Bildfolge für den Auto-Innenraum.",
   "coverImage": "/assets/optimized/assets-portfolio-dsc2986-1920.webp",
   "coverAlt": "Cockpit eines Automobils mit Mittelkonsole und sichtbaren Bedienflächen",
   "readingTime": 8,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Auto-Innenraum fotografieren: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Der Blick vom Rücksitz ist ein guter Startpunkt, weil Lenkrad, Instrumente und Mittelkonsole zusammen in die Aufnahme passen\nMit der Bildaufgabe beginnen: Ein Auto-Innenraum lässt sich selten mit einem einzigen Foto verständlich zeigen\nDisplays und Helligkeitsunterschiede testen: Ein Infotainment-Display kann heller sein als der Fußraum, während Tageslicht durch die Seitenscheibe auf Armaturen und Sitze fällt\nTestbilder gezielt korrigieren: Ändere bei der Fehlersuche jeweils nur eine Sache und vergleiche das nächste Testbild mit derselben Perspektive"
+    },
     {
       "_template": "textBlock",
       "headline": "Mit der Bildaufgabe beginnen",
@@ -80,6 +87,12 @@
       "body": "Ändere bei der Fehlersuche jeweils nur eine Sache und vergleiche das nächste Testbild mit derselben Perspektive. So erkennst du, ob die Änderung wirklich geholfen hat.\n\nStreifen auf dem Display: Prüfe die vergrößerte Aufnahme und teste eine andere Verschlusszeit oder die Anti-Flicker-Funktion deiner konkreten Kamera. Wenn du die Ursache nicht erkennst, vergleiche das Display einmal mit den anderen eingeschalteten Lichtquellen und einmal ohne sie. Sony beschreibt mehrere modellabhängige Gegenmaßnahmen; ein einzelner Verschlusswert passt nicht für jedes Display.\n\nGebogene Armaturen am Bildrand: Stelle dich etwas weiter zurück, nimm ein moderateres Weitwinkel und halte die Kamera möglichst gerade. Verschiebe wichtige Bedienelemente aus den äußersten Bildecken, bevor du die Perspektive in der Bearbeitung korrigierst.\n\nHelle Fensterreflexe über Schaltern oder Display: Verändere zuerst Kamerawinkel oder Lichtposition. Ein Polfilter ist ein weiterer Test, kostet im Innenraum aber Licht und kann einzelne Reflexe stehen lassen.\n\nDunkler Fußraum bei weißem Bildschirm: Entscheide, was die Aufnahme erklären soll. Wenn Display und Kabine beide lesbar sein müssen, verbessere zunächst das Licht oder mache bei unverändertem Aufbau eine kurze Belichtungsreihe. Prüfe die Einzelbilder, bevor du sie kombinierst; Bildinhalte oder Anzeigen können sich zwischen den Aufnahmen ändern."
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Häufige Fragen zum Fotografieren von Auto-Innenräumen",
       "items": [
@@ -123,6 +136,11 @@
           "label": "Nikon: Polarisationsfilter, Reflexe und Lichtverlust",
           "href": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/polarizing-filters-add-pow-to-pictures",
           "description": "Grundlagen zu Reflexminderung und dem Lichtverlust durch einen Polarisationsfilter."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]
     }
@@ -145,7 +163,7 @@
   },
   "status": "scheduled",
   "createdAt": "2026-11-03T16:34:01Z",
-  "updatedAt": "2027-01-18T08:00:00.000Z",
+  "updatedAt": "2027-03-19T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",

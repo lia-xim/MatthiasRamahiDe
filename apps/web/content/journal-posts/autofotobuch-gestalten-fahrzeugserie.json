@@ -8,16 +8,23 @@
     "Fotobuch",
     "Druck"
   ],
-  "publishedAt": "2027-08-04T07:00:00.000Z",
+  "publishedAt": "2028-02-18T08:00:00.000Z",
   "excerpt": "Aus Autofotos wird ein stimmiges Fotobuch, wenn Thema, Bildfolge, Format und Bildtexte zusammenpassen. So planst du Auswahl, Doppelseiten und Druckprüfung.",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
-  "coverAlt": "Schwarzes Fahrzeug mit großem B-Emblem vor Hafenanlagen im Abendlicht; es spiegelt sich auf nassem Boden.",
+  "coverImage": "/assets/optimized/assets-portfolio-dsc2986-1920.webp",
+  "coverAlt": "Interieur · Location",
   "readingTime": 8,
   "blocks": [
     {
       "_template": "textBlock",
       "headline": "",
       "body": "Ein Auto-Fotobuch wird lesbar, wenn die Bilder eine Richtung haben. Eine vollständige Fahrzeugansicht kann den Einstieg bilden; Details, Innenraum und Umgebung können danach unterschiedliche Seitenaufgaben übernehmen. Wer zuerst alle gelungenen Fotos in ein Layout schiebt, bekommt leicht eine Folge ähnlicher Ansichten. Plane deshalb erst das Thema und die Bildreihenfolge. Das Buchformat und die Gestaltung kommen danach.\n\nDieser Leitfaden hilft dir, vorhandene oder neu geplante Autofotos für ein gedrucktes Buch auszuwählen. Die Hinweise gelten für selbst gestaltete Bücher und für die Abstimmung mit einem Fotografen oder Layout-Profi. Druckanbieter unterscheiden sich bei Formaten, Beschnitt und Werkzeugen; ihre aktuellen Vorgaben bleiben maßgeblich."
+    },
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Auto-Fotobuch gestalten: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Eine feste Zahl gibt es nicht\nLege zuerst fest, was: Ein Buch über ein einzelnes Fahrzeug kann verschiedene Geschichten erzählen\nDoppelseiten brauchen Luft an: Ein Fotobuch wird Seite für Seite gestaltet, aber beim Blättern oft als Doppelseite gesehen\nWenn ein neues Shooting geplant ist: Sag vor dem Termin, dass die Bilder in ein Fotobuch sollen"
     },
     {
       "_template": "textBlock",
@@ -84,6 +91,12 @@
       "body": "Sag vor dem Termin, dass die Bilder in ein Fotobuch sollen. Das verändert nicht automatisch die Fotografie, kann aber für Format, Bildausschnitt und Motivliste wichtig sein. Ein Bild, das später über eine Doppelseite laufen soll, braucht an der Bindung genügend Raum. Für ein Buch mit dokumentarischem Aufbau sollten außerdem die benötigten Zustände, Details und belegbaren Zeitpunkte vorab gesammelt werden.\n\nWenn du einen Fotografen auswählst, prüfe, ob sein Portfolio nicht nur einzelne Hero-Bilder, sondern eine vollständige, zusammenhängende Bildserie zeigt. Kläre vor dem Auftrag, welche Dateien du erhältst und ob du sie für das geplante Layout verwenden darfst. Für eine fotografische Serie des Fahrzeugs bietet die [Automobilfotografie](/automobil-fotografie.html) den passenden Einstieg. Informationen zu den auf der Website aufgeführten Druck- und Editionsleistungen findest du unter [Drucken und Sonderanfertigungen](/drucke-sonderanfertigungen-duesseldorf.html)."
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Häufige Fragen zum Auto-Fotobuch",
       "items": [
@@ -113,6 +126,21 @@
           "label": "Saal Digital: Gestaltungsmodi für Fotobücher",
           "href": "https://www.saal-digital.de/hilfe-center/gestaltungsmoeglichkeiten-fuer-fotobuecher/",
           "description": "Offizielle Produktanleitung zu Bildauswahl, Reihenfolge, automatischen Layouts und Seitenübersicht. Funktionen und Beschnittregeln bleiben produktspezifisch."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Motive, Bildformate und Übergabe vor dem Shooting sauber strukturieren."
+        },
+        {
+          "label": "Fahrzeugserien konsistent planen",
+          "href": "/blog-fahrzeugserie-konsistent-planen.html",
+          "description": "Wie Perspektiven, Licht und Bearbeitung über mehrere Modelle zusammenhalten."
         }
       ]
     }
@@ -129,11 +157,11 @@
     "searchIntent": "Informations- und kommerzielle Erwägung: Fahrzeugbesitzer möchten aus vorhandenen oder neu erstellten Autofotos ein gebundenes Fotobuch planen. Die qualitative SERP-Stichprobe fand fahrzeugbezogene Fotobuch-Angebote; das belegt thematische Relevanz, nicht Suchvolumen oder Nachfrage auf matthiasramahi.de. Im Crawl-Foundry-Workspace liegen für diesen Kandidaten keine aktuellen Keywordwerte, kein GSC-Snapshot und kein gemessener AI-Fanout vor. Abgrenzung: Dieser Beitrag behandelt die Buchfolge, Doppelseiten, Bildtexte und produktspezifische Druckprüfung; autofoto-fine-art-print-auswaehlen behandelt ein einzelnes Wandbild, serie-kuratieren die allgemeine Auswahl ohne Buchbindung. Der Beitrag behauptet kein eigenes Fotobuch-Produkt.",
     "canonicalUrl": "https://matthiasramahi.de/blog-autofotobuch-gestalten-fahrzeugserie.html",
     "legacyUrl": "blog-autofotobuch-gestalten-fahrzeugserie.html",
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "ogImage": "/assets/optimized/assets-portfolio-dsc2986-1920.webp",
     "noIndex": false
   },
   "createdAt": "2026-11-05T08:00:00Z",
-  "updatedAt": "2027-08-04T07:00:00Z",
+  "updatedAt": "2028-02-18T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",

@@ -37,9 +37,9 @@
     "migrationStatus": "new",
     "renderSource": "structured-astro"
   },
-  "status": "scheduled",
+  "status": "draft",
   "createdAt": "2026-11-07T00:00:00.000Z",
-  "updatedAt": "2027-11-06T08:00:00.000Z",
+  "updatedAt": "2026-11-23T18:30:00.000Z",
   "relatedPages": [
     {
       "label": "Fotografie-Bücher nach Lernziel",
@@ -145,17 +145,17 @@
         {
           "label": "Penguin Random House: Understanding Exposure, Fourth Edition",
           "href": "https://www.penguinrandomhouse.com/books/248820/understanding-exposure-fourth-edition-by-bryan-peterson/",
-        "description": "Offizielle bibliografische Angaben zu Ausgabe, ISBN, Erscheinungsdatum, Umfang und Inhaltsbeschreibung."
+          "description": "Offizielle bibliografische Angaben zu Ausgabe, ISBN, Erscheinungsdatum, Umfang und Inhaltsbeschreibung."
         },
-      {
-        "label": "Penguin Random House: Understanding Exposure, 3rd Edition",
-        "href": "https://www.penguinrandomhouse.com/books/199542/understanding-exposure-3rd-edition-by-bryan-peterson/9780817400293/",
-        "description": "Offizielle Angaben zur dritten Ausgabe aus dem Jahr 2010 und ihrer ISBN."
-      },
+        {
+          "label": "Penguin Random House: Understanding Exposure, 3rd Edition",
+          "href": "https://www.penguinrandomhouse.com/books/199542/understanding-exposure-3rd-edition-by-bryan-peterson/9780817400293/",
+          "description": "Offizielle Angaben zur dritten Ausgabe aus dem Jahr 2010 und ihrer ISBN."
+        },
         {
           "label": "Hugendubel: Understanding Exposure, Fourth Edition",
           "href": "https://www.hugendubel.de/de/buch_kartoniert/bryan_peterson-understanding_exposure_fourth_edition-24468703-produkt-details.html",
-        "description": "Händlerseite mit Inhaltsverzeichnis, ISBN und Sprachangabe zur englischsprachigen Ausgabe; Preis und Verfügbarkeit können sich ändern."
+          "description": "Händlerseite mit Inhaltsverzeichnis, ISBN und Sprachangabe zur englischsprachigen Ausgabe; Preis und Verfügbarkeit können sich ändern."
         }
       ]
     }

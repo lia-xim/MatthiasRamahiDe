@@ -5,9 +5,10 @@ import { getTinaVisualDocument, isTinaEditRequest } from '../lib/tinaVisual'
 
 export const prerender = false
 
-const tinaDoc = isTinaEditRequest(Astro.request) ? await getTinaVisualDocument('pages', 'home.json') : null
+const isEditing = isTinaEditRequest(Astro.request)
+const tinaDoc = isEditing ? await getTinaVisualDocument('pages', 'home.json') : null
 
-Astro.response.headers.set('cache-control', livePageCacheControl())
+Astro.response.headers.set('cache-control', isEditing ? 'no-store' : livePageCacheControl())
 Astro.response.headers.set('x-cms-live-route', 'home')
 ---
 <NativeHomePage doc={tinaDoc || undefined} />

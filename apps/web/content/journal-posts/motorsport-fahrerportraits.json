@@ -9,7 +9,7 @@
     "Location",
     "Sicherheit"
   ],
-  "publishedAt": "2026-12-17T08:00:00.000Z",
+  "publishedAt": "2027-02-02T08:00:00.000Z",
   "excerpt": "Ein Fahrerporträt braucht ein eigenes Zeitfenster und ein klares Bildziel. So planst du Setting, Helm, Teamkleidung, Freigaben und passende Ausgabeformate.",
   "coverImage": "/assets/optimized/assets-portfolio-dsc2986-1920.webp",
   "coverAlt": "Cockpit eines Automobils mit sichtbarer Mittelkonsole",
@@ -17,8 +17,10 @@
   "blocks": [
     {
       "_template": "textBlock",
-      "headline": "Kurzantwort: ein eigener Termin mit einem klaren Bildziel",
-      "body": "Ein Motorsport-Fahrerporträt funktioniert am besten als eigener kleiner Fototermin. Lege fest, wo die Bilder gebraucht werden: im Profil, auf der Teamseite, in einer Pressemappe oder in Unterlagen für Partner. Diese Zwecke brauchen oft andere Ausschnitte und Bildwirkungen. Ein einzelnes Querformat passt selten als enger Avatar und als breites Pressebild zugleich.\n\nBestimme zwei oder drei Ergebnisse. Eine Aufnahme ohne Helm macht die Person erkennbar; ein Bild mit Helm oder Rennanzug ordnet sie dem Motorsport zu. Fahrzeug, Box oder Fahrerlager können den Zusammenhang herstellen, sofern Ort und Zugang geklärt sind.\n\nDer Termin unterscheidet sich von der Begleitung eines Rennens. Für allgemeine Portraitplanung bietet die Portraitfotografie weitere Anknüpfungspunkte."
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Fahrerporträts im Motorsport gezielt vorbereiten",
+      "body": "Eigenes Zeitfenster planen: Kurztermin außerhalb von Fahrerbriefing und technischer Abnahme ansetzen\nZwei Varianten kombinieren: Gesicht ohne Helm für Teamseite und Pressebiografie plus Action-/Helm-Variante für Rennberichte und Sponsoren\nRechte & Benennung: Einwilligung (KunstUrhG), Sponsoren-Weitergabe und Dateibenennung mit Fahrername und Motivcode direkt im Briefing regeln"
     },
     {
       "_template": "imageSequence",
@@ -46,6 +48,21 @@
         {
           "label": "Portraitfotografie",
           "href": "/portraitfotografie.html"
+        },
+        {
+          "label": "Sportwagenfotografie in NRW",
+          "href": "/sportwagen-fotografie.html",
+          "description": "Dynamische und ruhige Serien für Sportwagen, Teams und Sammler."
+        },
+        {
+          "label": "Rolling Shots mit dem Auto",
+          "href": "/blog-rolling-shots-auto.html",
+          "description": "Technik, Rollentrennung und sichere Alternativen für bewegte Fahrzeugbilder."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Pflichtmotive und Formate vorab verbindlich abstimmen."
         }
       ]
     },
@@ -71,6 +88,21 @@
         {
           "label": "ADAC-Motorsport-Akkreditierungssystem",
           "href": "https://akkreditierung.adac-motorsport.de/registrierung.html"
+        },
+        {
+          "label": "Sportwagenfotografie in NRW",
+          "href": "/sportwagen-fotografie.html",
+          "description": "Dynamische und ruhige Serien für Sportwagen, Teams und Sammler."
+        },
+        {
+          "label": "Rolling Shots mit dem Auto",
+          "href": "/blog-rolling-shots-auto.html",
+          "description": "Technik, Rollentrennung und sichere Alternativen für bewegte Fahrzeugbilder."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Pflichtmotive und Formate vorab verbindlich abstimmen."
         }
       ]
     },
@@ -87,7 +119,7 @@
     {
       "_template": "textBlock",
       "headline": "Veröffentlichung, Einwilligung und Bildrechte auseinanderhalten",
-      "body": "Bei einem Portrait sind zwei Fragen getrennt zu klären: Darf das Bild veröffentlicht werden, und für welche Zwecke darf es weitergegeben werden? Das Kunsturhebergesetz (§ 22) nennt grundsätzlich die Einwilligung für die Veröffentlichung von Bildnissen. Es gibt Ausnahmen; § 23 KunstUrhG beschreibt diese und schützt berechtigte Interessen. Ein Motorsportevent erlaubt nicht automatisch jede spätere Nutzung. Kläre den konkreten Fall schriftlich. Das ist eine redaktionelle Orientierung, keine Rechtsberatung.\n\nDavon getrennt ist die Nutzungserlaubnis am Foto. Der Fotograf bleibt Urheber; vereinbart wird, wer das Bild wie verwenden darf. § 31 UrhG beschreibt Nutzungsrechte, die räumlich, zeitlich oder inhaltlich beschränkt werden können. Halte fest, ob die Auswahl für Profil und Teamseite sowie auch für Presse- oder Sponsorunterlagen verwendet werden darf.\n\nBei Minderjährigen oder besonderen Vertragsbedingungen sollte die zuständige Stelle Einwilligung und Lizenz vorab prüfen."
+      "body": "Bei einem Portrait sind zwei Fragen getrennt zu klären: Darf das Bild veröffentlicht werden, und für welche Zwecke darf es weitergegeben werden? Das Kunsturhebergesetz (§ 22) nennt grundsätzlich die Einwilligung für die Veröffentlichung von Bildnissen. Es gibt Ausnahmen; § 23 KunstUrhG beschreibt diese und schützt berechtigte Interessen. Ein Motorsportevent erlaubt nicht automatisch jede spätere Nutzung. Kläre den konkreten Fall schriftlich.\n\nDavon getrennt ist die Nutzungserlaubnis am Foto. Der Fotograf bleibt Urheber; vereinbart wird, wer das Bild wie verwenden darf. § 31 UrhG beschreibt Nutzungsrechte, die räumlich, zeitlich oder inhaltlich beschränkt werden können. Halte fest, ob die Auswahl für Profil und Teamseite sowie auch für Presse- oder Sponsorunterlagen verwendet werden darf.\n\nBei Minderjährigen oder besonderen Vertragsbedingungen sollte die zuständige Stelle Einwilligung und Lizenz vorab prüfen."
     },
     {
       "_template": "linkList",
@@ -104,6 +136,11 @@
         {
           "label": "§ 31 UrhG",
           "href": "https://www.gesetze-im-internet.de/urhg/__31.html"
+        },
+        {
+          "label": "Sportwagenfotografie in NRW",
+          "href": "/sportwagen-fotografie.html",
+          "description": "Dynamische und ruhige Serien für Sportwagen, Teams und Sammler."
         }
       ]
     },
@@ -116,6 +153,12 @@
       "_template": "textBlock",
       "headline": "Das Portraitbriefing auf einer Seite",
       "body": "Vor dem Termin sollten diese Punkte beantwortet sein:\n\n• Einsatz: Profil, Teamseite, Pressemappe oder weitere Nutzung\n• Personen: Namen und Kontakt am Eventtag\n• Motive: mit oder ohne Helm, enger oder weiter Ausschnitt\n• Kleidung: bestätigter Anzug und sichtbare Marken\n• Ort und Zeit: Freigabe, ruhiges Fenster und Puffer\n• Bildserie: gemeinsamer Hintergrund und gewünschte Varianten\n• Rechte: Einwilligung und Umfang der Bildlizenz\n• Ausgabe: Anzahl, Formate, Auswahl und Liefertermin\n\nEin eigenes Briefing hält den Termin klar umrissen, damit die Person im Mittelpunkt bleibt und nicht der ganze Rennablauf neu geplant werden muss."
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Sportwagen & Performance-Serie anfragen",
+      "text": "Ob Trackday, Launch oder charakterstarkes Einzelshooting im Raum Düsseldorf und NRW: Individuelle Produktionen beginnen bei 250 € inkl. MwSt.",
+      "buttonLabel": "Sportwagen-Shooting anfragen"
     },
     {
       "_template": "faqBlock",
@@ -147,11 +190,25 @@
   },
   "status": "scheduled",
   "createdAt": "2026-11-03T15:21:25Z",
-  "updatedAt": "2026-12-17T08:00:00.000Z",
+  "updatedAt": "2027-02-02T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Motorsportfotografie",
       "href": "/motorsport-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Sportwagenfotografie in NRW",
+      "href": "/sportwagen-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Rolling Shots mit dem Auto",
+      "href": "/blog-rolling-shots-auto.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

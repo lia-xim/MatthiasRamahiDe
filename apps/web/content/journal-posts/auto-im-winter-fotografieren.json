@@ -9,11 +9,18 @@
     "Schnee",
     "Fahrzeugshooting"
   ],
-  "publishedAt": "2026-12-05T08:00:00.000Z",
+  "publishedAt": "2026-12-01T08:00:00.000Z",
   "excerpt": "Auto im Winter fotografieren: Lichtfenster, Schnee, Lack, Kamera und Location so planen, dass die Fahrzeugserie sicher und farblich nachvollziehbar bleibt.",
   "coverImage": "/assets/optimized/assets-photos-automobil-sunset-1920.webp",
   "readingTime": 9,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Das Wichtigste für scharfe, farbtreue Autofotos im Winter",
+      "body": "Schnee richtig belichten: Bei großen Schneeflächen über Display/Histogramm kontrollieren (+0,7 bis +1,7 EV gegen Graustich), ohne helle Lackpartien zu überstrahlen\nTechnik gegen Kälte: Ersatzakkus körpernah warm halten und Kamera nach dem Termin in geschlossener Fototasche langsam gegen Beschlag akklimatisieren\nSicherheit & Reihenfolge: Zuerst eisfreie, erlaubte Standfläche sichern, Pflichtansichten (3/4-Front, Seite, Heck, Details) zuerst aufnehmen und erst danach Winterstimmung ergänzen"
+    },
     {
       "headline": "Was soll der Winter im Bild leisten?",
       "body": "Ein Auto im Winter zu fotografieren verlangt zuerst eine klare Entscheidung: Soll das Bild den Fahrzeugzustand gut lesbar zeigen, oder soll Schnee die Stimmung tragen? Bei Verkaufs- und Bestandsbildern müssen Lackfarbe, Räder, Scheiben und Karosserielinien erkennbar bleiben. Für ein persönliches oder redaktionelles Motiv darf die Umgebung stärker mitspielen. Beide Aufgaben können in einer Serie vorkommen, brauchen aber eine Reihenfolge: erst die klaren Ansichten, danach die atmosphärischen Varianten.\n\nDer Winter verändert vor allem den Arbeitsablauf. Helles Schneefeld kann die Belichtungsmessung beeinflussen, tief stehendes Licht erzeugt lange Reflexe auf Motorhaube und Seitentüren, und Kälte verkürzt je nach Kamera und Akku die nutzbare Zeit. Eine gute Serie beginnt deshalb mit einem realistischen Plan für Licht, Untergrund, Fahrzeugvorbereitung und Equipment. Die allgemeinen Perspektiv- und Kameraeinstellungen für Autos stehen im [Ratgeber zum Auto fotografieren](/auto-fotografieren-tipps.html); hier geht es um die zusätzlichen Entscheidungen bei Kälte, Frost und Schnee.",
@@ -74,6 +81,12 @@
       "_template": "textBlock"
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Professionelles Auto-Fotoshooting in NRW planen",
+      "text": "Du brauchst stimmige Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto im Raum Düsseldorf, Erkrath und NRW? Shootings starten bei 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "headline": "Häufige Fragen",
       "items": [
         {
@@ -112,6 +125,11 @@
           "label": "mobile.de: Auto fotografieren für ein Verkaufsinserat",
           "href": "https://www.mobile.de/magazin/artikel/autoverkauf-so-gelingen-dir-gute-autofotos-13136",
           "description": "Allgemeine Hinweise zu Autovorbereitung, Perspektiven und Bildauswahl für Inserate."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ],
       "_template": "linkList"
@@ -135,11 +153,25 @@
   },
   "status": "scheduled",
   "createdAt": "2026-11-03T12:10:31Z",
-  "updatedAt": "2026-12-05T08:00:00.000Z",
+  "updatedAt": "2026-12-01T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
       "href": "/automobil-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fahrzeugserien konsistent planen",
+      "href": "/blog-fahrzeugserie-konsistent-planen.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

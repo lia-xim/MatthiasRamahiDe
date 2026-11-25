@@ -14,6 +14,13 @@
   "readingTime": 8,
   "blocks": [
     {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Portraitshooting bei wechselndem Wetter: Die wichtigsten Punkte im Ü",
+      "body": "Kernaussage: In der Regel nicht. Bedeckter Himmel kann sehr gutes Licht liefern\nNicht das Wetter ist: Ein Outdoor-Portrait scheitert selten daran, dass der Himmel nicht so aussieht wie in der Vorhersage\nBedeckter Himmel braucht trotzdem: Wolken machen Licht weicher, aber nicht automatisch vorteilhaft\nDie Reihenfolge schützt die: Bei wechselnden Bedingungen entstehen zuerst die Bilder, die für die Nutzung unverzichtbar sind"
+    },
+    {
       "headline": "Nicht das Wetter ist das Problem, sondern ein einziger Plan",
       "body": "Ein Outdoor-Portrait scheitert selten daran, dass der Himmel nicht so aussieht wie in der Vorhersage. Schwierig wird es, wenn Konzept, Kleidung und Location nur unter einer einzigen Bedingung funktionieren. Direktes Abendlicht kann stark sein, ist aber keine verlässliche Grundlage für Pflichtmotive, die an einem festen Termin entstehen müssen.\n\nEine robuste Planung unterscheidet zwischen der Aufgabe und der bevorzugten Stimmung. Die Aufgabe lautet etwa: drei brauchbare Formate für Website und Presse. Die Stimmung darf sich mit dem Wetter verändern. So können sichere Bilder im offenen Schatten oder unter einem Vordach entstehen, bevor ein kurzes Sonnenfenster für eine freiere Variante genutzt wird. Das Ergebnis hängt nicht mehr vollständig von fünf idealen Minuten ab.",
       "_template": "textBlock"
@@ -67,6 +74,39 @@
       "_template": "textBlock"
     },
     {
+      "_template": "linkList",
+      "headline": "Portrait-Shootings flexibel in NRW planen",
+      "links": [
+        {
+          "label": "Portrait-Fotoshooting Düsseldorf",
+          "href": "/portrait-fotoshooting-duesseldorf.html"
+        },
+        {
+          "label": "Business Portrait Düsseldorf",
+          "href": "/business-portrait-duesseldorf.html"
+        },
+        {
+          "label": "Paar- & Familienshooting Düsseldorf",
+          "href": "/paarshooting-familienshooting-duesseldorf.html"
+        },
+        {
+          "label": "Portfolio Portrait",
+          "href": "/portfolio/portfolio-auswahl-portrait"
+        },
+        {
+          "label": "Portraitfotografie in Düsseldorf & NRW",
+          "href": "/portraitfotografie.html",
+          "description": "Business-, Künstler- und Charakterportraits mit ruhiger Führung."
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Entspanntes Portrait-Shooting mit sicherem Plan B",
+      "text": "Wir nutzen das beste Lichtfenster oder wechseln flexibel in überdachte Locations – Portrait-Shootings ab 250 € inkl. MwSt.",
+      "buttonLabel": "Termin anfragen"
+    },
+    {
       "headline": "Kurze Fragen",
       "items": [
         {
@@ -103,11 +143,25 @@
   },
   "status": "published",
   "createdAt": "2026-08-09T09:00:00.000Z",
-  "updatedAt": "2026-08-24T20:51:37.611Z",
+  "updatedAt": "2026-11-24T09:15:00.000Z",
   "relatedPages": [
     {
       "label": "Portraitfotografie",
       "href": "/portraitfotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Lichtformer in der Portraitfotografie",
+      "href": "/blog-lichtformer-portraitfotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Portraits ohne generische Posen",
+      "href": "/blog-portraits-ohne-generische-posen.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

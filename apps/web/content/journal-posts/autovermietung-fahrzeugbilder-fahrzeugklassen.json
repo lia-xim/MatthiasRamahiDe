@@ -9,13 +9,20 @@
     "Fahrzeugfotografie",
     "Fahrzeugklassen"
   ],
-  "publishedAt": "2027-01-06T08:00:00.000Z",
+  "publishedAt": "2027-02-26T08:00:00.000Z",
   "status": "scheduled",
   "excerpt": "Mietwagenbilder müssen Fahrzeugklassen verständlich zeigen, ohne ein bestimmtes Modell zu versprechen. So planen Vermieter eine klare und aktuelle Bildauswahl.",
   "coverImage": "/assets/optimized/assets-portfolio-dsc2358-1920.webp",
   "coverAlt": "Orangefarbener Sportwagen in einer Parkgarage",
   "readingTime": 8,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Fahrzeugklassen für Autovermietungen verständlich bebildern",
+      "body": "Klasse statt Verwechslung: Sichtbare Merkmale wie Karosserieform, Türzahl und Kofferraumgröße hervorheben und im Bildtext als „Beispielmodell“ eindeutig einordnen\nKonsistente Vergleichsreihe: Gleicher Winkel und ähnliche Umgebung zwischen Kleinwagen, Kombi, SUV und Transporter erleichtern Kunden den Klassenvergleich\nReale vs. Hersteller-Assets: Eigene lokale Aufnahmen auf sauberer Fläche differenzieren das Angebot glaubwürdig auf Landingpages und Buchungsseiten"
+    },
     {
       "headline": "Ein Klassenbild ist ein Beispiel, kein Versprechen",
       "body": "Auf einer Mietwagen-Seite sieht ein Modellfoto oft wie das Bild eines konkret buchbaren Autos aus. Gebucht wird je nach Angebot aber eine Fahrzeuggruppe oder Kategorie. Dann muss die Darstellung zwei Dinge zugleich leisten: Sie soll die Klasse für eine Auswahl greifbar machen und offenlassen, dass das tatsächliche Fahrzeug abweichen kann. Ein sauber geplantes Bild löst diese Aufgabe nicht allein. Bild, Beschriftung und Buchungstext müssen zusammenpassen.\n\nDer ADAC erklärt in seinen Mietwagen-FAQ, dass die abgebildeten Modelle Beispiele für Ausstattung und Leistung der jeweiligen Fahrzeuggruppe sind und ein bestimmtes Modell nicht bestätigt werden kann. SIXT kennzeichnet seine Modellübersicht mit Formulierungen wie „oder ähnlich“. Das sind Beispiele für diese Anbieter; daraus folgt keine allgemeine Regel für alle Vermietungen. Für die Produktion heißt das: erst klären, was die konkrete Buchungsseite zusagt, und danach das Motiv planen. Ein Foto sollte keine Erwartung erzeugen, die der Text oder die Buchungsbedingungen nicht tragen.",
@@ -81,13 +88,29 @@
       "links": [
         {
           "label": "Automotive-Fotografie",
-          "href": "/automotive-fotografie.html"
+          "href": "/automobil-fotografie.html"
         },
         {
           "label": "Auto fotografieren: Tipps, Einstellungen und Perspektiven",
           "href": "/auto-fotografieren-tipps.html"
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Motive, Bildformate und Übergabe vor dem Shooting sauber strukturieren."
+        },
+        {
+          "label": "Fahrzeugserien konsistent planen",
+          "href": "/blog-fahrzeugserie-konsistent-planen.html",
+          "description": "Wie Perspektiven, Licht und Bearbeitung über mehrere Modelle zusammenhalten."
         }
       ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Professionelles Auto-Fotoshooting in NRW planen",
+      "text": "Du brauchst stimmige Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto im Raum Düsseldorf, Erkrath und NRW? Shootings starten bei 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
     },
     {
       "headline": "Häufige Fragen",
@@ -119,6 +142,16 @@
           "label": "SIXT: Mietwagen-Kategorien und Fahrzeugmodelle",
           "href": "https://www.sixt.de/flotte/fahrzeugmodelle/",
           "description": "Zeigt die eigene Modellübersicht mit „oder ähnlich“-Kennzeichnung, Angaben zu Sitzplätzen, Türen und Gepäck sowie den Hinweis auf standortabhängige Flotten."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Motive, Bildformate und Übergabe vor dem Shooting sauber strukturieren."
         }
       ],
       "_template": "linkList"
@@ -135,11 +168,11 @@
     "noIndex": false
   },
   "createdAt": "2026-11-03T15:30:53Z",
-  "updatedAt": "2027-01-06T08:00:00.000Z",
+  "updatedAt": "2027-02-26T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automotive-Fotografie für Unternehmen",
-      "href": "/automotive-fotografie.html",
+      "href": "/automobil-fotografie.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
@@ -148,6 +181,13 @@
       "label": "Auto fotografieren: Tipps und Perspektiven",
       "href": "/auto-fotografieren-tipps.html",
       "seoPurpose": "supporting-guide",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
     }

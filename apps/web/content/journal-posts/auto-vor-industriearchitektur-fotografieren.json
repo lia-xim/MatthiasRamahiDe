@@ -9,11 +9,18 @@
     "Automotive Location",
     "Fahrzeugfotografie"
   ],
-  "publishedAt": "2027-04-10T07:00:00.000Z",
+  "publishedAt": "2027-08-03T07:00:00.000Z",
   "excerpt": "Wie du ein Auto vor Industriearchitektur ruhig und prägnant fotografierst: Linien ordnen, Reflexe prüfen, Licht nutzen und den Zugang sicher klären.",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+  "coverImage": "/uploads/payload/assets-portfolio-dsc2316-1920.webp",
   "readingTime": 7,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Auto vor Industriekulisse fotografieren: Die wichtigsten Punkte im Ü",
+      "body": "Kernaussage: Eine Fläche mit klaren Linien und ausreichend Abstand zum Fahrzeug ist ein guter Ausgangspunkt\nIndustriearchitektur trägt ein Autofoto,: Ein Auto vor Industriearchitektur zu fotografieren funktioniert dann, wenn Gebäude, Stahlträger, Tanks oder Gleise das Fahrzeug einrahmen, statt mit ihm um\nLicht im Industrieumfeld beobachten: Bewölkung kann harte Kontraste abschwächen und Reflexe weicher machen\nEin Ablauf für das: Bestätige Zugang und Nutzungszweck mit dem Betreiber; parke nur auf einer freigegebenen Fläche"
+    },
     {
       "headline": "Industriearchitektur trägt ein Autofoto, wenn ihre Linien dem Fahrzeug Raum lassen",
       "body": "Ein Auto vor Industriearchitektur zu fotografieren funktioniert dann, wenn Gebäude, Stahlträger, Tanks oder Gleise das Fahrzeug einrahmen, statt mit ihm um Aufmerksamkeit zu kämpfen. Die Umgebung darf rau und dicht sein. Entscheidend ist, dass eine klare Hauptform bleibt: zuerst das Auto, danach die Architektur. Suche deshalb nicht einfach eine spektakuläre Fassade, sondern eine Stelle, an der Fahrzeugkontur und Hintergrund zueinander passen.\n\nDieser Beitrag behandelt die Bildgestaltung in einem Industrieumfeld. Für eine breitere Auswahl von Auto-Fotospots und allgemeine Grundlagen zu Licht und Perspektive gibt es eigene Ratgeber auf der Website.",
@@ -63,6 +70,12 @@
       "headline": "Ein Ablauf für das nächste Auto-Shooting im Industrieumfeld",
       "body": "Nutze vor dem eigentlichen Shooting diese kurze Abnahmefolge:\n1. Bestätige Zugang und Nutzungszweck mit dem Betreiber; parke nur auf einer freigegebenen Fläche.\n2. Wähle eine Gesamtansicht und richte die Kamera möglichst waagerecht aus. Prüfe, ob eine Kante Dach, Spiegel oder Räder ungünstig schneidet.\n3. Nimm drei Varianten auf: Umgebung, Fahrzeug als Mittelpunkt, Architektur als Rahmen. Ändere zwischen den Testbildern jeweils nur Standpunkt oder Ausschnitt und notiere, was du verändert hast.\n4. Prüfe in der Vorschau helle Reflexe auf Lack und Glas, ausgefressene Flächen, dunkle Details und Gebäudelinien am Bildrand. Korrigiere erst danach Licht oder Fahrzeugwinkel.\n5. Fotografiere die ausgewählte Gesamtansicht und ergänze nur Motive, die eine andere Bildrolle erfüllen.\n6. Vergleiche die Serie auf vollständige Fahrzeugkontur, störende Überlagerungen, konsistente Farbe und erkennbare Location. Wähle erst dann die finale Variante.\n\nWenn eine Linie die Silhouette durchschneidet, ändere zuerst deinen Standpunkt. Wenn der Hintergrund ablenkt, geh näher an das Fahrzeug oder wähle einen ruhigeren Ausschnitt. So bleibt die Industriefläche Kulisse und das Auto das Hauptmotiv.",
       "_template": "textBlock"
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
     },
     {
       "headline": "Häufige Fragen zur Autofotografie vor Industriearchitektur",
@@ -130,6 +143,11 @@
           "label": "Nikon: Linien für die Bildkomposition nutzen",
           "href": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/5-easy-composition-guidelines",
           "rel": "nofollow"
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ],
       "_template": "linkList"
@@ -148,11 +166,11 @@
     "searchIntent": "How-to-Suche: Ein Auto vor Industriearchitektur mit stimmigen Linien, Licht und Reflexen fotografieren und den Zugang sicher planen.",
     "canonicalUrl": "https://matthiasramahi.de/blog-auto-vor-industriearchitektur-fotografieren.html",
     "legacyUrl": "blog-auto-vor-industriearchitektur-fotografieren.html",
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "ogImage": "/uploads/payload/assets-portfolio-dsc2316-1920.webp",
     "noIndex": false
   },
   "createdAt": "2026-11-03T17:00:00Z",
-  "updatedAt": "2027-04-10T07:00:00.000Z",
+  "updatedAt": "2027-08-03T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
@@ -165,6 +183,13 @@
       "label": "Fotospots für Autos in NRW",
       "href": "/blog-fotospots-autos-nrw.html",
       "seoPurpose": "related-editorial",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
     }

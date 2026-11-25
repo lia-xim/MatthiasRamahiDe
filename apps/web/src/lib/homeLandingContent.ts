@@ -21,13 +21,13 @@ export const homeIntents: HomeIntent[] = [
   {
     title: 'Autohaus & Bestand',
     text: 'Einheitliche Serien für Showroom, Bestand und Inserat.',
-    href: '/autohaus-fotografie-duesseldorf.html',
+    href: '/autohaus-fotografie.html',
     topic: 'sportwagen',
   },
   {
     title: 'Du & dein Auto',
     text: 'Ein privates Shooting mit dem eigenen Fahrzeug, an einer Location, die passt.',
-    href: '/fotoshooting-mit-auto-duesseldorf.html',
+    href: '/fotoshooting-mit-auto.html',
     topic: 'automobil',
   },
   {
@@ -39,7 +39,7 @@ export const homeIntents: HomeIntent[] = [
   {
     title: 'Custom Bike & Werkstatt',
     text: 'Umbau, Handwerk und Fahrer als zusammenhängende Serie.',
-    href: '/custom-bike-fotografie-duesseldorf.html',
+    href: '/custom-bike-fotografie.html',
     topic: 'motorrad',
   },
   {
@@ -51,7 +51,7 @@ export const homeIntents: HomeIntent[] = [
   {
     title: 'Fine-Art-Print & Wandbild',
     text: 'Landschaftsmotive als Edition, Wandbild oder Raumkonzept.',
-    href: '/wandbilder-landschaftsfotografie.html',
+    href: '/landschaftsbilder-kaufen.html',
     topic: 'landschaft',
   },
 ]
@@ -88,7 +88,7 @@ export const homeFaq: HomeFaq[] = [
     question: 'Was kostet ein Fotoshooting?',
     answer:
       'Der Preis richtet sich nach Umfang: Motiv, Anzahl der Bilder, Location und Nutzung. Du bekommst vorab ein klares Angebot statt eines Pauschalpreises.',
-    link: { href: '/fotoshooting-preise.html', label: 'Mehr zu Preisen' },
+    link: { href: '/fotoshooting-preise-duesseldorf.html', label: 'Mehr zu Preisen' },
   },
   {
     question: 'Wo findet das Shooting statt?',

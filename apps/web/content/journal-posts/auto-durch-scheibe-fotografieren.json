@@ -8,12 +8,19 @@
     "Cockpit fotografieren",
     "Fahrzeuginterieur"
   ],
-  "publishedAt": "2027-03-13T08:00:00.000Z",
+  "publishedAt": "2027-06-18T07:00:00.000Z",
   "excerpt": "Das Cockpit durch Windschutz- oder Seitenscheiben fotografieren: So planst du Standpunkt, Licht und Bildausschnitt, damit Innenraum und Reflexionen zusammenpassen.",
   "coverImage": "/uploads/payload/_DSC2310-2.webp",
   "coverAlt": "Weißes BMW-Coupé auf einer beleuchteten Ausstellungsfläche",
   "readingTime": 8,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Auto durch die Scheibe fotografieren: Die wichtigsten Punkte im Über",
+      "body": "Kernaussage: Wähle die Scheibe nach dem gewünschten Ausschnitt\nEntscheide zuerst, ob das: Wenn du ein Cockpit durch eine Windschutz- oder Seitenscheibe fotografierst, kommt eine zusätzliche Fläche zwischen Kamera und Motiv\nFokussiere auf den Innenraum,: Wähle im Autofokus ein kleines oder einzelnes Messfeld, falls deine Kamera diese Einstellung bietet, und lege es auf eine kontrastreiche Kante im Innenraum,\nFotografiere nur im sicheren Stand: Das Fahrzeug muss sicher und vollständig stehen; während der Fahrt wird weder fotografiert noch die Kamera von Fahrer oder Beifahrer bedient"
+    },
     {
       "_template": "textBlock",
       "headline": "Entscheide zuerst, ob das Glas Teil des Bildes sein soll",
@@ -74,6 +81,33 @@
       "body": "Das Fahrzeug muss sicher und vollständig stehen; während der Fahrt wird weder fotografiert noch die Kamera von Fahrer oder Beifahrer bedient. Wähle einen freigegebenen Platz abseits des fließenden Verkehrs, sichere das Fahrzeug gegen Wegrollen und halte Einfahrten, Gehwege und Sichtfelder frei. Wenn eine Person am Steuer sitzt, lenke sie nicht mit Anweisungen oder Licht ab. Für die Aufnahme durch eine geschlossene Scheibe genügt es, wenn die Person vor dem Auslösen sicher sitzt und das Fahrzeug abgestellt ist."
     },
     {
+      "_template": "linkList",
+      "headline": "Passende Leistungen & weiterführende Guides",
+      "links": [
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Motive, Bildformate und Übergabe vor dem Shooting sauber strukturieren."
+        },
+        {
+          "label": "Fahrzeugserien konsistent planen",
+          "href": "/blog-fahrzeugserie-konsistent-planen.html",
+          "description": "Wie Perspektiven, Licht und Bearbeitung über mehrere Modelle zusammenhalten."
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Kurze Fragen zur Fahrzeugfotografie durch Glas",
       "items": [
@@ -118,7 +152,7 @@
   },
   "status": "scheduled",
   "createdAt": "2026-11-03T17:00:00Z",
-  "updatedAt": "2027-03-13T08:00:00.000Z",
+  "updatedAt": "2027-06-18T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",

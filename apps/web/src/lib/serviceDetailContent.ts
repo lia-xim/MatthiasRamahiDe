@@ -457,6 +457,17 @@ export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
         { tag: 'Netzwerk', line: 'Imagefilm, Musikvideo, Eventfilm und redaktionelles Bewegtbild aus einem eingespielten Netzwerk.' },
       ],
     },
+    links: {
+      eyebrow: 'Weiterführende Wege',
+      title: 'Foto, Video &amp; <em>Leistungen.</em>',
+      lead: 'Bewegtbild entsteht oft parallel zu einer Fotoproduktion – hier findest du passende Bereiche und Hintergründe.',
+      items: [
+        { label: 'Automobilfotografie Düsseldorf', href: '/automobil-fotografie-duesseldorf.html', body: 'Wenn Fahrzeugserie und Bewegtbild am selben Set geplant werden sollen.' },
+        { label: 'Musikerfotografie NRW', href: '/musikerfotografie.html', body: 'Pressebilder, Cover und visuelle Begleitung rund um Musikvideo und Release.' },
+        { label: 'Über mich &amp; Zusammenarbeit', href: '/ueber-mich.html', body: 'Wie Foto und Video im Zusammenspiel mit Sophia Ramahi am Set funktionieren.' },
+        { label: 'Weitere Dienstleistungen', href: '/leistungen.html', body: 'Alle Zusatzleistungen rund um Print, Web, Werbetechnik und Medienproduktion.' },
+      ],
+    },
     ctaHead: 'Bereit für ein <em>Videografie-Briefing.</em>',
     contact: {
       subject: 'Video-Anfrage — Matthias Ramahi',
@@ -520,6 +531,17 @@ export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
         { tag: 'Besetzung', line: 'Solo Viola/Geige, Duo mit Klavier, kleines Streicher-Ensemble.' },
         { tag: 'Anlass', line: 'Trauung, Trauerfeier, Empfang, Galadinner, Privatkonzert.' },
         { tag: 'Region', line: 'Düsseldorf · Rheinland · NRW — auf Anfrage auch deutschlandweit.' },
+      ],
+    },
+    links: {
+      eyebrow: 'Weiterführende Wege',
+      title: 'Musik, Portrait &amp; <em>Leistungen.</em>',
+      lead: 'Wenn Veranstaltung, Ensemble oder Auftritt zusätzlich fotografisch oder filmisch festgehalten werden sollen.',
+      items: [
+        { label: 'Musikerfotografie NRW', href: '/musikerfotografie.html', body: 'Authentische Portraits für Musiker:innen, Ensembles, Programmhefte und Presse.' },
+        { label: 'Videografie Düsseldorf', href: '/videografie-duesseldorf.html', body: 'Diskrete Konzert- und Event-Aufzeichnung mit sauberem Ton.' },
+        { label: 'Portraitfotografie Düsseldorf', href: '/portraitfotografie-duesseldorf.html', body: 'Ruhige Portraits für private Anlässe, Künstler und Familien.' },
+        { label: 'Weitere Dienstleistungen', href: '/leistungen.html', body: 'Überblick über alle ergänzenden Partner- und Produktionsbereiche.' },
       ],
     },
     ctaHead: 'Bereit für ein <em>Viola Musik-Briefing.</em>',
@@ -587,6 +609,31 @@ export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
         { tag: 'Sonder', line: 'Für haptische Editionen und Geschenke — Bütten, Holz, Metallpapier.' },
       ],
     },
+    links: {
+      eyebrow: 'Weiterführende Wege',
+      title: 'Druck, Großformat &amp; <em>Motive.</em>',
+      lead: 'Vom Materialtest bis zum großformatigen Wandbild greifen Fotolabor, Großformatdruck und Motivauswahl ineinander.',
+      items: [
+        { label: 'Fotolabor &amp; Fine-Art-Druck', href: '/fotolabor-druck-duesseldorf.html', body: 'Hahnemühle, Canson, Ilford, Acrylglas und Alu-Dibond mit Soft-Proof.' },
+        { label: 'Großformatdruck Düsseldorf', href: '/grossformatdruck-duesseldorf.html', body: 'Großformate für Praxis, Showroom, Büro und repräsentative Wandflächen.' },
+        { label: 'Landschaftsbilder kaufen', href: '/landschaftsbilder-kaufen.html', body: 'Kuratierte Landschaftsmotive als Fine-Art-Edition für Wohn- und Geschäftsräume.' },
+        { label: 'Weitere Dienstleistungen', href: '/leistungen.html', body: 'Alle Produktions- und Partnerleistungen im Überblick.' },
+      ],
+    },
+    faq: [
+      {
+        question: 'Welche Materialien stehen für Sonderanfertigungen zur Verfügung?',
+        answer: 'Von matten Fine-Art-Papieren über Metallic- und Büttenpapiere bis zu Acrylglas, Alu-Dibond, Holz und Leinwand. Die Auswahl richtet sich nach Motiv, Licht im Raum und gewünschter Haptik.',
+      },
+      {
+        question: 'Sind kleine Auflagen, signierte Editionen oder Einzelstücke möglich?',
+        answer: 'Ja. Sowohl Einzelanfertigungen für Wohn- oder Geschäftsräume als auch limitierte Kleinserien mit konsistenter Farbabstimmung lassen sich produzieren.',
+      },
+      {
+        question: 'Kann ich vor dem finalen Druck ein Materialmuster oder einen Proof erhalten?',
+        answer: 'Ja. Bei anspruchsvollen Oberflächen, Sonderformaten oder abgestimmten Serien sind Soft-Proof am kalibrierten Monitor und Probedrucke vorab möglich.',
+      },
+    ],
     ctaHead: 'Bereit für ein <em>Drucke &amp; Sonderanfertigungen-Briefing.</em>',
     contact: {
       subject: 'Sonderanfertigung — Matthias Ramahi',

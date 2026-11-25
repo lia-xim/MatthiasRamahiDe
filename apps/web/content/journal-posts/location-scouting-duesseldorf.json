@@ -38,6 +38,13 @@
   "blocks": [
     {
       "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Fotospots Düsseldorf: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Beliebte Fotospots sind der Medienhafen mit seiner Architektur, das Rheinufer mit Blick auf die Rheinkniebrücke, der Hofgarten für Portraits in weichem Licht und die\nEin Ort muss arbeiten: Ein Fotospot ist mehr als eine schöne Kulisse\nKönigsallee und Innenstadt: Die Kö steht für Stil und Großstadt\nZugang, Genehmigung und Wetter: Parken, Publikumsverkehr, Genehmigungen und ein Plan für schlechtes Wetter entscheiden oft mehr über ein Shooting als die Kulisse"
+    },
+    {
+      "_template": "textBlock",
       "headline": "Ein Ort muss arbeiten",
       "body": "Ein Fotospot ist mehr als eine schöne Kulisse. Er bestimmt Licht, Linien, Abstand und Ruhe – und damit, wie entspannt ein Shooting abläuft. Gute Orte helfen dem Motiv, statt sich davorzudrängen. Deshalb beginnt jede Location-Suche mit der Frage, was fotografiert wird: Ein Portrait braucht andere Flächen und anderes Licht als ein Auto."
     },
@@ -94,6 +101,39 @@
       "body": "Parken, Publikumsverkehr, Genehmigungen und ein Plan für schlechtes Wetter entscheiden oft mehr über ein Shooting als die Kulisse. Für kommerzielle Aufnahmen auf Privatgelände braucht es die Zustimmung des Eigentümers. Und weil das Wetter in Düsseldorf nicht planbar ist, gehört zu jedem Außentermin eine überdachte Alternative – oder das Studio."
     },
     {
+      "_template": "linkList",
+      "headline": "Fotoshootings in Düsseldorf nach Bereich",
+      "links": [
+        {
+          "label": "Fotografie Düsseldorf Übersicht",
+          "href": "/fotografie-duesseldorf.html"
+        },
+        {
+          "label": "Autofotografie Düsseldorf",
+          "href": "/autofotografie-duesseldorf.html"
+        },
+        {
+          "label": "Portraitfotografie Düsseldorf",
+          "href": "/portraitfotografie-duesseldorf.html"
+        },
+        {
+          "label": "Dating Fotoshooting Düsseldorf",
+          "href": "/dating-fotoshooting-duesseldorf.html"
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Fotoshooting an den passenden Düsseldorfer Spots planen",
+      "text": "Location-Vorschlag, Lichtfenster und Ablauf aus einer Hand – Einstieg ab 250 € inkl. MwSt.",
+      "buttonLabel": "Shooting in Düsseldorf anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Kurze Fragen",
       "items": [
@@ -118,8 +158,8 @@
   ],
   "readingTime": 7,
   "seo": {
-    "title": "Fotospots Düsseldorf: Orte fürs Fotoshooting | Matthias Ramahi",
-    "description": "Fotospots in Düsseldorf: Medienhafen, Rheinufer, Hofgarten und Königsallee – mit Licht, Zugang und Tipps zum Location-Scouting für Portrait- und Autofotos.",
+    "title": "Fotospots Düsseldorf: Beste Orte fürs Fotoshooting",
+    "description": "Fotospots in Düsseldorf: Medienhafen, Rheinufer, Hofgarten und Königsallee – mit Lichtverlauf, Zugang und Scouting-Tipps für Portrait- und Autofotos.",
     "secondaryKeywords": [],
     "internalLinkAnchors": [],
     "canonicalUrl": "https://matthiasramahi.de/blog-location-scouting-duesseldorf.html",
@@ -152,7 +192,7 @@
     "extractedImagePaths": [],
     "extractedText": "Home / Journal / Location Location · 4 Min Location Scouting für starke Motive Wie Orte für Automotive-, Portrait- und Landschaftsfotografie ausgewählt werden: Licht, Zugang, Hintergrund, Ruhe und Nutzungsziel. Matthias Ramahi Aktualisiert 27.05.2026 Dieser Beitrag stützt die SEO-Cluster der Fotografie-Seiten und führt zu passenden Leistungs- und Standortseiten weiter. Fotografie Düsseldorf Automobil Fotografie Düsseldorf Portraitfotografie Düsseldorf 01 Ein Ort muss arbeiten Eine Location ist nicht nur Kulisse. Sie bestimmt Licht, Linien, Abstand, Ruhe und organisatorischen Ablauf. Gute Orte helfen dem Motiv, statt sich davorzudrängen. 02 Lichtfenster zuerst Der gleiche Ort kann morgens weich, mittags flach und abends cineastisch wirken. Deshalb beginnt Scouting mit Sonnenstand, Schatten, Reflexionsflächen und der Frage, wann ein Motiv wirklich atmen kann. 03 Zugang und Störungen planen Parken, Publikumsverkehr, Genehmigungen und Wetteroptionen sind technische SEO-fremde, aber fotografisch entscheidende Faktoren. Eine starke Serie entsteht leichter, wenn diese Reibung vorher gelöst ist. 04 Ort und Suchintention verbinden Für lokale SEO-Seiten ist Location nicht nur ein Keyword. Sie muss zeigen, warum ein Auftrag in Düsseldorf, NRW oder einer konkreten Stadt sinnvoll geplant werden kann. Ein guter Ort ergänzt deshalb die Suchintention: Er macht sichtbar, ob es um Verkauf, Markenwirkung, persönliche Präsenz oder eine ruhige redaktionelle Serie geht. Kurze Fragen. Wird die Location vorab festgelegt? Ja, zumindest die Richtung. Je nach Wetter und Motiv können Alternativen vorbereitet werden."
   },
-  "updatedAt": "2026-09-25T14:00:00.000Z",
+  "updatedAt": "2026-11-24T09:15:00.000Z",
   "createdAt": "2026-05-28T19:07:35.507Z",
   "status": "published",
   "payloadId": "3",

@@ -9,11 +9,18 @@
     "Fotografenauswahl"
   ],
   "publishedAt": "2026-11-17T08:00:00.000Z",
-  "status": "scheduled",
+  "status": "published",
   "excerpt": "Worauf Autohäuser bei der Wahl eines Fotografen für ihren Fahrzeugbestand achten sollten: Bildstandard, Wiederholbarkeit, Übergabe und der passende Produktionsrhythmus.",
   "coverImage": "/uploads/payload/assets-portfolio-dsc3879-1920-1920x1280.webp",
   "readingTime": 10,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Einzeltermin oder fester Bildprozess für den Autohaus-Bestand",
+      "body": "Einzeltermin: Sinnvoll für Sondermodelle, Showroom-Launches oder zum Test von Look und Ablieferungsgeschwindigkeit\nWiederkehrender Bestand: Braucht feste Kamerapositionen, eine einheitliche Reihenfolge, klare Bestandsnummern im Dateinamen und feste Zeitfenster\nAngebotsvergleich: Immer Fahrzeugzahl pro Tag, Bearbeitungsstandard, Format-Zuschnitte und Übergabefrist identisch anfragen"
+    },
     {
       "headline": "Zuerst den tatsächlichen Bedarf einordnen",
       "body": "Ein einzelnes Fahrzeug für eine besondere Präsentation stellt andere Anforderungen als ein Bestand, dessen Bilder regelmäßig erneuert werden. Bevor ein Autohaus einen Fotografen auswählt, lohnt deshalb ein Blick auf den eigenen Ablauf: Geht es um eine einmalige Produktion, wiederkehrende Aufnahmen oder wechselnde Aufgaben für Verkauf, Website und Kampagne? Die Antwort bestimmt, ob vor allem ein passender Einzeltermin oder ein verlässlicher Prozess gebraucht wird.\n\nAuch die Menge ist nicht immer konstant. Neue Fahrzeuge können gleichzeitig eintreffen, einzelne Modelle benötigen mehr Innenraum- oder Detailansichten, andere sollen nur mit einer kompakten Serie erscheinen. Ein gutes Gespräch klärt, wie mit solchen Unterschieden umgegangen werden soll. Es geht nicht darum, jeden Termin identisch zu machen, sondern vorab zu erkennen, welche Teile des Ablaufs stabil bleiben müssen und wo Spielraum sinnvoll ist.",
@@ -99,6 +106,33 @@
       "_template": "textBlock"
     },
     {
+      "_template": "linkList",
+      "headline": "Passende Leistungen & weiterführende Guides",
+      "links": [
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Bildserien und Ablauf für Marken, Autohäuser und Privatfahrzeuge."
+        },
+        {
+          "label": "Autofotografie in Düsseldorf",
+          "href": "/autofotografie-duesseldorf.html",
+          "description": "Standorte, Lichtfenster und Beispiele aus der Region Düsseldorf."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Wie Motivliste, Formate und Zuständigkeiten vor dem Termin festgehalten werden."
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Professionelles Auto-Fotoshooting in NRW planen",
+      "text": "Du brauchst stimmige Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto im Raum Düsseldorf, Erkrath und NRW? Shootings starten bei 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "headline": "Häufige Fragen",
       "items": [
         {
@@ -122,8 +156,8 @@
     }
   ],
   "seo": {
-    "title": "Fotograf für Autohaus-Fahrzeugbestand finden | Matthias Ramahi",
-    "description": "So wählen Autohäuser einen Fotografen für Fahrzeugbestände aus: Bildstandard, wiederkehrender Bedarf, Übergabe, Formate und Angebotsvergleich.",
+    "title": "Autohaus-Fotograf finden: Bestand & Prozess prüfen",
+    "description": "So wählen Autohäuser einen Fotografen für Fahrzeugbestände: konsistenter Bildstandard, wiederkehrender Ablauf, Formate und Angebotsvergleich.",
     "focusKeyword": "Fotograf Autohaus Fahrzeugbestand",
     "searchIntent": "Informationssuche und Anbieterwahl: Autohäuser suchen einen passenden Fotografen und möchten Bildprozess, wiederkehrenden Bedarf und Leistungsumfang einschätzen.",
     "canonicalUrl": "https://matthiasramahi.de/blog-fotograf-autohaus-fahrzeugbestand.html",
@@ -132,11 +166,25 @@
     "noIndex": false
   },
   "createdAt": "2026-11-03T06:00:00Z",
-  "updatedAt": "2026-11-17T08:00:00.000Z",
+  "updatedAt": "2026-11-23T18:30:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
       "href": "/automobil-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fahrzeugserien konsistent planen",
+      "href": "/blog-fahrzeugserie-konsistent-planen.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

@@ -14,6 +14,13 @@
   "readingTime": 7,
   "blocks": [
     {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Das unterscheidet einen guten Oldtimerfotografen vom Allrounder",
+      "body": "Zusammenhängende Serien: Portfolio auf komplette Fahrzeugdokumentationen prüfen – inklusive Innenraum, Holz/Leder, Chrom und Motorraum\nSensibles Handling: Im Vorgespräch klären, ob das Fahrzeug bewegt werden darf und wie mit historischen Oberflächen umgegangen wird\nAuftragsziel trennen: Auktionskataloge und Versicherungen verlangen sachliche Vollständigkeit, Sammler oft zusätzlich stimmungsvolle Standbilder"
+    },
+    {
       "headline": "Der Auftrag entscheidet, welcher Fotograf passt",
       "body": "Für die Wahl eines Oldtimerfotografen zählt zuerst, was du mit der Serie vorhast. Ein Verkaufsinserat, ein Sammlungsarchiv und ein Auktionskatalog stellen unterschiedliche Anforderungen an Auswahl und Lieferung. Ein passendes Portfolio zeigt, ob der Fotograf solche Aufträge als vollständige Serie umsetzen kann, nicht nur als einzelnes starkes Bild.\n\nNotiere vor der Anfrage, wo die Fotos erscheinen sollen, welche Fahrzeuge dazugehören und ob ein einmaliger Termin oder weitere Produktionen geplant sind. Für einen Auktionskatalog fragst du die Vorgaben am besten direkt beim Auktionshaus ab. So kann der Fotograf seine Eignung an einem konkreten Auftrag einschätzen. Offene Anforderungen werden dabei sichtbar, bevor sie im Angebot stillschweigend vorausgesetzt werden.\n\nTrenne Hauptziel und Zusatzwünsche. Eine Sammlung kann gleichbleibende Zuordnung über mehrere Termine brauchen; ein Verkaufsauftrag kann sich auf ein einziges Exemplar konzentrieren. Vielleicht sollen Bilder zusätzlich für eine Pressemitteilung oder die eigene Website dienen. Schreib auf, was zwingend gebraucht wird und was optional bleibt. Dann wird aus „Wir brauchen ein paar gute Fotos“ ein prüfbarer Auftrag: welche Fahrzeuge, welcher Verwendungszweck, wer entscheidet und bis wann die Auswahl vorliegen soll.",
       "_template": "textBlock"
@@ -75,6 +82,33 @@
       "_template": "textBlock"
     },
     {
+      "_template": "linkList",
+      "headline": "Passende Leistungen & weiterführende Guides",
+      "links": [
+        {
+          "label": "Oldtimerfotografie in Düsseldorf & NRW",
+          "href": "/oldtimer-fotografie.html",
+          "description": "Ruhige Dokumentation und Inszenierung klassischer Fahrzeuge."
+        },
+        {
+          "label": "Oldtimer als Wertobjekt fotografieren",
+          "href": "/blog-oldtimer-wertobjekt.html",
+          "description": "Warum Zustand, Linien und Details für Sammlung und Bewertung zählen."
+        },
+        {
+          "label": "Oldtimer-Veranstaltungen fotografieren",
+          "href": "/blog-oldtimer-veranstaltungen.html",
+          "description": "Wie Reportage und Detailmotive bei Treffen ruhig ineinandergreifen."
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Oldtimer & Klassiker ruhig fotografieren lassen",
+      "text": "Vom einzelnen Wertfahrzeug bis zur Sammlungsserie in Erkrath, Düsseldorf und NRW: Persönliche Klassiker-Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Oldtimer-Shooting anfragen"
+    },
+    {
       "headline": "Kurze Fragen",
       "items": [
         {
@@ -112,8 +146,22 @@
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
+    },
+    {
+      "label": "Oldtimer als Wertobjekt fotografieren",
+      "href": "/blog-oldtimer-wertobjekt.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Oldtimer-Veranstaltungen fotografieren",
+      "href": "/blog-oldtimer-veranstaltungen.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
     }
   ],
   "coverAlt": "Rot lackierter klassischer Sportwagen in einer Ausstellung, frontal aus nächster Nähe fotografiert.",
-  "status": "scheduled"
+  "status": "published"
 }

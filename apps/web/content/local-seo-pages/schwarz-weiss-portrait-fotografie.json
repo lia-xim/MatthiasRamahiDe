@@ -87,8 +87,8 @@
   "contactSection": {},
   "targetKeyword": "Schwarz-Weiß Portrait Fotografie",
   "seo": {
-    "title": "Schwarz-Weiss Portrait Fotografie — Matthias Ramahi",
-    "description": "Schwarz-Weiss Portrait Fotografie: reduziert auf Licht, Blick und Kontur. Für Editorial, Personal Branding, Print und private Serien in Düsseldorf und NRW.",
+    "title": "Schwarz-Weiß Portraitfotografie Düsseldorf & NRW",
+    "description": "Schwarz-Weiß-Portraits in Düsseldorf & NRW: ausdrucksstarke Charakterportraits mit klarem Kontrast, Lichtführung und Zeitlosigkeit – Studio oder on location.",
     "canonicalUrl": "https://matthiasramahi.de/schwarz-weiss-portrait-fotografie.html",
     "legacyUrl": "schwarz-weiss-portrait-fotografie.html",
     "noIndex": false,
@@ -102,8 +102,49 @@
     "migrationStatus": "reviewed",
     "renderSource": "legacy-file"
   },
-  "updatedAt": "2026-07-21 22:35:09.413+00",
+  "updatedAt": "2026-11-24T09:00:00.000Z",
   "createdAt": "2026-05-31 18:09:47.767+00",
   "status": "published",
-  "payloadId": "216"
+  "payloadId": "216",
+  "guideSection": {
+    "eyebrow": "Schwarz-Weiß Portrait",
+    "headline": "Schwarz-Weiß-Portraits: Wenn Licht, Kontrast und Ausdruck alles tragen.",
+    "intro": "Ohne Farbe bleibt nichts, hinter dem sich ein Bild verstecken kann. Schwarz-Weiß-Portraits konzentrieren den Blick voll auf Gesicht, Augen, Lichtkante und Haltung.",
+    "items": [
+      {
+        "title": "Lichtführung bewusst für Monochrom planen",
+        "text": "Gute Schwarz-Weiß-Bilder sind keine entsättigten Farbfotos. Schon beim Fotografieren setze ich auf klare Licht-Schatten-Übergänge, Textur und deutliche Trennung zum Hintergrund."
+      },
+      {
+        "title": "Low-Key, weiches Tageslicht oder markanter Kontrast",
+        "text": "Je nach Persönlichkeit und Einsatzbereich arbeiten wir mit dunklen Low-Key-Setups, offenem Fensterlicht oder rauer urbaner Architektur."
+      },
+      {
+        "title": "Zeitlos für Personal Branding, Künstler und Print",
+        "text": "Monochrome Portraits altern nicht mit Farbtrends und entfalten besonders auf mattem Fine-Art-Barytpapier eine ruhige, galerieartige Präsenz."
+      },
+      {
+        "title": "Buchung in Düsseldorf und NRW ab 250 €",
+        "text": "Ein Schwarz-Weiß-Portrait-Shooting beginnt bei 250 € inkl. MwSt. Auf Wunsch erhältst du ausgewählte Motive sowohl in Schwarz-Weiß als auch in natürlicher Farbabstimmung."
+      }
+    ],
+    "links": [
+      {
+        "label": "Schwarz-Weiß Portrait Licht (Journal)",
+        "href": "/blog-schwarz-weiss-portrait-licht.html"
+      },
+      {
+        "label": "Low-Key vs. High-Key (Journal)",
+        "href": "/blog-low-key-high-key-portraits.html"
+      },
+      {
+        "label": "Portraitfotografie Düsseldorf",
+        "href": "/portraitfotografie-duesseldorf.html"
+      },
+      {
+        "label": "Portfolio Portrait",
+        "href": "/portfolio/portfolio-auswahl-portrait"
+      }
+    ]
+  }
 }

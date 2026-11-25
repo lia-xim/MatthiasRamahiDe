@@ -14,6 +14,13 @@
   "readingTime": 8,
   "blocks": [
     {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Motorrad-Events als verwertbare Serie strukturieren",
+      "body": "Klare Bildrollen definieren: Übersicht für Veranstalter, Sponsoren-Logos im Kontext, Werkstatt-Details und authentische Fahrer-Momente trennen\nUnwiederholbare Punkte markieren: Ankunft, Ausfahrt, Prämierung und Lichtwechsel zwischen Halle und Abendfläche fest im Zeitplan verankern\nSchnelle Nutzbarkeit: Eine kompakte Erstauswahl fürs Tages-Recap direkt nach dem Event und zeitlose Detailmotive für künftige Ankündigungen liefern"
+    },
+    {
       "headline": "Ein Event braucht Bildrollen statt einer endlosen Motivliste",
       "body": "Veranstalter, Werkstatt, Club und Sponsor erwarten oft unterschiedliche Ergebnisse. Der Veranstalter braucht Übersicht und Atmosphäre, ein Aussteller Produkte und Gespräche, Teilnehmende möchten sich und ihre Motorräder wiederfinden. Vorab werden diese Erwartungen in wenige Bildrollen übersetzt: Eröffnung, Ort, Menschen, Maschinen, Details, Aktion und Abschluss. So bleibt die Reportage vollständig, ohne jedes Programmdetail gleich zu gewichten.\n\nZusätzlich wird geklärt, wo die Bilder erscheinen, wie schnell eine erste Auswahl gebraucht wird und welche Formate wichtig sind. Ein Pressebild muss Namen und Anlass nachvollziehbar zeigen; eine Story braucht vertikale Nähe; ein Rückblick auf der Website verträgt breite Szenen. Diese Nutzung bestimmt bereits beim Fotografieren Abstand und Komposition.",
       "_template": "textBlock"
@@ -67,6 +74,34 @@
       "_template": "textBlock"
     },
     {
+      "_template": "linkList",
+      "headline": "Motorradfotografie für Events, Fahrer & Marken",
+      "links": [
+        {
+          "label": "Motorradfotografie Übersicht",
+          "href": "/motorrad-fotografie.html"
+        },
+        {
+          "label": "Motorradfotografie NRW",
+          "href": "/motorrad-fotografie-nrw.html"
+        },
+        {
+          "label": "Biker Portrait Düsseldorf",
+          "href": "/biker-portrait-duesseldorf.html"
+        },
+        {
+          "label": "Portfolio Motorrad",
+          "href": "/portfolio/portfolio-auswahl-motorrad"
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Motorrad-Event oder Einzelserie professionell begleiten lassen",
+      "text": "Reportage, Fahrer-Portraits und scharfe Action-Bilder in Düsseldorf, NRW und deutschlandweit – Einzelserien ab 250 € inkl. MwSt.",
+      "buttonLabel": "Anfrage senden"
+    },
+    {
       "headline": "Kurze Fragen",
       "items": [
         {
@@ -103,11 +138,25 @@
   },
   "status": "published",
   "createdAt": "2026-08-14T08:00:00.000Z",
-  "updatedAt": "2026-08-24T20:51:37.604Z",
+  "updatedAt": "2026-11-24T09:15:00.000Z",
   "relatedPages": [
     {
       "label": "Motorradfotografie",
       "href": "/motorrad-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Motorrad-Fotoshooting-Checkliste",
+      "href": "/blog-motorrad-fotoshooting-checkliste.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Motorrad-Fotoshooting sicher planen",
+      "href": "/blog-motorrad-fotoshooting-sicherheit.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

@@ -9,12 +9,19 @@
     "Blende",
     "Bildgestaltung"
   ],
-  "publishedAt": "2027-03-31T07:00:00.000Z",
+  "publishedAt": "2027-07-20T07:00:00.000Z",
   "excerpt": "Wie wird der Hintergrund weich, ohne dass wichtige Teile des Motorrads ebenfalls verschwimmen? Hinweise zu Blende, Abstand, Brennweite und Fokuspunkt für Gesamtansicht und Detail.",
-  "coverImage": "/uploads/payload/_DSC6968.webp",
-  "coverAlt": "Kawasaki-Motorrad im warmen Abendlicht; Straße und Umgebung hinter dem Bike sind weich gezeichnet.",
+  "coverImage": "/uploads/payload/_DSC6982-1.webp",
+  "coverAlt": "Schwarzes Motorrad im Hochformat bei warmem Licht vor abgedunkeltem Hintergrund",
   "readingTime": 7,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Motorrad mit unscharfem Hintergrund fotografieren: Die wichtigsten P",
+      "body": "Kernaussage: Eine offenere Blende kann die Schärfentiefe verringern\nDie Unschärfe soll das: Ein unscharfer Hintergrund kann ein Motorrad klarer aus seiner Umgebung lösen\nDen Fokuspunkt bewusst setzen: Der Autofokus entscheidet nicht immer selbst, welcher Teil des Motorrads wichtig ist\nEine kurze Testreihe am: Stelle das Motorrad mit Motor aus und sicher abgestützt auf festem, geeignetem Untergrund ab; arbeite abseits von Fahrwegen"
+    },
     {
       "headline": "Die Unschärfe soll das Motorrad ordnen",
       "body": "Ein unscharfer Hintergrund kann ein Motorrad klarer aus seiner Umgebung lösen. Der Effekt hilft vor allem dann, wenn hinter dem Bike viele Linien, Fahrzeuge oder helle Flächen liegen. Er ist aber kein Selbstzweck: Wird die Schärfentiefe zu knapp, verlieren Spiegel, Lenker, Räder oder Teile der Verkleidung ebenfalls an Zeichnung. Für eine Gesamtansicht soll die Maschine als Form lesbar bleiben; bei einem Detail darf die Schärfe gezielt auf Tank, Emblem oder eine bestimmte Oberfläche fallen.\n\nBeginne deshalb mit der Bildaufgabe. Soll das ganze Motorrad wirken oder nur ein bestimmtes Bauteil? Bei einem vollständigen Portrait brauchst du mehr Schärfe über die Maschine als bei einer engen Tankaufnahme. Stelle zuerst eine ruhige Komposition her und entscheide dann, wie viel Hintergrundunschärfe tatsächlich hilft. So lässt sich ein unruhiger Ort beruhigen, ohne dass die Aufnahme wie ein künstlicher Weichzeichner aussieht.",
@@ -75,6 +82,33 @@
       "_template": "textBlock"
     },
     {
+      "_template": "linkList",
+      "headline": "Passende Leistungen & weiterführende Guides",
+      "links": [
+        {
+          "label": "Motorradfotografie in NRW",
+          "href": "/motorrad-fotografie.html",
+          "description": "Professionelle Motorradserien für Fahrer, Umbauten und Werkstätten."
+        },
+        {
+          "label": "Motorrad-Fotoshooting-Checkliste",
+          "href": "/blog-motorrad-fotoshooting-checkliste.html",
+          "description": "Bike, Kleidung, Zufahrt und Shotlist vorab klären."
+        },
+        {
+          "label": "Motorrad-Fotoshooting sicher planen",
+          "href": "/blog-motorrad-fotoshooting-sicherheit.html",
+          "description": "Klare Abläufe für Stand- und Fahrmotive."
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Motorrad-Shooting in NRW planen",
+      "text": "Stimmige Serien für Fahrer, Custom-Umbauten und Werkstätten rund um Düsseldorf und Erkrath ab 250 € inkl. MwSt.",
+      "buttonLabel": "Motorrad-Shooting anfragen"
+    },
+    {
       "headline": "Kurze Fragen",
       "items": [
         {
@@ -100,16 +134,30 @@
     "searchIntent": "Informationssuche: Motorradbesitzer suchen Einstellungen für einen unscharfen Hintergrund, ohne wichtige Konturen des stehenden Bikes zu verlieren.",
     "canonicalUrl": "https://matthiasramahi.de/blog-motorrad-hintergrund-unscharf-fotografieren.html",
     "legacyUrl": "blog-motorrad-hintergrund-unscharf-fotografieren.html",
-    "ogImage": "/uploads/payload/_DSC6968.webp",
+    "ogImage": "/uploads/payload/_DSC6982-1.webp",
     "noIndex": false
   },
   "status": "scheduled",
   "createdAt": "2026-11-03T17:00:00Z",
-  "updatedAt": "2027-03-31T07:00:00.000Z",
+  "updatedAt": "2027-07-20T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Motorradfotografie",
       "href": "/motorrad-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Motorrad-Fotoshooting-Checkliste",
+      "href": "/blog-motorrad-fotoshooting-checkliste.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Motorrad-Fotoshooting sicher planen",
+      "href": "/blog-motorrad-fotoshooting-sicherheit.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

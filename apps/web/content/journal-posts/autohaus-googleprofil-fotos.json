@@ -8,13 +8,20 @@
     "Google Unternehmensprofil",
     "Fahrzeugfotos"
   ],
-  "publishedAt": "2027-07-03T07:00:00.000Z",
+  "publishedAt": "2027-12-24T08:00:00.000Z",
   "status": "scheduled",
   "excerpt": "Welche Bilder zeigen ein Autohaus auf Google Maps? Plane Außenansicht, Showroom, Fahrzeuge und Leistungen als ehrliche, klar sortierte Profilserie.",
   "coverImage": "/uploads/payload/assets-portfolio-dsc3879-1920-1920x1280.webp",
   "coverAlt": "Dunkler Sportwagen in einer beleuchteten Ausstellung mit farbigen Reflexen auf der Karosserie; kein Autohausstandort.",
   "readingTime": 7,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Autohaus Fotos Google Unternehmensprofil: Die wichtigsten Punkte im ",
+      "body": "Kernaussage: Beginne mit Außenansichten, an denen Besucher Zufahrt und Eingang erkennen, und ergänze ehrliche Bilder von Showroom oder Beratung sowie ausgewählte Fahrzeuge und\nEin Autohausprofil braucht mehr: Ein Google-Unternehmensprofil soll zeigen, wo ein Autohaus liegt und was Kundinnen und Kunden dort vorfinden\nFahrzeugbilder im Profil sind: Google nennt typische oder besonders gefragte Produkte als sinnvolle Motive\nEin Titelbild auswählen und: Ein passendes Titelbild hilft, den Charakter des Autohauses auf einen Blick zu vermitteln"
+    },
     {
       "_template": "textBlock",
       "headline": "Ein Autohausprofil braucht mehr als einzelne Fahrzeuganzeigen",
@@ -66,6 +73,12 @@
       "_template": "textBlock",
       "headline": "Ein Titelbild auswählen und trotzdem die ganze Bildserie planen",
       "body": "Ein passendes Titelbild hilft, den Charakter des Autohauses auf einen Blick zu vermitteln. Verlasse dich aber nicht darauf, dass Google es in jeder Ansicht als erstes Bild zeigt: Die Hilfe weist ausdrücklich darauf hin, dass ein ausgewähltes Titelbild nicht garantiert an erster Stelle erscheint. Plane daher auch die übrigen Aufnahmen so, dass sie einzeln verständlich sind und zusammen Standort, Räume und Angebot abbilden.\n\nFür den Fototermin lässt sich die Reihenfolge einfach halten: zuerst die Außenansichten aus Kundensicht, dann die Innenräume und zum Schluss ausgewählte Fahrzeuge, Leistungen oder Team-Motive. Vor dem Upload sollten Schärfe, Belichtung und aktuelle Google-Vorgaben geprüft werden. Google verlangt eine realitätsgetreue Darstellung und rät von starken Bearbeitungen sowie übermäßigen Filtern oder KI-Effekten ab. Das Unternehmensprofil muss außerdem bestätigt sein, bevor die eigenen Bilder dort sichtbar werden. Die Foto- und Uploadregeln können sich ändern; gleiche sie deshalb unmittelbar vor der Veröffentlichung mit der [aktuellen Verwaltungshilfe](https://support.google.com/business/answer/6103862?hl=de) ab."
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
     },
     {
       "_template": "faqBlock",
@@ -125,12 +138,17 @@
         {
           "label": "Google Vehicle Ads: Fahrzeugfotos für Händler richtig planen",
           "href": "/blog-fahrzeugfotos-google-vehicle-ads.html"
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]
     }
   ],
   "createdAt": "2026-11-04T17:55:18Z",
-  "updatedAt": "2027-07-03T07:00:00.000Z",
+  "updatedAt": "2027-12-24T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Autohaus-Fotografie",

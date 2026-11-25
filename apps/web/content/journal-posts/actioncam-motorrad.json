@@ -14,8 +14,8 @@
   "coverAlt": "Schwarzes Sportmotorrad auf einer Landstraße in der Abenddämmerung",
   "readingTime": 8,
   "seo": {
-    "title": "Actioncam am Motorrad: Halterung & Einstellungen | Matthias Ramahi",
-    "description": "Actioncam am Motorrad: Positionen an Helm, Lenker, Tank und Heck, Einstellungen gegen Vibration und Wind, Ton, Akku und was rechtlich zu beachten ist.",
+    "title": "Actioncam am Motorrad: Halterung, Winkel & Tipps",
+    "description": "Actioncam am Motorrad sicher montieren: Halterungen an Helm, Lenker, Tank & Heck, Einstellungen gegen Vibration und Wind sowie rechtliche Hinweise.",
     "focusKeyword": "Actioncam Motorrad",
     "searchIntent": "Informationssuche: Motorradfahrer wollen wissen, wie und wo sie eine Actioncam montieren, welche Einstellungen sinnvoll sind und was rechtlich beim Filmen gilt.",
     "canonicalUrl": "https://matthiasramahi.de/blog-actioncam-motorrad.html",
@@ -31,7 +31,7 @@
   },
   "status": "published",
   "createdAt": "2026-09-24T11:00:00.000Z",
-  "updatedAt": "2026-09-24T11:00:00.000Z",
+  "updatedAt": "2026-11-24T09:15:00.000Z",
   "relatedPages": [
     {
       "label": "Motorradfotografie",
@@ -39,9 +39,30 @@
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
+    },
+    {
+      "label": "Motorrad-Fotoshooting-Checkliste",
+      "href": "/blog-motorrad-fotoshooting-checkliste.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Motorrad-Fotoshooting sicher planen",
+      "href": "/blog-motorrad-fotoshooting-sicherheit.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
     }
   ],
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Actioncam Motorrad: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Für den Fahrerblick eignet sich das Kinnteil des Helms, für stabile Bilder Lenker oder Gabelbrücke, für dynamische Perspektiven Tank oder Heck\nDie Position entscheidet über: Eine Actioncam am Motorrad ist klein, robust und weitwinklig – und genau deshalb verzeiht sie bei der Position wenig\nEinstellungen gegen Vibration, Wind: Vibration ist das größte Bildproblem am Motorrad\nActioncam und Fotograf ergänzen sich: Eine Actioncam dokumentiert die Fahrt aus Perspektiven, die sonst kaum erreichbar sind"
+    },
     {
       "_template": "textBlock",
       "headline": "Die Position entscheidet über die Geschichte",
@@ -87,12 +108,40 @@
     {
       "_template": "textBlock",
       "headline": "Filmen und Veröffentlichen: was rechtlich gilt",
-      "body": "Wer im öffentlichen Straßenverkehr dauerhaft und anlasslos filmt, bewegt sich datenschutzrechtlich auf schwierigem Terrain. Die Datenschutzbehörden bewerten permanente Aufzeichnungen von Dashcams und vergleichbaren Kameras kritisch, weil dabei laufend andere Verkehrsteilnehmer erfasst werden. Zulässiger sind kurze, anlassbezogene Aufnahmen.\n\nNoch wichtiger ist die Veröffentlichung. Videos, auf denen Personen oder Kennzeichen erkennbar sind, dürfen nach Einschätzung der Datenschutzbehörden in aller Regel nicht ohne Einwilligung online gestellt werden. Wer seine Fahrt teilen möchte, sollte Gesichter und Kennzeichen unkenntlich machen oder Passagen wählen, in denen nur Strecke, Landschaft und das eigene Motorrad zu sehen sind. Das ist keine Rechtsberatung; bei konkreten Fragen helfen die Hinweise der Landesdatenschutzbeauftragten oder ein Anwalt."
+      "body": "Wer im öffentlichen Straßenverkehr dauerhaft und anlasslos filmt, bewegt sich datenschutzrechtlich auf schwierigem Terrain. Die Datenschutzbehörden bewerten permanente Aufzeichnungen von Dashcams und vergleichbaren Kameras kritisch, weil dabei laufend andere Verkehrsteilnehmer erfasst werden. Zulässiger sind kurze, anlassbezogene Aufnahmen.\n\nNoch wichtiger ist die Veröffentlichung. Videos, auf denen Personen oder Kennzeichen erkennbar sind, dürfen nach Einschätzung der Datenschutzbehörden in aller Regel nicht ohne Einwilligung online gestellt werden. Wer seine Fahrt teilen möchte, sollte Gesichter und Kennzeichen unkenntlich machen oder Passagen wählen, in denen nur Strecke, Landschaft und das eigene Motorrad zu sehen sind. Bei konkreten Fragen helfen die Hinweise der Landesdatenschutzbeauftragten oder ein Anwalt."
     },
     {
       "_template": "textBlock",
       "headline": "Actioncam und Fotograf ergänzen sich",
       "body": "Eine Actioncam dokumentiert die Fahrt aus Perspektiven, die sonst kaum erreichbar sind. Für ruhige Portraits von Fahrer und Maschine, Detailaufnahmen oder Bilder mit kontrolliertem Licht ist sie aber nicht gebaut: Der extreme Weitwinkel verzerrt Proportionen, und die kleine Optik bietet kaum Spielraum für Tiefenschärfe. Wer beides möchte – lebendige Fahrtaufnahmen und hochwertige Bilder des Motorrads – kombiniert die eigene Actioncam mit einem geplanten Shooting.\n\nFür Fahraufnahmen mit Kamera von außen gelten dann eigene Regeln: abgesperrte oder ruhige Strecken, klare Absprachen und Sicherheitsabstände. Wie ein solcher Ablauf aussieht, beschreibt der Beitrag zur Sicherheit beim Motorrad-Fotoshooting."
+    },
+    {
+      "_template": "linkList",
+      "headline": "Motorradfotografie & dynamische Serien",
+      "links": [
+        {
+          "label": "Motorradfotografie Übersicht",
+          "href": "/motorrad-fotografie.html"
+        },
+        {
+          "label": "Motorradfotografie NRW",
+          "href": "/motorrad-fotografie-nrw.html"
+        },
+        {
+          "label": "Rolling Shots Motorrad (Journal)",
+          "href": "/blog-rolling-shots-motorrad.html"
+        },
+        {
+          "label": "Portfolio Motorrad",
+          "href": "/portfolio/portfolio-auswahl-motorrad"
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Professionelle Motorradbilder statt nur Actioncam-Stills",
+      "text": "Für scharfe Fahraufnahmen, Details und Portraits mit deiner Maschine in Düsseldorf und NRW – Einstieg ab 250 € inkl. MwSt.",
+      "buttonLabel": "Motorrad-Shooting anfragen"
     },
     {
       "_template": "faqBlock",

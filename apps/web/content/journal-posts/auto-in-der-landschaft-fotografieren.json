@@ -8,7 +8,7 @@
     "Bildkomposition",
     "Fahrzeugfotografie"
   ],
-  "publishedAt": "2027-07-31T07:00:00Z",
+  "publishedAt": "2028-02-11T08:00:00.000Z",
   "excerpt": "So bleibt ein Auto in der Landschaft das klare Hauptmotiv: Maßstab, Vordergrund, Linien, Hintergrund und Aufnahmeabstand gezielt aufeinander abstimmen.",
   "coverImage": "/uploads/payload/_DSC8178-1920x1280.webp",
   "coverAlt": "Silberner Sportwagen in Heck-Dreiviertelansicht auf einer Landstraße, dahinter ein offenes Feld und eine dunkle Baumkante.",
@@ -18,6 +18,13 @@
       "_template": "textBlock",
       "headline": "",
       "body": "Ein Auto vor einer schönen Landschaft zu parken reicht noch nicht für ein gutes Autofoto. Vielleicht verschwindet die Karosserie zwischen Ästen, der Weg führt aus dem Bild oder die freie Fläche nimmt so viel Raum ein, dass das Fahrzeug kaum noch auffällt. Die Aufgabe ist, beides lesbar zu machen: das Auto als Motiv und die Landschaft als sinnvollen Kontext.\n\nBeginne deshalb nicht mit einer festen Drittelregel oder Brennweite, sondern mit einer Frage: Was soll die betrachtende Person zuerst erkennen? Wenn das Auto führen soll, braucht es eine klare Form, genügend Bildfläche und einen Hintergrund, der die Kontur unterstützt. Die Landschaft darf Tiefe, Maßstab und Stimmung beisteuern, sollte aber nicht mit gleich starken Linien oder hellen Ablenkungen um Aufmerksamkeit konkurrieren. Dieser Leitfaden behandelt ein einzelnes Standbild; eine Reise als Bildfolge plant der [Beitrag zur Roadtrip-Fotografie](/blog-autoreise-fotografieren-roadtrip-bildserie.html)."
+    },
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Auto in der Landschaft fotografieren: Die wichtigsten Punkte im Über",
+      "body": "Kernaussage: So viel wie nötig, um den Ort als Kontext zu erkennen, und so wenig, dass das Auto nicht zum Nebendetail wird\nDas Auto als Hauptmotiv festlegen: Lege vor dem Auslösen die Rangfolge der Bildelemente fest: zuerst Fahrzeug, dann ein oder zwei Elemente, die den Ort erkennbar machen, danach der restliche\nHintergrund, Horizont und Silhouette: Der Hintergrund entscheidet mit, ob die Außenform des Autos gut lesbar bleibt\nVor Ort: Zugang und Sicherheit zuerst: Kläre Zufahrt und Nutzung mit dem Eigentümer oder Betreiber, nutze einen geeigneten Stellplatz und halte Wege frei"
     },
     {
       "_template": "textBlock",
@@ -73,6 +80,12 @@
       ]
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Häufige Fragen: Auto in der Landschaft fotografieren",
       "items": [
@@ -117,6 +130,11 @@
           "label": "Toyota Brand Hub: Photography Guidelines",
           "href": "https://brand.toyota.com/guidelines/visual/photography",
           "description": "Herstellerhinweise dazu, Fahrzeug und Umgebung gemeinsam zu gestalten und das Auto als Bildmotiv klar auszudrücken."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]
     }
@@ -147,7 +165,7 @@
   },
   "status": "scheduled",
   "createdAt": "2026-11-05T05:13:30Z",
-  "updatedAt": "2027-07-31T07:00:00Z",
+  "updatedAt": "2028-02-11T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",

@@ -14,8 +14,8 @@
   "coverAlt": "Schwarzer SUV bei Sonnenuntergang, gespiegelt in einer Pfütze vor Industriekulisse",
   "readingTime": 8,
   "seo": {
-    "title": "Fotospots für Autos in NRW: Orte fürs Auto-Shooting | Matthias Ramahi",
-    "description": "Fotospots für Autos in NRW: Orte in Düsseldorf, Bochum, Dortmund, Essen, Duisburg und Erkrath – mit Licht, Zugang und Tipps für Spots in deiner Nähe.",
+    "title": "Fotospots für Autos in NRW: Beste Orte & Tipps",
+    "description": "Die besten Fotospots für Autos in NRW: Düsseldorf, Bochum, Dortmund, Essen, Duisburg & Erkrath – mit Lichtfenstern, Zufahrt und Tipps für Spots in der Nähe.",
     "focusKeyword": "Fotospots für Autos",
     "searchIntent": "Informationssuche: Autofahrer und Fotografen suchen geeignete Orte für Autofotos in NRW und wollen wissen, wie sie Fotospots in ihrer Nähe finden.",
     "canonicalUrl": "https://matthiasramahi.de/blog-fotospots-autos-nrw.html",
@@ -31,24 +31,38 @@
   },
   "status": "published",
   "createdAt": "2026-09-25T14:00:00.000Z",
-  "updatedAt": "2026-09-25T14:00:00.000Z",
+  "updatedAt": "2026-11-23T18:30:00.000Z",
   "relatedPages": [
     {
       "label": "Auto-Fotoshooting NRW",
-      "href": "/auto-fotoshooting.html",
+      "href": "/fotoshooting-mit-auto.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
     },
     {
-      "label": "Auto fotografieren: Tipps",
-      "href": "/auto-fotografieren-tipps.html",
+      "label": "Autofotografie Düsseldorf",
+      "href": "/autofotografie-duesseldorf.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Auto-Fotoshooting Bochum",
+      "href": "/automobil-fotografie-bochum.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
     }
   ],
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Die wichtigsten Auto-Fotospots in NRW auf einen Blick",
+      "body": "Düsseldorf: Medienhafen (moderne Glasarchitektur zur blauen Stunde), Rheinufer (weiter Himmel), Reisholz (Industriekulisse)\nBochum & Dortmund: Jahrhunderthalle/Westpark und Phoenix-West (Stahl/Backstein) sowie Kemnader See und Phoenix-See\nEssen & Duisburg: Zeche Zollverein und Landschaftspark Nord (für geplante/gewerbliche Shootings Vorabgenehmigung nötig)\nRuhiges Licht & Nähe: Erkrath/Neandertal sowie leere Gewerbegebiete am Wochenende; beste Zeit sind früher Morgen, Spätnachmittag und [Auto-Shootings in Düsseldorf](/autofotografie-duesseldorf.html)"
+    },
     {
       "_template": "textBlock",
       "headline": "Was einen guten Fotospot für Autos ausmacht",
@@ -105,6 +119,55 @@
       "_template": "textBlock",
       "headline": "Wenn der Spot schon gefunden sein soll",
       "body": "Bei einem Auto-Fotoshooting schlage ich den Ort erst vor, wenn ich Fahrzeug, Lackfarbe und Nutzung kenne – und prüfe Zufahrt, Hintergrund und Lichtfenster vorher. Für die Städte im Ruhrgebiet und Düsseldorf gibt es eigene Seiten mit konkreten Spots, Ablauf und Kosten."
+    },
+    {
+      "_template": "linkList",
+      "headline": "Auto-Fotoshooting nach Stadt in NRW",
+      "links": [
+        {
+          "label": "Autofotografie Düsseldorf (Medienhafen & Rhein)",
+          "href": "/autofotografie-duesseldorf.html"
+        },
+        {
+          "label": "Auto-Fotoshooting Bochum (Jahrhunderthalle & See)",
+          "href": "/automobil-fotografie-bochum.html"
+        },
+        {
+          "label": "Auto-Fotoshooting Dortmund (Phoenix-See & Phoenix-West)",
+          "href": "/automobil-fotografie-dortmund.html"
+        },
+        {
+          "label": "Auto-Fotoshooting Essen (Zeche Zollverein & City)",
+          "href": "/automobil-fotografie-essen.html"
+        },
+        {
+          "label": "Auto-Fotoshooting Duisburg (Landschaftspark Nord)",
+          "href": "/automobil-fotografie-duisburg.html"
+        },
+        {
+          "label": "Fotograf Erkrath & Neandertal",
+          "href": "/fotografie-erkrath.html"
+        },
+        {
+          "label": "Auto-Fotoshooting NRW (Ablauf & Kosten ab 250 €)",
+          "href": "/fotoshooting-mit-auto.html"
+        },
+        {
+          "label": "Auto fotografieren: Einstellungen & Tipps",
+          "href": "/auto-fotografieren-tipps.html"
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Passenden Spot & Auto-Shooting planen",
+      "text": "Schick mir kurz dein Fahrzeugmodell, die Lackfarbe und deine Region in NRW. Ich schlage dir erprobte Locations mit passendem Lichtfenster vor – Shootings beginnen bei 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Fotoshooting anfragen"
     },
     {
       "_template": "faqBlock",

@@ -9,12 +9,19 @@
     "Autoankauf",
     "Fahrzeugdokumentation"
   ],
-  "publishedAt": "2027-05-30T07:00:00.000Z",
+  "publishedAt": "2027-10-29T07:00:00.000Z",
   "excerpt": "Welche Fotos helfen einem Händler bei einer ersten Ankaufseinschätzung? Eine geordnete Bildfolge zeigt Fahrzeug, Ausstattung und bekannte Schäden, ohne eine technische Prüfung zu ersetzen.",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
-  "coverAlt": "Schwarzer Brabus-SUV schräg von vorn auf nasser Fläche im Abendlicht; MOVENTA-Wasserzeichen unten rechts.",
+  "coverImage": "/assets/optimized/assets-portfolio-dsc2788-1-1920.webp",
+  "coverAlt": "Dunkler Sportwagen in schräger Außenansicht während der blauen Stunde",
   "readingTime": 7,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Inzahlungnahme Fahrzeugzustand Fotos: Die wichtigsten Punkte im Über",
+      "body": "Kernaussage: Das hängt vom Anfrageformular ab\nEine erste Ankaufseinschätzung braucht: Wenn du dein Auto in Zahlung geben möchtest, helfen Fotos dem Händler, die Anfrage vor einem Termin einzuordnen\nBekannte Schäden erst im: Bei einer Delle, einem Kratzer oder einer Nachlackierung helfen drei Ansichten: zuerst das ganze Fahrzeug oder die Karosserieseite, dann das betroffene\nWas der Händler aus: Gute Bilder können sichtbare Ausstattung, Karosserie, Innenraum und bekannte Oberflächenspuren verständlicher machen"
+    },
     {
       "_template": "textBlock",
       "headline": "Eine erste Ankaufseinschätzung braucht ein vollständiges Bild",
@@ -71,6 +78,12 @@
       "body": "Gute Bilder können sichtbare Ausstattung, Karosserie, Innenraum und bekannte Oberflächenspuren verständlicher machen. Sie zeigen nicht zuverlässig, wie sich Motor, Getriebe, Fahrwerk oder Batterie technisch verhalten; verdeckte Bereiche und Geräusche sind darauf nicht prüfbar. Der ADAC rät bei einer Kaufentscheidung ausdrücklich dazu, das Fahrzeug zu besichtigen und aus der Ferne nicht allein anhand von Fotos auf den tatsächlichen Zustand zu schließen.\n\nSieh das Bildset deshalb als Vorbereitung für das Gespräch. Wenn ein Händler nach weiteren Ansichten oder Unterlagen fragt, kläre, was genau fehlt. Eine vorläufige Einschätzung kann sich nach Besichtigung oder Prüfung ändern. Für den Verkauf an private Interessenten gelten andere Bildziele; dafür ist der Ratgeber zu Gebrauchtwagenfotos fürs Inserat passender."
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Häufige Fragen zur Inzahlungnahme mit Fahrzeugfotos",
       "items": [
@@ -124,18 +137,13 @@
           "label": "Gebrauchtwagen fürs Online-Inserat fotografieren",
           "href": "/blog-gebrauchtwagen-fuer-online-inserat-fotografieren.html",
           "description": "Bildfolge und Motive für ein öffentliches Verkaufsinserat."
-        },
-        {
-          "label": "Fahrzeugübergabe für Fuhrpark und Leasing dokumentieren",
-          "href": "/blog-fahrzeuguebergabe-fotodokumentation-fuhrpark.html",
-          "description": "Wiederholbare Bild- und Ablageroutine für Übernahme und Rückgabe im Fuhrpark."
         }
       ]
     }
   ],
   "status": "scheduled",
   "createdAt": "2026-11-04T14:44:15Z",
-  "updatedAt": "2027-05-30T07:00:00.000Z",
+  "updatedAt": "2027-10-29T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie für Marken und Unternehmen",
@@ -152,9 +160,9 @@
       "openInNewTab": false
     },
     {
-      "label": "Fahrzeugübergabe für Fuhrpark und Leasing dokumentieren",
-      "href": "/blog-fahrzeuguebergabe-fotodokumentation-fuhrpark.html",
-      "seoPurpose": "related-editorial",
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
     }
@@ -172,7 +180,7 @@
     "searchIntent": "Informationssuche mit kommerziellem Bezug: Fahrzeughalter möchten ihrem Händler vor einem Termin eine geordnete Bildfolge zum sichtbaren Zustand und zur Ausstattung schicken. Die Fotos sollen die Anfrage ergänzen und das Gespräch vorbereiten, ersetzen aber keine Besichtigung oder technische Prüfung.",
     "canonicalUrl": "https://matthiasramahi.de/blog-inzahlungnahme-fahrzeugzustand-fotografieren.html",
     "legacyUrl": "blog-inzahlungnahme-fahrzeugzustand-fotografieren.html",
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "ogImage": "/assets/optimized/assets-portfolio-dsc2788-1-1920.webp",
     "noIndex": false
   }
 }

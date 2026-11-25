@@ -9,12 +9,19 @@
     "Fahrzeugfotografie",
     "Autofokus"
   ],
-  "publishedAt": "2027-07-11T07:00:00.000Z",
+  "publishedAt": "2028-01-07T08:00:00.000Z",
   "excerpt": "Die passende Kamera für Autofotos hängt davon ab, ob du ein stehendes Fahrzeug, eine Bildserie für den Handel oder ein fahrendes Auto fotografierst. Diese Entscheidungshilfe ordnet die wichtigen Kriterien nach Bildaufgabe.",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+  "coverImage": "/uploads/payload/assets-portfolio-dsc2310-1920.webp",
   "coverAlt": "Schwarzer SUV vor Industrieanlagen im Abendlicht; Fahrzeug und farbiger Himmel spiegeln sich in einer Pfütze",
   "readingTime": 10,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Kamera für Autofotografie: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Für stehende Autos kann eine Einsteigerkamera ausreichen, wenn Fokus, Belichtung und Dateiausgabe zur Aufgabe passen\nDie Bildaufgabe entscheidet über: Für Autofotografie gibt es nicht die eine beste Kamera\nWorkflow und Objektive gehören: Ein Kameragehäuse ist Teil eines Systems\nBei einem Auftrag zählt: Für eine einzelne private Aufnahme brauchst du meist keine Kamera, die jede professionelle Produktionsfunktion beherrscht"
+    },
     {
       "_template": "textBlock",
       "headline": "Die Bildaufgabe entscheidet über die Kamera",
@@ -80,6 +87,12 @@
       "body": "Für eine einzelne private Aufnahme brauchst du meist keine Kamera, die jede professionelle Produktionsfunktion beherrscht. Bei Händlerbestand, Kampagne oder Editorial zählen dagegen ein wiederholbarer Ablauf, die gewünschte Bildserie und die rechtzeitige Lieferung in passenden Formaten. Wenn diese Anforderungen im Vordergrund stehen, ist die Frage nach der Kamera weniger wichtig als die nach Erfahrung, Lichtplanung und verlässlicher Umsetzung. Für ein konkretes Projekt findest du mehr zur [Automobilfotografie](/automobil-fotografie.html)."
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Häufige Fragen zur Kamera für Autofotografie",
       "items": [
@@ -124,12 +137,17 @@
           "label": "Canon EOS Utility: Remote Live View Shooting",
           "href": "https://cam.start.canon/en/S003/manual/html/UG-03_RemoteCamera_0020.html",
           "description": "Zeigt herstellerspezifisch, wie Bilder beim Fernauslösen direkt zum Computer übertragen werden; die verfügbaren Funktionen hängen vom Kameramodell ab."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]
     }
   ],
   "seo": {
-    "title": "Welche Kamera für Autofotografie? Kriterien für Autoshootings",
+    "title": "Kamera für Autofotografie: Kriterien für Shootings",
     "description": "Welche Kamera passt zu Autofotos? Vergleiche Autofokus, Auflösung und Workflow nach stehenden Fahrzeugen, Händlerserien und Bewegung.",
     "focusKeyword": "Kamera für Autofotografie",
     "secondaryKeywords": [
@@ -141,12 +159,12 @@
     "searchIntent": "Informations- und Auswahlabsicht: Autofotografen und kleine Fahrzeugteams möchten ein Kamerasystem passend zu Standbildern, wiederholbaren Händlerserien oder bewegten Autos auswählen. Der Beitrag behandelt Kaufkriterien statt Belichtungseinstellungen oder Objektivwahl.",
     "canonicalUrl": "https://matthiasramahi.de/blog-kamera-fuer-autofotografie.html",
     "legacyUrl": "blog-kamera-fuer-autofotografie.html",
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "ogImage": "/uploads/payload/assets-portfolio-dsc2310-1920.webp",
     "noIndex": false
   },
   "status": "scheduled",
   "createdAt": "2026-11-04T23:23:25Z",
-  "updatedAt": "2027-07-11T07:00:00.000Z",
+  "updatedAt": "2028-01-07T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",

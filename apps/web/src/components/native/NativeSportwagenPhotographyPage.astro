@@ -597,6 +597,13 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
     { href: panHeroSlides[0]?.mobile || mobileHeroPreload, media: '(max-width: 900px)' },
     { href: panHeroSlides[0]?.src || desktopHeroPreload, media: '(min-width: 901px)' },
   ]}
+  mobileCta={{
+    secondaryHref: '#galerie',
+    secondaryLabel: 'Galerie',
+    priceNote: 'ab 250 €',
+    href: '#anfrage',
+    label: 'Shooting anfragen',
+  }}
 >
   {preview && (
     <PreviewToolbar
@@ -632,47 +639,7 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
       </div>
     </section>
 
-    <section class="st" data-header-theme="light">
-      <div class="section-inner">
-        <div class="st-copy">
-          <h2>
-            <span {...tinaAttrs(doc?.statement, 'headline')}>{statementTitle.headline}</span>
-            {statementTitle.headline && statementTitle.emphasis ? ' ' : ''}
-            {statementTitle.emphasis && <em {...tinaAttrs(doc?.statement, 'emphasis')}>{statementTitle.emphasis}</em>}
-          </h2>
-          <div class="st-body">
-            {statementBody.map((paragraph, index) => <p {...tinaAttrs(doc?.statement?.body?.[index], 'text')}>{paragraph}</p>)}
-          </div>
-        </div>
-        <figure class="st-image">
-          <img loading="lazy" src={finalStatementImage.src} alt={finalStatementImage.alt} width={finalStatementImage.width} height={finalStatementImage.height} decoding="async" {...tinaAttrs(doc?.statement, 'image')} />
-        </figure>
-      </div>
-    </section>
-
-    <NativeGuideSection doc={doc} />
-
-    <section class="sh" data-header-theme="dark">
-      <div class="section-inner">
-        <div class="sh-head">
-          <h2><span {...tinaAttrs(doc?.focusSection, 'headline')}>{focusSectionHeadline}</span> <em {...tinaAttrs(doc?.focusSection, 'emphasis')}>{focusSectionEmphasis}</em></h2>
-          <p {...tinaAttrs(doc?.focusSection, 'lead')}>{focusSectionLead}</p>
-        </div>
-        <div class="sh-grid">
-          {finalShootingStyles.map((style, index) => (
-            <article class="sh-card">
-              <figure class="sh-img"><img loading="lazy" src={style.image} alt={style.alt} width={style.width} height={style.height} decoding="async" {...tinaAttrs(doc?.shootingStyles?.[index], 'image')} /></figure>
-              <div class="sh-text">
-                <h3 {...tinaAttrs(doc?.shootingStyles?.[index], 'title')}>{style.title}</h3>
-                <p {...tinaAttrs(doc?.shootingStyles?.[index], 'text')}>{style.text}</p>
-              </div>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <section class="po" data-header-theme="dark" aria-label="Ausgewählte Sportwagen-Arbeiten">
+    <section class="po" id="galerie" data-header-theme="dark" aria-label="Ausgewählte Sportwagen-Arbeiten">
       <div class="po-grid" id="poGrid">
         <header class="po-head">
             <h2 {...tinaAttrs(doc?.gallerySection, 'headline')}>{focusGalleryHeadline}</h2>
@@ -701,6 +668,33 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
             <span class="lbl" {...tinaAttrs(doc?.portfolioTiles?.[index], 'label')}>{tile.label}</span>
           </button>
         ))}
+      </div>
+    </section>
+
+    <div class="mr-gallery-cta-band" data-header-theme="dark">
+      <div class="mr-gallery-cta">
+        <span>Shooting-Pakete ab 250 € inkl. MwSt. — Sportwagen &amp; Performance in NRW</span>
+        <a href="#anfrage">Sportwagen-Shooting anfragen <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+
+    <section class="sh" data-header-theme="dark">
+      <div class="section-inner">
+        <div class="sh-head">
+          <h2><span {...tinaAttrs(doc?.focusSection, 'headline')}>{focusSectionHeadline}</span> <em {...tinaAttrs(doc?.focusSection, 'emphasis')}>{focusSectionEmphasis}</em></h2>
+          <p {...tinaAttrs(doc?.focusSection, 'lead')}>{focusSectionLead}</p>
+        </div>
+        <div class="sh-grid">
+          {finalShootingStyles.map((style, index) => (
+            <article class="sh-card">
+              <figure class="sh-img"><img loading="lazy" src={style.image} alt={style.alt} width={style.width} height={style.height} decoding="async" {...tinaAttrs(doc?.shootingStyles?.[index], 'image')} /></figure>
+              <div class="sh-text">
+                <h3 {...tinaAttrs(doc?.shootingStyles?.[index], 'title')}>{style.title}</h3>
+                <p {...tinaAttrs(doc?.shootingStyles?.[index], 'text')}>{style.text}</p>
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
 
@@ -742,6 +736,26 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
         </div>
       </div>
     </section>
+
+    <section class="st" data-header-theme="light">
+      <div class="section-inner">
+        <div class="st-copy">
+          <h2>
+            <span {...tinaAttrs(doc?.statement, 'headline')}>{statementTitle.headline}</span>
+            {statementTitle.headline && statementTitle.emphasis ? ' ' : ''}
+            {statementTitle.emphasis && <em {...tinaAttrs(doc?.statement, 'emphasis')}>{statementTitle.emphasis}</em>}
+          </h2>
+          <div class="st-body">
+            {statementBody.map((paragraph, index) => <p {...tinaAttrs(doc?.statement?.body?.[index], 'text')}>{paragraph}</p>)}
+          </div>
+        </div>
+        <figure class="st-image">
+          <img loading="lazy" src={finalStatementImage.src} alt={finalStatementImage.alt} width={finalStatementImage.width} height={finalStatementImage.height} decoding="async" {...tinaAttrs(doc?.statement, 'image')} />
+        </figure>
+      </div>
+    </section>
+
+    <NativeGuideSection doc={doc} />
 
     {showCrossFamilyCluster && (
       <NativeFamilyClusterLinks

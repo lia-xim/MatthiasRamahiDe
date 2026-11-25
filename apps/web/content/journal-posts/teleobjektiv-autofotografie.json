@@ -9,15 +9,22 @@
     "Fahrzeugdetails",
     "Bildgestaltung"
   ],
-  "publishedAt": "2027-03-29T07:00:00.000Z",
+  "publishedAt": "2027-07-16T07:00:00.000Z",
   "excerpt": "Wann ein Teleobjektiv bei Autofotos hilft: Wähle Abstand, Kamerastandpunkt und Hintergrund so, dass Fahrzeugform und Details klar wirken.",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+  "coverImage": "/uploads/payload/assets-portfolio-dsc3982-1920.webp",
   "readingTime": 7,
   "blocks": [
     {
       "headline": "",
       "body": "Ein Teleobjektiv ist bei der Autofotografie dann hilfreich, wenn du einen engeren Ausschnitt brauchst, ohne dich dem Fahrzeug zu nähern. Es erleichtert ruhige Gesamtansichten von einem weiter entfernten Standort und macht es einfacher, einzelne Formen oder Details in einer unübersichtlichen Umgebung auszuwählen. Der längere Bildwinkel allein verändert die Perspektive jedoch nicht: Dafür musst du deinen Kamerastandpunkt bewegen. Entscheide deshalb zuerst, welche Wirkung du brauchst, und wähle dann Abstand und Ausschnitt passend dazu.",
       "_template": "textBlock"
+    },
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Teleobjektiv Autofotografie: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Nicht, wenn die Kamera am selben Ort bleibt\nWas ein Teleobjektiv im: Mit längerer Brennweite wird der erfasste Bildwinkel enger\nAbstand, Kamerastandpunkt und Bildausschnitt: Nimm vom markierten Punkt eine weitere Ansicht auf\nEin praktischer Ablauf am Fahrzeug: Formuliere die Aufgabe: vollständiges Auto, ruhiges Dreiviertelmotiv oder ein einzelnes Detail?"
     },
     {
       "headline": "Fahrzeugform und Details aus verschiedenen Blickrichtungen",
@@ -86,8 +93,19 @@
           "label": "Canon Europe: Depth of Field",
           "href": "https://files.canon-europe.com/files/webcontent/rf-lens-world/knowledge/depth-of-field/index.html",
           "description": "Nennt Brennweite, Blende, Fokus- und Aufnahmeabstand sowie den Abstand zum Hintergrund als Einflussfaktoren der Schärfentiefe."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
     },
     {
       "headline": "Häufige Fragen",
@@ -124,15 +142,29 @@
     "searchIntent": "Praktische Suche: Wann hilft ein Teleobjektiv bei Fahrzeugporträts oder Details, und wie wirken Arbeitsabstand, Perspektive und Hintergrund?",
     "canonicalUrl": "https://matthiasramahi.de/blog-teleobjektiv-autofotografie.html",
     "legacyUrl": "blog-teleobjektiv-autofotografie.html",
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "ogImage": "/uploads/payload/assets-portfolio-dsc3982-1920.webp",
     "noIndex": false
   },
   "createdAt": "2026-11-03T17:00:00Z",
-  "updatedAt": "2027-03-29T07:00:00.000Z",
+  "updatedAt": "2027-07-16T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
       "href": "/automobil-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fahrzeugserien konsistent planen",
+      "href": "/blog-fahrzeugserie-konsistent-planen.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

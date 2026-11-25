@@ -10,7 +10,7 @@
     "Planung"
   ],
   "publishedAt": "2026-11-21T08:00:00.000Z",
-  "status": "scheduled",
+  "status": "published",
   "excerpt": "Ein Auto-Fotoshooting als Geschenk passt, wenn Fahrzeug, Bildidee und Ablauf zum Besitzer passen. Diese Checkliste hilft dir, Zugang zum Auto, Termin, Bildumfang und Gutscheinbedingungen vor dem Kauf zu klären.",
   "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
   "coverAlt": "Schwarzer SUV vor Industrieanlagen bei Sonnenuntergang; seine Konturen spiegeln sich auf nassem Boden.",
@@ -32,7 +32,7 @@
     "noIndex": false
   },
   "createdAt": "2026-11-06T00:00:00Z",
-  "updatedAt": "2027-10-09T07:00:00Z",
+  "updatedAt": "2026-11-21T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Fotoshooting mit Auto anfragen",
@@ -56,14 +56,21 @@
       "openInNewTab": false
     },
     {
-      "label": "Nutzungsrechte bei Fahrzeugfotos",
-      "href": "/blog-nutzungsrechte-fahrzeugfotos.html",
+      "label": "Fotoshooting-Gutschein Düsseldorf & NRW",
+      "href": "/fotoshooting-gutschein-duesseldorf.html",
       "seoPurpose": "related-content",
       "rel": "follow",
       "openInNewTab": false
     }
   ],
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Auto-Fotoshooting als Gutschein sinnvoll planen",
+      "body": "Flexibler Gutschein statt Festtermin: Wert- oder Leistungsgutschein wählen, damit Wetter, Saisonkennzeichen und Wunsch-Location frei abstimmbar bleiben\nOrientierungsrahmen: Individuelle Pkw-Shootings in Erkrath, Düsseldorf & NRW starten ab 250 € inkl. MwSt.\nSchriftlich fixieren: Leistungsumfang, ungefähre Bildanzahl, Bearbeitungsstand, Dateilieferung und Gültigkeitsbedingungen vor Kauf bestätigen lassen"
+    },
     {
       "_template": "textBlock",
       "headline": "Ein Geschenk für genau dieses Auto",
@@ -75,6 +82,23 @@
       "body": "Das Auto muss nicht dir gehören. Du solltest aber wissen, welches Fahrzeug gemeint ist und wer den Zugang bestätigen kann. Vielleicht gehört es dem Empfänger, jemandem aus der Familie oder einer Sammlung. Bei geliehenen oder gemeinsam genutzten Autos muss die verfügbare Zeit mit dem Eigentümer abgestimmt werden.\n\nEin selten bewegter oder saisonal abgestellter Wagen braucht mehr Vorlauf als ein Alltagsauto. Wenn Modell, Generation oder Umbau wichtig sind, sprich es an. Plane keinen Ersatzwagen ein, ohne dass der Empfänger einverstanden ist."
     },
     {
+      "_template": "imageSequence",
+      "headline": "Eindrücke möglicher Fahrzeugmotive",
+      "layout": "editorial-pair",
+      "items": [
+        {
+          "image": "/assets/portfolio/automobil-bmw-m3-showcar.webp",
+          "caption": "Prägnante Dreiviertelansicht im kontrollierten Licht",
+          "cropIntent": "editorial"
+        },
+        {
+          "image": "/assets/portfolio/automobil-brabus-sunset.webp",
+          "caption": "Ruhige Außenaufnahme bei weichem Abendlicht",
+          "cropIntent": "editorial"
+        }
+      ]
+    },
+    {
       "_template": "textBlock",
       "headline": "Entscheide nicht über den Kopf des Besitzers hinweg",
       "body": "Eine Überraschung funktioniert selten, wenn du festlegst, ob die Person mit ins Bild kommt. Frag beiläufig, ob der Besitzer lieber sein Auto allein zeigen oder selbst mit aufs Bild möchte. Bei einer reinen Fahrzeugserie stehen Form, Details und Licht im Mittelpunkt. Mit einer Person kommen Kleidung, Haltung und die spätere Bildnutzung hinzu.\n\nAuch eine Veröffentlichung in sozialen Netzwerken ist kein automatischer Teil des Geschenks. Wenn du die Präferenz nicht kennst, lass die Bildidee offen. Der Empfänger kann sie nach der Übergabe mit dem Fotografen abstimmen."
@@ -82,7 +106,7 @@
     {
       "_template": "textBlock",
       "headline": "Gutschein, fester Auftrag oder gemeinsamer Zuschuss?",
-      "body": "Es gibt drei sinnvolle Varianten: ein konkret umrissenes Shooting, einen Wertgutschein oder einen vereinbarten Zuschuss. Ein festes Shooting passt, wenn Fahrzeug und Bildidee abgestimmt sind; ein Wertgutschein lässt den Umfang bei der Einlösung offen; ein Zuschuss übernimmt nur einen Teil der vereinbarten Kosten.\n\nBitte den Fotografen, die Konditionen schriftlich zu bestätigen. Frage bei einem Leistungsgutschein, welche Leistung genau zugesagt ist; bei einem Wertgutschein, ob für das gewünschte Paket eine Zuzahlung anfällt. Lass dir außerdem erklären, wie die Einlösung funktioniert: Muss zuerst ein Termin angemeldet werden? Bis wann muss die Buchung erfolgen und bis wann das Shooting stattfinden? Darf der Gutschein übertragen oder teilweise eingelöst werden? Was gilt bei ausgebuchten Terminen, Wetterverschiebung oder einem nicht verfügbaren Fahrzeug?\n\nDie Angebotsseite für das Shooting mit Auto nennt eine individuelle Geschenk-Anfrage, veröffentlicht aber keine festen Gutschein-, Laufzeit- oder Paketbedingungen. Die verlinkten Fremdanbieter zeigen deshalb nur, wie konkrete Angebote aussehen können. Ihre am 8. November 2026 geprüften Konditionen sind datierte Beispiele, keine allgemeine Regel; prüfe sie vor dem Kauf auf der jeweiligen Anbieterseite erneut. Die Verbraucherzentrale bietet allgemeine Informationen zu Gutscheinen, ersetzt aber nicht die Bedingungen des konkreten Angebots. Schreibe nur auf die Geschenkkarte, was der Anbieter bestätigt hat."
+      "body": "Es gibt drei sinnvolle Varianten: ein konkret umrissenes Shooting, einen Wertgutschein oder einen vereinbarten Zuschuss. Individuelle Auto-Shootings beginnen ab 250 € inkl. MwSt. Ein festes Shooting passt, wenn Fahrzeug und Bildidee abgestimmt sind; ein Wertgutschein lässt den Umfang bei der Einlösung offen; ein Zuschuss übernimmt nur einen Teil der vereinbarten Kosten.\n\nBitte den Fotografen, die Konditionen schriftlich zu bestätigen. Frage bei einem Leistungsgutschein, welche Leistung genau zugesagt ist; bei einem Wertgutschein, ob für das gewünschte Paket eine Zuzahlung anfällt. Lass dir außerdem erklären, wie die Einlösung funktioniert: Muss zuerst ein Termin angemeldet werden? Bis wann muss die Buchung erfolgen und bis wann das Shooting stattfinden? Darf der Gutschein übertragen oder teilweise eingelöst werden? Was gilt bei ausgebuchten Terminen, Wetterverschiebung oder einem nicht verfügbaren Fahrzeug?\n\nDie Angebotsseite für das Shooting mit Auto nennt eine individuelle Geschenk-Anfrage, veröffentlicht aber keine festen Gutschein-, Laufzeit- oder Paketbedingungen. Die verlinkten Fremdanbieter zeigen deshalb nur, wie konkrete Angebote aussehen können. Ihre am 8. November 2026 geprüften Konditionen sind datierte Beispiele, keine allgemeine Regel; prüfe sie vor dem Kauf auf der jeweiligen Anbieterseite erneut. Die Verbraucherzentrale bietet allgemeine Informationen zu Gutscheinen, ersetzt aber nicht die Bedingungen des konkreten Angebots. Schreibe nur auf die Geschenkkarte, was der Anbieter bestätigt hat."
     },
     {
       "_template": "textBlock",
@@ -103,6 +127,12 @@
       "_template": "quoteBlock",
       "quote": "Ich möchte dir ein Fotoshooting mit deinem Auto schenken. Bildidee und Termin planen wir gemeinsam.",
       "attribution": "Beispiel für eine Einladung, solange noch kein fester Gutscheinumfang vereinbart ist."
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Professionelles Auto-Fotoshooting in NRW planen",
+      "text": "Du brauchst stimmige Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto im Raum Düsseldorf, Erkrath und NRW? Shootings starten bei 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
     },
     {
       "_template": "faqBlock",
@@ -140,19 +170,19 @@
           "description": "Die Angebotsseite nennt ein individuell zugeschnittenes Geschenk-Shooting, aber keine festen Gutschein-, Laufzeit- oder Paketbedingungen. Umfang vor dem Kauf individuell bestätigen lassen."
         },
         {
-          "label": "BILDERMEISTER: Geschenk-Gutschein für ein Automobil-Fotoshooting",
-          "href": "https://www.bildermeister.com/geschenk-gutschein",
-          "description": "Stand 08.11.2026: Der Anbieter nennt Gutscheine ab 300 Euro, zeitlich unbegrenzte Gültigkeit und Einlösung bei Events nach vorheriger Anmeldung sowie bei Individual-Shootings; Upgrade möglich, keine Barauszahlung. Vor Kauf aktuelle Bedingungen prüfen."
-        },
-        {
-          "label": "Philipp Viering Fotografie: Gutschein Automobile",
-          "href": "https://www.philippvieringfotografie.de/gutscheine/gutscheine/gutschein-automobile/",
-          "description": "Stand 08.11.2026: Das Angebot nennt eine Stunde Shooting, zehn bearbeitete digitale Bilder und ein Portrait vor dem Auto als möglich. Die Seite nennt eine Einlösefrist bis zum Jahresende drei Jahre nach Ausstellung und keine Barauszahlung. Vor Kauf prüfen; nur ein Anbieterbeispiel."
-        },
-        {
           "label": "Verbraucherzentrale: Gutscheine als Geschenk",
           "href": "https://www.verbraucherzentrale.de/wissen/vertraege-reklamation/kundenrechte/gutscheine-als-geschenk-so-lange-sind-sie-gueltig-13861",
           "description": "Allgemeine Verbraucherinformation zu Gutscheinen, zuletzt aktualisiert am 24.11.2025. Sie ersetzt nicht die Bedingungen des jeweiligen Anbieters; vor Veröffentlichung und Kauf erneut prüfen."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Ablauf, Leistungen und Orientierungspreis ab 250 € inkl. MwSt."
+        },
+        {
+          "label": "Gutschein oder Auto-Shooting anfragen",
+          "href": "/contact.html",
+          "description": "Direkte Abstimmung zu Fahrzeug, Umfang und flexiblem Terminfenster."
         }
       ]
     }

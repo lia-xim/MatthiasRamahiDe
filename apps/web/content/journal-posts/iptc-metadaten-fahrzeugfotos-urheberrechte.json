@@ -10,12 +10,19 @@
     "Fahrzeugfotos",
     "Dateiübergabe"
   ],
-  "publishedAt": "2027-09-05T07:00:00.000Z",
+  "publishedAt": "2028-04-11T07:00:00.000Z",
   "excerpt": "Bei einer Fahrzeugserie gehören Urheber-, Credit- und Nutzungshinweise in die Übergabe. Dieser Leitfaden trennt IPTC-Felder, Vertrag und Lightroom-Export und zeigt, wie du die finalen Dateien prüfst.",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+  "coverImage": "/uploads/payload/20250418-DSC00660.webp",
   "coverAlt": "Schwarzer Brabus vor einer Industrieanlage im Abendlicht",
   "readingTime": 10,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "IPTC-Metadaten für Fahrzeugfotos: Die wichtigsten Punkte im Überblic",
+      "body": "Kernaussage: Creator, Copyright Notice, Credit Line und Nutzungshinweise in IPTC eintragen, mit Lightroom exportieren und die fertigen Fahrzeugbilddateien prüfen\nBilddatei und Übergabeinformation getrennt: Eine Fahrzeugserie landet oft in mehr als einem Ordner: beim Fotografen, beim Autohaus, bei einer Agentur oder in einem späteren Bildarchiv\nFahrzeugangaben nur so detailliert: Bei größeren Serien sind kurze, eindeutige Beschreibungen nützlicher als eine lange Liste von geratenen Schlagwörtern\nKurze Prüfliste vor der Übergabe: Vor dem Versand einer Fahrzeugserie kannst du diese Punkte einmal durchgehen: Stimmen Creator, Copyright Notice und Credit Line mit dem Auftrag überein?"
+    },
     {
       "_template": "textBlock",
       "headline": "Bilddatei und Übergabeinformation getrennt planen",
@@ -48,7 +55,8 @@
       "_template": "textBlock",
       "headline": "Source, Job Id und Caption für den Empfänger zuordnen",
       "body": "Lege vor dem Export fest, wer die Felder füllt und welche bestätigte Quelle dafür gilt. So lässt sich eine Fahrzeugserie prüfen, ohne dieselbe Information in mehrere Felder zu kopieren:\n\n- **Source (Supply Chain):** die Agentur, das Autohaus oder die Person mit einer Rolle in der Lieferkette. Das kann eine andere Stelle als Creator und Rechteinhaber sein.\n- **Job Id:** die vom Empfänger vergebene Auftrags- oder Vorgangskennung für dessen Workflow. Sie ist weder Fahrzeug-ID noch Lizenznachweis.\n- **Description (Caption/Abstract):** eine überprüfbare Bildunterschrift – etwa sichtbares Fahrzeug, Perspektive, Ort oder Aufnahmeanlass, soweit bestätigt. Sie ist nicht der Webseiten-Alt-Text.\n- **Credit Line:** die exakt vereinbarte Veröffentlichungsnennung.\n- **Rights Usage Terms:** nur die knapp wiedergegebenen, tatsächlich vereinbarten Nutzungshinweise; das Metadatenfeld selbst ist keine Freigabe.\n- **Web Statement of Rights:** eine URL zur passenden Rechte- oder Lizenzbeschreibung.\n- **Licensor / Licensor URL:** Kontaktperson oder Organisation zur Lizenzanfrage und – als Unterfeld – die zutreffende URL.\n\nDie IPTC-Beschreibung nennt Job Id ausdrücklich als Workflow-Kennung, die für den Auftrag vom Empfänger stammt. Übernimm deshalb keine alte Vorgangsnummer und erfinde keine Bedingungen. Wenn ein Feld beim Empfänger nicht dargestellt oder ausgewertet wird, übergib die Information zusätzlich in der vereinbarten Projektliste."
-    },    {
+    },
+    {
       "_template": "textBlock",
       "headline": "Fahrzeugangaben nur so detailliert eintragen, wie sie belegt sind",
       "body": "Bei größeren Serien sind kurze, eindeutige Beschreibungen nützlicher als eine lange Liste von geratenen Schlagwörtern. Ein bestätigter Modellname, die Fahrzeugklasse, die Perspektive oder ein Projektkürzel kann die Suche unterstützen. Nutze pro Auftrag eine kleine, konsistente Stichwortliste und kontrolliere sie, bevor du sie auf viele Bilder überträgst.\n\nFahrgestellnummern, vollständige Kennzeichen, private Adressen oder genaue GPS-Koordinaten gehören nicht automatisch in öffentliche Ausgabedateien. Der Metadatenempfänger kann sie oft mit der Bilddatei weitergeben. Prüfe deshalb, welche Angaben für den vereinbarten Zweck erforderlich sind und welche im Auslieferungspaket entfallen sollen. Standortdaten sind ein eigener Exportpunkt; dazu gibt es den [Leitfaden zum Entfernen von GPS-Daten aus Autofotos](/blog-gps-daten-aus-autofotos-entfernen.html).\n\nBildunterschrift und Alt-Text sind ebenfalls nicht dasselbe. Ein IPTC-Feld beschreibt das Foto für die Datei oder das Archiv. Der Alt-Text auf einer Webseite beschreibt das Bild im Zusammenhang der jeweiligen Seite. Eine bereits eingebettete Stichwortliste wird nicht automatisch zum hilfreichen Seitentext."
@@ -56,7 +64,7 @@
     {
       "_template": "textBlock",
       "headline": "In Lightroom Classic stabile und auftragsbezogene Angaben trennen",
-    "body": "Lightroom Classic kann Metadaten-Vorgaben speichern. Eine allgemeine Vorgabe eignet sich für Angaben, die bei jeder eigenen Aufnahme gleich bleiben sollen, etwa einen bestätigten Creator-Namen oder geschäftliche Kontaktinformationen. Projektbezogene Werte wie Rechteinhaber, Credit Line, Kampagne oder eine Nutzungseinschränkung solltest du dagegen nur einsetzen, wenn sie für genau diesen Auftrag gelten.\n\nFür einen überschaubaren Ablauf legst du beim Import im Bedienfeld „Während des Importvorgangs anwenden“ unter „Metadaten“ ein neues Preset an oder wählst eine gespeicherte Vorlage. Beschränke ein dauerhaftes Preset auf verlässliche Angaben zu dir oder deinem Studio. Wähle für Auftraggeber, Credit und Nutzungshinweise eine eigene Projektvorlage oder trage sie erst nach Abgleich mit dem Auftrag ein. Bei bereits importierten Bildern markierst du nur die Fotos dieses Auftrags und kontrollierst im Metadaten-Bedienfeld, ob wirklich alle ausgewählten Dateien dieselben Werte erhalten sollen.\n\nSo vermeidest du, dass eine alte Vorlage unbemerkt den falschen Rechteinhaber oder frühere Nutzungsbedingungen in eine neue Fahrzeugserie schreibt. Vor dem Versand prüfst du im Exportdialog den Bereich „Metadaten“. Die Auswahl „Nur Copyright“ fügt laut Adobe nur IPTC-Copyright-Metadatenfelder hinzu. Verlasse dich damit nicht darauf, dass Creator, Credit Line, Source, Job Id oder Description mitkommen; prüfe die konkrete Exportoption und die fertige Datei. Wähle eine passende Exportoption und kontrolliere die fertige Datei. Für Camera-Raw-Originale können Metadaten in einer separaten XMP-Filialdatei liegen; übergib diese zusammen mit dem passenden Original. Der Beitrag zu [RAW, JPEG oder TIFF bei Fahrzeugfotos](/blog-dateiformate-fahrzeugfotografie-raw-jpeg-tiff.html) ordnet die Formate nach dem späteren Verwendungszweck ein."
+      "body": "Lightroom Classic kann Metadaten-Vorgaben speichern. Eine allgemeine Vorgabe eignet sich für Angaben, die bei jeder eigenen Aufnahme gleich bleiben sollen, etwa einen bestätigten Creator-Namen oder geschäftliche Kontaktinformationen. Projektbezogene Werte wie Rechteinhaber, Credit Line, Kampagne oder eine Nutzungseinschränkung solltest du dagegen nur einsetzen, wenn sie für genau diesen Auftrag gelten.\n\nFür einen überschaubaren Ablauf legst du beim Import im Bedienfeld „Während des Importvorgangs anwenden“ unter „Metadaten“ ein neues Preset an oder wählst eine gespeicherte Vorlage. Beschränke ein dauerhaftes Preset auf verlässliche Angaben zu dir oder deinem Studio. Wähle für Auftraggeber, Credit und Nutzungshinweise eine eigene Projektvorlage oder trage sie erst nach Abgleich mit dem Auftrag ein. Bei bereits importierten Bildern markierst du nur die Fotos dieses Auftrags und kontrollierst im Metadaten-Bedienfeld, ob wirklich alle ausgewählten Dateien dieselben Werte erhalten sollen.\n\nSo vermeidest du, dass eine alte Vorlage unbemerkt den falschen Rechteinhaber oder frühere Nutzungsbedingungen in eine neue Fahrzeugserie schreibt. Vor dem Versand prüfst du im Exportdialog den Bereich „Metadaten“. Die Auswahl „Nur Copyright“ fügt laut Adobe nur IPTC-Copyright-Metadatenfelder hinzu. Verlasse dich damit nicht darauf, dass Creator, Credit Line, Source, Job Id oder Description mitkommen; prüfe die konkrete Exportoption und die fertige Datei. Wähle eine passende Exportoption und kontrolliere die fertige Datei. Für Camera-Raw-Originale können Metadaten in einer separaten XMP-Filialdatei liegen; übergib diese zusammen mit dem passenden Original. Der Beitrag zu [RAW, JPEG oder TIFF bei Fahrzeugfotos](/blog-dateiformate-fahrzeugfotografie-raw-jpeg-tiff.html) ordnet die Formate nach dem späteren Verwendungszweck ein."
     },
     {
       "_template": "textBlock",
@@ -72,6 +80,12 @@
       "_template": "textBlock",
       "headline": "Kurze Prüfliste vor der Übergabe",
       "body": "Vor dem Versand einer Fahrzeugserie kannst du diese Punkte einmal durchgehen: Stimmen Creator, Copyright Notice und Credit Line mit dem Auftrag überein? Enthalten Rights Usage Terms und Web Statement of Rights nur bestätigte Angaben? Sind Fahrzeugname, Stichwörter und Beschreibungen korrekt? Wurden nicht benötigte Standort- oder Identifikationsdaten aus der öffentlichen Ausgabe entfernt? Hast du die exportierte Datei oder RAW-Sidecar geprüft? Sind Nutzungsvereinbarung und Metadaten als zwei unterschiedliche Ebenen dokumentiert?\n\nEine sauber beschriebene Bilddatei erleichtert Suche, Credit und Übergabe. Was der Empfänger mit dem Foto darf, steht weiterhin in der dazugehörigen Vereinbarung."
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
     },
     {
       "_template": "faqBlock",
@@ -123,15 +137,20 @@
           "href": "https://helpx.adobe.com/de/lightroom-classic/desktop/organize-photos-in-lightroom-classic/advanced-metadata-actions.html",
           "description": "Erklärt Lightroom Classic Metadaten-Presets sowie die Speicherung in XMP-Dateien und RAW-Sidecars."
         },
-      {
-        "label": "Adobe Lightroom Classic: Metadaten beim Import anwenden",
-        "href": "https://helpx.adobe.com/de/lightroom-classic/desktop/import-photos/photo-video-import-options.html",
-        "description": "Beschreibt das Anwenden vorhandener oder neuer Metadaten-Presets während des Imports."
-      },
+        {
+          "label": "Adobe Lightroom Classic: Metadaten beim Import anwenden",
+          "href": "https://helpx.adobe.com/de/lightroom-classic/desktop/import-photos/photo-video-import-options.html",
+          "description": "Beschreibt das Anwenden vorhandener oder neuer Metadaten-Presets während des Imports."
+        },
         {
           "label": "Adobe Lightroom Classic: Exportieren von Dateien auf Festplatte oder CD",
           "href": "https://helpx.adobe.com/at/lightroom-classic/desktop/export-photos/export-files-disk-or-cd.html",
           "description": "Beschreibt die Exportoptionen für Metadaten, Copyright-Felder und GPS-Informationen."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]
     }
@@ -151,7 +170,7 @@
     "searchIntent": "Qualitative Longtail-Informationssuche: Fotograf:innen, Autohäuser und Automotive-Teams möchten Creator-, Copyright-, Credit- und Nutzungshinweise in Fahrzeugbilddateien hinterlegen, den Metadatenexport kontrollieren und die finale Übergabe prüfen. Die recherchierten Fanout-Fragen sind Hypothesen; Suchvolumen, GSC-Leistung und gemessener AI-Fanout sind nicht belegt.",
     "canonicalUrl": "https://matthiasramahi.de/blog-iptc-metadaten-fahrzeugfotos-urheberrechte.html",
     "legacyUrl": "blog-iptc-metadaten-fahrzeugfotos-urheberrechte.html",
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "ogImage": "/uploads/payload/20250418-DSC00660.webp",
     "noIndex": false
   },
   "legacy": {
@@ -161,7 +180,7 @@
     "renderSource": "structured-astro"
   },
   "createdAt": "2026-11-06T00:00:00Z",
-  "updatedAt": "2027-09-05T07:00:00.000Z",
+  "updatedAt": "2028-04-11T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
@@ -201,4 +220,3 @@
   ],
   "status": "scheduled"
 }
-

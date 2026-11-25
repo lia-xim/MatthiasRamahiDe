@@ -8,12 +8,19 @@
     "Fotodokumentation",
     "Archiv"
   ],
-  "publishedAt": "2027-01-02T08:00:00.000Z",
+  "publishedAt": "2027-02-19T08:00:00.000Z",
   "status": "scheduled",
   "excerpt": "Ein klarer Fotostandard hilft Clubs, Museen und privaten Sammlungen, jedes Fahrzeug wiederzuerkennen und Ansichten sinnvoll mit dem Bestandseintrag zu verknüpfen.",
   "coverImage": "/uploads/payload/20250418-DSC006552.webp",
   "readingTime": 8,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Eine Oldtimer-Sammlung einheitlich als Bildarchiv erfassen",
+      "body": "Wiederholbarer Standardsatz: Jedes Fahrzeug mit derselben Abfolge (Hero-Dreiviertel, alle Seiten, Innenraum, Typenschild/Besonderheiten) aufnehmen\nEindeutige Zuordnung: Inventarnummern oder feste Fahrzeugcodes bereits am Set über Referenzkarte und Dateischema mit dem Katalog verknüpfen\nInternes Archiv vs. Veröffentlichung: Interne Bestandsaufnahmen vor externer Veröffentlichung getrennt nach Rechten und Standortfreigaben prüfen"
+    },
     {
       "_template": "textBlock",
       "headline": "Ein Archiv braucht mehr als ein schönes Titelbild",
@@ -79,6 +86,16 @@
         {
           "label": "gesonderte Datenschutzprüfung",
           "href": "/blog-fahrzeugfotos-kennzeichen-personen-datenschutz.html"
+        },
+        {
+          "label": "Oldtimerfotografie in Düsseldorf & NRW",
+          "href": "/oldtimer-fotografie.html",
+          "description": "Sorgfältige Dokumentation klassischer Fahrzeuge und Sammlungsstücke."
+        },
+        {
+          "label": "Oldtimer als Wertobjekt fotografieren",
+          "href": "/blog-oldtimer-wertobjekt.html",
+          "description": "Warum ruhiges Licht, Vollständigkeit und Detailtreue den Unterschied machen."
         }
       ]
     },
@@ -98,8 +115,24 @@
         {
           "label": "Fotoplan für eine Oldtimer-Restaurierung",
           "href": "/blog-oldtimer-restaurierung-fotodokumentation.html"
+        },
+        {
+          "label": "Oldtimer als Wertobjekt fotografieren",
+          "href": "/blog-oldtimer-wertobjekt.html",
+          "description": "Warum ruhiges Licht, Vollständigkeit und Detailtreue den Unterschied machen."
+        },
+        {
+          "label": "Oldtimer-Veranstaltungen fotografieren",
+          "href": "/blog-oldtimer-veranstaltungen.html",
+          "description": "Reportage- und Fahrzeugmotive bei Treffen sauber verbinden."
         }
       ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Oldtimer & Klassiker ruhig fotografieren lassen",
+      "text": "Vom einzelnen Wertfahrzeug bis zur Sammlungsserie in Erkrath, Düsseldorf und NRW: Persönliche Klassiker-Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Oldtimer-Shooting anfragen"
     },
     {
       "_template": "faqBlock",
@@ -141,13 +174,18 @@
           "label": "NDSA: Levels of Digital Preservation",
           "href": "https://www.ndsa.org/activities/levels-of-digital-preservation/",
           "description": "Ein Bewertungsrahmen für Speicherung und Standort, Dateiintegrität, Informationssicherheit, Metadaten und Dateiformate."
+        },
+        {
+          "label": "Oldtimerfotografie in Düsseldorf & NRW",
+          "href": "/oldtimer-fotografie.html",
+          "description": "Sorgfältige Dokumentation klassischer Fahrzeuge und Sammlungsstücke."
         }
       ]
     }
   ],
   "coverAlt": "Klassischer Sportwagen in einer historischen Ausstellungshalle",
   "createdAt": "2026-11-03T15:30:00Z",
-  "updatedAt": "2027-01-02T08:00:00.000Z",
+  "updatedAt": "2027-02-19T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Oldtimer-Fotografie",

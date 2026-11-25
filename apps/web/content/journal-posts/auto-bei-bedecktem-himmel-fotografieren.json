@@ -9,13 +9,20 @@
     "Tageslicht",
     "Lichtführung"
   ],
-  "publishedAt": "2027-07-21T07:00:00.000Z",
+  "publishedAt": "2028-01-25T08:00:00.000Z",
   "status": "scheduled",
   "excerpt": "Bedeckter Himmel macht das Licht weich, kann Autolack aber flach wirken lassen. So nutzt du Himmelsreflexe, Fahrzeugwinkel und Umgebung für klare Konturen.",
   "coverImage": "/uploads/payload/_DSC8196.webp",
   "coverAlt": "Silberner Porsche 911 in Dreiviertelansicht vor einem Feld und einer Baumreihe; Wolken und Umgebung spiegeln sich in Haube, Türen und Dach.",
   "readingTime": 7,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Auto bei bedecktem Himmel fotografieren: Die wichtigsten Punkte im Ü",
+      "body": "Kernaussage: Bedeckter Himmel macht Licht weich, kann Autolack aber flach wirken lassen\nErst die Bildaufgabe, dann: Bedeckter Himmel ist ein mögliches, aber kein garantiert gutes Lichtfenster für Autofotos\nMit Umgebung und dunkler: Geh in kleinen Schritten seitlich, bis die Reflexionskante an Tür oder Kotflügel die Form unterstützt statt sie zu zerschneiden\nWann eine andere Lichtstimmung: Suchst du warme Kanten, lange Schatten oder Gegenlicht, passt die goldene Stunde meist besser"
+    },
     {
       "headline": "Erst die Bildaufgabe, dann die Wolken beurteilen",
       "body": "Bedeckter Himmel ist ein mögliches, aber kein garantiert gutes Lichtfenster für Autofotos. Eine helle, gleichmäßige Wolkendecke nimmt harte Sonnenschatten zurück. Bei einer dunklen Decke oder ähnlich grauem Hintergrund verlieren Dach, Kotflügel und Türen dagegen sichtbare Helligkeitsunterschiede. Entscheide zuerst, ob du eine farbtreue, gut lesbare Serie oder ein stimmungsvolles Bild suchst. Für eine sachliche Serie zählen nachvollziehbare Lackfarbe und Form; bei einer freien Aufnahme darf graues Wetter stärker Teil der Bildwirkung sein. Das Titelbild ist ein Portfolio-Beispiel für Außenlicht und Karosseriezeichnung; die konkrete Wetterlage ist nicht dokumentiert. Allgemeine Perspektiven und Kameraeinstellungen findest du im Ratgeber zur [Autofotografie](/automobil-fotografie.html) und bei den [Kameraeinstellungen für Autofotografie](/blog-autofotografie-kameraeinstellungen.html).",
@@ -30,6 +37,23 @@
       "headline": "Winkel und Standpunkt geben der Karosserie Form",
       "body": "Beginne mit einer Dreiviertelansicht und prüfe, ob Seitenfläche, Kotflügel und Türen als Verlauf lesbar sind. Wenn alles gleich hell wirkt, ändere erst den Standpunkt, dann den Fahrzeugwinkel. Eine kleine Verschiebung verändert, welche Himmels- und Umgebungsflächen sich spiegeln. Eine seitlichere Ansicht betont die Türlinie, benötigt aber gleichmäßiges Licht, damit Reflexe sie nicht zerschneiden. Schräg zur Karosserie lassen sich zwei Flächen gemeinsam lesen: Eine kann Himmelslicht zeigen, die andere dunklere Umgebung. Achte darauf, dass Übergänge keine wichtigen Details verdecken. Prüfe auch, ob sich ein auffälliges Schild oder deine eigene Silhouette im Lack zeigt; in der Spiegelung fällt das oft früher auf als beim Blick auf die Szene. Gehe um das stehende Auto und vergleiche die Reflexion, ehe du die Serie aufnimmst. Hinweise zu Lichtfarbe und Umgebung bietet [Farbharmonie bei Fahrzeugen](/blog-farbharmonie-fahrzeugfotografie.html).",
       "_template": "textBlock"
+    },
+    {
+      "_template": "imageSequence",
+      "headline": "Beispiele für saubere Perspektive und Lichtführung",
+      "layout": "editorial-pair",
+      "items": [
+        {
+          "image": "/assets/optimized/assets-portfolio-dsc2329-1920.webp",
+          "caption": "Präzise Lichtkante auf dunklem Fahrzeuglack in ruhiger Umgebung",
+          "cropIntent": "editorial"
+        },
+        {
+          "image": "/assets/optimized/assets-portfolio-dsc2345-1920.webp",
+          "caption": "Kontrollierte Seitenansicht mit gleichmäßiger Spiegelung über Tür und Schweller",
+          "cropIntent": "editorial"
+        }
+      ]
     },
     {
       "headline": "Lackfarbe und Wolkendichte verändern die Wirkung",
@@ -55,6 +79,12 @@
       "headline": "Wann eine andere Lichtstimmung besser passt",
       "body": "Suchst du warme Kanten, lange Schatten oder Gegenlicht, passt die [goldene Stunde](/blog-auto-zur-goldenen-stunde-fotografieren.html) meist besser. Für gezielte Reflexstreifen oder Highlights ist ein [Blitzaufbau](/blog-auto-mit-blitz-fotografieren.html) eine Option. Ein [Polfilter](/blog-polfilter-auto-fotografieren.html) kann bestimmte Reflexe auf Glas und Lack mindern, ersetzt aber keine passende Position des Autos. Bei wechselnden Wolken musst du nicht jede Phase nutzen: Warte für eine konsistente Serie auf gleichmäßige Helligkeit oder verwende den wechselnden Himmel bewusst als Gestaltung. Entscheidend sind Lack, Umgebung und Bildziel, nicht die Wetter-App allein.",
       "_template": "textBlock"
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
     },
     {
       "headline": "Häufige Fragen zum Auto fotografieren bei Wolken",
@@ -90,13 +120,23 @@
           "label": "Rob Hall / Adorama: A Guide to Car Photography (englisch)",
           "href": "https://www.adorama.com/alc/car-photography/",
           "description": "Praxisbericht eines Automotive-Fotografen zu Wolkenlicht, Lackreflexen, Fahrzeugwinkeln und störenden Reflexflächen."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Motive, Bildformate und Übergabe vor dem Shooting sauber strukturieren."
         }
       ],
       "_template": "linkList"
     }
   ],
   "createdAt": "2026-11-05T02:30:29Z",
-  "updatedAt": "2027-07-21T07:00:00.000Z",
+  "updatedAt": "2028-01-25T08:00:00.000Z",
   "seo": {
     "title": "Auto bei bedecktem Himmel fotografieren: Lack und Form",
     "description": "Bedeckter Himmel macht Licht weich, kann Autolack aber flach wirken lassen. Nutze Himmelsreflexe, Fahrzeugwinkel und Umgebung für klare Konturen.",

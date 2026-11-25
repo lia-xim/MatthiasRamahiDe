@@ -8,12 +8,19 @@
     "Visier",
     "Reflexionen"
   ],
-  "publishedAt": "2027-06-09T07:00:00.000Z",
+  "publishedAt": "2027-11-16T08:00:00.000Z",
   "excerpt": "So fotografierst du Motorradhelm und Visier mit kontrollierten Reflexen, erkennbarem Blick und sichtbarer Helmschale – ohne an der Ausrüstung etwas zu verändern.",
   "coverImage": "/uploads/payload/20250209-DSC00687.webp",
   "coverAlt": "Fahrer mit Helm auf einer grünen Kawasaki Ninja 650 bei Nacht vor rotem Licht",
   "readingTime": 6,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Motorradhelm fotografieren: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: So kontrollierst du Reflexe auf Motorradvisier und Helmschale mit Kamerawinkel, Lichtflächen und Polfilter, ohne die Form des Helms zu verlieren\nErst entscheiden, was das: Ein Motorradhelm spiegelt seine Umgebung\nPolfilter gezielt testen: Ein zirkularer Polarisationsfilter kann einen Teil der Reflexionen von transparenten und glänzenden Oberflächen mindern\nAm stehenden Motorrad arbeiten: Für die Aufnahme bleibt das Motorrad sicher abgestellt und der Motor ausgeschaltet"
+    },
     {
       "headline": "Erst entscheiden, was das Visier zeigen soll",
       "body": "Ein Motorradhelm spiegelt seine Umgebung. Auf dem Visier können Himmel, Fenster, Lichtformer, Kamera und Fotograf gleichzeitig auftauchen. Vor der Aufnahme hilft deshalb eine klare Entscheidung: Soll der Blick hinter dem Visier lesbar sein, soll die Form des Helms im Vordergrund stehen oder darf eine sichtbare Reflexion die Umgebung erzählen?\n\nFür ein Fahrerportrait braucht es oft einen ruhigen Reflex und genügend Zeichnung im Visier, damit Augen oder Gesicht nicht verschwinden. Bei einer detailorientierten Aufnahme kann die Helmschale wichtiger sein als der Blick. Beide Ziele sind möglich, verlangen aber unterschiedliche Winkel und Lichtflächen. Dieses Vorgehen betrifft Standbilder. Fragen zur Position einer Actioncam und zu Halterungen am Helm behandelt der eigene Actioncam-Ratgeber.",
@@ -28,6 +35,23 @@
       "headline": "Weiches Licht formt die Helmschale",
       "body": "Die Helmschale und das Visier reagieren unterschiedlich auf Licht. Auf einer glänzenden Schale helfen breite Lichtflächen, die Rundung sichtbar zu machen. Beim Visier zählt stärker, welche Umgebung sich darin spiegelt und ob der Blick dahinter erkennbar bleibt. Stelle den Helm deshalb nicht einfach frontal in eine kleine Lichtquelle. Ändere erst die Position des Lichts oder der Kamera und prüfe, welche Fläche auf der Schale erscheint.\n\nFür einen aussagekräftigen Test bleiben Helm, Kamera, Bildausschnitt, Belichtung und Weißabgleich zunächst gleich. Nimm eine Ausgangsaufnahme ohne Polfilter auf. Verschiebe danach nur die Lichtfläche: erst etwas seitlich, dann höher. Vergleiche jeweils, ob Helmschale, Visierkante und der gewünschte Blick hinter dem Visier getrennt lesbar bleiben. Wenn das Licht passt, verändere den Kamerawinkel in kleinen Schritten und halte die beste Position für die Serie fest. So erkennst du, ob die Änderung vom Licht oder vom Blickwinkel kam.\n\nEin neutraler Hintergrund erleichtert die Beurteilung. Farbige Lichter können als Gestaltung funktionieren, verändern aber den sichtbaren Eindruck von Lack, Kunststoff und Visier. Bei Produkt- oder Zustandsbildern sollte die Farbe deshalb möglichst neutral bleiben.",
       "_template": "textBlock"
+    },
+    {
+      "_template": "imageSequence",
+      "headline": "Beispiele für saubere Perspektive und Lichtführung",
+      "layout": "editorial-pair",
+      "items": [
+        {
+          "image": "/uploads/payload/20250209-DSC00612.webp",
+          "caption": "Freigestellte Motorrad-Silhouette auf sauberer Stellfläche",
+          "cropIntent": "editorial"
+        },
+        {
+          "image": "/uploads/payload/20250209-DSC00694.webp",
+          "caption": "Kontrastreiche Perspektive mit Fokus auf Front und Gabel",
+          "cropIntent": "editorial"
+        }
+      ]
     },
     {
       "headline": "Polfilter gezielt testen",
@@ -48,6 +72,12 @@
       "headline": "Am stehenden Motorrad arbeiten",
       "body": "Für die Aufnahme bleibt das Motorrad sicher abgestellt und der Motor ausgeschaltet. Licht, Reflektor und Kamera werden eingerichtet, bevor der Fahrer seine Position einnimmt. Änderungen am Helm oder am Visier gehören nicht zur Bildgestaltung. Maßgeblich bleiben Pflege- und Nutzungshinweise des Helmherstellers.\n\nWenn sich der Fahrer zwischen den Bildern bewegt, prüfst du nach jeder Änderung die Spiegelungen neu. Eine andere Kopfneigung verändert, was das Visier zeigt. Eine kurze Testaufnahme spart später Retusche und macht sichtbar, ob die Szene noch zum vereinbarten Zweck passt. Für professionelle Bike-Portraits und Fahrzeugserien führt der Weg zur Motorradfotografie.",
       "_template": "textBlock"
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Motorrad-Shooting in NRW planen",
+      "text": "Stimmige Serien für Fahrer, Custom-Umbauten und Werkstätten rund um Düsseldorf und Erkrath ab 250 € inkl. MwSt.",
+      "buttonLabel": "Motorrad-Shooting anfragen"
     },
     {
       "_template": "faqBlock",
@@ -101,6 +131,16 @@
           "label": "Nikon: Polarizing Filters Add POW to Pictures",
           "href": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/polarizing-filters-add-pow-to-pictures",
           "description": "Technische Hinweise zum Drehen eines Polfilters und zur reduzierten Lichtmenge."
+        },
+        {
+          "label": "Motorradfotografie in NRW",
+          "href": "/motorrad-fotografie.html",
+          "description": "Professionelle Motorradserien für Fahrer, Umbauten und Werkstätten."
+        },
+        {
+          "label": "Motorrad-Fotoshooting-Checkliste",
+          "href": "/blog-motorrad-fotoshooting-checkliste.html",
+          "description": "Bike, Kleidung, Zufahrt und Shotlist vorab klären."
         }
       ]
     }
@@ -128,7 +168,7 @@
   },
   "status": "scheduled",
   "createdAt": "2026-11-04T14:41:06Z",
-  "updatedAt": "2027-06-09T07:00:00.000Z",
+  "updatedAt": "2027-11-16T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Motorradfotografie",

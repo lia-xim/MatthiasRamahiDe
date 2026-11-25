@@ -9,16 +9,23 @@
     "Bildkontrolle",
     "Workflow"
   ],
-  "publishedAt": "2027-04-14T07:00:00.000Z",
+  "publishedAt": "2027-08-10T07:00:00.000Z",
   "excerpt": "Beim Tethered Shooting erscheinen Autofotos direkt am Rechner. So prüfst du Fokus, Reflexe und Bildausschnitt am Set und planst einen sicheren Ablauf.",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
-  "coverAlt": "Dunkler SUV an einer Wasserfläche; Abendlicht und Umgebung spiegeln sich auf der Karosserie",
+  "coverImage": "/assets/optimized/assets-portfolio-dsc2744-1920.webp",
+  "coverAlt": "Showcar · Perspektive",
   "readingTime": 8,
   "blocks": [
     {
       "_template": "textBlock",
       "headline": "",
       "body": "Beim Tethered Shooting werden Aufnahmen direkt von der Kamera auf einen Computer oder ein Tablet übertragen. In der Autofotografie lässt sich dadurch am Set besser prüfen, ob Fahrzeugform, Bildausschnitt, Schärfe und Reflexe zusammenpassen. Das ist besonders hilfreich bei einer stehenden Serie, bei der ein Wechsel des Standpunkts, der Lichtfläche oder der Fahrzeugposition Zeit kostet. Tethering ist aber keine Voraussetzung für gute Autofotos: Es lohnt sich, wenn die sofortige Kontrolle eine konkrete Entscheidung erleichtert. Ob die Kamera ferngesteuert werden kann, Bilder gleichzeitig auf Karte und Rechner landen oder Live-View verfügbar ist, hängt von Kamera, Verbindung und Software ab."
+    },
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Tethered Shooting Autofotografie: Die wichtigsten Punkte im Überblic",
+      "body": "Kernaussage: So nutzt du Tethered Shooting bei Autofotos: Kamera verbinden, Ordner vorbereiten und Schärfe, Reflexe sowie Bildausschnitt sicher am Set prüfen\nWofür ein großer Bildschirm: Auf dem Kameradisplay erkennst du den Gesamteindruck; auf einem größeren Bildschirm fallen oft weitere Fragen auf\nDer Bildschirm prüft Bildwirkung,: Ein größerer Bildschirm macht kleine Schärfe- und Bildrandfehler leichter sichtbar\nWann du ohne Tethering: Bei Rolling Shots, Mitziehern und anderen bewegten Motiven ist ein Rechner neben der Kamera häufig hinderlich"
     },
     {
       "_template": "imageSequence",
@@ -75,6 +82,12 @@
       "body": "Bei Rolling Shots, Mitziehern und anderen bewegten Motiven ist ein Rechner neben der Kamera häufig hinderlich. Gleiches gilt für Locations, an denen du den Standpunkt oft wechseln musst, das Fahrzeug rangiert wird oder die Verbindung nicht zuverlässig bleibt. In diesen Situationen zählen Bewegungsfreiheit und ein klarer Ablauf mehr als die sofortige Vorschau. Nutze die Kamerakontrolle, wenn sie verfügbar ist, und sichte die Serie nach einem sicheren Abschnitt oder am Ende des Sets.\n\nTethering ist damit eine Set-Entscheidung: Es bringt den größten Nutzen, wenn das Fahrzeug stillsteht, mehrere Personen dieselben Bilder beurteilen oder kleine Unterschiede zwischen Varianten wichtig sind. Wenn diese Vorteile nicht gebraucht werden, entstehen durch Laptop, Kabel und zusätzliche Datenwege nur neue Aufgaben. Wähle die Verbindung, die zur Bildaufgabe und zum sicheren Platz am Set passt."
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Häufige Fragen zum Tethered Shooting bei Autos",
       "items": [
@@ -119,6 +132,11 @@
           "label": "Capture One: Funktionen beim Tethered Shooting",
           "href": "https://support.captureone.com/hc/en-us/articles/360002411197-What-operations-can-I-perform-in-Capture-One-whilst-shooting-tethered",
           "description": "Herstellerübersicht dazu, welche Tethering-Funktionen je nach Kameramodell verfügbar sind."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]
     }
@@ -135,15 +153,29 @@
     "searchIntent": "Technische Suche: Wann hilft Tethered Shooting bei stehenden Fahrzeugen, und wie plant man Verbindung, Sichtkontrolle und sicheren Ablauf am Set?",
     "canonicalUrl": "https://matthiasramahi.de/blog-tethered-shooting-autofotografie.html",
     "legacyUrl": "blog-tethered-shooting-autofotografie.html",
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "ogImage": "/assets/optimized/assets-portfolio-dsc2744-1920.webp",
     "noIndex": false
   },
   "createdAt": "2026-11-03T17:00:00Z",
-  "updatedAt": "2027-04-14T07:00:00.000Z",
+  "updatedAt": "2027-08-10T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
       "href": "/automobil-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fahrzeugserien konsistent planen",
+      "href": "/blog-fahrzeugserie-konsistent-planen.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

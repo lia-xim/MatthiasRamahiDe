@@ -8,11 +8,18 @@
     "Autofoto",
     "Wandbild"
   ],
-  "publishedAt": "2027-01-10T08:00:00.000Z",
+  "publishedAt": "2027-03-05T08:00:00.000Z",
   "excerpt": "Wie ein Autofoto als Wandbild funktioniert: Lackreflexe, dunkle Partien, Bildausschnitt, Raumlicht und Betrachtungsabstand gemeinsam prüfen.",
-  "coverImage": "/uploads/payload/20250418-DSC006552.webp",
+  "coverImage": "/assets/optimized/assets-portfolio-dsc2788-1-1920.webp",
   "readingTime": 9,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Autofoto Fine-Art-Print auswählen: Die wichtigsten Punkte im Überbli",
+      "body": "Kernaussage: Lackreflexe, dunkle Tonwerte, Bildausschnitt und Raumlicht prüfen: So wählst du Format und Oberfläche für ein Autofoto als Wandbild\nEin Autofoto für die Wand beurteilen: Ein Autofoto als Wandbild auszuwählen heißt, zwei Oberflächen zusammenzubringen: die sichtbare Lackwirkung im Motiv und die Oberfläche des späteren Prints\nFormat aus Karosserie und: Autos bringen eine ausgeprägte Richtung ins Bild\nPrint aufhängen und vorsichtig: Wenn du die Farbwirkung möglichst lange erhalten möchtest, wähle einen Platz ohne dauerhaft direkte Sonne und frage nach den Angaben des Anbieters zur"
+    },
     {
       "headline": "Ein Autofoto für die Wand beurteilen",
       "body": "Ein Autofoto als Wandbild auszuwählen heißt, zwei Oberflächen zusammenzubringen: die sichtbare Lackwirkung im Motiv und die Oberfläche des späteren Prints. Dazu kommen Beschnitt, Wandgröße und das Licht im Raum. Ein Bild, das auf dem leuchtenden Monitor überzeugend aussieht, beantwortet diese Fragen noch nicht automatisch.\n\nBeginne mit dem Bild, das du wirklich drucken lassen möchtest, und prüfe es für den konkreten Platz. Was soll aus der Entfernung zuerst auffallen: die Silhouette, eine Linie im Lack oder ein Detail wie Felge und Innenraum? Danach lässt sich gezielter entscheiden, wie groß der Print sein soll und ob ein Materialtest sinnvoll ist. Eine allgemeine Regel wie „Autos immer glänzend“ hilft dabei wenig: Lack, Tonwerte und Umgebungslicht reagieren je nach Motiv unterschiedlich.",
@@ -75,6 +82,21 @@
           "label": "Landschaftsbild als Fine-Art-Print auswählen",
           "href": "blog-landschaftsbild-fine-art-print-auswaehlen.html",
           "description": "Der verwandte Beitrag behandelt Wandmaß, Betrachtungsabstand, Beschnitt und Raumlicht allgemeiner; dieser Beitrag ergänzt die autofotospezifischen Fragen zu Lackfarbe, Reflexen und Fahrzeugkonturen."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Motive, Bildformate und Übergabe vor dem Shooting sauber strukturieren."
+        },
+        {
+          "label": "Fahrzeugserien konsistent planen",
+          "href": "/blog-fahrzeugserie-konsistent-planen.html",
+          "description": "Wie Perspektiven, Licht und Bearbeitung über mehrere Modelle zusammenhalten."
         }
       ]
     },
@@ -111,8 +133,24 @@
           "label": "Library of Congress: Pflege, Handhabung und Aufbewahrung von Fotografien",
           "href": "https://www.loc.gov/preservation/care/photolea.html",
           "description": "Konservatorische Orientierung zu Licht, Handhabung und den unterschiedlichen Eigenschaften digitaler Druckmaterialien; keine Haltbarkeitszusage für ein bestimmtes Produkt."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Motive, Bildformate und Übergabe vor dem Shooting sauber strukturieren."
         }
       ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
     },
     {
       "headline": "Kurze Fragen",
@@ -158,11 +196,11 @@
     "canonicalUrl": "https://matthiasramahi.de/blog-autofoto-fine-art-print-auswaehlen.html",
     "legacyUrl": "blog-autofoto-fine-art-print-auswaehlen.html",
     "noIndex": false,
-    "ogImage": "/uploads/payload/20250418-DSC006552.webp"
+    "ogImage": "/assets/optimized/assets-portfolio-dsc2788-1-1920.webp"
   },
   "status": "scheduled",
   "createdAt": "2026-11-03T15:34:28Z",
-  "updatedAt": "2027-01-10T08:00:00.000Z",
+  "updatedAt": "2027-03-05T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Drucke & Sonderanfertigungen",
@@ -186,5 +224,5 @@
       "openInNewTab": false
     }
   ],
-  "coverAlt": "Klassischer roter Sportwagen in einer Halle mit sichtbarem Ziegelmauerwerk"
+  "coverAlt": "Exterieur · Dämmerung"
 }

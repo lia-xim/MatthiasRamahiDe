@@ -1,12 +1,32 @@
 ---
 import HeroMotion from './HeroMotion.astro'
 import ContactSlot from '../ContactSlot.astro'
+import NativeFamilyFaq from './NativeFamilyFaq.astro'
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import { getBySlug, type PayloadDoc } from '../../lib/payload'
 
 const legacyFile = 'grossformatdruck-duesseldorf.html'
 const providedDoc = Astro.props.doc as PayloadDoc | undefined
 const doc = providedDoc || (await getBySlug('service-pages', 'grossformatdruck-duesseldorf', { depth: 2 }))
+
+const grossformatFaq = [
+  {
+    q: 'Welche maximalen Formate sind im Großformatdruck möglich?',
+    a: 'Wandbilder auf Acrylglas, Alu-Dibond oder Leinwand werden bis 400 × 250 cm umgesetzt, Messewände und Textilbanner bis 6 m Breite sowie vollflächige Schaufenster- und Raumfolierungen nach Maß.',
+  },
+  {
+    q: 'Welche Bildauflösung benötigt eine Datei für den Großformatdruck?',
+    a: 'Für feine Wandansichten empfehlen sich 150 dpi auf Endformat, bei großen Showroom- oder Messeflächen mit größerem Betrachtungsabstand reichen oft 120 dpi. Vor dem Druck prüfen wir Datei und Schärfung im Soft-Proof.',
+  },
+  {
+    q: 'Wird der Großformatdruck auch in Düsseldorf und NRW montiert?',
+    a: 'Ja. Im Rheinland liefern wir auf Wunsch selbst an und übernehmen die Montage mit Schienen, Distanzhaltern oder Direktverklebung. Deutschlandweit erfolgt der Versand per geschützter Spedition.',
+  },
+  {
+    q: 'Wann lohnt sich Großformatdruck statt klassischem Fine-Art-Print?',
+    a: 'Für raumhohe Showroom-Wände, Schaufenster, Messen und große Praxis- oder Büroflächen ist Großformatdruck ideal. Für gerahmte Sammler-Editionen und feine Papierstrukturen passt der Fine-Art-Druck aus dem Fotolabor.',
+  },
+]
 
 const metaDescription =
   'Großformatdruck in Düsseldorf: hochauflösende Wandbilder, Showroom-Wände, Messebanner und Schaufensterfolien — vom Soft-Proof bis zur Montage vor Ort.'
@@ -103,7 +123,10 @@ const heroSlidesJson = JSON.stringify(heroSlides)
           </div>
           <p class="gf-spec__lead">
             Ein gutes Bild bleibt im Großformat ruhig — schlechtes Material wird laut. Auswahl, Aufbereitung und Material sind
-            gleichwertig zur Größe selbst.
+            gleichwertig zur Größe selbst. Für kleinere Sammlerformate hilft das
+            <a href="/fotolabor-druck-duesseldorf.html">Fotolabor in Düsseldorf</a>, für dreidimensionale Laden- und Messeaufbauten die
+            <a href="/werbetechnik-duesseldorf.html">Werbetechnik</a> und für kuratierte Motive
+            <a href="/landschaftsbilder-kaufen.html">Landschaftsbilder als Print</a>.
           </p>
         </div>
         <div class="gf-spec__sheet">
@@ -116,6 +139,8 @@ const heroSlidesJson = JSON.stringify(heroSlides)
         </div>
       </div>
     </section>
+
+    <NativeFamilyFaq faq={grossformatFaq} pageUrl={`https://matthiasramahi.de/${legacyFile}`} theme="dark" />
 
     <section class="sp-cta" data-header-theme="light" aria-label="Anfrage">
       <div class="sp-cta__inner">

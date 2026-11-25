@@ -8,11 +8,18 @@
     "Bildserie",
     "Automotive"
   ],
-  "publishedAt": "2027-03-15T08:00:00.000Z",
+  "publishedAt": "2027-06-22T07:00:00.000Z",
   "excerpt": "Eine interaktive 360-Grad-Fahrzeugansicht beginnt mit einer gleichmäßigen Fotofolge. So planst du Aufnahmeweg, Licht, Bildprüfung und Übergabe, ohne einzelne Standbilder als Rundumserie auszugeben.",
-  "coverImage": "/uploads/payload/_DSC2310-2.webp",
+  "coverImage": "/uploads/payload/assets-portfolio-dsc2316-1920.webp",
   "readingTime": 9,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "360 Grad Fahrzeugfotografie: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: So planst du eine interaktive 360-Grad-Fahrzeugansicht: Aufnahmefolge, Licht, Innenraum, vollständige Frames und eine klare Prüfung der Bildserie\nEine Rundumansicht braucht eine: Eine interaktive Fahrzeugansicht besteht aus einer zusammenhängenden Folge, die Perspektive für Perspektive um das stehende Auto herumführt\nInnenraumaufnahmen als eigenes Teilprojekt: Ein Rundumblick außen beantwortet nicht automatisch Fragen zum Cockpit\nDas Briefing für eine: Vor der Anfrage reichen einige klare Entscheidungen: Außenansicht, Innenansicht oder beides; Aufnahme am Standort oder in einer kontrollierten Umgebung;"
+    },
     {
       "headline": "Eine Rundumansicht braucht eine geplante Folge",
       "body": "Eine interaktive Fahrzeugansicht besteht aus einer zusammenhängenden Folge, die Perspektive für Perspektive um das stehende Auto herumführt. So lässt sich die Karosserie aus wechselnden Winkeln nachvollziehen. Eine Galerie löst eine andere Aufgabe: Sie zeigt eine Auswahl, ohne eine vollständige Drehbewegung abzubilden.\n\nVor dem Auftrag ist zu klären, was „360 Grad“ bedeutet: interaktive Außenansicht, Blick in den Innenraum oder mehrere Galeriebilder? Dafür braucht es unterschiedliche Aufnahmen und Abnahmekriterien. So passt das Briefing zum späteren Viewer.",
@@ -73,6 +80,33 @@
       "_template": "textBlock"
     },
     {
+      "_template": "linkList",
+      "headline": "Passende Leistungen & weiterführende Guides",
+      "links": [
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Motive, Bildformate und Übergabe vor dem Shooting sauber strukturieren."
+        },
+        {
+          "label": "Fahrzeugserien konsistent planen",
+          "href": "/blog-fahrzeugserie-konsistent-planen.html",
+          "description": "Wie Perspektiven, Licht und Bearbeitung über mehrere Modelle zusammenhalten."
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "headline": "Kurze Fragen",
       "items": [
         {
@@ -102,15 +136,29 @@
     "searchIntent": "Kommerzielle Informationssuche: Autohäuser und Automobilmarken möchten eine fotografische Außen- oder Innenserie für eine interaktive 360-Grad-Fahrzeugansicht planen und den gelieferten Bildlauf prüfen.",
     "canonicalUrl": "https://matthiasramahi.de/blog-360-grad-fahrzeugfotos-planen.html",
     "legacyUrl": "blog-360-grad-fahrzeugfotos-planen.html",
-    "ogImage": "/uploads/payload/_DSC2310-2.webp",
+    "ogImage": "/uploads/payload/assets-portfolio-dsc2316-1920.webp",
     "noIndex": false
   },
   "createdAt": "2026-11-03T17:00:00Z",
-  "updatedAt": "2027-03-15T08:00:00.000Z",
+  "updatedAt": "2027-06-22T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
       "href": "/automobil-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fahrzeugserien konsistent planen",
+      "href": "/blog-fahrzeugserie-konsistent-planen.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

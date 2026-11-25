@@ -102,8 +102,45 @@
     "migrationStatus": "reviewed",
     "renderSource": "legacy-file"
   },
-  "updatedAt": "2026-07-21 22:35:09.413+00",
+  "updatedAt": "2026-11-24T09:00:00.000Z",
   "createdAt": "2026-05-31 18:09:47.428+00",
   "status": "published",
-  "payloadId": "203"
+  "payloadId": "203",
+  "guideSection": {
+    "eyebrow": "Custom Bike Fotografie",
+    "headline": "Custom-Bike-Fotografie: Handwerk, Umbau und Detailtreue sichtbar machen.",
+    "intro": "In einem Custom Bike stecken oft hunderte Arbeitsstunden. Standardfotos verschlucken genau die Details, die einen individuellen Umbau ausmachen.",
+    "items": [
+      {
+        "title": "Schweißnähte, Frästeile und Lackkunst im Fokus",
+        "text": "Handgefertigte Tanks, Sonderlackierungen, Lederarbeiten und gekürzte Hecks werden mit gerichteter Lichtführung fotografiert, damit Oberflächen und Kanten sauber herauskommen."
+      },
+      {
+        "title": "Werkstatt-Atmosphäre oder reduzierte Studio-Anmutung",
+        "text": "Ob direkt in der Custom-Schmiede zwischen Werkzeug und Hebebühne oder vor dunklem, reduziertem Hintergrund für Magazin und Ausstellung: Das Setting richtet sich nach dem Stil des Bikes."
+      },
+      {
+        "title": "Nutzbar für Magazine, Awards, Web und Print",
+        "text": "Die Serien entstehen in voller Auflösung und einheitlicher Farbgebung – direkt einsetzbar für Redaktionen, Social Media, Kundenübergaben und großformatige Werkstatt-Prints."
+      },
+      {
+        "title": "Einzelumbauten und Werkstatt-Serien in NRW",
+        "text": "Ein Custom-Bike-Shooting beginnt bei 250 € inkl. MwSt.; für regelmäßige Kundenumbauten sind fortlaufende Produktionstermine möglich."
+      }
+    ],
+    "links": [
+      {
+        "label": "Motorradfotografie Übersicht",
+        "href": "/motorrad-fotografie.html"
+      },
+      {
+        "label": "Motorrad Studiofotografie (Journal)",
+        "href": "/blog-motorrad-studiofotografie.html"
+      },
+      {
+        "label": "Portfolio Motorrad",
+        "href": "/portfolio/portfolio-auswahl-motorrad"
+      }
+    ]
+  }
 }

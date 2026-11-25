@@ -1,12 +1,32 @@
 ---
 import HeroMotion from './HeroMotion.astro'
 import ContactSlot from '../ContactSlot.astro'
+import NativeFamilyFaq from './NativeFamilyFaq.astro'
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import { getBySlug, imageUrl, type PayloadDoc } from '../../lib/payload'
 
 const legacyFile = 'webdesign-seo-duesseldorf.html'
 const providedDoc = Astro.props.doc as PayloadDoc | undefined
 const doc = providedDoc || (await getBySlug('service-pages', 'webdesign-seo-duesseldorf', { depth: 2 }))
+
+const webSeoFaq = [
+  {
+    q: 'Was unterscheidet handgebaute Websites von Baukasten-Systemen?',
+    a: 'Schlanker Code ohne aufgeblähte Page-Builder-Skripte lädt schneller, erreicht saubere Core Web Vitals und lässt sich gezielt auf lokale Suchintentionen, strukturierte Daten und klare interne Verlinkung ausrichten.',
+  },
+  {
+    q: 'Können Fotografie, Texte und Website-Umsetzung aus einer Hand kommen?',
+    a: 'Ja. Eigene Business-Portraits, Fahrzeug- oder Raumaufnahmen entstehen passend zum Seitenlayout, sodass Bildsprache, Typografie und SEO-Struktur sauber ineinandergreifen.',
+  },
+  {
+    q: 'Welche SEO-Maßnahmen sind im Aufbau enthalten?',
+    a: 'Saubere URL- und Cluster-Struktur, semantische Überschriften, strukturierte Daten (JSON-LD), Sitemaps, lokale Signale sowie Core-Web-Vitals-Optimierung für mobile und Desktop-Suche.',
+  },
+  {
+    q: 'Wie läuft der Start eines Webdesign- oder SEO-Projekts ab?',
+    a: 'Nach einer kurzen Nachricht klären wir im unverbindlichen Erstgespräch Ziel, Bestand, Region und Umfang und halten danach Struktur, Zeitplan und Konditionen transparent fest.',
+  },
+]
 
 // Kompakte, minimalistische Sektionen — nummerierte Hairline-Listen, kein Card-Chrome.
 const services = [
@@ -162,6 +182,8 @@ const heroSlidesJson = JSON.stringify(heroSlides)
         </ol>
       </div>
     </section>
+
+    <NativeFamilyFaq faq={webSeoFaq} pageUrl={`https://matthiasramahi.de/${legacyFile}`} theme="light" />
 
     {/* ===== CTA STRIP (light) ===== */}
     <section class="sp-cta" data-header-theme="light" aria-label="Anfrage">

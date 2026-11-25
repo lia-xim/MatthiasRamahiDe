@@ -9,12 +9,12 @@
     "Bildausgabe"
   ],
   "excerpt": "Wie du Autofotos für Websites passend skalierst, komprimierst und responsiv auslieferst, ohne Lackdetails, Farbe oder Bildausschnitt unnötig zu verlieren.",
-  "coverImage": "/assets/optimized/assets-portfolio-dsc2788-1-1920.webp",
-  "coverAlt": "Dunkler BMW M im Abendlicht vor rosa-violetten Wolken; der Himmel spiegelt sich auf der Motorhaube.",
+  "coverImage": "/assets/portfolio/automobil-bmw-klassiker.webp",
+  "coverAlt": "Klassiker · Showroom",
   "status": "scheduled",
-  "publishedAt": "2027-06-11T07:00:00.000Z",
+  "publishedAt": "2027-11-19T08:00:00.000Z",
   "createdAt": "2026-11-04T14:40:43Z",
-  "updatedAt": "2027-06-11T07:00:00.000Z",
+  "updatedAt": "2027-11-19T08:00:00.000Z",
   "readingTime": 7,
   "relatedPages": [
     {
@@ -58,10 +58,17 @@
     "searchIntent": "Technische Informationssuche: Fotografen, Fahrzeuganbieter und Website-Teams möchten Fahrzeugbilder passend zur Darstellung auf Desktop und Smartphone exportieren, die sichtbare Bildqualität erhalten und unnötig große Downloads vermeiden.",
     "canonicalUrl": "https://matthiasramahi.de/blog-fahrzeugfotos-fuer-webseiten-optimieren.html",
     "legacyUrl": "blog-fahrzeugfotos-fuer-webseiten-optimieren.html",
-    "ogImage": "/assets/optimized/assets-portfolio-dsc2788-1-1920.webp",
+    "ogImage": "/assets/portfolio/automobil-bmw-klassiker.webp",
     "noIndex": false
   },
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Fahrzeugfotos Website optimieren: Die wichtigsten Punkte im Überblic",
+      "body": "Kernaussage: Das hängt von der maximalen Darstellungsbreite, dem Seitenlayout und der Pixeldichte des Displays ab\nDas Bild muss zur Fläche passen: Ein Autofoto kann auf einem großen Monitor detailreich wirken und auf einem Smartphone trotzdem zu viel Daten übertragen\nLadepriorität und Platz im: Das größte sichtbare Bild am Anfang einer Seite kann für die wahrgenommene Ladezeit wichtig sein\nEine kurze Übergabe-Checkliste: Vor der Veröffentlichung kannst du die Ausgabe mit vier Fragen prüfen: Passt der Ausschnitt zur sichtbaren Bildfläche?"
+    },
     {
       "_template": "textBlock",
       "headline": "Das Bild muss zur Fläche passen",
@@ -76,6 +83,23 @@
       "_template": "textBlock",
       "headline": "Format und Kompression am Motiv testen",
       "body": "WebP und AVIF können für die Webausgabe geeignete, kleinere Varianten liefern; welche Formate ein Projekt ausgibt, hängt vom CMS, Bilddienst und Browser-Fallback ab. Ein Dateiformat allein garantiert weder eine kleine Datei noch ein gutes Ergebnis. Seitenlänge, Detailreichtum, Kompressionsstufe und Bildinhalt wirken zusammen. Bei Autofotos lohnt sich ein genauer Blick auf feine Speichen, Schriftzüge, Gitter, Reflexkanten und dunkle Lackflächen. Dort fallen Blockbildung, Halos oder verlorene Zeichnung schneller auf als in einem ruhigen Hintergrund.\n\nExportiere für einen konkreten Bildplatz zwei oder drei Qualitätsstufen und öffne sie in der vorgesehenen Darstellungsgröße. Prüfe zusätzlich bei 100 Prozent, ob die Datei sichtbare Kompressionsfehler hat. Entscheide dann, ob der Unterschied für den Einsatz relevant ist. Eine winzige Dateigröße ist kein Selbstzweck, wenn Karosserielinien, Ausstattung oder Fahrzeugzustand dadurch schlechter lesbar werden. Umgekehrt braucht eine kleine Vorschaukachel nicht die volle Auflösung des Kameraoriginals.\n\nLiefert eine Plattform feste Maße, Dateigrößen oder Formate, halte dich an ihre aktuelle Vorgabe. Ohne diese Spezifikation solltest du keine pauschale Kilobyte-Grenze als technische Regel behandeln.\n\nEin verlässlicher Vergleich beginnt mit gleicher Darstellungsgröße. Lege zwei Exporte in den vorgesehenen Karten- oder Hero-Rahmen, öffne sie auf demselben Display und prüfe die Stellen, an denen sich Fahrzeug und Licht berühren: Schrift am Rad, Fensterkante, glänzende Kontur. Kontrolliere daneben die tatsächlich übertragene Dateigröße im Netzwerkbereich der Browser-Entwicklertools. So vergleichst du Bildwirkung und Download gemeinsam, statt eine Qualitätsstufe nur nach ihrem Schieberegler oder Dateinamen zu wählen. Bewahre die gewählte Stufe als dokumentiertes Exportpreset für ähnliche Bildflächen auf; einzelne Motive können trotzdem andere Einstellungen brauchen."
+    },
+    {
+      "_template": "imageSequence",
+      "headline": "Beispiele für saubere Perspektive und Lichtführung",
+      "layout": "editorial-pair",
+      "items": [
+        {
+          "image": "/assets/optimized/assets-portfolio-dsc2329-1920.webp",
+          "caption": "Präzise Lichtkante auf dunklem Fahrzeuglack in ruhiger Umgebung",
+          "cropIntent": "editorial"
+        },
+        {
+          "image": "/assets/optimized/assets-portfolio-dsc2345-1920.webp",
+          "caption": "Kontrollierte Seitenansicht mit gleichmäßiger Spiegelung über Tür und Schweller",
+          "cropIntent": "editorial"
+        }
+      ]
     },
     {
       "_template": "textBlock",
@@ -142,6 +166,12 @@
           "href": "/blog-dateiformate-fahrzeugfotografie-raw-jpeg-tiff.html"
         }
       ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
     },
     {
       "_template": "faqBlock",

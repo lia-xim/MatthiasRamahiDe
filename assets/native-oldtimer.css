@@ -214,39 +214,42 @@
     .hero-lead{font-size:16px;margin-top:18px}
   }
   @media (max-width:900px){
-    /* Sektions-Padding global enger -> kürzere Seite, kein toter Raum */
-    .section-inner{padding:clamp(52px,10vw,72px) 22px}
+    .hero{height:78svh;min-height:500px;max-height:680px;padding:clamp(76px,12vw,108px) 20px clamp(26px,5vw,42px)}
+    .hero-lead{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;font-size:14.5px;margin-top:14px}
+    .hero-actions{margin-top:16px;gap:8px}
+    .hero-actions .btn{flex:1 1 auto;padding:13px 16px}
+    .section-inner{padding:40px 20px}
 
     /* STATEMENT */
     .st{height:auto;max-height:none;min-height:auto}
-    .st .section-inner{grid-template-columns:1fr;gap:24px;padding:clamp(56px,11vw,76px) 22px}
-    .st h2{font-size:clamp(40px,11vw,62px)}
+    .st .section-inner{grid-template-columns:1fr;gap:18px;padding:40px 20px}
+    .st h2{font-size:clamp(38px,10.5vw,58px)}
     .st-body{justify-self:start}
 
-    /* PROVENANCE -> horizontaler Swipe-Carousel (kompakt, lesbar) */
-    .pv-head{margin-bottom:clamp(22px,5vw,34px)}
-    .pv-head h2{font-size:clamp(36px,9vw,62px);margin-bottom:16px}
-    /* Carousel inset wie die Überschrift (nicht flush links), trotzdem scrollbar.
-       scroll-padding sorgt für sauberes Snapping am linken Inset. */
-    .pv-grid{display:flex;grid-template-columns:none;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;scroll-padding-left:0;padding:0 0 6px}
+    /* PROVENANCE -> horizontaler Swipe-Carousel */
+    .pv-head{margin-bottom:20px}
+    .pv-head h2{font-size:clamp(34px,9vw,58px);margin-bottom:12px}
+    .pv-grid{display:flex;grid-template-columns:none;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;scroll-padding-left:0;padding:0 0 6px}
     .pv-grid::-webkit-scrollbar{display:none}
-    .pv-card{flex:0 0 78%;scroll-snap-align:start;gap:14px}
+    .pv-card{flex:0 0 78%;scroll-snap-align:start;gap:12px}
     .pv-img{aspect-ratio:4/5}
-    .pv-card h3{font-size:clamp(22px,6vw,28px)}
+    .pv-card h3{font-size:clamp(20px,5.5vw,26px)}
 
-    /* MINI PORTFOLIO -> gleichmäßiges 2-Spalten-Raster (kein Waisen-Tile) */
+    /* MINI PORTFOLIO -> kompaktes 2-Spalten-Contact-Sheet direkt nach dem Hero */
     .po{height:auto;max-height:none}
-    .po-grid{position:relative;grid-template-columns:repeat(2,1fr);grid-template-rows:none;grid-auto-rows:24vh;padding:8px;gap:8px}
-    .po-head{grid-column:1 / 3;grid-row:auto;min-height:0;padding:clamp(28px,7vw,40px) 4px clamp(18px,4vw,26px);background:none}
-    .po-head h2{font-size:clamp(32px,8.5vw,52px)}
+    .po-grid{position:relative;grid-template-columns:repeat(2,1fr);grid-template-rows:none;grid-auto-rows:22vh;padding:6px;gap:6px}
+    .po-head{grid-column:1 / 3;grid-row:auto;min-height:0;padding:24px 8px 14px;background:none}
+    .po-head h2{font-size:clamp(30px,8.5vw,48px)}
+    .po-tile{opacity:1;transform:none}
     .po-tile.t1,.po-tile.t2,.po-tile.t3,.po-tile.t4,.po-tile.t5,.po-tile.t6{grid-column:auto;grid-row:auto}
+    .po-tile.t1,.po-tile.t6{grid-column:1 / 3}
 
-    /* FUER WEN -> saubere Zeilen (Nummer/Titel/Label/Arrow), wie Automobil .ki */
+    /* FUER WEN -> kompakte Zeilen */
     .fw{min-height:auto}
-    .fw .section-inner{gap:clamp(20px,4vw,28px);padding:clamp(52px,11vw,72px) 22px}
-    .fw-head{flex-direction:column;align-items:flex-start;gap:12px;padding-bottom:16px}
+    .fw .section-inner{gap:18px;padding:38px 20px}
+    .fw-head{flex-direction:column;align-items:flex-start;gap:10px;padding-bottom:14px}
     .fw-grid{grid-template-columns:1fr;gap:0}
-    .fw-card{display:grid;grid-template-columns:auto 1fr auto;grid-template-rows:auto auto;column-gap:16px;row-gap:3px;align-items:center;min-height:0;padding:16px 4px;background:transparent;border-top:1px solid var(--line-l)}
+    .fw-card{display:grid;grid-template-columns:auto 1fr auto;grid-template-rows:auto auto;column-gap:16px;row-gap:3px;align-items:center;min-height:0;padding:14px 4px;background:transparent;border-top:1px solid var(--line-l)}
     .fw-card:first-child{border-top:0}
     .fw-card:before{display:none}
     .fw-card:hover{transform:none;box-shadow:none;background:transparent}
@@ -256,8 +259,8 @@
     .fw-card .arrow{grid-column:3;grid-row:1/3;position:static;align-self:center;opacity:.55;transform:none;color:var(--accent-2);font-size:18px}
 
     /* RELATED -> horizontaler Swipe-Carousel */
-    .rl-head{grid-template-columns:1fr;gap:16px;margin-bottom:clamp(22px,5vw,34px)}
-    .rl-head h2{font-size:clamp(38px,9vw,62px)}
+    .rl-head{grid-template-columns:1fr;gap:14px;margin-bottom:22px}
+    .rl-head h2{font-size:clamp(36px,9vw,58px)}
     .rl-head p{justify-self:start}
     .rl-grid{display:flex;grid-template-columns:none;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;scroll-padding-left:0;padding:0 0 6px}
     .rl-grid::-webkit-scrollbar{display:none}

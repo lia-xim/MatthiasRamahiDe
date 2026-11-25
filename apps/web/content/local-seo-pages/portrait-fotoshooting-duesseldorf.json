@@ -102,8 +102,49 @@
     "migrationStatus": "reviewed",
     "renderSource": "legacy-file"
   },
-  "updatedAt": "2026-07-21 22:35:09.413+00",
+  "updatedAt": "2026-11-24T09:00:00.000Z",
   "createdAt": "2026-05-31 18:09:47.722+00",
   "status": "published",
-  "payloadId": "213"
+  "payloadId": "213",
+  "guideSection": {
+    "eyebrow": "Portrait Fotoshooting Düsseldorf",
+    "headline": "Portrait-Fotoshooting in Düsseldorf: Ablauf, Vorbereitung und Stil.",
+    "intro": "Ob für dich selbst, für neue Profilbilder, ein Geschenk oder einen beruflichen Neustart: Ein Portrait-Shooting lebt von ruhiger Atmosphäre, passendem Licht und ehrlicher Bearbeitung.",
+    "items": [
+      {
+        "title": "Vorbesprechung zu Wunschstil, Ort und Kleidung",
+        "text": "Vorab stimmen wir ab, ob die Serie eher hell und nahbar, urban oder kontrastreich wirken soll. Ruhige Farben ohne große Logos lenken den Blick auf dein Gesicht."
+      },
+      {
+        "title": "Ruhige Führung statt Zeitdruck",
+        "text": "Am Anfang nehmen wir uns immer ein paar Minuten zum Ankommen. Zwischendurch werfen wir gemeinsam einen Blick auf erste Ergebnisse, damit du siehst, wie Licht und Haltung wirken."
+      },
+      {
+        "title": "Zurückhaltende Retusche ohne Plastik-Haut",
+        "text": "Hautstruktur und Charakter bleiben erhalten. Störende Kleinigkeiten werden sauber bereinigt, Farben und Kontraste natürlich abgestimmt."
+      },
+      {
+        "title": "Einstieg ab 250 € inkl. MwSt.",
+        "text": "Ein Portrait-Fotoshooting in Düsseldorf beginnt bei 250 € inkl. MwSt. – inklusive Vorauswahl in einer geschützten Web-Galerie und fertigen Dateien für Web und Print."
+      }
+    ],
+    "links": [
+      {
+        "label": "Portraitfotografie Düsseldorf",
+        "href": "/portraitfotografie-duesseldorf.html"
+      },
+      {
+        "label": "Fotoshooting Preise Düsseldorf",
+        "href": "/fotoshooting-preise-duesseldorf.html"
+      },
+      {
+        "label": "Portraits im offenen Schatten (Journal)",
+        "href": "/blog-portraits-offener-schatten.html"
+      },
+      {
+        "label": "Portfolio Portrait",
+        "href": "/portfolio/portfolio-auswahl-portrait"
+      }
+    ]
+  }
 }

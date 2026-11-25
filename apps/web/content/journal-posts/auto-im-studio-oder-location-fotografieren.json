@@ -9,15 +9,22 @@
     "Fahrzeugshooting",
     "Bildproduktion"
   ],
-  "publishedAt": "2027-03-27T08:00:00.000Z",
+  "publishedAt": "2027-07-13T07:00:00.000Z",
   "excerpt": "Studio oder Location? Entscheide die Umgebung für ein Auto-Fotoshooting nach Bildziel, Lack, Lichtkontrolle, Raum und Fahrzeuglogistik.",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+  "coverImage": "/uploads/payload/20250418-DSC00660.webp",
   "readingTime": 7,
   "blocks": [
     {
       "headline": "",
       "body": "Ob du ein Auto im Studio fotografieren oder an eine Location fahren solltest, hängt vom Bildziel ab. Ein Studio ist stark, wenn Form, Lack und Ausstattung ohne ablenkende Umgebung lesbar bleiben sollen. Eine Location passt, wenn Architektur, Landschaft oder eine erkennbare Nutzung Teil der Bildaussage sind. Die falsche Wahl kostet Zeit, weil die Umgebung gegen das Motiv arbeitet.\n\nLege zuerst fest, was das Bild leisten muss: Soll es ein Fahrzeug kontrolliert und vergleichbar zeigen, oder soll die Szene eine Haltung, eine Reiseidee oder einen räumlichen Zusammenhang erzählen? Danach lässt sich der passende Ort bestimmen.",
       "_template": "textBlock"
+    },
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Auto im Studio fotografieren: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Auto im Studio fotografieren oder draußen?\nEin Studio lohnt sich,: Ein Studio ist die bessere Wahl, wenn die Umgebung keinen eigenen Beitrag zur Bildaussage leisten soll oder mehrere Fahrzeuge unter vergleichbaren Bedingungen\nVor der Buchung prüfen,: Bei einem Studiotermin beginnt die Prüfung mit Zufahrt und Platz\nDie kurze Entscheidungsregel: Wähle das Studio, wenn die Umgebung möglichst ruhig bleiben soll, Licht und Reflexe kontrolliert werden müssen oder mehrere Fahrzeuge unter vergleichbaren"
     },
     {
       "headline": "Innenraum und Außenaufnahme als Bildbeispiele",
@@ -84,6 +91,33 @@
       "_template": "textBlock"
     },
     {
+      "_template": "linkList",
+      "headline": "Passende Leistungen & weiterführende Guides",
+      "links": [
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Motive, Bildformate und Übergabe vor dem Shooting sauber strukturieren."
+        },
+        {
+          "label": "Fahrzeugserien konsistent planen",
+          "href": "/blog-fahrzeugserie-konsistent-planen.html",
+          "description": "Wie Perspektiven, Licht und Bearbeitung über mehrere Modelle zusammenhalten."
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "headline": "Häufige Fragen",
       "items": [
         {
@@ -114,15 +148,29 @@
     "searchIntent": "Abwägungssuche: Marken und Fahrzeugverantwortliche vergleichen Studio und Location nach Bildziel, Lichtkontrolle, Platz und Ablauf.",
     "canonicalUrl": "https://matthiasramahi.de/blog-auto-im-studio-oder-location-fotografieren.html",
     "legacyUrl": "blog-auto-im-studio-oder-location-fotografieren.html",
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "ogImage": "/uploads/payload/20250418-DSC00660.webp",
     "noIndex": false
   },
   "createdAt": "2026-11-03T17:00:00Z",
-  "updatedAt": "2027-03-27T08:00:00.000Z",
+  "updatedAt": "2027-07-13T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automotive Fotografie",
-      "href": "/automotive-fotografie.html",
+      "href": "/automobil-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fahrzeugserien konsistent planen",
+      "href": "/blog-fahrzeugserie-konsistent-planen.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

@@ -9,11 +9,18 @@
     "Lichtführung",
     "Moiré"
   ],
-  "publishedAt": "2027-05-08T07:00:00.000Z",
+  "publishedAt": "2027-09-21T07:00:00.000Z",
   "excerpt": "Wie Gewebe, Glanz und Form von Carbon-Optik am Auto fotografisch lesbar werden – von gerichteter Lichtführung bis zur Kontrolle feiner Muster.",
-  "coverImage": "/uploads/payload/_DSC2310-2.webp",
+  "coverImage": "/assets/portfolio/automobil-mercedes-interieur-tilt.webp",
   "readingTime": 7,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Carbon am Auto fotografieren: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Setze eine gerichtete Lichtquelle schräg zur Fläche, bewege sie in kleinen Schritten und prüfe, ob das Muster sowie die Form des Bauteils lesbar bleiben\nCarbon-Optik fotografieren heißt, Licht: Bei Carbonteilen entscheidet die Lichtführung darüber, ob das feine Gewebe im Bild lesbar bleibt\nDas Detail braucht den: Ein extrem enger Ausschnitt kann die Gewebestruktur zeigen, lässt aber offen, wo das Teil am Fahrzeug sitzt\nEine kurze Bildfolge macht: Für ein einzelnes Bauteil reichen oft drei Ansichten: erst die Position am Auto, dann Form und Gewebe, zuletzt ein engeres Oberflächendetail"
+    },
     {
       "headline": "Carbon-Optik fotografieren heißt, Licht über das Gewebe zu führen",
       "body": "Bei Carbonteilen entscheidet die Lichtführung darüber, ob das feine Gewebe im Bild lesbar bleibt. Frontal gleichmäßiges Licht kann eine glänzende Fläche glatt und dunkel erscheinen lassen. Ein gezielt gesetzter Reflex macht dagegen sichtbar, wie die Oberfläche über eine Kante oder Rundung läuft. Beginne deshalb mit dem Ziel des Fotos: Soll eine Detailaufnahme die Struktur zeigen, oder soll das Bauteil als Teil des Fahrzeugs erkennbar bleiben? Beides lässt sich verbinden, braucht aber einen bewusst gewählten Ausschnitt.\n\nDer Begriff „Carbon“ wird im Alltag auch für eine sichtbare Optik verwendet. Ein gewebtes Muster im Foto belegt für sich allein nicht, aus welchem Material das Teil besteht. Wenn eine Serie Material oder Ausstattung dokumentiert, gleiche die Bezeichnung mit verlässlichen Fahrzeug- oder Herstellerangaben ab. Ohne diesen Nachweis beschreibt die Bildunterschrift, was zu sehen ist: etwa „Gewebe in Carbon-Optik“. Das schützt vor einer Behauptung, die ein Foto allein nicht leisten kann.",
@@ -93,10 +100,21 @@
           "description": "Beschreibt Moiré und Falschfarben bei feinen Mustern sowie Einflussgrößen wie Abstand und Blende.",
           "href": "https://www.nikonusa.com/learn-and-explore/c/products-and-innovation/moire-false-color",
           "label": "Nikon: Moiré and False Color"
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ],
       "headline": "Technische Quellen",
       "_template": "linkList"
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
     },
     {
       "items": [
@@ -151,10 +169,10 @@
     "canonicalUrl": "https://matthiasramahi.de/blog-carbon-am-auto-fotografieren.html",
     "legacyUrl": "blog-carbon-am-auto-fotografieren.html",
     "noIndex": false,
-    "ogImage": "/uploads/payload/_DSC2310-2.webp"
+    "ogImage": "/assets/portfolio/automobil-mercedes-interieur-tilt.webp"
   },
   "createdAt": "2026-11-03T17:00:00Z",
-  "updatedAt": "2027-05-08T07:00:00.000Z",
+  "updatedAt": "2027-09-21T07:00:00.000Z",
   "relatedPages": [
     {
       "openInNewTab": false,
@@ -178,6 +196,6 @@
       "label": "Autoteile und Zubehör fotografieren"
     }
   ],
-  "coverAlt": "Rot-weiß lackierter BMW auf einer beleuchteten Ausstellungsfläche",
+  "coverAlt": "Interieur · Cockpit",
   "status": "scheduled"
 }

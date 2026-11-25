@@ -8,13 +8,20 @@
     "Location",
     "Produktion"
   ],
-  "publishedAt": "2027-07-05T07:00:00.000Z",
+  "publishedAt": "2027-12-28T08:00:00.000Z",
   "status": "scheduled",
   "excerpt": "Welche Freigabe braucht ein Auto-Fotoshooting? Prüfe Fläche, Technik und Nutzung vorab und kläre mit Eigentümer oder Kommune, was für den Termin nötig ist.",
   "coverImage": "/assets/optimized/assets-photos-automobil-sunset-1920.webp",
   "coverAlt": "Dunkler SUV vor einer industriellen Außenanlage im Abendlicht. Portfolio-Beispiel, kein Nachweis einer Genehmigung.",
   "readingTime": 9,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Genehmigung Auto-Fotoshooting: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Welche Freigabe braucht ein Auto-Fotoshooting?\nEine Genehmigung hängt von: Für jedes professionelle Autofoto im öffentlichen Raum pauschal eine Genehmigung zu verlangen, wäre zu grob\nDiese Angaben helfen bei: genaue Location oder Flächenausschnitt, bei Bedarf mit Kartenausschnitt\nFreigabe vor der Buchung einplanen: Frag Betreiber und zuständige Stelle früh, bevor du Fahrzeug, Crew oder Anreise verbindlich buchst"
+    },
     {
       "_template": "textBlock",
       "headline": "Eine Genehmigung hängt von Fläche und Maßnahme ab",
@@ -29,6 +36,23 @@
       "_template": "textBlock",
       "headline": "Grünanlagen können eigenen Regeln unterliegen",
       "body": "Parks, Wiesen und andere Grünflächen wirken frei zugänglich, werden aber häufig besonders verwaltet. Das Düsseldorfer Serviceportal führt Werbe- und Fotoaufnahmen in städtischen Grünanlagen als Nutzung auf, die über den Allgemeingebrauch hinausgeht und grundsätzlich genehmigungspflichtig ist. Die Entscheidung hängt vom Einzelfall ab; Schutzstatus, Sicherheit, Erhalt der Anlage und Terminüberschneidungen spielen mit hinein.\n\nFür einen Antrag nennt die Stadt unter anderem den Ort, die Dauer, Auf- und Abbauzeiten sowie einen maßstabsgerechten Aufbauplan. Das Portal nennt als Bearbeitungszeit je nach Art und Größe des Vorhabens eine Woche bis sechs Monate. Diese Angabe bezieht sich auf das dort beschriebene Verfahren und kann sich ändern. Prüfe die aktuelle Vorgabe, bevor du Datum oder Location verbindlich zusagst.\n\nAuch andere Kommunen setzen eigene Bedingungen. Bonn verlangt für kommerzielle Aufnahmen in Grünflächen eine kostenpflichtige Genehmigung und wendet seine Regeln ausdrücklich auch auf Fotoshootings an. Daraus folgt keine bundesweit einheitliche Regel für jeden Park."
+    },
+    {
+      "_template": "imageSequence",
+      "headline": "Beispiele für saubere Perspektive und Lichtführung",
+      "layout": "editorial-pair",
+      "items": [
+        {
+          "image": "/assets/optimized/assets-portfolio-dsc2329-1920.webp",
+          "caption": "Präzise Lichtkante auf dunklem Fahrzeuglack in ruhiger Umgebung",
+          "cropIntent": "editorial"
+        },
+        {
+          "image": "/assets/optimized/assets-portfolio-dsc2345-1920.webp",
+          "caption": "Kontrollierte Seitenansicht mit gleichmäßiger Spiegelung über Tür und Schweller",
+          "cropIntent": "editorial"
+        }
+      ]
     },
     {
       "_template": "textBlock",
@@ -53,7 +77,13 @@
     {
       "_template": "textBlock",
       "headline": "Freigabe vor der Buchung einplanen",
-      "body": "Frag Betreiber und zuständige Stelle früh, bevor du Fahrzeug, Crew oder Anreise verbindlich buchst. Bonn bittet für genehmigungspflichtige Dreharbeiten/Fotoshootings um eine Voranfrage mit mindestens zehn Werktagen Vorlauf; die Stadt nennt für Düsseldorfer Grünanlagen je nach Art und Umfang eine Bearbeitungszeit von einer Woche bis sechs Monaten. Das sind Beispiele der verlinkten Verfahren, keine verlässlichen Fristen für andere Orte; prüfe sie erneut zum Buchungszeitpunkt.\n\nHalte drei Bestätigungen auseinander: (1) Zugang und Hausregeln der Fläche, (2) behördliche Erlaubnisse für Nutzung oder Verkehrsmaßnahmen und (3) Flugfreigaben, falls eine Drohne geplant ist. Dazu kommen gesonderte Vereinbarungen zur Verwendung der entstandenen Bilder. Plane den Termin erst fest ein, wenn die nötigen Freigaben schriftlich vorliegen und Fläche, Zeit, Technik und Bedingungen klar sind. Ein gutes [Location-Scouting](/blog-location-scouting-duesseldorf.html) prüft neben Licht und Bildwirkung auch Zugang, Regeln und einen Plan B. Das sind Planungshilfen, keine Rechtsberatung; maßgeblich sind die aktuellen Vorgaben der zuständigen Kommune und die konkrete Freigabe für dein Vorhaben."
+      "body": "Frag Betreiber und zuständige Stelle früh, bevor du Fahrzeug, Crew oder Anreise verbindlich buchst. Bonn bittet für genehmigungspflichtige Dreharbeiten/Fotoshootings um eine Voranfrage mit mindestens zehn Werktagen Vorlauf; die Stadt nennt für Düsseldorfer Grünanlagen je nach Art und Umfang eine Bearbeitungszeit von einer Woche bis sechs Monaten. Das sind Beispiele der verlinkten Verfahren, keine verlässlichen Fristen für andere Orte; prüfe sie erneut zum Buchungszeitpunkt.\n\nHalte drei Bestätigungen auseinander: (1) Zugang und Hausregeln der Fläche, (2) behördliche Erlaubnisse für Nutzung oder Verkehrsmaßnahmen und (3) Flugfreigaben, falls eine Drohne geplant ist. Dazu kommen gesonderte Vereinbarungen zur Verwendung der entstandenen Bilder. Plane den Termin erst fest ein, wenn die nötigen Freigaben schriftlich vorliegen und Fläche, Zeit, Technik und Bedingungen klar sind. Ein gutes [Location-Scouting](/blog-location-scouting-duesseldorf.html) prüft neben Licht und Bildwirkung auch Zugang, Regeln und einen Plan B. maßgeblich sind die aktuellen Vorgaben der zuständigen Kommune und die konkrete Freigabe für dein Vorhaben."
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
     },
     {
       "_template": "faqBlock",
@@ -130,7 +160,7 @@
     }
   ],
   "createdAt": "2026-11-04T18:47:01Z",
-  "updatedAt": "2027-07-05T07:00:00Z",
+  "updatedAt": "2027-12-28T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Fotospots Düsseldorf: Location-Scouting für dein Fotoshooting",

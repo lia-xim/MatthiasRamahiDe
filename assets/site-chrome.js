@@ -157,6 +157,7 @@
 
   function recoverImage(image) {
     if (!image || image.tagName !== 'IMG') return false;
+    if (!image.getAttribute('src') && !image.getAttribute('srcset')) return false;
     if (!image.__mrImageFallbacks) {
       image.__mrImageFallbacks = collectImageFallbacks(image);
     }
@@ -182,9 +183,14 @@
   function watchImage(image) {
     if (!image || image.tagName !== 'IMG' || image.dataset.imgWatch === '1') return;
     image.dataset.imgWatch = '1';
-    image.addEventListener('load', function () { markImageLoaded(image); });
-    image.addEventListener('error', function () { recoverImage(image); });
+    image.addEventListener('load', function () {
+      if (image.getAttribute('src') || image.getAttribute('srcset')) markImageLoaded(image);
+    });
+    image.addEventListener('error', function () {
+      if (image.getAttribute('src') || image.getAttribute('srcset')) recoverImage(image);
+    });
 
+    if (!image.getAttribute('src') && !image.getAttribute('srcset')) return;
     if (!image.complete) return;
     if (image.naturalWidth > 0) markImageLoaded(image);
     else recoverImage(image);
@@ -1303,4 +1309,72 @@
     document.addEventListener('visibilitychange', function(){ visible = !document.hidden; kick(); });
     requestAnimationFrame(function(){ lens.classList.add('is-on'); kick(); });
   }
+
 })();
+
+  /* =====================================================================
+     Mobile UX (2026-11): Sticky CTA bar + Statement Read-More collapse
+     ===================================================================== */
+(function initMobileConversionControls() {
+    var copyBlocks = document.querySelectorAll('.st-pull-copy, .st-body, .st-pt__body, .st-ls__body');
+    Array.prototype.forEach.call(copyBlocks, function (block) {
+      var paragraphs = Array.prototype.filter.call(block.children, function (el) {
+        return el.tagName === 'P';
+      });
+      if (paragraphs.length < 2 || block.querySelector('.mr-readmore-toggle')) return;
+      block.classList.add('mr-collapsible-copy');
+      var toggle = document.createElement('button');
+      toggle.type = 'button';
+      toggle.className = 'mr-readmore-toggle';
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.textContent = 'Mehr lesen \u2193';
+      toggle.addEventListener('click', function () {
+        var expanded = block.classList.toggle('is-expanded');
+        toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+        toggle.textContent = expanded ? 'Weniger anzeigen \u2191' : 'Mehr lesen \u2193';
+      });
+      var anchorChild = Array.prototype.find.call(block.children, function (el) {
+        return el.tagName === 'A';
+      });
+      if (anchorChild) block.insertBefore(toggle, anchorChild);
+      else block.appendChild(toggle);
+    });
+
+    var bar = document.querySelector('[data-mobile-cta]');
+    if (!bar) return;
+    var stopNodes = Array.prototype.slice.call(document.querySelectorAll('#anfrage, footer.mr-footer'));
+    var visibleStops = new Set();
+
+    function isStopVisibleByRect() {
+      var vh = window.innerHeight || document.documentElement.clientHeight || 0;
+      for (var i = 0; i < stopNodes.length; i += 1) {
+        var rect = stopNodes[i].getBoundingClientRect();
+        if (rect.top < vh - 48 && rect.bottom > 0) return true;
+      }
+      return false;
+    }
+
+    function syncBar() {
+      var narrow = window.innerWidth <= 900;
+      var scrolled = (window.scrollY || window.pageYOffset || 0) > 340;
+      var blocked = visibleStops.size > 0 || isStopVisibleByRect();
+      var show = narrow && scrolled && !blocked;
+      bar.classList.toggle('is-visible', show);
+      bar.setAttribute('aria-hidden', show ? 'false' : 'true');
+    }
+
+    if ('IntersectionObserver' in window && stopNodes.length) {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) visibleStops.add(entry.target);
+          else visibleStops.delete(entry.target);
+        });
+        syncBar();
+      }, { threshold: 0.02 });
+      stopNodes.forEach(function (node) { observer.observe(node); });
+    }
+
+    window.addEventListener('scroll', syncBar, { passive: true });
+    window.addEventListener('resize', syncBar, { passive: true });
+    syncBar();
+  })();

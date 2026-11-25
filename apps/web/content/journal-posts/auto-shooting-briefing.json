@@ -14,6 +14,13 @@
   "readingTime": 8,
   "blocks": [
     {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Auto-Shooting-Briefing und Shotlist: Die wichtigsten Punkte im Überb",
+      "body": "Kernaussage: Hauptzweck, Zielgruppe, Fahrzeugdaten, Pflichtmotive, Medienformate, Ort, Zeitfenster, Verantwortliche und der gewünschte Auswahl- sowie Lieferprozess\nDer Verwendungszweck steht vor: Ein Privatverkauf benötigt nachvollziehbare Ansichten von Zustand und Ausstattung\nNutzungsrechte und Formate beeinflussen: Website, Händlerportal, Presse, Printanzeige und Social Media stellen unterschiedliche Anforderungen an Ausschnitt und Auflösung\nAuswahl und Lieferung werden: Nach dem Termin braucht es einen klaren Auswahlweg"
+    },
+    {
       "headline": "Der Verwendungszweck steht vor der Motivliste",
       "body": "Ein Privatverkauf benötigt nachvollziehbare Ansichten von Zustand und Ausstattung. Ein Händler braucht wiederholbare Bilder über mehrere Fahrzeuge. Eine Marke benötigt eine visuelle Aussage und Dateien für definierte Kanäle. Alle drei können dasselbe Auto zeigen und trotzdem vollständig verschiedene Produktionen verlangen. Deshalb beginnt das Briefing nicht mit „Fotos rundherum“, sondern mit der späteren Entscheidung des Betrachters.\n\nHilfreiche Angaben sind Zielgruppe, Veröffentlichungsort, Laufzeit und gewünschte Wirkung. Wenn noch nicht alles feststeht, wird eine Priorität gewählt. Ein Hauptzweck verhindert, dass dokumentarische, redaktionelle und werbliche Anforderungen ungeordnet konkurrieren. Zusätzliche Varianten können danach geplant werden, solange sie Zeit, Ort und Bildsprache nicht widersprechen.",
       "_template": "textBlock"
@@ -68,6 +75,39 @@
       "_template": "textBlock"
     },
     {
+      "_template": "linkList",
+      "headline": "Nächste Schritte für dein Auto-Fotoshooting",
+      "links": [
+        {
+          "label": "Fotoshooting mit Auto NRW",
+          "href": "/fotoshooting-mit-auto.html"
+        },
+        {
+          "label": "Autofotografie Düsseldorf",
+          "href": "/autofotografie-duesseldorf.html"
+        },
+        {
+          "label": "Autoverkauf Fotos Düsseldorf",
+          "href": "/autoverkauf-fotos-duesseldorf.html"
+        },
+        {
+          "label": "Portfolio Automobil",
+          "href": "/portfolio/portfolio-auswahl-automobil"
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Briefing kurz senden und Shooting planen",
+      "text": "Fahrzeug, Ort und geplante Nutzung genügen für den Einstieg – Auto-Fotoshootings in Düsseldorf und NRW ab 250 € inkl. MwSt.",
+      "buttonLabel": "Shooting anfragen"
+    },
+    {
       "headline": "Kurze Fragen",
       "items": [
         {
@@ -104,11 +144,25 @@
   },
   "status": "published",
   "createdAt": "2026-08-19T06:00:00Z",
-  "updatedAt": "2026-08-24T20:51:37.595Z",
+  "updatedAt": "2026-11-24T09:15:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
       "href": "/automobil-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fahrzeugserien konsistent planen",
+      "href": "/blog-fahrzeugserie-konsistent-planen.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

@@ -13,6 +13,13 @@
   "readingTime": 8,
   "blocks": [
     {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Starke Regen- und Pfützenbilder kontrolliert umsetzen",
+      "body": "Bester Zeitpunkt: Unmittelbar nach dem Schauer, wenn dunkler Asphalt glänzend spiegelt, aber Kamera und Lack nicht dauerhaft durchnässt werden\nTiefe Perspektive: Kamera nah an der Pfütze positionieren, Spiegelungskante sauber unter der Schwellerlinie trennen und Polfilter dosiert testen\nPflichtserie sichern: Neben dem Spiegelungs-Hero immer klassische Dreiviertelansicht, Tropfen-Detail und trockene Ausweich-Option einplanen"
+    },
+    {
       "headline": "Nasse Straße und aktiver Regen sind nicht dasselbe",
       "body": "Die stärksten Reflexionen entstehen oft nach dem Schauer, nicht mitten darin. Der Asphalt ist dunkel und glänzend, während Kamera, Fahrzeug und Team wieder kontrollierter arbeiten können. Aktiver Regen bringt dagegen sichtbare Tropfen, weichere Ferne und mehr Bewegung – aber auch weniger Konstanz und höhere Belastung für Technik und Oberflächen.\n\nVor dem Termin sollte deshalb feststehen, welche Wirkung gesucht wird. „Regen“ ist kein vollständiges Konzept. Eine ruhige Spiegelung, sichtbare Tropfen auf dem Lack oder eine atmosphärische Fahrt verlangen unterschiedliche Orte, Belichtungszeiten und Sicherheitsreserven.",
       "_template": "textBlock"
@@ -67,6 +74,35 @@
       "_template": "textBlock"
     },
     {
+      "_template": "linkList",
+      "headline": "Auto-Fotoshooting bei jedem Wetter in NRW",
+      "links": [
+        {
+          "label": "Autofotografie Düsseldorf",
+          "href": "/autofotografie-duesseldorf.html"
+        },
+        {
+          "label": "Auto-Fotoshooting NRW",
+          "href": "/fotoshooting-mit-auto.html"
+        },
+        {
+          "label": "Portfolio Automobil",
+          "href": "/portfolio/portfolio-auswahl-automobil"
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Stimmungsvolle Fahrzeugserie auch bei Regen oder Dämmerung",
+      "text": "Nasse Straßen, Spiegelungen und kontrolliertes Licht in Düsseldorf und im Ruhrgebiet – Shootings ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "headline": "Kurze Fragen",
       "items": [
         {
@@ -86,8 +122,8 @@
     }
   ],
   "seo": {
-    "title": "Automobilfotografie im Regen planen | Matthias Ramahi",
-    "description": "Regen bei einem Auto-Shooting kontrolliert nutzen: Sicherheit, Location, Lack, Reflexionen, Belichtung und eine belastbare Schlechtwetterplanung.",
+    "title": "Auto im Regen fotografieren: Reflexe, Licht & Tipps",
+    "description": "Warum Regen und nasse Straßen starke Autofotos ermöglichen: Pfützen-Spiegelungen, Lichtführung, Wetterschutz und praktische Tipps fürs Carshooting.",
     "focusKeyword": "Automobilfotografie im Regen planen",
     "searchIntent": "Informationssuche: Nutzer suchen Fachwissen, Beispiele und Einordnung zu Automobilfotografie im Regen planen.",
     "canonicalUrl": "https://matthiasramahi.de/blog-automobilfotografie-im-regen.html",
@@ -103,11 +139,25 @@
   },
   "status": "published",
   "createdAt": "2026-08-24T06:00:00.000Z",
-  "updatedAt": "2026-08-24T20:51:37.598Z",
+  "updatedAt": "2026-11-24T09:15:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
       "href": "/automobil-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fahrzeugserien konsistent planen",
+      "href": "/blog-fahrzeugserie-konsistent-planen.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

@@ -9,17 +9,24 @@
     "Wetter",
     "Fahrzeugbestand"
   ],
-  "publishedAt": "2027-08-08T07:00:00Z",
+  "publishedAt": "2028-02-25T08:00:00.000Z",
   "status": "scheduled",
   "excerpt": "Wie Autohäuser Fahrzeugfotos bei Regen und grauem Himmel planen: trockene Inseratsbilder, ein verlässlicher Tagesablauf und eine sichere Ausweichlösung.",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
-  "coverAlt": "Schwarzer Brabus-SUV auf nassem Asphalt; eine Pfütze spiegelt das Fahrzeug im Abendlicht.",
+  "coverImage": "/assets/portfolio/automobil-bentley-oldtimer.webp",
+  "coverAlt": "Oldtimer · Formdetail",
   "readingTime": 9,
   "blocks": [
     {
       "_template": "textBlock",
       "headline": "",
       "body": "Wenn ein Fahrzeugbestand trotz wechselnden Wetters ins Inserat soll, zählt vor allem ein verlässlicher Ablauf. Fotografiere die reguläre Bildserie mit trockenem Fahrzeug und einer gleichbleibenden, gut kontrollierbaren Darstellung. Ein bedeckter Himmel kann dafür ausreichen. Bei aktivem Regen oder nassem Lack ist eine geschützte Ausweichfläche meist sinnvoller als eine hastig aufgenommene Außensequenz. Nasser Asphalt kann als separates Motiv funktionieren, ersetzt aber keine klaren Bestandsbilder.\n\nFür Autohäuser liegt die Aufgabe in der Tagesentscheidung: Welche Fahrzeuge sind heute fotobereit, welche brauchen eine trockene Fläche und welche werden nach dem Schauer aufgenommen? Der Beitrag hilft, diese Entscheidung in den Tagesplan einzubauen. Für die kreative Wirkung von Regen und Spiegelungen gibt es bereits den Ratgeber zur Automobilfotografie im Regen; hier geht es um ehrliche, wiederholbare Fotos für den Fahrzeugbestand."
+    },
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Autohaus-Fahrzeugfotos bei schlechtem Wetter: Die wichtigsten Punkte",
+      "body": "Kernaussage: Wie Autohäuser Fahrzeugfotos bei Regen und grauem Himmel planen: trockene Autos, eine sichere Ausweichfläche und klare Inseratsbilder\nDie Wetterentscheidung beginnt am: Ein grauer Himmel ist für sich genommen kein Ausschlussgrund\nBei wechselndem Licht die: Wenn die Wolken aufreißen oder der Regen erneut beginnt, fotografiere nach Möglichkeit erst eine vollständige Außensequenz, bevor du den Standort wechselst\nNassen Asphalt als Zusatzmotiv: Das Portfoliofoto zeigt, wie eine feuchte Fläche Licht unter ein trockenes Fahrzeug zurückspiegeln kann"
     },
     {
       "_template": "textBlock",
@@ -67,6 +74,12 @@
       "_template": "textBlock",
       "headline": "Nassen Asphalt als Zusatzmotiv behandeln",
       "body": "Das Portfoliofoto zeigt, wie eine feuchte Fläche Licht unter ein trockenes Fahrzeug zurückspiegeln kann. Für ein Autohaus-Inserat ist das ein optionales Motiv, keine Pflicht und kein Ersatz für eine klare Rundumserie. Wenn du es einsetzt, achte darauf, dass Silhouette und Lackfarbe des Wagens lesbar bleiben und der Reflex nicht wie ein Hinweis auf einen anderen Fahrzeugzustand wirkt.\n\nEin sinnvoller Tagesablauf trennt deshalb zwei Aufgaben: zuerst die sachliche Bestandsserie unter kontrollierbaren Bedingungen, danach bei passender Gelegenheit ein stimmungsvolleres Bild. Der vorhandene Ratgeber zu Autos am Wasser behandelt Bildgestaltung und Reflexe ausführlicher. Für eine Wetterplanung im Autohaus bleibt die Leitfrage: Kann der Käufer den Wagen anhand der Bilder verlässlich beurteilen?"
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
     },
     {
       "_template": "faqBlock",
@@ -123,14 +136,19 @@
           "label": "Auto bei bedecktem Himmel fotografieren",
           "href": "/blog-auto-bei-bedecktem-himmel-fotografieren.html",
           "description": "Licht, Lackreflexe und Bildkontrolle bei diffusem Tageslicht."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]
     }
   ],
   "createdAt": "2026-11-05T00:00:00Z",
-  "updatedAt": "2027-08-08T07:00:00Z",
+  "updatedAt": "2028-02-25T08:00:00.000Z",
   "seo": {
-    "title": "Autohaus-Fahrzeugfotos bei Regen: Inserate trotz Wetter planen",
+    "title": "Autohaus-Fotos bei Regen: Inserate sicher planen",
     "description": "Wie Autohäuser Fahrzeugfotos bei Regen und grauem Himmel planen: trockene Autos, eine sichere Ausweichfläche und klare Inseratsbilder.",
     "focusKeyword": "Autohaus-Fahrzeugfotos bei schlechtem Wetter",
     "secondaryKeywords": [
@@ -151,7 +169,7 @@
     ],
     "canonicalUrl": "https://matthiasramahi.de/blog-autohaus-fahrzeugfotos-schlechtes-wetter.html",
     "legacyUrl": "blog-autohaus-fahrzeugfotos-schlechtes-wetter.html",
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "ogImage": "/assets/portfolio/automobil-bentley-oldtimer.webp",
     "noIndex": false
   },
   "relatedPages": [

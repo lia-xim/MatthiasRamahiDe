@@ -8,12 +8,19 @@
     "Autoteile",
     "Fahrzeugzubehör"
   ],
-  "publishedAt": "2027-01-08T08:00:00.000Z",
+  "publishedAt": "2027-03-02T08:00:00.000Z",
   "status": "scheduled",
   "excerpt": "Wie lassen sich Autoteile und Zubehör so fotografieren, dass Form, Anschlüsse, Varianten und Lieferumfang nachvollziehbar bleiben? Ein Leitfaden für klare Produktbildserien.",
   "coverImage": "/uploads/payload/20250426-DSC02651.webp",
   "readingTime": 8,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Autoteile & Fahrzeugzubehör verkaufsstark fotografieren",
+      "body": "Klare Rollenverteilung: Ruhiges, sauber freigestelltes oder neutrales Hauptbild für Katalog/Marktplatz plus Maßstab, Anschlüsse, Teilenummer und realer Einbaukontext\nOberflächen kontrollieren: Metall, Glas, Carbon und dunklen Kunststoff über weiche große Lichtflächen ohne harte Hotspots sauber ausleuchten\nVollständiger Lieferumfang: Variante und beiliegendes Montagematerial ehrlich dokumentieren – verhindert Rückfragen und Retouren nach Bestellung"
+    },
     {
       "headline": "Ein Produktfoto muss zuerst das richtige Teil zeigen",
       "body": "Wer Ersatzteile oder Zubehör online auswählt, kann das Objekt nicht in die Hand nehmen. Das Bild soll deshalb zuerst eine einfache Frage beantworten: Welches Teil wird hier angeboten? Bei einer Felge, einem Spiegel, einem Steuergerät oder einer Fußmatte unterscheiden sich die relevanten Merkmale. Ein einzelnes dramatisches Foto kann interessant aussehen und trotzdem offenlassen, welche Form, Anschlüsse oder Oberflächen tatsächlich geliefert werden.\n\nVor dem Shooting sollte deshalb klar sein, welche Produktnummer und Variante fotografiert wird, ob das Teil neu, gebraucht oder überarbeitet ist und was zum Lieferumfang gehört. Diese Angaben kommen aus dem Produktdatensatz oder von einer zuständigen Person, nicht aus einer Vermutung anhand der Form. Die Fotografie kann Merkmale sichtbar machen; sie sollte keine Kompatibilität behaupten, die nicht geprüft wurde.",
@@ -94,6 +101,11 @@
         {
           "label": "Automobilfotografie",
           "href": "/automobil-fotografie.html"
+        },
+        {
+          "label": "Fahrzeugserien konsistent planen",
+          "href": "/blog-fahrzeugserie-konsistent-planen.html",
+          "description": "Wie Perspektiven, Licht und Bearbeitung über mehrere Modelle zusammenhalten."
         }
       ]
     },
@@ -109,9 +121,25 @@
           "label": "Google Merchant Center: Produktdaten für kostenlose Einträge",
           "href": "https://support.google.com/merchants/answer/13889434?hl=de",
           "description": "Überblick über erforderliche Produktattribute und empfohlene zusätzliche Produktbilder."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Motive, Bildformate und Übergabe vor dem Shooting sauber strukturieren."
         }
       ],
       "_template": "linkList"
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Professionelles Auto-Fotoshooting in NRW planen",
+      "text": "Du brauchst stimmige Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto im Raum Düsseldorf, Erkrath und NRW? Shootings starten bei 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
     },
     {
       "headline": "Häufige Fragen",
@@ -154,7 +182,7 @@
     "noIndex": false
   },
   "createdAt": "2026-11-03T16:00:00Z",
-  "updatedAt": "2027-01-08T08:00:00.000Z",
+  "updatedAt": "2027-03-02T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
@@ -167,6 +195,13 @@
       "label": "Auto-Shooting-Briefing",
       "href": "/blog-auto-shooting-briefing.html",
       "seoPurpose": "supporting-article",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fahrzeugserien konsistent planen",
+      "href": "/blog-fahrzeugserie-konsistent-planen.html",
+      "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
     }

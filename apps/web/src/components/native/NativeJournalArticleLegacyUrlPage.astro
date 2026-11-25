@@ -8,7 +8,10 @@ import {
   type JournalArticleBlock,
   journalArticleByLegacyFile,
 } from '../../lib/journalArticleContent'
-import { imageDisplayUrl, toAbsoluteSiteUrl, toDisplayAssetUrl, toRootRelativeHref } from '../../lib/payload'
+import { getLegacyRedirectTarget } from '../../lib/adoptedRoutes'
+import { versionStaticAssetUrl } from '../../lib/cache'
+import { renderJournalBodyHtml } from '../../lib/journalMarkdown'
+import { imageDimensions, imageDisplayUrl, toAbsoluteSiteUrl, toDisplayAssetUrl, toRootRelativeHref } from '../../lib/payload'
 import { breadcrumbJsonLd, faqJsonLd, type JsonLd } from '../../lib/seo'
 import { journalIndexPath, journalTopics } from '../../lib/journalIndexRoutes'
 
@@ -26,37 +29,33 @@ const canonicalUrl = `/${article.legacyFile}`
 const textBlocks = article.blocks.filter(
   (block): block is Extract<JournalArticleBlock, { _template: 'textBlock' }> => block._template === 'textBlock',
 )
+const isQuickAnswerBlock = (block: Extract<JournalArticleBlock, { _template: 'textBlock' }>) =>
+  block.style === 'summary' ||
+  (block.style === 'bridge' && /^(kurzantwort|auf einen blick)\b/i.test((block.headline || '').trim()))
+const tocBlocks = textBlocks.filter((block) => block.headline && block.style !== 'bridge' && !isQuickAnswerBlock(block))
+const renderMarkdownBody = (body?: string) =>
+  renderJournalBodyHtml(body, { resolveRedirectTarget: getLegacyRedirectTarget })
 const faqBlocks = article.blocks.filter(
   (block): block is Extract<JournalArticleBlock, { _template: 'faqBlock' }> => block._template === 'faqBlock',
 )
 const faqItems = faqBlocks.flatMap((block) => block.items || [])
 const breadcrumbTopicEntry = journalTopics.find((topic) => topic.filter === journalClusterProfiles[article.cluster].filter)
 const breadcrumbTopic = breadcrumbTopicEntry ? [{ name: breadcrumbTopicEntry.label, url: journalIndexPath(breadcrumbTopicEntry) }] : []
-const jsonLd = [
-  breadcrumbJsonLd([
-    { name: 'Home', url: '/' },
-    { name: 'Journal', url: '/blog.html' },
-    ...breadcrumbTopic,
-    { name: plainTitle, url: canonicalUrl },
-  ]),
-  {
-    '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    '@id': `${toAbsoluteSiteUrl(canonicalUrl)}#article`,
-    mainEntityOfPage: { '@type': 'WebPage', '@id': toAbsoluteSiteUrl(canonicalUrl) },
-    headline: plainTitle,
-    description: article.seoDescription,
-    image: [imageDisplayUrl(article.heroImage, 'wide', { allowOriginal: true })],
-    datePublished: article.publishedAt || `${article.dateTime}T09:00:00+02:00`,
-    dateModified: article.updatedAt || article.publishedAt || `${article.dateTime}T09:00:00+02:00`,
-    inLanguage: 'de-DE',
-    articleSection: article.category,
-    keywords: article.tags,
-    author: { '@id': `${toAbsoluteSiteUrl('/')}#person` },
-    publisher: { '@id': `${toAbsoluteSiteUrl('/')}#local-business` },
-  },
-  faqJsonLd(article.faq),
-].filter(Boolean) as JsonLd[]
+const mergedFaq = [
+  ...(article.faq || []),
+  ...faqItems.filter((item) => !(article.faq || []).some((existing) => existing.question === item.question)),
+]
+const articleWordCount = [
+  plainTitle,
+  article.description,
+  ...textBlocks.flatMap((block) => [block.headline || '', block.body || '']),
+  ...faqItems.flatMap((item) => [item.question || '', item.answer || '']),
+]
+  .join(' ')
+  .replace(/\s+/g, ' ')
+  .trim()
+  .split(' ')
+  .filter(Boolean).length
 
 const previewMap: Record<string, { height: number; image: string; width: number }> = {
   'assets/optimized/assets-photos-automobil-neon-1920.webp': { image: 'assets/optimized/assets-photos-automobil-neon-960.webp', width: 960, height: 640 },
@@ -76,12 +75,14 @@ function imagePreview(image?: string) {
       url: imageDisplayUrl(`/${preview.image}`, 'card', { allowOriginal: true }),
     }
   }
+  const resolvedUrl = imageDisplayUrl(`/${normalized}`, 'card', { allowOriginal: true })
+  const dims = imageDimensions(`/${normalized}`, 'card')
   const portrait = /portrait|khan|levi|dsc6968|dsc9301|landschaft/i.test(normalized)
   return {
     image: normalized,
-    url: imageDisplayUrl(`/${normalized}`, 'card', { allowOriginal: true }),
-    width: portrait ? 1200 : 1600,
-    height: portrait ? 1600 : 1067,
+    url: resolvedUrl,
+    width: dims.width || (portrait ? 1200 : 1600),
+    height: dims.height || (portrait ? 1600 : 1067),
   }
 }
 
@@ -89,6 +90,38 @@ const displayHero = imagePreview(article.heroImage)
 // Das Titelbild läuft jetzt randlos und scharf über die volle Breite, daher
 // die grosse Variante statt der Karten-Vorschau.
 const heroWideUrl = imageDisplayUrl(article.heroImage, 'wide', { allowOriginal: true }) || displayHero.url
+const heroWideDims = imageDimensions(article.heroImage, 'wide')
+const jsonLd = [
+  breadcrumbJsonLd([
+    { name: 'Startseite', url: '/' },
+    { name: 'Journal', url: '/blog.html' },
+    ...breadcrumbTopic,
+    { name: plainTitle, url: canonicalUrl },
+  ]),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    '@id': `${toAbsoluteSiteUrl(canonicalUrl)}#article`,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': toAbsoluteSiteUrl(canonicalUrl) },
+    headline: plainTitle,
+    description: article.seoDescription,
+    image: {
+      '@type': 'ImageObject',
+      url: toAbsoluteSiteUrl(heroWideUrl),
+      ...(heroWideDims.width ? { width: heroWideDims.width } : {}),
+      ...(heroWideDims.height ? { height: heroWideDims.height } : {}),
+    },
+    datePublished: article.publishedAt || `${article.dateTime}T09:00:00+02:00`,
+    dateModified: article.updatedAt || article.publishedAt || `${article.dateTime}T09:00:00+02:00`,
+    inLanguage: 'de-DE',
+    wordCount: articleWordCount,
+    articleSection: article.category,
+    keywords: article.tags,
+    author: { '@id': `${toAbsoluteSiteUrl('/')}#person` },
+    publisher: { '@id': `${toAbsoluteSiteUrl('/')}#local-business` },
+  },
+  faqJsonLd(mergedFaq),
+].filter(Boolean) as JsonLd[]
 const authorImage = toDisplayAssetUrl('/uploads/payload/mpissxxj-portfolio_webp_full_063-2-360x360.webp')
 const isPortraitHero = displayHero.height > displayHero.width
 const heroStyle = `--article-hero-image:url('${heroWideUrl}')`
@@ -122,13 +155,19 @@ Astro.response.headers.set('x-cms-page-kind', 'journal-tina-source')
   stylesheets={['/assets/journal-support.css']}
   jsonLd={jsonLd}
   bodyClass="has-mr-footer journal-article-page"
+  mobileCta={{
+    secondaryHref: articleHref(article.links?.[0]?.href || '/automobil-fotografie.html'),
+    secondaryLabel: 'Leistung',
+    href: '/contact.html#anfrage',
+    label: 'Shooting anfragen',
+  }}
 >
   <main>
     <article class="journal-support journal-editorial">
       <header class:list={['article-hero', { 'article-hero--portrait': isPortraitHero }]} style={heroStyle} data-header-theme="dark">
         <div class="article-hero__visual" aria-hidden="true">
           <img
-            src={heroWideUrl}
+            src={versionStaticAssetUrl(heroWideUrl)}
             alt=""
             width={displayHero.width}
             height={displayHero.height}
@@ -162,10 +201,10 @@ Astro.response.headers.set('x-cms-page-kind', 'journal-tina-source')
       <div class="article-body" data-header-theme="light">
         <div class="article-grid">
           <aside aria-label="Artikelübersicht">
-            {textBlocks.some((block) => block.headline && block.style !== 'bridge') && (
+            {tocBlocks.length > 0 && (
               <>
                 <strong>Im Beitrag</strong>
-                {textBlocks.filter((block) => block.headline && block.style !== 'bridge').map((block, index) => (
+                {tocBlocks.map((block, index) => (
                   <a href={`#${blockId(block.headline || '', index)}`}>{block.headline}</a>
                 ))}
               </>
@@ -177,18 +216,28 @@ Astro.response.headers.set('x-cms-page-kind', 'journal-tina-source')
           <div class="journal-prose">
             {article.blocks.map((block, index) => {
               if (block._template === 'textBlock') {
+                if (isQuickAnswerBlock(block)) {
+                  const quickLabel = block.headline || block.eyebrow || 'Kurzantwort'
+                  return (
+                    <aside class="journal-quick-answer" aria-label={quickLabel}>
+                      <p class="kicker">{block.eyebrow || 'Kurzantwort'}</p>
+                      {block.headline && <h2>{block.headline}</h2>}
+                      <div class="journal-quick-answer__body" set:html={renderMarkdownBody(block.body)} />
+                    </aside>
+                  )
+                }
                 const body = paragraphs(block.body)
                 if (!block.headline) {
                   // Der Lead steht bereits im Hero; wortgleiche Absätze nicht doppeln.
                   const opening = body.filter((paragraph) => normalizeText(paragraph) !== normalizeText(article.description))
                   if (opening.length === 0) return null
-                  return <div class="journal-prose__opening">{opening.map((paragraph) => <p>{paragraph}</p>)}</div>
+                  return <div class="journal-prose__opening" set:html={renderMarkdownBody(opening.join('\n\n'))} />
                 }
                 if (block.style === 'bridge') {
                   return (
                     <section class="journal-bridge">
                       <h3>{block.headline}</h3>
-                      {body.map((paragraph) => <p>{paragraph}</p>)}
+                      <Fragment set:html={renderMarkdownBody(block.body)} />
                     </section>
                   )
                 }
@@ -196,7 +245,7 @@ Astro.response.headers.set('x-cms-page-kind', 'journal-tina-source')
                   <section id={blockId(block.headline, index)} class={`journal-section journal-section--${index % 3}`}>
                     {block.eyebrow && <p class="kicker">{block.eyebrow}</p>}
                     <h2>{block.headline}</h2>
-                    {body.map((paragraph) => <p>{paragraph}</p>)}
+                    <Fragment set:html={renderMarkdownBody(block.body)} />
                   </section>
                 )
               }

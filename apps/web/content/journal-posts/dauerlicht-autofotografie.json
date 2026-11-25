@@ -9,16 +9,23 @@
     "Fahrzeugfotografie",
     "Lichtformer"
   ],
-  "publishedAt": "2027-04-26T07:00:00.000Z",
+  "publishedAt": "2027-08-31T07:00:00.000Z",
   "excerpt": "Wann LED-Dauerlicht ein Auto-Shooting erleichtert, wie du Reflexe live prüfst und welche Grenzen gegenüber Blitzlicht und Umgebungslicht bleiben.",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
-  "coverAlt": "Schwarzer SUV im Abendlicht vor Industrieanlagen, mit Spiegelung in einer Pfütze",
+  "coverImage": "/assets/portfolio/automobil-bmw-klassiker.webp",
+  "coverAlt": "Klassiker · Showroom",
   "readingTime": 8,
   "blocks": [
     {
       "headline": "",
       "body": "LED-Dauerlicht ist bei einem stehenden Auto nützlich, wenn du die Wirkung einer Leuchte vor der Aufnahme beurteilen und eine Lichtstimmung mit Foto und Video verbinden möchtest. Der Vorteil liegt in der laufenden Vorschau: Du siehst, wo eine helle Fläche auf Lack, Glas oder Chrom erscheint, und kannst Leuchte oder Diffusor verschieben. Die LED macht den Lack jedoch nicht von selbst weich. Größe, Abstand und Winkel der sichtbaren Lichtfläche bestimmen, wie die Reflexion verläuft. Für eine statische Serie kann Dauerlicht praktisch sein; bei Bewegung oder starkem Tageslicht bietet ein Blitz häufig mehr Leistungsreserve. Wähle die Lichtquelle nach der Aufgabe und prüfe das Ergebnis am Fahrzeug.",
       "_template": "textBlock"
+    },
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "LED-Dauerlicht Autofotografie: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Wann LED-Dauerlicht am Auto hilft: Reflexe vorab prüfen, Leistung und Farbe testen und die Grenzen gegenüber Blitzlicht und Umgebungslicht erkennen\nWas sich durch Dauerlicht: Bei Dauerlicht ist das Licht während der Bildgestaltung und der Belichtung eingeschaltet\nDauerlicht oder Blitz: LED-Dauerlicht ist angenehm, wenn du eine Reflexposition unmittelbar sehen, eine kurze Videoszene aufnehmen oder ein Motiv mit wenig Bewegung gestalten willst\nWo Dauerlicht keinen Vorteil bringt: Eine LED ist nicht automatisch die beste Wahl, nur weil sich ihre Wirkung live sehen lässt"
     },
     {
       "headline": "Was sich durch Dauerlicht am Auto kontrollieren lässt",
@@ -101,9 +108,20 @@
           "label": "Profoto: Ein Workflow für Foto und Video mit Dauerlicht und Blitz",
           "href": "https://www.profoto.com/at/en/still-photography/profoto-stories/one-workflowfor-both-video-and-stills-joyce-shoots-the-flow-of-life-with-the-profoto-l600c-and-profoto-b30",
           "description": "Herstellerbeispiel aus der Modefotografie für den Wechsel zwischen kontinuierlicher LED-Beleuchtung und Blitz innerhalb eines kombinierten Foto-/Video-Sets."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ],
       "_template": "linkList"
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
     },
     {
       "headline": "Häufige Fragen",
@@ -140,15 +158,29 @@
     "searchIntent": "Informationssuche: Wann ist kontinuierliches LED-Licht für ein stehendes Auto sinnvoll, und wie unterscheidet es sich von Blitz- und Umgebungslicht?",
     "canonicalUrl": "https://matthiasramahi.de/blog-dauerlicht-autofotografie.html",
     "legacyUrl": "blog-dauerlicht-autofotografie.html",
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "ogImage": "/assets/portfolio/automobil-bmw-klassiker.webp",
     "noIndex": false
   },
   "createdAt": "2026-11-03T17:00:00Z",
-  "updatedAt": "2027-04-26T07:00:00Z",
+  "updatedAt": "2027-08-31T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
       "href": "/automobil-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fahrzeugserien konsistent planen",
+      "href": "/blog-fahrzeugserie-konsistent-planen.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

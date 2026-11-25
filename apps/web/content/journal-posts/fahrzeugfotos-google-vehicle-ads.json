@@ -9,12 +9,19 @@
     "Autohäuser",
     "Fahrzeugbilder"
   ],
-  "publishedAt": "2027-06-23T07:00:00.000Z",
+  "publishedAt": "2027-12-10T08:00:00.000Z",
   "excerpt": "Welche Fahrzeugfotos passen zu Google Vehicle Ads? So planst du Hauptbild, ergänzende Ansichten und Export nach den offiziellen Bildvorgaben – getrennt von Messe- und Kampagnenmotiven.",
-  "coverImage": "/uploads/payload/_DSC2310-2.webp",
+  "coverImage": "/uploads/payload/20250418-DSC00660.webp",
   "coverAlt": "Weiß-roter Klassiker als vollständiges Showcar auf einem Messestand, fotografiert aus der Front-Seiten-Perspektive",
   "readingTime": 7,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Fahrzeugfotos Google Vehicle Ads: Die wichtigsten Punkte im Überblic",
+      "body": "Kernaussage: Google empfiehlt eine Front-Seiten-Ansicht aus etwa 45 Grad und rät von einer reinen Heckansicht als Hauptbild ab\nDas Hauptbild muss das: Für Google Vehicle Ads sollte das Hauptbild zuerst eine klare Frage beantworten: Welches Fahrzeug wird angeboten?\nBildregeln: Wasserzeichen sowie nachträglich aufgesetzte Logos oder Texte können zur Ablehnung des Angebots führen\nDas Briefing für den Händlerbestand: Vor dem Termin sollten Fotograf und Händler klären, welche Fahrzeuge tatsächlich im Feed stehen, welche Perspektive das Hauptbild bekommt und welche"
+    },
     {
       "_template": "textBlock",
       "headline": "Das Hauptbild muss das konkrete Auto zeigen",
@@ -29,6 +36,23 @@
       "_template": "textBlock",
       "headline": "Hauptbild und Zusatzansichten getrennt planen",
       "body": "Lege das Hauptbild als eigenständiges Motiv fest. Google empfiehlt eine Front-Seiten-Ansicht aus etwa 45 Grad. Das gesamte angebotene Fahrzeug soll sichtbar sein. Von einer reinen Heckansicht als Hauptbild rät die Hilfe ab; sie kann als zusätzliches Bild über additional_image_link folgen. Das sind Bildempfehlungen, keine Garantie für die Freigabe eines Angebots. Die Hauptaufnahme wird im Feed als image_link übermittelt. Eine ruhige seitliche Perspektive oder eine weitere vollständige Ansicht kann sie ergänzen, wenn sie neue Information liefert.\n\nZusatzbilder sollten nicht bloß Varianten mit leicht verschobenem Standpunkt sein. Wähle Ansichten, an denen Interessenten Ausstattung und tatsächliche Fahrzeugausführung erkennen können. Ein Innenraumfoto kann sinnvoll sein, wenn es einen relevanten Ausstattungsunterschied zeigt. Details wie Felge, Licht oder Material ergänzen die Serie nur, wenn sie zur konkreten Kaufentscheidung beitragen. Halte die Bildfolge knapp genug, dass jedes Motiv einen klaren Grund hat. Die Vehicle-Ads-Bildhilfe verweist für zusätzliche Ansichten auf das Attribut additional_image_link. Die allgemeine Merchant-Center-Hilfe für dieses Feld nennt bis zu zehn Bild-URLs; bevor eine feste Bildanzahl beauftragt wird, sollte der Feed-Verantwortliche die Grenze im konkreten Setup bestätigen."
+    },
+    {
+      "_template": "imageSequence",
+      "headline": "Beispiele für saubere Perspektive und Lichtführung",
+      "layout": "editorial-pair",
+      "items": [
+        {
+          "image": "/assets/optimized/assets-portfolio-dsc2329-1920.webp",
+          "caption": "Präzise Lichtkante auf dunklem Fahrzeuglack in ruhiger Umgebung",
+          "cropIntent": "editorial"
+        },
+        {
+          "image": "/assets/optimized/assets-portfolio-dsc2345-1920.webp",
+          "caption": "Kontrollierte Seitenansicht mit gleichmäßiger Spiegelung über Tür und Schweller",
+          "cropIntent": "editorial"
+        }
+      ]
     },
     {
       "_template": "textBlock",
@@ -49,6 +73,12 @@
       "_template": "textBlock",
       "headline": "Das Briefing für den Händlerbestand",
       "body": "Vor dem Termin sollten Fotograf und Händler klären, welche Fahrzeuge tatsächlich im Feed stehen, welche Perspektive das Hauptbild bekommt und welche Zusatzansichten gefragt sind. Dazu kommen Standort, Licht, Umgang mit Fahrzeugen im laufenden Betrieb und die Frage, wer die Dateien dem richtigen Datensatz zuordnet. Bei einer Serie mehrerer Modelle hilft eine kurze Reihenfolge pro Fahrzeug: Hauptansicht, weitere Gesamtansicht und nur die Details, die Ausstattung oder Zustand erklären.\n\nAls übertragbare Abnahmecheckliste kann das Team je Fahrzeug notieren: (1) Bestands- oder Fahrzeug-ID intern gegen die Bildserie prüfen; (2) das Hauptbild auf vollständiges Auto, passende Ausführung und fehlende Overlays kontrollieren; (3) Zusatzansichten nur behalten, wenn sie ein erkennbares Merkmal ergänzen; (4) Exportformat und Zuschnitt an der aktuellen Google-Hilfe und am Feed-Setup prüfen; (5) nach dem Einspielen Vorschau, Bildzuordnung und Zielseite des konkreten Angebots erneut kontrollieren. Die Anzeige soll zur passenden Fahrzeugdetailseite des Händlers führen. Wenn Vehicle Ads für Land oder Konto nicht verfügbar sind, bleiben die Bilder für diese Händler-Fahrzeugseite nützlich; Portal-Upload oder gutes Foto schalten den Ads-Kanal aber nicht frei. Die Zuordnung über interne Bestandsdaten ist eine Produktionshilfe und kein Ersatz für die Prüfung der Google-Anforderungen.\n\nFür mobile.de und AutoScout24 gelten eigene Upload- und Bildhinweise. Ein gemeinsamer Shooting-Termin kann Bilder für mehrere Kanäle liefern, aber Dateiformat, Zuschnitt und Hauptbild sollten pro Ziel geprüft werden. Im Auto-Shooting-Briefing gehören diese Einsatzzwecke in die Motivliste; so wird vor der Produktion klar, welche Ansichten fehlen würden, wenn nur ein einziges Hero-Motiv entsteht."
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
     },
     {
       "_template": "faqBlock",
@@ -94,6 +124,11 @@
           "label": "Google Merchant Center: zusätzliche Bildlinks",
           "href": "https://support.google.com/merchants/answer/6324370?hl=de",
           "description": "Beschreibt das allgemeine Attribut additional_image_link für weitere Produktbilder und nennt dessen Uploadgrenze."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]
     }
@@ -112,11 +147,11 @@
     "searchIntent": "Informationssuche mit kommerziellem Bezug: Händler und Marketingverantwortliche suchen die aktuellen Fotoanforderungen für Google Vehicle Ads, das richtige Hauptbild, sinnvolle Zusatzansichten und einen passenden Export. Der Zweck unterscheidet sich von allgemeinen Google-Unternehmensprofilfotos und den Uploadregeln für mobile.de oder AutoScout24. Die Recherche fand aktuelle Google-Hilfeseiten und passende Suchergebnisse; Suchvolumen und gemessene AI-Fanout-Daten liegen nicht vor.",
     "canonicalUrl": "https://matthiasramahi.de/blog-fahrzeugfotos-google-vehicle-ads.html",
     "legacyUrl": "blog-fahrzeugfotos-google-vehicle-ads.html",
-    "ogImage": "/uploads/payload/_DSC2310-2.webp",
+    "ogImage": "/uploads/payload/20250418-DSC00660.webp",
     "noIndex": false
   },
   "createdAt": "2026-11-04T15:31:40Z",
-  "updatedAt": "2027-06-23T07:00:00Z",
+  "updatedAt": "2027-12-10T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",

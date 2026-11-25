@@ -1,5 +1,6 @@
 ---
 import HeroMotion from './HeroMotion.astro'
+import { versionStaticAssetUrl } from '../../lib/cache'
 import { tinaAttrs } from '../../lib/tinaFieldAttrs'
 
 type HeroSlide = {
@@ -30,7 +31,7 @@ const accessibleHeading = semanticHeading || firstSlide.titleLines.join(' ')
 const firstSourceSlide = sourceSlides[0]
 const heroImages = slides.map((slide) => slide.image)
 const heroSlidesJson = JSON.stringify(slides)
-const heroCssImage = firstSlide.image.replace(/'/g, "\\'")
+const heroCssImage = versionStaticAssetUrl(firstSlide.image).replace(/'/g, "\\'")
 const titleLineField = (index: number) => (index === 0 ? 'headlineLine1' : index === 1 ? 'headlineLine2' : undefined)
 ---
 

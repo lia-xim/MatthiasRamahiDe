@@ -15,8 +15,8 @@
   "coverAlt": "Figuren in gerichtetem, kühlem Licht vor einem nahezu schwarzen Hintergrund",
   "readingTime": 8,
   "seo": {
-    "title": "Low-Key und High-Key Fotografie im Portrait | Matthias Ramahi",
-    "description": "Low-Key- und High-Key-Portraits verständlich erklärt: Lichtführung, Abstand zum Hintergrund, Belichtung und typische Fehler – mit Beispielen aus der Praxis.",
+    "title": "Low-Key vs. High-Key Fotografie: Licht & Beispiele",
+    "description": "Low-Key vs. High-Key im Portrait: Unterschied, Lichtführung, Hintergrundabstand, Belichtung und typische Fehler – anschaulich mit Praxisbeispielen.",
     "focusKeyword": "Low-Key Fotografie",
     "searchIntent": "Informationssuche: Nutzer wollen verstehen, was Low-Key- und High-Key-Fotografie ist und wie Licht, Hintergrund und Belichtung dafür aufgebaut werden.",
     "canonicalUrl": "https://matthiasramahi.de/blog-low-key-high-key-portraits.html",
@@ -32,24 +32,38 @@
   },
   "status": "published",
   "createdAt": "2026-09-24T09:00:00.000Z",
-  "updatedAt": "2026-09-24T09:00:00.000Z",
+  "updatedAt": "2026-11-23T18:30:00.000Z",
   "relatedPages": [
-    {
-      "label": "Portraitfotografie",
-      "href": "/portraitfotografie.html",
-      "seoPurpose": "commercial-support",
-      "rel": "follow",
-      "openInNewTab": false
-    },
     {
       "label": "Portraitfotografie Beleuchtung",
       "href": "/portraitfotografie-beleuchtung.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
+    },
+    {
+      "label": "Schwarz-Weiß Portraitfotografie",
+      "href": "/schwarz-weiss-portrait-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Portraitfotograf Düsseldorf",
+      "href": "/portraitfotografie-duesseldorf.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
     }
   ],
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Low-Key vs. High-Key im Portrait direkt verglichen",
+      "body": "Low-Key (dunkle Tonwerte): Gerichtetes Hauptlicht (Softbox/Beauty Dish) + separates Kanten-/Haarlicht gegen Absaufen vor dunklem Grund\nHigh-Key (helle Tonwerte): Person und weißer Hintergrund getrennt beleuchten, Hintergrund überstrahlen ohne Hautlichter auszufressen\nEinsatzwahl: Low-Key für Charakter, Kunst, Editorial und Musik; High-Key für offene Business-, Team- und helle Profilportraits"
+    },
     {
       "_template": "textBlock",
       "headline": "Zwei Stile, die über Tonwerte entscheiden",
@@ -101,6 +115,39 @@
       "_template": "textBlock",
       "headline": "Typische Fehler",
       "body": "Low-Key wird oft mit Unterbelichtung verwechselt: Das ganze Bild ist dunkel, aber die Augen haben kein Licht, und die Hautpartien wirken schlammig. High-Key wird oft mit Überbelichtung verwechselt: Der Hintergrund ist weiß, aber die Haut hat ebenfalls keine Zeichnung mehr. In beiden Fällen fehlt die klare Trennung zwischen den Bildteilen, die Information tragen, und denen, die Stimmung erzeugen.\n\nEin weiterer Fehler ist die Korrektur im Nachhinein. Ein normal belichtetes Portrait vor einer grauen Wand wird durch einen dunklen Look nicht zu einem echten Low-Key-Bild, weil die Lichtrichtung fehlt. Umgekehrt wird ein Portrait durch nachträgliches Aufhellen nicht zu High-Key, wenn der Hintergrund ungleichmäßig bleibt. Beide Stile entstehen beim Aufbau des Lichts – die Bearbeitung verfeinert sie nur."
+    },
+    {
+      "_template": "linkList",
+      "headline": "Passende Portrait-Seiten & Licht-Ratgeber",
+      "links": [
+        {
+          "label": "Portraitfotografie Beleuchtung: Setups & Lichtformer",
+          "href": "/portraitfotografie-beleuchtung.html"
+        },
+        {
+          "label": "Schwarz-Weiß Portraitfotografie Düsseldorf & NRW",
+          "href": "/schwarz-weiss-portrait-fotografie.html"
+        },
+        {
+          "label": "Portraitfotograf Düsseldorf (Studio & Outdoor)",
+          "href": "/portraitfotografie-duesseldorf.html"
+        },
+        {
+          "label": "Fotoshooting für Männer NRW",
+          "href": "/fotoshooting-maenner.html"
+        },
+        {
+          "label": "Portraitfotografie in Düsseldorf & NRW",
+          "href": "/portraitfotografie.html",
+          "description": "Business-, Künstler- und Charakterportraits mit ruhiger Führung."
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Low-Key- oder High-Key-Portrait planen",
+      "text": "Du willst ein kontrastreiches Low-Key-Portrait oder einen hellen High-Key-Look für Business, Presse oder privat? Im Studio in Düsseldorf planen wir Licht, Hintergrund und Bildsprache gezielt ab 250 €.",
+      "buttonLabel": "Portrait-Shooting anfragen"
     },
     {
       "_template": "faqBlock",

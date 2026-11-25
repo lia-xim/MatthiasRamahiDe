@@ -8,12 +8,19 @@
     "Fotodokumentation",
     "Fahrzeugzustand"
   ],
-  "publishedAt": "2027-01-22T08:00:00.000Z",
+  "publishedAt": "2027-03-23T08:00:00.000Z",
   "excerpt": "Nach einem Autounfall zuerst die Lage sichern. Danach helfen Übersichten, Fahrzeugansichten und scharfe Details, den sichtbaren Zustand geordnet festzuhalten.",
   "coverImage": "/assets/optimized/assets-portfolio-dsc2329-1920.webp",
-  "coverAlt": "Dunkler Sportwagen in einer architektonischen Umgebung; Portfolioaufnahme ohne dargestellten Unfallschaden.",
+  "coverAlt": "Dunkler Sportwagen auf ruhiger Fläche vor moderner Gebäudearchitektur",
   "readingTime": 9,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Unfallschaden am Auto fotografisch dokumentieren: Die wichtigsten Pu",
+      "body": "Kernaussage: Wenn die Situation sicher ist, beginnen Sie mit der Umgebung und den beteiligten Fahrzeugen\nErst die Situation sichern,: Nach einem Verkehrsunfall zählt zuerst die Sicherheit\nMaßstab nur ergänzend und: Ein Maßstab kann bei einer Detailaufnahme die Größe einer sichtbaren Stelle besser einordnen\nPersonen und Kennzeichen nach: Eine private Schadenmeldung und ein öffentliches Portfolio sind unterschiedliche Verwendungen"
+    },
     {
       "_template": "textBlock",
       "headline": "Erst die Situation sichern, dann den Schaden fotografieren",
@@ -31,13 +38,13 @@
       "items": [
         {
           "image": "/assets/optimized/assets-portfolio-dsc2345-1920.webp",
-        "alt": "Orangefarbenes Sportcoupé mit großem Heckflügel und markanter Rückleuchte.",
+          "alt": "Orangefarbenes Sportcoupé mit großem Heckflügel und markanter Rückleuchte.",
           "caption": "Heckansicht eines orangefarbenen Sportwagens; Portfolioaufnahme ohne dargestellten Unfallschaden.",
           "cropIntent": "editorial"
         },
         {
           "image": "/assets/optimized/assets-portfolio-dsc2986-1920.webp",
-        "alt": "Cockpit mit Mercedes-Stern am Lenkrad, breitem Display und Blick auf eine Brücke.",
+          "alt": "Cockpit mit Mercedes-Stern am Lenkrad, breitem Display und Blick auf eine Brücke.",
           "caption": "Blick in ein Automobilcockpit als Beispiel für eine separate Innenraumansicht; kein Unfallfoto.",
           "cropIntent": "editorial"
         }
@@ -93,11 +100,6 @@
           "description": "Hinweise zu Schaulustigen, zum Schutz Betroffener und dazu, Einsatzkräfte nicht zu behindern."
         },
         {
-          "label": "Fahrzeugübergabe fotografisch dokumentieren",
-          "href": "/blog-fahrzeuguebergabe-fotodokumentation-fuhrpark.html",
-          "description": "Wiederholbare Bildfolgen für Übernahme und Rückgabe im Fuhrpark."
-        },
-        {
           "label": "Datenschutz bei Fahrzeugfotos",
           "href": "/blog-fahrzeugfotos-kennzeichen-personen-datenschutz.html",
           "description": "Personen, Kennzeichen und weitere Informationen vor einer Veröffentlichung prüfen."
@@ -108,6 +110,12 @@
           "description": "Leistungsseite für geplante Automobilserien und Fahrzeugaufnahmen."
         }
       ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
     },
     {
       "_template": "faqBlock",
@@ -132,10 +140,10 @@
         {
           "question": "Darf ich die Fotos nachträglich bearbeiten?",
           "answer": "Bewahren Sie die Originaldatei unverändert auf. Für eine Kopie können Sie einen Ausschnitt oder eine Markierung erstellen, wenn das für die Kommunikation hilft. Kennzeichnen Sie die Kopie klar und geben Sie nicht den Eindruck, sie sei das Original."
-      },
-      {
-        "question": "Wie beschrifte ich die Fotos für die Übergabe?",
-        "answer": "Nutzen Sie eine neutrale Vorgangs- oder Fahrzeugkennung, eine laufende Nummer und eine kurze Bezeichnung der Ansicht, zum Beispiel `JJJJMMTT_[Vorgangs-ID]_rechte-Tuer-hinten_001.jpg`. In einer Bildunterschrift können Sie ergänzen, welches Fahrzeug und welcher sichtbare Bereich gezeigt werden und ob die Aufnahme vor oder nach dem Umstellen entstand. Verwenden Sie in Dateinamen, die weitergegeben werden, keine unnötigen Namen oder Kennzeichen."
+        },
+        {
+          "question": "Wie beschrifte ich die Fotos für die Übergabe?",
+          "answer": "Nutzen Sie eine neutrale Vorgangs- oder Fahrzeugkennung, eine laufende Nummer und eine kurze Bezeichnung der Ansicht, zum Beispiel `JJJJMMTT_[Vorgangs-ID]_rechte-Tuer-hinten_001.jpg`. In einer Bildunterschrift können Sie ergänzen, welches Fahrzeug und welcher sichtbare Bereich gezeigt werden und ob die Aufnahme vor oder nach dem Umstellen entstand. Verwenden Sie in Dateinamen, die weitergegeben werden, keine unnötigen Namen oder Kennzeichen."
         }
       ]
     }
@@ -158,7 +166,7 @@
   },
   "status": "scheduled",
   "createdAt": "2026-11-03T16:26:05Z",
-  "updatedAt": "2027-01-22T08:00:00.000Z",
+  "updatedAt": "2027-03-23T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
@@ -168,16 +176,16 @@
       "openInNewTab": false
     },
     {
-      "label": "Fahrzeugübergabe fotografisch dokumentieren",
-      "href": "/blog-fahrzeuguebergabe-fotodokumentation-fuhrpark.html",
+      "label": "Datenschutz bei Fahrzeugfotos",
+      "href": "/blog-fahrzeugfotos-kennzeichen-personen-datenschutz.html",
       "seoPurpose": "related-editorial",
       "rel": "follow",
       "openInNewTab": false
     },
     {
-      "label": "Datenschutz bei Fahrzeugfotos",
-      "href": "/blog-fahrzeugfotos-kennzeichen-personen-datenschutz.html",
-      "seoPurpose": "related-editorial",
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
     }

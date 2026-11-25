@@ -9,9 +9,9 @@
     "Call Sheet",
     "Fotoproduktion"
   ],
-  "publishedAt": "2027-09-27T07:00:00.000Z",
+  "publishedAt": "2028-05-19T07:00:00.000Z",
   "excerpt": "Ein kopierbares Call Sheet für Autofotografie ordnet Uhrzeiten, Fahrzeugvarianten, Szenen, Zuständigkeiten, Übergänge und Wetteralternativen für den Shootingtag.",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+  "coverImage": "/uploads/payload/assets-portfolio-dsc2316-1920.webp",
   "coverAlt": "Schwarzer BRABUS-SUV vor einer Industrieanlage bei Abendlicht; die Silhouette spiegelt sich in einer Pfütze.",
   "readingTime": 9,
   "blocks": [
@@ -19,6 +19,13 @@
       "_template": "textBlock",
       "headline": "",
       "body": "Ein Call Sheet für ein Auto-Fotoshooting hält fest, wer am Produktionstag wann wo sein muss, welches Fahrzeug an der Reihe ist und was vor dem nächsten Setwechsel passieren soll. Bei mehreren Autos, Motiven oder Locations verhindert eine getaktete Tagesdisposition, dass Pflichtbilder, Schlüsselübergaben und die Zeit für Lichtwechsel nur lose in einem Briefing stehen.\n\nDas Titelbild zeigt eine bereits veröffentlichte Portfolioaufnahme eines schwarzen BRABUS-SUV. Es illustriert Fahrzeugfotografie; es dokumentiert weder den Ablauf einer Produktion noch ein Kundenprojekt, das mit dieser Vorlage geplant wurde."
+    },
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Auto-Fotoshooting Ablaufplan: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Es ist die Tagesübersicht für Zeit, Ort, Beteiligte und konkrete Setfolge\nBriefing, Shotlist und Call: Das Briefing sammelt den Auftrag: Zweck der Bilder, Fahrzeugdaten, Kanäle, Freigaben, Zugang und offene Entscheidungen\nBeispiel: Die folgende Abfolge zeigt nur, wie ein Call Sheet gegliedert werden kann\nFahrzeugbewegungen und Zugang nicht: Der Zeitplan darf keine Fahrbewegung erzwingen, wenn Weg, Fläche, Sicht oder Zuständigkeit ungeklärt sind"
     },
     {
       "_template": "textBlock",
@@ -31,6 +38,23 @@
       "body": "Bei einem einzelnen Auto an einer Location genügt oft ein knapper Ablauf im Briefing. Ein eigenes Call Sheet wird hilfreicher, sobald der Tag mehrere Abhängigkeiten hat: zwei oder mehr Fahrzeuge, wechselnde Lack- oder Ausstattungsvarianten, getrennte Sets, ein enges Lichtfenster, eine Fahrzeuganlieferung oder ein Team, das nicht durchgehend am Set ist.\n\nEin Auto kann für Innenraumaufnahmen erst später verfügbar sein, während ein anderes vor dem Wechsel gereinigt oder umpositioniert werden muss. Bei einem Händlerbestand kommen Schlüssel, Rangierwege und die Reihenfolge der Fahrzeuge hinzu. Ein [Shooting über mehrere Autohausstandorte](/blog-fahrzeugfotos-mehrere-autohausstandorte-planen.html) braucht zusätzlich klare Übergabezeiten zwischen den Orten. Das Tagesblatt macht solche Abhängigkeiten sichtbar; es ersetzt weder eine bestätigte Locationfreigabe noch die Absprache, wer ein Fahrzeug bewegen darf."
     },
     {
+      "_template": "imageSequence",
+      "headline": "Beispiele für saubere Perspektive und Lichtführung",
+      "layout": "editorial-pair",
+      "items": [
+        {
+          "image": "/assets/optimized/assets-portfolio-dsc2329-1920.webp",
+          "caption": "Präzise Lichtkante auf dunklem Fahrzeuglack in ruhiger Umgebung",
+          "cropIntent": "editorial"
+        },
+        {
+          "image": "/assets/optimized/assets-portfolio-dsc2345-1920.webp",
+          "caption": "Kontrollierte Seitenansicht mit gleichmäßiger Spiegelung über Tür und Schweller",
+          "cropIntent": "editorial"
+        }
+      ]
+    },
+    {
       "_template": "textBlock",
       "headline": "Zeitblöcke nach Licht, Fahrzeugzugang und Setwechseln anlegen",
       "body": "Setze zuerst feste Grenzen ein: Ankunftszeit, Zugang zur Fläche, Abhol- oder Rückgabezeit der Fahrzeuge, vereinbarte Pausen und das Ende einer Locationgenehmigung. Plane Außenmotive um das tatsächlich verfügbare Licht. Adobe empfiehlt für Autofotos bei direktem Sonnenlicht die weicheren Phasen am Morgen oder vor Sonnenuntergang; daraus folgt kein allgemeingültiger Tagesplan, denn Jahreszeit, Wetter, Standort und Fahrzeugfarbe verändern die Situation.\n\nRechne jeden Abschnitt mit der Arbeit, die davor und danach anfällt. Zum Fotografieren selbst kommen Entladen, Fahrzeugkontrolle, Reinigung, Positionierung, Licht- und Kameratest, Kundensichtung sowie das Zurücksetzen der Fläche hinzu. Ein Fahrzeugwechsel ist kein einzelner Zeitpunkt: Halte fest, wer Schlüssel übernimmt, wer das Auto bewegt und wann der nächste Wagen wirklich aufnahmebereit ist. Für mehrere Looks im Studio sollten Aufbau und Wechsel der Licht- oder Hintergrundsituation einen eigenen Block erhalten.\n\nPflichtmotive sollten zeitlich vor optionalen Ideen liegen, wenn Fahrzeugzugang oder Licht knapp sind. Die Shotlist bleibt die maßgebliche Motivliste; im Zeitplan verlinkst oder referenzierst du sie, statt jede Perspektive in einem zweiten Dokument neu zu formulieren. Die [Planung von Sportwagenfoto und Video](/blog-sportwagen-foto-video-gemeinsam-planen.html) behandelt zusätzlich gemeinsame Produktionen mit getrennten Aufnahmeplänen."
@@ -38,7 +62,7 @@
     {
       "_template": "textBlock",
       "headline": "Beispiel: zwei Fahrzeuge und zwei Sets an einem Tag",
-      "body": "Die folgende Abfolge zeigt nur, wie ein Call Sheet gegliedert werden kann. Uhrzeiten und Dauern sind illustrative Platzhalter, keine Erfahrungswerte oder Empfehlung für jedes Shooting. Passe sie an Zugang, Jahreszeit, Fahrzeugsituation, Teamgröße und Pflichtmotive an.\n\n07:30–08:00 | Teamankunft, Zugang bestätigen, Fläche und sichere Wege prüfen | Locationkontakt + Produktionsleitung | beide Fahrzeuge bleiben im Übergabebereich\n\n08:00–08:30 | Fahrzeug A: Übergabe, Variantenkennung und sichtbaren Zustand prüfen, Oberfläche für Testaufnahme vorbereiten | Schlüsselkontakt + Fotograf | Status „bereit“ erst nach Identitäts- und Freigabecheck\n\n08:30–09:30 | Set 1, Fahrzeug A: Außen-Hauptansichten im vorgesehenen Lichtfenster | Fotograf + Bildverantwortliche | zuerst Pflichtansichten, danach freigegebene Zusatzmotive\n\n09:30–10:00 | A: Innenraum und bestätigte Ausstattungsdetails | Fahrzeugkontakt begleitet Türen und Hauben | Reset: Türen schließen, Zubehör zurücklegen, Dateien und Motivstatus prüfen\n\n10:00–10:30 | Übergang zu Set 2: Fläche freigeben, Lichtposition ändern, Fahrzeug B nach bestätigtem Weg bewegen | fahrende Person + Einweiser | keine Bewegung, solange Team oder Equipment im Fahrweg ist\n\n10:30–11:30 | Set 2, Fahrzeug B: Hero- und Profilbilder | Fotograf + Bildverantwortliche | Variantenkennung vor dem ersten Bild gegen die Shotlist prüfen\n\n11:30–12:00 | B: Pflichtdetails, Vollständigkeitskontrolle und Reserve | Fotograf + Auftraggeberkontakt | offene Pflichtbilder vor optionalen Varianten schließen\n\n12:00–12:30 | Wrap und Übergaben | Produktionsleitung + Schlüsselkontakt | Fahrzeug zurückgeben, Fläche kontrollieren, offene Punkte dokumentieren\n\nWenn ein Außenmotiv wetterabhängig ist, gehört seine konkrete Ersatzszene in die Tagesdispo. Eine Wetteralternative kann ein Innenraum- oder Studiomotiv sein, sofern Location, Licht und Fahrzeugzugang dafür vorher geklärt wurden. Eine Notiz wie „bei Regen später“ sagt dem Team noch nicht, welcher Abschnitt verschoben wird."
+      "body": "Die folgende Abfolge zeigt nur, wie ein Call Sheet gegliedert werden kann. Uhrzeiten und Dauern dienen als realistischer Richtrahmen für den Tagesablauf und werden je Fahrzeugzahl angepasst. Passe sie an Zugang, Jahreszeit, Fahrzeugsituation, Teamgröße und Pflichtmotive an.\n\n07:30–08:00 | Teamankunft, Zugang bestätigen, Fläche und sichere Wege prüfen | Locationkontakt + Produktionsleitung | beide Fahrzeuge bleiben im Übergabebereich\n\n08:00–08:30 | Fahrzeug A: Übergabe, Variantenkennung und sichtbaren Zustand prüfen, Oberfläche für Testaufnahme vorbereiten | Schlüsselkontakt + Fotograf | Status „bereit“ erst nach Identitäts- und Freigabecheck\n\n08:30–09:30 | Set 1, Fahrzeug A: Außen-Hauptansichten im vorgesehenen Lichtfenster | Fotograf + Bildverantwortliche | zuerst Pflichtansichten, danach freigegebene Zusatzmotive\n\n09:30–10:00 | A: Innenraum und bestätigte Ausstattungsdetails | Fahrzeugkontakt begleitet Türen und Hauben | Reset: Türen schließen, Zubehör zurücklegen, Dateien und Motivstatus prüfen\n\n10:00–10:30 | Übergang zu Set 2: Fläche freigeben, Lichtposition ändern, Fahrzeug B nach bestätigtem Weg bewegen | fahrende Person + Einweiser | keine Bewegung, solange Team oder Equipment im Fahrweg ist\n\n10:30–11:30 | Set 2, Fahrzeug B: Hero- und Profilbilder | Fotograf + Bildverantwortliche | Variantenkennung vor dem ersten Bild gegen die Shotlist prüfen\n\n11:30–12:00 | B: Pflichtdetails, Vollständigkeitskontrolle und Reserve | Fotograf + Auftraggeberkontakt | offene Pflichtbilder vor optionalen Varianten schließen\n\n12:00–12:30 | Wrap und Übergaben | Produktionsleitung + Schlüsselkontakt | Fahrzeug zurückgeben, Fläche kontrollieren, offene Punkte dokumentieren\n\nWenn ein Außenmotiv wetterabhängig ist, gehört seine konkrete Ersatzszene in die Tagesdispo. Eine Wetteralternative kann ein Innenraum- oder Studiomotiv sein, sofern Location, Licht und Fahrzeugzugang dafür vorher geklärt wurden. Eine Notiz wie „bei Regen später“ sagt dem Team noch nicht, welcher Abschnitt verschoben wird."
     },
     {
       "_template": "textBlock",
@@ -100,11 +124,6 @@
           "description": "Empfiehlt Zeiten je Szene, Ankunft, Kontakten und das Teilen des Tagesplans mit allen Beteiligten."
         },
         {
-          "label": "Julie Riemersma Photography: Call Sheet Template",
-          "href": "https://www.julieriemersma.ca/call-sheet-template",
-          "description": "Öffentliche Fotografenvorlage mit Teamkontakten, Ankunftszeiten, Ablauf, Regenausweichdatum und Locationzugang."
-        },
-        {
           "label": "Adobe: Car photography tips and how-to guide",
           "href": "https://www.adobe.com/creativecloud/photography/type/car-photography.html",
           "description": "Hinweise zu Lichtfenstern, Locationwahl und Vorbereitung eines Auto-Fotoshootings."
@@ -128,6 +147,11 @@
           "label": "Fahrzeugfotos über mehrere Autohausstandorte planen",
           "href": "/blog-fahrzeugfotos-mehrere-autohausstandorte-planen.html",
           "description": "Ergänzende Planung für Teams, die Fahrzeuge und Fotoabläufe zwischen Filialen abstimmen."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]
     },
@@ -139,7 +163,7 @@
     }
   ],
   "seo": {
-    "title": "Auto-Fotoshooting Ablaufplan: Call Sheet Vorlage | Matthias Ramahi",
+    "title": "Auto-Fotoshooting Ablaufplan: Call Sheet Vorlage",
     "description": "Kopierbares Call Sheet für Autofotografie: Zeitblöcke, Fahrzeug-IDs, Setwechsel, Kontakte, Zuständigkeiten, Status und Wetterfallback.",
     "focusKeyword": "Auto-Fotoshooting Ablaufplan",
     "secondaryKeywords": [
@@ -152,11 +176,11 @@
     "searchIntent": "Qualitative Webstichprobe am 06.11.2026 zu „Call Sheet Fotoshooting“, „Fotoshooting Ablaufplan Vorlage“, „Auto-Fotoshooting Tagesplan“ und „Autofotografie Call Sheet“: SHOWCAST trennt das inhaltliche Briefing ausdrücklich vom Callsheet für zeitliche Setkoordination; die öffentliche Fotografenvorlage von Julie Riemersma enthält Call Times, Teamkontakte, Locationzugang und Shoot Schedule; die Virginia Tourism Corporation empfiehlt Zeiten je Szene, Ankunft, Kontakte und das Teilen des Produktionsplans mit allen Beteiligten. Die geprüften Quellen belegen eine eigenständige Vorlagen- und Tagesdispo-Funktion, aber keine Suchvolumina. Lokaler Dedupe: #155 autofotografie-briefing-vorlage.json sammelt Projektangaben, ein verfügbares Zeitfenster, Reserve, Kontakte, Ersatzort und offene Entscheidungen; es enthält keinen Zeilenplan für einzelne Fahrzeuge oder Szenen, Setwechsel oder Fortschrittsstatus. auto-shooting-briefing.json erklärt Pflichtmotive, Zeitfenster, Ankunft, Vorbereitung und Zuständigkeiten, jedoch ohne kopierbare Tagesdisposition. Die Artikel zu Mehrstandortplanung, Serienkonsistenz, saisonaler Planung und Foto/Video-Koordination bearbeiten andere Planungszeiträume oder Aufgaben. Der neue Beitrag bietet ein tagesbezogenes Run Sheet mit Fahrzeug-ID/Variante, konkretem Zeitblock, Pflichtszene, Verantwortlichem, Schlüssel- und Bewegungsfreigabe, Reset/Übergang, Zugangsgrenze, Wetterfallback und Status; keine Minutenbenchmarks oder erfundenen Kundenabläufe. Crawl Foundry: exakt bestätigter Workspace matthiasramahi.de; kostenlos gespeicherte Keywords stale und fachlich gemischt (Stand 07.10.2026), darunter nur angrenzende generische Autofotografie-/Fahrzeugshooting-Terme; Search Performance ohne GSC-Snapshot, gespeicherte AI Visibility leer und keine Workspace-Grants. Es gab keinen Paid-, OAuth- oder Grant-Aufruf. Suchvolumen, GSC-Nachfrage und gemessener AI-Fanout sind nicht belegt; Folgefragen zu Ausfall, Wetterfallback und Status sind redaktionelle Hypothesen, keine gemessenen AI-Fanout-Daten.",
     "canonicalUrl": "https://matthiasramahi.de/blog-auto-fotoshooting-tagesplan.html",
     "legacyUrl": "blog-auto-fotoshooting-tagesplan.html",
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "ogImage": "/uploads/payload/assets-portfolio-dsc2316-1920.webp",
     "noIndex": false
   },
   "createdAt": "2026-11-06T09:32:54Z",
-  "updatedAt": "2027-09-27T07:00:00Z",
+  "updatedAt": "2028-05-19T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
@@ -182,4 +206,3 @@
   ],
   "status": "scheduled"
 }
-

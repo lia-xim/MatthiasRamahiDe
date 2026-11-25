@@ -9,12 +9,19 @@
     "Metadaten",
     "Datenschutz"
   ],
-  "publishedAt": "2027-05-10T07:00:00.000Z",
+  "publishedAt": "2027-09-24T07:00:00.000Z",
   "excerpt": "Smartphone und Kamera können den Aufnahmeort in einer Bilddatei speichern. So prüfst du GPS-Metadaten von Autofotos, exportierst eine separate Version ohne Standort und kontrollierst die Datei vor dem Teilen.",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+  "coverImage": "/uploads/payload/20250418-DSC00660.webp",
   "coverAlt": "Dunkler SUV in einer abendlichen Umgebung; Portfolioaufnahme zur Fahrzeugfotografie",
   "readingTime": 8,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "GPS-Daten aus Fotos entfernen: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Daraus lässt sich keine allgemeine Regel ableiten\nEin Autofoto kann mehr: Ein Foto zeigt ein Auto, einen Stellplatz oder einen Ausschnitt der Umgebung\n3. Eine separate Version: Für einen klaren Übergabeschritt eignet sich ein Export in einen eigenen Ausgabeordner\nKünftige Aufnahmen ohne Standortdaten: Wenn du den Aufnahmeort für deine Fotos nicht benötigst, kannst du die Standorterfassung in den Kameraeinstellungen deaktivieren"
+    },
     {
       "_template": "textBlock",
       "headline": "Ein Autofoto kann mehr verraten als seine sichtbaren Bildinhalte",
@@ -68,6 +75,12 @@
       "_template": "textBlock",
       "headline": "Künftige Aufnahmen ohne Standortdaten vorbereiten",
       "body": "Wenn du den Aufnahmeort für deine Fotos nicht benötigst, kannst du die Standorterfassung in den Kameraeinstellungen deaktivieren. Apple dokumentiert für iPhone und iPad den Weg über „Einstellungen“ > „Datenschutz & Sicherheit“ > „Ortungsdienste“ > „Kamera“. Bei anderen Geräten und Kameras unterscheiden sich Menü und Wirkung; prüfe die Anleitung des jeweiligen Herstellers. Die Einstellung für neue Aufnahmen bereinigt keine älteren Dateien, und eine Freigabeoption kann nur den gerade gewählten Teilvorgang betreffen.\n\nEine wiederholbare Routine verhindert, dass du dich auf eine einzelne App oder einen Plattformablauf verlässt: Originale behalten, eine Ausgabe ohne Standort erstellen, diese Datei kontrollieren und anschließend sichtbare Ortsmerkmale prüfen. Für professionelle Fahrzeugserien lässt sich dieser Ausgabeschritt auch in die Dateibenennung und Übergabe aufnehmen. So weiß die Person, die das Material veröffentlicht, welche Version für diesen Zweck vorgesehen ist."
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
     },
     {
       "_template": "faqBlock",
@@ -125,6 +138,11 @@
           "label": "Gebrauchtwagen für ein Online-Inserat fotografieren",
           "href": "/blog-gebrauchtwagen-fuer-online-inserat-fotografieren.html",
           "description": "Ratgeber zu Motivwahl und Bildfolge für private Fahrzeugangebote."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]
     }
@@ -142,12 +160,12 @@
     "searchIntent": "Praktische Suche: Vor dem Teilen von Autofotos Standortmetadaten prüfen und entfernen, ohne sichtbare Ortsmerkmale damit zu verwechseln.",
     "canonicalUrl": "https://matthiasramahi.de/blog-gps-daten-aus-autofotos-entfernen.html",
     "legacyUrl": "blog-gps-daten-aus-autofotos-entfernen.html",
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "ogImage": "/uploads/payload/20250418-DSC00660.webp",
     "noIndex": false
   },
   "status": "scheduled",
   "createdAt": "2026-11-03T17:00:00Z",
-  "updatedAt": "2027-05-10T07:00:00.000Z",
+  "updatedAt": "2027-09-24T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",

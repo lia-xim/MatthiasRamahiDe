@@ -1,12 +1,32 @@
 ---
 import HeroMotion from './HeroMotion.astro'
 import ContactSlot from '../ContactSlot.astro'
+import NativeFamilyFaq from './NativeFamilyFaq.astro'
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import { getBySlug, type PayloadDoc } from '../../lib/payload'
 
 const legacyFile = 'werbetechnik-duesseldorf.html'
 const providedDoc = Astro.props.doc as PayloadDoc | undefined
 const doc = providedDoc || (await getBySlug('service-pages', 'werbetechnik-duesseldorf', { depth: 2 }))
+
+const werbeFaq = [
+  {
+    q: 'Welche Werbetechnik-Projekte werden in Düsseldorf und NRW umgesetzt?',
+    a: 'Schaufenster-Installationen, Pop-up-Flächen, Brand-Booths, Promotion-Displays, LED-Lichtwerbung, Folierungen sowie dreidimensionale Sonderanfertigungen für Retail, Showrooms und Events.',
+  },
+  {
+    q: 'Wie wird vorab geprüft, ob der Markenauftritt zur Fläche passt?',
+    a: 'Vor der Fertigung entsteht eine Visualisierung direkt am Foto des Schaufensters oder Standorts. Material, Größenverhältnisse und Lesbarkeit werden am Bild abgestimmt, bevor produziert wird.',
+  },
+  {
+    q: 'Werden Produktion und Vor-Ort-Montage komplett organisiert?',
+    a: 'Ja. Über erfahrene Partnerwerkstätten werden Druck, Konfektionierung, Lieferung und fachgerechte Montage im Rheinland und auf Anfrage deutschlandweit koordiniert.',
+  },
+  {
+    q: 'Lassen sich Werbetechnik und Großformatdruck kombinieren?',
+    a: 'Ja. Schaufensterfolien, Messebanner, Showroom-Wände und dreidimensionale Aufbauten greifen direkt mit Großformatdruck und Fine-Art-Wandbildern ineinander.',
+  },
+]
 
 // Meta-Description explizit setzen: die Prod-CMS-doc.seo.description trägt noch die alte
 // Auto-/Schilder-Beschreibung und hätte sonst Vorrang vor der Chrome-Description.
@@ -117,7 +137,10 @@ const heroSlidesJson = JSON.stringify(heroSlides)
           </div>
           <p class="wt-flow__lead">
             Ein Markenauftritt wirkt nur, wenn alles sitzt. Vom ersten Entwurf bis zum Aufbau vor Ort: Visualisierung, Materialwahl und
-            präzise Montage — Folie genauso wie dreidimensionale Sonderanfertigungen.
+            präzise Montage — Folie genauso wie dreidimensionale Sonderanfertigungen. Ergänzend greifen
+            <a href="/grossformatdruck-duesseldorf.html">Großformatdruck</a>,
+            <a href="/fotolabor-druck-duesseldorf.html">Fotolabor &amp; Fine-Art-Druck</a> und die
+            <a href="/leistungen.html">Übersicht weiterer Dienstleistungen</a> direkt ineinander.
           </p>
         </div>
         <ol class="wt-flow__track" role="list">
@@ -130,6 +153,8 @@ const heroSlidesJson = JSON.stringify(heroSlides)
         </ol>
       </div>
     </section>
+
+    <NativeFamilyFaq faq={werbeFaq} pageUrl={`https://matthiasramahi.de/${legacyFile}`} theme="dark" />
 
     <section class="sp-cta" data-header-theme="light" aria-label="Anfrage">
       <div class="sp-cta__inner">

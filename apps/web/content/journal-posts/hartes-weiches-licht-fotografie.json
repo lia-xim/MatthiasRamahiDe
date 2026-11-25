@@ -36,9 +36,9 @@
     "migrationStatus": "new",
     "renderSource": "structured-astro"
   },
-  "status": "scheduled",
+  "status": "draft",
   "createdAt": "2026-11-07T15:00:00.000Z",
-  "updatedAt": "2027-10-29T07:00:00.000Z",
+  "updatedAt": "2026-11-23T18:30:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
@@ -66,7 +66,7 @@
     {
       "_template": "textBlock",
       "headline": "Hart oder weich beschreibt den Schatten, nicht die Helligkeit",
-    "body": "Ein helles Foto kann mit hartem Licht aufgenommen sein, ein dunkles mit weichem. Entscheidend ist zunächst, wie abrupt eine beleuchtete Fläche in den Schatten übergeht. Bei hartem Licht ist die Kante klar und der Übergang schmal. Bei weichem Licht verteilt sich der Übergang über eine breitere Zone. Die Helligkeit des ganzen Bildes sagt darüber wenig aus.\n\nDas ist hilfreich, weil es die Entscheidung vom Zubehör löst. Nicht eine Softbox-Bezeichnung oder die Blitzleistung macht das Licht weich. Ausschlaggebend ist, wie groß die tatsächlich leuchtende Fläche vom Motiv aus gesehen erscheint. Das [Gossen-Metrawatt-Compendium zur Belichtungsmessung](https://www.gossenmetrawattusa.com/media/87669/exposure-metering-compendium.pdf) beschreibt die Lichtqualität entsprechend über das Verhältnis der abstrahlenden Fläche zur Größe des Motivs und über die Schatten, die sie erzeugt. Die American Society of Cinematographers nennt die Breite dieses Übergangs „shadow edge transfer“ und erklärt sie über die Größe der Quelle im Verhältnis zum Abstand."
+      "body": "Ein helles Foto kann mit hartem Licht aufgenommen sein, ein dunkles mit weichem. Entscheidend ist zunächst, wie abrupt eine beleuchtete Fläche in den Schatten übergeht. Bei hartem Licht ist die Kante klar und der Übergang schmal. Bei weichem Licht verteilt sich der Übergang über eine breitere Zone. Die Helligkeit des ganzen Bildes sagt darüber wenig aus.\n\nDas ist hilfreich, weil es die Entscheidung vom Zubehör löst. Nicht eine Softbox-Bezeichnung oder die Blitzleistung macht das Licht weich. Ausschlaggebend ist, wie groß die tatsächlich leuchtende Fläche vom Motiv aus gesehen erscheint. Das [Gossen-Metrawatt-Compendium zur Belichtungsmessung](https://www.gossenmetrawattusa.com/media/87669/exposure-metering-compendium.pdf) beschreibt die Lichtqualität entsprechend über das Verhältnis der abstrahlenden Fläche zur Größe des Motivs und über die Schatten, die sie erzeugt. Die American Society of Cinematographers nennt die Breite dieses Übergangs „shadow edge transfer“ und erklärt sie über die Größe der Quelle im Verhältnis zum Abstand."
     },
     {
       "_template": "textBlock",
@@ -91,12 +91,12 @@
     {
       "_template": "textBlock",
       "headline": "Bei Fahrzeugen wird die Quelle zur sichtbaren Reflexion",
-    "body": "Autolack ist glänzend und spiegelt Umgebung und Lichtformer. Eine große, gleichmäßige Fläche kann eine breite, ruhige Reflexion zeichnen, die der Karosserie Form gibt. Eine kleine harte Quelle kann dagegen einen punktuellen Glanz erzeugen. Das heißt nicht, dass weiches Licht immer besser aussieht: Eine klare, kontrollierte Kante kann eine Sicke, einen Rundbogen oder die Kontur eines dunklen Fahrzeugs deutlicher zeigen.\n\nBei spiegelndem Lack siehst du nicht nur die Lampe, sondern ihr Spiegelbild in der Karosserie. Beobachte vom Kamerastandpunkt aus, welche Flächen auf Haube, Dach und Türen erscheinen; ändere Licht- und Kamerawinkel getrennt und prüfe, ob eine glatte, gewünschte Lichtlinie entsteht. Die [ASC-Einführung zu Fahrzeugreflexionen](https://theasc.com/post/shot-craft/car-talk/) beschreibt große, gleichmäßige Reflexionsflächen und das gezielte Abschatten unerwünschter Spiegelungen. Die Beiträge zu [Lichtstreifen auf Autolack](/blog-lichtstreifen-autolack-softboxen-positionieren.html) und zum [Fotografieren bei bedecktem Himmel](/blog-auto-bei-bedecktem-himmel-fotografieren.html) vertiefen die praktische Umsetzung."
+      "body": "Autolack ist glänzend und spiegelt Umgebung und Lichtformer. Eine große, gleichmäßige Fläche kann eine breite, ruhige Reflexion zeichnen, die der Karosserie Form gibt. Eine kleine harte Quelle kann dagegen einen punktuellen Glanz erzeugen. Das heißt nicht, dass weiches Licht immer besser aussieht: Eine klare, kontrollierte Kante kann eine Sicke, einen Rundbogen oder die Kontur eines dunklen Fahrzeugs deutlicher zeigen.\n\nBei spiegelndem Lack siehst du nicht nur die Lampe, sondern ihr Spiegelbild in der Karosserie. Beobachte vom Kamerastandpunkt aus, welche Flächen auf Haube, Dach und Türen erscheinen; ändere Licht- und Kamerawinkel getrennt und prüfe, ob eine glatte, gewünschte Lichtlinie entsteht. Die [ASC-Einführung zu Fahrzeugreflexionen](https://theasc.com/post/shot-craft/car-talk/) beschreibt große, gleichmäßige Reflexionsflächen und das gezielte Abschatten unerwünschter Spiegelungen. Die Beiträge zu [Lichtstreifen auf Autolack](/blog-lichtstreifen-autolack-softboxen-positionieren.html) und zum [Fotografieren bei bedecktem Himmel](/blog-auto-bei-bedecktem-himmel-fotografieren.html) vertiefen die praktische Umsetzung."
     },
     {
       "_template": "textBlock",
       "headline": "Ein kurzer Vergleichstest ohne Geräte-Rangliste",
-    "body": "Für einen sauberen Vergleich brauchst du ein kleines Motiv mit klarer Kante und eine einzelne Lampe. Stelle die Quelle seitlich auf; fixiere Kamera, Motiv, Lichtrichtung und Weißabgleich.\n\n1. Beginne mit einer kleinen, harten Quelle. Fotografiere die Schattenkante und notiere den Abstand.\n2. Bewege dieselbe Quelle weiter weg, ohne den Winkel wesentlich zu ändern. Passe bei einem Blitz die Leistung so an, dass die Belichtung ungefähr vergleichbar bleibt. Vergleiche danach die Übergangsbreite und den Lichtabfall über die Motortiefe.\n3. Stelle die Quelle zurück an die erste Position und vergrößere nun ihre wirksame Fläche: Nutze ein größeres Diffusionsmaterial oder beleuchte eine ausreichend große neutrale Reflexionsfläche. Ein Diffusor, der kaum größer als die Lampe ist und direkt davor sitzt, ändert die Quellengröße nur wenig.\n4. Gleiche die Helligkeit erneut an und vergleiche die harte Schattenkante mit dem breiteren Übergang. Eine Aufhellung kann den Schatten heller machen, ohne seine Kante weicher zu machen.\n5. Prüfe anschließend eine glänzende Fahrzeugfläche separat: Beurteile dort die Breite und Form der gespiegelten Lichtfläche, nicht nur eine Schattenkante.\n\nFür die Sicherheit: Fahrzeug nur im Stillstand und mit Erlaubnis als Testmotiv nutzen. Stative und Rahmen nach Geräteanleitung sichern und beschweren, Kabel aus Lauf- und Rangierwegen nehmen und große Flächen bei Wind abbauen. Leuchten vor dem Umbau ausschalten und heiße Geräte abkühlen lassen. Die [ASC-Erklärung zur Lichtqualität](https://theasc.com/article/shot-craft-light-quality-101/) und Profotos [Einführung in hartes und weiches Blitzlicht](https://www.profoto.com/fr/en/still-photography/profoto-stories/flash-photography-for-beginners-profoto-a1x) stützen die Unterscheidung zwischen Schattenübergang und Lichtstärke sowie die Rolle der wirksamen Quellengröße."
+      "body": "Für einen sauberen Vergleich brauchst du ein kleines Motiv mit klarer Kante und eine einzelne Lampe. Stelle die Quelle seitlich auf; fixiere Kamera, Motiv, Lichtrichtung und Weißabgleich.\n\n1. Beginne mit einer kleinen, harten Quelle. Fotografiere die Schattenkante und notiere den Abstand.\n2. Bewege dieselbe Quelle weiter weg, ohne den Winkel wesentlich zu ändern. Passe bei einem Blitz die Leistung so an, dass die Belichtung ungefähr vergleichbar bleibt. Vergleiche danach die Übergangsbreite und den Lichtabfall über die Motortiefe.\n3. Stelle die Quelle zurück an die erste Position und vergrößere nun ihre wirksame Fläche: Nutze ein größeres Diffusionsmaterial oder beleuchte eine ausreichend große neutrale Reflexionsfläche. Ein Diffusor, der kaum größer als die Lampe ist und direkt davor sitzt, ändert die Quellengröße nur wenig.\n4. Gleiche die Helligkeit erneut an und vergleiche die harte Schattenkante mit dem breiteren Übergang. Eine Aufhellung kann den Schatten heller machen, ohne seine Kante weicher zu machen.\n5. Prüfe anschließend eine glänzende Fahrzeugfläche separat: Beurteile dort die Breite und Form der gespiegelten Lichtfläche, nicht nur eine Schattenkante.\n\nFür die Sicherheit: Fahrzeug nur im Stillstand und mit Erlaubnis als Testmotiv nutzen. Stative und Rahmen nach Geräteanleitung sichern und beschweren, Kabel aus Lauf- und Rangierwegen nehmen und große Flächen bei Wind abbauen. Leuchten vor dem Umbau ausschalten und heiße Geräte abkühlen lassen. Die [ASC-Erklärung zur Lichtqualität](https://theasc.com/article/shot-craft-light-quality-101/) und Profotos [Einführung in hartes und weiches Blitzlicht](https://www.profoto.com/fr/en/still-photography/profoto-stories/flash-photography-for-beginners-profoto-a1x) stützen die Unterscheidung zwischen Schattenübergang und Lichtstärke sowie die Rolle der wirksamen Quellengröße."
     },
     {
       "_template": "textBlock",
@@ -140,19 +140,19 @@
           "description": "Hersteller-Lernbeitrag zu Schattenübergang, Spitzlichtern, Quellengröße, Distanz und Diffusion."
         },
         {
-        "label": "American Cinematographer: Shot Craft – Light Quality 101",
-        "href": "https://theasc.com/article/shot-craft-light-quality-101/",
-        "description": "Fachbeitrag zur Breite der Schattenkante, scheinbaren Quellengröße, Diffusion und Grenzen des Punktlichtmodells."
-      },
-      {
-        "label": "American Cinematographer: Car Talk – Employing Reflections in Lighting Automobiles",
-        "href": "https://theasc.com/post/shot-craft/car-talk/",
-        "description": "Praxis zur Gestaltung großer Reflexionsflächen und zum Abschatten unerwünschter Spiegelungen an Autos."
-      },
-      {
-        "label": "Profoto: Beginner’s Guide to Flash Photography – Soft and Hard Light",
-        "href": "https://www.profoto.com/fr/en/still-photography/profoto-stories/flash-photography-for-beginners-profoto-a1x",
-        "description": "Herstellererklärung mit Beispielen zu breiten Schattenübergängen, größerer Lichtquelle und indirektem Blitz."
+          "label": "American Cinematographer: Shot Craft – Light Quality 101",
+          "href": "https://theasc.com/article/shot-craft-light-quality-101/",
+          "description": "Fachbeitrag zur Breite der Schattenkante, scheinbaren Quellengröße, Diffusion und Grenzen des Punktlichtmodells."
+        },
+        {
+          "label": "American Cinematographer: Car Talk – Employing Reflections in Lighting Automobiles",
+          "href": "https://theasc.com/post/shot-craft/car-talk/",
+          "description": "Praxis zur Gestaltung großer Reflexionsflächen und zum Abschatten unerwünschter Spiegelungen an Autos."
+        },
+        {
+          "label": "Profoto: Beginner’s Guide to Flash Photography – Soft and Hard Light",
+          "href": "https://www.profoto.com/fr/en/still-photography/profoto-stories/flash-photography-for-beginners-profoto-a1x",
+          "description": "Herstellererklärung mit Beispielen zu breiten Schattenübergängen, größerer Lichtquelle und indirektem Blitz."
         }
       ]
     }

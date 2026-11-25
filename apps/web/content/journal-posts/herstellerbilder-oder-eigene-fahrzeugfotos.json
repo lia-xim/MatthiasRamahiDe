@@ -9,12 +9,19 @@
     "Marke",
     "Verkauf"
   ],
-  "publishedAt": "2027-05-24T07:00:00.000Z",
+  "publishedAt": "2027-10-19T07:00:00.000Z",
   "excerpt": "Herstellerbild oder Foto des konkreten Autos? Entscheide nach Bildzweck, tatsächlicher Fahrzeugkonfiguration, Plattformregeln und Nutzungsrechten.",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
-  "coverAlt": "Schwarzer Brabus-SUV vor einer Industrieanlage im Abendlicht; Fahrzeug und Himmel spiegeln sich in einer Pfütze.",
+  "coverImage": "/assets/optimized/assets-portfolio-dsc2345-1920.webp",
+  "coverAlt": "Karosserie · Linie",
   "readingTime": 8,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Herstellerbilder oder eigene Fahrzeugfotos: Die wichtigsten Punkte i",
+      "body": "Kernaussage: Das hängt von den Nutzungsrechten und den Regeln des jeweiligen Inseratskanals ab\nZuerst klären, was das: Ein Herstellerbild kann ein Modell erklären\nBildquelle, Aktualität und Rechte: Vor der Verwendung helfen drei kurze Prüfungen\nDiese Angaben machen Angebote: Du kannst eine Anfrage mit diesen Punkten starten: Fahrzeug oder Modell: ___; sichtbare Variante, Lack und Ausstattung: ___; Bildzweck und Zielgruppe: ___;"
+    },
     {
       "_template": "textBlock",
       "headline": "Zuerst klären, was das Bild tatsächlich zeigen soll",
@@ -65,6 +72,12 @@
       "body": "Du kannst eine Anfrage mit diesen Punkten starten: **Fahrzeug oder Modell:** ___; **sichtbare Variante, Lack und Ausstattung:** ___; **Bildzweck und Zielgruppe:** ___; **Kanäle und Laufzeit:** ___; **Anzahl Motive und gewünschte Formate:** ___; **Nutzungsgebiet, Bearbeitung und Weitergabe:** ___; **Preis für Lieferung, Anpassungen und Aktualisierungen:** ___.\n\nBitte den Bildanbieter oder Fotografen zusätzlich um einen Beispiel-Datensatz beziehungsweise eine Beispielaufnahme. Prüfe daran, ob die sichtbare Konfiguration passt, ob der gewünschte Ausschnitt verwendbar ist und ob Dateiformat, Freigabe und Herkunft dokumentiert sind. So werden Lücken sichtbar, bevor ein ganzer Bestand beschafft oder produziert wird."
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Häufige Fragen zu Herstellerbildern und eigenen Fahrzeugfotos",
       "items": [
@@ -110,7 +123,7 @@
     }
   ],
   "seo": {
-    "title": "Herstellerbilder oder eigene Fahrzeugfotos? | Matthias Ramahi",
+    "title": "Herstellerbilder oder eigene Fahrzeugfotos?",
     "description": "Für Autohaus, Marke und Fahrzeugbestand: Entscheide zwischen Modellbild und Foto des konkreten Autos nach Einsatz, Aktualität und Nutzungsrechten.",
     "focusKeyword": "Herstellerbilder oder eigene Fahrzeugfotos",
     "secondaryKeywords": [
@@ -123,12 +136,12 @@
     "searchIntent": "B2B-Auswahl: Händler und Flottenverantwortliche vergleichen Herstellerbilder mit Aufnahmen des konkreten Fahrzeugs nach Passung, Aktualität und Nutzungsrecht.",
     "canonicalUrl": "https://matthiasramahi.de/blog-herstellerbilder-oder-eigene-fahrzeugfotos.html",
     "legacyUrl": "blog-herstellerbilder-oder-eigene-fahrzeugfotos.html",
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "ogImage": "/assets/optimized/assets-portfolio-dsc2345-1920.webp",
     "noIndex": false
   },
   "status": "scheduled",
   "createdAt": "2026-11-03T17:00:00Z",
-  "updatedAt": "2027-05-24T07:00:00.000Z",
+  "updatedAt": "2027-10-19T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",

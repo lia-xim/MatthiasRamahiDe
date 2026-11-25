@@ -14,6 +14,13 @@
   "readingTime": 8,
   "blocks": [
     {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Sportwagen fürs Fotoshooting vorbereiten: Die wichtigsten Punkte im ",
+      "body": "Kernaussage: Nicht grundsätzlich. Umfang und Zustand richten sich nach Bildziel und Fahrzeug\nDas Bildziel bestimmt den: Ein Sportwagen für eine emotionale Abendserie braucht eine andere Vorbereitung als ein Fahrzeug für Verkauf, Zustandsdokumentation oder Händlerbestand\nRäder bestimmen Haltung und: Felgen, Reifenflanken und Radhäuser liegen nah am Boden und tragen schnell Staub oder Spritzspuren\nEin Fünf-Minuten-Check schützt die: Unmittelbar vor dem ersten Bild werden Kennzeichen, Scheiben, Spiegel, Türgriffe, Radstellung und sichtbare Innenraumflächen geprüft"
+    },
+    {
       "headline": "Das Bildziel bestimmt den sinnvollen Aufwand",
       "body": "Ein Sportwagen für eine emotionale Abendserie braucht eine andere Vorbereitung als ein Fahrzeug für Verkauf, Zustandsdokumentation oder Händlerbestand. Im ersten Fall dürfen Patina und Nutzungsspuren Teil der Geschichte sein. Im zweiten Fall müssen Ausstattung und Oberflächen klar lesbar bleiben. „Perfekt sauber“ ist deshalb kein universelles Produktionsziel.\n\nVor jeder Checkliste steht die Frage, was die Bilder belegen oder auslösen sollen. Daraus ergibt sich, welche Bereiche Priorität haben: gesamte Silhouette, ehrlicher Zustand, Innenraum, besondere Ausstattung oder einzelne Designmerkmale. Wer alles gleich intensiv vorbereitet, investiert häufig Zeit in Flächen, die in der geplanten Shotlist gar nicht erscheinen.",
       "_template": "textBlock"
@@ -67,6 +74,39 @@
       "_template": "textBlock"
     },
     {
+      "_template": "linkList",
+      "headline": "Sportwagenfotografie in Düsseldorf & NRW",
+      "links": [
+        {
+          "label": "Sportwagenfotografie Düsseldorf",
+          "href": "/sportwagen-fotografie-duesseldorf.html"
+        },
+        {
+          "label": "Sportwagen Shooting Düsseldorf",
+          "href": "/sportwagen-shooting-duesseldorf.html"
+        },
+        {
+          "label": "Sportwagenfotografie Bochum",
+          "href": "/sportwagen-fotografie-bochum.html"
+        },
+        {
+          "label": "Portfolio Sportwagen",
+          "href": "/portfolio/portfolio-auswahl-sportwagen"
+        },
+        {
+          "label": "Sportwagenfotografie in NRW",
+          "href": "/sportwagen-fotografie.html",
+          "description": "Dynamische und ruhige Serien für Sportwagen, Teams und Sammler."
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Dein Sportwagen-Shooting in Düsseldorf oder NRW buchen",
+      "text": "Geprüfte Zufahrten, saubere Reflexionskontrolle und komplette Bildserie ab 250 € inkl. MwSt.",
+      "buttonLabel": "Sportwagen-Shooting anfragen"
+    },
+    {
       "headline": "Kurze Fragen",
       "items": [
         {
@@ -103,11 +143,25 @@
   },
   "status": "published",
   "createdAt": "2026-08-16T06:00:00Z",
-  "updatedAt": "2026-08-24T20:51:37.614Z",
+  "updatedAt": "2026-11-24T09:15:00.000Z",
   "relatedPages": [
     {
       "label": "Sportwagenfotografie",
       "href": "/sportwagen-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Rolling Shots mit dem Auto",
+      "href": "/blog-rolling-shots-auto.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

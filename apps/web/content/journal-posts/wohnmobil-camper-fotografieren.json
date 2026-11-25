@@ -9,13 +9,20 @@
     "Vermietung",
     "Verkaufsfotos"
   ],
-  "publishedAt": "2026-12-31T08:00:00.000Z",
+  "publishedAt": "2027-02-16T08:00:00.000Z",
   "status": "scheduled",
   "excerpt": "Ein Wohnmobil braucht Bilder von außen und eine nachvollziehbare Tour durch Innenraum, Ausstattung und Zustand. So planst du eine ehrliche Serie für Vermietung oder Verkauf.",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+  "coverImage": "/assets/optimized/assets-portfolio-dsc2345-1920.webp",
   "readingTime": 8,
-  "coverAlt": "Schwarzer SUV am Wasser bei Abendlicht",
+  "coverAlt": "Gestreckte Karosserie-Seitenlinie eines Fahrzeugs im ruhigen Abendlicht",
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Wohnmobil-Bildserie für Vermietung und Verkauf strukturieren",
+      "body": "Außen mit Maßstab: Klare Dreiviertelansicht vorn und Gegenseite mit ausreichend Raum um Aufbau, Dach, Außenspiegel und Heck\nLogischer Innenrundgang: Vom Einstieg über Fahrerplatz, Sitzgruppe und Küche bis Schlafbereich und Bad – ohne extreme Weitwinkel-Verzerrung\nAusstattung & Zustand offen zeigen: Bedienfelder und echte Gebrauchsspuren als Übersichts- plus Detailbild liefern, bevor die Galerie sortiert wird"
+    },
     {
       "headline": "Ein Wohnmobil zeigt man außen und von innen",
       "_template": "textBlock",
@@ -86,8 +93,24 @@
         {
           "label": "Auto fotografieren: Tipps, Einstellungen und Perspektiven",
           "href": "/auto-fotografieren-tipps.html"
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Motive, Bildformate und Übergabe vor dem Shooting sauber strukturieren."
+        },
+        {
+          "label": "Fahrzeugserien konsistent planen",
+          "href": "/blog-fahrzeugserie-konsistent-planen.html",
+          "description": "Wie Perspektiven, Licht und Bearbeitung über mehrere Modelle zusammenhalten."
         }
       ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Professionelles Auto-Fotoshooting in NRW planen",
+      "text": "Du brauchst stimmige Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto im Raum Düsseldorf, Erkrath und NRW? Shootings starten bei 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
     },
     {
       "headline": "Häufige Fragen",
@@ -129,12 +152,17 @@
           "label": "Autotrader: Fotos für ein Caravan-Inserat",
           "href": "https://www.autotrader.co.uk/caravans/content/how-to-take-photos-of-your-caravan-for-your-auto-trader-advert",
           "description": "Plattformratgeber zu vollständigen Außenbildern und sichtbaren Schäden."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]
     }
   ],
   "seo": {
-    "title": "Wohnmobil fotografieren: Bildfolge für Vermietung und Verkauf",
+    "title": "Wohnmobil fotografieren: Bilder für Miete & Verkauf",
     "description": "Plane eine ehrliche Wohnmobil-Bildserie: Außenansicht, Cockpit, Wohnbereiche, Ausstattung und sichtbarer Zustand für Vermietung oder Verkauf.",
     "focusKeyword": "Wohnmobil fotografieren",
     "secondaryKeywords": [
@@ -147,11 +175,11 @@
     "searchIntent": "Informationssuche mit Vermietungs- oder Verkaufsbezug: Wohnmobilbesitzer und Anbieter planen eine klare, vollständige Bildfolge für Außenansicht, Innenraum, Ausstattung und Zustand.",
     "canonicalUrl": "https://matthiasramahi.de/blog-wohnmobil-camper-fotografieren.html",
     "legacyUrl": "blog-wohnmobil-camper-fotografieren.html",
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "ogImage": "/assets/optimized/assets-portfolio-dsc2345-1920.webp",
     "noIndex": false
   },
   "createdAt": "2026-11-03T15:28:25Z",
-  "updatedAt": "2026-12-31T08:00:00.000Z",
+  "updatedAt": "2027-02-16T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
@@ -164,6 +192,13 @@
       "label": "Auto fotografieren: Tipps, Einstellungen und Perspektiven",
       "href": "/auto-fotografieren-tipps.html",
       "seoPurpose": "related-editorial",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
     }

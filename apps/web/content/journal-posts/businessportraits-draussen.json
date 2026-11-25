@@ -13,6 +13,13 @@
   "readingTime": 8,
   "blocks": [
     {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Businessportraits draußen planen: Die wichtigsten Punkte im Überblic",
+      "body": "Kernaussage: Entscheidend ist die konkrete Lichtzone, nicht eine pauschale Uhrzeit\nErst die Nutzung klären,: Ein Businessportrait für eine Profilseite hat eine andere Aufgabe als ein Foto für eine Presseanfrage, eine Speaker-Ankündigung oder die Startseite eines\nKlare Führung ist besser: Viele Menschen stehen selten bewusst vor einer Kamera\nEin gutes Briefing passt: Für einen klaren Termin braucht es kein umfangreiches Moodboard"
+    },
+    {
       "headline": "Erst die Nutzung klären, dann die Location",
       "body": "Ein Businessportrait für eine Profilseite hat eine andere Aufgabe als ein Foto für eine Presseanfrage, eine Speaker-Ankündigung oder die Startseite eines Unternehmens. Das klingt selbstverständlich, wird in der Planung aber häufig übersprungen. Dann entsteht ein starkes Hochformat, obwohl für die Website ein breites Motiv mit Platz für Text gebraucht wird. Oder die Architektur erzählt mehr über den Ort als über die Person.\n\nVor der Suche nach einer Kulisse sollten deshalb drei Dinge feststehen: Wo erscheinen die Bilder, wie viel Raum braucht das Layout und welche Wirkung soll die Person vermitteln? Präzise, zugänglich, ruhig, unternehmerisch oder redaktionell sind brauchbare Richtungen. „Professionell“ allein hilft wenig, weil fast jedes Businessportrait professionell wirken soll.",
       "_template": "textBlock"
@@ -67,6 +74,39 @@
       "_template": "textBlock"
     },
     {
+      "_template": "linkList",
+      "headline": "Business- & Personal-Branding-Portraits",
+      "links": [
+        {
+          "label": "Business Portrait Düsseldorf",
+          "href": "/business-portrait-duesseldorf.html"
+        },
+        {
+          "label": "Personal Branding Düsseldorf",
+          "href": "/personal-branding-fotografie-duesseldorf.html"
+        },
+        {
+          "label": "Headshot Fotograf Düsseldorf",
+          "href": "/headshot-fotograf-duesseldorf.html"
+        },
+        {
+          "label": "Portfolio Portrait",
+          "href": "/portfolio/portfolio-auswahl-portrait"
+        },
+        {
+          "label": "Portraitfotografie in Düsseldorf & NRW",
+          "href": "/portraitfotografie.html",
+          "description": "Business-, Künstler- und Charakterportraits mit ruhiger Führung."
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Moderne Business-Portraits on Location buchen",
+      "text": "Nahbare Business- und Teamportraits in Düsseldorf und NRW ab 250 € inkl. MwSt.",
+      "buttonLabel": "Business-Shooting anfragen"
+    },
+    {
       "headline": "Kurze Fragen",
       "items": [
         {
@@ -103,11 +143,25 @@
   },
   "status": "published",
   "createdAt": "2026-08-24T09:00:00.000Z",
-  "updatedAt": "2026-08-24T20:51:37.600Z",
+  "updatedAt": "2026-11-24T09:15:00.000Z",
   "relatedPages": [
     {
       "label": "Portraitfotografie",
       "href": "/portraitfotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Lichtformer in der Portraitfotografie",
+      "href": "/blog-lichtformer-portraitfotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Portraits ohne generische Posen",
+      "href": "/blog-portraits-ohne-generische-posen.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

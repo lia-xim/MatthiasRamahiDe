@@ -16,7 +16,10 @@
 // Datenformat der Shader-Heroes: image, titleLines, lead, primary*/secondary*).
 // Haben die Slides eigene Texte, wechseln Titel (#hero-title), Lead
 // (#hero-lead) und Buttons ([data-hero-primary]/[data-hero-secondary]) mit.
-type Slide = { src: string; mobile?: string; srcset?: string }
+import { versionStaticAssetSrcset, versionStaticAssetUrl } from '../../lib/cache'
+import { imageDimensions } from '../../lib/payload'
+
+type Slide = { src: string; mobile?: string; srcset?: string; width?: number; height?: number }
 type SlideText = {
   titleLines?: string[]
   lead?: string
@@ -78,6 +81,16 @@ const mobileVariants: Record<string, string> = {
 const mobileFor = (src: string) => mobileVariants[src.split('?')[0]]
 for (const slide of slides) {
   if (!slide.mobile && !slide.srcset) slide.mobile = mobileFor(slide.src)
+  if (!slide.width || !slide.height) {
+    const dims = imageDimensions(slide.src, 'wide')
+    if (dims.width && dims.height) {
+      slide.width = dims.width
+      slide.height = dims.height
+    }
+  }
+  slide.src = versionStaticAssetUrl(slide.src)
+  if (slide.mobile) slide.mobile = versionStaticAssetUrl(slide.mobile)
+  if (slide.srcset) slide.srcset = versionStaticAssetSrcset(slide.srcset)
 }
 const texts = slides.map((slide) => slide.text || {})
 const hasTexts = slides.length > 1 && texts.some((text, index) => index > 0 && text.titleLines?.length)
@@ -100,19 +113,19 @@ const first = slides[0]
           {index === 0 ? (
             <picture>
               {slide.mobile && !slide.srcset && <source media="(max-width: 900px)" srcset={slide.mobile} />}
-              <img class="hm-img" src={slide.src} srcset={slide.srcset} sizes={slide.srcset ? '100vw' : undefined} alt="" decoding="async" fetchpriority="high" data-hm-loaded="1" />
+              <img class="hm-img" src={slide.src} srcset={slide.srcset} sizes={slide.srcset ? '100vw' : undefined} width={slide.width} height={slide.height} alt="" decoding="async" fetchpriority="high" data-hm-loaded="1" />
             </picture>
           ) : (
-            <img class="hm-img" alt="" decoding="async" data-hm-src={slide.src} data-hm-mobile={slide.mobile || slide.src} data-hm-srcset={slide.srcset} />
+            <img class="hm-img" width={slide.width} height={slide.height} alt="" decoding="async" data-hm-src={slide.src} data-hm-mobile={slide.mobile || slide.src} data-hm-srcset={slide.srcset} />
           )}
           {variant === 'develop' && (
             index === 0 ? (
               <picture>
                 {slide.mobile && !slide.srcset && <source media="(max-width: 900px)" srcset={slide.mobile} />}
-                <img class="hm-img hm-tone" src={slide.src} srcset={slide.srcset} sizes={slide.srcset ? '100vw' : undefined} alt="" decoding="async" data-hm-loaded="1" />
+                <img class="hm-img hm-tone" src={slide.src} srcset={slide.srcset} sizes={slide.srcset ? '100vw' : undefined} width={slide.width} height={slide.height} alt="" decoding="async" data-hm-loaded="1" />
               </picture>
             ) : (
-              <img class="hm-img hm-tone" alt="" decoding="async" data-hm-src={slide.src} data-hm-mobile={slide.mobile || slide.src} data-hm-srcset={slide.srcset} />
+              <img class="hm-img hm-tone" width={slide.width} height={slide.height} alt="" decoding="async" data-hm-src={slide.src} data-hm-mobile={slide.mobile || slide.src} data-hm-srcset={slide.srcset} />
             )
           )}
         </div>

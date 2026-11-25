@@ -53,8 +53,9 @@ const siteName = settings?.siteName || 'Matthias Ramahi Fotografie'
 const pathname = Astro.url.pathname === '/' ? '/' : Astro.url.pathname.replace(/\/$/, '')
 const canonical = toAbsoluteSiteUrl(canonicalUrl || pathname)
 const analyticsDimensions = pageAnalyticsDimensions(pathname)
-const socialImage = typeof ogImage === 'string' ? toAbsoluteSiteUrl(versionStaticAssetUrl(ogImage)) : imageUrl(ogImage || settings?.defaultOgImage, 'hero')
-const socialImageDimensions = typeof ogImage === 'string' ? {} : imageDimensions(ogImage || settings?.defaultOgImage, 'hero')
+const socialImageSource = ogImage || settings?.defaultOgImage
+const socialImage = typeof socialImageSource === 'string' ? toAbsoluteSiteUrl(versionStaticAssetUrl(socialImageSource)) : imageUrl(socialImageSource, 'hero')
+const socialImageDimensions = imageDimensions(socialImageSource, 'hero')
 const jsonLdItems = [
   personJsonLd(settings),
   webSiteJsonLd(settings),
@@ -101,7 +102,7 @@ const versionedStylesheets = stylesheets.map(versionStaticAssetUrl)
     <link rel="canonical" href={canonical} />
     <link rel="alternate" hreflang="de-DE" href={canonical} />
     <link rel="alternate" hreflang="x-default" href={canonical} />
-    {noIndex ? <meta name="robots" content="noindex,nofollow" /> : <meta name="robots" content="index,follow,max-image-preview:large" />}
+    {noIndex ? <meta name="robots" content="noindex,nofollow" /> : <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />}
     <meta name="theme-color" content="#020306" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -139,8 +140,11 @@ const versionedStylesheets = stylesheets.map(versionStaticAssetUrl)
     <script
       is:inline
       defer
-      src="https://app.crawlfoundry.com/api/website-analytics/script"
+      src="https://analytics.crawlfoundry.com/script.js"
       data-website-id="56ef8f9e-2547-4ac0-a7b7-6a6ea3ad6e01"
+      data-domains="matthiasramahi.de"
+      data-do-not-track="true"
+      data-performance="true"
       data-cf-host="matthiasramahi.de"
       data-crawl-foundry-verification="2d179ccd5ad94a4ebc6c0b31faf5a23cb76ff95be04651edacfda501456e8593"
     ></script>

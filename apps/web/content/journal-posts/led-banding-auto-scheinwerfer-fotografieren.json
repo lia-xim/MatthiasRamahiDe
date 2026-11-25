@@ -9,12 +9,19 @@
     "LED-Banding",
     "Kameraeinstellungen"
   ],
-  "publishedAt": "2027-07-13T07:00:00Z",
+  "publishedAt": "2028-01-11T08:00:00.000Z",
   "excerpt": "Dunkle Bänder oder scheinbar fehlende LED-Segmente im Auto-Foto? So grenzt du Flimmern der Fahrzeugleuchte und Verschlussart ein, ohne eine pauschale Verschlusszeit zu übernehmen.",
-  "coverImage": "/assets/optimized/assets-portfolio-dsc2345-1920.webp",
+  "coverImage": "/uploads/payload/assets-portfolio-dsc2316-1920.webp",
   "coverAlt": "Rot leuchtende Rücklichtgrafik am Heck eines orangefarbenen Sportwagens",
   "readingTime": 8,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "LED-Banding bei Autofotos: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Eine zeitlich gepulste Lichtquelle kann mit Belichtungszeit und Sensorauslesung zusammentreffen\nWenn ein Teil der: Eine LED-Rückleuchte kann für das Auge gleichmäßig leuchten und auf einer Aufnahme trotzdem dunkle Streifen oder eine scheinbar ausgeschaltete Teilfläche\nVerschlusszeit und Anti-Flicker passend: Teste mehrere Verschlusszeiten in kleinen Schritten und beurteile jedes Bild an derselben Stelle der Leuchte\nEin dunkles Segment nicht: Vergleiche mehrere Aufnahmen derselben Leuchte und, wenn möglich, die direkte Beobachtung mit einer weiteren Kamerakonfiguration"
+    },
     {
       "_template": "textBlock",
       "headline": "Wenn ein Teil der Leuchte im Foto fehlt",
@@ -57,6 +64,12 @@
       "_template": "textBlock",
       "headline": "Ein dunkles Segment nicht vorschnell retuschieren",
       "body": "Vergleiche mehrere Aufnahmen derselben Leuchte und, wenn möglich, die direkte Beobachtung mit einer weiteren Kamerakonfiguration. Wandert das scheinbar fehlende Segment oder ändert sich seine Helligkeit zwischen Testbildern, spricht das für einen Aufnahmeeffekt. Bleibt dieselbe Stelle unabhängig von Verschlusszeit und Aufnahmeart dunkel, kann eine Lichtfunktion, die konkrete Leuchtenausführung oder ein technischer Defekt eine Rolle spielen. Aus einem einzelnen Foto lässt sich die Ursache nicht sicher feststellen.\n\nBei Verkaufs-, Dokumentations- und Pressebildern sollte eine Retusche keine tatsächlichen Leuchtsegmente ergänzen oder entfernen. Wähle lieber eine korrekt aufgenommene Variante oder wiederhole das Bild mit einer nachweislich passenden Einstellung. Wenn die Leuchte selbst das Motiv ist, kennzeichne besondere Lichtzustände im Bildsatz eindeutig. So bleibt nachvollziehbar, was fotografiert wurde und was lediglich durch den Aufnahmezeitpunkt anders wirkte."
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
     },
     {
       "_template": "faqBlock",
@@ -107,13 +120,18 @@
           "label": "LED flicker: Root cause, impact and measurement for automotive imaging applications (IS&T)",
           "href": "https://library.imaging.org/admin/apis/public/api/ist/website/downloadArticle/ei/30/17/art00003",
           "description": "Fachbeitrag zu zeitlich moduliertem Licht, zeilenweiser Sensorauslesung und möglichen Banding-Artefakten in Automotive-Bildgebung."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]
     }
   ],
   "seo": {
-    "title": "LED-Banding bei Autofotos: Streifen an Scheinwerfern vermeiden",
-    "description": "Dunkle Bänder oder scheinbar fehlende LED-Segmente auf Auto-Fotos? Verschlussart, Belichtungszeit und kameramodellabhängige Anti-Flicker-Funktionen gezielt testen.",
+    "title": "LED-Banding bei Autofotos an Scheinwerfern meiden",
+    "description": "Streifen oder fehlende LED-Segmente auf Autofotos? Verschlussart, Verschlusszeit und kameraspezifische Anti-Flicker-Modi gezielt vor Ort testen.",
     "focusKeyword": "LED-Banding bei Autofotos",
     "secondaryKeywords": [
       "LED-Streifen auf Auto-Fotos",
@@ -124,7 +142,7 @@
     "searchIntent": "Qualitative Suchintention: Autofotografen und Fahrzeugbesitzer möchten horizontale Bänder, wechselnde Helligkeit oder scheinbar dunkle LED-Segmente an Scheinwerfern und Rückleuchten diagnostizieren und für Einzelbild oder Video passende Kameraeinstellungen testen.",
     "canonicalUrl": "https://matthiasramahi.de/blog-led-banding-auto-scheinwerfer-fotografieren.html",
     "legacyUrl": "blog-led-banding-auto-scheinwerfer-fotografieren.html",
-    "ogImage": "/assets/optimized/assets-portfolio-dsc2345-1920.webp",
+    "ogImage": "/uploads/payload/assets-portfolio-dsc2316-1920.webp",
     "noIndex": false
   },
   "legacy": {
@@ -134,7 +152,7 @@
     "renderSource": "structured-astro"
   },
   "createdAt": "2026-11-05T00:00:00Z",
-  "updatedAt": "2027-07-13T07:00:00Z",
+  "updatedAt": "2028-01-11T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",

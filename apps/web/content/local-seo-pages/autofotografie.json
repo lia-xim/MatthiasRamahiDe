@@ -91,8 +91,8 @@
   "contactSection": {},
   "targetKeyword": "Autofotografie",
   "seo": {
-    "title": "Autofotografie NRW: Auto-Fotoshooting & Fahrzeugbilder | Ramahi",
-    "description": "Autofotografie in NRW: Exterieur, Innenraum und Details als geplanter Bildsatz für Fahrzeugverkauf, Sammlung, Social Media und Print. Ablauf, Locations und Preise ab 250 €.",
+    "title": "Autofotografie NRW: Auto-Shooting & Bilder ab 250 €",
+    "description": "Autofotografie in NRW: Exterieur, Innenraum & Details als kuratierte Serie für Verkauf, Sammlung, Social Media und Print. Locations & Ablauf ab 250 €.",
     "canonicalUrl": "https://matthiasramahi.de/autofotografie.html",
     "legacyUrl": "autofotografie.html",
     "noIndex": false,
@@ -119,8 +119,49 @@
     "migrationStatus": "reviewed",
     "renderSource": "legacy-file"
   },
-  "updatedAt": "2026-07-21 22:35:09.413+00",
+  "updatedAt": "2026-11-24T09:00:00.000Z",
   "createdAt": "2026-05-31 18:09:46.482+00",
   "status": "published",
-  "payloadId": "186"
+  "payloadId": "186",
+  "guideSection": {
+    "eyebrow": "Autofotografie",
+    "headline": "Autofotografie als Bildsystem: Worauf es wirklich ankommt.",
+    "intro": "Gute Autofotografie entsteht nicht durch starke Filter in der Nachbearbeitung, sondern durch Brennweite, saubere Spiegelungen und eine stimmige Reihenfolge vom Hero-Bild bis zum Detail.",
+    "items": [
+      {
+        "title": "Proportionen treu abbilden statt verzerren",
+        "text": "Zu kurze Brennweiten aus direkter Nähe lassen Front oder Heck unnatürlich wirken. Mit ausreichend Abstand und abgestimmter Kamerahöhe bleiben Radstand, Dachlinie und Karosseriespannung authentisch."
+      },
+      {
+        "title": "Umgebung als Lichtformer nutzen",
+        "text": "Karosserien funktionieren wie gekrümmte Spiegel. Freier Himmel, ruhige Betonwände oder gedämpftes Abendlicht sorgen für weiche Verläufe im Lack statt zerhackter Reflexe durch parkende Autos oder Laternen."
+      },
+      {
+        "title": "Vorbereitung vor dem Shooting",
+        "text": "Eine frische Handwäsche ohne glänzende Silikonreste im Innenraum, saubere Felgen und aufgeräumte Ablagen sparen Zeit am Set und sorgen dafür, dass Nahaufnahmen von Cockpit und Details überzeugen."
+      },
+      {
+        "title": "Von Privatserie bis Markenauftritt",
+        "text": "Ob Erinnerung an das eigene Fahrzeug, überzeugendes Verkaufsinserat oder redaktionelle Kampagne: Ein Shooting beginnt bei 250 € inkl. MwSt. und liefert fertig aufbereitete Dateien für Web, Social Media und Druck."
+      }
+    ],
+    "links": [
+      {
+        "label": "Autofotografie Düsseldorf",
+        "href": "/autofotografie-duesseldorf.html"
+      },
+      {
+        "label": "Auto-Fotoshooting NRW",
+        "href": "/fotoshooting-mit-auto.html"
+      },
+      {
+        "label": "Auto fotografieren Tipps",
+        "href": "/auto-fotografieren-tipps.html"
+      },
+      {
+        "label": "Portfolio Automobil",
+        "href": "/portfolio/portfolio-auswahl-automobil"
+      }
+    ]
+  }
 }

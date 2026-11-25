@@ -8,11 +8,18 @@
     "Fahrzeugdetails",
     "Automobilfotografie"
   ],
-  "publishedAt": "2027-03-07T08:00:00.000Z",
+  "publishedAt": "2027-06-08T07:00:00.000Z",
   "excerpt": "Wie Chromleisten, Stoßfänger und klassische Details im Autofoto Form behalten: Reflexe, Blickwinkel, Belichtung und Bildausschnitt gezielt steuern.",
-  "coverImage": "/uploads/payload/20250418-DSC006552.webp",
+  "coverImage": "/uploads/payload/assets-portfolio-dsc2310-1920.webp",
   "readingTime": 7,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Chrom am Auto fotografieren: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Fotografiere Chrom am Auto mit lesbarer Form: Tipps zu Reflexen, Umgebung, Blickwinkel, Belichtung und ehrlicher Bildbearbeitung\nChrom fotografieren heißt, Spiegelungen: Chrom am Auto zu fotografieren bedeutet, die Umgebung kontrolliert im Metall abzubilden\nBlickwinkel und Licht so: Arbeite in einer festen Reihenfolge und verändere jeweils nur eine Sache: Stelle zuerst den Bildausschnitt ein, verschiebe dann die Kamera seitlich oder in\nBearbeitung: Staub und Fingerabdrücke fallen auf spiegelndem Metall schnell auf"
+    },
     {
       "headline": "Chrom fotografieren heißt, Spiegelungen zu gestalten",
       "body": "Chrom am Auto zu fotografieren bedeutet, die Umgebung kontrolliert im Metall abzubilden. Ein heller Reflex kann Rundung und Kante sichtbar machen; eine breite, strukturlose Fläche lässt sie verschwinden. Kläre vor dem Auslösen die Bildabsicht: Soll das Foto ein Designdetail zeigen, eine Fahrzeugserie ergänzen oder Zustand und Gebrauchsspuren dokumentieren? Bei einer Dokumentation müssen Farbe, Kontur und sichtbare Spuren nachvollziehbar bleiben.\n\nArbeite vom Kontext zum Detail: Nimm zuerst eine Fahrzeugansicht auf und prüfe, wo das glänzende Teil sitzt. Fotografiere dann die Zierleiste oder den Stoßfänger mit einem Stück angrenzendem Lack, einem Scheinwerfer oder einer Karosseriekante im Bild. So zeigt das Foto nicht nur Glanz, sondern auch die Form, die er am Fahrzeug betont.",
@@ -89,9 +96,20 @@
           "label": "Sony: Unschärfe durch Verwackeln und Fokussierung (englisch)",
           "href": "https://www.sony.com/electronics/support/e-mount-body-ilce-7-series/ilce-7rm3a/articles/00007757",
           "description": "Hinweise zu Stativ, Auslösebewegung, Verwacklung und unsicherem Autofokus bei wenig Licht."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ],
       "_template": "linkList"
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
     },
     {
       "headline": "Kurze Fragen",
@@ -132,14 +150,28 @@
     "canonicalUrl": "https://matthiasramahi.de/blog-chrom-am-auto-fotografieren.html",
     "legacyUrl": "blog-chrom-am-auto-fotografieren.html",
     "noIndex": false,
-    "ogImage": "/uploads/payload/20250418-DSC006552.webp"
+    "ogImage": "/uploads/payload/assets-portfolio-dsc2310-1920.webp"
   },
   "createdAt": "2026-11-03T17:00:00Z",
-  "updatedAt": "2027-03-07T08:00:00.000Z",
+  "updatedAt": "2027-06-08T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Oldtimer-Fotografie",
       "href": "/oldtimer-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Automobilfotografie in Düsseldorf & NRW",
+      "href": "/automobil-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

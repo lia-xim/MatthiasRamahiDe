@@ -9,11 +9,18 @@
     "Bildproduktion"
   ],
   "publishedAt": "2026-11-13T08:00:00.000Z",
-  "status": "scheduled",
+  "status": "published",
   "excerpt": "Wann zeigen echte Fahrzeugfotos Zustand und Ausstattung verlässlich, wann reicht ein KI-Entwurf? Mit Hybrid-Workflow und Checkliste zu Kennzeichnung, Nutzungsrechten und Datenschutz.",
   "coverImage": "/uploads/payload/assets-portfolio-dsc3908-1921.webp",
   "readingTime": 9,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Wann echte Autofotos Pflicht sind und wo KI-Entwürfe helfen",
+      "body": "Echtes Fahrzeug & Verkauf: Immer reale Fotografien nutzen, da Lackzustand, Spaltmaße, Ausstattung und Gebrauchsspuren belegbar sein müssen\nKonzept & Moodboard: KI-Visualisierungen eignen sich für frühe Licht-, Kulissen- oder Bildideen, solange sie klar als Entwurf bleiben\nKennzeichnung & Rechte: Seit August 2026 greift Art. 50 EU AI Act für Deepfakes plus Nutzungsrechte nach § 31 UrhG für Ausgangsbilder"
+    },
     {
       "headline": "Zuerst den Zweck klären",
       "body": "Ob echte Fahrzeugfotos oder KI-Bilder passen, entscheidet sich am Verwendungszweck. Soll ein vorhandenes Auto so gezeigt werden, wie es tatsächlich aussieht, braucht es eine Aufnahme dieses Fahrzeugs. Geht es um eine noch offene Bildidee, ein Moodboard oder eine deutlich als Entwurf gekennzeichnete Visualisierung, kann ein synthetisches Bild hilfreich sein. Für interne Notizen reicht oft das Smartphone.\n\nDie Frage lautet daher nicht pauschal, welche Methode die bessere Bildqualität liefert. Entscheidend ist, was der Betrachter aus dem Bild schließen darf. Ein Verkaufsfoto beeinflusst eine konkrete Kaufentscheidung. Ein Kampagnenentwurf soll vielleicht erst eine Stimmung oder einen Bildaufbau vermitteln. Wer diese Aufgaben trennt, kann Aufwand und Bildsprache passend planen.",
@@ -116,14 +123,25 @@
           "label": "KunstUrhG, § 22: Bildnisse",
           "href": "https://www.gesetze-im-internet.de/kunsturhg/__22.html",
           "description": "Amtliche Gesetzesfassung zur Verbreitung und öffentlichen Schaustellung von Bildnissen."
+        },
+        {
+          "label": "Automobilfotografie in NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Echte Fahrzeugbilder für Verkauf, Bestand und Marke."
         }
       ],
       "_template": "linkList"
     },
     {
       "headline": "Eine einfache Entscheidungshilfe",
-      "body": "Wenn das Bild den Zustand, die Ausstattung oder das konkrete Aussehen eines vorhandenen Autos belegen soll, ist die Aufnahme des realen Fahrzeugs die passende Ausgangsbasis. Für eine schnelle interne Notiz kann das Smartphone genügen. Soll eine noch nicht umgesetzte Bildidee sichtbar werden, kann eine KI-Visualisierung als klarer Entwurf dienen. Für eine konsistente Serie mit echten Fahrzeugansichten ist eine geplante Fotoproduktion die verlässlichere Grundlage.\n\nDiese Wege schließen einander nicht aus. Ein Moodboard kann mit synthetischen Bildern beginnen und später durch echte Aufnahmen ersetzt werden. Ein Smartphone-Foto kann die Abstimmung vorbereiten, bevor ein genaueres Shooting folgt. Wichtig ist, den Status des Bildes und seinen Zweck nicht zu vermischen. Bei Fragen zu Fahrzeugserie, Nutzungszweck und Formaten hilft ein Blick auf die [Automobilfotografie](/automobil-fotografie.html). Für eine konkrete Verkaufsanzeige hilft außerdem der [Leitfaden zu Gebrauchtwagenfotos fürs Online-Inserat](/blog-gebrauchtwagen-fuer-online-inserat-fotografieren.html).",
+      "body": "Wenn das Bild den Zustand, die Ausstattung oder das konkrete Aussehen eines vorhandenen Autos belegen soll, ist die Aufnahme des realen Fahrzeugs die passende Ausgangsbasis. Für eine schnelle interne Notiz kann das Smartphone genügen. Soll eine noch nicht umgesetzte Bildidee sichtbar werden, kann eine KI-Visualisierung als klarer Entwurf dienen. Für eine konsistente Serie mit echten Fahrzeugansichten ist eine geplante Fotoproduktion die verlässlichere Grundlage.\n\nDiese Wege schließen einander nicht aus. Ein Moodboard kann mit synthetischen Bildern beginnen und später durch echte Aufnahmen ersetzt werden. Ein Smartphone-Foto kann die Abstimmung vorbereiten, bevor ein genaueres Shooting folgt. Wichtig ist, den Status des Bildes und seinen Zweck nicht zu vermischen. Bei Fragen zu Fahrzeugserie, Nutzungszweck und Formaten hilft ein Blick auf die [Automobilfotografie](/automobil-fotografie.html). Für eine konkrete Verkaufsanzeige hilft außerdem der [Auto-Shooting-Briefing mit sauberer Shotlist](/blog-auto-shooting-briefing.html).",
       "_template": "textBlock"
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Professionelles Auto-Fotoshooting in NRW planen",
+      "text": "Du brauchst stimmige Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto im Raum Düsseldorf, Erkrath und NRW? Shootings starten bei 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
     },
     {
       "headline": "Häufige Fragen",
@@ -145,8 +163,8 @@
     }
   ],
   "seo": {
-    "title": "Echte Fahrzeugfotos oder KI-Bilder? | Matthias Ramahi",
-    "description": "Echte Fahrzeugfotos oder KI-Bilder? Entscheidungshilfe zu Zustand, Markenwirkung und Hybrid-Workflow mit Checkliste zu Kennzeichnung, Bildrechten und Datenschutz.",
+    "title": "Echte Fahrzeugfotos oder KI-Bilder? Vergleich",
+    "description": "Echte Fahrzeugfotos oder KI-Bilder? Entscheidungshilfe zu Zustandstreue, Markenwirkung und Hybrid-Workflow inklusive Checkliste zu Bildrechten.",
     "focusKeyword": "echte Fahrzeugfotos oder KI-Bilder",
     "searchIntent": "Informationssuche: Nutzer vergleichen echte Fahrzeugfotografie, Smartphone-Aufnahmen und KI-Visualisierungen für Verkauf, Dokumentation oder Kampagnen.",
     "canonicalUrl": "https://matthiasramahi.de/blog-echte-fahrzeugfotos-oder-ki.html",
@@ -155,11 +173,25 @@
     "noIndex": false
   },
   "createdAt": "2026-11-03T12:00:00Z",
-  "updatedAt": "2026-11-13T08:00:00.000Z",
+  "updatedAt": "2026-11-23T18:30:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
       "href": "/automobil-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fahrzeugserien konsistent planen",
+      "href": "/blog-fahrzeugserie-konsistent-planen.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

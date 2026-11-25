@@ -9,12 +9,19 @@
     "Fotodokumentation",
     "Fahrzeugzustand"
   ],
-  "publishedAt": "2027-06-25T07:00:00.000Z",
+  "publishedAt": "2027-12-14T08:00:00.000Z",
   "excerpt": "Mit einer festen Smartphone-Bildfolge hältst du sichtbare Vorschäden, Außenansichten, Innenraum sowie Kilometer- und Tankstand bei Abholung und Rückgabe nachvollziehbar fest.",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
-  "coverAlt": "Schwarzer SUV als Portfolioaufnahme einer Außenansicht; das Bild dokumentiert keinen Mietwagen oder Übergabezustand.",
+  "coverImage": "/uploads/payload/assets-portfolio-dsc3982-1920.webp",
+  "coverAlt": "Schwarzer SUV in sauberer Außenansicht auf ebener Asphaltfläche",
   "readingTime": 7,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Mietwagen bei der Übergabe fotografieren: Die wichtigsten Punkte im ",
+      "body": "Kernaussage: So dokumentierst du sichtbare Vorschäden und Fahrzeugzustand bei Abholung und Rückgabe eines Mietwagens mit einer klaren Smartphone-Bildfolge\nMietwagen fotografieren: Fotografiere einen Mietwagen bei Abholung und Rückgabe in einer festen Reihenfolge: zuerst das gesamte Fahrzeug, dann alle Seiten, danach sichtbare\nRäder, Glas, Dach und: Neben den großen Karosserieflächen lohnt sich ein kurzer Blick auf Felgen und Reifen, Windschutzscheibe, Seitenscheiben, Spiegel, Leuchten und Stoßfänger\nOriginale aufbewahren und die: Lass die Originaldateien auf dem Telefon unverändert und sichere sie zusätzlich an einem Ort, den du wiederfindest"
+    },
     {
       "_template": "textBlock",
       "headline": "Mietwagen fotografieren: zuerst die Übersicht, dann die Details",
@@ -81,6 +88,12 @@
       "body": "Lass die Originaldateien auf dem Telefon unverändert und sichere sie zusätzlich an einem Ort, den du wiederfindest. Verwende keine Filter, die Farbe oder Kontrast der Stelle verändern, und lösche keine misslungenen Varianten, bevor du die brauchbaren Bilder geprüft hast. Für den Vergleich kannst du eine Arbeitskopie in den Ordnern „Abholung“ und „Rückgabe“ gleich nummerieren, zum Beispiel `01_Uebersicht`, `02_Front`, `03_links`, `04_Heck`. So findest du gleiche Ansichten schneller wieder, ohne die Originaldateien umzubenennen oder zu bearbeiten. Wenn du die Fotos über eine Anbieter-App hochlädst, behalte die Originale und einen Nachweis des Uploads, sofern die App ihn anbietet.\n\nEine Bildserie kann sichtbare Unterschiede festhalten, aber nicht zuverlässig deren Ursache oder Zeitpunkt bestimmen. Auch Dateinamen und gespeicherte Aufnahmezeiten allein belegen das nicht. Sie ersetzt keine fachliche Prüfung und garantiert nicht, dass ein Anbieter eine Forderung akzeptiert oder zurückweist. Wenn später eine Rückfrage kommt, kannst du dem Anbieter die unveränderten Dateien zusammen mit Protokoll, Mietvertrag und einer knappen Beschreibung des Zeitpunkts übermitteln."
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Häufige Fragen zu Fotos bei der Mietwagenübergabe",
       "items": [
@@ -124,6 +137,11 @@
           "label": "ADAC: Auto privat vermieten, mieten oder verleihen",
           "href": "https://www.adac.de/verkehr/recht/verkehrsmittel/auto-privat-mieten/",
           "description": "Veröffentlicht am 29. September 2026. Hinweise zu Rundumfotos, Vorschäden, Datum, Kilometer-, Tank- und Batteriestand bei privater Fahrzeugvermietung; geprüft am 8. November 2026."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]
     },
@@ -131,11 +149,6 @@
       "_template": "linkList",
       "headline": "Weiterführende Beiträge zur Fahrzeugfotografie",
       "links": [
-        {
-          "label": "Fahrzeugübergabe fotografisch dokumentieren: Fuhrpark und Leasing",
-          "href": "/blog-fahrzeuguebergabe-fotodokumentation-fuhrpark.html",
-          "description": "Wiederholbare Übergabe- und Rückgabefotos für Fuhrpark- und Leasingprozesse; andere Zielgruppe als dieser Mietwagenratgeber."
-        },
         {
           "label": "Mietwagenbilder für Fahrzeugklassen planen",
           "href": "/blog-autovermietung-fahrzeugbilder-fahrzeugklassen.html",
@@ -155,7 +168,7 @@
     }
   ],
   "seo": {
-    "title": "Mietwagen fotografieren: Übergabe und Rückgabe | Matthias Ramahi",
+    "title": "Mietwagen fotografieren: Übergabe und Rückgabe",
     "description": "So dokumentierst du sichtbare Vorschäden und Fahrzeugzustand bei Abholung und Rückgabe eines Mietwagens mit einer klaren Smartphone-Bildfolge.",
     "focusKeyword": "Mietwagen bei der Übergabe fotografieren",
     "secondaryKeywords": [
@@ -173,11 +186,11 @@
     "searchIntent": "Praktische Informationssuche: Mietende möchten bei Abholung und Rückgabe sichtbare Vorschäden, Außenansichten, Innenraum sowie Kilometer- und Tank- oder Ladestand mit einer nachvollziehbaren Smartphone-Bildfolge erfassen und den Fotos das Übergabeprotokoll zuordnen. Die kostenlosen SERPs und offiziellen Verbraucherhinweise wurden am 4. November 2026 geprüft. Suchvolumen wurde nicht gemessen.",
     "canonicalUrl": "https://matthiasramahi.de/blog-mietwagen-bei-uebergabe-fotografieren.html",
     "legacyUrl": "blog-mietwagen-bei-uebergabe-fotografieren.html",
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "ogImage": "/uploads/payload/assets-portfolio-dsc3982-1920.webp",
     "noIndex": false
   },
   "createdAt": "2026-11-04T15:33:14Z",
-  "updatedAt": "2027-06-25T07:00:00.000Z",
+  "updatedAt": "2027-12-14T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
@@ -203,5 +216,3 @@
   ],
   "status": "scheduled"
 }
-
-

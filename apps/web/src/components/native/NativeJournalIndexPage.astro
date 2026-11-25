@@ -59,7 +59,9 @@ const gridPosts = slice.posts.filter((post) => post !== featured && !sidePosts.i
 // ---------- SEO ----------
 const pageSuffix = page > 1 ? ` – Seite ${page}` : ''
 const seoTitle = topic
-  ? `${topic.title}: Artikel im Journal${pageSuffix} | Matthias Ramahi`
+  ? page > 1
+    ? `${topic.label} Journal${pageSuffix} | Matthias Ramahi`
+    : `${topic.title} – Journal | Matthias Ramahi`
   : page > 1
     ? `Journal${pageSuffix} | Matthias Ramahi`
     : undefined

@@ -9,15 +9,22 @@
     "Stitching",
     "Bildgestaltung"
   ],
-  "publishedAt": "2027-04-22T07:00:00.000Z",
+  "publishedAt": "2027-08-24T07:00:00.000Z",
   "excerpt": "Wie du ein stehendes Fahrzeug in einer weiten Szene als Panorama aufnimmst: Bildfolge, Überlappung, Parallaxe und Zusammenfügen – mit klaren Grenzen.",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+  "coverImage": "/assets/optimized/assets-portfolio-dsc3908-1920.webp",
   "readingTime": 7,
   "blocks": [
     {
       "headline": "",
       "body": "Ein Panorama hilft, wenn ein Auto zusammen mit viel Umgebung ins Bild soll, der einzelne Bildwinkel dafür aber nicht passt. Statt mit einem extremen Weitwinkel dicht an die Stoßstange zu gehen, nimmst du mehrere überlappende Ausschnitte aus einem möglichst festen Standpunkt auf und fügst sie später zusammen. Das kann eine längere Szene zeigen oder mehr Bildpunkte für einen breiten Zuschnitt liefern.\n\nDas Ergebnis ist trotzdem kein „verzerrungsfreies“ Foto. Die Kamera muss zwischen den Einzelbildern bewegt werden; die Software richtet sie aus und projiziert sie auf eine Fläche. Dabei können Kanten gedehnt, Linien gekrümmt oder nahe Fahrzeugteile an Übergängen verschoben wirken. Ein Panorama eignet sich deshalb vor allem für eine geplante, stehende Fahrzeugszene mit ausreichend Abstand. Für bewegte Autos, Verkaufsbilder mit möglichst unveränderter Geometrie oder eine interaktive Rundumansicht brauchst du einen anderen Aufnahmeablauf.",
       "_template": "textBlock"
+    },
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Panorama Autofotografie: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Panorama-Autofotografie für stehende Fahrzeuge: Bildfolge, Überlappung, Parallaxe und Projektion planen, klar abgegrenzt von 360-Grad-Ansichten\nWas bei Autofotos als: Eine Panoramaaufnahme setzt sich aus mehreren Bildern zusammen, deren Bildfelder sich überlappen\nEinzelbilder gleichmäßig aufnehmen: Stelle die Kamera auf ein Stativ, wenn sich der Standort dafür eignet\nEin kompakter Ablauf für: Aufgabe klären: Soll eine breite Szene entstehen, mehr Auflösung für einen großen Ausschnitt oder eine interaktive Rundumserie?"
     },
     {
       "headline": "Was bei Autofotos als Panorama gemeint ist",
@@ -74,6 +81,12 @@
       "_template": "textBlock"
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "headline": "Häufige Fragen zur Panorama-Autofotografie",
       "items": [
         {
@@ -117,6 +130,11 @@
           "label": "Nikon: Panoramen aufnehmen",
           "href": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/panoramas",
           "description": "Nikon beschreibt überlappende Einzelbilder, gleichbleibende Einstellungen und die Planung des späteren Bildverlaufs."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ],
       "_template": "linkList"
@@ -134,11 +152,11 @@
     "searchIntent": "Praktische Suche: Wie fotografiert man ein stehendes Fahrzeug als Panorama und vermeidet Parallaxe beim Überlappen und Zusammenfügen der Bilder?",
     "canonicalUrl": "https://matthiasramahi.de/blog-panorama-autofotografie-fahrzeug.html",
     "legacyUrl": "blog-panorama-autofotografie-fahrzeug.html",
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "ogImage": "/assets/optimized/assets-portfolio-dsc3908-1920.webp",
     "noIndex": false
   },
   "createdAt": "2026-11-03T17:00:00Z",
-    "updatedAt": "2027-04-22T07:00:00.000Z",
+  "updatedAt": "2027-08-24T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
@@ -146,8 +164,22 @@
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
+    },
+    {
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fahrzeugserien konsistent planen",
+      "href": "/blog-fahrzeugserie-konsistent-planen.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
     }
   ],
-  "coverAlt": "Dunkler SUV auf nasser Fläche vor Industrieanlagen unter einem farbigen Abendhimmel",
+  "coverAlt": "Cockpit · Licht",
   "status": "scheduled"
 }

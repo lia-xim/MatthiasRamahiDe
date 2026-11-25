@@ -9,11 +9,18 @@
     "Portfolio",
     "Nutzungsrechte"
   ],
-  "publishedAt": "2027-04-30T07:00:00.000Z",
+  "publishedAt": "2027-09-07T07:00:00.000Z",
   "excerpt": "So findest du einen Portraitfotografen, dessen Bildstil zu deinem Anlass passt: Prüfe ganze Serien, Zusammenarbeit, Auswahl und die geplante Bildnutzung.",
   "coverImage": "/assets/portraits/20260609-viola-dsc7346.webp",
   "readingTime": 7,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Portraitfotograf finden: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Sieh dir mehrere vollständige Serien an\nWoran du einen passenden: Einen Portraitfotografen findest du nicht allein über das schönste Einzelbild\nKläre den Ablauf und: Vor einem Shooting sollte klar sein, wie Vorbereitung, Aufnahme und Bildauswahl ablaufen\nWenn mehrere Personen ein: Bei Teams, Familien oder einer Serie mit mehreren Personen kommt noch eine organisatorische Frage hinzu: Sollen alle Bilder am selben Ort und mit ähnlichem"
+    },
     {
       "headline": "Woran du einen passenden Portraitfotografen erkennst",
       "body": "Einen Portraitfotografen findest du nicht allein über das schönste Einzelbild. Entscheidend ist, ob die gezeigten Porträts zu deinem Anlass passen und ob du dir die Zusammenarbeit vorstellen kannst. Ein Profilbild für die Website braucht andere Ausschnitte und eine andere Wirkung als ein freies Künstlerporträt. Schau deshalb auf vollständige Serien, den Umgang mit Licht und Hintergrund und darauf, wie der Fotograf Menschen durch eine Aufnahme führt. Kläre außerdem vorab, welche Bilder du bekommst und wo du sie verwenden darfst. Mit diesen Punkten kannst du Angebote vergleichen, ohne eine bestimmte Bildsprache als allgemeingültig zu behandeln.",
@@ -90,9 +97,30 @@
           "label": "IHK Region Stuttgart: Bildrechte im Internet",
           "href": "https://www.ihk.de/stuttgart/fuer-unternehmen/recht-und-steuern/it-recht/bildrechte-im-internet-4394492",
           "description": "Allgemeine Hinweise zu Bildnutzungsumfang, Veröffentlichung und Rechten der abgebildeten Person."
+        },
+        {
+          "label": "Portraitfotografie in Düsseldorf & NRW",
+          "href": "/portraitfotografie.html",
+          "description": "Business-, Künstler- und Charakterportraits mit ruhiger Führung."
+        },
+        {
+          "label": "Lichtformer in der Portraitfotografie",
+          "href": "/blog-lichtformer-portraitfotografie.html",
+          "description": "Softbox, Oktobox und Beauty Dish passend zum Einsatz auswählen."
+        },
+        {
+          "label": "Portraits ohne generische Posen",
+          "href": "/blog-portraits-ohne-generische-posen.html",
+          "description": "Wie kleine Haltungswechsel zu natürlichen Serien führen."
         }
       ],
       "_template": "linkList"
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Portrait-Termin in Düsseldorf & NRW anfragen",
+      "text": "Ruhige Führung, klares Licht und Serien für Business, Künstler und Personal Branding ab 250 € inkl. MwSt.",
+      "buttonLabel": "Portrait-Termin anfragen"
     },
     {
       "headline": "Häufige Fragen",
@@ -133,7 +161,7 @@
     "noIndex": false
   },
   "createdAt": "2026-11-03T17:00:00Z",
-  "updatedAt": "2027-04-30T07:00:00Z",
+  "updatedAt": "2027-09-07T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Portraitfotografie",
@@ -146,6 +174,13 @@
       "label": "Portrait-Portfolio",
       "href": "/portfolio/portfolio-auswahl-portrait",
       "seoPurpose": "related-editorial",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Lichtformer in der Portraitfotografie",
+      "href": "/blog-lichtformer-portraitfotografie.html",
+      "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
     }

@@ -1,14 +1,27 @@
 {
   "title": "Sportwagen Foto und Video gemeinsam planen: Shotlists, Ablauf und Team",
   "slug": "sportwagen-foto-video-gemeinsam-planen",
-  "category": "sportwagen",
-  "tags": ["Sportwagen", "Automotive", "Fotoproduktion", "Videoproduktion", "Kampagne"],
-  "publishedAt": "2027-09-13T07:00:00.000Z",
+  "category": "sports-car",
+  "tags": [
+    "Sportwagen",
+    "Automotive",
+    "Fotoproduktion",
+    "Videoproduktion",
+    "Kampagne"
+  ],
+  "publishedAt": "2028-04-25T07:00:00.000Z",
   "excerpt": "Wenn für einen Sportwagen Fotos und Film entstehen sollen, braucht es ein gemeinsames Briefing, aber getrennte Shotlists. So stimmst du Motive, Rollen, Bewegung, Zeitfenster und Lieferung vor dem Set ab.",
-  "coverImage": "/uploads/payload/_DSC2310-2.webp",
-  "coverAlt": "Weißer BMW E30 auf einer Präsentationsfläche in einer rot ausgeleuchteten Messehalle.",
+  "coverImage": "/assets/optimized/assets-portfolio-dsc2358-1920.webp",
+  "coverAlt": "Dynamisches Heckdetail eines dunklen Sportwagens mit scharfer Lichtkante",
   "readingTime": 8,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Sportwagen Foto und Video gemeinsam planen: Die wichtigsten Punkte i",
+      "body": "Kernaussage: Das kann funktionieren, wenn Fahrzeug, Ort, Bildidee, Team und Zeitplan zusammenpassen\nZuerst festlegen, wofür die: Eine Sportwagenproduktion mit Fotos und Video beginnt mit dem Einsatz der fertigen Inhalte: Geht es um einen Modell- oder Markenauftritt, eine Website,\nSicherheit, Datensicherung und Abnahme: Führe vor dem ersten Take einen kurzen Set-Check durch: Fahrzeug steht sicher, Schlüssel und Bewegungsfreigabe sind geklärt, Wege und Kabel liegen außerhalb\nWoran du ein passendes Team erkennst: Prüfe nicht nur ein einzelnes starkes Bild oder einen Filmtrailer"
+    },
     {
       "headline": "Zuerst festlegen, wofür die Produktion Material liefern soll",
       "body": "Eine Sportwagenproduktion mit Fotos und Video beginnt mit dem Einsatz der fertigen Inhalte: Geht es um einen Modell- oder Markenauftritt, eine Website, Presse, einen Messeauftritt oder Social Media? Welche Zielgruppe soll das Material erreichen, und welche Aussage muss beim Fahrzeug hängen bleiben? Die Antworten bestimmen, welche Motive und Formate gebraucht werden.\n\nSchreib die gewünschten Ergebnisse vor der Anfrage in eine Asset-Liste. Trenne darin Standbilder, den Hauptfilm und mögliche Kurzfassungen. Notiere für jeden Punkt den Kanal, das Format, den Veröffentlichungstermin und die Person, die das Ergebnis freigibt. Eine Liste mit „Fotos und ein Video“ ist dafür noch zu ungenau: Sie sagt weder, welche Ansichten benötigt werden, noch ob ein Hochformat-Clip oder ein Querformat für die Website dazugehört.\n\nNutze für die Anfrage eine Zeile pro Ergebnis: Asset | Kanal | Inhalt | Verhältnis/Ausschnitt | Länge | Ton/Untertitel | Dateiformat | Abnahme. Zum Beispiel: Bildserie für Website und Presse, Hauptfilm im vereinbarten Querformat sowie ein eigener Hochformat-Cut nur dann, wenn dafür ein Kanal bestellt ist. Lass Seitenverhältnisse und Safe Areas aus den aktuellen Kanal- und Layoutvorgaben ableiten, statt dieselbe Datei ungeprüft überall einzusetzen.",
@@ -69,6 +82,12 @@
       "_template": "textBlock"
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Sportwagen & Performance-Serie planen",
+      "text": "Prägnante Lichtkanten, kontrollierte Perspektiven und sichere Abläufe im Raum Düsseldorf und NRW – Shootings ab 250 € inkl. MwSt.",
+      "buttonLabel": "Sportwagen-Shooting anfragen"
+    },
+    {
       "headline": "Häufige Fragen",
       "items": [
         {
@@ -94,14 +113,19 @@
       "headline": "Quellen und Beispiele für gemeinsame Produktionen",
       "links": [
         {
-          "label": "Fischkopp Films: Film, Foto und Social Media gemeinsam planen",
-          "href": "https://fischkopp-films.de/blog/wie-plant-man-film-foto-und-social-media-gemeinsam-fuer-eine-kampagne/",
-          "description": "Aktueller Praxisbeitrag zu Ziel, Zielgruppe, Kanälen, Asset-Liste und getrennter Planung von Film- und Fotomotiven."
+          "label": "Sportwagenfotografie in NRW",
+          "href": "/sportwagen-fotografie.html",
+          "description": "Dynamische und ruhige Serien für Sportwagen, Teams und Sammler."
         },
         {
-          "label": "Paua Kommunikation: Foto- und Videoproduktion für die Mobilitätsbranche",
-          "href": "https://www.paua-kommunikation.at/foto-video-produktion-automotive",
-          "description": "Anbieterbeispiel für Automotive-Foto- und Videoformate und deren Einsatz auf Website, Social Media und in Werbung."
+          "label": "Rolling Shots mit dem Auto",
+          "href": "/blog-rolling-shots-auto.html",
+          "description": "Technik, Rollentrennung und sichere Alternativen für bewegte Fahrzeugbilder."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Pflichtmotive und Formate vorab verbindlich abstimmen."
         }
       ],
       "_template": "linkList"
@@ -120,11 +144,11 @@
     "searchIntent": "Informationssuche mit kommerzieller Prüfung: Unternehmen und Fahrzeugmarken planen gemeinsame Foto- und Videoergebnisse und klären Team, Umfang und Ablauf vor der Beauftragung.",
     "canonicalUrl": "https://matthiasramahi.de/blog-sportwagen-foto-video-gemeinsam-planen.html",
     "legacyUrl": "blog-sportwagen-foto-video-gemeinsam-planen.html",
-    "ogImage": "/uploads/payload/_DSC2310-2.webp",
+    "ogImage": "/assets/optimized/assets-portfolio-dsc2358-1920.webp",
     "noIndex": false
   },
   "createdAt": "2026-11-06T00:00:00Z",
-  "updatedAt": "2027-09-13T07:00:00.000Z",
+  "updatedAt": "2028-04-25T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Sportwagenfotografie",

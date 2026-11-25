@@ -14,6 +14,13 @@
   "readingTime": 8,
   "blocks": [
     {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Schwarz-Weiß-Portraits und Lichtsetzung: Die wichtigsten Punkte im Ü",
+      "body": "Kernaussage: Eine monochrome Vorschau ist hilfreich, die Rohdatei kann trotzdem Farbinformation behalten\nSchwarz-Weiß braucht einen eigenen: Farbe wegzunehmen ist technisch einfach\nHartes Licht zeigt Struktur: Eine kleinere oder weiter entfernte Quelle erzeugt klarere Schattenkanten\nFarbe und Schwarz-Weiß sollten: Wer beide Fassungen benötigt, sollte vorab klären, ob sie gleichwertig eingesetzt werden oder unterschiedliche Aufgaben übernehmen"
+    },
+    {
       "headline": "Schwarz-Weiß braucht einen eigenen Bildgrund",
       "body": "Farbe wegzunehmen ist technisch einfach. Ein überzeugendes Schwarz-Weiß-Portrait verlangt trotzdem mehr als eine spätere Umwandlung. Farbe kann Flächen trennen, Stimmung setzen und den Blick führen. Fällt sie weg, übernehmen Helligkeit, Kontrast, Textur und Form diese Aufgaben. Ein rotes Oberteil vor einer grünen Wand kann farbig klar getrennt sein und in Graustufen nahezu denselben Tonwert bekommen.\n\nVor dem Shooting sollte deshalb feststehen, warum Schwarz-Weiß zur Nutzung passt. Für Presse, Editorial, Künstlerkommunikation oder eine persönliche Serie kann die Reduktion sehr präzise wirken. Wird sie nur als zusätzliche Exportvariante bestellt, ohne Kleidung und Hintergrund mitzudenken, bleibt häufig ein korrektes, aber austauschbares Nebenprodukt.",
       "_template": "textBlock"
@@ -67,6 +74,39 @@
       "_template": "textBlock"
     },
     {
+      "_template": "linkList",
+      "headline": "Schwarz-Weiß- & Charakterportraits",
+      "links": [
+        {
+          "label": "Schwarz-Weiß Portrait Fotografie",
+          "href": "/schwarz-weiss-portrait-fotografie.html"
+        },
+        {
+          "label": "Portraitfotografie Beleuchtung",
+          "href": "/portraitfotografie-beleuchtung.html"
+        },
+        {
+          "label": "Vintage Fotoshooting",
+          "href": "/vintage-fotoshooting.html"
+        },
+        {
+          "label": "Portfolio Portrait",
+          "href": "/portfolio/portfolio-auswahl-portrait"
+        },
+        {
+          "label": "Portraitfotografie in Düsseldorf & NRW",
+          "href": "/portraitfotografie.html",
+          "description": "Business-, Künstler- und Charakterportraits mit ruhiger Führung."
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Zeitloses Schwarz-Weiß-Portrait in Düsseldorf buchen",
+      "text": "Klare Lichtführung, feine Kontraste und charakterstarke Ergebnisse – auch als Fine-Art-Barytdruck ab 250 € inkl. MwSt.",
+      "buttonLabel": "Portrait anfragen"
+    },
+    {
       "headline": "Kurze Fragen",
       "items": [
         {
@@ -103,11 +143,25 @@
   },
   "status": "published",
   "createdAt": "2026-08-07T09:00:00.000Z",
-  "updatedAt": "2026-08-24T20:51:37.613Z",
+  "updatedAt": "2026-11-24T09:15:00.000Z",
   "relatedPages": [
     {
       "label": "Portraitfotografie",
       "href": "/portraitfotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Lichtformer in der Portraitfotografie",
+      "href": "/blog-lichtformer-portraitfotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Portraits ohne generische Posen",
+      "href": "/blog-portraits-ohne-generische-posen.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

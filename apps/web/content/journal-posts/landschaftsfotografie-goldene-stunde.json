@@ -9,12 +9,19 @@
     "Bildgestaltung",
     "Fine-Art-Print"
   ],
-  "publishedAt": "2027-08-26T07:00:00Z",
+  "publishedAt": "2028-03-24T08:00:00.000Z",
   "excerpt": "Tiefes Morgen- und Abendlicht wirkt je nach Richtung ganz unterschiedlich. So planst du Bildaufbau, Belichtung und natürliche Farben in der Landschaft.",
   "coverImage": "/uploads/payload/Wettberwerb_Foto5_Wunder_der_Natur2-1.webp",
   "coverAlt": "Baum auf einer steinigen Landzunge in einem See, davor trockenes Ufergras und dahinter ein blauer Bergzug.",
   "readingTime": 7,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Landschaftsfotografie goldene Stunde: Die wichtigsten Punkte im Über",
+      "body": "Kernaussage: Der Begriff meint das tiefe, warme Licht rund um Sonnenaufgang und Sonnenuntergang\nNicht die Uhrzeit, sondern: Die goldene Stunde kann einer Landschaft warme Farben und lange Schatten geben\nSeitenlicht formt, Gegenlicht vereinfacht: Bei seitlichem Licht entstehen längere Schatten\nBei wenig Licht sicher: Plane auch den Rückweg, nicht nur den Sonnenaufgang"
+    },
     {
       "_template": "textBlock",
       "headline": "Nicht die Uhrzeit, sondern die Lichtrichtung entscheidet",
@@ -29,6 +36,23 @@
       "_template": "textBlock",
       "headline": "Standpunkt und Bildaufbau vor dem Lichtwechsel prüfen",
       "body": "Lege zuerst fest, was im Bild die Aufmerksamkeit halten soll. Ein Baum, Fels, Weg oder eine Uferkante kann den Vordergrund bilden; Mittelgrund und Ferne sollten lesbar bleiben. Mach eine weite Variante und eine engere Aufnahme mit klarerem Hauptmotiv. Kontrolliere die Ränder: Ein heller Zweig oder angeschnittener Stein kann mehr auffallen als die Bergkette.\n\nVerändere den Standpunkt in kleinen Schritten. Wenige Meter können eine Uferlinie ordnen, eine Überschneidung lösen oder die Sonne hinter eine Kontur bringen. Prüfe, welcher Anteil von Himmel und Vordergrund die Szene trägt: viel Himmel bei interessanten Wolken, mehr Landschaft bei gleichmäßigem Himmel."
+    },
+    {
+      "_template": "imageSequence",
+      "headline": "Beispiele für saubere Perspektive und Lichtführung",
+      "layout": "editorial-pair",
+      "items": [
+        {
+          "image": "/assets/landscape/202608-dresden-dsc8426.webp",
+          "caption": "Gestaffelte Felsenlandschaft mit ruhiger Bildtiefe für großformatige Drucke",
+          "cropIntent": "editorial"
+        },
+        {
+          "image": "/assets/landscape/202608-dresden-dsc8441.webp",
+          "caption": "Weite Fernsicht im weichen Licht als ruhiges Wandbildmotiv",
+          "cropIntent": "editorial"
+        }
+      ]
     },
     {
       "_template": "textBlock",
@@ -64,6 +88,12 @@
       "_template": "textBlock",
       "headline": "Bei wenig Licht sicher zum Motiv und zurück",
       "body": "Plane auch den Rückweg, nicht nur den Sonnenaufgang. Prüfe vorab, ob Wege zugänglich sind, und bleibe auf ausgewiesenen Routen. In der Dämmerung können Kanten, nasse Steine und unebener Boden schwerer zu erkennen sein; eine kleine Lampe hilft beim Packen und Abstieg. Stelle dich für einen besseren Bildwinkel nicht an ungesicherte Hänge oder auf gesperrte Flächen. Bei direktem Gegenlicht gilt zusätzlich: Schau nicht ungeschützt durch den optischen Sucher in die Sonne."
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Landschaftsmotive als Fine-Art-Print anfragen",
+      "text": "Ausgewählte Landschaftsaufnahmen erscheinen als hochwertige Fine-Art-Prints auf Archivpapier. Schreib mir Motivwunsch und gewünschtes Wandformat.",
+      "buttonLabel": "Fine-Art-Print anfragen"
     },
     {
       "_template": "faqBlock",
@@ -110,6 +140,11 @@
           "label": "Adobe: Golden hour photography",
           "href": "https://www.adobe.com/creativecloud/photography/technique/golden-hour.html",
           "description": "Praxisinformationen zu wechselndem Licht, Belichtung, Dynamikumfang und Weißabgleich."
+        },
+        {
+          "label": "Landschaftsfotografie & Fine-Art-Prints",
+          "href": "/landschaftsfotografie.html",
+          "description": "Kuratierte Landschaftsmotive als Wandbilder und Sammler-Editionen."
         }
       ]
     }
@@ -139,7 +174,7 @@
   },
   "status": "scheduled",
   "createdAt": "2026-11-05T19:54:45:00.000Z",
-  "updatedAt": "2027-08-26T07:00:00Z",
+  "updatedAt": "2028-03-24T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Landschaftsfotografie",
@@ -165,13 +200,6 @@
     {
       "label": "Landschaftsfotos bearbeiten",
       "href": "/blog-landschaftsfotos-bearbeiten.html",
-      "seoPurpose": "related-editorial",
-      "rel": "follow",
-      "openInNewTab": false
-    },
-    {
-      "label": "Basteibrücke fotografieren",
-      "href": "/blog-basteibruecke-fotografieren-bildaufbau-standpunkt.html",
       "seoPurpose": "related-editorial",
       "rel": "follow",
       "openInNewTab": false

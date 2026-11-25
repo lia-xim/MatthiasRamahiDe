@@ -8,11 +8,18 @@
     "Fahrzeugporträt",
     "Bildauswahl"
   ],
-  "publishedAt": "2027-10-07T07:00:00.000Z",
+  "publishedAt": "2027-01-01T08:00:00.000Z",
   "excerpt": "Wie redaktionelle Fahrzeugporträts und Tests zu einer klaren Bildgeschichte werden: Leitfrage, bestätigte Fahrzeugdetails, Bildbelege, Auswahl und geordnete Übergabe.",
   "coverImage": "/uploads/payload/assets-portfolio-dsc3908-1921.webp",
   "readingTime": 11,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "So greift ein redaktionelles Fahrzeugbriefing sauber ineinander",
+      "body": "Leitfrage & Fahrzeugversion: Vorab bestätigen, welches konkrete Modelljahr und welche Ausstattungsdetails für die Story belegt werden müssen\nBildrollen nach Lesefunktion: Sachliche Belegmotive (Cockpit, Technik, Proportionen) bewusst von atmosphärischen Aufmacher- und Übergangsmotiven trennen\nLayout & Übergabe: Hoch- und Querformat-Reserven einplanen sowie eindeutige Captions, Dateinamen und Rückfragewege vorab festlegen"
+    },
     {
       "headline": "Die redaktionelle Leitfrage bestimmt die Bildgeschichte",
       "body": "Ein redaktionelles Fahrzeugporträt, ein Testbericht und ein Feature über eine bestimmte Technik können dasselbe Auto zeigen und trotzdem andere Bilder benötigen. Beginne mit der Leitfrage: Was soll die Leserin oder der Leser nach dem Beitrag verstanden haben? Geht es um eine neue Fahrzeugidee, eine konkrete Fahrsituation, ein historisches Detail oder den Vergleich zweier Lösungen? Diese Frage grenzt ein, welche Aspekte im Bild sichtbar werden müssen und welche nur dekorativ wären.\n\nKläre zusätzlich, wie Text und Fotografie zusammenspielen. Gibt es bereits eine Dramaturgie, an der sich die Bilder orientieren sollen, oder wird die Folge gemeinsam entwickelt? Welche Textpassagen benötigen ein sichtbares Beispiel? Wer entscheidet, welches Motiv den Beitrag eröffnet und welche Bilder einen Absatz erklären? So bekommt die Produktion eine redaktionelle Aufgabe. Sie unterscheidet sich von einer Kampagnenserie, die eine Markenidee über wiederkehrende Bildmotive trägt, und von einer Eventreportage, die ein Geschehen begleitet.",
@@ -94,6 +101,33 @@
       "_template": "textBlock"
     },
     {
+      "_template": "linkList",
+      "headline": "Passende Leistungen & weiterführende Guides",
+      "links": [
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Bildserien und Ablauf für Marken, Autohäuser und Privatfahrzeuge."
+        },
+        {
+          "label": "Autofotografie in Düsseldorf",
+          "href": "/autofotografie-duesseldorf.html",
+          "description": "Standorte, Lichtfenster und Beispiele aus der Region Düsseldorf."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Wie Motivliste, Formate und Zuständigkeiten vor dem Termin festgehalten werden."
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Professionelles Auto-Fotoshooting in NRW planen",
+      "text": "Du brauchst stimmige Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto im Raum Düsseldorf, Erkrath und NRW? Shootings starten bei 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "headline": "Kurze Fragen",
       "items": [
         {
@@ -128,11 +162,25 @@
   },
   "status": "scheduled",
   "createdAt": "2026-11-03T06:00:00Z",
-  "updatedAt": "2026-11-23T08:00:00.000Z",
+  "updatedAt": "2027-01-01T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
       "href": "/automobil-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fahrzeugserien konsistent planen",
+      "href": "/blog-fahrzeugserie-konsistent-planen.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

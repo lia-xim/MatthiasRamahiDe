@@ -9,15 +9,22 @@
     "Produktfotografie",
     "Freistellen"
   ],
-  "publishedAt": "2027-04-24T07:00:00.000Z",
+  "publishedAt": "2027-08-27T07:00:00.000Z",
   "excerpt": "Ein Auto sauber freistellen heißt mehr als den Hintergrund zu löschen. Prüfe Kanten an Scheiben, Rädern und Spiegeln, erhalte glaubwürdige Schatten und halte Fahrzeugdetails unverändert.",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+  "coverImage": "/assets/portfolio/automobil-bentley-oldtimer.webp",
   "readingTime": 8,
   "blocks": [
     {
       "headline": "",
       "body": "Beim Auto freistellen für Produktbilder ist die Maske nur der Anfang. Schwierige Stellen sind die, an denen Lack, Glas und Umgebung ineinandergreifen: Scheiben spiegeln ihre Umgebung, Speichen lassen Hintergrund durch und unter dem Fahrzeug sitzt ein Schatten, der an den ursprünglichen Boden gebunden ist. Entscheide deshalb zuerst, wofür die freigestellte Datei gedacht ist. Für eine Produktreihe oder einen Konfigurator kann ein einheitlicher Hintergrund sinnvoll sein. Ein Verkaufs- oder Zustandsfoto braucht oft den realen Kontext. Ein automatischer Entferner kann eine erste Auswahl liefern; prüfe das Ergebnis anschließend an den konkreten Fahrzeugdetails.",
       "_template": "textBlock"
+    },
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Auto freistellen: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Automatische Auswahlwerkzeuge können eine erste Maske erstellen\nFreistellen beginnt mit dem: Beim Freistellen wird die sichtbare Umgebung einer Aufnahme maskiert, damit das Fahrzeug transparent gespeichert oder auf einen anderen Hintergrund gesetzt\nSchatten und Spiegelung am: Ein Fahrzeug braucht nicht immer einen sichtbaren Schatten, aber ohne jeden Bodenkontakt wirkt es schnell schwebend\nExport und Abnahme für: Vor der Übergabe solltest du nicht nur eine einzelne Maske, sondern die ganze Serie vergleichen"
     },
     {
       "headline": "Das sind Originalaufnahmen, keine Freisteller",
@@ -69,6 +76,12 @@
       "_template": "textBlock"
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "headline": "Häufige Fragen",
       "items": [
         {
@@ -117,6 +130,11 @@
           "label": "Adobe Photoshop: PNG für Web und Transparenz speichern",
           "href": "https://helpx.adobe.com/photoshop/desktop/save-and-export/save-files/save-in-png-and-gif-formats.html",
           "description": "Adobe erläutert den PNG-Export und die Unterstützung transparenter Bildbereiche."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ],
       "_template": "linkList"
@@ -134,11 +152,11 @@
     "searchIntent": "How-to-Suche: Fahrzeugfotos für Produktbilder freistellen und dabei Kanten, Glas, Räder, Schatten und Lackdetails sauber erhalten.",
     "canonicalUrl": "https://matthiasramahi.de/blog-auto-freistellen-produktbilder.html",
     "legacyUrl": "blog-auto-freistellen-produktbilder.html",
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "ogImage": "/assets/portfolio/automobil-bentley-oldtimer.webp",
     "noIndex": false
   },
   "createdAt": "2026-11-03T17:00:00Z",
-  "updatedAt": "2027-04-24T07:00:00Z",
+  "updatedAt": "2027-08-27T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
@@ -162,6 +180,6 @@
       "openInNewTab": false
     }
   ],
-  "coverAlt": "Schwarzer SUV in einer Industrieumgebung bei Abendlicht",
+  "coverAlt": "Oldtimer · Formdetail",
   "status": "scheduled"
 }

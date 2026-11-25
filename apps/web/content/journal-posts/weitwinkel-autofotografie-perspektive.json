@@ -9,11 +9,18 @@
     "Perspektive",
     "Fahrzeugfotografie"
   ],
-  "publishedAt": "2027-02-19T08:00:00.000Z",
+  "publishedAt": "2027-05-11T07:00:00.000Z",
   "excerpt": "Wann Weitwinkel bei Autofotos hilft und wie Abstand, Kamerastandpunkt und Bildrand die Wirkung von Fahrzeugproportionen verändern.",
   "coverImage": "/uploads/payload/_DSC2310-2.webp",
   "readingTime": 7,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Weitwinkel Autofotografie: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Erfahre, wann Weitwinkel für Autofotos passt und wie Standpunkt, Abstand und Bildrand die Proportionen eines Fahrzeugs beeinflussen\nWann Weitwinkel bei Autofotos: Ein Weitwinkel nimmt mehr Umgebung auf und kann helfen, wenn der Platz knapp ist\nPerspektive, Bildrand und Objektivverzeichnung: Die Perspektive beschreibt, wie sich Größen und Abstände im Bild zueinander verhalten: Ein nahes Fahrzeugteil wirkt größer als ein gleich großes, weiter\nEin kurzer Ablauf für: Kläre zuerst, ob das Bild Proportionen nachvollziehbar zeigen oder Auto und Umgebung als gestalterische Einheit verbinden soll"
+    },
     {
       "headline": "Wann Weitwinkel bei Autofotos sinnvoll ist",
       "body": "Ein Weitwinkel nimmt mehr Umgebung auf und kann helfen, wenn der Platz knapp ist. Es macht ein Auto aber nicht automatisch dramatischer: Rückst du für einen großen Bildanteil sehr nah an die Front, kann die nahe Ecke überproportional wirken. Für eine sachliche Verkaufs- oder Portfolioansicht hilft deshalb oft zuerst mehr Abstand.\n\nTrenne bei der Planung vier Entscheidungen: Kamerastandpunkt (Höhe und Richtung), Abstand zum Auto, Brennweite und die daraus entstehende Perspektivwirkung. Die folgenden Vergleiche halten jeweils andere Faktoren konstant, damit du erkennst, was das Bild tatsächlich verändert.",
@@ -79,6 +86,12 @@
       "_template": "textBlock"
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "headline": "Kurze Fragen",
       "items": [
         {
@@ -112,6 +125,16 @@
           "label": "Canon: Brennweite und Bildwinkel (englisch)",
           "href": "https://files.canon-europe.com/files/webcontent/rf-lens-world/knowledge/focus/index.html",
           "description": "Herstellererklärung zum Zusammenhang zwischen Brennweite und erfasstem Bildwinkel."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Motive, Bildformate und Übergabe vor dem Shooting sauber strukturieren."
         }
       ],
       "_template": "linkList"
@@ -128,11 +151,25 @@
     "ogImage": "/uploads/payload/_DSC2310-2.webp"
   },
   "createdAt": "2026-11-03T17:00:00Z",
-  "updatedAt": "2027-02-19T08:00:00.000Z",
+  "updatedAt": "2027-05-11T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
       "href": "/automobil-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fahrzeugserien konsistent planen",
+      "href": "/blog-fahrzeugserie-konsistent-planen.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

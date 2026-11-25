@@ -14,6 +14,13 @@
   "readingTime": 8,
   "blocks": [
     {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Automotive-Markenstorytelling als Serie: Die wichtigsten Punkte im Ü",
+      "body": "Kernaussage: Die Zahl folgt den Kanälen und Motivebenen\nEine Serie braucht zuerst: „Dynamisch, hochwertig und emotional“ beschreibt fast jede Automotive-Produktion und trifft deshalb keine Entscheidung\nMenschen geben Maßstab und: Hände am Material, eine Person im Cockpit oder ein Team in der Werkstatt können Funktion und Maßstab zeigen\nDie finale Kuratierung entscheidet,: Bei der Auswahl gewinnt nicht automatisch das technisch spektakulärste Bild"
+    },
+    {
       "headline": "Eine Serie braucht zuerst einen überprüfbaren Satz",
       "body": "„Dynamisch, hochwertig und emotional“ beschreibt fast jede Automotive-Produktion und trifft deshalb keine Entscheidung. Hilfreicher ist ein Satz, der Auswahl ermöglicht: Das Fahrzeug soll als präzises Werkzeug für lange Strecken erscheinen. Oder: Die Manufaktur soll über Material, Handarbeit und ruhige Konzentration sichtbar werden. Jede Bildidee muss gegen diesen Satz bestehen können.\n\nDer Satz benennt nicht nur Wirkung, sondern auch Adressat und Nutzung. Eine Händlerserie spricht andere Fragen an als ein Markenlaunch oder ein redaktionelles Porträt eines Builders. Wenn drei Zielgruppen gleichzeitig bedient werden sollen, wird festgelegt, welche führt. Sonst entsteht eine Ansammlung schöner Motive ohne klare Reihenfolge und ohne wiedererkennbare Perspektive.",
       "_template": "textBlock"
@@ -67,6 +74,34 @@
       "_template": "textBlock"
     },
     {
+      "_template": "linkList",
+      "headline": "Automobil- & Markenfotografie für Kampagnen",
+      "links": [
+        {
+          "label": "Automobilfotografie Übersicht",
+          "href": "/automobil-fotografie.html"
+        },
+        {
+          "label": "Automobilfotografie Düsseldorf",
+          "href": "/automobil-fotografie-duesseldorf.html"
+        },
+        {
+          "label": "Sportwagenfotografie",
+          "href": "/sportwagen-fotografie.html"
+        },
+        {
+          "label": "Portfolio Automobil",
+          "href": "/portfolio/portfolio-auswahl-automobil"
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Marken- und Fahrzeugserie mit rotem Faden planen",
+      "text": "Vom Konzept über Location-Scouting bis zur auslieferungsfertigen Kampagnenserie in NRW und deutschlandweit.",
+      "buttonLabel": "Projekt anfragen"
+    },
+    {
       "headline": "Kurze Fragen",
       "items": [
         {
@@ -103,11 +138,25 @@
   },
   "status": "published",
   "createdAt": "2026-08-18T06:00:00Z",
-  "updatedAt": "2026-08-24T20:51:37.599Z",
+  "updatedAt": "2026-11-24T09:15:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
       "href": "/automobil-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fahrzeugserien konsistent planen",
+      "href": "/blog-fahrzeugserie-konsistent-planen.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

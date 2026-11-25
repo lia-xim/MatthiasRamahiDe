@@ -9,12 +9,19 @@
     "Reflexionen",
     "Karosserielinien"
   ],
-  "publishedAt": "2027-05-12T07:00:00.000Z",
+  "publishedAt": "2027-09-28T07:00:00.000Z",
   "excerpt": "Wie schwarze Flags störende Spiegelungen aus der Karosserie nehmen und gezielte dunkle Kanten setzen – mit einem nachvollziehbaren Ablauf für Studio und Location.",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+  "coverImage": "/uploads/payload/assets-portfolio-dsc3982-1920.webp",
   "coverAlt": "Dunkler SUV vor einem farbigen Abendhimmel; Himmel und Umgebung spiegeln sich auf Türen und Motorhaube",
   "readingTime": 8,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "schwarze Flags Autofotografie: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Es kann direktes Licht abschatten und als dunkle Fläche in glänzendem Lack sichtbar werden\nDie Karosserie zeigt auch: Eine glänzende Autokarosserie bildet ihre Umgebung ab\nAm Set testen, ohne: Fotografiere eine kurze Vergleichsreihe: Referenz ohne Flag, Flag an der Lichtquelle, Flag im gespiegelten Umfeld und zuletzt die gewünschte Kombination\nSauberer Ablauf für die: Notiere für jede Perspektive die Fahrzeugseite, den Kamerawinkel und die Flag-Position"
+    },
     {
       "_template": "textBlock",
       "headline": "Die Karosserie zeigt auch die dunklen Flächen",
@@ -75,6 +82,12 @@
       "body": "Notiere für jede Perspektive die Fahrzeugseite, den Kamerawinkel und die Flag-Position. Eine Aufnahme des Sets hilft beim Wiederholen; eine Position auf der Fahrerseite muss auf der Beifahrerseite nicht funktionieren. Prüfe im letzten Bild, ob Reflexkante, Lackfarbe und Form natürlich wirken.\n\nMerke dir die Reihenfolge: störenden Reflex benennen, direkte Lichtquelle oder gespiegelte Umgebung bestimmen, eine Flag-Position testen und erst danach Größe oder Winkel verändern. So bleibt sichtbar, welcher Schritt das Ergebnis verbessert hat."
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Häufige Fragen zu Flags in der Autofotografie",
       "items": [
@@ -109,6 +122,16 @@
           "label": "American Society of Cinematographers: Using Specular Reflections",
           "href": "https://theasc.com/post/shot-craft/specular-reflections/",
           "description": "Erklärt das Reflexionsgesetz und zeigt, wie sich unerwünschte Spitzlichter auf glänzenden Oberflächen mit einer Flag abschatten lassen."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Motive, Bildformate und Übergabe vor dem Shooting sauber strukturieren."
         }
       ]
     }
@@ -126,12 +149,12 @@
     "searchIntent": "Set-Frage: Wie positioniert man schwarze Flags, um helle Fahrzeugreflexe zu begrenzen oder eine dunkle Konturlinie zu formen?",
     "canonicalUrl": "https://matthiasramahi.de/blog-schwarze-flags-autofotografie.html",
     "legacyUrl": "blog-schwarze-flags-autofotografie.html",
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "ogImage": "/uploads/payload/assets-portfolio-dsc3982-1920.webp",
     "noIndex": false
   },
   "status": "scheduled",
   "createdAt": "2026-11-03T17:00:00Z",
-  "updatedAt": "2027-05-12T07:00:00Z",
+  "updatedAt": "2027-09-28T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",

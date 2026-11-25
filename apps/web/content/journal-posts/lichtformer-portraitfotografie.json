@@ -14,6 +14,13 @@
   "readingTime": 8,
   "blocks": [
     {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Welcher Lichtformer passt zu welchem Portrait?",
+      "body": "Softbox / Oktobox: Weicher, gut kontrollierbarer Verlauf für Business-, Team- und Charakterportraits; Grid begrenzt Licht auf den Hintergrund\nBeauty Dish: Prägnante Hautstruktur und klare Wangenkanten für Editorial, Musikerportraits und markante Einzelmotive\nAbstand schlägt Katalog: Je näher eine mittelgroße Fläche am Gesicht steht, desto weicher wirkt das Licht im direkten Verhältnis zur Person"
+    },
+    {
       "headline": "Der Einsatzzweck kommt vor dem Lichtformer",
       "body": "Die Frage nach dem besten Lichtformer ist ohne Bildaufgabe nicht zu beantworten. Ein enger Headshot für ein Teamverzeichnis, ein Editorial-Portrait und eine Ganzkörperaufnahme mit Bewegung verlangen unterschiedliche Flächen, Abstände und Kontraste. Wer zuerst das Zubehör auswählt, baut das Set oft um ein Werkzeug herum, statt das Werkzeug an die gewünschte Wirkung anzupassen.\n\nAm Anfang stehen deshalb drei Entscheidungen: Wie viel von der Person soll gleichmäßig ausgeleuchtet werden, wie deutlich sollen Hautstruktur und Gesichtskontur sichtbar bleiben und darf das Licht im Raum als gesetztes Licht auffallen? Diese Antworten grenzen die Auswahl stärker ein als Markenname oder Bauform. Ein großer Lichtformer ist nicht automatisch weich, und ein kleiner nicht automatisch hart.",
       "_template": "textBlock"
@@ -68,6 +75,39 @@
       "_template": "textBlock"
     },
     {
+      "_template": "linkList",
+      "headline": "Portraitfotografie & Personal Branding",
+      "links": [
+        {
+          "label": "Portraitfotografie Beleuchtung",
+          "href": "/portraitfotografie-beleuchtung.html"
+        },
+        {
+          "label": "Personal Branding Düsseldorf",
+          "href": "/personal-branding-fotografie-duesseldorf.html"
+        },
+        {
+          "label": "Headshot Fotograf Düsseldorf",
+          "href": "/headshot-fotograf-duesseldorf.html"
+        },
+        {
+          "label": "Portfolio Portrait",
+          "href": "/portfolio/portfolio-auswahl-portrait"
+        },
+        {
+          "label": "Portraitfotografie in Düsseldorf & NRW",
+          "href": "/portraitfotografie.html",
+          "description": "Business-, Künstler- und Charakterportraits mit ruhiger Führung."
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Portraits mit kontrolliertem, natürlichem Licht buchen",
+      "text": "Für Personal Branding, Business-Headshots und Editorial-Portraits in Düsseldorf und NRW ab 250 € inkl. MwSt.",
+      "buttonLabel": "Portrait anfragen"
+    },
+    {
       "headline": "Kurze Fragen",
       "items": [
         {
@@ -87,8 +127,8 @@
     }
   ],
   "seo": {
-    "title": "Lichtformer für Portraitfotografie wählen | Matthias Ramahi",
-    "description": "Softbox, Schirm, Beauty Dish oder Reflektor: Wie Größe, Abstand und Richtung die Wirkung des Portraitlichts bestimmen – statt der Name des Lichtformers.",
+    "title": "Lichtformer im Portrait: Softbox, Beauty Dish & Praxis",
+    "description": "Softbox, Oktobox, Schirm, Reflektor oder Beauty Dish: Welcher Lichtformer zu Personal Branding, Business-Portraits und Charakterköpfen passt.",
     "focusKeyword": "Lichtformer für Portraitfotografie wählen",
     "searchIntent": "Informationssuche: Nutzer suchen Fachwissen, Beispiele und Einordnung zu Lichtformer für Portraitfotografie wählen.",
     "canonicalUrl": "https://matthiasramahi.de/blog-lichtformer-portraitfotografie.html",
@@ -104,11 +144,25 @@
   },
   "status": "published",
   "createdAt": "2026-08-06T09:00:00.000Z",
-  "updatedAt": "2026-08-24T20:51:37.602Z",
+  "updatedAt": "2026-11-24T09:15:00.000Z",
   "relatedPages": [
     {
       "label": "Portraitfotografie",
       "href": "/portraitfotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Lichtformer in der Portraitfotografie",
+      "href": "/blog-lichtformer-portraitfotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Portraits ohne generische Posen",
+      "href": "/blog-portraits-ohne-generische-posen.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

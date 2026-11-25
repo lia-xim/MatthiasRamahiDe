@@ -8,11 +8,18 @@
     "Wandbild",
     "Raumgestaltung"
   ],
-  "publishedAt": "2026-11-27T08:00:00.000Z",
+  "publishedAt": "2027-01-12T08:00:00.000Z",
   "excerpt": "Wie du ein Landschaftsbild für einen Raum auswählst: Motiv, Blickabstand, Ausrichtung, Licht und Wandfläche gemeinsam beurteilen.",
   "coverImage": "/uploads/payload/assets-photos-landschaft-1921.webp",
   "readingTime": 9,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Landschafts-Print passend zu Wand, Licht und Raum wählen",
+      "body": "Wandmaß & Abstand messen: Fläche inklusive Passepartout oder Rahmen mit Malerkrepp markieren und Bildwirkung aus realer Sitz- und Stehdistanz prüfen\nRaumlicht berücksichtigen: Direkte Fenster- oder Spotspiegelungen auf der gewünschten Hängefläche beeinflussen Papierwahl (matt vs. seidenmatt) deutlich\nSichtprüfung im Druck: Seitenverhältnis ohne ungewollten Randbeschnitt abgleichen und bei größeren Formaten zuerst eine farbverbindliche Vorlage oder einen Probedruck prüfen"
+    },
     {
       "_template": "textBlock",
       "headline": "Den Raum zuerst lesen",
@@ -91,6 +98,33 @@
       "body": "Schicke dem Druckdienstleister Motivdatei, gewünschten Ausschnitt, Ausrichtung und Zielformat. Bitte um Bestätigung, ob das angegebene Maß nur die sichtbare Bildfläche oder auch Rand, Passepartout und Rahmen umfasst. Frage, welche Dateigröße und welches Farbprofil für genau diese Ausgabe verlangt werden, ob ein Softproof oder ein Probedruck möglich ist und ob die Arbeit gerahmt oder ungerahmt geliefert wird.\n\nBei einer Serie sollten Größe, Papier und Rand für jedes Bild einzeln in einer Liste stehen. Bewahre die freigegebene Datei und den bestätigten Ausschnitt zusammen mit den Bestelldaten auf. So lässt sich bei einer späteren Nachbestellung dieselbe Ausführung anfragen, ohne aus Erinnerung raten zu müssen."
     },
     {
+      "_template": "linkList",
+      "headline": "Passende Seiten rund um Fine-Art-Prints",
+      "links": [
+        {
+          "label": "Landschaftsfotografie & Fine-Art-Prints",
+          "href": "/landschaftsfotografie.html",
+          "description": "Übersicht ausgewählter Serien für Wohn- und Arbeitsräume."
+        },
+        {
+          "label": "Fotolabor & Fine-Art-Druck Düsseldorf",
+          "href": "/fotolabor-druck-duesseldorf.html",
+          "description": "Papiere, Farbtreue und Beratung zu Formaten und Veredelung."
+        },
+        {
+          "label": "Vom Bild zum Fine-Art-Druck",
+          "href": "/blog-fine-art-druck.html",
+          "description": "Was Dateiqualität, Papierwahl und Tonwerte im fertigen Druck leisten."
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Landschaftsmotive als Fine-Art-Print anfragen",
+      "text": "Ausgewählte Landschaftsaufnahmen erscheinen als handgefertigte Fine-Art-Prints auf Archivpapier oder edlem Druckträger. Nenne mir Motivwunsch und Wandmaß für ein passendes Format.",
+      "buttonLabel": "Fine-Art-Print anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Kurze Fragen",
       "items": [
@@ -114,7 +148,7 @@
     }
   ],
   "seo": {
-    "title": "Landschaftsbild als Fine-Art-Print auswählen | Matthias Ramahi",
+    "title": "Landschaftsbild als Fine-Art-Print auswählen",
     "description": "Motiv, Format und Raum gemeinsam beurteilen: So findest du ein Landschaftsbild, das zu Wandfläche, Blickabstand, Licht und Einrichtung passt.",
     "focusKeyword": "Landschaftsbild Fine-Art-Print auswählen",
     "searchIntent": "Kaufnahe Informationssuche: Nutzer möchten ein Landschaftsbild als Fine-Art-Print für einen Raum auswählen und Motiv, Format und Wirkung beurteilen.",
@@ -125,11 +159,25 @@
   },
   "status": "scheduled",
   "createdAt": "2026-11-03T06:00:00Z",
-  "updatedAt": "2026-11-27T08:00:00.000Z",
+  "updatedAt": "2027-01-12T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Landschaftsfotografie",
       "href": "/landschaftsfotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fotolabor & Fine-Art-Druck Düsseldorf",
+      "href": "/fotolabor-druck-duesseldorf.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Vom Bild zum Fine-Art-Druck",
+      "href": "/blog-fine-art-druck.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

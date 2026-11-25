@@ -8,12 +8,19 @@
     "Fahrzeugpaar",
     "Bildgestaltung"
   ],
-  "publishedAt": "2027-03-19T08:00:00.000Z",
+  "publishedAt": "2027-06-29T07:00:00.000Z",
   "status": "scheduled",
   "excerpt": "Zwei Fahrzeuge in einem Bild wirken überzeugend, wenn Abstand, Größenverhältnis, Blickrichtung und Hintergrund eine klare Beziehung herstellen.",
-  "coverImage": "/uploads/payload/20250418-DSC006552.webp",
+  "coverImage": "/assets/optimized/assets-portfolio-dsc3908-1920.webp",
   "readingTime": 7,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Zwei Autos zusammen fotografieren: Die wichtigsten Punkte im Überbli",
+      "body": "Kernaussage: Nur wenn sie gleich wichtig sind\nEin gemeinsames Bild braucht: Zwei Autos in einem Bild zu zeigen, ist eine andere Aufgabe als jedes Modell einzeln in einer wiederkehrenden Serie zu fotografieren\nÜberschneidungen kontrollieren, bevor sie: Eine leichte Überlappung kann Tiefe schaffen, solange sichtbar bleibt, wo ein Auto endet und das andere beginnt\nDas Briefing auf Entscheidungen: Schreibe vor dem Termin ein Briefing, das am Set als Entscheidungshilfe taugt"
+    },
     {
       "_template": "textBlock",
       "headline": "Ein gemeinsames Bild braucht eine klare Beziehung",
@@ -69,6 +76,33 @@
       "body": "Schreibe vor dem Termin ein Briefing, das am Set als Entscheidungshilfe taugt. Diese Kurzvorlage kannst du ausfüllen: Zweck (Vergleich, gemeinsames Porträt oder Leitmotiv): ___; Rolle von Auto A und B: ___; gewünschte Front- und Blickrichtung: ___; Ausgabeformate und freier Platz für Text: ___; dürfen die Fahrzeuge umgestellt werden: ___; Pflichtbild: beide vollständig / bewusst gestaffelt / mit klarer Hauptrolle.\n\nArbeite dann in einer festen Runde: Bildrahmen und spätere Zuschnitte festlegen, Autos stellen, ein Testbild aufnehmen und zunächst nur die Silhouetten prüfen. Kontrolliere die Vorschau auch klein: Sind beide Fahrzeuge sofort als getrennte Formen erkennbar? Falls nicht, ändere jeweils nur eine Sache – zuerst seitlichen Abstand, dann Winkel oder Kamerastandpunkt – und vergleiche erneut. Prüfe anschließend Räder, Spiegel, Hintergrundlinien und die hellsten Reflexe. Erst wenn das gemeinsame Bild funktioniert, nimm eine alternative Gewichtung oder zusätzliche Einzelporträts auf. So bleibt ein brauchbares Pflichtmotiv sicher, bevor Details und Varianten Zeit bekommen.\n\nWeitere Informationen zur Planung eines Auftrags findest du auf der verknüpften Seite zur Automobilfotografie."
     },
     {
+      "_template": "linkList",
+      "headline": "Passende Leistungen & weiterführende Guides",
+      "links": [
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Motive, Bildformate und Übergabe vor dem Shooting sauber strukturieren."
+        },
+        {
+          "label": "Fahrzeugserien konsistent planen",
+          "href": "/blog-fahrzeugserie-konsistent-planen.html",
+          "description": "Wie Perspektiven, Licht und Bearbeitung über mehrere Modelle zusammenhalten."
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Häufige Fragen",
       "items": [
@@ -100,11 +134,11 @@
     "searchIntent": "Informationssuche: Wie lassen sich zwei Fahrzeuge in einem gemeinsamen Bild nach Abstand, Größe, Blickrichtung und Hintergrund überzeugend anordnen?",
     "canonicalUrl": "https://matthiasramahi.de/blog-zwei-autos-zusammen-fotografieren.html",
     "legacyUrl": "blog-zwei-autos-zusammen-fotografieren.html",
-    "ogImage": "/uploads/payload/20250418-DSC006552.webp",
+    "ogImage": "/assets/optimized/assets-portfolio-dsc3908-1920.webp",
     "noIndex": false
   },
   "createdAt": "2026-11-03T17:00:00Z",
-  "updatedAt": "2027-03-19T08:00:00.000Z",
+  "updatedAt": "2027-06-29T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
@@ -112,7 +146,21 @@
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
+    },
+    {
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fahrzeugserien konsistent planen",
+      "href": "/blog-fahrzeugserie-konsistent-planen.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
     }
   ],
-  "coverAlt": "Roter klassischer Rennsportwagen groß im Vordergrund einer Ausstellung fotografiert"
+  "coverAlt": "Cockpit · Licht"
 }

@@ -14,6 +14,13 @@
   "readingTime": 8,
   "blocks": [
     {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Portraits im offenen Schatten fotografieren: Die wichtigsten Punkte ",
+      "body": "Kernaussage: Offener Schatten lässt Outdoor-Portraits ruhig wirken: wie Lichtkante, Blickrichtung, Hintergrund und Belichtung für natürliche Hauttöne greifen\nOffener Schatten ist eine: Offener Schatten entsteht dort, wo direktes Sonnenlicht abgeschirmt wird, der freie Himmel aber weiterhin Licht in das Gesicht schickt\nAugenlicht lässt sich ohne: Fehlt in den Augen ein heller Reflex, wirkt ein Portrait selbst bei korrekter Belichtung schnell müde\nDie Bildauswahl folgt dem: Ein Portrait kann großartig aussehen und für die vorgesehene Fläche ungeeignet sein"
+    },
+    {
       "headline": "Offener Schatten ist eine Lichtzone, kein dunkler Ort",
       "body": "Offener Schatten entsteht dort, wo direktes Sonnenlicht abgeschirmt wird, der freie Himmel aber weiterhin Licht in das Gesicht schickt. Eine Hauskante, ein Vordach oder die Schattenseite einer breiten Straße kann deshalb besser funktionieren als ein tiefer Hauseingang. Im ersten Fall bleibt das Licht gerichtet und die Augen bekommen Reflexe; im zweiten Fall wirkt das Gesicht schnell stumpf, während der Hintergrund zu hell bleibt.\n\nFür natürliche Portraits ist diese Unterscheidung wichtiger als die Tageszeit. Es geht nicht darum, jede Sonne zu vermeiden. Gesucht wird eine Position, an der die Person nicht blinzeln muss und das Licht trotzdem eine erkennbare Richtung hat. Ein halber Meter vor oder zurück verändert diese Balance oft stärker als ein Wechsel der Kameraeinstellung.",
       "_template": "textBlock"
@@ -67,6 +74,39 @@
       "_template": "textBlock"
     },
     {
+      "_template": "linkList",
+      "headline": "Natürliche Portraits in Düsseldorf & NRW",
+      "links": [
+        {
+          "label": "Portraitfotografie Düsseldorf",
+          "href": "/portraitfotografie-duesseldorf.html"
+        },
+        {
+          "label": "Dating Fotoshooting Düsseldorf",
+          "href": "/dating-fotoshooting-duesseldorf.html"
+        },
+        {
+          "label": "Fotoshooting für Männer",
+          "href": "/fotoshooting-maenner.html"
+        },
+        {
+          "label": "Portfolio Portrait",
+          "href": "/portfolio/portfolio-auswahl-portrait"
+        },
+        {
+          "label": "Portraitfotografie in Düsseldorf & NRW",
+          "href": "/portraitfotografie.html",
+          "description": "Business-, Künstler- und Charakterportraits mit ruhiger Führung."
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Portrait-Shooting im natürlichen Licht buchen",
+      "text": "Weiches Licht, ehrliche Hauttöne und ruhige Anleitung vor der Kamera in Düsseldorf und NRW ab 250 € inkl. MwSt.",
+      "buttonLabel": "Portrait-Shooting anfragen"
+    },
+    {
       "headline": "Kurze Fragen",
       "items": [
         {
@@ -86,8 +126,8 @@
     }
   ],
   "seo": {
-    "title": "Portraits im offenen Schatten fotografieren | Matthias Ramahi",
-    "description": "Offener Schatten lässt Portraits ruhig wirken. So greifen Lichtkante, Blickrichtung, Hintergrund und Belichtung für natürliche Hauttöne ineinander.",
+    "title": "Portraits im offenen Schatten: Licht & Hauttöne",
+    "description": "Offener Schatten lässt Outdoor-Portraits ruhig wirken: wie Lichtkante, Blickrichtung, Hintergrund und Belichtung für natürliche Hauttöne greifen.",
     "focusKeyword": "Portraits im offenen Schatten fotografieren",
     "searchIntent": "Informationssuche: Nutzer suchen Fachwissen, Beispiele und Einordnung zu Portraits im offenen Schatten fotografieren.",
     "canonicalUrl": "https://matthiasramahi.de/blog-portraits-offener-schatten.html",
@@ -103,11 +143,25 @@
   },
   "status": "published",
   "createdAt": "2026-08-05T09:00:00.000Z",
-  "updatedAt": "2026-08-24T20:51:37.610Z",
+  "updatedAt": "2026-11-24T09:15:00.000Z",
   "relatedPages": [
     {
       "label": "Portraitfotografie",
       "href": "/portraitfotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Lichtformer in der Portraitfotografie",
+      "href": "/blog-lichtformer-portraitfotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Portraits ohne generische Posen",
+      "href": "/blog-portraits-ohne-generische-posen.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

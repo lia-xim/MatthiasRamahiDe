@@ -14,6 +14,13 @@
   "readingTime": 8,
   "blocks": [
     {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Sauberes Fahrzeug-Lightpainting in fünf Schritten",
+      "body": "Dunkler, genehmigter Ort: Abgesperrte oder private Fläche wählen – öffentlicher Verkehr stört Langzeitbelichtungen und gefährdet Personen rund ums Auto\nUnverrücktes Stativ: Basisbelichtung für Umgebung, Räder und Boden zuerst fixieren, danach Fokus und Ausschnitt nicht mehr verändern\nGetrennte Lichtwege & Compositing: Seite, Dach, Front und Felgen einzeln gleichmäßig abfahren und im Compositing physikalisch stimmig zusammenführen"
+    },
+    {
       "headline": "Lightpainting beginnt mit einer Bildidee, nicht mit einer Lampe",
       "body": "Eine lange Belichtung und eine bewegte Lichtquelle können nahezu jede Fläche sichtbar machen. Das bedeutet noch nicht, dass ein gutes Fahrzeugbild entsteht. Vor dem Aufbau wird festgelegt, welche Linien wichtig sind: Dachbogen, Schulter, Front, Felge oder Innenraum. Das Licht soll diese Form erklären und nicht bloß beweisen, dass die Technik funktioniert.\n\nAuch die spätere Nutzung entscheidet über die Bildsprache. Ein einzelnes dramatisches Hero-Motiv darf stärker verdichtet sein als eine Serie für Marke oder Händler. Für mehrere Formate braucht es Platz, saubere Kanten und Varianten. Lightpainting ist dann ein kontrollierter Produktionsbaustein, kein Effekt, der alle anderen Entscheidungen ersetzt.",
       "_template": "textBlock"
@@ -68,6 +75,39 @@
       "_template": "textBlock"
     },
     {
+      "_template": "linkList",
+      "headline": "Nacht- & Fahrzeugfotografie in NRW",
+      "links": [
+        {
+          "label": "Sportwagenfotografie Düsseldorf",
+          "href": "/sportwagen-fotografie-duesseldorf.html"
+        },
+        {
+          "label": "Automobilfotografie Duisburg",
+          "href": "/automobil-fotografie-duisburg.html"
+        },
+        {
+          "label": "Autofotografie Düsseldorf",
+          "href": "/autofotografie-duesseldorf.html"
+        },
+        {
+          "label": "Portfolio Sportwagen",
+          "href": "/portfolio/portfolio-auswahl-sportwagen"
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Nacht- und Lightpainting-Shooting für dein Fahrzeug",
+      "text": "Dramatische Lichtkanten und saubere Reflexe in der dunklen Stunde in Düsseldorf und im Ruhrgebiet ab 250 € inkl. MwSt.",
+      "buttonLabel": "Nacht-Shooting anfragen"
+    },
+    {
       "headline": "Kurze Fragen",
       "items": [
         {
@@ -104,11 +144,25 @@
   },
   "status": "published",
   "createdAt": "2026-08-17T06:00:00Z",
-  "updatedAt": "2026-08-24T20:51:37.603Z",
+  "updatedAt": "2026-11-24T09:15:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
       "href": "/automobil-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fahrzeugserien konsistent planen",
+      "href": "/blog-fahrzeugserie-konsistent-planen.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

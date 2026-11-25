@@ -9,11 +9,18 @@
     "Unternehmenskommunikation",
     "Fahrzeugserie"
   ],
-  "publishedAt": "2026-12-25T08:00:00.000Z",
+  "publishedAt": "2027-02-05T08:00:00.000Z",
   "excerpt": "Wie Unternehmen Lkw, Servicefahrzeuge und ganze Flotten so fotografieren lassen, dass Aufbau, Beschriftung, Einsatz und Markenauftritt klar erkennbar werden.",
   "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
   "readingTime": 8,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Nutzfahrzeug- und Lkw-Flotten professionell ins Bild setzen",
+      "body": "Echte Arbeit zeigen: Fahrzeugtypen, Spezialaufbauten, Unternehmensbeschriftung und alltäglichen Hof- oder Einsatzkontext statt steriler Einheitswinkel\nFlottentakt mit Disposition: Verfügbarkeit, Reinigung, Stellflächen und interne Fahrer rechtzeitig abstimmen, um Stillstand kurz zu halten\nEinheitlicher Serienlook: Vergleichbare Kamerahöhe, Lichtstimmung und kontrollierte Reflexe an großen Koffer- und Kabinenflächen verbinden diverse Baujahre und Modelle"
+    },
     {
       "headline": "Eine Flotte zeigt, wie ein Unternehmen arbeitet",
       "body": "Bei einer Lkw- oder Nutzfahrzeugflotte geht es selten darum, ein einzelnes Modell möglichst glänzend zu zeigen. Die Bilder sollen sichtbar machen, was tatsächlich auf dem Hof steht: Fahrzeugtyp, Aufbau, Beschriftung, Ausstattung und der Zusammenhang mit dem Betrieb. Ein Sattelzug einer Spedition erfüllt im Bild eine andere Aufgabe als ein Servicewagen, ein Entsorgungsfahrzeug oder ein mobiler Messwagen. Werden sie alle nur vor neutralem Himmel frontal aufgenommen, geht genau diese Unterscheidung verloren.\n\nDas Ziel ist eine Serie, die sich für Website, Recruiting, Pressearbeit, Messe und Geschäftsausstattung einsetzen lässt. Sie muss nicht jedes Fahrzeug gleich inszenieren. Sie braucht aber eine erkennbare gemeinsame Bildsprache und genug Unterschiede, damit Kunden verstehen, welche Leistungen und Einsatzbereiche der Fuhrpark abdeckt. Diese Aufgabenstellung unterscheidet sich von der neutralen Bestandsaufnahme eines einzelnen Verkaufsfahrzeugs oder von der Zustandsdokumentation bei einer Übergabe.",
@@ -50,6 +57,16 @@
         {
           "label": "Automobilfotografie",
           "href": "/automobil-fotografie.html"
+        },
+        {
+          "label": "Fahrzeugserien konsistent planen",
+          "href": "/blog-fahrzeugserie-konsistent-planen.html",
+          "description": "Wie wiederkehrende Perspektiven verschiedene Fahrzeugtypen verbinden."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Motive, Bildformate und Übergabe vor dem Shooting sauber strukturieren."
         }
       ]
     },
@@ -80,12 +97,12 @@
     },
     {
       "headline": "Bildauswahl und Ausgabe gleich mitdenken",
-      "body": "Bei einer Unternehmensflotte werden Bilder selten an einem einzigen Ort verwendet. Neben Querformaten für Website und Presse können Hochformate für Social Media und Zuschnitte für Anzeigen oder Präsentationen nötig sein. Nenne die wichtigen Formate im Briefing und lasse bei geeigneten Motiven bewusst Platz, damit Logos oder Text später nicht über Fahrzeugdetails liegen. Ein sauberer Bildmaster bleibt davon getrennt; zugeschnittene Dateien werden passend zum jeweiligen Kanal exportiert.\n\nOrdne die finale Auswahl nach Fahrzeugtyp oder Einsatzbereich und verwende klare Dateinamen. Dann findet die Kommunikation nicht nur das Leitmotiv, sondern auch den richtigen Aufbau oder das benötigte Detail. Ein kurzer Bildindex kann Motiv, Fahrzeug, Beschriftungsstand, Datum und Freigabestatus festhalten. Das hilft besonders dann, wenn Fahrzeuge umgebaut werden, eine Beklebung wechselt oder ein Bild nur für bestimmte Kanäle freigegeben ist. Ein einfaches Dateischema kann Fahrzeug-ID, Motiv und Version in fester Reihenfolge verbinden, zum Beispiel `LKW-07_Seitenansicht_Kofferaufbau_Master`. Nutze neutrale interne Kennungen, wenn Kennzeichen oder Kundendaten nicht in Dateinamen gehören.\n\nHake am Set vor der Abfahrt die Pflichtmotive, Aufbau-Details, benötigten Quer- und Hochformatvarianten sowie Freigaben ab. So fallen fehlende Ansichten auf, solange die Fahrzeuge noch verfügbar sind. Die Fotos der Fahrzeugübergabe für Fuhrpark und Leasing haben einen anderen Zweck; sie halten Zustand und Übergabe fest, nicht den Markenauftritt der Flotte.",
+      "body": "Bei einer Unternehmensflotte werden Bilder selten an einem einzigen Ort verwendet. Neben Querformaten für Website und Presse können Hochformate für Social Media und Zuschnitte für Anzeigen oder Präsentationen nötig sein. Nenne die wichtigen Formate im Briefing und lasse bei geeigneten Motiven bewusst Platz, damit Logos oder Text später nicht über Fahrzeugdetails liegen. Ein sauberer Bildmaster bleibt davon getrennt; zugeschnittene Dateien werden passend zum jeweiligen Kanal exportiert.\n\nOrdne die finale Auswahl nach Fahrzeugtyp oder Einsatzbereich und verwende klare Dateinamen. Dann findet die Kommunikation nicht nur das Leitmotiv, sondern auch den richtigen Aufbau oder das benötigte Detail. Ein kurzer Bildindex kann Motiv, Fahrzeug, Beschriftungsstand, Datum und Freigabestatus festhalten. Das hilft besonders dann, wenn Fahrzeuge umgebaut werden, eine Beklebung wechselt oder ein Bild nur für bestimmte Kanäle freigegeben ist. Ein einfaches Dateischema kann Fahrzeug-ID, Motiv und Version in fester Reihenfolge verbinden, zum Beispiel `LKW-07_Seitenansicht_Kofferaufbau_Master`. Nutze neutrale interne Kennungen, wenn Kennzeichen oder Kundendaten nicht in Dateinamen gehören.\n\nHake am Set vor der Abfahrt die Pflichtmotive, Aufbau-Details, benötigten Quer- und Hochformatvarianten sowie Freigaben ab. So fallen fehlende Ansichten auf, solange die Fahrzeuge noch verfügbar sind. Zustandsdokumentationen einzelner Rückgaben folgen eigenen Checklisten; beim Flottenporträt steht der sichtbare Qualitäts- und Markenauftritt im Vordergrund.",
       "_template": "textBlock"
     },
     {
-      "headline": "Was aktuelle Angebote in diesem Feld zeigen",
-      "body": "Als Relevanzsignal lässt sich beobachten, dass spezialisierte Fotografen Lkw- und Nutzfahrzeugbilder ausdrücklich für Unternehmen anbieten. Die Leistungsseite von Geflasht zur Fahrzeugfotografie benennt solche Aufträge; ein Fallbeispiel für die Eggers Spedition zeigt Nutzfahrzeuge im Unternehmenseinsatz. Das sind Beispiele eines Anbieters, keine unabhängigen Marktdaten: Sie belegen weder Suchvolumen noch die Häufigkeit einzelner Anfragen.\n\nFür den eigenen Auftrag ist die entscheidende Frage deshalb nicht, wie viele Motive produziert werden, sondern ob die Bilder den Fuhrpark so zeigen, wie er im Alltag tatsächlich arbeitet. Ein starkes Leitmotiv schafft Wiedererkennung; eine gut geplante Auswahl aus Fahrzeugen, Details und Einsatzkontext macht das Angebot verständlich. Beides gehört zusammen, wenn die Serie langfristig in Kommunikation und Vertrieb genutzt werden soll.",
+      "headline": "Woran sich eine starke Unternehmensflotten-Serie misst",
+      "body": "Entscheidend für den eigenen Auftrag ist nicht die bloße Masse an Motiven, sondern ob die Fotos deinen Fuhrpark realistisch im Arbeitsalltag zeigen. Spezialaufbauten, saubere Unternehmensbeschriftung, geordnete Park- und Verladeszenen sowie passende Portraits vom Einsatz geben B2B-Kunden und Bewerbern sofort ein greifbares Bild vom Betrieb.\n\nEin starkes Leitmotiv sorgt auf Website und Messe für Wiedererkennung; die gezielt geplante Mischung aus Einzeltypen, Details und Einsatzkontext macht die Serie langfristig im Vertrieb und Employer Branding nutzbar.",
       "_template": "textBlock"
     },
     {
@@ -93,14 +110,27 @@
       "headline": "Quellen und Beispiele",
       "links": [
         {
-          "label": "Geflasht zur Fahrzeugfotografie",
-          "href": "https://geflasht.de/fahrzeugfotografie/"
+          "label": "Fahrzeugserien konsistent planen",
+          "href": "/blog-fahrzeugserie-konsistent-planen.html",
+          "description": "Wie wiederkehrende Perspektiven verschiedene Fahrzeugtypen verbinden."
         },
         {
-          "label": "Fallbeispiel für die Eggers Spedition",
-          "href": "https://geflasht.de/projekte/eggers-spedition/"
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Motive, Bildformate und Übergabe vor dem Shooting sauber strukturieren."
         }
       ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Professionelles Auto-Fotoshooting in NRW planen",
+      "text": "Du brauchst stimmige Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto im Raum Düsseldorf, Erkrath und NRW? Shootings starten bei 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
     },
     {
       "headline": "Häufige Fragen",
@@ -139,7 +169,7 @@
   },
   "status": "scheduled",
   "createdAt": "2026-12-21T08:00:00Z",
-  "updatedAt": "2026-12-25T08:00:00.000Z",
+  "updatedAt": "2027-02-05T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie für Unternehmen",
@@ -149,9 +179,16 @@
       "openInNewTab": false
     },
     {
-      "label": "Fahrzeugübergabe fotografisch dokumentieren",
-      "href": "/blog-fahrzeuguebergabe-fotodokumentation-fuhrpark.html",
-      "seoPurpose": "related-information",
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fahrzeugserien konsistent planen",
+      "href": "/blog-fahrzeugserie-konsistent-planen.html",
+      "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
     }

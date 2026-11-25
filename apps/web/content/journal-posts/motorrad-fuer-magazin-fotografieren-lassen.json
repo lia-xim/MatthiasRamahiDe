@@ -8,17 +8,24 @@
     "Custom Bike",
     "Bildredaktion"
   ],
-  "publishedAt": "2027-08-12T07:00:00.000Z",
+  "publishedAt": "2028-03-03T08:00:00.000Z",
   "status": "scheduled",
   "excerpt": "Ein Motorrad in einem Magazin vorstellen zu lassen, beginnt mit der passenden Geschichte und den Vorgaben des Zielmediums. So planst du Pitch, Bildpaket, Credits und Lieferung mit einem Fotografen.",
-  "coverImage": "/uploads/payload/_DSC6968.webp",
-  "coverAlt": "Vertikales Portfoliofoto einer schwarzen Kawasaki im warmen Abendlicht; das Bild ist kein Magazin-Einreichungspaket.",
+  "coverImage": "/uploads/payload/20250209-DSC00612.webp",
+  "coverAlt": "Ninja · Nachtporträt",
   "readingTime": 9,
   "blocks": [
     {
       "_template": "textBlock",
       "headline": "",
       "body": "Wenn du dein Motorrad bei einem Magazin vorstellen willst, solltest du zuerst die passende Geschichte und das konkrete Zielmedium klären. Ein Fotoshooting allein macht aus einem Bike noch kein Feature. Die Redaktion muss verstehen, warum das Motorrad ihre Leser interessiert; der Fotograf braucht zugleich die Vorgaben für Bildauswahl, Formate, Credits und Abgabe.\n\nDieser Leitfaden richtet sich an Halterinnen, Halter und Custom-Bike-Bauer, die eine Veröffentlichung vorbereiten und dafür einen Fotografen beauftragen möchten. Er verspricht keine Zusage des Magazins. Die Einreichungsregeln unterscheiden sich deutlich: Manche Seiten nennen Bildzahl und Ausrichtung, andere verlangen zunächst nur eine kurze Vorstellung mit einem Link. Prüfe deshalb immer die aktuelle Richtlinie des Mediums, bevor du Termin und Umfang festlegst."
+    },
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Motorrad fürs Magazin fotografieren lassen: Die wichtigsten Punkte i",
+      "body": "Kernaussage: Das hängt vom Medium und vom Einreichungsschritt ab\nEine Geschichte ist konkreter: Für eine erste Anfrage hilft eine Frage, die über die Optik hinausgeht: Was kann die Redaktion an diesem Motorrad zeigen oder erklären, das für ihre\nEine Bildfolge soll die: Plane die Auswahl nach ihrer Aufgabe, nicht nach einer möglichst langen Shotlist\nDie Einreichung übersichtlich übergeben: Schicke eine kurze Nachricht mit dem Pitch, den bestätigten Eckdaten und genau dem Material, das die Redaktion angefordert hat"
     },
     {
       "_template": "textBlock",
@@ -144,7 +151,7 @@
     }
   ],
   "createdAt": "2026-11-05T09:45:17Z",
-  "updatedAt": "2027-08-12T07:00:00.000Z",
+  "updatedAt": "2028-03-03T08:00:00.000Z",
   "seo": {
     "title": "Motorrad fürs Magazin fotografieren lassen: Feature planen",
     "description": "Motorradmagazine haben eigene Vorgaben. So planst du Pitch, Bildpaket, Credits, Exklusivität und Abgabe mit einem Fotografen.",
@@ -165,7 +172,7 @@
     ],
     "canonicalUrl": "https://matthiasramahi.de/blog-motorrad-fuer-magazin-fotografieren-lassen.html",
     "legacyUrl": "blog-motorrad-fuer-magazin-fotografieren-lassen.html",
-    "ogImage": "/uploads/payload/_DSC6968.webp",
+    "ogImage": "/uploads/payload/20250209-DSC00612.webp",
     "noIndex": false
   },
   "relatedPages": [
@@ -180,6 +187,13 @@
       "label": "Motorradfotograf finden",
       "href": "/blog-motorradfotograf-finden.html",
       "seoPurpose": "related-editorial",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Motorrad-Fotoshooting-Checkliste",
+      "href": "/blog-motorrad-fotoshooting-checkliste.html",
+      "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
     }

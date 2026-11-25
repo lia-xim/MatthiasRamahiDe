@@ -342,8 +342,15 @@
     .mr-footer__claim{justify-self:start;max-width:none}
     .mr-footer__cols{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 24px}
   }
+  @media(max-width:900px){
+    .hero{height:78svh;min-height:500px;max-height:680px;padding:86px 20px clamp(26px,5vw,42px)}
+    .hero-lead{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:14.5px;margin-top:14px}
+    .hero-actions{gap:8px;margin-top:16px}
+    .hero-actions .btn{flex:1 1 auto;padding:13px 16px}
+  }
   @media(max-width:780px){
-    .section-inner{padding:clamp(56px,14vw,88px) clamp(20px,6vw,26px)}
+    .section-inner{padding:38px 20px}
+    .statement .section-inner{padding:40px 20px}
     .chapters-head,.pf-head,.services-head,.blog-head{grid-template-columns:1fr;gap:12px;margin-bottom:clamp(28px,7vw,40px)}
     .chapters-head .lead,.pf-head .lead,.services-head .lead,.blog-head .lead{text-align:left;justify-self:start}
     /* Große Editorial-Headlines: Wucht behalten, aber 3-Zeilen-Umbrüche auf dem Handy vermeiden */

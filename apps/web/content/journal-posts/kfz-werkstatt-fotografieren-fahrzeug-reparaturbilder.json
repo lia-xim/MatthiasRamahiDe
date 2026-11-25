@@ -9,13 +9,20 @@
     "Fahrzeugfotografie",
     "Unternehmensfotografie"
   ],
-  "publishedAt": "2027-01-26T08:00:00.000Z",
+  "publishedAt": "2027-03-30T08:00:00.000Z",
   "status": "scheduled",
   "excerpt": "So planen Kfz-Werkstätten echte Fotos von Arbeitsbereichen, Fahrzeugen und Serviceabläufen – mit Shotlist, sicherem Termin und klaren Freigaben.",
   "coverImage": "/uploads/payload/20250426-DSC02651.webp",
   "coverAlt": "Schwarzweiße Detailaufnahme eines offenen Motors an einem historischen Hot Rod.",
   "readingTime": 9,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Kfz-Werkstatt fotografieren: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Eine Außenansicht mit Eingang, einen verständlichen Blick in den Betrieb, ausgewählte Arbeitsbereiche, passende Fahrzeuge und wenige echte Tätigkeits- oder\nWerkstattfotos müssen den echten: Eine Kfz-Werkstatt sollte auf Bildern so aussehen, wie Kundinnen und Kunden sie erleben: echte Fahrzeuge, nachvollziehbare Arbeitsbereiche und die Leistungen,\nVor Ort vom Auftrag: Vor dem Start: Die verantwortliche Person bestätigt Service, Fahrzeug, zugänglichen Bereich und Ansprechpartner für die Freigabe\nEine Bildserie statt austauschbarer: ## Eine Bildserie statt austauschbarer Werkstattfotos Gute Werkstattbilder machen den Betrieb verständlich: Man erkennt den Zugang, die Arbeitsumgebung und"
+    },
     {
       "_template": "textBlock",
       "headline": "Werkstattfotos müssen den echten Betrieb erklären",
@@ -81,6 +88,12 @@
       "body": "## Eine Bildserie statt austauschbarer Werkstattfotos\n\nGute Werkstattbilder machen den Betrieb verständlich: Man erkennt den Zugang, die Arbeitsumgebung und eine Tätigkeit, die tatsächlich angeboten wird. Dafür muss nicht jeder Winkel fotografiert werden. Lege zuerst den wichtigsten Service fest, plane den Termin mit der Werkstatt und wähle Motive, die sich in Übersicht, Arbeit und Detail ergänzen.\n\nWenn zusätzlich eigenständige Fahrzeugporträts oder eine konsistente Automobilserie für Marke, Fuhrpark oder Kampagne gebraucht werden, ist das ein eigener Bildauftrag. Das Briefing sollte dann Fahrzeuge, geplante Kanäle, Motivfolge und Freigaben beschreiben."
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Häufige Fragen zur Werkstattfotografie",
       "items": [
@@ -119,6 +132,16 @@
           "label": "DGUV Information 208-040: Beschaffen und Betreiben von Fahrzeughebebühnen",
           "href": "https://publikationen.dguv.de/regelwerk/dguv-informationen/2780/beschaffen-und-betreiben-von-fahrzeughebebuehnen",
           "description": "Hinweise der Deutschen Gesetzlichen Unfallversicherung zu Gefahren beim Betrieb von Fahrzeughebebühnen."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Motive, Bildformate und Übergabe vor dem Shooting sauber strukturieren."
         }
       ]
     },
@@ -161,7 +184,7 @@
     "noIndex": false
   },
   "createdAt": "2026-11-03T16:32:17Z",
-  "updatedAt": "2027-01-26T08:00:00.000Z",
+  "updatedAt": "2027-03-30T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",

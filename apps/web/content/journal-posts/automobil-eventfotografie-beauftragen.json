@@ -8,11 +8,18 @@
     "Autotreffen",
     "Bildserie"
   ],
-  "publishedAt": "2026-11-25T08:00:00.000Z",
+  "publishedAt": "2027-01-05T08:00:00.000Z",
   "excerpt": "Wie du die Fotografie für ein statisches Auto-Event planst: Bildziel, Programm, wichtige Fahrzeuge, Zugang, Kernmotive und eine nutzbare Übergabe.",
   "coverImage": "/assets/optimized/assets-portfolio-dsc2310-1920.webp",
   "readingTime": 12,
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Schlüsselpunkte für ein belastbares Auto-Event-Briefing",
+      "body": "Bildziel & Prioritäten: Verwendungszweck (Presse, Club-Rückblick, Sponsoren) festlegen und unverzichtbare Fahrzeuge samt Ansprechperson auf den Plan setzen\nAblauf & Zeitfenster: Ankunft, Aufstellung und ruhige Minuten vor Publikumsandrang konkret mit Ort und Zuständigkeit im Zeitplan verankern\nAbnahme & Lieferung: Umfang (Highlight-Paket am Eventtag vs. vollständige kuratierte Galerie) sowie Zugangs- und Blitzregeln vorab bestätigen"
+    },
     {
       "headline": "Mit dem Zweck der Bilder beginnen",
       "body": "Bevor du anfragst, schreibe in einem Satz auf, wer die Bilder später nutzt und was sie zeigen sollen: einen Rückblick für Clubmitglieder, eine Website-Galerie, Pressebilder, einen Sponsorbericht oder die Ankündigung des nächsten Treffens. Das sind unterschiedliche Lieferziele. Für eine aktuelle Meldung können wenige freigegebene Kernmotive zuerst gebraucht werden; für ein Clubarchiv zählt eher eine vollständig zugeordnete Serie. Wenn beides gebraucht wird, nenne beide Ziele getrennt.\n\nGib außerdem Datum und Ort, die ungefähre Zahl der Fahrzeuge, den Ablauf, wichtige Programmpunkte und den gewünschten Liefertermin an. Markiere, was noch offen ist. So kann der Fotograf Rückfragen stellen und Aufwand sowie Voraussetzungen einschätzen, ohne dass unbestätigte Annahmen schon als Zusage gelten.",
@@ -102,6 +109,33 @@
       "_template": "textBlock"
     },
     {
+      "_template": "linkList",
+      "headline": "Passende Leistungen & weiterführende Guides",
+      "links": [
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Bildserien und Ablauf für Marken, Autohäuser und Privatfahrzeuge."
+        },
+        {
+          "label": "Autofotografie in Düsseldorf",
+          "href": "/autofotografie-duesseldorf.html",
+          "description": "Standorte, Lichtfenster und Beispiele aus der Region Düsseldorf."
+        },
+        {
+          "label": "Auto-Shooting-Briefing mit Shotlist",
+          "href": "/blog-auto-shooting-briefing.html",
+          "description": "Wie Motivliste, Formate und Zuständigkeiten vor dem Termin festgehalten werden."
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Professionelles Auto-Fotoshooting in NRW planen",
+      "text": "Du brauchst stimmige Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto im Raum Düsseldorf, Erkrath und NRW? Shootings starten bei 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "headline": "Kurze Fragen zur Eventfotografie für Autos",
       "items": [
         {
@@ -132,11 +166,25 @@
   },
   "status": "scheduled",
   "createdAt": "2026-11-03T06:00:00Z",
-  "updatedAt": "2026-11-25T08:00:00.000Z",
+  "updatedAt": "2027-01-05T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
       "href": "/automobil-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Auto-Shooting-Briefing mit Shotlist",
+      "href": "/blog-auto-shooting-briefing.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Fahrzeugserien konsistent planen",
+      "href": "/blog-fahrzeugserie-konsistent-planen.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

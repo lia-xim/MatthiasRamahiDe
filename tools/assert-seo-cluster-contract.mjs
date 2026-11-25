@@ -18,9 +18,10 @@ const families = [
     parent: '/automobil-fotografie.html',
     duesseldorf: '/automobil-fotografie-duesseldorf.html',
     nrw: '/automobil-fotografie-nrw.html',
-    child: '/automobil-fotografie-mettmann.html',
-    intent: '/automotive-fotografie.html',
-    duesseldorfIntent: '/automotive-fotografie-duesseldorf.html',
+    child: '/automobil-fotografie-bochum.html',
+    consolidatedChild: '/automobil-fotografie-mettmann.html',
+    intent: '/fotoshooting-mit-auto.html',
+    duesseldorfIntent: '',
     proof: '/portfolio/portfolio-auswahl-automobil',
   },
   {
@@ -28,9 +29,10 @@ const families = [
     parent: '/sportwagen-fotografie.html',
     duesseldorf: '/sportwagen-fotografie-duesseldorf.html',
     nrw: '/sportwagen-fotografie-nrw.html',
-    child: '/sportwagen-fotografie-mettmann.html',
-    intent: '/performance-car-fotografie.html',
-    duesseldorfIntent: '/performance-car-fotografie-duesseldorf.html',
+    child: '/sportwagen-fotografie-bochum.html',
+    consolidatedChild: '/sportwagen-fotografie-mettmann.html',
+    intent: '/motorsport-fotografie.html',
+    duesseldorfIntent: '/motorsport-fotografie-duesseldorf.html',
     proof: '/portfolio/portfolio-auswahl-sportwagen',
   },
   {
@@ -38,9 +40,10 @@ const families = [
     parent: '/oldtimer-fotografie.html',
     duesseldorf: '/oldtimer-fotografie-duesseldorf.html',
     nrw: '/oldtimer-fotografie-nrw.html',
-    child: '/oldtimer-fotografie-mettmann.html',
-    intent: '/classic-car-fotografie.html',
-    duesseldorfIntent: '/classic-car-fotografie-duesseldorf.html',
+    child: '/oldtimer-fotografie-bochum.html',
+    consolidatedChild: '/oldtimer-fotografie-mettmann.html',
+    intent: '/oldtimer-shooting-duesseldorf.html',
+    duesseldorfIntent: '',
     proof: '/portfolio/portfolio-auswahl-oldtimer',
   },
   {
@@ -48,9 +51,10 @@ const families = [
     parent: '/motorrad-fotografie.html',
     duesseldorf: '/motorrad-fotografie-duesseldorf.html',
     nrw: '/motorrad-fotografie-nrw.html',
-    child: '/motorrad-fotografie-mettmann.html',
+    child: '/motorrad-fotografie-bochum.html',
+    consolidatedChild: '/motorrad-fotografie-mettmann.html',
     intent: '/custom-bike-fotografie.html',
-    duesseldorfIntent: '/custom-bike-fotografie-duesseldorf.html',
+    duesseldorfIntent: '',
     proof: '/portfolio/portfolio-auswahl-motorrad',
   },
   {
@@ -58,9 +62,10 @@ const families = [
     parent: '/portraitfotografie.html',
     duesseldorf: '/portraitfotografie-duesseldorf.html',
     nrw: '/portraitfotografie-nrw.html',
-    child: '/portraitfotografie-mettmann.html',
-    intent: '/personal-branding-fotografie.html',
-    duesseldorfIntent: '/personal-branding-fotografie-duesseldorf.html',
+    child: '/portraitfotografie-bochum.html',
+    consolidatedChild: '/portraitfotografie-mettmann.html',
+    intent: '/vintage-fotoshooting.html',
+    duesseldorfIntent: '',
     proof: '/portfolio/portfolio-auswahl-portrait',
   },
   {
@@ -68,7 +73,8 @@ const families = [
     parent: '/landschaftsfotografie.html',
     duesseldorf: '/landschaftsfotografie-duesseldorf.html',
     nrw: '/landschaftsfotografie-nrw.html',
-    child: '/landschaftsfotografie-mettmann.html',
+    child: '',
+    consolidatedChild: '/landschaftsfotografie-mettmann.html',
     intent: '/fine-art-prints-landschaft.html',
     duesseldorfIntent: '',
     proof: '/portfolio/portfolio-auswahl-landschaft',
@@ -168,7 +174,7 @@ for (const family of families) {
     ['pillar', family.parent, [family.duesseldorf, family.nrw], false],
     ['duesseldorf-hub', family.duesseldorf, [family.parent, family.nrw], true],
     ['nrw-hub', family.nrw, [family.parent, family.duesseldorf], true],
-    ['child', family.child, [family.parent, family.duesseldorf, family.nrw], false],
+    ...(family.child ? [['child', family.child, [family.parent, family.duesseldorf, family.nrw], false]] : []),
     ['intent', family.intent, [family.parent, family.duesseldorf, family.nrw], false],
   ]
   const deutschlandPath = family.duesseldorf.replace('-duesseldorf.html', '-deutschland.html')
@@ -273,6 +279,24 @@ for (const family of families) {
     expected: family.duesseldorf,
     actual: deutschlandResponse.headers.get('location'),
   })
+
+  if (family.consolidatedChild) {
+    const consolidatedResponse = await fetch(`${baseUrl}${family.consolidatedChild}`, { redirect: 'manual' })
+    requireCondition(consolidatedResponse.status === 308, {
+      type: 'consolidated-suburb-redirect-status',
+      family: family.key,
+      path: family.consolidatedChild,
+      expected: 308,
+      actual: consolidatedResponse.status,
+    })
+    requireCondition(consolidatedResponse.headers.get('location') === family.nrw, {
+      type: 'consolidated-suburb-redirect-target',
+      family: family.key,
+      path: family.consolidatedChild,
+      expected: family.nrw,
+      actual: consolidatedResponse.headers.get('location'),
+    })
+  }
 }
 
 const sitemapEntries = await sitemapUrlEntries()

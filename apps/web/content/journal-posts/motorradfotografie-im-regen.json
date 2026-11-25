@@ -14,6 +14,13 @@
   "readingTime": 8,
   "blocks": [
     {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Motorradfotografie im Regen planen: Die wichtigsten Punkte im Überbl",
+      "body": "Kernaussage: Motorradfotografie im Regen richtig planen: nasse Flächen, Lackreflexe, sichere Standbilder, Wetterschutz, Farbstimmung und klare Abbruchkriterien\nRegen ist keine Kulisse,: Nasser Asphalt spiegelt Himmel, Straßenlicht und Konturen deutlich stärker als trockener Boden\nWetterschutz muss den Arbeitsfluss: Eine geeignete Regenhülle, trockene Tücher und ein klarer Platz für Wechselobjektive verhindern improvisierte Rettungsaktionen\nEin Regenkonzept braucht immer: Ein Vordach, eine offene Halle oder ein Parkdeck kann die nasse Umgebung erhalten und gleichzeitig Personen sowie Technik schützen"
+    },
+    {
       "headline": "Regen ist keine Kulisse, sondern verändert jede Oberfläche",
       "body": "Nasser Asphalt spiegelt Himmel, Straßenlicht und Konturen deutlich stärker als trockener Boden. Lack wirkt satter, Chrom bekommt lange Lichtzüge und dunkle Bauteile lösen sich besser vom Untergrund. Diese Wirkung entsteht aber nicht durch möglichst starken Regen. Oft reicht eine bereits nasse Fläche bei nachlassendem Niederschlag, weil dann Motiv, Kamera und Beteiligte kontrollierter arbeiten können.\n\nVor dem Termin sollte klar sein, welche Art von Wetterbild gesucht wird: sachlich-kühl, urban mit punktuellen Reflexen oder ruhig und fast monochrom. Ohne diese Entscheidung wird jede Pfütze zur vermeintlichen Idee. Eine definierte Farbrichtung hilft bei Location, Uhrzeit und Lichtwahl und verhindert, dass das Motorrad in einem unruhigen Gemisch aus Warnleuchten und Reklamen verschwindet.",
       "_template": "textBlock"
@@ -68,6 +75,35 @@
       "_template": "textBlock"
     },
     {
+      "_template": "linkList",
+      "headline": "Motorradfotografie in Düsseldorf & NRW",
+      "links": [
+        {
+          "label": "Motorradfotografie Düsseldorf",
+          "href": "/motorrad-fotografie-duesseldorf.html"
+        },
+        {
+          "label": "Motorradfotografie Wuppertal",
+          "href": "/motorrad-fotografie-wuppertal.html"
+        },
+        {
+          "label": "Portfolio Motorrad",
+          "href": "/portfolio/portfolio-auswahl-motorrad"
+        },
+        {
+          "label": "Motorradfotografie in NRW",
+          "href": "/motorrad-fotografie.html",
+          "description": "Professionelle Motorradserien für Fahrer, Umbauten und Werkstätten."
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Ausdrucksstarke Motorradbilder bei jedem Licht",
+      "text": "Mit flexiblem Wetterfenster, überdachten Alternativen oder bewussten Spiegelungen im Regen – ab 250 € inkl. MwSt.",
+      "buttonLabel": "Motorrad-Shooting anfragen"
+    },
+    {
       "headline": "Kurze Fragen",
       "items": [
         {
@@ -104,11 +140,25 @@
   },
   "status": "published",
   "createdAt": "2026-08-11T08:00:00.000Z",
-  "updatedAt": "2026-08-24T20:51:37.608Z",
+  "updatedAt": "2026-11-24T09:15:00.000Z",
   "relatedPages": [
     {
       "label": "Motorradfotografie",
       "href": "/motorrad-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Motorrad-Fotoshooting-Checkliste",
+      "href": "/blog-motorrad-fotoshooting-checkliste.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Motorrad-Fotoshooting sicher planen",
+      "href": "/blog-motorrad-fotoshooting-sicherheit.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

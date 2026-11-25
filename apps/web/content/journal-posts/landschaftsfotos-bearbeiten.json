@@ -9,7 +9,7 @@
     "Tonwerte",
     "Fine Art"
   ],
-  "publishedAt": "2027-08-02T07:00:00.000Z",
+  "publishedAt": "2028-02-15T08:00:00.000Z",
   "excerpt": "Ein ruhiger Ablauf für Landschaftsfotos: zuerst Weißabgleich und Tonwerte abstimmen, dann einzelne Bildbereiche korrigieren und Übergänge prüfen.",
   "coverImage": "/uploads/payload/20250605-DSC03978-2.webp",
   "coverAlt": "Atlantikstrand von der Düne mit Sandmustern und Brandung; öffentliches Landschaftsportfoliofoto als Bildbeispiel.",
@@ -19,6 +19,13 @@
       "_template": "textBlock",
       "headline": "",
       "body": "Bei der Bearbeitung eines Landschaftsfotos geht es selten darum, jeden Regler möglichst weit zu bewegen. Häufiger soll ein heller Himmel Zeichnung behalten, eine dunkle Felsfläche noch lesbar sein oder ein Farbstich verschwinden, ohne die Stimmung des Lichts zu verlieren. Ein brauchbarer Ablauf beginnt deshalb mit dem ganzen Bild und endet erst, wenn die lokalen Korrekturen aus der normalen Betrachtungsgröße unauffällig wirken.\n\nDie Schritte hier lassen sich in unterschiedlichen RAW-Konvertern und Bildprogrammen umsetzen. Sie sind keine feste Rezeptur für jede Landschaft. Entscheidend ist, was das Foto zeigen soll und welche Farben und Tonwerte die Szene tatsächlich tragen."
+    },
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Landschaftsfotos bearbeiten: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Korrigiere zuerst Weißabgleich und globale Tonwerte, verstärke Farbe und Kontrast nur so weit, wie es zur vorhandenen Lichtstimmung passt, und prüfe lokale\nVor dem ersten Regler: Schau das Foto zunächst als Ganzes an und benenne, was zuerst auffallen soll: eine Felskante, die Wasserfläche, ein heller Wolkenzug oder die räumliche\nLokale Korrekturen nur dort: Eine lokale Korrektur lohnt sich, wenn ein bestimmter Teil des Fotos eigene Aufmerksamkeit braucht\nEine kurze Schlussprüfung vor: Vergleiche die bearbeitete Fassung mit dem Ausgangsbild, ohne dich nur auf die Vorher-nachher-Ansicht zu verlassen"
     },
     {
       "_template": "imageSequence",
@@ -69,6 +76,12 @@
       "body": "Vergleiche die bearbeitete Fassung mit dem Ausgangsbild, ohne dich nur auf die Vorher-nachher-Ansicht zu verlassen. Schalte die Entwicklung kurz zurück und wieder ein. Frage dich: Ist das Hauptmotiv klarer geworden? Sind helle und dunkle Bereiche noch glaubwürdig? Passen die Farben zur Lichtstimmung? Gibt es Halos, harte Übergänge oder übersättigte Flecken?\n\nLege dann eine kurze Pause ein und sieh das Bild später erneut an. Ein zweiter Blick macht es leichter, aufgedrehte Farbe, übertriebene Klarheit und ungleichmäßige Masken zu erkennen. Prüfe zum Schluss die Datei in der vorgesehenen Ausgabegröße. Bei einer Landschaft, die als Wandbild gedacht ist, zählen neben dem Bildschirm auch Format, Papier und Betrachtungsabstand. Der Beitrag [Landschaftsbild als Fine-Art-Print auswählen](/blog-landschaftsbild-fine-art-print-auswaehlen.html) behandelt diese Auswahl. Für eine Vorschau auf einen bestimmten Druckprozess kann ein Softproof helfen; er ist eine Beurteilungshilfe und keine Garantie für die Wirkung jedes tatsächlichen Drucks. Eine Übersicht der Landschaftsmotive findest du auf der Seite [Landschaftsfotografie](/landschaftsfotografie.html)."
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Landschaftsmotive als Fine-Art-Print anfragen",
+      "text": "Ausgewählte Landschaftsaufnahmen erscheinen als hochwertige Fine-Art-Prints auf Archivpapier. Schreib mir Motivwunsch und gewünschtes Wandformat.",
+      "buttonLabel": "Fine-Art-Print anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Häufige Fragen",
       "items": [
@@ -108,6 +121,11 @@
           "label": "Adobe Lightroom Classic: Softproofing",
           "href": "https://helpx.adobe.com/de/lightroom-classic/desktop/process-and-develop-photos/develop-module-options.html",
           "description": "Offizielle Erläuterung, wie eine Softproof-Vorschau die Wirkung eines Bildes für bestimmte Druckbedingungen beurteilen hilft."
+        },
+        {
+          "label": "Landschaftsfotografie & Fine-Art-Prints",
+          "href": "/landschaftsfotografie.html",
+          "description": "Kuratierte Landschaftsmotive als Wandbilder und Sammler-Editionen."
         }
       ]
     }
@@ -123,7 +141,7 @@
     "noIndex": false
   },
   "createdAt": "2026-11-05T05:52:38Z",
-  "updatedAt": "2027-08-02T07:00:00Z",
+  "updatedAt": "2028-02-15T08:00:00.000Z",
   "relatedPages": [
     {
       "label": "Landschaftsfotografie",

@@ -9,12 +9,12 @@
     "Unternehmenskommunikation"
   ],
   "excerpt": "Fahrzeugfotos im Geschäftsbericht planen: Auswahl der Flotte, Einsatzkontext, Bildfolge, Bildunterschriften, Formate und Freigaben.",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
-  "coverAlt": "Schwarzer SUV vor Industrieanlagen im Abendlicht, gespiegelt in einer Pfütze.",
+  "coverImage": "/assets/portfolio/automobil-bentley-oldtimer.webp",
+  "coverAlt": "Oldtimer · Formdetail",
   "status": "scheduled",
-  "publishedAt": "2027-06-05T07:00:00.000Z",
+  "publishedAt": "2027-11-09T08:00:00.000Z",
   "createdAt": "2026-11-04T14:41:44Z",
-  "updatedAt": "2027-06-05T07:00:00.000Z",
+  "updatedAt": "2027-11-09T08:00:00.000Z",
   "readingTime": 8,
   "relatedPages": [
     {
@@ -40,6 +40,13 @@
     }
   ],
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Firmenwagenflotte fotografieren: Die wichtigsten Punkte im Überblick",
+      "body": "Kernaussage: Fahrzeugfotos für den Geschäftsbericht planen: Auswahl, Einsatzkontext, Bildfolge, Bildunterschriften, Formate und Freigaben\nFahrzeugbilder gehören in den: Ein Geschäftsbericht kann zeigen, wo und wofür Firmenfahrzeuge im Unternehmen eingesetzt werden\nBerichtslayout und Ausgabekanäle früh: Ein Motiv, das auf dem Kameradisplay vollständig wirkt, kann im Layout an einer Textspalte oder einer schmalen Bildschirmansicht scheitern\nEin überschaubarer Ablauf für: Vor dem Termin erstellen Kommunikation und Fuhrpark gemeinsam eine Liste der benötigten Fahrzeugklassen, Standorte und Aussagen"
+    },
     {
       "_template": "textBlock",
       "headline": "Fahrzeugbilder gehören in den Bericht, wenn sie etwas erklären",
@@ -112,6 +119,35 @@
           "label": "USAGM Style Guide: Bildunterschriften und Fotocredits",
           "href": "https://brandguides.brandfolder.com/usagm-brand-guidelines/style-reference-for-copywriters",
           "description": "Beispiel für redaktionelle Hausregeln zu Captions und Credits in den eigenen Jahresberichten."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
+      "_template": "faqBlock",
+      "headline": "Häufige Fragen zur Flottenfotografie im Geschäftsbericht",
+      "items": [
+        {
+          "question": "Muss jedes Firmenfahrzeug für den Geschäftsbericht fotografiert werden?",
+          "answer": "Nein. Eine repräsentative Auswahl relevanter Fahrzeugklassen, Antriebe oder Standorte reicht meist aus, solange im Bericht klar benannt bleibt, dass es sich um ausgewählte Einsatzmotive handelt."
+        },
+        {
+          "question": "Welche Formate braucht die Redaktion für Geschäftsbericht und Online-Version?",
+          "answer": "Neben breiten Aufmacher-Motiven im Querformat werden häufig beschnittfreundliche Einzelmotive mit ruhigem Rand für Doppelseiten sowie mobile Hoch- oder Quadrat-Varianten benötigt."
+        },
+        {
+          "question": "Welche Angaben gehören zur Bildübergabe an Redaktion und Fuhrpark?",
+          "answer": "Jede Datei sollte eindeutig zu Fahrzeugklasse, Standort, Aufnahmedatum und vereinbartem Freigabestatus (inklusive Kennzeichen- und Personenfreigabe) dokumentiert übergeben werden."
         }
       ]
     }
@@ -129,7 +165,7 @@
     "searchIntent": "Kommerzielle Informationssuche: Kommunikations- und Fuhrparkverantwortliche planen Fahrzeugbilder für Geschäfts- oder Unternehmensberichte und möchten Auswahl, Aussage und Bildnutzung nachvollziehbar abstimmen.",
     "canonicalUrl": "https://matthiasramahi.de/blog-firmenwagenflotte-geschaeftsbericht-fotografieren.html",
     "legacyUrl": "blog-firmenwagenflotte-geschaeftsbericht-fotografieren.html",
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "ogImage": "/assets/portfolio/automobil-bentley-oldtimer.webp",
     "noIndex": false
   }
 }

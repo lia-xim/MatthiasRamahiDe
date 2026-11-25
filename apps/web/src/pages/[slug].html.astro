@@ -39,11 +39,19 @@ if (!shouldRenderFromCms) {
   return new Response('Not found', { status: 404 })
 }
 
+const isEditing = isTinaEditRequest(Astro.request)
 const isJournalSurface = legacyFile === 'blog.html' || Boolean(journalArticleByLegacyFile[legacyFile.toLowerCase()])
-Astro.response.headers.set('cache-control', isJournalSurface ? 'no-store' : livePageCacheControl())
+Astro.response.headers.set(
+  'cache-control',
+  isEditing
+    ? 'no-store'
+    : isJournalSurface
+      ? livePageCacheControl({ sMaxAge: 300, staleWhileRevalidate: 3600 })
+      : livePageCacheControl(),
+)
 Astro.response.headers.set('x-migration-render', 'adopted-astro-payload')
 
-const tinaVisualMatch = isTinaEditRequest(Astro.request)
+const tinaVisualMatch = isEditing
   ? await getTinaVisualDocumentForLegacyRoute(legacyFile)
   : null
 ---

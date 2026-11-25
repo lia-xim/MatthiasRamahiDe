@@ -14,8 +14,8 @@
   "coverAlt": "Orangefarbener Sportwagen in einem Parkdeck mit Lichtreihen an der Decke",
   "readingTime": 8,
   "seo": {
-    "title": "Rolling Shots Auto: Ablauf, Technik & Sicherheit | Matthias Ramahi",
-    "description": "Rolling Shots mit dem Auto: wie Car-to-Car-Aufnahmen entstehen – Begleitfahrzeug, Verschlusszeit, Strecke, Kommunikation, Sicherheit und Alternativen.",
+    "title": "Rolling Shots Auto: Kamera, Ablauf & Sicherheit",
+    "description": "Rolling Shots mit dem Auto sicher umsetzen: Verschlusszeit, Begleitfahrzeug, Strecke, Kommunikation, Perspektiven und sichere Alternativen.",
     "focusKeyword": "Rolling Shots Auto",
     "searchIntent": "Informationssuche: Autofahrer und Fotografen wollen wissen, wie Rolling Shots mit dem Auto technisch und sicher entstehen.",
     "canonicalUrl": "https://matthiasramahi.de/blog-rolling-shots-auto.html",
@@ -31,17 +31,24 @@
   },
   "status": "published",
   "createdAt": "2026-09-25T14:00:00.000Z",
-  "updatedAt": "2026-09-25T14:00:00.000Z",
+  "updatedAt": "2026-11-23T18:30:00.000Z",
   "relatedPages": [
     {
-      "label": "Sportwagen-Fotografie",
+      "label": "Auto-Fotoshooting NRW",
+      "href": "/fotoshooting-mit-auto.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Sportwagen-Fotografie NRW",
       "href": "/sportwagen-fotografie.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
     },
     {
-      "label": "Automobilfotografie",
+      "label": "Automobilfotografie NRW",
       "href": "/automobil-fotografie.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
@@ -49,6 +56,13 @@
     }
   ],
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Startwerte und Teamaufbau für gelungene Rolling Shots",
+      "body": "Verschlusszeit: 1/60 bis 1/125 s für hohe Schärfequote bei spürbarer Radbewegung; 1/30 s oder länger nur bei sehr ruhiger Führung\nRollenpflicht: Mindestens drei getrennte Personen (Zielauto-Fahrer, Kamerafahrzeug-Fahrer, Fotograf) – niemals gleichzeitig fahren und fotografieren\nSichere Alternative: Mitzieher vom festen Straßenrand (1/30–1/60 s) liefert dynamische Fahrwirkung ohne zweites Fahrzeug im öffentlichen Verkehr"
+    },
     {
       "_template": "textBlock",
       "headline": "Was ein Rolling Shot ist",
@@ -100,6 +114,39 @@
       "_template": "textBlock",
       "headline": "Fahrbilder im Auto-Shooting",
       "body": "Fahrbilder planen wir bei einem Sportwagen- oder Auto-Shooting nur, wenn Strecke, Begleitfahrzeug und Absicherung stimmen. Sonst entstehen die dynamischen Motive über Mitzieher und Perspektive. Welche Variante passt, klären wir vor dem Termin. Für Motorräder gibt es einen eigenen Beitrag zu Rolling Shots."
+    },
+    {
+      "_template": "linkList",
+      "headline": "Fahrbilder & Fahrzeugserien in NRW",
+      "links": [
+        {
+          "label": "Auto-Fotoshooting NRW (Ablauf & Kosten ab 250 €)",
+          "href": "/fotoshooting-mit-auto.html"
+        },
+        {
+          "label": "Sportwagen-Fotografie NRW",
+          "href": "/sportwagen-fotografie.html"
+        },
+        {
+          "label": "Motorsport-Fotografie NRW",
+          "href": "/motorsport-fotografie.html"
+        },
+        {
+          "label": "Fotospots für Autos in NRW",
+          "href": "/blog-fotospots-autos-nrw.html"
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Rolling Shots & Auto-Serie sicher planen",
+      "text": "Für kontrollierte Fahrbilder oder eine komplette Serie aus Standbildern, Details und Bewegung in NRW klären wir Strecke, Licht und Team vorab.",
+      "buttonLabel": "Fahrzeug-Shooting anfragen"
     },
     {
       "_template": "faqBlock",

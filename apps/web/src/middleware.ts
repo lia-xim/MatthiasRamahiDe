@@ -89,13 +89,33 @@ const siteMiddleware = defineMiddleware(async (context, next) => {
     return response
   }
 
+  const isTinaEditOrPreview =
+    pathname.startsWith('/preview/') ||
+    pathname.startsWith('/admin/') ||
+    pathname.startsWith('/api/') ||
+    context.url.searchParams.get('tina-edit') === '1' ||
+    Boolean(
+      !context.isPrerendered &&
+        context.request.headers
+          .get('cookie')
+          ?.split(';')
+          .some((cookie) => {
+            const [name, value] = cookie.trim().split('=')
+            return name === '__tina_edit' && value === '1'
+          }),
+    )
+
   if (enableAdoptedRouteRewrite && /^\/[^/]+\.html$/i.test(pathname)) {
     const legacyFile = nativeHtmlFile
 
     if (legacyFile && isCmsAdoptedLegacyFile(legacyFile, { includeLocalSeo: enableLocalSeoAdoptedRouteRewrite })) {
       const slug = legacyFile.replace(/\.html$/i, '')
       const response = await context.rewrite(`/native/${slug}${context.url.search}`)
-      response.headers.set('cache-control', livePageCacheControl())
+      if (isTinaEditOrPreview || response.status !== 200) {
+        response.headers.set('cache-control', 'no-store')
+      } else if (!response.headers.get('cache-control')) {
+        response.headers.set('cache-control', livePageCacheControl())
+      }
       response.headers.set('x-migration-render', 'adopted-astro-payload')
       const family = localSeoLayoutFamilyForSlug(legacyFile)
       if (family) {
@@ -107,7 +127,17 @@ const siteMiddleware = defineMiddleware(async (context, next) => {
     }
   }
 
-  return next()
+  const response = await next()
+  if (
+    !isTinaEditOrPreview &&
+    (context.request.method === 'GET' || context.request.method === 'HEAD') &&
+    response.status === 200 &&
+    (response.headers.get('content-type') || '').includes('text/html') &&
+    !response.headers.get('cache-control')
+  ) {
+    response.headers.set('cache-control', livePageCacheControl())
+  }
+  return response
 })
 
 export const onRequest = defineMiddleware((context, next) => {

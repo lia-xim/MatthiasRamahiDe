@@ -14,8 +14,8 @@
   "coverAlt": "Fahrer mit Helm auf einer grünen Kawasaki Ninja 650 bei Nacht vor rotem Licht",
   "readingTime": 9,
   "seo": {
-    "title": "Motorrad nachts fotografieren: Licht & Einstellungen | Matthias Ramahi",
-    "description": "Motorrad nachts fotografieren: blaue Stunde, Einstellungen für Low Light, Blitz und LED, Light Trails, Rauschen und Sicherheit bei der Nachtfotografie.",
+    "title": "Motorrad nachts fotografieren: Licht & Einstellungen",
+    "description": "Motorrad nachts fotografieren: blaue Stunde, Kamera-Einstellungen für Low Light, Blitz & LED, Light Trails und sichere Spots für Nachtaufnahmen.",
     "focusKeyword": "Motorrad nachts fotografieren",
     "searchIntent": "Informationssuche: Motorradfahrer und Fotografen wollen wissen, wie Nacht- und Low-Light-Aufnahmen von Motorrädern gelingen – Orte, Einstellungen, Licht und Sicherheit.",
     "canonicalUrl": "https://matthiasramahi.de/blog-motorrad-nachts-fotografieren.html",
@@ -31,24 +31,38 @@
   },
   "status": "published",
   "createdAt": "2026-09-25T10:00:00.000Z",
-  "updatedAt": "2026-09-25T10:00:00.000Z",
+  "updatedAt": "2026-11-23T18:30:00.000Z",
   "relatedPages": [
     {
-      "label": "Motorradfotografie",
+      "label": "Motorrad-Fotoshooting NRW",
       "href": "/motorrad-fotografie.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
     },
     {
-      "label": "Motorrad-Shooting Düsseldorf",
-      "href": "/motorrad-shooting-duesseldorf.html",
+      "label": "Motorrad-Fotoshooting Düsseldorf",
+      "href": "/motorrad-fotografie-duesseldorf.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Custom-Bike-Fotografie",
+      "href": "/custom-bike-fotografie.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
     }
   ],
   "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Praxis-Setup für scharfe Motorradfotos bei Nacht",
+      "body": "Bestes Zeitfenster: Blaue Stunde direkt nach Sonnenuntergang – Himmel hat noch Zeichnung, Straßenlichter leuchten bereits\nStartwerte (stehendes Bike): RAW, manueller Modus, ISO 800–1600, Blende f/1.8 bis f/4 (mit Stativ Basis-ISO 100–200 bei längerer Belichtung)\nLight Trails & Sicherheit: Stativ, ISO 100–200, f/8–f/11, 4–10 Sekunden sowie Warnweste und zweite Person zur Verkehrsbeobachtung"
+    },
     {
       "_template": "textBlock",
       "headline": "Was die Nacht anders macht",
@@ -117,6 +131,34 @@
       "_template": "textBlock",
       "headline": "Wenn die Bilder professionell werden sollen",
       "body": "Nachtaufnahmen sind eine der aufwendigsten Disziplinen der Motorradfotografie: Licht, Ort und Sicherheit müssen gleichzeitig stimmen. Wenn du dein Motorrad bei Nacht in Szene setzen lassen möchtest, plane ich Ort, Lichtaufbau und Zeitfenster mit dir – vom Standbild in der blauen Stunde bis zur Serie mit Fahrer und Maschine."
+    },
+    {
+      "_template": "linkList",
+      "headline": "Motorrad-Fotoshooting in Düsseldorf & NRW",
+      "links": [
+        {
+          "label": "Motorrad-Fotoshooting NRW (ab 250 €)",
+          "href": "/motorrad-fotografie.html"
+        },
+        {
+          "label": "Motorrad-Fotoshooting Düsseldorf",
+          "href": "/motorrad-fotografie-duesseldorf.html"
+        },
+        {
+          "label": "Custom-Bike-Fotografie NRW",
+          "href": "/custom-bike-fotografie.html"
+        },
+        {
+          "label": "Biker-Portrait Düsseldorf",
+          "href": "/biker-portrait-duesseldorf.html"
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Nacht- oder Dämmerungs-Shooting fürs Bike",
+      "text": "Blaue Stunde, Stadtlicht oder gezielte LED-Ausleuchtung für deine Maschine in Düsseldorf und NRW – ab 250 € inkl. MwSt.",
+      "buttonLabel": "Motorrad-Shooting anfragen"
     },
     {
       "_template": "faqBlock",

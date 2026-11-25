@@ -9,16 +9,18 @@
     "Fahrzeugfotografie",
     "Bildfolge"
   ],
-  "publishedAt": "2027-09-11T07:00:00.000Z",
+  "publishedAt": "2028-04-21T07:00:00.000Z",
   "excerpt": "Eine Photogrammetrie-Aufnahme braucht mehr als einzelne schöne Autofotos. So planst du eine wiederholbare Bildfolge, erkennst Lücken und gehst mit spiegelndem Lack realistisch um.",
-  "coverImage": "/uploads/payload/_DSC2310-2.webp",
+  "coverImage": "/uploads/payload/assets-portfolio-dsc3982-1920.webp",
   "coverAlt": "Weißer BMW E30 mit roter Motorhaube auf einer beleuchteten Präsentationsfläche; Portfoliofoto als Fahrzeugkontext, kein 3D-Scan.",
   "readingTime": 9,
   "blocks": [
     {
       "_template": "textBlock",
       "headline": "Kurzantwort: eine zusammenhängende Bildfolge statt einzelner Motive",
-      "body": "Für ein 3D-Modell aus Fahrzeugfotos brauchst du eine Folge scharfer Aufnahmen, in denen sich die sichtbaren Karosserieflächen von Bild zu Bild überlappen. Die Software sucht gemeinsame Bildmerkmale, schätzt daraus Kamerapositionen und rekonstruiert anschließend Geometrie und Textur. Ein paar attraktive Einzelansichten ergeben dagegen keine vollständige Erfassung des Autos. Autodesk beschreibt für seine ReCap-Photogrammetrie ebenfalls eine Serie überlappender Fotos, aus der ein Modell aufgebaut wird: [Reality Capture mit Autodesk ReCap](https://help.autodesk.com/cloudhelp/ENU/Reality-Capture/files/Getting_Started/about_reality_capture.html).\n\nDieser Leitfaden hilft dir, die Aufnahmefolge eines stehenden Autos zu planen und erste Grenzen zu erkennen. Er ist keine Anleitung zur maßhaltigen Vermessung und verspricht kein fertiges Modell. Die Bilder auf dieser Seite sind Portfolio-Kontext: weder Scan-Eingaben noch Ergebnisse einer 3D-Rekonstruktion."
+      "body": "Für ein 3D-Modell aus Fahrzeugfotos brauchst du eine Folge scharfer Aufnahmen, in denen sich die sichtbaren Karosserieflächen von Bild zu Bild überlappen. Die Software sucht gemeinsame Bildmerkmale, schätzt daraus Kamerapositionen und rekonstruiert anschließend Geometrie und Textur. Ein paar attraktive Einzelansichten ergeben dagegen keine vollständige Erfassung des Autos. Autodesk beschreibt für seine ReCap-Photogrammetrie ebenfalls eine Serie überlappender Fotos, aus der ein Modell aufgebaut wird: [Reality Capture mit Autodesk ReCap](https://help.autodesk.com/cloudhelp/ENU/Reality-Capture/files/Getting_Started/about_reality_capture.html).\n\nDieser Leitfaden hilft dir, die Aufnahmefolge eines stehenden Autos zu planen und erste Grenzen zu erkennen. Er ist keine Anleitung zur maßhaltigen Vermessung und verspricht kein fertiges Modell.",
+      "style": "summary",
+      "eyebrow": "Kurzantwort"
     },
     {
       "_template": "imageSequence",
@@ -69,6 +71,12 @@
       "body": "Lade zunächst einen überschaubaren, scharfen Bildsatz in das gewählte Programm und kontrolliere, ob die Kamerapositionen zusammenhängend erkannt werden. Sieh dir das entstehende Modell aus mehreren Richtungen an. Lücken an Dachkante, Spiegeln, Rädern oder Seitenflächen können auf fehlende Ansichten, starke Reflexionen, unscharfe Dateien oder schwierige Konturen hindeuten. Ergänze dann gezielt die betroffenen Blickwinkel und teste erneut, statt vorsorglich beliebig viele nahezu gleiche Bilder aufzunehmen.\n\nAuch ein geschlossen wirkendes Mesh ist kein Beweis dafür, dass jede Fläche richtig rekonstruiert wurde. Die Universität Stuttgart berichtet für die untersuchten Programme von verbleibenden Problemen an Dach, Seiten und Spiegeln. Behandle Lücken, geglättete Konturen und verzerrte Spiegelungen als Grenzen des Modells. Wenn das Ergebnis für eine technische Entscheidung gebraucht wird, kläre die benötigte Genauigkeit mit einer dafür qualifizierten Stelle."
     },
     {
+      "_template": "ctaBlock",
+      "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "buttonLabel": "Auto-Shooting anfragen"
+    },
+    {
       "_template": "faqBlock",
       "headline": "Häufige Fragen zur Autofotografie für Photogrammetrie",
       "items": [
@@ -117,13 +125,18 @@
           "label": "Apple Developer: Capturing photographs for RealityKit Object Capture",
           "href": "https://developer.apple.com/documentation/realitykit/capturing-photographs-for-realitykit-object-capture",
           "description": "Produktspezifische Hinweise zu vielen Blickwinkeln, hoher Auflösung und gleichmäßiger Beleuchtung ohne harte Schatten oder starke Spitzlichter."
+        },
+        {
+          "label": "Automobilfotografie in Düsseldorf & NRW",
+          "href": "/automobil-fotografie.html",
+          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]
     }
   ],
   "seo": {
     "title": "Auto für Photogrammetrie fotografieren: Bildfolge für 3D",
-    "description": "Wie fotografiert man ein Auto für Photogrammetrie? Plane eine überlappende Bildfolge, halte Licht und Perspektive konsistent und erkenne Grenzen bei Lack und Glas.",
+    "description": "Auto für Photogrammetrie fotografieren: überlappende Bildfolgen planen, Licht konsistent halten und Reflex-Grenzen bei Lack und Glas sicher lösen.",
     "focusKeyword": "Auto für Photogrammetrie fotografieren",
     "secondaryKeywords": [
       "Auto mit Fotos scannen",
@@ -140,7 +153,7 @@
     ],
     "canonicalUrl": "https://matthiasramahi.de/blog-auto-fuer-photogrammetrie-fotografieren.html",
     "legacyUrl": "blog-auto-fuer-photogrammetrie-fotografieren.html",
-    "ogImage": "/uploads/payload/_DSC2310-2.webp",
+    "ogImage": "/uploads/payload/assets-portfolio-dsc3982-1920.webp",
     "noIndex": false
   },
   "legacy": {
@@ -150,7 +163,7 @@
     "renderSource": "structured-astro"
   },
   "createdAt": "2026-11-06T00:00:00Z",
-  "updatedAt": "2027-09-11T07:00:00.000Z",
+  "updatedAt": "2028-04-21T07:00:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
