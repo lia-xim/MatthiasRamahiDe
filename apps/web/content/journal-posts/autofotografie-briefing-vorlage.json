@@ -18,19 +18,19 @@
     {
       "_template": "textBlock",
       "headline": "",
-      "body": "Diese Vorlage hilft Auftraggebern, ein konkretes Auto-Fotoshooting so zu beschreiben, dass Fotograf und Kundenseite dieselben Fahrzeuge, Motive, Kanäle und Abläufe vor Augen haben. Kopiere den Formularteil in eine E-Mail oder ein Dokument, fülle die passenden Felder aus und markiere offene Entscheidungen. Nicht jedes Feld ist für jeden Auftrag nötig.\n\nDas Titelbild zeigt eine Portfolioaufnahme eines schwarzen BRABUS-SUV vor Industriearchitektur. Sie illustriert Autofotografie, dokumentiert aber keinen Auftrag, der mit dieser Vorlage geplant oder durchgeführt wurde."
+      "body": "Diese Vorlage hilft Auftraggebern, ein konkretes Auto-Fotoshooting so zu beschreiben, dass Fotograf und Kundenseite dieselben Fahrzeuge, Motive, Kanäle und Abläufe vor Augen haben. Kopiere den Formularteil in eine E-Mail oder ein Dokument, fülle die passenden Felder aus und markiere offene Entscheidungen. Nicht jedes Feld ist für jeden Auftrag nötig.\n\nDas Titelbild ist eine Portfolioaufnahme eines schwarzen BRABUS-SUV vor Industriearchitektur. Es illustriert Autofotografie allgemein und steht für keinen Auftrag, der mit dieser Vorlage geplant wurde."
     },
     {
       "_template": "textBlock",
       "style": "summary",
       "eyebrow": "Kurzantwort",
-      "headline": "Autofotografie Briefing Vorlage: Die wichtigsten Punkte im Überblick",
-      "body": "Kernaussage: Ausfüllbare Briefing-Vorlage für Autofotografie: Fahrzeugdaten, Shotlist, Kanäle, Rechtewünsche, Location, Ablauf, Freigabe und Lieferung\nWofür die Briefing-Vorlage gedacht: Ein Briefing ist die Arbeitsgrundlage für einen konkreten Auftrag\nKopiervorlage für ein Autofotografie-Briefing: FAHRZEUGDATEN UND BESONDERHEITEN\nSo wird aus dem: Fülle zuerst Zweck, Zielgruppe und Kanäle aus"
+      "headline": "Kurz gesagt: Was in ein Autofotografie-Briefing gehört",
+      "body": "Inhalt: Ein Briefing sammelt Ziel und Kanäle, Fahrzeugdaten, Pflichtmotive, Ort und Zeitplan, Freigabe und Lieferung an einem Ort.\nZweck: Es ist die Arbeitsgrundlage, damit Fotograf und Kundenseite dieselben Fahrzeuge, Motive und Abläufe vor Augen haben.\nVorlage: Kopiere den Block unten, streiche irrelevante Felder und markiere offene Entscheidungen mit „offen“.\nReihenfolge: Fülle zuerst Zweck, Zielgruppe und Kanäle aus, daraus ergeben sich Perspektiven und Bildausschnitte."
     },
     {
       "_template": "textBlock",
       "headline": "Wofür die Briefing-Vorlage gedacht ist",
-      "body": "Ein Briefing ist die Arbeitsgrundlage für einen konkreten Auftrag. Es verbindet Zweck und Zielgruppe mit dem tatsächlichen Fahrzeug, den benötigten Bildern, dem Produktionsort und dem Weg zur Freigabe. Beim Auto sind dabei genaue Modell- und Ausstattungsangaben, empfindliche Oberflächen, Schlüssel und Fahrzeugbewegungen oft genauso planungsrelevant wie die Shotlist.\n\nDer bestehende Auto-Shooting-Briefing-Leitfaden erklärt, welche Entscheidungen hinter diesen Feldern stehen. Diese Seite liefert den direkt kopierbaren Arbeitsblock. Ein Moodboard wie im Moodboard-Beitrag fürs Auto-Fotoshooting hält dagegen die gewünschte Bildsprache und Referenzen fest. Brief, Shotlist und Moodboard können zusammengehören, erfüllen aber unterschiedliche Aufgaben.\n\nDie Felder zu Kanälen und Nutzung sammeln den geplanten Einsatz. Sie ersetzen keine separate Vereinbarung über Nutzungsrechte, Laufzeit, Gebiet oder weitere Beteiligte. Wenn etwas noch nicht entschieden ist, trage „offen“ ein, statt eine Annahme als Freigabe zu behandeln."
+      "body": "Ein Briefing ist die Arbeitsgrundlage für einen konkreten Auftrag. Es verbindet Zweck und Zielgruppe mit dem tatsächlichen Fahrzeug, den benötigten Bildern, dem Produktionsort und dem Weg zur Freigabe. Beim Auto sind dabei genaue Modell- und Ausstattungsangaben, empfindliche Oberflächen, Schlüssel und Fahrzeugbewegungen oft genauso planungsrelevant wie die Shotlist.\n\nDer Leitfaden zum Auto-Shooting-Briefing erklärt, welche Entscheidungen hinter diesen Feldern stehen. Hier bekommst du den direkt kopierbaren Arbeitsblock. Ein Moodboard wie im Moodboard-Beitrag fürs Auto-Fotoshooting hält dagegen die gewünschte Bildsprache und Referenzen fest. Brief, Shotlist und Moodboard können zusammengehören, erfüllen aber unterschiedliche Aufgaben.\n\nDie Felder zu Kanälen und Nutzung sammeln den geplanten Einsatz. Sie ersetzen keine separate Vereinbarung über Nutzungsrechte, Laufzeit, Gebiet oder weitere Beteiligte. Wenn etwas noch nicht entschieden ist, trage „offen“ ein, statt eine Annahme als Freigabe zu behandeln."
     },
     {
       "_template": "textBlock",
@@ -39,17 +39,17 @@
     },
     {
       "_template": "imageSequence",
-      "headline": "Beispiele für saubere Perspektive und Lichtführung",
+      "headline": "Zwei Beispiele für Perspektive und Licht am Fahrzeug",
       "layout": "editorial-pair",
       "items": [
         {
           "image": "/assets/optimized/assets-portfolio-dsc2329-1920.webp",
-          "caption": "Präzise Lichtkante auf dunklem Fahrzeuglack in ruhiger Umgebung",
+          "caption": "Dunkler Sportwagen in einer Ausstellungshalle, blaue Lichtflächen spiegeln sich auf Lack und Boden",
           "cropIntent": "editorial"
         },
         {
           "image": "/assets/optimized/assets-portfolio-dsc2345-1920.webp",
-          "caption": "Kontrollierte Seitenansicht mit gleichmäßiger Spiegelung über Tür und Schweller",
+          "caption": "Orangefarbener Sportwagen von hinten, der Carbonflügel hebt sich vom dunklen Hintergrund ab",
           "cropIntent": "editorial"
         }
       ]
@@ -57,7 +57,7 @@
     {
       "_template": "textBlock",
       "headline": "So wird aus dem Formular ein planbarer Termin",
-      "body": "Fülle zuerst Zweck, Zielgruppe und Kanäle aus. Daraus ergibt sich, welche Perspektiven und Bildausschnitte gebraucht werden. Ein Querformat für eine Website kann andere Kompositionen verlangen als eine vertikale Anzeige. Benenne pro Motiv, ob es Pflicht oder optional ist; eine Liste ohne Priorität lässt offen, was bei engem Zeitfenster zuerst fotografiert werden soll.\n\nBei mehreren Fahrzeugen ergänze die exakte Variante für jedes Auto. Gerade ähnliche Modelle können sich durch Ausstattung, Felgen, Folierung oder Modelljahr unterscheiden. Verknüpfe deshalb Fahrzeugkennung und Motive in der Shotlist. Notiere sichtbare Schäden oder sensible Flächen sachlich, damit vor Ort nicht erst geklärt werden muss, ob etwas kaschiert, geöffnet oder bewegt werden darf.\n\nStimme die Abläufe mit der Person ab, die tatsächlich Zugang zur Location und zu den Fahrzeugen hat. Ein Ansprechpartner für Bildfreigabe muss nicht dieselbe Person sein wie der Schlüsselverantwortliche. Halte diese Rollen getrennt fest, wenn es dem Shooting hilft. Eine Adresse allein beantwortet außerdem noch nicht, wo Fahrzeuge stehen, ob Rangieren möglich ist oder welche Zugangsbedingungen gelten.\n\nBei der Nutzung gilt: Das Briefing hält fest, was geplant ist, damit Angebot und Vereinbarung konkret werden können. Es sollte nicht als stillschweigende Rechteübertragung verstanden werden. Klärt die vereinbarten Medien, Laufzeit, Gebiet, Auftraggeber und gegebenenfalls weitere Beteiligte im passenden Vertrags- oder Angebotsdokument. Wie sich der Nutzungsumfang auf die Kosten eines Auto-Fotoshootings auswirkt, erläutert der Beitrag zu den Kostenfaktoren eines Auto-Fotoshootings.\n\nZum Abschluss benenne eine Person, die Änderungen und Feedback bündelt. Sie prüft das Motivset gegen die vereinbarten Pflichtbilder und gibt die finale Auswahl frei. Wenn Anzahl, Dateiformat oder Zeitpunkt noch nicht feststehen, sollten sie im Angebot als offener Punkt sichtbar bleiben. So kann der Fotograf den Aufwand klären, bevor sich daraus eine unerwartete Liefererwartung entwickelt."
+      "body": "Fülle zuerst Zweck, Zielgruppe und Kanäle aus. Daraus ergibt sich, welche Perspektiven und Bildausschnitte gebraucht werden. Ein Querformat für eine Website kann andere Kompositionen verlangen als eine vertikale Anzeige. Benenne pro Motiv, ob es Pflicht oder optional ist; eine Liste ohne Priorität lässt offen, was bei engem Zeitfenster zuerst fotografiert werden soll.\n\nBei mehreren Fahrzeugen ergänze die exakte Variante für jedes Auto. Gerade ähnliche Modelle können sich durch Ausstattung, Felgen, Folierung oder Modelljahr unterscheiden. Verknüpfe deshalb Fahrzeugkennung und Motive in der Shotlist. Notiere sichtbare Schäden oder sensible Flächen sachlich, damit vor Ort nicht erst geklärt werden muss, ob etwas kaschiert, geöffnet oder bewegt werden darf.\n\nStimme die Abläufe mit der Person ab, die tatsächlich Zugang zur Location und zu den Fahrzeugen hat. Ein Ansprechpartner für Bildfreigabe muss nicht dieselbe Person sein wie der Schlüsselverantwortliche. Halte diese Rollen getrennt fest, wenn es dem Shooting hilft. Eine Adresse allein beantwortet außerdem noch nicht, wo Fahrzeuge stehen, ob Rangieren möglich ist oder welche Zugangsbedingungen gelten.\n\nBei der Nutzung gilt: Das Briefing hält fest, was geplant ist, damit Angebot und Vereinbarung konkret werden können. Es sollte nicht als stillschweigende Rechteübertragung verstanden werden. Kläre die vereinbarten Medien, Laufzeit, Gebiet, Auftraggeber und gegebenenfalls weitere Beteiligte im passenden Vertrags- oder Angebotsdokument. Wie sich der Nutzungsumfang auf die Kosten eines Auto-Fotoshootings auswirkt, erläutert der Beitrag zu den Kostenfaktoren eines Auto-Fotoshootings.\n\nZum Abschluss benenne eine Person, die Änderungen und Feedback bündelt. Sie prüft das Motivset gegen die vereinbarten Pflichtbilder und gibt die finale Auswahl frei. Wenn Anzahl, Dateiformat oder Zeitpunkt noch nicht feststehen, sollten sie im Angebot als offener Punkt sichtbar bleiben. So kann der Fotograf den Aufwand klären, bevor sich daraus eine unerwartete Liefererwartung entwickelt."
     },
     {
       "_template": "faqBlock",
@@ -69,7 +69,7 @@
         },
         {
           "question": "Ersetzt die Vorlage den Leitfaden oder eine Shotlist?",
-          "answer": "Sie ist ein ausfüllbares Arbeitsblatt für einen Auftrag. Der bestehende Briefing-Leitfaden erklärt die Entscheidungen dahinter; die Shotlist benennt konkrete Aufnahmen und Prioritäten. Ein Moodboard beschreibt ergänzend Referenzbilder und gewünschte Bildsprache."
+          "answer": "Sie ist ein ausfüllbares Arbeitsblatt für einen Auftrag. Der Briefing-Leitfaden erklärt die Entscheidungen dahinter; die Shotlist benennt konkrete Aufnahmen und Prioritäten. Ein Moodboard beschreibt ergänzend Referenzbilder und gewünschte Bildsprache."
         },
         {
           "question": "Gibt die Angabe eines Kanals automatisch Nutzungsrechte?",
@@ -124,7 +124,7 @@
     {
       "_template": "ctaBlock",
       "headline": "Du planst ein Fahrzeug-Shooting?",
-      "text": "Wenn die Vorlage ausgefüllt ist, lässt sich der Auftrag mit Fahrzeug, Ziel und gewünschter Bildserie konkret besprechen.",
+      "text": "Wenn die Vorlage ausgefüllt ist, lässt sich der Auftrag mit Fahrzeug, Ziel und gewünschter Bildserie konkret besprechen. Ein Shooting beginnt bei 250 € inkl. MwSt.",
       "buttonLabel": "Autofotografie anfragen"
     }
   ],

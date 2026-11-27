@@ -2,7 +2,7 @@
   "title": "Fotografie Bereiche.",
   "slug": "fotografie",
   "pageType": "photography-index",
-  "intro": "Sechs Fotografie-Bereiche — Automobil, Sportwagen, Oldtimer und Motorrad, Portrait und Fine-Art-Landschaft. Jede Kategorie mit eigener Bildsprache und eigenem Einstieg.",
+  "intro": "Sechs Fotografie-Bereiche: Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft als Fine-Art-Print. Jeder Bereich hat eine eigene Bildsprache und einen eigenen Einstieg.",
   "heroImage": "/uploads/payload/assets-photos-automobil-neon-1921.webp",
   "teaserImage": "/uploads/payload/assets-photos-automobil-neon-1921.webp",
   "heroSlides": [
@@ -10,7 +10,7 @@
       "image": "/uploads/payload/20250312-DSC00729.webp",
       "headlineLine1": "Fotografie",
       "headlineLine2": "Bereiche.",
-      "lead": "Sechs Fotografie-Bereiche - Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft. Jede Kategorie mit eigener Bildsprache und eigenem Einstieg.",
+      "lead": "Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft. Jeder Bereich mit eigener Bildsprache und eigenen Beispielen.",
       "durationSec": 7,
       "primaryLabel": "Projekt anfragen",
       "primaryHref": "#anfrage",
@@ -43,7 +43,7 @@
       "image": "/uploads/payload/_DSC0438-Enhanced-NR.webp",
       "headlineLine1": "Portrait.",
       "headlineLine2": "Haltung.",
-      "lead": "Portraits, Personal Branding und Editorial-Serien folgen Licht, Distanz und Wirkung - nicht einer Pose von der Stange.",
+      "lead": "Portraits, Personal Branding und Editorial-Serien folgen Licht, Distanz und Wirkung, keiner Pose von der Stange.",
       "durationSec": 7,
       "primaryLabel": "Projekt anfragen",
       "primaryHref": "#anfrage",
@@ -54,7 +54,7 @@
       "image": "/uploads/payload/20250605-DSC03814.webp",
       "headlineLine1": "Landschaft.",
       "headlineLine2": "Prints.",
-      "lead": "Fine-Art-Landschaften, Editionen und Wandbilder werden nach Raum, Material und Wirkung kuratiert.",
+      "lead": "Fine-Art-Landschaften und Wandbilder, ausgewählt nach Raum, Material und Wirkung.",
       "durationSec": 7,
       "primaryLabel": "Projekt anfragen",
       "primaryHref": "#anfrage",
@@ -99,10 +99,10 @@
   "photographyIndex": {
     "clusterIntro": [
       {
-        "text": "Die Übersicht ist der Einstiegspunkt. Von hier aus führen die sechs Bereiche auf eigene Hauptseiten — und von dort weiter in lokale Varianten, NRW- und Deutschland-Hubs sowie die jeweiligen Keyword-Seiten."
+        "text": "Hier beginnt die Auswahl. Jeder der sechs Bereiche zeigt eigene Beispiele, den Ablauf und Angebote für einzelne Städte und Regionen."
       },
       {
-        "text": "Nutzer wählen nicht aus einem generischen Portfolio, sondern steigen direkt in Automobil, Sportwagen, Oldtimer, Motorrad, Portrait oder Landschaft ein. Jede Kategorie zeigt auf ihrer Hauptseite die zugehörigen Städte und Regionen."
+        "text": "Statt durch eine gemischte Mappe zu blättern, steigst du direkt in Automobil, Sportwagen, Oldtimer, Motorrad, Portrait oder Landschaft ein. In jedem Bereich findest du auch die Städte und Regionen, für die ich Shootings anbiete."
       }
     ],
     "topics": [
@@ -110,47 +110,47 @@
         "image": "/uploads/payload/_DSC2876_genErase%20(1)-1.webp",
         "title": "Automobil.",
         "emphasis": "Fotografie.",
-        "text": "Für Fahrzeuge, Marken, Händler und private Verkäufe: Exterieur, Interieur, Details und Lichtführung werden so geplant, dass aus einem Auto eine verwertbare Bildserie wird — für Website, Inserat, Social, Print und Kampagne.",
-        "linkLabel": "Zur Automobil Fotografie →",
+        "text": "Für Fahrzeuge, Marken, Händler und private Verkäufe: Exterieur, Interieur, Details und Licht werden so geplant, dass aus einem Auto eine brauchbare Bildserie wird, für Website, Inserat, Social Media, Print und Kampagne.",
+        "linkLabel": "Zur Automobilfotografie →",
         "href": "/automobil-fotografie.html"
       },
       {
         "image": "/uploads/payload/_DSC3884.webp",
         "title": "Sportwagen.",
         "emphasis": "Fotografie.",
-        "text": "Sportwagen brauchen Präzision statt Effektfeuerwerk: niedrige Blickachsen, saubere Spiegelungen, Innenraumdetails und eine Dramaturgie, die Leistung sichtbar macht.",
-        "linkLabel": "Zur Sportwagen Fotografie →",
+        "text": "Sportwagen brauchen Präzision statt Effektfeuerwerk: niedrige Blickachsen, saubere Spiegelungen, Details im Innenraum und ein Bildaufbau, der Leistung sichtbar macht.",
+        "linkLabel": "Zur Sportwagenfotografie →",
         "href": "/sportwagen-fotografie.html"
       },
       {
         "image": "/uploads/payload/20250310-DSC00452.webp",
         "title": "Oldtimer.",
         "emphasis": "Fotografie.",
-        "text": "Oldtimer Fotografie erzählt Wert, Herkunft und Material. Lack, Chrom, Leder und Patina werden nicht nostalgisch überhöht, sondern mit Charakter und Ruhe präzise dokumentiert.",
-        "linkLabel": "Zur Oldtimer Fotografie →",
+        "text": "Oldtimer-Fotografie erzählt von Wert, Herkunft und Material. Lack, Chrom, Leder und Patina werden ruhig und genau dokumentiert, ohne nostalgischen Weichzeichner.",
+        "linkLabel": "Zur Oldtimer-Fotografie →",
         "href": "/oldtimer-fotografie.html"
       },
       {
         "image": "/uploads/payload/assets-photos-motorrad-1920.webp",
         "title": "Motorrad.",
         "emphasis": "Fotografie.",
-        "text": "Motorräder funktionieren über Haltung, Mechanik und Silhouette. Die Serie kann Maschine, Details, Fahrer und Werkstattbezug verbinden — stärker als ein einzelnes Verkaufsfoto.",
-        "linkLabel": "Zur Motorrad Fotografie →",
+        "text": "Motorräder leben von Haltung, Mechanik und Silhouette. Eine Serie kann Maschine, Details, Fahrer und Werkstatt verbinden und erzählt mehr als ein einzelnes Verkaufsfoto.",
+        "linkLabel": "Zur Motorradfotografie →",
         "href": "/motorrad-fotografie.html"
       },
       {
         "image": "/uploads/payload/_DSC9729-Enhanced-NR.webp",
         "title": "Portrait.",
         "emphasis": "Fotografie.",
-        "text": "Portraits sollen professionell wirken, ohne Menschen glattzubügeln. Licht, Distanz und Blickführung werden auf Nutzung und Persönlichkeit abgestimmt — für Branding, Presse, Team und Editorial.",
-        "linkLabel": "Zur Portrait Fotografie →",
+        "text": "Portraits sollen professionell wirken, ohne Menschen glattzubügeln. Licht, Distanz und Blick richten sich nach Nutzung und Persönlichkeit, für Branding, Presse, Team und Editorial.",
+        "linkLabel": "Zur Portraitfotografie →",
         "href": "/portraitfotografie.html"
       },
       {
         "image": "/uploads/payload/20250607-DSC04495.webp",
         "title": "Landschaft.",
         "emphasis": "Fotografie.",
-        "text": "Landschaftsfotografie steht weniger für lokales Shooting als für kuratierten Bildkauf: Fine-Art-Prints, Wandbilder, Editionen und große Formate werden nach Raum, Material und Wirkung ausgewählt.",
+        "text": "Landschaft gibt es bei mir als Fine-Art-Print, Wandbild oder großes Format, ausgewählt nach Raum, Material und Wirkung. Ein Shooting vor Ort gehört nicht dazu.",
         "linkLabel": "Zur Landschaftsfotografie →",
         "href": "/landschaftsfotografie.html"
       }
@@ -287,7 +287,7 @@
   "contactOverride": {},
   "seo": {
     "title": "Fotografie | Übersicht der Bereiche | Matthias Ramahi",
-    "description": "Fotografie als klare Übersicht: Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft — sechs spezialisierte Bereiche mit eigenem Einstieg.",
+    "description": "Fotografie in sechs Bereichen: Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft. Jeder Bereich mit eigenen Beispielen und eigenem Ablauf.",
     "secondaryKeywords": [],
     "internalLinkAnchors": [],
     "canonicalUrl": "https://matthiasramahi.de/fotografie.html",

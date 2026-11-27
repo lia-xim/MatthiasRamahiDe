@@ -11,7 +11,7 @@
   ],
   "publishedAt": "2027-01-15T08:00:00.000Z",
   "status": "scheduled",
-  "excerpt": "Wie werden eigene Fahrzeugfotos für Suchmaschinen verständlich? Ein praxisnaher Leitfaden zu Bilddateien, Alt-Text, Seitenkontext, Ladezeit und den Grenzen von KI-Suchoptimierung.",
+  "excerpt": "Wie werden eigene Fahrzeugfotos für Suchmaschinen verständlich? Ein Leitfaden zu Bilddateien, Alt-Text, Seitenkontext, Ladezeit und den Grenzen von KI-Suchoptimierung.",
   "coverImage": "/uploads/payload/assets-portfolio-dsc3892-1920.webp",
   "readingTime": 8,
   "blocks": [
@@ -19,12 +19,12 @@
       "_template": "textBlock",
       "style": "summary",
       "eyebrow": "Kurzantwort",
-      "headline": "So verstehen Google Bilder & KI-Suche deine Fahrzeugfotos",
-      "body": "Saubere Einbindung: Standard-HTML-`<img>`-Tags (oder `<picture>`) mit stabilen URLs, passenden Abmessungen und optimierter Dateigröße verwenden statt reiner CSS-Hintergründe\nSichtbarer Kontext: Aussagekräftiger Dateiname, präziser Alt-Text und unmittelbar umgebender Seitentext benennen Modell, Perspektive und Bildaufgabe ohne Keyword-Stopfen\nSuchintention treffen: Jede Seite beantwortet ein klares Thema samt eigenem Query-Fan-out rund um das gezeigte Motiv und lässt sich in der Search Console unter Bildsuche messen"
+      "headline": "Bilddatei, Alt-Text und Seitentext müssen zusammenpassen",
+      "body": "Saubere Einbindung: Bilder als HTML-`<img>` oder `<picture>` mit stabilen URLs, passenden Abmessungen und vernünftiger Dateigröße einbinden, nicht als reine CSS-Hintergründe.\nSichtbarer Kontext: Dateiname, Alt-Text und der Text rund um das Bild benennen Motiv, Perspektive und Bildaufgabe ohne Keyword-Listen.\nKlarer Zweck: Eine Seite beantwortet ein zusammenhängendes Anliegen; die Wirkung lässt sich in der Search Console mit dem Suchtyp „Bild“ prüfen."
     },
     {
       "headline": "Ein gutes Motiv braucht eine verständliche Seite",
-      "body": "Ein starkes Autofoto kann in der Bildersuche gefunden werden – aber das Motiv allein erklärt einer Suchmaschine noch nicht, was darauf zu sehen ist und warum es auf dieser Seite steht. Entscheidend ist das Zusammenspiel aus zugänglicher Bilddatei, passendem Alternativtext und einer Seite, die das Fahrzeug oder die fotografische Aufgabe wirklich beschreibt. Das hilft Menschen beim Einordnen und schafft eine bessere Grundlage für die Suche. Eine Platzierung, ein Klick oder eine Erwähnung in einer KI-Antwort lässt sich damit nicht versprechen.",
+      "body": "Ein starkes Autofoto kann in der Bildersuche gefunden werden. Das Motiv allein erklärt einer Suchmaschine aber noch nicht, was darauf zu sehen ist und warum es auf der Seite steht. Entscheidend ist das Zusammenspiel aus zugänglicher Bilddatei, passendem Alternativtext und einer Seite, die das Fahrzeug oder die fotografische Aufgabe wirklich beschreibt. Das hilft Menschen beim Einordnen und schafft eine bessere Grundlage für die Suche. Eine Platzierung, ein Klick oder eine Erwähnung in einer KI-Antwort lässt sich damit nicht versprechen.",
       "_template": "textBlock"
     },
     {
@@ -58,7 +58,7 @@
     },
     {
       "headline": "Dateiname und Alternativtext beschreiben das Motiv",
-      "body": "Ein Dateiname wie IMG_0042.jpg sagt wenig. Aussagekräftiger ist eine kurze Bezeichnung, die das sichtbare Motiv benennt, etwa sportwagen-seitenansicht-im-studio.webp – sofern diese Beschreibung stimmt. Der Dateiname muss weder einen ganzen Suchsatz enthalten noch jede mögliche Variante aufzählen. Vermeide eine Marke oder Ausstattung im Dateinamen, wenn sie nicht sicher identifiziert werden kann.\n\nDer Alt-Text erfüllt eine andere Aufgabe: Er beschreibt knapp, was auf dem Bild zu sehen ist, damit Menschen, die das Bild nicht sehen können, dessen Rolle im Kontext verstehen. Zum Beispiel: „Dunkler Sportwagen in seitlicher Perspektive vor einer ruhigen Studiowand“. Beschreibe nicht zusätzlich unsichtbare Eigenschaften oder die Absicht eines Kunden. Ein Alt-Text ist keine zweite Bildunterschrift und kein Ort für eine Liste von Suchbegriffen. Ist ein Bild rein dekorativ und liefert keine eigene Information, kann ein leerer Alt-Text passend sein. Bei einem Portfolio- oder Praxisbild sollte die Beschreibung zum tatsächlichen Bild und zur benachbarten Passage passen.",
+      "body": "Ein Dateiname wie IMG_0042.jpg sagt wenig. Aussagekräftiger ist eine kurze Bezeichnung, die das sichtbare Motiv benennt, etwa sportwagen-seitenansicht-im-studio.webp, sofern diese Beschreibung stimmt. Der Dateiname muss weder einen ganzen Suchsatz enthalten noch jede mögliche Variante aufzählen. Vermeide eine Marke oder Ausstattung im Dateinamen, wenn sie nicht sicher identifiziert werden kann.\n\nDer Alt-Text erfüllt eine andere Aufgabe: Er beschreibt knapp, was auf dem Bild zu sehen ist, damit Menschen, die das Bild nicht sehen können, dessen Rolle im Kontext verstehen. Zum Beispiel: „Dunkler Sportwagen in seitlicher Perspektive vor einer ruhigen Studiowand“. Beschreibe nicht zusätzlich unsichtbare Eigenschaften oder die Absicht eines Kunden. Ein Alt-Text ist keine zweite Bildunterschrift und kein Ort für eine Liste von Suchbegriffen. Ist ein Bild rein dekorativ und liefert keine eigene Information, kann ein leerer Alt-Text passend sein. Bei einem Portfolio- oder Praxisbild sollte die Beschreibung zum tatsächlichen Bild und zur benachbarten Passage passen.",
       "_template": "textBlock"
     },
     {
@@ -68,12 +68,12 @@
     },
     {
       "headline": "Was die Grundlagen für KI-Suchergebnisse bedeuten",
-      "body": "Google beschreibt für generative Funktionen wie AI Overviews und den KI-Modus weiterhin die üblichen SEO-Grundlagen. Die KI kann mehrere zusammenhängende Fragen parallel bearbeiten – häufig als Query Fan-out bezeichnet – und relevante Webseiten aus dem Suchindex heranziehen. Der offizielle Leitfaden betont zugleich, dass Inhalte für Menschen hilfreich, zugänglich und vertrauenswürdig sein sollen. Er warnt davor, hauptsächlich für jede mögliche Variante einer Suche oder Fan-out-Frage eine eigene Seite anzulegen, um Rankings oder KI-Antworten zu beeinflussen.\n\nFür Fahrzeugfotografie heißt das: Eine Seite sollte ein zusammenhängendes Anliegen gut beantworten. Zum Beispiel kann ein Beitrag erklären, wie Bilder einer Fahrzeugserie über Titel, Alt-Text, Ladezeit und Textkontext verständlich werden. Es braucht nicht zusätzlich eine fast identische Seite für „Autofotos in KI-Suche“, eine für „Sportwagen Bilder Google“ und eine für jede einzelne verwandte Formulierung. Wenn eine Teilfrage einen eigenständigen Bedarf hat, kann sie in einem passenden Abschnitt beantwortet werden. Eine neue URL verdient sich ihren Platz durch einen eigenen Nutzen, nicht durch eine leicht veränderte Suchphrase.\n\nAuch die sauberste technische Umsetzung garantiert nicht, dass Google eine Seite crawlt, indexiert oder in einer KI-Funktion ausspielt. Die Bild- und KI-Leitfäden beschreiben Best Practices, aber keine Zusage für einen bestimmten Treffer. Darum sollte Bild-SEO vor allem die Auffindbarkeit und Verständlichkeit der eigenen Arbeit verbessern – nicht ein angeblich sicheres Rezept für KI-Zitate versprechen.",
+      "body": "Google beschreibt für generative Funktionen wie AI Overviews und den KI-Modus weiterhin die üblichen SEO-Grundlagen. Die KI kann mehrere zusammenhängende Fragen parallel bearbeiten (häufig als Query Fan-out bezeichnet) und relevante Webseiten aus dem Suchindex heranziehen. Der offizielle Leitfaden betont zugleich, dass Inhalte für Menschen hilfreich, zugänglich und vertrauenswürdig sein sollen. Er warnt davor, hauptsächlich für jede mögliche Variante einer Suche oder Fan-out-Frage eine eigene Seite anzulegen, um Rankings oder KI-Antworten zu beeinflussen.\n\nFür Fahrzeugfotografie heißt das: Eine Seite sollte ein zusammenhängendes Anliegen gut beantworten. Zum Beispiel kann ein Beitrag erklären, wie Bilder einer Fahrzeugserie über Titel, Alt-Text, Ladezeit und Textkontext verständlich werden. Es braucht nicht zusätzlich eine fast identische Seite für „Autofotos in KI-Suche“, eine für „Sportwagen Bilder Google“ und eine für jede einzelne verwandte Formulierung. Wenn eine Teilfrage einen eigenständigen Bedarf hat, kann sie in einem passenden Abschnitt beantwortet werden. Eine neue URL verdient sich ihren Platz durch einen eigenen Nutzen, nicht durch eine leicht veränderte Suchphrase.\n\nAuch die sauberste technische Umsetzung garantiert nicht, dass Google eine Seite crawlt, indexiert oder in einer KI-Funktion ausspielt. Die Bild- und KI-Leitfäden beschreiben Best Practices, aber keine Zusage für einen bestimmten Treffer. Bild-SEO sollte deshalb vor allem die Auffindbarkeit und Verständlichkeit der eigenen Arbeit verbessern. Ein sicheres Rezept für KI-Zitate gibt es nicht.",
       "_template": "textBlock"
     },
     {
       "headline": "Rechte und Bildaussage vor dem Upload prüfen",
-      "body": "Ein technisch gutes Foto darf nur veröffentlicht werden, wenn die nötigen Rechte und Freigaben für den vorgesehenen Einsatz geklärt sind. Prüfe, ob du die Datei selbst erstellt hast oder eine passende Lizenz besitzt und ob sie auf dieser Seite, in einer Galerie und als Vorschau genutzt werden darf. Bei Aufnahmen von Kundenfahrzeugen, Veranstaltungen, Menschen oder fremden Marken können zusätzliche Absprachen relevant sein. Die Bildoptimierung ersetzt diese Prüfung nicht.\n\nBleib auch bei der Beschreibung präzise. Wenn ein Fahrzeug nicht eindeutig identifiziert wurde, reicht eine neutrale Motivbeschreibung. Behaupte keine Ausstattung, Location oder Projektgeschichte, die du nicht belegen kannst. Eigene Bildserien können fachliche Erfahrung sichtbar machen, wenn du den tatsächlichen Ablauf, die Auswahl oder die Lichtentscheidung erklärst. Wo keine Projektdetails freigegeben sind, kannst du stattdessen konkret die fotografische Aufgabe erläutern, ohne einen Auftraggeber oder ein Ergebnis zu erfinden.",
+      "body": "Ein technisch gutes Foto darf nur veröffentlicht werden, wenn die nötigen Rechte und Freigaben für den vorgesehenen Einsatz geklärt sind. Prüfe, ob du die Datei selbst erstellt hast oder eine passende Lizenz besitzt und ob sie auf der eigenen Website, in einer Galerie und als Vorschau genutzt werden darf. Bei Aufnahmen von Kundenfahrzeugen, Veranstaltungen, Menschen oder fremden Marken können zusätzliche Absprachen relevant sein. Die Bildoptimierung ersetzt diese Prüfung nicht.\n\nBleib auch bei der Beschreibung präzise. Wenn ein Fahrzeug nicht eindeutig identifiziert wurde, reicht eine neutrale Motivbeschreibung. Behaupte keine Ausstattung, Location oder Projektgeschichte, die du nicht belegen kannst. Eigene Bildserien können fachliche Erfahrung sichtbar machen, wenn du den tatsächlichen Ablauf, die Auswahl oder die Lichtentscheidung erklärst. Wo keine Projektdetails freigegeben sind, kannst du stattdessen konkret die fotografische Aufgabe erläutern, ohne einen Auftraggeber oder ein Ergebnis zu erfinden.",
       "_template": "textBlock"
     },
     {
@@ -83,7 +83,7 @@
     },
     {
       "headline": "Wirkung in der Search Console prüfen",
-      "body": "Für Google Bilder kannst du in der Search Console den Bericht „Leistung in der Google Suche“ öffnen, als Suchtyp „Bild“ wählen und unter „Seiten“ die Zielseite filtern. Die Tabelle zeigt die Seiten, auf denen Nutzer nach einem Klick auf ein Bild landen – nicht die URL der einzelnen Bilddatei. Vergleiche Impressionen und Klicks über gleich lange Zeiträume und notiere, welche Seite du geändert hast. So siehst du, ob sich die Sichtbarkeit der Bildseite verändert; daraus lässt sich nicht ableiten, dass ein bestimmtes Foto allein die Ursache war.\n\nFür AI Overviews und den KI-Modus gibt es einen separaten Bericht zu generativen KI-Funktionen in der Search Console. Er zeigt Impressionen nach Zielseite, aber nicht, welches Bild in einer KI-Antwort verwendet wurde. Wenn der Bericht für deine Property nicht erscheint, kann das laut Google an zu wenigen Impressionen liegen. Behandle fehlende Daten daher nicht als Beleg dafür, dass keine Sichtbarkeit vorhanden ist.",
+      "body": "Für Google Bilder kannst du in der Search Console den Bericht „Leistung in der Google Suche“ öffnen, als Suchtyp „Bild“ wählen und unter „Seiten“ die Zielseite filtern. Die Tabelle zeigt die Seiten, auf denen Nutzer nach einem Klick auf ein Bild landen, nicht die URL der einzelnen Bilddatei. Vergleiche Impressionen und Klicks über gleich lange Zeiträume und notiere, welche Seite du geändert hast. So siehst du, ob sich die Sichtbarkeit der Bildseite verändert; daraus lässt sich nicht ableiten, dass ein bestimmtes Foto allein die Ursache war.\n\nFür AI Overviews und den KI-Modus gibt es einen separaten Bericht zu generativen KI-Funktionen in der Search Console. Er zeigt Impressionen nach Zielseite, aber nicht, welches Bild in einer KI-Antwort verwendet wurde. Wenn der Bericht für deine Property nicht erscheint, kann das laut Google an zu wenigen Impressionen liegen. Behandle fehlende Daten daher nicht als Beleg dafür, dass keine Sichtbarkeit vorhanden ist.",
       "_template": "textBlock"
     },
     {
@@ -119,12 +119,12 @@
     },
     {
       "_template": "ctaBlock",
-      "headline": "Professionelles Auto-Fotoshooting in NRW planen",
-      "text": "Du brauchst stimmige Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto im Raum Düsseldorf, Erkrath und NRW? Shootings starten bei 250 € inkl. MwSt.",
+      "headline": "Auto-Fotoshooting in NRW planen",
+      "text": "Du brauchst stimmige Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto im Raum Düsseldorf, Erkrath und NRW? Ein Shooting beginnt bei 250 € inkl. MwSt.",
       "buttonLabel": "Auto-Shooting anfragen"
     },
     {
-      "headline": "Häufige Fragen",
+      "headline": "Häufige Fragen zu Fahrzeugfotos in der Suche",
       "items": [
         {
           "question": "Wie mache ich Fahrzeugfotos für Google Bilder verständlicher?",
@@ -135,7 +135,7 @@
           "answer": "Nein. Alt-Text beschreibt das Bild und unterstützt Zugänglichkeit sowie die Einordnung des Motivs. Google nennt Bild-Best-Practices als Teil der Grundlagen für generative Suchfunktionen, garantiert aber weder Indexierung noch eine Anzeige in AI Overviews oder im KI-Modus."
         },
         {
-          "question": "Brauche ich eine eigene Seite für jede AI-Fanout-Frage?",
+          "question": "Brauche ich für jede verwandte Suchfrage eine eigene Seite?",
           "answer": "Nicht allein wegen einer verwandten Suchformulierung. Google rät davon ab, hauptsächlich für jede mögliche Variante oder parallele Anfrage separate Seiten anzulegen, um Rankings oder KI-Antworten zu beeinflussen. Beantworte zusammengehörige Teilfragen auf einer hilfreichen Seite und erstelle eine neue URL nur für einen eigenständigen Informationsbedarf."
         }
       ],
@@ -173,7 +173,7 @@
   ],
   "seo": {
     "title": "Fahrzeugfotos für Google Bilder und KI-Suche",
-    "description": "Fahrzeugfotos für Google Bilder & KI-Suche optimieren: saubere Bilddateien, präzise Alt-Texte, Seitenkontext und schnelle Auslieferung ohne Floskeln.",
+    "description": "So werden Fahrzeugfotos für Google Bilder und KI-Suche verständlich: saubere Bilddateien, genaue Alt-Texte, Seitenkontext und schnelle Auslieferung.",
     "focusKeyword": "Fahrzeugfotos Google Bilder",
     "searchIntent": "Informationssuche: Fotografen und Unternehmen möchten eigene Fahrzeugfotos in Google Bilder und generativen Suchfunktionen zugänglich und verständlich präsentieren.",
     "canonicalUrl": "https://matthiasramahi.de/blog-fahrzeugfotos-google-bildersuche-ai-suche.html",

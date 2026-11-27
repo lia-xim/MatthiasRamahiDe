@@ -70,8 +70,8 @@ export const portfolioHeroSlidesFallback = [
 ]
 
 export const portfolioContext = [
-  'Das Portfolio ist nach Bildfunktionen und Themenclustern aufgebaut: Portrait, Automobil, Sportwagen, Oldtimer, Motorrad und Landschaft. Jede Strecke zeigt nicht nur ein einzelnes Motiv, sondern die visuelle Logik dahinter: Einstieg, Detail, Material, Atmosphäre und ein ruhiges Schlussbild.',
-  'So wird schneller sichtbar, welche Bildsprache für Verkauf, Marke, Sammlung, Website, Print oder redaktionelle Nutzung passt. Die Galerie führt bewusst in die passenden Leistungs- und Standortseiten weiter, damit Portfolio und konkrete Anfragen dieselbe Struktur sprechen.',
+  'Das Portfolio ist nach sechs Disziplinen sortiert: Portrait, Automobil, Sportwagen, Oldtimer, Motorrad und Landschaft. Jede Strecke zeigt eine komplette Serie vom Hauptmotiv bis zu den Material- und Raumdetails.',
+  'So lässt sich direkt einschätzen, welcher Look zu Verkauf, Marke, Redaktion oder Fine-Art-Print passt – und führt mit einem Klick zur passenden Fotografie-Leistung.',
 ]
 
 export const portfolioIndexLinks = [
@@ -128,7 +128,7 @@ export const portfolioSpreads: PortfolioSpread[] = [
     id: 'auto',
     label: 'Automobil',
     heading: 'Automobil',
-    lead: 'Fahrzeuge im Abendlicht, auf dem Messestand und in der Halle — Exterieur, Interieur und Detail als zusammenhängende Serie. Licht und Standort stehen vor dem Termin fest, damit Lack, Linie und Innenraum dieselbe Bildsprache tragen.',
+    lead: 'Fahrzeuge im Abendlicht, auf dem Messestand und in der Halle — Exterieur, Interieur und Detail als zusammenhängende Serie. Licht und Standort stehen vor dem Termin fest, damit Lack, Linie und Innenraum als stimmige Serie zusammenpassen.',
     href: '/automobil-fotografie-duesseldorf.html',
     linkLabel: 'Zur Automobilfotografie →',
     portfolioHref: '/portfolio/portfolio-auswahl-automobil',

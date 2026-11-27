@@ -18,8 +18,8 @@
       "_template": "textBlock",
       "style": "summary",
       "eyebrow": "Kurzantwort",
-      "headline": "Auto mit dem Smartphone fotografieren: Die wichtigsten Punkte im Übe",
-      "body": "Kernaussage: Beginne mit der normalen Hauptkamera\nEin Smartphone reicht für: Mit einem modernen Smartphone kannst du ein stehendes Auto überzeugend fotografieren\nStabilität hilft besonders bei: Halte das Smartphone mit beiden Händen und stütze die Arme, wenn möglich, leicht am eigenen Körper ab\nWann eine Kamera oder: Ein Smartphone passt gut für spontane Bilder, eine private Erinnerung oder eine kleine kreative Reihe, die vor allem auf dem Display betrachtet wird"
+      "headline": "Kurz gesagt: Hauptkamera, Abstand, ruhiges Licht",
+      "body": "Kernaussage: Ein stehendes Auto gelingt mit dem Smartphone gut, wenn du mit der Hauptkamera (1×) aus etwas Abstand fotografierst.\nLicht: Weiches Tageslicht und ein Schritt zur Seite halten Reflexe auf Lack und Glas ruhig.\nFokus: Tippe auf das Auto, sperre Fokus und Belichtung und dunkle ab, wenn helle Lackflächen fast weiß werden.\nGrenzen: Für einheitliche Serien, große Drucke oder kontrollierte Lichtreflexe brauchst du mehr Kontrolle über Licht und Farbe."
     },
     {
       "_template": "textBlock",
@@ -34,7 +34,7 @@
     {
       "_template": "textBlock",
       "headline": "Hauptkamera und Abstand ergeben natürlichere Proportionen",
-      "body": "Beginne mit der normalen Hauptkamera, häufig als 1× markiert. Das Ultraweitwinkel erfasst viel Umgebung, doch aus kurzer Distanz wirkt die nächstgelegene Fahrzeugecke schnell übergroß. Das ist vor allem ein Perspektiveffekt: Wer mit großem Bildwinkel nah an die Karosserie herangeht, verstärkt den Größenunterschied zwischen Vorder- und Hintergrund. Herstellerhinweise zu Weitwinkelbildern empfehlen deshalb bei sichtbarer Randverzerrung mehr Abstand und eine mittigere Platzierung des Motivs.\n\nStell dich zunächst einige Schritte weiter weg und verändere den Ausschnitt durch deine Position. Nutze 0,5× nur, wenn die Umgebung tatsächlich Teil der Bildidee ist. Ein Wechsel auf 2× oder 3× kann eine eigene Telekamera verwenden oder lediglich digital beschneiden; das hängt vom Smartphone und der Lichtsituation ab. Tippe auf die feste Objektivstufe und prüfe das Ergebnis, statt den Zoomregler bis zu einem beliebigen Wert zu ziehen. Bei wenig Licht verliert ein stark digital vergrößertes Bild oft sichtbar an feinen Karosseriedetails.\n\nHalte das Telefon möglichst waagerecht. Eine leichte Drehung kann bei einer persönlichen Aufnahme bewusst wirken, sollte aber nicht versehentlich die Linien von Dach, Boden und Gebäuden kippen. Fotografiere auf Augenhöhe des Autos oder etwas darunter, wenn die Karosserie kräftiger erscheinen soll. Für eine ruhigere Dokumentation ist die Kamera auf etwa Höhe von Scheinwerfern oder Türen oft leichter auszurichten."
+      "body": "Beginne mit der normalen Hauptkamera, häufig als 1× markiert. Das Ultraweitwinkel erfasst viel Umgebung, doch aus kurzer Distanz wirkt die nächstgelegene Fahrzeugecke schnell übergroß. Das ist vor allem ein Perspektiveffekt: Wer mit großem Bildwinkel nah an die Karosserie herangeht, verstärkt den Größenunterschied zwischen Vorder- und Hintergrund. Herstellerhinweise zu Weitwinkelbildern empfehlen deshalb bei sichtbarer Randverzerrung mehr Abstand und eine mittigere Platzierung des Motivs.\n\nStell dich zunächst einige Schritte weiter weg und verändere den Ausschnitt durch deine Position. Nutze 0,5× nur, wenn die Umgebung tatsächlich Teil der Bildidee ist. Ein Wechsel auf 2× oder 3× kann eine eigene Telekamera verwenden oder lediglich digital beschneiden; das hängt vom Smartphone und der Lichtsituation ab. Tippe auf die feste Objektivstufe und prüfe das Ergebnis. Einen beliebigen Wert am Zoomregler einzustellen, bringt selten ein besseres Bild. Bei wenig Licht verliert ein stark digital vergrößertes Bild oft sichtbar an feinen Karosseriedetails.\n\nHalte das Telefon möglichst waagerecht. Eine leichte Drehung kann bei einer persönlichen Aufnahme bewusst wirken, sollte aber nicht versehentlich die Linien von Dach, Boden und Gebäuden kippen. Fotografiere auf Augenhöhe des Autos oder etwas darunter, wenn die Karosserie kräftiger erscheinen soll. Für eine ruhigere Dokumentation ist die Kamera auf etwa Höhe von Scheinwerfern oder Türen oft leichter auszurichten."
     },
     {
       "_template": "imageSequence",
@@ -44,13 +44,13 @@
         {
           "image": "/assets/portfolio/automobil-bmw-m3-showcar.webp",
           "alt": "BMW M3 mit breiter Front steht im Vordergrund, weitere Showfahrzeuge sind im Messelicht unscharf zu sehen.",
-          "caption": "Rot-weißes Showcar auf einer beleuchteten Präsentationsfläche. Eine Portfolioaufnahme, nicht mit dem Smartphone fotografiert.",
+          "caption": "Weißer BMW M3 unter rotem Messelicht auf einer beleuchteten Präsentationsfläche. Portfolioaufnahme, kein Smartphone-Beispiel.",
           "cropIntent": "editorial"
         },
         {
           "image": "/assets/portfolio/automobil-brabus-sunset.webp",
           "alt": "Industriebauten und rosa Abendwolken spiegeln sich neben dem schwarzen SUV in einer Pfütze.",
-          "caption": "Schwarzer SUV bei Abendlicht an einer Wasserfläche. Portfolioaufnahme als Beispiel für Umfeld und Reflexion, keine Smartphone-Aufnahme.",
+          "caption": "Schwarzer SUV bei Abendlicht, gespiegelt in einer Pfütze. Portfolioaufnahme als Beispiel für Umfeld und Reflexion, kein Smartphone-Beispiel.",
           "cropIntent": "editorial"
         }
       ]
@@ -58,7 +58,7 @@
     {
       "_template": "textBlock",
       "headline": "Lack und Glas spiegeln deine Umgebung",
-      "body": "Eine Autokarosserie ist eine große reflektierende Fläche. In ihr erscheinen nicht nur Himmel und Architektur, sondern auch du selbst, andere Fahrzeuge und helle Lichtquellen. Schau deshalb nicht nur auf das Auto, sondern auch auf die Flächen, die sich darin spiegeln. Ein Schritt zur Seite oder ein anderer Winkel kann eine unruhige Spiegelung aus dem Lack nehmen. Die Kameralinse sollte dabei nicht einfach direkt in die Sonne zeigen.\n\nWeiches Tageslicht erleichtert den Einstieg. Ein leicht bewölkter Himmel oder ein Platz im offenen Schatten verteilt das Licht gleichmäßiger als pralle Mittagssonne. Dort bleiben meist mehr Details in hellen Lackflächen sichtbar, und harte Schatten überziehen die Seitenwand weniger stark. Wenn du bei tief stehender Sonne fotografierst, achte auf helle Streifen und Reflexe in Scheiben und Scheinwerfern. Ändere lieber deinen Standpunkt oder warte auf ein ruhigeres Lichtfenster, bevor du in einer App an Kontrast und Sättigung drehst."
+      "body": "Eine Autokarosserie ist eine große reflektierende Fläche. In ihr erscheinen Himmel und Architektur, aber auch du selbst, andere Fahrzeuge und helle Lichtquellen. Schau deshalb auch darauf, was sich im Lack spiegelt. Ein Schritt zur Seite oder ein anderer Winkel kann eine unruhige Spiegelung aus dem Lack nehmen. Die Kameralinse sollte dabei nicht einfach direkt in die Sonne zeigen.\n\nWeiches Tageslicht erleichtert den Einstieg. Ein leicht bewölkter Himmel oder ein Platz im offenen Schatten verteilt das Licht gleichmäßiger als pralle Mittagssonne. Dort bleiben meist mehr Details in hellen Lackflächen sichtbar, und harte Schatten überziehen die Seitenwand weniger stark. Wenn du bei tief stehender Sonne fotografierst, achte auf helle Streifen und Reflexe in Scheiben und Scheinwerfern. Ändere lieber deinen Standpunkt oder warte auf ein ruhigeres Lichtfenster, bevor du in einer App an Kontrast und Sättigung drehst."
     },
     {
       "_template": "textBlock",
@@ -83,17 +83,17 @@
     {
       "_template": "textBlock",
       "headline": "Eine kurze Reihe braucht unterschiedliche Bildideen",
-      "body": "Für eine kleine persönliche Bildserie genügt eine klare Auswahl. Nimm zuerst eine Gesamtansicht auf, in der das Auto und sein Umfeld lesbar sind. Wähle danach einen anderen Standpunkt, der die Seitenlinie oder das Heck betont. Ein drittes Bild kann ein Detail zeigen – etwa eine Lichtkante, das Cockpit oder ein Gestaltungselement. Diese Aufnahmen sollen sich sichtbar unterscheiden; drei fast identische Ausschnitte erzählen keine zusätzliche Geschichte.\n\nPrüfe die Reihe als Ganzes: Passt die Lichtfarbe zusammen? Wiederholt sich derselbe Hintergrund? Gibt es ein Bild, das nur wegen des Filters interessant wirkt, während die Fahrzeugform kaum zu erkennen ist? Lösche die Originale nicht vorschnell. Eine spätere Auswahl auf einem größeren Bildschirm macht es einfacher, Schärfe, Reflexe und Farbwiedergabe zu beurteilen."
+      "body": "Für eine kleine persönliche Bildserie genügt eine klare Auswahl. Nimm zuerst eine Gesamtansicht auf, in der das Auto und sein Umfeld lesbar sind. Wähle danach einen anderen Standpunkt, der die Seitenlinie oder das Heck betont. Ein drittes Bild kann ein Detail zeigen, etwa eine Lichtkante, das Cockpit oder ein Gestaltungselement. Diese Aufnahmen sollen sich sichtbar unterscheiden; drei fast identische Ausschnitte erzählen keine zusätzliche Geschichte.\n\nPrüfe die Reihe als Ganzes: Passt die Lichtfarbe zusammen? Wiederholt sich derselbe Hintergrund? Gibt es ein Bild, das nur wegen des Filters interessant wirkt, während die Fahrzeugform kaum zu erkennen ist? Lösche die Originale nicht vorschnell. Eine spätere Auswahl auf einem größeren Bildschirm macht es einfacher, Schärfe, Reflexe und Farbwiedergabe zu beurteilen."
     },
     {
       "_template": "textBlock",
       "headline": "Wann eine Kamera oder ein Fotograf sinnvoll wird",
-      "body": "Ein Smartphone passt gut für spontane Bilder, eine private Erinnerung oder eine kleine kreative Reihe, die vor allem auf dem Display betrachtet wird. Bei bewegten Autos, sehr dunklen Szenen, kontrollierten Lichtreflexen, wiederkehrenden Händlerbildern und größeren Drucken wird die Arbeit anspruchsvoller. Dann zählen ein konsistenter Look, präzise Farbwiedergabe, mehr Auswahl bei Brennweiten und eine verlässliche Kontrolle des Lichts.\n\nFür ein einzelnes Foto darf das Telefon die ganze Arbeit erledigen. Wenn mehrere Fahrzeuge in einer Kampagne oder einer Händlerstrecke gleich wirken sollen, ist ein abgestimmtes Briefing und ein fester Aufnahmeablauf wichtiger als ein weiterer Smartphone-Filter. Die Automobilfotografie-Seite zeigt, welche Arten von Fahrzeugserien Matthias Ramahi für private und geschäftliche Zwecke plant. Ein bestehendes Auto-Shooting-Briefing erklärt außerdem, wie Bildziel, Nutzung und Motivfolge vor einem Auftrag festgelegt werden."
+      "body": "Ein Smartphone passt gut für spontane Bilder, eine private Erinnerung oder eine kleine kreative Reihe, die vor allem auf dem Display betrachtet wird. Bei bewegten Autos, sehr dunklen Szenen, kontrollierten Lichtreflexen, wiederkehrenden Händlerbildern und größeren Drucken wird die Arbeit anspruchsvoller. Dann zählen ein konsistenter Look, präzise Farbwiedergabe, mehr Auswahl bei Brennweiten und eine verlässliche Kontrolle des Lichts.\n\nFür ein einzelnes Foto darf das Telefon die ganze Arbeit erledigen. Wenn mehrere Fahrzeuge in einer Kampagne oder einer Händlerstrecke gleich wirken sollen, sind ein abgestimmtes Briefing und ein fester Aufnahmeablauf wichtiger als ein weiterer Smartphone-Filter. Welche Fahrzeugserien für private und geschäftliche Zwecke möglich sind, steht unter Automobilfotografie. Der Beitrag zum Auto-Shooting-Briefing erklärt außerdem, wie Bildziel, Nutzung und Motivfolge vor einem Auftrag festgelegt werden."
     },
     {
       "_template": "ctaBlock",
       "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
-      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Ein Shooting beginnt bei 250 € inkl. MwSt.",
       "buttonLabel": "Auto-Shooting anfragen"
     },
     {

@@ -19,22 +19,22 @@
       "_template": "textBlock",
       "style": "summary",
       "eyebrow": "Kurzantwort",
-      "headline": "LED-Banding bei Autofotos: Die wichtigsten Punkte im Überblick",
-      "body": "Kernaussage: Eine zeitlich gepulste Lichtquelle kann mit Belichtungszeit und Sensorauslesung zusammentreffen\nWenn ein Teil der: Eine LED-Rückleuchte kann für das Auge gleichmäßig leuchten und auf einer Aufnahme trotzdem dunkle Streifen oder eine scheinbar ausgeschaltete Teilfläche\nVerschlusszeit und Anti-Flicker passend: Teste mehrere Verschlusszeiten in kleinen Schritten und beurteile jedes Bild an derselben Stelle der Leuchte\nEin dunkles Segment nicht: Vergleiche mehrere Aufnahmen derselben Leuchte und, wenn möglich, die direkte Beobachtung mit einer weiteren Kamerakonfiguration"
+      "headline": "LED-Streifen am Scheinwerfer: kurz zusammengefasst",
+      "body": "Ursache: Eine gepulst angesteuerte Fahrzeugleuchte kann mit Belichtungszeit und Sensorauslesung ungünstig zusammentreffen. Ein dunkles Segment heißt nicht automatisch, dass die Leuchte defekt ist.\nTest: Ändere immer nur eine Variable, etwa Verschlusszeit oder Verschlussart, und beurteile die gespeicherte Datei.\nKamera: Anti-Flicker-Funktionen und fein einstellbare Verschlusszeiten sind modellabhängig. Eine pauschale Zeit für alle Auto-LEDs gibt es nicht.\nRetusche: Bei Verkaufs- und Dokumentationsbildern keine Leuchtsegmente ergänzen oder entfernen."
     },
     {
       "_template": "textBlock",
       "headline": "Wenn ein Teil der Leuchte im Foto fehlt",
-      "body": "Eine LED-Rückleuchte kann für das Auge gleichmäßig leuchten und auf einer Aufnahme trotzdem dunkle Streifen oder eine scheinbar ausgeschaltete Teilfläche zeigen. Das muss nicht bedeuten, dass die Leuchte defekt ist. Manche LED-Systeme werden zeitlich gepulst angesteuert; Kamera und Lichtquelle können dann ungünstig zusammentreffen. Fachbeiträge zu Automotive Imaging beschreiben, dass einzelne Fahrzeug-LEDs zwischen Kamerabildern unterschiedlich hell oder sogar ausgeschaltet erscheinen können. Bei einem zeilenweise auslesenden Sensor kann zusätzlich ein horizontales Banding über das Bild laufen.\n\nDieser Ratgeber behandelt das Licht, das vom fotografierten Auto selbst kommt. Flimmerstreifen durch eine LED-Leuchte, mit der du das Fahrzeug beleuchtest, sind ein verwandtes, aber anderes Problem; dazu passt der Beitrag [LED-Dauerlicht in der Autofotografie](/blog-dauerlicht-autofotografie.html). Für die Gestaltung von Gehäuse, Reflexen und Lichtgrafik gibt es außerdem den Ratgeber [Scheinwerfer und Rückleuchten fotografieren](/blog-fahrzeug-lichtsignatur-fotografieren.html)."
+      "body": "Eine LED-Rückleuchte kann für das Auge gleichmäßig leuchten und auf einer Aufnahme trotzdem dunkle Streifen oder eine scheinbar ausgeschaltete Teilfläche zeigen. Das muss nicht bedeuten, dass die Leuchte defekt ist. Manche LED-Systeme werden zeitlich gepulst angesteuert; Kamera und Lichtquelle können dann ungünstig zusammentreffen. Fachbeiträge zu Automotive Imaging beschreiben, dass einzelne Fahrzeug-LEDs zwischen Kamerabildern unterschiedlich hell oder sogar ausgeschaltet erscheinen können. Bei einem zeilenweise auslesenden Sensor kann zusätzlich ein horizontales Banding über das Bild laufen.\n\nGemeint ist hier das Licht, das vom fotografierten Auto selbst kommt. Flimmerstreifen durch eine LED-Leuchte, mit der du das Fahrzeug beleuchtest, sind ein verwandtes, aber anderes Problem; dazu passt der Beitrag [LED-Dauerlicht in der Autofotografie](/blog-dauerlicht-autofotografie.html). Für die Gestaltung von Gehäuse, Reflexen und Lichtgrafik gibt es außerdem den Ratgeber [Scheinwerfer und Rückleuchten fotografieren](/blog-fahrzeug-lichtsignatur-fotografieren.html)."
     },
     {
       "_template": "imageSequence",
-      "headline": "Eine Lichtsignatur als sauberes Portfolio-Beispiel",
+      "headline": "Eine Lichtsignatur ohne Streifen",
       "layout": "editorial-pair",
       "items": [
         {
           "image": "/assets/optimized/assets-portfolio-dsc2345-1920.webp",
-          "caption": "Die rote, geschwungene Rücklichtgrafik am Heck eines orangefarbenen Sportwagens ist ein sauberes Portfolio-Beispiel für die Darstellung einer Lichtsignatur. Das Foto demonstriert keine Streifenbildung und keinen Banding-Fehler.",
+          "caption": "Rote, geschwungene Rücklichtgrafik am Heck eines orangefarbenen Sportwagens. Die Leuchte ist hier gleichmäßig und ohne Streifen wiedergegeben.",
           "cropIntent": "editorial",
           "alt": "Heck eines orangefarbenen Sportwagens mit leuchtender roter LED-Rückleuchte"
         }
@@ -68,7 +68,7 @@
     {
       "_template": "ctaBlock",
       "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
-      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "text": "Du planst Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Ein Shooting beginnt bei 250 € inkl. MwSt.",
       "buttonLabel": "Auto-Shooting anfragen"
     },
     {

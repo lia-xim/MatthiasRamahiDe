@@ -23,7 +23,7 @@ export const journalHero = {
   image: '/assets/optimized/assets-photos-automobil-sunset-960.webp',
   kicker: 'Journal · Notizen · Düsseldorf',
   title: 'Notizen <em>aus Licht.</em>',
-  lead: 'Ein kuratiertes Journal über Fotografie, Orte, Bildauswahl und Präsentation — ruhig, persönlich, ohne Content-Masse.',
+  lead: 'Ein kuratiertes Journal über Fotografie, Orte, Bildauswahl und Druck – konkret aus der Praxis heraus geschrieben.',
 }
 
 // Shader-Hero (gleiche Animation/Markup wie Home & Portfolio): Bild-Cycle, Lens-Cursor,

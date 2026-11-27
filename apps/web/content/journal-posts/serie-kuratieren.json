@@ -4,7 +4,7 @@
   "featured": false,
   "category": "process",
   "publishedAt": "2026-05-27T18:22:56.000Z",
-  "excerpt": "Von der ersten Bildauswahl bis zur finalen Reihenfolge: Warum kuratierte Fotografie-Serien stärker wirken als lose Einzelbilder.",
+  "excerpt": "Praxisleitfaden für Bildauswahl, Reihenfolge und technischen Angleich: Wie aus vielen Einzelaufnahmen eine funktionierende Fotoserie entsteht.",
   "coverImage": "/uploads/payload/_DSC3032_genErase.webp",
   "tags": [
     "Kuration",
@@ -51,24 +51,27 @@
   "blocks": [
     {
       "_template": "textBlock",
-      "body": "Nach einem Shooting liegen oft hunderte Frames auf der Speicherkarte. Die eigentliche Qualität entsteht erst danach: durch konsequente Reduktion, klare Bildrollen und eine stimmige Reihenfolge."
+      "style": "standard",
+      "body": "Eine Serie zu kuratieren heißt: wenige Bilder auswählen, ihnen klare Rollen geben und sie technisch angleichen. Nach einem Shooting liegen oft hunderte RAW-Dateien auf der Speicherkarte, aber kaum eine Website, ein Fahrzeug-Inserat oder eine Pressemappe braucht mehr als acht bis zwanzig Motive. Wenn zu viele ähnliche Winkel nebeneinander stehen, verliert selbst starkes Einzelmaterial an Durchschlagskraft."
     },
     {
       "_template": "textBlock",
       "style": "summary",
       "eyebrow": "Kurzantwort",
-      "headline": "Wie eine fotografische Serie kuratiert wird: Die wichtigsten Punkte ",
-      "body": "Kernaussage: Das hängt vom Einsatz ab. Für eine Website oder ein Inserat reichen oft 8 bis 16 gezielt gewählte Bilder, für eine Kampagne oder ein umfangreiches Portfolio können\nEine Serie braucht Richtung: Einzelbilder können stark sein, aber eine Serie muss führen\nReduktion macht wertiger: Eine gute Auswahl lässt Luft\nTechnische Konsistenz zählt: Farbe, Kontrast, Weißabgleich, Beschnitt und Helligkeit müssen zusammenarbeiten"
+      "headline": "Das Wichtigste in Kürze",
+      "body": "Kernaussage: Eine starke Fotoserie entsteht durch klare Rollenverteilung vom Einstieg über Details bis zum Schlussmotiv statt durch schiere Bildmenge.\nVerwendungszweck zuerst: Formate (16:9, 4:5, 3:2) und Kanäle bestimmen schon vor der Auswahl, welche Ausschnitte bleiben dürfen.\nDoppelungen streichen: Ähnliche Perspektiven aus demselben Licht-Setup werden konsequent auf das stärkste Frame reduziert.\nTechnischer Angleich: Weißabgleich, Schwärzen und Beschnitt müssen zusammenpassen, damit kein Bild in der Serie ausbricht."
     },
     {
       "_template": "textBlock",
-      "headline": "Eine Serie braucht Richtung",
-      "body": "Einzelbilder können stark sein, aber eine Serie muss führen. Sie braucht Einstieg, Verdichtung und Abschluss. Gerade bei Fahrzeugen, Portraits oder Landschaften entscheidet die Reihenfolge darüber, ob ein Betrachter bleibt oder nur flüchtig weiterscrollt."
+      "headline": "Vor der Auswahl steht der Verwendungszweck",
+      "style": "standard",
+      "body": "Jeder Kanal verlangt andere Bildformate und Einstiegspunkte. Ein Hero-Banner auf einer Desktop-Website braucht querformatige Motive mit Luft für eine Überschrift links oder rechts. Ein Instagram-Carousel lebt von aufrechten 4:5-Crops mit direktem Einstieg in die Silhouette.\n\nLege vor dem ersten Sternchen in Lightroom oder Capture One fest, wofür die Strecke gebaut wird: Fahrzeugverkauf braucht sachliche 360-Grad-Nachweise, während ein Editorial-Portfolio Stimmungswechsel und Negativraum tragen darf. Wer alles gleichzeitig bedienen will, mischt unvereinbare Seitenverhältnisse."
     },
     {
       "_template": "textBlock",
-      "headline": "Erst Funktion, dann Geschmack",
-      "body": "Vor der Auswahl steht immer die Frage nach dem Einsatz: Verkauf, Portfolio, Website, Print, Kampagne oder interne Präsentation. Erst wenn diese Funktion feststeht, lässt sich objektiv entscheiden, welche Bilder wirklich tragen und welche nur redundante Varianten sind."
+      "headline": "Stufe 1: Kontaktbogen nach Schärfe und Störungen filtern",
+      "style": "standard",
+      "body": "Im ersten Durchgang sortierst du rein technisch aus: Fehlfokus auf Kühlergrill oder Auge, verwackelte Mitzieher oder angeschnittene Spiegel und Scheinwerfer fliegen sofort raus. Auch ablenkende Objekte am Rand, etwa grelle Mülltonnen oder halbe Verkehrsschilder direkt hinter dem Dach, kosten unnötig Zeit in der Retusche.\n\nAnschließend gruppierst du Varianten derselben Perspektive nebeneinander. Meist gewinnt genau das Frame mit dem saubersten Lichtverlauf über Motorhaube, Schulter oder Tank, während die vier Fast-Zwillinge daneben ohne Zögern weichen."
     },
     {
       "_template": "imageSequence",
@@ -94,13 +97,27 @@
     },
     {
       "_template": "textBlock",
-      "headline": "Reduktion macht wertiger",
-      "body": "Eine gute Auswahl lässt Luft. Zu ähnliche Motive konkurrieren miteinander und verwässern den Eindruck. Besser ist eine konzentrierte Serie mit klaren Rollen: Einstieg, Totale, Detail, Atmosphäre, Mensch oder Kontext und ein starkes Schlussbild."
+      "headline": "Stufe 2: Rhythmus aus Totalen, Details und Perspektivwechseln",
+      "style": "standard",
+      "body": "Eine funktionierende Strecke arbeitet mit klarem Tempoumschwung. Starte mit einer einordnenden Totale, die Motiv und Umgebung zeigt, gehe dann näher an Charakterstellen wie Felgenstern, Lederstich, Scheinwerferglas oder Handwerkzeug und öffne danach wieder über eine andere Kamerahöhe.\n\nStehen vier Dreiviertelansichten direkt hintereinander, ermüdet der Blick schon bei Bild drei. Plane bewusst ein ruhiges Schlussbild ein, etwa eine Heckansicht in der Dämmerung oder ein klares Detailmotiv."
     },
     {
       "_template": "textBlock",
-      "headline": "Technische Konsistenz zählt",
-      "body": "Farbe, Kontrast, Weißabgleich, Beschnitt und Helligkeit müssen zusammenarbeiten. Eine Serie wirkt hochwertig, wenn jedes Bild für sich bestehen kann und trotzdem dieselbe visuelle Handschrift trägt."
+      "headline": "Stufe 3: Technischer Angleich vor der Auslieferung",
+      "style": "standard",
+      "body": "Selbst gut ausgewählte Motive wirken zusammengestückelt, wenn sich Farbtemperatur, Kontrastkurve oder Körnung von Bild zu Bild verschieben. Vergleiche alle Finalisten in der Übersichtsansicht direkt nebeneinander auf derselben grauen Arbeitsfläche.\n\nGleiche insbesondere Hauttöne, neutrales Weiß bei Wolkenreflexionen und die Tiefe der Schatten aneinander an. Prüfe im selben Schritt Schärfung und Exportprofil getrennt für Web (sRGB, knappe Dateigröße) und Druck (16-Bit-TIFF, Softproof mit dem Profil des Labors)."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Typische Fehler bei der Auswahl",
+      "style": "standard",
+      "body": "Der häufigste Fehler nach großen Shootings ist falsche Rücksicht auf technischen Aufwand: Nur weil ein Motiv mit Rigging oder Blitz zehn Minuten länger gedauert hat, gehört es noch lange nicht in die Endauswahl, wenn das Licht am Kotflügel bricht oder die Haltung steif wirkt.\n\nEin zweiter Klassiker sind zu viele fast identische Nahaufnahmen am Anfang der Galerie. Zeige dem Betrachter zuerst, wo das Motiv steht und wie die Proportionen wirken. Erst danach interessieren Bremssattel, Ziernaht oder Scheinwerferglas."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Konkrete Richtwerte für Umfang und Reihenfolge",
+      "style": "standard",
+      "body": "Für einen Privatverkauf oder ein Gebrauchtwagen-Inserat reichen meist zwölf bis achtzehn präzise Motive: vier Dreiviertel- und Seitenansichten außen, vier saubere Cockpit- und Sitzbilder, sowie vier Belege für Reifenprofil, Motorraum und Scheckheft. Deutlich mehr Bilder machen eine Galerie eher länger als aussagekräftiger.\n\nFür Markenportfolios oder Editorial-Features genügen dagegen oft sechs bis zehn streng kuratierte Bilder mit starkem Wechsel zwischen Übersichtsaufnahme, Charakterportrait und knappem Detail.\n\nAls Faustregel für den Export gelten einheitliche Dateinamen wie `01-hero-front.webp` bis `12-detail-cockpit.webp`, damit Grafik, Händlerteam oder Redaktion die geplante Dramaturgie später nicht versehentlich alphabetisch umsortieren."
     },
     {
       "_template": "linkList",
@@ -132,7 +149,7 @@
     {
       "_template": "ctaBlock",
       "headline": "Eine durchdachte Bildserie für dein Projekt planen",
-      "text": "Von der ersten Shotlist bis zur fertig kuratierten Auswahl in Düsseldorf und NRW – transparent kalkuliert ab 250 € inkl. MwSt.",
+      "text": "Von der ersten Shotlist bis zur fertigen Auswahl, in Düsseldorf und NRW. Ein Shooting beginnt bei 250 € inkl. MwSt.",
       "buttonLabel": "Projekt anfragen"
     },
     {
@@ -145,15 +162,15 @@
         },
         {
           "question": "Warum sollte man fast identische Winkel aussortieren?",
-          "answer": "Zwei fast gleiche Aufnahmen nehmen sich gegenseitig die Spannung. Entscheide dich immer für den einen stärkeren Frame – so wirkt die gesamte Serie deutlich professioneller."
+          "answer": "Zwei fast gleiche Aufnahmen nehmen sich gegenseitig die Spannung. Entscheide dich für die stärkere Aufnahme. So wirkt die Serie geschlossener."
         }
       ]
     }
   ],
-  "readingTime": 4,
+  "readingTime": 6,
   "seo": {
     "title": "Fotoserie kuratieren: Bildauswahl & Reihenfolge",
-    "description": "Von der ersten Bildauswahl bis zur finalen Reihenfolge: Warum kuratierte Fotografie-Serien stärker wirken als lose Einzelbilder.",
+    "description": "Wie du eine Fotoserie sinnvoll kuratierst: Verwendungszweck festlegen, Kontaktbogen filtern, Rhythmus aufbauen und Farben angleichen.",
     "secondaryKeywords": [],
     "internalLinkAnchors": [],
     "canonicalUrl": "https://matthiasramahi.de/blog-serie-kuratieren.html",

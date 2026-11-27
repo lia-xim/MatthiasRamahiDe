@@ -18,8 +18,8 @@
       "_template": "textBlock",
       "style": "summary",
       "eyebrow": "Kurzantwort",
-      "headline": "Auto Fotos retuschieren: Die wichtigsten Punkte im Überblick",
-      "body": "Kernaussage: Temporäre Verschmutzung kann vor der Aufnahme beseitigt werden\nRetusche beginnt bei der: Bei Autofotos sollte vor der Bearbeitung feststehen, was das Bild zeigen soll\nReflexe kontrollieren, statt sie: Lack und Glas spiegeln ihre Umgebung\nEine kurze Abnahme für: Original und Varianten sichern: Bearbeite nicht-destruktiv und überschreibe die Ausgangsdatei nicht"
+      "headline": "Wo Retusche bei Autofotos aufhört",
+      "body": "Kurz gesagt: Sensorflecken und vorübergehenden Staub darfst du entfernen, Lackfarbe, Ausstattung und echte Gebrauchsspuren bleiben im Bild.\nBildaufgabe: Kläre vor der Bearbeitung, ob das Foto Stimmung zeigen oder ein konkretes Fahrzeug nachvollziehbar abbilden soll.\nReflexe: Spiegelungen erklären die Form der Karosserie, prüfe zuerst Standpunkt und Ausrichtung, bevor du retuschierst.\nAbnahme: Bearbeite nicht-destruktiv, sichere das Original und benenne Leitmotiv, Verkaufsbild und Zustandsansicht getrennt."
     },
     {
       "headline": "Retusche beginnt bei der Aussage des Bildes",
@@ -38,13 +38,13 @@
         {
           "image": "/assets/optimized/assets-portfolio-dsc2345-1920.webp",
           "alt": "Heck eines orangefarbenen Sportwagens mit schwarzem Heckflügel und leuchtenden Karosseriereflexen.",
-          "caption": "Heckansicht eines orangefarbenen Sportwagens mit Heckflügel und markanter Rückleuchte. Lackfläche und Reflexlinien sind sichtbar; die Aufnahme ist kein Retuschevergleich.",
+          "caption": "Heckansicht eines orangefarbenen Sportwagens mit Heckflügel und markanter Rückleuchte. Auf dem Lack liegen deutliche Reflexlinien.",
           "cropIntent": "editorial"
         },
         {
           "image": "/assets/optimized/assets-portfolio-dsc3908-1920.webp",
           "alt": "Dunkles Cockpit mit Lenkrad und Mittelkonsole im violetten Umgebungslicht.",
-          "caption": "Cockpit eines Automobils unter violettem Umgebungslicht. Die Lichtfarbe prägt den sichtbaren Eindruck der Materialien; auch dies ist kein Vorher-Nachher-Paar.",
+          "caption": "Cockpit eines Automobils unter violettem Umgebungslicht, das den Eindruck der Materialien deutlich prägt.",
           "cropIntent": "editorial"
         }
       ],
@@ -62,7 +62,7 @@
     },
     {
       "headline": "Farbe und Kontrast über die ganze Serie abstimmen",
-      "body": "Die Lackfarbe verändert ihren Eindruck mit Lichtquelle, Umgebung und Kamerawinkel. Eine einzelne Aufnahme unter farbigem Ausstellungslicht kann anders wirken als eine Außenaufnahme im Tageslicht. Beim Bearbeiten sollten deshalb nicht nur die schönsten Einzelbilder zählen. Prüfe, ob die Fahrzeugfarbe in den Ansichten derselben Serie plausibel zusammenpasst und ob die Abstimmung eine reale Lichtstimmung erhält, statt den Wagen zwischen Bildern ungewollt umzufärben.\n\nKleine Helligkeitsunterschiede lassen sich oft angleichen, damit eine Galerie zusammenhängend wirkt. Schwieriger wird es, wenn Schatten oder farbige Beleuchtung einzelne Bereiche stark verändern. Eine Korrektur kann dann den lokalen Eindruck verbessern, sollte aber keine falsche Sicherheit über den exakten Farbton erzeugen. Wenn eine genaue Farbidentifikation für den späteren Einsatz nötig ist, muss die Aufnahme unter dafür geeigneten Bedingungen entstehen; eine nachträgliche Bearbeitung ersetzt diese Grundlage nicht.\n\nVergleiche dafür Gesamtansicht, Nahaufnahme und Innenraum nicht nur am selben Bildschirm, sondern auch in der vorgesehenen Ausgabegröße. Eine kräftige Abstimmung, die im großen Bild stimmig wirkt, kann als kleine Vorschau dunkle Flächen zusammenziehen oder Details verlieren lassen.",
+      "body": "Die Lackfarbe verändert ihren Eindruck mit Lichtquelle, Umgebung und Kamerawinkel. Eine einzelne Aufnahme unter farbigem Ausstellungslicht kann anders wirken als eine Außenaufnahme im Tageslicht. Beim Bearbeiten sollten deshalb nicht nur die schönsten Einzelbilder zählen. Prüfe, ob die Fahrzeugfarbe in den Ansichten derselben Serie plausibel zusammenpasst und ob die Abstimmung eine reale Lichtstimmung erhält, statt den Wagen zwischen Bildern ungewollt umzufärben.\n\nKleine Helligkeitsunterschiede lassen sich oft angleichen, damit eine Galerie zusammenhängend wirkt. Schwieriger wird es, wenn Schatten oder farbige Beleuchtung einzelne Bereiche stark verändern. Eine Korrektur kann dann den lokalen Eindruck verbessern, sollte aber keine falsche Sicherheit über den exakten Farbton erzeugen. Wenn eine genaue Farbidentifikation für den späteren Einsatz nötig ist, muss die Aufnahme unter dafür geeigneten Bedingungen entstehen; eine nachträgliche Bearbeitung ersetzt diese Grundlage nicht.\n\nVergleiche dafür Gesamtansicht, Nahaufnahme und Innenraum am selben Bildschirm und zusätzlich in der vorgesehenen Ausgabegröße. Eine kräftige Abstimmung, die im großen Bild stimmig wirkt, kann als kleine Vorschau dunkle Flächen zusammenziehen oder Details verlieren lassen.",
       "_template": "textBlock"
     },
     {
@@ -99,7 +99,7 @@
     {
       "_template": "ctaBlock",
       "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
-      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Ein Shooting beginnt bei 250 € inkl. MwSt.",
       "buttonLabel": "Auto-Shooting anfragen"
     },
     {

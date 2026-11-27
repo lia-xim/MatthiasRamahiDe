@@ -4,6 +4,7 @@ import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import NativeFamilyClusterLinks from './NativeFamilyClusterLinks.astro'
 import NativeFamilyJournalLinks from './NativeFamilyJournalLinks.astro'
 import NativeGuideSection from './NativeGuideSection.astro'
+import NativeHubSeries from './NativeHubSeries.astro'
 import NativeFamilyFaq from './NativeFamilyFaq.astro'
 import NativePracticalGuide from './NativePracticalGuide.astro'
 import NativeReviews from './NativeReviews.astro'
@@ -108,10 +109,10 @@ const heroTitleLines = shouldUseCmsHeroTitle
 const heroLocalNote = isLocalCityPage ? cmsHeroLine2 : isKeywordPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || '' : ''
 const heroLabel = isParentPage ? 'Automobilfotografie' : isKeywordPage ? serviceLabel : `Automobilfotografie${localSuffix}`
 const defaultHeroLead = isParentPage
-  ? 'Automobilfotografie: Exterieur, Interieur, Details und Cinematic werden als kuratierte Bildserie geplant - für Marke, Showroom, Verkauf, Kampagne und hochwertige private Fahrzeuge. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant — in ganz NRW.'
+  ? 'Automobilfotografie: Exterieur, Interieur, Details und Cinematic werden als kuratierte Bildserie geplant. Für Marke, Showroom, Verkauf, Kampagne und hochwertige private Fahrzeuge. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant: in ganz NRW.'
   : isKeywordPage
-    ? `${serviceLabel}: eigenständiger Einstieg in die Automobilfotografie. Exterieur, Interieur, Details und Cinematic werden als kuratierte Serie geplant - für Marke, Showroom, Verkauf, Kampagne und hochwertige private Fahrzeuge. Die Seite bleibt bewusst im Layout der übergeordneten Kategorie, ist aber klar auf dieses Motiv und diese Nutzung formuliert.`
-    : `Automobilfotografie in ${scope.label}: Exterieur, Interieur, Details und Cinematic werden als kuratierte Bildserie geplant - für Marke, Showroom, Verkauf, Kampagne und hochwertige private Fahrzeuge. ${cityScopePhrase(scope)}`
+    ? `${serviceLabel}: Exterieur, Interieur, Details und dynamische Szenen als abgestimmte Bildserie. Für Marke, Showroom, Verkauf und private Fahrzeuge.`
+    : `Automobilfotografie in ${scope.label}: Exterieur, Interieur, Details und Cinematic werden als kuratierte Bildserie geplant. Für Marke, Showroom, Verkauf, Kampagne und hochwertige private Fahrzeuge. ${cityScopePhrase(scope)}`
 const keywordLocalContext = keywordFocusCopy && !isParentPage && !isKeywordPage ? ` ${cityScopePhrase(scope)}` : ''
 const heroLead = keywordFocusCopy?.heroLead ? `${keywordFocusCopy.heroLead}${keywordLocalContext}` : defaultHeroLead
 const heroCopy = familyHeroCopy(doc, visualDoc, {
@@ -177,7 +178,7 @@ const practicalGuideItems = [
   },
   {
     title: 'Standpunkt über die Reflexe prüfen',
-    text: 'Lack spiegelt die Umgebung. Kamerahöhe und Winkel werden deshalb nicht nur nach Perspektive, sondern auch nach Linien, Gebäuden und Horizont im Lack gewählt.',
+    text: 'Lack spiegelt die Umgebung. Kamerahöhe und Winkel richten sich sowohl nach der Karosserielinie als auch danach, wie Gebäude und Horizont über den Lack laufen.',
   },
   {
     title: 'Eine Serie statt eines Einzelbilds bauen',
@@ -504,19 +505,19 @@ const galleryImageSource = (index: number) => doc?.portfolioTiles?.[index] || vi
 const defaultSwitchCopy = [
   {
     title: 'Vollformat, ruhige Linien.',
-    body: 'Aussenaufnahmen mit kontrolliertem Licht und ruhigen Reflexen. Lack, Proportionen und Linienführung wirken stimmig - Showroom, Industrie oder urbanes Setting.',
+    body: 'Aussenaufnahmen mit kontrolliertem Licht und ruhigen Reflexen. Lack, Proportionen und Linienführung wirken stimmig: Showroom, Industrie oder urbanes Setting.',
   },
   {
     title: 'Cockpit, Sitz, Material.',
-    body: 'Innenraum mit mobilem Licht inszeniert. Leder, Carbon und Chrom behalten ihren Ton - der Innenraum spricht dieselbe Sprache wie das Exterieur.',
+    body: 'Innenraum mit mobilem Licht inszeniert. Leder, Carbon und Chrom behalten ihren Ton: der Innenraum spricht dieselbe Sprache wie das Exterieur.',
   },
   {
     title: 'Emblem, Felge, Naht.',
-    body: 'Sicken, Felgen, Bremsen, Schalter, Logos. Detailaufnahmen erzählen die Geschichte eines Fahrzeugs im Kleinen - für Händlerseiten, Landingpages und Magazinstrecken.',
+    body: 'Sicken, Felgen, Bremsen, Schalter, Logos. Detailaufnahmen erzählen die Geschichte eines Fahrzeugs im Kleinen: für Händlerseiten, Landingpages und Magazinstrecken.',
   },
   {
     title: 'Architektur, Licht, Dramaturgie.',
-    body: 'Inszenierte Perspektiven mit gesetztem Licht und gewählter Architektur. Bilder mit Filmcharakter - für Kampagne, Magazin und Bildstrecken, die Stimmung tragen.',
+    body: 'Inszenierte Perspektiven mit gesetztem Licht und gewählter Architektur. Bilder mit Filmcharakter: für Kampagne, Magazin und Bildstrecken, die Stimmung tragen.',
   },
 ]
 const localAudienceCards = doc?.audienceCards?.map((card) => ({
@@ -542,15 +543,15 @@ const focusPullLead =
   cmsStatementBody[0] ||
   keywordFocusCopy?.pullLead ||
   (isParentPage
-    ? 'Vom ehrlichen Verkaufsbild bis zur inszenierten Kampagne - eine konsistente Bildserie, sauber belichtet und sofort einsatzbereit für Inserat, Magazin, Social und Print.'
-    : `${serviceLabel} bekommt eine eigene Seite in der Automobil-Struktur: Fahrzeug, Licht, Nutzung und Ausgabe werden vor dem Shooting sauber geplant.`)
+    ? 'Vom ehrlichen Verkaufsbild bis zur inszenierten Kampagne: eine einheitliche Bildserie, sauber belichtet und sofort einsatzbereit für Inserat, Magazin, Social und Print.'
+    : `${serviceLabel}: Fahrzeug, Licht und Ausgabe werden vor dem Shooting auf den genauen Einsatzzweck abgestimmt.`)
 const focusPullRest = cmsStatementBody.slice(1)
-const focusSectionHeadline = isLocalCityPage ? `${serviceLabel} in ${scope.label},` : isKeywordPage ? serviceLabel : keywordFocusCopy?.sectionHeadline || (isParentPage ? 'Ein Bildsatz,' : `${serviceLabel},`)
-const focusSectionEmphasis = isLocalCityPage ? 'lokal geplant.' : isKeywordPage ? 'klar geplant.' : keywordFocusCopy?.sectionEmphasis || (isParentPage ? 'vier Blickwinkel.' : 'klar fokussiert.')
+const focusSectionHeadline = isLocalCityPage || isKeywordPage ? 'Ein Bildsatz,' : keywordFocusCopy?.sectionHeadline || (isParentPage ? 'Ein Bildsatz,' : `${serviceLabel},`)
+const focusSectionEmphasis = isLocalCityPage || isKeywordPage ? 'vier Blickwinkel.' : keywordFocusCopy?.sectionEmphasis || (isParentPage ? 'vier Blickwinkel.' : 'klar fokussiert.')
 const focusFeatureTitle = focusSwitchFrames[0]?.title || keywordFocusCopy?.featureTitle || defaultSwitchCopy[0].title
 const focusFeatureBody = focusSwitchFrames[0]?.body || keywordFocusCopy?.featureBody || defaultSwitchCopy[0].body
-const focusGalleryHeadline = isLocalCityPage ? `${serviceLabel} ${scope.label}: Bildtypen.` : isKeywordPage ? `${serviceLabel}: Bildtypen.` : cmsText(doc?.portfolioTiles?.[0]?.label) || keywordFocusCopy?.galleryHeadline || 'Automobilfotografie als Bildserie.'
-const focusAudienceHeadline = isLocalCityPage ? `${serviceLabel} ${scope.label}: passende Anfragen.` : isKeywordPage ? `${serviceLabel}: passende Anfragen.` : keywordFocusCopy?.audienceHeadline || 'Automobilfotografie: passende Anfragen.'
+const focusGalleryHeadline = isLocalCityPage || isKeywordPage ? 'Aktuelle Arbeiten.' : cmsText(doc?.portfolioTiles?.[0]?.label) || keywordFocusCopy?.galleryHeadline || 'Automobilfotografie als Bildserie.'
+const focusAudienceHeadline = 'Für wen ich arbeite.'
 const focusAudienceLead = keywordFocusCopy?.audienceLead || (!isParentPage && !isKeywordPage
   ? `Ob Showroom, privates Fahrzeug oder Kampagne: in ${scope.label} wird die Bildserie nach Nutzung, Standort und Ausgabe geplant.`
   : 'Du erkennst dich wieder?')
@@ -561,9 +562,9 @@ const focusAudiences = localAudienceCards.length
   : audiences
 const focusRelatedLead =
   isLocalCityPage
-    ? `Automobil Fotografie ${scope.label} bleibt der Einstieg für Fahrzeugbilder vor Ort. Sportwagen, Oldtimer, Motorrad und Auto-Fotoshooting werden als eigene Bereiche verlinkt, damit Nutzer schneller zum passenden Angebot finden.`
+    ? `Für Sportwagen, Oldtimer und Motorräder gibt es eigene Bereiche mit passender Bildsprache. Wenn das Shooting eher ein Erlebnis sein soll, passt das Auto-Fotoshooting.`
     : keywordFocusCopy?.relatedLead ||
-      'Automobil ist die Klammer. Schau dir die spezialisierten Disziplinen an - gleicher Anspruch, anderer Bildfokus. Die Links führen schnell zu der Bildwelt, die zum Fahrzeug, zur Nutzung und zum geplanten Shooting passt.'
+      'Je nach Fahrzeug, Anlass und Einsatzgebiet passen Sportwagen, Oldtimer, Motorrad oder ein Auto-Shooting besser.'
 
 const allCityLinks = [
   ['automobil-fotografie-duesseldorf.html', 'Düsseldorf'],
@@ -658,7 +659,7 @@ const {
   showCrossFamilyCluster,
 } = clusterCuration
 const curatedCityHeading =
-  isParentPage || isNrwFamilyPage ? cityHeading : 'Automobilfotografie <em>im Cluster.</em>'
+  isParentPage || isNrwFamilyPage ? cityHeading : 'Automobilfotografie <em>in der Region.</em>'
 ---
 <AdoptedPageLayout
   legacyFile={legacyFile}
@@ -767,7 +768,7 @@ const curatedCityHeading =
           <div class="auto-archive__inner">
             <header class="auto-archive__head">
               <div>
-                <h2 id="auto-archive-title">Verschiedene Fahrzeuge. <em>Verschiedene Bildwelten.</em></h2>
+                <h2 id="auto-archive-title">Verschiedene Fahrzeuge. <em>Verschiedene Serien.</em></h2>
               </div>
             </header>
             <div class="auto-archive__grid" data-site-lightbox-gallery>
@@ -921,6 +922,7 @@ const curatedCityHeading =
     )}
 
     <NativeGuideSection doc={doc} />
+    <NativeHubSeries doc={doc} />
 
     {showCrossFamilyCluster && (
       <NativeFamilyClusterLinks
@@ -944,12 +946,12 @@ const curatedCityHeading =
       </div>
     </section>
 
-    <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Automobil Fotografie Suchbegriffe">
+    <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Automobil Fotografie nach Anliegen">
       <div class="mr-cities__inner">
         <div class="mr-cities__head">
           <h2 set:html={curatedIntentHeading}></h2>
         </div>
-        <nav class="mr-cities__grid" aria-label="Suchvarianten">
+        <nav class="mr-cities__grid" aria-label="Regionale Bereiche">
           {searchLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
         </nav>
       </div>

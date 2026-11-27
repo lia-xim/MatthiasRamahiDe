@@ -168,7 +168,7 @@ Astro.response.headers.set('x-cms-layout-parent', familyContent.parentLegacyFile
       <div class="local-native__inner">
         <div class="local-native__section-head">
           <h2>Aktuelle <em>Arbeiten.</em></h2>
-          <p>Eine reduzierte Auswahl aus der passenden Bildwelt. Die Seite bleibt schnell, lokal relevant und ohne Originaldateien als Standardausgabe.</p>
+          <p>Eine gezielte Bildauswahl passend zum Bereich – schnell geladen und auf Wesentliches reduziert.</p>
         </div>
         <div class="local-native__gallery-grid">
           {galleryItems.map((item, index) => (
@@ -227,7 +227,7 @@ Astro.response.headers.set('x-cms-layout-parent', familyContent.parentLegacyFile
         <div class="mr-cities__head">
           <h2>{familyContent.seoTitle} <em>Suchbegriffe.</em></h2>
         </div>
-        <nav class="mr-cities__grid" aria-label="Suchvarianten">
+        <nav class="mr-cities__grid" aria-label="Regionale Bereiche">
           {familyContent.searchLinks.map((link) => <a class="mr-cities__cell" href={link.href}>{link.label}</a>)}
         </nav>
       </div>

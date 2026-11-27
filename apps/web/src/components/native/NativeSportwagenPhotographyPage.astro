@@ -4,6 +4,7 @@ import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import NativeFamilyClusterLinks from './NativeFamilyClusterLinks.astro'
 import NativeFamilyJournalLinks from './NativeFamilyJournalLinks.astro'
 import NativeGuideSection from './NativeGuideSection.astro'
+import NativeHubSeries from './NativeHubSeries.astro'
 import NativeFamilyFaq from './NativeFamilyFaq.astro'
 import NativeReviews from './NativeReviews.astro'
 import PreviewToolbar from '../PreviewToolbar.astro'
@@ -69,10 +70,10 @@ const heroTitleLines = shouldUseCmsHeroTitle
 const heroLocalNote = isLocalHeroPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || 'Performance. Linie. Detail.' : isKeywordPage ? cmsHeroLine2 || keywordFocusCopy?.heroEmphasis || '' : ''
 const heroLabel = isParentPage ? 'Sportwagenfotografie' : isKeywordPage ? serviceLabel : `Sportwagenfotografie ${scope.label}`
 const defaultHeroLead = isParentPage
-  ? 'Sportwagenfotografie: Performance, Form, Innenraum und Details werden mit kontrollierten Reflexen und ruhiger Dramaturgie sichtbar — für Sammler, Händler, Marke, Verkauf und Druck. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant — in ganz NRW.'
+  ? 'Sportwagenfotografie: Performance, Form, Innenraum und Details werden mit kontrollierten Reflexen und ruhiger Dramaturgie sichtbar. Für Sammler, Händler, Marke, Verkauf und Druck. Produktionen werden über Motiv, Nutzung, Reise, Lichtfenster und Output geplant: in ganz NRW.'
   : isKeywordPage
-    ? `${serviceLabel}: eigenständiger Einstieg in die Sportwagenfotografie. Performance, Form, Innenraum und Details werden mit kontrollierten Reflexen und ruhiger Dramaturgie sichtbar - für Sammler, Händler, Marke, Verkauf und Druck. Die Seite bleibt bewusst im Layout der übergeordneten Kategorie, ist aber klar auf dieses Motiv und diese Nutzung formuliert.`
-    : `Sportwagenfotografie in ${scope.label}: Performance, Form, Innenraum und Details werden mit kontrollierten Reflexen und ruhiger Dramaturgie sichtbar - für Sammler, Händler, Marke, Verkauf und Druck. ${localScopePhrase(scope)}`
+    ? `${serviceLabel}: Exterieur, Cockpit, Details und dynamische Perspektiven mit kontrollierten Reflexen. Für Sammler, Händler, Marken und Privatverkauf.`
+    : `Sportwagenfotografie in ${scope.label}: Performance, Form, Innenraum und Details werden mit kontrollierten Reflexen und ruhiger Dramaturgie sichtbar. Für Sammler, Händler, Marke, Verkauf und Druck. ${localScopePhrase(scope)}`
 const keywordLocalContext = keywordFocusCopy && !isParentPage && !isKeywordPage ? ` ${localScopePhrase(scope)}` : ''
 const heroLead = keywordFocusCopy?.heroLead ? `${keywordFocusCopy.heroLead}${keywordLocalContext}` : defaultHeroLead
 const heroCopy = familyHeroCopy(doc, visualDoc, {
@@ -91,10 +92,10 @@ const fallbackMetaTitle = isParentPage
     : `${serviceLabel} ${scope.label} | Matthias Ramahi`
 const metaTitle = doc?.seo?.title || fallbackMetaTitle
 const defaultMetaDescription = isParentPage
-  ? 'Sportwagenfotografie: hochwertige Serien für Performance Cars, Sammlerfahrzeuge, Händler und Marken - Exterieur, Interieur, Details und Druckqualität.'
+  ? 'Sportwagenfotografie: Bildserien für Performance Cars, Sammlerfahrzeuge, Händler und Marken. Exterieur, Interieur, Details und Druckqualität.'
   : isKeywordPage
-    ? `${serviceLabel}: hochwertige Serien für Performance Cars, Sammlerfahrzeuge, Händler und Marken.`
-    : `${serviceLabel} ${scope.label}: hochwertige Serien für Performance Cars, Sammlerfahrzeuge, Händler und Marken.`
+    ? `${serviceLabel}: Bildserien für Performance Cars, Sammlerfahrzeuge, Händler und Marken.`
+    : `${serviceLabel} ${scope.label}: Bildserien für Performance Cars, Sammlerfahrzeuge, Händler und Marken.`
 const metaDescription = doc?.seo?.description || keywordFocusCopy?.metaDescription || defaultMetaDescription
 const defaultContactSubject = isParentPage ? 'Sportwagen Fotografie Anfrage' : `${serviceLabel}${isKeywordPage ? '' : ` ${scope.label}`} Anfrage`
 const contactSubject = cmsText(doc?.contactSection?.emailSubject) || defaultContactSubject
@@ -126,11 +127,11 @@ const shootingStyles = [
     width: 720,
     height: 480,
     title: 'Exterieur',
-    text: 'Vollformatige Außenaufnahmen mit kontrolliertem Licht, ruhigen Reflexen und sauberer Linienführung. Lack, Proportionen und Charakter wirken stimmig — egal ob Showroom, Industrie oder urbanes Setting.',
+    text: 'Vollformatige Außenaufnahmen mit kontrolliertem Licht, ruhigen Reflexen und sauberer Linienführung. Lack, Proportionen und Charakter wirken stimmig, egal ob Showroom, Industrie oder urbanes Setting.',
   },
   {
     image: 'assets/portfolio/thumbs/_DSC3908.webp',
-    alt: 'Sportwagen Interieur — Cockpit und Material',
+    alt: 'Sportwagen Interieur: Cockpit und Material',
     width: 720,
     height: 480,
     title: 'Interieur',
@@ -138,19 +139,19 @@ const shootingStyles = [
   },
   {
     image: 'assets/portfolio/thumbs/_DSC3892.webp',
-    alt: 'Sportwagen Detail — Front und Aerodynamik',
+    alt: 'Sportwagen Detail: Front und Aerodynamik',
     width: 720,
     height: 480,
     title: 'Details',
-    text: 'Emblem, Sicken, Felgen, Bremse, Naht, Schalter. Detailaufnahmen erzählen die Geschichte eines Fahrzeugs im Kleinen — perfekt für Händlerseiten, Landingpages und redaktionelle Strecken.',
+    text: 'Emblem, Sicken, Felgen, Bremse, Naht, Schalter. Detailaufnahmen erzählen die Geschichte eines Fahrzeugs im Kleinen, etwa für Händlerseiten, Landingpages und redaktionelle Strecken.',
   },
   {
     image: 'assets/optimized/assets-photos-automobil-neon-960.webp',
-    alt: 'Sportwagen cinematic — Nacht und Architektur',
+    alt: 'Sportwagen cinematic: Nacht und Architektur',
     width: 960,
     height: 640,
     title: 'Cinematic',
-    text: 'Inszenierte Perspektiven mit gesetztem Licht, gewählter Architektur und dramaturgischer Komposition. Bilder mit Filmcharakter — für Kampagne, Magazin und Bildstrecken, die Stimmung tragen.',
+    text: 'Inszenierte Perspektiven mit gesetztem Licht, gewählter Architektur und dramaturgischer Komposition. Bilder mit Filmcharakter: für Kampagne, Magazin und Bildstrecken, die Stimmung tragen.',
   },
 ]
 
@@ -159,7 +160,7 @@ const portfolioTiles = [
     className: 't1',
     src: 'assets/portfolio/thumbs/_DSC3879.webp',
     full: 'assets/optimized/assets-portfolio-dsc3879-1920.webp',
-    alt: 'Sportwagen Exterieur — Hauptmotiv',
+    alt: 'Sportwagen Exterieur: Hauptmotiv',
     width: 720,
     height: 480,
     label: 'Exterieur',
@@ -168,7 +169,7 @@ const portfolioTiles = [
     className: 't2',
     src: 'assets/portfolio/thumbs/_DSC3908.webp',
     full: 'assets/optimized/assets-portfolio-dsc3908-1920.webp',
-    alt: 'Sportwagen Interieur — Cockpit',
+    alt: 'Sportwagen Interieur: Cockpit',
     width: 720,
     height: 480,
     label: 'Interieur',
@@ -177,7 +178,7 @@ const portfolioTiles = [
     className: 't3',
     src: 'assets/portfolio/thumbs/_DSC3982.webp',
     full: 'assets/optimized/assets-portfolio-dsc3982-1920.webp',
-    alt: 'Sportwagen Exterieur — Pagani Huayra',
+    alt: 'Sportwagen Exterieur: Pagani Huayra',
     width: 720,
     height: 480,
     label: 'Detail',
@@ -186,7 +187,7 @@ const portfolioTiles = [
     className: 't4',
     src: 'assets/portfolio/thumbs/_DSC2345.webp',
     full: 'assets/optimized/assets-portfolio-dsc2345-1920.webp',
-    alt: 'Sportwagen Heckpartie — Carbon-Flügel',
+    alt: 'Sportwagen Heckpartie: Carbon-Flügel',
     width: 720,
     height: 576,
     label: 'Heck & Flügel',
@@ -195,7 +196,7 @@ const portfolioTiles = [
     className: 't5',
     src: 'assets/portfolio/thumbs/_DSC3892.webp',
     full: 'assets/optimized/assets-portfolio-dsc3892-1920.webp',
-    alt: 'Sportwagen Front — Aerodynamik und Reflexe',
+    alt: 'Sportwagen Front: Aerodynamik und Reflexe',
     width: 720,
     height: 480,
     label: 'Front',
@@ -204,7 +205,7 @@ const portfolioTiles = [
     className: 't6',
     src: 'assets/optimized/assets-photos-automobil-neon-960.webp',
     full: 'assets/optimized/assets-photos-automobil-neon-1920.webp',
-    alt: 'Sportwagen Cinematic — Nacht und Architektur',
+    alt: 'Sportwagen Cinematic: Nacht und Architektur',
     width: 960,
     height: 640,
     label: 'Cinematic',
@@ -226,7 +227,7 @@ const audiences = [
     width: 720,
     height: 480,
     title: 'Hersteller & Agenturen',
-    text: 'Kampagnenmotive im einheitlichen Stil — von Planung bis Dateiübergabe.',
+    text: 'Kampagnenmotive im einheitlichen Stil: von Planung bis Dateiübergabe.',
   },
   {
     image: 'assets/portfolio/thumbs/_DSC3982.webp',
@@ -234,7 +235,7 @@ const audiences = [
     width: 720,
     height: 480,
     title: 'Autohäuser',
-    text: 'Konsistente Serien für Website und Portale — Außen, Innen, Details.',
+    text: 'Konsistente Serien für Website und Portale: Außen, Innen, Details.',
   },
   {
     image: 'assets/portfolio/thumbs/_DSC2345.webp',
@@ -250,7 +251,7 @@ const audiences = [
     width: 720,
     height: 480,
     title: 'Sammler & Besitzer',
-    text: 'Ruhige Kulissen mit Charakter — für die persönliche Sammlung oder den Verkauf.',
+    text: 'Ruhige Kulissen mit Charakter: für die persönliche Sammlung oder den Verkauf.',
   },
 ]
 
@@ -407,7 +408,7 @@ const finalAudiences = audienceCardSource.length
   : inheritedAudiences
 
 const finalStatementImage = resolveSectionImage(doc?.statement?.image || visualDoc?.statement?.image, finalPortfolioTiles[0] || statementImage)
-const firstSectionTarget = isLocalHeroPage ? `${serviceLabel} ${scope.label}` : isKeywordPage ? serviceLabel : ''
+const firstSectionTarget = ''
 const statementHeadlineSource = (typeof doc?.statement?.headline === 'string' && doc.statement.headline.trim()) || keywordFocusCopy?.statementHeadline || 'Bilder mit'
 const statementEmphasisSource = (typeof doc?.statement?.emphasis === 'string' && doc.statement.emphasis.trim()) || keywordFocusCopy?.statementEmphasis || 'Druckqualität.'
 const statementHeadline = firstSectionTarget || statementHeadlineSource
@@ -420,29 +421,29 @@ const baseStatementBody = doc?.statement?.body?.length
   : keywordFocusCopy?.statementBody?.length
     ? keywordFocusCopy.statementBody
     : [
-      'Sportwagen verlangen Präzision. Ich arbeite mit mobilem Licht, Reflektoren und einem klaren Plan — kontrollierte Reflexe, ruhige Hintergründe, echte Farben. Lack, Linien und Proportionen wirken stimmig, nicht überzeichnet.',
-      'Ob Verkauf, Branding, Redaktion oder persönliches Geschenk: ich kombiniere klares Licht, saubere Komposition und einen Blick für Details. Sie erhalten Dateien für Web, Social Media und Druck — aufbereitet und sofort einsatzbereit.',
+      'Sportwagen verlangen Präzision. Ich arbeite mit mobilem Licht, Reflektoren und einem klaren Plan: kontrollierte Reflexe, ruhige Hintergründe, echte Farben. Lack, Linien und Proportionen wirken stimmig, nicht überzeichnet.',
+      'Ob Verkauf, Branding, Redaktion oder persönliches Geschenk: ich kombiniere klares Licht, saubere Komposition und einen Blick für Details. Du bekommst Dateien für Web, Social Media und Druck: aufbereitet und sofort einsatzbereit.',
     ]
 const statementBody = statementSupportLine ? [statementSupportLine, ...baseStatementBody] : baseStatementBody
 
-const focusSectionHeadline = isLocalHeroPage || isKeywordPage ? serviceLabel : cmsText(doc?.focusSection?.headline) || keywordFocusCopy?.sectionHeadline || (isParentPage ? 'Das Auto,' : `${serviceLabel},`)
-const focusSectionEmphasis = isLocalHeroPage ? `${scope.label}.` : isKeywordPage ? 'klar fokussiert.' : cmsText(doc?.focusSection?.emphasis) || keywordFocusCopy?.sectionEmphasis || (isParentPage ? 'aus jedem Winkel.' : `${scope.label}.`)
+const focusSectionHeadline = cmsText(doc?.focusSection?.headline) || keywordFocusCopy?.sectionHeadline || 'Das Auto,'
+const focusSectionEmphasis = cmsText(doc?.focusSection?.emphasis) || keywordFocusCopy?.sectionEmphasis || 'aus jedem Winkel.'
 const focusSectionLead =
   isLocalHeroPage
     ? `${serviceLabel} in ${scope.label}: Exterieur, Innenraum, Details und Nutzung werden passend zu Fahrzeug, Ort und Ausgabeformat geplant.`
     : cmsText(doc?.focusSection?.lead) || keywordFocusCopy?.sectionLead ||
   (isParentPage
-    ? 'Exterieur, Interieur, Details und cineastische Perspektiven greifen ineinander - ein Bildsatz, der Fahrzeug, Atmosphäre und Material gleichermaßen zeigt.'
-    : `${serviceLabel} bekommt eine eigene Seite im Sportwagenbereich: Exterieur, Innenraum, Details und Nutzung werden passend zum Motiv geplant.`)
-const focusGalleryHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}: Bildserie.` : isKeywordPage ? `${serviceLabel}: Bildserie.` : cmsText(doc?.gallerySection?.headline) || keywordFocusCopy?.galleryHeadline || 'Aktuelle Arbeiten.'
+    ? 'Exterieur, Interieur, Details und cineastische Perspektiven greifen ineinander: ein Bildsatz, der Fahrzeug, Atmosphäre und Material gleichermaßen zeigt.'
+    : `${serviceLabel}: Exterieur, Innenraum, Details und Formate werden auf Fahrzeug, Ort und Verwendungszweck abgestimmt.`)
+const focusGalleryHeadline = isLocalHeroPage || isKeywordPage ? 'Aktuelle Arbeiten.' : cmsText(doc?.gallerySection?.headline) || keywordFocusCopy?.galleryHeadline || 'Aktuelle Arbeiten.'
 const focusGalleryLead = cmsText(doc?.gallerySection?.lead) || keywordFocusCopy?.galleryLead || 'Sechs kuratierte Sportwagen-Bilder aus jüngeren Serien. Klicken zum Vergrößern.'
-const focusAudienceHeadline = isLocalHeroPage ? `${serviceLabel} ${scope.label}: passende Anfragen.` : isKeywordPage ? `${serviceLabel}: passende Anfragen.` : cmsText(doc?.audienceSection?.headline) || keywordFocusCopy?.audienceHeadline || 'Für wen ich arbeite.'
+const focusAudienceHeadline = isLocalHeroPage ? 'Für wen ich arbeite.' : isKeywordPage ? 'Für wen ich arbeite.' : cmsText(doc?.audienceSection?.headline) || keywordFocusCopy?.audienceHeadline || 'Für wen ich arbeite.'
 const focusAudienceLead =
   cmsText(doc?.audienceSection?.lead) || keywordFocusCopy?.audienceLead ||
-  'Vom privaten Fahrzeug bis zur internationalen Kampagne. Jede Serie wird auf Nutzung, Marke und Zielgruppe zugeschnitten - ein Hero-Motiv oder ein vollständiges Launch-Asset-Paket.'
+  'Vom privaten Fahrzeug bis zur internationalen Kampagne. Jede Serie wird auf Nutzung, Marke und Zielgruppe zugeschnitten: ein Hero-Motiv oder ein vollständiges Launch-Asset-Paket.'
 const focusRelatedLead =
   cmsText(doc?.relatedSection?.lead) || keywordFocusCopy?.relatedLead ||
-  'Sportwagen ist ein Teil der Automobil-Welt. Schau dir die anderen Disziplinen an - gleicher Anspruch, anderer Bildfokus. Die Links führen schnell zu der Bildwelt, die zum Fahrzeug, zur Nutzung und zum geplanten Shooting passt.'
+  'Je nach Fahrzeug, Epoche und geplanter Nutzung greifen Automobil, Oldtimer, Motorrad und kuratierte Serien direkt ineinander.'
 const relatedSectionTitle = splitTrailingEmphasis(
   cmsText(doc?.relatedSection?.headline) || 'Verwandte',
   cmsText(doc?.relatedSection?.emphasis) || 'Bereiche.',
@@ -836,6 +837,7 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
     </section>
 
     <NativeGuideSection doc={doc} />
+    <NativeHubSeries doc={doc} />
 
     {showCrossFamilyCluster && (
       <NativeFamilyClusterLinks
@@ -859,12 +861,12 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
       </div>
     </section>
 
-    <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Sportwagen Fotografie Suchbegriffe">
+    <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Sportwagen Fotografie nach Anliegen">
       <div class="mr-cities__inner">
         <div class="mr-cities__head">
           <h2 set:html={intentHeading}></h2>
         </div>
-        <nav class="mr-cities__grid" aria-label="Suchvarianten">
+        <nav class="mr-cities__grid" aria-label="Regionale Bereiche">
           {searchLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
         </nav>
       </div>

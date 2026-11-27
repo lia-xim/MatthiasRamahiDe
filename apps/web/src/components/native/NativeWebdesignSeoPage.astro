@@ -16,7 +16,7 @@ const webSeoFaq = [
   },
   {
     q: 'Können Fotografie, Texte und Website-Umsetzung aus einer Hand kommen?',
-    a: 'Ja. Eigene Business-Portraits, Fahrzeug- oder Raumaufnahmen entstehen passend zum Seitenlayout, sodass Bildsprache, Typografie und SEO-Struktur sauber ineinandergreifen.',
+    a: 'Ja. Eigene Business-Portraits, Fahrzeug- oder Raumaufnahmen entstehen passend zum Seitenlayout, sodass eigene Fotos, Typografie und klare Seitenstruktur nahtlos ineinandergreifen.',
   },
   {
     q: 'Welche SEO-Maßnahmen sind im Aufbau enthalten?',
@@ -30,15 +30,15 @@ const webSeoFaq = [
 
 // Kompakte, minimalistische Sektionen — nummerierte Hairline-Listen, kein Card-Chrome.
 const services = [
-  { n: '01', title: 'Neue Websites', body: 'Handgebaut, schnell, schlank — ohne Page-Builder-Aufblähung.' },
+  { n: '01', title: 'Neue Websites', body: 'Handgebaut, schnell, schlank, ohne Page-Builder-Aufblähung.' },
   { n: '02', title: 'Lokale Sichtbarkeit', body: 'Stadtseiten, GBP und Schema für echte Local-Pack-Sichtbarkeit.' },
-  { n: '03', title: 'Inhalte & Bildsprache', body: 'Eigene Fotos und editoriale Texte statt Stock — aus einer Hand.' },
+  { n: '03', title: 'Inhalte & Fotografie', body: 'Eigene Fotos und editoriale Texte statt Stock: aus einer Hand.' },
   { n: '04', title: 'Performance & Wartung', body: 'Core-Web-Vitals im grünen Bereich, Pflege ohne CMS-Stress.' },
 ]
 const systemLayers = [
-  { n: '01', tag: 'Struktur', line: 'Sitemap, URLs und interne Links — vor dem ersten Pixel.' },
+  { n: '01', tag: 'Struktur', line: 'Sitemap, URLs und interne Links: vor dem ersten Pixel.' },
   { n: '02', tag: 'Design', line: 'Editorial, mit echtem Bild und ruhiger Typografie.' },
-  { n: '03', tag: 'Tech', line: 'Astro, Next.js oder reines HTML — nach Bedarf.' },
+  { n: '03', tag: 'Tech', line: 'Astro, Next.js oder reines HTML: nach Bedarf.' },
   { n: '04', tag: 'SEO', line: 'On-Page, Local, Schema und Sitemap im Standard.' },
 ]
 const buildStats = [
@@ -61,7 +61,7 @@ const heroSlides = [
   {
     image: heroImage,
     titleLines: ['Webdesign', '& SEO'],
-    lead: 'Moderne Websites mit klarer Struktur, schneller Performance und lokaler Suchmaschinen-Sichtbarkeit — handgebaut für Marken und Mittelstand im Rheinland.',
+    lead: 'Moderne Websites mit klarer Struktur, schneller Performance und lokaler Suchmaschinen-Sichtbarkeit: handgebaut für Marken und Mittelstand im Rheinland.',
     primaryHref: '#anfrage',
     primaryLabel: 'Website anfragen',
     secondaryHref: '#leistungen',
@@ -88,7 +88,7 @@ const heroSlidesJson = JSON.stringify(heroSlides)
             {' '}
             <span class="line"><span class="word">&amp; SEO.</span></span>
           </h1>
-          <p class="hero-lead" id="hero-lead">Moderne Websites mit klarer Struktur, schneller Performance und lokaler Suchmaschinen-Sichtbarkeit — handgebaut für Marken und Mittelstand im Rheinland.</p>
+          <p class="hero-lead" id="hero-lead">Websites, die schnell laden und gefunden werden, handgebaut für Marken und Mittelstand im Rheinland. Klare Struktur, gute Performance, lokale Sichtbarkeit.</p>
           <div class="hero-actions" aria-label="Direkte Aktionen">
             <a class="btn dark" href="#anfrage" data-hero-primary>Website anfragen</a>
             <a class="btn" href="#leistungen" data-hero-secondary>Leistungen ansehen</a>
@@ -104,8 +104,8 @@ const heroSlidesJson = JSON.stringify(heroSlides)
           <h2>Gefunden werden,<br /><em>und überzeugen.</em></h2>
         </div>
         <div class="ws-statement__body">
-          <p class="ws-lead">Eine Website muss zwei Dinge gleichzeitig können: in der Suche auftauchen und danach überzeugen. Beides entsteht hier aus einer Hand — Struktur, Text, Bild und Technik.</p>
-          <p>Kein Page-Builder-Wust, keine Stockbilder, kein Template von der Stange. Stattdessen handgebaute Seiten mit eigener Bildsprache und einem schlanken Code-Stand, der schnell lädt und sauber rankt.</p>
+          <p class="ws-lead">Eine Website muss zwei Dinge gleichzeitig können: in der Suche auftauchen und danach überzeugen. Beides entsteht hier aus einer Hand: Struktur, Text, Bild und Technik.</p>
+          <p>Kein Page-Builder-Wust, keine Stockbilder, kein Template von der Stange. Stattdessen handgebaute Seiten mit eigenen Fotos und schlankem Code, der schnell lädt und sauber rankt.</p>
           <p>Umgesetzt wird das mit <a href="https://ramahi-webdesign.de/" target="_blank" rel="noopener">Ramahi Webdesign</a>, dem Studio, in dem auch diese Website entstanden ist: Websites ab 399 €, SEO ab 19,99 €, Erstgespräch kostenlos.</p>
           <div class="ws-actions">
             <a class="ws-btn ws-btn--ink" href="https://ramahi-webdesign.de/" target="_blank" rel="noopener">Zu Ramahi Webdesign ↗</a>
@@ -120,7 +120,7 @@ const heroSlidesJson = JSON.stringify(heroSlides)
       <div class="ws-inner">
         <div class="ws-services__head">
           <h2>Web<em>leistungen.</em></h2>
-          <p class="ws-lead">Webdesign und SEO als eine Sache — vier Disziplinen, ein Auftritt.</p>
+          <p class="ws-lead">Webdesign und SEO als eine Sache: vier Disziplinen, ein Auftritt.</p>
         </div>
         <ol class="ws-services__grid">
           {services.map((s) => (
@@ -144,13 +144,13 @@ const heroSlidesJson = JSON.stringify(heroSlides)
             <span class="ws-case__url">gr-knospe.de</span>
           </div>
           <div class="ws-case__shot">
-            <img src={caseImage} alt="Website-Beispiel — Startseite einer von Matthias Ramahi gebauten Website" loading="lazy" decoding="async" width="720" height="1017" />
+            <img src={caseImage} alt="Website-Beispiel: Startseite einer von Matthias Ramahi gebauten Website" loading="lazy" decoding="async" width="720" height="1017" />
           </div>
         </div>
         <div class="ws-case__copy">
           <p class="ws-eyebrow ws-eyebrow--ink">Aus der Praxis</p>
           <h2>Eine Seite,<br /><em>die trägt.</em></h2>
-          <p class="ws-lead">Handgebaut statt Baukasten: klare Struktur, eigene Bildsprache und ein schlanker Code-Stand, der auch nach Jahren noch schnell lädt.</p>
+          <p class="ws-lead">Handgebaut statt Baukasten: klare Struktur, eigene Fotos und schlanker Code, der auch nach Jahren noch schnell lädt.</p>
           <dl class="ws-case__stats">
             {buildStats.map((s) => (
               <div class="ws-case__stat"><dd>{s.value}</dd><dt>{s.label}</dt></div>

@@ -4,9 +4,9 @@
   "priority": "later",
   "city": "duesseldorf",
   "service": "Portraitfotografie",
-  "intro": "Für Unternehmen in Düsseldorf fotografiere ich Teams und Führungskräfte so, dass alle Aufnahmen zusammenpassen — gleicher Stil, gleiche Anmutung, egal ob zehn oder hundert Personen. Das Ergebnis ist ein konsistentes Bildset, das auf der Website, im Geschäftsbericht und in Recruiting-Materialien sofort funktioniert.",
+  "intro": "Unternehmensportraits in Düsseldorf: einheitliche Mitarbeiter- und Führungsportraits, fotografiert in euren Räumen. Ich plane Licht und Ablauf so, dass alle Bilder zusammenpassen und neue Kollegen später ergänzt werden können.",
   "heroImage": "/uploads/payload/20250327-DSC01550-2.webp",
-  "heroLine2": "Vor Ort.",
+  "heroLine2": "Ein Look für das ganze Team.",
   "heroSlides": [],
   "heroPanels": [],
   "localProof": [
@@ -25,20 +25,24 @@
   ],
   "localFaq": [
     {
-      "question": "Wie läuft ein Unternehmensportrait-Shooting mit vielen Personen in Düsseldorf ab?",
-      "answer": "Der Ablauf wird vor dem Shooting gemeinsam geplant: feste Stationen, definierter Bildausschnitt und Licht-Setup, damit die Wechsel zwischen den Personen schnell gehen. Üblicherweise lassen sich so zehn bis zwanzig Personen an einem halben Tag fotografieren. Location ist in Düsseldorf — in den eigenen Räumen des Unternehmens oder an einem abgestimmten Außenstandort."
+      "question": "Müssen alle am selben Tag Zeit haben?",
+      "answer": "Nein. Wer fehlt, wird an einem zweiten Termin im gleichen Setup fotografiert. Das Ergebnis passt trotzdem zur Serie."
     },
     {
-      "question": "Können neue Mitarbeiter später in die bestehende Bildserie ergänzt werden?",
-      "answer": "Ja. Das Konzept wird so dokumentiert, dass ein Nachshoot zu einem späteren Zeitpunkt dieselbe Bildsprache ergibt — gleiches Licht, gleicher Hintergrund, gleicher Bildausschnitt. Neue Teamfotos fügen sich in die bestehende Serie ein, ohne erkennbar nachgereicht zu wirken."
+      "question": "Was sollen die Mitarbeitenden anziehen?",
+      "answer": "Das legen wir für das ganze Team fest, etwa eine Farbfamilie oder einen Grad an Förmlichkeit. Einfarbige, gut sitzende Kleidung funktioniert fast immer, große Logos und feine Muster eher nicht. Vorab schicke ich ein kurzes Briefing, das ihr intern weitergeben könnt."
     },
     {
-      "question": "Wo findet das Shooting statt — in meinen Räumen oder an einem eigenen Standort?",
-      "answer": "Beides ist möglich. Unternehmensportraits in Düsseldorf entstehen häufig direkt im Unternehmen, da der eigene Standort Kontext und Bildatmosphäre liefert. Alternativ stehen Locations in Düsseldorf zur Verfügung — Medienhafen, neutrale Räume oder vereinbarte Atelierflächen. Der Rahmen wird im Briefing abgestimmt."
+      "question": "Geht das Shooting auch außerhalb unserer Räume?",
+      "answer": "Ja. Für Führungsportraits mit anderem Hintergrund kommen Orte wie der Medienhafen oder ein gemietetes Studio infrage."
     },
     {
-      "question": "Was kostet ein Unternehmensportrait-Shooting für ein Team?",
-      "answer": "Ein Shooting beginnt bei 250 € inkl. MwSt. Drucke und Sonderwünsche werden separat abgerechnet. Der Umfang variiert nach Personenanzahl, Shooting-Dauer und gewünschten Bildformaten. Mitarbeiterfotos für ein kleines Team und ein vollständiger Drehtag für ein größeres Unternehmen werden nach Aufwand berechnet. Eine erste Einschätzung gibt es nach kurzer Beschreibung des Projekts — kein verbindliches Angebot ohne Abstimmung des Rahmens."
+      "question": "Wie bekommen wir die Bilder?",
+      "answer": "Als Online-Galerie, meist über Google Drive, sortiert nach Personen. Jede Person kann ihr Lieblingsbild selbst auswählen, oder ihr entscheidet zentral."
+    },
+    {
+      "question": "Zeigst du unsere Bilder in deinem Portfolio?",
+      "answer": "Nur, wenn ihr und die fotografierten Personen zustimmt. Alles, was auf meiner Website zu sehen ist, stammt von mir, und jede abgebildete Person hat ihr Einverständnis gegeben."
     }
   ],
   "blocks": [
@@ -49,7 +53,7 @@
     },
     {
       "headline": "Nähe ohne Beliebigkeit.",
-      "body": "Ein gutes Portrait entsteht nicht durch Requisiten, sondern durch Haltung, Timing und ein Licht, das zur Person passt. Die Bilder sollen eindeutig wirken — nicht inszeniert.\n\nFür Personal Branding, Founder, Teams, Editorials und Kampagnen, die mehr Persönlichkeit tragen sollen als ein Standard-Headshot.",
+      "body": "Starke Portraits entstehen durch passendes Licht, genaues Timing und ruhige Regie statt aufwendiger Requisiten. Die Bilder sollen eindeutig wirken — nicht inszeniert.\n\nFür Personal Branding, Founder, Teams, Editorials und Kampagnen, die mehr Persönlichkeit tragen sollen als ein Standard-Headshot.",
       "_template": "textBlock"
     },
     {
@@ -64,12 +68,12 @@
     },
     {
       "headline": "Agentur & Kanzlei",
-      "body": "Agenturen, Kanzleien, Praxen, Marken — eine konsistente Bildsprache, ohne jeden Charakter zu glätten.",
+      "body": "Agenturen, Kanzleien, Praxen, Marken — einheitlicher Auftritt über alle Köpfe, ohne Menschen glattzubügeln.",
       "_template": "textBlock"
     },
     {
       "headline": "Magazin & Strecke",
-      "body": "Magazine, Bildstrecken, Künstler-Features — Portraits mit Haltung und Erzählung statt Pose.",
+      "body": "Magazine, Bildstrecken, Künstler-Features — ausdrucksstarke Portraits mit Persönlichkeit statt steifer Posen.",
       "_template": "textBlock"
     },
     {
@@ -119,14 +123,14 @@
     }
   ],
   "statement": {
-    "headline": "Team in einem Stil,",
-    "emphasis": "einheitlich, professionell.",
+    "headline": "Ein Team,",
+    "emphasis": "ein Stil.",
     "body": [
       {
-        "text": "Vor dem Shooting bespreche ich mit dem Unternehmen, welcher Look zur Marke passt — Bildformat, Hintergrund, Lichtstimmung. Dann halte ich diesen Look über alle Personen konstant: klare Anweisungen zu Haltung, Abstand und Blick sorgen dafür, dass jede Aufnahme ins System passt, nicht nur die erste. Gedreht wird vor Ort in der Firma oder im Studio — beides ist in Düsseldorf ohne großen Aufwand möglich."
+        "text": "Auf vielen Teamseiten sieht man es sofort: Jedes Portrait stammt aus einem anderen Jahr, mit anderem Hintergrund, Licht und Ausschnitt. Spätestens beim Website-Relaunch oder einer Recruiting-Kampagne wirkt das unruhig, und für neue Mitarbeitende fehlt ein Standard."
       },
       {
-        "text": "Die Aufnahmen sind für Mitarbeitende, Führungskräfte und Teams gedacht — für den Einsatz auf der Unternehmenswebsite, LinkedIn-Profilen, Pressemappen und Geschäftsberichten. Geliefert werden retuschierte Dateien in den Formaten, die für Web und Print gebraucht werden, termingerecht und so vorbereitet, dass sie direkt ins Corporate Design passen."
+        "text": "Vor dem Shooting legen wir deshalb den Look fest: Format, Hintergrund, Lichtstimmung. Diesen halte ich bei allen Personen gleich und dokumentiere das Setup, damit spätere Aufnahmen passen. Am Ende stehen retuschierte Dateien für Website, LinkedIn, Presse und Geschäftsbericht, abgestimmt auf euer Corporate Design."
       }
     ]
   },
@@ -140,28 +144,28 @@
   "audienceCards": [
     {
       "number": "01",
-      "title": "Unternehmen & Agenturen",
-      "text": "Alle Personen eines Unternehmens — von der Geschäftsführung bis zum Team — in einer konsistenten Bildserie. Geplant für einen Drehtag, lieferbar für Web, Print und Presse."
+      "title": "Website-Relaunch",
+      "text": "Eine einheitliche Teamseite statt Bildern aus fünf verschiedenen Jahren."
     },
     {
       "number": "02",
-      "title": "Kanzleien & Beratungen",
-      "text": "Anwälte, Steuerberater, Unternehmensberater — Portraits, die professionell wirken, ohne jeden Charakter glattzubügeln. Einheitlicher Hintergrund, ruhiges Licht, klarer Bildausschnitt."
+      "title": "Recruiting",
+      "text": "Echte Gesichter für Stellenanzeigen und Karriereseite, auf Wunsch mit Szenen aus dem Arbeitsalltag."
     },
     {
       "number": "03",
-      "title": "Startups & Gründerteams",
-      "text": "Teamfotos für Pitch-Decks, Investor-Seiten und Recruiting — eine Bildsprache, die mitwächst. Neue Gesichter lassen sich zu einem späteren Zeitpunkt in das bestehende Konzept integrieren."
+      "title": "Kanzleien & Beratungen",
+      "text": "Seriöse Portraits mit Charakter: einheitlicher Hintergrund, ruhiges Licht, klarer Ausschnitt."
     },
     {
       "number": "04",
-      "title": "Führungsebene & Vorstand",
-      "text": "Einzelportraits für Geschäftsberichte, Presseseiten und Veröffentlichungen. Blick, Haltung und Licht werden auf den Verwendungskontext abgestimmt — nicht auf die Kamerapose."
+      "title": "Geschäftsführung",
+      "text": "Einzelportraits für Geschäftsbericht und Pressebereich, abgestimmt darauf, wo sie erscheinen."
     },
     {
       "number": "05",
-      "title": "Standort & Räume",
-      "text": "Unternehmensstandorte, Büros und Produktionsflächen als Teil der Bildserie. Architektur und Atmosphäre des Ortes werden so dokumentiert, dass die corporate Fotografie ein vollständiges Bild ergibt."
+      "title": "Neue Kollegen",
+      "text": "Wer später dazukommt, wird im dokumentierten Setup nachfotografiert und passt ins Raster."
     }
   ],
   "relatedSection": {
@@ -178,7 +182,7 @@
   "targetKeyword": "Unternehmensportrait Düsseldorf",
   "seo": {
     "title": "Unternehmensportrait Düsseldorf — Matthias Ramahi",
-    "description": "Unternehmensportrait Düsseldorf: Mitarbeiterfotos, Teamfotos und Führungsportraits als konsistente Bildserie — vor Ort, geplant für viele Personen, erweiterbar.",
+    "description": "Unternehmensportraits in Düsseldorf: einheitliche Mitarbeiter-, Team- und Führungsportraits, fotografiert in euren Räumen und später erweiterbar. Ab 250 €.",
     "canonicalUrl": "https://matthiasramahi.de/unternehmensportrait-duesseldorf.html",
     "legacyUrl": "unternehmensportrait-duesseldorf.html",
     "ogImage": "/uploads/payload/20250327-DSC01550-2.webp",
@@ -203,24 +207,28 @@
   "payloadId": "162",
   "guideSection": {
     "eyebrow": "Unternehmensportrait Düsseldorf",
-    "headline": "Unternehmens- & Mitarbeiterfotos in Düsseldorf: Eine Linie für das ganze Team.",
-    "intro": "Wenn neue Mitarbeitende dazukommen oder die Website überarbeitet wird, braucht das Unternehmen eine konsistente Bildwelt für Geschäftsführung, Teams und Arbeitsumfeld.",
+    "headline": "Mitarbeiterfotos für ein ganzes Team planen.",
+    "intro": "Bei vielen Personen entscheidet die Organisation über das Ergebnis. So läuft ein Teamtermin in euren Räumen ab.",
     "items": [
       {
-        "title": "Einheitliches Licht-Setup für 5 bis 50+ Mitarbeitende",
-        "text": "Mit mobilem Lichtsystem direkt in euren Düsseldorfer Räumen dokumentiere ich das Setup so, dass spätere Nachzügler-Portraits nahtlos zum bestehenden Stil passen."
+        "title": "Vorbereitung und Zeitplan",
+        "text": "Vorab bekomme ich eine Liste der Personen, und wir legen Zeitfenster fest, die in den Arbeitstag passen. Jede Person kommt für ein kurzes, entspanntes Zeitfenster vorbei. So läuft der Betrieb weiter, und niemand fühlt sich gehetzt."
       },
       {
-        "title": "Mitarbeiterportraits plus echte Arbeitsatmosphäre",
-        "text": "Neben Einzel- und Teamportraits entstehen auf Wunsch authentische Szenen im Büro, in der Werkstatt oder im Gespräch – kein gestellter Stockfoto-Look."
+        "title": "Ein Raum, ein Setup",
+        "text": "Gebraucht wird ein Raum mit etwas Platz, idealerweise ohne direkte Sonne. Dort baue ich mobiles Licht und Hintergrund auf und lasse beides den ganzen Tag stehen. So sehen das erste und das letzte Portrait gleich aus."
       },
       {
-        "title": "Strukturierter Zeitplan ohne Stress im Büroalltag",
-        "text": "Jede Person bekommt ein kurzes, entspanntes Zeitfenster von 10 bis 15 Minuten. So bleibt der laufende Betrieb ruhig und jede Person fühlt sich gut abgeholt."
+        "title": "Später ergänzen",
+        "text": "Lichtposition, Abstand, Brennweite und Hintergrund notiere ich genau. Kommen neue Mitarbeitende dazu, fotografiere ich sie im gleichen Setup nach, und ihr Portrait fügt sich in die bestehende Serie."
       },
       {
-        "title": "Nutzungsrechte sauber für Web, Recruiting und Presse",
-        "text": "Umfang, Bildanzahl und kommerzielle Nutzungsrechte werden im Vorfeld klar vereinbart. Kleinere Business-Einstiege starten bei 250 € inkl. MwSt., Teamtage nach Aufwand."
+        "title": "Arbeitsalltag und Räume",
+        "text": "Neben Portraits entstehen auf Wunsch Szenen im Büro, in der Werkstatt oder im Gespräch und Bilder der Räume. Diese Bilder ergänzen die Teamseite und geben Stellenanzeigen ein echtes Gesicht, ohne gestellten Stockfoto-Look."
+      },
+      {
+        "title": "Kosten und Nutzungsrechte",
+        "text": "Ein Shooting beginnt bei 250 € inkl. MwSt. Drucke und Sonderwünsche werden separat abgerechnet. Teamtage werden nach Personenzahl und Aufwand kalkuliert, die Nutzung für Web, Recruiting und Presse vereinbaren wir vorab schriftlich."
       }
     ],
     "links": [

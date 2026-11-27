@@ -24,8 +24,8 @@
       "_template": "textBlock",
       "style": "summary",
       "eyebrow": "Kurzantwort",
-      "headline": "Landschaftsfotos bearbeiten: Die wichtigsten Punkte im Überblick",
-      "body": "Kernaussage: Korrigiere zuerst Weißabgleich und globale Tonwerte, verstärke Farbe und Kontrast nur so weit, wie es zur vorhandenen Lichtstimmung passt, und prüfe lokale\nVor dem ersten Regler: Schau das Foto zunächst als Ganzes an und benenne, was zuerst auffallen soll: eine Felskante, die Wasserfläche, ein heller Wolkenzug oder die räumliche\nLokale Korrekturen nur dort: Eine lokale Korrektur lohnt sich, wenn ein bestimmter Teil des Fotos eigene Aufmerksamkeit braucht\nEine kurze Schlussprüfung vor: Vergleiche die bearbeitete Fassung mit dem Ausgangsbild, ohne dich nur auf die Vorher-nachher-Ansicht zu verlassen"
+      "headline": "Kurz zusammengefasst",
+      "body": "Reihenfolge: Erst Weißabgleich und globale Tonwerte, dann Farbe und Kontrast, zuletzt lokale Korrekturen.\nBildabsicht: Lege vor dem ersten Regler fest, was im Bild zuerst auffallen soll.\nMasken: Lokal korrigieren nur dort, wo ein Bildteil eigene Aufmerksamkeit braucht, und Übergänge am Horizont prüfen.\nSchlussprüfung: Die fertige Fassung mit dem Ausgangsbild vergleichen und in der vorgesehenen Ausgabegröße ansehen."
     },
     {
       "_template": "imageSequence",
@@ -35,7 +35,7 @@
         {
           "image": "/uploads/payload/20250605-DSC03978-2.webp",
           "alt": "Rötlicher Atlantikstrand mit weißer Brandung und bedecktem Himmel, vom Dünenrand aus gesehen.",
-          "caption": "Atlantikstrand von der Düne: Sand, Brandung und Himmel bilden unterschiedliche Helligkeitsflächen. Das öffentliche Portfoliofoto dient hier als Bildbeispiel und dokumentiert keine einzelnen Bearbeitungsschritte.",
+          "caption": "Atlantikstrand von der Düne: Sand, Brandung und Himmel bilden unterschiedliche Helligkeitsflächen. Das Foto stammt aus dem Portfolio und zeigt das Ergebnis, keine einzelnen Bearbeitungsschritte.",
           "cropIntent": "editorial"
         }
       ]
@@ -73,12 +73,12 @@
     {
       "_template": "textBlock",
       "headline": "Eine kurze Schlussprüfung vor dem Export",
-      "body": "Vergleiche die bearbeitete Fassung mit dem Ausgangsbild, ohne dich nur auf die Vorher-nachher-Ansicht zu verlassen. Schalte die Entwicklung kurz zurück und wieder ein. Frage dich: Ist das Hauptmotiv klarer geworden? Sind helle und dunkle Bereiche noch glaubwürdig? Passen die Farben zur Lichtstimmung? Gibt es Halos, harte Übergänge oder übersättigte Flecken?\n\nLege dann eine kurze Pause ein und sieh das Bild später erneut an. Ein zweiter Blick macht es leichter, aufgedrehte Farbe, übertriebene Klarheit und ungleichmäßige Masken zu erkennen. Prüfe zum Schluss die Datei in der vorgesehenen Ausgabegröße. Bei einer Landschaft, die als Wandbild gedacht ist, zählen neben dem Bildschirm auch Format, Papier und Betrachtungsabstand. Der Beitrag [Landschaftsbild als Fine-Art-Print auswählen](/blog-landschaftsbild-fine-art-print-auswaehlen.html) behandelt diese Auswahl. Für eine Vorschau auf einen bestimmten Druckprozess kann ein Softproof helfen; er ist eine Beurteilungshilfe und keine Garantie für die Wirkung jedes tatsächlichen Drucks. Eine Übersicht der Landschaftsmotive findest du auf der Seite [Landschaftsfotografie](/landschaftsfotografie.html)."
+      "body": "Vergleiche die bearbeitete Fassung mit dem Ausgangsbild, ohne dich nur auf die Vorher-nachher-Ansicht zu verlassen. Schalte die Entwicklung kurz zurück und wieder ein. Frage dich: Ist das Hauptmotiv klarer geworden? Sind helle und dunkle Bereiche noch glaubwürdig? Passen die Farben zur Lichtstimmung? Gibt es Halos, harte Übergänge oder übersättigte Flecken?\n\nLege dann eine kurze Pause ein und sieh das Bild später erneut an. Ein zweiter Blick macht es leichter, aufgedrehte Farbe, übertriebene Klarheit und ungleichmäßige Masken zu erkennen. Prüfe zum Schluss die Datei in der vorgesehenen Ausgabegröße. Bei einer Landschaft, die als Wandbild gedacht ist, zählen neben dem Bildschirm auch Format, Papier und Betrachtungsabstand. Mehr dazu im Beitrag [Landschaftsbild als Fine-Art-Print auswählen](/blog-landschaftsbild-fine-art-print-auswaehlen.html). Für eine Vorschau auf einen bestimmten Druckprozess kann ein Softproof helfen; er ist eine Beurteilungshilfe und keine Garantie für die Wirkung jedes tatsächlichen Drucks. Eine Übersicht der Landschaftsmotive findest du unter [Landschaftsfotografie](/landschaftsfotografie.html)."
     },
     {
       "_template": "ctaBlock",
       "headline": "Landschaftsmotive als Fine-Art-Print anfragen",
-      "text": "Ausgewählte Landschaftsaufnahmen erscheinen als hochwertige Fine-Art-Prints auf Archivpapier. Schreib mir Motivwunsch und gewünschtes Wandformat.",
+      "text": "Die Landschaftsmotive aus dem Portfolio gibt es als Fine-Art-Print in allen Formaten, auch auf Acrylglas. Schreib mir Motivwunsch und gewünschtes Wandformat. Drucke werden separat abgerechnet.",
       "buttonLabel": "Fine-Art-Print anfragen"
     },
     {
@@ -125,7 +125,7 @@
         {
           "label": "Landschaftsfotografie & Fine-Art-Prints",
           "href": "/landschaftsfotografie.html",
-          "description": "Kuratierte Landschaftsmotive als Wandbilder und Sammler-Editionen."
+          "description": "Landschaftsmotive aus dem Portfolio, erhältlich als Druck und Wandbild."
         }
       ]
     }

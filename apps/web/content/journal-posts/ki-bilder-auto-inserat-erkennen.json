@@ -20,28 +20,28 @@
       "_template": "textBlock",
       "style": "summary",
       "eyebrow": "Kurzantwort",
-      "headline": "KI-Bilder Auto-Inserat erkennen: Die wichtigsten Punkte im Überblick",
-      "body": "Kernaussage: Prüfe KI-Verdacht in Auto-Inseraten vorsichtig: Rückwärtssuche, Herkunftsdaten, Verkäuferfragen und Fahrzeugprüfung – ohne Bildfehler als Beweis zu werten\nEin Foto allein kann: Ob ein Autofoto echt, nachbearbeitet oder mit KI verändert wurde, lässt sich aus einer einzelnen Bilddatei oft nicht sicher feststellen\nHerkunftsdaten und KI-Wasserzeichen richtig: Wenn du die Originaldatei erhältst, können Metadaten oder sogenannte Content Credentials Hinweise auf Aufnahme und Bearbeitung geben\nWeiterführende Fahrzeugfotografie: Dieser Beitrag richtet sich an Käufer, die bei einem Online-Inserat die Herkunft und Aussagekraft der Fotos einordnen möchten"
+      "headline": "KI-Bilder im Auto-Inserat: kurz zusammengefasst",
+      "body": "Grenzen: Ob ein Autofoto echt, bearbeitet oder mit KI verändert ist, lässt sich aus einer einzelnen Datei oft nicht sicher feststellen.\nPrüfanlässe: Auffällige Schatten, Embleme oder Spiegelungen sind Gründe zum Nachfragen, aber kein Beweis.\nWerkzeuge: Rückwärtssuche, Metadaten, Content Credentials und SynthID liefern Hinweise mit klaren Grenzen.\nEntscheidend: Anbieter, Unterlagen und das konkrete Fahrzeug vor Ort prüfen, bevor Geld fließt."
     },
     {
       "_template": "textBlock",
       "headline": "Ein Foto allein kann Echtheit nicht beweisen",
-      "body": "Ob ein Autofoto echt, nachbearbeitet oder mit KI verändert wurde, lässt sich aus einer einzelnen Bilddatei oft nicht sicher feststellen. Auffällige Schatten, ein unlesbares Emblem oder eine ungewöhnliche Spiegelung sind Gründe, genauer hinzusehen – aber kein Beweis. Auch Kompression, starke Retusche, ein kleiner Ausschnitt oder ein älteres Foto können solche Spuren erzeugen.\n\nFür Kaufinteressenten zählt deshalb eine andere Frage: Zeigen die Fotos tatsächlich das angebotene Fahrzeug, und stimmen Angebot, Verkäufer und Fahrzeug vor Ort zusammen? Prüfe die Bildserie, suche nach wiederverwendeten Bildern und bitte bei offenen Punkten um eine aktuelle Aufnahme. Provenienz-Werkzeuge können Hinweise liefern; sie ersetzen weder die Prüfung der Fahrzeugdaten noch eine Besichtigung."
+      "body": "Ob ein Autofoto echt, nachbearbeitet oder mit KI verändert wurde, lässt sich aus einer einzelnen Bilddatei oft nicht sicher feststellen. Auffällige Schatten, ein unlesbares Emblem oder eine ungewöhnliche Spiegelung sind Gründe, genauer hinzusehen, aber kein Beweis. Auch Kompression, starke Retusche, ein kleiner Ausschnitt oder ein älteres Foto können solche Spuren erzeugen.\n\nFür Kaufinteressenten zählt deshalb eine andere Frage: Zeigen die Fotos tatsächlich das angebotene Fahrzeug, und stimmen Angebot, Verkäufer und Fahrzeug vor Ort zusammen? Prüfe die Bildserie, suche nach wiederverwendeten Bildern und bitte bei offenen Punkten um eine aktuelle Aufnahme. Provenienz-Werkzeuge können Hinweise liefern; sie ersetzen weder die Prüfung der Fahrzeugdaten noch eine Besichtigung."
     },
     {
       "_template": "imageSequence",
-      "headline": "Portfoliofotos als Bildbeispiele, nicht als Inserate",
+      "headline": "Portfoliofotos als Bildbeispiele",
       "layout": "editorial-pair",
       "items": [
         {
           "image": "/assets/portfolio/automobil-bmw-m3-showcar.webp",
-          "caption": "Öffentliches Portfoliofoto eines BMW-Showcars. Es ist weder ein Verkaufsinserat noch ein Beispiel für KI-Erkennung oder einen Echtheitstest.",
+          "caption": "Portfoliofoto eines BMW-Showcars, kein Verkaufsinserat.",
           "cropIntent": "editorial",
           "alt": "Weißer BMW-Klassiker als Showcar unter roter Ausstellungsbeleuchtung."
         },
         {
           "image": "/assets/portfolio/automobil-mercedes-interieur-tilt.webp",
-          "caption": "Öffentliches Portfoliofoto eines Mercedes-Cockpits. Sichtbare Fahrzeugdetails können eingeordnet werden; die Aufnahme belegt kein bestimmtes Online-Angebot.",
+          "caption": "Portfoliofoto eines Mercedes-Cockpits: Details wie diese sollten im Inserat zum angebotenen Fahrzeug passen.",
           "cropIntent": "editorial",
           "alt": "Mercedes-Cockpit mit großem Display, dunklem Leder und spiegelnder Frontscheibe."
         }
@@ -50,12 +50,12 @@
     {
       "_template": "textBlock",
       "headline": "Echte Aufnahme, Retusche und KI-Compositing unterscheiden",
-      "body": "Unter „bearbeitet“ fallen sehr unterschiedliche Eingriffe. Ein Foto kann zugeschnitten, in Helligkeit und Farbe angepasst oder von Staubflecken bereinigt sein. Bei einem Compositing kann das Auto aus einer realen Aufnahme stammen, während der Hintergrund ersetzt wird. Generatives Füllen ergänzt oder ersetzt einzelne Bildbereiche – etwa einen Hintergrund oder ein störendes Objekt. Ein vollständig generiertes Motiv kann ein Fahrzeug zeigen, das es in dieser Form gar nicht gibt. Auf einem Bildschirmfoto sind diese Herstellungswege nicht immer zuverlässig zu unterscheiden.\n\nAuch eine KI-Retusche sagt allein noch nichts darüber aus, ob ein Verkäufer betrügt. Entscheidend ist, welche Aussage das Inserat macht und ob das konkrete Fahrzeug verfügbar ist. Wird ein Auto mit verändertem Hintergrund gezeigt, kann das eine gestalterische Bearbeitung sein. Werden dabei Lackfarbe, Räder, Anbauteile oder Schäden verändert, wird die Aufnahme als Darstellung des angebotenen Zustands unzuverlässig. Beurteile deshalb das gesamte Angebot und nicht nur die Frage, ob ein Bild eine KI-Spur enthält."
+      "body": "Unter „bearbeitet“ fallen sehr unterschiedliche Eingriffe. Ein Foto kann zugeschnitten, in Helligkeit und Farbe angepasst oder von Staubflecken bereinigt sein. Bei einem Compositing kann das Auto aus einer realen Aufnahme stammen, während der Hintergrund ersetzt wird. Generatives Füllen ergänzt oder ersetzt einzelne Bildbereiche, etwa einen Hintergrund oder ein störendes Objekt. Ein vollständig generiertes Motiv kann ein Fahrzeug zeigen, das es in dieser Form gar nicht gibt. Auf einem Bildschirmfoto sind diese Herstellungswege nicht immer zuverlässig zu unterscheiden.\n\nAuch eine KI-Retusche sagt allein noch nichts darüber aus, ob ein Verkäufer betrügt. Entscheidend ist, welche Aussage das Inserat macht und ob das konkrete Fahrzeug verfügbar ist. Wird ein Auto mit verändertem Hintergrund gezeigt, kann das eine gestalterische Bearbeitung sein. Werden dabei Lackfarbe, Räder, Anbauteile oder Schäden verändert, wird die Aufnahme als Darstellung des angebotenen Zustands unzuverlässig. Beurteile deshalb das gesamte Angebot und nicht nur die Frage, ob ein Bild eine KI-Spur enthält."
     },
     {
       "_template": "textBlock",
       "headline": "Visuelle Auffälligkeiten sind nur Prüfanlässe",
-      "body": "Beim genauen Hinsehen fallen manchmal Kanten auf, die sich nicht sauber fortsetzen, Schriftzüge ohne klare Form oder Schatten, die zwischen Bildteilen unterschiedlich wirken. Bei einem Auto können auch Felgen, Spiegelungen, Scheinwerfer und Karosserielinien Vergleichspunkte sein. Prüfe solche Details in der Originaldatei oder einer großen Ansicht, wenn sie dir vorliegt. In einer kleinen Vorschau gehen feine Strukturen verloren.\n\nNutze Auffälligkeiten als Anlass für einen Vergleich, nicht als Urteil. Ein Perspektivwechsel verändert Proportionen; polierter Lack spiegelt die Umgebung; Software kann Rauschen, Schärfe und Farben verändern. Umgekehrt können überzeugend wirkende KI-Bilder fehlerfrei erscheinen. Eine Liste vermeintlicher KI-Merkmale liefert deshalb keine verlässliche Echtheitsprüfung. Google führt visuelle Artefakte als mögliche Hinweise auf; ein nicht gefundenes SynthID schließt laut Google KI-Bilder anderer Anbieter nicht aus.\n\nAutomatische KI-Detektoren sind ebenfalls kein Urteil über ein einzelnes Inserat. Das NIST beschreibt, dass ihre Ergebnisse stark davon abhängen, mit welchen Motiven, Generatoren und Bildveränderungen sie geprüft wurden; Kompression und Größenänderung können die Erkennung beeinflussen. Auch falsch-positive Ergebnisse kommen vor. Nutze einen Detektorwert höchstens als zusätzlichen Anlass für Fragen – nicht als Beweis, dass ein Verkäufer Bilder manipuliert hat."
+      "body": "Beim genauen Hinsehen fallen manchmal Kanten auf, die sich nicht sauber fortsetzen, Schriftzüge ohne klare Form oder Schatten, die zwischen Bildteilen unterschiedlich wirken. Bei einem Auto können auch Felgen, Spiegelungen, Scheinwerfer und Karosserielinien Vergleichspunkte sein. Prüfe solche Details in der Originaldatei oder einer großen Ansicht, wenn sie dir vorliegt. In einer kleinen Vorschau gehen feine Strukturen verloren.\n\nNutze Auffälligkeiten als Anlass für einen Vergleich, nicht als Urteil. Ein Perspektivwechsel verändert Proportionen; polierter Lack spiegelt die Umgebung; Software kann Rauschen, Schärfe und Farben verändern. Umgekehrt können überzeugend wirkende KI-Bilder fehlerfrei erscheinen. Eine Liste vermeintlicher KI-Merkmale liefert deshalb keine verlässliche Echtheitsprüfung. Google führt visuelle Artefakte als mögliche Hinweise auf; ein nicht gefundenes SynthID schließt laut Google KI-Bilder anderer Anbieter nicht aus.\n\nAutomatische KI-Detektoren sind ebenfalls kein Urteil über ein einzelnes Inserat. Das NIST beschreibt, dass ihre Ergebnisse stark davon abhängen, mit welchen Motiven, Generatoren und Bildveränderungen sie geprüft wurden; Kompression und Größenänderung können die Erkennung beeinflussen. Auch falsch-positive Ergebnisse kommen vor. Nutze einen Detektorwert höchstens als zusätzlichen Anlass für Fragen. Dass ein Verkäufer Bilder manipuliert hat, beweist er nicht."
     },
     {
       "_template": "textBlock",
@@ -70,7 +70,7 @@
     {
       "_template": "textBlock",
       "headline": "Bitte bei Zweifeln um ein aktuelles Bild des konkreten Autos",
-      "body": "Wenn ein Detail oder die Verfügbarkeit unklar bleibt, stelle eine konkrete Rückfrage. Bitte zum Beispiel um eine neue Aufnahme der fraglichen Felge, des Innenraums oder eines sichtbaren Schadens – zusammen mit einer weiteren Ansicht, die das Fahrzeug im Zusammenhang zeigt. Eine kurze, ungeschnittene Videoaufnahme kann ebenfalls helfen, mehrere Details und das Auto in einem Durchgang zu sehen.\n\nAuch ein neues Bild oder Video ist kein endgültiger Nachweis. Es hilft dir, die nächste Prüfung gezielter vorzubereiten. Vereinbare nach Möglichkeit einen Termin am Standort des Fahrzeugs und vergleiche die sichtbaren Merkmale mit dem, was im Inserat steht. Bei einem Kauf aus der Ferne solltest du klären, wer das Auto tatsächlich anbietet und welche Möglichkeit du hast, Fahrzeug und Unterlagen vor Zahlung zu prüfen."
+      "body": "Wenn ein Detail oder die Verfügbarkeit unklar bleibt, stelle eine konkrete Rückfrage. Bitte zum Beispiel um eine neue Aufnahme der fraglichen Felge, des Innenraums oder eines sichtbaren Schadens, zusammen mit einer weiteren Ansicht, die das Fahrzeug im Zusammenhang zeigt. Eine kurze, ungeschnittene Videoaufnahme kann ebenfalls helfen, mehrere Details und das Auto in einem Durchgang zu sehen.\n\nAuch ein neues Bild oder Video ist kein endgültiger Nachweis. Es hilft dir, die nächste Prüfung gezielter vorzubereiten. Vereinbare nach Möglichkeit einen Termin am Standort des Fahrzeugs und vergleiche die sichtbaren Merkmale mit dem, was im Inserat steht. Bei einem Kauf aus der Ferne solltest du klären, wer das Auto tatsächlich anbietet und welche Möglichkeit du hast, Fahrzeug und Unterlagen vor Zahlung zu prüfen."
     },
     {
       "_template": "textBlock",
@@ -84,13 +84,13 @@
     },
     {
       "_template": "textBlock",
-      "headline": "Weiterführende Fahrzeugfotografie",
-      "body": "Dieser Beitrag richtet sich an Käufer, die bei einem Online-Inserat die Herkunft und Aussagekraft der Fotos einordnen möchten. Für sichtbare Ausstattungshinweise gibt es einen eigenen Leitfaden zu [Gebrauchtwagenfotos und Ausstattungsmerkmalen](/blog-gebrauchtwagen-inseratsfotos-pruefen.html). Wer selbst Fahrzeugbilder für eine Marke oder einen Händler plant, findet die Produzentenperspektive im Artikel [Echte Fahrzeugfotos oder KI-Bilder](/blog-echte-fahrzeugfotos-oder-ki.html)."
+      "headline": "Passende Ratgeber",
+      "body": "Wenn du als Käufer prüfen willst, welche Ausstattung die Fotos tatsächlich zeigen, hilft der Leitfaden zu [Gebrauchtwagenfotos und Ausstattungsmerkmalen](/blog-gebrauchtwagen-inseratsfotos-pruefen.html). Wer selbst Fahrzeugbilder für eine Marke oder einen Händler plant, findet die Sicht der Bildproduktion im Artikel [Echte Fahrzeugfotos oder KI-Bilder](/blog-echte-fahrzeugfotos-oder-ki.html)."
     },
     {
       "_template": "ctaBlock",
       "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
-      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "text": "Du planst Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Ein Shooting beginnt bei 250 € inkl. MwSt.",
       "buttonLabel": "Auto-Shooting anfragen"
     },
     {
@@ -175,7 +175,7 @@
   "updatedAt": "2028-02-22T08:00:00.000Z",
   "seo": {
     "title": "KI-Bilder im Auto-Inserat erkennen? Hinweise und Grenzen",
-    "description": "Prüfe KI-Verdacht in Auto-Inseraten vorsichtig: Rückwärtssuche, Herkunftsdaten, Verkäuferfragen und Fahrzeugprüfung – ohne Bildfehler als Beweis zu werten.",
+    "description": "KI-Verdacht im Auto-Inserat prüfen: Rückwärtssuche, Herkunftsdaten, Rückfragen an den Verkäufer und Fahrzeugprüfung. Bildfehler allein sind kein Beweis.",
     "focusKeyword": "KI-Bilder Auto-Inserat erkennen",
     "secondaryKeywords": [
       "KI-Fotos in Autoanzeigen erkennen",

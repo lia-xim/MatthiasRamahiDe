@@ -11,14 +11,14 @@
   "publishedAt": "2026-08-07T09:00:00.000Z",
   "excerpt": "Schwarz-Weiß-Portraits entstehen nicht durch Entsättigung. So arbeiten Licht, Tonwerttrennung, Haut, Kleidung und Hintergrund bereits bei der Aufnahme zusammen.",
   "coverImage": "/assets/portraits/20260823-khan-levi-dsc8481.webp",
-  "readingTime": 8,
+  "readingTime": 7,
   "blocks": [
     {
       "_template": "textBlock",
       "style": "summary",
       "eyebrow": "Kurzantwort",
-      "headline": "Schwarz-Weiß-Portraits und Lichtsetzung: Die wichtigsten Punkte im Ü",
-      "body": "Kernaussage: Eine monochrome Vorschau ist hilfreich, die Rohdatei kann trotzdem Farbinformation behalten\nSchwarz-Weiß braucht einen eigenen: Farbe wegzunehmen ist technisch einfach\nHartes Licht zeigt Struktur: Eine kleinere oder weiter entfernte Quelle erzeugt klarere Schattenkanten\nFarbe und Schwarz-Weiß sollten: Wer beide Fassungen benötigt, sollte vorab klären, ob sie gleichwertig eingesetzt werden oder unterschiedliche Aufgaben übernehmen"
+      "headline": "Worauf es beim Licht für Schwarz-Weiß ankommt",
+      "body": "Kernaussage: Starke Schwarz-Weiß-Portraits entstehen über klare Helligkeitskontraste zwischen Gesicht, Kleidung und Hintergrund statt über bloßes Entsättigen.\nTonwerttrennung prüfen: Dunkles Haar vor schwarzer Wand säuft in Graustufen ab. Ein Kantenlicht oder ein hellerer Hintergrund trennt die Kontur.\nHartes vs. weiches Licht: Gerichtetes Licht formt Textur und Kanten markant, großes Seitenlicht hält Hautübergänge ruhig.\nFarbe vs. Monochrom: Lege vorab fest, ob Schwarz-Weiß als eigenständige Serie läuft, statt identische Bilder doppelt auszugeben."
     },
     {
       "headline": "Schwarz-Weiß braucht einen eigenen Bildgrund",
@@ -27,7 +27,7 @@
     },
     {
       "headline": "Tonwerttrennung ersetzt den Farbkontrast",
-      "body": "Die wichtigste Kontrolle ist nicht, ob eine Fläche dunkel oder hell ist, sondern ob benachbarte Flächen voneinander lesbar bleiben. Dunkles Haar vor einem schwarzen Hintergrund kann verschwinden; ein helles Hemd kann mit einer hellen Wand zu einer einzigen Form werden. Kleine Veränderungen in Abstand, Perspektive oder Hintergrundhelligkeit schaffen mehr Trennung als eine aggressive Bearbeitung.\n\nEin monochromes Vorschaubild an der Kamera kann helfen, diese Beziehungen früh zu sehen. Die Rohdatei darf weiterhin Farbe enthalten. Entscheidend ist, dass am Set geprüft wird, wie Gesicht, Haare, Kleidung und Umgebung als Helligkeiten zusammenwirken. So wird Schwarz-Weiß nicht nachträglich über eine farbig gedachte Aufnahme gelegt, sondern ist Teil der Komposition.",
+      "body": "Ohne Farbinformation trennt allein der Helligkeitsunterschied. Ein roter Pullover vor grünem Blattwerk leuchtet in Farbe stark, schmilzt in Graustufen aber oft zu einer identischen grauen Masse zusammen.\n\nStelle die Kamera deshalb direkt auf monochrome Live-Vorschau (bei voller RAW-Aufnahme in Farbe) und prüfe bereits am Set: Bleiben Haare, Sakko und Wangen klar vom Hintergrund abgesetzt?",
       "_template": "textBlock"
     },
     {
@@ -54,7 +54,7 @@
     },
     {
       "headline": "Hartes Licht zeigt Struktur und verlangt Präzision",
-      "body": "Eine kleinere oder weiter entfernte Quelle erzeugt klarere Schattenkanten. Das kann Gesicht, Hände und Kleidung grafisch ordnen und passt zu einer entschiedenen, redaktionellen Bildsprache. Gleichzeitig werden Hautstruktur, Glanz und kleine Positionsänderungen sichtbarer. Hartes Licht ist nicht ehrlicher als weiches; es betont lediglich andere Informationen.\n\nDie Position muss genauer geführt werden. Schon eine leichte Drehung verändert den Schatten der Nase oder lässt ein Auge deutlich dunkler werden. Deshalb sollte die Person nicht in einer starren Pose festgehalten werden, sondern innerhalb eines verständlichen Bereichs arbeiten. Markierungen am Boden und eine klare Blickrichtung erhalten Beweglichkeit, ohne die Lichtwirkung bei jedem Bild neu aufzubauen.",
+      "body": "Kleinere Lichtformer oder hartes Seitenlicht setzen prägnante Schatten unter Wangenknochen und Kiefer und arbeiten Bartstoppeln sowie Stoffstruktur plastisch heraus.\n\nDa hartes Licht schon bei kleinen Kopfdrehungen den Schattenwurf verschiebt, halte den Bewegungsbereich über klare Blickpunkte am Boden kompakt und kontrolliert.",
       "_template": "textBlock",
       "style": "bridge"
     },
@@ -70,7 +70,7 @@
     },
     {
       "headline": "Farbe und Schwarz-Weiß sollten nicht um dieselbe Rolle konkurrieren",
-      "body": "Wer beide Fassungen benötigt, sollte vorab klären, ob sie gleichwertig eingesetzt werden oder unterschiedliche Aufgaben übernehmen. Für eine Website kann Farbe die Hauptserie tragen, während Schwarz-Weiß als ruhige Editorial-Auswahl erscheint. Für ein Album oder eine Pressemeldung kann es genau umgekehrt sein. Ohne Hierarchie landen oft zwei ähnliche Serien nebeneinander, von denen keine konsequent kuratiert ist.\n\nDie finale Auswahl sollte daher nicht automatisch jedes Motiv doppelt enthalten. Manche Bilder leben von Farbflächen, andere werden durch die Reduktion stärker. Schwarz-Weiß ist dann überzeugend, wenn Licht, Tonwerte und Ausdruck eine eigenständige Bildaussage bilden. Die Entscheidung fällt bei Aufnahme und Auswahl – nicht erst beim Klick auf eine Vorgabe im Entwicklungsprogramm.",
+      "body": "Kläre vor dem Shooting, ob Farbe oder Schwarz-Weiß die Hauptrolle trägt. Eine klare Aufteilung wirkt überlegter, als jedes Motiv in beiden Versionen abzuliefern: etwa Schwarz-Weiß als fokussierte Editorial-Auswahl für die Über-mich-Seite und Farbe für die Team-Kacheln.",
       "_template": "textBlock"
     },
     {
@@ -102,8 +102,8 @@
     },
     {
       "_template": "ctaBlock",
-      "headline": "Zeitloses Schwarz-Weiß-Portrait in Düsseldorf buchen",
-      "text": "Klare Lichtführung, feine Kontraste und charakterstarke Ergebnisse – auch als Fine-Art-Barytdruck ab 250 € inkl. MwSt.",
+      "headline": "Schwarz-Weiß-Portrait in Düsseldorf planen",
+      "text": "Klare Lichtführung und fein abgestufte Kontraste, auf Wunsch auch als Fine-Art-Druck. Ein Shooting beginnt bei 250 € inkl. MwSt., Drucke werden separat abgerechnet.",
       "buttonLabel": "Portrait anfragen"
     },
     {

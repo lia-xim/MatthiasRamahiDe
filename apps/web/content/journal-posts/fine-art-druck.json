@@ -4,7 +4,7 @@
   "featured": false,
   "category": "landscape-print",
   "publishedAt": "2026-05-27T18:22:56.000Z",
-  "excerpt": "Warum Material, Papier, Farbmanagement und Format Teil der fotografischen Wirkung sind, wenn Bilder als Fine-Art-Print oder Wandbild funktionieren sollen.",
+  "excerpt": "Warum Papierwahl, Softproof, 16-Bit-Export und Betrachtungsabstand entscheiden, ob ein Foto als Fine-Art-Print an der Wand überzeugt.",
   "coverImage": "/uploads/payload/fea8218e-7546-48ef-8581-2b99bb3cdefe_centered_reduced-1.webp",
   "tags": [
     "Fine Art",
@@ -44,29 +44,33 @@
   "blocks": [
     {
       "_template": "textBlock",
-      "body": "Zwischen einem guten Foto am Monitor und einem überzeugenden Fine-Art-Wandbild liegen bewusste Entscheidungen zu Papier, Trägermaterial, Farbmanagement und Format."
+      "style": "standard",
+      "body": "Ob ein Foto als Fine-Art-Druck überzeugt, entscheidet sich vor dem Export: bei Papier, Softproof, Schärfung und Format. Auf einem hell leuchtenden Monitor wirken tiefe Schatten oft noch durchzeichnet und Rottöne sauber differenziert. Auf Baumwollpapier fehlt diese Hintergrundbeleuchtung. Dort bestimmt allein das Licht im Raum, wie Kontrast, Farbtiefe und Schärfe am Ende ankommen."
     },
     {
       "_template": "textBlock",
       "style": "summary",
       "eyebrow": "Kurzantwort",
-      "headline": "Vom Bild zum Fine-Art-Druck: Die wichtigsten Punkte im Überblick",
-      "body": "Kernaussage: Das hängt von Wandbreite, Möbeln und Betrachtungsabstand ab\nDruck ist kein Export-Klick: Ein Bild verändert sich spürbar, sobald es den selbstleuchtenden Bildschirm verlässt und als reflektierendes Objekt im Raum hängt\nFarbmanagement schafft Verlässlichkeit: Fine-Art-Druck braucht kontrollierte Daten: 16-Bit-Masterdatei, passendes ICC-Zielprofil im Soft-Proof, materialgerechte Ausgangsschärfung und bei\nFormat ist Raumwirkung: Ein kleines Format fordert Nähe und Betrachtung im Detail"
+      "headline": "Druckvorbereitung in Kürze",
+      "body": "Kernaussage: Ein gelungener Fine-Art-Print entsteht durch abgestimmte Entscheidungen aus Papieroberfläche, ICC-Softproof, passender Schärfung und Raumformat.\nPapierwahl: Mattes Baumwollpapier reduziert Spiegelungen, während Baryt-Papiere tiefe Schwärzen und glänzende Lack- oder Chromreflexe tragen.\nSoftproof zuerst: Monitor auf etwa 90 bis 120 cd/m² kalibrieren und das ICC-Profil des Drucklabors vor dem Export gegenprüfen.\nAuflösung realistisch wählen: Nahansichten im Buch verlangen 300 dpi, Wandformate ab zwei Metern Abstand gelingen auch mit 180 bis 220 dpi sauber."
     },
     {
       "_template": "textBlock",
-      "headline": "Druck ist kein Export-Klick",
-      "body": "Ein Bild verändert sich spürbar, sobald es den selbstleuchtenden Bildschirm verlässt und als reflektierendes Objekt im Raum hängt. Papierstruktur, Format, Betrachtungsabstand und Tageslicht bestimmen, ob ein Motiv ruhig, dicht oder flach wirkt. Deshalb gehört Druckplanung zur fotografischen Entscheidung."
+      "headline": "Papier und Trägermaterial passend zum Motiv wählen",
+      "style": "standard",
+      "body": "Jede Oberfläche verändert die Bildanmutung spürbar. Schwere matte Baumwollpapiere wie Hahnemühle Photo Rag schlucken hartes Raumlicht und eignen sich für Portraits, Architektur oder ruhige Herbstlandschaften, weil keine störenden Spiegelungen über dunklen Flächen entstehen.\n\nBarytpapiere bringen eine feine Oberflächenversiegelung und deutlich tieferes Schwarz mit. Sie tragen Metall, nassen Asphalt, Chromleisten und harte Kontraste wesentlich druckvoller. Für große Wandformate ohne schweren Glasrahmen sind matte Alu-Dibond-Kaschierungen eine robuste Alternative mit geringer Blendwirkung."
     },
     {
       "_template": "textBlock",
-      "headline": "Material trägt die Stimmung",
-      "body": "Matte Baumwoll- und Künstlerpapiere nehmen Glanz zurück und betonen Fläche, Ruhe und Tiefe. Barytpapiere oder Acrylglas lassen Kontraste und feine Details präsenter wirken, während Alu-Dibond eine klare, rahmenlose Fläche für moderne Räume schafft."
+      "headline": "Farbmanagement, Kalibrierung und Softproof nutzen",
+      "style": "standard",
+      "body": "Die häufigste Enttäuschung beim Auspacken eines Prints sind abgesoffene Tiefen. Meist war der Monitor beim Bearbeiten deutlich heller eingestellt, als eine normal beleuchtete Wand je wirkt. Reduziere die Bildschirmhelligkeit beim Softproofen auf etwa 90 bis 120 cd/m² und aktiviere die Papierweiß-Simulation.\n\nLade vorab das exakte ICC-Profil deines Fachlabors und kontrolliere die Farbumfang-Warnung auf kritische Cyan- oder Magentatöne in Autolacken. Exportiere als 16-Bit-TIFF ohne aggressive JPEG-Kompression und lege je nach Kaschierung oder Passepartout 3 bis 5 Millimeter Randzugabe an."
     },
     {
       "_template": "textBlock",
-      "headline": "Farbmanagement schafft Verlässlichkeit",
-      "body": "Fine-Art-Druck braucht kontrollierte Daten: 16-Bit-Masterdatei, passendes ICC-Zielprofil im Soft-Proof, materialgerechte Ausgangsschärfung und bei anspruchsvollen Serien Probedrucke. Ein starker Print entsteht nicht durch maximale Sättigung, sondern durch eine stimmige Übersetzung des Bildes in Material."
+      "headline": "Auflösung, Druckschärfe und Betrachtungsabstand",
+      "style": "standard",
+      "body": "Statt stur an 300 dpi festzuhalten, orientiert sich die sinnvolle Dateigröße am typischen Betrachtungsabstand. Ein Abzug im Format 20 x 30 cm landet oft dreißig Zentimeter vor den Augen. Hier sind volle 300 dpi sinnvoll.\n\nEin großes Wandbild im Format 120 x 80 cm betrachtet kaum jemand mit der Nasenspitze vor der Faser. Sauber aufgenommene RAW-Dateien mit 180 bis 220 dpi liefern hier detailreiche Ergebnisse, sofern die Ausgangsschärfe sitzt und speziell für das saugfähigere Papier nachgeschärft wird."
     },
     {
       "_template": "imageSequence",
@@ -87,8 +91,21 @@
     },
     {
       "_template": "textBlock",
-      "headline": "Format ist Raumwirkung",
-      "body": "Ein kleines Format fordert Nähe und Betrachtung im Detail. Ein großes Format verändert die gesamte Wahrnehmung eines Raumes. Vor dem Druck sollte deshalb feststehen, ob das Bild Blickfang, ruhiger Gegenpol oder Teil einer abgestimmten Wandserie sein soll."
+      "headline": "Probestreifen, Passepartout und Licht am Hängeort testen",
+      "style": "standard",
+      "body": "Bevor ein teurer Großdruck in den Versand geht, lohnt sich ein A4-Teststreifen mit Ausschnitten in Originalgröße inklusive Schattenpartie und hellem Himmel. Lege diesen Probestreifen direkt an die geplante Wand, einmal morgens im Tageslicht und einmal abends bei warmem Kunstlicht.\n\nWähle den Rahmen und ein säurefreies Passepartout erst anhand dieses Tests. Bei verglasten Rahmen verhindert entspiegeltes Museumsglas grüne Scheibenreflexe auf dunklen Motiven.\n\nAls praktischer Maßstab für Wandgrößen gilt zudem die Zwei-Drittel-Regel: Über einem zwei Meter breiten Sofa oder Sideboard wirkt ein Druck ab etwa 120 x 80 cm inklusive Rahmen ausgewogen, während kleinere 40 x 60 cm Abzüge dort verloren gehen und besser als gereihtes Paar funktionieren."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Häufige Fehler beim Wechsel vom Bildschirm aufs Papier",
+      "style": "standard",
+      "body": "Viele Drucke enttäuschen beim Auspacken, weil am voll aufgedrehten Laptop bearbeitet wurde. Auf einem Monitor mit 250 cd/m² leuchten dunkle Felgen oder Abendwolken noch klar durchzeichnet. Auf mattem Papier unter normalem Raumlicht laufen diese Schatten dagegen zu einer schwarzen Fläche zusammen.\n\nHebe dunkle Tiefenwerte im Softproof bei Bedarf um fünf bis zehn Punkte im Schwarzpunkt an und verzichte auf aggressive Sättigung in Knallrot oder Tiefblau außerhalb des CMYK-nahen Druckraums."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Praxis-Checkliste vor der finalen Druckfreigabe",
+      "style": "standard",
+      "body": "Prüfe vor dem Upload ans Fachlabor immer diese fünf Punkte:\n\n1. Farbprofil auf sRGB oder das ICC-Profil des Labors abgestimmt und als 16-Bit-TIFF verlustfrei exportiert.\n2. Papierweiß-Simulation im Softproof unter gedimmter Monitorhelligkeit kontrolliert.\n3. Beschnittzugabe von 3 bis 5 Millimetern bei randloser Kaschierung auf Alu-Dibond berücksichtigt.\n4. Schärfung für das konkrete Papier gewählt (matte Baumwolle verlangt mehr Ausgabeschärfe als Baryt).\n5. Probestreifen im Zielformat vor großen Auflagen einmal im echten Tageslicht am Hängeort geprüft."
     },
     {
       "_template": "linkList",
@@ -113,7 +130,7 @@
         {
           "label": "Landschaftsfotografie & Fine-Art-Prints",
           "href": "/landschaftsfotografie.html",
-          "description": "Kuratierte Landschaftsmotive als Wandbilder und Sammler-Editionen."
+          "description": "Landschaftsmotive als Wandbilder und Fine-Art-Drucke."
         }
       ]
     },
@@ -129,11 +146,11 @@
       "items": [
         {
           "question": "Welches Format passt zu meiner Wand?",
-          "answer": "Das hängt von Wandbreite, Möbeln und Betrachtungsabstand ab. Ein größeres Bild braucht nicht zwingend mehr Details, sondern vor allem Ruhe in der Komposition."
+          "answer": "Das hängt von Wandbreite, Möbeln und Betrachtungsabstand ab. Große Wandformate verlangen vor allem eine ruhige Komposition statt maximaler Detailfülle."
         },
         {
           "question": "Warum lohnt sich ein Soft-Proof vor dem finalen Druck?",
-          "answer": "Im Soft-Proof wird mit dem ICC-Profil des Zielpapiers am kalibrierten Monitor simuliert, wie Tiefen und Farben im Druck reagieren – so werden böse Überraschungen vor der Produktion vermieden."
+          "answer": "Im Soft-Proof wird mit dem ICC-Profil des Zielpapiers am kalibrierten Monitor simuliert, wie Tiefen und Farben im Druck reagieren. So fallen Probleme vor der Produktion auf und nicht erst beim Auspacken."
         },
         {
           "question": "Wann wählt man mattes Fine-Art-Papier statt Acrylglas?",
@@ -142,10 +159,10 @@
       ]
     }
   ],
-  "readingTime": 4,
+  "readingTime": 6,
   "seo": {
-    "title": "Vom Bild zum Fine-Art-Druck | Matthias Ramahi",
-    "description": "Warum Material, Papier, Farbmanagement und Format Teil der fotografischen Wirkung sind, wenn Bilder als Fine-Art-Print oder Wandbild funktionieren sollen.",
+    "title": "Fine-Art-Druck vorbereiten: Papier, Profil & Format",
+    "description": "Fotos für den Fine-Art-Druck vorbereiten: Papierwahl, ICC-Softproof, Auflösung nach Betrachtungsabstand und Rahmung ohne Farbverlust.",
     "secondaryKeywords": [],
     "internalLinkAnchors": [],
     "canonicalUrl": "https://matthiasramahi.de/blog-fine-art-druck.html",

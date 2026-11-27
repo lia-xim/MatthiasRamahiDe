@@ -1,0 +1,240 @@
+---
+import type { PayloadDoc } from '../../lib/payload'
+import { localResponsiveImage } from '../../data/localResponsiveThumbs'
+
+type Props = {
+  doc?: PayloadDoc | null
+}
+
+type SeriesItem = {
+  alt: string
+  caption: string
+  full: string
+  height: number
+  src: string
+  srcset: string
+  width: number
+}
+
+type HubSeries = {
+  emphasis?: unknown
+  eyebrow?: unknown
+  headline?: unknown
+  intro?: unknown
+  items?: unknown
+}
+
+const { doc } = Astro.props as Props
+const series = (doc?.hubSeries || {}) as HubSeries
+const text = (value: unknown) => (typeof value === 'string' ? value.trim() : '')
+
+const items: SeriesItem[] = (Array.isArray(series?.items) ? series.items : [])
+  .map((item: Record<string, unknown>) => {
+    const image = text(item?.image)
+    if (!image) return null
+    const responsive = localResponsiveImage(image)
+    return {
+      alt: text(item?.alt) || text(item?.caption),
+      caption: text(item?.caption),
+      full: responsive.full,
+      height: responsive.height,
+      src: responsive.src,
+      srcset: responsive.srcset,
+      width: responsive.width,
+    }
+  })
+  .filter((item: SeriesItem | null): item is SeriesItem => Boolean(item))
+
+const headline = text(series?.headline)
+const emphasis = text(series?.emphasis)
+const intro = text(series?.intro)
+const eyebrow = text(series?.eyebrow) || 'Aus eigenen Serien'
+const show = items.length > 0 && Boolean(headline)
+const columns = Math.min(Math.max(items.length, 2), 4)
+---
+
+{show && (
+  <section class="mr-series" data-header-theme="dark" data-theme="dark" aria-labelledby="mr-series-title" style={`--mr-series-cols:${columns}`}>
+    <div class="mr-series__inner">
+      <header class="mr-series__head">
+        <span class="mr-series__eyebrow">{eyebrow}</span>
+        <h2 id="mr-series-title">{headline}{emphasis ? ' ' : ''}{emphasis && <em>{emphasis}</em>}</h2>
+        {intro && <p>{intro}</p>}
+      </header>
+      <ol class="mr-series__grid">
+        {items.map((item, index) => (
+          <li>
+            <figure>
+              <a class="mr-series__frame" href={item.full} aria-label={`${item.alt || item.caption} in voller Größe öffnen`}>
+                <img
+                  src={item.src}
+                  srcset={item.srcset || undefined}
+                  sizes={`(max-width: 760px) 92vw, ${Math.round(100 / columns)}vw`}
+                  alt={item.alt}
+                  width={item.width}
+                  height={item.height}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
+              <figcaption>
+                <span>N° {String(index + 1).padStart(2, '0')}</span>
+                {item.caption}
+              </figcaption>
+            </figure>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+)}
+
+<style>
+  /* Dunkler Bildstreifen nach dem hellen Ratgeber: echte eigene Serien als
+     Kontaktbogen. Scharfe Kanten, keine Schatten, Mono-Unterschriften. */
+  .mr-series {
+    --mrs-bg: #07090d;
+    --mrs-fg: #f3f5ef;
+    --mrs-muted: rgb(243 245 239 / 66%);
+    --mrs-line: rgb(243 245 239 / 14%);
+    --mrs-steel: #c8ccc6;
+    --mrs-mono: 'MR Mono', 'MR Mono Fallback', ui-monospace, Menlo, Consolas, monospace;
+    background: var(--mrs-bg);
+    color: var(--mrs-fg);
+    padding: clamp(4.5rem, 8vw, 8.5rem) 0;
+  }
+
+  .mr-series__inner {
+    margin: 0 auto;
+    max-width: 1472px;
+    padding: 0 clamp(1.25rem, 5vw, 5.25rem);
+  }
+
+  .mr-series__head {
+    display: grid;
+    gap: 1.25rem 4rem;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
+    margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+  }
+
+  .mr-series__eyebrow {
+    align-items: center;
+    color: var(--mrs-muted);
+    display: flex;
+    font: 700 0.6875rem/1.2 var(--mrs-mono);
+    gap: 0.75rem;
+    grid-column: 1 / -1;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+
+  .mr-series__eyebrow::before {
+    background: #cf392e;
+    content: '';
+    display: inline-block;
+    height: 1px;
+    width: 1.75rem;
+  }
+
+  .mr-series h2 {
+    font-size: clamp(2.4rem, 4.4vw, 4.6rem);
+    line-height: 0.94;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  .mr-series h2 em {
+    color: var(--mrs-steel);
+    font-style: normal;
+  }
+
+  .mr-series__head > p {
+    align-self: end;
+    color: var(--mrs-muted);
+    font-size: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+    line-height: 1.6;
+    margin: 0;
+    max-width: 42ch;
+  }
+
+  .mr-series__grid {
+    display: grid;
+    gap: clamp(0.5rem, 1vw, 1rem);
+    grid-template-columns: repeat(var(--mr-series-cols, 4), minmax(0, 1fr));
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .mr-series figure {
+    margin: 0;
+  }
+
+  .mr-series__frame {
+    aspect-ratio: 4 / 5;
+    background: #111;
+    display: block;
+    overflow: hidden;
+  }
+
+  .mr-series__frame img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    width: 100%;
+  }
+
+  .mr-series__frame:hover img,
+  .mr-series__frame:focus-visible img {
+    opacity: 0.86;
+  }
+
+  .mr-series__frame:focus-visible {
+    outline: 1px solid #cf392e;
+    outline-offset: 3px;
+  }
+
+  .mr-series figcaption {
+    border-top: 1px solid var(--mrs-line);
+    color: var(--mrs-muted);
+    display: flex;
+    flex-wrap: wrap;
+    font: 500 0.6875rem/1.45 var(--mrs-mono);
+    gap: 0.25rem 0.75rem;
+    letter-spacing: 0.08em;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    text-transform: uppercase;
+  }
+
+  .mr-series figcaption span {
+    color: var(--mrs-fg);
+    letter-spacing: 0.22em;
+  }
+
+  @media (max-width: 960px) {
+    .mr-series__head {
+      grid-template-columns: 1fr;
+    }
+
+    .mr-series__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* Ungerade Anzahl: das letzte Bild läuft über die volle Breite. */
+    .mr-series__grid li:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+    }
+
+    .mr-series__grid li:last-child:nth-child(odd) .mr-series__frame {
+      aspect-ratio: 3 / 2;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mr-series__frame img {
+      transition: none;
+    }
+  }
+</style>

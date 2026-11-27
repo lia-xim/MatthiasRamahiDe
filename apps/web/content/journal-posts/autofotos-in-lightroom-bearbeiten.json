@@ -24,8 +24,8 @@
       "_template": "textBlock",
       "style": "summary",
       "eyebrow": "Kurzantwort",
-      "headline": "Autofotos in Lightroom bearbeiten: Die wichtigsten Punkte im Überbli",
-      "body": "Kernaussage: Lightroom Classic bietet automatische Motiv-, Objekt- und Hintergrundmasken\nWofür Lightroom Classic bei: Lightroom Classic eignet sich für die Entwicklung von RAW-Dateien, globale Farb- und Tonwertkorrekturen, lokale Anpassungen mit Masken sowie eine\nReflexe gezielt behandeln, aber: Autolack spiegelt seine Umgebung\nPrüfen, bevor die Serie fertig ist: Schalte vor dem Abschluss die Bearbeitung mit dem Originalbild hin und her"
+      "headline": "Kurz gesagt: global beginnen, lokal verfeinern",
+      "body": "Kernaussage: Autofotos bearbeitest du in Lightroom Classic am besten von global zu lokal: erst Profil, Weißabgleich und Tonwerte, dann Masken und wenige Retuschen.\nMasken: Automatische Fahrzeugmasken sind ein Ausgangspunkt; Spiegel, Scheiben, Speichen und Schatten musst du selbst kontrollieren.\nReflexe: Autolack spiegelt seine Umgebung, deshalb entscheidest du pro Reflex, ob er stört oder die Karosserieform erklärt.\nAbschluss: Vergleiche Original und Bearbeitung und exportiere für das Web als sRGB-JPEG in passender Größe."
     },
     {
       "_template": "textBlock",
@@ -72,7 +72,7 @@
     {
       "_template": "textBlock",
       "headline": "Reflexe gezielt behandeln, aber nicht mit Lack verwechseln",
-      "body": "Autolack spiegelt seine Umgebung. Ein Streifen aus Himmel, Boden oder Gebäuden kann genau die Form eines Kotflügels lesbar machen. Entscheide deshalb zuerst, ob ein Reflex stört oder die Karosserie erklärt. Ein Polfilter und ein bewusster Standortwechsel beeinflussen solche Spiegelungen schon bei der Aufnahme; Lightroom sollte nicht pauschal alle hellen oder dunklen Flächen entfernen.\n\nLightroom Classic bietet eine Reflexionsentfernung für Aufnahmen durch Fenster oder Glas. Adobes Versionshinweise zu Version 15.6 (Prüfstand: November 2026) nennen zusätzlich Verbesserungen für Reflexe auf Wasser. Bei einer Aufnahme durch eine Scheibe kann die Funktion hilfreich sein; behandle sie aber nicht als pauschale Lösung für gewölbten Autolack. Reflexe auf Blech und eine Szene hinter Glas sind unterschiedliche Bildsituationen. Die Verfügbarkeit und das Verhalten von Funktionen hängen von der Version ab. Prüfe die aktuelle Adobe-Dokumentation und vergleiche das Ergebnis auf typischen Problemstellen wie Fensterrand, Spiegel und Chrom, bevor du es übernimmst."
+      "body": "Autolack spiegelt seine Umgebung. Ein Streifen aus Himmel, Boden oder Gebäuden kann genau die Form eines Kotflügels lesbar machen. Entscheide deshalb zuerst, ob ein Reflex stört oder die Karosserie erklärt. Ein Polfilter und ein bewusster Standortwechsel beeinflussen solche Spiegelungen schon bei der Aufnahme; Lightroom sollte nicht pauschal alle hellen oder dunklen Flächen entfernen.\n\nLightroom Classic bietet eine Reflexionsentfernung für Aufnahmen durch Fenster oder Glas. Wie sich die Funktion zwischen Versionen verändert, dokumentiert Adobe in den Versionshinweisen. Bei einer Aufnahme durch eine Scheibe kann die Funktion hilfreich sein; behandle sie aber nicht als pauschale Lösung für gewölbten Autolack. Reflexe auf Blech und eine Szene hinter Glas sind unterschiedliche Bildsituationen. Die Verfügbarkeit und das Verhalten von Funktionen hängen von der Version ab. Prüfe die aktuelle Adobe-Dokumentation und vergleiche das Ergebnis auf typischen Problemstellen wie Fensterrand, Spiegel und Chrom, bevor du es übernimmst."
     },
     {
       "_template": "textBlock",
@@ -97,7 +97,7 @@
     {
       "_template": "ctaBlock",
       "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
-      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Ein Shooting beginnt bei 250 € inkl. MwSt.",
       "buttonLabel": "Auto-Shooting anfragen"
     },
     {
@@ -133,7 +133,7 @@
         {
           "label": "Adobe Lightroom Classic: Maskieren-Werkzeug",
           "href": "https://helpx.adobe.com/de/lightroom-classic/desktop/process-and-develop-photos/masking.html",
-          "description": "Offizielle Hilfe zu automatischen Motiv- und Hintergrundmasken sowie manueller Verfeinerung; zuletzt aktualisiert am 4. September 2026."
+          "description": "Offizielle Hilfe zu automatischen Motiv- und Hintergrundmasken sowie zur manuellen Verfeinerung."
         },
         {
           "label": "Adobe Lightroom Classic: Reflexionen in einem Foto entfernen",
@@ -148,7 +148,7 @@
         {
           "label": "Adobe Lightroom Classic: Versionshinweise",
           "href": "https://helpx.adobe.com/de/lightroom-classic/desktop/introduction-to-lightroom-classic/release-notes.html",
-          "description": "Versionsabhängige Änderungen an Werkzeugen und Funktionen. Stand der Prüfung: 8. November 2026; vor der geplanten Veröffentlichung erneut abgleichen."
+          "description": "Versionsabhängige Änderungen an Werkzeugen und Funktionen; vor der Nutzung mit der installierten Version abgleichen."
         },
         {
           "label": "Adobe Lightroom Classic: Katalog-Grundlagen",

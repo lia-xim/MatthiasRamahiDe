@@ -87,7 +87,7 @@ export const conceptArchivePages: Record<string, ConceptArchivePage> = {
       {
         label: 'Projektseite',
         title: 'Kapitel entfalten sich wie Erinnerungsschichten.',
-        body: 'Tiefe Z-Ebenen, freie aber kuratierte Positionen, Koordinaten, Randnotizen und langsame Parallax-Verschiebung machen Portfolio nicht suchbar, sondern entdeckbar.',
+        body: 'Tiefe Z-Ebenen, freie aber kuratierte Positionen, Koordinaten, Randnotizen und langsame Parallax-Verschiebung machen dieses Portfolio interaktiv über Raumtiefe statt über klassische Listen entdeckbar.',
       },
     ],
   },
@@ -99,7 +99,7 @@ export const conceptArchivePages: Record<string, ConceptArchivePage> = {
     eyebrow: 'Narrative Stage',
     heroTitle: 'Jede Serie betritt die Bühne anders.',
     heroBody:
-      'Startseite: keine Galerie. Drei Akte führen in die Bildwelt ein, mit Licht, Gegenlicht und choreografierten Enthuellungen.',
+      'Startseite: keine Galerie. Drei Akte führen in die Bildstrecke ein, mit Licht, Gegenlicht und klaren Szenenwechseln.',
     metaTitle: 'Narrative Stage | Matthias Ramahi',
     description:
       'Jede Serie betritt die Bühne anders: Fotografie und visuelle Produktion von Matthias Ramahi in Düsseldorf, NRW und Deutschland.',
@@ -109,7 +109,7 @@ export const conceptArchivePages: Record<string, ConceptArchivePage> = {
         id: 'arrival',
         label: 'Akt I / Arrival',
         title: 'Navigation über Akte, nicht über Seiten.',
-        body: 'Die Startseite führt wie ein Auftaktbild in die Bildwelt: Öffnung, Gegenbild und Nachhall ersetzen den Standard-Slider.',
+        body: 'Die Startseite führt wie ein Auftaktbild in die Serie: Öffnung, Gegenbild und Nachhall ersetzen den Standard-Slider.',
       },
       {
         id: 'friction',

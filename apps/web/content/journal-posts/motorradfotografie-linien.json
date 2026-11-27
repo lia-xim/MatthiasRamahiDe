@@ -4,7 +4,7 @@
   "featured": false,
   "category": "motorcycle",
   "publishedAt": "2026-05-27T18:22:56.000Z",
-  "excerpt": "Warum starke Motorradfotografie über Silhouette, Nähe, Material, Fahrerhaltung und klare Linien funktioniert.",
+  "excerpt": "Praxistipps für prägnante Motorradfotos: Richtige Kamerahöhe, saubere Hintergründe durch Speichen, Lenkereinschlag und Licht auf Lack und Chrom.",
   "coverImage": "/uploads/payload/assets-photos-motorrad-1920.webp",
   "tags": [
     "Motorrad",
@@ -51,24 +51,27 @@
   "blocks": [
     {
       "_template": "textBlock",
-      "body": "Motorradfotografie unterscheidet sich grundlegend von Autofotografie: Rahmen, Gabel, Motorblock und Speichen liegen offen, der Hintergrund schimmert überall durch die Maschine hindurch. Wer ein Bike stark fotografieren will, beginnt deshalb bei Silhouette, Lichtkante und Haltung."
+      "style": "standard",
+      "body": "Wer ein Motorrad aus Augenhöhe im Stehen ablichtet, drückt Tank, Gabelrohr und Schwinge optisch in den Asphalt. Sobald die Kamera auf Höhe des Scheinwerfers oder leicht darunter sinkt, öffnen sich die Proportionen und Gabelbrücke, Auspuffkrümmer und Reifen zeichnen sauber frei."
     },
     {
       "_template": "textBlock",
       "style": "summary",
       "eyebrow": "Kurzantwort",
-      "headline": "Linien, Metall, Haltung: Die wichtigsten Punkte im Überblick",
-      "body": "Kernaussage: Wie starke Motorradfotografie über klare Silhouette, Lichtführung auf Lack & Metall, Kamerahöhe und echte Fahrerhaltung funktioniert\nMotorradbilder brauchen Spannung: Bei Motorrädern geht es um Linien, Material und Haltung\nMetall und Lack kontrollieren: Reflexe sind bei Motorrädern besonders sensibel\nFahrerbilder bewusst trennen: Mit Fahrer entsteht Haltung und Geschichte; ohne Fahrer entsteht reine Objektpräsenz"
+      "headline": "Das Wichtigste in Kürze",
+      "body": "Kernaussage: Prägnante Motorradbilder entstehen durch tiefe Kameraposition, freie Hintergründe hinter Gabel und Felgen und sauber gesteuertes Licht auf Mischmaterialien.\nKamerahöhe und Linse: Auf Tank- oder Scheinwerferhöhe mit 50 bis 85 mm arbeiten, damit Radstand und Tankform realistisch wirken.\nDurchblicke kontrollieren: Durch Drahtspeichen, Gitterrohrrahmen und Lenker darf kein heller Zaunpfahl oder Parkscheinautomat schneiden.\nStand und Lenker: Vorderrad leicht von der Kamera wegdrehen zeigt Profil und Bremsscheibe; Verkaufsfotos und Actionshots zeitlich trennen."
     },
     {
       "_template": "textBlock",
-      "headline": "Motorradbilder brauchen Spannung",
-      "body": "Bei Motorrädern geht es um Linien, Material und Haltung. Ein gutes Bild zeigt nicht nur ein abgestelltes Fahrzeug, sondern Energie: Tanklinie, Lenker, Reifen, Standwinkel, mechanische Details und die Beziehung zum Fahrer oder zur Werkstatt.\n\nSchon die Kamerahöhe entscheidet über die Präsenz der Maschine. Auf Höhe von Tank oder Scheinwerfer fotografiert wirkt das Motorrad deutlich kraftvoller und ausgewogener als aus gewohnter Augenhöhe von oben herab."
+      "headline": "Kamerahöhe, Brennweite und Hintergrund durch offene Details",
+      "style": "standard",
+      "body": "Anders als bei einem Auto mit geschlossenen Flanken schaut man beim Motorrad direkt durch Gitterrohrrahmen, zwischen Motorblock und Hinterrad oder durch Drahtspeichen hindurch auf den Hintergrund. Ein heller Laternenpfahl oder ein weißer Lieferwagen direkt hinter der Gabel zerstört die komplette Silhouette.\n\nGeh auf die Knie oder arbeite vom tiefen Stativ auf Achsniveau und nutze mittlere Brennweiten zwischen 50 und 85 mm. Weitwinkel lassen den Vorderreifen aufgedunsen erscheinen, während leichte Teleobjektive Tank, Sitzbank und Heck sauber verdichten."
     },
     {
       "_template": "textBlock",
-      "headline": "Silhouette vor Detailflut",
-      "body": "Wenn alles im Bild gleich wichtig ist, verliert das Bike seine Form. Zuerst muss die klare Silhouette sitzen, erst danach folgen die Details. Eine stimmige Serie zeigt, wie die Maschine steht, welche Bauform sie prägt und welche Stimmung sie trägt.\n\nDeshalb zählt der Hintergrund doppelt: Durch Räder, Gabel und Rahmen blickt das Auge direkt auf die Fläche dahinter. Ruhiger Beton, dunkler Backstein oder eine offene Abendfläche lösen das Motorrad sauber vom Umfeld."
+      "headline": "Seitenständer, Schräglage und Lenkereinschlag präzise setzen",
+      "style": "standard",
+      "body": "Die Wahl zwischen Seitenständer- und Auspuffseite verändert sofort die Spannung im Bild. Auf der Neigungsseite fällt die Maschine dynamisch ins Foto, auf der abgewandten Seite wirkt sie aufrechter und präsentiert Auspuffanlage sowie Krümmerführung völlig unverdeckt.\n\nDrehe das Vorderrad bei Dreiviertelansichten leicht von der Kamera weg, sodass die Profilfläche des Reifens und die vordere Bremsscheibe lesbar werden. Soll die Maschine für Studio- oder Hallenansichten ohne Seitenständer aufrecht stehen, hilft ein kleiner, unauffälliger Klotz oder ein Haltegurt, der in der Nachbearbeitung entfernt wird."
     },
     {
       "_template": "imageSequence",
@@ -89,17 +92,31 @@
     },
     {
       "_template": "textBlock",
-      "headline": "Metall und Lack kontrollieren",
-      "body": "Reflexe sind bei Motorrädern besonders sensibel. Chrom, glänzender Tanklack, mattes Carbon, gebürstetes Aluminium und Reifen-Gummi reagieren völlig unterschiedlich auf dieselbe Lichtquelle. Weiches Streiflicht zur goldenen Stunde oder gezielt gesetztes mobiles Blitzlicht betont Material und Kanten, ohne Spitzlichter ausfressen zu lassen."
+      "headline": "Licht auf Tanklack, Rohmetall, Carbon und mattem Gummi",
+      "style": "standard",
+      "body": "Auf wenigen Quadratdezimetern treffen hochglänzender Tanklack, gebürstetes Aluminium, schwarze Kühlrippen, gewebtes Carbon und stumpfes Reifengummi aufeinander. Direktes Sonnenlicht frisst weiße Glanzkanten am Tank aus, während der schwarze Motorblock im Schatten völlig absäuft.\n\nGroße Himmelsflächen im offenen Schatten nach Sonnenuntergang, helle Nebelwände oder ein großer Diffusor über dem Tank ziehen lange, ruhige Lichtlinien entlang der Tankflanke und halten gleichzeitig Kühlrippen und Schaltgestänge durchzeichnet."
     },
     {
       "_template": "textBlock",
-      "headline": "Fahrerbilder bewusst trennen",
-      "body": "Mit Fahrer entsteht Haltung und Geschichte; ohne Fahrer entsteht reine Objektpräsenz. Beide Varianten funktionieren stark, wenn sie innerhalb der Serie bewusst getrennt und dramaturgisch aufgebaut werden – statt beliebig durcheinanderzulaufen."
+      "headline": "Standfotos für Verkauf und Fahrer-Action klar trennen",
+      "style": "standard",
+      "body": "Bei Shootings für Custom-Umbauten oder den Gebrauchtverkauf gehören Maschine und Fahrer in getrennte Abschnitte. Beginne immer mit den ruhigen, ungestörten Detail- und Vollansichten ohne Helm auf dem Spiegel oder Jacke über dem Heck.\n\nErst wenn das statische Set sitzt, folgen dynamische Mitzieher auf freier Strecke oder Fahrerportraits mit passender Schutzkleidung. So leidet weder der Bildsatz für den Verkauf noch die Konzentration beim Fahren."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Typische Stolperfallen beim Fotografieren auf dem Parkplatz",
+      "style": "standard",
+      "body": "Auf vielen selbst gemachten Motorradfotos tauchen drei vermeidbare Störungen auf: erstens gelbe Parkplatzstriche oder weiße Gullydeckel direkt unter dem Hinterrad; zweitens ein abgeschnittener Auspuff oder Spiegel am äußersten Bildrand; drittens offene Helmriemen und Handschuhe auf der Sitzbank.\n\nParke die Maschine mindestens zwei Meter weg von bunten Schildern, Papierkörben oder glänzenden PKW-Türen und wähle ruhigen, gleichmäßigen Asphalt oder eine Backsteinwand mit ausreichend Tiefe dahinter.\n\nAchte außerdem konsequent auf die Spiegel: Selbst wenn der Lenker leicht gedreht steht, spiegelt runder Chrom oft deine eigene Kniescheibe oder dein weißes T-Shirt ins Bild. Ein Schritt seitwärts oder eine dunkle Jacke löst diesen Störreflex sofort auf."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Kurze Checkliste für deinen Shooting-Ablauf am Bike",
+      "style": "standard",
+      "body": "Mit diesen fünf Punkten läuft ein Fototermin am Motorrad geordnet ab:\n\n1. Felgenbetten, Bremsscheiben und Auspuffkrümmer kurz vor Abstellen am Spot sauber abwischen.\n2. Kennzeichen vorab klären (montiert lassen für Authentizität oder für Online-Inserate abdecken bzw. sauber verdecken).\n3. Zuerst alle ruhigen Pflichtwinkel für Verkauf oder Doku sichern (Front-3/4, reine Seite beidseitig, Heck-3/4, Cockpit, Reifenprofil).\n4. Danach Detailmotive auf Tank-Emblem, Gabelbrücke, Federbein und Schweißnähte mit 85 mm setzen.\n5. Fahrer- und Actionbilder erst im letzten Abschnitt mit voller Schutzausrüstung getrennt aufnehmen."
     },
     {
       "_template": "linkList",
-      "headline": "Passende Leistungen & Guides zur Motorradfotografie",
+      "headline": "Weiterlesen zur Motorradfotografie",
       "links": [
         {
           "label": "Motorradfotografie Düsseldorf",
@@ -127,7 +144,7 @@
     {
       "_template": "ctaBlock",
       "headline": "Motorrad-Shooting in Düsseldorf oder NRW planen",
-      "text": "Ob Sportler, Naked Bike oder Custom-Umbau: Wir planen Location, Licht und Perspektiven gezielt für deine Maschine – Einstieg ab 250 € inkl. MwSt.",
+      "text": "Ob Sportler, Naked Bike oder Custom-Umbau: Location, Licht und Perspektiven werden für deine Maschine geplant. Ein Shooting beginnt bei 250 € inkl. MwSt.",
       "buttonLabel": "Motorrad-Shooting anfragen"
     },
     {
@@ -149,10 +166,10 @@
       ]
     }
   ],
-  "readingTime": 4,
+  "readingTime": 6,
   "seo": {
-    "title": "Motorradfotografie: Linien, Silhouette & Perspektive",
-    "description": "Wie starke Motorradfotografie über klare Silhouette, Lichtführung auf Lack & Metall, Kamerahöhe und echte Fahrerhaltung funktioniert.",
+    "title": "Motorradfotografie: Linien, Perspektive & Licht auf Lack",
+    "description": "Starke Motorradfotos machen: Kamerahöhe auf Tanklinie, Hintergründe durch Speichen prüfen, Standwinkel setzen und Mischmaterial ausleuchten.",
     "secondaryKeywords": [],
     "internalLinkAnchors": [],
     "canonicalUrl": "https://matthiasramahi.de/blog-motorradfotografie-linien.html",

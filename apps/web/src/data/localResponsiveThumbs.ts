@@ -2379,6 +2379,558 @@ export const localResponsiveThumbs: Record<string, LocalThumbEntry> = {
     "width": 1707,
     "height": 2560
   },
+  "/assets/portfolio/serie-automobil-porsche-993-cockpit.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-automobil-porsche-993-cockpit-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-automobil-porsche-993-cockpit-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-serie-automobil-porsche-993-cockpit-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-automobil-porsche-993-cockpit-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-automobil-porsche-993-cockpit-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-serie-automobil-porsche-993-cockpit-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-automobil-porsche-993-cockpit-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-automobil-porsche-993-cockpit-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/thumbs/serie-automobil-porsche-993-cockpit.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-automobil-porsche-993-cockpit-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-automobil-porsche-993-cockpit-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/serie-automobil-porsche-993-front.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-automobil-porsche-993-front-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-automobil-porsche-993-front-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-serie-automobil-porsche-993-front-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-automobil-porsche-993-front-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-automobil-porsche-993-front-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-serie-automobil-porsche-993-front-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-automobil-porsche-993-front-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-automobil-porsche-993-front-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/thumbs/serie-automobil-porsche-993-front.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-automobil-porsche-993-front-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-automobil-porsche-993-front-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/serie-automobil-porsche-993-heck.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-automobil-porsche-993-heck-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-automobil-porsche-993-heck-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-serie-automobil-porsche-993-heck-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-automobil-porsche-993-heck-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-automobil-porsche-993-heck-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-serie-automobil-porsche-993-heck-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-automobil-porsche-993-heck-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-automobil-porsche-993-heck-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/thumbs/serie-automobil-porsche-993-heck.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-automobil-porsche-993-heck-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-automobil-porsche-993-heck-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/serie-automobil-porsche-993-innenraum.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-automobil-porsche-993-innenraum-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-automobil-porsche-993-innenraum-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-serie-automobil-porsche-993-innenraum-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-automobil-porsche-993-innenraum-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-automobil-porsche-993-innenraum-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-serie-automobil-porsche-993-innenraum-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-automobil-porsche-993-innenraum-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-automobil-porsche-993-innenraum-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/thumbs/serie-automobil-porsche-993-innenraum.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-automobil-porsche-993-innenraum-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-automobil-porsche-993-innenraum-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/serie-landschaft-bucht-abendlicht.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-landschaft-bucht-abendlicht-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-landschaft-bucht-abendlicht-760.webp",
+    "width": 1536,
+    "height": 1920
+  },
+  "/assets/optimized/grid/portfolio-serie-landschaft-bucht-abendlicht-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-landschaft-bucht-abendlicht-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-landschaft-bucht-abendlicht-760.webp",
+    "width": 1536,
+    "height": 1920
+  },
+  "/assets/optimized/grid/portfolio-serie-landschaft-bucht-abendlicht-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-landschaft-bucht-abendlicht-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-landschaft-bucht-abendlicht-760.webp",
+    "width": 1536,
+    "height": 1920
+  },
+  "/assets/portfolio/thumbs/serie-landschaft-bucht-abendlicht.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-landschaft-bucht-abendlicht-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-landschaft-bucht-abendlicht-760.webp",
+    "width": 1536,
+    "height": 1920
+  },
+  "/assets/portfolio/serie-landschaft-felskueste-brandung.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-landschaft-felskueste-brandung-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-landschaft-felskueste-brandung-760.webp",
+    "width": 1440,
+    "height": 1920
+  },
+  "/assets/optimized/grid/portfolio-serie-landschaft-felskueste-brandung-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-landschaft-felskueste-brandung-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-landschaft-felskueste-brandung-760.webp",
+    "width": 1440,
+    "height": 1920
+  },
+  "/assets/optimized/grid/portfolio-serie-landschaft-felskueste-brandung-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-landschaft-felskueste-brandung-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-landschaft-felskueste-brandung-760.webp",
+    "width": 1440,
+    "height": 1920
+  },
+  "/assets/portfolio/thumbs/serie-landschaft-felskueste-brandung.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-landschaft-felskueste-brandung-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-landschaft-felskueste-brandung-760.webp",
+    "width": 1440,
+    "height": 1920
+  },
+  "/assets/portfolio/serie-landschaft-kueste-klippen.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-landschaft-kueste-klippen-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-landschaft-kueste-klippen-760.webp",
+    "width": 1440,
+    "height": 1920
+  },
+  "/assets/optimized/grid/portfolio-serie-landschaft-kueste-klippen-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-landschaft-kueste-klippen-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-landschaft-kueste-klippen-760.webp",
+    "width": 1440,
+    "height": 1920
+  },
+  "/assets/optimized/grid/portfolio-serie-landschaft-kueste-klippen-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-landschaft-kueste-klippen-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-landschaft-kueste-klippen-760.webp",
+    "width": 1440,
+    "height": 1920
+  },
+  "/assets/portfolio/thumbs/serie-landschaft-kueste-klippen.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-landschaft-kueste-klippen-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-landschaft-kueste-klippen-760.webp",
+    "width": 1440,
+    "height": 1920
+  },
+  "/assets/portfolio/serie-landschaft-see-bergpanorama.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-landschaft-see-bergpanorama-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-landschaft-see-bergpanorama-760.webp",
+    "width": 1920,
+    "height": 1255
+  },
+  "/assets/optimized/grid/portfolio-serie-landschaft-see-bergpanorama-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-landschaft-see-bergpanorama-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-landschaft-see-bergpanorama-760.webp",
+    "width": 1920,
+    "height": 1255
+  },
+  "/assets/optimized/grid/portfolio-serie-landschaft-see-bergpanorama-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-landschaft-see-bergpanorama-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-landschaft-see-bergpanorama-760.webp",
+    "width": 1920,
+    "height": 1255
+  },
+  "/assets/portfolio/thumbs/serie-landschaft-see-bergpanorama.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-landschaft-see-bergpanorama-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-landschaft-see-bergpanorama-760.webp",
+    "width": 1920,
+    "height": 1255
+  },
+  "/assets/portfolio/serie-motorrad-naked-bike.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-motorrad-naked-bike-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-motorrad-naked-bike-760.webp",
+    "width": 1536,
+    "height": 1920
+  },
+  "/assets/optimized/grid/portfolio-serie-motorrad-naked-bike-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-motorrad-naked-bike-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-motorrad-naked-bike-760.webp",
+    "width": 1536,
+    "height": 1920
+  },
+  "/assets/optimized/grid/portfolio-serie-motorrad-naked-bike-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-motorrad-naked-bike-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-motorrad-naked-bike-760.webp",
+    "width": 1536,
+    "height": 1920
+  },
+  "/assets/portfolio/thumbs/serie-motorrad-naked-bike.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-motorrad-naked-bike-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-motorrad-naked-bike-760.webp",
+    "width": 1536,
+    "height": 1920
+  },
+  "/assets/portfolio/serie-motorrad-ninja-abendlicht.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-motorrad-ninja-abendlicht-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-motorrad-ninja-abendlicht-760.webp",
+    "width": 1280,
+    "height": 1920
+  },
+  "/assets/optimized/grid/portfolio-serie-motorrad-ninja-abendlicht-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-motorrad-ninja-abendlicht-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-motorrad-ninja-abendlicht-760.webp",
+    "width": 1280,
+    "height": 1920
+  },
+  "/assets/optimized/grid/portfolio-serie-motorrad-ninja-abendlicht-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-motorrad-ninja-abendlicht-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-motorrad-ninja-abendlicht-760.webp",
+    "width": 1280,
+    "height": 1920
+  },
+  "/assets/portfolio/thumbs/serie-motorrad-ninja-abendlicht.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-motorrad-ninja-abendlicht-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-motorrad-ninja-abendlicht-760.webp",
+    "width": 1280,
+    "height": 1920
+  },
+  "/assets/portfolio/serie-motorrad-ninja-detail.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-motorrad-ninja-detail-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-motorrad-ninja-detail-760.webp",
+    "width": 1280,
+    "height": 1920
+  },
+  "/assets/optimized/grid/portfolio-serie-motorrad-ninja-detail-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-motorrad-ninja-detail-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-motorrad-ninja-detail-760.webp",
+    "width": 1280,
+    "height": 1920
+  },
+  "/assets/optimized/grid/portfolio-serie-motorrad-ninja-detail-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-motorrad-ninja-detail-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-motorrad-ninja-detail-760.webp",
+    "width": 1280,
+    "height": 1920
+  },
+  "/assets/portfolio/thumbs/serie-motorrad-ninja-detail.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-motorrad-ninja-detail-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-motorrad-ninja-detail-760.webp",
+    "width": 1280,
+    "height": 1920
+  },
+  "/assets/portfolio/serie-motorrad-ninja-low-key.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-motorrad-ninja-low-key-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-motorrad-ninja-low-key-760.webp",
+    "width": 1280,
+    "height": 1920
+  },
+  "/assets/optimized/grid/portfolio-serie-motorrad-ninja-low-key-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-motorrad-ninja-low-key-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-motorrad-ninja-low-key-760.webp",
+    "width": 1280,
+    "height": 1920
+  },
+  "/assets/optimized/grid/portfolio-serie-motorrad-ninja-low-key-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-motorrad-ninja-low-key-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-motorrad-ninja-low-key-760.webp",
+    "width": 1280,
+    "height": 1920
+  },
+  "/assets/portfolio/thumbs/serie-motorrad-ninja-low-key.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-motorrad-ninja-low-key-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-motorrad-ninja-low-key-760.webp",
+    "width": 1280,
+    "height": 1920
+  },
+  "/assets/portfolio/serie-oldtimer-bugatti-cockpit.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-oldtimer-bugatti-cockpit-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-oldtimer-bugatti-cockpit-760.webp",
+    "width": 1202,
+    "height": 1920
+  },
+  "/assets/optimized/grid/portfolio-serie-oldtimer-bugatti-cockpit-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-oldtimer-bugatti-cockpit-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-oldtimer-bugatti-cockpit-760.webp",
+    "width": 1202,
+    "height": 1920
+  },
+  "/assets/optimized/grid/portfolio-serie-oldtimer-bugatti-cockpit-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-oldtimer-bugatti-cockpit-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-oldtimer-bugatti-cockpit-760.webp",
+    "width": 1202,
+    "height": 1920
+  },
+  "/assets/portfolio/thumbs/serie-oldtimer-bugatti-cockpit.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-oldtimer-bugatti-cockpit-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-oldtimer-bugatti-cockpit-760.webp",
+    "width": 1202,
+    "height": 1920
+  },
+  "/assets/portfolio/serie-oldtimer-bugatti-type-35.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-oldtimer-bugatti-type-35-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-oldtimer-bugatti-type-35-760.webp",
+    "width": 1200,
+    "height": 1920
+  },
+  "/assets/optimized/grid/portfolio-serie-oldtimer-bugatti-type-35-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-oldtimer-bugatti-type-35-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-oldtimer-bugatti-type-35-760.webp",
+    "width": 1200,
+    "height": 1920
+  },
+  "/assets/optimized/grid/portfolio-serie-oldtimer-bugatti-type-35-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-oldtimer-bugatti-type-35-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-oldtimer-bugatti-type-35-760.webp",
+    "width": 1200,
+    "height": 1920
+  },
+  "/assets/portfolio/thumbs/serie-oldtimer-bugatti-type-35.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-oldtimer-bugatti-type-35-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-oldtimer-bugatti-type-35-760.webp",
+    "width": 1200,
+    "height": 1920
+  },
+  "/assets/portfolio/serie-oldtimer-formelrennwagen.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-oldtimer-formelrennwagen-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-oldtimer-formelrennwagen-760.webp",
+    "width": 1920,
+    "height": 1080
+  },
+  "/assets/optimized/grid/portfolio-serie-oldtimer-formelrennwagen-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-oldtimer-formelrennwagen-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-oldtimer-formelrennwagen-760.webp",
+    "width": 1920,
+    "height": 1080
+  },
+  "/assets/optimized/grid/portfolio-serie-oldtimer-formelrennwagen-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-oldtimer-formelrennwagen-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-oldtimer-formelrennwagen-760.webp",
+    "width": 1920,
+    "height": 1080
+  },
+  "/assets/portfolio/thumbs/serie-oldtimer-formelrennwagen.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-oldtimer-formelrennwagen-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-oldtimer-formelrennwagen-760.webp",
+    "width": 1920,
+    "height": 1080
+  },
+  "/assets/portfolio/serie-oldtimer-rennsportwagen.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-oldtimer-rennsportwagen-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-oldtimer-rennsportwagen-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-serie-oldtimer-rennsportwagen-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-oldtimer-rennsportwagen-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-oldtimer-rennsportwagen-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-serie-oldtimer-rennsportwagen-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-oldtimer-rennsportwagen-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-oldtimer-rennsportwagen-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/thumbs/serie-oldtimer-rennsportwagen.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-oldtimer-rennsportwagen-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-oldtimer-rennsportwagen-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/serie-portrait-gesetztes-licht.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-portrait-gesetztes-licht-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-portrait-gesetztes-licht-760.webp",
+    "width": 1536,
+    "height": 1920
+  },
+  "/assets/optimized/grid/portfolio-serie-portrait-gesetztes-licht-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-portrait-gesetztes-licht-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-portrait-gesetztes-licht-760.webp",
+    "width": 1536,
+    "height": 1920
+  },
+  "/assets/optimized/grid/portfolio-serie-portrait-gesetztes-licht-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-portrait-gesetztes-licht-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-portrait-gesetztes-licht-760.webp",
+    "width": 1536,
+    "height": 1920
+  },
+  "/assets/portfolio/thumbs/serie-portrait-gesetztes-licht.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-portrait-gesetztes-licht-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-portrait-gesetztes-licht-760.webp",
+    "width": 1536,
+    "height": 1920
+  },
+  "/assets/portfolio/serie-portrait-low-key-schwarzweiss.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-portrait-low-key-schwarzweiss-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-portrait-low-key-schwarzweiss-760.webp",
+    "width": 1536,
+    "height": 1920
+  },
+  "/assets/optimized/grid/portfolio-serie-portrait-low-key-schwarzweiss-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-portrait-low-key-schwarzweiss-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-portrait-low-key-schwarzweiss-760.webp",
+    "width": 1536,
+    "height": 1920
+  },
+  "/assets/optimized/grid/portfolio-serie-portrait-low-key-schwarzweiss-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-portrait-low-key-schwarzweiss-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-portrait-low-key-schwarzweiss-760.webp",
+    "width": 1536,
+    "height": 1920
+  },
+  "/assets/portfolio/thumbs/serie-portrait-low-key-schwarzweiss.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-portrait-low-key-schwarzweiss-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-portrait-low-key-schwarzweiss-760.webp",
+    "width": 1536,
+    "height": 1920
+  },
+  "/assets/portfolio/serie-portrait-nahportrait.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-portrait-nahportrait-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-portrait-nahportrait-760.webp",
+    "width": 1485,
+    "height": 1920
+  },
+  "/assets/optimized/grid/portfolio-serie-portrait-nahportrait-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-portrait-nahportrait-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-portrait-nahportrait-760.webp",
+    "width": 1485,
+    "height": 1920
+  },
+  "/assets/optimized/grid/portfolio-serie-portrait-nahportrait-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-portrait-nahportrait-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-portrait-nahportrait-760.webp",
+    "width": 1485,
+    "height": 1920
+  },
+  "/assets/portfolio/thumbs/serie-portrait-nahportrait.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-portrait-nahportrait-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-portrait-nahportrait-760.webp",
+    "width": 1485,
+    "height": 1920
+  },
+  "/assets/portfolio/serie-portrait-outdoor.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-portrait-outdoor-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-portrait-outdoor-760.webp",
+    "width": 1200,
+    "height": 1920
+  },
+  "/assets/optimized/grid/portfolio-serie-portrait-outdoor-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-portrait-outdoor-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-portrait-outdoor-760.webp",
+    "width": 1200,
+    "height": 1920
+  },
+  "/assets/optimized/grid/portfolio-serie-portrait-outdoor-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-portrait-outdoor-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-portrait-outdoor-760.webp",
+    "width": 1200,
+    "height": 1920
+  },
+  "/assets/portfolio/thumbs/serie-portrait-outdoor.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-portrait-outdoor-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-portrait-outdoor-760.webp",
+    "width": 1200,
+    "height": 1920
+  },
+  "/assets/portfolio/serie-sportwagen-audi-r8.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-sportwagen-audi-r8-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-sportwagen-audi-r8-760.webp",
+    "width": 1920,
+    "height": 1246
+  },
+  "/assets/optimized/grid/portfolio-serie-sportwagen-audi-r8-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-sportwagen-audi-r8-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-sportwagen-audi-r8-760.webp",
+    "width": 1920,
+    "height": 1246
+  },
+  "/assets/optimized/grid/portfolio-serie-sportwagen-audi-r8-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-sportwagen-audi-r8-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-sportwagen-audi-r8-760.webp",
+    "width": 1920,
+    "height": 1246
+  },
+  "/assets/portfolio/thumbs/serie-sportwagen-audi-r8.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-sportwagen-audi-r8-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-sportwagen-audi-r8-760.webp",
+    "width": 1920,
+    "height": 1246
+  },
+  "/assets/portfolio/serie-sportwagen-dodge-viper.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-sportwagen-dodge-viper-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-sportwagen-dodge-viper-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-serie-sportwagen-dodge-viper-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-sportwagen-dodge-viper-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-sportwagen-dodge-viper-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-serie-sportwagen-dodge-viper-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-sportwagen-dodge-viper-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-sportwagen-dodge-viper-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/thumbs/serie-sportwagen-dodge-viper.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-sportwagen-dodge-viper-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-sportwagen-dodge-viper-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/serie-sportwagen-porsche-911-rennsport-look.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-sportwagen-porsche-911-rennsport-look-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-sportwagen-porsche-911-rennsport-look-760.webp",
+    "width": 1920,
+    "height": 1281
+  },
+  "/assets/optimized/grid/portfolio-serie-sportwagen-porsche-911-rennsport-look-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-sportwagen-porsche-911-rennsport-look-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-sportwagen-porsche-911-rennsport-look-760.webp",
+    "width": 1920,
+    "height": 1281
+  },
+  "/assets/optimized/grid/portfolio-serie-sportwagen-porsche-911-rennsport-look-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-sportwagen-porsche-911-rennsport-look-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-sportwagen-porsche-911-rennsport-look-760.webp",
+    "width": 1920,
+    "height": 1281
+  },
+  "/assets/portfolio/thumbs/serie-sportwagen-porsche-911-rennsport-look.webp": {
+    "w480": "/assets/optimized/grid/portfolio-serie-sportwagen-porsche-911-rennsport-look-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-serie-sportwagen-porsche-911-rennsport-look-760.webp",
+    "width": 1920,
+    "height": 1281
+  },
   "/assets/portraits/20250327-DSC01550.webp": {
     "w480": "/assets/optimized/grid/portraits-20250327-dsc01550-480.webp",
     "w760": "/assets/optimized/grid/portraits-20250327-dsc01550-760.webp",

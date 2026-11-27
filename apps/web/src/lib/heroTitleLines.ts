@@ -17,11 +17,25 @@ const compoundOverrides: Record<string, string[]> = {
 }
 
 const splitLongPhrase = (value: string, maxLineLength = 16) => {
-  const tokens = value
+  const rawTokens = value
     .replace(/\s+/g, ' ')
     .trim()
     .split(' ')
     .filter(Boolean)
+
+  // Kurze Verbindungswörter („in“, „für“, „mit der“ …) bleiben beim folgenden Wort,
+  // damit z. B. „in Mönchengladbach“ nicht als einsames „in“ umbricht.
+  const tokens: string[] = []
+  let prefix = ''
+  for (const token of rawTokens) {
+    if (/^(in|im|für|mit|als|am|an|aus|der|die|das|den|und|&)$/i.test(token)) {
+      prefix = prefix ? `${prefix} ${token}` : token
+      continue
+    }
+    tokens.push(prefix ? `${prefix} ${token}` : token)
+    prefix = ''
+  }
+  if (prefix) tokens.push(prefix)
 
   const lines: string[] = []
   let current = ''

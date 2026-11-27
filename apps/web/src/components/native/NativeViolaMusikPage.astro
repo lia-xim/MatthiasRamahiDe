@@ -9,7 +9,7 @@ const providedDoc = Astro.props.doc as PayloadDoc | undefined
 const doc = providedDoc || (await getBySlug('service-pages', 'viola-musik-duesseldorf', { depth: 2 }))
 
 const metaDescription =
-  'Viola und Geigenmusik in Düsseldorf: klassische Begleitung für Hochzeit, Empfang, Trauerfeier und private Anlässe — über ein Netzwerk erfahrener Künstler:innen vermittelt.'
+  'Viola und Geigenmusik in Düsseldorf: klassische Begleitung für Hochzeit, Empfang, Trauerfeier und private Anlässe. Über ein Netzwerk erfahrener Künstler:innen vermittelt.'
 const musicRequestHref = 'https://kim-marie-borger.com/anfragen/'
 
 // Anlässe: Jede Karte führt direkt zur Musik-Anfrage.
@@ -26,9 +26,9 @@ const occasions = [
 
 // Ablauf — drei verbundene Stationen vom Anliegen bis zum Auftritt.
 const flowSteps = [
-  { title: 'Anfrage.', body: 'Du schilderst Anlass, Ort, Datum und ungefähre Dauer — der Rest entsteht im Gespräch, unverbindlich.' },
-  { title: 'Auswahl.', body: 'Passende Besetzung (Solo Viola/Geige, Duo mit Klavier, kleines Ensemble) und Repertoire — Klassik, Filmmusik oder Pop-Arrangements, vorab abgestimmt.' },
-  { title: 'Auftritt.', body: 'Leiser Auf- und Abbau, sensibles Spiel im richtigen Moment — in Düsseldorf, im Rheinland und auf Anfrage deutschlandweit.' },
+  { title: 'Anfrage.', body: 'Du schilderst Anlass, Ort, Datum und ungefähre Dauer: der Rest entsteht im Gespräch, unverbindlich.' },
+  { title: 'Auswahl.', body: 'Passende Besetzung (Solo Viola/Geige, Duo mit Klavier, kleines Ensemble) und Repertoire: Klassik, Filmmusik oder Pop-Arrangements, vorab abgestimmt.' },
+  { title: 'Auftritt.', body: 'Leiser Auf- und Abbau, sensibles Spiel im richtigen Moment: in Düsseldorf, im Rheinland und auf Anfrage deutschlandweit.' },
 ]
 
 const violaFaq = [
@@ -57,7 +57,7 @@ const heroSlides = [
   {
     image: heroImage,
     titleLines: ['Viola', 'Musik'],
-    lead: 'Klassische Begleitung für Hochzeit, Empfang, Trauerfeier und private Anlässe — Viola, Geige und Klavier. Über ein Netzwerk erfahrener Künstler:innen aus Düsseldorf vermittelt.',
+    lead: 'Klassische Begleitung für Hochzeit, Empfang, Trauerfeier und private Anlässe: Viola, Geige und Klavier. Über ein Netzwerk erfahrener Künstler:innen aus Düsseldorf vermittelt.',
     primaryHref: musicRequestHref,
     primaryLabel: 'Musik anfragen',
     secondaryHref: musicRequestHref,
@@ -84,7 +84,7 @@ const heroSlidesJson = JSON.stringify(heroSlides)
             {' '}
             <span class="line"><span class="word">Musik.</span></span>
           </h1>
-          <p class="hero-lead" id="hero-lead">Klassische Begleitung für Hochzeit, Empfang, Trauerfeier und private Anlässe — Viola, Geige und Klavier. Über ein Netzwerk erfahrener Künstler:innen aus Düsseldorf vermittelt.</p>
+          <p class="hero-lead" id="hero-lead">Klassische Begleitung für Hochzeit, Empfang, Trauerfeier und private Anlässe: Viola, Geige und Klavier. Über ein Netzwerk erfahrener Künstler:innen aus Düsseldorf vermittelt.</p>
           <div class="hero-actions" aria-label="Direkte Aktionen">
             <a class="btn dark" href={musicRequestHref} data-hero-primary>Musik anfragen</a>
             <a class="btn" href={musicRequestHref} data-hero-secondary>Anlässe ansehen</a>
@@ -125,7 +125,7 @@ const heroSlidesJson = JSON.stringify(heroSlides)
             <h2 class="vm-flow__title">Musik aus dem <em>Netzwerk.</em></h2>
           </div>
           <p class="vm-flow__lead">
-            Wir spielen nicht selbst — wir vermitteln Künstler:innen aus dem direkten Umfeld. Erfahren, zuverlässig und im Rheinland
+            Wir spielen nicht selbst, wir vermitteln Künstler:innen aus dem direkten Umfeld. Erfahren, zuverlässig und im Rheinland
             verwurzelt, von der ersten Anfrage bis zum Auftritt. Wenn Anlass oder Ensemble zusätzlich fotografisch oder filmisch
             begleitet werden sollen, greifen <a href="/musikerfotografie.html">Musikerfotografie</a>,
             <a href="/portfolio/viola-portrait-am-see">Editorial-Beispiele mit Viola</a>,

@@ -66,7 +66,7 @@ const statement = projectPage.statement || {}
 const statementStats = (statement.stats || []).filter((item) => hasText(item.label) || hasText(item.text))
 const context = projectPage.context || {}
 const contextKicker = hasText(context.kicker) ? context.kicker! : 'Einordnung'
-const contextHeadline = hasText(context.headline) ? context.headline! : 'Serie, Einsatz und Bildsprache'
+const contextHeadline = hasText(context.headline) ? context.headline! : 'Serie, Einsatz und Auswahl'
 const contextBody = (context.body || []).map((paragraph) => paragraph.text).filter(hasText)
 const categoryLabel = (value: unknown): string => {
   if (typeof value === 'string') return value
@@ -80,8 +80,8 @@ const categoryLabel = (value: unknown): string => {
 }
 const portfolioFocus = categoryLabel(doc.category) || doc.presentationMode || doc.title || 'Portfolio-Serie'
 const defaultContextBody = [
-  `Diese Auswahl ist als kuratierter Einstieg in ${portfolioFocus} gedacht: nicht als endlose Galerie, sondern als verdichtete Serie mit Hauptmotiv, Varianten, Details und ruhigen Übergängen. Für SEO und Nutzerführung bleibt die Seite bewusst eigenständig, während sie auf die passenden Leistungs- und Standortseiten verweist.`,
-  'Entscheidend ist die Lesbarkeit der Bildstrecke. Farbe, Abstand, Perspektive und Reihenfolge sollen schnell zeigen, ob eine ähnliche Produktion für Marke, Verkauf, Portfolio, Print oder digitale Präsentation funktioniert. So bekommt jedes Portfolio-Motiv einen klaren Kontext statt nur einen isolierten Galerieplatz.',
+  `Diese Auswahl zeigt ${portfolioFocus} als zusammenhängende Serie: Einstiegsmotiv, Varianten im Raum oder Lichtwechsel und präzise Detailaufnahmen statt unzusammenhängender Einzelbilder.`,
+  'Farbe, Abstand und Reihenfolge sind darauf abgestimmt, wie die Aufnahmen später wirken sollen — ob auf einer Website, im Exposé, im Magazin oder großformatig an der Wand.',
 ]
 const resolvedContextBody = contextBody.length ? contextBody : defaultContextBody
 const cardVisual = (media: PayloadDoc['coverImage'], defaultSizes = '(max-width: 900px) 94vw, 50vw') => {

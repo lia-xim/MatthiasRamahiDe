@@ -83,14 +83,14 @@ export const siteChromeContent = {
     instagramUrl: 'https://www.instagram.com/mathewspictures/',
     defaultMetaTitle: 'Matthias Ramahi — Fotografie Düsseldorf & NRW',
     defaultMetaDescription:
-      'Kuratierte Fotografie aus Düsseldorf — Automobil, Sportwagen, Oldtimer, Motorrad, Portrait, Landschaft. Für Verkauf, Marke, Sammlung, Print und Kampagne.',
+      'Fotografie aus Erkrath bei Düsseldorf: Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft. Für Verkauf, Marke, Sammlung, Druck und Kampagne.',
   },
   footer: {
-    statementPrefix: 'Fotografie aus Düsseldorf — kuratiert für ',
+    statementPrefix: 'Fotografie aus Erkrath bei Düsseldorf für ',
     statementHighlight: 'Marke, Sammlung und Druck',
-    statementSuffix: '. Editorial geführt, technisch ruhig, bereit für die nächste Ausgabe.',
+    statementSuffix: '. Fahrzeuge und Menschen fotografiere ich vor Ort in ganz NRW, Landschaft gibt es als Fine-Art-Druck.',
     statement:
-      'Fotografie aus Düsseldorf — kuratiert für Marke, Sammlung und Druck. Editorial geführt, technisch ruhig, bereit für die nächste Ausgabe.',
+      'Fotografie aus Erkrath bei Düsseldorf für Marke, Sammlung und Druck. Fahrzeuge und Menschen fotografiere ich vor Ort in ganz NRW, Landschaft gibt es als Fine-Art-Druck.',
     aboutLink: { label: 'Über mich', href: 'ueber-mich.html' },
     email: 'info@matthiasramahi.de',
     phone: '+49 176 42 44 98 58',

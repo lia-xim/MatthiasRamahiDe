@@ -325,3 +325,6 @@
     .po-tile{opacity:1;transform:none;transition:none}
     .po-grid:hover .po-tile:not(:hover){filter:none}
   }
+
+  /* Lange Komposita in der H1 (z. B. „Motorradfotografie“): die per Inline-Style angepasste H1-Größe gilt auch für die Wörter. */
+  .hero-mr__title[style] .line .word{font-size:inherit}

@@ -20,13 +20,13 @@
       "_template": "textBlock",
       "style": "summary",
       "eyebrow": "Kurzantwort",
-      "headline": "Autofotos am Smartphone bearbeiten: Die wichtigsten Punkte im Überbl",
-      "body": "Kernaussage: Für Zuschneiden, Drehung sowie einfache Anpassungen an Licht und Farbe reichen die eingebauten Werkzeuge vieler Smartphones aus\nAutofotos am Handy bearbeiten,: Du hast ein Autofoto als JPG oder HEIF auf dem Smartphone und möchtest es vor dem Teilen noch etwas ordnen?\nWeißabgleich und Lackfarbe nicht: Ein Weißabgleich kann einen allgemeinen Farbstich im Bild mildern\nEin kurzer mobiler Prüfablauf: Original sichern und den Zielkanal klären"
+      "headline": "Kurz gesagt: Handybearbeitung in wenigen Schritten",
+      "body": "Werkzeuge: Für Zuschneiden, Drehen und einfache Licht- und Farbanpassungen reichen die eingebauten Werkzeuge vieler Smartphones aus.\nReihenfolge: Erst Ausschnitt und Perspektive ordnen, dann Helligkeit, Lichter und Schatten, zuletzt Weißabgleich und Farbe.\nLackfarbe: Reflexe von Himmel und Umgebung gehören zum Bild, beurteile die Farbe deshalb an mehreren Karosserieflächen.\nExport: Sichere das Original, speichere eine neue Datei für den Zielkanal und öffne sie vor dem Upload noch einmal."
     },
     {
       "_template": "textBlock",
-      "headline": "Autofotos am Handy bearbeiten, ohne den Wagen umzuschreiben",
-      "body": "Du hast ein Autofoto als JPG oder HEIF auf dem Smartphone und möchtest es vor dem Teilen noch etwas ordnen? Für viele Bilder reichen wenige kontrollierte Schritte: den Ausschnitt prüfen, eine schiefe Horizontlinie korrigieren, Helligkeit und Farbe zurückhaltend abstimmen und anschließend eine passende Kopie exportieren. Das funktioniert mit einem Foto aus der Handykamera ebenso wie mit einem Kamera-Render, das du aufs Telefon übertragen hast.\n\nHier geht es um einen mobilen Grundworkflow für eine vorhandene Datei, nicht um die Aufnahme selbst. Tipps zu Perspektive, Licht und Fokus beim Fotografieren stehen im Beitrag [Auto mit dem Smartphone fotografieren](/blog-auto-mit-smartphone-fotografieren.html). Für eine RAW-Entwicklung mit Masken und Serienabgleich ist [Autofotos in Lightroom Classic bearbeiten](/blog-autofotos-in-lightroom-bearbeiten.html) der passendere Leitfaden."
+      "headline": "Autofotos am Handy bearbeiten, ohne das Auto zu verfälschen",
+      "body": "Du hast ein Autofoto als JPG oder HEIF auf dem Smartphone und möchtest es vor dem Teilen noch etwas ordnen? Für viele Bilder reichen wenige kontrollierte Schritte: den Ausschnitt prüfen, eine schiefe Horizontlinie korrigieren, Helligkeit und Farbe zurückhaltend abstimmen und anschließend eine passende Kopie exportieren. Das funktioniert mit einem Foto aus der Handykamera ebenso wie mit einem JPG aus der Kamera, das du aufs Telefon übertragen hast.\n\nHier geht es um einen mobilen Grundworkflow für eine vorhandene Datei, nicht um die Aufnahme selbst. Tipps zu Perspektive, Licht und Fokus beim Fotografieren stehen im Beitrag [Auto mit dem Smartphone fotografieren](/blog-auto-mit-smartphone-fotografieren.html). Für eine RAW-Entwicklung mit Masken und Serienabgleich ist [Autofotos in Lightroom Classic bearbeiten](/blog-autofotos-in-lightroom-bearbeiten.html) der passendere Leitfaden."
     },
     {
       "_template": "imageSequence",
@@ -36,7 +36,7 @@
         {
           "image": "/assets/portfolio/automobil-brabus-sunset.webp",
           "alt": "Schwarzer Brabus-SUV im Abendlicht vor einer Industrieanlage, gespiegelt in einer Wasserfläche.",
-          "caption": "Portfolioaufnahme eines Fahrzeugs als Motivbeispiel. Das Bild belegt weder eine Smartphone-Aufnahme noch einen bestimmten Bearbeitungsschritt.",
+          "caption": "Schwarzer Brabus-SUV im Abendlicht vor einer Industrieanlage. Eine Portfolioaufnahme als Motivbeispiel, keine Handybearbeitung.",
           "cropIntent": "editorial"
         }
       ]
@@ -84,7 +84,7 @@
     {
       "_template": "ctaBlock",
       "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
-      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Ein Shooting beginnt bei 250 € inkl. MwSt.",
       "buttonLabel": "Auto-Shooting anfragen"
     },
     {

@@ -19,8 +19,8 @@
       "_template": "textBlock",
       "style": "summary",
       "eyebrow": "Kurzantwort",
-      "headline": "Inzahlungnahme Fahrzeugzustand Fotos: Die wichtigsten Punkte im Über",
-      "body": "Kernaussage: Das hängt vom Anfrageformular ab\nEine erste Ankaufseinschätzung braucht: Wenn du dein Auto in Zahlung geben möchtest, helfen Fotos dem Händler, die Anfrage vor einem Termin einzuordnen\nBekannte Schäden erst im: Bei einer Delle, einem Kratzer oder einer Nachlackierung helfen drei Ansichten: zuerst das ganze Fahrzeug oder die Karosserieseite, dann das betroffene\nWas der Händler aus: Gute Bilder können sichtbare Ausstattung, Karosserie, Innenraum und bekannte Oberflächenspuren verständlicher machen"
+      "headline": "Auto in Zahlung geben: das Wichtigste in Kürze",
+      "body": "Bildumfang: Welche Ansichten der Händler braucht, steht im Anfrageformular. Gibt es keine Liste, frag vor dem Upload nach.\nReihenfolge: Zuerst eine feste Außenrunde, dann Cockpit, Sitze, Kofferraum und relevante Details.\nSchäden: Bekannte Mängel erst am ganzen Fahrzeug, dann am Bauteil und zuletzt aus der Nähe zeigen, ohne sie wegzubearbeiten.\nGrenzen: Fotos bereiten das Gespräch vor, ersetzen aber weder Besichtigung noch technische Prüfung."
     },
     {
       "_template": "textBlock",
@@ -65,7 +65,7 @@
     {
       "_template": "textBlock",
       "headline": "Bekannte Schäden erst im Zusammenhang, dann aus der Nähe zeigen",
-      "body": "Bei einer Delle, einem Kratzer oder einer Nachlackierung helfen drei Ansichten: zuerst das ganze Fahrzeug oder die Karosserieseite, dann das betroffene Bauteil und zuletzt das Detail. So bleiben Lage und sichtbare Oberfläche nachvollziehbar. Wenn Glanz oder Schatten die Stelle verdecken, ändere leicht den Standpunkt und fotografiere erneut.\n\nLass sichtbare Spuren im Bild. Entferne sie nicht digital und nutze keine Filter, die Farbe oder Kontrast verändern. Beschreibe nur, was du sicher weißt, zum Beispiel: Kratzer an der hinteren Tür links; eine vermutete Ursache musst du nicht angeben. Bewahre die unveränderte Originaldatei auf. Wenn Aufnahmezeitpunkt wichtig ist, notiere Datum und Uhrzeit zusätzlich in deiner Nachricht oder Dokumentation: Metadaten können beim Export oder Versand fehlen oder verändert werden. Ein Foto allein belegt weder sicher, wann noch wodurch ein Schaden entstanden ist, und ersetzt kein Gutachten."
+      "body": "Bei einer Delle, einem Kratzer oder einer Nachlackierung helfen drei Ansichten: zuerst das ganze Fahrzeug oder die Karosserieseite, dann das betroffene Bauteil und zuletzt das Detail. So bleiben Lage und sichtbare Oberfläche nachvollziehbar. Wenn Glanz oder Schatten die Stelle verdecken, ändere leicht den Standpunkt und fotografiere erneut.\n\nLass sichtbare Spuren im Bild. Entferne sie nicht digital und nutze keine Filter, die Farbe oder Kontrast verändern. Beschreibe nur, was du sicher weißt, zum Beispiel: Kratzer an der hinteren Tür links; eine vermutete Ursache musst du nicht angeben. Bewahre die unveränderte Originaldatei auf. Wenn der Aufnahmezeitpunkt wichtig ist, notiere Datum und Uhrzeit zusätzlich in deiner Nachricht oder Dokumentation: Metadaten können beim Export oder Versand fehlen oder verändert werden. Ein Foto allein belegt weder sicher, wann noch wodurch ein Schaden entstanden ist, und ersetzt kein Gutachten."
     },
     {
       "_template": "textBlock",
@@ -74,13 +74,13 @@
     },
     {
       "_template": "textBlock",
-      "headline": "Was der Händler aus Fotos einschätzen kann – und was nicht",
+      "headline": "Was der Händler aus Fotos einschätzen kann und was nicht",
       "body": "Gute Bilder können sichtbare Ausstattung, Karosserie, Innenraum und bekannte Oberflächenspuren verständlicher machen. Sie zeigen nicht zuverlässig, wie sich Motor, Getriebe, Fahrwerk oder Batterie technisch verhalten; verdeckte Bereiche und Geräusche sind darauf nicht prüfbar. Der ADAC rät bei einer Kaufentscheidung ausdrücklich dazu, das Fahrzeug zu besichtigen und aus der Ferne nicht allein anhand von Fotos auf den tatsächlichen Zustand zu schließen.\n\nSieh das Bildset deshalb als Vorbereitung für das Gespräch. Wenn ein Händler nach weiteren Ansichten oder Unterlagen fragt, kläre, was genau fehlt. Eine vorläufige Einschätzung kann sich nach Besichtigung oder Prüfung ändern. Für den Verkauf an private Interessenten gelten andere Bildziele; dafür ist der Ratgeber zu Gebrauchtwagenfotos fürs Inserat passender."
     },
     {
       "_template": "ctaBlock",
       "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
-      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "text": "Du planst Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Ein Shooting beginnt bei 250 € inkl. MwSt.",
       "buttonLabel": "Auto-Shooting anfragen"
     },
     {
@@ -131,7 +131,7 @@
         {
           "label": "Automobilfotografie für Marken und Unternehmen",
           "href": "/automobil-fotografie.html",
-          "description": "Leistungsbereich für geplante Fahrzeugserien und kommerzielle Bildproduktionen."
+          "description": "Automobilfotografie für geplante Fahrzeugserien und kommerzielle Bildproduktionen."
         },
         {
           "label": "Gebrauchtwagen fürs Online-Inserat fotografieren",

@@ -12,24 +12,24 @@
   "publishedAt": "2028-04-21T07:00:00.000Z",
   "excerpt": "Eine Photogrammetrie-Aufnahme braucht mehr als einzelne schöne Autofotos. So planst du eine wiederholbare Bildfolge, erkennst Lücken und gehst mit spiegelndem Lack realistisch um.",
   "coverImage": "/uploads/payload/assets-portfolio-dsc3982-1920.webp",
-  "coverAlt": "Weißer BMW E30 mit roter Motorhaube auf einer beleuchteten Präsentationsfläche; Portfoliofoto als Fahrzeugkontext, kein 3D-Scan.",
+  "coverAlt": "Pagani Huayra mit Carbon-Karosserie in einer dunklen Ausstellungshalle mit farbigem Licht; Portfoliofoto als Fahrzeugkontext, kein 3D-Scan.",
   "readingTime": 9,
   "blocks": [
     {
       "_template": "textBlock",
-      "headline": "Kurzantwort: eine zusammenhängende Bildfolge statt einzelner Motive",
+      "headline": "Kurz gesagt: Ein 3D-Modell braucht eine zusammenhängende Bildfolge",
       "body": "Für ein 3D-Modell aus Fahrzeugfotos brauchst du eine Folge scharfer Aufnahmen, in denen sich die sichtbaren Karosserieflächen von Bild zu Bild überlappen. Die Software sucht gemeinsame Bildmerkmale, schätzt daraus Kamerapositionen und rekonstruiert anschließend Geometrie und Textur. Ein paar attraktive Einzelansichten ergeben dagegen keine vollständige Erfassung des Autos. Autodesk beschreibt für seine ReCap-Photogrammetrie ebenfalls eine Serie überlappender Fotos, aus der ein Modell aufgebaut wird: [Reality Capture mit Autodesk ReCap](https://help.autodesk.com/cloudhelp/ENU/Reality-Capture/files/Getting_Started/about_reality_capture.html).\n\nDieser Leitfaden hilft dir, die Aufnahmefolge eines stehenden Autos zu planen und erste Grenzen zu erkennen. Er ist keine Anleitung zur maßhaltigen Vermessung und verspricht kein fertiges Modell.",
       "style": "summary",
       "eyebrow": "Kurzantwort"
     },
     {
       "_template": "imageSequence",
-      "headline": "Zwei Fahrzeugfotos als Kontext, keine Photogrammetrie-Daten",
+      "headline": "Ein Fahrzeugfoto als Kontext, keine Photogrammetrie-Daten",
       "layout": "editorial-pair",
       "items": [
         {
           "image": "/uploads/payload/assets-portfolio-dsc3982-1920.webp",
-          "caption": "Pagani mit sichtbarer Carbon-Karosserie im Ausstellungslicht. Dies ist eine einzelne 2D-Portfolioaufnahme, kein Teil einer Photogrammetrie-Bildfolge und kein Scan-Ergebnis.",
+          "caption": "Pagani mit sichtbarer Carbon-Karosserie im Ausstellungslicht. Eine einzelne Portfolioaufnahme, kein Teil einer Photogrammetrie-Serie.",
           "alt": "Dunkler Pagani mit türkisfarbener Carbon-Karosserie unter farbigem Hallenlicht.",
           "cropIntent": "editorial"
         }
@@ -38,7 +38,7 @@
     {
       "_template": "textBlock",
       "headline": "3D-Rekonstruktion und 360-Grad-Ansicht lösen verschiedene Aufgaben",
-      "body": "Eine interaktive 360-Grad-Ansicht zeigt eine abgestimmte Folge aus Blickwinkeln, meist rund um ein Fahrzeug. Sie lässt Besucher:innen die Perspektive wechseln, muss aber keine Fahrzeugoberfläche als 3D-Geometrie berechnen. Bei der Photogrammetrie versucht die Software dagegen, aus zusammenpassenden Bildmerkmalen eine Oberfläche abzuleiten. Dafür zählt, ob die Bildfolge den Wagen vollständig und mit genügend gemeinsamen Details erfasst.\n\nWenn du eine drehbare Produktansicht planst, hilft der separate Ratgeber [360-Grad-Fahrzeugfotos planen](/blog-360-grad-fahrzeugfotos-planen.html). Für ein 3D-Modell reicht es nicht, dieselben ausgewählten Motive als Rundumserie zu bezeichnen: Die Aufnahmefolge und die spätere Prüfung sind andere."
+      "body": "Eine interaktive 360-Grad-Ansicht zeigt eine abgestimmte Folge aus Blickwinkeln, meist rund um ein Fahrzeug. Wer sie ansieht, kann die Perspektive wechseln, muss aber keine Fahrzeugoberfläche als 3D-Geometrie berechnen. Bei der Photogrammetrie versucht die Software dagegen, aus zusammenpassenden Bildmerkmalen eine Oberfläche abzuleiten. Dafür zählt, ob die Bildfolge den Wagen vollständig und mit genügend gemeinsamen Details erfasst.\n\nWenn du eine drehbare Produktansicht planst, hilft der separate Ratgeber [360-Grad-Fahrzeugfotos planen](/blog-360-grad-fahrzeugfotos-planen.html). Für ein 3D-Modell reicht es nicht, dieselben ausgewählten Motive als Rundumserie zu bezeichnen: Die Aufnahmefolge und die spätere Prüfung sind andere."
     },
     {
       "_template": "textBlock",
@@ -73,7 +73,7 @@
     {
       "_template": "ctaBlock",
       "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
-      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Ein Shooting beginnt bei 250 € inkl. MwSt.",
       "buttonLabel": "Auto-Shooting anfragen"
     },
     {
@@ -136,7 +136,7 @@
   ],
   "seo": {
     "title": "Auto für Photogrammetrie fotografieren: Bildfolge für 3D",
-    "description": "Auto für Photogrammetrie fotografieren: überlappende Bildfolgen planen, Licht konsistent halten und Reflex-Grenzen bei Lack und Glas sicher lösen.",
+    "description": "Auto für Photogrammetrie fotografieren: überlappende Bildfolgen planen, Licht konstant halten und die Grenzen bei spiegelndem Lack und Glas kennen.",
     "focusKeyword": "Auto für Photogrammetrie fotografieren",
     "secondaryKeywords": [
       "Auto mit Fotos scannen",

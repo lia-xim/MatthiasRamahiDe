@@ -65,9 +65,9 @@ const editableSource = (item: unknown) => (item as { source?: unknown } | null |
 const pad = (value: number) => String(value).padStart(2, '0')
 
 // Bildgrößen (technische Möblierung, bleibt Code — wird nicht im CMS gepflegt)
-const chapterSizes = '(max-width: 780px) calc((100vw - 52px) / 2), (max-width: 1180px) calc((100vw - 112px) / 2), 440px'
-const journalSizes = '(max-width: 780px) calc(100vw - 44px), (max-width: 1180px) calc(100vw - 112px), 460px'
-const aboutSizes = '(max-width: 780px) calc(100vw - 44px), (max-width: 1180px) calc(100vw - 112px), 680px'
+const chapterSizes = '(max-width: 780px) calc((100vw, 52px) / 2), (max-width: 1180px) calc((100vw, 112px) / 2), 440px'
+const journalSizes = '(max-width: 780px) calc(100vw, 44px), (max-width: 1180px) calc(100vw, 112px), 460px'
+const aboutSizes = '(max-width: 780px) calc(100vw, 44px), (max-width: 1180px) calc(100vw, 112px), 680px'
 // Porträt aus dem Original (4090×4825) neu gerechnet, 2026-11.
 const defaultAboutImage = '/assets/optimized/matthias-ramahi-portrait-1080.webp'
 const defaultAboutImageSrcset =
@@ -98,7 +98,7 @@ const chaptersEmphasis = chaptersGroup?.headlineEmphasis || ''
 const chaptersIntro = hasText(chaptersGroup?.intro)
   ? chaptersGroup!.intro!
   : blockParagraphs(doc, 'Sechs Bereiche', [
-      'Jeder Bereich hat eine eigene visuelle Logik: Bewegung, Material, Mensch, Raum.',
+      'Jeder Bereich folgt eigenen Anforderungen an Bewegung, Licht, Material und Distanz.',
     ])[0]
 const cmsChapters = (chaptersGroup?.items || [])
   .filter((item) => item?.image)

@@ -151,11 +151,11 @@ export function curateFamilyClusterLinks({
     cityHeading:
       isParentPage || isNrwFamilyPage
         ? `${familyLabel} <em>vor Ort.</em>`
-        : `${familyLabel} <em>im Cluster.</em>`,
+        : `${familyLabel} <em>in der Region.</em>`,
     cityLinks,
     intentHeading: isParentPage
       ? `${familyLabel} <em>nach Anliegen.</em>`
-      : `Passende ${familyLabel} <em>nach Anliegen.</em>`,
+      : `${familyLabel} <em>nach Anliegen.</em>`,
     isDuesseldorfFamilyPage,
     isFamilyLocationPage,
     isNrwFamilyPage,

@@ -272,6 +272,19 @@ const serviceSectionFields = [
     }),
     objectField('links', 'Links', [textField('label', 'Label'), textField('href', 'Link')], { list: true }),
   ]),
+  // Bildstreifen mit echten eigenen Serien (nach dem Ratgeber). Leer → nicht gerendert.
+  objectField('hubSeries', 'Eigene Serien (Bildstreifen)', [
+    textField('eyebrow', 'Eyebrow'),
+    textField('headline', 'Headline'),
+    textField('emphasis', 'Headline-Betonung'),
+    textAreaField('intro', 'Einleitung'),
+    objectField(
+      'items',
+      'Bilder',
+      [imageField('image', 'Bild'), textField('alt', 'Alt-Text'), textField('caption', 'Bildunterschrift')],
+      { list: true },
+    ),
+  ]),
   objectField('focusSection', 'Fokus-Sektion', sectionHeadingFields),
   objectField(
     'shootingStyles',

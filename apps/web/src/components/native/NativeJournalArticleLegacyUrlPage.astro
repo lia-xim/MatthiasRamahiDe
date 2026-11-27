@@ -147,7 +147,7 @@ const contactSubjectByCluster: Record<string, string> = {
 }
 const articleContactSubject = contactSubjectByCluster[article.cluster] || 'Shooting Anfrage'
 const articleContactHeadline = `${topicLabel} <em>anfragen.</em>`
-const articleContactLead = `Du planst ein Shooting oder Projekt im Bereich ${topicLabel}? Schreibe kurz Motiv, Ort und gewünschten Zeitraum — wir klären Licht, Ablauf und Ausgabe direkt.`
+const articleContactLead = `Du planst ein Shooting oder Projekt im Bereich ${topicLabel}? Schreibe kurz Motiv, Ort und gewünschten Zeitraum. Dann klären wir Licht, Ablauf und Ausgabe direkt.`
 const normalizeText = (value = '') => value.replace(/\s+/g, ' ').trim()
 const paragraphs = (body?: string) => (body || '').split(/\n\s*\n/).map((value) => value.trim()).filter(Boolean)
 const blockId = (headline: string, index: number) =>

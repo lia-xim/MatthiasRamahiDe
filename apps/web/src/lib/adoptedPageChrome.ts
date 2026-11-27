@@ -107,7 +107,7 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
   'fotografie.html': {
     current: 'fotografie',
     description:
-      'Fotografie als klare Übersicht: Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft - sechs spezialisierte Bereiche mit eigenem Einstieg.',
+      'Fotografie als klare Übersicht: Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft. Sechs spezialisierte Bereiche mit eigenem Einstieg.',
     ogImage: '/assets/optimized/mpik8b82-dsc3879-1920.webp',
     preloadImages: ['/assets/optimized/mpik8b82-dsc3879-1920.webp'],
     scripts: ['/assets/native-home.js', ...siteChromeScript],
@@ -117,7 +117,7 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
   'fotografie-duesseldorf.html': {
     current: 'fotografie',
     description:
-      'Fotografie Düsseldorf als klare Übersicht: Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft - sechs spezialisierte Bereiche mit eigenem Einstieg.',
+      'Fotografie Düsseldorf als klare Übersicht: Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft. Sechs spezialisierte Bereiche mit eigenem Einstieg.',
     ogImage: '/assets/optimized/mpik8b82-dsc3879-1920.webp',
     preloadImages: ['/assets/optimized/mpik8b82-dsc3879-1920.webp'],
     scripts: ['/assets/native-home.js', ...siteChromeScript],
@@ -127,7 +127,7 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
   'fotografie-nrw.html': {
     current: 'fotografie',
     description:
-      'Fotografie NRW als klare Übersicht: Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft - sechs spezialisierte Bereiche für Rheinland, Ruhrgebiet und Deutschland.',
+      'Fotografie NRW als klare Übersicht: Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft. Sechs spezialisierte Bereiche für Rheinland, Ruhrgebiet und Deutschland.',
     ogImage: '/assets/optimized/mpik8b82-dsc3879-1920.webp',
     preloadImages: ['/assets/optimized/mpik8b82-dsc3879-1920.webp'],
     scripts: ['/assets/native-home.js', ...siteChromeScript],
@@ -137,7 +137,7 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
   'fotografie-erkrath.html': {
     current: 'fotografie',
     description:
-      'Fotograf in Erkrath: Autos, Motorräder, Oldtimer, Portraits und Landschaft – mit Orten im Neandertal, Studio in Düsseldorf und Shooting ab 250 €.',
+      'Fotograf in Erkrath: Autos, Motorräder, Oldtimer, Portraits und Landschaft, mit Orten im Neandertal, Studio nach Bedarf und Shooting ab 250 €.',
     ogImage: '/assets/optimized/mpik8b82-dsc3879-1920.webp',
     preloadImages: ['/assets/optimized/mpik8b82-dsc3879-1920.webp'],
     scripts: ['/assets/native-home.js', ...siteChromeScript],
@@ -147,7 +147,7 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
   'fotografie-deutschland.html': {
     current: 'fotografie',
     description:
-      'Fotografie Deutschland als klare Übersicht: Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft - sechs spezialisierte Bereiche für hochwertige Bildserien.',
+      'Fotografie Deutschland als klare Übersicht: Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft. Sechs spezialisierte Bereiche für hochwertige Bildserien.',
     ogImage: '/assets/optimized/mpik8b82-dsc3879-1920.webp',
     preloadImages: ['/assets/optimized/mpik8b82-dsc3879-1920.webp'],
     scripts: ['/assets/native-home.js', ...siteChromeScript],
@@ -157,31 +157,31 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
   'automobil-fotografie.html': {
     ...automotiveChrome,
     description:
-      'Automobilfotografie: Exterieur, Interieur, Details und cineastische Bildserien für Marke, Showroom, Verkauf und Kampagne - geplant aus Düsseldorf / NRW.',
+      'Automobilfotografie: Exterieur, Interieur, Details und cineastische Bildserien für Marke, Showroom, Verkauf und Kampagne. Geplant aus Düsseldorf / NRW.',
     title: 'Automobilfotografie - Matthias Ramahi',
   },
   'sportwagen-fotografie.html': {
     ...sportwagenChrome,
     description:
-      'Sportwagenfotografie: hochwertige Serien für Performance Cars, Sammlerfahrzeuge, Händler und Marken - Exterieur, Interieur, Details und Druckqualität.',
+      'Sportwagenfotografie: hochwertige Serien für Performance Cars, Sammlerfahrzeuge, Händler und Marken. Exterieur, Interieur, Details und Druckqualität.',
     title: 'Sportwagenfotografie - Matthias Ramahi',
   },
   'oldtimer-fotografie.html': {
     ...oldtimerChrome,
     description:
-      'Oldtimer-Fotografie: Bildserien für Sammlung, Verkauf, Auktion und Ausstellung - Karosserie, Lack, Chrom, Leder, Patina und Herkunft.',
+      'Oldtimer-Fotografie: Bildserien für Sammlung, Verkauf, Auktion und Ausstellung. Karosserie, Lack, Chrom, Leder, Patina und Herkunft.',
     title: 'Oldtimer-Fotografie - Matthias Ramahi',
   },
   'motorrad-fotografie.html': {
     ...motorradChrome,
     description:
-      'Motorradfotografie: Bildserien für Custom Bikes, Werkstätten, Händler und private Maschinen - Silhouette, Mechanik, Haltung und Detail.',
+      'Motorradfotografie: Bildserien für Custom Bikes, Werkstätten, Händler und private Maschinen. Silhouette, Mechanik, Haltung und Detail.',
     title: 'Motorradfotografie - Matthias Ramahi',
   },
   'portraitfotografie.html': {
     ...portraitChrome,
     description:
-      'Portraitfotografie: Personal Branding, Business Portraits, Editorial, Team und Presse - professionell, ruhig, nahbar und nicht glattgebügelt.',
+      'Portraitfotografie: Personal Branding, Business Portraits, Editorial, Team und Presse. Professionell, ruhig, nahbar und nicht glattgebügelt.',
     title: 'Portraitfotografie - Matthias Ramahi',
   },
   'landschaftsfotografie.html': {
@@ -292,7 +292,7 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
   'webdesign-seo-duesseldorf.html': {
     current: 'leistungen',
     description:
-      'Webdesign und SEO in Düsseldorf: moderne Websites, lokale Sichtbarkeit, Performance, Bildsprache, Landingpages und suchmaschinenfreundliche Struktur.',
+      'Webdesign und SEO in Düsseldorf: schnelle Websites, lokale Sichtbarkeit, eigene Fotos, klare Landingpages und saubere Seitenstruktur.',
     ogImage: '/assets/optimized/assets-photos-automobil-sunset-1920.webp',
     preloadImages: ['/assets/optimized/assets-photos-automobil-sunset-1920.webp'],
     scripts: ['/assets/native-home.js', ...siteChromeScript],
@@ -317,13 +317,13 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
     ...serviceMiniChrome('/assets/services/portfolio_webp_full_058-1.webp'),
     stylesheets: [...sharedStyles, '/assets/native-videografie.css', '/assets/service-extras.css'],
     description:
-      'Videografie in Düsseldorf: Imagefilm, Musikvideo, Eventfilm und redaktionelles Bewegtbild - über Sophia Ramahi und das Kreativnetzwerk aus dem Rheinland.',
+      'Videografie in Düsseldorf: Imagefilm, Musikvideo, Eventfilm und redaktionelles Bewegtbild. Über Sophia Ramahi und das Kreativnetzwerk aus dem Rheinland.',
     title: 'Videografie Düsseldorf - Matthias Ramahi',
   },
   'werbetechnik-duesseldorf.html': {
     current: 'leistungen',
     description:
-      'Werbetechnik in Düsseldorf: Schaufenster, Pop-ups, Brand-Booths, Promotionflächen und LED-Lichtwerbung - Markenerlebnisse seit 35 Jahren, mit erfahrenen Partnerwerkstätten.',
+      'Werbetechnik in Düsseldorf: Schaufenster, Pop-ups, Brand-Booths, Promotionflächen und LED-Lichtwerbung. Markenerlebnisse mit erfahrenen Partnerwerkstätten.',
     ogImage: '/assets/services/Catoir_Ramahi-1-32-768x512-1.webp',
     preloadImages: ['/assets/services/Catoir_Ramahi-1-32-768x512-1.webp'],
     scripts: ['/assets/native-home.js', ...siteChromeScript],
@@ -349,7 +349,7 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
   'fotolabor-druck-duesseldorf.html': {
     current: 'leistungen',
     description:
-      'Fotolabor Düsseldorf für professionellen Fotodruck: Fine-Art-Prints auf Hahnemühle, Canson und Ilford, Acrylglas, Alu-Dibond und Leinwand - mit Soft-Proof.',
+      'Fotolabor Düsseldorf für professionellen Fotodruck: Fine-Art-Prints auf Hahnemühle, Canson und Ilford, Acrylglas, Alu-Dibond und Leinwand, mit Soft-Proof.',
     ogImage: '/assets/services/portfolio_webp_full_057-1.webp',
     preloadImages: ['/assets/services/portfolio_webp_full_057-1.webp'],
     scripts: ['/assets/native-home.js', ...siteChromeScript],
@@ -359,7 +359,7 @@ const exactChrome: Record<string, AdoptedPageChrome> = {
   'viola-musik-duesseldorf.html': {
     current: 'leistungen',
     description:
-      'Viola und Geigenmusik in Düsseldorf: klassische Begleitung für Hochzeit, Empfang, Trauerfeier und private Anlässe - über ein Netzwerk erfahrener Künstler:innen vermittelt.',
+      'Viola und Geigenmusik in Düsseldorf: klassische Begleitung für Hochzeit, Empfang, Trauerfeier und private Anlässe. Über ein Netzwerk erfahrener Künstler:innen vermittelt.',
     ogImage: '/assets/services/portfolio_webp_full_004-2.webp',
     preloadImages: ['/assets/services/portfolio_webp_full_004-2.webp'],
     scripts: ['/assets/native-home.js', ...siteChromeScript],

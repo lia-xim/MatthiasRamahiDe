@@ -23,8 +23,8 @@
       "_template": "textBlock",
       "style": "summary",
       "eyebrow": "Kurzantwort",
-      "headline": "Fahrzeugfotos für Kataloge: Die wichtigsten Punkte im Überblick",
-      "body": "Kernaussage: Plane Fahrzeugfotos für Broschüren und Kataloge: Stimme Seitenraster, Beschnitt, Bund, Druckprofil und Bildfreigabe vor dem Shooting ab\nDie Druckseite bestimmt den: Bitte zuerst um ein Layout oder zumindest eine Skizze der geplanten Seite\nAuflösung und Dateiformat aus: Pixelzahl allein sagt nicht, ob ein Foto für einen bestimmten Bildrahmen ausreicht\nKurzes Print-Briefing vor dem: Endformat, Seitenzahl und Bindungsart"
+      "headline": "Erst die fertige Seite planen, dann fotografieren",
+      "body": "Kernaussage: Endformat, Bildrahmen, Seitenfolge und Druckvorgaben legen fest, wie viel Reserve ein Motiv am Rand braucht.\nBeschnitt und Bund: Beschnittzugabe, Sicherheitsabstand und Bundzone getrennt planen; Werte immer von der Druckerei bestätigen lassen.\nAuflösung und Farbe: Entscheidend sind Druckgröße, effektive Auflösung und das vom Dienstleister genannte Profil.\nAbnahme: Bildauswahl, Platzierung im Layout und Proof in drei getrennten Schritten freigeben."
     },
     {
       "headline": "Die Druckseite bestimmt den Bildausschnitt",
@@ -77,7 +77,7 @@
     },
     {
       "headline": "Farbe und Papier vor dem finalen Export abstimmen",
-      "body": "Der Druck kann Farben anders wiedergeben als ein selbstleuchtender Monitor. Papier, Druckverfahren und Maschinenzustand beeinflussen, welche Farben tatsächlich ausgegeben werden. Kläre mit der Druckerei, ob sie ein bestimmtes ICC-Profil, einen PDF-Ausgabestandard oder offene RGB-Dateien für den eigenen Workflow erwartet. Falls eine Konvertierung nötig ist, nutze das vom Anbieter benannte Zielprofil; ein beliebiges CMYK-Profil ist kein sicherer Ersatz.\n\nEin Softproof kann am passenden Monitor zeigen, welche Farben außerhalb des vorgesehenen Druckfarbraums liegen könnten. Er ist eine Vorschau, keine Garantie für das Ergebnis auf jedem Papier. Bei einem Katalog mit anspruchsvollen Lackfarben oder dunklen Fahrzeugen lohnt sich die Frage, ob ein gedruckter Proof vorgesehen ist und wer ihn gegen das Motiv freigibt. Stimmen Auftraggeber und Druckerei dieses Verfahren nicht ab, lässt sich eine spätere Farbabweichung schwer einordnen.\n\nMonitor, Profil und Export sind ein eigener Teil des Farbmanagements. Hier liegt der Fokus auf der Übergabe in ein konkretes Printprojekt: erst Zielmedium und Profil bestätigen, dann die dafür passende Datei ausgeben.",
+      "body": "Der Druck kann Farben anders wiedergeben als ein selbstleuchtender Monitor. Papier, Druckverfahren und Maschinenzustand beeinflussen, welche Farben tatsächlich ausgegeben werden. Kläre mit der Druckerei, ob sie ein bestimmtes ICC-Profil, einen PDF-Ausgabestandard oder offene RGB-Dateien für den eigenen Workflow erwartet. Falls eine Konvertierung nötig ist, nutze das vom Anbieter benannte Zielprofil; ein beliebiges CMYK-Profil ist kein sicherer Ersatz.\n\nEin Softproof kann am passenden Monitor zeigen, welche Farben außerhalb des vorgesehenen Druckfarbraums liegen könnten. Er ist eine Vorschau, keine Garantie für das Ergebnis auf jedem Papier. Bei einem Katalog mit anspruchsvollen Lackfarben oder dunklen Fahrzeugen lohnt sich die Frage, ob ein gedruckter Proof vorgesehen ist und wer ihn gegen das Motiv freigibt. Stimmen Auftraggeber und Druckerei dieses Verfahren nicht ab, lässt sich eine spätere Farbabweichung schwer einordnen.\n\nMonitor, Profil und Export sind ein eigener Teil des Farbmanagements. Für die Übergabe in ein konkretes Printprojekt gilt: erst Zielmedium und Profil bestätigen, dann die dafür passende Datei ausgeben.",
       "_template": "textBlock"
     },
     {
@@ -87,7 +87,7 @@
     },
     {
       "headline": "Freigabe, Rechte und Produktionsstand dokumentieren",
-      "body": "Lege fest, wer Motiv, Retusche und Druckproof freigibt und bis wann Rückmeldungen vorliegen müssen. Das ist bei mehreren Fahrzeugen wichtig, weil sich nach dem Satz noch Modellbezeichnung, Ausstattung oder Bildreihenfolge ändern können. Benenne für jede Auswahl einen verbindlichen Status, etwa Vorschlag, freigegeben oder gesperrt. Eine kurze Versionsliste hilft, Korrekturen an der richtigen Datei umzusetzen.\n\nKläre die Bildnutzung passend zum Projekt: Auflage oder Druckumfang, Zielmärkte, zusätzliche digitale Verwendung, Nachdrucke und Weitergabe an Händler oder Partner können unterschiedliche Vereinbarungen erfordern. Eine Bilddatei oder ihre technische Drucktauglichkeit sagt nichts über den Umfang der eingeräumten Nutzungsrechte aus. Im Beitrag [Nutzungsrechte für Fahrzeugfotos](/blog-nutzungsrechte-fahrzeugfotos.html) findest du Fragen, die dazu vor einer Beauftragung geklärt werden sollten.\n\nDie Portfoliofotos auf dieser Seite veranschaulichen Fahrzeugmotive. Sie sind keine Kundenreferenzen für einen bestimmten Printkatalog und belegen weder dessen Auflage noch Nutzung. Für ein eigenes Projekt gehören Bildfreigabe und Produktionsfreigabe in die vereinbarte Übergabe.",
+      "body": "Lege fest, wer Motiv, Retusche und Druckproof freigibt und bis wann Rückmeldungen vorliegen müssen. Das ist bei mehreren Fahrzeugen wichtig, weil sich nach dem Satz noch Modellbezeichnung, Ausstattung oder Bildreihenfolge ändern können. Benenne für jede Auswahl einen verbindlichen Status, etwa Vorschlag, freigegeben oder gesperrt. Eine kurze Versionsliste hilft, Korrekturen an der richtigen Datei umzusetzen.\n\nKläre die Bildnutzung passend zum Projekt: Auflage oder Druckumfang, Zielmärkte, zusätzliche digitale Verwendung, Nachdrucke und Weitergabe an Händler oder Partner können unterschiedliche Vereinbarungen erfordern. Eine Bilddatei oder ihre technische Drucktauglichkeit sagt nichts über den Umfang der eingeräumten Nutzungsrechte aus. Im Beitrag [Nutzungsrechte für Fahrzeugfotos](/blog-nutzungsrechte-fahrzeugfotos.html) findest du Fragen, die dazu vor einer Beauftragung geklärt werden sollten.\n\nDie Portfoliofotos oben veranschaulichen Fahrzeugmotive. Sie sind keine Kundenreferenzen für einen bestimmten Printkatalog und belegen weder dessen Auflage noch Nutzung. Für ein eigenes Projekt gehören Bildfreigabe und Produktionsfreigabe in die vereinbarte Übergabe.",
       "_template": "textBlock"
     },
     {
@@ -98,7 +98,7 @@
     {
       "_template": "ctaBlock",
       "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
-      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Ein Shooting beginnt bei 250 € inkl. MwSt.",
       "buttonLabel": "Auto-Shooting anfragen"
     },
     {

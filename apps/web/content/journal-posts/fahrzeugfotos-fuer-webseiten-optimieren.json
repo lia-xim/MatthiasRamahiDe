@@ -66,8 +66,8 @@
       "_template": "textBlock",
       "style": "summary",
       "eyebrow": "Kurzantwort",
-      "headline": "Fahrzeugfotos Website optimieren: Die wichtigsten Punkte im Überblic",
-      "body": "Kernaussage: Das hängt von der maximalen Darstellungsbreite, dem Seitenlayout und der Pixeldichte des Displays ab\nDas Bild muss zur Fläche passen: Ein Autofoto kann auf einem großen Monitor detailreich wirken und auf einem Smartphone trotzdem zu viel Daten übertragen\nLadepriorität und Platz im: Das größte sichtbare Bild am Anfang einer Seite kann für die wahrgenommene Ladezeit wichtig sein\nEine kurze Übergabe-Checkliste: Vor der Veröffentlichung kannst du die Ausgabe mit vier Fragen prüfen: Passt der Ausschnitt zur sichtbaren Bildfläche?"
+      "headline": "Jede Bildfläche bekommt eine passende Datei",
+      "body": "Kernaussage: Pixelmaße richten sich nach maximaler Darstellungsbreite, Layout und Pixeldichte, deshalb braucht eine Website mehrere Bildvarianten.\nFormat und Kompression: Zwei oder drei Qualitätsstufen in Darstellungsgröße vergleichen und an Speichen, Schrift und dunklem Lack prüfen.\nLadepriorität: Das voraussichtliche LCP-Bild nicht lazy laden und den Bildplatz mit Breite und Höhe reservieren.\nAbnahme: Im Browser kontrollieren, welche Datei tatsächlich geladen wird und ob Ausschnitt und Details stimmen."
     },
     {
       "_template": "textBlock",
@@ -109,7 +109,7 @@
     {
       "_template": "textBlock",
       "headline": "Responsive Varianten direkt auf der Seite abnehmen",
-      "body": "Prüfe nicht nur die Exportdateien, sondern auch die fertige Seite im Browser. Öffne denselben Bildplatz in der tatsächlichen mobilen und breiten Layoutansicht und notiere jeweils den sichtbaren Ausschnitt sowie die dargestellte Breite. Kontrolliere in den Browser-Entwicklertools, welche Datei wirklich angefordert wird und wie viele Bytes sie überträgt. Ein vorhandenes srcset oder picture im Quelltext beweist für sich allein noch nicht, dass der passende Bildausschnitt und die passende Größe ausgewählt werden.\n\nVergleiche die geladene Variante mit einer zweiten Exportstufe am selben Bildplatz: Sind Felgen, Schrift und Lackkanten in der sichtbaren Größe noch sauber? Ist bei der mobilen Ansicht kein wichtiges Fahrzeugteil abgeschnitten? Bleibt der Bildplatz beim Laden stabil? Wenn ein anderes Seitenverhältnis nötig ist, kläre zuerst, ob CMS oder Frontend dafür tatsächlich getrennte Crops ausgeben können. Dokumentiere die Auswahl je Platz in einer Übergabezeile: Einsatzfläche | Ausschnitt/Seitenverhältnis | gerenderte Breite | verfügbare Dateien | tatsächlich geladene Datei und Dateigröße | Alt-Text."
+      "body": "Prüfe neben den Exportdateien auch die fertige Seite im Browser. Öffne denselben Bildplatz in der tatsächlichen mobilen und breiten Layoutansicht und notiere jeweils den sichtbaren Ausschnitt sowie die dargestellte Breite. Kontrolliere in den Browser-Entwicklertools, welche Datei wirklich angefordert wird und wie viele Bytes sie überträgt. Ein vorhandenes srcset oder picture im Quelltext beweist für sich allein noch nicht, dass der passende Bildausschnitt und die passende Größe ausgewählt werden.\n\nVergleiche die geladene Variante mit einer zweiten Exportstufe am selben Bildplatz: Sind Felgen, Schrift und Lackkanten in der sichtbaren Größe noch sauber? Ist bei der mobilen Ansicht kein wichtiges Fahrzeugteil abgeschnitten? Bleibt der Bildplatz beim Laden stabil? Wenn ein anderes Seitenverhältnis nötig ist, kläre zuerst, ob CMS oder Frontend dafür tatsächlich getrennte Crops ausgeben können. Dokumentiere die Auswahl je Platz in einer Übergabezeile: Einsatzfläche | Ausschnitt/Seitenverhältnis | gerenderte Breite | verfügbare Dateien | tatsächlich geladene Datei und Dateigröße | Alt-Text."
     },
     {
       "_template": "textBlock",
@@ -170,7 +170,7 @@
     {
       "_template": "ctaBlock",
       "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
-      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Ein Shooting beginnt bei 250 € inkl. MwSt.",
       "buttonLabel": "Auto-Shooting anfragen"
     },
     {
@@ -191,7 +191,7 @@
         },
         {
           "question": "Macht eine kleinere Bilddatei eine Website automatisch schneller?",
-          "answer": "Sie reduziert zwar den übertragenen Bildumfang, aber auch Bildabmessungen, responsive Auswahl, Entdeckung, Ladepriorität und reservierter Layoutplatz beeinflussen die Darstellung. Prüfe deshalb die tatsächlich geladene Datei und den Bildplatz im Browser."
+          "answer": "Sie reduziert den übertragenen Bildumfang. Für die Darstellung zählen aber auch Bildabmessungen, responsive Auswahl, frühe Entdeckung, Ladepriorität und reservierter Layoutplatz. Prüfe deshalb die tatsächlich geladene Datei und den Bildplatz im Browser."
         }
       ]
     }

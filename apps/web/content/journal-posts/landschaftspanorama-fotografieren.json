@@ -19,8 +19,8 @@
       "_template": "textBlock",
       "style": "summary",
       "eyebrow": "Kurzantwort",
-      "headline": "Landschaftspanorama fotografieren: Die wichtigsten Punkte im Überbli",
-      "body": "Kernaussage: Die Bilder brauchen einen ausreichend großen gemeinsamen Bereich, damit die Software passende Strukturen findet\nWann mehrere Einzelbilder sinnvoll: Ein Panorama kann eine Landschaft zeigen, die sich mit einem einzelnen Bildwinkel nicht vollständig erfassen lässt\nMit gleichmäßiger Überlappung schwenken: Nimm die Bildreihe in einer klaren Richtung auf und halte die Kamera waagrecht und möglichst auf derselben Höhe\nAusgabeformat schon bei der: Wenn das Panorama später als Wandbild oder Fine-Art-Print gedacht ist, kläre vorab, wie breit das Motiv ausgegeben werden soll und ob ein Beschnitt akzeptabel"
+      "headline": "Panorama in der Landschaft: das Wichtigste vorab",
+      "body": "Wann: Ein Panorama lohnt sich, wenn eine Aussicht nicht in einen Bildwinkel passt oder ein großer Querformatdruck mehr Auflösung braucht.\nAufnahme: Zoom, Fokus, Belichtung und Weißabgleich bleiben über die ganze Reihe gleich.\nÜberlappung: Benachbarte Bilder brauchen genug gemeinsame Fläche. Adobe nennt für Photomerge rund 40 Prozent als Richtwert.\nAusgabe: Kläre schon bei der Aufnahme, in welchem Seitenverhältnis das Bild später gedruckt werden soll."
     },
     {
       "_template": "textBlock",
@@ -39,12 +39,12 @@
     },
     {
       "_template": "imageSequence",
-      "headline": "Eine weite Landschaft als Bildidee – kein Beleg für Stitching",
+      "headline": "Eine weite Aussicht als Bildidee",
       "items": [
         {
           "image": "/assets/landscape/202608-dresden-dsc8441.webp",
           "alt": "Steinerne Basteibrücke über Sandsteinfelsen, eingerahmt von bewaldeten Hängen unter dichtem Wolkenhimmel.",
-          "caption": "Weite Ansicht der Basteibrücke zwischen Sandsteinfelsen. Das Foto zeigt eine Landschaftsszene; aus der Website-Datei lässt sich nicht ableiten, ob sie aus einer Einzelaufnahme oder einer Bildreihe entstand.",
+          "caption": "Weite Ansicht der Basteibrücke zwischen den Sandsteinfelsen. Eine solche Aussicht lässt sich als Einzelaufnahme oder als überlappende Bildreihe umsetzen.",
           "cropIntent": "editorial"
         }
       ]
@@ -62,17 +62,17 @@
     {
       "_template": "textBlock",
       "headline": "Panorama zusammenfügen und Projektion prüfen",
-      "body": "Wähle die Aufnahmen in deiner Stitching-Software aus und öffne zuerst die Vorschau. In Lightroom Classic kannst du für ein Panorama unter anderem eine sphärische, perspektivische oder zylindrische Projektion vergleichen. Die perspektivische Projektion hält gerade Linien gerade, kann bei sehr breiten Bildern aber die Ränder stark dehnen. Die zylindrische Darstellung eignet sich für breite Ansichten; eine sphärische Projektion kann für sehr weite oder mehrreihige Panoramen passen. Beurteile das Ergebnis am konkreten Motiv, statt eine Projektion grundsätzlich als beste zu behandeln.\n\nKontrolliere danach die Übergänge bei vergrößerter Ansicht: Sind Felskanten, Baumstämme und Horizonte ohne Sprung verbunden? Gibt es doppelte Äste oder sichtbare Helligkeitsnähte? Prüfe auch die Ränder. Automatisches Beschneiden kann transparente Flächen entfernen, kostet aber Bildinhalt. Eine Randverformung füllt mehr Fläche, kann nahe Formen jedoch sichtbar strecken. Bewahre die Originaldateien der Reihe, damit du später eine andere Projektion oder einen engeren Ausschnitt ausprobieren kannst."
+      "body": "Wähle die Aufnahmen in deiner Stitching-Software aus und öffne zuerst die Vorschau. In Lightroom Classic kannst du für ein Panorama unter anderem eine sphärische, perspektivische oder zylindrische Projektion vergleichen. Die perspektivische Projektion hält gerade Linien gerade, kann bei sehr breiten Bildern aber die Ränder stark dehnen. Die zylindrische Darstellung eignet sich für breite Ansichten; eine sphärische Projektion kann für sehr weite oder mehrreihige Panoramen passen. Beurteile das Ergebnis am konkreten Motiv; keine Projektion ist grundsätzlich die beste.\n\nKontrolliere danach die Übergänge bei vergrößerter Ansicht: Sind Felskanten, Baumstämme und Horizonte ohne Sprung verbunden? Gibt es doppelte Äste oder sichtbare Helligkeitsnähte? Prüfe auch die Ränder. Automatisches Beschneiden kann transparente Flächen entfernen, kostet aber Bildinhalt. Eine Randverformung füllt mehr Fläche, kann nahe Formen jedoch sichtbar strecken. Bewahre die Originaldateien der Reihe, damit du später eine andere Projektion oder einen engeren Ausschnitt ausprobieren kannst."
     },
     {
       "_template": "textBlock",
       "headline": "Ausgabeformat schon bei der Aufnahme bedenken",
-      "body": "Wenn das Panorama später als Wandbild oder Fine-Art-Print gedacht ist, kläre vorab, wie breit das Motiv ausgegeben werden soll und ob ein Beschnitt akzeptabel ist. Ein Panorama kann ein ungewöhnlich langes Seitenverhältnis haben; Rahmen, Passepartout und verfügbare Wandfläche setzen oft andere Grenzen. Nimm deshalb nicht nur möglichst viele Einzelbilder auf, sondern prüfe, ob die spätere Form die Bildidee unterstützt.\n\nFür Auswahl, Format und Wirkung an der Wand hilft der Beitrag zum [Landschaftsbild als Fine-Art-Print](/blog-landschaftsbild-fine-art-print-auswaehlen.html). Hinweise zu Farbe und Tonwerten in der Nachbearbeitung findest du bei [Landschaftsfotos bearbeiten](/blog-landschaftsfotos-bearbeiten.html). Wenn du dagegen zuerst einen Standort und seine Bildwirkung beurteilen möchtest, zeigt der [Landschaftsserien für Fine-Art-Prints](/landschaftsfotografie.html), wie sich eine konkrete Aussicht unterschiedlich ins Bild setzen lässt."
+      "body": "Wenn das Panorama später als Wandbild oder Fine-Art-Print gedacht ist, kläre vorab, wie breit das Motiv ausgegeben werden soll und ob ein Beschnitt akzeptabel ist. Ein Panorama kann ein ungewöhnlich langes Seitenverhältnis haben; Rahmen, Passepartout und verfügbare Wandfläche setzen oft andere Grenzen. Nimm deshalb nicht nur möglichst viele Einzelbilder auf, sondern prüfe, ob die spätere Form die Bildidee unterstützt.\n\nFür Auswahl, Format und Wirkung an der Wand hilft der Beitrag zum [Landschaftsbild als Fine-Art-Print](/blog-landschaftsbild-fine-art-print-auswaehlen.html). Hinweise zu Farbe und Tonwerten in der Nachbearbeitung findest du bei [Landschaftsfotos bearbeiten](/blog-landschaftsfotos-bearbeiten.html). Beispiele dafür, wie sich eine Aussicht unterschiedlich ins Bild setzen lässt, findest du unter [Landschaftsserien für Fine-Art-Prints](/landschaftsfotografie.html)."
     },
     {
       "_template": "ctaBlock",
       "headline": "Landschaftsmotive als Fine-Art-Print anfragen",
-      "text": "Ausgewählte Landschaftsaufnahmen erscheinen als hochwertige Fine-Art-Prints auf Archivpapier. Schreib mir Motivwunsch und gewünschtes Wandformat.",
+      "text": "Die Landschaftsmotive aus dem Portfolio gibt es als Fine-Art-Print in allen Formaten, auch auf Acrylglas. Schreib mir Motivwunsch und gewünschtes Wandformat. Drucke werden separat abgerechnet.",
       "buttonLabel": "Fine-Art-Print anfragen"
     },
     {
@@ -123,7 +123,7 @@
         {
           "label": "Landschaftsfotografie & Fine-Art-Prints",
           "href": "/landschaftsfotografie.html",
-          "description": "Kuratierte Landschaftsmotive als Wandbilder und Sammler-Editionen."
+          "description": "Landschaftsmotive aus dem Portfolio, erhältlich als Druck und Wandbild."
         }
       ]
     }

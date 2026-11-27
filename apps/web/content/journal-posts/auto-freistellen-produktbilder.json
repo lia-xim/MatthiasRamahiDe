@@ -16,15 +16,15 @@
   "blocks": [
     {
       "headline": "",
-      "body": "Beim Auto freistellen für Produktbilder ist die Maske nur der Anfang. Schwierige Stellen sind die, an denen Lack, Glas und Umgebung ineinandergreifen: Scheiben spiegeln ihre Umgebung, Speichen lassen Hintergrund durch und unter dem Fahrzeug sitzt ein Schatten, der an den ursprünglichen Boden gebunden ist. Entscheide deshalb zuerst, wofür die freigestellte Datei gedacht ist. Für eine Produktreihe oder einen Konfigurator kann ein einheitlicher Hintergrund sinnvoll sein. Ein Verkaufs- oder Zustandsfoto braucht oft den realen Kontext. Ein automatischer Entferner kann eine erste Auswahl liefern; prüfe das Ergebnis anschließend an den konkreten Fahrzeugdetails.",
+      "body": "Wenn du ein Auto für Produktbilder freistellst, ist die Maske nur der Anfang. Schwierige Stellen sind die, an denen Lack, Glas und Umgebung ineinandergreifen: Scheiben spiegeln ihre Umgebung, Speichen lassen Hintergrund durch und unter dem Fahrzeug sitzt ein Schatten, der an den ursprünglichen Boden gebunden ist. Entscheide deshalb zuerst, wofür die freigestellte Datei gedacht ist. Für eine Produktreihe oder einen Konfigurator kann ein einheitlicher Hintergrund sinnvoll sein. Ein Verkaufs- oder Zustandsfoto braucht oft den realen Kontext. Ein automatischer Entferner kann eine erste Auswahl liefern; prüfe das Ergebnis anschließend an den konkreten Fahrzeugdetails.",
       "_template": "textBlock"
     },
     {
       "_template": "textBlock",
       "style": "summary",
       "eyebrow": "Kurzantwort",
-      "headline": "Auto freistellen: Die wichtigsten Punkte im Überblick",
-      "body": "Kernaussage: Automatische Auswahlwerkzeuge können eine erste Maske erstellen\nFreistellen beginnt mit dem: Beim Freistellen wird die sichtbare Umgebung einer Aufnahme maskiert, damit das Fahrzeug transparent gespeichert oder auf einen anderen Hintergrund gesetzt\nSchatten und Spiegelung am: Ein Fahrzeug braucht nicht immer einen sichtbaren Schatten, aber ohne jeden Bodenkontakt wirkt es schnell schwebend\nExport und Abnahme für: Vor der Übergabe solltest du nicht nur eine einzelne Maske, sondern die ganze Serie vergleichen"
+      "headline": "Kurz gesagt: Maske, Glas, Schatten, Serie",
+      "body": "Kernaussage: Ein automatisches Werkzeug liefert eine erste Maske, die du an Scheiben, Rädern, Spiegeln und Säumen von Hand prüfst.\nZweck: Für Produktreihen passt ein einheitlicher Hintergrund, Verkaufs- und Zustandsfotos brauchen oft den echten Ort.\nSchatten: Ohne Bodenkontakt wirkt ein Fahrzeug schnell schwebend, ein neuer Schatten muss aber zur Lichtrichtung passen.\nAbnahme: Vor dem Export vergleichst du die ganze Serie auf Größe, Rand, Details und Transparenz."
     },
     {
       "headline": "Das sind Originalaufnahmen, keine Freisteller",
@@ -32,7 +32,7 @@
       "items": [
         {
           "image": "/assets/portfolio/automobil-bmw-widebody.webp",
-          "caption": "Dunkler BMW vor einem hellen Innenraum. Die Website-Aufnahme bleibt unverändert und zeigt ein Fahrzeug mit anspruchsvollen Kanten, Glasflächen und Reflexen, nicht das Ergebnis einer Freistellung.",
+          "caption": "Dunkler BMW vor einer hellen Hallenwand, als Originalaufnahme ohne Freistellung. Kanten, Glasflächen und die Reflexe auf dem glänzenden Boden wären bei einer Maske die schwierigen Stellen.",
           "alt": "Dunkler BMW mit breitem Bodykit in tiefer Frontansicht vor einer hellen Hallenwand.",
           "cropIntent": "editorial"
         },
@@ -72,13 +72,13 @@
     },
     {
       "headline": "Export und Abnahme für eine Fahrzeugserie",
-      "body": "Vor der Übergabe solltest du nicht nur eine einzelne Maske, sondern die ganze Serie vergleichen. Stehen die Fahrzeuge in gleicher Größe und Höhe? Ist der Abstand zum Rand ähnlich? Bleiben Lackfarbe, Ausstattungsdetails, Räder und vorhandene Schäden so erhalten, wie sie in der Originaldatei zu sehen sind? Sind Schatten und Scheiben bei allen Aufnahmen nach derselben Regel behandelt?\n\nFür Transparenz nennt Adobe PNG als mögliches Webformat; der konkrete Empfänger kann trotzdem eigene Vorgaben zu Format, Farbraum, Pixelmaßen oder Dateigröße haben. Prüfe daher zuerst das Zielsystem und exportiere danach. Ein JPEG enthält keinen transparenten Hintergrund. Falls ein einfarbiger Hintergrund gewünscht ist, kann das Fahrzeug direkt auf diesem Hintergrund ausgegeben werden, sofern die Vereinbarung das vorsieht.\n\nNutze diese Abnahme vor dem Export: (1) Die komplette Fahrzeugkontur ist vorhanden, ohne helle oder dunkle Säume. (2) Speichen, Gitter und Zwischenräume sind nur dort transparent, wo die Originalaufnahme tatsächlich Durchblick zeigt. (3) Glas, Innenraum, Lackfarbe und sichtbare Fahrzeugmerkmale entsprechen weiterhin dem Original. (4) Der Schatten passt zum Zielboden oder ist bewusst entfernt. (5) Die Datei öffnet mit korrekter Transparenz und einheitlicher Größe im Zielsystem. Bei einem dieser Fehler die Maske korrigieren oder das Foto als Originalaufnahme ausgeben, statt einen sichtbaren Montagefehler zu liefern.\n\nBewahre die unbearbeitete Originalaufnahme und die editierbare Maskenfassung getrennt auf. Vergib Dateinamen, die Modell, Variante und Ansicht unterscheiden, statt eine Reihe aus „final“, „final2“ und „final-neu“ anzulegen. So lassen sich Änderungen später nachvollziehen und falsche Varianten im Webauftritt vermeiden.",
+      "body": "Vor der Übergabe vergleichst du die ganze Serie, nicht bloß eine einzelne Maske. Stehen die Fahrzeuge in gleicher Größe und Höhe? Ist der Abstand zum Rand ähnlich? Bleiben Lackfarbe, Ausstattungsdetails, Räder und vorhandene Schäden so erhalten, wie sie in der Originaldatei zu sehen sind? Sind Schatten und Scheiben bei allen Aufnahmen nach derselben Regel behandelt?\n\nFür Transparenz nennt Adobe PNG als mögliches Webformat; der konkrete Empfänger kann trotzdem eigene Vorgaben zu Format, Farbraum, Pixelmaßen oder Dateigröße haben. Prüfe daher zuerst das Zielsystem und exportiere danach. Ein JPEG enthält keinen transparenten Hintergrund. Falls ein einfarbiger Hintergrund gewünscht ist, kann das Fahrzeug direkt auf diesem Hintergrund ausgegeben werden, sofern die Vereinbarung das vorsieht.\n\nNutze diese Abnahme vor dem Export: (1) Die komplette Fahrzeugkontur ist vorhanden, ohne helle oder dunkle Säume. (2) Speichen, Gitter und Zwischenräume sind nur dort transparent, wo die Originalaufnahme tatsächlich Durchblick zeigt. (3) Glas, Innenraum, Lackfarbe und sichtbare Fahrzeugmerkmale entsprechen weiterhin dem Original. (4) Der Schatten passt zum Zielboden oder ist bewusst entfernt. (5) Die Datei öffnet mit korrekter Transparenz und einheitlicher Größe im Zielsystem. Fällt einer dieser Punkte durch, korrigierst du die Maske oder gibst das Foto als Originalaufnahme aus. Ein sichtbarer Montagefehler gehört nicht in die Lieferung.\n\nBewahre die unbearbeitete Originalaufnahme und die editierbare Maskenfassung getrennt auf. Vergib Dateinamen, die Modell, Variante und Ansicht unterscheiden. Eine Reihe aus „final“, „final2“ und „final-neu“ hilft später niemandem. So lassen sich Änderungen später nachvollziehen und falsche Varianten im Webauftritt vermeiden.",
       "_template": "textBlock"
     },
     {
       "_template": "ctaBlock",
       "headline": "Auto-Fotoshooting in Düsseldorf & NRW anfragen",
-      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Individuelle Shootings starten ab 250 € inkl. MwSt.",
+      "text": "Du planst gezielte Fahrzeugbilder für Marke, Autohaus oder dein eigenes Auto? Ein Shooting beginnt bei 250 € inkl. MwSt.",
       "buttonLabel": "Auto-Shooting anfragen"
     },
     {

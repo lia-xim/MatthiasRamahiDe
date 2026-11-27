@@ -92,9 +92,13 @@ This is the *core* set — read `01-tokens-and-typography.md` for the full syste
   --paper-ink: oklch(16% 0.012 255); /* near-black ink on paper */
   --steel:   oklch(64% 0.05 230);    /* atmospheric blue, used sparingly in glows */
 
-  --font-display: 'Neue Haas Grotesk Display','Söhne','Avenir Next','Helvetica Neue',Arial,system-ui,sans-serif;
-  --font-body:    'Neue Haas Grotesk Display','Söhne','Avenir Next','Helvetica Neue',Arial,system-ui,sans-serif;
-  --font-mono:    'JetBrains Mono','IBM Plex Mono','SFMono-Regular',ui-monospace,Menlo,monospace;
+  /* Self-hosted webfonts (assets/site-base.css, files in apps/web/public/fonts/v1):
+     MR Sans = Inter (wght+opsz), MR Mono = JetBrains Mono, MR Serif = Source Serif 4.
+     Never reference system/commercial families (Neue Haas, Söhne, Avenir, Iowan …)
+     directly — they render differently on every OS. */
+  --font-display: 'MR Sans','MR Sans Fallback',Arial,system-ui,sans-serif;
+  --font-body:    'MR Sans','MR Sans Fallback',Arial,system-ui,sans-serif;
+  --font-mono:    'MR Mono','MR Mono Fallback',ui-monospace,Menlo,Consolas,monospace;
 
   --ease: cubic-bezier(0.23, 1, 0.32, 1);
 }

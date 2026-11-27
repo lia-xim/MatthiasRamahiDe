@@ -141,7 +141,7 @@ export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
       body: [
         'In meiner Arbeit an Websites, Content-Strukturen und Sichtbarkeit sehe ich immer wieder dasselbe Problem: Keyword-Recherche wird gemacht, aber nicht sauber weitergeführt. Es gibt Exporte, einzelne Ideen, ein paar Favoriten und vielleicht ein Content-Plan. Was oft fehlt, ist ein belastbarer Ort, an dem Suchintention, Wettbewerbsumfeld, SERP-Beobachtungen und Themenchancen zusammenkommen.',
         'Eine strukturierte Keyword-Datenbank löst nicht automatisch das Ranking-Problem. Sie schafft aber die Grundlage, um bessere Entscheidungen zu treffen: Welche Themen sind wirklich relevant? Wo ist der Wettbewerb stark? Welche Suchanfragen gehören zusammen? Welche Seite braucht eine neue Struktur, welche nur bessere interne Verlinkung, und wo lohnt sich neuer Content?',
-        'Genau dafür ist die Crawl Foundry Keyword-Datenbank interessant: nicht als laute Produktbehauptung, sondern als ruhige Arbeitsumgebung für SEO-Verantwortliche, Selbstständige, kleine Unternehmen, Agenturen und Content-Teams, die ihre Recherche nachvollziehbarer und nutzbarer machen wollen.',
+        'Genau dafür ist die Crawl Foundry Keyword-Datenbank interessant: ein konzentriertes Arbeitswerkzeug für SEO-Verantwortliche, Selbstständige, kleine Unternehmen, Agenturen und Content-Teams, die ihre Recherche nachvollziehbarer und nutzbarer machen wollen.',
       ],
     },
     links: {
@@ -214,7 +214,7 @@ export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
       crumb: 'Großformatdruck',
       eyebrow: 'Large Format · Düsseldorf',
       h1: 'Großformat<br><em>druck.</em>',
-      lead: 'Hochauflösender Druck im Großformat — für Wandbilder, Showrooms, Schaufenster und Messen. Vom Korrekturlauf am Soft-Proof bis zur Montage vor Ort.',
+      lead: 'Hochauflösender Druck im Großformat: für Wandbilder, Showrooms, Schaufenster und Messen. Vom Korrekturlauf am Soft-Proof bis zur Montage vor Ort.',
       primary: 'Großformat anfragen →',
       secondary: 'Leistungen ansehen',
       side: ['Düsseldorf · NRW', 'Großformatdruck', '≤ 24 h Antwort'],
@@ -227,25 +227,25 @@ export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
         {
           kicker: 'Wand',
           title: 'Wandbilder XL',
-          body: 'Hochformatige oder querformatige Bilder ab 100 × 70 cm bis 400 × 250 cm — auf Acryl, Alu, Leinwand oder direkt geklebt.',
+          body: 'Hochformatige oder querformatige Bilder ab 100 × 70 cm bis 400 × 250 cm: auf Acryl, Alu, Leinwand oder direkt geklebt.',
           items: ['Acryl bis 250 × 150 cm', 'Alu-Dibond bis 300 × 150 cm', 'Direktklebung auf gestrichene Wand'],
         },
         {
           kicker: 'Marke',
           title: 'Showroom &amp; Empfang',
-          body: 'Markenwände für Empfangsbereiche, Autohäuser, Boutiquen und Marken — abgestimmt auf Corporate Look und Lichtsituation.',
+          body: 'Markenwände für Empfangsbereiche, Autohäuser, Boutiquen und Marken: abgestimmt auf Corporate Look und Lichtsituation.',
           items: ['Beleuchtungs-Check vor Druck', 'Material auf CI-Farben abgestimmt', 'Montage mit Schiene oder Distanzhalter'],
         },
         {
           kicker: 'Event',
           title: 'Messebanner &amp; Roll-Ups',
-          body: 'Vom mobilen Roll-Up bis zur 6 m Messewand — leichte Stoffsysteme, Backlit-Folien, Hardcase-Lieferung.',
+          body: 'Vom mobilen Roll-Up bis zur 6 m Messewand: leichte Stoffsysteme, Backlit-Folien, Hardcase-Lieferung.',
           items: ['Stoff- oder PVC-Banner', 'Roll-Up 85 × 200 cm und 120 × 200 cm', 'Backlit für hinterleuchtete Rahmen'],
         },
         {
           kicker: 'Schaufenster',
           title: 'Folien &amp; Fenster',
-          body: 'Schaufensterfolien, Sichtschutzfolien, milchige Klebefolie und farbige Akzentfolien — mit Verlegung auf Wunsch.',
+          body: 'Schaufensterfolien, Sichtschutzfolien, milchige Klebefolie und farbige Akzentfolien, mit Verlegung auf Wunsch.',
           items: ['Frosted-Folien und Sandstrahleffekt', 'Vollflächige Bildmotive', 'Branding-Folien auf Glas und Türen'],
         },
       ],
@@ -254,11 +254,11 @@ export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
       aria: 'Skala',
       eyebrow: 'Skala',
       title: 'Wenn Größe <em>Bestandteil ist.</em>',
-      lead: 'Ein gutes Bild bleibt im Großformat ruhig — schlechtes Bildmaterial wird laut. Deshalb sind Auswahl, Aufbereitung und Material gleichwertig zur Größe selbst.',
+      lead: 'Ein gutes Bild bleibt im Großformat ruhig: schlechtes Bildmaterial wird laut. Deshalb sind Auswahl, Aufbereitung und Material gleichwertig zur Größe selbst.',
       items: [
-        { tag: 'Auflösung', line: 'Mindestens 150 dpi auf der finalen Größe — bei Betrachtungsabstand zur Wand reichen oft 120 dpi.' },
+        { tag: 'Auflösung', line: 'Mindestens 150 dpi auf der finalen Größe: bei Betrachtungsabstand zur Wand reichen oft 120 dpi.' },
         { tag: 'Material', line: 'Acryl wirkt mit Licht, Alu ruhig, Stoff weich. Die Wahl folgt dem Raum.' },
-        { tag: 'Montage', line: 'Schienen, Distanzhalter, Klett oder Direktklebung — abgestimmt auf Wand und Wechselbedarf.' },
+        { tag: 'Montage', line: 'Schienen, Distanzhalter, Klett oder Direktklebung: abgestimmt auf Wand und Wechselbedarf.' },
         { tag: 'Lieferung', line: 'Eigenlieferung im Rheinland, Spedition deutschlandweit, Aufbau auf Wunsch.' },
       ],
     },
@@ -266,7 +266,7 @@ export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
     contact: {
       subject: 'Großformat-Anfrage — Matthias Ramahi',
       headline: 'Großformat anfragen.',
-      lead: 'Beschreibe kurz Wand oder Anlass, ungefähre Größe und Material. Wenn nur die Wand bekannt ist, reicht ein Foto und die Maße — daraus lassen sich Format und Material vorschlagen.',
+      lead: 'Beschreibe kurz Wand oder Anlass, ungefähre Größe und Material. Wenn nur die Wand bekannt ist, reicht ein Foto und die Maße: daraus lassen sich Format und Material vorschlagen.',
     },
   },
   'werbetechnik-duesseldorf.html': {
@@ -279,7 +279,7 @@ export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
       crumb: 'Werbetechnik',
       eyebrow: 'Signage · Düsseldorf',
       h1: 'Werbe<br><em>technik.</em>',
-      lead: 'Schilder, Folien, Fahrzeuge, Schaufenster, Lichtwerbung — physische Markenpräsenz im Stadtraum. In Düsseldorf umgesetzt mit erfahrenen Partnerwerkstätten.',
+      lead: 'Schilder, Folien, Fahrzeuge, Schaufenster, Lichtwerbung: physische Markenpräsenz im Stadtraum. In Düsseldorf umgesetzt mit erfahrenen Partnerwerkstätten.',
       primary: 'Werbetechnik anfragen →',
       secondary: 'Leistungen ansehen',
       side: ['Düsseldorf · NRW', 'Werbetechnik', '≤ 24 h Antwort'],
@@ -287,30 +287,30 @@ export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
     overview: {
       eyebrow: 'Leistungen im Überblick',
       title: 'Anwendungs <em>bereiche.</em>',
-      lead: 'Werbetechnik ist Handwerk vor Ort. Wir denken Motiv, Material und Montage zusammen — egal ob Schaufenster, Fahrzeug oder Hausfassade.',
+      lead: 'Werbetechnik ist Handwerk vor Ort. Wir denken Motiv, Material und Montage zusammen, egal ob Schaufenster, Fahrzeug oder Hausfassade.',
       cards: [
         {
           kicker: 'Fahrzeug',
           title: 'Fahrzeugbeschriftung',
-          body: 'Logo, Kontakt, Vollverklebung — auf PKW, Transporter, LKW oder Anhänger. Mit Vorab-Visualisierung am Fahrzeugfoto.',
+          body: 'Logo, Kontakt, Vollverklebung: auf PKW, Transporter, LKW oder Anhänger. Mit Vorab-Visualisierung am Fahrzeugfoto.',
           items: ['Teilbeklebung mit Hochleistungsfolie', 'Vollfolierung in Farbe oder Carbon', 'Montage im rheinländischen Raum'],
         },
         {
           kicker: 'Schaufenster',
           title: 'Schaufenster &amp; Glas',
-          body: 'Werbung an Ladenflächen — von der dezenten Logofolie bis zur vollflächigen Bildmotivfolie. Demontagefreundlich und sauber.',
+          body: 'Werbung an Ladenflächen: von der dezenten Logofolie bis zur vollflächigen Bildmotivfolie. Demontagefreundlich und sauber.',
           items: ['Frosted für Sichtschutz', 'Bedruckte Folien mit Bildmotiv', 'Türaufkleber und Hinweistexte'],
         },
         {
           kicker: 'Fassade',
           title: 'Schilder &amp; Beschilderung',
-          body: 'Außenschilder, Hinweisschilder, Türschilder und Leitsysteme — aus Alu-Dibond, Acryl, Metall oder beleuchtet.',
+          body: 'Außenschilder, Hinweisschilder, Türschilder und Leitsysteme: aus Alu-Dibond, Acryl, Metall oder beleuchtet.',
           items: ['Außenmontage mit Statik-Check', 'Acrylplatten mit Standoffs', 'Leitsysteme für Praxen und Marken'],
         },
         {
           kicker: 'Licht',
           title: 'LED-Lichtwerbung',
-          body: 'Hinterleuchtete Logos, Profilbuchstaben und Lightboxes — energieeffizient mit LED und langer Lebensdauer.',
+          body: 'Hinterleuchtete Logos, Profilbuchstaben und Lightboxes: energieeffizient mit LED und langer Lebensdauer.',
           items: ['Profilbuchstaben aus Acryl mit LED', 'Backlit-Boxes für Schaufenster', 'Außenfertige Lichtkästen IP65'],
         },
       ],
@@ -322,7 +322,7 @@ export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
       lead: 'Ein Aufkleber wirkt nur, wenn er sitzt. Wir liefern Werbetechnik mit Vorlauf: Visualisierung am Foto, Materialcheck, Montagetermin und Endabnahme.',
       items: [
         { tag: 'Vorlauf', line: 'Visualisierung auf Foto von Fahrzeug, Fläche oder Schaufenster.' },
-        { tag: 'Material', line: 'Hochleistungsfolien für Außenmontage — UV-stabil, salzwasserfest, demontagefreundlich.' },
+        { tag: 'Material', line: 'Hochleistungsfolien für Außenmontage: UV-stabil, salzwasserfest, demontagefreundlich.' },
         { tag: 'Montage', line: 'Vor-Ort-Montage im Rheinland, Werkstattfolierung für Fahrzeuge.' },
         { tag: 'Wartung', line: 'Nachbestellungen, Reparaturen und Wartung mit gleicher Folie und Druck.' },
       ],
@@ -338,13 +338,13 @@ export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
     file: 'webdesign-seo-duesseldorf.html',
     hero: {
       image: asset('assets/optimized/assets-photos-automobil-sunset-1920.webp'),
-      alt: 'Cineastische dunkle Aufnahme — Webdesign & SEO Düsseldorf',
+      alt: 'Cineastische dunkle Aufnahme: Webdesign & SEO Düsseldorf',
       width: 1920,
       height: 1280,
       crumb: 'Webdesign &amp; SEO',
       eyebrow: 'Web · Düsseldorf',
       h1: 'Webdesign<br><em>&amp; SEO.</em>',
-      lead: 'Moderne Websites mit klarer Struktur, schneller Performance und lokaler Suchmaschinensichtbarkeit — für Marken und Mittelstand im Rheinland.',
+      lead: 'Moderne Websites mit klarer Struktur, schneller Performance und lokaler Suchmaschinensichtbarkeit: für Marken und Mittelstand im Rheinland.',
       primary: 'Website anfragen →',
       secondary: 'Leistungen ansehen',
       side: ['Düsseldorf · NRW', 'Webdesign &amp; SEO', '≤ 24 h Antwort'],
@@ -357,7 +357,7 @@ export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
         {
           kicker: 'Site',
           title: 'Neue Websites',
-          body: 'Editorial geführte, moderne Websites — handgebaut, ohne Page-Builder-Aufblähung. Schnell, schlank, semantisch sauber.',
+          body: 'Editorial geführte, moderne Websites: handgebaut, ohne Page-Builder-Aufblähung. Schnell, schlank, semantisch sauber.',
           items: ['HTML/CSS/JS hand-getuned', 'Performance-Budget &lt; 200 KB Initial', 'Strukturierte Daten und OG-Tags'],
         },
         {
@@ -368,9 +368,9 @@ export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
         },
         {
           kicker: 'Content',
-          title: 'Inhalte &amp; Bildsprache',
+          title: 'Inhalte &amp; Fotografie',
           body: 'Aus Fotografie und Text wird ein konsistenter Auftritt. Bildauswahl, Tonalität und Struktur kommen aus einer Hand.',
-          items: ['Eigene Fotos statt Stock', 'Editorial-Texte mit Haltung', 'Konsistente Mikrocopy'],
+          items: ['Eigene Fotos statt Stock', 'Prägnante, faktenstarke Texte', 'Klare Navigation und Mikrocopy'],
         },
         {
           kicker: 'Tech',
@@ -383,12 +383,12 @@ export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
     feature: {
       aria: 'System',
       eyebrow: 'System',
-      title: 'Nicht eine Seite — <em>ein System.</em>',
+      title: 'Nicht eine Seite, <em>ein System.</em>',
       lead: 'Eine Website ist kein Layout, sondern ein System aus Inhalten, Struktur und Verbindungen. Wenn das System stimmt, wachsen einzelne Seiten organisch dazu.',
       items: [
         { tag: 'Struktur', line: 'Sitemap, URL-Schema und interne Verlinkung vor dem ersten Pixel.' },
         { tag: 'Design', line: 'Editorial geführt, mit echtem Bildmaterial und ruhiger Typo.' },
-        { tag: 'Tech', line: 'Astro, Next.js oder reines HTML — je nach Bedarf, nicht nach Trend.' },
+        { tag: 'Tech', line: 'Astro, Next.js oder reines HTML, je nach Bedarf, nicht nach Trend.' },
         { tag: 'SEO', line: 'On-Page, Local, Schema, OG-Tags und Sitemap im Standard inbegriffen.' },
       ],
     },
@@ -409,7 +409,7 @@ export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
       crumb: 'Videografie',
       eyebrow: 'Motion · Düsseldorf',
       h1: 'Video<br><em>grafie.</em>',
-      lead: 'Bewegtbild aus Düsseldorf — Imagefilm, Musikvideo, Eventfilm und redaktionelles Bewegtbild. Aus einer Familie, aus einer Bildsprache: Foto und Video aus einem Guss.',
+      lead: 'Bewegtbild aus Düsseldorf: Imagefilm, Musikvideo, Eventfilm und redaktionelles Bewegtbild. Foto und Video direkt aus einer Hand: abgestimmte Sets ohne Doppelarbeit.',
       primary: 'Video anfragen →',
       secondary: 'Leistungen ansehen',
       side: ['Düsseldorf · NRW', 'Videografie', '≤ 24 h Antwort'],
@@ -417,30 +417,30 @@ export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
     overview: {
       eyebrow: 'Leistungen im Überblick',
       title: 'Bewegtbild <em>leistungen.</em>',
-      lead: 'Bewegtbild verlangt eine andere Planung als Stand — aber dieselbe Bildsprache. Wir koordinieren beides parallel auf Set, damit nichts zweimal gefilmt werden muss.',
+      lead: 'Bewegtbild verlangt eine eigene Dramaturgie: bleibt optisch aber eng am Standfoto. Wir koordinieren beides parallel auf Set, damit nichts zweimal gefilmt werden muss.',
       cards: [
         {
           kicker: 'Marke',
           title: 'Imagefilm',
-          body: 'Kurze, ruhige Imagefilme für Marken, Praxen und Handwerk — mit echtem Bildmaterial statt Stock.',
-          items: ['60–120 Sekunden Schnittfassung', 'Voice-Over oder reine Bildsprache', 'Vertikal- und Horizontalvariante'],
+          body: 'Kurze, ruhige Imagefilme für Marken, Praxen und Handwerk, mit echtem Bildmaterial statt Stock.',
+          items: ['60–120 Sekunden Schnittfassung', 'Voice-Over oder rein visuelle Erzählung', 'Vertikal- und Horizontalvariante'],
         },
         {
           kicker: 'Musik',
           title: 'Musikvideo',
-          body: 'Musikvideos für Soloartists, Bands und Klassiker — produziert von Sophia Ramahi in Düsseldorf.',
+          body: 'Musikvideos für Soloartists, Bands und Klassiker: produziert von Sophia Ramahi in Düsseldorf.',
           items: ['Konzeption mit Künstler:innen', 'Mehrtägige Drehs möglich', 'Color Grading editorial'],
         },
         {
           kicker: 'Event',
           title: 'Eventfilm',
-          body: 'Hochzeit, Konzert, Konferenz, Galaabend — diskrete Multi-Kamera-Aufzeichnung und cineastischer Schnitt.',
+          body: 'Hochzeit, Konzert, Konferenz, Galaabend: diskrete Multi-Kamera-Aufzeichnung und cineastischer Schnitt.',
           items: ['Multi-Kamera mit getrenntem Audio', 'Highlightfilm und Lang-Dokument', 'Lieferung in 14 Tagen'],
         },
         {
           kicker: 'Redaktion',
           title: 'Redaktionelles Bewegtbild',
-          body: 'Reportagen, Interviews, Behind-the-Scenes — für Pressekits, Social und Magazine.',
+          body: 'Reportagen, Interviews, Behind-the-Scenes: für Pressekits, Social und Magazine.',
           items: ['Interview-Setup mit Backdrop', 'Untertitel und Kapitelmarken', 'Vertikal-Version für Social'],
         },
       ],
@@ -448,10 +448,10 @@ export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
     feature: {
       aria: 'Foto + Video',
       eyebrow: 'Foto + Video',
-      title: 'Bewegung und <em>Bild — gleichzeitig.</em>',
+      title: 'Bewegung und <em>Bild gleichzeitig.</em>',
       lead: 'Wenn Foto und Video aus einer Hand kommen, gibt es weniger Termine, weniger Doppelarbeit und ein einheitliches Ergebnis. Sophia und ich planen Sets gemeinsam.',
       items: [
-        { tag: 'Planung', line: 'Ein Briefing für Foto und Video — abgestimmte Bildsprache und Shotlist.' },
+        { tag: 'Planung', line: 'Ein Briefing für Foto und Video: abgestimmtes Licht und gemeinsame Shotlist.' },
         { tag: 'Crew', line: 'Sophia Ramahi (Video), Matthias Ramahi (Foto), Tonpartner aus NRW.' },
         { tag: 'Lieferung', line: 'Foto-Galerie + Schnittfassung Video parallel, 1–3 Wochen.' },
         { tag: 'Netzwerk', line: 'Imagefilm, Musikvideo, Eventfilm und redaktionelles Bewegtbild aus einem eingespielten Netzwerk.' },
@@ -460,7 +460,7 @@ export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
     links: {
       eyebrow: 'Weiterführende Wege',
       title: 'Foto, Video &amp; <em>Leistungen.</em>',
-      lead: 'Bewegtbild entsteht oft parallel zu einer Fotoproduktion – hier findest du passende Bereiche und Hintergründe.',
+      lead: 'Bewegtbild entsteht oft parallel zu einer Fotoproduktion: hier findest du passende Bereiche und Hintergründe.',
       items: [
         { label: 'Automobilfotografie Düsseldorf', href: '/automobil-fotografie-duesseldorf.html', body: 'Wenn Fahrzeugserie und Bewegtbild am selben Set geplant werden sollen.' },
         { label: 'Musikerfotografie NRW', href: '/musikerfotografie.html', body: 'Pressebilder, Cover und visuelle Begleitung rund um Musikvideo und Release.' },
@@ -472,7 +472,7 @@ export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
     contact: {
       subject: 'Video-Anfrage — Matthias Ramahi',
       headline: 'Video anfragen.',
-      lead: 'Schreibe kurz Anlass, Format und gewünschten Termin. Wenn paralleles Foto gewünscht ist, einfach erwähnen — dann planen wir es gemeinsam mit Sophia.',
+      lead: 'Schreibe kurz Anlass, Format und gewünschten Termin. Wenn paralleles Foto gewünscht ist, einfach erwähnen: dann planen wir es gemeinsam mit Sophia.',
     },
   },
   'viola-musik-duesseldorf.html': {
@@ -485,7 +485,7 @@ export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
       crumb: 'Viola Musik',
       eyebrow: 'Music · Düsseldorf',
       h1: 'Viola<br><em>Musik.</em>',
-      lead: 'Klassische Begleitung für Hochzeit, Empfang, Trauerfeier und private Anlässe — Viola, Geige und Klavier. Über das Partnernetzwerk aus Düsseldorf vermittelt.',
+      lead: 'Klassische Begleitung für Hochzeit, Empfang, Trauerfeier und private Anlässe: Viola, Geige und Klavier. Über das Partnernetzwerk aus Düsseldorf vermittelt.',
       primary: 'Musik anfragen →',
       secondary: 'Leistungen ansehen',
       side: ['Düsseldorf · NRW', 'Viola Musik', '≤ 24 h Antwort'],
@@ -498,19 +498,19 @@ export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
         {
           kicker: 'Hochzeit',
           title: 'Trauung &amp; Empfang',
-          body: 'Standesamt, kirchliche Trauung, freie Trauung und Sektempfang — mit klassischem Repertoire oder Pop-Arrangements.',
+          body: 'Standesamt, kirchliche Trauung, freie Trauung und Sektempfang, mit klassischem Repertoire oder Pop-Arrangements.',
           items: ['Solo Viola, Geige oder Duo', 'Repertoire abgestimmt vorab', 'Auf-/Abbau leise und unkompliziert'],
         },
         {
           kicker: 'Trauer',
           title: 'Trauerfeier',
-          body: 'Würdevolle musikalische Begleitung in Trauerhalle, Kirche oder am Grab — ruhig und einfühlsam.',
+          body: 'Würdevolle musikalische Begleitung in Trauerhalle, Kirche oder am Grab: ruhig und einfühlsam.',
           items: ['Ruhige Stückauswahl', 'Diskret im Hintergrund', 'Kurzfristig verfügbar'],
         },
         {
           kicker: 'Privat',
           title: 'Private Anlässe',
-          body: 'Geburtstag, Jubiläum, Firmenfeier, Galaempfang — klassische Musik als Atmosphäre, nicht als Hintergrundbeschallung.',
+          body: 'Geburtstag, Jubiläum, Firmenfeier, Galaempfang: klassische Musik als Atmosphäre, nicht als Hintergrundbeschallung.',
           items: ['Sets von 30–90 Minuten', 'Mehrere Künstler verfügbar', 'Beleuchtung und Aufstellung beachtet'],
         },
         {
@@ -525,12 +525,12 @@ export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
       aria: 'Vermittlung',
       eyebrow: 'Vermittlung',
       title: 'Musik aus dem <em>Netzwerk.</em>',
-      lead: 'Wir spielen nicht selbst — wir vermitteln Künstler:innen aus dem direkten Umfeld. Erfahren, zuverlässig, im Rheinland verwurzelt.',
+      lead: 'Wir spielen nicht selbst: wir vermitteln Künstler:innen aus dem direkten Umfeld. Erfahren, zuverlässig, im Rheinland verwurzelt.',
       items: [
         { tag: 'Repertoire', line: 'Klassik, Filmmusik, Pop-Arrangements und individuelle Stücke nach Absprache.' },
         { tag: 'Besetzung', line: 'Solo Viola/Geige, Duo mit Klavier, kleines Streicher-Ensemble.' },
         { tag: 'Anlass', line: 'Trauung, Trauerfeier, Empfang, Galadinner, Privatkonzert.' },
-        { tag: 'Region', line: 'Düsseldorf · Rheinland · NRW — auf Anfrage auch deutschlandweit.' },
+        { tag: 'Region', line: 'Düsseldorf · Rheinland · NRW: auf Anfrage auch deutschlandweit.' },
       ],
     },
     links: {
@@ -555,13 +555,13 @@ export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
     file: 'drucke-sonderanfertigungen-duesseldorf.html',
     hero: {
       image: asset('assets/services/fea8218e-7546-48ef-8581-2b99bb3cdefe_centered_reduced.webp'),
-      alt: 'Sonderanfertigung — Print als Objekt',
+      alt: 'Sonderanfertigung: Print als Objekt',
       width: 860,
       height: 603,
       crumb: 'Drucke &amp; Sonderanfertigungen',
       eyebrow: 'Object Lab · Düsseldorf',
       h1: 'Drucke &amp;<br><em>Sonderanfertigungen.</em>',
-      lead: 'Wenn ein Motiv nicht in ein Standardformat passt — Sonderformate, Materialtests, Interior-Lösungen und objektartige Präsentationen für Wand, Raum und Anlass.',
+      lead: 'Wenn ein Motiv nicht in ein Standardformat passt: Sonderformate, Materialtests, Interior-Lösungen und objektartige Präsentationen für Wand, Raum und Anlass.',
       primary: 'Sonderanfertigung anfragen →',
       secondary: 'Leistungen ansehen',
       side: ['Düsseldorf · NRW', 'Drucke &amp; Sonderanfertigungen', '≤ 24 h Antwort'],
@@ -569,12 +569,12 @@ export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
     overview: {
       eyebrow: 'Leistungen im Überblick',
       title: 'Object <em>leistungen.</em>',
-      lead: 'Diese Seite bündelt alles, was nicht in Standardformate passt: besondere Materialien, kleine Serien, persönliche Geschenke und objektartige Präsentationen.',
+      lead: 'Hier geht es um alles, was nicht in Standardformate passt: besondere Materialien, kleine Serien, persönliche Geschenke und objektartige Präsentationen.',
       cards: [
         {
           kicker: 'Objekt',
           title: 'Individuelle Fotodrucke',
-          body: 'Einzelmotive als hochwertiges Objekt geplant — Format, Material und Oberfläche passend zum Bild, nicht zur Lagerware.',
+          body: 'Einzelmotive als hochwertiges Objekt geplant: Format, Material und Oberfläche passend zum Bild, nicht zur Lagerware.',
           items: ['Portrait, Landschaft oder Fahrzeug', 'Rahmung und Präsentationsart', 'Materialberatung nach Einsatzort'],
         },
         {
@@ -603,10 +603,10 @@ export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
       title: 'Material verändert <em>das Bild.</em>',
       lead: 'Ein Auto auf Metallic-Papier wirkt anders als ein Portrait auf mattem FineArt. Eine Landschaft auf Acrylglas hat eine andere Tiefe als auf Leinwand. Material ist Teil der Bildwirkung.',
       items: [
-        { tag: 'Glanz', line: 'Für Tiefe, Farbe und Reflexion — Auto, Location, dunkle Motive.' },
-        { tag: 'Matt', line: 'Für ruhige, galerieartige Bildwirkung — Portrait, Landschaft.' },
-        { tag: 'Objekt', line: 'Für stabile, repräsentative Wandflächen — Acryl, Dibond.' },
-        { tag: 'Sonder', line: 'Für haptische Editionen und Geschenke — Bütten, Holz, Metallpapier.' },
+        { tag: 'Glanz', line: 'Für Tiefe, Farbe und Reflexion: Auto, Location, dunkle Motive.' },
+        { tag: 'Matt', line: 'Für ruhige, galerieartige Bildwirkung: Portrait, Landschaft.' },
+        { tag: 'Objekt', line: 'Für stabile, repräsentative Wandflächen: Acryl, Dibond.' },
+        { tag: 'Sonder', line: 'Für haptische Editionen und Geschenke: Bütten, Holz, Metallpapier.' },
       ],
     },
     links: {
@@ -638,7 +638,7 @@ export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
     contact: {
       subject: 'Sonderanfertigung — Matthias Ramahi',
       headline: 'Sonderanfertigung anfragen.',
-      lead: 'Schreib kurz Motiv, Format und Einsatzort. Wenn Größe, Material oder Menge noch offen sind, beschreibe einfach Raum, Anlass und gewünschte Wirkung — daraus lässt sich die passende Lösung ableiten.',
+      lead: 'Schreib kurz Motiv, Format und Einsatzort. Wenn Größe, Material oder Menge noch offen sind, beschreibe einfach Raum, Anlass und gewünschte Wirkung: daraus lässt sich die passende Lösung ableiten.',
     },
   },
 }
