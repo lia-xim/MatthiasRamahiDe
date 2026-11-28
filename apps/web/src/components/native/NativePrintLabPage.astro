@@ -43,7 +43,7 @@ const heroSlides = [
   {
     image: heroImage,
     titleLines: ['Fotolabor', 'Düsseldorf'],
-    lead: 'Fotodruck auf Fine-Art-Papier, Acrylglas, Alu-Dibond und Leinwand, deutschlandweit geliefert. Gedruckt wird bei einem Partnerlabor.',
+    lead: 'Fine-Art-Prints, Großformatdruck und Sonderanfertigungen auf Hahnemühle, Canson, Ilford, Acrylglas, Alu-Dibond und Leinwand, mit Soft-Proof abgestimmt und über ein Partnerlabor deutschlandweit geliefert.',
     primaryHref: '#anfrage',
     primaryLabel: 'Druck anfragen',
     secondaryHref: '#format',
@@ -54,34 +54,34 @@ const heroSlidesJson = JSON.stringify(heroSlides)
 
 const printFaq = [
   {
-    question: 'Welche Materialien stehen für den Fotodruck zur Auswahl?',
+    question: 'Welche Materialien stehen für Fine-Art-Druck und Sonderanfertigungen zur Auswahl?',
     answer:
-      'FineArt-Papiere von Hahnemühle, Canson und Ilford sowie Acrylglas, Alu-Dibond und Leinwand. Welches Material passt, hängt von Motiv, Raum, Licht und Betrachtungsabstand ab.',
+      'FineArt-Papiere von Hahnemühle, Canson und Ilford (matt, Baryt oder mit leichtem Glanz) sowie Acrylglas, Alu-Dibond, Leinwand und ausgewählte Spezialpapiere. Welches Material passt, hängt von Motiv, Raum, Licht und Betrachtungsabstand ab.',
   },
   {
-    question: 'Welche Formate sind möglich?',
+    question: 'Welche Formate und Großformate sind möglich?',
     answer:
-      'Die Standardstufen reichen von 10 × 15 cm bis 100 × 150 cm. Panoramen, Triptychen und Sonderformate sind auf Anfrage bis 300 × 150 cm möglich.',
+      'Die Standardstufen reichen von 10 × 15 cm bis 100 × 150 cm. Panoramen, Triptychen, Sonderformate und Großformatdrucke für Showroom, Praxis oder Empfang sind auf Anfrage bis 300 × 150 cm (auf Träger bzw. Wandbild bis 400 × 250 cm) umsetzbar.',
   },
   {
     question: 'Welche Auflösung braucht die Bilddatei?',
     answer:
-      'Ideal sind 240–300 dpi auf der finalen Druckgröße; bei Wandformaten über 70 × 100 cm reichen meist 180 dpi, weil das Bild aus größerem Abstand betrachtet wird. Als Datei eignet sich ein 16-bit-TIFF in Adobe RGB oder ProPhoto.',
+      'Ideal sind 240–300 dpi auf der finalen Druckgröße; bei Wandformaten über 70 × 100 cm reichen meist 180 dpi, bei sehr großen Showroom-Flächen mit großem Betrachtungsabstand oft 120–150 dpi. Als Datei eignet sich ein 16-bit-TIFF in Adobe RGB oder ProPhoto.',
   },
   {
     question: 'Wie wird sichergestellt, dass die Farben im Druck stimmen?',
     answer:
-      'Vor dem Druck wird die Datei mit dem ICC-Profil des Zielpapiers am Monitor simuliert (Soft-Proof). Farb- und Helligkeitskorrekturen werden dadurch vor dem Druck eingesteuert, nicht erst nach einem Fehldruck.',
+      'Vor dem Druck wird die Datei mit dem ICC-Profil des Zielpapiers am kalibrierten Monitor simuliert (Soft-Proof). Farb-, Kontrast- und Helligkeitskorrekturen werden vor dem Druck eingesteuert. Bei anspruchsvollen Serien sind auch Probedrucke möglich.',
   },
   {
-    question: 'Welche Angaben braucht eine Druck-Anfrage?',
+    question: 'Sind kleine Serien, signierte Editionen oder Rahmenlösungen möglich?',
     answer:
-      'Für den Anfang genügen das Motiv, der spätere Ort des Prints und das ungefähr geplante Format. Wenn Material oder Größe noch offen sind, reicht eine grobe Idee – die Details klären wir gemeinsam.',
+      'Ja. Sowohl Einzelstücke für Wohnraum, Büro oder Praxis als auch kleine abgestimmte Serien mit konsistenter Farbstimmung lassen sich produzieren, auf Wunsch auch mit Rahmung.',
   },
   {
-    question: 'Wie werden die Prints verschickt?',
+    question: 'Wie werden die Prints verschickt oder geliefert?',
     answer:
-      'Prints bis 70 cm werden gerollt im Rohr geliefert, größere Formate flach verpackt und Arbeiten auf Träger als Sperrgut – jeweils säurefrei verpackt und deutschlandweit.',
+      'Prints bis 70 cm werden gerollt im Rohr geliefert, größere Formate flach verpackt und Arbeiten auf Träger als Sperrgut bzw. per Spedition, jeweils säurefrei verpackt und deutschlandweit. Im Rheinland sind persönliche Abstimmung und Lieferung nach Absprache möglich.',
   },
 ]
 const printFaqSchema = faqJsonLd(printFaq)
@@ -97,7 +97,7 @@ const printFaqSchema = faqJsonLd(printFaq)
             {' '}
             <span class="line"><span class="word">Düsseldorf</span></span>
           </h1>
-          <p class="hero-lead" id="hero-lead">Fotodruck auf Fine-Art-Papier, Acrylglas, Alu-Dibond und Leinwand, deutschlandweit geliefert. Gedruckt wird bei einem Partnerlabor.</p>
+          <p class="hero-lead" id="hero-lead">Fine-Art-Prints, Großformatdruck und Sonderanfertigungen auf Hahnemühle, Canson, Ilford, Acrylglas, Alu-Dibond und Leinwand, mit Soft-Proof abgestimmt und über ein Partnerlabor deutschlandweit geliefert.</p>
           <div class="hero-actions" aria-label="Direkte Aktionen">
             <a class="btn dark" href="#anfrage" data-hero-primary>Druck anfragen</a>
             <a class="btn" href="#format" data-hero-secondary>Formate ansehen</a>

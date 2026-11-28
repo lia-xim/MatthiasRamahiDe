@@ -5,6 +5,182 @@
   "framework": "astro",
   "redirects": [
     {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.matthiasramahi.de" }],
+      "destination": "https://matthiasramahi.de/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/fotografie/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/fotografie",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/fotografie.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/fotografie-duesseldorf.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/fotografie-deutschland.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/fotografie-landing-experience.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/videografie-duesseldorf/",
+      "destination": "/videografie-duesseldorf.html",
+      "permanent": true
+    },
+    {
+      "source": "/videografie-duesseldorf",
+      "destination": "/videografie-duesseldorf.html",
+      "permanent": true
+    },
+    {
+      "source": "/automobil-fotografie-duesseldorf.html",
+      "destination": "/autofotografie-duesseldorf.html",
+      "permanent": true
+    },
+    {
+      "source": "/automotive-fotografie-duesseldorf.html",
+      "destination": "/autofotografie-duesseldorf.html",
+      "permanent": true
+    },
+    {
+      "source": "/auto-fotoshooting-duesseldorf.html",
+      "destination": "/autofotografie-duesseldorf.html",
+      "permanent": true
+    },
+    {
+      "source": "/fotoshooting-mit-auto-duesseldorf.html",
+      "destination": "/autofotografie-duesseldorf.html",
+      "permanent": true
+    },
+    {
+      "source": "/fahrzeugfotografie-duesseldorf.html",
+      "destination": "/autofotografie-duesseldorf.html",
+      "permanent": true
+    },
+    {
+      "source": "/automobil-fotografie.html",
+      "destination": "/autofotografie.html",
+      "permanent": true
+    },
+    {
+      "source": "/automotive-fotografie.html",
+      "destination": "/autofotografie.html",
+      "permanent": true
+    },
+    {
+      "source": "/fotoshooting-mit-auto.html",
+      "destination": "/autofotografie.html",
+      "permanent": true
+    },
+    {
+      "source": "/auto-fotoshooting.html",
+      "destination": "/autofotografie.html",
+      "permanent": true
+    },
+    {
+      "source": "/fahrzeugfotografie.html",
+      "destination": "/autofotografie.html",
+      "permanent": true
+    },
+    {
+      "source": "/portrait-fotoshooting-duesseldorf.html",
+      "destination": "/portraitfotografie-duesseldorf.html",
+      "permanent": true
+    },
+    {
+      "source": "/portrait-fotoshooting.html",
+      "destination": "/portraitfotografie-duesseldorf.html",
+      "permanent": true
+    },
+    {
+      "source": "/business-portrait-duesseldorf.html",
+      "destination": "/personal-branding-fotografie-duesseldorf.html",
+      "permanent": true
+    },
+    {
+      "source": "/headshot-fotograf-duesseldorf.html",
+      "destination": "/personal-branding-fotografie-duesseldorf.html",
+      "permanent": true
+    },
+    {
+      "source": "/unternehmensportrait-duesseldorf.html",
+      "destination": "/personal-branding-fotografie-duesseldorf.html",
+      "permanent": true
+    },
+    {
+      "source": "/dating-fotoshooting.html",
+      "destination": "/dating-fotoshooting-duesseldorf.html",
+      "permanent": true
+    },
+    {
+      "source": "/grossformatdruck-duesseldorf.html",
+      "destination": "/fotolabor-druck-duesseldorf.html",
+      "permanent": true
+    },
+    {
+      "source": "/drucke-sonderanfertigungen-duesseldorf.html",
+      "destination": "/fotolabor-druck-duesseldorf.html",
+      "permanent": true
+    },
+    {
+      "source": "/portraitfotografie/retro-looks-in-der-digitalen-fotografie/:trailing*",
+      "destination": "/blog-retro-looks-in-der-digitalen-fotografie.html",
+      "permanent": true
+    },
+    {
+      "source": "/retro-looks-in-der-digitalen-fotografie/:trailing*",
+      "destination": "/blog-retro-looks-in-der-digitalen-fotografie.html",
+      "permanent": true
+    },
+    {
+      "source": "/portraitfotografie/mikrogesten-und-haende-im-charakterportraet-fuer-mehr-wirkung/:trailing*",
+      "destination": "/blog-mikrogesten-und-haende-im-portrait.html",
+      "permanent": true
+    },
+    {
+      "source": "/oldtimerfotografie-guide/:trailing*",
+      "destination": "/blog-oldtimerfotografie-guide.html",
+      "permanent": true
+    },
+    {
+      "source": "/motorradfotografie-guide/:trailing*",
+      "destination": "/blog-motorradfotografie-guide.html",
+      "permanent": true
+    },
+    {
+      "source": "/motorradfotografie/motorrad-fotografie-rechtliche-aspekte/:trailing*",
+      "destination": "/blog-motorrad-fotografie-rechtliche-aspekte.html",
+      "permanent": true
+    },
+    {
+      "source": "/motorrad-fotografie-rechtliche-aspekte/:trailing*",
+      "destination": "/blog-motorrad-fotografie-rechtliche-aspekte.html",
+      "permanent": true
+    },
+    {
+      "source": "/outdoor-portrait-fotografie/:trailing*",
+      "destination": "/blog-outdoor-portrait-fotografie.html",
+      "permanent": true
+    },
+    {
       "source": "/portfolio",
       "destination": "/portfolio.html",
       "permanent": true
@@ -90,6 +266,16 @@
     {
       "source": "/site.webmanifest",
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800, stale-while-revalidate=2592000" }]
+    },
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "query", "key": "rwg_token" }],
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, follow"
+        }
+      ]
     },
     {
       "source": "/(.*)",

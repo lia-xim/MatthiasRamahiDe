@@ -1,0 +1,235 @@
+---
+import { getRecentShoots } from '../../data/recentShoots'
+
+type Props = {
+  heading?: string
+  lead?: string
+}
+
+const {
+  heading = 'Aktuelle Shootings.',
+  lead = 'Die neuesten Serien aus der Praxis, jeweils komplett mit Ort, Licht und allen Perspektiven.',
+} = Astro.props as Props
+const shoots = getRecentShoots(3)
+const [first, ...rest] = shoots
+---
+
+{first && (
+  <section class="mr-shoots" data-header-theme="dark" data-theme="dark" aria-labelledby="mr-shoots-title">
+    <div class="mr-shoots__inner">
+      <div class="mr-shoots__head">
+        <h2 id="mr-shoots-title">{heading}</h2>
+        <p>{lead}</p>
+        <a class="mr-shoots__all" href="/portfolio.html#shootings">Alle Projekte im Portfolio</a>
+      </div>
+      <a class="mr-shoots__lead" href={first.href}>
+        <span class="mr-shoots__visual">
+          <img
+            src={first.visual.src}
+            srcset={first.visual.srcset || undefined}
+            sizes="(max-width: 900px) 100vw, 58vw"
+            alt={first.alt}
+            width="1920"
+            height="1280"
+            loading="lazy"
+            decoding="async"
+          />
+        </span>
+        <span class="mr-shoots__meta">{first.meta}</span>
+        <span class="mr-shoots__title">{first.title}</span>
+        <span class="mr-shoots__text">{first.text}</span>
+      </a>
+      <ul class="mr-shoots__more">
+        {rest.map((shoot) => (
+          <li>
+            <a class="mr-shoots__item" href={shoot.href}>
+              <span class="mr-shoots__visual">
+                <img
+                  src={shoot.visual.mobile || shoot.visual.src}
+                  srcset={shoot.visual.srcset || undefined}
+                  sizes="(max-width: 900px) 100vw, 26vw"
+                  alt={shoot.alt}
+                  width="1920"
+                  height="1280"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </span>
+              <span class="mr-shoots__meta">{shoot.meta}</span>
+              <span class="mr-shoots__title">{shoot.title}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+)}
+
+<style>
+  .mr-shoots {
+    background: #050608;
+    color: #f1efe8;
+    padding: clamp(72px, 8vw, 128px) 0;
+  }
+
+  .mr-shoots__inner {
+    display: grid;
+    gap: clamp(32px, 3.4vw, 56px) clamp(24px, 3vw, 48px);
+    grid-template-areas:
+      'head head'
+      'lead more';
+    grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+    margin: 0 auto;
+    max-width: 1640px;
+    padding: 0 clamp(20px, 4vw, 84px);
+  }
+
+  .mr-shoots__head {
+    align-items: end;
+    display: grid;
+    gap: 16px clamp(32px, 6vw, 120px);
+    grid-area: head;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 30rem);
+  }
+
+  .mr-shoots__head h2 {
+    color: #f1efe8;
+    font-size: clamp(40px, 5.2vw, 88px);
+    grid-row: span 2;
+    margin: 0;
+  }
+
+  .mr-shoots__head p {
+    color: rgb(241 239 232 / 64%);
+    font-size: clamp(15px, 1.1vw, 18px);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .mr-shoots__all,
+  .mr-shoots__all:visited {
+    color: #f1efe8;
+    font-weight: 600;
+    justify-self: start;
+    text-decoration: underline;
+    text-decoration-color: rgb(241 239 232 / 35%);
+    text-underline-offset: 6px;
+  }
+
+  .mr-shoots__all:hover {
+    text-decoration-color: currentColor;
+  }
+
+  .mr-shoots__lead {
+    grid-area: lead;
+  }
+
+  .mr-shoots__more {
+    display: grid;
+    gap: clamp(24px, 2.6vw, 40px);
+    grid-area: more;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .mr-shoots__more li {
+    margin: 0;
+  }
+
+  .mr-shoots__lead,
+  .mr-shoots__item,
+  .mr-shoots__lead:visited,
+  .mr-shoots__item:visited {
+    color: inherit;
+    display: grid;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .mr-shoots__visual {
+    aspect-ratio: 3 / 2;
+    background: #111;
+    display: block;
+    margin-bottom: 8px;
+    overflow: hidden;
+  }
+
+  .mr-shoots__visual img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+    width: 100%;
+  }
+
+  .mr-shoots__lead:hover img,
+  .mr-shoots__item:hover img {
+    opacity: 0.82;
+  }
+
+  .mr-shoots__meta {
+    color: rgb(241 239 232 / 56%);
+    font-size: 14px;
+  }
+
+  .mr-shoots__title {
+    font-size: clamp(19px, 1.45vw, 24px);
+    font-stretch: 87.5%;
+    font-weight: 650;
+    line-height: 1.15;
+  }
+
+  .mr-shoots__lead .mr-shoots__title {
+    font-size: clamp(24px, 2.2vw, 36px);
+  }
+
+  .mr-shoots__lead:hover .mr-shoots__title,
+  .mr-shoots__item:hover .mr-shoots__title {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 5px;
+  }
+
+  .mr-shoots__text {
+    color: rgb(241 239 232 / 64%);
+    font-size: 15px;
+    line-height: 1.55;
+    max-width: 52ch;
+  }
+
+  .mr-shoots a:focus-visible {
+    outline: 2px solid #f1efe8;
+    outline-offset: 6px;
+  }
+
+  @media (max-width: 900px) {
+    .mr-shoots__inner {
+      grid-template-areas:
+        'head'
+        'lead'
+        'more';
+      grid-template-columns: 1fr;
+    }
+
+    .mr-shoots__head {
+      grid-template-columns: 1fr;
+    }
+
+    .mr-shoots__head h2 {
+      grid-row: auto;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .mr-shoots__lead .mr-shoots__visual {
+      margin-inline: calc(clamp(20px, 4vw, 84px) * -1);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mr-shoots__visual img {
+      transition: none;
+    }
+  }
+</style>

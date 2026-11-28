@@ -170,6 +170,39 @@ export function renderJournalInlineHtml(text = '', options: JournalMarkdownOptio
 const bulletLinePattern = /^(?:-|\*)\s+(.+)$/
 const orderedLinePattern = /^\d+\.\s+(.+)$/
 const keyValueLinePattern = /^([^:\n]{2,48}):\s+(.+)$/
+const tableSeparatorPattern = /^\|?(?:\s*:?-{3,}:?\s*\|)+\s*:?-{3,}:?\s*\|?$/
+
+function parseTableRow(line: string): string[] {
+  return line
+    .trim()
+    .replace(/^\|/, '')
+    .replace(/\|$/, '')
+    .split('|')
+    .map((cell) => cell.trim())
+}
+
+function isMarkdownTable(lines: string[]): boolean {
+  if (lines.length < 3) return false
+  if (!lines[0].includes('|') || !tableSeparatorPattern.test(lines[1])) return false
+  const headerCount = parseTableRow(lines[0]).length
+  return headerCount >= 2 && lines.slice(2).every((line) => line.includes('|'))
+}
+
+function renderMarkdownTableHtml(lines: string[], options: JournalMarkdownOptions): string {
+  const headers = parseTableRow(lines[0])
+  const rows = lines.slice(2).map((line) => {
+    const cells = parseTableRow(line)
+    return headers.map((_, index) => cells[index] || '')
+  })
+  const thead = `<thead><tr>${headers.map((header) => `<th scope="col">${renderJournalInlineHtml(header, options)}</th>`).join('')}</tr></thead>`
+  const tbody = `<tbody>${rows
+    .map(
+      (row) =>
+        `<tr>${row.map((cell) => `<td>${renderJournalInlineHtml(cell, options)}</td>`).join('')}</tr>`,
+    )
+    .join('')}</tbody>`
+  return `<div class="journal-table-wrap"><table class="journal-table">${thead}${tbody}</table></div>`
+}
 
 type LineRun =
   | { kind: 'ul'; items: string[] }
@@ -241,6 +274,11 @@ export function renderJournalBodyHtml(body?: string, options: JournalMarkdownOpt
       .split(/\r?\n/)
       .map((line) => line.trim())
       .filter(Boolean)
+
+    if (isMarkdownTable(lines)) {
+      htmlParts.push(renderMarkdownTableHtml(lines, options))
+      continue
+    }
 
     for (const run of groupBlockLines(lines)) {
       if (run.kind === 'ul') {

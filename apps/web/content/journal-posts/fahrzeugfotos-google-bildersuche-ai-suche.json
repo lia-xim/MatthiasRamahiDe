@@ -12,7 +12,7 @@
   "publishedAt": "2027-01-15T08:00:00.000Z",
   "status": "scheduled",
   "excerpt": "Wie werden eigene Fahrzeugfotos für Suchmaschinen verständlich? Ein Leitfaden zu Bilddateien, Alt-Text, Seitenkontext, Ladezeit und den Grenzen von KI-Suchoptimierung.",
-  "coverImage": "/uploads/payload/assets-portfolio-dsc3892-1920.webp",
+  "coverImage": "/assets/portfolio/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3928.webp",
   "readingTime": 8,
   "blocks": [
     {
@@ -111,7 +111,7 @@
         },
         {
           "label": "Automobilfotografie in Düsseldorf & NRW",
-          "href": "/automobil-fotografie.html",
+          "href": "/autofotografie.html",
           "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ],
@@ -152,7 +152,7 @@
       "links": [
         {
           "label": "Automobilfotografie",
-          "href": "/automobil-fotografie.html"
+          "href": "/autofotografie.html"
         },
         {
           "label": "Abgrenzung echter Fahrzeugfotos von KI-Bildern",
@@ -172,13 +172,13 @@
     }
   ],
   "seo": {
-    "title": "Fahrzeugfotos für Google Bilder und KI-Suche",
+    "title": "Fahrzeugfotos für Google Bilder & KI-Suche planen",
     "description": "So werden Fahrzeugfotos für Google Bilder und KI-Suche verständlich: saubere Bilddateien, genaue Alt-Texte, Seitenkontext und schnelle Auslieferung.",
     "focusKeyword": "Fahrzeugfotos Google Bilder",
     "searchIntent": "Informationssuche: Fotografen und Unternehmen möchten eigene Fahrzeugfotos in Google Bilder und generativen Suchfunktionen zugänglich und verständlich präsentieren.",
     "canonicalUrl": "https://matthiasramahi.de/blog-fahrzeugfotos-google-bildersuche-ai-suche.html",
     "legacyUrl": "blog-fahrzeugfotos-google-bildersuche-ai-suche.html",
-    "ogImage": "/uploads/payload/assets-portfolio-dsc3892-1920.webp",
+    "ogImage": "/assets/portfolio/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3928.webp",
     "noIndex": false
   },
   "createdAt": "2026-11-03T16:00:00Z",
@@ -186,7 +186,7 @@
   "relatedPages": [
     {
       "label": "Automobilfotografie",
-      "href": "/automobil-fotografie.html",
+      "href": "/autofotografie.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
@@ -206,5 +206,5 @@
       "openInNewTab": false
     }
   ],
-  "coverAlt": "Dunkler Sportwagen in einer Ausstellungsumgebung"
+  "coverAlt": "Grüner Lamborghini-Rennwagen mit Startnummer 63 von vorn"
 }

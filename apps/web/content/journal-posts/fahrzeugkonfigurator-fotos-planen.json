@@ -10,7 +10,7 @@
   ],
   "publishedAt": "2027-06-25T07:00:00.000Z",
   "excerpt": "Ein Bildsatz für den Fahrzeugkonfigurator braucht klare Ansichten, abgestimmte Ausstattungsvarianten und verlässliche Dateizuordnung. So planst du Fotografie, Bildrand, Licht und Übergabe vor der Einbindung.",
-  "coverImage": "/assets/optimized/assets-portfolio-dsc2345-1920.webp",
+  "coverImage": "/uploads/payload/_DSC2658.webp",
   "readingTime": 7,
   "blocks": [
     {
@@ -71,7 +71,7 @@
     },
     {
       "headline": "Dateinamen ordnen die Lieferung nach Produktlogik",
-      "body": "Die Dateien müssen für das Produktteam ohne Ratespiel auffindbar sein. Ein vereinbartes Schema kann Modellcode, Ausstattungsvariante, Ansicht, Ausgabe und Version enthalten, etwa MODELL_OPTION03_FRONT34_WEB_V01. Das ist ein Muster und sollte an die bestehenden Produktcodes angepasst werden. Dieselben Bezeichnungen sollten in Variantenmatrix, Shotlist, Dateiname und Freigabeliste vorkommen. Umlaute, wechselnde Kurzformen und Namen wie „final-neu“ erschweren die Zuordnung.\n\nTrenne unbearbeitete Ausgangsdateien, freigegebene Master und daraus erzeugte Ausgaben in der Ablage. Halte fest, welche Datei als Referenz für die Reihe dient, wer Änderungen freigibt und welche Nutzungsrechte für die Veröffentlichung gelten. Stehen technische Anforderungen wie Dateiformat, Farbraum, Auflösung oder Transparenz noch nicht fest, bleiben sie als offene Übergabepunkte gekennzeichnet und werden mit dem zuständigen Team abgestimmt.\n\nSo entsteht ein Bildsatz, der sich später gezielt ergänzen lässt. Werden neue Lacke, Felgen oder Modellstände ergänzt, bleibt nachvollziehbar, welche Blickrichtung und Bearbeitungsgrundlage bereits abgestimmt wurden. Für die Planung einer gesamten Fahrzeugproduktion und die Abstimmung weiterer Einsatzzwecke bietet die [Automotive-Fotografie](/automobil-fotografie.html) den passenden Rahmen. Für den Konfigurator selbst zählt vor allem die wiederholbare Zuordnung von Konfiguration, Perspektive und Datei.",
+      "body": "Die Dateien müssen für das Produktteam ohne Ratespiel auffindbar sein. Ein vereinbartes Schema kann Modellcode, Ausstattungsvariante, Ansicht, Ausgabe und Version enthalten, etwa MODELL_OPTION03_FRONT34_WEB_V01. Das ist ein Muster und sollte an die bestehenden Produktcodes angepasst werden. Dieselben Bezeichnungen sollten in Variantenmatrix, Shotlist, Dateiname und Freigabeliste vorkommen. Umlaute, wechselnde Kurzformen und Namen wie „final-neu“ erschweren die Zuordnung.\n\nTrenne unbearbeitete Ausgangsdateien, freigegebene Master und daraus erzeugte Ausgaben in der Ablage. Halte fest, welche Datei als Referenz für die Reihe dient, wer Änderungen freigibt und welche Nutzungsrechte für die Veröffentlichung gelten. Stehen technische Anforderungen wie Dateiformat, Farbraum, Auflösung oder Transparenz noch nicht fest, bleiben sie als offene Übergabepunkte gekennzeichnet und werden mit dem zuständigen Team abgestimmt.\n\nSo entsteht ein Bildsatz, der sich später gezielt ergänzen lässt. Werden neue Lacke, Felgen oder Modellstände ergänzt, bleibt nachvollziehbar, welche Blickrichtung und Bearbeitungsgrundlage bereits abgestimmt wurden. Für die Planung einer gesamten Fahrzeugproduktion und die Abstimmung weiterer Einsatzzwecke bietet die [Automotive-Fotografie](/autofotografie.html) den passenden Rahmen. Für den Konfigurator selbst zählt vor allem die wiederholbare Zuordnung von Konfiguration, Perspektive und Datei.",
       "_template": "textBlock"
     },
     {
@@ -80,7 +80,7 @@
       "links": [
         {
           "label": "Automobilfotografie in Düsseldorf & NRW",
-          "href": "/automobil-fotografie.html",
+          "href": "/autofotografie.html",
           "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         },
         {
@@ -127,7 +127,7 @@
     "searchIntent": "B2B-Informationssuche: Produkt- und Webteams planen konsistente Fahrzeugbilder für auswählbare Modell-, Lack- und Ausstattungsvarianten im Konfigurator.",
     "canonicalUrl": "https://matthiasramahi.de/blog-fahrzeugkonfigurator-fotos-planen.html",
     "legacyUrl": "blog-fahrzeugkonfigurator-fotos-planen.html",
-    "ogImage": "/assets/optimized/assets-portfolio-dsc2345-1920.webp",
+    "ogImage": "/uploads/payload/_DSC2658.webp",
     "noIndex": false
   },
   "createdAt": "2026-11-03T17:00:00Z",
@@ -135,7 +135,7 @@
   "relatedPages": [
     {
       "label": "Automotive-Fotografie",
-      "href": "/automobil-fotografie.html",
+      "href": "/autofotografie.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
@@ -155,6 +155,6 @@
       "openInNewTab": false
     }
   ],
-  "coverAlt": "Karosserie · Linie",
+  "coverAlt": "Weißes Sportcoupé mit roter Folierung als Gesamtansicht in einer Messehalle",
   "status": "scheduled"
 }

@@ -32,7 +32,7 @@ const reviewCount = reviewsAggregate?.reviewCount ?? 0
   <section class="rev" data-rev-theme={theme} data-header-theme={theme} aria-label="Kundenbewertungen">
     <div class="rev__inner">
       <div class="rev__head">
-        <h2 class="rev__title">{headline} <em>{emphasis}</em></h2>
+        <h2 class="rev__title">{headline}{headline && emphasis ? ' ' : ''}<em>{emphasis}</em></h2>
         <div class="rev__summary">
           <span class="rev__avg">{formattedAverage}</span>
           <span class="rev__stars rev__stars--lg" role="img" aria-label={`${formattedAverage} von 5 Sternen`}>

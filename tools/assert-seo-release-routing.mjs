@@ -39,7 +39,7 @@ function extractObjectKeyValues(source, name) {
   const entries = []
   if (!match) return entries
 
-  for (const [, key, value] of match[1].matchAll(/['"]([^'"]+)['"]\s*:\s*['"]([^'"]+)['"]/g)) {
+  for (const [, key, value] of match[1].matchAll(/['"]([^'"]+)['"]\s*:\s*['"]([^'"]*)['"]/g)) {
     entries.push([key, value])
   }
 
@@ -159,7 +159,8 @@ async function collectRouteModel() {
   const adoptedFiles = new Set(extractArray(adoptedRoutes, 'adoptedLegacyFiles'))
   const redirectEntries = extractObjectKeyValues(adoptedRoutes, 'legacyRedirectTargets')
   const pathRedirectEntries = extractObjectKeyValues(adoptedRoutes, 'legacyPathRedirectTargets')
-  const redirectFiles = new Set(redirectEntries.map(([source]) => source))
+  // 'index.html': '' only canonicalises /index.html to /; the homepage itself stays in the sitemap.
+  const redirectFiles = new Set(redirectEntries.map(([source]) => source).filter((source) => source !== 'index.html'))
   const conceptFiles = extractHtmlObjectKeys(conceptContent, 'conceptArchivePages')
   const localSeoPrefixes = extractLocalSeoPrefixes(localSeoFamilies)
   const routeModelFiles = new Set([
@@ -170,15 +171,23 @@ async function collectRouteModel() {
   ])
 
   const unpublishedJournalFiles = await collectUnpublishedJournalFiles()
+  const noIndexFiles = new Set([
+    'datenschutz.html',
+    'impressum.html',
+    'keyword-datenbank-seo.html',
+    'webdesign-seo-duesseldorf.html',
+    'werbetechnik-duesseldorf.html',
+  ])
   const expectedSitemapPaths = [...routeModelFiles]
     .filter((file) => !redirectFiles.has(file))
     .filter((file) => !unpublishedJournalFiles.has(file))
     .filter((file) => !conceptFiles.has(file))
+    .filter((file) => !noIndexFiles.has(file))
     .filter((file) => file === 'index.html' || !isLocalSeoRoute(file, adoptedFiles, localSeoPrefixes) || file.endsWith('.html'))
     .map(routeForFile)
     .sort((a, b) => a.localeCompare(b))
 
-  const forbiddenSitemapPaths = [...new Set([...redirectFiles, ...conceptFiles].map(routeForFile))].sort((a, b) =>
+  const forbiddenSitemapPaths = [...new Set([...redirectFiles, ...conceptFiles, ...noIndexFiles].map(routeForFile))].sort((a, b) =>
     a.localeCompare(b),
   )
 

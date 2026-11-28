@@ -38,7 +38,15 @@
     },
     {
       "question": "Kann ich ein Bild auch als Druck bekommen?",
-      "answer": "Ja. Neben den Dateien sind Drucke in verschiedenen Formaten möglich, auch auf Acrylglas, etwa für ein Familienbild an der Wand. Drucke werden separat abgerechnet."
+      "answer": "Ja. Neben den Dateien sind Drucke in verschiedenen Formaten möglich, auch auf Fine-Art-Papier oder Acrylglas, etwa für ein Familienbild an der Wand. Drucke werden separat abgerechnet."
+    },
+    {
+      "question": "Wie vermeidest du steife, unnatürliche Posen?",
+      "answer": "Statt starrer Standardposen arbeite ich mit kleinen Bewegungen, Blickrichtung, Händen und echtem Gespräch. So verlagert sich der Fokus weg von der Kamera. Die stärksten Ausdrücke entstehen oft in den Momenten dazwischen."
+    },
+    {
+      "question": "Wie sind die Nutzungsrechte geregelt?",
+      "answer": "Private Nutzung für eigene Zwecke, Bewerbung und Familienalbum ist enthalten. Für gewerbliche Einsätze wie Website, LinkedIn-Unternehmensauftritt, Presse oder Werbung klären wir den genauen Umfang vorab und halten ihn transparent im Angebot fest."
     }
   ],
   "blocks": [
@@ -135,7 +143,38 @@
   "gallerySection": {},
   "portfolioTiles": [],
   "processSection": {},
-  "processSteps": [],
+  "processSteps": [
+    {
+      "image": "/assets/portraits/20260823-khan-levi-dsc8481.webp",
+      "imageLabel": "Anfrage",
+      "title": "Anfrage & Einordnung",
+      "text": "Schreib kurz Anlass, gewünschte Wirkung und Zeitraum in Düsseldorf oder Erkrath. Du bekommst zeitnah eine ehrliche Einschätzung und Terminvorschläge."
+    },
+    {
+      "image": "/assets/portraits/20260823-khan-levi-dsc8762.webp",
+      "imageLabel": "Vorgespräch",
+      "title": "Vorgespräch & Outfits",
+      "text": "Wir klären vorab, wofür die Bilder gebraucht werden, welche 2–3 Outfits funktionieren und ob die Nutzung privat oder gewerblich geplant ist."
+    },
+    {
+      "image": "/assets/portraits/20260823-khan-levi-dsc8797.webp",
+      "imageLabel": "Location & Licht",
+      "title": "Ort & Lichtfenster",
+      "text": "Medienhafen für klare Architektur, Rheinufer oder Hofgarten für weiches Licht im offenen Schatten oder ein gemietetes Studio für volle Kontrolle, passend zum Charakter der Serie."
+    },
+    {
+      "image": "/assets/portraits/20260823-khan-levi-dsc8557.webp",
+      "imageLabel": "Shooting",
+      "title": "Ruhiges Shooting ohne Pose-Drill",
+      "text": "Genug Zeit zum Ankommen, konkrete Hinweise zu Haltung und Blick sowie gemeinsame Kontrollblicke am Monitor, damit du dich in den Bildern wirklich wiedererkennst."
+    },
+    {
+      "image": "/assets/portraits/20260823-khan-levi-dsc8733.webp",
+      "imageLabel": "Lieferung",
+      "title": "Online-Galerie & Lieferung",
+      "text": "Du wählst deine Favoriten aus einer kuratierten Vorauswahl. Ich bearbeite jedes Bild einzeln und zurückhaltend und liefere in den passenden Formaten für Web, Social, Bewerbung oder Druck."
+    }
+  ],
   "audienceSection": {},
   "audienceCards": [
     {
@@ -177,8 +216,8 @@
   "contactSection": {},
   "targetKeyword": "Portraitfotografie Düsseldorf",
   "seo": {
-    "title": "Portraitfotograf Düsseldorf: Business & privat ab 250 €",
-    "description": "Portraitfotografie in Düsseldorf: Business-Portraits, Headshots und private Portraits am Rheinufer, im Medienhafen oder im gemieteten Studio. Ab 250 €.",
+    "title": "Portraitfotograf Düsseldorf: Business & Charakter ab 250 €",
+    "description": "Authentische Portraits in Düsseldorf & Erkrath: am Rhein, im Medienhafen oder im gemieteten Studio. Ruhige Anleitung für Business & privat ab 250 €.",
     "canonicalUrl": "https://matthiasramahi.de/portraitfotografie-duesseldorf.html",
     "legacyUrl": "portraitfotografie-duesseldorf.html",
     "ogImage": "/uploads/payload/_DSC0470-Enhanced-NR-2.webp",
@@ -229,20 +268,24 @@
     ],
     "links": [
       {
-        "label": "Business Portrait Düsseldorf",
-        "href": "/business-portrait-duesseldorf.html"
+        "label": "Personal Branding Düsseldorf",
+        "href": "/personal-branding-fotografie-duesseldorf.html"
       },
       {
-        "label": "Headshot Fotograf Düsseldorf",
-        "href": "/headshot-fotograf-duesseldorf.html"
+        "label": "Dating Fotoshooting Düsseldorf",
+        "href": "/dating-fotoshooting-duesseldorf.html"
       },
       {
         "label": "Vintage Fotoshooting",
         "href": "/vintage-fotoshooting.html"
       },
       {
-        "label": "Dating Fotoshooting Düsseldorf",
-        "href": "/dating-fotoshooting-duesseldorf.html"
+        "label": "Low-Key & High-Key Portraits (Journal)",
+        "href": "/blog-low-key-high-key-portraits.html"
+      },
+      {
+        "label": "Portraits im offenen Schatten (Journal)",
+        "href": "/blog-portraits-offener-schatten.html"
       }
     ]
   }

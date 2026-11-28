@@ -2,8 +2,8 @@
   "title": "Fahrzeugfotos für mobile.de und AutoScout24 vorbereiten",
   "slug": "fahrzeugfotos-mobile-de-autoscout24-aufbereiten",
   "category": "automotive",
-  "coverImage": "/assets/portfolio/automobil-bmw-m3-showcar.webp",
-  "coverAlt": "Sauber freigestellter weißer BMW M3 vor ruhigem, neutralem Ausstellungsgrund",
+  "coverImage": "/uploads/payload/_DSC3431.webp",
+  "coverAlt": "Schwarzer VW Golf in der Frontdreiviertelansicht an einem Hafenbecken",
   "status": "scheduled",
   "publishedAt": "2027-11-23T08:00:00.000Z",
   "createdAt": "2026-11-04T14:59:42Z",
@@ -13,7 +13,7 @@
   "relatedPages": [
     {
       "label": "Automobilfotografie",
-      "href": "/automobil-fotografie.html",
+      "href": "/autofotografie.html",
       "seoPurpose": "topic-parent",
       "rel": "follow",
       "openInNewTab": false
@@ -60,7 +60,7 @@
     "searchIntent": "Informationssuche von Autohäusern, Bestandsteams und Fotografen, die eine vorhandene Fahrzeug-Fotoserie auf mobile.de und AutoScout24 veröffentlichen möchten. Im Mittelpunkt stehen portalabhängige Bildmengen, Hauptbild, Vorschaubeschnitt und die Zuordnung von Dateien über eine mobile.de-Schnittstelle. Die offiziellen Angaben unterscheiden nach Privatkunden-FAQ, Händlerprodukt und API. Relevanzsignal: aktuelle offizielle Hilfen und Händlerdokumentationen behandeln Bildmengen, Upload und Reihenfolge. Suchvolumen und nativer Crawl-Foundry-AI-Fanout wurden nicht gemessen.",
     "canonicalUrl": "https://matthiasramahi.de/blog-fahrzeugfotos-mobile-de-autoscout24-aufbereiten.html",
     "legacyUrl": "blog-fahrzeugfotos-mobile-de-autoscout24-aufbereiten.html",
-    "ogImage": "/assets/portfolio/automobil-bmw-m3-showcar.webp",
+    "ogImage": "/uploads/payload/_DSC3431.webp",
     "noIndex": false
   },
   "blocks": [
@@ -166,7 +166,7 @@
         },
         {
           "label": "Automobilfotografie in Düsseldorf & NRW",
-          "href": "/automobil-fotografie.html",
+          "href": "/autofotografie.html",
           "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]

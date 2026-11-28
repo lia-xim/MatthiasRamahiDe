@@ -1,0 +1,324 @@
+---
+import { vehiclePillarSpecs, type VehicleDisciplineKey } from '../../data/vehiclePillarSpecs'
+import { localResponsiveImage } from '../../data/localResponsiveThumbs'
+
+type Props = {
+  discipline: VehicleDisciplineKey
+  /** Kept for call-site compatibility; no longer rendered (no eyebrow line). */
+  scopeLabel?: string
+}
+
+// Ablauf als Bildsequenz: vier Schritte, je ein Foto aus einem echten
+// Shooting. Dunkel gesetzt, damit sie sich klar von der hellen Zielgruppen-
+// und Kontaktsektion abhebt. Die frühere Textsektion "Worauf es ankommt"
+// ist entfallen, weil der Leitfaden weiter unten dasselbe Thema ausführlicher
+// behandelt; die Journal-Links stehen gesammelt in der Journal-Sektion.
+const { discipline } = Astro.props as Props
+const spec = vehiclePillarSpecs[discipline]
+const sectionId = `ablauf-${discipline}`
+const steps = spec.workflowSteps.map((step) => ({ ...step, visual: localResponsiveImage(step.image, 1200, 1200) }))
+---
+
+<section
+  class="mr-vbp"
+  id={sectionId}
+  data-header-theme="dark"
+  data-theme="dark"
+  aria-labelledby={`${sectionId}-title`}
+>
+  <div class="mr-vbp__inner">
+    <header class="mr-vbp__head">
+      <h2 id={`${sectionId}-title`}>
+        {spec.workflowHeading} <em>{spec.workflowEmphasis}</em>
+      </h2>
+      <p class="mr-vbp__intro">{spec.workflowIntro}</p>
+    </header>
+
+    <ol class="mr-vbp__steps">
+      {steps.map((step, index) => (
+        <li class="mr-vbp__step">
+          <span class="mr-vbp__visual">
+            <img
+              src={step.visual.src}
+              srcset={step.visual.srcset || undefined}
+              sizes="(max-width: 700px) 50vw, (max-width: 1100px) 50vw, 25vw"
+              alt={step.alt}
+              width={step.visual.width}
+              height={step.visual.height}
+              loading="lazy"
+              decoding="async"
+            />
+          </span>
+          <span class="mr-vbp__num" aria-hidden="true">{index + 1}</span>
+          <h3>{step.title}</h3>
+          <p>{step.text}</p>
+        </li>
+      ))}
+    </ol>
+
+    <div class="mr-vbp__scope">
+      <div class="mr-vbp__scope-lead">
+        <h3>{spec.scopeHeading}</h3>
+        <p class="mr-vbp__scope-price">{spec.scopePriceNote}</p>
+      </div>
+      <ul class="mr-vbp__scope-list">
+        {spec.scopeBullets.map((bullet) => (
+          <li>{bullet}</li>
+        ))}
+      </ul>
+      <div class="mr-vbp__scope-actions">
+        <a class="mr-vbp__cta" href="#anfrage">{spec.scopeCtaLabel}</a>
+        <a class="mr-vbp__ghost" href={spec.portfolioHref}>{spec.portfolioLabel}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .mr-vbp {
+    --vbp-bg: #050608;
+    --vbp-ink: #f1efe8;
+    --vbp-muted: rgb(241 239 232 / 64%);
+    --vbp-line: rgb(241 239 232 / 14%);
+    --vbp-em: #9aa7a3;
+    background: var(--vbp-bg);
+    color: var(--vbp-ink);
+    padding: clamp(72px, 9vw, 140px) 0;
+  }
+
+  .mr-vbp__inner {
+    margin: 0 auto;
+    width: min(100% - clamp(32px, 8vw, 128px), 1640px);
+  }
+
+  .mr-vbp__head {
+    align-items: end;
+    display: grid;
+    gap: 20px clamp(32px, 6vw, 120px);
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 32rem);
+    margin-bottom: clamp(40px, 5vw, 72px);
+  }
+
+  .mr-vbp__head h2 {
+    color: var(--vbp-ink);
+    font-size: clamp(40px, 5.6vw, 96px);
+    line-height: 0.95;
+    margin: 0;
+  }
+
+  .mr-vbp__head h2 em {
+    color: var(--vbp-em);
+    font-style: normal;
+  }
+
+  .mr-vbp__intro {
+    color: var(--vbp-muted);
+    font-size: clamp(15px, 1.15vw, 18px);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .mr-vbp__steps {
+    display: grid;
+    gap: clamp(28px, 3vw, 48px) clamp(16px, 1.6vw, 28px);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .mr-vbp__step {
+    display: grid;
+    align-content: start;
+    gap: 10px;
+    margin: 0;
+  }
+
+  .mr-vbp__visual {
+    aspect-ratio: 1 / 1;
+    background: #111316;
+    display: block;
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+
+  .mr-vbp__visual img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .mr-vbp__num {
+    color: var(--vbp-em);
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .mr-vbp__step h3 {
+    color: var(--vbp-ink);
+    font-size: clamp(19px, 1.45vw, 24px);
+    font-stretch: 87.5%;
+    font-weight: 650;
+    line-height: 1.15;
+    margin: 0;
+  }
+
+  .mr-vbp__step p {
+    color: var(--vbp-muted);
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .mr-vbp__scope {
+    align-items: start;
+    border-top: 1px solid var(--vbp-line);
+    display: grid;
+    gap: 28px clamp(32px, 4vw, 72px);
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr) auto;
+    margin-top: clamp(56px, 6vw, 96px);
+    padding-top: clamp(32px, 3.4vw, 48px);
+  }
+
+  .mr-vbp__scope-lead h3 {
+    color: var(--vbp-ink);
+    font-size: clamp(22px, 1.9vw, 30px);
+    font-stretch: 87.5%;
+    font-weight: 650;
+    line-height: 1.1;
+    margin: 0 0 10px;
+  }
+
+  .mr-vbp__scope-price {
+    color: var(--vbp-ink);
+    font-size: 17px;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .mr-vbp__scope-list {
+    display: grid;
+    gap: 12px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .mr-vbp__scope-list li {
+    color: var(--vbp-muted);
+    font-size: 15px;
+    line-height: 1.55;
+    margin: 0;
+    padding-left: 22px;
+    position: relative;
+  }
+
+  .mr-vbp__scope-list li::before {
+    background: var(--vbp-em);
+    content: '';
+    height: 1px;
+    left: 0;
+    position: absolute;
+    top: 0.8em;
+    width: 12px;
+  }
+
+  .mr-vbp__scope-actions {
+    display: grid;
+    gap: 12px;
+  }
+
+  .mr-vbp__cta,
+  .mr-vbp__ghost {
+    align-items: center;
+    border: 1px solid var(--vbp-ink);
+    display: inline-flex;
+    font-size: 16px;
+    font-weight: 600;
+    justify-content: center;
+    min-height: 52px;
+    padding: 0 26px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .mr-vbp__cta,
+  .mr-vbp__cta:visited {
+    background: var(--vbp-ink);
+    color: var(--vbp-bg);
+  }
+
+  .mr-vbp__ghost,
+  .mr-vbp__ghost:visited {
+    background: transparent;
+    border-color: rgb(241 239 232 / 40%);
+    color: var(--vbp-ink);
+  }
+
+  .mr-vbp__cta:hover {
+    background: transparent;
+    color: var(--vbp-ink);
+  }
+
+  .mr-vbp__ghost:hover {
+    border-color: var(--vbp-ink);
+    background: rgb(241 239 232 / 8%);
+  }
+
+  .mr-vbp__cta:focus-visible,
+  .mr-vbp__ghost:focus-visible {
+    outline: 2px solid var(--vbp-ink);
+    outline-offset: 3px;
+  }
+
+  @media (max-width: 1100px) {
+    .mr-vbp__steps {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .mr-vbp__scope {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+    }
+
+    .mr-vbp__scope-actions {
+      grid-column: 1 / -1;
+      grid-template-columns: repeat(2, max-content);
+    }
+  }
+
+  @media (max-width: 760px) {
+    .mr-vbp__head,
+    .mr-vbp__scope {
+      grid-template-columns: 1fr;
+    }
+
+    .mr-vbp__scope-actions {
+      grid-template-columns: 1fr;
+    }
+
+    .mr-vbp__cta,
+    .mr-vbp__ghost {
+      white-space: normal;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .mr-vbp__steps {
+      gap: 32px 12px;
+    }
+
+    .mr-vbp__step p {
+      font-size: 14px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mr-vbp__cta,
+    .mr-vbp__ghost {
+      transition: none;
+    }
+  }
+</style>

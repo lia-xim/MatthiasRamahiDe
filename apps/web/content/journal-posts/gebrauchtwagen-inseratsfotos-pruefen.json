@@ -12,8 +12,8 @@
   "publishedAt": "2028-01-21T08:00:00.000Z",
   "status": "scheduled",
   "excerpt": "Welche Ausstattungsmerkmale lassen sich auf Gebrauchtwagenfotos erkennen? Vergleiche sichtbare Details mit dem Inserat und frage gezielt nach, was Bilder nicht bestätigen.",
-  "coverImage": "/assets/optimized/assets-portfolio-dsc2345-1920.webp",
-  "coverAlt": "Karosserie · Linie",
+  "coverImage": "/uploads/payload/_DSC3660.webp",
+  "coverAlt": "Schwarze Ledersitze im Innenraum eines VW Golf",
   "readingTime": 7,
   "blocks": [
     {
@@ -130,7 +130,7 @@
         },
         {
           "label": "Automobilfotografie",
-          "href": "/automobil-fotografie.html",
+          "href": "/autofotografie.html",
           "description": "Portfolio und fotografische Leistungen für private und gewerbliche Fahrzeugaufnahmen."
         }
       ]
@@ -139,8 +139,8 @@
   "createdAt": "2026-11-05T00:00:00Z",
   "updatedAt": "2028-01-21T08:00:00.000Z",
   "seo": {
-    "title": "Gebrauchtwagen-Ausstattung auf Fotos prüfen",
-    "description": "Prüfe sichtbare Ausstattungsmerkmale und Modellhinweise auf Gebrauchtwagenfotos. Erfahre, was eine Aufnahme zeigen kann und wann du gezielt nachfragen solltest.",
+    "title": "Gebrauchtwagen-Ausstattung auf Fotos sicher prüfen",
+    "description": "Sichtbare Ausstattungsmerkmale und Modellhinweise auf Gebrauchtwagenfotos prüfen: Was Bilder belegen und wo du vorab gezielt nachfragst.",
     "focusKeyword": "Gebrauchtwagen Ausstattung Fotos prüfen",
     "secondaryKeywords": [
       "Gebrauchtwagen Ausstattung anhand Fotos erkennen",
@@ -157,13 +157,13 @@
     ],
     "canonicalUrl": "https://matthiasramahi.de/blog-gebrauchtwagen-inseratsfotos-pruefen.html",
     "legacyUrl": "blog-gebrauchtwagen-inseratsfotos-pruefen.html",
-    "ogImage": "/assets/optimized/assets-portfolio-dsc2345-1920.webp",
+    "ogImage": "/uploads/payload/_DSC3660.webp",
     "noIndex": false
   },
   "relatedPages": [
     {
       "label": "Automobilfotografie",
-      "href": "/automobil-fotografie.html",
+      "href": "/autofotografie.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

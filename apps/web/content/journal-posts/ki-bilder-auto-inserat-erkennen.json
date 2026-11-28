@@ -12,8 +12,8 @@
   "publishedAt": "2028-02-22T08:00:00.000Z",
   "status": "scheduled",
   "excerpt": "KI-generierte Hintergründe, wiederverwendete Fotos und echte Retusche sind schwer sicher zu trennen. So prüfst du Herkunft, Angebot und Auto, ohne Bildfehler als Beweis zu werten.",
-  "coverImage": "/assets/optimized/assets-portfolio-dsc3908-1920.webp",
-  "coverAlt": "Cockpit · Licht",
+  "coverImage": "/uploads/payload/_DSC2916.webp",
+  "coverAlt": "Kühlergrill mit Brabus-Emblem und Schmuckkennzeichen an einem schwarzen SUV",
   "readingTime": 8,
   "blocks": [
     {
@@ -165,7 +165,7 @@
         },
         {
           "label": "Automobilfotografie",
-          "href": "/automobil-fotografie.html",
+          "href": "/autofotografie.html",
           "description": "Portfolio und fotografische Leistungen für private und gewerbliche Fahrzeugaufnahmen."
         }
       ]
@@ -192,13 +192,13 @@
     ],
     "canonicalUrl": "https://matthiasramahi.de/blog-ki-bilder-auto-inserat-erkennen.html",
     "legacyUrl": "blog-ki-bilder-auto-inserat-erkennen.html",
-    "ogImage": "/assets/optimized/assets-portfolio-dsc3908-1920.webp",
+    "ogImage": "/uploads/payload/_DSC2916.webp",
     "noIndex": false
   },
   "relatedPages": [
     {
       "label": "Automobilfotografie",
-      "href": "/automobil-fotografie.html",
+      "href": "/autofotografie.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

@@ -10,5 +10,6 @@ const topic = journalTopicBySlug(Astro.params.topic)
 if (!topic) return new Response('Not found', { status: 404 })
 
 Astro.response.headers.set('cache-control', livePageCacheControl({ sMaxAge: 300, staleWhileRevalidate: 3600 }))
+Astro.response.headers.set('x-robots-tag', 'noindex, follow')
 ---
 <NativeJournalIndexPage topicSlug={topic.slug} page={1} />

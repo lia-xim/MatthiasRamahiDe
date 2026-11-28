@@ -1,9 +1,12 @@
 ---
 import { getFooter, getNavigation, linkAttributes } from '../lib/payload'
+import { googleReviewUrl } from '../lib/reviewsContent'
 
 const [footer, navigation] = await Promise.all([getFooter(), getNavigation()])
 const email = footer?.email || 'info@matthiasramahi.de'
-const location = footer?.locationLabel || 'Düsseldorf / NRW'
+const phone = footer?.phone || '+49 176 42 44 98 58'
+const location = footer?.locationLabel || 'Erkrath · Düsseldorf · NRW'
+const addressLine = 'Kempener Straße 44, 40699 Erkrath'
 const statement =
   footer?.statement ||
   'Fotografie, die Räume öffnet. Portfolio, Aufträge und visuelle Produktion in Düsseldorf / NRW - klar kuratiert, technisch sauber und bereit für Web, Print und Kampagne.'
@@ -46,8 +49,10 @@ const legalLinks = footer?.legalLinks?.length
       <p class="eyebrow">Kontakt</p>
       <ul>
         <li><a href={`mailto:${email}`}>{email}</a></li>
-        {footer?.phone && <li><a href={`tel:${footer.phone.replaceAll(' ', '')}`}>{footer.phone}</a></li>}
+        <li><a href={`tel:${phone.replace(/[^\d+]/g, '')}`}>{phone}</a></li>
+        <li>{addressLine}</li>
         <li>{location}</li>
+        <li><a href={googleReviewUrl} target="_blank" rel="noopener noreferrer">Auf Google bewerten</a></li>
       </ul>
     </section>
     <section>

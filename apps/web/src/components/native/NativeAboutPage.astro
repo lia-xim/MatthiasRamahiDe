@@ -22,14 +22,14 @@ type AboutChapter = {
 
 const fallback = {
   hero: {
-    kicker: 'Über mich · Düsseldorf · NRW',
+    kicker: 'Über mich · Erkrath · Düsseldorf · NRW',
     titleLine1: 'Hinter der',
     titleLine2: 'Kamera.',
     lead:
-      'Matthias Ramahi — Fotograf aus Düsseldorf. Editorial geführte Bildserien für Automobile, Oldtimer, Sportwagen, Motorräder, Portraits und Landschaften. Ausgebildet im Handwerk, denkend wie ein Editor.',
+      'Matthias Ramahi, Fotograf mit Basis in Erkrath direkt neben Düsseldorf. Kuratierte Bildserien für Automobile, Sportwagen, Oldtimer und Motorräder sowie charakterstarke Portraits und Fine-Art-Landschaften in ganz NRW.',
     image: '/assets/optimized/matthias-ramahi-portrait-1440.webp',
     primaryLabel: 'Portfolio ansehen →',
-    primaryHref: 'portfolio.html',
+    primaryHref: '/portfolio.html',
     secondaryLabel: 'Projekt anfragen',
     secondaryHref: '#anfrage',
   },
@@ -37,31 +37,31 @@ const fallback = {
     headline: 'Bild vor Filter, Motiv vor',
     headlineEmphasis: 'Effekt',
     lead:
-      'Was mich an Fotografie hält, ist nicht das eine spektakuläre Bild: es ist die ruhige Arbeit davor: das genaue Hinsehen, das Warten auf das richtige Licht, die kleine Verschiebung in der Komposition, die ein Motiv plötzlich tragen lässt.',
+      'Ich fotografiere Fahrzeuge, Menschen und Landschaften. In allen Bereichen reizt mich dasselbe: ein Motiv so genau zu lesen, dass Licht, Perspektive und Hintergrund für sich sprechen.',
     body:
-      'Mein Anspruch ist editorial: klare Linien, ehrliche Farben, keine Effektkette. Ob Portrait, Automobil oder Landschaft: am Ende geht es darum, dass das Bild den Charakter seines Motivs zeigt und nicht den meiner Software. Aus dieser Geduld entstehen Aufnahmen, die nach dem Shooting noch arbeiten: auf dem Inserat, im Pressekit, an der Wand.',
+      'Am Set arbeite ich ruhig und ohne Hektik. Bei Fahrzeugen heißt das: störende Spiegelungen auf Lack und Chrom schon vor Ort kontrollieren, die passende Brennweite wählen und auf das richtige Lichtfenster warten. Bei Portraits heißt es: klare, entspannte Anleitung statt steifer Standard-Posen. In der Nachbearbeitung bleibe ich bewusst zurückhaltend: ehrliche Farben, saubere Kontraste und kein schwerer Effekt-Filter, damit die Bilder im Inserat, im Pressekit, auf LinkedIn oder großformatig an der Wand Bestand haben.',
     primaryLabel: 'Portfolio ansehen',
-    primaryHref: 'portfolio.html',
-    secondaryLabel: 'Bereiche ansehen',
+    primaryHref: '/portfolio.html',
+    secondaryLabel: 'Schwerpunkte ansehen',
     secondaryHref: '#schwerpunkte',
   },
   chapters: {
     headline: 'Sechs Bereiche. Eine',
     headlineEmphasis: 'Hand',
     intro:
-      'Ich arbeite nicht in Genre-Schubladen, aber jede Disziplin braucht ihr eigenes Vorgehen. Licht, Distanz, Material und Rhythmus passen sich an, der klare Stil bleibt durchgehend erkennbar.',
+      'Jede Disziplin stellt eigene Anforderungen an Licht, Distanz, Location und Tempo. Die ruhige, ehrliche Bildsprache verbindet alle sechs Schwerpunkte.',
   },
   sister: {
-    kicker: 'Bewegte Bilder · Empfehlung',
+    kicker: 'Bewegte Bilder · Zusammenarbeit',
     headline: 'Wenn es',
     headlineEmphasis: 'bewegt',
-    lead: 'Für bewegte Bilder empfehle ich meine Schwester Sophia Ramahi: Videografin aus dem Rheinland.',
+    lead: 'Für Bewegtbild arbeite ich mit meiner Schwester Sophia Ramahi zusammen, Videografin aus dem Rheinland.',
     body:
-      'Sophia produziert Musikvideos, Imagefilme und redaktionelles Bewegtbild. Aus einer Familie, mit derselben Handschrift: wir arbeiten regelmäßig parallel am Set, damit Foto und Video sauber zusammenpassen.',
-    buttonLabel: 'Anfrage Foto + Video →',
-    href: 'contact.html#anfrage',
+      'Sophia produziert Musikvideos, Imagefilme und redaktionelle Videostrecken. Weil wir am Set regelmäßig parallel arbeiten, passen Lichtstimmung, Bildausschnitt und Timing zwischen Foto und Film direkt zusammen, ohne doppelte Abstimmung.',
+    buttonLabel: 'Foto + Video anfragen',
+    href: '/contact.html#anfrage',
     plate: {
-      tag: 'Schwester · Location',
+      tag: 'Schwester · Bewegtbild',
       nameLine1: 'Sophia',
       nameLine2: 'Ramahi',
       roles: [{ label: 'Videografin' }, { label: 'Musikvideos' }, { label: 'Imagefilm' }, { label: 'Editorial · Set' }],
@@ -72,60 +72,135 @@ const fallback = {
     subject: 'Projektanfrage',
     headline: 'Projekt <em>anfragen.</em>',
     lead:
-      'Schreiben Sie kurz, welche Leistung Sie interessiert, wo das Projekt stattfindet und welchen Zeitraum Sie planen. Ich melde mich mit Rückfragen oder einem nächsten Schritt per E-Mail.',
+      'Schreib mir kurz, worum es geht, wo das Shooting stattfinden soll und welchen Zeitraum du planst. Du sprichst direkt mit mir. Ich melde mich persönlich per E-Mail oder Telefon mit Rückfragen und einem klaren Vorschlag.',
   },
 }
 
 const fallbackChapters: AboutChapter[] = [
   {
-    href: 'automobil-fotografie-duesseldorf.html',
+    href: '/autofotografie-duesseldorf.html',
     image: 'assets/optimized/assets-photos-automobil-sunset-960.webp',
-    alt: 'Automobilfotografie',
+    alt: 'Automobilfotografie in Düsseldorf und NRW von Matthias Ramahi',
     width: 960,
     height: 640,
     title: 'Automobil',
+    linkLabel: 'Zur Autofotografie →',
   },
   {
-    href: 'sportwagen-fotografie-duesseldorf.html',
+    href: '/sportwagen-fotografie.html',
     image: 'assets/optimized/assets-photos-automobil-neon-960.webp',
-    alt: 'Sportwagenfotografie',
+    alt: 'Sportwagenfotografie im kontrollierten Licht von Matthias Ramahi',
     width: 960,
     height: 640,
     title: 'Sportwagen',
+    linkLabel: 'Zur Sportwagenfotografie →',
   },
   {
-    href: 'oldtimer-fotografie-duesseldorf.html',
+    href: '/oldtimer-fotografie.html',
     image: 'assets/optimized/assets-photos-oldtimer-stage-960.webp',
-    alt: 'Oldtimerfotografie',
+    alt: 'Oldtimer- und Sammlerfahrzeugfotografie von Matthias Ramahi',
     width: 960,
     height: 640,
     title: 'Oldtimer',
+    linkLabel: 'Zur Oldtimerfotografie →',
   },
   {
-    href: 'motorrad-fotografie-duesseldorf.html',
+    href: '/motorrad-fotografie.html',
     image: 'assets/optimized/assets-photos-motorrad-720.webp',
-    alt: 'Motorradfotografie',
+    alt: 'Motorrad- und Custom-Bike-Fotografie in NRW von Matthias Ramahi',
     width: 720,
     height: 1080,
     title: 'Motorrad',
+    linkLabel: 'Zur Motorradfotografie →',
   },
   {
-    href: 'portraitfotografie-duesseldorf.html',
+    href: '/portraitfotografie-duesseldorf.html',
     image: 'assets/optimized/assets-photos-portrait-blue-720.webp',
-    alt: 'Portraitfotografie',
+    alt: 'Portrait- und Personal-Branding-Fotografie in Düsseldorf von Matthias Ramahi',
     width: 720,
     height: 900,
     title: 'Portrait',
+    linkLabel: 'Zur Portraitfotografie →',
   },
   {
-    href: 'landschaftsfotografie-duesseldorf.html',
+    href: '/landschaftsfotografie.html',
     image: 'assets/optimized/assets-photos-landschaft-720.webp',
-    alt: 'Landschaftsfotografie',
+    alt: 'Landschaftsfotografie und Fine-Art-Prints von Matthias Ramahi',
     width: 720,
     height: 1080,
     title: 'Landschaft',
+    linkLabel: 'Zu Landschaft & Prints →',
   },
 ]
+
+const aboutWorkflowSteps = [
+  {
+    title: 'Briefing & Ziel',
+    text: 'Wir klären vorab Motiv, Einsatzbereich und Umfang: privates Shooting, Verkaufsinserat, Händlerbestand, Personal Branding oder Fine-Art-Print.',
+  },
+  {
+    title: 'Location & Licht',
+    text: 'Ich plane Ort, Sonnenstand und Lichtfenster passend zu Lackfarbe, Outfit oder gewünschter Stimmung, in Düsseldorf, Erkrath, im Rheinland oder im Ruhrgebiet.',
+  },
+  {
+    title: 'Shooting vor Ort',
+    text: 'Konzentriert und ohne Zeitdruck. Fahrzeuge fotografiere ich on-location, im Showroom oder am Stellplatz; Portraits entstehen mit ruhiger Führung statt steifer Posen.',
+  },
+  {
+    title: 'Auswahl & Retusche',
+    text: 'Du erhältst eine kuratierte Vorauswahl in einer Online-Galerie. Deine Favoriten bearbeite ich farbtreu, sauber und ohne künstliche Effekt-Filter.',
+  },
+  {
+    title: 'Ausgabe & Print',
+    text: 'Lieferung getrennt für Web, Social Media und Druck. Auf Wunsch entstehen aus denselben Dateien kalibrierte Fine-Art-Prints oder Großformate über das Partnerlabor.',
+  },
+]
+
+const aboutCraftPrinciples = [
+  {
+    claim: 'Kontrolliertes Licht statt nachträglicher Effekte.',
+    note: 'Spiegelungen auf Lack, Chrom und Glas löse ich über Standpunkt, Polfilter und Lichtfenster vor Ort und nicht erst mit schweren Presets am Rechner.',
+  },
+  {
+    claim: 'Ehrliche Portraits ohne Standard-Posen.',
+    note: 'Für Business, Personal Branding oder Dating führe ich Blick, Haltung und Distanz ruhig an, damit die Bilder professionell wirken und trotzdem nach dir aussehen.',
+  },
+  {
+    claim: 'Regionale Basis in Erkrath bei Düsseldorf.',
+    note: 'Mein Standort an der Kempener Straße 44 in 40699 Erkrath liegt direkt vor den Toren Düsseldorfs. Von hier sind es kurze Wege ins gesamte Rheinland, nach Köln und ins Ruhrgebiet.',
+  },
+  {
+    claim: 'Ein Ansprechpartner vom Briefing bis zur Datei.',
+    note: 'Keine Agentur-Zwischenstufe und keine durchgereichten Calls. Du planst, fotografierst und wählst deine Bilder direkt mit mir aus.',
+  },
+]
+
+const aboutSpecialtyLinks = [
+  { label: 'Personal Branding & Business', href: '/personal-branding-fotografie-duesseldorf.html' },
+  { label: 'Dating-Fotoshooting Düsseldorf', href: '/dating-fotoshooting-duesseldorf.html' },
+  { label: 'Fotolabor & Fine-Art-Druck', href: '/fotolabor-druck-duesseldorf.html' },
+  { label: 'Weitere Leistungen', href: '/leistungen.html' },
+  { label: 'Preise & Umfang', href: '/fotoshooting-preise-duesseldorf.html' },
+  { label: 'Journal & Praxisartikel', href: '/blog.html' },
+]
+
+const aboutCanonicalHrefMap: Record<string, string> = {
+  'automobil-fotografie-duesseldorf.html': '/autofotografie-duesseldorf.html',
+  '/automobil-fotografie-duesseldorf.html': '/autofotografie-duesseldorf.html',
+  'sportwagen-fotografie-duesseldorf.html': '/sportwagen-fotografie.html',
+  '/sportwagen-fotografie-duesseldorf.html': '/sportwagen-fotografie.html',
+  'oldtimer-fotografie-duesseldorf.html': '/oldtimer-fotografie.html',
+  '/oldtimer-fotografie-duesseldorf.html': '/oldtimer-fotografie.html',
+  'motorrad-fotografie-duesseldorf.html': '/motorrad-fotografie.html',
+  '/motorrad-fotografie-duesseldorf.html': '/motorrad-fotografie.html',
+  'landschaftsfotografie-duesseldorf.html': '/landschaftsfotografie.html',
+  '/landschaftsfotografie-duesseldorf.html': '/landschaftsfotografie.html',
+}
+const normalizeChapterHref = (href?: string) => {
+  if (!href) return '#'
+  const trimmed = href.trim()
+  return aboutCanonicalHrefMap[trimmed] || trimmed
+}
 
 const aboutHero = { ...fallback.hero, ...((doc?.aboutHero as Record<string, unknown> | undefined) || {}) }
 const aboutStatement = { ...fallback.statement, ...((doc?.aboutStatement as Record<string, unknown> | undefined) || {}) }
@@ -164,25 +239,25 @@ const heroSlides =
 const aboutFaq = [
   {
     q: 'Wo hat Matthias Ramahi seinen Standort und in welcher Region finden Shootings statt?',
-    a: 'Meine Basis liegt in Erkrath direkt neben Düsseldorf. Shootings für Fahrzeuge, Motorräder und Portraits finden im gesamten Rheinland, im Ruhrgebiet und in ganz NRW statt, für größere Kampagnen und Serien auch deutschlandweit.',
+    a: 'Meine Basis liegt an der Kempener Straße 44 in 40699 Erkrath, direkt neben Düsseldorf. Shootings für Automobile, Motorräder und Portraits finden in Düsseldorf, im gesamten Rheinland, im Ruhrgebiet und in ganz NRW statt, für ausgewählte Produktionen und Printversand auch deutschlandweit.',
   },
   {
     q: 'Wie läuft eine Zusammenarbeit von der ersten Anfrage bis zur Bildlieferung ab?',
-    a: 'Nach einer kurzen Nachricht klären wir Motiv, Einsatzbereich, Ort und Lichtfenster. Beim Termin entstehen strukturierte Serien ohne Zeitdruck, anschließend folgen eine kuratierte Vorauswahl, zurückhaltende Bearbeitung und Lieferung für Web und Print.',
+    a: 'Nach einer kurzen Nachricht klären wir direkt Motiv, Einsatzbereich, Location und Lichtfenster. Beim Termin entstehen strukturierte Serien ohne Zeitdruck, anschließend folgen eine kuratierte Vorauswahl in einer Online-Galerie, zurückhaltende farbtreue Bearbeitung und die Ausgabe für Web, Social und Print.',
   },
   {
     q: 'Was kostet ein Fotoshooting bei Matthias Ramahi?',
-    a: 'Ein Shooting beginnt bei 250 € inkl. MwSt. Der genaue Umfang richtet sich nach Motiv, Dauer, Locationaufwand und gewünschten Nutzungsrechten und wird vorab transparent abgestimmt.',
+    a: 'Ein Shooting beginnt bei 250 € inkl. MwSt. Der genaue Umfang richtet sich nach Motiv, Dauer, Locationaufwand und gewünschten Nutzungsrechten und wird vor dem Termin transparent abgestimmt.',
   },
   {
     q: 'Können Foto und Video für ein Projekt gemeinsam gebucht werden?',
-    a: 'Ja. Für Bewegtbild arbeite ich regelmäßig parallel am Set mit meiner Schwester Sophia Ramahi zusammen, damit Fotografie und Videografie nahtlos zusammenpassen.',
+    a: 'Ja. Für Bewegtbild arbeite ich regelmäßig parallel am Set mit meiner Schwester Sophia Ramahi zusammen, damit Fotografie und Videografie in Lichtstimmung und Timing nahtlos zusammenpassen.',
   },
 ]
 ---
 <AdoptedPageLayout legacyFile={legacyFile} current="ueber-mich" doc={doc}>
   <main>
-    <section class="ovh ovh--ueber" data-theme="dark" data-header-theme="dark" aria-label="Matthias Ramahi — Fotograf aus Düsseldorf" {...tinaAttrs(aboutHeroSource, 'image')}>
+    <section class="ovh ovh--ueber" data-theme="dark" data-header-theme="dark" aria-label="Matthias Ramahi — Fotograf aus Erkrath bei Düsseldorf" {...tinaAttrs(aboutHeroSource, 'image')}>
       <HeroMotion variant="pan" slides={heroSlides} />
       <div class="ovh__grid">
         <p class="ovh__kicker" {...tinaAttrs(aboutHeroSource, 'kicker')}>{aboutHero.kicker}</p>
@@ -198,14 +273,32 @@ const aboutFaq = [
       </div>
     </section>
 
-    <section class="statement sec-light" data-theme="light" data-header-theme="light" aria-label="Haltung">
+    <section class="statement sec-light" data-theme="light" data-header-theme="light" aria-label="Haltung und Standort">
       <div class="section-inner">
         <div>
-          <h2 {...tinaAttrs(aboutStatementSource, 'headline')}>{aboutStatement.headline}<br /> <em {...tinaAttrs(aboutStatementSource, 'headlineEmphasis')}>{aboutStatement.headlineEmphasis}</em>.</h2>
+          <h2 {...tinaAttrs(aboutStatementSource, 'headline')}>{aboutStatement.headline}{' '}<br /><em {...tinaAttrs(aboutStatementSource, 'headlineEmphasis')}>{aboutStatement.headlineEmphasis}</em>.</h2>
         </div>
         <div class="body">
           <p class="lead" {...tinaAttrs(aboutStatementSource, 'lead')}>{aboutStatement.lead}</p>
           <p {...tinaAttrs(aboutStatementSource, 'body')}>{aboutStatement.body}</p>
+          <dl class="about-facts" aria-label="Standort und Eckdaten">
+            <div>
+              <dt>Standort</dt>
+              <dd>Kempener Straße 44, 40699 Erkrath (direkt bei Düsseldorf)</dd>
+            </div>
+            <div>
+              <dt>Einsatzgebiet</dt>
+              <dd>Düsseldorf, Rheinland, Ruhrgebiet &amp; ganz NRW</dd>
+            </div>
+            <div>
+              <dt>Einstieg</dt>
+              <dd>Shootings ab 250 € inkl. MwSt. · <a href="/fotoshooting-preise-duesseldorf.html">Preise &amp; Umfang</a></dd>
+            </div>
+            <div>
+              <dt>Kontakt</dt>
+              <dd>Direkt mit Matthias Ramahi · <a href="tel:+4917642449858">+49 176 42 44 98 58</a></dd>
+            </div>
+          </dl>
           <div class="actions">
             <a class="btn dark" href={aboutStatement.primaryHref as string} {...tinaAttrs(aboutStatementSource, 'primaryLabel')}>{aboutStatement.primaryLabel}</a>
             <a class="btn" href={aboutStatement.secondaryHref as string} style="color:var(--ink);border-color:var(--ink)" {...tinaAttrs(aboutStatementSource, 'secondaryLabel')}>{aboutStatement.secondaryLabel}</a>
@@ -214,10 +307,44 @@ const aboutFaq = [
       </div>
     </section>
 
+    <section class="um-sec um-sec--dark" data-theme="dark" data-header-theme="dark" aria-labelledby="um-ablauf-title">
+      <div class="um-inner">
+        <header class="um-head">
+          <h2 id="um-ablauf-title">Vom Briefing <em>zum Bild.</em></h2>
+          <p class="um-lead">Vom ersten Gespräch über die Location-Planung bis zu den fertigen Dateien oder dem gerahmten Print.</p>
+        </header>
+        <ol class="um-rows">
+          {aboutWorkflowSteps.map((step) => (
+            <li class="um-row">
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <section class="um-sec um-sec--light" data-theme="light" data-header-theme="light" aria-labelledby="um-werte-title">
+      <div class="um-inner">
+        <header class="um-head">
+          <h2 id="um-werte-title">Wofür meine Arbeit <em>steht.</em></h2>
+          <p class="um-lead">Gute Bilder entstehen vor dem Auslöser, durch Vorbereitung, saubere Lichtführung und ruhige Zusammenarbeit vor Ort.</p>
+        </header>
+        <ul class="um-rows">
+          {aboutCraftPrinciples.map((item) => (
+            <li class="um-row">
+              <h3>{item.claim}</h3>
+              <p>{item.note}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
     <section class="chapters sec-dark" id="schwerpunkte" data-theme="dark" data-header-theme="dark" aria-label="Schwerpunkte">
       <div class="section-inner">
         <div class="chapters-head">
-          <h2 {...tinaAttrs(aboutChaptersSource, 'headline')}>{aboutChapters.headline}<br /> <em {...tinaAttrs(aboutChaptersSource, 'headlineEmphasis')}>{aboutChapters.headlineEmphasis}</em>.</h2>
+          <h2 {...tinaAttrs(aboutChaptersSource, 'headline')}>{aboutChapters.headline}{' '}<br /><em {...tinaAttrs(aboutChaptersSource, 'headlineEmphasis')}>{aboutChapters.headlineEmphasis}</em>.</h2>
           <p class="lead" {...tinaAttrs(aboutChaptersSource, 'intro')}>{aboutChapters.intro}</p>
         </div>
         <div class="chapter-grid">
@@ -227,7 +354,7 @@ const aboutFaq = [
             const chapterDimensions = imageDimensions(chapter.image, 'card')
             const fallbackChapter = fallbackChapters[index]
             return (
-            <a class="chapter" href={chapter.href || '#'}>
+            <a class="chapter" href={normalizeChapterHref(chapter.href)}>
               <div class="img">
                 <img
                   src={imageDisplayUrl(chapter.image, 'card') || ''}
@@ -240,11 +367,18 @@ const aboutFaq = [
                 />
               </div>
               <div class="head"><h3 {...tinaAttrs(chapter, 'title')}>{chapter.title}</h3></div>
-              <span class="meta"><span class="arr" {...tinaAttrs(chapter, 'linkLabel')}>{chapter.linkLabel || 'Bereich ansehen →'}</span></span>
+              <span class="meta"><span class="arr" {...tinaAttrs(chapter, 'linkLabel')}>{(chapter.linkLabel || 'Bereich ansehen →').replace(/ (?=→$)/, String.fromCharCode(160))}</span></span>
             </a>
             )
           })}
         </div>
+        <nav class="about-specialties" aria-label="Weitere Schwerpunkte und Direktlinks">
+          <ul class="about-specialties__list">
+            {aboutSpecialtyLinks.map((item) => (
+              <li><a href={item.href}>{item.label}</a></li>
+            ))}
+          </ul>
+        </nav>
       </div>
     </section>
 
@@ -256,6 +390,7 @@ const aboutFaq = [
           <p {...tinaAttrs(aboutSisterSource, 'body')}>{aboutSister.body}</p>
           <div class="actions">
             <a class="btn" href={aboutSister.href as string} {...tinaAttrs(aboutSisterSource, 'buttonLabel')}>{aboutSister.buttonLabel}</a>
+            <a class="btn" href="/videografie-duesseldorf.html">Mehr zur Videografie</a>
           </div>
         </div>
         <a class="sister-card" href="https://sophiaramahi.de/" target="_blank" rel="noopener">
@@ -279,6 +414,160 @@ const aboutFaq = [
       data-contact-lead={aboutContact.lead as string}
     />
   </main>
+
+  <style>
+    .about-facts {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px 28px;
+      margin: 28px 0 0;
+      padding: 22px 0;
+      border-top: 1px solid rgba(10, 12, 17, 0.14);
+      border-bottom: 1px solid rgba(10, 12, 17, 0.14);
+    }
+    .about-facts dt {
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.3;
+      color: color-mix(in oklch, var(--ink, #0a0c11) 58%, transparent);
+      margin-bottom: 4px;
+    }
+    .about-facts dd {
+      margin: 0;
+      font-size: 14.5px;
+      line-height: 1.5;
+      color: var(--ink, #0a0c11);
+    }
+    .about-facts a {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .about-specialties {
+      margin-top: clamp(32px, 4vw, 52px);
+      padding-top: clamp(22px, 2.6vw, 32px);
+      border-top: 1px solid rgba(243, 245, 239, 0.14);
+    }
+    .about-specialties__list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 24px;
+    }
+    .about-specialties__list a {
+      color: #f3f5ef;
+      text-decoration: none;
+      font-size: 14px;
+      line-height: 1.4;
+      border-bottom: 1px solid rgba(243, 245, 239, 0.28);
+      padding-bottom: 2px;
+      transition: border-color 0.25s ease, color 0.25s ease;
+    }
+    .about-specialties__list a:hover {
+      color: #c8ccc6;
+      border-color: #f3f5ef;
+    }
+    /* Sister: .section-inner bringt den Seitenrand schon mit; das zusätzliche
+       Section-Padding aus native-about.css verdoppelte den Rand. */
+    .sister.sister--v2 {
+      padding-left: 0;
+      padding-right: 0;
+    }
+    /* Ablauf + Werte: ruhige Zeilen, Titel links, Text rechts (wie Statement 5fr/7fr). */
+    .um-sec--dark {
+      background: var(--bg, #020306);
+      color: var(--fg, #f3f5ef);
+      border-top: 1px solid rgba(243, 245, 239, 0.08);
+    }
+    .um-sec--light {
+      background: var(--paper, #f3f5ef);
+      color: var(--ink, #0a0c11);
+    }
+    .um-inner {
+      max-width: var(--maxw, 1540px);
+      margin: 0 auto;
+      padding: clamp(64px, 7vw, 112px) clamp(22px, 5vw, 76px);
+    }
+    .um-head,
+    .um-row {
+      display: grid;
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      column-gap: clamp(40px, 7vw, 120px);
+    }
+    .um-head {
+      align-items: end;
+      row-gap: 20px;
+      margin-bottom: clamp(32px, 4vw, 56px);
+    }
+    .um-head h2 {
+      margin: 0;
+      font-size: clamp(38px, 5.2vw, 92px);
+      line-height: 0.92;
+      text-transform: uppercase;
+      max-width: 12ch;
+      color: inherit;
+    }
+    .um-head h2 em {
+      font-style: normal;
+    }
+    .um-sec--dark .um-head h2 em { color: #c8ccc6; }
+    .um-sec--light .um-head h2 em { color: #7a8a86; }
+    .um-lead {
+      margin: 0;
+      max-width: 52ch;
+      font-size: clamp(16px, 1.2vw, 19px);
+      line-height: 1.6;
+      text-wrap: pretty;
+    }
+    .um-sec--dark .um-lead { color: rgba(243, 245, 239, 0.72); }
+    .um-sec--light .um-lead { color: rgba(10, 12, 17, 0.66); }
+    .um-rows {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .um-row {
+      row-gap: 10px;
+      padding: clamp(22px, 2.6vw, 34px) 0;
+    }
+    .um-sec--dark .um-rows,
+    .um-sec--dark .um-row { border-color: rgba(243, 245, 239, 0.14); }
+    .um-sec--light .um-rows,
+    .um-sec--light .um-row { border-color: rgba(10, 12, 17, 0.14); }
+    .um-rows { border-top: 1px solid; }
+    .um-row { border-bottom: 1px solid; }
+    .um-row h3 {
+      margin: 0;
+      font-size: clamp(19px, 1.6vw, 26px);
+      line-height: 1.15;
+      color: inherit;
+      text-wrap: balance;
+    }
+    .um-row p {
+      margin: 0;
+      max-width: 60ch;
+      font-size: clamp(15px, 1.05vw, 17px);
+      line-height: 1.62;
+      text-wrap: pretty;
+    }
+    .um-sec--dark .um-row p { color: rgba(243, 245, 239, 0.72); }
+    .um-sec--light .um-row p { color: rgba(10, 12, 17, 0.68); }
+    @media (max-width: 880px) {
+      .um-head,
+      .um-row {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .um-head { align-items: start; }
+    }
+    @media (max-width: 680px) {
+      .about-facts {
+        grid-template-columns: 1fr;
+      }
+      .um-inner { padding: 48px 20px; }
+    }
+  </style>
 
   <!-- Hero entrance: add .is-in so the OVH title/lead/actions animate in.
        site-chrome.js does not handle .ovh, so this mirrors the legacy inline

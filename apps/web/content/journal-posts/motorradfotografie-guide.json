@@ -1,0 +1,154 @@
+{
+  "title": "Motorradfotografie Guide: Perspektiven, Licht, Fahrdynamik und Planung",
+  "slug": "motorradfotografie-guide",
+  "category": "motorcycle",
+  "tags": [
+    "Motorrad",
+    "Guide",
+    "Perspektive",
+    "Dynamik"
+  ],
+  "publishedAt": "2026-11-27T09:00:00.000Z",
+  "excerpt": "Motorräder wirkungsvoll fotografieren: ideale Kamerahöhe, Ständer-Seite, Hintergrund-Trennung, Mitzieher vs. Rolling Shots sowie Vorbereitung und Location-Tipps in NRW.",
+  "coverImage": "/uploads/payload/20250309-DSC00201.webp",
+  "coverAlt": "Schwarze Kawasaki Ninja auf einer leeren Straße unter grauem Himmel",
+  "readingTime": 9,
+  "seo": {
+    "title": "Motorradfotografie Guide: Perspektive, Licht & Bildserie",
+    "description": "Motorrad richtig fotografieren: Kamerahöhe, Brennweite, Ständer-Seite, Mitzieher vs. Rolling Shots und Lichtfenster für starke Bike-Bildserien.",
+    "focusKeyword": "Motorradfotografie Guide",
+    "searchIntent": "Informationssuche: Motorradfahrer und Fotografen suchen einen praxisnahen Gesamt-Leitfaden zu Perspektiven, Technik, Fahrdynamik und Vorbereitung in der Motorradfotografie.",
+    "canonicalUrl": "https://matthiasramahi.de/blog-motorradfotografie-guide.html",
+    "legacyUrl": "blog-motorradfotografie-guide.html",
+    "ogImage": "/uploads/payload/20250309-DSC00201.webp",
+    "noIndex": false
+  },
+  "legacy": {
+    "sourceFile": "blog-motorradfotografie-guide.html",
+    "sourceUrl": "https://matthiasramahi.de/blog-motorradfotografie-guide.html",
+    "migrationStatus": "new",
+    "renderSource": "structured-astro"
+  },
+  "status": "published",
+  "createdAt": "2026-11-27T09:00:00.000Z",
+  "updatedAt": "2026-11-27T22:15:00.000Z",
+  "relatedPages": [
+    {
+      "label": "Motorradfotografie NRW",
+      "href": "/motorrad-fotografie.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Motorradfotografie Düsseldorf",
+      "href": "/motorrad-fotografie-duesseldorf.html",
+      "seoPurpose": "commercial-support",
+      "rel": "follow",
+      "openInNewTab": false
+    },
+    {
+      "label": "Motorrad-Fotoshooting Checkliste",
+      "href": "/blog-motorrad-fotoshooting-checkliste.html",
+      "seoPurpose": "contextual",
+      "rel": "follow",
+      "openInNewTab": false
+    }
+  ],
+  "blocks": [
+    {
+      "_template": "textBlock",
+      "style": "summary",
+      "eyebrow": "Kurzantwort",
+      "headline": "Was gute Motorradfotos sofort von Schnappschüssen trennt",
+      "body": "Kamerahöhe runter: Fotografiere auf Scheinwerfer- oder Tankhöhe statt aus dem Stand. Das gibt dem Bike Präsenz und streckt die Linien.\nSchokoladenseite & Lenker: Meist wirkt die Seite ohne Seitenständer ruhiger, bei den meisten Motorrädern also die rechte; ein leicht weggedrehter Lenker öffnet das Vorderrad.\nStatisch + Dynamik kombinieren: Eine runde Serie verbindet ruhige Standbilder, Mechanik-Details und sichere Mitzieher (1/30–1/60 s) vom Straßenrand."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Warum Motorräder einen extrem ruhigen Hintergrund brauchen",
+      "body": "Anders als ein Auto hat ein Motorrad keine geschlossene Karosseriewand: Zwischen Rahmen, Gabel, Motorblock, Felgenspeichen und Heck schimmert ständig der Hintergrund durch. Steht die Maschine vor einem unruhigen Zaun, parkenden Autos oder dichtem Gestrüpp, verliert die Silhouette sofort ihre Klarheit.\n\nSuche deshalb Flächen mit Abstand zum Hintergrund, etwa eine freie Asphaltfläche, eine ruhige Beton- oder Ziegelwand, eine weite Kurve oder einen offenen Horizont. Mit Brennweiten zwischen 50 und 135 mm und geöffneter Blende (f/2 bis f/4) löst sich das Bike sauber von der Umgebung."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Perspektiven, Seitenständer und kleine Details am Bike",
+      "body": "Ein Motorrad aus normaler Augenhöhe wirkt schnell klein und gedrungen. Geh in die Hocke auf Höhe von Tank oder Scheinwerfer. Prüfe zudem, welche Seite sauberer wirkt: Häufig zeigt die rechte Seite Auspuff und freie Linie, während auf der linken Seite der Seitenständer ins Bild ragt. Auch der Lenkereinschlag entscheidet: Nach vorn zur Kamera gedreht betont er Gabel und Bremse, leicht weggedreht wirkt das Profil oft dynamischer.\n\nVergiss Details nicht: Tankkante, Cockpit, Bremsanlage, Krümmer, Fußrasten oder Custom-Teile erzählen die Charaktergeschichte der Maschine und lockern jede Bildserie spürbar auf."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Vergleichstabelle: Standbild, Detail, Mitzieher und Rolling Shot",
+      "body": "Je nach Ziel der Serie kombinieren wir statische Aufnahmen mit kontrollierter Fahrdynamik. Diese Tabelle fasst Technik und Aufwand zusammen:\n\n| Bildtyp | Empfohlene Brennweite | Start-Einstellungen | Wirkung & Stärke | Sicherheit & Aufwand |\n| --- | --- | --- | --- | --- |\n| **Standbild (3/4 & Profil)** | 50–85 mm | f/2.8–f/4, Basis-ISO | Klare Silhouette, Proportion, Lack & Mechanik | Sehr sicher; ideal als Basis jeder Serie |\n| **Mechanik- & Detailserie** | 50–105 mm | f/2–f/3.5, nah fokussiert | Wertigkeit von Metall, Carbon, Nähten & Umbauten | Ruhiges Licht oder offenen Schatten nutzen |\n| **Mitzieher (Pan-Shot)** | 50–135 mm | 1/30–1/60 s, AF-C, Serienbild | Echte Fahrgeschwindigkeit ohne Begleitfahrzeug | Sicherer Standpunkt abseits der Fahrbahn nötig |\n| **Rolling Shot (Car-to-Bike)** | 24–50 mm | 1/60–1/125 s, ND-Filter bei Sonne | Sehr unmittelbare Nähe in Bewegung | Hoher Planungsaufwand; abgesicherte Strecke & Team Pflicht |\n| **Blaue Stunde / Nacht** | 35–85 mm | Stativ, ISO 100–800, ggf. LED/Blitz | Dramatische Konturen, leuchtende Scheinwerfer & Rücklicht | Warnweste, rutschfester Stand, Licht vorab testen |"
+    },
+    {
+      "_template": "imageSequence",
+      "headline": "Silhouette und Seitenprofil im sauberen Licht",
+      "layout": "editorial-pair",
+      "items": [
+        {
+          "image": "/uploads/payload/_DSC6979.webp",
+          "caption": "Motorrad im weichen Abendlicht vor ruhigem Hintergrund mit klarer Kontur",
+          "cropIntent": "editorial"
+        },
+        {
+          "image": "/uploads/payload/_DSC7026.webp",
+          "caption": "Seitenprofil auf niedriger Kamerahöhe: Proportion und Fahrwerk bleiben unverzerrt",
+          "cropIntent": "editorial"
+        }
+      ]
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Vorbereitung und Location-Wahl in Düsseldorf & NRW",
+      "body": "Vor dem Shooting lohnt eine kurze Sichtkontrolle: Insektenreste an Front und Windschild entfernen, Kette und Felgen von grobem Schmutz befreien und lose Gepäcknetze oder Handyhalterungen abnehmen, sofern sie nicht zur Reisegeschichte gehören. Ein sauberes Mikrofasertuch im Rucksack reicht am Set für letzte Fingerabdrücke.\n\nIn NRW bieten Industrieareale, ruhige Nebenstraßen im Bergischen Land, Uferabschnitte am Rhein oder Parkdecks am frühen Morgen starke Kontraste für Bikes. Prüfe vorab immer Zufahrt, Untergrund (kein weicher Schotter für den Seitenständer) und mögliche Betreiber-Regeln."
+    },
+    {
+      "_template": "linkList",
+      "headline": "Motorradfotografie & vertiefende Beiträge",
+      "links": [
+        {
+          "label": "Motorradfotografie NRW (ab 250 €)",
+          "href": "/motorrad-fotografie.html"
+        },
+        {
+          "label": "Motorradfotografie Düsseldorf",
+          "href": "/motorrad-fotografie-duesseldorf.html"
+        },
+        {
+          "label": "Custom-Bike-Fotografie",
+          "href": "/custom-bike-fotografie.html"
+        },
+        {
+          "label": "Motorrad nachts fotografieren",
+          "href": "/blog-motorrad-nachts-fotografieren.html"
+        },
+        {
+          "label": "Rechtliche Aspekte bei Motorradfotos",
+          "href": "/blog-motorrad-fotografie-rechtliche-aspekte.html"
+        }
+      ]
+    },
+    {
+      "_template": "ctaBlock",
+      "headline": "Dein Motorrad professionell in Szene setzen",
+      "text": "Standbilder, Details, Biker-Portraits oder dynamische Mitzieher in Düsseldorf und ganz NRW, strukturiert geplant. Shootings ab 250 € inkl. MwSt.",
+      "buttonLabel": "Motorrad-Shooting anfragen"
+    },
+    {
+      "_template": "faqBlock",
+      "headline": "Häufige Fragen zur Motorradfotografie",
+      "items": [
+        {
+          "question": "Welche Verschlusszeit brauche ich für Mitzieher beim Motorrad?",
+          "answer": "Bewährte Startwerte liegen zwischen 1/30 und 1/60 Sekunde bei 40 bis 70 km/h. Wichtig sind ein gleichmäßiger Hüftschwenk, kontinuierlicher Autofokus (AF-C) und Serienbild."
+        },
+        {
+          "question": "Soll beim Motorrad-Shooting das Abblendlicht an oder aus sein?",
+          "answer": "In der Dämmerung und bei Mitziehern setzt ein eingeschalteter Scheinwerfer einen starken Akzent. Bei hellem Tageslicht oder Nahaufnahmen von vorn kann grelles LED-Licht dagegen überstrahlen. Im Zweifel beides testen."
+        },
+        {
+          "question": "Wie lange dauert ein professionelles Motorrad-Fotoshooting?",
+          "answer": "Je nach Bildtypen und Anzahl der Locations dauert ein Motorrad-Shooting meist zwei bis vier Stunden. Die wichtigsten Motive liegen dabei im besten Lichtfenster am Nachmittag oder Abend."
+        }
+      ]
+    }
+  ]
+}

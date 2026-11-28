@@ -37,7 +37,6 @@ const paragraphsOf = (text: string) => text.split(/\n\s*\n/).map((paragraph) => 
     <ol class="mr-guide__steps">
       {items.map((item, index) => (
         <li class={index >= 2 ? 'mr-guide__item is-collapsible' : 'mr-guide__item'}>
-          <span>{String(index + 1).padStart(2, '0')}</span>
           <div>
             {index >= 2 ? (
               <>
@@ -200,7 +199,7 @@ const paragraphsOf = (text: string) => text.split(/\n\s*\n/).map((paragraph) => 
     border-top: 1px solid var(--mrg-line);
     display: grid;
     gap: clamp(1rem, 2vw, 2rem);
-    grid-template-columns: 3rem minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr);
     padding: clamp(1.75rem, 2.6vw, 2.5rem) 0;
   }
 

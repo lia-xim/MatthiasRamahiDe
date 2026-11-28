@@ -189,3 +189,8 @@ header.topbar a.topbar__cta {
 }
 header.topbar a.topbar__cta:hover { background: #f3f5ef !important; border-color: #f3f5ef !important; color: #0a0c11 !important; }
 header.topbar.theme-light a.topbar__cta:hover { background: #0a0c11 !important; border-color: #0a0c11 !important; color: #f3f5ef !important; }
+
+/* Hero-Titelzeilen: overflow:hidden bei engem Zeilenabstand schnitt Umlaut-
+   Punkte auf Grossbuchstaben ab (KÖLN, DÜSSELDORF). Platz nach oben schaffen,
+   ohne die Zeilenhoehe zu veraendern. */
+body .pd-title .line { padding-top: .18em; margin-top: -.18em; }

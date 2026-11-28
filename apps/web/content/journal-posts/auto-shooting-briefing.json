@@ -10,7 +10,7 @@
   ],
   "publishedAt": "2026-08-19T06:00:00Z",
   "excerpt": "Ein belastbares Briefing für Fahrzeugfotografie: Ziel, Pflichtmotive, Nutzung, Fahrzeugdaten, Location, Verantwortlichkeiten, Formate und Auswahlprozess.",
-  "coverImage": "/uploads/payload/assets-portfolio-dsc3879-1920.webp",
+  "coverImage": "/assets/portfolio/automobil-porsche-911-schloss-bensberg-dsc5852.webp",
   "readingTime": 6,
   "blocks": [
     {
@@ -54,6 +54,11 @@
       "_template": "imageSequence"
     },
     {
+      "_template": "textBlock",
+      "headline": "Shotlist-Matrix nach Einsatzweck: Privatverkauf, Autohaus & Marke",
+      "body": "Ein kompaktes Briefing trennt sofort die Pflichtbilder nach Verwendungszweck, damit am Set keine Zeit für unpassende Motive verloren geht:\n\n| Bildebene | Privatverkauf / Auktion | Autohaus / Händlerbestand | Marke / Kampagne / Editorial |\n| --- | --- | --- | --- |\n| Außenansichten | Alle 4 Ecken, Front, Heck, beide Seiten (verzerrungsfrei) | Einheitliche Standardwinkel über den gesamten Bestand | 2–3 starke Hero-Perspektiven mit Raum für Headlines |\n| Innenraum & Cockpit | Vollständig: Sitze, Tacho, Lenkrad, Mittelkonsole, Kofferraum | Saubere Übersicht + sichtbare Ausstattungsmerkmale | Ausgewählte Material- und Design-Details (Leder, Nähte) |\n| Zustand & Technik | Ehrliche Nahbilder von Felgen, Reifen, Motorraum & Mängeln | Saubere Dokumentation ohne übertriebene Retusche | Nachrangig; Fokus liegt auf Form, Licht und Atmosphäre |\n| Formate | 4:3 oder 3:2 quer für mobile.de / AutoScout24 | Einheitliches Portal-Format + Web-Thumbnail | Querformat (Header), 4:5 (Feed), 9:16 (Stories/Reels) |\n| Bildumfang (Richtwert) | 18–30 kuratierte Bilder | 12–20 standardisierte Bestandsbilder pro Fahrzeug | 8–15 hochkuratierte Key Visuals + Detailserie |"
+    },
+    {
       "headline": "Nutzungsrechte und Formate beeinflussen bereits die Aufnahme",
       "body": "Website, Händlerportal, Presse, Printanzeige und Social Media stellen unterschiedliche Anforderungen an Ausschnitt und Auflösung. Breite Header brauchen Negativraum, vertikale Stories andere Fahrzeugpositionen und ein Inserat klare Lesbarkeit im kleinen Vorschaubild. „Wir schneiden später“ funktioniert nur, wenn das Motiv genügend Raum und eine passende Perspektive bietet.\n\nIm Briefing werden außerdem Medien, Gebiet, Dauer und beteiligte Parteien geklärt. Fahrzeuge, Personen, Locations und sichtbare Marken können eigene Freigaben erfordern. Der Fotograf kann nur die vereinbarte Produktion zuverlässig planen. Eine spätere Nutzung außerhalb dieses Rahmens sollte nicht stillschweigend vorausgesetzt werden, nur weil die Datei technisch vorhanden ist.",
       "_template": "textBlock"
@@ -80,7 +85,7 @@
       "links": [
         {
           "label": "Fotoshooting mit Auto NRW",
-          "href": "/fotoshooting-mit-auto.html"
+          "href": "/autofotografie.html"
         },
         {
           "label": "Autofotografie Düsseldorf",
@@ -93,11 +98,6 @@
         {
           "label": "Portfolio Automobil",
           "href": "/portfolio/portfolio-auswahl-automobil"
-        },
-        {
-          "label": "Automobilfotografie in Düsseldorf & NRW",
-          "href": "/automobil-fotografie.html",
-          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]
     },
@@ -127,13 +127,13 @@
     }
   ],
   "seo": {
-    "title": "Auto-Shooting-Briefing und Shotlist | Matthias Ramahi",
-    "description": "Ein belastbares Briefing für Fahrzeugfotografie: Ziel, Pflichtmotive, Nutzung, Fahrzeugdaten, Location, Verantwortlichkeiten, Formate und Auswahlprozess.",
+    "title": "Auto-Shooting-Briefing: Shotlist für Marke & Verkauf",
+    "description": "Auto-Shooting-Briefing mit Shotlist-Matrix für Privatverkauf, Autohaus und Kampagne: Pflichtmotive, Formate, Nutzungsrechte und Ablauf.",
     "focusKeyword": "Auto-Shooting-Briefing und Shotlist",
     "searchIntent": "Informationssuche: Nutzer suchen Fachwissen, Beispiele und Einordnung zu Auto-Shooting-Briefing und Shotlist.",
     "canonicalUrl": "https://matthiasramahi.de/blog-auto-shooting-briefing.html",
     "legacyUrl": "blog-auto-shooting-briefing.html",
-    "ogImage": "/uploads/payload/assets-portfolio-dsc3879-1920.webp",
+    "ogImage": "/assets/portfolio/automobil-porsche-911-schloss-bensberg-dsc5852.webp",
     "noIndex": false
   },
   "legacy": {
@@ -144,11 +144,11 @@
   },
   "status": "published",
   "createdAt": "2026-08-19T06:00:00Z",
-  "updatedAt": "2026-11-24T09:15:00.000Z",
+  "updatedAt": "2026-11-27T22:15:00.000Z",
   "relatedPages": [
     {
       "label": "Automobilfotografie",
-      "href": "/automobil-fotografie.html",
+      "href": "/autofotografie.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
@@ -168,5 +168,5 @@
       "openInNewTab": false
     }
   ],
-  "coverAlt": "Ferrari in einem Ausstellungsraum als geplantes Hauptmotiv einer Fahrzeugserie"
+  "coverAlt": "Silberner Porsche 911 aus tiefer Perspektive vor Schloss Bensberg"
 }

@@ -648,7 +648,7 @@
 
 .journal-support .faq-item summary {
   display: grid;
-  grid-template-columns: 42px minmax(0, 1fr) 32px;
+  grid-template-columns: minmax(0, 1fr) 32px;
   align-items: center;
   gap: 14px;
   min-height: 86px;
@@ -797,7 +797,7 @@
   }
 
   .journal-support .faq-item summary {
-    grid-template-columns: 34px minmax(0, 1fr) 30px;
+    grid-template-columns: minmax(0, 1fr) 30px;
     gap: 10px;
     min-height: 76px;
   }

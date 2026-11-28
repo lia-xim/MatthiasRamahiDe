@@ -1,16 +1,21 @@
 ---
 import ContentBlocks from '../ContentBlocks.astro'
-import ContactCta from '../ContactCta.astro'
+import ContactSlot from '../ContactSlot.astro'
+import { contactSlotProps } from '../../lib/contactSlotProps'
 import PreviewToolbar from '../PreviewToolbar.astro'
 import ResponsiveImage from '../ResponsiveImage.astro'
 import BaseLayout from '../../layouts/BaseLayout.astro'
 import { tinaAttrs } from '../../lib/tinaFieldAttrs'
+import { getLegacyRedirectTarget } from '../../lib/adoptedRoutes'
+import { journalIndexPath, journalTopics } from '../../lib/journalIndexRoutes'
 import {
   imageDisplayUrl,
   internalSitePath,
   linkAttributes,
   routeForDoc,
   toAbsoluteSiteUrl,
+  toDisplayAssetUrl,
+  toRootRelativeHref,
   type PayloadDoc,
   type PayloadLink,
 } from '../../lib/payload'
@@ -37,31 +42,77 @@ if (!preview && canonicalPath && routePath && canonicalPath.replace(/\/$/, '') !
   return Astro.redirect(canonicalPath, 308)
 }
 
+const resolveCanonicalHref = (href?: string) => {
+  const rootHref = toRootRelativeHref(href)
+  if (!rootHref || rootHref === '/' || rootHref.startsWith('#') || /^(?:https?:|mailto:|tel:)/i.test(rootHref)) {
+    return rootHref
+  }
+  const [pathAndQuery, hash = ''] = rootHref.split('#')
+  const [rawPath, query = ''] = pathAndQuery.split('?')
+  let current = rawPath.replace(/^\/+/, '').toLowerCase()
+  let pathname = rawPath
+  const seen = new Set<string>([current])
+  for (let hop = 0; hop < 4; hop += 1) {
+    if (!current || current.includes('/')) break
+    const target = getLegacyRedirectTarget(current)
+    if (target === null) break
+    if (target === '') {
+      pathname = '/'
+      break
+    }
+    const next = target.replace(/^\/+/, '')
+    pathname = `/${next}`
+    const nextLower = next.toLowerCase()
+    if (seen.has(nextLower)) break
+    seen.add(nextLower)
+    current = nextLower
+  }
+  return `${pathname || '/'}${query ? `?${query}` : ''}${hash ? `#${hash}` : ''}`
+}
+
 const title = doc.seo?.title || `${doc.title || 'Journal'} | Matthias Ramahi`
 const description = doc.seo?.description || doc.excerpt || ''
 const coverImage = doc.coverImage || doc.heroImage || doc.seo?.ogImage
 const coverFieldSource = doc.coverImage || doc.heroImage ? doc : doc.seo
 const coverFieldName = doc.coverImage ? 'coverImage' : doc.heroImage ? 'heroImage' : doc.seo?.ogImage ? 'ogImage' : undefined
-const hero = imageDisplayUrl(coverImage, 'wide')
-const categoryLabels: Record<string, string> = {
-  automotive: 'Automotive',
-  portrait: 'Portrait',
-  'landscape-print': 'Landschaft / Print',
-  process: 'Prozess',
-  'behind-the-scenes': 'Behind the Scenes',
+const hero = imageDisplayUrl(coverImage, 'wide', { allowOriginal: true })
+const categoryMeta: Record<string, { label: string; topicFilter: string; pillarHref: string; pillarLabel: string }> = {
+  automotive: { label: 'Automotive', topicFilter: 'automotive', pillarHref: '/automobil-fotografie.html', pillarLabel: 'Automobilfotografie' },
+  'sports-car': { label: 'Sportwagen', topicFilter: 'sportwagen', pillarHref: '/sportwagen-fotografie.html', pillarLabel: 'Sportwagenfotografie' },
+  'classic-car': { label: 'Oldtimer', topicFilter: 'oldtimer', pillarHref: '/oldtimer-fotografie.html', pillarLabel: 'Oldtimerfotografie' },
+  motorcycle: { label: 'Motorrad', topicFilter: 'motorrad', pillarHref: '/motorrad-fotografie.html', pillarLabel: 'Motorradfotografie' },
+  portrait: { label: 'Portrait', topicFilter: 'portrait', pillarHref: '/portraitfotografie.html', pillarLabel: 'Portraitfotografie' },
+  'landscape-print': { label: 'Landschaft & Druck', topicFilter: 'print', pillarHref: '/landschaftsfotografie.html', pillarLabel: 'Landschaft & Fine-Art-Prints' },
+  process: { label: 'Prozess', topicFilter: 'prozess', pillarHref: '/fotografie.html', pillarLabel: 'Fotografie-Bereiche' },
+  'behind-the-scenes': { label: 'Prozess', topicFilter: 'prozess', pillarHref: '/fotografie.html', pillarLabel: 'Fotografie-Bereiche' },
 }
-const categoryLabel = categoryLabels[String(doc.category || '')] || String(doc.category || 'Journal')
+const activeCategory = categoryMeta[String(doc.category || '')]
+const categoryLabel = activeCategory?.label || String(doc.category || 'Journal')
+const topicEntry = activeCategory ? journalTopics.find((entry) => entry.filter === activeCategory.topicFilter) : undefined
+const topicHref = topicEntry ? journalIndexPath(topicEntry) : '/blog.html'
+const pillarHref = resolveCanonicalHref(activeCategory?.pillarHref || '/fotografie.html') || '/fotografie.html'
+const pillarLabel = activeCategory?.pillarLabel || 'Fotografie'
 const readTime = typeof doc.readingTime === 'number' ? `${doc.readingTime} Min` : 'Journal'
 const formattedDate = doc.publishedAt
-  ? new Intl.DateTimeFormat('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' }).format(new Date(doc.publishedAt))
+  ? new Intl.DateTimeFormat('de-DE', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(doc.publishedAt))
   : ''
-const relatedPages = (doc.relatedPages ?? []) as PayloadLink[]
+const rawRelatedPages = (doc.relatedPages ?? []) as PayloadLink[]
+const seenRelatedHrefs = new Set<string>()
+const relatedPages = rawRelatedPages
+  .map((link) => ({ ...link, href: resolveCanonicalHref(link.href) }))
+  .filter((link) => {
+    if (!link.href || seenRelatedHrefs.has(link.href)) return false
+    seenRelatedHrefs.add(link.href)
+    return true
+  })
 const tags = (doc.tags ?? []) as string[]
+const authorImage = toDisplayAssetUrl('/uploads/payload/mpissxxj-portfolio_webp_full_063-2-360x360.webp')
 const jsonLdItems: JsonLd[] = [
   articleJsonLd(doc, canonicalUrl),
   breadcrumbJsonLd([
     { name: 'Startseite', url: '/' },
     { name: 'Journal', url: '/blog.html' },
+    ...(topicEntry ? [{ name: topicEntry.label, url: topicHref }] : []),
     { name: doc.title || 'Beitrag', url: canonicalUrl },
   ]),
 ]
@@ -86,55 +137,77 @@ const jsonLdItems: JsonLd[] = [
   )}
 
   <article class="journal-native">
-    <header class="journal-native__hero" style={hero ? `background-image: linear-gradient(180deg, rgba(2,3,6,.28), rgba(2,3,6,.9)), url('${hero}');` : undefined} {...tinaAttrs(coverFieldSource, coverFieldName)}>
+    <header class="journal-native__hero" {...tinaAttrs(coverFieldSource, coverFieldName)}>
       <div class="journal-native__hero-inner container">
-        <nav class="journal-native__crumb eyebrow" aria-label="Breadcrumb">
-          <a href="/">Home</a><span>/</span><a href="/blog.html">Journal</a><span>/</span><span>{categoryLabel}</span>
-        </nav>
-        <div class="journal-native__hero-grid">
-          <div>
-            <p class="eyebrow">{preview ? 'Preview / ' : ''}{categoryLabel} / {readTime}</p>
-            <h1 class="display" {...tinaAttrs(doc, 'title')}>{doc.title}</h1>
-          </div>
-          <div class="journal-native__intro">
-            {!hero && <ResponsiveImage media={coverImage} size="card" fallback={doc.title || 'Journal-Bild'} loading="eager" tinaFieldSource={coverFieldSource} tinaFieldName={coverFieldName} />}
-            <p class="copy" {...tinaAttrs(doc, 'excerpt')}>{doc.excerpt}</p>
-            <div class="journal-native__meta">
-              <span>Matthias Ramahi</span>
-              {formattedDate && <time datetime={doc.publishedAt}>{formattedDate}</time>}
-              <span>{categoryLabel}</span>
-            </div>
+        <div class="journal-native__hero-top">
+          <nav class="journal-native__crumb eyebrow" aria-label="Breadcrumb">
+            <a href="/">Startseite</a><span aria-hidden="true">/</span><a href="/blog.html">Journal</a><span aria-hidden="true">/</span><a href={topicHref}>{categoryLabel}</a>
+          </nav>
+          <a class="journal-native__badge" href={topicHref}>{preview ? 'Vorschau · ' : ''}{categoryLabel}</a>
+        </div>
+
+        <h1 class="display" {...tinaAttrs(doc, 'title')}>{doc.title}</h1>
+        {doc.excerpt && <p class="journal-native__lead copy" {...tinaAttrs(doc, 'excerpt')}>{doc.excerpt}</p>}
+
+        <div class="journal-native__meta-bar">
+          <a class="journal-native__author-inline" href="/ueber-mich.html">
+            <img src={authorImage} alt="" width="40" height="40" loading="eager" decoding="async" />
+            <span>Matthias Ramahi</span>
+          </a>
+          <div class="journal-native__meta">
+            {formattedDate && <time datetime={doc.publishedAt}>{formattedDate}</time>}
+            <span>{readTime} Lesezeit</span>
           </div>
         </div>
+
+        <figure class="journal-native__frame">
+          {hero ? (
+            <img src={hero} alt={doc.title || 'Journal-Bild'} loading="eager" fetchpriority="high" decoding="async" />
+          ) : (
+            <ResponsiveImage media={coverImage} size="card" fallback={doc.title || 'Journal-Bild'} loading="eager" tinaFieldSource={coverFieldSource} tinaFieldName={coverFieldName} />
+          )}
+        </figure>
       </div>
     </header>
 
-    {(tags.length > 0 || relatedPages.length > 0) && (
-      <section class="journal-native__context container">
-        {tags.length > 0 && (
-          <div>
-            <p class="eyebrow">Themen</p>
-            <div class="filter-row">
-              {tags.map((tag, index) => <span {...tinaAttrs(doc, 'tags', index)}>{tag}</span>)}
-            </div>
+    <section class="journal-native__context container">
+      {tags.length > 0 && (
+        <div>
+          <p class="eyebrow">Themen</p>
+          <div class="filter-row">
+            {tags.map((tag, index) => <span {...tinaAttrs(doc, 'tags', index)}>{tag}</span>)}
           </div>
-        )}
-        {relatedPages.length > 0 && (
-          <div>
-            <p class="eyebrow">Verknüpfung</p>
-            <div class="filter-row">
-              {relatedPages.map((link) => link.href && <a {...linkAttributes(link)} {...tinaAttrs(link, 'label')}>{link.label}</a>)}
-            </div>
-          </div>
-        )}
-      </section>
-    )}
+        </div>
+      )}
+      <div>
+        <p class="eyebrow">Passende Leistung</p>
+        <div class="filter-row">
+          <a href={pillarHref}>{pillarLabel}</a>
+          <a href={topicHref}>Mehr zu {categoryLabel}</a>
+        </div>
+      </div>
+    </section>
 
     <ContentBlocks blocks={doc.blocks} />
 
+    <aside class="journal-native__author container" aria-label="Über den Autor">
+      <img src={authorImage} alt="Matthias Ramahi" width="80" height="80" loading="lazy" decoding="async" />
+      <div>
+        <p class="eyebrow">Autor</p>
+        <h2 class="journal-native__author-name">Matthias Ramahi</h2>
+        <p class="copy">Fotograf aus Erkrath bei Düsseldorf für Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft. Alle Journal-Beiträge entstehen aus eigenen Produktionen.</p>
+        <div class="filter-row">
+          <a href="/ueber-mich.html">Über mich</a>
+          <a href={pillarHref}>{pillarLabel}</a>
+          <a href={topicHref}>Alle {categoryLabel}-Beiträge</a>
+        </div>
+      </div>
+    </aside>
+
     {relatedPages.length > 0 && (
       <section class="container section-pad">
-        <p class="eyebrow">Verwandte Beiträge</p>
+        <p class="eyebrow">Weiterführende Seiten</p>
+        <h2 class="display journal-native__section-title">Passend zum Thema</h2>
         <div class="stack-list">
           {relatedPages.map((link) => link.href && (
             <a class="stack-item" {...linkAttributes(link)}>
@@ -147,7 +220,7 @@ const jsonLdItems: JsonLd[] = [
     )}
   </article>
 
-  <ContactCta cta={doc.cta} />
+  <ContactSlot id="anfrage" data-contact-section data-header-theme="light" data-theme="light" {...contactSlotProps(doc.cta)} />
 </BaseLayout>
 
 <style>
@@ -156,59 +229,96 @@ const jsonLdItems: JsonLd[] = [
   }
 
   .journal-native__hero {
-    min-height: calc(100svh - 72px);
-    display: grid;
-    align-items: end;
-    padding: clamp(92px, 11vw, 162px) 0 clamp(54px, 8vw, 112px);
-    background-position: center;
-    background-size: cover;
-    position: relative;
+    padding: clamp(92px, 9vw, 136px) 0 clamp(36px, 4.5vw, 64px);
+    background:
+      radial-gradient(1100px 460px at 84% -8%, color-mix(in oklch, var(--steel) 16%, transparent), transparent 62%),
+      var(--bg);
+    border-bottom: 1px solid var(--border);
   }
 
   .journal-native__hero-inner {
-    position: relative;
-    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .journal-native__hero-top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 20px;
   }
 
   .journal-native__crumb {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: clamp(26px, 5vw, 72px);
+    gap: 8px;
+    margin: 0;
   }
 
   .journal-native__crumb a:hover {
     color: var(--fg);
   }
 
-  .journal-native__hero-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1.04fr) minmax(300px, .52fr);
-    gap: clamp(34px, 7vw, 112px);
-    align-items: end;
+  .journal-native__badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 30px;
+    padding: 0 12px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    color: var(--fg);
+    font: 700 10px/1 var(--font-mono);
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    transition: background-color .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease);
+  }
+
+  .journal-native__badge:hover {
+    background: var(--fg);
+    border-color: var(--fg);
+    color: var(--bg);
   }
 
   .journal-native h1 {
-    max-width: 10.4ch;
-    margin: 16px 0 0;
-    font-size: clamp(58px, 11vw, 172px);
-  }
-
-  .journal-native__intro {
-    display: grid;
-    gap: 22px;
-  }
-
-  .journal-native__intro :global(img) {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-  }
-
-  .journal-native__intro .copy {
+    max-width: 22ch;
     margin: 0;
-    font-size: clamp(18px, 1.7vw, 24px);
-    color: color-mix(in oklch, var(--fg) 78%, transparent);
+    font-size: clamp(34px, 4.4vw, 64px);
+    line-height: 1.02;
+  }
+
+  .journal-native__lead {
+    margin: 0;
+    max-width: 64ch;
+    font-size: clamp(17px, 1.4vw, 21px);
+    color: color-mix(in oklch, var(--fg) 80%, transparent);
+  }
+
+  .journal-native__meta-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+
+  .journal-native__author-inline {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 600;
+    color: var(--fg);
+  }
+
+  .journal-native__author-inline img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--border);
   }
 
   .journal-native__meta {
@@ -220,22 +330,77 @@ const jsonLdItems: JsonLd[] = [
     text-transform: uppercase;
   }
 
+  .journal-native__frame {
+    margin: 8px 0 0;
+    aspect-ratio: 16 / 9;
+    max-height: 620px;
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--surface);
+  }
+
+  .journal-native__frame img,
+  .journal-native__frame :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 38%;
+  }
+
   .journal-native__context {
-    padding: clamp(30px, 5vw, 68px) 0;
+    padding: clamp(28px, 4.5vw, 56px) 0;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: clamp(26px, 5vw, 80px);
+    gap: clamp(24px, 5vw, 72px);
     border-bottom: 1px solid var(--border);
   }
 
+  .journal-native__author {
+    display: grid;
+    grid-template-columns: 80px minmax(0, 1fr);
+    gap: 24px;
+    align-items: start;
+    padding: clamp(36px, 5vw, 64px) 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .journal-native__author img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .journal-native__author-name {
+    margin: 8px 0 10px;
+    font-size: clamp(22px, 2.2vw, 32px);
+    line-height: 1.1;
+  }
+
+  .journal-native__author .copy {
+    max-width: 60ch;
+    margin: 0;
+  }
+
+  .journal-native__section-title {
+    margin: 12px 0 0;
+    font-size: clamp(32px, 4vw, 56px);
+  }
+
   @media (max-width: 920px) {
-    .journal-native__hero-grid,
-    .journal-native__context {
+    .journal-native__context,
+    .journal-native__author {
       grid-template-columns: 1fr;
     }
 
+    .journal-native__frame {
+      aspect-ratio: 4 / 3;
+    }
+
     .journal-native h1 {
-      font-size: clamp(48px, 15vw, 92px);
+      font-size: clamp(30px, 8.5vw, 48px);
     }
   }
 </style>

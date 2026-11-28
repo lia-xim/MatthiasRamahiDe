@@ -172,7 +172,7 @@
     .fw-ls__title em{font-style:normal;font-weight:200;color:var(--ink);opacity:.55}
     .fw-ls__lead{display:block;color:var(--muted-l);font-size:15px;line-height:1.65;max-width:66ch;margin-top:22px}
     .fw-ls__flow{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(18px,2.2vw,30px);padding-top:clamp(24px,3vw,40px);border-top:1px solid var(--hair-l)}
-    .fw-ls__step{display:grid;grid-template-rows:auto auto auto 1fr;gap:12px;min-height:100%;padding-bottom:4px}
+    .fw-ls__step{display:grid;grid-template-rows:auto auto 1fr;gap:12px;min-height:100%;padding-bottom:4px}
     .fw-ls__step-img{aspect-ratio:4/3;background-size:cover;background-position:center;filter:grayscale(.16) brightness(.95);border:1px solid var(--hair-l);margin-bottom:4px}
     .fw-ls__step-num{font-family:var(--font-mono);font-size:11px;letter-spacing:.22em;color:var(--muted-l)}
     .fw-ls__step h3{font-family:var(--font-display);font-weight:400;font-size:clamp(20px,1.9vw,28px);letter-spacing:-.02em;line-height:1.1}

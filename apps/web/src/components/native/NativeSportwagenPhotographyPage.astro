@@ -1,12 +1,13 @@
 ---
 import ContactSlot from '../ContactSlot.astro'
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
-import NativeFamilyClusterLinks from './NativeFamilyClusterLinks.astro'
+import NativeLinkIndex from './NativeLinkIndex.astro'
 import NativeFamilyJournalLinks from './NativeFamilyJournalLinks.astro'
 import NativeGuideSection from './NativeGuideSection.astro'
 import NativeHubSeries from './NativeHubSeries.astro'
 import NativeFamilyFaq from './NativeFamilyFaq.astro'
 import NativeReviews from './NativeReviews.astro'
+import NativeVehiclePillarBlueprint from './NativeVehiclePillarBlueprint.astro'
 import PreviewToolbar from '../PreviewToolbar.astro'
 import {
   localScopePhrase,
@@ -50,7 +51,7 @@ const pageContext = nativeFamilyPageContext({
   legacyFile,
   preview,
 })
-const { clusterHeading, clusterLinks, isKeywordPage, isParentPage, overviewHref, publishedHref, scope, serviceLabel } = pageContext
+const { clusterHeading, clusterLinks, isKeywordPage, isParentPage, publishedHref, scope, serviceLabel } = pageContext
 const keywordFocusCopy = keywordFocusCopyForSlug(legacyFile)
 const cmsFaqSource = (doc?.localFaq?.length ? doc.localFaq : doc?.faq) || []
 const cmsFaqItems = cmsFaqSource.map((entry) => ({ q: entry.question || '', a: entry.answer || '' })).filter((entry) => entry.q && entry.a)
@@ -451,7 +452,7 @@ const relatedSectionTitle = splitTrailingEmphasis(
 
 const relatedAreas = [
   {
-    href: 'automobil-fotografie.html',
+    href: '/autofotografie.html',
     src: 'assets/optimized/assets-photos-automobil-neon-960.webp',
     alt: 'Automobilfotografie',
     width: 960,
@@ -512,7 +513,7 @@ const resolvedRelatedAreas: Array<{
         avifSrcset: resolved.avifSrcset || '',
         dataSrc: undefined,
         height: resolved.height,
-        href: cmsText(item.href) || fallback.href,
+        href: (cmsText(item.href) || fallback.href).replace(/^\/?automobil-fotografie\.html$/, '/autofotografie.html'),
         mobile: resolved.mobile,
         src: resolved.src,
         srcset: resolved.srcset || '',
@@ -526,37 +527,9 @@ const finalRelatedAreas = resolvedRelatedAreas.slice(0, 4)
 
 const allCityLinks = [
   ['sportwagen-fotografie-duesseldorf.html', 'Düsseldorf'],
-  ['sportwagen-fotografie-erkrath.html', 'Erkrath'],
-  ['sportwagen-fotografie-ratingen.html', 'Ratingen'],
-  ['sportwagen-fotografie-koeln.html', 'Köln'],
-  ['sportwagen-fotografie-essen.html', 'Essen'],
-  ['sportwagen-fotografie-dortmund.html', 'Dortmund'],
-  ['sportwagen-fotografie-duisburg.html', 'Duisburg'],
-  ['sportwagen-fotografie-bochum.html', 'Bochum'],
-  ['sportwagen-fotografie-wuppertal.html', 'Wuppertal'],
-  ['sportwagen-fotografie-leverkusen.html', 'Leverkusen'],
-  ['sportwagen-fotografie-oberhausen.html', 'Oberhausen'],
-  ['sportwagen-fotografie-krefeld.html', 'Krefeld'],
-  ['sportwagen-fotografie-moenchengladbach.html', 'Mönchengladbach'],
-  ['sportwagen-fotografie-moers.html', 'Moers'],
-  ['sportwagen-fotografie-gelsenkirchen.html', 'Gelsenkirchen'],
-  ['sportwagen-fotografie-bergisch-gladbach.html', 'Bergisch Gladbach'],
-  ['sportwagen-fotografie-solingen.html', 'Solingen'],
-  ['sportwagen-fotografie-remscheid.html', 'Remscheid'],
-  ['sportwagen-fotografie-mettmann.html', 'Mettmann'],
-  ['sportwagen-fotografie-hilden.html', 'Hilden'],
-  ['sportwagen-fotografie-dormagen.html', 'Dormagen'],
-  ['sportwagen-fotografie-neuss.html', 'Neuss'],
   ['sportwagen-fotografie-nrw.html', 'NRW'],
-  ['sportwagen-fotografie-deutschland.html', 'Deutschland'],
 ] as const
 const intentLinks = [
-  {
-    key: 'motorsport-sportwagen',
-    label: 'Motorsport & Sportwagen',
-    genericHref: 'motorsport-sportwagen-fotografie.html',
-    duesseldorfHref: 'motorsport-sportwagen-fotografie-duesseldorf.html',
-  },
   {
     key: 'motorsport',
     label: 'Motorsport Fotografie',
@@ -570,28 +543,16 @@ const intentLinks = [
     duesseldorfHref: 'sportwagen-shooting-duesseldorf.html',
   },
   {
-    key: 'sportwagen-fotoshooting',
-    label: 'Sportwagen Fotoshooting',
-    genericHref: 'sportwagen-fotoshooting-duesseldorf.html',
-    duesseldorfHref: 'sportwagen-fotoshooting-duesseldorf.html',
-  },
-  {
     key: 'performance-car',
     label: 'Performance Car Fotografie',
-    genericHref: 'performance-car-fotografie.html',
+    genericHref: 'performance-car-fotografie-duesseldorf.html',
     duesseldorfHref: 'performance-car-fotografie-duesseldorf.html',
   },
   {
     key: 'exotic-car',
     label: 'Exotic Car Fotografie',
     genericHref: 'exotic-car-fotografie.html',
-    duesseldorfHref: 'exotic-car-fotografie-duesseldorf.html',
-  },
-  {
-    key: 'supersportwagen',
-    label: 'Supersportwagen Fotografie',
-    genericHref: 'supersportwagen-fotografie.html',
-    duesseldorfHref: 'supersportwagen-fotografie-duesseldorf.html',
+    duesseldorfHref: 'exotic-car-fotografie.html',
   },
 ] as const
 const clusterCuration = curateFamilyClusterLinks({
@@ -601,22 +562,17 @@ const clusterCuration = curateFamilyClusterLinks({
   familyLabel: 'Sportwagen Fotografie',
   intentLinks,
   intentNeighbors: {
-    'motorsport-sportwagen': ['motorsport', 'sportwagen-shooting', 'performance-car'],
-    motorsport: ['motorsport-sportwagen', 'sportwagen-shooting', 'sportwagen-fotoshooting'],
-    'sportwagen-shooting': ['sportwagen-fotoshooting', 'performance-car', 'exotic-car'],
-    'sportwagen-fotoshooting': ['sportwagen-shooting', 'supersportwagen', 'exotic-car'],
-    'performance-car': ['exotic-car', 'supersportwagen', 'motorsport-sportwagen'],
-    'exotic-car': ['performance-car', 'supersportwagen', 'sportwagen-fotoshooting'],
-    supersportwagen: ['exotic-car', 'performance-car', 'motorsport-sportwagen'],
+    motorsport: ['sportwagen-shooting', 'performance-car', 'exotic-car'],
+    'sportwagen-shooting': ['performance-car', 'exotic-car', 'motorsport'],
+    'performance-car': ['exotic-car', 'sportwagen-shooting', 'motorsport'],
+    'exotic-car': ['performance-car', 'sportwagen-shooting', 'motorsport'],
   },
   isParentPage,
   primaryIntentKeys: [
     'sportwagen-shooting',
-    'motorsport-sportwagen',
+    'motorsport',
     'performance-car',
     'exotic-car',
-    'supersportwagen',
-    'sportwagen-fotoshooting',
   ],
   scopeSlug: scope.slug,
 })
@@ -753,6 +709,24 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
       </div>
     </div>
 
+    <section class="st" data-header-theme="light">
+      <div class="section-inner">
+        <div class="st-copy">
+          <h2>
+            <span {...tinaAttrs(doc?.statement, 'headline')}>{statementTitle.headline}</span>
+            {statementTitle.headline && statementTitle.emphasis ? ' ' : ''}
+            {statementTitle.emphasis && <em {...tinaAttrs(doc?.statement, 'emphasis')}>{statementTitle.emphasis}</em>}
+          </h2>
+          <div class="st-body">
+            {statementBody.map((paragraph, index) => <p {...tinaAttrs(doc?.statement?.body?.[index], 'text')}>{paragraph}</p>)}
+          </div>
+        </div>
+        <figure class="st-image">
+          <img loading="lazy" src={finalStatementImage.src} alt={finalStatementImage.alt} width={finalStatementImage.width} height={finalStatementImage.height} decoding="async" {...tinaAttrs(doc?.statement, 'image')} />
+        </figure>
+      </div>
+    </section>
+
     <section class="sh" data-header-theme="dark">
       <div class="section-inner">
         <div class="sh-head">
@@ -792,6 +766,37 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
       </div>
     </section>
 
+    <NativeVehiclePillarBlueprint discipline="sportwagen" scopeLabel={!isParentPage && !isKeywordPage ? scope.label : 'NRW'} />
+
+    <ContactSlot
+      id="anfrage"
+      data-contact-section
+      data-header-theme="light"
+      data-contact-subject={contactSubject}
+      data-contact-headline={contactHeadline}
+      data-contact-lead={contactLead}
+    />
+
+    <NativeFamilyFaq faq={faqItems} pageUrl={`https://matthiasramahi.de/${legacyFile}`} theme="dark" />
+
+    <NativeGuideSection doc={doc} />
+
+    <NativeHubSeries doc={doc} />
+
+    <NativeFamilyJournalLinks clusters={['sports-car', 'automotive']} familyHref={defaultLegacyFile} scopeLabel={scope.label} />
+
+    <NativeLinkIndex
+      label={`Weitere Seiten ${scope.label}`}
+      groups={[
+        { title: 'In der Region', links: cityLinks },
+        { title: 'Nach Anliegen', links: searchLinks },
+        ...(showCrossFamilyCluster ? [{ title: 'Andere Bereiche', links: [{ href: '/', label: 'Alle Fotografie-Bereiche' }, ...clusterLinks] }] : []),
+      ]}
+    />
+
+    <NativeReviews theme="light" />
+
+
     <section class="rl" data-header-theme="dark">
       <div class="section-inner">
         <div class="rl-head">
@@ -808,72 +813,5 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
         </div>
       </div>
     </section>
-
-    <ContactSlot
-      id="anfrage"
-      data-contact-section
-      data-header-theme="light"
-      data-contact-subject={contactSubject}
-      data-contact-headline={contactHeadline}
-      data-contact-lead={contactLead}
-    />
-
-    <section class="st" data-header-theme="light">
-      <div class="section-inner">
-        <div class="st-copy">
-          <h2>
-            <span {...tinaAttrs(doc?.statement, 'headline')}>{statementTitle.headline}</span>
-            {statementTitle.headline && statementTitle.emphasis ? ' ' : ''}
-            {statementTitle.emphasis && <em {...tinaAttrs(doc?.statement, 'emphasis')}>{statementTitle.emphasis}</em>}
-          </h2>
-          <div class="st-body">
-            {statementBody.map((paragraph, index) => <p {...tinaAttrs(doc?.statement?.body?.[index], 'text')}>{paragraph}</p>)}
-          </div>
-        </div>
-        <figure class="st-image">
-          <img loading="lazy" src={finalStatementImage.src} alt={finalStatementImage.alt} width={finalStatementImage.width} height={finalStatementImage.height} decoding="async" {...tinaAttrs(doc?.statement, 'image')} />
-        </figure>
-      </div>
-    </section>
-
-    <NativeGuideSection doc={doc} />
-    <NativeHubSeries doc={doc} />
-
-    {showCrossFamilyCluster && (
-      <NativeFamilyClusterLinks
-        clusterHeading={clusterHeading}
-        clusterLinks={clusterLinks}
-        overviewHref={overviewHref}
-        scopeLabel={scope.label}
-      />
-    )}
-
-    <NativeFamilyJournalLinks clusters={['sports-car', 'automotive']} familyHref={defaultLegacyFile} scopeLabel={scope.label} />
-
-    <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Sportwagen Fotografie in NRW">
-      <div class="mr-cities__inner">
-        <div class="mr-cities__head">
-          <h2 set:html={cityHeading}></h2>
-        </div>
-        <nav class="mr-cities__grid" aria-label="Städte">
-          {cityLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
-        </nav>
-      </div>
-    </section>
-
-    <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Sportwagen Fotografie nach Anliegen">
-      <div class="mr-cities__inner">
-        <div class="mr-cities__head">
-          <h2 set:html={intentHeading}></h2>
-        </div>
-        <nav class="mr-cities__grid" aria-label="Regionale Bereiche">
-          {searchLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
-        </nav>
-      </div>
-    </section>
-
-    <NativeFamilyFaq faq={faqItems} pageUrl={`https://matthiasramahi.de/${legacyFile}`} theme="dark" />
-
-    <NativeReviews theme="light" />
   </main>
 </AdoptedPageLayout>

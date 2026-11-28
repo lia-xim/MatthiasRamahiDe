@@ -1,17 +1,75 @@
-// Fade-in on view
+// Fade-in on view + fast-scroll lazy-image promoter
   (function(){
     const spreads = document.querySelectorAll('.pf-spread');
     if(!('IntersectionObserver' in window)){
       spreads.forEach(function(s){ s.classList.add('is-visible'); });
-      return;
+    } else {
+      const io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.01, rootMargin: '200px 0px 200px 0px' });
+      spreads.forEach(function(s){ io.observe(s); });
     }
-    const io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-    spreads.forEach(function(s){ io.observe(s); });
 
+    const galleryImgs = Array.from(document.querySelectorAll('.pf-spread img, .pf-archive__grid img'));
+    if (!galleryImgs.length) return;
+
+    function promoteImage(img) {
+      if (img.loading === 'lazy') {
+        img.loading = 'eager';
+      }
+      // Recover images whose fetch was aborted during an aggressive fast scroll
+      if (img.complete && img.naturalWidth === 0 && img.dataset.mrScrollRetry !== '1') {
+        const retrySrc = img.currentSrc || img.getAttribute('src');
+        if (retrySrc) {
+          img.dataset.mrScrollRetry = '1';
+          img.src = retrySrc;
+        }
+      }
+    }
+
+    if ('IntersectionObserver' in window) {
+      const imgObserver = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (!entry.isIntersecting) return;
+          imgObserver.unobserve(entry.target);
+          promoteImage(entry.target);
+        });
+      }, { rootMargin: '1400px 0px 1400px 0px' });
+      galleryImgs.forEach(function(img){ imgObserver.observe(img); });
+    } else {
+      galleryImgs.forEach(promoteImage);
+    }
+
+    function promoteNearViewport() {
+      const vh = window.innerHeight || document.documentElement.clientHeight || 900;
+      const topLimit = -600;
+      const bottomLimit = vh + 1400;
+      galleryImgs.forEach(function(img){
+        if (img.complete && img.naturalWidth > 0) return;
+        const rect = img.getBoundingClientRect();
+        if (rect.bottom >= topLimit && rect.top <= bottomLimit) {
+          promoteImage(img);
+        }
+      });
+    }
+
+    let scrollTimer = 0;
+    function schedulePromote() {
+      if (scrollTimer) window.clearTimeout(scrollTimer);
+      scrollTimer = window.setTimeout(promoteNearViewport, 120);
+    }
+
+    window.addEventListener('scroll', schedulePromote, { passive: true });
+    if ('onscrollend' in window) {
+      window.addEventListener('scrollend', promoteNearViewport, { passive: true });
+    }
+    window.addEventListener('resize', schedulePromote, { passive: true });
+    document.addEventListener('visibilitychange', function(){
+      if (!document.hidden) promoteNearViewport();
+    });
+    promoteNearViewport();
   })();
 
 // Lightbox

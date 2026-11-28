@@ -14,8 +14,8 @@
   "coverAlt": "Fahrer mit Helm auf einer grünen Kawasaki Ninja 650 bei Nacht vor rotem Licht",
   "readingTime": 9,
   "seo": {
-    "title": "Motorrad nachts fotografieren: Licht & Einstellungen",
-    "description": "Motorrad nachts fotografieren: blaue Stunde, Kamera-Einstellungen für Low Light, Blitz & LED, Light Trails und sichere Spots für Nachtaufnahmen.",
+    "title": "Motorrad nachts fotografieren: Einstellungen & Licht",
+    "description": "Motorrad nachts fotografieren: Blaue Stunde, Startwerte-Tabelle (ISO, Blende, Zeit), Blitz & LED bei Mischlicht, Light Trails und Sicherheit.",
     "focusKeyword": "Motorrad nachts fotografieren",
     "searchIntent": "Informationssuche: Motorradfahrer und Fotografen wollen wissen, wie Nacht- und Low-Light-Aufnahmen von Motorrädern gelingen – Orte, Einstellungen, Licht und Sicherheit.",
     "canonicalUrl": "https://matthiasramahi.de/blog-motorrad-nachts-fotografieren.html",
@@ -31,7 +31,7 @@
   },
   "status": "published",
   "createdAt": "2026-09-25T10:00:00.000Z",
-  "updatedAt": "2026-11-23T18:30:00.000Z",
+  "updatedAt": "2026-11-27T22:15:00.000Z",
   "relatedPages": [
     {
       "label": "Motorrad-Fotoshooting NRW",
@@ -104,6 +104,11 @@
       "_template": "textBlock",
       "headline": "Bewegung zeigen: Light Trails und Mitzieher",
       "body": "Light Trails brauchen ein Stativ und Tiefe im Bild, etwa eine Kurve, eine Brücke oder einen Stadtring. Mit ISO 100 bis 200, Blende f/8 bis f/11 und vier bis zehn Sekunden zeichnen vorbeifahrende Lichter saubere Linien. Oft ist es einfacher, mehrere Aufnahmen zu kombinieren: eine für die Kulisse, eine mit den besten Lichtspuren und eine mit dem geblitzten Motorrad. Solange das Stativ nicht bewegt wird, lassen sie sich später passgenau überlagern.\n\nFür Mitzieher, bei denen das Motorrad scharf und der Hintergrund verwischt ist, eignen sich Zeiten zwischen 1/15 und 1/60 Sekunde und ein ruhiger Schwenk. Wer die Bewegung einfrieren will, nimmt 1/200 bis 1/500 Sekunde und blitzt auf den zweiten Verschlussvorhang. Dann liegen die Lichtfahnen hinter dem Motorrad statt davor. Fahraufnahmen gehören nie auf eine aktive Fahrspur ohne Absicherung."
+    },
+    {
+      "_template": "textBlock",
+      "headline": "Startwerte-Tabelle für Motorrad-Nachtaufnahmen",
+      "body": "Je nachdem, ob du in der blauen Stunde, unter Straßenlaternen oder mit Light Trails arbeitest, ändern sich die sinnvollen Kamera-Startwerte deutlich:\n\n| Szenario | Empfohlene Blende | Verschlusszeit | ISO-Startwert | Licht-Setup |\n| --- | --- | --- | --- | --- |\n| Blaue Stunde (Stativ) | f/2.8 – f/5.6 | 1/15 – 1 s | ISO 100 – 400 | Umgebungslicht + dezente LED-Kante |\n| Stehendes Bike (Freihand) | f/1.8 – f/2.8 | 1/60 – 1/125 s | ISO 800 – 1600 | Straßenlicht / Tankstelle (Testbild zuerst) |\n| Blitz + Nachtkulisse | f/4 – f/5.6 | 1/4 – 1 s (Stativ) | ISO 200 – 400 | Umgebung -1 bis -2 EV, entfesselter Blitz seitlich |\n| Light Trails (Kurve/Brücke) | f/8 – f/11 | 4 – 10 s (Stativ) | ISO 100 – 200 | Mehrere Einzelbilder später sauber überlagern |\n| Mitzieher bei Dunkelheit | f/2.8 – f/4 | 1/15 – 1/60 s | ISO 800 – 1600 | Optional Blitz auf 2. Verschlussvorhang |"
     },
     {
       "_template": "textBlock",

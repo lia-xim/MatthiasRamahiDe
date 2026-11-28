@@ -25,7 +25,7 @@ export const journalTopics: JournalTopic[] = [
     filter: 'automotive',
     label: 'Automotive',
     title: 'Automotive-Fotografie',
-    intro: 'Licht, Location, Reflexe und Bildserien für Autos – vom privaten Shooting bis zum Händlerbestand.',
+    intro: 'Licht, Location, Reflexe und Bildserien für Autos, vom privaten Shooting bis zum Händlerbestand.',
   },
   {
     slug: 'sportwagen',

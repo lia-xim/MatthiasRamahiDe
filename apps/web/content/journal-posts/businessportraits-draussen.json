@@ -63,6 +63,11 @@
       "_template": "textBlock"
     },
     {
+      "_template": "textBlock",
+      "headline": "Kanal- & Format-Checkliste für Businessportraits draußen",
+      "body": "Damit ein einzelner Outdoor-Termin alle geschäftlichen Kanäle ohne ungünstige Zuschnitte abdeckt, planen wir diese vier Pflichtformate fest ein:\n\n| Kanal / Nutzung | Format | Abstand & Bildausschnitt | Licht- & Hintergrund-Regel |\n| --- | --- | --- | --- |\n| LinkedIn / XING / E-Mail-Avatar | Quadrat 1:1 (eng) | Schulter-Kopf-Ausschnitt, klarer Augenkontakt | Ruhiger, stark aufgelöster Hintergrund ohne harte Linien |\n| Website-Header / Startseite | Querformat 16:9 | Person im linken oder rechten Drittel, Negativraum für Headline | Gleichmäßiger offener Schatten, kein ausgebrannter Himmel |\n| Über-mich-Seite / Presse-Bio | Hochformat 4:5 oder 2:3 | Halbportrait mit natürlicher Körperhaltung (Gehen/Anlehnen) | Dezente Architektur-Tiefe passend zur Branche |\n| Teamseite (mehrere Personen) | Einheitlich 4:5 oder 3:2 | Identische Brennweite, Lichtzone und Distanz je Person | Wetterfeste Reserve-Zone für spätere Nachzügler dokumentieren |"
+    },
+    {
       "headline": "Wetterreserve ist Teil des Konzepts",
       "body": "Leichter Wind oder ein bedeckter Himmel sind kein Grund, ein Shooting automatisch abzusagen. Problematisch werden vor allem starker Regen, unkontrollierbare Böen und Lichtwechsel, die eine größere Teamserie auseinanderziehen. Deshalb gehören ein geschützter Ersatzort und ein realistisches Zeitfenster in die Planung.\n\nDie finale Auswahl sollte anschließend nach Funktion erfolgen. Ein ausdrucksstarkes Bild kann für eine About-Seite hervorragend sein und als kleiner Profil-Avatar trotzdem nicht funktionieren. Wer die späteren Formate mitdenkt, braucht weniger Bilder, und jedes davon erfüllt einen klaren Zweck.",
       "_template": "textBlock",
@@ -79,15 +84,7 @@
       "links": [
         {
           "label": "Business Portrait Düsseldorf",
-          "href": "/business-portrait-duesseldorf.html"
-        },
-        {
-          "label": "Personal Branding Düsseldorf",
           "href": "/personal-branding-fotografie-duesseldorf.html"
-        },
-        {
-          "label": "Headshot Fotograf Düsseldorf",
-          "href": "/headshot-fotograf-duesseldorf.html"
         },
         {
           "label": "Portfolio Portrait",
@@ -126,8 +123,8 @@
     }
   ],
   "seo": {
-    "title": "Businessportraits draußen planen | Matthias Ramahi",
-    "description": "Ein praxisnaher Leitfaden für Businessportraits draußen: Nutzung, Location, Licht, Kleidung, Bildvarianten und Wetterreserve sinnvoll planen.",
+    "title": "Businessportraits draußen: Licht, Outfit & Formate",
+    "description": "Businessportraits draußen planen: Lichtzonen-Vergleich, Pflichtformate für LinkedIn & Website, Outfit-Regeln und Wetterreserve in Düsseldorf.",
     "focusKeyword": "Businessportraits draußen planen",
     "searchIntent": "Informationssuche: Nutzer suchen Fachwissen, Beispiele und Einordnung zu Businessportraits draußen planen.",
     "canonicalUrl": "https://matthiasramahi.de/blog-businessportraits-draussen.html",
@@ -143,7 +140,7 @@
   },
   "status": "published",
   "createdAt": "2026-08-24T09:00:00.000Z",
-  "updatedAt": "2026-11-24T09:15:00.000Z",
+  "updatedAt": "2026-11-27T22:15:00.000Z",
   "relatedPages": [
     {
       "label": "Portraitfotografie",

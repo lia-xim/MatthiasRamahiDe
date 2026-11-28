@@ -12,8 +12,8 @@
   "publishedAt": "2027-02-26T08:00:00.000Z",
   "status": "scheduled",
   "excerpt": "Mietwagenbilder müssen Fahrzeugklassen verständlich zeigen, ohne ein bestimmtes Modell zu versprechen. So planen Vermieter eine klare und aktuelle Bildauswahl.",
-  "coverImage": "/assets/optimized/assets-portfolio-dsc2358-1920.webp",
-  "coverAlt": "Orangefarbener Sportwagen in einer Parkgarage",
+  "coverImage": "/uploads/payload/_DSC2244.webp",
+  "coverAlt": "BMW Coupé in Schwarz und Petrol im Hochformat auf einem Messestand",
   "readingTime": 8,
   "blocks": [
     {
@@ -88,7 +88,7 @@
       "links": [
         {
           "label": "Automotive-Fotografie",
-          "href": "/automobil-fotografie.html"
+          "href": "/autofotografie.html"
         },
         {
           "label": "Auto fotografieren: Tipps, Einstellungen und Perspektiven",
@@ -145,7 +145,7 @@
         },
         {
           "label": "Automobilfotografie in Düsseldorf & NRW",
-          "href": "/automobil-fotografie.html",
+          "href": "/autofotografie.html",
           "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         },
         {
@@ -164,7 +164,7 @@
     "searchIntent": "Informationssuche für Autovermieter und Buchungs-Teams: Fahrzeugklassen mit verständlichen, aktuellen und nicht missverständlichen Bildern präsentieren.",
     "canonicalUrl": "https://matthiasramahi.de/blog-autovermietung-fahrzeugbilder-fahrzeugklassen.html",
     "legacyUrl": "blog-autovermietung-fahrzeugbilder-fahrzeugklassen.html",
-    "ogImage": "/assets/optimized/assets-portfolio-dsc2358-1920.webp",
+    "ogImage": "/uploads/payload/_DSC2244.webp",
     "noIndex": false
   },
   "createdAt": "2026-11-03T15:30:53Z",
@@ -172,7 +172,7 @@
   "relatedPages": [
     {
       "label": "Automotive-Fotografie für Unternehmen",
-      "href": "/automobil-fotografie.html",
+      "href": "/autofotografie.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

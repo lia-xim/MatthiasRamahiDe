@@ -42,22 +42,12 @@ const navAttrs = {
     </div>
     {mainLinks.map((link) => link.href && <a {...linkAttributes(link)} data-nav={(link as { navKey?: string }).navKey}>{link.label}</a>)}
   </nav>
-  <a class="topbar__cta" {...linkAttributes(cta)}>{cta.label}</a>
+  <a class="topbar__cta" {...linkAttributes(cta)} data-mobile-label={(cta as { mobileLabel?: string }).mobileLabel || cta.label}>{cta.label}</a>
   <button class="topbar__menu" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu">
     <span aria-hidden="true"></span><span aria-hidden="true"></span>
   </button>
 </header>
 
 <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
-  <div class="mobile-menu__inner">
-    <nav class="mobile-menu__nav" aria-label="Hauptnavigation mobil">
-      <a {...linkAttributes({ ...homeLink, href: homeLink.href || 'index.html' })} data-nav="home">{homeLink.label || 'Home'}</a>
-      <div class="mobile-menu__group">
-        <a class="mobile-menu__label" {...linkAttributes(photographyOverview)}>{photographyOverview.label || 'Fotografie'}</a>
-        {photographyLinks.map((link) => link.href && <a {...linkAttributes(link)}>{link.label}</a>)}
-      </div>
-      {mainLinks.map((link) => link.href && <a {...linkAttributes(link)} data-nav={(link as { navKey?: string }).navKey}>{link.label}</a>)}
-    </nav>
-    <a class="mobile-menu__cta" {...linkAttributes(cta)}>{(cta as { mobileLabel?: string }).mobileLabel || cta.label}</a>
-  </div>
+  <div class="mobile-menu__inner"></div>
 </div>

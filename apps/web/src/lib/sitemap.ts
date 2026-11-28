@@ -108,7 +108,23 @@ const servicePrefixes = [
 ]
 
 export const sitemapSections: SitemapSection[] = ['pages', 'local-seo', 'services', 'journal', 'portfolio']
-const nativeRouteLastmod = '2026-11-24'
+const noIndexSitemapFiles = new Set([
+  'datenschutz.html',
+  'impressum.html',
+])
+
+const isExcludedSitemapLoc = (loc?: string) => {
+  try {
+    const pathname = decodeURIComponent(new URL(toAbsoluteSiteUrl(loc)).pathname)
+      .replace(/^\/+/, '')
+      .replace(/\/+$/, '')
+      .toLowerCase()
+
+    return Boolean(pathname && !pathname.includes('/') && noIndexSitemapFiles.has(pathname))
+  } catch {
+    return false
+  }
+}
 
 export const escapeXml = (value: string) =>
   value
@@ -165,7 +181,7 @@ const isRedirectPageLoc = (loc?: string) => {
       .replace(/^\/+/, '')
       .replace(/\/+$/, '')
 
-    return Boolean(pathname && !pathname.includes('/') && getLegacyRedirectTarget(pathname))
+    return Boolean(pathname && !pathname.includes('/') && getLegacyRedirectTarget(pathname) !== null)
   } catch {
     return false
   }
@@ -259,7 +275,7 @@ export async function nativeRouteSitemapEntries(section?: SitemapSection): Promi
 
     entries.push({
       loc: toAbsoluteSiteUrl('/'),
-      lastmod: nativeRouteLastmod,
+      // omit bulk lastmod on homepage when unknown
       images,
     })
   }
@@ -267,7 +283,7 @@ export async function nativeRouteSitemapEntries(section?: SitemapSection): Promi
   const files = listNativeHtmlRouteFiles()
 
   for (const file of files) {
-    if (isLegacyRedirectFile(file) || getLegacyRedirectTarget(file) || getConceptArchivePage(file)) continue
+    if (isLegacyRedirectFile(file) || getLegacyRedirectTarget(file) || getConceptArchivePage(file) || noIndexSitemapFiles.has(file.toLowerCase())) continue
     if (section && sectionForLegacyFile(file) !== section) continue
 
     const journalArticle = journalArticleByLegacyFile[file.toLowerCase()]
@@ -284,7 +300,9 @@ export async function nativeRouteSitemapEntries(section?: SitemapSection): Promi
 
     entries.push({
       loc: toAbsoluteSiteUrl(legacyUrlForFile(file)),
-      lastmod: journalArticle ? dateOnly(journalArticle.updatedAt || journalArticle.publishedAt) : nativeRouteLastmod,
+      ...(journalArticle && dateOnly(journalArticle.updatedAt || journalArticle.publishedAt)
+        ? { lastmod: dateOnly(journalArticle.updatedAt || journalArticle.publishedAt) }
+        : {}),
       images,
     })
   }
@@ -309,7 +327,7 @@ export async function cmsSitemapEntries(section?: SitemapSection): Promise<Sitem
       )
       .forEach((doc: PayloadDoc) => {
         const loc = doc.seo?.canonicalUrl || routeForDoc(collection, doc)
-        if (isRedirectPageLoc(loc)) return
+        if (isRedirectPageLoc(loc) || isExcludedSitemapLoc(loc)) return
         if (section && sectionForSitemapLoc(loc, collectionSection) !== section) return
 
         entries.push({

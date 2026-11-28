@@ -11,8 +11,8 @@
   ],
   "publishedAt": "2028-05-19T07:00:00.000Z",
   "excerpt": "Ein kopierbares Call Sheet für Autofotografie ordnet Uhrzeiten, Fahrzeugvarianten, Szenen, Zuständigkeiten, Übergänge und Wetteralternativen für den Shootingtag.",
-  "coverImage": "/uploads/payload/assets-portfolio-dsc2316-1920.webp",
-  "coverAlt": "Schwarzer BRABUS-SUV vor einer Industrieanlage bei Abendlicht; die Silhouette spiegelt sich in einer Pfütze.",
+  "coverImage": "/assets/portfolio/_DSC2762.webp",
+  "coverAlt": "Grauer BMW M4 in der Frontansicht auf einem Industriegelände unter Wolkenhimmel",
   "readingTime": 9,
   "blocks": [
     {
@@ -150,7 +150,7 @@
         },
         {
           "label": "Automobilfotografie in Düsseldorf & NRW",
-          "href": "/automobil-fotografie.html",
+          "href": "/autofotografie.html",
           "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]
@@ -176,7 +176,7 @@
     "searchIntent": "Qualitative Webstichprobe am 06.11.2026 zu „Call Sheet Fotoshooting“, „Fotoshooting Ablaufplan Vorlage“, „Auto-Fotoshooting Tagesplan“ und „Autofotografie Call Sheet“: SHOWCAST trennt das inhaltliche Briefing ausdrücklich vom Callsheet für zeitliche Setkoordination; die öffentliche Fotografenvorlage von Julie Riemersma enthält Call Times, Teamkontakte, Locationzugang und Shoot Schedule; die Virginia Tourism Corporation empfiehlt Zeiten je Szene, Ankunft, Kontakte und das Teilen des Produktionsplans mit allen Beteiligten. Die geprüften Quellen belegen eine eigenständige Vorlagen- und Tagesdispo-Funktion, aber keine Suchvolumina. Lokaler Dedupe: #155 autofotografie-briefing-vorlage.json sammelt Projektangaben, ein verfügbares Zeitfenster, Reserve, Kontakte, Ersatzort und offene Entscheidungen; es enthält keinen Zeilenplan für einzelne Fahrzeuge oder Szenen, Setwechsel oder Fortschrittsstatus. auto-shooting-briefing.json erklärt Pflichtmotive, Zeitfenster, Ankunft, Vorbereitung und Zuständigkeiten, jedoch ohne kopierbare Tagesdisposition. Die Artikel zu Mehrstandortplanung, Serienkonsistenz, saisonaler Planung und Foto/Video-Koordination bearbeiten andere Planungszeiträume oder Aufgaben. Der neue Beitrag bietet ein tagesbezogenes Run Sheet mit Fahrzeug-ID/Variante, konkretem Zeitblock, Pflichtszene, Verantwortlichem, Schlüssel- und Bewegungsfreigabe, Reset/Übergang, Zugangsgrenze, Wetterfallback und Status; keine Minutenbenchmarks oder erfundenen Kundenabläufe. Crawl Foundry: exakt bestätigter Workspace matthiasramahi.de; kostenlos gespeicherte Keywords stale und fachlich gemischt (Stand 07.10.2026), darunter nur angrenzende generische Autofotografie-/Fahrzeugshooting-Terme; Search Performance ohne GSC-Snapshot, gespeicherte AI Visibility leer und keine Workspace-Grants. Es gab keinen Paid-, OAuth- oder Grant-Aufruf. Suchvolumen, GSC-Nachfrage und gemessener AI-Fanout sind nicht belegt; Folgefragen zu Ausfall, Wetterfallback und Status sind redaktionelle Hypothesen, keine gemessenen AI-Fanout-Daten.",
     "canonicalUrl": "https://matthiasramahi.de/blog-auto-fotoshooting-tagesplan.html",
     "legacyUrl": "blog-auto-fotoshooting-tagesplan.html",
-    "ogImage": "/uploads/payload/assets-portfolio-dsc2316-1920.webp",
+    "ogImage": "/assets/portfolio/_DSC2762.webp",
     "noIndex": false
   },
   "createdAt": "2026-11-06T09:32:54Z",
@@ -184,7 +184,7 @@
   "relatedPages": [
     {
       "label": "Automobilfotografie",
-      "href": "/automobil-fotografie.html",
+      "href": "/autofotografie.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

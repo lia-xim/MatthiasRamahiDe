@@ -39,6 +39,14 @@
     {
       "question": "Wie viele Bilder bekomme ich für mein Profil?",
       "answer": "Mehrere bearbeitete Motive in verschiedenen Ausschnitten, genug für ein abwechslungsreiches Profil. Die genaue Zahl hängt vom vereinbarten Umfang ab."
+    },
+    {
+      "question": "Welche Outfits eignen sich für ein Dating-Fotoshooting?",
+      "answer": "Am besten zwei bis drei Outfits, die du wirklich im Alltag oder bei einem Date trägst: zum Beispiel ein entspannter Look für den Spaziergang und ein etwas klarerer Look für den Abend. Vermeide sehr unruhige Muster oder große Logos, damit der Blick bei dir bleibt."
+    },
+    {
+      "question": "Bleiben meine Dating-Fotos privat und diskret?",
+      "answer": "Ja. Ohne deine Zustimmung erscheinen deine Bilder weder im Portfolio noch auf Social Media. Die private Nutzung für Dating-Apps und deine eigenen Profile sprechen wir vorab ab."
     }
   ],
   "blocks": [],
@@ -90,19 +98,34 @@
   "processSection": {},
   "processSteps": [
     {
-      "image": "/assets/portraits/20260823-khan-levi-dsc8481.webp"
+      "image": "/assets/portraits/20260823-khan-levi-dsc8481.webp",
+      "imageLabel": "Anfrage",
+      "title": "Kurze Anfrage",
+      "text": "Schreib mir kurz, für welche Apps oder Profile du Bilder brauchst und wann es dir passt. Ich melde mich zeitnah mit einer ersten Einordnung und Terminvorschlägen in Düsseldorf."
     },
     {
-      "image": "/assets/portraits/20260823-khan-levi-dsc8762.webp"
+      "image": "/assets/portraits/20260823-khan-levi-dsc8762.webp",
+      "imageLabel": "Vorgespräch & Outfits",
+      "title": "Vorgespräch & Outfits",
+      "text": "Wir klären vorab, welche Seiten von dir im Profil sichtbar werden sollen, und stimmen zwei bis drei alltagstaugliche Outfits aufeinander ab, ohne Verkleidung."
     },
     {
-      "image": "/assets/portraits/20260823-khan-levi-dsc8797.webp"
+      "image": "/assets/portraits/20260823-khan-levi-dsc8797.webp",
+      "imageLabel": "Route & Licht",
+      "title": "Route & Lichtplanung",
+      "text": "Wir wählen zwei gut erreichbare Ecken in Düsseldorf, etwa Medienhafen, Rheinufer oder Hofgarten, passend zur Tageszeit und weichem, offenem Schattenlicht."
     },
     {
-      "image": "/assets/portraits/20260823-khan-levi-dsc8557.webp"
+      "image": "/assets/portraits/20260823-khan-levi-dsc8557.webp",
+      "imageLabel": "Outdoor-Shooting",
+      "title": "Entspanntes Shooting",
+      "text": "Kein steifer Pose-Drill: Wir starten im Gehen, reden nebenbei und arbeiten mit kleinen, konkreten Haltungshinweisen, bis ein nahes Hauptbild, Halbportraits und ein Ganzkörperbild sitzen."
     },
     {
-      "image": "/assets/portraits/20260823-khan-levi-dsc8733.webp"
+      "image": "/assets/portraits/20260823-khan-levi-dsc8733.webp",
+      "imageLabel": "Auswahl & Lieferung",
+      "title": "Galerie & diskrete Lieferung",
+      "text": "Du wählst deine Favoriten aus einer privaten Online-Galerie. Ich bearbeite Licht, Farbe und Kontrast natürlich und liefere alle Bilder passend zugeschnitten für Hinge, Bumble, Tinder & Co."
     }
   ],
   "audienceSection": {},
@@ -151,8 +174,8 @@
   "contactSection": {},
   "targetKeyword": "Dating Fotoshooting Düsseldorf – Profilbilder ohne Pose",
   "seo": {
-    "title": "Dating-Fotograf Düsseldorf & NRW: Profilbilder ab 250 €",
-    "description": "Dating-Fotoshooting in Düsseldorf: natürliche Profilbilder für Tinder, Hinge und Bumble, draußen bei Tageslicht, mit Hilfe bei Outfit und Haltung. Ab 250 €.",
+    "title": "Dating-Fotoshooting Düsseldorf: Natürliche Fotos ab 250 €",
+    "description": "Echte Profilbilder für Hinge, Bumble & Tinder, ohne steife Posen. Outdoor-Shooting in Düsseldorf inkl. Outfit- & Haltungstipps, diskret, ab 250 €.",
     "canonicalUrl": "https://matthiasramahi.de/dating-fotoshooting-duesseldorf.html",
     "legacyUrl": "dating-fotoshooting-duesseldorf.html",
     "noIndex": false,
@@ -208,6 +231,10 @@
       {
         "label": "Portraits ohne generische Posen (Journal)",
         "href": "/blog-portraits-ohne-generische-posen.html"
+      },
+      {
+        "label": "Portraits im offenen Schatten (Journal)",
+        "href": "/blog-portraits-offener-schatten.html"
       },
       {
         "label": "Portfolio Portrait",

@@ -33,8 +33,8 @@
   "intro": "Automobil-, Portrait- und Landschaftsfotografie aus dem Raum Düsseldorf für Marken, Sammler und Menschen mit Anspruch.",
   "heroImage": "/uploads/payload/_DSC2876_genErase%20(1)-2.webp",
   "seo": {
-    "title": "Matthias Ramahi — Fotografie Düsseldorf & NRW",
-    "description": "Matthias Ramahi, Fotograf aus Erkrath bei Düsseldorf: Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft für Marke, Verkauf, Print und Kampagne in NRW.",
+    "title": "Matthias Ramahi — Fotograf Düsseldorf: Auto, Bike & Portrait",
+    "description": "Fotograf aus Erkrath bei Düsseldorf: Autofotografie, Sportwagen, Oldtimer, Motorrad, Business-Portraits & Fine-Art-Druck in NRW. Shootings ab 250 €.",
     "focusKeyword": "Matthias Ramahi Fotografie",
     "searchIntent": "Brand- und Leistungsnavigation: Nutzer suchen Matthias Ramahi Fotografie und den Einstieg in Portfolio, Leistungen oder Kontakt.",
     "canonicalUrl": "https://matthiasramahi.de/",
@@ -234,35 +234,35 @@
   "homeStatement": {
     "body": [
       {
-        "text": "Meine Bilder entstehen rund um Automobile, Oldtimer, Sportwagen, Motorräder, Portraits und Landschaften. Jede Arbeit folgt derselben ruhigen Logik: Licht, Komposition, Material, Zeit."
+        "text": "Ich fotografiere Automobile, Sportwagen, Oldtimer, Motorräder, Portraits und Landschaften, mit ruhiger Hand, kontrolliertem Licht und Blick für Material, Linien und Charakter."
       },
       {
-        "text": "Ich fotografiere für Marken, Manufakturen, Sammler und private Eigentümer in Düsseldorf, im Rheinland und in ganz NRW, überall dort, wo ein Bild über Verkauf, Sammlung oder Markenwert mitentscheidet."
+        "text": "Von meiner Basis in Erkrath direkt neben Düsseldorf aus arbeite ich für private Eigentümer, Sammler, Autohäuser, Marken und Selbstständige im gesamten Rheinland, im Ruhrgebiet und in ganz NRW."
       }
     ]
   },
   "homeChapters": {
-    "intro": "Jeder Bereich hat eine eigene visuelle Logik: Bewegung, Material, Mensch, Raum. Wähle einen Bereich und sieh dir die Arbeit dahinter an.",
+    "intro": "Sechs fotografische Schwerpunkte, jeder mit eigener Planung für Licht, Perspektive und Location. Wähle deinen Bereich für Ablauf und Beispiele.",
     "items": [
       {
         "image": "/uploads/payload/_DSC2310-2.webp",
         "title": "Automobil",
-        "href": "/automobil-fotografie-duesseldorf.html"
+        "href": "/autofotografie-duesseldorf.html"
       },
       {
         "image": "/uploads/payload/_DSC3878-1.webp",
         "title": "Sportwagen",
-        "href": "/sportwagen-fotografie-duesseldorf.html"
+        "href": "/sportwagen-fotografie.html"
       },
       {
         "image": "/uploads/payload/20250418-DSC006552.webp",
         "title": "Oldtimer",
-        "href": "/oldtimer-fotografie-duesseldorf.html"
+        "href": "/oldtimer-fotografie.html"
       },
       {
         "image": "/uploads/payload/assets-photos-motorrad-1920.webp",
         "title": "Motorrad",
-        "href": "/motorrad-fotografie-duesseldorf.html"
+        "href": "/motorrad-fotografie.html"
       },
       {
         "image": "/assets/portraits/20260823-khan-levi-dsc8759.webp",
@@ -272,7 +272,7 @@
       {
         "image": "/uploads/payload/_DSC8015.webp",
         "title": "Landschaft",
-        "href": "/landschaftsfotografie-duesseldorf.html"
+        "href": "/landschaftsfotografie.html"
       }
     ]
   },
@@ -280,54 +280,39 @@
     "intro": "Aktuelle Serien aus allen sechs Bereichen. Ein Klick auf ein Bild öffnet die Großansicht."
   },
   "homeAbout": {
-    "kicker": "Über mich",
+    "kicker": "Über mich · Erkrath · Düsseldorf",
     "image": "/assets/optimized/matthias-ramahi-portrait-1080.webp",
     "body": [
       {
-        "text": "Ich arbeite ruhig, präzise und im engen Dialog mit dem Auftraggeber, vom ersten Briefing bis zum finalen Druck."
+        "text": "Ich bin Matthias Ramahi, dein direkter Ansprechpartner vom ersten Briefing über das Location-Scouting bis zur fertigen Bildauswahl und auf Wunsch bis zum Fine-Art-Druck."
       },
       {
-        "text": "Meine Basis ist Erkrath bei Düsseldorf, mein Netzwerk reicht durch das ganze Rheinland. Ich begleite Marken, Manufakturen, Sammler und private Eigentümer dort, wo ein Bild über Auflage, Sammlung oder Markenwert mitentscheidet."
+        "text": "Mein Standort liegt in Erkrath (Kempener Straße 44) direkt neben Düsseldorf. Kurze Wege nach Düsseldorf, Köln und ins Ruhrgebiet, ruhige Arbeitsweise am Set und ehrliche Nachbearbeitung ohne Effekt-Überladung."
       }
     ]
   },
   "homeServices": {
-    "intro": "Für Projekte, die über die Fotografie hinausgehen: Druck, Großformat, Werbetechnik, Webdesign, Video, Sonderanfertigungen und Musik. Koordiniert über einen Ansprechpartner.",
+    "intro": "Über die Fotografie hinaus koordiniere ich Druck, Großformat, Videografie und Live-Musik mit Partnern aus der Region, mit einem Ansprechpartner für dich.",
     "items": [
       {
-        "title": "Fotolabor & Druck",
-        "text": "Fine-Art- und Qualitätsdruck, von der Datei bis zum gerahmten Bild.",
+        "title": "Fotolabor & Fine-Art-Druck",
+        "text": "Kalibrierte Fine-Art-Prints, Großformate, Acrylglas und Sonderanfertigungen, von der Datei bis zur gerahmten Edition.",
         "href": "/fotolabor-druck-duesseldorf.html"
       },
       {
-        "title": "Großformatdruck",
-        "text": "Poster, Banner, Messewände und Acrylglas, auch in großen Formaten.",
-        "href": "/grossformatdruck-duesseldorf.html"
-      },
-      {
-        "title": "Werbetechnik",
-        "text": "Schaufenster, Beklebungen, Firmenschilder und Displaylösungen für den Raum.",
-        "href": "/werbetechnik-duesseldorf.html"
-      },
-      {
-        "title": "Webdesign & SEO",
-        "text": "Markenseiten, Portfolios und lokale Sichtbarkeit für deinen Online-Auftritt.",
-        "href": "/webdesign-seo-duesseldorf.html"
-      },
-      {
-        "title": "Viola Musik",
-        "text": "Live-Musik und klassische Begleitung für Empfänge, Vernissagen, Hochzeiten und Trauerfeiern.",
-        "href": "/viola-musik-duesseldorf.html"
-      },
-      {
         "title": "Videografie",
-        "text": "Marken-, Musik-, Event- und Imagefilm, vom Konzept bis zum finalen Schnitt.",
+        "text": "Marken-, Musik-, Event- und Imagefilm in Zusammenarbeit mit Sophia Ramahi, abgestimmt auf die Fotoproduktion.",
         "href": "/videografie-duesseldorf.html"
       },
       {
-        "title": "Drucke & Sonderanfertigungen",
-        "text": "Mappen, Editionen, Geschenke und Interior, von der Idee bis zum Unikat.",
-        "href": "/drucke-sonderanfertigungen-duesseldorf.html"
+        "title": "Viola Musik",
+        "text": "Live-Musik und klassische Begleitung für Empfänge, Vernissagen, Hochzeiten und Veranstaltungen.",
+        "href": "/viola-musik-duesseldorf.html"
+      },
+      {
+        "title": "Preise & Umfang",
+        "text": "Orientierung zu Shooting-Umfang, Nutzungsrechten und transparenten Angeboten ab 250 € inkl. MwSt.",
+        "href": "/fotoshooting-preise-duesseldorf.html"
       }
     ]
   },

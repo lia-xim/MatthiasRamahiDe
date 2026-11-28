@@ -5,10 +5,14 @@
 // Nachbarseiten, damit Google jeden Artikel ohne JavaScript erreicht.
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
 import GooglePreferredSource from './GooglePreferredSource.astro'
-import { localResponsiveImage } from '../../data/localResponsiveThumbs'
+import NativeRecentShoots from './NativeRecentShoots.astro'
+import HeroMotion from './HeroMotion.astro'
+import { lookupLocalThumb } from '../../data/localResponsiveThumbs'
 import { tinaAttrs } from '../../lib/tinaFieldAttrs'
-import { imageAlt, imageDimensions, imageDisplayUrl, imageSrcset, getSitePageByType, liveCmsFetchOptions, toAbsoluteSiteUrl, toRootRelativeHref, type PayloadDoc } from '../../lib/payload'
+import { getSitePageByType, liveCmsFetchOptions, toAbsoluteSiteUrl, toRootRelativeHref, type PayloadDoc } from '../../lib/payload'
 import { countJournalTopics, getJournalIndexPosts, sliceJournalPosts, type EditableJournalPostCard } from '../../lib/journalIndexPosts'
+import { getLegacyRedirectTarget } from '../../lib/adoptedRoutes'
+import { journalStageImage } from '../../lib/journalStageImage'
 import {
   JOURNAL_PAGE_SIZE,
   formatJournalDate,
@@ -30,37 +34,108 @@ const { page, totalPages } = slice
 const topicCounts = countJournalTopics(allPosts)
 const hasText = (value?: string | null): value is string => typeof value === 'string' && value.trim().length > 0
 
+const resolveCanonicalHref = (rawHref?: string | null) => {
+  const rootHref = toRootRelativeHref(rawHref || undefined)
+  if (!rootHref || rootHref === '/' || rootHref.startsWith('#') || /^(?:https?:|mailto:|tel:)/i.test(rootHref)) {
+    return rootHref
+  }
+  const [pathAndQuery, hash = ''] = rootHref.split('#')
+  const [rawPath, query = ''] = pathAndQuery.split('?')
+  let current = rawPath.replace(/^\/+/, '').toLowerCase()
+  let pathname = rawPath
+  const seen = new Set<string>([current])
+  for (let hop = 0; hop < 4; hop += 1) {
+    if (!current || current.includes('/')) break
+    const target = getLegacyRedirectTarget(current)
+    if (target === null) break
+    if (target === '') {
+      pathname = '/'
+      break
+    }
+    const next = target.replace(/^\/+/, '')
+    pathname = `/${next}`
+    const nextLower = next.toLowerCase()
+    if (seen.has(nextLower)) break
+    seen.add(nextLower)
+    current = nextLower
+  }
+  return `${pathname}${query ? `?${query}` : ''}${hash ? `#${hash}` : ''}`
+}
+
+const topicPillarMap: Record<string, { href: string; label: string }> = {
+  automotive: { href: resolveCanonicalHref('/automobil-fotografie.html') || '/autofotografie.html', label: 'Zur Automobilfotografie' },
+  sportwagen: { href: resolveCanonicalHref('/sportwagen-fotografie.html') || '/sportwagen-fotografie.html', label: 'Zur Sportwagenfotografie' },
+  oldtimer: { href: resolveCanonicalHref('/oldtimer-fotografie.html') || '/oldtimer-fotografie.html', label: 'Zur Oldtimerfotografie' },
+  motorrad: { href: resolveCanonicalHref('/motorrad-fotografie.html') || '/motorrad-fotografie.html', label: 'Zur Motorradfotografie' },
+  portrait: { href: resolveCanonicalHref('/portraitfotografie.html') || '/portraitfotografie.html', label: 'Zur Portraitfotografie' },
+  prozess: { href: resolveCanonicalHref('/fotografie.html') || '/fotografie.html', label: 'Alle Fotografie-Bereiche' },
+  print: { href: resolveCanonicalHref('/landschaftsfotografie.html') || '/landschaftsfotografie.html', label: 'Zu Landschaft & Fine-Art-Prints' },
+}
+const activeTopicPillar = topic ? topicPillarMap[topic.filter] : null
+
 const journalIndex = doc?.journalIndex
-const isHome = !topic && page === 1
 const labelForCategory = (category: string) => journalTopics.find((entry) => entry.filter === category)?.label || 'Journal'
 
 // ---------- Kopf ----------
+// Bildgeführter Hero wie auf den anderen Hauptseiten: HeroMotion "pan" mit den
+// Titelbildern der neuesten (bzw. kuratierten) Querformat-Beiträge.
 const headline = topic ? topic.label : 'Journal'
 const lead = topic
   ? topic.intro
-  : 'Notizen aus der Praxis: Licht, Orte, Bildauswahl und Druck – geschrieben aus echten Produktionen für Automobil, Motorrad, Portrait und Landschaft.'
+  : 'Notizen aus echten Shootings über Licht, Orte, Bildauswahl und Druck, damit du dein nächstes Shooting besser planen kannst.'
 
-// ---------- Fokus-Beitrag (nur Seite 1 ohne Thema) ----------
-const featuredSettings = journalIndex?.featured || {}
-const curatedFeaturedHref = toRootRelativeHref(featuredSettings.buttonHref)
-const featured: EditableJournalPostCard | undefined = isHome
-  ? slice.posts.find((post) => post.href === curatedFeaturedHref) || slice.posts[0]
-  : undefined
-const featuredUsesCms = Boolean(featured && curatedFeaturedHref && featured.href === curatedFeaturedHref)
-const rawFeaturedImage = (featuredUsesCms && imageDisplayUrl(featuredSettings.image, 'mobile', { allowOriginal: true })) || (featuredUsesCms && imageDisplayUrl(featuredSettings.image, 'wide', { allowOriginal: true })) || featured?.image
-const featuredLocal = rawFeaturedImage && !featuredUsesCms && !/^https?:\/\//i.test(rawFeaturedImage) ? localResponsiveImage(rawFeaturedImage, featured?.width || 1200, featured?.height || 800) : null
-const featuredAvifSrcset = featuredUsesCms && featuredSettings.image && typeof featuredSettings.image === 'object' ? imageSrcset(featuredSettings.image, ['mobile', 'card', 'hero'], 'avif') || undefined : undefined
-const featuredSrcset = featuredUsesCms && featuredSettings.image && typeof featuredSettings.image === 'object' ? imageSrcset(featuredSettings.image, ['mobile', 'card', 'hero'], 'raster') || undefined : featuredLocal?.srcset || featured?.srcset || undefined
-const featuredImage = featuredLocal?.src || rawFeaturedImage
-const featuredPreloadSrc = (featuredUsesCms && imageDisplayUrl(featuredSettings.image, 'wide', { allowOriginal: true })) || rawFeaturedImage
-const featuredDimensions = featuredUsesCms ? imageDimensions(featuredSettings.image, 'wide') : {}
-const featuredTitle = (featuredUsesCms && hasText(featuredSettings.headline) && featuredSettings.headline) || featured?.title || ''
-const featuredText = (featuredUsesCms && hasText(featuredSettings.text) && featuredSettings.text) || featured?.text || ''
-// Seite 1: Fokus-Beitrag + die vier nächsten als Liste daneben, der Rest im
-// Raster. Zusammen sind das genau die JOURNAL_PAGE_SIZE Beiträge der Seite,
-// damit Seite 2 nahtlos anschliesst.
-const sidePosts = featured ? slice.posts.filter((post) => post !== featured).slice(0, 4) : []
-const gridPosts = slice.posts.filter((post) => post !== featured && !sidePosts.includes(post))
+const heroPool = topic ? allPosts.filter((post) => post.category === topic.filter) : allPosts
+const curatedFeaturedHref = toRootRelativeHref(journalIndex?.featured?.buttonHref)
+const curatedPost = !topic && curatedFeaturedHref ? heroPool.find((post) => post.href === curatedFeaturedHref) : undefined
+// Der Link zeigt immer auf den neuesten Beitrag; ein kuratierter Beitrag
+// (CMS "featured") liefert nur das zweite Bühnenbild.
+const latestPost = heroPool[0]
+const latestLabel = 'Neu im Journal'
+
+type HeroSlide = { src: string; srcset?: string; width?: number; height?: number }
+const maxSrcsetWidth = (srcset?: string) =>
+  Math.max(0, ...(srcset || '').split(',').map((entry) => Number(entry.trim().match(/\s(\d+)w$/)?.[1] || 0)))
+// Vollflächige Bühne: nur Querformate mit mindestens ~1600 px breiter Quelle,
+// sonst wirkt das Bild auf grossen Bildschirmen weich.
+const heroSlideFor = (post: EditableJournalPostCard, minWidth = 1600): HeroSlide | null => {
+  const cover = post.source?.coverImage || post.image
+  const stage = journalStageImage(cover)
+  if (stage && stage.width && stage.height && maxSrcsetWidth(stage.srcset) >= minWidth) {
+    return stage.width >= stage.height * 1.2 ? { src: stage.src, srcset: stage.srcset, width: stage.width, height: stage.height } : null
+  }
+  const raw = typeof cover === 'string' ? cover : post.image
+  const thumb = lookupLocalThumb(raw)
+  // /thumbs/-Pfade sind Vorschaubilder, auch wenn das Manifest Originalmasse nennt.
+  if (thumb && !/\/thumbs\//i.test(raw) && thumb.width >= minWidth && thumb.width >= thumb.height * 1.2) {
+    const original = `/${raw.replace(/^\/+/, '').split(/[?#]/, 1)[0]}`
+    return { src: original, srcset: `${thumb.w760} 760w, ${original} ${thumb.width}w`, width: thumb.width, height: thumb.height }
+  }
+  return null
+}
+const collectHeroSlides = (posts: EditableJournalPostCard[], minWidth: number) => {
+  const slides: HeroSlide[] = []
+  for (const post of posts) {
+    if (slides.length >= 5) break
+    const slide = heroSlideFor(post, minWidth)
+    if (slide && !slides.some((entry) => entry.src === slide.src)) slides.push(slide)
+  }
+  return slides
+}
+// Themen mit wenigen grossen Querformaten: erst kleinere Quellen des Themas,
+// dann die neuesten Bilder des ganzen Journals.
+const heroOrder = [...(latestPost ? [latestPost] : []), ...(curatedPost ? [curatedPost] : []), ...heroPool]
+let heroSlides = collectHeroSlides(heroOrder, 1600)
+if (heroSlides.length === 0) heroSlides = collectHeroSlides(heroOrder, 1100)
+if (heroSlides.length === 0) heroSlides = collectHeroSlides(allPosts, 1600)
+const heroSizes = '100vw'
+const heroPreload = heroSlides[0]
+  ? { href: heroSlides[0].src, imagesrcset: heroSlides[0].srcset, imagesizes: heroSlides[0].srcset ? heroSizes : undefined, fetchpriority: 'high' as const }
+  : null
+
+// Alle Beiträge der Seite im Raster, damit Seite 2 nahtlos anschliesst.
+const gridPosts = slice.posts
+const gridStartIndex = (page - 1) * JOURNAL_PAGE_SIZE + 1
+const gridSizes = '(max-width: 720px) calc(100vw - 32px), (max-width: 1080px) 46vw, 31vw'
 
 // ---------- SEO ----------
 const pageSuffix = page > 1 ? ` – Seite ${page}` : ''
@@ -125,7 +200,7 @@ const finalCta = journalIndex?.finalCta || {}
 const finalHeadline = hasText(finalCta.headline) ? finalCta.headline : 'Fotoauftrag <em>planen.</em>'
 const finalText = hasText(finalCta.text)
   ? finalCta.text
-  : 'Schicken Sie kurz Ort, Zeitraum und Ziel des Projekts. Sie bekommen eine ehrliche Einschätzung, was sinnvoll ist.'
+  : 'Schick mir kurz Ort, Zeitraum und Ziel des Projekts. Du bekommst eine ehrliche Einschätzung, was sinnvoll ist.'
 const finalPrimaryLabel = hasText(finalCta.primaryLabel) ? finalCta.primaryLabel : 'Projekt anfragen'
 const finalPrimaryHref = toRootRelativeHref(finalCta.primaryHref) || '/contact.html'
 const finalSecondaryLabel = hasText(finalCta.secondaryLabel) ? finalCta.secondaryLabel : 'Portfolio ansehen'
@@ -138,181 +213,126 @@ const finalSecondaryHref = toRootRelativeHref(finalCta.secondaryHref) || '/portf
   title={seoTitle}
   description={seoDescription}
   canonicalUrl={canonicalPath}
+  noIndex={Boolean(topic)}
   jsonLd={jsonLd}
-  preloadImages={featuredPreloadSrc ? [featuredPreloadSrc] : gridPosts[0] ? [gridPosts[0].image] : []}
+  preloadImages={heroPreload ? [heroPreload] : []}
 >
   <main class="jx">
-    <header class="jx-head" data-header-theme="dark">
-      <div class="jx-wrap">
-        <div class="jx-head__top">
-          <div>
-            {(topic || page > 1) && (
-              <nav class="jx-crumbs" aria-label="Brotkrumen">
-                <a href="/blog.html">Journal</a>
-                {topic && page > 1 && <><span aria-hidden="true">/</span><a href={journalIndexPath(topic)}>{topic.label}</a></>}
-              </nav>
-            )}
-            <h1>{headline}<em>.</em>{page > 1 && <span class="jx-head__page"> Seite {page}</span>}</h1>
-          </div>
-          <p class="jx-lead">{lead}</p>
-        </div>
-        <nav class="jx-topics" aria-label="Themen im Journal">
-          <a href="/blog.html" aria-current={!topic ? 'page' : undefined}>Alle <span>{allPosts.length}</span></a>
+    <section class:list={['jhero', { 'is-compact': Boolean(topic) || page > 1, 'is-bare': heroSlides.length === 0 }]} data-theme="dark" data-header-theme="dark" aria-labelledby="jhero-title">
+      {heroSlides.length > 0 && <HeroMotion variant="pan" slides={heroSlides} seconds={6} />}
+      <div class="jhero__veil" aria-hidden="true"></div>
+      <div class="jx-wrap jhero__inner">
+        <h1 class="jhero__h1" id="jhero-title">{headline}</h1>
+        <p class="jhero__lead">
+          {lead}
+          {page > 1 && <span class="jhero__page"> Seite {page} von {totalPages}.</span>}
+        </p>
+        {latestPost && (
+          <a class="jhero__latest" href={latestPost.href}>
+            <span class="jhero__latest-label">{latestLabel}</span>
+            <span class="jhero__latest-title">{latestPost.title}</span>
+          </a>
+        )}
+      </div>
+    </section>
+
+    <nav class="jtopics" id="themen" data-header-theme="dark" aria-label="Themen im Journal">
+      <div class="jx-wrap jtopics__inner">
+        <ul class="jtopics__list">
+          <li><a href="/blog.html#themen" aria-current={!topic ? 'page' : undefined}>Alle Beiträge</a></li>
           {journalTopics
             .filter((entry) => (topicCounts[entry.filter] || 0) > 0)
             .map((entry) => (
-              <a href={journalIndexPath(entry)} aria-current={topic?.slug === entry.slug ? 'page' : undefined}>
-                {entry.label} <span>{topicCounts[entry.filter]}</span>
-              </a>
+              <li>
+                <a href={`${journalIndexPath(entry)}#themen`} aria-current={topic?.slug === entry.slug ? 'page' : undefined}>{entry.label}</a>
+              </li>
             ))}
-        </nav>
-
-        {featured && featuredImage && (
-          <div class="jx-cover">
-            <a class="jx-cover__main" href={featured.href}>
-              <figure class="jx-cover__media">
-                {featuredAvifSrcset ? (
-                  <picture>
-                    <source type="image/avif" srcset={featuredAvifSrcset} sizes="(max-width: 900px) 94vw, 58vw" />
-                    <img
-                      src={featuredImage}
-                      srcset={featuredSrcset}
-                      sizes={featuredSrcset ? '(max-width: 900px) 94vw, 58vw' : undefined}
-                      alt={featuredUsesCms ? imageAlt(featuredSettings.image, featured.imageAlt) : featured.imageAlt}
-                      width={featuredDimensions.width || featured.width}
-                      height={featuredDimensions.height || featured.height}
-                      decoding="async"
-                      loading="eager"
-                      fetchpriority="high"
-                      {...(featuredUsesCms ? tinaAttrs(featuredSettings, 'image') : {})}
-                    />
-                  </picture>
-                ) : (
-                  <img
-                    src={featuredImage}
-                    srcset={featuredSrcset}
-                    sizes={featuredSrcset ? '(max-width: 900px) 94vw, 58vw' : undefined}
-                    alt={featuredUsesCms ? imageAlt(featuredSettings.image, featured.imageAlt) : featured.imageAlt}
-                    width={featuredDimensions.width || featured.width}
-                    height={featuredDimensions.height || featured.height}
-                    decoding="async"
-                    loading="eager"
-                    fetchpriority="high"
-                    {...(featuredUsesCms ? tinaAttrs(featuredSettings, 'image') : {})}
-                  />
-                )}
-              </figure>
-              <p class="jx-meta">
-                <span>{labelForCategory(featured.category)}</span>
-                {featured.dateTime && <time datetime={featured.dateTime}>{formatJournalDate(featured.dateTime)}</time>}
-                <span>{featured.readTime}</span>
-              </p>
-              <h2 {...(featuredUsesCms ? tinaAttrs(featuredSettings, 'headline') : {})}>{featuredTitle}</h2>
-              <p class="jx-cover__text" {...(featuredUsesCms ? tinaAttrs(featuredSettings, 'text') : {})}>{featuredText}</p>
-            </a>
-            {sidePosts.length > 0 && (
-              <ol class="jx-cover__side" aria-label="Neu im Journal">
-                {sidePosts.map((post) => (
-                  <li>
-                    <a href={post.href}>
-                      {post.avifSrcset ? (
-                        <picture>
-                          <source type="image/avif" srcset={post.avifSrcset} sizes="(max-width: 900px) 26vw, 120px" />
-                          <img src={post.image} srcset={post.srcset} sizes={post.srcset ? '(max-width: 900px) 26vw, 120px' : undefined} alt={post.imageAlt} width={post.width} height={post.height} decoding="async" loading="eager" />
-                        </picture>
-                      ) : (
-                        <img src={post.image} srcset={post.srcset} sizes={post.srcset ? '(max-width: 900px) 26vw, 120px' : undefined} alt={post.imageAlt} width={post.width} height={post.height} decoding="async" loading="eager" />
-                      )}
-                      <span class="jx-cover__side-copy">
-                        <span class="jx-meta"><span>{labelForCategory(post.category)}</span><span>{post.readTime}</span></span>
-                        <span class="jx-cover__side-title" {...tinaAttrs(post.source, 'title')}>{post.title}</span>
-                      </span>
-                    </a>
-                  </li>
-                ))}
-              </ol>
-            )}
-          </div>
-        )}
+        </ul>
+        {activeTopicPillar && <a class="jtopics__pillar" href={activeTopicPillar.href}>{activeTopicPillar.label}</a>}
       </div>
-    </header>
+    </nav>
 
     <section class="jx-list" id="journal" data-header-theme="light" aria-labelledby="jx-list-title">
-      <div class="jx-wrap">
-        <div class="jx-list__head">
-          <h2 id="jx-list-title">{topic ? `Alle Artikel: ${topic.label}` : page > 1 ? 'Ältere Artikel' : 'Weitere Artikel'}</h2>
-          <p>{slice.total} Artikel{totalPages > 1 && ` · Seite ${page} von ${totalPages}`}</p>
-        </div>
+        <div class="jx-wrap">
+          <div class="jx-list__head">
+            <h2 id="jx-list-title">{topic ? `Alle Artikel: ${topic.label}` : page > 1 ? 'Ältere Artikel' : 'Neueste Artikel'}</h2>
+            <p>{slice.total} Artikel{totalPages > 1 && ` · Seite ${page} von ${totalPages}`}</p>
+          </div>
 
-        {gridPosts.length > 0 ? (
-          <ol class="jx-grid" start={(page - 1) * JOURNAL_PAGE_SIZE + 1}>
-            {gridPosts.map((post, index) => (
-              <li class="jx-card">
-                <a href={post.href}>
-                  <figure class="jx-card__media">
-                    {post.avifSrcset ? (
-                      <picture>
-                        <source type="image/avif" srcset={post.avifSrcset} sizes="(max-width: 900px) 94vw, 32vw" />
+          {gridPosts.length > 0 ? (
+            <ol class="jx-grid" start={gridStartIndex}>
+              {gridPosts.map((post) => (
+                <li class="jx-card">
+                  <a href={post.href}>
+                    <figure class="jx-card__media">
+                      {post.avifSrcset ? (
+                        <picture>
+                          <source type="image/avif" srcset={post.avifSrcset} sizes={gridSizes} />
+                          <img
+                            src={post.image}
+                            srcset={post.srcset}
+                            sizes={post.srcset ? gridSizes : undefined}
+                            alt={post.imageAlt}
+                            width={post.width}
+                            height={post.height}
+                            decoding="async"
+                            loading="lazy"
+                            {...tinaAttrs(post.source, 'coverImage')}
+                          />
+                        </picture>
+                      ) : (
                         <img
                           src={post.image}
                           srcset={post.srcset}
-                          sizes={post.srcset ? '(max-width: 900px) 94vw, 32vw' : undefined}
+                          sizes={post.srcset ? gridSizes : undefined}
                           alt={post.imageAlt}
                           width={post.width}
                           height={post.height}
                           decoding="async"
-                          loading={index < 3 && !featured ? 'eager' : 'lazy'}
+                          loading="lazy"
                           {...tinaAttrs(post.source, 'coverImage')}
                         />
-                      </picture>
-                    ) : (
-                      <img
-                        src={post.image}
-                        srcset={post.srcset}
-                        sizes={post.srcset ? '(max-width: 900px) 94vw, 32vw' : undefined}
-                        alt={post.imageAlt}
-                        width={post.width}
-                        height={post.height}
-                        decoding="async"
-                        loading={index < 3 && !featured ? 'eager' : 'lazy'}
-                        {...tinaAttrs(post.source, 'coverImage')}
-                      />
-                    )}
-                  </figure>
-                  <p class="jx-meta">
-                    <span>{labelForCategory(post.category)}</span>
-                    {post.dateTime && <time datetime={post.dateTime}>{formatJournalDate(post.dateTime)}</time>}
-                    <span>{post.readTime}</span>
-                  </p>
-                  <h3 {...tinaAttrs(post.source, 'title')}>{post.title}</h3>
-                  {post.text && <p class="jx-card__text" {...tinaAttrs(post.source, 'excerpt')}>{post.text}</p>}
-                </a>
-              </li>
-            ))}
-          </ol>
-        ) : (
-          <p class="jx-empty">In diesem Thema sind noch keine Artikel veröffentlicht.</p>
-        )}
-
-        {totalPages > 1 && (
-          <nav class="jx-pager" aria-label="Seiten">
-            {prevHref ? <a class="jx-pager__step" href={prevHref} rel="prev">← Neuere</a> : <span class="jx-pager__step is-off" aria-hidden="true">← Neuere</span>}
-            <ol class="jx-pager__pages">
-              {pageWindow.map((entry) =>
-                entry === 'gap' ? (
-                  <li class="jx-pager__gap" aria-hidden="true">…</li>
-                ) : (
-                  <li>
-                    <a href={journalIndexPath(topic, entry)} aria-current={entry === page ? 'page' : undefined} aria-label={`Seite ${entry}`}>{entry}</a>
-                  </li>
-                ),
-              )}
+                      )}
+                    </figure>
+                    <p class="jx-meta">
+                      <span>{labelForCategory(post.category)}</span>
+                      {post.dateTime && <time datetime={post.dateTime}>{formatJournalDate(post.dateTime)}</time>}
+                      <span>{post.readTime}</span>
+                    </p>
+                    <h3 {...tinaAttrs(post.source, 'title')}>{post.title}</h3>
+                    {post.text && <p class="jx-card__text" {...tinaAttrs(post.source, 'excerpt')}>{post.text}</p>}
+                  </a>
+                </li>
+              ))}
             </ol>
-            {nextHref ? <a class="jx-pager__step" href={nextHref} rel="next">Ältere →</a> : <span class="jx-pager__step is-off" aria-hidden="true">Ältere →</span>}
-          </nav>
-        )}
-      </div>
-    </section>
+          ) : (
+            <div class="jx-empty">
+              <p>In diesem Thema sind aktuell noch keine Artikel veröffentlicht.</p>
+              <a class="jx-empty__link" href="/blog.html">Alle Journal-Artikel ansehen</a>
+            </div>
+          )}
+
+          {totalPages > 1 && (
+            <nav class="jx-pager" aria-label="Seiten">
+              {prevHref ? <a class="jx-pager__step" href={`${prevHref}#themen`} rel="prev">Neuere Beiträge</a> : <span class="jx-pager__step is-off" aria-hidden="true">Neuere Beiträge</span>}
+              <ol class="jx-pager__pages">
+                {pageWindow.map((entry) =>
+                  entry === 'gap' ? (
+                    <li class="jx-pager__gap" aria-hidden="true">…</li>
+                  ) : (
+                    <li>
+                      <a href={`${journalIndexPath(topic, entry)}#themen`} aria-current={entry === page ? 'page' : undefined} aria-label={`Seite ${entry}`}>{entry}</a>
+                    </li>
+                  ),
+                )}
+              </ol>
+              {nextHref ? <a class="jx-pager__step" href={`${nextHref}#themen`} rel="next">Ältere Beiträge</a> : <span class="jx-pager__step is-off" aria-hidden="true">Ältere Beiträge</span>}
+            </nav>
+          )}
+        </div>
+      </section>
+
+    {!topic && page === 1 && <NativeRecentShoots />}
 
     <div class="jx-gps" data-header-theme="light"><GooglePreferredSource theme="light" /></div>
 

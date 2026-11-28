@@ -268,7 +268,7 @@ const overviewFaq = authoredOverviewFaq.length > 0 ? authoredOverviewFaq : defau
       <section class={`topic ${topic.theme} ${topic.className}`} id={topic.id} data-theme={topic.theme}>
         <div class="topic-grid">
           <div class="topic-copy">
-            <h2><span {...tinaAttrs(editableSource(topic), 'title')}>{topic.title}</span><em {...tinaAttrs(editableSource(topic), 'emphasis')}>{topic.emphasis}</em></h2>
+            <h2><span {...tinaAttrs(editableSource(topic), 'title')}>{topic.title}</span>{topic.title && topic.emphasis ? ' ' : ''}<em {...tinaAttrs(editableSource(topic), 'emphasis')}>{topic.emphasis}</em></h2>
             <p {...tinaAttrs(editableSource(topic), 'text')}>{topic.text}</p>
             <a class="topic-link" href={topic.href} {...tinaAttrs(editableSource(topic), 'linkLabel')}>{topic.linkLabel}</a>
           </div>

@@ -63,6 +63,17 @@ const heroMobileImage = /\/assets\/optimized\/(automobil-alpina|oldtimer-mercede
 const hasText = (value?: string): value is string => typeof value === 'string' && value.trim().length > 0
 const editableSource = (item: unknown) => (item as { source?: unknown } | null | undefined)?.source
 const pad = (value: number) => String(value).padStart(2, '0')
+const canonicalHomeHrefMap: Record<string, string> = {
+  '/automobil-fotografie-duesseldorf.html': '/autofotografie-duesseldorf.html',
+  '/sportwagen-fotografie-duesseldorf.html': '/sportwagen-fotografie.html',
+  '/oldtimer-fotografie-duesseldorf.html': '/oldtimer-fotografie.html',
+  '/motorrad-fotografie-duesseldorf.html': '/motorrad-fotografie.html',
+  '/landschaftsfotografie-duesseldorf.html': '/landschaftsfotografie.html',
+}
+const normalizeHomeHref = (href?: string) => {
+  const root = toRootRelativeHref(href) || '#'
+  return canonicalHomeHrefMap[root] || root
+}
 
 // Bildgrößen (technische Möblierung, bleibt Code — wird nicht im CMS gepflegt)
 const chapterSizes = '(max-width: 780px) calc((100vw, 52px) / 2), (max-width: 1180px) calc((100vw, 112px) / 2), 440px'
@@ -124,6 +135,7 @@ const chapters = (cmsChapters.length ? cmsChapters : fallbackChapters).map((chap
   const fallbackLocal = !chapter.srcset && !/^https?:\/\//i.test(chapter.image) ? localResponsiveImage(chapter.image, chapter.width, chapter.height) : null
   return {
     ...chapter,
+    href: normalizeHomeHref(chapter.href),
     avifSrcset: 'avifSrcset' in chapter ? chapter.avifSrcset : undefined,
     image: fallbackLocal?.mobile || chapter.image,
     srcset: fallbackLocal?.srcset || chapter.srcset,
@@ -151,7 +163,6 @@ const frameSizes = (ratio: number, total: number) =>
 
 // --- „Hinter der Kamera" ---
 const about = doc?.homeAbout
-const aboutKicker = hasText(about?.kicker) ? about!.kicker! : 'Über mich'
 const aboutHeadline = hasText(about?.headline) ? about!.headline! : ''
 const aboutEmphasis = about?.headlineEmphasis || ''
 const aboutBody = (about?.body || []).map((paragraph) => paragraph?.text).filter(hasText)
@@ -173,11 +184,19 @@ const aboutImageDimensions = isOwnPortrait(aboutImage)
     ? imageDimensions(about.image, 'card')
     : { width: 1080, height: 1274 }
 
+const excludedHomeServiceHrefs = new Set([
+  '/webdesign-seo-duesseldorf.html',
+  '/keyword-datenbank-seo.html',
+  '/werbetechnik-duesseldorf.html',
+  '/grossformatdruck-duesseldorf.html',
+  '/drucke-sonderanfertigungen-duesseldorf.html',
+])
+
 // --- Zusatzleistungen (kompakt im Journal-Block) ---
 const servicesGroup = doc?.homeServices
 const servicesIntro = hasText(servicesGroup?.intro)
   ? servicesGroup!.intro!
-  : 'Druck, Großformat, Werbetechnik, Webdesign, Video und mehr über ein kuratiertes Netzwerk, mit einem Ansprechpartner.'
+  : 'Über die Fotografie hinaus koordiniere ich Druck, Großformat, Videografie und Live-Musik mit Partnern aus der Region, mit einem Ansprechpartner für dich.'
 const cmsServices = (servicesGroup?.items || [])
   .filter((item) => hasText(item?.title))
   .map((item) => ({
@@ -186,7 +205,10 @@ const cmsServices = (servicesGroup?.items || [])
     title: item.title || '',
     text: item.text || '',
   }))
-const services = cmsServices.length ? cmsServices : fallbackServices
+  .filter((item) => !excludedHomeServiceHrefs.has(item.href))
+const services = cmsServices.length
+  ? cmsServices
+  : fallbackServices.filter((item) => !excludedHomeServiceHrefs.has(toRootRelativeHref(item.href) || ''))
 
 // --- Journal: CMS-Auswahl nur, wenn sie auf echte Artikel zeigt; sonst die drei neuesten Beiträge ---
 const journalGroup = doc?.homeJournal
@@ -256,15 +278,20 @@ const journalPosts = (cmsJournalItems.length === 3
     />
   )}
   <main class="lp">
-    <NativeShaderHero label="Intro" slides={heroSlides} sourceSlides={doc?.heroSlides || []} />
+    <NativeShaderHero
+      label="Intro"
+      slides={heroSlides}
+      sourceSlides={doc?.heroSlides || []}
+      semanticHeading="Matthias Ramahi — Fotograf in Düsseldorf & NRW für Automobil, Motorrad & Portrait"
+    />
 
     {/* 02 · Sechs Bereiche (dark) — gleiches Muster wie „Über mich“ */}
     <section class="chapters sec-dark" id="chapters" data-theme="dark" aria-labelledby="lp-chapters-title">
       <div class="section-inner">
         <div class="chapters-head">
           {chaptersHeadline
-            ? <h2 id="lp-chapters-title" {...tinaAttrs(chaptersGroup, 'headline')}>{chaptersHeadline}{chaptersEmphasis ? <Fragment><br /> <em {...tinaAttrs(chaptersGroup, 'headlineEmphasis')}>{chaptersEmphasis}</em></Fragment> : null}</h2>
-            : <h2 id="lp-chapters-title">Sechs Bereiche.<br /> Eine <em>Linse</em>.</h2>}
+            ? <h2 id="lp-chapters-title" {...tinaAttrs(chaptersGroup, 'headline')}>{chaptersHeadline}{chaptersEmphasis ? <Fragment>{' '}<br /><em {...tinaAttrs(chaptersGroup, 'headlineEmphasis')}>{chaptersEmphasis}</em></Fragment> : null}</h2>
+            : <h2 id="lp-chapters-title">Sechs Bereiche.{' '}<br />Eine <em>Linse</em>.</h2>}
           <p class="lead" {...tinaAttrs(chaptersGroup, 'intro')}>{chaptersIntro}</p>
         </div>
         <div class="chapter-grid">
@@ -293,7 +320,7 @@ const journalPosts = (cmsJournalItems.length === 3
       <div class="section-inner">
         <div class="lp-head">
           {selectedWorksHeadline
-            ? <h2 id="lp-sheet-title" class="lp-display" {...tinaAttrs(selectedWorks, 'headline')}>{selectedWorksHeadline}{selectedWorksEmphasis ? <Fragment> <em {...tinaAttrs(selectedWorks, 'headlineEmphasis')}>{selectedWorksEmphasis}</em></Fragment> : null}</h2>
+            ? <h2 id="lp-sheet-title" class="lp-display" {...tinaAttrs(selectedWorks, 'headline')}>{selectedWorksHeadline}{selectedWorksEmphasis ? <Fragment>{' '}<em {...tinaAttrs(selectedWorks, 'headlineEmphasis')}>{selectedWorksEmphasis}</em></Fragment> : null}</h2>
             : <h2 id="lp-sheet-title" class="lp-display">Ausgewählte <em>Arbeiten.</em></h2>}
           <p class="lead" {...tinaAttrs(selectedWorks, 'intro')}>{portfolioIntro}</p>
         </div>
@@ -305,7 +332,7 @@ const journalPosts = (cmsJournalItems.length === 3
                 <header class="lp-strip__label">
                   <h3 id={`lp-strip-${strip.topic}`}>{strip.label}</h3>
                   {strip.excerpt && <p>{strip.excerpt}</p>}
-                  <a class="lp-link" href={strip.href}>Serie ansehen<span class="sr-only"> {strip.label}</span> <span>· {pad(strip.count)} Bilder</span></a>
+                  <a class="lp-link" href={strip.href}>Serie ansehen<span class="sr-only"> {strip.label}</span> <span>· {strip.count} Bilder</span></a>
                 </header>
                 <div class="lp-strip__frames" style={`--total:${total.toFixed(3)}`}>
                   {strip.frames.map((frame, frameIndex) => (
@@ -341,8 +368,8 @@ const journalPosts = (cmsJournalItems.length === 3
       <div class="section-inner">
         <div>
           {statementHeadline
-            ? <h2 id="lp-statement-title" {...tinaAttrs(statement, 'headline')}>{statementHeadline}{statementEmphasis ? <Fragment><br /> <em {...tinaAttrs(statement, 'headlineEmphasis')}>{statementEmphasis}</em></Fragment> : null}</h2>
-            : <h2 id="lp-statement-title">Bilder, die einen Raum<br /> <em>verändern</em>.</h2>}
+            ? <h2 id="lp-statement-title" {...tinaAttrs(statement, 'headline')}>{statementHeadline}{statementEmphasis ? <Fragment>{' '}<br /><em {...tinaAttrs(statement, 'headlineEmphasis')}>{statementEmphasis}</em></Fragment> : null}</h2>
+            : <h2 id="lp-statement-title">Bilder, die einen Raum{' '}<br /><em>verändern</em>.</h2>}
         </div>
         <div class="body">
           <p class="lead" {...tinaAttrs(statement?.body?.[0], 'text')}>{statementParagraphs[0]}</p>
@@ -386,7 +413,6 @@ const journalPosts = (cmsJournalItems.length === 3
         <ol class="lp-steps">
           {homeProcess.map((step, index) => (
             <li class="lp-step">
-              <span class="lp-step__no" aria-hidden="true">{pad(index + 1)}</span>
               <h3>{step.title}</h3>
               <p>{step.text}</p>
             </li>
@@ -394,6 +420,7 @@ const journalPosts = (cmsJournalItems.length === 3
         </ol>
         <div class="lp-process__foot">
           <a class="btn dark" href="#anfrage">Projekt anfragen</a>
+          <a class="btn lp-btn-ghost-ink" href="/fotoshooting-preise-duesseldorf.html">Preise &amp; Umfang ansehen</a>
         </div>
       </div>
     </section>
@@ -410,6 +437,24 @@ const journalPosts = (cmsJournalItems.length === 3
             : <h2 id="lp-about-title" class="lp-display">Hinter der <em>Kamera.</em></h2>}
           <p class="lead" {...tinaAttrs(about?.body?.[0], 'text')}>{aboutParagraphs[0]}</p>
           {aboutParagraphs[1] && <p {...tinaAttrs(about?.body?.[1], 'text')}>{aboutParagraphs[1]}</p>}
+          <dl class="lp-trust-facts" aria-label="Standort und Direktkontakt">
+            <div>
+              <dt>Standort</dt>
+              <dd>Kempener Straße 44, 40699 Erkrath (bei Düsseldorf)</dd>
+            </div>
+            <div>
+              <dt>Region</dt>
+              <dd>Düsseldorf, Rheinland, Ruhrgebiet &amp; NRW</dd>
+            </div>
+            <div>
+              <dt>Einstieg</dt>
+              <dd>Shootings ab 250 € inkl. MwSt.</dd>
+            </div>
+            <div>
+              <dt>Direktkontakt</dt>
+              <dd><a href="tel:+4917642449858">+49 176 42 44 98 58</a> · Matthias Ramahi</dd>
+            </div>
+          </dl>
           <div class="actions">
             <a class="btn primary" href="/ueber-mich.html">Mehr über mich</a>
             <a class="btn lp-btn-ghost-paper" href="#anfrage">Projekt anfragen</a>
@@ -510,4 +555,39 @@ const journalPosts = (cmsJournalItems.length === 3
       data-contact-lead="Erzähl kurz, worum es geht: Motiv, Ort, Zeitrahmen, Nutzung. Ich antworte persönlich und sortiere mit dir den nächsten sinnvollen Schritt."
     />
   </main>
+
+  <style>
+    .lp-trust-facts {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px 24px;
+      margin: 26px 0 0;
+      padding: 20px 0;
+      border-top: 1px solid var(--lp-hair);
+      border-bottom: 1px solid var(--lp-hair);
+    }
+    .lp-trust-facts dt {
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--quiet);
+      margin-bottom: 4px;
+    }
+    .lp-trust-facts dd {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--fg);
+    }
+    .lp-trust-facts a {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    @media (max-width: 640px) {
+      .lp-trust-facts {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </AdoptedPageLayout>

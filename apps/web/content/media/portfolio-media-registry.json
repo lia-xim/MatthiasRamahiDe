@@ -1,14 +1,14 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-08T12:17:07.000Z",
+  "updatedAt": "2026-11-27T22:47:52.468Z",
   "description": "Verbindliche Medienzuordnung fuer kuratierte Portfolio-Serien. Manuelle Felder bleiben beim Synchronisieren erhalten.",
   "items": [
     {
       "image": "/assets/landscape/202608-dresden-dsc8426.webp",
       "assignedCategory": "landschaft",
-      "seriesId": "unassigned",
-      "subject": "",
-      "orientation": "unknown",
+      "seriesId": "dresden-saechsische-schweiz",
+      "subject": "Basteibrücke und Sandsteinfelsen in der Sächsischen Schweiz – Landschaftsfotografie",
+      "orientation": "landscape",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
       "allowedSurfaces": [
@@ -23,15 +23,15 @@
         "portfolio-auswahl-landschaft"
       ],
       "usageSummary": "dresden-saechsische-schweiz:gallery:2 | portfolio-auswahl-landschaft:gallery:2",
-      "width": null,
-      "height": null
+      "width": 1920,
+      "height": 1200
     },
     {
       "image": "/assets/landscape/202608-dresden-dsc8441.webp",
       "assignedCategory": "landschaft",
-      "seriesId": "unassigned",
-      "subject": "",
-      "orientation": "unknown",
+      "seriesId": "dresden-saechsische-schweiz",
+      "subject": "Basteibrücke zwischen Felsen der Sächsischen Schweiz unter weitem Wolkenhimmel",
+      "orientation": "landscape",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
       "allowedSurfaces": [
@@ -48,15 +48,15 @@
         "portfolio-auswahl-landschaft"
       ],
       "usageSummary": "dresden-saechsische-schweiz:cover | dresden-saechsische-schweiz:gallery:1 | portfolio-auswahl-landschaft:gallery:1 | portfolio-auswahl-landschaft:related:3",
-      "width": null,
-      "height": null
+      "width": 1920,
+      "height": 1080
     },
     {
       "image": "/assets/landscape/202608-dresden-dsc8458.webp",
       "assignedCategory": "landschaft",
-      "seriesId": "unassigned",
-      "subject": "",
-      "orientation": "unknown",
+      "seriesId": "dresden-saechsische-schweiz",
+      "subject": "Barocker Kirchenraum mit Orgel und symmetrischer Innenarchitektur in Dresden",
+      "orientation": "landscape",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
       "allowedSurfaces": [
@@ -70,21 +70,21 @@
         "dresden-saechsische-schweiz"
       ],
       "usageSummary": "dresden-saechsische-schweiz:gallery:3",
-      "width": null,
-      "height": null
+      "width": 1920,
+      "height": 1080
     },
     {
       "image": "/assets/optimized/assets-portfolio-dsc2329-1920.webp",
       "assignedCategory": "automobil",
-      "seriesId": "unassigned",
-      "subject": "",
-      "orientation": "unknown",
+      "seriesId": "sportwagen-messe",
+      "subject": "Widebody-Coupé auf der Messe aus tiefer Frontperspektive – Sportwagenfotografie",
+      "orientation": "portrait",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
       "allowedSurfaces": [
         "gallery"
       ],
-      "allowCrossCategory": false,
+      "allowCrossCategory": true,
       "usageCategories": [
         "automobil",
         "sportwagen"
@@ -94,21 +94,21 @@
         "portfolio-auswahl-sportwagen"
       ],
       "usageSummary": "portfolio-auswahl-automobil:gallery:7 | portfolio-auswahl-sportwagen:gallery:3",
-      "width": null,
-      "height": null
+      "width": 1707,
+      "height": 2560
     },
     {
       "image": "/assets/optimized/assets-portfolio-dsc2345-1920.webp",
       "assignedCategory": "automobil",
-      "seriesId": "unassigned",
-      "subject": "",
-      "orientation": "unknown",
+      "seriesId": "sportwagen-messe",
+      "subject": "Orangefarbenes Coupé von hinten mit Karbonflügel und Rückleuchten – Sportwagen-Detail",
+      "orientation": "landscape",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
       "allowedSurfaces": [
         "gallery"
       ],
-      "allowCrossCategory": false,
+      "allowCrossCategory": true,
       "usageCategories": [
         "automobil",
         "sportwagen"
@@ -118,15 +118,15 @@
         "portfolio-auswahl-sportwagen"
       ],
       "usageSummary": "portfolio-auswahl-automobil:gallery:12 | portfolio-auswahl-sportwagen:gallery:4",
-      "width": null,
-      "height": null
+      "width": 1920,
+      "height": 1536
     },
     {
       "image": "/assets/optimized/assets-portfolio-dsc2358-1920.webp",
       "assignedCategory": "sportwagen",
-      "seriesId": "unassigned",
-      "subject": "",
-      "orientation": "unknown",
+      "seriesId": "sportwagen-tiefgarage",
+      "subject": "Orangefarbener Roadster in der Tiefgarage – Front im Detail",
+      "orientation": "portrait",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
       "allowedSurfaces": [
@@ -140,15 +140,15 @@
         "portfolio-auswahl-sportwagen"
       ],
       "usageSummary": "portfolio-auswahl-sportwagen:gallery:5",
-      "width": null,
-      "height": null
+      "width": 1707,
+      "height": 2560
     },
     {
       "image": "/assets/optimized/assets-portfolio-dsc2744-1920.webp",
       "assignedCategory": "automobil",
-      "seriesId": "unassigned",
-      "subject": "",
-      "orientation": "unknown",
+      "seriesId": "automobil-widebody-messe",
+      "subject": "Weißes Widebody-Coupé auf der Messe aus tiefer Frontperspektive",
+      "orientation": "portrait",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
       "allowedSurfaces": [
@@ -162,15 +162,15 @@
         "portfolio-auswahl-automobil"
       ],
       "usageSummary": "portfolio-auswahl-automobil:gallery:5",
-      "width": null,
-      "height": null
+      "width": 1707,
+      "height": 2560
     },
     {
       "image": "/assets/optimized/assets-portfolio-dsc2788-1-1920.webp",
       "assignedCategory": "automobil",
-      "seriesId": "unassigned",
-      "subject": "",
-      "orientation": "unknown",
+      "seriesId": "automobil-bmw-m4",
+      "subject": "BMW M4 Front und Scheinwerfer vor dem Abendhimmel – Automobilfotografie",
+      "orientation": "portrait",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
       "allowedSurfaces": [
@@ -184,15 +184,15 @@
         "portfolio-auswahl-automobil"
       ],
       "usageSummary": "portfolio-auswahl-automobil:gallery:13",
-      "width": null,
-      "height": null
+      "width": 1707,
+      "height": 2560
     },
     {
       "image": "/assets/optimized/assets-portfolio-dsc2986-1920.webp",
       "assignedCategory": "automobil",
-      "seriesId": "unassigned",
-      "subject": "",
-      "orientation": "unknown",
+      "seriesId": "automobil-amg-interieur",
+      "subject": "AMG-Cockpit im Abendlicht mit Blick durch die Frontscheibe – Interieurfotografie",
+      "orientation": "portrait",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
       "allowedSurfaces": [
@@ -206,15 +206,15 @@
         "portfolio-auswahl-automobil"
       ],
       "usageSummary": "portfolio-auswahl-automobil:gallery:14",
-      "width": null,
-      "height": null
+      "width": 1707,
+      "height": 2560
     },
     {
       "image": "/assets/optimized/assets-portfolio-dsc3878-1920.webp",
       "assignedCategory": "sportwagen",
-      "seriesId": "unassigned",
-      "subject": "",
-      "orientation": "unknown",
+      "seriesId": "sportwagen-hypercar-messe",
+      "subject": "Supersportwagen Frontansicht im Messelicht – Sportwagenfotografie",
+      "orientation": "landscape",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
       "allowedSurfaces": [
@@ -228,21 +228,21 @@
         "portfolio-auswahl-sportwagen"
       ],
       "usageSummary": "portfolio-auswahl-sportwagen:gallery:6",
-      "width": null,
-      "height": null
+      "width": 1920,
+      "height": 1280
     },
     {
       "image": "/assets/optimized/assets-portfolio-dsc3908-1920.webp",
       "assignedCategory": "automobil",
-      "seriesId": "unassigned",
-      "subject": "",
-      "orientation": "unknown",
+      "seriesId": "sportwagen-hypercar-messe",
+      "subject": "Blick ins Cockpit eines Hypersportwagens mit Lenkrad im Neonlicht",
+      "orientation": "landscape",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
       "allowedSurfaces": [
         "gallery"
       ],
-      "allowCrossCategory": false,
+      "allowCrossCategory": true,
       "usageCategories": [
         "automobil",
         "sportwagen"
@@ -252,15 +252,15 @@
         "portfolio-auswahl-sportwagen"
       ],
       "usageSummary": "portfolio-auswahl-automobil:gallery:11 | portfolio-auswahl-sportwagen:gallery:9",
-      "width": null,
-      "height": null
+      "width": 1920,
+      "height": 1280
     },
     {
       "image": "/assets/portfolio/automobil-bentley-oldtimer.webp",
       "assignedCategory": "automobil",
-      "seriesId": "unassigned",
-      "subject": "",
-      "orientation": "unknown",
+      "seriesId": "automobil-bentley-klassiker",
+      "subject": "Bentley Oldtimer Formdetail – klassische Karosserie und Chrom im Detail",
+      "orientation": "landscape",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
       "allowedSurfaces": [
@@ -274,15 +274,390 @@
         "portfolio-auswahl-automobil"
       ],
       "usageSummary": "portfolio-auswahl-automobil:gallery:6",
-      "width": null,
-      "height": null
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "image": "/assets/portfolio/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0427.webp",
+      "assignedCategory": "automobil",
+      "seriesId": "bmw-alpina-b8-medienhafen-duesseldorf",
+      "subject": "BMW Alpina B8 zwischen Glasfassaden im Medienhafen Düsseldorf",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "automobil"
+      ],
+      "sourceProjects": [
+        "bmw-alpina-b8-medienhafen-duesseldorf"
+      ],
+      "usageSummary": "bmw-alpina-b8-medienhafen-duesseldorf:gallery:6",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "image": "/assets/portfolio/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0430.webp",
+      "assignedCategory": "automobil",
+      "seriesId": "bmw-alpina-b8-medienhafen-duesseldorf",
+      "subject": "Frontpartie und Alpina-Felge in Nahaufnahme",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "automobil"
+      ],
+      "sourceProjects": [
+        "bmw-alpina-b8-medienhafen-duesseldorf"
+      ],
+      "usageSummary": "bmw-alpina-b8-medienhafen-duesseldorf:gallery:7",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "image": "/assets/portfolio/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0457.webp",
+      "assignedCategory": "automobil",
+      "seriesId": "bmw-alpina-b8-medienhafen-duesseldorf",
+      "subject": "Alpina B8 aus tiefer Perspektive mit Fokus auf Vorderrad und Flanke",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "automobil"
+      ],
+      "sourceProjects": [
+        "bmw-alpina-b8-medienhafen-duesseldorf"
+      ],
+      "usageSummary": "bmw-alpina-b8-medienhafen-duesseldorf:gallery:8",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "image": "/assets/portfolio/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0492-hdr.webp",
+      "assignedCategory": "automobil",
+      "seriesId": "bmw-alpina-b8-medienhafen-duesseldorf",
+      "subject": "Innenraum des Alpina B8 mit Cognac-Leder und Cockpit",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "automobil"
+      ],
+      "sourceProjects": [
+        "bmw-alpina-b8-medienhafen-duesseldorf"
+      ],
+      "usageSummary": "bmw-alpina-b8-medienhafen-duesseldorf:gallery:14",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "image": "/assets/portfolio/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0509.webp",
+      "assignedCategory": "automobil",
+      "seriesId": "bmw-alpina-b8-medienhafen-duesseldorf",
+      "subject": "Mittelkonsole des Alpina B8 mit Kristall-Wählhebel",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "automobil"
+      ],
+      "sourceProjects": [
+        "bmw-alpina-b8-medienhafen-duesseldorf"
+      ],
+      "usageSummary": "bmw-alpina-b8-medienhafen-duesseldorf:gallery:15",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "image": "/assets/portfolio/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0584.webp",
+      "assignedCategory": "automobil",
+      "seriesId": "bmw-alpina-b8-medienhafen-duesseldorf",
+      "subject": "Seitenansicht des Alpina B8 vor der Architektur des Medienhafens",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "automobil"
+      ],
+      "sourceProjects": [
+        "bmw-alpina-b8-medienhafen-duesseldorf"
+      ],
+      "usageSummary": "bmw-alpina-b8-medienhafen-duesseldorf:gallery:5",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "image": "/assets/portfolio/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0610-hdr.webp",
+      "assignedCategory": "automobil",
+      "seriesId": "bmw-alpina-b8-medienhafen-duesseldorf",
+      "subject": "Dunkelgrüner Alpina B8 vor einem runden Glasbau im Medienhafen",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "automobil"
+      ],
+      "sourceProjects": [
+        "bmw-alpina-b8-medienhafen-duesseldorf"
+      ],
+      "usageSummary": "bmw-alpina-b8-medienhafen-duesseldorf:gallery:3",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "image": "/assets/portfolio/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0669.webp",
+      "assignedCategory": "automobil",
+      "seriesId": "bmw-alpina-b8-medienhafen-duesseldorf",
+      "subject": "Alpina B8 Gran Coupé im Medienhafen unter bewölktem Abendhimmel",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "automobil"
+      ],
+      "sourceProjects": [
+        "bmw-alpina-b8-medienhafen-duesseldorf"
+      ],
+      "usageSummary": "bmw-alpina-b8-medienhafen-duesseldorf:gallery:4",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "image": "/assets/portfolio/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0728.webp",
+      "assignedCategory": "automobil",
+      "seriesId": "bmw-alpina-b8-medienhafen-duesseldorf",
+      "subject": "BMW Alpina B8 vor dem Hyatt im Düsseldorfer Medienhafen",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "automobil"
+      ],
+      "sourceProjects": [
+        "bmw-alpina-b8-medienhafen-duesseldorf"
+      ],
+      "usageSummary": "bmw-alpina-b8-medienhafen-duesseldorf:gallery:2",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "image": "/assets/portfolio/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0743.webp",
+      "assignedCategory": "automobil",
+      "seriesId": "bmw-alpina-b8-medienhafen-duesseldorf",
+      "subject": "BMW Alpina B8 Gran Coupé am Rheinufer in Düsseldorf zum Sonnenuntergang vor einer Rheinbrücke",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "cover",
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "automobil"
+      ],
+      "sourceProjects": [
+        "bmw-alpina-b8-medienhafen-duesseldorf"
+      ],
+      "usageSummary": "bmw-alpina-b8-medienhafen-duesseldorf:cover | bmw-alpina-b8-medienhafen-duesseldorf:gallery:1",
+      "width": 1920,
+      "height": 1200
+    },
+    {
+      "image": "/assets/portfolio/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0756.webp",
+      "assignedCategory": "automobil",
+      "seriesId": "bmw-alpina-b8-medienhafen-duesseldorf",
+      "subject": "Alpina B8 in der Seitenansicht am Rhein mit Brücke im Hintergrund",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "automobil"
+      ],
+      "sourceProjects": [
+        "bmw-alpina-b8-medienhafen-duesseldorf"
+      ],
+      "usageSummary": "bmw-alpina-b8-medienhafen-duesseldorf:gallery:9",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "image": "/assets/portfolio/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0811.webp",
+      "assignedCategory": "automobil",
+      "seriesId": "bmw-alpina-b8-medienhafen-duesseldorf",
+      "subject": "Alpina B8 in der Frontdreiviertelansicht am Rheinufer",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "automobil"
+      ],
+      "sourceProjects": [
+        "bmw-alpina-b8-medienhafen-duesseldorf"
+      ],
+      "usageSummary": "bmw-alpina-b8-medienhafen-duesseldorf:gallery:10",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "image": "/assets/portfolio/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0850.webp",
+      "assignedCategory": "automobil",
+      "seriesId": "bmw-alpina-b8-medienhafen-duesseldorf",
+      "subject": "Heck des Alpina B8 Gran Coupé am Rhein",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "automobil"
+      ],
+      "sourceProjects": [
+        "bmw-alpina-b8-medienhafen-duesseldorf"
+      ],
+      "usageSummary": "bmw-alpina-b8-medienhafen-duesseldorf:gallery:11",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "image": "/assets/portfolio/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0882.webp",
+      "assignedCategory": "automobil",
+      "seriesId": "bmw-alpina-b8-medienhafen-duesseldorf",
+      "subject": "Alpina B8 im Gegenlicht der untergehenden Sonne am Rheinufer",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "automobil"
+      ],
+      "sourceProjects": [
+        "bmw-alpina-b8-medienhafen-duesseldorf"
+      ],
+      "usageSummary": "bmw-alpina-b8-medienhafen-duesseldorf:gallery:12",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "image": "/assets/portfolio/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0911.webp",
+      "assignedCategory": "automobil",
+      "seriesId": "bmw-alpina-b8-medienhafen-duesseldorf",
+      "subject": "Cockpit und Ledersitze des Alpina B8 bei geöffneter Tür",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "automobil"
+      ],
+      "sourceProjects": [
+        "bmw-alpina-b8-medienhafen-duesseldorf"
+      ],
+      "usageSummary": "bmw-alpina-b8-medienhafen-duesseldorf:gallery:16",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "image": "/assets/portfolio/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0935.webp",
+      "assignedCategory": "automobil",
+      "seriesId": "bmw-alpina-b8-medienhafen-duesseldorf",
+      "subject": "Alpina-Vielspeichenfelge mit blauem Bremssattel",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "automobil"
+      ],
+      "sourceProjects": [
+        "bmw-alpina-b8-medienhafen-duesseldorf"
+      ],
+      "usageSummary": "bmw-alpina-b8-medienhafen-duesseldorf:gallery:13",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "image": "/assets/portfolio/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0961.webp",
+      "assignedCategory": "automobil",
+      "seriesId": "bmw-alpina-b8-medienhafen-duesseldorf",
+      "subject": "Motorraum des Alpina B8 im Hochformat",
+      "orientation": "portrait",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": false,
+      "usageCategories": [
+        "automobil"
+      ],
+      "sourceProjects": [
+        "bmw-alpina-b8-medienhafen-duesseldorf"
+      ],
+      "usageSummary": "bmw-alpina-b8-medienhafen-duesseldorf:gallery:17",
+      "width": 1536,
+      "height": 1920
     },
     {
       "image": "/assets/portfolio/automobil-bmw-klassiker.webp",
       "assignedCategory": "automobil",
-      "seriesId": "unassigned",
-      "subject": "",
-      "orientation": "unknown",
+      "seriesId": "automobil-bmw-klassiker",
+      "subject": "BMW Klassiker im Showroom – kontrolliertes Licht und klare Karosserielinien",
+      "orientation": "landscape",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
       "allowedSurfaces": [
@@ -296,21 +671,21 @@
         "portfolio-auswahl-automobil"
       ],
       "usageSummary": "portfolio-auswahl-automobil:gallery:8",
-      "width": null,
-      "height": null
+      "width": 1920,
+      "height": 1547
     },
     {
       "image": "/assets/portfolio/automobil-bmw-m3-showcar.webp",
       "assignedCategory": "automobil",
-      "seriesId": "unassigned",
-      "subject": "",
-      "orientation": "unknown",
+      "seriesId": "automobil-bmw-m3",
+      "subject": "BMW M3 Showcar auf der Messe – Sportwagen- und Klassikerfotografie",
+      "orientation": "landscape",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
       "allowedSurfaces": [
         "gallery"
       ],
-      "allowCrossCategory": false,
+      "allowCrossCategory": true,
       "usageCategories": [
         "automobil",
         "sportwagen"
@@ -320,21 +695,21 @@
         "portfolio-auswahl-sportwagen"
       ],
       "usageSummary": "portfolio-auswahl-automobil:gallery:10 | portfolio-auswahl-sportwagen:gallery:12",
-      "width": null,
-      "height": null
+      "width": 1920,
+      "height": 1280
     },
     {
       "image": "/assets/portfolio/automobil-bmw-widebody.webp",
       "assignedCategory": "automobil",
-      "seriesId": "unassigned",
-      "subject": "",
-      "orientation": "unknown",
+      "seriesId": "automobil-bmw-widebody",
+      "subject": "BMW Widebody Showcar in heller Halle – Automobil- und Sportwagenfotografie",
+      "orientation": "landscape",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
       "allowedSurfaces": [
         "gallery"
       ],
-      "allowCrossCategory": false,
+      "allowCrossCategory": true,
       "usageCategories": [
         "automobil",
         "sportwagen"
@@ -344,15 +719,15 @@
         "portfolio-auswahl-sportwagen"
       ],
       "usageSummary": "portfolio-auswahl-automobil:gallery:4 | portfolio-auswahl-sportwagen:gallery:11",
-      "width": null,
-      "height": null
+      "width": 1920,
+      "height": 1263
     },
     {
       "image": "/assets/portfolio/automobil-brabus-sunset.webp",
       "assignedCategory": "automobil",
-      "seriesId": "unassigned",
-      "subject": "",
-      "orientation": "unknown",
+      "seriesId": "automobil-brabus-gle",
+      "subject": "Brabus GLE Coupé im Sonnenuntergang – Automobilfotografie im Abendlicht",
+      "orientation": "landscape",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
       "allowedSurfaces": [
@@ -369,15 +744,15 @@
         "portfolio-auswahl-automobil"
       ],
       "usageSummary": "portfolio-auswahl-automobil:cover | portfolio-auswahl-automobil:gallery:1 | portfolio-auswahl-automobil:hero:1 | portfolio-auswahl-automobil:related:4",
-      "width": null,
-      "height": null
+      "width": 1920,
+      "height": 1280
     },
     {
       "image": "/assets/portfolio/automobil-mercedes-interieur-tilt.webp",
       "assignedCategory": "automobil",
-      "seriesId": "unassigned",
-      "subject": "",
-      "orientation": "unknown",
+      "seriesId": "automobil-amg-interieur",
+      "subject": "Mercedes-AMG Interieur und Cockpit im Abendlicht – Fahrzeug-Innenraumfotografie",
+      "orientation": "portrait",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
       "allowedSurfaces": [
@@ -392,15 +767,699 @@
         "portfolio-auswahl-automobil"
       ],
       "usageSummary": "portfolio-auswahl-automobil:gallery:3 | portfolio-auswahl-automobil:hero:3",
-      "width": null,
-      "height": null
+      "width": 1707,
+      "height": 2560
+    },
+    {
+      "image": "/assets/portfolio/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3804.webp",
+      "assignedCategory": "oldtimer",
+      "seriesId": "oldtimer-supersportwagen-messe-bruessel",
+      "subject": "Vorkriegs-Oldtimer mit Speichenrädern auf der Interclassic Brüssel",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": true,
+      "usageCategories": [
+        "oldtimer"
+      ],
+      "sourceProjects": [
+        "oldtimer-supersportwagen-messe-bruessel"
+      ],
+      "usageSummary": "oldtimer-supersportwagen-messe-bruessel:gallery:5",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "image": "/assets/portfolio/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3813.webp",
+      "assignedCategory": "oldtimer",
+      "seriesId": "oldtimer-supersportwagen-messe-bruessel",
+      "subject": "Speichenrad eines Vorkriegs-Oldtimers im Hochformat",
+      "orientation": "portrait",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": true,
+      "usageCategories": [
+        "oldtimer"
+      ],
+      "sourceProjects": [
+        "oldtimer-supersportwagen-messe-bruessel"
+      ],
+      "usageSummary": "oldtimer-supersportwagen-messe-bruessel:gallery:7",
+      "width": 1280,
+      "height": 1920
+    },
+    {
+      "image": "/assets/portfolio/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3822.webp",
+      "assignedCategory": "oldtimer",
+      "seriesId": "oldtimer-supersportwagen-messe-bruessel",
+      "subject": "Cockpit eines Vorkriegs-Oldtimers mit Rundinstrumenten und Lenkrad",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": true,
+      "usageCategories": [
+        "oldtimer"
+      ],
+      "sourceProjects": [
+        "oldtimer-supersportwagen-messe-bruessel"
+      ],
+      "usageSummary": "oldtimer-supersportwagen-messe-bruessel:gallery:8",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "image": "/assets/portfolio/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3844.webp",
+      "assignedCategory": "oldtimer",
+      "seriesId": "oldtimer-supersportwagen-messe-bruessel",
+      "subject": "Holzlenkrad und Armaturenbrett eines klassischen Sportwagens",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": true,
+      "usageCategories": [
+        "oldtimer"
+      ],
+      "sourceProjects": [
+        "oldtimer-supersportwagen-messe-bruessel"
+      ],
+      "usageSummary": "oldtimer-supersportwagen-messe-bruessel:gallery:9",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "image": "/assets/portfolio/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3850.webp",
+      "assignedCategory": "oldtimer",
+      "seriesId": "oldtimer-supersportwagen-messe-bruessel",
+      "subject": "Kühlerfigur und Kühlergrill eines klassischen Bentley",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": true,
+      "usageCategories": [
+        "oldtimer"
+      ],
+      "sourceProjects": [
+        "oldtimer-supersportwagen-messe-bruessel"
+      ],
+      "usageSummary": "oldtimer-supersportwagen-messe-bruessel:gallery:6",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "image": "/assets/portfolio/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3879.webp",
+      "assignedCategory": "oldtimer",
+      "seriesId": "oldtimer-supersportwagen-messe-bruessel",
+      "subject": "Koenigsegg Jesko mit Karbonfelge auf der Interclassic Brüssel",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": true,
+      "usageCategories": [
+        "oldtimer"
+      ],
+      "sourceProjects": [
+        "oldtimer-supersportwagen-messe-bruessel"
+      ],
+      "usageSummary": "oldtimer-supersportwagen-messe-bruessel:gallery:2",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "image": "/assets/portfolio/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3882.webp",
+      "assignedCategory": "oldtimer",
+      "seriesId": "oldtimer-supersportwagen-messe-bruessel",
+      "subject": "Flanke des lila Koenigsegg Jesko mit Lichtreflexen",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": true,
+      "usageCategories": [
+        "oldtimer"
+      ],
+      "sourceProjects": [
+        "oldtimer-supersportwagen-messe-bruessel"
+      ],
+      "usageSummary": "oldtimer-supersportwagen-messe-bruessel:gallery:3",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "image": "/assets/portfolio/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3884.webp",
+      "assignedCategory": "oldtimer",
+      "seriesId": "oldtimer-supersportwagen-messe-bruessel",
+      "subject": "Porsche Carrera GT auf dem Messestand im Hochformat",
+      "orientation": "portrait",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": true,
+      "usageCategories": [
+        "oldtimer"
+      ],
+      "sourceProjects": [
+        "oldtimer-supersportwagen-messe-bruessel"
+      ],
+      "usageSummary": "oldtimer-supersportwagen-messe-bruessel:gallery:10",
+      "width": 1280,
+      "height": 1920
+    },
+    {
+      "image": "/assets/portfolio/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3892.webp",
+      "assignedCategory": "oldtimer",
+      "seriesId": "oldtimer-supersportwagen-messe-bruessel",
+      "subject": "Koenigsegg Jesko in Lila von vorn im Messelicht der Interclassic Brüssel",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "cover",
+        "gallery"
+      ],
+      "allowCrossCategory": true,
+      "usageCategories": [
+        "oldtimer"
+      ],
+      "sourceProjects": [
+        "oldtimer-supersportwagen-messe-bruessel"
+      ],
+      "usageSummary": "oldtimer-supersportwagen-messe-bruessel:cover | oldtimer-supersportwagen-messe-bruessel:gallery:1",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "image": "/assets/portfolio/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3897.webp",
+      "assignedCategory": "oldtimer",
+      "seriesId": "oldtimer-supersportwagen-messe-bruessel",
+      "subject": "Porsche 911 mit Manthey-Paket in der Heckansicht",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": true,
+      "usageCategories": [
+        "oldtimer"
+      ],
+      "sourceProjects": [
+        "oldtimer-supersportwagen-messe-bruessel"
+      ],
+      "usageSummary": "oldtimer-supersportwagen-messe-bruessel:gallery:11",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "image": "/assets/portfolio/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3914.webp",
+      "assignedCategory": "oldtimer",
+      "seriesId": "oldtimer-supersportwagen-messe-bruessel",
+      "subject": "Karbonstruktur und Linien am Koenigsegg Jesko im Detail",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": true,
+      "usageCategories": [
+        "oldtimer"
+      ],
+      "sourceProjects": [
+        "oldtimer-supersportwagen-messe-bruessel"
+      ],
+      "usageSummary": "oldtimer-supersportwagen-messe-bruessel:gallery:4",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "image": "/assets/portfolio/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3928.webp",
+      "assignedCategory": "oldtimer",
+      "seriesId": "oldtimer-supersportwagen-messe-bruessel",
+      "subject": "Grüner Lamborghini-Rennwagen mit Startnummer 63 von vorn",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": true,
+      "usageCategories": [
+        "oldtimer"
+      ],
+      "sourceProjects": [
+        "oldtimer-supersportwagen-messe-bruessel"
+      ],
+      "usageSummary": "oldtimer-supersportwagen-messe-bruessel:gallery:12",
+      "width": 1920,
+      "height": 1200
+    },
+    {
+      "image": "/assets/portfolio/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3948.webp",
+      "assignedCategory": "oldtimer",
+      "seriesId": "oldtimer-supersportwagen-messe-bruessel",
+      "subject": "Grüner Lamborghini-Rennwagen in der Heckdreiviertelansicht",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": true,
+      "usageCategories": [
+        "oldtimer"
+      ],
+      "sourceProjects": [
+        "oldtimer-supersportwagen-messe-bruessel"
+      ],
+      "usageSummary": "oldtimer-supersportwagen-messe-bruessel:gallery:13",
+      "width": 1920,
+      "height": 1200
+    },
+    {
+      "image": "/assets/portfolio/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3963.webp",
+      "assignedCategory": "oldtimer",
+      "seriesId": "oldtimer-supersportwagen-messe-bruessel",
+      "subject": "Blauer Pagani im Messelicht",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": true,
+      "usageCategories": [
+        "oldtimer"
+      ],
+      "sourceProjects": [
+        "oldtimer-supersportwagen-messe-bruessel"
+      ],
+      "usageSummary": "oldtimer-supersportwagen-messe-bruessel:gallery:14",
+      "width": 1920,
+      "height": 1248
+    },
+    {
+      "image": "/assets/portfolio/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3974.webp",
+      "assignedCategory": "oldtimer",
+      "seriesId": "oldtimer-supersportwagen-messe-bruessel",
+      "subject": "Pagani unter blauem Bodenlicht auf der Interclassic Brüssel",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": true,
+      "usageCategories": [
+        "oldtimer"
+      ],
+      "sourceProjects": [
+        "oldtimer-supersportwagen-messe-bruessel"
+      ],
+      "usageSummary": "oldtimer-supersportwagen-messe-bruessel:gallery:15",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "image": "/assets/portfolio/automobil-porsche-911-schloss-bensberg-dsc5746.webp",
+      "assignedCategory": "sportwagen",
+      "seriesId": "porsche-911-schloss-bensberg",
+      "subject": "Porsche 911 in der Seitenansicht auf dem Kopfsteinpflaster vor Schloss Bensberg",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": true,
+      "usageCategories": [
+        "sportwagen"
+      ],
+      "sourceProjects": [
+        "porsche-911-schloss-bensberg"
+      ],
+      "usageSummary": "porsche-911-schloss-bensberg:gallery:2",
+      "width": 1920,
+      "height": 1277
+    },
+    {
+      "image": "/assets/portfolio/automobil-porsche-911-schloss-bensberg-dsc5756.webp",
+      "assignedCategory": "sportwagen",
+      "seriesId": "porsche-911-schloss-bensberg",
+      "subject": "Felge und gelber Bremssattel am Porsche 911 Carrera 4S",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": true,
+      "usageCategories": [
+        "sportwagen"
+      ],
+      "sourceProjects": [
+        "porsche-911-schloss-bensberg"
+      ],
+      "usageSummary": "porsche-911-schloss-bensberg:gallery:8",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "image": "/assets/portfolio/automobil-porsche-911-schloss-bensberg-dsc5761.webp",
+      "assignedCategory": "sportwagen",
+      "seriesId": "porsche-911-schloss-bensberg",
+      "subject": "Silberner Porsche 911 Carrera 4S vor der Fassade von Schloss Bensberg",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "cover",
+        "gallery"
+      ],
+      "allowCrossCategory": true,
+      "usageCategories": [
+        "sportwagen"
+      ],
+      "sourceProjects": [
+        "porsche-911-schloss-bensberg"
+      ],
+      "usageSummary": "porsche-911-schloss-bensberg:cover | porsche-911-schloss-bensberg:gallery:1",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "image": "/assets/portfolio/automobil-porsche-911-schloss-bensberg-dsc5818.webp",
+      "assignedCategory": "sportwagen",
+      "seriesId": "porsche-911-schloss-bensberg",
+      "subject": "Heckpartie des Porsche 911 mit Rückleuchten und Porsche-Schriftzug",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": true,
+      "usageCategories": [
+        "sportwagen"
+      ],
+      "sourceProjects": [
+        "porsche-911-schloss-bensberg"
+      ],
+      "usageSummary": "porsche-911-schloss-bensberg:gallery:6",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "image": "/assets/portfolio/automobil-porsche-911-schloss-bensberg-dsc5834.webp",
+      "assignedCategory": "sportwagen",
+      "seriesId": "porsche-911-schloss-bensberg",
+      "subject": "Porsche 911 mittig vor der symmetrischen Schlossfassade in Bergisch Gladbach",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": true,
+      "usageCategories": [
+        "sportwagen"
+      ],
+      "sourceProjects": [
+        "porsche-911-schloss-bensberg"
+      ],
+      "usageSummary": "porsche-911-schloss-bensberg:gallery:4",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "image": "/assets/portfolio/automobil-porsche-911-schloss-bensberg-dsc5836.webp",
+      "assignedCategory": "sportwagen",
+      "seriesId": "porsche-911-schloss-bensberg",
+      "subject": "Porsche 911 Carrera 4S in der Frontdreiviertelansicht vor dem Schloss",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": true,
+      "usageCategories": [
+        "sportwagen"
+      ],
+      "sourceProjects": [
+        "porsche-911-schloss-bensberg"
+      ],
+      "usageSummary": "porsche-911-schloss-bensberg:gallery:3",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "image": "/assets/portfolio/automobil-porsche-911-schloss-bensberg-dsc5852.webp",
+      "assignedCategory": "sportwagen",
+      "seriesId": "porsche-911-schloss-bensberg",
+      "subject": "Porsche 911 aus tiefer Perspektive vor Schloss Bensberg",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": true,
+      "usageCategories": [
+        "sportwagen"
+      ],
+      "sourceProjects": [
+        "porsche-911-schloss-bensberg"
+      ],
+      "usageSummary": "porsche-911-schloss-bensberg:gallery:5",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "image": "/assets/portfolio/automobil-porsche-911-schloss-bensberg-dsc5873.webp",
+      "assignedCategory": "sportwagen",
+      "seriesId": "porsche-911-schloss-bensberg",
+      "subject": "Detail der Rückleuchte am silbernen Porsche 911",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": true,
+      "usageCategories": [
+        "sportwagen"
+      ],
+      "sourceProjects": [
+        "porsche-911-schloss-bensberg"
+      ],
+      "usageSummary": "porsche-911-schloss-bensberg:gallery:7",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "image": "/assets/portfolio/automobil-porsche-911-schloss-bensberg-dsc5899.webp",
+      "assignedCategory": "sportwagen",
+      "seriesId": "porsche-911-schloss-bensberg",
+      "subject": "Scheinwerfer und Frontpartie des Porsche 911 im Detail",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": true,
+      "usageCategories": [
+        "sportwagen"
+      ],
+      "sourceProjects": [
+        "porsche-911-schloss-bensberg"
+      ],
+      "usageSummary": "porsche-911-schloss-bensberg:gallery:9",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "image": "/assets/portfolio/automobil-porsche-911-schloss-bensberg-dsc5928.webp",
+      "assignedCategory": "sportwagen",
+      "seriesId": "porsche-911-schloss-bensberg",
+      "subject": "Einstiegsleiste mit Carrera-4S-Schriftzug",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": true,
+      "usageCategories": [
+        "sportwagen"
+      ],
+      "sourceProjects": [
+        "porsche-911-schloss-bensberg"
+      ],
+      "usageSummary": "porsche-911-schloss-bensberg:gallery:10",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "image": "/assets/portfolio/automobil-porsche-911-schloss-bensberg-dsc6027.webp",
+      "assignedCategory": "sportwagen",
+      "seriesId": "porsche-911-schloss-bensberg",
+      "subject": "Cockpit des Porsche 911 mit Blick durch die Frontscheibe auf Schloss Bensberg",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": true,
+      "usageCategories": [
+        "sportwagen"
+      ],
+      "sourceProjects": [
+        "porsche-911-schloss-bensberg"
+      ],
+      "usageSummary": "porsche-911-schloss-bensberg:gallery:11",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "image": "/assets/portfolio/automobil-porsche-911-schloss-bensberg-dsc6090.webp",
+      "assignedCategory": "sportwagen",
+      "seriesId": "porsche-911-schloss-bensberg",
+      "subject": "Rundinstrumente im Kombiinstrument des Porsche 911",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": true,
+      "usageCategories": [
+        "sportwagen"
+      ],
+      "sourceProjects": [
+        "porsche-911-schloss-bensberg"
+      ],
+      "usageSummary": "porsche-911-schloss-bensberg:gallery:12",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "image": "/assets/portfolio/automobil-porsche-911-schloss-bensberg-dsc6128.webp",
+      "assignedCategory": "sportwagen",
+      "seriesId": "porsche-911-schloss-bensberg",
+      "subject": "Porsche 911 mit geöffneten Türen auf dem Schlosshof",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": true,
+      "usageCategories": [
+        "sportwagen"
+      ],
+      "sourceProjects": [
+        "porsche-911-schloss-bensberg"
+      ],
+      "usageSummary": "porsche-911-schloss-bensberg:gallery:13",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "image": "/assets/portfolio/automobil-porsche-911-schloss-bensberg-dsc6153.webp",
+      "assignedCategory": "sportwagen",
+      "seriesId": "porsche-911-schloss-bensberg",
+      "subject": "Porsche 911 mit geöffnetem Heckdeckel vor dem Schloss",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": true,
+      "usageCategories": [
+        "sportwagen"
+      ],
+      "sourceProjects": [
+        "porsche-911-schloss-bensberg"
+      ],
+      "usageSummary": "porsche-911-schloss-bensberg:gallery:14",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "image": "/assets/portfolio/automobil-porsche-911-schloss-bensberg-dsc6202.webp",
+      "assignedCategory": "sportwagen",
+      "seriesId": "porsche-911-schloss-bensberg",
+      "subject": "Porsche 911 in der Heckdreiviertelansicht vor Schloss Bensberg",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": true,
+      "usageCategories": [
+        "sportwagen"
+      ],
+      "sourceProjects": [
+        "porsche-911-schloss-bensberg"
+      ],
+      "usageSummary": "porsche-911-schloss-bensberg:gallery:15",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "image": "/assets/portfolio/automobil-porsche-911-schloss-bensberg-dsc6223.webp",
+      "assignedCategory": "sportwagen",
+      "seriesId": "porsche-911-schloss-bensberg",
+      "subject": "Porsche 911 mit geöffneter Fahrertür und Blick in den Innenraum",
+      "orientation": "landscape",
+      "rightsStatus": "owned",
+      "rightsNotes": "Eigene Aufnahme von Matthias Ramahi, am 27.11.2026 zur Veröffentlichung übergeben.",
+      "allowedSurfaces": [
+        "gallery"
+      ],
+      "allowCrossCategory": true,
+      "usageCategories": [
+        "sportwagen"
+      ],
+      "sourceProjects": [
+        "porsche-911-schloss-bensberg"
+      ],
+      "usageSummary": "porsche-911-schloss-bensberg:gallery:16",
+      "width": 1920,
+      "height": 1280
     },
     {
       "image": "/assets/portraits/20260609-viola-dsc7273.webp",
       "assignedCategory": "portrait",
-      "seriesId": "unassigned",
-      "subject": "",
-      "orientation": "unknown",
+      "seriesId": "viola-portrait-am-see",
+      "subject": "Nahes Musikerportrait mit Viola am See im weichen Abendlicht",
+      "orientation": "portrait",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
       "allowedSurfaces": [
@@ -414,15 +1473,15 @@
         "viola-portrait-am-see"
       ],
       "usageSummary": "viola-portrait-am-see:gallery:3",
-      "width": null,
-      "height": null
+      "width": 1920,
+      "height": 2880
     },
     {
       "image": "/assets/portraits/20260609-viola-dsc7302.webp",
       "assignedCategory": "portrait",
-      "seriesId": "unassigned",
-      "subject": "",
-      "orientation": "unknown",
+      "seriesId": "viola-portrait-am-see",
+      "subject": "Ganzkörperportrait einer Musikerin mit Viola in der Abendsonne am See",
+      "orientation": "portrait",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
       "allowedSurfaces": [
@@ -436,15 +1495,15 @@
         "viola-portrait-am-see"
       ],
       "usageSummary": "viola-portrait-am-see:gallery:4",
-      "width": null,
-      "height": null
+      "width": 1920,
+      "height": 2880
     },
     {
       "image": "/assets/portraits/20260609-viola-dsc7346.webp",
       "assignedCategory": "portrait",
-      "seriesId": "unassigned",
-      "subject": "",
-      "orientation": "unknown",
+      "seriesId": "viola-portrait-am-see",
+      "subject": "Musikerin mit Viola im warmen Abendlicht am See – Outdoor-Portraitfotografie",
+      "orientation": "portrait",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
       "allowedSurfaces": [
@@ -461,15 +1520,15 @@
         "viola-portrait-am-see"
       ],
       "usageSummary": "portfolio-auswahl-portrait:related:3 | viola-portrait-am-see:cover | viola-portrait-am-see:gallery:1",
-      "width": null,
-      "height": null
+      "width": 1920,
+      "height": 2880
     },
     {
       "image": "/assets/portraits/20260609-viola-dsc7353.webp",
       "assignedCategory": "portrait",
-      "seriesId": "unassigned",
-      "subject": "",
-      "orientation": "unknown",
+      "seriesId": "viola-portrait-am-see",
+      "subject": "Seitliches Viola-Portrait vor ruhiger Wasserfläche im Abendlicht",
+      "orientation": "landscape",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
       "allowedSurfaces": [
@@ -483,15 +1542,15 @@
         "viola-portrait-am-see"
       ],
       "usageSummary": "viola-portrait-am-see:gallery:2",
-      "width": null,
-      "height": null
+      "width": 1920,
+      "height": 1280
     },
     {
       "image": "/assets/portraits/20260609-viola-dsc7402.webp",
       "assignedCategory": "portrait",
-      "seriesId": "unassigned",
-      "subject": "",
-      "orientation": "unknown",
+      "seriesId": "viola-portrait-am-see",
+      "subject": "Violinistin beim Spiel vor ruhiger Wasserlandschaft – Musikerportrait",
+      "orientation": "landscape",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
       "allowedSurfaces": [
@@ -505,15 +1564,15 @@
         "viola-portrait-am-see"
       ],
       "usageSummary": "viola-portrait-am-see:gallery:5",
-      "width": null,
-      "height": null
+      "width": 1920,
+      "height": 1280
     },
     {
       "image": "/assets/portraits/20260609-viola-dsc7458.webp",
       "assignedCategory": "portrait",
-      "seriesId": "unassigned",
-      "subject": "",
-      "orientation": "unknown",
+      "seriesId": "viola-portrait-am-see",
+      "subject": "Ruhige Detailaufnahme von Viola und Bogen im Abendlicht",
+      "orientation": "portrait",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
       "allowedSurfaces": [
@@ -527,15 +1586,15 @@
         "viola-portrait-am-see"
       ],
       "usageSummary": "viola-portrait-am-see:gallery:6",
-      "width": null,
-      "height": null
+      "width": 1920,
+      "height": 2880
     },
     {
       "image": "/assets/portraits/20260823-khan-levi-dsc8557.webp",
       "assignedCategory": "portrait",
-      "seriesId": "unassigned",
-      "subject": "",
-      "orientation": "unknown",
+      "seriesId": "portrait-editorial-urban",
+      "subject": "Urbanes Editorial-Portrait vor moderner Architektur – Portraitfotografie",
+      "orientation": "portrait",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
       "allowedSurfaces": [
@@ -549,15 +1608,15 @@
         "portfolio-auswahl-portrait"
       ],
       "usageSummary": "portfolio-auswahl-portrait:gallery:8",
-      "width": null,
-      "height": null
+      "width": 1920,
+      "height": 3072
     },
     {
       "image": "/assets/portraits/20260823-khan-levi-dsc8571.webp",
       "assignedCategory": "portrait",
-      "seriesId": "unassigned",
-      "subject": "",
-      "orientation": "unknown",
+      "seriesId": "portrait-editorial-urban",
+      "subject": "Ruhiges Sitzportrait im urbanen Raum – Business- und Editorial-Portraitfotografie",
+      "orientation": "portrait",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
       "allowedSurfaces": [
@@ -572,15 +1631,15 @@
         "portfolio-auswahl-portrait"
       ],
       "usageSummary": "portfolio-auswahl-portrait:gallery:2 | portfolio-auswahl-portrait:related:2",
-      "width": null,
-      "height": null
+      "width": 1920,
+      "height": 2880
     },
     {
       "image": "/assets/portraits/20260823-khan-levi-dsc8733.webp",
       "assignedCategory": "portrait",
-      "seriesId": "unassigned",
-      "subject": "",
-      "orientation": "unknown",
+      "seriesId": "portrait-editorial-urban",
+      "subject": "Urbanes Portrait in Bewegung – natürliche Outdoor-Portraitfotografie",
+      "orientation": "portrait",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
       "allowedSurfaces": [
@@ -593,16 +1652,16 @@
       "sourceProjects": [
         "portfolio-auswahl-portrait"
       ],
-      "usageSummary": "portfolio-auswahl-portrait:gallery:4",
-      "width": null,
-      "height": null
+      "usageSummary": "portfolio-auswahl-portrait:gallery:4 | portfolio-auswahl-portrait:related:4",
+      "width": 1920,
+      "height": 2400
     },
     {
       "image": "/assets/portraits/20260823-khan-levi-dsc8759.webp",
       "assignedCategory": "portrait",
-      "seriesId": "unassigned",
-      "subject": "",
-      "orientation": "unknown",
+      "seriesId": "portrait-editorial-urban",
+      "subject": "Editorial-Portrait im warmen Gegenlicht – Portraitfotografie",
+      "orientation": "portrait",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
       "allowedSurfaces": [
@@ -616,15 +1675,15 @@
         "portfolio-auswahl-portrait"
       ],
       "usageSummary": "portfolio-auswahl-portrait:gallery:9",
-      "width": null,
-      "height": null
+      "width": 1920,
+      "height": 2880
     },
     {
       "image": "/assets/portraits/20260823-khan-levi-dsc8797.webp",
       "assignedCategory": "portrait",
-      "seriesId": "unassigned",
-      "subject": "",
-      "orientation": "unknown",
+      "seriesId": "portrait-editorial-urban",
+      "subject": "Konzeptionelles Ganzkörperportrait mit architektonischer Rahmung",
+      "orientation": "portrait",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
       "allowedSurfaces": [
@@ -638,14 +1697,14 @@
         "portfolio-auswahl-portrait"
       ],
       "usageSummary": "portfolio-auswahl-portrait:gallery:6",
-      "width": null,
-      "height": null
+      "width": 1920,
+      "height": 2400
     },
     {
       "image": "/uploads/payload/_DSC0470-Enhanced-NR-2.webp",
       "assignedCategory": "portrait",
-      "seriesId": "unassigned",
-      "subject": "",
+      "seriesId": "portrait-tanz-buehne",
+      "subject": "Ballerina mit Spitzenschuhen im warmen Gegenlicht – Portraitfotografie",
       "orientation": "portrait",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
@@ -668,8 +1727,8 @@
     {
       "image": "/uploads/payload/_DSC2310-2.webp",
       "assignedCategory": "sportwagen",
-      "seriesId": "unassigned",
-      "subject": "",
+      "seriesId": "sportwagen-bmw-m3-e30",
+      "subject": "BMW M3 E30 auf der Lichtbühne in Seitenansicht – Sportwagen- und Klassikerfotografie",
       "orientation": "landscape",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
@@ -691,8 +1750,8 @@
     {
       "image": "/uploads/payload/_DSC2316-2.webp",
       "assignedCategory": "sportwagen",
-      "seriesId": "unassigned",
-      "subject": "",
+      "seriesId": "sportwagen-messe",
+      "subject": "Widebody-Coupé in Heckansicht in der Messehalle bei Nacht – Sportwagenfotografie",
       "orientation": "landscape",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
@@ -713,8 +1772,8 @@
     {
       "image": "/uploads/payload/_DSC6968.webp",
       "assignedCategory": "automobil",
-      "seriesId": "unassigned",
-      "subject": "",
+      "seriesId": "motorrad-auswahl",
+      "subject": "Motorrad-Gesamtansicht mit klarer Silhouette und gesetztem Licht – Motorradfotografie",
       "orientation": "portrait",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
@@ -723,7 +1782,7 @@
         "gallery",
         "related"
       ],
-      "allowCrossCategory": false,
+      "allowCrossCategory": true,
       "usageCategories": [
         "automobil",
         "motorrad"
@@ -739,8 +1798,8 @@
     {
       "image": "/uploads/payload/_DSC6979.webp",
       "assignedCategory": "motorrad",
-      "seriesId": "unassigned",
-      "subject": "",
+      "seriesId": "motorrad-ninja",
+      "subject": "Kawasaki Ninja im Abendlicht – Motorradfotografie mit ruhigem Hintergrund",
       "orientation": "portrait",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
@@ -761,8 +1820,8 @@
     {
       "image": "/uploads/payload/_DSC6982-1.webp",
       "assignedCategory": "motorrad",
-      "seriesId": "unassigned",
-      "subject": "",
+      "seriesId": "motorrad-auswahl",
+      "subject": "Motorrad-Detailaufnahme von Front, Gabel und Mechanik – Motorradfotografie",
       "orientation": "portrait",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
@@ -783,8 +1842,8 @@
     {
       "image": "/uploads/payload/_DSC7025.webp",
       "assignedCategory": "motorrad",
-      "seriesId": "unassigned",
-      "subject": "",
+      "seriesId": "motorrad-street",
+      "subject": "Motorrad im Straßenumfeld mit klarer Linienführung – Motorradfotografie",
       "orientation": "portrait",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
@@ -806,8 +1865,8 @@
     {
       "image": "/uploads/payload/_DSC7026.webp",
       "assignedCategory": "motorrad",
-      "seriesId": "unassigned",
-      "subject": "",
+      "seriesId": "motorrad-auswahl",
+      "subject": "Motorrad-Seitenansicht mit Fokus auf Proportion und Fahrwerk – Motorradfotografie",
       "orientation": "portrait",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
@@ -828,8 +1887,8 @@
     {
       "image": "/uploads/payload/_DSC7039.webp",
       "assignedCategory": "motorrad",
-      "seriesId": "unassigned",
-      "subject": "",
+      "seriesId": "motorrad-duke",
+      "subject": "KTM Duke in Heckansicht mit prägnanter Linienführung – Motorradfotografie",
       "orientation": "portrait",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
@@ -851,8 +1910,8 @@
     {
       "image": "/uploads/payload/_DSC9301-Enhanced-NR.webp",
       "assignedCategory": "portrait",
-      "seriesId": "unassigned",
-      "subject": "",
+      "seriesId": "portrait-tanz-buehne",
+      "subject": "Tanzgruppe im blauen Bühnenlicht – drei Tänzerinnen in Bewegung",
       "orientation": "portrait",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
@@ -873,8 +1932,8 @@
     {
       "image": "/uploads/payload/_DSC9321-Enhanced-NR-2.webp",
       "assignedCategory": "portrait",
-      "seriesId": "unassigned",
-      "subject": "",
+      "seriesId": "portrait-tanz-buehne",
+      "subject": "Drei Tänzerinnen im Bühnennebel – Editorial-Portrait mit grafischer Wirkung",
       "orientation": "portrait",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
@@ -895,8 +1954,8 @@
     {
       "image": "/uploads/payload/20250209-DSC00612.webp",
       "assignedCategory": "motorrad",
-      "seriesId": "unassigned",
-      "subject": "",
+      "seriesId": "motorrad-ninja-nacht",
+      "subject": "Kawasaki Ninja im Nachtporträt mit gesetzter Lichtstimmung – Motorradfotografie",
       "orientation": "landscape",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
@@ -917,8 +1976,8 @@
     {
       "image": "/uploads/payload/20250209-DSC00687.webp",
       "assignedCategory": "motorrad",
-      "seriesId": "unassigned",
-      "subject": "",
+      "seriesId": "motorrad-ninja-nacht",
+      "subject": "Kawasaki Ninja mit Fahrer – Biker-Portrait bei Nacht",
       "orientation": "landscape",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
@@ -939,8 +1998,8 @@
     {
       "image": "/uploads/payload/20250209-DSC00694.webp",
       "assignedCategory": "motorrad",
-      "seriesId": "unassigned",
-      "subject": "",
+      "seriesId": "motorrad-ninja-nacht",
+      "subject": "Kawasaki Ninja im Seitenprofil bei Nacht – Motorradfotografie",
       "orientation": "landscape",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
@@ -961,8 +2020,8 @@
     {
       "image": "/uploads/payload/20250209-DSC00697.webp",
       "assignedCategory": "motorrad",
-      "seriesId": "unassigned",
-      "subject": "",
+      "seriesId": "motorrad-ninja-nacht",
+      "subject": "Kawasaki Ninja Materialdetail von Verkleidung und Mechanik – Motorradfotografie",
       "orientation": "landscape",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
@@ -983,8 +2042,8 @@
     {
       "image": "/uploads/payload/20250209-DSC00699.webp",
       "assignedCategory": "motorrad",
-      "seriesId": "unassigned",
-      "subject": "",
+      "seriesId": "motorrad-ninja-nacht",
+      "subject": "Kawasaki Ninja in Heckansicht bei Nacht – Motorradfotografie",
       "orientation": "landscape",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
@@ -1005,8 +2064,8 @@
     {
       "image": "/uploads/payload/20250209-DSC00706.webp",
       "assignedCategory": "motorrad",
-      "seriesId": "unassigned",
-      "subject": "",
+      "seriesId": "motorrad-ninja-nacht",
+      "subject": "Kawasaki Ninja 650 bei Nacht in roter Lichtstimmung – Hochformat-Motorradfotografie",
       "orientation": "portrait",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
@@ -1027,8 +2086,8 @@
     {
       "image": "/uploads/payload/20250327-DSC01550-2.webp",
       "assignedCategory": "portrait",
-      "seriesId": "unassigned",
-      "subject": "",
+      "seriesId": "portrait-editorial-outdoor",
+      "subject": "Violinistin im Abendkleid auf offenem Feld mit Dorfkirche am Horizont – Outdoor-Portrait",
       "orientation": "portrait",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
@@ -1049,8 +2108,8 @@
     {
       "image": "/uploads/payload/20250418-DSC00638.webp",
       "assignedCategory": "oldtimer",
-      "seriesId": "unassigned",
-      "subject": "",
+      "seriesId": "oldtimer-auswahl",
+      "subject": "Oldtimer-Klassiker in ruhiger Perspektive mit originaler Lack- und Chromstruktur",
       "orientation": "landscape",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
@@ -1071,8 +2130,8 @@
     {
       "image": "/uploads/payload/20250418-DSC006552.webp",
       "assignedCategory": "oldtimer",
-      "seriesId": "unassigned",
-      "subject": "",
+      "seriesId": "oldtimer-auswahl",
+      "subject": "Klassisches Sammlerfahrzeug – Oldtimerfotografie mit kontrolliertem Licht und klaren Linien",
       "orientation": "landscape",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
@@ -1094,8 +2153,8 @@
     {
       "image": "/uploads/payload/20250418-DSC00660.webp",
       "assignedCategory": "automobil",
-      "seriesId": "unassigned",
-      "subject": "",
+      "seriesId": "oldtimer-auswahl",
+      "subject": "Oldtimer-Detailaufnahme mit Fokus auf Karosserieform und Materialpatina",
       "orientation": "portrait",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
@@ -1116,8 +2175,8 @@
     {
       "image": "/uploads/payload/20250423-DSC021802.webp",
       "assignedCategory": "oldtimer",
-      "seriesId": "unassigned",
-      "subject": "",
+      "seriesId": "oldtimer-museum",
+      "subject": "Bugatti Type 35 im Museum vor historischen Rennaufnahmen – Oldtimerfotografie",
       "orientation": "portrait",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
@@ -1138,8 +2197,8 @@
     {
       "image": "/uploads/payload/20250423-DSC02271.webp",
       "assignedCategory": "oldtimer",
-      "seriesId": "unassigned",
-      "subject": "",
+      "seriesId": "oldtimer-museum",
+      "subject": "Historisches Sammlerfahrzeug in der Ausstellung – Oldtimerfotografie mit Patina und Detailtiefe",
       "orientation": "landscape",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
@@ -1160,8 +2219,8 @@
     {
       "image": "/uploads/payload/20250426-DSC02648.webp",
       "assignedCategory": "oldtimer",
-      "seriesId": "unassigned",
-      "subject": "",
+      "seriesId": "oldtimer-auswahl",
+      "subject": "Klassiker-Gesamtansicht im ausgewogenen Licht – Oldtimerfotografie für Sammlung und Archiv",
       "orientation": "landscape",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
@@ -1182,8 +2241,8 @@
     {
       "image": "/uploads/payload/20250426-DSC02651.webp",
       "assignedCategory": "oldtimer",
-      "seriesId": "unassigned",
-      "subject": "",
+      "seriesId": "oldtimer-auswahl",
+      "subject": "Oldtimer-Exterieur und Karosserielinien – klassische Fahrzeugfotografie",
       "orientation": "landscape",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
@@ -1204,8 +2263,8 @@
     {
       "image": "/uploads/payload/20250605-DSC03696.webp",
       "assignedCategory": "landschaft",
-      "seriesId": "unassigned",
-      "subject": "",
+      "seriesId": "landschaft-kueste",
+      "subject": "Küstenlandschaft im warmen Licht des Sonnenuntergangs – Fine-Art-Landschaftsfotografie",
       "orientation": "portrait",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
@@ -1226,8 +2285,8 @@
     {
       "image": "/uploads/payload/20250605-DSC03756-2.webp",
       "assignedCategory": "landschaft",
-      "seriesId": "unassigned",
-      "subject": "",
+      "seriesId": "landschaft-kueste",
+      "subject": "Steilküste mit Brandung und Angler an der Klippenkante – Küstenfotografie",
       "orientation": "portrait",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
@@ -1248,8 +2307,8 @@
     {
       "image": "/uploads/payload/20250605-DSC03785.webp",
       "assignedCategory": "landschaft",
-      "seriesId": "unassigned",
-      "subject": "",
+      "seriesId": "landschaft-kueste",
+      "subject": "Küstenlandschaft in Schwarz-Weiß mit ruhiger Struktur und Kontrast",
       "orientation": "portrait",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
@@ -1270,8 +2329,8 @@
     {
       "image": "/uploads/payload/20250605-DSC03792.webp",
       "assignedCategory": "landschaft",
-      "seriesId": "unassigned",
-      "subject": "",
+      "seriesId": "landschaft-kueste",
+      "subject": "Mensch und weite Küstenlandschaft im Maßstab – Naturfotografie",
       "orientation": "portrait",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
@@ -1292,8 +2351,8 @@
     {
       "image": "/uploads/payload/20250605-DSC03795.webp",
       "assignedCategory": "landschaft",
-      "seriesId": "unassigned",
-      "subject": "",
+      "seriesId": "landschaft-kueste",
+      "subject": "Küstenweg mit weiter Perspektive entlang der Felsküste",
       "orientation": "portrait",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
@@ -1314,8 +2373,8 @@
     {
       "image": "/uploads/payload/20250605-DSC03814.webp",
       "assignedCategory": "landschaft",
-      "seriesId": "unassigned",
-      "subject": "",
+      "seriesId": "landschaft-kueste",
+      "subject": "Felsküste und Meer im Dunst – ruhige Landschaftsstudie für Fine-Art-Print",
       "orientation": "portrait",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
@@ -1336,8 +2395,8 @@
     {
       "image": "/uploads/payload/20250605-DSC04020-2.webp",
       "assignedCategory": "landschaft",
-      "seriesId": "unassigned",
-      "subject": "",
+      "seriesId": "landschaft-kueste",
+      "subject": "Weiter Sandstrand aus erhöhter Perspektive mit Brandung auf rötlichem Sand",
       "orientation": "portrait",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
@@ -1358,8 +2417,8 @@
     {
       "image": "/uploads/payload/assets-portfolio-dsc2310-1920.webp",
       "assignedCategory": "sportwagen",
-      "seriesId": "unassigned",
-      "subject": "",
+      "seriesId": "sportwagen-bmw-m3-e30",
+      "subject": "BMW M3 E30 auf der Lichtbühne in Seitenansicht – Sportwagen- und Klassikerfotografie",
       "orientation": "landscape",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
@@ -1380,8 +2439,8 @@
     {
       "image": "/uploads/payload/assets-portfolio-dsc2316-1920.webp",
       "assignedCategory": "sportwagen",
-      "seriesId": "unassigned",
-      "subject": "",
+      "seriesId": "sportwagen-messe",
+      "subject": "Widebody-Coupé in Heckansicht in der Messehalle bei Nacht – Sportwagenfotografie",
       "orientation": "landscape",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
@@ -1402,8 +2461,8 @@
     {
       "image": "/uploads/payload/assets-portfolio-dsc3879-1920.webp",
       "assignedCategory": "automobil",
-      "seriesId": "unassigned",
-      "subject": "",
+      "seriesId": "sportwagen-hypercar-messe",
+      "subject": "Hypersportwagen im Messelicht mit Front und Karbonrad – Automobil- und Sportwagenfotografie",
       "orientation": "landscape",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
@@ -1411,7 +2470,7 @@
         "gallery",
         "hero"
       ],
-      "allowCrossCategory": false,
+      "allowCrossCategory": true,
       "usageCategories": [
         "automobil",
         "sportwagen"
@@ -1427,8 +2486,8 @@
     {
       "image": "/uploads/payload/assets-portfolio-dsc3892-1920.webp",
       "assignedCategory": "sportwagen",
-      "seriesId": "unassigned",
-      "subject": "",
+      "seriesId": "sportwagen-hypercar-messe",
+      "subject": "Koenigsegg Frontansicht mit changierendem Lack im Messelicht – Sportwagenfotografie",
       "orientation": "landscape",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
@@ -1449,8 +2508,8 @@
     {
       "image": "/uploads/payload/assets-portfolio-dsc3982-1920.webp",
       "assignedCategory": "automobil",
-      "seriesId": "unassigned",
-      "subject": "",
+      "seriesId": "sportwagen-hypercar-messe",
+      "subject": "Pagani Huayra auf dem Messestand mit Karbon im Neonlicht – Hypercar-Fotografie",
       "orientation": "landscape",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
@@ -1458,7 +2517,7 @@
         "gallery",
         "related"
       ],
-      "allowCrossCategory": false,
+      "allowCrossCategory": true,
       "usageCategories": [
         "automobil",
         "sportwagen"
@@ -1474,8 +2533,8 @@
     {
       "image": "/uploads/payload/Wettberwerb_Foto10_Wunder_der_natur-1.webp",
       "assignedCategory": "landschaft",
-      "seriesId": "unassigned",
-      "subject": "",
+      "seriesId": "landschaft-kueste",
+      "subject": "Küstenstadt am Hang über der Bucht mit Yachten im Hafen – Landschaftspanorama",
       "orientation": "landscape",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
@@ -1496,8 +2555,8 @@
     {
       "image": "/uploads/payload/Wettberwerb_Foto5_Wunder_der_Natur2-1.webp",
       "assignedCategory": "landschaft",
-      "seriesId": "unassigned",
-      "subject": "",
+      "seriesId": "landschaft-fine-art",
+      "subject": "Einzelne Kiefer auf einer Felseninsel vor verschneiten Bergen – Fine-Art-Landschaftsfotografie",
       "orientation": "landscape",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",
@@ -1520,8 +2579,8 @@
     {
       "image": "/uploads/payload/Wettberwerb_Foto6_Wunder_der_Natur-1.webp",
       "assignedCategory": "landschaft",
-      "seriesId": "unassigned",
-      "subject": "",
+      "seriesId": "landschaft-fine-art",
+      "subject": "Steinbock auf dem Gebirgsgrat im Gegenlicht – Naturfotografie",
       "orientation": "landscape",
       "rightsStatus": "owned",
       "rightsNotes": "Eigentum und Nutzungsfreigabe vom Seiteninhaber am 08.11.2026 bestaetigt.",

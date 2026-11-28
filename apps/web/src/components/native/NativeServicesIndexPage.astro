@@ -79,11 +79,18 @@ const mergeService = (fb: FallbackService | undefined, item: NonNullable<typeof 
   }
 }
 
-// Positioneller Merge: Code-Defaults sind die Basis, CMS überschreibt pro Position.
-const baseLength = Math.max(fallbackServices.length, cmsItems.length)
-const items = Array.from({ length: baseLength }, (_, index) =>
-  mergeService(fallbackServices[index], cmsItems[index], index),
-).filter((service) => hasText(stripHtml(service.headline)))
+// Code-Defaults sind die Basis; CMS-Einträge werden über ihren Link der passenden
+// Vorlage zugeordnet, damit Reihenfolge und Anzahl im CMS frei bleiben.
+// Großformat und Sonderanfertigungen leiten auf das Fotolabor um und erscheinen
+// deshalb nicht mehr als eigene Einträge.
+const mergedIntoFotolabor = new Set(['grossformat', 'sonder'])
+const fallbackForHref = (href: string) =>
+  fallbackServices.find((service) => service.href === href) ?? fallbackServices.find((service) => href.includes(`/${service.id}`))
+const items = (
+  cmsItems.length
+    ? cmsItems.map((item, index) => mergeService(hasText(item.href) ? fallbackForHref(toRootRelativeHref(item.href)) : undefined, item, index))
+    : fallbackServices.filter((service) => !mergedIntoFotolabor.has(service.id)).map((service, index) => mergeService(service, undefined, index))
+).filter((service) => hasText(stripHtml(service.headline)) && !mergedIntoFotolabor.has(service.id))
 
 // Ramahi Webdesign und Crawl Foundry sind eigene, grosse Sektionen (siehe
 // unten) und tauchen deshalb nicht noch einmal in Übersicht und Liste auf.
@@ -91,27 +98,18 @@ const isWebdesign = (service: (typeof items)[number]) => service.id === 'webdesi
 const isCrawlFoundry = (service: (typeof items)[number]) => service.id === 'keyword-datenbank' || service.href.includes('/keyword-datenbank-seo.html')
 const webdesignService = items.find(isWebdesign)
 const crawlFoundryService = items.find(isCrawlFoundry)
-const listItems = items.filter((service) => !isWebdesign(service) && !isCrawlFoundry(service))
+const listItems = items
+  .filter((service) => !isWebdesign(service) && !isCrawlFoundry(service))
+  .map((service, index) => ({ ...service, theme: index % 2 === 0 ? 'light' : 'dark' }))
 const webdesignImages = webdesignService?.images ?? []
 const crawlFoundryImages = crawlFoundryService?.images ?? []
-
-const overviewItems = listItems.filter(
-  (service) =>
-    service.id !== 'sonder' &&
-    service.id !== 'keyword-datenbank' &&
-    !service.href.includes('/keyword-datenbank-seo.html') &&
-    !service.href.includes('/drucke-sonderanfertigungen-duesseldorf.html') &&
-    !service.overviewLabel.toLowerCase().includes('sonder'),
-)
+const overviewItems = listItems
 
 const overviewHead = {
-  headlineHtml:
-    cms && hasText(cms.overviewHeadline)
-      ? emphasize(cms.overviewHeadline, cms.overviewEmphasis)
-      : 'Dienstleistungen <em>im Überblick.</em>',
+  headline: cms && hasText(cms.overviewHeadline) ? stripHtml(cms.overviewHeadline) : 'Außerdem.',
   intro: hasText(cms?.overviewIntro)
     ? cms!.overviewIntro!
-    : 'Vom einzelnen Fine-Art-Print bis zur Markenfläche, Filmproduktion oder Eventbegleitung – über erfahrene Partner aus Düsseldorf und NRW.',
+    : 'Ergänzend zur Fotografie: Fotolabor, Werbetechnik, Videografie und Live-Musik, umgesetzt mit Partnern aus Düsseldorf und NRW.',
 }
 
 ---
@@ -145,7 +143,7 @@ const overviewHead = {
             <div><dt>Erstgespräch</dt><dd><span>kostenlos</span></dd></div>
           </dl>
           <div class="studio-actions">
-            <a class="studio-btn is-primary" href="https://ramahi-webdesign.de/" target="_blank" rel="noopener">Zu Ramahi Webdesign <span aria-hidden="true">↗</span></a>
+            <a class="studio-btn is-primary" href="https://ramahi-webdesign.de/" target="_blank" rel="noopener">Zu Ramahi Webdesign</a>
             <a class="studio-btn" href="/webdesign-seo-duesseldorf.html">Webdesign in Düsseldorf</a>
           </div>
         </div>
@@ -169,7 +167,7 @@ const overviewHead = {
             <li><span>Ranking-Tracking</span></li>
           </ul>
           <div class="studio-actions">
-            <a class="studio-btn is-primary" href="https://crawlfoundry.com/" target="_blank" rel="noopener">Zu Crawl Foundry <span aria-hidden="true">↗</span></a>
+            <a class="studio-btn is-primary" href="https://crawlfoundry.com/" target="_blank" rel="noopener">Zu Crawl Foundry</a>
             <a class="studio-btn" href="/keyword-datenbank-seo.html">Fallstudie lesen</a>
           </div>
         </div>
@@ -179,47 +177,32 @@ const overviewHead = {
       </div>
     </section>
 
-    <section class="overview" id="overview" data-header-theme="light" aria-label="Unsere Dienstleistungen im Überblick">
-      <div class="overview-inner">
-        <div class="overview-head">
-          <h2 set:html={overviewHead.headlineHtml} {...tinaAttrs(cms, 'overviewHeadline')}></h2>
+    <section class="more" id="weitere" data-header-theme="light" aria-labelledby="more-title">
+      <div class="more__inner">
+        <div class="more__head">
+          <h2 id="more-title" {...tinaAttrs(cms, 'overviewHeadline')}>{overviewHead.headline}</h2>
           <p {...tinaAttrs(cms, 'overviewIntro')}>{overviewHead.intro}</p>
         </div>
-        <div class="overview-grid">
+        <ul class="more__list">
           {overviewItems.map((service) => {
             const image = service.images[0]
             return (
-              <a class="overview-tile" href={service.href}>
-                {image && <img src={image.src} alt={image.alt} loading="lazy" width={image.width} height={image.height} decoding="async" {...tinaAttrs(editableSource(image), imageFieldName(image))} />}
-                <div class="label"><strong {...tinaAttrs(service.source, 'overviewLabel')}>{service.overviewLabel}</strong></div>
-              </a>
+              <li>
+                <a class="more__item" id={service.id} href={service.href}>
+                  {image && (
+                    <span class="more__visual">
+                      <img src={image.src} alt={image.alt} loading="lazy" width={image.width} height={image.height} decoding="async" {...tinaAttrs(editableSource(image), imageFieldName(image))} />
+                    </span>
+                  )}
+                  <span class="more__title" {...tinaAttrs(service.source, 'overviewLabel')}>{service.overviewLabel.replace(/\.$/, '')}</span>
+                  <span class="more__text" {...tinaAttrs(service.source, 'text')}>{service.text}</span>
+                </a>
+              </li>
             )
           })}
-        </div>
+        </ul>
       </div>
     </section>
-
-    <section class="services" data-header-theme="light" aria-label="Leistungsdetails">
-      <div class="services-list">
-        {listItems.map((service) => (
-          <a class="service" id={service.id} href={service.href} data-header-theme={service.theme}>
-            <div class="service-copy">
-              <h3 set:html={service.headline} {...tinaAttrs(service.source, 'headline')}></h3>
-              <p {...tinaAttrs(service.source, 'text')}>{service.text}</p>
-            </div>
-            <div class="image-set">
-              {service.images.map((image) => (
-                <figure class={`image-card ${image.className || ''}`.trim()}>
-                  <img src={image.src} alt={image.alt} loading="lazy" width={image.width} height={image.height} decoding="async" {...tinaAttrs(editableSource(image), imageFieldName(image))} />
-                  <figcaption class="image-caption" {...tinaAttrs(editableSource(image), imageCaptionFieldName(image))}>{image.caption}</figcaption>
-                </figure>
-              ))}
-            </div>
-          </a>
-        ))}
-      </div>
-    </section>
-
 
     <ContactSlot
       id="anfrage"
@@ -232,3 +215,144 @@ const overviewHead = {
     />
   </main>
 </AdoptedPageLayout>
+
+<style>
+  .more {
+    background: #eef0ea;
+    color: #0a0c11;
+    padding: clamp(72px, 8vw, 128px) 0;
+  }
+
+  .more__inner {
+    margin: 0 auto;
+    max-width: 1640px;
+    padding: 0 clamp(20px, 4vw, 84px);
+  }
+
+  .more__head {
+    align-items: end;
+    display: grid;
+    gap: 16px clamp(32px, 6vw, 120px);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 34rem);
+    margin-bottom: clamp(36px, 4vw, 64px);
+  }
+
+  .more__head h2 {
+    color: #0a0c11;
+    font-size: clamp(40px, 5.2vw, 88px);
+    margin: 0;
+  }
+
+  .more__head p {
+    color: rgb(10 12 17 / 66%);
+    font-size: clamp(15px, 1.1vw, 18px);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .more__list {
+    display: grid;
+    gap: clamp(36px, 4vw, 64px) clamp(24px, 3vw, 48px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .more__list li {
+    margin: 0;
+  }
+
+  .more__item,
+  .more__item:visited {
+    color: inherit;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    column-gap: clamp(20px, 2.4vw, 36px);
+    text-decoration: none;
+  }
+
+  .more__visual {
+    aspect-ratio: 4 / 5;
+    background: #d9dcd5;
+    display: block;
+    grid-row: span 2;
+    overflow: hidden;
+  }
+
+  .more__visual img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+    width: 100%;
+  }
+
+  .more__item:hover .more__visual img {
+    opacity: 0.85;
+  }
+
+  .more__title {
+    align-self: start;
+    font-size: clamp(22px, 1.9vw, 32px);
+    font-stretch: 87.5%;
+    font-weight: 700;
+    line-height: 1.08;
+    padding-top: 4px;
+  }
+
+  .more__item:hover .more__title {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 5px;
+  }
+
+  .more__text {
+    color: rgb(10 12 17 / 68%);
+    font-size: clamp(15px, 1.02vw, 16.5px);
+    line-height: 1.6;
+    max-width: 44ch;
+  }
+
+  .more__item:focus-visible {
+    outline: 2px solid #0a0c11;
+    outline-offset: 6px;
+  }
+
+  @media (max-width: 1100px) {
+    .more__list {
+      grid-template-columns: 1fr;
+    }
+
+    .more__item {
+      grid-template-columns: minmax(0, 0.7fr) minmax(0, 1fr);
+    }
+  }
+
+  @media (max-width: 900px) {
+    .more__head {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .more__item {
+      grid-template-columns: 1fr;
+      grid-template-rows: none;
+    }
+
+    .more__visual {
+      aspect-ratio: 3 / 2;
+      grid-row: auto;
+      margin-bottom: 6px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .more__visual img {
+      transition: none;
+    }
+  }
+</style>

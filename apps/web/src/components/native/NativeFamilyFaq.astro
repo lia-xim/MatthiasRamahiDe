@@ -29,7 +29,7 @@ const jsonLd = items.length
   <section class="fam-faq" data-faq-theme={theme} data-header-theme={theme} aria-label="Häufige Fragen">
     <div class="fam-faq__inner">
       <div class="fam-faq__head">
-        <h2 class="fam-faq__title">{headline} <em>{emphasis}</em></h2>
+        <h2 class="fam-faq__title">{headline}{headline && emphasis ? ' ' : ''}<em>{emphasis}</em></h2>
       </div>
       <div class="fam-faq__list">
         {items.map((entry, index) => (

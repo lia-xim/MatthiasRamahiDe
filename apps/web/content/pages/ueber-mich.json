@@ -23,10 +23,10 @@
     "items": []
   },
   "aboutHero": {
-    "kicker": "Über mich · Düsseldorf · NRW",
+    "kicker": "Über mich · Erkrath · Düsseldorf · NRW",
     "titleLine1": "Hinter der",
     "titleLine2": "Kamera.",
-    "lead": "Matthias Ramahi, Fotograf aus Erkrath bei Düsseldorf. Ich mache Bildserien von Automobilen, Oldtimern, Sportwagen und Motorrädern, dazu Portraits und Landschaften.",
+    "lead": "Matthias Ramahi, Fotograf mit Basis in Erkrath direkt neben Düsseldorf. Kuratierte Bildserien für Automobile, Sportwagen, Oldtimer und Motorräder sowie charakterstarke Portraits und Fine-Art-Landschaften in ganz NRW.",
     "image": "/assets/optimized/matthias-ramahi-portrait-1440.webp",
     "primaryLabel": "Portfolio ansehen →",
     "primaryHref": "/portfolio.html",
@@ -34,74 +34,74 @@
     "secondaryHref": "#anfrage"
   },
   "aboutStatement": {
-    "headline": "Fotografie mit",
-    "headlineEmphasis": "Wirkung",
-    "lead": "Über Landschaften und Portraits bin ich schließlich bei der Automobilfotografie gelandet. Ich fotografiere in allen diesen Bereichen gern und suche Kompositionen, die sich vom Üblichen abheben.",
-    "body": "Mein Anspruch ist, etwas Neues zu schaffen: klare Linien, ehrliche Farben, wenig Effekte. Ob Portrait, Automobil oder Landschaft, am Ende soll das Bild den Charakter seines Motivs zeigen und nicht den meiner Software. Aus dieser Geduld entstehen Aufnahmen, die nach dem Shooting weiterarbeiten: im Inserat, im Pressekit, an der Wand.",
+    "headline": "Bild vor Filter, Motiv vor",
+    "headlineEmphasis": "Effekt",
+    "lead": "Ich fotografiere Fahrzeuge, Menschen und Landschaften. In allen Bereichen reizt mich dasselbe: ein Motiv so genau zu lesen, dass Licht, Perspektive und Hintergrund für sich sprechen.",
+    "body": "Am Set arbeite ich ruhig und ohne Hektik. Bei Fahrzeugen heißt das: störende Spiegelungen auf Lack und Chrom schon vor Ort kontrollieren, die passende Brennweite wählen und auf das richtige Lichtfenster warten. Bei Portraits heißt es: klare, entspannte Anleitung statt steifer Standard-Posen. In der Nachbearbeitung bleibe ich bewusst zurückhaltend: ehrliche Farben, saubere Kontraste und kein schwerer Effekt-Filter, damit die Bilder im Inserat, im Pressekit, auf LinkedIn oder großformatig an der Wand Bestand haben.",
     "primaryLabel": "Portfolio ansehen",
     "primaryHref": "/portfolio.html",
-    "secondaryLabel": "Bereiche ansehen",
+    "secondaryLabel": "Schwerpunkte ansehen",
     "secondaryHref": "#schwerpunkte"
   },
   "aboutChapters": {
     "headline": "Sechs Bereiche. Eine",
     "headlineEmphasis": "Hand",
-    "intro": "Jeder Bereich braucht sein eigenes Vorgehen. Licht, Distanz, Material und Rhythmus passen sich an, die Bildsprache bleibt verwandt.",
+    "intro": "Jede Disziplin stellt eigene Anforderungen an Licht, Distanz, Location und Tempo. Die ruhige, ehrliche Bildsprache verbindet alle sechs Schwerpunkte.",
     "items": [
       {
         "image": "/uploads/payload/assets-photos-automobil-sunset-1921.webp",
         "title": "Automobil",
-        "alt": "Automobilfotografie",
-        "linkLabel": "Bereich ansehen →",
-        "href": "/automobil-fotografie-duesseldorf.html"
+        "alt": "Automobilfotografie in Düsseldorf und NRW von Matthias Ramahi",
+        "linkLabel": "Zur Autofotografie →",
+        "href": "/autofotografie-duesseldorf.html"
       },
       {
         "image": "/uploads/payload/assets-photos-automobil-neon-1921.webp",
         "title": "Sportwagen",
-        "alt": "Sportwagenfotografie",
-        "linkLabel": "Bereich ansehen →",
-        "href": "/sportwagen-fotografie-duesseldorf.html"
+        "alt": "Sportwagenfotografie im kontrollierten Licht von Matthias Ramahi",
+        "linkLabel": "Zur Sportwagenfotografie →",
+        "href": "/sportwagen-fotografie.html"
       },
       {
         "image": "/uploads/payload/assets-photos-oldtimer-stage-1920.webp",
         "title": "Oldtimer",
-        "alt": "Oldtimerfotografie",
-        "linkLabel": "Bereich ansehen →",
-        "href": "/oldtimer-fotografie-duesseldorf.html"
+        "alt": "Oldtimer- und Sammlerfahrzeugfotografie von Matthias Ramahi",
+        "linkLabel": "Zur Oldtimerfotografie →",
+        "href": "/oldtimer-fotografie.html"
       },
       {
         "image": "/uploads/payload/assets-photos-motorrad-1920.webp",
         "title": "Motorrad",
-        "alt": "Motorradfotografie",
-        "linkLabel": "Bereich ansehen →",
-        "href": "/motorrad-fotografie-duesseldorf.html"
+        "alt": "Motorrad- und Custom-Bike-Fotografie in NRW von Matthias Ramahi",
+        "linkLabel": "Zur Motorradfotografie →",
+        "href": "/motorrad-fotografie.html"
       },
       {
         "image": "/uploads/payload/portrait-blue-1.webp",
         "title": "Portrait",
-        "alt": "Portraitfotografie",
-        "linkLabel": "Bereich ansehen →",
+        "alt": "Portrait- und Personal-Branding-Fotografie in Düsseldorf von Matthias Ramahi",
+        "linkLabel": "Zur Portraitfotografie →",
         "href": "/portraitfotografie-duesseldorf.html"
       },
       {
         "image": "/uploads/payload/assets-photos-landschaft-1921.webp",
         "title": "Landschaft",
-        "alt": "Landschaftsfotografie",
-        "linkLabel": "Bereich ansehen →",
-        "href": "/landschaftsfotografie-duesseldorf.html"
+        "alt": "Landschaftsfotografie und Fine-Art-Prints von Matthias Ramahi",
+        "linkLabel": "Zu Landschaft & Prints →",
+        "href": "/landschaftsfotografie.html"
       }
     ]
   },
   "aboutSister": {
-    "kicker": "Bewegte Bilder · Empfehlung",
+    "kicker": "Bewegte Bilder · Zusammenarbeit",
     "headline": "Wenn es",
     "headlineEmphasis": "bewegt",
-    "lead": "Für bewegte Bilder empfehle ich meine Schwester Sophia Ramahi, Videografin aus Düsseldorf.",
-    "body": "Sophia produziert Musikvideos, Imagefilme und redaktionelles Bewegtbild. Wir kommen aus einer Familie und teilen eine Bildsprache. Wir arbeiten regelmäßig parallel am Set, damit Foto und Video aus einem Guss kommen.",
+    "lead": "Für Bewegtbild arbeite ich mit meiner Schwester Sophia Ramahi zusammen, Videografin aus dem Rheinland.",
+    "body": "Sophia produziert Musikvideos, Imagefilme und redaktionelle Videostrecken. Weil wir am Set regelmäßig parallel arbeiten, passen Lichtstimmung, Bildausschnitt und Timing zwischen Foto und Film direkt zusammen, ohne doppelte Abstimmung.",
     "buttonLabel": "Foto + Video anfragen",
     "href": "/contact.html#anfrage",
     "plate": {
-      "tag": "Schwester · Location",
+      "tag": "Schwester · Bewegtbild",
       "nameLine1": "Sophia",
       "nameLine2": "Ramahi",
       "roles": [
@@ -124,7 +124,7 @@
   "aboutContact": {
     "subject": "Projektanfrage",
     "headline": "Projekt <em>anfragen.</em>",
-    "lead": "Schreib kurz, welche Leistung dich interessiert, wo das Projekt stattfindet und welchen Zeitraum du planst. Ich melde mich per E-Mail mit Rückfragen oder dem nächsten Schritt."
+    "lead": "Schreib mir kurz, worum es geht, wo das Shooting stattfinden soll und welchen Zeitraum du planst. Du sprichst direkt mit mir. Ich melde mich persönlich per E-Mail oder Telefon mit Rückfragen und einem klaren Vorschlag."
   },
   "photographyIndex": {
     "clusterIntro": [],

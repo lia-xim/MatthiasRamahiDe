@@ -11,8 +11,8 @@
   ],
   "publishedAt": "2027-10-19T07:00:00.000Z",
   "excerpt": "Herstellerbild oder Foto des konkreten Autos? Entscheide nach Bildzweck, tatsächlicher Fahrzeugkonfiguration, Plattformregeln und Nutzungsrechten.",
-  "coverImage": "/assets/optimized/assets-portfolio-dsc2345-1920.webp",
-  "coverAlt": "Karosserie · Linie",
+  "coverImage": "/uploads/payload/_DSC2293.webp",
+  "coverAlt": "Grüner Supersportwagen in der Seitenansicht auf einer Automesse",
   "readingTime": 8,
   "blocks": [
     {
@@ -116,14 +116,14 @@
         },
         {
           "label": "Automobilfotografie von Matthias Ramahi",
-          "href": "/automobil-fotografie.html",
+          "href": "/autofotografie.html",
           "description": "Leistungsübersicht für individuelle Automobil- und Fahrzeugproduktionen."
         }
       ]
     }
   ],
   "seo": {
-    "title": "Herstellerbilder oder eigene Fahrzeugfotos?",
+    "title": "Herstellerbilder oder eigene Fahrzeugfotos nutzen?",
     "description": "Für Autohaus, Marke und Fahrzeugbestand: Entscheide zwischen Modellbild und Foto des konkreten Autos nach Einsatz, Aktualität und Nutzungsrechten.",
     "focusKeyword": "Herstellerbilder oder eigene Fahrzeugfotos",
     "secondaryKeywords": [
@@ -136,7 +136,7 @@
     "searchIntent": "B2B-Auswahl: Händler und Flottenverantwortliche vergleichen Herstellerbilder mit Aufnahmen des konkreten Fahrzeugs nach Passung, Aktualität und Nutzungsrecht.",
     "canonicalUrl": "https://matthiasramahi.de/blog-herstellerbilder-oder-eigene-fahrzeugfotos.html",
     "legacyUrl": "blog-herstellerbilder-oder-eigene-fahrzeugfotos.html",
-    "ogImage": "/assets/optimized/assets-portfolio-dsc2345-1920.webp",
+    "ogImage": "/uploads/payload/_DSC2293.webp",
     "noIndex": false
   },
   "status": "scheduled",
@@ -145,7 +145,7 @@
   "relatedPages": [
     {
       "label": "Automobilfotografie",
-      "href": "/automobil-fotografie.html",
+      "href": "/autofotografie.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

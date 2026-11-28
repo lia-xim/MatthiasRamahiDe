@@ -1,6 +1,7 @@
 ---
 import ContentBlocks from '../../components/ContentBlocks.astro'
-import ContactCta from '../../components/ContactCta.astro'
+import ContactSlot from '../../components/ContactSlot.astro'
+import { contactSlotProps } from '../../lib/contactSlotProps'
 import BaseLayout from '../../layouts/BaseLayout.astro'
 import { envFlag } from '../../lib/envFlags'
 import { tinaAttrs } from '../../lib/tinaFieldAttrs'
@@ -29,7 +30,7 @@ const tinaDoc = slug && isTinaEditRequest(Astro.request) ? await getTinaVisualDo
 const doc = tinaDoc ?? Astro.props.doc ?? (slug ? await getBySlug('service-pages', slug) : null)
 
 if (!doc) {
-  return Astro.redirect('/services')
+  return Astro.redirect('/leistungen.html', 308)
 }
 
 const hero = imageDisplayUrl(doc.heroImage, 'wide')
@@ -50,7 +51,7 @@ const jsonLdItems: JsonLd[] = [
   serviceJsonLd(doc, canonicalUrl),
   breadcrumbJsonLd([
     { name: 'Startseite', url: '/' },
-    { name: 'Leistungen', url: '/leistungen' },
+    { name: 'Leistungen', url: '/leistungen.html' },
     { name: doc.title || 'Leistung', url: canonicalUrl },
   ]),
 ]
@@ -122,5 +123,5 @@ if (faqSchema) jsonLdItems.push(faqSchema)
     </section>
   )}
 
-  <ContactCta cta={doc.cta} />
+  <ContactSlot id="anfrage" data-contact-section data-header-theme="light" data-theme="light" {...contactSlotProps(doc.cta)} />
 </BaseLayout>

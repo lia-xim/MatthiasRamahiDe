@@ -39,6 +39,14 @@
     {
       "question": "Kann ich später neue Bilder im gleichen Stil nachholen?",
       "answer": "Ja. Licht, Farbstimmung und Bearbeitung halte ich fest, damit ein späteres Shooting an die erste Serie anschließt."
+    },
+    {
+      "question": "Welche Nutzungsrechte sind bei Personal-Branding-Fotos enthalten?",
+      "answer": "Für Website, LinkedIn, Instagram, Newsletter, Vortragsankündigungen und Presse werden die gewerblichen Nutzungsrechte vorab klar besprochen und schriftlich im Angebot festgehalten. So weißt du genau, wo du die Serie einsetzen kannst."
+    },
+    {
+      "question": "In welchen Formaten werden die fertigen Bilder geliefert?",
+      "answer": "Jede Szene fotografiere ich gezielt in mehreren Ausschnitten: breite Querformate mit ruhiger Fläche für Website-Header, Hochformate für Instagram und Stories sowie klare Portraits für LinkedIn und Presse, jeweils in Web- und hochauflösender Druckqualität."
     }
   ],
   "blocks": [
@@ -135,7 +143,38 @@
   "gallerySection": {},
   "portfolioTiles": [],
   "processSection": {},
-  "processSteps": [],
+  "processSteps": [
+    {
+      "image": "/assets/portraits/20260823-khan-levi-dsc8481.webp",
+      "imageLabel": "Anfrage",
+      "title": "Anfrage & Zielkanäle",
+      "text": "Du nennst kurz Branche, Kanäle (Website, LinkedIn, Instagram, Presse) und Zeitraum. Du bekommst zeitnah eine erste Einordnung und den passenden Produktionsrahmen."
+    },
+    {
+      "image": "/assets/portraits/20260823-khan-levi-dsc8762.webp",
+      "imageLabel": "Briefing",
+      "title": "Positionierung & Rechte",
+      "text": "Im Vorgespräch klären wir Tonalität, Zielgruppe, Farbwelt und den konkreten Umfang der gewerblichen Nutzungsrechte, damit vor dem Termin alles schriftlich feststeht."
+    },
+    {
+      "image": "/assets/portraits/20260823-khan-levi-dsc8797.webp",
+      "imageLabel": "Motivliste",
+      "title": "Motivliste, Orte & Outfits",
+      "text": "Wir erstellen eine klare Shotlist mit Portraits, Arbeitsszenen und Details, abgestimmt auf 2–3 Outfits und kurze Wege in Düsseldorf (Büro, Medienhafen, Altstadt oder gemietetes Studio)."
+    },
+    {
+      "image": "/assets/portraits/20260823-khan-levi-dsc8557.webp",
+      "imageLabel": "Produktion",
+      "title": "Produktion On-Location",
+      "text": "Ruhige Anleitung ohne steife Stock-Posen: Wir arbeiten die Motivliste zügig ab, fotografieren jede Szene in Hoch- und Querformat und prüfen Zwischenstände gemeinsam am Monitor."
+    },
+    {
+      "image": "/assets/portraits/20260823-khan-levi-dsc8733.webp",
+      "imageLabel": "Lieferung",
+      "title": "Galerie, Grading & Ausgabe",
+      "text": "Aus der kuratierten Online-Galerie wählst du deine Favoriten. Alle Bilder erhalten eine einheitliche Farbstimmung und kommen einsatzfertig für Website, LinkedIn, Social und Print."
+    }
+  ],
   "audienceSection": {},
   "audienceCards": [
     {
@@ -177,8 +216,8 @@
   "contactSection": {},
   "targetKeyword": "Personal Branding Fotografie Düsseldorf · Matthias Ramahi",
   "seo": {
-    "title": "Personal-Branding-Fotograf Düsseldorf & NRW ab 250 €",
-    "description": "Personal-Branding-Fotografie in Düsseldorf: geplante Bildserie aus Portraits, Arbeitsszenen und Details für Website, LinkedIn und Social Media. Ab 250 €.",
+    "title": "Personal Branding Fotograf Düsseldorf: Business & LinkedIn",
+    "description": "Personal-Branding-Fotografie on-location in Düsseldorf für Selbstständige, Coaches & LinkedIn: geplante Bildserie inkl. klarer Nutzungsrechte ab 250 €.",
     "canonicalUrl": "https://matthiasramahi.de/personal-branding-fotografie-duesseldorf.html",
     "legacyUrl": "personal-branding-fotografie-duesseldorf.html",
     "ogImage": "/assets/portraits/20260823-khan-levi-dsc8759.webp",
@@ -229,16 +268,20 @@
     ],
     "links": [
       {
-        "label": "Business Portrait Düsseldorf",
-        "href": "/business-portrait-duesseldorf.html"
-      },
-      {
-        "label": "Headshot Fotograf Düsseldorf",
-        "href": "/headshot-fotograf-duesseldorf.html"
+        "label": "Portraitfotografie Düsseldorf",
+        "href": "/portraitfotografie-duesseldorf.html"
       },
       {
         "label": "Businessportraits draußen (Journal)",
         "href": "/blog-businessportraits-draussen.html"
+      },
+      {
+        "label": "Lichtformer in der Portraitfotografie (Journal)",
+        "href": "/blog-lichtformer-portraitfotografie.html"
+      },
+      {
+        "label": "Portraits ohne generische Posen (Journal)",
+        "href": "/blog-portraits-ohne-generische-posen.html"
       },
       {
         "label": "Portfolio Portrait",

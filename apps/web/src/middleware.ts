@@ -59,15 +59,16 @@ const siteMiddleware = defineMiddleware(async (context, next) => {
     return permanentRedirect(`/admin/index.html${context.url.search}`)
   }
 
+  // An empty redirect target ('') means "consolidated into the homepage".
   const legacyPathRedirectTarget = getLegacyPathRedirectTarget(pathname)
-  if (legacyPathRedirectTarget) {
+  if (legacyPathRedirectTarget !== null) {
     return permanentRedirect(`/${legacyPathRedirectTarget}${context.url.search}`)
   }
 
   const nativeHtmlFile = getNativeHtmlFileForPath(pathname)
   const redirectTarget = getLegacyRedirectTarget(nativeHtmlFile)
 
-  if (redirectTarget) {
+  if (redirectTarget || (redirectTarget === '' && nativeHtmlFile !== 'index.html')) {
     return permanentRedirect(`/${redirectTarget}${context.url.search}`)
   }
 

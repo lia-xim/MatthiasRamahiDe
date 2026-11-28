@@ -10,7 +10,7 @@
   ],
   "publishedAt": "2026-08-06T09:00:00.000Z",
   "excerpt": "Softbox, Schirm, Beauty Dish oder Reflektor: Warum Größe, Abstand und Richtung die Wirkung des Portraitlichts stärker bestimmen als der Name des Lichtformers.",
-  "coverImage": "/assets/portraits/_DSC0470-Enhanced-NR.webp",
+  "coverImage": "/uploads/payload/_DSC7116.webp",
   "readingTime": 8,
   "blocks": [
     {
@@ -59,6 +59,11 @@
       "_template": "textBlock"
     },
     {
+      "_template": "textBlock",
+      "headline": "Direkter Vergleich: Softbox, Oktobox, Schirm, Beauty Dish & Reflektor",
+      "body": "Für die schnelle Auswahl am Set hilft der Blick auf Schattenkante, Streulichtkontrolle und typische Bildaufgabe:\n\n| Lichtformer | Schattenkante | Streulicht-Kontrolle | Augenreflex | Typischer Einsatz |\n| --- | --- | --- | --- | --- |\n| Rechteck-Softbox (mit Grid) | Weich bis mittel | Sehr hoch (Hintergrund bleibt sauber) | Rechteckig, fensterähnlich | Business-Headshots, Teamserien, kontrollierte Büros |\n| Oktobox (90–120 cm) | Sehr weich, umhüllend | Hoch (besonders mit Wabe) | Rund, natürlich wirkend | Personal Branding, Einzelportraits, Charakterköpfe |\n| Durchlicht- / Reflexschirm | Weich bis mittel | Gering (hellt den ganzen Raum mit auf) | Rund, großflächig | Schnelle On-Location-Setups in neutralen Räumen |\n| Beauty Dish (weiß / silber) | Prägnant, klar definiert | Mittel bis hoch (mit Grid sehr präzise) | Kompakt rund | Editorial, Musikerportraits, markante Gesichtskonturen |\n| Reflektor (Weiß / Silber / Schwarz) | Abhängig vom Hauptlicht | Gezielt als Aufhellung oder Abschattung | Sekundär | Schatten aufhellen oder Kontrast durch Negativ-Fill erhöhen |"
+    },
+    {
       "headline": "Aufhellung darf Schatten ordnen, nicht beseitigen",
       "body": "Ein zweites Licht oder ein Reflektor wird häufig eingesetzt, sobald die abgewandte Gesichtshälfte dunkler wird. Doch Schatten sind nicht grundsätzlich ein Fehler. Sie geben dem Gesicht Form und trennen eine gesetzte Lichtstimmung von flacher Ausleuchtung. Die relevante Frage lautet, ob im Schatten noch die Informationen bleiben, die für Medium und Nutzung gebraucht werden.\n\nEin weißer Reflektor hebt sanft an, Silber reagiert deutlicher und kann kleine Glanzstellen betonen. Eine schwarze Fläche nimmt Streulicht weg und erhöht lokal den Kontrast. Gerade diese negative Aufhellung wird unterschätzt. In einem hellen Raum kann sie wirksamer sein als ein weiteres Blitzgerät, weil sie Kontur zurückbringt, ohne eine zweite sichtbare Lichtrichtung zu erfinden.",
       "_template": "textBlock"
@@ -85,10 +90,6 @@
         {
           "label": "Personal Branding Düsseldorf",
           "href": "/personal-branding-fotografie-duesseldorf.html"
-        },
-        {
-          "label": "Headshot Fotograf Düsseldorf",
-          "href": "/headshot-fotograf-duesseldorf.html"
         },
         {
           "label": "Portfolio Portrait",
@@ -127,13 +128,13 @@
     }
   ],
   "seo": {
-    "title": "Lichtformer im Portrait: Softbox, Beauty Dish & Praxis",
-    "description": "Softbox, Oktobox, Schirm, Reflektor oder Beauty Dish: Welcher Lichtformer zu Personal Branding, Business-Portraits und Charakterköpfen passt.",
+    "title": "Lichtformer Portrait: Softbox, Beauty Dish & Schirm",
+    "description": "Softbox, Oktobox, Schirm, Beauty Dish oder Reflektor: Direkter Vergleich nach Schattenkante, Abstand und Einsatz für Business- & Editorial-Portraits.",
     "focusKeyword": "Lichtformer für Portraitfotografie wählen",
     "searchIntent": "Informationssuche: Nutzer suchen Fachwissen, Beispiele und Einordnung zu Lichtformer für Portraitfotografie wählen.",
     "canonicalUrl": "https://matthiasramahi.de/blog-lichtformer-portraitfotografie.html",
     "legacyUrl": "blog-lichtformer-portraitfotografie.html",
-    "ogImage": "/assets/portraits/_DSC0470-Enhanced-NR.webp",
+    "ogImage": "/uploads/payload/_DSC7116.webp",
     "noIndex": false
   },
   "legacy": {
@@ -144,7 +145,7 @@
   },
   "status": "published",
   "createdAt": "2026-08-06T09:00:00.000Z",
-  "updatedAt": "2026-11-24T09:15:00.000Z",
+  "updatedAt": "2026-11-27T22:15:00.000Z",
   "relatedPages": [
     {
       "label": "Portraitfotografie",
@@ -155,7 +156,7 @@
     },
     {
       "label": "Business Portrait Düsseldorf",
-      "href": "/business-portrait-duesseldorf.html",
+      "href": "/personal-branding-fotografie-duesseldorf.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
@@ -168,5 +169,5 @@
       "openInNewTab": false
     }
   ],
-  "coverAlt": "Inszeniertes Portrait einer Frau mit warmem, gerichtetem Studiolicht"
+  "coverAlt": "Portrait eines Mannes am Schachbrett mit gesetztem Licht vor blauer Wand"
 }

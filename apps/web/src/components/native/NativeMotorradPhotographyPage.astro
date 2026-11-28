@@ -2,12 +2,13 @@
 import HeroMotion from './HeroMotion.astro'
 import ContactSlot from '../ContactSlot.astro'
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
-import NativeFamilyClusterLinks from './NativeFamilyClusterLinks.astro'
+import NativeLinkIndex from './NativeLinkIndex.astro'
 import NativeFamilyJournalLinks from './NativeFamilyJournalLinks.astro'
 import NativeGuideSection from './NativeGuideSection.astro'
 import NativeHubSeries from './NativeHubSeries.astro'
 import NativeFamilyFaq from './NativeFamilyFaq.astro'
 import NativeReviews from './NativeReviews.astro'
+import NativeVehiclePillarBlueprint from './NativeVehiclePillarBlueprint.astro'
 import PreviewToolbar from '../PreviewToolbar.astro'
 import {
   localScopePhrase,
@@ -49,7 +50,7 @@ const pageContext = nativeFamilyPageContext({
   legacyFile,
   preview,
 })
-const { clusterHeading, clusterLinks, isKeywordPage, isParentPage, overviewHref, publishedHref, scope, serviceLabel } = pageContext
+const { clusterHeading, clusterLinks, isKeywordPage, isParentPage, publishedHref, scope, serviceLabel } = pageContext
 const keywordFocusCopy = keywordFocusCopyForSlug(legacyFile)
 const cmsFaqSource = (doc?.localFaq?.length ? doc.localFaq : doc?.faq) || []
 const cmsFaqItems = cmsFaqSource.map((entry) => ({ q: entry.question || '', a: entry.answer || '' })).filter((entry) => entry.q && entry.a)
@@ -249,29 +250,7 @@ const moduleCards = cleanDefaultModuleCards.map((cleanCard, index) => {
 
 const allCityLinks = [
   ['motorrad-fotografie-duesseldorf.html', 'Düsseldorf'],
-  ['motorrad-fotografie-erkrath.html', 'Erkrath'],
-  ['motorrad-fotografie-ratingen.html', 'Ratingen'],
-  ['motorrad-fotografie-koeln.html', 'Köln'],
-  ['motorrad-fotografie-essen.html', 'Essen'],
-  ['motorrad-fotografie-dortmund.html', 'Dortmund'],
-  ['motorrad-fotografie-duisburg.html', 'Duisburg'],
-  ['motorrad-fotografie-bochum.html', 'Bochum'],
-  ['motorrad-fotografie-wuppertal.html', 'Wuppertal'],
-  ['motorrad-fotografie-leverkusen.html', 'Leverkusen'],
-  ['motorrad-fotografie-oberhausen.html', 'Oberhausen'],
-  ['motorrad-fotografie-krefeld.html', 'Krefeld'],
-  ['motorrad-fotografie-moenchengladbach.html', 'Mönchengladbach'],
-  ['motorrad-fotografie-moers.html', 'Moers'],
-  ['motorrad-fotografie-gelsenkirchen.html', 'Gelsenkirchen'],
-  ['motorrad-fotografie-bergisch-gladbach.html', 'Bergisch Gladbach'],
-  ['motorrad-fotografie-solingen.html', 'Solingen'],
-  ['motorrad-fotografie-remscheid.html', 'Remscheid'],
-  ['motorrad-fotografie-mettmann.html', 'Mettmann'],
-  ['motorrad-fotografie-hilden.html', 'Hilden'],
-  ['motorrad-fotografie-dormagen.html', 'Dormagen'],
-  ['motorrad-fotografie-neuss.html', 'Neuss'],
   ['motorrad-fotografie-nrw.html', 'NRW'],
-  ['motorrad-fotografie-deutschland.html', 'Deutschland'],
 ] as const
 
 const intentLinks = [
@@ -282,16 +261,10 @@ const intentLinks = [
     duesseldorfHref: 'motorrad-shooting-duesseldorf.html',
   },
   {
-    key: 'bike-fotografie',
-    label: 'Bike Fotografie',
-    genericHref: 'bike-fotografie.html',
-    duesseldorfHref: 'bike-fotografie-duesseldorf.html',
-  },
-  {
     key: 'custom-bike',
     label: 'Custom Bike Fotografie',
     genericHref: 'custom-bike-fotografie.html',
-    duesseldorfHref: 'custom-bike-fotografie-duesseldorf.html',
+    duesseldorfHref: 'custom-bike-fotografie.html',
   },
   {
     key: 'verkaufsfotos',
@@ -313,16 +286,14 @@ const clusterCuration = curateFamilyClusterLinks({
   familyLabel: 'Motorrad Fotografie',
   intentLinks,
   intentNeighbors: {
-    'motorrad-shooting': ['bike-fotografie', 'custom-bike', 'biker-portrait'],
-    'bike-fotografie': ['motorrad-shooting', 'custom-bike', 'verkaufsfotos'],
-    'custom-bike': ['bike-fotografie', 'biker-portrait', 'motorrad-shooting'],
-    verkaufsfotos: ['motorrad-shooting', 'bike-fotografie', 'custom-bike'],
-    'biker-portrait': ['motorrad-shooting', 'custom-bike', 'bike-fotografie'],
+    'motorrad-shooting': ['custom-bike', 'biker-portrait', 'verkaufsfotos'],
+    'custom-bike': ['biker-portrait', 'motorrad-shooting', 'verkaufsfotos'],
+    verkaufsfotos: ['motorrad-shooting', 'custom-bike', 'biker-portrait'],
+    'biker-portrait': ['motorrad-shooting', 'custom-bike', 'verkaufsfotos'],
   },
   isParentPage,
   primaryIntentKeys: [
     'motorrad-shooting',
-    'bike-fotografie',
     'custom-bike',
     'verkaufsfotos',
     'biker-portrait',
@@ -535,13 +506,59 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
       </div>
     </section>
 
+    <NativeVehiclePillarBlueprint discipline="motorrad" scopeLabel={!isParentPage && !isKeywordPage ? scope.label : 'NRW'} />
+
+    <ContactSlot
+      id="anfrage"
+      data-contact-section
+      data-header-theme="light"
+      data-contact-subject={contactSubject}
+      data-contact-headline={contactHeadline}
+      data-contact-lead={contactLead}
+    />
+
+    <NativeFamilyJournalLinks clusters={['motorcycle']} familyHref={defaultLegacyFile} scopeLabel={scope.label} />
+
+    <section class="st" data-header-theme="light">
+      <div class="section-inner">
+        <div>
+          <h2>
+            <span {...tinaAttrs(doc?.statement, 'headline')}>{focusIntroTitle.headline}</span>
+            {focusIntroTitle.headline && focusIntroTitle.emphasis ? ' ' : ''}
+            {focusIntroTitle.emphasis && <em {...tinaAttrs(doc?.statement, 'emphasis')}>{focusIntroTitle.emphasis}</em>}
+          </h2>
+        </div>
+        <div class="st-body">
+          {focusIntroParagraphs.map((paragraph, index) => <p {...tinaAttrs(doc?.statement?.body?.[index], 'text')}>{paragraph}</p>)}
+        </div>
+      </div>
+    </section>
+
+    <NativeFamilyFaq faq={faqItems} pageUrl={`https://matthiasramahi.de/${legacyFile}`} theme="dark" />
+
+    <NativeGuideSection doc={doc} />
+
+    <NativeHubSeries doc={doc} />
+
+    <NativeLinkIndex
+      label={`Weitere Seiten ${scope.label}`}
+      groups={[
+        { title: 'In der Region', links: cityLinks },
+        { title: 'Nach Anliegen', links: searchLinks },
+        ...(showCrossFamilyCluster ? [{ title: 'Andere Bereiche', links: [{ href: '/', label: 'Alle Fotografie-Bereiche' }, ...clusterLinks] }] : []),
+      ]}
+    />
+
+    <NativeReviews theme="light" />
+
+
     <section class="rl" data-header-theme="dark">
       <div class="section-inner">
         <div class="rl-head">
           <h2>Verwandte <em>Bereiche</em>.</h2>
         </div>
         <div class="rl-grid">
-          <a class="rl-card" href="automobil-fotografie.html">
+          <a class="rl-card" href="/autofotografie.html">
             <img loading="lazy" src="/assets/optimized/automobil-alpina-b8-medienhafen-960.webp" alt="Automobilfotografie" width="960" height="640" decoding="async" />
             <div class="overlay"></div>
             <div class="content"><div><strong>Automobil</strong></div><span class="arrow">→</span></div>
@@ -564,69 +581,5 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
         </div>
       </div>
     </section>
-
-    <ContactSlot
-      id="anfrage"
-      data-contact-section
-      data-header-theme="light"
-      data-contact-subject={contactSubject}
-      data-contact-headline={contactHeadline}
-      data-contact-lead={contactLead}
-    />
-
-    <section class="st" data-header-theme="light">
-      <div class="section-inner">
-        <div>
-          <h2>
-            <span {...tinaAttrs(doc?.statement, 'headline')}>{focusIntroTitle.headline}</span>
-            {focusIntroTitle.headline && focusIntroTitle.emphasis ? ' ' : ''}
-            {focusIntroTitle.emphasis && <em {...tinaAttrs(doc?.statement, 'emphasis')}>{focusIntroTitle.emphasis}</em>}
-          </h2>
-        </div>
-        <div class="st-body">
-          {focusIntroParagraphs.map((paragraph, index) => <p {...tinaAttrs(doc?.statement?.body?.[index], 'text')}>{paragraph}</p>)}
-        </div>
-      </div>
-    </section>
-
-    <NativeGuideSection doc={doc} />
-    <NativeHubSeries doc={doc} />
-
-    {showCrossFamilyCluster && (
-      <NativeFamilyClusterLinks
-        clusterHeading={clusterHeading}
-        clusterLinks={clusterLinks}
-        overviewHref={overviewHref}
-        scopeLabel={scope.label}
-      />
-    )}
-
-    <NativeFamilyJournalLinks clusters={['motorcycle']} familyHref={defaultLegacyFile} scopeLabel={scope.label} />
-
-    <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Motorrad Fotografie in NRW">
-      <div class="mr-cities__inner">
-        <div class="mr-cities__head">
-          <h2 set:html={cityHeading}></h2>
-        </div>
-        <nav class="mr-cities__grid" aria-label="Städte">
-          {cityLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
-        </nav>
-      </div>
-    </section>
-
-    <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Motorrad Fotografie nach Anliegen">
-      <div class="mr-cities__inner">
-        <div class="mr-cities__head">
-          <h2 set:html={intentHeading}></h2>
-        </div>
-        <nav class="mr-cities__grid" aria-label="Regionale Bereiche">
-          {searchLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
-        </nav>
-      </div>
-    </section>
-
-    <NativeFamilyFaq faq={faqItems} pageUrl={`https://matthiasramahi.de/${legacyFile}`} theme="dark" />
-
-    <NativeReviews theme="light" />
   </main>
 </AdoptedPageLayout>

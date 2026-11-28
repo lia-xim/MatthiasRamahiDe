@@ -16,6 +16,7 @@ import { renderJournalBodyHtml } from '../../lib/journalMarkdown'
 import { imageDimensions, imageDisplayUrl, toAbsoluteSiteUrl, toDisplayAssetUrl, toRootRelativeHref } from '../../lib/payload'
 import { breadcrumbJsonLd, faqJsonLd, type JsonLd } from '../../lib/seo'
 import { journalIndexPath, journalTopics } from '../../lib/journalIndexRoutes'
+import { journalStageImage } from '../../lib/journalStageImage'
 
 type Props = { legacyFile: string }
 
@@ -24,7 +25,35 @@ const article = journalArticleByLegacyFile[legacyFile]
 
 if (!article || !isJournalArticlePublic(article)) return new Response('Not found', { status: 404 })
 
-const articleHref = (href?: string) => toRootRelativeHref(href || 'blog.html')
+const resolveCanonicalHref = (href?: string) => {
+  const rootHref = toRootRelativeHref(href || 'blog.html')
+  if (!rootHref || rootHref === '/' || rootHref.startsWith('#') || /^(?:https?:|mailto:|tel:)/i.test(rootHref)) {
+    return rootHref || '/blog.html'
+  }
+  const [pathAndQuery, hash = ''] = rootHref.split('#')
+  const [rawPath, query = ''] = pathAndQuery.split('?')
+  let current = rawPath.replace(/^\/+/, '').toLowerCase()
+  let pathname = rawPath
+  const seen = new Set<string>([current])
+  for (let hop = 0; hop < 4; hop += 1) {
+    if (!current || current.includes('/')) break
+    const target = getLegacyRedirectTarget(current)
+    if (target === null) break
+    if (target === '') {
+      pathname = '/'
+      break
+    }
+    const next = target.replace(/^\/+/, '')
+    pathname = `/${next}`
+    const nextLower = next.toLowerCase()
+    if (seen.has(nextLower)) break
+    seen.add(nextLower)
+    current = nextLower
+  }
+  return `${pathname || '/'}${query ? `?${query}` : ''}${hash ? `#${hash}` : ''}`
+}
+
+const articleHref = (href?: string) => resolveCanonicalHref(href || 'blog.html')
 const relatedArticles = getRelatedJournalArticles(article, 3)
 const plainTitle = article.title.replace(/<[^>]+>/g, '')
 const canonicalUrl = `/${article.legacyFile}`
@@ -34,7 +63,46 @@ const textBlocks = article.blocks.filter(
 const isQuickAnswerBlock = (block: Extract<JournalArticleBlock, { _template: 'textBlock' }>) =>
   block.style === 'summary' ||
   (block.style === 'bridge' && /^(kurzantwort|auf einen blick)\b/i.test((block.headline || '').trim()))
-const tocBlocks = textBlocks.filter((block) => block.headline && block.style !== 'bridge' && !isQuickAnswerBlock(block))
+const slugifyBlockHeading = (headline: string, index: number) =>
+  headline
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '') || `abschnitt-${index + 1}`
+
+const usedSectionIds = new Set<string>()
+const sectionIdByBlockIndex = new Map<number, string>()
+const tocEntries: Array<{ id: string; label: string }> = []
+article.blocks.forEach((block, index) => {
+  if (block._template !== 'textBlock' || !block.headline || block.style === 'bridge' || isQuickAnswerBlock(block)) return
+  const baseId = slugifyBlockHeading(block.headline, index)
+  let uniqueId = baseId
+  let suffix = 2
+  while (usedSectionIds.has(uniqueId)) {
+    uniqueId = `${baseId}-${suffix}`
+    suffix += 1
+  }
+  usedSectionIds.add(uniqueId)
+  sectionIdByBlockIndex.set(index, uniqueId)
+  tocEntries.push({ id: uniqueId, label: block.headline })
+})
+
+const sidebarLinks = (() => {
+  const seenHrefs = new Set<string>()
+  const resolved: Array<{ href: string; label: string }> = []
+  for (const link of article.links) {
+    const href = articleHref(link.href)
+    if (!href || seenHrefs.has(href)) continue
+    seenHrefs.add(href)
+    resolved.push({ href, label: link.label })
+  }
+  const commercialTarget = articleHref(article.commercialHref)
+  if (commercialTarget && !seenHrefs.has(commercialTarget)) {
+    resolved.unshift({ href: commercialTarget, label: `${article.category}-Fotografie` })
+  }
+  return resolved.slice(0, 3)
+})()
 const renderMarkdownBody = (body?: string) =>
   renderJournalBodyHtml(body, { resolveRedirectTarget: getLegacyRedirectTarget })
 const faqBlocks = article.blocks.filter(
@@ -96,6 +164,17 @@ const heroWideUrl = imageDisplayUrl(article.heroImage, 'wide', { allowOriginal: 
 const heroLocalResponsive = article.heroImage && !/^https?:\/\//i.test(article.heroImage) ? localResponsiveImage(article.heroImage, displayHero.width, displayHero.height) : null
 const heroSrcset = heroLocalResponsive?.srcset ? `${heroLocalResponsive.srcset}, ${versionStaticAssetUrl(heroWideUrl)} 1920w` : ''
 const heroWideDims = imageDimensions(article.heroImage, 'wide')
+// Bühnenbild bis 1920 px; Format bestimmt das Layout (Quer: volle Breite unter
+// dem Titel, Hoch: Bild rechts neben dem Titel statt hartem 16:9-Beschnitt).
+const heroStage = journalStageImage(article.heroImage)
+const heroSrc = heroStage?.src || versionStaticAssetUrl(heroWideUrl)
+const heroStageSrcset = heroStage?.srcset || heroSrcset
+const heroWidth = heroStage?.width || displayHero.width
+const heroHeight = heroStage?.height || displayHero.height
+const heroSizes = heroHeight > heroWidth ? '(max-width: 959px) calc(100vw - 32px), 40vw' : '(max-width: 1260px) calc(100vw - 32px), 1180px'
+const heroPreload = heroStageSrcset
+  ? { href: heroSrc, imagesrcset: heroStageSrcset, imagesizes: heroSizes, fetchpriority: 'high' as const }
+  : { href: heroSrc, fetchpriority: 'high' as const }
 const jsonLd = [
   breadcrumbJsonLd([
     { name: 'Startseite', url: '/' },
@@ -128,8 +207,7 @@ const jsonLd = [
   faqJsonLd(mergedFaq),
 ].filter(Boolean) as JsonLd[]
 const authorImage = toDisplayAssetUrl('/uploads/payload/mpissxxj-portfolio_webp_full_063-2-360x360.webp')
-const isPortraitHero = displayHero.height > displayHero.width
-const heroStyle = `--article-hero-image:url('${heroWideUrl}')`
+const isPortraitHero = heroHeight > heroWidth
 const clusterProfile = journalClusterProfiles[article.cluster]
 // Kategorie verlinkt auf die crawlbare Themen-Uebersicht statt auf einen
 // JS-Filter mit Query-Parameter.
@@ -148,15 +226,20 @@ const contactSubjectByCluster: Record<string, string> = {
 const articleContactSubject = contactSubjectByCluster[article.cluster] || 'Shooting Anfrage'
 const articleContactHeadline = `${topicLabel} <em>anfragen.</em>`
 const articleContactLead = `Du planst ein Shooting oder Projekt im Bereich ${topicLabel}? Schreibe kurz Motiv, Ort und gewünschten Zeitraum. Dann klären wir Licht, Ablauf und Ausgabe direkt.`
+const dedupeBlockLinks = (links?: Array<{ href?: string; label?: string }>) => {
+  const deduped: Array<{ href: string; label: string }> = []
+  const seen = new Set<string>()
+  for (const link of links || []) {
+    if (!link.href || !link.label) continue
+    const resolved = articleHref(link.href)
+    if (!resolved || seen.has(resolved)) continue
+    seen.add(resolved)
+    deduped.push({ href: resolved, label: link.label })
+  }
+  return deduped
+}
 const normalizeText = (value = '') => value.replace(/\s+/g, ' ').trim()
 const paragraphs = (body?: string) => (body || '').split(/\n\s*\n/).map((value) => value.trim()).filter(Boolean)
-const blockId = (headline: string, index: number) =>
-  headline
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-|-$/g, '') || `abschnitt-${index + 1}`
 
 Astro.response.headers.set('x-cms-page-kind', 'journal-tina-source')
 ---
@@ -168,12 +251,12 @@ Astro.response.headers.set('x-cms-page-kind', 'journal-tina-source')
   current="blog"
   ogImage={displayHero.url}
   ogType="article"
-  preloadImages={[heroWideUrl]}
+  preloadImages={[heroPreload]}
   stylesheets={['/assets/journal-support.css']}
   jsonLd={jsonLd}
   bodyClass="has-mr-footer journal-article-page"
   mobileCta={{
-    secondaryHref: articleHref(article.links?.[0]?.href || article.commercialHref || '/automobil-fotografie.html'),
+    secondaryHref: sidebarLinks[0]?.href || articleHref(article.commercialHref || '/autofotografie.html'),
     secondaryLabel: 'Leistung',
     href: '#anfrage',
     label: 'Shooting anfragen',
@@ -181,55 +264,72 @@ Astro.response.headers.set('x-cms-page-kind', 'journal-tina-source')
 >
   <main>
     <article class="journal-support journal-editorial">
-      <header class:list={['article-hero', { 'article-hero--portrait': isPortraitHero }]} style={heroStyle} data-header-theme="dark">
-        <div class="article-hero__visual" aria-hidden="true">
-          <img
-            src={versionStaticAssetUrl(heroWideUrl)}
-            srcset={heroSrcset || undefined}
-            sizes={heroSrcset ? '100vw' : undefined}
-            alt=""
-            width={displayHero.width}
-            height={displayHero.height}
-            fetchpriority="high"
-            decoding="async"
-          />
-        </div>
-        <div class="article-hero__blur" aria-hidden="true"></div>
-        <div class="article-hero__inner">
-          <a class="article-hero__topic" href={topicHref}>{topicLabel}</a>
-          <h1>{article.title}</h1>
-          <p class="lead">{article.description}</p>
-          <div class="article-hero__meta">
-            <a class="article-hero__author" href="/ueber-mich.html">
-              <img src={authorImage} alt="" width="40" height="40" loading="eager" decoding="async" />
-              <span>Matthias Ramahi</span>
-            </a>
-            <span class="article-hero__facts">
-              <time datetime={article.dateTime}>{article.dateLabel}</time><span aria-hidden="true">·</span><span>{article.minutes} Lesezeit</span>
-            </span>
+      <header class:list={['ahero', { 'ahero--portrait': isPortraitHero }]} data-header-theme="dark">
+        <div class="ahero__inner">
+          <div class="ahero__copy">
+            <div class="ahero__top">
+              <nav class="ahero__crumbs" aria-label="Breadcrumb">
+                <a href="/">Startseite</a>
+                <span aria-hidden="true">/</span>
+                <a href="/blog.html">Journal</a>
+                <span aria-hidden="true">/</span>
+                <a href={topicHref}>{topicLabel}</a>
+              </nav>
+            </div>
+
+            <h1 class="ahero__title">{plainTitle}</h1>
+            <p class="ahero__lead">{article.description}</p>
+
+            <div class="ahero__meta">
+              <a class="ahero__author" href="/ueber-mich.html">
+                <img src={authorImage} alt="" width="40" height="40" loading="eager" decoding="async" />
+                <span>Matthias Ramahi</span>
+              </a>
+              <span class="ahero__facts">
+                <time datetime={article.dateTime}>{article.dateLabel}</time>
+                <span aria-hidden="true">·</span>
+                <span>{article.minutes} Lesezeit</span>
+              </span>
+            </div>
           </div>
+
+          <figure class="ahero__frame">
+            <img
+              src={heroSrc}
+              srcset={heroStageSrcset || undefined}
+              sizes={heroStageSrcset ? heroSizes : undefined}
+              alt={article.heroImageAlt}
+              width={heroWidth}
+              height={heroHeight}
+              fetchpriority="high"
+              loading="eager"
+              decoding="async"
+            />
+          </figure>
         </div>
       </header>
 
-      <div class="article-breadcrumb-bar" data-header-theme="light">
-        <nav class="breadcrumb" aria-label="Breadcrumb">
-          <a href="/">Startseite</a><span aria-hidden="true">›</span><a href="/blog.html">Journal</a><span aria-hidden="true">›</span><a href={topicHref}>{topicLabel}</a><span aria-hidden="true">›</span><span class="breadcrumb__current" aria-current="page">{plainTitle}</span>
-        </nav>
-      </div>
-
       <div class="article-body" data-header-theme="light">
         <div class="article-grid">
-          <aside aria-label="Artikelübersicht">
-            {tocBlocks.length > 0 && (
-              <>
+          <aside class="article-toc" aria-label="Artikelübersicht">
+            {tocEntries.length > 0 && (
+              <div class="article-toc__group">
                 <strong>Im Beitrag</strong>
-                {tocBlocks.map((block, index) => (
-                  <a href={`#${blockId(block.headline || '', index)}`}>{block.headline}</a>
-                ))}
-              </>
+                <nav class="article-toc__links" aria-label="Inhaltsverzeichnis">
+                  {tocEntries.map((entry) => (
+                    <a href={`#${entry.id}`}>{entry.label}</a>
+                  ))}
+                </nav>
+              </div>
             )}
-            <strong class="article-aside__label">Passende Leistung</strong>
-            {article.links.slice(0, 3).map((link) => <a href={articleHref(link.href)}>{link.label}</a>)}
+            {sidebarLinks.length > 0 && (
+              <div class="article-toc__group">
+                <strong class="article-aside__label">Passende Leistung</strong>
+                <nav class="article-toc__links" aria-label="Passende Leistungen">
+                  {sidebarLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+                </nav>
+              </div>
+            )}
           </aside>
 
           <div class="journal-prose">
@@ -261,7 +361,7 @@ Astro.response.headers.set('x-cms-page-kind', 'journal-tina-source')
                   )
                 }
                 return (
-                  <section id={blockId(block.headline, index)} class={`journal-section journal-section--${index % 3}`}>
+                  <section id={sectionIdByBlockIndex.get(index) || slugifyBlockHeading(block.headline, index)} class="journal-section">
                     {block.eyebrow && <p class="kicker">{block.eyebrow}</p>}
                     <h2>{block.headline}</h2>
                     <Fragment set:html={renderMarkdownBody(block.body)} />
@@ -270,7 +370,8 @@ Astro.response.headers.set('x-cms-page-kind', 'journal-tina-source')
               }
 
               if (block._template === 'imageSequence') {
-                const images = block.items || []
+                const images = (block.items || []).filter((item) => Boolean(item.image))
+                if (images.length === 0) return null
                 return (
                   <figure class={`journal-image-sequence journal-image-sequence--${block.layout || 'editorial'}`} data-site-lightbox-gallery>
                     <div class="journal-image-sequence__grid">
@@ -298,10 +399,12 @@ Astro.response.headers.set('x-cms-page-kind', 'journal-tina-source')
               }
 
               if (block._template === 'linkList') {
+                const dedupedLinks = dedupeBlockLinks(block.links)
+                if (dedupedLinks.length === 0) return null
                 return (
                   <nav class="journal-link-list" aria-label={block.headline || 'Weiterlesen'}>
                     {block.headline && <strong>{block.headline}</strong>}
-                    {(block.links || []).map((link) => link.href && <a href={articleHref(link.href)}>{link.label}</a>)}
+                    {dedupedLinks.map((link) => <a href={link.href}>{link.label}</a>)}
                   </nav>
                 )
               }
@@ -329,7 +432,6 @@ Astro.response.headers.set('x-cms-page-kind', 'journal-tina-source')
             {faqItems.map((item, index) => (
               <details class="faq-item" open={index === 0}>
                 <summary>
-                  <span class="faq-item__number">{String(index + 1).padStart(2, '0')}</span>
                   <span class="faq-item__question">{item.question}</span>
                   <span class="faq-item__icon" aria-hidden="true"></span>
                 </summary>
@@ -347,25 +449,31 @@ Astro.response.headers.set('x-cms-page-kind', 'journal-tina-source')
         <div>
           <p class="journal-author__name">Matthias Ramahi</p>
           <p class="journal-author__text">Fotograf aus Erkrath bei Düsseldorf für Automobil, Sportwagen, Oldtimer, Motorrad, Portrait und Landschaft. Die Beiträge im Journal entstehen aus eigenen Produktionen.</p>
-          <p class="journal-author__links"><a href="/ueber-mich.html">Über mich</a><a href={topicHref}>Mehr zu {topicLabel}</a></p>
+          <p class="journal-author__links">
+            <a href="/ueber-mich.html">Über mich</a>
+            <a href={topicHref}>Mehr zu {topicLabel}</a>
+            {sidebarLinks[0] && <a href={sidebarLinks[0].href}>{sidebarLinks[0].label}</a>}
+          </p>
         </div>
       </aside>
 
-      <section class="related journal-related" aria-label="Verwandte Beiträge" data-header-theme="light">
-        <h2>Passend zum <em>Thema.</em></h2>
-        <div class="journal-related__grid">
-          {relatedArticles.map((related) => {
-            const preview = imagePreview(related.heroImage)
-            return (
-              <a href={articleHref(related.legacyFile)}>
-                <img src={preview.mobile} srcset={preview.srcset || undefined} sizes={preview.srcset ? '(max-width: 900px) 94vw, 32vw' : undefined} alt={related.heroImageAlt} width={preview.width} height={preview.height} loading="lazy" decoding="async" />
-                <span>{related.category} · {related.minutes}</span>
-                <strong>{related.title}</strong>
-              </a>
-            )
-          })}
-        </div>
-      </section>
+      {relatedArticles.length > 0 && (
+        <section class="related journal-related" aria-label="Verwandte Beiträge" data-header-theme="light">
+          <h2>Passend zum{' '}<em>Thema.</em></h2>
+          <div class="journal-related__grid">
+            {relatedArticles.map((related) => {
+              const preview = imagePreview(related.heroImage)
+              return (
+                <a href={articleHref(related.legacyFile)}>
+                  <img src={preview.mobile} srcset={preview.srcset || undefined} sizes={preview.srcset ? '(max-width: 900px) 94vw, 32vw' : undefined} alt={related.heroImageAlt} width={preview.width} height={preview.height} loading="lazy" decoding="async" />
+                  <span>{related.category} · {related.minutes}</span>
+                  <strong>{related.title.replace(/<[^>]+>/g, '')}</strong>
+                </a>
+              )
+            })}
+          </div>
+        </section>
+      )}
     </article>
 
     <ContactSlot
@@ -378,3 +486,273 @@ Astro.response.headers.set('x-cms-page-kind', 'journal-tina-source')
     />
   </main>
 </AdoptedPageLayout>
+
+<style is:global>
+  /* Artikel-Kopf: gleiche Sprache wie der Journal-Index (.jhero).
+     Querformat: Titel oben, Bild in voller Breite darunter (16:9).
+     Hochformat: Bild rechts neben dem Titel (4:5), mobil darunter. */
+  /* Kein Browser-Standardrand: Kopf und Header sitzen bündig am Rand. */
+  body.journal-article-page {
+    margin: 0;
+  }
+  body .journal-editorial .ahero {
+    background: #020306;
+    color: #f3f5ef;
+    padding: clamp(112px, 10vw, 156px) clamp(16px, 5vw, 84px) clamp(48px, 5vw, 80px);
+  }
+  body .journal-editorial .ahero__inner {
+    width: min(1180px, 100%);
+    margin: 0 auto;
+    display: grid;
+    gap: clamp(28px, 3.4vw, 48px);
+  }
+  body .journal-editorial .ahero__copy {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 0;
+  }
+  body .journal-editorial .ahero__crumbs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 10px;
+    margin: 0;
+    font: 500 12px/1.3 var(--mono) !important;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: rgba(243, 245, 239, .62);
+  }
+  body .journal-editorial .ahero__crumbs::before {
+    content: "";
+    flex: 0 0 auto;
+    width: 22px;
+    height: 1px;
+    background: var(--red, #cf392e);
+  }
+  body .journal-editorial .ahero__crumbs a {
+    transition: color .25s ease;
+  }
+  body .journal-editorial .ahero__crumbs a:hover,
+  body .journal-editorial .ahero__crumbs a:focus-visible {
+    color: #f3f5ef;
+  }
+  body .journal-editorial .ahero__crumbs a:last-of-type {
+    color: #f3f5ef;
+  }
+  body .journal-editorial .ahero__title {
+    margin: 0;
+    max-width: 22ch;
+    font-size: clamp(36px, 4.6vw, 72px);
+    line-height: .96;
+    color: #f3f5ef;
+  }
+  body .journal-editorial .ahero__lead {
+    margin: 0;
+    max-width: 62ch;
+    color: rgba(243, 245, 239, .72);
+    font-size: clamp(1.03125rem, .96rem + .24vw, 1.25rem) !important;
+    line-height: 1.55;
+  }
+  body .journal-editorial .ahero__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 24px;
+    margin-top: 4px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(243, 245, 239, .14);
+  }
+  body .journal-editorial .ahero__author {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: #f3f5ef;
+    font-weight: 600;
+    font-size: 15px;
+  }
+  body .journal-editorial .ahero__author img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex: 0 0 auto;
+  }
+  body .journal-editorial .ahero__author:hover span {
+    text-decoration: underline;
+    text-underline-offset: .2em;
+  }
+  body .journal-editorial .ahero__facts {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    font: 500 11px/1.4 var(--mono) !important;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: rgba(243, 245, 239, .62);
+  }
+  body .journal-editorial .ahero__frame {
+    margin: 0;
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    overflow: hidden;
+    background: #0d0f13;
+  }
+  body .journal-editorial .ahero__frame img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  body .journal-editorial .ahero a:focus-visible {
+    outline: 2px solid var(--red, #cf392e);
+    outline-offset: 4px;
+  }
+  @media (min-width: 960px) {
+    body .journal-editorial .ahero--portrait .ahero__inner {
+      grid-template-columns: minmax(0, 1fr) minmax(300px, 40%);
+      align-items: end;
+      gap: clamp(40px, 5vw, 88px);
+    }
+    body .journal-editorial .ahero--portrait .ahero__frame {
+      aspect-ratio: 4 / 5;
+      max-height: calc(100svh - 160px);
+    }
+    body .journal-editorial .ahero--portrait .ahero__title {
+      font-size: clamp(36px, 4.2vw, 64px);
+    }
+  }
+  @media (max-width: 959px) {
+    body .journal-editorial .ahero--portrait .ahero__frame {
+      aspect-ratio: 4 / 5;
+      max-height: 72svh;
+    }
+  }
+  @media (max-width: 720px) {
+    body .journal-editorial .ahero {
+      padding: 104px 16px 40px;
+    }
+    body .journal-editorial .ahero__frame {
+      aspect-ratio: 3 / 2;
+    }
+    body .journal-editorial .ahero__meta {
+      justify-content: flex-start;
+    }
+  }
+  /* Fixes for site-readability.css overrides, button contrast, TOC scrolling, and markdown tables */
+  body .journal-editorial .journal-section[id] {
+    scroll-margin-top: 112px;
+  }
+  body .journal-editorial .journal-section--1,
+  body .journal-editorial .journal-section--4 {
+    margin-left: 0;
+  }
+  body .journal-editorial .journal-prose__opening p:first-child {
+    font-size: clamp(1.375rem, 1.15rem + 1.1vw, 2rem) !important;
+    line-height: 1.35;
+    color: var(--ink);
+  }
+  body .journal-editorial .journal-quote p {
+    font-size: clamp(1.625rem, 1.2rem + 2vw, 3.25rem) !important;
+    line-height: 1.08;
+    letter-spacing: -.03em;
+    color: var(--ink);
+  }
+  body .journal-editorial .journal-inline-cta {
+    border-left: 3px solid var(--red);
+  }
+  body .journal-editorial .journal-inline-cta p {
+    color: rgba(248, 250, 244, .82);
+  }
+  body .journal-editorial .journal-inline-cta a {
+    color: #fff !important;
+    text-decoration: none !important;
+    background: var(--red);
+    border-color: var(--red);
+    font: 600 12px/1 var(--mono);
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    padding: 12px 22px;
+    transition: background-color .2s ease, border-color .2s ease, color .2s ease;
+  }
+  body .journal-editorial .journal-inline-cta a:hover,
+  body .journal-editorial .journal-inline-cta a:focus-visible {
+    background: #fff;
+    border-color: #fff;
+    color: var(--ink) !important;
+  }
+  body .journal-editorial .journal-link-list a {
+    color: var(--ink);
+    text-decoration: none;
+    font: 600 13px/1.3 var(--font);
+    transition: border-color .2s ease, background-color .2s ease, color .2s ease;
+  }
+  body .journal-editorial .journal-link-list a:hover,
+  body .journal-editorial .journal-link-list a:focus-visible {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--paper);
+  }
+  body .journal-editorial .article-toc__links {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  body .journal-editorial .article-toc a {
+    min-height: 36px;
+    margin-top: 2px;
+    padding: 6px 0;
+    font-size: 14px;
+    line-height: 1.38;
+    color: rgba(16, 18, 23, .76);
+    transition: color .2s ease;
+  }
+  body .journal-editorial .article-toc a:hover,
+  body .journal-editorial .article-toc a:focus-visible {
+    color: var(--red);
+  }
+  body .journal-editorial .journal-table-wrap {
+    margin: 26px 0 30px;
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    background: var(--white);
+  }
+  body .journal-editorial .journal-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+    line-height: 1.5;
+    text-align: left;
+  }
+  body .journal-editorial .journal-table th,
+  body .journal-editorial .journal-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  body .journal-editorial .journal-table thead th {
+    background: rgba(16, 18, 23, .04);
+    color: var(--ink);
+    font: 700 11px/1.4 var(--mono);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+  body .journal-editorial .journal-table tbody tr:last-child td {
+    border-bottom: 0;
+  }
+  @media (max-width: 820px) {
+    body .journal-editorial .article-toc {
+      border-left: 0;
+      border: 1px solid var(--line);
+      background: rgba(248, 250, 244, .75);
+      padding: 18px 20px;
+      margin-bottom: 12px;
+    }
+    body .journal-editorial .article-grid > aside .article-aside__label {
+      margin-top: 18px;
+    }
+  }
+</style>

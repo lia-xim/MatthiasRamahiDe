@@ -2259,6 +2259,414 @@ export const localResponsiveThumbs: Record<string, LocalThumbEntry> = {
     "width": 1920,
     "height": 1280
   },
+  "/assets/portfolio/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0427.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0427-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0427-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0427-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0427-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0427-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0427-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0427-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0427-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/thumbs/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0427.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0427-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0427-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0430.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0430-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0430-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0430-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0430-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0430-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0430-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0430-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0430-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/thumbs/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0430.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0430-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0430-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0457.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0457-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0457-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0457-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0457-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0457-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0457-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0457-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0457-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/thumbs/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0457.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0457-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0457-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0492-hdr.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0492-hdr-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0492-hdr-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0492-hdr-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0492-hdr-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0492-hdr-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0492-hdr-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0492-hdr-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0492-hdr-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/thumbs/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0492-hdr.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0492-hdr-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0492-hdr-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0509.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0509-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0509-760.webp",
+    "width": 1920,
+    "height": 1080
+  },
+  "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0509-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0509-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0509-760.webp",
+    "width": 1920,
+    "height": 1080
+  },
+  "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0509-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0509-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0509-760.webp",
+    "width": 1920,
+    "height": 1080
+  },
+  "/assets/portfolio/thumbs/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0509.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0509-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0509-760.webp",
+    "width": 1920,
+    "height": 1080
+  },
+  "/assets/portfolio/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0584.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0584-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0584-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0584-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0584-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0584-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0584-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0584-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0584-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/thumbs/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0584.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0584-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0584-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0610-hdr.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0610-hdr-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0610-hdr-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0610-hdr-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0610-hdr-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0610-hdr-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0610-hdr-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0610-hdr-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0610-hdr-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/thumbs/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0610-hdr.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0610-hdr-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0610-hdr-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0669.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0669-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0669-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0669-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0669-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0669-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0669-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0669-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0669-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/thumbs/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0669.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0669-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0669-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0728.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0728-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0728-760.webp",
+    "width": 1920,
+    "height": 1080
+  },
+  "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0728-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0728-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0728-760.webp",
+    "width": 1920,
+    "height": 1080
+  },
+  "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0728-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0728-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0728-760.webp",
+    "width": 1920,
+    "height": 1080
+  },
+  "/assets/portfolio/thumbs/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0728.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0728-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0728-760.webp",
+    "width": 1920,
+    "height": 1080
+  },
+  "/assets/portfolio/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0743.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0743-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0743-760.webp",
+    "width": 1920,
+    "height": 1200
+  },
+  "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0743-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0743-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0743-760.webp",
+    "width": 1920,
+    "height": 1200
+  },
+  "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0743-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0743-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0743-760.webp",
+    "width": 1920,
+    "height": 1200
+  },
+  "/assets/portfolio/thumbs/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0743.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0743-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0743-760.webp",
+    "width": 1920,
+    "height": 1200
+  },
+  "/assets/portfolio/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0756.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0756-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0756-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0756-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0756-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0756-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0756-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0756-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0756-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/thumbs/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0756.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0756-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0756-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0811.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0811-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0811-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0811-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0811-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0811-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0811-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0811-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0811-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/thumbs/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0811.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0811-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0811-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0850.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0850-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0850-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0850-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0850-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0850-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0850-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0850-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0850-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/thumbs/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0850.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0850-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0850-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0882.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0882-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0882-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0882-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0882-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0882-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0882-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0882-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0882-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/thumbs/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0882.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0882-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0882-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0911.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0911-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0911-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0911-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0911-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0911-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0911-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0911-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0911-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/thumbs/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0911.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0911-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0911-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0935.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0935-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0935-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0935-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0935-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0935-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0935-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0935-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0935-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/thumbs/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0935.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0935-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0935-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0961.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0961-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0961-760.webp",
+    "width": 1536,
+    "height": 1920
+  },
+  "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0961-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0961-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0961-760.webp",
+    "width": 1536,
+    "height": 1920
+  },
+  "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0961-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0961-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0961-760.webp",
+    "width": 1536,
+    "height": 1920
+  },
+  "/assets/portfolio/thumbs/automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0961.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0961-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-bmw-alpina-b8-medienhafen-duesseldorf-dsc0961-760.webp",
+    "width": 1536,
+    "height": 1920
+  },
   "/assets/portfolio/automobil-bmw-klassiker.webp": {
     "w480": "/assets/optimized/grid/portfolio-automobil-bmw-klassiker-480.webp",
     "w760": "/assets/optimized/grid/portfolio-automobil-bmw-klassiker-760.webp",
@@ -2378,6 +2786,750 @@ export const localResponsiveThumbs: Record<string, LocalThumbEntry> = {
     "w760": "/assets/optimized/grid/portfolio-automobil-mercedes-interieur-tilt-760.webp",
     "width": 1707,
     "height": 2560
+  },
+  "/assets/portfolio/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3804.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3804-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3804-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3804-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3804-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3804-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3804-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3804-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3804-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/thumbs/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3804.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3804-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3804-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3813.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3813-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3813-760.webp",
+    "width": 1280,
+    "height": 1920
+  },
+  "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3813-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3813-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3813-760.webp",
+    "width": 1280,
+    "height": 1920
+  },
+  "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3813-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3813-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3813-760.webp",
+    "width": 1280,
+    "height": 1920
+  },
+  "/assets/portfolio/thumbs/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3813.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3813-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3813-760.webp",
+    "width": 1280,
+    "height": 1920
+  },
+  "/assets/portfolio/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3822.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3822-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3822-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3822-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3822-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3822-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3822-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3822-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3822-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/thumbs/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3822.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3822-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3822-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3844.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3844-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3844-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3844-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3844-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3844-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3844-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3844-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3844-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/thumbs/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3844.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3844-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3844-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3850.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3850-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3850-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3850-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3850-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3850-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3850-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3850-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3850-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/thumbs/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3850.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3850-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3850-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3879.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3879-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3879-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3879-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3879-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3879-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3879-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3879-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3879-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/thumbs/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3879.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3879-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3879-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3882.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3882-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3882-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3882-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3882-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3882-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3882-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3882-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3882-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/thumbs/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3882.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3882-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3882-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3884.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3884-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3884-760.webp",
+    "width": 1280,
+    "height": 1920
+  },
+  "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3884-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3884-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3884-760.webp",
+    "width": 1280,
+    "height": 1920
+  },
+  "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3884-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3884-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3884-760.webp",
+    "width": 1280,
+    "height": 1920
+  },
+  "/assets/portfolio/thumbs/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3884.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3884-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3884-760.webp",
+    "width": 1280,
+    "height": 1920
+  },
+  "/assets/portfolio/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3892.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3892-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3892-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3892-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3892-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3892-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3892-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3892-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3892-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/thumbs/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3892.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3892-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3892-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3897.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3897-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3897-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3897-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3897-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3897-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3897-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3897-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3897-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/thumbs/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3897.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3897-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3897-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3914.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3914-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3914-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3914-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3914-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3914-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3914-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3914-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3914-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/thumbs/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3914.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3914-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3914-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3928.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3928-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3928-760.webp",
+    "width": 1920,
+    "height": 1200
+  },
+  "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3928-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3928-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3928-760.webp",
+    "width": 1920,
+    "height": 1200
+  },
+  "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3928-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3928-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3928-760.webp",
+    "width": 1920,
+    "height": 1200
+  },
+  "/assets/portfolio/thumbs/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3928.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3928-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3928-760.webp",
+    "width": 1920,
+    "height": 1200
+  },
+  "/assets/portfolio/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3948.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3948-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3948-760.webp",
+    "width": 1920,
+    "height": 1200
+  },
+  "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3948-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3948-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3948-760.webp",
+    "width": 1920,
+    "height": 1200
+  },
+  "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3948-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3948-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3948-760.webp",
+    "width": 1920,
+    "height": 1200
+  },
+  "/assets/portfolio/thumbs/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3948.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3948-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3948-760.webp",
+    "width": 1920,
+    "height": 1200
+  },
+  "/assets/portfolio/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3963.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3963-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3963-760.webp",
+    "width": 1920,
+    "height": 1248
+  },
+  "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3963-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3963-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3963-760.webp",
+    "width": 1920,
+    "height": 1248
+  },
+  "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3963-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3963-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3963-760.webp",
+    "width": 1920,
+    "height": 1248
+  },
+  "/assets/portfolio/thumbs/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3963.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3963-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3963-760.webp",
+    "width": 1920,
+    "height": 1248
+  },
+  "/assets/portfolio/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3974.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3974-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3974-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3974-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3974-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3974-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3974-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3974-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3974-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/thumbs/automobil-oldtimer-supersportwagen-messe-bruessel-dsc3974.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3974-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-oldtimer-supersportwagen-messe-bruessel-dsc3974-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/automobil-porsche-911-schloss-bensberg-dsc5746.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5746-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5746-760.webp",
+    "width": 1920,
+    "height": 1277
+  },
+  "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5746-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5746-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5746-760.webp",
+    "width": 1920,
+    "height": 1277
+  },
+  "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5746-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5746-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5746-760.webp",
+    "width": 1920,
+    "height": 1277
+  },
+  "/assets/portfolio/thumbs/automobil-porsche-911-schloss-bensberg-dsc5746.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5746-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5746-760.webp",
+    "width": 1920,
+    "height": 1277
+  },
+  "/assets/portfolio/automobil-porsche-911-schloss-bensberg-dsc5756.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5756-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5756-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5756-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5756-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5756-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5756-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5756-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5756-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/thumbs/automobil-porsche-911-schloss-bensberg-dsc5756.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5756-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5756-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/automobil-porsche-911-schloss-bensberg-dsc5761.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5761-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5761-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5761-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5761-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5761-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5761-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5761-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5761-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/thumbs/automobil-porsche-911-schloss-bensberg-dsc5761.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5761-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5761-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/automobil-porsche-911-schloss-bensberg-dsc5818.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5818-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5818-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5818-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5818-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5818-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5818-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5818-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5818-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/thumbs/automobil-porsche-911-schloss-bensberg-dsc5818.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5818-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5818-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/automobil-porsche-911-schloss-bensberg-dsc5834.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5834-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5834-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5834-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5834-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5834-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5834-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5834-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5834-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/thumbs/automobil-porsche-911-schloss-bensberg-dsc5834.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5834-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5834-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/automobil-porsche-911-schloss-bensberg-dsc5836.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5836-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5836-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5836-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5836-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5836-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5836-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5836-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5836-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/thumbs/automobil-porsche-911-schloss-bensberg-dsc5836.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5836-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5836-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/automobil-porsche-911-schloss-bensberg-dsc5852.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5852-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5852-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5852-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5852-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5852-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5852-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5852-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5852-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/thumbs/automobil-porsche-911-schloss-bensberg-dsc5852.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5852-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5852-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/automobil-porsche-911-schloss-bensberg-dsc5873.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5873-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5873-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5873-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5873-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5873-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5873-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5873-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5873-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/thumbs/automobil-porsche-911-schloss-bensberg-dsc5873.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5873-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5873-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/automobil-porsche-911-schloss-bensberg-dsc5899.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5899-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5899-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5899-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5899-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5899-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5899-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5899-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5899-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/thumbs/automobil-porsche-911-schloss-bensberg-dsc5899.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5899-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5899-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/automobil-porsche-911-schloss-bensberg-dsc5928.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5928-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5928-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5928-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5928-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5928-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5928-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5928-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5928-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/thumbs/automobil-porsche-911-schloss-bensberg-dsc5928.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5928-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc5928-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/automobil-porsche-911-schloss-bensberg-dsc6027.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6027-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6027-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6027-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6027-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6027-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6027-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6027-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6027-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/thumbs/automobil-porsche-911-schloss-bensberg-dsc6027.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6027-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6027-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/automobil-porsche-911-schloss-bensberg-dsc6090.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6090-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6090-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6090-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6090-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6090-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6090-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6090-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6090-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/thumbs/automobil-porsche-911-schloss-bensberg-dsc6090.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6090-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6090-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/automobil-porsche-911-schloss-bensberg-dsc6128.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6128-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6128-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6128-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6128-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6128-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6128-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6128-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6128-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/thumbs/automobil-porsche-911-schloss-bensberg-dsc6128.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6128-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6128-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/automobil-porsche-911-schloss-bensberg-dsc6153.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6153-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6153-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6153-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6153-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6153-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6153-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6153-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6153-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/thumbs/automobil-porsche-911-schloss-bensberg-dsc6153.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6153-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6153-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/automobil-porsche-911-schloss-bensberg-dsc6202.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6202-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6202-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6202-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6202-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6202-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6202-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6202-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6202-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/thumbs/automobil-porsche-911-schloss-bensberg-dsc6202.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6202-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6202-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/automobil-porsche-911-schloss-bensberg-dsc6223.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6223-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6223-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6223-480.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6223-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6223-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6223-760.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6223-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6223-760.webp",
+    "width": 1920,
+    "height": 1280
+  },
+  "/assets/portfolio/thumbs/automobil-porsche-911-schloss-bensberg-dsc6223.webp": {
+    "w480": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6223-480.webp",
+    "w760": "/assets/optimized/grid/portfolio-automobil-porsche-911-schloss-bensberg-dsc6223-760.webp",
+    "width": 1920,
+    "height": 1280
   },
   "/assets/portfolio/serie-automobil-porsche-993-cockpit.webp": {
     "w480": "/assets/optimized/grid/portfolio-serie-automobil-porsche-993-cockpit-480.webp",

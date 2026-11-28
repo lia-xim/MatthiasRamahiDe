@@ -1,14 +1,18 @@
 ---
 import ContactSlot from '../ContactSlot.astro'
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
-import NativeFamilyClusterLinks from './NativeFamilyClusterLinks.astro'
+import NativeLinkIndex from './NativeLinkIndex.astro'
 import NativeFamilyJournalLinks from './NativeFamilyJournalLinks.astro'
 import NativeGuideSection from './NativeGuideSection.astro'
 import NativeHubSeries from './NativeHubSeries.astro'
 import NativeFamilyFaq from './NativeFamilyFaq.astro'
 import NativePracticalGuide from './NativePracticalGuide.astro'
 import NativeReviews from './NativeReviews.astro'
+import NativeShootLogSection from './NativeShootLogSection.astro'
+import NativeVehiclePillarBlueprint from './NativeVehiclePillarBlueprint.astro'
 import PreviewToolbar from '../PreviewToolbar.astro'
+import { getRegionalHubKeyForSlug } from '../../data/shootLogs'
+import { automobilGalleryTiles, automobilHeroSlidesFor } from '../../data/automobilRegionalVisuals'
 import {
   cityScopePhrase,
   keywordFocusCopyForSlug,
@@ -157,7 +161,7 @@ const contactLead = keywordFocusCopy?.contactLead || defaultContactLead
 const cityHeading = isParentPage || isKeywordPage ? 'Automobil Fotografie <em>vor Ort.</em>' : `Automobilfotografie <em>vor Ort in ${scope.label}.</em>`
 const clusterHeading = isKeywordPage ? 'Weitere Fotografie-Bereiche.' : `Weitere Fotografie-Bereiche <em>${scope.label}.</em>`
 const clusterLinks = siblingFamilyLinks(scope, 'automobil')
-const overviewHref = 'fotografie-duesseldorf.html'
+const overviewHref = '/'
 const publishedHref = preview?.publishedHref || (doc ? routeForDoc('local-seo-pages', doc) : `/${legacyFile}`)
 const isPracticalGuide = legacyFile === 'auto-fotografieren-tipps.html'
 const guideJsonLd = isPracticalGuide && doc ? articleJsonLd(doc, `/${legacyFile}`) : undefined
@@ -351,7 +355,7 @@ const visualSlots = familyVisualSlots(
 // Keine Überschneidung mit der Startseite (die nutzt alpina-b8-front).
 // Upload-Bilder laufen über toDisplayAssetUrl: in Produktion liegen sie auf
 // cms.matthiasramahi.de, nicht unter /uploads der Website.
-const automobilHeroSlides = [
+const defaultAutomobilHeroSlides = [
   { src: '/assets/optimized/automobil-alpina-b8-medienhafen-1920.webp', mobile: '/assets/optimized/automobil-alpina-b8-medienhafen-960.webp' },
   { src: '/assets/portfolio/automobil-brabus-sunset.webp' },
   { src: '/assets/optimized/assets-portfolio-dsc3879-1920.webp' },
@@ -361,6 +365,8 @@ const automobilHeroSlides = [
   { src: '/assets/portfolio/automobil-bmw-m3-showcar.webp' },
   { src: '/assets/optimized/assets-photos-automobil-sunset-1920.webp', mobile: '/assets/optimized/assets-photos-automobil-sunset-960.webp' },
 ]
+const pageHubKey = getRegionalHubKeyForSlug(legacyFile)
+const automobilHeroSlides = automobilHeroSlidesFor(pageHubKey) ?? defaultAutomobilHeroSlides
 const inheritedHeroDevelopInitial = visualSlots[0].cssFull
 const inheritedHeroDevelopInitialMobile = visualSlots[0].cssMobile
 const inheritedSwitchFrames = switchFrames.map((frame, index) => {
@@ -375,10 +381,12 @@ const inheritedSwitchFrames = switchFrames.map((frame, index) => {
     width: visual.width,
   }
 })
-const inheritedGalleryTiles = galleryTiles.map((tile, index) => {
+const cmsGalleryTiles = galleryTiles.map((tile, index) => {
   const visual = visualSlots[index + 1 + switchFrames.length]
   return { ...tile, alt: visual.alt, avifSrcset: visual.avifSrcset, full: visual.full, height: visual.height, mobile: visual.mobile, src: visual.src, srcset: visual.srcset, width: visual.width }
 })
+const hasCmsGalleryTiles = !pageHubKey && Boolean(doc?.portfolioTiles?.length)
+const inheritedGalleryTiles = hasCmsGalleryTiles ? cmsGalleryTiles : automobilGalleryTiles(pageHubKey)
 const automotiveArchiveImages = [
   {
     className: 'auto-archive-card--wide',
@@ -567,31 +575,13 @@ const focusRelatedLead =
       'Je nach Fahrzeug, Anlass und Einsatzgebiet passen Sportwagen, Oldtimer, Motorrad oder ein Auto-Shooting besser.'
 
 const allCityLinks = [
-  ['automobil-fotografie-duesseldorf.html', 'Düsseldorf'],
+  ['autofotografie.html', 'Autofotografie Übersicht'],
+  ['autofotografie-duesseldorf.html', 'Düsseldorf'],
   ['automobil-fotografie-koeln.html', 'Köln'],
-  ['automobil-fotografie-essen.html', 'Essen'],
-  ['automobil-fotografie-dortmund.html', 'Dortmund'],
-  ['automobil-fotografie-duisburg.html', 'Duisburg'],
-  ['automobil-fotografie-bochum.html', 'Bochum'],
-  ['automobil-fotografie-wuppertal.html', 'Wuppertal'],
-  ['automobil-fotografie-krefeld.html', 'Krefeld'],
-  ['automobil-fotografie-moenchengladbach.html', 'Mönchengladbach'],
   ['automobil-fotografie-nrw.html', 'NRW'],
 ] as const
 
 const intentLinks = [
-  {
-    key: 'fotoshooting-mit-auto',
-    label: 'Fotoshooting mit Auto',
-    genericHref: 'fotoshooting-mit-auto.html',
-    duesseldorfHref: 'autofotografie-duesseldorf.html',
-  },
-  {
-    key: 'bilder-mit-auto',
-    label: 'Bilder mit Auto',
-    genericHref: 'bilder-mit-auto.html',
-    duesseldorfHref: 'bilder-mit-auto.html',
-  },
   {
     key: 'autofotografie',
     label: 'Autofotografie',
@@ -599,10 +589,10 @@ const intentLinks = [
     duesseldorfHref: 'autofotografie-duesseldorf.html',
   },
   {
-    key: 'fahrzeugfotografie',
-    label: 'Fahrzeugfotografie',
-    genericHref: 'fahrzeugfotografie.html',
-    duesseldorfHref: 'autofotografie-duesseldorf.html',
+    key: 'bilder-mit-auto',
+    label: 'Bilder mit Auto',
+    genericHref: 'bilder-mit-auto.html',
+    duesseldorfHref: 'bilder-mit-auto.html',
   },
   {
     key: 'auto-fotografieren-tipps',
@@ -631,19 +621,15 @@ const clusterCuration = curateFamilyClusterLinks({
   familyLabel: 'Automobilfotografie',
   intentLinks,
   intentNeighbors: {
-    'fotoshooting-mit-auto': ['bilder-mit-auto', 'autofotografie', 'auto-fotografieren-tipps'],
-    'bilder-mit-auto': ['fotoshooting-mit-auto', 'autofotografie', 'auto-fotografieren-tipps'],
-    autofotografie: ['fahrzeugfotografie', 'fotoshooting-mit-auto', 'autohaus-fotografie'],
-    fahrzeugfotografie: ['autofotografie', 'autohaus-fotografie', 'autoverkauf-fotos'],
-    'auto-fotografieren-tipps': ['fotoshooting-mit-auto', 'autofotografie', 'bilder-mit-auto'],
-    'autohaus-fotografie': ['autoverkauf-fotos', 'fahrzeugfotografie', 'autofotografie'],
-    'autoverkauf-fotos': ['autohaus-fotografie', 'fahrzeugfotografie', 'fotoshooting-mit-auto'],
+    'bilder-mit-auto': ['autofotografie', 'auto-fotografieren-tipps', 'autoverkauf-fotos'],
+    autofotografie: ['bilder-mit-auto', 'autohaus-fotografie', 'autoverkauf-fotos'],
+    'auto-fotografieren-tipps': ['autofotografie', 'bilder-mit-auto', 'autoverkauf-fotos'],
+    'autohaus-fotografie': ['autoverkauf-fotos', 'autofotografie', 'bilder-mit-auto'],
+    'autoverkauf-fotos': ['autohaus-fotografie', 'autofotografie', 'bilder-mit-auto'],
   },
   isParentPage,
   primaryIntentKeys: [
-    'fotoshooting-mit-auto',
     'autofotografie',
-    'fahrzeugfotografie',
     'autohaus-fotografie',
     'autoverkauf-fotos',
     'bilder-mit-auto',
@@ -652,12 +638,28 @@ const clusterCuration = curateFamilyClusterLinks({
   scopeSlug: scope.slug,
 })
 const {
-  cityLinks,
+  cityLinks: curatedCityLinks,
   intentHeading: curatedIntentHeading,
   isNrwFamilyPage,
   searchLinks,
-  showCrossFamilyCluster,
+  showCrossFamilyCluster: curatedShowCrossFamilyCluster,
 } = clusterCuration
+const isCanonicalDuesseldorfHub = legacyFile === 'autofotografie-duesseldorf.html'
+const showCrossFamilyCluster = curatedShowCrossFamilyCluster || isCanonicalDuesseldorfHub
+const regionalHubKey = getRegionalHubKeyForSlug(legacyFile)
+const cityLinksMap = new Map<string, string>(curatedCityLinks.map(([href, label]) => [href, label]))
+if (isCanonicalDuesseldorfHub) {
+  cityLinksMap.set('autofotografie.html', 'Autofotografie Übersicht')
+  cityLinksMap.set('automobil-fotografie-koeln.html', 'Köln')
+  cityLinksMap.set('automobil-fotografie-nrw.html', 'NRW')
+} else if (legacyFile !== 'autofotografie-duesseldorf.html') {
+  cityLinksMap.set('autofotografie-duesseldorf.html', 'Düsseldorf')
+  if (legacyFile !== 'autofotografie.html') {
+    cityLinksMap.set('autofotografie.html', 'Autofotografie Übersicht')
+  }
+}
+cityLinksMap.delete(legacyFile)
+const cityLinks = [...cityLinksMap.entries()]
 const curatedCityHeading =
   isParentPage || isNrwFamilyPage ? cityHeading : 'Automobilfotografie <em>in der Region.</em>'
 ---
@@ -795,52 +797,6 @@ const curatedCityHeading =
       </>
     )}
 
-    <section class="sw" id="sichten" data-header-theme="dark">
-      <header class="sw-head">
-        <div class="ttl">
-          <h2>{focusSectionHeadline} <em>{focusSectionEmphasis}</em></h2>
-        </div>
-      </header>
-
-      <div class="sw-body">
-        <nav class="sw-tabs" role="tablist" aria-label="Bildkategorien">
-          {focusSwitchFrames.map((frame, index) => (
-            <button class="sw-tab" role="tab" aria-selected={index === 0 ? 'true' : 'false'} data-cat={index} data-title={frame.title} data-body={frame.body}>
-              <span class="lbl">{frame.label}</span>
-            </button>
-          ))}
-        </nav>
-
-        <div class="sw-stage" id="swStage" role="region" aria-live="polite">
-          {focusSwitchFrames.map((frame, index) => (
-            <div
-              class={`frame${index === 0 ? ' is-active' : ''}`}
-              data-frame={index}
-              {...tinaAttrs(switchImageSource(index), 'image')}
-            >
-              {frame.avifSrcset ? (
-                <picture>
-                  <source type="image/avif" srcset={frame.avifSrcset} sizes="(max-width: 900px) 100vw, 60vw" />
-                  <img class="sw-stage__img" src={frame.image} srcset={frame.srcset || undefined} sizes={frame.srcset ? '(max-width: 900px) 100vw, 60vw' : undefined} alt="" aria-hidden="true" loading={index === 0 ? 'eager' : 'lazy'} decoding="async" width={frame.width} height={frame.height} />
-                </picture>
-              ) : (
-                <img class="sw-stage__img" src={frame.image} srcset={frame.srcset || undefined} sizes={frame.srcset ? '(max-width: 900px) 100vw, 60vw' : undefined} alt="" aria-hidden="true" loading={index === 0 ? 'eager' : 'lazy'} decoding="async" width={frame.width} height={frame.height} />
-              )}
-            </div>
-          ))}
-          <div class="vignette"></div>
-          <div class="grain"></div>
-        </div>
-
-        <aside class="sw-desc" id="swDesc">
-          <div class="group g2 is-in"><h3 class="d-title" id="swTitle" {...tinaAttrs(doc?.shootingStyles?.[0] || doc?.audienceCards?.[0], 'title')}>{focusFeatureTitle}</h3></div>
-          <div class="group g3 is-in"><p class="d-body" id="swBody" {...tinaAttrs(doc?.shootingStyles?.[0] || doc?.audienceCards?.[0], 'text')}>{focusFeatureBody}</p></div>
-          <div class="group g4 is-in"><a class="d-cta" href="#anfrage">Bildsatz anfragen</a></div>
-        </aside>
-      </div>
-
-      <div class="sw-progress" id="swProgress"><div class="rail"><div class="fill" id="swFill"></div></div></div>
-    </section>
 
     <section class="ki" data-header-theme="light" aria-label="Für wen ich arbeite">
       <div class="section-inner">
@@ -859,6 +815,67 @@ const curatedCityHeading =
         </div>
       </div>
     </section>
+
+
+    {regionalHubKey && <NativeShootLogSection hub={regionalHubKey} />}
+
+    <NativeVehiclePillarBlueprint discipline="automobil" scopeLabel={!isParentPage && !isKeywordPage ? scope.label : 'NRW'} />
+
+    <ContactSlot
+      id="anfrage"
+      data-contact-section
+      data-header-theme="light"
+      data-contact-subject={contactSubject}
+      data-contact-headline={contactHeadline}
+      data-contact-lead={contactLead}
+    />
+
+    <NativeFamilyJournalLinks clusters={['automotive']} familyHref="autofotografie.html" scopeLabel={scope.label} />
+
+    {isPracticalGuide && !hasCmsGuide && (
+      <NativePracticalGuide
+        title="Auto fotografieren: die Reihenfolge vor Ort."
+        intro=""
+        items={practicalGuideItems}
+        links={[
+          { href: '/autofotografie-duesseldorf.html', label: 'Autofotografie Düsseldorf' },
+          { href: '/portfolio/portfolio-auswahl-automobil', label: 'Automobil-Projektbeleg' },
+        ]}
+      />
+    )}
+
+    <NativeGuideSection doc={doc} />
+
+    <NativeHubSeries doc={doc} />
+
+    <NativeFamilyFaq faq={faqItems} pageUrl={`https://matthiasramahi.de/${legacyFile}`} theme="dark" />
+
+    <section class="st-pull" data-header-theme="light">
+      <div class="st-pull-inner">
+        <blockquote class="st-pull-quote" {...tinaAttrs(doc?.statement, 'headline')}>
+          <strong>
+            {focusPullTitle.headline}
+            {focusPullTitle.headline && focusPullTitle.emphasis ? ' ' : ''}
+            {focusPullTitle.emphasis && <span class="accent" {...tinaAttrs(doc?.statement, 'emphasis')}>{focusPullTitle.emphasis}</span>}
+          </strong>
+        </blockquote>
+        <div class="st-pull-copy">
+          <p class="st-pull-lead" {...tinaAttrs(doc?.statement?.body?.[0], 'text')}>{focusPullLead}</p>
+          {focusPullRest.map((paragraph, index) => <p class="st-pull-lead" {...tinaAttrs(doc?.statement?.body?.[index + 1], 'text')}>{paragraph}</p>)}
+        </div>
+      </div>
+    </section>
+
+    <NativeLinkIndex
+      label={`Weitere Seiten ${scope.label}`}
+      groups={[
+        { title: 'In der Region', links: cityLinks },
+        { title: 'Nach Anliegen', links: searchLinks },
+        ...(showCrossFamilyCluster ? [{ title: 'Andere Bereiche', links: [{ href: overviewHref, label: 'Alle Fotografie-Bereiche' }, ...clusterLinks] }] : []),
+      ]}
+    />
+
+    <NativeReviews theme="light" />
 
     <section class="rl" data-header-theme="dark">
       <div class="section-inner">
@@ -884,81 +901,5 @@ const curatedCityHeading =
       </div>
     </section>
 
-    <ContactSlot
-      id="anfrage"
-      data-contact-section
-      data-header-theme="light"
-      data-contact-subject={contactSubject}
-      data-contact-headline={contactHeadline}
-      data-contact-lead={contactLead}
-    />
-
-    <section class="st-pull" data-header-theme="light">
-      <div class="st-pull-inner">
-        <blockquote class="st-pull-quote" {...tinaAttrs(doc?.statement, 'headline')}>
-          <strong>
-            {focusPullTitle.headline}
-            {focusPullTitle.headline && focusPullTitle.emphasis ? ' ' : ''}
-            {focusPullTitle.emphasis && <span class="accent" {...tinaAttrs(doc?.statement, 'emphasis')}>{focusPullTitle.emphasis}</span>}
-          </strong>
-        </blockquote>
-        <div class="st-pull-copy">
-          <p class="st-pull-lead" {...tinaAttrs(doc?.statement?.body?.[0], 'text')}>{focusPullLead}</p>
-          {focusPullRest.map((paragraph, index) => <p class="st-pull-lead" {...tinaAttrs(doc?.statement?.body?.[index + 1], 'text')}>{paragraph}</p>)}
-        </div>
-      </div>
-    </section>
-
-    {isPracticalGuide && !hasCmsGuide && (
-      <NativePracticalGuide
-        title="Auto fotografieren: die Reihenfolge vor Ort."
-        intro=""
-        items={practicalGuideItems}
-        links={[
-          { href: '/automobil-fotografie-duesseldorf.html', label: 'Automobilfotografie Düsseldorf' },
-          { href: '/portfolio/portfolio-auswahl-automobil', label: 'Automobil-Projektbeleg' },
-        ]}
-      />
-    )}
-
-    <NativeGuideSection doc={doc} />
-    <NativeHubSeries doc={doc} />
-
-    {showCrossFamilyCluster && (
-      <NativeFamilyClusterLinks
-        clusterHeading={clusterHeading}
-        clusterLinks={clusterLinks}
-        overviewHref={overviewHref}
-        scopeLabel={scope.label}
-      />
-    )}
-
-    <NativeFamilyJournalLinks clusters={['automotive']} familyHref={defaultLegacyFile} scopeLabel={scope.label} />
-
-    <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Automobil Fotografie in NRW">
-      <div class="mr-cities__inner">
-        <div class="mr-cities__head">
-          <h2 set:html={curatedCityHeading}></h2>
-        </div>
-        <nav class="mr-cities__grid" aria-label="Städte">
-          {cityLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
-        </nav>
-      </div>
-    </section>
-
-    <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Automobil Fotografie nach Anliegen">
-      <div class="mr-cities__inner">
-        <div class="mr-cities__head">
-          <h2 set:html={curatedIntentHeading}></h2>
-        </div>
-        <nav class="mr-cities__grid" aria-label="Regionale Bereiche">
-          {searchLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
-        </nav>
-      </div>
-    </section>
-
-    <NativeFamilyFaq faq={faqItems} pageUrl={`https://matthiasramahi.de/${legacyFile}`} theme="dark" />
-
-    <NativeReviews theme="light" />
   </main>
 </AdoptedPageLayout>

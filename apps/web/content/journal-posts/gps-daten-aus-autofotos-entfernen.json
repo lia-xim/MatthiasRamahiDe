@@ -11,8 +11,8 @@
   ],
   "publishedAt": "2027-09-24T07:00:00.000Z",
   "excerpt": "Smartphone und Kamera können den Aufnahmeort in einer Bilddatei speichern. So prüfst du GPS-Metadaten von Autofotos, exportierst eine separate Version ohne Standort und kontrollierst die Datei vor dem Teilen.",
-  "coverImage": "/uploads/payload/20250418-DSC00660.webp",
-  "coverAlt": "Dunkler SUV in einer abendlichen Umgebung; Portfolioaufnahme zur Fahrzeugfotografie",
+  "coverImage": "/assets/portfolio/automobil-porsche-911-schloss-bensberg-dsc6027.webp",
+  "coverAlt": "Cockpit eines Porsche 911 mit Blick durch die Frontscheibe auf Schloss Bensberg",
   "readingTime": 8,
   "blocks": [
     {
@@ -141,7 +141,7 @@
         },
         {
           "label": "Automobilfotografie in Düsseldorf & NRW",
-          "href": "/automobil-fotografie.html",
+          "href": "/autofotografie.html",
           "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]
@@ -160,7 +160,7 @@
     "searchIntent": "Praktische Suche: Vor dem Teilen von Autofotos Standortmetadaten prüfen und entfernen, ohne sichtbare Ortsmerkmale damit zu verwechseln.",
     "canonicalUrl": "https://matthiasramahi.de/blog-gps-daten-aus-autofotos-entfernen.html",
     "legacyUrl": "blog-gps-daten-aus-autofotos-entfernen.html",
-    "ogImage": "/uploads/payload/20250418-DSC00660.webp",
+    "ogImage": "/assets/portfolio/automobil-porsche-911-schloss-bensberg-dsc6027.webp",
     "noIndex": false
   },
   "status": "scheduled",
@@ -169,7 +169,7 @@
   "relatedPages": [
     {
       "label": "Automobilfotografie",
-      "href": "/automobil-fotografie.html",
+      "href": "/autofotografie.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

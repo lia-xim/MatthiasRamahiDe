@@ -11,8 +11,8 @@
   ],
   "publishedAt": "2027-08-06T07:00:00.000Z",
   "excerpt": "Feine Raster am Auto können auf Fotos Wellen und Farbmuster erzeugen. So reduzierst du Moiré an Kühlergrill, Sitzstoff und anderen Details schon bei der Aufnahme.",
-  "coverImage": "/assets/optimized/assets-portfolio-dsc2345-1920.webp",
-  "coverAlt": "Karosserie · Linie",
+  "coverImage": "/uploads/payload/_DSC2464.webp",
+  "coverAlt": "Wabengitter im Kühlergrill eines grauen Audi in Nahaufnahme",
   "readingTime": 7,
   "blocks": [
     {
@@ -130,7 +130,7 @@
         },
         {
           "label": "Automobilfotografie in Düsseldorf & NRW",
-          "href": "/automobil-fotografie.html",
+          "href": "/autofotografie.html",
           "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         },
         {
@@ -142,7 +142,7 @@
     }
   ],
   "seo": {
-    "title": "Moiré bei Autofotos vermeiden: Grill und Stoff",
+    "title": "Moiré bei Autofotos vermeiden: Grill, Stoff & Tipps",
     "description": "Moiré stört feine Muster auf Autofotos. Erfahre, wie du es an Kühlergrill, Stoff und Details mit Abstand, Winkel und Brennweite reduzierst.",
     "focusKeyword": "Moiré bei Autofotos vermeiden",
     "secondaryKeywords": [
@@ -154,7 +154,7 @@
     "searchIntent": "Praktische Informationssuche: Fotografierende möchten störende Wellen- oder Farbmuster an regelmäßigen Fahrzeugdetails erkennen und durch Aufnahmeabstand, Brennweite, Kamerawinkel, Fokus und Ausgabegröße reduzieren.",
     "canonicalUrl": "https://matthiasramahi.de/blog-moire-autofotos-vermeiden.html",
     "legacyUrl": "blog-moire-autofotos-vermeiden.html",
-    "ogImage": "/assets/optimized/assets-portfolio-dsc2345-1920.webp",
+    "ogImage": "/uploads/payload/_DSC2464.webp",
     "noIndex": false
   },
   "status": "scheduled",
@@ -163,7 +163,7 @@
   "relatedPages": [
     {
       "label": "Automobilfotografie",
-      "href": "/automobil-fotografie.html",
+      "href": "/autofotografie.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

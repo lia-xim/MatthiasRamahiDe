@@ -11,7 +11,7 @@
   ],
   "publishedAt": "2027-05-25T07:00:00.000Z",
   "excerpt": "Wie lässt sich ein SUV fotografieren, ohne Höhe und Größe künstlich zu übertreiben? Perspektive, Abstand, Umgebung und eine passende Bildfolge im Überblick.",
-  "coverImage": "/assets/optimized/assets-portfolio-dsc3878-1920.webp",
+  "coverImage": "/uploads/payload/_DSC2900.webp",
   "readingTime": 8,
   "blocks": [
     {
@@ -95,7 +95,7 @@
       "links": [
         {
           "label": "Automobilfotografie in Düsseldorf & NRW",
-          "href": "/automobil-fotografie.html",
+          "href": "/autofotografie.html",
           "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         },
         {
@@ -140,14 +140,14 @@
     }
   ],
   "seo": {
-    "title": "SUV fotografieren: Proportionen und Aufbau zeigen",
-    "description": "SUV fotografieren: Kamerahöhe, Abstand, Perspektive und Umgebung so wählen, dass Aufbau und Ausstattung verständlich bleiben.",
+    "title": "SUV fotografieren: Proportionen, Höhe & Perspektive",
+    "description": "SUV fotografieren ohne plumpe Wirkung: Kamerahöhe, Abstand, Brennweite und Umgebung so wählen, dass Aufbau und Proportionen stimmig bleiben.",
     "focusKeyword": "SUV fotografieren",
     "searchIntent": "Informationssuche: Fahrzeugbesitzer und Händler suchen Bildaufbau, Kamerahöhe und Abstand, um Proportionen und Ausstattung eines SUV plausibel zu zeigen.",
     "canonicalUrl": "https://matthiasramahi.de/blog-suv-fotografieren-proportionen.html",
     "legacyUrl": "blog-suv-fotografieren-proportionen.html",
     "noIndex": false,
-    "ogImage": "/assets/optimized/assets-portfolio-dsc3878-1920.webp"
+    "ogImage": "/uploads/payload/_DSC2900.webp"
   },
   "legacy": {
     "sourceFile": "blog-suv-fotografieren-proportionen.html",
@@ -161,7 +161,7 @@
   "relatedPages": [
     {
       "label": "Automobilfotografie",
-      "href": "/automobil-fotografie.html",
+      "href": "/autofotografie.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
@@ -181,5 +181,5 @@
       "openInNewTab": false
     }
   ],
-  "coverAlt": "Hypercar · Front"
+  "coverAlt": "Schwarzes Brabus GLE Coupé in der Frontansicht am Hafen"
 }

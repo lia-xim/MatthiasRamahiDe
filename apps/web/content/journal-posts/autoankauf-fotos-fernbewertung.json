@@ -9,8 +9,8 @@
     "Fahrzeugfotos"
   ],
   "excerpt": "Für eine erste Online-Einordnung helfen klare Außen-, Innen- und Detailbilder. Diese Bildfolge bereitet den Autoankauf vor und zeigt, wo Fotos keine Besichtigung ersetzen.",
-  "coverImage": "/assets/optimized/assets-portfolio-dsc2986-1920.webp",
-  "coverAlt": "Übersichtlicher Fahrzeuginnenraum mit Cockpit, Lenkrad und sauberem Materialdetail",
+  "coverImage": "/uploads/payload/_DSC3612-2.webp",
+  "coverAlt": "Schwarzer VW Golf von schräg oben auf einem gepflasterten Platz",
   "status": "scheduled",
   "publishedAt": "2027-11-02T08:00:00.000Z",
   "createdAt": "2026-11-04T14:32:13Z",
@@ -19,7 +19,7 @@
   "relatedPages": [
     {
       "label": "Automobilfotografie",
-      "href": "/automobil-fotografie.html",
+      "href": "/autofotografie.html",
       "seoPurpose": "topic-parent",
       "rel": "follow",
       "openInNewTab": false
@@ -57,7 +57,7 @@
     "searchIntent": "Kommerzielle Informationssuche mit Vorbereitungsschritt: Fahrzeughalter möchten einem Händler aussagekräftige Fotos für eine erste, unverbindliche Online-Einordnung übermitteln. Sie suchen eine passende Bildfolge, Hinweise zu sichtbaren Mängeln und eine klare Abgrenzung dazu, was Fotos nicht über den technischen Zustand beweisen. Aktuelle Ankauf-Formulare fragen Fahrzeugbilder ab; Suchvolumen wurde in dieser Recherche nicht gemessen.",
     "canonicalUrl": "https://matthiasramahi.de/blog-autoankauf-fotos-fernbewertung.html",
     "legacyUrl": "blog-autoankauf-fotos-fernbewertung.html",
-    "ogImage": "/assets/optimized/assets-portfolio-dsc2986-1920.webp",
+    "ogImage": "/uploads/payload/_DSC3612-2.webp",
     "noIndex": false
   },
   "blocks": [
@@ -168,7 +168,7 @@
         },
         {
           "label": "Automobilfotografie",
-          "href": "/automobil-fotografie.html",
+          "href": "/autofotografie.html",
           "description": "Leistungsseite für geplante Fahrzeugserien und Automobilaufnahmen."
         }
       ]

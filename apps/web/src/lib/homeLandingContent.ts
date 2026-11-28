@@ -14,44 +14,44 @@ export type HomeIntent = { title: string; text: string; href: string; topic: str
 
 export const homeIntents: HomeIntent[] = [
   {
-    title: 'Fahrzeug verkaufen',
-    text: 'Verkaufsbilder, die Zustand, Ausstattung und Details ehrlich zeigen.',
-    href: '/autoverkauf-fotos-duesseldorf.html',
+    title: 'Auto-Shooting & Verkauf',
+    text: 'Einzelshootings, Verkaufsbilder und Händlerbestände in Düsseldorf & NRW. Sauber im Licht, ehrlich im Detail.',
+    href: '/autofotografie-duesseldorf.html',
     topic: 'automobil',
   },
   {
-    title: 'Autohaus & Bestand',
-    text: 'Einheitliche Serien für Showroom, Bestand und Inserat.',
-    href: '/autohaus-fotografie.html',
-    topic: 'sportwagen',
-  },
-  {
-    title: 'Du & dein Auto',
-    text: 'Ein privates Shooting mit dem eigenen Fahrzeug, an einer Location, die passt.',
-    href: '/fotoshooting-mit-auto.html',
-    topic: 'automobil',
-  },
-  {
-    title: 'Oldtimer & Sammlung',
-    text: 'Provenienz, Patina und Zustand für Sammlung, Versicherung oder Auktion.',
-    href: '/sammlerfahrzeug-fotografie-duesseldorf.html',
+    title: 'Sportwagen & Oldtimer',
+    text: 'Wertige Bildserien für Sportwagen, Classic Cars, Youngtimer und Sammlerfahrzeuge, für Archiv, Versicherung oder Auktion.',
+    href: '/oldtimer-fotografie.html',
     topic: 'oldtimer',
   },
   {
-    title: 'Custom Bike & Werkstatt',
-    text: 'Umbau, Handwerk und Fahrer als zusammenhängende Serie.',
-    href: '/custom-bike-fotografie.html',
+    title: 'Motorrad & Custom Bike',
+    text: 'Static, Detailserien, Rolling Shots und Werkstatt-Dokumentation in NRW für Fahrer, Umbauten und Händler.',
+    href: '/motorrad-fotografie.html',
     topic: 'motorrad',
   },
   {
-    title: 'Business & Personal Brand',
-    text: 'Headshots, Founder- und Teamportraits für Website, Presse und LinkedIn.',
-    href: '/business-portrait-duesseldorf.html',
+    title: 'Personal Branding & Business',
+    text: 'Authentische Business-Portraits, Founder- und Teamfotos on-location in Düsseldorf für Website, Presse und LinkedIn.',
+    href: '/personal-branding-fotografie-duesseldorf.html',
+    topic: 'portrait',
+  },
+  {
+    title: 'Dating-Fotoshooting',
+    text: 'Natürliche Profilbilder on-location in Düsseldorf, mit entspannter Anleitung statt steifer Posen.',
+    href: '/dating-fotoshooting-duesseldorf.html',
+    topic: 'portrait',
+  },
+  {
+    title: 'Charakter- & Outdoor-Portraits',
+    text: 'Ehrliche Einzel-, Männer-, Paar- und Schwarz-Weiß-Portraits im natürlichen Licht rund um Düsseldorf und Erkrath.',
+    href: '/portraitfotografie-duesseldorf.html',
     topic: 'portrait',
   },
   {
     title: 'Fine-Art-Print & Wandbild',
-    text: 'Landschaftsmotive als Edition, Wandbild oder Raumkonzept.',
+    text: 'Landschaftsmotive als limitierte Edition, Wandbild oder kalibrierter Fine-Art-Druck für Zuhause, Praxis oder Büro.',
     href: '/landschaftsbilder-kaufen.html',
     topic: 'landschaft',
   },
@@ -61,23 +61,23 @@ export const homeIntents: HomeIntent[] = [
 export const homeProcess = [
   {
     title: 'Briefing',
-    text: 'Motiv, Ort, Zeitrahmen, Nutzung: Wir klären, wofür die Bilder gebraucht werden. Du bekommst vorab ein klares Angebot statt eines Pauschalpreises.',
+    text: 'Motiv, Ort, Zeitrahmen, Nutzung: Wir klären direkt, wofür die Bilder gebraucht werden. Du bekommst vorab ein klares Angebot (Shootings ab 250 € inkl. MwSt.).',
   },
   {
     title: 'Location & Licht',
-    text: 'Ort und Lichtfenster werden auf Motiv und Wirkung abgestimmt, in Düsseldorf, im Umland oder an einer passenden Location in NRW.',
+    text: 'Ort und Lichtfenster werden auf Motiv und Wirkung abgestimmt: in Düsseldorf, Erkrath, im Rheinland oder an einer passenden Location in NRW.',
   },
   {
     title: 'Shooting',
-    text: 'Ruhig, präzise und im engen Dialog. Fahrzeuge fotografiere ich auch vor Ort: im Autohaus, in der Werkstatt oder am privaten Stellplatz.',
+    text: 'Ruhig, präzise und direkt mit Matthias vor Ort: an der Location, im Autohaus, in der Werkstatt oder am privaten Stellplatz.',
   },
   {
     title: 'Auswahl',
-    text: 'Du bekommst eine kuratierte Vorauswahl als Galerie und entscheidest, welche Motive final und zurückhaltend retuschiert werden.',
+    text: 'Du bekommst eine kuratierte Vorauswahl als Online-Galerie und entscheidest, welche Motive final und zurückhaltend retuschiert werden.',
   },
   {
     title: 'Ausgabe',
-    text: 'Web-, Social- und Print-Auflösungen getrennt geliefert. Auf Wunsch als Fine-Art-Print oder im Großformat aus einer Hand.',
+    text: 'Web-, Social- und Print-Auflösungen getrennt geliefert. Auf Wunsch als Fine-Art-Print oder im Großformat direkt aus einer Hand.',
   },
 ]
 
@@ -88,13 +88,13 @@ export const homeFaq: HomeFaq[] = [
   {
     question: 'Was kostet ein Fotoshooting?',
     answer:
-      'Der Preis richtet sich nach Umfang: Motiv, Anzahl der Bilder, Location und Nutzung. Du bekommst vorab ein klares Angebot statt eines Pauschalpreises.',
-    link: { href: '/fotoshooting-preise-duesseldorf.html', label: 'Mehr zu Preisen' },
+      'Shootings beginnen bei 250 € inkl. MwSt. Der genaue Preis richtet sich nach Motiv, Bildanzahl, Locationaufwand und gewünschten Nutzungsrechten. Du bekommst vorab ein klares, transparentes Angebot.',
+    link: { href: '/fotoshooting-preise-duesseldorf.html', label: 'Mehr zu Preisen & Umfang' },
   },
   {
     question: 'Wo findet das Shooting statt?',
     answer:
-      'In Düsseldorf, im Umland oder an einer passenden Location in NRW. Fahrzeuge fotografiere ich auch direkt vor Ort, im Autohaus, in der Werkstatt oder am privaten Stellplatz.',
+      'Meine Basis liegt in Erkrath direkt neben Düsseldorf (Kempener Straße 44). Shootings finden on-location in Düsseldorf, im Rheinland, im Ruhrgebiet und in ganz NRW statt, bei Fahrzeugen auch direkt im Autohaus, in der Werkstatt oder am Stellplatz.',
   },
   {
     question: 'Wofür darf ich die Bilder nutzen?',

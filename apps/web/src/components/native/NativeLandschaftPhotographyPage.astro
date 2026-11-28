@@ -2,7 +2,7 @@
 import HeroMotion from './HeroMotion.astro'
 import ContactSlot from '../ContactSlot.astro'
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
-import NativeFamilyClusterLinks from './NativeFamilyClusterLinks.astro'
+import NativeLinkIndex from './NativeLinkIndex.astro'
 import NativeFamilyJournalLinks from './NativeFamilyJournalLinks.astro'
 import NativeGuideSection from './NativeGuideSection.astro'
 import NativeHubSeries from './NativeHubSeries.astro'
@@ -275,9 +275,9 @@ const focusRelatedLead = isParentPage || isKeywordPage
   : cmsText(doc?.relatedSection?.lead) || 'Neben Landschaftsmotiven gibt es auch Portraits, Fahrzeuge und Sonderdrucke. Jedes Bild aus dem Portfolio ist als Druck erhältlich.'
 const relatedTitle = splitTrailingEmphasis(cmsText(doc?.relatedSection?.headline) || 'Verwandte', cmsText(doc?.relatedSection?.emphasis) || 'Bereiche.')
 const defaultRelatedCards = [
-  { href: 'portraitfotografie.html', title: 'Portrait', visualIndex: 22 },
-  { href: 'oldtimer-fotografie.html', title: 'Oldtimer', visualIndex: 23 },
-  { href: 'drucke-sonderanfertigungen-duesseldorf.html', title: 'Drucke', visualIndex: 24 },
+  { href: '/portraitfotografie.html', title: 'Portrait', visualIndex: 22 },
+  { href: '/oldtimer-fotografie.html', title: 'Oldtimer', visualIndex: 23 },
+  { href: '/fotolabor-druck-duesseldorf.html', title: 'Fotolabor & Druck', visualIndex: 24 },
   { href: '/portfolio/portfolio-auswahl-landschaft', title: 'Landschaft-Auswahl', visualIndex: 25 },
 ]
 const relatedCards = defaultRelatedCards.map((card, index) => {
@@ -498,7 +498,6 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
           {processSteps.map((step, index) => (
             <article class="fw-ls__step">
               <div class="fw-ls__step-img" style={`background-image:url('${visualSlots[step.visualIndex].cssMobile}')`} role="img" aria-label={step.imageLabel}></div>
-              <span class="fw-ls__step-num">{String(index + 1).padStart(2, '0')}</span>
               <h3>{step.title}</h3>
               <p>{step.text}</p>
             </article>
@@ -547,44 +546,24 @@ const heroLeadField = heroTextSource === doc?.heroSlides?.[0] ? 'lead' : 'intro'
       </div>
     </section>
 
-    <NativeGuideSection doc={doc} />
-    <NativeHubSeries doc={doc} />
-
-    {showCrossFamilyCluster && (
-      <NativeFamilyClusterLinks
-        clusterHeading={clusterHeading}
-        clusterLinks={clusterLinks}
-        overviewHref={overviewHref}
-        scopeLabel={scope.label}
-      />
-    )}
-
     <NativeFamilyJournalLinks clusters={['landscape-print', 'process']} familyHref={defaultLegacyFile} scopeLabel={scope.label} />
 
-    <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Landschaftsfotografie in NRW">
-      <div class="mr-cities__inner">
-        <div class="mr-cities__head">
-          <h2 class="mr-cities__title" set:html={cityHeading}></h2>
-        </div>
-        <nav class="mr-cities__grid" aria-label="Städte">
-          {cityLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
-        </nav>
-      </div>
-    </section>
+    <NativeGuideSection doc={doc} />
 
-    <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label="Landschaftsfotografie nach Anliegen">
-      <div class="mr-cities__inner">
-        <div class="mr-cities__head">
-          <h2 set:html={intentHeading}></h2>
-        </div>
-        <nav class="mr-cities__grid" aria-label="Regionale Bereiche">
-          {searchLinks.map(([href, label]) => <a class="mr-cities__cell" href={href}>{label}</a>)}
-        </nav>
-      </div>
-    </section>
+    <NativeHubSeries doc={doc} />
 
     <NativeFamilyFaq faq={faqItems} pageUrl={`https://matthiasramahi.de/${legacyFile}`} theme="dark" />
 
+    <NativeLinkIndex
+      label={`Weitere Seiten ${scope.label}`}
+      groups={[
+        { title: 'In der Region', links: cityLinks },
+        { title: 'Nach Anliegen', links: searchLinks },
+        ...(showCrossFamilyCluster ? [{ title: 'Andere Bereiche', links: [{ href: overviewHref, label: 'Alle Fotografie-Bereiche' }, ...clusterLinks] }] : []),
+      ]}
+    />
+
     <NativeReviews theme="light" />
+
   </main>
 </AdoptedPageLayout>

@@ -14,8 +14,8 @@
   "coverAlt": "Orangefarbener Sportwagen in einem Parkdeck mit Lichtreihen an der Decke",
   "readingTime": 8,
   "seo": {
-    "title": "Rolling Shots Auto: Kamera, Ablauf & Sicherheit",
-    "description": "Rolling Shots mit dem Auto sicher umsetzen: Verschlusszeit, Begleitfahrzeug, Strecke, Kommunikation, Perspektiven und sichere Alternativen.",
+    "title": "Rolling Shots Auto: Verschlusszeit, Ablauf & Tipps",
+    "description": "Rolling Shots mit dem Auto sicher planen: Verschlusszeit-Tabelle (1/30–1/125 s), Begleitfahrzeug, Rollen, ND-Filter und sichere Mitzieher.",
     "focusKeyword": "Rolling Shots Auto",
     "searchIntent": "Informationssuche: Autofahrer und Fotografen wollen wissen, wie Rolling Shots mit dem Auto technisch und sicher entstehen.",
     "canonicalUrl": "https://matthiasramahi.de/blog-rolling-shots-auto.html",
@@ -31,11 +31,11 @@
   },
   "status": "published",
   "createdAt": "2026-09-25T14:00:00.000Z",
-  "updatedAt": "2026-11-23T18:30:00.000Z",
+  "updatedAt": "2026-11-27T22:15:00.000Z",
   "relatedPages": [
     {
       "label": "Auto-Fotoshooting NRW",
-      "href": "/fotoshooting-mit-auto.html",
+      "href": "/autofotografie.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
@@ -43,13 +43,6 @@
     {
       "label": "Sportwagen-Fotografie NRW",
       "href": "/sportwagen-fotografie.html",
-      "seoPurpose": "commercial-support",
-      "rel": "follow",
-      "openInNewTab": false
-    },
-    {
-      "label": "Automobilfotografie NRW",
-      "href": "/automobil-fotografie.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
@@ -102,6 +95,11 @@
     },
     {
       "_template": "textBlock",
+      "headline": "Richtwerte-Tabelle: Verschlusszeit, Tempo und Filter im Vergleich",
+      "body": "Die folgende Übersicht fasst bewährte Startwerte für verschiedene Fahrgeschwindigkeiten und Lichtbedingungen zusammen:\n\n| Tempo Zielauto | Start-Verschlusszeit | Effekt auf Räder & Straße | Schärfequote | Filter-Tipp bei Tageslicht |\n| --- | --- | --- | --- | --- |\n| 30–40 km/h | 1/30 – 1/50 s | Deutlicher Wischeffekt trotz niedrigem Tempo | Mittel (Serienbild nutzen) | ND8 bis ND64 + Polfilter |\n| 50–60 km/h | 1/60 – 1/100 s | Ausgewogene Dynamik, klare Fahrzeugkanten | Hoch (ideal als Basis-Serie) | ND4 bis ND16 bei Sonne |\n| 70–80 km/h | 1/100 – 1/125 s | Sichere Schärfe bei sichtbarer Raddrehung | Sehr hoch | Häufig ohne ND bei Wolken |\n| Mitzieher (Stand) | 1/30 – 1/60 s | Dynamische Vorbeifahrt ohne zweites Fahrzeug | Mittel bis Hoch | ND8 bei direkter Sonne |\n\n**Kurz-Checkliste vor dem ersten Durchlauf:**\n- Strecke vorab auf Schlaglöcher, Ausfahrten und Gegenverkehr prüfen\n- Funkverbindung oder eindeutige Handzeichen inklusive Abbruchsignal testen\n- Beide Fahrer fahren die erste Runde ohne Auslösedruck zum Einpendeln des Abstands\n- Kamera auf AF-C (kontinuierlicher Autofokus), Serienbild und deaktivierten Sucher-Blackout prüfen"
+    },
+    {
+      "_template": "textBlock",
       "headline": "Perspektiven im Rolling Shot",
       "body": "Die klassische Ansicht ist die Dreiviertelansicht von vorn aus der Nachbarspur. Das Seitenprofil zeigt Proportionen und drehende Räder am deutlichsten, eine Ansicht schräg von hinten betont Heck und Auspuff. Eine niedrige Kameraposition wirkt dynamischer, darf aber nie eine ungesicherte Körperhaltung erzwingen."
     },
@@ -121,7 +119,7 @@
       "links": [
         {
           "label": "Auto-Fotoshooting NRW (Ablauf & Kosten ab 250 €)",
-          "href": "/fotoshooting-mit-auto.html"
+          "href": "/autofotografie.html"
         },
         {
           "label": "Sportwagen-Fotografie NRW",
@@ -134,11 +132,6 @@
         {
           "label": "Fotospots für Autos in NRW",
           "href": "/blog-fotospots-autos-nrw.html"
-        },
-        {
-          "label": "Automobilfotografie in Düsseldorf & NRW",
-          "href": "/automobil-fotografie.html",
-          "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]
     },

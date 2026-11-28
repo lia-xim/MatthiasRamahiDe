@@ -12,7 +12,7 @@
   "publishedAt": "2027-02-23T08:00:00.000Z",
   "status": "scheduled",
   "excerpt": "Für Carsharing braucht es mehr als ein Fahrzeugmotiv: Gute Bildserien helfen, Fahrzeugkategorien zu unterscheiden und den reservierten Stellplatz wiederzufinden.",
-  "coverImage": "/assets/optimized/assets-portfolio-dsc2329-1920.webp",
+  "coverImage": "/uploads/payload/_DSC3558.webp",
   "readingTime": 8,
   "blocks": [
     {
@@ -82,7 +82,7 @@
       "links": [
         {
           "label": "Automobilfotografie",
-          "href": "/automobil-fotografie.html"
+          "href": "/autofotografie.html"
         },
         {
           "label": "Auto-Shooting-Briefing mit Shotlist",
@@ -144,7 +144,7 @@
         },
         {
           "label": "Automobilfotografie in Düsseldorf & NRW",
-          "href": "/automobil-fotografie.html",
+          "href": "/autofotografie.html",
           "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ],
@@ -157,13 +157,13 @@
     }
   ],
   "seo": {
-    "title": "Carsharing-Fahrzeugfotos für App und Stationen",
+    "title": "Carsharing-Fahrzeugfotos für App, Flotte & Station",
     "description": "Wie Carsharing-Anbieter Fahrzeugkategorien, Flotte und Stellplätze verständlich fotografieren: Bildfolge, App-Zuschnitt, Standortfotos und Aktualisierung.",
     "focusKeyword": "Carsharing Fahrzeugfotos",
     "searchIntent": "Informationssuche von Carsharing-Anbietern und Mobilitätsdiensten: Sie möchten Bildmaterial für Fahrzeugübersichten, Buchungs-Apps und Stationsinformationen planen. Relevanzsignal sind konkrete Anbieterbeispiele; Suchvolumen wurde nicht erhoben.",
     "canonicalUrl": "https://matthiasramahi.de/blog-carsharing-fahrzeugfotos-stationen-fleet.html",
     "legacyUrl": "blog-carsharing-fahrzeugfotos-stationen-fleet.html",
-    "ogImage": "/assets/optimized/assets-portfolio-dsc2329-1920.webp",
+    "ogImage": "/uploads/payload/_DSC3558.webp",
     "noIndex": false
   },
   "createdAt": "2026-11-03T16:00:00Z",
@@ -171,7 +171,7 @@
   "relatedPages": [
     {
       "label": "Automobilfotografie",
-      "href": "/automobil-fotografie.html",
+      "href": "/autofotografie.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
@@ -191,5 +191,5 @@
       "openInNewTab": false
     }
   ],
-  "coverAlt": "Dunkles Fahrzeug in einer urbanen Umgebung"
+  "coverAlt": "Schwarzer VW Golf in der Heckansicht vor einem Hafengebäude"
 }

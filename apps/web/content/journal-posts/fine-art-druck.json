@@ -91,6 +91,11 @@
     },
     {
       "_template": "textBlock",
+      "headline": "Material- & Auflösungs-Vergleich für Fine-Art-Prints",
+      "body": "Die Wahl des Trägermaterials und der sinnvollen Druckauflösung richtet sich immer nach Motiv, Raumlicht und Betrachtungsabstand:\n\n| Material / Papier | Oberfläche & Reflexe | Schwarz-Tiefe | Ideal für Motive | Empfohlene Ausgabeschärfe |\n| --- | --- | --- | --- | --- |\n| Baumwollpapier matt (z. B. Photo Rag) | Tiefmatt, nahezu reflexfrei | Weich, samtig | Portraits, ruhige Landschaften, helle Räume mit Seitenlicht | Mittel bis höher (saugfähige Faser) |\n| Baryt-Papier (seidenmatt/glänzend) | Feine Struktur, dezenter Glanz | Sehr tief, brillant | Schwarz-Weiß, Chrom, Autolack, kontrastreiche Szenen | Moderat (feine Zeichnung) |\n| Alu-Dibond (matt kaschiert) | Robust, reflexarm ohne Glas | Ausgewogen, klar | Große Wandformate in Büros, Praxen und modernen Räumen | Moderat bis mittel |\n| Acrylglas-Kaschierung | Hochglänzend, starke Tiefenwirkung | Maximaler Kontrast | Kräftige Farb- und Nachtmotive bei kontrolliertem Raumlicht | Moderat |\n\n**Richtwerte für Format und Auflösung:**\n- **20 × 30 cm bis 40 × 60 cm** (Nahbetrachtung 40–80 cm): **250–300 dpi**\n- **60 × 90 cm bis 90 × 120 cm** (Wohnraum 1,2–2 m): **200–240 dpi**\n- **ab 120 × 80 cm** (Wandabstand > 2 m): **180–220 dpi** aus sauberer 16-Bit-TIFF-Vorlage"
+    },
+    {
+      "_template": "textBlock",
       "headline": "Probestreifen, Passepartout und Licht am Hängeort testen",
       "style": "standard",
       "body": "Bevor ein teurer Großdruck in den Versand geht, lohnt sich ein A4-Teststreifen mit Ausschnitten in Originalgröße inklusive Schattenpartie und hellem Himmel. Lege diesen Probestreifen direkt an die geplante Wand, einmal morgens im Tageslicht und einmal abends bei warmem Kunstlicht.\n\nWähle den Rahmen und ein säurefreies Passepartout erst anhand dieses Tests. Bei verglasten Rahmen verhindert entspiegeltes Museumsglas grüne Scheibenreflexe auf dunklen Motiven.\n\nAls praktischer Maßstab für Wandgrößen gilt zudem die Zwei-Drittel-Regel: Über einem zwei Meter breiten Sofa oder Sideboard wirkt ein Druck ab etwa 120 x 80 cm inklusive Rahmen ausgewogen, während kleinere 40 x 60 cm Abzüge dort verloren gehen und besser als gereihtes Paar funktionieren."
@@ -122,10 +127,6 @@
         {
           "label": "Fine-Art-Prints Landschaft",
           "href": "/fine-art-prints-landschaft.html"
-        },
-        {
-          "label": "Großformatdruck Düsseldorf",
-          "href": "/grossformatdruck-duesseldorf.html"
         },
         {
           "label": "Landschaftsfotografie & Fine-Art-Prints",
@@ -161,8 +162,8 @@
   ],
   "readingTime": 6,
   "seo": {
-    "title": "Fine-Art-Druck vorbereiten: Papier, Profil & Format",
-    "description": "Fotos für den Fine-Art-Druck vorbereiten: Papierwahl, ICC-Softproof, Auflösung nach Betrachtungsabstand und Rahmung ohne Farbverlust.",
+    "title": "Fine-Art-Druck vorbereiten: Papier, Softproof & DPI",
+    "description": "Vom Foto zum Fine-Art-Print: Papiervergleich (Photo Rag, Baryt, Alu-Dibond), ICC-Softproof, Auflösung nach Abstand und Druck-Checkliste.",
     "secondaryKeywords": [],
     "internalLinkAnchors": [],
     "canonicalUrl": "https://matthiasramahi.de/blog-fine-art-druck.html",
@@ -195,7 +196,7 @@
     "extractedImagePaths": [],
     "extractedText": "Home / Journal / Druck Druck · 5 Min Vom Bild zum Fine-Art-Druck Warum Material, Papier, Farbmanagement und Format Teil der fotografischen Wirkung sind, wenn Bilder als Fine-Art-Print oder Wandbild funktionieren sollen. Matthias Ramahi Aktualisiert 27.05.2026 Dieser Beitrag stützt die SEO-Cluster der Fotografie-Seiten und führt zu passenden Leistungs- und Standortseiten weiter. Fotolabor und Druck Landschaftsbilder kaufen Wandbilder Landschaftsfotografie 01 Druck ist kein Export-Klick Ein Bild verändert sich, sobald es den Bildschirm verlässt. Papierstruktur, Format, Betrachtungsabstand und Licht im Raum bestimmen, ob ein Motiv ruhig, dicht oder flach wirkt. Deshalb gehört Druckplanung zur fotografischen Entscheidung. 02 Material trägt die Stimmung Matte Papiere nehmen Glanz zurück und betonen Fläche und Tiefe. Glattere Oberflächen können Details und Kontrast präsenter machen. Die Wahl des Materials sollte zur Stimmung des Motivs und zum Raum passen. 03 Farbmanagement schafft Verlässlichkeit Fine-Art-Druck braucht kontrollierte Daten: Profil, Tonwerte, Schärfung und Probedrucke. Ein starker Print entsteht nicht durch maximale Sättigung, sondern durch eine stimmige Übersetzung des Bildes in Material. 04 Format ist Wirkung Ein kleines Format fordert Nähe. Ein grosses Format verändert einen Raum. Vor dem Druck sollte klar sein, ob das Bild Blickfang, Ruhepunkt oder Teil einer Serie sein soll. Kurze Fragen. Welche Größe ist sinnvoll? Das hängt vom Raum und Betrachtungsabstand ab. Ein größeres Bild braucht nicht immer mehr Motiv, sondern mehr Ruhe in der Komposition."
   },
-  "updatedAt": "2026-11-24T09:15:00.000Z",
+  "updatedAt": "2026-11-27T22:15:00.000Z",
   "createdAt": "2026-05-28T19:07:35.484Z",
   "status": "published",
   "payloadId": "2",

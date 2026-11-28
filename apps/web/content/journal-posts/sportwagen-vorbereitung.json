@@ -69,6 +69,11 @@
       "_template": "textBlock"
     },
     {
+      "_template": "textBlock",
+      "headline": "Vorbereitungs-Checkliste nach Bildziel",
+      "body": "Je nachdem, ob dein Sportwagen für eine emotionale Abendserie oder für Verkauf und Dokumentation fotografiert wird, unterscheiden sich die Schwerpunkte deutlich:\n\n| Bereich | Emotionale Abend- / Editorial-Serie | Verkauf, Auktion & Dokumentation | Häufigster Fehler |\n| --- | --- | --- | --- |\n| Lack & Karosserie | Schonende Handwäsche am Vortag, schlierenfrei trocknen | Gleichmäßig sauber, alle Kanten und Spaltmaße lesbar | Hastige Detailer-Sprays kurz vor dem Licht erzeugen Schlieren |\n| Scheiben & Leuchten | Außen & innen streifenfrei gegen tiefes Abendlicht | Komplett klar, inklusive Rückleuchten und Scheinwerferglas | Vergessener Schmierfilm auf der Innenseite der Frontscheibe |\n| Felgen & Reifen | Bremsstaub entfernen, natürliche matte Reifenflanke | Felgenzustand und Profil klar erkennbar, Räder ausgerichtet | Speckiger Reifenglanz wirkt im Licht schnell künstlich |\n| Innenraum | Lose Gegenstände, Kabel und Flaschen entfernen | Vollständig leer, Gurte gerade, Display neutral | Parkzettel, Schlüsselbund oder Ladekabel in der Mittelkonsole |\n| Anreise & Zufahrt | Mikrofasertuch für Insektenreste nach Autobahnfahrt | Bodenfreiheit, Rampen und Wendekreis vorab klären | Zu knappes Zeitfenster kostet das beste Abendlicht |"
+    },
+    {
       "headline": "Ein Fünf-Minuten-Check schützt die gesamte Serie",
       "body": "Gehe unmittelbar vor dem Start fünf Minuten um das Fahrzeug: Scheibenwischer unten, Türgriffe sauber, Kennzeichen gerade, Beifahrersitz eingerastet, Vorderräder sauber gedreht. Danach prüfst du ein Testbild vergrößert am Display auf Spiegelungen.\n\nStarte immer mit den wichtigsten Außen- und Innenansichten und hänge Detail- sowie Actionwünsche erst dann an, wenn die Pflichtserie verlässlich sitzt.",
       "_template": "textBlock"
@@ -87,16 +92,11 @@
         },
         {
           "label": "Sportwagenfotografie Bochum",
-          "href": "/sportwagen-fotografie-bochum.html"
+          "href": "/sportwagen-fotografie.html"
         },
         {
           "label": "Portfolio Sportwagen",
           "href": "/portfolio/portfolio-auswahl-sportwagen"
-        },
-        {
-          "label": "Sportwagenfotografie in NRW",
-          "href": "/sportwagen-fotografie.html",
-          "description": "Dynamische und ruhige Serien für Sportwagen, Teams und Sammler."
         }
       ]
     },
@@ -126,8 +126,8 @@
     }
   ],
   "seo": {
-    "title": "Sportwagen fürs Fotoshooting vorbereiten | Matthias Ramahi",
-    "description": "So bereitest du Auto oder Sportwagen auf ein Shooting vor: Lack, Scheiben, Räder, Innenraum, Details, Anreise und Prioritäten, ohne überzogene Pflegeversprechen.",
+    "title": "Sportwagen fürs Fotoshooting vorbereiten: Checkliste",
+    "description": "Sportwagen fürs Fotoshooting vorbereiten: Lack, Scheiben, Radstellung, Innenraum und 5-Minuten-Check vor Ort für klare Reflexe ohne Hektik.",
     "focusKeyword": "Sportwagen fürs Fotoshooting vorbereiten",
     "searchIntent": "Informationssuche: Nutzer suchen Fachwissen, Beispiele und Einordnung zu Sportwagen fürs Fotoshooting vorbereiten.",
     "canonicalUrl": "https://matthiasramahi.de/blog-sportwagen-vorbereitung.html",
@@ -143,7 +143,7 @@
   },
   "status": "published",
   "createdAt": "2026-08-16T06:00:00Z",
-  "updatedAt": "2026-11-24T09:15:00.000Z",
+  "updatedAt": "2026-11-27T22:15:00.000Z",
   "relatedPages": [
     {
       "label": "Sportwagenfotografie",

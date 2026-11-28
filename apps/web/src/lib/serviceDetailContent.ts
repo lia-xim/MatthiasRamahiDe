@@ -462,10 +462,10 @@ export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
       title: 'Foto, Video &amp; <em>Leistungen.</em>',
       lead: 'Bewegtbild entsteht oft parallel zu einer Fotoproduktion: hier findest du passende Bereiche und Hintergründe.',
       items: [
-        { label: 'Automobilfotografie Düsseldorf', href: '/automobil-fotografie-duesseldorf.html', body: 'Wenn Fahrzeugserie und Bewegtbild am selben Set geplant werden sollen.' },
+        { label: 'Autofotografie Düsseldorf', href: '/autofotografie-duesseldorf.html', body: 'Wenn Fahrzeugserie und Bewegtbild am selben Set geplant werden sollen.' },
         { label: 'Musikerfotografie NRW', href: '/musikerfotografie.html', body: 'Pressebilder, Cover und visuelle Begleitung rund um Musikvideo und Release.' },
         { label: 'Über mich &amp; Zusammenarbeit', href: '/ueber-mich.html', body: 'Wie Foto und Video im Zusammenspiel mit Sophia Ramahi am Set funktionieren.' },
-        { label: 'Weitere Dienstleistungen', href: '/leistungen.html', body: 'Alle Zusatzleistungen rund um Print, Web, Werbetechnik und Medienproduktion.' },
+        { label: 'Weitere Dienstleistungen', href: '/leistungen.html', body: 'Alle Zusatzleistungen rund um Fotolabor, Fine-Art-Druck, Großformat und Eventbegleitung.' },
       ],
     },
     ctaHead: 'Bereit für ein <em>Videografie-Briefing.</em>',
@@ -615,7 +615,7 @@ export const nativeServiceDetailPages: Record<string, ServiceDetailPage> = {
       lead: 'Vom Materialtest bis zum großformatigen Wandbild greifen Fotolabor, Großformatdruck und Motivauswahl ineinander.',
       items: [
         { label: 'Fotolabor &amp; Fine-Art-Druck', href: '/fotolabor-druck-duesseldorf.html', body: 'Hahnemühle, Canson, Ilford, Acrylglas und Alu-Dibond mit Soft-Proof.' },
-        { label: 'Großformatdruck Düsseldorf', href: '/grossformatdruck-duesseldorf.html', body: 'Großformate für Praxis, Showroom, Büro und repräsentative Wandflächen.' },
+        { label: 'Landschafts-Auswahl im Portfolio', href: '/portfolio/portfolio-auswahl-landschaft', body: 'Kuratierte Landschaftsmotive als visuelle Orientierung für Wandbild und Großformat.' },
         { label: 'Landschaftsbilder kaufen', href: '/landschaftsbilder-kaufen.html', body: 'Kuratierte Landschaftsmotive als Fine-Art-Edition für Wohn- und Geschäftsräume.' },
         { label: 'Weitere Dienstleistungen', href: '/leistungen.html', body: 'Alle Produktions- und Partnerleistungen im Überblick.' },
       ],

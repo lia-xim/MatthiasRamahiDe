@@ -252,7 +252,7 @@
     if (!bar) return;
 
     const pagePath = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
-    const hasInlineInquiry = !!document.querySelector('section[data-contact-section], .contact-cta');
+    const hasInlineInquiry = !!document.querySelector('section[data-contact-section]');
 
     function pageIntent() {
       const title = (document.querySelector('h1')?.textContent || document.title || '').replace(/\s+/g, ' ').trim();
@@ -416,7 +416,7 @@
       if (el.closest('.mr-sticky-cta') || el.getAttribute('data-cta-role') === 'mobile-sticky') return 'sticky';
       if (el.closest('.mr-exit-cta')) return 'exit';
       if (el.closest('.topbar, header')) return 'header';
-      if (el.closest('.contact-cta, .mr-contact, [data-contact-section]')) return 'contact';
+      if (el.closest('.mr-contact, [data-contact-section]')) return 'contact';
       if (el.closest('.mr-footer, footer')) return 'footer';
       if (el.closest('.hero, #hero, .hero-stage, [data-hero]')) return 'hero';
       return 'body';
@@ -732,6 +732,47 @@
     const menuBtn = bar.querySelector('.topbar__menu');
     const overlay = document.getElementById('mobile-menu');
     let lastFocusBeforeMenu = null;
+    function hydrateMobileMenu() {
+      if (!overlay || overlay.dataset.hydrated === '1') return;
+      const inner = overlay.querySelector('.mobile-menu__inner');
+      const desktopNav = bar.querySelector('.topbar__nav');
+      if (!inner || !desktopNav) return;
+      if (!inner.querySelector('.mobile-menu__nav')) {
+        const nav = document.createElement('nav');
+        nav.className = 'mobile-menu__nav';
+        nav.setAttribute('aria-label', 'Hauptnavigation mobil');
+        Array.prototype.forEach.call(desktopNav.children, function (child) {
+          if (child.tagName === 'A') {
+            nav.appendChild(child.cloneNode(true));
+          } else if (child.classList.contains('topbar__group')) {
+            const group = document.createElement('div');
+            group.className = 'mobile-menu__group';
+            const toggle = child.querySelector('.topbar__group-toggle');
+            if (toggle) {
+              const label = toggle.cloneNode(true);
+              label.className = 'mobile-menu__label' + (toggle.classList.contains('is-active') ? ' is-active' : '');
+              label.removeAttribute('aria-haspopup');
+              group.appendChild(label);
+            }
+            child.querySelectorAll('.topbar__submenu a').forEach(function (subLink) {
+              group.appendChild(subLink.cloneNode(true));
+            });
+            nav.appendChild(group);
+          }
+        });
+        inner.appendChild(nav);
+        const desktopCta = bar.querySelector('.topbar__cta');
+        if (desktopCta) {
+          const mobileCta = desktopCta.cloneNode(true);
+          mobileCta.className = 'mobile-menu__cta';
+          const mobileLabel = desktopCta.getAttribute('data-mobile-label');
+          if (mobileLabel) mobileCta.textContent = mobileLabel;
+          mobileCta.removeAttribute('data-mobile-label');
+          inner.appendChild(mobileCta);
+        }
+      }
+      overlay.dataset.hydrated = '1';
+    }
     function focusablesIn(el) {
       return Array.prototype.slice
         .call(el.querySelectorAll('a[href],button:not([disabled]),[tabindex]:not([tabindex="-1"])'))
@@ -739,6 +780,7 @@
     }
     function openMobile() {
       if (!overlay) return;
+      hydrateMobileMenu();
       lastFocusBeforeMenu = document.activeElement;
       overlay.classList.add('is-open');
       overlay.setAttribute('aria-hidden', 'false');

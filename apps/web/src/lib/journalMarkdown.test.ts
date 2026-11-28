@@ -86,3 +86,19 @@ test('escapes raw HTML and strips unsafe link schemes', () => {
   assert.match(html, /<code>&lt;img src=x&gt;<\/code>/)
   assert.match(html, />Klick<\/p>|Klick <a href="mailto:hi@example\.com">Mail<\/a>/)
 })
+
+test('renders GFM pipe tables into responsive semantic tables with inline formatting', () => {
+  const body = [
+    '| Region / Spot | Look | Licht |',
+    '| --- | --- | --- |',
+    '| **Düsseldorf · Medienhafen** | Glasfassaden | [Blaue Stunde](/autofotografie-duesseldorf.html) |',
+    '| Essen · Zollverein | Stahl & Ziegel | Spätnachmittag |',
+  ].join('\n')
+
+  const html = renderJournalBodyHtml(body)
+
+  assert.match(html, /<div class="journal-table-wrap"><table class="journal-table"><thead><tr><th scope="col">Region \/ Spot<\/th>/)
+  assert.match(html, /<td><strong>Düsseldorf · Medienhafen<\/strong><\/td>/)
+  assert.match(html, /<td><a href="\/autofotografie-duesseldorf\.html">Blaue Stunde<\/a><\/td>/)
+  assert.match(html, /<td>Essen · Zollverein<\/td>/)
+})

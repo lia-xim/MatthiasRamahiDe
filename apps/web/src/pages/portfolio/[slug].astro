@@ -1,6 +1,7 @@
 ---
 import ContentBlocks from '../../components/ContentBlocks.astro'
-import ContactCta from '../../components/ContactCta.astro'
+import ContactSlot from '../../components/ContactSlot.astro'
+import { contactSlotProps } from '../../lib/contactSlotProps'
 import LoadMoreGallery from '../../components/LoadMoreGallery.astro'
 import NativeShaderHero from '../../components/native/NativeShaderHero.astro'
 import BaseLayout from '../../layouts/BaseLayout.astro'
@@ -44,11 +45,16 @@ const fallbackHeroImage =
   hero ||
   imageDisplayUrl(doc.coverImage, 'hero', portfolioImageOptions) ||
   imageDisplayUrl(doc.gallery?.[0]?.image, 'wide', portfolioImageOptions)
+// Kuratierte Auswahlseiten ("Portfolio-Auswahl Portrait") zeigen im Hero
+// schlicht "Portrait / Portfolio"; presentationMode ist ein interner
+// Darstellungswert und gehört nicht in die Überschrift.
+const selectionTopic = (doc.title || '').match(/^Portfolio-Auswahl\s+(.+)$/i)?.[1]?.trim()
+const fallbackTitleLines = selectionTopic ? [selectionTopic, 'Portfolio'] : [doc.title || 'Portfolio']
 const fallbackHeroSlides = fallbackHeroImage
   ? [
       {
         image: fallbackHeroImage,
-        titleLines: [doc.title || 'Portfolio', doc.presentationMode || 'Serie'].filter(hasText),
+        titleLines: fallbackTitleLines,
         lead: doc.excerpt || '',
         primaryHref: '#bilder',
         primaryLabel: 'Bilder ansehen',
@@ -78,7 +84,7 @@ const categoryLabel = (value: unknown): string => {
   }
   return ''
 }
-const portfolioFocus = categoryLabel(doc.category) || doc.presentationMode || doc.title || 'Portfolio-Serie'
+const portfolioFocus = categoryLabel(doc.category) || selectionTopic || doc.title || 'Portfolio-Serie'
 const defaultContextBody = [
   `Diese Auswahl zeigt ${portfolioFocus} als zusammenhängende Serie: Einstiegsmotiv, Varianten im Raum oder Lichtwechsel und präzise Detailaufnahmen statt unzusammenhängender Einzelbilder.`,
   'Farbe, Abstand und Reihenfolge sind darauf abgestimmt, wie die Aufnahmen später wirken sollen — ob auf einer Website, im Exposé, im Magazin oder großformatig an der Wand.',
@@ -117,8 +123,50 @@ const perspectiveItems = perspectives.map((item) => {
     imageSize: { width: vis.width, height: vis.height },
   }
 })
+const canonicalProjectHref = (href?: string) => {
+  const clean = typeof href === 'string' ? href.trim() : ''
+  if (clean === '/automobil-fotografie-duesseldorf.html') return '/autofotografie-duesseldorf.html'
+  if (clean === '/automobil-fotografie.html') return '/autofotografie.html'
+  return clean
+}
+const categoryKey = categoryLabel(doc.category).toLowerCase()
+const fallbackRelatedByCategory: Record<string, Array<{ label: string; title: string; href: string; image?: PayloadDoc['coverImage'] }>> = {
+  automobil: [
+    { label: 'Leistung', title: 'Automobilfotografie Düsseldorf', href: '/autofotografie-duesseldorf.html', image: doc.coverImage },
+    { label: 'Verwandt', title: 'Sportwagenfotografie', href: '/sportwagen-fotografie-duesseldorf.html', image: doc.gallery?.[1]?.image },
+    { label: 'Übersicht', title: 'Portfolio', href: '/portfolio.html', image: doc.gallery?.[0]?.image },
+  ],
+  sportwagen: [
+    { label: 'Leistung', title: 'Sportwagenfotografie Düsseldorf', href: '/sportwagen-fotografie-duesseldorf.html', image: doc.coverImage },
+    { label: 'Verwandt', title: 'Automobilfotografie', href: '/autofotografie-duesseldorf.html', image: doc.gallery?.[1]?.image },
+    { label: 'Übersicht', title: 'Portfolio', href: '/portfolio.html', image: doc.gallery?.[0]?.image },
+  ],
+  oldtimer: [
+    { label: 'Leistung', title: 'Oldtimerfotografie Düsseldorf', href: '/oldtimer-fotografie-duesseldorf.html', image: doc.coverImage },
+    { label: 'Verwandt', title: 'Automobilfotografie', href: '/autofotografie-duesseldorf.html', image: doc.gallery?.[1]?.image },
+    { label: 'Übersicht', title: 'Portfolio', href: '/portfolio.html', image: doc.gallery?.[0]?.image },
+  ],
+  motorrad: [
+    { label: 'Leistung', title: 'Motorradfotografie Düsseldorf', href: '/motorrad-fotografie-duesseldorf.html', image: doc.coverImage },
+    { label: 'Verwandt', title: 'Automobilfotografie', href: '/autofotografie-duesseldorf.html', image: doc.gallery?.[1]?.image },
+    { label: 'Übersicht', title: 'Portfolio', href: '/portfolio.html', image: doc.gallery?.[0]?.image },
+  ],
+  portrait: [
+    { label: 'Leistung', title: 'Portraitfotografie Düsseldorf', href: '/portraitfotografie-duesseldorf.html', image: doc.coverImage },
+    { label: 'Spezial', title: 'Dating-Fotoshooting Düsseldorf', href: '/dating-fotoshooting-duesseldorf.html', image: doc.gallery?.[1]?.image },
+    { label: 'Übersicht', title: 'Portfolio', href: '/portfolio.html', image: doc.gallery?.[0]?.image },
+  ],
+  landschaft: [
+    { label: 'Leistung', title: 'Landschaftsfotografie & Fine-Art', href: '/landschaftsfotografie-duesseldorf.html', image: doc.coverImage },
+    { label: 'Serie', title: 'Portfolio-Auswahl Landschaft', href: '/portfolio/portfolio-auswahl-landschaft', image: doc.gallery?.[1]?.image },
+    { label: 'Übersicht', title: 'Portfolio', href: '/portfolio.html', image: doc.gallery?.[0]?.image },
+  ],
+}
 const infoCards = (projectPage.infoCards || []).filter((item) => hasText(item.title))
-const relatedCards = (projectPage.relatedCards || []).filter((item) => hasText(item.title) && hasText(item.href))
+const rawRelatedCards = (projectPage.relatedCards || [])
+  .filter((item) => hasText(item.title) && hasText(item.href))
+  .map((item) => ({ ...item, href: canonicalProjectHref(item.href) }))
+const relatedCards = rawRelatedCards.length > 0 ? rawRelatedCards : fallbackRelatedByCategory[categoryKey] || []
 const projectCta = projectPage.contact || doc.cta
 const rawDescription = doc.seo?.description || doc.excerpt || ''
 const description =
@@ -147,7 +195,7 @@ if (gallerySchema) jsonLdItems.push(gallerySchema)
   noIndex={doc.seo?.noIndex}
   ogImage={doc.seo?.ogImage || doc.coverImage}
   jsonLd={jsonLdItems}
-  stylesheets={['/assets/native-home.css', '/assets/native-portfolio-project.css']}
+  stylesheets={['/assets/native-home.css', '/assets/hero-motion.css', '/assets/native-portfolio-project.css']}
   preloadImages={firstHeroSlide ? [firstHeroSlide.image] : []}
 >
   {heroSlides.length > 0 && <NativeShaderHero id="top" label={doc.title || 'Portfolio'} slides={heroSlides} sourceSlides={doc.heroSlides || []} headerTheme="dark" />}
@@ -229,7 +277,7 @@ if (gallerySchema) jsonLdItems.push(gallerySchema)
                   </figure>
                 )}
                 <div class="project-perspective-row__content">
-                  <span {...tinaAttrs(item, 'label')}>{item.label || String(index + 1).padStart(2, '0')}</span>
+                  {hasText(item.label) && <span {...tinaAttrs(item, 'label')}>{item.label}</span>}
                   <h3 {...tinaAttrs(item, 'title')}>{item.title}</h3>
                   {hasText(item.text) && <p {...tinaAttrs(item, 'text')}>{item.text}</p>}
                   {(item.bullets || []).length > 0 && (
@@ -270,7 +318,6 @@ if (gallerySchema) jsonLdItems.push(gallerySchema)
         <div class="project-audience__grid">
           {infoCards.map((card, index) => (
             <a class="project-info-card" href={card.href || '#anfrage'}>
-              <span {...tinaAttrs(card, 'number')}>{card.number || String(index + 1).padStart(2, '0')}</span>
               <h3 {...tinaAttrs(card, 'title')}>{card.title}</h3>
               {hasText(card.label) && <span {...tinaAttrs(card, 'label')}>{card.label}</span>}
             </a>
@@ -318,6 +365,6 @@ if (gallerySchema) jsonLdItems.push(gallerySchema)
   )}
 
   <ContentBlocks blocks={doc.blocks} />
-  <ContactCta cta={projectCta} />
+  <ContactSlot id="anfrage" data-contact-section data-header-theme="light" data-theme="light" {...contactSlotProps(projectCta)} />
   <script is:inline src={versionStaticAssetUrl('/assets/native-home.js')} defer></script>
 </BaseLayout>

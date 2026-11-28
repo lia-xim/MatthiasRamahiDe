@@ -22,7 +22,7 @@ import {
   type PayloadDoc,
   type PayloadMedia,
 } from '../lib/payload'
-import { breadcrumbJsonLd, localBusinessJsonLd, personJsonLd, serviceJsonLd, webSiteJsonLd, type JsonLd } from '../lib/seo'
+import { breadcrumbJsonLd, localBusinessJsonLd, personJsonLd, serviceJsonLd, toCanonicalSiteUrl, webSiteJsonLd, type JsonLd } from '../lib/seo'
 
 type Props = {
   bodyClass?: string
@@ -99,13 +99,13 @@ const description =
   chrome.description ||
   settings?.defaultMetaDescription ||
   'Portfolio, Fotografie und visuelle Produktion in Düsseldorf / NRW.'
-const canonical = toAbsoluteSiteUrl(canonicalUrl || docCanonical || fallbackPath)
+const canonical = toCanonicalSiteUrl(canonicalUrl || docCanonical || fallbackPath)
 const socialImageSource = ogImage || doc?.seo?.ogImage || doc?.coverImage || doc?.heroImage || doc?.teaserImage || chrome.ogImage || settings?.defaultOgImage
 const socialImage = typeof socialImageSource === 'string'
   ? toAbsoluteSiteUrl(versionStaticAssetUrl(socialImageSource))
   : imageUrl(socialImageSource as PayloadMedia | undefined, 'hero', { allowOriginal: true })
 const socialImageDimensions = imageDimensions(socialImageSource as PayloadMedia | string | undefined, 'hero')
-const robots = noIndex || doc?.seo?.noIndex ? 'noindex,nofollow' : 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1'
+const robots = noIndex || doc?.seo?.noIndex ? 'noindex,follow' : 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1'
 const bodyClass = providedBodyClass || doc?.legacy?.bodyClass || chrome.bodyClass || 'has-mr-footer'
 const analyticsDimensions = pageAnalyticsDimensions(fallbackPath)
 const current = providedCurrent || doc?.legacy?.headerCurrent || chrome.current

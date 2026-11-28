@@ -1,6 +1,7 @@
 ---
 import ContentBlocks from '../ContentBlocks.astro'
-import ContactCta from '../ContactCta.astro'
+import ContactSlot from '../ContactSlot.astro'
+import { contactSlotProps } from '../../lib/contactSlotProps'
 import LoadMoreGallery from '../LoadMoreGallery.astro'
 import PreviewToolbar from '../PreviewToolbar.astro'
 import ResponsiveImage from '../ResponsiveImage.astro'
@@ -166,7 +167,7 @@ if (faqSchema) jsonLdItems.push(faqSchema)
     </section>
   )}
 
-  <ContactCta cta={doc.contactOverride || doc.cta} />
+  <ContactSlot id="anfrage" data-contact-section data-header-theme="light" data-theme="light" {...contactSlotProps(doc.contactOverride || doc.cta)} />
 </BaseLayout>
 
 <style>

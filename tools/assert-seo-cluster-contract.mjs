@@ -15,12 +15,16 @@ if (!baseUrl) {
 const families = [
   {
     key: 'automobil',
-    parent: '/automobil-fotografie.html',
-    duesseldorf: '/automobil-fotografie-duesseldorf.html',
+    parent: '/autofotografie.html',
+    duesseldorf: '/autofotografie-duesseldorf.html',
     nrw: '/automobil-fotografie-nrw.html',
-    child: '/automobil-fotografie-bochum.html',
+    child: '',
     consolidatedChild: '/automobil-fotografie-mettmann.html',
-    intent: '/fotoshooting-mit-auto.html',
+    // Mettmann belongs to the Düsseldorf & Erkrath power hub (docs/local-proof-playbook.md).
+    consolidatedTarget: '/autofotografie-duesseldorf.html',
+    deutschlandPath: '/automobil-fotografie-deutschland.html',
+    deutschlandTarget: '/autofotografie.html',
+    intent: '/bilder-mit-auto.html',
     duesseldorfIntent: '',
     proof: '/portfolio/portfolio-auswahl-automobil',
   },
@@ -29,8 +33,11 @@ const families = [
     parent: '/sportwagen-fotografie.html',
     duesseldorf: '/sportwagen-fotografie-duesseldorf.html',
     nrw: '/sportwagen-fotografie-nrw.html',
-    child: '/sportwagen-fotografie-bochum.html',
+    child: '',
     consolidatedChild: '/sportwagen-fotografie-mettmann.html',
+    consolidatedTarget: '/sportwagen-fotografie-duesseldorf.html',
+    deutschlandPath: '/sportwagen-fotografie-deutschland.html',
+    deutschlandTarget: '/sportwagen-fotografie.html',
     intent: '/motorsport-fotografie.html',
     duesseldorfIntent: '/motorsport-fotografie-duesseldorf.html',
     proof: '/portfolio/portfolio-auswahl-sportwagen',
@@ -40,8 +47,11 @@ const families = [
     parent: '/oldtimer-fotografie.html',
     duesseldorf: '/oldtimer-fotografie-duesseldorf.html',
     nrw: '/oldtimer-fotografie-nrw.html',
-    child: '/oldtimer-fotografie-bochum.html',
+    child: '',
     consolidatedChild: '/oldtimer-fotografie-mettmann.html',
+    consolidatedTarget: '/oldtimer-fotografie-duesseldorf.html',
+    deutschlandPath: '/oldtimer-fotografie-deutschland.html',
+    deutschlandTarget: '/oldtimer-fotografie.html',
     intent: '/oldtimer-shooting-duesseldorf.html',
     duesseldorfIntent: '',
     proof: '/portfolio/portfolio-auswahl-oldtimer',
@@ -51,8 +61,11 @@ const families = [
     parent: '/motorrad-fotografie.html',
     duesseldorf: '/motorrad-fotografie-duesseldorf.html',
     nrw: '/motorrad-fotografie-nrw.html',
-    child: '/motorrad-fotografie-bochum.html',
+    child: '',
     consolidatedChild: '/motorrad-fotografie-mettmann.html',
+    consolidatedTarget: '/motorrad-fotografie-duesseldorf.html',
+    deutschlandPath: '/motorrad-fotografie-deutschland.html',
+    deutschlandTarget: '/motorrad-fotografie.html',
     intent: '/custom-bike-fotografie.html',
     duesseldorfIntent: '',
     proof: '/portfolio/portfolio-auswahl-motorrad',
@@ -62,8 +75,11 @@ const families = [
     parent: '/portraitfotografie.html',
     duesseldorf: '/portraitfotografie-duesseldorf.html',
     nrw: '/portraitfotografie-nrw.html',
-    child: '/portraitfotografie-bochum.html',
+    child: '',
     consolidatedChild: '/portraitfotografie-mettmann.html',
+    consolidatedTarget: '/portraitfotografie-duesseldorf.html',
+    deutschlandPath: '/portraitfotografie-deutschland.html',
+    deutschlandTarget: '/portraitfotografie.html',
     intent: '/vintage-fotoshooting.html',
     duesseldorfIntent: '',
     proof: '/portfolio/portfolio-auswahl-portrait',
@@ -71,10 +87,13 @@ const families = [
   {
     key: 'landschaft',
     parent: '/landschaftsfotografie.html',
-    duesseldorf: '/landschaftsfotografie-duesseldorf.html',
-    nrw: '/landschaftsfotografie-nrw.html',
+    duesseldorf: '',
+    nrw: '',
     child: '',
     consolidatedChild: '/landschaftsfotografie-mettmann.html',
+    consolidatedTarget: '/landschaftsfotografie.html',
+    deutschlandPath: '/landschaftsfotografie-deutschland.html',
+    deutschlandTarget: '/landschaftsfotografie.html',
     intent: '/fine-art-prints-landschaft.html',
     duesseldorfIntent: '',
     proof: '/portfolio/portfolio-auswahl-landschaft',
@@ -171,13 +190,14 @@ async function readPage(path) {
 
 for (const family of families) {
   const roles = [
-    ['pillar', family.parent, [family.duesseldorf, family.nrw], false],
-    ['duesseldorf-hub', family.duesseldorf, [family.parent, family.nrw], true],
-    ['nrw-hub', family.nrw, [family.parent, family.duesseldorf], true],
-    ...(family.child ? [['child', family.child, [family.parent, family.duesseldorf, family.nrw], false]] : []),
-    ['intent', family.intent, [family.parent, family.duesseldorf, family.nrw], false],
+    // A pillar without regional hubs (landschaft) carries the cross-family cluster itself.
+    ['pillar', family.parent, [family.duesseldorf, family.nrw].filter(Boolean), !family.duesseldorf && !family.nrw],
+    ...(family.duesseldorf ? [['duesseldorf-hub', family.duesseldorf, [family.parent, family.nrw].filter(Boolean), true]] : []),
+    ...(family.nrw ? [['nrw-hub', family.nrw, [family.parent, family.duesseldorf].filter(Boolean), true]] : []),
+    ...(family.child ? [['child', family.child, [family.parent, family.duesseldorf, family.nrw].filter(Boolean), false]] : []),
+    ['intent', family.intent, [family.parent, family.duesseldorf, family.nrw].filter(Boolean), false],
   ]
-  const deutschlandPath = family.duesseldorf.replace('-duesseldorf.html', '-deutschland.html')
+  const deutschlandPath = family.deutschlandPath
 
   for (const [role, path, requiredPaths, expectsCrossFamilyCluster] of roles) {
     const { html, status } = await readPage(path)
@@ -255,13 +275,14 @@ for (const family of families) {
     })
   }
 
+  const proofTarget = family.duesseldorf || family.parent
   const proofPage = await readPage(family.proof)
   const proofLinks = anchorPaths(proofPage.html, family.proof)
-  requireCondition(proofLinks.includes(family.duesseldorf), {
+  requireCondition(proofLinks.includes(proofTarget) || proofLinks.includes(family.parent), {
     type: 'missing-proof-to-service-link',
     family: family.key,
     path: family.proof,
-    expected: family.duesseldorf,
+    expected: proofTarget,
   })
 
   const deutschlandResponse = await fetch(`${baseUrl}${deutschlandPath}`, { redirect: 'manual' })
@@ -272,11 +293,11 @@ for (const family of families) {
     expected: 308,
     actual: deutschlandResponse.status,
   })
-  requireCondition(deutschlandResponse.headers.get('location') === family.duesseldorf, {
+  requireCondition(deutschlandResponse.headers.get('location') === family.deutschlandTarget, {
     type: 'deutschland-family-redirect-target',
     family: family.key,
     path: deutschlandPath,
-    expected: family.duesseldorf,
+    expected: family.deutschlandTarget,
     actual: deutschlandResponse.headers.get('location'),
   })
 
@@ -289,11 +310,11 @@ for (const family of families) {
       expected: 308,
       actual: consolidatedResponse.status,
     })
-    requireCondition(consolidatedResponse.headers.get('location') === family.nrw, {
+    requireCondition(consolidatedResponse.headers.get('location') === family.consolidatedTarget, {
       type: 'consolidated-suburb-redirect-target',
       family: family.key,
       path: family.consolidatedChild,
-      expected: family.nrw,
+      expected: family.consolidatedTarget,
       actual: consolidatedResponse.headers.get('location'),
     })
   }

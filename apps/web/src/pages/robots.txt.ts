@@ -11,6 +11,7 @@ export function GET() {
       'Disallow: /preview/',
       'Disallow: /_server-islands/',
       'Disallow: /_actions/',
+      'Disallow: /*?rwg_token=',
       '',
       `Sitemap: ${siteUrl}/sitemap.xml`,
       '',

@@ -25,7 +25,7 @@
     {
       "_template": "textBlock",
       "headline": "Wie groß kann ein Autofoto gedruckt werden?",
-      "body": "Die mögliche Druckgröße hängt zunächst von den Pixelmaßen des fertigen Bildes ab. Danach kommen der gewünschte Betrachtungsabstand, der Bildausschnitt und das Druckmaterial hinzu. 300 PPI sind eine verbreitete Orientierung für Prints, die aus der Nähe betrachtet werden. Für ein großes Wandbild kann eine geringere Pixeldichte passen; sie ist aber keine pauschale Qualitätszusage. Entscheidend ist, wie die konkrete Datei im vorgesehenen Format und Medium wirkt.\n\nHier geht es um eine konkrete Rechnung: Wie viele PPI ergibt die Pixelzahl einer vorhandenen Autofoto-Datei bei deinem Wunschmaß? Angebot, Materialberatung und Anfrage für die Produktion findest du auf der [Leistungsseite für Großformatdruck in Düsseldorf](/grossformatdruck-duesseldorf.html). Das Titelbild ist eine Portfolioaufnahme und zeigt keinen produzierten Print."
+      "body": "Die mögliche Druckgröße hängt zunächst von den Pixelmaßen des fertigen Bildes ab. Danach kommen der gewünschte Betrachtungsabstand, der Bildausschnitt und das Druckmaterial hinzu. 300 PPI sind eine verbreitete Orientierung für Prints, die aus der Nähe betrachtet werden. Für ein großes Wandbild kann eine geringere Pixeldichte passen; sie ist aber keine pauschale Qualitätszusage. Entscheidend ist, wie die konkrete Datei im vorgesehenen Format und Medium wirkt.\n\nHier geht es um eine konkrete Rechnung: Wie viele PPI ergibt die Pixelzahl einer vorhandenen Autofoto-Datei bei deinem Wunschmaß? Angebot, Materialberatung und Anfrage für die Produktion findest du auf der [Leistungsseite für Großformatdruck in Düsseldorf](/fotolabor-druck-duesseldorf.html). Das Titelbild ist eine Portfolioaufnahme und zeigt keinen produzierten Print."
     },
     {
       "_template": "imageSequence",
@@ -78,7 +78,7 @@
     {
       "_template": "textBlock",
       "headline": "Diese Angaben vor der Bestellung mit dem Labor klären",
-      "body": "Schicke nicht nur die gewünschte Zentimeterzahl. Halte vor der Bestellung fest:\n\n1. **Endmaß und Seitenverhältnis:** Bezieht sich das Maß auf die bedruckte Fläche oder auf das fertige Objekt mit Rand und Rahmen?\n2. **Ausschnitt und Beschnitt:** Soll die Datei vollständig sichtbar bleiben, randlos gedruckt oder auf das Seitenverhältnis zugeschnitten werden?\n3. **Empfohlene Bildauflösung:** Welche PPI- oder Pixelvorgabe gilt für genau dieses Material und Format?\n4. **Dateiübergabe:** Welcher Farbraum, welches Profil, Dateiformat und welche maximale Dateigröße werden erwartet?\n5. **Kontrolle:** Kann das Labor einen kritischen Ausschnitt prüfen oder ein Muster im gewünschten Material anbieten?\n\nEin Upload-Check zeigt meist, ob die Datei zum konfigurierten Produkt passt; er ersetzt aber nicht die Sichtprüfung von Fokus, Detailzeichnung und Beschnitt. Die [Leistungsseite für Großformatdruck in Düsseldorf](/grossformatdruck-duesseldorf.html) ist der nächste Schritt, wenn du Angebot, Produktion und Material mit einem konkreten Fahrzeugmotiv abstimmen möchtest."
+      "body": "Schicke nicht nur die gewünschte Zentimeterzahl. Halte vor der Bestellung fest:\n\n1. **Endmaß und Seitenverhältnis:** Bezieht sich das Maß auf die bedruckte Fläche oder auf das fertige Objekt mit Rand und Rahmen?\n2. **Ausschnitt und Beschnitt:** Soll die Datei vollständig sichtbar bleiben, randlos gedruckt oder auf das Seitenverhältnis zugeschnitten werden?\n3. **Empfohlene Bildauflösung:** Welche PPI- oder Pixelvorgabe gilt für genau dieses Material und Format?\n4. **Dateiübergabe:** Welcher Farbraum, welches Profil, Dateiformat und welche maximale Dateigröße werden erwartet?\n5. **Kontrolle:** Kann das Labor einen kritischen Ausschnitt prüfen oder ein Muster im gewünschten Material anbieten?\n\nEin Upload-Check zeigt meist, ob die Datei zum konfigurierten Produkt passt; er ersetzt aber nicht die Sichtprüfung von Fokus, Detailzeichnung und Beschnitt. Die [Leistungsseite für Großformatdruck in Düsseldorf](/fotolabor-druck-duesseldorf.html) ist der nächste Schritt, wenn du Angebot, Produktion und Material mit einem konkreten Fahrzeugmotiv abstimmen möchtest."
     },
     {
       "_template": "textBlock",
@@ -153,14 +153,14 @@
         },
         {
           "label": "Automobilfotografie in Düsseldorf & NRW",
-          "href": "/automobil-fotografie.html",
+          "href": "/autofotografie.html",
           "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]
     }
   ],
   "seo": {
-    "title": "Autofoto drucken: Pixelmaß und PPI berechnen",
+    "title": "Autofoto drucken: Pixelmaß, Format & PPI berechnen",
     "description": "Pixelmaß und Beschnitt eines Autofotos für dein Wunschformat in PPI umrechnen. Mit Rechenbeispielen und Prüfschritten für die finale Druckdatei.",
     "focusKeyword": "Autofoto Druckauflösung berechnen",
     "secondaryKeywords": [
@@ -182,7 +182,7 @@
   "relatedPages": [
     {
       "label": "Großformatdruck in Düsseldorf",
-      "href": "/grossformatdruck-duesseldorf.html",
+      "href": "/fotolabor-druck-duesseldorf.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

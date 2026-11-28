@@ -11,8 +11,8 @@
   ],
   "publishedAt": "2027-11-12T08:00:00Z",
   "excerpt": "Lichtrichtung und Diffusion beschreiben verschiedene Eigenschaften. Verstehe, wie sie Schatten, Texturen und glänzende Flächen verändern.",
-  "coverImage": "/assets/portfolio/automobil-bmw-klassiker.webp",
-  "coverAlt": "Dunkler BMW in einer Ausstellungshalle; lange helle Deckenreflexe zeichnen Haube und Dach.",
+  "coverImage": "/uploads/payload/_DSC3849.webp",
+  "coverAlt": "Lederpolster eines Oldtimers mit seitlichem Licht und Faltenstruktur",
   "readingTime": 8,
   "seo": {
     "title": "Gerichtetes und diffuses Licht in der Fotografie",
@@ -28,7 +28,7 @@
     "searchIntent": "Qualitativ recherchierte Informationssuche: Die aktuelle kostenlose SERP-Stichprobe zeigt eigenständige Erklärungen zu gerichtetem und diffusem Licht sowie praktische Fotoanleitungen zu Lichtführung und Textur. Der Beitrag trennt den hier behandelten Einfluss von Lichtrichtung und Streuung von der Frage nach harter oder weicher Schattenkante, die der separate Beitrag zu hartem und weichem Licht behandelt. Die Keywords sind Hypothesen; aktuelle Crawl-Foundry-Volumina, GSC-Daten und gemessene AI-Fanout-Fragen liegen nicht vor. Mögliche Anschlussfragen sind ungemessene Hypothesen: Kann weiches Licht trotzdem gerichtet sein? Wie verändert Seitenlicht die Oberflächenstruktur? Wie kombiniere ich einen gerichteten Hauptakzent mit diffuser Aufhellung? Warum spiegelt sich die Form einer Softbox im Autolack?",
     "canonicalUrl": "https://matthiasramahi.de/blog-gerichtetes-diffuses-licht-fotografie.html",
     "legacyUrl": "blog-gerichtetes-diffuses-licht-fotografie.html",
-    "ogImage": "/assets/portfolio/automobil-bmw-klassiker.webp",
+    "ogImage": "/uploads/payload/_DSC3849.webp",
     "noIndex": false
   },
   "legacy": {
@@ -43,7 +43,7 @@
   "relatedPages": [
     {
       "label": "Automobilfotografie",
-      "href": "/automobil-fotografie.html",
+      "href": "/autofotografie.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

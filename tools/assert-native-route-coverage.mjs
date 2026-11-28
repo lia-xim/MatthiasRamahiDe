@@ -23,8 +23,9 @@ function extractObjectKeyValues(source, name) {
   const entries = []
   if (!match) return entries
 
-  for (const [, key, value] of match[1].matchAll(/['"]([^'"]+)['"]\s*:\s*['"]([^'"]+)['"]/g)) {
-    entries.push([key, value])
+  for (const [, key, value] of match[1].matchAll(/['"]([^'"]+)['"]\s*:\s*['"]([^'"]*)['"]/g)) {
+    // An empty redirect target ('') means "redirect to the homepage".
+    entries.push([key, value || 'index.html'])
   }
 
   return entries
@@ -71,6 +72,26 @@ function generatedLocalSeoFiles(adoptedRoutes, localSeoFamilies) {
   return [...fullScopeFiles, ...duesseldorfFiles, ...standaloneFiles, ...specialFiles]
 }
 
+async function listJournalPostFiles(repoRoot) {
+  const dir = path.join(repoRoot, 'apps', 'web', 'content', 'journal-posts')
+  let names = []
+  try {
+    names = (await fs.readdir(dir)).filter((name) => name.endsWith('.json'))
+  } catch {
+    return []
+  }
+  const files = []
+  for (const name of names) {
+    let legacyUrl = ''
+    try {
+      legacyUrl = JSON.parse(await fs.readFile(path.join(dir, name), 'utf8'))?.seo?.legacyUrl || ''
+    } catch {}
+    const normalized = String(legacyUrl).replace(/^\/+/, '').toLowerCase()
+    files.push(normalized.endsWith('.html') ? normalized : `blog-${name.replace(/\.json$/i, '')}.html`)
+  }
+  return files
+}
+
 function increment(map, key) {
   map.set(key, (map.get(key) || 0) + 1)
 }
@@ -103,6 +124,8 @@ export async function auditNativeRouteCoverage(options = {}) {
   const photographyOverviewFiles = extractSet(nativeRegistry, 'photographyOverviewFiles')
   const legalFiles = extractSet(nativeRegistry, 'legalFiles')
   const journalFiles = new Set(quotedStrings(journalContent).filter((value) => value.endsWith('.html')))
+  // Journal articles now live as JSON documents in apps/web/content/journal-posts.
+  for (const file of await listJournalPostFiles(repoRoot)) journalFiles.add(file)
   const serviceFiles = extractHtmlObjectKeys(serviceContent, 'nativeServiceDetailPages')
   const conceptFiles = extractHtmlObjectKeys(conceptContent, 'conceptArchivePages')
   const localSeoPrefixes = extractLocalSeoPrefixes(localSeoFamilies)
@@ -110,6 +133,7 @@ export async function auditNativeRouteCoverage(options = {}) {
   const nativeKindFor = (file) => {
     const normalized = (file || '').replace(/^\/+/, '').toLowerCase()
     if (!normalized) return null
+    if (normalized === 'index.html') return 'home'
     if (exactRouteKinds.has(normalized)) return exactRouteKinds.get(normalized)
     if (photographyOverviewFiles.has(normalized)) return 'photography-overview'
     if (legalFiles.has(normalized)) return 'legal'
@@ -124,6 +148,7 @@ export async function auditNativeRouteCoverage(options = {}) {
   const nativeCounts = new Map()
   let nativeOnlyLocalSeoCount = 0
   let nativeOnlyIntentionalCount = 0
+  let nativeOnlyPostManifestCount = 0
   let redirectCount = 0
 
   for (const file of [...frozenFiles].sort((a, b) => a.localeCompare(b))) {
@@ -138,6 +163,13 @@ export async function auditNativeRouteCoverage(options = {}) {
     }
     if (isLocalSeoRoute(file, adoptedFiles, localSeoPrefixes)) {
       nativeOnlyLocalSeoCount += 1
+      continue
+    }
+    // The frozen manifest is a historical WordPress snapshot. Routes added after it
+    // (journal articles from content/journal-posts, consolidation redirects) are
+    // allowed as long as they resolve to a native renderer (checked below).
+    if (redirects.has(file) || nativeKindFor(file)) {
+      nativeOnlyPostManifestCount += 1
       continue
     }
 
@@ -160,15 +192,11 @@ export async function auditNativeRouteCoverage(options = {}) {
   }
 
   for (const file of [...adoptedFiles].sort((a, b) => a.localeCompare(b))) {
-    if (!frozenFiles.has(file) && !isIntentionalNativeOnlyRoute(file)) {
-      failures.push(`Adopted route is not present in the frozen legacy manifest: ${file}`)
-    }
     if (!nativeKindFor(file)) failures.push(`Adopted route has no native renderer kind: ${file}`)
   }
 
   for (const [source, target] of [...redirects.entries()].sort(([a], [b]) => a.localeCompare(b))) {
-    if (!frozenFiles.has(source)) failures.push(`Redirect source is not present in the frozen legacy manifest: ${source}`)
-    if (!frozenFiles.has(target)) failures.push(`Redirect target is not present in the frozen legacy manifest: ${source} -> ${target}`)
+    if (target !== 'index.html' && redirects.has(target)) failures.push(`Redirect target redirects again (chain): ${source} -> ${target} -> ${redirects.get(target)}`)
     if (!nativeKindFor(target)) failures.push(`Redirect target has no native renderer kind: ${source} -> ${target}`)
   }
 
@@ -178,6 +206,7 @@ export async function auditNativeRouteCoverage(options = {}) {
     nativeFiles: [...nativeCounts.values()].reduce((sum, count) => sum + count, 0),
     nativeOnlyLocalSeoFiles: nativeOnlyLocalSeoCount,
     nativeOnlyIntentionalFiles: nativeOnlyIntentionalCount,
+    nativeOnlyPostManifestFiles: nativeOnlyPostManifestCount,
     redirectFiles: redirectCount,
     routeModelFiles: routeModelFiles.size,
     nativeCounts: Object.fromEntries([...nativeCounts.entries()].sort(([a], [b]) => a.localeCompare(b))),
@@ -196,6 +225,6 @@ if (isDirectRun) {
   }
 
   console.log(
-    `Native route coverage passed: ${result.frozenFiles}/${result.frozenFiles} frozen HTML files covered, ${result.nativeOnlyLocalSeoFiles} native-only local SEO route-model files and ${result.nativeOnlyIntentionalFiles} intentional native-only route-model files allowed (${result.nativeFiles} native, ${result.redirectFiles} redirects).`,
+    `Native route coverage passed: ${result.frozenFiles}/${result.frozenFiles} frozen HTML files covered, ${result.nativeOnlyLocalSeoFiles} native-only local SEO route-model files, ${result.nativeOnlyIntentionalFiles} intentional native-only and ${result.nativeOnlyPostManifestFiles} post-manifest native/redirect route-model files allowed (${result.nativeFiles} native, ${result.redirectFiles} redirects).`,
   )
 }

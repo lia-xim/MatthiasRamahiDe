@@ -1,4 +1,5 @@
 ---
+import { getRecentShoots } from '../../data/recentShoots'
 import HeroMotion from './HeroMotion.astro'
 import ContactSlot from '../ContactSlot.astro'
 import AdoptedPageLayout from '../../layouts/AdoptedPageLayout.astro'
@@ -116,7 +117,7 @@ const cmsSpreads =
         label: cleanText(slice.label) || cleanText(slice.heading) || `Portfolio Slice ${index + 1}`,
         heading: cleanText(slice.heading) || cleanText(slice.label) || `Portfolio Slice ${index + 1}`,
         lead: cleanText(slice.lead),
-        href: toRootRelativeHref(slice.href) || '#archive',
+        href: ((h) => (h === '/automobil-fotografie-duesseldorf.html' ? '/autofotografie-duesseldorf.html' : h === '/automobil-fotografie.html' ? '/autofotografie.html' : h))(toRootRelativeHref(slice.href)) || '#archive',
         linkLabel: cleanText(slice.linkLabel) || 'Zur Seite ->',
         source: slice,
         theme: slice.theme === 'dark' ? 'dark' : 'light',
@@ -138,6 +139,7 @@ const portfolioSelectionByKey: Record<string, { href: string; label: string }> =
   sport: { href: '/portfolio/portfolio-auswahl-sportwagen', label: 'Sportwagen-Auswahl ansehen ->' },
   sportwagen: { href: '/portfolio/portfolio-auswahl-sportwagen', label: 'Sportwagen-Auswahl ansehen ->' },
 }
+const stripLinkArrow = (value?: string) => cleanText(value).replace(/\s*(->|→|↗|›)\s*$/u, '')
 const normalizedPortfolioKey = (value?: string) =>
   cleanText(value)
     .toLowerCase()
@@ -180,6 +182,7 @@ const contactHeadline = cleanText(portfolioIndex?.contact?.headline) || 'Shootin
 const contactLead =
   cleanText(portfolioIndex?.contact?.lead) ||
   'Schreiben Sie kurz, welche Serie Sie interessiert, wofür die Aufnahmen genutzt werden und welchen Zeitraum Sie planen. Dann klären wir Motiv, Umfang, Rechte und Ausgabe sauber gemeinsam.'
+const shootLogProjects = getRecentShoots()
 ---
 <AdoptedPageLayout
   legacyFile="portfolio.html"
@@ -223,7 +226,7 @@ const contactLead =
       </div>
     </section>
 
-    {displaySpreads.map((spread) => (
+    {displaySpreads.map((spread, spreadIndex) => (
       <section
         class={`pf-spread ${spread.theme === 'light' ? 'is-light' : ''}`.trim()}
         id={spread.id}
@@ -240,26 +243,52 @@ const contactLead =
               {photo.avifSrcset ? (
                 <picture>
                   <source type="image/avif" srcset={photo.avifSrcset} sizes="(max-width: 900px) 48vw, 25vw" />
-                  <img src={photo.src} srcset={photo.srcset} sizes={photo.srcset ? '(max-width: 900px) 48vw, 25vw' : undefined} alt={photo.caption || ''} loading="lazy" decoding="async" width={photo.width} height={photo.height} {...tinaAttrs(photo.source, 'image')} />
+                  <img src={photo.src} srcset={photo.srcset} sizes={photo.srcset ? '(max-width: 900px) 48vw, 25vw' : undefined} alt={photo.caption || `${spread.heading} Fotografie von Matthias Ramahi`} loading={spreadIndex === 0 ? 'eager' : 'lazy'} decoding="async" width={photo.width} height={photo.height} {...tinaAttrs(photo.source, 'image')} />
                 </picture>
               ) : (
-                <img src={photo.src} srcset={photo.srcset} sizes={photo.srcset ? '(max-width: 900px) 48vw, 25vw' : undefined} alt={photo.caption || ''} loading="lazy" decoding="async" width={photo.width} height={photo.height} {...tinaAttrs(photo.source, 'image')} />
+                <img src={photo.src} srcset={photo.srcset} sizes={photo.srcset ? '(max-width: 900px) 48vw, 25vw' : undefined} alt={photo.caption || `${spread.heading} Fotografie von Matthias Ramahi`} loading={spreadIndex === 0 ? 'eager' : 'lazy'} decoding="async" width={photo.width} height={photo.height} {...tinaAttrs(photo.source, 'image')} />
               )}
             </figure>
           ))}
         </div>
         <div class="pf-spread__links">
-          <a class="pf-spread__cta" href={spread.href} {...tinaAttrs(spread.source, 'linkLabel')}>
-            <span>{spread.linkLabel}</span>
+          <a class="pf-spread__cta is-primary" href={spread.href} {...tinaAttrs(spread.source, 'linkLabel')}>
+            {stripLinkArrow(spread.linkLabel)}
           </a>
           {portfolioSelectionFor(spread) && (
-            <a class="pf-spread__cta pf-spread__cta--portfolio" href={portfolioSelectionFor(spread)!.href}>
-              <span>{portfolioSelectionFor(spread)!.label}</span>
+            <a class="pf-spread__cta" href={portfolioSelectionFor(spread)!.href}>
+              {stripLinkArrow(portfolioSelectionFor(spread)!.label)}
+            </a>
+          )}
+          {normalizedPortfolioKey(spread.id) === 'portrait' && (
+            <a class="pf-spread__cta" href="/dating-fotoshooting-duesseldorf.html">
+              Dating-Fotoshooting Düsseldorf
             </a>
           )}
         </div>
       </section>
     ))}
+
+    <section class="pf-logs" id="shootings" data-header-theme="light" aria-labelledby="pf-logs-title">
+      <div class="pf-logs__inner">
+        <div class="pf-logs__head">
+          <h2 id="pf-logs-title">Aktuelle Shootings</h2>
+          <p>Komplette Serien mit Ort, Licht und Ablauf: so sieht ein Shooting von der ersten bis zur letzten Perspektive aus.</p>
+        </div>
+        <div class="pf-logs__grid">
+          {shootLogProjects.map((item) => (
+            <a class="pf-log" href={item.href}>
+              <span class="pf-log__visual">
+                <img src={item.visual.src} srcset={item.visual.srcset || undefined} sizes={item.visual.srcset ? '(max-width: 900px) 92vw, 32vw' : undefined} alt={item.alt} loading="lazy" decoding="async" width="1920" height="1280" />
+              </span>
+              <span class="pf-log__meta">{item.meta}</span>
+              <span class="pf-log__title">{item.title}</span>
+              <span class="pf-log__text">{item.text}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
 
     <section class="pf-archive" id="archive" data-header-theme="light" aria-label="Archiv">
       <div class="pf-archive__head">
@@ -277,8 +306,7 @@ const contactLead =
                       src={photo.src}
                       srcset={photo.srcset}
                       sizes={photo.srcset ? '(max-width: 900px) 48vw, 25vw' : undefined}
-                      data-src={photo.src}
-                      alt={photo.caption || ''}
+                      alt={photo.caption || 'Portfolio-Fotografie von Matthias Ramahi'}
                       loading="lazy"
                       decoding="async"
                       width={photo.width}
@@ -291,8 +319,7 @@ const contactLead =
                     src={photo.src}
                     srcset={photo.srcset}
                     sizes={photo.srcset ? '(max-width: 900px) 48vw, 25vw' : undefined}
-                    data-src={photo.src}
-                    alt={photo.caption || ''}
+                    alt={photo.caption || 'Portfolio-Fotografie von Matthias Ramahi'}
                     loading="lazy"
                     decoding="async"
                     width={photo.width}
@@ -313,8 +340,7 @@ const contactLead =
                           src={photo.src}
                           srcset={photo.srcset}
                           sizes={photo.srcset ? '(max-width: 900px) 48vw, 25vw' : undefined}
-                          data-src={photo.src}
-                          alt={photo.caption || ''}
+                          alt={photo.caption || 'Portfolio-Fotografie von Matthias Ramahi'}
                           loading="lazy"
                           decoding="async"
                           width={photo.width}
@@ -327,8 +353,7 @@ const contactLead =
                         src={photo.src}
                         srcset={photo.srcset}
                         sizes={photo.srcset ? '(max-width: 900px) 48vw, 25vw' : undefined}
-                        data-src={photo.src}
-                        alt={photo.caption || ''}
+                        alt={photo.caption || 'Portfolio-Fotografie von Matthias Ramahi'}
                         loading="lazy"
                         decoding="async"
                         width={photo.width}

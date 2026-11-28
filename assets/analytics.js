@@ -4,8 +4,7 @@
    Umami selbst erfasst Page Views automatisch (cookiefrei, DSGVO-freundlich).
    Dieses Script ergaenzt die Event-Ebene:
 
-   1) Bruecke der bestehenden Conversion-Oberflaeche: site-chrome.js und
-      contact-cta.js feuern bereits `mr:conversion` CustomEvents fuer das
+   1) Bruecke der bestehenden Conversion-Oberflaeche: site-chrome.js feuert bereits `mr:conversion` CustomEvents fuer das
       komplette Formular-Funnel und CTA-Klicks. Die werden hier 1:1 als
       saubere Umami-Events weitergereicht — keine doppelte Pflege noetig.
 
@@ -236,11 +235,6 @@
   document.addEventListener('toggle', function (e) {
     var el = e.target;
     if (!el || el.tagName !== 'DETAILS' || !el.open) return;
-    // Anfrage-Form-Details ("Projektangaben ergaenzen") = Engagement-Signal, kein FAQ
-    if (el.classList && el.classList.contains('contact-cta__details')) {
-      track('form-expand', { form: 'contact-cta', page: location.pathname });
-      return;
-    }
     var summary = el.querySelector('summary');
     var q = summary ? (summary.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 120) : '';
     track('faq-open', { question: q, page: location.pathname });
@@ -253,7 +247,7 @@
      mailto-Fallback zaehlen NICHT als Abbruch.
      ===================================================================== */
   (function () {
-    var FORM_SEL = '.contact-cta__form, .mr-contact__form';
+    var FORM_SEL = '.mr-contact__form';
     var started = false;
     var completed = false;
     var abandonSent = false;
@@ -266,7 +260,7 @@
       var form = control.closest(FORM_SEL);
       if (!form) return;
       started = true;
-      formName = form.classList.contains('mr-contact__form') ? 'mr-contact' : 'contact-cta';
+      formName = 'mr-contact';
       var n = control.getAttribute('name');
       if (n && n !== 'website') lastField = n; // Honeypot ignorieren
     }, true);
@@ -302,7 +296,7 @@
       }
       add('.topbar__cta', 'header');
       add('.mr-sticky-cta', 'sticky');
-      add('.contact-cta, .mr-contact, [data-contact-section]', 'contact');
+      add('.mr-contact, [data-contact-section]', 'contact');
       add('.mr-exit-cta', 'exit');
       return targets;
     }

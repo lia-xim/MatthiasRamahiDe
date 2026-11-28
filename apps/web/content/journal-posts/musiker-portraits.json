@@ -70,6 +70,11 @@
       "style": "bridge"
     },
     {
+      "_template": "textBlock",
+      "headline": "Format-Matrix für Pressekit, Streaming und Bühne",
+      "body": "Damit Agenturen, Veranstalter und Redaktionen die Bilder ohne Rückfragen einsetzen können, sollte die Shotlist alle relevanten Seitenverhältnisse direkt abdecken:\n\n| Einsatzkanal | Bevorzugtes Format | Bildaufbau & Beschnitt-Hinweis | Typischer Dateiname |\n| --- | --- | --- | --- |\n| Pressekit / Festival-Ankündigung | Querformat 3:2 oder 16:9 | Person seitlich im Drittel, ruhige Textfläche für Tourdaten | `name-presse-quer-01.jpg` |\n| Streaming-Cover / Vinyl | Quadrat 1:1 | Klare Mittel- oder Diagonalwirkung, lesbar auch als kleines Thumbnail | `name-cover-quadrat-01.jpg` |\n| Plakat / Booking-Flyer | Hochformat 4:5 oder 2:3 | Ausreichend Luft oben/unten für Titel und Veranstaltungsort | `name-plakat-hoch-01.jpg` |\n| Spotify Canvas / Social Stories | Vertikal 9:16 | Ganzkörper oder Detail am Instrument ohne harte Randschnitte | `name-social-9x16-01.jpg` |\n| Redaktionelle Bio / Interview | 3:2 oder 4:5 (nah) | Zeitloses Hauptportrait ohne kurzfristige Album-Optik | `name-bio-portrait-01.jpg` |"
+    },
+    {
       "headline": "Eine gute Ausgabe hat wenige, klar benannte Rollen",
       "body": "Liefere am Ende keine zwanzig Fast-Zwillinge derselben Aufstellung, sondern klar getrennte Rollen: Hauptmotiv, breites Pressefoto, Hochformat-Story, Bandgruppe, Einzelportraits und Detailaufnahme. Eindeutige Dateinamen sorgen dafür, dass Agentur und Presse ohne Rückfrage direkt die passende Datei greifen.",
       "_template": "textBlock"
@@ -127,8 +132,8 @@
     }
   ],
   "seo": {
-    "title": "Musiker- & Bandportraits: Licht, Look & Pressekit",
-    "description": "Musikerportraits und Bandfotos richtig planen: Licht, Instrument, Location und Formate für Pressekit, Cover und Social Media, mit Beispielen aus der Praxis.",
+    "title": "Musiker- & Bandportraits: Licht, Formate & Pressekit",
+    "description": "Musikerportraits und Bandfotos planen: Pflichtformate für Pressekit, Cover und Social Media, Instrument-Einbindung und Licht-Checkliste.",
     "focusKeyword": "Musiker- und Bandportraits planen",
     "searchIntent": "Informationssuche: Nutzer suchen Fachwissen, Beispiele und Einordnung zu Musiker- und Bandportraits planen.",
     "canonicalUrl": "https://matthiasramahi.de/blog-musiker-portraits.html",
@@ -144,7 +149,7 @@
   },
   "status": "published",
   "createdAt": "2026-08-08T09:00:00.000Z",
-  "updatedAt": "2026-11-24T09:15:00.000Z",
+  "updatedAt": "2026-11-27T22:15:00.000Z",
   "relatedPages": [
     {
       "label": "Musikerfotografie",

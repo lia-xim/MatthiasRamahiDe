@@ -11,8 +11,8 @@
   ],
   "publishedAt": "2027-11-30T08:00:00.000Z",
   "excerpt": "Wie wurde aus einem lichtempfindlichen CCD-Bauteil die Kamera im Smartphone? Die Entwicklung führt von Bell Labs und Kodaks frühem Digitalkameraprototyp über professionelle Digitalsysteme bis zu CMOS-Sensoren und rechnergestützter Bildverarbeitung.",
-  "coverImage": "/assets/optimized/assets-portfolio-wettberwerb-foto5-wunder-der-natur2-1920.webp",
-  "coverAlt": "Felsiger Uferstreifen mit einem Baum, ruhigem See und schneebedeckten Bergen unter hellem Himmel.",
+  "coverImage": "/uploads/payload/portfolio_webp_full_001-1.webp",
+  "coverAlt": "Reihe digitaler Speicher- und Servermodule mit Laufwerksschächten in Nahaufnahme",
   "readingTime": 9,
   "seo": {
     "title": "Geschichte der digitalen Fotografie: CCD bis Smartphone",
@@ -36,7 +36,7 @@
     "canonicalUrl": "https://matthiasramahi.de/blog-geschichte-digitale-fotografie-ccd-smartphone.html",
     "legacyUrl": "blog-geschichte-digitale-fotografie-ccd-smartphone.html",
     "noIndex": false,
-    "ogImage": "/assets/optimized/assets-portfolio-wettberwerb-foto5-wunder-der-natur2-1920.webp"
+    "ogImage": "/uploads/payload/portfolio_webp_full_001-1.webp"
   },
   "legacy": {
     "sourceFile": "blog-geschichte-digitale-fotografie-ccd-smartphone.html",
@@ -64,14 +64,14 @@
     },
     {
       "label": "Automobilfotografie",
-      "href": "/automobil-fotografie.html",
+      "href": "/autofotografie.html",
       "seoPurpose": "service-pillar",
       "rel": "follow",
       "openInNewTab": false
     },
     {
       "label": "Fotografie",
-      "href": "/fotografie.html",
+      "href": "/",
       "seoPurpose": "topic-hub",
       "rel": "follow",
       "openInNewTab": false
@@ -126,7 +126,7 @@
     {
       "_template": "textBlock",
       "headline": "Was sich für Fotografen wirklich verschoben hat",
-      "body": "Die Entwicklung vom CCD zur Smartphonekamera lässt sich als Wechsel von knapp verfügbarer Elektronik zu ständig verfügbarer Bildproduktion lesen.  Digitale Bilder können direkt geprüft, kopiert und weiterbearbeitet werden. Im Smartphone kommen Aufnahme, Verarbeitung und Versand zusammen. Zugleich werden Entscheidungen, die früher stärker in Entwicklung und Labor lagen, zum Teil in die Kamera-Software verlagert.\n\nFür die Fahrzeugfotografie bleibt die Sensorfrage nur ein Teil der Aufnahme. Ein Smartphone eignet sich für schnelle Dokumentation und viele unkomplizierte Bilder. Eine geplante Serie verlangt zusätzlich eine bewusste Perspektive, nachvollziehbares Licht und kontrollierte Spiegelungen. Wer eine Bildfolge für Verkauf, Marke oder Portfolio benötigt, findet den passenden Überblick unter [Automobilfotografie](/automobil-fotografie.html); die übrigen fotografischen Schwerpunkte stehen im [Fotografie-Hub](/fotografie.html)."
+      "body": "Die Entwicklung vom CCD zur Smartphonekamera lässt sich als Wechsel von knapp verfügbarer Elektronik zu ständig verfügbarer Bildproduktion lesen.  Digitale Bilder können direkt geprüft, kopiert und weiterbearbeitet werden. Im Smartphone kommen Aufnahme, Verarbeitung und Versand zusammen. Zugleich werden Entscheidungen, die früher stärker in Entwicklung und Labor lagen, zum Teil in die Kamera-Software verlagert.\n\nFür die Fahrzeugfotografie bleibt die Sensorfrage nur ein Teil der Aufnahme. Ein Smartphone eignet sich für schnelle Dokumentation und viele unkomplizierte Bilder. Eine geplante Serie verlangt zusätzlich eine bewusste Perspektive, nachvollziehbares Licht und kontrollierte Spiegelungen. Wer eine Bildfolge für Verkauf, Marke oder Portfolio benötigt, findet den passenden Überblick unter [Automobilfotografie](/autofotografie.html); die übrigen fotografischen Schwerpunkte stehen im [Fotografie-Hub](/)."
     },
     {
       "_template": "faqBlock",

@@ -8,17 +8,21 @@ const normalizeCopyToken = (value: string) =>
     .toLocaleLowerCase('de-DE')
 
 export const splitTrailingEmphasis = (headline: string, emphasis: string) => {
-  const headlineWords = headline.split(/\s+/).filter(Boolean)
-  const emphasisWords = emphasis.split(/\s+/).filter(Boolean)
+  const cleanHeadline = headline.replace(/\s+/g, ' ').trim()
+  const cleanEmphasis = emphasis.replace(/\s+/g, ' ').trim()
+  const headlineWords = cleanHeadline.split(' ').filter(Boolean)
+  const emphasisWords = cleanEmphasis.split(' ').filter(Boolean)
   if (!headlineWords.length || !emphasisWords.length || headlineWords.length < emphasisWords.length) {
-    return { headline, emphasis }
+    return { headline: cleanHeadline, emphasis: cleanEmphasis }
   }
 
   const tail = headlineWords.slice(-emphasisWords.length).join(' ')
-  if (normalizeCopyToken(tail) !== normalizeCopyToken(emphasis)) return { headline, emphasis }
+  if (normalizeCopyToken(tail) !== normalizeCopyToken(cleanEmphasis)) {
+    return { headline: cleanHeadline, emphasis: cleanEmphasis }
+  }
 
   return {
     headline: headlineWords.slice(0, -emphasisWords.length).join(' '),
-    emphasis,
+    emphasis: cleanEmphasis,
   }
 }

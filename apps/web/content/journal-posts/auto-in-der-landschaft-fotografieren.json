@@ -10,8 +10,8 @@
   ],
   "publishedAt": "2028-02-11T08:00:00.000Z",
   "excerpt": "So bleibt ein Auto in der Landschaft das klare Hauptmotiv: Maßstab, Vordergrund, Linien, Hintergrund und Aufnahmeabstand gezielt aufeinander abstimmen.",
-  "coverImage": "/uploads/payload/_DSC8178-1920x1280.webp",
-  "coverAlt": "Silberner Sportwagen in Heck-Dreiviertelansicht auf einer Landstraße, dahinter ein offenes Feld und eine dunkle Baumkante.",
+  "coverImage": "/assets/portfolio/serie-automobil-porsche-993-heck.webp",
+  "coverAlt": "Silberner Porsche 911 der Baureihe 993 auf einer Landstraße zwischen Feldern und Bäumen",
   "readingTime": 8,
   "blocks": [
     {
@@ -133,7 +133,7 @@
         },
         {
           "label": "Automobilfotografie in Düsseldorf & NRW",
-          "href": "/automobil-fotografie.html",
+          "href": "/autofotografie.html",
           "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]
@@ -160,7 +160,7 @@
     ],
     "canonicalUrl": "https://matthiasramahi.de/blog-auto-in-der-landschaft-fotografieren.html",
     "legacyUrl": "blog-auto-in-der-landschaft-fotografieren.html",
-    "ogImage": "/uploads/payload/_DSC8178-1920x1280.webp",
+    "ogImage": "/assets/portfolio/serie-automobil-porsche-993-heck.webp",
     "noIndex": false
   },
   "status": "scheduled",
@@ -169,7 +169,7 @@
   "relatedPages": [
     {
       "label": "Automobilfotografie",
-      "href": "/automobil-fotografie.html",
+      "href": "/autofotografie.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

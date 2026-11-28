@@ -1,5 +1,5 @@
 .project-statement {
-  background: #f5f1e8;
+  background: #f3f5ef;
   color: #161616;
   padding: clamp(56px, 8vw, 116px) 0;
 }
@@ -21,8 +21,8 @@
 }
 
 .project-statement__quote em {
-  color: #8d1f18;
-  font-style: italic;
+  color: #6b7975;
+  font-style: normal;
 }
 
 .project-statement__foot {
@@ -199,7 +199,7 @@
 }
 
 .project-gallery {
-  background: #f8f5ee;
+  background: #f3f5ef;
   color: #161616;
   padding-top: clamp(58px, 8vw, 104px);
 }
@@ -209,7 +209,7 @@
 }
 
 .project-audience {
-  background: #f8f5ee;
+  background: #f3f5ef;
   color: #161616;
   padding: clamp(54px, 8vw, 108px) 0;
 }

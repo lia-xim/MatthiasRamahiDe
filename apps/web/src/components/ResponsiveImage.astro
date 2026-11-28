@@ -11,6 +11,8 @@ const {
   fallback = 'Bild folgt',
   sizes = '(max-width: 760px) 100vw, 50vw',
   loading = 'lazy',
+  decoding = 'async',
+  fetchpriority,
   mapCachedAssets = true,
   tinaFieldSource,
   tinaFieldName,
@@ -65,8 +67,8 @@ const editorAttrs = tinaAttrs(tinaFieldSource, tinaFieldName, tinaFieldIndex)
       width={width}
       height={height}
       loading={loading}
-      decoding="async"
-      fetchpriority={loading === 'eager' ? 'high' : undefined}
+      decoding={decoding}
+      fetchpriority={fetchpriority ?? (loading === 'eager' ? 'high' : undefined)}
       style={imageStyle || undefined}
       {...editorAttrs}
     />

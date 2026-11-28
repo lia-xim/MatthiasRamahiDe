@@ -10,8 +10,8 @@
   ],
   "publishedAt": "2027-04-20T07:00:00.000Z",
   "excerpt": "Heller Autolack soll Zeichnung behalten und sich klar vom Umfeld abheben. So kontrollierst du Licht, Belichtung, Hintergrund und Weißabgleich beim Fotografieren.",
-  "coverImage": "/assets/optimized/assets-portfolio-dsc2310-1920.webp",
-  "coverAlt": "Weißer BMW bei einer Ausstellung mit roten und blauen Lichtreflexen auf der Karosserie",
+  "coverImage": "/uploads/payload/_DSC2677.webp",
+  "coverAlt": "Weißes Sportcoupé mit Breitbau-Kotflügeln auf einer Automesse",
   "readingTime": 7,
   "blocks": [
     {
@@ -73,7 +73,7 @@
     {
       "_template": "textBlock",
       "headline": "Kurzer Vor-Ort-Check vor der Serie",
-      "body": "Vor der vollständigen Bildfolge helfen vier kurze Kontrollen: Erstens, sind auf Haube und Dach noch feine Übergänge sichtbar? Zweitens, löst sich die Außenkante des Autos vom hellsten Teil des Hintergrunds? Drittens, bleibt die Farbe unter dem vorhandenen Licht glaubwürdig? Viertens, sehen Ganzansicht und Detailaufnahme nach derselben Bildserie aus? Ändere jeweils nur eine Sache (zum Beispiel Kamerawinkel, Fahrzeugstellung oder Belichtung) und vergleiche die Ergebnisse.\n\nSo bleibt leichter nachvollziehbar, welche Änderung tatsächlich geholfen hat. Für die Planung einer ganzen Fahrzeugserie geht es unter [Automobilfotografie](/automobil-fotografie.html) weiter; beim Gegenstück mit dunklem Lack hilft der Beitrag [Schwarzes Auto fotografieren](/blog-schwarzes-auto-fotografieren.html)."
+      "body": "Vor der vollständigen Bildfolge helfen vier kurze Kontrollen: Erstens, sind auf Haube und Dach noch feine Übergänge sichtbar? Zweitens, löst sich die Außenkante des Autos vom hellsten Teil des Hintergrunds? Drittens, bleibt die Farbe unter dem vorhandenen Licht glaubwürdig? Viertens, sehen Ganzansicht und Detailaufnahme nach derselben Bildserie aus? Ändere jeweils nur eine Sache (zum Beispiel Kamerawinkel, Fahrzeugstellung oder Belichtung) und vergleiche die Ergebnisse.\n\nSo bleibt leichter nachvollziehbar, welche Änderung tatsächlich geholfen hat. Für die Planung einer ganzen Fahrzeugserie geht es unter [Automobilfotografie](/autofotografie.html) weiter; beim Gegenstück mit dunklem Lack hilft der Beitrag [Schwarzes Auto fotografieren](/blog-schwarzes-auto-fotografieren.html)."
     },
     {
       "_template": "ctaBlock",
@@ -113,7 +113,7 @@
       "links": [
         {
           "label": "Automobilfotografie",
-          "href": "/automobil-fotografie.html",
+          "href": "/autofotografie.html",
           "description": "Leistungsseite für geplante Fahrzeugporträts, Bildserien und Automotive-Shootings."
         },
         {
@@ -158,7 +158,7 @@
     "searchIntent": "Praxisorientierte Informationssuche: Fotografen und Fahrzeugbesitzer möchten ein weißes oder hell lackiertes Auto so aufnehmen, dass helle Lackdetails erhalten bleiben, die Karosserie sich vom Hintergrund abhebt und die Farbe unter wechselndem Licht glaubwürdig wirkt.",
     "canonicalUrl": "https://matthiasramahi.de/blog-weisses-auto-fotografieren.html",
     "legacyUrl": "blog-weisses-auto-fotografieren.html",
-    "ogImage": "/assets/optimized/assets-portfolio-dsc2310-1920.webp",
+    "ogImage": "/uploads/payload/_DSC2677.webp",
     "noIndex": false
   },
   "status": "scheduled",
@@ -167,7 +167,7 @@
   "relatedPages": [
     {
       "label": "Automobilfotografie",
-      "href": "/automobil-fotografie.html",
+      "href": "/autofotografie.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false

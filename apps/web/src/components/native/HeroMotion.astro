@@ -135,33 +135,36 @@ const first = slides[0]
       aria-hidden="true"
     >
       {slides.map((slide, index) => (
-        <div class:list={['hm-slide', { 'is-active': index === 0 }]}>
-          {index === 0 ? (
+        index === 0 ? (
+          <div class="hm-slide is-active">
             <picture>
               {slide.mobile && !slide.srcset && <source media="(max-width: 900px)" srcset={slide.mobile} />}
               <img class="hm-img" src={slide.src} srcset={slide.srcset} sizes={slide.srcset ? '100vw' : undefined} width={slide.width} height={slide.height} alt="" decoding="async" fetchpriority="high" data-hm-loaded="1" />
             </picture>
-          ) : (
-            <img class="hm-img" width={slide.width} height={slide.height} alt="" decoding="async" data-hm-src={slide.src} data-hm-mobile={slide.mobile || slide.src} data-hm-srcset={slide.srcset} />
-          )}
-          {variant === 'develop' && (
-            index === 0 ? (
+            {variant === 'develop' && (
               <picture>
                 {slide.mobile && !slide.srcset && <source media="(max-width: 900px)" srcset={slide.mobile} />}
                 <img class="hm-img hm-tone" src={slide.src} srcset={slide.srcset} sizes={slide.srcset ? '100vw' : undefined} width={slide.width} height={slide.height} alt="" decoding="async" data-hm-loaded="1" />
               </picture>
-            ) : (
-              <img class="hm-img hm-tone" width={slide.width} height={slide.height} alt="" decoding="async" data-hm-src={slide.src} data-hm-mobile={slide.mobile || slide.src} data-hm-srcset={slide.srcset} />
-            )
-          )}
-        </div>
+            )}
+          </div>
+        ) : (
+          <div
+            class="hm-slide"
+            data-hm-src={slide.src}
+            data-hm-mobile={slide.mobile || slide.src}
+            data-hm-srcset={slide.srcset}
+            data-hm-width={slide.width}
+            data-hm-height={slide.height}
+            data-hm-tone={variant === 'develop' ? '1' : undefined}
+          ></div>
+        )
       ))}
       {variant === 'develop' && <div class="hm-leak"></div>}
       {variant === 'pan' && !single && <div class="hm-speed"></div>}
     </div>
     {variant === 'contact' && slides.length > 1 && (
       <div class="hm-strip" data-hm-strip>
-        <span class="hm-count"><b data-hm-current>01</b> / {String(slides.length).padStart(2, '0')}</span>
         <div class="hm-thumbs">
           {slides.map((slide, index) => (
             <button type="button" class:list={['hm-thumb', { 'is-active': index === 0 }]} data-hm-go={index} aria-label={`Bild ${index + 1} zeigen`}>
@@ -228,7 +231,30 @@ const first = slides[0]
       }, 650);
     }
 
+    function ensureSlideImages(slide) {
+      if (!slide.hasAttribute('data-hm-src') || slide.querySelector('img')) return;
+      var src = slide.getAttribute('data-hm-src');
+      var mobile = slide.getAttribute('data-hm-mobile') || src;
+      var srcset = slide.getAttribute('data-hm-srcset');
+      var w = slide.getAttribute('data-hm-width');
+      var h = slide.getAttribute('data-hm-height');
+      var roles = slide.getAttribute('data-hm-tone') === '1' ? ['hm-img', 'hm-img hm-tone'] : ['hm-img'];
+      roles.forEach(function (cls) {
+        var img = document.createElement('img');
+        img.className = cls;
+        if (w) img.setAttribute('width', w);
+        if (h) img.setAttribute('height', h);
+        img.alt = '';
+        img.decoding = 'async';
+        img.setAttribute('data-hm-src', src);
+        img.setAttribute('data-hm-mobile', mobile);
+        if (srcset) img.setAttribute('data-hm-srcset', srcset);
+        slide.appendChild(img);
+      });
+    }
+
     function load(slide, done) {
+      ensureSlideImages(slide);
       var imgs = Array.prototype.slice.call(slide.querySelectorAll('img[data-hm-src]:not([data-hm-loaded])'));
       var pending = imgs.length;
       if (!pending) { done(); return; }

@@ -119,7 +119,7 @@ Astro.response.headers.set('x-cms-layout-parent', familyContent.parentLegacyFile
       <div class="local-native__hero-shade" aria-hidden="true"></div>
       <div class="local-native__hero-inner">
         <p class="local-native__eyebrow">{familyContent.seoTitle} / {scope.generic ? 'Überregional' : scope.label}</p>
-        <h1>{serviceLabel}{!scope.generic && <> <em>{scope.label}.</em></>}</h1>
+        <h1>{serviceLabel}{!scope.generic && <>{' '}<em>{scope.label}.</em></>}</h1>
         <p>{heroCopy}</p>
         <div class="local-native__actions">
           <a href="#anfrage">Projekt anfragen</a>
@@ -154,7 +154,6 @@ Astro.response.headers.set('x-cms-layout-parent', familyContent.parentLegacyFile
                 <img loading="lazy" src={item.image} alt={item.alt} width={item.width} height={item.height} decoding="async" />
               </figure>
               <div>
-                <span>{String(index + 1).padStart(2, '0')}</span>
                 <h3>{item.title}</h3>
                 <p>{item.text}</p>
               </div>
@@ -174,7 +173,7 @@ Astro.response.headers.set('x-cms-layout-parent', familyContent.parentLegacyFile
           {galleryItems.map((item, index) => (
             <figure class="local-native__tile">
               <img loading="lazy" src={item.image} alt={item.alt} width={item.width} height={item.height} decoding="async" />
-              <figcaption>{item.label || `${String(index + 1).padStart(2, '0')} / ${familyContent.label}`}</figcaption>
+              {item.label && <figcaption>{item.label}</figcaption>}
             </figure>
           ))}
         </div>
@@ -201,7 +200,7 @@ Astro.response.headers.set('x-cms-layout-parent', familyContent.parentLegacyFile
     <section class="mr-cities mr-photo-cluster" data-header-theme="light" data-theme="light" aria-label={scope.generic ? 'Verwandte Fotografie-Bereiche' : `Verwandte Fotografie-Bereiche ${scope.label}`}>
       <div class="mr-cities__inner">
         <div class="mr-cities__head">
-          <h2>Weitere Fotografie-Bereiche{!scope.generic && <> <em>{scope.label}.</em></>}</h2>
+          <h2>Weitere Fotografie-Bereiche{!scope.generic && <>{' '}<em>{scope.label}.</em></>}</h2>
           <p class="mr-cities__copy">Jede lokale Seite nutzt eine der sechs Hauptfamilien als Layout-Basis. So bleiben Motiv, Gestaltung und redaktionelle Pflege sauber getrennt.</p>
         </div>
         <nav class="mr-cities__grid" aria-label="Verwandte Fotografie-Bereiche">
@@ -214,7 +213,7 @@ Astro.response.headers.set('x-cms-layout-parent', familyContent.parentLegacyFile
     <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label={`${familyContent.seoTitle} vor Ort`}>
       <div class="mr-cities__inner">
         <div class="mr-cities__head">
-          <h2>{familyContent.seoTitle} <em>{scope.generic ? 'vor Ort.' : `vor Ort in ${scope.label}.`}</em></h2>
+          <h2>{familyContent.seoTitle}{' '}<em>{scope.generic ? 'vor Ort.' : `vor Ort in ${scope.label}.`}</em></h2>
         </div>
         <nav class="mr-cities__grid" aria-label="Städte">
           {cityLinks.map((link) => <a class="mr-cities__cell" href={link.href}>{link.label}</a>)}
@@ -225,7 +224,7 @@ Astro.response.headers.set('x-cms-layout-parent', familyContent.parentLegacyFile
     <section class="mr-cities" data-header-theme="light" data-theme="light" aria-label={`${familyContent.seoTitle} Suchbegriffe`}>
       <div class="mr-cities__inner">
         <div class="mr-cities__head">
-          <h2>{familyContent.seoTitle} <em>Suchbegriffe.</em></h2>
+          <h2>{familyContent.seoTitle}{' '}<em>Suchbegriffe.</em></h2>
         </div>
         <nav class="mr-cities__grid" aria-label="Regionale Bereiche">
           {familyContent.searchLinks.map((link) => <a class="mr-cities__cell" href={link.href}>{link.label}</a>)}
@@ -418,15 +417,6 @@ Astro.response.headers.set('x-cms-layout-parent', familyContent.parentLegacyFile
 
   .local-native__module-card > div {
     padding-top: 22px;
-  }
-
-  .local-native__module-card span {
-    display: block;
-    margin-bottom: 10px;
-    font: 700 0.72rem/1.2 'MR Sans','MR Sans Fallback',Arial,system-ui,sans-serif;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    opacity: 0.6;
   }
 
   .local-native__module-card h3 {

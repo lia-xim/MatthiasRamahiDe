@@ -55,11 +55,15 @@ export function curateFamilyClusterLinks({
   scopeSlug,
 }: CurateFamilyClusterLinksOptions) {
   const baseSlug = defaultLegacyFile.replace(/\.html$/, '')
-  const duesseldorfHref = `${baseSlug}-duesseldorf.html`
-  const nrwHref = `${baseSlug}-nrw.html`
-  const parentLink: FamilyLinkTuple = [defaultLegacyFile, `${familyLabel} Übersicht`]
+  const canonicalParentHref = resolveCanonicalHref(defaultLegacyFile)
+  const duesseldorfHref = resolveCanonicalHref(`${baseSlug}-duesseldorf.html`)
+  const nrwHref = resolveCanonicalHref(`${baseSlug}-nrw.html`)
+  const parentLink: FamilyLinkTuple = [canonicalParentHref, `${familyLabel} Übersicht`]
   const indexableCityLinks = uniqueLinks(
-    allCityLinks.filter(([href]) => !/-deutschland\.html(?:$|[?#])/.test(href) && !isRedirectedHref(href)),
+    allCityLinks
+      .filter(([href]) => !/-deutschland\.html(?:$|[?#])/.test(href))
+      .map(([href, label]): FamilyLinkTuple => [resolveCanonicalHref(href), label])
+      .filter(([href]) => !isRedirectedHref(href)),
   )
   const allLocationLinks = uniqueLinks([parentLink, ...indexableCityLinks])
   const findLocationLink = (href: string) =>
@@ -70,8 +74,9 @@ export function curateFamilyClusterLinks({
       return link ? [link] : []
     })
 
+  const isCanonicalParent = isParentPage || isCurrentPageHref(canonicalParentHref, currentPage)
   const isFamilyLocationPage =
-    isParentPage || indexableCityLinks.some(([href]) => isCurrentPageHref(href, currentPage))
+    isCanonicalParent || indexableCityLinks.some(([href]) => isCurrentPageHref(href, currentPage))
   const isDuesseldorfFamilyPage = isCurrentPageHref(duesseldorfHref, currentPage)
   const isNrwFamilyPage = isCurrentPageHref(nrwHref, currentPage)
   const priorityLocationHrefs = [
@@ -101,11 +106,11 @@ export function curateFamilyClusterLinks({
   const cityLinks = (
     isNrwFamilyPage
       ? allLocationLinks
-      : isParentPage
+      : isCanonicalParent
         ? pickLocationLinks(priorityLocationHrefs)
         : isDuesseldorfFamilyPage
           ? pickLocationLinks([
-              defaultLegacyFile,
+              canonicalParentHref,
               nrwHref,
               `${baseSlug}-bochum.html`,
               `${baseSlug}-dortmund.html`,
@@ -116,7 +121,7 @@ export function curateFamilyClusterLinks({
               `${baseSlug}-krefeld.html`,
               `${baseSlug}-moenchengladbach.html`,
             ])
-          : pickLocationLinks([defaultLegacyFile, duesseldorfHref, nrwHref, ...neighborHrefs])
+          : pickLocationLinks([canonicalParentHref, duesseldorfHref, nrwHref, ...neighborHrefs])
   ).filter(([href]) => !isCurrentPageHref(href, currentPage))
 
   const intentLinkByKey = new Map(intentLinks.map((link) => [link.key, link]))
@@ -132,14 +137,18 @@ export function curateFamilyClusterLinks({
         if (!link) return []
         const rawHref = !isParentPage && scopeSlug === 'duesseldorf' ? link.duesseldorfHref : link.genericHref
         const canonicalHref = resolveCanonicalHref(rawHref)
-        if (isCurrentPageHref(canonicalHref, defaultLegacyFile) || isCurrentPageHref(canonicalHref, duesseldorfHref)) {
+        if (
+          isCurrentPageHref(canonicalHref, defaultLegacyFile) ||
+          isCurrentPageHref(canonicalHref, canonicalParentHref) ||
+          isCurrentPageHref(canonicalHref, duesseldorfHref)
+        ) {
           return []
         }
         return [[canonicalHref, link.label] as FamilyLinkTuple]
       }),
     ).filter(([href]) => !isCurrentPageHref(href, currentPage))
 
-  const searchLinks = isParentPage
+  const searchLinks = isCanonicalParent
     ? resolveIntentKeys(intentLinks.map((link) => link.key))
     : isDuesseldorfFamilyPage || isNrwFamilyPage
       ? resolveIntentKeys(primaryIntentKeys)

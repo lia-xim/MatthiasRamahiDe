@@ -1,5 +1,8 @@
 ---
+import { getLegacyRedirectTarget } from '../../lib/adoptedRoutes'
 import { getPublicJournalArticles, type JournalCluster } from '../../lib/journalArticleContent'
+import { getPublicJournalCards } from '../../lib/journalIndexContent'
+import { localResponsiveImage } from '../../data/localResponsiveThumbs'
 
 type Props = {
   /** Journal-Cluster, deren Beiträge zu dieser Fotografie-Familie gehören. */
@@ -10,8 +13,25 @@ type Props = {
   scopeLabel: string
 }
 
-const { clusters, familyHref, limit = 6, scopeLabel } = Astro.props as Props
-const normalizedFamilyHref = familyHref.replace(/^\//, '')
+const { clusters, familyHref, limit = 3, scopeLabel } = Astro.props as Props
+
+const canonicalFile = (href: string) => {
+  let current = href.replace(/^\/+/, '').split(/[?#]/)[0].toLowerCase()
+  const seen = new Set<string>([current])
+  for (let hop = 0; hop < 4; hop += 1) {
+    if (!current || current.includes('/')) break
+    const target = getLegacyRedirectTarget(current)
+    if (target === null) break
+    const next = target.replace(/^\/+/, '').toLowerCase()
+    if (!next || seen.has(next)) break
+    seen.add(next)
+    current = next
+  }
+  return current
+}
+
+const normalizedFamilyHref = canonicalFile(familyHref)
+const cardByHref = new Map(getPublicJournalCards().map((card) => [card.href.replace(/^\/+/, ''), card]))
 
 // Cluster in der übergebenen Reihenfolge, danach themenübergreifende Beiträge, die auf diese Familie verweisen.
 const articles = getPublicJournalArticles()
@@ -19,34 +39,198 @@ const articles = getPublicJournalArticles()
     article,
     rank: clusters.includes(article.cluster)
       ? clusters.indexOf(article.cluster)
-      : article.links.some((link) => link.href === normalizedFamilyHref)
+      : article.links.some((link) => canonicalFile(link.href) === normalizedFamilyHref)
         ? clusters.length
         : -1,
   }))
   .filter(({ rank }) => rank >= 0)
   .sort((left, right) => left.rank - right.rank || right.article.dateTime.localeCompare(left.article.dateTime))
   .slice(0, limit)
-  .map(({ article }) => article)
-
-const shortTitle = (title: string) => title.split(':')[0].trim()
+  .map(({ article }) => {
+    const card = cardByHref.get(article.legacyFile)
+    const raw = card?.image || article.heroImage
+    const width = card?.width || 1600
+    const height = card?.height || 1067
+    const visual = raw ? localResponsiveImage(raw, width, height) : null
+    return {
+      href: `/${article.legacyFile}`,
+      title: article.title.replace(/<[^>]+>/g, '').split(':')[0].trim(),
+      text: article.description,
+      alt: card?.imageAlt || article.heroImageAlt || '',
+      visual,
+      width,
+      height,
+    }
+  })
 ---
 
 {articles.length > 0 && (
-  <section
-    class="mr-cities mr-cities--journal"
-    data-header-theme="light"
-    data-theme="light"
-    aria-label={`Journal-Beiträge ${scopeLabel}`}
-  >
-    <div class="mr-cities__inner">
-      <div class="mr-cities__head">
-        <h2>Aus dem <em>Journal</em></h2>
+  <section class="mr-reads" data-header-theme="dark" data-theme="dark" aria-labelledby="mr-reads-title">
+    <div class="mr-reads__inner">
+      <div class="mr-reads__head">
+        <h2 id="mr-reads-title">Aus dem Journal.</h2>
+        <a class="mr-reads__all" href="/blog.html">Alle Beiträge</a>
       </div>
-      <nav class="mr-cities__grid" aria-label={`Journal ${scopeLabel}`}>
+      <ul class="mr-reads__list" aria-label={`Journal-Beiträge ${scopeLabel}`}>
         {articles.map((article) => (
-          <a class="mr-cities__cell" href={`/${article.legacyFile}`}>{shortTitle(article.title)}</a>
+          <li>
+            <a class="mr-reads__item" href={article.href}>
+              {article.visual && (
+                <span class="mr-reads__visual">
+                  <img
+                    src={article.visual.mobile}
+                    srcset={article.visual.srcset || undefined}
+                    sizes="(max-width: 760px) 80vw, 30vw"
+                    alt={article.alt}
+                    width={article.width}
+                    height={article.height}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </span>
+              )}
+              <span class="mr-reads__title">{article.title}</span>
+              <span class="mr-reads__text">{article.text}</span>
+            </a>
+          </li>
         ))}
-      </nav>
+      </ul>
     </div>
   </section>
 )}
+
+<style>
+  .mr-reads {
+    background: #050608;
+    color: #f1efe8;
+    padding: clamp(72px, 8vw, 128px) 0;
+  }
+
+  .mr-reads__inner {
+    margin: 0 auto;
+    max-width: 1640px;
+    padding: 0 clamp(20px, 4vw, 84px);
+  }
+
+  .mr-reads__head {
+    align-items: end;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 32px;
+    justify-content: space-between;
+    margin-bottom: clamp(32px, 4vw, 56px);
+  }
+
+  .mr-reads__head h2 {
+    color: #f1efe8;
+    font-size: clamp(40px, 5.2vw, 88px);
+    margin: 0;
+  }
+
+  .mr-reads__all,
+  .mr-reads__all:visited {
+    color: #f1efe8;
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: rgb(241 239 232 / 35%);
+    text-underline-offset: 6px;
+  }
+
+  .mr-reads__all:hover {
+    text-decoration-color: currentColor;
+  }
+
+  .mr-reads__list {
+    display: grid;
+    gap: clamp(24px, 2.6vw, 44px);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .mr-reads__item,
+  .mr-reads__item:visited {
+    color: inherit;
+    display: grid;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .mr-reads__visual {
+    aspect-ratio: 3 / 2;
+    background: #111;
+    display: block;
+    margin-bottom: 8px;
+    overflow: hidden;
+  }
+
+  .mr-reads__visual img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+    width: 100%;
+  }
+
+  .mr-reads__item:hover .mr-reads__visual img {
+    opacity: 0.82;
+  }
+
+  .mr-reads__title {
+    font-size: clamp(19px, 1.45vw, 24px);
+    font-stretch: 87.5%;
+    font-weight: 650;
+    line-height: 1.15;
+  }
+
+  .mr-reads__item:hover .mr-reads__title {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 5px;
+  }
+
+  .mr-reads__text {
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    color: rgb(241 239 232 / 64%);
+    display: -webkit-box;
+    font-size: 15px;
+    line-height: 1.55;
+    max-width: 46ch;
+    overflow: hidden;
+  }
+
+  .mr-reads__item:focus-visible {
+    outline: 2px solid #f1efe8;
+    outline-offset: 6px;
+  }
+
+  @media (max-width: 760px) {
+    .mr-reads__list {
+      grid-auto-columns: 80%;
+      grid-auto-flow: column;
+      grid-template-columns: none;
+      margin-inline: calc(clamp(20px, 4vw, 84px) * -1);
+      overflow-x: auto;
+      padding-inline: clamp(20px, 4vw, 84px);
+      scroll-padding-inline: clamp(20px, 4vw, 84px);
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+    }
+
+    .mr-reads__list::-webkit-scrollbar {
+      display: none;
+    }
+
+    .mr-reads__list li {
+      scroll-snap-align: start;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mr-reads__visual img {
+      transition: none;
+    }
+  }
+</style>

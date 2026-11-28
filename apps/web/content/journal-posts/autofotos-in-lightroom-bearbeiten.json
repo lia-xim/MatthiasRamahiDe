@@ -12,7 +12,7 @@
   "publishedAt": "2028-03-28T08:00:00.000Z",
   "status": "scheduled",
   "excerpt": "Ein nachvollziehbarer Lightroom-Workflow für Autofotos: RAW-Grundentwicklung, gezielte Masken und ein passender Webexport, ohne Lackfarbe oder Fahrzeugdetails umzuschreiben.",
-  "coverImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+  "coverImage": "/uploads/payload/_DSC2876_genErase.webp",
   "readingTime": 9,
   "blocks": [
     {
@@ -167,7 +167,7 @@
         },
         {
           "label": "Automobilfotografie in Düsseldorf & NRW",
-          "href": "/automobil-fotografie.html",
+          "href": "/autofotografie.html",
           "description": "Leistungen, Ablauf und Bildserien für Marken, Autohäuser und Privatfahrzeuge."
         }
       ]
@@ -187,7 +187,7 @@
     "searchIntent": "Softwarebezogene Informationssuche: Fotografierende möchten Autofotos in Lightroom Classic von der RAW-Grundentwicklung über Fahrzeugmasken bis zum Webexport bearbeiten und dabei Lackfarbe, Reflexe und relevante Fahrzeugdetails glaubwürdig erhalten.",
     "canonicalUrl": "https://matthiasramahi.de/blog-autofotos-in-lightroom-bearbeiten.html",
     "legacyUrl": "blog-autofotos-in-lightroom-bearbeiten.html",
-    "ogImage": "/assets/portfolio/automobil-brabus-sunset.webp",
+    "ogImage": "/uploads/payload/_DSC2876_genErase.webp",
     "noIndex": false
   },
   "createdAt": "2026-11-05T00:00:00Z",
@@ -195,7 +195,7 @@
   "relatedPages": [
     {
       "label": "Autofotografie",
-      "href": "/automobil-fotografie.html",
+      "href": "/autofotografie.html",
       "seoPurpose": "commercial-support",
       "rel": "follow",
       "openInNewTab": false
@@ -222,5 +222,5 @@
       "openInNewTab": false
     }
   ],
-  "coverAlt": "Dunkler SUV auf nasser Fläche vor Industrieanlagen unter einem farbigen Abendhimmel"
+  "coverAlt": "Schwarzes Brabus GLE Coupé in der Frontansicht mit Strommast im Hintergrund"
 }
